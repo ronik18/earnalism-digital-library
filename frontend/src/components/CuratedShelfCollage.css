@@ -172,7 +172,7 @@
 .curated-shelf-collage__grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: minmax(24.5rem, 26rem) minmax(20rem, 22rem);
+  grid-template-rows: repeat(var(--shelf-grid-row-count, 2), minmax(20rem, 22rem));
   grid-template-areas:
     "bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic"
     "love love love love adventure adventure adventure adventure adventure short short short";
@@ -690,6 +690,7 @@
 /* v4 geometry repair: every functional zone has an explicit grid area. */
 .curated-shelf-collage__grid {
   grid-template-areas: var(--shelf-grid-areas);
+  grid-template-rows: repeat(var(--shelf-grid-row-count, 2), minmax(20rem, 22rem));
   align-items: stretch;
 }
 

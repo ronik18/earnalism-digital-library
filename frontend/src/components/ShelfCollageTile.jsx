@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, Compass, Heart, MoonStar, Sparkles } from "lucide
 import { Link } from "react-router-dom";
 import BookCoverImage from "./BookCoverImage";
 import { getShelfCountLabel, getShelfThemeChips, getShelfVariant, getUniqueShelfBooks } from "../lib/homeShelfRunway";
+import { normalizeShelfArea } from "../lib/shelfGridLayout";
 
 const ICONS = {
   "book-open": BookOpen,
@@ -26,6 +27,7 @@ export default function ShelfCollageTile({ group, index = 0 }) {
   if (!books.length) return null;
 
   const Icon = ICONS[group.icon] || BookOpen;
+  const shelfArea = normalizeShelfArea(group);
   const headingId = `curated-shelf-${group.id || index}-title`;
   const variant = getShelfVariant({ ...group, books });
   const countLabel = getShelfCountLabel({ ...group, books });
@@ -34,10 +36,10 @@ export default function ShelfCollageTile({ group, index = 0 }) {
   return (
     <article
       className={`curated-shelf-tile curated-shelf-tile--${variant} curated-shelf-tile--accent-${group.accent || "burgundy"}`}
-      style={{ "--shelf-area": group.layout_area || group.id || `shelf-${index}` }}
+      style={{ "--shelf-area": shelfArea || `shelf-${index}` }}
       data-testid={`curated-shelf-tile-${group.id || index}`}
-      data-layout-area={group.layout_area || group.id || `shelf-${index}`}
-      data-shelf-area={group.layout_area || group.id || `shelf-${index}`}
+      data-layout-area={shelfArea || `shelf-${index}`}
+      data-shelf-area={shelfArea || `shelf-${index}`}
       data-variant={variant}
       aria-labelledby={headingId}
     >

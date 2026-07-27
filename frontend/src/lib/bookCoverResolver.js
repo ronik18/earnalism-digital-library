@@ -27,6 +27,40 @@ function svgDataUri(svg) {
     .replace(/%2F/g, "/")}`;
 }
 
+function contentMotif(book = {}, { isBack = false } = {}) {
+  const slug = String(book?.slug || "").toLowerCase();
+  const title = String(book?.title || "").toLowerCase();
+  const key = `${slug} ${title}`;
+
+  if (key.includes("pather") || key.includes("পথের") || key.includes("panchali")) {
+    return `
+  <path d="M122 920C260 782 352 706 448 636C548 564 662 492 778 400" fill="none" stroke="${isBack ? "#B98B54" : "#DDBB73"}" stroke-opacity="0.62" stroke-width="18" stroke-linecap="round"/>
+  <path d="M130 956C278 846 382 785 482 728C586 668 668 600 770 530" fill="none" stroke="#7A5A3D" stroke-opacity="0.56" stroke-width="7" stroke-linecap="round"/>
+  <path d="M176 804C150 712 168 638 224 548M224 548C264 636 278 708 260 780M676 568C664 488 692 428 744 370M744 370C780 438 790 500 770 548" fill="none" stroke="#C99B5E" stroke-opacity="0.48" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="194" cy="512" r="34" fill="#DDBB73" fill-opacity="0.16" stroke="#DDBB73" stroke-opacity="0.45" stroke-width="4"/>`;
+  }
+
+  if (key.includes("devdas") || key.includes("দেবদাস")) {
+    return `
+  <circle cx="${isBack ? 690 : 210}" cy="300" r="86" fill="#D9B06C" fill-opacity="0.11" stroke="#D9B06C" stroke-opacity="0.48" stroke-width="4"/>
+  <path d="M${isBack ? 610 : 130} 950C${isBack ? 624 : 146} 816 ${isBack ? 646 : 168} 690 ${isBack ? 696 : 218} 546C${isBack ? 720 : 240} 474 ${isBack ? 764 : 284} 390" fill="none" stroke="#D9B06C" stroke-opacity="0.62" stroke-width="9" stroke-linecap="round"/>
+  <path d="M180 920C268 846 336 810 416 808C508 806 572 760 632 670" fill="none" stroke="#7E4734" stroke-opacity="0.72" stroke-width="18" stroke-linecap="round"/>
+  <path d="M230 876C276 818 320 790 366 782M572 714C618 650 660 612 708 594" fill="none" stroke="#E2C27D" stroke-opacity="0.38" stroke-width="5" stroke-linecap="round"/>`;
+  }
+
+  if (key.includes("gothic") || key.includes("dracula") || key.includes("ghost") || key.includes("sredni")) {
+    return `
+  <circle cx="${isBack ? 676 : 224}" cy="278" r="110" fill="#D2B06D" fill-opacity="0.12"/>
+  <path d="M122 924C192 798 232 690 242 556C250 450 286 366 350 294M778 924C708 798 668 690 658 556C650 450 614 366 550 294" fill="none" stroke="#D2B06D" stroke-opacity="0.44" stroke-width="8" stroke-linecap="round"/>
+  <path d="M160 928C276 840 360 798 450 798C540 798 624 840 740 928" fill="none" stroke="#8F6A50" stroke-opacity="0.58" stroke-width="14" stroke-linecap="round"/>`;
+  }
+
+  return `
+  <path d="M156 900C256 784 338 728 450 728C562 728 644 784 744 900" fill="none" stroke="#D2B06D" stroke-opacity="0.42" stroke-width="12" stroke-linecap="round"/>
+  <path d="M218 898C292 826 360 792 450 792C540 792 608 826 682 898" fill="none" stroke="#9D7548" stroke-opacity="0.52" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="${isBack ? 680 : 220}" cy="292" r="74" fill="#D2B06D" fill-opacity="0.1" stroke="#D2B06D" stroke-opacity="0.38" stroke-width="4"/>`;
+}
+
 export function graphicalCoverFallbackDataUri(book = {}, { kind = "front" } = {}) {
   const seed = stableHash(`${book?.slug || book?.id || ""}:${book?.title || ""}:${kind}`);
   const [primary, ink, accent] = FALLBACK_PALETTES[seed % FALLBACK_PALETTES.length];
@@ -61,6 +95,7 @@ export function graphicalCoverFallbackDataUri(book = {}, { kind = "front" } = {}
   <circle cx="${isBack ? 650 : 278}" cy="318" r="96" fill="${accent}" fill-opacity="0.08"/>
   <circle cx="${isBack ? 650 : 278}" cy="318" r="56" fill="none" stroke="${accent}" stroke-opacity="0.38" stroke-width="3"/>
   <path d="M450 204C472 260 526 315 600 344C526 372 472 426 450 482C428 426 374 372 300 344C374 315 428 260 450 204Z" fill="${accent}" fill-opacity="0.13"/>
+  ${contentMotif(book, { isBack })}
   <g opacity="0.24">
     <path d="M166 1024H734" stroke="${accent}" stroke-width="2"/>
     <path d="M210 1000H690" stroke="${accent}" stroke-width="1.4"/>
