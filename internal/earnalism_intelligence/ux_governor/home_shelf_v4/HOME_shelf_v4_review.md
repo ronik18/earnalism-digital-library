@@ -12,7 +12,7 @@ The Love card now uses a bounded Duo cover stage in a container-aware card body.
 
 ## Validation state
 
-Focused backend and frontend tests pass, the frontend production build passes, and the deterministic geometry audit reports zero modeled intersections/overflow. The full frontend suite is 23 suites / 111 tests; the focused backend release/home suite is 36 tests. The requested production screenshots and live endpoint canary remain pending; see `HOME_shelf_v4_scorecard.json`.
+Focused backend and frontend tests pass, the frontend production build passes, and the deterministic geometry audit reports zero modeled intersections/overflow. The full frontend suite is 23 suites / 111 tests; the focused backend release/home suite is 36 tests. The requested production screenshots and live endpoint canary remain pending: the protected Vercel preview reached sign-in before the application in the available browser surface. See `HOME_shelf_v4_scorecard.json`.
 
 The repository’s canonical evidence currently exposes four approved audiobook records, including `the-open-window`; release truth was not changed. The brief names three approved records, so this discrepancy is recorded rather than silently hiding or publishing audio.
 

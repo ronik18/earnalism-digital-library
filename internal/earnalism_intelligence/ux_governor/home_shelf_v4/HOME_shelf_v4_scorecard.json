@@ -11,5 +11,5 @@
   "automated": {"geometry": 9.8, "future_sprint_evolution": 9.8, "release_truth": 9.8, "accessibility_contract": 9.6},
   "visual_categories": null,
   "overall_score": null,
-  "reason": "Production screenshots and live endpoint canary were not available in this local implementation pass; no 10/10 claim is made."
+  "reason": "The preview deployment reached Vercel sign-in before the application in the available browser surface, so production screenshots and the live endpoint canary remain pending; no 10/10 claim is made."
 }
