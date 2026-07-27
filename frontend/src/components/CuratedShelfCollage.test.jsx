@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { normalizeHomeCuration } from "../lib/homeCuration";
+import { getShelfCountLabel, getShelfVariant, getUniqueShelfBooks } from "../lib/homeShelfRunway";
 
 const componentSource = fs.readFileSync(
   path.join(process.cwd(), "src/components/CuratedShelfCollage.jsx"),
@@ -93,13 +94,29 @@ describe("CuratedShelfCollage", () => {
   });
 
   test("uses explicit editorial areas and responsive two-column composition", () => {
-    expect(stylesSource).toContain('grid-template-areas:\n    "bengali bengali bengali bengali bengali bengali gothic gothic gothic love love love"');
+    expect(stylesSource).toContain('grid-template-areas:\n    "bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic"');
+    expect(stylesSource).toContain('"love love love love adventure adventure adventure adventure adventure short short short"');
     expect(stylesSource).toContain('"bengali bengali"\n      "gothic love"\n      "adventure short"');
     expect(stylesSource).toContain('"bengali"\n      "gothic"\n      "love"\n      "adventure"\n      "short"');
     expect(stylesSource).toContain('"bengali bengali"\n      "gothic love"\n      "adventure adventure"');
     expect(componentSource).toContain('curated-shelf-collage--missing-short');
     expect(stylesSource).toContain("grid-area: var(--shelf-area)");
     expect(tileSource).toContain("data-layout-area={group.layout_area");
+  });
+
+  test("adapts the card anatomy to the number of valid canonical covers", () => {
+    expect(getShelfVariant({ books: [readerBook] })).toBe("spotlight");
+    expect(getShelfVariant({ books: [readerBook, { ...readerBook, slug: "second" }] })).toBe("duo-shelf");
+    expect(getShelfVariant({ books: [readerBook, { ...readerBook, slug: "second" }, { ...readerBook, slug: "third" }] })).toBe("shelf-feature");
+    expect(getShelfCountLabel({ books: [readerBook] })).toBe("Featured classic");
+    expect(getUniqueShelfBooks({ books: [readerBook, readerBook, { ...readerBook, slug: "second" }] })).toHaveLength(2);
+  });
+
+  test("does not use public governance language or placeholder imagery", () => {
+    expect(tileSource).toContain("getShelfVariant");
+    expect(tileSource).toContain("getShelfThemeChips");
+    expect(componentSource).not.toMatch(/release gate|QA_PASSED|unapproved audio|manifest|endpoint/i);
+    expect(stylesSource).toContain("prefers-reduced-motion: reduce");
   });
 
   test("filters placeholder metadata and keeps the collage free of graphical fallbacks", () => {

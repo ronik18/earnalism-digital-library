@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowRight, BookOpen, Compass, Heart, MoonStar, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import BookCoverImage from "./BookCoverImage";
+import { getShelfCountLabel, getShelfThemeChips, getShelfVariant, getUniqueShelfBooks } from "../lib/homeShelfRunway";
 
 const ICONS = {
   "book-open": BookOpen,
@@ -13,22 +14,27 @@ const ICONS = {
 
 export default function ShelfCollageTile({ group, index = 0 }) {
   const [failedSlugs, setFailedSlugs] = useState(() => new Set());
-  const books = (Array.isArray(group?.books) ? group.books : [])
-    .filter((book) => book?.slug && !failedSlugs.has(book.slug));
+  const books = getUniqueShelfBooks({
+    ...group,
+    books: (Array.isArray(group?.books) ? group.books : [])
+      .filter((book) => book?.slug && !failedSlugs.has(book.slug)),
+  });
   if (!books.length) return null;
 
   const Icon = ICONS[group.icon] || BookOpen;
   const headingId = `curated-shelf-${group.id || index}-title`;
-  const isFeature = group.visual_variant === "feature";
-  const visibleBooks = books.slice(0, isFeature || group.accent === "short" ? 3 : 2);
-  const countLabel = `${group.book_count || books.length} curated ${group.book_count === 1 ? "title" : "titles"}`;
+  const variant = getShelfVariant({ ...group, books });
+  const countLabel = getShelfCountLabel({ ...group, books });
+  const themeChips = getShelfThemeChips(group);
 
   return (
     <article
-      className={`curated-shelf-tile curated-shelf-tile--${group.visual_variant || "medium"} curated-shelf-tile--accent-${group.accent || "burgundy"}`}
+      className={`curated-shelf-tile curated-shelf-tile--${variant} curated-shelf-tile--accent-${group.accent || "burgundy"}`}
       style={{ "--shelf-area": group.layout_area || group.id || `shelf-${index}` }}
       data-testid={`curated-shelf-tile-${group.id || index}`}
       data-layout-area={group.layout_area || group.id || `shelf-${index}`}
+      data-shelf-area={group.layout_area || group.id || `shelf-${index}`}
+      data-variant={variant}
       aria-labelledby={headingId}
     >
       <div className="curated-shelf-tile__topline">
@@ -40,12 +46,15 @@ export default function ShelfCollageTile({ group, index = 0 }) {
       <h3 id={headingId}>{group.title}</h3>
       <p className="curated-shelf-tile__description">{group.description}</p>
       {group.editorial_line && <p className="curated-shelf-tile__editorial-line">{group.editorial_line}</p>}
+      <ul className="curated-shelf-tile__themes" aria-label={`${group.title} themes`}>
+        {themeChips.map((theme) => <li key={theme}>{theme}</li>)}
+      </ul>
 
       <div className="curated-shelf-tile__cover-stage">
         <ul className="curated-shelf-tile__covers" aria-label={`${group.title} books`}>
-        {visibleBooks.map((book, bookIndex) => (
+        {books.map((book, bookIndex) => (
           <li
-            className={`curated-shelf-tile__cover-item ${isFeature && bookIndex === 1 ? "curated-shelf-tile__cover-item--dominant" : ""}`}
+            className={`curated-shelf-tile__cover-item ${variant === "shelf-feature" && bookIndex === 1 ? "curated-shelf-tile__cover-item--dominant" : ""}`}
             key={book.slug}
             style={{ "--cover-order": bookIndex }}
           >

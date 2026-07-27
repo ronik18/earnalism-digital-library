@@ -296,11 +296,13 @@ def _build_shelf_collage(
     contracts_by_slug: dict[str, dict[str, Any]],
     config: dict[str, Any],
     approved_audio: list[dict[str, Any]],
+    reserved_visual_slugs: Iterable[str] = (),
 ) -> dict[str, Any]:
     shelf_config = config.get("shelf_collage") if isinstance(config.get("shelf_collage"), dict) else {}
     groups_config = shelf_config.get("groups") if isinstance(shelf_config.get("groups"), list) else []
     groups: list[dict[str, Any]] = []
     used_visual_slugs: set[str] = set()
+    reserved_slugs = {str(slug or "").strip().lower() for slug in reserved_visual_slugs if str(slug or "").strip()}
 
     for raw_group in groups_config:
         if not isinstance(raw_group, dict):
@@ -318,10 +320,20 @@ def _build_shelf_collage(
             and contracts_by_slug[slug].get("cover_valid") is True
         ]
         ranked_candidates = select_curated_books(candidates, len(candidates))
-        unique_candidates = [
-            book for book in ranked_candidates if book["slug"] not in used_visual_slugs
+        limit = max(0, _rank_value(raw_group.get("cover_limit", raw_group.get("limit")), 3))
+        # Reserve hero covers first, then avoid cross-shelf repeats when a real
+        # canonical alternative exists. A repeat is only a last resort.
+        unreserved = [
+            book
+            for book in ranked_candidates
+            if book["slug"] not in used_visual_slugs and book["slug"] not in reserved_slugs
         ]
-        selected = unique_candidates[: max(0, _rank_value(raw_group.get("cover_limit", raw_group.get("limit")), 3))]
+        fallback = [
+            book
+            for book in ranked_candidates
+            if book["slug"] not in used_visual_slugs and book["slug"] in reserved_slugs
+        ]
+        selected = (unreserved + fallback)[:limit]
         used_visual_slugs.update(book["slug"] for book in selected)
         groups.append({
             "id": str(raw_group.get("id") or "").strip(),
@@ -415,7 +427,12 @@ def build_home_curated_payload(
             "english_classics": [_public_book(book) for book in english],
             "approved_audiobooks": [_public_book(book) for book in approved_audio],
         },
-        "shelf_collage": _build_shelf_collage(contracts_by_slug, config, approved_audio),
+        "shelf_collage": _build_shelf_collage(
+            contracts_by_slug,
+            config,
+            approved_audio,
+            reserved_visual_slugs=(book["slug"] for book in featured),
+        ),
         "source": {
             "generated_at": str(config.get("updated_at") or ""),
             "truth_source": "controlled_publications",

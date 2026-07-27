@@ -1,0 +1,313 @@
+{
+  "generatedAt": "2026-07-27T03:53:29.765Z",
+  "metrics": [
+    {
+      "viewport": [
+        1536,
+        864
+      ],
+      "cards": [
+        {
+          "area": "bengali",
+          "cardArea": 306452.25,
+          "cardHeight": 416,
+          "coverArea": 87619.64459228516,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.8759765625,
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "cardArea": 216040.5,
+          "cardHeight": 416,
+          "coverArea": 50210.90594482422,
+          "largestGap": 64.796875,
+          "occupiedRatio": 0.8759765625,
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "cardArea": 144553.75,
+          "cardHeight": 352,
+          "coverArea": 23324.45526123047,
+          "largestGap": 12.796875,
+          "occupiedRatio": 0.8534268465909091,
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "cardArea": 297555.5,
+          "cardHeight": 352,
+          "coverArea": 77455.71862792969,
+          "largestGap": 42.5,
+          "occupiedRatio": 0.8534268465909091,
+          "variant": "shelf-feature"
+        }
+      ]
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "cards": [
+        {
+          "area": "bengali",
+          "cardArea": 306494.5,
+          "cardHeight": 416,
+          "coverArea": 87922.68225097656,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.8775165264423077,
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "cardArea": 216102.25,
+          "cardHeight": 416,
+          "coverArea": 50414.614807128906,
+          "largestGap": 95.125,
+          "occupiedRatio": 0.8775165264423077,
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "cardArea": 144611.5,
+          "cardHeight": 352,
+          "coverArea": 26316.203979492188,
+          "largestGap": 12.796875,
+          "occupiedRatio": 0.8552468039772727,
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "cardArea": 297585.75,
+          "cardHeight": 352,
+          "coverArea": 77766.00457763672,
+          "largestGap": 50.5625,
+          "occupiedRatio": 0.8552468039772727,
+          "variant": "shelf-feature"
+        }
+      ]
+    },
+    {
+      "viewport": [
+        1180,
+        900
+      ],
+      "cards": [
+        {
+          "area": "bengali",
+          "cardArea": 437760,
+          "cardHeight": 384,
+          "coverArea": 115482.17492675781,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.8903401692708334,
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "cardArea": 179285,
+          "cardHeight": 320,
+          "coverArea": 39148.34490966797,
+          "largestGap": 40.015625,
+          "occupiedRatio": 0.868408203125,
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "cardArea": 179285,
+          "cardHeight": 320,
+          "coverArea": 42653.3642578125,
+          "largestGap": 12.796875,
+          "occupiedRatio": 0.868408203125,
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "cardArea": 364800,
+          "cardHeight": 320,
+          "coverArea": 85619.17492675781,
+          "largestGap": 40.015625,
+          "occupiedRatio": 0.868408203125,
+          "variant": "shelf-feature"
+        }
+      ]
+    },
+    {
+      "viewport": [
+        984,
+        1364
+      ],
+      "cards": [
+        {
+          "area": "bengali",
+          "cardArea": 362496,
+          "cardHeight": 384,
+          "coverArea": 97279.98529052734,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.9031575520833334,
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "cardArea": 148442.5,
+          "cardHeight": 320,
+          "coverArea": 33103.46759033203,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.8837890625,
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "cardArea": 148442.5,
+          "cardHeight": 320,
+          "coverArea": 37317.33215332031,
+          "largestGap": 12.796875,
+          "occupiedRatio": 0.8837890625,
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "cardArea": 302080,
+          "cardHeight": 320,
+          "coverArea": 72614.48529052734,
+          "largestGap": 44.9375,
+          "occupiedRatio": 0.8837890625,
+          "variant": "shelf-feature"
+        }
+      ]
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "cards": [
+        {
+          "area": "bengali",
+          "cardArea": 259072,
+          "cardHeight": 352,
+          "coverArea": 69313.33471679688,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.8943536931818182,
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "cardArea": 109440,
+          "cardHeight": 304,
+          "coverArea": 23488.827697753906,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.8822985197368421,
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "cardArea": 109440,
+          "cardHeight": 304,
+          "coverArea": 16557.070678710938,
+          "largestGap": 12.796875,
+          "occupiedRatio": 0.877672697368421,
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "cardArea": 223744,
+          "cardHeight": 304,
+          "coverArea": 54218.834716796875,
+          "largestGap": 28.9375,
+          "occupiedRatio": 0.877672697368421,
+          "variant": "shelf-feature"
+        }
+      ]
+    },
+    {
+      "viewport": [
+        430,
+        932
+      ],
+      "cards": [
+        {
+          "area": "bengali",
+          "cardArea": 162240.96875,
+          "cardHeight": 407.640625,
+          "coverArea": 43561.78125,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.9165932001993177,
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "cardArea": 137499.671875,
+          "cardHeight": 345.4765625,
+          "coverArea": 32536.279907226562,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.9015852196920016,
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "cardArea": 171771.203125,
+          "cardHeight": 431.5859375,
+          "coverArea": 47206,
+          "largestGap": 12.796875,
+          "occupiedRatio": 0.9212207881541553,
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "cardArea": 180424.59375,
+          "cardHeight": 453.328125,
+          "coverArea": 50689.03125,
+          "largestGap": 98.3984375,
+          "occupiedRatio": 0.9249991383173061,
+          "variant": "shelf-feature"
+        }
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "cards": [
+        {
+          "area": "bengali",
+          "cardArea": 150505.4375,
+          "cardHeight": 420.40625,
+          "coverArea": 40548.02233886719,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.9191258455363116,
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "cardArea": 121275.296875,
+          "cardHeight": 338.7578125,
+          "coverArea": 28063.25537109375,
+          "largestGap": 10.3984375,
+          "occupiedRatio": 0.8996333110398745,
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "cardArea": 152102.453125,
+          "cardHeight": 424.8671875,
+          "coverArea": 42086,
+          "largestGap": 12.796875,
+          "occupiedRatio": 0.9199749921850578,
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "cardArea": 158784.1875,
+          "cardHeight": 443.53125,
+          "coverArea": 43759.14538574219,
+          "largestGap": 98.3984375,
+          "occupiedRatio": 0.9233424927781301,
+          "variant": "shelf-feature"
+        }
+      ]
+    }
+  ]
+}

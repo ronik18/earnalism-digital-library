@@ -1,0 +1,58 @@
+{
+  "schema_version": "home_shelf_v3_current_density_metrics_v1",
+  "measurement_method": "origin/main source inspection plus local production-build browser geometry",
+  "before": {
+    "grid_columns": 12,
+    "grid_rows": [336, 336],
+    "grid_gap_px": 25.6,
+    "bengali_span": "two full rows",
+    "supporting_card_anatomy": "shared tall anatomy regardless of valid cover count",
+    "valid_cover_counts_by_shelf": {
+      "bengali-life-and-legacy": 3,
+      "gothic-and-the-uncanny": 1,
+      "love-society-and-human-nature": 1,
+      "adventure-nature-and-wonder": 3,
+      "short-masterpieces": 0
+    },
+    "primary_causes": [
+      "fixed 21rem rows created unused internal space for one-cover shelves",
+      "Bengali used the full two-row stage instead of a bounded landscape feature",
+      "cover count did not select a compact card variant",
+      "Short Masterpieces had no cover-audit-valid candidate",
+      "hero visual reservation was not part of the shelf allocator"
+    ]
+  },
+  "after": {
+    "desktop_grid": {
+      "columns": 12,
+      "areas": [
+        "bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic",
+        "love love love love adventure adventure adventure adventure adventure adventure adventure adventure"
+      ],
+      "row_heights_px": [416, 352],
+      "paired_row_bottom_alignment_error_px": 0
+    },
+    "tablet_grid": {
+      "columns": 2,
+      "areas": [
+        "bengali bengali",
+        "gothic love",
+        "adventure adventure"
+      ],
+      "paired_row_bottom_alignment_error_px": 0
+    },
+    "browser_viewports": [
+      {"width": 1536, "height": 864, "overflow": false},
+      {"width": 1440, "height": 900, "overflow": false},
+      {"width": 1180, "height": 900, "overflow": false},
+      {"width": 984, "height": 1364, "overflow": false},
+      {"width": 768, "height": 1024, "overflow": false},
+      {"width": 430, "height": 932, "overflow": false},
+      {"width": 390, "height": 844, "overflow": false}
+    ],
+    "largest_measured_gap_px": 98.4,
+    "largest_measured_gap_scope": "mobile Adventure feature",
+    "short_masterpieces_rendered": false,
+    "selected_listening_cards_rendered": 0
+  }
+}

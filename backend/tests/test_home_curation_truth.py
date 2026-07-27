@@ -3,6 +3,7 @@ from pathlib import Path
 
 from backend import catalog_truth, home_curation
 from backend.home_curation import (
+    _build_shelf_collage,
     build_home_curated_payload,
     home_curation_evidence,
     is_safe_cover_url,
@@ -177,6 +178,40 @@ def test_pinned_rank_precedes_privacy_safe_popularity_fallback():
         "popular",
     ]
 
+
+def test_shelf_allocator_reserves_hero_cover_before_cross_shelf_fallback():
+    def book(slug, rank):
+        return {
+            "slug": slug,
+            "title": slug,
+            "author": "Author",
+            "reader_enabled": True,
+            "front_cover_url": f"https://cdn.example.com/{slug}.png",
+            "cover_valid": True,
+            "is_placeholder": False,
+            "is_typographic_only": False,
+            "canonical_cover_match": True,
+            "shelf_rank": rank,
+        }
+
+    result = _build_shelf_collage(
+        {slug: book(slug, rank) for rank, slug in enumerate(("hero-cover", "alternate-cover"), start=1)},
+        {
+            "shelf_collage": {
+                "groups": [{
+                    "id": "test-shelf",
+                    "title": "Test shelf",
+                    "slugs": ["hero-cover", "alternate-cover"],
+                    "cover_limit": 1,
+                    "layout_area": "test",
+                }],
+            },
+        },
+        [],
+        reserved_visual_slugs=("hero-cover",),
+    )
+
+    assert [book["slug"] for book in result["groups"][0]["books"]] == ["alternate-cover"]
 
 def test_admin_curation_cannot_enable_audio(tmp_path):
     config = json.loads((ROOT / "backend/data/home_hero_curation.json").read_text(encoding="utf-8"))

@@ -1,0 +1,488 @@
+{
+  "generatedAt": "2026-07-27T03:50:09.807Z",
+  "metrics": [
+    {
+      "areas": "\"bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic\" \"love love love love adventure adventure adventure adventure adventure adventure adventure adventure\"",
+      "body": {
+        "height": 3706,
+        "width": 1536
+      },
+      "cards": [
+        {
+          "area": "bengali",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 1640.6640625,
+            "height": 416,
+            "width": 736.6640625,
+            "x": 128,
+            "y": 1224.6640625
+          },
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "coverCount": 1,
+          "rect": {
+            "bottom": 1640.6640625,
+            "height": 416,
+            "width": 519.328125,
+            "x": 888.6640625,
+            "y": 1224.6640625
+          },
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "coverCount": 2,
+          "rect": {
+            "bottom": 2016.6640625,
+            "height": 352,
+            "width": 410.6640625,
+            "x": 128,
+            "y": 1664.6640625
+          },
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 2016.6640625,
+            "height": 352,
+            "width": 845.328125,
+            "x": 562.6640625,
+            "y": 1664.6640625
+          },
+          "variant": "shelf-feature"
+        }
+      ],
+      "overflow": false,
+      "rowAlignment": [
+        0,
+        0
+      ],
+      "selectedListeningCount": 0,
+      "shortPresent": false,
+      "viewport": {
+        "height": 864,
+        "width": 1536
+      }
+    },
+    {
+      "areas": "\"bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic\" \"love love love love adventure adventure adventure adventure adventure adventure adventure adventure\"",
+      "body": {
+        "height": 3646,
+        "width": 1440
+      },
+      "cards": [
+        {
+          "area": "bengali",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 1583.890625,
+            "height": 416,
+            "width": 736.765625,
+            "x": 80,
+            "y": 1167.890625
+          },
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "coverCount": 1,
+          "rect": {
+            "bottom": 1583.890625,
+            "height": 416,
+            "width": 519.4765625,
+            "x": 840.5234375,
+            "y": 1167.890625
+          },
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "coverCount": 2,
+          "rect": {
+            "bottom": 1959.6484375,
+            "height": 352,
+            "width": 410.828125,
+            "x": 80,
+            "y": 1607.6484375
+          },
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 1959.6484375,
+            "height": 352,
+            "width": 845.4140625,
+            "x": 514.5859375,
+            "y": 1607.6484375
+          },
+          "variant": "shelf-feature"
+        }
+      ],
+      "overflow": false,
+      "rowAlignment": [
+        0,
+        0
+      ],
+      "selectedListeningCount": 0,
+      "shortPresent": false,
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "areas": "\"bengali bengali\" \"gothic love\" \"adventure adventure\"",
+      "body": {
+        "height": 3957,
+        "width": 1180
+      },
+      "cards": [
+        {
+          "area": "bengali",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 1365.78125,
+            "height": 384,
+            "width": 1140,
+            "x": 20,
+            "y": 981.78125
+          },
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "coverCount": 1,
+          "rect": {
+            "bottom": 1705.25,
+            "height": 320,
+            "width": 560.265625,
+            "x": 20,
+            "y": 1385.25
+          },
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "coverCount": 2,
+          "rect": {
+            "bottom": 1705.25,
+            "height": 320,
+            "width": 560.265625,
+            "x": 599.734375,
+            "y": 1385.25
+          },
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 2044.71875,
+            "height": 320,
+            "width": 1140,
+            "x": 20,
+            "y": 1724.71875
+          },
+          "variant": "shelf-feature"
+        }
+      ],
+      "overflow": false,
+      "rowAlignment": [
+        0,
+        0,
+        0
+      ],
+      "selectedListeningCount": 0,
+      "shortPresent": false,
+      "viewport": {
+        "height": 900,
+        "width": 1180
+      }
+    },
+    {
+      "areas": "\"bengali bengali\" \"gothic love\" \"adventure adventure\"",
+      "body": {
+        "height": 4680,
+        "width": 984
+      },
+      "cards": [
+        {
+          "area": "bengali",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 1935.8125,
+            "height": 384,
+            "width": 944,
+            "x": 20,
+            "y": 1551.8125
+          },
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "coverCount": 1,
+          "rect": {
+            "bottom": 2272.046875,
+            "height": 320,
+            "width": 463.8828125,
+            "x": 20,
+            "y": 1952.046875
+          },
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "coverCount": 2,
+          "rect": {
+            "bottom": 2272.046875,
+            "height": 320,
+            "width": 463.8828125,
+            "x": 500.1171875,
+            "y": 1952.046875
+          },
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 2608.28125,
+            "height": 320,
+            "width": 944,
+            "x": 20,
+            "y": 2288.28125
+          },
+          "variant": "shelf-feature"
+        }
+      ],
+      "overflow": false,
+      "rowAlignment": [
+        0,
+        0,
+        0
+      ],
+      "selectedListeningCount": 0,
+      "shortPresent": false,
+      "viewport": {
+        "height": 1364,
+        "width": 984
+      }
+    },
+    {
+      "areas": "\"bengali bengali\" \"gothic love\" \"adventure adventure\"",
+      "body": {
+        "height": 4622,
+        "width": 768
+      },
+      "cards": [
+        {
+          "area": "bengali",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 1923.5078125,
+            "height": 352,
+            "width": 736,
+            "x": 16,
+            "y": 1571.5078125
+          },
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "coverCount": 1,
+          "rect": {
+            "bottom": 2243.5078125,
+            "height": 304,
+            "width": 360,
+            "x": 16,
+            "y": 1939.5078125
+          },
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "coverCount": 2,
+          "rect": {
+            "bottom": 2243.5078125,
+            "height": 304,
+            "width": 360,
+            "x": 392,
+            "y": 1939.5078125
+          },
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 2563.5078125,
+            "height": 304,
+            "width": 736,
+            "x": 16,
+            "y": 2259.5078125
+          },
+          "variant": "shelf-feature"
+        }
+      ],
+      "overflow": false,
+      "rowAlignment": [
+        0,
+        0,
+        0
+      ],
+      "selectedListeningCount": 0,
+      "shortPresent": false,
+      "viewport": {
+        "height": 1024,
+        "width": 768
+      }
+    },
+    {
+      "areas": "\"bengali\" \"gothic\" \"love\" \"adventure\"",
+      "body": {
+        "height": 6283,
+        "width": 430
+      },
+      "cards": [
+        {
+          "area": "bengali",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 2261.5859375,
+            "height": 407.640625,
+            "width": 398,
+            "x": 16,
+            "y": 1853.9453125
+          },
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "coverCount": 1,
+          "rect": {
+            "bottom": 2621.4609375,
+            "height": 345.4765625,
+            "width": 398,
+            "x": 16,
+            "y": 2275.984375
+          },
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "coverCount": 2,
+          "rect": {
+            "bottom": 3067.4453125,
+            "height": 431.5859375,
+            "width": 398,
+            "x": 16,
+            "y": 2635.859375
+          },
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 3535.171875,
+            "height": 453.328125,
+            "width": 398,
+            "x": 16,
+            "y": 3081.84375
+          },
+          "variant": "shelf-feature"
+        }
+      ],
+      "overflow": false,
+      "rowAlignment": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "selectedListeningCount": 0,
+      "shortPresent": false,
+      "viewport": {
+        "height": 932,
+        "width": 430
+      }
+    },
+    {
+      "areas": "\"bengali\" \"gothic\" \"love\" \"adventure\"",
+      "body": {
+        "height": 6411,
+        "width": 390
+      },
+      "cards": [
+        {
+          "area": "bengali",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 2296.3203125,
+            "height": 420.40625,
+            "width": 358,
+            "x": 16,
+            "y": 1875.9140625
+          },
+          "variant": "shelf-feature"
+        },
+        {
+          "area": "gothic",
+          "coverCount": 1,
+          "rect": {
+            "bottom": 2649.4765625,
+            "height": 338.7578125,
+            "width": 358,
+            "x": 16,
+            "y": 2310.71875
+          },
+          "variant": "spotlight"
+        },
+        {
+          "area": "love",
+          "coverCount": 2,
+          "rect": {
+            "bottom": 3088.7421875,
+            "height": 424.8671875,
+            "width": 358,
+            "x": 16,
+            "y": 2663.875
+          },
+          "variant": "duo-shelf"
+        },
+        {
+          "area": "adventure",
+          "coverCount": 3,
+          "rect": {
+            "bottom": 3546.671875,
+            "height": 443.53125,
+            "width": 358,
+            "x": 16,
+            "y": 3103.140625
+          },
+          "variant": "shelf-feature"
+        }
+      ],
+      "overflow": false,
+      "rowAlignment": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "selectedListeningCount": 0,
+      "shortPresent": false,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    }
+  ]
+}
