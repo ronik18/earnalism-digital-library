@@ -60,12 +60,12 @@ export default function BookCoverImage({
       : bookCoverImageSources(candidateBook, { width, widths, quality, kind });
   const showImage = Boolean(sources.hasCover && (allowGraphicalFallback || !sources.isFallback));
   useEffect(() => {
-    if (!allowGraphicalFallback && !failed && !sources.hasCover) {
+    if (!allowGraphicalFallback && !failed && (!sources.hasCover || sources.isFallback)) {
       setFailed(true);
       onImageError?.(book);
       onPermanentFailure?.(book);
     }
-  }, [allowGraphicalFallback, book, failed, onImageError, onPermanentFailure, sources.hasCover]);
+  }, [allowGraphicalFallback, book, failed, onImageError, onPermanentFailure, sources.hasCover, sources.isFallback]);
   const coverAlt = typeof alt === "string" ? alt : (book?.title || "Book cover");
   const style = sources.backgroundColor ? { backgroundColor: sources.backgroundColor } : undefined;
   const wrapperClass = [
@@ -74,6 +74,8 @@ export default function BookCoverImage({
     showImage ? "" : "book-cover-image--fallback",
     className,
   ].filter(Boolean).join(" ");
+
+  if (!allowGraphicalFallback && !showImage) return null;
 
   return (
     <span className={wrapperClass} style={style}>
