@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "status": "VISUAL_TRUTH_SAFE_WITH_CATALOG_ART_BACKLOG",
+  "source": "backend/home_curation.py",
+  "cover_audit_source": "graphical_cover_generation_report.json",
+  "active_reader_count": 32,
+  "reader_route_mutation": false,
+  "audio_release_gate_mutation": false,
+  "selected_shelves": {
+    "bengali-life-and-legacy": ["radharani", "nishkriti", "book-edfcf810c5"],
+    "gothic-and-the-uncanny": ["dracula"],
+    "love-society-and-human-nature": ["pride-and-prejudice"],
+    "adventure-nature-and-wonder": ["the-time-machine", "the-call-of-the-wild", "the-secret-garden"],
+    "short-masterpieces": []
+  },
+  "approved_audio_records": ["book-2b9853ec52", "a-ghost-story", "sredni-vashtar", "the-open-window"],
+  "selected_listening": [],
+  "omitted_visual_candidates": [
+    {
+      "slug": "book-2b9853ec52",
+      "reason": "Existing cover-generation evidence records a runtime graphical fallback."
+    },
+    {
+      "slug": "a-ghost-story",
+      "reason": "Current canonical image is titled Bharat at the Crossroads and is not title-bound."
+    },
+    {
+      "slug": "sredni-vashtar",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "dsires-baby",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "the-open-window",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "short-masterpieces",
+      "reason": "All configured short-masterpiece candidates are missing, runtime-fallback, or visually placeholder-like; shelf omitted rather than fabricated."
+    }
+  ],
+  "hard_checks": {
+    "broken_cover_count": 0,
+    "placeholder_cover_count": 0,
+    "canonical_mismatch_count": 0,
+    "repeated_cover_within_visible_shelf_count": 0,
+    "hidden_listen_exposure_count": 0,
+    "horizontal_overflow_viewports": 0,
+    "unsupported_empty_grid_area_count": 0,
+    "orphaned_card_count": 0,
+    "missing_shelf_count": 1,
+    "approved_audiobook_cards_with_valid_covers": 0
+  },
+  "screenshots": [
+    "HOME_collage_v2_1440x900.png",
+    "HOME_collage_v2_1536x864.png",
+    "HOME_collage_v2_1180x900.png",
+    "HOME_collage_v2_984x1364.png",
+    "HOME_collage_v2_768x1024.png",
+    "HOME_collage_v2_430x932.png",
+    "HOME_collage_v2_390x844.png"
+  ]
+}

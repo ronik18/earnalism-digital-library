@@ -54,13 +54,20 @@
         "cta_label": "Explore Bengali classics",
         "cta_url": "/library?shelf=bengali-life-and-legacy",
         "visual_variant": "feature",
+        "accent": "bengali",
+        "layout_area": "bengali",
+        "editorial_line": "Begin with stories rooted in land, longing, dignity, and change.",
         "icon": "book-open",
-        "limit": 3,
+        "cover_limit": 3,
         "slugs": [
           "book-2b9853ec52",
+          "bn-066",
           "pather-panchali",
           "radharani",
           "nishkriti",
+          "muchiram-gurer-jibanchorit",
+          "book-d19e96859f",
+          "book-f5d593e1f4",
           "devdas",
           "book-edfcf810c5"
         ]
@@ -72,8 +79,10 @@
         "cta_label": "Enter the uncanny",
         "cta_url": "/library?shelf=gothic-and-the-uncanny",
         "visual_variant": "wide",
+        "accent": "gothic",
+        "layout_area": "gothic",
         "icon": "moon-star",
-        "limit": 3,
+        "cover_limit": 2,
         "slugs": [
           "a-ghost-story",
           "dracula",
@@ -83,7 +92,8 @@
           "the-masque-of-the-red-death",
           "the-yellow-wallpaper",
           "the-monkeys-paw",
-          "sredni-vashtar"
+          "sredni-vashtar",
+          "book-edfcf810c5"
         ]
       },
       {
@@ -93,8 +103,10 @@
         "cta_label": "Follow the human story",
         "cta_url": "/library?shelf=love-society-and-human-nature",
         "visual_variant": "compact",
+        "accent": "love",
+        "layout_area": "love",
         "icon": "heart",
-        "limit": 3,
+        "cover_limit": 2,
         "slugs": [
           "devdas",
           "pride-and-prejudice",
@@ -102,7 +114,8 @@
           "dsires-baby",
           "the-last-leaf",
           "radharani",
-          "nishkriti"
+          "nishkriti",
+          "dsires-baby"
         ]
       },
       {
@@ -112,8 +125,10 @@
         "cta_label": "Set out from here",
         "cta_url": "/library?shelf=adventure-nature-and-wonder",
         "visual_variant": "medium",
+        "accent": "adventure",
+        "layout_area": "adventure",
         "icon": "compass",
-        "limit": 3,
+        "cover_limit": 3,
         "slugs": [
           "the-time-machine",
           "the-call-of-the-wild",
@@ -129,8 +144,10 @@
         "cta_label": "Choose a short read",
         "cta_url": "/library?shelf=short-masterpieces",
         "visual_variant": "medium",
+        "accent": "short",
+        "layout_area": "short",
         "icon": "sparkles",
-        "limit": 3,
+        "cover_limit": 3,
         "slugs": [
           "the-gift-of-the-magi",
           "the-open-window",

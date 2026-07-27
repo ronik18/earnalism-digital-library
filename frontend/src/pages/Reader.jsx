@@ -16,6 +16,7 @@ import useSEO from '../hooks/useSEO';
 import { audiobookNarrationDisclosure, audiobookReleaseState, canExposeAudiobookControls, readerManifestPath } from '../lib/audioReleaseSafety';
 import { audioTimestampStartMs, normalizeAudioTimestamp } from '../lib/audioTimestampSchema';
 import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from '../lib/readerSettings';
+import { normalizeReaderContentHtml } from '../lib/readerContent';
 
 const THEMES = {
   beige: { canvas: '#F7F0E3', surface: '#FBF6EC', text: '#241713', accent: '#5A1F2B', border: '#D8C2A0', label: 'Light' },
@@ -280,7 +281,7 @@ function extractReaderFrontMatter(html = '', book = {}, chapter = {}) {
 function sanitizeReaderHtml(html) {
   if (typeof document === 'undefined') return html || '';
   const template = document.createElement('template');
-  template.innerHTML = html || '';
+  template.innerHTML = normalizeReaderContentHtml(html);
   template.content.querySelectorAll('script,style,iframe,object,embed,form,input,button,meta,link').forEach((node) => node.remove());
   template.content.querySelectorAll('*').forEach((node) => {
     Array.from(node.attributes).forEach((attr) => {
@@ -290,8 +291,7 @@ function sanitizeReaderHtml(html) {
       if ((name === 'href' || name === 'src') && /^\s*javascript:/i.test(value)) node.removeAttribute(attr.name);
     });
     if (node.tagName?.toLowerCase() === 'img' && !node.getAttribute('src')) {
-      node.setAttribute('alt', node.getAttribute('alt') || 'Image unavailable');
-      node.classList.add('reader-img--error');
+      node.remove();
     }
   });
   return template.innerHTML;
@@ -727,6 +727,14 @@ function splitParagraphNode(node) {
   });
 }
 
+function splitTextNode(node) {
+  const text = (node.textContent || '').trim();
+  if (!text) return [];
+  const wrapper = document.createElement('p');
+  wrapper.textContent = text;
+  return splitParagraphNode(wrapper);
+}
+
 function measurePageHeight() {
   if (typeof window === 'undefined') return 760;
   return Math.max(440, Math.min(780, window.innerHeight - 245));
@@ -744,7 +752,7 @@ function paginateReaderHtml(html, { isBengali = false, fontSize = '17px' } = {})
     'left:-10000px',
     'top:0',
     'visibility:hidden',
-    `width:${Math.max(300, Math.min(window.innerWidth - 72, 680))}px`,
+    `width:${Math.max(280, Math.min(document.querySelector('.reader-page-shell .reader-content')?.getBoundingClientRect().width || (window.innerWidth - 72), 680))}px`,
     `font-size:${fontSize}`,
     `font-family:${isBengali ? BENGALI_SERIF : READER_SERIF}`,
     `line-height:${isBengali ? 1.9 : 1.75}`,
@@ -765,7 +773,11 @@ function paginateReaderHtml(html, { isBengali = false, fontSize = '17px' } = {})
   };
 
   const sourceNodes = Array.from(template.content.childNodes)
-    .flatMap((node) => (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P' ? splitParagraphNode(node) : [node]))
+    .flatMap((node) => {
+      if (node.nodeType === Node.TEXT_NODE) return splitTextNode(node);
+      if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P') return splitParagraphNode(node);
+      return [node];
+    })
     .filter((node) => (node.textContent || '').trim() || node.nodeType === Node.ELEMENT_NODE);
 
   sourceNodes.forEach((node) => {

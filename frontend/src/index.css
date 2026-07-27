@@ -3293,6 +3293,159 @@ textarea.input-elegant {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45) inset;
 }
 
+/* ----------- Landing/header rhythm ----------- */
+.site-header__inner {
+  min-height: 4.5rem;
+}
+.site-header__nav {
+  gap: clamp(1rem, 1.7vw, 1.7rem);
+}
+.site-header__nav-link {
+  font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.site-header__cta .btn-secondary {
+  min-height: 2.7rem;
+  padding-inline: 1.15rem;
+  font-size: 0.67rem;
+  letter-spacing: 0.16em;
+}
+.site-header__menu-button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: 1px solid rgba(107, 16, 32, 0.16);
+  border-radius: 999px;
+  background: rgba(253, 252, 248, 0.48);
+}
+.site-mobile-menu {
+  position: relative;
+  z-index: 2;
+  max-height: calc(100svh - 4.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: 0 24px 36px -30px rgba(74, 28, 39, 0.48);
+}
+.site-mobile-menu__inner {
+  gap: 0;
+}
+.site-mobile-menu__link {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+  padding-block: 0.78rem;
+  font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.home-hero-title {
+  max-width: min(100%, 22rem);
+  font-size: clamp(2.55rem, 3.55vw, 3.85rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.home-hero-title__accent {
+  display: block;
+  color: var(--brand-gold-soft);
+}
+.home-hero-deck {
+  max-width: 31rem;
+  font-size: clamp(1.02rem, 1.2vw, 1.24rem);
+  line-height: 1.35;
+}
+.home-hero-description {
+  max-width: 36rem;
+  font-size: 0.91rem;
+  line-height: 1.7;
+}
+.reference-library-hero,
+.reference-hero-grid {
+  min-height: min(620px, calc(100svh - 4.5rem));
+}
+.reference-library-hero {
+  isolation: isolate;
+}
+.reference-editorial-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 32px 68px -46px rgba(0, 0, 0, 0.88);
+}
+.reference-pipeline-shelf,
+.reference-reading-path,
+#reading-circle {
+  content-visibility: auto;
+  contain-intrinsic-size: 720px;
+}
+
+@media (max-width: 1199px) {
+  .site-header__inner {
+    min-height: 4rem;
+  }
+  .site-mobile-menu {
+    max-height: calc(100svh - 4rem);
+  }
+}
+
+@media (max-width: 639px) {
+  .site-header__inner {
+    min-height: 3.75rem;
+    padding-block: 0.35rem;
+  }
+  .header-brand-cluster {
+    gap: 0.45rem;
+  }
+  .home-hero-title {
+    max-width: 10.2ch;
+    font-size: clamp(2.35rem, 10vw, 3.05rem);
+    line-height: 0.98;
+  }
+  .home-hero-deck {
+    max-width: 22rem;
+    font-size: 1rem;
+    line-height: 1.32;
+  }
+  .home-hero-description {
+    max-width: 25rem;
+    font-size: 0.86rem;
+    line-height: 1.62;
+  }
+  .reference-library-hero,
+  .reference-hero-grid {
+    min-height: auto;
+  }
+  .reference-hero-grid {
+    gap: 1.7rem;
+    padding-block: 3.15rem 3.8rem;
+  }
+  .reference-hero-trust span {
+    min-height: 2.15rem;
+  }
+  .reference-editorial-stage {
+    width: 100%;
+  }
+  .reference-editorial-card {
+    width: min(100%, 21rem);
+    padding: 1.15rem;
+    border-radius: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .india-origin-badge,
+  .site-header__menu-button,
+  .reference-editorial-card {
+    transition: none;
+  }
+}
+
 @media (max-width: 1279px) {
   .india-origin-badge {
     width: 3.12rem;
@@ -5849,3 +6002,35 @@ textarea.input-elegant {
     animation: none;
   }
 }
+/* Home shelf architecture v4: explicit card zones, no cover overlays. */
+.home-shelf-architecture { background: var(--paper, #f5f0e7); color: var(--ink, #2d2522); }
+.home-shelf-architecture__inner { max-width: 88rem; margin: 0 auto; padding: clamp(2.5rem, 6vw, 5.5rem) clamp(1.25rem, 4vw, 4rem); }
+.home-shelf-architecture__intro { max-width: 42rem; margin-bottom: 2.75rem; }
+.home-shelf-architecture__intro h2 { margin: .45rem 0; font: 300 clamp(2rem, 4vw, 3.3rem)/1.05 var(--font-serif, Georgia, serif); color: var(--burgundy, #6d1d32); }
+.home-shelf-architecture__intro p, .home-shelf__header p { color: #685d56; line-height: 1.65; }
+.home-shelf { margin-top: clamp(2.5rem, 5vw, 4.5rem); }
+.home-shelf__header { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; margin-bottom: 1.25rem; }
+.home-shelf__header h2 { margin: .35rem 0 .4rem; font: 400 clamp(1.5rem, 2.8vw, 2.25rem)/1.1 var(--font-serif, Georgia, serif); color: var(--burgundy, #6d1d32); }
+.home-shelf__header p { margin: 0; max-width: 42rem; font-size: .9rem; }
+.home-shelf__cta, .home-shelf-card__link { display: inline-flex; align-items: center; gap: .4rem; color: var(--burgundy, #6d1d32); font-size: .72rem; letter-spacing: .11em; text-transform: uppercase; white-space: nowrap; }
+.home-shelf__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; }
+.home-shelf-card { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(7rem, 35%); gap: 1rem; padding: 1.1rem; background: rgba(255,255,255,.54); border: 1px solid rgba(99,70,53,.16); box-shadow: 0 10px 28px rgba(66,42,29,.06); }
+.home-shelf-card__copy { min-width: 0; display: grid; align-content: center; gap: .42rem; }
+.home-shelf-card h3 { margin: 0; font: 500 clamp(1.05rem, 1.7vw, 1.35rem)/1.12 var(--font-serif, Georgia, serif); overflow-wrap: anywhere; }
+.home-shelf-card__author { margin: 0; color: #796b62; font-size: .78rem; }
+.home-shelf-card__description { margin: .15rem 0 .35rem; color: #685d56; font-size: .82rem; line-height: 1.5; }
+.home-shelf-card__cover { min-width: 0; display: grid; align-items: center; }
+.home-shelf-cover { display: block; aspect-ratio: 2 / 3; overflow: hidden; background: #ded2c0; }
+.home-shelf-cover img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.home-shelf-card__badge { display: inline-flex; align-items: center; gap: .35rem; color: var(--brand-gold-deep, #936d2d); font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; }
+.home-shelf--listening { padding: clamp(1.4rem, 3vw, 2.5rem); background: #30231f; color: #f7f0e7; }
+.home-shelf--listening .home-shelf__header h2, .home-shelf--listening .home-shelf__header p, .home-shelf--listening .home-shelf__cta, .home-shelf--listening .home-shelf-card__link { color: #f7f0e7; }
+.home-shelf--listening .home-shelf-card { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+.home-shelf--listening .home-shelf-card__author, .home-shelf--listening .home-shelf-card__description { color: #d8c9bb; }
+.home-shelf--bengali-classics .home-shelf-card:nth-child(1), .home-shelf--gothic-classics .home-shelf-card:nth-child(2) { grid-column: span 7; }
+.home-shelf--bengali-classics .home-shelf-card:nth-child(n+2), .home-shelf--gothic-classics .home-shelf-card:nth-child(1) { grid-column: span 5; }
+.home-shelf--love-society-human-nature .home-shelf-card { grid-column: span 5; }
+.home-shelf--adventure-journeys .home-shelf-card { grid-column: span 7; }
+.home-shelf--short-masterpieces .home-shelf-card, .home-shelf--listening .home-shelf-card { grid-column: span 4; }
+@media (max-width: 800px) { .home-shelf__grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .home-shelf-card, .home-shelf--bengali-classics .home-shelf-card, .home-shelf--gothic-classics .home-shelf-card, .home-shelf--love-society-human-nature .home-shelf-card, .home-shelf--adventure-journeys .home-shelf-card, .home-shelf--short-masterpieces .home-shelf-card, .home-shelf--listening .home-shelf-card { grid-column: span 1; } }
+@media (max-width: 520px) { .home-shelf__header { display: block; } .home-shelf__cta { margin-top: .9rem; } .home-shelf__grid { grid-template-columns: 1fr; } .home-shelf-card, .home-shelf--bengali-classics .home-shelf-card, .home-shelf--gothic-classics .home-shelf-card, .home-shelf--love-society-human-nature .home-shelf-card, .home-shelf--adventure-journeys .home-shelf-card, .home-shelf--short-masterpieces .home-shelf-card, .home-shelf--listening .home-shelf-card { grid-column: span 1; } }

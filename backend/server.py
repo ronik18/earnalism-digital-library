@@ -79,9 +79,14 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     )
 
 try:
-    from home_curation import build_home_curated_payload
+    from home_curation import build_home_curated_payload, _read_config as home_curation_config
 except ImportError:  # pragma: no cover - supports package-style test imports
-    from backend.home_curation import build_home_curated_payload
+    from backend.home_curation import build_home_curated_payload, _read_config as home_curation_config
+
+try:
+    from home_curation_v4 import build_home_curated_payload_v4
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.home_curation_v4 import build_home_curated_payload_v4
 
 try:
     from config.brand_logo import validate_brand_logo
@@ -434,6 +439,7 @@ async def _expensive_job_slot(job_type: str):
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v12"
+READER_CONTENT_RENDER_VERSION = "semantic-html-v1"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -970,6 +976,13 @@ BOOK_SUMMARY_PROJECTION = {
     "short_description": 1,
     "cover_url": 1,
     "cover_image_url": 1,
+    "front_cover_url": 1,
+    "cover_candidates": 1,
+    "cover_valid": 1,
+    "cover_audit_status": 1,
+    "canonical_cover_match": 1,
+    "is_placeholder": 1,
+    "is_typographic_only": 1,
     "thumbnail_url": 1,
     "blur_placeholder": 1,
     "dominant_color": 1,
@@ -989,10 +1002,23 @@ BOOK_SUMMARY_PROJECTION = {
     "qa_status": 1,
     "chapters.id": 1,
     "chapters.is_preview": 1,
+    "language": 1,
+    "language_code": 1,
+    "editorial_shelf_ids": 1,
+    "home_shelf_ids": 1,
+    "home_feature_eligible": 1,
+    "home_shelf_rank": 1,
+    "admin_pinned": 1,
+    "do_not_feature": 1,
+    "popularity_score": 1,
+    "sprint_id": 1,
+    "release_cycle": 1,
+    "published_at": 1,
 }
 PUBLIC_CACHE_PATHS = {
     "/api/home",
     "/api/home/books",
+    "/api/home/curated",
     "/api/categories",
     "/api/books",
     "/api/blog",
@@ -1637,7 +1663,7 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
     if not admin_preview and not _is_controlled_public_slug(slug):
         return ""
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
+    cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{READER_CONTENT_RENDER_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
     cached = await _redis_cache_get("reader-content", cache_key)
     if cached is not None:
         return str(cached or "")
@@ -1663,8 +1689,9 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
             )
             target = ((content_doc or {}).get("chapters") or [{}])[0]
             content = target.get("content", "")
-    await _redis_cache_set("reader-content", cache_key, content, READER_CHAPTER_CACHE_TTL_SECONDS)
-    return content
+    rendered_content, _ = _manual_content_to_render_html(content)
+    await _redis_cache_set("reader-content", cache_key, rendered_content, READER_CHAPTER_CACHE_TTL_SECONDS)
+    return rendered_content
 
 
 def _stable_digest(value: Any, length: int = 16) -> str:
@@ -2614,6 +2641,16 @@ class Book(BaseModel):
     audio_asset_slug: str = ""
     audiobook_assets: Dict[str, str] = Field(default_factory=dict)
     audiobook: Dict[str, Any] = Field(default_factory=dict)
+    language: str = ""
+    language_code: str = ""
+    editorial_shelf_ids: List[str] = Field(default_factory=list)
+    home_shelf_ids: List[str] = Field(default_factory=list)
+    home_feature_eligible: bool = True
+    home_shelf_rank: Optional[int] = None
+    admin_pinned: bool = False
+    do_not_feature: bool = False
+    popularity_score: Optional[float] = None
+    sprint_id: str = ""
     rights_metadata: Dict[str, Any] = Field(default_factory=dict)
     readerStatus: str = "ready_for_editorial_review"
     publicationStatus: str = "draft"
@@ -2744,6 +2781,16 @@ class BookIn(BaseModel):
     allowPayment: bool = False
     is_published: bool = False
     slug: Optional[str] = None
+
+
+class HomeCurationIn(BaseModel):
+    editorial_shelf_ids: Optional[List[str]] = None
+    home_shelf_ids: Optional[List[str]] = None
+    home_feature_eligible: Optional[bool] = None
+    home_shelf_rank: Optional[int] = None
+    admin_pinned: Optional[bool] = None
+    do_not_feature: Optional[bool] = None
+    popularity_score: Optional[float] = None
 
 
 class BookAudiobookIn(BaseModel):
@@ -4637,8 +4684,48 @@ async def list_categories():
 
 @api.get("/home/curated")
 async def get_home_curated():
-    """Return the deterministic, file-backed Sprint 1 homepage projection."""
-    return build_home_curated_payload()
+    """Return one canonical, release-safe Home curation contract."""
+    cache_key = _public_cache_key("home_curated_v4")
+    cached = await _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+
+    docs = await db.books.find(
+        _controlled_public_book_query(),
+        BOOK_SUMMARY_PROJECTION,
+    ).sort("created_at", -1).to_list(500)
+    seen = {str(doc.get("slug") or "").strip().lower() for doc in docs}
+    for slug in CONTROLLED_LIVE_BOOK_SLUGS:
+        if slug in seen:
+            continue
+        artifact = _controlled_artifact_doc(slug, include_content=False)
+        if artifact:
+            docs.append(artifact)
+
+    audio_contracts: dict[str, dict[str, Any]] = {}
+    for doc in docs:
+        slug = str(doc.get("slug") or "").strip().lower()
+        if not slug or not can_expose_audio(doc):
+            continue
+        manifest = await _reader_book_manifest_doc(slug)
+        audio = (manifest or {}).get("audio") or {}
+        audio_contracts[slug] = {
+            "enabled": audio.get("enabled") is True,
+            "url": audio.get("url") or "",
+            "release_gate": audio.get("release_gate") or "",
+            "qa_status": audio.get("qa_status") or "",
+            "duration_ms": audio.get("duration_ms") or 0,
+            "package_valid": bool(audio.get("enabled") is True and audio.get("url") and (audio.get("assets") or audio.get("size") or audio.get("url"))),
+            "endpoint_valid": bool((audio.get("url") or "").startswith(f"/api/reader/book/{slug}/audiobook")),
+        }
+
+    payload = build_home_curated_payload_v4(
+        docs,
+        config=home_curation_config(),
+        audio_contracts=audio_contracts,
+    )
+    await _public_cache_set(cache_key, payload)
+    return payload
 
 
 # ---------- Public: Books ----------
@@ -4975,6 +5062,36 @@ async def admin_update_book_audiobook(slug: str, payload: BookAudiobookIn, _=Dep
     await db.books.update_one({"slug": slug}, {"$set": update})
     refreshed = await db.books.find_one({"slug": slug}, {"_id": 0})
     return refreshed
+
+
+@api.patch("/admin/books/{slug}/home-curation")
+async def admin_update_home_curation(slug: str, payload: HomeCurationIn, _=Depends(require_admin)):
+    """Update editorial placement only; audio and reader release truth stay untouched."""
+    existing = await db.books.find_one({"slug": slug}, {"_id": 0, "slug": 1})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Book not found")
+    allowed_shelves = {
+        "bengali-life-and-legacy",
+        "gothic-and-the-uncanny",
+        "love-society-and-human-nature",
+        "adventure-nature-and-wonder",
+        "short-masterpieces",
+    }
+    update: dict[str, Any] = {}
+    if payload.editorial_shelf_ids is not None:
+        update["editorial_shelf_ids"] = [item for item in payload.editorial_shelf_ids if item in allowed_shelves]
+    if payload.home_shelf_ids is not None:
+        update["home_shelf_ids"] = [item for item in payload.home_shelf_ids if item in allowed_shelves]
+    for key in ("home_feature_eligible", "home_shelf_rank", "admin_pinned", "do_not_feature", "popularity_score"):
+        value = getattr(payload, key)
+        if value is not None:
+            update[key] = value
+    if not update:
+        raise HTTPException(status_code=400, detail="At least one curation field is required")
+    await db.books.update_one({"slug": slug}, {"$set": update})
+    global _public_cache_generation
+    _public_cache_generation += 1
+    return {"slug": slug, "updated": sorted(update), "reader_audio_release_truth_unchanged": True}
 
 
 @api.delete("/admin/books/{slug}")

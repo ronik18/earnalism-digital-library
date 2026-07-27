@@ -1,0 +1,30 @@
+{
+  "status": "PASS_MODEL_AUDIT",
+  "measurement_method": "frontend/src/lib/homeShelfGeometry.js deterministic zone simulation",
+  "content_zone_intersection_count": 0,
+  "card_overflow_count": 0,
+  "clipped_cta_count": 0,
+  "cover_outside_card_count": 0,
+  "cards": {
+    "love_society_human_nature": {
+      "mode": "duo",
+      "outer": {"width": 560, "height": 410},
+      "zones": {
+        "meta": {"x": 24, "y": 24, "width": 277, "height": 36},
+        "title": {"x": 24, "y": 70, "width": 277, "height": 62},
+        "description": {"x": 24, "y": 140, "width": 277, "height": 66},
+        "chips": {"x": 24, "y": 286, "width": 277, "height": 48},
+        "covers": {"x": 321, "y": 24, "width": 215, "height": 362},
+        "cta": {"x": 24, "y": 342, "width": 277, "height": 44}
+      }
+    },
+    "adventure_nature_wonder": {
+      "mode": "trio",
+      "outer": {"width": 760, "height": 410},
+      "same_outer_height_as_love": true,
+      "content_zone_intersection_count": 0,
+      "card_overflow_count": 0
+    }
+  },
+  "production_visual_canary": "PENDING"
+}

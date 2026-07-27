@@ -1,0 +1,57 @@
+{
+  "schema_version": "home_shelf_v3_catalog_truth_v1",
+  "source": "backend/data/home_hero_curation.json plus backend home contract cover truth",
+  "shelves": {
+    "bengali-life-and-legacy": {
+      "variant": "shelf-feature",
+      "selected": ["book-f5d593e1f4", "book-edfcf810c5", "bn-066"],
+      "cover_count": 3,
+      "reader_routes_are_canonical": true
+    },
+    "gothic-and-the-uncanny": {
+      "variant": "spotlight",
+      "selected": ["dracula"],
+      "cover_count": 1,
+      "reader_routes_are_canonical": true
+    },
+    "love-society-and-human-nature": {
+      "variant": "duo-shelf",
+      "selected": ["radharani", "pride-and-prejudice"],
+      "cover_count": 2,
+      "reader_routes_are_canonical": true
+    },
+    "adventure-nature-and-wonder": {
+      "variant": "shelf-feature",
+      "selected": ["the-time-machine", "the-call-of-the-wild", "the-secret-garden"],
+      "cover_count": 3,
+      "reader_routes_are_canonical": true
+    },
+    "short-masterpieces": {
+      "variant": "hidden",
+      "selected": [],
+      "cover_count": 0,
+      "omitted_reason": "No configured Short Masterpieces candidate currently passes canonical graphical cover truth.",
+      "placeholder_substitution": false
+    }
+  },
+  "first_viewport_duplicates": {
+    "within_shelf_duplicate_count": 0,
+    "cross_shelf_duplicate_count": 0,
+    "hero_reserved_slugs_avoided_when_alternative_exists": true
+  },
+  "selected_listening": {
+    "source": "canonical approved public audiobook records filtered through cover truth",
+    "selected": [],
+    "omitted_reason": "Current approved-audiobook cover packages include known placeholder or canonical-mismatch evidence; the rail stays omitted fail-closed.",
+    "internal_status_labels_rendered": false
+  },
+  "hard_checks": {
+    "catalog_mismatch_count": 0,
+    "placeholder_cover_count": 0,
+    "broken_cover_count": 0,
+    "hidden_listen_exposure_count": 0,
+    "unsupported_empty_grid_cell_count": 0,
+    "orphan_card_count": 0,
+    "horizontal_overflow_count": 0
+  }
+}

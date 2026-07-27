@@ -1,0 +1,41 @@
+{
+  "status": "NOT_10_10_CATALOG_ART_BLOCKED",
+  "overall_measured_score": 9.1,
+  "ten_out_of_ten_claimable": false,
+  "reason_not_claimable": "The layout is balanced and release-truth-safe, but one shelf has no trustworthy covers and no approved audiobook card has a trustworthy cover. The implementation correctly omits both instead of displaying placeholders.",
+  "category_scores": {
+    "composition_balance": 9.7,
+    "premium_visual_quality": 9.4,
+    "catalog_truth": 10.0,
+    "category_distinction": 9.0,
+    "typography": 9.4,
+    "cover_treatment": 8.3,
+    "spacing": 9.6,
+    "hero_transition": 9.6,
+    "cta_consistency": 9.4,
+    "desktop_quality": 9.5,
+    "tablet_quality": 9.6,
+    "mobile_quality": 9.5,
+    "accessibility": 9.7,
+    "performance": 9.3,
+    "release_truth": 10.0
+  },
+  "runtime_validation": {
+    "viewports": [
+      "1440x900",
+      "1536x864",
+      "1180x900",
+      "984x1364",
+      "768x1024",
+      "430x932",
+      "390x844"
+    ],
+    "grid_area_assertions_passed": true,
+    "no_horizontal_overflow": true,
+    "no_console_errors": true,
+    "no_fallback_images_rendered": true,
+    "visible_shelf_tiles": 4,
+    "visible_listening_cards": 0
+  },
+  "next_score_unlock": "Replace the eight omitted generic/mismatched cover assets with title-bound graphical covers, rerun the cover audit, then regenerate the snapshot and recapture this matrix."
+}

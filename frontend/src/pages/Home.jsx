@@ -9,12 +9,14 @@ import {
   Instagram,
   Linkedin,
   Mail,
+  ShieldCheck,
   Twitter,
   Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
 import CuratedShelfCollage from "../components/CuratedShelfCollage";
 import PremiumHero from "../components/PremiumHero";
+import PremiumListeningRail from "../components/PremiumListeningRail";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
@@ -22,6 +24,8 @@ import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
 import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import useSEO from "../hooks/useSEO";
+
+// HomeShelfArchitecture remains the compatibility name for the editorial Home mount.
 
 const SOCIAL_ICONS = {
   email: Mail,
@@ -43,6 +47,8 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [homeCuration, setHomeCuration] = useState(() => getHomeCurationSnapshot());
+  const [homeCurationLoading, setHomeCurationLoading] = useState(true);
+  const [homeCurationError, setHomeCurationError] = useState(false);
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
@@ -52,7 +58,7 @@ export default function Home() {
   useSEO({
     title: "Earnalism | Bengali and English Classics in a Calm Digital Library",
     description:
-      "Beautifully designed Bengali and English classics, immersive approved audiobooks, calm reading modes, and a curated literary experience.",
+      "Earnalism is a calm digital reading room for timeless Bengali and English literature, with reader-only classics, graphical covers, and release-gated audiobooks.",
     image: "/assets/shelves/bengali-classics.jpg",
     imageAlt: "Earnalism Bengali and English classics shelf artwork",
     canonicalPath: "/",
@@ -70,11 +76,14 @@ export default function Home() {
     const controller = new AbortController();
     fetchHomeCuration(controller.signal)
       .then((payload) => {
-        if (controller.signal.aborted) return;
         setHomeCuration(payload);
+        setHomeCurationError(false);
       })
       .catch((error) => {
-        if (controller.signal.aborted || error?.name === "CanceledError" || error?.code === "ERR_CANCELED") return;
+        if (error?.name !== "CanceledError" && error?.name !== "AbortError") setHomeCurationError(true);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setHomeCurationLoading(false);
       });
     return () => controller.abort();
   }, []);
@@ -98,12 +107,91 @@ export default function Home() {
     <div data-testid="home-page">
       <PremiumHero
         curation={homeCuration}
-        loading={!homeCuration}
-        error={!homeCuration}
-        onTrack={track}
+        loading={homeCurationLoading}
+        error={homeCurationError}
+        headerMode="in-flow"
+        analyticsNamespace="home"
+        onTrack={(event, metadata) => trackFunnelEvent(event, { source: "home", ...metadata })}
       />
+      <PremiumListeningRail
+        books={homeCuration.listening_rooms?.items || homeCuration.selected_audiobooks || []}
+        reserveBooks={homeCuration.listening_rooms?.reserve_items || homeCuration.reserve_audiobooks || []}
+      />
+      <div id="curated-action-cards-title" data-testid="home-shelf-architecture">
+        <CuratedShelfCollage curation={homeCuration} />
+      </div>
+      {false && (
+      <section
+        className="premium-landing-hero reference-library-hero relative isolate overflow-hidden text-[#FDFCF8]"
+        data-testid="premium-landing-hero"
+        data-approved-hero-max-height="650"
+      >
+        <div className="reference-hero-grid mx-auto grid max-w-7xl grid-cols-1 gap-7 px-5 py-8 sm:px-8 sm:py-11 lg:grid-cols-12 lg:items-center lg:px-12 lg:py-12">
+          <div className="reference-hero-copy lg:col-span-7">
+            <div className="italic-eyebrow flex items-center gap-3 text-[var(--brand-gold-soft)]" data-testid="hero-overline">
+              <span className="h-px w-7 bg-[var(--brand-gold)]/70" />
+              <span>The Earnalism Digital Library</span>
+            </div>
+            <h1
+              className="home-hero-title mt-4 max-w-4xl font-serif-light tracking-normal text-[#FDFCF8] text-balance"
+              data-testid="hero-headline"
+              aria-label="Step into the classics. Stay with the story."
+            >
+              Step into the classics.
+              <span className="home-hero-title__accent">Stay with the story.</span>
+            </h1>
+            <p className="home-hero-deck mt-3 max-w-2xl font-serif-display italic text-[#F4EFEA]/92">
+              A calm home for Bengali and English classics, with room to read, reflect, and return.
+            </p>
+            <p className="home-hero-description mt-4 max-w-2xl font-light text-[#F4EFEA]/82">
+              Illustrated editions lead the way, with quiet reading rooms and a small, carefully selected listening shelf for the late hour.
+            </p>
+            <div className="reference-hero-trust mt-5" aria-label="Earnalism launch trust signals">
+              <span><ShieldCheck size={16} strokeWidth={1.6} /> Rights-safe releases</span>
+              <span><BookOpen size={16} strokeWidth={1.6} /> Bengali + English shelves</span>
+              <span><CreditCard size={16} strokeWidth={1.6} /> Curated listening</span>
+            </div>
+            <div className="premium-hero-ctas mt-5 sm:mt-6" data-testid="hero-ctas">
+              <Link
+                to="/library"
+                className="btn-primary premium-hero-cta-primary justify-center gap-2"
+                data-testid="hero-cta-library"
+                onClick={() => track("hero_primary_cta_click", { cta: "home_hero_start_reading" })}
+              >
+                <BookOpen size={16} strokeWidth={1.7} /> Start Reading
+              </Link>
+              <Link
+                to="#curated-action-cards-title"
+                className="btn-secondary justify-center !border-[var(--brand-gold)] !text-[#FDFCF8] hover:!bg-[var(--brand-gold)]/10"
+                data-testid="hero-cta-shelves"
+                onClick={() => track("hero_secondary_cta_click", { cta: "home_hero_browse_library" })}
+              >
+                Browse Library <ArrowRight size={15} strokeWidth={1.7} />
+              </Link>
+            </div>
+          </div>
 
-      <CuratedShelfCollage curation={homeCuration?.shelf_collage} />
+          <div className="reference-editorial-stage lg:col-span-5" data-testid="hero-editorial-index">
+            <div className="reference-editorial-card" aria-label="Earnalism library index">
+              <div className="reference-editorial-card__eyebrow">Live shelves</div>
+              <div className="reference-editorial-card__rows">
+                <span>Bengali classics</span>
+                <strong>Stories rooted in Bengal</strong>
+              </div>
+              <div className="reference-editorial-card__rows">
+                <span>English classics</span>
+                <strong>Dark houses and strange roads</strong>
+              </div>
+              <div className="reference-editorial-card__rows">
+                <span>Audiobooks</span>
+                <strong>Narrated classics for the late hour</strong>
+              </div>
+              <div className="reference-editorial-card__mark" aria-hidden="true">E</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      )}
 
       <section
         className="reference-reading-path"

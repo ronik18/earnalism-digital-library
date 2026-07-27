@@ -1,142 +1,141 @@
 import { api } from "./api";
-import sprint1HomeSnapshot from "../data/homeCuratedSprint1.json";
 
-const APPROVED_RELEASE_STATUSES = new Set(["APPROVED", "PUBLIC_AUDIO_RELEASE_APPROVED"]);
-const PASSED_AUDIO_QA_STATUSES = new Set(["APPROVED", "PASS", "PASSED", "QA_PASSED"]);
+export const HOME_SHELF_ORDER = [
+  "bengali-life-and-legacy",
+  "gothic-and-the-uncanny",
+  "love-society-and-human-nature",
+  "adventure-nature-and-wonder",
+  "short-masterpieces",
+  "selected-listening",
+];
 
-export function isSafeHeroCoverUrl(value) {
-  const url = String(value || "").trim();
-  if (!url || /placeholder/i.test(url) || /^(data|javascript):/i.test(url)) return false;
-  if (url.startsWith("/")) return !url.startsWith("/audio/");
-  try {
-    return new URL(url).protocol === "https:";
-  } catch {
-    return false;
-  }
+export function shelfMode(count) {
+  if (!count) return "Zero";
+  if (count === 1) return "Spotlight";
+  if (count === 2) return "Duo";
+  if (count <= 4) return "Trio";
+  if (count <= 7) return "Runway";
+  return "Overflow";
 }
 
-export function isApprovedHomeAudiobook(book = {}) {
-  const slug = String(book.slug || "").trim();
-  const releaseStatus = String(book.audiobook_release_gate || "").trim().toUpperCase();
-  const qaStatus = String(book.audio_qa_status || "").trim().toUpperCase();
-  const audiobookUrl = String(book.audiobook_url || "").trim();
+function validCover(book = {}) {
   return Boolean(
-    slug
-    && book.audiobook_enabled === true
-    && APPROVED_RELEASE_STATUSES.has(releaseStatus)
-    && PASSED_AUDIO_QA_STATUSES.has(qaStatus)
-    && audiobookUrl === `/api/reader/book/${slug}/audiobook`,
+    book.slug
+      && (book.front_cover_url || book.cover_image_url || book.cover_url)
+      && book.cover_valid !== false
+      && book.is_placeholder !== true
+      && book.is_typographic_only !== true,
   );
 }
 
-export function normalizeHomeBook(book = {}) {
+function coverCandidates(book = {}) {
+  const candidates = [
+    book.front_cover_url,
+    book.cover_image_url,
+    book.cover_url,
+    book.thumbnail_url,
+    ...(Array.isArray(book.cover_candidates) ? book.cover_candidates.map((item) => (
+      typeof item === "string" ? item : item?.url
+    )) : []),
+  ].filter((url) => typeof url === "string" && url.trim());
+  return Array.from(new Set(candidates));
+}
+
+function audioEndpoint(book = {}) {
   const slug = String(book.slug || "").trim();
-  const title = String(book.title || "").trim();
-  const author = String(book.author || "").trim();
-  const frontCoverUrl = String(book.front_cover_url || "").trim();
-  if (!slug || !title || !author || book.reader_enabled !== true || !isSafeHeroCoverUrl(frontCoverUrl)) {
-    return null;
-  }
+  const audiobookUrl = book.audiobook_url || book.audio_url || "";
+  return typeof audiobookUrl === "string"
+    && audiobookUrl === `/api/reader/book/${slug}/audiobook`
+    && /^\/api\/reader\/book\/[^/]+\/audiobook$/.test(audiobookUrl);
+}
 
-  const audiobookEnabled = isApprovedHomeAudiobook(book);
-  const normalized = {
-    ...book,
-    slug,
-    title,
-    author,
-    language: String(book.language || "").trim().toLowerCase() === "bn" ? "bn" : "en",
-    front_cover_url: frontCoverUrl,
-    back_cover_url: isSafeHeroCoverUrl(book.back_cover_url) ? String(book.back_cover_url).trim() : "",
-    cover_alt_text: `${title} by ${author}`,
-    reader_enabled: true,
-    book_url: `/book/${slug}`,
-    reader_url: `/reader/${slug}`,
-    audiobook_enabled: audiobookEnabled,
-    cta_label: audiobookEnabled ? "Start Listening" : "Start Reading",
-    cta_url: audiobookEnabled ? `/reader/${slug}?listen=1` : `/reader/${slug}`,
-    cta_kind: audiobookEnabled ? "listen" : "read",
+function approvedAudio(book = {}) {
+  const release = String(book.audiobook_release_gate || book.audio_release || "").toUpperCase();
+  const qa = String(book.audio_qa_status || book.qa_status || "").toUpperCase();
+  return Boolean(
+    book.audiobook_enabled === true
+      && release.includes("APPROVED")
+      && ["APPROVED", "PASS", "PASSED", "QA_PASSED"].includes(qa)
+      && book.reader_enabled !== false
+      && audioEndpoint(book)
+      && book.audio_package_valid !== false,
+  );
+}
+
+export function isApprovedAudioBook(book = {}) {
+  return approvedAudio(book);
+}
+
+function normalizeBooks(books = [], { audioOnly = false } = {}) {
+  return Array.from(new Map(
+    books
+      .filter((book) => validCover(book) && (!audioOnly || approvedAudio(book)))
+      .map((book) => [book.slug, {
+      ...book,
+        front_cover_url: book.front_cover_url || book.cover_image_url || book.cover_url,
+        cover_candidates: coverCandidates(book),
+        cover_alt_text: book.cover_alt_text || `${book.title} by ${book.author}`,
+        cta_label: approvedAudio(book) ? "Start Listening" : (book.cta_label || "Start Reading"),
+        cta_kind: approvedAudio(book) ? "listen" : (book.cta_kind || "read"),
+        cta_url: book.cta_url || book.primary_cta_url || (approvedAudio(book) ? `/reader/${book.slug}?listen=1` : `/book/${book.slug}`),
+      }]),
+  ).values());
+}
+
+function normalizeShelf(shelf = {}) {
+  const books = normalizeBooks(shelf.visible_books || shelf.books || []);
+  const reserve_books = normalizeBooks(shelf.reserve_books || shelf.reserve_items || []);
+  return {
+    ...shelf,
+    books,
+    visible_books: books,
+    reserve_books,
+    total_count: Number(shelf.total_count ?? shelf.book_count ?? books.length),
+    mode: shelf.display_mode || shelfMode(books.length),
   };
-
-  if (!audiobookEnabled) delete normalized.audiobook_url;
-  return normalized;
-}
-
-function normalizeBookList(value) {
-  const books = Array.isArray(value) ? value : [];
-  const bySlug = new Map();
-  for (const rawBook of books) {
-    const book = normalizeHomeBook(rawBook);
-    if (book && !bySlug.has(book.slug)) bySlug.set(book.slug, book);
-  }
-  return Array.from(bySlug.values());
-}
-
-function normalizeShelfGroups(value) {
-  const groups = Array.isArray(value) ? value : [];
-  return groups
-    .map((group) => {
-      if (!group || typeof group !== "object") return null;
-      const books = normalizeBookList(group.books);
-      if (!books.length) return null;
-      return {
-        id: String(group.id || "").trim(),
-        title: String(group.title || "").trim(),
-        description: String(group.description || "").trim(),
-        book_count: Number.isFinite(Number(group.book_count)) ? Number(group.book_count) : books.length,
-        books,
-        cta_label: String(group.cta_label || "Explore the library").trim(),
-        cta_url: String(group.cta_url || "/library").trim(),
-        visual_variant: String(group.visual_variant || "medium").trim(),
-        icon: String(group.icon || "book-open").trim(),
-      };
-    })
-    .filter(Boolean);
 }
 
 export function normalizeHomeCuration(payload = {}) {
-  const hero = payload.hero && typeof payload.hero === "object" ? payload.hero : {};
-  const shelves = payload.shelves && typeof payload.shelves === "object" ? payload.shelves : {};
-  const shelfCollage = payload.shelf_collage && typeof payload.shelf_collage === "object"
-    ? payload.shelf_collage
-    : {};
-  const source = payload.source && typeof payload.source === "object" ? payload.source : {};
-  const approvedAudiobooks = normalizeBookList(shelves.approved_audiobooks)
-    .filter((book) => book.audiobook_enabled);
-  const collageAudiobooks = normalizeBookList(shelfCollage.selected_audiobooks)
-    .filter((book) => book.audiobook_enabled);
-
+  const legacy = payload.shelf_collage || {};
+  const sourceShelves = Array.isArray(payload.literary_shelves)
+    ? payload.literary_shelves
+    : Array.isArray(payload.shelves)
+      ? payload.shelves.filter((shelf) => shelf.id !== "selected-listening")
+      : legacy.groups || [];
+  const groups = sourceShelves.map(normalizeShelf).filter((shelf) => shelf.total_count > 0 && shelf.books.length > 0);
+  const listeningRooms = payload.listening_rooms || {};
+  const audioSource = listeningRooms.items || payload.audiobook_shelf?.books || payload.selected_audiobooks || legacy.selected_audiobooks || [];
+  const audioReserve = listeningRooms.reserve_items || payload.audiobook_shelf?.reserve_books || [];
+  const selectedAudiobooks = normalizeBooks(audioSource, { audioOnly: true });
+  const reserveAudiobooks = normalizeBooks(audioReserve, { audioOnly: true });
+  const shelfCollage = {
+    ...legacy,
+    groups: groups.sort((left, right) => HOME_SHELF_ORDER.indexOf(left.id) - HOME_SHELF_ORDER.indexOf(right.id)),
+    selected_audiobooks: selectedAudiobooks,
+    reserve_audiobooks: reserveAudiobooks,
+  };
   return {
-    hero: {
-      headline: String(hero.headline || "").trim(),
-      subheadline: String(hero.subheadline || "").trim(),
-      primary_cta: hero.primary_cta || {},
-      secondary_cta: hero.secondary_cta || {},
-      featured_books: normalizeBookList(hero.featured_books).slice(0, 6),
-    },
-    shelves: {
-      reader_favorites: normalizeBookList(shelves.reader_favorites),
-      bengali_classics: normalizeBookList(shelves.bengali_classics),
-      english_classics: normalizeBookList(shelves.english_classics),
-      approved_audiobooks: approvedAudiobooks,
-    },
-    shelf_collage: {
-      eyebrow: String(shelfCollage.eyebrow || "CURATED PATHS THROUGH THE LIBRARY").trim(),
-      title: String(shelfCollage.title || "A shelf for every kind of curiosity.").trim(),
-      description: String(shelfCollage.description || "").trim(),
-      groups: normalizeShelfGroups(shelfCollage.groups),
-      selected_audiobooks: collageAudiobooks.length ? collageAudiobooks : approvedAudiobooks,
-    },
-    source,
+    ...payload,
+    shelves: groups,
+    groups: shelfCollage.groups,
+    selected_audiobooks: selectedAudiobooks,
+    reserve_audiobooks: reserveAudiobooks,
+    shelf_collage: shelfCollage,
+    audiobook_shelf: payload.audiobook_shelf ? { ...payload.audiobook_shelf, books: selectedAudiobooks, reserve_books: reserveAudiobooks } : null,
+    listening_rooms: payload.listening_rooms ? { ...payload.listening_rooms, items: selectedAudiobooks, reserve_items: reserveAudiobooks } : null,
   };
 }
 
-const NORMALIZED_SPRINT1_HOME_SNAPSHOT = normalizeHomeCuration(sprint1HomeSnapshot);
+export function approvedListeningBooks(payload = {}) {
+  const normalized = normalizeHomeCuration(payload);
+  return normalized.listening_rooms?.items || normalized.shelf_collage.selected_audiobooks;
+}
 
 export function getHomeCurationSnapshot() {
-  return NORMALIZED_SPRINT1_HOME_SNAPSHOT;
+  return normalizeHomeCuration({ literary_shelves: [], audiobook_shelf: null, source: { truth_source: "runtime_endpoint_pending" } });
 }
 
 export async function fetchHomeCuration(signal) {
-  const response = await api.get("/home/curated", { signal });
-  return normalizeHomeCuration(response.data);
+  const { data } = await api.get("/home/curated", { signal });
+  return normalizeHomeCuration(data);
 }

@@ -1,0 +1,21 @@
+{
+  "truth_source": "public_catalog_and_canonical_reader_manifest",
+  "live_title_count": 32,
+  "approved_audiobook_count": 4,
+  "audiobook_gate_note": "Repository canonical evidence currently includes the-open-window in addition to the three titles stated in the brief; no gate was changed.",
+  "literary_shelves": [
+    {"id": "bengali-life-and-legacy", "total_count": 8, "display_mode": "overflow", "visible_slugs": ["book-2b9853ec52", "bn-066", "radharani"]},
+    {"id": "gothic-and-the-uncanny", "total_count": 3, "display_mode": "trio", "visible_slugs": ["sredni-vashtar", "book-edfcf810c5", "dracula"]},
+    {"id": "love-society-and-human-nature", "total_count": 4, "display_mode": "overflow", "visible_slugs": ["pride-and-prejudice", "dsires-baby", "nishkriti"]},
+    {"id": "adventure-nature-and-wonder", "total_count": 4, "display_mode": "overflow", "visible_slugs": ["the-call-of-the-wild", "the-secret-garden", "the-time-machine"]},
+    {"id": "short-masterpieces", "total_count": 4, "display_mode": "runway", "visible_slugs": ["the-gift-of-the-magi", "the-open-window", "the-cop-and-the-anthem"]}
+  ],
+  "audiobooks": [
+    {"slug": "book-2b9853ec52", "title": "দুই বিঘা জমি", "author": "রবীন্দ্রনাথ ঠাকুর", "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267849/earnalism/covers/front/book-2b9853ec52_front_1600x2400.png"},
+    {"slug": "a-ghost-story", "title": "A Ghost Story", "author": "Mark Twain", "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png"},
+    {"slug": "sredni-vashtar", "title": "Sredni Vashtar", "author": "Saki", "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png"},
+    {"slug": "the-open-window", "title": "The Open Window", "author": "Saki", "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png"}
+  ],
+  "no_private_audio_urls": true,
+  "no_release_gate_mutation": true
+}

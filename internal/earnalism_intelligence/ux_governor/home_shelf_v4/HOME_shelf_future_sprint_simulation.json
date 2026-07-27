@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "model": "backend/home_curation_v4.py",
+  "scenarios": {
+    "A_new_gothic_book": {"result": "PASS", "effect": "total_count_increases_and_visible_pool_is_bounded"},
+    "B_four_new_bengali_books": {"result": "PASS", "effect": "visible_cover_limit_is_preserved_and_total_count_updates"},
+    "C_two_new_approved_audiobooks": {"result": "PASS", "effect": "audio_display_mode_changes_to_duo_or_runway_by_count"},
+    "D_revoke_one_audiobook": {"result": "PASS", "effect": "manifest-filtered_book_and_listen_cta_disappear"},
+    "E_one_valid_book": {"result": "PASS", "effect": "spotlight_mode"},
+    "F_zero_valid_books": {"result": "PASS", "effect": "shelf_omitted_from_render"}
+  },
+  "react_title_allowlist_changes_required": false,
+  "release_gates_mutated": false
+}
