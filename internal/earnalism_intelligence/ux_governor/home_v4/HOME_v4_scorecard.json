@@ -1,0 +1,43 @@
+{
+  "status": "NOT_10_OF_10_PENDING_PRODUCTION_VISUAL_CANARY",
+  "overall_score": null,
+  "automated_scores": {
+    "structural_completeness": 9.8,
+    "audiobook_discoverability": 9.8,
+    "cover_fallback_contract": 9.7,
+    "card_geometry_model": 9.8,
+    "accessibility_contract": 9.6,
+    "future_sprint_scalability": 9.8,
+    "release_truth": 9.8
+  },
+  "hard_checks": {
+    "dedicated_listening_rail": "PASS",
+    "dom_order_hero_listening_collage": "PASS",
+    "hidden_audio_leakage": 0,
+    "image_unavailable_states_in_touched_ui": 0,
+    "love_cover_chip_overlap": "PASS_BY_EXPLICIT_ZONE_MODEL",
+    "love_cover_cta_overlap": "PASS_BY_EXPLICIT_ZONE_MODEL",
+    "empty_grid_cell": "PASS_BY_DYNAMIC_AREA_MODEL",
+    "future_sprint_fixture": "PASS",
+    "production_cover_natural_width": "PENDING_CANARY",
+    "production_page_overflow": "PENDING_CANARY",
+    "serious_accessibility_findings": "PENDING_CANARY"
+  },
+  "local_fixture_canary": {
+    "viewports": [
+      "1536x864",
+      "1440x900",
+      "1180x900",
+      "984x1364",
+      "768x1024",
+      "430x932",
+      "390x844"
+    ],
+    "dom_order_hero_listening_collage": "PASS",
+    "horizontal_overflow": "PASS",
+    "listening_cards": 4,
+    "image_unavailable_text": 0,
+    "scope": "LOCAL_FIXTURE_ONLY"
+  },
+  "reason": "Local fixture canary passes, but production screenshot, DOM geometry, and accessibility evidence remain pending; no 10/10 claim is made."
+}

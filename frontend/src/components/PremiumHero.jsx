@@ -11,7 +11,7 @@ import {
   MoonStar,
   Sparkles,
 } from "lucide-react";
-import { optimizedImageUrl } from "../lib/images";
+import BookCoverImage from "./BookCoverImage";
 import "./PremiumHero.css";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
@@ -81,13 +81,6 @@ function useDesktopReference() {
   return isDesktop;
 }
 
-function responsiveCoverSources(book, widths = [180, 360]) {
-  if (!book?.front_cover_url) return "";
-  return widths
-    .map((width) => `${optimizedImageUrl(book.front_cover_url, { width, quality: 82 })} ${width}w`)
-    .join(", ");
-}
-
 function CatalogCoverLink({
   book,
   className,
@@ -97,7 +90,12 @@ function CatalogCoverLink({
   eager = false,
   testId,
 }) {
+  const [coverFailed, setCoverFailed] = useState(false);
+
   if (!book) {
+    return <span className={`${className} premium-hero-cover-mask`} aria-hidden="true" />;
+  }
+  if (coverFailed) {
     return <span className={`${className} premium-hero-cover-mask`} aria-hidden="true" />;
   }
 
@@ -109,18 +107,18 @@ function CatalogCoverLink({
       aria-label={`Open ${book.title} by ${book.author}`}
       data-testid={testId || `hero-book-${book.slug}`}
       data-book-slug={book.slug}
+      data-canonical-cover-url={book.front_cover_url}
     >
-      <img
-        src={book.front_cover_url}
-        srcSet={responsiveCoverSources(book, widths)}
+      <BookCoverImage
+        book={book}
         sizes={sizes}
         alt={book.cover_alt_text}
-        data-canonical-cover-url={book.front_cover_url}
-        width="240"
-        height="360"
+        width={240}
+        height={360}
+        widths={widths}
         loading={eager ? "eager" : "lazy"}
-        fetchPriority={eager ? "high" : "auto"}
-        decoding="async"
+        allowGraphicalFallback={false}
+        onPermanentFailure={() => setCoverFailed(true)}
       />
     </Link>
   );
@@ -158,7 +156,17 @@ function ReaderScreenPreview() {
 }
 
 function ListeningPhone({ listeningBook }) {
+  const [coverFailed, setCoverFailed] = useState(false);
+
   if (!listeningBook) {
+    return (
+      <div className="premium-reference-listening premium-reference-listening--generic" data-testid="hero-listening-visual">
+        <Headphones aria-hidden="true" />
+        <strong>Premium Listening Rooms</strong>
+      </div>
+    );
+  }
+  if (coverFailed) {
     return (
       <div className="premium-reference-listening premium-reference-listening--generic" data-testid="hero-listening-visual">
         <Headphones aria-hidden="true" />
@@ -176,17 +184,16 @@ function ListeningPhone({ listeningBook }) {
       data-book-slug={listeningBook.slug}
     >
       <span className="premium-reference-listening__eyebrow">Now listening</span>
-      <img
-        src={listeningBook.front_cover_url}
-        srcSet={responsiveCoverSources(listeningBook, [120, 240])}
+      <BookCoverImage
+        book={listeningBook}
         sizes="6vw"
         alt={listeningBook.cover_alt_text}
-        data-canonical-cover-url={listeningBook.front_cover_url}
-        width="120"
-        height="180"
+        width={120}
+        height={180}
+        widths={[120, 240]}
         loading="eager"
-        fetchPriority="high"
-        decoding="async"
+        allowGraphicalFallback={false}
+        onPermanentFailure={() => setCoverFailed(true)}
       />
       <strong>{listeningBook.title}</strong>
       <small>{listeningBook.author}</small>

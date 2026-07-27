@@ -78,3 +78,51 @@ def test_selection_does_not_duplicate_a_cover_when_an_alternative_exists():
     books = [book("a", ["short-masterpieces"]), book("b", ["short-masterpieces"])]
     selected = select_visible_books(books, 2)
     assert [item["slug"] for item in selected] == ["a", "b"]
+
+
+def test_listening_rooms_exposes_bounded_items_and_reserves():
+    books = [book(f"audio-{index}", ["short-masterpieces"], audio=True) for index in range(6)]
+    contracts = {
+        item["slug"]: {
+            "enabled": True,
+            "url": f"/api/reader/book/{item['slug']}/audiobook",
+            "release_gate": "APPROVED",
+            "qa_status": "QA_PASSED",
+            "package_valid": True,
+            "endpoint_valid": True,
+        }
+        for item in books
+    }
+    payload = build_home_curated_payload_v4(books, audio_contracts=contracts)
+    assert payload["listening_rooms"]["total_approved"] == 6
+    assert [item["slug"] for item in payload["listening_rooms"]["items"]] == [f"audio-{index}" for index in range(4)]
+    assert [item["slug"] for item in payload["listening_rooms"]["reserve_items"]] == ["audio-4", "audio-5"]
+
+
+def test_reader_only_and_invalid_audio_never_enter_listening_rooms():
+    reader_only = book("reader-only", ["short-masterpieces"], audio=False)
+    revoked = book("revoked", ["short-masterpieces"], audio=True)
+    payload = build_home_curated_payload_v4(
+        [reader_only, revoked],
+        audio_contracts={"revoked": {"enabled": False, "url": "", "release_gate": "", "qa_status": ""}},
+    )
+    assert payload["listening_rooms"] is None
+    assert payload["selected_audiobooks"] == []
+
+
+def test_cover_candidates_are_ordered_and_safe():
+    candidate = book("candidate", ["short-masterpieces"])
+    candidate["cover_image_url"] = "https://cdn.example.com/primary.png"
+    candidate["cover_candidates"] = [
+        {"url": "https://cdn.example.com/alternate.png", "source": "canonical-alt"},
+        {"url": "https://cdn.example.com/placeholder.png", "source": "placeholder"},
+    ]
+    payload = build_home_curated_payload_v4([candidate])
+    visible = payload["literary_shelves"][-1]["visible_books"]
+    assert visible[0]["front_cover_url"] == "https://cdn.example.com/primary.png"
+    assert [item["url"] for item in visible[0]["cover_candidates"]] == [
+        "https://cdn.example.com/primary.png",
+        "https://cdn.example.com/alternate.png",
+    ]
+    assert "admin_pinned" not in visible[0]
+    assert "sprint_id" not in visible[0]

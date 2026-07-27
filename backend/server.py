@@ -976,6 +976,13 @@ BOOK_SUMMARY_PROJECTION = {
     "short_description": 1,
     "cover_url": 1,
     "cover_image_url": 1,
+    "front_cover_url": 1,
+    "cover_candidates": 1,
+    "cover_valid": 1,
+    "cover_audit_status": 1,
+    "canonical_cover_match": 1,
+    "is_placeholder": 1,
+    "is_typographic_only": 1,
     "thumbnail_url": 1,
     "blur_placeholder": 1,
     "dominant_color": 1,
@@ -1005,6 +1012,8 @@ BOOK_SUMMARY_PROJECTION = {
     "do_not_feature": 1,
     "popularity_score": 1,
     "sprint_id": 1,
+    "release_cycle": 1,
+    "published_at": 1,
 }
 PUBLIC_CACHE_PATHS = {
     "/api/home",
@@ -4706,6 +4715,8 @@ async def get_home_curated():
             "release_gate": audio.get("release_gate") or "",
             "qa_status": audio.get("qa_status") or "",
             "duration_ms": audio.get("duration_ms") or 0,
+            "package_valid": bool(audio.get("enabled") is True and audio.get("url") and (audio.get("assets") or audio.get("size") or audio.get("url"))),
+            "endpoint_valid": bool((audio.get("url") or "").startswith(f"/api/reader/book/{slug}/audiobook")),
         }
 
     payload = build_home_curated_payload_v4(

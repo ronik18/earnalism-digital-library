@@ -14,9 +14,13 @@ const ICONS = {
 
 export default function ShelfCollageTile({ group, index = 0 }) {
   const [failedSlugs, setFailedSlugs] = useState(() => new Set());
+  const candidateBooks = [
+    ...(Array.isArray(group?.books) ? group.books : []),
+    ...(Array.isArray(group?.reserve_books) ? group.reserve_books : []),
+  ];
   const books = getUniqueShelfBooks({
     ...group,
-    books: (Array.isArray(group?.books) ? group.books : [])
+    books: candidateBooks
       .filter((book) => book?.slug && !failedSlugs.has(book.slug)),
   }, group.display_mode === "runway" ? 6 : group.display_mode === "duo" ? 2 : group.display_mode === "spotlight" ? 1 : 3);
   if (!books.length) return null;

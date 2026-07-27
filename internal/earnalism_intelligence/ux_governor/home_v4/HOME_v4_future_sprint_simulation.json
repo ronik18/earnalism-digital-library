@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "fixture_only": true,
+  "model": "backend/home_curation_v4.py",
+  "sprint1": {
+    "reader_live": 32,
+    "audio_approved": 4,
+    "result": "canonical current repository truth retained; no production records added"
+  },
+  "sprint2_fixture": {
+    "reader_live_additions": ["fixture-sprint2-bengali-reader", "fixture-sprint2-gothic-reader"],
+    "audio_approved_additions": ["fixture-sprint2-gothic-audio"],
+    "result": "new reader-live records enter tagged genre shelves and the new approved audio record enters Listening Rooms automatically"
+  },
+  "ordering": ["admin_pinned", "home_shelf_rank", "popularity_score", "published_at", "slug"],
+  "frontend_title_allowlist_change_required": false,
+  "release_gates_mutated": false
+}

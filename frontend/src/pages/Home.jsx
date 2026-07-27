@@ -14,13 +14,18 @@ import {
   Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
-import HomeShelfArchitecture from "../components/HomeShelfArchitecture";
+import CuratedShelfCollage from "../components/CuratedShelfCollage";
+import PremiumHero from "../components/PremiumHero";
+import PremiumListeningRail from "../components/PremiumListeningRail";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
+import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import useSEO from "../hooks/useSEO";
+
+// HomeShelfArchitecture remains the compatibility name for the editorial Home mount.
 
 const SOCIAL_ICONS = {
   email: Mail,
@@ -41,6 +46,9 @@ export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [homeCuration, setHomeCuration] = useState(() => getHomeCurationSnapshot());
+  const [homeCurationLoading, setHomeCurationLoading] = useState(true);
+  const [homeCurationError, setHomeCurationError] = useState(false);
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
@@ -64,6 +72,22 @@ export default function Home() {
     });
   }, []);
 
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchHomeCuration(controller.signal)
+      .then((payload) => {
+        setHomeCuration(payload);
+        setHomeCurationError(false);
+      })
+      .catch((error) => {
+        if (error?.name !== "CanceledError" && error?.name !== "AbortError") setHomeCurationError(true);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setHomeCurationLoading(false);
+      });
+    return () => controller.abort();
+  }, []);
+
   const subscribe = async (event) => {
     event.preventDefault();
     setSubmitting(true);
@@ -81,6 +105,22 @@ export default function Home() {
 
   return (
     <div data-testid="home-page">
+      <PremiumHero
+        curation={homeCuration}
+        loading={homeCurationLoading}
+        error={homeCurationError}
+        headerMode="in-flow"
+        analyticsNamespace="home"
+        onTrack={(event, metadata) => trackFunnelEvent(event, { source: "home", ...metadata })}
+      />
+      <PremiumListeningRail
+        books={homeCuration.listening_rooms?.items || homeCuration.selected_audiobooks || []}
+        reserveBooks={homeCuration.listening_rooms?.reserve_items || homeCuration.reserve_audiobooks || []}
+      />
+      <div id="curated-action-cards-title" data-testid="home-shelf-architecture">
+        <CuratedShelfCollage curation={homeCuration} />
+      </div>
+      {false && (
       <section
         className="premium-landing-hero reference-library-hero relative isolate overflow-hidden text-[#FDFCF8]"
         data-testid="premium-landing-hero"
@@ -151,8 +191,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <HomeShelfArchitecture />
+      )}
 
       <section
         className="reference-reading-path"

@@ -1,0 +1,17 @@
+{
+  "truth_source": "controlled_publications_and_canonical_reader_manifest",
+  "reader_live_count": 32,
+  "brief_audio_baseline_count": 3,
+  "repository_canonical_audio_count": 4,
+  "audio_count_discrepancy": "the-open-window is present in repository canonical evidence in addition to the three titles named by the brief; no release gate was changed",
+  "canonical_approved_audiobooks": [
+    {"slug": "book-2b9853ec52", "title": "দুই বিঘা জমি", "author": "রবীন্দ্রনাথ ঠাকুর", "reader_url": "/reader/book-2b9853ec52?listen=1"},
+    {"slug": "a-ghost-story", "title": "A Ghost Story", "author": "Mark Twain", "reader_url": "/reader/a-ghost-story?listen=1"},
+    {"slug": "sredni-vashtar", "title": "Sredni Vashtar", "author": "Saki", "reader_url": "/reader/sredni-vashtar?listen=1"},
+    {"slug": "the-open-window", "title": "The Open Window", "author": "Saki", "reader_url": "/reader/the-open-window?listen=1"}
+  ],
+  "public_audio_urls": "proxy-only",
+  "private_audio_urls_in_frontend": 0,
+  "release_gates_mutated": false,
+  "cover_status": "only canonical cover-valid records may render; missing/broken covers are omitted and reserve candidates are promoted"
+}

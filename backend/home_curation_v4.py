@@ -87,6 +87,15 @@ AUDIO_SHELF = {
     "cta_url": "/library?format=audiobook",
 }
 
+LISTENING_ROOMS = {
+    "id": "listening-rooms",
+    "eyebrow": "LISTENING ROOMS",
+    "title": "Stories ready to be heard.",
+    "description": "Step into beautifully narrated classics, then continue reading at your own pace.",
+    "cta_label": "Explore all audiobooks",
+    "view_all_url": "/library?audio=approved",
+}
+
 
 def _list_value(book: dict[str, Any], *keys: str) -> list[str]:
     for key in keys:
@@ -154,6 +163,35 @@ def _timestamp(value: Any) -> float:
         return 0.0
 
 
+def _cover_candidates(book: dict[str, Any], projected: dict[str, Any] | None = None) -> list[dict[str, Any]]:
+    """Return ordered, safe front-cover candidates without exposing raw internals."""
+    projected = projected or {}
+    raw: list[tuple[str, str]] = []
+    for field in ("front_cover_url", "cover_image_url", "cover_url", "thumbnail_url"):
+        value = str(projected.get(field) or book.get(field) or "").strip()
+        if value:
+            raw.append((value, field))
+    configured = book.get("cover_candidates")
+    if isinstance(configured, list):
+        for item in configured:
+            if isinstance(item, dict):
+                value = str(item.get("url") or item.get("front_cover_url") or "").strip()
+                source = str(item.get("source") or "candidate").strip()
+            else:
+                value = str(item or "").strip()
+                source = "candidate"
+            if value:
+                raw.append((value, source))
+    seen: set[str] = set()
+    candidates: list[dict[str, Any]] = []
+    for rank, (url, source) in enumerate(raw, start=1):
+        if url in seen or not is_safe_cover_url(url) or "placeholder" in url.lower():
+            continue
+        seen.add(url)
+        candidates.append({"url": url, "source": source, "rank": rank})
+    return candidates
+
+
 def selection_key(book: dict[str, Any]) -> tuple[Any, ...]:
     rank = book.get("home_shelf_rank", book.get("shelf_rank", 1_000_000))
     try:
@@ -211,18 +249,27 @@ def _book_contract(book: dict[str, Any], config: dict[str, Any], audio_contract:
     slug = str(book.get("slug") or projected.get("slug") or "").strip().lower()
     title = str(projected.get("title") or book.get("title") or "").strip()
     author = str(projected.get("author") or book.get("author") or "").strip()
-    front = next((str(projected.get(key) or book.get(key) or "").strip() for key in ("cover_image_url", "cover_url", "thumbnail_url") if is_safe_cover_url(projected.get(key) or book.get(key))), "")
-    cover_valid = bool(front) and not bool(book.get("is_placeholder")) and book.get("canonical_cover_match") is not False and "placeholder" not in front.lower()
+    cover_candidates = _cover_candidates(book, projected)
+    front = cover_candidates[0]["url"] if cover_candidates else ""
+    cover_valid = bool(front) and not bool(book.get("is_placeholder")) and book.get("canonical_cover_match") is not False
     entry = _curation_entry(config, slug)
     audio_enabled = can_expose_audio(book)
     if audio_contract is not None:
-        audio_enabled = bool(audio_contract.get("enabled") is True and audio_contract.get("url") and audio_contract.get("release_gate") == "APPROVED" and str(audio_contract.get("qa_status") or "").upper() in {"APPROVED", "PASS", "PASSED", "QA_PASSED"})
+        audio_enabled = bool(
+            audio_contract.get("enabled") is True
+            and audio_contract.get("url")
+            and audio_contract.get("release_gate") == "APPROVED"
+            and str(audio_contract.get("qa_status") or "").upper() in {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
+            and audio_contract.get("package_valid", True) is not False
+            and audio_contract.get("endpoint_valid", True) is not False
+        )
     contract: dict[str, Any] = {
         "slug": slug,
         "title": title,
         "author": author,
         "language": str(book.get("language") or book.get("language_code") or ("bn" if any("\u0980" <= char <= "\u09ff" for char in f"{title} {author}") else "en")),
         "front_cover_url": front,
+        "cover_candidates": cover_candidates,
         "cover_alt_text": f"{title} by {author}",
         "cover_valid": cover_valid,
         "reader_enabled": True,
@@ -239,6 +286,8 @@ def _book_contract(book: dict[str, Any], config: dict[str, Any], audio_contract:
         "home_shelf_rank": book.get("home_shelf_rank", book.get("shelf_rank", entry.get("shelf_rank"))),
         "popularity_score": book.get("popularity_score", entry.get("popularity_score")),
         "published_at": book.get("published_at") or book.get("created_at") or "",
+        "release_cycle": book.get("release_cycle") or book.get("sprint_id") or entry.get("release_cycle") or "sprint1",
+        "sprint_id": book.get("sprint_id") or entry.get("sprint_id") or "sprint1",
         "home_feature_eligible": book.get("home_feature_eligible", True),
         "do_not_feature": bool(book.get("do_not_feature", entry.get("do_not_feature", False))),
         "short_description": str(projected.get("short_description") or book.get("short_description") or ""),
@@ -249,7 +298,7 @@ def _book_contract(book: dict[str, Any], config: dict[str, Any], audio_contract:
 
 
 def _public(book: dict[str, Any]) -> dict[str, Any]:
-    hidden = {"admin_pinned", "home_shelf_rank", "popularity_score", "published_at", "home_feature_eligible", "do_not_feature", "editorial_shelf_ids"}
+    hidden = {"admin_pinned", "home_shelf_rank", "popularity_score", "published_at", "home_feature_eligible", "do_not_feature", "editorial_shelf_ids", "release_cycle", "sprint_id"}
     return {key: value for key, value in book.items() if key not in hidden}
 
 
@@ -263,17 +312,51 @@ def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: di
         candidates = [book for book in contracts if definition["id"] in book.get("editorial_shelf_ids", [])]
         eligible = [book for book in candidates if book.get("home_feature_eligible") is not False and book.get("do_not_feature") is not True and book.get("cover_valid") is True]
         visible = select_visible_books(eligible, definition["max_visible"], used_slugs)
-        item = {**definition, "total_count": len(eligible), "display_mode": display_mode(len(eligible), runway=definition["id"] == "short-masterpieces"), "visible_books": [_public(book) for book in visible], "books": [_public(book) for book in visible]}
+        visible_slugs = {book["slug"] for book in visible}
+        reserve = [book for book in sorted(eligible, key=selection_key) if book["slug"] not in visible_slugs][:definition["max_visible"]]
+        item = {
+            **definition,
+            "total_count": len(eligible),
+            "display_mode": display_mode(len(eligible), runway=definition["id"] == "short-masterpieces"),
+            "visible_books": [_public(book) for book in visible],
+            "reserve_books": [_public(book) for book in reserve],
+            "books": [_public(book) for book in visible],
+        }
         literary_shelves.append(item)
     audio_candidates = [book for book in contracts if book.get("audiobook_enabled") is True and book.get("cover_valid") is True]
     audio_candidates = sorted(audio_candidates, key=selection_key)
     audio_visible = audio_candidates[:4] if len(audio_candidates) >= 5 else audio_candidates
-    audiobook_shelf = {**AUDIO_SHELF, "total_count": len(audio_candidates), "display_mode": display_mode(len(audio_candidates), runway=len(audio_candidates) >= 5), "books": [_public(book) for book in audio_visible], "visible_books": [_public(book) for book in audio_visible]}
-    groups = [{key: item[key] for key in ("id", "title", "description", "theme_chips", "cta_label", "cta_url", "layout_area", "accent", "total_count", "display_mode", "visible_books", "books")} for item in literary_shelves if item["total_count"]]
+    audio_reserve = audio_candidates[4:] if len(audio_candidates) >= 5 else []
+    audiobook_shelf = {
+        **AUDIO_SHELF,
+        "total_count": len(audio_candidates),
+        "display_mode": display_mode(len(audio_candidates), runway=len(audio_candidates) >= 5),
+        "books": [_public(book) for book in audio_visible],
+        "visible_books": [_public(book) for book in audio_visible],
+        "reserve_books": [_public(book) for book in audio_reserve],
+    }
+    listening_items = [_public(book) for book in audio_visible]
+    listening_reserve = [_public(book) for book in audio_reserve]
+    groups = [{key: item[key] for key in ("id", "title", "description", "theme_chips", "cta_label", "cta_url", "layout_area", "accent", "total_count", "display_mode", "visible_books", "reserve_books", "books")} for item in literary_shelves if item["total_count"]]
+    featured = [_public(book) for book in sorted((book for book in contracts if book.get("cover_valid") is True), key=selection_key)[:6]]
     return {
         "literary_shelves": literary_shelves,
         "audiobook_shelf": audiobook_shelf if audio_candidates else None,
+        "listening_rooms": {
+            **LISTENING_ROOMS,
+            "total_approved": len(audio_candidates),
+            "items": listening_items,
+            "reserve_items": listening_reserve,
+        } if audio_candidates else None,
+        "hero": {
+            "headline": "A premium reading and listening sanctuary for timeless Bengali and English classics.",
+            "subheadline": "Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.",
+            "primary_cta": {"label": "Start Reading", "url": "/library"},
+            "secondary_cta": {"label": "Explore Audiobooks", "url": "/library?availability=approved-audiobook"},
+            "featured_books": featured,
+        },
+        "shelves": {"approved_audiobooks": listening_items},
         "groups": groups,
         "selected_audiobooks": audiobook_shelf["books"],
-        "source": {"truth_source": "public_catalog_and_canonical_reader_manifest", "generated_at": generated_at or datetime.now(timezone.utc).isoformat(), "live_title_count": len(contracts), "audiobook_count": len(audio_candidates)},
+        "source": {"truth_source": "public_catalog_and_canonical_reader_manifest", "generated_at": generated_at or datetime.now(timezone.utc).isoformat(), "live_title_count": len(contracts), "audiobook_count": len(audio_candidates), "catalog_version": "home-curated-v4"},
     }

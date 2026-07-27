@@ -97,7 +97,9 @@ def extract_and_upload_images(html: str, book_id: str) -> str:
                 f'{m.group(4)}>'
             )
         except Exception:
-            return f'<img{m.group(1)} src="" alt="Image unavailable" class="reader-img--error"{m.group(4)}>'
+            # Failed inline-image uploads are omitted from reader HTML. A broken
+            # image marker is not a customer-facing cover or illustration state.
+            return ""
 
     return pattern.sub(replace_match, html)
 
