@@ -1,0 +1,24 @@
+{
+  "status": "REPAIRED_IN_CODE_PENDING_PRODUCTION_CANARY",
+  "defects": {
+    "image_unavailable": {
+      "root_path": "backend/utils/content_processor.py -> frontend/src/pages/Reader.jsx sanitizeReaderHtml",
+      "resolution": "omit failed inline images; never emit customer-facing Image unavailable text"
+    },
+    "broken_cover": {
+      "root_path": "raw image URLs and graphical fallback treated as a valid image when graphical fallback was disabled",
+      "resolution": "ordered canonical cover candidates plus permanent-failure callback and reserve promotion"
+    },
+    "love_card_overlap": {
+      "root_path": "implicit content rows, negative cover margins, and transformed cover stack",
+      "resolution": "explicit meta/title/description/chips/covers/cta zones with bounded cover stage"
+    },
+    "home_order": {
+      "root_path": "legacy inline Home hero and HomeShelfArchitecture wrapper",
+      "resolution": "Home-owned curation fetch with PremiumHero -> PremiumListeningRail -> CuratedShelfCollage"
+    }
+  },
+  "release_truth_changed": false,
+  "paid_tts_lock_touched": false,
+  "production_visual_canary": "pending"
+}

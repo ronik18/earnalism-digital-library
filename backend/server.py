@@ -79,9 +79,14 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     )
 
 try:
-    from home_curation import build_home_curated_payload
+    from home_curation import build_home_curated_payload, _read_config as home_curation_config
 except ImportError:  # pragma: no cover - supports package-style test imports
-    from backend.home_curation import build_home_curated_payload
+    from backend.home_curation import build_home_curated_payload, _read_config as home_curation_config
+
+try:
+    from home_curation_v4 import build_home_curated_payload_v4
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.home_curation_v4 import build_home_curated_payload_v4
 
 try:
     from config.brand_logo import validate_brand_logo
@@ -971,6 +976,13 @@ BOOK_SUMMARY_PROJECTION = {
     "short_description": 1,
     "cover_url": 1,
     "cover_image_url": 1,
+    "front_cover_url": 1,
+    "cover_candidates": 1,
+    "cover_valid": 1,
+    "cover_audit_status": 1,
+    "canonical_cover_match": 1,
+    "is_placeholder": 1,
+    "is_typographic_only": 1,
     "thumbnail_url": 1,
     "blur_placeholder": 1,
     "dominant_color": 1,
@@ -990,10 +1002,23 @@ BOOK_SUMMARY_PROJECTION = {
     "qa_status": 1,
     "chapters.id": 1,
     "chapters.is_preview": 1,
+    "language": 1,
+    "language_code": 1,
+    "editorial_shelf_ids": 1,
+    "home_shelf_ids": 1,
+    "home_feature_eligible": 1,
+    "home_shelf_rank": 1,
+    "admin_pinned": 1,
+    "do_not_feature": 1,
+    "popularity_score": 1,
+    "sprint_id": 1,
+    "release_cycle": 1,
+    "published_at": 1,
 }
 PUBLIC_CACHE_PATHS = {
     "/api/home",
     "/api/home/books",
+    "/api/home/curated",
     "/api/categories",
     "/api/books",
     "/api/blog",
@@ -2616,6 +2641,16 @@ class Book(BaseModel):
     audio_asset_slug: str = ""
     audiobook_assets: Dict[str, str] = Field(default_factory=dict)
     audiobook: Dict[str, Any] = Field(default_factory=dict)
+    language: str = ""
+    language_code: str = ""
+    editorial_shelf_ids: List[str] = Field(default_factory=list)
+    home_shelf_ids: List[str] = Field(default_factory=list)
+    home_feature_eligible: bool = True
+    home_shelf_rank: Optional[int] = None
+    admin_pinned: bool = False
+    do_not_feature: bool = False
+    popularity_score: Optional[float] = None
+    sprint_id: str = ""
     rights_metadata: Dict[str, Any] = Field(default_factory=dict)
     readerStatus: str = "ready_for_editorial_review"
     publicationStatus: str = "draft"
@@ -2746,6 +2781,16 @@ class BookIn(BaseModel):
     allowPayment: bool = False
     is_published: bool = False
     slug: Optional[str] = None
+
+
+class HomeCurationIn(BaseModel):
+    editorial_shelf_ids: Optional[List[str]] = None
+    home_shelf_ids: Optional[List[str]] = None
+    home_feature_eligible: Optional[bool] = None
+    home_shelf_rank: Optional[int] = None
+    admin_pinned: Optional[bool] = None
+    do_not_feature: Optional[bool] = None
+    popularity_score: Optional[float] = None
 
 
 class BookAudiobookIn(BaseModel):
@@ -4575,43 +4620,6 @@ async def get_home_books_page(limit: int = HOME_BOOK_PAGE_DEFAULT_LIMIT, offset:
     return await _home_books_page(limit, offset)
 
 
-@api.get("/home/curated")
-async def get_home_curated_shelves():
-    """Return data-driven editorial shelves without granting release authority."""
-    page = await _home_books_page(200, 0)
-    shelves = {
-        "bengali-classics": {"id": "bengali-classics", "title": "Bengali classics", "kicker": "In the original rhythm", "description": "Stories shaped by soil, memory, and the Bengali imagination.", "books": []},
-        "gothic-classics": {"id": "gothic-classics", "title": "Gothic classics", "kicker": "For the late hour", "description": "Shadowed rooms, strange weather, and books that keep the light low.", "books": []},
-        "love-society-human-nature": {"id": "love-society-human-nature", "title": "Love, society, human nature", "kicker": "The human shelf", "description": "Tenderness, pressure, and the choices that reveal us.", "books": []},
-        "adventure-journeys": {"id": "adventure-journeys", "title": "Adventure and journeys", "kicker": "Go a little farther", "description": "A change of place, a widening horizon, a story in motion.", "books": []},
-        "short-masterpieces": {"id": "short-masterpieces", "title": "Short masterpieces", "kicker": "One sitting", "description": "Small books with a long afterlife.", "books": []},
-        "selected-listening": {"id": "selected-listening", "title": "Selected listening", "kicker": "Release-gated audio", "description": "Approved listening rooms, shown only when the canonical manifest says they are ready.", "books": []},
-    }
-    for book in page.get("books", []):
-        category = str(book.get("category_slug") or "").lower()
-        title = str(book.get("title") or "").lower()
-        shelf_ids = book.get("editorial_shelf_ids") or []
-        if not isinstance(shelf_ids, list): shelf_ids = []
-        if not shelf_ids:
-            if any(token in category or token in title for token in ("bengali", "bangla")): shelf_ids.append("bengali-classics")
-            elif any(token in category or token in title for token in ("gothic", "horror", "mystery")): shelf_ids.append("gothic-classics")
-            elif any(token in category or token in title for token in ("adventure", "journey", "travel")): shelf_ids.append("adventure-journeys")
-            else: shelf_ids.append("love-society-human-nature")
-        safe_book = {key: book.get(key, "") for key in ("slug", "title", "author", "short_description", "cover_url", "cover_image_url", "thumbnail_url", "category_slug")}
-        safe_book["front_cover_url"] = safe_book.get("cover_image_url") or safe_book.get("cover_url") or safe_book.get("thumbnail_url")
-        for shelf_id in shelf_ids:
-            if shelf_id in shelves and shelf_id != "selected-listening": shelves[shelf_id]["books"].append(safe_book)
-    for book in page.get("books", []):
-        slug = book.get("slug")
-        if not slug: continue
-        manifest = await _reader_book_manifest_doc(slug)
-        audio = (manifest or {}).get("audio") or {}
-        if manifest and audio.get("enabled") is True and audio.get("url"):
-            public_book = manifest.get("book") or {}
-            shelves["selected-listening"]["books"].append({"slug": slug, "title": public_book.get("title", book.get("title", "")), "author": public_book.get("author", book.get("author", "")), "short_description": public_book.get("short_description", ""), "front_cover_url": public_book.get("cover_image_url") or public_book.get("cover_url", ""), "audio_duration_ms": audio.get("duration_ms", 0), "audio_release": "APPROVED"})
-    return {"version": "home-curation-v1", "shelves": list(shelves.values())}
-
-
 @api.post("/analytics/event")
 async def record_analytics_event(
     payload: AnalyticsEventIn,
@@ -4676,8 +4684,48 @@ async def list_categories():
 
 @api.get("/home/curated")
 async def get_home_curated():
-    """Return the deterministic, file-backed Sprint 1 homepage projection."""
-    return build_home_curated_payload()
+    """Return one canonical, release-safe Home curation contract."""
+    cache_key = _public_cache_key("home_curated_v4")
+    cached = await _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+
+    docs = await db.books.find(
+        _controlled_public_book_query(),
+        BOOK_SUMMARY_PROJECTION,
+    ).sort("created_at", -1).to_list(500)
+    seen = {str(doc.get("slug") or "").strip().lower() for doc in docs}
+    for slug in CONTROLLED_LIVE_BOOK_SLUGS:
+        if slug in seen:
+            continue
+        artifact = _controlled_artifact_doc(slug, include_content=False)
+        if artifact:
+            docs.append(artifact)
+
+    audio_contracts: dict[str, dict[str, Any]] = {}
+    for doc in docs:
+        slug = str(doc.get("slug") or "").strip().lower()
+        if not slug or not can_expose_audio(doc):
+            continue
+        manifest = await _reader_book_manifest_doc(slug)
+        audio = (manifest or {}).get("audio") or {}
+        audio_contracts[slug] = {
+            "enabled": audio.get("enabled") is True,
+            "url": audio.get("url") or "",
+            "release_gate": audio.get("release_gate") or "",
+            "qa_status": audio.get("qa_status") or "",
+            "duration_ms": audio.get("duration_ms") or 0,
+            "package_valid": bool(audio.get("enabled") is True and audio.get("url") and (audio.get("assets") or audio.get("size") or audio.get("url"))),
+            "endpoint_valid": bool((audio.get("url") or "").startswith(f"/api/reader/book/{slug}/audiobook")),
+        }
+
+    payload = build_home_curated_payload_v4(
+        docs,
+        config=home_curation_config(),
+        audio_contracts=audio_contracts,
+    )
+    await _public_cache_set(cache_key, payload)
+    return payload
 
 
 # ---------- Public: Books ----------
@@ -5014,6 +5062,36 @@ async def admin_update_book_audiobook(slug: str, payload: BookAudiobookIn, _=Dep
     await db.books.update_one({"slug": slug}, {"$set": update})
     refreshed = await db.books.find_one({"slug": slug}, {"_id": 0})
     return refreshed
+
+
+@api.patch("/admin/books/{slug}/home-curation")
+async def admin_update_home_curation(slug: str, payload: HomeCurationIn, _=Depends(require_admin)):
+    """Update editorial placement only; audio and reader release truth stay untouched."""
+    existing = await db.books.find_one({"slug": slug}, {"_id": 0, "slug": 1})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Book not found")
+    allowed_shelves = {
+        "bengali-life-and-legacy",
+        "gothic-and-the-uncanny",
+        "love-society-and-human-nature",
+        "adventure-nature-and-wonder",
+        "short-masterpieces",
+    }
+    update: dict[str, Any] = {}
+    if payload.editorial_shelf_ids is not None:
+        update["editorial_shelf_ids"] = [item for item in payload.editorial_shelf_ids if item in allowed_shelves]
+    if payload.home_shelf_ids is not None:
+        update["home_shelf_ids"] = [item for item in payload.home_shelf_ids if item in allowed_shelves]
+    for key in ("home_feature_eligible", "home_shelf_rank", "admin_pinned", "do_not_feature", "popularity_score"):
+        value = getattr(payload, key)
+        if value is not None:
+            update[key] = value
+    if not update:
+        raise HTTPException(status_code=400, detail="At least one curation field is required")
+    await db.books.update_one({"slug": slug}, {"$set": update})
+    global _public_cache_generation
+    _public_cache_generation += 1
+    return {"slug": slug, "updated": sorted(update), "reader_audio_release_truth_unchanged": True}
 
 
 @api.delete("/admin/books/{slug}")

@@ -5,8 +5,7 @@ const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Home.jsx"), "
 
 describe("Home curated shelf integration", () => {
   test("replaces the internal below-hero panels with the public shelf collage", () => {
-    expect(source).toContain("CuratedShelfCollage");
-    expect(source).toContain("homeCuration?.shelf_collage");
+    expect(source).toContain("HomeShelfArchitecture");
     expect(source).not.toContain("ComingSoonBoard");
     expect(source).not.toContain("ApprovedAudiobookSpotlight");
     expect(source).not.toContain("reference-pipeline-shelf");

@@ -1,0 +1,28 @@
+{
+  "version": "home-curation-v4",
+  "public_endpoint": "/api/home/curated",
+  "internal_fields": [
+    "release_cycle",
+    "sprint_id",
+    "editorial_tags",
+    "home_shelf_ids",
+    "home_shelf_rank",
+    "home_featured",
+    "admin_pinned",
+    "do_not_feature",
+    "popularity_score",
+    "freshness_score",
+    "cover_valid",
+    "cover_audit_status"
+  ],
+  "selection_order": ["admin_pinned", "home_shelf_rank", "popularity_score", "published_at", "slug"],
+  "admin_write_scope": ["editorial_shelf_ids", "home_shelf_ids", "home_feature_eligible", "home_shelf_rank", "admin_pinned", "do_not_feature", "popularity_score"],
+  "admin_forbidden_mutations": ["reader_enabled", "audiobook_enabled", "audiobook_release_gate", "audio_qa_status", "cover_audit_status"],
+  "sprint1": {"reader_live": 32, "audio_approved": 4},
+  "sprint2_fixture": {
+    "reader_live": ["fixture-sprint2-bengali-reader", "fixture-sprint2-gothic-reader"],
+    "audio_approved": ["fixture-sprint2-gothic-audio"],
+    "production_data_changed": false,
+    "frontend_code_change_required": false
+  }
+}

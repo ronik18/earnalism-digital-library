@@ -291,8 +291,7 @@ function sanitizeReaderHtml(html) {
       if ((name === 'href' || name === 'src') && /^\s*javascript:/i.test(value)) node.removeAttribute(attr.name);
     });
     if (node.tagName?.toLowerCase() === 'img' && !node.getAttribute('src')) {
-      node.setAttribute('alt', node.getAttribute('alt') || 'Image unavailable');
-      node.classList.add('reader-img--error');
+      node.remove();
     }
   });
   return template.innerHTML;

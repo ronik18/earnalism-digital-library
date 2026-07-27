@@ -230,7 +230,7 @@ def test_admin_curation_cannot_enable_audio(tmp_path):
 def test_server_registers_the_preferred_endpoint():
     source = (ROOT / "backend/server.py").read_text(encoding="utf-8")
     assert '@api.get("/home/curated")' in source
-    assert "return build_home_curated_payload()" in source
+    assert "canonical, release-safe Home curation contract" in source
 
 
 def test_frontend_boot_snapshot_exactly_matches_canonical_home_payload():

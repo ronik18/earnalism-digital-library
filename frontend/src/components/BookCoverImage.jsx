@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { bookCoverImageSources } from "../lib/images";
 
 const DEFAULT_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 44vw, 92vw";
@@ -34,16 +34,38 @@ export default function BookCoverImage({
   fallback = "E",
   allowGraphicalFallback = true,
   onImageError,
+  onPermanentFailure,
 }) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [candidateIndex, setCandidateIndex] = useState(0);
+  const coverCandidates = useMemo(() => Array.from(new Set([
+    book?.front_cover_url,
+    book?.cover_image_url,
+    book?.cover_url,
+    book?.thumbnail_url,
+    ...(Array.isArray(book?.cover_candidates) ? book.cover_candidates.map((item) => (
+      typeof item === "string" ? item : item?.url
+    )) : []),
+  ].filter((value) => typeof value === "string" && value.trim()))), [book]);
+  const activeCover = coverCandidates[candidateIndex] || "";
+  const candidateBook = activeCover
+    ? { ...book, front_cover_url: activeCover, cover_image_url: activeCover, cover_url: activeCover, thumbnail_url: activeCover }
+    : book;
   const intrinsicHeight = height || Math.round(Number(width || 420) * 4 / 3);
   const sources = allowGraphicalFallback
-    ? bookCoverImageSources(book, { width, widths, quality, forceFallback: failed, kind })
+    ? bookCoverImageSources(candidateBook, { width, widths, quality, forceFallback: failed, kind })
     : failed
       ? { src: "", srcSet: "", placeholder: "", backgroundColor: "", hasCover: false }
-      : bookCoverImageSources(book, { width, widths, quality, kind });
-  const showImage = Boolean(sources.hasCover);
+      : bookCoverImageSources(candidateBook, { width, widths, quality, kind });
+  const showImage = Boolean(sources.hasCover && (allowGraphicalFallback || !sources.isFallback));
+  useEffect(() => {
+    if (!allowGraphicalFallback && !failed && !sources.hasCover) {
+      setFailed(true);
+      onImageError?.(book);
+      onPermanentFailure?.(book);
+    }
+  }, [allowGraphicalFallback, book, failed, onImageError, onPermanentFailure, sources.hasCover]);
   const coverAlt = typeof alt === "string" ? alt : (book?.title || "Book cover");
   const style = sources.backgroundColor ? { backgroundColor: sources.backgroundColor } : undefined;
   const wrapperClass = [
@@ -80,8 +102,14 @@ export default function BookCoverImage({
           draggable={draggable}
           onLoad={() => setLoaded(true)}
           onError={() => {
+            setLoaded(false);
+            if (candidateIndex < coverCandidates.length - 1) {
+              setCandidateIndex((current) => current + 1);
+              return;
+            }
             setFailed(true);
             onImageError?.(book);
+            onPermanentFailure?.(book);
           }}
         />
       ) : (
