@@ -821,3 +821,25 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   `559d94ef386b741ee489d5dcbfd9df71686cbe9ac634801879d2978afbdcad25`
   as closed. Gift remains audio-hidden and requires an exact source-bound
   narration or licensed-audio delivery.
+
+## 2026-07-28 — The Monkey's Paw retained B2 prefix exhausted
+
+- A preflight binding is not proof that the selected private object contains
+  the expected audio. The immutable version selected for the repaired
+  candidate matched its inventory size but hashed to
+  `ae054cb6464fd228669304080e173268d2d4d37aabaa01a7b9be0b9f5f116600`,
+  not the required
+  `6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8`.
+- Enumerate the complete title prefix before assuming a missing candidate is
+  merely under a neighboring key. The prefix contained exactly six immutable
+  versions, no delete markers, two audio objects, and four sidecars.
+- Both MP3s were structurally valid and matched their listed byte sizes, but
+  their hashes and durations were different from the repaired evidence:
+  `044cdb5b...a1a7a` at `1769.3761` seconds and
+  `ae054cb6...16600` at `1287.778685` seconds versus the expected
+  `6b2c7f18...fa8` at `1449.888` seconds.
+- Valid media is not interchangeable media. Do not relabel either retained
+  object, rerun QA against the wrong bytes, or expose public audio. Recover the
+  original repaired build only if provenance and source binding can be
+  restored; otherwise use a new rights-clear exact source-bound delivery and
+  rerun every release gate.

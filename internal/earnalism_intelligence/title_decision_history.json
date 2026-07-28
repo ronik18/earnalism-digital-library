@@ -1526,9 +1526,9 @@
       "audiobook_next_action": "Do not repeat af_sarah or normalize the remaining content mismatches. Validate received source-bound narration or use a genuinely different voice/provider before any listening or full release QA."
     },
     "the-monkeys-paw": {
-      "latest_decision": "RETAINED_PRIVATE_CANDIDATE_HASH_BINDING_PREFLIGHT_READY",
-      "decision_reason": "The repaired candidate remains blocked from release, but an immutable retained private B2 object is now bound in a network-free preflight to its exact expected SHA-256 and source evidence. Authorized private retrieval must prove the downloaded bytes match before any fresh QA; filename and title matching remain insufficient.",
-      "updated_at": "2026-07-23T07:16:29Z",
+      "latest_decision": "PRIVATE_B2_PREFIX_EXHAUSTED_TARGET_REPAIRED_AUDIO_ABSENT",
+      "decision_reason": "A read-only enumeration found six immutable versions under the complete private title prefix: two audio objects and four sidecars with no delete markers. Both audio objects were downloaded, size-verified, hash-verified, and ffprobed; neither SHA-256 or duration matches the repaired candidate bound in release evidence.",
+      "updated_at": "2026-07-28T13:08:41Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
@@ -1542,13 +1542,30 @@
       "repaired_listening_scores": [9.4, 8.4, 9.4, 8.4, 9.4, 9.4],
       "completed_attempts_must_not_repeat": true,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-monkeys-paw/metadata.json",
-      "audiobook_next_action": "Inject the private B2 credentials, execute the plan-bound private hash binder, and proceed only if the downloaded object exactly matches `6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8`; then run fresh full release QA without exposing the object.",
+      "audiobook_next_action": "Recover the exact `6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8` repaired recording from its original private build only if provenance and source binding can be re-established; otherwise obtain or regenerate one new rights-clear exact source-bound full-title delivery. Do not relabel either retained B2 object.",
       "private_media_binding_preflight": {
-        "status": "READY_FOR_AUTHORIZED_PRIVATE_DOWNLOAD",
+        "status": "SUPERSEDED_BY_EXECUTED_PRIVATE_PREFIX_FORENSIC",
         "plan_sha256": "9157f9ac0940b553225019eb0a1780f1c195f0edf5a701be5578aec140bf0a0e",
         "expected_audio_sha256": "6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8",
-        "network_call_performed": false,
+        "network_call_performed": true,
+        "binding_result": "BLOCKED_UNBOUND_HASH_MISMATCH",
         "publication_performed": false
+      },
+      "private_b2_prefix_forensic": {
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_private_b2_prefix_forensic_20260728.json",
+        "prefix": "storage-containment/the-monkeys-paw/",
+        "object_version_count": 6,
+        "audio_version_count": 2,
+        "delete_marker_count": 0,
+        "expected_audio_sha256": "6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8",
+        "observed_audio_sha256": [
+          "044cdb5b0339574bed89fb44a4d57a9dda7fe5d8428dc73c72b6919e7d5a1a7a",
+          "ae054cb6464fd228669304080e173268d2d4d37aabaa01a7b9be0b9f5f116600"
+        ],
+        "target_found": false,
+        "target_immutable_version_id": null,
+        "release_eligible": false,
+        "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED"
       }
     },
     "the-yellow-wallpaper": {
