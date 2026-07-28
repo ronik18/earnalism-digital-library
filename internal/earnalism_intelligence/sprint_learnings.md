@@ -785,3 +785,22 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   rights-clear recording before spending on listening review.
 - Pride remains reader-live and audio-hidden; no generation, provider call,
   upload, publication, or release-state mutation occurred.
+
+## 2026-07-28 Sprint 1 admin cover remediation
+
+- Canonical presence and URL reachability are separate checks: all 42 populated
+  Sprint 1 cover-side URLs resolved as images, while 11 titles still had no
+  canonical front or back URL at all.
+- A reachable image can still be wrong. `a-ghost-story` has a populated,
+  reachable pair that visibly names another title and author, so semantic cover
+  review must remain an independent blocker.
+- Direct upload of finished owner art is not cover generation. It should use a
+  small authenticated media lane with strict MIME/byte/dimension/aspect
+  validation, SHA-256 evidence, concurrency control, and audit logging.
+- An admin upload is a candidate, not controlled-publication truth. The cover
+  desk distinguishes `MISSING`, `MISMATCH_REVIEW_REQUIRED`,
+  `UPLOADED_PENDING_CANONICAL_REVIEW`, and `CANONICAL_READY` so an upload cannot
+  silently bypass the catalog review step.
+- Cover-only database patches are built from an allowlisted helper and never
+  contain reader or audiobook fields. The complete frontend test suite and
+  focused backend/catalog tests passed without changing audio release state.

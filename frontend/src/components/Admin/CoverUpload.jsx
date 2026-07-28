@@ -1,18 +1,24 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import axios from "axios";
 import { ImageOff, ImagePlus } from "lucide-react";
-import { API, TOKEN_KEY } from "../../lib/api";
+import { api } from "../../lib/api";
 import { imageUrlCandidates, optimizedImageUrl } from "../../lib/images";
 
 const ACCEPTED = {
   "image/jpeg": [".jpg", ".jpeg"],
   "image/png": [".png"],
   "image/webp": [".webp"],
-  "image/gif": [".gif"],
 };
+const MAX_COVER_BYTES = 4 * 1024 * 1024;
 
-export default function CoverUpload({ bookId, kind = "front", currentUrl = "", onSuccess }) {
+export default function CoverUpload({
+  bookId,
+  kind = "front",
+  currentUrl = "",
+  bookTitle = "",
+  bookAuthor = "",
+  onSuccess,
+}) {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
   const [progress, setProgress] = useState(0);
@@ -39,11 +45,8 @@ export default function CoverUpload({ bookId, kind = "front", currentUrl = "", o
       const fd = new FormData();
       fd.append("file", file);
       try {
-        const token = localStorage.getItem(TOKEN_KEY);
-        const headers = { "Content-Type": "multipart/form-data" };
-        if (token) headers.Authorization = `Bearer ${token}`;
-        const { data } = await axios.post(`${API}/admin/books/${bookId}/cover?kind=${kind}`, fd, {
-          headers,
+        const { data } = await api.post(`/admin/books/${bookId}/cover`, fd, {
+          params: { kind, confirm_expensive_job: true },
           onUploadProgress: (evt) => {
             if (evt.total) setProgress(Math.round((evt.loaded * 100) / evt.total));
           },
@@ -65,12 +68,12 @@ export default function CoverUpload({ bookId, kind = "front", currentUrl = "", o
     onDrop,
     onDropRejected: (items) => {
       setStatus("error");
-      setError(items?.[0]?.errors?.[0]?.message || "Use JPG, PNG, WebP, or GIF under 10MB.");
+      setError(items?.[0]?.errors?.[0]?.message || "Use JPG, PNG, or WebP under 4MB.");
     },
     accept: ACCEPTED,
-    disabled: status === "uploading",
+    disabled: status === "uploading" || !bookId,
     maxFiles: 1,
-    maxSize: 10 * 1024 * 1024,
+    maxSize: MAX_COVER_BYTES,
   });
 
   return (
@@ -80,7 +83,7 @@ export default function CoverUpload({ bookId, kind = "front", currentUrl = "", o
           {previewUrl && !previewFailed ? (
             <img
               src={previewUrl}
-              alt={`${label} preview`}
+              alt={`${label} preview${bookTitle ? ` for ${bookTitle}${bookAuthor ? ` by ${bookAuthor}` : ""}` : ""}`}
               className="h-full w-full object-contain"
               onError={() => {
                 if (candidateIndex + 1 < candidates.length) {
@@ -106,9 +109,14 @@ export default function CoverUpload({ bookId, kind = "front", currentUrl = "", o
               background: isDragActive ? "rgba(107,16,32,0.04)" : "rgba(253,252,248,0.7)",
             }}
           >
-            <input {...getInputProps()} />
+            <input
+              {...getInputProps({
+                "aria-label": `Upload ${label.toLowerCase()} image`,
+                "data-testid": `cover-upload-${kind}-${bookId}`,
+              })}
+            />
             <span className="text-burgundy">{isDragActive ? "Drop cover image" : "Upload image"}</span>
-            <span className="block text-[0.72rem] text-charcoal-soft">JPG, PNG, WebP, GIF · max 10MB</span>
+            <span className="block text-[0.72rem] text-charcoal-soft">JPG, PNG, WebP · portrait · max 4MB</span>
           </div>
           {previewFailed && <div className="mt-2 text-[0.72rem] text-burgundy">Preview image not found. Check the URL or upload a new cover.</div>}
           {status === "uploading" && (
@@ -119,7 +127,7 @@ export default function CoverUpload({ bookId, kind = "front", currentUrl = "", o
               <div className="mt-1 text-[0.72rem] text-charcoal-soft">Uploading… {progress}%</div>
             </div>
           )}
-          {status === "done" && <div className="mt-2 text-[0.72rem] text-burgundy">Cover saved and optimized.</div>}
+          {status === "done" && <div className="mt-2 text-[0.72rem] text-burgundy">Cover uploaded for canonical review.</div>}
           {status === "error" && <div className="mt-2 text-[0.72rem] text-burgundy">{error}</div>}
         </div>
       </div>
