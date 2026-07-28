@@ -1,9 +1,15 @@
+import json
+from pathlib import Path
+
 from backend.home_curation_v4 import (
     build_home_curated_payload_v4,
     select_hero_carousel_books,
     select_visible_books,
     shelf_ids_for_book,
 )
+
+
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def book(slug, shelf_ids, *, pinned=False, rank=None, audio=False):
@@ -158,6 +164,54 @@ def test_hero_carousel_exposes_only_sprint1_reader_covers_in_stable_order():
     assert payload["hero"]["featured_books"] == payload["hero"]["carousel_books"][:6]
     assert payload["source"]["hero_carousel_eligible_count"] == 5
     assert payload["source"]["catalog_version"] == "home-curated-v4-sprint1-hero"
+
+
+def test_explicit_hero_sequence_excludes_devdas_without_removing_it_from_catalog_shelves():
+    devdas = book("devdas", ["love-society-and-human-nature"], rank=1)
+    featured = book("featured", ["love-society-and-human-nature"], rank=2)
+    payload = build_home_curated_payload_v4(
+        [devdas, featured],
+        config={
+            "sprint1_active_slugs": ["devdas", "featured"],
+            "hero_featured_slugs": ["featured"],
+        },
+    )
+
+    assert [item["slug"] for item in payload["hero"]["carousel_books"]] == ["featured"]
+    love_shelf = next(
+        item for item in payload["literary_shelves"]
+        if item["id"] == "love-society-and-human-nature"
+    )
+    assert "devdas" in {
+        item["slug"]
+        for item in love_shelf["visible_books"] + love_shelf["reserve_books"]
+    }
+
+
+def test_explicit_hero_sequence_controls_order_independently_of_catalog_rank():
+    first = book("first", ["short-masterpieces"], rank=99)
+    second = book("second", ["short-masterpieces"], rank=1)
+    payload = build_home_curated_payload_v4(
+        [first, second],
+        config={
+            "sprint1_active_slugs": ["first", "second"],
+            "hero_featured_slugs": ["first", "second"],
+        },
+    )
+
+    assert [item["slug"] for item in payload["hero"]["carousel_books"]] == [
+        "first",
+        "second",
+    ]
+
+
+def test_production_curation_keeps_devdas_global_but_not_hero_featured():
+    config = json.loads(
+        (ROOT / "backend/data/home_hero_curation.json").read_text(encoding="utf-8")
+    )
+
+    assert "devdas" in config["sprint1_active_slugs"]
+    assert "devdas" not in config["hero_featured_slugs"]
 
 
 def test_hero_carousel_builder_without_cohort_config_fails_closed():

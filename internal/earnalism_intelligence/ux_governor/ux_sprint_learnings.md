@@ -136,3 +136,12 @@
 - Accessible file labels, deterministic cover previews, and client-side
   MIME/size limits provide fast feedback while the backend remains the
   authoritative validator.
+
+## 2026-07-28 Home Hero Devdas Synchronization And Plaque Hotfix
+
+- A hero image can create a false slide-data mismatch even when live carousel records are correct: the historical reference bitmap still contained a Devdas cover underneath a separately indexed dynamic plaque.
+- Remove a title from the hero at the curation boundary with a stable slug sequence, while retaining the catalog record and shelf membership. A frontend exclusion remains valuable as a fail-closed defense against stale curation payloads.
+- Cover, metadata, route, alt text, accessible label, counter position, and diagnostic IDs should derive from one normalized active-slide object; this makes synchronization browser-verifiable.
+- Editorial plaque and 3-D book stage need separate grid regions. A translucent overlay on top of unrelated decorative book art cannot look intentional or remain accessible across breakpoints.
+- Failed adjacent-cover preloads must reconcile the pending index to the visible index. Otherwise the next manual navigation can jump even when circular index math is correct.
+- Five-viewport browser evidence passed with Devdas absent from the hero DOM, zero hidden focus targets, zero horizontal overflow, synchronized active identities, 44px controls, and one-step pointer and keyboard navigation.

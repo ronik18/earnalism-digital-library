@@ -1,4 +1,5 @@
 import {
+  activeHeroSlide,
   canRotateCarousel,
   carouselSlideState,
   heroCarouselBooks,
@@ -15,6 +16,9 @@ function book(index) {
     reader_enabled: true,
     cover_valid: true,
     front_cover_url: `/assets/sprint1-${index}.webp`,
+    cover_alt_text: `Sprint 1 ${index} by Earnalism`,
+    book_url: `/book/sprint1-${index}`,
+    language: "en",
   };
 }
 
@@ -29,7 +33,26 @@ test("carousel fails closed instead of importing general shelf books", () => {
 
 test("carousel deduplicates valid explicit books and rejects unsafe records", () => {
   const valid = book(0);
+  const [slide] = heroCarouselBooks({
+    hero: {
+      carousel_books: [
+        valid,
+        { ...valid },
+        { ...book(1), cover_valid: false },
+        { ...book(2), reader_enabled: false },
+        { ...book(3), front_cover_url: "" },
+      ],
+    },
+  });
 
+  expect(slide).toMatchObject({
+    ...valid,
+    id: valid.slug,
+    destination: valid.book_url,
+    coverSrc: valid.front_cover_url,
+    coverAlt: valid.cover_alt_text,
+    locale: valid.language,
+  });
   expect(heroCarouselBooks({
     hero: {
       carousel_books: [
@@ -40,7 +63,39 @@ test("carousel deduplicates valid explicit books and rejects unsafe records", ()
         { ...book(3), front_cover_url: "" },
       ],
     },
-  })).toEqual([valid]);
+  })).toHaveLength(1);
+});
+
+test("carousel excludes Devdas aliases from hero data without mutating the catalog records", () => {
+  const globalCatalog = [
+    { ...book(0), slug: "devdas", book_url: "/book/devdas" },
+    { ...book(1), slug: "debdas", book_url: "/book/debdas" },
+    { ...book(2), slug: "devdas-study-edition", book_url: "/book/devdas-study-edition" },
+    book(3),
+  ];
+
+  const heroSlides = heroCarouselBooks({ hero: { carousel_books: globalCatalog } });
+
+  expect(globalCatalog.map((item) => item.slug)).toContain("devdas");
+  expect(heroSlides.map((item) => item.slug)).toEqual(["sprint1-3"]);
+  expect(heroSlides.some((item) => /devdas|debdas/i.test(`${item.slug} ${item.coverSrc} ${item.coverAlt}`))).toBe(false);
+});
+
+test("active cover, metadata, route, and accessible identity share one slide object", () => {
+  const slides = heroCarouselBooks({ hero: { carousel_books: [book(0), book(1), book(2)] } });
+  const slide = activeHeroSlide(slides, 1);
+
+  expect(slide).toBe(slides[1]);
+  expect(slide).toMatchObject({
+    id: "sprint1-1",
+    title: "Sprint 1 1",
+    author: "Earnalism",
+    coverSrc: "/assets/sprint1-1.webp",
+    destination: "/book/sprint1-1",
+    coverAlt: "Sprint 1 1 by Earnalism",
+  });
+  expect(activeHeroSlide(slides, 3)).toBe(slides[0]);
+  expect(activeHeroSlide([], 0)).toBeNull();
 });
 
 test.each([4, 6, 10])("carousel wraps circular indexes for a %i-item data set", (itemCount) => {
