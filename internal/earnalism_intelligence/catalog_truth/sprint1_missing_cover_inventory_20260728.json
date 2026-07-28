@@ -1,0 +1,116 @@
+{
+  "schema_version": "sprint1-cover-inventory-v1",
+  "generated_at": "2026-07-28",
+  "source_commit": "9ccd1c345ed92a252f597d93083ce99c89cc589b",
+  "truth_source": "controlled_publications",
+  "summary": {
+    "sprint1_titles_checked": 32,
+    "valid_cover_pairs": 20,
+    "missing_both": 11,
+    "missing_front_only": 0,
+    "missing_back_only": 0,
+    "broken_populated_urls": 0,
+    "title_mismatched_pairs": 1,
+    "titles_needing_remediation": 12
+  },
+  "books": [
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "author": "Bibhutibhushan Bandyopadhyay",
+      "language": "bn",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "author": "Sarat Chandra Chattopadhyay",
+      "language": "bn",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+      "author": "Robert Louis Stevenson",
+      "language": "en",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "language": "en",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "author": "Jack London",
+      "language": "en",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "author": "Edgar Allan Poe",
+      "language": "en",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "author": "O. Henry",
+      "language": "en",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "author": "Edgar Allan Poe",
+      "language": "en",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper",
+      "author": "Charlotte Perkins Gilman",
+      "language": "en",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "title": "The Monkey's Paw",
+      "author": "W.W. Jacobs",
+      "language": "en",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "author": "Guy de Maupassant",
+      "language": "en",
+      "front_status": "MISSING",
+      "back_status": "MISSING"
+    },
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "author": "Mark Twain",
+      "language": "en",
+      "front_status": "TITLE_MISMATCH",
+      "back_status": "TITLE_MISMATCH",
+      "mismatch_detail": "Canonical images display Bharat at the Crossroads by Ronik Basak."
+    }
+  ],
+  "release_truth_unchanged": true
+}

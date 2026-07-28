@@ -8,11 +8,12 @@ import { useSettings } from "../context/SettingsContext";
 import BrandMark from "../components/BrandMark";
 import ChapterUpload from "../components/Admin/ChapterUpload";
 import CoverUpload from "../components/Admin/CoverUpload";
+import CoverManager from "../components/Admin/CoverManager";
 import PublishingWorkflowPanel from "../components/Admin/PublishingWorkflowPanel";
 import { normalizeImageUrl, optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 
-const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "launch-monitor", "settings", "account"];
+const TABS = ["books", "covers", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "launch-monitor", "settings", "account"];
 
 export default function Admin({ initialTab = "books" }) {
   useSEO({
@@ -52,6 +53,7 @@ export default function Admin({ initialTab = "books" }) {
         </div>
 
         {tab === "books" && <BooksAdmin />}
+        {tab === "covers" && <CoverManager />}
         {tab === "blog" && <BlogAdmin />}
         {tab === "categories" && <CategoriesAdmin />}
         {tab === "newsletter" && <SimpleList endpoint="/admin/newsletter" testid="admin-newsletter" cols={["name", "email", "created_at"]} title="Reading Circle" />}
@@ -689,10 +691,10 @@ function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
                 <input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={(e) => { setDocxTemplate(e.target.files?.[0] || null); setImportResult(null); setCreditReport(null); setImportProgress(0); }} className="input-elegant text-sm" data-testid="book-import-docx" />
               </Field>
               <Field label="Front cover">
-                <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={(e) => setFrontCoverFile(e.target.files?.[0] || null)} className="input-elegant text-sm" data-testid="book-import-front-cover" />
+                <input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e) => setFrontCoverFile(e.target.files?.[0] || null)} className="input-elegant text-sm" data-testid="book-import-front-cover" />
               </Field>
               <Field label="Back cover">
-                <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={(e) => setBackCoverFile(e.target.files?.[0] || null)} className="input-elegant text-sm" data-testid="book-import-back-cover" />
+                <input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e) => setBackCoverFile(e.target.files?.[0] || null)} className="input-elegant text-sm" data-testid="book-import-back-cover" />
               </Field>
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -803,6 +805,8 @@ function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
                 bookId={book.slug}
                 kind="front"
                 currentUrl={f.cover_image_url || f.cover_url}
+                bookTitle={f.title}
+                bookAuthor={f.author}
                 onSuccess={(data) => {
                   setF((prev) => ({ ...prev, cover_image_url: data.cover_url, cover_url: data.cover_url, thumbnail_url: data.thumbnail_url, cover_processing_status: "ready", cover_processing_error: "" }));
                   toast.success("Front cover uploaded");
@@ -812,6 +816,8 @@ function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
                 bookId={book.slug}
                 kind="back"
                 currentUrl={f.back_cover_image_url || f.back_cover_url}
+                bookTitle={f.title}
+                bookAuthor={f.author}
                 onSuccess={(data) => {
                   setF((prev) => ({ ...prev, back_cover_image_url: data.cover_url, back_cover_url: data.cover_url, back_cover_thumbnail_url: data.thumbnail_url, back_cover_processing_status: "ready", back_cover_processing_error: "" }));
                   toast.success("Back cover uploaded");
