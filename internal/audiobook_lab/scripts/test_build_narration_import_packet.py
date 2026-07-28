@@ -227,6 +227,68 @@ class NarrationImportPacketTests(unittest.TestCase):
             summary = (packet_dir / "failed_tts_evidence_summary.md").read_text(encoding="utf-8")
             self.assertIn("robotic_texture_detected", summary)
 
+    def test_bounded_candidate_attempts_enter_import_packet_history(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            slug = "bounded-sample"
+            self.fixture(root, slug=slug)
+            title_runs = root / "internal/audiobook_lab/sprint1_publication/title_runs"
+            title_runs.mkdir(parents=True)
+            (title_runs / f"{slug}_release_gate_evidence.json").write_text(
+                json.dumps(
+                    {
+                        "slug": slug,
+                        "release_gate_state": "SOURCE_BOUND_DELIVERY_REQUIRED",
+                        "exact_blocker": "CHAPTER_CHECKPOINT_FAILED",
+                        "bounded_candidate_attempts": [
+                            {
+                                "scope": "representative_listening",
+                                "status": "PASS",
+                                "provider": "kokoro",
+                                "model": "example-model",
+                                "voice": "example-voice",
+                                "attempt_fingerprint": "representative-fingerprint",
+                                "representative_score": 9.0,
+                                "confidence": 0.92,
+                                "evidence": "representative.json",
+                            },
+                            {
+                                "scope": "chapter_checkpoint",
+                                "status": "BLOCKED",
+                                "provider": "kokoro",
+                                "model": "example-model",
+                                "voice": "example-voice",
+                                "attempt_fingerprint": "chapter-fingerprint",
+                                "evidence": "chapter.json",
+                            },
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            result = packet.create_packet(
+                slug=slug,
+                asset_root=root,
+                output_root=root / "packets",
+                candidate_kind="licensed_audio_import",
+            )
+            metadata = json.loads(
+                (Path(result["packet_dir"]) / "metadata.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            evidence = metadata["prior_provider_evidence"]
+            self.assertEqual(len(evidence["non_release_passes"]), 1)
+            self.assertEqual(len(evidence["failed_attempts"]), 1)
+            self.assertEqual(
+                evidence["non_release_passes"][0]["attempt_fingerprint"],
+                "representative-fingerprint",
+            )
+            self.assertEqual(
+                evidence["failed_attempts"][0]["attempt_fingerprint"],
+                "chapter-fingerprint",
+            )
+
     def test_hash_mismatch_and_missing_rights_fail_closed(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

@@ -104,6 +104,8 @@ EXPECTED_PASSAGE_CHARACTERS = 1_765
 SAMPLE_RATE = 24_000
 SPEED = 1.0
 RANDOM_SEED = 20260719
+PIPELINE_LANG_CODE = "a"
+G2P_BRITISH = False
 ASR_SCORE_MIN = 9.7
 ASR_COVERAGE_MIN = 0.98
 PRONUNCIATION_OVERRIDES = {
@@ -343,6 +345,11 @@ def attempt_fingerprint(passages: Sequence[Mapping[str, Any]]) -> str:
         "pronunciation_overrides": PRONUNCIATION_OVERRIDES,
         "scope": "four_passage_private_representative_pilot",
     }
+    # Preserve the original Gift fingerprint while allowing later,
+    # code-reviewed British profiles to bind their G2P configuration.
+    if PIPELINE_LANG_CODE != "a" or G2P_BRITISH:
+        contract["pipeline_lang_code"] = PIPELINE_LANG_CODE
+        contract["g2p_british"] = G2P_BRITISH
     return sha256_bytes(
         json.dumps(contract, sort_keys=True, separators=(",", ":")).encode("utf-8")
     )
@@ -496,6 +503,8 @@ def preflight(
             "sample_rate_hz": SAMPLE_RATE,
             "pronunciation_overrides": PRONUNCIATION_OVERRIDES,
             "g2p_fallback_enabled": False,
+            "pipeline_lang_code": PIPELINE_LANG_CODE,
+            "g2p_british": G2P_BRITISH,
             "attempt_fingerprint": fingerprint,
             "known_failed_fingerprint_count": len(KNOWN_GIFT_FAILED_FINGERPRINTS),
         },
@@ -628,8 +637,10 @@ def synthesize(
     torch.set_num_threads(1)
     torch.use_deterministic_algorithms(True)
     model = KModel(config=str(artifacts["config"]), model=str(artifacts["model"]))
-    pipeline = KPipeline(lang_code="a", model=model, repo_id=None)
-    pipeline.g2p = misaki_en.G2P(trf=False, british=False, fallback=None, unk="")
+    pipeline = KPipeline(lang_code=PIPELINE_LANG_CODE, model=model, repo_id=None)
+    pipeline.g2p = misaki_en.G2P(
+        trf=False, british=G2P_BRITISH, fallback=None, unk=""
+    )
     pipeline.g2p.lexicon.golds.update(PRONUNCIATION_OVERRIDES)
     pipeline.g2p.lexicon.golds.update(
         {key.lower(): value for key, value in PRONUNCIATION_OVERRIDES.items()}

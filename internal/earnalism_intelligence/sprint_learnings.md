@@ -661,3 +661,27 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   `14717669863b52b3aadb2476a6d00e13bfff9b64acc0a965a901809b57683c5d`
   is closed. The title remains audio-hidden and moves to exact rights-cleared
   source-bound delivery. The paid lock restored byte-for-byte.
+
+## 2026-07-28 The Secret Garden bounded Kokoro closeout
+
+- The cover-ready, 27-chapter title used one zero-provider-cost Kokoro
+  `bf_emma` candidate with British G2P at speed `0.96`.
+- Four representative passages reached exact ASR/source `10.0/1.0`. Independent
+  v3.89 listening passed with minimum overall `9.0`, confidence `0.92`,
+  anti-robotic `9.3`, anti-choppy `9.2`, and no fatal flags.
+- A chapter-one checkpoint prevented wasteful generation of chapters 2-27.
+  Its initial aggregate ASR was `9.9161`, but exact order and measured sync
+  failed. The single permitted retained-WAV ASR repair left unexpected speech,
+  including `The End` and `Thanks for watching`, and measured sync remained
+  `9.6262`, below the unchanged `9.7` objective gate.
+- The two exact fingerprints
+  `a9d329844e54e425fc578f3f4469b934ae85e8ec288223a270309f2bd1eba8fd`
+  and
+  `8f7221a8d5a5f5a2e446e8f0725eab00f93efbc8695b6f5967111739af7a68a8`
+  are closed. Never delete or normalize unexpected speech to manufacture a
+  pass. Keep the title audio-hidden and route it to exact source-bound
+  delivery.
+- No provider synthesis cost, upload, publication, or release-gate mutation
+  occurred. Four private `openai:gpt-audio` listening judgments had a maximum
+  estimate of `$0.20`; actual billing was not reported. The paid lock remains
+  idle and unchanged.

@@ -27,11 +27,11 @@ There is no indefinite `try another model` state.
 ## Current routing
 
 - Four titles are already `PRODUCTION_LIVE_VERIFIED`.
-- Nineteen titles, including **The Gift of the Magi**, **The Tell-Tale
-  Heart**, have exhausted their useful synthetic evidence and now require one
+- Twenty titles, including **The Gift of the Magi**, **The Tell-Tale
+  Heart**, and **The Secret Garden**, have exhausted their useful synthetic evidence and now require one
   exact source-bound narration or licensed-audio delivery. They receive no more
   synthetic pilots.
-- Eight previously untested English titles may receive exactly one
+- Seven previously untested English titles may receive exactly one
   four-passage candidate evaluation. Failure sends the title directly to
   source-bound delivery.
 - **The Time Machine** moves directly to source-bound delivery. Its retained
@@ -60,16 +60,21 @@ mandatory.
 
 ## Active title
 
-**The Call of the Wild** consumed its one permitted synthetic-family attempt
-with four private OpenAI `gpt-4o-mini-tts` / `verse` representative clips.
-Their raw ASR/manuscript scores were `9.6032`, `9.5000`, `9.7041`, and `9.5849`;
-coverage was below `0.98` for every passage, and every passage failed exact
-ordered-content integrity. Listening QA was correctly skipped.
+**The Secret Garden** passed its four-passage Kokoro `bf_emma` representative:
+all four repaired ASR/source scores were `10.0`, and the minimum v3.89 listening
+score was `9.0` at `0.92` confidence with no fatal flags. That evidence
+authorized one private full-title attempt, not publication.
 
-The paid lock restored byte-for-byte. The exact failed fingerprint will not be
-retried, the audio remains private and hidden, and the title now requires an
-exact rights-cleared source-bound delivery.
+The chapter-one checkpoint then failed exact ordered-content integrity and
+measured sync. After the only permitted retained-WAV ASR repair, unexpected
+speech including `The End` and `Thanks for watching` remained. Measured sync
+was `9.6262`, below the unchanged `9.7` gate. The remaining 26 chapters were
+not generated.
+
+The paid lock remains idle and unchanged. The closed `bf_emma` fingerprints
+will not be retried, the audio remains private and hidden, and the title now
+requires an exact rights-cleared source-bound delivery.
 
 Next exact command:
 
-`PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-call-of-the-wild --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import --received-audio /absolute/path/to/received_narration.wav`
+`PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-secret-garden --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import`

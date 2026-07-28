@@ -36,6 +36,12 @@ gate after lowering only overall listening to `8.9`.
   ASR scores were `9.6032`, `9.5000`, `9.7041`, and `9.5849`; every passage
   failed exact ordered-content integrity and coverage remained below `0.98`.
   Listening QA was therefore not run.
+- **The Secret Garden** passed its four-passage objective screen at exact
+  `10.0/1.0` and passed v3.89 representative listening with a minimum overall
+  `9.0` at `0.92` confidence and no fatal flags. Its chapter-one checkpoint
+  nevertheless failed exact content and measured sync (`9.6262`) after the
+  single allowed retained-audio repair because unexpected speech persisted.
+  The remaining 26 chapters were not generated and the title remains hidden.
 
 ## Net production effect
 

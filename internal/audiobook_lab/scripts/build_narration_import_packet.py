@@ -306,6 +306,25 @@ def discover_provider_evidence(slug: str, asset_root: Path) -> dict[str, Any]:
                 asset_root=asset_root,
             )
         )
+    bounded_attempts = release.get("bounded_candidate_attempts")
+    if isinstance(bounded_attempts, list):
+        for index, block in enumerate(bounded_attempts, start=1):
+            if not isinstance(block, dict):
+                continue
+            attempts.append(
+                _attempt(
+                    scope=str(
+                        block.get("scope")
+                        or f"bounded_candidate_attempt_{index}"
+                    ),
+                    payload=block,
+                    evidence=str(
+                        block.get("evidence")
+                        or portable_path(release_path, asset_root)
+                    ),
+                    asset_root=asset_root,
+                )
+            )
 
     if title_runs.exists():
         for path in sorted(title_runs.rglob("bengali_representative_audition_report.json")):

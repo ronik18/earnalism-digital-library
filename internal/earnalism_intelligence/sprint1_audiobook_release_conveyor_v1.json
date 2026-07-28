@@ -1,161 +1,169 @@
 {
-  "schema_version": 1,
-  "policy_name": "sprint1_audiobook_release_conveyor_v1",
-  "status": "ACTIVE",
-  "activated_at": "2026-07-27T20:42:02Z",
-  "goal": {
-    "sprint1_reader_target": 32,
-    "sprint1_audiobook_target": 32,
-    "completion_definition": "All 32 canonical Sprint 1 readers and exact full-title audiobook packages are production-live, release-gate approved, checksum-bound, endpoint-verified, browser-verified, and blocker-free."
-  },
-  "current_verified_baseline": {
-    "public_readers": 32,
-    "public_audiobooks": 4,
-    "audio_hidden_titles": 28,
-    "live_audio_slugs": [
-      "book-2b9853ec52",
-      "a-ghost-story",
-      "sredni-vashtar",
-      "the-open-window"
-    ]
-  },
-  "release_gates": {
-    "asr_manuscript_score_min": 9.7,
-    "coverage_min": 0.98,
-    "overall_listening_score_min": 8.9,
-    "confidence_score_min": 0.9,
-    "per_dimension_score_min": 8.9,
-    "anti_robotic_texture_score_min": 9.2,
-    "anti_choppy_join_score_min": 9.2,
-    "fatal_flags_required_false": true,
-    "exact_first_last_order_required": true,
-    "measured_sync_required": true,
-    "rights_cover_checksum_metadata_endpoint_browser_required": true,
-    "empty_blocker_list_required": true
-  },
-  "finite_attempt_contract": {
-    "effective_for_new_work_at_or_after": "2026-07-27T20:42:02Z",
-    "new_synthetic_model_families_per_title_max": 1,
-    "representative_passages_per_candidate": 4,
-    "targeted_repairs_per_title_max": 1,
-    "full_title_generations_after_representative_pass_max": 1,
-    "post_full_title_section_repairs_max": 1,
-    "source_bound_delivery_candidates_qaed_concurrently_max": 1,
-    "qualified_external_delivery_solicitations_per_title_max": 3,
-    "failed_fingerprint_retries_max": 0,
-    "isolated_sample_can_release": false,
-    "cutoff_changes_can_release": false,
-    "forced_publication_allowed": false
-  },
-  "terminal_states": [
-    "PRODUCTION_LIVE_VERIFIED",
-    "SOURCE_BOUND_DELIVERY_REQUIRED",
-    "PREREQUISITE_REPAIR_REQUIRED",
-    "FULL_RELEASE_PIPELINE_ACTIVE",
-    "EXTERNAL_PROCUREMENT_ACTION_REQUIRED"
-  ],
-  "routes": {
-    "production_live_verified": [
-      "book-2b9853ec52",
-      "a-ghost-story",
-      "sredni-vashtar",
-      "the-open-window"
+    "schema_version": 1,
+    "policy_name": "sprint1_audiobook_release_conveyor_v1",
+    "status": "ACTIVE",
+    "activated_at": "2026-07-27T20:42:02Z",
+    "goal": {
+        "sprint1_reader_target": 32,
+        "sprint1_audiobook_target": 32,
+        "completion_definition": "All 32 canonical Sprint 1 readers and exact full-title audiobook packages are production-live, release-gate approved, checksum-bound, endpoint-verified, browser-verified, and blocker-free."
+    },
+    "current_verified_baseline": {
+        "public_readers": 32,
+        "public_audiobooks": 4,
+        "audio_hidden_titles": 28,
+        "live_audio_slugs": [
+            "book-2b9853ec52",
+            "a-ghost-story",
+            "sredni-vashtar",
+            "the-open-window"
+        ]
+    },
+    "release_gates": {
+        "asr_manuscript_score_min": 9.7,
+        "coverage_min": 0.98,
+        "overall_listening_score_min": 8.9,
+        "confidence_score_min": 0.9,
+        "per_dimension_score_min": 8.9,
+        "anti_robotic_texture_score_min": 9.2,
+        "anti_choppy_join_score_min": 9.2,
+        "fatal_flags_required_false": true,
+        "exact_first_last_order_required": true,
+        "measured_sync_required": true,
+        "rights_cover_checksum_metadata_endpoint_browser_required": true,
+        "empty_blocker_list_required": true
+    },
+    "finite_attempt_contract": {
+        "effective_for_new_work_at_or_after": "2026-07-27T20:42:02Z",
+        "new_synthetic_model_families_per_title_max": 1,
+        "representative_passages_per_candidate": 4,
+        "targeted_repairs_per_title_max": 1,
+        "full_title_generations_after_representative_pass_max": 1,
+        "post_full_title_section_repairs_max": 1,
+        "source_bound_delivery_candidates_qaed_concurrently_max": 1,
+        "qualified_external_delivery_solicitations_per_title_max": 3,
+        "failed_fingerprint_retries_max": 0,
+        "isolated_sample_can_release": false,
+        "cutoff_changes_can_release": false,
+        "forced_publication_allowed": false
+    },
+    "terminal_states": [
+        "PRODUCTION_LIVE_VERIFIED",
+        "SOURCE_BOUND_DELIVERY_REQUIRED",
+        "PREREQUISITE_REPAIR_REQUIRED",
+        "FULL_RELEASE_PIPELINE_ACTIVE",
+        "EXTERNAL_PROCUREMENT_ACTION_REQUIRED"
     ],
-    "source_bound_delivery_required_no_more_synthetic_pilots": [
-      "bn-066",
-      "radharani",
-      "nishkriti",
-      "muchiram-gurer-jibanchorit",
-      "book-d19e96859f",
-      "book-f5d593e1f4",
-      "devdas",
-      "book-edfcf810c5",
-      "the-gift-of-the-magi",
-      "the-tell-tale-heart",
-      "dsires-baby",
-      "the-cop-and-the-anthem",
-      "the-last-leaf",
-      "the-masque-of-the-red-death",
-      "the-yellow-wallpaper",
-      "the-monkeys-paw",
-      "the-necklace",
-      "the-time-machine",
-      "the-call-of-the-wild"
-    ],
-    "one_bounded_representative_candidate_then_source_bound_delivery": [
-      "dracula",
-      "frankenstein",
-      "jekyll-and-hyde",
-      "picture-of-dorian-gray",
-      "white-fang",
-      "pride-and-prejudice",
-      "the-secret-garden",
-      "alices-adventures-in-wonderland"
-    ],
-    "one_bounded_targeted_repair_then_source_bound_delivery": [],
-    "prerequisite_repair_before_any_audio_candidate": [
-      "pather-panchali"
-    ]
-  },
+    "routes": {
+        "production_live_verified": [
+            "book-2b9853ec52",
+            "a-ghost-story",
+            "sredni-vashtar",
+            "the-open-window"
+        ],
+        "source_bound_delivery_required_no_more_synthetic_pilots": [
+            "bn-066",
+            "radharani",
+            "nishkriti",
+            "muchiram-gurer-jibanchorit",
+            "book-d19e96859f",
+            "book-f5d593e1f4",
+            "devdas",
+            "book-edfcf810c5",
+            "the-gift-of-the-magi",
+            "the-tell-tale-heart",
+            "dsires-baby",
+            "the-cop-and-the-anthem",
+            "the-last-leaf",
+            "the-masque-of-the-red-death",
+            "the-yellow-wallpaper",
+            "the-monkeys-paw",
+            "the-necklace",
+            "the-time-machine",
+            "the-call-of-the-wild",
+            "the-secret-garden"
+        ],
+        "one_bounded_representative_candidate_then_source_bound_delivery": [
+            "dracula",
+            "frankenstein",
+            "jekyll-and-hyde",
+            "picture-of-dorian-gray",
+            "white-fang",
+            "pride-and-prejudice",
+            "alices-adventures-in-wonderland"
+        ],
+        "one_bounded_targeted_repair_then_source_bound_delivery": [],
+        "prerequisite_repair_before_any_audio_candidate": [
+            "pather-panchali"
+        ]
+    },
     "selected_next_action": {
-        "slug": "the-call-of-the-wild",
-        "reason": "Its one permitted synthetic-family attempt generated four OpenAI representative clips, but all four failed canonical ordered-content integrity and coverage; the title now requires exact source-bound delivery.",
+        "slug": "the-secret-garden",
+        "reason": "Its Kokoro representative passed exact ASR and v3.89 listening, but the chapter-one full-run checkpoint retained unexpected speech and failed measured sync after its only targeted repair; the title now requires exact source-bound delivery.",
         "attempt_cap": 1,
         "attempts_consumed": 1,
-        "success_transition": "The source-bound licensed-audio packet is ready. A complete rights-cleared delivery may enter the existing full-title QA path.",
+        "success_transition": "A complete rights-cleared source-bound delivery may enter the existing full-title QA path.",
         "failure_transition": "Remain SOURCE_BOUND_DELIVERY_REQUIRED and audio-hidden; do not run another synthetic family.",
-        "blocker": "PRIVATE_REPRESENTATIVE_ASR_FAIL_SOURCE_BOUND_DELIVERY_REQUIRED",
-        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_openai_verse_v390_representative_20260728.json",
-        "delivery_packet": "internal/audiobook_lab/sprint1_publication/licensed_audio_import/the-call-of-the-wild/metadata.json",
-        "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-call-of-the-wild --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import --received-audio /absolute/path/to/received_narration.wav"
+        "blocker": "CHAPTER_001_OBJECTIVE_REPAIR_FAILED_SOURCE_BOUND_DELIVERY_REQUIRED",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_chapter1_bf_emma_asr_repair_v1.json",
+        "delivery_packet": "internal/audiobook_lab/sprint1_publication/licensed_audio_import/the-secret-garden/metadata.json",
+        "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-secret-garden --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import"
     },
     "active_title": {
-        "slug": "the-call-of-the-wild",
+        "slug": "the-secret-garden",
         "state": "SOURCE_BOUND_DELIVERY_REQUIRED",
-        "provider": "openai",
-        "model": "gpt-4o-mini-tts",
-        "voice": "verse",
-        "attempt_fingerprint": "14717669863b52b3aadb2476a6d00e13bfff9b64acc0a965a901809b57683c5d",
+        "provider": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "voice": "bf_emma",
+        "attempt_fingerprint": "a9d329844e54e425fc578f3f4469b934ae85e8ec288223a270309f2bd1eba8fd",
         "provider_calls_ran": true,
+        "generation_provider_calls": 0,
+        "listening_judge_provider_calls": 4,
         "model_attempt_consumed": true,
         "actual_provider_billing": "NOT_REPORTED",
-        "conservative_provider_spend_usd": 0.031785,
-        "estimated_audition_spend_usd": 0.031785,
+        "conservative_provider_spend_usd": 0.2,
+        "estimated_audition_spend_usd": 0.2,
         "representative_asr_scores": [
-          9.6032,
-          9.5,
-          9.7041,
-          9.5849
+            10.0,
+            10.0,
+            10.0,
+            10.0
         ],
         "representative_coverage_scores": [
-          0.9528,
-          0.95,
-          0.9762,
-          0.9549
+            1.0,
+            1.0,
+            1.0,
+            1.0
         ],
+        "representative_listening_overall_min": 9.0,
+        "representative_listening_confidence_min": 0.92,
+        "chapter_001_measured_sync_score": 9.6262,
+        "chapter_001_measured_sync_coverage": 1.0,
         "ordered_content_integrity_passed": false,
-        "listening_qa_ran": false,
+        "representative_listening_qa_ran": true,
+        "full_title_listening_qa_ran": false,
+        "remaining_chapters_generated": false,
         "paid_lock_restored_byte_for_byte": true,
         "public_audio_status": "AUDIO_HIDDEN"
     },
-  "gift_closeout": {
-    "slug": "the-gift-of-the-magi",
-    "status": "SOURCE_BOUND_DELIVERY_REQUIRED",
-    "local_synthetic_families_closed": [
-      "google",
-      "kokoro-af-bella",
-      "kokoro-bf-emma",
-      "qwen3-voicedesign",
-      "voxcpm2-int8",
-      "qwen3-base-mlx-8bit"
-    ],
-    "packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-gift-of-the-magi/metadata.json",
-    "public_audio_status": "AUDIO_HIDDEN"
-  },
-  "safety": {
-    "public_audio_mutated": false,
-    "release_gate_mutated": false,
-    "paid_tts_lock_must_restore_after_every_paid_call": true,
-    "failed_or_unsupported_audio_must_remain_hidden": true
-  }
+    "gift_closeout": {
+        "slug": "the-gift-of-the-magi",
+        "status": "SOURCE_BOUND_DELIVERY_REQUIRED",
+        "local_synthetic_families_closed": [
+            "google",
+            "kokoro-af-bella",
+            "kokoro-bf-emma",
+            "qwen3-voicedesign",
+            "voxcpm2-int8",
+            "qwen3-base-mlx-8bit"
+        ],
+        "packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-gift-of-the-magi/metadata.json",
+        "public_audio_status": "AUDIO_HIDDEN"
+    },
+    "safety": {
+        "public_audio_mutated": false,
+        "release_gate_mutated": false,
+        "paid_tts_lock_must_restore_after_every_paid_call": true,
+        "failed_or_unsupported_audio_must_remain_hidden": true
+    }
 }
