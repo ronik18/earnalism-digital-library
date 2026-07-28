@@ -152,6 +152,39 @@
 .premium-mobile-cover:nth-child(4) { transform: translateY(0.4rem); }
 .premium-mobile-cover img { width: 100%; height: 100%; object-fit: cover; }
 
+.premium-hero-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0 1.15rem 1.35rem;
+}
+
+.premium-hero-carousel-controls button {
+  display: inline-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(228, 180, 92, 0.5);
+  border-radius: 999px;
+  color: #fff7e8;
+  background: rgba(12, 5, 2, 0.24);
+}
+
+.premium-hero-carousel-controls > span {
+  min-width: 2.6rem;
+  color: rgba(255, 248, 232, 0.82);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.premium-hero-carousel-controls button:focus-visible {
+  outline: 2px solid #fff7e5;
+  outline-offset: 3px;
+}
+
 .premium-hero-cards {
   display: grid;
   margin: 0 1.15rem 1.3rem;
@@ -236,16 +269,16 @@
   .premium-reference-hero {
     --reference-header-height: var(--site-header-height);
     width: 100%;
-    height: min(calc(var(--reference-header-height) + 48.0861vw), 100vh);
+    height: calc(var(--reference-header-height) + 47.33945vw);
     min-height: 0;
+    max-height: none;
     aspect-ratio: auto;
     border-bottom: 0;
     background: #090301;
   }
 
   .premium-reference-hero--in-flow {
-    --reference-header-height: 0px;
-    height: min(48.0861vw, calc(100vh - var(--site-header-height)));
+    --reference-header-height: var(--site-header-height);
   }
 
   .premium-reference-hero__art {
@@ -258,13 +291,13 @@
     display: block;
     width: 100%;
     height: calc(100% - var(--reference-header-height));
-    object-fit: fill;
-    object-position: center;
+    object-fit: contain;
+    object-position: center top;
+    image-rendering: auto;
   }
 
   /* The supplied owner reference is the complete desktop artwork. Keep the
      live DOM controls as transparent hit areas so the pixels are not doubled. */
-  .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-slot,
   .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-tablet,
   .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-listening {
     border-color: transparent;
@@ -276,6 +309,98 @@
   .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-tablet__screen,
   .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-listening > * {
     opacity: 0;
+  }
+
+  /* The reference artwork intentionally leaves the four book jackets blank.
+     Canonical catalog covers remain live DOM content and must stay visible. */
+  .premium-reference-hero--exact .premium-reference-catalog--exact
+    .premium-reference-slot .book-cover-image--loaded .book-cover-image__img {
+    opacity: 1;
+  }
+
+  .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-slot {
+    box-sizing: border-box;
+    isolation: isolate;
+    overflow: visible;
+    border: 1px solid rgba(239, 196, 111, 0.46);
+    background: #180906;
+    box-shadow:
+      0 0.75rem 1.25rem rgba(0, 0, 0, 0.42),
+      inset -2px 0 rgba(255, 225, 166, 0.18);
+    transform-style: preserve-3d;
+    animation: premium-reference-cover-arrive 260ms ease-out both;
+  }
+
+  .premium-reference-hero--exact .premium-reference-catalog--exact
+    .premium-reference-slot > .book-cover-image {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: inherit;
+    box-shadow:
+      inset -2px 0 2px rgba(255, 230, 174, 0.18),
+      inset 0 -2px 2px rgba(16, 5, 2, 0.34);
+  }
+
+  .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-slot::after {
+    position: absolute;
+    top: 0.8%;
+    right: calc(-1 * var(--book-depth));
+    bottom: 0.9%;
+    z-index: 0;
+    width: var(--book-depth);
+    border: 1px solid rgba(255, 217, 146, 0.32);
+    border-left-color: rgba(255, 235, 190, 0.66);
+    background:
+      repeating-linear-gradient(
+        180deg,
+        rgba(255, 235, 195, 0.22) 0 1px,
+        rgba(91, 43, 21, 0.12) 1px 3px
+      ),
+      linear-gradient(
+        90deg,
+        #d6ad69 0%,
+        #8c572d 22%,
+        #4a2211 62%,
+        #180805 100%
+      );
+    box-shadow:
+      2px 2px 5px rgba(0, 0, 0, 0.5),
+      inset 1px 0 rgba(255, 241, 207, 0.32);
+    clip-path: polygon(0 0, 100% 2.2%, 100% 97.8%, 0 100%);
+    content: "";
+    pointer-events: none;
+    transform: perspective(80px) rotateY(-18deg);
+    transform-origin: left center;
+  }
+
+  .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-slot::before {
+    position: absolute;
+    right: calc(-0.92 * var(--book-depth));
+    bottom: -4px;
+    left: 1.5%;
+    z-index: 0;
+    height: 5px;
+    border-bottom: 1px solid rgba(72, 30, 13, 0.82);
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 234, 190, 0.58) 0 2px,
+        rgba(88, 44, 22, 0.72) 2px 4px
+      ),
+      #b77b42;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.46);
+    clip-path: polygon(0 0, calc(100% - var(--book-depth)) 0, 100% 100%, 1.5% 100%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .premium-reference-hero--exact .premium-reference-catalog--exact
+    .premium-reference-slot.premium-hero-cover-mask {
+    background:
+      linear-gradient(150deg, rgba(62, 30, 18, 0.98), rgba(14, 6, 4, 0.99)),
+      #1a0b07;
+    box-shadow: inset 0 0 0 1px rgba(228, 180, 92, 0.22);
   }
 
   .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-tablet::after {
@@ -377,6 +502,23 @@
     background: linear-gradient(145deg, #33180d, #0b0402);
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.42);
     pointer-events: auto;
+  }
+
+  .premium-reference-catalog-books {
+    --book-depth: clamp(6px, 0.58vw, 12px);
+    --book-clearance: clamp(2px, 0.16vw, 3px);
+    position: absolute;
+    top: 48.7%;
+    right: calc(5.5% + var(--book-depth));
+    left: 63.8%;
+    z-index: 2;
+    display: grid;
+    height: 30.15%;
+    grid-template-columns: 1.02fr 0.98fr 1.02fr 1fr;
+    column-gap: calc(var(--book-depth) + var(--book-clearance));
+    align-items: end;
+    perspective: 900px;
+    pointer-events: none;
   }
 
   .premium-reference-slot img {
@@ -593,39 +735,70 @@
   .premium-reference-listening--generic svg { width: 26%; color: #ebbd67; }
 
   .premium-reference-slot--desk-1 {
-    top: 46.3%;
-    left: 65.95%;
-    width: 8.02%;
-    height: 29%;
+    position: relative;
+    width: 100%;
+    height: 96%;
     border-radius: 0.1rem 0.18rem 0.12rem 0.08rem;
-    transform: perspective(900px) rotateY(1.4deg);
+    transform: rotateY(-1deg) rotateZ(-0.05deg);
+    transform-origin: left bottom;
   }
 
   .premium-reference-slot--desk-2 {
-    top: 46.55%;
-    left: 73.86%;
-    width: 8.97%;
-    height: 29.3%;
+    position: relative;
+    width: 100%;
+    height: 97%;
     border-radius: 0.08rem;
-    transform: perspective(900px) rotateY(-1.2deg);
+    transform: rotateY(-1deg) rotateZ(0.04deg);
+    transform-origin: left bottom;
   }
 
   .premium-reference-slot--desk-3 {
-    top: 47.15%;
-    left: 82.77%;
-    width: 8.67%;
-    height: 29.5%;
+    position: relative;
+    width: 100%;
+    height: 98%;
     border-radius: 0.08rem 0.18rem 0.12rem 0.08rem;
-    transform: perspective(900px) rotateY(1deg);
+    transform: rotateY(-1deg) rotateZ(-0.03deg);
+    transform-origin: left bottom;
   }
 
   .premium-reference-slot--desk-4 {
-    top: 47.45%;
-    left: 90.9%;
-    width: 7.15%;
-    height: 28.9%;
+    position: relative;
+    width: 100%;
+    height: 96%;
     border-radius: 0.08rem 0.18rem 0.12rem 0.08rem;
-    transform: perspective(900px) rotateY(1deg);
+    transform: rotateY(-1deg) rotateZ(0.05deg);
+    transform-origin: left bottom;
+  }
+
+  .premium-hero-carousel-controls {
+    position: absolute;
+    top: 42.4%;
+    right: 1.15%;
+    z-index: 6;
+    gap: 0.22rem;
+    padding: 0;
+    opacity: 0;
+    pointer-events: auto;
+    transition: opacity 180ms ease;
+  }
+
+  .premium-hero-catalog-shell:hover .premium-hero-carousel-controls,
+  .premium-hero-catalog-shell:focus-within .premium-hero-carousel-controls {
+    opacity: 1;
+  }
+
+  .premium-hero-carousel-controls button {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-color: rgba(238, 193, 107, 0.52);
+    background: rgba(10, 4, 2, 0.18);
+    backdrop-filter: blur(5px);
+  }
+
+  .premium-hero-carousel-controls > span {
+    min-width: 2.2rem;
+    color: rgba(255, 242, 214, 0.92);
+    text-shadow: 0 1px 3px #000;
   }
 
   .premium-reference-slot:hover,
@@ -644,9 +817,17 @@
   .premium-mobile-covers { display: none; }
 }
 
+@keyframes premium-reference-cover-arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .premium-reference-slot,
   .premium-reference-tablet,
   .premium-reference-listening,
   .premium-hero-action { transition: none; }
+  .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-slot {
+    animation: none;
+  }
 }

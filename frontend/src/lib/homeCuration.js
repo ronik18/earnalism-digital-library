@@ -1,4 +1,5 @@
 import { api } from "./api";
+import homeCuratedSprint1 from "../data/homeCuratedSprint1.json";
 
 export const HOME_SHELF_ORDER = [
   "bengali-life-and-legacy",
@@ -67,19 +68,26 @@ export function isApprovedAudioBook(book = {}) {
 }
 
 function normalizeBooks(books = [], { audioOnly = false } = {}) {
-  return Array.from(new Map(
-    books
-      .filter((book) => validCover(book) && (!audioOnly || approvedAudio(book)))
-      .map((book) => [book.slug, {
-      ...book,
+  const normalized = [];
+  const seen = new Set();
+  books
+    .filter((book) => validCover(book) && (!audioOnly || approvedAudio(book)))
+    .forEach((book) => {
+      if (seen.has(book.slug)) return;
+      seen.add(book.slug);
+      normalized.push({
+        ...book,
         front_cover_url: book.front_cover_url || book.cover_image_url || book.cover_url,
         cover_candidates: coverCandidates(book),
         cover_alt_text: book.cover_alt_text || `${book.title} by ${book.author}`,
+        book_url: book.book_url || `/book/${book.slug}`,
+        reader_url: book.reader_url || `/reader/${book.slug}`,
         cta_label: approvedAudio(book) ? "Start Listening" : (book.cta_label || "Start Reading"),
         cta_kind: approvedAudio(book) ? "listen" : (book.cta_kind || "read"),
         cta_url: book.cta_url || book.primary_cta_url || (approvedAudio(book) ? `/reader/${book.slug}?listen=1` : `/book/${book.slug}`),
-      }]),
-  ).values());
+      });
+    });
+  return normalized;
 }
 
 function normalizeShelf(shelf = {}) {
@@ -97,6 +105,12 @@ function normalizeShelf(shelf = {}) {
 
 export function normalizeHomeCuration(payload = {}) {
   const legacy = payload.shelf_collage || {};
+  const hero = payload.hero || {};
+  const normalizedHero = {
+    ...hero,
+    featured_books: normalizeBooks(hero.featured_books || []),
+    carousel_books: normalizeBooks(hero.carousel_books || []),
+  };
   const sourceShelves = Array.isArray(payload.literary_shelves)
     ? payload.literary_shelves
     : Array.isArray(payload.shelves)
@@ -116,6 +130,7 @@ export function normalizeHomeCuration(payload = {}) {
   };
   return {
     ...payload,
+    hero: normalizedHero,
     shelves: groups,
     groups: shelfCollage.groups,
     selected_audiobooks: selectedAudiobooks,
@@ -132,7 +147,13 @@ export function approvedListeningBooks(payload = {}) {
 }
 
 export function getHomeCurationSnapshot() {
-  return normalizeHomeCuration({ literary_shelves: [], audiobook_shelf: null, source: { truth_source: "runtime_endpoint_pending" } });
+  return normalizeHomeCuration({
+    ...homeCuratedSprint1,
+    source: {
+      ...(homeCuratedSprint1.source || {}),
+      truth_source: "bundled_sprint1_release_snapshot",
+    },
+  });
 }
 
 export async function fetchHomeCuration(signal) {

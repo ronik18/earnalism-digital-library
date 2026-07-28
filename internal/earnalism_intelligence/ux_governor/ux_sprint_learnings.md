@@ -105,3 +105,11 @@
 - The listening phone must be selected from the intersection of approved audio and visually featured books; this excludes hidden titles and cover-audit failures automatically.
 - Static and browser regressions must follow the current semantic contract (`data-book-slug`, reference-art geometry, and transparent hotspots) rather than preserve identifiers from the retired CSS-only hero.
 - The canonical boot snapshot is also a UX resilience layer: it kept the production hero complete and immediately populated while the backend curation endpoint remained unavailable.
+
+## 2026-07-28 Home Hero And Collage Production Hotfix
+
+- A loaded image is not a visible image: production had four successful canonical Cloudinary responses whose final hero opacity was still `0` because the reference-art masking rule was broader than the intended device-only mask.
+- The desktop reference artwork leaves four cover-shaped regions blank, so those regions must be filled by canonical DOM images; hiding them converts a truthful hybrid hero into broken empty panels.
+- Responsive collision checks must compare functional grid zones and cover siblings, not only page-level horizontal overflow. The broken cards clipped their own CTA and cover content while the document itself still reported zero horizontal overflow.
+- Modifier selectors such as `curated-shelf-collage--missing-short` require an equally specific mobile reset; otherwise a tablet area map can survive below the mobile breakpoint and collapse one tile to a near-zero-width column.
+- The bundled Sprint 1 snapshot is a truthful resilience path for hero and shelf books while the runtime curation request is pending or unavailable. Unsupported covers remain omitted and audiobook release truth remains unchanged.

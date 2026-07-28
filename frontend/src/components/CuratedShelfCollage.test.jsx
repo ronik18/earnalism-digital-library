@@ -1,7 +1,13 @@
 import fs from "fs";
 import path from "path";
 import { normalizeHomeCuration } from "../lib/homeCuration";
-import { getShelfCountLabel, getShelfVariant, getUniqueShelfBooks } from "../lib/homeShelfRunway";
+import {
+  allocateUniqueShelfBooks,
+  getShelfCountLabel,
+  getShelfVariant,
+  getUniqueShelfBooks,
+} from "../lib/homeShelfRunway";
+import { buildShelfGridLayout, normalizeShelfArea } from "../lib/shelfGridLayout";
 
 const componentSource = fs.readFileSync(
   path.join(process.cwd(), "src/components/CuratedShelfCollage.jsx"),
@@ -94,13 +100,45 @@ describe("CuratedShelfCollage", () => {
   });
 
   test("uses explicit editorial areas and responsive two-column composition", () => {
-    expect(componentSource).toContain('"bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic"');
-    expect(componentSource).toContain('"love love love love love adventure adventure adventure adventure adventure adventure adventure"');
+    expect(componentSource).toContain("buildShelfGridLayout");
+    expect(componentSource).toContain("normalizeShelfArea");
     expect(stylesSource).toContain("grid-template-areas: var(--shelf-grid-areas-tablet)");
     expect(stylesSource).toContain("grid-template-areas: var(--shelf-grid-areas-mobile)");
     expect(componentSource).toContain('curated-shelf-collage--missing-short');
     expect(stylesSource).toContain("grid-area: var(--shelf-area)");
-    expect(tileSource).toContain("data-layout-area={group.layout_area");
+    expect(tileSource).toContain("data-layout-area={shelfArea");
+  });
+
+  test("normalizes production shelf IDs and keeps missing shelves compact", () => {
+    expect(normalizeShelfArea({ id: "bengali-life-and-legacy" })).toBe("bengali");
+    expect(normalizeShelfArea({ id: "gothic-and-the-uncanny" })).toBe("gothic");
+    expect(normalizeShelfArea({ id: "love-society-and-human-nature" })).toBe("love");
+    expect(normalizeShelfArea({ id: "short-masterpieces" })).toBe("short");
+
+    const layout = buildShelfGridLayout([
+      { id: "bengali-life-and-legacy" },
+      { id: "gothic-and-the-uncanny" },
+      { id: "love-society-and-human-nature" },
+      { id: "short-masterpieces" },
+    ]);
+
+    expect(layout.desktop).toBe('"bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic" "love love love love love love short short short short short short"');
+    expect(layout.desktop).not.toContain('"bengali bengali bengali bengali bengali bengali bengali bengali bengali bengali bengali bengali"');
+    expect(layout.desktopRowCount).toBe(2);
+    expect(layout.tablet).toBe('"bengali bengali" "gothic love" "short short"');
+  });
+
+  test("preserves the full editorial five-shelf composition", () => {
+    const layout = buildShelfGridLayout([
+      { id: "bengali-life-and-legacy" },
+      { id: "gothic-and-the-uncanny" },
+      { id: "love-society-and-human-nature" },
+      { id: "adventure-nature-and-wonder" },
+      { id: "short-masterpieces" },
+    ]);
+
+    expect(layout.desktop).toBe('"bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic" "love love love love adventure adventure adventure adventure adventure short short short"');
+    expect(layout.desktopRowCount).toBe(2);
   });
 
   test("adapts the card anatomy to the number of valid canonical covers", () => {
@@ -109,6 +147,31 @@ describe("CuratedShelfCollage", () => {
     expect(getShelfVariant({ books: [readerBook, { ...readerBook, slug: "second" }, { ...readerBook, slug: "third" }] })).toBe("shelf-feature");
     expect(getShelfCountLabel({ books: [readerBook] })).toBe("Featured classic");
     expect(getUniqueShelfBooks({ books: [readerBook, readerBook, { ...readerBook, slug: "second" }] })).toHaveLength(2);
+  });
+
+  test("allocates each canonical cover to only one collage tile", () => {
+    const duplicate = { ...readerBook, slug: "duplicate" };
+    const unique = { ...readerBook, slug: "unique" };
+    const groups = allocateUniqueShelfBooks([
+      { id: "gothic-and-the-uncanny", books: [duplicate] },
+      { id: "short-masterpieces", display_mode: "runway", books: [duplicate, unique] },
+    ]);
+
+    expect(groups.map((group) => group.books.map((book) => book.slug))).toEqual([
+      ["duplicate"],
+      ["unique"],
+    ]);
+    expect(componentSource).toContain("allocateUniqueShelfBooks");
+  });
+
+  test("keeps the final production geometry contract collision resistant", () => {
+    expect(stylesSource).toContain("Production geometry contract");
+    expect(stylesSource).toContain('grid-template-areas:\n    "meta covers"');
+    expect(stylesSource).toContain("grid-template-columns: repeat(3, minmax(0, 1fr));");
+    expect(stylesSource).toContain("grid-template-rows: repeat(var(--shelf-grid-row-count-mobile), minmax(0, auto));");
+    expect(stylesSource).toContain(".curated-shelf-tile--runway .curated-shelf-tile__body > h3");
+    expect(stylesSource).toContain("overflow-wrap: normal;");
+    expect(stylesSource).toContain("word-break: normal;");
   });
 
   test("does not use public governance language or placeholder imagery", () => {
@@ -133,6 +196,8 @@ describe("CuratedShelfCollage", () => {
     expect(normalized.shelf_collage.groups[0].books[0].slug).toBe("reader-book-valid");
     expect(tileSource).toContain("allowGraphicalFallback={false}");
     expect(listeningSource).toContain("allowGraphicalFallback={false}");
+    expect(fs.readFileSync(path.join(process.cwd(), "src/components/BookCoverImage.jsx"), "utf8"))
+      .toContain("if (!allowGraphicalFallback && !showImage) return null;");
   });
 
   test("uses canonical counts, routes, and selected listening only", () => {

@@ -1,4 +1,9 @@
-from backend.home_curation_v4 import build_home_curated_payload_v4, select_visible_books, shelf_ids_for_book
+from backend.home_curation_v4 import (
+    build_home_curated_payload_v4,
+    select_hero_carousel_books,
+    select_visible_books,
+    shelf_ids_for_book,
+)
 
 
 def book(slug, shelf_ids, *, pinned=False, rank=None, audio=False):
@@ -126,3 +131,44 @@ def test_cover_candidates_are_ordered_and_safe():
     ]
     assert "admin_pinned" not in visible[0]
     assert "sprint_id" not in visible[0]
+
+
+def test_hero_carousel_exposes_every_eligible_reader_cover_in_stable_order():
+    books = [book(f"title-{index}", ["short-masterpieces"], rank=index) for index in range(10)]
+    payload = build_home_curated_payload_v4(books)
+
+    assert [item["slug"] for item in payload["hero"]["carousel_books"]] == [
+        f"title-{index}" for index in range(10)
+    ]
+    assert payload["hero"]["featured_books"] == payload["hero"]["carousel_books"][:6]
+    assert payload["source"]["hero_carousel_eligible_count"] == 10
+
+
+def test_hero_carousel_fails_closed_for_invalid_or_editorially_blocked_records():
+    valid = book("valid", ["short-masterpieces"])
+    blocked = book("blocked", ["short-masterpieces"])
+    blocked["do_not_feature"] = True
+    unsafe = book("unsafe", ["short-masterpieces"])
+    unsafe["front_cover_url"] = "file:///private/unsafe.png"
+    unsafe["cover_image_url"] = "file:///private/unsafe.png"
+    invalid_cover = book("invalid-cover", ["short-masterpieces"])
+    invalid_cover["cover_valid"] = False
+    duplicate = {**valid}
+
+    contracts = [
+        {
+            "slug": item["slug"],
+            "title": item["title"],
+            "author": item["author"],
+            "reader_enabled": item["reader_enabled"],
+            "front_cover_url": item.get("front_cover_url") or item.get("cover_image_url"),
+            "cover_valid": item["cover_valid"],
+            "book_url": f"/book/{item['slug']}",
+            "reader_url": f"/reader/{item['slug']}",
+            "home_feature_eligible": item.get("home_feature_eligible", True),
+            "do_not_feature": item.get("do_not_feature", False),
+        }
+        for item in (valid, duplicate, blocked, unsafe, invalid_cover)
+    ]
+
+    assert [item["slug"] for item in select_hero_carousel_books(contracts)] == ["valid"]

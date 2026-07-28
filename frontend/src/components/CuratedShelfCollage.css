@@ -172,7 +172,7 @@
 .curated-shelf-collage__grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: minmax(24.5rem, 26rem) minmax(20rem, 22rem);
+  grid-template-rows: repeat(var(--shelf-grid-row-count, 2), minmax(20rem, 22rem));
   grid-template-areas:
     "bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic"
     "love love love love adventure adventure adventure adventure adventure short short short";
@@ -690,6 +690,7 @@
 /* v4 geometry repair: every functional zone has an explicit grid area. */
 .curated-shelf-collage__grid {
   grid-template-areas: var(--shelf-grid-areas);
+  grid-template-rows: repeat(var(--shelf-grid-row-count, 2), minmax(20rem, 22rem));
   align-items: stretch;
 }
 
@@ -893,5 +894,173 @@
   .selected-listening-rail__browse:hover,
   .selected-listening-card__cta:hover {
     transform: none;
+  }
+}
+
+/* Production geometry contract: every tile zone owns a non-overlapping cell.
+   This final layer supersedes legacy direct-child card rules retained above. */
+.curated-shelf-collage__grid {
+  grid-template-rows: repeat(var(--shelf-grid-row-count, 2), minmax(22rem, auto));
+}
+
+.curated-shelf-tile {
+  display: block;
+  height: 100%;
+  min-height: 22rem;
+}
+
+.curated-shelf-tile::before {
+  right: 0;
+  bottom: 0;
+  width: 12rem;
+  height: 12rem;
+}
+
+.curated-shelf-tile__body,
+.curated-shelf-tile--runway .curated-shelf-tile__body {
+  display: grid;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(7rem, 42%);
+  grid-template-areas:
+    "meta covers"
+    "title covers"
+    "description covers"
+    "chips covers"
+    "cta covers";
+  grid-template-rows: auto auto minmax(3.8rem, auto) minmax(0, 1fr) auto;
+  column-gap: clamp(0.7rem, 1.35vw, 1.25rem);
+}
+
+.curated-shelf-tile__cover-stage {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.curated-shelf-tile__covers {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0.25rem;
+  gap: clamp(0.3rem, 0.7vw, 0.65rem);
+}
+
+.curated-shelf-tile__cover-item,
+.curated-shelf-tile__cover-item--dominant,
+.curated-shelf-tile--shelf-feature .curated-shelf-tile__cover-item,
+.curated-shelf-tile--shelf-feature .curated-shelf-tile__cover-item--dominant {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  transform: none;
+}
+
+.curated-shelf-tile--runway .curated-shelf-tile__covers {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.curated-shelf-tile--runway .curated-shelf-tile__body > h3 {
+  font-size: 1.35rem;
+  font-size: clamp(1.35rem, 7.2cqw, 1.65rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+@container (max-width: 42rem) {
+  .curated-shelf-tile__body,
+  .curated-shelf-tile--runway .curated-shelf-tile__body {
+    grid-template-columns: minmax(0, 1fr) minmax(7rem, 42%);
+    grid-template-areas:
+      "meta covers"
+      "title covers"
+      "description covers"
+      "chips covers"
+      "cta covers";
+    grid-template-rows: auto auto minmax(3.8rem, auto) minmax(0, 1fr) auto;
+  }
+
+  .curated-shelf-tile__cover-stage {
+    min-height: 0;
+    height: 100%;
+  }
+
+  .curated-shelf-tile--runway .curated-shelf-tile__covers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .curated-shelf-tile__body > h3 {
+    min-height: 0;
+    font-size: 1.7rem;
+    line-height: 1.03;
+    -webkit-line-clamp: 4;
+  }
+}
+
+@media (max-width: 1279px) {
+  .curated-shelf-collage__grid {
+    grid-template-rows: repeat(var(--shelf-grid-row-count-tablet), minmax(22rem, auto));
+  }
+}
+
+@media (max-width: 767px) {
+  .curated-shelf-collage .curated-shelf-collage__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: var(--shelf-grid-areas-mobile);
+    grid-template-rows: repeat(var(--shelf-grid-row-count-mobile), minmax(0, auto));
+  }
+
+  .curated-shelf-tile,
+  .curated-shelf-tile--shelf-feature,
+  .curated-shelf-tile--spotlight,
+  .curated-shelf-tile--runway {
+    height: auto;
+    min-height: 0;
+  }
+
+  .curated-shelf-tile__body,
+  .curated-shelf-tile--runway .curated-shelf-tile__body {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "meta"
+      "title"
+      "description"
+      "chips"
+      "covers"
+      "cta";
+    grid-template-rows: auto;
+    row-gap: 0;
+  }
+
+  .curated-shelf-tile__cover-stage {
+    height: auto;
+    min-height: 0;
+    margin-top: 0.75rem;
+  }
+
+  .curated-shelf-tile__covers,
+  .curated-shelf-tile--runway .curated-shelf-tile__covers {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .curated-shelf-tile__cta {
+    margin-top: 0.85rem;
   }
 }

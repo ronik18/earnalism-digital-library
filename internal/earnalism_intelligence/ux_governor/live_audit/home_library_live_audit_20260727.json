@@ -1,0 +1,38 @@
+{
+  "audit_date": "2026-07-27",
+  "environment": "production",
+  "url": "https://theearnalism.com",
+  "status": "REPAIR_REQUIRED",
+  "claimable_score": null,
+  "score_note": "A premium score is not claimable until the repaired bundle is deployed and browser-verified.",
+  "home": {
+    "viewport_css_px": "1280x720",
+    "horizontal_overflow": false,
+    "listening_rooms_visible": 3,
+    "listening_room_slugs": ["a-ghost-story", "sredni-vashtar", "the-open-window"],
+    "collage_groups_visible": ["bengali", "gothic", "love", "short"],
+    "collage_group_missing": "adventure",
+    "observed_grid_rows_before_repair": ["bengali x12", "gothic x12", "love x12", "short x12"],
+    "root_cause": "Production shelf IDs carry long editorial slugs while the V4 layout resolver compared them with short CSS area keys, so the fallback emitted one full-width row per group.",
+    "expected_grid_after_repair": ["bengali x7 + gothic x5", "love x6 + short x6"],
+    "hero_white_rectangle": "Not a live DOM defect; it is the white/red annotation in the supplied screenshot. The live hero art loads without that rectangle."
+  },
+  "library": {
+    "failed_image_requests_observed": 0,
+    "cover_gap_books": ["devdas", "pather-panchali"],
+    "cover_gap_behavior": "The cards render a deterministic graphical fallback because the production API returns no canonical front-cover URL.",
+    "cover_api_evidence": {
+      "devdas": {"front_cover_url": null, "cover_url": "", "cover_image_url": "", "thumbnail_url": ""},
+      "pather-panchali": {"front_cover_url": null, "cover_url": "", "cover_image_url": "", "thumbnail_url": ""}
+    },
+    "root_cause": "This is not a failed HTTP image; it is missing canonical cover metadata. No committed safe front-cover asset was available to wire into production.",
+    "repair_policy": "Keep release truth intact and improve the deterministic fallback motifs without inventing or claiming a canonical cover."
+  },
+  "source_changes": [
+    "Normalize long production shelf IDs and explicit layout_area values to compact CSS areas.",
+    "Pack only present shelves into occupied desktop/tablet/mobile grid cells.",
+    "Use deterministic content-bound vector motifs for Devdas and Pather Panchali fallback artwork.",
+    "Add focused layout and cover fallback tests."
+  ],
+  "deployment_status": "NOT_DEPLOYED"
+}
