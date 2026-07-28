@@ -804,3 +804,20 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Cover-only database patches are built from an allowlisted helper and never
   contain reader or audiobook fields. The complete frontend test suite and
   focused backend/catalog tests passed without changing audio release state.
+
+## 2026-07-28 — Gift CosyVoice3 bounded reopening closed on exact content
+
+- A standing owner GO-LIVE authorization was narrowed to one private,
+  source-bound `CosyVoice3-0.5B-MLX-bf16` adversarial sample. The upstream
+  model, MLX conversion, and `speech 0.0.23` runtime are Apache-2.0; the run
+  used the model-default synthetic voice and no reference recording.
+- The 24 kHz mono WAV was valid, unclipped, deterministic, private, and cost
+  zero. Local Whisper produced ASR/source `9.7758` with `0.982` coverage.
+- Numeric thresholds did not manufacture a pass: the opening `It’ll grow`
+  became `It took Ro`, so first words and ordered-content integrity failed.
+  Listening QA, representative expansion, full-title generation, upload, and
+  publication were correctly skipped.
+- Preserve fingerprint
+  `559d94ef386b741ee489d5dcbfd9df71686cbe9ac634801879d2978afbdcad25`
+  as closed. Gift remains audio-hidden and requires an exact source-bound
+  narration or licensed-audio delivery.

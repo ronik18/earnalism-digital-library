@@ -762,6 +762,43 @@
       },
       "next_action": "Do not normalize, regenerate, or expand this Gift Qwen3 Base fingerprint. The exact output clipped 1.417947 percent of samples, so ASR and listening spend were correctly skipped. Use the existing source-bound narration or licensed-import packet."
     },
+    "cosyvoice3": {
+      "status": "gift_mlx_bf16_default_synthetic_family_closed_after_exact_content_fail",
+      "license": "Apache-2.0",
+      "engine": "speech 0.0.23",
+      "the_gift_of_the_magi": {
+        "model": "aufklarer/CosyVoice3-0.5B-MLX-bf16",
+        "model_revision": "9b210b2381280b3af1c631d474a250e3e46d7017",
+        "reference_kind": "MODEL_DEFAULT_SYNTHETIC_VOICE_NO_REFERENCE_AUDIO",
+        "section": "section-013",
+        "source_text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+        "attempt_fingerprint": "559d94ef386b741ee489d5dcbfd9df71686cbe9ac634801879d2978afbdcad25",
+        "audio_sha256": "8268ddeb2b83f7e2ab817319e118a73d819ecf9c05580434365abcaa6d6fb2b6",
+        "duration_seconds": 34.76,
+        "sample_rate_hz": 24000,
+        "clipped_sample_fraction": 0.0,
+        "objective_format_pass": true,
+        "asr_source_score": 9.7758,
+        "coverage": 0.982,
+        "first_words_match": false,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "missing_tokens": {
+          "grow": 1,
+          "it'll": 1
+        },
+        "unexpected_tokens": {
+          "it": 1,
+          "ro": 1,
+          "took": 1
+        },
+        "listening_qa_run": false,
+        "provider_cost_usd": 0.0,
+        "public_audio_approved": false,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_cosyvoice3_bf16_v390_section13_20260728.json"
+      },
+      "next_action": "Do not repeat or repair this Gift CosyVoice3 fingerprint and do not spend on listening QA. Aggregate ASR above 9.7 cannot override the wrong opening or ordered-content failure; use exact source-bound delivery."
+    },
   "openai": {
       "status": "usable_but_must_pass_asr_sync_and_listening",
       "the_call_of_the_wild": {

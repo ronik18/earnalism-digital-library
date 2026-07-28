@@ -1567,9 +1567,9 @@
       "audiobook_next_action": "Validate received source-bound narration or licensed audio against the packet before full release QA."
     },
     "the-gift-of-the-magi": {
-      "latest_decision": "LOCAL_SYNTHETIC_FAMILIES_EXHAUSTED_SOURCE_BOUND_DELIVERY_REQUIRED",
-      "decision_reason": "The terminal Qwen3 Base MLX 8-bit section-013 output was exact-model and source bound but clipped 1.417947 percent of its samples. ASR and listening were skipped rather than spending against invalid audio. Kokoro, VoxCPM2, Google, Qwen3 VoiceDesign, and Qwen3 Base paths are now closed for Gift; no further local-model sampling is allowed.",
-      "updated_at": "2026-07-27T20:42:02Z",
+      "latest_decision": "COSYVOICE3_BF16_ADVERSARIAL_OBJECTIVE_FAIL_SOURCE_BOUND_DELIVERY_REQUIRED",
+      "decision_reason": "The owner-authorized one-sample CosyVoice3 MLX bf16 reopening used a materially distinct Apache-2.0 family, a model-default synthetic voice, and the exact source-bound section-013. The WAV passed format checks and reached ASR 9.7758 with 0.982 coverage, but the opening It'll grow was decoded as It took Ro, so first words, ordered content, missing-content, duplicate-content, and unexpected-content gates failed. No listening, expansion, upload, or publication followed. All evaluated local families remain closed and Gift still requires exact source-bound delivery.",
+      "updated_at": "2026-07-28T12:26:46Z",
       "language": "en",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "provider": "kokoro",
@@ -1639,6 +1639,19 @@
       "qwen3_base_v390_objective_format_pass": false,
       "qwen3_base_v390_asr_run": false,
       "qwen3_base_v390_listening_qa_run": false,
+      "cosyvoice3_model": "aufklarer/CosyVoice3-0.5B-MLX-bf16",
+      "cosyvoice3_model_revision": "9b210b2381280b3af1c631d474a250e3e46d7017",
+      "cosyvoice3_runtime_version": "speech 0.0.23",
+      "cosyvoice3_reference_kind": "MODEL_DEFAULT_SYNTHETIC_VOICE_NO_REFERENCE_AUDIO",
+      "cosyvoice3_v390_attempt_fingerprint": "559d94ef386b741ee489d5dcbfd9df71686cbe9ac634801879d2978afbdcad25",
+      "cosyvoice3_v390_audio_sha256": "8268ddeb2b83f7e2ab817319e118a73d819ecf9c05580434365abcaa6d6fb2b6",
+      "cosyvoice3_v390_duration_seconds": 34.76,
+      "cosyvoice3_v390_asr_source_score": 9.7758,
+      "cosyvoice3_v390_coverage": 0.982,
+      "cosyvoice3_v390_first_words_match": false,
+      "cosyvoice3_v390_last_words_match": true,
+      "cosyvoice3_v390_ordered_content_integrity_pass": false,
+      "cosyvoice3_v390_listening_qa_run": false,
       "local_synthetic_family_attempts_closed": true,
       "studio_c_scores": [9.5, 9.4, 8.5, 9.4],
       "chirp_aoede_scores": [9.4, 9.4, 7.2, 9.5],
@@ -1647,8 +1660,8 @@
       "contextual_risk_sampling_result": "FALSE_CONTEXTLESSNESS_FIXED_NO_PASS_CREATED",
       "plateau_confirmed": false,
       "completed_attempts_must_not_repeat": true,
-      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_qwen3_base_8bit_v390_section13_20260727.json",
-      "audiobook_next_action": "Keep Gift audio-hidden. Accept only a complete source-bound narration or licensed-audio delivery through the existing packet, then run full ASR, listening, measured-sync, checksum, metadata, endpoint, and browser gates. Do not run another model audition."
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_cosyvoice3_bf16_v390_section13_20260728.json",
+      "audiobook_next_action": "Keep Gift audio-hidden. Do not repeat the CosyVoice3 fingerprint or spend on its listening QA. Accept only a complete exact source-bound narration or licensed-audio delivery through the existing packet, then run full ASR, listening, measured-sync, checksum, metadata, endpoint, and browser gates."
     },
     "pride-and-prejudice": {
       "latest_decision": "AUDIOBOOK_USE_APPROVED_PUBLIC_AUDIO_HIDDEN_CANDIDATE_BINDING_REQUIRED",
