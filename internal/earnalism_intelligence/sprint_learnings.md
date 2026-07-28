@@ -604,3 +604,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Home now overlays validated controlled artifacts for every controlled slug. Only whitelisted editorial fields survive from the database; reader, rights, cover, audio, and QA truth remain artifact-governed.
 - The Home cache key must rotate whenever truth precedence changes. Otherwise Redis may continue serving the regressed payload after correct source is deployed.
 - Offline reconstruction proves all 32 Sprint 1 readers and the exact four approved audiobooks, with 87 focused tests passing and no audio gate, media, or paid-lock mutation.
+
+## 2026-07-28 Reference-matched dynamic hero carousel
+
+- Painting a narrow divider inside each cover makes four adjacent jackets look merged and consumes real front-cover pixels. The convincing, non-overlapping construction is a separately rendered right-side page block outside the jacket plus a shallow bottom page face.
+- The supplied reference measures to a carousel stage beginning at `63.8%` and ending near `94.5%` of the hero artwork. Responsive spine depth of approximately `0.58vw` plus `2–3px` optical clearance keeps transformed fronts disjoint at 1024, 1440, and 1920 pixels.
+- Dynamic hero rotation must use the complete reader-enabled, canonical-cover-valid contract set, not a hardcoded four-title list. Cover load failure remains fail-closed and carousel timing pauses for hover, focus, reduced motion, and hidden documents.
+- `object-fit: contain` produced conspicuous ivory bars for nonstandard cover proportions and broke the bound-book illusion. The verified stage uses a consistent cover crop so title and focal art remain prominent while the full link hit area and external spine stay intact.
+- Responsive AVIF/WebP source selection reduced the hero artwork package versus the prior single 1.7 MB WebP while preserving the full reference aspect and header-safe placement.
