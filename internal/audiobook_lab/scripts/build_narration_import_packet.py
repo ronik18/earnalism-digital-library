@@ -25,6 +25,10 @@ FATAL_FLAGS = (
     "fallback_tts_detected",
     "placeholder_audio_detected",
 )
+ACTIVE_LISTENING_SCORE_MIN = 9.0
+ACTIVE_PER_DIMENSION_SCORE_MIN = 8.9
+ACTIVE_ANTI_ROBOTIC_TEXTURE_SCORE_MIN = 9.2
+ACTIVE_ANTI_CHOPPY_JOIN_SCORE_MIN = 9.2
 BOILERPLATE_PATTERNS = tuple(
     re.compile(pattern, re.IGNORECASE)
     for pattern in (
@@ -411,23 +415,18 @@ def language_guidance(language: dict[str, str], *, title: str, author: str, manu
 
 
 def release_requirements(language: dict[str, str], evidence: dict[str, Any]) -> dict[str, Any]:
-    listening_min = 9.0
-    owner_minimums = [
-        float(attempt["owner_minimum_score"])
-        for attempt in evidence["provider_attempts"]
-        if isinstance(attempt.get("owner_minimum_score"), (int, float))
-    ]
-    if owner_minimums:
-        listening_min = max(listening_min, max(owner_minimums))
     return {
         "asr_manuscript_score_min": 9.7,
+        "anti_choppy_join_score_min": ACTIVE_ANTI_CHOPPY_JOIN_SCORE_MIN,
+        "anti_robotic_texture_score_min": ACTIVE_ANTI_ROBOTIC_TEXTURE_SCORE_MIN,
         "blocker_list_must_be_empty": True,
         "confidence_score_min": 0.9,
         "fatal_flags_required_false": list(FATAL_FLAGS),
         "first_and_last_words_must_match": True,
-        "listening_score_min": listening_min,
+        "listening_score_min": ACTIVE_LISTENING_SCORE_MIN,
         "measured_sync_required": "paragraph_or_stanza" if language["code"] == "ben" else "paragraph_or_section",
         "no_missing_duplicated_or_reordered_content": True,
+        "per_dimension_score_min": ACTIVE_PER_DIMENSION_SCORE_MIN,
         "public_audio_must_remain_hidden_until_all_gates_pass": True,
         "sync_may_not_be_estimated": True,
     }

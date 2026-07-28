@@ -621,12 +621,78 @@
         "next_action": "Do not repeat the bf_emma synthesis or ASR-repair fingerprints. Keep audio hidden and require a genuinely different voice/provider or source-bound narration; never delete unexpected decoded speech to manufacture a pass."
       }
     },
+    "voxcpm2": {
+      "status": "gift_int8_family_closed_after_v390_adversarial_fail",
+      "license": "Apache-2.0",
+      "engine": "speech 0.0.23",
+      "the_gift_of_the_magi": {
+        "model": "aufklarer/VoxCPM2-MLX-int8",
+        "model_revision": "471a37b830ccf5e23fdb4c822649ec7c3b7320b4",
+        "model_sha256": "0b3d82c78fda5874333f3a6ae8c9b1dc9802d44932d2f822dd8accd490e33ed3",
+        "reference_kind": "AI_GENERATED_NO_REAL_PERSON_REFERENCE",
+        "reference_audio_sha256": "188da386380ac30e4aad451522869a8bc616d2d8c03ff4b08451484088bc8461",
+        "section": "section-013",
+        "source_text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+        "attempt_fingerprint": "390655d6c5bbeb74a3670ef91bde612404374d1beffa89f80471d1806cb8bb91",
+        "audio_sha256": "785145a429cefb07ecef3239a9b602d4508dc27528dd28f4619a10900a1adb90",
+        "asr_config_fingerprint": "e949c338e47ddf6e445a7ca050416f2a8852bc7364826f0169c84b787535758a",
+        "asr_source_score": 10.0,
+        "coverage": 1.0,
+        "ordered_content_integrity_pass": true,
+        "word_timestamp_evidence_valid": true,
+        "listening_sample_fingerprint": "a057f9adc8b10961784440f609428047f2b2bfef8ee16986083d96d2e548b5a8",
+        "overall_listening_score": 8.5,
+        "confidence": 0.92,
+        "fatal_flags": [
+          "robotic_texture_detected",
+          "choppy_joins_detected"
+        ],
+        "v390_listening_pass": false,
+        "remaining_representative_samples_generated": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_voxcpm2_int8_v390_section13_listening_qa_20260727.json"
+      },
+      "next_action": "Do not repeat or expand the Gift VoxCPM2 int8 reference-only fingerprint. The adversarial middle passage proved exact content but failed premium listening with robotic texture and choppy joins. Use a materially different commercially permitted model family."
+    },
+    "qwen3_tts_base": {
+      "status": "gift_mlx_8bit_family_closed_after_clipped_adversarial_output",
+      "license": "Apache-2.0",
+      "engine": "speech 0.0.23",
+      "the_gift_of_the_magi": {
+        "model": "aufklarer/Qwen3-TTS-12Hz-0.6B-Base-MLX-8bit",
+        "model_revision": "2a20f4adf0436810367cea5a51aa7eb1bc50b6d8",
+        "model_sha256": "9488e7005cc0cf44f8804eb543668d0763bb1c649ce6f1eddc663519524b3182",
+        "reference_kind": "AI_GENERATED_NO_REAL_PERSON_REFERENCE",
+        "reference_audio_sha256": "188da386380ac30e4aad451522869a8bc616d2d8c03ff4b08451484088bc8461",
+        "section": "section-013",
+        "source_text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+        "attempt_fingerprint": "0b0b10e24be07311734ad486896f6abbe8d472c07a5db8c3c9b516c7a0e62b6c",
+        "audio_sha256": "da573f24abea837e30a5a8b2ac9d1082f692c66661f17a2e3589840bd29729bf",
+        "duration_seconds": 67.68,
+        "sample_rate_hz": 24000,
+        "clipped_sample_fraction": 0.01417947,
+        "objective_format_pass": false,
+        "asr_run": false,
+        "listening_qa_run": false,
+        "provider_cost_usd": 0.0,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_qwen3_base_8bit_v390_section13_20260727.json"
+      },
+      "next_action": "Do not normalize, regenerate, or expand this Gift Qwen3 Base fingerprint. The exact output clipped 1.417947 percent of samples, so ASR and listening spend were correctly skipped. Use the existing source-bound narration or licensed-import packet."
+    },
     "openai": {
       "status": "usable_but_must_pass_asr_sync_and_listening"
     },
     "google": {
       "status": "title_specific_quality_validation_required",
       "voice": "en-GB-Studio-C",
+      "credential_status": "AUTHORIZED_USER_ADC_REAUTHENTICATION_REQUIRED",
+      "credential_failure_phase": "PREPROVIDER_NO_BILLABLE_SYNTHESIS_REQUEST",
+      "credential_repair_command": "gcloud auth application-default login",
+      "the_call_of_the_wild_pending_fingerprint": "731cc90e6a9fb4767e189c046bae11095730164716b0b836cd42ceddd41e3cf9",
+      "the_call_of_the_wild_attempt_consumed": false,
       "a_ghost_story_result": "full release QA passed with six listening samples 9.4-9.5",
       "the_open_window_baseline_scores": [9.4, 8.4, 8.0, 8.4],
       "the_open_window_prosody_retry_scores": [9.5, 9.4, 8.5, 9.4],

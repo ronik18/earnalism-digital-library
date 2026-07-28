@@ -33,14 +33,30 @@ class EnglishListeningQATests(unittest.TestCase):
                     "audition_manifest_path": str(self.manifest),
                     "audition_manifest_sha256": qa.sha256_file(self.manifest),
                     "required_passages": [item["passage_id"] for item in samples],
-                    "minimum_listening_score": 9.4,
+                    "minimum_listening_score": 9.0,
                     "minimum_listening_confidence": 0.9,
+                    "per_dimension_score_min": 8.9,
+                    "anti_robotic_texture_score_min": 9.2,
+                    "anti_choppy_join_score_min": 9.2,
                     "samples": samples,
                 }
             ),
             encoding="utf-8",
         )
         self.output = self.root / "result.json"
+        self.paid_lock = self.root / "paid_tts.lock"
+        self.paid_lock.write_text(
+            json.dumps(
+                {
+                    "status": "active",
+                    "current_holder": "none",
+                    "allowed_next_holders": [],
+                    "allowed_slugs": ["sample"],
+                }
+            )
+            + "\n",
+            encoding="utf-8",
+        )
         self.env = {
             "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "true",
             "EARNALISM_OPENAI_LISTENING_QA_MODEL": "gpt-audio",
@@ -50,11 +66,34 @@ class EnglishListeningQATests(unittest.TestCase):
         }
 
     @staticmethod
-    def judge(score: float, fatal: bool = False):
+    def judge(
+        score: float,
+        fatal: bool = False,
+        *,
+        emotional_expression: float | None = None,
+        anti_robotic: float | None = None,
+    ):
         def _judge(_client, _args, sample):
+            scores = {
+                "overall_listening_score": score,
+                "confidence_score": 0.95,
+                "naturalness_score": score,
+                "pronunciation_score": score,
+                "emotional_expression_score": (
+                    score if emotional_expression is None else emotional_expression
+                ),
+                "punctuation_pause_score": score,
+                "pacing_score": score,
+                "continuity_score": score,
+                "listener_enjoyment_score": score,
+                "anti_robotic_texture_score": (
+                    max(score, 9.2) if anti_robotic is None else anti_robotic
+                ),
+                "anti_choppy_join_score": max(score, 9.2),
+            }
             return {
                 **sample,
-                "scores": {"overall_listening_score": score, "confidence_score": 0.95},
+                "scores": scores,
                 "confidence": 0.95,
                 "judge_flags": {name: fatal and name == "robotic_texture_detected" for name in qa.BINARY_LISTENING_FLAGS},
                 "notes": "mock",
@@ -78,7 +117,7 @@ class EnglishListeningQATests(unittest.TestCase):
         self.assertEqual(calls, [])
 
     def test_all_samples_must_pass(self) -> None:
-        code, result = qa.evaluate(self.evidence, self.output, env=self.env, judge=self.judge(9.3), client=object())
+        code, result = qa.evaluate(self.evidence, self.output, env=self.env, judge=self.judge(8.95), client=object())
         self.assertEqual(code, 3)
         self.assertEqual(result["status"], "BLOCKED_LISTENING_QA")
 
@@ -93,6 +132,69 @@ class EnglishListeningQATests(unittest.TestCase):
         self.assertEqual(result["status"], "PASS")
         self.assertEqual(len(result["samples"]), 4)
         self.assertEqual(json.loads(self.output.read_text())["status"], "PASS")
+
+    def test_ordinary_dimension_floor_blocks(self) -> None:
+        code, result = qa.evaluate(
+            self.evidence,
+            self.output,
+            env=self.env,
+            judge=self.judge(9.3, emotional_expression=8.8),
+            client=object(),
+        )
+        self.assertEqual(code, 3)
+        self.assertTrue(
+            any("emotional_expression_score" in item for item in result["dimension_failures"])
+        )
+
+    def test_anti_robotic_floor_blocks(self) -> None:
+        code, result = qa.evaluate(
+            self.evidence,
+            self.output,
+            env=self.env,
+            judge=self.judge(9.3, anti_robotic=9.1),
+            client=object(),
+        )
+        self.assertEqual(code, 3)
+        self.assertTrue(
+            any("anti_robotic_texture_score" in item for item in result["dimension_failures"])
+        )
+
+    def test_paid_lock_restores_byte_for_byte(self) -> None:
+        before = self.paid_lock.read_bytes()
+        code, result = qa.evaluate(
+            self.evidence,
+            self.output,
+            paid_lock_path=self.paid_lock,
+            env=self.env,
+            judge=self.judge(9.5),
+            client=object(),
+        )
+        self.assertEqual(code, 0)
+        self.assertTrue(result["paid_lock_touched"])
+        self.assertTrue(result["paid_lock_restored_byte_for_byte"])
+        self.assertEqual(self.paid_lock.read_bytes(), before)
+
+    def test_paid_lock_rejects_wrong_slug_before_judge(self) -> None:
+        payload = json.loads(self.paid_lock.read_text(encoding="utf-8"))
+        payload["allowed_slugs"] = ["other"]
+        self.paid_lock.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+        calls = []
+
+        def judge(*args):
+            calls.append(args)
+            return {}
+
+        code, result = qa.evaluate(
+            self.evidence,
+            self.output,
+            paid_lock_path=self.paid_lock,
+            env=self.env,
+            judge=judge,
+            client=object(),
+        )
+        self.assertEqual(code, 2)
+        self.assertFalse(result["provider_calls_ran"])
+        self.assertEqual(calls, [])
 
 
 if __name__ == "__main__":

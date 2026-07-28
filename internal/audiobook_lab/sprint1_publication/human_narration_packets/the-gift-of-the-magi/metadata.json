@@ -14,7 +14,7 @@
     "code": "en",
     "name": "English"
   },
-  "packet_fingerprint_sha256": "dd28671d62a54782d8c313134e1d5a60d2ab9fba2f4b74f5593f57939c2ce604",
+  "packet_fingerprint_sha256": "4e197c3dea88ad1dedf2d09a68620ac164017662271b82d6005891b475f8275f",
   "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
   "prior_provider_evidence": {
     "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
@@ -157,6 +157,8 @@
     "Confirm every proper noun and period-specific term before recording; preserve the written form."
   ],
   "release_requirements": {
+    "anti_choppy_join_score_min": 9.2,
+    "anti_robotic_texture_score_min": 9.2,
     "asr_manuscript_score_min": 9.7,
     "blocker_list_must_be_empty": true,
     "confidence_score_min": 0.9,
@@ -169,9 +171,10 @@
       "placeholder_audio_detected"
     ],
     "first_and_last_words_must_match": true,
-    "listening_score_min": 9.4,
+    "listening_score_min": 9.0,
     "measured_sync_required": "paragraph_or_section",
     "no_missing_duplicated_or_reordered_content": true,
+    "per_dimension_score_min": 8.9,
     "public_audio_must_remain_hidden_until_all_gates_pass": true,
     "sync_may_not_be_estimated": true
   },

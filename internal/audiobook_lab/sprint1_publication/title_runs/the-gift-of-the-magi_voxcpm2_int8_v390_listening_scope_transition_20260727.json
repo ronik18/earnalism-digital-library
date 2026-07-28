@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "changed_at": "2026-07-27T20:22:18Z",
+  "lock_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+  "from_slug": "the-last-leaf",
+  "to_slug": "the-gift-of-the-magi",
+  "canonical_title": "The Gift of the Magi",
+  "canonical_author": "O. Henry",
+  "budget": {
+    "campaign_cap_usd": 75.0,
+    "per_title_cap_usd": 8.0
+  },
+  "lock_sha256_before": "1b14deb667de6f40ff6970ca2e89b934cef78c77ec57de10aa0b8dc07117008b",
+  "lock_sha256_after": "c8f72c2a7f2bf89b70692b4638741a21a947f6d739c4c9b150aff68828c2ff44",
+  "provider_call_performed": false,
+  "publication_performed": false
+}

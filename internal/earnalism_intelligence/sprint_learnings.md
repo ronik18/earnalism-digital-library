@@ -604,3 +604,38 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Home now overlays validated controlled artifacts for every controlled slug. Only whitelisted editorial fields survive from the database; reader, rights, cover, audio, and QA truth remain artifact-governed.
 - The Home cache key must rotate whenever truth precedence changes. Otherwise Redis may continue serving the regressed payload after correct source is deployed.
 - Offline reconstruction proves all 32 Sprint 1 readers and the exact four approved audiobooks, with 87 focused tests passing and no audio gate, media, or paid-lock mutation.
+
+## 2026-07-27 The Gift of the Magi VoxCPM2 v3.90 adversarial closeout
+
+- The previously promising VoxCPM2 int8 reference-only opening was not enough to authorize a full-title run. Under the active v3.90 policy, a distinct section-013 adversarial sample was generated from the exact controlled source and an AI-generated, non-person reference voice.
+- The sample passed local source-blind Whisper medium.en at `10.0`, coverage `1.0`, exact first/last/order integrity, and valid audio-derived word timestamps. This proves text fidelity for the exact audio hash; it does not prove premium listening quality.
+- Independent `gpt-audio` listening QA scored the sample `8.5` overall with confidence `0.92`, and raised `robotic_texture_detected` plus `choppy_joins_detected`. Anti-robotic was `8.4` and anti-choppy was `8.5`, both below the unchanged `9.2` floors.
+- Close VoxCPM2 int8 for Gift. Do not generate the other representative samples or the full title with this fingerprint. The next attempt must use a materially different commercially permitted model family. Audio remains private and hidden; no upload, release mutation, or publication occurred.
+
+## 2026-07-27 The Gift of the Magi terminal Qwen3 Base closeout
+
+- The pinned Apache-2.0 Qwen3-TTS 0.6B Base MLX 8-bit checkpoint generated one exact controlled section-013 sample with an AI-generated non-person reference voice.
+- The lossless 24 kHz mono PCM-16 output is validly decodable, SHA-256 `da573f24abea837e30a5a8b2ac9d1082f692c66661f17a2e3589840bd29729bf`, and 67.68 seconds long, but 1.417947 percent of samples are full-scale clipped.
+- Clipping is irreversible waveform loss, not a harmless validator mismatch. Do not normalize it into a false pass, regenerate this fingerprint, run ASR/listening on it, or widen to representative/full-title generation.
+- Gift has exhausted its bounded local synthetic families. Its deterministic next state is source-bound narration or licensed-audio delivery through the existing packet, followed by every unchanged full-title release gate. Public audio remains hidden.
+
+## 2026-07-28 Deterministic Sprint 1 conveyor and Call of the Wild preprovider stop
+
+- The 32-title conveyor now has only five explicit routes: four production-live
+  titles, eighteen source-bound-delivery titles, nine titles with one bounded
+  four-passage candidate, and one prerequisite-repair title. No title can enter
+  an indefinite try-another-model state.
+- The finite cap is one new synthetic family, one targeted repair, one
+  post-representative full generation, one post-full section repair, and zero
+  repeated failed fingerprints per title.
+- The Call of the Wild is the first bounded title. Its exact source-bound
+  `en-GB-Chirp3-HD-Achird` candidate passed preflight at 2,119 characters and
+  an estimated `$0.06357`.
+- Both execution starts stopped before a provider call: the first selected
+  environment lacked the Google client, and the corrected environment proved
+  the Railway-bound authorized-user ADC needs reauthentication. No synthesis
+  call ran, the attempt remains unused, actual spend is `$0.00`, and the paid
+  lock restored byte-for-byte.
+- Listening QA now acquires and restores the paid lock and enforces the active
+  v3.90 overall, confidence, per-dimension, anti-robotic, anti-choppy, and fatal
+  flag gates. Public audio remains hidden.

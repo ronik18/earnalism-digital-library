@@ -28,8 +28,20 @@ from tts_hook import chunk_text as factory_chunk_text  # noqa: E402
 PIPELINE_SCHEMA = "earnalism.google_english_private_pipeline.v1"
 INPUT_SCHEMA = "earnalism.google_english_private_input.v1"
 LISTENING_SCHEMA = "earnalism.google_english_private_listening_evidence.v1"
-POLICY_MIN_LISTENING_SCORE = 9.3
+POLICY_MIN_LISTENING_SCORE = 9.0
 POLICY_MIN_LISTENING_CONFIDENCE = 0.90
+POLICY_MIN_DIMENSION_SCORE = 8.9
+POLICY_MIN_ANTI_ROBOTIC_SCORE = 9.2
+POLICY_MIN_ANTI_CHOPPY_SCORE = 9.2
+LISTENING_DIMENSION_KEYS = (
+    "naturalness_score",
+    "pronunciation_score",
+    "emotional_expression_score",
+    "punctuation_pause_score",
+    "pacing_score",
+    "continuity_score",
+    "listener_enjoyment_score",
+)
 GOOGLE_SAFE_INPUT_BYTES = 4500
 MODES = ("audition", "full")
 PASSAGE_IDS = ("opening", "middle", "dialogue_or_risk", "ending")
@@ -116,7 +128,7 @@ class PipelineConfig:
     sprint_spend_usd: float = 0.0
     language_code: str | None = None
     audition_evidence_path: Path | None = None
-    minimum_listening_score: float = 9.3
+    minimum_listening_score: float = 9.0
     minimum_listening_confidence: float = 0.90
     max_passage_chars: int = 1200
     max_chunk_chars: int = 1600
@@ -801,6 +813,11 @@ def validate_audition_evidence(
         "source_sha256": bundle.source_sha256,
         "input_manifest_sha256": bundle.manifest_sha256,
         "audition_fingerprint": expected_fingerprint,
+        "minimum_listening_score": config.minimum_listening_score,
+        "minimum_listening_confidence": config.minimum_listening_confidence,
+        "per_dimension_score_min": POLICY_MIN_DIMENSION_SCORE,
+        "anti_robotic_texture_score_min": POLICY_MIN_ANTI_ROBOTIC_SCORE,
+        "anti_choppy_join_score_min": POLICY_MIN_ANTI_CHOPPY_SCORE,
         "private_output_only": True,
         "provider_calls_ran": True,
         "upload_performed": False,
@@ -901,6 +918,34 @@ def validate_audition_evidence(
             sample_blockers.append(
                 f"{passage_id}: confidence {confidence} below {config.minimum_listening_confidence}"
             )
+        scores = sample.get("scores")
+        if not isinstance(scores, dict):
+            sample_blockers.append(f"{passage_id}: listening dimension scores are required")
+        else:
+            for key in LISTENING_DIMENSION_KEYS:
+                try:
+                    dimension_score = float(scores.get(key))
+                except (TypeError, ValueError):
+                    sample_blockers.append(f"{passage_id}: {key} is required")
+                    continue
+                if dimension_score < POLICY_MIN_DIMENSION_SCORE:
+                    sample_blockers.append(
+                        f"{passage_id}: {key} {dimension_score} below "
+                        f"{POLICY_MIN_DIMENSION_SCORE}"
+                    )
+            for key, minimum in (
+                ("anti_robotic_texture_score", POLICY_MIN_ANTI_ROBOTIC_SCORE),
+                ("anti_choppy_join_score", POLICY_MIN_ANTI_CHOPPY_SCORE),
+            ):
+                try:
+                    dimension_score = float(scores.get(key))
+                except (TypeError, ValueError):
+                    sample_blockers.append(f"{passage_id}: {key} is required")
+                    continue
+                if dimension_score < minimum:
+                    sample_blockers.append(
+                        f"{passage_id}: {key} {dimension_score} below {minimum}"
+                    )
         fatal_flags = sample.get("fatal_flags") or []
         judge_flags = sample.get("judge_flags") or {}
         if fatal_flags:
@@ -1026,6 +1071,9 @@ def listening_template(
         "audition_manifest_sha256": audition_manifest_sha256,
         "minimum_listening_score": config.minimum_listening_score,
         "minimum_listening_confidence": config.minimum_listening_confidence,
+        "per_dimension_score_min": POLICY_MIN_DIMENSION_SCORE,
+        "anti_robotic_texture_score_min": POLICY_MIN_ANTI_ROBOTIC_SCORE,
+        "anti_choppy_join_score_min": POLICY_MIN_ANTI_CHOPPY_SCORE,
         "required_passages": list(PASSAGE_IDS),
         "fatal_flags_required_false": list(FATAL_LISTENING_FLAGS),
         "private_output_only": True,
@@ -1041,6 +1089,7 @@ def listening_template(
                 "audio_sha256": record["audio_sha256"],
                 "overall_listening_score": None,
                 "confidence_score": None,
+                "scores": {},
                 "fatal_flags": [],
                 "judge_flags": {flag: False for flag in FATAL_LISTENING_FLAGS},
                 "review_notes": "",
@@ -1430,7 +1479,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--sprint-budget-usd", required=True, type=float)
     parser.add_argument("--sprint-spend-usd", type=float, default=0.0)
     parser.add_argument("--audition-evidence", type=Path)
-    parser.add_argument("--minimum-listening-score", type=float, default=9.3)
+    parser.add_argument(
+        "--minimum-listening-score",
+        type=float,
+        default=POLICY_MIN_LISTENING_SCORE,
+    )
     parser.add_argument("--minimum-listening-confidence", type=float, default=0.90)
     parser.add_argument("--max-passage-chars", type=int, default=1200)
     parser.add_argument("--max-chunk-chars", type=int, default=1600)

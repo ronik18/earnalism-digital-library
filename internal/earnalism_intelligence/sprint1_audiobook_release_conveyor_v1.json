@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "policy_name": "sprint1_audiobook_release_conveyor_v1",
+  "status": "ACTIVE",
+  "activated_at": "2026-07-27T20:42:02Z",
+  "goal": {
+    "sprint1_reader_target": 32,
+    "sprint1_audiobook_target": 32,
+    "completion_definition": "All 32 canonical Sprint 1 readers and exact full-title audiobook packages are production-live, release-gate approved, checksum-bound, endpoint-verified, browser-verified, and blocker-free."
+  },
+  "current_verified_baseline": {
+    "public_readers": 32,
+    "public_audiobooks": 4,
+    "audio_hidden_titles": 28,
+    "live_audio_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ]
+  },
+  "release_gates": {
+    "asr_manuscript_score_min": 9.7,
+    "coverage_min": 0.98,
+    "overall_listening_score_min": 9.0,
+    "confidence_score_min": 0.9,
+    "per_dimension_score_min": 8.9,
+    "anti_robotic_texture_score_min": 9.2,
+    "anti_choppy_join_score_min": 9.2,
+    "fatal_flags_required_false": true,
+    "exact_first_last_order_required": true,
+    "measured_sync_required": true,
+    "rights_cover_checksum_metadata_endpoint_browser_required": true,
+    "empty_blocker_list_required": true
+  },
+  "finite_attempt_contract": {
+    "effective_for_new_work_at_or_after": "2026-07-27T20:42:02Z",
+    "new_synthetic_model_families_per_title_max": 1,
+    "representative_passages_per_candidate": 4,
+    "targeted_repairs_per_title_max": 1,
+    "full_title_generations_after_representative_pass_max": 1,
+    "post_full_title_section_repairs_max": 1,
+    "source_bound_delivery_candidates_qaed_concurrently_max": 1,
+    "qualified_external_delivery_solicitations_per_title_max": 3,
+    "failed_fingerprint_retries_max": 0,
+    "isolated_sample_can_release": false,
+    "cutoff_changes_can_release": false,
+    "forced_publication_allowed": false
+  },
+  "terminal_states": [
+    "PRODUCTION_LIVE_VERIFIED",
+    "SOURCE_BOUND_DELIVERY_REQUIRED",
+    "PREREQUISITE_REPAIR_REQUIRED",
+    "FULL_RELEASE_PIPELINE_ACTIVE",
+    "EXTERNAL_PROCUREMENT_ACTION_REQUIRED"
+  ],
+  "routes": {
+    "production_live_verified": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ],
+    "source_bound_delivery_required_no_more_synthetic_pilots": [
+      "bn-066",
+      "radharani",
+      "nishkriti",
+      "muchiram-gurer-jibanchorit",
+      "book-d19e96859f",
+      "book-f5d593e1f4",
+      "devdas",
+      "book-edfcf810c5",
+      "the-gift-of-the-magi",
+      "the-tell-tale-heart",
+      "dsires-baby",
+      "the-cop-and-the-anthem",
+      "the-last-leaf",
+      "the-masque-of-the-red-death",
+      "the-yellow-wallpaper",
+      "the-monkeys-paw",
+      "the-necklace",
+      "the-time-machine"
+    ],
+    "one_bounded_representative_candidate_then_source_bound_delivery": [
+      "dracula",
+      "frankenstein",
+      "jekyll-and-hyde",
+      "picture-of-dorian-gray",
+      "the-call-of-the-wild",
+      "white-fang",
+      "pride-and-prejudice",
+      "the-secret-garden",
+      "alices-adventures-in-wonderland"
+    ],
+    "one_bounded_targeted_repair_then_source_bound_delivery": [],
+    "prerequisite_repair_before_any_audio_candidate": [
+      "pather-panchali"
+    ]
+  },
+    "selected_next_action": {
+        "slug": "the-call-of-the-wild",
+        "reason": "Its one permitted Google Chirp3-HD-Achird representative candidate passed source, rights, cover, budget, and paid-lock preflight. Execution stopped before the provider because the Railway-bound authorized-user ADC requires reauthentication.",
+        "attempt_cap": 1,
+        "attempts_consumed": 0,
+        "success_transition": "Run the exact existing fingerprint once, then require four-passage raw ASR/manuscript and listening passes before any full-title generation.",
+        "failure_transition": "If the exact representative audio fails a canonical gate, set SOURCE_BOUND_DELIVERY_REQUIRED immediately; do not test another synthetic family.",
+        "blocker": "GOOGLE_APPLICATION_DEFAULT_CREDENTIALS_REAUTHENTICATION_REQUIRED",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_google_chirp_v390_preprovider_blocker_20260728.json",
+        "next_exact_command": "gcloud auth application-default login"
+    },
+    "active_title": {
+        "slug": "the-call-of-the-wild",
+        "state": "PREPROVIDER_AUTH_REPAIR_REQUIRED",
+        "attempt_fingerprint": "731cc90e6a9fb4767e189c046bae11095730164716b0b836cd42ceddd41e3cf9",
+        "provider_calls_ran": false,
+        "model_attempt_consumed": false,
+        "actual_provider_spend_usd": 0.0,
+        "estimated_audition_spend_usd": 0.06357,
+        "paid_lock_restored_byte_for_byte": true,
+        "public_audio_status": "AUDIO_HIDDEN"
+    },
+  "gift_closeout": {
+    "slug": "the-gift-of-the-magi",
+    "status": "SOURCE_BOUND_DELIVERY_REQUIRED",
+    "local_synthetic_families_closed": [
+      "google",
+      "kokoro-af-bella",
+      "kokoro-bf-emma",
+      "qwen3-voicedesign",
+      "voxcpm2-int8",
+      "qwen3-base-mlx-8bit"
+    ],
+    "packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-gift-of-the-magi/metadata.json",
+    "public_audio_status": "AUDIO_HIDDEN"
+  },
+  "safety": {
+    "public_audio_mutated": false,
+    "release_gate_mutated": false,
+    "paid_tts_lock_must_restore_after_every_paid_call": true,
+    "failed_or_unsupported_audio_must_remain_hidden": true
+  }
+}

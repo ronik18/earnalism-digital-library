@@ -1,0 +1,116 @@
+{
+  "blockers_to_release": [
+    "GENERATED_AUDIO_CLIPPING_EXCEEDS_ZERO_TOLERANCE",
+    "QWEN3_BASE_GIFT_FAMILY_CLOSED",
+    "ASR_AND_LISTENING_SKIPPED_TO_AVOID_WASTED_SPEND",
+    "FULL_TITLE_NOT_AUTHORIZED",
+    "DOWNSTREAM_DELIVERY_GATES_NOT_RUN"
+  ],
+  "cost": {
+    "asr_provider_cost_usd": 0.0,
+    "listening_provider_calls": 0,
+    "model_download_bytes": 1300000000,
+    "tts_provider_cost_usd": 0.0
+  },
+  "engine": {
+    "attempt_fingerprint": "0b0b10e24be07311734ad486896f6abbe8d472c07a5db8c3c9b516c7a0e62b6c",
+    "config_sha256": "cf55a8f542f56123b253833c77cde387c8953a1b9454c11c735880edeb835e39",
+    "family": "qwen3-tts-base-voice-clone",
+    "fingerprint_payload_sha256": "0b0b10e24be07311734ad486896f6abbe8d472c07a5db8c3c9b516c7a0e62b6c",
+    "index_sha256": "7829f1cc24f5cbd7d7a3ba888bb08c7cf52d82ba79a4f0f3756d41f8bf5e52b4",
+    "model_id": "aufklarer/Qwen3-TTS-12Hz-0.6B-Base-MLX-8bit",
+    "model_revision": "2a20f4adf0436810367cea5a51aa7eb1bc50b6d8",
+    "model_sha256": "9488e7005cc0cf44f8804eb543668d0763bb1c649ce6f1eddc663519524b3182",
+    "reference_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-gift-of-the-magi/f3ff3571-af-bella-representative-v1/hair_sale_dialogue.wav",
+    "reference_audio_sha256": "188da386380ac30e4aad451522869a8bc616d2d8c03ff4b08451484088bc8461",
+    "settings": {
+      "engine": "qwen3",
+      "instruction": null,
+      "language": "english",
+      "max_tokens": 900,
+      "model": "base-8bit",
+      "temperature": 0.3,
+      "top_k": 50,
+      "voice_sample_only": true
+    }
+  },
+  "generated_at": "2026-07-27T20:42:02Z",
+  "next_exact_command": "Create the source-bound professional narration/import packet for the-gift-of-the-magi; do not run another local-model audition.",
+  "objective_qa": {
+    "asr_provider_cost_usd": 0.0,
+    "listening_provider_cost_usd": 0.0,
+    "reason": "GENERATED_AUDIO_CLIPPING_EXCEEDS_ZERO_TOLERANCE",
+    "status": "NOT_RUN"
+  },
+  "policy": {
+    "asr_source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "decision_sha256": "262095f60b80931b8946460c93defcc74e374b6151d53ca80dac8e93016a3ac3",
+    "fatal_flags_required_false": true,
+    "name": "sprint1_audiobook_acceptance_v3_90",
+    "overall_listening_score_min": 9.0
+  },
+  "release_eligible": false,
+  "rights": {
+    "mlx_model_card": "https://huggingface.co/aufklarer/Qwen3-TTS-12Hz-0.6B-Base-MLX-8bit",
+    "model_license": "Apache-2.0",
+    "official_base_model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+    "official_model_card": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+    "reference_kind": "AI_GENERATED_NO_REAL_PERSON_REFERENCE"
+  },
+  "safety": {
+    "audio_generated": true,
+    "paid_tts_lock_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+    "paid_tts_lock_sha256_after": "c8f72c2a7f2bf89b70692b4638741a21a947f6d739c4c9b150aff68828c2ff44",
+    "paid_tts_lock_sha256_before": "c8f72c2a7f2bf89b70692b4638741a21a947f6d739c4c9b150aff68828c2ff44",
+    "paid_tts_lock_touched": false,
+    "paid_tts_lock_unchanged": true,
+    "public_audio_status": "AUDIO_HIDDEN",
+    "published": false,
+    "recovered_audio_sha256": "da573f24abea837e30a5a8b2ac9d1082f692c66661f17a2e3589840bd29729bf",
+    "recovered_existing_output": true,
+    "release_gate_mutated": false,
+    "uploaded": false
+  },
+  "samples": [
+    {
+      "audio_path": "/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/earnalism-qwen3-base-private/gift-v390-section13/section-013.wav",
+      "audio_sha256": "da573f24abea837e30a5a8b2ac9d1082f692c66661f17a2e3589840bd29729bf",
+      "channels": 1,
+      "characters": 573,
+      "clipped_sample_fraction": 0.01417947,
+      "duration_seconds": 67.68,
+      "objective_format_pass": false,
+      "passage_id": "section-013",
+      "peak_fraction": 1.0,
+      "rms_fraction": 0.241338,
+      "sample_rate_hz": 24000,
+      "sample_width_bytes": 2,
+      "section_index": 13,
+      "size_bytes": 3248684,
+      "source_text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+      "word_count": 109
+    }
+  ],
+  "schema": "earnalism.gift_qwen3_base_v390_adversarial.v1",
+  "scope": {
+    "author": "O. Henry",
+    "materially_distinct_from_qwen3_voice_design": true,
+    "private_only": true,
+    "section_index": 13,
+    "slug": "the-gift-of-the-magi",
+    "title": "The Gift of the Magi"
+  },
+  "source": {
+    "full_source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+    "normalized_source_sha256": "f32ebf1df2826126eac28341a0dba111be5a734828d9f7b6fffb41d9b95bfe27",
+    "section": {
+      "characters": 573,
+      "passage_id": "section-013",
+      "section_index": 13,
+      "text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+      "word_count": 109
+    }
+  },
+  "status": "PRIVATE_QWEN3_BASE_ADVERSARIAL_AUDIO_FORMAT_FAIL_CLOSED"
+}

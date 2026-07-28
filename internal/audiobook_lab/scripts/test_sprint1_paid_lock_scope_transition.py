@@ -104,6 +104,48 @@ class PaidLockScopeTransitionTest(unittest.TestCase):
             transition.transition(self.args, self.env)
         self.assertEqual(self.lock.read_bytes(), before)
 
+    def test_english_sprint1_title_is_eligible(self) -> None:
+        public_book = (
+            self.curation.parent
+            / "controlled_publications"
+            / "the-gift-of-the-magi"
+            / "public_book.json"
+        )
+        public_book.parent.mkdir(parents=True)
+        public_book.write_text(
+            json.dumps(
+                {
+                    "slug": "the-gift-of-the-magi",
+                    "title": "The Gift of the Magi",
+                    "author": "O. Henry",
+                    "language": "eng",
+                    "allowPublicReading": True,
+                }
+            ),
+            encoding="utf-8",
+        )
+        self.curation.write_text(
+            json.dumps(
+                {
+                    "sprint1_active_slugs": [
+                        "book-edfcf810c5",
+                        "the-gift-of-the-magi",
+                    ],
+                    "books": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        self.args.next_slug = "the-gift-of-the-magi"
+        result = transition.transition(self.args, self.env)
+        updated = json.loads(self.lock.read_text(encoding="utf-8"))
+        self.assertEqual(result["status"], "PASS")
+        self.assertEqual(updated["allowed_slugs"], ["the-gift-of-the-magi"])
+        self.assertEqual(
+            updated["scope_transition"]["owner_authorization"],
+            "SPRINT1_END_TO_END_GO_LIVE",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

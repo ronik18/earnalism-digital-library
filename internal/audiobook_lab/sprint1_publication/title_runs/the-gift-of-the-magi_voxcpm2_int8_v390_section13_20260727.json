@@ -1,0 +1,882 @@
+{
+  "blockers_to_release": [
+    "REPRESENTATIVE_LISTENING_QA_NOT_RUN",
+    "REMAINING_REPRESENTATIVE_PASSAGES_NOT_RUN",
+    "FULL_TITLE_NOT_AUTHORIZED",
+    "DOWNSTREAM_DELIVERY_GATES_NOT_RUN"
+  ],
+  "cost": {
+    "asr_provider_cost_usd": 0.0,
+    "listening_provider_calls": 0,
+    "tts_provider_cost_usd": 0.0
+  },
+  "engine": {
+    "attempt_fingerprint": "390655d6c5bbeb74a3670ef91bde612404374d1beffa89f80471d1806cb8bb91",
+    "command": "speech speak",
+    "current_runner_fingerprint": "b13ed77d2b3ca310a65ad015e7c91f99c2462b6bb35492d5d906dfee9dafe4a2",
+    "family": "open_weight_local_tts",
+    "fingerprint_payload_sha256": "390655d6c5bbeb74a3670ef91bde612404374d1beffa89f80471d1806cb8bb91",
+    "license": "Apache-2.0",
+    "model_id": "aufklarer/VoxCPM2-MLX-int8",
+    "model_revision": "471a37b830ccf5e23fdb4c822649ec7c3b7320b4",
+    "model_sha256": "0b3d82c78fda5874333f3a6ae8c9b1dc9802d44932d2f822dd8accd490e33ed3",
+    "recovered_preflight_sha256": "2f21c2a1357a1fe1ed132d4a254faec4049fc6a56011c7fe4f0a4840f9ddbf22",
+    "reference_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-gift-of-the-magi/f3ff3571-af-bella-representative-v1/hair_sale_dialogue.wav",
+    "reference_audio_sha256": "188da386380ac30e4aad451522869a8bc616d2d8c03ff4b08451484088bc8461",
+    "reference_kind": "AI_GENERATED_NO_REAL_PERSON_REFERENCE",
+    "settings": {
+      "cfg_value": 2.0,
+      "conditioning": "reference_audio_only",
+      "instruction": null,
+      "max_tokens": 2000,
+      "min_tokens": 2,
+      "prompt_audio": null,
+      "prompt_text": null,
+      "timesteps": 10,
+      "variant": "int8"
+    },
+    "version": "0.0.23"
+  },
+  "generated_at": "2026-07-27T18:20:09Z",
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_gift_voxcpm2_v390_listening_qa.py --preflight",
+  "objective_qa": {
+    "audio_derived": true,
+    "config_fingerprint": "e949c338e47ddf6e445a7ca050416f2a8852bc7364826f0169c84b787535758a",
+    "full_title_aggregate": {
+      "coverage": 1.0,
+      "duplicate_tokens": {},
+      "equal_token_count": 111,
+      "evaluated_source_sha256": "51d090c7834febdb1c9d5309cff953cb8cef9c2fb4721a00dead4be95ff5a392",
+      "evaluated_transcript_sha256": "dc5061d2425dc0469b496d52e9524e6ebc4f76a0bb504aed01941567508ff7f2",
+      "first_words_match": true,
+      "last_words_match": true,
+      "missing_tokens": {},
+      "no_duplicate_content": true,
+      "no_missing_content": true,
+      "no_reordered_content": true,
+      "no_unexpected_content": true,
+      "ordered_alignment_operations": [],
+      "ordered_content_integrity_pass": true,
+      "pass": true,
+      "precision": 1.0,
+      "score": 10.0,
+      "source_equivalences_applied": [
+        {
+          "equivalence": "your/yer",
+          "match_count": 2,
+          "replacement": "yer"
+        }
+      ],
+      "source_token_count": 111,
+      "transcript_equivalences_applied": [
+        {
+          "equivalence": "your/yer",
+          "match_count": 2,
+          "replacement": "yer"
+        }
+      ],
+      "transcript_token_count": 111,
+      "unexpected_tokens": {}
+    },
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "reports": [
+      {
+        "audio_derived_word_timestamps": [
+          {
+            "end_seconds": 0.44,
+            "probability": 0.62107,
+            "start_seconds": 0.0,
+            "word": "It'll"
+          },
+          {
+            "end_seconds": 0.62,
+            "probability": 0.995276,
+            "start_seconds": 0.44,
+            "word": "grow"
+          },
+          {
+            "end_seconds": 0.82,
+            "probability": 0.994985,
+            "start_seconds": 0.62,
+            "word": "out"
+          },
+          {
+            "end_seconds": 1.16,
+            "probability": 0.993073,
+            "start_seconds": 0.82,
+            "word": "again."
+          },
+          {
+            "end_seconds": 1.96,
+            "probability": 0.989368,
+            "start_seconds": 1.78,
+            "word": "You"
+          },
+          {
+            "end_seconds": 2.2,
+            "probability": 0.997845,
+            "start_seconds": 1.96,
+            "word": "won't"
+          },
+          {
+            "end_seconds": 2.42,
+            "probability": 0.99939,
+            "start_seconds": 2.2,
+            "word": "mind,"
+          },
+          {
+            "end_seconds": 2.62,
+            "probability": 0.998858,
+            "start_seconds": 2.58,
+            "word": "will"
+          },
+          {
+            "end_seconds": 2.94,
+            "probability": 0.999244,
+            "start_seconds": 2.62,
+            "word": "you?"
+          },
+          {
+            "end_seconds": 3.7,
+            "probability": 0.975998,
+            "start_seconds": 3.44,
+            "word": "I"
+          },
+          {
+            "end_seconds": 3.86,
+            "probability": 0.99596,
+            "start_seconds": 3.7,
+            "word": "just"
+          },
+          {
+            "end_seconds": 4.02,
+            "probability": 0.998754,
+            "start_seconds": 3.86,
+            "word": "had"
+          },
+          {
+            "end_seconds": 4.16,
+            "probability": 0.998971,
+            "start_seconds": 4.02,
+            "word": "to"
+          },
+          {
+            "end_seconds": 4.3,
+            "probability": 0.999273,
+            "start_seconds": 4.16,
+            "word": "do"
+          },
+          {
+            "end_seconds": 4.54,
+            "probability": 0.999189,
+            "start_seconds": 4.3,
+            "word": "it."
+          },
+          {
+            "end_seconds": 5.24,
+            "probability": 0.997076,
+            "start_seconds": 5.04,
+            "word": "My"
+          },
+          {
+            "end_seconds": 5.4,
+            "probability": 0.999075,
+            "start_seconds": 5.24,
+            "word": "hair"
+          },
+          {
+            "end_seconds": 5.7,
+            "probability": 0.998207,
+            "start_seconds": 5.4,
+            "word": "grows"
+          },
+          {
+            "end_seconds": 6.06,
+            "probability": 0.995773,
+            "start_seconds": 5.7,
+            "word": "awfully"
+          },
+          {
+            "end_seconds": 6.52,
+            "probability": 0.999271,
+            "start_seconds": 6.06,
+            "word": "fast."
+          },
+          {
+            "end_seconds": 7.38,
+            "probability": 0.987709,
+            "start_seconds": 7.18,
+            "word": "Say"
+          },
+          {
+            "end_seconds": 7.62,
+            "probability": 0.775826,
+            "start_seconds": 7.38,
+            "word": "Merry"
+          },
+          {
+            "end_seconds": 7.98,
+            "probability": 0.996513,
+            "start_seconds": 7.62,
+            "word": "Christmas."
+          },
+          {
+            "end_seconds": 9.14,
+            "probability": 0.958073,
+            "start_seconds": 8.96,
+            "word": "Jim,"
+          },
+          {
+            "end_seconds": 9.76,
+            "probability": 0.977499,
+            "start_seconds": 9.56,
+            "word": "and"
+          },
+          {
+            "end_seconds": 9.96,
+            "probability": 0.993866,
+            "start_seconds": 9.76,
+            "word": "let's"
+          },
+          {
+            "end_seconds": 10.08,
+            "probability": 0.999277,
+            "start_seconds": 9.96,
+            "word": "be"
+          },
+          {
+            "end_seconds": 10.38,
+            "probability": 0.998248,
+            "start_seconds": 10.08,
+            "word": "happy."
+          },
+          {
+            "end_seconds": 11.12,
+            "probability": 0.994834,
+            "start_seconds": 11.0,
+            "word": "You"
+          },
+          {
+            "end_seconds": 11.34,
+            "probability": 0.998786,
+            "start_seconds": 11.12,
+            "word": "don't"
+          },
+          {
+            "end_seconds": 11.5,
+            "probability": 0.997666,
+            "start_seconds": 11.34,
+            "word": "know"
+          },
+          {
+            "end_seconds": 11.62,
+            "probability": 0.989695,
+            "start_seconds": 11.5,
+            "word": "what"
+          },
+          {
+            "end_seconds": 11.78,
+            "probability": 0.994817,
+            "start_seconds": 11.62,
+            "word": "a"
+          },
+          {
+            "end_seconds": 12.72,
+            "probability": 0.678809,
+            "start_seconds": 11.78,
+            "word": "nice—what"
+          },
+          {
+            "end_seconds": 12.9,
+            "probability": 0.996036,
+            "start_seconds": 12.72,
+            "word": "a"
+          },
+          {
+            "end_seconds": 13.28,
+            "probability": 0.995862,
+            "start_seconds": 12.9,
+            "word": "beautiful,"
+          },
+          {
+            "end_seconds": 13.62,
+            "probability": 0.99888,
+            "start_seconds": 13.44,
+            "word": "nice"
+          },
+          {
+            "end_seconds": 13.88,
+            "probability": 0.993794,
+            "start_seconds": 13.62,
+            "word": "gift"
+          },
+          {
+            "end_seconds": 14.1,
+            "probability": 0.994957,
+            "start_seconds": 13.88,
+            "word": "I've"
+          },
+          {
+            "end_seconds": 14.24,
+            "probability": 0.998565,
+            "start_seconds": 14.1,
+            "word": "got"
+          },
+          {
+            "end_seconds": 14.44,
+            "probability": 0.998228,
+            "start_seconds": 14.24,
+            "word": "for"
+          },
+          {
+            "end_seconds": 14.68,
+            "probability": 0.999693,
+            "start_seconds": 14.44,
+            "word": "you."
+          },
+          {
+            "end_seconds": 15.66,
+            "probability": 0.889493,
+            "start_seconds": 15.38,
+            "word": "You've"
+          },
+          {
+            "end_seconds": 15.72,
+            "probability": 0.998912,
+            "start_seconds": 15.66,
+            "word": "cut"
+          },
+          {
+            "end_seconds": 15.9,
+            "probability": 0.98796,
+            "start_seconds": 15.72,
+            "word": "off"
+          },
+          {
+            "end_seconds": 16.04,
+            "probability": 0.997576,
+            "start_seconds": 15.9,
+            "word": "your"
+          },
+          {
+            "end_seconds": 16.78,
+            "probability": 0.658145,
+            "start_seconds": 16.04,
+            "word": "hair?\""
+          },
+          {
+            "end_seconds": 16.96,
+            "probability": 0.99002,
+            "start_seconds": 16.78,
+            "word": "asked"
+          },
+          {
+            "end_seconds": 17.24,
+            "probability": 0.999271,
+            "start_seconds": 16.96,
+            "word": "Jim"
+          },
+          {
+            "end_seconds": 17.92,
+            "probability": 0.877705,
+            "start_seconds": 17.24,
+            "word": "laboriously,"
+          },
+          {
+            "end_seconds": 18.64,
+            "probability": 0.997991,
+            "start_seconds": 18.42,
+            "word": "as"
+          },
+          {
+            "end_seconds": 18.74,
+            "probability": 0.998725,
+            "start_seconds": 18.64,
+            "word": "if"
+          },
+          {
+            "end_seconds": 18.86,
+            "probability": 0.996583,
+            "start_seconds": 18.74,
+            "word": "he"
+          },
+          {
+            "end_seconds": 18.98,
+            "probability": 0.98932,
+            "start_seconds": 18.86,
+            "word": "had"
+          },
+          {
+            "end_seconds": 19.16,
+            "probability": 0.998798,
+            "start_seconds": 18.98,
+            "word": "not"
+          },
+          {
+            "end_seconds": 19.54,
+            "probability": 0.998599,
+            "start_seconds": 19.16,
+            "word": "arrived"
+          },
+          {
+            "end_seconds": 19.7,
+            "probability": 0.997528,
+            "start_seconds": 19.54,
+            "word": "at"
+          },
+          {
+            "end_seconds": 19.88,
+            "probability": 0.989008,
+            "start_seconds": 19.7,
+            "word": "that"
+          },
+          {
+            "end_seconds": 20.12,
+            "probability": 0.971204,
+            "start_seconds": 19.88,
+            "word": "patent"
+          },
+          {
+            "end_seconds": 20.44,
+            "probability": 0.949086,
+            "start_seconds": 20.12,
+            "word": "fact"
+          },
+          {
+            "end_seconds": 20.66,
+            "probability": 0.994431,
+            "start_seconds": 20.44,
+            "word": "yet"
+          },
+          {
+            "end_seconds": 20.92,
+            "probability": 0.920883,
+            "start_seconds": 20.66,
+            "word": "even"
+          },
+          {
+            "end_seconds": 21.22,
+            "probability": 0.999159,
+            "start_seconds": 20.92,
+            "word": "after"
+          },
+          {
+            "end_seconds": 21.42,
+            "probability": 0.994817,
+            "start_seconds": 21.22,
+            "word": "the"
+          },
+          {
+            "end_seconds": 21.66,
+            "probability": 0.996686,
+            "start_seconds": 21.42,
+            "word": "hardest"
+          },
+          {
+            "end_seconds": 22.0,
+            "probability": 0.976583,
+            "start_seconds": 21.66,
+            "word": "mental"
+          },
+          {
+            "end_seconds": 22.34,
+            "probability": 0.978612,
+            "start_seconds": 22.0,
+            "word": "labor."
+          },
+          {
+            "end_seconds": 23.2,
+            "probability": 0.090395,
+            "start_seconds": 22.84,
+            "word": "Cut"
+          },
+          {
+            "end_seconds": 23.32,
+            "probability": 0.993315,
+            "start_seconds": 23.2,
+            "word": "it"
+          },
+          {
+            "end_seconds": 23.46,
+            "probability": 0.997831,
+            "start_seconds": 23.32,
+            "word": "off"
+          },
+          {
+            "end_seconds": 23.64,
+            "probability": 0.985322,
+            "start_seconds": 23.46,
+            "word": "and"
+          },
+          {
+            "end_seconds": 23.82,
+            "probability": 0.998369,
+            "start_seconds": 23.64,
+            "word": "sold"
+          },
+          {
+            "end_seconds": 24.08,
+            "probability": 0.99761,
+            "start_seconds": 23.82,
+            "word": "it,"
+          },
+          {
+            "end_seconds": 24.26,
+            "probability": 0.996365,
+            "start_seconds": 24.14,
+            "word": "said"
+          },
+          {
+            "end_seconds": 24.52,
+            "probability": 0.97397,
+            "start_seconds": 24.26,
+            "word": "Della."
+          },
+          {
+            "end_seconds": 25.42,
+            "probability": 0.568506,
+            "start_seconds": 24.98,
+            "word": "Don't"
+          },
+          {
+            "end_seconds": 25.54,
+            "probability": 0.997326,
+            "start_seconds": 25.42,
+            "word": "you"
+          },
+          {
+            "end_seconds": 25.68,
+            "probability": 0.998297,
+            "start_seconds": 25.54,
+            "word": "like"
+          },
+          {
+            "end_seconds": 25.86,
+            "probability": 0.998487,
+            "start_seconds": 25.68,
+            "word": "me"
+          },
+          {
+            "end_seconds": 26.06,
+            "probability": 0.99092,
+            "start_seconds": 25.86,
+            "word": "just"
+          },
+          {
+            "end_seconds": 26.24,
+            "probability": 0.999227,
+            "start_seconds": 26.06,
+            "word": "as"
+          },
+          {
+            "end_seconds": 26.42,
+            "probability": 0.999306,
+            "start_seconds": 26.24,
+            "word": "well,"
+          },
+          {
+            "end_seconds": 26.9,
+            "probability": 0.995315,
+            "start_seconds": 26.54,
+            "word": "anyhow?"
+          },
+          {
+            "end_seconds": 27.72,
+            "probability": 0.649314,
+            "start_seconds": 26.9,
+            "word": "I'm"
+          },
+          {
+            "end_seconds": 27.84,
+            "probability": 0.991529,
+            "start_seconds": 27.72,
+            "word": "me"
+          },
+          {
+            "end_seconds": 28.04,
+            "probability": 0.993684,
+            "start_seconds": 27.84,
+            "word": "without"
+          },
+          {
+            "end_seconds": 28.3,
+            "probability": 0.999113,
+            "start_seconds": 28.04,
+            "word": "my"
+          },
+          {
+            "end_seconds": 28.5,
+            "probability": 0.999145,
+            "start_seconds": 28.3,
+            "word": "hair,"
+          },
+          {
+            "end_seconds": 28.78,
+            "probability": 0.991761,
+            "start_seconds": 28.68,
+            "word": "ain't"
+          },
+          {
+            "end_seconds": 29.68,
+            "probability": 0.889286,
+            "start_seconds": 28.78,
+            "word": "I?\""
+          },
+          {
+            "end_seconds": 29.9,
+            "probability": 0.998085,
+            "start_seconds": 29.68,
+            "word": "Jim"
+          },
+          {
+            "end_seconds": 30.12,
+            "probability": 0.99918,
+            "start_seconds": 29.9,
+            "word": "looked"
+          },
+          {
+            "end_seconds": 30.36,
+            "probability": 0.987184,
+            "start_seconds": 30.12,
+            "word": "about"
+          },
+          {
+            "end_seconds": 30.52,
+            "probability": 0.994599,
+            "start_seconds": 30.36,
+            "word": "the"
+          },
+          {
+            "end_seconds": 30.68,
+            "probability": 0.999571,
+            "start_seconds": 30.52,
+            "word": "room"
+          },
+          {
+            "end_seconds": 31.12,
+            "probability": 0.997863,
+            "start_seconds": 30.68,
+            "word": "curiously."
+          },
+          {
+            "end_seconds": 32.12,
+            "probability": 0.059336,
+            "start_seconds": 31.68,
+            "word": "You"
+          },
+          {
+            "end_seconds": 32.32,
+            "probability": 0.989913,
+            "start_seconds": 32.12,
+            "word": "say"
+          },
+          {
+            "end_seconds": 32.46,
+            "probability": 0.991177,
+            "start_seconds": 32.32,
+            "word": "your"
+          },
+          {
+            "end_seconds": 32.62,
+            "probability": 0.9985,
+            "start_seconds": 32.46,
+            "word": "hair"
+          },
+          {
+            "end_seconds": 32.82,
+            "probability": 0.996028,
+            "start_seconds": 32.62,
+            "word": "is"
+          },
+          {
+            "end_seconds": 33.54,
+            "probability": 0.720257,
+            "start_seconds": 32.82,
+            "word": "gone?\""
+          },
+          {
+            "end_seconds": 33.7,
+            "probability": 0.914352,
+            "start_seconds": 33.54,
+            "word": "he"
+          },
+          {
+            "end_seconds": 34.0,
+            "probability": 0.999354,
+            "start_seconds": 33.7,
+            "word": "said,"
+          },
+          {
+            "end_seconds": 34.6,
+            "probability": 0.995605,
+            "start_seconds": 34.48,
+            "word": "with"
+          },
+          {
+            "end_seconds": 34.7,
+            "probability": 0.995097,
+            "start_seconds": 34.6,
+            "word": "an"
+          },
+          {
+            "end_seconds": 34.94,
+            "probability": 0.990386,
+            "start_seconds": 34.7,
+            "word": "air"
+          },
+          {
+            "end_seconds": 35.32,
+            "probability": 0.997104,
+            "start_seconds": 34.94,
+            "word": "almost"
+          },
+          {
+            "end_seconds": 35.5,
+            "probability": 0.995648,
+            "start_seconds": 35.32,
+            "word": "of"
+          },
+          {
+            "end_seconds": 35.88,
+            "probability": 0.996289,
+            "start_seconds": 35.5,
+            "word": "idiocy."
+          }
+        ],
+        "audio_sha256": "785145a429cefb07ecef3239a9b602d4508dc27528dd28f4619a10900a1adb90",
+        "coverage": 1.0,
+        "duplicate_tokens": {},
+        "equal_token_count": 111,
+        "evaluated_source_sha256": "51d090c7834febdb1c9d5309cff953cb8cef9c2fb4721a00dead4be95ff5a392",
+        "evaluated_transcript_sha256": "dc5061d2425dc0469b496d52e9524e6ebc4f76a0bb504aed01941567508ff7f2",
+        "first_words_match": true,
+        "last_words_match": true,
+        "missing_tokens": {},
+        "no_duplicate_content": true,
+        "no_missing_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "ordered_alignment_operations": [],
+        "ordered_content_integrity_pass": true,
+        "pass": true,
+        "precision": 1.0,
+        "score": 10.0,
+        "section_id": "section-013",
+        "source_equivalences_applied": [
+          {
+            "equivalence": "your/yer",
+            "match_count": 2,
+            "replacement": "yer"
+          }
+        ],
+        "source_text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+        "source_token_count": 111,
+        "transcript": "It'll grow out again. You won't mind, will you? I just had to do it. My hair grows awfully fast. Say Merry Christmas. Jim, and let's be happy. You don't know what a nice—what a beautiful, nice gift I've got for you. You've cut off your hair?\" asked Jim laboriously, as if he had not arrived at that patent fact yet even after the hardest mental labor. Cut it off and sold it, said Della. Don't you like me just as well, anyhow? I'm me without my hair, ain't I?\" Jim looked about the room curiously. You say your hair is gone?\" he said, with an air almost of idiocy.",
+        "transcript_equivalences_applied": [
+          {
+            "equivalence": "your/yer",
+            "match_count": 2,
+            "replacement": "yer"
+          }
+        ],
+        "transcript_sha256": "2dbc461edd4f68e54c1a7d6d8bbff4f2127ca34862ec46949a28683cdc435027",
+        "transcript_token_count": 111,
+        "unexpected_tokens": {},
+        "word_timestamp_anomalies": [],
+        "word_timestamp_evidence_valid": true
+      }
+    ],
+    "settings": {
+      "condition_on_previous_text": false,
+      "fp16": false,
+      "initial_prompt": null,
+      "language": "en",
+      "task": "transcribe",
+      "temperature": 0,
+      "word_timestamps": true
+    },
+    "status": "PASS"
+  },
+  "policy": {
+    "anti_choppy_join_score_min": 9.2,
+    "anti_robotic_texture_score_min": 9.2,
+    "asr_source_score_min": 9.7,
+    "confidence_score_min": 0.9,
+    "coverage_min": 0.98,
+    "fatal_flags_required_false": true,
+    "name": "sprint1_audiobook_acceptance_v3_90",
+    "overall_listening_score_min": 9.0,
+    "path": "/private/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/sprint1_audiobook_acceptance_v3_90_policy_decision.json",
+    "per_dimension_score_min": 8.9,
+    "sha256": "262095f60b80931b8946460c93defcc74e374b6151d53ca80dac8e93016a3ac3"
+  },
+  "release_eligible": false,
+  "safety": {
+    "audio_generated": true,
+    "browser_or_system_speech_fallback": false,
+    "paid_tts_lock_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+    "paid_tts_lock_sha256_after": "1b14deb667de6f40ff6970ca2e89b934cef78c77ec57de10aa0b8dc07117008b",
+    "paid_tts_lock_sha256_before": "1b14deb667de6f40ff6970ca2e89b934cef78c77ec57de10aa0b8dc07117008b",
+    "paid_tts_lock_touched": false,
+    "paid_tts_lock_unchanged": true,
+    "public_audio_status": "AUDIO_HIDDEN",
+    "published": false,
+    "release_gate_mutated": false,
+    "uploaded": false
+  },
+  "samples": [
+    {
+      "audio_path": "/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/earnalism-voxcpm2-private/gift-v390-representative/section-013.wav",
+      "audio_sha256": "785145a429cefb07ecef3239a9b602d4508dc27528dd28f4619a10900a1adb90",
+      "channels": 1,
+      "characters": 573,
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 36.32,
+      "objective_format_pass": true,
+      "passage_id": "section-013",
+      "peak_fraction": 0.33137,
+      "recovered_after_validator_repair": true,
+      "rms_fraction": 0.04844,
+      "sample_rate_hz": 48000,
+      "sample_width_bytes": 2,
+      "section_index": 13,
+      "size_bytes": 3486764,
+      "source_text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+      "word_count": 109
+    }
+  ],
+  "schema": "earnalism.gift_voxcpm2_v390_representative.v1",
+  "scope": {
+    "adversarial_fail_fast": true,
+    "author": "O. Henry",
+    "private_only": true,
+    "representative_section_indices": [
+      1,
+      7,
+      13,
+      17,
+      18,
+      19
+    ],
+    "section_indices": [
+      13
+    ],
+    "slug": "the-gift-of-the-magi",
+    "title": "The Gift of the Magi"
+  },
+  "source": {
+    "full_source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+    "normalized_source_sha256": "f32ebf1df2826126eac28341a0dba111be5a734828d9f7b6fffb41d9b95bfe27",
+    "sections": [
+      {
+        "characters": 573,
+        "passage_id": "section-013",
+        "section_index": 13,
+        "text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+        "word_count": 109
+      }
+    ]
+  },
+  "status": "PRIVATE_ADVERSARIAL_SAMPLE_OBJECTIVE_PASS_LISTENING_PENDING"
+}
