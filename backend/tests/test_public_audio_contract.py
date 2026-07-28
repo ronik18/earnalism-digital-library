@@ -84,6 +84,21 @@ def test_public_projection_keeps_hidden_audio_fail_closed(slug):
     ) == []
 
 
+def test_bn066_audiobook_use_approval_does_not_approve_public_audio():
+    artifact_dir = ROOT / "backend/data/controlled_publications/bn-066"
+    approval = json.loads(
+        (artifact_dir / "approval_evidence.json").read_text(encoding="utf-8")
+    )
+    artifact = catalog_truth.load_controlled_artifact_book(
+        "bn-066", artifact_dir=artifact_dir
+    )
+
+    assert approval["audiobook_use_approved"] is True
+    assert approval["audio_public_release"] != "PUBLIC_AUDIO_RELEASE_APPROVED"
+    assert artifact is not None
+    assert catalog_truth.can_expose_audio(artifact) is False
+
+
 @pytest.mark.parametrize("slug", APPROVED_AUDIO_SLUGS)
 def test_checked_in_reader_manifest_flags_match_approved_audio_contract(slug):
     for relative_root in ("data/controlled_publications", "backend/data/controlled_publications"):

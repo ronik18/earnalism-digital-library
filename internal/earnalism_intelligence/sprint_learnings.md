@@ -751,3 +751,21 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Canonical covers remain fully visible with `object-fit: contain`; varying
   source proportions are framed as physical jacket boards instead of being
   cropped to manufacture uniformity.
+
+## 2026-07-28 `bn-066` preflight and ASR closeout
+
+- A bare single Bengali digit between literary paragraphs can be a stanza or
+  section marker, not page boilerplate. The factory now treats explicit
+  `পৃষ্ঠা`/`পৃ.` markers and bare three-or-more-digit lines as page artifacts
+  while preserving single-digit Bengali structure.
+- Audiobook-use authorization permits preparation and private QA; it does not
+  approve a public audio release. Public audio remains governed independently
+  by the approved release state, QA status, bound assets, and delivery gates.
+- All 152 retained ASR checkpoints completed, but the raw audio/manuscript
+  score was `0.8403/10` and first/last boundaries failed. Listening QA must not
+  run after that objective failure, and the same audio/provider attempt must
+  not be repeated.
+- The reader stays live and audio stays hidden. The next admissible path is a
+  genuinely different exact source-bound delivery followed by the full gate
+  sequence; no upload, publication, public Listen, or release mutation
+  occurred in this repair.

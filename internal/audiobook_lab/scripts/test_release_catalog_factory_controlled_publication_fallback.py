@@ -143,6 +143,20 @@ class ControlledPublicationFallbackTests(unittest.TestCase):
             )
             self.assertEqual(result["status"], "PASS")
 
+    def test_single_digit_bengali_stanza_marker_is_not_page_junk(self):
+        page_pattern = dict(MODULE.JUNK_PATTERNS)["page_number_line"]
+        text = (
+            "রমণীতে নাহি সাধ, রণজয় গাওরে।”\n\n"
+            "২\n\n"
+            "“পায়ে ধরি প্রাণনাথ আমা ছেড়ে যেওনা।”"
+        )
+        self.assertIsNone(page_pattern.search(text))
+
+    def test_explicit_or_three_digit_page_markers_remain_blocked(self):
+        page_pattern = dict(MODULE.JUNK_PATTERNS)["page_number_line"]
+        self.assertIsNotNone(page_pattern.search("আগের বাক্য\n\nপৃষ্ঠা ২\n\nপরের বাক্য"))
+        self.assertIsNotNone(page_pattern.search("আগের বাক্য\n\n১৬৭\n\nপরের বাক্য"))
+
 
 if __name__ == "__main__":
     unittest.main()
