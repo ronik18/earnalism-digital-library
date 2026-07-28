@@ -866,3 +866,28 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - No upload, public metadata or release-gate mutation, publication, or paid
   lock mutation occurred. The next admissible path is one genuinely different
   exact source-bound delivery followed by the complete objective gate sequence.
+
+## 2026-07-28 — Jekyll voice selection passed representative gates
+
+- Exact source fidelity and premium listening quality must both select a voice.
+  Studio-C at rate 0.88 passed all normalized objective samples, but middle and
+  dialogue listening fell to 8.4. That fingerprint is closed and must not be
+  repeated or expanded.
+- A materially different `en-GB-Chirp3-HD-Charon` arm at rate 0.94 preserved
+  all four passages at normalized 10.0 / 1.0 with valid audio-derived word
+  timestamps. Its four listening samples all scored 9.4 with confidence 0.95,
+  no fatal flags, and no dimension below 9.2.
+- Preserve raw ASR truth while adjudicating inaudible formatting. The Charon
+  middle sample decoded canonical British `neighbouring` as American
+  `neighboring`; raw 9.8438 / 0.9844 remains recorded. Only that explicit
+  standalone pair is normalized. No general spelling, stemming, name, or
+  content substitution is accepted.
+- The production admin cover route previously excluded controlled-publication
+  titles absent from Mongo. The repaired source resolves Mongo first, then only
+  an exact reader-eligible controlled artifact, and still writes only to the
+  private candidate collection. Pending URLs remain absent from public catalog,
+  Home, reader, and audio surfaces.
+- A representative pass is not a full audiobook. Jekyll remains audio-hidden
+  until its private graphical pair is reviewed and promoted to canonical cover
+  truth, followed by full-title generation, full ASR and measured sync,
+  six-sample listening, private delivery, endpoint 206, and browser proof.

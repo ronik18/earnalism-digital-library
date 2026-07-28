@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.private_cover_candidate.v1",
+  "status": "PRIVATE_CANDIDATE_OWNER_REVIEW_REQUIRED",
+  "generated_at": "2026-07-28T14:02:55Z",
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "author": "Robert Louis Stevenson",
+  "generation_mode": "openai_builtin_image_generation",
+  "visual_rights_status": "PENDING_OWNER_VISUAL_RIGHTS_REVIEW",
+  "canonical_promotion_status": "NOT_PROMOTED",
+  "admin_upload_status": "BLOCKED_CONTROLLED_ARTIFACT_NOT_RESOLVED_BY_UPLOAD_ENDPOINT",
+  "front": {
+    "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/jekyll-and-hyde/jekyll-and-hyde-front-art-v1.png",
+    "sha256": "ba3dca9fba29a741d74b0ac94e8b9db97fcaf52a09776b208361044346d4dfba",
+    "size_bytes": 2812735,
+    "width": 1024,
+    "height": 1536,
+    "media_type": "image/png",
+    "embedded_text": false
+  },
+  "back": {
+    "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/jekyll-and-hyde/jekyll-and-hyde-back-art-v1.png",
+    "sha256": "92326eb8eba9678adf6af8a06cc820a4ef9500ef68e3dec3b8783cf1af7dbace",
+    "size_bytes": 2548480,
+    "width": 1024,
+    "height": 1536,
+    "media_type": "image/png",
+    "embedded_text": false
+  },
+  "constraints": {
+    "private_only": true,
+    "public_catalog_mutated": false,
+    "reader_state_mutated": false,
+    "audiobook_release_state_mutated": false,
+    "owner_review_required": true,
+    "canonical_checksum_update_required": true
+  }
+}

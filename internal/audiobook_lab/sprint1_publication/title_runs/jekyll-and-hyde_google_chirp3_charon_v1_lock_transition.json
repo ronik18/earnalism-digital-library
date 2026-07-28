@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "changed_at": "2026-07-28T14:09:25Z",
+  "lock_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+  "from_slug": "jekyll-and-hyde",
+  "to_slug": "jekyll-and-hyde",
+  "canonical_title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "canonical_author": "Robert Louis Stevenson",
+  "budget": {
+    "campaign_cap_usd": 75.0,
+    "per_title_cap_usd": 8.0
+  },
+  "lock_sha256_before": "144b9748dac11652a9458653ab6fc6ae6dfc02c57912e4c36b4f76c955593e97",
+  "lock_sha256_after": "42f5df708d8d7439f244af3482d965a64809cd991ef9f076ef99a30affe7b33e",
+  "provider_call_performed": false,
+  "publication_performed": false
+}
