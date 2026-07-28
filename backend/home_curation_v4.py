@@ -15,9 +15,9 @@ except ImportError:  # pragma: no cover
     from backend.catalog_truth import audio_release_qa_status, audio_public_release_status, can_expose_audio, can_expose_reader, public_book_projection
 
 try:
-    from home_curation import is_safe_cover_url
+    from home_curation import _cover_visual_exclusions, is_safe_cover_url
 except ImportError:  # pragma: no cover
-    from backend.home_curation import is_safe_cover_url
+    from backend.home_curation import _cover_visual_exclusions, is_safe_cover_url
 
 
 SHELF_DEFINITIONS = (
@@ -306,11 +306,13 @@ def select_hero_carousel_books(contracts: Iterable[dict[str, Any]]) -> list[dict
     """Return every reader-safe, canonical-cover title in stable editorial order."""
     selected: list[dict[str, Any]] = []
     seen: set[str] = set()
+    visual_exclusions = _cover_visual_exclusions()
     for book in sorted(contracts, key=selection_key):
         slug = str(book.get("slug") or "").strip().lower()
         if (
             not slug
             or slug in seen
+            or slug in visual_exclusions
             or book.get("reader_enabled") is not True
             or book.get("cover_valid") is not True
             or book.get("home_feature_eligible") is False

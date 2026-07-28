@@ -196,3 +196,28 @@ def test_hero_carousel_fails_closed_for_invalid_or_editorially_blocked_records()
     ]
 
     assert [item["slug"] for item in select_hero_carousel_books(contracts)] == ["valid"]
+
+
+def test_hero_carousel_reuses_owner_reviewed_visual_cover_exclusions():
+    placeholder = {
+        "slug": "book-2b9853ec52",
+        "title": "দুই বিঘা জমি",
+        "author": "রবীন্দ্রনাথ ঠাকুর",
+        "reader_enabled": True,
+        "front_cover_url": "https://cdn.example.com/controlled-release-template.png",
+        "cover_valid": True,
+        "book_url": "/book/book-2b9853ec52",
+        "reader_url": "/reader/book-2b9853ec52",
+        "home_feature_eligible": True,
+        "do_not_feature": False,
+    }
+    canonical = {
+        **placeholder,
+        "slug": "canonical",
+        "title": "Canonical",
+        "front_cover_url": "https://cdn.example.com/canonical.png",
+        "book_url": "/book/canonical",
+        "reader_url": "/reader/canonical",
+    }
+
+    assert [item["slug"] for item in select_hero_carousel_books([placeholder, canonical])] == ["canonical"]

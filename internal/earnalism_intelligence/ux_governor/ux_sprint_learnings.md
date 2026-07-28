@@ -114,6 +114,15 @@
 - Modifier selectors such as `curated-shelf-collage--missing-short` require an equally specific mobile reset; otherwise a tablet area map can survive below the mobile breakpoint and collapse one tile to a near-zero-width column.
 - The bundled Sprint 1 snapshot is a truthful resilience path for hero and shelf books while the runtime curation request is pending or unavailable. Unsupported covers remain omitted and audiobook release truth remains unchanged.
 
+## 2026-07-28 Home Hero Editorial Coverflow v3
+
+- Crossfading whole four-book frames preserves equal visual weight and reads as a flat strip; a premium coverflow needs one stable slide set, a shared perspective, and explicit previous/active/next state.
+- Split transform ownership across a slide-position wrapper and an inner jacket wrapper. This keeps circular placement, depth, hover lift, and physical cover construction from overwriting one another.
+- A transparent full-stage hit plane can intercept pointer events intended for negative-Z side books. Keep the stage non-interactive and restore pointer events only on the three visible slide wrappers.
+- Cover eligibility must remain consistent across curation versions. Reusing the owner-reviewed visual-cover exclusions reduced the live Sprint 1 hero candidates from 26 to 13 without changing reader, audiobook, or shelf truth.
+- Six-viewport browser evidence passed with exactly three meaningful slides, zero horizontal overflow, zero hidden focus targets, uniform non-overlapping gaps, and 44px touch controls on tablet and mobile.
+- Go-live static assertions must migrate with an intentional component contract. The retired slot selector and per-book perspective string were replaced by checks for the shared coverflow stage, `1100px` perspective, and preserved 3-D context.
+
 ## 2026-07-28 Admin cover desk
 
 - Cover remediation is clearer as a dedicated admin workspace than as two

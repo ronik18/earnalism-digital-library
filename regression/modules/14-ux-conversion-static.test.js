@@ -265,8 +265,9 @@ describe("UX conversion static signals", () => {
     expect(premiumHero).toContain("data-book-slug");
     expect(premiumHero).toContain("REFERENCE_HERO_IMAGE");
     expect(premiumHeroStyles).toContain(".premium-reference-hero");
-    expect(premiumHeroStyles).toContain(".premium-reference-slot");
-    expect(premiumHeroStyles).toContain("transform: perspective(");
+    expect(premiumHeroStyles).toContain(".premium-coverflow__stage");
+    expect(premiumHeroStyles).toContain("perspective: 1100px");
+    expect(premiumHeroStyles).toContain("transform-style: preserve-3d");
     expect(premiumHeroStyles).toMatch(/@media\s*\(min-width:\s*1024px\)/);
     expect(headerStyles).toContain(".premium-reference-home-cta-wrap");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::after");
