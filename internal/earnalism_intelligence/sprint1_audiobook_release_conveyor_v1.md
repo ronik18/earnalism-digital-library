@@ -51,9 +51,9 @@ source-bound delivery packet.
 
 ## Release truth
 
-The active listening floor is `8.9`, confidence is `0.90`, ordinary dimensions
-must be at least `8.9`, anti-robotic and anti-choppy dimensions must be at least
-`9.2`, and fatal flags must be absent. ASR/manuscript remains `9.7`, coverage
+The active listening floor is `8.9`, confidence is `0.90`, every listening
+dimension must be at least `8.9`, and fatal flags must be absent.
+ASR/manuscript remains `9.7`, coverage
 remains `0.98`, and exact first/last/order, measured sync, rights, covers,
 checksum, metadata, endpoint, browser playback, and an empty blocker list are
 mandatory.

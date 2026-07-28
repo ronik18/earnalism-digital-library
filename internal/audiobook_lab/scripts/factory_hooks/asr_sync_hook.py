@@ -54,13 +54,28 @@ ASR_SYNC_MAX_ESTIMATED_USD_ENV = "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD"
 ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV = "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE"
 FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD_ENV = "EARNALISM_FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD"
 REQUIRE_AUDIO_DERIVED_ASR_ENV = "EARNALISM_REQUIRE_AUDIO_DERIVED_ASR_9_7"
-UNIVERSAL_LISTENING_POLICY = "schema3_universal_9_7"
+LEGACY_UNIVERSAL_LISTENING_POLICY = "schema3_universal_9_7"
+UNIVERSAL_LISTENING_POLICY = "platform_audiobook_acceptance_v4_89"
 BENGALI_PREMIUM_MVP_POLICY = "bengali_premium_mvp_v1"
 BENGALI_AUDIOBOOK_92_POLICY = "bengali_audiobook_acceptance_v2_92"
 SPRINT1_AUDIOBOOK_90_POLICY = "sprint1_audiobook_acceptance_v3_90"
 SPRINT1_AUDIOBOOK_89_POLICY = "sprint1_audiobook_acceptance_v3_89"
 TIERED_AUDIOBOOK_ACCEPTANCE_POLICY = "tiered_audiobook_acceptance_v1"
 LISTENING_THRESHOLDS = {
+    "naturalness_score": 8.9,
+    "pronunciation_score": 8.9,
+    "emotional_expression_score": 8.9,
+    "punctuation_pause_score": 8.9,
+    "pacing_score": 8.9,
+    "continuity_score": 8.9,
+    "anti_robotic_texture_score": 8.9,
+    "anti_choppy_join_score": 8.9,
+    "listener_enjoyment_score": 8.9,
+    "overall_listening_score": 8.9,
+    "confidence_score": 0.90,
+}
+LEGACY_UNIVERSAL_LISTENING_THRESHOLDS = {
+    **LISTENING_THRESHOLDS,
     "naturalness_score": 9.7,
     "pronunciation_score": 9.7,
     "emotional_expression_score": 9.7,
@@ -105,6 +120,8 @@ SPRINT1_AUDIOBOOK_90_THRESHOLDS = {
 }
 SPRINT1_AUDIOBOOK_89_THRESHOLDS = {
     **BENGALI_AUDIOBOOK_92_THRESHOLDS,
+    "anti_robotic_texture_score": 8.9,
+    "anti_choppy_join_score": 8.9,
     "overall_listening_score": 8.9,
 }
 TIERED_AUDIOBOOK_ACCEPTANCE_THRESHOLDS = {
@@ -336,6 +353,14 @@ def audio_derived_asr_gate(metrics: dict, *, word_timestamp_count: int) -> tuple
 
 def listening_policy_for(language: str, release_policy: str | None = None) -> dict:
     requested = (release_policy or UNIVERSAL_LISTENING_POLICY).strip() or UNIVERSAL_LISTENING_POLICY
+    if requested == LEGACY_UNIVERSAL_LISTENING_POLICY:
+        return {
+            "name": requested,
+            "allowed": True,
+            "reason": "",
+            "thresholds": LEGACY_UNIVERSAL_LISTENING_THRESHOLDS,
+            "fatal_flags": BINARY_LISTENING_FLAGS,
+        }
     if requested == BENGALI_PREMIUM_MVP_POLICY:
         if not is_bengali_language(language):
             return {

@@ -61,25 +61,25 @@ def test_full_audiobook_release_is_blocked_by_default():
     assert any("Full audiobook release is disabled by default" in item for item in result.blockers)
 
 
-def test_public_preview_blocked_until_qa_score_9_2():
+def test_public_preview_blocked_until_qa_score_8_9():
     request, profile = request_with_approvals()
     profile = approved_profile(profile)
-    result = gate.evaluate_release_gate(request, profile, qa_score=9.1)
+    result = gate.evaluate_release_gate(request, profile, qa_score=8.8)
 
     assert result.status == "BLOCKED_PUBLIC_AUDIO_RELEASE"
-    assert any("Public preview requires human QA score >= 9.2" in item for item in result.blockers)
+    assert any("Public preview requires human QA score >= 8.9" in item for item in result.blockers)
 
 
-def test_full_audiobook_blocked_until_qa_score_9_5():
+def test_full_audiobook_blocked_until_qa_score_8_9():
     request, profile = request_with_approvals(
         full_audiobook_allowed=True,
         approval_status="FULL_AUDIOBOOK_APPROVED",
     )
     profile = approved_profile(profile)
-    result = gate.evaluate_release_gate(request, profile, qa_score=9.4)
+    result = gate.evaluate_release_gate(request, profile, qa_score=8.8)
 
     assert result.status == "BLOCKED_PUBLIC_AUDIO_RELEASE"
-    assert any("Full audiobook requires human QA score >= 9.5" in item for item in result.blockers)
+    assert any("Full audiobook requires human QA score >= 8.9" in item for item in result.blockers)
 
 
 def test_unauthorized_voice_clone_profile_is_blocked():

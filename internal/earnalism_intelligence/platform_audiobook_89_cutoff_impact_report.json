@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-28T07:47:01Z",
+  "policy": "platform_audiobook_acceptance_v4_89",
+  "scope": "canonical Sprint 1 Bengali and English audiobooks",
+  "thresholds": {
+    "overall_listening_score_min": 8.9,
+    "confidence_score_min": 0.9,
+    "per_dimension_score_min": 8.9,
+    "anti_robotic_texture_score_min": 8.9,
+    "anti_choppy_join_score_min": 8.9,
+    "asr_manuscript_score_min": 9.7,
+    "coverage_min": 0.98
+  },
+  "production_baseline": {
+    "public_readers": 32,
+    "public_audiobooks": 4,
+    "live_audio_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ]
+  },
+  "best_non_live_candidates_reclassified": [
+    {
+      "slug": "the-gift-of-the-magi",
+      "best_complete_representative_set_minimum_listening_score": 9.5,
+      "full_title_asr_manuscript_score": 9.9545,
+      "release_ready": false,
+      "blockers": [
+        "FULL_TITLE_ORDERED_CONTENT_INTEGRITY_FAIL",
+        "FULL_TITLE_MEASURED_SYNC_FAIL",
+        "FULL_TITLE_LISTENING_QA_MISSING",
+        "DOWNSTREAM_DELIVERY_GATES_INCOMPLETE"
+      ]
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "latest_derivative_full_title_listening_score": 9.0,
+      "latest_derivative_full_title_asr_manuscript_score": 9.8529,
+      "release_ready": false,
+      "blockers": [
+        "FULL_TITLE_ORDERED_CONTENT_INTEGRITY_FAIL",
+        "EXACT_DOWNSTREAM_PACKAGE_INCOMPLETE"
+      ]
+    },
+    {
+      "slug": "the-time-machine",
+      "representative_overall_listening_score": 9.0,
+      "release_ready": false,
+      "blockers": [
+        "EMOTIONAL_EXPRESSION_BELOW_8_9",
+        "FULL_TITLE_PACKAGE_MISSING"
+      ]
+    },
+    {
+      "slug": "radharani",
+      "representative_overall_listening_score": 9.4,
+      "full_title_raw_asr_manuscript_score": 1.0962,
+      "release_ready": false,
+      "blockers": [
+        "FULL_TITLE_ASR_MANUSCRIPT_FAIL",
+        "FULL_TITLE_EXACT_CONTENT_FAIL",
+        "MEASURED_SYNC_MISSING",
+        "DOWNSTREAM_DELIVERY_GATES_INCOMPLETE"
+      ]
+    },
+    {
+      "slug": "the-secret-garden",
+      "best_complete_representative_set_minimum_listening_score": 9.0,
+      "chapter_001_measured_sync_score": 9.6262,
+      "release_ready": false,
+      "blockers": [
+        "CHAPTER_001_OBJECTIVE_REPAIR_FAILED",
+        "REMAINING_26_CHAPTERS_NOT_GENERATED",
+        "FULL_TITLE_LISTENING_QA_MISSING",
+        "DOWNSTREAM_DELIVERY_GATES_INCOMPLETE"
+      ]
+    },
+    {
+      "slug": "dsires-baby",
+      "representative_overall_listening_score": 9.2,
+      "release_ready": false,
+      "blockers": [
+        "ROBOTIC_TEXTURE_FATAL_FLAG",
+        "MECHANICAL_CADENCE_FATAL_FLAG",
+        "CHOPPY_JOINS_FATAL_FLAG",
+        "FULL_TITLE_PACKAGE_MISSING"
+      ]
+    }
+  ],
+  "outcome": {
+    "newly_full_title_release_ready": 0,
+    "newly_published": 0,
+    "public_state_mutated": false,
+    "hidden_audio_exposed": false,
+    "reason": "No non-live title has one exact full-title package with an empty blocker list. The remaining failures are objective, fatal-defect, or downstream-delivery failures rather than listening-cutoff failures."
+  }
+}

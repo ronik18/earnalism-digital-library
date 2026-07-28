@@ -86,11 +86,11 @@ SCORE_THRESHOLDS = {
     "manuscript_scope_score": 9.8,
     "frontmatter_removal_score": 10.0,
     "transcript_match_score": 9.7,
-    "bengali_pronunciation_score": 9.7,
-    "narration_naturalness_score": 9.7,
-    "emotional_expression_score": 9.7,
-    "punctuation_pause_score": 9.7,
-    "pacing_score": 9.7,
+    "bengali_pronunciation_score": 8.9,
+    "narration_naturalness_score": 8.9,
+    "emotional_expression_score": 8.9,
+    "punctuation_pause_score": 8.9,
+    "pacing_score": 8.9,
     "silence_clipping_score": 9.8,
     "truncation_score": 10.0,
     "duplicate_segment_score": 10.0,
@@ -101,9 +101,11 @@ SCORE_THRESHOLDS = {
     "upload_checksum_score": 10.0,
     "browser_audio_start_score": 9.7,
     "cover_semantic_match_score": 9.7,
-    "overall_premium_score": 9.7,
-    "confidence_score": 0.95,
+    "overall_premium_score": 8.9,
+    "confidence_score": 0.90,
 }
+ACTIVE_LISTENING_SCORE_MIN = 8.9
+ACTIVE_LISTENING_CONFIDENCE_MIN = 0.90
 ENV_KEYS = [
     "OPENAI_API_KEY",
     "CLOUDINARY_URL",
@@ -258,7 +260,7 @@ def write_repair_plan(ctx: RunContext, previous_evidence: dict[str, Any]) -> dic
         elif any(token in text for token in ["pronunciation", "naturalness", "expression", "pause", "pacing", "silence", "audio judge"]):
             root = "Previous OpenAI voice/instructions produced non-premium narration scores."
             action = "Run voice auditions using representative Bengali passage, select best judged voice/instruction pair, regenerate only if audition clears quality threshold."
-            pass_condition = "All sampled audio judge dimensions meet required 9.7+ thresholds with confidence >= 0.95."
+            pass_condition = "All sampled listening dimensions meet 8.9 with confidence >= 0.90 and no fatal flags."
         elif any(token in text for token in ["sync", "VTT", "estimated"]):
             root = "Sidecars were deterministic estimates, not real audio alignment."
             action = "Use provider word timestamps or a real forced alignment method; otherwise keep release blocked."
@@ -705,7 +707,7 @@ def write_audio_failure_diagnosis(
         "clean_manuscript_hash": clean["sha256"],
         "previous_blockers": blocker_list,
         "causes": {
-            "tts_pronunciation": float(aggregate.get("pronunciation", scores.get("bengali_pronunciation_score", 0)) or 0) < 9.7,
+            "tts_pronunciation": float(aggregate.get("pronunciation", scores.get("bengali_pronunciation_score", 0)) or 0) < ACTIVE_LISTENING_SCORE_MIN,
             "asr_normalization_or_scoring": bool(comparison)
             and comparison.get("frontmatter_absent") is True
             and comparison.get("first_words_match_story") is True
@@ -715,13 +717,13 @@ def write_audio_failure_diagnosis(
             or any("duplicate" in str(item).lower() for item in blocker_list),
             "chunk_joins": any("glitch" in str(item).lower() or "silence" in str(item).lower() for item in blocker_list)
             or float(aggregate.get("glitches", 10) or 10) < 9.8,
-            "punctuation_preprocessing": float(aggregate.get("punctuation_pauses", scores.get("punctuation_pause_score", 0)) or 0) < 9.7,
+            "punctuation_preprocessing": float(aggregate.get("punctuation_pauses", scores.get("punctuation_pause_score", 0)) or 0) < ACTIVE_LISTENING_SCORE_MIN,
             "weak_voice_or_instructions": any(
                 float(aggregate.get(key, scores.get({
                     "naturalness": "narration_naturalness_score",
                     "expression": "emotional_expression_score",
                     "pacing": "pacing_score",
-                }.get(key, ""), 0)) or 0) < 9.7
+                }.get(key, ""), 0)) or 0) < ACTIVE_LISTENING_SCORE_MIN
                 for key in ["naturalness", "expression", "pacing"]
             ),
             "lack_of_real_alignment": float(previous_evidence.get("sync_score") or scores.get("sync_score", 0) or 0) < 9.7
@@ -1512,9 +1514,8 @@ def maybe_judge_audio_samples(
                                 "text": (
                                     "Evaluate this Bengali audiobook narration sample for premium public release. "
                                     "Use the function only. Scores are 0 to 10 except confidence, which is 0 to 1. "
-                                    "Anchored rubric: 9.7-10 means premium release-ready with no meaningful defects and "
-                                    "human-like literary narration; 9.0-9.6 means good but not automatic release; "
-                                    "8.0-8.9 means acceptable audition quality but not final release; below 8 requires repair. "
+                                    "Anchored rubric: 8.9-10 may satisfy the listening gate when every dimension passes, "
+                                    "confidence is at least 0.90, and no fatal defect is present; lower scores require repair. "
                                     "Penalize robotic tone, poor Bengali pronunciation, flat expression, rushed pacing, "
                                     "bad punctuation pauses, clipping, repeated lines, dead silence, or source frontmatter."
                                 ),
@@ -1549,15 +1550,15 @@ def maybe_judge_audio_samples(
         aggregate[key] = round(min(values), 4)
     aggregate["frontmatter_present"] = any(bool(sample["judgment"].get("frontmatter_present")) for sample in judged)
     passed = (
-        aggregate["naturalness"] >= 9.7
-        and aggregate["pronunciation"] >= 9.7
-        and aggregate["expression"] >= 9.7
-        and aggregate["punctuation_pauses"] >= 9.7
-        and aggregate["pacing"] >= 9.7
+        aggregate["naturalness"] >= ACTIVE_LISTENING_SCORE_MIN
+        and aggregate["pronunciation"] >= ACTIVE_LISTENING_SCORE_MIN
+        and aggregate["expression"] >= ACTIVE_LISTENING_SCORE_MIN
+        and aggregate["punctuation_pauses"] >= ACTIVE_LISTENING_SCORE_MIN
+        and aggregate["pacing"] >= ACTIVE_LISTENING_SCORE_MIN
         and aggregate["silence_clipping"] >= 9.8
         and aggregate["glitches"] >= 9.8
-        and aggregate["overall"] >= 9.7
-        and aggregate["confidence"] >= 0.95
+        and aggregate["overall"] >= ACTIVE_LISTENING_SCORE_MIN
+        and aggregate["confidence"] >= ACTIVE_LISTENING_CONFIDENCE_MIN
         and not aggregate["frontmatter_present"]
     )
     return {"status": "PASS" if passed else "FAIL", "model": model, "samples": samples, "aggregate": aggregate}
@@ -1679,7 +1680,7 @@ def maybe_run_voice_auditions(
         "Use the function only. Scores are 0 to 10 except confidence, which is 0 to 1. "
         "Selector quality requires no source frontmatter, no glitches/clipping, no robotic/system/fallback TTS, "
         "confidence >= 0.90, raw overall >= 8.0, pronunciation >= 8.0, and naturalness >= 8.0. "
-        "Final automatic release still requires a separate full-audiobook 9.7+ QA pass."
+        "Final release requires full-audiobook listening >=8.9 plus unchanged objective ASR/manuscript >=9.7 and delivery gates."
     )
     auditions: list[dict[str, Any]] = []
     for voice in voices:

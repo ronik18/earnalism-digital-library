@@ -1,5 +1,16 @@
 {
   "version": "2026-07-14",
+  "active_platform_audiobook_policy": {
+    "policy": "platform_audiobook_acceptance_v4_89",
+    "effective_at": "2026-07-28T07:47:01Z",
+    "all_subjective_listening_dimensions_min": 8.9,
+    "confidence_min": 0.9,
+    "fatal_flags_required_false": true,
+    "asr_manuscript_min_unchanged": 9.7,
+    "newly_release_ready_title_count": 0,
+    "production_audiobook_count": 4,
+    "impact_report": "internal/earnalism_intelligence/platform_audiobook_89_cutoff_impact_report.json"
+  },
   "titles": {
     "alices-adventures-in-wonderland": {
       "latest_decision": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_REPRESENTATIVE_ASR_REPAIR_FAILURE",

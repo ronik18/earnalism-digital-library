@@ -297,6 +297,7 @@ def final_bakeoff_exit_code(*, passing: bool, fail_closed: bool) -> int:
 
 def prioritize_mvp_voices(voices: list[ProviderVoice], release_policy: str, limit_per_provider: int) -> list[ProviderVoice]:
     if release_policy not in {
+        UNIVERSAL_LISTENING_POLICY,
         BENGALI_PREMIUM_MVP_POLICY,
         BENGALI_AUDIOBOOK_92_POLICY,
         SPRINT1_AUDIOBOOK_89_POLICY,
@@ -1170,9 +1171,9 @@ def available_voices(
                     item.startswith("sarvam/") or "/" not in item for item in voice_filters
                 )
                 sarvam_voices = sarvam_tts_adapter.candidate_voices(
-                    None if release_policy in {BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY, SPRINT1_AUDIOBOOK_90_POLICY} or fetch_all_for_filter else limit_per_provider
+                    None if release_policy in {UNIVERSAL_LISTENING_POLICY, BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY, SPRINT1_AUDIOBOOK_89_POLICY, SPRINT1_AUDIOBOOK_90_POLICY} or fetch_all_for_filter else limit_per_provider
                 )
-                if release_policy in {BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY, SPRINT1_AUDIOBOOK_90_POLICY}:
+                if release_policy in {UNIVERSAL_LISTENING_POLICY, BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY, SPRINT1_AUDIOBOOK_89_POLICY, SPRINT1_AUDIOBOOK_90_POLICY}:
                     voice_order = (
                         SARVAM_BENGALI_MVP_VOICE_ORDER
                         if release_policy == BENGALI_PREMIUM_MVP_POLICY
@@ -1752,6 +1753,7 @@ def sample_overall_score(sample: dict[str, Any]) -> float:
 
 def adaptive_early_stop_reason(sample: dict[str, Any], release_policy: str) -> str:
     if release_policy not in {
+        UNIVERSAL_LISTENING_POLICY,
         BENGALI_AUDIOBOOK_92_POLICY,
         SPRINT1_AUDIOBOOK_89_POLICY,
         SPRINT1_AUDIOBOOK_90_POLICY,

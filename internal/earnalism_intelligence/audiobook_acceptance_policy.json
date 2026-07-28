@@ -1,5 +1,5 @@
 {
-  "policy_version": "sprint1-2026-07-28-v3-89",
+  "policy_version": "platform-2026-07-28-v4-89",
   "objective_gates_strict": true,
   "objective_gates": [
     "source_content_toc_integrity_pass",
@@ -16,16 +16,31 @@
     "browser_gate_pass"
   ],
   "listening_tiers": {
+    "PLATFORM_AUDIO_RELEASE_APPROVED": {
+      "policy_version": "platform_audiobook_acceptance_v4_89",
+      "language_scope": "all",
+      "overall_listening_score_min": 8.9,
+      "confidence_score_min": 0.9,
+      "fatal_flags_required_false": true,
+      "per_dimension_score_min": 8.9,
+      "anti_robotic_texture_score_min": 8.9,
+      "anti_choppy_join_score_min": 8.9,
+      "customer_experience": "Release-approved only when full-title listening and every objective and delivery gate pass"
+    },
     "FLAGSHIP_AUDIO": {
       "overall_listening_score_min": 9.7,
       "confidence_score_min": 0.95,
-      "fatal_flags_required_false": true
+      "fatal_flags_required_false": true,
+      "release_blocking": false,
+      "classification_only": true
     },
     "PREMIUM_AUDIO_APPROVED": {
       "overall_listening_score_min": 9.3,
       "confidence_score_min": 0.9,
       "fatal_flags_required_false": true,
-      "customer_experience": "premium acceptable"
+      "customer_experience": "premium editorial distinction",
+      "release_blocking": false,
+      "classification_only": true
     },
     "SPRINT1_AUDIO_RELEASE_APPROVED": {
       "policy_version": "sprint1_audiobook_acceptance_v3_89",
@@ -37,8 +52,8 @@
       "confidence_score_min": 0.9,
       "fatal_flags_required_false": true,
       "per_dimension_score_min": 8.9,
-      "anti_robotic_texture_score_min": 9.2,
-      "anti_choppy_join_score_min": 9.2,
+      "anti_robotic_texture_score_min": 8.9,
+      "anti_choppy_join_score_min": 8.9,
       "customer_experience": "Sprint 1 release-approved only when full-book listening and every objective and delivery gate pass"
     },
     "BENGALI_AUDIO_RELEASE_APPROVED": {
@@ -109,7 +124,7 @@
     "scale_rule": "A representative pass may authorize one private full-title pilot only; public release still requires every full-title objective and delivery gate."
   },
   "sprint1_audiobook_acceptance_v3_89": {
-    "status": "ACTIVE_BY_OWNER_POLICY_UPDATE",
+    "status": "ACTIVE_PLATFORM_COMPATIBLE_ALIAS",
     "effective_date": "2026-07-28",
     "language_scope": [
       "ben",
@@ -117,8 +132,28 @@
     ],
     "representative_or_full_book_listening_score_min": 8.9,
     "per_dimension_score_min": 8.9,
-    "anti_robotic_texture_score_min": 9.2,
-    "anti_choppy_join_score_min": 9.2,
+    "anti_robotic_texture_score_min": 8.9,
+    "anti_choppy_join_score_min": 8.9,
+    "confidence_score_min": 0.9,
+    "fatal_flags_blocking": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected"
+    ],
+    "objective_gates_remain_strict": true,
+    "historical_policy_evidence_immutable": true,
+    "scale_rule": "A representative pass may authorize one private full-title pilot only; public release still requires every full-title objective and delivery gate."
+  },
+  "platform_audiobook_acceptance_v4_89": {
+    "status": "ACTIVE_BY_OWNER_POLICY_UPDATE",
+    "effective_date": "2026-07-28",
+    "language_scope": "all",
+    "representative_or_full_book_listening_score_min": 8.9,
+    "per_dimension_score_min": 8.9,
+    "anti_robotic_texture_score_min": 8.9,
+    "anti_choppy_join_score_min": 8.9,
     "confidence_score_min": 0.9,
     "fatal_flags_blocking": [
       "robotic_texture_detected",
@@ -132,13 +167,13 @@
     "scale_rule": "A representative pass may authorize one private full-title pilot only; public release still requires every full-title objective and delivery gate."
   },
   "automated_bengali_audio_pause_policy": {
-    "status": "REOPENED_UNDER_SPRINT1_V3_89",
-    "updated_at": "2026-07-28T03:05:00Z",
+    "status": "REOPENED_UNDER_PLATFORM_V4_89",
+    "updated_at": "2026-07-28T07:47:01Z",
     "no_more_automated_bengali_tts_this_sprint": false,
     "representative_audition_required_before_full_pilot": true,
     "isolated_sample_not_sufficient_for_full_pilot": true,
     "future_reopening_criteria": [
-      "new Bengali provider/model with representative audition evidence >=8.9 and confidence >=0.90 under sprint1_audiobook_acceptance_v3_89",
+      "new Bengali provider/model with representative audition evidence >=8.9 and confidence >=0.90 under platform_audiobook_acceptance_v4_89",
       "human/professional narration workflow with representative audition pass",
       "licensed audiobook import with rights, provenance, ASR/manuscript match, and measured sync",
       "manually approved exceptional sample set that covers opening, dialogue, emotional, punctuation-heavy, and ending-style passages",

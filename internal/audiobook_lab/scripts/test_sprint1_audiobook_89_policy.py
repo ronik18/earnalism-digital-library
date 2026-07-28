@@ -16,6 +16,8 @@ sys.path.insert(0, str(HOOK_DIR))
 from asr_sync_hook import (  # noqa: E402
     BINARY_LISTENING_FLAGS,
     SPRINT1_AUDIOBOOK_89_POLICY,
+    LEGACY_UNIVERSAL_LISTENING_POLICY,
+    UNIVERSAL_LISTENING_POLICY,
     audio_derived_asr_gate,
     evaluate_listening_evidence,
 )
@@ -33,8 +35,8 @@ def scores(overall: float = 8.9) -> dict:
         "punctuation_pause_score": 8.9,
         "pacing_score": 8.9,
         "continuity_score": 8.9,
-        "anti_robotic_texture_score": 9.2,
-        "anti_choppy_join_score": 9.2,
+        "anti_robotic_texture_score": 8.9,
+        "anti_choppy_join_score": 8.9,
         "listener_enjoyment_score": 8.9,
         "overall_listening_score": overall,
         "confidence_score": 0.90,
@@ -60,12 +62,31 @@ class Sprint1Audiobook89PolicyTests(unittest.TestCase):
         self.assertEqual(policy["name"], SPRINT1_AUDIOBOOK_89_POLICY)
         self.assertEqual(policy["thresholds"]["overall_listening_score"], 8.9)
 
+    def test_platform_default_uses_8_9_and_legacy_policy_remains_explicit(self) -> None:
+        valid, blockers, policy = evaluate_listening_evidence(
+            scores(),
+            clean_flags(),
+            language="eng",
+        )
+        self.assertTrue(valid, blockers)
+        self.assertEqual(policy["name"], UNIVERSAL_LISTENING_POLICY)
+        self.assertEqual(policy["thresholds"]["anti_robotic_texture_score"], 8.9)
+        valid, blockers, policy = evaluate_listening_evidence(
+            scores(),
+            clean_flags(),
+            language="eng",
+            release_policy=LEGACY_UNIVERSAL_LISTENING_POLICY,
+        )
+        self.assertFalse(valid)
+        self.assertEqual(policy["thresholds"]["overall_listening_score"], 9.7)
+        self.assertTrue(blockers)
+
     def test_below_boundary_dimensions_confidence_and_fatal_flags_fail(self) -> None:
         for field, value in (
             ("overall_listening_score", 8.89),
             ("naturalness_score", 8.89),
-            ("anti_robotic_texture_score", 9.19),
-            ("anti_choppy_join_score", 9.19),
+            ("anti_robotic_texture_score", 8.89),
+            ("anti_choppy_join_score", 8.89),
             ("confidence_score", 0.899),
         ):
             with self.subTest(field=field):
@@ -113,8 +134,22 @@ class Sprint1Audiobook89PolicyTests(unittest.TestCase):
         queue = load_json(
             "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json"
         )
+        platform_decision = load_json(
+            "internal/earnalism_intelligence/"
+            "platform_audiobook_acceptance_v4_89_policy_decision.json"
+        )
+        impact = load_json(
+            "internal/earnalism_intelligence/"
+            "platform_audiobook_89_cutoff_impact_report.json"
+        )
         self.assertEqual(decision["policy_name"], SPRINT1_AUDIOBOOK_89_POLICY)
         self.assertEqual(decision["listening_gate"]["overall_listening_score_min"], 8.9)
+        self.assertEqual(
+            decision["listening_gate"]["anti_robotic_texture_score_min"], 8.9
+        )
+        self.assertEqual(
+            decision["listening_gate"]["anti_choppy_join_score_min"], 8.9
+        )
         self.assertEqual(
             decision["objective_gates_unchanged"]["asr_manuscript_score_min"], 9.7
         )
@@ -126,21 +161,53 @@ class Sprint1Audiobook89PolicyTests(unittest.TestCase):
             ],
             8.9,
         )
-        self.assertEqual(state["policy_version"], SPRINT1_AUDIOBOOK_89_POLICY)
+        self.assertEqual(
+            state["policy_version"], "platform_audiobook_acceptance_v4_89"
+        )
         self.assertEqual(state["release_gates"]["goal_score"], 8.9)
-        self.assertEqual(queue["policy_version"], SPRINT1_AUDIOBOOK_89_POLICY)
+        self.assertEqual(
+            queue["policy_version"], "platform_audiobook_acceptance_v4_89"
+        )
+        self.assertEqual(
+            policy[UNIVERSAL_LISTENING_POLICY][
+                "representative_or_full_book_listening_score_min"
+            ],
+            8.9,
+        )
+        self.assertEqual(platform_decision["policy_name"], UNIVERSAL_LISTENING_POLICY)
+        self.assertEqual(
+            platform_decision["listening_gate"]["anti_choppy_join_score_min"],
+            8.9,
+        )
+        self.assertEqual(
+            platform_decision["objective_gates_unchanged"][
+                "asr_manuscript_score_min"
+            ],
+            9.7,
+        )
+        self.assertEqual(impact["outcome"]["newly_full_title_release_ready"], 0)
+        self.assertEqual(impact["outcome"]["newly_published"], 0)
 
     def test_active_pipeline_surfaces_use_89_policy(self) -> None:
         expected = {
             "internal/audiobook_lab/scripts/sprint1_next_two_audiobook_fastpath.py": (
                 "LISTENING_MINIMUM = 8.9",
-                '"sprint1_audiobook_acceptance_v3_89"',
+                '"platform_audiobook_acceptance_v4_89"',
             ),
             "internal/audiobook_lab/scripts/sprint1_google_bengali_full_tts.py": (
                 "LISTENING_MINIMUM = 8.9",
             ),
             "internal/audiobook_lab/scripts/build_narration_import_packet.py": (
                 "ACTIVE_LISTENING_SCORE_MIN = 8.9",
+                "ACTIVE_ANTI_ROBOTIC_TEXTURE_SCORE_MIN = 8.9",
+                "ACTIVE_ANTI_CHOPPY_JOIN_SCORE_MIN = 8.9",
+            ),
+            "internal/audiobook_lab/scripts/release_catalog_factory.py": (
+                '"platform_audiobook_acceptance_v4_89"',
+            ),
+            "internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py": (
+                "POLICY_MIN_ANTI_ROBOTIC_SCORE = 8.9",
+                "POLICY_MIN_ANTI_CHOPPY_SCORE = 8.9",
             ),
             "internal/audiobook_lab/scripts/sprint1_release_packet_builder.py": (
                 "listening_minimum = 8.9",

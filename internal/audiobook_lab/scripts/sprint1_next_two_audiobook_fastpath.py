@@ -75,7 +75,7 @@ PAID_ENV = {
     "EARNALISM_REQUIRE_AUDIO_DERIVED_ASR_9_7": "true",
     "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "true",
     "EARNALISM_OPENAI_LISTENING_QA_MODEL": "gpt-audio",
-    "EARNALISM_LISTENING_POLICY_VERSION": "sprint1_audiobook_acceptance_v3_89",
+    "EARNALISM_LISTENING_POLICY_VERSION": "platform_audiobook_acceptance_v4_89",
     "EARNALISM_SYNC_POLICY_VERSION": "tiered_sync_acceptance_v1",
 }
 LISTENING_MINIMUM = 8.9

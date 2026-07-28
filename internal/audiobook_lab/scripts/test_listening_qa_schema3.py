@@ -15,6 +15,7 @@ from asr_sync_hook import (  # noqa: E402
     BENGALI_AUDIOBOOK_92_POLICY,
     BENGALI_PREMIUM_MVP_POLICY,
     SPRINT1_AUDIOBOOK_90_POLICY,
+    UNIVERSAL_LISTENING_POLICY,
     evaluate_listening_evidence,
     validate_bengali_mvp_hard_gates,
     validate_listening_quality_report,
@@ -259,13 +260,13 @@ def assert_bengali_mvp_policy_does_not_apply_to_english() -> None:
     )
     assert not valid
     assert any("only available for Bengali" in item for item in blockers), blockers
-    valid, blockers, _ = evaluate_listening_evidence(
+    valid, blockers, policy = evaluate_listening_evidence(
         bengali_mvp_scores(),
         clean_flags(),
         language="eng",
     )
-    assert not valid
-    assert any("naturalness_score" in item for item in blockers), blockers
+    assert valid, blockers
+    assert policy["name"] == UNIVERSAL_LISTENING_POLICY
 
 
 def assert_bengali_92_policy_passes_only_clean_bengali() -> None:
