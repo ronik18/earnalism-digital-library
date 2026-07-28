@@ -1,0 +1,214 @@
+{
+  "author": "Lewis Carroll",
+  "candidate_kind": "licensed_audio_import",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug alices-adventures-in-wonderland --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "992f814bfadaa8a48488288a8345ea1a44cc55a8184f886704506942587994ba",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "SOURCE_BOUND_DELIVERY_REQUIRED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_asr_repair_v1.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_release_gate_evidence.json"
+    ],
+    "exact_blocker": "KOKORO_BF_EMMA_REPRESENTATIVE_EXACT_ORDER_FAILURE; PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; SOURCE_BOUND_FULL_TITLE_DELIVERY_MISSING",
+    "failed_attempts": [
+      {
+        "attempt_fingerprint": "c1e8a0ae6617093d8f13b0b07ca3a72115dd56d9336a04716f44d116f7aad458",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_asr_repair_v1.json",
+        "failed": true,
+        "fatal_flags": [],
+        "model": "hexgrad/Kokoro-82M",
+        "provider": "kokoro",
+        "scope": "kokoro_bf_emma_british_whimsy_representative",
+        "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+        "voice": "bf_emma"
+      }
+    ],
+    "non_release_passes": [],
+    "provider_attempts": [
+      {
+        "attempt_fingerprint": "c1e8a0ae6617093d8f13b0b07ca3a72115dd56d9336a04716f44d116f7aad458",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_asr_repair_v1.json",
+        "failed": true,
+        "fatal_flags": [],
+        "model": "hexgrad/Kokoro-82M",
+        "provider": "kokoro",
+        "scope": "kokoro_bf_emma_british_whimsy_representative",
+        "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+        "voice": "bf_emma"
+      }
+    ],
+    "quality_summary": "REPRESENTATIVE_ASR_REPAIR_FAILED_3_OF_4_EXACT",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "Alice's Adventures in Wonderland",
+    "Lewis Carroll",
+    "Recurring names/terms: Adventures, After, Alice, Alice’s, All, And, Ann, Are, Beau, Beautiful, Bill, Bill’s",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "anti_choppy_join_score_min": 9.2,
+    "anti_robotic_texture_score_min": 9.2,
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 8.9,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "per_dimension_score_min": 8.9,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "4e19e7841da7de8d46afb025c7a8365520bcaf525b9c309a766bd7fb755a2c09",
+    "rights_basis": "Author died in 1898. Work published in 1865, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "alices-adventures-in-wonderland",
+  "source_binding": {
+    "binding_sha256": "423c7dacf379100fe32169ad241d6653f20055b7714bfe1e9bdc69f95a2c2cf4",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "CHAPTER I",
+        "raw_characters": 11511,
+        "recorded_source_sha256": "104b7e3c2477c11fdc4e40b3fb9a12076626f568fb7aaa167f8523c9d102850d",
+        "sanitized_characters": 11511,
+        "sanitized_sha256": "104b7e3c2477c11fdc4e40b3fb9a12076626f568fb7aaa167f8523c9d102850d"
+      },
+      {
+        "chapter": "chapter-002.json",
+        "chapter_title": "CHAPTER II. The Pool of Tears",
+        "raw_characters": 11044,
+        "recorded_source_sha256": "a2fb4e154be7dfd612ecfd52252285cf5b68ef1f0d5f22d9efd05adbf28f8d5e",
+        "sanitized_characters": 11039,
+        "sanitized_sha256": "6c6f2b8bc11d718232094298818bac6b323ad608141fa6f82fb928f28227c5fc"
+      },
+      {
+        "chapter": "chapter-003.json",
+        "chapter_title": "CHAPTER III",
+        "raw_characters": 9297,
+        "recorded_source_sha256": "8abac900f8019473191aa983bc099869e95af3f6337bf741f4f3ad4eb964c785",
+        "sanitized_characters": 9291,
+        "sanitized_sha256": "c50c5aefd1a01b9be1a2d5b40f87dc7ea673860f1fbffe7b6fd82b25407bcc08"
+      },
+      {
+        "chapter": "chapter-004.json",
+        "chapter_title": "CHAPTER IV",
+        "raw_characters": 14044,
+        "recorded_source_sha256": "761d82ed79944f4da40c4d397b38afac3cfc94597a1fdc31807333e6da5b41c2",
+        "sanitized_characters": 14044,
+        "sanitized_sha256": "761d82ed79944f4da40c4d397b38afac3cfc94597a1fdc31807333e6da5b41c2"
+      },
+      {
+        "chapter": "chapter-005.json",
+        "chapter_title": "CHAPTER V",
+        "raw_characters": 11994,
+        "recorded_source_sha256": "7e5b6c5ada1474bc92f29a9632c2efa071ce154afe84d213c7f0f6dcc2ca89b3",
+        "sanitized_characters": 11978,
+        "sanitized_sha256": "8305040604b29175dd8c29a553f9e6b8db34bedbc00f3a06a3cd878ab920770e"
+      },
+      {
+        "chapter": "chapter-006.json",
+        "chapter_title": "CHAPTER VI",
+        "raw_characters": 13967,
+        "recorded_source_sha256": "a55b64a4102259c5fd45c2321cbda43e3b62a09610a468964cd81f572fc340ca",
+        "sanitized_characters": 13963,
+        "sanitized_sha256": "cd589a3daec2bf869814f848044cd88eb6c46180b224153d3a8c0f077bad5894"
+      },
+      {
+        "chapter": "chapter-007.json",
+        "chapter_title": "CHAPTER VII. A Mad Tea-Party",
+        "raw_characters": 12777,
+        "recorded_source_sha256": "88713e0483ca657522d8f7b15ac9db785eaba44418015a8a1da6a334cf449e38",
+        "sanitized_characters": 12776,
+        "sanitized_sha256": "21306464b88f0206b688b6e8a095e04aaa2c4486205d31217634c694b26c3d4c"
+      },
+      {
+        "chapter": "chapter-008.json",
+        "chapter_title": "CHAPTER VIII. The Queen’s Croquet-Ground",
+        "raw_characters": 13786,
+        "recorded_source_sha256": "41dbcdb545ee4e39a2a66c66f0f5763ef7c0a9e7510938afdf3219a1ad7a5d5b",
+        "sanitized_characters": 13786,
+        "sanitized_sha256": "41dbcdb545ee4e39a2a66c66f0f5763ef7c0a9e7510938afdf3219a1ad7a5d5b"
+      },
+      {
+        "chapter": "chapter-009.json",
+        "chapter_title": "CHAPTER IX. The Mock Turtle’s Story",
+        "raw_characters": 12724,
+        "recorded_source_sha256": "9eb262d5d18b68081aa87e2f2b2f2017d04b70d759ce6efdc31b9606217ba284",
+        "sanitized_characters": 12724,
+        "sanitized_sha256": "9eb262d5d18b68081aa87e2f2b2f2017d04b70d759ce6efdc31b9606217ba284"
+      },
+      {
+        "chapter": "chapter-010.json",
+        "chapter_title": "CHAPTER X. The Lobster Quadrille",
+        "raw_characters": 11479,
+        "recorded_source_sha256": "c2e46a40d898143de31c82bc7f4c2ad6bc31d1261c613bdfdd0ab643ef7312b8",
+        "sanitized_characters": 11472,
+        "sanitized_sha256": "1f0aafded3a9f082d417a271c62ee3e88418b6e0d1dfba3c102c7e334424099e"
+      },
+      {
+        "chapter": "chapter-011.json",
+        "chapter_title": "CHAPTER XI",
+        "raw_characters": 10473,
+        "recorded_source_sha256": "b5c24d555b38ba5640bfda65ae3788ea728023e8109f0912b50b8862a2946db4",
+        "sanitized_characters": 10471,
+        "sanitized_sha256": "fb900ae7a9d3eaab2eb9ef5753ec64b1e9e7d288b7809699d46fc598ff6f601f"
+      },
+      {
+        "chapter": "chapter-012.json",
+        "chapter_title": "CHAPTER XII. Alice’s Evidence",
+        "raw_characters": 11724,
+        "recorded_source_sha256": "ed41d07cab3b03a857470f3b55f29834d98d8cedafb5eea1ef02b240449727f1",
+        "sanitized_characters": 11712,
+        "sanitized_sha256": "e3af4d59424d8218c50902efb4e1c352d2132991c0029f363c847cbb4cbd4764"
+      }
+    ],
+    "raw_manuscript_sha256": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+    "sanitized_manuscript_sha256": "868c0ce92dba1c9821e38a940732aab8c5aa69fa0e6136c5350e1fae91a4d7bd",
+    "source_hash": "49c44704fee971be4aff3b6ebf4764b9aabf0c1f338ca72942216a301205bd8d",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "Alice's Adventures in Wonderland"
+}

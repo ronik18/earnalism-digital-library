@@ -143,7 +143,10 @@ class NarrationImportPacketTests(unittest.TestCase):
             self.assertEqual(manuscript, "যাহারা বলে, তাহারা ভুল করে।\n\nশেষ কথা এখানে।\n")
             metadata = json.loads((packet_dir / "metadata.json").read_text(encoding="utf-8"))
             self.assertEqual(metadata["language"], {"code": "ben", "name": "Bengali"})
-            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 9.0)
+            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 8.9)
+            self.assertEqual(metadata["release_requirements"]["per_dimension_score_min"], 8.9)
+            self.assertEqual(metadata["release_requirements"]["anti_robotic_texture_score_min"], 9.2)
+            self.assertEqual(metadata["release_requirements"]["anti_choppy_join_score_min"], 9.2)
             self.assertEqual(metadata["source_binding"]["status"], "VERIFIED_SOURCE_AND_CHAPTER_HASHES")
             self.assertEqual(len(metadata["prior_provider_evidence"]["failed_attempts"]), 1)
             self.assertFalse(metadata["safety"]["provider_calls_ran"])
@@ -215,13 +218,109 @@ class NarrationImportPacketTests(unittest.TestCase):
             packet_dir = Path(result["packet_dir"])
             metadata = json.loads((packet_dir / "metadata.json").read_text(encoding="utf-8"))
             attempt = metadata["prior_provider_evidence"]["failed_attempts"][0]
-            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 9.4)
+            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 8.9)
+            self.assertEqual(metadata["release_requirements"]["per_dimension_score_min"], 8.9)
             self.assertEqual(attempt["attempt_fingerprint"], "failed-fingerprint")
             self.assertEqual(attempt["voice"], "en-GB-Studio-B")
             delivery = (packet_dir / "delivery_checklist.md").read_text(encoding="utf-8")
             self.assertIn("License chain proves commercial digital-audiobook rights", delivery)
             summary = (packet_dir / "failed_tts_evidence_summary.md").read_text(encoding="utf-8")
             self.assertIn("robotic_texture_detected", summary)
+
+    def test_backend_controlled_publication_is_used_when_data_mirror_is_partial(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            publication = self.fixture(root, slug="backend-only")
+            backend_publication = (
+                root / "backend/data/controlled_publications/backend-only"
+            )
+            backend_publication.parent.mkdir(parents=True)
+            publication.rename(backend_publication)
+            partial = root / "data/controlled_publications/backend-only"
+            partial.mkdir(parents=True)
+            (partial / "highlight_sync.json").write_text(
+                json.dumps({"slug": "backend-only"}), encoding="utf-8"
+            )
+
+            result = packet.create_packet(
+                slug="backend-only",
+                asset_root=root,
+                output_root=root / "packets",
+                candidate_kind="licensed_audio_import",
+            )
+
+            metadata = json.loads(
+                (Path(result["packet_dir"]) / "metadata.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(metadata["slug"], "backend-only")
+            self.assertEqual(
+                metadata["source_binding"]["status"],
+                "VERIFIED_SOURCE_AND_CHAPTER_HASHES",
+            )
+
+    def test_bounded_candidate_attempts_enter_import_packet_history(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            slug = "bounded-sample"
+            self.fixture(root, slug=slug)
+            title_runs = root / "internal/audiobook_lab/sprint1_publication/title_runs"
+            title_runs.mkdir(parents=True)
+            (title_runs / f"{slug}_release_gate_evidence.json").write_text(
+                json.dumps(
+                    {
+                        "slug": slug,
+                        "release_gate_state": "SOURCE_BOUND_DELIVERY_REQUIRED",
+                        "exact_blocker": "CHAPTER_CHECKPOINT_FAILED",
+                        "bounded_candidate_attempts": [
+                            {
+                                "scope": "representative_listening",
+                                "status": "PASS",
+                                "provider": "kokoro",
+                                "model": "example-model",
+                                "voice": "example-voice",
+                                "attempt_fingerprint": "representative-fingerprint",
+                                "representative_score": 9.0,
+                                "confidence": 0.92,
+                                "evidence": "representative.json",
+                            },
+                            {
+                                "scope": "chapter_checkpoint",
+                                "status": "BLOCKED",
+                                "provider": "kokoro",
+                                "model": "example-model",
+                                "voice": "example-voice",
+                                "attempt_fingerprint": "chapter-fingerprint",
+                                "evidence": "chapter.json",
+                            },
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            result = packet.create_packet(
+                slug=slug,
+                asset_root=root,
+                output_root=root / "packets",
+                candidate_kind="licensed_audio_import",
+            )
+            metadata = json.loads(
+                (Path(result["packet_dir"]) / "metadata.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            evidence = metadata["prior_provider_evidence"]
+            self.assertEqual(len(evidence["non_release_passes"]), 1)
+            self.assertEqual(len(evidence["failed_attempts"]), 1)
+            self.assertEqual(
+                evidence["non_release_passes"][0]["attempt_fingerprint"],
+                "representative-fingerprint",
+            )
+            self.assertEqual(
+                evidence["failed_attempts"][0]["attempt_fingerprint"],
+                "chapter-fingerprint",
+            )
 
     def test_hash_mismatch_and_missing_rights_fail_closed(self):
         with tempfile.TemporaryDirectory() as temporary:

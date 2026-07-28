@@ -2958,7 +2958,10 @@ def build_auto_qa(state: BookState, env_detected: dict[str, bool], command: str,
         and (
             state.language == "ben"
             or listening_policy_version
-            == "sprint1_audiobook_acceptance_v3_90"
+            in {
+                "sprint1_audiobook_acceptance_v3_89",
+                "sprint1_audiobook_acceptance_v3_90",
+            }
         )
     )
     if legacy_bengali_92_policy or sprint1_release_policy:
@@ -2983,7 +2986,12 @@ def build_auto_qa(state: BookState, env_detected: dict[str, bool], command: str,
             "choppy_join_absence_score",
         ]:
             thresholds[field] = 9.2
-        listening_floor = 9.2 if legacy_bengali_92_policy else 9.0
+        if legacy_bengali_92_policy:
+            listening_floor = 9.2
+        elif listening_policy_version == "sprint1_audiobook_acceptance_v3_90":
+            listening_floor = 9.0
+        else:
+            listening_floor = 8.9
         thresholds["overall_listening_score"] = listening_floor
         thresholds["listening_confidence_score"] = 0.90
         thresholds["overall_premium_score"] = listening_floor

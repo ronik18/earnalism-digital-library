@@ -1,0 +1,159 @@
+{
+  "actual_provider_billing": "NOT_REPORTED",
+  "author": "O. Henry",
+  "blockers_to_release": [
+    "ADVERSARIAL_LISTENING_QA_FAILED",
+    "VOXCPM2_V390_EXPANSION_STOPPED",
+    "FULL_TITLE_NOT_AUTHORIZED",
+    "DOWNSTREAM_DELIVERY_GATES_NOT_RUN"
+  ],
+  "budget": {
+    "blockers": [],
+    "estimated_usd": 0.05,
+    "sample_count": 1,
+    "stage_cap_usd": 0.05,
+    "status": "PASS",
+    "total_cap_usd": 0.05
+  },
+  "error": null,
+  "evidence_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_voxcpm2_int8_v390_section13_20260727.json",
+  "evidence_sha256": "eb9c078b8c7ed0ef2626ea4c74473982656adeea0c8f9a0829bbde3253c415a8",
+  "generated_at": "2026-07-27T20:24:07Z",
+  "judge": "openai:gpt-audio",
+  "listening_gate": {
+    "blocker_reason": "Robotic texture and choppy joins detected, overall and dimension scores below v3.90 pass thresholds.",
+    "confidence": 0.92,
+    "fatal_flags": [
+      "choppy_joins_detected",
+      "robotic_texture_detected"
+    ],
+    "frontmatter_present": false,
+    "judge_flags": {
+      "abrupt_tts_resets_detected": false,
+      "choppy_joins_detected": true,
+      "fallback_tts_detected": false,
+      "list_reading_rhythm_detected": false,
+      "mechanical_cadence_detected": false,
+      "placeholder_audio_detected": false,
+      "repeated_identical_sentence_endings_detected": false,
+      "robotic_texture_detected": true
+    },
+    "listening_pass": false,
+    "policy": "sprint1_audiobook_acceptance_v3_90",
+    "scores": {
+      "anti_choppy_join_score": 8.5,
+      "anti_robotic_texture_score": 8.4,
+      "confidence_score": 0.92,
+      "continuity_score": 8.9,
+      "emotional_expression_score": 8.7,
+      "listener_enjoyment_score": 8.6,
+      "naturalness_score": 8.5,
+      "overall_listening_score": 8.5,
+      "pacing_score": 8.6,
+      "pronunciation_score": 9.0,
+      "punctuation_pause_score": 8.8
+    },
+    "threshold_failures": {
+      "anti_choppy_join_score": {
+        "observed": 8.5,
+        "required": 9.2
+      },
+      "anti_robotic_texture_score": {
+        "observed": 8.4,
+        "required": 9.2
+      },
+      "emotional_expression_score": {
+        "observed": 8.7,
+        "required": 8.9
+      },
+      "listener_enjoyment_score": {
+        "observed": 8.6,
+        "required": 8.9
+      },
+      "naturalness_score": {
+        "observed": 8.5,
+        "required": 8.9
+      },
+      "overall_listening_score": {
+        "observed": 8.5,
+        "required": 9.0
+      },
+      "pacing_score": {
+        "observed": 8.6,
+        "required": 8.9
+      },
+      "punctuation_pause_score": {
+        "observed": 8.8,
+        "required": 8.9
+      }
+    },
+    "thresholds": {
+      "anti_choppy_join_score": 9.2,
+      "anti_robotic_texture_score": 9.2,
+      "confidence_score": 0.9,
+      "continuity_score": 8.9,
+      "emotional_expression_score": 8.9,
+      "listener_enjoyment_score": 8.9,
+      "naturalness_score": 8.9,
+      "overall_listening_score": 9.0,
+      "pacing_score": 8.9,
+      "pronunciation_score": 8.9,
+      "punctuation_pause_score": 8.9
+    }
+  },
+  "lock_restored": true,
+  "lock_sha256_after": "c8f72c2a7f2bf89b70692b4638741a21a947f6d739c4c9b150aff68828c2ff44",
+  "lock_sha256_before": "c8f72c2a7f2bf89b70692b4638741a21a947f6d739c4c9b150aff68828c2ff44",
+  "next_exact_command": "Select a materially different commercially permitted narration family.",
+  "objective_status": "PRIVATE_ADVERSARIAL_SAMPLE_OBJECTIVE_PASS_LISTENING_PENDING",
+  "provider_calls_ran": true,
+  "raw_judgment": {
+    "abrupt_tts_resets_detected": false,
+    "anti_choppy_join_score": 8.5,
+    "anti_robotic_texture_score": 8.4,
+    "blocker_reason": "Robotic texture and choppy joins detected, overall and dimension scores below v3.90 pass thresholds.",
+    "choppy_joins_detected": true,
+    "confidence_score": 0.92,
+    "continuity_score": 8.9,
+    "emotional_expression_score": 8.7,
+    "fallback_tts_detected": false,
+    "frontmatter_present": false,
+    "list_reading_rhythm_detected": false,
+    "listener_enjoyment_score": 8.6,
+    "mechanical_cadence_detected": false,
+    "naturalness_score": 8.5,
+    "notes": "The sample had a generally good pronunciation and emotional expression, but there were noticeable robotic textures and some choppy joins. Pacing and pauses were mostly natural, though not exceptional. The overall listening experience was decent but not immersive enough for a top-tier audiobook performance.",
+    "overall_listening_score": 8.5,
+    "pacing_score": 8.6,
+    "placeholder_audio_detected": false,
+    "pronunciation_score": 9.0,
+    "punctuation_pause_score": 8.8,
+    "repeated_identical_sentence_endings_detected": false,
+    "robotic_texture_detected": true
+  },
+  "release_eligible": false,
+  "rubric": "earnalism.literary_listening_schema3.v390",
+  "safety": {
+    "audio_generated": false,
+    "public_audio_status": "AUDIO_HIDDEN",
+    "published": false,
+    "release_gate_mutated": false,
+    "uploaded": false
+  },
+  "sample_binding": {
+    "asr_config_fingerprint": "e949c338e47ddf6e445a7ca050416f2a8852bc7364826f0169c84b787535758a",
+    "attempt_fingerprint": "390655d6c5bbeb74a3670ef91bde612404374d1beffa89f80471d1806cb8bb91",
+    "sample_audio_duration_seconds": 36.32,
+    "sample_audio_hash": "785145a429cefb07ecef3239a9b602d4508dc27528dd28f4619a10900a1adb90",
+    "sample_audio_path": "/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/earnalism-voxcpm2-private/gift-v390-representative/section-013.wav",
+    "sample_audio_size_bytes": 3486764,
+    "sample_label": "section-013",
+    "source_text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7"
+  },
+  "sample_fingerprint": "a057f9adc8b10961784440f609428047f2b2bfef8ee16986083d96d2e548b5a8",
+  "schema": "earnalism.gift_voxcpm2_v390_listening_qa.v1",
+  "scope": "gift_voxcpm2_v390_section13_listening_qa",
+  "slug": "the-gift-of-the-magi",
+  "status": "PRIVATE_ADVERSARIAL_LISTENING_FAIL_AUDIO_HIDDEN",
+  "title": "The Gift of the Magi"
+}

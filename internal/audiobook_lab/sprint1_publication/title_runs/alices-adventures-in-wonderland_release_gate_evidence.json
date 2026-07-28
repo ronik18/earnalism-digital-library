@@ -12,16 +12,56 @@
   },
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "quality_score": "NOT_RUN",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-  "estimated_remaining_cost_usd": 1.5053,
+  "quality_score": "REPRESENTATIVE_ASR_REPAIR_FAILED_3_OF_4_EXACT",
+  "release_gate_state": "SOURCE_BOUND_DELIVERY_REQUIRED",
+  "exact_blocker": "KOKORO_BF_EMMA_REPRESENTATIVE_EXACT_ORDER_FAILURE; PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; SOURCE_BOUND_FULL_TITLE_DELIVERY_MISSING",
+  "estimated_remaining_cost_usd": "SOURCE_DELIVERY_DEPENDENT",
   "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/alices-adventures-in-wonderland.json",
-  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
-  "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs alices-adventures-in-wonderland --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+  "next_action": "Supply one exact rights-cleared source-bound full-title recording through the prepared delivery packet; revoke the old unapproved remote object; then run every objective, listening, upload, endpoint, and browser gate.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug alices-adventures-in-wonderland --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import --received-audio /absolute/path/to/received_narration.wav",
   "provider_calls_ran_this_sprint": false,
   "release_gate_mutated_this_sprint": false,
   "public_audio_approved_this_sprint": false,
   "repo_asset_url_scrub_status": "PASS_11_OCCURRENCES_REMOVED",
-  "remote_object_revocation_status": "BLOCKED_STORAGE_CREDENTIALS_MISSING"
+  "remote_object_revocation_status": "BLOCKED_STORAGE_CREDENTIALS_MISSING",
+  "bounded_candidate_attempts": [
+    {
+      "scope": "kokoro_bf_emma_british_whimsy_representative",
+      "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+      "provider": "kokoro",
+      "model": "hexgrad/Kokoro-82M",
+      "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "voice": "bf_emma",
+      "attempt_fingerprint": "c1e8a0ae6617093d8f13b0b07ca3a72115dd56d9336a04716f44d116f7aad458",
+      "asr_repair_fingerprint": "59ee181f736e534ccab753a355696de7cc2d40c22e647e68092fec3a056ba20c",
+      "asr_scores": [
+        10.0,
+        9.9408,
+        10.0,
+        10.0
+      ],
+      "coverage_scores": [
+        1.0,
+        0.9882,
+        1.0,
+        1.0
+      ],
+      "ordered_content_integrity_pass": false,
+      "passed_passages": 3,
+      "failed_passages": {
+        "caterpillar_identity_dialogue": "one repeated source token I remained missing after the single retained-WAV decoder repair"
+      },
+      "listening_qa_ran": false,
+      "full_title_generated": false,
+      "provider_cost_usd": 0.0,
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_asr_repair_v1.json"
+    }
+  ],
+  "delivery_packet": {
+    "status": "NARRATION_IMPORT_PACKET_READY_AUDIO_HIDDEN",
+    "metadata": "internal/audiobook_lab/sprint1_publication/licensed_audio_import/alices-adventures-in-wonderland/metadata.json",
+    "packet_fingerprint_sha256": "992f814bfadaa8a48488288a8345ea1a44cc55a8184f886704506942587994ba",
+    "sanitized_manuscript_sha256": "868c0ce92dba1c9821e38a940732aab8c5aa69fa0e6136c5350e1fae91a4d7bd"
+  },
+  "updated_at": "2026-07-28T05:52:03Z"
 }

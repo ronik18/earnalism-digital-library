@@ -605,6 +605,108 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The Home cache key must rotate whenever truth precedence changes. Otherwise Redis may continue serving the regressed payload after correct source is deployed.
 - Offline reconstruction proves all 32 Sprint 1 readers and the exact four approved audiobooks, with 87 focused tests passing and no audio gate, media, or paid-lock mutation.
 
+## 2026-07-27 The Gift of the Magi VoxCPM2 v3.90 adversarial closeout
+
+- The previously promising VoxCPM2 int8 reference-only opening was not enough to authorize a full-title run. Under the active v3.90 policy, a distinct section-013 adversarial sample was generated from the exact controlled source and an AI-generated, non-person reference voice.
+- The sample passed local source-blind Whisper medium.en at `10.0`, coverage `1.0`, exact first/last/order integrity, and valid audio-derived word timestamps. This proves text fidelity for the exact audio hash; it does not prove premium listening quality.
+- Independent `gpt-audio` listening QA scored the sample `8.5` overall with confidence `0.92`, and raised `robotic_texture_detected` plus `choppy_joins_detected`. Anti-robotic was `8.4` and anti-choppy was `8.5`, both below the unchanged `9.2` floors.
+- Close VoxCPM2 int8 for Gift. Do not generate the other representative samples or the full title with this fingerprint. The next attempt must use a materially different commercially permitted model family. Audio remains private and hidden; no upload, release mutation, or publication occurred.
+
+## 2026-07-27 The Gift of the Magi terminal Qwen3 Base closeout
+
+- The pinned Apache-2.0 Qwen3-TTS 0.6B Base MLX 8-bit checkpoint generated one exact controlled section-013 sample with an AI-generated non-person reference voice.
+- The lossless 24 kHz mono PCM-16 output is validly decodable, SHA-256 `da573f24abea837e30a5a8b2ac9d1082f692c66661f17a2e3589840bd29729bf`, and 67.68 seconds long, but 1.417947 percent of samples are full-scale clipped.
+- Clipping is irreversible waveform loss, not a harmless validator mismatch. Do not normalize it into a false pass, regenerate this fingerprint, run ASR/listening on it, or widen to representative/full-title generation.
+- Gift has exhausted its bounded local synthetic families. Its deterministic next state is source-bound narration or licensed-audio delivery through the existing packet, followed by every unchanged full-title release gate. Public audio remains hidden.
+
+## 2026-07-28 Deterministic Sprint 1 conveyor and Call of the Wild preprovider stop
+
+- The 32-title conveyor now has only five explicit routes: four production-live
+  titles, eighteen source-bound-delivery titles, nine titles with one bounded
+  four-passage candidate, and one prerequisite-repair title. No title can enter
+  an indefinite try-another-model state.
+- The finite cap is one new synthetic family, one targeted repair, one
+  post-representative full generation, one post-full section repair, and zero
+  repeated failed fingerprints per title.
+- The Call of the Wild is the first bounded title. Its exact source-bound
+  `en-GB-Chirp3-HD-Achird` candidate passed preflight at 2,119 characters and
+  an estimated `$0.06357`.
+- Both execution starts stopped before a provider call: the first selected
+  environment lacked the Google client, and the corrected environment proved
+  the Railway-bound authorized-user ADC needs reauthentication. No synthesis
+  call ran, the attempt remains unused, actual spend is `$0.00`, and the paid
+  lock restored byte-for-byte.
+- Listening QA now acquires and restores the paid lock and enforces the active
+  v3.90 overall, confidence, per-dimension, anti-robotic, anti-choppy, and fatal
+  flag gates. Public audio remains hidden.
+
+## 2026-07-28 Sprint 1 audiobook acceptance v3.89 and Call of the Wild closeout
+
+- The owner lowered only the active overall listening floor from `9.0` to
+  `8.9`. Confidence remains `>=0.90`; ordinary dimensions remain `>=8.9`;
+  anti-robotic and anti-choppy remain `>=9.2`; fatal flags still disqualify.
+- ASR/manuscript remains `>=9.7`, coverage remains `>=0.98`, exact
+  first/last/order and measured sync remain mandatory, and rights, covers,
+  checksum, metadata, ranged endpoint, browser playback, and an empty blocker
+  list remain unchanged.
+- The cutoff audit found zero newly full-title release-ready titles. A
+  representative score at or above `8.9` can authorize one private full-title
+  pilot only; it cannot expose Listen.
+- The Call of the Wild consumed its single synthetic-family attempt with four
+  private OpenAI `gpt-4o-mini-tts` / `verse` clips. Raw ASR scores were
+  `9.6032/9.5000/9.7041/9.5849`, coverage was below `0.98` throughout, and
+  exact ordered-content integrity failed throughout. Listening QA and
+  full-title generation were correctly skipped.
+- The exact Call fingerprint
+  `14717669863b52b3aadb2476a6d00e13bfff9b64acc0a965a901809b57683c5d`
+  is closed. The title remains audio-hidden and moves to exact rights-cleared
+  source-bound delivery. The paid lock restored byte-for-byte.
+
+## 2026-07-28 The Secret Garden bounded Kokoro closeout
+
+- The cover-ready, 27-chapter title used one zero-provider-cost Kokoro
+  `bf_emma` candidate with British G2P at speed `0.96`.
+- Four representative passages reached exact ASR/source `10.0/1.0`. Independent
+  v3.89 listening passed with minimum overall `9.0`, confidence `0.92`,
+  anti-robotic `9.3`, anti-choppy `9.2`, and no fatal flags.
+- A chapter-one checkpoint prevented wasteful generation of chapters 2-27.
+  Its initial aggregate ASR was `9.9161`, but exact order and measured sync
+  failed. The single permitted retained-WAV ASR repair left unexpected speech,
+  including `The End` and `Thanks for watching`, and measured sync remained
+  `9.6262`, below the unchanged `9.7` objective gate.
+- The two exact fingerprints
+  `a9d329844e54e425fc578f3f4469b934ae85e8ec288223a270309f2bd1eba8fd`
+  and
+  `8f7221a8d5a5f5a2e446e8f0725eab00f93efbc8695b6f5967111739af7a68a8`
+  are closed. Never delete or normalize unexpected speech to manufacture a
+  pass. Keep the title audio-hidden and route it to exact source-bound
+  delivery.
+- No provider synthesis cost, upload, publication, or release-gate mutation
+  occurred. Four private `openai:gpt-audio` listening judgments had a maximum
+  estimate of `$0.20`; actual billing was not reported. The paid lock remains
+  idle and unchanged.
+
+## 2026-07-28 Alice bounded Kokoro closeout
+
+- Alice was the shortest cover-ready Sprint 1 English title with no prior
+  synthetic attempt. One four-scene Kokoro `bf_emma` candidate used British
+  G2P, speed `0.97`, pinned model revision
+  `f3ff3571791e39611d31c381e3a41a3af07b4987`, and exact controlled source
+  SHA-256
+  `c8cd98430bcaa621dd206b8d3c880b34ca3daf4776e4b89c8a10d8c5f84cb2d3`.
+- The retained-WAV repair produced ASR/source scores
+  `10.0/9.9408/10.0/10.0` and coverage
+  `1.0/0.9882/1.0/1.0`. The `arm-chair`/`armchair` tokenization was a bounded
+  source-equivalent pass, but the Caterpillar dialogue still omitted one
+  repeated source token `I` under both decoder arms.
+- Aggregate ASR above `9.7` cannot override an exact missing-word/order
+  failure. Do not invent the missing `I`, delete source text, regenerate the
+  same synthesis fingerprint, or repeat the repair fingerprint. Listening QA
+  and full-title generation were correctly skipped.
+- The local synthesis cost was `$0.00`; no listening provider call, upload,
+  publication, release mutation, or public exposure occurred. Alice remains
+  audio-hidden and now has a deterministic source-bound import packet. The old
+  unapproved remote object must still be revoked before any future release.
 ## 2026-07-28 Reference-matched dynamic hero carousel
 
 - Painting a narrow divider inside each cover makes four adjacent jackets look merged and consumes real front-cover pixels. The convincing, non-overlapping construction is a separately rendered right-side page block outside the jacket plus a shallow bottom page face.

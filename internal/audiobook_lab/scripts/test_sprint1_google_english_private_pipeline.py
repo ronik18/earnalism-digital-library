@@ -145,6 +145,11 @@ class GoogleEnglishPrivatePipelineTests(unittest.TestCase):
             sample["overall_listening_score"] = score
             sample["confidence_score"] = 0.95
             sample["fatal_flags"] = []
+            sample["scores"] = {
+                key: score for key in pipeline.LISTENING_DIMENSION_KEYS
+            }
+            sample["scores"]["anti_robotic_texture_score"] = max(score, 9.2)
+            sample["scores"]["anti_choppy_join_score"] = max(score, 9.2)
         path.write_text(json.dumps(evidence, indent=2) + "\n", encoding="utf-8")
         return path
 
@@ -323,14 +328,14 @@ class GoogleEnglishPrivatePipelineTests(unittest.TestCase):
         self.assertEqual(pending.exception.status, "BLOCKED_AUDITION_EVIDENCE")
         self.assertEqual(full_provider.synthesis_calls, [])
 
-        self.complete_listening_evidence(audition, score=9.1)
+        self.complete_listening_evidence(audition, score=8.85)
         with self.assertRaises(pipeline.PipelineError) as low:
             self.run_with(
                 self.config("full", audition_evidence_path=evidence_path), full_provider
             )
         self.assertEqual(low.exception.status, "BLOCKED_AUDITION_EVIDENCE")
         self.assertTrue(
-            any("below 9.3" in item for item in low.exception.details["blockers"])
+            any("below 8.9" in item for item in low.exception.details["blockers"])
         )
         self.assertEqual(full_provider.synthesis_calls, [])
 
@@ -447,10 +452,19 @@ class GoogleEnglishPrivatePipelineTests(unittest.TestCase):
         provider = MockProvider()
         with self.assertRaises(pipeline.PipelineError) as raised:
             self.run_with(
-                self.config("audition", minimum_listening_score=9.2), provider
+                self.config("audition", minimum_listening_score=8.89), provider
             )
         self.assertEqual(raised.exception.status, "BLOCKED_CONFIG")
         self.assertEqual(provider.synthesis_calls, [])
+        higher = self.run_with(
+            self.config(
+                "audition",
+                minimum_listening_score=9.2,
+                execute=False,
+            ),
+            provider,
+        )
+        self.assertEqual(higher["status"], "AUDITION_PREFLIGHT_PASS")
 
     def test_cli_parses_mode_and_google_voice_argument(self) -> None:
         args = pipeline.parse_args(

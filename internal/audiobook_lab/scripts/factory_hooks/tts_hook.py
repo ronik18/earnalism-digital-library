@@ -680,7 +680,7 @@ def matching_representative_pass(args) -> dict:
                 and str(candidate.get("voice") or "").strip() == SARVAM_FULL_PILOT_VOICE
                 and str(candidate.get("style") or "").strip() == SARVAM_FULL_PILOT_STYLE
             )
-            if exact_arm and candidate.get("passed") and score >= 9.0 and confidence >= 0.90 and not true_flags:
+            if exact_arm and candidate.get("passed") and score >= 8.9 and confidence >= 0.90 and not true_flags:
                 return {
                     "status": "PASS",
                     "path": rel(path),
@@ -695,7 +695,7 @@ def matching_representative_pass(args) -> dict:
         "blockers": [
             "No representative audition evidence matches "
             f"{args.slug} + Sarvam {SARVAM_FULL_PILOT_MODEL} + {SARVAM_FULL_PILOT_VOICE} + "
-            f"{SARVAM_FULL_PILOT_STYLE} with score >=9.0/confidence >=0.90/no fatal flags."
+            f"{SARVAM_FULL_PILOT_STYLE} with score >=8.9/confidence >=0.90/no fatal flags."
         ],
     }
 

@@ -64,7 +64,7 @@ def bool_env(name: str, env: dict[str, str]) -> bool:
     return env.get(name, "").strip().lower() in {"1", "true", "yes"}
 
 
-def canonical_sprint1_bengali(path: Path) -> dict[str, dict[str, Any]]:
+def canonical_sprint1_books(path: Path) -> dict[str, dict[str, Any]]:
     payload = read_json(path)
     rows = payload.get("books")
     if not isinstance(rows, list):
@@ -87,11 +87,6 @@ def canonical_sprint1_bengali(path: Path) -> dict[str, dict[str, Any]]:
     result: dict[str, dict[str, Any]] = {}
     for row in rows:
         if not isinstance(row, dict):
-            continue
-        chapters = row.get("chapters") if isinstance(row.get("chapters"), list) else []
-        chapter_language = str(chapters[0].get("language_hint") or "") if chapters else ""
-        language = str(row.get("language") or chapter_language).lower()
-        if language not in {"ben", "bn", "bengali"}:
             continue
         slug = str(row.get("slug") or "").strip()
         if "reader_enabled" not in row:
@@ -125,7 +120,7 @@ def validate_transition(
         )
     book = canonical_books.get(next_slug)
     if not book:
-        raise ScopeTransitionError(f"Next slug is not a canonical Sprint 1 Bengali title: {next_slug}")
+        raise ScopeTransitionError(f"Next slug is not a canonical Sprint 1 title: {next_slug}")
     if book.get("reader_enabled") is not True:
         raise ScopeTransitionError(f"Next slug is not reader-enabled: {next_slug}")
     try:
@@ -147,7 +142,7 @@ def transition(args: argparse.Namespace, env: dict[str, str] | None = None) -> d
     process_env = dict(os.environ if env is None else env)
     before = args.lock_path.read_bytes()
     lock = json.loads(before.decode("utf-8"))
-    books = canonical_sprint1_bengali(args.curation_path)
+    books = canonical_sprint1_books(args.curation_path)
     budget = validate_transition(
         lock,
         expected_current_slug=args.expected_current_slug,
@@ -171,7 +166,7 @@ def transition(args: argparse.Namespace, env: dict[str, str] | None = None) -> d
             "to_slug": args.next_slug,
             "canonical_title": book.get("title"),
             "canonical_author": book.get("author"),
-            "owner_authorization": "SPRINT1_BENGALI_END_TO_END_GO_LIVE",
+            "owner_authorization": "SPRINT1_END_TO_END_GO_LIVE",
             "changed_at": changed_at,
             "provider_call_performed": False,
             "publication_performed": False,

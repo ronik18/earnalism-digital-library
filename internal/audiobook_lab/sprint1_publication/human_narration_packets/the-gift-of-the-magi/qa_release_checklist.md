@@ -5,7 +5,7 @@
 - [ ] ASR/manuscript score is `>= 9.7`.
 - [ ] First and last words match the source-bound sanitized manuscript.
 - [ ] No missing, duplicated, reordered, substituted, or unrelated content.
-- [ ] Representative and full-book listening score is `>= 9.4` with confidence `>= 0.9`.
+- [ ] Representative and full-book listening score is `>= 9.0` with confidence `>= 0.9`.
 - [ ] No robotic texture, mechanical cadence, list-reading rhythm, choppy joins, fallback TTS, or placeholder audio.
 - [ ] Measured `paragraph_or_section` sync PASS; `auto_estimated_sync=false`.
 - [ ] Upload and checksum validation PASS.

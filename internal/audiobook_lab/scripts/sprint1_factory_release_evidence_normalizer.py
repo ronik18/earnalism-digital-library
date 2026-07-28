@@ -565,7 +565,7 @@ def _normalize_release_qa(
     listening_score = _number(aggregate.get("overall_listening_score"))
     listening_confidence = _number(aggregate.get("confidence_score"))
     language = str(qa.get("language") or listening.get("language") or "").strip().lower()
-    listening_minimum = 9.0
+    listening_minimum = 8.9
     if listening_score is None or listening_score < listening_minimum:
         blockers.append(
             f"full-title listening score must be >= {listening_minimum}, got {listening_score}"

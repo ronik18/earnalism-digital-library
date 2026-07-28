@@ -1,0 +1,364 @@
+{
+  "author": "Frances Hodgson Burnett",
+  "candidate_kind": "licensed_audio_import",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-secret-garden --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "2942c42859ee95366f09f5f7cf5db22b37836c31422d4d17d37ba74aebab0148",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "SOURCE_BOUND_DELIVERY_REQUIRED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_chapter1_bf_emma_asr_repair_v1.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_listening_qa_v1.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_release_gate_evidence.json"
+    ],
+    "exact_blocker": "CHAPTER_001_OBJECTIVE_REPAIR_FAILED; REMAINING_26_CHAPTERS_NOT_GENERATED; FULL_TITLE_AND_DOWNSTREAM_GATES_INCOMPLETE",
+    "failed_attempts": [
+      {
+        "attempt_fingerprint": "a9d329844e54e425fc578f3f4469b934ae85e8ec288223a270309f2bd1eba8fd",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_chapter1_bf_emma_asr_repair_v1.json",
+        "failed": true,
+        "fatal_flags": [],
+        "model": "hexgrad/Kokoro-82M",
+        "provider": "kokoro",
+        "scope": "chapter_001_full_run_checkpoint",
+        "status": "BLOCKED",
+        "voice": "bf_emma",
+        "weak_passage": "unexpected speech persisted; measured sync 9.6262 below 9.7"
+      }
+    ],
+    "non_release_passes": [
+      {
+        "attempt_fingerprint": "f849e64889b7a614bce6eb2ad3c0b5630424cf5d338e6a1b9d216318842aceff",
+        "confidence": 0.92,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_listening_qa_v1.json",
+        "failed": false,
+        "fatal_flags": [],
+        "model": "hexgrad/Kokoro-82M",
+        "provider": "kokoro",
+        "representative_score": 9.0,
+        "scope": "representative_objective_and_listening",
+        "status": "PASS",
+        "voice": "bf_emma"
+      }
+    ],
+    "provider_attempts": [
+      {
+        "attempt_fingerprint": "a9d329844e54e425fc578f3f4469b934ae85e8ec288223a270309f2bd1eba8fd",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_chapter1_bf_emma_asr_repair_v1.json",
+        "failed": true,
+        "fatal_flags": [],
+        "model": "hexgrad/Kokoro-82M",
+        "provider": "kokoro",
+        "scope": "chapter_001_full_run_checkpoint",
+        "status": "BLOCKED",
+        "voice": "bf_emma",
+        "weak_passage": "unexpected speech persisted; measured sync 9.6262 below 9.7"
+      },
+      {
+        "attempt_fingerprint": "f849e64889b7a614bce6eb2ad3c0b5630424cf5d338e6a1b9d216318842aceff",
+        "confidence": 0.92,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_listening_qa_v1.json",
+        "failed": false,
+        "fatal_flags": [],
+        "model": "hexgrad/Kokoro-82M",
+        "provider": "kokoro",
+        "representative_score": 9.0,
+        "scope": "representative_objective_and_listening",
+        "status": "PASS",
+        "voice": "bf_emma"
+      }
+    ],
+    "quality_summary": "REPRESENTATIVE_LISTENING_9.0_CHAPTER_OBJECTIVE_FAIL",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "The Secret Garden",
+    "Frances Hodgson Burnett",
+    "Recurring names/terms: After, All, Almost, Already, Also, Amen, And, Ann, Archibald, Archie, Are, Aren’t",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "anti_choppy_join_score_min": 9.2,
+    "anti_robotic_texture_score_min": 9.2,
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 8.9,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "per_dimension_score_min": 8.9,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "b53587d5e59b45c73a64b03fd14fb82c2e9715c8df52d354733a569d5c9ec510",
+    "rights_basis": "Public domain in India based on life plus 60 years; public domain in the U.S. based on original publication before 1931."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "the-secret-garden",
+  "source_binding": {
+    "binding_sha256": "00505f5856048df15129fb45aac86cb5485ae4e1bebf63417ded50775322bdc9",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "CHAPTER I. THERE IS NO ONE LEFT",
+        "raw_characters": 10188,
+        "recorded_source_sha256": "436678ed945b234545d12dc84c7f1edda9549a6cf99ac3b12fb459b42e6c1b79",
+        "sanitized_characters": 10188,
+        "sanitized_sha256": "436678ed945b234545d12dc84c7f1edda9549a6cf99ac3b12fb459b42e6c1b79"
+      },
+      {
+        "chapter": "chapter-002.json",
+        "chapter_title": "CHAPTER II. MISTRESS MARY QUITE CONTRARY",
+        "raw_characters": 14585,
+        "recorded_source_sha256": "19a76dda8e10d0b4be33a899336a532fbc7e5ffb435d86767f09edc2408a41f9",
+        "sanitized_characters": 14583,
+        "sanitized_sha256": "728bc067dbab9cfe1a8e2b3db18b1fb842bb089148d86563e9c4f5939bf48d52"
+      },
+      {
+        "chapter": "chapter-003.json",
+        "chapter_title": "CHAPTER III. ACROSS THE MOOR",
+        "raw_characters": 7874,
+        "recorded_source_sha256": "5d0daa564e172b9d9d6a91b6ede887e08e3f6dd8103fcf81f6e98cf2ca904473",
+        "sanitized_characters": 7874,
+        "sanitized_sha256": "5d0daa564e172b9d9d6a91b6ede887e08e3f6dd8103fcf81f6e98cf2ca904473"
+      },
+      {
+        "chapter": "chapter-004.json",
+        "chapter_title": "CHAPTER IV. MARTHA",
+        "raw_characters": 28549,
+        "recorded_source_sha256": "5fca348aa3f5c2ff8dfb2230b1434c136f15b34a52878a6315fa902736b89191",
+        "sanitized_characters": 28549,
+        "sanitized_sha256": "5fca348aa3f5c2ff8dfb2230b1434c136f15b34a52878a6315fa902736b89191"
+      },
+      {
+        "chapter": "chapter-005.json",
+        "chapter_title": "CHAPTER V. THE CRY IN THE CORRIDOR",
+        "raw_characters": 11687,
+        "recorded_source_sha256": "ceb224bf64d268175a9623c3590dd61f3fb010e3a48e65631e01d195fc496f6b",
+        "sanitized_characters": 11687,
+        "sanitized_sha256": "ceb224bf64d268175a9623c3590dd61f3fb010e3a48e65631e01d195fc496f6b"
+      },
+      {
+        "chapter": "chapter-006.json",
+        "chapter_title": "CHAPTER VI. “THERE WAS SOMEONE CRYING—THERE WAS!”",
+        "raw_characters": 12107,
+        "recorded_source_sha256": "42c5a3f0cba8843f7f9f6d25e759f644664a17581a828aa8a98abe6a56d3872b",
+        "sanitized_characters": 12107,
+        "sanitized_sha256": "42c5a3f0cba8843f7f9f6d25e759f644664a17581a828aa8a98abe6a56d3872b"
+      },
+      {
+        "chapter": "chapter-007.json",
+        "chapter_title": "CHAPTER VII. THE KEY TO THE GARDEN",
+        "raw_characters": 10754,
+        "recorded_source_sha256": "fc9879c9f06930b6a8cbe1463624f383b81374239574f74720bbda728ebe4694",
+        "sanitized_characters": 10754,
+        "sanitized_sha256": "fc9879c9f06930b6a8cbe1463624f383b81374239574f74720bbda728ebe4694"
+      },
+      {
+        "chapter": "chapter-008.json",
+        "chapter_title": "CHAPTER VIII. THE ROBIN WHO SHOWED THE WAY",
+        "raw_characters": 14325,
+        "recorded_source_sha256": "54818f72284a343a11125a1a3e045b4f75655dc8b27a0348616cb893c820882d",
+        "sanitized_characters": 14325,
+        "sanitized_sha256": "54818f72284a343a11125a1a3e045b4f75655dc8b27a0348616cb893c820882d"
+      },
+      {
+        "chapter": "chapter-009.json",
+        "chapter_title": "CHAPTER IX. THE STRANGEST HOUSE ANYONE EVER LIVED IN",
+        "raw_characters": 16714,
+        "recorded_source_sha256": "328272781a5bb9482fb470b3e71843678fa65a70881da441f8808609b1e7df59",
+        "sanitized_characters": 16714,
+        "sanitized_sha256": "328272781a5bb9482fb470b3e71843678fa65a70881da441f8808609b1e7df59"
+      },
+      {
+        "chapter": "chapter-010.json",
+        "chapter_title": "CHAPTER X. DICKON",
+        "raw_characters": 19954,
+        "recorded_source_sha256": "0841bf40e6ae19f20f88f6d7c40615239a4a490434b84e040e5b7a40321eda96",
+        "sanitized_characters": 19954,
+        "sanitized_sha256": "0841bf40e6ae19f20f88f6d7c40615239a4a490434b84e040e5b7a40321eda96"
+      },
+      {
+        "chapter": "chapter-011.json",
+        "chapter_title": "CHAPTER XI. THE NEST OF THE MISSEL THRUSH",
+        "raw_characters": 13168,
+        "recorded_source_sha256": "ab891e1e7683aa6b26545c5df85defbdfd54d85a779964f54a50f62540f8dc56",
+        "sanitized_characters": 13166,
+        "sanitized_sha256": "6f472ade339daf72a044cd556db360afaa975b18f4a6c4630202935b77903836"
+      },
+      {
+        "chapter": "chapter-012.json",
+        "chapter_title": "CHAPTER XII. “MIGHT I HAVE A BIT OF EARTH?”",
+        "raw_characters": 13669,
+        "recorded_source_sha256": "f430e13cd3e4d07b188512664157abb717f580053f8f0d24ce1739d2f28f7071",
+        "sanitized_characters": 13669,
+        "sanitized_sha256": "f430e13cd3e4d07b188512664157abb717f580053f8f0d24ce1739d2f28f7071"
+      },
+      {
+        "chapter": "chapter-013.json",
+        "chapter_title": "CHAPTER XIII. “I AM COLIN”",
+        "raw_characters": 21780,
+        "recorded_source_sha256": "d017703dfa905d3decf09e8cb8425d0fbcbc6de7883f9fdc60162140bc2c3d5c",
+        "sanitized_characters": 21780,
+        "sanitized_sha256": "d017703dfa905d3decf09e8cb8425d0fbcbc6de7883f9fdc60162140bc2c3d5c"
+      },
+      {
+        "chapter": "chapter-014.json",
+        "chapter_title": "CHAPTER XIV. A YOUNG RAJAH",
+        "raw_characters": 19527,
+        "recorded_source_sha256": "54c4f27022c80f4a2fc525e353fad3e80610cfb688dd037a323409981db29057",
+        "sanitized_characters": 19527,
+        "sanitized_sha256": "54c4f27022c80f4a2fc525e353fad3e80610cfb688dd037a323409981db29057"
+      },
+      {
+        "chapter": "chapter-015.json",
+        "chapter_title": "CHAPTER XV. NEST BUILDING",
+        "raw_characters": 20808,
+        "recorded_source_sha256": "8756f6821b6d926a12306ec2b34b29ae6138ec1003df22369a01c87e8b72a1a3",
+        "sanitized_characters": 20808,
+        "sanitized_sha256": "8756f6821b6d926a12306ec2b34b29ae6138ec1003df22369a01c87e8b72a1a3"
+      },
+      {
+        "chapter": "chapter-016.json",
+        "chapter_title": "CHAPTER XVI. “I WON’T!” SAID MARY",
+        "raw_characters": 12469,
+        "recorded_source_sha256": "ab58506cea7534f7d43afbc6581c8ebf806f8a5ae8dd4639c5a828029d45ad20",
+        "sanitized_characters": 12469,
+        "sanitized_sha256": "ab58506cea7534f7d43afbc6581c8ebf806f8a5ae8dd4639c5a828029d45ad20"
+      },
+      {
+        "chapter": "chapter-017.json",
+        "chapter_title": "CHAPTER XVII. A TANTRUM",
+        "raw_characters": 12203,
+        "recorded_source_sha256": "dd8667bb6de6325ae81e8e5633a024c2eaabd92f2af2288a5fcfa9b70e8c89b4",
+        "sanitized_characters": 12203,
+        "sanitized_sha256": "dd8667bb6de6325ae81e8e5633a024c2eaabd92f2af2288a5fcfa9b70e8c89b4"
+      },
+      {
+        "chapter": "chapter-018.json",
+        "chapter_title": "CHAPTER XVIII. “THA’ MUNNOT WASTE NO TIME”",
+        "raw_characters": 11678,
+        "recorded_source_sha256": "c5f52b161e506ecf6bdb4349b5c96f348c5144d6f578153130258329dcbd0971",
+        "sanitized_characters": 11678,
+        "sanitized_sha256": "c5f52b161e506ecf6bdb4349b5c96f348c5144d6f578153130258329dcbd0971"
+      },
+      {
+        "chapter": "chapter-019.json",
+        "chapter_title": "CHAPTER XIX. “IT HAS COME!”",
+        "raw_characters": 18933,
+        "recorded_source_sha256": "6a984125cdeb213c6fa546f5c84a440041b5a3ded8835821ce9609cdc47764a6",
+        "sanitized_characters": 18933,
+        "sanitized_sha256": "6a984125cdeb213c6fa546f5c84a440041b5a3ded8835821ce9609cdc47764a6"
+      },
+      {
+        "chapter": "chapter-020.json",
+        "chapter_title": "CHAPTER XX. “I SHALL LIVE FOREVER—AND EVER—AND EVER!”",
+        "raw_characters": 13940,
+        "recorded_source_sha256": "c115d132c201a173054a5d2a4c9eda0894ab27face0b567a56076bffa5b6ef65",
+        "sanitized_characters": 13940,
+        "sanitized_sha256": "c115d132c201a173054a5d2a4c9eda0894ab27face0b567a56076bffa5b6ef65"
+      },
+      {
+        "chapter": "chapter-021.json",
+        "chapter_title": "CHAPTER XXI. BEN WEATHERSTAFF",
+        "raw_characters": 17898,
+        "recorded_source_sha256": "e9b8b30427f99aedd636a24bfd162da9a0218316b539e2276c255403a28246d5",
+        "sanitized_characters": 17898,
+        "sanitized_sha256": "e9b8b30427f99aedd636a24bfd162da9a0218316b539e2276c255403a28246d5"
+      },
+      {
+        "chapter": "chapter-022.json",
+        "chapter_title": "CHAPTER XXII. WHEN THE SUN WENT DOWN",
+        "raw_characters": 8661,
+        "recorded_source_sha256": "42ed868de557540c22df1f94877476a0f9ba1f1285f1b8550e6c0029b0c2f921",
+        "sanitized_characters": 8661,
+        "sanitized_sha256": "42ed868de557540c22df1f94877476a0f9ba1f1285f1b8550e6c0029b0c2f921"
+      },
+      {
+        "chapter": "chapter-023.json",
+        "chapter_title": "CHAPTER XXIII. MAGIC",
+        "raw_characters": 21606,
+        "recorded_source_sha256": "7a3edf697c08e7cee6b07c11e287cff1333da759a8f90cc64672068f3c286426",
+        "sanitized_characters": 21606,
+        "sanitized_sha256": "7a3edf697c08e7cee6b07c11e287cff1333da759a8f90cc64672068f3c286426"
+      },
+      {
+        "chapter": "chapter-024.json",
+        "chapter_title": "CHAPTER XXIV. “LET THEM LAUGH”",
+        "raw_characters": 21514,
+        "recorded_source_sha256": "edc533cba88bea5ecff2c9d76608cf9dae13c7b0193f06ccca9f9f308bd79952",
+        "sanitized_characters": 21514,
+        "sanitized_sha256": "edc533cba88bea5ecff2c9d76608cf9dae13c7b0193f06ccca9f9f308bd79952"
+      },
+      {
+        "chapter": "chapter-025.json",
+        "chapter_title": "CHAPTER XXV. THE CURTAIN",
+        "raw_characters": 12739,
+        "recorded_source_sha256": "257d573c3f60c849e151db719708272a378267536b75eca371ded53e4d0d63e1",
+        "sanitized_characters": 12739,
+        "sanitized_sha256": "257d573c3f60c849e151db719708272a378267536b75eca371ded53e4d0d63e1"
+      },
+      {
+        "chapter": "chapter-026.json",
+        "chapter_title": "CHAPTER XXVI. “IT’S MOTHER!”",
+        "raw_characters": 16474,
+        "recorded_source_sha256": "f9acf8ef3031cd5339a37caee2347d9a4553838554cb2a39af6f509f82206074",
+        "sanitized_characters": 16473,
+        "sanitized_sha256": "2f06868bc37bf2b0159bd378de73794864053ac277646ddbf26efef49a2e7383"
+      },
+      {
+        "chapter": "chapter-027.json",
+        "chapter_title": "CHAPTER XXVII. IN THE GARDEN",
+        "raw_characters": 27685,
+        "recorded_source_sha256": "cae4b67fe003e66fa657c443bd6a89946e796ecb445a61e90c65c3fbf9449b00",
+        "sanitized_characters": 27685,
+        "sanitized_sha256": "cae4b67fe003e66fa657c443bd6a89946e796ecb445a61e90c65c3fbf9449b00"
+      }
+    ],
+    "raw_manuscript_sha256": "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a",
+    "sanitized_manuscript_sha256": "07d01dbc5116492dff84069738dd3ab38ae3883f8d106fabc71773e9389affad",
+    "source_hash": "e475a847f75aff163a517afd457be284ebd08a236c000a4c5961a478bfa5366d",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "The Secret Garden"
+}

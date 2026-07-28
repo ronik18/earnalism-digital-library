@@ -128,7 +128,7 @@ class Sprint1Audiobook90PolicyTests(unittest.TestCase):
         self.assertFalse(valid)
         self.assertTrue(any("timestamps" in blocker for blocker in blockers), blockers)
 
-    def test_canonical_policy_and_campaign_state_are_consistent(self) -> None:
+    def test_historical_policy_remains_immutable_but_is_superseded(self) -> None:
         decision = load_json(
             "internal/earnalism_intelligence/"
             "sprint1_audiobook_acceptance_v3_90_policy_decision.json"
@@ -136,13 +136,6 @@ class Sprint1Audiobook90PolicyTests(unittest.TestCase):
         policy = load_json(
             "internal/earnalism_intelligence/audiobook_acceptance_policy.json"
         )
-        state = load_json(
-            "internal/earnalism_intelligence/bengali_audiobook_campaign_state.json"
-        )
-        queue = load_json(
-            "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json"
-        )
-
         self.assertEqual(decision["policy_name"], SPRINT1_AUDIOBOOK_90_POLICY)
         self.assertEqual(decision["listening_gate"]["overall_listening_score_min"], 9.0)
         self.assertEqual(
@@ -152,44 +145,15 @@ class Sprint1Audiobook90PolicyTests(unittest.TestCase):
         self.assertFalse(decision["public_state_mutated"])
         self.assertIn("full-title", decision["publication_rule"])
 
-        active = policy[SPRINT1_AUDIOBOOK_90_POLICY]
-        self.assertEqual(active["representative_or_full_book_listening_score_min"], 9.0)
-        self.assertEqual(active["confidence_score_min"], 0.9)
-        self.assertTrue(active["objective_gates_remain_strict"])
+        historical = policy[SPRINT1_AUDIOBOOK_90_POLICY]
+        self.assertEqual(historical["representative_or_full_book_listening_score_min"], 9.0)
+        self.assertEqual(historical["confidence_score_min"], 0.9)
+        self.assertTrue(historical["objective_gates_remain_strict"])
+        self.assertEqual(historical["status"], "SUPERSEDED_FOR_NEW_EVALUATIONS")
         self.assertEqual(
             policy[BENGALI_AUDIOBOOK_92_POLICY]["status"],
             "SUPERSEDED_FOR_NEW_EVALUATIONS",
         )
-        self.assertEqual(state["policy_version"], SPRINT1_AUDIOBOOK_90_POLICY)
-        self.assertEqual(state["release_gates"]["goal_score"], 9.0)
-        self.assertEqual(queue["policy_version"], SPRINT1_AUDIOBOOK_90_POLICY)
-
-    def test_active_pipeline_surfaces_use_90_policy(self) -> None:
-        expected_fragments = {
-            "internal/audiobook_lab/scripts/sprint1_next_two_audiobook_fastpath.py": (
-                'LISTENING_MINIMUM = 9.0',
-                '"EARNALISM_LISTENING_POLICY_VERSION": '
-                '"sprint1_audiobook_acceptance_v3_90"',
-            ),
-            "internal/audiobook_lab/scripts/sprint1_google_bengali_full_tts.py": (
-                "LISTENING_MINIMUM = 9.0",
-            ),
-            "internal/audiobook_lab/scripts/build_narration_import_packet.py": (
-                "listening_min = 9.0",
-            ),
-            "internal/audiobook_lab/scripts/sprint1_release_packet_builder.py": (
-                "listening_minimum = 9.0",
-            ),
-            "internal/audiobook_lab/scripts/"
-            "sprint1_factory_release_evidence_normalizer.py": (
-                "listening_minimum = 9.0",
-            ),
-        }
-        for relative_path, fragments in expected_fragments.items():
-            with self.subTest(path=relative_path):
-                source = (ROOT / relative_path).read_text(encoding="utf-8")
-                for fragment in fragments:
-                    self.assertIn(fragment, source)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "changed_at": "2026-07-28T05:36:05Z",
+  "lock_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+  "from_slug": "the-secret-garden",
+  "to_slug": "alices-adventures-in-wonderland",
+  "canonical_title": "Alice's Adventures in Wonderland",
+  "canonical_author": "Lewis Carroll",
+  "budget": {
+    "campaign_cap_usd": 75.0,
+    "per_title_cap_usd": 8.0
+  },
+  "lock_sha256_before": "231e27768bd89c86df8931b85823ebe9cd475ff082b631b99e430dd1ea1604d2",
+  "lock_sha256_after": "9f54fb0bf4f77946280028a1c7a562ac425fb11750bf9f613eb22a836a36efd9",
+  "provider_call_performed": false,
+  "publication_performed": false
+}

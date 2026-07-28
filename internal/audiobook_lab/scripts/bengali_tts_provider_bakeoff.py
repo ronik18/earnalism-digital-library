@@ -45,6 +45,7 @@ from asr_sync_hook import (  # noqa: E402
     BENGALI_PREMIUM_MVP_POLICY,
     LISTENING_THRESHOLDS,
     TIERED_AUDIOBOOK_ACCEPTANCE_POLICY,
+    SPRINT1_AUDIOBOOK_89_POLICY,
     SPRINT1_AUDIOBOOK_90_POLICY,
     UNIVERSAL_LISTENING_POLICY,
     evaluate_listening_evidence,
@@ -274,6 +275,12 @@ def normalize_release_policy(value: str | None) -> str:
     if policy in {"bengali_92", "bengali-92", BENGALI_AUDIOBOOK_92_POLICY}:
         return BENGALI_AUDIOBOOK_92_POLICY
     if policy in {
+        "sprint1_89",
+        "sprint1-89",
+        SPRINT1_AUDIOBOOK_89_POLICY,
+    }:
+        return SPRINT1_AUDIOBOOK_89_POLICY
+    if policy in {
         "sprint1_90",
         "sprint1-90",
         SPRINT1_AUDIOBOOK_90_POLICY,
@@ -292,6 +299,7 @@ def prioritize_mvp_voices(voices: list[ProviderVoice], release_policy: str, limi
     if release_policy not in {
         BENGALI_PREMIUM_MVP_POLICY,
         BENGALI_AUDIOBOOK_92_POLICY,
+        SPRINT1_AUDIOBOOK_89_POLICY,
         SPRINT1_AUDIOBOOK_90_POLICY,
     }:
         return voices
@@ -1745,6 +1753,7 @@ def sample_overall_score(sample: dict[str, Any]) -> float:
 def adaptive_early_stop_reason(sample: dict[str, Any], release_policy: str) -> str:
     if release_policy not in {
         BENGALI_AUDIOBOOK_92_POLICY,
+        SPRINT1_AUDIOBOOK_89_POLICY,
         SPRINT1_AUDIOBOOK_90_POLICY,
     }:
         return ""
@@ -1957,6 +1966,19 @@ def sprint1_90_policy_decision_path() -> str:
     if not path.is_file():
         raise RuntimeError(
             "Sprint 1 v3.90 policy decision artifact is missing"
+        )
+    return rel(path)
+
+
+def sprint1_89_policy_decision_path() -> str:
+    path = (
+        ROOT
+        / "internal/earnalism_intelligence/"
+        "sprint1_audiobook_acceptance_v3_89_policy_decision.json"
+    )
+    if not path.is_file():
+        raise RuntimeError(
+            "Sprint 1 v3.89 policy decision artifact is missing"
         )
     return rel(path)
 
@@ -2421,6 +2443,7 @@ def main() -> int:
     parser.add_argument("--generate-full-pilot-if-policy-pass", action="store_true")
     parser.add_argument("--allow-one-full-pilot-if-representative-passes", action="store_true")
     parser.add_argument("--bengali-audiobook-92-rescue", action="store_true")
+    parser.add_argument("--sprint1-audiobook-89", action="store_true")
     parser.add_argument("--sprint1-audiobook-90", action="store_true")
     parser.add_argument("--adaptive-optimizer", action="store_true")
     parser.add_argument("--test-text-prep-variants", action="store_true")
@@ -2435,7 +2458,9 @@ def main() -> int:
     run_dir.mkdir(parents=True, exist_ok=True)
     if args.bengali_audiobook_92_rescue and args.policy == UNIVERSAL_LISTENING_POLICY:
         args.policy = BENGALI_AUDIOBOOK_92_POLICY
-    if args.sprint1_audiobook_90:
+    if args.sprint1_audiobook_89:
+        args.policy = SPRINT1_AUDIOBOOK_89_POLICY
+    elif args.sprint1_audiobook_90:
         args.policy = SPRINT1_AUDIOBOOK_90_POLICY
     if args.allow_one_full_pilot_if_representative_passes:
         args.generate_full_pilot_if_policy_pass = True
@@ -2444,12 +2469,16 @@ def main() -> int:
     release_policy = normalize_release_policy(args.policy)
     if args.bengali_audiobook_92_rescue and release_policy != BENGALI_AUDIOBOOK_92_POLICY:
         release_policy = BENGALI_AUDIOBOOK_92_POLICY
-    if args.sprint1_audiobook_90:
+    if args.sprint1_audiobook_89:
+        release_policy = SPRINT1_AUDIOBOOK_89_POLICY
+    elif args.sprint1_audiobook_90:
         release_policy = SPRINT1_AUDIOBOOK_90_POLICY
     if release_policy == BENGALI_PREMIUM_MVP_POLICY:
         policy_decision_path = write_bengali_mvp_policy_decision()
     elif release_policy == BENGALI_AUDIOBOOK_92_POLICY:
         policy_decision_path = write_bengali_92_policy_decision()
+    elif release_policy == SPRINT1_AUDIOBOOK_89_POLICY:
+        policy_decision_path = sprint1_89_policy_decision_path()
     elif release_policy == SPRINT1_AUDIOBOOK_90_POLICY:
         policy_decision_path = sprint1_90_policy_decision_path()
     else:
