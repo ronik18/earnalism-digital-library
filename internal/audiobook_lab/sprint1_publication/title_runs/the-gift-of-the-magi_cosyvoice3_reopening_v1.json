@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-28T11:12:51Z",
+  "slug": "the-gift-of-the-magi",
+  "decision": "AUTHORIZE_ONE_PRIVATE_COSYVOICE3_BF16_ADVERSARIAL_SAMPLE",
+  "owner_authorization": "SPRINT1_END_TO_END_GO_LIVE",
+  "reason": "A materially distinct, commercially permitted, provider-free model family is already cached and can be evaluated without repeating any closed provider, model, voice, settings, source, or ASR fingerprint.",
+  "prior_closed_strategy": {
+    "classification": "LOCAL_SYNTHETIC_FAMILIES_EXHAUSTED_SOURCE_BOUND_DELIVERY_REQUIRED",
+    "title_decision_history_sha256_before_reopening": "4f3a2ebd95a900da0fb0ef0ce8e9b99c59fe8d34b056899536fae9d05b1d47b2",
+    "release_conveyor_sha256_before_reopening": "58bbd070cc051ea33f9b7a1f5de25d05ed832e94068f19a9d7bece06edc489a6"
+  },
+  "exact_scope": {
+    "model_id": "aufklarer/CosyVoice3-0.5B-MLX-bf16",
+    "model_revision": "9b210b2381280b3af1c631d474a250e3e46d7017",
+    "engine": "speech 0.0.23",
+    "reference_kind": "MODEL_DEFAULT_SYNTHETIC_VOICE_NO_REFERENCE_AUDIO",
+    "section_id": "section-013",
+    "section_text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+    "maximum_generated_samples": 1,
+    "provider_cost_usd": 0,
+    "paid_listening_calls": 0,
+    "private_only": true
+  },
+  "rights": {
+    "upstream_model": "FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+    "upstream_license": "Apache-2.0",
+    "mlx_conversion_license": "Apache-2.0",
+    "runtime_license": "Apache-2.0",
+    "commercial_use_status": "PERMITTED_BY_RECORDED_LICENSES",
+    "human_voice_reference_used": false,
+    "official_upstream_url": "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+    "conversion_url": "https://huggingface.co/aufklarer/CosyVoice3-0.5B-MLX-bf16",
+    "runtime_url": "https://github.com/soniqo/speech-swift/tree/v0.0.23"
+  },
+  "stop_conditions": [
+    "Any source, model, runtime, license, settings, policy, or attempt fingerprint differs from the bound contract.",
+    "The private WAV is malformed, clipped, silent, or written to a public path.",
+    "ASR/manuscript score is below 9.7, coverage is below 0.98, content order fails, or first/last words fail.",
+    "The paid_tts.lock changes during local execution.",
+    "Any upload, public metadata mutation, release-gate mutation, or publication is attempted.",
+    "The exact attempt fingerprint has already generated audio."
+  ],
+  "expansion_policy": "No representative expansion, full-title generation, listening QA, upload, or publication is authorized by this reopening. A source-blind objective pass only creates evidence for the next bounded decision.",
+  "public_audio_status": "AUDIO_HIDDEN"
+}
