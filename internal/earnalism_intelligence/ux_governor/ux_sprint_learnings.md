@@ -113,3 +113,17 @@
 - Responsive collision checks must compare functional grid zones and cover siblings, not only page-level horizontal overflow. The broken cards clipped their own CTA and cover content while the document itself still reported zero horizontal overflow.
 - Modifier selectors such as `curated-shelf-collage--missing-short` require an equally specific mobile reset; otherwise a tablet area map can survive below the mobile breakpoint and collapse one tile to a near-zero-width column.
 - The bundled Sprint 1 snapshot is a truthful resilience path for hero and shelf books while the runtime curation request is pending or unavailable. Unsupported covers remain omitted and audiobook release truth remains unchanged.
+
+## 2026-07-28 Admin cover desk
+
+- Cover remediation is clearer as a dedicated admin workspace than as two
+  controls buried inside the general book editor.
+- Operators need canonical, private-upload, and review states shown separately;
+  otherwise a successful Cloudinary upload can be mistaken for a public catalog
+  approval.
+- Defaulting the desk to “Needs attention,” with title/author/slug search and
+  front/back status chips, keeps the 32-title queue scannable without adding a
+  heavy table or another network waterfall.
+- Accessible file labels, deterministic cover previews, and client-side
+  MIME/size limits provide fast feedback while the backend remains the
+  authoritative validator.
