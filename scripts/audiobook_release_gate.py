@@ -162,10 +162,10 @@ def evaluate_release_gate(
         blockers.append("Full audiobook is not explicitly approved.")
     if qa_score is None:
         blockers.append("Human QA score is missing.")
-    elif request.get("preview_allowed") is True and qa_score < 9.2:
-        blockers.append("Public preview requires human QA score >= 9.2.")
-    if request.get("full_audiobook_allowed") is True and (qa_score is None or qa_score < 9.5):
-        blockers.append("Full audiobook requires human QA score >= 9.5.")
+    elif request.get("preview_allowed") is True and qa_score < 8.9:
+        blockers.append("Public preview requires human QA score >= 8.9.")
+    if request.get("full_audiobook_allowed") is True and (qa_score is None or qa_score < 8.9):
+        blockers.append("Full audiobook requires human QA score >= 8.9.")
     if request.get("full_audiobook_allowed") is not True:
         blockers.append("Full audiobook release is disabled by default.")
     blockers.extend(claim_issues(public_disclosure_copy, human_recorded_proof=False))

@@ -388,7 +388,7 @@ def campaign_summary(queue: list[dict[str, Any]], report: dict[str, Any]) -> dic
     return {
         "generated_at": iso_now(),
         "status": "BENGALI_AUDIOBOOK_CAMPAIGN_ACTIVE",
-        "policy_version": "sprint1_audiobook_acceptance_v3_89",
+        "policy_version": "platform_audiobook_acceptance_v4_89",
         "total_campaign_titles": len(queue),
         "published_bengali_audiobooks": len(published),
         "titles_in_representative_audition": counts.get("REPRESENTATIVE_AUDITION_RUNNING", 0),
@@ -437,10 +437,10 @@ def exact_next_command() -> str:
         "EARNALISM_STOP_ON_BUDGET_EXCEEDED=true "
         "EARNALISM_ENABLE_OPENAI_LISTENING_QA=true "
         "EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio "
-        "EARNALISM_LISTENING_POLICY_VERSION=sprint1_audiobook_acceptance_v3_89 "
+        "EARNALISM_LISTENING_POLICY_VERSION=platform_audiobook_acceptance_v4_89 "
         "python3 internal/audiobook_lab/scripts/bengali_audiobook_campaign_controller.py "
         "--manifest book_import_manifest.json --target-reader-only-approved-31 "
-        "--goal-score 8.9 --policy sprint1_audiobook_acceptance_v3_89 "
+        "--goal-score 8.9 --policy platform_audiobook_acceptance_v4_89 "
         "--adaptive-optimizer --resume --fail-closed --max-run-minutes 180"
     )
 
@@ -595,7 +595,7 @@ def update_sprint_learnings(summary: dict[str, Any]) -> None:
 ## Bengali Audiobook Campaign Activation - {summary['generated_at']}
 
 - Installed persistent Bengali audiobook campaign state and queue for 31 reader-ready titles.
-- One title is representative-passed under `sprint1_audiobook_acceptance_v3_89`: Sarvam `bulbul:v3` / `ratan` / `literary_warm_pacing`, score `{summary['best_settings'].get('representative_score')}`, confidence `{summary['best_settings'].get('confidence')}`.
+- One title is representative-passed under `platform_audiobook_acceptance_v4_89`: Sarvam `bulbul:v3` / `ratan` / `literary_warm_pacing`, score `{summary['best_settings'].get('representative_score')}`, confidence `{summary['best_settings'].get('confidence')}`.
 - Full pilot is not live and must not be published until full-book listening, ASR/manuscript, measured sync, upload/checksum, metadata, endpoint, and browser gates pass.
 - Duplicate attempt cache contains `{summary['duplicate_attempts_avoided']}` prior passage/settings entries.
 - No paid/provider/ASR/upload/metadata/production mutation calls were run in this activation.
@@ -716,7 +716,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--manifest", default="book_import_manifest.json")
     parser.add_argument("--target-reader-only-approved-31", action="store_true")
     parser.add_argument("--goal-score", type=float, default=8.9)
-    parser.add_argument("--policy", default="sprint1_audiobook_acceptance_v3_89")
+    parser.add_argument("--policy", default="platform_audiobook_acceptance_v4_89")
     parser.add_argument("--adaptive-optimizer", action="store_true")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--fail-closed", action="store_true")
@@ -726,7 +726,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
-    if args.policy != "sprint1_audiobook_acceptance_v3_89" and args.fail_closed:
+    if args.policy != "platform_audiobook_acceptance_v4_89" and args.fail_closed:
         print(json.dumps({"status": "FAILED", "blocker": "unsupported_policy", "policy": args.policy}, ensure_ascii=False))
         return 2
     if not PILOT_SELECTION_PATH.exists() and args.fail_closed:

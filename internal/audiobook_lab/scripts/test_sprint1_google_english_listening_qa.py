@@ -36,8 +36,8 @@ class EnglishListeningQATests(unittest.TestCase):
                     "minimum_listening_score": 8.9,
                     "minimum_listening_confidence": 0.9,
                     "per_dimension_score_min": 8.9,
-                    "anti_robotic_texture_score_min": 9.2,
-                    "anti_choppy_join_score_min": 9.2,
+                    "anti_robotic_texture_score_min": 8.9,
+                    "anti_choppy_join_score_min": 8.9,
                     "samples": samples,
                 }
             ),
@@ -89,7 +89,7 @@ class EnglishListeningQATests(unittest.TestCase):
                 "anti_robotic_texture_score": (
                     max(score, 9.2) if anti_robotic is None else anti_robotic
                 ),
-                "anti_choppy_join_score": max(score, 9.2),
+                "anti_choppy_join_score": max(score, 8.9),
             }
             return {
                 **sample,
@@ -151,7 +151,7 @@ class EnglishListeningQATests(unittest.TestCase):
             self.evidence,
             self.output,
             env=self.env,
-            judge=self.judge(9.3, anti_robotic=9.1),
+            judge=self.judge(9.3, anti_robotic=8.8),
             client=object(),
         )
         self.assertEqual(code, 3)

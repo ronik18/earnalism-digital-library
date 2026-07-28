@@ -148,8 +148,8 @@ class GoogleEnglishPrivatePipelineTests(unittest.TestCase):
             sample["scores"] = {
                 key: score for key in pipeline.LISTENING_DIMENSION_KEYS
             }
-            sample["scores"]["anti_robotic_texture_score"] = max(score, 9.2)
-            sample["scores"]["anti_choppy_join_score"] = max(score, 9.2)
+            sample["scores"]["anti_robotic_texture_score"] = max(score, 8.9)
+            sample["scores"]["anti_choppy_join_score"] = max(score, 8.9)
         path.write_text(json.dumps(evidence, indent=2) + "\n", encoding="utf-8")
         return path
 
@@ -459,7 +459,7 @@ class GoogleEnglishPrivatePipelineTests(unittest.TestCase):
         higher = self.run_with(
             self.config(
                 "audition",
-                minimum_listening_score=9.2,
+                minimum_listening_score=8.9,
                 execute=False,
             ),
             provider,

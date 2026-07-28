@@ -2947,9 +2947,10 @@ def build_auto_qa(state: BookState, env_detected: dict[str, bool], command: str,
         "overall_premium_score": 9.7,
         "confidence_score": 0.95,
     }
-    listening_policy_version = os.getenv(
-        "EARNALISM_LISTENING_POLICY_VERSION", ""
-    )
+    listening_policy_version = (
+        os.getenv("EARNALISM_LISTENING_POLICY_VERSION")
+        or "platform_audiobook_acceptance_v4_89"
+    ).strip()
     legacy_bengali_92_policy = (
         listening_policy_version == "bengali_audiobook_acceptance_v2_92"
     )
@@ -2959,6 +2960,7 @@ def build_auto_qa(state: BookState, env_detected: dict[str, bool], command: str,
             state.language == "ben"
             or listening_policy_version
             in {
+                "platform_audiobook_acceptance_v4_89",
                 "sprint1_audiobook_acceptance_v3_89",
                 "sprint1_audiobook_acceptance_v3_90",
             }
@@ -2985,7 +2987,15 @@ def build_auto_qa(state: BookState, env_detected: dict[str, bool], command: str,
             "anti_choppy_join_score",
             "choppy_join_absence_score",
         ]:
-            thresholds[field] = 9.2
+            thresholds[field] = (
+                8.9
+                if listening_policy_version
+                in {
+                    "platform_audiobook_acceptance_v4_89",
+                    "sprint1_audiobook_acceptance_v3_89",
+                }
+                else 9.2
+            )
         if legacy_bengali_92_policy:
             listening_floor = 9.2
         elif listening_policy_version == "sprint1_audiobook_acceptance_v3_90":

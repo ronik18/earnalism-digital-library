@@ -103,8 +103,8 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
         "overall_listening_score_min": 8.9,
         "confidence_score_min": 0.9,
         "per_dimension_score_min": 8.9,
-        "anti_robotic_texture_score_min": 9.2,
-        "anti_choppy_join_score_min": 9.2,
+        "anti_robotic_texture_score_min": 8.9,
+        "anti_choppy_join_score_min": 8.9,
     }
     for key, expected in expected_gates.items():
         if gates.get(key) != expected:

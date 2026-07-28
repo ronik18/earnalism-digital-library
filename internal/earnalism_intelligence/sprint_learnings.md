@@ -714,3 +714,20 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Dynamic hero rotation must use the complete reader-enabled, canonical-cover-valid contract set, not a hardcoded four-title list. Cover load failure remains fail-closed and carousel timing pauses for hover, focus, reduced motion, and hidden documents.
 - `object-fit: contain` produced conspicuous ivory bars for nonstandard cover proportions and broke the bound-book illusion. The verified stage uses a consistent cover crop so title and focal art remain prominent while the full link hit area and external spine stay intact.
 - Responsive AVIF/WebP source selection reduced the hero artwork package versus the prior single 1.7 MB WebP while preserving the full reference aspect and header-safe placement.
+
+## 2026-07-28 Platform-wide unified 8.9 listening gate
+
+- The active policy now uses `8.9` for overall listening and every subjective
+  listening dimension, including anti-robotic texture and anti-choppy joins,
+  with confidence `>=0.90` and all fatal flags still disqualifying.
+- The `9.7` value is the objective ASR/manuscript fidelity gate, not a
+  listening score. It remains unchanged with exact first/last/order, coverage
+  `>=0.98`, measured sync, rights, covers, checksum, metadata, endpoint,
+  browser playback, and an empty blocker list.
+- Reclassification produced zero new full-title release-ready titles. Gift,
+  Tell-Tale Heart, Time Machine, Radharani, Secret Garden, and Desiree's Baby
+  remain blocked by exact-content, fatal-defect, missing-full-title, measured
+  sync, or downstream delivery evidence rather than the listening cutoff.
+- No provider call, upload, publication, release metadata mutation, or hidden
+  audio exposure occurred. Existing raw scores and historical reports remain
+  immutable.
