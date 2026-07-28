@@ -1,0 +1,96 @@
+{
+  "schema_version": "earnalism.pride_chatterbox_v3_private_pilot_policy.v1",
+  "decision": "AUTHORIZE_ONE_PRIVATE_CHATTERBOX_V3_BUILTIN_CONDS_SAMPLE",
+  "slug": "pride-and-prejudice",
+  "title": "Pride and Prejudice",
+  "author": "Jane Austen",
+  "scope": {
+    "sample_count": 1,
+    "private_only": true,
+    "full_title_generation_allowed": false,
+    "listening_review_allowed_before_objective_pass": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false,
+    "catalog_mutation_allowed": false,
+    "public_asset_write_allowed": false
+  },
+  "source_contract": {
+    "chapter_path": "data/controlled_publications/pride-and-prejudice/chapters/chapter-001.json",
+    "chapter_file_sha256": "e85732d1acfa4e879992bf65d7244a6e0faa3b29f2ad2958d0c0dedb2cb72fba",
+    "canonical_source_sha256": "fcf234e0476cc6af8b3f604399bf3d7c4b72931bdf2af276ab4cc78caf938d5c",
+    "sanitized_content_sha256": "3e19fb75e8ba915bad01d7edde9938d666fe7195c8d62fea8e72cda2baa9a3c0",
+    "passage_id": "chapter-001-dialogue-01",
+    "passage_text": "“My dear Mr. Bennet,” said his lady to him one day, “have you heard that Netherfield Park is let at last?” Mr. Bennet replied that he had not. “But it is,” returned she; “for Mrs. Long has just been here, and she told me all about it.”",
+    "passage_text_sha256": "e51782a522b817e8c1e116fdbffd2841a3327e44ad7c16dd655e5ae2b235680b",
+    "exact_normalized_occurrence_required": 1
+  },
+  "rights_contract": {
+    "text_rights_basis": "PUBLIC_DOMAIN",
+    "text_source": "Project Gutenberg ebook 1342",
+    "audiobook_use_approved": true,
+    "public_audio_release_approved": false,
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED"
+  },
+  "model_contract": {
+    "provider_family": "chatterbox",
+    "model_id": "ResembleAI/chatterbox",
+    "model_revision": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+    "runtime_package": "chatterbox-tts",
+    "runtime_version": "0.1.7",
+    "runtime_source_revision": "5de7a54aa4e5e2baadb0182dde554908b48b85c2",
+    "runtime_license": "MIT",
+    "commercial_use_allowed": true,
+    "watermark_retained": true,
+    "loader": "ChatterboxMultilingualTTS.from_local",
+    "mutable_remote_loader_allowed": false,
+    "files": {
+      "t3_mtl23ls_v3.safetensors": "5abca8321ede76f8e61f1cc0d19aea6c946b28871017ce8726f8a69203f05953",
+      "conds.pt": "6552d70568833628ba019c6b03459e77fe71ca197d5c560cef9411bee9d87f4e",
+      "s3gen.pt": "9b9ff07e60b20c136e2b1b3d7563a24604e8d2c4c267888d1ee929dd0151d2a3",
+      "ve.pt": "4b16d836bc598509860f6fa068165a8bb5e9ac84f05582dfcf278a5a372879f1",
+      "grapheme_mtl_merged_expanded_v1.json": "69632f47220a788a52ce2661d096453c5655e9bf25289d89a8d832c46ee07dbf",
+      "Cangjie5_TC.json": "7073fd9de919443ae88e0bd2449917a65fe54898a4413ed1edcc4b67f28bce8c"
+    }
+  },
+  "voice_contract": {
+    "kind": "MODEL_BUILTIN_CONDITIONAL_NO_EXTERNAL_REFERENCE",
+    "built_in_conditionals_file": "conds.pt",
+    "external_reference_audio_allowed": false,
+    "audio_prompt_path_allowed": false,
+    "voice_clone_allowed": false
+  },
+  "generation_settings": {
+    "language_id": "en",
+    "exaggeration": 0.5,
+    "cfg_weight": 0.5,
+    "temperature": 0.8,
+    "repetition_penalty": 1.2,
+    "min_p": 0.05,
+    "top_p": 1.0
+  },
+  "execution_contract": {
+    "output_root": "/private/tmp/earnalism-pride-chatterbox-v3-private",
+    "paid_tts_lock_access": "READ_ONLY",
+    "paid_tts_lock_must_be_byte_identical_after_run": true,
+    "network_allowed": false,
+    "provider_calls_allowed": false
+  },
+  "objective_gates": {
+    "asr_source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_match_required": true,
+    "last_words_match_required": true,
+    "ordered_content_integrity_required": true,
+    "no_missing_content_required": true,
+    "no_duplicate_content_required": true,
+    "no_reordered_content_required": true,
+    "no_unexpected_content_required": true,
+    "audio_derived_word_timestamps_required": true
+  },
+  "transitions": {
+    "objective_pass": "REPRESENTATIVE_OBJECTIVE_PASS_LISTENING_REVIEW_REQUIRED",
+    "objective_fail": "SOURCE_BOUND_DELIVERY_REQUIRED",
+    "release_ready_transition_allowed": false
+  }
+}
