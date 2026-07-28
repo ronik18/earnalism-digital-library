@@ -436,5 +436,29 @@
       "allowed_next_holders": [],
       "allowed_slugs": ["devdas"]
     }
+  },
+  "bn066_preflight_and_asr_closeout_20260728": {
+    "status": "PREFLIGHT_FALSE_POSITIVE_FIXED_ASR_SOURCE_MISMATCH_AUDIO_HIDDEN",
+    "reader_status": "PUBLIC_READER_LIVE",
+    "audiobook_use_approved": true,
+    "audio_public_release_approved": false,
+    "preflight_repair": {
+      "single_digit_bengali_stanza_marker_preserved": true,
+      "explicit_page_marker_still_blocked": true,
+      "bare_three_digit_page_marker_still_blocked": true
+    },
+    "private_audio": {
+      "chunk_count": 152,
+      "asr_checkpoint_pass_count": 152,
+      "raw_audio_asr_source_score": 0.8403,
+      "required_asr_source_score": 9.7,
+      "first_words_match": false,
+      "last_words_match": false,
+      "listening_qa_status": "NOT_RUN_ASR_SOURCE_GATE_FAILED"
+    },
+    "publication_performed": false,
+    "upload_performed": false,
+    "release_gate_mutated": false,
+    "next_action": "Require a genuinely different exact source-bound delivery; do not repeat the closed ASR or listening path."
   }
 }

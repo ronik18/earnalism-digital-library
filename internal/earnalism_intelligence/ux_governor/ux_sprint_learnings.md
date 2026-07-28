@@ -122,3 +122,17 @@
 - Cover eligibility must remain consistent across curation versions. Reusing the owner-reviewed visual-cover exclusions reduced the live Sprint 1 hero candidates from 26 to 13 without changing reader, audiobook, or shelf truth.
 - Six-viewport browser evidence passed with exactly three meaningful slides, zero horizontal overflow, zero hidden focus targets, uniform non-overlapping gaps, and 44px touch controls on tablet and mobile.
 - Go-live static assertions must migrate with an intentional component contract. The retired slot selector and per-book perspective string were replaced by checks for the shared coverflow stage, `1100px` perspective, and preserved 3-D context.
+
+## 2026-07-28 Admin cover desk
+
+- Cover remediation is clearer as a dedicated admin workspace than as two
+  controls buried inside the general book editor.
+- Operators need canonical, private-upload, and review states shown separately;
+  otherwise a successful Cloudinary upload can be mistaken for a public catalog
+  approval.
+- Defaulting the desk to “Needs attention,” with title/author/slug search and
+  front/back status chips, keeps the 32-title queue scannable without adding a
+  heavy table or another network waterfall.
+- Accessible file labels, deterministic cover previews, and client-side
+  MIME/size limits provide fast feedback while the backend remains the
+  authoritative validator.
