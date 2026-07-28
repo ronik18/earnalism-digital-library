@@ -752,6 +752,40 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   source proportions are framed as physical jacket boards instead of being
   cropped to manufacture uniformity.
 
+## 2026-07-28 `bn-066` preflight and ASR closeout
+
+- A bare single Bengali digit between literary paragraphs can be a stanza or
+  section marker, not page boilerplate. The factory now treats explicit
+  `পৃষ্ঠা`/`পৃ.` markers and bare three-or-more-digit lines as page artifacts
+  while preserving single-digit Bengali structure.
+- Audiobook-use authorization permits preparation and private QA; it does not
+  approve a public audio release. Public audio remains governed independently
+  by the approved release state, QA status, bound assets, and delivery gates.
+- All 152 retained ASR checkpoints completed, but the raw audio/manuscript
+  score was `0.8403/10` and first/last boundaries failed. Listening QA must not
+  run after that objective failure, and the same audio/provider attempt must
+  not be repeated.
+- The reader stays live and audio stays hidden. The next admissible path is a
+  genuinely different exact source-bound delivery followed by the full gate
+  sequence; no upload, publication, public Listen, or release mutation
+  occurred in this repair.
+
+## 2026-07-28 Pride and Prejudice audiobook-use preflight
+
+- Public-domain text and owner authorization are enough to approve audiobook
+  preparation, but they do not prove that any retained recording may be
+  released.
+- A listening-only lock is not a candidate manifest. Pride's retained Edge,
+  Piper, and enhanced files lack a complete combination of exact recording
+  provenance, source binding, objective ASR/order evidence, measured sync,
+  full listening QA, and downstream delivery proof.
+- Record source/adaptation permission separately from public-audio approval.
+  The provider-free preflight now passes manuscript, rights, and covers and
+  stops at audio reuse because no approved recording is bound. Bind one exact
+  rights-clear recording before spending on listening review.
+- Pride remains reader-live and audio-hidden; no generation, provider call,
+  upload, publication, or release-state mutation occurred.
+
 ## 2026-07-28 Sprint 1 admin cover remediation
 
 - Canonical presence and URL reachability are separate checks: all 42 populated
