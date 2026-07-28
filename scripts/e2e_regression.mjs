@@ -91,9 +91,9 @@ const homeHeroFixture = JSON.parse(
   fs.readFileSync(path.resolve("frontend/src/data/homeCuratedSprint1.json"), "utf8"),
 );
 const homeHeroFixtureBooks = homeHeroFixture.hero.featured_books;
-const expectedHeroVisualSlugs = homeHeroFixture.hero.featured_books
-  .slice(0, 4)
-  .map((book) => book.slug);
+const expectedHeroCarouselBooks = homeHeroFixture.hero.carousel_books;
+const expectedHeroCarouselSlugs = expectedHeroCarouselBooks.map((book) => book.slug);
+const expectedHeroVisualSlugs = expectedHeroCarouselSlugs.slice(0, 4);
 const expectedVisibleShelfCount = homeHeroFixture.shelf_collage.groups
   .filter((group) => Array.isArray(group.books) && group.books.length > 0)
   .length;
@@ -258,11 +258,14 @@ async function main() {
       heroLibraryHref: document.querySelector('[data-testid="hero-cta-library"]')?.getAttribute("href"),
       heroAudiobooksHref: document.querySelector('[data-testid="hero-cta-audiobooks"]')?.getAttribute("href"),
       heroCatalogState: document.querySelector('[data-testid="premium-landing-hero"]')?.getAttribute("data-catalog-state"),
-      heroVisualSlugs: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-book-slug]')]
+      heroVisualSlugs: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-active="true"] [data-book-slug]')]
         .map((card) => card.getAttribute("data-book-slug"))
         .filter(Boolean),
-      heroVisualCoverAlts: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-book-slug] img')]
+      heroVisualCoverAlts: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-active="true"] [data-book-slug] img')]
         .map((image) => image.getAttribute("alt") || ""),
+      heroAllVisualSlugs: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-active] [data-book-slug]')]
+        .map((card) => card.getAttribute("data-book-slug"))
+        .filter(Boolean),
       heroListenLinks: [...document.querySelectorAll('[data-testid="premium-landing-hero"] a[href*="listen=1"]')]
         .map((link) => link.getAttribute("href") || ""),
       hasBengaliClassicsCard: /Bengali Classics/i.test(document.querySelector('[data-testid="curated-action-cards"]')?.textContent || ""),
@@ -323,13 +326,21 @@ async function main() {
   );
   assert(home.heroCatalogState === "ready", `hero catalog state should be ready, got ${home.heroCatalogState}`);
   assert(
+    new Set(expectedHeroCarouselSlugs).size === expectedHeroCarouselSlugs.length,
+    `Sprint 1 hero source contains duplicate slugs: ${JSON.stringify(expectedHeroCarouselSlugs)}`,
+  );
+  assert(
     JSON.stringify(home.heroVisualSlugs) === JSON.stringify(expectedHeroVisualSlugs),
-    `hero visual slugs do not match the canonical reference placements: ${JSON.stringify(home.heroVisualSlugs)}`,
+    `active hero frame must show the first four Sprint 1 books: ${JSON.stringify(home.heroVisualSlugs)}`,
+  );
+  assert(
+    home.heroAllVisualSlugs.every((slug) => expectedHeroCarouselSlugs.includes(slug)),
+    `hero rendered a book outside the Sprint 1 carousel: ${JSON.stringify(home.heroAllVisualSlugs)}`,
   );
   assert(
     home.heroVisualCoverAlts.every((alt, index) => {
       const slug = expectedHeroVisualSlugs[index];
-      const book = [...homeHeroFixtureBooks, ...homeHeroFixture.shelves.approved_audiobooks]
+      const book = [...expectedHeroCarouselBooks, ...homeHeroFixtureBooks, ...homeHeroFixture.shelves.approved_audiobooks]
         .find((candidate) => candidate.slug === slug);
       return alt === `${book?.title} by ${book?.author}`;
     }),

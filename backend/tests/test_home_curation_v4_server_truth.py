@@ -83,9 +83,15 @@ def test_home_curated_route_restores_all_sprint1_readers_and_four_approved_audio
 
     payload = asyncio.run(server.get_home_curated())
 
+    sprint1_slugs = set(server.home_curation_config()["sprint1_active_slugs"])
+    carousel_slugs = [book["slug"] for book in payload["hero"]["carousel_books"]]
     assert payload["source"]["sprint1_active_count"] == 32
     assert payload["source"]["reader_enabled_count"] >= 32
     assert payload["source"]["approved_audiobook_count"] == 4
+    assert carousel_slugs
+    assert set(carousel_slugs) <= sprint1_slugs
+    assert len(carousel_slugs) == len(set(carousel_slugs))
+    assert payload["source"]["catalog_version"] == "home-curated-v4-sprint1-hero"
     assert {
         book["slug"] for book in payload["shelves"]["approved_audiobooks"]
     } == {

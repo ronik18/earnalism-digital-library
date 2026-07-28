@@ -133,15 +133,39 @@ def test_cover_candidates_are_ordered_and_safe():
     assert "sprint_id" not in visible[0]
 
 
-def test_hero_carousel_exposes_every_eligible_reader_cover_in_stable_order():
+def test_hero_carousel_exposes_only_sprint1_reader_covers_in_stable_order():
     books = [book(f"title-{index}", ["short-masterpieces"], rank=index) for index in range(10)]
-    payload = build_home_curated_payload_v4(books)
+    payload = build_home_curated_payload_v4(
+        books,
+        config={
+            "sprint1_active_slugs": [
+                "title-0",
+                "title-2",
+                "title-4",
+                "title-6",
+                "title-8",
+            ]
+        },
+    )
 
     assert [item["slug"] for item in payload["hero"]["carousel_books"]] == [
-        f"title-{index}" for index in range(10)
+        "title-0",
+        "title-2",
+        "title-4",
+        "title-6",
+        "title-8",
     ]
     assert payload["hero"]["featured_books"] == payload["hero"]["carousel_books"][:6]
-    assert payload["source"]["hero_carousel_eligible_count"] == 10
+    assert payload["source"]["hero_carousel_eligible_count"] == 5
+    assert payload["source"]["catalog_version"] == "home-curated-v4-sprint1-hero"
+
+
+def test_hero_carousel_builder_without_cohort_config_fails_closed():
+    books = [book(f"title-{index}", ["short-masterpieces"], rank=index) for index in range(3)]
+    payload = build_home_curated_payload_v4(books)
+
+    assert payload["hero"]["carousel_books"] == []
+    assert payload["source"]["hero_carousel_eligible_count"] == 0
 
 
 def test_hero_carousel_fails_closed_for_invalid_or_editorially_blocked_records():

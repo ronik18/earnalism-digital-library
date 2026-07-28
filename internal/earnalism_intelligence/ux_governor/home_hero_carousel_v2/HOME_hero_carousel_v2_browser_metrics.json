@@ -1,0 +1,90 @@
+{
+  "captured_at": "2026-07-28T08:15:17Z",
+  "scope": "home_hero_carousel_only",
+  "status": "SOURCE_VALIDATED_AWAITING_OWNER_DEPLOYMENT_GATE",
+  "catalog_contract": {
+    "source": "hero.carousel_books",
+    "membership": "configured_sprint1_active_slugs_only",
+    "books_per_frame": 4,
+    "general_shelf_fallback": false,
+    "invalid_or_missing_covers": "fail_closed"
+  },
+  "rendering_contract": {
+    "front_face": "canonical_cover_object_fit_contain",
+    "right_face": "explicit_page_block",
+    "bottom_face": "explicit_page_block",
+    "frame_swap": "decoded_stable_crossfade",
+    "transition_ms": 420,
+    "reduced_motion_disables_autoplay": true
+  },
+  "responsive_metrics": [
+    {
+      "width": 1024,
+      "book_count": 4,
+      "baseline_spread_px": 0.0,
+      "width_spread_px": 0.0079,
+      "clear_gap_px": 5.1326,
+      "clear_gap_spread_px": 0.0,
+      "horizontal_overflow_px": 0
+    },
+    {
+      "width": 1440,
+      "book_count": 4,
+      "baseline_spread_px": 0.0,
+      "width_spread_px": 0.0078,
+      "clear_gap_px": 5.9902,
+      "clear_gap_spread_px": 0.0,
+      "book_height_px": 180.75,
+      "horizontal_overflow_px": 0
+    },
+    {
+      "width": 1920,
+      "book_count": 4,
+      "baseline_spread_px": 0.0,
+      "width_spread_px": 0.0078,
+      "clear_gap_px": 7.306,
+      "clear_gap_spread_px": 0.0002,
+      "horizontal_overflow_px": 0
+    },
+    {
+      "width": 390,
+      "book_count": 4,
+      "baseline_spread_px": 0.0,
+      "width_spread_px": 0.0079,
+      "clear_gap_px": 8.3747,
+      "clear_gap_spread_px": 0.0001,
+      "horizontal_overflow_px": 0
+    },
+    {
+      "width": 430,
+      "book_count": 4,
+      "baseline_spread_px": 0.0,
+      "width_spread_px": 0.0079,
+      "clear_gap_px": 8.3782,
+      "clear_gap_spread_px": 0.0,
+      "horizontal_overflow_px": 0
+    },
+    {
+      "width": 768,
+      "book_count": 4,
+      "baseline_spread_px": 0.0,
+      "width_spread_px": 0.0079,
+      "clear_gap_px": 8.403,
+      "clear_gap_spread_px": 0.0,
+      "horizontal_overflow_px": 0
+    }
+  ],
+  "image_state": {
+    "all_active_images_complete": true,
+    "all_active_images_natural_width_positive": true,
+    "incoming_frame_decoded_before_swap": true
+  },
+  "validation": {
+    "backend_home_curation_tests": "PASS_31",
+    "frontend_related_tests": "PASS_17",
+    "production_build": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "release_truth": "NO_AUDIO_OR_AUDIO_RELEASE_GATE_CHANGE",
+  "production": "NOT_DEPLOYED_NOT_VALIDATED"
+}

@@ -3,13 +3,15 @@ import path from "path";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/components/PremiumHero.jsx"), "utf8");
 const styles = fs.readFileSync(path.join(process.cwd(), "src/components/PremiumHero.css"), "utf8");
+const carouselSource = fs.readFileSync(path.join(process.cwd(), "src/lib/heroCarousel.js"), "utf8");
 const publicIndex = fs.readFileSync(path.join(process.cwd(), "public/index.html"), "utf8");
 
 describe("PremiumHero public contract", () => {
   test("uses dynamic catalog records rather than hardcoded public books", () => {
-    expect(source).toContain("{books.map");
-    expect(source).toContain("hero.carousel_books");
+    expect(source).toContain("{pages.map");
+    expect(carouselSource).toContain("hero?.carousel_books");
     expect(source).toContain("heroCarouselBooks(curation)");
+    expect(carouselSource).not.toContain("[...featured, ...shelfBooks]");
     expect(source).toContain("book.front_cover_url");
     expect(source).toContain("book.cover_alt_text");
     expect(source).toContain("approvedAudiobooks.find");
@@ -103,30 +105,39 @@ describe("PremiumHero public contract", () => {
     expect(styles).toContain("z-index: 3;");
     expect(styles).toContain("z-index: 1;");
     expect(styles).toContain("left: 56.6%;");
-    expect(source).toContain("[0, 1, 2, 3].map");
-    expect(source).toContain("HERO_BOOKS_PER_FRAME = 4");
+    expect(source).toContain("heroCarouselPages");
+    expect(carouselSource).toContain("HERO_BOOKS_PER_FRAME = 4");
     expect(source).not.toContain("premium-reference-slot--reader-cover");
   });
 
-  test("uses a fixed four-book grid with external 3D right spines and explicit no-overlap clearance", () => {
+  test("uses stable decoded four-book frames with uniform explicit 3D jackets", () => {
     expect(source).toContain("premium-reference-catalog-books");
-    expect(styles).toContain("grid-template-columns: 1.02fr 0.98fr 1.02fr 1fr;");
-    expect(styles).toContain("--book-depth: clamp(6px, 0.58vw, 12px);");
-    expect(styles).toContain("--book-clearance: clamp(2px, 0.16vw, 3px);");
+    expect(source).toContain("premium-reference-catalog-track");
+    expect(source).toContain("premium-reference-catalog-frame");
+    expect(source).toContain("preloadHeroPage");
+    expect(source).toContain("image.decode");
+    expect(source).toContain('tabIndex={interactive ? undefined : -1}');
+    expect(source).toContain("premium-book-jacket__right-pages");
+    expect(source).toContain("premium-book-jacket__bottom-pages");
+    expect(styles).toContain("grid-template-columns: repeat(4, minmax(0, 1fr));");
+    expect(styles).toContain("--book-depth: clamp(7px, 0.62vw, 12px);");
+    expect(styles).toContain("--book-clearance: clamp(4px, 0.35vw, 7px);");
     expect(styles).toContain("column-gap: calc(var(--book-depth) + var(--book-clearance));");
     expect(styles).toMatch(
-      /\.premium-reference-slot img\s*\{[\s\S]*?object-fit: cover;/,
+      /\.premium-reference-slot img\s*\{[\s\S]*?object-fit: contain;/,
     );
     expect(styles).toMatch(
-      /\.premium-reference-slot::after\s*\{[\s\S]*?right: calc\(-1 \* var\(--book-depth\)\);[\s\S]*?width: var\(--book-depth\);[\s\S]*?rotateY\(-18deg\);/,
+      /\.premium-reference-slot \.premium-book-jacket__right-pages\s*\{[\s\S]*?right: calc\(-1 \* var\(--book-depth\)\);[\s\S]*?width: var\(--book-depth\);[\s\S]*?rotateY\(-22deg\);/,
     );
     expect(styles).toMatch(
-      /\.premium-reference-slot::before\s*\{[\s\S]*?right: calc\(-0\.92 \* var\(--book-depth\)\);[\s\S]*?clip-path:/,
+      /\.premium-reference-slot \.premium-book-jacket__bottom-pages\s*\{[\s\S]*?right: calc\(-0\.92 \* var\(--book-depth\)\);[\s\S]*?clip-path:/,
     );
-    expect(styles).toContain(".premium-reference-slot > .book-cover-image");
+    expect(styles).toContain(".premium-reference-slot .premium-book-jacket__front");
     expect(styles).toContain("transform-style: preserve-3d;");
-    expect(styles).not.toMatch(/\.premium-reference-slot--desk-1\s*\{[\s\S]*?left:/);
-    expect(styles).not.toMatch(/\.premium-reference-slot--desk-4\s*\{[\s\S]*?left:/);
+    expect(styles).toContain("transition:\n      opacity 420ms");
+    expect(styles).toContain("will-change: opacity, transform;");
+    expect(styles).not.toContain("premium-reference-cover-arrive");
+    expect(source).not.toContain("key={`${pageIndex}-");
   });
 
   test("rotates bounded frames and exposes accessible transparent carousel controls", () => {
@@ -143,8 +154,9 @@ describe("PremiumHero public contract", () => {
   });
 
   test("keeps mobile cover loading light and analytics scoped by surface", () => {
-    expect(source).toContain("eager={index === 0}");
-    expect(source).toContain("calc((100vw - 3.45rem) / 4)");
+    expect(source).toContain("eager={frameIndex === 0 || isNext}");
+    expect(source).toContain("calc((100vw - 4.55rem) / 4)");
+    expect(source).toContain("premium-mobile-covers-frame");
     expect(source).toContain("analyticsNamespace = \"home\"");
     expect(source).toContain("headerMode === \"in-flow\"");
   });
