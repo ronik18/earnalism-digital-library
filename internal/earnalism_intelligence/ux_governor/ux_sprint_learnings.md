@@ -121,3 +121,4 @@
 - A transparent full-stage hit plane can intercept pointer events intended for negative-Z side books. Keep the stage non-interactive and restore pointer events only on the three visible slide wrappers.
 - Cover eligibility must remain consistent across curation versions. Reusing the owner-reviewed visual-cover exclusions reduced the live Sprint 1 hero candidates from 26 to 13 without changing reader, audiobook, or shelf truth.
 - Six-viewport browser evidence passed with exactly three meaningful slides, zero horizontal overflow, zero hidden focus targets, uniform non-overlapping gaps, and 44px touch controls on tablet and mobile.
+- Go-live static assertions must migrate with an intentional component contract. The retired slot selector and per-book perspective string were replaced by checks for the shared coverflow stage, `1100px` perspective, and preserved 3-D context.
