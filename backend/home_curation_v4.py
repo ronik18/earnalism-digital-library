@@ -302,6 +302,29 @@ def _public(book: dict[str, Any]) -> dict[str, Any]:
     return {key: value for key, value in book.items() if key not in hidden}
 
 
+def select_hero_carousel_books(contracts: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Return every reader-safe, canonical-cover title in stable editorial order."""
+    selected: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for book in sorted(contracts, key=selection_key):
+        slug = str(book.get("slug") or "").strip().lower()
+        if (
+            not slug
+            or slug in seen
+            or book.get("reader_enabled") is not True
+            or book.get("cover_valid") is not True
+            or book.get("home_feature_eligible") is False
+            or book.get("do_not_feature") is True
+            or not is_safe_cover_url(book.get("front_cover_url"))
+            or not book.get("book_url")
+            or not book.get("reader_url")
+        ):
+            continue
+        seen.add(slug)
+        selected.append(_public(book))
+    return selected
+
+
 def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: dict[str, Any] | None = None, audio_contracts: dict[str, dict[str, Any]] | None = None, generated_at: str | None = None) -> dict[str, Any]:
     config = config or {}
     contracts = [_book_contract(book, config, (audio_contracts or {}).get(str(book.get("slug") or "").lower())) for book in books]
@@ -344,7 +367,8 @@ def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: di
     listening_items = [_public(book) for book in audio_visible]
     listening_reserve = [_public(book) for book in audio_reserve]
     groups = [{key: item[key] for key in ("id", "title", "description", "theme_chips", "cta_label", "cta_url", "layout_area", "accent", "total_count", "display_mode", "visible_books", "reserve_books", "books")} for item in literary_shelves if item["total_count"]]
-    featured = [_public(book) for book in sorted((book for book in contracts if book.get("cover_valid") is True), key=selection_key)[:6]]
+    carousel_books = select_hero_carousel_books(contracts)
+    featured = carousel_books[:6]
     return {
         "literary_shelves": literary_shelves,
         "audiobook_shelf": audiobook_shelf if audio_candidates else None,
@@ -360,6 +384,7 @@ def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: di
             "primary_cta": {"label": "Start Reading", "url": "/library"},
             "secondary_cta": {"label": "Explore Audiobooks", "url": "/library?availability=approved-audiobook"},
             "featured_books": featured,
+            "carousel_books": carousel_books,
         },
         "shelves": {"approved_audiobooks": listening_items},
         "groups": groups,
@@ -372,6 +397,7 @@ def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: di
             "sprint1_active_count": sum(slug in contract_by_slug for slug in sprint1_slugs),
             "audiobook_count": len(audio_candidates),
             "approved_audiobook_count": len(audio_candidates),
+            "hero_carousel_eligible_count": len(carousel_books),
             "catalog_version": "home-curated-v4",
         },
     }

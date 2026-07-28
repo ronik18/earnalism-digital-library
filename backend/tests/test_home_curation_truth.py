@@ -18,6 +18,7 @@ DEFERRED_AUDIO_SLUGS = {"great-expectations", "jane-eyre"}
 
 def all_payload_books(payload):
     books = list(payload["hero"]["featured_books"])
+    books.extend(payload["hero"]["carousel_books"])
     for shelf in payload["shelves"].values():
         books.extend(shelf)
     return books
@@ -25,6 +26,7 @@ def all_payload_books(payload):
 
 def visual_payload_books(payload):
     books = list(payload["hero"]["featured_books"])
+    books.extend(payload["hero"]["carousel_books"])
     books.extend(payload["shelves"].get("reader_favorites", []))
     books.extend(payload["shelves"].get("bengali_classics", []))
     books.extend(payload["shelves"].get("english_classics", []))
@@ -43,12 +45,16 @@ def test_home_curated_payload_is_deterministic_and_tracks_32_reader_titles():
         "truth_source": "controlled_publications",
         "sprint1_active_count": 32,
         "reader_enabled_count": 32,
-            "approved_audiobook_count": 4,
+        "approved_audiobook_count": 4,
         "cover_eligible_count": 13,
+        "hero_carousel_eligible_count": 13,
         "omitted_visual_count": 19,
     }
     assert first["hero"]["primary_cta"] == {"label": "Start Reading", "url": "/library"}
     assert first["hero"]["secondary_cta"]["url"] == "/library?availability=approved-audiobook"
+    assert len(first["hero"]["carousel_books"]) == first["source"]["hero_carousel_eligible_count"]
+    assert all(book["reader_enabled"] is True for book in first["hero"]["carousel_books"])
+    assert all(is_safe_cover_url(book["front_cover_url"]) for book in first["hero"]["carousel_books"])
 
 
 def test_featured_books_are_the_exact_admin_pinned_canonical_records():

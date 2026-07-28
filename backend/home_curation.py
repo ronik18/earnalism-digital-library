@@ -395,6 +395,7 @@ def build_home_curated_payload(
         if is_safe_cover_url(book.get("front_cover_url")) and book.get("cover_valid") is True
     ]
     featured = select_curated_books(cover_ready, _rank_value(limits.get("featured_books"), 6))
+    carousel_books = select_curated_books(cover_ready, len(cover_ready))
     reader_favorites = select_curated_books(cover_ready, _rank_value(limits.get("reader_favorites"), 10))
     bengali = select_curated_books(
         (book for book in cover_ready if book.get("language") == "bn"),
@@ -420,6 +421,7 @@ def build_home_curated_payload(
                 "url": "/library?availability=approved-audiobook",
             },
             "featured_books": [_public_book(book) for book in featured],
+            "carousel_books": [_public_book(book) for book in carousel_books],
         },
         "shelves": {
             "reader_favorites": [_public_book(book) for book in reader_favorites],
@@ -440,6 +442,7 @@ def build_home_curated_payload(
             "reader_enabled_count": sum(book.get("reader_enabled") is True for book in contracts),
             "approved_audiobook_count": sum(book.get("audiobook_enabled") is True for book in contracts),
             "cover_eligible_count": len(cover_ready),
+            "hero_carousel_eligible_count": len(carousel_books),
             "omitted_visual_count": len(omitted),
         },
     }

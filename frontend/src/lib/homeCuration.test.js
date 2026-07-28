@@ -10,6 +10,24 @@ test("curation removes duplicate or coverless books", () => {
   expect(result.shelves[0].mode).toBe("Spotlight");
 });
 
+test("hero carousel books are canonical-cover normalized and deduplicated", () => {
+  const result = normalizeHomeCuration({
+    hero: {
+      featured_books: [],
+      carousel_books: [
+        { slug: "a", title: "A", author: "Author", front_cover_url: "/a", reader_enabled: true },
+        { slug: "a", title: "Duplicate", author: "Author", front_cover_url: "/duplicate", reader_enabled: true },
+        { slug: "blocked", title: "Blocked", author: "Author", front_cover_url: "/blocked", cover_valid: false },
+        { slug: "coverless", title: "Coverless", author: "Author" },
+      ],
+    },
+  });
+
+  expect(result.hero.carousel_books.map((book) => book.slug)).toEqual(["a"]);
+  expect(result.hero.carousel_books[0].book_url).toBe("/book/a");
+  expect(result.hero.carousel_books[0].cover_alt_text).toBe("A by Author");
+});
+
 test("bundled release snapshot keeps truthful hero books available before the runtime request resolves", () => {
   const snapshot = getHomeCurationSnapshot();
   expect(snapshot.source.truth_source).toBe("bundled_sprint1_release_snapshot");
@@ -20,4 +38,5 @@ test("bundled release snapshot keeps truthful hero books available before the ru
       && book.is_placeholder !== true
       && Boolean(book.front_cover_url)
   ))).toBe(true);
+  expect(snapshot.hero.carousel_books.length).toBeGreaterThanOrEqual(4);
 });
