@@ -1,0 +1,115 @@
+{
+  "schema_version": "earnalism.pride_chatterbox_v3_private_pilot_closeout.v1",
+  "generated_at": "2026-07-28T13:30:34Z",
+  "slug": "pride-and-prejudice",
+  "title": "Pride and Prejudice",
+  "author": "Jane Austen",
+  "status": "CHATTERBOX_V3_ATTEMPT_CLOSED_OBJECTIVE_FAIL_AUDIO_HIDDEN",
+  "policy": {
+    "path": "internal/audiobook_lab/sprint1_publication/title_runs/pride-and-prejudice_chatterbox_v3_private_pilot_policy.json",
+    "sha256": "f1cb28a41004bc49e9796bc91cbc584f94fb361837afbd9d74b277ab73e38540",
+    "decision": "AUTHORIZE_ONE_PRIVATE_CHATTERBOX_V3_BUILTIN_CONDS_SAMPLE"
+  },
+  "source": {
+    "chapter_path": "data/controlled_publications/pride-and-prejudice/chapters/chapter-001.json",
+    "chapter_file_sha256": "e85732d1acfa4e879992bf65d7244a6e0faa3b29f2ad2958d0c0dedb2cb72fba",
+    "canonical_source_sha256": "fcf234e0476cc6af8b3f604399bf3d7c4b72931bdf2af276ab4cc78caf938d5c",
+    "passage_id": "chapter-001-dialogue-01",
+    "passage_text_sha256": "e51782a522b817e8c1e116fdbffd2841a3327e44ad7c16dd655e5ae2b235680b",
+    "passage_characters": 235
+  },
+  "attempt": {
+    "attempt_fingerprint": "1658048f26f8b9ce51c3ff378db4a5be2bc72032157792dd39b40d5a586e9a05",
+    "fingerprint_status": "CONSUMED_AND_CLOSED_DO_NOT_REPEAT",
+    "model_id": "ResembleAI/chatterbox",
+    "model_revision": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+    "runtime_package": "chatterbox-tts",
+    "runtime_version": "0.1.7",
+    "runtime_source_revision": "5de7a54aa4e5e2baadb0182dde554908b48b85c2",
+    "loader": "ChatterboxMultilingualTTS.from_local",
+    "voice_kind": "MODEL_BUILTIN_CONDITIONAL_NO_EXTERNAL_REFERENCE",
+    "external_reference_audio_used": false,
+    "audio_prompt_path_used": false,
+    "model_file_hashes_bound_by_policy": true
+  },
+  "private_media": {
+    "audio_sha256": "52f5bfca9253ab29071236ea418a70ebae99d9ada07b83ff9466e77ff596aaf4",
+    "audio_size_bytes": 1013840,
+    "duration_seconds": 10.56,
+    "sample_rate_hz": 24000,
+    "channels": 1,
+    "clipped_sample_fraction": 0.0,
+    "objective_format_pass": true,
+    "audio_bytes_persisted_in_repository": false,
+    "pilot_report_sha256": "b325291a98ec24ffd7eb861020e6a0ea65c67ea9f1a2b942738753fa857ec698",
+    "small_en_adjudication_sha256": "3df6a0e828d86872bddcf8fac118a09051141a5a81a995a470434af39baab748"
+  },
+  "objective_qa": {
+    "required_asr_source_score": 9.7,
+    "required_coverage": 0.98,
+    "medium_en": {
+      "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "score": 9.7872,
+      "coverage": 0.9787,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": false,
+      "word_timestamp_evidence_valid": true,
+      "missing_tokens": {
+        "long": 1
+      },
+      "unexpected_tokens": {
+        "wong": 1
+      },
+      "status": "FAIL"
+    },
+    "small_en_independent_adjudication": {
+      "model_sha256": "f953ad0fd29cacd07d5a9eda5624af0f6bcf2258be67c92b79389873d91e0872",
+      "source_blind": true,
+      "score": 9.7872,
+      "coverage": 0.9787,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": false,
+      "word_timestamp_evidence_valid": true,
+      "missing_tokens": {
+        "long": 1
+      },
+      "unexpected_tokens": {
+        "wong": 1
+      },
+      "status": "FAIL"
+    },
+    "adjudication": "INDEPENDENT_DECODERS_AGREE_LONG_WAS_RENDERED_OR_DECODED_AS_WONG",
+    "listening_qa_status": "NOT_RUN_OBJECTIVE_GATE_FAILED"
+  },
+  "runtime_prerequisites_learned": [
+    "Cangjie5_TC.json must be present in the offline model cache even for the bounded English path.",
+    "The PKUSEG resource required by the pinned runtime must be available locally before network-disabled execution.",
+    "Use setuptools below version 81 so the PerTh watermark dependency retains its required pkg_resources compatibility."
+  ],
+  "release_truth": {
+    "release_ready": false,
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "controlled_catalog_mutated": false,
+    "paid_tts_lock_access": "READ_ONLY",
+    "paid_tts_lock_sha256_before": "2d3566eca79343cd894c3bea87f56dd6ab7cb6a21fbbedad05565bbf4be84152",
+    "paid_tts_lock_sha256_after": "2d3566eca79343cd894c3bea87f56dd6ab7cb6a21fbbedad05565bbf4be84152",
+    "paid_tts_lock_unchanged": true
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_OBJECTIVE_COVERAGE_BELOW_0_98",
+    "ORDERED_CONTENT_INTEGRITY_FAILED",
+    "MISSING_CANONICAL_TOKEN_LONG",
+    "UNEXPECTED_TOKEN_WONG",
+    "LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_AUTHORIZED_OR_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_MISSING",
+    "UPLOAD_ENDPOINT_AND_BROWSER_GATES_MISSING"
+  ],
+  "decision": "Close this exact Chatterbox V3 fingerprint. A score above 9.7 does not override coverage below 0.98 or a confirmed canonical-name substitution.",
+  "next_exact_command": "Keep Pride and Prejudice audio hidden. Do not repeat attempt fingerprint 1658048f26f8b9ce51c3ff378db4a5be2bc72032157792dd39b40d5a586e9a05; require one genuinely different exact source-bound delivery before rerunning objective QA."
+}

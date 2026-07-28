@@ -843,3 +843,26 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   original repaired build only if provenance and source binding can be
   restored; otherwise use a new rights-clear exact source-bound delivery and
   rerun every release gate.
+
+## 2026-07-28 — Pride Chatterbox V3 bounded pilot closed on canonical-name fidelity
+
+- The pinned local Chatterbox V3 path works offline with the model-bundled
+  `conds.pt`, no external reference recording, and no `audio_prompt_path`.
+  The resulting private 24 kHz mono WAV was valid and unclipped; its SHA-256 is
+  `52f5bfca9253ab29071236ea418a70ebae99d9ada07b83ff9466e77ff596aaf4`.
+- A high aggregate number is not sufficient evidence. Both `medium.en` and an
+  independent source-blind `small.en` adjudication scored `9.7872` with
+  `0.9787` coverage and agreed on the same `Long` to `Wong` substitution.
+  Coverage therefore missed the strict `0.98` floor and ordered-content
+  integrity failed.
+- Listening QA was correctly skipped because it cannot repair missing or
+  unexpected manuscript content. Fingerprint
+  `1658048f26f8b9ce51c3ff378db4a5be2bc72032157792dd39b40d5a586e9a05`
+  is consumed and closed; Pride remains reader-live and audio-hidden.
+- A reproducible network-disabled Chatterbox environment also needs the
+  `Cangjie5_TC.json` tokenizer file cached locally, the PKUSEG resource
+  available offline, and `setuptools<81` for PerTh's current
+  `pkg_resources` compatibility.
+- No upload, public metadata or release-gate mutation, publication, or paid
+  lock mutation occurred. The next admissible path is one genuinely different
+  exact source-bound delivery followed by the complete objective gate sequence.
