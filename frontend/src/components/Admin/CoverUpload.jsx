@@ -127,7 +127,7 @@ export default function CoverUpload({
               <div className="mt-1 text-[0.72rem] text-charcoal-soft">Uploading… {progress}%</div>
             </div>
           )}
-          {status === "done" && <div className="mt-2 text-[0.72rem] text-burgundy">Cover saved and optimized.</div>}
+          {status === "done" && <div className="mt-2 text-[0.72rem] text-burgundy">Cover uploaded for canonical review.</div>}
           {status === "error" && <div className="mt-2 text-[0.72rem] text-burgundy">{error}</div>}
         </div>
       </div>

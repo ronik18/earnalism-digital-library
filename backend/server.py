@@ -23,7 +23,7 @@ import resource
 import bcrypt
 import jwt
 import unicodedata
-from collections import OrderedDict, defaultdict, deque
+from collections import Counter, OrderedDict, defaultdict, deque
 from datetime import datetime, timezone, timedelta
 from typing import Any, Deque, Dict, List, Optional, Tuple
 from urllib.parse import unquote, urlencode, urlparse
@@ -92,6 +92,19 @@ try:
     from config.brand_logo import validate_brand_logo
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.config.brand_logo import validate_brand_logo
+
+try:
+    from config.book_cover import (
+        build_private_cover_candidate,
+        canonical_cover_kind,
+        validate_book_cover,
+    )
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.config.book_cover import (
+        build_private_cover_candidate,
+        canonical_cover_kind,
+        validate_book_cover,
+    )
 
 
 # ---------- Environment / DB ----------
@@ -2520,8 +2533,6 @@ async def _process_docx_upload(
             return None
         cover_body = await file.read()
         try:
-            from config.book_cover import validate_book_cover  # type: ignore
-
             validate_book_cover(
                 cover_body,
                 file.content_type or "",
@@ -5220,20 +5231,34 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
             "author": 1,
             "language": 1,
             "language_code": 1,
-            "cover_url": 1,
-            "cover_image_url": 1,
-            "thumbnail_url": 1,
-            "back_cover_url": 1,
-            "back_cover_image_url": 1,
-            "back_cover_thumbnail_url": 1,
-            "cover_audit_status": 1,
-            "back_cover_audit_status": 1,
         },
     ).to_list(max(1, len(slugs)))
+    candidate_docs = await db.book_cover_candidates.find(
+        {"slug": {"$in": slugs}},
+        {
+            "_id": 0,
+            "slug": 1,
+            "kind": 1,
+            "candidate_url": 1,
+            "candidate_thumbnail_url": 1,
+            "audit_status": 1,
+            "updated_at": 1,
+            "updated_by": 1,
+        },
+    ).to_list(max(1, len(slugs) * 2))
     admin_by_slug = {
         str(book.get("slug") or "").strip().lower(): book
         for book in admin_docs
         if str(book.get("slug") or "").strip()
+    }
+    candidate_by_side = {
+        (
+            str(candidate.get("slug") or "").strip().lower(),
+            str(candidate.get("kind") or "").strip().lower(),
+        ): candidate
+        for candidate in candidate_docs
+        if str(candidate.get("slug") or "").strip()
+        and str(candidate.get("kind") or "").strip().lower() in {"front", "back"}
     }
     curation_books = config.get("books") if isinstance(config.get("books"), dict) else {}
     rows: list[dict[str, Any]] = []
@@ -5241,6 +5266,8 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
     for slug in slugs:
         artifact = load_controlled_artifact_book(slug, include_content=False) or {}
         admin_book = admin_by_slug.get(slug) or {}
+        front_candidate = candidate_by_side.get((slug, "front")) or {}
+        back_candidate = candidate_by_side.get((slug, "back")) or {}
         curation = curation_books.get(slug) if isinstance(curation_books.get(slug), dict) else {}
         canonical_front = str(
             artifact.get("front_cover_url")
@@ -5255,18 +5282,8 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
             or artifact.get("back_cover_thumbnail_url")
             or ""
         ).strip()
-        admin_front = str(
-            admin_book.get("cover_url")
-            or admin_book.get("cover_image_url")
-            or admin_book.get("thumbnail_url")
-            or ""
-        ).strip()
-        admin_back = str(
-            admin_book.get("back_cover_url")
-            or admin_book.get("back_cover_image_url")
-            or admin_book.get("back_cover_thumbnail_url")
-            or ""
-        ).strip()
+        admin_front = str(front_candidate.get("candidate_url") or "").strip()
+        admin_back = str(back_candidate.get("candidate_url") or "").strip()
         exclusion_reason = str(curation.get("feature_exclusion_reason") or "").strip()
         semantic_mismatch = bool(
             curation.get("do_not_feature") is True
@@ -5555,6 +5572,15 @@ def _ensure_cloudinary():
     _CLOUDINARY_INITIALIZED = True
 
 
+def _process_book_cover_candidate(body: bytes, asset_id: str, *, kind: str) -> dict:
+    """Upload a uniquely namespaced review candidate without replacing canonical art."""
+    try:
+        from utils.content_processor import process_book_cover  # type: ignore
+    except ImportError:  # pragma: no cover - supports package-style test imports
+        from backend.utils.content_processor import process_book_cover  # type: ignore
+    return process_book_cover(body, asset_id, kind=kind)
+
+
 _ALLOWED_COVER_TYPES = {"image/jpeg", "image/png", "image/webp"}
 _ALLOWED_CHAPTER_EXTS = {"docx", "md", "markdown", "html", "txt"}
 
@@ -5574,12 +5600,6 @@ async def admin_upload_cover(
     )
     async with _expensive_job_slot("admin_cover_uploads"):
         try:
-            from config.book_cover import (  # type: ignore
-                build_cover_update_fields,
-                canonical_cover_kind,
-                validate_book_cover,
-            )
-
             cover_kind = canonical_cover_kind(kind)
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc))
@@ -5596,30 +5616,29 @@ async def admin_upload_cover(
         _assert_public_rights_approved(book, "Visual asset")
         _ensure_cloudinary()
         try:
-            from utils.content_processor import process_book_cover  # type: ignore
+            candidate_asset_id = f"candidate_{book.get('id') or slug}"
+            result = _process_book_cover_candidate(
+                body,
+                candidate_asset_id,
+                kind=cover_kind,
+            )
         except Exception as e:
-            raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
-        status_field = "back_cover_processing_status" if cover_kind == "back" else "cover_processing_status"
-        error_field = "back_cover_processing_error" if cover_kind == "back" else "cover_processing_error"
-        await db.books.update_one({"slug": slug}, {"$set": {status_field: "processing", error_field: ""}})
-        try:
-            result = process_book_cover(body, book.get("id") or slug, kind=cover_kind)
-        except Exception as e:
-            await db.books.update_one({"slug": slug}, {"$set": {status_field: "failed", error_field: str(e)}})
             raise HTTPException(status_code=400, detail=f"Cover processing failed: {e}")
 
         updated_at = now_iso()
         updated_by = str(admin.get("email") or admin.get("sub") or "admin")[:180]
-        fields = build_cover_update_fields(
+        candidate = build_private_cover_candidate(
+            slug,
             cover_kind,
             result,
             validation,
             updated_at=updated_at,
             updated_by=updated_by,
         )
-        await db.books.update_one(
-            {"slug": slug},
-            {"$set": fields},
+        await db.book_cover_candidates.update_one(
+            {"_id": f"{str(slug or '').strip().lower()}:{cover_kind}"},
+            {"$set": candidate},
+            upsert=True,
         )
         await db.admin_upload_audit.insert_one(
             {

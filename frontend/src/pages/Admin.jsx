@@ -564,6 +564,7 @@ function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
     ...book,
     benefits: lines(book.benefits), who_for: lines(book.who_for), learnings: lines(book.learnings), formats: lines(book.formats || ["Paperback", "Ebook"]),
   });
+  const [pendingCoverUrls, setPendingCoverUrls] = useState({ front: "", back: "" });
   const [docxTemplate, setDocxTemplate] = useState(null);
   const [frontCoverFile, setFrontCoverFile] = useState(null);
   const [backCoverFile, setBackCoverFile] = useState(null);
@@ -804,23 +805,23 @@ function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
               <CoverUpload
                 bookId={book.slug}
                 kind="front"
-                currentUrl={f.cover_image_url || f.cover_url}
+                currentUrl={pendingCoverUrls.front || f.cover_image_url || f.cover_url}
                 bookTitle={f.title}
                 bookAuthor={f.author}
                 onSuccess={(data) => {
-                  setF((prev) => ({ ...prev, cover_image_url: data.cover_url, cover_url: data.cover_url, thumbnail_url: data.thumbnail_url, cover_processing_status: "ready", cover_processing_error: "" }));
-                  toast.success("Front cover uploaded");
+                  setPendingCoverUrls((current) => ({ ...current, front: data.cover_url }));
+                  toast.success("Front cover uploaded for canonical review");
                 }}
               />
               <CoverUpload
                 bookId={book.slug}
                 kind="back"
-                currentUrl={f.back_cover_image_url || f.back_cover_url}
+                currentUrl={pendingCoverUrls.back || f.back_cover_image_url || f.back_cover_url}
                 bookTitle={f.title}
                 bookAuthor={f.author}
                 onSuccess={(data) => {
-                  setF((prev) => ({ ...prev, back_cover_image_url: data.cover_url, back_cover_url: data.cover_url, back_cover_thumbnail_url: data.thumbnail_url, back_cover_processing_status: "ready", back_cover_processing_error: "" }));
-                  toast.success("Back cover uploaded");
+                  setPendingCoverUrls((current) => ({ ...current, back: data.cover_url }));
+                  toast.success("Back cover uploaded for canonical review");
                 }}
               />
             </div>

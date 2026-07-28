@@ -26,6 +26,10 @@ describe("admin Sprint 1 cover desk", () => {
     expect(uploadSource).toContain('api.post(`/admin/books/${bookId}/cover`');
     expect(uploadSource).toContain("confirm_expensive_job: true");
     expect(uploadSource).toContain('"aria-label": `Upload ${label.toLowerCase()} image`');
+    expect(uploadSource).toContain("Cover uploaded for canonical review.");
+    expect(adminSource).toContain("setPendingCoverUrls");
+    expect(adminSource).not.toContain("cover_image_url: data.cover_url");
+    expect(adminSource).not.toContain("back_cover_image_url: data.cover_url");
     expect(uploadSource).not.toContain("axios.post");
     expect(uploadSource).not.toContain("TOKEN_KEY");
     expect(uploadSource).not.toContain("image/gif");
