@@ -23,6 +23,39 @@ class EnglishListeningQATests(unittest.TestCase):
             audio.write_bytes(b"audio-" + passage_id.encode())
             samples.append({"passage_id": passage_id, "audio_path": str(audio), "audio_sha256": qa.sha256_file(audio)})
         self.evidence = self.root / "pending.json"
+        self.objective = self.root / "objective_report.json"
+        objective_reports = [
+            {
+                "passage_id": item["passage_id"],
+                "source_text_sha256": "source-" + item["passage_id"],
+                "audio_sha256": item["audio_sha256"],
+                "ordered_content_integrity_pass": True,
+                "word_timestamp_evidence_valid": True,
+                "pass": True,
+            }
+            for item in samples
+        ]
+        for sample, objective_sample in zip(samples, objective_reports):
+            sample["source_text_sha256"] = objective_sample["source_text_sha256"]
+        objective_payload = {
+            "schema_version": "earnalism.google_english_representative_objective_qa.v1",
+            "status": "REPRESENTATIVE_OBJECTIVE_PASS_LISTENING_INPUT_READY",
+            "slug": "sample",
+            "source_sha256": "a" * 64,
+            "input_manifest_sha256": "b" * 64,
+            "audition_fingerprint": "c" * 64,
+            "audition_manifest_sha256": qa.sha256_file(self.manifest),
+            "audition_evidence_sha256": "d" * 64,
+            "objective_pass": True,
+            "objective_asr": {"status": "PASS", "reports": objective_reports},
+            "listening_qa_called": False,
+            "provider_calls_made": False,
+            "upload_performed": False,
+            "publication_performed": False,
+            "release_mutation_performed": False,
+            "paid_lock_read_or_written": False,
+        }
+        self.objective.write_text(json.dumps(objective_payload), encoding="utf-8")
         self.evidence.write_text(
             json.dumps(
                 {
@@ -30,8 +63,14 @@ class EnglishListeningQATests(unittest.TestCase):
                     "slug": "sample",
                     "title": "Sample",
                     "source_sha256": "a" * 64,
+                    "input_manifest_sha256": "b" * 64,
+                    "audition_fingerprint": "c" * 64,
                     "audition_manifest_path": str(self.manifest),
                     "audition_manifest_sha256": qa.sha256_file(self.manifest),
+                    "audition_evidence_sha256": "d" * 64,
+                    "objective_gate_status": "PASS",
+                    "objective_report_path": str(self.objective),
+                    "objective_report_sha256": qa.sha256_file(self.objective),
                     "required_passages": [item["passage_id"] for item in samples],
                     "minimum_listening_score": 8.9,
                     "minimum_listening_confidence": 0.9,
@@ -195,6 +234,33 @@ class EnglishListeningQATests(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertFalse(result["provider_calls_ran"])
         self.assertEqual(calls, [])
+
+    def test_stale_objective_hash_blocks_before_judge(self) -> None:
+        payload = json.loads(self.objective.read_text(encoding="utf-8"))
+        payload["objective_pass"] = False
+        self.objective.write_text(json.dumps(payload), encoding="utf-8")
+        calls = []
+
+        def judge(*args):
+            calls.append(args)
+            return {}
+
+        with self.assertRaisesRegex(ValueError, "hash-mismatched"):
+            qa.evaluate(
+                self.evidence,
+                self.output,
+                env=self.env,
+                judge=judge,
+                client=object(),
+            )
+        self.assertEqual(calls, [])
+
+    def test_objective_fail_binding_blocks_before_judge(self) -> None:
+        evidence = json.loads(self.evidence.read_text(encoding="utf-8"))
+        evidence["objective_gate_status"] = "FAIL"
+        self.evidence.write_text(json.dumps(evidence), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "objective PASS"):
+            qa.load_evidence(self.evidence)
 
 
 if __name__ == "__main__":

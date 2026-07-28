@@ -10,6 +10,7 @@ from types import SimpleNamespace
 
 import pytest
 from PIL import Image
+from fastapi.testclient import TestClient
 
 os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
 os.environ.setdefault("JWT_SECRET", "admin-cover-upload-test-secret")
@@ -344,6 +345,207 @@ def test_pending_candidate_is_private_across_all_public_book_surfaces(monkeypatc
     assert manifest["audio"]["enabled"] is True
     assert manifest["audio"]["release_gate"] == "APPROVED"
     assert manifest["audio"]["qa_status"] == "QA_PASSED"
+
+
+def test_controlled_only_jekyll_can_upload_without_seeding_public_mongo(monkeypatch):
+    slug = "jekyll-and-hyde"
+    canonical = catalog_truth.load_controlled_artifact_book(slug, include_content=False)
+    assert canonical is not None
+    assert catalog_truth.can_expose_reader(canonical) is True
+
+    books = ImmutableBooks([])
+    private_candidates = PrivateCoverCandidates()
+    audits = AuditCollection()
+    fake_db = SimpleNamespace(
+        books=books,
+        book_cover_candidates=private_candidates,
+        admin_upload_audit=audits,
+        categories=EmptyCollection(),
+        settings=EmptyCollection(),
+    )
+    private_url = "https://res.cloudinary.com/demo/image/upload/jekyll-private-front.png"
+    private_result = {
+        **upload_result(),
+        "cover_url": private_url,
+        "srcset": f"{private_url} 1x",
+    }
+
+    monkeypatch.setattr(server, "db", fake_db)
+    monkeypatch.setattr(server, "_ensure_cloudinary", lambda: None)
+    monkeypatch.setattr(
+        server,
+        "_process_book_cover_candidate",
+        lambda _body, asset_id, *, kind: (
+            private_result
+            if asset_id == "candidate_controlled-jekyll-and-hyde" and kind == "front"
+            else pytest.fail("Controlled-only cover candidate used the wrong asset namespace.")
+        ),
+    )
+    monkeypatch.setattr(server, "_public_cache_get", no_cache)
+    monkeypatch.setattr(server, "_public_cache_set", no_cache)
+    monkeypatch.setattr(server, "_redis_cache_get", no_cache)
+    monkeypatch.setattr(server, "_redis_cache_set", no_cache)
+
+    status_before = asyncio.run(
+        server.admin_list_book_cover_status(
+            _={"sub": "owner-1", "email": "owner@example.com"}
+        )
+    )
+    row_before = next(book for book in status_before["books"] if book["slug"] == slug)
+    assert row_before["admin_book_exists"] is False
+    assert row_before["upload_eligibility_source"] == "controlled_publication"
+    assert row_before["can_upload"] is True
+    assert row_before["front_status"] == "MISSING"
+
+    response = asyncio.run(
+        server.admin_upload_cover(
+            slug=slug,
+            kind="front",
+            confirm_expensive_job=True,
+            file=FakeUpload(image_bytes()),
+            admin={"sub": "owner-1", "email": "owner@example.com"},
+        )
+    )
+
+    assert response["success"] is True
+    assert response["upload_eligibility_source"] == "controlled_publication"
+    assert response["cover_url"] == private_url
+    assert books.docs == []
+    candidate = private_candidates.docs[f"{slug}:front"]
+    assert candidate["candidate_url"] == private_url
+    assert candidate["audit_status"] == "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW"
+    assert audits.docs[0]["slug"] == slug
+    assert audits.docs[0]["upload_eligibility_source"] == "controlled_publication"
+
+    status_after = asyncio.run(
+        server.admin_list_book_cover_status(
+            _={"sub": "owner-1", "email": "owner@example.com"}
+        )
+    )
+    row_after = next(book for book in status_after["books"] if book["slug"] == slug)
+    assert row_after["front_status"] == "UPLOADED_PENDING_CANONICAL_REVIEW"
+    assert row_after["admin_front_cover_url"] == private_url
+    assert row_after["canonical_front_cover_url"] != private_url
+
+    public_payloads = {
+        "/api/books": asyncio.run(server.list_books()),
+        f"/api/books/{slug}": asyncio.run(server.get_book(slug)),
+        "/api/home": asyncio.run(server.get_home_payload()),
+        "/api/home/curated": asyncio.run(server.get_home_curated()),
+        f"/api/reader/book/{slug}/manifest": asyncio.run(
+            server._reader_book_manifest_doc(slug)
+        ),
+    }
+    for route, payload in public_payloads.items():
+        assert private_url not in json.dumps(payload, ensure_ascii=False), route
+
+    detail = public_payloads[f"/api/books/{slug}"]
+    manifest = public_payloads[f"/api/reader/book/{slug}/manifest"]
+    assert detail["reader_enabled"] is True
+    assert detail["audio_enabled"] is False
+    assert manifest["book"]["reader_enabled"] is True
+    assert manifest["audio"]["enabled"] is False
+
+
+def test_admin_cover_upload_rejects_missing_authentication():
+    client = TestClient(server.app)
+    response = client.post(
+        "/api/admin/books/jekyll-and-hyde/cover",
+        params={"kind": "front", "confirm_expensive_job": "true"},
+        files={"file": ("front.png", image_bytes(), "image/png")},
+    )
+
+    assert response.status_code == 401
+    assert response.json()["detail"] == "Not authenticated"
+
+
+def test_admin_cover_upload_rejects_disabled_intake_before_reading_file(monkeypatch):
+    class UnreadableUpload:
+        async def read(self):
+            raise AssertionError("Disabled cover intake must stop before reading a file.")
+
+    monkeypatch.setattr(server, "ENABLE_ADMIN_COVER_UPLOADS", False)
+
+    with pytest.raises(server.HTTPException) as exc_info:
+        asyncio.run(
+            server.admin_upload_cover(
+                slug="jekyll-and-hyde",
+                kind="front",
+                confirm_expensive_job=True,
+                file=UnreadableUpload(),
+                admin={"sub": "owner-1", "email": "owner@example.com"},
+            )
+        )
+
+    assert exc_info.value.status_code == 503
+    assert "admin_cover_uploads is disabled" in str(exc_info.value.detail)
+
+
+def test_controlled_only_cover_upload_rejects_unapproved_rights(monkeypatch):
+    slug = "jekyll-and-hyde"
+    private_candidates = PrivateCoverCandidates()
+    audits = AuditCollection()
+    fake_db = SimpleNamespace(
+        books=ImmutableBooks([]),
+        book_cover_candidates=private_candidates,
+        admin_upload_audit=audits,
+    )
+    unapproved = {
+        "id": "controlled-jekyll-and-hyde",
+        "slug": slug,
+        "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+        "author": "Robert Louis Stevenson",
+        "is_published": True,
+        "approved_to_publish": False,
+        "rights_tier": "C",
+        "verification_status": "blocked",
+        "qa_status": "QA_PASSED",
+        "source_hash": "a" * 64,
+        "content_hash": "b" * 64,
+        "provenance_hash": "c" * 64,
+        "source_url": "https://example.invalid/source",
+        "source_name": "Unapproved source",
+        "source_license": "unknown",
+    }
+
+    monkeypatch.setattr(server, "db", fake_db)
+    monkeypatch.setattr(
+        server,
+        "load_controlled_artifact_book",
+        lambda requested_slug, include_content=False: (
+            unapproved if requested_slug == slug and include_content is False else None
+        ),
+    )
+    monkeypatch.setattr(
+        server,
+        "_ensure_cloudinary",
+        lambda: pytest.fail("Rights rejection must occur before Cloudinary setup."),
+    )
+    monkeypatch.setattr(
+        server,
+        "_process_book_cover_candidate",
+        lambda *_args, **_kwargs: pytest.fail(
+            "Rights rejection must occur before candidate upload."
+        ),
+    )
+
+    with pytest.raises(server.HTTPException) as exc_info:
+        asyncio.run(
+            server.admin_upload_cover(
+                slug=slug,
+                kind="front",
+                confirm_expensive_job=True,
+                file=FakeUpload(image_bytes()),
+                admin={"sub": "owner-1", "email": "owner@example.com"},
+            )
+        )
+
+    assert exc_info.value.status_code == 400
+    assert exc_info.value.detail["message"] == (
+        "Visual asset cannot be uploaded without an approved controlled publication."
+    )
+    assert private_candidates.docs == {}
+    assert audits.docs == []
 
 
 def test_persisted_sprint1_inventory_matches_the_32_title_contract():

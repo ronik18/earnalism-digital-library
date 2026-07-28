@@ -1,0 +1,146 @@
+{
+  "schema_version": "earnalism.sprint1.private_b2_prefix_forensic.v1",
+  "generated_at": "2026-07-28T13:08:41Z",
+  "slug": "the-monkeys-paw",
+  "title": "The Monkey's Paw",
+  "author": "W. W. Jacobs",
+  "language": "English",
+  "scope": {
+    "mode": "READ_ONLY_PRIVATE_PREFIX_FORENSIC",
+    "store": "private_audio",
+    "bucket": "earnalism-private-qa-audio",
+    "prefix": "storage-containment/the-monkeys-paw/",
+    "network_reads_only": true,
+    "audio_candidates_hashed_sequentially": true,
+    "stop_on_target_hash": true
+  },
+  "expected_repaired_candidate": {
+    "release_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_release_gate_evidence.json",
+    "candidate_name": "repaired_full_candidate",
+    "candidate_binding_sha256": "21d75ab9607f533fc6526ff965b41dfc01d34d3865d423cb23ff2b6e94bdc9bc",
+    "audio_sha256": "6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8",
+    "source_sha256": "dd2d51938751b06ab49f84e7734f9b195056cb5b3bb658778d479624035b8fbd",
+    "duration_seconds": 1449.888,
+    "status": "BLOCKED_LISTENING_QA"
+  },
+  "prefix_inventory": {
+    "object_version_count": 6,
+    "audio_version_count": 2,
+    "sidecar_version_count": 4,
+    "delete_marker_count": 0,
+    "audio_candidate_total_bytes": 21882941,
+    "versions": [
+      {
+        "key": "storage-containment/the-monkeys-paw/audio-9d237c1e2118176b/the-monkeys-paw-english-polish-edge-queue-v1.mp3.mp3",
+        "version_id": "4_zb2f3363ef7425bc094f30e12_f242af371706ea10f_d20260713_m201357_c004_v0402035_t0033_u01783973637586",
+        "is_latest": true,
+        "size_bytes": 14155694,
+        "last_modified": "2026-07-13T20:13:57.586000+00:00",
+        "etag": "1b57d2d98cf06d38f94b261212399e8f-2",
+        "kind": "audio"
+      },
+      {
+        "key": "storage-containment/the-monkeys-paw/audio-a9ae5b339149aef9/the-monkeys-paw.mp3",
+        "version_id": "4_zb2f3363ef7425bc094f30e12_f109d63bfc31dafed_d20260713_m201403_c004_v0402034_t0004_u01783973643528",
+        "is_latest": true,
+        "size_bytes": 7727247,
+        "last_modified": "2026-07-13T20:14:03.528000+00:00",
+        "etag": "78ac10b14a02ae567bf5924c36a85a06",
+        "kind": "audio"
+      },
+      {
+        "key": "storage-containment/the-monkeys-paw/sidecar-4380499a42b84d3b/the-monkeys-paw_chapters.json",
+        "version_id": "4_zb2f3363ef7425bc094f30e12_f106c6714dcd34e18_d20260714_m025501_c004_v0402035_t0020_u01783997701034",
+        "is_latest": true,
+        "size_bytes": 150,
+        "last_modified": "2026-07-14T02:55:01.034000+00:00",
+        "etag": "7b90904dcc3e896351f56883ce01830c",
+        "kind": "chapters_sidecar"
+      },
+      {
+        "key": "storage-containment/the-monkeys-paw/sidecar-fdeb59626be2020c/the-monkeys-paw_meta.json",
+        "version_id": "4_zb2f3363ef7425bc094f30e12_f114411be561e9e37_d20260714_m025505_c004_v0402009_t0027_u01783997705229",
+        "is_latest": true,
+        "size_bytes": 441,
+        "last_modified": "2026-07-14T02:55:05.229000+00:00",
+        "etag": "f84b4bbaff987d79a8971669e80a2029",
+        "kind": "metadata_sidecar"
+      },
+      {
+        "key": "storage-containment/the-monkeys-paw/sidecar-ae1fff5a650b994d/the-monkeys-paw_timestamps.json",
+        "version_id": "4_zb2f3363ef7425bc094f30e12_f112c2f9f77007f1d_d20260714_m025508_c004_v0402035_t0057_u01783997708524",
+        "is_latest": true,
+        "size_bytes": 298907,
+        "last_modified": "2026-07-14T02:55:08.524000+00:00",
+        "etag": "1c020c789e3a116bc5591aae5fac6bb5",
+        "kind": "timestamps_sidecar"
+      },
+      {
+        "key": "storage-containment/the-monkeys-paw/sidecar-463b46064db93bbb/the-monkeys-paw_highlight.vtt",
+        "version_id": "4_zb2f3363ef7425bc094f30e12_f1166ebcd46990df0_d20260714_m025512_c004_v0402014_t0011_u01783997712040",
+        "is_latest": true,
+        "size_bytes": 145318,
+        "last_modified": "2026-07-14T02:55:12.040000+00:00",
+        "etag": "4e123ae98ee9d2817badd3fa083e61ec",
+        "kind": "highlight_sidecar"
+      }
+    ]
+  },
+  "audio_hash_and_integrity_results": [
+    {
+      "key": "storage-containment/the-monkeys-paw/audio-9d237c1e2118176b/the-monkeys-paw-english-polish-edge-queue-v1.mp3.mp3",
+      "version_id": "4_zb2f3363ef7425bc094f30e12_f242af371706ea10f_d20260713_m201357_c004_v0402035_t0033_u01783973637586",
+      "actual_sha256": "044cdb5b0339574bed89fb44a4d57a9dda7fe5d8428dc73c72b6919e7d5a1a7a",
+      "actual_size_bytes": 14155694,
+      "listing_size_match": true,
+      "target_sha256_match": false,
+      "ffprobe": {
+        "format": "mp3",
+        "codec": "mp3",
+        "sample_rate_hz": 22050,
+        "channels": 1,
+        "channel_layout": "mono",
+        "duration_seconds": 1769.3761,
+        "bit_rate_bps": 64003,
+        "integrity_status": "VALID_MP3_WRONG_CANDIDATE"
+      }
+    },
+    {
+      "key": "storage-containment/the-monkeys-paw/audio-a9ae5b339149aef9/the-monkeys-paw.mp3",
+      "version_id": "4_zb2f3363ef7425bc094f30e12_f109d63bfc31dafed_d20260713_m201403_c004_v0402034_t0004_u01783973643528",
+      "actual_sha256": "ae054cb6464fd228669304080e173268d2d4d37aabaa01a7b9be0b9f5f116600",
+      "actual_size_bytes": 7727247,
+      "listing_size_match": true,
+      "target_sha256_match": false,
+      "ffprobe": {
+        "format": "mp3",
+        "codec": "mp3",
+        "sample_rate_hz": 22050,
+        "channels": 1,
+        "channel_layout": "mono",
+        "duration_seconds": 1287.778685,
+        "bit_rate_bps": 48003,
+        "integrity_status": "VALID_MP3_WRONG_CANDIDATE"
+      }
+    }
+  ],
+  "result": {
+    "status": "TARGET_REPAIRED_AUDIO_ABSENT_FROM_PRIVATE_PREFIX",
+    "target_sha256_found": false,
+    "target_immutable_version_id": null,
+    "exact_blocker": "The complete immutable private prefix contains two valid MP3 objects, but neither hash or duration matches the repaired candidate bound in release evidence.",
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+    "release_eligible": false
+  },
+  "safety": {
+    "temporary_inspection_root": "/private/tmp",
+    "audio_bytes_added_to_repository": false,
+    "upload_performed": false,
+    "delete_performed": false,
+    "publication_performed": false,
+    "controlled_release_state_mutated": false,
+    "public_files_touched": false,
+    "paid_tts_lock_mutated": false
+  },
+  "next_action": "Recover the exact 6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8 repaired recording from its original private build only if provenance and source binding can be re-established; otherwise obtain or regenerate one new rights-clear exact source-bound full-title delivery, then rerun every objective, listening, measured-sync, checksum, endpoint, and browser gate without relabeling either retained B2 object."
+}

@@ -821,3 +821,73 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   `559d94ef386b741ee489d5dcbfd9df71686cbe9ac634801879d2978afbdcad25`
   as closed. Gift remains audio-hidden and requires an exact source-bound
   narration or licensed-audio delivery.
+
+## 2026-07-28 — The Monkey's Paw retained B2 prefix exhausted
+
+- A preflight binding is not proof that the selected private object contains
+  the expected audio. The immutable version selected for the repaired
+  candidate matched its inventory size but hashed to
+  `ae054cb6464fd228669304080e173268d2d4d37aabaa01a7b9be0b9f5f116600`,
+  not the required
+  `6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8`.
+- Enumerate the complete title prefix before assuming a missing candidate is
+  merely under a neighboring key. The prefix contained exactly six immutable
+  versions, no delete markers, two audio objects, and four sidecars.
+- Both MP3s were structurally valid and matched their listed byte sizes, but
+  their hashes and durations were different from the repaired evidence:
+  `044cdb5b...a1a7a` at `1769.3761` seconds and
+  `ae054cb6...16600` at `1287.778685` seconds versus the expected
+  `6b2c7f18...fa8` at `1449.888` seconds.
+- Valid media is not interchangeable media. Do not relabel either retained
+  object, rerun QA against the wrong bytes, or expose public audio. Recover the
+  original repaired build only if provenance and source binding can be
+  restored; otherwise use a new rights-clear exact source-bound delivery and
+  rerun every release gate.
+
+## 2026-07-28 — Pride Chatterbox V3 bounded pilot closed on canonical-name fidelity
+
+- The pinned local Chatterbox V3 path works offline with the model-bundled
+  `conds.pt`, no external reference recording, and no `audio_prompt_path`.
+  The resulting private 24 kHz mono WAV was valid and unclipped; its SHA-256 is
+  `52f5bfca9253ab29071236ea418a70ebae99d9ada07b83ff9466e77ff596aaf4`.
+- A high aggregate number is not sufficient evidence. Both `medium.en` and an
+  independent source-blind `small.en` adjudication scored `9.7872` with
+  `0.9787` coverage and agreed on the same `Long` to `Wong` substitution.
+  Coverage therefore missed the strict `0.98` floor and ordered-content
+  integrity failed.
+- Listening QA was correctly skipped because it cannot repair missing or
+  unexpected manuscript content. Fingerprint
+  `1658048f26f8b9ce51c3ff378db4a5be2bc72032157792dd39b40d5a586e9a05`
+  is consumed and closed; Pride remains reader-live and audio-hidden.
+- A reproducible network-disabled Chatterbox environment also needs the
+  `Cangjie5_TC.json` tokenizer file cached locally, the PKUSEG resource
+  available offline, and `setuptools<81` for PerTh's current
+  `pkg_resources` compatibility.
+- No upload, public metadata or release-gate mutation, publication, or paid
+  lock mutation occurred. The next admissible path is one genuinely different
+  exact source-bound delivery followed by the complete objective gate sequence.
+
+## 2026-07-28 — Jekyll voice selection passed representative gates
+
+- Exact source fidelity and premium listening quality must both select a voice.
+  Studio-C at rate 0.88 passed all normalized objective samples, but middle and
+  dialogue listening fell to 8.4. That fingerprint is closed and must not be
+  repeated or expanded.
+- A materially different `en-GB-Chirp3-HD-Charon` arm at rate 0.94 preserved
+  all four passages at normalized 10.0 / 1.0 with valid audio-derived word
+  timestamps. Its four listening samples all scored 9.4 with confidence 0.95,
+  no fatal flags, and no dimension below 9.2.
+- Preserve raw ASR truth while adjudicating inaudible formatting. The Charon
+  middle sample decoded canonical British `neighbouring` as American
+  `neighboring`; raw 9.8438 / 0.9844 remains recorded. Only that explicit
+  standalone pair is normalized. No general spelling, stemming, name, or
+  content substitution is accepted.
+- The production admin cover route previously excluded controlled-publication
+  titles absent from Mongo. The repaired source resolves Mongo first, then only
+  an exact reader-eligible controlled artifact, and still writes only to the
+  private candidate collection. Pending URLs remain absent from public catalog,
+  Home, reader, and audio surfaces.
+- A representative pass is not a full audiobook. Jekyll remains audio-hidden
+  until its private graphical pair is reviewed and promoted to canonical cover
+  truth, followed by full-title generation, full ASR and measured sync,
+  six-sample listening, private delivery, endpoint 206, and browser proof.

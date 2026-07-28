@@ -140,9 +140,12 @@ def runtime_errors(env: dict[str, str], sample_count: int) -> tuple[list[str], d
 
 
 def load_evidence(path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
-    evidence = json.loads(path.read_text(encoding="utf-8"))
+    evidence_path = path.expanduser().resolve()
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
     if evidence.get("status") != "PENDING_LISTENING_REVIEW":
         raise ValueError("audition evidence must be pending listening review")
+    if evidence.get("objective_gate_status") != "PASS":
+        raise ValueError("audition evidence must be bound to objective PASS")
     samples = evidence.get("samples")
     required = evidence.get("required_passages")
     if not isinstance(samples, list) or len(samples) != 4:
@@ -157,6 +160,54 @@ def load_evidence(path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("slug") != evidence.get("slug") or manifest.get("source_sha256") != evidence.get("source_sha256"):
         raise ValueError("audition manifest slug/source binding mismatch")
+    objective_path = Path(str(evidence.get("objective_report_path") or ""))
+    if not objective_path.is_absolute():
+        objective_path = ROOT / objective_path
+    objective_path = objective_path.expanduser().resolve()
+    if objective_path.parent != evidence_path.parent:
+        raise ValueError("objective report must remain beside the private listening input")
+    if (
+        not objective_path.is_file()
+        or sha256_file(objective_path) != evidence.get("objective_report_sha256")
+    ):
+        raise ValueError("objective report is missing or hash-mismatched")
+    objective = json.loads(objective_path.read_text(encoding="utf-8"))
+    expected_objective = {
+        "schema_version": "earnalism.google_english_representative_objective_qa.v1",
+        "status": "REPRESENTATIVE_OBJECTIVE_PASS_LISTENING_INPUT_READY",
+        "slug": evidence.get("slug"),
+        "source_sha256": evidence.get("source_sha256"),
+        "input_manifest_sha256": evidence.get("input_manifest_sha256"),
+        "audition_fingerprint": evidence.get("audition_fingerprint"),
+        "audition_manifest_sha256": evidence.get("audition_manifest_sha256"),
+        "audition_evidence_sha256": evidence.get("audition_evidence_sha256"),
+        "objective_pass": True,
+        "listening_qa_called": False,
+        "provider_calls_made": False,
+        "upload_performed": False,
+        "publication_performed": False,
+        "release_mutation_performed": False,
+        "paid_lock_read_or_written": False,
+    }
+    for field, expected in expected_objective.items():
+        if objective.get(field) != expected:
+            raise ValueError(f"objective report {field} binding mismatch")
+    objective_asr = objective.get("objective_asr")
+    objective_reports = (
+        objective_asr.get("reports")
+        if isinstance(objective_asr, dict)
+        and objective_asr.get("status") == "PASS"
+        else None
+    )
+    if not isinstance(objective_reports, list) or len(objective_reports) != 4:
+        raise ValueError("objective report must contain four passing ASR samples")
+    objective_by_passage = {
+        item.get("passage_id"): item
+        for item in objective_reports
+        if isinstance(item, dict) and item.get("pass") is True
+    }
+    if set(objective_by_passage) != set(required):
+        raise ValueError("objective report passage set is incomplete")
     seen: set[str] = set()
     for sample in samples:
         audio = Path(str(sample.get("audio_path") or ""))
@@ -168,6 +219,17 @@ def load_evidence(path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
         if expected in seen:
             raise ValueError("audition evidence contains duplicate audio")
         seen.add(expected)
+        objective_sample = objective_by_passage.get(sample.get("passage_id")) or {}
+        if (
+            objective_sample.get("source_text_sha256")
+            != sample.get("source_text_sha256")
+            or objective_sample.get("audio_sha256") != expected
+            or objective_sample.get("ordered_content_integrity_pass") is not True
+            or objective_sample.get("word_timestamp_evidence_valid") is not True
+        ):
+            raise ValueError(
+                f"objective sample binding failed: {sample.get('passage_id')}"
+            )
         sample["audio_path"] = str(audio)
     return evidence, manifest
 

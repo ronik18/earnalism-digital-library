@@ -5213,6 +5213,55 @@ def _cover_side_admin_status(
     return "MISSING"
 
 
+def _normalized_cover_slug(slug: str) -> str:
+    return str(slug or "").strip().lower()
+
+
+def _controlled_cover_upload_eligible(slug: str, artifact: dict[str, Any]) -> bool:
+    """Allow intake only for the exact approved controlled reader artifact."""
+    normalized = _normalized_cover_slug(slug)
+    return bool(
+        normalized
+        and artifact
+        and _normalized_cover_slug(artifact.get("slug")) == normalized
+        and can_expose_reader(artifact)
+    )
+
+
+def _mongo_cover_upload_eligible(book: dict[str, Any]) -> bool:
+    """Preserve draft intake while enforcing rights for published Mongo books."""
+    if not book:
+        return False
+    if not book.get("is_published"):
+        return True
+    return not rights_publish_blockers(book)
+
+
+async def _load_cover_upload_source_or_404(slug: str) -> tuple[dict[str, Any], str]:
+    """Resolve Mongo first, then an approved controlled-publication fallback."""
+    normalized = _normalized_cover_slug(slug)
+    if not normalized:
+        raise HTTPException(status_code=404, detail="Book not found")
+
+    mongo_book = await db.books.find_one({"slug": normalized}, {"_id": 0})
+    if mongo_book:
+        _assert_public_rights_approved(mongo_book, "Visual asset")
+        return mongo_book, "mongo"
+
+    artifact = load_controlled_artifact_book(normalized, include_content=False)
+    if not artifact:
+        raise HTTPException(status_code=404, detail="Book not found")
+    if not _controlled_cover_upload_eligible(normalized, artifact):
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "message": "Visual asset cannot be uploaded without an approved controlled publication.",
+                "issues": ["Canonical reader and rights approval is incomplete."],
+            },
+        )
+    return artifact, "controlled_publication"
+
+
 @api.get("/admin/books/cover-status")
 async def admin_list_book_cover_status(_=Depends(require_admin)):
     """Return the canonical Sprint 1 cover queue plus private admin candidates."""
@@ -5231,6 +5280,8 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
             "author": 1,
             "language": 1,
             "language_code": 1,
+            "is_published": 1,
+            "rights_metadata": 1,
         },
     ).to_list(max(1, len(slugs)))
     candidate_docs = await db.book_cover_candidates.find(
@@ -5266,6 +5317,18 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
     for slug in slugs:
         artifact = load_controlled_artifact_book(slug, include_content=False) or {}
         admin_book = admin_by_slug.get(slug) or {}
+        mongo_upload_eligible = _mongo_cover_upload_eligible(admin_book)
+        controlled_upload_eligible = (
+            not admin_book
+            and _controlled_cover_upload_eligible(slug, artifact)
+        )
+        upload_eligibility_source = (
+            "mongo"
+            if mongo_upload_eligible
+            else "controlled_publication"
+            if controlled_upload_eligible
+            else ""
+        )
         front_candidate = candidate_by_side.get((slug, "front")) or {}
         back_candidate = candidate_by_side.get((slug, "back")) or {}
         curation = curation_books.get(slug) if isinstance(curation_books.get(slug), dict) else {}
@@ -5333,7 +5396,9 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
                 else "NEEDS_ATTENTION",
                 "canonical_exclusion_reason": exclusion_reason,
                 "admin_book_exists": bool(admin_book),
-                "can_upload": bool(admin_book) and ENABLE_ADMIN_COVER_UPLOADS,
+                "upload_eligibility_source": upload_eligibility_source,
+                "can_upload": bool(upload_eligibility_source)
+                and ENABLE_ADMIN_COVER_UPLOADS,
                 "upload_endpoint": f"/api/admin/books/{slug}/cover",
                 "reader_audio_release_truth_unchanged": True,
             }
@@ -5612,11 +5677,11 @@ async def admin_upload_cover(
             )
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc))
-        book = await _load_book_or_404(slug)
-        _assert_public_rights_approved(book, "Visual asset")
+        book, upload_eligibility_source = await _load_cover_upload_source_or_404(slug)
+        resolved_slug = _normalized_cover_slug(book.get("slug") or slug)
         _ensure_cloudinary()
         try:
-            candidate_asset_id = f"candidate_{book.get('id') or slug}"
+            candidate_asset_id = f"candidate_{book.get('id') or resolved_slug}"
             result = _process_book_cover_candidate(
                 body,
                 candidate_asset_id,
@@ -5628,7 +5693,7 @@ async def admin_upload_cover(
         updated_at = now_iso()
         updated_by = str(admin.get("email") or admin.get("sub") or "admin")[:180]
         candidate = build_private_cover_candidate(
-            slug,
+            resolved_slug,
             cover_kind,
             result,
             validation,
@@ -5636,7 +5701,7 @@ async def admin_upload_cover(
             updated_by=updated_by,
         )
         await db.book_cover_candidates.update_one(
-            {"_id": f"{str(slug or '').strip().lower()}:{cover_kind}"},
+            {"_id": f"{resolved_slug}:{cover_kind}"},
             {"$set": candidate},
             upsert=True,
         )
@@ -5646,8 +5711,9 @@ async def admin_upload_cover(
                 "operation_type": "book_cover_upload",
                 "admin_user_id": str(admin.get("sub") or ""),
                 "admin_email": str(admin.get("email") or ""),
-                "slug": slug,
+                "slug": resolved_slug,
                 "kind": cover_kind,
+                "upload_eligibility_source": upload_eligibility_source,
                 "file_name": _safe_storage_filename(file.filename or f"{cover_kind}-cover"),
                 "content_type": str(file.content_type or ""),
                 "size_bytes": validation["bytes"],
@@ -5663,6 +5729,7 @@ async def admin_upload_cover(
         return {
             "success": True,
             "kind": cover_kind,
+            "upload_eligibility_source": upload_eligibility_source,
             **result,
             "validation": validation,
             "cover_audit_status": "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW",

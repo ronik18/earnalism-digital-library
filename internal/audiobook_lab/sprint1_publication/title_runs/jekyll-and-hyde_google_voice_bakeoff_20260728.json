@@ -1,0 +1,88 @@
+{
+  "schema_version": "earnalism.google_english_representative_bakeoff.v1",
+  "status": "REPRESENTATIVE_PASS_FULL_TITLE_BLOCKED_CANONICAL_COVERS",
+  "generated_at": "2026-07-28T14:34:27Z",
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "author": "Robert Louis Stevenson",
+  "canonical_source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+  "input_manifest_sha256": "43177dc6f71521a6558dfcccbd784d46213e9e0f533c4e8ac3133be29725fd22",
+  "required_objective_score": 9.7,
+  "required_coverage": 0.98,
+  "required_listening_score": 8.9,
+  "required_listening_confidence": 0.9,
+  "attempts": [
+    {
+      "voice": "en-GB-Studio-C",
+      "speaking_rate": 0.88,
+      "attempt_fingerprint": "664d046c50c547837cdbe08ff67b5f657ab63b89dfbab25a7667db1f917c069a",
+      "status": "CLOSED_LISTENING_FAIL_DO_NOT_REPEAT",
+      "objective_status": "PASS",
+      "normalized_objective_scores": [10.0, 10.0, 10.0, 10.0],
+      "normalized_coverages": [1.0, 1.0, 1.0, 1.0],
+      "word_timestamp_evidence_valid": [true, true, true, true],
+      "listening_scores": [9.4, 8.4, 8.4, 9.4],
+      "minimum_listening_score": 8.4,
+      "minimum_listening_confidence": 0.9,
+      "fatal_flags": [],
+      "dimension_gate_pass": false,
+      "objective_report_sha256": "aa0758505db490d984967b7fabd0565a26aeccbb2b0c1b2bd84e3a17d8605357",
+      "listening_result_sha256": "c38136fc785177d9ebf173d901fd38cda7daba9c257cd2e472db5bc1a7596190"
+    },
+    {
+      "voice": "en-GB-Chirp3-HD-Charon",
+      "speaking_rate": 0.94,
+      "attempt_fingerprint": "8f3cb33e3ef2a8058f6149bd2d100c9fa84233e6346e1d92ec5c9d03c9e16b71",
+      "status": "REPRESENTATIVE_PASS_SELECTED_FOR_CONDITIONAL_FULL_TITLE",
+      "objective_status": "PASS",
+      "raw_objective_scores": [10.0, 9.8438, 10.0, 10.0],
+      "raw_coverages": [1.0, 0.9844, 1.0, 1.0],
+      "normalized_objective_scores": [10.0, 10.0, 10.0, 10.0],
+      "normalized_coverages": [1.0, 1.0, 1.0, 1.0],
+      "explicit_orthography_equivalence": {
+        "source": "neighbouring",
+        "transcript": "neighboring",
+        "reason": "EXPLICIT_STANDALONE_BRITISH_AMERICAN_ORTHOGRAPHY_NEIGHBOURING_NEIGHBORING"
+      },
+      "word_timestamp_evidence_valid": [true, true, true, true],
+      "listening_scores": [9.4, 9.4, 9.4, 9.4],
+      "minimum_listening_score": 9.4,
+      "minimum_listening_confidence": 0.95,
+      "fatal_flags": [],
+      "dimension_gate_pass": true,
+      "minimum_observed_dimension_score": 9.2,
+      "objective_report_sha256": "25370005d4cf4ed818da9ab951ad391597a25740083777cdeed571d5394de81e",
+      "listening_input_sha256": "09b133cc9f16484368d0f9546f2b1fd5b268373734cc4d7c2bc52523f12551e5",
+      "listening_result_sha256": "b6faaae86a7d1749d547a7ced3e6d7d4fea8364f52f9e58547c9dd876c8ab96b"
+    }
+  ],
+  "private_cover_candidates": {
+    "status": "OWNER_REVIEW_REQUIRED_NOT_CANONICAL",
+    "front_sha256": "ba3dca9fba29a741d74b0ac94e8b9db97fcaf52a09776b208361044346d4dfba",
+    "back_sha256": "92326eb8eba9678adf6af8a06cc820a4ef9500ef68e3dec3b8783cf1af7dbace",
+    "admin_controlled_publication_fallback_implemented": true,
+    "admin_controlled_publication_fallback_tests": "PASS_45"
+  },
+  "budget": {
+    "conservative_estimated_provider_and_listening_usd": 0.48875,
+    "actual_provider_billing": "NOT_REPORTED",
+    "campaign_cap_usd": 75.0,
+    "per_title_cap_usd": 8.0
+  },
+  "blockers": [
+    "CANONICAL_FRONT_COVER_MISSING",
+    "CANONICAL_BACK_COVER_MISSING",
+    "FULL_TITLE_AUDIO_NOT_GENERATED",
+    "FULL_TITLE_ASR_AND_MEASURED_SYNC_NOT_RUN",
+    "FULL_TITLE_SIX_SAMPLE_LISTENING_QA_NOT_RUN",
+    "PRIVATE_DELIVERY_AND_CHECKSUM_NOT_COMPLETE",
+    "AUDIO_ENDPOINT_206_NOT_PROVEN",
+    "BROWSER_RELEASE_GATE_NOT_PROVEN"
+  ],
+  "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+  "upload_performed": false,
+  "publication_performed": false,
+  "release_gate_mutated": false,
+  "paid_lock_restored_byte_for_byte": true,
+  "selected_next_action": "Stage and review the private front/back cover pair through the controlled-publication admin fallback, promote the approved cover pair canonically with checksum parity, then run one hash-bound full-title Charon candidate through every objective and downstream release gate."
+}

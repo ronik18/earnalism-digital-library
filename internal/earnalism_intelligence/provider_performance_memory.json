@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-12",
+  "version": "2026-07-28",
   "bengali": {
     "openai": {
       "status": "quality_limited_for_bengali_literary_audiobook",
@@ -341,6 +341,37 @@
     }
   },
   "english": {
+    "chatterbox_v3": {
+      "status": "pride_builtin_conds_fingerprint_closed_after_independent_objective_failure",
+      "license": "MIT",
+      "engine": "chatterbox-tts==0.1.7",
+      "model_id": "ResembleAI/chatterbox",
+      "model_revision": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+      "runtime_source_revision": "5de7a54aa4e5e2baadb0182dde554908b48b85c2",
+      "voice_kind": "MODEL_BUILTIN_CONDITIONAL_NO_EXTERNAL_REFERENCE",
+      "pride_and_prejudice": {
+        "attempt_fingerprint": "1658048f26f8b9ce51c3ff378db4a5be2bc72032157792dd39b40d5a586e9a05",
+        "attempt_status": "CONSUMED_AND_CLOSED_DO_NOT_REPEAT",
+        "source_passage_sha256": "e51782a522b817e8c1e116fdbffd2841a3327e44ad7c16dd655e5ae2b235680b",
+        "audio_sha256": "52f5bfca9253ab29071236ea418a70ebae99d9ada07b83ff9466e77ff596aaf4",
+        "medium_en_asr_score": 9.7872,
+        "small_en_asr_score": 9.7872,
+        "coverage": 0.9787,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "confirmed_substitution": "Long -> Wong",
+        "listening_qa_run": false,
+        "public_audio_approved": false,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/pride-and-prejudice_chatterbox_v3_private_pilot_closeout_20260728.json"
+      },
+      "runtime_prerequisites": [
+        "offline Cangjie5_TC.json cache",
+        "offline PKUSEG resource",
+        "setuptools<81 for PerTh pkg_resources compatibility"
+      ],
+      "next_action": "Do not repeat this Pride fingerprint. Keep audio hidden and require a genuinely different exact source-bound delivery before objective QA and listening."
+    },
     "kokoro": {
       "status": "title_specific_mixed_results_multiple_exact_objective_failures",
       "package_version": "0.9.4",
@@ -828,9 +859,9 @@
     "google": {
       "status": "title_specific_quality_validation_required",
       "voice": "en-GB-Studio-C",
-      "credential_status": "AUTHORIZED_USER_ADC_REAUTHENTICATION_REQUIRED",
-      "credential_failure_phase": "PREPROVIDER_NO_BILLABLE_SYNTHESIS_REQUEST",
-      "credential_repair_command": "gcloud auth application-default login",
+      "credential_status": "RAILWAY_ADC_REFRESH_AND_SYNTHESIS_CONFIRMED",
+      "credential_failure_phase": "",
+      "credential_repair_command": "",
       "the_call_of_the_wild_pending_fingerprint": "731cc90e6a9fb4767e189c046bae11095730164716b0b836cd42ceddd41e3cf9",
       "the_call_of_the_wild_attempt_consumed": false,
       "the_call_of_the_wild_google_attempt_status": "PREPROVIDER_CREDENTIAL_BLOCKER_SUPERSEDED_BY_CLOSED_OPENAI_TITLE_ATTEMPT",
@@ -843,12 +874,29 @@
         "mechanical_cadence_detected",
         "robotic_texture_detected"
       ],
+      "jekyll_and_hyde": {
+        "canonical_source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+        "studio_c_attempt_fingerprint": "664d046c50c547837cdbe08ff67b5f657ab63b89dfbab25a7667db1f917c069a",
+        "studio_c_objective_scores": [10.0, 10.0, 10.0, 10.0],
+        "studio_c_listening_scores": [9.4, 8.4, 8.4, 9.4],
+        "studio_c_status": "CLOSED_LISTENING_FAIL_DO_NOT_REPEAT",
+        "selected_voice": "en-GB-Chirp3-HD-Charon",
+        "selected_speaking_rate": 0.94,
+        "selected_attempt_fingerprint": "8f3cb33e3ef2a8058f6149bd2d100c9fa84233e6346e1d92ec5c9d03c9e16b71",
+        "selected_normalized_objective_scores": [10.0, 10.0, 10.0, 10.0],
+        "selected_listening_scores": [9.4, 9.4, 9.4, 9.4],
+        "selected_minimum_confidence": 0.95,
+        "selected_fatal_flags": [],
+        "selected_status": "REPRESENTATIVE_PASS_FULL_TITLE_BLOCKED_CANONICAL_COVERS",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_google_voice_bakeoff_20260728.json"
+      },
       "do_not_repeat_fingerprints": [
         "cfde863f34962e2ebeb608b7b333565566ddf305b91356d6bd6cdb97572f73fb",
         "a4ad393ef625f5c35b9e4939107fa53fb29556c29a59ca7d563a68ea857e6929",
-        "7d8546bba92729e05ba82f665d084c9d7e81cc30d567494ff21c300551dfa5f6"
+        "7d8546bba92729e05ba82f665d084c9d7e81cc30d567494ff21c300551dfa5f6",
+        "664d046c50c547837cdbe08ff67b5f657ab63b89dfbab25a7667db1f917c069a"
       ],
-      "next_action": "Stop automated Google retries for The Open Window; use the generated source-bound human narration packet or a separately approved provider, then run every release gate."
+      "next_action": "Do not repeat closed title fingerprints. For Jekyll, repair canonical covers before expanding only the selected Charon arm to a full-title private candidate; every full objective and downstream release gate remains mandatory."
     },
     "azure": {
       "status": "CREDENTIALS_PRESENT_BUT_API_RETURNED_401",
