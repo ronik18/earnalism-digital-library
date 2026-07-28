@@ -367,7 +367,15 @@ def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: di
     listening_items = [_public(book) for book in audio_visible]
     listening_reserve = [_public(book) for book in audio_reserve]
     groups = [{key: item[key] for key in ("id", "title", "description", "theme_chips", "cta_label", "cta_url", "layout_area", "accent", "total_count", "display_mode", "visible_books", "reserve_books", "books")} for item in literary_shelves if item["total_count"]]
-    carousel_books = select_hero_carousel_books(contracts)
+    # The hero is the visual front door for the Sprint 1 collection. Keep its
+    # inventory inside that owner-approved cohort even when the wider live
+    # catalog contains other reader-safe titles. Missing cohort evidence must
+    # fail closed instead of widening the public carousel.
+    sprint1_slug_set = set(sprint1_slugs)
+    carousel_contracts = [
+        book for book in contracts if book["slug"] in sprint1_slug_set
+    ]
+    carousel_books = select_hero_carousel_books(carousel_contracts)
     featured = carousel_books[:6]
     return {
         "literary_shelves": literary_shelves,
@@ -398,6 +406,6 @@ def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: di
             "audiobook_count": len(audio_candidates),
             "approved_audiobook_count": len(audio_candidates),
             "hero_carousel_eligible_count": len(carousel_books),
-            "catalog_version": "home-curated-v4",
+            "catalog_version": "home-curated-v4-sprint1-hero",
         },
     }

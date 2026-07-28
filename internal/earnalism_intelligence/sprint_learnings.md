@@ -731,3 +731,23 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - No provider call, upload, publication, release metadata mutation, or hidden
   audio exposure occurred. Existing raw scores and historical reports remain
   immutable.
+
+## 2026-07-28 Sprint 1 hero carousel refinement
+
+- A release-safe hero carousel needs two membership gates: the backend filters
+  eligible cover contracts to `sprint1_active_slugs`, and the frontend fails
+  closed to `hero.carousel_books` instead of widening into general shelves.
+- Page-index keys and per-cover arrival animations make every four-book change
+  dependent on remount and decode timing. Stable frame layers plus a
+  pre-decode barrier allow one bounded 420 ms compositor transition.
+- Equal CSS columns are not enough when a shared parent perspective projects
+  each column differently. Applying the same local perspective to each jacket
+  reduced 1440 px width spread from roughly 0.94 px to 0.008 px and clear-gap
+  variance from roughly 0.67 px to zero.
+- Explicit front, right-page, and bottom-page elements produce a more legible
+  hardback than a painted divider. The validated geometry has zero baseline
+  spread, approximately 5.13/5.99/7.31 px clear air at 1024/1440/1920, and no
+  overlap or horizontal overflow.
+- Canonical covers remain fully visible with `object-fit: contain`; varying
+  source proportions are framed as physical jacket boards instead of being
+  cropped to manufacture uniformity.

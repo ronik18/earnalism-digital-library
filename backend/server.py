@@ -4744,7 +4744,7 @@ async def list_categories():
 @api.get("/home/curated")
 async def get_home_curated():
     """Return one canonical, release-safe Home curation contract."""
-    cache_key = _public_cache_key("home_curated_v4_controlled_truth_v2")
+    cache_key = _public_cache_key("home_curated_v4_controlled_truth_v3")
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
