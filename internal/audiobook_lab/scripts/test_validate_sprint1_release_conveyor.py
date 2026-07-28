@@ -28,7 +28,7 @@ class ReleaseConveyorTests(unittest.TestCase):
         self.assertEqual(result["unique_sprint1_slugs"], 32)
         self.assertEqual(result["production_live"], 4)
         self.assertEqual(result["audio_hidden"], 28)
-        self.assertEqual(result["selected_attempts_consumed"], 0)
+        self.assertEqual(result["selected_attempts_consumed"], 1)
 
     def test_duplicate_slug_fails(self) -> None:
         changed = copy.deepcopy(self.payload)
@@ -52,13 +52,16 @@ class ReleaseConveyorTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "release gate changed"):
             MODULE.validate(changed)
 
-    def test_preprovider_failure_cannot_consume_or_spend_attempt(self) -> None:
+    def test_unused_attempt_cannot_record_provider_or_spend(self) -> None:
         changed = copy.deepcopy(self.payload)
+        changed["active_title"]["model_attempt_consumed"] = False
         changed["active_title"]["provider_calls_ran"] = True
         with self.assertRaisesRegex(RuntimeError, "cannot record provider calls"):
             MODULE.validate(changed)
 
         changed = copy.deepcopy(self.payload)
+        changed["active_title"]["model_attempt_consumed"] = False
+        changed["active_title"]["provider_calls_ran"] = False
         changed["active_title"]["actual_provider_spend_usd"] = 0.01
         with self.assertRaisesRegex(RuntimeError, "cannot record provider spend"):
             MODULE.validate(changed)

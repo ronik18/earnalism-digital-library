@@ -1,7 +1,19 @@
 {
-  "generated_at": "2026-07-26T10:29:11Z",
-  "status": "SPRINT1_V3_90_ACTIVE_VERTEX_OPERATIONAL_THREE_TITLES_REPRESENTATIVE_FAILED_NO_NEW_PUBLICATION",
-  "policy_version": "sprint1_audiobook_acceptance_v3_90",
+  "generated_at": "2026-07-28T03:05:00Z",
+  "status": "SPRINT1_V3_89_ACTIVE_ZERO_NEW_FULL_TITLE_RELEASE_READY",
+  "policy_version": "sprint1_audiobook_acceptance_v3_89",
+  "policy_transition_20260728": {
+    "status": "ACTIVE",
+    "overall_listening_score_min": 8.9,
+    "confidence_score_min": 0.9,
+    "per_dimension_score_min": 8.9,
+    "anti_robotic_texture_score_min": 9.2,
+    "anti_choppy_join_score_min": 9.2,
+    "fatal_flags_unchanged": true,
+    "objective_and_delivery_gates_unchanged": true,
+    "newly_release_ready_title_count": 0,
+    "evidence": "internal/earnalism_intelligence/sprint1_audiobook_acceptance_v3_89_policy_decision.json"
+  },
   "policy_transition_20260726": {
     "status": "ACTIVE",
     "overall_listening_score_min": 9.0,
@@ -61,7 +73,7 @@
     "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_asr_sync_closeout_20260722.json"
   },
   "titles_in_representative_audition": 0,
-  "titles_with_representative_gte_9_0": 3,
+  "titles_with_representative_gte_8_9": 3,
   "titles_in_full_pilot": 1,
   "titles_with_private_tts_listening_sync_pass": 0,
   "titles_needing_human_narration": 3,
@@ -76,7 +88,7 @@
     "pilot_slug": "book-2b9853ec52",
     "next_candidate_slug": "",
     "next_scale_stage": "SELECT_GENUINELY_DIFFERENT_PROVIDER_OR_SOURCE_BOUND_NARRATION_AFTER_COVER_AND_RIGHTS_PREFLIGHT",
-    "rule": "Do not repeat completed Nishkriti, Kshudhita Pashan, or Devdas Gemini fingerprints. No title may widen to full generation until one complete four-passage set passes 9.0/0.90 with zero fatal flags and all non-audio preflight gates are complete."
+    "rule": "Do not repeat completed Nishkriti, Kshudhita Pashan, or Devdas Gemini fingerprints. No title may widen to full generation until one complete four-passage set passes 8.9/0.90 with zero fatal flags and all non-audio preflight gates are complete."
   },
   "best_settings": {
     "provider": "sarvam",
@@ -153,8 +165,8 @@
   "controller_args": {
     "manifest": "book_import_manifest.json",
     "target_reader_only_approved_31": true,
-    "goal_score": 9.0,
-    "policy": "sprint1_audiobook_acceptance_v3_90",
+    "goal_score": 8.9,
+    "policy": "sprint1_audiobook_acceptance_v3_89",
     "adaptive_optimizer": true,
     "resume": true,
     "fail_closed": true,
@@ -173,7 +185,7 @@
     "calm_literary_storyteller"
   ],
   "release_gates": {
-    "goal_score": 9.0,
+    "goal_score": 8.9,
     "confidence_min": 0.9,
     "asr_manuscript_min": 9.7,
     "sync": "measured paragraph/stanza or better; estimated sync blocked",

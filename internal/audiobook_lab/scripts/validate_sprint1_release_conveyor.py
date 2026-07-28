@@ -100,7 +100,7 @@ def validate(payload: dict[str, Any]) -> dict[str, Any]:
     expected_gates = {
         "asr_manuscript_score_min": 9.7,
         "coverage_min": 0.98,
-        "overall_listening_score_min": 9.0,
+        "overall_listening_score_min": 8.9,
         "confidence_score_min": 0.9,
         "per_dimension_score_min": 8.9,
         "anti_robotic_texture_score_min": 9.2,

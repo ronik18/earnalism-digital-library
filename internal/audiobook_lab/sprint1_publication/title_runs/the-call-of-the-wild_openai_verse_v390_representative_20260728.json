@@ -1,0 +1,2820 @@
+{
+  "actual_provider_billing": "NOT_REPORTED",
+  "actual_provider_spend_usd": 0.0,
+  "asr": {
+    "audio_derived": true,
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "reports": [
+      {
+        "audio_derived_word_timestamps": [
+          {
+            "end_seconds": 0.5,
+            "probability": 0.768736,
+            "start_seconds": 0.0,
+            "word": "Old"
+          },
+          {
+            "end_seconds": 1.24,
+            "probability": 0.698968,
+            "start_seconds": 0.5,
+            "word": "Longings'"
+          },
+          {
+            "end_seconds": 2.18,
+            "probability": 0.928498,
+            "start_seconds": 1.68,
+            "word": "nomadic"
+          },
+          {
+            "end_seconds": 2.54,
+            "probability": 0.879032,
+            "start_seconds": 2.18,
+            "word": "leap,"
+          },
+          {
+            "end_seconds": 3.52,
+            "probability": 0.725271,
+            "start_seconds": 3.14,
+            "word": "chafing"
+          },
+          {
+            "end_seconds": 3.78,
+            "probability": 0.990858,
+            "start_seconds": 3.52,
+            "word": "at"
+          },
+          {
+            "end_seconds": 4.18,
+            "probability": 0.663451,
+            "start_seconds": 3.78,
+            "word": "customs"
+          },
+          {
+            "end_seconds": 4.66,
+            "probability": 0.921941,
+            "start_seconds": 4.18,
+            "word": "chain,"
+          },
+          {
+            "end_seconds": 5.74,
+            "probability": 0.419294,
+            "start_seconds": 5.36,
+            "word": "Again"
+          },
+          {
+            "end_seconds": 6.06,
+            "probability": 0.858293,
+            "start_seconds": 5.74,
+            "word": "from"
+          },
+          {
+            "end_seconds": 6.24,
+            "probability": 0.982391,
+            "start_seconds": 6.06,
+            "word": "its"
+          },
+          {
+            "end_seconds": 6.72,
+            "probability": 0.786397,
+            "start_seconds": 6.24,
+            "word": "brumal"
+          },
+          {
+            "end_seconds": 7.2,
+            "probability": 0.992397,
+            "start_seconds": 6.72,
+            "word": "sleep,"
+          },
+          {
+            "end_seconds": 7.96,
+            "probability": 0.92556,
+            "start_seconds": 7.66,
+            "word": "wakens"
+          },
+          {
+            "end_seconds": 8.3,
+            "probability": 0.990762,
+            "start_seconds": 7.96,
+            "word": "the"
+          },
+          {
+            "end_seconds": 8.82,
+            "probability": 0.387363,
+            "start_seconds": 8.3,
+            "word": "ferrine"
+          },
+          {
+            "end_seconds": 9.34,
+            "probability": 0.991453,
+            "start_seconds": 8.82,
+            "word": "strain."
+          },
+          {
+            "end_seconds": 10.54,
+            "probability": 0.980316,
+            "start_seconds": 10.22,
+            "word": "Buck"
+          },
+          {
+            "end_seconds": 10.78,
+            "probability": 0.99501,
+            "start_seconds": 10.54,
+            "word": "did"
+          },
+          {
+            "end_seconds": 11.08,
+            "probability": 0.999041,
+            "start_seconds": 10.78,
+            "word": "not"
+          },
+          {
+            "end_seconds": 11.32,
+            "probability": 0.997806,
+            "start_seconds": 11.08,
+            "word": "read"
+          },
+          {
+            "end_seconds": 11.5,
+            "probability": 0.99228,
+            "start_seconds": 11.32,
+            "word": "the"
+          },
+          {
+            "end_seconds": 12.1,
+            "probability": 0.982757,
+            "start_seconds": 11.5,
+            "word": "newspapers,"
+          },
+          {
+            "end_seconds": 12.9,
+            "probability": 0.730778,
+            "start_seconds": 12.36,
+            "word": "or"
+          },
+          {
+            "end_seconds": 13.08,
+            "probability": 0.989588,
+            "start_seconds": 12.9,
+            "word": "he"
+          },
+          {
+            "end_seconds": 13.24,
+            "probability": 0.995536,
+            "start_seconds": 13.08,
+            "word": "would"
+          },
+          {
+            "end_seconds": 13.4,
+            "probability": 0.981077,
+            "start_seconds": 13.24,
+            "word": "have"
+          },
+          {
+            "end_seconds": 13.72,
+            "probability": 0.995394,
+            "start_seconds": 13.4,
+            "word": "known"
+          },
+          {
+            "end_seconds": 13.96,
+            "probability": 0.816269,
+            "start_seconds": 13.72,
+            "word": "that"
+          },
+          {
+            "end_seconds": 14.34,
+            "probability": 0.97339,
+            "start_seconds": 13.96,
+            "word": "trouble"
+          },
+          {
+            "end_seconds": 14.62,
+            "probability": 0.975455,
+            "start_seconds": 14.34,
+            "word": "was"
+          },
+          {
+            "end_seconds": 14.96,
+            "probability": 0.999494,
+            "start_seconds": 14.62,
+            "word": "brewing,"
+          },
+          {
+            "end_seconds": 15.64,
+            "probability": 0.1216,
+            "start_seconds": 15.54,
+            "word": "Not"
+          },
+          {
+            "end_seconds": 15.96,
+            "probability": 0.993917,
+            "start_seconds": 15.64,
+            "word": "alone"
+          },
+          {
+            "end_seconds": 16.2,
+            "probability": 0.992023,
+            "start_seconds": 15.96,
+            "word": "for"
+          },
+          {
+            "end_seconds": 16.7,
+            "probability": 0.997454,
+            "start_seconds": 16.2,
+            "word": "himself,"
+          },
+          {
+            "end_seconds": 17.3,
+            "probability": 0.995244,
+            "start_seconds": 16.92,
+            "word": "but"
+          },
+          {
+            "end_seconds": 17.52,
+            "probability": 0.996804,
+            "start_seconds": 17.3,
+            "word": "for"
+          },
+          {
+            "end_seconds": 17.98,
+            "probability": 0.973662,
+            "start_seconds": 17.52,
+            "word": "every"
+          },
+          {
+            "end_seconds": 18.68,
+            "probability": 0.78961,
+            "start_seconds": 17.98,
+            "word": "tidewater"
+          },
+          {
+            "end_seconds": 19.14,
+            "probability": 0.941774,
+            "start_seconds": 18.68,
+            "word": "dog,"
+          },
+          {
+            "end_seconds": 19.82,
+            "probability": 0.701955,
+            "start_seconds": 19.66,
+            "word": "Strong"
+          },
+          {
+            "end_seconds": 20.06,
+            "probability": 0.996741,
+            "start_seconds": 19.82,
+            "word": "of"
+          },
+          {
+            "end_seconds": 20.34,
+            "probability": 0.940261,
+            "start_seconds": 20.06,
+            "word": "muscle,"
+          },
+          {
+            "end_seconds": 20.9,
+            "probability": 0.990258,
+            "start_seconds": 20.66,
+            "word": "and"
+          },
+          {
+            "end_seconds": 21.04,
+            "probability": 0.996376,
+            "start_seconds": 20.9,
+            "word": "with"
+          },
+          {
+            "end_seconds": 21.52,
+            "probability": 0.991394,
+            "start_seconds": 21.04,
+            "word": "warm"
+          },
+          {
+            "end_seconds": 21.86,
+            "probability": 0.704561,
+            "start_seconds": 21.52,
+            "word": "long"
+          },
+          {
+            "end_seconds": 22.24,
+            "probability": 0.997264,
+            "start_seconds": 21.86,
+            "word": "hair,"
+          },
+          {
+            "end_seconds": 22.96,
+            "probability": 0.803874,
+            "start_seconds": 22.68,
+            "word": "From"
+          },
+          {
+            "end_seconds": 23.42,
+            "probability": 0.997307,
+            "start_seconds": 22.96,
+            "word": "Puget"
+          },
+          {
+            "end_seconds": 23.82,
+            "probability": 0.993501,
+            "start_seconds": 23.42,
+            "word": "Sound"
+          },
+          {
+            "end_seconds": 24.22,
+            "probability": 0.968158,
+            "start_seconds": 23.82,
+            "word": "to"
+          },
+          {
+            "end_seconds": 24.54,
+            "probability": 0.995769,
+            "start_seconds": 24.22,
+            "word": "San"
+          },
+          {
+            "end_seconds": 24.96,
+            "probability": 0.989511,
+            "start_seconds": 24.54,
+            "word": "Diego."
+          },
+          {
+            "end_seconds": 26.06,
+            "probability": 0.756228,
+            "start_seconds": 24.96,
+            "word": "Because"
+          },
+          {
+            "end_seconds": 26.48,
+            "probability": 0.979377,
+            "start_seconds": 26.06,
+            "word": "men"
+          },
+          {
+            "end_seconds": 27.24,
+            "probability": 0.870594,
+            "start_seconds": 26.48,
+            "word": "groping"
+          },
+          {
+            "end_seconds": 27.38,
+            "probability": 0.9967,
+            "start_seconds": 27.24,
+            "word": "in"
+          },
+          {
+            "end_seconds": 27.56,
+            "probability": 0.994705,
+            "start_seconds": 27.38,
+            "word": "the"
+          },
+          {
+            "end_seconds": 27.84,
+            "probability": 0.87803,
+            "start_seconds": 27.56,
+            "word": "Arctic"
+          },
+          {
+            "end_seconds": 28.3,
+            "probability": 0.979451,
+            "start_seconds": 27.84,
+            "word": "darkness"
+          },
+          {
+            "end_seconds": 28.88,
+            "probability": 0.961921,
+            "start_seconds": 28.3,
+            "word": "had"
+          },
+          {
+            "end_seconds": 29.2,
+            "probability": 0.999277,
+            "start_seconds": 28.88,
+            "word": "found"
+          },
+          {
+            "end_seconds": 29.38,
+            "probability": 0.975185,
+            "start_seconds": 29.2,
+            "word": "a"
+          },
+          {
+            "end_seconds": 29.66,
+            "probability": 0.992698,
+            "start_seconds": 29.38,
+            "word": "yellow"
+          },
+          {
+            "end_seconds": 29.96,
+            "probability": 0.699839,
+            "start_seconds": 29.66,
+            "word": "metal,"
+          },
+          {
+            "end_seconds": 30.68,
+            "probability": 0.995639,
+            "start_seconds": 30.46,
+            "word": "and"
+          },
+          {
+            "end_seconds": 30.98,
+            "probability": 0.998289,
+            "start_seconds": 30.68,
+            "word": "because"
+          },
+          {
+            "end_seconds": 31.56,
+            "probability": 0.9716,
+            "start_seconds": 30.98,
+            "word": "steamship"
+          },
+          {
+            "end_seconds": 31.78,
+            "probability": 0.996505,
+            "start_seconds": 31.56,
+            "word": "and"
+          },
+          {
+            "end_seconds": 32.42,
+            "probability": 0.998383,
+            "start_seconds": 31.78,
+            "word": "transportation"
+          },
+          {
+            "end_seconds": 32.94,
+            "probability": 0.998084,
+            "start_seconds": 32.42,
+            "word": "companies"
+          },
+          {
+            "end_seconds": 33.34,
+            "probability": 0.996563,
+            "start_seconds": 32.94,
+            "word": "were"
+          },
+          {
+            "end_seconds": 33.76,
+            "probability": 0.995731,
+            "start_seconds": 33.34,
+            "word": "booming"
+          },
+          {
+            "end_seconds": 34.0,
+            "probability": 0.979444,
+            "start_seconds": 33.76,
+            "word": "the"
+          },
+          {
+            "end_seconds": 34.36,
+            "probability": 0.956038,
+            "start_seconds": 34.0,
+            "word": "find,"
+          },
+          {
+            "end_seconds": 35.44,
+            "probability": 0.991684,
+            "start_seconds": 35.12,
+            "word": "thousands"
+          },
+          {
+            "end_seconds": 35.74,
+            "probability": 0.999511,
+            "start_seconds": 35.44,
+            "word": "of"
+          },
+          {
+            "end_seconds": 35.96,
+            "probability": 0.999473,
+            "start_seconds": 35.74,
+            "word": "men"
+          },
+          {
+            "end_seconds": 36.36,
+            "probability": 0.998297,
+            "start_seconds": 35.96,
+            "word": "were"
+          },
+          {
+            "end_seconds": 36.8,
+            "probability": 0.998841,
+            "start_seconds": 36.36,
+            "word": "rushing"
+          },
+          {
+            "end_seconds": 37.08,
+            "probability": 0.996648,
+            "start_seconds": 36.8,
+            "word": "into"
+          },
+          {
+            "end_seconds": 37.3,
+            "probability": 0.995464,
+            "start_seconds": 37.08,
+            "word": "the"
+          },
+          {
+            "end_seconds": 37.76,
+            "probability": 0.906302,
+            "start_seconds": 37.3,
+            "word": "Northland."
+          },
+          {
+            "end_seconds": 38.82,
+            "probability": 0.997778,
+            "start_seconds": 38.58,
+            "word": "These"
+          },
+          {
+            "end_seconds": 39.08,
+            "probability": 0.999504,
+            "start_seconds": 38.82,
+            "word": "men"
+          },
+          {
+            "end_seconds": 39.42,
+            "probability": 0.998945,
+            "start_seconds": 39.08,
+            "word": "wanted"
+          },
+          {
+            "end_seconds": 39.92,
+            "probability": 0.999081,
+            "start_seconds": 39.42,
+            "word": "dogs,"
+          },
+          {
+            "end_seconds": 40.42,
+            "probability": 0.998921,
+            "start_seconds": 39.92,
+            "word": "and"
+          },
+          {
+            "end_seconds": 40.56,
+            "probability": 0.998327,
+            "start_seconds": 40.42,
+            "word": "the"
+          },
+          {
+            "end_seconds": 40.88,
+            "probability": 0.999443,
+            "start_seconds": 40.56,
+            "word": "dogs"
+          },
+          {
+            "end_seconds": 41.08,
+            "probability": 0.99802,
+            "start_seconds": 40.88,
+            "word": "they"
+          },
+          {
+            "end_seconds": 41.44,
+            "probability": 0.99939,
+            "start_seconds": 41.08,
+            "word": "wanted"
+          },
+          {
+            "end_seconds": 41.82,
+            "probability": 0.991556,
+            "start_seconds": 41.44,
+            "word": "were"
+          },
+          {
+            "end_seconds": 42.16,
+            "probability": 0.998555,
+            "start_seconds": 41.82,
+            "word": "heavy"
+          },
+          {
+            "end_seconds": 42.62,
+            "probability": 0.999569,
+            "start_seconds": 42.16,
+            "word": "dogs"
+          },
+          {
+            "end_seconds": 43.1,
+            "probability": 0.775528,
+            "start_seconds": 42.62,
+            "word": "with"
+          },
+          {
+            "end_seconds": 43.58,
+            "probability": 0.999224,
+            "start_seconds": 43.1,
+            "word": "strong"
+          },
+          {
+            "end_seconds": 43.96,
+            "probability": 0.994436,
+            "start_seconds": 43.58,
+            "word": "muscles"
+          },
+          {
+            "end_seconds": 44.22,
+            "probability": 0.990346,
+            "start_seconds": 43.96,
+            "word": "by"
+          },
+          {
+            "end_seconds": 44.46,
+            "probability": 0.99953,
+            "start_seconds": 44.22,
+            "word": "which"
+          },
+          {
+            "end_seconds": 44.64,
+            "probability": 0.998956,
+            "start_seconds": 44.46,
+            "word": "to"
+          },
+          {
+            "end_seconds": 45.02,
+            "probability": 0.998785,
+            "start_seconds": 44.64,
+            "word": "toil,"
+          },
+          {
+            "end_seconds": 45.52,
+            "probability": 0.998878,
+            "start_seconds": 45.4,
+            "word": "and"
+          },
+          {
+            "end_seconds": 45.88,
+            "probability": 0.996786,
+            "start_seconds": 45.52,
+            "word": "furry"
+          },
+          {
+            "end_seconds": 46.24,
+            "probability": 0.998535,
+            "start_seconds": 45.88,
+            "word": "coats"
+          },
+          {
+            "end_seconds": 46.7,
+            "probability": 0.981284,
+            "start_seconds": 46.24,
+            "word": "to"
+          },
+          {
+            "end_seconds": 47.12,
+            "probability": 0.999453,
+            "start_seconds": 46.7,
+            "word": "protect"
+          },
+          {
+            "end_seconds": 47.32,
+            "probability": 0.999338,
+            "start_seconds": 47.12,
+            "word": "them"
+          },
+          {
+            "end_seconds": 47.52,
+            "probability": 0.999585,
+            "start_seconds": 47.32,
+            "word": "from"
+          },
+          {
+            "end_seconds": 47.66,
+            "probability": 0.998268,
+            "start_seconds": 47.52,
+            "word": "the"
+          },
+          {
+            "end_seconds": 48.08,
+            "probability": 0.992546,
+            "start_seconds": 47.66,
+            "word": "frost."
+          },
+          {
+            "end_seconds": 49.0,
+            "probability": 0.960671,
+            "start_seconds": 48.86,
+            "word": "Buck"
+          },
+          {
+            "end_seconds": 49.36,
+            "probability": 0.99727,
+            "start_seconds": 49.0,
+            "word": "lived"
+          },
+          {
+            "end_seconds": 49.52,
+            "probability": 0.946824,
+            "start_seconds": 49.36,
+            "word": "at"
+          },
+          {
+            "end_seconds": 49.68,
+            "probability": 0.997858,
+            "start_seconds": 49.52,
+            "word": "a"
+          },
+          {
+            "end_seconds": 49.86,
+            "probability": 0.996666,
+            "start_seconds": 49.68,
+            "word": "big"
+          },
+          {
+            "end_seconds": 50.24,
+            "probability": 0.999354,
+            "start_seconds": 49.86,
+            "word": "house"
+          },
+          {
+            "end_seconds": 50.7,
+            "probability": 0.97876,
+            "start_seconds": 50.24,
+            "word": "in"
+          },
+          {
+            "end_seconds": 50.94,
+            "probability": 0.998456,
+            "start_seconds": 50.7,
+            "word": "the"
+          },
+          {
+            "end_seconds": 51.74,
+            "probability": 0.892678,
+            "start_seconds": 50.94,
+            "word": "sunkissed"
+          },
+          {
+            "end_seconds": 52.08,
+            "probability": 0.983017,
+            "start_seconds": 51.74,
+            "word": "Santa"
+          },
+          {
+            "end_seconds": 52.44,
+            "probability": 0.997364,
+            "start_seconds": 52.08,
+            "word": "Clara"
+          },
+          {
+            "end_seconds": 52.76,
+            "probability": 0.908142,
+            "start_seconds": 52.44,
+            "word": "Valley."
+          }
+        ],
+        "audio_sha256": "d472be904d582929959ed719e808078ad395a84527140984a104aa0608d9df4c",
+        "coverage": 0.9528,
+        "duplicate_tokens": {},
+        "equal_token_count": 121,
+        "evaluated_source_sha256": "05370ad2a3d78a0ae3632feef141b53fcc5ffb2c83bf061b523bf6d5572f94e8",
+        "evaluated_transcript_sha256": "f526f6baf6b4fa9928939b2ea05654430e02bcb6a27c8757599b9094c1a088bf",
+        "first_words_match": true,
+        "last_words_match": false,
+        "missing_tokens": {
+          "custom's": 1,
+          "ferine": 1,
+          "kissed": 1,
+          "sun": 1,
+          "tide": 1,
+          "water": 1
+        },
+        "no_duplicate_content": true,
+        "no_missing_content": false,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              6,
+              7
+            ],
+            "source_tokens": [
+              "custom's"
+            ],
+            "transcript_range": [
+              6,
+              7
+            ],
+            "transcript_tokens": [
+              "customs"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              15,
+              16
+            ],
+            "source_tokens": [
+              "ferine"
+            ],
+            "transcript_range": [
+              15,
+              16
+            ],
+            "transcript_tokens": [
+              "ferrine"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              39,
+              41
+            ],
+            "source_tokens": [
+              "tide",
+              "water"
+            ],
+            "transcript_range": [
+              39,
+              40
+            ],
+            "transcript_tokens": [
+              "tidewater"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              122,
+              124
+            ],
+            "source_tokens": [
+              "sun",
+              "kissed"
+            ],
+            "transcript_range": [
+              121,
+              122
+            ],
+            "transcript_tokens": [
+              "sunkissed"
+            ]
+          }
+        ],
+        "ordered_content_integrity_pass": false,
+        "pass": false,
+        "passage_id": "opening",
+        "precision": 0.968,
+        "score": 9.6032,
+        "source_equivalences_applied": [],
+        "source_text_sha256": "05370ad2a3d78a0ae3632feef141b53fcc5ffb2c83bf061b523bf6d5572f94e8",
+        "source_token_count": 127,
+        "transcript": "Old Longings' nomadic leap, chafing at customs chain, Again from its brumal sleep, wakens the ferrine strain. Buck did not read the newspapers, or he would have known that trouble was brewing, Not alone for himself, but for every tidewater dog, Strong of muscle, and with warm long hair, From Puget Sound to San Diego. Because men groping in the Arctic darkness had found a yellow metal, and because steamship and transportation companies were booming the find, thousands of men were rushing into the Northland. These men wanted dogs, and the dogs they wanted were heavy dogs with strong muscles by which to toil, and furry coats to protect them from the frost. Buck lived at a big house in the sunkissed Santa Clara Valley.",
+        "transcript_equivalences_applied": [],
+        "transcript_sha256": "f526f6baf6b4fa9928939b2ea05654430e02bcb6a27c8757599b9094c1a088bf",
+        "transcript_token_count": 125,
+        "unexpected_tokens": {
+          "customs": 1,
+          "ferrine": 1,
+          "sunkissed": 1,
+          "tidewater": 1
+        },
+        "word_timestamp_anomalies": [],
+        "word_timestamp_evidence_valid": true
+      },
+      {
+        "audio_derived_word_timestamps": [
+          {
+            "end_seconds": 0.28,
+            "probability": 0.804317,
+            "start_seconds": 0.0,
+            "word": "There"
+          },
+          {
+            "end_seconds": 0.52,
+            "probability": 0.996693,
+            "start_seconds": 0.28,
+            "word": "was"
+          },
+          {
+            "end_seconds": 0.82,
+            "probability": 0.990789,
+            "start_seconds": 0.52,
+            "word": "no"
+          },
+          {
+            "end_seconds": 1.28,
+            "probability": 0.994166,
+            "start_seconds": 0.82,
+            "word": "power"
+          },
+          {
+            "end_seconds": 1.54,
+            "probability": 0.993636,
+            "start_seconds": 1.28,
+            "word": "of"
+          },
+          {
+            "end_seconds": 2.28,
+            "probability": 0.991479,
+            "start_seconds": 1.54,
+            "word": "recuperation"
+          },
+          {
+            "end_seconds": 2.66,
+            "probability": 0.997632,
+            "start_seconds": 2.28,
+            "word": "left,"
+          },
+          {
+            "end_seconds": 3.3,
+            "probability": 0.970854,
+            "start_seconds": 3.14,
+            "word": "no"
+          },
+          {
+            "end_seconds": 3.72,
+            "probability": 0.903727,
+            "start_seconds": 3.3,
+            "word": "reserved"
+          },
+          {
+            "end_seconds": 4.08,
+            "probability": 0.997513,
+            "start_seconds": 3.72,
+            "word": "strength"
+          },
+          {
+            "end_seconds": 4.3,
+            "probability": 0.998338,
+            "start_seconds": 4.08,
+            "word": "to"
+          },
+          {
+            "end_seconds": 4.52,
+            "probability": 0.99946,
+            "start_seconds": 4.3,
+            "word": "call"
+          },
+          {
+            "end_seconds": 4.86,
+            "probability": 0.995887,
+            "start_seconds": 4.52,
+            "word": "upon."
+          },
+          {
+            "end_seconds": 5.62,
+            "probability": 0.991956,
+            "start_seconds": 5.48,
+            "word": "It"
+          },
+          {
+            "end_seconds": 5.78,
+            "probability": 0.995833,
+            "start_seconds": 5.62,
+            "word": "had"
+          },
+          {
+            "end_seconds": 6.0,
+            "probability": 0.987631,
+            "start_seconds": 5.78,
+            "word": "been"
+          },
+          {
+            "end_seconds": 6.4,
+            "probability": 0.985052,
+            "start_seconds": 6.0,
+            "word": "all"
+          },
+          {
+            "end_seconds": 6.9,
+            "probability": 0.988844,
+            "start_seconds": 6.4,
+            "word": "used,"
+          },
+          {
+            "end_seconds": 7.48,
+            "probability": 0.991727,
+            "start_seconds": 7.38,
+            "word": "the"
+          },
+          {
+            "end_seconds": 7.92,
+            "probability": 0.994995,
+            "start_seconds": 7.48,
+            "word": "last"
+          },
+          {
+            "end_seconds": 8.26,
+            "probability": 0.768223,
+            "start_seconds": 7.92,
+            "word": "least"
+          },
+          {
+            "end_seconds": 8.54,
+            "probability": 0.996048,
+            "start_seconds": 8.26,
+            "word": "bit"
+          },
+          {
+            "end_seconds": 8.64,
+            "probability": 0.997301,
+            "start_seconds": 8.54,
+            "word": "of"
+          },
+          {
+            "end_seconds": 8.86,
+            "probability": 0.999581,
+            "start_seconds": 8.64,
+            "word": "it."
+          },
+          {
+            "end_seconds": 9.78,
+            "probability": 0.99682,
+            "start_seconds": 9.48,
+            "word": "Every"
+          },
+          {
+            "end_seconds": 10.14,
+            "probability": 0.997729,
+            "start_seconds": 9.78,
+            "word": "muscle,"
+          },
+          {
+            "end_seconds": 10.78,
+            "probability": 0.991627,
+            "start_seconds": 10.6,
+            "word": "every"
+          },
+          {
+            "end_seconds": 11.14,
+            "probability": 0.962394,
+            "start_seconds": 10.78,
+            "word": "fiber,"
+          },
+          {
+            "end_seconds": 11.76,
+            "probability": 0.995348,
+            "start_seconds": 11.54,
+            "word": "every"
+          },
+          {
+            "end_seconds": 12.16,
+            "probability": 0.999317,
+            "start_seconds": 11.76,
+            "word": "cell,"
+          },
+          {
+            "end_seconds": 12.62,
+            "probability": 0.997158,
+            "start_seconds": 12.52,
+            "word": "was"
+          },
+          {
+            "end_seconds": 13.12,
+            "probability": 0.978099,
+            "start_seconds": 12.62,
+            "word": "tired,"
+          },
+          {
+            "end_seconds": 13.9,
+            "probability": 0.995148,
+            "start_seconds": 13.76,
+            "word": "dead"
+          },
+          {
+            "end_seconds": 14.34,
+            "probability": 0.970255,
+            "start_seconds": 13.9,
+            "word": "tired."
+          },
+          {
+            "end_seconds": 15.24,
+            "probability": 0.977552,
+            "start_seconds": 15.02,
+            "word": "And"
+          },
+          {
+            "end_seconds": 15.38,
+            "probability": 0.985641,
+            "start_seconds": 15.24,
+            "word": "there"
+          },
+          {
+            "end_seconds": 15.58,
+            "probability": 0.998715,
+            "start_seconds": 15.38,
+            "word": "was"
+          },
+          {
+            "end_seconds": 15.86,
+            "probability": 0.988318,
+            "start_seconds": 15.58,
+            "word": "reason"
+          },
+          {
+            "end_seconds": 16.14,
+            "probability": 0.999398,
+            "start_seconds": 15.86,
+            "word": "for"
+          },
+          {
+            "end_seconds": 16.34,
+            "probability": 0.999502,
+            "start_seconds": 16.14,
+            "word": "it."
+          }
+        ],
+        "audio_sha256": "55de9b6019524101ed16e04d851ae0ab749550d4c494dc2400265a847dee094f",
+        "coverage": 0.95,
+        "duplicate_tokens": {},
+        "equal_token_count": 38,
+        "evaluated_source_sha256": "16872bf473fb385797c2c13118bb033de18ab8139478e458ac73e89b3f817804",
+        "evaluated_transcript_sha256": "498a8336fb33d02199051bcbc9114bdd6c61a1ef59dda72b7a4f65d3b2ba09bf",
+        "first_words_match": true,
+        "last_words_match": true,
+        "missing_tokens": {
+          "fibre": 1,
+          "reserve": 1
+        },
+        "no_duplicate_content": true,
+        "no_missing_content": false,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              8,
+              9
+            ],
+            "source_tokens": [
+              "reserve"
+            ],
+            "transcript_range": [
+              8,
+              9
+            ],
+            "transcript_tokens": [
+              "reserved"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              27,
+              28
+            ],
+            "source_tokens": [
+              "fibre"
+            ],
+            "transcript_range": [
+              27,
+              28
+            ],
+            "transcript_tokens": [
+              "fiber"
+            ]
+          }
+        ],
+        "ordered_content_integrity_pass": false,
+        "pass": false,
+        "passage_id": "middle",
+        "precision": 0.95,
+        "score": 9.5,
+        "source_equivalences_applied": [],
+        "source_text_sha256": "16872bf473fb385797c2c13118bb033de18ab8139478e458ac73e89b3f817804",
+        "source_token_count": 40,
+        "transcript": "There was no power of recuperation left, no reserved strength to call upon. It had been all used, the last least bit of it. Every muscle, every fiber, every cell, was tired, dead tired. And there was reason for it.",
+        "transcript_equivalences_applied": [],
+        "transcript_sha256": "498a8336fb33d02199051bcbc9114bdd6c61a1ef59dda72b7a4f65d3b2ba09bf",
+        "transcript_token_count": 40,
+        "unexpected_tokens": {
+          "fiber": 1,
+          "reserved": 1
+        },
+        "word_timestamp_anomalies": [],
+        "word_timestamp_evidence_valid": true
+      },
+      {
+        "audio_derived_word_timestamps": [
+          {
+            "end_seconds": 0.44,
+            "probability": 0.872326,
+            "start_seconds": 0.0,
+            "word": "Three"
+          },
+          {
+            "end_seconds": 0.74,
+            "probability": 0.996982,
+            "start_seconds": 0.44,
+            "word": "men"
+          },
+          {
+            "end_seconds": 0.98,
+            "probability": 0.995192,
+            "start_seconds": 0.74,
+            "word": "from"
+          },
+          {
+            "end_seconds": 1.18,
+            "probability": 0.981113,
+            "start_seconds": 0.98,
+            "word": "a"
+          },
+          {
+            "end_seconds": 1.48,
+            "probability": 0.962187,
+            "start_seconds": 1.18,
+            "word": "neighboring"
+          },
+          {
+            "end_seconds": 1.9,
+            "probability": 0.987671,
+            "start_seconds": 1.48,
+            "word": "tent"
+          },
+          {
+            "end_seconds": 2.2,
+            "probability": 0.984219,
+            "start_seconds": 1.9,
+            "word": "came"
+          },
+          {
+            "end_seconds": 2.46,
+            "probability": 0.996179,
+            "start_seconds": 2.2,
+            "word": "out"
+          },
+          {
+            "end_seconds": 2.74,
+            "probability": 0.983567,
+            "start_seconds": 2.46,
+            "word": "and"
+          },
+          {
+            "end_seconds": 3.0,
+            "probability": 0.992127,
+            "start_seconds": 2.74,
+            "word": "looked"
+          },
+          {
+            "end_seconds": 3.32,
+            "probability": 0.995407,
+            "start_seconds": 3.0,
+            "word": "on,"
+          },
+          {
+            "end_seconds": 4.06,
+            "probability": 0.980313,
+            "start_seconds": 3.84,
+            "word": "grinning"
+          },
+          {
+            "end_seconds": 4.42,
+            "probability": 0.989569,
+            "start_seconds": 4.06,
+            "word": "and"
+          },
+          {
+            "end_seconds": 4.82,
+            "probability": 0.987954,
+            "start_seconds": 4.42,
+            "word": "winking"
+          },
+          {
+            "end_seconds": 5.04,
+            "probability": 0.996688,
+            "start_seconds": 4.82,
+            "word": "at"
+          },
+          {
+            "end_seconds": 5.18,
+            "probability": 0.995646,
+            "start_seconds": 5.04,
+            "word": "one"
+          },
+          {
+            "end_seconds": 5.52,
+            "probability": 0.991627,
+            "start_seconds": 5.18,
+            "word": "another."
+          },
+          {
+            "end_seconds": 6.48,
+            "probability": 0.272833,
+            "start_seconds": 6.0,
+            "word": "You've"
+          },
+          {
+            "end_seconds": 6.56,
+            "probability": 0.995369,
+            "start_seconds": 6.48,
+            "word": "got"
+          },
+          {
+            "end_seconds": 6.74,
+            "probability": 0.979674,
+            "start_seconds": 6.56,
+            "word": "a"
+          },
+          {
+            "end_seconds": 6.94,
+            "probability": 0.988822,
+            "start_seconds": 6.74,
+            "word": "right"
+          },
+          {
+            "end_seconds": 7.36,
+            "probability": 0.836937,
+            "start_seconds": 6.94,
+            "word": "smart"
+          },
+          {
+            "end_seconds": 7.58,
+            "probability": 0.853902,
+            "start_seconds": 7.36,
+            "word": "load"
+          },
+          {
+            "end_seconds": 7.8,
+            "probability": 0.982964,
+            "start_seconds": 7.58,
+            "word": "as"
+          },
+          {
+            "end_seconds": 7.92,
+            "probability": 0.997418,
+            "start_seconds": 7.8,
+            "word": "it"
+          },
+          {
+            "end_seconds": 8.24,
+            "probability": 0.99845,
+            "start_seconds": 7.92,
+            "word": "is,"
+          },
+          {
+            "end_seconds": 8.66,
+            "probability": 0.992108,
+            "start_seconds": 8.46,
+            "word": "said"
+          },
+          {
+            "end_seconds": 8.88,
+            "probability": 0.998095,
+            "start_seconds": 8.66,
+            "word": "one"
+          },
+          {
+            "end_seconds": 8.98,
+            "probability": 0.99775,
+            "start_seconds": 8.88,
+            "word": "of"
+          },
+          {
+            "end_seconds": 9.16,
+            "probability": 0.999293,
+            "start_seconds": 8.98,
+            "word": "them,"
+          },
+          {
+            "end_seconds": 9.78,
+            "probability": 0.972345,
+            "start_seconds": 9.58,
+            "word": "and"
+          },
+          {
+            "end_seconds": 9.96,
+            "probability": 0.987048,
+            "start_seconds": 9.78,
+            "word": "it's"
+          },
+          {
+            "end_seconds": 10.12,
+            "probability": 0.998935,
+            "start_seconds": 9.96,
+            "word": "not"
+          },
+          {
+            "end_seconds": 10.38,
+            "probability": 0.998161,
+            "start_seconds": 10.12,
+            "word": "me"
+          },
+          {
+            "end_seconds": 10.58,
+            "probability": 0.783389,
+            "start_seconds": 10.38,
+            "word": "should"
+          },
+          {
+            "end_seconds": 10.8,
+            "probability": 0.991379,
+            "start_seconds": 10.58,
+            "word": "tell"
+          },
+          {
+            "end_seconds": 10.98,
+            "probability": 0.995375,
+            "start_seconds": 10.8,
+            "word": "you"
+          },
+          {
+            "end_seconds": 11.16,
+            "probability": 0.98599,
+            "start_seconds": 10.98,
+            "word": "your"
+          },
+          {
+            "end_seconds": 11.54,
+            "probability": 0.998528,
+            "start_seconds": 11.16,
+            "word": "business,"
+          },
+          {
+            "end_seconds": 12.06,
+            "probability": 0.994668,
+            "start_seconds": 11.94,
+            "word": "but"
+          },
+          {
+            "end_seconds": 12.28,
+            "probability": 0.997562,
+            "start_seconds": 12.06,
+            "word": "I"
+          },
+          {
+            "end_seconds": 12.6,
+            "probability": 0.998046,
+            "start_seconds": 12.28,
+            "word": "wouldn't"
+          },
+          {
+            "end_seconds": 12.84,
+            "probability": 0.989793,
+            "start_seconds": 12.6,
+            "word": "tote"
+          },
+          {
+            "end_seconds": 13.0,
+            "probability": 0.99464,
+            "start_seconds": 12.84,
+            "word": "that"
+          },
+          {
+            "end_seconds": 13.28,
+            "probability": 0.995854,
+            "start_seconds": 13.0,
+            "word": "tent"
+          },
+          {
+            "end_seconds": 13.54,
+            "probability": 0.979791,
+            "start_seconds": 13.28,
+            "word": "along"
+          },
+          {
+            "end_seconds": 13.74,
+            "probability": 0.968668,
+            "start_seconds": 13.54,
+            "word": "if"
+          },
+          {
+            "end_seconds": 13.88,
+            "probability": 0.98699,
+            "start_seconds": 13.74,
+            "word": "I"
+          },
+          {
+            "end_seconds": 14.04,
+            "probability": 0.994933,
+            "start_seconds": 13.88,
+            "word": "was"
+          },
+          {
+            "end_seconds": 14.34,
+            "probability": 0.998814,
+            "start_seconds": 14.04,
+            "word": "you."
+          },
+          {
+            "end_seconds": 15.7,
+            "probability": 0.479902,
+            "start_seconds": 15.22,
+            "word": "Untrained"
+          },
+          {
+            "end_seconds": 16.0,
+            "probability": 0.927064,
+            "start_seconds": 15.7,
+            "word": "of,"
+          },
+          {
+            "end_seconds": 16.48,
+            "probability": 0.996931,
+            "start_seconds": 16.3,
+            "word": "cried"
+          },
+          {
+            "end_seconds": 16.98,
+            "probability": 0.938834,
+            "start_seconds": 16.48,
+            "word": "Mercedes,"
+          },
+          {
+            "end_seconds": 17.66,
+            "probability": 0.996102,
+            "start_seconds": 17.26,
+            "word": "throwing"
+          },
+          {
+            "end_seconds": 17.82,
+            "probability": 0.994376,
+            "start_seconds": 17.66,
+            "word": "up"
+          },
+          {
+            "end_seconds": 18.0,
+            "probability": 0.994728,
+            "start_seconds": 17.82,
+            "word": "her"
+          },
+          {
+            "end_seconds": 18.26,
+            "probability": 0.994237,
+            "start_seconds": 18.0,
+            "word": "hands"
+          },
+          {
+            "end_seconds": 18.42,
+            "probability": 0.984852,
+            "start_seconds": 18.26,
+            "word": "in"
+          },
+          {
+            "end_seconds": 18.8,
+            "probability": 0.9993,
+            "start_seconds": 18.42,
+            "word": "dainty"
+          },
+          {
+            "end_seconds": 19.22,
+            "probability": 0.998126,
+            "start_seconds": 18.8,
+            "word": "dismay,"
+          },
+          {
+            "end_seconds": 19.92,
+            "probability": 0.234772,
+            "start_seconds": 19.76,
+            "word": "how"
+          },
+          {
+            "end_seconds": 20.18,
+            "probability": 0.954146,
+            "start_seconds": 19.92,
+            "word": "ever"
+          },
+          {
+            "end_seconds": 20.3,
+            "probability": 0.993533,
+            "start_seconds": 20.18,
+            "word": "in"
+          },
+          {
+            "end_seconds": 20.46,
+            "probability": 0.997439,
+            "start_seconds": 20.3,
+            "word": "the"
+          },
+          {
+            "end_seconds": 20.68,
+            "probability": 0.997861,
+            "start_seconds": 20.46,
+            "word": "world"
+          },
+          {
+            "end_seconds": 20.9,
+            "probability": 0.969089,
+            "start_seconds": 20.68,
+            "word": "could"
+          },
+          {
+            "end_seconds": 21.06,
+            "probability": 0.996997,
+            "start_seconds": 20.9,
+            "word": "I"
+          },
+          {
+            "end_seconds": 21.4,
+            "probability": 0.9943,
+            "start_seconds": 21.06,
+            "word": "manage"
+          },
+          {
+            "end_seconds": 21.7,
+            "probability": 0.994175,
+            "start_seconds": 21.4,
+            "word": "without"
+          },
+          {
+            "end_seconds": 21.94,
+            "probability": 0.997419,
+            "start_seconds": 21.7,
+            "word": "a"
+          },
+          {
+            "end_seconds": 22.14,
+            "probability": 0.996954,
+            "start_seconds": 21.94,
+            "word": "tent?"
+          },
+          {
+            "end_seconds": 23.4,
+            "probability": 0.929854,
+            "start_seconds": 22.94,
+            "word": "It's"
+          },
+          {
+            "end_seconds": 23.86,
+            "probability": 0.899865,
+            "start_seconds": 23.4,
+            "word": "springtime"
+          },
+          {
+            "end_seconds": 24.36,
+            "probability": 0.442215,
+            "start_seconds": 23.86,
+            "word": "and"
+          },
+          {
+            "end_seconds": 24.5,
+            "probability": 0.996513,
+            "start_seconds": 24.36,
+            "word": "you"
+          },
+          {
+            "end_seconds": 24.72,
+            "probability": 0.995315,
+            "start_seconds": 24.5,
+            "word": "won't"
+          },
+          {
+            "end_seconds": 24.86,
+            "probability": 0.998377,
+            "start_seconds": 24.72,
+            "word": "get"
+          },
+          {
+            "end_seconds": 25.04,
+            "probability": 0.914432,
+            "start_seconds": 24.86,
+            "word": "any"
+          },
+          {
+            "end_seconds": 25.22,
+            "probability": 0.997908,
+            "start_seconds": 25.04,
+            "word": "more"
+          },
+          {
+            "end_seconds": 25.5,
+            "probability": 0.998538,
+            "start_seconds": 25.22,
+            "word": "cold"
+          },
+          {
+            "end_seconds": 25.82,
+            "probability": 0.996092,
+            "start_seconds": 25.5,
+            "word": "weather,"
+          },
+          {
+            "end_seconds": 26.22,
+            "probability": 0.993727,
+            "start_seconds": 26.08,
+            "word": "the"
+          },
+          {
+            "end_seconds": 26.36,
+            "probability": 0.922929,
+            "start_seconds": 26.22,
+            "word": "man"
+          },
+          {
+            "end_seconds": 26.78,
+            "probability": 0.998205,
+            "start_seconds": 26.36,
+            "word": "replied."
+          }
+        ],
+        "audio_sha256": "9720973e979b78a3efcd4179bc2298bf3bdea33c13d04c6310b4b7a1ee629564",
+        "coverage": 0.9762,
+        "duplicate_tokens": {},
+        "equal_token_count": 82,
+        "evaluated_source_sha256": "9404a119032807e2b4250f5f3afbea2f403eee97d77bd3cfb5d9d0ffb391bffc",
+        "evaluated_transcript_sha256": "57adaa5a83d286036a0f98b60e8a62fa6122d6c1515b16e07c24862dc46464e7",
+        "first_words_match": true,
+        "last_words_match": true,
+        "missing_tokens": {
+          "however": 1,
+          "undreamed": 1
+        },
+        "no_duplicate_content": true,
+        "no_missing_content": false,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              50,
+              51
+            ],
+            "source_tokens": [
+              "undreamed"
+            ],
+            "transcript_range": [
+              50,
+              51
+            ],
+            "transcript_tokens": [
+              "untrained"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              61,
+              62
+            ],
+            "source_tokens": [
+              "however"
+            ],
+            "transcript_range": [
+              61,
+              63
+            ],
+            "transcript_tokens": [
+              "how",
+              "ever"
+            ]
+          }
+        ],
+        "ordered_content_integrity_pass": false,
+        "pass": false,
+        "passage_id": "dialogue_or_risk",
+        "precision": 0.9647,
+        "score": 9.7041,
+        "source_equivalences_applied": [
+          {
+            "equivalence": "your/yer",
+            "match_count": 1,
+            "replacement": "yer"
+          }
+        ],
+        "source_text_sha256": "2417692c0b2c8993fc012788f521e185dafdde38fdc0399652d0e223fed88ed8",
+        "source_token_count": 84,
+        "transcript": "Three men from a neighboring tent came out and looked on, grinning and winking at one another. You've got a right smart load as it is, said one of them, and it's not me should tell you your business, but I wouldn't tote that tent along if I was you. Untrained of, cried Mercedes, throwing up her hands in dainty dismay, how ever in the world could I manage without a tent? It's springtime and you won't get any more cold weather, the man replied.",
+        "transcript_equivalences_applied": [
+          {
+            "equivalence": "your/yer",
+            "match_count": 1,
+            "replacement": "yer"
+          }
+        ],
+        "transcript_sha256": "203e9ee3555b8b7c87b08f8bf4e247b39b33d5233bcdb2302d33fa4257ce734f",
+        "transcript_token_count": 85,
+        "unexpected_tokens": {
+          "ever": 1,
+          "how": 1,
+          "untrained": 1
+        },
+        "word_timestamp_anomalies": [],
+        "word_timestamp_evidence_valid": true
+      },
+      {
+        "audio_derived_word_timestamps": [
+          {
+            "end_seconds": 0.24,
+            "probability": 0.536054,
+            "start_seconds": 0.0,
+            "word": "He"
+          },
+          {
+            "end_seconds": 0.8,
+            "probability": 0.969614,
+            "start_seconds": 0.24,
+            "word": "crosses"
+          },
+          {
+            "end_seconds": 1.44,
+            "probability": 0.982534,
+            "start_seconds": 0.8,
+            "word": "alone"
+          },
+          {
+            "end_seconds": 1.88,
+            "probability": 0.92918,
+            "start_seconds": 1.44,
+            "word": "from"
+          },
+          {
+            "end_seconds": 2.12,
+            "probability": 0.989887,
+            "start_seconds": 1.88,
+            "word": "the"
+          },
+          {
+            "end_seconds": 2.62,
+            "probability": 0.972795,
+            "start_seconds": 2.12,
+            "word": "smiling"
+          },
+          {
+            "end_seconds": 3.38,
+            "probability": 0.820822,
+            "start_seconds": 2.62,
+            "word": "timberland"
+          },
+          {
+            "end_seconds": 4.06,
+            "probability": 0.772637,
+            "start_seconds": 3.38,
+            "word": "and"
+          },
+          {
+            "end_seconds": 4.4,
+            "probability": 0.996668,
+            "start_seconds": 4.06,
+            "word": "comes"
+          },
+          {
+            "end_seconds": 4.76,
+            "probability": 0.995753,
+            "start_seconds": 4.4,
+            "word": "down"
+          },
+          {
+            "end_seconds": 5.08,
+            "probability": 0.991471,
+            "start_seconds": 4.76,
+            "word": "into"
+          },
+          {
+            "end_seconds": 5.3,
+            "probability": 0.989831,
+            "start_seconds": 5.08,
+            "word": "an"
+          },
+          {
+            "end_seconds": 5.6,
+            "probability": 0.997379,
+            "start_seconds": 5.3,
+            "word": "open"
+          },
+          {
+            "end_seconds": 6.0,
+            "probability": 0.997277,
+            "start_seconds": 5.6,
+            "word": "space"
+          },
+          {
+            "end_seconds": 6.38,
+            "probability": 0.980119,
+            "start_seconds": 6.0,
+            "word": "among"
+          },
+          {
+            "end_seconds": 6.64,
+            "probability": 0.99531,
+            "start_seconds": 6.38,
+            "word": "the"
+          },
+          {
+            "end_seconds": 6.98,
+            "probability": 0.992877,
+            "start_seconds": 6.64,
+            "word": "trees."
+          },
+          {
+            "end_seconds": 8.34,
+            "probability": 0.98403,
+            "start_seconds": 8.08,
+            "word": "Here"
+          },
+          {
+            "end_seconds": 8.66,
+            "probability": 0.7843,
+            "start_seconds": 8.34,
+            "word": "a"
+          },
+          {
+            "end_seconds": 8.98,
+            "probability": 0.991784,
+            "start_seconds": 8.66,
+            "word": "yellow"
+          },
+          {
+            "end_seconds": 9.5,
+            "probability": 0.993086,
+            "start_seconds": 8.98,
+            "word": "stream"
+          },
+          {
+            "end_seconds": 10.0,
+            "probability": 0.996193,
+            "start_seconds": 9.5,
+            "word": "flows"
+          },
+          {
+            "end_seconds": 10.26,
+            "probability": 0.997007,
+            "start_seconds": 10.0,
+            "word": "from"
+          },
+          {
+            "end_seconds": 10.74,
+            "probability": 0.964648,
+            "start_seconds": 10.26,
+            "word": "rotted"
+          },
+          {
+            "end_seconds": 11.28,
+            "probability": 0.815409,
+            "start_seconds": 10.74,
+            "word": "moosehide"
+          },
+          {
+            "end_seconds": 11.74,
+            "probability": 0.728981,
+            "start_seconds": 11.28,
+            "word": "sacks"
+          },
+          {
+            "end_seconds": 12.66,
+            "probability": 0.897924,
+            "start_seconds": 11.74,
+            "word": "and"
+          },
+          {
+            "end_seconds": 13.02,
+            "probability": 0.997528,
+            "start_seconds": 12.66,
+            "word": "sinks"
+          },
+          {
+            "end_seconds": 13.34,
+            "probability": 0.995523,
+            "start_seconds": 13.02,
+            "word": "into"
+          },
+          {
+            "end_seconds": 13.54,
+            "probability": 0.998024,
+            "start_seconds": 13.34,
+            "word": "the"
+          },
+          {
+            "end_seconds": 13.84,
+            "probability": 0.998329,
+            "start_seconds": 13.54,
+            "word": "ground,"
+          },
+          {
+            "end_seconds": 14.56,
+            "probability": 0.991633,
+            "start_seconds": 14.12,
+            "word": "with"
+          },
+          {
+            "end_seconds": 15.0,
+            "probability": 0.997026,
+            "start_seconds": 14.56,
+            "word": "long"
+          },
+          {
+            "end_seconds": 15.62,
+            "probability": 0.99304,
+            "start_seconds": 15.0,
+            "word": "grasses"
+          },
+          {
+            "end_seconds": 15.92,
+            "probability": 0.993445,
+            "start_seconds": 15.62,
+            "word": "growing"
+          },
+          {
+            "end_seconds": 16.2,
+            "probability": 0.996119,
+            "start_seconds": 15.92,
+            "word": "through"
+          },
+          {
+            "end_seconds": 16.7,
+            "probability": 0.996604,
+            "start_seconds": 16.2,
+            "word": "it"
+          },
+          {
+            "end_seconds": 17.18,
+            "probability": 0.730539,
+            "start_seconds": 16.7,
+            "word": "and"
+          },
+          {
+            "end_seconds": 17.66,
+            "probability": 0.991566,
+            "start_seconds": 17.18,
+            "word": "vegetable"
+          },
+          {
+            "end_seconds": 18.08,
+            "probability": 0.953251,
+            "start_seconds": 17.66,
+            "word": "mold"
+          },
+          {
+            "end_seconds": 18.74,
+            "probability": 0.950728,
+            "start_seconds": 18.08,
+            "word": "overrunning"
+          },
+          {
+            "end_seconds": 19.08,
+            "probability": 0.995184,
+            "start_seconds": 18.74,
+            "word": "it"
+          },
+          {
+            "end_seconds": 19.6,
+            "probability": 0.95686,
+            "start_seconds": 19.08,
+            "word": "and"
+          },
+          {
+            "end_seconds": 19.98,
+            "probability": 0.998355,
+            "start_seconds": 19.6,
+            "word": "hiding"
+          },
+          {
+            "end_seconds": 20.22,
+            "probability": 0.980989,
+            "start_seconds": 19.98,
+            "word": "its"
+          },
+          {
+            "end_seconds": 20.48,
+            "probability": 0.998481,
+            "start_seconds": 20.22,
+            "word": "yellow"
+          },
+          {
+            "end_seconds": 20.72,
+            "probability": 0.998198,
+            "start_seconds": 20.48,
+            "word": "from"
+          },
+          {
+            "end_seconds": 20.92,
+            "probability": 0.998178,
+            "start_seconds": 20.72,
+            "word": "the"
+          },
+          {
+            "end_seconds": 21.16,
+            "probability": 0.983881,
+            "start_seconds": 20.92,
+            "word": "sun."
+          },
+          {
+            "end_seconds": 21.98,
+            "probability": 0.943465,
+            "start_seconds": 21.8,
+            "word": "And"
+          },
+          {
+            "end_seconds": 22.24,
+            "probability": 0.99136,
+            "start_seconds": 21.98,
+            "word": "here"
+          },
+          {
+            "end_seconds": 22.6,
+            "probability": 0.953185,
+            "start_seconds": 22.24,
+            "word": "he"
+          },
+          {
+            "end_seconds": 22.86,
+            "probability": 0.034641,
+            "start_seconds": 22.6,
+            "word": "He"
+          },
+          {
+            "end_seconds": 23.12,
+            "probability": 0.990659,
+            "start_seconds": 22.86,
+            "word": "for"
+          },
+          {
+            "end_seconds": 23.32,
+            "probability": 0.989467,
+            "start_seconds": 23.12,
+            "word": "a"
+          },
+          {
+            "end_seconds": 23.64,
+            "probability": 0.999108,
+            "start_seconds": 23.32,
+            "word": "time,"
+          },
+          {
+            "end_seconds": 24.64,
+            "probability": 0.961059,
+            "start_seconds": 24.26,
+            "word": "howling"
+          },
+          {
+            "end_seconds": 25.08,
+            "probability": 0.992949,
+            "start_seconds": 24.64,
+            "word": "once,"
+          },
+          {
+            "end_seconds": 26.12,
+            "probability": 0.980835,
+            "start_seconds": 25.8,
+            "word": "long"
+          },
+          {
+            "end_seconds": 26.44,
+            "probability": 0.982926,
+            "start_seconds": 26.12,
+            "word": "and"
+          },
+          {
+            "end_seconds": 27.0,
+            "probability": 0.998884,
+            "start_seconds": 26.44,
+            "word": "mournfully,"
+          },
+          {
+            "end_seconds": 27.8,
+            "probability": 0.99259,
+            "start_seconds": 27.6,
+            "word": "ere"
+          },
+          {
+            "end_seconds": 28.0,
+            "probability": 0.992763,
+            "start_seconds": 27.8,
+            "word": "he"
+          },
+          {
+            "end_seconds": 28.42,
+            "probability": 0.995748,
+            "start_seconds": 28.0,
+            "word": "departs."
+          },
+          {
+            "end_seconds": 29.6,
+            "probability": 0.992282,
+            "start_seconds": 29.16,
+            "word": "But"
+          },
+          {
+            "end_seconds": 29.74,
+            "probability": 0.992699,
+            "start_seconds": 29.6,
+            "word": "he"
+          },
+          {
+            "end_seconds": 29.92,
+            "probability": 0.997351,
+            "start_seconds": 29.74,
+            "word": "is"
+          },
+          {
+            "end_seconds": 30.18,
+            "probability": 0.998397,
+            "start_seconds": 29.92,
+            "word": "not"
+          },
+          {
+            "end_seconds": 30.72,
+            "probability": 0.996207,
+            "start_seconds": 30.18,
+            "word": "always"
+          },
+          {
+            "end_seconds": 31.16,
+            "probability": 0.998791,
+            "start_seconds": 30.72,
+            "word": "alone."
+          },
+          {
+            "end_seconds": 32.3,
+            "probability": 0.991742,
+            "start_seconds": 32.0,
+            "word": "When"
+          },
+          {
+            "end_seconds": 32.5,
+            "probability": 0.997812,
+            "start_seconds": 32.3,
+            "word": "the"
+          },
+          {
+            "end_seconds": 32.82,
+            "probability": 0.992808,
+            "start_seconds": 32.5,
+            "word": "long"
+          },
+          {
+            "end_seconds": 33.16,
+            "probability": 0.986401,
+            "start_seconds": 32.82,
+            "word": "winter"
+          },
+          {
+            "end_seconds": 33.46,
+            "probability": 0.990706,
+            "start_seconds": 33.16,
+            "word": "nights"
+          },
+          {
+            "end_seconds": 33.72,
+            "probability": 0.997717,
+            "start_seconds": 33.46,
+            "word": "come"
+          },
+          {
+            "end_seconds": 34.1,
+            "probability": 0.9966,
+            "start_seconds": 33.72,
+            "word": "on,"
+          },
+          {
+            "end_seconds": 34.52,
+            "probability": 0.993921,
+            "start_seconds": 34.28,
+            "word": "and"
+          },
+          {
+            "end_seconds": 34.72,
+            "probability": 0.998359,
+            "start_seconds": 34.52,
+            "word": "the"
+          },
+          {
+            "end_seconds": 35.06,
+            "probability": 0.990577,
+            "start_seconds": 34.72,
+            "word": "wolves"
+          },
+          {
+            "end_seconds": 35.5,
+            "probability": 0.997901,
+            "start_seconds": 35.06,
+            "word": "follow"
+          },
+          {
+            "end_seconds": 35.74,
+            "probability": 0.998804,
+            "start_seconds": 35.5,
+            "word": "their"
+          },
+          {
+            "end_seconds": 35.94,
+            "probability": 0.928401,
+            "start_seconds": 35.74,
+            "word": "meat"
+          },
+          {
+            "end_seconds": 36.22,
+            "probability": 0.996346,
+            "start_seconds": 35.94,
+            "word": "into"
+          },
+          {
+            "end_seconds": 36.44,
+            "probability": 0.99672,
+            "start_seconds": 36.22,
+            "word": "the"
+          },
+          {
+            "end_seconds": 36.68,
+            "probability": 0.978674,
+            "start_seconds": 36.44,
+            "word": "lower"
+          },
+          {
+            "end_seconds": 37.08,
+            "probability": 0.996445,
+            "start_seconds": 36.68,
+            "word": "valleys,"
+          },
+          {
+            "end_seconds": 38.1,
+            "probability": 0.987272,
+            "start_seconds": 37.86,
+            "word": "he"
+          },
+          {
+            "end_seconds": 38.28,
+            "probability": 0.997834,
+            "start_seconds": 38.1,
+            "word": "may"
+          },
+          {
+            "end_seconds": 38.54,
+            "probability": 0.998069,
+            "start_seconds": 38.28,
+            "word": "be"
+          },
+          {
+            "end_seconds": 38.74,
+            "probability": 0.998277,
+            "start_seconds": 38.54,
+            "word": "seen"
+          },
+          {
+            "end_seconds": 39.08,
+            "probability": 0.9965,
+            "start_seconds": 38.74,
+            "word": "running"
+          },
+          {
+            "end_seconds": 39.26,
+            "probability": 0.99668,
+            "start_seconds": 39.08,
+            "word": "at"
+          },
+          {
+            "end_seconds": 39.44,
+            "probability": 0.998734,
+            "start_seconds": 39.26,
+            "word": "the"
+          },
+          {
+            "end_seconds": 39.56,
+            "probability": 0.997424,
+            "start_seconds": 39.44,
+            "word": "head"
+          },
+          {
+            "end_seconds": 39.76,
+            "probability": 0.999266,
+            "start_seconds": 39.56,
+            "word": "of"
+          },
+          {
+            "end_seconds": 39.96,
+            "probability": 0.992934,
+            "start_seconds": 39.76,
+            "word": "the"
+          },
+          {
+            "end_seconds": 40.12,
+            "probability": 0.975976,
+            "start_seconds": 39.96,
+            "word": "pack"
+          },
+          {
+            "end_seconds": 40.64,
+            "probability": 0.808134,
+            "start_seconds": 40.12,
+            "word": "through"
+          },
+          {
+            "end_seconds": 40.84,
+            "probability": 0.996987,
+            "start_seconds": 40.64,
+            "word": "the"
+          },
+          {
+            "end_seconds": 41.12,
+            "probability": 0.999347,
+            "start_seconds": 40.84,
+            "word": "pale"
+          },
+          {
+            "end_seconds": 41.66,
+            "probability": 0.99432,
+            "start_seconds": 41.12,
+            "word": "moonlight"
+          },
+          {
+            "end_seconds": 42.14,
+            "probability": 0.824781,
+            "start_seconds": 41.66,
+            "word": "or"
+          },
+          {
+            "end_seconds": 42.74,
+            "probability": 0.993765,
+            "start_seconds": 42.14,
+            "word": "glimmering"
+          },
+          {
+            "end_seconds": 43.38,
+            "probability": 0.705773,
+            "start_seconds": 42.74,
+            "word": "Borealis,"
+          },
+          {
+            "end_seconds": 44.38,
+            "probability": 0.99485,
+            "start_seconds": 43.92,
+            "word": "leaping"
+          },
+          {
+            "end_seconds": 45.0,
+            "probability": 0.99369,
+            "start_seconds": 44.38,
+            "word": "gigantic"
+          },
+          {
+            "end_seconds": 45.32,
+            "probability": 0.99435,
+            "start_seconds": 45.0,
+            "word": "above"
+          },
+          {
+            "end_seconds": 45.54,
+            "probability": 0.998212,
+            "start_seconds": 45.32,
+            "word": "his"
+          },
+          {
+            "end_seconds": 45.88,
+            "probability": 0.983227,
+            "start_seconds": 45.54,
+            "word": "fellows,"
+          },
+          {
+            "end_seconds": 46.62,
+            "probability": 0.996751,
+            "start_seconds": 46.46,
+            "word": "his"
+          },
+          {
+            "end_seconds": 46.96,
+            "probability": 0.990119,
+            "start_seconds": 46.62,
+            "word": "great"
+          },
+          {
+            "end_seconds": 47.32,
+            "probability": 0.959696,
+            "start_seconds": 46.96,
+            "word": "throat"
+          },
+          {
+            "end_seconds": 47.62,
+            "probability": 0.853941,
+            "start_seconds": 47.32,
+            "word": "a"
+          },
+          {
+            "end_seconds": 47.94,
+            "probability": 0.923286,
+            "start_seconds": 47.62,
+            "word": "bellow"
+          },
+          {
+            "end_seconds": 48.36,
+            "probability": 0.910865,
+            "start_seconds": 47.94,
+            "word": "as"
+          },
+          {
+            "end_seconds": 48.54,
+            "probability": 0.999024,
+            "start_seconds": 48.36,
+            "word": "he"
+          },
+          {
+            "end_seconds": 48.84,
+            "probability": 0.998639,
+            "start_seconds": 48.54,
+            "word": "sings"
+          },
+          {
+            "end_seconds": 49.06,
+            "probability": 0.994228,
+            "start_seconds": 48.84,
+            "word": "a"
+          },
+          {
+            "end_seconds": 49.36,
+            "probability": 0.997549,
+            "start_seconds": 49.06,
+            "word": "song"
+          },
+          {
+            "end_seconds": 49.5,
+            "probability": 0.920275,
+            "start_seconds": 49.36,
+            "word": "of"
+          },
+          {
+            "end_seconds": 49.68,
+            "probability": 0.979503,
+            "start_seconds": 49.5,
+            "word": "the"
+          },
+          {
+            "end_seconds": 49.92,
+            "probability": 0.857219,
+            "start_seconds": 49.68,
+            "word": "younger"
+          },
+          {
+            "end_seconds": 50.42,
+            "probability": 0.99562,
+            "start_seconds": 49.92,
+            "word": "world,"
+          },
+          {
+            "end_seconds": 51.18,
+            "probability": 0.979226,
+            "start_seconds": 51.0,
+            "word": "which"
+          },
+          {
+            "end_seconds": 51.38,
+            "probability": 0.997091,
+            "start_seconds": 51.18,
+            "word": "is"
+          },
+          {
+            "end_seconds": 51.48,
+            "probability": 0.941387,
+            "start_seconds": 51.38,
+            "word": "the"
+          },
+          {
+            "end_seconds": 51.94,
+            "probability": 0.65594,
+            "start_seconds": 51.48,
+            "word": "song"
+          },
+          {
+            "end_seconds": 52.28,
+            "probability": 0.997792,
+            "start_seconds": 51.94,
+            "word": "of"
+          },
+          {
+            "end_seconds": 52.42,
+            "probability": 0.973353,
+            "start_seconds": 52.28,
+            "word": "the"
+          },
+          {
+            "end_seconds": 52.68,
+            "probability": 0.93543,
+            "start_seconds": 52.42,
+            "word": "pack."
+          }
+        ],
+        "audio_sha256": "ee91859d21cb0fc79cf5469afe48b8320182501026d585567221bb328b96e0d5",
+        "coverage": 0.9549,
+        "duplicate_tokens": {
+          "he": 1
+        },
+        "equal_token_count": 127,
+        "evaluated_source_sha256": "4a5efb9dc0e8f7aae559c9b358ee5c237597d2b6975ba75cdae115fa21b098b9",
+        "evaluated_transcript_sha256": "c6b70ba86e55877795dd9b5b34ce397bdceb55ba65786c7502bcb6cac67a2a6f",
+        "first_words_match": true,
+        "last_words_match": true,
+        "missing_tokens": {
+          "hide": 1,
+          "land": 1,
+          "moose": 1,
+          "mould": 1,
+          "muses": 1,
+          "timber": 1
+        },
+        "no_duplicate_content": false,
+        "no_missing_content": false,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              6,
+              8
+            ],
+            "source_tokens": [
+              "timber",
+              "land"
+            ],
+            "transcript_range": [
+              6,
+              7
+            ],
+            "transcript_tokens": [
+              "timberland"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              25,
+              27
+            ],
+            "source_tokens": [
+              "moose",
+              "hide"
+            ],
+            "transcript_range": [
+              24,
+              25
+            ],
+            "transcript_tokens": [
+              "moosehide"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              41,
+              42
+            ],
+            "source_tokens": [
+              "mould"
+            ],
+            "transcript_range": [
+              39,
+              40
+            ],
+            "transcript_tokens": [
+              "mold"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              54,
+              55
+            ],
+            "source_tokens": [
+              "muses"
+            ],
+            "transcript_range": [
+              52,
+              54
+            ],
+            "transcript_tokens": [
+              "he",
+              "refuses"
+            ]
+          }
+        ],
+        "ordered_content_integrity_pass": false,
+        "pass": false,
+        "passage_id": "ending",
+        "precision": 0.9621,
+        "score": 9.5849,
+        "source_equivalences_applied": [],
+        "source_text_sha256": "4a5efb9dc0e8f7aae559c9b358ee5c237597d2b6975ba75cdae115fa21b098b9",
+        "source_token_count": 133,
+        "transcript": "He crosses alone from the smiling timberland and comes down into an open space among the trees. Here a yellow stream flows from rotted moosehide sacks and sinks into the ground, with long grasses growing through it and vegetable mold overrunning it and hiding its yellow from the sun. And here he He refuses for a time, howling once, long and mournfully, ere he departs. But he is not always alone. When the long winter nights come on, and the wolves follow their meat into the lower valleys, he may be seen running at the head of the pack through the pale moonlight or glimmering Borealis, leaping gigantic above his fellows, his great throat a bellow as he sings a song of the younger world, which is the song of the pack.",
+        "transcript_equivalences_applied": [],
+        "transcript_sha256": "c6b70ba86e55877795dd9b5b34ce397bdceb55ba65786c7502bcb6cac67a2a6f",
+        "transcript_token_count": 132,
+        "unexpected_tokens": {
+          "he": 1,
+          "mold": 1,
+          "moosehide": 1,
+          "refuses": 1,
+          "timberland": 1
+        },
+        "word_timestamp_anomalies": [
+          {
+            "end": 22.86,
+            "reason": "INVALID_OR_NON_MONOTONIC_TIMESTAMP",
+            "start": 22.86,
+            "word": "refuses"
+          }
+        ],
+        "word_timestamp_evidence_valid": false
+      }
+    ],
+    "required_coverage": 0.98,
+    "required_score": 9.7,
+    "settings": {
+      "condition_on_previous_text": false,
+      "fp16": false,
+      "initial_prompt": null,
+      "language": "en",
+      "task": "transcribe",
+      "temperature": 0,
+      "word_timestamps": true
+    },
+    "status": "FAIL"
+  },
+  "attempt_fingerprint": "14717669863b52b3aadb2476a6d00e13bfff9b64acc0a965a901809b57683c5d",
+  "author": "Jack London",
+  "blockers": [
+    "REPRESENTATIVE_ASR_SOURCE_GATE_FAILED"
+  ],
+  "budget": {
+    "billable_characters": 2119,
+    "blockers": [],
+    "estimated_tts_usd": 0.031785,
+    "prior_sprint_spend_usd": 74.0826,
+    "prior_title_spend_usd": 0.0,
+    "projected_sprint_spend_usd": 74.114385,
+    "projected_title_spend_usd": 0.031785,
+    "run_cap_usd": 0.15,
+    "sprint_cap_usd": 75.0,
+    "status": "PASS",
+    "title_cap_usd": 8.0,
+    "usd_per_1k_characters": 0.015
+  },
+  "error": null,
+  "finished_at": "2026-07-28T03:04:52Z",
+  "generated_at": "2026-07-28T03:04:24Z",
+  "generated_audio": [
+    {
+      "audio_path": "/private/tmp/earnalism-call-wild-openai-v390/the-call-of-the-wild/14717669863b52b3/audio/opening.mp3",
+      "audio_sha256": "d472be904d582929959ed719e808078ad395a84527140984a104aa0608d9df4c",
+      "audio_size_bytes": 852096,
+      "characters": 729,
+      "duration_seconds": 53.256,
+      "passage_id": "opening",
+      "source_text_sha256": "05370ad2a3d78a0ae3632feef141b53fcc5ffb2c83bf061b523bf6d5572f94e8"
+    },
+    {
+      "audio_path": "/private/tmp/earnalism-call-wild-openai-v390/the-call-of-the-wild/14717669863b52b3/audio/middle.mp3",
+      "audio_sha256": "55de9b6019524101ed16e04d851ae0ab749550d4c494dc2400265a847dee094f",
+      "audio_size_bytes": 266496,
+      "characters": 213,
+      "duration_seconds": 16.656,
+      "passage_id": "middle",
+      "source_text_sha256": "16872bf473fb385797c2c13118bb033de18ab8139478e458ac73e89b3f817804"
+    },
+    {
+      "audio_path": "/private/tmp/earnalism-call-wild-openai-v390/the-call-of-the-wild/14717669863b52b3/audio/dialogue_or_risk.mp3",
+      "audio_sha256": "9720973e979b78a3efcd4179bc2298bf3bdea33c13d04c6310b4b7a1ee629564",
+      "audio_size_bytes": 436224,
+      "characters": 456,
+      "duration_seconds": 27.264,
+      "passage_id": "dialogue_or_risk",
+      "source_text_sha256": "2417692c0b2c8993fc012788f521e185dafdde38fdc0399652d0e223fed88ed8"
+    },
+    {
+      "audio_path": "/private/tmp/earnalism-call-wild-openai-v390/the-call-of-the-wild/14717669863b52b3/audio/ending.mp3",
+      "audio_sha256": "ee91859d21cb0fc79cf5469afe48b8320182501026d585567221bb328b96e0d5",
+      "audio_size_bytes": 847488,
+      "characters": 721,
+      "duration_seconds": 52.968,
+      "passage_id": "ending",
+      "source_text_sha256": "4a5efb9dc0e8f7aae559c9b358ee5c237597d2b6975ba75cdae115fa21b098b9"
+    }
+  ],
+  "input_manifest_sha256": "8cd517c7042574b2f9c96ec851d3f1c02b47920eb81a74d2684b44aebd35983c",
+  "instructions_sha256": "89ee377219b76a3bf1ae1129997211c8596c78780e454c43401a0026c656e3b6",
+  "model": "gpt-4o-mini-tts",
+  "model_attempt_consumed": true,
+  "next_state": "SOURCE_BOUND_DELIVERY_REQUIRED",
+  "paid_lock_restored_byte_for_byte": true,
+  "paid_lock_sha256_after": "7a3fa16d839a864af9dfc24f48bac474c27a9d701a1fc12cbd10bede696f49a7",
+  "paid_lock_sha256_before": "7a3fa16d839a864af9dfc24f48bac474c27a9d701a1fc12cbd10bede696f49a7",
+  "paid_lock_touched": true,
+  "private_run_dir": "/private/tmp/earnalism-call-wild-openai-v390/the-call-of-the-wild/14717669863b52b3",
+  "profile": "call-wild-rugged-literary-restraint-v1",
+  "provider": "openai",
+  "provider_calls_ran": true,
+  "public_audio_status": "AUDIO_HIDDEN",
+  "publication_performed": false,
+  "release_gate_mutated": false,
+  "representative_passages": [
+    {
+      "characters": 729,
+      "passage_id": "opening",
+      "text_sha256": "05370ad2a3d78a0ae3632feef141b53fcc5ffb2c83bf061b523bf6d5572f94e8"
+    },
+    {
+      "characters": 213,
+      "passage_id": "middle",
+      "text_sha256": "16872bf473fb385797c2c13118bb033de18ab8139478e458ac73e89b3f817804"
+    },
+    {
+      "characters": 456,
+      "passage_id": "dialogue_or_risk",
+      "text_sha256": "2417692c0b2c8993fc012788f521e185dafdde38fdc0399652d0e223fed88ed8"
+    },
+    {
+      "characters": 721,
+      "passage_id": "ending",
+      "text_sha256": "4a5efb9dc0e8f7aae559c9b358ee5c237597d2b6975ba75cdae115fa21b098b9"
+    }
+  ],
+  "schema_version": "earnalism.call_wild_openai_v390_representative.v1",
+  "slug": "the-call-of-the-wild",
+  "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+  "status": "PRIVATE_REPRESENTATIVE_ASR_FAIL_SOURCE_BOUND_DELIVERY_REQUIRED",
+  "synthesis_calls": 4,
+  "title": "The Call of the Wild",
+  "upload_performed": false,
+  "voice": "verse"
+}

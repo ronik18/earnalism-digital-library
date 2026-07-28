@@ -639,3 +639,25 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Listening QA now acquires and restores the paid lock and enforces the active
   v3.90 overall, confidence, per-dimension, anti-robotic, anti-choppy, and fatal
   flag gates. Public audio remains hidden.
+
+## 2026-07-28 Sprint 1 audiobook acceptance v3.89 and Call of the Wild closeout
+
+- The owner lowered only the active overall listening floor from `9.0` to
+  `8.9`. Confidence remains `>=0.90`; ordinary dimensions remain `>=8.9`;
+  anti-robotic and anti-choppy remain `>=9.2`; fatal flags still disqualify.
+- ASR/manuscript remains `>=9.7`, coverage remains `>=0.98`, exact
+  first/last/order and measured sync remain mandatory, and rights, covers,
+  checksum, metadata, ranged endpoint, browser playback, and an empty blocker
+  list remain unchanged.
+- The cutoff audit found zero newly full-title release-ready titles. A
+  representative score at or above `8.9` can authorize one private full-title
+  pilot only; it cannot expose Listen.
+- The Call of the Wild consumed its single synthetic-family attempt with four
+  private OpenAI `gpt-4o-mini-tts` / `verse` clips. Raw ASR scores were
+  `9.6032/9.5000/9.7041/9.5849`, coverage was below `0.98` throughout, and
+  exact ordered-content integrity failed throughout. Listening QA and
+  full-title generation were correctly skipped.
+- The exact Call fingerprint
+  `14717669863b52b3aadb2476a6d00e13bfff9b64acc0a965a901809b57683c5d`
+  is closed. The title remains audio-hidden and moves to exact rights-cleared
+  source-bound delivery. The paid lock restored byte-for-byte.

@@ -28,7 +28,7 @@ from tts_hook import chunk_text as factory_chunk_text  # noqa: E402
 PIPELINE_SCHEMA = "earnalism.google_english_private_pipeline.v1"
 INPUT_SCHEMA = "earnalism.google_english_private_input.v1"
 LISTENING_SCHEMA = "earnalism.google_english_private_listening_evidence.v1"
-POLICY_MIN_LISTENING_SCORE = 9.0
+POLICY_MIN_LISTENING_SCORE = 8.9
 POLICY_MIN_LISTENING_CONFIDENCE = 0.90
 POLICY_MIN_DIMENSION_SCORE = 8.9
 POLICY_MIN_ANTI_ROBOTIC_SCORE = 9.2
@@ -128,7 +128,7 @@ class PipelineConfig:
     sprint_spend_usd: float = 0.0
     language_code: str | None = None
     audition_evidence_path: Path | None = None
-    minimum_listening_score: float = 9.0
+    minimum_listening_score: float = 8.9
     minimum_listening_confidence: float = 0.90
     max_passage_chars: int = 1200
     max_chunk_chars: int = 1600

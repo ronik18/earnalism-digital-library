@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "changed_at": "2026-07-28T03:04:16Z",
+  "lock_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+  "from_slug": "the-call-of-the-wild",
+  "to_slug": "the-call-of-the-wild",
+  "canonical_title": "The Call of the Wild",
+  "canonical_author": "Jack London",
+  "budget": {
+    "campaign_cap_usd": 75.0,
+    "per_title_cap_usd": 8.0
+  },
+  "lock_sha256_before": "3127a743a66e4194a9ed5a44215c7def490ebb53be4a124dd353d0df6e290668",
+  "lock_sha256_after": "7a3fa16d839a864af9dfc24f48bac474c27a9d701a1fc12cbd10bede696f49a7",
+  "provider_call_performed": false,
+  "publication_performed": false
+}

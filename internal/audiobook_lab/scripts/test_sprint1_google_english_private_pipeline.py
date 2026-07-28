@@ -328,14 +328,14 @@ class GoogleEnglishPrivatePipelineTests(unittest.TestCase):
         self.assertEqual(pending.exception.status, "BLOCKED_AUDITION_EVIDENCE")
         self.assertEqual(full_provider.synthesis_calls, [])
 
-        self.complete_listening_evidence(audition, score=8.95)
+        self.complete_listening_evidence(audition, score=8.85)
         with self.assertRaises(pipeline.PipelineError) as low:
             self.run_with(
                 self.config("full", audition_evidence_path=evidence_path), full_provider
             )
         self.assertEqual(low.exception.status, "BLOCKED_AUDITION_EVIDENCE")
         self.assertTrue(
-            any("below 9.0" in item for item in low.exception.details["blockers"])
+            any("below 8.9" in item for item in low.exception.details["blockers"])
         )
         self.assertEqual(full_provider.synthesis_calls, [])
 
@@ -452,7 +452,7 @@ class GoogleEnglishPrivatePipelineTests(unittest.TestCase):
         provider = MockProvider()
         with self.assertRaises(pipeline.PipelineError) as raised:
             self.run_with(
-                self.config("audition", minimum_listening_score=8.9), provider
+                self.config("audition", minimum_listening_score=8.89), provider
             )
         self.assertEqual(raised.exception.status, "BLOCKED_CONFIG")
         self.assertEqual(provider.synthesis_calls, [])

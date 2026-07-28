@@ -134,8 +134,8 @@ class NextTwoFastPathTests(unittest.TestCase):
                 with mock.patch.object(MODULE, "ROOT", Path(directory)):
                     return MODULE.representative_gate_passed({"sample_results_path": "samples.json"})
 
-            self.assertTrue(passes(score=9.0, confidence=0.90))
-            self.assertFalse(passes(score=8.99, confidence=0.90))
+            self.assertTrue(passes(score=8.9, confidence=0.90))
+            self.assertFalse(passes(score=8.89, confidence=0.90))
             self.assertFalse(passes(score=9.0, confidence=0.89))
             fatal_flags = (
                 "robotic_texture_detected",
@@ -161,7 +161,7 @@ class NextTwoFastPathTests(unittest.TestCase):
                     }
                 )
             evidence = json.loads((title_runs / "radharani_release_gate_evidence.json").read_text(encoding="utf-8"))
-        self.assertEqual(evidence["release_gate"]["listening_sample_minimum"], 9.0)
+        self.assertEqual(evidence["release_gate"]["listening_sample_minimum"], 8.9)
 
     def test_existing_representative_audition_reuses_passing_evidence(self):
         with tempfile.TemporaryDirectory() as directory:

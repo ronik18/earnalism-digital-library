@@ -143,7 +143,7 @@ class NarrationImportPacketTests(unittest.TestCase):
             self.assertEqual(manuscript, "যাহারা বলে, তাহারা ভুল করে।\n\nশেষ কথা এখানে।\n")
             metadata = json.loads((packet_dir / "metadata.json").read_text(encoding="utf-8"))
             self.assertEqual(metadata["language"], {"code": "ben", "name": "Bengali"})
-            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 9.0)
+            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 8.9)
             self.assertEqual(metadata["release_requirements"]["per_dimension_score_min"], 8.9)
             self.assertEqual(metadata["release_requirements"]["anti_robotic_texture_score_min"], 9.2)
             self.assertEqual(metadata["release_requirements"]["anti_choppy_join_score_min"], 9.2)
@@ -218,7 +218,7 @@ class NarrationImportPacketTests(unittest.TestCase):
             packet_dir = Path(result["packet_dir"])
             metadata = json.loads((packet_dir / "metadata.json").read_text(encoding="utf-8"))
             attempt = metadata["prior_provider_evidence"]["failed_attempts"][0]
-            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 9.0)
+            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 8.9)
             self.assertEqual(metadata["release_requirements"]["per_dimension_score_min"], 8.9)
             self.assertEqual(attempt["attempt_fingerprint"], "failed-fingerprint")
             self.assertEqual(attempt["voice"], "en-GB-Studio-B")

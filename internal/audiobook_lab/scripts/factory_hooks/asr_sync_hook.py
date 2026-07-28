@@ -58,6 +58,7 @@ UNIVERSAL_LISTENING_POLICY = "schema3_universal_9_7"
 BENGALI_PREMIUM_MVP_POLICY = "bengali_premium_mvp_v1"
 BENGALI_AUDIOBOOK_92_POLICY = "bengali_audiobook_acceptance_v2_92"
 SPRINT1_AUDIOBOOK_90_POLICY = "sprint1_audiobook_acceptance_v3_90"
+SPRINT1_AUDIOBOOK_89_POLICY = "sprint1_audiobook_acceptance_v3_89"
 TIERED_AUDIOBOOK_ACCEPTANCE_POLICY = "tiered_audiobook_acceptance_v1"
 LISTENING_THRESHOLDS = {
     "naturalness_score": 9.7,
@@ -101,6 +102,10 @@ BENGALI_AUDIOBOOK_92_THRESHOLDS = {
 SPRINT1_AUDIOBOOK_90_THRESHOLDS = {
     **BENGALI_AUDIOBOOK_92_THRESHOLDS,
     "overall_listening_score": 9.0,
+}
+SPRINT1_AUDIOBOOK_89_THRESHOLDS = {
+    **BENGALI_AUDIOBOOK_92_THRESHOLDS,
+    "overall_listening_score": 8.9,
 }
 TIERED_AUDIOBOOK_ACCEPTANCE_THRESHOLDS = {
     "naturalness_score": 9.0,
@@ -369,6 +374,14 @@ def listening_policy_for(language: str, release_policy: str | None = None) -> di
             "allowed": True,
             "reason": "",
             "thresholds": SPRINT1_AUDIOBOOK_90_THRESHOLDS,
+            "fatal_flags": BINARY_LISTENING_FLAGS,
+        }
+    if requested == SPRINT1_AUDIOBOOK_89_POLICY:
+        return {
+            "name": requested,
+            "allowed": True,
+            "reason": "",
+            "thresholds": SPRINT1_AUDIOBOOK_89_THRESHOLDS,
             "fatal_flags": BINARY_LISTENING_FLAGS,
         }
     if requested == TIERED_AUDIOBOOK_ACCEPTANCE_POLICY:

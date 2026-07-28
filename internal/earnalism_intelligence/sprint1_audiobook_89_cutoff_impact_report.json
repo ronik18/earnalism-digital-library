@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-28T03:05:00Z",
+  "policy": "sprint1_audiobook_acceptance_v3_89",
+  "scope": "canonical Sprint 1 Bengali and English audiobooks",
+  "thresholds": {
+    "overall_listening_score_min": 8.9,
+    "confidence_score_min": 0.9,
+    "ordinary_dimension_score_min": 8.9,
+    "anti_robotic_texture_score_min": 9.2,
+    "anti_choppy_join_score_min": 9.2,
+    "asr_manuscript_score_min": 9.7,
+    "coverage_min": 0.98
+  },
+  "production_baseline": {
+    "public_readers": 32,
+    "public_audiobooks": 4,
+    "live_audio_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ]
+  },
+  "candidates_at_or_above_overall_listening_floor": [
+    {
+      "slug": "the-gift-of-the-magi",
+      "best_complete_representative_set_minimum_listening_score": 9.5,
+      "representative_confidence_min": 0.95,
+      "full_title_asr_manuscript_score": 9.9545,
+      "full_title_coverage": 0.9952,
+      "full_title_ordered_content_integrity_pass": false,
+      "full_title_measured_sync_pass": false,
+      "full_title_listening_qa_ran": false,
+      "release_ready": false,
+      "blockers": [
+        "FULL_TITLE_ORDERED_CONTENT_INTEGRITY_FAIL",
+        "FULL_TITLE_MEASURED_SYNC_FAIL",
+        "FULL_TITLE_LISTENING_QA_MISSING",
+        "DOWNSTREAM_DELIVERY_GATES_INCOMPLETE"
+      ],
+      "best_output_action": "SOURCE_BOUND_DELIVERY_REQUIRED"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "latest_derivative_full_title_listening_score": 9.0,
+      "latest_derivative_confidence_score": 0.95,
+      "latest_derivative_full_title_asr_manuscript_score": 9.8529,
+      "full_title_ordered_content_integrity_pass": false,
+      "release_ready": false,
+      "blockers": [
+        "FULL_TITLE_ORDERED_CONTENT_INTEGRITY_FAIL",
+        "EXACT_DOWNSTREAM_PACKAGE_INCOMPLETE"
+      ],
+      "best_output_action": "SOURCE_BOUND_DELIVERY_REQUIRED"
+    },
+    {
+      "slug": "the-time-machine",
+      "representative_overall_listening_score": 9.0,
+      "representative_confidence_score": 1.0,
+      "representative_emotional_expression_score": 8.0,
+      "full_title_package_exists": false,
+      "release_ready": false,
+      "blockers": [
+        "ORDINARY_LISTENING_DIMENSION_BELOW_8_9",
+        "FULL_TITLE_PACKAGE_MISSING"
+      ],
+      "best_output_action": "SOURCE_BOUND_DELIVERY_REQUIRED"
+    },
+    {
+      "slug": "radharani",
+      "representative_overall_listening_score": 9.4,
+      "representative_confidence_score": 0.95,
+      "full_title_raw_asr_manuscript_score": 1.0962,
+      "release_ready": false,
+      "blockers": [
+        "FULL_TITLE_ASR_MANUSCRIPT_FAIL",
+        "FULL_TITLE_EXACT_CONTENT_FAIL",
+        "MEASURED_SYNC_MISSING",
+        "DOWNSTREAM_DELIVERY_GATES_INCOMPLETE"
+      ],
+      "best_output_action": "SOURCE_BOUND_DELIVERY_REQUIRED"
+    }
+  ],
+  "latest_bounded_attempt": {
+    "slug": "the-call-of-the-wild",
+    "provider": "openai",
+    "model": "gpt-4o-mini-tts",
+    "voice": "verse",
+    "attempt_fingerprint": "14717669863b52b3aadb2476a6d00e13bfff9b64acc0a965a901809b57683c5d",
+    "asr_manuscript_scores": [
+      9.6032,
+      9.5,
+      9.7041,
+      9.5849
+    ],
+    "coverage_scores": [
+      0.9528,
+      0.95,
+      0.9762,
+      0.9549
+    ],
+    "ordered_content_integrity_passed": false,
+    "listening_qa_ran": false,
+    "release_ready": false,
+    "next_state": "SOURCE_BOUND_DELIVERY_REQUIRED"
+  },
+  "outcome": {
+    "audited_incomplete_candidates_with_observed_overall_listening_at_or_above_8_9": 4,
+    "newly_full_title_release_ready": 0,
+    "newly_published": 0,
+    "public_state_mutated": false,
+    "hidden_audio_exposed": false
+  },
+  "evidence": [
+    "internal/earnalism_intelligence/sprint1_audiobook_89_cutoff_impact_report.md",
+    "internal/earnalism_intelligence/title_decision_history.json",
+    "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_openai_verse_v390_representative_20260728.json",
+    "internal/audiobook_lab/sprint1_publication/licensed_audio_import/the-call-of-the-wild/metadata.json"
+  ]
+}

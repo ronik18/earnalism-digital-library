@@ -1,7 +1,7 @@
 # Bengali Audiobook Completion Campaign Policy
 
 Status: active
-Policy version: sprint1_audiobook_acceptance_v3_90
+Policy version: sprint1_audiobook_acceptance_v3_89
 Scope: the 31 Bengali titles already approved reader-only with audio hidden.
 
 ## Mission
@@ -20,7 +20,7 @@ title history, and the campaign ledger before attempting work.
 
 Listening gate:
 
-- representative or full-book overall listening score `>= 9.0`
+- representative or full-book overall listening score `>= 8.9`
 - existing per-dimension quality floors remain unchanged
 - confidence `>= 0.90`
 - no fatal red flags:

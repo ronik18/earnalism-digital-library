@@ -59,14 +59,14 @@
         "mechanical_cadence_detected"
       ],
       "automated_spend_paused": false,
-      "active_rescue_policy": "sprint1_audiobook_acceptance_v3_90",
+      "active_rescue_policy": "sprint1_audiobook_acceptance_v3_89",
       "active_rescue_budget": {
         "representative_audition_max_estimated_usd": 15,
         "full_pilot_max_estimated_usd": 25,
         "broad_catalog_wave_allowed": false
       },
       "future_reopening_criteria": [
-        "new Bengali provider/model with representative audition evidence >=9.0 and confidence >=0.90 under sprint1_audiobook_acceptance_v3_90",
+        "new Bengali provider/model with representative audition evidence >=8.9 and confidence >=0.90 under sprint1_audiobook_acceptance_v3_89",
         "human/professional narration workflow with representative audition pass",
         "licensed audiobook import with rights, provenance, ASR/manuscript match, and measured sync",
         "manually approved exceptional sample set that covers opening, dialogue, emotional, punctuation-heavy, and ending-style passages",
@@ -310,22 +310,22 @@
         "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_private_reuse_screen_v1.json"
       }
     },
-    "automated_audiobook_lane_status": "SPRINT1_V3_90_ACTIVE_TITLE_SPECIFIC_GEMINI_QUALITY_LIMIT_NO_NEW_RELEASE",
+    "automated_audiobook_lane_status": "SPRINT1_V3_89_ACTIVE_ZERO_NEW_FULL_TITLE_RELEASE_READY",
     "automated_audiobook_lane_paused_at": "2026-07-06T20:36:38Z",
     "automated_audiobook_lane_pause_reason": "OpenAI failed premium threshold; Sarvam bulbul:v3 pooja seed had isolated high samples but representative audition scored 7.9/confidence 0.85 with list-reading/mechanical cadence flags.",
     "automated_audiobook_lane_reopened_at": "2026-07-07T00:00:00Z",
-    "automated_audiobook_lane_reopen_reason": "Owner approved a Sprint 1 overall listening floor of 9.0 while preserving per-dimension, fatal-flag, objective, rights, sync, delivery, endpoint, and browser gates.",
+    "automated_audiobook_lane_reopen_reason": "Owner approved a Sprint 1 overall listening floor of 8.9 while preserving per-dimension, fatal-flag, objective, rights, sync, delivery, endpoint, and browser gates.",
     "automated_audiobook_lane_latest_result": "Vertex and Gemini-TTS are operational. Nishkriti, corrected-source Kshudhita Pashan, and Devdas all failed representative generalization despite isolated high scores. No full title, upload, metadata change, or publication followed.",
     "audiobook_completion_campaign": {
       "status": "NISHKRITI_KSHUDHITA_DEVDAS_REPRESENTATIVE_FAIL_NO_NEW_PUBLICATION",
-      "policy_version": "sprint1_audiobook_acceptance_v3_90",
+      "policy_version": "sprint1_audiobook_acceptance_v3_89",
       "total_campaign_titles": 31,
       "published_bengali_audiobooks": 1,
       "sprint1_bengali_titles": 10,
       "sprint1_live_bengali_audiobooks": 1,
       "sprint1_hidden_bengali_audiobooks": 9,
       "sprint1_next_candidate": "ALTERNATE_PROVIDER_OR_SOURCE_BOUND_NARRATION_REQUIRED",
-      "titles_with_representative_gte_9_0": 1,
+      "titles_with_representative_gte_8_9": 1,
       "best_settings": {
         "provider": "sarvam",
         "model": "bulbul:v3",
@@ -335,7 +335,7 @@
         "confidence": 0.95
       },
       "scale_rule": "Do not widen any failed voice fingerprint into full-title generation. The next automated step must be a genuinely different provider/voice on a cover-and-rights-complete Sprint 1 title; otherwise use source-bound narration.",
-      "updated_at": "2026-07-23T11:31:00Z",
+      "updated_at": "2026-07-28T03:05:00Z",
       "state_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
       "queue_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json"
     }
@@ -682,8 +682,31 @@
       },
       "next_action": "Do not normalize, regenerate, or expand this Gift Qwen3 Base fingerprint. The exact output clipped 1.417947 percent of samples, so ASR and listening spend were correctly skipped. Use the existing source-bound narration or licensed-import packet."
     },
-    "openai": {
-      "status": "usable_but_must_pass_asr_sync_and_listening"
+  "openai": {
+      "status": "usable_but_must_pass_asr_sync_and_listening",
+      "the_call_of_the_wild": {
+        "status": "CLOSED_AFTER_REPRESENTATIVE_ASR_SOURCE_FAILURE",
+        "model": "gpt-4o-mini-tts",
+        "voice": "verse",
+        "attempt_fingerprint": "14717669863b52b3aadb2476a6d00e13bfff9b64acc0a965a901809b57683c5d",
+        "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+        "asr_source_scores": [
+          9.6032,
+          9.5,
+          9.7041,
+          9.5849
+        ],
+        "coverage_scores": [
+          0.9528,
+          0.95,
+          0.9762,
+          0.9549
+        ],
+        "ordered_content_integrity_passed": false,
+        "listening_qa_ran": false,
+        "public_audio_status": "AUDIO_HIDDEN",
+        "next_action": "Require an exact rights-cleared source-bound delivery; do not repeat this fingerprint or test another synthetic family."
+      }
     },
     "google": {
       "status": "title_specific_quality_validation_required",
@@ -693,6 +716,7 @@
       "credential_repair_command": "gcloud auth application-default login",
       "the_call_of_the_wild_pending_fingerprint": "731cc90e6a9fb4767e189c046bae11095730164716b0b836cd42ceddd41e3cf9",
       "the_call_of_the_wild_attempt_consumed": false,
+      "the_call_of_the_wild_google_attempt_status": "PREPROVIDER_CREDENTIAL_BLOCKER_SUPERSEDED_BY_CLOSED_OPENAI_TITLE_ATTEMPT",
       "a_ghost_story_result": "full release QA passed with six listening samples 9.4-9.5",
       "the_open_window_baseline_scores": [9.4, 8.4, 8.0, 8.4],
       "the_open_window_prosody_retry_scores": [9.5, 9.4, 8.5, 9.4],
@@ -708,6 +732,12 @@
         "7d8546bba92729e05ba82f665d084c9d7e81cc30d567494ff21c300551dfa5f6"
       ],
       "next_action": "Stop automated Google retries for The Open Window; use the generated source-bound human narration packet or a separately approved provider, then run every release gate."
+    },
+    "azure": {
+      "status": "CREDENTIALS_PRESENT_BUT_API_RETURNED_401",
+      "provider_calls_ran": false,
+      "synthesis_performed": false,
+      "next_action": "Repair or rotate the Azure Speech key before any future title-specific preflight; do not infer usability from variable presence."
     }
   }
 }

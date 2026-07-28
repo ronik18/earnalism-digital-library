@@ -1,0 +1,149 @@
+{
+  "author": "Jack London",
+  "candidate_kind": "licensed_audio_import",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-call-of-the-wild --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "434955e62f010861eef269daf70c53052e6a0f3b6f5b80eadcf21304b98caef2",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "INCOMPLETE_FAIL_CLOSED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_release_gate_evidence.json"
+    ],
+    "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+    "failed_attempts": [],
+    "non_release_passes": [],
+    "provider_attempts": [],
+    "quality_summary": "NOT_RUN",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "The Call of the Wild",
+    "Jack London",
+    "Recurring names/terms: After, Again, Alaska, All, Also, And, Another, Arctic, Barge, Barracks, Barrens, Bay",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "anti_choppy_join_score_min": 9.2,
+    "anti_robotic_texture_score_min": 9.2,
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 8.9,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "per_dimension_score_min": 8.9,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "49b53124c009c2338bd90289a3568d59b71cae17e3f61451afaf4a6e76024714",
+    "rights_basis": "Jack London died in 1916, so the original literary work is public domain in India under life plus 60 years. Original publication in 1903 supports U.S. public-domain status."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "the-call-of-the-wild",
+  "source_binding": {
+    "binding_sha256": "87a1a3cbd01645f2a5b20afb36cccf7ffddbb1f08e3e6996a3e01614c2df5ef8",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "Chapter I. Into the Primitive",
+        "raw_characters": 20852,
+        "recorded_source_sha256": "6ea8f908301e78416b40583c2c62e822463a20e841e52a6496b5e0388eb31124",
+        "sanitized_characters": 20852,
+        "sanitized_sha256": "6ea8f908301e78416b40583c2c62e822463a20e841e52a6496b5e0388eb31124"
+      },
+      {
+        "chapter": "chapter-002.json",
+        "chapter_title": "Chapter II. The Law of Club and Fang",
+        "raw_characters": 18545,
+        "recorded_source_sha256": "98127e9f574ecae3026499e0769a680854598689d26dbc93a19f5008251c05a7",
+        "sanitized_characters": 18545,
+        "sanitized_sha256": "98127e9f574ecae3026499e0769a680854598689d26dbc93a19f5008251c05a7"
+      },
+      {
+        "chapter": "chapter-003.json",
+        "chapter_title": "Chapter III. The Dominant Primordial Beast",
+        "raw_characters": 28717,
+        "recorded_source_sha256": "b4264259c059d87d53535b1aabd00f00c70779cd5001fafd1edf0646a8ffaf8e",
+        "sanitized_characters": 28717,
+        "sanitized_sha256": "b4264259c059d87d53535b1aabd00f00c70779cd5001fafd1edf0646a8ffaf8e"
+      },
+      {
+        "chapter": "chapter-004.json",
+        "chapter_title": "Chapter IV. Who Has Won to Mastership",
+        "raw_characters": 17730,
+        "recorded_source_sha256": "a965824fe166c058d5bf74b6bb62caa5e3ea2c0d913fb7a83d46a697ddd7a101",
+        "sanitized_characters": 17730,
+        "sanitized_sha256": "a965824fe166c058d5bf74b6bb62caa5e3ea2c0d913fb7a83d46a697ddd7a101"
+      },
+      {
+        "chapter": "chapter-005.json",
+        "chapter_title": "Chapter V. The Toil of Trace and Trail",
+        "raw_characters": 29977,
+        "recorded_source_sha256": "3a23f434c7742466496005457bd83b847ee8655c2e4fa926109140ba670bcfad",
+        "sanitized_characters": 29977,
+        "sanitized_sha256": "3a23f434c7742466496005457bd83b847ee8655c2e4fa926109140ba670bcfad"
+      },
+      {
+        "chapter": "chapter-006.json",
+        "chapter_title": "Chapter VI. For the Love of a Man",
+        "raw_characters": 26731,
+        "recorded_source_sha256": "309bebb9c1ff96b56842f848e0f56032d1198552af856d1d4941f7365e9b87fc",
+        "sanitized_characters": 26731,
+        "sanitized_sha256": "309bebb9c1ff96b56842f848e0f56032d1198552af856d1d4941f7365e9b87fc"
+      },
+      {
+        "chapter": "chapter-007.json",
+        "chapter_title": "Chapter VII. The Sounding of the Call",
+        "raw_characters": 34740,
+        "recorded_source_sha256": "a0f7e7ed798258e92dbbeca9091e0009a9f39b2458b60585bb1b1d3ed0b74191",
+        "sanitized_characters": 34740,
+        "sanitized_sha256": "a0f7e7ed798258e92dbbeca9091e0009a9f39b2458b60585bb1b1d3ed0b74191"
+      }
+    ],
+    "raw_manuscript_sha256": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
+    "sanitized_manuscript_sha256": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
+    "source_hash": "e446f6fca02fb231d502760a82af57631256a51631c55421fb4a6c4891daf78a",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "The Call of the Wild"
+}

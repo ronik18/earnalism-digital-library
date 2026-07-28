@@ -33,7 +33,7 @@ class EnglishListeningQATests(unittest.TestCase):
                     "audition_manifest_path": str(self.manifest),
                     "audition_manifest_sha256": qa.sha256_file(self.manifest),
                     "required_passages": [item["passage_id"] for item in samples],
-                    "minimum_listening_score": 9.0,
+                    "minimum_listening_score": 8.9,
                     "minimum_listening_confidence": 0.9,
                     "per_dimension_score_min": 8.9,
                     "anti_robotic_texture_score_min": 9.2,
@@ -117,7 +117,7 @@ class EnglishListeningQATests(unittest.TestCase):
         self.assertEqual(calls, [])
 
     def test_all_samples_must_pass(self) -> None:
-        code, result = qa.evaluate(self.evidence, self.output, env=self.env, judge=self.judge(8.95), client=object())
+        code, result = qa.evaluate(self.evidence, self.output, env=self.env, judge=self.judge(8.89), client=object())
         self.assertEqual(code, 3)
         self.assertEqual(result["status"], "BLOCKED_LISTENING_QA")
 

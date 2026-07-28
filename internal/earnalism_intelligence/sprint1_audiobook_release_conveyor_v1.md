@@ -27,11 +27,11 @@ There is no indefinite `try another model` state.
 ## Current routing
 
 - Four titles are already `PRODUCTION_LIVE_VERIFIED`.
-- Eighteen titles, including **The Gift of the Magi**, **The Tell-Tale
+- Nineteen titles, including **The Gift of the Magi**, **The Tell-Tale
   Heart**, have exhausted their useful synthetic evidence and now require one
   exact source-bound narration or licensed-audio delivery. They receive no more
   synthetic pilots.
-- Nine previously untested English titles may receive exactly one
+- Eight previously untested English titles may receive exactly one
   four-passage candidate evaluation. Failure sends the title directly to
   source-bound delivery.
 - **The Time Machine** moves directly to source-bound delivery. Its retained
@@ -51,7 +51,7 @@ source-bound delivery packet.
 
 ## Release truth
 
-The active listening floor is `9.0`, confidence is `0.90`, ordinary dimensions
+The active listening floor is `8.9`, confidence is `0.90`, ordinary dimensions
 must be at least `8.9`, anti-robotic and anti-choppy dimensions must be at least
 `9.2`, and fatal flags must be absent. ASR/manuscript remains `9.7`, coverage
 remains `0.98`, and exact first/last/order, measured sync, rights, covers,
@@ -60,18 +60,16 @@ mandatory.
 
 ## Active title
 
-**The Call of the Wild** is the first one-attempt title. Its exact
-four-passage Chirp 3 HD candidate passed source, rights, cover, budget, and
-paid-lock preflight. Two execution starts stopped before any synthesis request:
-the first environment lacked the Google client library, and the corrected
-environment found that the Railway-bound authorized-user Application Default
-Credential requires reauthentication.
+**The Call of the Wild** consumed its one permitted synthetic-family attempt
+with four private OpenAI `gpt-4o-mini-tts` / `verse` representative clips.
+Their raw ASR/manuscript scores were `9.6032`, `9.5000`, `9.7041`, and `9.5849`;
+coverage was below `0.98` for every passage, and every passage failed exact
+ordered-content integrity. Listening QA was correctly skipped.
 
-No provider call ran, no attempt was consumed, actual spend is `$0.00`, and the
-paid lock restored byte-for-byte. The existing fingerprint remains the only
-permitted candidate. After authentication, it runs once; failure sends the
-title directly to source-bound delivery.
+The paid lock restored byte-for-byte. The exact failed fingerprint will not be
+retried, the audio remains private and hidden, and the title now requires an
+exact rights-cleared source-bound delivery.
 
 Next exact command:
 
-`gcloud auth application-default login`
+`PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-call-of-the-wild --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import --received-audio /absolute/path/to/received_narration.wav`
