@@ -12,10 +12,24 @@ describe("PremiumHero public contract", () => {
     expect(carouselSource).toContain("hero?.carousel_books");
     expect(source).toContain("heroCarouselBooks(curation)");
     expect(carouselSource).not.toContain("[...featured, ...shelfBooks]");
-    expect(source).toContain("book.front_cover_url");
-    expect(source).toContain("book.cover_alt_text");
-    expect(source).toContain("data-canonical-cover-url={book.front_cover_url}");
+    expect(carouselSource).toContain("book.front_cover_url");
+    expect(carouselSource).toContain("book.cover_alt_text");
+    expect(source).toContain("data-canonical-cover-url={book.coverSrc}");
+    expect(carouselSource).toContain("HERO_CAROUSEL_EXCLUDED_SLUGS");
+    expect(carouselSource).toContain('"devdas"');
     expect(source).not.toMatch(/Devdas|Pather Panchali|Great Expectations|Gitanjali|Jane Eyre/);
+  });
+
+  test("derives the active cover, metadata, route, counter, and identity from one active slide", () => {
+    expect(source).toContain("const activeSlide = activeHeroSlide(books, carousel.activeIndex)");
+    expect(source).toContain("data-active-slide-id={activeSlide?.id");
+    expect(source).toContain("data-active-cover-id={book.id}");
+    expect(source).toContain("data-slide-id={activeSlide.id}");
+    expect(source).toContain("to={activeSlide.destination}");
+    expect(source).toContain("to={book.destination}");
+    expect(source).toContain("{activeSlide.title}");
+    expect(source).toContain("{activeSlide.author}");
+    expect(source).not.toContain("carousel.activeBook");
   });
 
   test("keeps the listening phone bound only to approved audiobook records", () => {
@@ -96,14 +110,28 @@ describe("PremiumHero public contract", () => {
     expect(source).toContain("tabIndex={-1}");
     expect(source).toContain("isAdjacent ? (");
     expect(source).toContain("stopForKeyboardFocus");
-    expect(styles).toContain("outline: 3px solid #d7a84e;");
+    expect(styles).toContain("outline: 2px solid #e8bb64;");
     expect(styles).toContain("width: 2.75rem;");
     expect(styles).toContain("height: 2.75rem;");
+  });
+
+  test("uses a stable editorial plaque and a transform-based autoplay dock", () => {
+    expect(source).toContain("premium-coverflow__plaque");
+    expect(source).toContain("premium-coverflow__metadata");
+    expect(source).toContain("premium-coverflow__progress");
+    expect(source).toContain("premium-coverflow__navigation");
+    expect(styles).toContain("border-radius: 17px;");
+    expect(styles).toContain("backdrop-filter: blur(14px);");
+    expect(styles).toContain("rgba(42, 25, 15, 0.94)");
+    expect(styles).toContain("transform: scaleX(0);");
+    expect(styles).toContain("animation-play-state: paused;");
+    expect(styles).not.toContain("premium-coverflow__caption");
   });
 
   test("supports bounded autoplay, visibility pause, focus stop, keyboard, and swipe", () => {
     expect(source).toContain("HERO_CAROUSEL_INTERVAL_MS = 7000");
     expect(source).toContain("window.setInterval");
+    expect(source).toContain("desiredIndex.current = activeIndexRef.current");
     expect(source).toContain("document.visibilityState");
     expect(source).toContain("initialCoverReady");
     expect(source).toContain("prefers-reduced-motion: reduce");
@@ -129,8 +157,9 @@ describe("PremiumHero public contract", () => {
 
   test("reserves responsive safe zones without fixed screenshot-only horizontal offsets", () => {
     expect(styles).toContain("width: clamp(440px, 34vw, 550px);");
-    expect(styles).toContain("right: clamp(32px, 4vw, 64px);");
-    expect(styles).toContain("--coverflow-active-height: clamp(210px, 14.4vw, 230px);");
+    expect(styles).toContain("right: clamp(32px, 3.4vw, 56px);");
+    expect(styles).toContain("--coverflow-active-height: clamp(180px, 12vw, 192px);");
+    expect(styles).toContain('grid-template-areas: "plaque stage";');
     expect(styles).toContain("@media (min-width: 1024px) and (max-height: 800px)");
     expect(styles).toContain("@media (max-width: 767px)");
     expect(styles).toContain("overflow: visible;");
