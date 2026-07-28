@@ -1,3 +1,11 @@
+export const HERO_CAROUSEL_EXCLUDED_SLUGS = Object.freeze([
+  "devdas",
+  "debdas",
+  "devdas-study-edition",
+]);
+
+const HERO_CAROUSEL_EXCLUDED_SLUG_SET = new Set(HERO_CAROUSEL_EXCLUDED_SLUGS);
+
 export function heroCarouselBooks(curation = {}) {
   const suppliedCarousel = Array.isArray(curation?.hero?.carousel_books)
     ? curation.hero.carousel_books
@@ -7,11 +15,24 @@ export function heroCarouselBooks(curation = {}) {
     suppliedCarousel
       .filter((book) => (
         book?.slug
+        && !HERO_CAROUSEL_EXCLUDED_SLUG_SET.has(String(book.slug).trim().toLowerCase())
         && book.reader_enabled !== false
         && book.cover_valid !== false
         && book.front_cover_url
+        && book.book_url
       ))
-      .map((book) => [book.slug, book]),
+      .map((book) => {
+        const slug = String(book.slug).trim().toLowerCase();
+        return [slug, {
+          ...book,
+          id: slug,
+          slug,
+          destination: book.book_url,
+          coverSrc: book.front_cover_url,
+          coverAlt: book.cover_alt_text || `${book.title} by ${book.author}`,
+          locale: book.language || "und",
+        }];
+      }),
   ).values());
 }
 
@@ -23,6 +44,11 @@ export function wrapCarouselIndex(index, itemCount) {
 export function stepCarouselIndex(activeIndex, direction, itemCount) {
   const step = direction < 0 ? -1 : 1;
   return wrapCarouselIndex(activeIndex + step, itemCount);
+}
+
+export function activeHeroSlide(slides, activeIndex) {
+  if (!Array.isArray(slides) || slides.length === 0) return null;
+  return slides[wrapCarouselIndex(activeIndex, slides.length)] || null;
 }
 
 export function relativeCarouselPosition(index, activeIndex, itemCount) {

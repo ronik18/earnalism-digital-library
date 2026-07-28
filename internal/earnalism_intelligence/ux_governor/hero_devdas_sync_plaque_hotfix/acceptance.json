@@ -1,0 +1,103 @@
+{
+  "phase": "HOME_HERO_DEVDAS_SYNC_PLAQUE_HOTFIX",
+  "branch": "codex/hero-devdas-plaque-repair",
+  "base_commit": "3afb230f",
+  "status": "SOURCE_BUILD_AND_BROWSER_VALIDATED_AWAITING_COMMIT",
+  "root_cause": {
+    "live_devdas_slide": false,
+    "baked_reference_art_devdas": true,
+    "metadata_cover_index_mismatch": "The dynamic plaque and covers were independent of the four-book row baked into premium-library-reference-exact-1440.webp. The undersized translucent mask allowed the baked Devdas cover to remain visible beneath metadata for another live slide."
+  },
+  "repair": {
+    "hero_only_exclusion": "Explicit hero_featured_slugs omits devdas while sprint1_active_slugs and literary shelf membership retain it.",
+    "frontend_defense": [
+      "devdas",
+      "debdas",
+      "devdas-study-edition"
+    ],
+    "single_source_of_truth": "activeHeroSlide(heroSlides, activeIndex)",
+    "layout": "Desktop plaque and 3-D stage are separate grid regions; tablet and mobile stack without absolute plaque offsets.",
+    "reference_art_treatment": "A local catalog-region mask covers the complete baked four-book row before canonical interactive covers render.",
+    "control_target_css_pixels": 44
+  },
+  "browser_acceptance": {
+    "viewports": [
+      "1536x864",
+      "1366x768",
+      "1024x768",
+      "768x1024",
+      "390x844"
+    ],
+    "desktop_meaningful_slides": [
+      "previous",
+      "active",
+      "next"
+    ],
+    "hero_slide_count": 13,
+    "devdas_in_hero_dom": false,
+    "hidden_focusable_descendants": 0,
+    "duplicate_dom_ids": 0,
+    "horizontal_overflow_px": 0,
+    "broken_hero_images": 0,
+    "active_identity_ids_equal": true,
+    "next_navigation_one_step": true,
+    "pause_play_state": "PASS",
+    "keyboard_arrow_and_focus_stop": "PASS",
+    "mobile_autoplay_disabled": true
+  },
+  "desktop_geometry": {
+    "1536x864": {
+      "root": [962, 446, 1484, 664],
+      "plaque": [962, 465, 1169, 645],
+      "active_cover": [1214, 466, 1345, 661]
+    },
+    "1366x768": {
+      "root": [855, 400, 1320, 592],
+      "plaque": [855, 413, 1040, 580],
+      "active_cover": [1077, 429, 1184, 589]
+    },
+    "1024x768": {
+      "root": [640, 305, 990, 461],
+      "plaque": [640, 305, 794, 460],
+      "active_cover": [859, 319, 952, 459]
+    }
+  },
+  "automated_validation": {
+    "backend_home_tests": "PASS_35",
+    "frontend_focused_tests": "PASS_21",
+    "frontend_related_home_tests": "PASS_8",
+    "production_build": "PASS",
+    "json_validation": "PASS",
+    "git_diff_check": "PASS",
+    "runtime_audio_fallback_scan": "PASS_NO_MATCHES",
+    "public_audio_file_scan": "PASS_NO_MATCHES",
+    "paid_tts_lock": {
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": []
+    }
+  },
+  "release_truth": "NO_AUDIO_PUBLICATION_OR_AUDIO_RELEASE_GATE_CHANGE",
+  "screenshots": {
+    "before": [
+      "before/home-1536x864.png",
+      "before/home-1366x768.png",
+      "before/home-1024x768.png",
+      "before/home-768x1024.png",
+      "before/home-390x844.png"
+    ],
+    "after": [
+      "after/home-1536x864.png",
+      "after/home-1366x768.png",
+      "after/home-1024x768.png",
+      "after/home-768x1024.png",
+      "after/home-390x844.png"
+    ]
+  },
+  "limitations": [
+    "The supplied desktop reference bitmap still contains the original four books internally; its complete catalog region is visually replaced without modifying the protected tablet, phone, benefits panel, copy, CTA, or feature rail artwork.",
+    "The local static build cannot reach production public settings, so the browser records the expected local Network Error warning; no carousel console errors were observed.",
+    "The repository exposes no standalone lint or TypeScript typecheck script. The CRACO production build completed with its configured compile-time checks."
+  ],
+  "next_exact_command": "cd /private/tmp/earnalism-hero-devdas-plaque-repair && git diff --check && git status --short"
+}

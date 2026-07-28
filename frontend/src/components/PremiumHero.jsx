@@ -18,6 +18,7 @@ import {
 import BookCoverImage from "./BookCoverImage";
 import { bookCoverImageSources } from "../lib/images";
 import {
+  activeHeroSlide,
   canRotateCarousel,
   carouselSlideState,
   heroCarouselBooks,
@@ -196,6 +197,7 @@ function useHeroBookCarousel(books) {
   const reducedMotion = useReducedMotion();
   const narrowViewport = useNarrowViewport();
   const transitionRequest = useRef(0);
+  const activeIndexRef = useRef(0);
   const desiredIndex = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [manualPaused, setManualPaused] = useState(false);
@@ -212,6 +214,7 @@ function useHeroBookCarousel(books) {
     transitionRequest.current += 1;
     setActiveIndex((currentIndex) => {
       const nextIndex = wrapCarouselIndex(currentIndex, itemCount);
+      activeIndexRef.current = nextIndex;
       desiredIndex.current = nextIndex;
       return nextIndex;
     });
@@ -251,7 +254,11 @@ function useHeroBookCarousel(books) {
     transitionRequest.current = request;
     const ready = await preloadHeroBook(books[resolved]);
     if (request !== transitionRequest.current) return null;
-    if (!ready) return null;
+    if (!ready) {
+      desiredIndex.current = activeIndexRef.current;
+      return null;
+    }
+    activeIndexRef.current = resolved;
     setActiveIndex(resolved);
     if (announce) {
       const book = books[resolved];
@@ -300,11 +307,12 @@ function useHeroBookCarousel(books) {
   }, []);
 
   return {
-    activeBook: books[activeIndex] || null,
+    activeSlide: activeHeroSlide(books, activeIndex),
     activeIndex,
     announcement,
     canAutoRotate: itemCount > 1 && !reducedMotion && !narrowViewport,
     dragging,
+    isAutoRotating: rotationAllowed,
     itemCount,
     manualPaused,
     next,
@@ -329,13 +337,13 @@ function BookJacket({
 
   if (!book || coverFailed) return <span className="premium-book-jacket premium-hero-cover-mask" aria-hidden="true" />;
   return (
-    <span className="premium-book-jacket" data-canonical-cover-url={book.front_cover_url}>
+    <span className="premium-book-jacket" data-canonical-cover-url={book.coverSrc}>
       <span className="premium-book-jacket__spine" aria-hidden="true" />
       <span className="premium-book-jacket__front">
         <BookCoverImage
           book={book}
           sizes={sizes}
-          alt={book.cover_alt_text}
+          alt={book.coverAlt}
           width={240}
           height={360}
           widths={widths}
@@ -448,7 +456,7 @@ function ReferenceCatalogStage({
   onCoverFailure,
 }) {
   const featuredSlugs = new Set(books.map((book) => book.slug));
-  const primaryShelfSlug = carousel.activeBook?.slug;
+  const primaryShelfSlug = carousel.activeSlide?.slug;
   const listeningBook = approvedAudiobooks.find((book) => (
     book.slug !== primaryShelfSlug && featuredSlugs.has(book.slug)
   ))
@@ -481,6 +489,8 @@ function EditorialCoverflow({
   variant = "flow",
 }) {
   const pointerState = useRef(null);
+  const pointerFocusIntent = useRef(false);
+  const activeSlide = activeHeroSlide(books, carousel.activeIndex);
 
   if (loading && books.length === 0) {
     return (
@@ -535,37 +545,82 @@ function EditorialCoverflow({
       aria-label="Featured classics"
       data-carousel-index={carousel.activeIndex}
       data-carousel-count={carousel.itemCount}
+      data-active-slide-id={activeSlide?.id || ""}
+      data-autoplay-running={carousel.isAutoRotating ? "true" : "false"}
       onKeyDown={onKeyDown}
+      onPointerDownCapture={() => {
+        pointerFocusIntent.current = true;
+      }}
+      onPointerUpCapture={() => {
+        pointerFocusIntent.current = false;
+      }}
+      onPointerCancelCapture={() => {
+        pointerFocusIntent.current = false;
+      }}
       onMouseEnter={() => carousel.setInteractionPaused(true)}
       onMouseLeave={() => carousel.setInteractionPaused(false)}
-      onFocusCapture={carousel.stopForKeyboardFocus}
+      onFocusCapture={() => {
+        if (!pointerFocusIntent.current) carousel.stopForKeyboardFocus();
+      }}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) carousel.setInteractionPaused(false);
       }}
     >
-      <div className="premium-coverflow__controls" role="group" aria-label="Featured classics controls">
-        {carousel.canAutoRotate ? (
-          <button
-            type="button"
-            onClick={carousel.togglePaused}
-            aria-label={carousel.manualPaused ? "Start slide rotation" : "Stop slide rotation"}
-            aria-pressed={carousel.manualPaused}
+      {activeSlide ? (
+        <aside
+          className="premium-coverflow__plaque"
+          aria-label={`Featured classic: ${activeSlide.title} by ${activeSlide.author}`}
+          data-slide-id={activeSlide.id}
+        >
+          <div className="premium-coverflow__metadata" key={activeSlide.id}>
+            <span>Featured classic</span>
+            <strong>{activeSlide.title}</strong>
+            <small>{activeSlide.author}</small>
+            <Link
+              to={activeSlide.destination}
+              data-slide-id={activeSlide.id}
+              data-testid="hero-active-book-link"
+            >
+              Open classic <ArrowRight size={13} strokeWidth={1.7} aria-hidden="true" />
+            </Link>
+          </div>
+          <div
+            className={`premium-coverflow__controls${carousel.canAutoRotate ? "" : " premium-coverflow__controls--manual"}`}
+            role="group"
+            aria-label="Featured classics controls"
           >
-            {carousel.manualPaused
-              ? <Play size={15} strokeWidth={1.8} aria-hidden="true" />
-              : <Pause size={15} strokeWidth={1.8} aria-hidden="true" />}
-          </button>
-        ) : null}
-        <button type="button" onClick={carousel.previous} aria-label="Previous book">
-          <ChevronLeft size={18} strokeWidth={1.8} aria-hidden="true" />
-        </button>
-        <span aria-hidden="true">
-          {String(carousel.activeIndex + 1).padStart(2, "0")} / {String(carousel.itemCount).padStart(2, "0")}
-        </span>
-        <button type="button" onClick={carousel.next} aria-label="Next book">
-          <ChevronRight size={18} strokeWidth={1.8} aria-hidden="true" />
-        </button>
-      </div>
+            {carousel.canAutoRotate ? (
+              <button
+                type="button"
+                className="premium-coverflow__rotation"
+                onClick={carousel.togglePaused}
+                aria-label={carousel.manualPaused ? "Start slide rotation" : "Stop slide rotation"}
+                aria-pressed={carousel.manualPaused}
+              >
+                {carousel.manualPaused
+                  ? <Play size={16} strokeWidth={1.8} aria-hidden="true" />
+                  : <Pause size={16} strokeWidth={1.8} aria-hidden="true" />}
+              </button>
+            ) : null}
+            <div className="premium-coverflow__navigation">
+              <button type="button" onClick={carousel.previous} aria-label="Previous book">
+                <ChevronLeft size={19} strokeWidth={1.8} aria-hidden="true" />
+              </button>
+              <span className="premium-coverflow__counter" aria-hidden="true">
+                {String(carousel.activeIndex + 1).padStart(2, "0")} / {String(carousel.itemCount).padStart(2, "0")}
+              </span>
+              <button type="button" onClick={carousel.next} aria-label="Next book">
+                <ChevronRight size={19} strokeWidth={1.8} aria-hidden="true" />
+              </button>
+            </div>
+            {carousel.canAutoRotate ? (
+              <span className="premium-coverflow__progress" aria-hidden="true">
+                <i key={activeSlide.id} />
+              </span>
+            ) : null}
+          </div>
+        </aside>
+      ) : null}
 
       <div
         className="premium-coverflow__stage"
@@ -594,22 +649,24 @@ function EditorialCoverflow({
           );
           return (
             <div
-              key={book.slug}
+              key={book.id}
               className="premium-coverflow__slide"
               role="group"
               aria-roledescription="slide"
               aria-label={slideLabel}
               aria-hidden={isHidden}
               data-active={isActive ? "true" : "false"}
+              data-slide-id={book.id}
               data-book-slug={book.slug}
               data-position={slideState}
               style={{ "--coverflow-distance": position }}
             >
               {isActive ? (
                 <Link
-                  to={book.book_url}
+                  to={book.destination}
                   className="premium-coverflow__book-action premium-coverflow__book-action--active"
                   aria-label={`Open ${book.title} by ${book.author}`}
+                  data-active-cover-id={book.id}
                   data-testid={`hero-book-${book.slug}`}
                 >
                   {jacket}
@@ -633,17 +690,6 @@ function EditorialCoverflow({
           );
         })}
       </div>
-
-      {carousel.activeBook ? (
-        <div className="premium-coverflow__caption" aria-live="off">
-          <span>Featured classic</span>
-          <strong>{carousel.activeBook.title}</strong>
-          <small>{carousel.activeBook.author}</small>
-          <Link to={carousel.activeBook.book_url}>
-            Open classic <ArrowRight size={13} strokeWidth={1.7} aria-hidden="true" />
-          </Link>
-        </div>
-      ) : null}
     </div>
   );
 }

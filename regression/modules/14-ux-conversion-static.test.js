@@ -66,6 +66,7 @@ describe("UX conversion static signals", () => {
   const selectedListeningRail = read("frontend/src/components/SelectedListeningRail.jsx");
   const premiumHero = read("frontend/src/components/PremiumHero.jsx");
   const premiumHeroStyles = read("frontend/src/components/PremiumHero.css");
+  const heroCarousel = read("frontend/src/lib/heroCarousel.js");
   const headerStyles = read("frontend/src/components/Header.css");
   const homeCurationClient = read("frontend/src/lib/homeCuration.js");
   const bookDetail = read("frontend/src/pages/BookDetail.jsx");
@@ -259,8 +260,11 @@ describe("UX conversion static signals", () => {
     expect(premiumHero).toContain("Immersive Audiobooks");
     expect(premiumHero).toContain("Beautiful Editions");
     expect(premiumHero).toContain("Calm Reading Modes");
-    expect(premiumHero).toContain("book.front_cover_url");
-    expect(premiumHero).toContain("book.cover_alt_text");
+    expect(heroCarousel).toContain("book.front_cover_url");
+    expect(heroCarousel).toContain("book.cover_alt_text");
+    expect(premiumHero).toContain("book.coverSrc");
+    expect(premiumHero).toContain("book.coverAlt");
+    expect(premiumHero).toContain("activeHeroSlide(books, carousel.activeIndex)");
     expect(premiumHero).toContain("approvedAudiobooks.find");
     expect(premiumHero).toContain("data-book-slug");
     expect(premiumHero).toContain("REFERENCE_HERO_IMAGE");

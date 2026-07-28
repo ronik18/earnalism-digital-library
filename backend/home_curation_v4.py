@@ -369,15 +369,25 @@ def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: di
     listening_items = [_public(book) for book in audio_visible]
     listening_reserve = [_public(book) for book in audio_reserve]
     groups = [{key: item[key] for key in ("id", "title", "description", "theme_chips", "cta_label", "cta_url", "layout_area", "accent", "total_count", "display_mode", "visible_books", "reserve_books", "books")} for item in literary_shelves if item["total_count"]]
-    # The hero is the visual front door for the Sprint 1 collection. Keep its
-    # inventory inside that owner-approved cohort even when the wider live
-    # catalog contains other reader-safe titles. Missing cohort evidence must
-    # fail closed instead of widening the public carousel.
+    # The hero has its own explicit editorial sequence. It remains bounded by
+    # the Sprint 1 cohort, but a title can be removed from the hero without
+    # deleting it from the catalog or any literary shelf.
+    configured_hero_slugs = [
+        str(slug or "").strip().lower()
+        for slug in (config.get("hero_featured_slugs") or ())
+        if str(slug or "").strip()
+    ]
+    hero_slugs = configured_hero_slugs or sprint1_slugs
     sprint1_slug_set = set(sprint1_slugs)
+    hero_slug_set = {
+        slug for slug in hero_slugs if slug in sprint1_slug_set
+    }
     carousel_contracts = [
-        book for book in contracts if book["slug"] in sprint1_slug_set
+        book for book in contracts if book["slug"] in hero_slug_set
     ]
     carousel_books = select_hero_carousel_books(carousel_contracts)
+    hero_order = {slug: index for index, slug in enumerate(hero_slugs)}
+    carousel_books.sort(key=lambda book: hero_order.get(book["slug"], len(hero_order)))
     featured = carousel_books[:6]
     return {
         "literary_shelves": literary_shelves,
