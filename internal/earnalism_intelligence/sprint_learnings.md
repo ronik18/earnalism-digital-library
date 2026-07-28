@@ -769,3 +769,19 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   genuinely different exact source-bound delivery followed by the full gate
   sequence; no upload, publication, public Listen, or release mutation
   occurred in this repair.
+
+## 2026-07-28 Pride and Prejudice audiobook-use preflight
+
+- Public-domain text and owner authorization are enough to approve audiobook
+  preparation, but they do not prove that any retained recording may be
+  released.
+- A listening-only lock is not a candidate manifest. Pride's retained Edge,
+  Piper, and enhanced files lack a complete combination of exact recording
+  provenance, source binding, objective ASR/order evidence, measured sync,
+  full listening QA, and downstream delivery proof.
+- Record source/adaptation permission separately from public-audio approval.
+  The provider-free preflight now passes manuscript, rights, and covers and
+  stops at audio reuse because no approved recording is bound. Bind one exact
+  rights-clear recording before spending on listening review.
+- Pride remains reader-live and audio-hidden; no generation, provider call,
+  upload, publication, or release-state mutation occurred.

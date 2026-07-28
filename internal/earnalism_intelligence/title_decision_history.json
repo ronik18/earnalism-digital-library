@@ -1650,6 +1650,28 @@
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_qwen3_base_8bit_v390_section13_20260727.json",
       "audiobook_next_action": "Keep Gift audio-hidden. Accept only a complete source-bound narration or licensed-audio delivery through the existing packet, then run full ASR, listening, measured-sync, checksum, metadata, endpoint, and browser gates. Do not run another model audition."
     },
+    "pride-and-prejudice": {
+      "latest_decision": "AUDIOBOOK_USE_APPROVED_PUBLIC_AUDIO_HIDDEN_CANDIDATE_BINDING_REQUIRED",
+      "decision_reason": "The canonical text is public domain and the owner authorized Sprint 1 audiobook preparation, so source/adaptation use is approved and checksum-bound. None of the retained Pride audio files has a complete release-grade provenance, objective QA, measured-sync, listening, or delivery package, so no candidate is approved for public audio.",
+      "updated_at": "2026-07-28T10:45:00Z",
+      "language": "eng",
+      "public_reader_status": "PUBLIC_READER",
+      "audiobook_use_approved": true,
+      "audio_public_release_approved": false,
+      "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+      "canonical_text_rights_basis": "Jane Austen died in 1817 and Pride and Prejudice was published in 1813; the controlled source evidence records public-domain commercial use.",
+      "retained_candidate_status": "NO_RELEASE_GRADE_CANDIDATE_BOUND",
+      "latest_factory_preflight": "MANUSCRIPT_RIGHTS_AND_COVER_PASS_AUDIO_REUSE_BLOCKED",
+      "retained_candidate_blockers": [
+        "EXACT_RECORDING_PROVENANCE_OR_GENERATION_MANIFEST_MISSING",
+        "RAW_AUDIO_ASR_SOURCE_QA_MISSING",
+        "FIRST_LAST_AND_ORDERED_CONTENT_QA_MISSING",
+        "MEASURED_SYNC_MISSING",
+        "FULL_LISTENING_QA_MISSING",
+        "UPLOAD_ENDPOINT_AND_BROWSER_GATES_MISSING"
+      ],
+      "audiobook_next_action": "Bind exactly one new rights-clear, source-bound candidate before any listening spend. Do not treat the stale listening-only lock or local inventory as release evidence."
+    },
     "the-tell-tale-heart": {
       "latest_decision": "KOKORO_BF_EMMA_REPRESENTATIVE_ASR_REPAIR_FAILED_CONFIGURATION_CLOSED",
       "decision_reason": "Three of four bf_emma passages reached exact ASR/source 10.0/1.0 after bounded decoder repair, but both finale decoders retained unexpected trailing phrase thanks for watching.",

@@ -84,13 +84,14 @@ def test_public_projection_keeps_hidden_audio_fail_closed(slug):
     ) == []
 
 
-def test_bn066_audiobook_use_approval_does_not_approve_public_audio():
-    artifact_dir = ROOT / "backend/data/controlled_publications/bn-066"
+@pytest.mark.parametrize("slug", ("bn-066", "pride-and-prejudice"))
+def test_audiobook_use_approval_does_not_approve_public_audio(slug):
+    artifact_dir = ROOT / f"backend/data/controlled_publications/{slug}"
     approval = json.loads(
         (artifact_dir / "approval_evidence.json").read_text(encoding="utf-8")
     )
     artifact = catalog_truth.load_controlled_artifact_book(
-        "bn-066", artifact_dir=artifact_dir
+        slug, artifact_dir=artifact_dir
     )
 
     assert approval["audiobook_use_approved"] is True
