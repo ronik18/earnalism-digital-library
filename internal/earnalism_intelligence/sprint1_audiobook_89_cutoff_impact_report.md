@@ -42,6 +42,12 @@ gate after lowering only overall listening to `8.9`.
   nevertheless failed exact content and measured sync (`9.6262`) after the
   single allowed retained-audio repair because unexpected speech persisted.
   The remaining 26 chapters were not generated and the title remains hidden.
+- **Alice's Adventures in Wonderland** used its one bounded Kokoro `bf_emma`
+  candidate. Three representative scenes passed exact ASR at `10.0/1.0`; the
+  Caterpillar scene scored `9.9408` with `0.9882` coverage but still omitted
+  one repeated source token `I`, so exact ordered-content integrity failed
+  after the single retained-WAV decoder repair. Listening QA and full-title
+  generation were skipped, and the title moved to source-bound delivery.
 
 ## Net production effect
 

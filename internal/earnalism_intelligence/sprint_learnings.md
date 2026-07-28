@@ -685,3 +685,25 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   occurred. Four private `openai:gpt-audio` listening judgments had a maximum
   estimate of `$0.20`; actual billing was not reported. The paid lock remains
   idle and unchanged.
+
+## 2026-07-28 Alice bounded Kokoro closeout
+
+- Alice was the shortest cover-ready Sprint 1 English title with no prior
+  synthetic attempt. One four-scene Kokoro `bf_emma` candidate used British
+  G2P, speed `0.97`, pinned model revision
+  `f3ff3571791e39611d31c381e3a41a3af07b4987`, and exact controlled source
+  SHA-256
+  `c8cd98430bcaa621dd206b8d3c880b34ca3daf4776e4b89c8a10d8c5f84cb2d3`.
+- The retained-WAV repair produced ASR/source scores
+  `10.0/9.9408/10.0/10.0` and coverage
+  `1.0/0.9882/1.0/1.0`. The `arm-chair`/`armchair` tokenization was a bounded
+  source-equivalent pass, but the Caterpillar dialogue still omitted one
+  repeated source token `I` under both decoder arms.
+- Aggregate ASR above `9.7` cannot override an exact missing-word/order
+  failure. Do not invent the missing `I`, delete source text, regenerate the
+  same synthesis fingerprint, or repeat the repair fingerprint. Listening QA
+  and full-title generation were correctly skipped.
+- The local synthesis cost was `$0.00`; no listening provider call, upload,
+  publication, release mutation, or public exposure occurred. Alice remains
+  audio-hidden and now has a deterministic source-bound import packet. The old
+  unapproved remote object must still be revoked before any future release.

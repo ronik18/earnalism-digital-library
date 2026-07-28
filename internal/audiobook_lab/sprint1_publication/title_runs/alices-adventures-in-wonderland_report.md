@@ -1,6 +1,6 @@
 # Alice's Adventures in Wonderland Parallel Sprint Report
 
-Generated: `2026-07-12T19:35:15Z`
+Updated: `2026-07-28T05:52:03Z`
 
 - Slug: `alices-adventures-in-wonderland`
 - Language: `English`
@@ -8,20 +8,30 @@ Generated: `2026-07-12T19:35:15Z`
 - Assigned agent: `Goodall (019f57d2-7aed-7840-95b5-642a9a5ed578)`
 - Public reader: `Yes`
 - Public audiobook: `No`
-- Quality evidence: `NOT_RUN`
-- Estimated remaining cost: `$1.5053`
-- Final state: `SPRINT_TARGET_INCOMPLETE`
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
-- Evidence: `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/alices-adventures-in-wonderland.json`
-- Next action: Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied
+- Quality evidence: `3/4 exact representative ASR passes; one exact-order failure`
+- Local generation cost: `$0.00`
+- Listening QA spend: `$0.00` because the objective gate failed first
+- Final state: `SOURCE_BOUND_DELIVERY_REQUIRED`
+- Blocker: `KOKORO_BF_EMMA_REPRESENTATIVE_EXACT_ORDER_FAILURE; PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; SOURCE_BOUND_FULL_TITLE_DELIVERY_MISSING`
+- Evidence: `internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_asr_repair_v1.json`
+- Next action: Supply one exact rights-cleared full-title recording through the prepared source-bound packet, revoke the old unapproved remote object, and run all release gates.
 
 ## Next Command
 
 ```bash
-python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs alices-adventures-in-wonderland --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug alices-adventures-in-wonderland --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import --received-audio /absolute/path/to/received_narration.wav
 ```
 
-No provider call, release-gate mutation, or public audio exposure was performed by this materializer.
+The bounded Kokoro `bf_emma` / British-G2P pilot used four private source-bound
+passages. The single retained-WAV repair produced ASR scores
+`10.0/9.9408/10.0/10.0`; three passages passed exact content. The Caterpillar
+dialogue still omitted one repeated source token `I`, so ordered-content
+integrity failed. Listening QA and full-title generation were correctly
+skipped. The exact synthesis and repair fingerprints are closed.
+
+No paid synthesis, listening call, upload, release-gate mutation, or public
+audio exposure was performed. The source-bound packet is ready at
+`internal/audiobook_lab/sprint1_publication/licensed_audio_import/alices-adventures-in-wonderland/metadata.json`.
 
 ## Storage Containment
 

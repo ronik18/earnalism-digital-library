@@ -620,6 +620,42 @@
         "public_audio_approved": false,
         "next_action": "Do not repeat the bf_emma synthesis or ASR-repair fingerprints. Keep audio hidden and require a genuinely different voice/provider or source-bound narration; never delete unexpected decoded speech to manufacture a pass."
       },
+      "alices_adventures_in_wonderland": {
+        "source_sha256": "c8cd98430bcaa621dd206b8d3c880b34ca3daf4776e4b89c8a10d8c5f84cb2d3",
+        "model": "hexgrad/Kokoro-82M",
+        "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+        "voice": "bf_emma",
+        "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+        "g2p": "British",
+        "speed": 0.97,
+        "attempt_fingerprint": "c1e8a0ae6617093d8f13b0b07ca3a72115dd56d9336a04716f44d116f7aad458",
+        "asr_repair_fingerprint": "59ee181f736e534ccab753a355696de7cc2d40c22e647e68092fec3a056ba20c",
+        "representative_asr_scores": [
+          10.0,
+          9.9408,
+          10.0,
+          10.0
+        ],
+        "representative_coverages": [
+          1.0,
+          0.9882,
+          1.0,
+          1.0
+        ],
+        "ordered_content_integrity_pass": false,
+        "passed_passages": 3,
+        "failed_passages": {
+          "caterpillar_identity_dialogue": "one repeated source token I remained missing under both bounded decoder arms"
+        },
+        "listening_qa_run": false,
+        "full_title_generated": false,
+        "local_synthesis_provider_cost_usd": 0.0,
+        "public_audio_approved": false,
+        "completed_attempts_must_not_repeat": true,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_asr_repair_v1.json",
+        "next_action": "Close this Kokoro bf_emma configuration. Keep audio hidden and require exact source-bound full-title delivery; do not invent the missing repeated I or repeat either closed fingerprint."
+      },
       "the_secret_garden": {
         "source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
         "model": "hexgrad/Kokoro-82M",

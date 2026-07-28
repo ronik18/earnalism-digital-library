@@ -227,6 +227,39 @@ class NarrationImportPacketTests(unittest.TestCase):
             summary = (packet_dir / "failed_tts_evidence_summary.md").read_text(encoding="utf-8")
             self.assertIn("robotic_texture_detected", summary)
 
+    def test_backend_controlled_publication_is_used_when_data_mirror_is_partial(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            publication = self.fixture(root, slug="backend-only")
+            backend_publication = (
+                root / "backend/data/controlled_publications/backend-only"
+            )
+            backend_publication.parent.mkdir(parents=True)
+            publication.rename(backend_publication)
+            partial = root / "data/controlled_publications/backend-only"
+            partial.mkdir(parents=True)
+            (partial / "highlight_sync.json").write_text(
+                json.dumps({"slug": "backend-only"}), encoding="utf-8"
+            )
+
+            result = packet.create_packet(
+                slug="backend-only",
+                asset_root=root,
+                output_root=root / "packets",
+                candidate_kind="licensed_audio_import",
+            )
+
+            metadata = json.loads(
+                (Path(result["packet_dir"]) / "metadata.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(metadata["slug"], "backend-only")
+            self.assertEqual(
+                metadata["source_binding"]["status"],
+                "VERIFIED_SOURCE_AND_CHAPTER_HASHES",
+            )
+
     def test_bounded_candidate_attempts_enter_import_packet_history(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

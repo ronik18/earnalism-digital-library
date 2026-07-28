@@ -81,7 +81,8 @@
             "the-necklace",
             "the-time-machine",
             "the-call-of-the-wild",
-            "the-secret-garden"
+            "the-secret-garden",
+            "alices-adventures-in-wonderland"
         ],
         "one_bounded_representative_candidate_then_source_bound_delivery": [
             "dracula",
@@ -89,8 +90,7 @@
             "jekyll-and-hyde",
             "picture-of-dorian-gray",
             "white-fang",
-            "pride-and-prejudice",
-            "alices-adventures-in-wonderland"
+            "pride-and-prejudice"
         ],
         "one_bounded_targeted_repair_then_source_bound_delivery": [],
         "prerequisite_repair_before_any_audio_candidate": [
@@ -98,52 +98,49 @@
         ]
     },
     "selected_next_action": {
-        "slug": "the-secret-garden",
-        "reason": "Its Kokoro representative passed exact ASR and v3.89 listening, but the chapter-one full-run checkpoint retained unexpected speech and failed measured sync after its only targeted repair; the title now requires exact source-bound delivery.",
+        "slug": "alices-adventures-in-wonderland",
+        "reason": "Its one Kokoro bf_emma candidate passed exact ASR on three of four representative passages, but the Caterpillar dialogue retained one missing repeated I after the only decoder repair. Listening and full-title generation were skipped.",
         "attempt_cap": 1,
         "attempts_consumed": 1,
         "success_transition": "A complete rights-cleared source-bound delivery may enter the existing full-title QA path.",
         "failure_transition": "Remain SOURCE_BOUND_DELIVERY_REQUIRED and audio-hidden; do not run another synthetic family.",
-        "blocker": "CHAPTER_001_OBJECTIVE_REPAIR_FAILED_SOURCE_BOUND_DELIVERY_REQUIRED",
-        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_chapter1_bf_emma_asr_repair_v1.json",
-        "delivery_packet": "internal/audiobook_lab/sprint1_publication/licensed_audio_import/the-secret-garden/metadata.json",
-        "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-secret-garden --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import"
+        "blocker": "KOKORO_BF_EMMA_REPRESENTATIVE_EXACT_ORDER_FAILURE_SOURCE_BOUND_DELIVERY_REQUIRED",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_asr_repair_v1.json",
+        "delivery_packet": "internal/audiobook_lab/sprint1_publication/licensed_audio_import/alices-adventures-in-wonderland/metadata.json",
+        "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug alices-adventures-in-wonderland --candidate-kind licensed_audio_import --asset-root . --output-root internal/audiobook_lab/sprint1_publication/licensed_audio_import --received-audio /absolute/path/to/received_narration.wav"
     },
     "active_title": {
-        "slug": "the-secret-garden",
+        "slug": "alices-adventures-in-wonderland",
         "state": "SOURCE_BOUND_DELIVERY_REQUIRED",
         "provider": "kokoro",
         "model": "hexgrad/Kokoro-82M",
         "voice": "bf_emma",
-        "attempt_fingerprint": "a9d329844e54e425fc578f3f4469b934ae85e8ec288223a270309f2bd1eba8fd",
-        "provider_calls_ran": true,
+        "attempt_fingerprint": "c1e8a0ae6617093d8f13b0b07ca3a72115dd56d9336a04716f44d116f7aad458",
+        "asr_repair_fingerprint": "59ee181f736e534ccab753a355696de7cc2d40c22e647e68092fec3a056ba20c",
+        "provider_calls_ran": false,
         "generation_provider_calls": 0,
-        "listening_judge_provider_calls": 4,
+        "listening_judge_provider_calls": 0,
         "model_attempt_consumed": true,
-        "actual_provider_billing": "NOT_REPORTED",
-        "conservative_provider_spend_usd": 0.2,
-        "estimated_audition_spend_usd": 0.2,
+        "actual_provider_billing": 0.0,
+        "conservative_provider_spend_usd": 0.0,
+        "estimated_audition_spend_usd": 0.0,
         "representative_asr_scores": [
             10.0,
-            10.0,
+            9.9408,
             10.0,
             10.0
         ],
         "representative_coverage_scores": [
             1.0,
-            1.0,
+            0.9882,
             1.0,
             1.0
         ],
-        "representative_listening_overall_min": 9.0,
-        "representative_listening_confidence_min": 0.92,
-        "chapter_001_measured_sync_score": 9.6262,
-        "chapter_001_measured_sync_coverage": 1.0,
         "ordered_content_integrity_passed": false,
-        "representative_listening_qa_ran": true,
+        "representative_listening_qa_ran": false,
         "full_title_listening_qa_ran": false,
-        "remaining_chapters_generated": false,
-        "paid_lock_restored_byte_for_byte": true,
+        "full_title_generated": false,
+        "paid_lock_unchanged": true,
         "public_audio_status": "AUDIO_HIDDEN"
     },
     "gift_closeout": {

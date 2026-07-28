@@ -486,7 +486,20 @@ def create_packet(
     if candidate_kind not in {"human_narration", "licensed_audio_import"}:
         raise RuntimeError("candidate kind must be human_narration or licensed_audio_import")
 
-    publication = asset_root / "data/controlled_publications" / slug
+    publication_candidates = (
+        asset_root / "data/controlled_publications" / slug,
+        asset_root / "backend/data/controlled_publications" / slug,
+    )
+    publication = next(
+        (
+            candidate
+            for candidate in publication_candidates
+            if (candidate / "public_book.json").is_file()
+            and (candidate / "source_evidence.json").is_file()
+            and (candidate / "chapters").is_dir()
+        ),
+        publication_candidates[0],
+    )
     public_book = load_json(publication / "public_book.json")
     source_evidence = load_json(publication / "source_evidence.json")
     if public_book.get("verification_status") != "approved" or public_book.get("qa_status") != "QA_PASSED":

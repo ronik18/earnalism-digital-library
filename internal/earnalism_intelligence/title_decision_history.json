@@ -2,14 +2,50 @@
   "version": "2026-07-14",
   "titles": {
     "alices-adventures-in-wonderland": {
-      "latest_decision": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED_READER_LIVE",
-      "decision_reason": "Scoped storage containment completed and stale Cloudinary provider metadata was removed from deployable runtime source; no independent audiobook release gate has passed.",
-      "updated_at": "2026-07-14T05:03:43Z",
+      "latest_decision": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_REPRESENTATIVE_ASR_REPAIR_FAILURE",
+      "decision_reason": "The single bounded Kokoro bf_emma British-G2P candidate reached exact ASR on three of four representative passages, but the Caterpillar dialogue still omitted one repeated source token I after the only permitted retained-WAV decoder repair. Listening and full-title generation were correctly skipped.",
+      "updated_at": "2026-07-28T05:52:03Z",
       "language": "eng",
-      "audiobook_next_action": "Keep audio hidden until a source-bound candidate passes every release gate.",
+      "public_reader_status": "PUBLIC_READER",
+      "provider": "kokoro",
+      "model": "hexgrad/Kokoro-82M",
+      "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "voice": "bf_emma",
+      "g2p": "British",
+      "speed": 0.97,
+      "source_sha256": "c8cd98430bcaa621dd206b8d3c880b34ca3daf4776e4b89c8a10d8c5f84cb2d3",
+      "representative_attempt_fingerprint": "c1e8a0ae6617093d8f13b0b07ca3a72115dd56d9336a04716f44d116f7aad458",
+      "representative_asr_repair_fingerprint": "59ee181f736e534ccab753a355696de7cc2d40c22e647e68092fec3a056ba20c",
+      "representative_asr_scores": [
+        10.0,
+        9.9408,
+        10.0,
+        10.0
+      ],
+      "representative_coverage_scores": [
+        1.0,
+        0.9882,
+        1.0,
+        1.0
+      ],
+      "representative_ordered_content_integrity_pass": false,
+      "failed_passage": "caterpillar_identity_dialogue",
+      "persistent_missing_tokens": {
+        "i": 1
+      },
+      "listening_qa_ran": false,
+      "full_title_generated": false,
+      "local_synthesis_provider_cost_usd": 0.0,
+      "model_attempt_consumed": true,
+      "attempt_must_not_repeat": true,
+      "blocker": "KOKORO_BF_EMMA_REPRESENTATIVE_EXACT_ORDER_FAILURE_SOURCE_BOUND_DELIVERY_REQUIRED",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_asr_repair_v1.json",
+      "licensed_audio_packet": "internal/audiobook_lab/sprint1_publication/licensed_audio_import/alices-adventures-in-wonderland/metadata.json",
+      "audiobook_next_action": "Supply one exact rights-cleared source-bound full-title recording through the prepared packet, revoke the old unapproved remote object, and then run every full-title release gate. Do not repeat the closed Kokoro fingerprints.",
       "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
       "source_cleanup_status": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED",
-      "public_audio_status": "AUDIO_HIDDEN"
+      "remote_object_revocation_status": "REQUIRED_BEFORE_RELEASE",
+      "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED"
     },
     "bn-031": {
       "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",

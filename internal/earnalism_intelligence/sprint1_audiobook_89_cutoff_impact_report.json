@@ -1,6 +1,6 @@
 {
     "schema_version": 1,
-    "generated_at": "2026-07-28T05:09:09Z",
+    "generated_at": "2026-07-28T05:52:03Z",
     "policy": "sprint1_audiobook_acceptance_v3_89",
     "scope": "canonical Sprint 1 Bengali and English audiobooks",
     "thresholds": {
@@ -106,29 +106,30 @@
         }
     ],
     "latest_bounded_attempt": {
-        "slug": "the-secret-garden",
+        "slug": "alices-adventures-in-wonderland",
         "provider": "kokoro",
         "model": "hexgrad/Kokoro-82M",
         "voice": "bf_emma",
-        "attempt_fingerprint": "a9d329844e54e425fc578f3f4469b934ae85e8ec288223a270309f2bd1eba8fd",
+        "attempt_fingerprint": "c1e8a0ae6617093d8f13b0b07ca3a72115dd56d9336a04716f44d116f7aad458",
+        "asr_repair_fingerprint": "59ee181f736e534ccab753a355696de7cc2d40c22e647e68092fec3a056ba20c",
         "representative_asr_manuscript_scores": [
             10.0,
-            10.0,
+            9.9408,
             10.0,
             10.0
         ],
         "representative_coverage_scores": [
             1.0,
-            1.0,
+            0.9882,
             1.0,
             1.0
         ],
-        "representative_listening_overall_min": 9.0,
-        "representative_listening_confidence_min": 0.92,
-        "chapter_001_measured_sync_score": 9.6262,
-        "chapter_001_measured_sync_coverage": 1.0,
         "ordered_content_integrity_passed": false,
-        "representative_listening_qa_ran": true,
+        "failed_passage": "caterpillar_identity_dialogue",
+        "persistent_missing_tokens": {
+            "i": 1
+        },
+        "representative_listening_qa_ran": false,
         "full_title_listening_qa_ran": false,
         "release_ready": false,
         "next_state": "SOURCE_BOUND_DELIVERY_REQUIRED"
@@ -144,6 +145,8 @@
         "internal/earnalism_intelligence/sprint1_audiobook_89_cutoff_impact_report.md",
         "internal/earnalism_intelligence/title_decision_history.json",
         "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_listening_qa_v1.json",
-        "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_chapter1_bf_emma_asr_repair_v1.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_chapter1_bf_emma_asr_repair_v1.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_representative_v1.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_kokoro_bf_emma_asr_repair_v1.json"
     ]
 }
