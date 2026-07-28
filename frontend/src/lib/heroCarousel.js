@@ -1,5 +1,3 @@
-export const HERO_BOOKS_PER_FRAME = 4;
-
 export function heroCarouselBooks(curation = {}) {
   const suppliedCarousel = Array.isArray(curation?.hero?.carousel_books)
     ? curation.hero.carousel_books
@@ -17,18 +15,50 @@ export function heroCarouselBooks(curation = {}) {
   ).values());
 }
 
-export function heroCarouselPages(books) {
-  if (books.length === 0) return [];
-  if (books.length <= HERO_BOOKS_PER_FRAME) return [books];
+export function wrapCarouselIndex(index, itemCount) {
+  if (!Number.isFinite(index) || itemCount <= 0) return 0;
+  return ((Math.trunc(index) % itemCount) + itemCount) % itemCount;
+}
 
-  const pageCount = Math.ceil(books.length / HERO_BOOKS_PER_FRAME);
-  return Array.from(
-    { length: pageCount },
-    (_, pageIndex) => Array.from(
-      { length: HERO_BOOKS_PER_FRAME },
-      (_, offset) => books[
-        ((pageIndex * HERO_BOOKS_PER_FRAME) + offset) % books.length
-      ],
-    ),
+export function stepCarouselIndex(activeIndex, direction, itemCount) {
+  const step = direction < 0 ? -1 : 1;
+  return wrapCarouselIndex(activeIndex + step, itemCount);
+}
+
+export function relativeCarouselPosition(index, activeIndex, itemCount) {
+  if (itemCount <= 1) return 0;
+  const forwardDistance = wrapCarouselIndex(index - activeIndex, itemCount);
+  return forwardDistance <= itemCount / 2
+    ? forwardDistance
+    : forwardDistance - itemCount;
+}
+
+export function carouselSlideState(index, activeIndex, itemCount) {
+  const position = relativeCarouselPosition(index, activeIndex, itemCount);
+  if (position === 0) return "active";
+  if (position === -1) return "previous";
+  if (position === 1) return "next";
+  return position < 0 ? "far-previous" : "far-next";
+}
+
+export function canRotateCarousel({
+  itemCount,
+  reducedMotion,
+  narrowViewport,
+  manualPaused,
+  interactionPaused,
+  dragging,
+  documentVisible,
+  initialCoverReady,
+}) {
+  return (
+    itemCount > 1
+    && !reducedMotion
+    && !narrowViewport
+    && !manualPaused
+    && !interactionPaused
+    && !dragging
+    && documentVisible
+    && initialCoverReady
   );
 }

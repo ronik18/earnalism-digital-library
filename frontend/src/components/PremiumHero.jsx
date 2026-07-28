@@ -18,9 +18,12 @@ import {
 import BookCoverImage from "./BookCoverImage";
 import { bookCoverImageSources } from "../lib/images";
 import {
-  HERO_BOOKS_PER_FRAME,
+  canRotateCarousel,
+  carouselSlideState,
   heroCarouselBooks,
-  heroCarouselPages,
+  relativeCarouselPosition,
+  stepCarouselIndex,
+  wrapCarouselIndex,
 } from "../lib/heroCarousel";
 import "./PremiumHero.css";
 
@@ -122,15 +125,34 @@ function useReducedMotion() {
   return reducedMotion;
 }
 
-function preloadHeroPage(books) {
+function useNarrowViewport() {
+  const [isNarrow, setIsNarrow] = useState(() => (
+    typeof window !== "undefined"
+    && typeof window.matchMedia === "function"
+    && window.matchMedia("(max-width: 767px)").matches
+  ));
+
+  useEffect(() => {
+    if (typeof window.matchMedia !== "function") return undefined;
+    const media = window.matchMedia("(max-width: 767px)");
+    const syncViewport = (event) => setIsNarrow(event.matches);
+    setIsNarrow(media.matches);
+    media.addEventListener("change", syncViewport);
+    return () => media.removeEventListener("change", syncViewport);
+  }, []);
+
+  return isNarrow;
+}
+
+function preloadHeroBook(book) {
   if (typeof window === "undefined" || typeof window.Image !== "function") {
-    return Promise.resolve();
+    return Promise.resolve(true);
   }
 
-  return Promise.all(books.map((book) => new Promise((resolve) => {
+  return new Promise((resolve) => {
     const sources = bookCoverImageSources(book, {
-      width: 240,
-      widths: [160, 240, 320],
+      width: 360,
+      widths: [240, 360, 480],
       quality: 82,
     });
     if (!sources.src) {
@@ -142,7 +164,7 @@ function preloadHeroPage(books) {
     let settled = false;
     let timeoutId;
     image.decoding = "async";
-    image.sizes = "(min-width: 1440px) 7vw, 8vw";
+    image.sizes = "(min-width: 1280px) 230px, (min-width: 768px) 200px, 176px";
     if (sources.srcSet) image.srcset = sources.srcSet;
     const settle = async () => {
       if (settled) return;
@@ -167,26 +189,33 @@ function preloadHeroPage(books) {
     timeoutId = window.setTimeout(fail, 3500);
     image.src = sources.src;
     if (image.complete && image.naturalWidth > 0) settle();
-  }))).then((results) => results.every(Boolean));
+  });
 }
 
 function useHeroBookCarousel(books) {
   const reducedMotion = useReducedMotion();
+  const narrowViewport = useNarrowViewport();
   const transitionRequest = useRef(0);
-  const [pageIndex, setPageIndex] = useState(0);
+  const desiredIndex = useRef(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [manualPaused, setManualPaused] = useState(false);
   const [interactionPaused, setInteractionPaused] = useState(false);
+  const [dragging, setDragging] = useState(false);
   const [documentVisible, setDocumentVisible] = useState(() => (
     typeof document === "undefined" || document.visibilityState !== "hidden"
   ));
+  const [initialCoverReady, setInitialCoverReady] = useState(false);
   const [announcement, setAnnouncement] = useState("");
-  const pages = useMemo(() => heroCarouselPages(books), [books]);
-  const pageCount = Math.max(1, pages.length);
+  const itemCount = books.length;
 
   useEffect(() => {
     transitionRequest.current += 1;
-    setPageIndex((currentIndex) => Math.min(currentIndex, pageCount - 1));
-  }, [pageCount]);
+    setActiveIndex((currentIndex) => {
+      const nextIndex = wrapCarouselIndex(currentIndex, itemCount);
+      desiredIndex.current = nextIndex;
+      return nextIndex;
+    });
+  }, [itemCount]);
 
   useEffect(() => {
     const syncVisibility = () => setDocumentVisible(document.visibilityState !== "hidden");
@@ -194,108 +223,115 @@ function useHeroBookCarousel(books) {
     return () => document.removeEventListener("visibilitychange", syncVisibility);
   }, []);
 
-  const moveToPage = useCallback(async (nextIndex) => {
-    const resolved = (nextIndex + pageCount) % pageCount;
-    const request = transitionRequest.current + 1;
-    transitionRequest.current = request;
-    const ready = await preloadHeroPage(pages[resolved] || []);
-    if (request !== transitionRequest.current) return null;
-    if (!ready) return null;
-    setPageIndex(resolved);
-    return resolved;
-  }, [pageCount, pages]);
+  useEffect(() => {
+    let active = true;
+    setInitialCoverReady(false);
+    if (!books.length) return undefined;
+    void preloadHeroBook(books[activeIndex] || books[0]).then((ready) => {
+      if (active) setInitialCoverReady(ready);
+    });
+    return () => {
+      active = false;
+    };
+  }, [activeIndex, books]);
 
   useEffect(() => {
-    if (
-      pageCount <= 1
-      || reducedMotion
-      || manualPaused
-      || interactionPaused
-      || !documentVisible
-    ) return undefined;
+    if (!books.length) return;
+    const previousIndex = wrapCarouselIndex(activeIndex - 1, itemCount);
+    const nextIndex = wrapCarouselIndex(activeIndex + 1, itemCount);
+    void preloadHeroBook(books[previousIndex]);
+    if (nextIndex !== previousIndex) void preloadHeroBook(books[nextIndex]);
+  }, [activeIndex, books, itemCount]);
+
+  const moveToIndex = useCallback(async (nextIndex, announce = true) => {
+    if (!itemCount) return null;
+    const resolved = wrapCarouselIndex(nextIndex, itemCount);
+    desiredIndex.current = resolved;
+    const request = transitionRequest.current + 1;
+    transitionRequest.current = request;
+    const ready = await preloadHeroBook(books[resolved]);
+    if (request !== transitionRequest.current) return null;
+    if (!ready) return null;
+    setActiveIndex(resolved);
+    if (announce) {
+      const book = books[resolved];
+      setAnnouncement(`${book.title} by ${book.author}, slide ${resolved + 1} of ${itemCount}.`);
+    }
+    return resolved;
+  }, [books, itemCount]);
+
+  const rotationAllowed = canRotateCarousel({
+    itemCount,
+    reducedMotion,
+    narrowViewport,
+    manualPaused,
+    interactionPaused,
+    dragging,
+    documentVisible,
+    initialCoverReady,
+  });
+
+  useEffect(() => {
+    if (!rotationAllowed) return undefined;
     const rotation = window.setInterval(() => {
-      void moveToPage(pageIndex + 1);
+      void moveToIndex(stepCarouselIndex(desiredIndex.current, 1, itemCount), false);
     }, HERO_CAROUSEL_INTERVAL_MS);
     return () => window.clearInterval(rotation);
-  }, [
-    documentVisible,
-    interactionPaused,
-    manualPaused,
-    moveToPage,
-    pageCount,
-    pageIndex,
-    reducedMotion,
-  ]);
-
-  const visibleBooks = pages[pageIndex] || pages[0] || [];
+  }, [itemCount, moveToIndex, rotationAllowed]);
 
   const previous = useCallback(async () => {
-    const previousIndex = (pageIndex - 1 + pageCount) % pageCount;
-    const resolved = await moveToPage(previousIndex);
-    if (resolved === null) return;
-    setAnnouncement(`Showing featured books ${previousIndex + 1} of ${pageCount}.`);
-  }, [moveToPage, pageCount, pageIndex]);
+    await moveToIndex(stepCarouselIndex(desiredIndex.current, -1, itemCount));
+  }, [itemCount, moveToIndex]);
   const next = useCallback(async () => {
-    const nextIndex = (pageIndex + 1) % pageCount;
-    const resolved = await moveToPage(nextIndex);
-    if (resolved === null) return;
-    setAnnouncement(`Showing featured books ${nextIndex + 1} of ${pageCount}.`);
-  }, [moveToPage, pageCount, pageIndex]);
+    await moveToIndex(stepCarouselIndex(desiredIndex.current, 1, itemCount));
+  }, [itemCount, moveToIndex]);
+  const select = useCallback(async (index) => {
+    await moveToIndex(index);
+  }, [moveToIndex]);
   const togglePaused = useCallback(() => {
-    setManualPaused(!manualPaused);
-    setAnnouncement(manualPaused ? "Featured books carousel resumed." : "Featured books carousel paused.");
-  }, [manualPaused]);
+    setManualPaused((paused) => {
+      setAnnouncement(paused ? "Featured classics slide rotation started." : "Featured classics slide rotation stopped.");
+      return !paused;
+    });
+  }, []);
+  const stopForKeyboardFocus = useCallback(() => {
+    setManualPaused(true);
+    setInteractionPaused(true);
+  }, []);
 
   return {
+    activeBook: books[activeIndex] || null,
+    activeIndex,
     announcement,
-    canAutoRotate: !reducedMotion,
+    canAutoRotate: itemCount > 1 && !reducedMotion && !narrowViewport,
+    dragging,
+    itemCount,
     manualPaused,
     next,
-    pageCount,
-    pageIndex,
-    pages,
     previous,
+    select,
+    setDragging,
     setInteractionPaused,
+    stopForKeyboardFocus,
     togglePaused,
-    visibleBooks,
   };
 }
 
-function CatalogCoverLink({
+function BookJacket({
   book,
-  className,
-  destination = "book_url",
   sizes,
   widths,
   eager = false,
-  testId,
-  carouselLabel,
+  highPriority = false,
   onPermanentFailure,
-  interactive = true,
-  render3d = false,
 }) {
   const [coverFailed, setCoverFailed] = useState(false);
 
-  if (!book) {
-    return <span className={`${className} premium-hero-cover-mask`} aria-hidden="true" />;
-  }
-  if (coverFailed) {
-    return <span className={`${className} premium-hero-cover-mask`} aria-hidden="true" />;
-  }
-
-  const href = book[destination] || book.book_url;
+  if (!book || coverFailed) return <span className="premium-book-jacket premium-hero-cover-mask" aria-hidden="true" />;
   return (
-    <Link
-      to={href}
-      className={className}
-      aria-label={carouselLabel || `Open ${book.title} by ${book.author}`}
-      aria-roledescription={carouselLabel ? "slide" : undefined}
-      tabIndex={interactive ? undefined : -1}
-      data-testid={testId || `hero-book-${book.slug}`}
-      data-book-slug={book.slug}
-      data-canonical-cover-url={book.front_cover_url}
-    >
-      <span className={render3d ? "premium-book-jacket__front" : undefined}>
+    <span className="premium-book-jacket" data-canonical-cover-url={book.front_cover_url}>
+      <span className="premium-book-jacket__spine" aria-hidden="true" />
+      <span className="premium-book-jacket__front">
         <BookCoverImage
           book={book}
           sizes={sizes}
@@ -304,7 +340,7 @@ function CatalogCoverLink({
           height={360}
           widths={widths}
           loading={eager ? "eager" : "lazy"}
-          fetchPriority={eager ? "high" : undefined}
+          fetchPriority={highPriority ? "high" : undefined}
           allowGraphicalFallback={false}
           onPermanentFailure={() => {
             setCoverFailed(true);
@@ -312,13 +348,9 @@ function CatalogCoverLink({
           }}
         />
       </span>
-      {render3d ? (
-        <>
-          <span className="premium-book-jacket__right-pages" aria-hidden="true" />
-          <span className="premium-book-jacket__bottom-pages" aria-hidden="true" />
-        </>
-      ) : null}
-    </Link>
+      <span className="premium-book-jacket__right-pages" aria-hidden="true" />
+      <span className="premium-book-jacket__bottom-pages" aria-hidden="true" />
+    </span>
   );
 }
 
@@ -411,15 +443,12 @@ function ReferenceDeviceGroup({ listeningBook }) {
 
 function ReferenceCatalogStage({
   books,
-  featuredBooks,
-  pages,
+  carousel,
   approvedAudiobooks,
   onCoverFailure,
-  pageIndex,
-  pageCount,
 }) {
-  const featuredSlugs = new Set(featuredBooks.map((book) => book.slug));
-  const primaryShelfSlug = featuredBooks[0]?.slug;
+  const featuredSlugs = new Set(books.map((book) => book.slug));
+  const primaryShelfSlug = carousel.activeBook?.slug;
   const listeningBook = approvedAudiobooks.find((book) => (
     book.slug !== primaryShelfSlug && featuredSlugs.has(book.slug)
   ))
@@ -430,136 +459,191 @@ function ReferenceCatalogStage({
   return (
     <div
       className="premium-reference-catalog premium-reference-catalog--exact"
-      aria-label="Featured library books"
-      aria-roledescription="carousel"
-      data-carousel-page={pageIndex + 1}
-      data-carousel-pages={pageCount}
     >
       <ReferenceDeviceGroup listeningBook={listeningBook} />
       <div className="premium-reference-catalog-books">
-        <div className="premium-reference-catalog-track">
-          {pages.map((page, frameIndex) => {
-            const isActive = frameIndex === pageIndex;
-            const isNext = frameIndex === ((pageIndex + 1) % pageCount);
-            return (
-              <div
-                key={`frame-${frameIndex}`}
-                className="premium-reference-catalog-frame"
-                aria-hidden={!isActive}
-                data-active={isActive ? "true" : "false"}
-              >
-                {page.map((book, index) => {
-                  const ordinal = ((frameIndex * HERO_BOOKS_PER_FRAME) + index) % books.length;
-                  return (
-                    <CatalogCoverLink
-                      key={`${frameIndex}-${book.slug}`}
-                      book={book}
-                      className="premium-reference-slot"
-                      sizes="(min-width: 1440px) 7vw, 8vw"
-                      widths={[160, 240, 320]}
-                      eager={frameIndex === 0 || isNext}
-                      interactive={isActive}
-                      render3d
-                      carouselLabel={`Open ${book.title} by ${book.author}, book ${ordinal + 1} of ${books.length}`}
-                      onPermanentFailure={onCoverFailure}
-                    />
-                  );
-                })}
-              </div>
-            );
-          })}
-        </div>
+        <EditorialCoverflow
+          books={books}
+          carousel={carousel}
+          onCoverFailure={onCoverFailure}
+          variant="reference"
+        />
       </div>
     </div>
   );
 }
 
-function CoverStack({
+function EditorialCoverflow({
   books,
-  pages,
+  carousel,
   loading,
   onCoverFailure,
-  pageIndex,
-  pageCount,
+  variant = "flow",
 }) {
+  const pointerState = useRef(null);
+
   if (loading && books.length === 0) {
     return (
-      <div className="premium-mobile-covers premium-mobile-covers--loading" aria-hidden="true">
-        {Array.from({ length: 4 }).map((_, index) => <span key={index} />)}
+      <div className="premium-coverflow premium-coverflow--loading" aria-hidden="true">
+        <span />
       </div>
     );
   }
 
+  const onKeyDown = (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      void carousel.previous();
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      void carousel.next();
+    }
+  };
+  const onPointerDown = (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    pointerState.current = {
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      dragging: false,
+    };
+  };
+  const onPointerMove = (event) => {
+    const start = pointerState.current;
+    if (!start || start.pointerId !== event.pointerId || start.dragging) return;
+    if (Math.hypot(event.clientX - start.x, event.clientY - start.y) < 8) return;
+    start.dragging = true;
+    carousel.setDragging(true);
+  };
+  const finishPointer = (event, cancelled = false) => {
+    const start = pointerState.current;
+    pointerState.current = null;
+    if (start?.dragging) carousel.setDragging(false);
+    if (!start || cancelled || start.pointerId !== event.pointerId) return;
+    const deltaX = event.clientX - start.x;
+    const deltaY = event.clientY - start.y;
+    if (Math.abs(deltaX) < 42 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+    if (deltaX > 0) void carousel.previous();
+    else void carousel.next();
+  };
+
   return (
     <div
-      className="premium-mobile-covers"
-      aria-label="Featured library books"
+      className={`premium-coverflow premium-coverflow--${variant}`}
+      role="region"
       aria-roledescription="carousel"
-      data-carousel-page={pageIndex + 1}
-      data-carousel-pages={pageCount}
+      aria-label="Featured classics"
+      data-carousel-index={carousel.activeIndex}
+      data-carousel-count={carousel.itemCount}
+      onKeyDown={onKeyDown}
+      onMouseEnter={() => carousel.setInteractionPaused(true)}
+      onMouseLeave={() => carousel.setInteractionPaused(false)}
+      onFocusCapture={carousel.stopForKeyboardFocus}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) carousel.setInteractionPaused(false);
+      }}
     >
-      {pages.map((page, frameIndex) => {
-        const isActive = frameIndex === pageIndex;
-        const isNext = frameIndex === ((pageIndex + 1) % pageCount);
-        return (
-          <div
-            key={`mobile-frame-${frameIndex}`}
-            className="premium-mobile-covers-frame"
-            aria-hidden={!isActive}
-            data-active={isActive ? "true" : "false"}
+      <div className="premium-coverflow__controls" role="group" aria-label="Featured classics controls">
+        {carousel.canAutoRotate ? (
+          <button
+            type="button"
+            onClick={carousel.togglePaused}
+            aria-label={carousel.manualPaused ? "Start slide rotation" : "Stop slide rotation"}
+            aria-pressed={carousel.manualPaused}
           >
-            {page.map((book, index) => (
-              <CatalogCoverLink
-                key={`${frameIndex}-${book.slug}`}
-                book={book}
-                className="premium-mobile-cover"
-                sizes="(max-width: 520px) calc((100vw - 4.55rem) / 4), 145px"
-                widths={[180, 360]}
-                eager={frameIndex === 0 || isNext}
-                interactive={isActive}
-                render3d
-                carouselLabel={`Open ${book.title} by ${book.author}, book ${((frameIndex * HERO_BOOKS_PER_FRAME + index) % books.length) + 1} of ${books.length}`}
-                onPermanentFailure={onCoverFailure}
-              />
-            ))}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function HeroCarouselControls({
-  canAutoRotate,
-  manualPaused,
-  next,
-  pageCount,
-  pageIndex,
-  previous,
-  togglePaused,
-}) {
-  if (pageCount <= 1) return null;
-  return (
-    <div className="premium-hero-carousel-controls" role="group" aria-label="Featured books carousel controls">
-      <button type="button" onClick={previous} aria-label="Show previous four books">
-        <ChevronLeft size={17} strokeWidth={1.8} aria-hidden="true" />
-      </button>
-      {canAutoRotate ? (
-        <button
-          type="button"
-          onClick={togglePaused}
-          aria-label={manualPaused ? "Resume featured books carousel" : "Pause featured books carousel"}
-          aria-pressed={manualPaused}
-        >
-          {manualPaused
-            ? <Play size={14} strokeWidth={1.8} aria-hidden="true" />
-            : <Pause size={14} strokeWidth={1.8} aria-hidden="true" />}
+            {carousel.manualPaused
+              ? <Play size={15} strokeWidth={1.8} aria-hidden="true" />
+              : <Pause size={15} strokeWidth={1.8} aria-hidden="true" />}
+          </button>
+        ) : null}
+        <button type="button" onClick={carousel.previous} aria-label="Previous book">
+          <ChevronLeft size={18} strokeWidth={1.8} aria-hidden="true" />
         </button>
+        <span aria-hidden="true">
+          {String(carousel.activeIndex + 1).padStart(2, "0")} / {String(carousel.itemCount).padStart(2, "0")}
+        </span>
+        <button type="button" onClick={carousel.next} aria-label="Next book">
+          <ChevronRight size={18} strokeWidth={1.8} aria-hidden="true" />
+        </button>
+      </div>
+
+      <div
+        className="premium-coverflow__stage"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={(event) => finishPointer(event)}
+        onPointerCancel={(event) => finishPointer(event, true)}
+      >
+        <span className="premium-coverflow__active-glow" aria-hidden="true" />
+        {books.map((book, index) => {
+          const slideState = carouselSlideState(index, carousel.activeIndex, books.length);
+          const position = relativeCarouselPosition(index, carousel.activeIndex, books.length);
+          const isActive = slideState === "active";
+          const isAdjacent = slideState === "previous" || slideState === "next";
+          const isHidden = !isActive && !isAdjacent;
+          const slideLabel = `${index + 1} of ${books.length}: ${book.title} by ${book.author}`;
+          const jacket = (
+            <BookJacket
+              book={book}
+              sizes="(min-width: 1280px) 230px, (min-width: 768px) 200px, 176px"
+              widths={[180, 240, 360, 480]}
+              eager={index === 0 || isActive || isAdjacent}
+              highPriority={index === 0 && carousel.activeIndex === 0}
+              onPermanentFailure={onCoverFailure}
+            />
+          );
+          return (
+            <div
+              key={book.slug}
+              className="premium-coverflow__slide"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={slideLabel}
+              aria-hidden={isHidden}
+              data-active={isActive ? "true" : "false"}
+              data-book-slug={book.slug}
+              data-position={slideState}
+              style={{ "--coverflow-distance": position }}
+            >
+              {isActive ? (
+                <Link
+                  to={book.book_url}
+                  className="premium-coverflow__book-action premium-coverflow__book-action--active"
+                  aria-label={`Open ${book.title} by ${book.author}`}
+                  data-testid={`hero-book-${book.slug}`}
+                >
+                  {jacket}
+                </Link>
+              ) : isAdjacent ? (
+                <button
+                  type="button"
+                  className="premium-coverflow__book-action"
+                  onClick={() => carousel.select(index)}
+                  aria-label={`Select ${book.title} by ${book.author}`}
+                  data-testid={`hero-book-${book.slug}`}
+                >
+                  {jacket}
+                </button>
+              ) : (
+                <div className="premium-coverflow__book-action" tabIndex={-1}>
+                  {jacket}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {carousel.activeBook ? (
+        <div className="premium-coverflow__caption" aria-live="off">
+          <span>Featured classic</span>
+          <strong>{carousel.activeBook.title}</strong>
+          <small>{carousel.activeBook.author}</small>
+          <Link to={carousel.activeBook.book_url}>
+            Open classic <ArrowRight size={13} strokeWidth={1.7} aria-hidden="true" />
+          </Link>
+        </div>
       ) : null}
-      <span aria-hidden="true">{pageIndex + 1} / {pageCount}</span>
-      <button type="button" onClick={next} aria-label="Show next four books">
-        <ChevronRight size={17} strokeWidth={1.8} aria-hidden="true" />
-      </button>
     </div>
   );
 }
@@ -677,42 +761,22 @@ export default function PremiumHero({
       <div
         className="premium-hero-catalog-shell"
         data-testid="hero-catalog-visuals"
-        onMouseEnter={() => carousel.setInteractionPaused(true)}
-        onMouseLeave={() => carousel.setInteractionPaused(false)}
-        onFocusCapture={() => carousel.setInteractionPaused(true)}
-        onBlurCapture={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget)) carousel.setInteractionPaused(false);
-        }}
       >
         {isDesktopReference ? (
           <ReferenceCatalogStage
             books={carouselBooks}
-            featuredBooks={carousel.visibleBooks}
-            pages={carousel.pages}
+            carousel={carousel}
             approvedAudiobooks={approvedAudiobooks}
             onCoverFailure={recordCoverFailure}
-            pageIndex={carousel.pageIndex}
-            pageCount={carousel.pageCount}
           />
         ) : (
-          <CoverStack
+          <EditorialCoverflow
             books={carouselBooks}
-            pages={carousel.pages}
+            carousel={carousel}
             loading={loading}
             onCoverFailure={recordCoverFailure}
-            pageIndex={carousel.pageIndex}
-            pageCount={carousel.pageCount}
           />
         )}
-        <HeroCarouselControls
-          canAutoRotate={carousel.canAutoRotate}
-          manualPaused={carousel.manualPaused}
-          next={carousel.next}
-          pageCount={carousel.pageCount}
-          pageIndex={carousel.pageIndex}
-          previous={carousel.previous}
-          togglePaused={carousel.togglePaused}
-        />
       </div>
 
       <aside className="premium-hero-cards" aria-label="Premium library features" data-testid="premium-hero-feature-cards">
@@ -747,12 +811,14 @@ export default function PremiumHero({
 
 export {
   DEFAULT_HEADLINE,
-  HERO_BOOKS_PER_FRAME,
   HERO_CAROUSEL_INTERVAL_MS,
   REFERENCE_HERO_AVIF_SRCSET,
   REFERENCE_HERO_FULL_IMAGE,
   REFERENCE_HERO_IMAGE,
   REFERENCE_HERO_SRCSET,
+  carouselSlideState,
   heroCarouselBooks,
-  heroCarouselPages,
+  relativeCarouselPosition,
+  stepCarouselIndex,
+  wrapCarouselIndex,
 };

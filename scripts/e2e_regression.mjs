@@ -93,7 +93,12 @@ const homeHeroFixture = JSON.parse(
 const homeHeroFixtureBooks = homeHeroFixture.hero.featured_books;
 const expectedHeroCarouselBooks = homeHeroFixture.hero.carousel_books;
 const expectedHeroCarouselSlugs = expectedHeroCarouselBooks.map((book) => book.slug);
-const expectedHeroVisualSlugs = expectedHeroCarouselSlugs.slice(0, 4);
+const expectedHeroActiveSlug = expectedHeroCarouselSlugs[0];
+const expectedHeroMeaningfulSlugs = [
+  expectedHeroCarouselSlugs.at(-1),
+  expectedHeroActiveSlug,
+  expectedHeroCarouselSlugs[1],
+].filter(Boolean);
 const expectedVisibleShelfCount = homeHeroFixture.shelf_collage.groups
   .filter((group) => Array.isArray(group.books) && group.books.length > 0)
   .length;
@@ -101,8 +106,8 @@ const expectedApprovedAudioSlugs = homeHeroFixture.shelf_collage.selected_audiob
   .filter((book) => book.cover_valid && !book.is_placeholder && !book.is_typographic_only)
   .map((book) => book.slug);
 const expectedHeroListeningSlug = expectedApprovedAudioSlugs.find((slug) => (
-  expectedHeroVisualSlugs.includes(slug)
-)) || expectedApprovedAudioSlugs[0] || null;
+  slug !== expectedHeroActiveSlug && expectedHeroCarouselSlugs.includes(slug)
+)) || expectedApprovedAudioSlugs.find((slug) => slug !== expectedHeroActiveSlug) || expectedApprovedAudioSlugs[0] || null;
 const expectedHeroListenLinks = expectedHeroListeningSlug
   ? [`/reader/${expectedHeroListeningSlug}?listen=1`]
   : [];
@@ -258,12 +263,17 @@ async function main() {
       heroLibraryHref: document.querySelector('[data-testid="hero-cta-library"]')?.getAttribute("href"),
       heroAudiobooksHref: document.querySelector('[data-testid="hero-cta-audiobooks"]')?.getAttribute("href"),
       heroCatalogState: document.querySelector('[data-testid="premium-landing-hero"]')?.getAttribute("data-catalog-state"),
-      heroVisualSlugs: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-active="true"] [data-book-slug]')]
+      heroVisualSlugs: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-active="true"][data-book-slug]')]
         .map((card) => card.getAttribute("data-book-slug"))
         .filter(Boolean),
-      heroVisualCoverAlts: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-active="true"] [data-book-slug] img')]
+      heroMeaningfulSlugs: [...document.querySelectorAll(
+        '[data-testid="hero-catalog-visuals"] [data-position="previous"], [data-testid="hero-catalog-visuals"] [data-position="active"], [data-testid="hero-catalog-visuals"] [data-position="next"]',
+      )]
+        .map((card) => card.getAttribute("data-book-slug"))
+        .filter(Boolean),
+      heroVisualCoverAlts: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-active="true"][data-book-slug] img')]
         .map((image) => image.getAttribute("alt") || ""),
-      heroAllVisualSlugs: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-active] [data-book-slug]')]
+      heroAllVisualSlugs: [...document.querySelectorAll('[data-testid="hero-catalog-visuals"] [data-position][data-book-slug]')]
         .map((card) => card.getAttribute("data-book-slug"))
         .filter(Boolean),
       heroListenLinks: [...document.querySelectorAll('[data-testid="premium-landing-hero"] a[href*="listen=1"]')]
@@ -330,8 +340,13 @@ async function main() {
     `Sprint 1 hero source contains duplicate slugs: ${JSON.stringify(expectedHeroCarouselSlugs)}`,
   );
   assert(
-    JSON.stringify(home.heroVisualSlugs) === JSON.stringify(expectedHeroVisualSlugs),
-    `active hero frame must show the first four Sprint 1 books: ${JSON.stringify(home.heroVisualSlugs)}`,
+    JSON.stringify(home.heroVisualSlugs) === JSON.stringify([expectedHeroActiveSlug]),
+    `hero coverflow must have one dominant active Sprint 1 book: ${JSON.stringify(home.heroVisualSlugs)}`,
+  );
+  assert(
+    home.heroMeaningfulSlugs.length === 3
+      && expectedHeroMeaningfulSlugs.every((slug) => home.heroMeaningfulSlugs.includes(slug)),
+    `hero coverflow must expose only previous, active, and next books: ${JSON.stringify(home.heroMeaningfulSlugs)}`,
   );
   assert(
     home.heroAllVisualSlugs.every((slug) => expectedHeroCarouselSlugs.includes(slug)),
@@ -339,7 +354,7 @@ async function main() {
   );
   assert(
     home.heroVisualCoverAlts.every((alt, index) => {
-      const slug = expectedHeroVisualSlugs[index];
+      const slug = home.heroVisualSlugs[index];
       const book = [...expectedHeroCarouselBooks, ...homeHeroFixtureBooks, ...homeHeroFixture.shelves.approved_audiobooks]
         .find((candidate) => candidate.slug === slug);
       return alt === `${book?.title} by ${book?.author}`;

@@ -1,7 +1,10 @@
 import {
-  HERO_BOOKS_PER_FRAME,
+  canRotateCarousel,
+  carouselSlideState,
   heroCarouselBooks,
-  heroCarouselPages,
+  relativeCarouselPosition,
+  stepCarouselIndex,
+  wrapCarouselIndex,
 } from "./heroCarousel";
 
 function book(index) {
@@ -40,13 +43,48 @@ test("carousel deduplicates valid explicit books and rejects unsafe records", ()
   })).toEqual([valid]);
 });
 
-test("carousel forms stable four-book frames and wraps the final frame", () => {
-  const books = Array.from({ length: 5 }, (_, index) => book(index));
-  const pages = heroCarouselPages(books);
+test.each([4, 6, 10])("carousel wraps circular indexes for a %i-item data set", (itemCount) => {
+  expect(wrapCarouselIndex(-1, itemCount)).toBe(itemCount - 1);
+  expect(wrapCarouselIndex(itemCount, itemCount)).toBe(0);
+  expect(wrapCarouselIndex(itemCount + 1, itemCount)).toBe(1);
+  expect(stepCarouselIndex(0, -1, itemCount)).toBe(itemCount - 1);
+  expect(stepCarouselIndex(itemCount - 1, 1, itemCount)).toBe(0);
+});
 
-  expect(HERO_BOOKS_PER_FRAME).toBe(4);
-  expect(pages.map((page) => page.map((item) => item.slug))).toEqual([
-    ["sprint1-0", "sprint1-1", "sprint1-2", "sprint1-3"],
-    ["sprint1-4", "sprint1-0", "sprint1-1", "sprint1-2"],
-  ]);
+test("carousel calculates stable previous, active, next, and hidden positions", () => {
+  expect(relativeCarouselPosition(5, 0, 6)).toBe(-1);
+  expect(relativeCarouselPosition(0, 0, 6)).toBe(0);
+  expect(relativeCarouselPosition(1, 0, 6)).toBe(1);
+  expect(carouselSlideState(5, 0, 6)).toBe("previous");
+  expect(carouselSlideState(0, 0, 6)).toBe("active");
+  expect(carouselSlideState(1, 0, 6)).toBe("next");
+  expect(carouselSlideState(2, 0, 6)).toBe("far-next");
+  expect(carouselSlideState(4, 0, 6)).toBe("far-previous");
+});
+
+test("autoplay fails closed for every pause and stability gate", () => {
+  const ready = {
+    itemCount: 6,
+    reducedMotion: false,
+    narrowViewport: false,
+    manualPaused: false,
+    interactionPaused: false,
+    dragging: false,
+    documentVisible: true,
+    initialCoverReady: true,
+  };
+
+  expect(canRotateCarousel(ready)).toBe(true);
+  [
+    ["reducedMotion", true],
+    ["narrowViewport", true],
+    ["manualPaused", true],
+    ["interactionPaused", true],
+    ["dragging", true],
+    ["documentVisible", false],
+    ["initialCoverReady", false],
+    ["itemCount", 1],
+  ].forEach(([property, value]) => {
+    expect(canRotateCarousel({ ...ready, [property]: value })).toBe(false);
+  });
 });

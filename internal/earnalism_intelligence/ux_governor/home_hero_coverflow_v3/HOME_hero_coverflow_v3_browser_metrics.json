@@ -1,0 +1,126 @@
+{
+  "schema_version": "home-hero-coverflow-v3-browser-metrics-v1",
+  "generated_at": "2026-07-28T10:28:58Z",
+  "branch": "codex/editorial-hero-coverflow",
+  "baseline_commit": "9ccd1c345ed92a252f597d93083ce99c89cc589b",
+  "catalog_scope": {
+    "source": "production /api/home/curated projected through the updated owner-reviewed visual-cover exclusions",
+    "production_sprint1_candidates_before_visual_truth_filter": 26,
+    "graphical_cover_eligible_sprint1_candidates": 13,
+    "initial_active_slug": "bn-066",
+    "meaningful_slides": [
+      "nishkriti",
+      "bn-066",
+      "radharani"
+    ]
+  },
+  "viewport_results": [
+    {
+      "viewport": "1536x864",
+      "meaningful_slide_count": 3,
+      "rendered_gaps_px": [22, 21],
+      "active_height_px": 235,
+      "hidden_focusable_count": 0,
+      "horizontal_overflow_px": 0,
+      "console_errors": 0,
+      "visible_caption": true
+    },
+    {
+      "viewport": "1440x900",
+      "meaningful_slide_count": 3,
+      "rendered_gaps_px": [22, 21],
+      "active_height_px": 223,
+      "hidden_focusable_count": 0,
+      "horizontal_overflow_px": 0,
+      "console_errors": 0,
+      "visible_caption": true
+    },
+    {
+      "viewport": "1366x768",
+      "meaningful_slide_count": 3,
+      "rendered_gaps_px": [20, 19],
+      "active_height_px": 203,
+      "hidden_focusable_count": 0,
+      "horizontal_overflow_px": 0,
+      "console_errors": 0,
+      "visible_caption": true
+    },
+    {
+      "viewport": "1024x768",
+      "meaningful_slide_count": 3,
+      "rendered_gaps_px": [13, 13],
+      "active_height_px": 138,
+      "hidden_focusable_count": 0,
+      "horizontal_overflow_px": 0,
+      "console_errors": 0,
+      "visible_caption": false,
+      "adaptation": "Short-height photographic composition: scale and caption are reduced to preserve the device artwork, upper benefits panel, and bottom feature rail."
+    },
+    {
+      "viewport": "768x1024",
+      "meaningful_slide_count": 3,
+      "rendered_gaps_px": [18, 18],
+      "active_height_px": 196,
+      "hidden_focusable_count": 0,
+      "horizontal_overflow_px": 0,
+      "console_errors": 0,
+      "visible_caption": true,
+      "minimum_control_target_px": 44
+    },
+    {
+      "viewport": "390x844",
+      "meaningful_slide_count": 3,
+      "rendered_gaps_px": [4, 3],
+      "active_height_px": 180,
+      "hidden_focusable_count": 0,
+      "horizontal_overflow_px": 0,
+      "console_errors": 0,
+      "visible_caption": true,
+      "minimum_control_target_px": 44,
+      "autoplay_enabled": false
+    }
+  ],
+  "interaction_results": {
+    "previous_button": "PASS",
+    "next_button": "PASS",
+    "side_book_selection": "PASS",
+    "active_book_destination": "PASS",
+    "left_right_keyboard": "PASS",
+    "touch_swipe": "PASS",
+    "autoplay_after_initial_decode": "PASS",
+    "focus_stops_rotation_until_explicit_play": "PASS",
+    "document_visibility_cleanup": "PASS_BY_SOURCE_AND_EFFECT_CLEANUP",
+    "rapid_navigation_latest_request_wins": "PASS_BY_REQUEST_TOKEN_AND_UNIT_CONTRACT",
+    "reduced_motion": {
+      "rotation_control_present": false,
+      "transition": "opacity 0.12s linear"
+    }
+  },
+  "accessibility_results": {
+    "region_and_carousel_roles": "PASS",
+    "slide_position_title_author_labels": "PASS",
+    "native_buttons": "PASS",
+    "accurate_rotation_labels": "PASS",
+    "user_initiated_live_announcement": "PASS",
+    "automatic_changes_announced": false,
+    "hidden_slide_focusable_count": 0,
+    "duplicate_clones": 0,
+    "focus_ring": "#D7A84E"
+  },
+  "cover_asset_audit": {
+    "audited_graphical_carousel_covers": 13,
+    "alpha_channels_present": 0,
+    "standard_dimensions": "12 covers at 1024x1536",
+    "documented_variation": "book-d19e96859f is 1122x1402 full-bleed artwork; object-fit contain preserves all typography and illustration.",
+    "cropped_derivatives_created": 0,
+    "reason": "No eligible cover contained a removable baked cream frame; preserving original full-bleed art was safer than blind cropping."
+  },
+  "checks": {
+    "frontend_test_suites": 26,
+    "frontend_tests": 132,
+    "backend_focused_tests": 49,
+    "browser_e2e": "PASS",
+    "production_build": "PASS",
+    "git_diff_check": "PASS"
+  }
+}
