@@ -1,89 +1,141 @@
 # Earnalism Audiobook Delivery Architecture v2
 
-Status: implemented as a release-safe runtime contract; no title was approved,
-published, uploaded, or otherwise moved through a release gate by this change.
+Status: **runtime, package builder, storage controls, reader behavior, and
+release-control tooling implemented; production-primary/DR activation remains
+fail-closed until its external evidence exists**.
 
 ## Decision
 
-Use immutable, source-bound audiobook packages made of chapter-aligned segments
-no longer than 12 minutes. Store audio and timestamp sidecars in the existing
-private Backblaze B2 delivery store. The browser receives only a small
-same-origin manifest and same-origin segment URLs.
+Use immutable, source-bound audiobook packages made of chapter-aligned MP3
+segments. The ordered manifest is the logical page list; standard HTTP Range
+requests provide seek, resume, and partial delivery. Audio bytes are not
+paginated by an application API and are never stored in Redis.
 
-This replaces neither editorial QA nor controlled-publication truth. A package
-is visible only when the title already passes the existing reader and audiobook
-release checks.
+For every approved title retain:
+
+1. the unchanged provider/source file for provenance;
+2. a final mono PCM/WAV master for future encoding; and
+3. customer MP3 delivery segments, normally 96 kbps mono.
+
+Prefer one file per chapter. Split only at a measured paragraph or stanza
+boundary when a segment would exceed 12 minutes. Store exact timestamp JSON,
+WebVTT, and metadata sidecars beside every segment.
 
 ## Canonical package
 
-The machine-readable contract is
-`internal/audiobook_lab/schemas/audiobook_package_manifest.v2.schema.json`.
+The contract is
+`internal/audiobook_lab/schemas/audiobook_package_manifest.v2.schema.json`;
+semantic validation lives in `backend/audiobook_packages.py`.
 
-The server additionally fails closed unless:
+The package version is the SHA-256 of canonical JSON excluding only its own
+`package_version` field. The validator also requires:
 
-- the package slug matches the requested controlled-publication slug;
-- the manuscript SHA-256 matches the controlled record's source or content
-  hash;
-- release evidence, package version, segment IDs, audio SHA-256 values, and
-  timestamp SHA-256 values are present;
-- track and segment order is deterministic;
-- word ranges and cumulative durations are contiguous;
-- the declared segment count and duration match the exact segments;
-- every segment is at most 12 minutes; and
-- every media location resolves to configured Backblaze B2 storage.
+- the exact controlled slug, source SHA-256, manuscript SHA-256, and release
+  descriptor SHA-256;
+- deterministic tracks and segments with globally contiguous word, paragraph,
+  and cumulative-time boundaries;
+- segment duration at or below 12 minutes;
+- exact SHA-256, byte size, MIME type, object key, and B2 VersionId for every
+  MP3, timestamp, VTT, and metadata object;
+- a private production object plus at least one distinct DR replica for every
+  customer asset; and
+- the immutable prefix
+  `v1/prod/sprint1/{slug}/releases/{releaseDescriptorSha256}/`.
 
-Raw storage URLs, manuscript hashes, and release-evidence identifiers are not
-projected into the public reader manifest.
+The public manifest contains only same-origin API URLs and reader-safe
+metadata. It never contains a bucket, object key, raw B2 URL, VersionId,
+replica, manuscript hash, or release-evidence record.
+
+## Storage and durability
+
+Use independently identified private primary and DR buckets in separate
+accounts/regions. Released keys are never overwritten. Every upload and
+replication is followed by a complete download and exact SHA-256/size check.
+Production preflight requires:
+
+- versioning enabled;
+- private-bucket evidence;
+- Governance Object Lock with active default retention;
+- no lifecycle deletion that overlaps `v1/prod/`; and
+- distinct account, credential, region, endpoint, and bucket identities.
+
+The runtime receives only a bucket-scoped primary read credential. Controlled
+operators use separate upload and retention-administration credentials;
+production deletion credentials are deliberately unsupported and remain
+offline. The unpopulated operator contract is
+`internal/audiobook_lab/config/audiobook_package_storage.env.example`. The
+current and at least two prior approved releases are retained.
+
+Private-QA staging is intentionally weaker and always records
+`release_eligible: false`; a staging receipt can never finalize or activate a
+production package.
 
 ## Runtime delivery
 
 - `GET|HEAD /api/reader/book/{slug}/audiobook/manifest`
-- `GET|HEAD /api/reader/book/{slug}/audiobook/packages/{package_version}/segments/{segment_id}`
-- `GET|HEAD /api/reader/book/{slug}/audiobook/packages/{package_version}/segments/{segment_id}/timestamps`
+- `GET|HEAD /api/reader/book/{slug}/audiobook/packages/{packageVersion}/segments/{segmentId}`
+- `GET|HEAD /api/reader/book/{slug}/audiobook/packages/{packageVersion}/segments/{segmentId}/timestamps`
+- `GET|HEAD /api/reader/book/{slug}/audiobook/packages/{packageVersion}/segments/{segmentId}/vtt`
+- `GET|HEAD /api/reader/book/{slug}/audiobook/packages/{packageVersion}/segments/{segmentId}/metadata`
 
-An unknown title, hidden audio title, stale package version, unknown segment,
-invalid package, or unmatched storage location returns a fail-closed response.
-Segment delivery reuses native B2 Range reads and the existing private browser
-cache policy. Redis remains for small shared metadata/state only; audio bytes
-are never copied into Redis.
+The backend derives the exact private object from controlled truth; the client
+cannot submit a B2 key or URL. Hidden, inactive, revoked, stale, cross-title,
+unknown, or structurally invalid packages return `404`. Unsatisfiable or
+malformed ranges return `416`; honored ranges return `206`. A storage response
+that ignores or changes the requested range fails closed.
 
-## Reader behavior
+The existing monolithic endpoint stays available during migration.
 
-The Reader accepts both the legacy approved monolithic package and package v2.
-For package v2 it selects the segment covering the current chapter/page word
-offset, advances to the next immutable segment within the same chapter, and
-changes playback rate without restarting.
+## Reader and cache behavior
 
-The MP3 is not assigned to the audio element on page load, hover, focus, or
-touch. Loading begins only after the reader activates the play control. Small
-JSON manifests and timestamp sidecars remain cacheable metadata.
+- Opening the Reader fetches metadata but transfers zero MP3 bytes.
+- Explicit Play binds only the current segment to the native `<audio>` element.
+- At 70% completion, the Reader warms only the next segment `HEAD` response and
+  downloads its timestamp JSON; it does not prefetch the next MP3 body.
+- Playback advances to the next segment, and exact-package progress
+  `{packageVersion, segmentId, offset, speed}` is stored locally.
+- TTFA, stall, seek, and segment-transition telemetry carry package/segment
+  tags.
+- The service worker continues to bypass Range and audio requests; browser HTTP
+  caching and native Range behavior handle media.
 
-## Parallel production boundary
+Redis is limited to manifest metadata, authorization/feature state, progress if
+server-side sync is later enabled, and aggregate telemetry. Binary media is
+rejected by policy.
 
-Independent workers may prepare private, source-bound title packages in
-parallel. Promotion remains serialized per title:
+## Controlled rollout and rollback
 
-1. complete the exact full-title audio and timestamps;
-2. pass the existing rights, covers, ASR/manuscript, ordered-content, measured
-   sync, listening, checksum, and editorial gates;
-3. upload immutable segments and verify every checksum;
-4. bind package v2 to controlled-publication truth;
-5. verify manifest, Range `206`, and browser playback; and
-6. only then approve public exposure through the existing release workflow.
+Package selection is deterministic and sticky for the supported rollout values
+`0`, `5`, `25`, and `100`. Catalog mutation is serialized and requires:
 
-No worker may update audiobook approval merely because package generation or
-upload succeeded.
+1. a canonical package that matches controlled source/manuscript truth;
+2. exact release-eligible production-primary and DR receipts;
+3. complete-download checks for the finalized release manifest in both stores;
+4. the candidate plus no more than the current and two prior approved release
+   descriptors; and
+5. mirrored controlled-publication writes with checksum-manifest updates.
 
-## Rollout
+At 5% or 25%, non-candidate users continue on the approved legacy pointer. A
+100% promotion moves the active pointer. Rollback changes only the controlled
+pointer; immutable objects remain untouched.
 
-The runtime is backward compatible and remains dormant for titles without an
-`audiobook_package` field. The safest first rollout is one already approved
-audio title, repackaged byte-for-byte into v2 segments, followed by endpoint and
-browser comparison against the current production playback. New title
-publication is a separate, later release decision.
+Package construction, staging upload, or successful delivery optimization
+cannot approve an audiobook. Rights, covers, source/ASR, ordered content,
+measured sync, listening, editorial, storage, endpoint, and browser gates
+remain independent and fail closed.
 
-Next exact validation command:
+## Canary state
+
+The exact already-approved `book-2b9853ec52` narration has been repackaged into
+two delivery segments without new synthesis and verified in private QA.
+Production package-v2 activation is still blocked by the current evidence
+listed in
+`audiobook_package_v2_canary_book-2b9853ec52_20260729.json`.
+
+Next exact command:
 
 ```bash
-python3 -m pytest backend/tests/test_b2_audiobook_routing.py backend/tests/test_redis_cache_policy.py -q
+PYTHONDONTWRITEBYTECODE=1 python3 \
+  internal/audiobook_lab/scripts/audiobook_package_storage_v2.py preflight \
+  --report /private/tmp/earnalism-package-v2-production-dr-preflight.json
 ```

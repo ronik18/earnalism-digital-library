@@ -9,9 +9,13 @@
     "slug",
     "package_version",
     "release_evidence_version",
+    "release_descriptor_sha256",
     "source_sha256",
+    "manuscript_sha256",
     "duration_ms",
     "segment_count",
+    "word_count",
+    "paragraph_count",
     "tracks"
   ],
   "properties": {
@@ -24,13 +28,19 @@
     },
     "package_version": {
       "type": "string",
-      "pattern": "^(sha256-)?[a-f0-9]{64}$"
+      "pattern": "^sha256-[a-f0-9]{64}$"
     },
     "release_evidence_version": {
       "type": "string",
       "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,119}$"
     },
+    "release_descriptor_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
     "source_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "manuscript_sha256": {
       "$ref": "#/$defs/sha256"
     },
     "duration_ms": {
@@ -38,6 +48,14 @@
       "minimum": 1
     },
     "segment_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "word_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "paragraph_count": {
       "type": "integer",
       "minimum": 1
     },
@@ -72,6 +90,10 @@
         "id",
         "chapter_id",
         "order",
+        "start_word",
+        "end_word",
+        "start_paragraph",
+        "end_paragraph",
         "chunks"
       ],
       "properties": {
@@ -88,6 +110,22 @@
         "title": {
           "type": "string",
           "maxLength": 160
+        },
+        "start_word": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_word": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "start_paragraph": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_paragraph": {
+          "type": "integer",
+          "minimum": 0
         },
         "chunks": {
           "type": "array",
@@ -106,13 +144,11 @@
         "order",
         "start_word",
         "end_word",
+        "start_paragraph",
+        "end_paragraph",
         "cumulative_start_ms",
         "duration_ms",
-        "audio_size_bytes",
-        "audio_sha256",
-        "timestamps_sha256",
-        "audio_url",
-        "timestamps_url"
+        "assets"
       ],
       "properties": {
         "segment_id": {
@@ -130,6 +166,14 @@
           "type": "integer",
           "minimum": 0
         },
+        "start_paragraph": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_paragraph": {
+          "type": "integer",
+          "minimum": 0
+        },
         "cumulative_start_ms": {
           "type": "integer",
           "minimum": 0
@@ -139,23 +183,94 @@
           "minimum": 1,
           "maximum": 720000
         },
-        "audio_size_bytes": {
+        "assets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "audio",
+            "timestamps",
+            "vtt",
+            "metadata"
+          ],
+          "properties": {
+            "audio": {
+              "$ref": "#/$defs/asset"
+            },
+            "timestamps": {
+              "$ref": "#/$defs/asset"
+            },
+            "vtt": {
+              "$ref": "#/$defs/asset"
+            },
+            "metadata": {
+              "$ref": "#/$defs/asset"
+            }
+          }
+        }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "size_bytes",
+        "mime_type",
+        "storage",
+        "replicas"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "size_bytes": {
           "type": "integer",
           "minimum": 1
         },
-        "audio_sha256": {
-          "$ref": "#/$defs/sha256"
-        },
-        "timestamps_sha256": {
-          "$ref": "#/$defs/sha256"
-        },
-        "audio_url": {
+        "mime_type": {
           "type": "string",
-          "format": "uri"
+          "minLength": 1,
+          "maxLength": 120
         },
-        "timestamps_url": {
+        "storage": {
+          "$ref": "#/$defs/storage"
+        },
+        "replicas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/storage"
+          }
+        }
+      }
+    },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "store",
+        "bucket",
+        "key",
+        "version_id"
+      ],
+      "properties": {
+        "store": {
           "type": "string",
-          "format": "uri"
+          "pattern": "^[a-z0-9][a-z0-9._-]{0,79}$"
+        },
+        "bucket": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,254}$"
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "version_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
         }
       }
     }

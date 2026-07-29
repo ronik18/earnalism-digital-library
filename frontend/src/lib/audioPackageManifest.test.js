@@ -84,8 +84,12 @@ describe('audiobook package manifest', () => {
 
     expect(first.segmentId).toBe('c001-s001');
     expect(first.nextSegmentId).toBe('c001-s002');
+    expect(first.nextAudioUrl).toContain('/segments/c001-s002');
+    expect(first.nextTimestampsUrl).toContain('/segments/c001-s002/timestamps');
     expect(second.segmentId).toBe('c001-s002');
     expect(second.nextSegmentId).toBe('');
+    expect(second.nextAudioUrl).toBe('');
+    expect(second.nextTimestampsUrl).toBe('');
     expect(second.cumulativeStartMs).toBe(300000);
   });
 

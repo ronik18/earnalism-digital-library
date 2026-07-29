@@ -26,7 +26,7 @@ import unicodedata
 from collections import Counter, OrderedDict, defaultdict, deque
 from datetime import datetime, timezone, timedelta
 from typing import Any, Deque, Dict, List, Optional, Tuple
-from urllib.parse import unquote, urlencode, urlparse
+from urllib.parse import quote, unquote, urlencode, urlparse
 from urllib.request import Request as UrlRequest, urlopen
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
@@ -87,6 +87,27 @@ try:
     from home_curation_v4 import build_home_curated_payload_v4
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.home_curation_v4 import build_home_curated_payload_v4
+
+try:
+    from audiobook_packages import (
+        ACTIVE_RELEASE_SCHEMA_VERSION,
+        PACKAGE_SCHEMA_VERSION as AUDIOBOOK_PACKAGE_SCHEMA_VERSION,
+        AudiobookPackageValidationError,
+        AudiobookReleaseSelectionError,
+        select_release_descriptor_sha256,
+        validate_active_release_state,
+        validate_audiobook_package as validate_audiobook_package_contract,
+    )
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.audiobook_packages import (
+        ACTIVE_RELEASE_SCHEMA_VERSION,
+        PACKAGE_SCHEMA_VERSION as AUDIOBOOK_PACKAGE_SCHEMA_VERSION,
+        AudiobookPackageValidationError,
+        AudiobookReleaseSelectionError,
+        select_release_descriptor_sha256,
+        validate_active_release_state,
+        validate_audiobook_package as validate_audiobook_package_contract,
+    )
 
 try:
     from config.brand_logo import validate_brand_logo
@@ -315,6 +336,17 @@ B2_PRIVATE_AUDIO_SECRET_ACCESS_KEY = (
     os.environ.get("B2_PRIVATE_AUDIO_SECRET_ACCESS_KEY")
     or os.environ.get("B2_PRIVATE_QA_SECRET_ACCESS_KEY")
     or ""
+).strip()
+B2_AUDIOBOOK_PROD_S3_ENDPOINT = os.environ.get("B2_AUDIOBOOK_PROD_S3_ENDPOINT", "").strip().rstrip("/")
+B2_AUDIOBOOK_PROD_REGION = os.environ.get("B2_AUDIOBOOK_PROD_REGION", "").strip()
+B2_AUDIOBOOK_PROD_BUCKET = os.environ.get("B2_AUDIOBOOK_PROD_BUCKET", "").strip()
+B2_AUDIOBOOK_PROD_READ_ACCESS_KEY_ID = os.environ.get(
+    "B2_AUDIOBOOK_PROD_READ_ACCESS_KEY_ID",
+    "",
+).strip()
+B2_AUDIOBOOK_PROD_READ_SECRET_ACCESS_KEY = os.environ.get(
+    "B2_AUDIOBOOK_PROD_READ_SECRET_ACCESS_KEY",
+    "",
 ).strip()
 
 # Dependency-free per-process rate limits. For multi-instance scaling, move this
@@ -1820,9 +1852,6 @@ def _book_audiobook_asset_url(book: dict, key: str) -> str:
     return str(nested_assets.get(key) or assets.get(key) or "").strip()
 
 
-AUDIOBOOK_PACKAGE_SCHEMA_VERSION = "audiobook_package_manifest.v2"
-AUDIOBOOK_PACKAGE_MAX_SEGMENT_DURATION_MS = 12 * 60 * 1000
-_AUDIOBOOK_PACKAGE_VERSION_RE = re.compile(r"^(?:sha256-)?[a-f0-9]{64}$")
 _AUDIOBOOK_PACKAGE_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,119}$")
 _SHA256_RE = re.compile(r"^[a-f0-9]{64}$")
 
@@ -1834,14 +1863,6 @@ def _book_audiobook_package(book: dict) -> dict:
     nested = _book_audiobook_doc(book)
     package = nested.get("package")
     return package if isinstance(package, dict) else {}
-
-
-def _audio_package_int(value: Any, *, minimum: int = 0) -> Optional[int]:
-    try:
-        parsed = int(value)
-    except (TypeError, ValueError):
-        return None
-    return parsed if parsed >= minimum else None
 
 
 def _audio_asset_looks_like_b2(url: str) -> bool:
@@ -1858,12 +1879,146 @@ def _audio_asset_looks_like_b2(url: str) -> bool:
     )
 
 
-def _validated_audiobook_package(book: dict, slug: str) -> Optional[dict]:
-    raw = _book_audiobook_package(book)
+AUDIOBOOK_RELEASE_STATE_FIELD = "audiobook_active_release"
+AUDIOBOOK_RELEASE_PACKAGES_FIELD = "audiobook_packages"
+AUDIOBOOK_RELEASE_EVIDENCE_FIELD = "audiobook_package_release_evidence"
+AUDIOBOOK_RELEASE_PRIMARY_STORE = "prod"
+AUDIOBOOK_RELEASE_REPLICA_STORE = "dr"
+AUDIOBOOK_ROLLOUT_COOKIE = "earnalism_audiobook_rollout"
+_AUDIOBOOK_ROLLOUT_COOKIE_RE = re.compile(r"^[A-Za-z0-9_-]{24,160}$")
+
+
+def _book_audiobook_release_state(book: dict) -> dict:
+    value = book.get(AUDIOBOOK_RELEASE_STATE_FIELD)
+    return value if isinstance(value, dict) else {}
+
+
+def _book_audiobook_release_packages(book: dict) -> dict[str, dict]:
+    value = book.get(AUDIOBOOK_RELEASE_PACKAGES_FIELD)
+    if not isinstance(value, dict):
+        return {}
+    return {
+        str(descriptor).strip().lower(): package
+        for descriptor, package in value.items()
+        if isinstance(package, dict)
+    }
+
+
+def _book_audiobook_release_evidence(book: dict) -> dict[str, dict]:
+    value = book.get(AUDIOBOOK_RELEASE_EVIDENCE_FIELD)
+    if not isinstance(value, dict):
+        return {}
+    return {
+        str(descriptor).strip().lower(): evidence
+        for descriptor, evidence in value.items()
+        if isinstance(evidence, dict)
+    }
+
+
+def _has_release_eligible_audiobook_package_evidence(
+    book: dict,
+    slug: str,
+    descriptor: str,
+    package: dict,
+) -> bool:
+    evidence = _book_audiobook_release_evidence(book).get(descriptor)
+    if not isinstance(evidence, dict):
+        return False
+    expected_key = (
+        f"v1/prod/sprint1/{slug}/releases/{descriptor}/release-manifest.json"
+    )
+    sha256_fields = (
+        "primary_receipt_sha256",
+        "replica_receipt_sha256",
+        "release_manifest_sha256",
+        "primary_release_manifest_receipt_sha256",
+        "replica_release_manifest_receipt_sha256",
+    )
+    if (
+        evidence.get("schema_version")
+        != "audiobook_package_release_evidence.v1"
+        or evidence.get("slug") != slug
+        or evidence.get("release_descriptor_sha256") != descriptor
+        or evidence.get("package_version") != package.get("package_version")
+        or evidence.get("release_eligible") is not True
+        or evidence.get("receipt_roles") != ["primary", "replica"]
+        or evidence.get("release_manifest_key") != expected_key
+        or any(
+            not isinstance(evidence.get(field), str)
+            or not _SHA256_RE.fullmatch(evidence[field])
+            for field in sha256_fields
+        )
+    ):
+        return False
+    try:
+        manifest_size = int(evidence.get("release_manifest_size_bytes"))
+    except (TypeError, ValueError):
+        return False
+    primary_version = str(
+        evidence.get("primary_release_manifest_version_id") or ""
+    ).strip()
+    replica_version = str(
+        evidence.get("replica_release_manifest_version_id") or ""
+    ).strip()
+    primary_store = str(
+        evidence.get("primary_release_manifest_store") or ""
+    ).strip()
+    replica_store = str(
+        evidence.get("replica_release_manifest_store") or ""
+    ).strip()
+    identities_valid = bool(
+        manifest_size > 0
+        and primary_version
+        and replica_version
+        and primary_version != replica_version
+        and primary_store == AUDIOBOOK_RELEASE_PRIMARY_STORE
+        and replica_store == AUDIOBOOK_RELEASE_REPLICA_STORE
+    )
+    if not identities_valid:
+        return False
+    for track in package.get("tracks") or []:
+        for chunk in track.get("chunks") or []:
+            for asset in (chunk.get("assets") or {}).values():
+                storage = asset.get("storage") if isinstance(asset, dict) else {}
+                replicas = asset.get("replicas") if isinstance(asset, dict) else []
+                if (
+                    not isinstance(storage, dict)
+                    or storage.get("store") != primary_store
+                    or not isinstance(replicas, list)
+                    or not replicas
+                    or any(
+                        not isinstance(replica, dict)
+                        or replica.get("store") != replica_store
+                        for replica in replicas
+                    )
+                ):
+                    return False
+    return True
+
+
+def _book_has_audiobook_packages(book: dict) -> bool:
+    return bool(_book_audiobook_package(book) or _book_audiobook_release_packages(book))
+
+
+def _controlled_audiobook_manuscript_sha256(book: dict) -> str:
+    nested = _book_audiobook_doc(book)
+    return str(
+        book.get("audiobook_manuscript_sha256")
+        or nested.get("manuscript_sha256")
+        or ""
+    ).strip().lower()
+
+
+def _validated_audiobook_package(
+    book: dict,
+    slug: str,
+    *,
+    raw_package: Optional[dict] = None,
+    expected_release_descriptor_sha256: str = "",
+) -> Optional[dict]:
+    raw = raw_package if isinstance(raw_package, dict) else _book_audiobook_package(book)
     if raw.get("schema_version") != AUDIOBOOK_PACKAGE_SCHEMA_VERSION:
         return None
-
-    package_version = str(raw.get("package_version") or raw.get("version") or "").strip().lower()
     source_sha256 = str(raw.get("source_sha256") or "").strip().lower()
     canonical_source_hashes = {
         str(book.get(key) or "").strip().lower().removeprefix("sha256:")
@@ -1873,129 +2028,122 @@ def _validated_audiobook_package(book: dict, slug: str) -> Optional[dict]:
     canonical_source_hashes = {
         value for value in canonical_source_hashes if _SHA256_RE.fullmatch(value)
     }
-    raw_slug = str(raw.get("slug") or slug or "").strip().lower()
-    duration_ms = _audio_package_int(raw.get("duration_ms"), minimum=1)
-    release_evidence_version = normalize_text(raw.get("release_evidence_version")).strip()
-    raw_tracks = raw.get("tracks")
+    manuscript_sha256 = _controlled_audiobook_manuscript_sha256(book)
+    release_descriptor_sha256 = (
+        str(expected_release_descriptor_sha256 or "").strip().lower()
+        or str(book.get("audiobook_release_descriptor_sha256") or "").strip().lower()
+    )
     if (
-        raw_slug != str(slug or "").strip().lower()
-        or not _AUDIOBOOK_PACKAGE_VERSION_RE.fullmatch(package_version)
-        or not _SHA256_RE.fullmatch(source_sha256)
-        or source_sha256 not in canonical_source_hashes
-        or not _AUDIOBOOK_PACKAGE_ID_RE.fullmatch(release_evidence_version)
-        or duration_ms is None
-        or not isinstance(raw_tracks, list)
-        or not raw_tracks
+        source_sha256 not in canonical_source_hashes
+        or not _SHA256_RE.fullmatch(manuscript_sha256)
+        or not _SHA256_RE.fullmatch(release_descriptor_sha256)
     ):
         return None
-
-    seen_segment_ids: set[str] = set()
-    tracks: list[dict] = []
-    expected_global_start = 0
-    for track_index, raw_track in enumerate(raw_tracks):
-        if not isinstance(raw_track, dict):
-            return None
-        track_id = str(raw_track.get("id") or raw_track.get("chapter_id") or "").strip()
-        chapter_id = str(raw_track.get("chapter_id") or raw_track.get("id") or "").strip()
-        track_order = _audio_package_int(raw_track.get("order", track_index))
-        raw_chunks = raw_track.get("chunks")
-        if (
-            not _AUDIOBOOK_PACKAGE_ID_RE.fullmatch(track_id)
-            or not _AUDIOBOOK_PACKAGE_ID_RE.fullmatch(chapter_id)
-            or track_order is None
-            or track_order != track_index
-            or not isinstance(raw_chunks, list)
-            or not raw_chunks
-        ):
-            return None
-
-        chunks: list[dict] = []
-        previous_end_word = -1
-        for chunk_index, raw_chunk in enumerate(raw_chunks):
-            if not isinstance(raw_chunk, dict):
-                return None
-            segment_id = str(raw_chunk.get("segment_id") or raw_chunk.get("id") or "").strip()
-            chunk_order = _audio_package_int(raw_chunk.get("order", chunk_index))
-            start_word = _audio_package_int(raw_chunk.get("start_word"))
-            end_word = _audio_package_int(raw_chunk.get("end_word"))
-            cumulative_start_ms = _audio_package_int(raw_chunk.get("cumulative_start_ms"))
-            segment_duration_ms = _audio_package_int(raw_chunk.get("duration_ms"), minimum=1)
-            audio_size_bytes = _audio_package_int(raw_chunk.get("audio_size_bytes"), minimum=1)
-            audio_url = str(raw_chunk.get("audio_url") or "").strip()
-            timestamps_url = str(raw_chunk.get("timestamps_url") or "").strip()
-            audio_sha256 = str(raw_chunk.get("audio_sha256") or "").strip().lower()
-            timestamps_sha256 = str(raw_chunk.get("timestamps_sha256") or "").strip().lower()
-            if (
-                not _AUDIOBOOK_PACKAGE_ID_RE.fullmatch(segment_id)
-                or segment_id in seen_segment_ids
-                or chunk_order is None
-                or chunk_order != chunk_index
-                or start_word is None
-                or end_word is None
-                or end_word < start_word
-                or (previous_end_word >= 0 and start_word != previous_end_word + 1)
-                or cumulative_start_ms is None
-                or cumulative_start_ms != expected_global_start
-                or segment_duration_ms is None
-                or segment_duration_ms > AUDIOBOOK_PACKAGE_MAX_SEGMENT_DURATION_MS
-                or audio_size_bytes is None
-                or not _audio_asset_looks_like_b2(audio_url)
-                or not _audio_asset_looks_like_b2(timestamps_url)
-                or not _SHA256_RE.fullmatch(audio_sha256)
-                or not _SHA256_RE.fullmatch(timestamps_sha256)
-            ):
-                return None
-            seen_segment_ids.add(segment_id)
-            chunks.append({
-                "segment_id": segment_id,
-                "order": chunk_order,
-                "start_word": start_word,
-                "end_word": end_word,
-                "cumulative_start_ms": cumulative_start_ms,
-                "duration_ms": segment_duration_ms,
-                "audio_size_bytes": audio_size_bytes,
-                "audio_sha256": audio_sha256,
-                "timestamps_sha256": timestamps_sha256,
-                "audio_url": audio_url,
-                "timestamps_url": timestamps_url,
-            })
-            previous_end_word = end_word
-            expected_global_start += segment_duration_ms
-
-        tracks.append({
-            "id": track_id,
-            "chapter_id": chapter_id,
-            "order": track_order,
-            "title": normalize_text(raw_track.get("title"))[:160],
-            "start_word": chunks[0]["start_word"],
-            "end_word": chunks[-1]["end_word"],
-            "cumulative_start_ms": chunks[0]["cumulative_start_ms"],
-            "duration_ms": sum(chunk["duration_ms"] for chunk in chunks),
-            "chunks": chunks,
-        })
-
-    segment_count = sum(len(track["chunks"]) for track in tracks)
-    declared_segment_count = _audio_package_int(raw.get("segment_count", segment_count), minimum=1)
-    if declared_segment_count != segment_count or duration_ms != expected_global_start:
+    try:
+        return validate_audiobook_package_contract(
+            raw,
+            expected_slug=str(slug or "").strip().lower(),
+            expected_source_sha256=source_sha256,
+            expected_manuscript_sha256=manuscript_sha256,
+            expected_release_descriptor_sha256=release_descriptor_sha256,
+        )
+    except (AudiobookPackageValidationError, TypeError, ValueError):
         return None
 
-    return {
-        "schema_version": AUDIOBOOK_PACKAGE_SCHEMA_VERSION,
-        "slug": raw_slug,
-        "version": package_version,
-        "package_version": package_version,
-        "release_evidence_version": release_evidence_version,
-        "source_sha256": source_sha256,
-        "duration_ms": duration_ms,
-        "segment_count": segment_count,
-        "sync_tier": normalize_text(raw.get("sync_tier"))[:80],
-        "highlight_sync_enabled": bool(raw.get("highlight_sync_enabled", False)),
-        "tracks": tracks,
-    }
+
+def _audiobook_rollout_identity(request: Request, *, create: bool) -> tuple[str, bool]:
+    existing = str(request.cookies.get(AUDIOBOOK_ROLLOUT_COOKIE) or "").strip()
+    if _AUDIOBOOK_ROLLOUT_COOKIE_RE.fullmatch(existing):
+        return existing, False
+    if not create:
+        return "", False
+    return secrets.token_urlsafe(32), True
 
 
-def _reader_audio_package_manifest(book: dict, slug: str) -> Optional[dict]:
+def _selected_audiobook_package(
+    book: dict,
+    slug: str,
+    request: Optional[Request] = None,
+    *,
+    create_rollout_identity: bool = False,
+) -> tuple[Optional[dict], str, str]:
+    state_raw = _book_audiobook_release_state(book)
+    packages = _book_audiobook_release_packages(book)
+    if state_raw:
+        try:
+            state = validate_active_release_state(state_raw)
+        except AudiobookReleaseSelectionError:
+            return None, "", ""
+        if state.get("slug") != str(slug or "").strip().lower():
+            return None, "", ""
+        percentage = int((state.get("rollout") or {}).get("percentage") or 0)
+        needs_identity = percentage in {5, 25}
+        sticky_key = ""
+        created = False
+        if request is not None and (needs_identity or create_rollout_identity):
+            sticky_key, created = _audiobook_rollout_identity(
+                request,
+                create=create_rollout_identity,
+            )
+        if needs_identity and not sticky_key:
+            return None, "", ""
+        try:
+            descriptor = select_release_descriptor_sha256(
+                state,
+                sticky_key=sticky_key or "deterministic-noncohort",
+            )
+        except AudiobookReleaseSelectionError:
+            return None, "", ""
+        raw_package = packages.get(descriptor)
+        if not raw_package:
+            # The selected active descriptor may intentionally be the approved
+            # legacy monolithic release during a 5%/25% package-v2 canary.
+            return None, descriptor, sticky_key if created else ""
+        package = _validated_audiobook_package(
+            book,
+            slug,
+            raw_package=raw_package,
+            expected_release_descriptor_sha256=descriptor,
+        )
+        if not package or not _has_release_eligible_audiobook_package_evidence(
+            book,
+            slug,
+            descriptor,
+            package,
+        ):
+            return None, descriptor, sticky_key if created else ""
+        return package, descriptor, sticky_key if created else ""
+
     package = _validated_audiobook_package(book, slug)
+    descriptor = (
+        str((package or {}).get("release_descriptor_sha256") or "").strip().lower()
+    )
+    if package and not _has_release_eligible_audiobook_package_evidence(
+        book,
+        slug,
+        descriptor,
+        package,
+    ):
+        package = None
+    return package, descriptor, ""
+
+
+def _audio_package_storage_url(storage_record: dict) -> str:
+    store_name = str(storage_record.get("store") or "").strip()
+    bucket = str(storage_record.get("bucket") or "").strip()
+    key = str(storage_record.get("key") or "").strip()
+    for storage in _b2_storage_configs():
+        if storage.get("name") != store_name or storage.get("bucket") != bucket:
+            continue
+        encoded_key = quote(key, safe="/")
+        return f"{storage['endpoint']}/{quote(bucket, safe='')}/{encoded_key}"
+    return ""
+
+
+def _reader_audio_package_manifest_from_package(
+    package: Optional[dict],
+    slug: str,
+) -> Optional[dict]:
     if not package:
         return None
     package_version = package["package_version"]
@@ -2007,31 +2155,39 @@ def _reader_audio_package_manifest(book: dict, slug: str) -> Optional[dict]:
                 f"/api/reader/book/{slug}/audiobook/packages/"
                 f"{package_version}/segments/{chunk['segment_id']}"
             )
+            audio_asset = chunk["assets"]["audio"]
+            timestamp_asset = chunk["assets"]["timestamps"]
             chunks.append({
                 "segment_id": chunk["segment_id"],
                 "order": chunk["order"],
                 "start_word": chunk["start_word"],
                 "end_word": chunk["end_word"],
+                "start_paragraph": chunk["start_paragraph"],
+                "end_paragraph": chunk["end_paragraph"],
                 "cumulative_start_ms": chunk["cumulative_start_ms"],
                 "duration_ms": chunk["duration_ms"],
-                "audio_size_bytes": chunk["audio_size_bytes"],
-                "audio_sha256": chunk["audio_sha256"],
-                "timestamps_sha256": chunk["timestamps_sha256"],
+                "audio_size_bytes": audio_asset["size_bytes"],
+                "audio_sha256": audio_asset["sha256"],
+                "timestamps_sha256": timestamp_asset["sha256"],
                 "audio_url": segment_path,
                 "timestamps_url": f"{segment_path}/timestamps",
-                "mime_type": "audio/mpeg",
-                "version": chunk["audio_sha256"],
+                "vtt_url": f"{segment_path}/vtt",
+                "metadata_url": f"{segment_path}/metadata",
+                "mime_type": audio_asset["mime_type"],
+                "version": audio_asset["sha256"],
             })
         first = chunks[0]
         tracks.append({
             "id": track["id"],
             "chapter_id": track["chapter_id"],
             "order": track["order"],
-            "title": track["title"],
+            "title": track.get("title", ""),
             "start_word": track["start_word"],
             "end_word": track["end_word"],
-            "cumulative_start_ms": track["cumulative_start_ms"],
-            "duration_ms": track["duration_ms"],
+            "start_paragraph": track["start_paragraph"],
+            "end_paragraph": track["end_paragraph"],
+            "cumulative_start_ms": first["cumulative_start_ms"],
+            "duration_ms": sum(chunk["duration_ms"] for chunk in chunks),
             "audio_url": first["audio_url"],
             "timestamps_url": first["timestamps_url"],
             "version": first["version"],
@@ -2042,14 +2198,21 @@ def _reader_audio_package_manifest(book: dict, slug: str) -> Optional[dict]:
         for key in (
             "schema_version",
             "slug",
-            "version",
             "package_version",
+            "release_descriptor_sha256",
             "duration_ms",
             "segment_count",
+            "word_count",
+            "paragraph_count",
             "sync_tier",
             "highlight_sync_enabled",
         )
-    } | {"tracks": tracks}
+    } | {"version": package_version, "tracks": tracks}
+
+
+def _reader_audio_package_manifest(book: dict, slug: str) -> Optional[dict]:
+    package, _descriptor, _created = _selected_audiobook_package(book, slug)
+    return _reader_audio_package_manifest_from_package(package, slug)
 
 
 def _audio_package_segment(package: dict, segment_id: str) -> Optional[dict]:
@@ -2104,7 +2267,7 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         if value
     }
     package_manifest = _reader_audio_package_manifest(book, slug)
-    if package_manifest:
+    if package_manifest or _book_has_audiobook_packages(book):
         assets["manifest"] = f"/api/reader/book/{slug}/audiobook/manifest"
     nested = _book_audiobook_doc(book)
     provider = _book_audiobook_provider(book)
@@ -6689,6 +6852,17 @@ def _b2_storage_configs() -> list[dict[str, str]]:
 
     stores = [
         {
+            # Canonical package receipts bind primary objects to the uploader's
+            # stable store role ("prod"). Keep the runtime read profile aligned
+            # with that immutable receipt identity.
+            "name": "prod",
+            "endpoint": B2_AUDIOBOOK_PROD_S3_ENDPOINT,
+            "region": B2_AUDIOBOOK_PROD_REGION,
+            "bucket": B2_AUDIOBOOK_PROD_BUCKET,
+            "access_key_id": B2_AUDIOBOOK_PROD_READ_ACCESS_KEY_ID,
+            "secret_access_key": B2_AUDIOBOOK_PROD_READ_SECRET_ACCESS_KEY,
+        },
+        {
             "name": "primary",
             "endpoint": B2_S3_ENDPOINT,
             "region": B2_REGION,
@@ -6814,6 +6988,52 @@ def _range_content_length(byte_range: str, total_size: int) -> int:
     return max(0, int(match.group(2)) - int(match.group(1)) + 1)
 
 
+def _single_range_header_is_well_formed(range_header: str) -> bool:
+    match = re.fullmatch(r"bytes=(\d*)-(\d*)", (range_header or "").strip())
+    if not match:
+        return False
+    start_raw, end_raw = match.groups()
+    if not start_raw and not end_raw:
+        return False
+    return not (not start_raw and int(end_raw) <= 0)
+
+
+def _storage_error_http_status(exc: BaseException) -> int:
+    response = getattr(exc, "response", None)
+    if not isinstance(response, dict):
+        return 0
+    metadata = response.get("ResponseMetadata")
+    try:
+        return int((metadata or {}).get("HTTPStatusCode") or 0)
+    except (TypeError, ValueError):
+        return 0
+
+
+def _range_response_matches_request(
+    range_header: str,
+    content_range: str,
+    content_length: int,
+) -> bool:
+    requested = re.fullmatch(r"bytes=(\d*)-(\d*)", (range_header or "").strip())
+    received = re.fullmatch(r"bytes (\d+)-(\d+)/(\d+)", (content_range or "").strip())
+    if not requested or not received:
+        return False
+    start_raw, end_raw = requested.groups()
+    start, end, total = (int(value) for value in received.groups())
+    if total <= 0 or start < 0 or end < start or end >= total:
+        return False
+    if content_length != end - start + 1:
+        return False
+    if start_raw:
+        requested_start = int(start_raw)
+        if start != requested_start:
+            return False
+        requested_end = int(end_raw) if end_raw else total - 1
+        return end == min(requested_end, total - 1)
+    suffix = int(end_raw)
+    return start == max(0, total - suffix) and end == total - 1
+
+
 def _content_range_total_size(content_range: str) -> int:
     match = re.search(r"/(\d+)$", content_range or "")
     if not match:
@@ -6846,6 +7066,7 @@ def _audio_asset_content_type(asset_key: str, fallback: str = "") -> str:
         "vtt": "text/vtt",
         "chapters": "application/json",
         "meta": "application/json",
+        "metadata": "application/json",
         "manifest": "application/json",
     }.get(asset_key, "application/octet-stream")
 
@@ -6858,14 +7079,32 @@ def _audio_asset_cache_control(asset_key: str) -> str:
     return "private, max-age=3600, stale-while-revalidate=86400"
 
 
-async def _b2_head_object(s3, *, bucket: str, key: str) -> dict:
-    return await asyncio.to_thread(s3.head_object, Bucket=bucket, Key=key)
+async def _b2_head_object(
+    s3,
+    *,
+    bucket: str,
+    key: str,
+    version_id: str = "",
+) -> dict:
+    kwargs = {"Bucket": bucket, "Key": key}
+    if version_id:
+        kwargs["VersionId"] = version_id
+    return await asyncio.to_thread(s3.head_object, **kwargs)
 
 
-async def _b2_get_object(s3, *, bucket: str, key: str, byte_range: Optional[str]) -> dict:
+async def _b2_get_object(
+    s3,
+    *,
+    bucket: str,
+    key: str,
+    byte_range: Optional[str],
+    version_id: str = "",
+) -> dict:
     kwargs = {"Bucket": bucket, "Key": key}
     if byte_range:
         kwargs["Range"] = byte_range
+    if version_id:
+        kwargs["VersionId"] = version_id
     return await asyncio.to_thread(s3.get_object, **kwargs)
 
 
@@ -6875,6 +7114,11 @@ _READER_AUDIO_BOOK_PROJECTION = {
     "is_published": 1,
     "audiobook": 1,
     "audiobook_package": 1,
+    "audiobook_packages": 1,
+    "audiobook_package_release_evidence": 1,
+    "audiobook_active_release": 1,
+    "audiobook_manuscript_sha256": 1,
+    "audiobook_release_descriptor_sha256": 1,
     "audiobook_assets": 1,
     "audiobook_provider": 1,
     "audiobook_enabled": 1,
@@ -6912,6 +7156,7 @@ async def _stream_audiobook_asset_url(
     request: Request,
     *,
     extra_headers: Optional[dict[str, str]] = None,
+    version_id: str = "",
 ):
     normalized_key = str(asset_key or "mp3").strip().lower()
     response_headers = dict(extra_headers or {})
@@ -6933,35 +7178,127 @@ async def _stream_audiobook_asset_url(
     bucket = storage["bucket"]
     range_header = (request.headers.get("range") or "").strip()
     if request.method != "HEAD" and range_header:
+        if not _single_range_header_is_well_formed(range_header):
+            try:
+                head = await _b2_head_object(
+                    s3,
+                    bucket=bucket,
+                    key=key,
+                    version_id=version_id,
+                )
+            except Exception as exc:
+                logger.warning(
+                    "B2 audiobook asset head failed for invalid range %s/%s/%s: %s",
+                    slug,
+                    normalized_key,
+                    key,
+                    exc,
+                )
+                raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
+            total_size = int(head.get("ContentLength") or 0)
+            return Response(
+                status_code=416,
+                headers={
+                    "Accept-Ranges": "bytes",
+                    "Content-Range": f"bytes */{total_size}",
+                    "Cache-Control": _audio_asset_cache_control(normalized_key),
+                    **response_headers,
+                },
+            )
         try:
-            obj = await _b2_get_object(s3, bucket=bucket, key=key, byte_range=range_header)
+            obj = await _b2_get_object(
+                s3,
+                bucket=bucket,
+                key=key,
+                byte_range=range_header,
+                version_id=version_id,
+            )
         except Exception as exc:
-            logger.warning("B2 audiobook asset ranged get failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
+            if _storage_error_http_status(exc) == 416:
+                try:
+                    head = await _b2_head_object(
+                        s3,
+                        bucket=bucket,
+                        key=key,
+                        version_id=version_id,
+                    )
+                except Exception as head_exc:
+                    logger.warning(
+                        "B2 audiobook asset head failed after invalid range %s/%s/%s: %s",
+                        slug,
+                        normalized_key,
+                        key,
+                        head_exc,
+                    )
+                    raise HTTPException(
+                        status_code=502,
+                        detail="Audiobook asset storage unavailable",
+                    )
+                total_size = int(head.get("ContentLength") or 0)
+                return Response(
+                    status_code=416,
+                    headers={
+                        "Accept-Ranges": "bytes",
+                        "Content-Range": f"bytes */{total_size}",
+                        "Cache-Control": _audio_asset_cache_control(normalized_key),
+                        **response_headers,
+                    },
+                )
+            logger.warning(
+                "B2 audiobook asset ranged get failed for %s/%s/%s: %s",
+                slug,
+                normalized_key,
+                key,
+                exc,
+            )
             raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
-        content_range = obj.get("ContentRange") or ""
-        content_type = _audio_asset_content_type(normalized_key, obj.get("ContentType") or "")
+        content_range = str(obj.get("ContentRange") or "").strip()
         content_length = int(obj.get("ContentLength") or 0)
+        if not _range_response_matches_request(
+            range_header,
+            content_range,
+            content_length,
+        ):
+            body = obj.get("Body")
+            close = getattr(body, "close", None)
+            if callable(close):
+                close()
+            logger.error(
+                "B2 ignored or malformed audiobook Range for %s/%s/%s: requested %r, received %r",
+                slug,
+                normalized_key,
+                key,
+                range_header,
+                content_range,
+            )
+            raise HTTPException(
+                status_code=502,
+                detail="Audiobook storage did not honor the byte range",
+            )
+        content_type = _audio_asset_content_type(
+            normalized_key,
+            obj.get("ContentType") or "",
+        )
         headers = {
             "Accept-Ranges": "bytes",
             "Content-Type": content_type,
             "Cache-Control": _audio_asset_cache_control(normalized_key),
             "Content-Length": str(content_length),
+            "Content-Range": content_range,
             **response_headers,
         }
-        if content_range:
-            headers["Content-Range"] = content_range
         etag = str(obj.get("ETag") or "").strip()
         if etag:
             headers["ETag"] = etag
         return StreamingResponse(
             _streaming_body_iterator(obj["Body"]),
-            status_code=206 if content_range else 200,
+            status_code=206,
             media_type=content_type,
             headers=headers,
         )
 
     try:
-        head = await _b2_head_object(s3, bucket=bucket, key=key)
+        head = await _b2_head_object(s3, bucket=bucket, key=key, version_id=version_id)
     except Exception as exc:
         logger.warning("B2 audiobook asset head failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
         raise HTTPException(status_code=404, detail="Audiobook asset object not found")
@@ -6993,7 +7330,13 @@ async def _stream_audiobook_asset_url(
         return Response(status_code=status_code, headers=headers)
 
     try:
-        obj = await _b2_get_object(s3, bucket=bucket, key=key, byte_range=byte_range)
+        obj = await _b2_get_object(
+            s3,
+            bucket=bucket,
+            key=key,
+            byte_range=byte_range,
+            version_id=version_id,
+        )
     except Exception as exc:
         logger.warning("B2 audiobook asset get failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
         raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
@@ -7004,7 +7347,44 @@ async def _stream_audiobook_asset_url(
         "Content-Length": str(content_length),
     }
     if status_code == 206:
-        headers["Content-Range"] = obj.get("ContentRange") or _content_range_header(byte_range, total_size)
+        expected_content_range = _content_range_header(byte_range, total_size)
+        content_range = str(obj.get("ContentRange") or "").strip()
+        if content_range != expected_content_range:
+            body = obj.get("Body")
+            close = getattr(body, "close", None)
+            if callable(close):
+                close()
+            logger.error(
+                "B2 ignored or malformed audiobook Range for %s/%s/%s: expected %r, received %r",
+                slug,
+                normalized_key,
+                key,
+                expected_content_range,
+                content_range,
+            )
+            raise HTTPException(
+                status_code=502,
+                detail="Audiobook storage did not honor the byte range",
+            )
+        expected_length = _range_content_length(byte_range, total_size)
+        if content_length != expected_length:
+            body = obj.get("Body")
+            close = getattr(body, "close", None)
+            if callable(close):
+                close()
+            logger.error(
+                "B2 returned the wrong audiobook Range length for %s/%s/%s: expected %s, received %s",
+                slug,
+                normalized_key,
+                key,
+                expected_length,
+                content_length,
+            )
+            raise HTTPException(
+                status_code=502,
+                detail="Audiobook storage returned an invalid byte range",
+            )
+        headers["Content-Range"] = content_range
     return StreamingResponse(
         _streaming_body_iterator(obj["Body"]),
         status_code=status_code,
@@ -7037,9 +7417,35 @@ async def reader_book_audiobook(
 
 async def _reader_book_audiobook_package_manifest_response(slug: str, request: Request):
     book = await _reader_audio_book_for_slug(slug)
-    manifest = _reader_audio_package_manifest(book, slug)
+    package, _descriptor, new_rollout_identity = _selected_audiobook_package(
+        book,
+        slug,
+        request,
+        create_rollout_identity=True,
+    )
+    manifest = _reader_audio_package_manifest_from_package(package, slug)
     if not manifest:
-        raise HTTPException(status_code=404, detail="Audiobook package manifest not found")
+        response = UTF8JSONResponse(
+            status_code=404,
+            content={"detail": "Audiobook package manifest not found"},
+            headers={"Cache-Control": "private, no-store"},
+        )
+        if new_rollout_identity:
+            response.set_cookie(
+                AUDIOBOOK_ROLLOUT_COOKIE,
+                new_rollout_identity,
+                max_age=365 * 24 * 60 * 60,
+                secure=ENVIRONMENT == "production",
+                httponly=True,
+                samesite="lax",
+            )
+        return response
+    cache_key = f"audiobook-package:{manifest['package_version']}"
+    cached_manifest = await _redis_cache_get("reader-manifest", cache_key)
+    if isinstance(cached_manifest, dict):
+        manifest = cached_manifest
+    else:
+        await _redis_cache_set("reader-manifest", cache_key, manifest, 3600)
     etag = f'"{manifest["package_version"]}"'
     cache_control = "private, max-age=60, must-revalidate"
     headers = {
@@ -7048,14 +7454,25 @@ async def _reader_book_audiobook_package_manifest_response(slug: str, request: R
         "X-Audiobook-Package-Version": manifest["package_version"],
     }
     if _client_etag_matches(request, etag):
-        return Response(status_code=304, headers=headers)
-    if request.method == "HEAD":
+        response = Response(status_code=304, headers=headers)
+    elif request.method == "HEAD":
         body = _json.dumps(manifest, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-        return Response(
+        response = Response(
             status_code=200,
             headers={**headers, "Content-Type": "application/json; charset=utf-8", "Content-Length": str(len(body))},
         )
-    return UTF8JSONResponse(content=manifest, headers=headers)
+    else:
+        response = UTF8JSONResponse(content=manifest, headers=headers)
+    if new_rollout_identity:
+        response.set_cookie(
+            AUDIOBOOK_ROLLOUT_COOKIE,
+            new_rollout_identity,
+            max_age=365 * 24 * 60 * 60,
+            secure=ENVIRONMENT == "production",
+            httponly=True,
+            samesite="lax",
+        )
+    return response
 
 
 async def _reader_book_audiobook_package_segment(
@@ -7066,21 +7483,38 @@ async def _reader_book_audiobook_package_segment(
     request: Request,
 ):
     book = await _reader_audio_book_for_slug(slug)
-    package = _validated_audiobook_package(book, slug)
+    package, _descriptor, _new_identity = _selected_audiobook_package(
+        book,
+        slug,
+        request,
+        create_rollout_identity=False,
+    )
     normalized_version = str(package_version or "").strip().lower()
     if not package or normalized_version != package["package_version"]:
         raise HTTPException(status_code=404, detail="Audiobook package segment not found")
     segment = _audio_package_segment(package, segment_id)
     if not segment:
         raise HTTPException(status_code=404, detail="Audiobook package segment not found")
-    normalized_key = "timestamps" if asset_key == "timestamps" else "mp3"
-    asset_url = segment["timestamps_url"] if normalized_key == "timestamps" else segment["audio_url"]
+    asset_name = {
+        "mp3": "audio",
+        "timestamps": "timestamps",
+        "vtt": "vtt",
+        "metadata": "metadata",
+    }.get(str(asset_key or "").strip().lower())
+    if not asset_name:
+        raise HTTPException(status_code=404, detail="Audiobook package asset not found")
+    asset = segment["assets"][asset_name]
+    asset_url = _audio_package_storage_url(asset["storage"])
+    if not asset_url:
+        raise HTTPException(status_code=503, detail="Audiobook package storage is not configured")
+    normalized_key = "mp3" if asset_name == "audio" else asset_name
     return await _stream_audiobook_asset_url(
         slug,
         normalized_key,
         asset_url,
         request,
         extra_headers={"X-Audiobook-Package-Version": package["package_version"]},
+        version_id=asset["storage"]["version_id"],
     )
 
 
@@ -7129,6 +7563,46 @@ async def reader_book_audiobook_package_segment_timestamps(
         package_version,
         segment_id,
         "timestamps",
+        request,
+    )
+
+
+@api.api_route(
+    "/reader/book/{slug}/audiobook/packages/{package_version}/segments/{segment_id}/vtt",
+    methods=["GET", "HEAD"],
+)
+async def reader_book_audiobook_package_segment_vtt(
+    slug: str,
+    package_version: str,
+    segment_id: str,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    return await _reader_book_audiobook_package_segment(
+        slug,
+        package_version,
+        segment_id,
+        "vtt",
+        request,
+    )
+
+
+@api.api_route(
+    "/reader/book/{slug}/audiobook/packages/{package_version}/segments/{segment_id}/metadata",
+    methods=["GET", "HEAD"],
+)
+async def reader_book_audiobook_package_segment_metadata(
+    slug: str,
+    package_version: str,
+    segment_id: str,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    return await _reader_book_audiobook_package_segment(
+        slug,
+        package_version,
+        segment_id,
+        "metadata",
         request,
     )
 
