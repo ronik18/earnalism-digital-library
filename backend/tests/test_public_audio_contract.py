@@ -47,6 +47,7 @@ def test_public_projection_reports_only_release_approved_audio(slug):
     assert projected["audiobook_release_gate"] == "APPROVED"
     assert projected["audio_qa_status"] == "QA_PASSED"
     assert "audiobook_assets" not in projected
+    assert "audiobook_package" not in projected
     assert "backblazeb2.com" not in str(projected)
     assert catalog_truth_audit.verify_live_detail_payload(
         f"/books/{slug}",
@@ -66,6 +67,9 @@ def test_public_projection_keeps_hidden_audio_fail_closed(slug):
     artifact["audiobook_assets"] = {
         "mp3": f"https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/{slug}.mp3",
     }
+    artifact["audiobook_package"] = {
+        "tracks": [{"audio_url": f"https://s3.us-west-004.backblazeb2.com/private/{slug}.mp3"}],
+    }
 
     projected = catalog_truth.public_book_projection(artifact)
     assert projected is not None
@@ -76,6 +80,7 @@ def test_public_projection_keeps_hidden_audio_fail_closed(slug):
     assert projected["audiobook_release_gate"] == ""
     assert projected["audio_qa_status"] == ""
     assert "audiobook_assets" not in projected
+    assert "audiobook_package" not in projected
     assert "backblazeb2.com" not in str(projected)
     assert catalog_truth_audit.verify_live_detail_payload(
         f"/books/{slug}",

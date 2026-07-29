@@ -891,3 +891,21 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   until its private graphical pair is reviewed and promoted to canonical cover
   truth, followed by full-title generation, full ASR and measured sync,
   six-sample listening, private delivery, endpoint 206, and browser proof.
+
+## 2026-07-29 — Immutable audiobook delivery packages are release truth, not approval
+
+- Segmenting audio improves startup, retry, caching, and parallel production,
+  but segment existence or upload does not authorize public playback.
+- Bind every package to the controlled manuscript hash, exact release-evidence
+  version, per-segment audio and timestamp hashes, contiguous word ranges, and
+  contiguous cumulative duration. Reject gaps, overlaps, reordered segments,
+  stale package versions, and segments longer than 12 minutes.
+- Keep raw B2 locations and internal source/release identifiers out of the
+  browser payload. Serve only same-origin, controlled-truth-resolved URLs with
+  native Range handling; Redis is for small metadata/state, never audio bytes.
+- Do not preload MP3 bytes on page load, hover, focus, or touch. Start media
+  loading only from explicit playback intent, then advance through immutable
+  same-chapter segments without restarting for speed changes.
+- Migrate one already-approved audiobook as the first package-v2 canary. A new
+  title still requires the full existing rights, content, ASR, sync, listening,
+  storage, endpoint, and browser gates before controlled-publication promotion.

@@ -193,6 +193,7 @@ INTERNAL_AUDIO_FIELDS = {
     "audio_files",
     "audiobook_url",
     "audiobook",
+    "audiobook_package",
     "audiobook_assets",
     "audiobook_assets_updated_at",
     "audiobook_provider",
@@ -677,6 +678,14 @@ def load_controlled_artifact_book(
         if audio_allowed and isinstance(public_book.get("audiobook"), dict)
         else {}
     )
+    raw_audiobook_package = public_book.get("audiobook_package")
+    if not isinstance(raw_audiobook_package, dict):
+        raw_audiobook_package = artifact_audiobook.get("package")
+    artifact_audiobook_package = (
+        dict(raw_audiobook_package)
+        if audio_allowed and isinstance(raw_audiobook_package, dict)
+        else {}
+    )
 
     return {
         **public_book,
@@ -702,6 +711,7 @@ def load_controlled_artifact_book(
         "audiobook_assets_updated_at": public_book.get("audiobook_assets_updated_at", "") if audio_allowed else "",
         "audiobook_assets": artifact_audiobook_assets,
         "audiobook": artifact_audiobook,
+        "audiobook_package": artifact_audiobook_package,
     }
 
 

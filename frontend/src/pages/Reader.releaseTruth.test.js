@@ -41,6 +41,16 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/generatedAudioAvailable && generatedHighlightSyncEnabled/);
   });
 
+  test("loads package audio only on intent and advances immutable same-chapter segments", () => {
+    expect(readerSource).toMatch(/generatedAudioPrimed && generatedAudioAvailable/);
+    expect(readerSource).toMatch(/selectedGeneratedAudioTrack\.nextSegmentId/);
+    expect(readerSource).toMatch(/setGeneratedAudioSegmentId\(selectedGeneratedAudioTrack\.nextSegmentId\)/);
+    expect(readerSource).not.toMatch(/onMouseEnter=\{primeGeneratedAudio\}/);
+    expect(readerSource).not.toMatch(/onFocus=\{primeGeneratedAudio\}/);
+    expect(readerSource).not.toMatch(/onTouchStart=\{primeGeneratedAudio\}/);
+    expect(readerSource).not.toMatch(/prefetchAsset\(nextTrack\.audioUrl\)/);
+  });
+
   test("shows explicit AI narration disclosure beside approved controls", () => {
     expect(readerSource).toMatch(/audiobookNarrationDisclosure/);
     expect(readerSource).toMatch(/reader-audio-control__disclosure/);
