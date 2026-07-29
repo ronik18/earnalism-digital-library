@@ -196,8 +196,14 @@ def test_public_reader_prefers_canonical_chapter_over_stale_database(monkeypatch
     content = asyncio.run(server._reader_chapter_content("book-edfcf810c5", "chapter-001"))
     manifest = asyncio.run(server._reader_book_manifest_doc("book-edfcf810c5"))
 
-    assert content.startswith("গাড়িটি আসিয়া জংশনে থামিলে")
+    assert content.startswith("<p>গাড়িটি আসিয়া জংশনে থামিলে")
+    assert content.endswith("</p>")
     assert "STALE DATABASE TITLE-PAGE WRAPPER" not in content
+    assert "<script" not in content.lower()
+    assert "javascript:" not in content.lower()
+    assert "Wikisource" not in content
+    assert "Project Gutenberg" not in content
+    assert "https://" not in content
     assert manifest is not None
     assert manifest["chapters"][0]["content_version"] == server._reader_chapter_content_version(
         catalog_truth.load_controlled_artifact_book("book-edfcf810c5", include_content=True)["chapters"][0]
@@ -213,7 +219,8 @@ def test_admin_reader_keeps_database_preview_source(monkeypatch):
         server._reader_chapter_content("book-edfcf810c5", "chapter-001", admin_preview=True)
     )
 
-    assert content == "STALE DATABASE TITLE-PAGE WRAPPER"
+    assert content == "<p>STALE DATABASE TITLE-PAGE WRAPPER</p>"
+    assert "<script" not in content.lower()
 
 
 def test_public_preview_cache_is_bound_to_requested_content_version(monkeypatch):

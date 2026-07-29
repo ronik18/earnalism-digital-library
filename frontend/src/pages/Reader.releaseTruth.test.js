@@ -41,11 +41,18 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/generatedAudioAvailable && generatedHighlightSyncEnabled/);
   });
 
-  test("loads package audio only on intent and advances immutable same-chapter segments", () => {
+  test("loads package audio only on intent and advances immutable segments across chapters", () => {
     expect(readerSource).toMatch(/generatedAudioPrimed && generatedAudioAvailable/);
     expect(readerSource).toMatch(/preload=\{generatedAudioPrimed && generatedAudioAvailable \? 'metadata' : 'none'\}/);
     expect(readerSource).toMatch(/selectedGeneratedAudioTrack\.nextSegmentId/);
+    expect(readerSource).toMatch(/selectedGeneratedAudioTrack\.nextChapterId/);
     expect(readerSource).toMatch(/setGeneratedAudioSegmentId\(selectedGeneratedAudioTrack\.nextSegmentId\)/);
+    expect(readerSource).toMatch(/pendingCrossChapterAudioResumeRef/);
+    expect(readerSource).toMatch(/bookId,\s*packageVersion:\s*selectedGeneratedAudioTrack\.packageVersion/);
+    expect(readerSource).toMatch(/pendingAudiobookResumeMatches\(pending/);
+    expect(readerSource).toMatch(/pending\.bookId !== bookId/);
+    expect(readerSource).toMatch(/pendingCrossChapterAudioResumeRef\.current = null/);
+    expect(readerSource).toMatch(/chapterId:\s*selectedGeneratedAudioTrack\.nextChapterId/);
     expect(readerSource).not.toMatch(/onMouseEnter=\{primeGeneratedAudio\}/);
     expect(readerSource).not.toMatch(/onFocus=\{primeGeneratedAudio\}/);
     expect(readerSource).not.toMatch(/onTouchStart=\{primeGeneratedAudio\}/);
@@ -61,6 +68,15 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/offset:/);
     expect(readerSource).toMatch(/speed:/);
     expect(readerSource).toMatch(/window\.addEventListener\('pagehide'/);
+    expect(readerSource).toMatch(/savedSegmentChapterId === visibleChapterId/);
+    expect(readerSource).toMatch(/chapterIdForAudioSegment/);
+  });
+
+  test("binds package manifests to exact reader release truth", () => {
+    expect(readerSource).toMatch(/expectedSlug:\s*bookId/);
+    expect(readerSource).toMatch(/expectedPackageVersion:\s*generatedAudioReleaseState\.packageVersion/);
+    expect(readerSource).toMatch(/if \(!normalizedManifest\.valid\)/);
+    expect(readerSource).not.toMatch(/!generatedAudioReleaseState\.packageVersion\)/);
   });
 
   test("prefetches only next-segment metadata after playback reaches the threshold", () => {

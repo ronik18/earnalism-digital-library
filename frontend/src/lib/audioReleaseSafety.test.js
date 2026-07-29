@@ -2,17 +2,33 @@ import {
   audiobookNarrationDisclosure,
   audiobookReleaseState,
   canExposeAudiobookControls,
+  isReaderAudiobookManifestPath,
   readerManifestPath,
 } from "./audioReleaseSafety";
 
 describe("audiobook release safety", () => {
   test("versions reader manifest requests when release semantics change", () => {
     expect(readerManifestPath("bn-066")).toBe(
-      "/reader/book/bn-066/manifest?release_truth=audio-release-evidence-v8",
+      "/reader/book/bn-066/manifest?release_truth=audio-release-evidence-v9",
     );
     expect(readerManifestPath("book / 2b", { adminPreview: true })).toBe(
-      "/reader/book/book%20%2F%202b/manifest?release_truth=audio-release-evidence-v8&preview=admin",
+      "/reader/book/book%20%2F%202b/manifest?release_truth=audio-release-evidence-v9&preview=admin",
     );
+  });
+
+  test("recognizes only the exact same-origin reader package manifest route", () => {
+    expect(isReaderAudiobookManifestPath(
+      "/api/reader/book/muchiram-gurer-jibanchorit/audiobook/manifest",
+      "muchiram-gurer-jibanchorit",
+    )).toBe(true);
+    expect(isReaderAudiobookManifestPath(
+      "https://cdn.example.com/api/reader/book/muchiram-gurer-jibanchorit/audiobook/manifest",
+      "muchiram-gurer-jibanchorit",
+    )).toBe(false);
+    expect(isReaderAudiobookManifestPath(
+      "/api/reader/book/another-title/audiobook/manifest",
+      "muchiram-gurer-jibanchorit",
+    )).toBe(false);
   });
 
   test("uses only explicit narration disclosure from approved metadata", () => {
@@ -74,6 +90,75 @@ describe("audiobook release safety", () => {
     expect(state.canShowControls).toBe(true);
     expect(state.status).toBe("approved");
     expect(state.label).toBe("Audiobook available");
+  });
+
+  test("allows an approved immutable package-v2 manifest without a legacy MP3 pointer", () => {
+    const packageVersion = `sha256-${"a".repeat(64)}`;
+    const state = audiobookReleaseState({
+      slug: "muchiram-gurer-jibanchorit",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          provider: "b2_private_package",
+          version: "reader-release-truth-v1",
+          package_version: packageVersion,
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
+          assets: {
+            manifest: "/api/reader/book/muchiram-gurer-jibanchorit/audiobook/manifest",
+          },
+        },
+      },
+    });
+
+    expect(state.canShowControls).toBe(true);
+    expect(state.status).toBe("approved");
+    expect(state.audioUrl).toBe("");
+    expect(state.packageManifestUrl).toBe(
+      "/api/reader/book/muchiram-gurer-jibanchorit/audiobook/manifest",
+    );
+    expect(state.packageVersion).toBe(packageVersion);
+  });
+
+  test("rejects package-v2 manifests without exact slug and immutable package binding", () => {
+    const approvedShape = {
+      slug: "muchiram-gurer-jibanchorit",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          provider: "b2_private_package",
+          version: "reader-release-truth-v1",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
+          assets: {
+            manifest: "/api/reader/book/muchiram-gurer-jibanchorit/audiobook/manifest",
+          },
+        },
+      },
+    };
+
+    expect(canExposeAudiobookControls(approvedShape)).toBe(false);
+    expect(canExposeAudiobookControls({
+      ...approvedShape,
+      _readerManifest: {
+        audio: {
+          ...approvedShape._readerManifest.audio,
+          package_version: `sha256-${"a".repeat(64)}`,
+          assets: {
+            manifest: "/api/reader/book/another-title/audiobook/manifest",
+          },
+        },
+      },
+    })).toBe(false);
+    expect(canExposeAudiobookControls({
+      ...approvedShape,
+      _readerManifest: {
+        audio: {
+          ...approvedShape._readerManifest.audio,
+          package_version: "mutable-latest",
+        },
+      },
+    })).toBe(false);
   });
 
   test("accepts the Open Window proxy manifest without claiming word-level sync", () => {

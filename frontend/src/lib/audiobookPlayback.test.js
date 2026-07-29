@@ -2,6 +2,7 @@ import {
   AUDIOBOOK_NEXT_SEGMENT_PREFETCH_RATIO,
   audiobookProgressStorageKey,
   loadAudiobookProgress,
+  pendingAudiobookResumeMatches,
   saveAudiobookProgress,
   sanitizeAudiobookProgress,
   shouldPrefetchNextSegment,
@@ -74,5 +75,34 @@ describe('audiobook package playback', () => {
     expect(shouldPrefetchNextSegment(70, 100, true)).toBe(true);
     expect(shouldPrefetchNextSegment(99, 100, false)).toBe(false);
     expect(shouldPrefetchNextSegment(0, 0, true)).toBe(false);
+  });
+
+  test('binds a pending cross-chapter resume to one book and immutable package', () => {
+    const pending = {
+      bookId: 'the-open-window',
+      packageVersion: 'sha256-current',
+      chapterId: 'chapter-002',
+      segmentId: 'c002-s001',
+    };
+    const expected = {
+      bookId: 'the-open-window',
+      packageVersion: 'sha256-current',
+      chapterId: 'chapter-002',
+      segmentChapterId: 'chapter-002',
+    };
+
+    expect(pendingAudiobookResumeMatches(pending, expected)).toBe(true);
+    expect(pendingAudiobookResumeMatches(pending, {
+      ...expected,
+      bookId: 'another-title',
+    })).toBe(false);
+    expect(pendingAudiobookResumeMatches(pending, {
+      ...expected,
+      packageVersion: 'sha256-replaced',
+    })).toBe(false);
+    expect(pendingAudiobookResumeMatches(pending, {
+      ...expected,
+      segmentChapterId: 'chapter-001',
+    })).toBe(false);
   });
 });

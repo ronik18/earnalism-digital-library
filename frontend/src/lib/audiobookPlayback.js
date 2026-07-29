@@ -57,6 +57,26 @@ export function saveAudiobookProgress(slug, value, storage = browserStorage()) {
   }
 }
 
+export function pendingAudiobookResumeMatches(pending, {
+  bookId = '',
+  packageVersion = '',
+  chapterId = '',
+  segmentChapterId = '',
+} = {}) {
+  if (!pending || typeof pending !== 'object' || Array.isArray(pending)) return false;
+  return Boolean(
+    bookId
+    && packageVersion
+    && chapterId
+    && segmentChapterId
+    && pending.bookId === bookId
+    && pending.packageVersion === packageVersion
+    && pending.chapterId === chapterId
+    && segmentChapterId === chapterId
+    && pending.segmentId
+  );
+}
+
 export function shouldPrefetchNextSegment(currentTime, duration, hasNextSegment) {
   const safeCurrentTime = finiteNumber(currentTime, 0);
   const safeDuration = finiteNumber(duration, 0);

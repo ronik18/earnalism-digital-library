@@ -102,7 +102,118 @@ class ActiveReleaseManagerTests(unittest.TestCase):
                 row["sha256"] = manager.sha256_file(publication / filename)
         self._write(publication / "checksum_manifest.json", checksum)
 
-    def _prepare_approved_legacy(self) -> None:
+    def _prepare_approved_reader_only(self) -> None:
+        for publication in manager.publication_dirs(self.repo, self.slug):
+            public_book = manager.read_json(publication / "public_book.json")
+            public_book.pop("audiobook_legacy_release_descriptor_sha256", None)
+            public_book.update(
+                {
+                    "approved_to_publish": True,
+                    "verification_status": "approved",
+                    "qa_status": "QA_PASSED",
+                    "isPublic": True,
+                    "isLive": True,
+                    "is_published": True,
+                    "allowPublicReading": True,
+                    "audio_enabled": False,
+                    "audiobook_enabled": False,
+                    "audiobook": {},
+                    "audiobook_assets": {},
+                    "chapters": [
+                        {
+                            "id": "chapter-001",
+                            "processing_status": "ready",
+                        }
+                    ],
+                }
+            )
+            reader_manifest = manager.read_json(
+                publication / "reader_manifest.json"
+            )
+            reader_manifest.update(
+                {
+                    "audio_enabled": False,
+                    "audiobook_enabled": False,
+                    "chapter_count": 1,
+                    "chapters": [{"id": "chapter-001"}],
+                }
+            )
+            approval = manager.read_json(publication / "approval_evidence.json")
+            approval.update(
+                {
+                    "approved_to_publish": True,
+                    "verification_status": "approved",
+                    "qa_status": "QA_PASSED",
+                    "audiobook_enabled": False,
+                    "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
+                }
+            )
+            self._write(publication / "public_book.json", public_book)
+            self._write(publication / "reader_manifest.json", reader_manifest)
+            self._write(publication / "approval_evidence.json", approval)
+            self._refresh_checksums(publication)
+
+    def _prepare_package_audio_approval(
+        self,
+        *,
+        upload_status: str = "UPLOADED_CHECKSUM_VERIFIED",
+    ) -> None:
+        for publication in manager.publication_dirs(self.repo, self.slug):
+            public_book = manager.read_json(publication / "public_book.json")
+            public_book.update(
+                {
+                    "approved_to_publish": True,
+                    "verification_status": "approved",
+                    "qa_status": "QA_PASSED",
+                    "isPublic": True,
+                    "isLive": True,
+                    "is_published": True,
+                    "allowPublicReading": True,
+                    "audio_enabled": True,
+                    "audiobook_enabled": True,
+                    "chapters": [
+                        {
+                            "id": "chapter-001",
+                            "processing_status": "ready",
+                        }
+                    ],
+                }
+            )
+            reader_manifest = manager.read_json(
+                publication / "reader_manifest.json"
+            )
+            reader_manifest.update(
+                {
+                    "audio_enabled": True,
+                    "audiobook_enabled": True,
+                    "chapter_count": 1,
+                    "chapters": [{"id": "chapter-001"}],
+                }
+            )
+            approval = manager.read_json(publication / "approval_evidence.json")
+            approval.update(
+                {
+                    "approved_to_publish": True,
+                    "verification_status": "approved",
+                    "qa_status": "QA_PASSED",
+                    "audio_qa_status": "QA_PASSED",
+                    "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+                    "audiobook_enabled": True,
+                    "upload_status": upload_status,
+                    "approval_scope": "test_release_packet_all_gates_passed",
+                    "release_blockers": [],
+                }
+            )
+            self._write(publication / "public_book.json", public_book)
+            self._write(publication / "reader_manifest.json", reader_manifest)
+            self._write(publication / "approval_evidence.json", approval)
+            self._refresh_checksums(publication)
+
+    def _prepare_approved_legacy(
+        self,
+        *,
+        upload_status: str = "UPLOADED_CHECKSUM_VERIFIED",
+    ) -> None:
         assets = {
             "mp3": "https://audio.example.invalid/sample-book.mp3",
             "timestamps": "https://audio.example.invalid/sample-book.timestamps.json",
@@ -122,6 +233,8 @@ class ActiveReleaseManagerTests(unittest.TestCase):
                     "qa_status": "QA_PASSED",
                     "isPublic": True,
                     "isLive": True,
+                    "is_published": True,
+                    "allowPublicReading": True,
                     "audiobook_provider": "test-provider",
                     "audiobook_voice": "test-voice",
                     "audiobook_model": "test-model",
@@ -134,10 +247,24 @@ class ActiveReleaseManagerTests(unittest.TestCase):
                         "duration_ms": 654321,
                         "assets": assets,
                     },
+                    "chapters": [
+                        {
+                            "id": "chapter-001",
+                            "processing_status": "ready",
+                        }
+                    ],
                 }
             )
             reader_manifest = manager.read_json(publication / "reader_manifest.json")
             reader_manifest.pop("audiobook_legacy_release_descriptor_sha256", None)
+            reader_manifest.update(
+                {
+                    "audio_enabled": True,
+                    "audiobook_enabled": True,
+                    "chapter_count": 1,
+                    "chapters": [{"id": "chapter-001"}],
+                }
+            )
             approval = manager.read_json(publication / "approval_evidence.json")
             approval.update(
                 {
@@ -147,7 +274,7 @@ class ActiveReleaseManagerTests(unittest.TestCase):
                     "audio_qa_status": "QA_PASSED",
                     "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
                     "audiobook_enabled": True,
-                    "upload_status": "UPLOADED_CHECKSUM_VERIFIED",
+                    "upload_status": upload_status,
                     "audio_sha256": "6" * 64,
                     "source_sha256": self.source,
                     "approval_scope": "test_release_packet_all_gates_passed",
@@ -400,6 +527,48 @@ class ActiveReleaseManagerTests(unittest.TestCase):
             replica_release_manifest_receipt_sha256="8" * 64,
         )
 
+    def _invoke_initial(
+        self,
+        package: dict,
+        release_descriptor: dict,
+        *,
+        primary: dict | None = None,
+        replica: dict | None = None,
+        manifest_primary: dict | None = None,
+        manifest_replica: dict | None = None,
+        manifest_sha256: str = "",
+        manifest_size: int = 0,
+        apply: bool = True,
+    ) -> dict:
+        default_primary, default_replica = self._receipts(package)
+        (
+            default_manifest_primary,
+            default_manifest_replica,
+            default_manifest_sha256,
+            default_manifest_size,
+        ) = self._release_manifest_receipts(package)
+        return manager.activate_initial_release(
+            self.repo,
+            self.slug,
+            package,
+            release_descriptor,
+            primary or default_primary,
+            replica or default_replica,
+            manifest_primary or default_manifest_primary,
+            manifest_replica or default_manifest_replica,
+            expected_manuscript_sha256=self.manuscript,
+            release_manifest_sha256=(
+                manifest_sha256 or default_manifest_sha256
+            ),
+            release_manifest_size_bytes=manifest_size or default_manifest_size,
+            generated_at="2026-07-29T12:00:00Z",
+            apply=apply,
+            primary_receipt_sha256="e" * 64,
+            replica_receipt_sha256="f" * 64,
+            primary_release_manifest_receipt_sha256="7" * 64,
+            replica_release_manifest_receipt_sha256="8" * 64,
+        )
+
     def test_stage_validates_then_updates_identical_mirrors_and_checksums(self) -> None:
         result = self._stage()
         self.assertEqual(result["status"], "CANDIDATE_STAGED")
@@ -431,6 +600,146 @@ class ActiveReleaseManagerTests(unittest.TestCase):
             checksums["reader_manifest.json"],
             manager.sha256_file(publications[0] / "reader_manifest.json"),
         )
+
+    def test_initial_activation_binds_first_package_without_approving_audio(self) -> None:
+        self._prepare_approved_reader_only()
+        package = self._package("3")
+        before = manager.load_mirrored_publication(self.repo, self.slug)
+        public_flags_before = {
+            key: before["public_book"].get(key)
+            for key in ("audio_enabled", "audiobook_enabled")
+        }
+        reader_flags_before = {
+            key: before["reader_manifest"].get(key)
+            for key in ("audio_enabled", "audiobook_enabled")
+        }
+        approval_before = copy.deepcopy(before["approval_evidence"])
+
+        dry_run_snapshot = self._snapshot()
+        dry_run = self._invoke_initial(
+            package,
+            self._release_descriptor("3"),
+            apply=False,
+        )
+        self.assertEqual(
+            dry_run["status"],
+            "INITIAL_RELEASE_ACTIVATION_VALIDATED",
+        )
+        self.assertFalse(dry_run["applied"])
+        self.assertEqual(dry_run_snapshot, self._snapshot())
+
+        result = self._invoke_initial(package, self._release_descriptor("3"))
+        self.assertEqual(result["status"], "INITIAL_RELEASE_ACTIVATED")
+        self.assertFalse(result["audio_approval_flags_changed"])
+        context = manager.load_mirrored_publication(self.repo, self.slug)
+        state = context["public_book"]["audiobook_active_release"]
+        descriptor = package["release_descriptor_sha256"]
+        self.assertEqual(state["status"], "ACTIVE")
+        self.assertEqual(state["active_release_descriptor_sha256"], descriptor)
+        self.assertEqual(state["candidate_release_descriptor_sha256"], "")
+        self.assertEqual(state["retained_release_descriptor_sha256s"], [descriptor])
+        self.assertEqual(
+            context["public_book"]["audiobook_release_descriptor_sha256"],
+            descriptor,
+        )
+        self.assertEqual(
+            context["public_book"]["audiobook_legacy_release_descriptor_sha256"],
+            "",
+        )
+        self.assertEqual(context["public_book"]["audiobook_packages"], {descriptor: package})
+        self.assertIn(
+            descriptor,
+            context["public_book"]["audiobook_package_release_evidence"],
+        )
+        self.assertEqual(
+            {
+                key: context["public_book"].get(key)
+                for key in ("audio_enabled", "audiobook_enabled")
+            },
+            public_flags_before,
+        )
+        self.assertEqual(
+            {
+                key: context["reader_manifest"].get(key)
+                for key in ("audio_enabled", "audiobook_enabled")
+            },
+            reader_flags_before,
+        )
+        self.assertEqual(context["approval_evidence"], approval_before)
+        manager._verify_controlled_checksums(context)
+
+    def test_initial_activation_rejects_unapproved_or_nonempty_release_slot(self) -> None:
+        package = self._package("3")
+        before = self._snapshot()
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "approved live reader/publication truth",
+        ):
+            self._invoke_initial(package, self._release_descriptor("3"))
+        self.assertEqual(before, self._snapshot())
+
+        self._prepare_approved_reader_only()
+        for publication in manager.publication_dirs(self.repo, self.slug):
+            public_book = manager.read_json(publication / "public_book.json")
+            public_book["audiobook_legacy_release_descriptor_sha256"] = self.legacy
+            reader_manifest = manager.read_json(
+                publication / "reader_manifest.json"
+            )
+            reader_manifest["audiobook_legacy_release_descriptor_sha256"] = (
+                self.legacy
+            )
+            self._write(publication / "public_book.json", public_book)
+            self._write(publication / "reader_manifest.json", reader_manifest)
+            self._refresh_checksums(publication)
+        before = self._snapshot()
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "empty release pointer slot",
+        ):
+            self._invoke_initial(package, self._release_descriptor("3"))
+        self.assertEqual(before, self._snapshot())
+
+    def test_initial_package_can_stage_promote_and_rollback_without_legacy(self) -> None:
+        self._prepare_approved_reader_only()
+        package_3 = self._package("3")
+        package_4 = self._package("4")
+        self._invoke_initial(package_3, self._release_descriptor("3"))
+        staged = self._invoke_stage(
+            package_4,
+            self._release_descriptor("4"),
+            legacy_descriptor="",
+        )
+        self.assertEqual(staged["status"], "CANDIDATE_STAGED")
+        manager.set_rollout(self.repo, self.slug, 100, apply=True)
+        context = manager.load_mirrored_publication(self.repo, self.slug)
+        self.assertEqual(
+            context["public_book"]["audiobook_active_release"][
+                "active_release_descriptor_sha256"
+            ],
+            package_4["release_descriptor_sha256"],
+        )
+        previous = manager.rollback_release(
+            self.repo,
+            self.slug,
+            "previous",
+            apply=True,
+        )
+        self.assertEqual(
+            previous["selected_release_descriptor_sha256"],
+            package_3["release_descriptor_sha256"],
+        )
+        before = self._snapshot()
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "No approved legacy release",
+        ):
+            manager.rollback_release(
+                self.repo,
+                self.slug,
+                "legacy",
+                apply=True,
+            )
+        self.assertEqual(before, self._snapshot())
 
     def test_bind_legacy_is_deterministic_dry_run_then_single_field_apply(self) -> None:
         self._prepare_approved_legacy()
@@ -486,6 +795,61 @@ class ActiveReleaseManagerTests(unittest.TestCase):
             self._refresh_checksums(publication)
         before = self._snapshot()
         with self.assertRaisesRegex(manager.ReleasePointerError, "not already approved"):
+            manager.bind_legacy_release(self.repo, self.slug, apply=True)
+        self.assertEqual(before, self._snapshot())
+
+    def test_bind_legacy_accepts_only_narrow_checksum_verified_upload_statuses(
+        self,
+    ) -> None:
+        self._prepare_approved_legacy(
+            upload_status="UPLOADED_CHECKSUM_VERIFIED_PRIVATE_ORIGIN"
+        )
+        result = manager.bind_legacy_release(self.repo, self.slug)
+        self.assertEqual(result["status"], "LEGACY_BINDING_VALIDATED")
+
+        for publication in manager.publication_dirs(self.repo, self.slug):
+            approval = manager.read_json(publication / "approval_evidence.json")
+            approval["upload_status"] = "UPLOADED_CHECKSUM_VERIFIED_SOMETHING_ELSE"
+            self._write(publication / "approval_evidence.json", approval)
+            self._refresh_checksums(publication)
+        before = self._snapshot()
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "checksum-verified upload evidence",
+        ):
+            manager.bind_legacy_release(self.repo, self.slug, apply=True)
+        self.assertEqual(before, self._snapshot())
+
+    def test_bind_legacy_accepts_only_exact_canonical_reader_proxy_endpoint(
+        self,
+    ) -> None:
+        self._prepare_approved_legacy(
+            upload_status="UPLOADED_CHECKSUM_VERIFIED_PRIVATE_ORIGIN"
+        )
+        for publication in manager.publication_dirs(self.repo, self.slug):
+            approval = manager.read_json(publication / "approval_evidence.json")
+            approval["endpoint_url"] = (
+                f"https://api.theearnalism.com/api/reader/book/"
+                f"{self.slug}/audiobook"
+            )
+            self._write(publication / "approval_evidence.json", approval)
+            self._refresh_checksums(publication)
+        result = manager.bind_legacy_release(self.repo, self.slug)
+        self.assertEqual(result["status"], "LEGACY_BINDING_VALIDATED")
+
+        for publication in manager.publication_dirs(self.repo, self.slug):
+            approval = manager.read_json(publication / "approval_evidence.json")
+            approval["endpoint_url"] = (
+                f"https://api.theearnalism.com/api/reader/book/"
+                f"{self.slug}/audiobook?bypass=1"
+            )
+            self._write(publication / "approval_evidence.json", approval)
+            self._refresh_checksums(publication)
+        before = self._snapshot()
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "endpoint and legacy MP3 identities conflict",
+        ):
             manager.bind_legacy_release(self.repo, self.slug, apply=True)
         self.assertEqual(before, self._snapshot())
 
@@ -658,6 +1022,128 @@ class ActiveReleaseManagerTests(unittest.TestCase):
         ]
         self.assertEqual(state["active_release_descriptor_sha256"], self.legacy)
         self.assertEqual(state["rollout"]["percentage"], 0)
+
+    def test_deactivate_blocks_mutators_and_reactivation_requires_current_approval(
+        self,
+    ) -> None:
+        self._stage("3")
+        manager.set_rollout(self.repo, self.slug, 100, apply=True)
+        context = manager.load_mirrored_publication(self.repo, self.slug)
+        public_flags_before = {
+            key: context["public_book"].get(key)
+            for key in ("audio_enabled", "audiobook_enabled")
+        }
+        active = context["public_book"]["audiobook_active_release"][
+            "active_release_descriptor_sha256"
+        ]
+
+        dry_run_snapshot = self._snapshot()
+        dry_run = manager.deactivate_release(self.repo, self.slug)
+        self.assertEqual(dry_run["status"], "RELEASE_DEACTIVATION_VALIDATED")
+        self.assertEqual(dry_run_snapshot, self._snapshot())
+
+        result = manager.deactivate_release(self.repo, self.slug, apply=True)
+        self.assertEqual(result["status"], "RELEASE_DEACTIVATED")
+        self.assertFalse(result["audio_approval_flags_changed"])
+        status = manager.release_status(self.repo, self.slug)
+        self.assertEqual(status["status"], "RELEASE_POINTER_INACTIVE")
+        self.assertEqual(status["release_state_status"], "INACTIVE")
+        self.assertEqual(status["blockers"], ["ACTIVE_RELEASE_STATE_INACTIVE"])
+        context = manager.load_mirrored_publication(self.repo, self.slug)
+        self.assertEqual(
+            {
+                key: context["public_book"].get(key)
+                for key in ("audio_enabled", "audiobook_enabled")
+            },
+            public_flags_before,
+        )
+        before = self._snapshot()
+        for action in (
+            lambda: manager.set_rollout(self.repo, self.slug, 0, apply=True),
+            lambda: manager.rollback_release(
+                self.repo,
+                self.slug,
+                "previous",
+                apply=True,
+            ),
+            lambda: self._stage("4"),
+        ):
+            with self.assertRaisesRegex(
+                manager.ReleasePointerError,
+                "explicitly reactivated",
+            ):
+                action()
+            self.assertEqual(before, self._snapshot())
+
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "current approved, checksum-verified public audio truth",
+        ):
+            manager.reactivate_release(self.repo, self.slug, apply=True)
+        self.assertEqual(before, self._snapshot())
+
+        self._prepare_package_audio_approval()
+        approval_snapshot = manager.load_mirrored_publication(
+            self.repo,
+            self.slug,
+        )["approval_evidence"]
+        reactivated = manager.reactivate_release(
+            self.repo,
+            self.slug,
+            apply=True,
+        )
+        self.assertEqual(reactivated["status"], "RELEASE_REACTIVATED")
+        self.assertFalse(reactivated["audio_approval_flags_changed"])
+        context = manager.load_mirrored_publication(self.repo, self.slug)
+        self.assertEqual(
+            context["public_book"]["audiobook_active_release"]["status"],
+            "ACTIVE",
+        )
+        self.assertEqual(
+            context["public_book"]["audiobook_active_release"][
+                "active_release_descriptor_sha256"
+            ],
+            active,
+        )
+        self.assertEqual(context["approval_evidence"], approval_snapshot)
+
+        already_active = self._snapshot()
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "already active",
+        ):
+            manager.reactivate_release(self.repo, self.slug, apply=True)
+        self.assertEqual(already_active, self._snapshot())
+
+    def test_reactivate_rejects_tampered_release_evidence(self) -> None:
+        self._stage("3")
+        manager.set_rollout(self.repo, self.slug, 100, apply=True)
+        manager.deactivate_release(self.repo, self.slug, apply=True)
+        self._prepare_package_audio_approval()
+        for publication in manager.publication_dirs(self.repo, self.slug):
+            public_book = manager.read_json(publication / "public_book.json")
+            descriptor = public_book["audiobook_active_release"][
+                "active_release_descriptor_sha256"
+            ]
+            public_book["audiobook_package_release_evidence"][descriptor][
+                "release_eligible"
+            ] = False
+            self._write(publication / "public_book.json", public_book)
+            reader_manifest = manager.read_json(
+                publication / "reader_manifest.json"
+            )
+            reader_manifest["audiobook_package_release_evidence"][descriptor][
+                "release_eligible"
+            ] = False
+            self._write(publication / "reader_manifest.json", reader_manifest)
+            self._refresh_checksums(publication)
+        before = self._snapshot()
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "not bound to release-eligible",
+        ):
+            manager.reactivate_release(self.repo, self.slug, apply=True)
+        self.assertEqual(before, self._snapshot())
 
     def test_release_descriptor_with_blockers_cannot_be_staged(self) -> None:
         release_descriptor = self._release_descriptor("3")

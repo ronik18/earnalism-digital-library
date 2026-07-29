@@ -124,6 +124,24 @@ cannot approve an audiobook. Rights, covers, source/ASR, ordered content,
 measured sync, listening, editorial, storage, endpoint, and browser gates
 remain independent and fail closed.
 
+## Approved legacy package producer
+
+`audiobook_package_builder_v2.py build-approved-legacy` generalizes package-v2
+construction beyond the fixed canary without generalizing approval. It accepts
+an exact local MP3 plus timestamp, VTT, chapter, and metadata sidecars only
+when both controlled-publication mirrors and their checksums agree. The command
+requires the existing public approval to prove ASR/manuscript `>= 9.7`,
+coverage `>= 0.98`, first/last and ordered-content integrity, listening
+`>= 9.2` at confidence `>= 0.90` with no fatal flags, measured paragraph or
+stanza sync, tier-A approved rights, checksum-verified upload, endpoint `206`,
+browser `PASS`, and an empty blocker list.
+
+The builder rehashes every approved local asset against controlled truth before
+writing output, preserves those assets and their approval/source/checksum
+records as provenance, creates a mono PCM master, and encodes immutable
+96-kbps mono MP3 segments at measured cue boundaries. The output upload plan is
+`RELEASE_CANDIDATE`; it performs no upload, catalog mutation, or gate change.
+
 ## Canary state
 
 The exact already-approved `book-2b9853ec52` narration has been repackaged into

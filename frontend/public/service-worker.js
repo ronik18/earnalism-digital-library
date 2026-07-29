@@ -27,8 +27,17 @@ function isStaticAsset(request) {
   );
 }
 
+function isAudiobookApiRequest(request) {
+  const url = new URL(request.url);
+  return /^\/api\/reader\/book\/[^/]+\/audiobook(?:\/|$)/.test(url.pathname);
+}
+
 self.addEventListener("fetch", (event) => {
   const { request } = event;
+  // Package manifests, sidecars, HEAD probes, and byte-range audio must always
+  // reach the release-gated API. Never let the service worker cache or replay
+  // an audiobook response after release truth changes.
+  if (isAudiobookApiRequest(request)) return;
   if (request.method !== "GET" || request.headers.has("authorization")) return;
   if (request.headers.has("range")) return;
 

@@ -1294,9 +1294,9 @@
       "audiobook_next_action": "Run gcloud auth application-default login, then execute one bounded source-bound representative audition; do not run full TTS unless every audition passage passes."
     },
     "the-open-window": {
-      "latest_decision": "PUBLIC_AUDIO_RELEASE_PROVEN",
-      "decision_reason": "The Kokoro production candidate passed the authorized 9.2 listening gate and every objective, private-media, endpoint, disclosure, and real-browser playback gate without claiming a 10.0 listening score.",
-      "updated_at": "2026-07-19T11:15:27Z",
+      "latest_decision": "PACKAGE_V2_CANDIDATE_STAGED_ZERO_PERCENT_LEGACY_RELEASE_REMAINS_ACTIVE",
+      "decision_reason": "The exact approved Open Window narration was finalized as a 14-asset package-v2 candidate and independently full-download verified under Governance retention in production and DR. Rollout remains 0%, so the proven legacy descriptor remains active and the public audiobook count remains four.",
+      "updated_at": "2026-07-29T20:22:22Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "PUBLIC_AUDIO_RELEASE_APPROVED_AND_PROVEN",
@@ -1319,8 +1319,27 @@
       "browser_audio_start_latency_ms": 144.4,
       "narration_disclosure": "Narration: AI voice",
       "ten_of_ten_claimed": false,
-      "audiobook_next_action": "Monitor production playback and keep the exact hash-bound candidate immutable; do not regenerate or substitute without a new full gate run.",
-      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_production_release_proof.json"
+      "audiobook_next_action": "Deploy the package-v2 implementation with rollout held at 0%, verify legacy production playback is unchanged, then run the already-authorized endpoint and browser canary before any rollout increase.",
+      "production_release_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_production_release_proof.json",
+      "package_v2_canary": {
+        "active_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
+        "candidate_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+        "package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+        "release_manifest_sha256": "736fee5fa4af7b53aab04583455517b0ccffd0699d4f3250be9503ea07a7e292",
+        "candidate_asset_count": 14,
+        "primary_full_download_verified": 14,
+        "replica_full_download_verified": 14,
+        "object_lock_mode": "GOVERNANCE",
+        "object_lock_default_retention_days_floor": 30,
+        "verified_object_retention_minimum_days": 29,
+        "rollout_percentage": 0,
+        "legacy_descriptor_still_active": true,
+        "public_audiobook_count": 4,
+        "combined_regression_status": "PASS_136_OF_136_FRONTEND_164_OF_164",
+        "combined_regression_validated_at": "2026-07-29T20:22:22Z",
+        "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_the-open-window_20260729.json"
+      },
+      "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_the-open-window_20260729.json"
     },
     "sredni-vashtar": {
       "latest_decision": "REUSE_FULL_QA_PASS_RELEASE_SOURCE_MERGED_DEPLOYMENT_RETRY_REQUIRED",

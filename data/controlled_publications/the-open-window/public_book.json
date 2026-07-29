@@ -1,135 +1,297 @@
 {
-  "id": "controlled-the-open-window",
-  "slug": "the-open-window",
-  "title": "The Open Window",
-  "subtitle": "",
+  "about_author": "Saki (H.H. Munro, 1870–1916) was a British author of darkly comic and macabre short stories.",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "allowPublicReading": true,
+  "approved_to_publish": true,
+  "audio_asset_slug": "the-open-window",
+  "audio_enabled": true,
+  "audiobook": {
+    "ai_narration_disclosure": "Narration: AI voice",
+    "asset_sha256": {
+      "chapters": "e2a8ccb9e26ce52c9a665ffa2bad6b92a1bf70db46a5a71d1098ed680b599d9f",
+      "meta": "cf7500d033a2d15a022c8a3837450252e3e404ccbbe3ff282c87c4f9322366e7",
+      "mp3": "b23e6720a2434c5a90d2437abf630cf68b6cb4cd7305a827a0d88fe5e586d438",
+      "timestamps": "a3716705ce518cad513106a4bad9b48630310fed1df8a505e9615afc7ced606b",
+      "vtt": "3302e9a0685fbfcdf7431897776e60d037ba4f6046bae4e94adf463d493e5777"
+    },
+    "assets": {
+      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_chapters_e2a8ccb9e26c.json",
+      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_meta_cf7500d033a2.json",
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3",
+      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_timestamps_a3716705ce51.json",
+      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_vtt_3302e9a0685f.vtt"
+    },
+    "audio_sha256": "b23e6720a2434c5a90d2437abf630cf68b6cb4cd7305a827a0d88fe5e586d438",
+    "duration_ms": 392600,
+    "highlight_sync_enabled": false,
+    "model": "Kokoro-82M 0.9.4",
+    "provider": "kokoro",
+    "qa_status": "QA_PASSED",
+    "release_gate": "APPROVED",
+    "size": 6283053,
+    "source_sha256": "3f491a3ae042f5c8716dfedba0edccfef5421a889689bf629867491dce219db8",
+    "sync_mode": "section_following",
+    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "updated_at": "2026-07-19T10:15:00Z",
+    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3",
+    "voice": "af_bella"
+  },
+  "audiobook_active_release": {
+    "active_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
+    "candidate_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+    "retained_release_descriptor_sha256s": [
+      "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
+      "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0"
+    ],
+    "rollout": {
+      "percentage": 0,
+      "salt": "open-window-package-v2-canary-20260729"
+    },
+    "schema_version": "audiobook_active_release.v1",
+    "slug": "the-open-window",
+    "status": "ACTIVE"
+  },
+  "audiobook_assets": {
+    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_chapters_e2a8ccb9e26c.json",
+    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_meta_cf7500d033a2.json",
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3",
+    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_timestamps_a3716705ce51.json",
+    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_vtt_3302e9a0685f.vtt"
+  },
+  "audiobook_assets_updated_at": "2026-07-19T10:15:00Z",
+  "audiobook_enabled": true,
+  "audiobook_legacy_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
+  "audiobook_manuscript_sha256": "3f491a3ae042f5c8716dfedba0edccfef5421a889689bf629867491dce219db8",
+  "audiobook_model": "Kokoro-82M 0.9.4",
+  "audiobook_package_release_evidence": {
+    "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0": {
+      "package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+      "primary_receipt_sha256": "a60c4ad223606538453fbeb26446552022c6e59abf41b2c406d901e43df93f60",
+      "primary_release_manifest_receipt_sha256": "3c24c1c97099a3d79cde6e9d75101329b36900d7182dcd57ce9c88abfa55b1eb",
+      "primary_release_manifest_store": "prod",
+      "primary_release_manifest_version_id": "4_z22c3760e0722abf094f30e12_f111d51ec6d055cc9_d20260729_m200335_c004_v0402009_t0042_u01785355415855",
+      "receipt_roles": [
+        "primary",
+        "replica"
+      ],
+      "release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+      "release_eligible": true,
+      "release_manifest_key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/release-manifest.json",
+      "release_manifest_sha256": "736fee5fa4af7b53aab04583455517b0ccffd0699d4f3250be9503ea07a7e292",
+      "release_manifest_size_bytes": 6470,
+      "replica_receipt_sha256": "2931065d6cde26e60bc7b4635eb0db20b7c7834d25e269e0461d070562416f1c",
+      "replica_release_manifest_receipt_sha256": "e455d8d1395496d75aad287a5b42537cf712f21b04d6b2f692132a8f7bd0cea4",
+      "replica_release_manifest_store": "dr",
+      "replica_release_manifest_version_id": "4_za83aafe65a63aaff94f90d18_f11996321c896e68e_d20260729_m200352_c005_v0501045_t0025_u01785355432411",
+      "schema_version": "audiobook_package_release_evidence.v1",
+      "slug": "the-open-window",
+      "staged_at": "2026-07-29T20:04:15Z"
+    }
+  },
+  "audiobook_packages": {
+    "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0": {
+      "duration_ms": 392600,
+      "highlight_sync_enabled": false,
+      "manuscript_sha256": "3f491a3ae042f5c8716dfedba0edccfef5421a889689bf629867491dce219db8",
+      "package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+      "paragraph_count": 29,
+      "release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+      "release_evidence_version": "approved-legacy-d2bef9bea76e",
+      "schema_version": "audiobook_package_manifest.v2",
+      "segment_count": 1,
+      "slug": "the-open-window",
+      "source_sha256": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078",
+      "sync_tier": "paragraph_or_stanza",
+      "tracks": [
+        {
+          "chapter_id": "chapter-001",
+          "chunks": [
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/delivery/chapter-001/segment-001-sha256-76e55b86415e6e4962ee3b5de889562dd4454cbb83d75fa3fb7e296369249b5a.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f102a91e4423c4298_d20260729_m200308_c005_v0501030_t0030_u01785355388967"
+                    }
+                  ],
+                  "sha256": "76e55b86415e6e4962ee3b5de889562dd4454cbb83d75fa3fb7e296369249b5a",
+                  "size_bytes": 4712013,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/delivery/chapter-001/segment-001-sha256-76e55b86415e6e4962ee3b5de889562dd4454cbb83d75fa3fb7e296369249b5a.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f103589bdada68ef6_d20260729_m200128_c004_v0402029_t0000_u01785355288510"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-metadata-sha256-66b25eed55d67d221c1a8a95b259bce84a612d7d536985d496a0c0329694c1d1.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1145bb7f9cb10e3f_d20260729_m200317_c005_v0501011_t0025_u01785355397873"
+                    }
+                  ],
+                  "sha256": "66b25eed55d67d221c1a8a95b259bce84a612d7d536985d496a0c0329694c1d1",
+                  "size_bytes": 684,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-metadata-sha256-66b25eed55d67d221c1a8a95b259bce84a612d7d536985d496a0c0329694c1d1.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f113b0f2bdea38553_d20260729_m200133_c004_v0402024_t0009_u01785355293804"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-timestamps-sha256-637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119987669014992c_d20260729_m200312_c005_v0501048_t0051_u01785355392998"
+                    }
+                  ],
+                  "sha256": "637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070",
+                  "size_bytes": 12839,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-timestamps-sha256-637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f116fcaae89871705_d20260729_m200131_c004_v0402037_t0010_u01785355291212"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-sha256-faae9f7fa0b800bd027f0a7c39fbe49fae684fcf073934eca89c9f121283be4d.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1022141c94ce49b4_d20260729_m200315_c005_v0501008_t0004_u01785355395453"
+                    }
+                  ],
+                  "sha256": "faae9f7fa0b800bd027f0a7c39fbe49fae684fcf073934eca89c9f121283be4d",
+                  "size_bytes": 7955,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-sha256-faae9f7fa0b800bd027f0a7c39fbe49fae684fcf073934eca89c9f121283be4d.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1105b77357cbaa1f_d20260729_m200132_c004_v0402005_t0002_u01785355292382"
+                  }
+                }
+              },
+              "cumulative_start_ms": 0,
+              "duration_ms": 392600,
+              "end_paragraph": 28,
+              "end_word": 1207,
+              "order": 0,
+              "segment_id": "c001-s001",
+              "start_paragraph": 0,
+              "start_word": 0
+            }
+          ],
+          "end_paragraph": 28,
+          "end_word": 1207,
+          "id": "chapter-001",
+          "order": 0,
+          "start_paragraph": 0,
+          "start_word": 0,
+          "title": "The Open Window"
+        }
+      ],
+      "word_count": 1208
+    }
+  },
+  "audiobook_provider": "kokoro",
+  "audiobook_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
+  "audiobook_voice": "af_bella",
   "author": "Saki",
-  "category_slug": "literary-fiction",
-  "short_description": "A self-possessed fifteen-year-old girl tells a nervous visitor a ghost story — and it works perfectly.",
-  "description": "Vera, a composed teenager, spins an elaborate ghost story about her aunt's dead husband and brothers walking in through an open window — and when they actually appear, drives a nervous man fleeing into the countryside. Three paragraphs of pure, cruel genius.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
   "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "category_slug": "literary-fiction",
+  "chapters": [
+    {
+      "has_images": false,
+      "id": "chapter-001",
+      "image_count": 0,
+      "is_preview": true,
+      "language_hint": "en",
+      "order": 1,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "reading_minutes": 6,
+      "title": "The Open Window",
+      "updated_at": "2026-07-03T20:07:49Z",
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "word_count": 1219
+    }
+  ],
+  "content_hash": "8a5f82edf94305333080dc160175cb82c865c6acb498216f15616ac90295042d",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+  "cover_dimensions": {
+    "back": [
+      1600,
+      2400
+    ],
+    "front": [
+      1600,
+      2400
+    ]
+  },
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+  "cover_semantic_match_score": 9.8,
   "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+  "created_at": "2026-07-03T20:07:49Z",
+  "description": "Vera, a composed teenager, spins an elaborate ghost story about her aunt's dead husband and brothers walking in through an open window — and when they actually appear, drives a nervous man fleeing into the countryside. Three paragraphs of pure, cruel genius.",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "5 min",
   "formats": [
     "Ebook",
     "Audiobook"
   ],
-  "benefits": [
-    "Read a legally cleared digital text.",
-    "Enjoy a clean, structured reading format.",
-    "Access a render-safe ebook prepared for web reading."
-  ],
-  "who_for": [
-    "General readers",
-    "Students and lifelong learners",
-    "Users who prefer structured digital reading"
-  ],
+  "generate_audiobook": true,
+  "id": "controlled-the-open-window",
+  "isLive": true,
+  "isPublic": true,
+  "is_published": true,
   "learnings": [
     "Understand the major themes and structure of the work.",
     "Engage with the text in a clean digital format.",
     "Read without unrelated source-file boilerplate."
   ],
-  "about_author": "Saki (H.H. Munro, 1870–1916) was a British author of darkly comic and macabre short stories.",
-  "chapters": [
-    {
-      "id": "chapter-001",
-      "order": 1,
-      "title": "The Open Window",
-      "is_preview": true,
-      "has_images": false,
-      "image_count": 0,
-      "word_count": 1219,
-      "reading_minutes": 6,
-      "language_hint": "en",
-      "processing_status": "ready",
-      "processing_warnings": [],
-      "uploaded_at": "2026-07-03T20:07:49Z",
-      "updated_at": "2026-07-03T20:07:49Z"
-    }
-  ],
-  "source_hash": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078",
-  "content_hash": "8a5f82edf94305333080dc160175cb82c865c6acb498216f15616ac90295042d",
   "provenance_hash": "21e38f6081034d3d8731db585a96fdf014731375175eae0c279eca43415fe9a4",
+  "publicationStatus": "live",
+  "publication_status": "LIVE_APPROVED",
+  "qa_status": "QA_PASSED",
+  "readerStatus": "reader_ready",
   "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
   "rights_tier": "A",
-  "verification_status": "approved",
-  "qa_status": "QA_PASSED",
-  "approved_to_publish": true,
-  "publication_status": "LIVE_APPROVED",
-  "readerStatus": "reader_ready",
-  "publicationStatus": "live",
-  "isPublic": true,
-  "isLive": true,
-  "showInPublicLibrary": true,
+  "short_description": "A self-possessed fifteen-year-old girl tells a nervous visitor a ghost story — and it works perfectly.",
   "showInHomepage": false,
-  "allowPublicReading": true,
-  "allowCheckout": false,
-  "allowPayment": false,
-  "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "kokoro",
-  "audiobook_model": "Kokoro-82M 0.9.4",
-  "audiobook_voice": "af_bella",
-  "audio_asset_slug": "the-open-window",
-  "audiobook_assets": {
-    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3",
-    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_timestamps_a3716705ce51.json",
-    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_vtt_3302e9a0685f.vtt",
-    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_chapters_e2a8ccb9e26c.json",
-    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_meta_cf7500d033a2.json"
-  },
-  "audiobook": {
-    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3",
-    "provider": "kokoro",
-    "voice": "af_bella",
-    "model": "Kokoro-82M 0.9.4",
-    "size": 6283053,
-    "duration_ms": 392600,
-    "sync_mode": "section_following",
-    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
-    "highlight_sync_enabled": false,
-    "audio_sha256": "b23e6720a2434c5a90d2437abf630cf68b6cb4cd7305a827a0d88fe5e586d438",
-    "source_sha256": "3f491a3ae042f5c8716dfedba0edccfef5421a889689bf629867491dce219db8",
-    "asset_sha256": {
-      "mp3": "b23e6720a2434c5a90d2437abf630cf68b6cb4cd7305a827a0d88fe5e586d438",
-      "timestamps": "a3716705ce518cad513106a4bad9b48630310fed1df8a505e9615afc7ced606b",
-      "vtt": "3302e9a0685fbfcdf7431897776e60d037ba4f6046bae4e94adf463d493e5777",
-      "chapters": "e2a8ccb9e26ce52c9a665ffa2bad6b92a1bf70db46a5a71d1098ed680b599d9f",
-      "meta": "cf7500d033a2d15a022c8a3837450252e3e404ccbbe3ff282c87c4f9322366e7"
-    },
-    "assets": {
-      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3",
-      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_timestamps_a3716705ce51.json",
-      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_vtt_3302e9a0685f.vtt",
-      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_chapters_e2a8ccb9e26c.json",
-      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_meta_cf7500d033a2.json"
-    },
-    "release_gate": "APPROVED",
-    "qa_status": "QA_PASSED",
-    "ai_narration_disclosure": "Narration: AI voice",
-    "updated_at": "2026-07-19T10:15:00Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-19T10:15:00Z",
-  "created_at": "2026-07-03T20:07:49Z",
+  "showInPublicLibrary": true,
+  "slug": "the-open-window",
+  "source_hash": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078",
+  "subtitle": "",
+  "title": "The Open Window",
   "updated_at": "2026-07-19T10:15:00Z",
-  "cover_dimensions": {
-    "front": [
-      1600,
-      2400
-    ],
-    "back": [
-      1600,
-      2400
-    ]
-  },
-  "cover_semantic_match_score": 9.8
+  "verification_status": "approved",
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ]
 }

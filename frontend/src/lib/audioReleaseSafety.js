@@ -6,7 +6,7 @@ function upper(value = "") {
   return clean(value).toUpperCase();
 }
 
-export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v8";
+export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v9";
 
 export function readerManifestPath(slug, { adminPreview = false } = {}) {
   const params = new URLSearchParams({
@@ -18,6 +18,12 @@ export function readerManifestPath(slug, { adminPreview = false } = {}) {
 
 export function isStaticAudiobookAssetPath(value = "") {
   return /^\/audio\//i.test(clean(value));
+}
+
+export function isReaderAudiobookManifestPath(value = "", slug = "") {
+  const normalizedSlug = clean(slug);
+  if (!normalizedSlug) return false;
+  return clean(value) === `/api/reader/book/${encodeURIComponent(normalizedSlug)}/audiobook/manifest`;
 }
 
 export function audiobookAssetsForBook(book = {}) {
@@ -43,6 +49,7 @@ export function audiobookNarrationDisclosure(book = {}) {
 export function audiobookReleaseState(book = {}) {
   const assets = audiobookAssetsForBook(book);
   const manifestAudio = book?._readerManifest?.audio || {};
+  const slug = clean(book?.slug || manifestAudio?.asset_slug || book?.id);
   const releaseGate = upper(
     book?.audiobook_release_gate
       || book?.audiobookreleasegate
@@ -74,10 +81,14 @@ export function audiobookReleaseState(book = {}) {
   const hasQaApproval = ["QA_PASSED", "APPROVED", "PASS"].includes(qaStatus);
   const hasStaticAudioAsset = isStaticAudiobookAssetPath(audioUrl);
   const hasAudioAsset = Boolean(audioUrl) && !hasStaticAudioAsset;
+  const packageManifestUrl = clean(assets.manifest || manifestAudio?.assets?.manifest);
+  const packageVersion = clean(manifestAudio?.package_version);
+  const hasPackageManifestAsset = isReaderAudiobookManifestPath(packageManifestUrl, slug)
+    && /^sha256-[a-f0-9]{64}$/.test(packageVersion);
   const hasReaderManifestApproval = manifestAudio?.enabled === true
     && Boolean(manifestAudio?.provider)
     && Boolean(manifestAudio?.version)
-    && Boolean(assets.mp3 || manifestAudio?.url)
+    && (Boolean(assets.mp3 || manifestAudio?.url) || hasPackageManifestAsset)
     && hasReleaseApproval
     && hasQaApproval
     && !hasStaticAudioAsset;
@@ -85,7 +96,9 @@ export function audiobookReleaseState(book = {}) {
     || book?.audio_disabled === true
     || upper(book?.audiobook?.status) === "BLOCKED";
 
-  if (enabled && hasAudioAsset && !blocked && hasReleaseApproval && hasQaApproval) {
+  const hasApprovedAudioAsset = hasAudioAsset || (hasPackageManifestAsset && hasReaderManifestApproval);
+
+  if (enabled && hasApprovedAudioAsset && !blocked && hasReleaseApproval && hasQaApproval) {
     return {
       status: "approved",
       canShowControls: true,
@@ -96,7 +109,9 @@ export function audiobookReleaseState(book = {}) {
       releaseGate,
       qaStatus,
       audioUrl,
-      hasAudioAsset,
+      hasAudioAsset: hasApprovedAudioAsset,
+      packageManifestUrl: hasPackageManifestAsset ? packageManifestUrl : "",
+      packageVersion: hasPackageManifestAsset ? packageVersion : "",
       syncMode: book?.sync_mode || book?.audiobook?.sync_mode || book?._readerManifest?.audio?.sync_mode || "",
       highlightSyncEnabled: book?.highlight_sync_enabled === true
         || book?.audiobook?.highlight_sync_enabled === true
@@ -115,7 +130,9 @@ export function audiobookReleaseState(book = {}) {
       releaseGate,
       qaStatus,
       audioUrl,
-      hasAudioAsset,
+      hasAudioAsset: hasApprovedAudioAsset,
+      packageManifestUrl: "",
+      packageVersion: "",
       syncMode: "",
       highlightSyncEnabled: false,
     };
@@ -129,7 +146,9 @@ export function audiobookReleaseState(book = {}) {
     releaseGate,
     qaStatus,
     audioUrl,
-    hasAudioAsset,
+    hasAudioAsset: hasApprovedAudioAsset,
+    packageManifestUrl: "",
+    packageVersion: "",
     syncMode: "",
     highlightSyncEnabled: false,
   };

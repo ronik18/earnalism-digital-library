@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Fail-closed manager for package-v2 audiobook release pointers.
 
-The tool stages already-finalized immutable packages, moves only the approved
-0/5/25/100 rollout states, and rolls back by pointer.  It never uploads audio,
+The tool binds an eligible first package, stages already-finalized immutable
+packages, moves only the approved 0/5/25/100 rollout states, deactivates or
+reactivates explicitly, and rolls back by pointer. It never uploads audio,
 changes audiobook approval flags, or accepts private-QA-only storage receipts.
 All controlled-publication mutations are mirrored and checksum-bound.
 """
@@ -21,6 +22,7 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
+from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -44,6 +46,13 @@ RECEIPT_SCHEMA = "audiobook_package_storage_receipt.v1"
 EVIDENCE_SCHEMA = "audiobook_package_release_evidence.v1"
 LEGACY_IDENTITY_SCHEMA = "audiobook_legacy_release_identity.v1"
 RELEASE_STORE_ROLES = {"primary": "prod", "replica": "dr"}
+CHECKSUM_VERIFIED_UPLOAD_STATUSES = frozenset(
+    {
+        "UPLOADED_CHECKSUM_VERIFIED",
+        "UPLOADED_CHECKSUM_VERIFIED_PRIVATE_ORIGIN",
+    }
+)
+CANONICAL_AUDIO_PROXY_HOSTS = frozenset({"api.theearnalism.com"})
 MIRROR_RELATIVE_ROOTS = (
     Path("backend/data/controlled_publications"),
     Path("data/controlled_publications"),
@@ -204,6 +213,20 @@ def _legacy_audio_sha256(
     return next(iter(normalized))
 
 
+def _is_canonical_reader_audio_proxy(endpoint_url: str, slug: str) -> bool:
+    parsed = urlsplit(endpoint_url)
+    return bool(
+        parsed.scheme == "https"
+        and parsed.hostname in CANONICAL_AUDIO_PROXY_HOSTS
+        and parsed.port is None
+        and not parsed.username
+        and not parsed.password
+        and parsed.path == f"/api/reader/book/{slug}/audiobook"
+        and not parsed.query
+        and not parsed.fragment
+    )
+
+
 def derive_legacy_release_identity(context: Mapping[str, Any], slug: str) -> dict[str, Any]:
     public_book = context["public_book"]
     approval = context["approval_evidence"]
@@ -228,7 +251,7 @@ def derive_legacy_release_identity(context: Mapping[str, Any], slug: str) -> dic
         )
     if approval.get("audio_qa_status") not in {None, "", "QA_PASSED"}:
         raise ReleasePointerError("Legacy audio QA evidence conflicts")
-    if approval.get("upload_status") != "UPLOADED_CHECKSUM_VERIFIED":
+    if approval.get("upload_status") not in CHECKSUM_VERIFIED_UPLOAD_STATUSES:
         raise ReleasePointerError("Legacy audio lacks checksum-verified upload evidence")
 
     source_sha256 = require_sha256(
@@ -257,7 +280,11 @@ def derive_legacy_release_identity(context: Mapping[str, Any], slug: str) -> dic
     ):
         raise ReleasePointerError("Approved legacy sidecar identities conflict")
     endpoint_url = str(approval.get("endpoint_url") or "").strip()
-    if endpoint_url and endpoint_url != normalized_assets["mp3"]:
+    if (
+        endpoint_url
+        and endpoint_url != normalized_assets["mp3"]
+        and not _is_canonical_reader_audio_proxy(endpoint_url, slug)
+    ):
         raise ReleasePointerError("Approved endpoint and legacy MP3 identities conflict")
     try:
         size_bytes = int(audiobook.get("size"))
@@ -592,6 +619,201 @@ def validate_release_descriptor(
     return descriptor
 
 
+def _validate_reader_publication_truth(
+    context: Mapping[str, Any],
+    slug: str,
+) -> None:
+    public_book = context["public_book"]
+    reader_manifest = context["reader_manifest"]
+    source_evidence = context["source_evidence"]
+    approval_evidence = context["approval_evidence"]
+    if any(
+        document.get("slug") != slug
+        for document in (
+            public_book,
+            reader_manifest,
+            source_evidence,
+            approval_evidence,
+        )
+    ):
+        raise ReleasePointerError("Controlled reader/publication slug truth diverges")
+    if (
+        public_book.get("approved_to_publish") is not True
+        or str(public_book.get("verification_status") or "").lower() != "approved"
+        or public_book.get("qa_status") != "QA_PASSED"
+        or public_book.get("isPublic") is not True
+        or public_book.get("isLive") is not True
+        or public_book.get("is_published") is not True
+        or public_book.get("allowPublicReading") is not True
+    ):
+        raise ReleasePointerError(
+            "Initial package activation requires approved live reader/publication truth"
+        )
+    if (
+        approval_evidence.get("approved_to_publish") is not True
+        or str(approval_evidence.get("verification_status") or "").lower()
+        != "approved"
+        or approval_evidence.get("qa_status") != "QA_PASSED"
+    ):
+        raise ReleasePointerError(
+            "Initial package activation requires approved publication evidence"
+        )
+    public_chapters = public_book.get("chapters")
+    reader_chapters = reader_manifest.get("chapters")
+    try:
+        reader_chapter_count = int(reader_manifest.get("chapter_count"))
+    except (TypeError, ValueError):
+        reader_chapter_count = 0
+    if (
+        not isinstance(public_chapters, list)
+        or not public_chapters
+        or any(
+            not isinstance(chapter, Mapping)
+            or chapter.get("processing_status") != "ready"
+            for chapter in public_chapters
+        )
+        or not isinstance(reader_chapters, list)
+        or not reader_chapters
+        or reader_chapter_count != len(reader_chapters)
+    ):
+        raise ReleasePointerError(
+            "Initial package activation requires a ready controlled reader manifest"
+        )
+
+
+def _validate_initial_release_slot(
+    context: Mapping[str, Any],
+) -> None:
+    public_book = context["public_book"]
+    reader_manifest = context["reader_manifest"]
+    approval_evidence = context["approval_evidence"]
+    for field in MANAGED_FIELDS:
+        if public_book.get(field) != reader_manifest.get(field):
+            raise ReleasePointerError(
+                f"Controlled public and reader release metadata diverge: {field}"
+            )
+    if _state_from_publication(context, str(public_book.get("slug") or "")) is not None:
+        raise ReleasePointerError("An audiobook active release state already exists")
+    for field in (
+        "audiobook_legacy_release_descriptor_sha256",
+        "audiobook_release_descriptor_sha256",
+    ):
+        if public_book.get(field) or reader_manifest.get(field):
+            raise ReleasePointerError(
+                "Initial package activation requires an empty release pointer slot"
+            )
+    for field in (
+        "audiobook_package",
+        "audiobook_packages",
+        "audiobook_package_release_evidence",
+    ):
+        if public_book.get(field) or reader_manifest.get(field):
+            raise ReleasePointerError(
+                "Initial package activation refuses existing package metadata"
+            )
+    audiobook = public_book.get("audiobook")
+    assets = public_book.get("audiobook_assets")
+    if (
+        public_book.get("audio_enabled") is not False
+        or public_book.get("audiobook_enabled") is not False
+        or reader_manifest.get("audio_enabled") is not False
+        or reader_manifest.get("audiobook_enabled") is not False
+        or approval_evidence.get("audiobook_enabled") is not False
+        or approval_evidence.get("audio_public_release")
+        == "PUBLIC_AUDIO_RELEASE_APPROVED"
+        or (isinstance(audiobook, Mapping) and bool(audiobook.get("url")))
+        or (isinstance(assets, Mapping) and bool(assets))
+    ):
+        raise ReleasePointerError(
+            "Initial package activation requires audio-hidden, legacy-free controlled truth"
+        )
+
+
+def _validate_current_audio_release_approval(
+    context: Mapping[str, Any],
+) -> None:
+    public_book = context["public_book"]
+    reader_manifest = context["reader_manifest"]
+    approval = context["approval_evidence"]
+    if (
+        public_book.get("audio_enabled") is not True
+        or public_book.get("audiobook_enabled") is not True
+        or reader_manifest.get("audio_enabled") is not True
+        or reader_manifest.get("audiobook_enabled") is not True
+        or approval.get("audiobook_enabled") is not True
+        or approval.get("audio_public_release")
+        != "PUBLIC_AUDIO_RELEASE_APPROVED"
+        or approval.get("qa_status") != "QA_PASSED"
+        or approval.get("audio_qa_status") not in {None, "", "QA_PASSED"}
+        or approval.get("upload_status") not in CHECKSUM_VERIFIED_UPLOAD_STATUSES
+        or not str(approval.get("approval_scope") or "").strip()
+        or approval.get("release_blockers") not in (None, [])
+    ):
+        raise ReleasePointerError(
+            "Reactivation requires current approved, checksum-verified public audio truth"
+        )
+
+
+def _validated_release_bundle(
+    context: Mapping[str, Any],
+    slug: str,
+    package: Mapping[str, Any],
+    release_descriptor: Mapping[str, Any],
+    primary_receipt: Mapping[str, Any],
+    replica_receipt: Mapping[str, Any],
+    primary_release_manifest_receipt: Mapping[str, Any],
+    replica_release_manifest_receipt: Mapping[str, Any],
+    *,
+    expected_manuscript_sha256: str,
+    release_manifest_sha256: str,
+    release_manifest_size_bytes: int,
+    generated_at: str,
+    primary_receipt_sha256: str,
+    replica_receipt_sha256: str,
+    primary_release_manifest_receipt_sha256: str,
+    replica_release_manifest_receipt_sha256: str,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    validated = validate_package_against_publication(
+        package,
+        context,
+        slug=slug,
+        expected_manuscript_sha256=expected_manuscript_sha256,
+    )
+    validate_release_descriptor(release_descriptor, validated)
+    receipt_evidence = validate_release_receipts(
+        validated,
+        primary_receipt,
+        replica_receipt,
+    )
+    receipt_evidence.update(
+        validate_release_manifest_receipts(
+            validated,
+            primary_release_manifest_receipt,
+            replica_release_manifest_receipt,
+            release_manifest_sha256=release_manifest_sha256,
+            release_manifest_size_bytes=release_manifest_size_bytes,
+        )
+    )
+    receipt_evidence["primary_receipt_sha256"] = require_sha256(
+        primary_receipt_sha256,
+        "primary receipt SHA-256",
+    )
+    receipt_evidence["replica_receipt_sha256"] = require_sha256(
+        replica_receipt_sha256,
+        "replica receipt SHA-256",
+    )
+    receipt_evidence["primary_release_manifest_receipt_sha256"] = require_sha256(
+        primary_release_manifest_receipt_sha256,
+        "primary release-manifest receipt SHA-256",
+    )
+    receipt_evidence["replica_release_manifest_receipt_sha256"] = require_sha256(
+        replica_release_manifest_receipt_sha256,
+        "replica release-manifest receipt SHA-256",
+    )
+    receipt_evidence["staged_at"] = generated_at
+    return validated, receipt_evidence
+
+
 def _validate_retained_packages(
     packages: Mapping[str, Any],
     evidence: Mapping[str, Any],
@@ -712,6 +934,22 @@ def _managed_values(
         "audiobook_release_descriptor_sha256": state["active_release_descriptor_sha256"],
         "audiobook_legacy_release_descriptor_sha256": legacy_descriptor,
     }
+
+
+def _managed_values_from_context(
+    context: Mapping[str, Any],
+    *,
+    state: Mapping[str, Any],
+) -> dict[str, Any]:
+    values: dict[str, Any] = {}
+    for field in MANAGED_FIELDS:
+        if context["public_book"].get(field) != context["reader_manifest"].get(field):
+            raise ReleasePointerError(
+                f"Controlled public and reader release metadata diverge: {field}"
+            )
+        values[field] = copy.deepcopy(context["public_book"].get(field))
+    values["audiobook_active_release"] = copy.deepcopy(dict(state))
+    return values
 
 
 def _checksum_document(
@@ -1008,40 +1246,29 @@ def stage_candidate(
         raise ReleasePointerError("A canonical non-empty sticky rollout salt is required")
     context = load_mirrored_publication(repo_root, slug)
     _verify_controlled_checksums(context)
-    validated = validate_package_against_publication(
-        package,
+    operation_time = generated_at or utc_now()
+    validated, receipt_evidence = _validated_release_bundle(
         context,
-        slug=slug,
+        slug,
+        package,
+        release_descriptor,
+        primary_receipt,
+        replica_receipt,
+        primary_release_manifest_receipt,
+        replica_release_manifest_receipt,
         expected_manuscript_sha256=expected_manuscript_sha256,
+        release_manifest_sha256=release_manifest_sha256,
+        release_manifest_size_bytes=release_manifest_size_bytes,
+        generated_at=operation_time,
+        primary_receipt_sha256=primary_receipt_sha256,
+        replica_receipt_sha256=replica_receipt_sha256,
+        primary_release_manifest_receipt_sha256=(
+            primary_release_manifest_receipt_sha256
+        ),
+        replica_release_manifest_receipt_sha256=(
+            replica_release_manifest_receipt_sha256
+        ),
     )
-    validate_release_descriptor(release_descriptor, validated)
-    receipt_evidence = validate_release_receipts(validated, primary_receipt, replica_receipt)
-    receipt_evidence.update(
-        validate_release_manifest_receipts(
-            validated,
-            primary_release_manifest_receipt,
-            replica_release_manifest_receipt,
-            release_manifest_sha256=release_manifest_sha256,
-            release_manifest_size_bytes=release_manifest_size_bytes,
-        )
-    )
-    receipt_evidence["primary_receipt_sha256"] = require_sha256(
-        primary_receipt_sha256,
-        "primary receipt SHA-256",
-    )
-    receipt_evidence["replica_receipt_sha256"] = require_sha256(
-        replica_receipt_sha256,
-        "replica receipt SHA-256",
-    )
-    receipt_evidence["primary_release_manifest_receipt_sha256"] = require_sha256(
-        primary_release_manifest_receipt_sha256,
-        "primary release-manifest receipt SHA-256",
-    )
-    receipt_evidence["replica_release_manifest_receipt_sha256"] = require_sha256(
-        replica_release_manifest_receipt_sha256,
-        "replica release-manifest receipt SHA-256",
-    )
-    receipt_evidence["staged_at"] = generated_at or utc_now()
 
     descriptor = validated["release_descriptor_sha256"]
     manuscript_sha256 = validated["manuscript_sha256"]
@@ -1056,24 +1283,37 @@ def stage_candidate(
     existing_legacy = str(
         context["public_book"].get("audiobook_legacy_release_descriptor_sha256") or ""
     ).strip().lower()
-    if not existing_legacy:
+    if existing_legacy:
+        existing_legacy = require_sha256(
+            existing_legacy,
+            "controlled legacy release descriptor",
+        )
+    elif state is None:
         raise ReleasePointerError(
             "A pre-existing controlled legacy release descriptor is required"
         )
-    existing_legacy = require_sha256(existing_legacy, "controlled legacy release descriptor")
-    if legacy_descriptor and require_sha256(
-        legacy_descriptor,
-        "requested legacy release descriptor",
-    ) != existing_legacy:
-        raise ReleasePointerError(
-            "Requested legacy release descriptor is not bound to controlled truth"
-        )
+    if legacy_descriptor:
+        if (
+            not existing_legacy
+            or require_sha256(
+                legacy_descriptor,
+                "requested legacy release descriptor",
+            )
+            != existing_legacy
+        ):
+            raise ReleasePointerError(
+                "Requested legacy release descriptor is not bound to controlled truth"
+            )
     if state is None:
         active = existing_legacy
         state = build_active_release_state(
             slug=slug,
             active_release_descriptor_sha256=active,
             retained_release_descriptor_sha256s=[active],
+        )
+    elif state["status"] != "ACTIVE":
+        raise ReleasePointerError(
+            "Inactive release state must be explicitly reactivated before staging"
         )
     elif int(state["rollout"]["percentage"]) != 0:
         raise ReleasePointerError("Set rollout to 0 before replacing a staged candidate")
@@ -1112,11 +1352,102 @@ def stage_candidate(
         repo_root,
         slug,
         managed,
-        generated_at=generated_at or utc_now(),
+        generated_at=operation_time,
         apply=apply,
         expected_fingerprint=publication_fingerprint(context),
     )
     result["status"] = "CANDIDATE_STAGED" if apply else "CANDIDATE_STAGE_VALIDATED"
+    return result
+
+
+def activate_initial_release(
+    repo_root: Path,
+    slug: str,
+    package: Mapping[str, Any],
+    release_descriptor: Mapping[str, Any],
+    primary_receipt: Mapping[str, Any],
+    replica_receipt: Mapping[str, Any],
+    primary_release_manifest_receipt: Mapping[str, Any],
+    replica_release_manifest_receipt: Mapping[str, Any],
+    *,
+    expected_manuscript_sha256: str = "",
+    release_manifest_sha256: str,
+    release_manifest_size_bytes: int,
+    generated_at: str | None = None,
+    apply: bool = False,
+    primary_receipt_sha256: str = "",
+    replica_receipt_sha256: str = "",
+    primary_release_manifest_receipt_sha256: str = "",
+    replica_release_manifest_receipt_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the first immutable package without approving public audio flags."""
+
+    context = load_mirrored_publication(repo_root, slug)
+    _verify_controlled_checksums(context)
+    _validate_reader_publication_truth(context, slug)
+    _validate_initial_release_slot(context)
+    operation_time = generated_at or utc_now()
+    validated, receipt_evidence = _validated_release_bundle(
+        context,
+        slug,
+        package,
+        release_descriptor,
+        primary_receipt,
+        replica_receipt,
+        primary_release_manifest_receipt,
+        replica_release_manifest_receipt,
+        expected_manuscript_sha256=expected_manuscript_sha256,
+        release_manifest_sha256=release_manifest_sha256,
+        release_manifest_size_bytes=release_manifest_size_bytes,
+        generated_at=operation_time,
+        primary_receipt_sha256=primary_receipt_sha256,
+        replica_receipt_sha256=replica_receipt_sha256,
+        primary_release_manifest_receipt_sha256=(
+            primary_release_manifest_receipt_sha256
+        ),
+        replica_release_manifest_receipt_sha256=(
+            replica_release_manifest_receipt_sha256
+        ),
+    )
+    descriptor = validated["release_descriptor_sha256"]
+    manuscript_sha256 = validated["manuscript_sha256"]
+    packages = {descriptor: validated}
+    evidence = {descriptor: receipt_evidence}
+    state = build_active_release_state(
+        slug=slug,
+        active_release_descriptor_sha256=descriptor,
+        retained_release_descriptor_sha256s=[descriptor],
+    )
+    _validate_retained_packages(
+        packages,
+        evidence,
+        context,
+        [descriptor],
+        slug=slug,
+        manuscript_sha256=manuscript_sha256,
+    )
+    managed = _managed_values(
+        packages=packages,
+        evidence=evidence,
+        state=state,
+        manuscript_sha256=manuscript_sha256,
+        legacy_descriptor="",
+    )
+    result = mutate_mirrors(
+        repo_root,
+        slug,
+        managed,
+        generated_at=operation_time,
+        apply=apply,
+        expected_fingerprint=publication_fingerprint(context),
+    )
+    result["status"] = (
+        "INITIAL_RELEASE_ACTIVATED"
+        if apply
+        else "INITIAL_RELEASE_ACTIVATION_VALIDATED"
+    )
+    result["selected_release_descriptor_sha256"] = descriptor
+    result["audio_approval_flags_changed"] = False
     return result
 
 
@@ -1135,6 +1466,10 @@ def set_rollout(
     state = _state_from_publication(context, slug)
     if state is None:
         raise ReleasePointerError("No active release state exists")
+    if state["status"] != "ACTIVE":
+        raise ReleasePointerError(
+            "Inactive release state must be explicitly reactivated before rollout"
+        )
     packages = copy.deepcopy(context["public_book"].get("audiobook_packages") or {})
     evidence = copy.deepcopy(context["public_book"].get("audiobook_package_release_evidence") or {})
     candidate = str(state.get("candidate_release_descriptor_sha256") or "")
@@ -1191,10 +1526,12 @@ def set_rollout(
         slug=slug,
         manuscript_sha256=manuscript_sha256,
     )
-    legacy = require_sha256(
-        context["public_book"].get("audiobook_legacy_release_descriptor_sha256"),
-        "legacy release descriptor",
-    )
+    legacy = str(
+        context["public_book"].get("audiobook_legacy_release_descriptor_sha256")
+        or ""
+    ).strip().lower()
+    if legacy:
+        legacy = require_sha256(legacy, "legacy release descriptor")
     managed = _managed_values(
         packages=packages,
         evidence=evidence,
@@ -1234,12 +1571,20 @@ def rollback_release(
     state = _state_from_publication(context, slug)
     if state is None:
         raise ReleasePointerError("No active release state exists")
+    if state["status"] != "ACTIVE":
+        raise ReleasePointerError(
+            "Inactive release state must be explicitly reactivated before rollback"
+        )
     active = state["active_release_descriptor_sha256"]
-    legacy = require_sha256(
-        context["public_book"].get("audiobook_legacy_release_descriptor_sha256"),
-        "legacy release descriptor",
-    )
+    legacy = str(
+        context["public_book"].get("audiobook_legacy_release_descriptor_sha256")
+        or ""
+    ).strip().lower()
+    if legacy:
+        legacy = require_sha256(legacy, "legacy release descriptor")
     if target == "legacy":
+        if not legacy:
+            raise ReleasePointerError("No approved legacy release is retained")
         selected = legacy
     elif state.get("candidate_release_descriptor_sha256"):
         selected = active
@@ -1317,6 +1662,145 @@ def rollback_release(
     return result
 
 
+def deactivate_release(
+    repo_root: Path,
+    slug: str,
+    *,
+    generated_at: str | None = None,
+    apply: bool = False,
+) -> dict[str, Any]:
+    """Disable package-v2 selection without changing audiobook approval flags."""
+
+    context = load_mirrored_publication(repo_root, slug)
+    _verify_controlled_checksums(context)
+    state = _state_from_publication(context, slug)
+    if state is None:
+        raise ReleasePointerError("No active release state exists")
+    managed = _managed_values_from_context(context, state=state)
+    if state["status"] == "INACTIVE":
+        return {
+            "applied": False,
+            "slug": slug,
+            "status": "RELEASE_ALREADY_INACTIVE",
+            "active_release_descriptor_sha256": state[
+                "active_release_descriptor_sha256"
+            ],
+            "audio_approval_flags_changed": False,
+            "files": [],
+        }
+    inactive_state = build_active_release_state(
+        slug=slug,
+        active_release_descriptor_sha256=state[
+            "active_release_descriptor_sha256"
+        ],
+        retained_release_descriptor_sha256s=state[
+            "retained_release_descriptor_sha256s"
+        ],
+        candidate_release_descriptor_sha256=state[
+            "candidate_release_descriptor_sha256"
+        ],
+        rollout_percentage=state["rollout"]["percentage"],
+        rollout_salt=state["rollout"]["salt"],
+        status="INACTIVE",
+    )
+    result = mutate_mirrors(
+        repo_root,
+        slug,
+        {**managed, "audiobook_active_release": inactive_state},
+        generated_at=generated_at or utc_now(),
+        apply=apply,
+        expected_fingerprint=publication_fingerprint(context),
+    )
+    result["status"] = (
+        "RELEASE_DEACTIVATED" if apply else "RELEASE_DEACTIVATION_VALIDATED"
+    )
+    result["active_release_descriptor_sha256"] = inactive_state[
+        "active_release_descriptor_sha256"
+    ]
+    result["audio_approval_flags_changed"] = False
+    return result
+
+
+def reactivate_release(
+    repo_root: Path,
+    slug: str,
+    *,
+    generated_at: str | None = None,
+    apply: bool = False,
+) -> dict[str, Any]:
+    """Reactivate only a still-approved, fully receipt-bound package pointer."""
+
+    context = load_mirrored_publication(repo_root, slug)
+    _verify_controlled_checksums(context)
+    state = _state_from_publication(context, slug)
+    if state is None:
+        raise ReleasePointerError("No active release state exists")
+    if state["status"] != "INACTIVE":
+        raise ReleasePointerError("Release state is already active")
+    _validate_current_audio_release_approval(context)
+    _validate_reader_publication_truth(context, slug)
+    packages = context["public_book"].get("audiobook_packages") or {}
+    evidence = context["public_book"].get("audiobook_package_release_evidence") or {}
+    if not isinstance(packages, Mapping) or not isinstance(evidence, Mapping):
+        raise ReleasePointerError("Existing package metadata is not canonical")
+    manuscript_sha256 = require_sha256(
+        context["public_book"].get("audiobook_manuscript_sha256"),
+        "controlled audiobook manuscript",
+    )
+    retained = list(state["retained_release_descriptor_sha256s"])
+    _validate_retained_packages(
+        packages,
+        evidence,
+        context,
+        retained,
+        slug=slug,
+        manuscript_sha256=manuscript_sha256,
+    )
+    active = state["active_release_descriptor_sha256"]
+    legacy = str(
+        context["public_book"].get("audiobook_legacy_release_descriptor_sha256")
+        or ""
+    ).strip().lower()
+    if active not in packages:
+        if not legacy or active != require_sha256(
+            legacy,
+            "legacy release descriptor",
+        ):
+            raise ReleasePointerError(
+                "Inactive active pointer is not a retained approved package"
+            )
+        identity = derive_legacy_release_identity(context, slug)
+        if sha256_bytes(canonical_json_bytes(identity)) != active:
+            raise ReleasePointerError(
+                "Inactive legacy pointer no longer matches controlled audio truth"
+            )
+    active_state = build_active_release_state(
+        slug=slug,
+        active_release_descriptor_sha256=active,
+        retained_release_descriptor_sha256s=retained,
+        candidate_release_descriptor_sha256=state[
+            "candidate_release_descriptor_sha256"
+        ],
+        rollout_percentage=state["rollout"]["percentage"],
+        rollout_salt=state["rollout"]["salt"],
+        status="ACTIVE",
+    )
+    result = mutate_mirrors(
+        repo_root,
+        slug,
+        _managed_values_from_context(context, state=active_state),
+        generated_at=generated_at or utc_now(),
+        apply=apply,
+        expected_fingerprint=publication_fingerprint(context),
+    )
+    result["status"] = (
+        "RELEASE_REACTIVATED" if apply else "RELEASE_REACTIVATION_VALIDATED"
+    )
+    result["active_release_descriptor_sha256"] = active
+    result["audio_approval_flags_changed"] = False
+    return result
+
+
 def release_status(repo_root: Path, slug: str) -> dict[str, Any]:
     """Validate and report release-pointer state without mutating the catalog."""
 
@@ -1357,8 +1841,12 @@ def release_status(repo_root: Path, slug: str) -> dict[str, Any]:
         slug=slug,
         manuscript_sha256=manuscript_sha256,
     )
+    inactive = state["status"] == "INACTIVE"
     return {
-        "status": "RELEASE_POINTER_VALID",
+        "status": (
+            "RELEASE_POINTER_INACTIVE" if inactive else "RELEASE_POINTER_VALID"
+        ),
+        "release_state_status": state["status"],
         "slug": slug,
         "active_release_descriptor_sha256": state[
             "active_release_descriptor_sha256"
@@ -1374,7 +1862,7 @@ def release_status(repo_root: Path, slug: str) -> dict[str, Any]:
         "evidence_presence": {
             descriptor: descriptor in evidence for descriptor in retained
         },
-        "blockers": [],
+        "blockers": ["ACTIVE_RELEASE_STATE_INACTIVE"] if inactive else [],
     }
 
 
@@ -1396,6 +1884,31 @@ def build_parser() -> argparse.ArgumentParser:
     stage.add_argument("--rollout-salt", required=True)
     stage.add_argument("--apply", action="store_true")
 
+    activate_initial = subparsers.add_parser(
+        "activate-initial",
+        help=(
+            "Atomically bind the first fully approved package pointer without "
+            "changing public audio approval flags."
+        ),
+    )
+    activate_initial.add_argument("--slug", required=True)
+    activate_initial.add_argument("--package", type=Path, required=True)
+    activate_initial.add_argument("--release-descriptor", type=Path, required=True)
+    activate_initial.add_argument("--primary-receipt", type=Path, required=True)
+    activate_initial.add_argument("--replica-receipt", type=Path, required=True)
+    activate_initial.add_argument(
+        "--primary-release-manifest-receipt",
+        type=Path,
+        required=True,
+    )
+    activate_initial.add_argument(
+        "--replica-release-manifest-receipt",
+        type=Path,
+        required=True,
+    )
+    activate_initial.add_argument("--expected-manuscript-sha256", default="")
+    activate_initial.add_argument("--apply", action="store_true")
+
     rollout = subparsers.add_parser("rollout", help="Set 0/5/25 or promote at 100.")
     rollout.add_argument("--slug", required=True)
     rollout.add_argument("--percentage", type=int, choices=sorted(ROLLOUT_PERCENTAGES), required=True)
@@ -1405,6 +1918,21 @@ def build_parser() -> argparse.ArgumentParser:
     rollback.add_argument("--slug", required=True)
     rollback.add_argument("--to", choices=("legacy", "previous"), required=True)
     rollback.add_argument("--apply", action="store_true")
+
+    deactivate = subparsers.add_parser(
+        "deactivate",
+        aliases=["revoke"],
+        help="Fail closed package-v2 selection without changing audio approval flags.",
+    )
+    deactivate.add_argument("--slug", required=True)
+    deactivate.add_argument("--apply", action="store_true")
+
+    reactivate = subparsers.add_parser(
+        "reactivate",
+        help="Reactivate a still-approved, fully receipt-bound package pointer.",
+    )
+    reactivate.add_argument("--slug", required=True)
+    reactivate.add_argument("--apply", action="store_true")
 
     status = subparsers.add_parser("status", help="Validate release pointers without mutation.")
     status.add_argument("--slug", required=True)
@@ -1422,13 +1950,27 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
-        if args.command == "stage":
+        if args.command in {"stage", "activate-initial"}:
             package_path = args.package.resolve()
             primary_path = args.primary_receipt.resolve()
             replica_path = args.replica_receipt.resolve()
             primary_manifest_path = args.primary_release_manifest_receipt.resolve()
             replica_manifest_path = args.replica_release_manifest_receipt.resolve()
-            result = stage_candidate(
+            common = {
+                "expected_manuscript_sha256": args.expected_manuscript_sha256,
+                "release_manifest_sha256": sha256_file(package_path),
+                "release_manifest_size_bytes": package_path.stat().st_size,
+                "apply": args.apply,
+                "primary_receipt_sha256": sha256_file(primary_path),
+                "replica_receipt_sha256": sha256_file(replica_path),
+                "primary_release_manifest_receipt_sha256": sha256_file(
+                    primary_manifest_path
+                ),
+                "replica_release_manifest_receipt_sha256": sha256_file(
+                    replica_manifest_path
+                ),
+            }
+            positional = (
                 args.repo_root.resolve(),
                 args.slug,
                 read_json(package_path),
@@ -1437,21 +1979,16 @@ def main(argv: Sequence[str] | None = None) -> int:
                 read_json(replica_path),
                 read_json(primary_manifest_path),
                 read_json(replica_manifest_path),
-                rollout_salt=args.rollout_salt,
-                legacy_descriptor=args.legacy_descriptor,
-                expected_manuscript_sha256=args.expected_manuscript_sha256,
-                release_manifest_sha256=sha256_file(package_path),
-                release_manifest_size_bytes=package_path.stat().st_size,
-                apply=args.apply,
-                primary_receipt_sha256=sha256_file(primary_path),
-                replica_receipt_sha256=sha256_file(replica_path),
-                primary_release_manifest_receipt_sha256=sha256_file(
-                    primary_manifest_path
-                ),
-                replica_release_manifest_receipt_sha256=sha256_file(
-                    replica_manifest_path
-                ),
             )
+            if args.command == "stage":
+                result = stage_candidate(
+                    *positional,
+                    rollout_salt=args.rollout_salt,
+                    legacy_descriptor=args.legacy_descriptor,
+                    **common,
+                )
+            else:
+                result = activate_initial_release(*positional, **common)
         elif args.command == "rollout":
             result = set_rollout(
                 args.repo_root.resolve(),
@@ -1464,6 +2001,18 @@ def main(argv: Sequence[str] | None = None) -> int:
                 args.repo_root.resolve(),
                 args.slug,
                 args.to,
+                apply=args.apply,
+            )
+        elif args.command in {"deactivate", "revoke"}:
+            result = deactivate_release(
+                args.repo_root.resolve(),
+                args.slug,
+                apply=args.apply,
+            )
+        elif args.command == "reactivate":
+            result = reactivate_release(
+                args.repo_root.resolve(),
+                args.slug,
                 apply=args.apply,
             )
         elif args.command == "bind-legacy":
