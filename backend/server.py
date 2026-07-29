@@ -3307,7 +3307,7 @@ def _safe_audiobook_assets(value: Optional[Dict[str, Any]]) -> Dict[str, str]:
         url = str(raw_url or "").strip()
         if not url or len(url) > 2000:
             continue
-        if not (url.startswith("https://") or url.startswith("/audio/")):
+        if not url.startswith("https://"):
             continue
         assets[normalized_key] = url
     return assets

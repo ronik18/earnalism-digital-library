@@ -1,30 +1,192 @@
 {
-  "slug": "the-open-window",
-  "title": "The Open Window",
+  "audio_enabled": true,
+  "audiobook_active_release": {
+    "active_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
+    "candidate_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+    "retained_release_descriptor_sha256s": [
+      "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
+      "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0"
+    ],
+    "rollout": {
+      "percentage": 0,
+      "salt": "open-window-package-v2-canary-20260729"
+    },
+    "schema_version": "audiobook_active_release.v1",
+    "slug": "the-open-window",
+    "status": "ACTIVE"
+  },
+  "audiobook_enabled": true,
+  "audiobook_legacy_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
+  "audiobook_manuscript_sha256": "3f491a3ae042f5c8716dfedba0edccfef5421a889689bf629867491dce219db8",
+  "audiobook_package_release_evidence": {
+    "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0": {
+      "package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+      "primary_receipt_sha256": "a60c4ad223606538453fbeb26446552022c6e59abf41b2c406d901e43df93f60",
+      "primary_release_manifest_receipt_sha256": "3c24c1c97099a3d79cde6e9d75101329b36900d7182dcd57ce9c88abfa55b1eb",
+      "primary_release_manifest_store": "prod",
+      "primary_release_manifest_version_id": "4_z22c3760e0722abf094f30e12_f111d51ec6d055cc9_d20260729_m200335_c004_v0402009_t0042_u01785355415855",
+      "receipt_roles": [
+        "primary",
+        "replica"
+      ],
+      "release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+      "release_eligible": true,
+      "release_manifest_key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/release-manifest.json",
+      "release_manifest_sha256": "736fee5fa4af7b53aab04583455517b0ccffd0699d4f3250be9503ea07a7e292",
+      "release_manifest_size_bytes": 6470,
+      "replica_receipt_sha256": "2931065d6cde26e60bc7b4635eb0db20b7c7834d25e269e0461d070562416f1c",
+      "replica_release_manifest_receipt_sha256": "e455d8d1395496d75aad287a5b42537cf712f21b04d6b2f692132a8f7bd0cea4",
+      "replica_release_manifest_store": "dr",
+      "replica_release_manifest_version_id": "4_za83aafe65a63aaff94f90d18_f11996321c896e68e_d20260729_m200352_c005_v0501045_t0025_u01785355432411",
+      "schema_version": "audiobook_package_release_evidence.v1",
+      "slug": "the-open-window",
+      "staged_at": "2026-07-29T20:04:15Z"
+    }
+  },
+  "audiobook_packages": {
+    "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0": {
+      "duration_ms": 392600,
+      "highlight_sync_enabled": false,
+      "manuscript_sha256": "3f491a3ae042f5c8716dfedba0edccfef5421a889689bf629867491dce219db8",
+      "package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+      "paragraph_count": 29,
+      "release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+      "release_evidence_version": "approved-legacy-d2bef9bea76e",
+      "schema_version": "audiobook_package_manifest.v2",
+      "segment_count": 1,
+      "slug": "the-open-window",
+      "source_sha256": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078",
+      "sync_tier": "paragraph_or_stanza",
+      "tracks": [
+        {
+          "chapter_id": "chapter-001",
+          "chunks": [
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/delivery/chapter-001/segment-001-sha256-76e55b86415e6e4962ee3b5de889562dd4454cbb83d75fa3fb7e296369249b5a.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f102a91e4423c4298_d20260729_m200308_c005_v0501030_t0030_u01785355388967"
+                    }
+                  ],
+                  "sha256": "76e55b86415e6e4962ee3b5de889562dd4454cbb83d75fa3fb7e296369249b5a",
+                  "size_bytes": 4712013,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/delivery/chapter-001/segment-001-sha256-76e55b86415e6e4962ee3b5de889562dd4454cbb83d75fa3fb7e296369249b5a.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f103589bdada68ef6_d20260729_m200128_c004_v0402029_t0000_u01785355288510"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-metadata-sha256-66b25eed55d67d221c1a8a95b259bce84a612d7d536985d496a0c0329694c1d1.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1145bb7f9cb10e3f_d20260729_m200317_c005_v0501011_t0025_u01785355397873"
+                    }
+                  ],
+                  "sha256": "66b25eed55d67d221c1a8a95b259bce84a612d7d536985d496a0c0329694c1d1",
+                  "size_bytes": 684,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-metadata-sha256-66b25eed55d67d221c1a8a95b259bce84a612d7d536985d496a0c0329694c1d1.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f113b0f2bdea38553_d20260729_m200133_c004_v0402024_t0009_u01785355293804"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-timestamps-sha256-637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119987669014992c_d20260729_m200312_c005_v0501048_t0051_u01785355392998"
+                    }
+                  ],
+                  "sha256": "637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070",
+                  "size_bytes": 12839,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-timestamps-sha256-637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f116fcaae89871705_d20260729_m200131_c004_v0402037_t0010_u01785355291212"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-sha256-faae9f7fa0b800bd027f0a7c39fbe49fae684fcf073934eca89c9f121283be4d.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1022141c94ce49b4_d20260729_m200315_c005_v0501008_t0004_u01785355395453"
+                    }
+                  ],
+                  "sha256": "faae9f7fa0b800bd027f0a7c39fbe49fae684fcf073934eca89c9f121283be4d",
+                  "size_bytes": 7955,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/the-open-window/releases/0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0/sidecars/chapter-001/segment-001-sha256-faae9f7fa0b800bd027f0a7c39fbe49fae684fcf073934eca89c9f121283be4d.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1105b77357cbaa1f_d20260729_m200132_c004_v0402005_t0002_u01785355292382"
+                  }
+                }
+              },
+              "cumulative_start_ms": 0,
+              "duration_ms": 392600,
+              "end_paragraph": 28,
+              "end_word": 1207,
+              "order": 0,
+              "segment_id": "c001-s001",
+              "start_paragraph": 0,
+              "start_word": 0
+            }
+          ],
+          "end_paragraph": 28,
+          "end_word": 1207,
+          "id": "chapter-001",
+          "order": 0,
+          "start_paragraph": 0,
+          "start_word": 0,
+          "title": "The Open Window"
+        }
+      ],
+      "word_count": 1208
+    }
+  },
+  "audiobook_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
   "author": "Saki",
-  "language": "en",
   "chapter_count": 1,
   "chapters": [
     {
-      "id": "chapter-001",
-      "order": 1,
-      "title": "The Open Window",
-      "is_preview": true,
       "has_images": false,
+      "id": "chapter-001",
       "image_count": 0,
-      "word_count": 1219,
-      "reading_minutes": 6,
+      "is_preview": true,
       "language_hint": "en",
+      "order": 1,
       "processing_status": "ready",
       "processing_warnings": [],
+      "reading_minutes": 6,
+      "title": "The Open Window",
+      "updated_at": "2026-07-03T20:07:49Z",
       "uploaded_at": "2026-07-03T20:07:49Z",
-      "updated_at": "2026-07-03T20:07:49Z"
+      "word_count": 1219
     }
   ],
+  "generated_at": "2026-07-03T20:07:49Z",
+  "language": "en",
   "preview_chapter_ids": [
     "chapter-001"
   ],
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generated_at": "2026-07-03T20:07:49Z"
+  "slug": "the-open-window",
+  "title": "The Open Window"
 }

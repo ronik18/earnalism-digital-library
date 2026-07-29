@@ -13,12 +13,17 @@ import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
 import { resolveBookCover } from '../lib/bookCoverResolver';
 import useSEO from '../hooks/useSEO';
-import { audiobookNarrationDisclosure, audiobookReleaseState, canExposeAudiobookControls, readerManifestPath } from '../lib/audioReleaseSafety';
+import { audiobookNarrationDisclosure, audiobookReleaseState, canExposeAudiobookControls, isReaderAudiobookManifestPath, readerManifestPath } from '../lib/audioReleaseSafety';
 import { audioTimestampStartMs, normalizeAudioTimestamp } from '../lib/audioTimestampSchema';
-import { normalizeAudioManifest, selectAudioTrack } from '../lib/audioPackageManifest';
+import {
+  chapterIdForAudioSegment,
+  normalizeAudioManifest,
+  selectAudioTrack,
+} from '../lib/audioPackageManifest';
 import {
   AUDIOBOOK_PROGRESS_SAVE_INTERVAL_MS,
   loadAudiobookProgress,
+  pendingAudiobookResumeMatches,
   saveAudiobookProgress,
   shouldPrefetchNextSegment,
 } from '../lib/audiobookPlayback';
@@ -568,7 +573,8 @@ function manifestAudioForBook(book = {}) {
 function audioManifestUrlForBook(book) {
   const audio = manifestAudioForBook(book);
   const explicit = audio?.assets?.manifest || audiobookAssetsForBook(book)?.manifest;
-  if (explicit) return resolveAssetUrl(explicit);
+  const slug = book?.slug || audio?.asset_slug || book?.id || '';
+  if (explicit && isReaderAudiobookManifestPath(explicit, slug)) return resolveAssetUrl(explicit);
   return '';
 }
 
@@ -983,6 +989,7 @@ export default function Reader() {
   const prefetchedAudioSegmentsRef = useRef(new Set());
   const persistGeneratedAudioProgressRef = useRef(() => false);
   const resumeAfterSegmentChangeRef = useRef(false);
+  const pendingCrossChapterAudioResumeRef = useRef(null);
   const settingsButtonRef = useRef(null);
   const settingsSheetRef = useRef(null);
 
@@ -1013,6 +1020,7 @@ export default function Reader() {
     const audio = generatedAudioRef.current;
     persistGeneratedAudioProgressRef.current({ force: true });
     resumeAfterSegmentChangeRef.current = false;
+    pendingCrossChapterAudioResumeRef.current = null;
     if (audio) {
       audio.pause();
       audio.currentTime = 0;
@@ -1031,6 +1039,10 @@ export default function Reader() {
     activeWordRef.current = null;
     highlightedWordIndexRef.current = -1;
   }, []);
+
+  useEffect(() => {
+    pendingCrossChapterAudioResumeRef.current = null;
+  }, [bookId]);
 
   const currentReaderSettings = useMemo(() => ({
     theme,
@@ -1465,7 +1477,11 @@ export default function Reader() {
 
     return () => {
       cancelled = true;
+      const pendingCrossChapterResume = pendingCrossChapterAudioResumeRef.current;
       stopTTS();
+      if (pendingCrossChapterResume?.bookId === bookId) {
+        pendingCrossChapterAudioResumeRef.current = pendingCrossChapterResume;
+      }
       clearInterval(pulseIntervalRef.current);
       if (startedSession) {
         axios.post(`${API}/reading/session/end`, { session_id: sessionId }, { headers: endSessionHeaders }).catch(() => {});
@@ -1720,11 +1736,24 @@ export default function Reader() {
       })
       .then((raw) => {
         if (!cancelled) {
-          const normalizedManifest = normalizeAudioManifest(raw, resolveAssetUrl);
+          const normalizedManifest = normalizeAudioManifest(raw, resolveAssetUrl, {
+            expectedSlug: bookId,
+            expectedPackageVersion: generatedAudioReleaseState.packageVersion,
+          });
+          if (!normalizedManifest.valid) {
+            throw new Error('Audio package manifest does not match approved reader release truth');
+          }
           const savedProgress = loadAudiobookProgress(bookId, normalizedManifest.packageVersion);
-          const savedSegmentExists = Boolean(savedProgress && normalizedManifest.tracks.some((track) => (
-            track.chunks || []
-          ).some((chunk) => chunk.segmentId === savedProgress.segmentId)));
+          const visibleChapterId = activeChapterId || chapterId || '';
+          const savedSegmentChapterId = chapterIdForAudioSegment(
+            normalizedManifest,
+            savedProgress?.segmentId,
+          );
+          const savedSegmentExists = Boolean(
+            savedProgress
+            && savedSegmentChapterId
+            && savedSegmentChapterId === visibleChapterId,
+          );
           prefetchedAudioSegmentsRef.current.clear();
           setGeneratedAudioManifest(normalizedManifest);
           if (savedSegmentExists) {
@@ -1744,7 +1773,72 @@ export default function Reader() {
     return () => {
       cancelled = true;
     };
-  }, [bookId, generatedAudioManifestUrl, generatedAudioSlug, lockedState]);
+  }, [
+    activeChapterId,
+    bookId,
+    chapterId,
+    generatedAudioManifestUrl,
+    generatedAudioReleaseState.packageVersion,
+    generatedAudioSlug,
+    lockedState,
+  ]);
+
+  useEffect(() => {
+    const pending = pendingCrossChapterAudioResumeRef.current;
+    const visibleChapterId = activeChapterId || chapterId || chapter?.id || '';
+    if (pending && pending.bookId !== bookId) {
+      pendingCrossChapterAudioResumeRef.current = null;
+      return;
+    }
+    if (
+      !pending
+      || !generatedAudioManifest
+      || !readerHtml
+      || loading
+      || lockedState
+      || pending.chapterId !== visibleChapterId
+      || chapter?.id !== visibleChapterId
+    ) return;
+    const segmentChapterId = chapterIdForAudioSegment(
+      generatedAudioManifest,
+      pending.segmentId,
+    );
+    if (!pendingAudiobookResumeMatches(pending, {
+      bookId,
+      packageVersion: generatedAudioManifest.packageVersion,
+      chapterId: visibleChapterId,
+      segmentChapterId,
+    })) {
+      pendingCrossChapterAudioResumeRef.current = null;
+      return;
+    }
+    pendingCrossChapterAudioResumeRef.current = null;
+    pendingAudioOffsetRef.current = 0;
+    pendingAudioOffsetSegmentRef.current = pending.segmentId;
+    saveAudiobookProgress(bookId, {
+      packageVersion: generatedAudioManifest.packageVersion,
+      segmentId: pending.segmentId,
+      offset: 0,
+      speed: ttsSpeed,
+    });
+    resumeAfterSegmentChangeRef.current = true;
+    setGeneratedAudioPrimed(false);
+    setGeneratedAudioSegmentId(pending.segmentId);
+    setGeneratedAudioActive(true);
+    setTtsActive(true);
+    setTtsPaused(false);
+    setTtsWordIndex(-1);
+  }, [
+    activeChapterId,
+    bookId,
+    chapter,
+    chapterId,
+    generatedAudioManifest,
+    loading,
+    lockedState,
+    readerHtml,
+    ttsSpeed,
+  ]);
 
   useEffect(() => {
     let cancelled = false;
@@ -2307,8 +2401,24 @@ export default function Reader() {
       });
       segmentTransitionStartedAtRef.current = readerNowMs();
       segmentTransitionFromRef.current = selectedGeneratedAudioTrack.segmentId || '';
+      if (
+        selectedGeneratedAudioTrack.nextChapterId
+        && selectedGeneratedAudioTrack.nextChapterId !== selectedGeneratedAudioTrack.chapterId
+      ) {
+        pendingCrossChapterAudioResumeRef.current = {
+          bookId,
+          packageVersion: selectedGeneratedAudioTrack.packageVersion,
+          chapterId: selectedGeneratedAudioTrack.nextChapterId,
+          segmentId: selectedGeneratedAudioTrack.nextSegmentId,
+        };
+        navigate(`/reader/${bookId}${readerSearchParams({
+          chapterId: selectedGeneratedAudioTrack.nextChapterId,
+          adminPreview,
+        })}`);
+        return;
+      }
       resumeAfterSegmentChangeRef.current = true;
-      setGeneratedAudioPrimed(true);
+      setGeneratedAudioPrimed(false);
       setGeneratedAudioSegmentId(selectedGeneratedAudioTrack.nextSegmentId);
       setGeneratedAudioActive(true);
       setTtsActive(true);
@@ -2321,7 +2431,17 @@ export default function Reader() {
     setTtsActive(false);
     setTtsPaused(false);
     setTtsWordIndex(-1);
-  }, [persistGeneratedAudioProgress, selectedGeneratedAudioTrack.nextSegmentId, selectedGeneratedAudioTrack.segmentId]);
+  }, [
+    adminPreview,
+    bookId,
+    navigate,
+    persistGeneratedAudioProgress,
+    selectedGeneratedAudioTrack.chapterId,
+    selectedGeneratedAudioTrack.nextChapterId,
+    selectedGeneratedAudioTrack.nextSegmentId,
+    selectedGeneratedAudioTrack.packageVersion,
+    selectedGeneratedAudioTrack.segmentId,
+  ]);
 
   useEffect(() => {
     if (!generatedAudioActive || ttsPaused) return undefined;

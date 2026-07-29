@@ -967,3 +967,27 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Credentials, account identifiers, endpoints, regions, bucket names, object
   keys, and local asset paths are excluded. Sanitization does not change the
   evidence boundary: private staging remains `release_eligible: false`.
+
+## 2026-07-29 — A completed package-v2 canary can remain safely dark
+
+- `the-open-window` now has a finalized package-v2 candidate bound to descriptor
+  `0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0`
+  and package version
+  `sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd`.
+- Independent production and DR receipts prove all 14 candidate assets by full
+  re-download, exact hash, immutable version, and Governance Object Lock. The
+  finalized release manifest was separately verified in both stores.
+- Bucket-level Object Lock defaults to a 30-day Governance floor. The upload
+  receipts requested and verified at least 29 days for every staged object.
+- Keep selection truth separate from storage readiness. The active descriptor
+  remains the legacy hash
+  `81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe`;
+  candidate rollout is `0%`, so customers remain on the proven legacy path and
+  the truthful public audiobook count remains four.
+- The stale package-manifest proxy assertion is resolved. The final combined
+  builder, storage, selector, backend package, B2-routing, Sprint 1 cleanup,
+  and Redis-policy regression completed with `136 passed / 0 failed` at
+  `2026-07-29T20:17:49Z`; the full frontend suite passed `164 / 164` after an
+  adversarial backslash-network-path origin-bypass regression was added. Keep the
+  candidate at `0%` through the initial deployment checkpoint, then run the
+  already-authorized endpoint and browser canary before increasing rollout.

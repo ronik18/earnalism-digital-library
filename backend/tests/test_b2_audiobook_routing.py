@@ -1,5 +1,6 @@
 import importlib
 import asyncio
+import copy
 import json
 import sys
 from pathlib import Path
@@ -268,6 +269,91 @@ def test_package_manifest_projects_only_same_origin_release_gated_urls(monkeypat
     assert "backblazeb2.com" not in json.dumps(manifest)
     assert audio["assets"]["manifest"] == "/api/reader/book/the-open-window/audiobook/manifest"
     assert audio["package_version"] == book["audiobook_package"]["package_version"]
+
+
+def test_package_manifest_endpoint_caches_only_projected_metadata_and_head_is_empty(
+    monkeypatch,
+):
+    server = _server(monkeypatch)
+    book = _package_book()
+    cache = {}
+    calls = []
+
+    async def fake_book(_slug):
+        return book
+
+    async def fake_cache_get(namespace, key):
+        calls.append(("get", namespace, key))
+        return copy.deepcopy(cache.get((namespace, key)))
+
+    async def fake_cache_set(namespace, key, value, ttl_seconds):
+        calls.append(("set", namespace, key, ttl_seconds))
+        cache[(namespace, key)] = copy.deepcopy(value)
+
+    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
+    monkeypatch.setattr(server, "_redis_cache_get", fake_cache_get)
+    monkeypatch.setattr(server, "_redis_cache_set", fake_cache_set)
+    get_request = SimpleNamespace(headers={}, method="GET", cookies={})
+    get_response = asyncio.run(
+        server._reader_book_audiobook_package_manifest_response(
+            "the-open-window",
+            get_request,
+        )
+    )
+
+    package_version = book["audiobook_package"]["package_version"]
+    cache_key = ("reader-manifest", f"audiobook-package:{package_version}")
+    cached = cache[cache_key]
+    serialized = json.dumps(cached)
+    assert get_response.status_code == 200
+    assert json.loads(get_response.body)["package_version"] == package_version
+    assert cached["slug"] == "the-open-window"
+    assert "storage" not in serialized
+    assert "replicas" not in serialized
+    assert "backblazeb2.com" not in serialized
+    assert server._redis_cache_payload_is_media(cached) is False
+
+    head_request = SimpleNamespace(headers={}, method="HEAD", cookies={})
+    head_response = asyncio.run(
+        server._reader_book_audiobook_package_manifest_response(
+            "the-open-window",
+            head_request,
+        )
+    )
+    assert head_response.status_code == 200
+    assert head_response.body == b""
+    assert int(head_response.headers["content-length"]) == len(get_response.body)
+    assert head_response.headers["x-audiobook-package-version"] == package_version
+    assert [call[0] for call in calls].count("set") == 1
+    assert [call[0] for call in calls].count("get") == 2
+
+
+def test_package_manifest_endpoint_never_reads_cache_before_release_selection(
+    monkeypatch,
+):
+    server = _server(monkeypatch)
+    book = _package_book()
+    descriptor = book["audiobook_release_descriptor_sha256"]
+    book["audiobook_package_release_evidence"][descriptor]["release_eligible"] = False
+
+    async def fake_book(_slug):
+        return book
+
+    async def forbidden_cache_get(*_args, **_kwargs):
+        raise AssertionError("invalid release selection must not read Redis")
+
+    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
+    monkeypatch.setattr(server, "_redis_cache_get", forbidden_cache_get)
+    request = SimpleNamespace(headers={}, method="GET", cookies={})
+    response = asyncio.run(
+        server._reader_book_audiobook_package_manifest_response(
+            "the-open-window",
+            request,
+        )
+    )
+
+    assert response.status_code == 404
+    assert response.headers["cache-control"] == "private, no-store"
 
 
 def test_package_manifest_requires_release_eligible_runtime_evidence(monkeypatch):
@@ -1073,4 +1159,21 @@ def test_open_window_controlled_release_exposes_only_proxy_assets_with_disclosur
         "vtt": "/api/reader/book/the-open-window/audiobook/vtt",
         "chapters": "/api/reader/book/the-open-window/audiobook/chapters",
         "meta": "/api/reader/book/the-open-window/audiobook/meta",
+        "manifest": "/api/reader/book/the-open-window/audiobook/manifest",
+    }
+
+
+def test_admin_audiobook_asset_sanitizer_rejects_static_audio_fallbacks(monkeypatch):
+    server = _server(monkeypatch)
+
+    assets = server._safe_audiobook_assets(
+        {
+            "mp3": "/audio/the-open-window.mp3",
+            "timestamps": "/audio/the-open-window.json",
+            "meta": "https://private.example.invalid/the-open-window.json",
+        }
+    )
+
+    assert assets == {
+        "meta": "https://private.example.invalid/the-open-window.json",
     }
