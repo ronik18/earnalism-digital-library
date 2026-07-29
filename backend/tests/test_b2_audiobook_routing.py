@@ -1,5 +1,6 @@
 import importlib
 import asyncio
+import json
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -14,6 +15,78 @@ def _server(monkeypatch):
     monkeypatch.setenv("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
     monkeypatch.setenv("JWT_SECRET", "test-secret")
     return importlib.import_module("server")
+
+
+def _package_book():
+    package_version = f"sha256-{'a' * 64}"
+    audio_sha256 = "b" * 64
+    timestamps_sha256 = "c" * 64
+    return {
+        "slug": "the-open-window",
+        "is_published": True,
+        "audiobook_enabled": True,
+        "content_hash": "d" * 64,
+        "audiobook_assets": {},
+        "audiobook_package": {
+            "schema_version": "audiobook_package_manifest.v2",
+            "slug": "the-open-window",
+            "package_version": package_version,
+            "release_evidence_version": "release-evidence-v1",
+            "source_sha256": "d" * 64,
+            "duration_ms": 620_000,
+            "segment_count": 2,
+            "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+            "highlight_sync_enabled": True,
+            "tracks": [
+                {
+                    "id": "chapter-001",
+                    "chapter_id": "chapter-001",
+                    "order": 0,
+                    "title": "Chapter 1",
+                    "chunks": [
+                        {
+                            "segment_id": "c001-s001",
+                            "order": 0,
+                            "start_word": 0,
+                            "end_word": 99,
+                            "cumulative_start_ms": 0,
+                            "duration_ms": 300_000,
+                            "audio_size_bytes": 4_800_000,
+                            "audio_sha256": audio_sha256,
+                            "timestamps_sha256": timestamps_sha256,
+                            "audio_url": (
+                                "https://s3.us-west-004.backblazeb2.com/"
+                                "earnalism-private-qa-audio/prod/the-open-window/c001-s001.mp3"
+                            ),
+                            "timestamps_url": (
+                                "https://s3.us-west-004.backblazeb2.com/"
+                                "earnalism-private-qa-audio/prod/the-open-window/c001-s001.timestamps.json"
+                            ),
+                        },
+                        {
+                            "segment_id": "c001-s002",
+                            "order": 1,
+                            "start_word": 100,
+                            "end_word": 199,
+                            "cumulative_start_ms": 300_000,
+                            "duration_ms": 320_000,
+                            "audio_size_bytes": 5_120_000,
+                            "audio_sha256": "e" * 64,
+                            "timestamps_sha256": "f" * 64,
+                            "audio_url": (
+                                "https://s3.us-west-004.backblazeb2.com/"
+                                "earnalism-private-qa-audio/prod/the-open-window/c001-s002.mp3"
+                            ),
+                            "timestamps_url": (
+                                "https://s3.us-west-004.backblazeb2.com/"
+                                "earnalism-private-qa-audio/prod/the-open-window/c001-s002.timestamps.json"
+                            ),
+                        },
+                    ],
+                }
+            ],
+        },
+    }
 
 
 def test_reader_manifest_rewrites_b2_mp3_to_api_proxy(monkeypatch):
@@ -68,6 +141,135 @@ def test_reader_manifest_audio_slug_alone_does_not_enable_audio(monkeypatch):
     assert audio["enabled"] is False
     assert audio["assets"] == {}
     assert audio["url"] == ""
+
+
+def test_package_manifest_projects_only_same_origin_release_gated_urls(monkeypatch):
+    server = _server(monkeypatch)
+    monkeypatch.setattr(server, "can_expose_audio", lambda _book: True)
+    book = _package_book()
+
+    manifest = server._reader_audio_package_manifest(book, "the-open-window")
+    audio = server._reader_manifest_audio(book, "the-open-window")
+
+    assert manifest is not None
+    assert manifest["schema_version"] == "audiobook_package_manifest.v2"
+    assert manifest["segment_count"] == 2
+    assert manifest["tracks"][0]["audio_url"].startswith(
+        "/api/reader/book/the-open-window/audiobook/packages/"
+    )
+    assert manifest["tracks"][0]["chunks"][1]["segment_id"] == "c001-s002"
+    assert manifest["tracks"][0]["chunks"][1]["start_word"] == 100
+    assert "source_sha256" not in manifest
+    assert "release_evidence_version" not in manifest
+    assert "backblazeb2.com" not in json.dumps(manifest)
+    assert audio["assets"]["manifest"] == "/api/reader/book/the-open-window/audiobook/manifest"
+    assert audio["package_version"] == f"sha256-{'a' * 64}"
+
+
+def test_package_manifest_fails_closed_for_incomplete_or_noncontiguous_segments(monkeypatch):
+    server = _server(monkeypatch)
+    book = _package_book()
+    book["audiobook_package"]["tracks"][0]["chunks"][1]["start_word"] = 101
+
+    assert server._validated_audiobook_package(book, "the-open-window") is None
+    assert server._reader_audio_package_manifest(book, "the-open-window") is None
+
+
+def test_package_manifest_requires_exact_source_binding_and_contiguous_duration(monkeypatch):
+    server = _server(monkeypatch)
+    source_mismatch = _package_book()
+    source_mismatch["audiobook_package"]["source_sha256"] = "0" * 64
+    duration_mismatch = _package_book()
+    duration_mismatch["audiobook_package"]["duration_ms"] += 1
+    oversized_segment = _package_book()
+    oversized_segment["audiobook_package"]["tracks"][0]["chunks"][0]["duration_ms"] = 720_001
+    oversized_segment["audiobook_package"]["tracks"][0]["chunks"][1]["cumulative_start_ms"] = 720_001
+    oversized_segment["audiobook_package"]["duration_ms"] = 1_040_001
+
+    assert server._validated_audiobook_package(source_mismatch, "the-open-window") is None
+    assert server._validated_audiobook_package(duration_mismatch, "the-open-window") is None
+    assert server._validated_audiobook_package(oversized_segment, "the-open-window") is None
+
+
+def test_hidden_audio_never_projects_package_manifest(monkeypatch):
+    server = _server(monkeypatch)
+    monkeypatch.setattr(server, "can_expose_audio", lambda _book: False)
+
+    audio = server._reader_manifest_audio(_package_book(), "the-open-window")
+
+    assert audio["enabled"] is False
+    assert audio["assets"] == {}
+    assert audio["package_version"] == ""
+
+
+def test_package_segment_resolves_exact_current_version_and_segment(monkeypatch):
+    server = _server(monkeypatch)
+    book = _package_book()
+    package_version = book["audiobook_package"]["package_version"]
+    captured = {}
+
+    async def fake_book(_slug):
+        return book
+
+    async def fake_stream(slug, asset_key, asset_url, request, *, extra_headers=None):
+        captured.update({
+            "slug": slug,
+            "asset_key": asset_key,
+            "asset_url": asset_url,
+            "request": request,
+            "extra_headers": extra_headers,
+        })
+        return "STREAMED"
+
+    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
+    monkeypatch.setattr(server, "_stream_audiobook_asset_url", fake_stream)
+    request = SimpleNamespace(headers={"range": "bytes=0-3"}, method="GET")
+
+    response = asyncio.run(
+        server._reader_book_audiobook_package_segment(
+            "the-open-window",
+            package_version,
+            "c001-s002",
+            "mp3",
+            request,
+        )
+    )
+
+    assert response == "STREAMED"
+    assert captured["slug"] == "the-open-window"
+    assert captured["asset_key"] == "mp3"
+    assert captured["asset_url"].endswith("/prod/the-open-window/c001-s002.mp3")
+    assert captured["extra_headers"] == {"X-Audiobook-Package-Version": package_version}
+
+
+def test_package_segment_rejects_stale_version_and_unknown_segment(monkeypatch):
+    server = _server(monkeypatch)
+    book = _package_book()
+
+    async def fake_book(_slug):
+        return book
+
+    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
+    request = SimpleNamespace(headers={}, method="GET")
+
+    for version, segment_id in (
+        (f"sha256-{'0' * 64}", "c001-s001"),
+        (book["audiobook_package"]["package_version"], "c999-s999"),
+    ):
+        try:
+            asyncio.run(
+                server._reader_book_audiobook_package_segment(
+                    "the-open-window",
+                    version,
+                    segment_id,
+                    "mp3",
+                    request,
+                )
+            )
+        except server.HTTPException as exc:
+            assert exc.status_code == 404
+        else:
+            raise AssertionError("Stale or unknown package segments must fail closed")
 
 
 def test_b2_key_and_range_helpers(monkeypatch):
