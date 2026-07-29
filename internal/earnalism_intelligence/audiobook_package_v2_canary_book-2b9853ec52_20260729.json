@@ -1,0 +1,207 @@
+{
+  "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v1",
+  "generated_at": "2026-07-29T10:02:21Z",
+  "updated_at": "2026-07-29T10:28:53Z",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "decision": "PRIVATE_PACKAGE_V2_CANARY_VERIFIED_ASR_REVALIDATION_FAIL_CLOSED_PRODUCTION_MIGRATION_BLOCKED",
+  "customer_release_state": {
+    "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
+    "package_v2_publicly_promoted": false,
+    "new_audiobook_approval_granted": false,
+    "controlled_publication_mutated": false,
+    "public_catalog_or_home_storage_identity_exposed": false
+  },
+  "local_package_build": {
+    "status": "PRIVATE_PACKAGE_BUILT",
+    "schema_version": "audiobook_package_manifest.v2",
+    "narration_regenerated": false,
+    "approved_source_audio_sha256": "a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5",
+    "release_descriptor_sha256": "e00ec647012b90a2f2d5324ac59eec8f755e6353c3a736497495e53d9a21f26a",
+    "immutable_prefix": "v1/prod/sprint1/book-2b9853ec52/releases/e00ec647012b90a2f2d5324ac59eec8f755e6353c3a736497495e53d9a21f26a/",
+    "duration_ms": 327069,
+    "segment_count": 2,
+    "word_count": 546,
+    "paragraph_count": 74,
+    "asset_count": 11,
+    "total_planned_asset_bytes": 40579264,
+    "release_status": "PRIVATE_STAGING_ONLY",
+    "package_version_finalized": false,
+    "final_release_manifest_built": false
+  },
+  "private_staging_preflight": {
+    "passed": true,
+    "mode": "PRIVATE_QA_STAGING_ONLY",
+    "release_eligible": false,
+    "versioning": "Enabled",
+    "private_acl_public_grant_count": 0,
+    "account_identity_declared": false,
+    "object_lock_governance_proven": false,
+    "production_lifecycle_policy_proven": false
+  },
+  "private_staging_upload": {
+    "passed": true,
+    "receipt_role": "private_qa_staging",
+    "release_eligible": false,
+    "retention_days": 1,
+    "uploaded_object_count": 11,
+    "objects_with_version_id": 11,
+    "objects_full_download_sha256_verified": 11,
+    "object_lock_mode": "",
+    "production_primary_receipt_created": false,
+    "disaster_recovery_receipt_created": false
+  },
+  "private_staging_reverification": {
+    "passed": true,
+    "receipt_verified_object_count": 11,
+    "objects_full_download_sha256_verified": 11,
+    "objects_with_version_id": 11
+  },
+  "objective_asr_revalidation": {
+    "status": "FAIL_CLOSED_NO_NEW_ASR_9_7_PASS",
+    "evidence_path": "internal/earnalism_intelligence/objective_qa/book-2b9853ec52_local_asr_revalidation_20260729.json",
+    "evidence_sha256": "9fd29006d312e80dfbb0d6ea2d6ba456fe30f942e3668d079e5926d103998ffe",
+    "audio_sha256": "a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5",
+    "controlled_content_sha256": "1e1d0b25627df784b861b8c6314b8bade1baabc554122dabf00dd8c5f2ae4dd9",
+    "clean_manuscript_sha256": "788851c603ab1700f9e33bdfdc6a3e3c04f2ebb79890b88bc8c88f138270095d",
+    "input_binding_status": "PASS",
+    "required_raw_asr_score": 9.7,
+    "local_attempts": [
+      {
+        "model": "openai-whisper-base",
+        "model_sha256": "ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e",
+        "wall_seconds": 114.04,
+        "completed": true,
+        "raw_asr_score": 0.0,
+        "coverage": 0.0,
+        "first_words_match": false,
+        "last_words_match": false,
+        "classification": "UNUSABLE_PUNCTUATION_ONLY_TRANSCRIPT"
+      },
+      {
+        "model": "openai-whisper-medium",
+        "model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
+        "word_timestamps": true,
+        "wall_seconds": 661.07,
+        "last_observed_progress_percent": 23,
+        "completed": false,
+        "output_json_created": false,
+        "classification": "INTERRUPTED_FOR_BOUNDED_RUNTIME_NO_TRANSCRIPT_RESULT"
+      },
+      {
+        "model": "openai-whisper-medium",
+        "model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
+        "word_timestamps": false,
+        "wall_seconds": 37.63,
+        "completed": false,
+        "output_json_created": false,
+        "classification": "STOPPED_ON_COORDINATOR_DIRECTION_NO_TRANSCRIPT_RESULT"
+      }
+    ],
+    "authoritative_existing_audio_derived_result": {
+      "run_id": "book-2b9853ec52_20260707T053510Z",
+      "raw_asr_score": 1.1258,
+      "coverage": 0.1126,
+      "char_similarity": 0.4064,
+      "token_order_similarity": 0.1466,
+      "first_words_match": false,
+      "last_words_match": false,
+      "word_timestamp_count": 443,
+      "asr_release_status": "SUPPORTING_DIAGNOSTIC_WEAK",
+      "passes_current_objective_asr_gate": false
+    },
+    "construction_evidence": {
+      "historical_transcript_match_score": 10.0,
+      "source_verification_method": "clean_tts_source_provenance_static_audit",
+      "can_replace_raw_audio_derived_asr_gate": false
+    },
+    "migration_blocker_resolved": false,
+    "existing_public_release_state_changed": false,
+    "release_gate_mutated": false
+  },
+  "public_projection_safety": {
+    "status": "PASS",
+    "test_file": "backend/tests/test_package_v2_public_projection_safety.py",
+    "tests_passed": 3,
+    "catalog_projection_checked": true,
+    "home_v4_projection_checked": true,
+    "forbidden_internal_identity": [
+      "audiobook_package",
+      "audiobook_packages",
+      "package_version",
+      "release_descriptor_sha256",
+      "source_sha256",
+      "manuscript_sha256",
+      "storage",
+      "replicas",
+      "store",
+      "bucket",
+      "key",
+      "version_id",
+      "immutable_prefix"
+    ],
+    "allowed_public_audio_identity": "/api/reader/book/book-2b9853ec52/audiobook"
+  },
+  "durable_sanitized_evidence": {
+    "json_path": "internal/earnalism_intelligence/audiobook_package_v2_private_canary_sanitized_evidence_book-2b9853ec52_20260729.json",
+    "json_sha256": "161b8b786cbbf662660f5db6d5d9b11851929414cd8d066d74160ac11522bf3d",
+    "markdown_path": "internal/earnalism_intelligence/audiobook_package_v2_private_canary_sanitized_evidence_book-2b9853ec52_20260729.md",
+    "markdown_sha256": "8dec687c059c492ceb5506e3c3ee4e8d54b26eb0404c49f80b270a657a643981",
+    "source_artifact_count": 6,
+    "asset_count": 11,
+    "total_asset_bytes": 40579264,
+    "objects_with_b2_version_id": 11,
+    "objects_full_download_sha256_verified": 11,
+    "release_eligible": false,
+    "storage_identity_redacted": true
+  },
+  "verified_artifacts": [
+    {
+      "path": "/private/tmp/earnalism-package-v2-book-2b9853ec52-r2/build-result.json",
+      "sha256": "d9930470cccab6651057d552411f3a3161b358ed85bf004f75b16b9d6fbc5680"
+    },
+    {
+      "path": "/private/tmp/earnalism-package-v2-book-2b9853ec52-r2/upload-plan.json",
+      "sha256": "51d5b0fca634cbd03b9bbd83be6d3875602062d6675189a99e79d9d1de551355"
+    },
+    {
+      "path": "/private/tmp/earnalism-package-v2-storage-preflight.json",
+      "sha256": "0bba8525b7e8954300ababd4ed21743219888b138884f0880a5e07720656acb1"
+    },
+    {
+      "path": "/private/tmp/earnalism-package-v2-private-upload-report.json",
+      "sha256": "ed9e7b4bd5ff1250a08cdb8a19fd5be5a5e9527aa96b93c6cc18cf672a2e011a"
+    },
+    {
+      "path": "/private/tmp/earnalism-package-v2-book-2b9853ec52-r2/private_qa_receipt.json",
+      "sha256": "26ff32d961edd9e94a01f110df51b6c76fce3b190598fdef77f54da4c143866e"
+    },
+    {
+      "path": "/private/tmp/earnalism-package-v2-private-verify-report.json",
+      "sha256": "d17ee228075f1fac556ee0c53fc000824e7ffa64ab60d85dd6895d07f9734c51"
+    }
+  ],
+  "open_production_blockers": [
+    "CURRENT_AUDIO_DERIVED_ASR_POLICY_REVALIDATION_FAILED_OR_INCONCLUSIVE",
+    "HASH_BOUND_PROVIDER_VOICE_RIGHTS_SNAPSHOT_REQUIRED",
+    "DEDICATED_PRIMARY_AND_DR_STORAGE_REQUIRED",
+    "OBJECT_LOCK_GOVERNANCE_EVIDENCE_REQUIRED",
+    "PRODUCTION_PRIMARY_RECEIPT_REQUIRED",
+    "INDEPENDENT_DR_RECEIPT_REQUIRED",
+    "FINAL_PACKAGE_MANIFEST_AND_CANONICAL_PACKAGE_VERSION_REQUIRED",
+    "CONTROLLED_PUBLICATION_BINDING_REVIEW_REQUIRED",
+    "PRODUCTION_MANIFEST_RANGE_AND_BROWSER_PARITY_REQUIRED"
+  ],
+  "not_performed": [
+    "tts_generation",
+    "paid_provider_call",
+    "paid_tts_lock_mutation",
+    "production_primary_upload",
+    "disaster_recovery_replication",
+    "controlled_publication_promotion",
+    "production_deploy",
+    "production_endpoint_or_browser_validation"
+  ],
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_package_storage_v2.py preflight --report /private/tmp/earnalism-package-v2-production-dr-preflight.json"
+}

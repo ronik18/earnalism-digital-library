@@ -1,0 +1,266 @@
+{
+  "schema_version": "earnalism_audiobook_package_v2_sanitized_private_canary_evidence.v1",
+  "generated_at": "2026-07-29T10:28:53Z",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "scope": "Durable sanitized projection of the exact verified private package-v2 canary artifacts",
+  "sanitization": {
+    "credentials": "REDACTED",
+    "account_ids_and_fingerprints": "REDACTED",
+    "storage_endpoints_and_regions": "REDACTED",
+    "bucket_names": "REDACTED",
+    "object_keys": "OMITTED",
+    "local_asset_paths": "OMITTED",
+    "retained_evidence": [
+      "artifact_sha256",
+      "asset_id",
+      "asset_sha256",
+      "asset_size_bytes",
+      "asset_mime_type",
+      "b2_version_id",
+      "verification_outcomes",
+      "release_eligibility"
+    ]
+  },
+  "package_identity": {
+    "status": "PRIVATE_PACKAGE_BUILT",
+    "source_audio_sha256": "a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5",
+    "release_descriptor_sha256": "e00ec647012b90a2f2d5324ac59eec8f755e6353c3a736497495e53d9a21f26a",
+    "immutable_prefix": "v1/prod/sprint1/book-2b9853ec52/releases/e00ec647012b90a2f2d5324ac59eec8f755e6353c3a736497495e53d9a21f26a/",
+    "duration_ms": 327069,
+    "segment_count": 2,
+    "word_count": 546,
+    "paragraph_count": 74,
+    "asset_count": 11,
+    "total_asset_bytes": 40579264,
+    "narration_regenerated": false
+  },
+  "source_artifacts": [
+    {
+      "role": "build_result",
+      "filename": "build-result.json",
+      "sha256": "d9930470cccab6651057d552411f3a3161b358ed85bf004f75b16b9d6fbc5680"
+    },
+    {
+      "role": "upload_plan",
+      "filename": "upload-plan.json",
+      "sha256": "51d5b0fca634cbd03b9bbd83be6d3875602062d6675189a99e79d9d1de551355"
+    },
+    {
+      "role": "private_preflight",
+      "filename": "earnalism-package-v2-storage-preflight.json",
+      "sha256": "0bba8525b7e8954300ababd4ed21743219888b138884f0880a5e07720656acb1"
+    },
+    {
+      "role": "private_upload_report",
+      "filename": "earnalism-package-v2-private-upload-report.json",
+      "sha256": "ed9e7b4bd5ff1250a08cdb8a19fd5be5a5e9527aa96b93c6cc18cf672a2e011a"
+    },
+    {
+      "role": "private_qa_receipt",
+      "filename": "private_qa_receipt.json",
+      "sha256": "26ff32d961edd9e94a01f110df51b6c76fce3b190598fdef77f54da4c143866e"
+    },
+    {
+      "role": "private_verify_report",
+      "filename": "earnalism-package-v2-private-verify-report.json",
+      "sha256": "d17ee228075f1fac556ee0c53fc000824e7ffa64ab60d85dd6895d07f9734c51"
+    }
+  ],
+  "private_staging_preflight": {
+    "passed": true,
+    "mode": "PRIVATE_QA_STAGING_ONLY",
+    "release_eligible": false,
+    "bucket_access": "PASS",
+    "versioning": "Enabled",
+    "credentials_present": true,
+    "account_identity_declared": false,
+    "public_access_block_status": {
+      "block_public_acls": false,
+      "block_public_policy": false,
+      "ignore_public_acls": false,
+      "restrict_public_buckets": false
+    },
+    "bucket_policy_status": "UNAVAILABLE_NotImplemented",
+    "public_acl_grant_count": 0,
+    "object_lock": {
+      "status": "NOT_REQUIRED_FOR_PRIVATE_QA_STAGING",
+      "release_eligible": false
+    },
+    "production_lifecycle_deletion_rules": "NOT_APPLICABLE_TO_PRIVATE_QA_STAGING"
+  },
+  "private_staging_verification": {
+    "receipt_role": "private_qa_staging",
+    "release_eligible": false,
+    "retention_days": 1,
+    "planned_object_count": 11,
+    "uploaded_object_count": 11,
+    "receipt_object_count": 11,
+    "reverified_object_count": 11,
+    "objects_with_b2_version_id": 11,
+    "upload_full_download_sha256_verified": 11,
+    "receipt_full_download_sha256_verified": 11,
+    "reverification_receipt_verified": 11,
+    "reverification_full_download_sha256_verified": 11,
+    "objects_with_object_lock_mode": 0,
+    "production_primary_receipt_created": false,
+    "disaster_recovery_receipt_created": false,
+    "final_release_manifest_built": false,
+    "package_version_finalized": false
+  },
+  "assets": [
+    {
+      "asset_id": "master.original",
+      "mime_type": "audio/mpeg",
+      "sha256": "a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5",
+      "size_bytes": 5233965,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f1036042f2f0a0144_d20260729_m100115_c004_v0402037_t0049_u01785319275132",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "master.pcm",
+      "mime_type": "audio/wav",
+      "sha256": "464bff8cf3d4e4d21970d87688ad88cf609a6384c9881451d027c32b6f7a6c80",
+      "size_bytes": 31398710,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f10467250da8667d7_d20260729_m100122_c004_v0402035_t0049_u01785319282148",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "release.descriptor",
+      "mime_type": "application/json",
+      "sha256": "39cb2b498e79c9475b3efa3819ee539d650e27003a7d4d7065f013c75b8fc31f",
+      "size_bytes": 1623,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f1150974fb5fce496_d20260729_m100139_c004_v0402000_t0015_u01785319299638",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "c001-s001.audio",
+      "mime_type": "audio/mpeg",
+      "sha256": "9b58a5396f21292526588f17dc9f60815ed4ea8c64d7319432ff2b02fe7c6e7a",
+      "size_bytes": 1665261,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f106a90f0b7d57ab5_d20260729_m100140_c004_v0402017_t0008_u01785319300852",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "c001-s001.timestamps",
+      "mime_type": "application/json",
+      "sha256": "3da8e29690a62d6a836fb658ecef61a52a8be69f0628c446a40e568abe02f132",
+      "size_bytes": 3866,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f1138af9e103db2ad_d20260729_m100142_c004_v0402007_t0043_u01785319302975",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "c001-s001.vtt",
+      "mime_type": "text/vtt",
+      "sha256": "cfdc0aa162409a074e071853e396b62c1365b101fa0b4d72ad3c0d71e0b0e335",
+      "size_bytes": 3418,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f107dc9e2d634d0f1_d20260729_m100144_c004_v0402033_t0011_u01785319304256",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "c001-s001.metadata",
+      "mime_type": "application/json",
+      "sha256": "1ba715e3bbd4342a0fc318fc04dd59f7b76c17cc57dd13ecd1224bb89be69cb8",
+      "size_bytes": 603,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f115a89ddc9a7ff0b_d20260729_m100145_c004_v0402016_t0056_u01785319305831",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "c001-s002.audio",
+      "mime_type": "audio/mpeg",
+      "sha256": "b85041748b9e543b5756946a8fe7bec2fb6b14f168cbb2303044a5a739fba8fc",
+      "size_bytes": 2260845,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f119162e7ce488ad9_d20260729_m100147_c004_v0402012_t0005_u01785319307113",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "c001-s002.timestamps",
+      "mime_type": "application/json",
+      "sha256": "943fc60659961280cb1862d364182f66577f4defbbe004ed8379fb08ea60058f",
+      "size_bytes": 5508,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f110ec78763e39571_d20260729_m100149_c004_v0402037_t0052_u01785319309559",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "c001-s002.vtt",
+      "mime_type": "text/vtt",
+      "sha256": "92f1138ddebeb4288417542831eec7bfa7a31d66ab877f506bda701f0a626f3a",
+      "size_bytes": 4854,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f110002292bd70a27_d20260729_m100151_c004_v0402033_t0042_u01785319311052",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    },
+    {
+      "asset_id": "c001-s002.metadata",
+      "mime_type": "application/json",
+      "sha256": "931ff6e8005d20fe4563fe3c3c504b457049c99ae2ad9a126d240529406a2850",
+      "size_bytes": 611,
+      "b2_version_id": "4_zb2f3363ef7425bc094f30e12_f11883f8a0b22150e_d20260729_m100152_c004_v0402019_t0021_u01785319312735",
+      "upload_full_download_verified": true,
+      "receipt_full_download_verified": true,
+      "reverification_receipt_verified": true,
+      "reverification_full_download_verified": true,
+      "object_lock_mode": ""
+    }
+  ],
+  "release_truth": {
+    "private_staging_release_eligible": false,
+    "production_package_release_eligible": false,
+    "new_audiobook_approval_granted": false,
+    "package_v2_publicly_promoted": false,
+    "controlled_publication_mutated": false,
+    "existing_approved_live_delivery_changed": false,
+    "storage_integrity_evidence_is_release_authorization": false
+  },
+  "open_production_blockers": [
+    "CURRENT_AUDIO_DERIVED_ASR_POLICY_REVALIDATION_FAILED_OR_INCONCLUSIVE",
+    "HASH_BOUND_PROVIDER_VOICE_RIGHTS_SNAPSHOT_REQUIRED",
+    "DEDICATED_PRIMARY_AND_DR_STORAGE_REQUIRED",
+    "OBJECT_LOCK_GOVERNANCE_EVIDENCE_REQUIRED",
+    "PRODUCTION_PRIMARY_RECEIPT_REQUIRED",
+    "INDEPENDENT_DR_RECEIPT_REQUIRED",
+    "FINAL_PACKAGE_MANIFEST_AND_CANONICAL_PACKAGE_VERSION_REQUIRED",
+    "CONTROLLED_PUBLICATION_BINDING_REVIEW_REQUIRED",
+    "PRODUCTION_MANIFEST_RANGE_AND_BROWSER_PARITY_REQUIRED"
+  ]
+}

@@ -909,3 +909,61 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Migrate one already-approved audiobook as the first package-v2 canary. A new
   title still requires the full existing rights, content, ASR, sync, listening,
   storage, endpoint, and browser gates before controlled-publication promotion.
+
+## 2026-07-29 — Private package-v2 storage proof is not production migration
+
+- Repackaging the exact approved `book-2b9853ec52` source did not regenerate
+  narration. The two-segment plan preserved the approved MP3 hash
+  `a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5`
+  and bound 11 assets to release descriptor
+  `e00ec647012b90a2f2d5324ac59eec8f755e6353c3a736497495e53d9a21f26a`.
+- Private staging proved useful delivery mechanics: all 11 objects received a
+  VersionId and passed complete post-upload and receipt-bound re-download
+  checksum verification. That is storage-integrity evidence, not a release
+  gate.
+- Respect the preflight's explicit scope. `PRIVATE_QA_STAGING_ONLY`,
+  `release_eligible: false`, one-day staging retention, no independent account
+  identity, and no Object Lock mode cannot be relabeled as production-primary
+  or DR evidence.
+- Derive the final package version only after exact primary and replica
+  VersionIds exist. Until those receipts, the final manifest, controlled
+  binding, endpoint Range checks, and browser parity exist, keep the current
+  approved delivery untouched.
+- Public catalog and Home projections must remain an allowlist. Focused tests
+  proved that package hashes, immutable keys, buckets, replicas, and VersionIds
+  remain absent while the customer sees only the same-origin reader audio URL.
+
+## 2026-07-29 — Construction provenance cannot replace current raw ASR
+
+- Bind revalidation to the exact delivered bytes and exact narrated manuscript
+  before comparing models. For `book-2b9853ec52`, the approved audio remained
+  `a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5`;
+  the clean manuscript was the controlled chapter content plus one terminal
+  newline.
+- Cached multilingual Whisper-base is not a viable Bengali validator for this
+  audio. It completed in 114.04 seconds but emitted punctuation-only output,
+  scoring `0.0` with `0.0` coverage and failed first/last spans.
+- CPU Whisper-medium with word alignment is not a cost-effective bounded lane
+  on this machine. It reached only 23% after 661.07 seconds and produced no
+  transcript JSON. Do not repeat either exact local fingerprint.
+- The exact prior audio-derived result remains the release-relevant truth:
+  raw ASR `1.1258`, coverage `0.1126`, and failed raw first/last spans,
+  classified `SUPPORTING_DIAGNOSTIC_WEAK`. A historical construction score of
+  `10.0` proves intended TTS source provenance only; it cannot satisfy the raw
+  audio-derived `9.7` objective floor.
+- Fail a new package-v2 migration revalidation without retroactively mutating
+  the title's existing live state. Keep the current delivery untouched and the
+  migration blocker open until a materially different bounded Bengali ASR
+  runtime produces qualifying evidence.
+
+## 2026-07-29 — Preserve private canary proof without storage identity
+
+- Ephemeral preflight, upload, receipt, and re-verification files are not a
+  durable audit trail even when their hashes are recorded. Preserve a
+  repository-safe projection while the original files are still available.
+- The sanitized `book-2b9853ec52` evidence retains all six source-artifact
+  hashes plus exact asset hashes, sizes, MIME types, B2 VersionIds, and
+  verification results for all 11 objects.
+- Credentials, account identifiers, endpoints, regions, bucket names, object
+  keys, and local asset paths are excluded. Sanitization does not change the
+  evidence boundary: private staging remains `release_eligible: false`.

@@ -43,12 +43,46 @@ describe("Reader release-truth and reading-room guardrails", () => {
 
   test("loads package audio only on intent and advances immutable same-chapter segments", () => {
     expect(readerSource).toMatch(/generatedAudioPrimed && generatedAudioAvailable/);
+    expect(readerSource).toMatch(/preload=\{generatedAudioPrimed && generatedAudioAvailable \? 'metadata' : 'none'\}/);
     expect(readerSource).toMatch(/selectedGeneratedAudioTrack\.nextSegmentId/);
     expect(readerSource).toMatch(/setGeneratedAudioSegmentId\(selectedGeneratedAudioTrack\.nextSegmentId\)/);
     expect(readerSource).not.toMatch(/onMouseEnter=\{primeGeneratedAudio\}/);
     expect(readerSource).not.toMatch(/onFocus=\{primeGeneratedAudio\}/);
     expect(readerSource).not.toMatch(/onTouchStart=\{primeGeneratedAudio\}/);
     expect(readerSource).not.toMatch(/prefetchAsset\(nextTrack\.audioUrl\)/);
+    expect(readerSource).not.toMatch(/prefetchAsset\(nextTrack\.timestampsUrl\)/);
+  });
+
+  test("persists only immutable package-bound audiobook progress", () => {
+    expect(readerSource).toMatch(/loadAudiobookProgress\(bookId,\s*normalizedManifest\.packageVersion\)/);
+    expect(readerSource).toMatch(/saveAudiobookProgress\(bookId/);
+    expect(readerSource).toMatch(/packageVersion/);
+    expect(readerSource).toMatch(/segmentId/);
+    expect(readerSource).toMatch(/offset:/);
+    expect(readerSource).toMatch(/speed:/);
+    expect(readerSource).toMatch(/window\.addEventListener\('pagehide'/);
+  });
+
+  test("prefetches only next-segment metadata after playback reaches the threshold", () => {
+    expect(readerSource).toMatch(/shouldPrefetchNextSegment\(audio\?\.currentTime,\s*audio\?\.duration,\s*nextSegmentId\)/);
+    expect(readerSource).toMatch(/prefetchAudioMetadata\(selectedGeneratedAudioTrack\.nextAudioUrl\)/);
+    expect(readerSource).toMatch(/prefetchAsset\(selectedGeneratedAudioTrack\.nextTimestampsUrl,\s*\{\s*credentials:\s*'include'\s*\}\)/);
+    expect(readerSource).toMatch(/method:\s*'HEAD'/);
+    expect(readerSource).toMatch(/crossOrigin="use-credentials"/);
+    expect(readerSource).toMatch(/fetch\(generatedAudioManifestUrl,\s*\{\s*cache:\s*'force-cache',\s*credentials:\s*'include'\s*\}\)/);
+    expect(readerSource).not.toMatch(/prefetchAsset\(selectedGeneratedAudioTrack\.nextAudioUrl\)/);
+  });
+
+  test("records real playback, stall, seek, and transition timing events", () => {
+    expect(readerSource).toMatch(/reader_audio_ttfa/);
+    expect(readerSource).toMatch(/reader_audio_stall/);
+    expect(readerSource).toMatch(/reader_audio_seek/);
+    expect(readerSource).toMatch(/reader_audio_segment_transition/);
+    expect(readerSource).toMatch(/onPlaying=\{handleGeneratedAudioPlaying\}/);
+    expect(readerSource).toMatch(/onWaiting=\{markGeneratedAudioStall\}/);
+    expect(readerSource).toMatch(/onStalled=\{markGeneratedAudioStall\}/);
+    expect(readerSource).toMatch(/onSeeking=\{handleGeneratedAudioSeeking\}/);
+    expect(readerSource).toMatch(/onSeeked=\{handleGeneratedAudioSeeked\}/);
   });
 
   test("shows explicit AI narration disclosure beside approved controls", () => {

@@ -16,6 +16,12 @@ import useSEO from '../hooks/useSEO';
 import { audiobookNarrationDisclosure, audiobookReleaseState, canExposeAudiobookControls, readerManifestPath } from '../lib/audioReleaseSafety';
 import { audioTimestampStartMs, normalizeAudioTimestamp } from '../lib/audioTimestampSchema';
 import { normalizeAudioManifest, selectAudioTrack } from '../lib/audioPackageManifest';
+import {
+  AUDIOBOOK_PROGRESS_SAVE_INTERVAL_MS,
+  loadAudiobookProgress,
+  saveAudiobookProgress,
+  shouldPrefetchNextSegment,
+} from '../lib/audiobookPlayback';
 import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from '../lib/readerSettings';
 import { normalizeReaderContentHtml } from '../lib/readerContent';
 
@@ -820,12 +826,30 @@ async function fetchReaderChapter({ bookId, chapterId, adminPreview = false, ver
   }
 }
 
-function prefetchAsset(url) {
+function prefetchAsset(url, { credentials = 'same-origin' } = {}) {
   if (!url || readerAssetPrefetchCache.has(url)) return;
-  const promise = fetch(url, { cache: 'force-cache', mode: /^https?:\/\//i.test(url) ? 'cors' : 'same-origin' })
+  const promise = fetch(url, {
+    cache: 'force-cache',
+    credentials,
+    mode: /^https?:\/\//i.test(url) ? 'cors' : 'same-origin',
+  })
     .then((response) => (response.ok ? response : Promise.reject(new Error('asset prefetch failed'))))
     .catch(() => null);
   boundedCacheSet(readerAssetPrefetchCache, url, promise, 32);
+}
+
+function prefetchAudioMetadata(url) {
+  const cacheKey = url ? `HEAD:${url}` : '';
+  if (!url || readerAssetPrefetchCache.has(cacheKey)) return;
+  const promise = fetch(url, {
+    method: 'HEAD',
+    cache: 'force-cache',
+    credentials: 'include',
+    mode: /^https?:\/\//i.test(url) ? 'cors' : 'same-origin',
+  })
+    .then((response) => (response.ok ? response : Promise.reject(new Error('audio metadata prefetch failed'))))
+    .catch(() => null);
+  boundedCacheSet(readerAssetPrefetchCache, cacheKey, promise, 32);
 }
 
 function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', adminPreview = false, onChapterSelect }) {
@@ -948,6 +972,16 @@ export default function Reader() {
   const lastReaderActivityRef = useRef(Date.now());
   const readerMetricsRef = useRef({ loadStartedAt: 0, timings: {} });
   const audioIntentStartedAtRef = useRef(0);
+  const audioLoadStartedAtRef = useRef(0);
+  const audioStallStartedAtRef = useRef(0);
+  const audioSeekStartedAtRef = useRef(0);
+  const segmentTransitionStartedAtRef = useRef(0);
+  const segmentTransitionFromRef = useRef('');
+  const audiobookProgressSavedAtRef = useRef(0);
+  const pendingAudioOffsetRef = useRef(null);
+  const pendingAudioOffsetSegmentRef = useRef('');
+  const prefetchedAudioSegmentsRef = useRef(new Set());
+  const persistGeneratedAudioProgressRef = useRef(() => false);
   const resumeAfterSegmentChangeRef = useRef(false);
   const settingsButtonRef = useRef(null);
   const settingsSheetRef = useRef(null);
@@ -977,6 +1011,7 @@ export default function Reader() {
 
   const stopTTS = useCallback(() => {
     const audio = generatedAudioRef.current;
+    persistGeneratedAudioProgressRef.current({ force: true });
     resumeAfterSegmentChangeRef.current = false;
     if (audio) {
       audio.pause();
@@ -1600,6 +1635,77 @@ export default function Reader() {
   );
   const generatedAudioUrl = selectedGeneratedAudioTrack.audioUrl;
   const generatedTimestampsUrl = selectedGeneratedAudioTrack.timestampsUrl;
+  const generatedAudioMetricTags = useCallback((segmentId = selectedGeneratedAudioTrack.segmentId) => ({
+    package_version: selectedGeneratedAudioTrack.packageVersion || '',
+    segment_id: segmentId || '',
+    audio_version: selectedGeneratedAudioTrack.version || '',
+  }), [selectedGeneratedAudioTrack]);
+
+  const persistGeneratedAudioProgress = useCallback(({
+    force = false,
+    segmentId,
+    offset,
+    speed,
+  } = {}) => {
+    const packageVersion = selectedGeneratedAudioTrack.packageVersion || generatedAudioManifest?.packageVersion || '';
+    const effectiveSegmentId = segmentId || selectedGeneratedAudioTrack.segmentId || '';
+    if (!bookId || !packageVersion || !effectiveSegmentId) return false;
+    const now = Date.now();
+    if (!force && now - audiobookProgressSavedAtRef.current < AUDIOBOOK_PROGRESS_SAVE_INTERVAL_MS) {
+      return false;
+    }
+    const audio = generatedAudioRef.current;
+    const effectiveOffset = Number.isFinite(Number(offset))
+      ? Number(offset)
+      : Number(audio?.currentTime || 0);
+    const didSave = saveAudiobookProgress(bookId, {
+      packageVersion,
+      segmentId: effectiveSegmentId,
+      offset: effectiveOffset,
+      speed: Number.isFinite(Number(speed)) ? Number(speed) : ttsSpeed,
+    });
+    if (didSave) audiobookProgressSavedAtRef.current = now;
+    return didSave;
+  }, [bookId, generatedAudioManifest, selectedGeneratedAudioTrack, ttsSpeed]);
+
+  useEffect(() => {
+    persistGeneratedAudioProgressRef.current = persistGeneratedAudioProgress;
+  }, [persistGeneratedAudioProgress]);
+
+  useEffect(() => {
+    const handlePageHide = () => persistGeneratedAudioProgressRef.current({ force: true });
+    window.addEventListener('pagehide', handlePageHide);
+    return () => window.removeEventListener('pagehide', handlePageHide);
+  }, []);
+
+  const applyPendingAudioOffset = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    if (
+      !audio
+      || audio.readyState < 1
+      || pendingAudioOffsetSegmentRef.current !== selectedGeneratedAudioTrack.segmentId
+      || !Number.isFinite(Number(pendingAudioOffsetRef.current))
+    ) {
+      return false;
+    }
+    const duration = Number(audio.duration);
+    const maximum = Number.isFinite(duration) && duration > 0 ? Math.max(0, duration - 0.05) : Number.MAX_SAFE_INTEGER;
+    audio.currentTime = Math.min(maximum, Math.max(0, Number(pendingAudioOffsetRef.current)));
+    pendingAudioOffsetRef.current = null;
+    pendingAudioOffsetSegmentRef.current = '';
+    return true;
+  }, [selectedGeneratedAudioTrack.segmentId]);
+
+  const prefetchNextGeneratedAudioMetadata = useCallback((audio) => {
+    const nextSegmentId = selectedGeneratedAudioTrack.nextSegmentId;
+    if (!shouldPrefetchNextSegment(audio?.currentTime, audio?.duration, nextSegmentId)) return;
+    const prefetchKey = `${selectedGeneratedAudioTrack.packageVersion}:${nextSegmentId}`;
+    if (prefetchedAudioSegmentsRef.current.has(prefetchKey)) return;
+    prefetchedAudioSegmentsRef.current.add(prefetchKey);
+    // HEAD warms only endpoint/object metadata; the MP3 response body remains untouched.
+    prefetchAudioMetadata(selectedGeneratedAudioTrack.nextAudioUrl);
+    prefetchAsset(selectedGeneratedAudioTrack.nextTimestampsUrl, { credentials: 'include' });
+  }, [selectedGeneratedAudioTrack]);
 
   useEffect(() => {
     let cancelled = false;
@@ -1607,14 +1713,29 @@ export default function Reader() {
     setGeneratedAudioSegmentId('');
     setGeneratedAudioPrimed(false);
     if (!generatedAudioManifestUrl || !generatedAudioSlug || lockedState) return undefined;
-    fetch(generatedAudioManifestUrl, { cache: 'force-cache' })
+    fetch(generatedAudioManifestUrl, { cache: 'force-cache', credentials: 'include' })
       .then((response) => {
         if (!response.ok) throw new Error('Audio manifest unavailable');
         return response.json();
       })
       .then((raw) => {
         if (!cancelled) {
-          setGeneratedAudioManifest(normalizeAudioManifest(raw, resolveAssetUrl));
+          const normalizedManifest = normalizeAudioManifest(raw, resolveAssetUrl);
+          const savedProgress = loadAudiobookProgress(bookId, normalizedManifest.packageVersion);
+          const savedSegmentExists = Boolean(savedProgress && normalizedManifest.tracks.some((track) => (
+            track.chunks || []
+          ).some((chunk) => chunk.segmentId === savedProgress.segmentId)));
+          prefetchedAudioSegmentsRef.current.clear();
+          setGeneratedAudioManifest(normalizedManifest);
+          if (savedSegmentExists) {
+            pendingAudioOffsetRef.current = savedProgress.offset;
+            pendingAudioOffsetSegmentRef.current = savedProgress.segmentId;
+            setGeneratedAudioSegmentId(savedProgress.segmentId);
+            setTtsSpeed(savedProgress.speed);
+          } else {
+            pendingAudioOffsetRef.current = null;
+            pendingAudioOffsetSegmentRef.current = '';
+          }
         }
       })
       .catch(() => {
@@ -1623,7 +1744,7 @@ export default function Reader() {
     return () => {
       cancelled = true;
     };
-  }, [generatedAudioManifestUrl, generatedAudioSlug, lockedState]);
+  }, [bookId, generatedAudioManifestUrl, generatedAudioSlug, lockedState]);
 
   useEffect(() => {
     let cancelled = false;
@@ -1644,7 +1765,7 @@ export default function Reader() {
     }
     if (!generatedTimestampsUrl || !readerHtml) return undefined;
 
-    fetch(generatedTimestampsUrl, { cache: 'force-cache' })
+    fetch(generatedTimestampsUrl, { cache: 'force-cache', credentials: 'include' })
       .then((response) => {
         if (!response.ok) throw new Error('Generated audio timestamps unavailable');
         return response.json();
@@ -1687,7 +1808,7 @@ export default function Reader() {
     if (!resumeAfterSegmentChangeRef.current || !generatedAudioAvailable || !generatedAudioUrl || lockedState) return;
     const audio = generatedAudioRef.current;
     if (!audio) return;
-    audioIntentStartedAtRef.current = readerNowMs();
+    audioLoadStartedAtRef.current = readerNowMs();
     setGeneratedAudioPrimed(true);
     audio.src = generatedAudioUrl;
     audio.preload = 'auto';
@@ -1893,17 +2014,38 @@ export default function Reader() {
     setTtsWordIndex(globalIndex);
   }, [cacheReaderWords]);
 
+  const recordGeneratedAudioMetric = useCallback((event, {
+    timings = {},
+    metrics = {},
+    tags = {},
+  } = {}) => {
+    sendReaderMetric(event, {
+      session_id: sessionId,
+      book_slug: bookId,
+      chapter_id: activeChapterId || chapterId || chapter?.id,
+      timings,
+      metrics,
+      tags: {
+        ...generatedAudioMetricTags(),
+        ...tags,
+      },
+    });
+  }, [activeChapterId, bookId, chapter, chapterId, generatedAudioMetricTags, sessionId]);
+
   const primeGeneratedAudio = useCallback(() => {
     const audio = generatedAudioRef.current;
     if (!audio || !generatedAudioAvailable || !generatedAudioUrl) return;
-    if (!audioIntentStartedAtRef.current) audioIntentStartedAtRef.current = readerNowMs();
     setGeneratedAudioPrimed(true);
     if (audio.getAttribute('src') !== generatedAudioUrl) {
+      audioLoadStartedAtRef.current = readerNowMs();
       audio.src = generatedAudioUrl;
     }
     audio.preload = 'auto';
     audio.playbackRate = Math.max(0.7, Math.min(1.8, Number(ttsSpeed) || 1));
-    if (audio.readyState === 0) audio.load();
+    if (audio.readyState === 0) {
+      if (!audioLoadStartedAtRef.current) audioLoadStartedAtRef.current = readerNowMs();
+      audio.load();
+    }
   }, [generatedAudioAvailable, generatedAudioUrl, ttsSpeed]);
 
   const startGeneratedAudio = useCallback(() => {
@@ -1921,6 +2063,7 @@ export default function Reader() {
       setTtsActive(true);
       setTtsPaused(false);
       audio.play().catch(() => {
+        audioIntentStartedAtRef.current = 0;
         setGeneratedAudioActive(false);
         setTtsActive(false);
         setTtsPaused(false);
@@ -1964,9 +2107,13 @@ export default function Reader() {
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
         wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-        audio.currentTime = audioTimestampStartMs(firstTimestamp) / 1000;
+        const restoringSelectedSegment = pendingAudioOffsetSegmentRef.current === selectedGeneratedAudioTrack.segmentId;
+        if (!applyPendingAudioOffset() && !restoringSelectedSegment) {
+          audio.currentTime = audioTimestampStartMs(firstTimestamp) / 1000;
+        }
         tickGeneratedHighlight();
         audio.play().catch(() => {
+          audioIntentStartedAtRef.current = 0;
           setGeneratedAudioActive(false);
           setTtsActive(false);
           setTtsPaused(false);
@@ -1975,25 +2122,20 @@ export default function Reader() {
       });
     });
     return true;
-  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, generatedHighlightSyncEnabled, highlightGeneratedWord, isContentPage, primeGeneratedAudio, readerHtml]);
+  }, [applyPendingAudioOffset, currentPageHtml, currentPageWordOffset, generatedAudioAvailable, generatedHighlightSyncEnabled, highlightGeneratedWord, isContentPage, primeGeneratedAudio, readerHtml, selectedGeneratedAudioTrack.segmentId]);
 
   const handleGeneratedAudioMetadata = useCallback(() => {
-    if (audioIntentStartedAtRef.current) {
-      sendReaderMetric('reader_audio_metadata_loaded', {
-        session_id: sessionId,
-        book_slug: bookId,
-        chapter_id: activeChapterId || chapterId || chapter?.id,
+    applyPendingAudioOffset();
+    if (audioLoadStartedAtRef.current) {
+      recordGeneratedAudioMetric('reader_audio_metadata_loaded', {
         timings: {
-          audio_metadata_ms: Math.round(readerNowMs() - audioIntentStartedAtRef.current),
+          audio_metadata_ms: Math.round(readerNowMs() - audioLoadStartedAtRef.current),
         },
         metrics: {
           chunked: selectedGeneratedAudioTrack.chunked ? 1 : 0,
         },
-        tags: {
-          audio_version: selectedGeneratedAudioTrack.version || '',
-        },
       });
-      audioIntentStartedAtRef.current = 0;
+      audioLoadStartedAtRef.current = 0;
     }
 
     if (!resumeAfterSegmentChangeRef.current) return;
@@ -2006,12 +2148,74 @@ export default function Reader() {
       setTtsActive(true);
       setTtsPaused(false);
     }).catch(() => {
+      segmentTransitionStartedAtRef.current = 0;
+      segmentTransitionFromRef.current = '';
       setGeneratedAudioActive(false);
       setTtsActive(false);
       setTtsPaused(false);
       toast.error('The next audiobook segment could not start in this browser.');
     });
-  }, [activeChapterId, bookId, chapter, chapterId, selectedGeneratedAudioTrack, sessionId, ttsSpeed]);
+  }, [applyPendingAudioOffset, recordGeneratedAudioMetric, selectedGeneratedAudioTrack.chunked, ttsSpeed]);
+
+  const handleGeneratedAudioPlaying = useCallback(() => {
+    const now = readerNowMs();
+    if (audioIntentStartedAtRef.current) {
+      recordGeneratedAudioMetric('reader_audio_ttfa', {
+        timings: {
+          ttfa_ms: Math.round(now - audioIntentStartedAtRef.current),
+        },
+      });
+      audioIntentStartedAtRef.current = 0;
+    }
+    if (audioStallStartedAtRef.current) {
+      recordGeneratedAudioMetric('reader_audio_stall', {
+        timings: {
+          stall_ms: Math.round(now - audioStallStartedAtRef.current),
+        },
+      });
+      audioStallStartedAtRef.current = 0;
+    }
+    if (segmentTransitionStartedAtRef.current) {
+      recordGeneratedAudioMetric('reader_audio_segment_transition', {
+        timings: {
+          transition_ms: Math.round(now - segmentTransitionStartedAtRef.current),
+        },
+        tags: {
+          from_segment_id: segmentTransitionFromRef.current,
+        },
+      });
+      segmentTransitionStartedAtRef.current = 0;
+      segmentTransitionFromRef.current = '';
+    }
+    setGeneratedAudioActive(true);
+    setTtsActive(true);
+    setTtsPaused(false);
+  }, [recordGeneratedAudioMetric]);
+
+  const markGeneratedAudioStall = useCallback(() => {
+    if (audioIntentStartedAtRef.current) return;
+    if (!audioStallStartedAtRef.current) audioStallStartedAtRef.current = readerNowMs();
+  }, []);
+
+  const handleGeneratedAudioSeeking = useCallback(() => {
+    if (!audioSeekStartedAtRef.current) audioSeekStartedAtRef.current = readerNowMs();
+  }, []);
+
+  const handleGeneratedAudioSeeked = useCallback(() => {
+    if (!audioSeekStartedAtRef.current) return;
+    recordGeneratedAudioMetric('reader_audio_seek', {
+      timings: {
+        seek_ms: Math.round(readerNowMs() - audioSeekStartedAtRef.current),
+      },
+    });
+    audioSeekStartedAtRef.current = 0;
+    persistGeneratedAudioProgress({ force: true });
+  }, [persistGeneratedAudioProgress, recordGeneratedAudioMetric]);
+
+  const handleGeneratedAudioPause = useCallback(() => {
+    audioStallStartedAtRef.current = 0;
+    persistGeneratedAudioProgress({ force: true });
+  }, [persistGeneratedAudioProgress]);
 
   const startTTS = useCallback(() => {
     if (!isContentPage) {
@@ -2029,6 +2233,7 @@ export default function Reader() {
 
   const pauseTTS = () => {
     if (generatedAudioActive) {
+      persistGeneratedAudioProgress({ force: true });
       generatedAudioRef.current?.pause?.();
     }
     setTtsPaused(true);
@@ -2036,7 +2241,11 @@ export default function Reader() {
 
   const resumeTTS = () => {
     if (generatedAudioActive) {
-      generatedAudioRef.current?.play?.().catch(() => toast.error('Generated audiobook could not resume.'));
+      audioIntentStartedAtRef.current = readerNowMs();
+      generatedAudioRef.current?.play?.().catch(() => {
+        audioIntentStartedAtRef.current = 0;
+        toast.error('Generated audiobook could not resume.');
+      });
       setTtsPaused(false);
       return;
     }
@@ -2068,13 +2277,18 @@ export default function Reader() {
   }, [currentPageWordOffset, generatedHighlightSyncEnabled, highlightGeneratedWord]);
 
   const handleGeneratedAudioTimeUpdate = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    if (audio) {
+      persistGeneratedAudioProgress();
+      prefetchNextGeneratedAudioMetadata(audio);
+    }
     if (ttsPaused) return;
     if (generatedHighlightRafRef.current) return;
     generatedHighlightRafRef.current = window.requestAnimationFrame(() => {
       generatedHighlightRafRef.current = 0;
       syncGeneratedAudioHighlight();
     });
-  }, [syncGeneratedAudioHighlight, ttsPaused]);
+  }, [persistGeneratedAudioProgress, prefetchNextGeneratedAudioMetadata, syncGeneratedAudioHighlight, ttsPaused]);
 
   const handleGeneratedAudioEnded = useCallback(() => {
     if (generatedHighlightRafRef.current) {
@@ -2086,6 +2300,13 @@ export default function Reader() {
     activeWordRef.current = null;
     highlightedWordIndexRef.current = -1;
     if (selectedGeneratedAudioTrack.nextSegmentId) {
+      persistGeneratedAudioProgress({
+        force: true,
+        segmentId: selectedGeneratedAudioTrack.nextSegmentId,
+        offset: 0,
+      });
+      segmentTransitionStartedAtRef.current = readerNowMs();
+      segmentTransitionFromRef.current = selectedGeneratedAudioTrack.segmentId || '';
       resumeAfterSegmentChangeRef.current = true;
       setGeneratedAudioPrimed(true);
       setGeneratedAudioSegmentId(selectedGeneratedAudioTrack.nextSegmentId);
@@ -2095,11 +2316,12 @@ export default function Reader() {
       setTtsWordIndex(-1);
       return;
     }
+    persistGeneratedAudioProgress({ force: true });
     setGeneratedAudioActive(false);
     setTtsActive(false);
     setTtsPaused(false);
     setTtsWordIndex(-1);
-  }, [selectedGeneratedAudioTrack.nextSegmentId]);
+  }, [persistGeneratedAudioProgress, selectedGeneratedAudioTrack.nextSegmentId, selectedGeneratedAudioTrack.segmentId]);
 
   useEffect(() => {
     if (!generatedAudioActive || ttsPaused) return undefined;
@@ -2142,18 +2364,6 @@ export default function Reader() {
         }).catch(() => {});
       }
 
-      if (!narrationDisabledForBook && generatedAudioSlug) {
-        if (generatedAudioManifestUrl) prefetchAsset(generatedAudioManifestUrl);
-        const nextTrack = selectAudioTrack({
-          manifest: generatedAudioManifest,
-          chapterId: nextChapter.id,
-          currentWordOffset: 0,
-          approvedAudioUrl: approvedGeneratedAudioUrl,
-          approvedTimestampsUrl: approvedGeneratedTimestampsUrl,
-        });
-        // Keep MP3 loading under the audio element so metadata/range requests do not become full-file prefetches.
-        prefetchAsset(nextTrack.timestampsUrl);
-      }
     });
     return () => cancelIdleTask(idleId);
   }, [
@@ -2161,14 +2371,8 @@ export default function Reader() {
     book,
     bookId,
     chapters,
-    generatedAudioManifest,
-    generatedAudioManifestUrl,
-    generatedAudioSlug,
-    approvedGeneratedAudioUrl,
-    approvedGeneratedTimestampsUrl,
     loading,
     lockedState,
-    narrationDisabledForBook,
     nextChapter,
     walletSeconds,
   ]);
@@ -2435,9 +2639,16 @@ export default function Reader() {
       {generatedAudioSlug && (
         <audio
           ref={generatedAudioRef}
+          crossOrigin="use-credentials"
           src={generatedAudioPrimed && generatedAudioAvailable ? generatedAudioUrl : undefined}
           preload={generatedAudioPrimed && generatedAudioAvailable ? 'metadata' : 'none'}
           onLoadedMetadata={handleGeneratedAudioMetadata}
+          onPlaying={handleGeneratedAudioPlaying}
+          onWaiting={markGeneratedAudioStall}
+          onStalled={markGeneratedAudioStall}
+          onSeeking={handleGeneratedAudioSeeking}
+          onSeeked={handleGeneratedAudioSeeked}
+          onPause={handleGeneratedAudioPause}
           onTimeUpdate={handleGeneratedAudioTimeUpdate}
           onEnded={handleGeneratedAudioEnded}
           style={{ display: 'none' }}
@@ -2942,6 +3153,7 @@ export default function Reader() {
                     if (generatedAudioRef.current) {
                       generatedAudioRef.current.playbackRate = nextSpeed;
                     }
+                    persistGeneratedAudioProgressRef.current({ force: true, speed: nextSpeed });
                   }}
                 />
               </div>

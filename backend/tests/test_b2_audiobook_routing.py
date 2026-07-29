@@ -18,73 +18,177 @@ def _server(monkeypatch):
 
 
 def _package_book():
-    package_version = f"sha256-{'a' * 64}"
-    audio_sha256 = "b" * 64
-    timestamps_sha256 = "c" * 64
+    from audiobook_packages import with_canonical_package_version
+
+    release_descriptor_sha256 = "1" * 64
+    manuscript_sha256 = "2" * 64
+    prefix = (
+        "v1/prod/sprint1/the-open-window/releases/"
+        f"{release_descriptor_sha256}/"
+    )
+
+    def asset(name, digest, size, mime_type, segment_id):
+        key = f"{prefix}{segment_id}.{name}"
+        return {
+            "sha256": digest,
+            "size_bytes": size,
+            "mime_type": mime_type,
+            "storage": {
+                "store": "prod",
+                "bucket": "earnalism-audio-prod",
+                "key": key,
+                "version_id": f"primary-{segment_id}-{name}",
+            },
+            "replicas": [
+                {
+                    "store": "dr",
+                    "bucket": "earnalism-audio-dr",
+                    "key": key,
+                    "version_id": f"replica-{segment_id}-{name}",
+                }
+            ],
+        }
+
+    package = with_canonical_package_version({
+        "schema_version": "audiobook_package_manifest.v2",
+        "slug": "the-open-window",
+        "release_evidence_version": "release-evidence-v1",
+        "release_descriptor_sha256": release_descriptor_sha256,
+        "source_sha256": "d" * 64,
+        "manuscript_sha256": manuscript_sha256,
+        "duration_ms": 620_000,
+        "segment_count": 2,
+        "word_count": 200,
+        "paragraph_count": 2,
+        "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+        "highlight_sync_enabled": True,
+        "tracks": [
+            {
+                "id": "chapter-001",
+                "chapter_id": "chapter-001",
+                "order": 0,
+                "title": "Chapter 1",
+                "start_word": 0,
+                "end_word": 199,
+                "start_paragraph": 0,
+                "end_paragraph": 1,
+                "chunks": [
+                    {
+                        "segment_id": "c001-s001",
+                        "order": 0,
+                        "start_word": 0,
+                        "end_word": 99,
+                        "start_paragraph": 0,
+                        "end_paragraph": 0,
+                        "cumulative_start_ms": 0,
+                        "duration_ms": 300_000,
+                        "assets": {
+                            "audio": asset(
+                                "audio",
+                                "b" * 64,
+                                4_800_000,
+                                "audio/mpeg",
+                                "c001-s001",
+                            ),
+                            "timestamps": asset(
+                                "timestamps",
+                                "c" * 64,
+                                1200,
+                                "application/json",
+                                "c001-s001",
+                            ),
+                            "vtt": asset(
+                                "vtt",
+                                "3" * 64,
+                                900,
+                                "text/vtt",
+                                "c001-s001",
+                            ),
+                            "metadata": asset(
+                                "metadata",
+                                "4" * 64,
+                                700,
+                                "application/json",
+                                "c001-s001",
+                            ),
+                        },
+                    },
+                    {
+                        "segment_id": "c001-s002",
+                        "order": 1,
+                        "start_word": 100,
+                        "end_word": 199,
+                        "start_paragraph": 1,
+                        "end_paragraph": 1,
+                        "cumulative_start_ms": 300_000,
+                        "duration_ms": 320_000,
+                        "assets": {
+                            "audio": asset(
+                                "audio",
+                                "e" * 64,
+                                5_120_000,
+                                "audio/mpeg",
+                                "c001-s002",
+                            ),
+                            "timestamps": asset(
+                                "timestamps",
+                                "f" * 64,
+                                1300,
+                                "application/json",
+                                "c001-s002",
+                            ),
+                            "vtt": asset(
+                                "vtt",
+                                "5" * 64,
+                                950,
+                                "text/vtt",
+                                "c001-s002",
+                            ),
+                            "metadata": asset(
+                                "metadata",
+                                "6" * 64,
+                                720,
+                                "application/json",
+                                "c001-s002",
+                            ),
+                        },
+                    },
+                ],
+            }
+        ],
+    })
+    release_evidence = {
+        "schema_version": "audiobook_package_release_evidence.v1",
+        "slug": "the-open-window",
+        "release_descriptor_sha256": release_descriptor_sha256,
+        "package_version": package["package_version"],
+        "primary_receipt_sha256": "7" * 64,
+        "replica_receipt_sha256": "8" * 64,
+        "receipt_roles": ["primary", "replica"],
+        "release_eligible": True,
+        "release_manifest_sha256": "9" * 64,
+        "release_manifest_size_bytes": 12345,
+        "release_manifest_key": (
+            f"{prefix}release-manifest.json"
+        ),
+        "primary_release_manifest_version_id": "primary-manifest-version",
+        "replica_release_manifest_version_id": "replica-manifest-version",
+        "primary_release_manifest_store": "prod",
+        "replica_release_manifest_store": "dr",
+        "primary_release_manifest_receipt_sha256": "a" * 64,
+        "replica_release_manifest_receipt_sha256": "0" * 64,
+    }
     return {
         "slug": "the-open-window",
         "is_published": True,
         "audiobook_enabled": True,
         "content_hash": "d" * 64,
+        "audiobook_manuscript_sha256": manuscript_sha256,
+        "audiobook_release_descriptor_sha256": release_descriptor_sha256,
         "audiobook_assets": {},
-        "audiobook_package": {
-            "schema_version": "audiobook_package_manifest.v2",
-            "slug": "the-open-window",
-            "package_version": package_version,
-            "release_evidence_version": "release-evidence-v1",
-            "source_sha256": "d" * 64,
-            "duration_ms": 620_000,
-            "segment_count": 2,
-            "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
-            "highlight_sync_enabled": True,
-            "tracks": [
-                {
-                    "id": "chapter-001",
-                    "chapter_id": "chapter-001",
-                    "order": 0,
-                    "title": "Chapter 1",
-                    "chunks": [
-                        {
-                            "segment_id": "c001-s001",
-                            "order": 0,
-                            "start_word": 0,
-                            "end_word": 99,
-                            "cumulative_start_ms": 0,
-                            "duration_ms": 300_000,
-                            "audio_size_bytes": 4_800_000,
-                            "audio_sha256": audio_sha256,
-                            "timestamps_sha256": timestamps_sha256,
-                            "audio_url": (
-                                "https://s3.us-west-004.backblazeb2.com/"
-                                "earnalism-private-qa-audio/prod/the-open-window/c001-s001.mp3"
-                            ),
-                            "timestamps_url": (
-                                "https://s3.us-west-004.backblazeb2.com/"
-                                "earnalism-private-qa-audio/prod/the-open-window/c001-s001.timestamps.json"
-                            ),
-                        },
-                        {
-                            "segment_id": "c001-s002",
-                            "order": 1,
-                            "start_word": 100,
-                            "end_word": 199,
-                            "cumulative_start_ms": 300_000,
-                            "duration_ms": 320_000,
-                            "audio_size_bytes": 5_120_000,
-                            "audio_sha256": "e" * 64,
-                            "timestamps_sha256": "f" * 64,
-                            "audio_url": (
-                                "https://s3.us-west-004.backblazeb2.com/"
-                                "earnalism-private-qa-audio/prod/the-open-window/c001-s002.mp3"
-                            ),
-                            "timestamps_url": (
-                                "https://s3.us-west-004.backblazeb2.com/"
-                                "earnalism-private-qa-audio/prod/the-open-window/c001-s002.timestamps.json"
-                            ),
-                        },
-                    ],
-                }
-            ],
+        "audiobook_package": package,
+        "audiobook_package_release_evidence": {
+            release_descriptor_sha256: release_evidence,
         },
     }
 
@@ -163,7 +267,63 @@ def test_package_manifest_projects_only_same_origin_release_gated_urls(monkeypat
     assert "release_evidence_version" not in manifest
     assert "backblazeb2.com" not in json.dumps(manifest)
     assert audio["assets"]["manifest"] == "/api/reader/book/the-open-window/audiobook/manifest"
-    assert audio["package_version"] == f"sha256-{'a' * 64}"
+    assert audio["package_version"] == book["audiobook_package"]["package_version"]
+
+
+def test_package_manifest_requires_release_eligible_runtime_evidence(monkeypatch):
+    server = _server(monkeypatch)
+
+    absent = _package_book()
+    absent.pop("audiobook_package_release_evidence")
+    assert server._reader_audio_package_manifest(absent, "the-open-window") is None
+
+    private_qa = _package_book()
+    descriptor = private_qa["audiobook_release_descriptor_sha256"]
+    private_qa["audiobook_package_release_evidence"][descriptor][
+        "release_eligible"
+    ] = False
+    assert (
+        server._reader_audio_package_manifest(private_qa, "the-open-window")
+        is None
+    )
+
+    tampered = _package_book()
+    tampered["audiobook_package_release_evidence"][descriptor][
+        "release_manifest_key"
+    ] = "v1/private-qa/release-manifest.json"
+    assert server._reader_audio_package_manifest(tampered, "the-open-window") is None
+
+
+def test_package_manifest_rejects_evidence_store_identity_mismatch(monkeypatch):
+    server = _server(monkeypatch)
+    book = _package_book()
+    descriptor = book["audiobook_release_descriptor_sha256"]
+    book["audiobook_package_release_evidence"][descriptor][
+        "primary_release_manifest_store"
+    ] = "private_audio"
+
+    assert server._reader_audio_package_manifest(book, "the-open-window") is None
+
+
+def test_package_manifest_rejects_matching_private_qa_store_as_release_eligible(monkeypatch):
+    server = _server(monkeypatch)
+    from audiobook_packages import with_canonical_package_version
+
+    book = _package_book()
+    descriptor = book["audiobook_release_descriptor_sha256"]
+    package = book["audiobook_package"]
+    for track in package["tracks"]:
+        for chunk in track["chunks"]:
+            for asset in chunk["assets"].values():
+                asset["storage"]["store"] = "private_audio"
+                asset["storage"]["bucket"] = "earnalism-private-qa-audio"
+    package = with_canonical_package_version(package)
+    book["audiobook_package"] = package
+    evidence = book["audiobook_package_release_evidence"][descriptor]
+    evidence["package_version"] = package["package_version"]
+    evidence["primary_release_manifest_store"] = "private_audio"
+
+    assert server._reader_audio_package_manifest(book, "the-open-window") is None
 
 
 def test_package_manifest_fails_closed_for_incomplete_or_noncontiguous_segments(monkeypatch):
@@ -211,19 +371,33 @@ def test_package_segment_resolves_exact_current_version_and_segment(monkeypatch)
     async def fake_book(_slug):
         return book
 
-    async def fake_stream(slug, asset_key, asset_url, request, *, extra_headers=None):
+    async def fake_stream(
+        slug,
+        asset_key,
+        asset_url,
+        request,
+        *,
+        extra_headers=None,
+        version_id="",
+    ):
         captured.update({
             "slug": slug,
             "asset_key": asset_key,
             "asset_url": asset_url,
             "request": request,
             "extra_headers": extra_headers,
+            "version_id": version_id,
         })
         return "STREAMED"
 
     monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
     monkeypatch.setattr(server, "_stream_audiobook_asset_url", fake_stream)
-    request = SimpleNamespace(headers={"range": "bytes=0-3"}, method="GET")
+    monkeypatch.setattr(
+        server,
+        "_audio_package_storage_url",
+        lambda storage: f"https://private.test/{storage['bucket']}/{storage['key']}",
+    )
+    request = SimpleNamespace(headers={"range": "bytes=0-3"}, method="GET", cookies={})
 
     response = asyncio.run(
         server._reader_book_audiobook_package_segment(
@@ -238,8 +412,93 @@ def test_package_segment_resolves_exact_current_version_and_segment(monkeypatch)
     assert response == "STREAMED"
     assert captured["slug"] == "the-open-window"
     assert captured["asset_key"] == "mp3"
-    assert captured["asset_url"].endswith("/prod/the-open-window/c001-s002.mp3")
+    assert captured["asset_url"].endswith("/c001-s002.audio")
     assert captured["extra_headers"] == {"X-Audiobook-Package-Version": package_version}
+    assert captured["version_id"] == "primary-c001-s002-audio"
+
+
+def test_finalized_prod_receipt_resolves_and_streams_exact_versioned_range(monkeypatch):
+    server = _server(monkeypatch)
+    book = _package_book()
+    package = book["audiobook_package"]
+    package_version = package["package_version"]
+    audio_asset = package["tracks"][0]["chunks"][1]["assets"]["audio"]
+    endpoint = "https://s3.us-west-004.backblazeb2.com"
+
+    monkeypatch.setattr(server, "B2_AUDIOBOOK_PROD_S3_ENDPOINT", endpoint)
+    monkeypatch.setattr(server, "B2_AUDIOBOOK_PROD_REGION", "us-west-004")
+    monkeypatch.setattr(server, "B2_AUDIOBOOK_PROD_BUCKET", "earnalism-audio-prod")
+    monkeypatch.setattr(server, "B2_AUDIOBOOK_PROD_READ_ACCESS_KEY_ID", "runtime-read-key")
+    monkeypatch.setattr(server, "B2_AUDIOBOOK_PROD_READ_SECRET_ACCESS_KEY", "runtime-read-secret")
+
+    async def fake_book(_slug):
+        return book
+
+    class FakeBody:
+        def __init__(self):
+            self.remaining = b"test"
+
+        def read(self, _size=-1):
+            payload, self.remaining = self.remaining, b""
+            return payload
+
+        def close(self):
+            return None
+
+    class FakeS3:
+        def __init__(self):
+            self.calls = []
+
+        def get_object(self, **kwargs):
+            self.calls.append(kwargs)
+            return {
+                "ContentLength": 4,
+                "ContentRange": f"bytes 0-3/{audio_asset['size_bytes']}",
+                "ContentType": "audio/mpeg",
+                "ETag": '"immutable-etag"',
+                "Body": FakeBody(),
+            }
+
+    fake_s3 = FakeS3()
+    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
+    monkeypatch.setattr(server, "_b2_client", lambda storage=None: fake_s3)
+    request = SimpleNamespace(
+        headers={"range": "bytes=0-3"},
+        method="GET",
+        cookies={},
+    )
+
+    runtime_store = next(
+        store for store in server._b2_storage_configs()
+        if store["name"] == "prod"
+    )
+    resolved_url = server._audio_package_storage_url(audio_asset["storage"])
+    response = asyncio.run(
+        server._reader_book_audiobook_package_segment(
+            "the-open-window",
+            package_version,
+            "c001-s002",
+            "mp3",
+            request,
+        )
+    )
+
+    assert runtime_store["access_key_id"] == "runtime-read-key"
+    assert runtime_store["secret_access_key"] == "runtime-read-secret"
+    assert resolved_url == (
+        f"{endpoint}/earnalism-audio-prod/{audio_asset['storage']['key']}"
+    )
+    assert response.status_code == 206
+    assert response.headers["content-range"] == (
+        f"bytes 0-3/{audio_asset['size_bytes']}"
+    )
+    assert response.headers["x-audiobook-package-version"] == package_version
+    assert fake_s3.calls == [{
+        "Bucket": "earnalism-audio-prod",
+        "Key": audio_asset["storage"]["key"],
+        "Range": "bytes=0-3",
+        "VersionId": audio_asset["storage"]["version_id"],
+    }]
 
 
 def test_package_segment_rejects_stale_version_and_unknown_segment(monkeypatch):
@@ -270,6 +529,108 @@ def test_package_segment_rejects_stale_version_and_unknown_segment(monkeypatch):
             assert exc.status_code == 404
         else:
             raise AssertionError("Stale or unknown package segments must fail closed")
+
+
+def test_package_rollout_selects_sticky_5_25_100_and_rollback(monkeypatch):
+    server = _server(monkeypatch)
+    from audiobook_packages import (
+        ACTIVE_RELEASE_SCHEMA_VERSION,
+        deterministic_rollout_bucket,
+    )
+
+    book = _package_book()
+    candidate = book.pop("audiobook_package")
+    candidate_descriptor = candidate["release_descriptor_sha256"]
+    legacy_descriptor = "9" * 64
+    salt = "package-v2-canary-v1"
+    book["audiobook_packages"] = {candidate_descriptor: candidate}
+    book["audiobook_active_release"] = {
+        "schema_version": ACTIVE_RELEASE_SCHEMA_VERSION,
+        "slug": "the-open-window",
+        "status": "ACTIVE",
+        "active_release_descriptor_sha256": legacy_descriptor,
+        "candidate_release_descriptor_sha256": candidate_descriptor,
+        "retained_release_descriptor_sha256s": [
+            legacy_descriptor,
+            candidate_descriptor,
+        ],
+        "rollout": {"percentage": 5, "salt": salt},
+    }
+
+    candidate_key = next(
+        f"reader-{index:024d}"
+        for index in range(1000)
+        if deterministic_rollout_bucket(
+            slug="the-open-window",
+            sticky_key=f"reader-{index:024d}",
+            salt=salt,
+        )
+        < 5
+    )
+    legacy_key = next(
+        f"reader-{index:024d}"
+        for index in range(1000)
+        if deterministic_rollout_bucket(
+            slug="the-open-window",
+            sticky_key=f"reader-{index:024d}",
+            salt=salt,
+        )
+        >= 25
+    )
+
+    selected, descriptor, _new = server._selected_audiobook_package(
+        book,
+        "the-open-window",
+        SimpleNamespace(cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: candidate_key}),
+    )
+    assert selected["package_version"] == candidate["package_version"]
+    assert descriptor == candidate_descriptor
+
+    selected, descriptor, _new = server._selected_audiobook_package(
+        book,
+        "the-open-window",
+        SimpleNamespace(cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: legacy_key}),
+    )
+    assert selected is None
+    assert descriptor == legacy_descriptor
+
+    book["audiobook_active_release"]["rollout"]["percentage"] = 25
+    selected, descriptor, _new = server._selected_audiobook_package(
+        book,
+        "the-open-window",
+        SimpleNamespace(cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: legacy_key}),
+    )
+    assert selected is None
+    assert descriptor == legacy_descriptor
+
+    book["audiobook_active_release"]["rollout"]["percentage"] = 100
+    selected, descriptor, _new = server._selected_audiobook_package(
+        book,
+        "the-open-window",
+        SimpleNamespace(cookies={}),
+    )
+    assert selected["package_version"] == candidate["package_version"]
+    assert descriptor == candidate_descriptor
+
+    # Rollback is a pointer-only mutation: zeroing the candidate rollout makes
+    # the immutable candidate inaccessible while legacy audio remains active.
+    book["audiobook_active_release"]["rollout"]["percentage"] = 0
+    selected, descriptor, _new = server._selected_audiobook_package(
+        book,
+        "the-open-window",
+        SimpleNamespace(cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: candidate_key}),
+    )
+    assert selected is None
+    assert descriptor == legacy_descriptor
+
+    book["audiobook_active_release"]["status"] = "INACTIVE"
+    selected, descriptor, _new = server._selected_audiobook_package(
+        book,
+        "the-open-window",
+        SimpleNamespace(cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: candidate_key}),
+    )
+    assert selected is None
+    assert descriptor == ""
 
 
 def test_b2_key_and_range_helpers(monkeypatch):
@@ -483,6 +844,209 @@ def test_b2_wrappers_preserve_kwargs_while_running_off_event_loop(monkeypatch):
         ("head", {"Bucket": "bucket", "Key": "book.mp3"}),
         ("get", {"Bucket": "bucket", "Key": "book.mp3", "Range": "bytes=0-3"}),
     ]
+
+
+def test_b2_wrappers_bind_reads_to_exact_version_id(monkeypatch):
+    server = _server(monkeypatch)
+
+    class FakeS3:
+        def __init__(self):
+            self.calls = []
+
+        def head_object(self, **kwargs):
+            self.calls.append(("head", kwargs))
+            return {"ContentLength": 10}
+
+        def get_object(self, **kwargs):
+            self.calls.append(("get", kwargs))
+            return {"ContentLength": 4, "Body": object()}
+
+    fake = FakeS3()
+    asyncio.run(
+        server._b2_head_object(
+            fake,
+            bucket="bucket",
+            key="book.mp3",
+            version_id="v-immutable",
+        )
+    )
+    asyncio.run(
+        server._b2_get_object(
+            fake,
+            bucket="bucket",
+            key="book.mp3",
+            byte_range="bytes=0-3",
+            version_id="v-immutable",
+        )
+    )
+
+    assert fake.calls == [
+        (
+            "head",
+            {
+                "Bucket": "bucket",
+                "Key": "book.mp3",
+                "VersionId": "v-immutable",
+            },
+        ),
+        (
+            "get",
+            {
+                "Bucket": "bucket",
+                "Key": "book.mp3",
+                "Range": "bytes=0-3",
+                "VersionId": "v-immutable",
+            },
+        ),
+    ]
+
+
+def test_direct_range_request_fails_closed_when_storage_ignores_range(monkeypatch):
+    server = _server(monkeypatch)
+    storage = {
+        "name": "audiobook_prod",
+        "endpoint": "https://s3.us-west-004.backblazeb2.com",
+        "region": "us-west-004",
+        "bucket": "private-prod",
+        "access_key_id": "key",
+        "secret_access_key": "secret",
+    }
+
+    class FakeBody:
+        closed = False
+
+        def close(self):
+            self.closed = True
+
+    body = FakeBody()
+
+    class FakeS3:
+        def head_object(self, **_kwargs):
+            return {
+                "ContentLength": 1000,
+                "ContentType": "audio/mpeg",
+            }
+
+        def get_object(self, **_kwargs):
+            return {
+                "ContentLength": 1000,
+                "ContentType": "audio/mpeg",
+                "Body": body,
+            }
+
+    monkeypatch.setattr(server, "_b2_storage_for_url", lambda _url: storage)
+    monkeypatch.setattr(server, "_b2_key_from_url", lambda _url, _storage: "v1/prod/book.mp3")
+    monkeypatch.setattr(server, "_b2_client", lambda _storage=None: FakeS3())
+    request = SimpleNamespace(headers={"range": "bytes=0-3"}, method="GET")
+
+    try:
+        asyncio.run(
+            server._stream_audiobook_asset_url(
+                "the-open-window",
+                "mp3",
+                "https://s3.us-west-004.backblazeb2.com/private-prod/v1/prod/book.mp3",
+                request,
+            )
+        )
+    except server.HTTPException as exc:
+        assert exc.status_code == 502
+        assert "byte range" in str(exc.detail).lower()
+    else:
+        raise AssertionError("A requested Range must never degrade to a full 200 response")
+
+    assert body.closed is True
+
+
+def test_invalid_range_returns_416_without_fetching_object_body(monkeypatch):
+    server = _server(monkeypatch)
+    storage = {
+        "name": "audiobook_prod",
+        "endpoint": "https://s3.us-west-004.backblazeb2.com",
+        "region": "us-west-004",
+        "bucket": "private-prod",
+        "access_key_id": "key",
+        "secret_access_key": "secret",
+    }
+
+    class FakeS3:
+        def __init__(self):
+            self.get_called = False
+
+        def head_object(self, **_kwargs):
+            return {
+                "ContentLength": 1000,
+                "ContentType": "audio/mpeg",
+            }
+
+        def get_object(self, **_kwargs):
+            self.get_called = True
+            error = RuntimeError("Requested range not satisfiable")
+            error.response = {"ResponseMetadata": {"HTTPStatusCode": 416}}
+            raise error
+
+    fake_s3 = FakeS3()
+    monkeypatch.setattr(server, "_b2_storage_for_url", lambda _url: storage)
+    monkeypatch.setattr(server, "_b2_key_from_url", lambda _url, _storage: "v1/prod/book.mp3")
+    monkeypatch.setattr(server, "_b2_client", lambda _storage=None: fake_s3)
+    request = SimpleNamespace(headers={"range": "bytes=1000-1001"}, method="GET")
+
+    response = asyncio.run(
+        server._stream_audiobook_asset_url(
+            "the-open-window",
+            "mp3",
+            "https://s3.us-west-004.backblazeb2.com/private-prod/v1/prod/book.mp3",
+            request,
+        )
+    )
+
+    assert response.status_code == 416
+    assert response.headers["content-range"] == "bytes */1000"
+    assert fake_s3.get_called is True
+
+
+def test_malformed_range_returns_416_without_fetching_object_body(monkeypatch):
+    server = _server(monkeypatch)
+    storage = {
+        "name": "audiobook_prod",
+        "endpoint": "https://s3.us-west-004.backblazeb2.com",
+        "region": "us-west-004",
+        "bucket": "private-prod",
+        "access_key_id": "key",
+        "secret_access_key": "secret",
+    }
+
+    class FakeS3:
+        def __init__(self):
+            self.get_called = False
+
+        def head_object(self, **_kwargs):
+            return {
+                "ContentLength": 1000,
+                "ContentType": "audio/mpeg",
+            }
+
+        def get_object(self, **_kwargs):
+            self.get_called = True
+            raise AssertionError("malformed ranges must not fetch object bytes")
+
+    fake_s3 = FakeS3()
+    monkeypatch.setattr(server, "_b2_storage_for_url", lambda _url: storage)
+    monkeypatch.setattr(server, "_b2_key_from_url", lambda _url, _storage: "v1/prod/book.mp3")
+    monkeypatch.setattr(server, "_b2_client", lambda _storage=None: fake_s3)
+    request = SimpleNamespace(headers={"range": "bytes=not-a-range"}, method="GET")
+
+    response = asyncio.run(
+        server._stream_audiobook_asset_url(
+            "the-open-window",
+            "mp3",
+            "https://s3.us-west-004.backblazeb2.com/private-prod/v1/prod/book.mp3",
+            request,
+        )
+    )
+
+    assert response.status_code == 416
+    assert response.headers["content-range"] == "bytes */1000"
+    assert fake_s3.get_called is False
 
 
 def test_open_window_controlled_release_exposes_only_proxy_assets_with_disclosure(monkeypatch):

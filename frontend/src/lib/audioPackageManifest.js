@@ -121,6 +121,9 @@ export function selectAudioTrack({
       packageVersion: manifest.packageVersion || manifest.version || '',
       segmentId: chunk?.segmentId || '',
       nextSegmentId: nextChunk?.segmentId || '',
+      nextAudioUrl: nextChunk?.audioUrl || '',
+      nextTimestampsUrl: nextChunk?.timestampsUrl || '',
+      nextVersion: nextChunk?.version || '',
       chapterId: track.chapterId || '',
       chunked: Boolean(chunk || chunks.length),
     };
@@ -136,6 +139,9 @@ export function selectAudioTrack({
     packageVersion: '',
     segmentId: '',
     nextSegmentId: '',
+    nextAudioUrl: '',
+    nextTimestampsUrl: '',
+    nextVersion: '',
     chapterId: chapterId || '',
     chunked: false,
   };
