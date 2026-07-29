@@ -99,13 +99,18 @@ class ElevenLabsSettings:
         return sha256_text(json.dumps(self.request_settings(), sort_keys=True, ensure_ascii=False))
 
     def request_settings(self) -> dict[str, Any]:
-        return {
-            "speed": self.speed,
+        settings = {
             "stability": self.stability,
             "similarity_boost": self.similarity_boost,
             "style": self.style_exaggeration,
             "use_speaker_boost": self.speaker_boost,
         }
+        # ElevenLabs documents speed as unavailable for Eleven v3. Omitting the
+        # field keeps the request compatible while preserving the configured
+        # value for models that support it.
+        if self.model_id != "eleven_v3":
+            settings["speed"] = self.speed
+        return settings
 
 
 def build_tts_request_body(text: str, settings: ElevenLabsSettings) -> dict[str, Any]:

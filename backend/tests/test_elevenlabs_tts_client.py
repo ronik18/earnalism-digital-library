@@ -35,6 +35,16 @@ def test_dry_run_request_body_does_not_require_api_key(monkeypatch):
     assert "xi-api-key" not in str(body)
 
 
+def test_eleven_v3_request_omits_unsupported_speed():
+    body = build_tts_request_body(
+        "মুচিরাম গুড় মহাশয়।",
+        settings(model_id="eleven_v3", speed=0.9),
+    )
+
+    assert body["model_id"] == "eleven_v3"
+    assert "speed" not in body["voice_settings"]
+
+
 def test_dry_run_generation_record_never_calls_provider(monkeypatch):
     monkeypatch.setenv("ELEVENLABS_API_KEY", "dummy-env-value")
     output_path = Path.cwd() / "internal" / "audiobook_lab" / "pytest-client" / "chunk.mp3"

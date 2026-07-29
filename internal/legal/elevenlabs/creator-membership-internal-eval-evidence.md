@@ -81,3 +81,29 @@ generation.
 - listen_now_cta_allowed: false
 - audio_object_metadata_allowed: false
 - next_action: Generate one short internal Dracula sample manually in ElevenLabs Studio/UI, then import it through the internal validator.
+
+## 2026-07-29 Muchiram One-Preview Owner Addendum
+
+The owner explicitly authorized one bounded ElevenLabs preview for
+`muchiram-gurer-jibanchorit` on 2026-07-29. This addendum overrides the
+Dracula-only and manual-generation-only restrictions above solely for this one
+internal API request:
+
+- owner_decision: `AUTHORIZE_ONE_ELEVENLABS_MUCHIRAM_INTERNAL_PREVIEW`
+- text_scope: canonical 213-character Muchiram opening passage only
+- text_sha256: `1ebd84cd348bb47004917e3efa98b812f64dc62693eb18f0b728e86f1c341f16`
+- selected_voice_name: Rachel
+- selected_voice_id: `21m00Tcm4TlvDq8ikWAM`
+- selected_model: `eleven_v3`
+- maximum_estimated_cost_usd: `0.30`
+- voice_cloning_used: false
+- beta_services_used: false
+- elevenreader_used: false
+- output_scope: private internal comparison only under `internal/audiobook_lab/`
+- publication_approved: false
+- public_release_approved: false
+
+After the one request completes or fails, API generation returns to blocked
+unless a new owner authorization is recorded. Nothing in this addendum approves
+full-title generation, upload, production metadata, public playback, or a
+release-gate change.

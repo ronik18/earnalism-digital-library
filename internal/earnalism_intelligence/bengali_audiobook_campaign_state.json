@@ -58,6 +58,25 @@
     "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_source_bound_release_attempt_20260729.json",
     "next_action": "Receive one complete rights-cleared source-bound narration through the prepared packet; do not repeat the closed Google, Sarvam Ratan, or Bengali VITS fingerprints."
   },
+  "muchiram_elevenlabs_preview_20260729": {
+    "status": "GENERATED_INTERNAL_ONLY_UNSCORED",
+    "provider": "ElevenLabs",
+    "model": "eleven_v3",
+    "voice": "Rachel",
+    "voice_id": "21m00Tcm4TlvDq8ikWAM",
+    "text_length": 213,
+    "text_sha256": "1ebd84cd348bb47004917e3efa98b812f64dc62693eb18f0b728e86f1c341f16",
+    "audio_sha256": "1928357e91506ad036cb924d4db9e3049b4b97f6d5dabe182abffd37e093ab9f",
+    "duration_seconds": 15.2,
+    "sample_rate_hz": 44100,
+    "owner_authorization": "AUTHORIZE_ONE_ELEVENLABS_MUCHIRAM_INTERNAL_PREVIEW",
+    "maximum_estimated_cost_usd": 0.3,
+    "actual_provider_billing": "NOT_REPORTED",
+    "paid_lock_restored": true,
+    "public_audio_status": "AUDIO_HIDDEN",
+    "publication_performed": false,
+    "next_action": "Owner listening comparison only. Do not repeat this fingerprint or widen to full title; require a distinct four-passage representative pass first."
+  },
   "sprint1_scope_reconciliation": {
     "generated_at": "2026-07-22T20:18:07Z",
     "truth_source": "backend/data/home_hero_curation.json",

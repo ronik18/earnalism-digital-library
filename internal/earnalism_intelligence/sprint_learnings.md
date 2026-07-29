@@ -844,3 +844,22 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   continuation is one complete rights-cleared narration through the prepared
   packet, followed by every objective, listening, delivery, endpoint, and
   browser gate.
+
+## 2026-07-29 — Muchiram one-call ElevenLabs v3 comparison
+
+- The owner authorized one API-based internal preview using the existing
+  Rachel platform voice. Eleven v3 was required because ElevenLabs currently
+  lists Bengali under v3 but not Multilingual v2.
+- Eleven v3 does not accept the speed voice setting, so the guarded client now
+  omits `speed` for that model while preserving it for compatible models.
+- The exact 213-character canonical opening with text hash
+  `1ebd84cd348bb47004917e3efa98b812f64dc62693eb18f0b728e86f1c341f16`
+  produced a 15.2-second, 44.1 kHz mono MP3 using Rachel. The audio hash is
+  `1928357e91506ad036cb924d4db9e3049b4b97f6d5dabe182abffd37e093ab9f`.
+- This is an unscored private comparison sample, not representative or
+  full-title release evidence. Do not repeat the exact fingerprint. A
+  materially positive owner listening result may justify one distinct
+  four-passage representative audition; it does not justify full generation.
+- The paid lock was restored and then closed to provider-free comparison. No
+  upload, metadata mutation, public endpoint, Listen control, or publication
+  occurred.
