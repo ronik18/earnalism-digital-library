@@ -1,0 +1,145 @@
+{
+  "generated_at": "2026-07-29T05:50:00Z",
+  "slug": "muchiram-gurer-jibanchorit",
+  "title": "মুচিরাম গুড়ের জীবনচরিত",
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "status": "HUMAN_NARRATION_OR_LICENSED_DELIVERY_REQUIRED",
+  "release_decision": "NO_GO_AUDIO_REMAINS_HIDDEN",
+  "source": {
+    "clean_manuscript_path": "internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit/clean_manuscript.txt",
+    "clean_manuscript_sha256": "b0c5e8602ff0e54593e677700bffe4b84cd7053bd2019c1ca71957fa43cd3216",
+    "packet_manuscript_sha256": "0e9455b19181966cd83886298b223030bd427f8e9c54aaaafd69aba4c0b743e6",
+    "controlled_source_sha256": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
+    "source_binding_sha256": "e4c19f7f430b4ef45b969b1a90d82a718d07e5cdf354a5504cbe858207185477",
+    "rights_status": "PASS",
+    "reader_status": "LIVE",
+    "covers_status": "PASS"
+  },
+  "sarvam_representative": {
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style_profile": "literary_warm_pacing",
+    "passage_count": 4,
+    "all_passages_exact_source_substrings": true,
+    "full_duration_rejudge": {
+      "opening": {
+        "score": 7.8,
+        "confidence": 0.85,
+        "fatal_flags": [
+          "robotic_texture_detected",
+          "mechanical_cadence_detected"
+        ]
+      },
+      "middle": {
+        "score": 8.0,
+        "confidence": 0.85,
+        "fatal_flags": []
+      },
+      "previous_failure_section": {
+        "score": 6.5,
+        "confidence": 0.85,
+        "fatal_flags": [
+          "robotic_texture_detected",
+          "mechanical_cadence_detected",
+          "list_reading_rhythm_detected"
+        ]
+      },
+      "ending": {
+        "score": 7.8,
+        "confidence": 0.9,
+        "fatal_flags": [
+          "robotic_texture_detected",
+          "mechanical_cadence_detected"
+        ]
+      }
+    },
+    "required_overall_score": 9.2,
+    "required_confidence": 0.9,
+    "result": "FAIL_AUTOMATED_PROVIDER_PLATEAU_CONFIRMED",
+    "new_full_title_generation_performed": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "evidence": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bengali_tts_provider_bakeoff_report.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_tts_provider_bakeoff_report.json"
+    ]
+  },
+  "open_source_vits_pilot": {
+    "model": "bangla-speech-processing/bangla_tts_male",
+    "model_revision": "f27d28f4a2a9979b1711578364c1e8399c45cff4",
+    "model_license": "MIT",
+    "runtime": "coqui-tts 0.27.5",
+    "reference_audio_used": false,
+    "opening_audio_sha256": "8f194cf84d74d6b713f2aa9fa19f289425d6727e3327fab0e7897bc7947c471d",
+    "opening_duration_seconds": 19.586757,
+    "opening_asr": {
+      "provider": "sarvam",
+      "model": "saaras:v3",
+      "normalized_source_score": 9.54,
+      "phonetic_projection_score": 9.703,
+      "coverage": 0.9703,
+      "first_words_match": true,
+      "last_words_match": true,
+      "required_source_score": 9.7,
+      "required_coverage": 0.98,
+      "result": "FAIL_SOURCE_FIDELITY"
+    },
+    "sentence_breathing_variant": {
+      "audio_sha256": "2cd20ed041b237a6f53f2e683bb72a09bbecc2c44699ab600f00d1a3dae0ea94",
+      "duration_seconds": 21.71619,
+      "normalized_source_score": 9.54,
+      "phonetic_projection_score": 9.612,
+      "coverage": 0.9612,
+      "first_words_match": true,
+      "last_words_match": true,
+      "result": "FAIL_NO_IMPROVEMENT"
+    },
+    "listening_qa_performed": false,
+    "stop_reason": "Objective ASR/source and coverage gates failed before listening QA.",
+    "evidence": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_bangla_vits_male_pilot/sarvam_asr_opening_no_timestamps.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_bangla_vits_male_pilot/opening_sentence_breathing/sarvam_asr.json"
+    ]
+  },
+  "ai_doc_maker_candidate": {
+    "voice": "fancy",
+    "preview_sha256": "5a410fedb757a62f58ce95010d69209775fdb39214c0f61bd9e20050dbc2c186",
+    "preview_duration_seconds": 28.824,
+    "preview_sample_rate_hz": 24000,
+    "preview_content_status": "OPENING_CONTENT_PHONETICALLY_RECOGNIZABLE_NOT_RELEASE_VALID",
+    "full_delivery_status": "INACCESSIBLE",
+    "direct_download_status": 429,
+    "browser_status": "FILE_NOT_FOUND_OR_LOGIN_REQUIRED",
+    "account_plan_and_attribution_status": "UNKNOWN",
+    "result": "DO_NOT_IMPORT"
+  },
+  "delivery": {
+    "complete_release_candidate_exists": false,
+    "private_upload_performed": false,
+    "checksum_binding_performed": false,
+    "endpoint_verification_performed": false,
+    "browser_playback_verification_performed": false
+  },
+  "production_verification": {
+    "checked_at": "2026-07-29T05:50:00Z",
+    "sprint1_reader_count": 32,
+    "approved_audiobook_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ],
+    "muchiram_audio_endpoint_status": 404,
+    "muchiram_public_audio_status": "AUDIO_HIDDEN"
+  },
+  "cost": {
+    "sarvam_representative_tts_estimate_usd": 0.0141,
+    "sarvam_asr_completed_estimate_usd": 0.0081,
+    "listening_judge_actual_billing": "NOT_REPORTED",
+    "campaign_cap_usd": 75.0,
+    "per_title_cap_usd": 8.0,
+    "budget_exceeded": false
+  },
+  "next_action": "Receive one complete rights-cleared Muchiram narration through the prepared packet, then run full source fidelity, measured sync, six-sample listening, private upload, checksum, metadata, endpoint, and browser gates before activation."
+}

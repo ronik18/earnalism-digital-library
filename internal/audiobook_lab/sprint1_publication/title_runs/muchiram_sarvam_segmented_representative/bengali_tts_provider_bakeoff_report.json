@@ -1,16 +1,16 @@
 {
   "status": "BLOCKED",
-  "started_at": "2026-07-29T05:38:11Z",
-  "finished_at": "2026-07-29T05:38:25Z",
-  "run_dir": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge",
+  "started_at": "2026-07-29T05:36:11Z",
+  "finished_at": "2026-07-29T05:36:45Z",
+  "run_dir": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative",
   "release_policy": "bengali_audiobook_acceptance_v2_92",
   "policy_decision_path": "internal/audiobook_lab/release_gate/bengali_audiobook_acceptance_v2_92_policy_decision.json",
   "candidate_source": "explicit_candidate_slugs",
   "bengali_audiobook_92_rescue": true,
   "adaptive_optimizer": false,
-  "pilot_selection_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_audiobook_pilot_selection_report.json",
+  "pilot_selection_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bengali_audiobook_pilot_selection_report.json",
   "text_prep_comparison_report_path": "",
-  "postprocess_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_audio_postprocess_report.json",
+  "postprocess_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bengali_audio_postprocess_report.json",
   "listening_thresholds_applied": {
     "naturalness_score": 8.9,
     "pronunciation_score": 8.9,
@@ -88,7 +88,7 @@
       }
     }
   },
-  "provider_capability_probe_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_provider_capability_probe.json",
+  "provider_capability_probe_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bengali_provider_capability_probe.json",
   "provider_capability_probe": {
     "sarvam": {
       "provider": "sarvam",
@@ -212,46 +212,44 @@
     "failed_chunk_05",
     "ending"
   ],
-  "passages_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bakeoff_passages.json",
-  "sample_results_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bakeoff_sample_results.json",
-  "bengali_existing_sample_judging_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_existing_sample_judging_report.json",
+  "passages_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bakeoff_passages.json",
+  "sample_results_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bakeoff_sample_results.json",
+  "bengali_existing_sample_judging_report_path": "",
   "cost_estimate": {
     "estimated_cost_usd": 0.0141,
-    "budget_usd": 0.15,
+    "budget_usd": 0.3,
     "actual_cost_if_available": "not_available"
   },
   "quota_probe_status": "PASS",
-  "quota_probe_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/openai_listening_qa_quota_probe.json",
+  "quota_probe_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/openai_listening_qa_quota_probe.json",
   "existing_audio_inventory": {
-    "audio_file_count": 10,
+    "audio_file_count": 8,
     "canonical_sample_count": 4,
     "audio_counts_by_provider_voice": {
-      "sarvam/ratan": 10
+      "sarvam/ratan": 8
     },
     "canonical_counts_by_provider_voice": {
       "sarvam/ratan": 4
     },
     "audio_paths": [
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/ending_74f6bf81ae0f.wav",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/ending_74f6bf81ae0f_listening_qa.mp3",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/failed_chunk_05_12a55acd671b.wav",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/failed_chunk_05_12a55acd671b_clipped.mp3",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/failed_chunk_05_12a55acd671b_listening_qa.mp3",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/middle_20f268e55f17.wav",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/middle_20f268e55f17_listening_qa.mp3",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/opening_5e816e897e36.wav",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/opening_5e816e897e36_clipped.mp3",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/opening_5e816e897e36_listening_qa.mp3"
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/ending_74f6bf81ae0f.wav",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/ending_74f6bf81ae0f_listening_qa.mp3",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/failed_chunk_05_12a55acd671b.wav",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/failed_chunk_05_12a55acd671b_clipped.mp3",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/middle_20f268e55f17.wav",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/middle_20f268e55f17_listening_qa.mp3",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/opening_5e816e897e36.wav",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/opening_5e816e897e36_clipped.mp3"
     ],
     "canonical_sample_paths": [
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/ending_74f6bf81ae0f.wav",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/failed_chunk_05_12a55acd671b.wav",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/middle_20f268e55f17.wav",
-      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/opening_5e816e897e36.wav"
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/ending_74f6bf81ae0f.wav",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/failed_chunk_05_12a55acd671b.wav",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/middle_20f268e55f17.wav",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/opening_5e816e897e36.wav"
     ]
   },
-  "cache_hit_samples_reused": 4,
-  "new_samples_generated": 0,
+  "cache_hit_samples_reused": 0,
+  "new_samples_generated": 4,
   "adaptive_early_stop_events": [],
   "voice_results": [
     {
@@ -284,38 +282,41 @@
         "pronunciation_score": 7.0,
         "emotional_expression_score": 6.5,
         "punctuation_pause_score": 6.0,
-        "pacing_score": 6.5,
-        "continuity_score": 7.0,
-        "anti_robotic_texture_score": 6.0,
-        "anti_choppy_join_score": 6.5,
+        "pacing_score": 5.5,
+        "continuity_score": 6.0,
+        "anti_robotic_texture_score": 5.0,
+        "anti_choppy_join_score": 5.5,
         "listener_enjoyment_score": 6.0,
-        "overall_listening_score": 6.5,
+        "overall_listening_score": 6.0,
         "confidence_score": 0.85
       },
       "flags": {
         "robotic_texture_detected": true,
         "mechanical_cadence_detected": true,
-        "choppy_joins_detected": false,
+        "choppy_joins_detected": true,
         "fallback_tts_detected": false,
         "list_reading_rhythm_detected": true,
         "repeated_identical_sentence_endings_detected": false,
         "abrupt_tts_resets_detected": false,
         "placeholder_audio_detected": false
       },
-      "overall_listening_score": 6.5,
+      "overall_listening_score": 6.0,
       "confidence_score": 0.85,
       "status": "BLOCKED",
       "blockers": [
-        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 6.5 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 5.5 < 9.2",
         "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 9.2",
-        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 8.2 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 8.3 < 9.2",
         "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 8.5 < 9.2",
-        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 5.0 < 9.2",
         "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 9.2",
         "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 8.3 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: choppy_joins_detected must be False.",
         "AUDIO_LISTENING_QUALITY_FAILED: confidence_score below bengali_audiobook_acceptance_v2_92 threshold: 0.85 < 0.9",
-        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 8.2 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 6.5 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 7.8 < 8.9",
@@ -326,11 +327,11 @@
         "AUDIO_LISTENING_QUALITY_FAILED: mechanical_cadence_detected must be False.",
         "AUDIO_LISTENING_QUALITY_FAILED: naturalness_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: naturalness_score below bengali_audiobook_acceptance_v2_92 threshold: 8.5 < 8.9",
-        "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 6.5 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 9.2",
         "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 7.8 < 9.2",
         "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 9.2",
-        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 6.5 < 8.9",
-        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 7.2 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 5.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 8.2 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: pronunciation_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 8.9",
@@ -340,16 +341,15 @@
         "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 7.8 < 8.9",
         "AUDIO_LISTENING_QUALITY_FAILED: robotic_texture_detected must be False.",
-        "Mechanical cadence and list-reading rhythm reduce naturalness and listener enjoyment. Pronunciation and emotional expression need improvement. Pacing and punctuation pauses are not optimal.",
         "Mechanical cadence and robotic texture reduce listener enjoyment and naturalness.",
-        "Mechanical cadence and robotic texture reduce the naturalness and listener enjoyment, requiring improvement before premium release."
+        "Robotic texture, mechanical cadence, choppy joins, and list-reading rhythm reduce the quality below release standards."
       ]
     }
   ],
   "best_provider": "sarvam",
   "best_voice": "ratan",
   "best_style_profile": "literary_warm_pacing",
-  "best_score": 6.5,
+  "best_score": 6.0,
   "best_confidence": 0.85,
   "any_audition_passed": false,
   "pass_fail_decision": "AUDIO_PROVIDER_QUALITY_LIMIT",
@@ -358,11 +358,10 @@
   "blockers": [
     "No available provider/voice passed all schema-3 listening QA audition thresholds."
   ],
-  "report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_tts_provider_bakeoff_report.json",
+  "report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bengali_tts_provider_bakeoff_report.json",
   "status_path": "internal/audiobook_lab/release_gate/bengali_provider_bakeoff_status.json",
-  "bengali_provider_audition_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_provider_audition_report.json",
-  "bengali_representative_audition_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_representative_audition_report.json",
+  "bengali_provider_audition_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bengali_provider_audition_report.json",
+  "bengali_representative_audition_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bengali_representative_audition_report.json",
   "sarvam_corrective_audition_report_path": "sarvam_corrective_audition_report.json",
-  "interrupted_progress_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_provider_bakeoff_interrupted_progress.json",
-  "bengali_provider_limit_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_audio_provider_limit_report.json"
+  "bengali_provider_limit_report_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bengali_audio_provider_limit_report.json"
 }

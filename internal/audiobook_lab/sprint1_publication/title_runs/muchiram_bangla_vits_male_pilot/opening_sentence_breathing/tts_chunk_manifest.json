@@ -1,0 +1,21 @@
+{
+  "slug": "muchiram-gurer-jibanchorit",
+  "provider": "open_source_coqui_vits",
+  "model": "bangla-speech-processing/bangla_tts_male",
+  "model_revision": "f27d28f4a2a9979b1711578364c1e8399c45cff4",
+  "model_license": "MIT",
+  "text_prep_variant": "source_preserving_sentence_breathing",
+  "sentence_pause_seconds": 0.35,
+  "source_text_sha256": "b0c5e8602ff0e54593e677700bffe4b84cd7053bd2019c1ca71957fa43cd3216",
+  "chunks": [
+    {
+      "index": 0,
+      "passage_id": "opening",
+      "path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_bangla_vits_male_pilot/opening_sentence_breathing/opening_sentence_breathing.wav",
+      "duration_seconds": 21.71619,
+      "audio_sha256": "2cd20ed041b237a6f53f2e683bb72a09bbecc2c44699ab600f00d1a3dae0ea94",
+      "text_sha256": "1ebd84cd348bb47004917e3efa98b812f64dc62693eb18f0b728e86f1c341f16",
+      "text": "মুচিরাম গুড় মহাশয় এই জগৎ পবিত্র করিবার জন্য, কোন্ শকে জন্মগ্রহণ করিয়াছিলেন, ইতিহাসে তাহা লেখে না। ইতিহাস এরূপ অনেকপ্রকার বদমাইসি করিয়া থাকে। এ দেশে ইতিহাসের সাক্ষাৎ পাওয়া যায় না, নচেৎ উচিত ব্যবস্থা করা যাইত।"
+    }
+  ]
+}

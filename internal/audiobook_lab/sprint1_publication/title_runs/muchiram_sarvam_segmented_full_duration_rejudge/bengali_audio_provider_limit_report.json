@@ -1,0 +1,11 @@
+{
+  "status": "AUDIO_PROVIDER_QUALITY_LIMIT",
+  "reason": "No available Bengali TTS provider/voice reached bengali_audiobook_acceptance_v2_92 listening-quality thresholds in audition.",
+  "release_policy": "bengali_audiobook_acceptance_v2_92",
+  "policy_decision_path": "internal/audiobook_lab/release_gate/bengali_audiobook_acceptance_v2_92_policy_decision.json",
+  "best_provider": "sarvam",
+  "best_voice": "ratan",
+  "best_score": 6.5,
+  "recommendation": "Keep Bengali audiobooks hidden and continue Bengali reader-only publication until a better provider or approved human/licensed import path is available.",
+  "bakeoff_report": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/bengali_tts_provider_bakeoff_report.json"
+}

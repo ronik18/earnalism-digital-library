@@ -31,6 +31,12 @@ ARTIFACT_KEYS = {
     "meta": "meta",
 }
 
+SUPPORTED_AUDIO_SUFFIXES = {
+    ".mp3": "audio/mpeg",
+    ".wav": "audio/wav",
+    ".flac": "audio/flac",
+}
+
 
 def has_b2_credentials() -> bool:
     return bool(
@@ -59,12 +65,24 @@ def b2_client():
 def content_type_for_key(key: str) -> str:
     return {
         "mp3": "audio/mpeg",
+        "wav": "audio/wav",
+        "flac": "audio/flac",
         "json": "application/json",
         "timestamps": "application/json",
         "vtt": "text/vtt",
         "chapters": "application/json",
         "meta": "application/json",
     }.get(key, "application/octet-stream")
+
+
+def audio_suffix(path: Path) -> str:
+    suffix = path.suffix.lower()
+    if suffix not in SUPPORTED_AUDIO_SUFFIXES:
+        supported = ", ".join(sorted(SUPPORTED_AUDIO_SUFFIXES))
+        raise ValueError(
+            f"Unsupported final audio format {suffix or '<missing>'}; expected one of: {supported}"
+        )
+    return suffix.lstrip(".")
 
 
 def upload_b2(path: Path, *, key: str) -> dict[str, Any]:
@@ -222,7 +240,11 @@ def main() -> int:
     storage_backend = "b2_s3" if has_b2_credentials() else "cloudinary_raw"
     for key, path in paths.items():
         if storage_backend == "b2_s3":
-            suffix = {"mp3": "mp3", "timestamps": "json", "vtt": "vtt", "chapters": "json", "meta": "json"}[key]
+            suffix = (
+                audio_suffix(path)
+                if key == "mp3"
+                else {"timestamps": "json", "vtt": "vtt", "chapters": "json", "meta": "json"}[key]
+            )
             object_key = f"earnalism/audiobooks/{args.slug}/{args.slug}_{key}_{sha256_file(path)[:12]}.{suffix}"
             upload = upload_b2(path, key=object_key)
             url = upload.get("secure_url") or ""

@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-07-29T05:47:59Z",
+  "slug": "muchiram-gurer-jibanchorit",
+  "status": "CALIBRATION_REPAIR_REQUIRED",
+  "fingerprint": {
+    "slug": "muchiram-gurer-jibanchorit",
+    "provider": "sarvam",
+    "chunks": [
+      {
+        "chunk_id": "group_0000",
+        "audio_hash": "8f194cf84d74d6b713f2aa9fa19f289425d6727e3327fab0e7897bc7947c471d"
+      }
+    ],
+    "models": [
+      "saaras:v3"
+    ],
+    "languages": [
+      "bn-IN"
+    ],
+    "modes": [
+      "transcribe"
+    ],
+    "require_timestamps": true,
+    "source_manifest_sha256": "5f8b0d3cc1986c39d7a14684f1e49230684ee577e1229c4f56b14c19778fe765",
+    "provider_configuration": {
+      "endpoint": "https://api.sarvam.ai/speech-to-text",
+      "transport": "rest",
+      "mode": [
+        "transcribe"
+      ],
+      "with_timestamps": true,
+      "clip_seconds": 29.0,
+      "clip_codec": "pcm_s16le_16khz_mono"
+    },
+    "runner_sha256": "5cb04a346230279840c9acaf0c4816222b2a62677f24b6457d76418f9c1c75dd",
+    "adapter_sha256": "2952c215dec8a68e1f93f60ecf69178a59d7cb613c24e0b644272a0863f0db31",
+    "normalizer_sha256": "bdd82222a24a09c13c6aff69c9da446b44754eb2668dd5c2a35017766deb486c"
+  },
+  "estimated_cost_usd": 0.0026,
+  "max_estimated_usd": 0.02,
+  "prior_estimated_usd": 18.2415,
+  "estimated_cumulative_usd": 18.2441,
+  "cumulative_cap_usd": 75.0,
+  "provider_calls_ran": true,
+  "results": [
+    {
+      "model": "saaras:v3",
+      "provider": "sarvam",
+      "language": "bn-IN",
+      "mode": "transcribe",
+      "chunk_id": "group_0000",
+      "audio_hash": "8f194cf84d74d6b713f2aa9fa19f289425d6727e3327fab0e7897bc7947c471d",
+      "duration_seconds": 19.586757,
+      "status": "ERROR",
+      "error": "RuntimeError: Sarvam ASR returned segment timestamps instead of word timestamps"
+    }
+  ],
+  "completed_call_estimated_cost_usd": 0.0026,
+  "arm_summaries": [
+    {
+      "provider": "sarvam",
+      "model": "saaras:v3",
+      "language": "bn-IN",
+      "mode": "transcribe",
+      "status": "BELOW_THRESHOLD",
+      "chunk_ids": [
+        "group_0000"
+      ],
+      "expected_chunk_ids": [
+        "group_0000"
+      ],
+      "all_chunks_present": true,
+      "source_score": 0.0,
+      "source_score_min": 0.0,
+      "coverage_min": 0.0,
+      "token_order_similarity_min": 0.0,
+      "bengali_script_ratio": 0.0,
+      "all_boundaries_match": false
+    }
+  ],
+  "best_arm": {
+    "provider": "sarvam",
+    "model": "saaras:v3",
+    "language": "bn-IN",
+    "mode": "transcribe",
+    "status": "BELOW_THRESHOLD",
+    "chunk_ids": [
+      "group_0000"
+    ],
+    "expected_chunk_ids": [
+      "group_0000"
+    ],
+    "all_chunks_present": true,
+    "source_score": 0.0,
+    "source_score_min": 0.0,
+    "coverage_min": 0.0,
+    "token_order_similarity_min": 0.0,
+    "bengali_script_ratio": 0.0,
+    "all_boundaries_match": false
+  },
+  "actual_provider_billing": "NOT_REPORTED",
+  "lock_restored": true
+}

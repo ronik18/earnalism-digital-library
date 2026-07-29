@@ -38,6 +38,26 @@
   },
   "total_campaign_titles": 31,
   "published_bengali_audiobooks": 1,
+  "muchiram_closeout_20260729": {
+    "status": "HUMAN_NARRATION_OR_LICENSED_DELIVERY_REQUIRED",
+    "clean_manuscript_sha256": "b0c5e8602ff0e54593e677700bffe4b84cd7053bd2019c1ca71957fa43cd3216",
+    "sarvam_ratan_four_passage_minimum_score": 6.5,
+    "sarvam_ratan_minimum_confidence": 0.85,
+    "sarvam_ratan_fatal_flags": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected"
+    ],
+    "open_source_vits_best_asr_score": 9.54,
+    "open_source_vits_best_coverage": 0.9703,
+    "required_asr_score": 9.7,
+    "required_coverage": 0.98,
+    "public_audio_status": "AUDIO_HIDDEN",
+    "production_endpoint_status": 404,
+    "publication_performed": false,
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_source_bound_release_attempt_20260729.json",
+    "next_action": "Receive one complete rights-cleared source-bound narration through the prepared packet; do not repeat the closed Google, Sarvam Ratan, or Bengali VITS fingerprints."
+  },
   "sprint1_scope_reconciliation": {
     "generated_at": "2026-07-22T20:18:07Z",
     "truth_source": "backend/data/home_hero_curation.json",

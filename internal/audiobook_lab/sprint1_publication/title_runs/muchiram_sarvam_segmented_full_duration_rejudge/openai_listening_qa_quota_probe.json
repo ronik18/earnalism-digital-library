@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "available": true,
+  "quota_blocked": false,
+  "started_at": "2026-07-29T05:38:11Z",
+  "finished_at": "2026-07-29T05:38:15Z",
+  "openai_key_detected": true,
+  "judge_credential_detected": true,
+  "listening_qa_enabled": true,
+  "model": "gpt-audio",
+  "judge_provider": "openai",
+  "probe_audio_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_full_duration_rejudge/auditions/sarvam/ratan/ending_74f6bf81ae0f_listening_qa.mp3",
+  "probe_audio_source": "existing_sample",
+  "error_message_redacted": "",
+  "exact_next_fix": "",
+  "raw_probe_blocker_reason": "Mechanical cadence and list-reading rhythm reduce the naturalness and emotional expression, requiring improvement before premium release.",
+  "raw_probe_notes": "The narration shows some mechanical cadence and list-reading rhythm, affecting emotional expression and pacing. Pronunciation is generally clear but could be more refined. Punctuation pauses are slightly rushed. No major choppy joins or robotic texture, but the overall flow could be smoother for a more engaging literary experience.",
+  "probe_quality_result": "EXPECTED_NON_RELEASE_SAMPLE_REJECTED"
+}

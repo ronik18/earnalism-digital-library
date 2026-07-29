@@ -821,3 +821,26 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   `559d94ef386b741ee489d5dcbfd9df71686cbe9ac634801879d2978afbdcad25`
   as closed. Gift remains audio-hidden and requires an exact source-bound
   narration or licensed-audio delivery.
+
+## 2026-07-29 — Muchiram clean-source autonomous lanes closed
+
+- A clean manuscript is necessary but does not make a release candidate.
+  Muchiram's new four-passage Sarvam Ratan fingerprint fell to `6.5/10` at
+  `0.85` confidence on the previous-failure section and repeated robotic,
+  mechanical, and list-reading fatal flags.
+- Duration clipping was ruled out as the explanation: complete source WAV
+  rejudging still failed on all four passages.
+- The cached MIT-licensed Bengali VITS checkpoint was source-bound and used no
+  reference voice. Its opening reached normalized ASR `9.54` with first/last
+  boundaries passing, but coverage was only `0.9703`. Source-preserving
+  sentence breathing did not improve it (`9.54`, coverage `0.9612`).
+- Objective failure correctly stopped listening QA and full generation. Do not
+  upsample 22.05 kHz VITS output, lower the ASR gate, or treat normalized
+  phonetic similarity as exact content proof.
+- The AI Doc Maker preview was recognizable but not deliverable: direct full
+  retrieval returned `429`, browser retrieval required the unavailable creator
+  account, and plan/attribution status remained unknown.
+- Muchiram remains reader-live and audio-hidden. The fastest admissible
+  continuation is one complete rights-cleared narration through the prepared
+  packet, followed by every objective, listening, delivery, endpoint, and
+  browser gate.

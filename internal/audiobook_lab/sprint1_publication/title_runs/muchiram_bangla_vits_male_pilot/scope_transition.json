@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "changed_at": "2026-07-29T05:47:45Z",
+  "lock_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+  "from_slug": "muchiram-gurer-jibanchorit",
+  "to_slug": "muchiram-gurer-jibanchorit",
+  "canonical_title": "মুচিরাম গুড়ের জীবনচরিত",
+  "canonical_author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "budget": {
+    "campaign_cap_usd": 75.0,
+    "per_title_cap_usd": 8.0
+  },
+  "lock_sha256_before": "a4d3c19e50437cf6b29709f735a17856671c90bd3cdcc0377bf974fe9c93ed75",
+  "lock_sha256_after": "2458c1207bd3d8644c71d34ad2c21653a086163ff247e0fd1c5e3ddd991597f6",
+  "provider_call_performed": false,
+  "publication_performed": false
+}

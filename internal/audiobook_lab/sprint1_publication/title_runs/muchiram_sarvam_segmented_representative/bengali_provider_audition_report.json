@@ -1,0 +1,406 @@
+{
+  "status": "BLOCKED",
+  "qa_schema_version": 3,
+  "release_policy": "bengali_audiobook_acceptance_v2_92",
+  "policy_decision_path": "internal/audiobook_lab/release_gate/bengali_audiobook_acceptance_v2_92_policy_decision.json",
+  "listening_thresholds_applied": {
+    "naturalness_score": 8.9,
+    "pronunciation_score": 8.9,
+    "emotional_expression_score": 8.9,
+    "punctuation_pause_score": 8.9,
+    "pacing_score": 8.9,
+    "continuity_score": 8.9,
+    "anti_robotic_texture_score": 9.2,
+    "anti_choppy_join_score": 9.2,
+    "listener_enjoyment_score": 8.9,
+    "overall_listening_score": 9.2,
+    "confidence_score": 0.9
+  },
+  "started_at": "2026-07-29T05:36:11Z",
+  "finished_at": "2026-07-29T05:36:45Z",
+  "providers_requested": [
+    "sarvam"
+  ],
+  "providers_detected": {
+    "openai": {
+      "detected": true,
+      "env": {
+        "OPENAI_API_KEY": true
+      }
+    },
+    "google": {
+      "detected": true,
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": true,
+        "GOOGLE_CLOUD_PROJECT": true,
+        "GOOGLE_TTS_PROJECT": false
+      }
+    },
+    "gemini_tts": {
+      "detected": true,
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": true,
+        "GOOGLE_CLOUD_PROJECT": true,
+        "GOOGLE_TTS_PROJECT": false,
+        "EARNALISM_APPROVE_GOOGLE_GEMINI_TTS": false
+      },
+      "status": "adapter_config_detected"
+    },
+    "azure": {
+      "detected": true,
+      "env": {
+        "AZURE_SPEECH_KEY": true,
+        "AZURE_SPEECH_REGION": true
+      }
+    },
+    "sarvam": {
+      "detected": true,
+      "env": {
+        "SARVAM_API_KEY": true
+      },
+      "status": "adapter_available"
+    },
+    "human_licensed_import": {
+      "detected": false,
+      "env": {
+        "EARNALISM_LICENSED_AUDIO_IMPORT_DIR": false,
+        "EARNALISM_HUMAN_AUDIO_IMPORT_DIR": false
+      }
+    }
+  },
+  "provider_capability_probe_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/bengali_provider_capability_probe.json",
+  "cost_estimate": {
+    "estimated_cost_usd": 0.0141,
+    "budget_usd": 0.3,
+    "actual_cost_if_available": "not_available"
+  },
+  "voice_results": [
+    {
+      "provider": "sarvam",
+      "voice": "ratan",
+      "release_policy": "bengali_audiobook_acceptance_v2_92",
+      "listening_thresholds_applied": {
+        "naturalness_score": 8.9,
+        "pronunciation_score": 8.9,
+        "emotional_expression_score": 8.9,
+        "punctuation_pause_score": 8.9,
+        "pacing_score": 8.9,
+        "continuity_score": 8.9,
+        "anti_robotic_texture_score": 9.2,
+        "anti_choppy_join_score": 9.2,
+        "listener_enjoyment_score": 8.9,
+        "overall_listening_score": 9.2,
+        "confidence_score": 0.9
+      },
+      "language_code": "bn-IN",
+      "style_profile": "literary_warm_pacing",
+      "model": "bulbul:v3",
+      "style_control": false,
+      "endpoint_used": "https://api.sarvam.ai/text-to-speech",
+      "output_codec": "wav",
+      "sample_count": 4,
+      "expected_sample_count": 4,
+      "aggregate": {
+        "naturalness_score": 7.5,
+        "pronunciation_score": 7.0,
+        "emotional_expression_score": 6.5,
+        "punctuation_pause_score": 6.0,
+        "pacing_score": 5.5,
+        "continuity_score": 6.0,
+        "anti_robotic_texture_score": 5.0,
+        "anti_choppy_join_score": 5.5,
+        "listener_enjoyment_score": 6.0,
+        "overall_listening_score": 6.0,
+        "confidence_score": 0.85
+      },
+      "flags": {
+        "robotic_texture_detected": true,
+        "mechanical_cadence_detected": true,
+        "choppy_joins_detected": true,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": true,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "overall_listening_score": 6.0,
+      "confidence_score": 0.85,
+      "status": "BLOCKED",
+      "blockers": [
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 5.5 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 8.3 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 8.5 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 5.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 8.3 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: choppy_joins_detected must be False.",
+        "AUDIO_LISTENING_QUALITY_FAILED: confidence_score below bengali_audiobook_acceptance_v2_92 threshold: 0.85 < 0.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 8.2 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 6.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 7.8 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: list_reading_rhythm_detected must be False.",
+        "AUDIO_LISTENING_QUALITY_FAILED: listener_enjoyment_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: listener_enjoyment_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: listener_enjoyment_score below bengali_audiobook_acceptance_v2_92 threshold: 7.9 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: mechanical_cadence_detected must be False.",
+        "AUDIO_LISTENING_QUALITY_FAILED: naturalness_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: naturalness_score below bengali_audiobook_acceptance_v2_92 threshold: 8.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 7.8 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 5.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 8.2 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pronunciation_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pronunciation_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 7.8 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: robotic_texture_detected must be False.",
+        "Mechanical cadence and robotic texture reduce listener enjoyment and naturalness.",
+        "Robotic texture, mechanical cadence, choppy joins, and list-reading rhythm reduce the quality below release standards."
+      ]
+    }
+  ],
+  "auditions": [
+    {
+      "provider": "sarvam",
+      "voice": "ratan",
+      "model": "bulbul:v3",
+      "style_profile": "literary_warm_pacing",
+      "style_control": false,
+      "passage_id": "opening",
+      "passage_slug": "muchiram-gurer-jibanchorit",
+      "sample_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/opening_5e816e897e36_clipped.mp3",
+      "sample_hash": "2a2610213b9ca6b375b23fab30f2353fded422f1f60896917d6cebdfd1866f7b",
+      "duration_seconds": 20.062,
+      "release_policy": "bengali_audiobook_acceptance_v2_92",
+      "listening_thresholds_applied": {
+        "naturalness_score": 8.9,
+        "pronunciation_score": 8.9,
+        "emotional_expression_score": 8.9,
+        "punctuation_pause_score": 8.9,
+        "pacing_score": 8.9,
+        "continuity_score": 8.9,
+        "anti_robotic_texture_score": 9.2,
+        "anti_choppy_join_score": 9.2,
+        "listener_enjoyment_score": 8.9,
+        "overall_listening_score": 9.2,
+        "confidence_score": 0.9
+      },
+      "scores": {
+        "naturalness_score": 8.5,
+        "pronunciation_score": 8.0,
+        "emotional_expression_score": 7.8,
+        "punctuation_pause_score": 7.5,
+        "pacing_score": 7.0,
+        "continuity_score": 8.2,
+        "anti_robotic_texture_score": 8.0,
+        "anti_choppy_join_score": 8.3,
+        "listener_enjoyment_score": 7.9,
+        "overall_listening_score": 8.0,
+        "confidence_score": 0.9
+      },
+      "confidence_score": 0.9,
+      "judge_notes": "The narration has a generally natural tone, but the pacing feels slightly rushed. Pronunciation is mostly clear, though some words could be more crisply articulated. Emotional expression is present but could be deepened for a more engaging literary experience. Punctuation pauses are somewhat inconsistent, leading to a less fluid delivery. No robotic texture or choppy joins detected, and the overall quality is acceptable for a draft, though not yet premium release-ready.",
+      "pass_fail": "BLOCKED",
+      "blockers": [
+        "AUDIO_LISTENING_QUALITY_FAILED: naturalness_score below bengali_audiobook_acceptance_v2_92 threshold: 8.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pronunciation_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 7.8 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 8.2 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 8.3 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: listener_enjoyment_score below bengali_audiobook_acceptance_v2_92 threshold: 7.9 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 9.2"
+      ]
+    },
+    {
+      "provider": "sarvam",
+      "voice": "ratan",
+      "model": "bulbul:v3",
+      "style_profile": "literary_warm_pacing",
+      "style_control": false,
+      "passage_id": "middle",
+      "passage_slug": "muchiram-gurer-jibanchorit",
+      "sample_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/middle_20f268e55f17.wav",
+      "sample_hash": "887a341f5b9891d96c27e01dd77e4bfc3e619baea8dc2068b07820f21aff83dd",
+      "duration_seconds": 13.164,
+      "release_policy": "bengali_audiobook_acceptance_v2_92",
+      "listening_thresholds_applied": {
+        "naturalness_score": 8.9,
+        "pronunciation_score": 8.9,
+        "emotional_expression_score": 8.9,
+        "punctuation_pause_score": 8.9,
+        "pacing_score": 8.9,
+        "continuity_score": 8.9,
+        "anti_robotic_texture_score": 9.2,
+        "anti_choppy_join_score": 9.2,
+        "listener_enjoyment_score": 8.9,
+        "overall_listening_score": 9.2,
+        "confidence_score": 0.9
+      },
+      "scores": {
+        "naturalness_score": 8.5,
+        "pronunciation_score": 8.0,
+        "emotional_expression_score": 7.5,
+        "punctuation_pause_score": 7.8,
+        "pacing_score": 8.2,
+        "continuity_score": 8.0,
+        "anti_robotic_texture_score": 8.3,
+        "anti_choppy_join_score": 8.5,
+        "listener_enjoyment_score": 7.9,
+        "overall_listening_score": 8.0,
+        "confidence_score": 0.85
+      },
+      "confidence_score": 0.85,
+      "judge_notes": "The narration is fairly natural with good pacing and continuity. Pronunciation is mostly clear, though some words could be more crisply articulated. Emotional expression is present but could be deepened for a more engaging literary experience. Punctuation pauses are generally appropriate, though a few could be more distinct. No robotic texture or choppy joins detected. Overall, this is acceptable draft quality but not yet at premium release level.",
+      "pass_fail": "BLOCKED",
+      "blockers": [
+        "AUDIO_LISTENING_QUALITY_FAILED: naturalness_score below bengali_audiobook_acceptance_v2_92 threshold: 8.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pronunciation_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 7.8 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 8.2 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 8.3 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 8.5 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: listener_enjoyment_score below bengali_audiobook_acceptance_v2_92 threshold: 7.9 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: confidence_score below bengali_audiobook_acceptance_v2_92 threshold: 0.85 < 0.9"
+      ]
+    },
+    {
+      "provider": "sarvam",
+      "voice": "ratan",
+      "model": "bulbul:v3",
+      "style_profile": "literary_warm_pacing",
+      "style_control": false,
+      "passage_id": "failed_chunk_05",
+      "passage_slug": "muchiram-gurer-jibanchorit",
+      "sample_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/failed_chunk_05_12a55acd671b_clipped.mp3",
+      "sample_hash": "59feadbbd255c132ebd014dc9ff1aeac344571cf7374bb39e5721a2786dc85dc",
+      "duration_seconds": 20.062,
+      "release_policy": "bengali_audiobook_acceptance_v2_92",
+      "listening_thresholds_applied": {
+        "naturalness_score": 8.9,
+        "pronunciation_score": 8.9,
+        "emotional_expression_score": 8.9,
+        "punctuation_pause_score": 8.9,
+        "pacing_score": 8.9,
+        "continuity_score": 8.9,
+        "anti_robotic_texture_score": 9.2,
+        "anti_choppy_join_score": 9.2,
+        "listener_enjoyment_score": 8.9,
+        "overall_listening_score": 9.2,
+        "confidence_score": 0.9
+      },
+      "scores": {
+        "naturalness_score": 7.5,
+        "pronunciation_score": 7.0,
+        "emotional_expression_score": 6.5,
+        "punctuation_pause_score": 6.0,
+        "pacing_score": 5.5,
+        "continuity_score": 6.0,
+        "anti_robotic_texture_score": 5.0,
+        "anti_choppy_join_score": 5.5,
+        "listener_enjoyment_score": 6.0,
+        "overall_listening_score": 6.0,
+        "confidence_score": 0.85
+      },
+      "confidence_score": 0.85,
+      "judge_notes": "The narration has a noticeable robotic texture and mechanical cadence. Pacing feels rushed and there is a list-reading rhythm. Pronunciation and emotional expression are somewhat flat. Choppy joins are present, reducing continuity and listener enjoyment.",
+      "pass_fail": "BLOCKED",
+      "blockers": [
+        "AUDIO_LISTENING_QUALITY_FAILED: naturalness_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pronunciation_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 6.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 5.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 5.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 5.5 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: listener_enjoyment_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 6.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: confidence_score below bengali_audiobook_acceptance_v2_92 threshold: 0.85 < 0.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: robotic_texture_detected must be False.",
+        "AUDIO_LISTENING_QUALITY_FAILED: mechanical_cadence_detected must be False.",
+        "AUDIO_LISTENING_QUALITY_FAILED: choppy_joins_detected must be False.",
+        "AUDIO_LISTENING_QUALITY_FAILED: list_reading_rhythm_detected must be False.",
+        "Robotic texture, mechanical cadence, choppy joins, and list-reading rhythm reduce the quality below release standards."
+      ]
+    },
+    {
+      "provider": "sarvam",
+      "voice": "ratan",
+      "model": "bulbul:v3",
+      "style_profile": "literary_warm_pacing",
+      "style_control": false,
+      "passage_id": "ending",
+      "passage_slug": "muchiram-gurer-jibanchorit",
+      "sample_path": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_sarvam_segmented_representative/auditions/sarvam/ratan/ending_74f6bf81ae0f.wav",
+      "sample_hash": "ad20e3364c2ac1397e66ecd450dc596695164bfa8829f4b590092b201c1a93d8",
+      "duration_seconds": 3.577,
+      "release_policy": "bengali_audiobook_acceptance_v2_92",
+      "listening_thresholds_applied": {
+        "naturalness_score": 8.9,
+        "pronunciation_score": 8.9,
+        "emotional_expression_score": 8.9,
+        "punctuation_pause_score": 8.9,
+        "pacing_score": 8.9,
+        "continuity_score": 8.9,
+        "anti_robotic_texture_score": 9.2,
+        "anti_choppy_join_score": 9.2,
+        "listener_enjoyment_score": 8.9,
+        "overall_listening_score": 9.2,
+        "confidence_score": 0.9
+      },
+      "scores": {
+        "naturalness_score": 8.5,
+        "pronunciation_score": 8.0,
+        "emotional_expression_score": 7.5,
+        "punctuation_pause_score": 7.0,
+        "pacing_score": 7.5,
+        "continuity_score": 8.0,
+        "anti_robotic_texture_score": 7.0,
+        "anti_choppy_join_score": 7.5,
+        "listener_enjoyment_score": 7.5,
+        "overall_listening_score": 7.8,
+        "confidence_score": 0.9
+      },
+      "confidence_score": 0.9,
+      "judge_notes": "The narration has a somewhat mechanical cadence and robotic texture, with pacing that feels slightly rushed. Pronunciation is generally clear but could be more refined. Emotional expression is limited, and punctuation pauses are not always natural. There are no major choppy joins or fallback TTS, but the overall listening experience is not yet premium release-ready.",
+      "pass_fail": "BLOCKED",
+      "blockers": [
+        "AUDIO_LISTENING_QUALITY_FAILED: naturalness_score below bengali_audiobook_acceptance_v2_92 threshold: 8.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pronunciation_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below bengali_audiobook_acceptance_v2_92 threshold: 8.0 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below bengali_audiobook_acceptance_v2_92 threshold: 7.0 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: listener_enjoyment_score below bengali_audiobook_acceptance_v2_92 threshold: 7.5 < 8.9",
+        "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below bengali_audiobook_acceptance_v2_92 threshold: 7.8 < 9.2",
+        "AUDIO_LISTENING_QUALITY_FAILED: robotic_texture_detected must be False.",
+        "AUDIO_LISTENING_QUALITY_FAILED: mechanical_cadence_detected must be False.",
+        "Mechanical cadence and robotic texture reduce listener enjoyment and naturalness."
+      ]
+    }
+  ],
+  "best_provider": "sarvam",
+  "best_voice": "ratan",
+  "best_score": 6.0,
+  "best_confidence": 0.85,
+  "any_audition_passed": false,
+  "recommendation": "Keep Bengali audiobooks hidden and continue Bengali reader-only publication until a better provider or approved human/licensed import path is available."
+}

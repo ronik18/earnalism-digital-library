@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-07-29T05:48:22Z",
+  "slug": "muchiram-gurer-jibanchorit",
+  "status": "CALIBRATION_REPAIR_REQUIRED",
+  "fingerprint": {
+    "slug": "muchiram-gurer-jibanchorit",
+    "provider": "sarvam",
+    "chunks": [
+      {
+        "chunk_id": "group_0000",
+        "audio_hash": "8f194cf84d74d6b713f2aa9fa19f289425d6727e3327fab0e7897bc7947c471d"
+      }
+    ],
+    "models": [
+      "saaras:v3"
+    ],
+    "languages": [
+      "bn-IN"
+    ],
+    "modes": [
+      "transcribe"
+    ],
+    "require_timestamps": false,
+    "source_manifest_sha256": "5f8b0d3cc1986c39d7a14684f1e49230684ee577e1229c4f56b14c19778fe765",
+    "provider_configuration": {
+      "endpoint": "https://api.sarvam.ai/speech-to-text",
+      "transport": "rest",
+      "mode": [
+        "transcribe"
+      ],
+      "with_timestamps": false,
+      "clip_seconds": 29.0,
+      "clip_codec": "pcm_s16le_16khz_mono"
+    },
+    "runner_sha256": "5cb04a346230279840c9acaf0c4816222b2a62677f24b6457d76418f9c1c75dd",
+    "adapter_sha256": "2952c215dec8a68e1f93f60ecf69178a59d7cb613c24e0b644272a0863f0db31",
+    "normalizer_sha256": "bdd82222a24a09c13c6aff69c9da446b44754eb2668dd5c2a35017766deb486c"
+  },
+  "estimated_cost_usd": 0.0026,
+  "max_estimated_usd": 0.02,
+  "prior_estimated_usd": 18.2441,
+  "estimated_cumulative_usd": 18.2467,
+  "cumulative_cap_usd": 75.0,
+  "provider_calls_ran": true,
+  "results": [
+    {
+      "model": "saaras:v3",
+      "provider": "sarvam",
+      "language": "bn-IN",
+      "mode": "transcribe",
+      "chunk_id": "group_0000",
+      "audio_hash": "8f194cf84d74d6b713f2aa9fa19f289425d6727e3327fab0e7897bc7947c471d",
+      "duration_seconds": 19.586757,
+      "status": "BELOW_THRESHOLD",
+      "transcript": "মুচিরাম গুরু মহাশয় এই জপ পবিত্র করিবার জন্য কোন শখে জন্মগ্রহণ করিযাছিলেন ইতিহাসে তাহা লেখে না। ইতিহাস এরূপ অনেক প্রকার বদমাইসি করিযা থাকে। এদেশে ইতিহাসের সাক্ষাৎ পাওয়া যা যায় না, নচেৎ উচিত ব্যবস্থা করা যাইত।",
+      "transcript_hash": "c744d01f3599a960907ddace1b6eb5d312c617307e7ccfc02a871eb6e03e3a84",
+      "transcript_chars": 210,
+      "source_score": 9.54,
+      "raw_source_score": 7.2727,
+      "raw_similarity": 0.9588,
+      "char_similarity": 0.9588,
+      "token_order_similarity": 0.9703,
+      "coverage": 0.9703,
+      "first_words_match": true,
+      "last_words_match": true,
+      "first_words_match_score": 0.6429,
+      "last_words_match_score": 0.7857,
+      "script_profile": {
+        "detected": "Bengali",
+        "counts": {
+          "bengali": 172,
+          "devanagari": 3,
+          "latin": 0
+        }
+      },
+      "bengali_script_ratio": 0.9829,
+      "measured_timestamp_count": 0,
+      "timestamp_granularity": "none",
+      "audio_derived_projection": {
+        "normalized_asr_score": 9.54,
+        "phonetic_projection_score": 9.703,
+        "coverage": 0.9703,
+        "projection_confidence": 0.9703,
+        "first_words_match": true,
+        "last_words_match": true,
+        "missing_spans": [
+          {
+            "tag": "replace",
+            "start": 6,
+            "end": 7,
+            "chars": 1,
+            "text": "d"
+          },
+          {
+            "tag": "replace",
+            "start": 12,
+            "end": 14,
+            "chars": 2,
+            "text": "gt"
+          }
+        ],
+        "extra_spans": [
+          {
+            "tag": "replace",
+            "start": 6,
+            "end": 7,
+            "chars": 1,
+            "text": "r"
+          },
+          {
+            "tag": "replace",
+            "start": 12,
+            "end": 13,
+            "chars": 1,
+            "text": "p"
+          },
+          {
+            "tag": "insert",
+            "start": 83,
+            "end": 84,
+            "chars": 1,
+            "text": "j"
+          }
+        ],
+        "content_match_proven": false,
+        "release_pass": false
+      }
+    }
+  ],
+  "completed_call_estimated_cost_usd": 0.0026,
+  "arm_summaries": [
+    {
+      "provider": "sarvam",
+      "model": "saaras:v3",
+      "language": "bn-IN",
+      "mode": "transcribe",
+      "status": "BELOW_THRESHOLD",
+      "chunk_ids": [
+        "group_0000"
+      ],
+      "expected_chunk_ids": [
+        "group_0000"
+      ],
+      "all_chunks_present": true,
+      "source_score": 9.54,
+      "source_score_min": 9.54,
+      "coverage_min": 0.9703,
+      "token_order_similarity_min": 0.9703,
+      "bengali_script_ratio": 0.9829,
+      "all_boundaries_match": true
+    }
+  ],
+  "best_arm": {
+    "provider": "sarvam",
+    "model": "saaras:v3",
+    "language": "bn-IN",
+    "mode": "transcribe",
+    "status": "BELOW_THRESHOLD",
+    "chunk_ids": [
+      "group_0000"
+    ],
+    "expected_chunk_ids": [
+      "group_0000"
+    ],
+    "all_chunks_present": true,
+    "source_score": 9.54,
+    "source_score_min": 9.54,
+    "coverage_min": 0.9703,
+    "token_order_similarity_min": 0.9703,
+    "bengali_script_ratio": 0.9829,
+    "all_boundaries_match": true
+  },
+  "actual_provider_billing": "NOT_REPORTED",
+  "lock_restored": true
+}

@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-07-29T05:36:11Z",
+  "candidate_source": "explicit_candidate_slugs",
+  "total_candidates": 1,
+  "selected_pilot_candidate": {
+    "rank": 1,
+    "slug": "muchiram-gurer-jibanchorit",
+    "title": "মুচিরাম গুড়ের জীবনচরিত",
+    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "language": "ben",
+    "manuscript_char_count": 5955,
+    "reader_ready_evidence": "internal/earnalism_intelligence/title_decision_history.json",
+    "rights_status": "PASS",
+    "cover_status": "PASS",
+    "reader_route_status": "PASS",
+    "selection_reason": "shortest deterministic reader-ready Bengali title first"
+  },
+  "ranked_candidates": [
+    {
+      "rank": 1,
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "ben",
+      "manuscript_char_count": 5955,
+      "reader_ready_evidence": "internal/earnalism_intelligence/title_decision_history.json",
+      "rights_status": "PASS",
+      "cover_status": "PASS",
+      "reader_route_status": "PASS",
+      "selection_reason": "shortest deterministic reader-ready Bengali title first"
+    }
+  ],
+  "representative_passages": [
+    {
+      "passage_id": "opening",
+      "slug": "muchiram-gurer-jibanchorit",
+      "label": "opening control",
+      "text_hash": "1ebd84cd348bb47004917e3efa98b812f64dc62693eb18f0b728e86f1c341f16",
+      "character_count": 213
+    },
+    {
+      "passage_id": "middle",
+      "slug": "muchiram-gurer-jibanchorit",
+      "label": "middle control",
+      "text_hash": "25e7605af4679945eecf8a21d1b88303a5d7bfa973eb9e33a8ca172d8f568c42",
+      "character_count": 181
+    },
+    {
+      "passage_id": "failed_chunk_05",
+      "slug": "muchiram-gurer-jibanchorit",
+      "label": "previous list-reading failure section",
+      "text_hash": "064175c1557705105898cd0bc4638a6240023c4dc7a3e68beac373889a1e1740",
+      "character_count": 257
+    },
+    {
+      "passage_id": "ending",
+      "slug": "muchiram-gurer-jibanchorit",
+      "label": "previous mechanical ending section",
+      "text_hash": "ad708de1e10aac647fcded25cad1f57820d2b24818897fb31ff973d40546f620",
+      "character_count": 52
+    }
+  ],
+  "rules": [
+    "shortest clean manuscript",
+    "reader-only approved",
+    "rights/covers/content already passing",
+    "no stale audio reuse",
+    "representative audition required before full pilot"
+  ]
+}

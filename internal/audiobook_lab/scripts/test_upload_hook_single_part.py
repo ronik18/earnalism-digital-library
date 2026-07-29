@@ -30,6 +30,18 @@ class UploadHookSinglePartTests(unittest.TestCase):
         self.assertEqual(MODULE.content_type_for_key("json"), "application/json")
         self.assertEqual(MODULE.content_type_for_key("timestamps"), "application/json")
 
+    def test_audio_content_types_preserve_supported_source_formats(self):
+        self.assertEqual(MODULE.audio_suffix(Path("final.MP3")), "mp3")
+        self.assertEqual(MODULE.audio_suffix(Path("final.wav")), "wav")
+        self.assertEqual(MODULE.audio_suffix(Path("final.flac")), "flac")
+        self.assertEqual(MODULE.content_type_for_key("mp3"), "audio/mpeg")
+        self.assertEqual(MODULE.content_type_for_key("wav"), "audio/wav")
+        self.assertEqual(MODULE.content_type_for_key("flac"), "audio/flac")
+
+    def test_unknown_audio_format_fails_closed(self):
+        with self.assertRaisesRegex(ValueError, "Unsupported final audio format"):
+            MODULE.audio_suffix(Path("final.bin"))
+
     def test_single_part_transfer_is_explicitly_opt_in(self):
         client = RecordingClient()
         env = {
