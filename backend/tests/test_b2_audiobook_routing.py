@@ -328,6 +328,64 @@ def test_package_manifest_endpoint_caches_only_projected_metadata_and_head_is_em
     assert [call[0] for call in calls].count("get") == 2
 
 
+def test_reader_manifest_truth_gate_invalidates_pre_package_v2_cache(monkeypatch):
+    server = _server(monkeypatch)
+    stale_key = (
+        "book-manifest:audio-contract-v12:17:public:the-open-window"
+    )
+    current_key = (
+        "book-manifest:audio-contract-v13:17:public:the-open-window"
+    )
+    cache = {
+        ("reader-manifest", stale_key): {
+            "audio": {
+                "assets": {
+                    "mp3": "/api/reader/book/the-open-window/audiobook",
+                },
+            },
+        },
+    }
+    get_calls = []
+    set_calls = []
+
+    async def fake_generation():
+        return 17
+
+    async def fake_cache_get(namespace, key):
+        get_calls.append((namespace, key))
+        return copy.deepcopy(cache.get((namespace, key)))
+
+    async def fake_cache_set(namespace, key, value, ttl_seconds):
+        set_calls.append((namespace, key, ttl_seconds))
+        cache[(namespace, key)] = copy.deepcopy(value)
+
+    monkeypatch.setattr(
+        server,
+        "_reader_content_cache_generation_value",
+        fake_generation,
+    )
+    monkeypatch.setattr(server, "_redis_cache_get", fake_cache_get)
+    monkeypatch.setattr(server, "_redis_cache_set", fake_cache_set)
+
+    result = asyncio.run(
+        server._reader_book_manifest_doc("the-open-window")
+    )
+
+    assert result["audio"]["assets"]["manifest"] == (
+        "/api/reader/book/the-open-window/audiobook/manifest"
+    )
+    assert get_calls == [(
+        "reader-manifest",
+        current_key,
+    )]
+    assert ("reader-manifest", stale_key) not in get_calls
+    assert set_calls == [(
+        "reader-manifest",
+        current_key,
+        server.READER_MANIFEST_CACHE_TTL_SECONDS,
+    )]
+
+
 def test_package_manifest_endpoint_never_reads_cache_before_release_selection(
     monkeypatch,
 ):

@@ -991,3 +991,18 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   adversarial backslash-network-path origin-bypass regression was added. Keep the
   candidate at `0%` through the initial deployment checkpoint, then run the
   already-authorized endpoint and browser canary before increasing rollout.
+
+### 2026-07-29 — Package-v2 reader-manifest cache namespace
+
+- The merged 0% checkpoint deployed correctly, but persistent Redis still
+  served the pre-package reader manifest under
+  `audio-contract-v12`; a URL cache-buster could not change that server-owned
+  cache identity.
+- The legacy Open Window byte-range route remained healthy at HTTP `206`, the
+  package endpoint remained fail-closed at `404` with `private, no-store`, and
+  public audiobook truth stayed at four.
+- Rotating the controlled-publication truth gate to `audio-contract-v13`
+  deterministically ignores the stale v12 object. A regression now seeds only
+  the old cache key and proves that the rebuilt reader manifest contains the
+  same-origin package-manifest route. Focused backend validation passed
+  `92 / 92`.
