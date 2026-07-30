@@ -1,0 +1,53 @@
+{
+  "schema_version": "audiobook_package_v2_legacy_normalization_evidence.v1",
+  "slug": "a-ghost-story",
+  "status": "NORMALIZATION_INPUT_EVIDENCE_READY",
+  "narration_regenerated": false,
+  "release_gate_mutated": false,
+  "source": {
+    "chapter_path": "chapters/chapter-001.json",
+    "chapter_sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1",
+    "canonical_source_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
+    "manuscript_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+    "narrated_manuscript_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+    "text_equivalence_mode": "collapse_whitespace_only",
+    "alignment_token_mode": "collapse_intraword_ascii_hyphens",
+    "section_count": 30,
+    "emitted_section_count": 30,
+    "anchored_internal_boundary_count": 29,
+    "coalesced_boundary_count": 0,
+    "boundary_retention_ratio": 1.0,
+    "coverage": 0.995571,
+    "coverage_method": "audio_derived_asr_matching_characters_over_canonical_source_characters"
+  },
+  "measured_quality": {
+    "upstream_transcript_vtt_sync_score": 9.88,
+    "upstream_sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "post_conversion_boundary_quality_score": 1.0,
+    "boundary_method": "equal_opcode_anchored_internal_boundaries",
+    "sync_tier": "SECTION_BOUNDARIES_EQUAL_OPCODE_MEASURED",
+    "public_sync_mode": "section_following",
+    "auto_estimated_sync": false
+  },
+  "sidecars": {
+    "timestamps": {
+      "sha256": "f705f1832a8bca6e6a66b5e34b0689d7a3daf71cd79a6f076b6376305307dc44",
+      "word_count": 2450,
+      "alignment_method": "openai_verbose_json_word_timestamps"
+    },
+    "vtt": {
+      "sha256": "11f7c4689b94230d9125e77789efcf1ac15d3809859e847c013548d69a029517",
+      "cue_count": 2450
+    }
+  },
+  "release_gates": {
+    "source_binding": "PASS",
+    "asr_source": "PASS",
+    "first_last": "PASS",
+    "sidecars": "PASS"
+  },
+  "upstream_release_evidence": {
+    "path": "internal/earnalism_intelligence/audiobook_package_v2_a_ghost_story_upstream_release_evidence.json",
+    "sha256": "c0e11b4b5f63b2a5e2e2b992f3a3dafdf25d5611bd9bc6019ff5baebc459703b"
+  }
+}

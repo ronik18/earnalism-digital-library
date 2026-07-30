@@ -570,14 +570,24 @@ def _safe_repo_evidence_path(
     return candidate
 
 
-def _alignment_tokens(text: str) -> list[str]:
+def _alignment_tokens(
+    text: str,
+    *,
+    collapse_intraword_hyphens: bool = False,
+) -> list[str]:
     normalized = (
         unicodedata.normalize("NFKD", text.replace("\u2019", "'"))
         .encode("ascii", "ignore")
         .decode("ascii")
         .lower()
     )
+    if collapse_intraword_hyphens:
+        normalized = re.sub(r"(?<=[a-z0-9])-(?=[a-z0-9])", "", normalized)
     return re.findall(r"[a-z0-9]+(?:'[a-z0-9]+)?", normalized)
+
+
+def _collapsed_whitespace(text: str) -> str:
+    return " ".join(text.split())
 
 
 def _alignment_characters(text: str) -> str:
@@ -893,10 +903,47 @@ def _normalize_legacy_measured_word_sidecars(
         source_parts.append(content.rstrip("\n"))
 
     source_text = "\n".join(source_parts) + "\n"
-    if hashlib.sha256(source_text.encode("utf-8")).hexdigest() != manuscript_sha256:
-        raise PackageBuildError(
-            "Legacy normalization source does not match narrated manuscript"
+    canonical_source_sha256 = hashlib.sha256(
+        source_text.encode("utf-8")
+    ).hexdigest()
+    equivalence = contract.get("source_text_equivalence")
+    collapse_intraword_hyphens = False
+    narrated_manuscript_path: Optional[Path] = None
+    if equivalence is None:
+        if canonical_source_sha256 != manuscript_sha256:
+            raise PackageBuildError(
+                "Legacy normalization source does not match narrated manuscript"
+            )
+    else:
+        if (
+            not isinstance(equivalence, Mapping)
+            or equivalence.get("schema_version")
+            != "approved_legacy_source_text_equivalence.v1"
+            or equivalence.get("mode") != "collapse_whitespace_only"
+            or equivalence.get("alignment_token_mode")
+            != "collapse_intraword_ascii_hyphens"
+            or equivalence.get("canonical_source_sha256")
+            != canonical_source_sha256
+        ):
+            raise PackageBuildError(
+                "Approved legacy source text equivalence is unsupported"
+            )
+        narrated_manuscript_path = _safe_repo_evidence_path(
+            repo_root,
+            equivalence.get("narrated_manuscript_path"),
+            equivalence.get("narrated_manuscript_sha256"),
+            "Legacy narrated manuscript",
         )
+        if sha256_file(narrated_manuscript_path) != manuscript_sha256:
+            raise PackageBuildError(
+                "Legacy narrated manuscript conflicts with approved source hash"
+            )
+        narrated_text = narrated_manuscript_path.read_text(encoding="utf-8")
+        if _collapsed_whitespace(narrated_text) != _collapsed_whitespace(source_text):
+            raise PackageBuildError(
+                "Legacy narrated and canonical source differ beyond whitespace"
+            )
+        collapse_intraword_hyphens = True
     sections = [
         section.rstrip()
         for section in re.split(r"\n[ \t]*\n", source_text.rstrip("\n"))
@@ -926,6 +973,11 @@ def _normalize_legacy_measured_word_sidecars(
         or normalization_source.get("chapter_sha256")
         != checksum_rows.get(chapter_files[0])
         or normalization_source.get("manuscript_sha256") != manuscript_sha256
+        or normalization_source.get(
+            "canonical_source_sha256",
+            manuscript_sha256,
+        )
+        != canonical_source_sha256
         or normalization_source.get("section_count") != len(sections)
         or normalization_source.get("coverage") != approval.get("source_coverage")
         or normalization_source.get("coverage_method")
@@ -933,6 +985,17 @@ def _normalize_legacy_measured_word_sidecars(
     ):
         raise PackageBuildError(
             "Legacy normalization canonical source evidence conflicts"
+        )
+    if equivalence is not None and (
+        normalization_source.get("text_equivalence_mode")
+        != "collapse_whitespace_only"
+        or normalization_source.get("alignment_token_mode")
+        != "collapse_intraword_ascii_hyphens"
+        or normalization_source.get("narrated_manuscript_sha256")
+        != manuscript_sha256
+    ):
+        raise PackageBuildError(
+            "Legacy normalization source equivalence evidence conflicts"
         )
 
     expected_word_count = int(
@@ -962,7 +1025,10 @@ def _normalize_legacy_measured_word_sidecars(
     source_tokens: list[str] = []
     source_boundaries = [0]
     for section in sections:
-        tokens = _alignment_tokens(section)
+        tokens = _alignment_tokens(
+            section,
+            collapse_intraword_hyphens=collapse_intraword_hyphens,
+        )
         if not tokens:
             raise PackageBuildError("Canonical source section has no alignment tokens")
         source_tokens.extend(tokens)
@@ -970,7 +1036,10 @@ def _normalize_legacy_measured_word_sidecars(
     asr_tokens: list[str] = []
     asr_token_word_indexes: list[int] = []
     for word_index, word in enumerate(words):
-        tokens = _alignment_tokens(word["word"])
+        tokens = _alignment_tokens(
+            word["word"],
+            collapse_intraword_hyphens=collapse_intraword_hyphens,
+        )
         if not tokens:
             raise PackageBuildError("Legacy measured word has no alignment token")
         asr_tokens.extend(tokens)
@@ -1144,6 +1213,7 @@ def _normalize_legacy_measured_word_sidecars(
             coalesced_boundary_count
         ),
         "release_evidence_path": evidence_path,
+        "narrated_manuscript_path": narrated_manuscript_path,
     }
 
 
@@ -1699,6 +1769,10 @@ def build_approved_legacy(
         controlled_sources["normalization_release_evidence"] = normalization_result[
             "release_evidence_path"
         ]
+        if normalization_result.get("narrated_manuscript_path") is not None:
+            controlled_sources["narrated_manuscript"] = normalization_result[
+                "narrated_manuscript_path"
+            ]
     controlled_copies = {
         name: _copy_exact(
             path,
@@ -1924,6 +1998,10 @@ def build_approved_legacy(
         evidence_paths["normalization_release_evidence.json"] = controlled_copies[
             "normalization_release_evidence"
         ]
+    if "narrated_manuscript" in controlled_copies:
+        evidence_paths["narrated_manuscript.txt"] = controlled_copies[
+            "narrated_manuscript"
+        ]
     evidence_sha256 = {
         name: sha256_file(path) for name, path in evidence_paths.items()
     }
@@ -1948,6 +2026,10 @@ def build_approved_legacy(
         release_candidate_evidence[
             "normalization_release_evidence_sha256"
         ] = evidence_sha256["normalization_release_evidence.json"]
+    if "narrated_manuscript.txt" in evidence_sha256:
+        release_candidate_evidence["narrated_manuscript_sha256"] = evidence_sha256[
+            "narrated_manuscript.txt"
+        ]
     release_descriptor = {
         "schema_version": "audiobook_release_descriptor.v1",
         "slug": slug,
@@ -2029,7 +2111,11 @@ def build_approved_legacy(
                 asset_id=f"provenance.controlled.{name}",
                 path=path,
                 key=f"{prefix}provenance/controlled/{path.name}",
-                mime_type="application/json",
+                mime_type=(
+                    "text/plain"
+                    if name == "narrated_manuscript"
+                    else "application/json"
+                ),
             )
         )
     for segment in segment_assets:

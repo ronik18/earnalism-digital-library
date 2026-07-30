@@ -12,6 +12,22 @@
     "impact_report": "internal/earnalism_intelligence/platform_audiobook_89_cutoff_impact_report.json"
   },
   "titles": {
+    "a-ghost-story": {
+      "latest_decision": "PACKAGE_V2_RELEASE_CANDIDATE_BUILT_FROM_RECOVERED_EXACT_MANUSCRIPT",
+      "decision_reason": "The original narrated manuscript was recovered byte-for-byte and hash-bound to the existing approved audio. Its only difference from the controlled reader text is whitespace; intraword hyphens are collapsed only in alignment token space. Canonical public text, audio release gates, and public URLs remain unchanged.",
+      "updated_at": "2026-07-30T05:30:33Z",
+      "language": "en",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "APPROVED_LIVE_LEGACY_DELIVERY",
+      "narrated_manuscript_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+      "canonical_source_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
+      "approved_audio_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+      "package_v2_release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+      "package_v2_segment_count": 2,
+      "package_v2_release_blockers": [],
+      "evidence": "internal/earnalism_intelligence/audiobook_package_v2_a_ghost_story_normalization_evidence.json",
+      "audiobook_next_action": "Keep legacy production delivery unchanged until the immutable package is privately uploaded and independently checksum-verified under a separately authorized storage task."
+    },
     "alices-adventures-in-wonderland": {
       "latest_decision": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_REPRESENTATIVE_ASR_REPAIR_FAILURE",
       "decision_reason": "The single bounded Kokoro bf_emma British-G2P candidate reached exact ASR on three of four representative passages, but the Caterpillar dialogue still omitted one repeated source token I after the only permitted retained-WAV decoder repair. Listening and full-title generation were correctly skipped.",

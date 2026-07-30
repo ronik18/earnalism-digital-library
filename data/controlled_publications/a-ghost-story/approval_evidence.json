@@ -8,15 +8,74 @@
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "audio_qa_status": "QA_PASSED",
   "asr_source_score": 9.88,
+  "source_coverage": 0.995571,
+  "source_coverage_method": "audio_derived_asr_matching_characters_over_canonical_source_characters",
   "first_words_match": true,
   "last_words_match": true,
+  "no_missing_duplicated_reordered_content": true,
   "listening_qa_minimum_score": 9.4,
   "listening_qa_minimum_confidence": 0.95,
+  "listening_qa_sample_count": 6,
   "listening_qa_fatal_flags": [],
+  "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+  "auto_estimated_sync": false,
+  "measured_section_boundary_score": 1.0,
+  "measured_section_boundary_method": "equal_opcode_anchored_internal_boundaries",
+  "approved_legacy_sidecar_normalization": {
+    "schema_version": "approved_legacy_sidecar_normalization.v1",
+    "mode": "measured_word_to_canonical_source_sections",
+    "output_granularity": "section",
+    "source_chapter_files": [
+      "chapters/chapter-001.json"
+    ],
+    "source_section_count": 30,
+    "measured_word_count": 2450,
+    "minimum_monotonic_alignment_ratio": 0.98,
+    "minimum_boundary_retention_ratio": 0.99,
+    "source_text_equivalence": {
+      "schema_version": "approved_legacy_source_text_equivalence.v1",
+      "mode": "collapse_whitespace_only",
+      "alignment_token_mode": "collapse_intraword_ascii_hyphens",
+      "canonical_source_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
+      "narrated_manuscript_path": "internal/audiobook_lab/sprint1_publication/source_manuscripts/a-ghost-story/clean_manuscript.txt",
+      "narrated_manuscript_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4"
+    },
+    "input_sha256": {
+      "timestamps": "f705f1832a8bca6e6a66b5e34b0689d7a3daf71cd79a6f076b6376305307dc44",
+      "vtt": "11f7c4689b94230d9125e77789efcf1ac15d3809859e847c013548d69a029517"
+    },
+    "release_evidence_path": "internal/earnalism_intelligence/audiobook_package_v2_a_ghost_story_normalization_evidence.json",
+    "release_evidence_sha256": "8e8e8ec038a7944ddd8cfb2468d0c77ce0c37dec65c998893e160ad538637934"
+  },
   "audio_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
   "source_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+  "publication_traceability_hashes": {
+    "source_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
+    "content_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
+    "provenance_hash": "3c0d7f93b1e730b2d89a6c6ac926c5838e28254a3228571cfe40cb0797018ba6"
+  },
+  "uploaded_artifact_sha256": {
+    "mp3": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+    "timestamps": "f705f1832a8bca6e6a66b5e34b0689d7a3daf71cd79a6f076b6376305307dc44",
+    "vtt": "11f7c4689b94230d9125e77789efcf1ac15d3809859e847c013548d69a029517",
+    "chapters": "ffe4267005f0b7120b0398cb6b9515a245afbdb759947fafbe0d79f94d9bbf87",
+    "meta": "0d8b16ee7c3df5b7b4e9615efd7ad3430481f8c219eec80a0a29cb6a53c085ad"
+  },
+  "uploaded_artifact_size_bytes": {
+    "mp3": 7047789,
+    "timestamps": 194998,
+    "vtt": 99682,
+    "chapters": 187,
+    "meta": 550
+  },
   "upload_status": "UPLOADED_CHECKSUM_VERIFIED",
+  "storage_backend": "b2_s3",
+  "endpoint_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
+  "endpoint_http_status": 206,
+  "metadata_approval_status": "PASS",
+  "browser_gate_status": "PASS",
   "quality_claim": "MEASURED_RELEASE_MINIMUM_PASS_NO_10_OF_10_CLAIM",
+  "release_blockers": [],
   "allowCheckout": false,
   "allowPayment": false,
   "audiobook_enabled": true
