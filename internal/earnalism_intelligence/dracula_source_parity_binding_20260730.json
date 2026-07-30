@@ -1,0 +1,111 @@
+{
+  "schema_version": "earnalism.dracula_source_parity_binding.v1",
+  "generated_at": "2026-07-30T13:07:53Z",
+  "slug": "dracula",
+  "title": "Dracula",
+  "author": "Bram Stoker",
+  "status": "PASS_PRIVATE_SOURCE_INPUT_READY_AUDIO_HIDDEN",
+  "reconciliation": {
+    "reconciled_at": "2026-07-30T13:25:18Z",
+    "source_commit": "b33503ee",
+    "baseline_commit": "87468b00",
+    "branch": "codex/dracula-source-parity-reconciled-20260730",
+    "append_only_jekyll_evidence_preserved": true
+  },
+  "repair": {
+    "canonical_controlled_root": "data/controlled_publications/dracula",
+    "packaged_backend_root": "backend/data/controlled_publications/dracula",
+    "canonical_chapters_metadata_bound": 27,
+    "metadata_field_added": "bookSlug",
+    "metadata_value": "dracula",
+    "chapter_content_changed": false,
+    "stored_content_hash_changed": false,
+    "backend_mirror_changed": false,
+    "narration_normalization": "plain_or_supported_p_br_html.v1",
+    "supported_reader_html_tags": [
+      "p",
+      "br"
+    ],
+    "unsupported_reader_html_policy": "FAIL_CLOSED"
+  },
+  "exact_normalized_parity": {
+    "status": "PASS_EXACT",
+    "chapter_count": 27,
+    "chapter_orders": {
+      "first": 1,
+      "last": 27,
+      "contiguous": true
+    },
+    "source_characters": 848683,
+    "source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
+    "canonical_raw_reader_content_characters": 881120,
+    "canonical_raw_reader_content_sha256": "a9b4c970185b51e95c6904301b5d4273bf7058fd5aab37da9e5a88281c20273e",
+    "ordered_token_count_canonical": 162156,
+    "ordered_token_count_backend": 162156,
+    "ordered_token_similarity": 1.0
+  },
+  "preserved_source_snapshots": {
+    "current_source_evidence": {
+      "evidence_path": "data/controlled_publications/dracula/source_evidence.json",
+      "mirrored_path": "backend/data/controlled_publications/dracula/source_evidence.json",
+      "file_sha256": "28bae4226f56045a267f1d42092d3d44d23054626eec7d7d17bf74a770a28241",
+      "source_hash": "3dbe1845a822271cd2b887ebb81301b05844f8fa24133b915e30da35e915483a",
+      "content_hash": "7a398986059b86f35f7eeb583843a24d14998ea39af7c3895c76708042f2e160",
+      "provenance_hash": "7bc749726a9bcf0f22970565592ae8b154f5212a73d40821048f04497b30046a"
+    },
+    "historical_approval_snapshot": {
+      "evidence_path": "data/controlled_publications/dracula/approval_evidence.json",
+      "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+      "content_hash": "059ee06703b309c017b770587c6106afc0542a3cc9d52eb5daaf27fa633e2252",
+      "provenance_hash": "512a127ee44fcd1ed61cf2c6d3352ab74147e7ab60e0855609c1a0842dbdb711",
+      "policy": "PRESERVED_AS_HISTORICAL_APPROVAL_EVIDENCE_NOT_OVERWRITTEN"
+    }
+  },
+  "checksum_manifest": {
+    "path": "data/controlled_publications/dracula/checksum_manifest.json",
+    "regenerated_scope": "CANONICAL_ROOT_ONLY",
+    "file_entries_updated": 28,
+    "changed_entry_breakdown": {
+      "chapter_metadata_entries": 27,
+      "source_evidence_stale_byte_count_entry": 1
+    },
+    "manifest_hash_algorithm": "sha256(canonical_json(files))",
+    "manifest_hash": "73b4b46eb5332fd2a30a20a2cd01e484108f840eb3d020357246e537dd006456"
+  },
+  "release_truth": {
+    "public_reader_status": "PUBLIC_READER",
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+    "provider_calls_ran": false,
+    "audio_generated": false,
+    "paid_tts_lock_touched": false,
+    "cloud_mutation_performed": false,
+    "release_gate_mutated": false
+  },
+  "validation": {
+    "source_preparation_tests": {
+      "passed": 9,
+      "failed": 0
+    },
+    "focused_catalog_and_artifact_tests": {
+      "passed": 15,
+      "failed": 0
+    },
+    "public_audio_and_controlled_publication_safety_tests": {
+      "passed": 21,
+      "failed": 0
+    },
+    "reconciled_green_test_total": 45,
+    "legacy_broad_dracula_test_files": {
+      "passed": 50,
+      "failed": 22,
+      "classification": "PRE_EXISTING_STALE_DRACULA_ONLY_CATALOG_ASSERTIONS",
+      "repair_related_failures": 0
+    },
+    "canonical_checksum_entries_verified": 31,
+    "chapter_content_and_stored_hash_unchanged": true,
+    "backend_mirror_unchanged": true,
+    "paid_tts_lock_unchanged": true,
+    "git_diff_check": "PASS"
+  },
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_google_english_input.py --slug dracula --controlled-root data/controlled_publications --parity-controlled-root backend/data/controlled_publications --output-root /private/tmp/earnalism-dracula-source-freeze"
+}
