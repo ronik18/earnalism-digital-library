@@ -29,6 +29,7 @@ from asr_sync_hook import (  # noqa: E402
     LISTENING_QA_RUBRIC_VERSION,
     LISTENING_QA_SCHEMA_VERSION,
     LISTENING_THRESHOLDS,
+    UNIVERSAL_LISTENING_POLICY,
     evaluate_listening_evidence,
     judge_audio_sample_with_openai,
     openai_listening_qa_budget_guard,
@@ -39,6 +40,7 @@ from asr_sync_hook import (  # noqa: E402
 QA_SCHEMA_VERSION = 1
 LISTENING_SAMPLE_COUNT = 6
 ALLOWED_ENGLISH_POLICIES = {
+    UNIVERSAL_LISTENING_POLICY,
     "schema3_universal_9_7",
     "tiered_audiobook_acceptance_v1",
 }

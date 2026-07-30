@@ -547,6 +547,159 @@ class GoogleEnglishFullAudioDerivedQATests(unittest.TestCase):
         )
         self.assertEqual(model.calls, [])
 
+    def apply_bounded_repair(self, target_index: int = 2) -> dict:
+        base = qa.candidate_qa.validate_full_candidate(
+            self.manifest_path,
+            duration_probe=self.duration_getter,
+        )
+        base_hashes = [record["audio_sha256"] for record in self.records]
+        target = self.records[target_index]
+        prior_hash = target["audio_sha256"]
+        replacement_path = Path(target["audio_path"])
+        replacement_path.write_bytes(b"ID3-bounded-replacement")
+        replacement_hash = qa.sha256_file(replacement_path)
+        target["audio_sha256"] = replacement_hash
+        target["audio_size_bytes"] = replacement_path.stat().st_size
+        candidate_hashes = [
+            record["audio_sha256"] for record in self.records
+        ]
+        candidate_sequence = qa.candidate_qa.sha256_json(candidate_hashes)
+        repair_fingerprint = qa.canonical_sha256(
+            {
+                "schema_version": qa.BOUNDED_CHUNK_REPAIR_SCHEMA,
+                "provider": "google",
+                "mode": "bounded_chunk_repair",
+                "slug": self.manifest["slug"],
+                "source_sha256": base.source_sha256,
+                "input_manifest_sha256": base.input_manifest_sha256,
+                "base_full_manifest_sha256": base.manifest_sha256,
+                "chunk_index": target_index,
+                "unit_id": target["unit_id"],
+                "text_sha256": target["text_sha256"],
+                "prior_audio_sha256": prior_hash,
+                "voice": "en-GB-Chirp3-HD-Charon",
+                "language_code": "en-GB",
+                "speaking_rate": 1.0,
+                "pitch": 0.0,
+                "synthesis_input_kind": "exact_plain_text",
+            }
+        )
+        repair = {
+            "schema_version": qa.BOUNDED_CHUNK_REPAIR_SCHEMA,
+            "status": "PRIVATE_REPLACEMENT_CANDIDATE_QA_PENDING",
+            "slug": self.manifest["slug"],
+            "source_sha256": base.source_sha256,
+            "input_manifest_sha256": base.input_manifest_sha256,
+            "base_full_manifest_sha256": base.manifest_sha256,
+            "base_attempt_fingerprint": self.manifest[
+                "attempt_fingerprint"
+            ],
+            "failed_listening_evidence_sha256": "f" * 64,
+            "base_candidate_audio_sequence_sha256": (
+                base.candidate_audio_sequence_sha256
+            ),
+            "base_candidate_binding_sha256": base.candidate_binding_sha256,
+            "repair_attempt_fingerprint": repair_fingerprint,
+            "chunk_index": target_index,
+            "unit_id": target["unit_id"],
+            "text_sha256": target["text_sha256"],
+            "prior_audio_sha256": prior_hash,
+            "replacement_audio_sha256": replacement_hash,
+            "replacement_voice": "en-GB-Chirp3-HD-Charon",
+            "replacement_language_code": "en-GB",
+            "replacement_speaking_rate": 1.0,
+            "replacement_pitch": 0.0,
+            "synthesis_input_kind": "exact_plain_text",
+            "base_ordered_audio_hashes": base_hashes,
+            "candidate_audio_sequence_sha256": candidate_sequence,
+            "preserved_audio_file_count": len(self.records) - 1,
+            "replacement_audio_file_count": 1,
+            "changed_chunk_indexes": [target_index],
+            "full_source_text_changed": False,
+            "upload_performed": False,
+            "publication_performed": False,
+            "release_mutation_performed": False,
+        }
+        self.manifest["candidate_audio_sequence_sha256"] = (
+            candidate_sequence
+        )
+        self.manifest["bounded_chunk_repair"] = repair
+        self.manifest["repair_synthesis_calls"] = 1
+        self.manifest["total_provider_calls_across_lineage"] = (
+            len(self.records) + 1
+        )
+        self.write_manifest()
+        return repair
+
+    def test_one_bound_replacement_is_accepted_before_asr(self) -> None:
+        repair = self.apply_bounded_repair()
+        evidence = qa.validate_contract(
+            self.manifest_path,
+            duration_getter=self.duration_getter,
+        )
+        self.assertEqual(
+            qa.validate_attempt_binding(evidence),
+            repair["repair_attempt_fingerprint"],
+        )
+        self.assertEqual(
+            evidence.candidate_audio_sequence_sha256,
+            repair["candidate_audio_sequence_sha256"],
+        )
+
+    def test_bound_replacement_reuses_only_exact_base_units(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        prior_report = self.output_path
+        target_index = 2
+        repair = self.apply_bounded_repair(target_index=target_index)
+        output = self.run_dir / "full_audio_derived_qa.bounded-repair.json"
+        model = MockWhisperModel(self.source_by_stem)
+        code, report = self.evaluate(
+            model=model,
+            output=output,
+            reuse_report=prior_report,
+        )
+        self.assertEqual(code, 0)
+        self.assertEqual(len(model.calls), 1)
+        self.assertEqual(
+            Path(model.calls[0][0]).stem,
+            self.records[target_index]["unit_id"],
+        )
+        self.assertEqual(
+            report["attempt_fingerprint"],
+            repair["repair_attempt_fingerprint"],
+        )
+        self.assertEqual(
+            report["audio_derived_asr"]["reused_local_asr_report_count"],
+            len(self.records) - 1,
+        )
+        self.assertEqual(
+            report["audio_derived_asr"]["local_asr_run_count"],
+            1,
+        )
+
+    def test_bounded_repair_with_second_changed_chunk_is_rejected(self) -> None:
+        self.apply_bounded_repair()
+        second = self.records[3]
+        second_path = Path(second["audio_path"])
+        second_path.write_bytes(b"ID3-second-undisclosed-change")
+        second["audio_sha256"] = qa.sha256_file(second_path)
+        second["audio_size_bytes"] = second_path.stat().st_size
+        self.manifest["candidate_audio_sequence_sha256"] = (
+            qa.candidate_qa.sha256_json(
+                [record["audio_sha256"] for record in self.records]
+            )
+        )
+        self.write_manifest()
+        with self.assertRaisesRegex(
+            qa.FullAudioDerivedQAError,
+            "exactly one declared chunk",
+        ):
+            qa.validate_contract(
+                self.manifest_path,
+                duration_getter=self.duration_getter,
+            )
+
     def test_source_hash_tamper_blocks_before_asr(self) -> None:
         self.source_path.write_text(self.source + "tampered\n", encoding="utf-8")
         model = MockWhisperModel(self.source_by_stem)
