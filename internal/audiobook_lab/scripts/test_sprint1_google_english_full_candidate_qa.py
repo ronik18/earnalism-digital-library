@@ -12,6 +12,16 @@ import sprint1_google_english_full_candidate_qa as qa
 
 
 class GoogleEnglishFullCandidateQATests(unittest.TestCase):
+    def test_active_universal_policy_is_allowed_for_english(self) -> None:
+        self.assertEqual(
+            qa.UNIVERSAL_LISTENING_POLICY,
+            "platform_audiobook_acceptance_v4_89",
+        )
+        self.assertIn(
+            qa.UNIVERSAL_LISTENING_POLICY,
+            qa.ALLOWED_ENGLISH_POLICIES,
+        )
+
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)

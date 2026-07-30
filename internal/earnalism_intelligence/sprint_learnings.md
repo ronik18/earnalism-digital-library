@@ -1802,3 +1802,27 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   activation, deployment, endpoint, and browser proof as explicit downstream
   blockers. No provider, cloud, public asset, release gate, or paid-lock state
   changes during the build.
+
+## 2026-07-30 — Jekyll's full candidate converged to one hash-bound repair
+
+- The 92-chunk Charon full candidate is not a broad regeneration problem.
+  Five deterministic listening samples scored 9.4-9.5 with confidence 0.95
+  and no fatal flags; only `chunk_0036` failed at 8.4 with confidence 0.90.
+- The active English release policy is
+  `platform_audiobook_acceptance_v4_89`. The existing 8.4 score still fails;
+  changing a label or threshold in a report is not a repair.
+- Keep the established `en-GB-Chirp3-HD-Charon` narrator and exact plain text,
+  but test rate 1.00 for the intense Lanyon/Jekyll dialogue instead of the
+  rejected 0.94. This is materially distinct without introducing a one-chunk
+  narrator change or SSML/source drift.
+- A replacement full manifest must bind the exact source, input manifest,
+  rejected full manifest, failed listening report, chunk text, old audio hash,
+  and new synthesis fingerprint. It must preserve 91 audio files byte-for-byte
+  and prove that exactly one ordered audio hash changed.
+- Full audio-derived ASR and measured-sync QA must run again because the
+  replacement changes timing. Five listening judgments may be reused only
+  when their source and audio hashes match the independent prior report;
+  `chunk_0036` always requires one new judgment under the paid lock.
+- The provider-free preflight passed with an estimated TTS cost of USD 0.03846.
+  No synthesis, upload, publication, release mutation, or paid-lock write ran,
+  and Jekyll remains audio-hidden.

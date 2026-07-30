@@ -51,6 +51,9 @@ WHISPER_FILENAME = representative_qa.WHISPER_FILENAME
 WHISPER_SHA256 = representative_qa.WHISPER_SHA256
 ASR_SETTINGS = dict(representative_qa.ASR_SETTINGS)
 DEFAULT_WHISPER_CACHE = representative_qa.DEFAULT_WHISPER_CACHE
+BOUNDED_CHUNK_REPAIR_SCHEMA = (
+    "earnalism.google_english_bounded_chunk_repair.v1"
+)
 
 
 class FullAudioDerivedQAError(RuntimeError):
@@ -186,6 +189,18 @@ def validate_attempt_binding(
             "settings, and ordered chunks"
         ),
     )
+    repair = manifest.get("bounded_chunk_repair")
+    if repair is not None:
+        require(
+            isinstance(repair, dict),
+            "BOUNDED_REPAIR_BINDING_INVALID",
+            "bounded_chunk_repair must be an object",
+        )
+        expected = validate_bounded_chunk_repair_binding(
+            evidence,
+            base_attempt_fingerprint=expected,
+            repair=repair,
+        )
     audition_hash = str(manifest.get("audition_evidence_sha256") or "")
     require(
         len(audition_hash) == 64
@@ -194,6 +209,246 @@ def validate_attempt_binding(
         "full manifest lacks a valid hash binding to passing representative evidence",
     )
     return expected
+
+
+def _valid_sha256(value: Any) -> bool:
+    rendered = str(value or "")
+    return len(rendered) == 64 and all(
+        character in "0123456789abcdef" for character in rendered
+    )
+
+
+def validate_bounded_chunk_repair_binding(
+    evidence: candidate_qa.CandidateEvidence,
+    *,
+    base_attempt_fingerprint: str,
+    repair: Mapping[str, Any],
+) -> str:
+    """Validate one hash-bound audio substitution in a Google full candidate."""
+
+    manifest = evidence.manifest
+    require(
+        repair.get("schema_version") == BOUNDED_CHUNK_REPAIR_SCHEMA,
+        "BOUNDED_REPAIR_SCHEMA_MISMATCH",
+        "bounded repair schema is not supported",
+    )
+    require(
+        repair.get("status") == "PRIVATE_REPLACEMENT_CANDIDATE_QA_PENDING",
+        "BOUNDED_REPAIR_STATE_INVALID",
+        "bounded repair must remain private and QA-pending",
+    )
+    for field in (
+        "base_full_manifest_sha256",
+        "base_candidate_audio_sequence_sha256",
+        "base_candidate_binding_sha256",
+        "failed_listening_evidence_sha256",
+        "repair_attempt_fingerprint",
+        "text_sha256",
+        "prior_audio_sha256",
+        "replacement_audio_sha256",
+        "candidate_audio_sequence_sha256",
+    ):
+        require(
+            _valid_sha256(repair.get(field)),
+            "BOUNDED_REPAIR_BINDING_INVALID",
+            f"bounded repair has an invalid {field}",
+        )
+    require(
+        repair.get("slug") == manifest.get("slug")
+        and repair.get("source_sha256") == evidence.source_sha256
+        and repair.get("input_manifest_sha256")
+        == evidence.input_manifest_sha256,
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair source or title binding changed",
+    )
+    require(
+        repair.get("base_attempt_fingerprint")
+        == base_attempt_fingerprint,
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair does not bind the validated base attempt",
+    )
+    try:
+        target_index = int(repair.get("chunk_index"))
+    except (TypeError, ValueError) as exc:
+        raise FullAudioDerivedQAError(
+            "BOUNDED_REPAIR_BINDING_INVALID",
+            "bounded repair chunk_index must be an integer",
+        ) from exc
+    require(
+        0 <= target_index < len(evidence.records),
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair chunk_index is outside the full candidate",
+    )
+    target = evidence.records[target_index]
+    require(
+        repair.get("unit_id") == target.get("unit_id")
+        and repair.get("text_sha256") == target.get("text_sha256")
+        and repair.get("replacement_audio_sha256")
+        == target.get("audio_sha256"),
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair target does not match the replacement record",
+    )
+    require(
+        repair.get("prior_audio_sha256")
+        != repair.get("replacement_audio_sha256"),
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair did not change the rejected audio bytes",
+    )
+
+    base_hashes = repair.get("base_ordered_audio_hashes")
+    require(
+        isinstance(base_hashes, list)
+        and len(base_hashes) == len(evidence.records)
+        and all(_valid_sha256(item) for item in base_hashes),
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair lacks the complete base audio sequence",
+    )
+    candidate_hashes = [record["audio_sha256"] for record in evidence.records]
+    changed_indexes = [
+        index
+        for index, (before, after) in enumerate(
+            zip(base_hashes, candidate_hashes)
+        )
+        if before != after
+    ]
+    require(
+        changed_indexes == [target_index]
+        and repair.get("changed_chunk_indexes") == [target_index],
+        "BOUNDED_REPAIR_CHANGED_MULTIPLE_CHUNKS",
+        "bounded repair must change exactly one declared chunk",
+    )
+    require(
+        base_hashes[target_index] == repair.get("prior_audio_sha256")
+        and repair.get("preserved_audio_file_count")
+        == len(evidence.records) - 1
+        and repair.get("replacement_audio_file_count") == 1,
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair preservation counts or prior hash changed",
+    )
+    base_sequence_sha256 = candidate_qa.sha256_json(base_hashes)
+    require(
+        repair.get("base_candidate_audio_sequence_sha256")
+        == base_sequence_sha256,
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair base audio sequence hash changed",
+    )
+    base_binding_sha256 = candidate_qa.sha256_json(
+        {
+            "manifest_sha256": repair.get("base_full_manifest_sha256"),
+            "source_sha256": evidence.source_sha256,
+            "input_manifest_sha256": evidence.input_manifest_sha256,
+            "ordered_text_hashes": [
+                record["text_sha256"] for record in evidence.records
+            ],
+            "ordered_audio_hashes": base_hashes,
+        }
+    )
+    require(
+        repair.get("base_candidate_binding_sha256")
+        == base_binding_sha256,
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair base candidate binding changed",
+    )
+    require(
+        repair.get("candidate_audio_sequence_sha256")
+        == evidence.candidate_audio_sequence_sha256
+        == manifest.get("candidate_audio_sequence_sha256"),
+        "BOUNDED_REPAIR_BINDING_INVALID",
+        "bounded repair replacement audio sequence hash changed",
+    )
+    require(
+        repair.get("full_source_text_changed") is False
+        and repair.get("synthesis_input_kind") == "exact_plain_text",
+        "BOUNDED_REPAIR_SOURCE_MUTATION_BLOCKED",
+        "bounded repair must synthesize the exact source text without SSML drift",
+    )
+    for field in (
+        "upload_performed",
+        "publication_performed",
+        "release_mutation_performed",
+    ):
+        require(
+            repair.get(field) is False,
+            "BOUNDED_REPAIR_PUBLIC_MUTATION_BLOCKED",
+            f"bounded repair {field} must remain false",
+        )
+    require(
+        manifest.get("repair_synthesis_calls") == 1
+        and manifest.get("total_provider_calls_across_lineage")
+        == len(evidence.records) + 1,
+        "BOUNDED_REPAIR_CALL_COUNT_INVALID",
+        "bounded repair must record exactly one replacement provider call",
+    )
+
+    replacement_voice = str(repair.get("replacement_voice") or "")
+    replacement_language = str(
+        repair.get("replacement_language_code") or ""
+    )
+    require(
+        replacement_voice.startswith(f"{replacement_language}-")
+        and replacement_language == manifest.get("language_code"),
+        "BOUNDED_REPAIR_VOICE_INVALID",
+        "bounded repair replacement voice locale changed",
+    )
+    try:
+        replacement_rate = float(repair.get("replacement_speaking_rate"))
+        replacement_pitch = float(repair.get("replacement_pitch"))
+    except (TypeError, ValueError) as exc:
+        raise FullAudioDerivedQAError(
+            "BOUNDED_REPAIR_VOICE_INVALID",
+            "bounded repair replacement rate and pitch must be numeric",
+        ) from exc
+    require(
+        math.isfinite(replacement_rate)
+        and 0.25 <= replacement_rate <= 4.0
+        and math.isfinite(replacement_pitch)
+        and -20.0 <= replacement_pitch <= 20.0,
+        "BOUNDED_REPAIR_VOICE_INVALID",
+        "bounded repair replacement settings are outside the Google contract",
+    )
+    require(
+        (
+            replacement_voice,
+            replacement_rate,
+            replacement_pitch,
+        )
+        != (
+            manifest.get("voice"),
+            float(manifest.get("speaking_rate")),
+            float(manifest.get("pitch")),
+        ),
+        "BOUNDED_REPAIR_DUPLICATE_SETTINGS",
+        "bounded repair repeats the rejected voice, rate, pitch, and text",
+    )
+    expected_repair_fingerprint = canonical_sha256(
+        {
+            "schema_version": BOUNDED_CHUNK_REPAIR_SCHEMA,
+            "provider": "google",
+            "mode": "bounded_chunk_repair",
+            "slug": manifest.get("slug"),
+            "source_sha256": evidence.source_sha256,
+            "input_manifest_sha256": evidence.input_manifest_sha256,
+            "base_full_manifest_sha256": repair.get(
+                "base_full_manifest_sha256"
+            ),
+            "chunk_index": target_index,
+            "unit_id": target.get("unit_id"),
+            "text_sha256": target.get("text_sha256"),
+            "prior_audio_sha256": repair.get("prior_audio_sha256"),
+            "voice": replacement_voice,
+            "language_code": replacement_language,
+            "speaking_rate": replacement_rate,
+            "pitch": replacement_pitch,
+            "synthesis_input_kind": "exact_plain_text",
+        }
+    )
+    require(
+        repair.get("repair_attempt_fingerprint")
+        == expected_repair_fingerprint,
+        "BOUNDED_REPAIR_FINGERPRINT_MISMATCH",
+        "bounded repair fingerprint does not match exact source and settings",
+    )
+    return expected_repair_fingerprint
 
 
 def validate_contract(
