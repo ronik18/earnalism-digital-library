@@ -144,6 +144,9 @@ class GoogleObjectiveAdapterTests(unittest.TestCase):
             "author": "Test Author",
             "provider": "google",
             "voice": "en-GB-Studio-C",
+            "language_code": "en-GB",
+            "speaking_rate": 0.94,
+            "pitch": 0.0,
             "source_sha256": source_sha,
             "input_manifest_sha256": input_manifest_sha,
             "attempt_fingerprint": self.fingerprint,
@@ -255,6 +258,9 @@ class GoogleObjectiveAdapterTests(unittest.TestCase):
             listening["schema_version"], adapter.google_pipeline.LISTENING_SCHEMA
         )
         self.assertEqual(listening["objective_gate_status"], "PASS")
+        self.assertEqual(listening["language_code"], "en-GB")
+        self.assertEqual(listening["speaking_rate"], 0.94)
+        self.assertEqual(listening["pitch"], 0.0)
         self.assertEqual(len(listening["samples"]), 4)
         self.assertFalse(listening["provider_calls_made_by_adapter"])
         self.assertFalse(listening["listening_qa_called"])
@@ -355,6 +361,60 @@ class GoogleObjectiveAdapterTests(unittest.TestCase):
         source, transcript, applied = adapter.apply_spoken_number_equivalences(
             "The neighbour noticed the colour.",
             "The neighbor noticed the color.",
+        )
+        self.assertEqual(applied, [])
+        metrics = adapter.whisper_common.ordered_token_integrity(source, transcript)
+        self.assertFalse(metrics["ordered_content_integrity_pass"])
+
+    def test_exact_jekyll_hydes_hides_phonetic_equivalence_is_auditable(self) -> None:
+        source, transcript, applied = adapter.apply_spoken_number_equivalences(
+            "Ah, that's not Jekyll's voice. It's Hyde's! cried Utterson.",
+            "Ah, that's not Jekyll's voice. It's hides! cried Utterson.",
+            slug="jekyll-and-hyde",
+        )
+        self.assertEqual(source, transcript)
+        self.assertEqual(len(applied), 1)
+        self.assertEqual(
+            applied[0]["reason"],
+            "EXPLICIT_JEKYLL_CONTEXTUAL_PHONETIC_EQUIVALENCE_HYDES_HIDES",
+        )
+        self.assertEqual(applied[0]["scope_slug"], "jekyll-and-hyde")
+        self.assertEqual(
+            applied[0]["source_text_sha256"],
+            adapter.google_pipeline.sha256_text(
+                "Ah, that's not Jekyll's voice. It's Hyde's! cried Utterson."
+            ),
+        )
+        metrics = adapter.whisper_common.ordered_token_integrity(source, transcript)
+        self.assertTrue(metrics["ordered_content_integrity_pass"])
+
+    def test_hydes_hides_is_not_a_generic_phonetic_equivalence(self) -> None:
+        for source_text, transcript_text in (
+            ("Hyde's house was empty.", "Hides house was empty."),
+            ("It's Hyde's decision.", "It's hides decision."),
+            ("It's hyde's, cried Utterson.", "It's hides, cried Utterson."),
+            ("That is Hyde's, cried Utterson.", "That is hides, cried Utterson."),
+            ("It's Hyde's, cried Poole.", "It's hides, cried Poole."),
+            ("It's Hyde's, cried Utterson.", "It's Hides, cried Utterson."),
+        ):
+            with self.subTest(source=source_text):
+                source, transcript, applied = adapter.apply_spoken_number_equivalences(
+                    source_text,
+                    transcript_text,
+                    slug="jekyll-and-hyde",
+                )
+                self.assertEqual(applied, [])
+                metrics = adapter.whisper_common.ordered_token_integrity(
+                    source,
+                    transcript,
+                )
+                self.assertFalse(metrics["ordered_content_integrity_pass"])
+
+    def test_hydes_hides_context_is_rejected_outside_jekyll_slug(self) -> None:
+        source, transcript, applied = adapter.apply_spoken_number_equivalences(
+            "Ah, that's not Jekyll's voice. It's Hyde's! cried Utterson.",
+            "Ah, that's not Jekyll's voice. It's hides! cried Utterson.",
+            slug="another-title",
         )
         self.assertEqual(applied, [])
         metrics = adapter.whisper_common.ordered_token_integrity(source, transcript)
