@@ -1,136 +1,298 @@
 {
-  "id": "controlled-sredni-vashtar",
-  "slug": "sredni-vashtar",
-  "title": "Sredni Vashtar",
-  "subtitle": "",
+  "about_author": "Saki (H.H. Munro, 1870–1916) was a British author of darkly comic and macabre short stories, killed in action in World War I.",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "allowPublicReading": true,
+  "approved_to_publish": true,
+  "audio_asset_slug": "sredni-vashtar",
+  "audio_enabled": true,
+  "audiobook": {
+    "asset_sha256": {
+      "chapters": "ab141aae86e2360a38c97f14ad2ebf84066c740e799dd8ad23f83392ff10882a",
+      "meta": "419d4bd104fedbe61d367c28e58c52ba428ecf84ef213c5fc4ec8a29f8b2eed0",
+      "mp3": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+      "timestamps": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
+      "vtt": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d"
+    },
+    "assets": {
+      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_chapters_ab141aae86e2.json",
+      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_meta_419d4bd104fe.json",
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
+      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_timestamps_5eb7a6bddcdf.json",
+      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_vtt_700aa4ae0590.vtt"
+    },
+    "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "duration_ms": 636840,
+    "highlight_sync_enabled": false,
+    "model": "gpt-4o-mini-tts",
+    "provider": "openai",
+    "qa_status": "QA_PASSED",
+    "release_gate": "APPROVED",
+    "size": 10190637,
+    "source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+    "style": "classic_literary_narrator",
+    "sync_mode": "section_following",
+    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "updated_at": "2026-07-14T09:33:44Z",
+    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
+    "voice": "verse"
+  },
+  "audiobook_active_release": {
+    "active_release_descriptor_sha256": "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
+    "candidate_release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
+    "retained_release_descriptor_sha256s": [
+      "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
+      "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3"
+    ],
+    "rollout": {
+      "percentage": 0,
+      "salt": "sredni-vashtar-package-v2-20260730"
+    },
+    "schema_version": "audiobook_active_release.v1",
+    "slug": "sredni-vashtar",
+    "status": "ACTIVE"
+  },
+  "audiobook_assets": {
+    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_chapters_ab141aae86e2.json",
+    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_meta_419d4bd104fe.json",
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
+    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_timestamps_5eb7a6bddcdf.json",
+    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_vtt_700aa4ae0590.vtt"
+  },
+  "audiobook_assets_updated_at": "2026-07-14T09:33:44Z",
+  "audiobook_enabled": true,
+  "audiobook_legacy_release_descriptor_sha256": "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
+  "audiobook_manuscript_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+  "audiobook_model": "gpt-4o-mini-tts",
+  "audiobook_package_release_evidence": {
+    "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3": {
+      "package_version": "sha256-9f1e84d4377dff2d5778dd158393fd450feb37fdef5ca6e88c67191cbe277edd",
+      "primary_receipt_sha256": "f51b0963b5764298e32805a64074f8d40c5bf0299e003c748312c00e1f6c0e92",
+      "primary_release_manifest_receipt_sha256": "a91c035a09ccfd2e8580972f52f439d3fa18470486946c025f1d58967f3f6b1b",
+      "primary_release_manifest_store": "prod",
+      "primary_release_manifest_version_id": "4_z22c3760e0722abf094f30e12_f102f9519093f250e_d20260730_m100026_c004_v0402035_t0054_u01785405626609",
+      "receipt_roles": [
+        "primary",
+        "replica"
+      ],
+      "release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
+      "release_eligible": true,
+      "release_manifest_key": "v1/prod/sprint1/sredni-vashtar/releases/53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3/release-manifest.json",
+      "release_manifest_sha256": "d488f114c154dd57ecdf474254d33b07a355a26ed9b3d416bc85ddf1b68117ea",
+      "release_manifest_size_bytes": 6452,
+      "replica_receipt_sha256": "127f8a2a4f69f135694ce98750bb8627aceab3038bd5f45a7e411131a891fe30",
+      "replica_release_manifest_receipt_sha256": "9dd7f7924b3077b8c91f3f1beabd87c3f06ea3c9e0b1e6404c87f33b37914a05",
+      "replica_release_manifest_store": "dr",
+      "replica_release_manifest_version_id": "4_za83aafe65a63aaff94f90d18_f113de8e353a1dd42_d20260730_m100104_c005_v0501025_t0033_u01785405664888",
+      "schema_version": "audiobook_package_release_evidence.v1",
+      "slug": "sredni-vashtar",
+      "staged_at": "2026-07-30T10:01:49Z"
+    }
+  },
+  "audiobook_packages": {
+    "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3": {
+      "duration_ms": 636840,
+      "highlight_sync_enabled": false,
+      "manuscript_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+      "package_version": "sha256-9f1e84d4377dff2d5778dd158393fd450feb37fdef5ca6e88c67191cbe277edd",
+      "paragraph_count": 158,
+      "release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
+      "release_evidence_version": "approved-legacy-7d02c5428a1b",
+      "schema_version": "audiobook_package_manifest.v2",
+      "segment_count": 1,
+      "slug": "sredni-vashtar",
+      "source_sha256": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
+      "sync_tier": "section",
+      "tracks": [
+        {
+          "chapter_id": "chapter-001",
+          "chunks": [
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/sredni-vashtar/releases/53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3/delivery/chapter-001/segment-001-sha256-f72eec0f513e6f16bb46410a292b1fe8333ce342c623f2b41d6c15cb48b56af1.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1052f5d9c0fead0e_d20260730_m095842_c005_v0501046_t0047_u01785405522549"
+                    }
+                  ],
+                  "sha256": "f72eec0f513e6f16bb46410a292b1fe8333ce342c623f2b41d6c15cb48b56af1",
+                  "size_bytes": 7642701,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/sredni-vashtar/releases/53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3/delivery/chapter-001/segment-001-sha256-f72eec0f513e6f16bb46410a292b1fe8333ce342c623f2b41d6c15cb48b56af1.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1139cf0542e80f69_d20260730_m095547_c004_v0402037_t0016_u01785405347854"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/sredni-vashtar/releases/53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3/sidecars/chapter-001/segment-001-metadata-sha256-fb5c49ad7c8e34e25ab537e2a88c4b155af82a42f3d7683423d3fbce077a5f7a.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f102c1049dbaf90bf_d20260730_m095855_c005_v0501000_t0028_u01785405535521"
+                    }
+                  ],
+                  "sha256": "fb5c49ad7c8e34e25ab537e2a88c4b155af82a42f3d7683423d3fbce077a5f7a",
+                  "size_bytes": 673,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/sredni-vashtar/releases/53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3/sidecars/chapter-001/segment-001-metadata-sha256-fb5c49ad7c8e34e25ab537e2a88c4b155af82a42f3d7683423d3fbce077a5f7a.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1137632e1b093526_d20260730_m095556_c004_v0402025_t0037_u01785405356064"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/sredni-vashtar/releases/53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3/sidecars/chapter-001/segment-001-timestamps-sha256-46004e29c7e41b94a7a3ff3db5ba58fdd422d36661fbb2ee8e27dbe3b44e5799.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f106903beb2fdb693_d20260730_m095850_c005_v0501047_t0054_u01785405530419"
+                    }
+                  ],
+                  "sha256": "46004e29c7e41b94a7a3ff3db5ba58fdd422d36661fbb2ee8e27dbe3b44e5799",
+                  "size_bytes": 53247,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/sredni-vashtar/releases/53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3/sidecars/chapter-001/segment-001-timestamps-sha256-46004e29c7e41b94a7a3ff3db5ba58fdd422d36661fbb2ee8e27dbe3b44e5799.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f106619afd28bcea2_d20260730_m095553_c004_v0402022_t0045_u01785405353330"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/sredni-vashtar/releases/53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3/sidecars/chapter-001/segment-001-sha256-cab72095c3f429f6903c185dc3f2564ea82fba381ab4f6eb58346b9593084e8a.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f101588c3329eb29a_d20260730_m095853_c005_v0501041_t0025_u01785405533171"
+                    }
+                  ],
+                  "sha256": "cab72095c3f429f6903c185dc3f2564ea82fba381ab4f6eb58346b9593084e8a",
+                  "size_bytes": 15576,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/sredni-vashtar/releases/53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3/sidecars/chapter-001/segment-001-sha256-cab72095c3f429f6903c185dc3f2564ea82fba381ab4f6eb58346b9593084e8a.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11493e0136706856_d20260730_m095554_c004_v0402035_t0053_u01785405354752"
+                  }
+                }
+              },
+              "cumulative_start_ms": 0,
+              "duration_ms": 636840,
+              "end_paragraph": 157,
+              "end_word": 1783,
+              "order": 0,
+              "segment_id": "c001-s001",
+              "start_paragraph": 0,
+              "start_word": 0
+            }
+          ],
+          "end_paragraph": 157,
+          "end_word": 1783,
+          "id": "chapter-001",
+          "order": 0,
+          "start_paragraph": 0,
+          "start_word": 0,
+          "title": "Sredni Vashtar"
+        }
+      ],
+      "word_count": 1784
+    }
+  },
+  "audiobook_provider": "openai",
+  "audiobook_release_descriptor_sha256": "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
+  "audiobook_style_profile": "classic_literary_narrator",
+  "audiobook_voice": "verse",
   "author": "Saki",
-  "category_slug": "gothic-fiction",
-  "short_description": "A sickly boy worships a ferret as a god — and prays for it to destroy his cruel guardian.",
-  "description": "Conradin, ten years old and given two more years to live, secretly worships a ferret named Sredni Vashtar as a vengeful deity. When his guardian Mrs De Ropp goes to remove the ferret, Conradin waits, prays — and the ferret answers. Saki's most chilling and perfect story.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
   "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "category_slug": "gothic-fiction",
+  "chapters": [
+    {
+      "has_images": false,
+      "id": "chapter-001",
+      "image_count": 0,
+      "is_preview": true,
+      "language_hint": "en",
+      "order": 1,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "reading_minutes": 8,
+      "title": "Sredni Vashtar",
+      "updated_at": "2026-07-03T20:07:48Z",
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "word_count": 1787
+    }
+  ],
+  "content_hash": "adaad32e67a022024f647efcfd8b02639eab6716a526e6045e85d8d648fc529c",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+  "cover_dimensions": {
+    "back": [
+      1600,
+      2400
+    ],
+    "front": [
+      1600,
+      2400
+    ]
+  },
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+  "cover_semantic_match_score": 9.8,
   "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+  "created_at": "2026-07-03T20:07:48Z",
+  "description": "Conradin, ten years old and given two more years to live, secretly worships a ferret named Sredni Vashtar as a vengeful deity. When his guardian Mrs De Ropp goes to remove the ferret, Conradin waits, prays — and the ferret answers. Saki's most chilling and perfect story.",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "8 min",
   "formats": [
     "Ebook",
     "Audiobook"
   ],
-  "benefits": [
-    "Read a legally cleared digital text.",
-    "Enjoy a clean, structured reading format.",
-    "Access a render-safe ebook prepared for web reading."
-  ],
-  "who_for": [
-    "General readers",
-    "Students and lifelong learners",
-    "Users who prefer structured digital reading"
-  ],
+  "generate_audiobook": true,
+  "id": "controlled-sredni-vashtar",
+  "isLive": true,
+  "isPublic": true,
+  "is_published": true,
   "learnings": [
     "Understand the major themes and structure of the work.",
     "Engage with the text in a clean digital format.",
     "Read without unrelated source-file boilerplate."
   ],
-  "about_author": "Saki (H.H. Munro, 1870–1916) was a British author of darkly comic and macabre short stories, killed in action in World War I.",
-  "chapters": [
-    {
-      "id": "chapter-001",
-      "order": 1,
-      "title": "Sredni Vashtar",
-      "is_preview": true,
-      "has_images": false,
-      "image_count": 0,
-      "word_count": 1787,
-      "reading_minutes": 8,
-      "language_hint": "en",
-      "processing_status": "ready",
-      "processing_warnings": [],
-      "uploaded_at": "2026-07-03T20:07:48Z",
-      "updated_at": "2026-07-03T20:07:48Z"
-    }
-  ],
-  "source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
-  "content_hash": "adaad32e67a022024f647efcfd8b02639eab6716a526e6045e85d8d648fc529c",
   "provenance_hash": "87eec37fc864c1d5b323d47468e1ed2547510c408ff97b400185fd13834a6c51",
+  "publicationStatus": "live",
+  "publication_status": "LIVE_APPROVED",
+  "qa_status": "QA_PASSED",
+  "readerStatus": "reader_ready",
   "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
   "rights_tier": "A",
-  "verification_status": "approved",
-  "qa_status": "QA_PASSED",
-  "approved_to_publish": true,
-  "publication_status": "LIVE_APPROVED",
-  "readerStatus": "reader_ready",
-  "publicationStatus": "live",
-  "isPublic": true,
-  "isLive": true,
-  "showInPublicLibrary": true,
+  "short_description": "A sickly boy worships a ferret as a god — and prays for it to destroy his cruel guardian.",
   "showInHomepage": false,
-  "allowPublicReading": true,
-  "allowCheckout": false,
-  "allowPayment": false,
-  "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "openai",
-  "audiobook_voice": "verse",
-  "audio_asset_slug": "sredni-vashtar",
-  "audiobook_assets": {
-    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
-    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_timestamps_5eb7a6bddcdf.json",
-    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_vtt_700aa4ae0590.vtt",
-    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_chapters_ab141aae86e2.json",
-    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_meta_419d4bd104fe.json"
-  },
-  "audiobook": {
-    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
-    "provider": "openai",
-    "voice": "verse",
-    "model": "gpt-4o-mini-tts",
-    "style": "classic_literary_narrator",
-    "size": 10190637,
-    "duration_ms": 636840,
-    "sync_mode": "section_following",
-    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
-    "highlight_sync_enabled": false,
-    "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
-    "source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
-    "asset_sha256": {
-      "mp3": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
-      "timestamps": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
-      "vtt": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d",
-      "chapters": "ab141aae86e2360a38c97f14ad2ebf84066c740e799dd8ad23f83392ff10882a",
-      "meta": "419d4bd104fedbe61d367c28e58c52ba428ecf84ef213c5fc4ec8a29f8b2eed0"
-    },
-    "assets": {
-      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
-      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_timestamps_5eb7a6bddcdf.json",
-      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_vtt_700aa4ae0590.vtt",
-      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_chapters_ab141aae86e2.json",
-      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_meta_419d4bd104fe.json"
-    },
-    "release_gate": "APPROVED",
-    "qa_status": "QA_PASSED",
-    "updated_at": "2026-07-14T09:33:44Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-14T09:33:44Z",
-  "created_at": "2026-07-03T20:07:48Z",
+  "showInPublicLibrary": true,
+  "slug": "sredni-vashtar",
+  "source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
+  "subtitle": "",
+  "title": "Sredni Vashtar",
   "updated_at": "2026-07-14T09:33:44Z",
-  "cover_dimensions": {
-    "front": [
-      1600,
-      2400
-    ],
-    "back": [
-      1600,
-      2400
-    ]
-  },
-  "cover_semantic_match_score": 9.8,
-  "audiobook_model": "gpt-4o-mini-tts",
-  "audiobook_style_profile": "classic_literary_narrator"
+  "verification_status": "approved",
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ]
 }

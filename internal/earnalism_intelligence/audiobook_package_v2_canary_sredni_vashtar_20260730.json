@@ -1,0 +1,77 @@
+{
+  "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v1",
+  "generated_at": "2026-07-30T10:04:28Z",
+  "slug": "sredni-vashtar",
+  "title": "Sredni Vashtar",
+  "author": "Saki",
+  "decision": "ZERO_PERCENT_PACKAGE_V2_CANDIDATE_STAGED_AWAITING_PRODUCTION_DEPLOYMENT",
+  "customer_release_state": {
+    "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
+    "active_delivery_contract": "legacy",
+    "active_release_descriptor_sha256": "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
+    "candidate_release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
+    "candidate_rollout_percentage": 0,
+    "candidate_selected_for_customers": false,
+    "legacy_descriptor_still_selected": true,
+    "current_public_audiobook_count": 4,
+    "new_live_audiobook_claimed": false,
+    "live_count_changed_by_canary": false
+  },
+  "package_identity": {
+    "release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
+    "release_descriptor_file_sha256": "5674f8bbd2b5b7fed0a5a622f2f28954f0f0023bbca9e90d5bf4e43172c52779",
+    "package_version": "sha256-9f1e84d4377dff2d5778dd158393fd450feb37fdef5ca6e88c67191cbe277edd",
+    "package_manifest_sha256": "d488f114c154dd57ecdf474254d33b07a355a26ed9b3d416bc85ddf1b68117ea",
+    "source_sha256": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
+    "manuscript_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+    "duration_ms": 636840,
+    "segment_count": 1,
+    "word_count": 1784,
+    "paragraph_count": 158,
+    "sync_tier": "section",
+    "narration_regenerated": false
+  },
+  "storage_evidence": {
+    "preflight": "PASS_PRODUCTION_AND_DR_RELEASE_ELIGIBLE",
+    "production": {
+      "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+      "region": "us-west-004",
+      "payload_object_count": 15,
+      "payload_size_bytes": 79267278,
+      "release_manifest_object_count": 1,
+      "release_manifest_size_bytes": 6452,
+      "governance_object_lock": true,
+      "full_download_sha256_verified": true
+    },
+    "disaster_recovery": {
+      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+      "region": "us-east-005",
+      "payload_object_count": 15,
+      "payload_size_bytes": 79267278,
+      "release_manifest_object_count": 1,
+      "release_manifest_size_bytes": 6452,
+      "governance_object_lock": true,
+      "full_download_sha256_verified": true
+    },
+    "default_retention_days": 30,
+    "minimum_remaining_retention_days_verified": 29,
+    "immutable_key_overwrite": false
+  },
+  "validation": {
+    "active_release_status": "RELEASE_POINTER_VALID",
+    "controlled_publication_mirrors_match": true,
+    "focused_tests": "PASS_170_PLUS_2_SUBTESTS",
+    "git_diff_check": "PASS",
+    "production_deployment": "PENDING",
+    "production_http_checkpoint": "PENDING",
+    "production_browser_checkpoint": "PENDING"
+  },
+  "safety": {
+    "audiobook_approval_flags_changed": false,
+    "public_audiobook_count_changed": false,
+    "paid_tts_lock_touched": false,
+    "operator_credentials_committed": false,
+    "operator_credentials_copied_to_railway": false
+  },
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py rollout --slug sredni-vashtar --percentage 5"
+}
