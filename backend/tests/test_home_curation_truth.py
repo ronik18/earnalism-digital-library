@@ -46,9 +46,9 @@ def test_home_curated_payload_is_deterministic_and_tracks_32_reader_titles():
         "sprint1_active_count": 32,
         "reader_enabled_count": 32,
         "approved_audiobook_count": 4,
-        "cover_eligible_count": 13,
-        "hero_carousel_eligible_count": 13,
-        "omitted_visual_count": 19,
+        "cover_eligible_count": 15,
+        "hero_carousel_eligible_count": 15,
+        "omitted_visual_count": 17,
     }
     assert first["hero"]["primary_cta"] == {"label": "Start Reading", "url": "/library"}
     assert first["hero"]["secondary_cta"]["url"] == "/library?availability=approved-audiobook"

@@ -1,0 +1,94 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "the-tell-tale-heart",
+  "active_approvals": {
+    "front": "0870fd3b-83fc-466a-866e-38fa9b27bf87",
+    "back": "38cbaace-f513-47c6-b364-54e65e7af08d"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "0870fd3b-83fc-466a-866e-38fa9b27bf87",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "",
+        "cover_image_url": "",
+        "coverImage": "",
+        "cover_image": "",
+        "thumbnail_url": null,
+        "blur_placeholder": null,
+        "dominant_color": "#4A1C27",
+        "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+        "cover_dimensions": null
+      }
+    },
+    "back": {
+      "from_event_id": "38cbaace-f513-47c6-b364-54e65e7af08d",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "back_cover_url": "",
+        "back_cover_image_url": "",
+        "back_cover_thumbnail_url": null,
+        "back_cover_blur_placeholder": null,
+        "back_cover_dominant_color": null,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_dimensions": {
+          "front": [
+            1600,
+            2400
+          ]
+        }
+      }
+    }
+  },
+  "history": [
+    {
+      "event_id": "0870fd3b-83fc-466a-866e-38fa9b27bf87",
+      "slug": "the-tell-tale-heart",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+      "remote_sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+        "public_id": "earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+        "version": "1785420357",
+        "version_id": "261aeafd0231a16fbd730ea891c80626",
+        "resource_type": "image",
+        "format": "jpg"
+      },
+      "width": 1600,
+      "height": 2400,
+      "approved_at": "2026-07-30T14:06:23.246369+00:00",
+      "approved_by": "sales@reoenterprise.org",
+      "approval_note": "Exact hash-bound front cover independently reviewed at full and 320px size and approved for the canonical The Tell-Tale Heart edition.",
+      "rights_basis": "Odilon Redon, The Tell-Tale Heart (1883), public-domain artwork and faithful reproduction; Wikimedia Commons file record and Public Domain Mark 1.0 verified, artist died 1916, commercial derivative use allowed.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "0bbbebfa85c2ad612b1bdd50c2c28bf4583f58c61e9d6b7209c7a1ca67f90d33"
+    },
+    {
+      "event_id": "38cbaace-f513-47c6-b364-54e65e7af08d",
+      "slug": "the-tell-tale-heart",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+      "remote_sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
+        "public_id": "earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+        "version": "1785420363",
+        "version_id": "3db91038672aa6fb1719ab48b5d38f8f",
+        "resource_type": "image",
+        "format": "jpg"
+      },
+      "width": 1600,
+      "height": 2400,
+      "approved_at": "2026-07-30T14:06:24.686192+00:00",
+      "approved_by": "sales@reoenterprise.org",
+      "approval_note": "Exact hash-bound back cover independently reviewed at full and 320px size and approved for the canonical The Tell-Tale Heart edition.",
+      "rights_basis": "Odilon Redon, The Tell-Tale Heart (1883), public-domain artwork and faithful reproduction; Wikimedia Commons file record and Public Domain Mark 1.0 verified, artist died 1916, commercial derivative use allowed.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "40ee6d141779de88198eadcef0006d7488671fc6a3feb66e069010588ec2375b"
+    }
+  ],
+  "updated_at": "2026-07-30T14:06:24.686192+00:00"
+}

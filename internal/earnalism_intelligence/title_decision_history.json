@@ -2197,9 +2197,9 @@
       "audiobook_next_action": "Keep Pride audio hidden and do not repeat the closed Chatterbox V3 fingerprint. Require one genuinely different exact source-bound delivery, then rerun objective ASR, coverage, first/last, and ordered-content gates before any listening spend."
     },
     "the-tell-tale-heart": {
-      "latest_decision": "COSYVOICE3_BF16_PRIVATE_PILOT_OBJECTIVE_FAIL_AUDIO_REMAINS_HIDDEN",
-      "decision_reason": "The distinct CosyVoice3 BF16 pilot passed only one of four representative passages. It omitted 10 ordered source tokens in the bedroom sample and truncated the heartbeat sample 32 source tokens before the required ending; aggregate score 9.3979 and coverage 0.8908 fail the strict objective gates.",
-      "updated_at": "2026-07-30T06:30:32Z",
+      "latest_decision": "CANONICAL_COVER_PAIR_COMPLETE_AUDIO_REMAINS_HIDDEN",
+      "decision_reason": "The exact Redon-derived 1600 x 2400 front/back pair passed full and thumbnail review, public-domain rights verification, private content-addressed upload, remote checksum verification, and atomic mirrored canonical promotion. The failed CosyVoice3 audio fingerprint remains closed and audio remains hidden.",
+      "updated_at": "2026-07-30T14:07:04Z",
       "language": "en",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "canonical_manuscript_sha256": "316ed82d8ae04a1af3f82ec692e88bc630c4865c06192854a612f29cb017f2bb",
@@ -2235,19 +2235,23 @@
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_cosyvoice3_bf16_private_objective_qa_v1.json",
       "audiobook_next_action": "Keep audio hidden and do not repeat the closed CosyVoice3 fingerprint. Admit only a materially different exact-source pilot with deterministic sentence-safe chunking and exact reconstruction before any full-title generation.",
       "cover_editorial_candidate": {
-        "status": "PRIVATE_CANDIDATE_EDITORIAL_REVIEW_REQUIRED",
+        "status": "CANONICAL_COVER_PAIR_COMPLETE",
         "prepared_at": "2026-07-30T06:17:20Z",
+        "promoted_at": "2026-07-30T14:06:03Z",
         "source_artist": "Odilon Redon",
         "source_work_year": 1883,
         "source_rights_mark": "Public Domain Mark 1.0",
         "source_art_sha256": "075f2c285d2f546076e8f1f50f03da43184f4c51d47746fbabc2358f9d37ed56",
         "front_sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
         "back_sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
-        "visual_review_status": "CODEX_VISUAL_INSPECTION_PASS_OWNER_REVIEW_PENDING",
-        "admin_upload_status": "NOT_UPLOADED_CREDENTIALS_ABSENT",
-        "canonical_promotion_status": "NOT_PROMOTED",
-        "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/the-tell-tale-heart/candidate_manifest.json",
-        "next_action": "Complete owner/editorial review, then upload both sides through the authenticated admin Covers workspace as pending canonical-review candidates."
+        "visual_review_status": "FULL_AND_320PX_REVIEW_PASS",
+        "admin_upload_status": "CONTENT_ADDRESSED_PRIVATE_UPLOAD_COMPLETE",
+        "canonical_promotion_status": "FRONT_BACK_CANONICAL_READY",
+        "front_promotion_event_id": "0870fd3b-83fc-466a-866e-38fa9b27bf87",
+        "back_promotion_event_id": "38cbaace-f513-47c6-b364-54e65e7af08d",
+        "reader_audio_release_truth_unchanged": true,
+        "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/the-tell-tale-heart/canonical_promotion_evidence.json",
+        "next_action": "Merge, deploy, and verify the exact front/back URLs on production catalog and reader routes while keeping audiobook controls hidden."
       }
     }
   },

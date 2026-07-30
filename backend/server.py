@@ -5757,28 +5757,30 @@ def _mongo_cover_upload_eligible(book: dict[str, Any]) -> bool:
 
 
 async def _load_cover_upload_source_or_404(slug: str) -> tuple[dict[str, Any], str]:
-    """Resolve Mongo first, then an approved controlled-publication fallback."""
+    """Resolve an eligible Mongo row, then authoritative controlled truth."""
     normalized = _normalized_cover_slug(slug)
     if not normalized:
         raise HTTPException(status_code=404, detail="Book not found")
 
     mongo_book = await db.books.find_one({"slug": normalized}, {"_id": 0})
-    if mongo_book:
-        _assert_public_rights_approved(mongo_book, "Visual asset")
+    if mongo_book and _mongo_cover_upload_eligible(mongo_book):
         return mongo_book, "mongo"
 
     artifact = load_controlled_artifact_book(normalized, include_content=False)
+    if artifact and _controlled_cover_upload_eligible(normalized, artifact):
+        return artifact, "controlled_publication"
+
+    if mongo_book:
+        _assert_public_rights_approved(mongo_book, "Visual asset")
     if not artifact:
         raise HTTPException(status_code=404, detail="Book not found")
-    if not _controlled_cover_upload_eligible(normalized, artifact):
-        raise HTTPException(
-            status_code=400,
-            detail={
-                "message": "Visual asset cannot be uploaded without an approved controlled publication.",
-                "issues": ["Canonical reader and rights approval is incomplete."],
-            },
-        )
-    return artifact, "controlled_publication"
+    raise HTTPException(
+        status_code=400,
+        detail={
+            "message": "Visual asset cannot be uploaded without an approved controlled publication.",
+            "issues": ["Canonical reader and rights approval is incomplete."],
+        },
+    )
 
 
 @api.get("/admin/books/cover-status")

@@ -474,6 +474,70 @@ def test_controlled_only_jekyll_can_upload_without_seeding_public_mongo(monkeypa
     assert manifest["audio"]["enabled"] is False
 
 
+def test_approved_controlled_artifact_overrides_stale_published_mongo_rights(
+    monkeypatch,
+):
+    slug = "the-tell-tale-heart"
+    canonical = catalog_truth.load_controlled_artifact_book(slug, include_content=False)
+    assert canonical is not None
+    assert catalog_truth.can_expose_reader(canonical) is True
+    stale_mongo = {
+        "slug": slug,
+        "title": canonical["title"],
+        "author": canonical["author"],
+        "is_published": True,
+        "cover_url": "",
+        "back_cover_url": "",
+    }
+    private_candidates = PrivateCoverCandidates()
+    audits = AuditCollection()
+    fake_db = SimpleNamespace(
+        books=ImmutableBooks([stale_mongo]),
+        book_cover_candidates=private_candidates,
+        admin_upload_audit=audits,
+    )
+    private_result = {
+        **upload_result(),
+        "cover_url": (
+            "https://res.cloudinary.com/demo/image/upload/"
+            "tell-tale-private-front.png"
+        ),
+    }
+
+    monkeypatch.setattr(server, "db", fake_db)
+    monkeypatch.setattr(server, "_ensure_cloudinary", lambda: None)
+    monkeypatch.setattr(
+        server,
+        "_process_book_cover_candidate",
+        lambda _body, asset_id, *, kind: (
+            private_result
+            if asset_id
+            == content_addressed_cover_candidate_asset_id(
+                slug,
+                hashlib.sha256(image_bytes()).hexdigest(),
+            )
+            and kind == "front"
+            else pytest.fail("Controlled fallback used the wrong candidate namespace.")
+        ),
+    )
+
+    response = asyncio.run(
+        server.admin_upload_cover(
+            slug=slug,
+            kind="front",
+            confirm_expensive_job=True,
+            file=FakeUpload(image_bytes()),
+            admin={"sub": "owner-1", "email": "owner@example.com"},
+        )
+    )
+
+    assert response["success"] is True
+    assert response["upload_eligibility_source"] == "controlled_publication"
+    assert private_candidates.docs[f"{slug}:front"]["slug"] == slug
+    assert audits.docs[0]["upload_eligibility_source"] == "controlled_publication"
+    assert fake_db.books.docs == [stale_mongo]
+
+
 def test_admin_cover_upload_rejects_missing_authentication():
     client = TestClient(server.app)
     response = client.post(

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T13:05:55.898Z",
+  "generated_at": "2026-07-30T14:12:49.542Z",
   "generated_covers": [],
   "reused_covers": [
     "a-ghost-story",
@@ -24,6 +24,7 @@
     "the-gift-of-the-magi",
     "the-open-window",
     "the-secret-garden",
+    "the-tell-tale-heart",
     "the-time-machine",
     "yugalanguriya"
   ],
@@ -235,11 +236,6 @@
     },
     {
       "slug": "the-open-boat",
-      "front": true,
-      "back": true
-    },
-    {
-      "slug": "the-tell-tale-heart",
       "front": true,
       "back": true
     },

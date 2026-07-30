@@ -7,15 +7,15 @@
   "category_slug": "gothic-fiction",
   "short_description": "A murderer's guilty conscience manifests as the relentless beating of his victim's heart beneath the floorboards.",
   "description": "A nameless narrator insists on his sanity while confessing to murder — but the dead man's heartbeat grows louder and louder until confession becomes inevitable. Poe's most claustrophobic psychological masterpiece.",
-  "cover_url": "",
-  "cover_image_url": "",
-  "coverImage": "",
-  "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
   "backCoverImage": "",
-  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
-  "dominant_color": "#4A1C27",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#311717",
   "estimated_reading_time": "9 min",
   "formats": [
     "Ebook"
@@ -82,5 +82,20 @@
   "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:47Z",
-  "updated_at": "2026-07-03T20:07:47Z"
+  "updated_at": "2026-07-30T14:06:24.686192+00:00",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
+  "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
+  "back_cover_dominant_color": "#2D1318"
 }
