@@ -219,8 +219,13 @@ class GoogleEnglishFullAudioDerivedQATests(unittest.TestCase):
         *,
         model: MockWhisperModel | None = None,
         output: Path | None = None,
+        reuse_report: Path | None = None,
+        reuse_report_sha256: str | None = None,
     ):
         selected = model or MockWhisperModel(self.source_by_stem)
+        expected_reuse_sha256 = reuse_report_sha256
+        if reuse_report is not None and expected_reuse_sha256 is None:
+            expected_reuse_sha256 = qa.sha256_file(reuse_report)
         with mock.patch.object(qa, "WHISPER_SHA256", self.model_sha256):
             return qa.evaluate(
                 self.manifest_path,
@@ -228,6 +233,8 @@ class GoogleEnglishFullAudioDerivedQATests(unittest.TestCase):
                 whisper_cache=self.whisper_cache,
                 model_loader=lambda *_args, **_kwargs: selected,
                 duration_getter=self.duration_getter,
+                reuse_report_path=reuse_report,
+                reuse_report_sha256=expected_reuse_sha256,
             )
 
     def test_passes_exact_full_title_audio_derived_asr_and_measured_sync(
@@ -274,6 +281,217 @@ class GoogleEnglishFullAudioDerivedQATests(unittest.TestCase):
         code, _report = self.evaluate()
         self.assertEqual(code, 0)
         self.assertEqual(first, self.output_path.read_bytes())
+
+    def test_exact_prior_report_reuses_all_local_asr_units(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        reused_output = self.run_dir / "full_audio_derived_qa.reused.json"
+        model = MockWhisperModel(self.source_by_stem)
+        code, report = self.evaluate(
+            model=model,
+            output=reused_output,
+            reuse_report=self.output_path,
+        )
+        self.assertEqual(code, 0)
+        self.assertEqual(model.calls, [])
+        self.assertEqual(
+            report["audio_derived_asr"]["local_asr_run_count"],
+            0,
+        )
+        self.assertEqual(
+            report["audio_derived_asr"]["reused_local_asr_report_count"],
+            len(self.records),
+        )
+        for unit in report["audio_derived_asr"]["reports"]:
+            self.assertEqual(
+                unit["asr_evidence_origin"],
+                "exact_prior_private_report",
+            )
+            self.assertEqual(
+                unit["reused_from_report_sha256"],
+                qa.sha256_file(self.output_path),
+            )
+        self.assertTrue(report["objective_pass"])
+
+    def test_one_changed_audio_unit_runs_only_one_new_local_asr(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        prior_report = self.output_path
+
+        changed_index = len(self.records) // 2
+        changed = self.records[changed_index]
+        changed_path = Path(changed["audio_path"])
+        changed_path.write_bytes(changed_path.read_bytes() + b"-repaired")
+        changed["audio_sha256"] = qa.sha256_file(changed_path)
+        changed["audio_size_bytes"] = changed_path.stat().st_size
+        self.manifest["generated_audio"] = self.records
+        units = [
+            {
+                "chunk_id": record["unit_id"],
+                "text_sha256": record["text_sha256"],
+                "characters": record["characters"],
+            }
+            for record in self.records
+        ]
+        self.manifest["attempt_fingerprint"] = qa.google_pipeline.attempt_fingerprint(
+            mode="full",
+            source_sha256=qa.sha256_file(self.source_path),
+            manifest_sha256=qa.sha256_file(self.input_manifest_path),
+            voice=self.manifest["voice"],
+            language_code=self.manifest["language_code"],
+            speaking_rate=self.manifest["speaking_rate"],
+            pitch=self.manifest["pitch"],
+            units=units,
+        )
+        self.write_manifest()
+
+        changed_output = self.run_dir / "full_audio_derived_qa.changed.json"
+        model = MockWhisperModel(self.source_by_stem)
+        code, report = self.evaluate(
+            model=model,
+            output=changed_output,
+            reuse_report=prior_report,
+        )
+        self.assertEqual(code, 0)
+        self.assertEqual(len(model.calls), 1)
+        self.assertEqual(Path(model.calls[0][0]).stem, changed["unit_id"])
+        self.assertEqual(
+            report["audio_derived_asr"]["local_asr_run_count"],
+            1,
+        )
+        self.assertEqual(
+            report["audio_derived_asr"]["reused_local_asr_report_count"],
+            len(self.records) - 1,
+        )
+        changed_report = report["audio_derived_asr"]["reports"][changed_index]
+        self.assertEqual(
+            changed_report["asr_evidence_origin"],
+            "local_source_blind_whisper",
+        )
+        self.assertIsNone(changed_report["reused_from_report_sha256"])
+
+    def test_tampered_reuse_report_blocks_before_local_asr(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        payload = json.loads(self.output_path.read_text(encoding="utf-8"))
+        payload["audio_derived_asr"]["model_sha256"] = "0" * 64
+        tampered = self.run_dir / "tampered_prior_report.json"
+        tampered.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+        output = self.run_dir / "full_audio_derived_qa.tampered.json"
+        model = MockWhisperModel(self.source_by_stem)
+        code, report = self.evaluate(
+            model=model,
+            output=output,
+            reuse_report=tampered,
+        )
+        self.assertEqual(code, 2)
+        self.assertIn("REUSABLE_ASR_REPORT_INVALID", report["blockers"][0])
+        self.assertEqual(model.calls, [])
+
+    def test_reuse_report_requires_independent_exact_sha256(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        output = self.run_dir / "full_audio_derived_qa.missing_hash.json"
+        model = MockWhisperModel(self.source_by_stem)
+        with mock.patch.object(qa, "WHISPER_SHA256", self.model_sha256):
+            code, report = qa.evaluate(
+                self.manifest_path,
+                output,
+                whisper_cache=self.whisper_cache,
+                model_loader=lambda *_args, **_kwargs: model,
+                duration_getter=self.duration_getter,
+                reuse_report_path=self.output_path,
+            )
+        self.assertEqual(code, 2)
+        self.assertIn(
+            "REUSABLE_ASR_REPORT_BINDING_REQUIRED",
+            report["blockers"][0],
+        )
+        self.assertEqual(model.calls, [])
+
+    def test_reuse_report_hash_mismatch_blocks_before_local_asr(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        original_sha256 = qa.sha256_file(self.output_path)
+        payload = json.loads(self.output_path.read_text(encoding="utf-8"))
+        payload["status"] = "MUTATED"
+        mutated = self.run_dir / "mutated_prior_report.json"
+        mutated.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+        output = self.run_dir / "full_audio_derived_qa.hash_mismatch.json"
+        model = MockWhisperModel(self.source_by_stem)
+        code, report = self.evaluate(
+            model=model,
+            output=output,
+            reuse_report=mutated,
+            reuse_report_sha256=original_sha256,
+        )
+        self.assertEqual(code, 2)
+        self.assertIn(
+            "REUSABLE_ASR_REPORT_HASH_MISMATCH",
+            report["blockers"][0],
+        )
+        self.assertEqual(model.calls, [])
+
+    def test_cross_title_reuse_report_blocks_before_local_asr(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        payload = json.loads(self.output_path.read_text(encoding="utf-8"))
+        payload["slug"] = "different-title"
+        cross_title = self.run_dir / "cross_title_prior_report.json"
+        cross_title.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+        output = self.run_dir / "full_audio_derived_qa.cross_title.json"
+        model = MockWhisperModel(self.source_by_stem)
+        code, report = self.evaluate(
+            model=model,
+            output=output,
+            reuse_report=cross_title,
+        )
+        self.assertEqual(code, 2)
+        self.assertIn(
+            "REUSABLE_ASR_REPORT_CANDIDATE_MISMATCH",
+            report["blockers"][0],
+        )
+        self.assertEqual(model.calls, [])
+
+    def test_cross_unit_reuse_report_blocks_before_local_asr(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        payload = json.loads(self.output_path.read_text(encoding="utf-8"))
+        payload["audio_derived_asr"]["reports"][1]["index"] = 0
+        cross_unit = self.run_dir / "cross_unit_prior_report.json"
+        cross_unit.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+        output = self.run_dir / "full_audio_derived_qa.cross_unit.json"
+        model = MockWhisperModel(self.source_by_stem)
+        code, report = self.evaluate(
+            model=model,
+            output=output,
+            reuse_report=cross_unit,
+        )
+        self.assertEqual(code, 2)
+        self.assertIn("REUSABLE_ASR_REPORT_INVALID", report["blockers"][0])
+        self.assertEqual(model.calls, [])
+
+    def test_duplicate_unit_reuse_report_blocks_before_local_asr(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        payload = json.loads(self.output_path.read_text(encoding="utf-8"))
+        reports = payload["audio_derived_asr"]["reports"]
+        reports[1]["unit_id"] = reports[0]["unit_id"]
+        duplicate = self.run_dir / "duplicate_unit_prior_report.json"
+        duplicate.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+        output = self.run_dir / "full_audio_derived_qa.duplicate_unit.json"
+        model = MockWhisperModel(self.source_by_stem)
+        code, report = self.evaluate(
+            model=model,
+            output=output,
+            reuse_report=duplicate,
+        )
+        self.assertEqual(code, 2)
+        self.assertIn(
+            "REUSABLE_ASR_REPORT_DUPLICATE_UNIT",
+            report["blockers"][0],
+        )
+        self.assertEqual(model.calls, [])
 
     def test_one_chunk_omission_blocks_full_title_and_sync(self) -> None:
         target = self.records[len(self.records) // 2]["unit_id"]
