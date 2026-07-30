@@ -1509,3 +1509,22 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   Both stores passed full-download checksum and exact-version verification.
 - Do not begin A Ghost Story storage or customer rollout until Sredni's
   serialized 0%, 5%, 25%, and 100% checkpoints are independently green.
+
+## 2026-07-30 — Require production-green zero percent before the first customer cohort
+
+- Sredni's exact zero-percent commit deployed successfully before any customer
+  cohort was enabled. The candidate manifest stayed dark with `404`; the
+  approved legacy route returned `206` for a valid Range and `416` for an
+  invalid Range; the public catalog remained exactly four audiobooks.
+- Browser proof is a separate gate from HTTP proof. Before playback intent the
+  reader had no audio source and `readyState=0`. One click loaded the exact
+  approved legacy route, reached `readyState=4`, stayed unpaused, and advanced
+  to `25.047581` seconds with no console errors.
+- Only after all of those signals passed was the deterministic rollout
+  percentage changed from `0` to `5` in an isolated branch. The legacy active
+  descriptor, candidate descriptor, salt, receipts, approval flags, narration,
+  storage objects, and public audiobook count remained unchanged.
+- The next release boundary is not elapsed time. Both a deterministic
+  package-v2 cohort and a deterministic legacy cohort must pass production
+  manifest, Range, stale/invalid route, and one-click browser checks before
+  considering `25%`.
