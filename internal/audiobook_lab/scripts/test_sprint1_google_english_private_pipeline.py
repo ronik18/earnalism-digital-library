@@ -398,6 +398,24 @@ class GoogleEnglishPrivatePipelineTests(unittest.TestCase):
         self.assertFalse(result["upload_performed"])
         self.assertFalse(result["publication_performed"])
         self.assertFalse(result["release_mutation_performed"])
+        qa_command = shlex.split(result["next_exact_command"])
+        self.assertTrue(
+            qa_command[1].endswith(
+                "sprint1_google_english_full_audio_derived_qa.py"
+            )
+        )
+        self.assertEqual(
+            qa_command[qa_command.index("--full-manifest") + 1],
+            result["result_manifest_path"],
+        )
+        self.assertEqual(
+            qa_command[qa_command.index("--output") + 1],
+            str(
+                Path(result["result_manifest_path"]).with_name(
+                    "full_audio_derived_asr_sync_qa.json"
+                )
+            ),
+        )
         for artifact in result["generated_audio"]:
             self.assertTrue(
                 pipeline.is_within(
