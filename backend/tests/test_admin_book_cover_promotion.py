@@ -165,6 +165,9 @@ def test_promotion_updates_both_mirrors_checksums_and_approval_history_only(tmp_
     before_public = json.loads((primary / "public_book.json").read_text())
     before_reader_bytes = (primary / "reader_manifest.json").read_bytes()
     before_audio = audio_truth(before_public)
+    before_evidence = json.loads(
+        (primary / "cover_approval_evidence.json").read_text(encoding="utf-8")
+    )
 
     result = promote(repo_root)
 
@@ -193,8 +196,13 @@ def test_promotion_updates_both_mirrors_checksums_and_approval_history_only(tmp_
         (primary / "cover_approval_evidence.json").read_text(encoding="utf-8")
     )
     assert evidence["active_approvals"]["front"] == "cover-event-001"
-    assert evidence["history"][0]["decision"] == APPROVAL_DECISION
-    assert evidence["history"][0]["candidate_sha256"] == result["candidate_sha256"]
+    assert len(evidence["history"]) == len(before_evidence["history"]) + 1
+    event = next(
+        row for row in evidence["history"]
+        if row["event_id"] == "cover-event-001"
+    )
+    assert event["decision"] == APPROVAL_DECISION
+    assert event["candidate_sha256"] == result["candidate_sha256"]
     assert evidence["rollback_pointers"]["front"]["from_event_id"] == "cover-event-001"
     assert (
         evidence["rollback_pointers"]["front"]["previous_canonical_cover"]["cover_status"]

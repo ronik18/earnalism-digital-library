@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T18:02:47.549Z",
+  "generated_at": "2026-07-30T13:05:55.898Z",
   "generated_covers": [],
   "reused_covers": [
     "a-ghost-story",
@@ -14,6 +14,7 @@
     "book-f5d593e1f4",
     "dracula",
     "dsires-baby",
+    "jekyll-and-hyde",
     "muchiram-gurer-jibanchorit",
     "pride-and-prejudice",
     "radharani",
@@ -174,11 +175,6 @@
     },
     {
       "slug": "hungry-stones",
-      "front": true,
-      "back": true
-    },
-    {
-      "slug": "jekyll-and-hyde",
       "front": true,
       "back": true
     },

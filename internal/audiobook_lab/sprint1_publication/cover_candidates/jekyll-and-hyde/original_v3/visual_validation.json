@@ -1,0 +1,96 @@
+{
+  "schema_version": "earnalism.private_cover_visual_validation.v3",
+  "status": "AUTOMATED_PASS_MANUAL_EDITORIAL_REVIEW_PENDING",
+  "generated_at": "2026-07-30T12:57:47Z",
+  "checks": {
+    "original_programmatic_art": true,
+    "third_party_image_asset_count": 0,
+    "generated_image_model_used": false,
+    "territorial_rights_blocker": false,
+    "exact_catalog_title": true,
+    "exact_catalog_author": true,
+    "reader_facing_internal_language_rendered": false,
+    "front_dimensions_1600x2400": true,
+    "back_dimensions_1600x2400": true,
+    "text_inside_safe_margins": true,
+    "text_inside_content_panels": true,
+    "text_box_overlap_count": 0,
+    "thumbnail_derivatives_under_80_kib": true,
+    "feature_derivatives_under_180_kib": true,
+    "public_catalog_unchanged": true,
+    "audio_release_truth_unchanged": true
+  },
+  "geometry_errors": [],
+  "front_validation": {
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 333106,
+    "sha256": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+    "aspect_ratio": 0.6667
+  },
+  "back_validation": {
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 295770,
+    "sha256": "9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344",
+    "aspect_ratio": 0.6667
+  },
+  "derivative_validations": {
+    "front_thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-front-thumbnail-original-v3.webp",
+      "sha256": "af1bec3a362080466d45b4b7cb6e7e71aff0a6976dbebe04c0ceda8419b28b05",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 14720,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "front_feature": {
+      "path": "derivatives/jekyll-and-hyde-front-feature-original-v3.webp",
+      "sha256": "59c4f4eb76b90c13e23494e56967583d533a0c69ab585bea7f54dcf747a25e43",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 47248,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    },
+    "back_thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-back-thumbnail-original-v3.webp",
+      "sha256": "a45a42b6598f23de8ee2f1c6de120b2e187e9aa104e60547ac9613e34b7cc198",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 12224,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "back_feature": {
+      "path": "derivatives/jekyll-and-hyde-back-feature-original-v3.webp",
+      "sha256": "9414fd15b0fef2bf12d70a65c3f51e9f97f51c91c66a1a44a5551e11cabc4a72",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 40456,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    }
+  },
+  "manual_checks_required": [
+    "Visual inspection of both masters and thumbnails",
+    "Owner/editorial approval of the exact hash-bound pair",
+    "Authenticated admin upload as pending canonical review",
+    "Separate exact-checksum canonical promotion"
+  ]
+}

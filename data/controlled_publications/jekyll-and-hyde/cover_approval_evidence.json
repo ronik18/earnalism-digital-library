@@ -1,0 +1,94 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "jekyll-and-hyde",
+  "active_approvals": {
+    "front": "3fa659f7-eda5-4f1c-8a21-5c745a2b8844",
+    "back": "cff516e3-bbb3-4d0c-af3b-309b14cc3c6c"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "3fa659f7-eda5-4f1c-8a21-5c745a2b8844",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": null,
+        "cover_image_url": null,
+        "coverImage": null,
+        "cover_image": null,
+        "thumbnail_url": null,
+        "blur_placeholder": null,
+        "dominant_color": "#4A1C27",
+        "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+        "cover_dimensions": null
+      }
+    },
+    "back": {
+      "from_event_id": "cff516e3-bbb3-4d0c-af3b-309b14cc3c6c",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "back_cover_url": null,
+        "back_cover_image_url": null,
+        "back_cover_thumbnail_url": null,
+        "back_cover_blur_placeholder": null,
+        "back_cover_dominant_color": null,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_dimensions": {
+          "front": [
+            1600,
+            2400
+          ]
+        }
+      }
+    }
+  },
+  "history": [
+    {
+      "event_id": "3fa659f7-eda5-4f1c-8a21-5c745a2b8844",
+      "slug": "jekyll-and-hyde",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+      "remote_sha256": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+        "public_id": "earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+        "version": "1785416467",
+        "version_id": "7c0639099f23171a52ac25522aeb7613",
+        "resource_type": "image",
+        "format": "jpg"
+      },
+      "width": 1600,
+      "height": 2400,
+      "approved_at": "2026-07-30T13:02:16.958359+00:00",
+      "approved_by": "sales@reoenterprise.org",
+      "approval_note": "Exact original-v3 front visually reviewed and approved for the canonical Jekyll edition.",
+      "rights_basis": "Earnalism-created deterministic graphical composition using only programmatic primitives, exact controlled-catalog text, and rasterized system typography; no external image asset or generated-image model output.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "eb6dacebc27005aedc93186a7f15b283dfbe49fb9d47c909448123aad7ed88ed"
+    },
+    {
+      "event_id": "cff516e3-bbb3-4d0c-af3b-309b14cc3c6c",
+      "slug": "jekyll-and-hyde",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344",
+      "remote_sha256": "9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg",
+        "public_id": "earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344",
+        "version": "1785416472",
+        "version_id": "41e03976f74e45653ee5c76195ea0c97",
+        "resource_type": "image",
+        "format": "jpg"
+      },
+      "width": 1600,
+      "height": 2400,
+      "approved_at": "2026-07-30T13:02:18.095334+00:00",
+      "approved_by": "sales@reoenterprise.org",
+      "approval_note": "Exact original-v3 back visually reviewed and approved for the canonical Jekyll edition.",
+      "rights_basis": "Earnalism-created deterministic graphical composition using only programmatic primitives, exact controlled-catalog text, and rasterized system typography; no external image asset or generated-image model output.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "2ec35e047aee69903d19fb018dde92e3076a84a3db4140b2ed1601332f191a6a"
+    }
+  ],
+  "updated_at": "2026-07-30T13:02:18.095334+00:00"
+}

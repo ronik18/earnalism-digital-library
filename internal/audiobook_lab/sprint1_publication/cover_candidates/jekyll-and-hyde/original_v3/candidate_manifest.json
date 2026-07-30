@@ -1,0 +1,108 @@
+{
+  "schema_version": "earnalism.private_cover_candidate.v3",
+  "status": "PRIVATE_CANDIDATE_EDITORIAL_REVIEW_REQUIRED",
+  "generated_at": "2026-07-30T12:57:47Z",
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "author": "Robert Louis Stevenson",
+  "generation_mode": "deterministic_original_programmatic_graphical_composition",
+  "rights": {
+    "status": "ORIGINAL_COMPOSITION_NO_THIRD_PARTY_ART",
+    "external_image_assets": [],
+    "generated_image_model": null,
+    "territorial_restriction": null,
+    "commercial_use_blocker": null
+  },
+  "copy": {
+    "title_source": "controlled_catalog",
+    "author_source": "controlled_catalog",
+    "back_description_rendered": false,
+    "reason": "canonical short description contains internal production language"
+  },
+  "front": {
+    "path": "jekyll-and-hyde-front-original-v3.jpg",
+    "sha256": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 333106,
+    "aspect_ratio": 0.6667,
+    "thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-front-thumbnail-original-v3.webp",
+      "sha256": "af1bec3a362080466d45b4b7cb6e7e71aff0a6976dbebe04c0ceda8419b28b05",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 14720,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "feature": {
+      "path": "derivatives/jekyll-and-hyde-front-feature-original-v3.webp",
+      "sha256": "59c4f4eb76b90c13e23494e56967583d533a0c69ab585bea7f54dcf747a25e43",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 47248,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    }
+  },
+  "back": {
+    "path": "jekyll-and-hyde-back-original-v3.jpg",
+    "sha256": "9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344",
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 295770,
+    "aspect_ratio": 0.6667,
+    "thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-back-thumbnail-original-v3.webp",
+      "sha256": "a45a42b6598f23de8ee2f1c6de120b2e187e9aa104e60547ac9613e34b7cc198",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 12224,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "feature": {
+      "path": "derivatives/jekyll-and-hyde-back-feature-original-v3.webp",
+      "sha256": "9414fd15b0fef2bf12d70a65c3f51e9f97f51c91c66a1a44a5551e11cabc4a72",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 40456,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    }
+  },
+  "catalog_hashes": {
+    "data/controlled_publications/jekyll-and-hyde/public_book.json": "08e1cc4cace4b82dccdb2b8189e6297717477bce1f1ee271e5f5e126ca8a6019",
+    "backend/data/controlled_publications/jekyll-and-hyde/public_book.json": "08e1cc4cace4b82dccdb2b8189e6297717477bce1f1ee271e5f5e126ca8a6019"
+  },
+  "review": {
+    "manual_visual_review_status": "PENDING",
+    "owner_editorial_review_required": true,
+    "admin_upload_status": "NOT_UPLOADED",
+    "canonical_promotion_status": "NOT_PROMOTED"
+  },
+  "constraints": {
+    "private_only": true,
+    "public_catalog_mutated": false,
+    "reader_state_mutated": false,
+    "audiobook_release_state_mutated": false,
+    "ai_generated_imagery": false,
+    "placeholder_art": false,
+    "public_upload_authorized": false,
+    "canonical_promotion_authorized": false
+  }
+}

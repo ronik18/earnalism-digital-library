@@ -1,0 +1,56 @@
+{
+  "schema_version": "earnalism.private_cover_manual_visual_review.v3",
+  "reviewed_at": "2026-07-30T13:02:00Z",
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "author": "Robert Louis Stevenson",
+  "artifacts": {
+    "front_master": {
+      "path": "jekyll-and-hyde-front-original-v3.jpg",
+      "sha256": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+      "width": 1600,
+      "height": 2400
+    },
+    "back_master": {
+      "path": "jekyll-and-hyde-back-original-v3.jpg",
+      "sha256": "9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344",
+      "width": 1600,
+      "height": 2400
+    },
+    "front_thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-front-thumbnail-original-v3.webp",
+      "sha256": "af1bec3a362080466d45b4b7cb6e7e71aff0a6976dbebe04c0ceda8419b28b05",
+      "width": 320,
+      "height": 480
+    },
+    "back_thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-back-thumbnail-original-v3.webp",
+      "sha256": "a45a42b6598f23de8ee2f1c6de120b2e187e9aa104e60547ac9613e34b7cc198",
+      "width": 320,
+      "height": 480
+    }
+  },
+  "review": {
+    "exact_title_pass": true,
+    "exact_author_pass": true,
+    "front_composition_pass": true,
+    "back_composition_pass": true,
+    "thumbnail_legibility_pass": true,
+    "contrast_pass": true,
+    "safe_margins_pass": true,
+    "reader_facing_internal_copy_absent": true,
+    "third_party_image_assets_absent": true,
+    "generated_image_model_output_absent": true,
+    "placeholder_art_absent": true,
+    "territorial_rights_caveat_absent": true
+  },
+  "rights_basis": "Earnalism-created deterministic graphical composition using only programmatic primitives, controlled-catalog title and author text, and rasterized system typography; no external image asset or generated-image model output.",
+  "decision": {
+    "private_candidate_visual_gate": "PASS",
+    "editorial_decision": "APPROVE_EXACT_HASH_BOUND_PAIR",
+    "rights_decision": "CLEAR_FOR_EARNALISM_COMMERCIAL_USE",
+    "admin_upload_authorized": true,
+    "canonical_promotion_authorized_after_remote_checksum_match": true,
+    "audio_release_truth_change_authorized": false
+  }
+}

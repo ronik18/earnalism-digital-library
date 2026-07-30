@@ -1,0 +1,56 @@
+{
+  "schema_version": "earnalism.cover_canonical_promotion_evidence.v1",
+  "recorded_at": "2026-07-30T13:02:18Z",
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "author": "Robert Louis Stevenson",
+  "generation_mode": "deterministic_original_programmatic_graphical_composition",
+  "rights_basis": "Earnalism-created deterministic graphical composition using only programmatic primitives, exact controlled-catalog text, and rasterized system typography; no external image asset or generated-image model output.",
+  "upload": {
+    "execution_surface": "localhost_only_operator_with_railway_injected_mongo_and_cloudinary_configuration",
+    "production_admin_upload_route_enabled": false,
+    "front": {
+      "sha256": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+      "width": 1600,
+      "height": 2400,
+      "status": "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW"
+    },
+    "back": {
+      "sha256": "9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344",
+      "width": 1600,
+      "height": 2400,
+      "status": "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW"
+    }
+  },
+  "promotion": {
+    "execution_surface": "localhost_only_operator_against_clean_writable_git_worktree",
+    "front": {
+      "event_id": "3fa659f7-eda5-4f1c-8a21-5c745a2b8844",
+      "candidate_sha256": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+      "remote_sha256": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+      "canonical_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg"
+    },
+    "back": {
+      "event_id": "cff516e3-bbb3-4d0c-af3b-309b14cc3c6c",
+      "candidate_sha256": "9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344",
+      "remote_sha256": "9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344",
+      "canonical_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg"
+    },
+    "front_status": "CANONICAL_READY",
+    "back_status": "CANONICAL_READY",
+    "cover_status": "COMPLETE",
+    "canonical_front_full_download_sha256_verified": true,
+    "canonical_back_full_download_sha256_verified": true,
+    "controlled_mirror_parity": true,
+    "checksum_manifests_valid": true,
+    "cover_audit_broken_sources": 0,
+    "cover_audit_typography_only_customer_covers": 0,
+    "reader_audio_release_truth_unchanged": true
+  },
+  "audiobook": {
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+    "release_gate_changed": false,
+    "full_title_generated": false,
+    "paid_tts_lock_touched": false
+  }
+}
