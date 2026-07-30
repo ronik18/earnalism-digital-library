@@ -18,6 +18,7 @@ never writes story content back to the database.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import importlib.util
 import json
@@ -88,6 +89,7 @@ DEFAULT_BENGALI_PROMPT = (
 DEFAULT_PIPER_MODEL = ROOT / ".cache/audio_models/piper/en_US-lessac-medium/en_US-lessac-medium.onnx"
 DEFAULT_PIPER_CONFIG = ROOT / ".cache/audio_models/piper/en_US-lessac-medium/en_US-lessac-medium.onnx.json"
 DEFAULT_PIPER_BINARY = ROOT / ".venv-audio/bin/piper"
+DEFAULT_CONTROLLED_PUBLICATIONS_ROOT = ROOT / "data/controlled_publications"
 LOCAL_TTS_PROVIDERS = {"piper", "mms-tts", "indic-parler-tts"}
 PAID_TTS_PROVIDERS = {
     "elevenlabs",
@@ -119,6 +121,8 @@ PAID_TTS_ENV_VARS = (
     "HEYGEN_API_KEY",
     "SARVAM_API_KEY",
 )
+PUBLIC_AUDIO_RELEASE_APPROVED_STATUSES = {"APPROVED", "PUBLIC_AUDIO_RELEASE_APPROVED"}
+PUBLIC_AUDIO_QA_PASSED_STATUSES = {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
 
 
 def default_piper_binary() -> str:
@@ -187,6 +191,8 @@ class OnboardingResult:
     timestamp_count: int = 0
     expected_units: int = 0
     asset_urls: Dict[str, str] = field(default_factory=dict)
+    controlled_release_truth: Dict[str, Any] = field(default_factory=dict)
+    source_reconciliation: Dict[str, Any] = field(default_factory=dict)
     errors: List[str] = field(default_factory=list)
 
 
@@ -199,8 +205,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--public-audio-dir", type=Path, default=DEFAULT_PUBLIC_AUDIO_DIR)
     parser.add_argument("--report-dir", type=Path, default=DEFAULT_REPORT_DIR)
+    parser.add_argument(
+        "--controlled-publications-root",
+        type=Path,
+        default=DEFAULT_CONTROLLED_PUBLICATIONS_ROOT,
+        help="Canonical controlled-publication artifacts used for release and manuscript truth",
+    )
     parser.add_argument("--book-slug", "--book", dest="book_slug", action="append", default=[], help="Limit to one slug; can be repeated")
-    parser.add_argument("--all-missing", action="store_true", help="Limit to published books that do not have mapped mp3+timestamp assets")
+    parser.add_argument(
+        "--all-missing",
+        action="store_true",
+        help="Limit to published books without controlled-approved mapped mp3+timestamp assets",
+    )
     parser.add_argument("--lang", "--language", dest="lang", choices=("ben", "bn", "en"), default=None, help="Process one language only")
     parser.add_argument("--limit", type=int, default=0, help="Process at most N selected books")
     parser.add_argument("--include-drafts", action=argparse.BooleanOptionalAction, default=True)
@@ -334,6 +350,138 @@ def load_target_manifest(path: Optional[Path]) -> Tuple[set[str], Dict[str, str]
         if language:
             languages[slug] = language
     return slugs, languages
+
+
+def read_json_object(path: Path) -> Dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def normalize_upper(value: Any) -> str:
+    return str(value or "").strip().upper()
+
+
+def controlled_artifact_dir(slug: str, args: argparse.Namespace) -> Path:
+    root = Path(
+        getattr(args, "controlled_publications_root", DEFAULT_CONTROLLED_PUBLICATIONS_ROOT)
+    ).expanduser()
+    return root / normalize_slug(slug)
+
+
+def controlled_audio_release_truth(slug: str, args: argparse.Namespace) -> Dict[str, Any]:
+    artifact_dir = controlled_artifact_dir(slug, args)
+    approval = read_json_object(artifact_dir / "approval_evidence.json")
+    public_book = read_json_object(artifact_dir / "public_book.json")
+    reader_manifest = read_json_object(artifact_dir / "reader_manifest.json")
+    issues: List[str] = []
+    for filename, payload in (
+        ("approval_evidence.json", approval),
+        ("public_book.json", public_book),
+        ("reader_manifest.json", reader_manifest),
+    ):
+        if not payload:
+            issues.append(f"MISSING_OR_INVALID_{filename.upper().replace('.', '_')}")
+
+    release_status = normalize_upper(
+        approval.get("audio_public_release") or approval.get("public_audio_release")
+    )
+    qa_status = normalize_upper(
+        approval.get("audio_qa_status") or approval.get("qa_status")
+    )
+    blockers = approval.get("release_blockers")
+    blockers_empty = blockers in (None, []) or blockers == ""
+    if approval.get("audiobook_enabled") is not True:
+        issues.append("APPROVAL_AUDIOBOOK_ENABLED_NOT_TRUE")
+    if release_status not in PUBLIC_AUDIO_RELEASE_APPROVED_STATUSES:
+        issues.append("CONTROLLED_AUDIO_RELEASE_NOT_APPROVED")
+    if qa_status not in PUBLIC_AUDIO_QA_PASSED_STATUSES:
+        issues.append("CONTROLLED_AUDIO_QA_NOT_PASSED")
+    if blockers_empty is not True:
+        issues.append("CONTROLLED_AUDIO_RELEASE_BLOCKERS_NOT_EMPTY")
+    if public_book.get("audiobook_enabled") is not True:
+        issues.append("PUBLIC_BOOK_AUDIOBOOK_ENABLED_NOT_TRUE")
+    if reader_manifest.get("audiobook_enabled") is not True:
+        issues.append("READER_MANIFEST_AUDIOBOOK_ENABLED_NOT_TRUE")
+
+    return {
+        "slug": normalize_slug(slug),
+        "truth_source": "controlled_publications",
+        "artifact_dir": str(artifact_dir),
+        "approved": not issues,
+        "release_status": release_status,
+        "qa_status": qa_status,
+        "issues": issues,
+    }
+
+
+def controlled_book_with_chapters(slug: str, args: argparse.Namespace) -> Dict[str, Any]:
+    artifact_dir = controlled_artifact_dir(slug, args)
+    book = read_json_object(artifact_dir / "public_book.json")
+    chapters_dir = artifact_dir / "chapters"
+    chapters = [
+        payload
+        for path in sorted(chapters_dir.glob("*.json"))
+        if (payload := read_json_object(path))
+    ]
+    if book:
+        book = {**book, "chapters": chapters}
+    return book
+
+
+def text_sha256(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def reconcile_controlled_manuscript(
+    book: Dict[str, Any],
+    args: argparse.Namespace,
+) -> Tuple[str, str, Dict[str, Any]]:
+    slug = normalize_slug(str(book.get("slug") or book.get("title") or "book"))
+    live_text = chapter_text(book)
+    controlled_book = controlled_book_with_chapters(slug, args)
+    controlled_text = chapter_text(controlled_book) if controlled_book else ""
+    live_sha256 = text_sha256(live_text) if live_text else ""
+    controlled_sha256 = text_sha256(controlled_text) if controlled_text else ""
+    if not controlled_book:
+        status = "CONTROLLED_MANUSCRIPT_MISSING"
+    elif not controlled_text:
+        status = "CONTROLLED_MANUSCRIPT_EMPTY"
+    elif not live_text:
+        status = "LIVE_MANUSCRIPT_EMPTY"
+    elif live_text != controlled_text:
+        status = "SOURCE_MANUSCRIPT_MISMATCH"
+    else:
+        status = "MATCH"
+    return live_text, controlled_text, {
+        "status": status,
+        "truth_source": "controlled_publications",
+        "live_sha256": live_sha256,
+        "controlled_sha256": controlled_sha256,
+        "live_chars": len(live_text),
+        "controlled_chars": len(controlled_text),
+        "byte_equal": bool(live_text and live_text == controlled_text),
+    }
+
+
+def write_reconciled_manuscript_evidence(
+    slug: str,
+    live_text: str,
+    controlled_text: str,
+    reconciliation: Dict[str, Any],
+    args: argparse.Namespace,
+) -> None:
+    text_dir = args.report_dir / "texts"
+    text_dir.mkdir(parents=True, exist_ok=True)
+    if reconciliation.get("status") == "MATCH":
+        (text_dir / f"{slug}.txt").write_text(controlled_text, encoding="utf-8")
+        return
+    (text_dir / f"{slug}.live.txt").write_text(live_text, encoding="utf-8")
+    (text_dir / f"{slug}.controlled.txt").write_text(controlled_text, encoding="utf-8")
 
 
 def public_bundle_urls(slug: str, language: str) -> Dict[str, str]:
@@ -643,7 +791,7 @@ def select_books(summaries: List[Dict[str, Any]], args: argparse.Namespace) -> L
     for item in summaries:
         slug = normalize_slug(str(item.get("slug") or ""))
         is_published = bool(item.get("is_published"))
-        if args.all_missing and has_reader_ready_audio_assets(item):
+        if args.all_missing and has_controlled_release_ready_audio(item, args):
             continue
         manifest_language = getattr(args, "manifest_languages", {}).get(slug, "")
         summary_language = infer_language(
@@ -679,6 +827,16 @@ def reader_audio_assets(record: Dict[str, Any]) -> Dict[str, str]:
 def has_reader_ready_audio_assets(record: Dict[str, Any]) -> bool:
     urls = reader_audio_assets(record)
     return bool(urls.get("mp3") and urls.get("timestamps"))
+
+
+def has_controlled_release_ready_audio(
+    record: Dict[str, Any],
+    args: argparse.Namespace,
+) -> bool:
+    slug = normalize_slug(str(record.get("slug") or ""))
+    if not slug or not has_reader_ready_audio_assets(record):
+        return False
+    return controlled_audio_release_truth(slug, args)["approved"] is True
 
 
 def synthesize_piper_chunk(text: str, output_wav: Path, args: argparse.Namespace) -> str:
@@ -1019,7 +1177,13 @@ def upload_bundle_to_cloudinary(slug: str, language: str, source_dir: Path, args
 def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingResult:
     slug = normalize_slug(str(book.get("slug") or book.get("title") or "book"))
     title = str(book.get("title") or slug)
-    if args.skip_live_audio_assets and has_reader_ready_audio_assets(book):
+    release_truth = controlled_audio_release_truth(slug, args)
+    mapped_audio_assets = has_reader_ready_audio_assets(book)
+    if (
+        args.skip_live_audio_assets
+        and mapped_audio_assets
+        and release_truth["approved"] is True
+    ):
         manifest_language = getattr(args, "manifest_languages", {}).get(slug, "")
         language = infer_language(
             f"{book.get('title', '')} {book.get('author', '')}",
@@ -1031,27 +1195,54 @@ def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingR
             is_published=bool(book.get("is_published")),
             language=language,
             status="READY",
-            detail="live reader audiobook assets already mapped",
+            detail="controlled-approved reader audiobook assets already mapped",
             provider=str(book.get("audiobook_provider") or ""),
             voice=str(book.get("audiobook_voice") or ""),
             duration_ms=0,
             asset_urls=reader_audio_assets(book),
+            controlled_release_truth=release_truth,
         )
 
-    text = chapter_text(book)
+    live_text, controlled_text, source_reconciliation = reconcile_controlled_manuscript(
+        book, args
+    )
+    write_reconciled_manuscript_evidence(
+        slug,
+        live_text,
+        controlled_text,
+        source_reconciliation,
+        args,
+    )
+    text = controlled_text if source_reconciliation["status"] == "MATCH" else ""
     manifest_language = getattr(args, "manifest_languages", {}).get(slug, "")
-    language = infer_language(text, manifest_language or str(book.get("language") or ""))
+    language = infer_language(
+        controlled_text or live_text,
+        manifest_language or str(book.get("language") or ""),
+    )
     expected = len(highlight_units(text, language))
-    result = OnboardingResult(slug=slug, title=title, is_published=bool(book.get("is_published")), language=language, expected_units=expected)
+    result = OnboardingResult(
+        slug=slug,
+        title=title,
+        is_published=bool(book.get("is_published")),
+        language=language,
+        expected_units=expected,
+        controlled_release_truth=release_truth,
+        source_reconciliation=source_reconciliation,
+    )
 
     if args.lang and language != args.lang:
         result.status = "SKIPPED"
         result.detail = f"language filter excluded {language}"
         return result
 
-    text_dir = args.report_dir / "texts"
-    text_dir.mkdir(parents=True, exist_ok=True)
-    (text_dir / f"{slug}.txt").write_text(text, encoding="utf-8")
+    if source_reconciliation["status"] != "MATCH":
+        result.status = "BLOCKED"
+        result.detail = (
+            f"{source_reconciliation['status']}: "
+            f"live_sha256={source_reconciliation['live_sha256'] or 'missing'} "
+            f"controlled_sha256={source_reconciliation['controlled_sha256'] or 'missing'}"
+        )
+        return result
 
     if not text or expected == 0:
         result.status = "BLOCKED"
@@ -1066,15 +1257,32 @@ def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingR
         output_validation = validate_bundle(args.output_dir, language, slug, expected)
         public_validation = validate_bundle(args.public_audio_dir, language, slug, expected)
         if output_validation.ok:
-            result.status = "READY"
-            result.detail = "existing generated bundle"
+            result.status = (
+                "READY"
+                if release_truth["approved"] is True
+                else "GENERATED_NOT_PUBLIC"
+            )
+            result.detail = (
+                "existing generated bundle"
+                if release_truth["approved"] is True
+                else "existing generated bundle; controlled audio release is not approved"
+            )
             result.timestamp_count = output_validation.timestamp_count
             apply_bundle_meta(result, args.output_dir)
         elif public_validation.ok:
-            result.status = "READY"
-            result.detail = "existing public audio bundle"
+            result.status = (
+                "READY"
+                if release_truth["approved"] is True
+                else "BLOCKED"
+            )
+            result.detail = (
+                "existing public audio bundle"
+                if release_truth["approved"] is True
+                else "public audio bundle exists without controlled audio release approval"
+            )
             result.timestamp_count = public_validation.timestamp_count
-            result.asset_urls = public_bundle_urls(slug, language)
+            if release_truth["approved"] is True:
+                result.asset_urls = public_bundle_urls(slug, language)
             apply_bundle_meta(result, args.public_audio_dir)
         else:
             result.status = "BLOCKED"
@@ -1085,15 +1293,23 @@ def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingR
     existing = validate_bundle(args.output_dir, language, slug, expected)
     if existing.ok and not args.regenerate:
         refresh_existing_bundle_indexes(book, text, language, args.output_dir)
-        result.status = "READY"
-        result.detail = "existing generated bundle"
+        result.status = (
+            "READY"
+            if release_truth["approved"] is True
+            else "GENERATED_NOT_PUBLIC"
+        )
+        result.detail = (
+            "existing generated bundle"
+            if release_truth["approved"] is True
+            else "existing generated bundle; controlled audio release is not approved"
+        )
         result.timestamp_count = existing.timestamp_count
         apply_bundle_meta(result, args.output_dir)
-        if args.copy_to_public:
+        if args.copy_to_public and release_truth["approved"] is True:
             copy_bundle(slug, language, args.output_dir, args.public_audio_dir)
             result.copied_to_public = True
             result.asset_urls = public_bundle_urls(slug, language)
-        if args.upload_to_cloudinary:
+        if args.upload_to_cloudinary and release_truth["approved"] is True:
             upload_result = upload_bundle_to_cloudinary(slug, language, args.output_dir, args)
             result.asset_urls = upload_result["assets"]
             result.provider = upload_result["provider"]
@@ -1104,7 +1320,14 @@ def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingR
 
     if args.dry_run:
         result.status = "DRY_RUN"
-        result.detail = f"{len(text)} chars, {expected} highlight units"
+        stale_asset_note = (
+            "; mapped audiobook assets ignored because controlled release is not approved"
+            if mapped_audio_assets and release_truth["approved"] is not True
+            else ""
+        )
+        result.detail = (
+            f"{len(text)} chars, {expected} highlight units{stale_asset_note}"
+        )
         return result
 
     provider = args.english_provider if language == "en" else args.bengali_provider
@@ -1151,14 +1374,28 @@ def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingR
     write_book_outputs(book, text, language, provider, result.voice, args.output_dir, timestamps, result.duration_ms, alignment_modes)
     validation = validate_bundle(args.output_dir, language, slug, expected)
     result.timestamp_count = validation.timestamp_count
-    result.status = "READY" if validation.ok else "BLOCKED"
-    result.detail = validation.detail
+    result.status = (
+        "READY"
+        if validation.ok and release_truth["approved"] is True
+        else "GENERATED_NOT_PUBLIC"
+        if validation.ok
+        else "BLOCKED"
+    )
+    result.detail = (
+        validation.detail
+        if not validation.ok or release_truth["approved"] is True
+        else "generated bundle passed local validation; controlled audio release is not approved"
+    )
     result.generated = validation.ok
-    if validation.ok and args.copy_to_public:
+    if validation.ok and args.copy_to_public and release_truth["approved"] is True:
         copy_bundle(slug, language, args.output_dir, args.public_audio_dir)
         result.copied_to_public = True
         result.asset_urls = public_bundle_urls(slug, language)
-    if validation.ok and args.upload_to_cloudinary:
+    if (
+        validation.ok
+        and args.upload_to_cloudinary
+        and release_truth["approved"] is True
+    ):
         upload_result = upload_bundle_to_cloudinary(slug, language, args.output_dir, args)
         result.asset_urls = upload_result["assets"]
         result.provider = upload_result["provider"]
@@ -1175,7 +1412,9 @@ def audit_books(summaries: List[Dict[str, Any]], args: argparse.Namespace) -> Li
         title = str(item.get("title") or slug)
         manifest_language = getattr(args, "manifest_languages", {}).get(slug, "")
         language = infer_language(f"{item.get('title', '')} {item.get('author', '')}", manifest_language or str(item.get("language") or ""))
-        if has_reader_ready_audio_assets(item):
+        release_truth = controlled_audio_release_truth(slug, args)
+        mapped_audio_assets = has_reader_ready_audio_assets(item)
+        if mapped_audio_assets and release_truth["approved"] is True:
             results.append(
                 OnboardingResult(
                     slug=slug,
@@ -1183,19 +1422,33 @@ def audit_books(summaries: List[Dict[str, Any]], args: argparse.Namespace) -> Li
                     is_published=bool(item.get("is_published")),
                     language=language,
                     status="READY",
-                    detail="live reader audiobook assets already mapped",
+                    detail="controlled-approved reader audiobook assets already mapped",
                     asset_urls=reader_audio_assets(item),
+                    controlled_release_truth=release_truth,
                 )
             )
             continue
         public_validation = validate_bundle(args.public_audio_dir, language, slug, 0)
         output_validation = validate_bundle(args.output_dir, language, slug, 0)
         if public_validation.ok:
-            status, detail = "READY", "public audio bundle exists"
+            status, detail = (
+                ("READY", "public audio bundle exists")
+                if release_truth["approved"] is True
+                else (
+                    "BLOCKED",
+                    "public audio bundle exists without controlled audio release approval",
+                )
+            )
             timestamp_count = public_validation.timestamp_count
         elif output_validation.ok:
             status, detail = "GENERATED_NOT_PUBLIC", "output bundle exists but was not copied to public audio dir"
             timestamp_count = output_validation.timestamp_count
+        elif mapped_audio_assets:
+            status, detail = (
+                "BLOCKED",
+                "mapped audiobook assets ignored because controlled audio release is not approved",
+            )
+            timestamp_count = 0
         else:
             status, detail = "MISSING", public_validation.detail
             timestamp_count = 0
@@ -1208,6 +1461,7 @@ def audit_books(summaries: List[Dict[str, Any]], args: argparse.Namespace) -> Li
                 status=status,
                 detail=detail,
                 timestamp_count=timestamp_count,
+                controlled_release_truth=release_truth,
             )
         )
     return results
@@ -1232,6 +1486,8 @@ def result_to_dict(result: OnboardingResult) -> Dict[str, Any]:
         "timestamp_count": result.timestamp_count,
         "expected_units": result.expected_units,
         "asset_urls": result.asset_urls,
+        "controlled_release_truth": result.controlled_release_truth,
+        "source_reconciliation": result.source_reconciliation,
         "errors": result.errors,
     }
 
@@ -1265,6 +1521,9 @@ def main() -> None:
     args.output_dir = args.output_dir.expanduser().resolve()
     args.public_audio_dir = args.public_audio_dir.expanduser().resolve()
     args.report_dir = args.report_dir.expanduser().resolve()
+    args.controlled_publications_root = (
+        args.controlled_publications_root.expanduser().resolve()
+    )
     args.manifest = args.manifest.expanduser().resolve() if args.manifest else None
     load_environment(args)
     enforce_local_only(args)
@@ -1295,7 +1554,10 @@ def main() -> None:
         sortable: List[Tuple[int, str, Dict[str, Any]]] = []
         for prefetch_index, summary in enumerate(selected, start=1):
             slug = normalize_slug(str(summary.get("slug") or ""))
-            if args.skip_live_audio_assets and has_reader_ready_audio_assets(summary):
+            if (
+                args.skip_live_audio_assets
+                and has_controlled_release_ready_audio(summary, args)
+            ):
                 sortable.append((0, slug, summary))
                 continue
             print(f"Prefetching {prefetch_index}/{len(selected)} {slug} for shortest-first ordering...", flush=True)
@@ -1309,7 +1571,11 @@ def main() -> None:
         slug = normalize_slug(str(summary.get("slug") or ""))
         print(f"\n=== {index}/{len(selected)} {summary.get('title') or slug} ({slug}) ===", flush=True)
         try:
-            if args.skip_live_audio_assets and has_reader_ready_audio_assets(summary):
+            if (
+                args.skip_live_audio_assets
+                and has_controlled_release_ready_audio(summary, args)
+            ):
+                release_truth = controlled_audio_release_truth(slug, args)
                 result = OnboardingResult(
                     slug=slug,
                     title=str(summary.get("title") or slug),
@@ -1319,8 +1585,9 @@ def main() -> None:
                         str(summary.get("language") or ""),
                     ),
                     status="READY",
-                    detail="live reader audiobook assets already mapped",
+                    detail="controlled-approved reader audiobook assets already mapped",
                     asset_urls=reader_audio_assets(summary),
+                    controlled_release_truth=release_truth,
                 )
             else:
                 book = prefetched_books.get(slug) or client.book(slug)
