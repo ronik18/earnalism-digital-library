@@ -2112,9 +2112,9 @@
       "audiobook_next_action": "Repair and checksum-review canonical chapter slug binding, reconcile the divergent backend mirror, and rerun the source preflight before materializing any attempt fingerprint."
     },
     "jekyll-and-hyde": {
-    "latest_decision": "ORIGINAL_COVERS_CANONICAL_FULL_TITLE_CHARON_LANE_UNBLOCKED",
-    "decision_reason": "Studio-C remains closed after listening scores of 8.4 on the middle and dialogue passages. The materially different Chirp3-HD Charon arm passed all four normalized objective samples at 10.0/1.0 with valid timestamps and all four listening samples at 9.4 with confidence 0.95 and no fatal flags. A new deterministic original graphical front/back pair was visually approved, uploaded as checksum-bound private candidates, re-downloaded for exact remote verification, and promoted through the mirrored canonical-cover transaction. The cover prerequisite is now complete; full-title generation and every downstream audiobook gate remain unrun.",
-    "updated_at": "2026-07-30T13:02:18Z",
+    "latest_decision": "CANONICAL_COVERS_PUBLIC_CATALOG_TRUTH_HOTFIX_READY",
+    "decision_reason": "Studio-C remains closed after listening scores of 8.4 on the middle and dialogue passages. The materially different Chirp3-HD Charon arm passed all four normalized objective samples at 10.0/1.0 with valid timestamps and all four listening samples at 9.4 with confidence 0.95 and no fatal flags. The deterministic original graphical front/back pair is canonical, but production public list/detail exposed stale Mongo cover values. The validated hotfix makes controlled truth precede same-slug Mongo while preserving only allowlisted editorial fields. Full-title generation and every downstream audiobook gate remain unrun.",
+    "updated_at": "2026-07-30T13:28:09Z",
       "language": "eng",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
@@ -2148,6 +2148,9 @@
     "original_cover_generated_image_model": null,
     "original_cover_territorial_rights_blocker": false,
     "canonical_cover_status": "COMPLETE",
+    "public_catalog_cover_truth_hotfix": "VALIDATED_AWAITING_PR",
+    "public_catalog_cache_namespace": "controlled-covers-v1",
+    "reader_audio_cache_namespace_unchanged": "audio-contract-v13",
     "cover_next_action": "Commit, merge, deploy, and production-validate the exact canonical cover pair before opening the full-title Charon generation lane.",
       "full_title_generated": false,
       "completed_attempts_must_not_repeat": true,
