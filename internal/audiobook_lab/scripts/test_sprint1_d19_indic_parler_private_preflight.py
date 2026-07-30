@@ -50,14 +50,17 @@ class D19IndicParlerPrivatePreflightTests(unittest.TestCase):
         self.assertTrue(covers["front_cover_url"].startswith("https://"))
         self.assertTrue(covers["back_cover_url"].startswith("https://"))
 
-    def test_fingerprint_is_deterministic_and_unrecorded(self) -> None:
+    def test_fingerprint_is_deterministic_and_now_consumed(self) -> None:
         _chapter, _manuscript, passages, _covers = MODULE.controlled_source(
             REPO, MODULE.SLUG
         )
         fingerprint = MODULE.attempt_fingerprint(passages)
         self.assertEqual(fingerprint, MODULE.attempt_fingerprint(passages))
         self.assertEqual(len(fingerprint), 64)
-        MODULE.ensure_not_repeated(fingerprint, Path("/tmp/nonexistent-d19.json"))
+        with self.assertRaisesRegex(
+            MODULE.D19IndicParlerPreflightError, "already consumed"
+        ):
+            MODULE.ensure_not_repeated(fingerprint, Path("/tmp/nonexistent-d19.json"))
 
     def test_catalog_audio_enablement_fails_closed(self) -> None:
         original = MODULE.read_json

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T07:47:01Z",
+  "generated_at": "2026-07-30T09:02:31Z",
   "policy_version": "platform_audiobook_acceptance_v4_89",
   "total_titles": 31,
   "source": "bengali_audiobook_pilot_selection_report.json",
@@ -87,7 +87,9 @@
         "Stage 2G raw audio-derived ASR/source 1.3504 is below the strict 9.7 gate",
         "first and last audio-derived ASR boundaries failed",
         "Stage 2G listening minimum 8.0 and confidence 0.85 failed; fatal list-reading rhythm was detected",
-        "Google and Sarvam automated arms are exhausted; source-bound human narration or licensed audio is required",
+        "Google and Sarvam automated arms are exhausted; the distinct Indic Parler private candidate is generated but not yet ASR- or listening-validated",
+        "Indic Parler representative ASR/source, coverage, first/last, and ordered-content gates are not run",
+        "Indic Parler independent representative listening QA is not run",
         "checksum-verified upload proof not run",
         "admin metadata approval not run",
         "public endpoint remains 404 and hash binding is unproven",
@@ -96,11 +98,13 @@
       "resolved_prior_blockers": [
         "paid runtime budget and approval gates missing",
         "historical group-repair chunks unavailable",
-        "fresh full TTS and downstream release QA required"
+        "fresh full TTS and downstream release QA required",
+        "pinned Indic Parler runtime unavailable",
+        "Indic Parler representative audio not generated"
       ],
       "candidate_rank": 3,
-      "selected_strategy": "source_bound_human_narration_or_licensed_audio_import",
-      "current_campaign_state": "HUMAN_NARRATION_REQUIRED",
+      "selected_strategy": "indic_parler_private_representative_objective_qa_then_independent_listening",
+      "current_campaign_state": "PRIVATE_REPRESENTATIVE_AUDIO_GENERATED_AWAITING_ASR",
       "best_representative_settings": {
         "provider": "sarvam",
         "model": "bulbul:v3",
@@ -129,8 +133,8 @@
         "supporting_private_qa_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json"
       },
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f",
-      "provider_free_alternative_preflight": {
-        "status": "PACKET_READY_EXECUTION_BLOCKED",
+      "provider_free_alternative_execution": {
+        "status": "PRIVATE_REPRESENTATIVE_AUDIO_GENERATED_AWAITING_ASR",
         "model": "ai4bharat/indic-parler-tts",
         "model_revision": "7b527af5ee8ed1f9a28d80b19703ed9bb8ba10ca",
         "voice": "Aditi",
@@ -138,13 +142,26 @@
         "commercial_rights_decision": "ALLOWED_BY_APACHE_2_0_MODEL_LICENSE",
         "repository_access_acknowledgement": "NOT_RECORDED_NON_BLOCKING_PROVENANCE_NOTE",
         "provider_calls_ran": false,
-        "audio_generated": false,
+        "estimated_provider_cost_usd": 0.0,
+        "audio_generated": true,
+        "attempt_consumed": true,
+        "attempt_fingerprint": "0a5d983bf199e0288557c80840402a00f9160e17e533e327fdf950d81006c05a",
+        "generation_contract_sha256": "11aabb9a1bbd82f7e0d675df605dd0d46bdfbae0e3465125c8a80206f964365f",
+        "execution_device": "mps",
+        "representative_passage_count": 4,
+        "representative_audio_duration_seconds": 99.300136,
+        "objective_audio_format_status": "PASS_4_OF_4_PCM_S16LE_MONO_44100",
+        "asr_run": false,
+        "listening_qa_run": false,
+        "estimated_sync_generated": false,
+        "full_title_generated": false,
         "release_state_changed": false,
-        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_indic_parler_aditi_private_preflight_v1.json"
+        "public_audio_status": "AUDIO_HIDDEN_NOT_PUBLIC",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_indic_parler_aditi_private_generation_v1.json"
       },
       "scale_gate": "NO_BENGALI_CANARY_SCALING_UNLESS_D19_HUMAN_OR_LICENSED_CANDIDATE_PASSES_AND_PUBLISHES",
-      "next_action": "Do not repeat failed Google or Sarvam arms. Obtain source-bound human narration or licensed audio and validate the received candidate through the generated packet before any upload or publication.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
+      "next_action": "Run a new fail-closed objective ASR adapter over the four exact generated WAV hashes. Do not repeat the consumed fingerprint, widen to a full title, run listening QA, upload, or publish unless representative ASR passes.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_indic_parler_aditi_private_generation_v1.json >/dev/null"
     },
     {
       "slug": "book-4968248842",

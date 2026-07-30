@@ -1,0 +1,441 @@
+{
+  "schema": "earnalism.indic_parler.d19_private_generation.v1",
+  "generated_at": "2026-07-30T09:02:31Z",
+  "status": "PRIVATE_REPRESENTATIVE_AUDIO_GENERATED_AWAITING_ASR",
+  "go_no_go": "NO_GO_RELEASE_QA_PENDING",
+  "scope": {
+    "slug": "book-d19e96859f",
+    "title": "গিন্নি",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "language": "ben",
+    "profile": "d19-indic-parler-aditi-literary-v1",
+    "representative_only": true,
+    "passage_count": 4,
+    "full_title_generation_allowed": false
+  },
+  "source": {
+    "raw_source_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
+    "passage_contract": {
+      "source_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
+      "passage_count": 4,
+      "representative_characters": 1781,
+      "passages": [
+        {
+          "ordinal": 1,
+          "passage_id": "opening_character_control",
+          "source_text_sha256": "b825c5484e8f9adc1799fd22c836dff9ae8df6c4eba26089d9a3c5f143ace74a",
+          "characters": 397,
+          "start_offset": 0,
+          "end_offset": 397
+        },
+        {
+          "ordinal": 2,
+          "passage_id": "satirical_punctuation",
+          "source_text_sha256": "077f56ee06d735775daa9ed19459e92cc51d0f5b7bc0653f9503a722dea7a354",
+          "characters": 414,
+          "start_offset": 399,
+          "end_offset": 813
+        },
+        {
+          "ordinal": 3,
+          "passage_id": "play_scene_dialogue",
+          "source_text_sha256": "a02fe5e8b1e6d282dbada2411d9110f8397ccdde41d07338b0c5b085f35b0b99",
+          "characters": 499,
+          "start_offset": 4944,
+          "end_offset": 5443
+        },
+        {
+          "ordinal": 4,
+          "passage_id": "ending_emotional_release",
+          "source_text_sha256": "ddaaa9b4c370f999dcd0fd1ddce67c8b23965c5cecca13c680618474e684c9d3",
+          "characters": 471,
+          "start_offset": 5981,
+          "end_offset": 6452
+        }
+      ],
+      "passage_contract_sha256": "59a7e31405973445c75a38f98d53d70c9d1a72761b6d525de08974abe5d2c328"
+    }
+  },
+  "code": {
+    "generator_path": "/private/tmp/earnalism-d19-indic-parler-private-pilot/internal/audiobook_lab/scripts/sprint1_d19_indic_parler_private_generator.py",
+    "generator_sha256": "31c706e213d6d6f03693f5064f20ecf81bfdaa127aba95a2ce447a1b0675734c",
+    "preflight_path": "/private/tmp/earnalism-d19-indic-parler-private-pilot/internal/audiobook_lab/scripts/sprint1_d19_indic_parler_private_preflight.py",
+    "preflight_sha256": "8d9559d73dafb713d33971a2890284c45536c5cf73a1219b7dc299d3f3749e7e",
+    "code_contract_sha256": "a619498641fdb93c0e50bc23f93c44167c64956104c075d4a1c13ed7e4266e88"
+  },
+  "runtime": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "sys_prefix": "/private/tmp/earnalism-d19-indic-parler-runtime",
+    "packages": {
+      "torch": "2.13.0",
+      "transformers": "4.46.1",
+      "parler-tts": "0.2.2",
+      "accelerate": "1.14.0",
+      "scipy": "1.17.1",
+      "soundfile": "0.14.0",
+      "sentencepiece": "0.2.2",
+      "huggingface-hub": "0.36.2",
+      "numpy": "2.4.6",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.20.3"
+    },
+    "package_mismatches": [],
+    "platform_system": "Darwin",
+    "platform_machine": "arm64",
+    "device": "mps",
+    "mps_available": true,
+    "deterministic_algorithms_required": true,
+    "offline_model_loading_required": true,
+    "runtime_matches_pinned_contract": true,
+    "runtime_contract_sha256": "c6fba0650e54e9c115f8c17834458f36750030bbe71d04f6c30513e3dea1d164"
+  },
+  "engine": {
+    "provider": "indic-parler-tts",
+    "family": "open_source_local_tts",
+    "model_repo": "ai4bharat/indic-parler-tts",
+    "model_revision": "7b527af5ee8ed1f9a28d80b19703ed9bb8ba10ca",
+    "model_artifacts": {
+      "config.json": {
+        "size_bytes": 7338,
+        "sha256": "14b8b2352e854758fc2c6ad8bf72fb8330a8361cdcf79d7eb52a3f665e904cd2"
+      },
+      "generation_config.json": {
+        "size_bytes": 223,
+        "sha256": "86d035c0fd9589d60fb763aad1feafeee2040fb9cf51515a0144816cec4d029d"
+      },
+      "model.safetensors": {
+        "size_bytes": 3751321772,
+        "sha256": "c68daecb60f80c8f1faf0a6d2e6ddd6de8e224fb19750f3e9a33bca43c552c90"
+      },
+      "special_tokens_map.json": {
+        "size_bytes": 552,
+        "sha256": "4859e5dbde90e059988a0a2136d8df3f2773d4d2fc4c4543690028f0b2166e7f"
+      },
+      "tokenizer.json": {
+        "size_bytes": 10272460,
+        "sha256": "8b5f3a5080f95e5333930b57181cd2a9bf387632bd7b277af5d4fea59acb58de"
+      },
+      "tokenizer.model": {
+        "size_bytes": 1795391,
+        "sha256": "bc8fa773221597d09cfadb23a2b1bd717488a0481505469ea56d42cb044de9b5"
+      },
+      "tokenizer_config.json": {
+        "size_bytes": 990,
+        "sha256": "47baa70cba964a32daa581a4af50b4f2c77edaa18bec2257660133ab204ca36f"
+      }
+    },
+    "description_tokenizer_repo": "google/flan-t5-large",
+    "description_tokenizer_revision": "0613663d0d48ea86ba8cb3d7a44f0f65dc596a2a",
+    "description_tokenizer_artifacts": {
+      "special_tokens_map.json": {
+        "size_bytes": 2201,
+        "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f"
+      },
+      "spiece.model": {
+        "size_bytes": 791656,
+        "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
+      },
+      "tokenizer.json": {
+        "size_bytes": 2424064,
+        "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a"
+      },
+      "tokenizer_config.json": {
+        "size_bytes": 2539,
+        "sha256": "5d19985330a9123285cc583fc60616d083aa9df7435812b5d8bb3e749f435d56"
+      }
+    },
+    "voice": "Aditi",
+    "voice_description": "Aditi speaks in Bengali with clear diction, a warm restrained literary narration style, a natural conversational cadence, subtle emotional depth, a balanced pitch, and a calm moderate pace. The recording is very clear, close-sounding, and free of background noise.",
+    "generation_settings": {
+      "do_sample": true,
+      "temperature": 1.0,
+      "top_k": 50,
+      "top_p": 1.0
+    },
+    "random_seed": 2026073001,
+    "max_new_tokens_policy": "pinned_decoder_max_position_embeddings",
+    "output_subtype": "PCM_16",
+    "attempt_fingerprint": "0a5d983bf199e0288557c80840402a00f9160e17e533e327fdf950d81006c05a",
+    "network_access_allowed": false,
+    "browser_or_system_speech_fallback": false,
+    "engine_contract_sha256": "718fb2ddd63271137e0f37a7c176a827d4cfb84c8be4d918dac2c36991e3081b"
+  },
+  "generation_contract": {
+    "schema": "earnalism.indic_parler.d19_private_generation_contract.v1",
+    "slug": "book-d19e96859f",
+    "profile": "d19-indic-parler-aditi-literary-v1",
+    "attempt_fingerprint": "0a5d983bf199e0288557c80840402a00f9160e17e533e327fdf950d81006c05a",
+    "code_contract_sha256": "a619498641fdb93c0e50bc23f93c44167c64956104c075d4a1c13ed7e4266e88",
+    "runtime_contract_sha256": "c6fba0650e54e9c115f8c17834458f36750030bbe71d04f6c30513e3dea1d164",
+    "passage_contract_sha256": "59a7e31405973445c75a38f98d53d70c9d1a72761b6d525de08974abe5d2c328",
+    "engine_contract_sha256": "718fb2ddd63271137e0f37a7c176a827d4cfb84c8be4d918dac2c36991e3081b",
+    "generation_contract_sha256": "11aabb9a1bbd82f7e0d675df605dd0d46bdfbae0e3465125c8a80206f964365f"
+  },
+  "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/indic_parler/book-d19e96859f/7b527af5-aditi-representative-v1",
+  "samples": [
+    {
+      "ordinal": 1,
+      "passage_id": "opening_character_control",
+      "source_text_sha256": "b825c5484e8f9adc1799fd22c836dff9ae8df6c4eba26089d9a3c5f143ace74a",
+      "characters": 397,
+      "prompt_tokens": 142,
+      "max_new_tokens": 4096,
+      "audio_filename": "01-opening_character_control.wav",
+      "audio_sha256": "154ec9fc2aa3513e854d05ac78339994724d5f13858241387ae0658244c248ca",
+      "audio_size_bytes": 948268,
+      "duration_seconds": 10.750839,
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "codec_name": "pcm_s16le",
+      "format_name": "wav",
+      "objective_format_pass": true
+    },
+    {
+      "ordinal": 2,
+      "passage_id": "satirical_punctuation",
+      "source_text_sha256": "077f56ee06d735775daa9ed19459e92cc51d0f5b7bc0653f9503a722dea7a354",
+      "characters": 414,
+      "prompt_tokens": 147,
+      "max_new_tokens": 4096,
+      "audio_filename": "02-satirical_punctuation.wav",
+      "audio_sha256": "ce1f1a95f84fa75a4c9a68c919d46b7149b2cb99df9fdea344445cfc5e0e64ad",
+      "audio_size_bytes": 3122220,
+      "duration_seconds": 35.398821,
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "codec_name": "pcm_s16le",
+      "format_name": "wav",
+      "objective_format_pass": true
+    },
+    {
+      "ordinal": 3,
+      "passage_id": "play_scene_dialogue",
+      "source_text_sha256": "a02fe5e8b1e6d282dbada2411d9110f8397ccdde41d07338b0c5b085f35b0b99",
+      "characters": 499,
+      "prompt_tokens": 171,
+      "max_new_tokens": 4096,
+      "audio_filename": "03-play_scene_dialogue.wav",
+      "audio_sha256": "aedd8e20c12af01d513d39765d2a846a44d6c395a46cdd363215341fe133aac1",
+      "audio_size_bytes": 1924140,
+      "duration_seconds": 21.815147,
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "codec_name": "pcm_s16le",
+      "format_name": "wav",
+      "objective_format_pass": true
+    },
+    {
+      "ordinal": 4,
+      "passage_id": "ending_emotional_release",
+      "source_text_sha256": "ddaaa9b4c370f999dcd0fd1ddce67c8b23965c5cecca13c680618474e684c9d3",
+      "characters": 471,
+      "prompt_tokens": 169,
+      "max_new_tokens": 4096,
+      "audio_filename": "04-ending_emotional_release.wav",
+      "audio_sha256": "70f1b9d4a277e9852750569bf985f70a7f180595ad97270a80387f3163db374a",
+      "audio_size_bytes": 2763820,
+      "duration_seconds": 31.335329,
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "codec_name": "pcm_s16le",
+      "format_name": "wav",
+      "objective_format_pass": true
+    }
+  ],
+  "objective_audio_format": {
+    "status": "PASS",
+    "reports": [
+      {
+        "passage_id": "opening_character_control",
+        "audio_sha256": "154ec9fc2aa3513e854d05ac78339994724d5f13858241387ae0658244c248ca",
+        "duration_seconds": 10.750839,
+        "sample_rate_hz": 44100,
+        "channels": 1,
+        "codec_name": "pcm_s16le",
+        "pass": true
+      },
+      {
+        "passage_id": "satirical_punctuation",
+        "audio_sha256": "ce1f1a95f84fa75a4c9a68c919d46b7149b2cb99df9fdea344445cfc5e0e64ad",
+        "duration_seconds": 35.398821,
+        "sample_rate_hz": 44100,
+        "channels": 1,
+        "codec_name": "pcm_s16le",
+        "pass": true
+      },
+      {
+        "passage_id": "play_scene_dialogue",
+        "audio_sha256": "aedd8e20c12af01d513d39765d2a846a44d6c395a46cdd363215341fe133aac1",
+        "duration_seconds": 21.815147,
+        "sample_rate_hz": 44100,
+        "channels": 1,
+        "codec_name": "pcm_s16le",
+        "pass": true
+      },
+      {
+        "passage_id": "ending_emotional_release",
+        "audio_sha256": "70f1b9d4a277e9852750569bf985f70a7f180595ad97270a80387f3163db374a",
+        "duration_seconds": 31.335329,
+        "sample_rate_hz": 44100,
+        "channels": 1,
+        "codec_name": "pcm_s16le",
+        "pass": true
+      }
+    ]
+  },
+  "asr": {
+    "status": "NOT_RUN_BY_GENERATION_ADAPTER"
+  },
+  "listening_qa": {
+    "status": "NOT_RUN_BY_GENERATION_ADAPTER"
+  },
+  "sync": {
+    "status": "NOT_RUN_BY_GENERATION_ADAPTER",
+    "estimated_sync_generated": false
+  },
+  "safety": {
+    "attempt_consumed": true,
+    "executor_run": true,
+    "audio_generated": true,
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "network_access_allowed": false,
+    "browser_or_system_speech_fallback": false,
+    "paid_tts_lock_inspected": false,
+    "paid_tts_lock_touched": false,
+    "asr_run": false,
+    "listening_qa_run": false,
+    "sync_generated": false,
+    "upload_performed": false,
+    "catalog_mutated": false,
+    "release_gate_mutated": false,
+    "publication_performed": false,
+    "public_audio_status": "AUDIO_HIDDEN_NOT_PUBLIC",
+    "attempt_marker_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/indic_parler/book-d19e96859f/7b527af5-aditi-representative-v1/attempt_manifest.json"
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_ASR_NOT_RUN",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "PRIVATE_UPLOAD_CHECKSUM_NOT_RUN",
+    "PRODUCTION_ENDPOINT_NOT_RUN",
+    "BROWSER_PLAYBACK_GATE_NOT_RUN"
+  ],
+  "artifact_integrity": {
+    "before": {
+      "model": {
+        "config.json": {
+          "size_bytes": 7338,
+          "sha256": "14b8b2352e854758fc2c6ad8bf72fb8330a8361cdcf79d7eb52a3f665e904cd2"
+        },
+        "generation_config.json": {
+          "size_bytes": 223,
+          "sha256": "86d035c0fd9589d60fb763aad1feafeee2040fb9cf51515a0144816cec4d029d"
+        },
+        "model.safetensors": {
+          "size_bytes": 3751321772,
+          "sha256": "c68daecb60f80c8f1faf0a6d2e6ddd6de8e224fb19750f3e9a33bca43c552c90"
+        },
+        "special_tokens_map.json": {
+          "size_bytes": 552,
+          "sha256": "4859e5dbde90e059988a0a2136d8df3f2773d4d2fc4c4543690028f0b2166e7f"
+        },
+        "tokenizer.json": {
+          "size_bytes": 10272460,
+          "sha256": "8b5f3a5080f95e5333930b57181cd2a9bf387632bd7b277af5d4fea59acb58de"
+        },
+        "tokenizer.model": {
+          "size_bytes": 1795391,
+          "sha256": "bc8fa773221597d09cfadb23a2b1bd717488a0481505469ea56d42cb044de9b5"
+        },
+        "tokenizer_config.json": {
+          "size_bytes": 990,
+          "sha256": "47baa70cba964a32daa581a4af50b4f2c77edaa18bec2257660133ab204ca36f"
+        }
+      },
+      "description_tokenizer": {
+        "special_tokens_map.json": {
+          "size_bytes": 2201,
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f"
+        },
+        "spiece.model": {
+          "size_bytes": 791656,
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
+        },
+        "tokenizer.json": {
+          "size_bytes": 2424064,
+          "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a"
+        },
+        "tokenizer_config.json": {
+          "size_bytes": 2539,
+          "sha256": "5d19985330a9123285cc583fc60616d083aa9df7435812b5d8bb3e749f435d56"
+        }
+      }
+    },
+    "after": {
+      "model": {
+        "config.json": {
+          "size_bytes": 7338,
+          "sha256": "14b8b2352e854758fc2c6ad8bf72fb8330a8361cdcf79d7eb52a3f665e904cd2"
+        },
+        "generation_config.json": {
+          "size_bytes": 223,
+          "sha256": "86d035c0fd9589d60fb763aad1feafeee2040fb9cf51515a0144816cec4d029d"
+        },
+        "model.safetensors": {
+          "size_bytes": 3751321772,
+          "sha256": "c68daecb60f80c8f1faf0a6d2e6ddd6de8e224fb19750f3e9a33bca43c552c90"
+        },
+        "special_tokens_map.json": {
+          "size_bytes": 552,
+          "sha256": "4859e5dbde90e059988a0a2136d8df3f2773d4d2fc4c4543690028f0b2166e7f"
+        },
+        "tokenizer.json": {
+          "size_bytes": 10272460,
+          "sha256": "8b5f3a5080f95e5333930b57181cd2a9bf387632bd7b277af5d4fea59acb58de"
+        },
+        "tokenizer.model": {
+          "size_bytes": 1795391,
+          "sha256": "bc8fa773221597d09cfadb23a2b1bd717488a0481505469ea56d42cb044de9b5"
+        },
+        "tokenizer_config.json": {
+          "size_bytes": 990,
+          "sha256": "47baa70cba964a32daa581a4af50b4f2c77edaa18bec2257660133ab204ca36f"
+        }
+      },
+      "description_tokenizer": {
+        "special_tokens_map.json": {
+          "size_bytes": 2201,
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f"
+        },
+        "spiece.model": {
+          "size_bytes": 791656,
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
+        },
+        "tokenizer.json": {
+          "size_bytes": 2424064,
+          "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a"
+        },
+        "tokenizer_config.json": {
+          "size_bytes": 2539,
+          "sha256": "5d19985330a9123285cc583fc60616d083aa9df7435812b5d8bb3e749f435d56"
+        }
+      }
+    },
+    "unchanged": true
+  },
+  "next_stage": {
+    "status": "BOUNDED_OBJECTIVE_ASR_ADAPTER_REQUIRED_NOT_RUN",
+    "scope": "these four exact hash-bound WAVs only",
+    "requirements": [
+      "consume the generation evidence and verify every WAV SHA-256 before decoding",
+      "use audio-derived Bengali ASR with no transcript substitution or normalization that hides omissions",
+      "require ASR/source >= 9.7, coverage >= 0.98, first/last pass, and ordered content integrity",
+      "do not generate synthetic or estimated timestamps",
+      "do not run independent listening QA unless objective ASR passes"
+    ]
+  },
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_indic_parler_aditi_private_generation_v1.json >/dev/null"
+}
