@@ -607,6 +607,48 @@ def _normalize_word_fixture(fixture: dict[str, Any]) -> dict[str, Any]:
     )
 
 
+def _add_source_equivalence(
+    fixture: dict[str, Any],
+    narrated_text: str,
+) -> Path:
+    narrated_path = fixture["repo_root"] / "internal/narrated-manuscript.txt"
+    narrated_path.write_text(narrated_text, encoding="utf-8")
+    narrated_sha256 = builder.sha256_file(narrated_path)
+    chapter_path = fixture["context"]["dirs"][0] / "chapters/chapter-001.json"
+    chapter = builder.read_json(chapter_path)
+    canonical_text = str(chapter["content"]).rstrip("\n") + "\n"
+    canonical_sha256 = builder.hashlib.sha256(
+        canonical_text.encode("utf-8")
+    ).hexdigest()
+    fixture["manuscript_sha256"] = narrated_sha256
+    fixture["timestamps"]["source_text_hash"] = narrated_sha256
+    fixture["meta"]["source_text_hash"] = narrated_sha256
+    contract = fixture["approval"]["approved_legacy_sidecar_normalization"]
+    contract["source_text_equivalence"] = {
+        "schema_version": "approved_legacy_source_text_equivalence.v1",
+        "mode": "collapse_whitespace_only",
+        "alignment_token_mode": "collapse_intraword_ascii_hyphens",
+        "canonical_source_sha256": canonical_sha256,
+        "narrated_manuscript_path": "internal/narrated-manuscript.txt",
+        "narrated_manuscript_sha256": narrated_sha256,
+    }
+    evidence = builder.read_json(fixture["evidence_path"])
+    evidence["source"].update(
+        {
+            "canonical_source_sha256": canonical_sha256,
+            "manuscript_sha256": narrated_sha256,
+            "narrated_manuscript_sha256": narrated_sha256,
+            "text_equivalence_mode": "collapse_whitespace_only",
+            "alignment_token_mode": "collapse_intraword_ascii_hyphens",
+        }
+    )
+    _write_json(fixture["evidence_path"], evidence)
+    contract["release_evidence_sha256"] = builder.sha256_file(
+        fixture["evidence_path"]
+    )
+    return narrated_path
+
+
 def _rewrite_approval(
     fixture: dict[str, Any],
     mutate: Callable[[dict[str, Any]], None],
@@ -1157,6 +1199,50 @@ def test_legacy_measured_words_normalize_to_exact_source_sections(tmp_path):
         == "measured_equal_opcode_word_anchor_bound_to_canonical_source"
         for cue in result["cues"]
     )
+
+
+def test_source_equivalence_accepts_whitespace_only_and_preserves_canonical_text(
+    tmp_path,
+):
+    fixture = _legacy_word_normalization_fixture(tmp_path)
+    narrated_path = _add_source_equivalence(
+        fixture,
+        "One two three.\n\n\nFour   five six.\n",
+    )
+
+    result = _normalize_word_fixture(fixture)
+
+    assert [cue["text"] for cue in result["cues"]] == [
+        "One two three.",
+        "Four five six.",
+    ]
+    assert result["narrated_manuscript_path"] == narrated_path
+
+
+def test_source_equivalence_rejects_any_non_whitespace_text_change(tmp_path):
+    fixture = _legacy_word_normalization_fixture(tmp_path)
+    _add_source_equivalence(
+        fixture,
+        "One two altered.\n\nFour five six.\n",
+    )
+
+    with pytest.raises(
+        builder.PackageBuildError,
+        match="differ beyond whitespace",
+    ):
+        _normalize_word_fixture(fixture)
+
+
+def test_alignment_token_mode_only_collapses_intraword_ascii_hyphens():
+    assert builder._alignment_tokens("bath-tub") == ["bath", "tub"]
+    assert builder._alignment_tokens(
+        "bath-tub",
+        collapse_intraword_hyphens=True,
+    ) == ["bathtub"]
+    assert builder._alignment_tokens(
+        "stop--start",
+        collapse_intraword_hyphens=True,
+    ) == ["stop", "start"]
 
 
 def test_deletion_at_section_boundary_coalesces_without_interpolation():

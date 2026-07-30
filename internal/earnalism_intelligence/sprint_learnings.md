@@ -1102,3 +1102,21 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   broadening the Open Window claim.
 - Close the Open Window rollout and move the next exact audit to Sredni
   Vashtar instead of creating another Open Window rollout stage.
+
+## 2026-07-30 — A Ghost Story package-v2 source recovery
+
+- The exact narrated manuscript can survive in ignored release-gate workspaces
+  even when it is absent from a fresh Git worktree. Four retained copies were
+  byte-identical at SHA-256 `0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4`.
+- The narrated and controlled manuscripts are text-identical after collapsing
+  whitespace. Preserve both hashes and both exact byte representations; do not
+  relabel one as the other.
+- Treat an intraword hyphen as an alignment-token equivalence only when a
+  hash-bound contract explicitly permits it. Never rewrite the canonical
+  reader text or infer replacement content from ASR.
+- Removing the stale root-only estimated `highlight_sync.json` restores
+  controlled mirror identity without changing the approved audiobook,
+  release gates, public URLs, or customer-facing text.
+- A deterministic two-segment package-v2 release candidate now builds with no
+  blockers. Storage upload and active-release promotion remain separate,
+  explicitly authorized operations.

@@ -1,0 +1,35 @@
+{
+  "schema_version": "audiobook_package_v2_legacy_upstream_release_evidence.v1",
+  "slug": "a-ghost-story",
+  "status": "EXISTING_APPROVED_RELEASE_EVIDENCE_NORMALIZED",
+  "measured_quality": {
+    "sync_score": 9.88,
+    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "auto_estimated_sync": false
+  },
+  "sidecars": {
+    "timestamps": {
+      "sha256": "f705f1832a8bca6e6a66b5e34b0689d7a3daf71cd79a6f076b6376305307dc44",
+      "word_count": 2450,
+      "alignment_method": "openai_verbose_json_word_timestamps"
+    },
+    "vtt": {
+      "sha256": "11f7c4689b94230d9125e77789efcf1ac15d3809859e847c013548d69a029517",
+      "cue_count": 2450
+    }
+  },
+  "release_gates": {
+    "source_binding": "PASS",
+    "asr_source": "PASS",
+    "first_last": "PASS",
+    "sidecars": "PASS"
+  },
+  "original_release_evidence": {
+    "path": "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_release_gate_evidence.json",
+    "sha256": "d484342db807ba7a8c7269cf2c50775192bb7a1d5e69869efcf383dfa69125e0"
+  },
+  "upload_runtime_evidence": {
+    "path": "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2d_upload_runtime.json",
+    "sha256": "14c022b23cad4c4f282336df0bcdcde76c83ef7f13343bfff16f0b6f43a0a078"
+  }
+}

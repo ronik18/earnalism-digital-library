@@ -4,11 +4,7 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "d28b5b219129457dd209aa9b2c0b6b8f8a0d10139ec4457736a221ba09df9d58"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "91c5ca73d4e87febe4939d53714fa0b1b6be4b8cc52154ae85e5d6f77b8ea054"
+      "sha256": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba"
     },
     {
       "file": "public_book.json",
