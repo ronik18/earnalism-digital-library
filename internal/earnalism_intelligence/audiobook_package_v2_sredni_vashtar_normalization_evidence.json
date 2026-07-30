@@ -1,0 +1,49 @@
+{
+  "schema_version": "audiobook_package_v2_legacy_normalization_evidence.v1",
+  "slug": "sredni-vashtar",
+  "status": "NORMALIZATION_INPUT_EVIDENCE_READY",
+  "narration_regenerated": false,
+  "release_gate_mutated": false,
+  "source": {
+    "chapter_path": "chapters/chapter-001.json",
+    "chapter_sha256": "1479bad3f14cc9c48bf4c415d49f848933ba65436fe2b5b1efda0156be8d1260",
+    "manuscript_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+    "section_count": 158,
+    "emitted_section_count": 156,
+    "anchored_internal_boundary_count": 155,
+    "coalesced_boundary_count": 2,
+    "boundary_retention_ratio": 0.987261,
+    "coverage": 0.985651,
+    "coverage_method": "audio_derived_asr_matching_characters_over_canonical_source_characters"
+  },
+  "measured_quality": {
+    "upstream_transcript_vtt_sync_score": 9.7997,
+    "upstream_sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "post_conversion_boundary_quality_score": 1.0,
+    "boundary_method": "equal_opcode_anchored_internal_boundaries",
+    "sync_tier": "SECTION_BOUNDARIES_EQUAL_OPCODE_MEASURED",
+    "public_sync_mode": "section_following",
+    "auto_estimated_sync": false
+  },
+  "sidecars": {
+    "timestamps": {
+      "sha256": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
+      "word_count": 1789,
+      "alignment_method": "openai_verbose_json_word_timestamps"
+    },
+    "vtt": {
+      "sha256": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d",
+      "cue_count": 1789
+    }
+  },
+  "release_gates": {
+    "source_binding": "PASS",
+    "asr_source": "PASS",
+    "first_last": "PASS",
+    "sidecars": "PASS"
+  },
+  "upstream_release_evidence": {
+    "path": "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_release_gate_evidence.json",
+    "sha256": "30c25580bbd404c449e73fbd8b071ac81542c2af12d5712e57b0f7b86f2bdc6d"
+  }
+}

@@ -232,6 +232,381 @@ def _approved_legacy_fixture(tmp_path: Path) -> dict[str, Any]:
     }
 
 
+def _legacy_word_normalization_fixture(tmp_path: Path) -> dict[str, Any]:
+    repo_root = tmp_path / "repo"
+    slug = "measured-legacy-title"
+    controlled_dirs = [
+        repo_root / "data/controlled_publications" / slug,
+        repo_root / "backend/data/controlled_publications" / slug,
+    ]
+    chapter_relative = "chapters/chapter-001.json"
+    source_text = "One two three.\n\nFour five six.\n"
+    manuscript_sha256 = builder.hashlib.sha256(source_text.encode("utf-8")).hexdigest()
+    chapter = {
+        "bookSlug": slug,
+        "id": "chapter-001",
+        "content": source_text.rstrip("\n"),
+    }
+    for directory in controlled_dirs:
+        _write_json(directory / chapter_relative, chapter)
+    chapter_sha256 = builder.sha256_file(controlled_dirs[0] / chapter_relative)
+    checksum_manifest = {
+        "slug": slug,
+        "files": [{"file": chapter_relative, "sha256": chapter_sha256}],
+    }
+
+    assets_dir = tmp_path / "assets"
+    assets_dir.mkdir()
+    timestamps_path = assets_dir / "timestamps.json"
+    vtt_path = assets_dir / "highlight.vtt"
+    audio_sha256 = "a" * 64
+    words = [
+        {"word": word, "start": float(index), "end": float(index + 1)}
+        for index, word in enumerate(("One", "two", "three", "Four", "five", "six"))
+    ]
+    timestamps = {
+        "slug": slug,
+        "alignment_method": "openai_verbose_json_word_timestamps",
+        "auto_estimated_sync": False,
+        "granularity": "word",
+        "audio_hash": audio_sha256,
+        "source_text_hash": manuscript_sha256,
+        "words": words,
+    }
+    _write_json(timestamps_path, timestamps)
+    vtt_path.write_text(
+        "\n".join(
+            [
+                "WEBVTT",
+                "",
+                *[
+                    line
+                    for index, word in enumerate(words, start=1)
+                    for line in (
+                        str(index),
+                        (
+                            f"00:00:0{index - 1}.000 --> "
+                            f"00:00:0{index}.000"
+                        ),
+                        word["word"],
+                        "",
+                    )
+                ],
+            ]
+        ),
+        encoding="utf-8",
+    )
+    timestamp_sha256 = builder.sha256_file(timestamps_path)
+    vtt_sha256 = builder.sha256_file(vtt_path)
+    upstream = {
+        "slug": slug,
+        "measured_quality": {
+            "sync_score": 9.8,
+            "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+            "auto_estimated_sync": False,
+        },
+        "sidecars": {
+            "timestamps": {"sha256": timestamp_sha256},
+            "vtt": {"sha256": vtt_sha256},
+        },
+        "release_gates": {
+            "source_binding": "PASS",
+            "asr_source": "PASS",
+            "first_last": "PASS",
+            "sidecars": "PASS",
+        },
+    }
+    upstream_path = repo_root / "internal/upstream-release-evidence.json"
+    _write_json(upstream_path, upstream)
+    evidence = {
+        **upstream,
+        "schema_version": (
+            "audiobook_package_v2_legacy_normalization_evidence.v1"
+        ),
+        "status": "NORMALIZATION_INPUT_EVIDENCE_READY",
+        "narration_regenerated": False,
+        "release_gate_mutated": False,
+        "measured_quality": {
+            "upstream_transcript_vtt_sync_score": 9.8,
+            "upstream_sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+            "post_conversion_boundary_quality_score": 1.0,
+            "boundary_method": "equal_opcode_anchored_internal_boundaries",
+            "sync_tier": "SECTION_BOUNDARIES_EQUAL_OPCODE_MEASURED",
+            "auto_estimated_sync": False,
+        },
+        "source": {
+            "chapter_path": chapter_relative,
+            "chapter_sha256": chapter_sha256,
+            "manuscript_sha256": manuscript_sha256,
+            "section_count": 2,
+            "emitted_section_count": 2,
+            "anchored_internal_boundary_count": 1,
+            "coalesced_boundary_count": 0,
+            "boundary_retention_ratio": 1.0,
+            "coverage": 1.0,
+            "coverage_method": (
+                "audio_derived_asr_matching_characters_over_canonical_source_characters"
+            ),
+        },
+        "upstream_release_evidence": {
+            "path": "internal/upstream-release-evidence.json",
+            "sha256": builder.sha256_file(upstream_path),
+        },
+    }
+    evidence_path = repo_root / "internal/release-evidence.json"
+    _write_json(evidence_path, evidence)
+    approval = {
+        "source_coverage": 1.0,
+        "source_coverage_method": (
+            "audio_derived_asr_matching_characters_over_canonical_source_characters"
+        ),
+        "measured_section_boundary_score": 1.0,
+        "measured_section_boundary_method": (
+            "equal_opcode_anchored_internal_boundaries"
+        ),
+        "approved_legacy_sidecar_normalization": {
+            "schema_version": builder.LEGACY_WORD_NORMALIZATION_SCHEMA,
+            "mode": builder.LEGACY_WORD_NORMALIZATION_MODE,
+            "output_granularity": "section",
+            "source_chapter_files": [chapter_relative],
+            "source_section_count": 2,
+            "measured_word_count": 6,
+            "minimum_monotonic_alignment_ratio": 0.99,
+            "minimum_boundary_retention_ratio": 0.99,
+            "input_sha256": {
+                "timestamps": timestamp_sha256,
+                "vtt": vtt_sha256,
+            },
+            "release_evidence_path": "internal/release-evidence.json",
+            "release_evidence_sha256": builder.sha256_file(evidence_path),
+        },
+    }
+    return {
+        "repo_root": repo_root,
+        "context": {
+            "dirs": controlled_dirs,
+            "checksum_manifest": checksum_manifest,
+        },
+        "slug": slug,
+        "approval": approval,
+        "timestamps": timestamps,
+        "timestamps_path": timestamps_path,
+        "vtt_path": vtt_path,
+        "meta": {
+            "slug": slug,
+            "audio_hash": audio_sha256,
+            "source_text_hash": manuscript_sha256,
+            "auto_estimated_sync": False,
+            "sync_score": 9.8,
+        },
+        "asset_facts": {
+            "timestamps": {"sha256": timestamp_sha256},
+            "vtt": {"sha256": vtt_sha256},
+        },
+        "manuscript_sha256": manuscript_sha256,
+        "audio_sha256": audio_sha256,
+        "evidence_path": evidence_path,
+    }
+
+
+def _approved_word_normalized_fixture(tmp_path: Path) -> dict[str, Any]:
+    fixture = _approved_legacy_fixture(tmp_path)
+    repo_root = fixture["repo_root"]
+    slug = fixture["slug"]
+    paths = fixture["paths"]
+    source_text = "One two three.\n\nFour five six.\n"
+    manuscript_sha256 = builder.hashlib.sha256(source_text.encode("utf-8")).hexdigest()
+    audio_sha256 = fixture["audio_sha256"]
+    words = [
+        {"word": word, "start": float(index), "end": float(index + 1)}
+        for index, word in enumerate(("One", "two", "three", "Four", "five", "six"))
+    ]
+    _write_json(
+        paths["timestamps"],
+        {
+            "slug": slug,
+            "alignment_method": "openai_verbose_json_word_timestamps",
+            "auto_estimated_sync": False,
+            "granularity": "word",
+            "audio_hash": audio_sha256,
+            "source_text_hash": manuscript_sha256,
+            "words": words,
+        },
+    )
+    paths["vtt"].write_text(
+        "\n".join(
+            [
+                "WEBVTT",
+                "",
+                *[
+                    line
+                    for index, word in enumerate(words, start=1)
+                    for line in (
+                        str(index),
+                        (
+                            f"00:00:0{index - 1}.000 --> "
+                            f"00:00:0{index}.000"
+                        ),
+                        word["word"],
+                        "",
+                    )
+                ],
+            ]
+        ),
+        encoding="utf-8",
+    )
+    _write_json(
+        paths["meta"],
+        {
+            "slug": slug,
+            "audio_hash": audio_sha256,
+            "source_text_hash": manuscript_sha256,
+            "auto_estimated_sync": False,
+            "duration_seconds": 600.0,
+            "sync_score": 9.8,
+        },
+    )
+    for name in ("timestamps", "vtt", "meta"):
+        _rebind_fixture_asset(fixture, name)
+
+    approval = fixture["documents"]["approval_evidence.json"]
+    audiobook = fixture["documents"]["public_book.json"]["audiobook"]
+    approval["source_sha256"] = manuscript_sha256
+    approval["source_coverage"] = 1.0
+    approval["source_coverage_method"] = (
+        "audio_derived_asr_matching_characters_over_canonical_source_characters"
+    )
+    approval.pop("measured_paragraph_sync_score")
+    approval["measured_section_boundary_score"] = 1.0
+    approval["measured_section_boundary_method"] = (
+        "equal_opcode_anchored_internal_boundaries"
+    )
+    audiobook["source_sha256"] = manuscript_sha256
+
+    chapter_relative = "chapters/chapter-001.json"
+    chapter = {
+        "bookSlug": slug,
+        "id": "chapter-001",
+        "content": source_text.rstrip("\n"),
+    }
+    controlled_dirs = [
+        repo_root / "data/controlled_publications" / slug,
+        repo_root / "backend/data/controlled_publications" / slug,
+    ]
+    for directory in controlled_dirs:
+        _write_json(directory / chapter_relative, chapter)
+    chapter_sha256 = builder.sha256_file(controlled_dirs[0] / chapter_relative)
+    timestamp_sha256 = builder.sha256_file(paths["timestamps"])
+    vtt_sha256 = builder.sha256_file(paths["vtt"])
+    upstream = {
+        "slug": slug,
+        "measured_quality": {
+            "sync_score": 9.8,
+            "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+            "auto_estimated_sync": False,
+        },
+        "sidecars": {
+            "timestamps": {"sha256": timestamp_sha256},
+            "vtt": {"sha256": vtt_sha256},
+        },
+        "release_gates": {
+            "source_binding": "PASS",
+            "asr_source": "PASS",
+            "first_last": "PASS",
+            "sidecars": "PASS",
+        },
+    }
+    upstream_path = repo_root / "internal/upstream-release-evidence.json"
+    _write_json(upstream_path, upstream)
+    evidence = {
+        "schema_version": (
+            "audiobook_package_v2_legacy_normalization_evidence.v1"
+        ),
+        "slug": slug,
+        "status": "NORMALIZATION_INPUT_EVIDENCE_READY",
+        "narration_regenerated": False,
+        "release_gate_mutated": False,
+        "source": {
+            "chapter_path": chapter_relative,
+            "chapter_sha256": chapter_sha256,
+            "manuscript_sha256": manuscript_sha256,
+            "section_count": 2,
+            "emitted_section_count": 2,
+            "anchored_internal_boundary_count": 1,
+            "coalesced_boundary_count": 0,
+            "boundary_retention_ratio": 1.0,
+            "coverage": 1.0,
+            "coverage_method": (
+                "audio_derived_asr_matching_characters_over_canonical_source_characters"
+            ),
+        },
+        "measured_quality": {
+            "upstream_transcript_vtt_sync_score": 9.8,
+            "upstream_sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+            "post_conversion_boundary_quality_score": 1.0,
+            "boundary_method": "equal_opcode_anchored_internal_boundaries",
+            "sync_tier": "SECTION_BOUNDARIES_EQUAL_OPCODE_MEASURED",
+            "auto_estimated_sync": False,
+        },
+        "sidecars": upstream["sidecars"],
+        "release_gates": upstream["release_gates"],
+        "upstream_release_evidence": {
+            "path": "internal/upstream-release-evidence.json",
+            "sha256": builder.sha256_file(upstream_path),
+        },
+    }
+    evidence_path = repo_root / "internal/normalization-evidence.json"
+    _write_json(evidence_path, evidence)
+    approval["approved_legacy_sidecar_normalization"] = {
+        "schema_version": builder.LEGACY_WORD_NORMALIZATION_SCHEMA,
+        "mode": builder.LEGACY_WORD_NORMALIZATION_MODE,
+        "output_granularity": "section",
+        "source_chapter_files": [chapter_relative],
+        "source_section_count": 2,
+        "measured_word_count": 6,
+        "minimum_monotonic_alignment_ratio": 0.99,
+        "minimum_boundary_retention_ratio": 0.99,
+        "input_sha256": {
+            "timestamps": timestamp_sha256,
+            "vtt": vtt_sha256,
+        },
+        "release_evidence_path": "internal/normalization-evidence.json",
+        "release_evidence_sha256": builder.sha256_file(evidence_path),
+    }
+    _write_controlled_mirrors(repo_root, fixture["documents"])
+    for directory in controlled_dirs:
+        _write_json(directory / chapter_relative, chapter)
+        checksum_path = directory / "checksum_manifest.json"
+        checksum = builder.read_json(checksum_path)
+        checksum["files"].append(
+            {"file": chapter_relative, "sha256": chapter_sha256}
+        )
+        _write_json(checksum_path, checksum)
+    fixture.update(
+        {
+            "manuscript_sha256": manuscript_sha256,
+            "normalization_evidence_path": evidence_path,
+        }
+    )
+    return fixture
+
+
+def _normalize_word_fixture(fixture: dict[str, Any]) -> dict[str, Any]:
+    return builder._normalize_legacy_measured_word_sidecars(
+        repo_root=fixture["repo_root"],
+        context=fixture["context"],
+        slug=fixture["slug"],
+        approval=fixture["approval"],
+        timestamps=fixture["timestamps"],
+        vtt_path=fixture["vtt_path"],
+        meta=fixture["meta"],
+        asset_facts=fixture["asset_facts"],
+        manuscript_sha256=fixture["manuscript_sha256"],
+        audio_sha256=fixture["audio_sha256"],
+        duration_seconds=6.0,
+    )
+
+
 def _rewrite_approval(
     fixture: dict[str, Any],
     mutate: Callable[[dict[str, Any]], None],
@@ -761,3 +1136,203 @@ def test_approved_legacy_rejects_non_measured_sidecar_sync(
 
     with pytest.raises(builder.PackageBuildError, match="Estimated sync"):
         _validate_fixture(fixture)
+
+
+def test_legacy_measured_words_normalize_to_exact_source_sections(tmp_path):
+    fixture = _legacy_word_normalization_fixture(tmp_path)
+
+    result = _normalize_word_fixture(fixture)
+
+    assert result["source_coverage"] == 1.0
+    assert result["alignment_ratio"] == 1.0
+    assert [
+        (cue["start"], cue["end"], cue["text"])
+        for cue in result["cues"]
+    ] == [
+        (0.0, 3.0, "One two three."),
+        (3.0, 6.0, "Four five six."),
+    ]
+    assert all(
+        cue["timing_origin"]
+        == "measured_equal_opcode_word_anchor_bound_to_canonical_source"
+        for cue in result["cues"]
+    )
+
+
+def test_deletion_at_section_boundary_coalesces_without_interpolation():
+    sections = ["one missing", "words two", "three"]
+    source_tokens = ["one", "missing", "words", "two", "three"]
+    asr_tokens = ["one", "two", "three"]
+    opcodes = builder.difflib.SequenceMatcher(
+        None,
+        source_tokens,
+        asr_tokens,
+        autojunk=False,
+    ).get_opcodes()
+
+    result = builder._coalesce_sections_to_equal_opcode_boundaries(
+        sections=sections,
+        source_boundaries=[0, 2, 4, 5],
+        opcodes=opcodes,
+        asr_token_word_indexes=[0, 1, 2],
+        measured_word_count=3,
+        minimum_retention_ratio=0.5,
+    )
+
+    assert result["sections"] == ["one missing\n\nwords two", "three"]
+    assert result["word_boundaries"] == [0, 2, 3]
+    assert result["anchored_internal_boundary_count"] == 1
+    assert result["coalesced_boundary_count"] == 1
+    assert result["boundary_quality_score"] == 1.0
+
+    with pytest.raises(builder.PackageBuildError, match="coalesced too many"):
+        builder._coalesce_sections_to_equal_opcode_boundaries(
+            sections=sections,
+            source_boundaries=[0, 2, 4, 5],
+            opcodes=opcodes,
+            asr_token_word_indexes=[0, 1, 2],
+            measured_word_count=3,
+            minimum_retention_ratio=0.75,
+        )
+
+
+def test_legacy_word_normalization_rejects_release_evidence_hash_drift(tmp_path):
+    fixture = _legacy_word_normalization_fixture(tmp_path)
+    fixture["evidence_path"].write_text("{}\n", encoding="utf-8")
+
+    with pytest.raises(builder.PackageBuildError, match="evidence hash"):
+        _normalize_word_fixture(fixture)
+
+
+def test_legacy_word_normalization_rejects_unaligned_measured_words(tmp_path):
+    fixture = _legacy_word_normalization_fixture(tmp_path)
+    fixture["timestamps"]["words"] = [
+        {**word, "word": "unrelated"}
+        for word in fixture["timestamps"]["words"]
+    ]
+
+    with pytest.raises(builder.PackageBuildError, match="do not align safely"):
+        _normalize_word_fixture(fixture)
+
+
+def test_section_granularity_requires_hash_bound_normalization_contract(
+    tmp_path,
+    monkeypatch,
+):
+    fixture = _approved_legacy_fixture(tmp_path)
+    timestamps = builder.read_json(fixture["paths"]["timestamps"])
+    timestamps["sync_granularity"] = "section"
+    for cue in timestamps["cues"]:
+        cue["granularity"] = "section"
+    _write_json(fixture["paths"]["timestamps"], timestamps)
+    meta = builder.read_json(fixture["paths"]["meta"])
+    meta["sync_granularity"] = "section"
+    _write_json(fixture["paths"]["meta"], meta)
+    _rebind_fixture_asset(fixture, "timestamps")
+    _rebind_fixture_asset(fixture, "meta")
+    monkeypatch.setattr(builder, "ffprobe_duration_ms", lambda path: 600_000)
+
+    with pytest.raises(builder.PackageBuildError, match="not paragraph/stanza"):
+        _validate_fixture(fixture)
+
+
+def test_build_approved_word_normalization_binds_provenance_and_section_truth(
+    tmp_path,
+    monkeypatch,
+):
+    fixture = _approved_word_normalized_fixture(tmp_path)
+    output_dir = tmp_path / "normalized-package"
+    monkeypatch.setattr(builder, "ffprobe_duration_ms", lambda path: 600_000)
+    monkeypatch.setattr(
+        builder,
+        "ffprobe_audio_profile",
+        lambda path: {
+            "codec_name": "mp3",
+            "channels": 1,
+            "sample_rate": "48000",
+            "bit_rate": "96000",
+        },
+    )
+
+    def fake_run_checked(command):
+        destination = Path(command[-1])
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(
+            b"pcm-master" if destination.suffix == ".wav" else b"encoded-segment"
+        )
+
+    monkeypatch.setattr(builder, "run_checked", fake_run_checked)
+    result = builder.build_approved_legacy(
+        repo_root=fixture["repo_root"],
+        slug=fixture["slug"],
+        audio_path=fixture["paths"]["mp3"],
+        timestamps_path=fixture["paths"]["timestamps"],
+        vtt_path=fixture["paths"]["vtt"],
+        chapters_path=fixture["paths"]["chapters"],
+        meta_path=fixture["paths"]["meta"],
+        output_dir=output_dir,
+    )
+
+    descriptor = builder.read_json(output_dir / "release-descriptor.json")
+    assert result["status"] == "RELEASE_CANDIDATE_PACKAGE_BUILT"
+    assert descriptor["sync_tier"] == "section"
+    assert descriptor["release_candidate_evidence"]["gates"][
+        "measured_sync_kind"
+    ] == "equal_opcode_anchored_section_boundaries"
+    assert descriptor["release_candidate_evidence"]["gates"][
+        "measured_sync_score"
+    ] == 1.0
+    evidence_sha256 = builder.sha256_file(
+        fixture["normalization_evidence_path"]
+    )
+    assert descriptor["release_candidate_evidence"][
+        "normalization_release_evidence_sha256"
+    ] == evidence_sha256
+    plan = builder.read_json(output_dir / "upload-plan.json")
+    evidence_asset = next(
+        asset
+        for asset in plan["assets"]
+        if asset["asset_id"]
+        == "provenance.controlled.normalization_release_evidence"
+    )
+    assert evidence_asset["sha256"] == evidence_sha256
+    legacy_timestamps = next(
+        asset
+        for asset in plan["assets"]
+        if asset["asset_id"] == "provenance.legacy.timestamps"
+    )
+    assert legacy_timestamps["sha256"] == builder.sha256_file(
+        fixture["paths"]["timestamps"]
+    )
+    generated = builder.read_json(
+        output_dir / "sidecars/chapter-001/segment-001-timestamps.json"
+    )
+    assert generated["sync_granularity"] == "section"
+    assert generated["auto_estimated_sync"] is False
+    assert all(cue["granularity"] == "section" for cue in generated["cues"])
+    assert all(
+        cue["timing_origin"]
+        == "measured_equal_opcode_word_anchor_bound_to_canonical_source"
+        for cue in generated["cues"]
+    )
+
+
+def test_build_approved_word_normalization_fails_closed_on_evidence_drift(
+    tmp_path,
+    monkeypatch,
+):
+    fixture = _approved_word_normalized_fixture(tmp_path)
+    fixture["normalization_evidence_path"].write_text("{}\n", encoding="utf-8")
+    monkeypatch.setattr(builder, "ffprobe_duration_ms", lambda path: 600_000)
+
+    with pytest.raises(builder.PackageBuildError, match="evidence hash"):
+        builder.build_approved_legacy(
+            repo_root=fixture["repo_root"],
+            slug=fixture["slug"],
+            audio_path=fixture["paths"]["mp3"],
+            timestamps_path=fixture["paths"]["timestamps"],
+            vtt_path=fixture["paths"]["vtt"],
+            chapters_path=fixture["paths"]["chapters"],
+            meta_path=fixture["paths"]["meta"],
+            output_dir=tmp_path / "must-remain-empty",
+        )

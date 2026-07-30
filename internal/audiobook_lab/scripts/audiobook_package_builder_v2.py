@@ -22,6 +22,7 @@ objects.  Upload and verification are delegated to
 from __future__ import annotations
 
 import argparse
+import difflib
 import hashlib
 import json
 import math
@@ -29,8 +30,9 @@ import re
 import shutil
 import subprocess
 import sys
+import unicodedata
 from pathlib import Path
-from typing import Any, Iterable, Mapping
+from typing import Any, Iterable, Mapping, Optional
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -84,6 +86,8 @@ MIN_TARGET_SEGMENT_SECONDS = 8 * 60
 MAX_SEGMENT_SECONDS = 12 * 60
 AUDIO_DURATION_TOLERANCE_SECONDS = 1.5
 CHAPTER_BOUNDARY_TOLERANCE_SECONDS = 0.01
+LEGACY_WORD_NORMALIZATION_SCHEMA = "approved_legacy_sidecar_normalization.v1"
+LEGACY_WORD_NORMALIZATION_MODE = "measured_word_to_canonical_source_sections"
 
 
 class PackageBuildError(RuntimeError):
@@ -181,17 +185,18 @@ def rebased_cues(
         end = round(float(cue["end"]) - segment_start_seconds, 3)
         if start < 0 or end <= start:
             raise PackageBuildError("Cue boundaries do not fit the selected segment")
-        rebased.append(
-            {
-                "id": str(cue["id"]),
-                "index": local_index,
-                "start": start,
-                "end": end,
-                "duration_seconds": round(end - start, 3),
-                "text": str(cue["text"]),
-                "granularity": str(cue.get("granularity") or "paragraph_or_stanza"),
-            }
-        )
+        normalized = {
+            "id": str(cue["id"]),
+            "index": local_index,
+            "start": start,
+            "end": end,
+            "duration_seconds": round(end - start, 3),
+            "text": str(cue["text"]),
+            "granularity": str(cue.get("granularity") or "paragraph_or_stanza"),
+        }
+        if str(cue.get("timing_origin") or "").strip():
+            normalized["timing_origin"] = str(cue["timing_origin"])
+        rebased.append(normalized)
     return rebased
 
 
@@ -538,6 +543,610 @@ def _validate_vtt_against_cues(path: Path, cues: list[dict[str, Any]]) -> None:
             raise PackageBuildError(f"VTT cue {index} does not match measured timestamps")
 
 
+def _safe_repo_evidence_path(
+    repo_root: Path,
+    relative_path: Any,
+    expected_sha256: Any,
+    label: str,
+) -> Path:
+    normalized = str(relative_path or "").strip()
+    candidate_relative = Path(normalized)
+    if (
+        not normalized
+        or candidate_relative.is_absolute()
+        or ".." in candidate_relative.parts
+    ):
+        raise PackageBuildError(f"{label} path is not repository-relative")
+    repo_root = repo_root.resolve()
+    candidate = (repo_root / candidate_relative).resolve()
+    try:
+        candidate.relative_to(repo_root)
+    except ValueError:
+        raise PackageBuildError(f"{label} path escapes the repository") from None
+    if not candidate.is_file():
+        raise PackageBuildError(f"{label} file is missing")
+    if sha256_file(candidate) != _require_sha256(expected_sha256, f"{label} hash"):
+        raise PackageBuildError(f"{label} hash does not match")
+    return candidate
+
+
+def _alignment_tokens(text: str) -> list[str]:
+    normalized = (
+        unicodedata.normalize("NFKD", text.replace("\u2019", "'"))
+        .encode("ascii", "ignore")
+        .decode("ascii")
+        .lower()
+    )
+    return re.findall(r"[a-z0-9]+(?:'[a-z0-9]+)?", normalized)
+
+
+def _alignment_characters(text: str) -> str:
+    normalized = (
+        unicodedata.normalize("NFKD", text.replace("\u2019", "'"))
+        .encode("ascii", "ignore")
+        .decode("ascii")
+        .lower()
+    )
+    return re.sub(r"[^a-z0-9]+", "", normalized)
+
+
+def _legacy_word_vtt_ranges(
+    *,
+    timestamps: Mapping[str, Any],
+    vtt_path: Path,
+    expected_word_count: int,
+) -> tuple[list[dict[str, Any]], list[tuple[float, float]]]:
+    raw_words = timestamps.get("words")
+    if not isinstance(raw_words, list) or len(raw_words) != expected_word_count:
+        raise PackageBuildError("Legacy measured-word timestamp count does not match")
+    words: list[dict[str, Any]] = []
+    previous_start = 0.0
+    for index, raw in enumerate(raw_words):
+        if not isinstance(raw, Mapping):
+            raise PackageBuildError(f"Legacy measured word {index} is invalid")
+        try:
+            start = float(raw.get("start"))
+            end = float(raw.get("end"))
+        except (TypeError, ValueError):
+            raise PackageBuildError(
+                f"Legacy measured word {index} boundary is invalid"
+            ) from None
+        word = str(raw.get("word") or "").strip()
+        if (
+            not math.isfinite(start)
+            or not math.isfinite(end)
+            or start < 0
+            or end < start
+            or (index > 0 and start < previous_start - 0.01)
+            or not word
+        ):
+            raise PackageBuildError(
+                f"Legacy measured word {index} is not release-safe"
+            )
+        words.append({"word": word, "start": start, "end": end})
+        previous_start = start
+
+    ranges = _vtt_ranges(vtt_path)
+    if len(ranges) != len(words):
+        raise PackageBuildError("Legacy word VTT count does not match timestamps")
+    for index, (word, (start, end)) in enumerate(zip(words, ranges)):
+        expected_end = max(word["end"], word["start"] + 0.05)
+        if (
+            abs(start - word["start"]) > 0.01
+            or abs(end - expected_end) > 0.011
+        ):
+            raise PackageBuildError(
+                f"Legacy word VTT cue {index} does not match timestamps"
+            )
+    return words, ranges
+
+
+def _equal_opcode_asr_anchor(
+    boundary: int,
+    opcodes: list[tuple[str, int, int, int, int]],
+) -> Optional[int]:
+    for tag, source_start, source_end, asr_start, _asr_end in opcodes:
+        if tag == "equal" and source_start <= boundary <= source_end:
+            return asr_start + (boundary - source_start)
+    return None
+
+
+def _coalesce_sections_to_equal_opcode_boundaries(
+    *,
+    sections: list[str],
+    source_boundaries: list[int],
+    opcodes: list[tuple[str, int, int, int, int]],
+    asr_token_word_indexes: list[int],
+    measured_word_count: int,
+    minimum_retention_ratio: float,
+) -> dict[str, Any]:
+    if (
+        _equal_opcode_asr_anchor(source_boundaries[0], opcodes) != 0
+        or _equal_opcode_asr_anchor(source_boundaries[-1], opcodes)
+        != len(asr_token_word_indexes)
+    ):
+        raise PackageBuildError(
+            "Legacy normalization source endpoints lack equal-opcode anchors"
+        )
+    emitted_sections: list[str] = []
+    word_boundaries = [0]
+    pending_sections: list[str] = []
+    anchored_internal_boundaries = 0
+    for section_index, section in enumerate(sections):
+        pending_sections.append(section)
+        if section_index == len(sections) - 1:
+            emitted_sections.append("\n\n".join(pending_sections))
+            pending_sections = []
+            word_boundaries.append(measured_word_count)
+            continue
+        source_boundary = source_boundaries[section_index + 1]
+        asr_boundary = _equal_opcode_asr_anchor(source_boundary, opcodes)
+        if (
+            asr_boundary is None
+            or asr_boundary <= 0
+            or asr_boundary >= len(asr_token_word_indexes)
+        ):
+            continue
+        word_boundary = asr_token_word_indexes[asr_boundary]
+        if (
+            asr_token_word_indexes[asr_boundary - 1] == word_boundary
+            or word_boundary <= word_boundaries[-1]
+        ):
+            continue
+        emitted_sections.append("\n\n".join(pending_sections))
+        pending_sections = []
+        word_boundaries.append(word_boundary)
+        anchored_internal_boundaries += 1
+    if pending_sections:
+        raise PackageBuildError(
+            "Legacy normalization did not close the canonical source sections"
+        )
+    if (
+        len(emitted_sections) != len(word_boundaries) - 1
+        or anchored_internal_boundaries != len(emitted_sections) - 1
+        or anchored_internal_boundaries <= 0
+    ):
+        raise PackageBuildError(
+            "Legacy normalization did not produce equal-opcode section boundaries"
+        )
+    original_internal_boundaries = len(sections) - 1
+    boundary_retention_ratio = (
+        anchored_internal_boundaries / original_internal_boundaries
+    )
+    if boundary_retention_ratio < minimum_retention_ratio:
+        raise PackageBuildError(
+            "Legacy normalization coalesced too many unanchored source sections"
+        )
+    return {
+        "sections": emitted_sections,
+        "word_boundaries": word_boundaries,
+        "anchored_internal_boundary_count": anchored_internal_boundaries,
+        "coalesced_boundary_count": (
+            original_internal_boundaries - anchored_internal_boundaries
+        ),
+        "boundary_retention_ratio": boundary_retention_ratio,
+        "boundary_quality_score": 1.0,
+    }
+
+
+def _normalize_legacy_measured_word_sidecars(
+    *,
+    repo_root: Path,
+    context: Mapping[str, Any],
+    slug: str,
+    approval: Mapping[str, Any],
+    timestamps: Mapping[str, Any],
+    vtt_path: Path,
+    meta: Mapping[str, Any],
+    asset_facts: Mapping[str, Mapping[str, Any]],
+    manuscript_sha256: str,
+    audio_sha256: str,
+    duration_seconds: float,
+) -> dict[str, Any]:
+    contract = approval.get("approved_legacy_sidecar_normalization")
+    if not isinstance(contract, Mapping):
+        raise PackageBuildError("Approved legacy sidecar normalization is invalid")
+    if (
+        contract.get("schema_version") != LEGACY_WORD_NORMALIZATION_SCHEMA
+        or contract.get("mode") != LEGACY_WORD_NORMALIZATION_MODE
+        or contract.get("output_granularity") != "section"
+        or approval.get("source_coverage_method")
+        != "audio_derived_asr_matching_characters_over_canonical_source_characters"
+    ):
+        raise PackageBuildError("Approved legacy sidecar normalization is unsupported")
+
+    evidence_path = _safe_repo_evidence_path(
+        repo_root,
+        contract.get("release_evidence_path"),
+        contract.get("release_evidence_sha256"),
+        "Legacy normalization release evidence",
+    )
+    evidence = read_json(evidence_path)
+    measured_quality = (
+        evidence.get("measured_quality") if isinstance(evidence, Mapping) else None
+    )
+    sidecars = evidence.get("sidecars") if isinstance(evidence, Mapping) else None
+    release_gates = (
+        evidence.get("release_gates") if isinstance(evidence, Mapping) else None
+    )
+    if (
+        evidence.get("schema_version")
+        != "audiobook_package_v2_legacy_normalization_evidence.v1"
+        or evidence.get("slug") != slug
+        or evidence.get("status") != "NORMALIZATION_INPUT_EVIDENCE_READY"
+        or evidence.get("narration_regenerated") is not False
+        or evidence.get("release_gate_mutated") is not False
+        or not isinstance(measured_quality, Mapping)
+        or not isinstance(sidecars, Mapping)
+        or not isinstance(release_gates, Mapping)
+        or measured_quality.get("auto_estimated_sync") is not False
+        or measured_quality.get("sync_tier")
+        != "SECTION_BOUNDARIES_EQUAL_OPCODE_MEASURED"
+        or measured_quality.get("boundary_method")
+        != "equal_opcode_anchored_internal_boundaries"
+        or release_gates.get("source_binding") != "PASS"
+        or release_gates.get("asr_source") != "PASS"
+        or release_gates.get("first_last") != "PASS"
+        or release_gates.get("sidecars") != "PASS"
+    ):
+        raise PackageBuildError("Legacy normalization release evidence does not pass")
+    upstream_reference = evidence.get("upstream_release_evidence")
+    if not isinstance(upstream_reference, Mapping):
+        raise PackageBuildError("Legacy normalization upstream evidence is missing")
+    upstream_path = _safe_repo_evidence_path(
+        repo_root,
+        upstream_reference.get("path"),
+        upstream_reference.get("sha256"),
+        "Legacy normalization upstream release evidence",
+    )
+    upstream = read_json(upstream_path)
+    upstream_quality = (
+        upstream.get("measured_quality") if isinstance(upstream, Mapping) else None
+    )
+    upstream_sidecars = (
+        upstream.get("sidecars") if isinstance(upstream, Mapping) else None
+    )
+    upstream_gates = (
+        upstream.get("release_gates") if isinstance(upstream, Mapping) else None
+    )
+    if (
+        upstream.get("slug") != slug
+        or not isinstance(upstream_quality, Mapping)
+        or not isinstance(upstream_sidecars, Mapping)
+        or not isinstance(upstream_gates, Mapping)
+        or upstream_quality.get("sync_score")
+        != measured_quality.get("upstream_transcript_vtt_sync_score")
+        or upstream_quality.get("sync_tier")
+        != measured_quality.get("upstream_sync_tier")
+        or upstream_quality.get("auto_estimated_sync")
+        != measured_quality.get("auto_estimated_sync")
+        or upstream_sidecars.get("timestamps") != sidecars.get("timestamps")
+        or upstream_sidecars.get("vtt") != sidecars.get("vtt")
+        or any(
+            upstream_gates.get(name) != "PASS"
+            for name in ("source_binding", "asr_source", "first_last", "sidecars")
+        )
+    ):
+        raise PackageBuildError(
+            "Legacy normalization upstream release evidence conflicts"
+        )
+    upstream_sync_score = _require_number(
+        measured_quality.get("upstream_transcript_vtt_sync_score"),
+        "Legacy normalization upstream transcript/VTT sync score",
+        0.000001,
+    )
+    evidence_timestamps = sidecars.get("timestamps")
+    evidence_vtt = sidecars.get("vtt")
+    if (
+        not isinstance(evidence_timestamps, Mapping)
+        or not isinstance(evidence_vtt, Mapping)
+        or evidence_timestamps.get("sha256")
+        != asset_facts["timestamps"]["sha256"]
+        or evidence_vtt.get("sha256") != asset_facts["vtt"]["sha256"]
+    ):
+        raise PackageBuildError("Legacy normalization sidecar evidence conflicts")
+
+    expected_hashes = contract.get("input_sha256")
+    if not isinstance(expected_hashes, Mapping):
+        raise PackageBuildError("Legacy normalization input hashes are missing")
+    for name in ("timestamps", "vtt"):
+        if expected_hashes.get(name) != asset_facts[name]["sha256"]:
+            raise PackageBuildError(
+                f"Legacy normalization {name} hash does not match approved bytes"
+            )
+
+    chapter_files = contract.get("source_chapter_files")
+    if not isinstance(chapter_files, list) or not chapter_files:
+        raise PackageBuildError("Legacy normalization source chapters are missing")
+    checksum_rows = _checksum_rows(context["checksum_manifest"])
+    source_parts: list[str] = []
+    for relative_value in chapter_files:
+        relative = str(relative_value or "").strip()
+        if (
+            not relative.startswith("chapters/")
+            or Path(relative).is_absolute()
+            or ".." in Path(relative).parts
+        ):
+            raise PackageBuildError(
+                "Legacy normalization chapter path is not controlled"
+            )
+        expected_hash = checksum_rows.get(relative)
+        if not expected_hash:
+            raise PackageBuildError(
+                "Legacy normalization chapter lacks a controlled checksum"
+            )
+        mirror_paths = [directory / relative for directory in context["dirs"]]
+        if (
+            any(not path.is_file() for path in mirror_paths)
+            or any(sha256_file(path) != expected_hash for path in mirror_paths)
+            or mirror_paths[0].read_bytes() != mirror_paths[1].read_bytes()
+        ):
+            raise PackageBuildError(
+                "Legacy normalization controlled chapter mirrors diverge"
+            )
+        chapter = read_json(mirror_paths[0])
+        content = chapter.get("content") if isinstance(chapter, Mapping) else None
+        if not isinstance(content, str) or not content.strip():
+            raise PackageBuildError(
+                "Legacy normalization controlled chapter has no content"
+            )
+        source_parts.append(content.rstrip("\n"))
+
+    source_text = "\n".join(source_parts) + "\n"
+    if hashlib.sha256(source_text.encode("utf-8")).hexdigest() != manuscript_sha256:
+        raise PackageBuildError(
+            "Legacy normalization source does not match narrated manuscript"
+        )
+    sections = [
+        section.rstrip()
+        for section in re.split(r"\n[ \t]*\n", source_text.rstrip("\n"))
+        if section.strip()
+    ]
+    expected_section_count = int(
+        _require_number(
+            contract.get("source_section_count"),
+            "Legacy normalization source section count",
+            1,
+        )
+    )
+    if len(sections) != expected_section_count:
+        raise PackageBuildError(
+            "Legacy normalization source section count does not match"
+        )
+    reconstructed = "\n\n".join(sections) + "\n"
+    if reconstructed != source_text:
+        raise PackageBuildError(
+            "Legacy normalization would rewrite canonical source text"
+        )
+    normalization_source = evidence.get("source")
+    if (
+        not isinstance(normalization_source, Mapping)
+        or len(chapter_files) != 1
+        or normalization_source.get("chapter_path") != chapter_files[0]
+        or normalization_source.get("chapter_sha256")
+        != checksum_rows.get(chapter_files[0])
+        or normalization_source.get("manuscript_sha256") != manuscript_sha256
+        or normalization_source.get("section_count") != len(sections)
+        or normalization_source.get("coverage") != approval.get("source_coverage")
+        or normalization_source.get("coverage_method")
+        != approval.get("source_coverage_method")
+    ):
+        raise PackageBuildError(
+            "Legacy normalization canonical source evidence conflicts"
+        )
+
+    expected_word_count = int(
+        _require_number(
+            contract.get("measured_word_count"),
+            "Legacy normalization measured word count",
+            1,
+        )
+    )
+    words, _ranges = _legacy_word_vtt_ranges(
+        timestamps=timestamps,
+        vtt_path=vtt_path,
+        expected_word_count=expected_word_count,
+    )
+    if (
+        timestamps.get("slug") != slug
+        or timestamps.get("audio_hash") != audio_sha256
+        or timestamps.get("source_text_hash") != manuscript_sha256
+        or timestamps.get("auto_estimated_sync") is not False
+        or str(timestamps.get("alignment_method") or "").lower()
+        != "openai_verbose_json_word_timestamps"
+    ):
+        raise PackageBuildError(
+            "Legacy measured-word timestamps do not match release truth"
+        )
+
+    source_tokens: list[str] = []
+    source_boundaries = [0]
+    for section in sections:
+        tokens = _alignment_tokens(section)
+        if not tokens:
+            raise PackageBuildError("Canonical source section has no alignment tokens")
+        source_tokens.extend(tokens)
+        source_boundaries.append(len(source_tokens))
+    asr_tokens: list[str] = []
+    asr_token_word_indexes: list[int] = []
+    for word_index, word in enumerate(words):
+        tokens = _alignment_tokens(word["word"])
+        if not tokens:
+            raise PackageBuildError("Legacy measured word has no alignment token")
+        asr_tokens.extend(tokens)
+        asr_token_word_indexes.extend([word_index] * len(tokens))
+    matcher = difflib.SequenceMatcher(
+        None,
+        source_tokens,
+        asr_tokens,
+        autojunk=False,
+    )
+    minimum_ratio = _require_number(
+        contract.get("minimum_monotonic_alignment_ratio"),
+        "Legacy normalization monotonic alignment ratio",
+        0,
+    )
+    if matcher.ratio() < minimum_ratio:
+        raise PackageBuildError(
+            "Legacy measured words do not align safely to canonical source sections"
+        )
+    opcodes = matcher.get_opcodes()
+    required_retention_ratio = _require_number(
+        contract.get("minimum_boundary_retention_ratio"),
+        "Legacy normalization boundary retention ratio",
+        0,
+    )
+    boundary_result = _coalesce_sections_to_equal_opcode_boundaries(
+        sections=sections,
+        source_boundaries=source_boundaries,
+        opcodes=opcodes,
+        asr_token_word_indexes=asr_token_word_indexes,
+        measured_word_count=len(words),
+        minimum_retention_ratio=required_retention_ratio,
+    )
+    emitted_sections = boundary_result["sections"]
+    word_boundaries = boundary_result["word_boundaries"]
+    anchored_internal_boundaries = boundary_result[
+        "anchored_internal_boundary_count"
+    ]
+    coalesced_boundary_count = boundary_result["coalesced_boundary_count"]
+    boundary_retention_ratio = boundary_result["boundary_retention_ratio"]
+    boundary_quality_score = boundary_result["boundary_quality_score"]
+    controlled_boundary_score = _require_number(
+        approval.get("measured_section_boundary_score"),
+        "Measured section boundary score",
+        1.0,
+    )
+    if (
+        approval.get("measured_section_boundary_method")
+        != "equal_opcode_anchored_internal_boundaries"
+        or abs(boundary_quality_score - controlled_boundary_score) > 0.000001
+        or abs(
+            boundary_quality_score
+            - _require_number(
+                measured_quality.get("post_conversion_boundary_quality_score"),
+                "Post-conversion section boundary quality score",
+                1.0,
+            )
+        )
+        > 0.000001
+    ):
+        raise PackageBuildError(
+            "Legacy normalization section boundary quality evidence conflicts"
+        )
+
+    time_boundaries = [
+        0.0
+        if boundary == 0
+        else duration_seconds
+        if boundary == len(words)
+        else round(words[boundary]["start"], 3)
+        for boundary in word_boundaries
+    ]
+    cues: list[dict[str, Any]] = []
+    for index, section in enumerate(emitted_sections):
+        start = time_boundaries[index]
+        end = time_boundaries[index + 1]
+        if end <= start:
+            raise PackageBuildError(
+                f"Legacy normalized source section {index} has no measured duration"
+            )
+        cues.append(
+            {
+                "id": f"paragraph-{index + 1:04d}",
+                "index": index,
+                "start": start,
+                "end": end,
+                "duration_seconds": round(end - start, 3),
+                "text": section,
+                "granularity": "section",
+                "timing_origin": (
+                    "measured_equal_opcode_word_anchor_bound_to_canonical_source"
+                ),
+            }
+        )
+    if "\n\n".join(cue["text"] for cue in cues) + "\n" != source_text:
+        raise PackageBuildError(
+            "Legacy normalization cues do not preserve canonical source text"
+        )
+    if (
+        normalization_source.get("emitted_section_count") != len(cues)
+        or normalization_source.get("anchored_internal_boundary_count")
+        != anchored_internal_boundaries
+        or normalization_source.get("coalesced_boundary_count")
+        != coalesced_boundary_count
+        or abs(
+            _require_number(
+                normalization_source.get("boundary_retention_ratio"),
+                "Normalization evidence boundary retention ratio",
+                0,
+            )
+            - boundary_retention_ratio
+        )
+        > 0.000001
+    ):
+        raise PackageBuildError(
+            "Legacy normalization emitted-boundary evidence conflicts"
+        )
+    source_characters = _alignment_characters(source_text)
+    asr_characters = _alignment_characters(
+        " ".join(word["word"] for word in words)
+    )
+    if not source_characters or not asr_characters:
+        raise PackageBuildError(
+            "Legacy normalization cannot measure ASR/source coverage"
+        )
+    character_matcher = difflib.SequenceMatcher(
+        None,
+        source_characters,
+        asr_characters,
+        autojunk=False,
+    )
+    source_coverage = (
+        sum(block.size for block in character_matcher.get_matching_blocks())
+        / len(source_characters)
+    )
+    if abs(
+        source_coverage
+        - _require_number(
+            approval.get("source_coverage"),
+            "ASR/source coverage",
+            0.98,
+        )
+    ) > 0.000001:
+        raise PackageBuildError(
+            "Legacy normalized source coverage conflicts with controlled evidence"
+        )
+
+    meta_score = _require_number(
+        meta.get("sync_score", meta.get("vtt_alignment_score")),
+        "Legacy metadata measured sync score",
+        0.000001,
+    )
+    if (
+        meta.get("slug") != slug
+        or meta.get("audio_hash") != audio_sha256
+        or meta.get("source_text_hash") != manuscript_sha256
+        or meta.get("auto_estimated_sync") is not False
+        or abs(meta_score - upstream_sync_score) > 0.000001
+    ):
+        raise PackageBuildError(
+            "Legacy metadata does not match measured normalization evidence"
+        )
+    return {
+        "cues": cues,
+        "source_coverage": source_coverage,
+        "alignment_ratio": matcher.ratio(),
+        "boundary_quality_score": boundary_quality_score,
+        "boundary_retention_ratio": boundary_retention_ratio,
+        "anchored_internal_boundary_count": anchored_internal_boundaries,
+        "coalesced_boundary_count": (
+            coalesced_boundary_count
+        ),
+        "release_evidence_path": evidence_path,
+    }
+
+
 def _validate_approved_legacy_inputs(
     *,
     repo_root: Path,
@@ -633,11 +1242,16 @@ def _validate_approved_legacy_inputs(
         != "PARAGRAPH_OR_STANZA_SYNC_PREMIUM"
     ):
         raise PackageBuildError("Controlled sync is not measured paragraph/stanza sync")
-    measured_sync_score = _require_number(
-        approval.get("measured_paragraph_sync_score"),
-        "Measured paragraph/stanza sync score",
-        0.000001,
+    normalization_requested = (
+        approval.get("approved_legacy_sidecar_normalization") is not None
     )
+    measured_sync_score: Optional[float] = None
+    if not normalization_requested:
+        measured_sync_score = _require_number(
+            approval.get("measured_paragraph_sync_score"),
+            "Measured paragraph/stanza sync score",
+            0.000001,
+        )
     if not str(approval.get("upload_status") or "").startswith(
         "UPLOADED_CHECKSUM_VERIFIED"
     ):
@@ -764,20 +1378,39 @@ def _validate_approved_legacy_inputs(
         Mapping,
     ) or not isinstance(meta, Mapping):
         raise PackageBuildError("Legacy JSON sidecars must be objects")
-    cues = _validated_cues(
-        timestamps,
-        slug=slug,
-        audio_sha256=asset_facts["mp3"]["sha256"],
-        manuscript_sha256=manuscript_sha256,
-        duration_seconds=duration_seconds,
-    )
+    normalization_result: Optional[dict[str, Any]] = None
+    if approval.get("approved_legacy_sidecar_normalization") is not None:
+        normalization_result = _normalize_legacy_measured_word_sidecars(
+            repo_root=repo_root,
+            context=context,
+            slug=slug,
+            approval=approval,
+            timestamps=timestamps,
+            vtt_path=inputs["vtt"],
+            meta=meta,
+            asset_facts=asset_facts,
+            manuscript_sha256=manuscript_sha256,
+            audio_sha256=asset_facts["mp3"]["sha256"],
+            duration_seconds=duration_seconds,
+        )
+        cues = normalization_result["cues"]
+        measured_sync_score = normalization_result["boundary_quality_score"]
+    else:
+        cues = _validated_cues(
+            timestamps,
+            slug=slug,
+            audio_sha256=asset_facts["mp3"]["sha256"],
+            manuscript_sha256=manuscript_sha256,
+            duration_seconds=duration_seconds,
+        )
     chapters = _validated_chapters(
         chapters_document,
         slug=slug,
         duration_seconds=duration_seconds,
         cues=cues,
     )
-    _validate_vtt_against_cues(inputs["vtt"], cues)
+    if normalization_result is None:
+        _validate_vtt_against_cues(inputs["vtt"], cues)
     meta_duration_seconds = _require_number(
         meta.get("duration_seconds"),
         "Legacy metadata duration",
@@ -788,12 +1421,16 @@ def _validate_approved_legacy_inputs(
         or meta.get("audio_hash") != asset_facts["mp3"]["sha256"]
         or meta.get("source_text_hash") != manuscript_sha256
         or meta.get("auto_estimated_sync") is not False
-        or str(meta.get("sync_granularity") or "").lower()
-        not in MEASURED_SYNC_GRANULARITIES
         or abs(meta_duration_seconds - duration_seconds)
         > AUDIO_DURATION_TOLERANCE_SECONDS
     ):
         raise PackageBuildError("Legacy metadata sidecar does not match release truth")
+    if (
+        normalization_result is None
+        and str(meta.get("sync_granularity") or "").lower()
+        not in MEASURED_SYNC_GRANULARITIES
+    ):
+        raise PackageBuildError("Legacy metadata sync is not paragraph/stanza measured")
     meta_asr_score = meta.get("asr_transcript_match_score")
     if meta_asr_score is not None:
         _require_number(
@@ -816,6 +1453,7 @@ def _validate_approved_legacy_inputs(
         "meta": meta,
         "cues": cues,
         "chapters": chapters,
+        "normalization_result": normalization_result,
         "controlled_source_sha256": controlled_source_sha256,
         "manuscript_sha256": manuscript_sha256,
         "duration_ms": duration_ms,
@@ -829,6 +1467,11 @@ def _validate_approved_legacy_inputs(
             "listening_confidence": listening_confidence,
             "fatal_flags": [],
             "measured_sync_score": measured_sync_score,
+            "measured_sync_kind": (
+                "equal_opcode_anchored_section_boundaries"
+                if normalization_result is not None
+                else "paragraph_or_stanza"
+            ),
             "rights_tier": "A",
             "verification_status": "approved",
             "upload_status": approval["upload_status"],
@@ -1046,6 +1689,16 @@ def build_approved_legacy(
         "source": validated["context"]["dirs"][0] / "source_evidence.json",
         "checksums": validated["context"]["dirs"][0] / "checksum_manifest.json",
     }
+    normalization_result = validated.get("normalization_result")
+    package_sync_granularity = (
+        "section"
+        if isinstance(normalization_result, Mapping)
+        else "paragraph_or_stanza"
+    )
+    if isinstance(normalization_result, Mapping):
+        controlled_sources["normalization_release_evidence"] = normalization_result[
+            "release_evidence_path"
+        ]
     controlled_copies = {
         name: _copy_exact(
             path,
@@ -1162,7 +1815,7 @@ def build_approved_legacy(
                     "slug": slug,
                     "chapter_id": chapter["id"],
                     "segment_id": segment_id,
-                    "sync_granularity": "paragraph_or_stanza",
+                    "sync_granularity": package_sync_granularity,
                     "sync_method": "measured_legacy_cue_boundaries",
                     "auto_estimated_sync": False,
                     "source_audio_sha256": asset_facts["mp3"]["sha256"],
@@ -1189,7 +1842,7 @@ def build_approved_legacy(
                     "segment_id": segment_id,
                     "order": len(chunks),
                     "boundary_index_space": "exact_narration_text",
-                    "reader_alignment_mode": "paragraph_or_stanza",
+                    "reader_alignment_mode": package_sync_granularity,
                     "highlight_sync_enabled": False,
                     "start_word": word_cursor,
                     "end_word": end_word,
@@ -1267,6 +1920,10 @@ def build_approved_legacy(
         "legacy.chapters.json": legacy_copies["chapters"],
         "legacy.meta.json": legacy_copies["meta"],
     }
+    if "normalization_release_evidence" in controlled_copies:
+        evidence_paths["normalization_release_evidence.json"] = controlled_copies[
+            "normalization_release_evidence"
+        ]
     evidence_sha256 = {
         name: sha256_file(path) for name, path in evidence_paths.items()
     }
@@ -1287,6 +1944,10 @@ def build_approved_legacy(
             "checksum_manifest.json"
         ],
     }
+    if "normalization_release_evidence.json" in evidence_sha256:
+        release_candidate_evidence[
+            "normalization_release_evidence_sha256"
+        ] = evidence_sha256["normalization_release_evidence.json"]
     release_descriptor = {
         "schema_version": "audiobook_release_descriptor.v1",
         "slug": slug,
@@ -1310,7 +1971,7 @@ def build_approved_legacy(
             "preferred": TARGET_SEGMENT_SECONDS,
             "maximum": MAX_SEGMENT_SECONDS,
         },
-        "sync_tier": "paragraph_or_stanza",
+        "sync_tier": package_sync_granularity,
         "highlight_sync_enabled": False,
         "evidence_sha256": evidence_sha256,
         "release_candidate_status": "RELEASE_CANDIDATE",
@@ -1433,7 +2094,7 @@ def build_approved_legacy(
         "segment_count": len(segment_assets),
         "word_count": word_cursor,
         "paragraph_count": paragraph_cursor,
-        "sync_tier": "paragraph_or_stanza",
+        "sync_tier": package_sync_granularity,
         "highlight_sync_enabled": False,
         "tracks": track_rows,
     }
