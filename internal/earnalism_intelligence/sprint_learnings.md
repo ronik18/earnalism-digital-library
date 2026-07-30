@@ -1667,3 +1667,23 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Any post-promotion routing, playback, timestamp or transition failure must
   roll back to legacy rather than being documented as an acceptable canary
   variation.
+
+## 2026-07-30 — Natural cross-segment playback closes the delivery migration
+
+- A Ghost Story's exact promotion merge passed both main workflows and
+  deployed through Railway with the required backend root and config.
+- Both former rollout identities and the public request resolved the same
+  active package manifest. The production matrix passed `78/78` checks across
+  both segment Range streams, exact timestamp sidecars, invalid ranges,
+  stale/unknown/cross-title rejection, and the exact four-title public audio
+  catalog.
+- The real browser began with an unbound audio element, `preload="none"` and
+  `readyState=0`. One visible click played exact segment `c001-s001`.
+- Segment one was allowed to end naturally. The production player switched to
+  `c001-s002`, stayed unpaused at `readyState=4`, advanced playback, and
+  reported no media or console error. No programmatic seek, synthetic ended
+  event, cookie change, or browser-storage change was used.
+- The delivery migration is production-green without changing narration,
+  audiobook approval, storage objects, the public count of four, or
+  `paid_tts.lock`. The legacy descriptor remains retained for explicit
+  rollback.

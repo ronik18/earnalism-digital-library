@@ -1,7 +1,7 @@
 # Audiobook package v2 canary — A Ghost Story
 
-Status: **production-green at twenty-five percent, with full package-v2
-promotion prepared for review and deployment. The approved legacy descriptor
+Status: **full package-v2 promotion is production-green. Every customer now
+resolves the exact immutable package, and the approved legacy descriptor
 remains retained for immediate rollback.**
 
 This is a delivery migration for an audiobook that was already approved and
@@ -11,9 +11,9 @@ public audiobook count of four.
 ## Exact package identity
 
 - Title / author: `A Ghost Story` / `Mark Twain`
-- Candidate descriptor:
+- Active package-v2 descriptor:
   `cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40`
-- Legacy descriptor, still active:
+- Legacy descriptor, retained but no longer selected:
   `c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d`
 - Package version:
   `sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422`
@@ -52,11 +52,12 @@ release manifest were:
 
 No immutable key was overwritten.
 
-## Zero-percent selection truth
+## Historical zero-percent selection truth
 
-The approved legacy descriptor remains active. The package-v2 descriptor is
-receipt-bound but staged at `0%`, so no customer selects it yet. Both
-descriptors are retained for controlled rollback/promotion.
+The approved legacy descriptor remained active while the package-v2
+descriptor was receipt-bound at `0%`. That historical checkpoint exposed no
+package audio to customers and preserved both descriptors for controlled
+rollback/promotion.
 
 ## Production zero-percent proof
 
@@ -144,45 +145,83 @@ The twenty-five-percent deployment completed on merge
   pre-intent audio, one-click playback, advancing time and zero errors before
   being paused.
 
-## Full package-v2 promotion preparation
+## Full package-v2 production closeout
 
-The guarded promotion operation makes descriptor
+The guarded promotion operation made descriptor
 `cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40`
-active, clears the candidate and percentage-canary fields, and retains legacy
+active, cleared the candidate and percentage-canary fields, and retained legacy
 descriptor
 `c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d`
 for rollback.
 
-The promotion is not production-green merely because the pointer is prepared.
-After deploy:
+The exact promotion completed through:
 
-- every deterministic identity and the public request must receive the exact
-  package manifest;
-- one click in the real browser must play `c001-s001`;
-- controlled near-boundary playback must auto-advance to `c001-s002`;
-- both timestamp sidecars and negative routes must remain exact;
-- media and console errors must stay zero; and
-- the public audiobook count must remain four.
+- PR `#210`, head
+  `10a78864f1ae63f6142ea294d7686928811f596e`, merge
+  `03c489f6902a51008fadb709047b6bf0cd4c4da8`;
+- main Regression run `30542015138` and GO LIVE run `30542015062`, both
+  successful; and
+- Railway deployment `5023f279-517c-4b79-b12c-3d35c6d3e598`, exact merge
+  commit, root `/backend`, config `/backend/railway.json`, image
+  `sha256:6c87139b745156d3112919fdd533cc8194438d8e68016eb833e4106bbc345f19`,
+  healthy instance `4dd32b9e-d499-420d-93dc-3a69b1bae062`.
 
-Any failure requires immediate pointer rollback to the retained legacy
-descriptor.
+The independent read-only production matrix passed `78/78` checks across
+nineteen requests:
+
+- both former rollout identities and the public request received the exact
+  package manifest and descriptor;
+- both identities received exact `206` Range responses for `c001-s001` and
+  `c001-s002`, whose total sizes are `3,208,941` and `7,363,629` bytes;
+- both exact timestamp sidecars returned `200`, `5,882` and `16,497` bytes,
+  with their manifest-bound SHA-256 values;
+- invalid ranges returned `416`; stale package, unknown segment and
+  cross-title package requests returned `404`;
+- home curation returned exactly the four approved audiobook slugs.
+
+In a separate compatibility probe, the retained legacy monolith returned
+`206`, exactly two bytes, and
+`Content-Range: bytes 0-1/7047789`. Its captured headers and body are bound in
+the JSON evidence separately from the `78/78` package matrix.
+
+The real customer browser then passed the mandatory package and transition
+checkpoint:
+
+- before intent the audio element had no `src`, empty `currentSrc`,
+  `preload="none"`, `readyState=0`, and no observed audiobook resource entry;
+- exactly one enabled `Start narration` control was present, and one click
+  selected exact package segment `c001-s001`;
+- segment one reached `readyState=4`, remained playing, advanced from the
+  initial observed `3.420516` seconds, and reported no media error;
+- segment one was allowed to finish naturally—without programmatic seeking,
+  a synthetic `ended` event, cookie changes, or browser-storage changes;
+- the player automatically selected `c001-s002`, stayed playing at
+  `readyState=4`, advanced to `10.541279` seconds, and reported no media or
+  console error; and
+- the visible Pause control stopped evidence capture at `20.700716` seconds.
+
+The public audiobook count remains four. This closes a delivery migration,
+not a new audiobook release or gate change. Any future regression still
+requires immediate pointer rollback to the retained legacy descriptor.
 
 ## Validation
 
 - Active-release pointer: valid, zero blockers.
 - Controlled-publication mirrors: byte-identical.
 - Builder, selector, storage, package API, B2 routing, projection safety,
-  A Ghost Story routability, source cleanup, Redis policy, precheck and
-  publication tests: `178 passed`.
+  A Ghost Story routability, source cleanup, Redis policy, precheck,
+  publication and home-curation tests: `213 passed`.
 - Focused frontend manifest, release-truth, playback, timestamp, reader,
   service-worker and static-route safety tests: `70 passed`.
 - `git diff --check`: pass.
 - Approval flags, narration and public audiobook count: unchanged.
-- `paid_tts.lock`: untouched.
+- No `paid_tts.lock` path changed.
 - Production zero-percent deployment, HTTP proof and browser proof: pass.
+- Production full promotion, all-identity HTTP proof, one-click package
+  playback and natural cross-segment browser proof: pass.
 
 Next exact command:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q internal/audiobook_lab/scripts/test_audiobook_package_builder_v2.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_audiobook_package_storage_v2.py backend/tests/test_audiobook_packages.py backend/tests/test_b2_audiobook_routing.py backend/tests/test_package_v2_public_projection_safety.py backend/tests/test_sprint1_audio_source_cleanup.py backend/tests/test_redis_cache_policy.py backend/tests/test_controlled_publication_precheck.py backend/tests/test_controlled_publication_publish.py backend/tests/test_a_ghost_story_routability.py
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug book-2b9853ec52
 ```
