@@ -60,6 +60,27 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).not.toMatch(/prefetchAsset\(nextTrack\.timestampsUrl\)/);
   });
 
+  test("requests first-click playback before deferred highlight rendering", () => {
+    const start = readerSource.indexOf("const startGeneratedAudio = useCallback");
+    const end = readerSource.indexOf("const handleGeneratedAudioMetadata", start);
+    const startGeneratedAudioSource = readerSource.slice(start, end);
+    const deferredHighlightIndex = startGeneratedAudioSource.indexOf("window.requestAnimationFrame");
+    const synchronizedPlaybackIndex = startGeneratedAudioSource.lastIndexOf(
+      "requestAudiobookPlayback(audio)",
+    );
+
+    expect(start).toBeGreaterThan(-1);
+    expect(end).toBeGreaterThan(start);
+    expect(startGeneratedAudioSource).toMatch(
+      /pendingAudioOffsetRef\.current = audioTimestampStartMs\(firstTimestamp\) \/ 1000/,
+    );
+    expect(synchronizedPlaybackIndex).toBeGreaterThan(-1);
+    expect(deferredHighlightIndex).toBeGreaterThan(synchronizedPlaybackIndex);
+    expect(startGeneratedAudioSource).not.toMatch(/window\.requestAnimationFrame[\s\S]*audio\.play\(/);
+    expect(readerSource).not.toMatch(/\baudio\.play\(\)/);
+    expect(readerSource).not.toMatch(/generatedAudioRef\.current\?\.play/);
+  });
+
   test("persists only immutable package-bound audiobook progress", () => {
     expect(readerSource).toMatch(/loadAudiobookProgress\(bookId,\s*normalizedManifest\.packageVersion\)/);
     expect(readerSource).toMatch(/saveAudiobookProgress\(bookId/);

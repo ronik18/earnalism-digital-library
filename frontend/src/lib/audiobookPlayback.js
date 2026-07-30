@@ -86,3 +86,18 @@ export function shouldPrefetchNextSegment(currentTime, duration, hasNextSegment)
     && safeCurrentTime / safeDuration >= AUDIOBOOK_NEXT_SEGMENT_PREFETCH_RATIO
   );
 }
+
+export function requestAudiobookPlayback(audio) {
+  if (!audio || typeof audio.play !== 'function') {
+    return Promise.reject(new TypeError('An audio element with play() is required'));
+  }
+
+  try {
+    // Keep play() in the caller's user-activation stack. Deferring this call
+    // through an animation frame or promise can make browsers reject the first
+    // click after the lazily assigned media source finishes loading.
+    return Promise.resolve(audio.play());
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}

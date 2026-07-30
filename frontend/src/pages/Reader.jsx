@@ -24,6 +24,7 @@ import {
   AUDIOBOOK_PROGRESS_SAVE_INTERVAL_MS,
   loadAudiobookProgress,
   pendingAudiobookResumeMatches,
+  requestAudiobookPlayback,
   saveAudiobookProgress,
   shouldPrefetchNextSegment,
 } from '../lib/audiobookPlayback';
@@ -2149,14 +2150,14 @@ export default function Reader() {
     if (!isContentPage || !audio || !generatedAudioAvailable || !pageHtml) return false;
 
     audioIntentStartedAtRef.current = readerNowMs();
-    primeGeneratedAudio();
     if (!generatedHighlightSyncEnabled) {
       generatedPageEndRef.current = null;
       setTtsHtml('');
       setGeneratedAudioActive(true);
       setTtsActive(true);
       setTtsPaused(false);
-      audio.play().catch(() => {
+      primeGeneratedAudio();
+      requestAudiobookPlayback(audio).catch(() => {
         audioIntentStartedAtRef.current = 0;
         setGeneratedAudioActive(false);
         setTtsActive(false);
@@ -2173,6 +2174,11 @@ export default function Reader() {
     const firstTimestamp = timestamps[firstAudioWord];
     if (!firstTimestamp) return false;
 
+    const restoringSelectedSegment = pendingAudioOffsetSegmentRef.current === selectedGeneratedAudioTrack.segmentId;
+    if (!restoringSelectedSegment) {
+      pendingAudioOffsetRef.current = audioTimestampStartMs(firstTimestamp) / 1000;
+      pendingAudioOffsetSegmentRef.current = selectedGeneratedAudioTrack.segmentId;
+    }
     generatedPageEndRef.current = Math.max(0, lastWord);
     const tickGeneratedHighlight = () => {
       const audioIndex = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
@@ -2198,21 +2204,24 @@ export default function Reader() {
     setTtsActive(true);
     setTtsPaused(false);
 
+    primeGeneratedAudio();
+    applyPendingAudioOffset();
+    // This must remain in the click handler's synchronous call stack. The
+    // visual word wrapping can wait for React/RAF, but the browser's playback
+    // permission cannot.
+    requestAudiobookPlayback(audio).catch(() => {
+      audioIntentStartedAtRef.current = 0;
+      setGeneratedAudioActive(false);
+      setTtsActive(false);
+      setTtsPaused(false);
+      toast.error('Generated audiobook could not start in this browser.');
+    });
+
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
         wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-        const restoringSelectedSegment = pendingAudioOffsetSegmentRef.current === selectedGeneratedAudioTrack.segmentId;
-        if (!applyPendingAudioOffset() && !restoringSelectedSegment) {
-          audio.currentTime = audioTimestampStartMs(firstTimestamp) / 1000;
-        }
+        applyPendingAudioOffset();
         tickGeneratedHighlight();
-        audio.play().catch(() => {
-          audioIntentStartedAtRef.current = 0;
-          setGeneratedAudioActive(false);
-          setTtsActive(false);
-          setTtsPaused(false);
-          toast.error('Generated audiobook could not start in this browser.');
-        });
       });
     });
     return true;
@@ -2237,7 +2246,7 @@ export default function Reader() {
     const audio = generatedAudioRef.current;
     if (!audio) return;
     audio.playbackRate = Math.max(0.7, Math.min(1.8, Number(ttsSpeed) || 1));
-    audio.play().then(() => {
+    requestAudiobookPlayback(audio).then(() => {
       setGeneratedAudioActive(true);
       setTtsActive(true);
       setTtsPaused(false);
@@ -2336,7 +2345,7 @@ export default function Reader() {
   const resumeTTS = () => {
     if (generatedAudioActive) {
       audioIntentStartedAtRef.current = readerNowMs();
-      generatedAudioRef.current?.play?.().catch(() => {
+      requestAudiobookPlayback(generatedAudioRef.current).catch(() => {
         audioIntentStartedAtRef.current = 0;
         toast.error('Generated audiobook could not resume.');
       });

@@ -1368,8 +1368,19 @@
       "browser_audio_start_latency_ms": 144.4,
       "narration_disclosure": "Narration: AI voice",
       "ten_of_ten_claimed": false,
-      "audiobook_next_action": "Begin the Sredni Vashtar package-v2 preparation audit with: PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug sredni-vashtar",
+      "audiobook_next_action": "Merge and deploy the one-click Reader playback repair, then verify one explicit Play click starts the active package-v2 audio while pre-intent src remains absent; resume Sredni Vashtar migration after that playback proof.",
       "production_release_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_production_release_proof.json",
+      "reader_one_click_playback_followup": {
+        "observed_at": "2026-07-30T09:00:51Z",
+        "production_observation": "First Play assigned package-v2 src and loaded to readyState 4 but stayed paused; second Play started playback.",
+        "root_cause": "The synchronized Reader path called play only after two animation frames, outside the reliable transient user-activation window.",
+        "fix_branch": "codex/reader-one-click-package-playback",
+        "fix_status": "LOCAL_TEST_AND_BUILD_PASS_AWAITING_DEPLOYMENT",
+        "preintent_src_absent_preserved": true,
+        "service_worker_audio_cache_changed": false,
+        "release_truth_changed": false,
+        "browser_revalidation_required": true
+      },
       "package_v2_canary": {
         "active_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
         "candidate_release_descriptor_sha256": null,
