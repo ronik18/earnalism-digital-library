@@ -1713,3 +1713,21 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The next safe boundary is commit, merge, deploy and production cover proof.
   Only then may the already-selected Charon full-title lane acquire the paid
   lock and generate one source-bound candidate.
+
+## 2026-07-30 — Public catalog must not let a same-slug Mongo row shadow controlled covers
+
+- The Jekyll cover pair was correct in the controlled publication, reader, and
+  curated Home paths, but `/api/books` and `/api/books/jekyll-and-hyde`
+  accepted a live-looking Mongo record first. Blank or stale cover values could
+  therefore override the exact promoted cover pair on public catalog routes.
+- Public list and detail records now start from the validated controlled
+  artifact. Only the existing explicit Home/editorial curation allowlist may
+  be restored from Mongo; cover, reader, rights, and audio fields may not.
+- Starting from the artifact instead of overlaying it onto the database row is
+  important: canonical absence is meaningful for hidden audio and cannot
+  inherit stale approval-looking database fields.
+- Public catalog and Home cache keys rotate through `controlled-covers-v1`.
+  Reader and audiobook manifest caching remains on `audio-contract-v13`.
+- Focused catalog, cover, publication, and audio-safety tests passed `65/65`.
+  The standalone B2/audio-routing suite passed `29/29`. No media, storage,
+  provider, audiobook approval, reader approval, or paid-lock state changed.
