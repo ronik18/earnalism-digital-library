@@ -145,7 +145,7 @@ class GoogleEnglishFullCandidateQATests(unittest.TestCase):
 
     def test_passing_candidate_uses_schema3_and_measured_section_sync(self) -> None:
         code, result = self.evaluate()
-        self.assertEqual(code, 0)
+        self.assertEqual(code, 0, result)
         self.assertEqual(result["status"], "FULL_CANDIDATE_QA_PASS_PRIVATE_ONLY")
         self.assertTrue(result["objective_qa"]["construction"]["first_words_match"])
         self.assertTrue(result["objective_qa"]["construction"]["last_words_match"])
@@ -170,6 +170,60 @@ class GoogleEnglishFullCandidateQATests(unittest.TestCase):
         )
         self.assertEqual(result["provider_call_count"], qa.LISTENING_SAMPLE_COUNT)
         self.assertFalse(result["public_release_approved"])
+
+    def test_live_listening_blocks_without_paid_lock_before_client_creation(
+        self,
+    ) -> None:
+        output = self.run_dir / "full_candidate_qa_no_lock.json"
+        code, result = qa.evaluate(
+            self.manifest_path,
+            output,
+            env=self.env,
+            judge=self.passing_judge,
+            client=None,
+            duration_probe=self.duration_probe,
+        )
+        self.assertEqual(code, 2)
+        self.assertEqual(result["status"], "BLOCKED_BEFORE_LISTENING_QA")
+        self.assertIn("BLOCKED_PAID_LOCK", result["blockers"][0])
+        self.assertFalse(result["provider_calls_ran"])
+
+    def test_paid_lock_is_restored_byte_for_byte_after_six_samples(self) -> None:
+        lock_path = self.run_dir / "paid_tts.lock"
+        original = (
+            json.dumps(
+                {
+                    "status": "active",
+                    "current_holder": "none",
+                    "allowed_next_holders": [],
+                    "allowed_slugs": [self.manifest["slug"]],
+                    "budget_cap_usd": 75,
+                },
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n"
+        ).encode()
+        lock_path.write_bytes(original)
+        output = self.run_dir / "full_candidate_qa_with_lock.json"
+        code, result = qa.evaluate(
+            self.manifest_path,
+            output,
+            env=self.env,
+            judge=self.passing_judge,
+            client=object(),
+            duration_probe=self.duration_probe,
+            paid_lock_path=lock_path,
+        )
+        self.assertEqual(code, 0, result)
+        self.assertTrue(result["paid_lock_touched"])
+        self.assertTrue(result["paid_lock_read_or_written"])
+        self.assertTrue(result["paid_lock_restored_byte_for_byte"])
+        self.assertEqual(
+            result["paid_lock_sha256_before"],
+            result["paid_lock_sha256_after"],
+        )
+        self.assertEqual(lock_path.read_bytes(), original)
 
     def test_source_hash_tamper_blocks_before_judge(self) -> None:
         self.source_path.write_text(self.source + "tampered", encoding="utf-8")

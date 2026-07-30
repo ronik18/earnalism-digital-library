@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 import hashlib
 import json
 import math
@@ -91,6 +92,91 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def sha256_bytes(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
+
+
+def atomic_write_bytes(path: Path, value: bytes) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    temporary.write_bytes(value)
+    os.replace(temporary, path)
+
+
+def validate_paid_lock(path: Path, slug: str) -> tuple[bytes, dict[str, Any]]:
+    resolved = path.expanduser().resolve()
+    try:
+        original = resolved.read_bytes()
+        payload = json.loads(original)
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise CandidateQAError(
+            "BLOCKED_PAID_LOCK",
+            "paid lock must be readable UTF-8 JSON",
+        ) from exc
+    require(
+        isinstance(payload, dict) and payload.get("status") == "active",
+        "BLOCKED_PAID_LOCK",
+        "paid lock must remain active",
+    )
+    require(
+        payload.get("current_holder") == "none",
+        "BLOCKED_PAID_LOCK",
+        "paid lock already has a holder",
+    )
+    require(
+        payload.get("allowed_next_holders", []) == [],
+        "BLOCKED_PAID_LOCK",
+        "paid lock allowed_next_holders must be empty",
+    )
+    allowed = payload.get("allowed_slugs")
+    require(
+        isinstance(allowed, list) and slug in allowed,
+        "BLOCKED_PAID_LOCK",
+        f"paid lock does not allow slug {slug}",
+    )
+    return original, payload
+
+
+@contextmanager
+def paid_lock_guard(
+    path: Path,
+    *,
+    slug: str,
+    candidate_binding_sha256: str,
+    estimated_usd: float,
+):
+    resolved = path.expanduser().resolve()
+    original, payload = validate_paid_lock(resolved, slug)
+    acquired = {
+        **payload,
+        "current_holder": f"sprint1_google_english_full_candidate_qa:{slug}",
+        "allowed_next_holders": [],
+        "approved_scope": (
+            "Private six-sample full-title OpenAI listening QA only; "
+            f"candidate binding {candidate_binding_sha256}; no synthesis, upload, "
+            "publication, or release mutation."
+        ),
+        "estimated_cost_usd": estimated_usd,
+    }
+    atomic_write_bytes(
+        resolved,
+        json.dumps(acquired, ensure_ascii=False, indent=2, sort_keys=True).encode(
+            "utf-8"
+        )
+        + b"\n",
+    )
+    try:
+        yield {
+            "paid_lock_touched": True,
+            "paid_lock_read_or_written": True,
+            "paid_lock_sha256_before": sha256_bytes(original),
+        }
+    finally:
+        atomic_write_bytes(resolved, original)
+        if resolved.read_bytes() != original:
+            raise RuntimeError("paid lock was not restored byte-for-byte")
 
 
 def sha256_json(payload: Any) -> str:
@@ -638,6 +724,9 @@ def base_result(evidence: CandidateEvidence) -> dict[str, Any]:
         "release_mutation_performed": False,
         "provider_calls_ran": False,
         "provider_call_count": 0,
+        "paid_lock_touched": False,
+        "paid_lock_read_or_written": False,
+        "paid_lock_restored_byte_for_byte": True,
         "actual_provider_billing": "NOT_REPORTED",
         "blockers": [],
     }
@@ -834,6 +923,7 @@ def evaluate(
     judge: Callable[[Any, Any, dict[str, Any]], dict[str, Any]] = judge_audio_sample_with_openai,
     client: Any | None = None,
     duration_probe: Callable[[Path], float] = ffprobe_duration,
+    paid_lock_path: Path | None = None,
 ) -> tuple[int, dict[str, Any]]:
     manifest_path = manifest_path.expanduser().resolve()
     output_path = output_path.expanduser().resolve()
@@ -894,6 +984,37 @@ def evaluate(
         atomic_write_json(output_path, result)
         return 2, result
 
+    lock_validation: tuple[bytes, dict[str, Any]] | None = None
+    if paid_lock_path is None and client is None:
+        result.update(
+            {
+                "status": "BLOCKED_BEFORE_LISTENING_QA",
+                "blockers": [
+                    "BLOCKED_PAID_LOCK: --paid-lock is required for live listening QA"
+                ],
+                "listening_samples": samples,
+            }
+        )
+        atomic_write_json(output_path, result)
+        return 2, result
+    if paid_lock_path is not None:
+        try:
+            lock_validation = validate_paid_lock(
+                paid_lock_path,
+                str(evidence.manifest.get("slug") or ""),
+            )
+        except (CandidateQAError, OSError) as exc:
+            blocker = exc.blocker if isinstance(exc, CandidateQAError) else str(exc)
+            result.update(
+                {
+                    "status": "BLOCKED_BEFORE_LISTENING_QA",
+                    "blockers": [blocker],
+                    "listening_samples": samples,
+                }
+            )
+            atomic_write_json(output_path, result)
+            return 2, result
+
     if client is None:
         try:
             from openai import OpenAI
@@ -919,26 +1040,54 @@ def evaluate(
     judged_samples: list[dict[str, Any]] = []
     judgment_blockers: list[str] = []
     provider_call_count = 0
-    for sample in samples:
-        try:
-            judged = judge(client, args, dict(sample))
-            provider_call_count += 1
-            if not isinstance(judged, dict):
-                raise TypeError("judge returned a non-object result")
-            normalized, blockers = normalize_judgment(sample, judged)
-        except Exception as exc:  # noqa: BLE001
-            provider_call_count += 1
-            normalized = {
-                **sample,
-                "scores": {},
-                "judge_flags": {},
-                "frontmatter_present": True,
-                "notes": f"listening judge failed: {exc}",
-                "blocker_reason": "LISTENING_QA_NOT_RUN",
-            }
-            blockers = [f"{sample['sample_label']}: LISTENING_QA_NOT_RUN: {exc}"]
-        judged_samples.append(normalized)
-        judgment_blockers.extend(blockers)
+    lock_result = {
+        "paid_lock_touched": False,
+        "paid_lock_read_or_written": False,
+        "paid_lock_restored_byte_for_byte": True,
+    }
+
+    def judge_samples() -> None:
+        nonlocal provider_call_count
+        for sample in samples:
+            try:
+                judged = judge(client, args, dict(sample))
+                provider_call_count += 1
+                if not isinstance(judged, dict):
+                    raise TypeError("judge returned a non-object result")
+                normalized, blockers = normalize_judgment(sample, judged)
+            except Exception as exc:  # noqa: BLE001
+                provider_call_count += 1
+                normalized = {
+                    **sample,
+                    "scores": {},
+                    "judge_flags": {},
+                    "frontmatter_present": True,
+                    "notes": f"listening judge failed: {exc}",
+                    "blocker_reason": "LISTENING_QA_NOT_RUN",
+                }
+                blockers = [f"{sample['sample_label']}: LISTENING_QA_NOT_RUN: {exc}"]
+            judged_samples.append(normalized)
+            judgment_blockers.extend(blockers)
+
+    if paid_lock_path is not None:
+        assert lock_validation is not None
+        original_lock = lock_validation[0]
+        with paid_lock_guard(
+            paid_lock_path,
+            slug=str(evidence.manifest.get("slug") or ""),
+            candidate_binding_sha256=evidence.candidate_binding_sha256,
+            estimated_usd=float(budget.get("estimated_usd") or 0.0),
+        ) as acquired:
+            lock_result.update(acquired)
+            judge_samples()
+        lock_result["paid_lock_restored_byte_for_byte"] = (
+            paid_lock_path.expanduser().resolve().read_bytes() == original_lock
+        )
+        lock_result["paid_lock_sha256_after"] = sha256_bytes(
+            paid_lock_path.expanduser().resolve().read_bytes()
+        )
+    else:
+        judge_samples()
 
     policy_name = process_env["EARNALISM_LISTENING_POLICY_VERSION"]
     listening_report, listening_blockers = build_listening_report(
@@ -959,6 +1108,7 @@ def evaluate(
             "listening_quality_report": listening_report,
             "provider_calls_ran": provider_call_count > 0,
             "provider_call_count": provider_call_count,
+            **lock_result,
             "blockers": listening_blockers,
         }
     )
@@ -970,12 +1120,17 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--full-manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--paid-lock", type=Path, required=True)
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    returncode, result = evaluate(args.full_manifest, args.output)
+    returncode, result = evaluate(
+        args.full_manifest,
+        args.output,
+        paid_lock_path=args.paid_lock,
+    )
     print(
         json.dumps(
             {
