@@ -1608,3 +1608,23 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   five-percent checkpoint must separately exercise deterministic candidate
   and legacy identities, both segments and timestamp sidecars, and a real
   candidate-browser transition before any wider rollout.
+
+## 2026-07-30 — Prepare the first cohort with exact deterministic identities
+
+- A Ghost Story moved from zero to five percent only after its exact
+  zero-percent production deployment, HTTP matrix and one-click legacy
+  browser checkpoint were green and committed.
+- The guarded rollout operation changed only the percentage and regenerated
+  matching checksums in the two controlled-publication mirrors. It did not
+  change the active legacy descriptor, package candidate, rollout salt,
+  receipts, narration, approval truth or public count.
+- Cookie identity `a-ghost-story-canary-identity-000059` maps to bucket `3`
+  and therefore selects the package candidate at five percent. Identity
+  `a-ghost-story-canary-identity-000000` maps to bucket `47` and remains the
+  legacy control.
+- No-cookie requests are unsuitable for deterministic proof because the
+  backend creates a random sticky identity.
+- The canary is not production-green until both deterministic cohorts pass
+  their exact manifest, Range, timestamp and negative-route matrices and the
+  customer browser proves package playback without hidden preloading or
+  errors.

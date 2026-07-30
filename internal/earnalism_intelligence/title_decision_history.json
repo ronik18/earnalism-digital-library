@@ -13,23 +13,23 @@
   },
   "titles": {
     "a-ghost-story": {
-      "latest_decision": "PACKAGE_V2_ZERO_PERCENT_PRODUCTION_GREEN",
-      "decision_reason": "The exact zero-percent merge passed both main workflows, deployed successfully to Railway, passed the 18-of-18 fail-closed HTTP matrix, and preserved one-click legacy browser playback with no pre-intent audio source or browser errors. The package candidate remains dark and the approved legacy descriptor remains active.",
-      "updated_at": "2026-07-30T11:39:35Z",
+      "latest_decision": "PACKAGE_V2_FIVE_PERCENT_CANARY_PREPARED",
+      "decision_reason": "After the production-green zero-percent checkpoint, the guarded rollout tool changed only the deterministic candidate percentage from zero to five. The approved legacy descriptor remains active, the exact package candidate and receipts remain unchanged, and production candidate/control validation is required after deployment before any wider rollout.",
+      "updated_at": "2026-07-30T11:46:27Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
-      "public_audio_status": "APPROVED_LIVE_LEGACY_DELIVERY",
+      "public_audio_status": "APPROVED_LIVE_FIVE_PERCENT_PACKAGE_V2_CANARY_PREPARED",
       "narrated_manuscript_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
       "canonical_source_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
       "approved_audio_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
       "package_v2_release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
       "package_v2_version": "sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422",
       "package_v2_segment_count": 2,
-      "package_v2_rollout_percentage": 0,
+      "package_v2_rollout_percentage": 5,
       "package_v2_storage_status": "PRODUCTION_AND_DR_FULL_DOWNLOAD_VERIFIED",
       "package_v2_release_blockers": [],
       "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_a_ghost_story_20260730.json",
-      "audiobook_next_action": "Prepare a separate five-percent pointer-only canary and, after merge/deploy, prove deterministic candidate and legacy cohorts, both package segments and timestamp sidecars, invalid/stale/cross-title failures, the exact four-title public count, and candidate cross-segment browser playback before advancing."
+      "audiobook_next_action": "Merge and deploy the isolated five-percent canary, then prove deterministic candidate and legacy cohorts, both package segments and timestamp sidecars, invalid/stale/unknown/cross-title failures, the exact four-title public count, and candidate browser playback before advancing."
     },
     "alices-adventures-in-wonderland": {
       "latest_decision": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_REPRESENTATIVE_ASR_REPAIR_FAILURE",
