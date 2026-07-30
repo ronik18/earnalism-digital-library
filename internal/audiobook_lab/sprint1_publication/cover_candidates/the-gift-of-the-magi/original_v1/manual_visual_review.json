@@ -1,0 +1,60 @@
+{
+  "schema_version": "earnalism.private_cover_manual_visual_review.v3",
+  "reviewed_at": "2026-07-30T14:05:00Z",
+  "slug": "the-gift-of-the-magi",
+  "title": "The Gift of the Magi",
+  "author": "O. Henry",
+  "artifacts": {
+    "front_master": {
+      "path": "the-gift-of-the-magi-front-original-v1.jpg",
+      "sha256": "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+      "width": 1600,
+      "height": 2400
+    },
+    "back_master": {
+      "path": "the-gift-of-the-magi-back-original-v1.jpg",
+      "sha256": "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
+      "width": 1600,
+      "height": 2400
+    },
+    "front_thumbnail": {
+      "path": "derivatives/the-gift-of-the-magi-front-thumbnail-original-v1.webp",
+      "sha256": "201837cc9768a8ec0ea5b650e6919748e47017471908a58d5d271d33e7a796ef",
+      "width": 320,
+      "height": 480
+    },
+    "back_thumbnail": {
+      "path": "derivatives/the-gift-of-the-magi-back-thumbnail-original-v1.webp",
+      "sha256": "3e8b584ec07d490a4faf87beb84950399557c956ce1cc19452c12dd1bdf51fe9",
+      "width": 320,
+      "height": 480
+    }
+  },
+  "review": {
+    "exact_title_pass": true,
+    "exact_author_pass": true,
+    "exact_back_description_pass": true,
+    "front_composition_pass": true,
+    "back_composition_pass": true,
+    "thumbnail_legibility_pass": true,
+    "contrast_pass": true,
+    "safe_margins_pass": true,
+    "text_overlap_absent": true,
+    "text_truncation_absent": true,
+    "reader_facing_internal_copy_absent": true,
+    "third_party_image_assets_absent": true,
+    "generated_image_model_output_absent": true,
+    "placeholder_art_absent": true,
+    "territorial_rights_caveat_absent": true,
+    "story_symbolism_pass": true
+  },
+  "rights_basis": "Earnalism-created deterministic graphical composition using only programmatic primitives, controlled-catalog text, and rasterized system typography; no external image asset or generated-image model output.",
+  "decision": {
+    "private_candidate_visual_gate": "PASS",
+    "editorial_decision": "APPROVE_EXACT_HASH_BOUND_PAIR",
+    "rights_decision": "CLEAR_FOR_EARNALISM_COMMERCIAL_USE",
+    "admin_upload_authorized": true,
+    "canonical_promotion_authorized_after_remote_checksum_match": true,
+    "audio_release_truth_change_authorized": false
+  }
+}

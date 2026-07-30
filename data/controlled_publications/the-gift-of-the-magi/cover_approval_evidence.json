@@ -1,0 +1,107 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "the-gift-of-the-magi",
+  "active_approvals": {
+    "front": "5443d02b-c38d-45e6-8165-6d58de653357",
+    "back": "801129ba-7335-4452-a789-5c6589c0ee2c"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "5443d02b-c38d-45e6-8165-6d58de653357",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+        "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+        "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+        "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+        "thumbnail_url": null,
+        "blur_placeholder": null,
+        "dominant_color": "#4A1C27",
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_dimensions": {
+          "front": [
+            1600,
+            2400
+          ],
+          "back": [
+            1600,
+            2400
+          ]
+        }
+      }
+    },
+    "back": {
+      "from_event_id": "801129ba-7335-4452-a789-5c6589c0ee2c",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275487/earnalism/covers/back/the-gift-of-the-magi_back_1600x2400.png",
+        "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275487/earnalism/covers/back/the-gift-of-the-magi_back_1600x2400.png",
+        "back_cover_thumbnail_url": null,
+        "back_cover_blur_placeholder": null,
+        "back_cover_dominant_color": null,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_dimensions": {
+          "front": [
+            1600,
+            2400
+          ],
+          "back": [
+            1600,
+            2400
+          ]
+        }
+      }
+    }
+  },
+  "history": [
+    {
+      "event_id": "5443d02b-c38d-45e6-8165-6d58de653357",
+      "slug": "the-gift-of-the-magi",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+      "remote_sha256": "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+        "public_id": "earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+        "version": "1785420596",
+        "version_id": "633193baa6dcfef853a94a971fcf1d1a",
+        "resource_type": "image",
+        "format": "jpg"
+      },
+      "width": 1600,
+      "height": 2400,
+      "approved_at": "2026-07-30T14:10:05Z",
+      "approved_by": "sales@reoenterprise.org",
+      "approval_note": "Exact original-v1 front visually reviewed, OCR-verified, and approved for the canonical Gift of the Magi edition.",
+      "rights_basis": "Earnalism-created deterministic graphical composition using only programmatic primitives, controlled-catalog text, and rasterized system typography; no external image asset or generated-image model output.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "7e534eb34a648d236fdb0f2133e02cab3c3d9d6f0d25f0a48f2ef37c0c84cf06"
+    },
+    {
+      "event_id": "801129ba-7335-4452-a789-5c6589c0ee2c",
+      "slug": "the-gift-of-the-magi",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
+      "remote_sha256": "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+        "public_id": "earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
+        "version": "1785420605",
+        "version_id": "69c401d023275f46a5dbf02d7217afa8",
+        "resource_type": "image",
+        "format": "jpg"
+      },
+      "width": 1600,
+      "height": 2400,
+      "approved_at": "2026-07-30T14:10:11Z",
+      "approved_by": "sales@reoenterprise.org",
+      "approval_note": "Exact original-v1 back visually reviewed, OCR-verified, and approved for the canonical Gift of the Magi edition.",
+      "rights_basis": "Earnalism-created deterministic graphical composition using only programmatic primitives, controlled-catalog text, and rasterized system typography; no external image asset or generated-image model output.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "9a5ebca07f56961542da48d459292ffa61937c608eb116e89803107886b4cfc2"
+    }
+  ],
+  "updated_at": "2026-07-30T14:10:11Z"
+}

@@ -1868,3 +1868,19 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   publication mutation. ASR 9.7, coverage 0.98, exact ordered content,
   measured sync, rights, covers, primary/DR receipts, endpoint and browser
   proof remain unchanged.
+## 2026-07-30 — The Gift of the Magi cover-truth repair
+
+- A technically valid 1600×2400 cover can still be customer-invalid when it
+  exposes release-operations language or renders truncated back-cover copy.
+  Dimension and URL checks are necessary, but not sufficient.
+- The fastest safe repair was an original deterministic composition using only
+  programmatic watch, chain, comb, ribbon, frame, and star-field primitives,
+  with exact title, author, and short description loaded from both controlled
+  publication mirrors.
+- Run accurate OCR against both master files after visual review. For this pair
+  macOS Vision recovered the complete normalized front and back copy exactly,
+  proving that the sentence is neither clipped nor overlapped.
+- Keep upload and canonicalization separate: upload immutable content-addressed
+  Cloudinary candidates, download and verify each full SHA-256, then use the
+  controlled promotion transaction. Cover approval does not approve audio; Gift
+  remains reader-live and audio-hidden.

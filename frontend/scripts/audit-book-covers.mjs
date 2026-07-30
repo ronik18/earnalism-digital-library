@@ -30,7 +30,6 @@ const VISUAL_COVER_EXCLUSIONS = new Map([
   ["dsires-baby", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
   ["sredni-vashtar", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
   ["the-cop-and-the-anthem", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
-  ["the-gift-of-the-magi", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
   ["the-open-window", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
 ]);
 
@@ -435,6 +434,13 @@ for (const entry of [
 }
 
 const rows = Array.from(entriesBySlug.values()).map(rowFor).sort((a, b) => a.slug.localeCompare(b.slug));
+const generatedCoverSlugs = rows
+  .filter((row) => (
+    /\/cover_candidate_controlled-[^/]+-[a-f0-9]{64}\.(?:jpe?g|png|webp)(?:[?#].*)?$/i.test(row.current_front_cover_url_or_path)
+    && /\/back_cover_candidate_controlled-[^/]+-[a-f0-9]{64}\.(?:jpe?g|png|webp)(?:[?#].*)?$/i.test(row.current_back_cover_url_or_path)
+  ))
+  .map((row) => row.slug);
+const generatedCoverSlugSet = new Set(generatedCoverSlugs);
 const booksBySlug = new Map(Array.from(entriesBySlug.values()).map((entry) => [
   normalizeSlug(entry.book?.slug || entry.book?.id || path.basename(path.dirname(entry.sourcePath))),
   entry.book || {},
@@ -466,8 +472,14 @@ fs.writeFileSync(inventoryCsvOut, `${csv}\n`);
 fs.writeFileSync(briefsJsonOut, `${JSON.stringify({ generated_at: summary.generated_at, briefs }, null, 2)}\n`);
 const generationReport = `${JSON.stringify({
   generated_at: summary.generated_at,
-  generated_covers: [],
-  reused_covers: rows.filter((row) => !row.front_uses_runtime_fallback && !row.back_uses_runtime_fallback).map((row) => row.slug),
+  generated_covers: generatedCoverSlugs,
+  reused_covers: rows
+    .filter((row) => (
+      !row.front_uses_runtime_fallback
+      && !row.back_uses_runtime_fallback
+      && !generatedCoverSlugSet.has(row.slug)
+    ))
+    .map((row) => row.slug),
   runtime_graphical_fallbacks: rows.filter((row) => row.front_uses_runtime_fallback || row.back_uses_runtime_fallback).map((row) => ({
     slug: row.slug,
     front: row.front_uses_runtime_fallback,
@@ -482,7 +494,9 @@ const generationReport = `${JSON.stringify({
       reason: row.cover_visual_exclusion_reason || "Cover failed visual truth review.",
     })),
   skipped: [],
-  performance_budget_status: "PASS; no raster generation and no new heavy assets",
+  performance_budget_status: generatedCoverSlugs.length
+    ? "PASS; content-addressed promoted originals and delivery derivatives remain within approved asset budgets"
+    : "PASS; no raster generation and no new heavy assets",
   manual_review_recommended: rows.some((row) => row.front_cover_status === "GRAPHICAL_COVER_REPAIR_REQUIRED" || row.back_cover_status === "GRAPHICAL_COVER_REPAIR_REQUIRED"),
 }, null, 2)}\n`;
 fs.writeFileSync(generationJsonOut, generationReport);

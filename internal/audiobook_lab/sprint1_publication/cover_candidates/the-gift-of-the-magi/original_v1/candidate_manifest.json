@@ -1,0 +1,116 @@
+{
+  "schema_version": "earnalism.private_cover_candidate.v3",
+  "status": "PRIVATE_CANDIDATE_APPROVED_FOR_ADMIN_UPLOAD",
+  "generated_at": "2026-07-30T14:00:00Z",
+  "slug": "the-gift-of-the-magi",
+  "title": "The Gift of the Magi",
+  "author": "O. Henry",
+  "generation_mode": "deterministic_original_programmatic_graphical_composition",
+  "rights": {
+    "status": "ORIGINAL_COMPOSITION_NO_THIRD_PARTY_ART",
+    "external_image_assets": [],
+    "generated_image_model": null,
+    "territorial_restriction": null,
+    "commercial_use_blocker": null
+  },
+  "copy": {
+    "title": "The Gift of the Magi",
+    "title_source": "controlled_catalog.title",
+    "title_sha256": "31980e1845555b85cf50f0f6ddf1551e95492101dbb4db93e7b38eebf1301203",
+    "author": "O. Henry",
+    "author_source": "controlled_catalog.author",
+    "author_sha256": "ff81ef8a7225c1061a275900d977e2d423d72770aae1b74a22638a3473450719",
+    "back_description": "A poor couple each secretly sell their most prized possession to buy a Christmas gift for the other.",
+    "back_description_source": "controlled_catalog.short_description",
+    "back_description_sha256": "203375cfe913df005365de9c57e44e651e601baecafc981a5d97e39dd9186b33",
+    "reader_facing_internal_language_rendered": false
+  },
+  "front": {
+    "path": "the-gift-of-the-magi-front-original-v1.jpg",
+    "sha256": "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 438699,
+    "aspect_ratio": 0.6667,
+    "thumbnail": {
+      "path": "derivatives/the-gift-of-the-magi-front-thumbnail-original-v1.webp",
+      "sha256": "201837cc9768a8ec0ea5b650e6919748e47017471908a58d5d271d33e7a796ef",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 22856,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "feature": {
+      "path": "derivatives/the-gift-of-the-magi-front-feature-original-v1.webp",
+      "sha256": "bd89ebf2df6063fd55f83d45e5f20795506e53cfa1483696f9a9fc2d264ef86b",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 71508,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    }
+  },
+  "back": {
+    "path": "the-gift-of-the-magi-back-original-v1.jpg",
+    "sha256": "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 377479,
+    "aspect_ratio": 0.6667,
+    "thumbnail": {
+      "path": "derivatives/the-gift-of-the-magi-back-thumbnail-original-v1.webp",
+      "sha256": "3e8b584ec07d490a4faf87beb84950399557c956ce1cc19452c12dd1bdf51fe9",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 17892,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "feature": {
+      "path": "derivatives/the-gift-of-the-magi-back-feature-original-v1.webp",
+      "sha256": "2f195720685c68a1ab80c9850a5adc8b78e386dab5f1d46a3bbb5039be06db57",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 57950,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    }
+  },
+  "catalog_hashes": {
+    "data/controlled_publications/the-gift-of-the-magi/public_book.json": "e596345d435bd0db62ab05f4ca29e75996260e5e9d9fcb6b5177194d02bc0e01",
+    "backend/data/controlled_publications/the-gift-of-the-magi/public_book.json": "e596345d435bd0db62ab05f4ca29e75996260e5e9d9fcb6b5177194d02bc0e01"
+  },
+  "review": {
+    "manual_visual_review_status": "PASS",
+    "copy_proofread_status": "PASS_EXACT_CONTROLLED_COPY",
+    "ocr_status": "PASS_MACOS_VISION_ACCURATE",
+    "owner_editorial_review_required": false,
+    "admin_upload_status": "UPLOADED_CHECKSUM_VERIFIED",
+    "canonical_promotion_status": "PROMOTED"
+  },
+  "constraints": {
+    "private_only": false,
+    "public_catalog_mutated": true,
+    "reader_state_mutated": false,
+    "audiobook_release_state_mutated": false,
+    "ai_generated_imagery": false,
+    "placeholder_art": false,
+    "public_upload_authorized": true,
+    "canonical_promotion_authorized": true
+  }
+}

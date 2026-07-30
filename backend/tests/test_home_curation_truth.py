@@ -46,9 +46,9 @@ def test_home_curated_payload_is_deterministic_and_tracks_32_reader_titles():
         "sprint1_active_count": 32,
         "reader_enabled_count": 32,
         "approved_audiobook_count": 4,
-        "cover_eligible_count": 15,
-        "hero_carousel_eligible_count": 15,
-        "omitted_visual_count": 17,
+        "cover_eligible_count": 16,
+        "hero_carousel_eligible_count": 16,
+        "omitted_visual_count": 16,
     }
     assert first["hero"]["primary_cta"] == {"label": "Start Reading", "url": "/library"}
     assert first["hero"]["secondary_cta"]["url"] == "/library?availability=approved-audiobook"
@@ -133,7 +133,8 @@ def test_cover_visual_exclusion_report_is_bundled_for_backend_deployments():
         if row.get("front") is True
     }
     assert "book-2b9853ec52" in excluded_slugs
-    assert "the-gift-of-the-magi" in excluded_slugs
+    assert "the-gift-of-the-magi" not in excluded_slugs
+    assert "the-gift-of-the-magi" in report["generated_covers"]
 
 
 def test_missing_root_report_falls_back_to_bundled_backend_report(monkeypatch):

@@ -2031,7 +2031,25 @@
       "plateau_confirmed": false,
       "completed_attempts_must_not_repeat": true,
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_cosyvoice3_bf16_v390_section13_20260728.json",
-      "audiobook_next_action": "Keep Gift audio-hidden. Do not repeat the CosyVoice3 fingerprint or spend on its listening QA. Accept only a complete exact source-bound narration or licensed-audio delivery through the existing packet, then run full ASR, listening, measured-sync, checksum, metadata, endpoint, and browser gates."
+      "audiobook_next_action": "Keep Gift audio-hidden. Do not repeat the CosyVoice3 fingerprint or spend on its listening QA. Accept only a complete exact source-bound narration or licensed-audio delivery through the existing packet, then run full ASR, listening, measured-sync, checksum, metadata, endpoint, and browser gates.",
+      "cover_repair_20260730": {
+        "status": "CANONICAL_ORIGINAL_GRAPHICAL_PAIR_COMPLETE",
+        "front_sha256": "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+        "back_sha256": "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
+        "dimensions": [
+          1600,
+          2400
+        ],
+        "generation_mode": "deterministic_original_programmatic_graphical_composition",
+        "ocr_proofread_status": "PASS_EXACT_CONTROLLED_COPY",
+        "internal_release_copy_absent": true,
+        "text_overlap_absent": true,
+        "text_truncation_absent": true,
+        "controlled_public_book_mirror_parity": true,
+        "reader_audio_release_truth_unchanged": true,
+        "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+        "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/the-gift-of-the-magi/original_v1/canonical_promotion_evidence.json"
+      }
     },
     "picture-of-dorian-gray": {
       "latest_decision": "NEXT_FOUR_LANE_RANK_1_SOURCE_PREFLIGHT_PASS_COVER_REVIEW_REQUIRED",
