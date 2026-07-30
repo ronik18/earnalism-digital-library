@@ -109,20 +109,24 @@ jobs:
       RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
       RAILWAY_ENVIRONMENT: ${{ vars.RAILWAY_ENVIRONMENT || 'production' }}
     steps:
-      - name: Check Railway deploy secrets
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+
+      - name: Check Railway deploy scope and secrets
         id: deploy-check
         shell: bash
         run: |
-          if [[ -n "${RAILWAY_TOKEN}" && -n "${RAILWAY_SERVICE_ID}" ]]; then
+          if git diff --quiet HEAD^ HEAD -- backend; then
+            echo "enabled=false" >> "${GITHUB_OUTPUT}"
+            echo "Railway deploy skipped: no backend files changed."
+          elif [[ -n "${RAILWAY_TOKEN}" && -n "${RAILWAY_SERVICE_ID}" ]]; then
             echo "enabled=true" >> "${GITHUB_OUTPUT}"
           else
             echo "enabled=false" >> "${GITHUB_OUTPUT}"
             echo "Railway deploy skipped: RAILWAY_TOKEN or RAILWAY_SERVICE_ID is missing."
           fi
-
-      - name: Checkout
-        if: steps.deploy-check.outputs.enabled == 'true'
-        uses: actions/checkout@v6
 
       - name: Install Railway CLI
         if: steps.deploy-check.outputs.enabled == 'true'
@@ -151,20 +155,24 @@ jobs:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE || vars.VERCEL_SCOPE || '' }}
     steps:
-      - name: Check Vercel deploy secrets
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+
+      - name: Check Vercel deploy scope and secrets
         id: vercel-check
         shell: bash
         run: |
-          if [[ -n "${VERCEL_TOKEN}" && -n "${VERCEL_ORG_ID}" && -n "${VERCEL_PROJECT_ID}" ]]; then
+          if git diff --quiet HEAD^ HEAD -- frontend; then
+            echo "enabled=false" >> "${GITHUB_OUTPUT}"
+            echo "Vercel frontend deploy skipped: no frontend files changed."
+          elif [[ -n "${VERCEL_TOKEN}" && -n "${VERCEL_ORG_ID}" && -n "${VERCEL_PROJECT_ID}" ]]; then
             echo "enabled=true" >> "${GITHUB_OUTPUT}"
           else
             echo "enabled=false" >> "${GITHUB_OUTPUT}"
             echo "Vercel frontend deploy skipped: VERCEL_TOKEN, VERCEL_ORG_ID, or VERCEL_PROJECT_ID is missing."
           fi
-
-      - name: Checkout
-        if: steps.vercel-check.outputs.enabled == 'true'
-        uses: actions/checkout@v6
 
       - name: Set up Node
         if: steps.vercel-check.outputs.enabled == 'true'
@@ -236,8 +244,7 @@ jobs:
       github.ref == 'refs/heads/main' &&
       needs.regression.result == 'success' &&
       needs.deploy.result == 'success' &&
-      needs.deploy_frontend.result == 'success' &&
-      needs.deploy_frontend.outputs.deployed == 'true'
+      needs.deploy_frontend.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
