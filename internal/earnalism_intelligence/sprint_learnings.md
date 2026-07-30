@@ -1755,3 +1755,25 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Focused catalog, cover, publication, and audio-safety tests passed `65/65`.
   The standalone B2/audio-routing suite passed `29/29`. No media, storage,
   provider, audiobook approval, reader approval, or paid-lock state changed.
+
+## 2026-07-30 — Approved controlled truth may authorize cover intake over stale Mongo metadata
+
+- The Tell-Tale Heart had a valid reader-live controlled publication with
+  approved rights evidence, while an older same-slug Mongo row lacked the
+  full rights-field projection. Cover intake stopped before Cloudinary rather
+  than falling through to the authoritative controlled artifact.
+- An eligible draft or fully rights-approved Mongo row still remains a valid
+  intake source. When a published Mongo row is incomplete, the resolver may
+  use the exact approved controlled artifact; when neither source is eligible,
+  the operation still fails before upload.
+- The exact Redon-derived front and back files passed full-resolution and
+  320 px review, then uploaded to content-addressed Cloudinary identities.
+  Canonical promotion re-downloaded both immutable objects and verified SHA-256
+  values `474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d`
+  and `540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d`.
+- Both controlled-publication mirrors and checksum manifests remain in exact
+  parity. Reader state stayed live; audiobook approval, media, endpoint truth,
+  and `paid_tts.lock` stayed unchanged and audio remains hidden.
+- Preserve dated missing-cover inventories as historical snapshots. Record a
+  new reconciliation artifact and remove the title only from current runtime
+  fallback evidence.

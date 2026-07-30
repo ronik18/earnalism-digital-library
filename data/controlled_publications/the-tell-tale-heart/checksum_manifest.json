@@ -1,14 +1,22 @@
 {
   "slug": "the-tell-tale-heart",
-  "generated_at": "2026-07-12T07:04:07Z",
+  "generated_at": "2026-07-30T14:06:24.686192+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
       "sha256": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a"
     },
     {
+      "file": "chapters/chapter-001.json",
+      "sha256": "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34"
+    },
+    {
       "file": "checksum_manifest.json",
       "sha256": "850318fc8f9f3eacad71306063bbbde6d4af9f04498377104930ac69baf451cd"
+    },
+    {
+      "file": "cover_approval_evidence.json",
+      "sha256": "2b60eeea9fb367b934d2c2170dd7002efb49130669f540e354c7504eea948c9e"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +24,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "ac9b41a69087591b3ccf6a8e889700b3d0f2cf3c268f5e2ae37ed02532e2e9f2"
+      "sha256": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb"
     },
     {
       "file": "reader_manifest.json",
@@ -25,10 +33,6 @@
     {
       "file": "source_evidence.json",
       "sha256": "ef61fdd5895cd352eba537b7ca83157882e851b9d78d029a33099080fd26f62c"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34"
     }
   ]
 }

@@ -1,0 +1,78 @@
+{
+  "schema_version": "earnalism.cover_canonical_promotion_evidence.v1",
+  "recorded_at": "2026-07-30T14:07:04Z",
+  "slug": "the-tell-tale-heart",
+  "title": "The Tell-Tale Heart",
+  "author": "Edgar Allan Poe",
+  "generation_mode": "deterministic_pillow_composition_over_verified_public_domain_art",
+  "rights_basis": {
+    "source_artist": "Odilon Redon",
+    "source_work": "The Tell-Tale Heart",
+    "source_work_year": 1883,
+    "source_art_sha256": "075f2c285d2f546076e8f1f50f03da43184f4c51d47746fbabc2358f9d37ed56",
+    "record_url": "https://commons.wikimedia.org/wiki/File:Odilon_Redon_-_The_Tell-Tale_Heart_-_1883.jpeg",
+    "rights_mark": "Public Domain Mark 1.0",
+    "commercial_reuse_allowed": true,
+    "derivative_use_allowed": true
+  },
+  "editorial_review": {
+    "full_resolution_reviewed": true,
+    "thumbnail_320px_reviewed": true,
+    "exact_title": true,
+    "exact_author": true,
+    "canonical_back_copy": true,
+    "internal_or_release_copy_absent": true,
+    "unsafe_or_fake_text_absent": true,
+    "text_clipping_absent": true,
+    "text_overlap_absent": true,
+    "decision": "APPROVE_CANONICAL_COVER"
+  },
+  "upload": {
+    "execution_surface": "localhost_only_operator_with_railway_injected_mongo_and_cloudinary_configuration",
+    "production_admin_upload_route_enabled": false,
+    "upload_eligibility_source": "controlled_publication",
+    "front": {
+      "sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 738942,
+      "status": "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW"
+    },
+    "back": {
+      "sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 349471,
+      "status": "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW"
+    }
+  },
+  "promotion": {
+    "execution_surface": "localhost_only_operator_against_clean_writable_git_worktree",
+    "front": {
+      "event_id": "0870fd3b-83fc-466a-866e-38fa9b27bf87",
+      "candidate_sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+      "remote_sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+      "canonical_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg"
+    },
+    "back": {
+      "event_id": "38cbaace-f513-47c6-b364-54e65e7af08d",
+      "candidate_sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+      "remote_sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+      "canonical_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg"
+    },
+    "front_status": "CANONICAL_READY",
+    "back_status": "CANONICAL_READY",
+    "cover_status": "COMPLETE",
+    "canonical_front_full_download_sha256_verified": true,
+    "canonical_back_full_download_sha256_verified": true,
+    "controlled_mirror_parity": true,
+    "checksum_manifests_valid": true,
+    "reader_audio_release_truth_unchanged": true
+  },
+  "audiobook": {
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+    "release_gate_changed": false,
+    "audio_assets_changed": false,
+    "paid_tts_lock_touched": false
+  }
+}

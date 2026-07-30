@@ -1,0 +1,50 @@
+{
+  "schema_version": "earnalism.catalog_cover_truth_reconciliation.v1",
+  "generated_at": "2026-07-30T14:07:04Z",
+  "slug": "the-tell-tale-heart",
+  "title": "The Tell-Tale Heart",
+  "author": "Edgar Allan Poe",
+  "previous_evidence": {
+    "path": "internal/earnalism_intelligence/catalog_truth/sprint1_missing_cover_inventory_20260728.json",
+    "front_status": "MISSING",
+    "back_status": "MISSING",
+    "historical_snapshot_preserved": true
+  },
+  "current_truth": {
+    "truth_source": "controlled_publications",
+    "front_status": "CANONICAL_READY",
+    "back_status": "CANONICAL_READY",
+    "cover_status": "COMPLETE",
+    "front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+    "back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg",
+    "front_sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+    "back_sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+    "dimensions": {
+      "front": [
+        1600,
+        2400
+      ],
+      "back": [
+        1600,
+        2400
+      ]
+    },
+    "controlled_public_book_sha256": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
+    "controlled_checksum_manifest_sha256": "920c2ef3850ce48603b464b2b471454d134b58d7a3820f0cf5913b2dcfbd340c",
+    "cover_approval_evidence_sha256": "2b60eeea9fb367b934d2c2170dd7002efb49130669f540e354c7504eea948c9e"
+  },
+  "validation": {
+    "exact_title_pass": true,
+    "exact_author_pass": true,
+    "full_resolution_visual_pass": true,
+    "thumbnail_visual_pass": true,
+    "source_rights_verified": true,
+    "remote_front_full_download_hash_match": true,
+    "remote_back_full_download_hash_match": true,
+    "controlled_mirror_parity": true,
+    "checksum_manifests_valid": true,
+    "reader_state_changed": false,
+    "audio_release_truth_changed": false
+  },
+  "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/the-tell-tale-heart/canonical_promotion_evidence.json"
+}
