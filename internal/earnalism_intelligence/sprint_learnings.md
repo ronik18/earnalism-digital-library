@@ -1404,6 +1404,62 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   one-click browser proof remains required because the browser runtime was not
   available in this isolated run.
 
+## 2026-07-30 — D19 Indic Parler generated one bounded private audition
+
+- The isolated runtime at
+  `/private/tmp/earnalism-d19-indic-parler-runtime` matched every pinned
+  package version and loaded `ai4bharat/indic-parler-tts` revision
+  `7b527af5ee8ed1f9a28d80b19703ed9bb8ba10ca` fully offline on MPS.
+- Attempt fingerprint
+  `0a5d983bf199e0288557c80840402a00f9160e17e533e327fdf950d81006c05a`
+  is consumed and must never be regenerated. Its code, runtime, model,
+  tokenizer, source passages, voice description, settings, seed, and output
+  policy are bound by generation-contract SHA-256
+  `11aabb9a1bbd82f7e0d675df605dd0d46bdfbae0e3465125c8a80206f964365f`.
+- Four exact source-bound representative passages generated four private mono
+  44.1 kHz PCM-16 WAV files. Independent hash checks matched the evidence:
+  `154ec9fc2aa3513e854d05ac78339994724d5f13858241387ae0658244c248ca`,
+  `ce1f1a95f84fa75a4c9a68c919d46b7149b2cb99df9fdea344445cfc5e0e64ad`,
+  `aedd8e20c12af01d513d39765d2a846a44d6c395a46cdd363215341fe133aac1`,
+  and
+  `70f1b9d4a277e9852750569bf985f70a7f180595ad97270a80387f3163db374a`.
+  Total duration is `99.300136` seconds and total audio size is `8,758,448`
+  bytes.
+- Objective container/codec validation is not content validation. ASR,
+  listening QA, measured sync, full-title generation, upload, endpoint,
+  browser, and release gates remain unrun. D19 remains audio-hidden and is not
+  release-ready.
+- The next safe stage is one new objective-ASR adapter that verifies these
+  four exact WAV hashes before decoding. It must fail closed on ASR/source
+  below `9.7`, coverage below `0.98`, first/last mismatch, or any missing,
+  duplicated, or reordered content. Do not synthesize timestamps or start
+  independent listening QA unless objective ASR passes.
+
+## 2026-07-30 — D19 Indic Parler fails objective source fidelity decisively
+
+- The four private WAV hashes were re-bound to the merged D19 source-passage
+  contract before offline decoding. Cached `mlx-whisper 0.4.3` used
+  `mlx-community/whisper-large-v3-turbo` revision
+  `a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb` with exact weights SHA-256
+  `951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6`,
+  Bengali language selection, temperature-zero greedy decoding, no prompt,
+  and no network model resolution.
+- Per-passage raw ASR/source scores were `0.8929`, `1.9643`, `0.7812`, and
+  `0.9231`. Strict ordered coverages were `0.0833`, `0.1818`, `0.0735`, and
+  `0.0822`. Every passage failed both first and last source boundaries.
+- The concatenated aggregate scored `1.2617` against the `9.7` requirement
+  with ordered coverage `0.1011` against `0.98`. Only `27` of `267` source
+  tokens aligned in strict order; `235` source tokens were missing, repeated
+  content was detected, and `100` unexpected tokens remained.
+- Bengali normalization and phonetic projection were diagnostic only. Their
+  aggregate scores (`3.134` and `3.619`) and projected coverage (`0.3619`)
+  also failed and cannot replace the mandatory raw audio-derived gate.
+- Stop this exact model/revision/voice/settings/passage fingerprint. Do not
+  spend on listening QA, widen to full-title synthesis, create estimated sync,
+  upload, or publish it. Keep D19 reader-live and audio-hidden; only a
+  materially different exact-source candidate may reopen the title, with the
+  existing human-narration packet retained as the deterministic fallback.
+
 ## 2026-07-30 — Keep lazy media source ownership outside React
 
 - Moving `play()` into the explicit click stack was necessary but not
