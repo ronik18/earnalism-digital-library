@@ -1380,3 +1380,26 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Dry preflight only produced source hashes, four-passage fingerprints, and
   cost arithmetic. No audio, provider call, upload, release mutation, public
   exposure, or paid-lock access occurred; production remains 4/32.
+
+## 2026-07-30 — Preserve user activation across lazy package-v2 playback
+
+- A media element may correctly have no `src` and transfer zero audio bytes
+  before intent, yet still require two clicks if `play()` is deferred through
+  animation frames. The first click can load the package to `readyState = 4`
+  after the browser's transient user activation has expired without starting
+  playback.
+- Keep source assignment, `load()`, and the first `play()` request in the
+  explicit Play handler's synchronous call stack. Word wrapping, DOM lookup,
+  and highlight rendering may remain deferred.
+- For synchronized pages, bind the page's measured timestamp offset before
+  requesting playback. If metadata is not ready, retain that offset and apply
+  it from `loadedmetadata` before media can start, preserving page-correct
+  playback without preloading audio.
+- Normalize both synchronous `play()` exceptions and asynchronous promise
+  rejections into one fail-closed path. The same guarded call now covers
+  package-v2, legacy approved audio, resume, and segment auto-advance.
+- Local validation passed 63 focused frontend tests and a production build.
+  Service-worker audiobook/Range bypass remains unchanged, and no private
+  media, catalog, release-gate, cloud, or paid-lock state changed. Post-deploy
+  one-click browser proof remains required because the browser runtime was not
+  available in this isolated run.

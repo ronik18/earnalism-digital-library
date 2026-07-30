@@ -3,6 +3,7 @@ import {
   audiobookProgressStorageKey,
   loadAudiobookProgress,
   pendingAudiobookResumeMatches,
+  requestAudiobookPlayback,
   saveAudiobookProgress,
   sanitizeAudiobookProgress,
   shouldPrefetchNextSegment,
@@ -104,5 +105,44 @@ describe('audiobook package playback', () => {
       ...expected,
       segmentChapterId: 'chapter-001',
     })).toBe(false);
+  });
+
+  test('requests playback synchronously while the first-click activation is live', async () => {
+    const order = [];
+    let resolvePlayback;
+    const playback = new Promise((resolve) => {
+      resolvePlayback = resolve;
+    });
+    const audio = {
+      play: jest.fn(() => {
+        order.push('play');
+        return playback;
+      }),
+    };
+
+    const requested = requestAudiobookPlayback(audio);
+    order.push('returned');
+
+    expect(audio.play).toHaveBeenCalledTimes(1);
+    expect(order).toEqual(['play', 'returned']);
+
+    resolvePlayback();
+    await expect(requested).resolves.toBeUndefined();
+  });
+
+  test('turns synchronous media and autoplay failures into rejectable promises', async () => {
+    const blocked = Object.assign(new Error('Playback requires user activation'), {
+      name: 'NotAllowedError',
+    });
+    const audio = {
+      play: jest.fn(() => {
+        throw blocked;
+      }),
+    };
+
+    await expect(requestAudiobookPlayback(audio)).rejects.toBe(blocked);
+    await expect(requestAudiobookPlayback(null)).rejects.toThrow(
+      'An audio element with play() is required',
+    );
   });
 });
