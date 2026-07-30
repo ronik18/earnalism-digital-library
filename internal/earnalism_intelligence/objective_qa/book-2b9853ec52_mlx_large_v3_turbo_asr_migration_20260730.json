@@ -1,0 +1,151 @@
+{
+  "schema_version": "book2b_mlx_asr_migration_revalidation.v1",
+  "generated_at": "2026-07-30T05:45:08Z",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "language": "ben",
+  "scope": "bounded deterministic offline ASR revalidation of the exact approved legacy audiobook for package-v2 migration",
+  "input_binding": {
+    "approved_audio_sha256": "a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5",
+    "approved_audio_size_bytes": 5233965,
+    "approved_audio_duration_seconds": 327.069083,
+    "controlled_content_sha256": "1e1d0b25627df784b861b8c6314b8bade1baabc554122dabf00dd8c5f2ae4dd9",
+    "clean_manuscript_sha256": "788851c603ab1700f9e33bdfdc6a3e3c04f2ebb79890b88bc8c88f138270095d",
+    "binding_status": "PASS"
+  },
+  "model_identity": {
+    "conversion_repository": "mlx-community/whisper-large-v3-turbo",
+    "conversion_revision": "a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+    "conversion_public": true,
+    "conversion_gated": false,
+    "conversion_library": "mlx",
+    "conversion_pipeline_tag": "automatic-speech-recognition",
+    "conversion_card_license": null,
+    "conversion_card_base_model": null,
+    "conversion_card_caveat": "The conversion card identifies a large-v3-turbo MLX conversion but omits explicit license and base-model metadata.",
+    "upstream_repository": "openai/whisper-large-v3-turbo",
+    "upstream_revision": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9",
+    "upstream_license": "MIT",
+    "upstream_bengali_language_tag": true,
+    "upstream_model_card": "https://huggingface.co/openai/whisper-large-v3-turbo",
+    "upstream_license_url": "https://github.com/openai/whisper/blob/main/LICENSE",
+    "license_decision": "UPSTREAM_MIT_VERIFIED_CONVERSION_METADATA_INCOMPLETE_PRIVATE_QA_ONLY"
+  },
+  "downloaded_model_files": [
+    {
+      "file": ".gitattributes",
+      "size_bytes": 1519,
+      "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361"
+    },
+    {
+      "file": "README.md",
+      "size_bytes": 359,
+      "sha256": "78f2d3dc65072211d957fc1b646c2d96e8e8f96dd45ceb2ac5f2643d0c5c05da"
+    },
+    {
+      "file": "config.json",
+      "size_bytes": 268,
+      "sha256": "b34fc29e4e11e0a25e812775dd67f4dd16fc2c8eb43d28ae25ff7d660ecb6379"
+    },
+    {
+      "file": "weights.safetensors",
+      "size_bytes": 1613977612,
+      "sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
+      "matches_repository_lfs_sha256": true
+    }
+  ],
+  "model_architecture": {
+    "model_type": "whisper",
+    "n_mels": 128,
+    "n_audio_state": 1280,
+    "n_audio_layer": 32,
+    "n_text_state": 1280,
+    "n_text_layer": 4,
+    "n_vocab": 51866
+  },
+  "runtime": {
+    "name": "mlx-whisper",
+    "version": "0.4.3",
+    "license": "MIT",
+    "package_source": "https://pypi.org/project/mlx-whisper/0.4.3/",
+    "wheel_sha256": "6b82b6597a994643a3e5496c7bc229a672e5ca308458455bfe276e76ae024489",
+    "resolved_dependency_freeze_sha256": "ea363292c4af4fa5c30f0e01d32a7a469efd2b21647e5efe4e8a7bb36a952e2f",
+    "installed_record_sha256": "713e6274be93701fd9aa8d88598a0821ae6bfa51a92472c7a9d2d4ede373398c",
+    "python_version": "3.11.15",
+    "mlx_version": "0.32.0",
+    "mlx_metal_version": "0.32.0"
+  },
+  "execution": {
+    "network_disabled_during_transcription": true,
+    "task": "transcribe",
+    "language": "bn",
+    "temperature": 0.0,
+    "decoder": "greedy",
+    "condition_on_previous_text": true,
+    "initial_prompt": null,
+    "word_timestamps": false,
+    "compression_ratio_threshold": 2.4,
+    "logprob_threshold": -1.0,
+    "no_speech_threshold": 0.6,
+    "compatibility_repair": {
+      "initial_setting": "beam_size_5",
+      "result": "PRE_DECODE_NOT_IMPLEMENTED",
+      "error_class": "NotImplementedError",
+      "decoded_frames": 0,
+      "repair": "Use the runtime-supported deterministic temperature-zero greedy decoder.",
+      "additional_model_attempt": false
+    },
+    "wall_seconds": 127.624,
+    "detected_language": "bn",
+    "segment_count": 49,
+    "transcript_sha256": "2fe1c55562589f58f9e7372df409d22c69d01c3d68384dbcbaec6457972c36eb",
+    "raw_result_sha256": "2769ebede00356a3293c4ee2a429afd2c17624aa6f9dd58a8f4d2c72f7d10174",
+    "transcript_character_count": 2495,
+    "script": "Bengali",
+    "script_counts": {
+      "bengali": 1973,
+      "devanagari": 47,
+      "latin": 0
+    }
+  },
+  "strict_raw_asr_result": {
+    "required_score": 9.7,
+    "required_coverage": 0.98,
+    "raw_similarity": 0.7725,
+    "char_similarity": 0.7725,
+    "token_order_similarity": 0.3666,
+    "coverage": 0.3377,
+    "score": 3.3775,
+    "first_words_match": false,
+    "first_words_match_score": 0.0739,
+    "last_words_match": false,
+    "last_words_match_score": 0.2956,
+    "passes_policy": false
+  },
+  "diagnostic_projection": {
+    "normalized_asr_score": 6.741,
+    "phonetic_projection_score": 7.596,
+    "projected_coverage": 0.7596,
+    "content_match_proven": false,
+    "can_replace_raw_gate": false
+  },
+  "decision": {
+    "status": "MLX_LARGE_V3_TURBO_RAW_ASR_FAIL_PACKAGE_V2_MIGRATION_BLOCKED",
+    "package_v2_promotion_allowed": false,
+    "current_public_legacy_audiobook_state": "APPROVED_AND_LIVE_UNCHANGED",
+    "legacy_delivery_mutated": false,
+    "release_gate_mutated": false,
+    "controlled_catalog_mutated": false,
+    "audio_regenerated": false,
+    "audio_uploaded": false,
+    "provider_or_paid_call_made": false,
+    "paid_tts_lock_touched": false,
+    "reason": "The distinct MLX model emits Bengali script and improves the completed raw score from 1.1258 to 3.3775, but fails score, coverage, and both boundary requirements. It cannot authorize package-v2 promotion."
+  },
+  "prior_evidence": {
+    "report": "internal/earnalism_intelligence/objective_qa/book-2b9853ec52_local_asr_revalidation_20260729.json",
+    "report_sha256": "9fd29006d312e80dfbb0d6ea2d6ba456fe30f942e3668d079e5926d103998ffe"
+  },
+  "next_exact_command": "python3 -m json.tool internal/earnalism_intelligence/objective_qa/book-2b9853ec52_mlx_large_v3_turbo_asr_migration_20260730.json >/dev/null && git diff --check"
+}

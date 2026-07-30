@@ -391,12 +391,12 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "book-2b9853ec52": {
-      "latest_decision": "PRIVATE_PACKAGE_V2_CANARY_VERIFIED_ASR_REVALIDATION_FAIL_CLOSED_PRODUCTION_MIGRATION_BLOCKED",
-      "decision_reason": "The exact already-approved narration remains live through its unchanged delivery contract and its private package-v2 bytes remain verified. Current local open-source ASR did not produce a qualifying raw result: Whisper-base scored 0.0 and Whisper-medium did not complete. The exact prior audio-derived result remains 1.1258 with 0.1126 coverage, so the current ASR migration blocker stays open and construction provenance cannot replace it.",
-      "updated_at": "2026-07-29T10:28:53Z",
+      "latest_decision": "MLX_LARGE_V3_TURBO_RAW_ASR_FAIL_PACKAGE_V2_MIGRATION_BLOCKED",
+      "decision_reason": "The distinct MIT-upstream MLX Whisper large-v3-turbo lane completed against the exact approved audio and emitted Bengali script, but raw ASR scored only 3.3775 with 0.3377 coverage and failed both boundaries. The package-v2 migration remains blocked while the current approved legacy audiobook stays unchanged.",
+      "updated_at": "2026-07-30T05:45:08Z",
       "language": "ben",
       "bengali_audio_lane_status": "BENGALI_AUDIOBOOK_LIVE",
-      "audiobook_next_action": "Keep the current live delivery untouched. Do not repeat the completed Whisper-base or interrupted CPU Whisper-medium fingerprints; obtain one materially different bounded Bengali ASR revalidation that passes the raw 9.7 objective floor before package-v2 production promotion.",
+      "audiobook_next_action": "Keep the current approved legacy delivery untouched and do not promote package v2. Do not repeat Whisper tiny, base, medium, stable-ts, or MLX large-v3-turbo fingerprints for this exact audio.",
       "latest_audio_evidence_path": "book_2b9853ec52_goliveevidence.json",
       "bengali_audiobook_campaign_state": "BENGALI_AUDIOBOOK_LIVE",
       "bengali_audiobook_campaign_next_action": "Recommend, but do not start, the next 3-title canary.",
@@ -441,7 +441,19 @@
       "audiobook_endpoint_status": 200,
       "public_book_status": 200,
       "reader_manifest_status": 200,
-      "next_action": "Keep the current live delivery untouched and hold package-v2 promotion. Resolve the failed or inconclusive current audio-derived ASR revalidation with a materially different bounded Bengali ASR runtime before final production/DR migration work.",
+      "next_action": "Keep the current live delivery untouched and hold package-v2 promotion. Treat the MLX result as a closed failed fingerprint; any future migration revalidation must be a materially distinct source-bound validation lane.",
+      "mlx_asr_migration_revalidation": {
+        "status": "MLX_LARGE_V3_TURBO_RAW_ASR_FAIL_PACKAGE_V2_MIGRATION_BLOCKED",
+        "evidence": "internal/earnalism_intelligence/objective_qa/book-2b9853ec52_mlx_large_v3_turbo_asr_migration_20260730.json",
+        "model_revision": "a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+        "model_weights_sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
+        "raw_asr_score": 3.3775,
+        "coverage": 0.3377,
+        "first_words_match": false,
+        "last_words_match": false,
+        "migration_blocker_resolved": false,
+        "legacy_public_state_changed": false
+      },
       "public_contract_fix": {
         "status": "SOURCE_PATCH_READY_NOT_DEPLOYED",
         "book_detail_before": "HTTP_200_AUDIO_FALSE_NOT_AVAILABLE",
@@ -480,7 +492,12 @@
           "authoritative_prior_raw_asr_score": 1.1258,
           "authoritative_prior_coverage": 0.1126,
           "construction_transcript_score_can_replace_raw_asr": false,
-          "migration_blocker_resolved": false
+          "migration_blocker_resolved": false,
+          "mlx_large_v3_turbo_raw_asr_score": 3.3775,
+          "mlx_large_v3_turbo_coverage": 0.3377,
+          "mlx_large_v3_turbo_first_words_match": false,
+          "mlx_large_v3_turbo_last_words_match": false,
+          "mlx_large_v3_turbo_evidence": "internal/earnalism_intelligence/objective_qa/book-2b9853ec52_mlx_large_v3_turbo_asr_migration_20260730.json"
         },
         "existing_public_audio_state_changed": false,
         "paid_tts_lock_changed": false
