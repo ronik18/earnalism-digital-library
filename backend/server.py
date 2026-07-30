@@ -519,6 +519,9 @@ async def _expensive_job_slot(job_type: str):
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v13"
+# Rotate only public catalog/home cache keys for controlled-cover precedence.
+# Reader/audio manifest cache namespaces remain unchanged.
+PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "controlled-covers-v1"
 READER_CONTENT_RENDER_VERSION = "semantic-html-v1"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
@@ -1108,6 +1111,11 @@ HOME_CURATION_DB_FIELDS = (
     "sprint_id",
     "published_at",
 )
+# File-backed controlled publications own every customer-facing catalog and
+# release-truth field. MongoDB may influence only these explicit curation
+# controls; a same-slug row must never shadow canonical covers, reader state,
+# or audiobook gates.
+CONTROLLED_PUBLICATION_DB_EDITORIAL_FIELDS = HOME_CURATION_DB_FIELDS
 PUBLIC_CACHE_PATHS = {
     "/api/home",
     "/api/home/books",
@@ -1365,6 +1373,7 @@ def _public_cache_storage_key(generation: int, key: str) -> str:
 def _public_cache_key(scope: str, **params) -> str:
     payload = {
         "truth_gate": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
+        "catalog_truth": PUBLIC_CATALOG_TRUTH_CACHE_VERSION,
         **params,
     }
     return f"{scope}:{_json.dumps(payload, sort_keys=True, ensure_ascii=True, default=str)}"
@@ -1466,7 +1475,27 @@ def _append_controlled_artifact_projections(
     category_filter: Optional[str] = None,
     q: str = "",
 ) -> list[dict]:
-    existing_slugs = {book.get("slug") for book in books}
+    resolved_books: list[dict] = []
+    existing_slugs: set[str] = set()
+    for book in books:
+        slug = str(book.get("slug") or "").strip().lower()
+        if not slug:
+            resolved_books.append(book)
+            continue
+        existing_slugs.add(slug)
+        artifact = _controlled_artifact_doc(slug, include_content=False)
+        if not artifact:
+            resolved_books.append(book)
+            continue
+        merged = _merge_controlled_publication_truth(book, artifact, slug=slug)
+        projected = _safe_live_public_projection(merged)
+        if projected and _matches_public_filters(
+            projected,
+            category_filter=category_filter,
+            q=q,
+        ):
+            resolved_books.append(projected)
+
     appended: list[dict] = []
     for slug in CONTROLLED_LIVE_BOOK_SLUGS:
         if slug in existing_slugs:
@@ -1477,7 +1506,28 @@ def _append_controlled_artifact_projections(
         projected = _safe_live_public_projection(artifact)
         if projected:
             appended.append(projected)
-    return [*appended, *books]
+    return [*appended, *resolved_books]
+
+
+def _merge_controlled_publication_truth(
+    database_book: Optional[dict],
+    artifact: dict,
+    *,
+    slug: str,
+) -> dict:
+    """Return canonical public truth with only allowlisted DB curation fields.
+
+    Starting from the artifact (instead of overlaying it onto MongoDB) is
+    intentional: absent canonical audio/cover fields must remain absent rather
+    than inheriting stale database values.
+    """
+
+    merged = {**artifact, "slug": str(slug or "").strip().lower()}
+    if database_book:
+        for field in CONTROLLED_PUBLICATION_DB_EDITORIAL_FIELDS:
+            if field in database_book:
+                merged[field] = database_book[field]
+    return merged
 
 
 def _home_curation_controlled_truth_docs(books: list[dict]) -> list[dict]:
@@ -1508,11 +1558,11 @@ def _home_curation_controlled_truth_docs(books: list[dict]) -> list[dict]:
         database_book = database_by_slug.get(slug)
         artifact = _controlled_artifact_doc(slug, include_content=False)
         if artifact:
-            merged = {**(database_book or {}), **artifact, "slug": slug}
-            if database_book:
-                for field in HOME_CURATION_DB_FIELDS:
-                    if field in database_book:
-                        merged[field] = database_book[field]
+            merged = _merge_controlled_publication_truth(
+                database_book,
+                artifact,
+                slug=slug,
+            )
             resolved.append(merged)
             resolved_slugs.add(slug)
         elif database_book:
@@ -1543,12 +1593,25 @@ async def _find_public_book_candidate(
 ) -> tuple[Optional[dict], str]:
     if not _is_controlled_public_slug(slug):
         return None, "missing"
-    doc = await db.books.find_one(_controlled_public_book_query({"slug": slug}), projection)
+    normalized_slug = str(slug or "").strip().lower()
+    doc = await db.books.find_one(
+        _controlled_public_book_query({"slug": normalized_slug}),
+        projection,
+    )
+    artifact = _controlled_artifact_doc(
+        normalized_slug,
+        include_content=include_artifact_content,
+    )
+    if artifact:
+        resolved = _merge_controlled_publication_truth(
+            doc,
+            artifact,
+            slug=normalized_slug,
+        )
+        if _safe_live_public_projection(resolved):
+            return resolved, "artifact"
     if doc and _safe_live_public_projection(doc):
         return doc, "db"
-    artifact = _controlled_artifact_doc(slug, include_content=include_artifact_content)
-    if artifact:
-        return artifact, "artifact"
     return None, "missing"
 
 
