@@ -1,8 +1,8 @@
 # Audiobook package v2 canary — A Ghost Story
 
-Status: **production-green at zero percent, with a separate deterministic
-five-percent canary prepared for review and deployment. The approved legacy
-stream remains active for the other ninety-five percent.**
+Status: **production-green at five percent, with a separate deterministic
+twenty-five-percent canary prepared for review and deployment. The approved
+legacy stream remains the active rollback-safe contract.**
 
 This is a delivery migration for an audiobook that was already approved and
 live. It does not regenerate narration, change release gates, or increase the
@@ -104,11 +104,41 @@ mirrors and regenerated their matching checksum manifests.
   storage receipts, approval evidence, narration and four-title public count:
   unchanged.
 
-The five-percent production checkpoint remains pending merge and deploy. It
-must prove both segments and timestamp sidecars for the candidate identity,
-legacy continuity for the control identity, invalid/stale/unknown/cross-title
-fail-closed behavior, and candidate browser playback before any wider
-percentage is prepared.
+The five-percent deployment completed on merge
+`2e5497ec7ca3be1c2b27416dd465a462d08a3a6d` and Railway deployment
+`d2a92637-0b66-4948-83c9-159a62d20ea4`.
+
+- The deterministic candidate/control HTTP matrix passed `63/63` checks.
+- The candidate identity received the exact two-segment package manifest,
+  both `206` Range streams, both exact timestamp sidecars, and `416` for both
+  invalid ranges.
+- Stale version, unknown segment and cross-title routes failed closed.
+- The legacy control identity received no candidate manifest, segment or
+  timestamp route and retained its exact monolithic `206` stream.
+- The public home catalog stayed at exactly four approved audiobooks.
+- The real browser naturally selected the legacy control. Before intent it
+  had no source or observed audiobook asset. One click played the legacy route,
+  reached `readyState=4`, advanced from `3.221962` to `5.438094` seconds, and
+  produced no media or console errors. It was paused at `12.242585` seconds.
+
+Because cookie inspection or manipulation is prohibited, the natural legacy
+browser result is recorded as control-cohort proof, not misrepresented as
+candidate proof.
+
+## Twenty-five-percent canary preparation
+
+The guarded rollout tool changed only `5%` to `25%` and regenerated the
+matching checksum manifests. Active/candidate descriptors, salt, packages,
+receipts, storage, approvals, narration and the four-title public count remain
+unchanged.
+
+Full promotion is still prohibited. After the twenty-five-percent deployment,
+the deterministic candidate/control matrix must pass again. If the natural
+browser remains in the legacy cohort, post-promotion package-route proof
+becomes non-negotiable: one click must play `c001-s001`, controlled
+near-boundary playback must advance to `c001-s002`, and both media and console
+error counts must remain zero. Failure requires rollback to the retained
+legacy descriptor.
 
 ## Validation
 
@@ -127,5 +157,5 @@ percentage is prepared.
 Next exact command:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py backend/tests/test_audiobook_packages.py backend/tests/test_b2_audiobook_routing.py backend/tests/test_controlled_publication_precheck.py backend/tests/test_controlled_publication_publish.py
+PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q internal/audiobook_lab/scripts/test_audiobook_package_builder_v2.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_audiobook_package_storage_v2.py backend/tests/test_audiobook_packages.py backend/tests/test_b2_audiobook_routing.py backend/tests/test_package_v2_public_projection_safety.py backend/tests/test_sprint1_audio_source_cleanup.py backend/tests/test_redis_cache_policy.py backend/tests/test_controlled_publication_precheck.py backend/tests/test_controlled_publication_publish.py backend/tests/test_a_ghost_story_routability.py
 ```

@@ -30,7 +30,7 @@
       "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40"
     ],
     "rollout": {
-      "percentage": 5,
+      "percentage": 25,
       "salt": "a-ghost-story-package-v2-20260730"
     },
     "schema_version": "audiobook_active_release.v1",

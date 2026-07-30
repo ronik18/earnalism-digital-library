@@ -1628,3 +1628,23 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   their exact manifest, Range, timestamp and negative-route matrices and the
   customer browser proves package playback without hidden preloading or
   errors.
+
+## 2026-07-30 — Deterministic package transport plus a natural legacy browser can advance a reversible canary
+
+- A Ghost Story's five-percent production matrix passed `63/63` checks. It
+  covered the exact candidate manifest, both segment Range streams, both
+  timestamp sidecars, invalid ranges, stale/unknown/cross-title rejection,
+  legacy continuity and the exact four-title public catalog.
+- The real browser naturally remained in the legacy control cohort. It still
+  proved zero pre-intent audio, one-click playback, time advancement and zero
+  media or console errors.
+- Do not inspect or manipulate the secure sticky cookie to manufacture a
+  desired browser cohort. Record the natural result and rely on deterministic
+  HTTP identities for package transport proof.
+- This is the same controlled boundary accepted for Sredni Vashtar: a
+  reversible `25%` canary may be prepared, but full promotion is not yet
+  green.
+- If a candidate browser is not naturally observed before promotion, the
+  post-promotion checkpoint must prove the exact package route and a real
+  segment-one to segment-two transition. Any failure rolls back to the
+  retained legacy descriptor.
