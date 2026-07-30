@@ -1907,3 +1907,25 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   safe next action is a no-provider-call, sentence-boundary-safe
   `chunk_0009` repair preflight that preserves all other audio byte-for-byte and
   binds fresh objective QA before any provider call.
+
+## 2026-07-30 — Jekyll chunk 9 can be repaired without discarding chunk 36
+
+- Always build a second repair against the newest immutable parent candidate.
+  Jekyll's current parent already contains the completed `chunk_0036`
+  replacement; planning from the older root manifest would silently lose that
+  work.
+- A source chunk can start and end mid-sentence while still containing a safe
+  internal splice. For `chunk_0009`, replace only the defective clause between
+  the measured word anchors at `30.10s` and `31.92s`; keep all other 91 files
+  byte-identical.
+- Generate surrounding prose for prosody, but retain only the exact aligned
+  repair clause. The 192-character context contains a left clause anchor, the
+  complete missing text, a sentence stop, and a right sentence anchor. Blind
+  time-only cutting and estimated alignment remain forbidden.
+- The bounded plan costs an estimated `$0.005760`, preserves the local Charon
+  voice/rate/pitch, and has no provider or release authority. Its future paid
+  holder is scoped to one private `chunk_0009` context-window call.
+- After a repair, changed audio invalidates inherited evidence. Require fresh
+  objective and listening judgments for `chunk_0009` and the already-repaired
+  `chunk_0036`, then full-title strict objective/sync proof before package-v2
+  construction.

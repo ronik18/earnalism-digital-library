@@ -1,0 +1,164 @@
+{
+  "schema_version": "earnalism.jekyll_chunk9_sentence_safe_repair_preflight_evidence.v1",
+  "generated_at": "2026-07-30T16:45:00Z",
+  "status": "PREFLIGHT_PASS_NO_PROVIDER_CALL_AUDIO_HIDDEN",
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "author": "Robert Louis Stevenson",
+  "private_preflight_report_path": "/private/tmp/earnalism-jekyll-charon-private/jekyll-and-hyde/repaired_full/a408cba50da94ae1/chunk9_repair_preflight/sentence_safe_plan.json",
+  "private_preflight_report_sha256": "cac128be35bdc7f70e9211658a6f8368608c49cf9c1e0646e92bcde8f0b4dba5",
+  "preflight_binding_sha256": "a60fa7da7ded382bb9f3b6bb45641c08d8df39c782a0356d491aceccd70d9e6f",
+  "parent_candidate": {
+    "root_full_manifest_sha256": "5bbbc01f9ab2dcba7194c1a0a28f636863896e68adb2f9a743ee33ddd7395439",
+    "parent_full_manifest_sha256": "616080b550edecc4320812ea09c0e0cf3f4f5afd96210247b5f1e6e3477a4632",
+    "parent_audio_sequence_sha256": "688273c3329b9c4b345e9bdf5f8eddf6c9e05c7bb90c240c859601b083eb02cb",
+    "parent_candidate_binding_sha256": "160cbc3b4c8707127c0db5e39ac62806314fbdfcd1875cd9ee737f4e1c22c0cf",
+    "source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+    "input_manifest_sha256": "43177dc6f71521a6558dfcccbd784d46213e9e0f533c4e8ac3133be29725fd22",
+    "unit_count": 92,
+    "cumulative_changed_indexes": [
+      36
+    ]
+  },
+  "chunk36_lineage": {
+    "repair_evidence_sha256": "603c909ff04ebbe5380728c49a74de45d57a1ffeb338dd3b7f2d74fe7930ebfe",
+    "repair_attempt_fingerprint": "49a28b145476242f958402300a1f8c45c61044582da96ace6b698e22aed7af6c",
+    "unit_id": "chunk_0036",
+    "audio_sha256": "d7d83110d869e2d40c59855e2d3e2252e9b642b6fa14e9790591cbb6c0d8702c",
+    "must_remain_byte_identical": true
+  },
+  "target": {
+    "chunk_index": 9,
+    "unit_id": "chunk_0009",
+    "source_text_sha256": "24a85dbb2f4184ea9ffb86599c65777d5fcfccc343d3fdb6077884aa5c9557de",
+    "source_characters": 1542,
+    "prior_audio_sha256": "e2a34a5ccfc5bb78e121fdd32ff821e7f907afe7203521fc08517c9904c91ebf",
+    "prior_audio_size_bytes": 367488,
+    "missing_span": "obligation beyond the payment of a few small sums to the members of the doctor’s household",
+    "missing_span_sha256": "fc0fec16f4396a443aeabe4cfaf22c629851597222661ea04fb06036b8887348",
+    "missing_span_token_count": 16,
+    "replacement_clause": "and free from any burthen or obligation beyond the payment of a few small sums to the members of the doctor’s household.",
+    "replacement_clause_sha256": "9f5b63510b260f3e2c2bbcd691319cea1fd3b7b59908efa5605a49b0821d01f5"
+  },
+  "adjacent_context": {
+    "chunk_0008_text_sha256": "8b97d5be5ce5e546f5b3a18ea4ef5a26ded60c7aa63c15ab6518f9ac13e5333e",
+    "chunk_0008_tail": "The will was holograph, for Mr.",
+    "chunk_0009_head": "Utterson though he took charge of it now that it was made,",
+    "chunk_0009_tail": "where his friend, the great Dr.",
+    "chunk_0010_text_sha256": "56296785bee42f23537a054b357c3950e6e586caa7dccc8a8b82122e390b8565",
+    "chunk_0010_head": "Lanyon, had his house and received his crowding patients."
+  },
+  "measured_defect": {
+    "turbo_report_sha256": "ef86c6ae2d1db6857aa209304173b8d2f74aded90caf3f66133e7db9ed185ec9",
+    "turbo_raw_result_sha256": "6436a9aec7d8ffb7e0d093bf888fbc8c0932932e891f11ffcb77938b25dd2948",
+    "replace_start_seconds": 30.1,
+    "replace_end_seconds": 31.92,
+    "defective_span_seconds": 1.82,
+    "left_anchor": "delay",
+    "right_anchor": "This",
+    "missing_audio_gap_seconds": 0.0
+  },
+  "provider_plan": {
+    "provider": "google",
+    "voice": "en-GB-Chirp3-HD-Charon",
+    "language_code": "en-GB",
+    "speaking_rate": 0.94,
+    "pitch": 0.0,
+    "synthesis_input_kind": "exact_plain_text_context_window",
+    "synthesis_context": "without further delay and free from any burthen or obligation beyond the payment of a few small sums to the members of the doctor’s household. This document had long been the lawyer’s eyesore.",
+    "synthesis_context_sha256": "977e108da205532a2379eb254bdb95b087064714cbdeecef583e8e14b8e13884",
+    "synthesis_context_characters": 192,
+    "strategy": "CONTEXT_SYNTHESIS_FORCED_ALIGNMENT_CLAUSE_SPLICE",
+    "blind_fixed_time_splice_forbidden": true,
+    "estimated_or_visual_sync_forbidden": true
+  },
+  "preservation_contract": {
+    "expected_parent_to_child_changed_indexes": [
+      9
+    ],
+    "expected_root_to_child_changed_indexes": [
+      9,
+      36
+    ],
+    "preserved_audio_file_count": 91,
+    "preserved_audio_hashes_sha256": "ccebbbe37ff877cddb189ee459302e14b863b4514e20f22d75597b67c08f4920",
+    "chunk36_audio_sha256_after_repair_required": "d7d83110d869e2d40c59855e2d3e2252e9b642b6fa14e9790591cbb6c0d8702c"
+  },
+  "budget": {
+    "billable_characters": 192,
+    "usd_per_million_characters": 30.0,
+    "estimated_run_usd": 0.00576,
+    "run_budget_usd": 0.1,
+    "prior_title_spend_usd": 3.51777,
+    "projected_title_spend_usd": 3.52353,
+    "title_budget_usd": 8.0,
+    "prior_sprint_spend_usd": 18.72386,
+    "projected_sprint_spend_usd": 18.72962,
+    "sprint_budget_usd": 75.0,
+    "status": "PASS_PREFLIGHT_ONLY"
+  },
+  "paid_lock_plan": {
+    "current_lock_sha256": "8d87bd5891f33a58d6d2819ada69b89d626d35a30dd040e021bcf9561d232f01",
+    "current_status": "active",
+    "current_holder": "none",
+    "future_holder": "sprint1_jekyll_google_chunk9_sentence_safe_repair:jekyll-and-hyde:chunk_0009",
+    "future_allowed_slugs": [
+      "jekyll-and-hyde"
+    ],
+    "approval_env_required": "EARNALISM_APPROVE_JEKYLL_CHUNK9_SENTENCE_SAFE_REPAIR=true",
+    "budget_stop_env_required": "EARNALISM_STOP_ON_BUDGET_EXCEEDED=true",
+    "read_during_preflight": true,
+    "written_during_preflight": false,
+    "mutated_during_preflight": false
+  },
+  "post_repair_qa": {
+    "target_objective_units": [
+      "chunk_0009"
+    ],
+    "lineage_objective_units": [
+      "chunk_0036"
+    ],
+    "full_title_unit_count": 92,
+    "asr_source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_last_words_required": true,
+    "ordered_content_integrity_required": true,
+    "measured_word_and_paragraph_sync_required": true,
+    "estimated_sync_forbidden": true,
+    "independent_adjudication_required_for": [
+      "chunk_0045",
+      "chunk_0071"
+    ],
+    "listening_policy": "platform_audiobook_acceptance_v4_89",
+    "fresh_changed_unit_listening_samples": [
+      "chunk_0009",
+      "chunk_0036"
+    ],
+    "listening_overall_and_dimension_min": 8.9,
+    "anti_robotic_and_anti_choppy_min": 9.2,
+    "confidence_min": 0.9,
+    "fatal_flags_allowed": []
+  },
+  "package_v2_eligibility": {
+    "eligible_now": false,
+    "blockers": [
+      "chunk_0009 replacement audio does not exist",
+      "repaired chunks 0009 and 0036 lack fresh objective evidence",
+      "full-title strict objective and measured sync are incomplete",
+      "fresh changed-unit listening judgments are incomplete",
+      "immutable package-v2 manifest and delivery media are absent",
+      "primary and DR upload receipts are absent",
+      "controlled active-release pointer is absent",
+      "production manifest, Range 206, endpoint, and browser proof are absent"
+    ]
+  },
+  "provider_calls_ran": false,
+  "audio_generated": false,
+  "audio_modified": false,
+  "paid_lock_touched": false,
+  "upload_performed": false,
+  "publication_performed": false,
+  "release_mutation_performed": false,
+  "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q internal/audiobook_lab/scripts/test_sprint1_jekyll_chunk9_sentence_safe_repair_preflight.py internal/audiobook_lab/scripts/test_sprint1_jekyll_mlx_representative_objective_qa.py"
+}
