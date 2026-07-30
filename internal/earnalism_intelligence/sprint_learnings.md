@@ -1687,3 +1687,29 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   audiobook approval, storage objects, the public count of four, or
   `paid_tts.lock`. The legacy descriptor remains retained for explicit
   rollback.
+
+## 2026-07-30 — Original graphical art removes Jekyll's cover and territorial blockers
+
+- The earlier Macauley composition remained a useful private editorial
+  candidate but retained a longer-term-jurisdiction caveat and rendered
+  internal production wording on the back. It was not promoted.
+- A new deterministic 1600 × 2400 front/back pair uses only programmatic
+  graphical primitives plus the exact controlled-catalog title and author.
+  It contains no third-party image asset, generated-image-model output,
+  placeholder art, or reader-facing engineering copy.
+- The front master SHA-256 is
+  `eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8`;
+  the back master SHA-256 is
+  `9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344`.
+  Both remain legible in the bounded 320 × 480 derivatives.
+- Production keeps public admin cover mutation disabled. A localhost-only
+  operator used Railway-injected Mongo and Cloudinary configuration to upload
+  the exact candidates, then a separate localhost-only promotion transaction
+  re-downloaded and checksum-verified each immutable Cloudinary object before
+  atomically updating both controlled-publication mirrors.
+- Front and back are `CANONICAL_READY`; combined cover status is `COMPLETE`.
+  Reader and audiobook truth were byte-snapshotted by the transaction and
+  remained unchanged. Jekyll audio is still hidden.
+- The next safe boundary is commit, merge, deploy and production cover proof.
+  Only then may the already-selected Charon full-title lane acquire the paid
+  lock and generate one source-bound candidate.

@@ -419,7 +419,9 @@ def test_controlled_only_jekyll_can_upload_without_seeding_public_mongo(monkeypa
     assert row_before["admin_book_exists"] is False
     assert row_before["upload_eligibility_source"] == "controlled_publication"
     assert row_before["can_upload"] is True
-    assert row_before["front_status"] == "MISSING"
+    assert row_before["front_status"] == "CANONICAL_READY"
+    canonical_front_before = row_before["canonical_front_cover_url"]
+    assert canonical_front_before
 
     response = asyncio.run(
         server.admin_upload_cover(
@@ -447,9 +449,10 @@ def test_controlled_only_jekyll_can_upload_without_seeding_public_mongo(monkeypa
         )
     )
     row_after = next(book for book in status_after["books"] if book["slug"] == slug)
-    assert row_after["front_status"] == "UPLOADED_PENDING_CANONICAL_REVIEW"
+    assert row_after["front_status"] == "CANONICAL_READY"
     assert row_after["admin_front_cover_url"] == private_url
-    assert row_after["canonical_front_cover_url"] != private_url
+    assert row_after["canonical_front_cover_url"] == canonical_front_before
+    assert canonical_front_before != private_url
 
     public_payloads = {
         "/api/books": asyncio.run(server.list_books()),

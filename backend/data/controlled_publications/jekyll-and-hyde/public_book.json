@@ -7,8 +7,8 @@
   "category_slug": "classic-literature",
   "short_description": "A clean Earnalism reader edition of The Strange Case of Dr. Jekyll and Mr. Hyde, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
   "description": "A clean Earnalism reader edition of The Strange Case of Dr. Jekyll and Mr. Hyde, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
-  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
-  "dominant_color": "#4A1C27",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#1D0B13",
   "estimated_reading_time": "107 min",
   "formats": [
     "Ebook"
@@ -220,5 +220,26 @@
   "audiobook_assets": {},
   "audiobook": {},
   "created_at": "2026-07-01T10:36:20Z",
-  "updated_at": "2026-07-01T10:36:22Z"
+  "updated_at": "2026-07-30T13:02:18.095334+00:00",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg",
+  "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785416472/earnalism/covers/back/back_cover_candidate_controlled-jekyll-and-hyde-9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344.jpg",
+  "back_cover_dominant_color": "#1B0A11"
 }

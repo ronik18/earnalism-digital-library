@@ -1,22 +1,10 @@
 {
   "slug": "jekyll-and-hyde",
-  "generated_at": "2026-07-01T10:36:20Z",
+  "generated_at": "2026-07-30T13:02:18.095334+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
       "sha256": "ea3ef30e4fc42ad0b6e4c96a20727c2cf9c9e5eeac9a79acc035c9173c21f278"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "08e1cc4cace4b82dccdb2b8189e6297717477bce1f1ee271e5f5e126ca8a6019"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "04a0b1df4bd25b9e1d554c3e1aa6994b7b44e5c51810392ff350ec3f998a81b6"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "f9afc2e7e51313207f9ff903219b8ebc62dc8d34fd39ba0f454cff54117aead3"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -61,6 +49,22 @@
     {
       "file": "chapters/chapter-011.json",
       "sha256": "bf385b677efead3800f935f1d10aba569228370d5c6abfc417d57a9a0f74fa4a"
+    },
+    {
+      "file": "cover_approval_evidence.json",
+      "sha256": "7ff51145b7bb97f64b6f01ddb84d3c75188c15b76ceec3aa8fa9af2dd01782f9"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "e55a526028cfb5728c7e06528a4b730ec2679d574ff03dcce6480c71a9241dd4"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "04a0b1df4bd25b9e1d554c3e1aa6994b7b44e5c51810392ff350ec3f998a81b6"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "f9afc2e7e51313207f9ff903219b8ebc62dc8d34fd39ba0f454cff54117aead3"
     }
   ]
 }

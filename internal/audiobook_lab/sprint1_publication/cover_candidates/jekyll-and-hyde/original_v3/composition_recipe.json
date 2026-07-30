@@ -1,0 +1,151 @@
+{
+  "schema_version": "earnalism.deterministic_cover_composition.v3",
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "author": "Robert Louis Stevenson",
+  "output_size": [
+    1600,
+    2400
+  ],
+  "generation_mode": "deterministic_original_programmatic_graphical_composition",
+  "external_image_assets": [],
+  "generated_image_model": null,
+  "front": {
+    "content_panel": [
+      126,
+      126,
+      1474,
+      865
+    ],
+    "text_panels": {
+      "title": [
+        126,
+        126,
+        1474,
+        865
+      ],
+      "author": [
+        126,
+        126,
+        1474,
+        865
+      ]
+    },
+    "text_boxes": [
+      {
+        "name": "title",
+        "text": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+        "lines": [
+          "The Strange Case",
+          "of Dr. Jekyll and",
+          "Mr. Hyde"
+        ],
+        "font_size": 126,
+        "box": [
+          242,
+          208,
+          1358,
+          582
+        ]
+      },
+      {
+        "name": "author",
+        "text": "Robert Louis Stevenson",
+        "lines": [
+          "Robert Louis Stevenson"
+        ],
+        "font_size": 58,
+        "box": [
+          496,
+          704,
+          1104,
+          757
+        ]
+      }
+    ],
+    "fonts": {
+      "title": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "author": "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    },
+    "treatment": {
+      "original_programmatic_art": true,
+      "external_image_assets": [],
+      "generated_image_model": null,
+      "symbolism": [
+        "divided doorway",
+        "dual silhouette",
+        "molecular flourish"
+      ]
+    }
+  },
+  "back": {
+    "content_panel": [
+      132,
+      150,
+      1468,
+      900
+    ],
+    "text_panels": {
+      "title": [
+        132,
+        150,
+        1468,
+        900
+      ],
+      "author": [
+        132,
+        150,
+        1468,
+        900
+      ]
+    },
+    "text_boxes": [
+      {
+        "name": "title",
+        "text": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+        "lines": [
+          "The Strange Case of",
+          "Dr. Jekyll and Mr.",
+          "Hyde"
+        ],
+        "font_size": 104,
+        "box": [
+          270,
+          270,
+          1330,
+          581
+        ]
+      },
+      {
+        "name": "author",
+        "text": "Robert Louis Stevenson",
+        "lines": [
+          "Robert Louis Stevenson"
+        ],
+        "font_size": 54,
+        "box": [
+          517,
+          765,
+          1083,
+          814
+        ]
+      }
+    ],
+    "fonts": {
+      "title": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "author": "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    },
+    "treatment": {
+      "original_programmatic_art": true,
+      "external_image_assets": [],
+      "generated_image_model": null,
+      "reader_facing_back_copy_rendered": false
+    }
+  },
+  "script": {
+    "path": "internal/audiobook_lab/scripts/prepare_jekyll_original_cover.py",
+    "sha256": "86aaaf586fed5d3ec0ccb7dccd07e6f01274187f646f4280416b51534657704b",
+    "helper_path": "internal/audiobook_lab/scripts/prepare_jekyll_editorial_cover.py",
+    "helper_sha256": "0365ab7642ad38989ecde4eca9edbb7bfd6db1faba2dd00c3ce0dce5722bc2c0"
+  }
+}
