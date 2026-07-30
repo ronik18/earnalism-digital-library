@@ -1884,3 +1884,26 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   Cloudinary candidates, download and verify each full SHA-256, then use the
   controlled promotion transaction. Cover approval does not approve audio; Gift
   remains reader-live and audio-hidden.
+
+## 2026-07-30 — Jekyll objective QA isolates a real chunk 9 narration omission
+
+- The completed `medium.en` full-title report is valid objective evidence but
+  not a release pass: ASR/source scored `9.8831`, coverage `0.9873`, and
+  precision `0.9894`, while ordered content integrity failed.
+- Before spending on a full alternate-model pass, adjudicate the weakest units
+  plus exact-pass controls. Exact-revision `whisper-large-v3-turbo` and
+  `whisper-large-v3-mlx` both failed the five-unit strict contract, so neither
+  justified a 92-unit inference run.
+- `chunk_0009` is a narration defect, not a `medium.en` limitation. Three
+  recognizers omit the same 16 source tokens and measured timestamps cross
+  directly from `or` to `this` at `31.92s`, leaving no hidden speech interval.
+- `chunk_0045` is substantially a `medium.en` limitation: full large-v3
+  improved it from `9.4698 / 0.9184` to `9.8940 / 0.9929`, but duplicate and
+  unexpected tokens still prevent strict content integrity.
+- Strong controls matter. Full large-v3 exactly passed controls 8 and 64 but
+  regressed control 71 with duplicated content and a zero-duration word
+  timestamp, independently blocking model-wide substitution.
+- Stop before listening, upload, publication, or release mutation. The cheapest
+  safe next action is a no-provider-call, sentence-boundary-safe
+  `chunk_0009` repair preflight that preserves all other audio byte-for-byte and
+  binds fresh objective QA before any provider call.
