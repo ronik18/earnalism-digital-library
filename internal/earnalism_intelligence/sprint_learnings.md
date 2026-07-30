@@ -1357,3 +1357,26 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - This is a packet, not evidence of audio quality. No synthesis, ASR, listening
   QA, provider call, upload, release mutation, public exposure, or paid-lock
   access occurred. D19 remains `HUMAN_NARRATION_REQUIRED` and audio-hidden.
+
+## 2026-07-30 — The four post-D19 synthetic lanes are finite and source-bound
+
+- After excluding Jekyll and Pride, whose single conveyor attempts are already
+  consumed, the remaining one-attempt titles are Dorian, Frankenstein, White
+  Fang, and Dracula. All four have zero recorded prior attempt fingerprints.
+- Jekyll's Charon result selects the strongest evidence-backed first arm, not a
+  transferable pass. Every title needs a new exact-text four-passage
+  fingerprint; Jekyll's fingerprint must never be reused.
+- Canonical source preparation passes for Dorian, Frankenstein, and White Fang.
+  Dorian and White Fang match their backend mirrors; Frankenstein does not.
+  Dracula fails closed because all 27 canonical chapters omit `bookSlug`, and
+  its passing backend mirror produces different text.
+- Cover readiness, not manuscript length, determines the immediate order:
+  Dorian has a historical differently slugged pair to audit, Frankenstein has
+  an unpromoted historical pair plus source divergence, White Fang has no
+  retained pair, and Dracula has covers but needs controlled source repair.
+- Historical filenames, report paths, and remote object URLs are not retained
+  audio evidence. The current tree contains no MP3/WAV/FLAC under
+  `internal/audiobook_lab`.
+- Dry preflight only produced source hashes, four-passage fingerprints, and
+  cost arithmetic. No audio, provider call, upload, release mutation, public
+  exposure, or paid-lock access occurred; production remains 4/32.

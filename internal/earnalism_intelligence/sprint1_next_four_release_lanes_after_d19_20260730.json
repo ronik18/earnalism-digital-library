@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-30T08:54:26Z",
+  "branch": "codex/next-four-release-lanes",
+  "baseline_commit": "8e56e1af",
+  "scope": "The four remaining Sprint 1 titles that still retain one bounded representative synthetic candidate after the D19 lane.",
+  "current_release_truth": {
+    "public_readers": 32,
+    "public_audiobooks": 4,
+    "audio_hidden_titles": 28,
+    "live_audio_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ],
+    "changed_by_this_audit": false
+  },
+  "selection_policy": {
+    "source": "internal/earnalism_intelligence/sprint1_audiobook_release_conveyor_v1.json",
+    "eligible_route": "one_bounded_representative_candidate_then_source_bound_delivery",
+    "eligible_before_consumed_attempts": [
+      "dracula",
+      "frankenstein",
+      "jekyll-and-hyde",
+      "picture-of-dorian-gray",
+      "white-fang",
+      "pride-and-prejudice"
+    ],
+    "excluded_consumed_titles": {
+      "jekyll-and-hyde": "Charon representative attempt already passed and is blocked on canonical covers.",
+      "pride-and-prejudice": "Chatterbox representative attempt is consumed and closed after ordered-content failure."
+    },
+    "selected_slugs": [
+      "picture-of-dorian-gray",
+      "frankenstein",
+      "white-fang",
+      "dracula"
+    ],
+    "finite_attempt_contract": {
+      "new_synthetic_model_families_per_title_max": 1,
+      "representative_passages_per_candidate": 4,
+      "targeted_repairs_per_title_max": 1,
+      "failed_fingerprint_retries_max": 0,
+      "full_title_generation_requires_representative_pass": true
+    }
+  },
+  "active_release_gates": {
+    "asr_manuscript_score_min": 9.7,
+    "coverage_min": 0.98,
+    "overall_listening_score_min": 8.9,
+    "per_dimension_score_min": 8.9,
+    "confidence_min": 0.9,
+    "fatal_flags_required_false": true,
+    "first_last_order_required": true,
+    "measured_sync_required": true,
+    "rights_covers_checksum_metadata_endpoint_browser_required": true,
+    "empty_blocker_list_required": true
+  },
+  "candidate_basis": {
+    "provider": "google",
+    "model_family": "Google Cloud Text-to-Speech Chirp 3 HD",
+    "voice": "en-GB-Chirp3-HD-Charon",
+    "language_code": "en-GB",
+    "speaking_rate": 0.94,
+    "classification": "BEST_EVIDENCE_BACKED_FIRST_ARM_NOT_A_QUALITY_CLAIM",
+    "basis_title": "jekyll-and-hyde",
+    "basis_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_google_voice_bakeoff_20260728.json",
+    "basis_result": {
+      "normalized_objective_scores": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "listening_scores": [
+        9.4,
+        9.4,
+        9.4,
+        9.4
+      ],
+      "minimum_confidence": 0.95,
+      "fatal_flags": []
+    },
+    "non_transferability_rule": "Jekyll's result selects the first arm only. It does not prove quality for another title. Every selected title requires its own exact-text fingerprint and four-passage objective and listening evidence.",
+    "jekyll_fingerprint_must_not_be_reused": "8f3cb33e3ef2a8058f6149bd2d100c9fa84233e6346e1d92ec5c9d03c9e16b71"
+  },
+  "ranked_lanes": [
+    {
+      "rank": 1,
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "language": "en",
+      "canonical_root": "data/controlled_publications/picture-of-dorian-gray",
+      "source_url": "https://www.gutenberg.org/ebooks/174",
+      "literary_rights": "PASS_PUBLIC_DOMAIN_READER_SOURCE",
+      "chapter_count": 21,
+      "sanitized_source_characters": 428577,
+      "sanitized_source_sha256": "fb64fa570b93f43f1c13973df889bd30e024fc27124a53a5a4427fd6de179d00",
+      "canonical_backend_source_parity": true,
+      "source_preflight": "PASS_PRIVATE_INPUT_READY",
+      "canonical_front_cover_url": "",
+      "canonical_back_cover_url": "",
+      "cover_state": "CANONICAL_PAIR_MISSING_HISTORICAL_PAIR_REQUIRES_EXACT_SLUG_AUDIT_AND_PROMOTION",
+      "historical_front_candidate_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291684/earnalism/covers/front/cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+      "historical_back_candidate_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291688/earnalism/covers/back/back_cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+      "historical_candidate_slug": "the-picture-of-dorian-gray",
+      "prior_attempt_count": 0,
+      "provider_failure_registry_state": "INCOMPLETE_FAIL_CLOSED",
+      "recommended_first_arm": {
+        "voice": "en-GB-Chirp3-HD-Charon",
+        "speaking_rate": 0.94,
+        "title_profile": "epigrammatic_social_dialogue",
+        "preflight_status": "AUDITION_PREFLIGHT_PASS",
+        "attempt_fingerprint": "b83e0703280dcf9deb42594ca5f12cbb127c559d89bfe53458a2ff527a6c3b5d",
+        "representative_characters": 1128,
+        "estimated_synthesis_usd": 0.02256,
+        "provider_calls_ran": false
+      },
+      "exact_blockers": [
+        "CANONICAL_FRONT_AND_BACK_COVERS_MISSING",
+        "HISTORICAL_COVER_PAIR_IS_BOUND_TO_A_DIFFERENT_SLUG_AND_IS_NOT_CANONICAL",
+        "REPRESENTATIVE_AUDIO_OBJECTIVE_AND_LISTENING_QA_NOT_RUN",
+        "FULL_TITLE_AUDIO_SYNC_DELIVERY_ENDPOINT_AND_BROWSER_EVIDENCE_MISSING"
+      ],
+      "provider_free_fallback": "Exact rights-cleared licensed recording import with recording rights, provenance, exact audio checksum, and manuscript binding; no title-only or filename-only reuse.",
+      "source_prepare_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_google_english_input.py --slug picture-of-dorian-gray --controlled-root data/controlled_publications --output-root /private/tmp/earnalism-next-four-source-freeze",
+      "cover_status_command": "curl -fsS -H \"Authorization: Bearer ${EARNALISM_ADMIN_TOKEN:?}\" https://api.theearnalism.com/api/admin/books/cover-status | jq '.books[] | select(.slug == \"picture-of-dorian-gray\")'",
+      "licensed_import_packet_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug picture-of-dorian-gray --candidate-kind licensed_audio_import --asset-root . --output-root /private/tmp/earnalism-next-four-licensed-import"
+    },
+    {
+      "rank": 2,
+      "slug": "frankenstein",
+      "title": "Frankenstein; or, The Modern Prometheus",
+      "author": "Mary Shelley",
+      "language": "en",
+      "canonical_root": "data/controlled_publications/frankenstein",
+      "source_url": "https://www.gutenberg.org/ebooks/84",
+      "literary_rights": "PASS_PUBLIC_DOMAIN_READER_SOURCE",
+      "chapter_count": 28,
+      "sanitized_source_characters": 418383,
+      "sanitized_source_sha256": "e8f149a1b23a3685cadc719366afc66a4be48c869c7bce804ec9ed00d44f8028",
+      "backend_mirror_source_sha256": "abc8f3619bc79d5ab6e73a865bb76635028789d72e14c2387b40f6db59dfc35f",
+      "canonical_backend_source_parity": false,
+      "source_preflight": "PASS_PRIVATE_INPUT_READY_FROM_CANONICAL_ROOT",
+      "canonical_front_cover_url": "",
+      "canonical_back_cover_url": "",
+      "cover_state": "CANONICAL_PAIR_MISSING_HISTORICAL_EXACT_SLUG_PAIR_REQUIRES_AUDIT_AND_PROMOTION",
+      "historical_front_candidate_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566127/earnalism/covers/front/cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+      "historical_back_candidate_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566151/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+      "prior_attempt_count": 0,
+      "provider_failure_registry_state": "INCOMPLETE_FAIL_CLOSED",
+      "recommended_first_arm": {
+        "voice": "en-GB-Chirp3-HD-Charon",
+        "speaking_rate": 0.94,
+        "title_profile": "gothic_restraint_and_dialogue",
+        "preflight_status": "AUDITION_PREFLIGHT_PASS",
+        "attempt_fingerprint": "54bdcd5feb7357f0ec752943fe3f8e8e937905fcaf8b6c75e097d1737a18ee7c",
+        "representative_characters": 1513,
+        "estimated_synthesis_usd": 0.03026,
+        "provider_calls_ran": false
+      },
+      "exact_blockers": [
+        "CANONICAL_FRONT_AND_BACK_COVERS_MISSING",
+        "CANONICAL_ROOT_AND_BACKEND_MIRROR_MANUSCRIPTS_DIVERGE",
+        "HISTORICAL_COVER_PAIR_NOT_CANONICALLY_PROMOTED",
+        "REPRESENTATIVE_AUDIO_OBJECTIVE_AND_LISTENING_QA_NOT_RUN",
+        "FULL_TITLE_AUDIO_SYNC_DELIVERY_ENDPOINT_AND_BROWSER_EVIDENCE_MISSING"
+      ],
+      "provider_free_fallback": "Exact rights-cleared licensed recording import with recording rights, provenance, exact audio checksum, and manuscript binding; no title-only or filename-only reuse.",
+      "source_prepare_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_google_english_input.py --slug frankenstein --controlled-root data/controlled_publications --output-root /private/tmp/earnalism-next-four-source-freeze",
+      "cover_status_command": "curl -fsS -H \"Authorization: Bearer ${EARNALISM_ADMIN_TOKEN:?}\" https://api.theearnalism.com/api/admin/books/cover-status | jq '.books[] | select(.slug == \"frankenstein\")'",
+      "licensed_import_packet_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug frankenstein --candidate-kind licensed_audio_import --asset-root . --output-root /private/tmp/earnalism-next-four-licensed-import"
+    },
+    {
+      "rank": 3,
+      "slug": "white-fang",
+      "title": "White Fang",
+      "author": "Jack London",
+      "language": "en",
+      "canonical_root": "data/controlled_publications/white-fang",
+      "source_url": "https://www.gutenberg.org/ebooks/910",
+      "literary_rights": "PASS_PUBLIC_DOMAIN_READER_SOURCE",
+      "chapter_count": 25,
+      "sanitized_source_characters": 401043,
+      "sanitized_source_sha256": "1196a80b33f6fc76d5608f5e2420317801d8e7af838a698d1a8ec37138ec25dc",
+      "canonical_backend_source_parity": true,
+      "source_preflight": "PASS_PRIVATE_INPUT_READY",
+      "canonical_front_cover_url": "",
+      "canonical_back_cover_url": "",
+      "cover_state": "NO_CANONICAL_OR_RETAINED_EXACT_COVER_PAIR",
+      "prior_attempt_count": 0,
+      "provider_failure_registry_state": "INCOMPLETE_FAIL_CLOSED",
+      "recommended_first_arm": {
+        "voice": "en-GB-Chirp3-HD-Charon",
+        "speaking_rate": 0.94,
+        "title_profile": "frontier_naturalism_action",
+        "preflight_status": "AUDITION_PREFLIGHT_PASS",
+        "attempt_fingerprint": "f82171d76d1bbba34222c0deb831fc219c4c571b07ee8a519ee7d3de1b77e3b4",
+        "representative_characters": 1743,
+        "estimated_synthesis_usd": 0.03486,
+        "provider_calls_ran": false
+      },
+      "exact_blockers": [
+        "CANONICAL_FRONT_AND_BACK_COVERS_MISSING",
+        "NO_RETAINED_EXACT_COVER_PAIR_AVAILABLE_FOR_AUDIT",
+        "REPRESENTATIVE_AUDIO_OBJECTIVE_AND_LISTENING_QA_NOT_RUN",
+        "FULL_TITLE_AUDIO_SYNC_DELIVERY_ENDPOINT_AND_BROWSER_EVIDENCE_MISSING"
+      ],
+      "provider_free_fallback": "Exact rights-cleared licensed recording import with recording rights, provenance, exact audio checksum, and manuscript binding; no title-only or filename-only reuse.",
+      "source_prepare_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_google_english_input.py --slug white-fang --controlled-root data/controlled_publications --output-root /private/tmp/earnalism-next-four-source-freeze",
+      "cover_status_command": "curl -fsS -H \"Authorization: Bearer ${EARNALISM_ADMIN_TOKEN:?}\" https://api.theearnalism.com/api/admin/books/cover-status | jq '.books[] | select(.slug == \"white-fang\")'",
+      "licensed_import_packet_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug white-fang --candidate-kind licensed_audio_import --asset-root . --output-root /private/tmp/earnalism-next-four-licensed-import"
+    },
+    {
+      "rank": 4,
+      "slug": "dracula",
+      "title": "Dracula",
+      "author": "Bram Stoker",
+      "language": "en",
+      "canonical_root": "data/controlled_publications/dracula",
+      "source_url": "https://www.gutenberg.org/ebooks/345",
+      "literary_rights": "PASS_PUBLIC_DOMAIN_READER_SOURCE",
+      "chapter_count": 27,
+      "canonical_source_characters_observed": 881119,
+      "sanitized_source_sha256": null,
+      "backend_mirror_source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
+      "canonical_backend_source_parity": false,
+      "source_preflight": "BLOCKED_CHAPTER_SLUG_MISMATCH",
+      "source_preflight_detail": "All 27 canonical root chapter files omit bookSlug, so the fail-closed source preparation utility rejects chapter-001 before producing a manifest.",
+      "canonical_front_cover_url": "https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp",
+      "canonical_back_cover_url": "https://theearnalism.com/assets/books/dracula/dracula-back-cover.webp",
+      "cover_state": "CANONICAL_PAIR_PRESENT",
+      "prior_attempt_count": 0,
+      "provider_failure_registry_state": "INCOMPLETE_FAIL_CLOSED",
+      "recommended_first_arm": {
+        "voice": "en-GB-Chirp3-HD-Charon",
+        "speaking_rate": 0.94,
+        "title_profile": "epistolary_gothic_suspense",
+        "preflight_status": "NOT_RUN_SOURCE_BINDING_BLOCKED",
+        "attempt_fingerprint": null,
+        "provider_calls_ran": false
+      },
+      "exact_blockers": [
+        "CANONICAL_CHAPTER_BOOKSLUG_BINDING_MISSING_FOR_ALL_27_CHAPTERS",
+        "CANONICAL_ROOT_AND_BACKEND_MIRROR_MANUSCRIPTS_DIVERGE",
+        "TITLE_SPECIFIC_ATTEMPT_FINGERPRINT_NOT_MATERIALIZED",
+        "REPRESENTATIVE_AUDIO_OBJECTIVE_AND_LISTENING_QA_NOT_RUN",
+        "FULL_TITLE_AUDIO_SYNC_DELIVERY_ENDPOINT_AND_BROWSER_EVIDENCE_MISSING"
+      ],
+      "provider_free_fallback": "Exact rights-cleared licensed recording import with recording rights, provenance, exact audio checksum, and manuscript binding; no title-only or filename-only reuse.",
+      "source_prepare_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_google_english_input.py --slug dracula --controlled-root data/controlled_publications --output-root /private/tmp/earnalism-next-four-source-freeze",
+      "licensed_import_packet_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug dracula --candidate-kind licensed_audio_import --asset-root . --output-root /private/tmp/earnalism-next-four-licensed-import"
+    }
+  ],
+  "retained_media_audit": {
+    "repository_mp3_wav_flac_count_under_internal_audiobook_lab": 0,
+    "decision": "NO_RETAINED_AUDIO_ADMITTED",
+    "reason": "Historical report paths and remote-looking object URLs cannot establish existence, rights, provenance, or exact manuscript match."
+  },
+  "safe_parallelism": {
+    "parallel_now": [
+      "canonical cover inventory and exact-asset review",
+      "canonical/backend manuscript parity reconciliation",
+      "source-bound private input preparation",
+      "licensed-import packet preparation without audio"
+    ],
+    "serialized_later": [
+      "paid provider execution",
+      "one-title objective and listening QA admission",
+      "full-title generation",
+      "catalog release mutation and deployment"
+    ],
+    "reason": "Preparation can proceed independently, but the conveyor retains one bounded title-specific attempt and fail-closed release mutations."
+  },
+  "audit_actions": {
+    "provider_calls_ran": false,
+    "audio_generated": false,
+    "audio_uploaded": false,
+    "public_release_mutated": false,
+    "controlled_publication_mutated": false,
+    "paid_tts_lock_present_on_origin_main": false,
+    "paid_tts_lock_inspected": false,
+    "paid_tts_lock_touched": false
+  },
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_google_english_input.py --slug picture-of-dorian-gray --controlled-root data/controlled_publications --output-root /private/tmp/earnalism-next-four-source-freeze"
+}
