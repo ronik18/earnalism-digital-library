@@ -1,15 +1,15 @@
 {
   "audio_enabled": true,
   "audiobook_active_release": {
-    "active_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
-    "candidate_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+    "active_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+    "candidate_release_descriptor_sha256": "",
     "retained_release_descriptor_sha256s": [
-      "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
-      "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0"
+      "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+      "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe"
     ],
     "rollout": {
-      "percentage": 25,
-      "salt": "open-window-package-v2-canary-20260729"
+      "percentage": 0,
+      "salt": ""
     },
     "schema_version": "audiobook_active_release.v1",
     "slug": "the-open-window",
@@ -162,7 +162,7 @@
       "word_count": 1208
     }
   },
-  "audiobook_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
+  "audiobook_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
   "author": "Saki",
   "chapter_count": 1,
   "chapters": [

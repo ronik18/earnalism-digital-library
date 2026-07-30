@@ -1,16 +1,16 @@
 {
   "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v2",
-  "generated_at": "2026-07-30T04:08:42Z",
+  "generated_at": "2026-07-30T04:22:53Z",
   "slug": "the-open-window",
   "title": "The Open Window",
   "author": "Saki",
-  "decision": "PACKAGE_V2_FIVE_PERCENT_CANDIDATE_BROWSER_CHECKPOINT_PASSED",
+  "decision": "PACKAGE_V2_TWENTY_FIVE_PERCENT_PRODUCTION_CHECKPOINT_PASSED_ADVANCE_TO_100_PERCENT",
   "customer_release_state": {
     "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
     "active_delivery_contract": "sticky_cohort_legacy_or_package_v2",
     "active_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
     "candidate_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
-    "candidate_rollout_percentage": 5,
+    "candidate_rollout_percentage": 25,
     "candidate_selected_for_customers": true,
     "legacy_descriptor_still_selected": true,
     "current_public_audiobook_count": 4,
@@ -159,6 +159,98 @@
       "public_audiobook_count": 4,
       "new_live_audiobook_claimed": false,
       "decision": "PACKAGE_V2_FIVE_PERCENT_CANDIDATE_BROWSER_CHECKPOINT_PASSED"
+    },
+    {
+      "checkpoint": "TWENTY_FIVE_PERCENT_PRODUCTION",
+      "recorded_at": "2026-07-30T04:22:53Z",
+      "rollout_percentage": 25,
+      "rollout_salt": "open-window-package-v2-canary-20260729",
+      "rollout_commit": "68024887cc54823e3238360c8c90eab5891ae083",
+      "pull_request": 181,
+      "main_merge_commit": "169b6d7143cf9d54408784b43cef87f65e758050",
+      "deployment_validation": {
+        "main_regression_suite": "SUCCESS",
+        "go_live_regression_gate": "SUCCESS",
+        "railway_deployment_id": "5d5db8a5-5963-4e8a-ba46-9600c6990472",
+        "railway_deployment_status": "SUCCESS"
+      },
+      "sticky_cohort_sample": {
+        "new_identity_count": 3,
+        "candidate_sample_index": 1,
+        "legacy_sample_index": 3,
+        "candidate_repeat_status": 200,
+        "candidate_repeat_same_package_version": true,
+        "legacy_repeat_status": 404
+      },
+      "candidate_http_validation": {
+        "manifest_status": 200,
+        "manifest_descriptor_matches": true,
+        "manifest_package_version_matches": true,
+        "package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+        "release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+        "segment_head_status": 200,
+        "segment_head_content_length": 4712013,
+        "segment_range_status": 206,
+        "segment_range_content_length": 64,
+        "segment_range_total_bytes": 4712013,
+        "timestamps_status": 200,
+        "timestamps_size_bytes": 12839,
+        "timestamps_sha256": "637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070",
+        "invalid_range_status": 416,
+        "wrong_package_version_status": 404,
+        "legacy_cohort_candidate_segment_status": 404
+      },
+      "legacy_http_validation": {
+        "monolith_range_status": 206,
+        "monolith_range_content_length": 64,
+        "monolith_total_bytes": 6283053
+      },
+      "catalog_truth_validation": {
+        "public_audiobook_count": 4,
+        "public_audiobook_slugs": [
+          "book-2b9853ec52",
+          "a-ghost-story",
+          "sredni-vashtar",
+          "the-open-window"
+        ]
+      },
+      "browser_validation": {
+        "browser": "Chromium",
+        "browser_context": "isolated_production_contexts",
+        "independent_contexts_sampled": 2,
+        "candidate_contexts_obtained": 1,
+        "legacy_contexts_obtained": 1,
+        "candidate": {
+          "preintent_audio_absent": true,
+          "exact_package_route_retained": true,
+          "ready_state": 4,
+          "paused": false,
+          "duration_seconds": 392.6,
+          "seek_requested_seconds": 180,
+          "seek_continued_playback": true,
+          "seek_observed_seconds_approx": 181.53,
+          "console_error_count": 0,
+          "page_error_count": 0
+        },
+        "legacy": {
+          "preintent_audio_absent": true,
+          "exact_legacy_monolith_route_retained": true,
+          "ready_state": 4,
+          "paused": false,
+          "duration_seconds": 392.6,
+          "page_error_count": 0,
+          "expected_package_manifest_fallback_404_count": 2,
+          "unexpected_console_error_count": 0
+        }
+      },
+      "candidate_browser_playback_validated": true,
+      "legacy_browser_playback_validated": true,
+      "cross_segment_auto_advance_validated": false,
+      "cross_segment_reason": "package contains one segment",
+      "legacy_descriptor_still_selected": true,
+      "public_audiobook_count": 4,
+      "new_live_audiobook_claimed": false,
+      "decision": "PACKAGE_V2_TWENTY_FIVE_PERCENT_PRODUCTION_CHECKPOINT_PASSED_ADVANCE_TO_100_PERCENT"
     }
   ],
   "package_identity": {

@@ -1037,3 +1037,34 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Do not claim cross-segment auto-advance from this checkpoint: the Open Window
   package contains exactly one segment. Test that behavior only on a future
   multi-segment package. No browser latency was measured.
+
+## 2026-07-30 — Twenty-five-percent package-v2 checkpoint supports promotion
+
+- Preserve the completed 0% and 5% checkpoints when recording a wider rollout;
+  deployment evidence and observations at 25% are additive, not replacements.
+- PR `#181` merged as
+  `169b6d7143cf9d54408784b43cef87f65e758050`; the main regression suite, GO
+  LIVE regression gate, and repository-linked Railway deployment
+  `5d5db8a5-5963-4e8a-ba46-9600c6990472` all completed successfully.
+- At 25%, a fresh sample needed only three identities to obtain both delivery
+  paths: candidate at index 1 and legacy at index 3. Repeated selection
+  remained sticky at HTTP `200` for candidate package discovery and `404` for
+  the legacy cohort.
+- The candidate manifest remained bound to the exact approved descriptor and
+  package version. Segment `HEAD` returned `200` and 4,712,013 bytes; a
+  64-byte range returned `206`; timestamps returned 12,839 bytes with the
+  expected SHA-256; invalid range returned `416`; wrong version and legacy
+  candidate-segment access returned `404`.
+- The retained legacy monolith independently returned a 64-byte `206` range
+  from 6,283,053 total bytes. Home curation continued to report exactly the
+  same four public audiobook slugs.
+- Two isolated Chromium contexts, one per cohort, had no audio before intent.
+  Candidate playback used the exact package route at `readyState=4`, continued
+  after a seek to 180 seconds, and produced no console or page errors. Legacy
+  playback used the exact monolith at `readyState=4` with no page errors; its
+  only two network-console `404` entries were expected package-manifest
+  fallback probes.
+- This one-segment title still cannot prove cross-segment auto-advance. The
+  successful 25% checkpoint supports the separately prepared 100% active
+  pointer promotion, but evidence must not claim that promotion until its own
+  deploy and package-only production validation complete.
