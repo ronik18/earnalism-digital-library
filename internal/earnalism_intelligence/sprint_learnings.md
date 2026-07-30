@@ -1547,3 +1547,19 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Only after all cohort checks passed was the pointer advanced to `25%` in a
   separate branch. Narration, storage, receipts, approval truth, rollout salt,
   and the four-title public count remained unchanged.
+
+## 2026-07-30 — Full promotion must clear the candidate state, not leave 100 percent routing
+
+- Sredni's production `25%` checkpoint repeated the deterministic candidate and
+  legacy manifest/Range/fail-closed tests and the real browser legacy one-click
+  proof before promotion.
+- The full-promotion operation does not leave a `100%` percentage canary. It
+  makes the package-v2 descriptor active, clears the candidate descriptor and
+  rollout salt, resets percentage to `0`, and retains the approved legacy
+  descriptor for explicit rollback.
+- After deployment, every identity must receive the same exact package-v2
+  manifest and segment. The customer browser must show the package segment URL
+  on the first click with advancing playback and zero console errors. A
+  monolithic legacy source at that point is a release-blocking failure.
+- No narration, storage object, receipt, approval flag, or public audiobook
+  count changes during this delivery promotion.
