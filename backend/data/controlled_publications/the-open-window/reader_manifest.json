@@ -8,7 +8,7 @@
       "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0"
     ],
     "rollout": {
-      "percentage": 5,
+      "percentage": 25,
       "salt": "open-window-package-v2-canary-20260729"
     },
     "schema_version": "audiobook_active_release.v1",

@@ -1,17 +1,17 @@
 {
-  "schema_version": "earnalism_audiobook_package_v2_zero_percent_canary_evidence.v1",
-  "generated_at": "2026-07-29T20:06:54Z",
+  "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v2",
+  "generated_at": "2026-07-30T04:08:42Z",
   "slug": "the-open-window",
   "title": "The Open Window",
   "author": "Saki",
-  "decision": "PACKAGE_V2_CANDIDATE_STAGED_ZERO_PERCENT_LEGACY_RELEASE_REMAINS_ACTIVE",
+  "decision": "PACKAGE_V2_FIVE_PERCENT_CANDIDATE_BROWSER_CHECKPOINT_PASSED",
   "customer_release_state": {
     "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
-    "active_delivery_contract": "legacy",
+    "active_delivery_contract": "sticky_cohort_legacy_or_package_v2",
     "active_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
     "candidate_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
-    "candidate_rollout_percentage": 0,
-    "candidate_selected_for_customers": false,
+    "candidate_rollout_percentage": 5,
+    "candidate_selected_for_customers": true,
     "legacy_descriptor_still_selected": true,
     "current_public_audiobook_count": 4,
     "current_public_audiobook_slugs": [
@@ -23,6 +23,144 @@
     "new_live_audiobook_claimed": false,
     "live_count_changed_by_canary": false
   },
+  "rollout_history": [
+    {
+      "checkpoint": "ZERO_PERCENT_STAGED",
+      "recorded_at": "2026-07-29T20:06:54Z",
+      "rollout_percentage": 0,
+      "active_delivery_contract": "legacy",
+      "candidate_selected_for_customers": false,
+      "legacy_descriptor_still_selected": true,
+      "public_audiobook_count": 4,
+      "decision": "PACKAGE_V2_CANDIDATE_STAGED_ZERO_PERCENT_LEGACY_RELEASE_REMAINS_ACTIVE"
+    },
+    {
+      "checkpoint": "FIVE_PERCENT_PRODUCTION",
+      "recorded_at": "2026-07-30T03:58:13Z",
+      "rollout_percentage": 5,
+      "rollout_salt": "open-window-package-v2-canary-20260729",
+      "rollout_commit": "7e900197a77f4a90ea4b803d3796ef74a0ae868d",
+      "main_merge_commit": "83e806d52787605c3396d61bebefd6aa3e3d742f",
+      "sticky_cohort_sample": {
+        "new_identity_count": 62,
+        "candidate_count": 1,
+        "legacy_count": 61,
+        "candidate_sample_index": 62,
+        "candidate_repeat_status": 200,
+        "candidate_repeat_same_package_version": true,
+        "legacy_repeat_status": 404,
+        "legacy_repeat_cache_control": "private, no-store"
+      },
+      "candidate_http_validation": {
+        "manifest_status": 200,
+        "manifest_cache_control": "private, max-age=60, must-revalidate",
+        "package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+        "segment_status": 206,
+        "segment_content_range": "bytes 0-63/4712013",
+        "segment_content_length": 64,
+        "segment_content_type": "audio/mpeg",
+        "segment_package_version_header_matches": true,
+        "segment_prefix_is_mp3": true,
+        "timestamps_fetched": true,
+        "timestamps_size_bytes": 12839,
+        "timestamps_sha256": "637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070",
+        "invalid_range_status": 416,
+        "wrong_package_version_status": 404,
+        "legacy_cohort_candidate_segment_status": 404
+      },
+      "browser_legacy_no_regression": {
+        "url": "https://www.theearnalism.com/reader/the-open-window",
+        "cohort": "legacy",
+        "page_1_audio_control_enabled": false,
+        "page_1_message": "Audio starts on reading pages",
+        "page_2_before_intent_audio_src": null,
+        "page_2_before_intent_preload": "none",
+        "first_click_primed_url": "/api/reader/book/the-open-window/audiobook",
+        "first_click_error": false,
+        "second_click_paused": false,
+        "second_click_ready_state": 4,
+        "second_click_preload": "auto",
+        "pause_control_visible": true,
+        "stop_control_visible": true,
+        "console_log_count": 0,
+        "playback_stopped_after_validation": true,
+        "measured_browser_latency_ms": null,
+        "candidate_browser_playback_validated_by_this_legacy_checkpoint": false
+      },
+      "browser_candidate_playback": {
+        "recorded_at": "2026-07-30T04:08:42Z",
+        "browser": "Chromium 149.0.7827.55",
+        "browser_context": "isolated_production_context",
+        "url": "https://www.theearnalism.com/reader/the-open-window",
+        "independent_contexts_sampled": 19,
+        "candidate_contexts_obtained": 1,
+        "manifest_statuses": [
+          200,
+          200
+        ],
+        "before_user_intent": {
+          "audio_src": null,
+          "audio_current_src": "",
+          "preload": "none",
+          "ready_state": 0,
+          "paused": true
+        },
+        "page_2_first_click": {
+          "canonical_package_segment_route_bound": true,
+          "range_status": 206,
+          "range_request": "bytes=0-",
+          "ready_state": 4,
+          "paused": true,
+          "duration_seconds": 392.6,
+          "error": false
+        },
+        "page_2_second_click": {
+          "paused": false,
+          "current_time_seconds_approx": 2.06,
+          "preload": "auto",
+          "pause_control_visible": true,
+          "stop_control_visible": true,
+          "range_status": 206,
+          "range_request": "bytes=98304-"
+        },
+        "programmatic_seek": {
+          "requested_time_seconds": 300,
+          "continued_playback": true,
+          "observed_time_seconds_approx": 302.04,
+          "range_status": 206,
+          "range_request": "bytes=3571712-"
+        },
+        "page_advance": {
+          "target_page": 3,
+          "audio_stopped_and_reset": true,
+          "audio_src": null,
+          "reprime_succeeded": true
+        },
+        "reload": {
+          "returned_to_page": 1,
+          "preintent_audio_absent": true,
+          "page_2_replay_succeeded": true,
+          "used_cached_manifest_and_media": true,
+          "paused": false,
+          "current_time_seconds_approx": 1.46,
+          "exact_package_route_retained": true
+        },
+        "console_error_count": 0,
+        "page_error_count": 0,
+        "non_error_preload_warnings_only": true,
+        "stop_reset_src_and_current_time": true,
+        "candidate_browser_playback_validated": true,
+        "cross_segment_auto_advance_validated": false,
+        "cross_segment_reason": "package contains one segment",
+        "measured_browser_latency_ms": null
+      },
+      "candidate_browser_playback_validated": true,
+      "legacy_descriptor_still_selected": true,
+      "public_audiobook_count": 4,
+      "new_live_audiobook_claimed": false,
+      "decision": "PACKAGE_V2_FIVE_PERCENT_CANDIDATE_BROWSER_CHECKPOINT_PASSED"
+    }
+  ],
   "package_identity": {
     "schema_version": "audiobook_package_manifest.v2",
     "release_descriptor_identity_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
@@ -270,7 +408,7 @@
     "controlled_publication_mutation",
     "code_mutation",
     "cloud_upload_or_delete",
-    "rollout_percentage_increase",
+    "rollout_percentage_increase_by_this_evidence_update",
     "active_release_descriptor_flip",
     "public_live_count_change"
   ],
