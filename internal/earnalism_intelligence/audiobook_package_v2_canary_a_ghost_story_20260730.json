@@ -1,0 +1,105 @@
+{
+  "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v1",
+  "generated_at": "2026-07-30T11:21:50Z",
+  "slug": "a-ghost-story",
+  "title": "A Ghost Story",
+  "author": "Mark Twain",
+  "decision": "ZERO_PERCENT_PACKAGE_V2_CANDIDATE_STAGED",
+  "customer_release_state": {
+    "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
+    "active_delivery_contract": "legacy",
+    "active_release_descriptor_sha256": "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d",
+    "candidate_release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+    "candidate_rollout_percentage": 0,
+    "candidate_selected_for_customers": false,
+    "current_public_audiobook_count": 4,
+    "new_live_audiobook_claimed": false,
+    "live_count_changed_by_staging": false
+  },
+  "approved_release_evidence": {
+    "asr_source_score": 9.88,
+    "coverage": 0.995571,
+    "listening_score": 9.4,
+    "listening_confidence": 0.95,
+    "fatal_flags": [],
+    "measured_sync_score": 1.0,
+    "auto_estimated_sync": false,
+    "first_words_match": true,
+    "last_words_match": true,
+    "ordered_content_integrity": true,
+    "release_blockers": []
+  },
+  "package_identity": {
+    "release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+    "legacy_release_descriptor_sha256": "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d",
+    "package_version": "sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422",
+    "package_manifest_sha256": "5f5be1e54d165326bacafcf6aa18a74f2f0e3fc2cfc1590d7baf64c6c7f28477",
+    "source_audio_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+    "manuscript_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+    "duration_ms": 880922,
+    "segment_count": 2,
+    "word_count": 2423,
+    "paragraph_count": 30,
+    "sync_tier": "section",
+    "narration_regenerated": false,
+    "segments": [
+      {
+        "segment_id": "c001-s001",
+        "cumulative_start_ms": 0,
+        "duration_ms": 267348,
+        "audio_sha256": "27df70e32f7b1ab6d36001b3240dd899b2c6c223c199caacacbfa811b325e8bd",
+        "audio_size_bytes": 3208941
+      },
+      {
+        "segment_id": "c001-s002",
+        "cumulative_start_ms": 267348,
+        "duration_ms": 613574,
+        "audio_sha256": "4202f85dc536cb49a4108c09f93615b2ca2640e215d61c215fbea97aeeac418d",
+        "audio_size_bytes": 7363629
+      }
+    ]
+  },
+  "storage_evidence": {
+    "preflight": "PASS_PRODUCTION_AND_DR_RELEASE_ELIGIBLE",
+    "production": {
+      "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+      "region": "us-west-004",
+      "payload_object_count": 20,
+      "payload_size_bytes": 102547050,
+      "release_manifest_object_count": 1,
+      "release_manifest_size_bytes": 11937,
+      "governance_object_lock": true,
+      "full_download_sha256_verified": true
+    },
+    "disaster_recovery": {
+      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+      "region": "us-east-005",
+      "payload_object_count": 20,
+      "payload_size_bytes": 102547050,
+      "release_manifest_object_count": 1,
+      "release_manifest_size_bytes": 11937,
+      "governance_object_lock": true,
+      "full_download_sha256_verified": true
+    },
+    "default_retention_days": 30,
+    "minimum_remaining_retention_days_verified": 29,
+    "immutable_key_overwrite": false
+  },
+  "validation": {
+    "active_release_status": "RELEASE_POINTER_VALID",
+    "controlled_publication_mirrors_match": true,
+    "focused_tests": "PASS_178",
+    "frontend_audio_safety_tests": "PASS_70",
+    "production_zero_percent_http_checkpoint": "PENDING_DEPLOY",
+    "production_zero_percent_browser_checkpoint": "PENDING_DEPLOY",
+    "git_diff_check": "PASS"
+  },
+  "safety": {
+    "audiobook_approval_flags_changed": false,
+    "public_audiobook_count_changed": false,
+    "paid_tts_lock_touched": false,
+    "operator_credentials_committed": false,
+    "operator_credentials_copied_to_railway": false
+  },
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug a-ghost-story"
+}

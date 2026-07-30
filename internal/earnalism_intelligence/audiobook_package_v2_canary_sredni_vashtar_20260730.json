@@ -1,10 +1,10 @@
 {
   "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v1",
-  "generated_at": "2026-07-30T10:57:01Z",
+  "generated_at": "2026-07-30T11:12:10Z",
   "slug": "sredni-vashtar",
   "title": "Sredni Vashtar",
   "author": "Saki",
-  "decision": "TWENTY_FIVE_PERCENT_PRODUCTION_GREEN_FULL_PACKAGE_V2_PROMOTION_PREPARED",
+  "decision": "FULL_PACKAGE_V2_PROMOTION_PRODUCTION_GREEN",
   "customer_release_state": {
     "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
     "active_delivery_contract": "package_v2",
@@ -12,7 +12,8 @@
     "candidate_release_descriptor_sha256": "",
     "candidate_rollout_percentage": 0,
     "candidate_selected_for_customers": false,
-    "legacy_descriptor_still_selected": true,
+    "legacy_descriptor_still_selected": false,
+    "legacy_descriptor_retained_for_rollback": true,
     "current_public_audiobook_count": 4,
     "new_live_audiobook_claimed": false,
     "live_count_changed_by_canary": false
@@ -148,9 +149,39 @@
       "candidate_cohort_delivery_verified_by_deterministic_http": true
     },
     "full_promotion_focused_tests": "PASS_172",
-    "full_promotion_mutation": "LOCAL_GREEN_AWAITING_PR_MERGE_DEPLOY",
-    "full_promotion_production_http_checkpoint": "PENDING",
-    "full_promotion_production_browser_checkpoint": "PENDING"
+    "full_promotion_mutation": {
+      "status": "PASS",
+      "commit": "8d027cd5a3a7266fdc0f7220f0169269077bb69f",
+      "railway_deployment_id": "87b9c17e-a660-4050-82f0-0deab6a3f4cd"
+    },
+    "full_promotion_production_http_checkpoint": {
+      "status": "PASS",
+      "identity_a_manifest_http": 200,
+      "identity_b_manifest_http": 200,
+      "public_manifest_http": 200,
+      "package_version": "sha256-9f1e84d4377dff2d5778dd158393fd450feb37fdef5ca6e88c67191cbe277edd",
+      "identity_a_segment_range_http": 206,
+      "identity_b_segment_range_http": 206,
+      "invalid_range_http": 416,
+      "wrong_package_version_http": 404,
+      "wrong_segment_http": 404,
+      "public_audiobook_count": 4
+    },
+    "full_promotion_production_browser_checkpoint": {
+      "status": "PASS_PACKAGE_V2_ONE_CLICK",
+      "preintent_audio_src": null,
+      "preintent_current_src": "",
+      "preintent_ready_state": 0,
+      "preintent_paused": true,
+      "post_click_route": "/api/reader/book/sredni-vashtar/audiobook/packages/sha256-9f1e84d4377dff2d5778dd158393fd450feb37fdef5ca6e88c67191cbe277edd/segments/c001-s001",
+      "post_click_ready_state": 4,
+      "post_click_paused": false,
+      "post_click_current_time_seconds": 3.935355,
+      "duration_seconds": 636.84,
+      "paused_after_proof": true,
+      "paused_at_current_time_seconds": 7.823031,
+      "console_error_count": 0
+    }
   },
   "safety": {
     "audiobook_approval_flags_changed": false,
@@ -159,5 +190,5 @@
     "operator_credentials_committed": false,
     "operator_credentials_copied_to_railway": false
   },
-  "next_exact_command": "git diff --check && git status --short"
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug sredni-vashtar"
 }

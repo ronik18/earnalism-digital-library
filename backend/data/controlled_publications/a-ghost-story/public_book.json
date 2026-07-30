@@ -1,107 +1,357 @@
 {
-  "id": "controlled-a-ghost-story",
-  "slug": "a-ghost-story",
-  "title": "A Ghost Story",
-  "subtitle": "A Mark Twain comic haunting",
+  "about_author": "Mark Twain was the pen name of Samuel Langhorne Clemens, the American humorist and novelist whose satire shaped nineteenth-century literary comedy.",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "allowPublicReading": true,
+  "approved_to_publish": true,
+  "audio_asset_slug": "a-ghost-story",
+  "audio_enabled": true,
+  "audiobook": {
+    "assets": {
+      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ffe4267005f0.json",
+      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_0d8b16ee7c3d.json",
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
+      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_f705f1832a8b.json",
+      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_11f7c4689b94.vtt"
+    },
+    "duration_ms": 880944,
+    "highlight_sync_enabled": false,
+    "provider": "google",
+    "size": 7047789,
+    "sync_mode": "section_following",
+    "updated_at": "2026-07-12T15:24:05Z",
+    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3"
+  },
+  "audiobook_active_release": {
+    "active_release_descriptor_sha256": "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d",
+    "candidate_release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+    "retained_release_descriptor_sha256s": [
+      "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d",
+      "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40"
+    ],
+    "rollout": {
+      "percentage": 0,
+      "salt": "a-ghost-story-package-v2-20260730"
+    },
+    "schema_version": "audiobook_active_release.v1",
+    "slug": "a-ghost-story",
+    "status": "ACTIVE"
+  },
+  "audiobook_assets": {
+    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ffe4267005f0.json",
+    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_0d8b16ee7c3d.json",
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
+    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_f705f1832a8b.json",
+    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_11f7c4689b94.vtt"
+  },
+  "audiobook_assets_updated_at": "2026-07-12T15:24:05Z",
+  "audiobook_enabled": true,
+  "audiobook_legacy_release_descriptor_sha256": "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d",
+  "audiobook_manuscript_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+  "audiobook_model": "google-cloud-texttospeech",
+  "audiobook_package_release_evidence": {
+    "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40": {
+      "package_version": "sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422",
+      "primary_receipt_sha256": "5e9f86316b6a759a0b4481fd0adc4967a0b823e99954cfc5fb1ad87c7cfdae17",
+      "primary_release_manifest_receipt_sha256": "2288b7827c2c580b71103aea3a3be31a8b1cce486e17cfa8ea9142e0665181e3",
+      "primary_release_manifest_store": "prod",
+      "primary_release_manifest_version_id": "4_z22c3760e0722abf094f30e12_f10893d4f233cd5de_d20260730_m112022_c004_v0402017_t0010_u01785410422623",
+      "receipt_roles": [
+        "primary",
+        "replica"
+      ],
+      "release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+      "release_eligible": true,
+      "release_manifest_key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/release-manifest.json",
+      "release_manifest_sha256": "5f5be1e54d165326bacafcf6aa18a74f2f0e3fc2cfc1590d7baf64c6c7f28477",
+      "release_manifest_size_bytes": 11937,
+      "replica_receipt_sha256": "43eabcc15cd34ba6a0185beab2735f083013878d6000204ae8e9fe72e4796013",
+      "replica_release_manifest_receipt_sha256": "79afb820c399fe163e56dd664868417c05b45837e6c84d6e2065f71cc5a6f33c",
+      "replica_release_manifest_store": "dr",
+      "replica_release_manifest_version_id": "4_za83aafe65a63aaff94f90d18_f11769496e9d50702_d20260730_m112100_c005_v0501041_t0011_u01785410460158",
+      "schema_version": "audiobook_package_release_evidence.v1",
+      "slug": "a-ghost-story",
+      "staged_at": "2026-07-30T11:21:38Z"
+    }
+  },
+  "audiobook_packages": {
+    "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40": {
+      "duration_ms": 880922,
+      "highlight_sync_enabled": false,
+      "manuscript_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+      "package_version": "sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422",
+      "paragraph_count": 30,
+      "release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+      "release_evidence_version": "approved-legacy-67c5df4f27f7",
+      "schema_version": "audiobook_package_manifest.v2",
+      "segment_count": 2,
+      "slug": "a-ghost-story",
+      "source_sha256": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
+      "sync_tier": "section",
+      "tracks": [
+        {
+          "chapter_id": "chapter-001",
+          "chunks": [
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/delivery/chapter-001/segment-001-sha256-27df70e32f7b1ab6d36001b3240dd899b2c6c223c199caacacbfa811b325e8bd.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f105b393904d46d02_d20260730_m111830_c005_v0501002_t0052_u01785410310511"
+                    }
+                  ],
+                  "sha256": "27df70e32f7b1ab6d36001b3240dd899b2c6c223c199caacacbfa811b325e8bd",
+                  "size_bytes": 3208941,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/delivery/chapter-001/segment-001-sha256-27df70e32f7b1ab6d36001b3240dd899b2c6c223c199caacacbfa811b325e8bd.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1101c5bf5c23ccee_d20260730_m111446_c004_v0402030_t0030_u01785410086886"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-001-metadata-sha256-b528fe08f55fe85cf4360e300b720f88ca77e16799edf5f383e045139f143654.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f119ebf62616b22e6_d20260730_m111839_c005_v0501018_t0040_u01785410319648"
+                    }
+                  ],
+                  "sha256": "b528fe08f55fe85cf4360e300b720f88ca77e16799edf5f383e045139f143654",
+                  "size_bytes": 670,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-001-metadata-sha256-b528fe08f55fe85cf4360e300b720f88ca77e16799edf5f383e045139f143654.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f10340229c8dc0f5f_d20260730_m111511_c004_v0402023_t0052_u01785410111621"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-001-timestamps-sha256-bd5eb0a983e80ee2097413345cc3df5495a37f78d6f8c5cca494001169971ea9.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f107c55614ee76aff_d20260730_m111834_c005_v0501047_t0021_u01785410314912"
+                    }
+                  ],
+                  "sha256": "bd5eb0a983e80ee2097413345cc3df5495a37f78d6f8c5cca494001169971ea9",
+                  "size_bytes": 5882,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-001-timestamps-sha256-bd5eb0a983e80ee2097413345cc3df5495a37f78d6f8c5cca494001169971ea9.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f119d6b81c8bc4e08_d20260730_m111508_c004_v0402000_t0014_u01785410108700"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-001-sha256-661aa1d9de39e4568edfbc5a4b388836bc78d4e56c8bed083e473193172846cd.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f101133c4bbf28095_d20260730_m111837_c005_v0501020_t0011_u01785410317330"
+                    }
+                  ],
+                  "sha256": "661aa1d9de39e4568edfbc5a4b388836bc78d4e56c8bed083e473193172846cd",
+                  "size_bytes": 4181,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-001-sha256-661aa1d9de39e4568edfbc5a4b388836bc78d4e56c8bed083e473193172846cd.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1175f5f851712556_d20260730_m111510_c004_v0402015_t0033_u01785410110151"
+                  }
+                }
+              },
+              "cumulative_start_ms": 0,
+              "duration_ms": 267348,
+              "end_paragraph": 4,
+              "end_word": 752,
+              "order": 0,
+              "segment_id": "c001-s001",
+              "start_paragraph": 0,
+              "start_word": 0
+            },
+            {
+              "assets": {
+                "audio": {
+                  "mime_type": "audio/mpeg",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/delivery/chapter-001/segment-002-sha256-4202f85dc536cb49a4108c09f93615b2ca2640e215d61c215fbea97aeeac418d.mp3",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f115879d0172fe5b8_d20260730_m111845_c005_v0501045_t0045_u01785410325082"
+                    }
+                  ],
+                  "sha256": "4202f85dc536cb49a4108c09f93615b2ca2640e215d61c215fbea97aeeac418d",
+                  "size_bytes": 7363629,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/delivery/chapter-001/segment-002-sha256-4202f85dc536cb49a4108c09f93615b2ca2640e215d61c215fbea97aeeac418d.mp3",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11517fa528d7ff9c_d20260730_m111512_c004_v0402037_t0020_u01785410112958"
+                  }
+                },
+                "metadata": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-002-metadata-sha256-92f1f5e81d788e0f56d80ea3c369fa97abae435bc37ff83330f57f2d970e5b39.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f116048467e8a7179_d20260730_m111901_c005_v0501034_t0034_u01785410341133"
+                    }
+                  ],
+                  "sha256": "92f1f5e81d788e0f56d80ea3c369fa97abae435bc37ff83330f57f2d970e5b39",
+                  "size_bytes": 683,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-002-metadata-sha256-92f1f5e81d788e0f56d80ea3c369fa97abae435bc37ff83330f57f2d970e5b39.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f1044ee11de2f0127_d20260730_m111521_c004_v0402006_t0057_u01785410121632"
+                  }
+                },
+                "timestamps": {
+                  "mime_type": "application/json",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-002-timestamps-sha256-c68e8b5bfe7e38840dd5b8572747fd1395e6200874a2d36bc4f47ef435a70814.json",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f115d5360aafe0c76_d20260730_m111856_c005_v0501041_t0051_u01785410336116"
+                    }
+                  ],
+                  "sha256": "c68e8b5bfe7e38840dd5b8572747fd1395e6200874a2d36bc4f47ef435a70814",
+                  "size_bytes": 16497,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-002-timestamps-sha256-c68e8b5bfe7e38840dd5b8572747fd1395e6200874a2d36bc4f47ef435a70814.json",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f11876d4e853835c9_d20260730_m111519_c004_v0402037_t0053_u01785410119136"
+                  }
+                },
+                "vtt": {
+                  "mime_type": "text/vtt",
+                  "replicas": [
+                    {
+                      "bucket": "earnalism-audiobooks-dr-v2-8af6a3af49d8",
+                      "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-002-sha256-d8eefbf6e475c6ea9bc92707cd2b86ca1a0d40224b2870c462da816d772e284d.vtt",
+                      "store": "dr",
+                      "version_id": "4_za83aafe65a63aaff94f90d18_f1123434ad3739273_d20260730_m111858_c005_v0501047_t0002_u01785410338801"
+                    }
+                  ],
+                  "sha256": "d8eefbf6e475c6ea9bc92707cd2b86ca1a0d40224b2870c462da816d772e284d",
+                  "size_bytes": 9925,
+                  "storage": {
+                    "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+                    "key": "v1/prod/sprint1/a-ghost-story/releases/cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40/sidecars/chapter-001/segment-002-sha256-d8eefbf6e475c6ea9bc92707cd2b86ca1a0d40224b2870c462da816d772e284d.vtt",
+                    "store": "prod",
+                    "version_id": "4_z22c3760e0722abf094f30e12_f116292f7404a9b51_d20260730_m111520_c004_v0402035_t0051_u01785410120410"
+                  }
+                }
+              },
+              "cumulative_start_ms": 267348,
+              "duration_ms": 613574,
+              "end_paragraph": 29,
+              "end_word": 2422,
+              "order": 1,
+              "segment_id": "c001-s002",
+              "start_paragraph": 5,
+              "start_word": 753
+            }
+          ],
+          "end_paragraph": 29,
+          "end_word": 2422,
+          "id": "chapter-001",
+          "order": 0,
+          "start_paragraph": 0,
+          "start_word": 0,
+          "title": "A Ghost Story"
+        }
+      ],
+      "word_count": 2423
+    }
+  },
+  "audiobook_provider": "google",
+  "audiobook_release_descriptor_sha256": "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d",
+  "audiobook_style_profile": "source_preserving_ssml_88_percent",
+  "audiobook_voice": "en-GB-Studio-C",
   "author": "Mark Twain",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "benefits": [
+    "Read a compact classic comic ghost story in a clean digital edition.",
+    "Listen through the approved section-following narration in the reader."
+  ],
   "category_slug": "gothic-fiction",
-  "short_description": "A new tenant meets a midnight visitor who turns out to be less terrifying than embarrassed.",
-  "description": "Mark Twain turns a haunted-room setup into a comic encounter with the Cardiff Giant legend. This edition includes a release-gated, section-following narration.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "chapters": [
+    {
+      "has_images": false,
+      "id": "chapter-001",
+      "image_count": 0,
+      "is_preview": true,
+      "language_hint": "en",
+      "order": 1,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "reading_minutes": 11,
+      "title": "A Ghost Story",
+      "updated_at": "2026-07-08T20:40:04Z",
+      "uploaded_at": "2026-07-08T20:40:04Z",
+      "word_count": 2450
+    }
+  ],
+  "content_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
   "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
   "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
   "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "created_at": "2026-07-08T20:40:04Z",
+  "description": "Mark Twain turns a haunted-room setup into a comic encounter with the Cardiff Giant legend. This edition includes a release-gated, section-following narration.",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "11 min",
   "formats": [
     "Ebook",
     "Audiobook"
   ],
-  "benefits": [
-    "Read a compact classic comic ghost story in a clean digital edition.",
-    "Listen through the approved section-following narration in the reader."
-  ],
-  "who_for": [
-    "Classic short-story readers",
-    "Fans of comic gothic fiction"
-  ],
+  "generate_audiobook": true,
+  "id": "controlled-a-ghost-story",
+  "isLive": true,
+  "isPublic": true,
+  "is_published": true,
   "learnings": [
     "Comic inversion of ghost-story conventions",
     "Cardiff Giant cultural satire"
   ],
-  "about_author": "Mark Twain was the pen name of Samuel Langhorne Clemens, the American humorist and novelist whose satire shaped nineteenth-century literary comedy.",
-  "chapters": [
-    {
-      "id": "chapter-001",
-      "order": 1,
-      "title": "A Ghost Story",
-      "is_preview": true,
-      "has_images": false,
-      "image_count": 0,
-      "word_count": 2450,
-      "reading_minutes": 11,
-      "language_hint": "en",
-      "processing_status": "ready",
-      "processing_warnings": [],
-      "uploaded_at": "2026-07-08T20:40:04Z",
-      "updated_at": "2026-07-08T20:40:04Z"
-    }
-  ],
-  "source_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
-  "content_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
   "provenance_hash": "3c0d7f93b1e730b2d89a6c6ac926c5838e28254a3228571cfe40cb0797018ba6",
+  "publicationStatus": "LIVE_APPROVED",
+  "publication_status": "LIVE_APPROVED",
+  "qa_status": "QA_PASSED",
+  "readerStatus": "LIVE_APPROVED",
   "rights_basis": "Mark Twain died 1910; first published 1875. Public domain in India and the U.S.",
   "rights_tier": "A",
-  "verification_status": "approved",
-  "qa_status": "QA_PASSED",
-  "approved_to_publish": true,
-  "publication_status": "LIVE_APPROVED",
-  "readerStatus": "LIVE_APPROVED",
-  "publicationStatus": "LIVE_APPROVED",
-  "isPublic": true,
-  "isLive": true,
-  "showInPublicLibrary": true,
+  "short_description": "A new tenant meets a midnight visitor who turns out to be less terrifying than embarrassed.",
   "showInHomepage": false,
-  "allowPublicReading": true,
-  "allowCheckout": false,
-  "allowPayment": false,
-  "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "google",
-  "audiobook_voice": "en-GB-Studio-C",
-  "audiobook_model": "google-cloud-texttospeech",
-  "audiobook_style_profile": "source_preserving_ssml_88_percent",
-  "audio_asset_slug": "a-ghost-story",
-  "audiobook_assets": {
-    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
-    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_f705f1832a8b.json",
-    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_11f7c4689b94.vtt",
-    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ffe4267005f0.json",
-    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_0d8b16ee7c3d.json"
-  },
-  "audiobook": {
-    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
-    "provider": "google",
-    "size": 7047789,
-    "duration_ms": 880944,
-    "sync_mode": "section_following",
-    "highlight_sync_enabled": false,
-    "assets": {
-      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
-      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_f705f1832a8b.json",
-      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_11f7c4689b94.vtt",
-      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ffe4267005f0.json",
-      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_0d8b16ee7c3d.json"
-    },
-    "updated_at": "2026-07-12T15:24:05Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-12T15:24:05Z",
-  "created_at": "2026-07-08T20:40:04Z",
-  "updated_at": "2026-07-12T15:24:05Z"
+  "showInPublicLibrary": true,
+  "slug": "a-ghost-story",
+  "source_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
+  "subtitle": "A Mark Twain comic haunting",
+  "title": "A Ghost Story",
+  "updated_at": "2026-07-12T15:24:05Z",
+  "verification_status": "approved",
+  "who_for": [
+    "Classic short-story readers",
+    "Fans of comic gothic fiction"
+  ]
 }
