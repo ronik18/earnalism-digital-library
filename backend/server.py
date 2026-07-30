@@ -1840,7 +1840,7 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
     if not admin_preview and not _is_controlled_public_slug(slug):
         return None
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"book-access:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
+    cache_key = f"book-access:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-content", cache_key)
     if cached is not None:
         return cached
@@ -2584,7 +2584,7 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     if not admin_preview and not _is_controlled_public_slug(slug):
         return None
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
+    cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-manifest", cache_key)
     if cached is not None:
         return cached

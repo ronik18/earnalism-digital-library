@@ -12,6 +12,7 @@ from backend import catalog_truth, server
 
 
 SLUG = "jekyll-and-hyde"
+GIFT_SLUG = "the-gift-of-the-magi"
 
 
 class FakeCursor:
@@ -37,6 +38,10 @@ class SameSlugBooks:
 
 
 async def no_cache(*_args, **_kwargs):
+    return None
+
+
+async def no_cache_write(*_args, **_kwargs):
     return None
 
 
@@ -146,3 +151,101 @@ def test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate()
 
     assert '"catalog_truth": "controlled-covers-v1"' in cache_key
     assert '"truth_gate": "audio-contract-v13"' in cache_key
+
+
+def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkeypatch):
+    seen = []
+
+    async def capture_cache_key(namespace, key):
+        seen.append((namespace, key))
+        return {"cached": True}
+
+    async def fixed_generation():
+        return 37
+
+    monkeypatch.setattr(server, "_redis_cache_get", capture_cache_key)
+    monkeypatch.setattr(server, "_reader_content_cache_generation_value", fixed_generation)
+
+    assert asyncio.run(server._reader_book_access_doc(SLUG)) == {"cached": True}
+    assert asyncio.run(server._reader_book_manifest_doc(SLUG)) == {"cached": True}
+
+    assert seen == [
+        (
+            "reader-content",
+            "book-access:audio-contract-v13:controlled-covers-v1:37:public:jekyll-and-hyde",
+        ),
+        (
+            "reader-manifest",
+            "book-manifest:audio-contract-v13:controlled-covers-v1:37:public:jekyll-and-hyde",
+        ),
+    ]
+
+
+def test_gift_reader_manifest_uses_exact_canonical_covers_and_keeps_audio_hidden(monkeypatch):
+    canonical = catalog_truth.load_controlled_artifact_book(
+        GIFT_SLUG,
+        include_content=True,
+    )
+    assert canonical is not None
+    monkeypatch.setattr(server, "_redis_cache_get", no_cache)
+    monkeypatch.setattr(server, "_redis_cache_set", no_cache_write)
+
+    manifest = asyncio.run(server._reader_book_manifest_doc(GIFT_SLUG))
+
+    assert manifest is not None
+    assert manifest["book"]["slug"] == GIFT_SLUG
+    assert manifest["book"]["title"] == canonical["title"] == "The Gift of the Magi"
+    assert manifest["book"]["author"] == canonical["author"] == "O. Henry"
+    assert manifest["book"]["cover_url"] == canonical["cover_url"]
+    assert manifest["book"]["cover_image_url"] == canonical["cover_image_url"]
+    assert manifest["book"]["back_cover_url"] == canonical["back_cover_url"]
+    assert manifest["book"]["back_cover_image_url"] == canonical["back_cover_image_url"]
+    assert manifest["book"]["audio_enabled"] is False
+    assert manifest["book"]["audiobook_enabled"] is False
+    assert manifest["audio"]["enabled"] is False
+    assert manifest["audio"]["assets"] == {}
+    assert manifest["audio"]["url"] == ""
+
+
+def test_reader_manifest_ignores_pre_catalog_truth_namespace_entry(monkeypatch):
+    canonical = catalog_truth.load_controlled_artifact_book(
+        GIFT_SLUG,
+        include_content=True,
+    )
+    assert canonical is not None
+    stale_key = "book-manifest:audio-contract-v13:562:public:the-gift-of-the-magi"
+    stale_manifest = {
+        "book": {
+            "slug": GIFT_SLUG,
+            "title": "Stale cached title",
+            "cover_url": "https://example.com/stale-front.jpg",
+            "back_cover_url": "https://example.com/stale-back.jpg",
+        }
+    }
+    seen = []
+
+    async def seeded_cache(namespace, key):
+        seen.append((namespace, key))
+        return stale_manifest if key == stale_key else None
+
+    async def fixed_generation():
+        return 562
+
+    monkeypatch.setattr(server, "_redis_cache_get", seeded_cache)
+    monkeypatch.setattr(server, "_redis_cache_set", no_cache_write)
+    monkeypatch.setattr(server, "_reader_content_cache_generation_value", fixed_generation)
+
+    manifest = asyncio.run(server._reader_book_manifest_doc(GIFT_SLUG))
+
+    assert manifest is not None
+    assert seen == [
+        (
+            "reader-manifest",
+            "book-manifest:audio-contract-v13:controlled-covers-v1:562:public:the-gift-of-the-magi",
+        )
+    ]
+    assert seen[0][1] != stale_key
+    assert manifest["book"]["title"] == canonical["title"]
+    assert manifest["book"]["cover_url"] == canonical["cover_url"]
+    assert manifest["book"]["back_cover_url"] == canonical["back_cover_url"]
+    assert manifest["audio"]["enabled"] is False
