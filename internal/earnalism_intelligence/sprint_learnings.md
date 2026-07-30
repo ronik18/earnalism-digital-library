@@ -1254,3 +1254,31 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   retention-write capabilities.
 - This change supplies storage evidence only. It does not upload objects,
   mutate release truth, deploy code, or alter `paid_tts.lock`.
+
+## 2026-07-30 — Jekyll cover art can advance without AI-rights ambiguity
+
+- A visually strong AI-generated private pair is not canonical cover evidence
+  when its exact generation receipt, account entitlement, artifact-bound
+  commercial-use attestation, and similarity review are absent. Preserve it
+  only as superseded private provenance rather than inferring rights from the
+  image files.
+- Charles Raymond Macauley's Chapter 2 Drawing 1 and Chapter 10 Drawing 2 from
+  the Scott-Thaw 1904 edition are exact-title, content-relevant alternatives.
+  Preserve their unmodified source files and bind every composition to SHA-256
+  `1848b89196669aeb7c0ea097d4821dc20cab09cca968d9bd854f85e68413f374`
+  and
+  `e48ba094dde8140e7894d6f9963b9674f395a6de98dcaf3766d1eb452e4628be`.
+- Public-domain evidence must retain the source record's territorial caveat.
+  Do not turn a life-plus-70 statement into an unrestricted-worldwide claim;
+  owner/editorial and approved distribution-jurisdiction review remain
+  mandatory before canonical promotion.
+- Deterministic catalog typography, explicit safe panels, and preserved source
+  art resolve title/author accuracy without generated lettering. The exact
+  canonical short description is safer than inventing premium back-copy when
+  no separately approved editorial field exists.
+- Test both geometry and actual delivery derivatives. The 1600 x 2400 masters
+  pass the backend cover validator, while 320 x 480 WebP thumbnails stay under
+  80 KiB and 800 x 1200 WebP feature images stay under 180 KiB.
+- Automated checks plus direct master/thumbnail inspection can advance the
+  pair to `PRIVATE_CANDIDATE_EDITORIAL_REVIEW_REQUIRED`; they do not authorize
+  upload, canonicalization, public exposure, audiobook generation, or release.

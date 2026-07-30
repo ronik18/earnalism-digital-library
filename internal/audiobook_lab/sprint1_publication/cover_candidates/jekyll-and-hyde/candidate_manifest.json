@@ -1,38 +1,125 @@
 {
-  "schema_version": "earnalism.private_cover_candidate.v1",
-  "status": "PRIVATE_CANDIDATE_OWNER_REVIEW_REQUIRED",
-  "generated_at": "2026-07-28T14:02:55Z",
+  "schema_version": "earnalism.private_cover_candidate.v2",
+  "status": "PRIVATE_CANDIDATE_EDITORIAL_REVIEW_REQUIRED",
+  "generated_at": "2026-07-30T07:18:27Z",
   "slug": "jekyll-and-hyde",
   "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
   "author": "Robert Louis Stevenson",
-  "generation_mode": "openai_builtin_image_generation",
-  "visual_rights_status": "PENDING_OWNER_VISUAL_RIGHTS_REVIEW",
-  "canonical_promotion_status": "NOT_PROMOTED",
-  "admin_upload_status": "BLOCKED_CONTROLLED_ARTIFACT_NOT_RESOLVED_BY_UPLOAD_ENDPOINT",
+  "canonical_back_copy": "A clean Earnalism reader edition of The Strange Case of Dr. Jekyll and Mr. Hyde, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+  "generation_mode": "deterministic_pillow_composition_over_verified_public_domain_art",
+  "source_art": {
+    "front": {
+      "path": "source_art/macauley-jekyll-ch2-drawing1-1904.jpg",
+      "sha256": "1848b89196669aeb7c0ea097d4821dc20cab09cca968d9bd854f85e68413f374",
+      "record_url": "https://commons.wikimedia.org/wiki/File:Jekyll.and.Hyde.Ch2.Drawing1.jpg",
+      "rights_mark": "Public Domain Mark 1.0"
+    },
+    "back": {
+      "path": "source_art/macauley-jekyll-ch10-drawing2-1904.jpg",
+      "sha256": "e48ba094dde8140e7894d6f9963b9674f395a6de98dcaf3766d1eb452e4628be",
+      "record_url": "https://commons.wikimedia.org/wiki/File:Jekyll.and.Hyde.Ch10.Drawing2.jpg",
+      "rights_mark": "Public Domain Mark 1.0"
+    },
+    "rights_evidence": "source_rights_evidence.json",
+    "rights_evidence_sha256": "85b50a0d9e16ff7fb183e0f795d8624edd4e8473ad5342e6d73e8a35742ddd69",
+    "global_unrestricted_assertion": false
+  },
   "front": {
-    "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/jekyll-and-hyde/jekyll-and-hyde-front-art-v1.png",
-    "sha256": "ba3dca9fba29a741d74b0ac94e8b9db97fcaf52a09776b208361044346d4dfba",
-    "size_bytes": 2812735,
-    "width": 1024,
-    "height": 1536,
-    "media_type": "image/png",
-    "embedded_text": false
+    "path": "jekyll-and-hyde-front-editorial-candidate-v2.jpg",
+    "sha256": "144ee406937db6f4f206c9d3518de3679aea5268ec933295fda888e7a2838157",
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 490667,
+    "aspect_ratio": 0.6667,
+    "thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-front-thumbnail-v2.webp",
+      "sha256": "de53454b10ea178bf190df8aeee65351b6c8316afed98c7317a4f7b046e3da4a",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 24722,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "feature": {
+      "path": "derivatives/jekyll-and-hyde-front-feature-v2.webp",
+      "sha256": "b8c349a1273c953e418bf17d77f8a8402a05351ef2a03849e2ea6028e1e51e2b",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 83838,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    }
   },
   "back": {
-    "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/jekyll-and-hyde/jekyll-and-hyde-back-art-v1.png",
-    "sha256": "92326eb8eba9678adf6af8a06cc820a4ef9500ef68e3dec3b8783cf1af7dbace",
-    "size_bytes": 2548480,
-    "width": 1024,
-    "height": 1536,
-    "media_type": "image/png",
-    "embedded_text": false
+    "path": "jekyll-and-hyde-back-editorial-candidate-v2.jpg",
+    "sha256": "a1aa1144de8b0ba0c80442101322ae84c7ebf7fd25de83bfc7064d2c5c31ff4a",
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 380546,
+    "aspect_ratio": 0.6667,
+    "thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-back-thumbnail-v2.webp",
+      "sha256": "dfac54b9421bfa2bd720a17552e2cd98eeb74e5adac690db7cb43cad0237d73c",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 16562,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "feature": {
+      "path": "derivatives/jekyll-and-hyde-back-feature-v2.webp",
+      "sha256": "65e66173550322daaacd359e085532ccb801429a48d1911b03ba02dd9b85e130",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 58880,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    }
+  },
+  "catalog_hashes": {
+    "data/controlled_publications/jekyll-and-hyde/public_book.json": "08e1cc4cace4b82dccdb2b8189e6297717477bce1f1ee271e5f5e126ca8a6019",
+    "backend/data/controlled_publications/jekyll-and-hyde/public_book.json": "08e1cc4cace4b82dccdb2b8189e6297717477bce1f1ee271e5f5e126ca8a6019"
+  },
+  "superseded_private_ai_assets": {
+    "status": "SUPERSEDED_PRIVATE_AI_ART_NOT_AUTHORIZED_FOR_CANONICAL_USE",
+    "front": {
+      "path": "jekyll-and-hyde-front-art-v1.png",
+      "sha256": "ba3dca9fba29a741d74b0ac94e8b9db97fcaf52a09776b208361044346d4dfba"
+    },
+    "back": {
+      "path": "jekyll-and-hyde-back-art-v1.png",
+      "sha256": "92326eb8eba9678adf6af8a06cc820a4ef9500ef68e3dec3b8783cf1af7dbace"
+    }
+  },
+  "review": {
+    "manual_visual_review_status": "CODEX_VISUAL_INSPECTION_PASS_OWNER_EDITORIAL_REVIEW_PENDING",
+    "manual_visual_review": "manual_visual_review.json",
+    "owner_editorial_review_required": true,
+    "admin_upload_status": "NOT_UPLOADED",
+    "canonical_promotion_status": "NOT_PROMOTED"
   },
   "constraints": {
     "private_only": true,
     "public_catalog_mutated": false,
     "reader_state_mutated": false,
     "audiobook_release_state_mutated": false,
-    "owner_review_required": true,
-    "canonical_checksum_update_required": true
+    "ai_generated_imagery": false,
+    "placeholder_art": false,
+    "public_upload_authorized": false,
+    "canonical_promotion_authorized": false
   }
 }

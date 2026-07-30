@@ -1,0 +1,67 @@
+{
+  "schema_version": "earnalism.private_cover_manual_visual_review.v1",
+  "status": "CODEX_VISUAL_INSPECTION_PASS_OWNER_EDITORIAL_REVIEW_PENDING",
+  "reviewed_at": "2026-07-30T07:20:23Z",
+  "reviewer": "Codex",
+  "slug": "jekyll-and-hyde",
+  "artifacts": {
+    "front_master": {
+      "sha256": "144ee406937db6f4f206c9d3518de3679aea5268ec933295fda888e7a2838157",
+      "dimensions": [
+        1600,
+        2400
+      ]
+    },
+    "back_master": {
+      "sha256": "a1aa1144de8b0ba0c80442101322ae84c7ebf7fd25de83bfc7064d2c5c31ff4a",
+      "dimensions": [
+        1600,
+        2400
+      ]
+    },
+    "front_thumbnail": {
+      "sha256": "de53454b10ea178bf190df8aeee65351b6c8316afed98c7317a4f7b046e3da4a",
+      "dimensions": [
+        320,
+        480
+      ]
+    },
+    "back_thumbnail": {
+      "sha256": "dfac54b9421bfa2bd720a17552e2cd98eeb74e5adac690db7cb43cad0237d73c",
+      "dimensions": [
+        320,
+        480
+      ]
+    }
+  },
+  "checks": {
+    "front_title_exact_and_legible": true,
+    "front_author_exact_and_legible": true,
+    "back_title_exact_and_legible": true,
+    "back_author_exact_and_legible": true,
+    "back_copy_exact_and_legible_at_master_size": true,
+    "no_visible_clipping": true,
+    "no_visible_text_overlap": true,
+    "front_thumbnail_title_legible": true,
+    "front_thumbnail_author_legible": true,
+    "back_thumbnail_title_legible": true,
+    "back_thumbnail_copy_present_without_collision": true,
+    "source_art_remains_visibly_graphical": true,
+    "front_shadow_motif_is_content_relevant": true,
+    "back_mirror_motif_is_content_relevant": true,
+    "visual_treatment_is_calm_premium_and_coherent": true
+  },
+  "editorial_notes": [
+    "The canonical back copy is accurate but utilitarian; it was retained verbatim because no distinct approved editorial back-copy field exists.",
+    "The source illustrations remain visible between deterministic burgundy-and-gold text panels and retain their period character.",
+    "The 320 x 480 front and back derivatives remain readable without text collisions; the back paragraph is appropriately secondary at card size."
+  ],
+  "decision": {
+    "private_candidate_visual_gate": "PASS",
+    "owner_editorial_approval_required": true,
+    "territorial_rights_review_required": true,
+    "admin_upload_authorized": false,
+    "canonical_promotion_authorized": false,
+    "public_exposure_authorized": false
+  }
+}
