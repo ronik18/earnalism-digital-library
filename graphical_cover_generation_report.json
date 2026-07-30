@@ -1,6 +1,10 @@
 {
-  "generated_at": "2026-07-30T14:12:49.542Z",
-  "generated_covers": [],
+  "generated_at": "2026-07-30T14:20:31.576Z",
+  "generated_covers": [
+    "jekyll-and-hyde",
+    "the-gift-of-the-magi",
+    "the-tell-tale-heart"
+  ],
   "reused_covers": [
     "a-ghost-story",
     "book-2b9853ec52",
@@ -14,17 +18,14 @@
     "book-f5d593e1f4",
     "dracula",
     "dsires-baby",
-    "jekyll-and-hyde",
     "muchiram-gurer-jibanchorit",
     "pride-and-prejudice",
     "radharani",
     "sredni-vashtar",
     "the-call-of-the-wild",
     "the-cop-and-the-anthem",
-    "the-gift-of-the-magi",
     "the-open-window",
     "the-secret-garden",
-    "the-tell-tale-heart",
     "the-time-machine",
     "yugalanguriya"
   ],
@@ -292,12 +293,6 @@
       "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
     },
     {
-      "slug": "the-gift-of-the-magi",
-      "front": true,
-      "kind": "visual_placeholder",
-      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
-    },
-    {
       "slug": "the-open-window",
       "front": true,
       "kind": "visual_placeholder",
@@ -305,6 +300,6 @@
     }
   ],
   "skipped": [],
-  "performance_budget_status": "PASS; no raster generation and no new heavy assets",
+  "performance_budget_status": "PASS; content-addressed promoted originals and delivery derivatives remain within approved asset budgets",
   "manual_review_recommended": false
 }

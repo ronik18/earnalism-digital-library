@@ -1,0 +1,112 @@
+{
+  "schema_version": "earnalism.private_cover_visual_validation.v3",
+  "status": "MANUAL_EDITORIAL_AND_OCR_PASS",
+  "generated_at": "2026-07-30T14:00:00Z",
+  "checks": {
+    "original_programmatic_art": true,
+    "third_party_image_asset_count": 0,
+    "generated_image_model_used": false,
+    "territorial_rights_blocker": false,
+    "exact_catalog_title": true,
+    "exact_catalog_author": true,
+    "exact_catalog_back_description": true,
+    "reader_facing_internal_language_rendered": false,
+    "front_dimensions_1600x2400": true,
+    "back_dimensions_1600x2400": true,
+    "text_inside_safe_margins": true,
+    "text_inside_content_panels": true,
+    "text_box_overlap_count": 0,
+    "thumbnail_derivatives_under_80_kib": true,
+    "feature_derivatives_under_180_kib": true,
+    "public_catalog_unchanged_during_generation": true,
+    "canonical_cover_promoted_after_review": true,
+    "audio_release_truth_unchanged": true
+  },
+  "geometry_errors": [],
+  "front_validation": {
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 438699,
+    "sha256": "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+    "aspect_ratio": 0.6667
+  },
+  "back_validation": {
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 377479,
+    "sha256": "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
+    "aspect_ratio": 0.6667
+  },
+  "derivative_validations": {
+    "front_thumbnail": {
+      "path": "derivatives/the-gift-of-the-magi-front-thumbnail-original-v1.webp",
+      "sha256": "201837cc9768a8ec0ea5b650e6919748e47017471908a58d5d271d33e7a796ef",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 22856,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "front_feature": {
+      "path": "derivatives/the-gift-of-the-magi-front-feature-original-v1.webp",
+      "sha256": "bd89ebf2df6063fd55f83d45e5f20795506e53cfa1483696f9a9fc2d264ef86b",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 71508,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    },
+    "back_thumbnail": {
+      "path": "derivatives/the-gift-of-the-magi-back-thumbnail-original-v1.webp",
+      "sha256": "3e8b584ec07d490a4faf87beb84950399557c956ce1cc19452c12dd1bdf51fe9",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 17892,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "back_feature": {
+      "path": "derivatives/the-gift-of-the-magi-back-feature-original-v1.webp",
+      "sha256": "2f195720685c68a1ab80c9850a5adc8b78e386dab5f1d46a3bbb5039be06db57",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 57950,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    }
+  },
+  "copy_contract": {
+    "title": "The Gift of the Magi",
+    "title_source": "controlled_catalog.title",
+    "title_sha256": "31980e1845555b85cf50f0f6ddf1551e95492101dbb4db93e7b38eebf1301203",
+    "author": "O. Henry",
+    "author_source": "controlled_catalog.author",
+    "author_sha256": "ff81ef8a7225c1061a275900d977e2d423d72770aae1b74a22638a3473450719",
+    "back_description": "A poor couple each secretly sell their most prized possession to buy a Christmas gift for the other.",
+    "back_description_source": "controlled_catalog.short_description",
+    "back_description_sha256": "203375cfe913df005365de9c57e44e651e601baecafc981a5d97e39dd9186b33",
+    "reader_facing_internal_language_rendered": false
+  },
+  "manual_checks_completed": [
+    "Visual inspection of both 1600x2400 masters",
+    "Visual inspection of both 320x480 thumbnails",
+    "macOS Vision accurate OCR of both masters",
+    "Proofreading against controlled title, author, and short description",
+    "Exact hash-bound editorial approval"
+  ],
+  "remaining_operations": []
+}

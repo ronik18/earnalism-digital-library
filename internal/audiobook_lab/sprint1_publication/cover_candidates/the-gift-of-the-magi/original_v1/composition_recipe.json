@@ -1,0 +1,161 @@
+{
+  "schema_version": "earnalism.deterministic_cover_composition.v3",
+  "slug": "the-gift-of-the-magi",
+  "title": "The Gift of the Magi",
+  "author": "O. Henry",
+  "back_description": "A poor couple each secretly sell their most prized possession to buy a Christmas gift for the other.",
+  "output_size": [
+    1600,
+    2400
+  ],
+  "generation_mode": "deterministic_original_programmatic_graphical_composition",
+  "external_image_assets": [],
+  "generated_image_model": null,
+  "front": {
+    "text_panels": {
+      "title": [
+        126,
+        126,
+        1474,
+        820
+      ],
+      "author": [
+        126,
+        126,
+        1474,
+        820
+      ]
+    },
+    "text_boxes": [
+      {
+        "name": "title",
+        "text": "The Gift of the Magi",
+        "lines": [
+          "The Gift of the",
+          "Magi"
+        ],
+        "font_size": 142,
+        "box": [
+          280,
+          215,
+          1320,
+          491
+        ]
+      },
+      {
+        "name": "author",
+        "text": "O. Henry",
+        "lines": [
+          "O. Henry"
+        ],
+        "font_size": 60,
+        "box": [
+          678,
+          670,
+          922,
+          725
+        ]
+      }
+    ],
+    "fonts": {
+      "title": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "author": "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    },
+    "treatment": {
+      "original_programmatic_art": true,
+      "external_image_assets": [],
+      "generated_image_model": null,
+      "symbolism": [
+        "gold pocket watch and chain",
+        "jeweled hair combs",
+        "interwoven gift ribbons"
+      ]
+    }
+  },
+  "back": {
+    "text_panels": {
+      "title": [
+        126,
+        126,
+        1474,
+        830
+      ],
+      "author": [
+        126,
+        126,
+        1474,
+        830
+      ],
+      "canonical_short_description": [
+        132,
+        1630,
+        1468,
+        2248
+      ]
+    },
+    "text_boxes": [
+      {
+        "name": "title",
+        "text": "The Gift of the Magi",
+        "lines": [
+          "The Gift of the",
+          "Magi"
+        ],
+        "font_size": 108,
+        "box": [
+          405,
+          230,
+          1195,
+          439
+        ]
+      },
+      {
+        "name": "author",
+        "text": "O. Henry",
+        "lines": [
+          "O. Henry"
+        ],
+        "font_size": 54,
+        "box": [
+          690,
+          690,
+          910,
+          739
+        ]
+      },
+      {
+        "name": "canonical_short_description",
+        "text": "A poor couple each secretly sell their most prized possession to buy a Christmas gift for the other.",
+        "lines": [
+          "A poor couple each secretly sell their most",
+          "prized possession to buy a Christmas gift for",
+          "the other."
+        ],
+        "font_size": 52,
+        "box": [
+          294,
+          1790,
+          1306,
+          1983
+        ]
+      }
+    ],
+    "fonts": {
+      "title": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "author": "/System/Library/Fonts/Supplemental/Georgia.ttf",
+      "description": "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    },
+    "treatment": {
+      "original_programmatic_art": true,
+      "external_image_assets": [],
+      "generated_image_model": null,
+      "reader_facing_back_copy_source": "controlled_catalog.short_description"
+    }
+  },
+  "script": {
+    "path": "internal/audiobook_lab/scripts/prepare_gift_original_cover.py",
+    "sha256": "1cd4859d20076d50c49a9d6fff550276b5bccaa61fd5c360161500f7c696433e",
+    "helper_path": "internal/audiobook_lab/scripts/prepare_tell_tale_editorial_cover.py",
+    "helper_sha256": "9306294566e9e739bc9973bb12289b2a0bc42d216b52a8e42943da174e1a2816"
+  }
+}

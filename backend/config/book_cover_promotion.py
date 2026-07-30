@@ -43,6 +43,7 @@ FRONT_COVER_FIELDS = (
 BACK_COVER_FIELDS = (
     "back_cover_url",
     "back_cover_image_url",
+    "backCoverImage",
     "back_cover_thumbnail_url",
     "back_cover_blur_placeholder",
     "back_cover_dominant_color",
@@ -310,6 +311,7 @@ def _apply_cover_fields(
             {
                 "back_cover_url": canonical_url,
                 "back_cover_image_url": canonical_url,
+                "backCoverImage": canonical_url,
                 "back_cover_thumbnail_url": thumbnail,
                 "back_cover_blur_placeholder": blur,
                 "back_cover_dominant_color": dominant,

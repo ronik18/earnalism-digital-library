@@ -1,0 +1,49 @@
+{
+  "schema_version": "earnalism.cover_canonical_promotion_evidence.v1",
+  "recorded_at": "2026-07-30T14:10:12Z",
+  "slug": "the-gift-of-the-magi",
+  "title": "The Gift of the Magi",
+  "author": "O. Henry",
+  "generation_mode": "deterministic_original_programmatic_graphical_composition",
+  "rights_basis": "Earnalism-created deterministic graphical composition using only programmatic primitives, controlled-catalog text, and rasterized system typography; no external image asset or generated-image model output.",
+  "upload_and_promotion": {
+    "front": {
+      "sha256": "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
+      "width": 1600,
+      "height": 2400,
+      "canonical_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+      "event_id": "5443d02b-c38d-45e6-8165-6d58de653357",
+      "cloudinary_version": "1785420596",
+      "cloudinary_version_id": "633193baa6dcfef853a94a971fcf1d1a",
+      "status": "CANONICAL_PROMOTED"
+    },
+    "back": {
+      "sha256": "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
+      "width": 1600,
+      "height": 2400,
+      "canonical_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+      "event_id": "801129ba-7335-4452-a789-5c6589c0ee2c",
+      "cloudinary_version": "1785420605",
+      "cloudinary_version_id": "69c401d023275f46a5dbf02d7217afa8",
+      "status": "CANONICAL_PROMOTED"
+    }
+  },
+  "verification": {
+    "canonical_front_full_download_sha256_verified": true,
+    "canonical_back_full_download_sha256_verified": true,
+    "public_book_controlled_mirror_parity": true,
+    "canonical_public_book_sha256": "d4ef1b87c1f852fc0d2212471e1e2f2095b80dc09791e113912f8dbc61586dfc",
+    "canonical_front_url_aliases_match_active_promotion": true,
+    "canonical_back_url_aliases_match_active_promotion": true,
+    "cover_approval_evidence_mirror_parity": true,
+    "checksum_manifests_valid": true,
+    "reader_audio_release_truth_unchanged": true,
+    "paid_tts_lock_touched": false
+  },
+  "audiobook": {
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+    "release_gate_changed": false,
+    "provider_call_ran": false,
+    "audio_storage_changed": false
+  }
+}

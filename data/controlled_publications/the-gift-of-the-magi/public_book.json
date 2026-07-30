@@ -7,15 +7,15 @@
   "category_slug": "literary-fiction",
   "short_description": "A poor couple each secretly sell their most prized possession to buy a Christmas gift for the other.",
   "description": "Della sells her hair to buy Jim a watch chain. Jim sells his watch to buy Della combs. O. Henry's perfect twist becomes an immortal meditation on love, sacrifice, and the gifts that matter most.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275487/earnalism/covers/back/the-gift-of-the-magi_back_1600x2400.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275487/earnalism/covers/back/the-gift-of-the-magi_back_1600x2400.png",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275487/earnalism/covers/back/the-gift-of-the-magi_back_1600x2400.png",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
   "cover_status": "CLOUDINARY_ASSIGNED",
-  "dominant_color": "#4A1C27",
+  "dominant_color": "#220C14",
   "estimated_reading_time": "9 min",
   "formats": [
     "Ebook"
@@ -82,7 +82,7 @@
   "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-30T14:10:11Z",
   "cover_dimensions": {
     "front": [
       1600,
@@ -93,5 +93,10 @@
       2400
     ]
   },
-  "cover_semantic_match_score": 9.8
+  "cover_semantic_match_score": 9.8,
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+  "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785420605/earnalism/covers/back/back_cover_candidate_controlled-the-gift-of-the-magi-646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a.jpg",
+  "back_cover_dominant_color": "#1C0B12"
 }
