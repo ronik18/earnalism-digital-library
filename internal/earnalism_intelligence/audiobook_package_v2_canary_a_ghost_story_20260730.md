@@ -1,7 +1,9 @@
 # Audiobook package v2 canary — A Ghost Story
 
-Status: **the exact approved audiobook is immutable in production and
-independent DR, and its package-v2 candidate is staged at zero percent.**
+Status: **production-green at zero percent. The exact approved audiobook is
+immutable in production and independent DR, the legacy stream remains active,
+and the package-v2 candidate remains dark until the separate five-percent
+canary is merged and deployed.**
 
 This is a delivery migration for an audiobook that was already approved and
 live. It does not regenerate narration, change release gates, or increase the
@@ -57,6 +59,36 @@ The approved legacy descriptor remains active. The package-v2 descriptor is
 receipt-bound but staged at `0%`, so no customer selects it yet. Both
 descriptors are retained for controlled rollback/promotion.
 
+## Production zero-percent proof
+
+- Merge commit:
+  `00567312d862191795951daa03d9a191f70bd019`
+- GitHub main regression runs: `30538825285` and `30538826025`, both pass.
+- Railway deployment:
+  `a1467723-7101-47da-a155-de73e5e9a031`, exact merge commit, `SUCCESS`,
+  root `/backend`, config `/backend/railway.json`.
+- Independent HTTP matrix: `18/18` pass.
+  - Candidate manifest: `404`, `private, no-store`.
+  - Legacy Range: `206`, exactly `1,024` bytes,
+    `Content-Range: bytes 0-1023/7047789`.
+  - Invalid legacy Range: `416`, empty body.
+  - Candidate segment and wrong package version: `404`.
+  - Home curation: `200`, exactly the four approved audiobook slugs.
+- Real customer-browser checkpoint:
+  - Before intent the audio element had no `src`, empty `currentSrc`,
+    `preload="none"`, `readyState=0`, and no observed audiobook asset.
+  - Exactly one enabled `Start narration` control was present.
+  - One click selected
+    `/api/reader/book/a-ghost-story/audiobook`, reached `readyState=4`,
+    stayed unpaused, and advanced from `2.397746` to `37.582244` seconds.
+  - Duration was `880.944` seconds; media error and console error counts were
+    zero.
+  - Playback was paused after capture at `44.884889` seconds.
+
+This checkpoint intentionally does not claim package-v2 or cross-segment
+browser playback: at zero percent, the package candidate must remain
+unselectable.
+
 ## Validation
 
 - Active-release pointer: valid, zero blockers.
@@ -69,11 +101,10 @@ descriptors are retained for controlled rollback/promotion.
 - `git diff --check`: pass.
 - Approval flags, narration and public audiobook count: unchanged.
 - `paid_tts.lock`: untouched.
-- Production zero-percent deployment, HTTP proof and browser proof: required
-  after merge.
+- Production zero-percent deployment, HTTP proof and browser proof: pass.
 
 Next exact command:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug a-ghost-story
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py rollout --slug a-ghost-story --percentage 5
 ```

@@ -1589,3 +1589,22 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The next boundary is a production-green zero-percent deploy. Do not enable
   five percent until legacy Range and one-click browser playback still pass
   and the candidate manifest remains dark.
+
+## 2026-07-30 — A zero-percent migration must prove both darkness and legacy continuity
+
+- A Ghost Story's exact merge commit passed both main workflows and deployed
+  through Railway's Wait-for-CI integration with the configured backend root
+  and config file.
+- The candidate manifest, candidate segment and wrong package version stayed
+  dark. The approved legacy stream retained exact Range and invalid-Range
+  behavior, and the home catalog remained exactly four approved audiobooks.
+- Browser proof began from a fresh reader navigation. Before user intent the
+  audio element had no source, declared `preload="none"`, stayed at
+  `readyState=0`, and the page asset inventory contained no audiobook asset.
+- One click selected only the legacy route, reached `readyState=4`, advanced
+  playback, and produced no media or console error. The audio was paused after
+  evidence capture.
+- Zero percent cannot prove package segment delivery or auto-advance. The next
+  five-percent checkpoint must separately exercise deterministic candidate
+  and legacy identities, both segments and timestamp sidecars, and a real
+  candidate-browser transition before any wider rollout.
