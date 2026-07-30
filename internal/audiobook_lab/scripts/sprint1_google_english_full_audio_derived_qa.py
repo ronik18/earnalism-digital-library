@@ -613,6 +613,25 @@ def load_reusable_asr_reports(
         "REUSABLE_ASR_REPORT_INVALID",
         "reusable report must be private, provider-free evidence from this adapter",
     )
+    bounded_repair = evidence.manifest.get("bounded_chunk_repair")
+    prior_attempt_fingerprint = attempt_fingerprint
+    if isinstance(bounded_repair, Mapping):
+        prior_attempt_fingerprint = str(
+            bounded_repair.get("base_attempt_fingerprint") or ""
+        )
+        require(
+            payload.get("full_manifest_sha256")
+            == bounded_repair.get("base_full_manifest_sha256")
+            and payload.get("candidate_audio_sequence_sha256")
+            == bounded_repair.get("base_candidate_audio_sequence_sha256")
+            and payload.get("candidate_binding_sha256")
+            == bounded_repair.get("base_candidate_binding_sha256"),
+            "REUSABLE_ASR_REPORT_CANDIDATE_MISMATCH",
+            (
+                "bounded repair may reuse evidence only from its exact "
+                "hash-bound base candidate"
+            ),
+        )
     require(
         payload.get("slug") == evidence.manifest.get("slug")
         and payload.get("title") == evidence.manifest.get("title")
@@ -620,7 +639,7 @@ def load_reusable_asr_reports(
         and payload.get("source_sha256") == evidence.source_sha256
         and payload.get("input_manifest_sha256")
         == evidence.input_manifest_sha256
-        and payload.get("attempt_fingerprint") == attempt_fingerprint
+        and payload.get("attempt_fingerprint") == prior_attempt_fingerprint
         and payload.get("voice") == evidence.manifest.get("voice")
         and payload.get("language_code") == evidence.manifest.get("language_code"),
         "REUSABLE_ASR_REPORT_CANDIDATE_MISMATCH",

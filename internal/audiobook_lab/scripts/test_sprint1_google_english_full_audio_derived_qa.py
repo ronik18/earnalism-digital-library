@@ -646,6 +646,38 @@ class GoogleEnglishFullAudioDerivedQATests(unittest.TestCase):
             repair["candidate_audio_sequence_sha256"],
         )
 
+    def test_bound_replacement_reuses_only_exact_base_units(self) -> None:
+        code, _report = self.evaluate()
+        self.assertEqual(code, 0)
+        prior_report = self.output_path
+        target_index = 2
+        repair = self.apply_bounded_repair(target_index=target_index)
+        output = self.run_dir / "full_audio_derived_qa.bounded-repair.json"
+        model = MockWhisperModel(self.source_by_stem)
+        code, report = self.evaluate(
+            model=model,
+            output=output,
+            reuse_report=prior_report,
+        )
+        self.assertEqual(code, 0)
+        self.assertEqual(len(model.calls), 1)
+        self.assertEqual(
+            Path(model.calls[0][0]).stem,
+            self.records[target_index]["unit_id"],
+        )
+        self.assertEqual(
+            report["attempt_fingerprint"],
+            repair["repair_attempt_fingerprint"],
+        )
+        self.assertEqual(
+            report["audio_derived_asr"]["reused_local_asr_report_count"],
+            len(self.records) - 1,
+        )
+        self.assertEqual(
+            report["audio_derived_asr"]["local_asr_run_count"],
+            1,
+        )
+
     def test_bounded_repair_with_second_changed_chunk_is_rejected(self) -> None:
         self.apply_bounded_repair()
         second = self.records[3]
