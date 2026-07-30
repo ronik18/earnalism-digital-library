@@ -1157,3 +1157,27 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   `60c275266b007015732fdb9cca5165c9efc0cffae988bed66c5d6ca9fcbeb748`.
   No synthesis, upload, gate mutation, or public action may follow until that
   source divergence is explicitly resolved.
+
+## 2026-07-30 — The Tell-Tale Heart manuscript reconciliation
+
+- The live/admin SHA-256 `316ed82d8ae04a1af3f82ec692e88bc630c4865c06192854a612f29cb017f2bb`
+  and controlled SHA-256
+  `60c275266b007015732fdb9cca5165c9efc0cffae988bed66c5d6ca9fcbeb748`
+  represented identical prose. Their whitespace-collapsed text was identical
+  at SHA-256 `acbb67e1d96287a80021202229211ffc8072e80a67cf3274b1f3a00376c22fef`,
+  and every non-whitespace character matched.
+- Historical Git blobs retained both the sanitized source and the faulty
+  chapter representation. The defect was exactly 167 duplicated newlines
+  before indented source-wrap continuation lines; it was not source,
+  punctuation, spelling, or editorial divergence.
+- Remove only the duplicated newline from the exact `\n\n ` continuation
+  pattern. This restores 19 real paragraphs from 186 false paragraphs and
+  makes the controlled extraction byte-identical to the recovered admin
+  manuscript without changing prose.
+- Keep the repaired controlled chapter as reader truth and bind any future
+  source-bound audio lane to the recovered canonical manuscript SHA-256
+  `316ed82d8ae04a1af3f82ec692e88bc630c4865c06192854a612f29cb017f2bb`.
+- Manuscript reconciliation does not authorize audio. The title remains
+  reader-live and audio-hidden; the closed Kokoro fingerprint remains closed,
+  and all objective, listening, delivery, endpoint, and browser gates remain
+  mandatory for a future distinct audio candidate.
