@@ -38,7 +38,7 @@ from starlette.middleware.gzip import GZipMiddleware
 from contextlib import asynccontextmanager
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorGridFSBucket
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
-from pymongo.errors import AutoReconnect, ServerSelectionTimeoutError
+from pymongo.errors import AutoReconnect, DuplicateKeyError, ServerSelectionTimeoutError
 
 try:
     from rights_engine import RIGHTS_REPORT_FILENAMES, rights_publish_blockers, rights_report_csv, rights_report_rows
@@ -53,6 +53,7 @@ try:
         audio_release_qa_status,
         can_expose_audio,
         can_expose_reader,
+        clear_controlled_artifact_caches,
         controlled_artifact_status,
         dracula_artifact_status,
         explicit_preview_chapter_ids,
@@ -69,6 +70,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         audio_release_qa_status,
         can_expose_audio,
         can_expose_reader,
+        clear_controlled_artifact_caches,
         controlled_artifact_status,
         dracula_artifact_status,
         explicit_preview_chapter_ids,
@@ -118,13 +120,30 @@ try:
     from config.book_cover import (
         build_private_cover_candidate,
         canonical_cover_kind,
+        content_addressed_cover_candidate_asset_id,
         validate_book_cover,
     )
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.config.book_cover import (
         build_private_cover_candidate,
         canonical_cover_kind,
+        content_addressed_cover_candidate_asset_id,
         validate_book_cover,
+    )
+
+try:
+    from config.book_cover_promotion import (
+        APPROVAL_DECISION as COVER_APPROVAL_DECISION,
+        CoverPromotionError,
+        promote_cover_candidate,
+        validate_immutable_candidate,
+    )
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.config.book_cover_promotion import (
+        APPROVAL_DECISION as COVER_APPROVAL_DECISION,
+        CoverPromotionError,
+        promote_cover_candidate,
+        validate_immutable_candidate,
     )
 
 
@@ -180,6 +199,17 @@ ENABLE_COVER_GENERATION = _env_bool("ENABLE_COVER_GENERATION", False)
 # action. Keep them independent from generative cover jobs so production does
 # not require the expensive cover-generation worker to accept finished art.
 ENABLE_ADMIN_COVER_UPLOADS = _env_bool("ENABLE_ADMIN_COVER_UPLOADS", True)
+# Canonical promotion mutates checksum-bound controlled mirrors and is therefore
+# opt-in even though private candidate intake is enabled by default.
+ENABLE_ADMIN_COVER_PROMOTIONS = _env_bool("ENABLE_ADMIN_COVER_PROMOTIONS", False)
+_EARNALISM_CANONICAL_REPO_ROOT_RAW = os.environ.get(
+    "EARNALISM_CANONICAL_REPO_ROOT", ""
+).strip()
+EARNALISM_CANONICAL_REPO_ROOT: Optional[Path] = (
+    Path(_EARNALISM_CANONICAL_REPO_ROOT_RAW).expanduser().resolve()
+    if _EARNALISM_CANONICAL_REPO_ROOT_RAW
+    else None
+)
 ENABLE_SCHEDULED_JOBS = _env_bool("ENABLE_SCHEDULED_JOBS", False)
 ENABLE_QUEUE_CONSUMER = _env_bool("ENABLE_QUEUE_CONSUMER", False)
 ENABLE_ADMIN_MEDIA_UPLOADS = _env_bool("ENABLE_ADMIN_MEDIA_UPLOADS", False)
@@ -3284,6 +3314,16 @@ class HomeCurationIn(BaseModel):
     popularity_score: Optional[float] = None
 
 
+class CoverPromotionIn(BaseModel):
+    kind: str
+    candidate_sha256: str = Field(min_length=64, max_length=64)
+    approval_decision: str
+    editorial_approved: bool = False
+    rights_cleared: bool = False
+    approval_note: str = Field(min_length=8, max_length=2000)
+    rights_basis: str = Field(min_length=8, max_length=2000)
+
+
 class BookAudiobookIn(BaseModel):
     audiobook_enabled: bool = True
     generate_audiobook: bool = True
@@ -5615,6 +5655,24 @@ def _normalized_cover_slug(slug: str) -> str:
     return str(slug or "").strip().lower()
 
 
+def _canonical_cover_promotion_runtime_ready(slug: str) -> bool:
+    normalized = _normalized_cover_slug(slug)
+    return bool(
+        normalized
+        and EARNALISM_CANONICAL_REPO_ROOT is not None
+        and (EARNALISM_CANONICAL_REPO_ROOT / ".git").exists()
+        and all(
+            (
+                EARNALISM_CANONICAL_REPO_ROOT
+                / relative
+                / "controlled_publications"
+                / normalized
+            ).is_dir()
+            for relative in (Path("data"), Path("backend/data"))
+        )
+    )
+
+
 def _controlled_cover_upload_eligible(slug: str, artifact: dict[str, Any]) -> bool:
     """Allow intake only for the exact approved controlled reader artifact."""
     normalized = _normalized_cover_slug(slug)
@@ -5690,6 +5748,12 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
             "kind": 1,
             "candidate_url": 1,
             "candidate_thumbnail_url": 1,
+            "sha256": 1,
+            "cloudinary_public_id": 1,
+            "cloudinary_version": 1,
+            "cloudinary_version_id": 1,
+            "cloudinary_resource_type": 1,
+            "cloudinary_format": 1,
             "audit_status": 1,
             "updated_at": 1,
             "updated_by": 1,
@@ -5761,6 +5825,7 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
             admin_back,
             semantic_mismatch=semantic_mismatch,
         )
+        promotion_runtime_ready = _canonical_cover_promotion_runtime_ready(slug)
         rows.append(
             {
                 "slug": slug,
@@ -5777,6 +5842,12 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
                 "canonical_back_cover_url": canonical_back,
                 "admin_front_cover_url": admin_front,
                 "admin_back_cover_url": admin_back,
+                "admin_front_candidate_sha256": str(
+                    front_candidate.get("sha256") or ""
+                ),
+                "admin_back_candidate_sha256": str(
+                    back_candidate.get("sha256") or ""
+                ),
                 "front_display_url": (
                     admin_front
                     if front_status == "UPLOADED_PENDING_CANONICAL_REVIEW"
@@ -5797,7 +5868,33 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
                 "upload_eligibility_source": upload_eligibility_source,
                 "can_upload": bool(upload_eligibility_source)
                 and ENABLE_ADMIN_COVER_UPLOADS,
+                "can_promote_front": bool(
+                    ENABLE_ADMIN_COVER_PROMOTIONS
+                    and promotion_runtime_ready
+                    and front_candidate.get("audit_status")
+                    == "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW"
+                    and front_candidate.get("sha256")
+                    and front_candidate.get("cloudinary_public_id")
+                    and front_candidate.get("cloudinary_version")
+                    and front_candidate.get("cloudinary_version_id")
+                    and front_candidate.get("cloudinary_resource_type") == "image"
+                    and front_candidate.get("cloudinary_format")
+                ),
+                "can_promote_back": bool(
+                    ENABLE_ADMIN_COVER_PROMOTIONS
+                    and promotion_runtime_ready
+                    and back_candidate.get("audit_status")
+                    == "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW"
+                    and back_candidate.get("sha256")
+                    and back_candidate.get("cloudinary_public_id")
+                    and back_candidate.get("cloudinary_version")
+                    and back_candidate.get("cloudinary_version_id")
+                    and back_candidate.get("cloudinary_resource_type") == "image"
+                    and back_candidate.get("cloudinary_format")
+                ),
                 "upload_endpoint": f"/api/admin/books/{slug}/cover",
+                "promotion_endpoint": f"/api/admin/books/{slug}/cover/promote",
+                "promotion_runtime_ready": promotion_runtime_ready,
                 "reader_audio_release_truth_unchanged": True,
             }
         )
@@ -5820,6 +5917,7 @@ async def admin_list_book_cover_status(_=Depends(require_admin)):
             "scope": "sprint1",
             "active_count": len(slugs),
             "admin_cover_uploads_enabled": ENABLE_ADMIN_COVER_UPLOADS,
+            "admin_cover_promotions_enabled": ENABLE_ADMIN_COVER_PROMOTIONS,
             "cloudinary_configured": _cloudinary_config_detected(),
         },
         "summary": {
@@ -6044,6 +6142,119 @@ def _process_book_cover_candidate(body: bytes, asset_id: str, *, kind: str) -> d
     return process_book_cover(body, asset_id, kind=kind)
 
 
+def _fetch_immutable_cover_bytes(url: str, max_bytes: int) -> bytes:
+    """Fetch one already-validated immutable Cloudinary object within a hard cap."""
+    request = UrlRequest(
+        url,
+        headers={
+            "Accept": "image/avif,image/webp,image/png,image/jpeg",
+            "User-Agent": "EarnalismCoverPromotion/1.0",
+        },
+        method="GET",
+    )
+    with urlopen(request, timeout=20) as response:
+        final_url = str(response.geturl() or "")
+        if final_url != url:
+            raise CoverPromotionError("Immutable cover download redirected unexpectedly.")
+        declared_size = response.headers.get("Content-Length")
+        if declared_size:
+            try:
+                if int(declared_size) > max_bytes:
+                    raise CoverPromotionError("Remote cover exceeds the upload size limit.")
+            except ValueError as exc:
+                raise CoverPromotionError("Remote cover size metadata is invalid.") from exc
+        body = response.read(max_bytes + 1)
+    if len(body) > max_bytes:
+        raise CoverPromotionError("Remote cover exceeds the upload size limit.")
+    if not body:
+        raise CoverPromotionError("Remote cover is empty.")
+    return body
+
+
+async def _revert_cover_promotion_claim(
+    *,
+    candidate_id: str,
+    candidate_sha256: str,
+    event_id: str,
+) -> bool:
+    reverted = await db.book_cover_candidates.update_one(
+        {
+            "_id": candidate_id,
+            "sha256": candidate_sha256,
+            "audit_status": "CANONICAL_PROMOTION_IN_PROGRESS",
+            "promotion_claim.event_id": event_id,
+        },
+        {
+            "$set": {
+                "audit_status": "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW",
+            },
+            "$unset": {"promotion_claim": ""},
+        },
+    )
+    return int(getattr(reverted, "matched_count", 0) or 0) == 1
+
+
+async def _update_cover_promotion_audit(
+    *,
+    event_id: str,
+    status: str,
+    expected_status: str = "canonical_promotion_in_progress",
+    fields: Optional[dict[str, Any]] = None,
+) -> bool:
+    """Best-effort transition for an audit intent that already exists."""
+    update_fields = {
+        "status": status,
+        **dict(fields or {}),
+    }
+    try:
+        updated = await db.admin_upload_audit.update_one(
+            {
+                "id": event_id,
+                "status": expected_status,
+            },
+            {"$set": update_fields},
+        )
+    except Exception:
+        logger.exception(
+            "Cover promotion audit transition failed event=%s status=%s",
+            event_id,
+            status,
+        )
+        return False
+    return int(getattr(updated, "matched_count", 0) or 0) == 1
+
+
+async def _invalidate_cover_promotion_caches(
+    *,
+    slug: str,
+    kind: str,
+    event_id: str,
+) -> bool:
+    """Attempt both canonical and public cache invalidations after a commit."""
+    failures: list[str] = []
+    try:
+        clear_controlled_artifact_caches()
+    except Exception as exc:
+        failures.append(f"controlled:{type(exc).__name__}")
+        logger.exception(
+            "Controlled artifact cache invalidation failed for %s/%s event=%s",
+            slug,
+            kind,
+            event_id,
+        )
+    try:
+        await _public_cache_clear()
+    except Exception as exc:
+        failures.append(f"public:{type(exc).__name__}")
+        logger.exception(
+            "Public cache invalidation failed for %s/%s event=%s",
+            slug,
+            kind,
+            event_id,
+        )
+    return not failures
+
+
 _ALLOWED_COVER_TYPES = {"image/jpeg", "image/png", "image/webp"}
 _ALLOWED_CHAPTER_EXTS = {"docx", "md", "markdown", "html", "txt"}
 
@@ -6079,7 +6290,10 @@ async def admin_upload_cover(
         resolved_slug = _normalized_cover_slug(book.get("slug") or slug)
         _ensure_cloudinary()
         try:
-            candidate_asset_id = f"candidate_{book.get('id') or resolved_slug}"
+            candidate_asset_id = content_addressed_cover_candidate_asset_id(
+                resolved_slug,
+                validation["sha256"],
+            )
             result = _process_book_cover_candidate(
                 body,
                 candidate_asset_id,
@@ -6098,11 +6312,22 @@ async def admin_upload_cover(
             updated_at=updated_at,
             updated_by=updated_by,
         )
-        await db.book_cover_candidates.update_one(
-            {"_id": f"{resolved_slug}:{cover_kind}"},
-            {"$set": candidate},
-            upsert=True,
-        )
+        try:
+            await db.book_cover_candidates.update_one(
+                {
+                    "_id": f"{resolved_slug}:{cover_kind}",
+                    "audit_status": {
+                        "$ne": "CANONICAL_PROMOTION_IN_PROGRESS",
+                    },
+                },
+                {"$set": candidate},
+                upsert=True,
+            )
+        except DuplicateKeyError:
+            raise HTTPException(
+                status_code=409,
+                detail="Cover candidate is currently being promoted.",
+            )
         await db.admin_upload_audit.insert_one(
             {
                 "id": str(uuid.uuid4()),
@@ -6119,6 +6344,10 @@ async def admin_upload_cover(
                 "width": validation["width"],
                 "height": validation["height"],
                 "cover_url": result["cover_url"],
+                "cloudinary_public_id": result.get("cloudinary_public_id"),
+                "cloudinary_version": result.get("cloudinary_version"),
+                "cloudinary_version_id": result.get("cloudinary_version_id"),
+                "cloudinary_format": result.get("cloudinary_format"),
                 "status": "uploaded_pending_canonical_review",
                 "reader_audio_release_truth_unchanged": True,
                 "created_at": updated_at,
@@ -6133,6 +6362,328 @@ async def admin_upload_cover(
             "cover_audit_status": "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW",
             "reader_audio_release_truth_unchanged": True,
         }
+
+
+@api.post("/admin/books/{slug}/cover/promote")
+async def admin_promote_cover(
+    slug: str,
+    payload: CoverPromotionIn,
+    admin=Depends(require_admin),
+):
+    if not ENABLE_ADMIN_COVER_PROMOTIONS:
+        raise HTTPException(
+            status_code=503,
+            detail="Canonical cover promotion is disabled.",
+        )
+    try:
+        cover_kind = canonical_cover_kind(payload.kind)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    if (
+        payload.approval_decision != COVER_APPROVAL_DECISION
+        or payload.editorial_approved is not True
+        or payload.rights_cleared is not True
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "Explicit editorial approval, cover-rights clearance, and "
+                "canonical-cover approval are required."
+            ),
+        )
+
+    book, upload_eligibility_source = await _load_cover_upload_source_or_404(slug)
+    resolved_slug = _normalized_cover_slug(book.get("slug") or slug)
+    candidate_id = f"{resolved_slug}:{cover_kind}"
+    expected_candidate_sha256 = payload.candidate_sha256.lower()
+    if not _canonical_cover_promotion_runtime_ready(resolved_slug):
+        raise HTTPException(
+            status_code=503,
+            detail="Canonical cover promotion requires both controlled publication mirrors.",
+        )
+    candidate = await db.book_cover_candidates.find_one(
+        {"_id": candidate_id}
+    )
+    if not candidate:
+        raise HTTPException(status_code=404, detail="Cover candidate not found.")
+    approved_at = now_iso()
+    approved_by = str(admin.get("email") or admin.get("sub") or "admin")[:180]
+    event_id = str(uuid.uuid4())
+    try:
+        identity = validate_immutable_candidate(candidate)
+    except CoverPromotionError as exc:
+        raise HTTPException(status_code=409, detail=str(exc))
+
+    claim_result = await db.book_cover_candidates.update_one(
+        {
+            "_id": candidate_id,
+            "sha256": expected_candidate_sha256,
+            "audit_status": "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW",
+        },
+        {
+            "$set": {
+                "audit_status": "CANONICAL_PROMOTION_IN_PROGRESS",
+                "promotion_claim": {
+                    "event_id": event_id,
+                    "candidate_sha256": expected_candidate_sha256,
+                    "claimed_at": approved_at,
+                    "claimed_by": approved_by,
+                },
+            }
+        },
+    )
+    if int(getattr(claim_result, "matched_count", 0) or 0) != 1:
+        raise HTTPException(
+            status_code=409,
+            detail="Cover candidate changed or is already being promoted.",
+        )
+
+    audit_intent = {
+        "id": event_id,
+        "operation_type": "book_cover_canonical_promotion",
+        "admin_user_id": str(admin.get("sub") or ""),
+        "admin_email": str(admin.get("email") or ""),
+        "slug": resolved_slug,
+        "kind": cover_kind,
+        "upload_eligibility_source": upload_eligibility_source,
+        "candidate_sha256": expected_candidate_sha256,
+        "cloudinary_public_id": identity["public_id"],
+        "cloudinary_version": identity["version"],
+        "cloudinary_version_id": identity["version_id"],
+        "approval_decision": COVER_APPROVAL_DECISION,
+        "approval_note": payload.approval_note,
+        "rights_basis": payload.rights_basis,
+        "status": "canonical_promotion_in_progress",
+        "reader_audio_release_truth_unchanged": True,
+        "created_at": approved_at,
+    }
+    try:
+        await db.admin_upload_audit.insert_one(audit_intent)
+    except Exception as exc:
+        claim_reverted = await _revert_cover_promotion_claim(
+            candidate_id=candidate_id,
+            candidate_sha256=expected_candidate_sha256,
+            event_id=event_id,
+        )
+        if not claim_reverted:
+            logger.error(
+                "Cover promotion audit-intent failure also lost claim rollback "
+                "for %s/%s event=%s",
+                resolved_slug,
+                cover_kind,
+                event_id,
+            )
+            raise HTTPException(
+                status_code=409,
+                detail=(
+                    "Canonical mutation was not attempted, but the audit intent "
+                    "and Mongo claim could not both be reconciled; operator "
+                    "review is required."
+                ),
+            )
+        logger.exception(
+            "Cover promotion audit intent failed for %s/%s",
+            resolved_slug,
+            cover_kind,
+        )
+        raise HTTPException(
+            status_code=502,
+            detail=(
+                "Canonical mutation was not attempted because its durable audit "
+                f"intent failed: {type(exc).__name__}"
+            ),
+        )
+
+    try:
+        remote_bytes = await asyncio.to_thread(
+            _fetch_immutable_cover_bytes,
+            identity["url"],
+            ADMIN_MEDIA_UPLOAD_MAX_BYTES,
+        )
+        promotion = await asyncio.to_thread(
+            promote_cover_candidate,
+            repo_root=EARNALISM_CANONICAL_REPO_ROOT,
+            slug=resolved_slug,
+            kind=cover_kind,
+            candidate=candidate,
+            remote_bytes=remote_bytes,
+            expected_candidate_sha256=payload.candidate_sha256,
+            approval_decision=payload.approval_decision,
+            editorial_approved=payload.editorial_approved,
+            rights_cleared=payload.rights_cleared,
+            approval_note=payload.approval_note,
+            rights_basis=payload.rights_basis,
+            event_id=event_id,
+            approved_at=approved_at,
+            approved_by=approved_by,
+            max_bytes=ADMIN_MEDIA_UPLOAD_MAX_BYTES,
+        )
+    except CoverPromotionError as exc:
+        claim_reverted = await _revert_cover_promotion_claim(
+            candidate_id=candidate_id,
+            candidate_sha256=expected_candidate_sha256,
+            event_id=event_id,
+        )
+        failure_status = (
+            "canonical_promotion_failed"
+            if claim_reverted
+            else "canonical_promotion_failed_claim_revert_conflict"
+        )
+        await _update_cover_promotion_audit(
+            event_id=event_id,
+            status=failure_status,
+            fields={
+                "failure_type": type(exc).__name__,
+                "failure_detail": str(exc)[:1000],
+                "failed_at": now_iso(),
+            },
+        )
+        if not claim_reverted:
+            logger.error(
+                "Cover promotion claim rollback CAS failed for %s/%s event=%s",
+                resolved_slug,
+                cover_kind,
+                event_id,
+            )
+            raise HTTPException(
+                status_code=409,
+                detail=(
+                    "Cover promotion failed and its Mongo claim could not be "
+                    "reverted; operator review is required."
+                ),
+            )
+        raise HTTPException(status_code=409, detail=str(exc))
+    except Exception as exc:
+        claim_reverted = await _revert_cover_promotion_claim(
+            candidate_id=candidate_id,
+            candidate_sha256=expected_candidate_sha256,
+            event_id=event_id,
+        )
+        failure_status = (
+            "canonical_promotion_failed"
+            if claim_reverted
+            else "canonical_promotion_failed_claim_revert_conflict"
+        )
+        await _update_cover_promotion_audit(
+            event_id=event_id,
+            status=failure_status,
+            fields={
+                "failure_type": type(exc).__name__,
+                "failed_at": now_iso(),
+            },
+        )
+        if not claim_reverted:
+            logger.error(
+                "Cover promotion claim rollback CAS failed for %s/%s event=%s",
+                resolved_slug,
+                cover_kind,
+                event_id,
+            )
+            raise HTTPException(
+                status_code=409,
+                detail=(
+                    "Cover promotion failed and its Mongo claim could not be "
+                    "reverted; operator review is required."
+                ),
+            )
+        logger.exception("Canonical cover promotion failed for %s/%s", resolved_slug, cover_kind)
+        raise HTTPException(
+            status_code=502,
+            detail=f"Canonical cover promotion failed: {type(exc).__name__}",
+        )
+
+    finalized = await db.book_cover_candidates.update_one(
+        {
+            "_id": candidate_id,
+            "sha256": expected_candidate_sha256,
+            "audit_status": "CANONICAL_PROMOTION_IN_PROGRESS",
+            "promotion_claim.event_id": event_id,
+        },
+        {
+            "$set": {
+                "audit_status": "CANONICAL_PROMOTED",
+                "canonical_url": promotion["canonical_cover_url"],
+                "promotion_event_id": promotion["event_id"],
+                "promoted_at": approved_at,
+                "promoted_by": approved_by,
+            },
+            "$unset": {"promotion_claim": ""},
+        },
+    )
+    if int(getattr(finalized, "matched_count", 0) or 0) != 1:
+        caches_invalidated = await _invalidate_cover_promotion_caches(
+            slug=resolved_slug,
+            kind=cover_kind,
+            event_id=event_id,
+        )
+        await _update_cover_promotion_audit(
+            event_id=event_id,
+            status="canonical_mutation_committed_candidate_finalize_conflict",
+            fields={
+                "canonical_cover_url": promotion["canonical_cover_url"],
+                "candidate_sha256": promotion["candidate_sha256"],
+                "remote_sha256": promotion["remote_sha256"],
+                "cache_invalidation_succeeded": caches_invalidated,
+                "operator_review_required": True,
+                "completed_at": now_iso(),
+            },
+        )
+        raise HTTPException(
+            status_code=409,
+            detail=(
+                "Cover promotion completed but candidate finalization lost its "
+                "compare-and-swap claim; operator review is required."
+            ),
+        )
+    caches_invalidated = await _invalidate_cover_promotion_caches(
+        slug=resolved_slug,
+        kind=cover_kind,
+        event_id=event_id,
+    )
+    if not caches_invalidated:
+        await _update_cover_promotion_audit(
+            event_id=event_id,
+            status="canonical_promoted_cache_invalidation_failed",
+            fields={
+                "canonical_cover_url": promotion["canonical_cover_url"],
+                "candidate_sha256": promotion["candidate_sha256"],
+                "remote_sha256": promotion["remote_sha256"],
+                "operator_review_required": True,
+                "completed_at": now_iso(),
+            },
+        )
+        raise HTTPException(
+            status_code=409,
+            detail=(
+                "Cover promotion completed, but cache invalidation failed; "
+                "do not retry automatically and request operator review."
+            ),
+        )
+    audit_finalized = await _update_cover_promotion_audit(
+        event_id=event_id,
+        status="canonical_promoted",
+        fields={
+            "canonical_cover_url": promotion["canonical_cover_url"],
+            "candidate_sha256": promotion["candidate_sha256"],
+            "remote_sha256": promotion["remote_sha256"],
+            "cache_invalidation_succeeded": True,
+            "completed_at": now_iso(),
+        },
+    )
+    if not audit_finalized:
+        raise HTTPException(
+            status_code=409,
+            detail=(
+                "Cover promotion completed and caches were invalidated, but "
+                "durable audit finalization failed; do not retry automatically "
+                "and request operator review."
+            ),
+        )
+    return {
+        "success": True,
+        **promotion,
+        "cover_audit_status": "CANONICAL_PROMOTED",
+    }
 
 
 @api.post("/admin/books/{slug}/chapters/{chapter_id}/upload")

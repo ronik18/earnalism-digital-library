@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import copy
+import hashlib
 import json
 import os
 from io import BytesIO
@@ -19,6 +20,7 @@ from backend import catalog_truth, server
 from backend.config.book_cover import (
     build_private_cover_candidate,
     canonical_cover_kind,
+    content_addressed_cover_candidate_asset_id,
     validate_book_cover,
 )
 
@@ -35,10 +37,19 @@ def image_bytes(image_format: str = "PNG", size: tuple[int, int] = (1200, 1800))
 
 def upload_result() -> dict:
     return {
-        "cover_url": "https://res.cloudinary.com/demo/image/upload/cover.png",
+        "cover_url": (
+            "https://res.cloudinary.com/demo/image/upload/v1785384000/"
+            "earnalism/covers/front/cover.png"
+        ),
         "thumbnail_url": "https://res.cloudinary.com/demo/image/upload/w_300/cover.png",
         "blur_placeholder": "https://res.cloudinary.com/demo/image/upload/e_blur/cover.png",
         "dominant_color": "#6B1020",
+        "cloudinary_public_id": "earnalism/covers/front/cover",
+        "cloudinary_version": 1785384000,
+        "cloudinary_version_id": "cloudinary-version-id",
+        "cloudinary_resource_type": "image",
+        "cloudinary_format": "png",
+        "cloudinary_bytes": len(image_bytes()),
     }
 
 
@@ -77,6 +88,9 @@ def test_private_cover_candidate_is_side_specific_and_cannot_double_as_public_bo
     assert candidate["kind"] == "back"
     assert candidate["candidate_url"] == upload_result()["cover_url"]
     assert candidate["audit_status"] == "ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW"
+    assert candidate["cloudinary_public_id"] == "earnalism/covers/front/cover"
+    assert candidate["cloudinary_version"] == "1785384000"
+    assert candidate["immutable_candidate_url"] == upload_result()["cover_url"]
     assert candidate["width"] == 1200
     assert candidate["height"] == 1800
     forbidden = {
@@ -286,7 +300,12 @@ def test_pending_candidate_is_private_across_all_public_book_surfaces(monkeypatc
         "_process_book_cover_candidate",
         lambda _body, asset_id, *, kind: (
             private_result
-            if asset_id.startswith("candidate_") and kind == "front"
+            if asset_id
+            == content_addressed_cover_candidate_asset_id(
+                slug,
+                hashlib.sha256(image_bytes()).hexdigest(),
+            )
+            and kind == "front"
             else pytest.fail("Cover candidate did not use the isolated asset namespace.")
         ),
     )
@@ -377,7 +396,12 @@ def test_controlled_only_jekyll_can_upload_without_seeding_public_mongo(monkeypa
         "_process_book_cover_candidate",
         lambda _body, asset_id, *, kind: (
             private_result
-            if asset_id == "candidate_controlled-jekyll-and-hyde" and kind == "front"
+            if asset_id
+            == content_addressed_cover_candidate_asset_id(
+                slug,
+                hashlib.sha256(image_bytes()).hexdigest(),
+            )
+            and kind == "front"
             else pytest.fail("Controlled-only cover candidate used the wrong asset namespace.")
         ),
     )

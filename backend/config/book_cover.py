@@ -20,6 +20,7 @@ MAX_BOOK_COVER_DIMENSION = 8000
 MIN_BOOK_COVER_ASPECT_RATIO = 0.5
 MAX_BOOK_COVER_ASPECT_RATIO = 0.9
 BOOK_COVER_KINDS = {"front", "back"}
+HEX_SHA256 = frozenset("0123456789abcdef")
 
 
 def canonical_cover_kind(value: str) -> str:
@@ -27,6 +28,29 @@ def canonical_cover_kind(value: str) -> str:
     if kind not in BOOK_COVER_KINDS:
         raise ValueError("Cover kind must be front or back.")
     return kind
+
+
+def content_addressed_cover_candidate_asset_id(slug: str, sha256: str) -> str:
+    """Return the immutable per-byte identity used for private cover intake."""
+    normalized_slug = str(slug or "").strip().lower()
+    digest = str(sha256 or "").strip().lower()
+    if not normalized_slug or "/" in normalized_slug or normalized_slug in {".", ".."}:
+        raise ValueError("Invalid controlled publication slug.")
+    if len(digest) != 64 or set(digest) > HEX_SHA256:
+        raise ValueError("Cover candidate SHA-256 is missing or invalid.")
+    return f"candidate_controlled-{normalized_slug}-{digest}"
+
+
+def content_addressed_cover_candidate_public_id(
+    slug: str,
+    kind: str,
+    sha256: str,
+) -> str:
+    """Return the exact Cloudinary public ID for one immutable candidate."""
+    cover_kind = canonical_cover_kind(kind)
+    prefix = "back_cover" if cover_kind == "back" else "cover"
+    asset_id = content_addressed_cover_candidate_asset_id(slug, sha256)
+    return f"earnalism/covers/{cover_kind}/{prefix}_{asset_id}"
 
 
 def validate_book_cover(body: bytes, content_type: str, max_bytes: int) -> dict[str, Any]:
@@ -84,16 +108,33 @@ def build_private_cover_candidate(
 ) -> dict[str, Any]:
     """Return a private review candidate that cannot double as public book data."""
     cover_kind = canonical_cover_kind(kind)
+    public_id = str(upload_result.get("cloudinary_public_id") or "").strip()
+    version = str(upload_result.get("cloudinary_version") or "").strip()
+    image_format = str(upload_result.get("cloudinary_format") or "").strip().lower()
+    resource_type = str(
+        upload_result.get("cloudinary_resource_type") or "image"
+    ).strip().lower()
     return {
         "slug": str(slug or "").strip().lower(),
         "kind": cover_kind,
         "candidate_url": upload_result["cover_url"],
+        "immutable_candidate_url": upload_result["cover_url"],
         "candidate_thumbnail_url": upload_result["thumbnail_url"],
         "candidate_blur_placeholder": upload_result["blur_placeholder"],
         "candidate_dominant_color": upload_result["dominant_color"],
         "candidate_srcset": upload_result.get("srcset", ""),
+        "cloudinary_public_id": public_id,
+        "cloudinary_version": version,
+        "cloudinary_version_id": str(
+            upload_result.get("cloudinary_version_id") or ""
+        ).strip(),
+        "cloudinary_resource_type": resource_type,
+        "cloudinary_format": image_format,
+        "cloudinary_bytes": int(upload_result.get("cloudinary_bytes") or 0),
         "width": int(validation["width"]),
         "height": int(validation["height"]),
+        "input_format": str(validation["format"]),
+        "input_size_bytes": int(validation["bytes"]),
         "sha256": str(validation["sha256"]),
         "processing_status": "ready",
         "processing_error": "",

@@ -68,6 +68,12 @@ def first_controlled_artifact_dir(slug: str) -> Path:
     return candidates[0]
 
 
+def clear_controlled_artifact_caches() -> None:
+    """Invalidate filesystem-derived truth after a controlled artifact mutation."""
+    controlled_artifact_validation_issues.cache_clear()
+    dracula_artifact_validation_issues.cache_clear()
+
+
 CONTROLLED_LAUNCH_CONFIG_PATH = first_existing_path(
     ROOT / "data" / "controlled_launch.json",
     MODULE_DIR / "data" / "controlled_launch.json",
