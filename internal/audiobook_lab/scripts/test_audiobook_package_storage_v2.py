@@ -5,10 +5,12 @@ from __future__ import annotations
 
 import io
 import hashlib
+import http.server
 import json
 import os
 import sys
 import tempfile
+import threading
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -434,6 +436,7 @@ class StorageToolTests(unittest.TestCase):
             "buckets": [
                 {
                     "accountId": production.account_id,
+                    "bucketId": "opaque-bucket-id",
                     "bucketName": production.bucket,
                     "lifecycleRules": [
                         {
@@ -462,6 +465,151 @@ class StorageToolTests(unittest.TestCase):
                 "accountId": production.account_id,
                 "bucketName": production.bucket,
             },
+        )
+
+    def test_native_lifecycle_reader_rejects_returned_bucket_id_mismatch(self) -> None:
+        production = config("prod")
+        authorization = {
+            "accountId": production.account_id,
+            "authorizationToken": "opaque-token",
+            "apiInfo": {
+                "storageApi": {
+                    "apiUrl": "https://api001.backblazeb2.com",
+                    "allowed": {
+                        "capabilities": ["listBuckets"],
+                        "buckets": [
+                            {
+                                "id": "authorized-bucket-id",
+                                "name": production.bucket,
+                            }
+                        ],
+                    },
+                }
+            },
+        }
+        returned = {
+            "buckets": [
+                {
+                    "accountId": production.account_id,
+                    "bucketId": "different-bucket-id",
+                    "bucketName": production.bucket,
+                    "lifecycleRules": [],
+                }
+            ]
+        }
+        with mock.patch.object(
+            storage,
+            "_native_json_request",
+            side_effect=[authorization, returned],
+        ):
+            with self.assertRaisesRegex(
+                storage.StorageSafetyError,
+                "NATIVE_LIFECYCLE_RESPONSE_INVALID.*exact_bucket_missing",
+            ):
+                storage.create_native_lifecycle_reader(production).read()
+
+    def test_native_lifecycle_reader_rejects_missing_returned_bucket_id(self) -> None:
+        production = config("prod")
+        authorization = {
+            "accountId": production.account_id,
+            "authorizationToken": "opaque-token",
+            "apiInfo": {
+                "storageApi": {
+                    "apiUrl": "https://api001.backblazeb2.com",
+                    "allowed": {
+                        "capabilities": ["listBuckets"],
+                        "buckets": [
+                            {
+                                "id": "authorized-bucket-id",
+                                "name": production.bucket,
+                            }
+                        ],
+                    },
+                }
+            },
+        }
+        returned = {
+            "buckets": [
+                {
+                    "accountId": production.account_id,
+                    "bucketName": production.bucket,
+                    "lifecycleRules": [],
+                }
+            ]
+        }
+        with mock.patch.object(
+            storage,
+            "_native_json_request",
+            side_effect=[authorization, returned],
+        ):
+            with self.assertRaisesRegex(
+                storage.StorageSafetyError,
+                "NATIVE_LIFECYCLE_RESPONSE_INVALID.*exact_bucket_missing",
+            ):
+                storage.create_native_lifecycle_reader(production).read()
+
+    def test_native_json_request_refuses_redirect_before_credentials_move(self) -> None:
+        requests_seen: list[tuple[str, str | None]] = []
+
+        class RedirectServer(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):
+                requests_seen.append(
+                    (self.path, self.headers.get("Authorization"))
+                )
+                self.send_response(302)
+                self.send_header(
+                    "Location",
+                    self.path.replace("/source", "/sink"),
+                )
+                self.end_headers()
+
+            def log_message(self, format, *args):
+                return
+
+        server = http.server.ThreadingHTTPServer(
+            ("127.0.0.1", 0),
+            RedirectServer,
+        )
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            for label, authorization in (
+                ("basic", "Basic FAKE_APPLICATION_KEY_FOR_TEST"),
+                ("bearer", "FAKE_BEARER_AUTHORIZATION_TOKEN_FOR_TEST"),
+            ):
+                original_path = f"/{label}/source"
+                redirect_path = f"/{label}/sink"
+                request = storage.urllib.request.Request(
+                    f"http://127.0.0.1:{server.server_port}{original_path}",
+                    headers={"Authorization": authorization},
+                )
+                with self.subTest(authorization=label):
+                    with self.assertRaisesRegex(
+                        storage.StorageSafetyError,
+                        "NATIVE_LIFECYCLE_REDIRECT_BLOCKED.*HTTP_302",
+                    ) as raised:
+                        storage._native_json_request(
+                            request,
+                            "redirect_probe",
+                        )
+
+                    self.assertNotIn(
+                        redirect_path,
+                        [path for path, _ in requests_seen],
+                    )
+                    self.assertNotIn(redirect_path, str(raised.exception))
+                    self.assertNotIn(authorization, str(raised.exception))
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=2)
+
+        self.assertEqual(
+            requests_seen,
+            [
+                ("/basic/source", "Basic FAKE_APPLICATION_KEY_FOR_TEST"),
+                ("/bearer/source", "FAKE_BEARER_AUTHORIZATION_TOKEN_FOR_TEST"),
+            ],
         )
 
     def test_native_lifecycle_reader_requires_list_buckets_capability(self) -> None:
@@ -550,6 +698,30 @@ class StorageToolTests(unittest.TestCase):
                             "fileNamePrefix": "v1/prod/",
                             "daysFromUploadingToHiding": None,
                             "daysFromHidingToDeleting": "thirty",
+                        }
+                    ]
+                ),
+            )
+
+    def test_preflight_rejects_malformed_unfinished_upload_lifecycle_field(
+        self,
+    ) -> None:
+        with self.assertRaisesRegex(
+            storage.StorageSafetyError,
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID.*"
+            "daysFromStartingToCancelingUnfinishedLargeFiles_invalid",
+        ):
+            storage.preflight_store(
+                FakeS3(),
+                config("prod"),
+                retention_admin_client=FakeS3(),
+                native_lifecycle_reader=FakeNativeLifecycleReader(
+                    [
+                        {
+                            "fileNamePrefix": "qa/",
+                            "daysFromUploadingToHiding": None,
+                            "daysFromHidingToDeleting": None,
+                            "daysFromStartingToCancelingUnfinishedLargeFiles": 0,
                         }
                     ]
                 ),

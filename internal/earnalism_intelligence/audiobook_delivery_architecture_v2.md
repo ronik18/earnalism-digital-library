@@ -63,12 +63,15 @@ The runtime receives only a bucket-scoped primary read credential. Controlled
 operators use separate upload and retention-preflight credentials. Lifecycle
 rules are read through the supported B2 Native `b2_list_buckets` API because
 lifecycle-read capability support is inconsistent across the documented and
-deployed B2 S3-compatible surfaces. The retention-preflight credential is
-read-only; its legacy environment variable name still says `RETENTION_ADMIN`
-for compatibility. Exact least-privilege capabilities are documented in the
-operator environment example. Production deletion credentials are
-deliberately unsupported and remain offline. The unpopulated operator contract
-is
+deployed B2 S3-compatible surfaces. The account, bucket name, and bucket ID in
+the returned record must exactly match the authorized identity. Native API
+requests reject every HTTP redirect before urllib can construct a second
+request, preventing Basic or bearer authorization from moving to another URL.
+The retention-preflight credential is read-only; its legacy environment
+variable name still says `RETENTION_ADMIN` for compatibility. Exact
+least-privilege capabilities are documented in the operator environment
+example. Production deletion credentials are deliberately unsupported and
+remain offline. The unpopulated operator contract is
 `internal/audiobook_lab/config/audiobook_package_storage.env.example`. The
 current and at least two prior approved releases are retained.
 

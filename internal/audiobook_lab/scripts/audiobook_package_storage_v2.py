@@ -415,12 +415,39 @@ def create_native_lifecycle_reader(config: StorageConfig) -> B2NativeLifecycleRe
     )
 
 
+class _RejectNativeRedirects(urllib.request.HTTPRedirectHandler):
+    """Stop before urllib can copy an authorization header to another URL."""
+
+    def __init__(self, operation: str) -> None:
+        super().__init__()
+        self.operation = operation
+
+    def redirect_request(
+        self,
+        req: urllib.request.Request,
+        fp: Any,
+        code: int,
+        msg: str,
+        headers: Any,
+        newurl: str,
+    ) -> None:
+        if fp is not None:
+            fp.close()
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_REDIRECT_BLOCKED",
+            f"{self.operation}:HTTP_{code}",
+        )
+
+
 def _native_json_request(
     request: urllib.request.Request,
     operation: str,
 ) -> Mapping[str, Any]:
+    opener = urllib.request.build_opener(
+        _RejectNativeRedirects(operation),
+    )
     try:
-        with urllib.request.urlopen(  # nosec B310 - URLs are fixed or validated below.
+        with opener.open(  # nosec B310 - redirects are rejected; URLs are fixed/validated.
             request,
             timeout=NATIVE_API_TIMEOUT_SECONDS,
         ) as response:
@@ -536,6 +563,7 @@ def read_native_bucket_lifecycle_rules(
             "NATIVE_LIFECYCLE_BUCKET_SCOPE_MISMATCH",
             config.role,
         )
+    allowed_bucket_id = str(allowed_buckets[0]["id"])
     api_url = _validated_native_api_url(storage_api.get("apiUrl"))
     token = str(authorization.get("authorizationToken") or "")
     if not token:
@@ -569,6 +597,7 @@ def read_native_bucket_lifecycle_rules(
         or len(buckets) != 1
         or not isinstance(buckets[0], dict)
         or str(buckets[0].get("bucketName") or "") != config.bucket
+        or str(buckets[0].get("bucketId") or "") != allowed_bucket_id
         or str(buckets[0].get("accountId") or "") != config.account_id
     ):
         raise StorageSafetyError(
@@ -643,6 +672,7 @@ def _validate_native_lifecycle_rule(
     for field_name in (
         "daysFromUploadingToHiding",
         "daysFromHidingToDeleting",
+        "daysFromStartingToCancelingUnfinishedLargeFiles",
     ):
         value = rule.get(field_name)
         if value is not None and (

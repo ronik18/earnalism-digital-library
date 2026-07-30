@@ -1232,9 +1232,19 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   `b2_list_buckets`, to read the bucket's `lifecycleRules`. Require the
   `listBuckets` capability, exact account identity, and an application key
   restricted to exactly the configured bucket.
+- Bind the authorization response to the bucket-list response by exact bucket
+  ID as well as account and bucket name. A missing or different returned ID
+  must fail closed even when the human-readable bucket name matches.
 - Fail closed before the first object write if Native authorization or bucket
   listing fails, if the key is missing the capability or exact bucket scope,
   or if any lifecycle field is malformed.
+- Validate all documented Native lifecycle day fields, including unfinished
+  large-file cancellation, as either `null` or an integer of at least one.
+- Default urllib redirect handling can move an `Authorization` header to a
+  second URL. Build Native API requests with a redirect handler that rejects
+  every redirect before a second request object can be used, and sanitize the
+  resulting failure so neither credential material nor the redirect target is
+  reported.
 - A lifecycle rule that hides `v1/prod/` is operationally destructive even
   when deletion is delayed. Block both hiding and deletion rules whose prefix
   overlaps the protected production prefix.
