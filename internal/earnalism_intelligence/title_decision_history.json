@@ -1984,11 +1984,16 @@
       "audiobook_next_action": "Keep Pride audio hidden and do not repeat the closed Chatterbox V3 fingerprint. Require one genuinely different exact source-bound delivery, then rerun objective ASR, coverage, first/last, and ordered-content gates before any listening spend."
     },
     "the-tell-tale-heart": {
-      "latest_decision": "KOKORO_BF_EMMA_REPRESENTATIVE_ASR_REPAIR_FAILED_CONFIGURATION_CLOSED",
-      "decision_reason": "Three of four bf_emma passages reached exact ASR/source 10.0/1.0 after bounded decoder repair, but both finale decoders retained unexpected trailing phrase thanks for watching.",
-      "updated_at": "2026-07-20T04:29:45Z",
+      "latest_decision": "CANONICAL_MANUSCRIPT_RECONCILED_AUDIO_REMAINS_HIDDEN",
+      "decision_reason": "The admin/live and controlled manuscripts contain identical prose, but the controlled chapter had 167 duplicated newlines before source-wrap continuations. Removing only those whitespace artifacts makes the controlled extraction byte-identical to the recovered admin manuscript without changing reader or audio release truth.",
+      "updated_at": "2026-07-30T06:30:00Z",
       "language": "en",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+      "canonical_manuscript_sha256": "316ed82d8ae04a1af3f82ec692e88bc630c4865c06192854a612f29cb017f2bb",
+      "prior_controlled_manuscript_sha256": "60c275266b007015732fdb9cca5165c9efc0cffae988bed66c5d6ca9fcbeb748",
+      "collapsed_manuscript_sha256": "acbb67e1d96287a80021202229211ffc8072e80a67cf3274b1f3a00376c22fef",
+      "source_wrap_artifacts_removed": 167,
+      "manuscript_reconciliation_evidence": "internal/earnalism_intelligence/the_tell_tale_heart_manuscript_reconciliation_20260730.json",
       "provider": "google",
       "contextual_studio_c_scores": [9.4, 8.5, 9.4, 8.8],
       "slow_contextual_studio_c_scores": [9.5, 8.4, 9.4, 9.6],
@@ -2005,7 +2010,7 @@
       "kokoro_listening_qa_run": false,
       "completed_attempts_must_not_repeat": true,
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_kokoro_bf_emma_asr_repair_v1.json",
-      "audiobook_next_action": "Do not repeat the bf_emma synthesis or ASR-repair fingerprints and never delete unexpected decoded speech to manufacture a pass. Use a genuinely different provider/voice or validate source-bound narration before another representative lane."
+      "audiobook_next_action": "Use only the reconciled exact manuscript for a genuinely different source-bound delivery. Do not repeat the closed bf_emma fingerprints, and keep audio hidden until all objective, listening, storage, endpoint, and browser gates pass."
     }
   },
   "bengali_audio_lane_status": "D19_HUMAN_NARRATION_REQUIRED_NO_SCALE_V3_PREFLIGHT_RECONCILED",

@@ -1,0 +1,65 @@
+{
+  "schema_version": "tell_tale_manuscript_reconciliation.v1",
+  "generated_at": "2026-07-30T06:30:00Z",
+  "slug": "the-tell-tale-heart",
+  "status": "CANONICAL_MANUSCRIPT_RECONCILED",
+  "repair_kind": "SOURCE_WRAP_WHITESPACE_ONLY",
+  "controlled_roots": [
+    "data/controlled_publications/the-tell-tale-heart",
+    "backend/data/controlled_publications/the-tell-tale-heart"
+  ],
+  "canonical_manuscript_path": "internal/audiobook_lab/sprint1_publication/source_manuscripts/the-tell-tale-heart/clean_manuscript.txt",
+  "source_provenance": {
+    "source_url": "https://www.gutenberg.org/ebooks/2148",
+    "historical_raw_source_git_blob": "481bf484a8fa3065e4f140196d136bbc666225f9",
+    "historical_raw_source_file_sha256": "20780b096474c0c584f780e2f515a528a3cf4a1e265425f9b2c20a6842e39526",
+    "historical_raw_source_stripped_sha256": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+    "historical_chapter_git_blob": "6aabad76dfb89651574338d011c1fbca06b65a58",
+    "historical_chapter_file_sha256": "7ffb8676227cab07f79fb2f811f13b53616f3869637fc3fa6283f1bee5a4d3ba"
+  },
+  "before": {
+    "admin_live_manuscript_sha256": "316ed82d8ae04a1af3f82ec692e88bc630c4865c06192854a612f29cb017f2bb",
+    "controlled_manuscript_sha256": "60c275266b007015732fdb9cca5165c9efc0cffae988bed66c5d6ca9fcbeb748",
+    "controlled_content_sha256": "be8259855845762a7a1c6e5e1bd45d43bbd04c7d769427b25132e2bf514af1f8",
+    "admin_live_chars": 11174,
+    "admin_live_bytes": 11350,
+    "admin_live_line_count": 204,
+    "admin_live_paragraph_count": 19,
+    "controlled_chars": 11341,
+    "controlled_bytes": 11517,
+    "controlled_line_count": 371,
+    "controlled_false_paragraph_count": 186
+  },
+  "after": {
+    "canonical_manuscript_sha256": "316ed82d8ae04a1af3f82ec692e88bc630c4865c06192854a612f29cb017f2bb",
+    "controlled_content_sha256": "0d754cdbbbcdc662091824f2078312d78eb3d80262e6301b0465ab4c3db54e4e",
+    "aggregate_content_hash": "a07c4b3d611f371eff7ff8ded51a6dd40eabe86f595b459fbe2f5e23afb18dcf",
+    "collapsed_manuscript_sha256": "acbb67e1d96287a80021202229211ffc8072e80a67cf3274b1f3a00376c22fef",
+    "non_whitespace_sha256": "6780433344237e210b8a27954c8790ac4e564a6f46f646e1101201f26ba7b51e"
+  },
+  "source_wrap_artifacts_removed": 167,
+  "canonical_source_decision": "Use the controlled chapter after removing only duplicated newlines before indented source-wrap continuations; its extracted manuscript is byte-identical to the recovered admin/live manuscript.",
+  "prose_changed": false,
+  "reader_release_truth_changed": false,
+  "audio_release_truth_changed": false,
+  "audio_generated": false,
+  "provider_or_cloud_operation": false,
+  "public_mutation": false,
+  "paid_tts_lock_touched": false,
+  "audio_truth": {
+    "approval_evidence.json": {
+      "audiobook_enabled": false,
+      "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
+    },
+    "public_book.json": {
+      "audio_enabled": false,
+      "audiobook_enabled": false,
+      "generate_audiobook": false
+    },
+    "reader_manifest.json": {
+      "audio_enabled": false,
+      "audiobook_enabled": false
+    }
+  },
+  "check_mode": false
+}
