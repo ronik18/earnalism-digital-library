@@ -605,6 +605,7 @@ def evaluate(
         "listening_quality_report": listening_report,
         "provider_calls_ran": True,
         "provider_call_count": 1,
+        "paid_lock_read_or_written": True,
         "paid_lock_touched": True,
         "paid_lock_restored_byte_for_byte": True,
         "paid_lock_sha256_before": repair.sha256_bytes(lock_before),

@@ -277,6 +277,7 @@ class IncrementalListeningQATests(unittest.TestCase):
         self.assertEqual(len(calls), 1)
         self.assertEqual(calls[0]["unit_id"], repair.TARGET_UNIT_ID)
         self.assertEqual(self.lock.read_bytes(), lock_before)
+        self.assertTrue(result["paid_lock_read_or_written"])
         self.assertTrue(result["paid_lock_restored_byte_for_byte"])
         self.assertFalse(result["upload_performed"])
         self.assertFalse(result["publication_performed"])

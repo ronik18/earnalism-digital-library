@@ -134,6 +134,9 @@ QA_CANDIDATE_ALLOWED_ENGLISH_LISTENING_POLICIES = frozenset(
         "platform_audiobook_acceptance_v4_89",
     }
 )
+JEKYLL_INCREMENTAL_LISTENING_SCHEMA = (
+    "earnalism.jekyll_google_chunk36_incremental_listening_qa.v1"
+)
 QA_CANDIDATE_DOWNSTREAM_GATES = (
     "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
     "PRIVATE_B2_DR_REPLICA_REQUIRED",
@@ -2256,6 +2259,86 @@ def _validate_candidate_full_manifest(
     sequence_sha256 = canonical_sha256(
         [record["audio_sha256"] for record in records]
     )
+    bounded_repair = manifest.get("bounded_chunk_repair")
+    objective_attempt_fingerprint = expected_attempt_fingerprint
+    if bounded_repair is not None:
+        if not isinstance(bounded_repair, Mapping):
+            raise PackageBuildError("Bounded repair evidence must be an object")
+        chunk_index = bounded_repair.get("chunk_index")
+        if (
+            bounded_repair.get("schema_version")
+            != "earnalism.google_english_bounded_chunk_repair.v1"
+            or bounded_repair.get("status")
+            != "PRIVATE_REPLACEMENT_CANDIDATE_QA_PENDING"
+            or bounded_repair.get("slug") != slug
+            or bounded_repair.get("source_sha256") != source_sha256
+            or bounded_repair.get("input_manifest_sha256")
+            != input_manifest_sha256
+            or bounded_repair.get("base_attempt_fingerprint")
+            != expected_attempt_fingerprint
+            or not isinstance(chunk_index, int)
+            or isinstance(chunk_index, bool)
+            or not 0 <= chunk_index < len(records)
+            or bounded_repair.get("unit_id") != records[chunk_index]["unit_id"]
+            or bounded_repair.get("text_sha256")
+            != records[chunk_index]["text_sha256"]
+            or bounded_repair.get("changed_chunk_indexes") != [chunk_index]
+            or bounded_repair.get("replacement_audio_file_count") != 1
+            or bounded_repair.get("preserved_audio_file_count")
+            != len(records) - 1
+            or bounded_repair.get("full_source_text_changed") is not False
+            or bounded_repair.get("publication_performed") is not False
+            or bounded_repair.get("release_mutation_performed") is not False
+            or bounded_repair.get("upload_performed") is not False
+            or bounded_repair.get("candidate_audio_sequence_sha256")
+            != sequence_sha256
+            or manifest.get("candidate_audio_sequence_sha256")
+            != sequence_sha256
+            or manifest.get("repair_synthesis_calls") != 1
+            or manifest.get("total_provider_calls_across_lineage")
+            != len(records) + 1
+        ):
+            raise PackageBuildError(
+                "Bounded repair lineage is incomplete or conflicts with the candidate"
+            )
+        for field in (
+            "base_full_manifest_sha256",
+            "base_candidate_binding_sha256",
+            "failed_listening_evidence_sha256",
+            "repair_attempt_fingerprint",
+        ):
+            if not SHA256_RE.fullmatch(str(bounded_repair.get(field) or "")):
+                raise PackageBuildError(
+                    f"Bounded repair {field} is not a SHA-256"
+                )
+        base_hashes = bounded_repair.get("base_ordered_audio_hashes")
+        current_hashes = [record["audio_sha256"] for record in records]
+        if (
+            not isinstance(base_hashes, list)
+            or len(base_hashes) != len(records)
+            or any(
+                not SHA256_RE.fullmatch(str(value or ""))
+                for value in base_hashes
+            )
+            or [
+                index
+                for index, (base, current) in enumerate(
+                    zip(base_hashes, current_hashes)
+                )
+                if base != current
+            ]
+            != [chunk_index]
+            or bounded_repair.get("prior_audio_sha256")
+            != base_hashes[chunk_index]
+            or bounded_repair.get("replacement_audio_sha256")
+            != current_hashes[chunk_index]
+        ):
+            raise PackageBuildError(
+                "Bounded repair does not prove one exact changed audio unit"
+            )
+        objective_attempt_fingerprint = str(
+            bounded_repair["repair_attempt_fingerprint"]
+        )
     manifest_sha256 = sha256_file(path)
     candidate_binding_sha256 = canonical_sha256(
         {
@@ -2281,6 +2364,8 @@ def _validate_candidate_full_manifest(
         "records": records,
         "candidate_audio_sequence_sha256": sequence_sha256,
         "candidate_binding_sha256": candidate_binding_sha256,
+        "bounded_repair": bounded_repair,
+        "objective_attempt_fingerprint": objective_attempt_fingerprint,
     }
 
 
@@ -2374,7 +2459,7 @@ def _validate_candidate_objective_qa(
         or report.get("input_manifest_sha256")
         != full["input_manifest_sha256"]
         or report.get("attempt_fingerprint")
-        != manifest.get("attempt_fingerprint")
+        != full["objective_attempt_fingerprint"]
         or report.get("candidate_audio_sequence_sha256")
         != full["candidate_audio_sequence_sha256"]
         or report.get("candidate_binding_sha256")
@@ -2425,13 +2510,56 @@ def _validate_candidate_objective_qa(
     _strict_objective_metrics(aggregate, label="Full-title aggregate")
     reports = asr.get("reports")
     records = full["records"]
+    bounded_repair = full.get("bounded_repair")
+    local_asr_run_count = asr.get("local_asr_run_count")
+    reused_asr_report_count = asr.get("reused_local_asr_report_count", 0)
     if (
         not isinstance(reports, list)
         or len(reports) != len(records)
         or asr.get("chunk_count") != len(records)
-        or asr.get("local_asr_run_count") != len(records)
+        or not isinstance(local_asr_run_count, int)
+        or isinstance(local_asr_run_count, bool)
+        or not isinstance(reused_asr_report_count, int)
+        or isinstance(reused_asr_report_count, bool)
+        or local_asr_run_count < 0
+        or reused_asr_report_count < 0
+        or local_asr_run_count + reused_asr_report_count != len(records)
     ):
         raise PackageBuildError("Full audio-derived ASR chunk set is incomplete")
+    if bounded_repair is None:
+        if (
+            local_asr_run_count != len(records)
+            or reused_asr_report_count != 0
+        ):
+            raise PackageBuildError(
+                "Non-repaired candidate cannot reuse ASR evidence"
+            )
+        expected_reused_unit_ids: list[str] = []
+        expected_reuse_report_sha256s: list[str] = []
+    else:
+        changed_index = int(bounded_repair["chunk_index"])
+        expected_reused_unit_ids = [
+            record["unit_id"]
+            for index, record in enumerate(records)
+            if index != changed_index
+        ]
+        reuse_report_sha256s = asr.get("reused_report_sha256s")
+        if (
+            local_asr_run_count != 1
+            or reused_asr_report_count != len(records) - 1
+            or asr.get("reused_unit_ids") != expected_reused_unit_ids
+            or not isinstance(reuse_report_sha256s, list)
+            or len(reuse_report_sha256s) != 1
+            or not SHA256_RE.fullmatch(
+                str(reuse_report_sha256s[0] or "")
+            )
+        ):
+            raise PackageBuildError(
+                "Bounded repair ASR reuse counts or provenance are invalid"
+            )
+        expected_reuse_report_sha256s = [
+            str(reuse_report_sha256s[0])
+        ]
 
     word_timestamps: list[dict[str, Any]] = []
     raw_timestamp_rows: list[list[dict[str, Any]]] = []
@@ -2452,6 +2580,35 @@ def _validate_candidate_objective_qa(
             or raw.get("audio_derived_asr_gate_blockers") != []
         ):
             raise PackageBuildError(f"Objective ASR binding fails at {label}")
+        if bounded_repair is None:
+            if (
+                raw.get("asr_evidence_origin")
+                not in (None, "local_source_blind_whisper")
+                or raw.get("reused_from_report_sha256") is not None
+            ):
+                raise PackageBuildError(
+                    f"Unexpected ASR reuse provenance at {label}"
+                )
+        else:
+            changed_index = int(bounded_repair["chunk_index"])
+            expected_origin = (
+                "local_source_blind_whisper"
+                if index == changed_index
+                else "exact_prior_private_report"
+            )
+            expected_reuse_sha256 = (
+                None
+                if index == changed_index
+                else expected_reuse_report_sha256s[0]
+            )
+            if (
+                raw.get("asr_evidence_origin") != expected_origin
+                or raw.get("reused_from_report_sha256")
+                != expected_reuse_sha256
+            ):
+                raise PackageBuildError(
+                    f"Bounded repair ASR provenance fails at {label}"
+                )
         _strict_objective_metrics(raw, label=label)
         duration_seconds = _require_number(
             raw.get("duration_seconds"),
@@ -2536,6 +2693,55 @@ def _validate_candidate_objective_qa(
                 }
             )
         raw_timestamp_rows.append(validated_raw_words)
+
+    if bounded_repair is not None:
+        qa_binding = {
+            "schema_version": GOOGLE_FULL_OBJECTIVE_SCHEMA,
+            "full_manifest_sha256": full["sha256"],
+            "source_sha256": full["source_sha256"],
+            "input_manifest_sha256": full["input_manifest_sha256"],
+            "attempt_fingerprint": full["objective_attempt_fingerprint"],
+            "candidate_audio_sequence_sha256": (
+                full["candidate_audio_sequence_sha256"]
+            ),
+            "candidate_binding_sha256": full["candidate_binding_sha256"],
+            "asr_model_sha256": asr.get("model_sha256"),
+            "asr_settings": asr.get("settings"),
+            "ordered_audio_hashes": [
+                record["audio_sha256"] for record in records
+            ],
+            "ordered_transcript_hashes": [
+                item.get("transcript_sha256") for item in reports
+            ],
+            "ordered_asr_evidence_origins": [
+                item.get("asr_evidence_origin") for item in reports
+            ],
+            "ordered_reuse_report_sha256s": [
+                item.get("reused_from_report_sha256") for item in reports
+            ],
+            "ordered_unit_evidence": [
+                {
+                    "index": item.get("index"),
+                    "unit_id": item.get("unit_id"),
+                    "source_text_sha256": item.get("source_text_sha256"),
+                    "audio_sha256": item.get("audio_sha256"),
+                    "duration_seconds": item.get("duration_seconds"),
+                    "transcript_sha256": item.get("transcript_sha256"),
+                    "word_timestamp_sha256": item.get(
+                        "word_timestamp_sha256"
+                    ),
+                }
+                for item in reports
+            ],
+        }
+        if (
+            not SHA256_RE.fullmatch(str(asr.get("model_sha256") or ""))
+            or report.get("qa_binding_sha256")
+            != canonical_sha256(qa_binding)
+        ):
+            raise PackageBuildError(
+                "Bounded repair objective QA provenance hash is invalid"
+            )
 
     sync = report.get("measured_sync")
     if not isinstance(sync, Mapping):
@@ -2680,6 +2886,7 @@ def _validate_candidate_listening_qa(
     listening_path: Path,
     *,
     full: Mapping[str, Any],
+    objective: Mapping[str, Any],
     context: Mapping[str, Any],
 ) -> dict[str, Any]:
     path = listening_path.expanduser().resolve()
@@ -2690,6 +2897,10 @@ def _validate_candidate_listening_qa(
         raise PackageBuildError("Full-title listening QA must be an object")
     lock_sha256_before = str(report.get("paid_lock_sha256_before") or "")
     lock_sha256_after = str(report.get("paid_lock_sha256_after") or "")
+    incremental = (
+        report.get("schema_version")
+        == JEKYLL_INCREMENTAL_LISTENING_SCHEMA
+    )
     if (
         report.get("status") != "FULL_CANDIDATE_QA_PASS_PRIVATE_ONLY"
         or report.get("qa_schema_version")
@@ -2716,7 +2927,6 @@ def _validate_candidate_listening_qa(
         or report.get("publication_performed") is not False
         or report.get("release_mutation_performed") is not False
         or report.get("provider_calls_ran") is not True
-        or report.get("provider_call_count") != 6
         or report.get("paid_lock_read_or_written") is not True
         or report.get("paid_lock_touched") is not True
         or report.get("paid_lock_restored_byte_for_byte") is not True
@@ -2791,12 +3001,148 @@ def _validate_candidate_listening_qa(
         seen_units.add(unit_id)
     if any(quality.get(flag) is not False for flag in QA_CANDIDATE_FATAL_FLAGS):
         raise PackageBuildError("Listening aggregate has fatal or missing flags")
+    prior_listening_path: Optional[Path] = None
+    if incremental:
+        bounded_repair = full.get("bounded_repair")
+        if (
+            full["manifest"].get("slug") != "jekyll-and-hyde"
+            or not isinstance(bounded_repair, Mapping)
+            or release_policy != "platform_audiobook_acceptance_v4_89"
+            or report.get("active_release_policy") != release_policy
+            or report.get("provider_call_count") != 1
+            or report.get("reused_judgment_count") != 5
+            or report.get("new_judgment_count") != 1
+            or report.get("all_sample_judgments_hash_bound") is not True
+            or report.get("audio_derived_objective_qa_sha256")
+            != objective["sha256"]
+            or report.get("audio_derived_objective_qa_path")
+            != str(objective["path"])
+        ):
+            raise PackageBuildError(
+                "Incremental Jekyll listening QA provenance is invalid"
+            )
+        prior_sha256 = str(
+            report.get("prior_listening_report_sha256") or ""
+        )
+        prior_listening_path = Path(
+            str(report.get("prior_listening_report_path") or "")
+        ).expanduser().resolve()
+        if (
+            not prior_listening_path.is_file()
+            or not SHA256_RE.fullmatch(prior_sha256)
+            or sha256_file(prior_listening_path) != prior_sha256
+            or prior_sha256
+            != bounded_repair.get("failed_listening_evidence_sha256")
+        ):
+            raise PackageBuildError(
+                "Incremental Jekyll prior listening report is missing or stale"
+            )
+        prior_report = read_json(prior_listening_path)
+        prior_quality = (
+            prior_report.get("listening_quality_report")
+            if isinstance(prior_report, Mapping)
+            else None
+        )
+        prior_listening = (
+            prior_quality.get("listening_quality")
+            if isinstance(prior_quality, Mapping)
+            else None
+        )
+        prior_samples = (
+            prior_listening.get("samples")
+            if isinstance(prior_listening, Mapping)
+            else None
+        )
+        if (
+            prior_report.get("status") != "BLOCKED_LISTENING_QA"
+            or prior_report.get("slug") != report.get("slug")
+            or prior_report.get("candidate_binding_sha256")
+            != bounded_repair.get("base_candidate_binding_sha256")
+            or not isinstance(prior_samples, list)
+            or len(prior_samples) != 6
+        ):
+            raise PackageBuildError(
+                "Incremental Jekyll prior listening evidence is invalid"
+            )
+        prior_by_unit = {
+            str(sample.get("unit_id") or ""): sample
+            for sample in prior_samples
+            if isinstance(sample, Mapping)
+        }
+        reused_samples = [
+            sample
+            for sample in samples
+            if sample.get("judgment_reused") is True
+        ]
+        new_samples = [
+            sample
+            for sample in samples
+            if sample.get("judgment_reused") is False
+        ]
+        reused_unit_ids = [str(sample["unit_id"]) for sample in reused_samples]
+        new_unit_ids = [str(sample["unit_id"]) for sample in new_samples]
+        if (
+            len(reused_samples) != 5
+            or len(new_samples) != 1
+            or report.get("reused_judgment_unit_ids") != reused_unit_ids
+            or report.get("new_judgment_unit_ids") != new_unit_ids
+            or new_unit_ids != [str(bounded_repair.get("unit_id"))]
+            or set(prior_by_unit) != seen_units
+        ):
+            raise PackageBuildError(
+                "Incremental Jekyll listening reuse counts are invalid"
+            )
+        for sample in reused_samples:
+            unit_id = str(sample["unit_id"])
+            prior_sample = prior_by_unit.get(unit_id)
+            if (
+                not isinstance(prior_sample, Mapping)
+                or sample.get("judgment_reuse_reason")
+                != "SOURCE_AND_AUDIO_HASH_UNCHANGED"
+                or sample.get("prior_listening_report_path")
+                != str(prior_listening_path)
+                or sample.get("prior_listening_report_sha256")
+                != prior_sha256
+                or sample.get("prior_candidate_binding_sha256")
+                != bounded_repair.get("base_candidate_binding_sha256")
+                or any(
+                    sample.get(field) != prior_sample.get(field)
+                    for field in (
+                        "sample_audio_hash",
+                        "source_text_sha256",
+                        "scores",
+                        "judge_flags",
+                        "frontmatter_present",
+                        "notes",
+                        "blocker_reason",
+                    )
+                )
+            ):
+                raise PackageBuildError(
+                    f"Incremental listening reuse was altered at {unit_id}"
+                )
+        new_sample = new_samples[0]
+        if (
+            new_sample.get("new_judgment_reason")
+            != "REPLACEMENT_AUDIO_HASH_CHANGED"
+            or new_sample.get("active_release_policy") != release_policy
+            or new_sample.get("sample_audio_hash")
+            == prior_by_unit[new_unit_ids[0]].get("sample_audio_hash")
+        ):
+            raise PackageBuildError(
+                "Incremental Jekyll replacement judgment is not new"
+            )
+    elif report.get("provider_call_count") != 6:
+        raise PackageBuildError(
+            "Six-sample listening QA provider call count is invalid"
+        )
     return {
         "path": path,
         "sha256": sha256_file(path),
         "report": report,
         "quality_report": quality_report,
         "release_policy": release_policy,
+        "prior_listening_path": prior_listening_path,
         "minimum_scores": {
             field: float(aggregate[field])
             for field in QA_CANDIDATE_LISTENING_THRESHOLDS
@@ -3068,6 +3414,7 @@ def build_qa_candidate(
     listening = _validate_candidate_listening_qa(
         listening_qa_path,
         full=full,
+        objective=objective,
         context=context,
     )
     release_evidence = _validate_candidate_release_evidence(
@@ -3117,6 +3464,10 @@ def build_qa_candidate(
         "sanitized_source": full["source_path"],
         "input_manifest": full["input_manifest_path"],
     }
+    if listening["prior_listening_path"] is not None:
+        evidence_sources["prior_listening_qa"] = listening[
+            "prior_listening_path"
+        ]
     evidence_copies = {
         name: _copy_exact(
             source,

@@ -187,8 +187,11 @@ def _write_controlled(repo_root: Path, documents: dict[str, Any]) -> None:
         )
 
 
-def _fixture(tmp_path: Path) -> dict[str, Any]:
-    slug = "qa-candidate"
+def _fixture(
+    tmp_path: Path,
+    *,
+    slug: str = "qa-candidate",
+) -> dict[str, Any]:
     repo_root = tmp_path / "repo"
     documents = _controlled_documents(slug)
     _write_controlled(repo_root, documents)
@@ -606,6 +609,264 @@ def _fixture(tmp_path: Path) -> dict[str, Any]:
     }
 
 
+def _refresh_release_hashes(fixture: dict[str, Any]) -> None:
+    release = json.loads(fixture["release"].read_text(encoding="utf-8"))
+    release["full_generation_manifest_sha256"] = builder.sha256_file(
+        fixture["full_manifest"]
+    )
+    release["objective_qa_sha256"] = builder.sha256_file(
+        fixture["objective"]
+    )
+    release["listening_qa_sha256"] = builder.sha256_file(
+        fixture["listening"]
+    )
+    objective = json.loads(fixture["objective"].read_text(encoding="utf-8"))
+    release["candidate_audio_sequence_sha256"] = objective[
+        "candidate_audio_sequence_sha256"
+    ]
+    release["candidate_binding_sha256"] = objective[
+        "candidate_binding_sha256"
+    ]
+    _write_json(fixture["release"], release)
+
+
+def _apply_exact_bounded_reuse(
+    fixture: dict[str, Any],
+    *,
+    changed_index: int = 2,
+) -> dict[str, Any]:
+    manifest_path = fixture["full_manifest"]
+    objective_path = fixture["objective"]
+    listening_path = fixture["listening"]
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    objective = json.loads(objective_path.read_text(encoding="utf-8"))
+    listening = json.loads(listening_path.read_text(encoding="utf-8"))
+    base_manifest_sha256 = builder.sha256_file(manifest_path)
+    base_sequence_sha256 = objective["candidate_audio_sequence_sha256"]
+    base_binding_sha256 = objective["candidate_binding_sha256"]
+    base_audio_hashes = [
+        row["audio_sha256"] for row in manifest["generated_audio"]
+    ]
+
+    prior_listening = copy.deepcopy(listening)
+    prior_listening["status"] = "BLOCKED_LISTENING_QA"
+    target_prior_sample = prior_listening["listening_quality_report"][
+        "listening_quality"
+    ]["samples"][changed_index]
+    target_prior_sample["scores"] = {
+        **target_prior_sample["scores"],
+        "overall_listening_score": 8.4,
+    }
+    prior_listening["blockers"] = [
+        "AUDIO_LISTENING_QUALITY_FAILED: retained repair target"
+    ]
+    prior_path = fixture["run_dir"] / "prior_full_listening_qa.json"
+    _write_json(prior_path, prior_listening)
+    prior_sha256 = builder.sha256_file(prior_path)
+
+    changed = manifest["generated_audio"][changed_index]
+    changed_path = Path(changed["audio_path"])
+    changed_path.write_bytes(b"ID3replacement-provider-audio")
+    changed["audio_sha256"] = builder.sha256_file(changed_path)
+    changed["audio_size_bytes"] = changed_path.stat().st_size
+    current_audio_hashes = [
+        row["audio_sha256"] for row in manifest["generated_audio"]
+    ]
+    sequence_sha256 = builder.canonical_sha256(current_audio_hashes)
+    repair_fingerprint = "9" * 64
+    manifest["candidate_audio_sequence_sha256"] = sequence_sha256
+    manifest["repair_synthesis_calls"] = 1
+    manifest["total_provider_calls_across_lineage"] = (
+        len(manifest["generated_audio"]) + 1
+    )
+    manifest["bounded_chunk_repair"] = {
+        "schema_version": "earnalism.google_english_bounded_chunk_repair.v1",
+        "status": "PRIVATE_REPLACEMENT_CANDIDATE_QA_PENDING",
+        "slug": fixture["slug"],
+        "chunk_index": changed_index,
+        "unit_id": changed["unit_id"],
+        "text_sha256": changed["text_sha256"],
+        "source_sha256": manifest["source_sha256"],
+        "input_manifest_sha256": manifest["input_manifest_sha256"],
+        "base_attempt_fingerprint": manifest["attempt_fingerprint"],
+        "base_full_manifest_sha256": base_manifest_sha256,
+        "base_candidate_audio_sequence_sha256": base_sequence_sha256,
+        "base_candidate_binding_sha256": base_binding_sha256,
+        "base_ordered_audio_hashes": base_audio_hashes,
+        "failed_listening_evidence_path": str(prior_path),
+        "failed_listening_evidence_sha256": prior_sha256,
+        "repair_attempt_fingerprint": repair_fingerprint,
+        "candidate_audio_sequence_sha256": sequence_sha256,
+        "changed_chunk_indexes": [changed_index],
+        "prior_audio_sha256": base_audio_hashes[changed_index],
+        "replacement_audio_sha256": changed["audio_sha256"],
+        "replacement_audio_file_count": 1,
+        "preserved_audio_file_count": len(base_audio_hashes) - 1,
+        "full_source_text_changed": False,
+        "publication_performed": False,
+        "release_mutation_performed": False,
+        "upload_performed": False,
+    }
+    _write_json(manifest_path, manifest)
+    manifest_sha256 = builder.sha256_file(manifest_path)
+    binding_sha256 = builder.canonical_sha256(
+        {
+            "manifest_sha256": manifest_sha256,
+            "source_sha256": manifest["source_sha256"],
+            "input_manifest_sha256": manifest["input_manifest_sha256"],
+            "ordered_text_hashes": manifest["unit_hashes"],
+            "ordered_audio_hashes": current_audio_hashes,
+        }
+    )
+
+    objective["full_manifest_sha256"] = manifest_sha256
+    objective["attempt_fingerprint"] = repair_fingerprint
+    objective["candidate_audio_sequence_sha256"] = sequence_sha256
+    objective["candidate_binding_sha256"] = binding_sha256
+    asr = objective["audio_derived_asr"]
+    reused_unit_ids = []
+    for index, report in enumerate(asr["reports"]):
+        if index == changed_index:
+            report["audio_sha256"] = changed["audio_sha256"]
+            report["asr_evidence_origin"] = "local_source_blind_whisper"
+            report["reused_from_report_sha256"] = None
+        else:
+            report["asr_evidence_origin"] = "exact_prior_private_report"
+            report["reused_from_report_sha256"] = "8" * 64
+            reused_unit_ids.append(report["unit_id"])
+    objective["measured_sync"]["sections"][changed_index][
+        "audio_sha256"
+    ] = changed["audio_sha256"]
+    asr["local_asr_run_count"] = 1
+    asr["reused_local_asr_report_count"] = len(asr["reports"]) - 1
+    asr["reused_unit_ids"] = reused_unit_ids
+    asr["reused_report_sha256s"] = ["8" * 64]
+    qa_binding = {
+        "schema_version": builder.GOOGLE_FULL_OBJECTIVE_SCHEMA,
+        "full_manifest_sha256": manifest_sha256,
+        "source_sha256": objective["source_sha256"],
+        "input_manifest_sha256": objective["input_manifest_sha256"],
+        "attempt_fingerprint": repair_fingerprint,
+        "candidate_audio_sequence_sha256": sequence_sha256,
+        "candidate_binding_sha256": binding_sha256,
+        "asr_model_sha256": asr["model_sha256"],
+        "asr_settings": asr["settings"],
+        "ordered_audio_hashes": current_audio_hashes,
+        "ordered_transcript_hashes": [
+            row["transcript_sha256"] for row in asr["reports"]
+        ],
+        "ordered_asr_evidence_origins": [
+            row["asr_evidence_origin"] for row in asr["reports"]
+        ],
+        "ordered_reuse_report_sha256s": [
+            row["reused_from_report_sha256"] for row in asr["reports"]
+        ],
+        "ordered_unit_evidence": [
+            {
+                "index": row["index"],
+                "unit_id": row["unit_id"],
+                "source_text_sha256": row["source_text_sha256"],
+                "audio_sha256": row["audio_sha256"],
+                "duration_seconds": row["duration_seconds"],
+                "transcript_sha256": row["transcript_sha256"],
+                "word_timestamp_sha256": row["word_timestamp_sha256"],
+            }
+            for row in asr["reports"]
+        ],
+    }
+    objective["qa_binding_sha256"] = builder.canonical_sha256(qa_binding)
+    _write_json(objective_path, objective)
+
+    current_samples = listening["listening_quality_report"][
+        "listening_quality"
+    ]["samples"]
+    prior_samples = prior_listening["listening_quality_report"][
+        "listening_quality"
+    ]["samples"]
+    reused_judgment_unit_ids = []
+    new_judgment_unit_ids = []
+    for index, sample in enumerate(current_samples):
+        if index == changed_index:
+            sample["sample_audio_hash"] = changed["audio_sha256"]
+            sample["judgment_reused"] = False
+            sample["new_judgment_reason"] = "REPLACEMENT_AUDIO_HASH_CHANGED"
+            sample["active_release_policy"] = (
+                "platform_audiobook_acceptance_v4_89"
+            )
+            new_judgment_unit_ids.append(sample["unit_id"])
+        else:
+            prior_sample = prior_samples[index]
+            sample.update(
+                {
+                    key: copy.deepcopy(prior_sample[key])
+                    for key in (
+                        "sample_audio_hash",
+                        "source_text_sha256",
+                        "scores",
+                        "judge_flags",
+                        "frontmatter_present",
+                        "notes",
+                        "blocker_reason",
+                    )
+                    if key in prior_sample
+                }
+            )
+            sample["judgment_reused"] = True
+            sample["judgment_reuse_reason"] = (
+                "SOURCE_AND_AUDIO_HASH_UNCHANGED"
+            )
+            sample["prior_listening_report_path"] = str(prior_path)
+            sample["prior_listening_report_sha256"] = prior_sha256
+            sample["prior_candidate_binding_sha256"] = base_binding_sha256
+            reused_judgment_unit_ids.append(sample["unit_id"])
+    listening.update(
+        {
+            "schema_version": builder.JEKYLL_INCREMENTAL_LISTENING_SCHEMA,
+            "active_release_policy": (
+                "platform_audiobook_acceptance_v4_89"
+            ),
+            "full_manifest_sha256": manifest_sha256,
+            "candidate_audio_sequence_sha256": sequence_sha256,
+            "candidate_binding_sha256": binding_sha256,
+            "audio_derived_objective_qa_path": str(objective_path),
+            "audio_derived_objective_qa_sha256": builder.sha256_file(
+                objective_path
+            ),
+            "prior_listening_report_path": str(prior_path),
+            "prior_listening_report_sha256": prior_sha256,
+            "reused_judgment_count": 5,
+            "new_judgment_count": 1,
+            "reused_judgment_unit_ids": reused_judgment_unit_ids,
+            "new_judgment_unit_ids": new_judgment_unit_ids,
+            "all_sample_judgments_hash_bound": True,
+            "provider_call_count": 1,
+            "paid_lock_read_or_written": True,
+        }
+    )
+    listening["listening_quality_report"].update(
+        {
+            "audio_hash": sequence_sha256,
+            "candidate_binding_sha256": binding_sha256,
+            "release_policy": "platform_audiobook_acceptance_v4_89",
+        }
+    )
+    listening_quality = listening["listening_quality_report"][
+        "listening_quality"
+    ]
+    listening_quality["audio_hash"] = sequence_sha256
+    listening_quality["release_policy"] = (
+        "platform_audiobook_acceptance_v4_89"
+    )
+    _write_json(listening_path, listening)
+    _refresh_release_hashes(fixture)
+    return {
+        "changed_index": changed_index,
+        "prior_listening": prior_path,
+        "prior_listening_sha256": prior_sha256,
+        "repair_fingerprint": repair_fingerprint,
+    }
+
+
 def hashlib_sha256(value: str) -> str:
     return builder.hashlib.sha256(value.encode("utf-8")).hexdigest()
 
@@ -789,6 +1050,110 @@ def test_rejects_missing_canonical_back_cover(
     with pytest.raises(builder.PackageBuildError, match="back cover"):
         _build(fixture)
     assert not fixture["output"].exists()
+
+
+def test_builds_exact_bounded_repair_with_hash_bound_asr_and_listening_reuse(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    fixture = _fixture(tmp_path, slug="jekyll-and-hyde")
+    _apply_exact_bounded_reuse(fixture)
+    _mock_media(monkeypatch)
+    result = _build(fixture)
+    assert result["status"] == "QA_CANDIDATE_PACKAGE_BUILT"
+    copied_prior = (
+        fixture["output"]
+        / "provenance/evidence/prior_full_listening_qa.json"
+    )
+    assert copied_prior.is_file()
+    assert builder.sha256_file(copied_prior) == builder.sha256_file(
+        fixture["run_dir"] / "prior_full_listening_qa.json"
+    )
+
+
+@pytest.mark.parametrize(
+    ("mutation", "message"),
+    [
+        ("asr_origin", "ASR provenance"),
+        ("asr_counts", "ASR reuse counts"),
+        ("asr_reuse_hash", "ASR provenance"),
+        ("asr_binding", "objective QA provenance hash"),
+        ("listening_policy", "six passes"),
+        ("listening_counts", "listening QA provenance"),
+        ("listening_reuse_scores", "listening reuse was altered"),
+        ("prior_listening_hash", "prior listening report"),
+        ("paid_lock", "listening QA"),
+        ("manifest_base_hash", "Bounded repair"),
+    ],
+)
+def test_rejects_tampered_bounded_repair_reuse_evidence(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    mutation: str,
+    message: str,
+) -> None:
+    fixture = _fixture(tmp_path, slug="jekyll-and-hyde")
+    repair = _apply_exact_bounded_reuse(fixture)
+    _mock_media(monkeypatch)
+    if mutation.startswith("asr_"):
+        payload = json.loads(
+            fixture["objective"].read_text(encoding="utf-8")
+        )
+        asr = payload["audio_derived_asr"]
+        if mutation == "asr_origin":
+            asr["reports"][0]["asr_evidence_origin"] = (
+                "local_source_blind_whisper"
+            )
+        elif mutation == "asr_counts":
+            asr["local_asr_run_count"] = 2
+            asr["reused_local_asr_report_count"] = 4
+        elif mutation == "asr_reuse_hash":
+            asr["reports"][0]["reused_from_report_sha256"] = "7" * 64
+        elif mutation == "asr_binding":
+            payload["qa_binding_sha256"] = "7" * 64
+        _write_json(fixture["objective"], payload)
+    elif mutation.startswith("listening_") or mutation in {
+        "prior_listening_hash",
+        "paid_lock",
+    }:
+        payload = json.loads(
+            fixture["listening"].read_text(encoding="utf-8")
+        )
+        quality = payload["listening_quality_report"]["listening_quality"]
+        if mutation == "listening_policy":
+            payload["active_release_policy"] = "tiered_audiobook_acceptance_v1"
+            payload["listening_quality_report"]["release_policy"] = (
+                "tiered_audiobook_acceptance_v1"
+            )
+            quality["release_policy"] = "tiered_audiobook_acceptance_v1"
+        elif mutation == "listening_counts":
+            payload["provider_call_count"] = 6
+        elif mutation == "listening_reuse_scores":
+            reused = next(
+                sample
+                for sample in quality["samples"]
+                if sample["judgment_reused"] is True
+            )
+            reused["scores"]["naturalness_score"] += 0.1
+        elif mutation == "prior_listening_hash":
+            payload["prior_listening_report_sha256"] = "7" * 64
+        elif mutation == "paid_lock":
+            payload["paid_lock_sha256_after"] = "7" * 64
+        _write_json(fixture["listening"], payload)
+    elif mutation == "manifest_base_hash":
+        payload = json.loads(
+            fixture["full_manifest"].read_text(encoding="utf-8")
+        )
+        payload["bounded_chunk_repair"]["base_full_manifest_sha256"] = (
+            "not-a-hash"
+        )
+        _write_json(fixture["full_manifest"], payload)
+    with pytest.raises(builder.PackageBuildError, match=message):
+        _build(fixture)
+    assert not fixture["output"].exists()
+    assert builder.sha256_file(repair["prior_listening"]) == repair[
+        "prior_listening_sha256"
+    ]
 
 
 def test_rejects_candidate_if_public_audio_was_already_enabled(
