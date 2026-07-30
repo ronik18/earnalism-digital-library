@@ -956,6 +956,25 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   migration blocker open until a materially different bounded Bengali ASR
   runtime produces qualifying evidence.
 
+## 2026-07-30 — MLX large-v3-turbo does not clear book-2b migration ASR
+
+- Bind the downloaded model to its exact repository revision and file hashes.
+  The MLX weights at revision
+  `a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb` matched the repository-declared
+  SHA-256
+  `951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6`.
+- Record provenance caveats rather than expanding them into unsupported
+  claims. OpenAI's upstream large-v3-turbo card is MIT and includes Bengali;
+  the MLX conversion card omits its own license and base-model metadata, so
+  this lane is evidence for private QA only.
+- The full exact-audio MLX transcript was predominantly Bengali and improved
+  the completed raw score from `1.1258` to `3.3775`, but coverage was only
+  `0.3377` and both source boundaries failed. Diagnostic phonetic projection
+  `7.596` cannot replace the raw `9.7` gate.
+- Close this exact model/audio/settings fingerprint. Preserve the current
+  approved legacy audiobook and keep package-v2 promotion blocked; do not
+  commit model, audio, transcript, cache, runtime, or temporary artifacts.
+
 ## 2026-07-29 — Preserve private canary proof without storage identity
 
 - Ephemeral preflight, upload, receipt, and re-verification files are not a
