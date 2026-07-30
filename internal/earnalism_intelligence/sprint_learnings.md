@@ -1713,3 +1713,27 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The next safe boundary is commit, merge, deploy and production cover proof.
   Only then may the already-selected Charon full-title lane acquire the paid
   lock and generate one source-bound candidate.
+
+## 2026-07-30 — Bind Dracula narration input without rewriting the reader edition
+
+- Dracula's canonical and packaged roots were not different manuscripts. The
+  canonical root stored reader HTML using only `p` and `br`, while the backend
+  root stored the exact corresponding plain text.
+- Adding `bookSlug: dracula` to all 27 canonical chapter records repaired the
+  metadata contract without changing any chapter `content` or stored
+  `content_hash`.
+- The canonical checksum manifest changed 28 tracked file rows: 27 chapter
+  rows for the metadata-only additions and one stale `source_evidence.json`
+  byte-count row. The source-evidence file and its SHA-256 did not change.
+- The English input builder now accepts only plain text or the supported
+  `p`/`br` reader subset, normalizes that subset deterministically, and fails
+  closed on any other HTML tag.
+- Cross-root preparation must match the exact normalized source SHA-256,
+  character length, chapter count, and ordered chapter list. Dracula now
+  matches at 27 chapters, 848683 characters, and SHA-256
+  `3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9`.
+- Preserve the current source-evidence hash set and the distinct historical
+  approval snapshot as separate provenance facts. Never overwrite one to make
+  it look like the other.
+- This repair makes a private source input deterministic. It does not generate
+  audio, authorize a provider call, approve a release, or expose Listen.
