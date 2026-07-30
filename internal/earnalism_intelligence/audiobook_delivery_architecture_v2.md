@@ -151,6 +151,70 @@ records as provenance, creates a mono PCM master, and encodes immutable
 96-kbps mono MP3 segments at measured cue boundaries. The output upload plan is
 `RELEASE_CANDIDATE`; it performs no upload, catalog mutation, or gate change.
 
+## New-title QA-candidate package producer
+
+`audiobook_package_builder_v2.py build-qa-candidate` removes the circular
+dependency on an already-public legacy audiobook. It is intentionally narrower
+than a general import path: the first accepted source contract is the exact
+private Google English `full_generation_manifest.json` produced by
+`sprint1_google_english_private_pipeline.py`.
+
+The command fails before writing output unless all of the following agree:
+
+- both controlled-publication mirrors, every controlled chapter, and every
+  checksum;
+- the live reader identity, exact title/author, tier-A rights, audiobook-use
+  clearance, and still-blocked public-audio state;
+- active front and back cover approval events, dimensions, hashes, URLs, and
+  cover-rights statements;
+- the exact canonical sanitized manuscript and ordered Google chunk hashes;
+- full audio-derived ASR/source `>= 9.7`, coverage `>= 0.98`, first/last spans,
+  and explicit no-missing/no-duplicate/no-reorder/no-unexpected-content
+  evidence for every chunk and the aggregate;
+- measured, non-estimated source-bound sync plus one-to-one audio-derived word
+  timestamps;
+- exactly six distinct source/audio-bound full-title listening samples, every
+  active platform score threshold, confidence `>= 0.90`, and all fatal flags
+  false; and
+- an explicit descriptor conforming to
+  `audiobook_qa_candidate_release_evidence.v1.schema.json`, hash-binding the
+  full manifest, objective QA, listening QA, controlled documents, and every
+  chapter while authorizing package construction only.
+
+The builder maps the raw transcript token sequence to exact audio-derived
+timestamp groups, then maps those source-bound tokens onto canonical chapter
+paragraphs. A timestamp group may contain more than one spoken token, but the
+builder rejects any canonical paragraph cut that would fall inside that group.
+It creates chapter-aligned 96-kbps mono MP3 delivery segments near ten minutes
+and never over twelve minutes, cutting only at measured canonical paragraph
+boundaries. Every unchanged provider MP3 is retained under
+`provenance/provider/audio/`; the assembled mono PCM/WAV master is retained for
+future re-encoding. Segment timestamp JSON, VTT, and metadata sidecars remain
+hash-bound and explicitly set `auto_estimated_sync=false`.
+
+The resulting upload plan is `RELEASE_CANDIDATE`, but the build result retains
+these blockers until separate operations prove them:
+
+- `PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED`
+- `PRIVATE_B2_DR_REPLICA_REQUIRED`
+- `CONTROLLED_RELEASE_ACTIVATION_REQUIRED`
+- `PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED`
+
+The command performs no provider call, upload, catalog mutation, release-gate
+change, public-asset write, or paid-lock access:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 \
+  internal/audiobook_lab/scripts/audiobook_package_builder_v2.py \
+  build-qa-candidate \
+  --slug <slug> \
+  --full-manifest <private-run>/full_generation_manifest.json \
+  --objective-qa <private-run>/full_audio_derived_qa.json \
+  --listening-qa <private-run>/full_listening_qa.json \
+  --release-evidence <private-run>/qa_candidate_release_evidence.json \
+  --output-dir <empty-private-package-dir>
+```
+
 ## Canary state
 
 The exact already-approved `book-2b9853ec52` narration has been repackaged into
