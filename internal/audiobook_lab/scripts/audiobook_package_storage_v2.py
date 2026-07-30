@@ -37,12 +37,15 @@ and secret values are never included in reports or exception output.
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import json
 import os
 import re
 import sys
 import tempfile
+import urllib.error
+import urllib.request
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -55,6 +58,11 @@ RECEIPT_SCHEMA = "audiobook_package_storage_receipt.v1"
 PRODUCTION_PREFIX = "v1/prod/sprint1/"
 LIFECYCLE_PROTECTED_PREFIX = "v1/prod/"
 DEFAULT_RETENTION_DAYS = 365
+B2_AUTHORIZE_ACCOUNT_URL = (
+    "https://api.backblazeb2.com/b2api/v4/b2_authorize_account"
+)
+NATIVE_API_TIMEOUT_SECONDS = 20
+NATIVE_API_MAX_RESPONSE_BYTES = 1024 * 1024
 PRODUCTION_RELEASE_STATUSES = frozenset(
     {
         "RELEASE_CANDIDATE",
@@ -106,7 +114,6 @@ UNSUPPORTED_CODES = {
     "XNotImplemented",
 }
 MISSING_CODES = {"404", "NoSuchKey", "NotFound"}
-NO_LIFECYCLE_CODES = {"NoSuchLifecycleConfiguration", "NoSuchLifecycle"}
 
 
 class StorageSafetyError(RuntimeError):
@@ -116,6 +123,20 @@ class StorageSafetyError(RuntimeError):
         super().__init__(f"{code}: {detail}" if detail else code)
         self.code = code
         self.detail = detail
+
+
+@dataclass(frozen=True)
+class B2NativeLifecycleReader:
+    """Read one exact bucket's lifecycle rules through the supported Native API."""
+
+    config: StorageConfig
+    credentials: CredentialProfile = field(repr=False)
+
+    def read(self) -> tuple[Mapping[str, Any], ...]:
+        return read_native_bucket_lifecycle_rules(
+            self.config,
+            self.credentials,
+        )
 
 
 @dataclass(frozen=True)
@@ -382,6 +403,218 @@ def create_s3_client(config: StorageConfig, profile_name: str) -> Any:
     )
 
 
+def create_native_lifecycle_reader(config: StorageConfig) -> B2NativeLifecycleReader:
+    if not config.release_eligible:
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_READER_NOT_APPLICABLE",
+            config.role,
+        )
+    return B2NativeLifecycleReader(
+        config=config,
+        credentials=config.credential_profile("retention_admin"),
+    )
+
+
+class _RejectNativeRedirects(urllib.request.HTTPRedirectHandler):
+    """Stop before urllib can copy an authorization header to another URL."""
+
+    def __init__(self, operation: str) -> None:
+        super().__init__()
+        self.operation = operation
+
+    def redirect_request(
+        self,
+        req: urllib.request.Request,
+        fp: Any,
+        code: int,
+        msg: str,
+        headers: Any,
+        newurl: str,
+    ) -> None:
+        if fp is not None:
+            fp.close()
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_REDIRECT_BLOCKED",
+            f"{self.operation}:HTTP_{code}",
+        )
+
+
+def _native_json_request(
+    request: urllib.request.Request,
+    operation: str,
+) -> Mapping[str, Any]:
+    opener = urllib.request.build_opener(
+        _RejectNativeRedirects(operation),
+    )
+    try:
+        with opener.open(  # nosec B310 - redirects are rejected; URLs are fixed/validated.
+            request,
+            timeout=NATIVE_API_TIMEOUT_SECONDS,
+        ) as response:
+            body = response.read(NATIVE_API_MAX_RESPONSE_BYTES + 1)
+    except urllib.error.HTTPError as exc:
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_API_FAILED",
+            f"{operation}:HTTP_{exc.code}",
+        ) from None
+    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_API_FAILED",
+            f"{operation}:{type(exc).__name__}",
+        ) from None
+    if len(body) > NATIVE_API_MAX_RESPONSE_BYTES:
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            f"{operation}:response_too_large",
+        )
+    try:
+        payload = json.loads(body.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            f"{operation}:invalid_json",
+        ) from None
+    if not isinstance(payload, dict):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            f"{operation}:root_not_object",
+        )
+    return payload
+
+
+def _validated_native_api_url(value: Any) -> str:
+    api_url = str(value or "").rstrip("/")
+    parsed = urlparse(api_url)
+    hostname = (parsed.hostname or "").lower()
+    if (
+        parsed.scheme != "https"
+        or not hostname.endswith(".backblazeb2.com")
+        or parsed.username
+        or parsed.password
+        or parsed.path not in {"", "/"}
+        or parsed.query
+        or parsed.fragment
+    ):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            "authorize:invalid_api_url",
+        )
+    return api_url
+
+
+def read_native_bucket_lifecycle_rules(
+    config: StorageConfig,
+    credentials: CredentialProfile,
+) -> tuple[Mapping[str, Any], ...]:
+    """Authorize and return lifecycle rules for exactly config.bucket."""
+
+    basic = base64.b64encode(
+        f"{credentials.access_key_id}:{credentials.secret_access_key}".encode(
+            "utf-8"
+        )
+    ).decode("ascii")
+    authorization = _native_json_request(
+        urllib.request.Request(
+            B2_AUTHORIZE_ACCOUNT_URL,
+            headers={
+                "Authorization": f"Basic {basic}",
+                "Accept": "application/json",
+            },
+            method="GET",
+        ),
+        "authorize",
+    )
+    if str(authorization.get("accountId") or "") != config.account_id:
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_ACCOUNT_MISMATCH",
+            config.role,
+        )
+    storage_api = (
+        (authorization.get("apiInfo") or {}).get("storageApi")
+        if isinstance(authorization.get("apiInfo"), dict)
+        else None
+    )
+    if not isinstance(storage_api, dict):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            "authorize:storage_api_missing",
+        )
+    allowed = storage_api.get("allowed")
+    if not isinstance(allowed, dict):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            "authorize:allowed_missing",
+        )
+    capabilities = allowed.get("capabilities")
+    if not isinstance(capabilities, list) or "listBuckets" not in capabilities:
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_CAPABILITY_MISSING",
+            "listBuckets",
+        )
+    allowed_buckets = allowed.get("buckets")
+    if (
+        not isinstance(allowed_buckets, list)
+        or len(allowed_buckets) != 1
+        or not isinstance(allowed_buckets[0], dict)
+        or str(allowed_buckets[0].get("name") or "") != config.bucket
+        or not str(allowed_buckets[0].get("id") or "")
+    ):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_BUCKET_SCOPE_MISMATCH",
+            config.role,
+        )
+    allowed_bucket_id = str(allowed_buckets[0]["id"])
+    api_url = _validated_native_api_url(storage_api.get("apiUrl"))
+    token = str(authorization.get("authorizationToken") or "")
+    if not token:
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            "authorize:token_missing",
+        )
+    body = json.dumps(
+        {
+            "accountId": config.account_id,
+            "bucketName": config.bucket,
+        },
+        separators=(",", ":"),
+    ).encode("utf-8")
+    bucket_list = _native_json_request(
+        urllib.request.Request(
+            f"{api_url}/b2api/v4/b2_list_buckets",
+            data=body,
+            headers={
+                "Authorization": token,
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            method="POST",
+        ),
+        "list_buckets",
+    )
+    buckets = bucket_list.get("buckets")
+    if (
+        not isinstance(buckets, list)
+        or len(buckets) != 1
+        or not isinstance(buckets[0], dict)
+        or str(buckets[0].get("bucketName") or "") != config.bucket
+        or str(buckets[0].get("bucketId") or "") != allowed_bucket_id
+        or str(buckets[0].get("accountId") or "") != config.account_id
+    ):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            "list_buckets:exact_bucket_missing",
+        )
+    rules = buckets[0].get("lifecycleRules")
+    if not isinstance(rules, list) or not all(
+        isinstance(rule, dict) for rule in rules
+    ):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            "list_buckets:lifecycle_rules_invalid",
+        )
+    return tuple(rules)
+
+
 def _error_code(exc: BaseException) -> str:
     response = getattr(exc, "response", None)
     if isinstance(response, dict):
@@ -415,35 +648,50 @@ def _optional_evidence_call(client: Any, method: str, **kwargs: Any) -> tuple[st
         raise StorageSafetyError("CLOUD_OPERATION_FAILED", f"{method}:{code}") from None
 
 
-def _lifecycle_prefix(rule: Mapping[str, Any]) -> str:
-    if isinstance(rule.get("Filter"), dict):
-        rule_filter = rule["Filter"]
-        if isinstance(rule_filter.get("And"), dict):
-            return str(rule_filter["And"].get("Prefix") or "")
-        return str(rule_filter.get("Prefix") or "")
-    return str(rule.get("Prefix") or "")
-
-
 def _prefixes_overlap(left: str, right: str) -> bool:
     left = left.lstrip("/")
     right = right.lstrip("/")
     return not left or not right or left.startswith(right) or right.startswith(left)
 
 
-def _lifecycle_has_deletion(rule: Mapping[str, Any]) -> bool:
-    expiration = rule.get("Expiration")
-    if isinstance(expiration, dict) and any(
-        key in expiration for key in ("Date", "Days", "ExpiredObjectDeleteMarker")
+def _validate_native_lifecycle_rule(
+    rule: Any,
+    index: int,
+) -> Mapping[str, Any]:
+    if not isinstance(rule, dict):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            f"lifecycle_rules[{index}]:not_object",
+        )
+    prefix = rule.get("fileNamePrefix")
+    if not isinstance(prefix, str):
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+            f"lifecycle_rules[{index}]:file_name_prefix_invalid",
+        )
+    for field_name in (
+        "daysFromUploadingToHiding",
+        "daysFromHidingToDeleting",
+        "daysFromStartingToCancelingUnfinishedLargeFiles",
     ):
-        return True
-    noncurrent = rule.get("NoncurrentVersionExpiration")
-    return isinstance(noncurrent, dict) and any(key in noncurrent for key in ("NoncurrentDays", "NewerNoncurrentVersions"))
+        value = rule.get(field_name)
+        if value is not None and (
+            isinstance(value, bool)
+            or not isinstance(value, int)
+            or value < 1
+        ):
+            raise StorageSafetyError(
+                "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+                f"lifecycle_rules[{index}]:{field_name}_invalid",
+            )
+    return rule
 
 
 def preflight_store(
     upload_client: Any,
     config: StorageConfig,
     retention_admin_client: Any = None,
+    native_lifecycle_reader: Any = None,
     minimum_default_retention_days: int = 1,
 ) -> dict[str, Any]:
     """Validate production invariants or the reduced private-QA contract."""
@@ -455,6 +703,11 @@ def preflight_store(
         )
     if config.release_eligible and retention_admin_client is None:
         raise StorageSafetyError("RETENTION_ADMIN_CLIENT_REQUIRED", config.role)
+    if config.release_eligible and native_lifecycle_reader is None:
+        raise StorageSafetyError(
+            "NATIVE_LIFECYCLE_READER_REQUIRED",
+            config.role,
+        )
     bucket_admin_client = (
         retention_admin_client if config.release_eligible else upload_client
     )
@@ -562,32 +815,51 @@ def preflight_store(
 
     if config.release_eligible:
         try:
-            lifecycle = getattr(
-                bucket_admin_client,
-                "get_bucket_lifecycle_configuration",
-            )(Bucket=config.bucket)
+            native_rules = native_lifecycle_reader.read()
+        except StorageSafetyError:
+            raise
         except Exception as exc:
-            code = _error_code(exc)
-            if code in NO_LIFECYCLE_CODES:
-                lifecycle = {"Rules": []}
-            else:
-                raise StorageSafetyError(
-                    "CLOUD_OPERATION_FAILED",
-                    f"get_bucket_lifecycle_configuration:{code}",
-                ) from None
-        deleting_rules = []
-        for rule in lifecycle.get("Rules", []):
+            raise StorageSafetyError(
+                "NATIVE_LIFECYCLE_API_FAILED",
+                f"read:{type(exc).__name__}",
+            ) from None
+        if not isinstance(native_rules, (list, tuple)):
+            raise StorageSafetyError(
+                "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+                "lifecycle_rules:not_array",
+            )
+        destructive_rules: list[str] = []
+        for index, raw_rule in enumerate(native_rules):
+            rule = _validate_native_lifecycle_rule(raw_rule, index)
             if (
-                str(rule.get("Status") or "") == "Enabled"
-                and _prefixes_overlap(_lifecycle_prefix(rule), LIFECYCLE_PROTECTED_PREFIX)
-                and _lifecycle_has_deletion(rule)
+                _prefixes_overlap(
+                    str(rule["fileNamePrefix"]),
+                    LIFECYCLE_PROTECTED_PREFIX,
+                )
+                and (
+                    rule.get("daysFromUploadingToHiding") is not None
+                    or rule.get("daysFromHidingToDeleting") is not None
+                )
             ):
-                deleting_rules.append(str(rule.get("ID") or "unnamed"))
-        checks["production_lifecycle_deletion_rules"] = deleting_rules
-        if deleting_rules:
+                destructive_rules.append(
+                    f"native-lifecycle-rule-{index + 1}"
+                )
+        checks["production_lifecycle_source"] = (
+            "B2_NATIVE_API_V4_B2_LIST_BUCKETS"
+        )
+        # Keep the original report field for receipt/evidence compatibility.
+        checks["production_lifecycle_deletion_rules"] = destructive_rules
+        checks["production_lifecycle_destructive_rules"] = destructive_rules
+        if destructive_rules:
             blockers.append("PRODUCTION_LIFECYCLE_DELETION_CONFIGURED")
     else:
+        checks["production_lifecycle_source"] = (
+            "NOT_APPLICABLE_TO_PRIVATE_QA_STAGING"
+        )
         checks["production_lifecycle_deletion_rules"] = (
+            "NOT_APPLICABLE_TO_PRIVATE_QA_STAGING"
+        )
+        checks["production_lifecycle_destructive_rules"] = (
             "NOT_APPLICABLE_TO_PRIVATE_QA_STAGING"
         )
 
@@ -962,6 +1234,7 @@ def upload_plan(
     retention_days: int = DEFAULT_RETENTION_DAYS,
     now: Optional[datetime] = None,
     retention_admin_client: Any = None,
+    native_lifecycle_reader: Any = None,
 ) -> dict[str, Any]:
     if retention_days < 1:
         raise StorageSafetyError("INVALID_RETENTION_DAYS", str(retention_days))
@@ -970,6 +1243,7 @@ def upload_plan(
         upload_client,
         config,
         retention_admin_client,
+        native_lifecycle_reader,
         minimum_default_retention_days=retention_days,
     )
     if not preflight["passed"]:
@@ -1037,6 +1311,7 @@ def verify_plan(
     retention_days: int = 0,
     now: Optional[datetime] = None,
     retention_admin_client: Any = None,
+    native_lifecycle_reader: Any = None,
 ) -> dict[str, Any]:
     if retention_days < 0:
         raise StorageSafetyError("INVALID_RETENTION_DAYS", str(retention_days))
@@ -1045,6 +1320,7 @@ def verify_plan(
         upload_client,
         config,
         retention_admin_client,
+        native_lifecycle_reader,
     )
     if not preflight["passed"]:
         raise StorageSafetyError("STORE_PREFLIGHT_FAILED", ",".join(preflight["blockers"]))
@@ -1097,6 +1373,8 @@ def replicate_plan(
     now: Optional[datetime] = None,
     prod_retention_admin_client: Any = None,
     dr_retention_admin_client: Any = None,
+    prod_native_lifecycle_reader: Any = None,
+    dr_native_lifecycle_reader: Any = None,
 ) -> dict[str, Any]:
     validate_independent_stores(prod_config, dr_config)
     require_production_plan_status(prod_config, plan)
@@ -1105,12 +1383,14 @@ def replicate_plan(
         prod_upload_client,
         prod_config,
         prod_retention_admin_client,
+        prod_native_lifecycle_reader,
         minimum_default_retention_days=retention_days,
     )
     dr_preflight = preflight_store(
         dr_upload_client,
         dr_config,
         dr_retention_admin_client,
+        dr_native_lifecycle_reader,
         minimum_default_retention_days=retention_days,
     )
     blockers = prod_preflight["blockers"] + dr_preflight["blockers"]
@@ -1245,6 +1525,7 @@ def audit_retention(
     current_release_descriptor_sha256: str,
     retain_versions: int = 3,
     retention_admin_client: Any = None,
+    native_lifecycle_reader: Any = None,
 ) -> dict[str, Any]:
     """Report retained generations. This function intentionally cannot delete."""
 
@@ -1261,6 +1542,7 @@ def audit_retention(
         upload_client,
         config,
         retention_admin_client,
+        native_lifecycle_reader,
     )
     if not preflight["passed"]:
         raise StorageSafetyError("STORE_PREFLIGHT_FAILED", ",".join(preflight["blockers"]))
@@ -1445,6 +1727,11 @@ def _preflight_command(args: argparse.Namespace) -> dict[str, Any]:
         prod_upload_client,
         prod,
         prod_retention_client,
+        (
+            create_native_lifecycle_reader(prod)
+            if prod.release_eligible
+            else None
+        ),
         minimum_default_retention_days=args.retention_days,
     )
     if not prod.release_eligible:
@@ -1462,6 +1749,7 @@ def _preflight_command(args: argparse.Namespace) -> dict[str, Any]:
         create_s3_client(dr, "upload"),
         dr,
         create_s3_client(dr, "retention_admin"),
+        create_native_lifecycle_reader(dr),
         minimum_default_retention_days=args.retention_days,
     )
     passed = prod_report["passed"] and dr_report["passed"]
@@ -1486,6 +1774,11 @@ def _upload_command(args: argparse.Namespace) -> dict[str, Any]:
         args.retention_days,
         retention_admin_client=(
             create_s3_client(config, "retention_admin")
+            if config.release_eligible
+            else None
+        ),
+        native_lifecycle_reader=(
+            create_native_lifecycle_reader(config)
             if config.release_eligible
             else None
         ),
@@ -1523,6 +1816,11 @@ def _verify_command(args: argparse.Namespace) -> dict[str, Any]:
             if config.release_eligible
             else None
         ),
+        native_lifecycle_reader=(
+            create_native_lifecycle_reader(config)
+            if config.release_eligible
+            else None
+        ),
     )
     report["receipt_path"] = str(receipt_path.resolve())
     report["receipt_role"] = expected_role
@@ -1557,6 +1855,8 @@ def _replicate_command(args: argparse.Namespace) -> dict[str, Any]:
             dr,
             "retention_admin",
         ),
+        prod_native_lifecycle_reader=create_native_lifecycle_reader(prod),
+        dr_native_lifecycle_reader=create_native_lifecycle_reader(dr),
     )
     replica_path = (
         Path(args.replica_receipt).expanduser()
@@ -1583,6 +1883,11 @@ def _audit_command(args: argparse.Namespace) -> dict[str, Any]:
         args.retain_versions,
         retention_admin_client=(
             create_s3_client(config, "retention_admin")
+            if config.release_eligible
+            else None
+        ),
+        native_lifecycle_reader=(
+            create_native_lifecycle_reader(config)
             if config.release_eligible
             else None
         ),
