@@ -1,17 +1,17 @@
 {
   "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v1",
-  "generated_at": "2026-07-30T10:04:28Z",
+  "generated_at": "2026-07-30T10:24:57Z",
   "slug": "sredni-vashtar",
   "title": "Sredni Vashtar",
   "author": "Saki",
-  "decision": "ZERO_PERCENT_PACKAGE_V2_CANDIDATE_STAGED_AWAITING_PRODUCTION_DEPLOYMENT",
+  "decision": "ZERO_PERCENT_PRODUCTION_GREEN_FIVE_PERCENT_CANARY_PREPARED",
   "customer_release_state": {
     "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
-    "active_delivery_contract": "legacy",
+    "active_delivery_contract": "legacy_with_five_percent_package_v2_canary",
     "active_release_descriptor_sha256": "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
     "candidate_release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
-    "candidate_rollout_percentage": 0,
-    "candidate_selected_for_customers": false,
+    "candidate_rollout_percentage": 5,
+    "candidate_selected_for_customers": true,
     "legacy_descriptor_still_selected": true,
     "current_public_audiobook_count": 4,
     "new_live_audiobook_claimed": false,
@@ -61,10 +61,33 @@
     "active_release_status": "RELEASE_POINTER_VALID",
     "controlled_publication_mirrors_match": true,
     "focused_tests": "PASS_170_PLUS_2_SUBTESTS",
+    "five_percent_focused_tests": "PASS_172",
     "git_diff_check": "PASS",
-    "production_deployment": "PENDING",
-    "production_http_checkpoint": "PENDING",
-    "production_browser_checkpoint": "PENDING"
+    "zero_percent_production_deployment": {
+      "status": "PASS",
+      "commit": "6954b7387beaf0f9e8ceeca01d72928e5b371ede",
+      "railway_deployment_id": "74fcae57-0878-4c41-bde9-c12c05f98f57"
+    },
+    "zero_percent_production_http_checkpoint": {
+      "status": "PASS",
+      "candidate_manifest_http": 404,
+      "legacy_range_http": 206,
+      "legacy_invalid_range_http": 416,
+      "public_audiobook_count": 4
+    },
+    "zero_percent_production_browser_checkpoint": {
+      "status": "PASS",
+      "preintent_audio_src": null,
+      "preintent_ready_state": 0,
+      "post_click_ready_state": 4,
+      "post_click_paused": false,
+      "post_click_current_time_seconds": 25.047581,
+      "duration_seconds": 636.84,
+      "console_error_count": 0
+    },
+    "five_percent_rollout_mutation": "LOCAL_GREEN_AWAITING_PR_MERGE_DEPLOY",
+    "five_percent_production_http_checkpoint": "PENDING",
+    "five_percent_production_browser_checkpoint": "PENDING"
   },
   "safety": {
     "audiobook_approval_flags_changed": false,
@@ -73,5 +96,5 @@
     "operator_credentials_committed": false,
     "operator_credentials_copied_to_railway": false
   },
-  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py rollout --slug sredni-vashtar --percentage 5"
+  "next_exact_command": "git diff --check && git status --short"
 }
