@@ -240,4 +240,10 @@ def process_book_cover(file_bytes: bytes, book_id: str, kind: str = "front") -> 
         "blur_placeholder": blur_url,
         "dominant_color": result["dominant_color"],
         "srcset": result["srcset"],
+        "cloudinary_public_id": result["public_id"],
+        "cloudinary_version": result["version"],
+        "cloudinary_version_id": result.get("version_id"),
+        "cloudinary_resource_type": result.get("resource_type") or "image",
+        "cloudinary_format": result["format"],
+        "cloudinary_bytes": result.get("bytes"),
     }

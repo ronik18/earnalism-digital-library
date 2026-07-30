@@ -44,6 +44,10 @@ def upload_image(file_bytes, folder: str = "earnalism", public_id=None, resource
     return {
         "url": result.get("secure_url") or result.get("url"),
         "public_id": result.get("public_id"),
+        "version": result.get("version"),
+        "version_id": result.get("version_id"),
+        "resource_type": result.get("resource_type"),
+        "bytes": result.get("bytes"),
         "width": result.get("width"),
         "height": result.get("height"),
         "dominant_color": dominant_color,
