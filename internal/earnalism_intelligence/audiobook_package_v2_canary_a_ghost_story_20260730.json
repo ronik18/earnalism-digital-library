@@ -1,10 +1,10 @@
 {
   "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v1",
-  "generated_at": "2026-07-30T11:21:50Z",
+  "generated_at": "2026-07-30T11:39:35Z",
   "slug": "a-ghost-story",
   "title": "A Ghost Story",
   "author": "Mark Twain",
-  "decision": "ZERO_PERCENT_PACKAGE_V2_CANDIDATE_STAGED",
+  "decision": "ZERO_PERCENT_PRODUCTION_PROOF_PASSED",
   "customer_release_state": {
     "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
     "active_delivery_contract": "legacy",
@@ -90,8 +90,60 @@
     "controlled_publication_mirrors_match": true,
     "focused_tests": "PASS_178",
     "frontend_audio_safety_tests": "PASS_70",
-    "production_zero_percent_http_checkpoint": "PENDING_DEPLOY",
-    "production_zero_percent_browser_checkpoint": "PENDING_DEPLOY",
+    "merge_commit": "00567312d862191795951daa03d9a191f70bd019",
+    "github_regression_run_id": 30538825285,
+    "github_go_live_run_id": 30538826025,
+    "github_main_checks": "PASS",
+    "railway_deployment_id": "a1467723-7101-47da-a155-de73e5e9a031",
+    "railway_deployment_commit": "00567312d862191795951daa03d9a191f70bd019",
+    "railway_deployment_status": "SUCCESS",
+    "railway_root_directory": "/backend",
+    "railway_config_file": "/backend/railway.json",
+    "production_zero_percent_http_checkpoint": "PASS_18_OF_18",
+    "production_zero_percent_http": {
+      "candidate_manifest_http": 404,
+      "candidate_manifest_cache_control": "private, no-store",
+      "legacy_range_http": 206,
+      "legacy_range_bytes": 1024,
+      "legacy_content_range": "bytes 0-1023/7047789",
+      "legacy_invalid_range_http": 416,
+      "legacy_invalid_range_bytes": 0,
+      "candidate_segment_http": 404,
+      "wrong_package_version_http": 404,
+      "home_curated_http": 200,
+      "home_approved_audiobook_count": 4,
+      "home_approved_slugs": [
+        "a-ghost-story",
+        "book-2b9853ec52",
+        "sredni-vashtar",
+        "the-open-window"
+      ],
+      "local_probe_artifact": "/private/tmp/earnalism-ghost-zero-prod-probe-final.pAJksh/summary.json"
+    },
+    "production_zero_percent_browser_checkpoint": "PASS",
+    "production_zero_percent_browser": {
+      "preintent_audio_exists": true,
+      "preintent_src_attribute": null,
+      "preintent_current_src": "",
+      "preintent_preload_attribute": "none",
+      "preintent_ready_state": 0,
+      "preintent_paused": true,
+      "preintent_observed_audio_assets": 0,
+      "start_narration_control_count": 1,
+      "click_count_to_play": 1,
+      "post_click_path": "/api/reader/book/a-ghost-story/audiobook",
+      "post_click_package_path_selected": false,
+      "post_click_ready_state": 4,
+      "post_click_paused": false,
+      "first_current_time_seconds": 2.397746,
+      "second_current_time_seconds": 37.582244,
+      "playback_advanced": true,
+      "duration_seconds": 880.944,
+      "media_error": null,
+      "console_error_count": 0,
+      "paused_after_proof": true,
+      "paused_at_seconds": 44.884889
+    },
     "git_diff_check": "PASS"
   },
   "safety": {
@@ -101,5 +153,5 @@
     "operator_credentials_committed": false,
     "operator_credentials_copied_to_railway": false
   },
-  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug a-ghost-story"
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py rollout --slug a-ghost-story --percentage 5"
 }
