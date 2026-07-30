@@ -1068,3 +1068,37 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   successful 25% checkpoint supports the separately prepared 100% active
   pointer promotion, but evidence must not claim that promotion until its own
   deploy and package-only production validation complete.
+
+## 2026-07-30 — Promote only after every prior cohort converges on one package
+
+- Preserve the Open Window 0%, 5%, and 25% history after promotion. The final
+  100% record is additive and must distinguish an active package pointer from
+  a candidate cohort set to 100%.
+- PR `#182` merged as
+  `d01482c20b2e9c081ebf5cf0f9334f014566d6ed`; both main workflows and
+  Railway deployment `152b8e25-d119-4e5f-9c18-bfdeae74548a` passed. The
+  previous 25% deployment is removed.
+- Eight fresh identities and an identity retained from the former legacy
+  cohort all resolved to the same exact package manifest. This is stronger
+  convergence evidence than merely observing no legacy cohort among a small
+  random sample.
+- Both fresh and former-legacy identities passed a 64-byte package-segment
+  range with the exact package header. Invalid range remained `416`, wrong
+  package version remained `404`, and the retained legacy monolith remained
+  range-readable solely for explicit rollback.
+- Reader truth remained audio enabled, `APPROVED`, and `QA_PASSED`, with the
+  package-manifest asset present. Its empty `package_version` field is the
+  current reader-manifest contract and must not be rewritten or reported as a
+  package-version binding.
+- Production browser playback retained zero-byte pre-intent behavior, bound
+  the exact package segment on first intent, reached `readyState=4`, played on
+  second intent with Pause/Stop controls, emitted no developer error logs, and
+  reset source, time, and ready state on Stop.
+- The active descriptor is now package v2, the candidate slot is cleared, and
+  the legacy descriptor is retained only for explicit rollback. Public
+  audiobook truth remains the same four titles.
+- A one-segment title cannot prove cross-segment auto-advance, even at 100%.
+  Carry that validation to a future multi-segment package rather than
+  broadening the Open Window claim.
+- Close the Open Window rollout and move the next exact audit to Sredni
+  Vashtar instead of creating another Open Window rollout stage.

@@ -1,18 +1,21 @@
 {
   "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v2",
-  "generated_at": "2026-07-30T04:22:53Z",
+  "generated_at": "2026-07-30T04:41:26Z",
   "slug": "the-open-window",
   "title": "The Open Window",
   "author": "Saki",
-  "decision": "PACKAGE_V2_TWENTY_FIVE_PERCENT_PRODUCTION_CHECKPOINT_PASSED_ADVANCE_TO_100_PERCENT",
+  "decision": "PRODUCTION_ACTIVE_PACKAGE_V2_VALIDATED",
   "customer_release_state": {
     "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
-    "active_delivery_contract": "sticky_cohort_legacy_or_package_v2",
-    "active_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
-    "candidate_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
-    "candidate_rollout_percentage": 25,
-    "candidate_selected_for_customers": true,
-    "legacy_descriptor_still_selected": true,
+    "active_delivery_contract": "package_v2_active",
+    "active_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+    "candidate_release_descriptor_sha256": null,
+    "candidate_rollout_percentage": 0,
+    "active_package_customer_percentage": 100,
+    "candidate_selected_for_customers": false,
+    "candidate_cleared_after_promotion": true,
+    "legacy_descriptor_still_selected": false,
+    "legacy_release_descriptor_sha256_retained_for_rollback": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
     "current_public_audiobook_count": 4,
     "current_public_audiobook_slugs": [
       "book-2b9853ec52",
@@ -251,6 +254,106 @@
       "public_audiobook_count": 4,
       "new_live_audiobook_claimed": false,
       "decision": "PACKAGE_V2_TWENTY_FIVE_PERCENT_PRODUCTION_CHECKPOINT_PASSED_ADVANCE_TO_100_PERCENT"
+    },
+    {
+      "checkpoint": "ONE_HUNDRED_PERCENT_PRODUCTION_PROMOTION",
+      "recorded_at": "2026-07-30T04:41:26Z",
+      "rollout_percentage": 100,
+      "pull_request": 182,
+      "main_merge_commit": "d01482c20b2e9c081ebf5cf0f9334f014566d6ed",
+      "deployment_validation": {
+        "regression_suite_run_id": 30514196370,
+        "regression_suite_status": "SUCCESS",
+        "go_live_regression_run_id": 30514196277,
+        "go_live_regression_status": "SUCCESS",
+        "railway_deployment_id": "152b8e25-d119-4e5f-9c18-bfdeae74548a",
+        "railway_deployment_status": "SUCCESS",
+        "prior_twenty_five_percent_deployment_id": "5d5db8a5-5963-4e8a-ba46-9600c6990472",
+        "prior_twenty_five_percent_deployment_status": "REMOVED"
+      },
+      "active_release_state": {
+        "active_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+        "active_package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+        "candidate_release_descriptor_cleared": true,
+        "legacy_release_descriptor_sha256_retained_for_rollback": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe"
+      },
+      "production_api_validation": {
+        "fresh_identity_count": 8,
+        "fresh_identity_manifest_statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ],
+        "fresh_identity_manifests_exact_package": true,
+        "previously_legacy_identity_manifest_status": 200,
+        "previously_legacy_identity_manifest_exact_package": true,
+        "manifest_release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+        "manifest_package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+        "fresh_identity_segment_range_status": 206,
+        "fresh_identity_segment_range_content_length": 64,
+        "fresh_identity_segment_range_total_bytes": 4712013,
+        "fresh_identity_segment_package_header_matches": true,
+        "previously_legacy_identity_segment_range_status": 206,
+        "previously_legacy_identity_segment_range_content_length": 64,
+        "previously_legacy_identity_segment_range_total_bytes": 4712013,
+        "previously_legacy_identity_segment_package_header_matches": true,
+        "invalid_range_status": 416,
+        "wrong_package_version_status": 404,
+        "retained_legacy_monolith_range_status": 206,
+        "retained_legacy_monolith_range_content_length": 64,
+        "retained_legacy_monolith_total_bytes": 6283053
+      },
+      "reader_manifest_validation": {
+        "status": 200,
+        "audio_enabled": true,
+        "audiobook_release_gate": "APPROVED",
+        "audio_qa_status": "QA_PASSED",
+        "package_manifest_asset_present": true,
+        "package_version": "",
+        "package_version_empty_by_contract": true
+      },
+      "catalog_truth_validation": {
+        "public_audiobook_count": 4,
+        "public_audiobook_slugs": [
+          "book-2b9853ec52",
+          "a-ghost-story",
+          "sredni-vashtar",
+          "the-open-window"
+        ]
+      },
+      "browser_validation": {
+        "browser_context": "in_app_browser_production",
+        "reload_page_1_audio_src": null,
+        "reload_page_1_audio_current_src": "",
+        "page_2_before_intent_audio_src": null,
+        "page_2_before_intent_preload": "none",
+        "page_2_before_intent_ready_state": 0,
+        "page_2_before_intent_paused": true,
+        "first_click_exact_package_segment_route_bound": true,
+        "first_click_ready_state": 4,
+        "first_click_duration_seconds": 392.6,
+        "first_click_error": false,
+        "first_click_paused": true,
+        "second_click_paused": false,
+        "second_click_current_time_seconds_approx": 1.63,
+        "second_click_pause_control_visible": true,
+        "second_click_stop_control_visible": true,
+        "developer_error_log_count": 0,
+        "stop_reset_audio_src": true,
+        "stop_reset_current_time": true,
+        "stop_reset_ready_state": true
+      },
+      "cross_segment_auto_advance_validated": false,
+      "cross_segment_reason": "package contains one segment",
+      "legacy_release_retained_for_explicit_rollback": true,
+      "public_audiobook_count": 4,
+      "new_live_audiobook_claimed": false,
+      "decision": "PRODUCTION_ACTIVE_PACKAGE_V2_VALIDATED"
     }
   ],
   "package_identity": {
@@ -504,5 +607,5 @@
     "active_release_descriptor_flip",
     "public_live_count_change"
   ],
-  "next_exact_command": "git diff --check"
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug sredni-vashtar"
 }

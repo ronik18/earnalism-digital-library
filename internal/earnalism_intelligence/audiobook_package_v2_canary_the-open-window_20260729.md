@@ -1,24 +1,23 @@
 # Audiobook package v2 canary — The Open Window
 
-Status: **25% sticky-cohort production checkpoint passed; candidate package
-delivery and retained legacy delivery both passed HTTP and real-browser
-validation**.
+Status: **package v2 is active for 100% of production delivery and has passed
+exact API, reader-manifest, and real-browser validation; the legacy release is
+retained only for explicit rollback**.
 
 This evidence records the completed production-and-DR staging canary for the
-already-live audiobook `the-open-window`, followed by the completed 5% and 25%
-production checkpoints. It does not approve a new audiobook, replace the
-active legacy descriptor, or change the truthful public audiobook count of
-four.
+already-live audiobook `the-open-window`, followed by the completed 5%, 25%,
+and 100% production checkpoints. It does not approve a new audiobook or change
+the truthful public audiobook count of four.
 
 ## Release selection truth
 
-- Current active legacy descriptor:
-  `81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe`
-- Package-v2 candidate descriptor:
+- Current active package-v2 descriptor:
   `0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0`
-- Candidate rollout: `25%`
-- Customer-selected delivery: sticky cohort selection between the legacy
-  descriptor and the package-v2 candidate
+- Active package delivery: `100%`
+- Candidate slot: cleared after promotion
+- Legacy descriptor retained for explicit rollback:
+  `81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe`
+- Customer-selected delivery: package v2
 - Public audiobooks remain:
   `book-2b9853ec52`, `a-ghost-story`, `sredni-vashtar`, and
   `the-open-window`
@@ -27,7 +26,9 @@ The original `0%` checkpoint remains part of the evidence history: the
 candidate was stored and bound while all customers remained on legacy
 delivery. The subsequent `5%` checkpoint proved initial sticky candidate and
 legacy delivery. The completed `25%` checkpoint independently reconfirmed both
-paths without claiming a fifth live audiobook.
+paths. The completed `100%` checkpoint promoted the exact candidate descriptor
+to active package delivery and cleared the candidate slot without claiming a
+fifth live audiobook.
 
 ## Five-percent production checkpoint
 
@@ -146,8 +147,57 @@ intent.
   manifest fallback only; unexpected console errors remained zero.
 
 The package still contains one segment, so cross-segment auto-advance is not
-claimed. This completed checkpoint supports advancing the separately prepared
-100% active-pointer promotion; it does not claim that promotion is deployed.
+claimed. This 25% checkpoint supported advancing the separately prepared 100%
+active-pointer promotion; at that historical checkpoint the promotion was not
+yet claimed as deployed.
+
+## One-hundred-percent production promotion
+
+PR `#182` merged as
+`d01482c20b2e9c081ebf5cf0f9334f014566d6ed`. Main workflow runs
+`30514196370` and `30514196277` completed successfully. Repository-linked
+Railway deployment `152b8e25-d119-4e5f-9c18-bfdeae74548a` completed with
+`SUCCESS`; the prior 25% deployment
+`5d5db8a5-5963-4e8a-ba46-9600c6990472` is `REMOVED`.
+
+All eight fresh production identities returned package manifests at HTTP
+`200`, bound to exact package version
+`sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd`
+and active descriptor
+`0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0`.
+An identity retained from the former legacy cohort also returned HTTP `200`
+with the same exact package. This proves the active pointer replaced cohort
+selection.
+
+Fresh and former-legacy identities each received HTTP `206` and exactly 64
+bytes for `Range: bytes=0-63` from the 4,712,013-byte package segment, with
+the exact package-version header. Invalid range remained `416`; a wrong
+package version remained `404`. The retained legacy monolith independently
+remained byte-range readable at HTTP `206`, 64 bytes from a total of
+6,283,053 bytes, solely for explicit rollback.
+
+The production reader manifest returned HTTP `200` with audio enabled,
+`APPROVED`, `QA_PASSED`, and the package-manifest asset present. Its
+`package_version` remains an empty string by contract; this evidence does not
+claim otherwise. Home curation still reports exactly:
+`book-2b9853ec52`, `a-ghost-story`, `sredni-vashtar`, and `the-open-window`.
+
+In the production in-app browser:
+
+- reloading page 1 left both `src` and `currentSrc` empty;
+- page 2 before intent had `src=null`, `preload=none`, `readyState=0`, and
+  `paused=true`;
+- the first click bound the exact package-segment route, reached
+  `readyState=4` with duration `392.6` seconds, no error, and remained paused;
+- the second click played with `paused=false`, current time about `1.63`
+  seconds, and visible Pause/Stop controls;
+- developer error logs remained empty; and
+- Stop reset source, current time, and ready state.
+
+The package contains one segment, so this final promotion still does not claim
+cross-segment auto-advance. Package v2 is now the validated production-active
+delivery, the candidate slot is cleared, and the legacy descriptor remains
+retained only for explicit rollback.
 
 ## Exact package identity
 
@@ -207,7 +257,9 @@ Sprint 1 cleanup and Redis-policy regression run completed at
 `2026-07-29T20:17:49Z` with `136 passed / 0 failed`. The formerly stale
 proxy-asset assertion is resolved. The production checkpoint then passed at
 `5%`, and the later main regression, GO LIVE gate, Railway deployment, and
-sticky-cohort HTTP/browser validation passed at `25%`.
+sticky-cohort HTTP/browser validation passed at `25%`. The final main
+workflows, Railway deployment, eight-identity package proof, reader manifest,
+and in-app browser playback passed after promotion to `100%`.
 
 ## Safety boundary
 
@@ -219,8 +271,8 @@ production/DR separation.
 This evidence update did not generate narration, call a paid provider, touch
 `paid_tts.lock`, mutate campaign policy/state, edit controlled publications or
 code, perform cloud writes, flip the active descriptor, or change the public
-live count. It records the independently completed 25% rollout checkpoint
-while preserving the earlier 0% and 5% history.
+live count. It records the independently completed 100% promotion checkpoint
+while preserving the earlier 0%, 5%, and 25% history.
 
 Machine-readable evidence:
 
@@ -229,5 +281,5 @@ Machine-readable evidence:
 Next exact command:
 
 ```bash
-git diff --check
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug sredni-vashtar
 ```
