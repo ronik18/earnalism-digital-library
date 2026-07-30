@@ -1,0 +1,181 @@
+{
+  "schema": "earnalism.indic_parler.d19_private_preflight.v1",
+  "generated_at": "2026-07-30T07:55:19Z",
+  "status": "PACKET_READY_EXECUTION_BLOCKED",
+  "go_no_go": "NO_GO_AUDIO_EXECUTION",
+  "scope": {
+    "slug": "book-d19e96859f",
+    "title": "গিন্নি",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "language": "ben",
+    "profile": "d19-indic-parler-aditi-literary-v1",
+    "passage_count": 4,
+    "characters": 1781,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "selection": {
+    "reason": "Shortest source-bound, rights-clear, front/back-cover-ready hidden Sprint 1 Bengali title after excluding Muchiram's exhausted lane.",
+    "current_title_state_preserved": "HUMAN_NARRATION_REQUIRED",
+    "prior_closed_provider_families": [
+      "google",
+      "sarvam"
+    ],
+    "new_model_voice_has_no_recorded_execution_result": true
+  },
+  "source": {
+    "chapter_path": "data/controlled_publications/book-d19e96859f/chapters/chapter-001.json",
+    "root_backend_mirrors_match": true,
+    "raw_source_characters": 6459,
+    "raw_source_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
+    "normalized_source_sha256": "e40d3c2cfbc303213bd4a7827dcfdc35fb75fa7e7d5078487cbecba3f1ec9646",
+    "word_count": 1000,
+    "rights_status": "PASS_PUBLIC_DOMAIN_LITERARY_TEXT",
+    "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779342197/earnalism/covers/front/cover_ff96c6fb-bcad-4a11-aba2-f31f6fe69e41.png",
+    "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779342436/earnalism/covers/back/back_cover_ff96c6fb-bcad-4a11-aba2-f31f6fe69e41.png",
+    "excluded_source_tail": {
+      "text": "১২৯৮?",
+      "reason": "source publication-year marker excluded from this audition packet",
+      "full_title_editorial_decision_required": true
+    },
+    "passages": [
+      {
+        "passage_id": "opening_character_control",
+        "start_offset": 0,
+        "end_offset": 397,
+        "characters": 397,
+        "text_sha256": "b825c5484e8f9adc1799fd22c836dff9ae8df6c4eba26089d9a3c5f143ace74a"
+      },
+      {
+        "passage_id": "satirical_punctuation",
+        "start_offset": 399,
+        "end_offset": 813,
+        "characters": 414,
+        "text_sha256": "077f56ee06d735775daa9ed19459e92cc51d0f5b7bc0653f9503a722dea7a354"
+      },
+      {
+        "passage_id": "play_scene_dialogue",
+        "start_offset": 4944,
+        "end_offset": 5443,
+        "characters": 499,
+        "text_sha256": "a02fe5e8b1e6d282dbada2411d9110f8397ccdde41d07338b0c5b085f35b0b99"
+      },
+      {
+        "passage_id": "ending_emotional_release",
+        "start_offset": 5981,
+        "end_offset": 6452,
+        "characters": 471,
+        "text_sha256": "ddaaa9b4c370f999dcd0fd1ddce67c8b23965c5cecca13c680618474e684c9d3"
+      }
+    ]
+  },
+  "engine": {
+    "family": "open_source_local_tts",
+    "provider": "indic-parler-tts",
+    "model_repo": "ai4bharat/indic-parler-tts",
+    "model_revision": "7b527af5ee8ed1f9a28d80b19703ed9bb8ba10ca",
+    "voice": "Aditi",
+    "voice_language": "Bengali",
+    "voice_description": "Aditi speaks in Bengali with clear diction, a warm restrained literary narration style, a natural conversational cadence, subtle emotional depth, a balanced pitch, and a calm moderate pace. The recording is very clear, close-sounding, and free of background noise.",
+    "generation_settings": {
+      "do_sample": true,
+      "temperature": 1.0,
+      "top_k": 50,
+      "top_p": 1.0
+    },
+    "random_seed": 2026073001,
+    "attempt_fingerprint": "0a5d983bf199e0288557c80840402a00f9160e17e533e327fdf950d81006c05a",
+    "browser_or_system_speech_fallback": false
+  },
+  "runtime_evidence": {
+    "status": "PRIVATE_RUNTIME_PREFLIGHT_REQUIRED",
+    "runtime_ready": false,
+    "model_snapshot_locally_observed": true,
+    "model_snapshot_revision": "7b527af5ee8ed1f9a28d80b19703ed9bb8ba10ca",
+    "model_artifact_count": 7,
+    "model_safetensors_size_bytes": 3751321772,
+    "model_safetensors_sha256": "c68daecb60f80c8f1faf0a6d2e6ddd6de8e224fb19750f3e9a33bca43c552c90",
+    "observed_python_packages": {
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "parler-tts": null,
+      "soundfile": "0.14.0",
+      "sentencepiece": "0.2.0",
+      "accelerate": null,
+      "scipy": null,
+      "huggingface-hub": "1.24.0"
+    },
+    "missing_packages": [
+      "parler-tts",
+      "accelerate",
+      "scipy"
+    ]
+  },
+  "rights": {
+    "model_license": "Apache-2.0",
+    "official_model_card_url": "https://huggingface.co/ai4bharat/indic-parler-tts",
+    "model_license_evidence": "The official model card identifies the repository license as apache-2.0 and states that the model is permissively licensed under Apache 2.0.",
+    "model_license_status": "VERIFIED_OFFICIAL_MODEL_CARD_APACHE_2_0",
+    "commercial_use_allowed_under_recorded_license": true,
+    "commercial_rights_decision": "ALLOWED_BY_APACHE_2_0_MODEL_LICENSE",
+    "repository_access_mode_evidence": "Hugging Face lists the repository publicly but requires a signed-in user to share contact information and accept repository access conditions before downloading files.",
+    "repository_access_acknowledgement_receipt_recorded": false,
+    "repository_access_acknowledgement_is_commercial_rights_gate": false,
+    "repository_access_acknowledgement_effect": "NON_BLOCKING_PROVENANCE_NOTE_FOR_EXISTING_LOCAL_SNAPSHOT",
+    "private_audition_rights_status": "PERMITTED_BY_RECORDED_APACHE_2_0_MODEL_LICENSE",
+    "public_audio_release_approved": false
+  },
+  "future_objective_qa_contract": {
+    "asr_source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true,
+    "measured_sync_required": true,
+    "estimated_sync_allowed": false,
+    "listening_score_min": 9.2,
+    "listening_confidence_min": 0.9,
+    "fatal_flags_allowed": []
+  },
+  "safety": {
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "paid_tts_lock_inspected": false,
+    "paid_tts_lock_touched": false,
+    "audio_generated": false,
+    "asr_run": false,
+    "listening_qa_run": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_status": "AUDIO_HIDDEN_NOT_PUBLIC"
+  },
+  "private_audition_execution_blockers": [
+    "PINNED_PRIVATE_RUNTIME_NOT_VERIFIED"
+  ],
+  "release_blockers": [
+    "REPRESENTATIVE_AUDIO_NOT_GENERATED",
+    "REPRESENTATIVE_ASR_NOT_RUN",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "PRIVATE_UPLOAD_CHECKSUM_NOT_RUN",
+    "PRODUCTION_ENDPOINT_NOT_RUN",
+    "BROWSER_PLAYBACK_GATE_NOT_RUN"
+  ],
+  "non_blocking_provenance_notes": [
+    "HF_REPOSITORY_ACCESS_ACKNOWLEDGEMENT_RECEIPT_NOT_RECORDED"
+  ],
+  "blockers_to_execution_and_release": [
+    "PINNED_PRIVATE_RUNTIME_NOT_VERIFIED",
+    "REPRESENTATIVE_AUDIO_NOT_GENERATED",
+    "REPRESENTATIVE_ASR_NOT_RUN",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "PRIVATE_UPLOAD_CHECKSUM_NOT_RUN",
+    "PRODUCTION_ENDPOINT_NOT_RUN",
+    "BROWSER_PLAYBACK_GATE_NOT_RUN"
+  ],
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python internal/audiobook_lab/scripts/sprint1_d19_indic_parler_private_preflight.py --preflight --verify-runtime --model-snapshot-dir /Users/ronikbasak/.cache/huggingface/hub/models--ai4bharat--indic-parler-tts/snapshots/7b527af5ee8ed1f9a28d80b19703ed9bb8ba10ca --output /private/tmp/book-d19e96859f_indic_parler_aditi_runtime_preflight.json"
+}

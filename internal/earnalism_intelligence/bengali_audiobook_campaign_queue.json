@@ -129,6 +129,19 @@
         "supporting_private_qa_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json"
       },
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f",
+      "provider_free_alternative_preflight": {
+        "status": "PACKET_READY_EXECUTION_BLOCKED",
+        "model": "ai4bharat/indic-parler-tts",
+        "model_revision": "7b527af5ee8ed1f9a28d80b19703ed9bb8ba10ca",
+        "voice": "Aditi",
+        "model_license_status": "VERIFIED_OFFICIAL_MODEL_CARD_APACHE_2_0",
+        "commercial_rights_decision": "ALLOWED_BY_APACHE_2_0_MODEL_LICENSE",
+        "repository_access_acknowledgement": "NOT_RECORDED_NON_BLOCKING_PROVENANCE_NOTE",
+        "provider_calls_ran": false,
+        "audio_generated": false,
+        "release_state_changed": false,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_indic_parler_aditi_private_preflight_v1.json"
+      },
       "scale_gate": "NO_BENGALI_CANARY_SCALING_UNLESS_D19_HUMAN_OR_LICENSED_CANDIDATE_PASSES_AND_PUBLISHES",
       "next_action": "Do not repeat failed Google or Sarvam arms. Obtain source-bound human narration or licensed audio and validate the received candidate through the generated packet before any upload or publication.",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"

@@ -1332,3 +1332,28 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Private-QA staging remains an explicit, non-release-eligible single-store
   mode. No cloud, upload, catalog, release-gate, or paid-provider mutation was
   performed while implementing and testing this guard.
+
+## 2026-07-30 — D19 has one untried, provider-free Bengali audition packet
+
+- After excluding Muchiram's exhausted synthetic lane, `book-d19e96859f`
+  (`গিন্নি`) is the shortest Sprint 1 Bengali title with a canonical
+  source-bound manuscript, public-domain literary rights, live reader, and
+  complete front/back cover pair.
+- Google and Sarvam execution evidence remains closed. A materially different
+  provider-free packet now binds four exact source passages to
+  `ai4bharat/indic-parler-tts` revision
+  `7b527af5ee8ed1f9a28d80b19703ed9bb8ba10ca`, Bengali voice `Aditi`, a fixed
+  voice description, seed, settings, and attempt fingerprint.
+- The local model snapshot was observed and checksum-bound, but the execution
+  runtime is not ready: the existing `.venv-audio` has Torch, Transformers,
+  SoundFile, SentencePiece, and Hugging Face Hub but lacks `parler-tts`,
+  `accelerate`, and `scipy`.
+- The official model card identifies the model as permissively licensed under
+  Apache-2.0, so the license permits commercial use. Hugging Face's separate
+  contact-information/conditions acknowledgement controls repository file
+  access; its receipt is not recorded in this packet, but that is a provenance
+  note for the already-downloaded, hash-bound snapshot rather than a second
+  commercial-rights or private-audition gate.
+- This is a packet, not evidence of audio quality. No synthesis, ASR, listening
+  QA, provider call, upload, release mutation, public exposure, or paid-lock
+  access occurred. D19 remains `HUMAN_NARRATION_REQUIRED` and audio-hidden.
