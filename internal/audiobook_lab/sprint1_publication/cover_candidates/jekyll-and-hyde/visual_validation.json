@@ -1,0 +1,154 @@
+{
+  "schema_version": "earnalism.private_cover_visual_validation.v2",
+  "status": "AUTOMATED_AND_CODEX_VISUAL_PASS_OWNER_EDITORIAL_REVIEW_PENDING",
+  "generated_at": "2026-07-30T07:18:27Z",
+  "checks": {
+    "source_art_hashes_bound": true,
+    "source_rights_verified_for_private_composition": true,
+    "territorial_rights_caveat_retained": true,
+    "exact_catalog_title": true,
+    "exact_catalog_author": true,
+    "exact_canonical_back_copy": true,
+    "distinct_editorial_back_copy_invented": false,
+    "front_dimensions_1600x2400": true,
+    "back_dimensions_1600x2400": true,
+    "front_under_admin_upload_limit": true,
+    "back_under_admin_upload_limit": true,
+    "text_inside_safe_margins": true,
+    "text_inside_content_panels": true,
+    "text_box_overlap_count": 0,
+    "thumbnail_derivatives_under_80_kib": true,
+    "feature_derivatives_under_180_kib": true,
+    "small_card_title_legibility_floor": true,
+    "small_card_author_legibility_floor": true,
+    "public_catalog_unchanged": true,
+    "audio_release_truth_unchanged": true
+  },
+  "manual_visual_review": {
+    "path": "manual_visual_review.json",
+    "status": "CODEX_VISUAL_INSPECTION_PASS_OWNER_EDITORIAL_REVIEW_PENDING",
+    "front_master_inspected": true,
+    "back_master_inspected": true,
+    "front_thumbnail_inspected": true,
+    "back_thumbnail_inspected": true
+  },
+  "geometry_errors": [],
+  "front_validation": {
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 490667,
+    "sha256": "144ee406937db6f4f206c9d3518de3679aea5268ec933295fda888e7a2838157",
+    "aspect_ratio": 0.6667
+  },
+  "back_validation": {
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 380546,
+    "sha256": "a1aa1144de8b0ba0c80442101322ae84c7ebf7fd25de83bfc7064d2c5c31ff4a",
+    "aspect_ratio": 0.6667
+  },
+  "derivative_validations": {
+    "front_thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-front-thumbnail-v2.webp",
+      "sha256": "de53454b10ea178bf190df8aeee65351b6c8316afed98c7317a4f7b046e3da4a",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 24722,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "front_feature": {
+      "path": "derivatives/jekyll-and-hyde-front-feature-v2.webp",
+      "sha256": "b8c349a1273c953e418bf17d77f8a8402a05351ef2a03849e2ea6028e1e51e2b",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 83838,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    },
+    "back_thumbnail": {
+      "path": "derivatives/jekyll-and-hyde-back-thumbnail-v2.webp",
+      "sha256": "dfac54b9421bfa2bd720a17552e2cd98eeb74e5adac690db7cb43cad0237d73c",
+      "width": 320,
+      "height": 480,
+      "format": "WEBP",
+      "bytes": 16562,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 81920,
+      "budget_pass": true
+    },
+    "back_feature": {
+      "path": "derivatives/jekyll-and-hyde-back-feature-v2.webp",
+      "sha256": "65e66173550322daaacd359e085532ccb801429a48d1911b03ba02dd9b85e130",
+      "width": 800,
+      "height": 1200,
+      "format": "WEBP",
+      "bytes": 58880,
+      "aspect_ratio": 0.6667,
+      "quality": 84,
+      "budget_bytes": 184320,
+      "budget_pass": true
+    }
+  },
+  "small_card_metrics": {
+    "front": {
+      "thumbnail_scale": 0.2,
+      "text": {
+        "title": {
+          "source_font_px": 126,
+          "thumbnail_font_px": 25.2,
+          "line_count": 3
+        },
+        "author": {
+          "source_font_px": 58,
+          "thumbnail_font_px": 11.6,
+          "line_count": 1
+        }
+      },
+      "title_minimum_16px_pass": true,
+      "author_minimum_9px_pass": true,
+      "ivory_on_panel_contrast_ratio": 15.953,
+      "wcag_large_text_contrast_pass": true
+    },
+    "back": {
+      "thumbnail_scale": 0.2,
+      "text": {
+        "title": {
+          "source_font_px": 104,
+          "thumbnail_font_px": 20.8,
+          "line_count": 3
+        },
+        "author": {
+          "source_font_px": 54,
+          "thumbnail_font_px": 10.8,
+          "line_count": 1
+        },
+        "canonical_short_description": {
+          "source_font_px": 50,
+          "thumbnail_font_px": 10.0,
+          "line_count": 4
+        }
+      },
+      "title_minimum_16px_pass": true,
+      "author_minimum_9px_pass": true,
+      "ivory_on_panel_contrast_ratio": 15.953,
+      "wcag_large_text_contrast_pass": true
+    }
+  },
+  "manual_checks_required": [
+    "Visual inspection of front and back master outputs",
+    "Visual inspection of front and back thumbnail outputs",
+    "Owner/editorial approval of visual direction and canonical copy treatment",
+    "Territorial rights review before any canonical promotion",
+    "Private admin candidate preview review before any public decision"
+  ]
+}

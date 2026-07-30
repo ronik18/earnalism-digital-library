@@ -1,0 +1,278 @@
+{
+  "schema_version": "earnalism.deterministic_cover_composition.v2",
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "author": "Robert Louis Stevenson",
+  "canonical_back_copy": "A clean Earnalism reader edition of The Strange Case of Dr. Jekyll and Mr. Hyde, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+  "approved_distinct_editorial_back_copy_found": false,
+  "source_art_sha256": {
+    "front": "1848b89196669aeb7c0ea097d4821dc20cab09cca968d9bd854f85e68413f374",
+    "back": "e48ba094dde8140e7894d6f9963b9674f395a6de98dcaf3766d1eb452e4628be"
+  },
+  "output_size": [
+    1600,
+    2400
+  ],
+  "generation_mode": "deterministic_pillow_composition_over_verified_public_domain_art",
+  "ai_generated_imagery": false,
+  "placeholder_art": false,
+  "script": {
+    "path": "internal/audiobook_lab/scripts/prepare_jekyll_editorial_cover.py",
+    "sha256": "0365ab7642ad38989ecde4eca9edbb7bfd6db1faba2dd00c3ce0dce5722bc2c0",
+    "shared_helper_path": "internal/audiobook_lab/scripts/prepare_tell_tale_editorial_cover.py",
+    "shared_helper_sha256": "9306294566e9e739bc9973bb12289b2a0bc42d216b52a8e42943da174e1a2816"
+  },
+  "fonts": {
+    "front_title": {
+      "resolved_path": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "sha256": "1cfa9abd55be746c798c22ef4eba88fce82257934897404be2dae53ed0a4142a"
+    },
+    "front_author": {
+      "resolved_path": "/System/Library/Fonts/Supplemental/Georgia.ttf",
+      "sha256": "4f54eb299fccea7f103edeb0d92437359bfd4441811d53222b82b335369f6218"
+    },
+    "back_title": {
+      "resolved_path": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "sha256": "1cfa9abd55be746c798c22ef4eba88fce82257934897404be2dae53ed0a4142a"
+    },
+    "back_author": {
+      "resolved_path": "/System/Library/Fonts/Supplemental/Georgia.ttf",
+      "sha256": "4f54eb299fccea7f103edeb0d92437359bfd4441811d53222b82b335369f6218"
+    },
+    "back_description": {
+      "resolved_path": "/System/Library/Fonts/Supplemental/Georgia.ttf",
+      "sha256": "4f54eb299fccea7f103edeb0d92437359bfd4441811d53222b82b335369f6218"
+    }
+  },
+  "front": {
+    "crop": {
+      "source_size": [
+        1671,
+        2514
+      ],
+      "crop_box": [
+        0,
+        4,
+        1671,
+        2510
+      ],
+      "target_size": [
+        1600,
+        2400
+      ],
+      "resampling": "LANCZOS"
+    },
+    "content_panel": [
+      126,
+      122,
+      1474,
+      910
+    ],
+    "text_panels": {
+      "title": [
+        126,
+        122,
+        1474,
+        910
+      ],
+      "author": [
+        126,
+        122,
+        1474,
+        910
+      ]
+    },
+    "text_boxes": [
+      {
+        "name": "title",
+        "text": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+        "lines": [
+          "The Strange Case",
+          "of Dr. Jekyll and",
+          "Mr. Hyde"
+        ],
+        "font_size": 126,
+        "box": [
+          242,
+          212,
+          1358,
+          586
+        ]
+      },
+      {
+        "name": "author",
+        "text": "Robert Louis Stevenson",
+        "lines": [
+          "Robert Louis Stevenson"
+        ],
+        "font_size": 58,
+        "box": [
+          496,
+          714,
+          1104,
+          767
+        ]
+      }
+    ],
+    "fonts": {
+      "title": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "author": "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    },
+    "treatment": {
+      "source_art_only": true,
+      "duotone_black": "#110d12",
+      "duotone_white": "#d8c9aa",
+      "contrast": 1.16,
+      "vertical_shade": {
+        "top_alpha": 92,
+        "bottom_alpha": 72,
+        "color": [
+          20,
+          7,
+          12
+        ]
+      }
+    }
+  },
+  "back": {
+    "crop": {
+      "source_size": [
+        1610,
+        2501
+      ],
+      "crop_box": [
+        0,
+        43,
+        1610,
+        2458
+      ],
+      "target_size": [
+        1600,
+        2400
+      ],
+      "resampling": "LANCZOS"
+    },
+    "content_panels": {
+      "title_and_author": [
+        132,
+        146,
+        1468,
+        920
+      ],
+      "description": [
+        132,
+        1590,
+        1468,
+        2228
+      ]
+    },
+    "text_panels": {
+      "title": [
+        132,
+        146,
+        1468,
+        920
+      ],
+      "author": [
+        132,
+        146,
+        1468,
+        920
+      ],
+      "canonical_short_description": [
+        132,
+        1590,
+        1468,
+        2228
+      ]
+    },
+    "text_boxes": [
+      {
+        "name": "title",
+        "text": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+        "lines": [
+          "The Strange Case of",
+          "Dr. Jekyll and Mr.",
+          "Hyde"
+        ],
+        "font_size": 104,
+        "box": [
+          270,
+          276,
+          1330,
+          587
+        ]
+      },
+      {
+        "name": "author",
+        "text": "Robert Louis Stevenson",
+        "lines": [
+          "Robert Louis Stevenson"
+        ],
+        "font_size": 54,
+        "box": [
+          517,
+          780,
+          1083,
+          829
+        ]
+      },
+      {
+        "name": "canonical_short_description",
+        "text": "A clean Earnalism reader edition of The Strange Case of Dr. Jekyll and Mr. Hyde, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+        "lines": [
+          "A clean Earnalism reader edition of The",
+          "Strange Case of Dr. Jekyll and Mr. Hyde,",
+          "prepared from a legally cleared public-domain",
+          "classic source with source boilerplate removed."
+        ],
+        "font_size": 50,
+        "box": [
+          282,
+          1720,
+          1318,
+          1976
+        ]
+      }
+    ],
+    "fonts": {
+      "title": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "author": "/System/Library/Fonts/Supplemental/Georgia.ttf",
+      "description": "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    },
+    "treatment": {
+      "source_art_only": true,
+      "gaussian_blur_radius": 0.65,
+      "pre_duotone_contrast": 0.94,
+      "duotone_black": "#0f1110",
+      "duotone_white": "#b9ad8c",
+      "vertical_shade": {
+        "top_alpha": 115,
+        "bottom_alpha": 155,
+        "color": [
+          18,
+          8,
+          13
+        ]
+      }
+    }
+  },
+  "derivatives": {
+    "thumbnail": {
+      "size": [
+        320,
+        480
+      ],
+      "budget_bytes": 81920
+    },
+    "feature": {
+      "size": [
+        800,
+        1200
+      ],
+      "budget_bytes": 184320
+    },
+    "resampling": "LANCZOS",
+    "format": "WEBP"
+  }
+}

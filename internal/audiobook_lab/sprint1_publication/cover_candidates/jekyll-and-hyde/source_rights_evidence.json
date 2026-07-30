@@ -1,0 +1,56 @@
+{
+  "schema_version": "earnalism.cover_source_rights.v1",
+  "status": "VERIFIED_PUBLIC_DOMAIN_SOURCE_ART_FOR_PRIVATE_COMPOSITION",
+  "work": {
+    "book_title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+    "book_author": "Robert Louis Stevenson",
+    "illustrator": "Charles Raymond Macauley",
+    "illustrator_life": "1871-1934",
+    "edition_year": 1904,
+    "edition_publisher": "New York: Scott-Thaw",
+    "edition_scan_url": "https://archive.org/details/strangecaseofdr00stevuoft"
+  },
+  "sources": {
+    "front": {
+      "description": "Chapter 2, Drawing 1: Mr. Utterson at the door with a distorted foreground shadow.",
+      "record_url": "https://commons.wikimedia.org/wiki/File:Jekyll.and.Hyde.Ch2.Drawing1.jpg",
+      "exact_file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Jekyll.and.Hyde.Ch2.Drawing1.jpg",
+      "local_path": "source_art/macauley-jekyll-ch2-drawing1-1904.jpg",
+      "sha256": "1848b89196669aeb7c0ea097d4821dc20cab09cca968d9bd854f85e68413f374",
+      "size_bytes": 439037,
+      "width": 1671,
+      "height": 2514,
+      "media_type": "image/jpeg"
+    },
+    "back": {
+      "description": "Chapter 10, Drawing 2: Dr. Jekyll before the cheval glass.",
+      "record_url": "https://commons.wikimedia.org/wiki/File:Jekyll.and.Hyde.Ch10.Drawing2.jpg",
+      "exact_file_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Jekyll.and.Hyde.Ch10.Drawing2.jpg",
+      "local_path": "source_art/macauley-jekyll-ch10-drawing2-1904.jpg",
+      "sha256": "e48ba094dde8140e7894d6f9963b9674f395a6de98dcaf3766d1eb452e4628be",
+      "size_bytes": 429935,
+      "width": 1610,
+      "height": 2501,
+      "media_type": "image/jpeg"
+    }
+  },
+  "rights": {
+    "mark": "Public Domain Mark 1.0",
+    "rights_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "rights_statement": "Each Wikimedia Commons record identifies the 1904 Macauley illustration as public domain in its country of origin and in jurisdictions with copyright terms of the author's life plus 70 years or fewer, and marks the file free of known copyright restrictions.",
+    "commercial_reuse_allowed_in_scoped_jurisdictions": true,
+    "derivative_use_allowed_in_scoped_jurisdictions": true,
+    "attribution_required": false,
+    "global_unrestricted_assertion": false,
+    "jurisdiction_notes": "Charles Raymond Macauley died in 1934. The source records expressly warn that a small number of jurisdictions use terms longer than life plus 70 and may not apply the rule of the shorter term. Any future canonical promotion must retain this territorial note and use Earnalism's approved distribution-jurisdiction policy; this private packet does not make a worldwide legal conclusion."
+  },
+  "review": {
+    "source_identity_verified": true,
+    "file_hashes_verified": true,
+    "source_dimensions_verified": true,
+    "private_candidate_composition_allowed": true,
+    "finished_cover_editorial_review_required": true,
+    "canonical_promotion_authorized": false,
+    "public_upload_authorized": false
+  }
+}
