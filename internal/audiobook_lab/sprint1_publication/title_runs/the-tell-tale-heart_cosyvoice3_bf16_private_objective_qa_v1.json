@@ -1,0 +1,309 @@
+{
+  "schema": "earnalism.tell_tale_cosyvoice3_bf16_private_objective_qa.v1",
+  "generated_at": "2026-07-30T06:30:32Z",
+  "status": "PRIVATE_REPRESENTATIVE_PILOT_REJECTED",
+  "slug": "the-tell-tale-heart",
+  "title": "The Tell-Tale Heart",
+  "author": "Edgar Allan Poe",
+  "scope": "private_four_passage_objective_qa_no_upload_no_publication",
+  "source_binding": {
+    "canonical_manuscript_sha256": "316ed82d8ae04a1af3f82ec692e88bc630c4865c06192854a612f29cb017f2bb",
+    "canonical_chapter_content_sha256": "0d754cdbbbcdc662091824f2078312d78eb3d80262e6301b0465ab4c3db54e4e",
+    "whitespace_normalized_chapter_sha256": "6aa43cf6dcf4c6fba097237c01938ab5269a7edda16e4006db05b5a56c7e164e",
+    "data_backend_byte_parity": true,
+    "manuscript_reconciliation_evidence": "internal/earnalism_intelligence/the_tell_tale_heart_manuscript_reconciliation_20260730.json",
+    "passage_sha256": {
+      "opening_unreliable_sanity": "1bd845cd383b10550ac7fe03ccfafc01d3059c7ae9f473a4a371c20782f6a524",
+      "bedroom_suspense_dialogue": "7b2efa882aed81bb447c8d00fee89dfc011d48ffb2c2ba0f1d2b202918125029",
+      "heartbeat_crescendo": "90686993699298d204d639da36bf779b3ae52397e99e2d6e1b5fdb5a316ab639",
+      "final_confession": "3e0f8c27ceca25a940b8d411c6bf015a46ba188a513273748c9666f7a7695745"
+    },
+    "binding_note": "The pilot runner was executed before the whitespace-only reconciliation merge. Its normalized manuscript and all four exact passage hashes are unchanged by that repair and match the post-reconciliation controlled chapter."
+  },
+  "synthesis": {
+    "model_id": "aufklarer/CosyVoice3-0.5B-MLX-bf16",
+    "model_revision": "9b210b2381280b3af1c631d474a250e3e46d7017",
+    "runtime": "speech 0.0.23",
+    "runtime_sha256": "5e5866f18eb07666ae01ce909fc9699990b31182e79fdadc61ec15875231db50",
+    "settings": {
+      "engine": "cosyvoice",
+      "language": "english",
+      "seed": 2026073001,
+      "voice_reference": null,
+      "voice_kind": "MODEL_DEFAULT_SYNTHETIC_VOICE_NO_REFERENCE_AUDIO",
+      "style_instruction": null
+    },
+    "runner_sha256": "d17e8a6f5d582e21d6f8ea0387dd38734716211f0d0970955021701cd331566f",
+    "attempt_fingerprint": "4c8e9feb68fc62b3b002b4ae9e94771aa8945b861cc219b78dfa74cc9c1f4f55",
+    "provider_calls": 0,
+    "paid_provider_used": false
+  },
+  "asr": {
+    "model": "mlx-community/whisper-large-v3-turbo",
+    "model_revision": "a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+    "weights_sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
+    "runtime": "mlx-whisper 0.4.3",
+    "settings": {
+      "language": "en",
+      "task": "transcribe",
+      "temperature": 0.0,
+      "condition_on_previous_text": false,
+      "initial_prompt": null,
+      "word_timestamps": true,
+      "hallucination_silence_threshold": 0.5
+    },
+    "qa_fingerprint": "f8d74f4048b76f749047df12963b9c2146c33d4d621e0e9830984e6399096aba",
+    "scoring_contract": "internal/audiobook_lab/scripts/sprint1_kokoro_title_private_audition.py::ordered_token_integrity",
+    "thresholds": {
+      "minimum_score": 9.7,
+      "minimum_coverage": 0.98,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": true,
+      "no_missing_content": true,
+      "no_duplicate_content": true,
+      "no_reordered_content": true,
+      "no_unexpected_content": true
+    },
+    "passages": [
+      {
+        "passage_id": "opening_unreliable_sanity",
+        "audio_path": "/private/tmp/earnalism-tell-cosyvoice3-private/bf16-default-four-passage-v1/opening_unreliable_sanity.wav",
+        "audio_sha256": "c2dd1d31200d435f0fc09bf8df068bc50fca5769cfba25e70886d15324b3f406",
+        "audio_size_bytes": 1795244,
+        "source_text_sha256": "1bd845cd383b10550ac7fe03ccfafc01d3059c7ae9f473a4a371c20782f6a524",
+        "transcript": "True, nervous, very, very dreadfully, nervous I had been and am. But why will you say that I am mad? The disease had sharpened my senses, not destroyed, not dulled them. Above all was the sense of hearing acute. I heard all things in the heaven and in the earth. I heard many things in hell. How then am I mad? Hearken and observe how healthily, how calmly I can tell you the whole story.",
+        "transcript_sha256": "4c659995edc9392dff9e16ac6c7f16fd975624f6ed55ba1335ddf7c7a4cce419",
+        "source_token_count": 75,
+        "transcript_token_count": 75,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "unexpected_tokens": {},
+        "pass": true
+      },
+      {
+        "passage_id": "bedroom_suspense_dialogue",
+        "audio_path": "/private/tmp/earnalism-tell-cosyvoice3-private/bf16-default-four-passage-v1/bedroom_suspense_dialogue.wav",
+        "audio_sha256": "ce8ad227895c6e7f9e0963b2baf86e8850192f8ec2c2c7475eb71aa181ab79a9",
+        "audio_size_bytes": 1543724,
+        "source_text_sha256": "7b2efa882aed81bb447c8d00fee89dfc011d48ffb2c2ba0f1d2b202918125029",
+        "transcript": "I fairly chuckled at the idea, and perhaps he heard me, for he moved on the bed suddenly, as if startled. Now you may think that I drew back, but no, his room was as black as pitch with the thick darkness, and so I knew that he could not see the opening of the door. And I kept pushing it on, steadily, steadily. I had my head in, and was about to open the lantern, when my thumb slipped upon the tin fastening, and the old man sprang up in bed, crying out, Who's there?",
+        "transcript_sha256": "f94c0a172761fbbdebbda19a7e7ed1be79d13e6ee29bab3fa63792bcc7bc6d87",
+        "source_token_count": 106,
+        "transcript_token_count": 96,
+        "score": 9.505,
+        "coverage": 0.9057,
+        "precision": 1.0,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": false,
+        "no_unexpected_content": true,
+        "missing_ordered_span": "for the shutters were close fastened through fear of robbers",
+        "missing_token_count": 10,
+        "pass": false
+      },
+      {
+        "passage_id": "heartbeat_crescendo",
+        "audio_path": "/private/tmp/earnalism-tell-cosyvoice3-private/bf16-default-four-passage-v1/heartbeat_crescendo.wav",
+        "audio_sha256": "9152f8a72f1e2a3dbe2c09da092c68e873ab435f9b09b2492b68e5baf6095da1",
+        "audio_size_bytes": 1849004,
+        "source_text_sha256": "90686993699298d204d639da36bf779b3ae52397e99e2d6e1b5fdb5a316ab639",
+        "transcript": "Meantime the hellish tattoo of the heart increased. It grew quicker and quicker and louder and louder every instant. The old man's terror must have been extreme. It grew louder, I say, louder every moment. Do you mark me well? I have told you that I am nervous, so I am. And now at the dead hour of the night, amid the dreadful silence of that old house, so strange a noise as this excited me to uncontrollable terror yet for some minutes longer",
+        "transcript_sha256": "e2bf47ff38b8fe496804d484ee53e2d4eeaff6371f2994f5856f2646c44af869",
+        "source_token_count": 116,
+        "transcript_token_count": 84,
+        "score": 8.4,
+        "coverage": 0.7241,
+        "precision": 1.0,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_ordered_span": "I refrained and stood still but the beating grew louder louder I thought the heart must burst and now a new anxiety seized me the sound would be heard by a neighbour",
+        "missing_token_count": 32,
+        "pass": false
+      },
+      {
+        "passage_id": "final_confession",
+        "audio_path": "/private/tmp/earnalism-tell-cosyvoice3-private/bf16-default-four-passage-v1/final_confession.wav",
+        "audio_sha256": "d38a8fbc07d1173c0b21b1ee51409b717ffe8bfdf7bcbb49265bff06f46a4c94",
+        "audio_size_bytes": 1939244,
+        "source_text_sha256": "3e0f8c27ceca25a940b8d411c6bf015a46ba188a513273748c9666f7a7695745",
+        "transcript": "It grew louder, louder, louder, and still the men chatted pleasantly and smiled. Was it possible they heard not, almighty God? No, no, they heard, they suspected, they knew, they were making a mockery of my horror. This I thought and this I think, but anything was better than this agony, anything was more tolerable than this derision. I could bear those hypocritical smiles no longer. I felt that I must scream or die, and now, again, hark, louder. Louder, louder, louder. Villains, I shrieked. Dissemble no more. I admit the deed. Tear up the planks. Hear, hear. It is the beating of his hideous heart.",
+        "transcript_sha256": "bd7b61be35fde1c69bcf75fa2cd928e161cea7c54ecc970c9b72124c829006ba",
+        "source_token_count": 106,
+        "transcript_token_count": 106,
+        "score": 9.8113,
+        "coverage": 0.9811,
+        "precision": 0.9811,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "source_tokens": {
+          "here": 2
+        },
+        "transcript_tokens": {
+          "hear": 2
+        },
+        "source_equivalences_applied": [],
+        "pass": false
+      }
+    ],
+    "aggregate": {
+      "method": "ordered_token_integrity_over_concatenated_passages",
+      "source_token_count": 403,
+      "transcript_token_count": 361,
+      "score": 9.3979,
+      "coverage": 0.8908,
+      "precision": 0.9945,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": false,
+      "no_missing_content": false,
+      "no_duplicate_content": true,
+      "no_reordered_content": false,
+      "no_unexpected_content": false,
+      "weighted_per_passage_score": 9.3596,
+      "weighted_per_passage_coverage": 0.8908,
+      "pass": false
+    }
+  },
+  "technical_audio": {
+    "container": "WAV",
+    "codec": "pcm_s16le",
+    "sample_rate_hz": 24000,
+    "channels": 1,
+    "bits_per_sample": 16,
+    "assembly_joins_present": false,
+    "join_review": "No cross-file or assembly joins exist in this four-file pilot. Single-sample transient analysis found substantial high-amplitude discontinuity clusters in two files and requires an audible reviewer before any future reuse.",
+    "files": [
+      {
+        "passage_id": "opening_unreliable_sanity",
+        "duration_seconds": 37.4,
+        "integrated_loudness_lufs": -17.66,
+        "loudness_range_lu": 2.2,
+        "true_peak_dbtp": -0.1,
+        "hard_clipped_samples": 0,
+        "near_full_scale_samples_over_0_98": 1,
+        "sample_jumps_over_half_scale": 0,
+        "jump_cluster_count_50ms": 0
+      },
+      {
+        "passage_id": "bedroom_suspense_dialogue",
+        "duration_seconds": 32.16,
+        "integrated_loudness_lufs": -14.51,
+        "loudness_range_lu": 6.6,
+        "true_peak_dbtp": 0.58,
+        "hard_clipped_samples": 0,
+        "near_full_scale_samples_over_0_98": 835,
+        "sample_jumps_over_half_scale": 1048,
+        "jump_cluster_count_50ms": 27
+      },
+      {
+        "passage_id": "heartbeat_crescendo",
+        "duration_seconds": 38.52,
+        "integrated_loudness_lufs": -15.89,
+        "loudness_range_lu": 2.9,
+        "true_peak_dbtp": 0.01,
+        "hard_clipped_samples": 0,
+        "near_full_scale_samples_over_0_98": 17,
+        "sample_jumps_over_half_scale": 1,
+        "jump_cluster_count_50ms": 1
+      },
+      {
+        "passage_id": "final_confession",
+        "duration_seconds": 40.4,
+        "integrated_loudness_lufs": -14.03,
+        "loudness_range_lu": 4.0,
+        "true_peak_dbtp": 0.59,
+        "hard_clipped_samples": 0,
+        "near_full_scale_samples_over_0_98": 2760,
+        "sample_jumps_over_half_scale": 1270,
+        "jump_cluster_count_50ms": 39
+      }
+    ],
+    "technical_flags": [
+      "BEDROOM_TRUE_PEAK_ABOVE_ZERO_DBTP",
+      "FINAL_TRUE_PEAK_ABOVE_ZERO_DBTP",
+      "BEDROOM_HIGH_AMPLITUDE_TRANSIENT_CLUSTERS_REQUIRE_AUDIBLE_REVIEW",
+      "FINAL_HIGH_AMPLITUDE_TRANSIENT_CLUSTERS_REQUIRE_AUDIBLE_REVIEW"
+    ]
+  },
+  "listening_qa": {
+    "status": "NOT_PERFORMED_NO_INDEPENDENT_AUDIBLE_REVIEWER",
+    "score": null,
+    "confidence": null,
+    "fatal_flags_assessed": false,
+    "fatal_flags": [],
+    "unassessed_categories": [
+      "robotic_texture",
+      "mechanical_cadence",
+      "list_reading_rhythm",
+      "choppy_joins",
+      "pronunciation",
+      "emotional_expression"
+    ],
+    "claim": "No listening score or absence-of-fatal-flags claim is made."
+  },
+  "fatal_blockers": [
+    "BEDROOM_SOURCE_CONTENT_OMISSION_10_TOKENS",
+    "HEARTBEAT_SOURCE_TAIL_OMISSION_32_TOKENS",
+    "HEARTBEAT_LAST_WORDS_FAIL",
+    "AGGREGATE_ASR_SOURCE_SCORE_BELOW_9_7",
+    "AGGREGATE_COVERAGE_BELOW_0_98",
+    "ORDERED_CONTENT_INTEGRITY_FAIL",
+    "LISTENING_QA_NOT_RUN",
+    "MEASURED_SYNC_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "COVERS_NOT_CANONICALLY_APPROVED",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN"
+  ],
+  "decision": {
+    "full_title_generation_justified": false,
+    "result": "COSYVOICE3_BF16_PRIVATE_PILOT_OBJECTIVE_FAIL",
+    "reason": "Two of four representative samples omit exact source content. The aggregate score and coverage fail strict gates by a material margin, so larger generation would scale a demonstrated truncation/omission defect.",
+    "no_repeat": "Do not repeat model revision 9b210b2381280b3af1c631d474a250e3e46d7017 with seed 2026073001, the same four passage hashes, and the same model-default voice settings.",
+    "next_action": "Keep the title audio-hidden. Admit only a materially different exact-source pilot with deterministic sentence-safe chunking and exact reconstruction before any full-title generation."
+  },
+  "safety": {
+    "audio_generated_during_qa": false,
+    "audio_edited_or_trimmed": false,
+    "provider_calls": 0,
+    "uploaded": false,
+    "published": false,
+    "release_gate_mutated": false,
+    "controlled_catalog_mutated": false,
+    "paid_tts_lock_inspected": false,
+    "paid_tts_lock_touched": false
+  },
+  "generator_evidence_semantics_defect": {
+    "present": true,
+    "detail": "Generator stdout retained REPRESENTATIVE_AUDIO_NOT_GENERATED after status and generated_files proved that audio existed.",
+    "classification": "EVIDENCE_SEMANTICS_DEFECT_NOT_A_RELEASE_BLOCKER",
+    "truthful_current_blockers_used_here": [
+      "OBJECTIVE_QA_FAILED",
+      "LISTENING_QA_NOT_RUN",
+      "FULL_TITLE_NOT_GENERATED",
+      "DOWNSTREAM_DELIVERY_GATES_NOT_RUN"
+    ]
+  }
+}

@@ -1200,3 +1200,23 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   Absence of admin credentials means no upload was attempted; even a successful
   admin upload must remain `ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW` and cannot
   promote the canonical catalog or change audiobook truth.
+
+## 2026-07-30 — The Tell-Tale Heart CosyVoice3 BF16 private pilot
+
+- A distinct four-passage CosyVoice3 BF16 pilot was bound to the reconciled
+  normalized manuscript and exact passage hashes, then checked with the pinned
+  local MLX Whisper large-v3-turbo model and the repository's strict ordered
+  token verifier.
+- Only the opening passage passed. The bedroom sample skipped 10 exact source
+  tokens inside a parenthetical clause, and the heartbeat sample ended 32
+  source tokens early. Aggregate score was `9.3979`, coverage was `0.8908`,
+  and ordered content integrity failed.
+- A high ASR score on one passage cannot justify a full-title run when another
+  representative passage proves synthesis truncation. Reject the configuration
+  before listening spend or full generation and close its exact
+  model/revision/seed/voice/passage fingerprint.
+- Two WAVs also exceeded 0 dBTP and contained many high-amplitude one-sample
+  transient clusters. These require audible review but do not change the
+  decisive source-omission failure.
+- No independent audible reviewer was available, so no listening score or
+  absence-of-fatal-flags claim was made. The title remains audio-hidden.
