@@ -51,6 +51,36 @@ class MockWhisperModel:
 
 
 class GoogleEnglishFullAudioDerivedQATests(unittest.TestCase):
+    def test_evaluated_metrics_accepts_only_exact_jekyll_homophone_context(
+        self,
+    ) -> None:
+        accepted = qa._evaluated_metrics(
+            "Ah, that's not Jekyll's voice. It's Hyde's! cried Utterson.",
+            "Ah, that's not Jekyll's voice. It's hides! cried Utterson.",
+            slug="jekyll-and-hyde",
+        )
+        self.assertTrue(accepted["pass"])
+        self.assertEqual(
+            accepted["explicit_equivalences_applied"][0]["reason"],
+            "EXPLICIT_JEKYLL_CONTEXTUAL_PHONETIC_EQUIVALENCE_HYDES_HIDES",
+        )
+
+        rejected = qa._evaluated_metrics(
+            "It's Hyde's decision.",
+            "It's hides decision.",
+            slug="jekyll-and-hyde",
+        )
+        self.assertFalse(rejected["pass"])
+        self.assertEqual(rejected["explicit_equivalences_applied"], [])
+
+        wrong_title = qa._evaluated_metrics(
+            "Ah, that's not Jekyll's voice. It's Hyde's! cried Utterson.",
+            "Ah, that's not Jekyll's voice. It's hides! cried Utterson.",
+            slug="another-title",
+        )
+        self.assertFalse(wrong_title["pass"])
+        self.assertEqual(wrong_title["explicit_equivalences_applied"], [])
+
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)

@@ -236,9 +236,18 @@ def _strict_metrics_pass(metrics: Mapping[str, Any]) -> bool:
     )
 
 
-def _evaluated_metrics(source: str, transcript: str) -> dict[str, Any]:
+def _evaluated_metrics(
+    source: str,
+    transcript: str,
+    *,
+    slug: str,
+) -> dict[str, Any]:
     normalized_source, normalized_transcript, equivalences = (
-        representative_qa.apply_spoken_number_equivalences(source, transcript)
+        representative_qa.apply_spoken_number_equivalences(
+            source,
+            transcript,
+            slug=slug,
+        )
     )
     metrics = whisper_common.ordered_token_integrity(
         normalized_source,
@@ -313,6 +322,7 @@ def run_source_blind_asr(
             ) from exc
         model_loader = whisper.load_model
     model = model_loader(WHISPER_MODEL, download_root=str(whisper_cache))
+    slug = str(evidence.manifest.get("slug") or "")
 
     reports: list[dict[str, Any]] = []
     aggregate_transcripts: list[str] = []
@@ -330,7 +340,11 @@ def run_source_blind_asr(
             f"{record['unit_id']}: local Whisper returned a non-object result",
         )
         transcript = str(result.get("text") or "").strip()
-        metrics = _evaluated_metrics(record["source_text"], transcript)
+        metrics = _evaluated_metrics(
+            record["source_text"],
+            transcript,
+            slug=slug,
+        )
         words, anomalies = asr_common.verified_words(result, duration)
         cue = evidence.measured_sync["cues"][index]
         absolute_words = _absolute_words(
@@ -384,7 +398,11 @@ def run_source_blind_asr(
 
     full_source = " ".join(record["source_text"] for record in evidence.records)
     full_transcript = " ".join(aggregate_transcripts)
-    aggregate = _evaluated_metrics(full_source, full_transcript)
+    aggregate = _evaluated_metrics(
+        full_source,
+        full_transcript,
+        slug=slug,
+    )
     aggregate_audio_gate_metrics = {
         "score": aggregate["score"],
         "coverage": aggregate["coverage"],
