@@ -1,10 +1,10 @@
 {
   "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v1",
-  "generated_at": "2026-07-30T12:14:07Z",
+  "generated_at": "2026-07-30T12:32:40Z",
   "slug": "a-ghost-story",
   "title": "A Ghost Story",
   "author": "Mark Twain",
-  "decision": "FULL_PACKAGE_V2_PROMOTION_PREPARED_AWAITING_DEPLOY",
+  "decision": "FULL_PACKAGE_V2_PROMOTION_PRODUCTION_GREEN",
   "customer_release_state": {
     "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
     "active_delivery_contract": "package_v2",
@@ -12,7 +12,9 @@
     "candidate_release_descriptor_sha256": "",
     "candidate_rollout_percentage": 0,
     "candidate_selected_for_customers": false,
-    "package_v2_selected_for_all_customers_after_deploy": true,
+    "package_v2_selected_for_all_customers": true,
+    "legacy_selected_for_customers": false,
+    "legacy_descriptor_retained_for_rollback": true,
     "current_public_audiobook_count": 4,
     "new_live_audiobook_claimed": false,
     "live_count_changed_by_staging": false
@@ -89,17 +91,19 @@
   "validation": {
     "active_release_status": "RELEASE_POINTER_VALID",
     "controlled_publication_mirrors_match": true,
-    "focused_tests": "PASS_178",
+    "focused_tests": "PASS_213",
     "frontend_audio_safety_tests": "PASS_70",
-    "merge_commit": "00567312d862191795951daa03d9a191f70bd019",
-    "github_regression_run_id": 30538825285,
-    "github_go_live_run_id": 30538826025,
+    "merge_commit": "03c489f6902a51008fadb709047b6bf0cd4c4da8",
+    "github_regression_run_id": 30542015138,
+    "github_go_live_run_id": 30542015062,
     "github_main_checks": "PASS",
-    "railway_deployment_id": "a1467723-7101-47da-a155-de73e5e9a031",
-    "railway_deployment_commit": "00567312d862191795951daa03d9a191f70bd019",
+    "railway_deployment_id": "5023f279-517c-4b79-b12c-3d35c6d3e598",
+    "railway_deployment_commit": "03c489f6902a51008fadb709047b6bf0cd4c4da8",
     "railway_deployment_status": "SUCCESS",
     "railway_root_directory": "/backend",
     "railway_config_file": "/backend/railway.json",
+    "railway_image_digest": "sha256:6c87139b745156d3112919fdd533cc8194438d8e68016eb833e4106bbc345f19",
+    "railway_instance_id": "4dd32b9e-d499-420d-93dc-3a69b1bae062",
     "production_zero_percent_http_checkpoint": "PASS_18_OF_18",
     "production_zero_percent_http": {
       "candidate_manifest_http": 404,
@@ -270,15 +274,131 @@
       "full_promotion_requires_cross_segment_transition": true
     },
     "full_promotion_preparation": {
-      "status": "PREPARED_AWAITING_MERGE_DEPLOY",
+      "status": "PRODUCTION_GREEN",
+      "pr_number": 210,
+      "pr_head_commit": "10a78864f1ae63f6142ea294d7686928811f596e",
+      "merge_commit": "03c489f6902a51008fadb709047b6bf0cd4c4da8",
+      "github_pr_regression_run_id": 30541827745,
+      "github_pr_go_live_run_id": 30541829051,
+      "github_main_regression_run_id": 30542015138,
+      "github_main_go_live_run_id": 30542015062,
+      "railway_deployment_id": "5023f279-517c-4b79-b12c-3d35c6d3e598",
+      "railway_deployment_status": "SUCCESS",
+      "railway_image_digest": "sha256:6c87139b745156d3112919fdd533cc8194438d8e68016eb833e4106bbc345f19",
+      "railway_instance_id": "4dd32b9e-d499-420d-93dc-3a69b1bae062",
+      "railway_root_directory": "/backend",
+      "railway_config_file": "/backend/railway.json",
       "active_release_descriptor_after_promotion": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
       "candidate_release_descriptor_after_promotion": "",
       "rollout_percentage_after_promotion": 0,
+      "effective_package_v2_percentage": 100,
       "rollout_salt_after_promotion": "",
       "legacy_descriptor_retained_for_rollback": true,
-      "postdeploy_http_checkpoint": "PENDING_DEPLOY",
-      "postdeploy_browser_package_playback": "PENDING_DEPLOY",
-      "postdeploy_browser_cross_segment_transition": "PENDING_DEPLOY",
+      "postdeploy_http_checkpoint": {
+        "status": "PASS_78_OF_78",
+        "generated_at": "2026-07-30T12:24:51.820438Z",
+        "request_count": 19,
+        "passed_check_count": 78,
+        "failed_check_count": 0,
+        "package_version": "sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422",
+        "release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+        "identity_a_manifest_http": 200,
+        "identity_b_manifest_http": 200,
+        "public_manifest_http": 200,
+        "manifest_body_sha256": "170324ffd6a4bf73ed026204e85e53cbea4dd028f14253bae7c9fc31de8d93ff",
+        "segment_range_http_per_identity": [
+          206,
+          206
+        ],
+        "segment_range_bytes_per_identity": [
+          1024,
+          1024
+        ],
+        "segment_total_sizes": [
+          3208941,
+          7363629
+        ],
+        "segment_range_sha256s": [
+          "0338fe917c5a90e925eae411abc4c4c1ab45ac952e8c1c6bf6a11bbe1e7d9dad",
+          "8aebb93e73851f5126726bcce282c406255ae2ce72035ce6620699afae202ef1"
+        ],
+        "timestamp_http_per_identity": [
+          200,
+          200
+        ],
+        "timestamp_sizes": [
+          5882,
+          16497
+        ],
+        "timestamp_sha256s": [
+          "bd5eb0a983e80ee2097413345cc3df5495a37f78d6f8c5cca494001169971ea9",
+          "c68e8b5bfe7e38840dd5b8572747fd1395e6200874a2d36bc4f47ef435a70814"
+        ],
+        "invalid_range_http_per_identity": [
+          416,
+          416
+        ],
+        "stale_package_http": 404,
+        "unknown_segment_http": 404,
+        "cross_title_package_http": 404,
+        "home_curated_http": 200,
+        "home_approved_audiobook_count": 4,
+        "home_approved_slugs": [
+          "a-ghost-story",
+          "book-2b9853ec52",
+          "sredni-vashtar",
+          "the-open-window"
+        ],
+        "local_probe_artifact": "/private/tmp/earnalism-ghost-100-prod-probe-final.o84rv1uu/summary.json",
+        "local_probe_artifact_sha256": "69cf52a806b55520524c20e923130b591f24a2d5f440bc0e8444b3f72fa1a528"
+      },
+      "postdeploy_retained_legacy_compatibility_probe": {
+        "status": "PASS",
+        "range_http": 206,
+        "range_bytes": 2,
+        "content_range": "bytes 0-1/7047789",
+        "accept_ranges": "bytes",
+        "content_type": "audio/mpeg",
+        "local_artifact_directory": "/private/tmp/ghost-legacy-range.TOHZmM",
+        "headers_sha256": "c572df221fb7f3af7c26d617e92d07f1e3fe854f6676662c09bccd4db8146894",
+        "body_sha256": "3843971dcfdee5083e6289e1bbdbb003e538b5a8a668fc43ae4f19d415ac18a2"
+      },
+      "postdeploy_browser_checkpoint": {
+        "status": "PASS_PACKAGE_V2_NATURAL_CROSS_SEGMENT",
+        "preintent_audio_exists": true,
+        "preintent_src_attribute": null,
+        "preintent_current_src": "",
+        "preintent_preload_attribute": "none",
+        "preintent_ready_state": 0,
+        "preintent_paused": true,
+        "preintent_observed_audio_resources": 0,
+        "start_narration_control_count": 1,
+        "click_count_to_play": 1,
+        "segment_one_path": "/api/reader/book/a-ghost-story/audiobook/packages/sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422/segments/c001-s001",
+        "segment_one_ready_state": 4,
+        "segment_one_paused": false,
+        "segment_one_first_current_time_seconds": 3.420516,
+        "segment_one_duration_seconds": 267.348,
+        "segment_one_media_error": null,
+        "transition_method": "natural_media_ended_no_programmatic_seek_no_synthetic_event",
+        "segment_two_path": "/api/reader/book/a-ghost-story/audiobook/packages/sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422/segments/c001-s002",
+        "segment_two_ready_state": 4,
+        "segment_two_paused": false,
+        "segment_two_first_current_time_seconds": 10.541279,
+        "segment_two_duration_seconds": 613.573958,
+        "segment_two_media_error": null,
+        "visible_pause_clicked": true,
+        "final_paused": true,
+        "final_current_time_seconds": 20.700716,
+        "console_error_count": 0,
+        "browser_cookie_mutated": false,
+        "browser_storage_mutated": false
+      },
+      "narration_regenerated": false,
+      "storage_mutated": false,
+      "public_audiobook_count_changed": false,
+      "audiobook_approval_flags_changed": false,
+      "paid_tts_lock_touched": false,
       "rollback_on_any_failure": true
     },
     "git_diff_check": "PASS"
@@ -290,5 +410,5 @@
     "operator_credentials_committed": false,
     "operator_credentials_copied_to_railway": false
   },
-  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q internal/audiobook_lab/scripts/test_audiobook_package_builder_v2.py internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py internal/audiobook_lab/scripts/test_audiobook_package_storage_v2.py backend/tests/test_audiobook_packages.py backend/tests/test_b2_audiobook_routing.py backend/tests/test_package_v2_public_projection_safety.py backend/tests/test_sprint1_audio_source_cleanup.py backend/tests/test_redis_cache_policy.py backend/tests/test_controlled_publication_precheck.py backend/tests/test_controlled_publication_publish.py backend/tests/test_a_ghost_story_routability.py"
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug book-2b9853ec52"
 }
