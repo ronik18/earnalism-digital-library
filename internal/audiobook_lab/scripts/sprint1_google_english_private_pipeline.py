@@ -1145,6 +1145,24 @@ def next_command(
     return " ".join(shlex.quote(part) for part in parts)
 
 
+def full_audio_derived_qa_command(full_manifest_path: Path) -> str:
+    qa_script = Path(__file__).with_name(
+        "sprint1_google_english_full_audio_derived_qa.py"
+    )
+    output_path = full_manifest_path.with_name("full_audio_derived_asr_sync_qa.json")
+    return " ".join(
+        shlex.quote(part)
+        for part in (
+            sys.executable,
+            str(qa_script),
+            "--full-manifest",
+            str(full_manifest_path),
+            "--output",
+            str(output_path),
+        )
+    )
+
+
 def validate_config(config: PipelineConfig) -> None:
     if config.mode not in MODES:
         raise PipelineError("BLOCKED_CONFIG", f"mode must be one of {', '.join(MODES)}")
@@ -1406,8 +1424,8 @@ def run_pipeline(
             sprint_spend_usd=budget["projected_sprint_spend_usd"],
         )
     elif execution_error is None:
-        result["next_exact_command"] = (
-            f"{sys.executable} -m json.tool {shlex.quote(str(result_manifest_path))}"
+        result["next_exact_command"] = full_audio_derived_qa_command(
+            result_manifest_path
         )
     else:
         result["next_exact_command"] = (
