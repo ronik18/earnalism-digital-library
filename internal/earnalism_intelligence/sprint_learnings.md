@@ -1139,3 +1139,21 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A deterministic two-segment package-v2 release candidate now builds with no
   blockers. Storage upload and active-release promotion remain separate,
   explicitly authorized operations.
+
+## 2026-07-30 — Audiobook onboarding must distinguish assets from release truth
+
+- Admin audiobook asset URLs are inventory evidence, not public-release
+  approval. The open-source onboarding path must require the controlled
+  approval evidence, public-book flag, and reader-manifest flag before it can
+  classify a mapped audiobook as `READY`.
+- A dry run must compare the live/admin narration text byte-for-byte with the
+  controlled-publication chapter text. On divergence, preserve separate live
+  and controlled evidence files, report both SHA-256 values, and stop before
+  choosing either manuscript for synthesis.
+- The Tell-Tale Heart exposed both failure modes: stale mapped audio assets
+  existed while controlled audio remained blocked, and the live extracted
+  manuscript SHA-256 `316ed82d8ae04a1af3f82ec692e88bc630c4865c06192854a612f29cb017f2bb`
+  differed from controlled SHA-256
+  `60c275266b007015732fdb9cca5165c9efc0cffae988bed66c5d6ca9fcbeb748`.
+  No synthesis, upload, gate mutation, or public action may follow until that
+  source divergence is explicitly resolved.
