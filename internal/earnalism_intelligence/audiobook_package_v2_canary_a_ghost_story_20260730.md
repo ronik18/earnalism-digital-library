@@ -1,9 +1,8 @@
 # Audiobook package v2 canary — A Ghost Story
 
-Status: **production-green at zero percent. The exact approved audiobook is
-immutable in production and independent DR, the legacy stream remains active,
-and the package-v2 candidate remains dark until the separate five-percent
-canary is merged and deployed.**
+Status: **production-green at zero percent, with a separate deterministic
+five-percent canary prepared for review and deployment. The approved legacy
+stream remains active for the other ninety-five percent.**
 
 This is a delivery migration for an audiobook that was already approved and
 live. It does not regenerate narration, change release gates, or increase the
@@ -89,6 +88,28 @@ This checkpoint intentionally does not claim package-v2 or cross-segment
 browser playback: at zero percent, the package candidate must remain
 unselectable.
 
+## Five-percent canary preparation
+
+After the zero-percent checkpoint passed, the guarded rollout tool changed
+only the candidate percentage from `0` to `5` in both controlled-publication
+mirrors and regenerated their matching checksum manifests.
+
+- Candidate identity:
+  `earnalism_audiobook_rollout=a-ghost-story-canary-identity-000059`,
+  deterministic bucket `3`.
+- Legacy identity:
+  `earnalism_audiobook_rollout=a-ghost-story-canary-identity-000000`,
+  deterministic bucket `47`.
+- Active legacy descriptor, candidate descriptor, rollout salt, package,
+  storage receipts, approval evidence, narration and four-title public count:
+  unchanged.
+
+The five-percent production checkpoint remains pending merge and deploy. It
+must prove both segments and timestamp sidecars for the candidate identity,
+legacy continuity for the control identity, invalid/stale/unknown/cross-title
+fail-closed behavior, and candidate browser playback before any wider
+percentage is prepared.
+
 ## Validation
 
 - Active-release pointer: valid, zero blockers.
@@ -106,5 +127,5 @@ unselectable.
 Next exact command:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py rollout --slug a-ghost-story --percentage 5
+PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q internal/audiobook_lab/scripts/test_audiobook_active_release_v2.py backend/tests/test_audiobook_packages.py backend/tests/test_b2_audiobook_routing.py backend/tests/test_controlled_publication_precheck.py backend/tests/test_controlled_publication_publish.py
 ```
