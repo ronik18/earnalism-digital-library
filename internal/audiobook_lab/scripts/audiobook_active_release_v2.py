@@ -14,6 +14,7 @@ import argparse
 import copy
 import hashlib
 import json
+import math
 import os
 import re
 import sys
@@ -45,6 +46,59 @@ SHA256_RE = re.compile(r"^[a-f0-9]{64}$")
 RECEIPT_SCHEMA = "audiobook_package_storage_receipt.v1"
 EVIDENCE_SCHEMA = "audiobook_package_release_evidence.v1"
 LEGACY_IDENTITY_SCHEMA = "audiobook_legacy_release_identity.v1"
+HIDDEN_IDENTITY_SCHEMA = "audiobook_hidden_release_identity.v1"
+HIDDEN_BEFORE_PROOF_SCHEMA = "audiobook_hidden_before_proof.v1"
+NEW_TITLE_CANARY_SCHEMA = "audiobook_new_title_package_canary.v1"
+NEW_TITLE_CANARY_APPROVAL_ENV = (
+    "EARNALISM_APPROVE_NEW_TITLE_AUDIOBOOK_PACKAGE_CANARY"
+)
+QA_CANDIDATE_DOWNSTREAM_GATES = [
+    "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED",
+    "PRIVATE_B2_DR_REPLICA_REQUIRED",
+    "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
+    "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED",
+]
+QA_CANDIDATE_ENGLISH_LISTENING_POLICY = (
+    "platform_audiobook_acceptance_v4_89"
+)
+QA_CANDIDATE_BENGALI_LISTENING_POLICY = (
+    "bengali_audiobook_acceptance_v2_92"
+)
+QA_CANDIDATE_ENGLISH_LISTENING_MINIMUMS = {
+    "naturalness_score": 8.9,
+    "pronunciation_score": 8.9,
+    "emotional_expression_score": 8.9,
+    "punctuation_pause_score": 8.9,
+    "pacing_score": 8.9,
+    "continuity_score": 8.9,
+    "anti_robotic_texture_score": 8.9,
+    "anti_choppy_join_score": 8.9,
+    "listener_enjoyment_score": 8.9,
+    "overall_listening_score": 8.9,
+    "confidence_score": 0.9,
+}
+QA_CANDIDATE_BENGALI_LISTENING_MINIMUMS = {
+    "naturalness_score": 9.2,
+    "pronunciation_score": 9.2,
+    "emotional_expression_score": 9.2,
+    "punctuation_pause_score": 9.2,
+    "pacing_score": 9.2,
+    "continuity_score": 9.2,
+    "anti_robotic_texture_score": 9.2,
+    "anti_choppy_join_score": 9.2,
+    "listener_enjoyment_score": 9.2,
+    "overall_listening_score": 9.2,
+    "confidence_score": 0.9,
+}
+QA_CANDIDATE_LANGUAGE_ALIASES = {
+    "en": "english",
+    "eng": "english",
+    "english": "english",
+    "bn": "bengali",
+    "ben": "bengali",
+    "bengali": "bengali",
+    "bangla": "bengali",
+}
 RELEASE_STORE_ROLES = {"primary": "prod", "replica": "dr"}
 CHECKSUM_VERIFIED_UPLOAD_STATUSES = frozenset(
     {
@@ -64,6 +118,8 @@ MANAGED_FIELDS = (
     "audiobook_manuscript_sha256",
     "audiobook_release_descriptor_sha256",
     "audiobook_legacy_release_descriptor_sha256",
+    "audiobook_hidden_release_descriptor_sha256",
+    "audiobook_package_canary",
 )
 
 
@@ -619,6 +675,223 @@ def validate_release_descriptor(
     return descriptor
 
 
+def validate_qa_candidate_release_descriptor(
+    release_descriptor: Mapping[str, Any],
+    package: Mapping[str, Any],
+    *,
+    controlled_language: Any,
+) -> dict[str, Any]:
+    """Validate the exact post-QA/pre-storage descriptor emitted by builder v2."""
+
+    descriptor = copy.deepcopy(dict(release_descriptor))
+    if descriptor.get("schema_version") != "audiobook_release_descriptor.v1":
+        raise ReleasePointerError("QA-candidate release descriptor schema is invalid")
+    if (
+        sha256_bytes(canonical_json_bytes(descriptor))
+        != package.get("release_descriptor_sha256")
+    ):
+        raise ReleasePointerError(
+            "QA-candidate release descriptor SHA-256 does not match the package"
+        )
+    for descriptor_field, package_field in (
+        ("slug", "slug"),
+        ("controlled_source_sha256", "source_sha256"),
+        ("manuscript_sha256", "manuscript_sha256"),
+    ):
+        if descriptor.get(descriptor_field) != package.get(package_field):
+            raise ReleasePointerError(
+                f"QA-candidate {descriptor_field} does not match the package"
+            )
+    if (
+        descriptor.get("release_candidate_status")
+        != "QA_PASSED_STORAGE_PENDING"
+        or descriptor.get("known_release_blockers")
+        != QA_CANDIDATE_DOWNSTREAM_GATES
+    ):
+        raise ReleasePointerError(
+            "Release descriptor is not the exact post-QA/pre-storage candidate"
+        )
+    candidate = descriptor.get("release_candidate_evidence")
+    gates = candidate.get("gates") if isinstance(candidate, Mapping) else None
+    minimums = (
+        gates.get("listening_minimum_scores")
+        if isinstance(gates, Mapping)
+        else None
+    )
+    if (
+        not isinstance(candidate, Mapping)
+        or candidate.get("status") != "PASS"
+        or candidate.get("all_pre_storage_release_gates_passed") is not True
+        or not isinstance(gates, Mapping)
+        or gates.get("reader_truth") != "PASS"
+        or gates.get("source_content_toc") != "PASS"
+        or gates.get("rights_tier") != "A"
+        or gates.get("first_words_match") is not True
+        or gates.get("last_words_match") is not True
+        or gates.get("ordered_content_integrity") is not True
+        or gates.get("listening_sample_count") != 6
+        or gates.get("fatal_flags") != []
+        or gates.get("sync_tier")
+        != "PARAGRAPH_OR_SECTION_SYNC_PREMIUM"
+        or gates.get("auto_estimated_sync") is not False
+        or not isinstance(gates.get("covers"), Mapping)
+        or not gates["covers"].get("front")
+        or not gates["covers"].get("back")
+        or not isinstance(minimums, Mapping)
+    ):
+        raise ReleasePointerError(
+            "QA-candidate release evidence does not pass every non-storage gate"
+        )
+    declared_language = str(gates.get("language") or "").strip().lower()
+    controlled_language_value = str(controlled_language or "").strip().lower()
+    declared_family = QA_CANDIDATE_LANGUAGE_ALIASES.get(declared_language)
+    controlled_family = QA_CANDIDATE_LANGUAGE_ALIASES.get(
+        controlled_language_value
+    )
+    if not declared_family or not controlled_family:
+        raise ReleasePointerError(
+            "QA-candidate controlled or declared language is unsupported"
+        )
+    if declared_family != controlled_family:
+        raise ReleasePointerError(
+            "QA-candidate listening language does not match controlled truth"
+        )
+    if controlled_family == "english":
+        required_policy = QA_CANDIDATE_ENGLISH_LISTENING_POLICY
+        listening_minimums = QA_CANDIDATE_ENGLISH_LISTENING_MINIMUMS
+    else:
+        required_policy = QA_CANDIDATE_BENGALI_LISTENING_POLICY
+        listening_minimums = QA_CANDIDATE_BENGALI_LISTENING_MINIMUMS
+    if gates.get("listening_policy") != required_policy:
+        raise ReleasePointerError(
+            "QA-candidate listening policy does not match the active "
+            f"{controlled_family} policy"
+        )
+    try:
+        asr_score = float(gates["asr_score"])
+        coverage = float(gates["source_coverage"])
+        listening_values = {
+            name: float(minimums[name])
+            for name in listening_minimums
+        }
+    except (KeyError, TypeError, ValueError):
+        raise ReleasePointerError(
+            "QA-candidate objective/listening scores are incomplete"
+        ) from None
+    if (
+        not math.isfinite(asr_score)
+        or not 0.0 <= asr_score <= 10.0
+        or not math.isfinite(coverage)
+        or not 0.0 <= coverage <= 1.0
+        or asr_score < 9.7
+        or coverage < 0.98
+    ):
+        raise ReleasePointerError(
+            "QA-candidate objective ASR/source coverage does not pass"
+        )
+    failed_scores = [
+        name
+        for name, minimum in listening_minimums.items()
+        if (
+            not math.isfinite(listening_values[name])
+            or listening_values[name] < minimum
+            or listening_values[name]
+            > (1.0 if name == "confidence_score" else 10.0)
+        )
+    ]
+    if failed_scores:
+        raise ReleasePointerError(
+            "QA-candidate listening scores do not pass: "
+            + ", ".join(sorted(failed_scores))
+        )
+    evidence_sha256 = descriptor.get("evidence_sha256")
+    if (
+        not isinstance(evidence_sha256, Mapping)
+        or not evidence_sha256
+        or any(
+            not isinstance(name, str)
+            or not name
+            or not isinstance(digest, str)
+            or not SHA256_RE.fullmatch(digest)
+            for name, digest in evidence_sha256.items()
+        )
+    ):
+        raise ReleasePointerError(
+            "QA-candidate release descriptor evidence hashes are incomplete"
+        )
+    return descriptor
+
+
+def validate_hidden_before_proof(
+    proof: Mapping[str, Any],
+    *,
+    slug: str,
+    reference_time: str,
+) -> dict[str, Any]:
+    value = copy.deepcopy(dict(proof))
+    expected_urls = {
+        "reader_url": f"https://www.theearnalism.com/reader/{slug}",
+        "legacy_audio_url": (
+            f"https://api.theearnalism.com/api/reader/book/{slug}/audiobook"
+        ),
+        "package_manifest_url": (
+            f"https://api.theearnalism.com/api/reader/book/{slug}/audiobook/manifest"
+        ),
+    }
+    try:
+        checked_at = datetime.fromisoformat(
+            str(value.get("checked_at") or "").replace("Z", "+00:00")
+        )
+        reference = datetime.fromisoformat(reference_time.replace("Z", "+00:00"))
+        proof_age_seconds = (reference - checked_at).total_seconds()
+    except (TypeError, ValueError):
+        proof_age_seconds = -1
+    if (
+        value.get("schema_version") != HIDDEN_BEFORE_PROOF_SCHEMA
+        or value.get("slug") != slug
+        or value.get("status") != "PUBLIC_AUDIO_HIDDEN_VERIFIED"
+        or value.get("reader_http_status") != 200
+        or value.get("legacy_audio_http_status") != 404
+        or value.get("package_manifest_http_status") != 404
+        or value.get("public_audio_enabled") is not False
+        or value.get("public_audiobook_enabled") is not False
+        or value.get("approved_audiobooks_contains_slug") is not False
+        or value.get("browser_listen_control_count") != 0
+        or value.get("browser_audio_request_count") != 0
+        or any(value.get(field) != url for field, url in expected_urls.items())
+        or proof_age_seconds < 0
+        or proof_age_seconds > 24 * 60 * 60
+    ):
+        raise ReleasePointerError(
+            "Hidden-before proof is incomplete, stale-shaped, or non-canonical"
+        )
+    return value
+
+
+def validate_hidden_rollback_descriptor(
+    descriptor: Mapping[str, Any],
+    *,
+    slug: str,
+    source_sha256: str,
+    manuscript_sha256: str,
+) -> tuple[dict[str, Any], str]:
+    value = copy.deepcopy(dict(descriptor))
+    expected = {
+        "schema_version": HIDDEN_IDENTITY_SCHEMA,
+        "slug": slug,
+        "state": "NO_PUBLIC_AUDIO",
+        "source_sha256": source_sha256,
+        "manuscript_sha256": manuscript_sha256,
+    }
+    if any(value.get(field) != expected_value for field, expected_value in expected.items()):
+        raise ReleasePointerError(
+            "Hidden rollback descriptor is not bound to controlled hidden truth"
+        )
+    if set(value) != set(expected):
+        raise ReleasePointerError("Hidden rollback descriptor has unexpected fields")
+    return value, sha256_bytes(canonical_json_bytes(value))
+
+
 def _validate_reader_publication_truth(
     context: Mapping[str, Any],
     slug: str,
@@ -772,6 +1045,9 @@ def _validated_release_bundle(
     replica_receipt_sha256: str,
     primary_release_manifest_receipt_sha256: str,
     replica_release_manifest_receipt_sha256: str,
+    descriptor_validator: Callable[
+        [Mapping[str, Any], Mapping[str, Any]], dict[str, Any]
+    ] = validate_release_descriptor,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     validated = validate_package_against_publication(
         package,
@@ -779,7 +1055,7 @@ def _validated_release_bundle(
         slug=slug,
         expected_manuscript_sha256=expected_manuscript_sha256,
     )
-    validate_release_descriptor(release_descriptor, validated)
+    descriptor_validator(release_descriptor, validated)
     receipt_evidence = validate_release_receipts(
         validated,
         primary_receipt,
@@ -822,18 +1098,45 @@ def _validate_retained_packages(
     *,
     slug: str,
     manuscript_sha256: str,
+    hidden_descriptor: str = "",
 ) -> None:
     legacy = str(
         context["public_book"].get("audiobook_legacy_release_descriptor_sha256") or ""
     )
+    hidden = str(
+        hidden_descriptor
+        or context["public_book"].get("audiobook_hidden_release_descriptor_sha256")
+        or ""
+    )
+    if hidden:
+        expected_hidden_descriptors = {
+            sha256_bytes(
+                canonical_json_bytes(
+                    {
+                        "schema_version": HIDDEN_IDENTITY_SCHEMA,
+                        "slug": slug,
+                        "state": "NO_PUBLIC_AUDIO",
+                        "source_sha256": package.get("source_sha256"),
+                        "manuscript_sha256": package.get("manuscript_sha256"),
+                    }
+                )
+            )
+            for package in packages.values()
+            if isinstance(package, Mapping)
+        }
+        if hidden not in expected_hidden_descriptors:
+            raise ReleasePointerError(
+                "Controlled hidden release descriptor is not deterministic"
+            )
     for descriptor in retained:
         package = packages.get(descriptor)
         if package is None:
-            if descriptor != legacy:
+            if descriptor not in {legacy, hidden}:
                 raise ReleasePointerError(
-                    f"Retained non-legacy release lacks a package manifest: {descriptor}"
+                    "Retained release lacks a package manifest and is neither "
+                    f"the legacy nor hidden fallback: {descriptor}"
                 )
-            continue  # The controlled legacy monolith has no package-v2 manifest.
+            continue  # Legacy monolith/hidden fallback intentionally lack package v2.
         validate_package_against_publication(
             package,
             context,
@@ -925,6 +1228,8 @@ def _managed_values(
     state: Mapping[str, Any],
     manuscript_sha256: str,
     legacy_descriptor: str,
+    hidden_descriptor: str = "",
+    package_canary: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     return {
         "audiobook_packages": copy.deepcopy(dict(packages)),
@@ -933,6 +1238,8 @@ def _managed_values(
         "audiobook_manuscript_sha256": manuscript_sha256,
         "audiobook_release_descriptor_sha256": state["active_release_descriptor_sha256"],
         "audiobook_legacy_release_descriptor_sha256": legacy_descriptor,
+        "audiobook_hidden_release_descriptor_sha256": hidden_descriptor,
+        "audiobook_package_canary": copy.deepcopy(dict(package_canary or {})),
     }
 
 
@@ -1027,6 +1334,7 @@ def mutate_mirrors(
     generated_at: str,
     apply: bool,
     expected_fingerprint: str,
+    approval_evidence_updates: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     with _release_lock(repo_root, slug):
         context = load_mirrored_publication(repo_root, slug)
@@ -1035,17 +1343,24 @@ def mutate_mirrors(
             raise ReleasePointerError("Controlled publication changed during release planning")
         public_book = copy.deepcopy(context["public_book"])
         reader_manifest = copy.deepcopy(context["reader_manifest"])
+        approval_evidence = copy.deepcopy(context["approval_evidence"])
         for key in MANAGED_FIELDS:
             public_book[key] = copy.deepcopy(managed[key])
             reader_manifest[key] = copy.deepcopy(managed[key])
+        if approval_evidence_updates:
+            approval_evidence.update(copy.deepcopy(dict(approval_evidence_updates)))
         public_bytes = json_bytes(public_book)
         reader_bytes = json_bytes(reader_manifest)
+        approval_bytes = json_bytes(approval_evidence)
+        checksum_inputs = {
+            "public_book.json": public_bytes,
+            "reader_manifest.json": reader_bytes,
+        }
+        if approval_evidence_updates:
+            checksum_inputs["approval_evidence.json"] = approval_bytes
         checksum = _checksum_document(
             context["checksum_manifest"],
-            {
-                "public_book.json": public_bytes,
-                "reader_manifest.json": reader_bytes,
-            },
+            checksum_inputs,
             generated_at,
         )
         checksum_bytes = json_bytes(checksum)
@@ -1053,16 +1368,25 @@ def mutate_mirrors(
         for publication in context["dirs"]:
             changes[publication / "public_book.json"] = public_bytes
             changes[publication / "reader_manifest.json"] = reader_bytes
+            if approval_evidence_updates:
+                changes[publication / "approval_evidence.json"] = approval_bytes
             changes[publication / "checksum_manifest.json"] = checksum_bytes
         if apply:
             originals = {path: path.read_bytes() for path in changes}
             try:
                 _atomic_replace_many(changes)
                 verified = load_mirrored_publication(repo_root, slug)
-                for filename, payload in (
-                    ("public_book.json", public_bytes),
-                    ("reader_manifest.json", reader_bytes),
-                ):
+                verified_payloads = {
+                    "public_book.json": public_bytes,
+                    "reader_manifest.json": reader_bytes,
+                }
+                if approval_evidence_updates:
+                    verified_payloads["approval_evidence.json"] = approval_bytes
+                    if verified["approval_evidence"] != approval_evidence:
+                        raise ReleasePointerError(
+                            "Post-write approval evidence verification failed"
+                        )
+                for filename, payload in verified_payloads.items():
                     entry = next(
                         (
                             row
@@ -1347,6 +1671,13 @@ def stage_candidate(
         state=state,
         manuscript_sha256=manuscript_sha256,
         legacy_descriptor=existing_legacy,
+        hidden_descriptor=str(
+            context["public_book"].get(
+                "audiobook_hidden_release_descriptor_sha256"
+            )
+            or ""
+        ),
+        package_canary=context["public_book"].get("audiobook_package_canary"),
     )
     result = mutate_mirrors(
         repo_root,
@@ -1451,6 +1782,245 @@ def activate_initial_release(
     return result
 
 
+def activate_new_title_package_canary(
+    repo_root: Path,
+    slug: str,
+    package: Mapping[str, Any],
+    release_descriptor: Mapping[str, Any],
+    primary_receipt: Mapping[str, Any],
+    replica_receipt: Mapping[str, Any],
+    primary_release_manifest_receipt: Mapping[str, Any],
+    replica_release_manifest_receipt: Mapping[str, Any],
+    hidden_before_proof: Mapping[str, Any],
+    hidden_rollback_descriptor: Mapping[str, Any],
+    *,
+    rollout_salt: str,
+    expected_manuscript_sha256: str,
+    release_manifest_sha256: str,
+    release_manifest_size_bytes: int,
+    expected_package_sha256: str,
+    expected_release_descriptor_sha256: str,
+    expected_primary_receipt_sha256: str,
+    expected_replica_receipt_sha256: str,
+    expected_primary_release_manifest_receipt_sha256: str,
+    expected_replica_release_manifest_receipt_sha256: str,
+    expected_hidden_before_proof_sha256: str,
+    expected_rollback_descriptor_sha256: str,
+    generated_at: str | None = None,
+    apply: bool = False,
+) -> dict[str, Any]:
+    """Stage a first package at 5% against an explicit no-audio fallback.
+
+    This is a transport canary. It deliberately keeps ordinary catalog and
+    reader audio flags false until endpoint, Range, timestamps, and browser
+    evidence are collected and a separate promotion is authorized.
+    """
+
+    if os.environ.get(NEW_TITLE_CANARY_APPROVAL_ENV) != "true":
+        raise ReleasePointerError(
+            f"{NEW_TITLE_CANARY_APPROVAL_ENV}=true is required"
+        )
+    if not rollout_salt or rollout_salt != rollout_salt.strip():
+        raise ReleasePointerError("A canonical non-empty sticky rollout salt is required")
+
+    expected_documents = (
+        ("package", package, expected_package_sha256),
+        (
+            "release descriptor",
+            release_descriptor,
+            expected_release_descriptor_sha256,
+        ),
+        ("primary receipt", primary_receipt, expected_primary_receipt_sha256),
+        ("replica receipt", replica_receipt, expected_replica_receipt_sha256),
+        (
+            "primary release-manifest receipt",
+            primary_release_manifest_receipt,
+            expected_primary_release_manifest_receipt_sha256,
+        ),
+        (
+            "replica release-manifest receipt",
+            replica_release_manifest_receipt,
+            expected_replica_release_manifest_receipt_sha256,
+        ),
+        (
+            "hidden-before proof",
+            hidden_before_proof,
+            expected_hidden_before_proof_sha256,
+        ),
+    )
+    for label, document, expected_sha256 in expected_documents:
+        expected = require_sha256(expected_sha256, f"expected {label}")
+        if sha256_bytes(json_bytes(document)) != expected:
+            raise ReleasePointerError(f"Expected {label} SHA-256 does not match")
+
+    context = load_mirrored_publication(repo_root, slug)
+    _verify_controlled_checksums(context)
+    _validate_reader_publication_truth(context, slug)
+    _validate_initial_release_slot(context)
+    if (
+        release_descriptor.get("title")
+        != context["public_book"].get("title")
+        or release_descriptor.get("author")
+        != context["public_book"].get("author")
+    ):
+        raise ReleasePointerError(
+            "QA-candidate title/author do not match controlled publication truth"
+        )
+    operation_time = generated_at or utc_now()
+    proof = validate_hidden_before_proof(
+        hidden_before_proof,
+        slug=slug,
+        reference_time=operation_time,
+    )
+    fingerprint = publication_fingerprint(context)
+    _rollback, hidden_descriptor = validate_hidden_rollback_descriptor(
+        hidden_rollback_descriptor,
+        slug=slug,
+        source_sha256=str(package.get("source_sha256") or ""),
+        manuscript_sha256=str(package.get("manuscript_sha256") or ""),
+    )
+    if hidden_descriptor != expected_rollback_descriptor_sha256:
+        raise ReleasePointerError(
+            "Expected rollback descriptor SHA-256 is not its canonical identity"
+        )
+    validated, receipt_evidence = _validated_release_bundle(
+        context,
+        slug,
+        package,
+        release_descriptor,
+        primary_receipt,
+        replica_receipt,
+        primary_release_manifest_receipt,
+        replica_release_manifest_receipt,
+        expected_manuscript_sha256=expected_manuscript_sha256,
+        release_manifest_sha256=release_manifest_sha256,
+        release_manifest_size_bytes=release_manifest_size_bytes,
+        generated_at=operation_time,
+        primary_receipt_sha256=expected_primary_receipt_sha256,
+        replica_receipt_sha256=expected_replica_receipt_sha256,
+        primary_release_manifest_receipt_sha256=(
+            expected_primary_release_manifest_receipt_sha256
+        ),
+        replica_release_manifest_receipt_sha256=(
+            expected_replica_release_manifest_receipt_sha256
+        ),
+        descriptor_validator=(
+            lambda descriptor, validated_package:
+            validate_qa_candidate_release_descriptor(
+                descriptor,
+                validated_package,
+                controlled_language=context["reader_manifest"].get(
+                    "language"
+                ),
+            )
+        ),
+    )
+    candidate_descriptor = validated["release_descriptor_sha256"]
+    if candidate_descriptor == hidden_descriptor:
+        raise ReleasePointerError("Candidate and hidden descriptors must differ")
+    packages = {candidate_descriptor: validated}
+    evidence = {candidate_descriptor: receipt_evidence}
+    state = build_active_release_state(
+        slug=slug,
+        active_release_descriptor_sha256=hidden_descriptor,
+        retained_release_descriptor_sha256s=[
+            hidden_descriptor,
+            candidate_descriptor,
+        ],
+        candidate_release_descriptor_sha256=candidate_descriptor,
+        rollout_percentage=5,
+        rollout_salt=rollout_salt,
+    )
+    _validate_retained_packages(
+        packages,
+        evidence,
+        context,
+        state["retained_release_descriptor_sha256s"],
+        slug=slug,
+        manuscript_sha256=validated["manuscript_sha256"],
+        hidden_descriptor=hidden_descriptor,
+    )
+    canary = {
+        "schema_version": NEW_TITLE_CANARY_SCHEMA,
+        "status": "PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED",
+        "slug": slug,
+        "candidate_release_descriptor_sha256": candidate_descriptor,
+        "candidate_package_version": validated["package_version"],
+        "hidden_release_descriptor_sha256": hidden_descriptor,
+        "rollout_percentage": 5,
+        "rollout_salt": rollout_salt,
+        "qa_candidate_release_descriptor_file_sha256": (
+            expected_release_descriptor_sha256
+        ),
+        "package_release_evidence_sha256": sha256_bytes(
+            canonical_json_bytes(receipt_evidence)
+        ),
+        "primary_receipt_sha256": expected_primary_receipt_sha256,
+        "replica_receipt_sha256": expected_replica_receipt_sha256,
+        "primary_release_manifest_receipt_sha256": (
+            expected_primary_release_manifest_receipt_sha256
+        ),
+        "replica_release_manifest_receipt_sha256": (
+            expected_replica_release_manifest_receipt_sha256
+        ),
+        "hidden_before_proof_sha256": expected_hidden_before_proof_sha256,
+        "rollback_descriptor_sha256": expected_rollback_descriptor_sha256,
+        "catalog_audio_enabled": False,
+        "package_endpoint_enabled": True,
+        "approval_scope": "transport_canary_only_no_customer_discovery",
+        "blockers": [],
+        "post_deploy_proof_required": [
+            "PACKAGE_MANIFEST_200_COHORT_AND_404_NON_COHORT",
+            "SEGMENT_RANGE_206",
+            "TIMESTAMPS_200",
+            "BROWSER_PLAYBACK_PASS",
+        ],
+        "generated_at": operation_time,
+    }
+    managed = _managed_values(
+        packages=packages,
+        evidence=evidence,
+        state=state,
+        manuscript_sha256=validated["manuscript_sha256"],
+        legacy_descriptor="",
+        hidden_descriptor=hidden_descriptor,
+        package_canary=canary,
+    )
+    approval_updates = {
+        "audiobook_package_canary": copy.deepcopy(canary),
+        "audiobook_enabled": False,
+        "audio_public_release": "PUBLIC_AUDIO_PACKAGE_CANARY_ONLY",
+        "audio_qa_status": "QA_PASSED",
+        "upload_status": "UPLOADED_CHECKSUM_VERIFIED_PRIMARY_AND_DR",
+        "release_blockers": ["PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"],
+    }
+    result = mutate_mirrors(
+        repo_root,
+        slug,
+        managed,
+        generated_at=operation_time,
+        apply=apply,
+        expected_fingerprint=fingerprint,
+        approval_evidence_updates=approval_updates,
+    )
+    result.update(
+        {
+            "status": (
+                "NEW_TITLE_PACKAGE_CANARY_STAGED"
+                if apply
+                else "NEW_TITLE_PACKAGE_CANARY_VALIDATED"
+            ),
+            "rollout_percentage": 5,
+            "candidate_release_descriptor_sha256": candidate_descriptor,
+            "hidden_release_descriptor_sha256": hidden_descriptor,
+            "hidden_before_proof": proof,
+            "audio_approval_flags_changed": False,
+            "ordinary_public_audio_remains_hidden": True,
+        }
+    )
+    return result
+
+
 def set_rollout(
     repo_root: Path,
     slug: str,
@@ -1469,6 +2039,16 @@ def set_rollout(
     if state["status"] != "ACTIVE":
         raise ReleasePointerError(
             "Inactive release state must be explicitly reactivated before rollout"
+        )
+    canary = context["public_book"].get("audiobook_package_canary")
+    if (
+        isinstance(canary, Mapping)
+        and canary.get("schema_version") == NEW_TITLE_CANARY_SCHEMA
+        and percentage != 0
+    ):
+        raise ReleasePointerError(
+            "New-title canary may only roll back to 0; advancing requires "
+            "dedicated production endpoint, Range, timestamps, and browser proof"
         )
     packages = copy.deepcopy(context["public_book"].get("audiobook_packages") or {})
     evidence = copy.deepcopy(context["public_book"].get("audiobook_package_release_evidence") or {})
@@ -1532,12 +2112,34 @@ def set_rollout(
     ).strip().lower()
     if legacy:
         legacy = require_sha256(legacy, "legacy release descriptor")
+    package_canary = context["public_book"].get("audiobook_package_canary")
+    if (
+        percentage == 0
+        and isinstance(package_canary, Mapping)
+        and package_canary.get("schema_version") == NEW_TITLE_CANARY_SCHEMA
+    ):
+        package_canary = copy.deepcopy(dict(package_canary))
+        package_canary.update(
+            {
+                "status": "ROLLED_BACK_TO_HIDDEN",
+                "rollout_percentage": 0,
+                "package_endpoint_enabled": False,
+                "rolled_back_at": generated_at or utc_now(),
+            }
+        )
     managed = _managed_values(
         packages=packages,
         evidence=evidence,
         state=state,
         manuscript_sha256=manuscript_sha256,
         legacy_descriptor=legacy,
+        hidden_descriptor=str(
+            context["public_book"].get(
+                "audiobook_hidden_release_descriptor_sha256"
+            )
+            or ""
+        ),
+        package_canary=package_canary,
     )
     result = mutate_mirrors(
         repo_root,
@@ -1546,6 +2148,21 @@ def set_rollout(
         generated_at=generated_at or utc_now(),
         apply=apply,
         expected_fingerprint=publication_fingerprint(context),
+        approval_evidence_updates=(
+            {
+                "audiobook_package_canary": copy.deepcopy(dict(package_canary)),
+                "audiobook_enabled": False,
+                "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+                "release_blockers": ["PACKAGE_CANARY_ROLLED_BACK_TO_HIDDEN"],
+            }
+            if (
+                percentage == 0
+                and isinstance(package_canary, Mapping)
+                and package_canary.get("schema_version")
+                == NEW_TITLE_CANARY_SCHEMA
+            )
+            else None
+        ),
     )
     result["status"] = (
         "CANDIDATE_PROMOTED" if percentage == 100 and apply
@@ -1647,6 +2264,13 @@ def rollback_release(
         state=state,
         manuscript_sha256=manuscript_sha256,
         legacy_descriptor=legacy,
+        hidden_descriptor=str(
+            context["public_book"].get(
+                "audiobook_hidden_release_descriptor_sha256"
+            )
+            or ""
+        ),
+        package_canary=context["public_book"].get("audiobook_package_canary"),
     )
     result = mutate_mirrors(
         repo_root,
@@ -1703,13 +2327,36 @@ def deactivate_release(
         rollout_salt=state["rollout"]["salt"],
         status="INACTIVE",
     )
+    operation_time = generated_at or utc_now()
+    canary = context["public_book"].get("audiobook_package_canary")
+    approval_updates = None
+    if (
+        isinstance(canary, Mapping)
+        and canary.get("schema_version") == NEW_TITLE_CANARY_SCHEMA
+    ):
+        canary = copy.deepcopy(dict(canary))
+        canary.update(
+            {
+                "status": "REVOKED",
+                "package_endpoint_enabled": False,
+                "revoked_at": operation_time,
+            }
+        )
+        managed["audiobook_package_canary"] = canary
+        approval_updates = {
+            "audiobook_package_canary": copy.deepcopy(canary),
+            "audiobook_enabled": False,
+            "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+            "release_blockers": ["PACKAGE_CANARY_REVOKED"],
+        }
     result = mutate_mirrors(
         repo_root,
         slug,
         {**managed, "audiobook_active_release": inactive_state},
-        generated_at=generated_at or utc_now(),
+        generated_at=operation_time,
         apply=apply,
         expected_fingerprint=publication_fingerprint(context),
+        approval_evidence_updates=approval_updates,
     )
     result["status"] = (
         "RELEASE_DEACTIVATED" if apply else "RELEASE_DEACTIVATION_VALIDATED"
@@ -1842,10 +2489,29 @@ def release_status(repo_root: Path, slug: str) -> dict[str, Any]:
         manuscript_sha256=manuscript_sha256,
     )
     inactive = state["status"] == "INACTIVE"
-    return {
-        "status": (
+    canary = context["public_book"].get("audiobook_package_canary")
+    is_new_title_canary = bool(
+        isinstance(canary, Mapping)
+        and canary.get("schema_version") == NEW_TITLE_CANARY_SCHEMA
+    )
+    if is_new_title_canary:
+        canary_status = str(canary.get("status") or "")
+        if inactive or canary_status == "REVOKED":
+            status = "NEW_TITLE_TRANSPORT_CANARY_REVOKED"
+            blockers = ["PACKAGE_CANARY_REVOKED"]
+        elif canary_status == "ROLLED_BACK_TO_HIDDEN":
+            status = "NEW_TITLE_TRANSPORT_CANARY_ROLLED_BACK"
+            blockers = ["PACKAGE_CANARY_ROLLED_BACK_TO_HIDDEN"]
+        else:
+            status = "NEW_TITLE_TRANSPORT_CANARY_ACTIVE"
+            blockers = list(canary.get("post_deploy_proof_required") or [])
+    else:
+        status = (
             "RELEASE_POINTER_INACTIVE" if inactive else "RELEASE_POINTER_VALID"
-        ),
+        )
+        blockers = ["ACTIVE_RELEASE_STATE_INACTIVE"] if inactive else []
+    return {
+        "status": status,
         "release_state_status": state["status"],
         "slug": slug,
         "active_release_descriptor_sha256": state[
@@ -1862,7 +2528,19 @@ def release_status(repo_root: Path, slug: str) -> dict[str, Any]:
         "evidence_presence": {
             descriptor: descriptor in evidence for descriptor in retained
         },
-        "blockers": ["ACTIVE_RELEASE_STATE_INACTIVE"] if inactive else [],
+        "transport_canary": is_new_title_canary,
+        "ordinary_public_audio_hidden": bool(is_new_title_canary),
+        "canary_status": (
+            str(canary.get("status") or "")
+            if isinstance(canary, Mapping)
+            else ""
+        ),
+        "post_deploy_proof_required": (
+            list(canary.get("post_deploy_proof_required") or [])
+            if isinstance(canary, Mapping)
+            else []
+        ),
+        "blockers": blockers,
     }
 
 
@@ -1909,6 +2587,52 @@ def build_parser() -> argparse.ArgumentParser:
     activate_initial.add_argument("--expected-manuscript-sha256", default="")
     activate_initial.add_argument("--apply", action="store_true")
 
+    new_title_canary = subparsers.add_parser(
+        "activate-new-title-canary",
+        help=(
+            "Atomically stage a first package at 5%% against a deterministic "
+            "no-audio fallback; ordinary catalog audio remains hidden."
+        ),
+    )
+    new_title_canary.add_argument("--slug", required=True)
+    new_title_canary.add_argument("--package", type=Path, required=True)
+    new_title_canary.add_argument(
+        "--release-descriptor", type=Path, required=True
+    )
+    new_title_canary.add_argument("--primary-receipt", type=Path, required=True)
+    new_title_canary.add_argument("--replica-receipt", type=Path, required=True)
+    new_title_canary.add_argument(
+        "--primary-release-manifest-receipt", type=Path, required=True
+    )
+    new_title_canary.add_argument(
+        "--replica-release-manifest-receipt", type=Path, required=True
+    )
+    new_title_canary.add_argument(
+        "--hidden-before-proof", type=Path, required=True
+    )
+    new_title_canary.add_argument(
+        "--hidden-rollback-descriptor", type=Path, required=True
+    )
+    new_title_canary.add_argument("--rollout-salt", required=True)
+    new_title_canary.add_argument(
+        "--expected-manuscript-sha256", required=True
+    )
+    for argument in (
+        "package",
+        "release-descriptor",
+        "primary-receipt",
+        "replica-receipt",
+        "primary-release-manifest-receipt",
+        "replica-release-manifest-receipt",
+        "hidden-before-proof",
+        "rollback-descriptor",
+    ):
+        new_title_canary.add_argument(
+            f"--expected-{argument}-sha256",
+            required=True,
+        )
+    new_title_canary.add_argument("--apply", action="store_true")
+
     rollout = subparsers.add_parser("rollout", help="Set 0/5/25 or promote at 100.")
     rollout.add_argument("--slug", required=True)
     rollout.add_argument("--percentage", type=int, choices=sorted(ROLLOUT_PERCENTAGES), required=True)
@@ -1950,7 +2674,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
-        if args.command in {"stage", "activate-initial"}:
+        if args.command in {
+            "stage",
+            "activate-initial",
+            "activate-new-title-canary",
+        }:
             package_path = args.package.resolve()
             primary_path = args.primary_receipt.resolve()
             replica_path = args.replica_receipt.resolve()
@@ -1987,8 +2715,75 @@ def main(argv: Sequence[str] | None = None) -> int:
                     legacy_descriptor=args.legacy_descriptor,
                     **common,
                 )
-            else:
+            elif args.command == "activate-initial":
                 result = activate_initial_release(*positional, **common)
+            else:
+                package_document = positional[2]
+                release_descriptor_document = positional[3]
+                hidden_before_path = args.hidden_before_proof.resolve()
+                rollback_path = args.hidden_rollback_descriptor.resolve()
+                exact_paths = {
+                    "package": package_path,
+                    "release_descriptor": args.release_descriptor.resolve(),
+                    "primary_receipt": primary_path,
+                    "replica_receipt": replica_path,
+                    "primary_release_manifest_receipt": primary_manifest_path,
+                    "replica_release_manifest_receipt": replica_manifest_path,
+                    "hidden_before_proof": hidden_before_path,
+                }
+                for label, path in exact_paths.items():
+                    expected = require_sha256(
+                        getattr(args, f"expected_{label}_sha256"),
+                        f"expected {label.replace('_', ' ')} SHA-256",
+                    )
+                    if sha256_file(path) != expected:
+                        raise ReleasePointerError(
+                            f"Expected {label.replace('_', ' ')} SHA-256 "
+                            "does not match the exact file"
+                        )
+                result = activate_new_title_package_canary(
+                    args.repo_root.resolve(),
+                    args.slug,
+                    package_document,
+                    release_descriptor_document,
+                    positional[4],
+                    positional[5],
+                    positional[6],
+                    positional[7],
+                    read_json(hidden_before_path),
+                    read_json(rollback_path),
+                    rollout_salt=args.rollout_salt,
+                    expected_manuscript_sha256=args.expected_manuscript_sha256,
+                    release_manifest_sha256=common[
+                        "release_manifest_sha256"
+                    ],
+                    release_manifest_size_bytes=common[
+                        "release_manifest_size_bytes"
+                    ],
+                    expected_package_sha256=args.expected_package_sha256,
+                    expected_release_descriptor_sha256=(
+                        args.expected_release_descriptor_sha256
+                    ),
+                    expected_primary_receipt_sha256=(
+                        args.expected_primary_receipt_sha256
+                    ),
+                    expected_replica_receipt_sha256=(
+                        args.expected_replica_receipt_sha256
+                    ),
+                    expected_primary_release_manifest_receipt_sha256=(
+                        args.expected_primary_release_manifest_receipt_sha256
+                    ),
+                    expected_replica_release_manifest_receipt_sha256=(
+                        args.expected_replica_release_manifest_receipt_sha256
+                    ),
+                    expected_hidden_before_proof_sha256=(
+                        args.expected_hidden_before_proof_sha256
+                    ),
+                    expected_rollback_descriptor_sha256=(
+                        args.expected_rollback_descriptor_sha256
+                    ),
+                    apply=args.apply,
+                )
         elif args.command == "rollout":
             result = set_rollout(
                 args.repo_root.resolve(),

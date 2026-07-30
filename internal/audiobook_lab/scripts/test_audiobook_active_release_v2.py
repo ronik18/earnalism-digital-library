@@ -9,6 +9,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -49,6 +50,7 @@ class ActiveReleaseManagerTests(unittest.TestCase):
         public_book = {
             "slug": self.slug,
             "title": "Sample Book",
+            "author": "Sample Author",
             "source_hash": self.source,
             "content_hash": self.source,
             "audiobook_legacy_release_descriptor_sha256": self.legacy,
@@ -58,6 +60,7 @@ class ActiveReleaseManagerTests(unittest.TestCase):
         reader_manifest = {
             "slug": self.slug,
             "chapter_count": 1,
+            "language": "en",
             "audio_enabled": False,
             "audiobook_enabled": False,
         }
@@ -289,6 +292,8 @@ class ActiveReleaseManagerTests(unittest.TestCase):
         return {
             "schema_version": "audiobook_release_descriptor.v1",
             "slug": self.slug,
+            "title": "Sample Book",
+            "author": "Sample Author",
             "controlled_source_sha256": self.source,
             "manuscript_sha256": self.manuscript,
             "known_release_blockers": [],
@@ -299,6 +304,163 @@ class ActiveReleaseManagerTests(unittest.TestCase):
             },
             "evidence_sha256": {"full-release-qa.json": descriptor_digit * 64},
         }
+
+    def _qa_candidate_release_descriptor(self) -> dict:
+        return {
+            "schema_version": "audiobook_release_descriptor.v1",
+            "slug": self.slug,
+            "title": "Sample Book",
+            "author": "Sample Author",
+            "controlled_source_sha256": self.source,
+            "manuscript_sha256": self.manuscript,
+            "known_release_blockers": list(
+                manager.QA_CANDIDATE_DOWNSTREAM_GATES
+            ),
+            "release_candidate_status": "QA_PASSED_STORAGE_PENDING",
+            "release_candidate_evidence": {
+                "status": "PASS",
+                "all_pre_storage_release_gates_passed": True,
+                "gates": {
+                    "reader_truth": "PASS",
+                    "source_content_toc": "PASS",
+                    "rights_tier": "A",
+                    "language": "en",
+                    "listening_policy": (
+                        manager.QA_CANDIDATE_ENGLISH_LISTENING_POLICY
+                    ),
+                    "covers": {
+                        "front": {"url": "https://covers.invalid/front.jpg"},
+                        "back": {"url": "https://covers.invalid/back.jpg"},
+                    },
+                    "asr_score": 9.8,
+                    "source_coverage": 0.99,
+                    "first_words_match": True,
+                    "last_words_match": True,
+                    "ordered_content_integrity": True,
+                    "listening_minimum_scores": {
+                        key: minimum
+                        for key, minimum in (
+                            manager.QA_CANDIDATE_ENGLISH_LISTENING_MINIMUMS.items()
+                        )
+                    },
+                    "listening_sample_count": 6,
+                    "fatal_flags": [],
+                    "sync_tier": "PARAGRAPH_OR_SECTION_SYNC_PREMIUM",
+                    "auto_estimated_sync": False,
+                },
+            },
+            "evidence_sha256": {"full-release-qa.json": "a" * 64},
+        }
+
+    def _hidden_before_proof(self) -> dict:
+        return {
+            "schema_version": manager.HIDDEN_BEFORE_PROOF_SCHEMA,
+            "slug": self.slug,
+            "status": "PUBLIC_AUDIO_HIDDEN_VERIFIED",
+            "reader_url": f"https://www.theearnalism.com/reader/{self.slug}",
+            "reader_http_status": 200,
+            "legacy_audio_url": (
+                f"https://api.theearnalism.com/api/reader/book/"
+                f"{self.slug}/audiobook"
+            ),
+            "legacy_audio_http_status": 404,
+            "package_manifest_url": (
+                f"https://api.theearnalism.com/api/reader/book/"
+                f"{self.slug}/audiobook/manifest"
+            ),
+            "package_manifest_http_status": 404,
+            "public_audio_enabled": False,
+            "public_audiobook_enabled": False,
+            "approved_audiobooks_contains_slug": False,
+            "browser_listen_control_count": 0,
+            "browser_audio_request_count": 0,
+            "checked_at": "2026-07-30T12:00:00Z",
+        }
+
+    def _hidden_descriptor(self) -> dict:
+        return {
+            "schema_version": manager.HIDDEN_IDENTITY_SCHEMA,
+            "slug": self.slug,
+            "state": "NO_PUBLIC_AUDIO",
+            "source_sha256": self.source,
+            "manuscript_sha256": self.manuscript,
+        }
+
+    def _invoke_new_title_canary(
+        self,
+        *,
+        release_descriptor: dict | None = None,
+        proof: dict | None = None,
+        expected_package_sha256: str = "",
+        apply: bool = True,
+    ) -> dict:
+        descriptor = release_descriptor or self._qa_candidate_release_descriptor()
+        package = self._package("a", descriptor)
+        primary, replica = self._receipts(package)
+        manifest_primary, manifest_replica, manifest_sha, manifest_size = (
+            self._release_manifest_receipts(package)
+        )
+        hidden_proof = proof or self._hidden_before_proof()
+        hidden_descriptor = self._hidden_descriptor()
+        documents = {
+            "package": package,
+            "release_descriptor": descriptor,
+            "primary_receipt": primary,
+            "replica_receipt": replica,
+            "primary_release_manifest_receipt": manifest_primary,
+            "replica_release_manifest_receipt": manifest_replica,
+            "hidden_before_proof": hidden_proof,
+            "rollback_descriptor": hidden_descriptor,
+        }
+        hashes = {
+            name: manager.sha256_bytes(manager.json_bytes(document))
+            for name, document in documents.items()
+        }
+        hashes["rollback_descriptor"] = manager.sha256_bytes(
+            manager.canonical_json_bytes(hidden_descriptor)
+        )
+        if expected_package_sha256:
+            hashes["package"] = expected_package_sha256
+        with mock.patch.dict(
+            "os.environ",
+            {manager.NEW_TITLE_CANARY_APPROVAL_ENV: "true"},
+        ):
+            return manager.activate_new_title_package_canary(
+                self.repo,
+                self.slug,
+                package,
+                descriptor,
+                primary,
+                replica,
+                manifest_primary,
+                manifest_replica,
+                hidden_proof,
+                hidden_descriptor,
+                rollout_salt="new-title-canary-v1",
+                expected_manuscript_sha256=self.manuscript,
+                release_manifest_sha256=manifest_sha,
+                release_manifest_size_bytes=manifest_size,
+                expected_package_sha256=hashes["package"],
+                expected_release_descriptor_sha256=hashes[
+                    "release_descriptor"
+                ],
+                expected_primary_receipt_sha256=hashes["primary_receipt"],
+                expected_replica_receipt_sha256=hashes["replica_receipt"],
+                expected_primary_release_manifest_receipt_sha256=hashes[
+                    "primary_release_manifest_receipt"
+                ],
+                expected_replica_release_manifest_receipt_sha256=hashes[
+                    "replica_release_manifest_receipt"
+                ],
+                expected_hidden_before_proof_sha256=hashes[
+                    "hidden_before_proof"
+                ],
+                expected_rollback_descriptor_sha256=hashes[
+                    "rollback_descriptor"
+                ],
+                generated_at="2026-07-30T13:00:00Z",
+                apply=apply,
+            )
 
     def _package(
         self,
@@ -781,10 +943,306 @@ class ActiveReleaseManagerTests(unittest.TestCase):
             manager._verify_controlled_checksums(
                 manager.load_mirrored_publication(self.repo, self.slug)
             )
-
         idempotent = manager.bind_legacy_release(self.repo, self.slug, apply=True)
         self.assertEqual(idempotent["status"], "LEGACY_ALREADY_BOUND")
         self.assertFalse(idempotent["applied"])
+
+    def test_new_title_canary_stages_exact_package_against_hidden_fallback(
+        self,
+    ) -> None:
+        self._prepare_approved_reader_only()
+        result = self._invoke_new_title_canary()
+
+        self.assertEqual(result["status"], "NEW_TITLE_PACKAGE_CANARY_STAGED")
+        self.assertEqual(result["rollout_percentage"], 5)
+        self.assertTrue(result["ordinary_public_audio_remains_hidden"])
+        context = manager.load_mirrored_publication(self.repo, self.slug)
+        public = context["public_book"]
+        reader = context["reader_manifest"]
+        approval = context["approval_evidence"]
+        state = public["audiobook_active_release"]
+        hidden = manager.sha256_bytes(
+            manager.canonical_json_bytes(self._hidden_descriptor())
+        )
+        self.assertEqual(state["active_release_descriptor_sha256"], hidden)
+        self.assertEqual(state["rollout"]["percentage"], 5)
+        self.assertFalse(public["audio_enabled"])
+        self.assertFalse(public["audiobook_enabled"])
+        self.assertFalse(reader["audio_enabled"])
+        self.assertFalse(reader["audiobook_enabled"])
+        self.assertFalse(approval["audiobook_enabled"])
+        self.assertEqual(
+            approval["audio_public_release"],
+            "PUBLIC_AUDIO_PACKAGE_CANARY_ONLY",
+        )
+        self.assertEqual(
+            public["audiobook_package_canary"]["approval_scope"],
+            "transport_canary_only_no_customer_discovery",
+        )
+        self.assertEqual(
+            public["audiobook_package_canary"],
+            reader["audiobook_package_canary"],
+        )
+        status = manager.release_status(self.repo, self.slug)
+        self.assertEqual(
+            status["status"],
+            "NEW_TITLE_TRANSPORT_CANARY_ACTIVE",
+        )
+        self.assertTrue(status["transport_canary"])
+        self.assertTrue(status["ordinary_public_audio_hidden"])
+        self.assertEqual(
+            status["blockers"],
+            public["audiobook_package_canary"][
+                "post_deploy_proof_required"
+            ],
+        )
+
+    def test_new_title_canary_fails_closed_without_owner_env(self) -> None:
+        self._prepare_approved_reader_only()
+        before = self._snapshot()
+        descriptor = self._qa_candidate_release_descriptor()
+        package = self._package("a", descriptor)
+        primary, replica = self._receipts(package)
+        manifest_primary, manifest_replica, manifest_sha, manifest_size = (
+            self._release_manifest_receipts(package)
+        )
+        proof = self._hidden_before_proof()
+        hidden = self._hidden_descriptor()
+        digest = lambda value: manager.sha256_bytes(manager.json_bytes(value))
+        with mock.patch.dict(
+            "os.environ",
+            {manager.NEW_TITLE_CANARY_APPROVAL_ENV: ""},
+        ):
+            with self.assertRaisesRegex(
+                manager.ReleasePointerError,
+                manager.NEW_TITLE_CANARY_APPROVAL_ENV,
+            ):
+                manager.activate_new_title_package_canary(
+                    self.repo,
+                    self.slug,
+                    package,
+                    descriptor,
+                    primary,
+                    replica,
+                    manifest_primary,
+                    manifest_replica,
+                    proof,
+                    hidden,
+                    rollout_salt="new-title-canary-v1",
+                    expected_manuscript_sha256=self.manuscript,
+                    release_manifest_sha256=manifest_sha,
+                    release_manifest_size_bytes=manifest_size,
+                    expected_package_sha256=digest(package),
+                    expected_release_descriptor_sha256=digest(descriptor),
+                    expected_primary_receipt_sha256=digest(primary),
+                    expected_replica_receipt_sha256=digest(replica),
+                    expected_primary_release_manifest_receipt_sha256=digest(
+                        manifest_primary
+                    ),
+                    expected_replica_release_manifest_receipt_sha256=digest(
+                        manifest_replica
+                    ),
+                    expected_hidden_before_proof_sha256=digest(proof),
+                    expected_rollback_descriptor_sha256=manager.sha256_bytes(
+                        manager.canonical_json_bytes(hidden)
+                    ),
+                    apply=True,
+                )
+        self.assertEqual(before, self._snapshot())
+
+    def test_new_title_canary_rejects_failed_quality_hidden_proof_and_hash(
+        self,
+    ) -> None:
+        self._prepare_approved_reader_only()
+        baseline = self._snapshot()
+
+        failed_quality = self._qa_candidate_release_descriptor()
+        failed_quality["release_candidate_evidence"]["gates"][
+            "asr_score"
+        ] = 9.69
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "objective ASR",
+        ):
+            self._invoke_new_title_canary(release_descriptor=failed_quality)
+        self.assertEqual(baseline, self._snapshot())
+
+        failed_listening = self._qa_candidate_release_descriptor()
+        failed_listening["release_candidate_evidence"]["gates"][
+            "listening_minimum_scores"
+        ]["overall_listening_score"] = 8.89
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "listening scores",
+        ):
+            self._invoke_new_title_canary(
+                release_descriptor=failed_listening
+            )
+        self.assertEqual(baseline, self._snapshot())
+
+        stale_policy = self._qa_candidate_release_descriptor()
+        stale_policy["release_candidate_evidence"]["gates"][
+            "listening_policy"
+        ] = "tiered_audiobook_acceptance_v1"
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "active english policy",
+        ):
+            self._invoke_new_title_canary(release_descriptor=stale_policy)
+        self.assertEqual(baseline, self._snapshot())
+
+        wrong_title = self._qa_candidate_release_descriptor()
+        wrong_title["title"] = "Another Book"
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "title/author",
+        ):
+            self._invoke_new_title_canary(release_descriptor=wrong_title)
+        self.assertEqual(baseline, self._snapshot())
+
+        failed_proof = self._hidden_before_proof()
+        failed_proof["browser_listen_control_count"] = 1
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "Hidden-before proof",
+        ):
+            self._invoke_new_title_canary(proof=failed_proof)
+        self.assertEqual(baseline, self._snapshot())
+
+        stale_proof = self._hidden_before_proof()
+        stale_proof["checked_at"] = "2026-07-28T12:00:00Z"
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "Hidden-before proof",
+        ):
+            self._invoke_new_title_canary(proof=stale_proof)
+        self.assertEqual(baseline, self._snapshot())
+
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "Expected package SHA-256",
+        ):
+            self._invoke_new_title_canary(expected_package_sha256="f" * 64)
+        self.assertEqual(baseline, self._snapshot())
+
+    def test_new_title_canary_keeps_bengali_at_9_2(self) -> None:
+        self._prepare_approved_reader_only()
+        for publication in manager.publication_dirs(self.repo, self.slug):
+            reader = manager.read_json(
+                publication / "reader_manifest.json"
+            )
+            reader["language"] = "ben"
+            self._write(publication / "reader_manifest.json", reader)
+            self._refresh_checksums(publication)
+
+        below_bengali_gate = self._qa_candidate_release_descriptor()
+        gates = below_bengali_gate["release_candidate_evidence"]["gates"]
+        gates["language"] = "ben"
+        gates["listening_policy"] = (
+            manager.QA_CANDIDATE_BENGALI_LISTENING_POLICY
+        )
+        gates["listening_minimum_scores"] = {
+            key: minimum
+            for key, minimum in (
+                manager.QA_CANDIDATE_ENGLISH_LISTENING_MINIMUMS.items()
+            )
+        }
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "listening scores",
+        ):
+            self._invoke_new_title_canary(
+                release_descriptor=below_bengali_gate
+            )
+
+        passing_bengali = self._qa_candidate_release_descriptor()
+        gates = passing_bengali["release_candidate_evidence"]["gates"]
+        gates["language"] = "bn"
+        gates["listening_policy"] = (
+            manager.QA_CANDIDATE_BENGALI_LISTENING_POLICY
+        )
+        gates["listening_minimum_scores"] = {
+            key: minimum
+            for key, minimum in (
+                manager.QA_CANDIDATE_BENGALI_LISTENING_MINIMUMS.items()
+            )
+        }
+        result = self._invoke_new_title_canary(
+            release_descriptor=passing_bengali
+        )
+        self.assertEqual(result["status"], "NEW_TITLE_PACKAGE_CANARY_STAGED")
+
+    def test_new_title_canary_rejects_language_mismatch(self) -> None:
+        self._prepare_approved_reader_only()
+        descriptor = self._qa_candidate_release_descriptor()
+        gates = descriptor["release_candidate_evidence"]["gates"]
+        gates["language"] = "ben"
+        gates["listening_policy"] = (
+            manager.QA_CANDIDATE_BENGALI_LISTENING_POLICY
+        )
+        gates["listening_minimum_scores"] = {
+            key: minimum
+            for key, minimum in (
+                manager.QA_CANDIDATE_BENGALI_LISTENING_MINIMUMS.items()
+            )
+        }
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "does not match controlled truth",
+        ):
+            self._invoke_new_title_canary(release_descriptor=descriptor)
+
+    def test_new_title_canary_rolls_back_to_hidden_and_revokes(self) -> None:
+        self._prepare_approved_reader_only()
+        self._invoke_new_title_canary()
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "dedicated production endpoint",
+        ):
+            manager.set_rollout(self.repo, self.slug, 25, apply=True)
+
+        rollback = manager.set_rollout(
+            self.repo,
+            self.slug,
+            0,
+            generated_at="2026-07-30T14:00:00Z",
+            apply=True,
+        )
+        self.assertEqual(rollback["status"], "ROLLOUT_UPDATED")
+        context = manager.load_mirrored_publication(self.repo, self.slug)
+        self.assertEqual(
+            context["public_book"]["audiobook_active_release"]["rollout"][
+                "percentage"
+            ],
+            0,
+        )
+        self.assertEqual(
+            context["public_book"]["audiobook_package_canary"]["status"],
+            "ROLLED_BACK_TO_HIDDEN",
+        )
+        self.assertEqual(
+            manager.release_status(self.repo, self.slug)["status"],
+            "NEW_TITLE_TRANSPORT_CANARY_ROLLED_BACK",
+        )
+
+        # A rolled-back canary can still be explicitly revoked.
+        revoked = manager.deactivate_release(
+            self.repo,
+            self.slug,
+            generated_at="2026-07-30T15:00:00Z",
+            apply=True,
+        )
+        self.assertEqual(revoked["status"], "RELEASE_DEACTIVATED")
+        context = manager.load_mirrored_publication(self.repo, self.slug)
+        self.assertEqual(
+            context["public_book"]["audiobook_package_canary"]["status"],
+            "REVOKED",
+        )
+        self.assertFalse(context["public_book"]["audio_enabled"])
+        self.assertEqual(
+            manager.release_status(self.repo, self.slug)["status"],
+            "NEW_TITLE_TRANSPORT_CANARY_REVOKED",
+        )
 
     def test_bind_legacy_rejects_unapproved_audio(self) -> None:
         self._prepare_approved_legacy()

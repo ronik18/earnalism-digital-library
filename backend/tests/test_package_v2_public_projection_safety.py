@@ -20,6 +20,8 @@ FORBIDDEN_PUBLIC_KEYS = {
     "asset_id",
     "audiobook_active_release",
     "audiobook_legacy_release_descriptor_sha256",
+    "audiobook_hidden_release_descriptor_sha256",
+    "audiobook_package_canary",
     "audiobook_manuscript_sha256",
     "audiobook_package",
     "audiobook_package_release_evidence",
@@ -170,6 +172,31 @@ def test_public_catalog_projection_omits_package_v2_storage_identity() -> None:
     assert projected["slug"] == SLUG
     assert projected["audio_enabled"] is True
     assert projected["audio_url"] == f"/api/reader/book/{SLUG}/audiobook"
+    _assert_no_private_package_identity(projected)
+
+
+def test_transport_canary_remains_reader_only_and_redacts_hidden_identity(
+    monkeypatch,
+) -> None:
+    artifact = _artifact_with_internal_package()
+    artifact["audio_enabled"] = False
+    artifact["audiobook_enabled"] = False
+    artifact["audiobook_hidden_release_descriptor_sha256"] = "8" * 64
+    artifact["audiobook_package_canary"] = {
+        "schema_version": "audiobook_new_title_package_canary.v1",
+        "status": "PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED",
+        "candidate_release_descriptor_sha256": RELEASE_DESCRIPTOR_SHA256,
+        "hidden_release_descriptor_sha256": "8" * 64,
+    }
+    monkeypatch.setattr(catalog_truth, "AUDIO_ENABLED_SLUGS", set())
+
+    projected = catalog_truth.public_book_projection(artifact)
+
+    assert projected is not None
+    assert projected["reader_enabled"] is True
+    assert projected["audio_enabled"] is False
+    assert projected["audiobook_enabled"] is False
+    assert projected["audio_url"] == ""
     _assert_no_private_package_identity(projected)
 
 

@@ -194,6 +194,83 @@ def _package_book():
     }
 
 
+def _new_title_canary_book(server):
+    from audiobook_packages import (
+        ACTIVE_RELEASE_SCHEMA_VERSION,
+        canonical_json_bytes,
+    )
+
+    book = _package_book()
+    package = book.pop("audiobook_package")
+    candidate = package["release_descriptor_sha256"]
+    evidence = book["audiobook_package_release_evidence"][candidate]
+    hidden_identity = {
+        "schema_version": server.AUDIOBOOK_HIDDEN_IDENTITY_SCHEMA,
+        "slug": "the-open-window",
+        "state": "NO_PUBLIC_AUDIO",
+        "source_sha256": "d" * 64,
+        "manuscript_sha256": "2" * 64,
+    }
+    hidden = __import__("hashlib").sha256(
+        canonical_json_bytes(hidden_identity)
+    ).hexdigest()
+    salt = "new-title-transport-canary-v1"
+    book.update(
+        {
+            "source_hash": "e" * 64,
+            "audio_enabled": False,
+            "audiobook_enabled": False,
+            "audiobook_packages": {candidate: package},
+            "audiobook_hidden_release_descriptor_sha256": hidden,
+            "audiobook_active_release": {
+                "schema_version": ACTIVE_RELEASE_SCHEMA_VERSION,
+                "slug": "the-open-window",
+                "status": "ACTIVE",
+                "active_release_descriptor_sha256": hidden,
+                "candidate_release_descriptor_sha256": candidate,
+                "retained_release_descriptor_sha256s": [hidden, candidate],
+                "rollout": {"percentage": 5, "salt": salt},
+            },
+        }
+    )
+    book["audiobook_package_canary"] = {
+        "schema_version": server.AUDIOBOOK_NEW_TITLE_CANARY_SCHEMA,
+        "status": "PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED",
+        "slug": "the-open-window",
+        "candidate_release_descriptor_sha256": candidate,
+        "candidate_package_version": package["package_version"],
+        "hidden_release_descriptor_sha256": hidden,
+        "rollout_percentage": 5,
+        "rollout_salt": salt,
+        "qa_candidate_release_descriptor_file_sha256": "f" * 64,
+        "package_release_evidence_sha256": __import__("hashlib").sha256(
+            canonical_json_bytes(evidence)
+        ).hexdigest(),
+        "primary_receipt_sha256": evidence["primary_receipt_sha256"],
+        "replica_receipt_sha256": evidence["replica_receipt_sha256"],
+        "primary_release_manifest_receipt_sha256": evidence[
+            "primary_release_manifest_receipt_sha256"
+        ],
+        "replica_release_manifest_receipt_sha256": evidence[
+            "replica_release_manifest_receipt_sha256"
+        ],
+        "hidden_before_proof_sha256": "e" * 64,
+        "rollback_descriptor_sha256": hidden,
+        "catalog_audio_enabled": False,
+        "package_endpoint_enabled": True,
+        "approval_scope": "transport_canary_only_no_customer_discovery",
+        "blockers": [],
+        "post_deploy_proof_required": [
+            "PACKAGE_MANIFEST_200_COHORT_AND_404_NON_COHORT",
+            "SEGMENT_RANGE_206",
+            "TIMESTAMPS_200",
+            "BROWSER_PLAYBACK_PASS",
+        ],
+        "generated_at": "2026-07-30T13:00:00Z",
+    }
+    return book, package, hidden, salt
+
+
 def test_reader_manifest_rewrites_b2_mp3_to_api_proxy(monkeypatch):
     server = _server(monkeypatch)
     monkeypatch.setattr(server, "can_expose_audio", lambda book: True)
@@ -688,6 +765,7 @@ def test_package_rollout_selects_sticky_5_25_100_and_rollback(monkeypatch):
     legacy_descriptor = "9" * 64
     salt = "package-v2-canary-v1"
     book["audiobook_packages"] = {candidate_descriptor: candidate}
+    book["audiobook_legacy_release_descriptor_sha256"] = legacy_descriptor
     book["audiobook_active_release"] = {
         "schema_version": ACTIVE_RELEASE_SCHEMA_VERSION,
         "slug": "the-open-window",
@@ -775,6 +853,295 @@ def test_package_rollout_selects_sticky_5_25_100_and_rollback(monkeypatch):
     )
     assert selected is None
     assert descriptor == ""
+
+
+def test_new_title_canary_selects_exact_package_or_deterministic_hidden(
+    monkeypatch,
+):
+    server = _server(monkeypatch)
+    from audiobook_packages import deterministic_rollout_bucket
+
+    book, package, hidden, salt = _new_title_canary_book(server)
+    assert server._can_expose_audiobook_package_canary(
+        book,
+        "the-open-window",
+    )
+    candidate_key = next(
+        f"reader-{index:024d}"
+        for index in range(1000)
+        if deterministic_rollout_bucket(
+            slug="the-open-window",
+            sticky_key=f"reader-{index:024d}",
+            salt=salt,
+        )
+        < 5
+    )
+    hidden_key = next(
+        f"reader-{index:024d}"
+        for index in range(1000)
+        if deterministic_rollout_bucket(
+            slug="the-open-window",
+            sticky_key=f"reader-{index:024d}",
+            salt=salt,
+        )
+        >= 5
+    )
+
+    selected, descriptor, _new = server._selected_audiobook_package(
+        book,
+        "the-open-window",
+        SimpleNamespace(
+            cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: candidate_key}
+        ),
+    )
+    assert selected["package_version"] == package["package_version"]
+    assert descriptor == package["release_descriptor_sha256"]
+
+    selected, descriptor, _new = server._selected_audiobook_package(
+        book,
+        "the-open-window",
+        SimpleNamespace(
+            cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: hidden_key}
+        ),
+    )
+    assert selected is None
+    assert descriptor == hidden
+
+    arbitrary = copy.deepcopy(book)
+    arbitrary_descriptor = "8" * 64
+    arbitrary["audiobook_active_release"][
+        "active_release_descriptor_sha256"
+    ] = arbitrary_descriptor
+    arbitrary["audiobook_active_release"][
+        "retained_release_descriptor_sha256s"
+    ][0] = arbitrary_descriptor
+    selected, descriptor, _new = server._selected_audiobook_package(
+        arbitrary,
+        "the-open-window",
+        SimpleNamespace(
+            cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: hidden_key}
+        ),
+    )
+    assert selected is None
+    assert descriptor == ""
+
+
+def test_new_title_canary_rejects_tampered_cross_title_and_revoked_contracts(
+    monkeypatch,
+):
+    server = _server(monkeypatch)
+    book, _package, _hidden, _salt = _new_title_canary_book(server)
+
+    for mutate in (
+        lambda value: value["audiobook_package_canary"].update(
+            {"slug": "another-book"}
+        ),
+        lambda value: value["audiobook_package_canary"].update(
+            {"primary_receipt_sha256": "f" * 64}
+        ),
+        lambda value: value["audiobook_active_release"].update(
+            {"status": "INACTIVE"}
+        ),
+        lambda value: value["audiobook_package_canary"].update(
+            {"status": "REVOKED"}
+        ),
+    ):
+        tampered = copy.deepcopy(book)
+        mutate(tampered)
+        assert (
+            server._can_expose_audiobook_package_canary(
+                tampered,
+                "the-open-window",
+            )
+            is False
+        )
+
+
+def test_new_title_canary_manifest_is_private_and_hidden_cohort_is_404(
+    monkeypatch,
+):
+    server = _server(monkeypatch)
+    from audiobook_packages import deterministic_rollout_bucket
+
+    book, package, _hidden, salt = _new_title_canary_book(server)
+    candidate_key = next(
+        f"reader-{index:024d}"
+        for index in range(1000)
+        if deterministic_rollout_bucket(
+            slug="the-open-window",
+            sticky_key=f"reader-{index:024d}",
+            salt=salt,
+        )
+        < 5
+    )
+    hidden_key = next(
+        f"reader-{index:024d}"
+        for index in range(1000)
+        if deterministic_rollout_bucket(
+            slug="the-open-window",
+            sticky_key=f"reader-{index:024d}",
+            salt=salt,
+        )
+        >= 5
+    )
+
+    monkeypatch.setattr(
+        server,
+        "_controlled_artifact_doc",
+        lambda _slug, include_content=False: book,
+    )
+
+    async def forbidden_cache(*_args, **_kwargs):
+        raise AssertionError("transport canary must not use Redis manifest cache")
+
+    monkeypatch.setattr(server, "_redis_cache_get", forbidden_cache)
+    monkeypatch.setattr(server, "_redis_cache_set", forbidden_cache)
+    candidate_response = asyncio.run(
+        server._reader_book_audiobook_package_manifest_response(
+            "the-open-window",
+            SimpleNamespace(
+                headers={},
+                method="GET",
+                cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: candidate_key},
+            ),
+        )
+    )
+    assert candidate_response.status_code == 200
+    assert (
+        json.loads(candidate_response.body)["package_version"]
+        == package["package_version"]
+    )
+    assert candidate_response.headers["cache-control"] == "private, no-store"
+    assert candidate_response.headers["vary"] == "Cookie"
+
+    hidden_response = asyncio.run(
+        server._reader_book_audiobook_package_manifest_response(
+            "the-open-window",
+            SimpleNamespace(
+                headers={},
+                method="GET",
+                cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: hidden_key},
+            ),
+        )
+    )
+    assert hidden_response.status_code == 404
+    assert hidden_response.headers["cache-control"] == "private, no-store"
+    assert hidden_response.headers["vary"] == "Cookie"
+
+    monkeypatch.setattr(server, "ENVIRONMENT", "production")
+    monkeypatch.setattr(
+        server,
+        "_audiobook_rollout_identity",
+        lambda _request, create: (candidate_key, True),
+    )
+    first_candidate_response = asyncio.run(
+        server._reader_book_audiobook_package_manifest_response(
+            "the-open-window",
+            SimpleNamespace(headers={}, method="GET", cookies={}),
+        )
+    )
+    set_cookie = first_candidate_response.headers["set-cookie"]
+    assert first_candidate_response.status_code == 200
+    assert (
+        f"{server.AUDIOBOOK_ROLLOUT_COOKIE}={candidate_key}"
+        in set_cookie
+    )
+    assert "Path=/api/reader/book/the-open-window" in set_cookie
+    assert "HttpOnly" in set_cookie
+    assert "SameSite=lax" in set_cookie
+    assert "Secure" in set_cookie
+
+    monkeypatch.setattr(
+        server,
+        "_audiobook_rollout_identity",
+        lambda _request, create: (hidden_key, True),
+    )
+    first_hidden_response = asyncio.run(
+        server._reader_book_audiobook_package_manifest_response(
+            "the-open-window",
+            SimpleNamespace(headers={}, method="GET", cookies={}),
+        )
+    )
+    assert first_hidden_response.status_code == 404
+    hidden_set_cookie = first_hidden_response.headers["set-cookie"]
+    assert f"{server.AUDIOBOOK_ROLLOUT_COOKIE}={hidden_key}" in hidden_set_cookie
+    assert "Path=/api/reader/book/the-open-window" in hidden_set_cookie
+    assert "HttpOnly" in hidden_set_cookie
+    assert "SameSite=lax" in hidden_set_cookie
+    assert "Secure" in hidden_set_cookie
+
+
+def test_new_title_canary_segment_requires_existing_candidate_cookie(
+    monkeypatch,
+):
+    server = _server(monkeypatch)
+    from audiobook_packages import deterministic_rollout_bucket
+    from fastapi import HTTPException
+    from fastapi.responses import Response
+
+    book, package, _hidden, salt = _new_title_canary_book(server)
+    candidate_key = next(
+        f"reader-{index:024d}"
+        for index in range(1000)
+        if deterministic_rollout_bucket(
+            slug="the-open-window",
+            sticky_key=f"reader-{index:024d}",
+            salt=salt,
+        )
+        < 5
+    )
+
+    async def fake_book(_slug):
+        return book
+
+    streamed = {}
+
+    async def fake_stream(*_args, **kwargs):
+        streamed.update(kwargs)
+        return Response(status_code=206)
+
+    monkeypatch.setattr(
+        server,
+        "_reader_audio_package_book_for_slug",
+        fake_book,
+    )
+    monkeypatch.setattr(
+        server,
+        "_audio_package_storage_url",
+        lambda _storage: "https://storage.invalid/exact-object",
+    )
+    monkeypatch.setattr(server, "_stream_audiobook_asset_url", fake_stream)
+    response = asyncio.run(
+        server._reader_book_audiobook_package_segment(
+            "the-open-window",
+            package["package_version"],
+            "c001-s001",
+            "mp3",
+            SimpleNamespace(
+                headers={"range": "bytes=0-99"},
+                method="GET",
+                cookies={server.AUDIOBOOK_ROLLOUT_COOKIE: candidate_key},
+            ),
+        )
+    )
+    assert response.status_code == 206
+    assert streamed["extra_headers"]["Cache-Control"] == "private, no-store"
+    assert streamed["extra_headers"]["Vary"] == "Cookie"
+
+    try:
+        asyncio.run(
+            server._reader_book_audiobook_package_segment(
+                "the-open-window",
+                package["package_version"],
+                "c001-s001",
+                "mp3",
+                SimpleNamespace(headers={}, method="GET", cookies={}),
+            )
+        )
+    except HTTPException as exc:
+        assert exc.status_code == 404
+    else:
+        raise AssertionError("missing canary cookie must fail closed")
 
 
 def test_b2_key_and_range_helpers(monkeypatch):

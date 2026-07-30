@@ -131,8 +131,7 @@ QA_CANDIDATE_FATAL_FLAGS = (
 )
 QA_CANDIDATE_ALLOWED_ENGLISH_LISTENING_POLICIES = frozenset(
     {
-        "schema3_universal_9_7",
-        "tiered_audiobook_acceptance_v1",
+        "platform_audiobook_acceptance_v4_89",
     }
 )
 QA_CANDIDATE_DOWNSTREAM_GATES = (
@@ -2001,19 +2000,24 @@ def _load_qa_candidate_publication(
         )
     title = str(public_book.get("title") or "").strip()
     author = str(public_book.get("author") or "").strip()
+    language = str(reader_manifest.get("language") or "").strip().lower()
     if (
         not title
         or not author
         or reader_manifest.get("title") != title
         or reader_manifest.get("author") != author
+        or language not in {"en", "eng", "english"}
     ):
-        raise PackageBuildError("Controlled title/author identity is incomplete")
+        raise PackageBuildError(
+            "Controlled English title/author/language identity is incomplete"
+        )
     chapter_material = _candidate_chapter_material(context, slug=slug)
     cover_context = _candidate_cover_context(context)
     return {
         **context,
         "title": title,
         "author": author,
+        "language": "en",
         "chapter_material": chapter_material,
         "cover_context": cover_context,
         "controlled_source_sha256": _require_sha256(
@@ -2693,6 +2697,8 @@ def _validate_candidate_listening_qa(
         or report.get("slug") != full["manifest"].get("slug")
         or report.get("title") != context["title"]
         or report.get("author") != context["author"]
+        or str(report.get("language") or "").strip().lower()
+        not in {"en", "eng", "english"}
         or report.get("provider") != "google"
         or report.get("voice") != full["manifest"].get("voice")
         or report.get("full_manifest_sha256") != full["sha256"]
@@ -2728,6 +2734,8 @@ def _validate_candidate_listening_qa(
         or quality_report.get("slug") != report.get("slug")
         or quality_report.get("title") != context["title"]
         or quality_report.get("author") != context["author"]
+        or str(quality_report.get("language") or "").strip().lower()
+        not in {"en", "eng", "english"}
         or quality_report.get("audio_hash")
         != full["candidate_audio_sequence_sha256"]
         or quality_report.get("candidate_binding_sha256")
@@ -2788,6 +2796,7 @@ def _validate_candidate_listening_qa(
         "sha256": sha256_file(path),
         "report": report,
         "quality_report": quality_report,
+        "release_policy": release_policy,
         "minimum_scores": {
             field: float(aggregate[field])
             for field in QA_CANDIDATE_LISTENING_THRESHOLDS
@@ -3387,6 +3396,8 @@ def build_qa_candidate(
             "reader_truth": "PASS",
             "source_content_toc": "PASS",
             "rights_tier": "A",
+            "language": context["language"],
+            "listening_policy": listening["release_policy"],
             "covers": context["cover_context"]["covers"],
             "asr_score": float(
                 objective["asr"]["full_title_aggregate"]["score"]
