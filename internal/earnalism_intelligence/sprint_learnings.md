@@ -1482,3 +1482,30 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   URL binding, service-worker Range bypass, release truth, and the public
   audiobook count are unchanged. Deployment and one-click production browser
   proof remain required.
+
+## 2026-07-30 — Migrate one approved audiobook through both immutable stores before rollout
+
+- Sredni Vashtar proves the complete package-v2 storage sequence on the
+  genuinely separate production and DR accounts: combined no-write preflight,
+  production upload with immediate full-download verification, receipt-bound
+  production re-verification, replication from verified production bytes,
+  receipt-bound DR re-verification, finalization, and the same lifecycle for
+  the canonical release manifest.
+- Use the bucket's 30-day default Governance retention when writing and require
+  at least 29 full days remaining during subsequent verification. This avoids
+  false failures from elapsed command time while preserving the configured
+  retention floor.
+- Bind the existing approved legacy identity before staging the candidate.
+  Zero-percent staging must keep the legacy descriptor active and must not
+  increase the public audiobook count.
+- Store upload/retention operators only in the protected offline profile.
+  Railway needs separate read-only runtime credentials; uploading operators or
+  retention credentials to Railway would unnecessarily expand blast radius.
+- The exact Sredni package has 15 payload objects totaling `79,267,278` bytes,
+  one segment, and descriptor
+  `53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3`.
+  Its final manifest is `6,452` bytes with SHA-256
+  `d488f114c154dd57ecdf474254d33b07a355a26ed9b3d416bc85ddf1b68117ea`.
+  Both stores passed full-download checksum and exact-version verification.
+- Do not begin A Ghost Story storage or customer rollout until Sredni's
+  serialized 0%, 5%, 25%, and 100% checkpoints are independently green.
