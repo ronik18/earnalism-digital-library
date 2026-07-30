@@ -1,16 +1,16 @@
 {
   "schema_version": "earnalism_audiobook_package_v2_canary_evidence.v1",
-  "generated_at": "2026-07-30T10:24:57Z",
+  "generated_at": "2026-07-30T10:43:58Z",
   "slug": "sredni-vashtar",
   "title": "Sredni Vashtar",
   "author": "Saki",
-  "decision": "ZERO_PERCENT_PRODUCTION_GREEN_FIVE_PERCENT_CANARY_PREPARED",
+  "decision": "FIVE_PERCENT_PRODUCTION_GREEN_TWENTY_FIVE_PERCENT_CANARY_PREPARED",
   "customer_release_state": {
     "existing_audiobook_release_gate": "APPROVED_AND_LIVE",
-    "active_delivery_contract": "legacy_with_five_percent_package_v2_canary",
+    "active_delivery_contract": "legacy_with_twenty_five_percent_package_v2_canary",
     "active_release_descriptor_sha256": "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
     "candidate_release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
-    "candidate_rollout_percentage": 5,
+    "candidate_rollout_percentage": 25,
     "candidate_selected_for_customers": true,
     "legacy_descriptor_still_selected": true,
     "current_public_audiobook_count": 4,
@@ -85,9 +85,44 @@
       "duration_seconds": 636.84,
       "console_error_count": 0
     },
-    "five_percent_rollout_mutation": "LOCAL_GREEN_AWAITING_PR_MERGE_DEPLOY",
-    "five_percent_production_http_checkpoint": "PENDING",
-    "five_percent_production_browser_checkpoint": "PENDING"
+    "five_percent_rollout_mutation": {
+      "status": "PASS",
+      "commit": "54c2b9def38e7971c504d4cf871a32fd9c8a331f",
+      "railway_deployment_id": "de96f4c9-49b8-44af-a9bc-b515881df747"
+    },
+    "five_percent_production_http_checkpoint": {
+      "status": "PASS",
+      "candidate_manifest_http": 200,
+      "candidate_segment_range_http": 206,
+      "candidate_invalid_range_http": 416,
+      "candidate_timestamps_http": 200,
+      "legacy_manifest_http": 404,
+      "legacy_monolith_range_http": 206,
+      "legacy_cross_cohort_segment_http": 404,
+      "wrong_package_version_http": 404,
+      "candidate_range_repeat_count": 5,
+      "legacy_range_repeat_count": 5,
+      "range_repeat_failures": 0,
+      "observed_time_to_first_byte_seconds_min": 0.796964,
+      "observed_time_to_first_byte_seconds_max": 1.112835,
+      "public_audiobook_count": 4
+    },
+    "five_percent_production_browser_checkpoint": {
+      "status": "PASS_LEGACY_COHORT",
+      "preintent_audio_src": null,
+      "preintent_ready_state": 0,
+      "post_click_route": "/api/reader/book/sredni-vashtar/audiobook",
+      "post_click_ready_state": 4,
+      "post_click_paused": false,
+      "post_click_current_time_seconds": 3.523786,
+      "duration_seconds": 636.84,
+      "console_error_count": 0,
+      "candidate_cohort_delivery_verified_by_deterministic_http": true
+    },
+    "twenty_five_percent_focused_tests": "PASS_172",
+    "twenty_five_percent_rollout_mutation": "LOCAL_GREEN_AWAITING_PR_MERGE_DEPLOY",
+    "twenty_five_percent_production_http_checkpoint": "PENDING",
+    "twenty_five_percent_production_browser_checkpoint": "PENDING"
   },
   "safety": {
     "audiobook_approval_flags_changed": false,

@@ -1,7 +1,7 @@
 # Audiobook package v2 canary — Sredni Vashtar
 
-Status: **the 0% production checkpoint passed and the package-v2 candidate is
-prepared for a controlled 5% canary**.
+Status: **the 5% production checkpoint passed and the package-v2 candidate is
+prepared for a controlled 25% canary**.
 
 This is a delivery migration for the existing live audiobook. It does not
 approve a new audiobook, regenerate narration, or change the public count of
@@ -39,7 +39,7 @@ production/DR receipt lifecycle. No released key was overwritten.
 
 ## Release selection truth
 
-The candidate rollout percentage is now `5%` in this isolated branch. The
+The candidate rollout percentage is now `25%` in this isolated branch. The
 legacy descriptor remains active and retained, and the package-v2 descriptor
 remains the candidate. This is a delivery-only canary: it does not change the
 audio approval flags or the public audiobook count.
@@ -56,6 +56,21 @@ Railway deployment `74fcae57-0878-4c41-bde9-c12c05f98f57`.
 - One click: legacy audio reached `readyState=4`, remained playing, and advanced
   to `25.047581` seconds of `636.84` seconds with zero console errors.
 
+At production `5%`, exact commit
+`54c2b9def38e7971c504d4cf871a32fd9c8a331f` deployed successfully through
+Railway deployment `de96f4c9-49b8-44af-a9bc-b515881df747`.
+
+- Deterministic candidate identity: manifest `200`, exact package version,
+  segment Range `206`, invalid Range `416`, timestamps `200`.
+- Deterministic legacy identity: package manifest `404`, monolith Range `206`.
+- Cross-cohort segment and wrong package-version requests: `404`.
+- Five candidate and five legacy 1,024-byte Range probes: all `206`.
+- Observed time to first byte: `0.796964–1.112835` seconds.
+- Real browser legacy cohort before intent: no `src`, `readyState=0`.
+- One browser click: legacy route reached `readyState=4`, remained playing, and
+  advanced to `3.523786` seconds with zero console errors.
+- Public catalog remained exactly four approved audiobooks.
+
 ## Validation
 
 - Active-release pointer validation: pass, zero blockers.
@@ -65,10 +80,13 @@ Railway deployment `74fcae57-0878-4c41-bde9-c12c05f98f57`.
 - Approval flags and public audiobook count: unchanged.
 - `paid_tts.lock`: untouched.
 - Production `0%` deployment, HTTP proof, and browser proof: pass.
-- `5%` pointer mutation: local green in an isolated branch.
+- `5%` merge, deployment, deterministic cohort HTTP proof, and real browser
+  legacy-cohort proof: pass.
 - `5%` focused builder, selector, storage, backend package, routing,
   publication, Redis policy, and source-cleanup tests: `172 passed`.
-- Production `5%` cohort HTTP and browser proof: pending merge/deployment.
+- `25%` pointer mutation: local green in an isolated branch.
+- `25%` focused tests: `172 passed`.
+- Production `25%` cohort HTTP and browser proof: pending merge/deployment.
 
 Next exact command:
 

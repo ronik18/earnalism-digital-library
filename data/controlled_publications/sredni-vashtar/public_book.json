@@ -45,7 +45,7 @@
       "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3"
     ],
     "rollout": {
-      "percentage": 5,
+      "percentage": 25,
       "salt": "sredni-vashtar-package-v2-20260730"
     },
     "schema_version": "audiobook_active_release.v1",

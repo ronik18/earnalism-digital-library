@@ -1528,3 +1528,22 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   package-v2 cohort and a deterministic legacy cohort must pass production
   manifest, Range, stale/invalid route, and one-click browser checks before
   considering `25%`.
+
+## 2026-07-30 — Validate deterministic cohorts before widening a package canary
+
+- A rollout percentage is not evidence by itself. At Sredni's production
+  `5%` checkpoint, a known candidate identity and a known legacy identity were
+  exercised separately.
+- The candidate identity received the exact package manifest, Range-streamed
+  segment and timestamps. Invalid Range, wrong package version and a legacy
+  identity attempting the candidate segment all failed closed. The legacy
+  identity retained its approved monolithic Range stream.
+- Five 1,024-byte Range probes per lane all returned `206`; observed first-byte
+  times remained between `0.796964` and `1.112835` seconds, inside the current
+  `1.5`-second p75 target for this bounded sample.
+- The real browser landed in the legacy cohort and independently proved no
+  pre-intent source, one-click playback, time advancement, and zero console
+  errors. Deterministic candidate delivery was proven at the HTTP boundary.
+- Only after all cohort checks passed was the pointer advanced to `25%` in a
+  separate branch. Narration, storage, receipts, approval truth, rollout salt,
+  and the four-title public count remained unchanged.
