@@ -1,0 +1,181 @@
+{
+  "schema_version": "earnalism.jekyll_charon_asr_model_diagnostic.v1",
+  "generated_at": "2026-07-30T16:14:33Z",
+  "slug": "jekyll-and-hyde",
+  "title": "Strange Case of Dr Jekyll and Mr Hyde",
+  "decision": "FULL_TITLE_MLX_RUN_BLOCKED_CHUNK9_NARRATION_OMISSION_CONFIRMED",
+  "candidate_binding": {
+    "source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+    "input_manifest_sha256": "43177dc6f71521a6558dfcccbd784d46213e9e0f533c4e8ac3133be29725fd22",
+    "full_manifest_sha256": "5bbbc01f9ab2dcba7194c1a0a28f636863896e68adb2f9a743ee33ddd7395439",
+    "candidate_attempt_fingerprint": "3f8ecfd4a75738d2f34f9081046d7aeae1b9f21f53f690ed58692e9baf4050a0",
+    "voice": "en-GB-Chirp3-HD-Charon"
+  },
+  "completed_medium_en_evidence": {
+    "private_report_path": "/private/tmp/earnalism-jekyll-charon-private/jekyll-and-hyde/full/3f8ecfd4a75738d2/full_audio_derived_asr_sync_qa.json",
+    "report_sha256": "b31eab68e0bd79c6469617cb8a2a9908d0b5ef2966121f6c723eda0e81dbd812",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "status": "FULL_AUDIO_DERIVED_ASR_SYNC_BLOCKED",
+    "full_title_score": 9.8831,
+    "full_title_coverage": 0.9873,
+    "full_title_precision": 0.9894,
+    "source_token_count": 25691,
+    "transcript_token_count": 25637,
+    "equal_token_count": 25364,
+    "first_words_match": true,
+    "last_words_match": true,
+    "audio_derived_gate_pass": false,
+    "full_title_token_order_gate_pass": false,
+    "objective_pass": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_mutation_performed": false,
+    "paid_lock_read_or_written": false
+  },
+  "bounded_diagnostic_contract": {
+    "target_unit_ids": [
+      "chunk_0009",
+      "chunk_0045"
+    ],
+    "exact_pass_control_unit_ids": [
+      "chunk_0008",
+      "chunk_0064",
+      "chunk_0071"
+    ],
+    "source_blind": true,
+    "initial_prompt": null,
+    "temperature": 0.0,
+    "word_timestamps": true,
+    "full_title_inference_run": false
+  },
+  "turbo_model": {
+    "repository": "mlx-community/whisper-large-v3-turbo",
+    "revision": "a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+    "weights_sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
+    "config_sha256": "b34fc29e4e11e0a25e812775dd67f4dd16fc2c8eb43d28ae25ff7d660ecb6379",
+    "runtime": "mlx-whisper 0.4.3",
+    "private_report_path": "/private/tmp/earnalism-jekyll-charon-private/jekyll-and-hyde/full/3f8ecfd4a75738d2/mlx_large_v3_turbo_diagnostic/representative_objective_qa.json",
+    "report_sha256": "ef86c6ae2d1db6857aa209304173b8d2f74aded90caf3f66133e7db9ed185ec9",
+    "diagnostic_fingerprint": "5083814f484eb53fc21f5b322a766084f9d9561aa6a2b89f7edb55fba847782b",
+    "status": "MLX_MODEL_NOT_VALIDATED_ON_STRONG_CONTROLS",
+    "full_92_unit_run_eligible": false,
+    "wall_seconds": 49.892
+  },
+  "full_large_v3_model": {
+    "repository": "mlx-community/whisper-large-v3-mlx",
+    "revision": "49e6aa286ad60c14352c404340ded53710378a11",
+    "license": "MIT",
+    "weights_sha256": "05ff791ce3630fae47e7c51004e9666204d786246ec07cac6110af768099b40d",
+    "config_sha256": "34982ce6ae286095000f82ae9583b3431639e8b092bf60c961f203745e6500e3",
+    "readme_sha256": "1194c9a3805b7c80adf0017e92c72db0bbb14ab64462eb64d548c1c532b7aa56",
+    "runtime": "mlx-whisper 0.4.3",
+    "private_report_path": "/private/tmp/earnalism-jekyll-charon-private/jekyll-and-hyde/full/3f8ecfd4a75738d2/mlx_large_v3_diagnostic/representative_objective_qa.json",
+    "report_sha256": "7328d462aca42550d728187e1676f0c1a587f4d3b71033133920e9dbb4ba7a93",
+    "diagnostic_fingerprint": "b090a651611e07ff5158a49682353162fd2a83d59ec40316adffce724f538a95",
+    "status": "MLX_MODEL_NOT_VALIDATED_ON_STRONG_CONTROLS",
+    "full_92_unit_run_eligible": false,
+    "wall_seconds": 180.494
+  },
+  "unit_comparison": [
+    {
+      "unit_id": "chunk_0009",
+      "role": "target",
+      "source_text_sha256": "24a85dbb2f4184ea9ffb86599c65777d5fcfccc343d3fdb6077884aa5c9557de",
+      "audio_sha256": "e2a34a5ccfc5bb78e121fdd32ff821e7f907afe7203521fc08517c9904c91ebf",
+      "source_token_count": 288,
+      "medium_en": {
+        "score": 9.3863,
+        "coverage": 0.9028,
+        "transcript_token_count": 266,
+        "last_words_match": false
+      },
+      "large_v3_turbo": {
+        "score": 9.3502,
+        "coverage": 0.8993,
+        "transcript_token_count": 266,
+        "last_words_match": false,
+        "word_timestamp_evidence_valid": true
+      },
+      "large_v3": {
+        "score": 9.6441,
+        "coverage": 0.941,
+        "transcript_token_count": 274,
+        "last_words_match": false,
+        "word_timestamp_evidence_valid": true
+      },
+      "cross_model_finding": "ACTUAL_NARRATION_CONTENT_OMISSION",
+      "missing_source_span": "obligation beyond the payment of a few small sums to the members of the doctor's household",
+      "missing_source_token_count": 16,
+      "measured_transition": {
+        "prior_spoken_token": "or",
+        "prior_token_end_seconds": 31.92,
+        "next_spoken_token": "this",
+        "next_token_start_seconds": 31.92,
+        "gap_seconds": 0.0
+      },
+      "reason": "All three independent recognizers cross the same source span with no audio-time gap. This is not a medium.en timestamp limitation."
+    },
+    {
+      "unit_id": "chunk_0045",
+      "role": "target",
+      "source_text_sha256": "6d22438cb060ebe340ce7841382bdd72f1e387590d64c1ffc4fdc511aca229e4",
+      "audio_sha256": "f39c427a0aa166558e783133a124f72943b7e3fdb05e62dec516b2a3751bd86c",
+      "source_token_count": 282,
+      "medium_en": {
+        "score": 9.4698,
+        "coverage": 0.9184,
+        "transcript_token_count": 265,
+        "last_words_match": false
+      },
+      "large_v3_turbo": {
+        "score": 9.7872,
+        "coverage": 0.9787,
+        "transcript_token_count": 282,
+        "last_words_match": false,
+        "word_timestamp_evidence_valid": true
+      },
+      "large_v3": {
+        "score": 9.894,
+        "coverage": 0.9929,
+        "transcript_token_count": 284,
+        "last_words_match": true,
+        "word_timestamp_evidence_valid": true
+      },
+      "cross_model_finding": "MEDIUM_EN_RECOGNITION_LIMITATION_WITH_LARGE_V3_DUPLICATE_HALLUCINATIONS",
+      "reason": "Both MLX models recover the clause missed by medium.en, but neither produces a strict content-integrity pass."
+    },
+    {
+      "unit_id": "chunk_0008",
+      "role": "control",
+      "medium_en_pass": true,
+      "large_v3_turbo_pass": false,
+      "large_v3_pass": true
+    },
+    {
+      "unit_id": "chunk_0064",
+      "role": "control",
+      "medium_en_pass": true,
+      "large_v3_turbo_pass": true,
+      "large_v3_pass": true
+    },
+    {
+      "unit_id": "chunk_0071",
+      "role": "control",
+      "medium_en_pass": true,
+      "large_v3_turbo_pass": false,
+      "large_v3_pass": false,
+      "large_v3_timestamp_anomaly": "zero-duration duplicate token at 94.12 seconds"
+    }
+  ],
+  "release_truth": {
+    "objective_gate_pass": false,
+    "full_title_mlx_run_allowed": false,
+    "listening_qa_allowed_from_this_evidence": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+    "paid_tts_lock_touched": false
+  },
+  "next_exact_action": "Prepare a no-provider-call, sequential bounded-repair preflight for chunk_0009 against the repaired Jekyll manifest. Bind the exact 16-token omission, source/audio/report hashes, preserve all other audio files byte-for-byte, and require a sentence-boundary-safe synthesis plan plus fresh objective QA before any provider call."
+}
