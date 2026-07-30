@@ -1,8 +1,8 @@
 # Audiobook package v2 canary — A Ghost Story
 
-Status: **production-green at five percent, with a separate deterministic
-twenty-five-percent canary prepared for review and deployment. The approved
-legacy stream remains the active rollback-safe contract.**
+Status: **production-green at twenty-five percent, with full package-v2
+promotion prepared for review and deployment. The approved legacy descriptor
+remains retained for immediate rollback.**
 
 This is a delivery migration for an audiobook that was already approved and
 live. It does not regenerate narration, change release gates, or increase the
@@ -132,13 +132,40 @@ matching checksum manifests. Active/candidate descriptors, salt, packages,
 receipts, storage, approvals, narration and the four-title public count remain
 unchanged.
 
-Full promotion is still prohibited. After the twenty-five-percent deployment,
-the deterministic candidate/control matrix must pass again. If the natural
-browser remains in the legacy cohort, post-promotion package-route proof
-becomes non-negotiable: one click must play `c001-s001`, controlled
-near-boundary playback must advance to `c001-s002`, and both media and console
-error counts must remain zero. Failure requires rollback to the retained
-legacy descriptor.
+The twenty-five-percent deployment completed on merge
+`2f1c0ae3f5276ab356e2fee7b8cafd8e2eb46ce9` and Railway deployment
+`f625d4c5-2786-4f75-8c67-61d60172ef63`.
+
+- The deterministic candidate/control matrix passed `63/63` checks again.
+- Both package segments, both timestamp sidecars, invalid ranges, negative
+  isolation routes, legacy continuity and the four-title public catalog
+  remained exact.
+- The natural browser remained in the legacy cohort. It again proved no
+  pre-intent audio, one-click playback, advancing time and zero errors before
+  being paused.
+
+## Full package-v2 promotion preparation
+
+The guarded promotion operation makes descriptor
+`cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40`
+active, clears the candidate and percentage-canary fields, and retains legacy
+descriptor
+`c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d`
+for rollback.
+
+The promotion is not production-green merely because the pointer is prepared.
+After deploy:
+
+- every deterministic identity and the public request must receive the exact
+  package manifest;
+- one click in the real browser must play `c001-s001`;
+- controlled near-boundary playback must auto-advance to `c001-s002`;
+- both timestamp sidecars and negative routes must remain exact;
+- media and console errors must stay zero; and
+- the public audiobook count must remain four.
+
+Any failure requires immediate pointer rollback to the retained legacy
+descriptor.
 
 ## Validation
 
