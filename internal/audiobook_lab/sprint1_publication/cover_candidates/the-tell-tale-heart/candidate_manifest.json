@@ -1,0 +1,51 @@
+{
+  "schema_version": "earnalism.private_cover_candidate.v1",
+  "status": "PRIVATE_CANDIDATE_EDITORIAL_REVIEW_REQUIRED",
+  "generated_at": "2026-07-30T06:17:20Z",
+  "slug": "the-tell-tale-heart",
+  "title": "The Tell-Tale Heart",
+  "author": "Edgar Allan Poe",
+  "generation_mode": "deterministic_pillow_composition_over_verified_public_domain_art",
+  "source_art": {
+    "path": "source_art/odilon-redon-the-tell-tale-heart-1883.jpeg",
+    "sha256": "075f2c285d2f546076e8f1f50f03da43184f4c51d47746fbabc2358f9d37ed56",
+    "rights_evidence": "source_rights_evidence.json",
+    "record_url": "https://commons.wikimedia.org/wiki/File:Odilon_Redon_-_The_Tell-Tale_Heart_-_1883.jpeg",
+    "rights_mark": "Public Domain Mark 1.0"
+  },
+  "front": {
+    "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/the-tell-tale-heart/the-tell-tale-heart-front-editorial-candidate-v1.jpg",
+    "sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 738942,
+    "aspect_ratio": 0.6667
+  },
+  "back": {
+    "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/the-tell-tale-heart/the-tell-tale-heart-back-editorial-candidate-v1.jpg",
+    "sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 349471,
+    "aspect_ratio": 0.6667
+  },
+  "catalog_hashes": {
+    "data/controlled_publications/the-tell-tale-heart/public_book.json": "ac9b41a69087591b3ccf6a8e889700b3d0f2cf3c268f5e2ae37ed02532e2e9f2",
+    "backend/data/controlled_publications/the-tell-tale-heart/public_book.json": "ac9b41a69087591b3ccf6a8e889700b3d0f2cf3c268f5e2ae37ed02532e2e9f2"
+  },
+  "review": {
+    "admin_upload_status": "NOT_UPLOADED",
+    "canonical_promotion_status": "NOT_PROMOTED",
+    "owner_editorial_review_required": true
+  },
+  "constraints": {
+    "private_only": true,
+    "public_catalog_mutated": false,
+    "reader_state_mutated": false,
+    "audiobook_release_state_mutated": false,
+    "ai_generated_imagery": false,
+    "placeholder_art": false
+  }
+}

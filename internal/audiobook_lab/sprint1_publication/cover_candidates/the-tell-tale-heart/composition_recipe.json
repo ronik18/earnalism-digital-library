@@ -1,0 +1,171 @@
+{
+  "schema_version": "earnalism.deterministic_cover_composition.v1",
+  "slug": "the-tell-tale-heart",
+  "title": "The Tell-Tale Heart",
+  "author": "Edgar Allan Poe",
+  "canonical_short_description": "A murderer's guilty conscience manifests as the relentless beating of his victim's heart beneath the floorboards.",
+  "source_art_sha256": "075f2c285d2f546076e8f1f50f03da43184f4c51d47746fbabc2358f9d37ed56",
+  "output_size": [
+    1600,
+    2400
+  ],
+  "generation_mode": "deterministic_pillow_composition_over_verified_public_domain_art",
+  "ai_generated_imagery": false,
+  "placeholder_art": false,
+  "front": {
+    "crop": {
+      "source_size": [
+        1024,
+        1223
+      ],
+      "crop_box": [
+        104,
+        0,
+        919,
+        1223
+      ],
+      "target_size": [
+        1600,
+        2400
+      ],
+      "mirrored": false,
+      "resampling": "LANCZOS"
+    },
+    "text_boxes": [
+      {
+        "name": "title",
+        "text": "The Tell-Tale Heart",
+        "lines": [
+          "The Tell-Tale",
+          "Heart"
+        ],
+        "font_size": 154,
+        "box": [
+          284,
+          236,
+          1316,
+          536
+        ]
+      },
+      {
+        "name": "author",
+        "text": "Edgar Allan Poe",
+        "lines": [
+          "Edgar Allan Poe"
+        ],
+        "font_size": 68,
+        "box": [
+          559,
+          584,
+          1041,
+          646
+        ]
+      }
+    ],
+    "fonts": {
+      "title": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "author": "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    },
+    "treatment": {
+      "source_art_only": true,
+      "contrast": 1.08,
+      "color": 0.82,
+      "vertical_shade": {
+        "top_alpha": 205,
+        "bottom_alpha": 55,
+        "color": [
+          30,
+          7,
+          13
+        ]
+      }
+    }
+  },
+  "back": {
+    "crop": {
+      "source_size": [
+        1024,
+        1223
+      ],
+      "crop_box": [
+        104,
+        0,
+        919,
+        1223
+      ],
+      "target_size": [
+        1600,
+        2400
+      ],
+      "mirrored": true,
+      "resampling": "LANCZOS"
+    },
+    "text_boxes": [
+      {
+        "name": "title",
+        "text": "The Tell-Tale Heart",
+        "lines": [
+          "The Tell-Tale",
+          "Heart"
+        ],
+        "font_size": 118,
+        "box": [
+          404,
+          318,
+          1196,
+          552
+        ]
+      },
+      {
+        "name": "author",
+        "text": "Edgar Allan Poe",
+        "lines": [
+          "Edgar Allan Poe"
+        ],
+        "font_size": 58,
+        "box": [
+          594,
+          640,
+          1006,
+          693
+        ]
+      },
+      {
+        "name": "canonical_short_description",
+        "text": "A murderer's guilty conscience manifests as the relentless beating of his victim's heart beneath the floorboards.",
+        "lines": [
+          "A murderer's guilty conscience manifests as",
+          "the relentless beating of his victim's heart",
+          "beneath the floorboards."
+        ],
+        "font_size": 52,
+        "box": [
+          298,
+          1030,
+          1302,
+          1215
+        ]
+      }
+    ],
+    "fonts": {
+      "title": "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+      "author": "/System/Library/Fonts/Supplemental/Georgia.ttf",
+      "description": "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    },
+    "treatment": {
+      "source_art_only": true,
+      "gaussian_blur_radius": 1.4,
+      "contrast": 0.88,
+      "color": 0.58,
+      "vertical_shade": {
+        "top_alpha": 155,
+        "bottom_alpha": 195,
+        "color": [
+          29,
+          8,
+          14
+        ]
+      }
+    }
+  }
+}

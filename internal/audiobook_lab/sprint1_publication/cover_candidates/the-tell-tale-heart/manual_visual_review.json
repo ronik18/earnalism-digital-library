@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.private_cover_manual_visual_review.v1",
+  "reviewed_at": "2026-07-30T06:21:37Z",
+  "status": "CODEX_VISUAL_INSPECTION_PASS_OWNER_REVIEW_PENDING",
+  "slug": "the-tell-tale-heart",
+  "front": {
+    "sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+    "title_legible": true,
+    "author_legible": true,
+    "title_exact": true,
+    "author_exact": true,
+    "text_clipping_detected": false,
+    "text_overlap_detected": false,
+    "source_art_subject_visible": true,
+    "notes": "The title and author remain clear inside a restrained burgundy panel. Redon's eye and floorboard composition remains visible and reads as the primary graphical subject."
+  },
+  "back": {
+    "sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+    "title_legible": true,
+    "author_legible": true,
+    "canonical_description_legible": true,
+    "title_exact": true,
+    "author_exact": true,
+    "text_clipping_detected": false,
+    "text_overlap_detected": false,
+    "source_art_continuity_visible": true,
+    "notes": "The matching mirrored source artwork forms the border field. The central panel is calm, text remains separated, and the prior generated back-cover collision is absent."
+  },
+  "release_safety": {
+    "private_candidate_only": true,
+    "admin_credentials_present": false,
+    "admin_upload_performed": false,
+    "canonical_promotion_performed": false,
+    "public_cover_exposure_changed": false,
+    "audio_release_truth_changed": false,
+    "owner_editorial_review_required": true
+  }
+}

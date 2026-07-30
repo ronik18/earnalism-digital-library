@@ -1,0 +1,42 @@
+{
+  "schema_version": "earnalism.private_cover_visual_validation.v1",
+  "status": "PASS_PENDING_EDITORIAL_REVIEW",
+  "generated_at": "2026-07-30T06:17:20Z",
+  "checks": {
+    "source_art_hash_bound": true,
+    "source_rights_verified": true,
+    "exact_catalog_title": true,
+    "exact_catalog_author": true,
+    "exact_catalog_short_description": true,
+    "front_dimensions_1600x2400": true,
+    "back_dimensions_1600x2400": true,
+    "front_under_admin_upload_limit": true,
+    "back_under_admin_upload_limit": true,
+    "text_inside_safe_margins": true,
+    "text_box_overlap_count": 0,
+    "public_catalog_unchanged": true,
+    "audio_release_truth_unchanged": true
+  },
+  "geometry_errors": [],
+  "front_validation": {
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 738942,
+    "sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+    "aspect_ratio": 0.6667
+  },
+  "back_validation": {
+    "width": 1600,
+    "height": 2400,
+    "format": "JPEG",
+    "bytes": 349471,
+    "sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+    "aspect_ratio": 0.6667
+  },
+  "manual_checks_required": [
+    "Owner/editorial approval of visual direction",
+    "Normal-zoom legibility review",
+    "Private admin candidate preview review"
+  ]
+}

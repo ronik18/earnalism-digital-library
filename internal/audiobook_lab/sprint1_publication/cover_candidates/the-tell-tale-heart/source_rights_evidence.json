@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.cover_source_rights.v1",
+  "status": "VERIFIED_PUBLIC_DOMAIN_SOURCE_ART",
+  "work": {
+    "title": "The Tell-Tale Heart",
+    "artist": "Odilon Redon",
+    "created_year": 1883,
+    "artist_death_year": 1916,
+    "medium": "Charcoal on brown paper",
+    "collection": "Santa Barbara Museum of Art"
+  },
+  "source": {
+    "record_url": "https://commons.wikimedia.org/wiki/File:Odilon_Redon_-_The_Tell-Tale_Heart_-_1883.jpeg",
+    "exact_file_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Odilon_Redon_-_The_Tell-Tale_Heart_-_1883.jpeg",
+    "local_path": "source_art/odilon-redon-the-tell-tale-heart-1883.jpeg",
+    "sha256": "075f2c285d2f546076e8f1f50f03da43184f4c51d47746fbabc2358f9d37ed56",
+    "size_bytes": 491009,
+    "width": 1024,
+    "height": 1223,
+    "media_type": "image/jpeg",
+    "retrieved_at": "2026-07-30T06:17:20Z"
+  },
+  "rights": {
+    "mark": "Public Domain Mark 1.0",
+    "rights_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "rights_statement": "The source record identifies this faithful reproduction of the 1883 artwork as public domain. The artist died in 1916, and the work predates 1931.",
+    "commercial_reuse_allowed": true,
+    "derivative_use_allowed": true,
+    "attribution_required": false,
+    "jurisdiction_notes": "The source record states public-domain status in the country of origin and countries with copyright terms of life plus 100 years or fewer, and United States public-domain status because the work predates 1931."
+  },
+  "review": {
+    "source_identity_verified": true,
+    "file_hash_verified": true,
+    "finished_cover_editorial_review_required": true,
+    "canonical_promotion_authorized": false
+  }
+}
