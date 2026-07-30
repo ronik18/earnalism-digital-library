@@ -6,11 +6,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "edb44322f0b12cea443e6b5aeccb38b0b01bbcc900ef52a72d305cca6550de31"
+      "sha256": "f7097de626e7a1a46caec39bd5ab175fed01d9225adf9000ec735b6184234af8"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "7b52b525b11079ead6883b0196c03574794bc5991d35c358b0d22bbb0103bee6"
+      "sha256": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9"
     },
     {
       "file": "source_evidence.json",
@@ -21,6 +21,6 @@
       "sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1"
     }
   ],
-  "generated_at": "2026-07-30T12:01:44Z",
+  "generated_at": "2026-07-30T12:14:03Z",
   "slug": "a-ghost-story"
 }

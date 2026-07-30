@@ -13,23 +13,23 @@
   },
   "titles": {
     "a-ghost-story": {
-      "latest_decision": "PACKAGE_V2_TWENTY_FIVE_PERCENT_CANARY_PREPARED",
-      "decision_reason": "The five-percent production checkpoint passed 63 deterministic candidate/control HTTP checks and real-browser legacy control playback with no pre-intent audio or errors. The guarded rollout tool changed only five to twenty-five percent. Full promotion remains blocked until the twenty-five-percent checkpoint is green and package-route browser playback with cross-segment transition is mandatory after full promotion if not naturally observed before it.",
-      "updated_at": "2026-07-30T12:01:24Z",
+      "latest_decision": "PACKAGE_V2_FULL_PROMOTION_PREPARED",
+      "decision_reason": "The twenty-five-percent production checkpoint passed 63 deterministic candidate/control HTTP checks and real-browser legacy control playback. The guarded promotion makes the exact receipt-bound package active, clears canary fields, and retains legacy rollback. Production closeout remains blocked until the deployed package passes all-identity HTTP proof, one-click package playback, and a real c001-s001 to c001-s002 transition.",
+      "updated_at": "2026-07-30T12:14:07Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
-      "public_audio_status": "APPROVED_LIVE_TWENTY_FIVE_PERCENT_PACKAGE_V2_CANARY_PREPARED",
+      "public_audio_status": "APPROVED_LIVE_FULL_PACKAGE_V2_PROMOTION_PREPARED",
       "narrated_manuscript_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
       "canonical_source_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
       "approved_audio_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
       "package_v2_release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
       "package_v2_version": "sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422",
       "package_v2_segment_count": 2,
-      "package_v2_rollout_percentage": 25,
+      "package_v2_rollout_percentage": 0,
       "package_v2_storage_status": "PRODUCTION_AND_DR_FULL_DOWNLOAD_VERIFIED",
       "package_v2_release_blockers": [],
       "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_a_ghost_story_20260730.json",
-      "audiobook_next_action": "Merge and deploy the isolated twenty-five-percent canary, repeat the full deterministic candidate/control matrix and real browser proof, then allow full promotion only with mandatory post-promotion package-route and c001-s001 to c001-s002 transition proof."
+      "audiobook_next_action": "Merge and deploy the isolated full promotion, then require all identities to resolve the exact package, one-click c001-s001 playback, real c001-s001 to c001-s002 auto-advance, zero errors, and exact four-title public truth; rollback on any failure."
     },
     "alices-adventures-in-wonderland": {
       "latest_decision": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_REPRESENTATIVE_ASR_REPAIR_FAILURE",

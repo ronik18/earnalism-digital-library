@@ -1648,3 +1648,22 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   post-promotion checkpoint must prove the exact package route and a real
   segment-one to segment-two transition. Any failure rolls back to the
   retained legacy descriptor.
+
+## 2026-07-30 — A full promotion is prepared first and earned only after package-browser proof
+
+- A Ghost Story's twenty-five-percent checkpoint repeated the full `63/63`
+  candidate/control matrix after the exact deployment and preserved healthy
+  natural-browser legacy playback.
+- The promotion operation does not leave a one-hundred-percent canary. It
+  makes the package descriptor active, clears the candidate and rollout salt,
+  resets percentage to zero, and retains the approved legacy descriptor for
+  rollback.
+- Pointer preparation is not completion. After deployment, every identity must
+  receive the same package manifest and the real browser must select
+  `c001-s001` on one click.
+- Because this package has two segments, customer proof must include a real
+  `c001-s001` to `c001-s002` transition with advancing playback and zero media
+  or console errors.
+- Any post-promotion routing, playback, timestamp or transition failure must
+  roll back to legacy rather than being documented as an acceptable canary
+  variation.

@@ -1,15 +1,15 @@
 {
   "audio_enabled": true,
   "audiobook_active_release": {
-    "active_release_descriptor_sha256": "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d",
-    "candidate_release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+    "active_release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+    "candidate_release_descriptor_sha256": "",
     "retained_release_descriptor_sha256s": [
-      "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d",
-      "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40"
+      "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+      "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d"
     ],
     "rollout": {
-      "percentage": 25,
-      "salt": "a-ghost-story-package-v2-20260730"
+      "percentage": 0,
+      "salt": ""
     },
     "schema_version": "audiobook_active_release.v1",
     "slug": "a-ghost-story",
@@ -250,7 +250,7 @@
       "word_count": 2423
     }
   },
-  "audiobook_release_descriptor_sha256": "c0504fda3db7ac07f48580acf23aa97670a8bdad4b74708707274915faddfc6d",
+  "audiobook_release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
   "author": "Mark Twain",
   "chapter_count": 1,
   "chapters": [
