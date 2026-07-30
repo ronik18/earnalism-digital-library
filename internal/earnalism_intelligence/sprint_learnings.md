@@ -1563,3 +1563,29 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   monolithic legacy source at that point is a release-blocking failure.
 - No narration, storage object, receipt, approval flag, or public audiobook
   count changes during this delivery promotion.
+
+## 2026-07-30 — Full package promotion requires the browser to select the package route
+
+- Two deterministic identities and the public request all resolved the exact
+  active Sredni Vashtar package after full promotion.
+- Before playback intent, the real browser transferred no audio. One click
+  selected the package segment, reached `readyState=4`, and advanced playback
+  with no media or console errors.
+- The legacy descriptor remains retained for rollback but is no longer
+  selected. The public audiobook count remains four.
+- A Ghost Story package-v2 migration may now begin, serialized behind this
+  completed production checkpoint.
+
+## 2026-07-30 — Preserve the approved legacy stream while staging a multi-segment package
+
+- A Ghost Story's exact approved narration, manuscript and existing release
+  evidence can be migrated without TTS or release-gate mutation.
+- Full-download verification must cover every payload and the final canonical
+  manifest in both production and genuinely separate DR accounts before any
+  pointer is staged.
+- Zero-percent staging retains the legacy descriptor as active and binds the
+  two-segment package only as a candidate. The public audiobook count remains
+  four.
+- The next boundary is a production-green zero-percent deploy. Do not enable
+  five percent until legacy Range and one-click browser playback still pass
+  and the candidate manifest remains dark.

@@ -1,7 +1,8 @@
 # Audiobook package v2 canary — Sredni Vashtar
 
-Status: **the 25% production checkpoint passed and the package-v2 release is
-prepared for full promotion**.
+Status: **the full package-v2 promotion is production green. All tested
+identities and the public request resolve the exact active package, and one
+customer click starts its release-gated segment with no console errors.**
 
 This is a delivery migration for the existing live audiobook. It does not
 approve a new audiobook, regenerate narration, or change the public count of
@@ -15,7 +16,7 @@ four.
   `sha256-9f1e84d4377dff2d5778dd158393fd450feb37fdef5ca6e88c67191cbe277edd`
 - Final package manifest SHA-256:
   `d488f114c154dd57ecdf474254d33b07a355a26ed9b3d416bc85ddf1b68117ea`
-- Legacy descriptor retained and active:
+- Legacy descriptor retained for rollback but no longer selected:
   `1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c`
 - Duration / segments: `636,840 ms / 1`
 - Narration regenerated: `false`
@@ -84,6 +85,25 @@ through Railway deployment `66052e5a-7f63-4a54-97da-dfddd8224395`.
   advanced to `5.171145` seconds with zero console errors.
 - Public catalog remained exactly four approved audiobooks.
 
+At full production promotion, exact merge commit
+`8d027cd5a3a7266fdc0f7220f0169269077bb69f` deployed successfully through
+Railway deployment `87b9c17e-a660-4050-82f0-0deab6a3f4cd`.
+
+- Two deterministic identities and the public request all received manifest
+  `200` for exact package version
+  `sha256-9f1e84d4377dff2d5778dd158393fd450feb37fdef5ca6e88c67191cbe277edd`.
+- Both deterministic identities received segment Range `206`.
+- Invalid Range returned `416`; wrong package version and wrong segment
+  returned `404`.
+- Before browser intent, the audio element had no `src`, empty `currentSrc`,
+  `readyState=0`, and remained paused.
+- One click selected the exact package segment route, reached `readyState=4`,
+  remained playing, and advanced to `3.935355` seconds of `636.84` seconds
+  without a media or console error.
+- Playback was deliberately paused after proof at `7.823031` seconds.
+- The public catalog remained exactly four approved audiobooks.
+- The legacy descriptor remains rollback-retained but is no longer selected.
+
 ## Validation
 
 - Active-release pointer validation: pass, zero blockers.
@@ -100,13 +120,13 @@ through Railway deployment `66052e5a-7f63-4a54-97da-dfddd8224395`.
 - `25%` merge, deployment, deterministic cohort HTTP proof, and real browser
   legacy-cohort proof: pass.
 - `25%` focused tests: `172 passed`.
-- Full package-v2 promotion: local green in an isolated branch.
+- Full package-v2 promotion: production green.
 - Full-promotion focused tests: `172 passed`.
 - Production full-promotion manifest, Range, fail-closed, and mandatory
-  package-v2 one-click browser proof: pending merge/deployment.
+  package-v2 one-click browser proof: pass.
 
 Next exact command:
 
 ```bash
-git diff --check && git status --short
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_active_release_v2.py status --slug sredni-vashtar
 ```

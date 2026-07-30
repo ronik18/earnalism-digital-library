@@ -13,9 +13,9 @@
   },
   "titles": {
     "a-ghost-story": {
-      "latest_decision": "PACKAGE_V2_RELEASE_CANDIDATE_BUILT_FROM_RECOVERED_EXACT_MANUSCRIPT",
-      "decision_reason": "The original narrated manuscript was recovered byte-for-byte and hash-bound to the existing approved audio. Its only difference from the controlled reader text is whitespace; intraword hyphens are collapsed only in alignment token space. Canonical public text, audio release gates, and public URLs remain unchanged.",
-      "updated_at": "2026-07-30T05:30:33Z",
+      "latest_decision": "PACKAGE_V2_ZERO_PERCENT_CANDIDATE_STAGED",
+      "decision_reason": "The exact already-approved audiobook is now immutable and fully checksum-verified in independent production and DR stores. Its two-segment package is receipt-bound at zero percent while the approved legacy descriptor remains active for every customer.",
+      "updated_at": "2026-07-30T11:21:50Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "APPROVED_LIVE_LEGACY_DELIVERY",
@@ -23,10 +23,13 @@
       "canonical_source_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
       "approved_audio_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
       "package_v2_release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+      "package_v2_version": "sha256-9f036b8f55e834684aac2ed2710efad2be66ccd96ca8d3e38eee982150e5b422",
       "package_v2_segment_count": 2,
+      "package_v2_rollout_percentage": 0,
+      "package_v2_storage_status": "PRODUCTION_AND_DR_FULL_DOWNLOAD_VERIFIED",
       "package_v2_release_blockers": [],
-      "evidence": "internal/earnalism_intelligence/audiobook_package_v2_a_ghost_story_normalization_evidence.json",
-      "audiobook_next_action": "Keep legacy production delivery unchanged until the immutable package is privately uploaded and independently checksum-verified under a separately authorized storage task."
+      "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_a_ghost_story_20260730.json",
+      "audiobook_next_action": "Merge and deploy the zero-percent stage, then require the candidate manifest to remain 404, the legacy Range stream to remain 206, the public count to remain four, and one-click legacy browser playback to pass before enabling five percent."
     },
     "alices-adventures-in-wonderland": {
       "latest_decision": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_REPRESENTATIVE_ASR_REPAIR_FAILURE",
@@ -1631,11 +1634,11 @@
       "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_the-open-window_20260729.json"
     },
     "sredni-vashtar": {
-      "latest_decision": "PACKAGE_V2_TWENTY_FIVE_PERCENT_PRODUCTION_GREEN_FULL_PROMOTION_PREPARED",
-      "decision_reason": "The twenty-five-percent commit deployed automatically after green CI. Deterministic candidate and legacy identities again passed manifest, Range, invalid and cross-cohort routing, the real browser legacy cohort played in one click with zero console errors, and public truth remained four. The isolated full-promotion branch makes package-v2 active while retaining the approved legacy descriptor for rollback.",
-      "updated_at": "2026-07-30T10:57:01Z",
+      "latest_decision": "PACKAGE_V2_FULL_PROMOTION_PRODUCTION_GREEN",
+      "decision_reason": "The exact full-promotion commit deployed successfully. Two deterministic identities and the public request received the exact active package manifest, Range and fail-closed routes passed, and a real customer browser transferred no pre-intent audio before one click selected the package segment, reached readyState 4, and advanced without errors. The legacy descriptor remains retained only for rollback and public truth remains four.",
+      "updated_at": "2026-07-30T11:12:10Z",
       "language": "en",
-      "public_audio_status": "APPROVED_AND_LIVE_PACKAGE_V2_FULL_PROMOTION_PREPARED",
+      "public_audio_status": "APPROVED_AND_LIVE_PACKAGE_V2_PRODUCTION_GREEN",
       "provider": "openai",
       "model": "gpt-4o-mini-tts",
       "voice": "verse",
@@ -1652,7 +1655,7 @@
       "measured_sync_score": 9.7997,
       "public_sync_mode": "section_following",
       "release_source_commit": "b337300763b874b434938ee09519208512be34bb",
-      "production_deploy_status": "PACKAGE_V2_TWENTY_FIVE_PERCENT_GREEN_FULL_PROMOTION_LOCAL_GREEN_PENDING_PR",
+      "production_deploy_status": "PACKAGE_V2_FULL_PROMOTION_PRODUCTION_GREEN",
       "production_audio_enabled": true,
       "owner_minimum_score": 9.4,
       "plateau_confirmed": true,
@@ -1661,7 +1664,7 @@
       "package_v2_rollout_percentage": 100,
       "package_v2_storage_status": "PRODUCTION_AND_DR_FULL_DOWNLOAD_VERIFIED",
       "package_v2_evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_sredni_vashtar_20260730.json",
-      "audiobook_next_action": "Test, merge, and deploy the isolated full promotion, then require all identities to receive the exact package manifest/segment and prove one-click package-v2 browser playback before starting A Ghost Story."
+      "audiobook_next_action": "Validate the Sredni Vashtar active pointer, then begin the serialized A Ghost Story production and DR package-v2 migration."
     },
     "dsires-baby": {
       "latest_decision": "KOKORO_OBJECTIVE_PASS_LISTENING_TRANSPORT_INVALID_AND_AUDIBLE_SAMPLE_FATAL_CONFIGURATION_CLOSED",
