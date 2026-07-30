@@ -444,9 +444,15 @@ def preflight_store(
     upload_client: Any,
     config: StorageConfig,
     retention_admin_client: Any = None,
+    minimum_default_retention_days: int = 1,
 ) -> dict[str, Any]:
     """Validate production invariants or the reduced private-QA contract."""
 
+    if minimum_default_retention_days < 1:
+        raise StorageSafetyError(
+            "INVALID_RETENTION_DAYS",
+            str(minimum_default_retention_days),
+        )
     if config.release_eligible and retention_admin_client is None:
         raise StorageSafetyError("RETENTION_ADMIN_CLIENT_REQUIRED", config.role)
     bucket_admin_client = (
@@ -480,11 +486,18 @@ def preflight_store(
             "enabled": object_lock.get("ObjectLockEnabled") == "Enabled",
             "default_mode": lock_mode,
             "default_retention_days_floor": lock_period,
+            "minimum_required_retention_days": minimum_default_retention_days,
+            "retention_requirement_satisfied": (
+                lock_mode == "GOVERNANCE"
+                and lock_period >= minimum_default_retention_days
+            ),
         }
         if object_lock.get("ObjectLockEnabled") != "Enabled":
             blockers.append("OBJECT_LOCK_NOT_ENABLED")
         if lock_mode != "GOVERNANCE" or lock_period < 1:
             blockers.append("GOVERNANCE_DEFAULT_RETENTION_NOT_CONFIGURED")
+        elif lock_period < minimum_default_retention_days:
+            blockers.append("GOVERNANCE_DEFAULT_RETENTION_BELOW_REQUIRED")
     else:
         checks["object_lock"] = {
             "status": "NOT_REQUIRED_FOR_PRIVATE_QA_STAGING",
@@ -957,6 +970,7 @@ def upload_plan(
         upload_client,
         config,
         retention_admin_client,
+        minimum_default_retention_days=retention_days,
     )
     if not preflight["passed"]:
         raise StorageSafetyError("STORE_PREFLIGHT_FAILED", ",".join(preflight["blockers"]))
@@ -1091,11 +1105,13 @@ def replicate_plan(
         prod_upload_client,
         prod_config,
         prod_retention_admin_client,
+        minimum_default_retention_days=retention_days,
     )
     dr_preflight = preflight_store(
         dr_upload_client,
         dr_config,
         dr_retention_admin_client,
+        minimum_default_retention_days=retention_days,
     )
     blockers = prod_preflight["blockers"] + dr_preflight["blockers"]
     if blockers:
@@ -1429,6 +1445,7 @@ def _preflight_command(args: argparse.Namespace) -> dict[str, Any]:
         prod_upload_client,
         prod,
         prod_retention_client,
+        minimum_default_retention_days=args.retention_days,
     )
     if not prod.release_eligible:
         return {
@@ -1445,6 +1462,7 @@ def _preflight_command(args: argparse.Namespace) -> dict[str, Any]:
         create_s3_client(dr, "upload"),
         dr,
         create_s3_client(dr, "retention_admin"),
+        minimum_default_retention_days=args.retention_days,
     )
     passed = prod_report["passed"] and dr_report["passed"]
     return {
@@ -1579,6 +1597,15 @@ def build_parser() -> argparse.ArgumentParser:
 
     preflight = subparsers.add_parser("preflight", help="Validate production and DR bucket invariants.")
     preflight.add_argument("--allow-private-qa-staging", action="store_true")
+    preflight.add_argument(
+        "--retention-days",
+        type=int,
+        default=DEFAULT_RETENTION_DAYS,
+        help=(
+            "Require each production bucket's default Governance retention "
+            "to cover this intended upload duration."
+        ),
+    )
     preflight.add_argument("--report")
     preflight.set_defaults(handler=_preflight_command)
 

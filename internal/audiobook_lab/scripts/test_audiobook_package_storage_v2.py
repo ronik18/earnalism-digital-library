@@ -580,13 +580,13 @@ class StorageToolTests(unittest.TestCase):
         self.assertEqual(len(client.put_calls), 2)
         self.assertTrue(all(item["action"] == "ALREADY_PRESENT_VERIFIED" for item in second["objects"]))
 
-    def test_bucket_default_retention_is_verified_fail_closed_after_upload(self) -> None:
+    def test_bucket_default_retention_fails_preflight_before_upload(self) -> None:
         upload_client = FakeS3(default_retention_days=30)
         retention_admin = FakeS3(default_retention_days=30)
 
         with self.assertRaisesRegex(
             storage.StorageSafetyError,
-            "REMOTE_RETENTION_MISMATCH",
+            "GOVERNANCE_DEFAULT_RETENTION_BELOW_REQUIRED",
         ):
             storage.upload_plan(
                 upload_client,
@@ -596,18 +596,55 @@ class StorageToolTests(unittest.TestCase):
                 retention_admin_client=retention_admin,
             )
 
-        self.assertEqual(len(upload_client.put_calls), 1)
-        self.assertNotIn("ObjectLockMode", upload_client.put_calls[0])
-        self.assertNotIn(
-            "ObjectLockRetainUntilDate",
-            upload_client.put_calls[0],
+        self.assertEqual(upload_client.put_calls, [])
+        self.assertEqual(
+            retention_admin.method_calls,
+            [
+                "get_bucket_versioning",
+                "get_object_lock_configuration",
+                "get_public_access_block",
+                "get_bucket_policy_status",
+                "get_bucket_acl",
+                "get_bucket_lifecycle_configuration",
+            ],
         )
 
+    def test_thirty_day_default_preflights_and_uploads_for_thirty_days(self) -> None:
+        upload_client = FakeS3(default_retention_days=30)
+        retention_admin = FakeS3(default_retention_days=30)
+        report = storage.preflight_store(
+            upload_client,
+            config("prod"),
+            retention_admin,
+            minimum_default_retention_days=30,
+        )
+
+        self.assertTrue(report["passed"])
+        self.assertEqual(
+            report["checks"]["object_lock"],
+            {
+                "enabled": True,
+                "default_mode": "GOVERNANCE",
+                "default_retention_days_floor": 30,
+                "minimum_required_retention_days": 30,
+                "retention_requirement_satisfied": True,
+            },
+        )
+        receipt = storage.upload_plan(
+            upload_client,
+            config("prod"),
+            self._plan(),
+            retention_days=30,
+            retention_admin_client=retention_admin,
+        )
+        self.assertTrue(receipt["passed"])
+        self.assertEqual(len(upload_client.put_calls), 2)
+
     def test_replication_uses_primary_receipt_and_verifies_both_stores(self) -> None:
-        primary = FakeS3()
-        replica = FakeS3()
-        primary_retention = FakeS3()
-        replica_retention = FakeS3()
+        primary = FakeS3(default_retention_days=30)
+        replica = FakeS3(default_retention_days=30)
+        primary_retention = FakeS3(default_retention_days=30)
+        replica_retention = FakeS3(default_retention_days=30)
         plan = self._plan()
         now = datetime(2026, 7, 29, tzinfo=timezone.utc)
         primary_receipt = storage.upload_plan(
@@ -642,10 +679,10 @@ class StorageToolTests(unittest.TestCase):
             )
 
     def test_cli_persists_primary_and_replica_receipts(self) -> None:
-        primary = FakeS3()
-        replica = FakeS3()
-        primary_retention = FakeS3()
-        replica_retention = FakeS3()
+        primary = FakeS3(default_retention_days=30)
+        replica = FakeS3(default_retention_days=30)
+        primary_retention = FakeS3(default_retention_days=30)
+        replica_retention = FakeS3(default_retention_days=30)
         with mock.patch.dict(os.environ, self._release_env(), clear=True):
             def client_for_store(store_config, profile_name):
                 return {
@@ -654,6 +691,24 @@ class StorageToolTests(unittest.TestCase):
                     ("dr", "upload"): replica,
                     ("dr", "retention_admin"): replica_retention,
                 }[(store_config.role, profile_name)]
+
+            with mock.patch.object(storage, "create_s3_client", side_effect=client_for_store):
+                output = io.StringIO()
+                with mock.patch("sys.stdout", new=output):
+                    code = storage.main(["preflight", "--retention-days", "30"])
+            self.assertEqual(code, 0)
+            preflight = json.loads(output.getvalue())
+            self.assertTrue(preflight["passed"])
+            self.assertTrue(
+                all(
+                    store["checks"]["object_lock"][
+                        "retention_requirement_satisfied"
+                    ]
+                    for store in preflight["stores"]
+                )
+            )
+            self.assertEqual(primary.put_calls, [])
+            self.assertEqual(replica.put_calls, [])
 
             with mock.patch.object(storage, "create_s3_client", side_effect=client_for_store):
                 with mock.patch("sys.stdout", new=io.StringIO()):
@@ -676,6 +731,21 @@ class StorageToolTests(unittest.TestCase):
                 {item["asset_id"] for item in replica_raw["objects"]},
                 {"master-audio", "release-manifest"},
             )
+
+            with mock.patch.object(storage, "create_s3_client", side_effect=client_for_store):
+                with mock.patch("sys.stdout", new=io.StringIO()):
+                    code = storage.main(
+                        [
+                            "verify",
+                            "--plan",
+                            str(self.plan_path),
+                            "--store",
+                            "prod",
+                            "--minimum-remaining-retention-days",
+                            "29",
+                        ]
+                    )
+            self.assertEqual(code, 0)
 
     def test_verify_rejects_receipt_not_bound_to_plan(self) -> None:
         client = FakeS3()
