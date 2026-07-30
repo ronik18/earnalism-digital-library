@@ -285,11 +285,338 @@ def _absolute_words(
     ]
 
 
+def load_reusable_asr_reports(
+    report_path: Path | None,
+    expected_report_sha256: str | None,
+    evidence: candidate_qa.CandidateEvidence,
+    attempt_fingerprint: str,
+) -> dict[str, dict[str, Any]]:
+    """Load immutable per-chunk ASR evidence from an earlier private full run.
+
+    A replacement candidate commonly changes only one audio chunk. Reusing
+    source-blind Whisper evidence for byte-identical chunks avoids hours of
+    duplicate local inference while preserving the same objective gate. The
+    prior report is never accepted wholesale: each unit is re-bound below to
+    its exact source hash, audio hash, duration, model hash, and ASR settings.
+    """
+
+    require(
+        (report_path is None) == (expected_report_sha256 is None),
+        "REUSABLE_ASR_REPORT_BINDING_REQUIRED",
+        (
+            "--reuse-report and --reuse-report-sha256 must be supplied "
+            "together"
+        ),
+    )
+    if report_path is None:
+        return {}
+    resolved = report_path.expanduser().resolve()
+    expected_sha256 = str(expected_report_sha256 or "")
+    require(
+        len(expected_sha256) == 64
+        and all(character in "0123456789abcdef" for character in expected_sha256),
+        "REUSABLE_ASR_REPORT_HASH_INVALID",
+        "reusable report SHA-256 must be 64 lowercase hexadecimal characters",
+    )
+    try:
+        google_pipeline.validate_private_output_dir(resolved.parent)
+        require(
+            resolved.is_file(),
+            "REUSABLE_ASR_REPORT_INVALID",
+            f"reusable report does not exist: {resolved}",
+        )
+        report_bytes = resolved.read_bytes()
+        require(
+            hashlib.sha256(report_bytes).hexdigest() == expected_sha256,
+            "REUSABLE_ASR_REPORT_HASH_MISMATCH",
+            "reusable report bytes do not match the independently supplied SHA-256",
+        )
+        payload = json.loads(report_bytes.decode("utf-8"))
+        require(
+            isinstance(payload, dict),
+            "REUSABLE_ASR_REPORT_INVALID",
+            "reusable full audio-derived ASR report must be a JSON object",
+        )
+    except FullAudioDerivedQAError:
+        raise
+    except google_pipeline.PipelineError as exc:
+        code = getattr(exc, "status", None) or getattr(exc, "code", None)
+        raise FullAudioDerivedQAError(
+            str(code or "REUSABLE_ASR_REPORT_INVALID"),
+            str(exc),
+        ) from exc
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise FullAudioDerivedQAError(
+            "REUSABLE_ASR_REPORT_INVALID",
+            f"reusable report is not readable UTF-8 JSON: {resolved}",
+        ) from exc
+    require(
+        payload.get("schema_version") == SCHEMA
+        and payload.get("private_output_only") is True
+        and payload.get("provider_calls_made_by_adapter") is False
+        and payload.get("network_calls_made_by_adapter") is False,
+        "REUSABLE_ASR_REPORT_INVALID",
+        "reusable report must be private, provider-free evidence from this adapter",
+    )
+    require(
+        payload.get("slug") == evidence.manifest.get("slug")
+        and payload.get("title") == evidence.manifest.get("title")
+        and payload.get("author") == evidence.manifest.get("author")
+        and payload.get("source_sha256") == evidence.source_sha256
+        and payload.get("input_manifest_sha256")
+        == evidence.input_manifest_sha256
+        and payload.get("attempt_fingerprint") == attempt_fingerprint
+        and payload.get("voice") == evidence.manifest.get("voice")
+        and payload.get("language_code") == evidence.manifest.get("language_code"),
+        "REUSABLE_ASR_REPORT_CANDIDATE_MISMATCH",
+        (
+            "reusable report must match the current title, manuscript, input "
+            "manifest, attempt, voice, and language"
+        ),
+    )
+    asr = payload.get("audio_derived_asr")
+    require(
+        isinstance(asr, Mapping)
+        and asr.get("model") == WHISPER_MODEL
+        and asr.get("model_sha256") == WHISPER_SHA256
+        and asr.get("settings") == ASR_SETTINGS
+        and asr.get("source_blind") is True
+        and asr.get("audio_derived") is True
+        and asr.get("provider") == "local_openai_whisper",
+        "REUSABLE_ASR_REPORT_INVALID",
+        "reusable report model, settings, or source-blind contract changed",
+    )
+    reports = asr.get("reports")
+    require(
+        isinstance(reports, list),
+        "REUSABLE_ASR_REPORT_INVALID",
+        "reusable report has no ordered per-chunk ASR reports",
+    )
+    require(
+        asr.get("chunk_count") == len(reports),
+        "REUSABLE_ASR_REPORT_INVALID",
+        "reusable report chunk count does not match its ordered reports",
+    )
+    report_objects: list[dict[str, Any]] = []
+    seen_unit_ids: set[str] = set()
+    for index, item in enumerate(reports):
+        require(
+            isinstance(item, dict)
+            and item.get("index") == index
+            and isinstance(item.get("unit_id"), str)
+            and bool(item["unit_id"]),
+            "REUSABLE_ASR_REPORT_INVALID",
+            "reusable report units must be objects in exact indexed order",
+        )
+        require(
+            item["unit_id"] not in seen_unit_ids,
+            "REUSABLE_ASR_REPORT_DUPLICATE_UNIT",
+            f"reusable report repeats unit_id {item['unit_id']}",
+        )
+        seen_unit_ids.add(item["unit_id"])
+        report_objects.append(item)
+    ordered_audio_hashes = [item.get("audio_sha256") for item in report_objects]
+    ordered_transcript_hashes = [
+        item.get("transcript_sha256") for item in report_objects
+    ]
+    prior_binding = {
+        "schema_version": SCHEMA,
+        "full_manifest_sha256": payload.get("full_manifest_sha256"),
+        "source_sha256": payload.get("source_sha256"),
+        "input_manifest_sha256": payload.get("input_manifest_sha256"),
+        "attempt_fingerprint": payload.get("attempt_fingerprint"),
+        "candidate_audio_sequence_sha256": payload.get(
+            "candidate_audio_sequence_sha256"
+        ),
+        "candidate_binding_sha256": payload.get("candidate_binding_sha256"),
+        "asr_model_sha256": asr.get("model_sha256"),
+        "asr_settings": asr.get("settings"),
+        "ordered_audio_hashes": ordered_audio_hashes,
+        "ordered_transcript_hashes": ordered_transcript_hashes,
+    }
+    origin_fields_present = [
+        "asr_evidence_origin" in item for item in report_objects
+    ]
+    require(
+        not any(origin_fields_present) or all(origin_fields_present),
+        "REUSABLE_ASR_REPORT_INVALID",
+        "reusable report has a partial ASR evidence-origin binding",
+    )
+    prior_has_origin_binding = all(origin_fields_present)
+    if prior_has_origin_binding:
+        allowed_origins = {
+            "local_source_blind_whisper",
+            "exact_prior_private_report",
+        }
+        require(
+            all(
+                item.get("asr_evidence_origin") in allowed_origins
+                and (
+                    (
+                        item["asr_evidence_origin"]
+                        == "exact_prior_private_report"
+                        and isinstance(item.get("reused_from_report_sha256"), str)
+                        and len(item["reused_from_report_sha256"]) == 64
+                        and all(
+                            character in "0123456789abcdef"
+                            for character in item["reused_from_report_sha256"]
+                        )
+                    )
+                    or (
+                        item["asr_evidence_origin"]
+                        == "local_source_blind_whisper"
+                        and item.get("reused_from_report_sha256") is None
+                    )
+                )
+                for item in report_objects
+            ),
+            "REUSABLE_ASR_REPORT_INVALID",
+            "reusable report has invalid per-unit ASR evidence provenance",
+        )
+        prior_reused_count = sum(
+            item["asr_evidence_origin"] == "exact_prior_private_report"
+            for item in report_objects
+        )
+        prior_reused_unit_ids = [
+            item["unit_id"]
+            for item in report_objects
+            if item["asr_evidence_origin"] == "exact_prior_private_report"
+        ]
+        prior_reused_report_sha256s = sorted(
+            {
+                item["reused_from_report_sha256"]
+                for item in report_objects
+                if item["asr_evidence_origin"]
+                == "exact_prior_private_report"
+            }
+        )
+        require(
+            asr.get("reused_local_asr_report_count") == prior_reused_count
+            and asr.get("local_asr_run_count")
+            == len(report_objects) - prior_reused_count,
+            "REUSABLE_ASR_REPORT_INVALID",
+            "reusable report ASR execution counts contradict unit provenance",
+        )
+        require(
+            asr.get("reused_unit_ids") == prior_reused_unit_ids
+            and asr.get("reused_report_sha256s")
+            == prior_reused_report_sha256s,
+            "REUSABLE_ASR_REPORT_INVALID",
+            "reusable report aggregate provenance contradicts its units",
+        )
+        prior_binding["ordered_asr_evidence_origins"] = [
+            item["asr_evidence_origin"] for item in report_objects
+        ]
+        prior_binding["ordered_reuse_report_sha256s"] = [
+            item.get("reused_from_report_sha256") for item in report_objects
+        ]
+        prior_binding["ordered_unit_evidence"] = [
+            {
+                "index": item.get("index"),
+                "unit_id": item.get("unit_id"),
+                "source_text_sha256": item.get("source_text_sha256"),
+                "audio_sha256": item.get("audio_sha256"),
+                "duration_seconds": item.get("duration_seconds"),
+                "transcript_sha256": item.get("transcript_sha256"),
+                "word_timestamp_sha256": item.get("word_timestamp_sha256"),
+            }
+            for item in report_objects
+        ]
+    require(
+        payload.get("qa_binding_sha256") == canonical_sha256(prior_binding)
+        and payload.get("candidate_audio_sequence_sha256")
+        == canonical_sha256(ordered_audio_hashes),
+        "REUSABLE_ASR_REPORT_BINDING_MISMATCH",
+        "reusable report's internal QA or ordered-audio binding is inconsistent",
+    )
+    by_id: dict[str, dict[str, Any]] = {}
+    for item in report_objects:
+        unit_id = item["unit_id"]
+        by_id[unit_id] = {
+            **item,
+            "reused_from_report_sha256": expected_sha256,
+        }
+    return by_id
+
+
+def reusable_unit_result(
+    prior: Mapping[str, Any] | None,
+    record: Mapping[str, Any],
+    *,
+    expected_index: int,
+) -> tuple[str, list[dict[str, Any]], list[dict[str, Any]]] | None:
+    """Return revalidated transcript/timestamps for one exact bound unit."""
+
+    if not isinstance(prior, Mapping):
+        return None
+    duration = float(record["measured_duration_seconds"])
+    if not (
+        prior.get("index") == expected_index
+        and prior.get("unit_id") == record["unit_id"]
+        and prior.get("source_text_sha256") == record["text_sha256"]
+        and prior.get("audio_sha256") == record["audio_sha256"]
+    ):
+        return None
+    try:
+        prior_duration = float(prior.get("duration_seconds"))
+    except (TypeError, ValueError):
+        return None
+    if (
+        not math.isfinite(duration)
+        or not math.isfinite(prior_duration)
+        or abs(prior_duration - duration) > 0.000001
+    ):
+        return None
+    transcript = str(prior.get("transcript") or "").strip()
+    if (
+        not transcript
+        or google_pipeline.sha256_text(transcript)
+        != prior.get("transcript_sha256")
+    ):
+        return None
+    stored_words = prior.get("audio_derived_word_timestamps")
+    if not isinstance(stored_words, list) or not stored_words:
+        return None
+    raw_words: list[dict[str, Any]] = []
+    try:
+        for word in stored_words:
+            start = float(word["start_seconds"])
+            end = float(word["end_seconds"])
+            probability = float(word.get("probability") or 0.0)
+            if not all(math.isfinite(value) for value in (start, end, probability)):
+                return None
+            raw_words.append(
+                {
+                    "word": str(word["word"]),
+                    "start": start,
+                    "end": end,
+                    "probability": probability,
+                }
+            )
+    except (KeyError, TypeError, ValueError):
+        return None
+    words, anomalies = asr_common.verified_words(
+        {
+            "text": transcript,
+            "segments": [{"start": 0.0, "end": duration, "words": raw_words}],
+        },
+        duration,
+    )
+    if (
+        anomalies
+        or canonical_sha256(words) != prior.get("word_timestamp_sha256")
+        or prior.get("word_timestamp_evidence_valid") is not True
+    ):
+        return None
+    return transcript, words, anomalies
+
+
 def run_source_blind_asr(
     evidence: candidate_qa.CandidateEvidence,
     *,
     whisper_cache: Path,
     model_loader: Callable[..., Any] | None = None,
+    reusable_reports: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
     require(
         ASR_SETTINGS.get("initial_prompt") is None,
@@ -312,40 +639,64 @@ def run_source_blind_asr(
         "ASR_MODEL_HASH_MISMATCH",
         "pinned Whisper model hash changed",
     )
-    if model_loader is None:
-        try:
-            import whisper  # noqa: PLC0415
-        except ImportError as exc:
-            raise FullAudioDerivedQAError(
-                "ASR_RUNTIME_MISSING",
-                "openai-whisper is required for local source-blind ASR",
-            ) from exc
-        model_loader = whisper.load_model
-    model = model_loader(WHISPER_MODEL, download_root=str(whisper_cache))
     slug = str(evidence.manifest.get("slug") or "")
+    reusable = reusable_reports or {}
+    model: Any | None = None
+
+    def get_model() -> Any:
+        nonlocal model, model_loader
+        if model is not None:
+            return model
+        if model_loader is None:
+            try:
+                import whisper  # noqa: PLC0415
+            except ImportError as exc:
+                raise FullAudioDerivedQAError(
+                    "ASR_RUNTIME_MISSING",
+                    "openai-whisper is required for local source-blind ASR",
+                ) from exc
+            model_loader = whisper.load_model
+        model = model_loader(WHISPER_MODEL, download_root=str(whisper_cache))
+        return model
 
     reports: list[dict[str, Any]] = []
     aggregate_transcripts: list[str] = []
     absolute_word_timestamps: list[dict[str, Any]] = []
     total_local_asr_runs = 0
+    reused_local_asr_reports = 0
     for index, record in enumerate(evidence.records):
         audio_path = Path(str(record["audio_path"]))
         duration = float(record["measured_duration_seconds"])
-        # Deliberately audio-only: the source text is never supplied to Whisper.
-        result = model.transcribe(str(audio_path), **ASR_SETTINGS)
-        total_local_asr_runs += 1
-        require(
-            isinstance(result, Mapping),
-            "ASR_RESULT_INVALID",
-            f"{record['unit_id']}: local Whisper returned a non-object result",
+        reusable_item = reusable.get(record["unit_id"])
+        reused = reusable_unit_result(
+            reusable_item,
+            record,
+            expected_index=index,
         )
-        transcript = str(result.get("text") or "").strip()
+        if reused is None:
+            # Deliberately audio-only: source text is never supplied to Whisper.
+            result = get_model().transcribe(str(audio_path), **ASR_SETTINGS)
+            total_local_asr_runs += 1
+            require(
+                isinstance(result, Mapping),
+                "ASR_RESULT_INVALID",
+                f"{record['unit_id']}: local Whisper returned a non-object result",
+            )
+            transcript = str(result.get("text") or "").strip()
+            words, anomalies = asr_common.verified_words(result, duration)
+        else:
+            transcript, words, anomalies = reused
+            reused_local_asr_reports += 1
+        evidence_origin = (
+            "exact_prior_private_report"
+            if reused is not None
+            else "local_source_blind_whisper"
+        )
         metrics = _evaluated_metrics(
             record["source_text"],
             transcript,
             slug=slug,
         )
-        words, anomalies = asr_common.verified_words(result, duration)
         cue = evidence.measured_sync["cues"][index]
         absolute_words = _absolute_words(
             words,
@@ -386,6 +737,12 @@ def run_source_blind_asr(
                 "word_timestamp_sha256": canonical_sha256(words),
                 "word_timestamp_anomalies": anomalies,
                 "word_timestamp_evidence_valid": bool(words) and not anomalies,
+                "asr_evidence_origin": evidence_origin,
+                "reused_from_report_sha256": (
+                    reusable_item.get("reused_from_report_sha256")
+                    if reused is not None and isinstance(reusable_item, Mapping)
+                    else None
+                ),
                 "frontmatter_absent": frontmatter_absent(transcript),
                 "audio_derived_asr_gate_pass": audio_gate_pass,
                 "audio_derived_asr_gate_blockers": audio_gate_blockers,
@@ -435,6 +792,18 @@ def run_source_blind_asr(
             ),
         }
     )
+    reused_unit_ids = [
+        report["unit_id"]
+        for report in reports
+        if report["asr_evidence_origin"] == "exact_prior_private_report"
+    ]
+    reused_report_sha256s = sorted(
+        {
+            str(report["reused_from_report_sha256"])
+            for report in reports
+            if report.get("reused_from_report_sha256")
+        }
+    )
     return {
         "status": "PASS" if aggregate["pass"] else "FAIL",
         "model": WHISPER_MODEL,
@@ -445,6 +814,9 @@ def run_source_blind_asr(
         "provider": "local_openai_whisper",
         "provider_calls_made": False,
         "local_asr_run_count": total_local_asr_runs,
+        "reused_local_asr_report_count": reused_local_asr_reports,
+        "reused_unit_ids": reused_unit_ids,
+        "reused_report_sha256s": reused_report_sha256s,
         "chunk_count": len(reports),
         "required_score": ASR_SCORE_MIN,
         "required_coverage": ASR_COVERAGE_MIN,
@@ -624,6 +996,24 @@ def build_report(
         "ordered_transcript_hashes": [
             report["transcript_sha256"] for report in asr["reports"]
         ],
+        "ordered_asr_evidence_origins": [
+            report["asr_evidence_origin"] for report in asr["reports"]
+        ],
+        "ordered_reuse_report_sha256s": [
+            report["reused_from_report_sha256"] for report in asr["reports"]
+        ],
+        "ordered_unit_evidence": [
+            {
+                "index": report["index"],
+                "unit_id": report["unit_id"],
+                "source_text_sha256": report["source_text_sha256"],
+                "audio_sha256": report["audio_sha256"],
+                "duration_seconds": report["duration_seconds"],
+                "transcript_sha256": report["transcript_sha256"],
+                "word_timestamp_sha256": report["word_timestamp_sha256"],
+            }
+            for report in asr["reports"]
+        ],
     }
     return {
         "schema_version": SCHEMA,
@@ -700,6 +1090,8 @@ def evaluate(
     whisper_cache: Path = DEFAULT_WHISPER_CACHE,
     model_loader: Callable[..., Any] | None = None,
     duration_getter: Callable[[Path], float] = candidate_qa.ffprobe_duration,
+    reuse_report_path: Path | None = None,
+    reuse_report_sha256: str | None = None,
 ) -> tuple[int, dict[str, Any]]:
     manifest = manifest_path.expanduser().resolve()
     output = output_path.expanduser().resolve()
@@ -713,10 +1105,17 @@ def evaluate(
             duration_getter=duration_getter,
         )
         fingerprint = validate_attempt_binding(evidence)
+        reusable_reports = load_reusable_asr_reports(
+            reuse_report_path,
+            reuse_report_sha256,
+            evidence,
+            fingerprint,
+        )
         asr = run_source_blind_asr(
             evidence,
             whisper_cache=whisper_cache,
             model_loader=model_loader,
+            reusable_reports=reusable_reports,
         )
         sync = measured_section_sync(evidence, asr)
         report = build_report(
@@ -745,6 +1144,21 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--full-manifest", required=True, type=Path)
     parser.add_argument("--whisper-cache", type=Path, default=DEFAULT_WHISPER_CACHE)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument(
+        "--reuse-report",
+        type=Path,
+        help=(
+            "Prior private report from this adapter. Exact byte-identical units "
+            "are revalidated and reused; changed units are transcribed locally."
+        ),
+    )
+    parser.add_argument(
+        "--reuse-report-sha256",
+        help=(
+            "Independently recorded exact SHA-256 of --reuse-report. Required "
+            "with --reuse-report so mutable paths cannot become trust anchors."
+        ),
+    )
     return parser
 
 
@@ -754,6 +1168,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         args.full_manifest,
         args.output,
         whisper_cache=args.whisper_cache,
+        reuse_report_path=args.reuse_report,
+        reuse_report_sha256=args.reuse_report_sha256,
     )
     print(
         json.dumps(
