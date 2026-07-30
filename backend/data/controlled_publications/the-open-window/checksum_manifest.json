@@ -10,18 +10,18 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "d3a11a2b68c1cf8977b0553f5abe78503aec9156abf607bb71d6b570e47f6efa"
+      "sha256": "8cc8c7fcfd2590e0d85ec3228af6cf4d4508ab59b357069884000ff915887b8e"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "0e7f42f30206257c31028e1d7d1374ea2b680202e1dc8ad6a7a44b911ec36f2c"
+      "sha256": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142"
     },
     {
       "file": "source_evidence.json",
       "sha256": "09779a6b5c80eccdea6783118cbc43c6a58bedb319353ff8b68fb43c3fdaf0d6"
     }
   ],
-  "generated_at": "2026-07-30T03:57:44Z",
+  "generated_at": "2026-07-30T04:22:17Z",
   "slug": "the-open-window",
   "uploaded_artifacts": [
     {

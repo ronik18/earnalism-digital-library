@@ -1,12 +1,14 @@
 # Audiobook package v2 canary — The Open Window
 
-Status: **5% sticky-cohort production checkpoint passed; candidate HTTP and
-real-browser delivery plus legacy browser no-regression are proven**.
+Status: **25% sticky-cohort production checkpoint passed; candidate package
+delivery and retained legacy delivery both passed HTTP and real-browser
+validation**.
 
 This evidence records the completed production-and-DR staging canary for the
-already-live audiobook `the-open-window`, followed by the completed 5%
-production checkpoint. It does not approve a new audiobook, replace the active
-legacy descriptor, or change the truthful public audiobook count of four.
+already-live audiobook `the-open-window`, followed by the completed 5% and 25%
+production checkpoints. It does not approve a new audiobook, replace the
+active legacy descriptor, or change the truthful public audiobook count of
+four.
 
 ## Release selection truth
 
@@ -14,7 +16,7 @@ legacy descriptor, or change the truthful public audiobook count of four.
   `81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe`
 - Package-v2 candidate descriptor:
   `0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0`
-- Candidate rollout: `5%`
+- Candidate rollout: `25%`
 - Customer-selected delivery: sticky cohort selection between the legacy
   descriptor and the package-v2 candidate
 - Public audiobooks remain:
@@ -23,8 +25,9 @@ legacy descriptor, or change the truthful public audiobook count of four.
 
 The original `0%` checkpoint remains part of the evidence history: the
 candidate was stored and bound while all customers remained on legacy
-delivery. The subsequent `5%` checkpoint proves that candidate and legacy
-cohorts remain sticky and fail closed without claiming a fifth live audiobook.
+delivery. The subsequent `5%` checkpoint proved initial sticky candidate and
+legacy delivery. The completed `25%` checkpoint independently reconfirmed both
+paths without claiming a fifth live audiobook.
 
 ## Five-percent production checkpoint
 
@@ -94,6 +97,58 @@ context. In that candidate context:
 The package has one segment, so this checkpoint does not claim cross-segment
 auto-advance. No browser latency was measured.
 
+## Twenty-five-percent production checkpoint
+
+PR `#181` merged rollout commit
+`68024887cc54823e3238360c8c90eab5891ae083` into main as
+`169b6d7143cf9d54408784b43cef87f65e758050`. The main regression suite and
+GO LIVE regression gate completed successfully. Repository-linked Railway
+deployment `5d5db8a5-5963-4e8a-ba46-9600c6990472` also completed with
+`SUCCESS`.
+
+Fresh production API sampling found a package-v2 candidate at identity index
+1 and a retained legacy cohort at index 3 within three new identities.
+Repeating the candidate identity returned HTTP `200` and the same immutable
+package; repeating the legacy identity returned HTTP `404` for package
+discovery.
+
+The candidate manifest returned HTTP `200` and matched descriptor
+`0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0`
+and package version
+`sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd`.
+The exact segment passed:
+
+- `HEAD` at HTTP `200` with `Content-Length: 4712013`;
+- `Range: bytes=0-63` at HTTP `206` with exactly 64 bytes from a total of
+  `4,712,013`;
+- invalid range rejection at HTTP `416`;
+- measured timestamps at HTTP `200`, 12,839 bytes, SHA-256
+  `637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070`;
+- wrong package version rejection at HTTP `404`; and
+- the same candidate segment rejected at HTTP `404` for the legacy cohort.
+
+The retained legacy monolith independently returned HTTP `206` for a 64-byte
+range from a total of `6,283,053` bytes. `/api/home/curated` continued to
+report exactly four public audiobooks:
+`book-2b9853ec52`, `a-ghost-story`, `sredni-vashtar`, and `the-open-window`.
+
+An isolated Chromium run sampled two new production contexts and obtained one
+candidate and one legacy context. Neither context loaded audio before user
+intent.
+
+- The candidate context played through the exact package route with
+  `readyState=4`, `paused=false`, and duration `392.6` seconds. A seek to 180
+  seconds continued playback at about `181.53` seconds. Console and page error
+  counts were both zero.
+- The legacy context played through the exact monolith route with
+  `readyState=4`, `paused=false`, and duration `392.6` seconds, with no page
+  errors. Its two network-console `404` entries were the expected package
+  manifest fallback only; unexpected console errors remained zero.
+
+The package still contains one segment, so cross-segment auto-advance is not
+claimed. This completed checkpoint supports advancing the separately prepared
+100% active-pointer promotion; it does not claim that promotion is deployed.
+
 ## Exact package identity
 
 - Descriptor identity SHA-256:
@@ -151,7 +206,8 @@ The combined builder, storage, selector, backend package, B2-routing, and
 Sprint 1 cleanup and Redis-policy regression run completed at
 `2026-07-29T20:17:49Z` with `136 passed / 0 failed`. The formerly stale
 proxy-asset assertion is resolved. The production checkpoint then passed at
-`5%` with the sticky-cohort and HTTP/browser evidence recorded above.
+`5%`, and the later main regression, GO LIVE gate, Railway deployment, and
+sticky-cohort HTTP/browser validation passed at `25%`.
 
 ## Safety boundary
 
@@ -163,7 +219,8 @@ production/DR separation.
 This evidence update did not generate narration, call a paid provider, touch
 `paid_tts.lock`, mutate campaign policy/state, edit controlled publications or
 code, perform cloud writes, flip the active descriptor, or change the public
-live count. It records the independently completed 5% rollout checkpoint.
+live count. It records the independently completed 25% rollout checkpoint
+while preserving the earlier 0% and 5% history.
 
 Machine-readable evidence:
 
