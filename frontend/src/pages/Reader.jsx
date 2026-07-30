@@ -934,7 +934,6 @@ export default function Reader() {
   const [generatedAudioAvailable, setGeneratedAudioAvailable] = useState(false);
   const [generatedAudioActive, setGeneratedAudioActive] = useState(false);
   const [generatedAudioManifest, setGeneratedAudioManifest] = useState(null);
-  const [generatedAudioPrimed, setGeneratedAudioPrimed] = useState(false);
   const [generatedAudioSegmentId, setGeneratedAudioSegmentId] = useState('');
   const [processedHtml, setProcessedHtml] = useState('');
   const [ttsHtml, setTtsHtml] = useState('');
@@ -1029,7 +1028,6 @@ export default function Reader() {
       audio.load();
     }
     generatedPageEndRef.current = null;
-    setGeneratedAudioPrimed(false);
     setGeneratedAudioSegmentId('');
     setTtsActive(false);
     setTtsPaused(false);
@@ -1728,7 +1726,6 @@ export default function Reader() {
     let cancelled = false;
     setGeneratedAudioManifest(null);
     setGeneratedAudioSegmentId('');
-    setGeneratedAudioPrimed(false);
     if (!generatedAudioManifestUrl || !generatedAudioSlug || lockedState) return undefined;
     fetch(generatedAudioManifestUrl, { cache: 'force-cache', credentials: 'include' })
       .then((response) => {
@@ -1823,7 +1820,6 @@ export default function Reader() {
       speed: ttsSpeed,
     });
     resumeAfterSegmentChangeRef.current = true;
-    setGeneratedAudioPrimed(false);
     setGeneratedAudioSegmentId(pending.segmentId);
     setGeneratedAudioActive(true);
     setTtsActive(true);
@@ -1904,7 +1900,6 @@ export default function Reader() {
     const audio = generatedAudioRef.current;
     if (!audio) return;
     audioLoadStartedAtRef.current = readerNowMs();
-    setGeneratedAudioPrimed(true);
     audio.src = generatedAudioUrl;
     audio.preload = 'auto';
     audio.playbackRate = Math.max(0.7, Math.min(1.8, Number(ttsSpeed) || 1));
@@ -2130,7 +2125,6 @@ export default function Reader() {
   const primeGeneratedAudio = useCallback(() => {
     const audio = generatedAudioRef.current;
     if (!audio || !generatedAudioAvailable || !generatedAudioUrl) return;
-    setGeneratedAudioPrimed(true);
     if (audio.getAttribute('src') !== generatedAudioUrl) {
       audioLoadStartedAtRef.current = readerNowMs();
       audio.src = generatedAudioUrl;
@@ -2427,7 +2421,6 @@ export default function Reader() {
         return;
       }
       resumeAfterSegmentChangeRef.current = true;
-      setGeneratedAudioPrimed(false);
       setGeneratedAudioSegmentId(selectedGeneratedAudioTrack.nextSegmentId);
       setGeneratedAudioActive(true);
       setTtsActive(true);
@@ -2765,12 +2758,13 @@ export default function Reader() {
         '--reader-border': colors.border,
       }}
     >
+      {/* Source ownership stays imperative: a controlled `src` transition
+          after play() aborts the first user-activated playback request. */}
       {generatedAudioSlug && (
         <audio
           ref={generatedAudioRef}
           crossOrigin="use-credentials"
-          src={generatedAudioPrimed && generatedAudioAvailable ? generatedAudioUrl : undefined}
-          preload={generatedAudioPrimed && generatedAudioAvailable ? 'metadata' : 'none'}
+          preload="none"
           onLoadedMetadata={handleGeneratedAudioMetadata}
           onPlaying={handleGeneratedAudioPlaying}
           onWaiting={markGeneratedAudioStall}

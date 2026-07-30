@@ -42,8 +42,16 @@ describe("Reader release-truth and reading-room guardrails", () => {
   });
 
   test("loads package audio only on intent and advances immutable segments across chapters", () => {
-    expect(readerSource).toMatch(/generatedAudioPrimed && generatedAudioAvailable/);
-    expect(readerSource).toMatch(/preload=\{generatedAudioPrimed && generatedAudioAvailable \? 'metadata' : 'none'\}/);
+    const audioElementStart = readerSource.indexOf("<audio");
+    const audioElementEnd = readerSource.indexOf("/>", audioElementStart);
+    const audioElementSource = readerSource.slice(audioElementStart, audioElementEnd);
+
+    expect(audioElementStart).toBeGreaterThan(-1);
+    expect(audioElementEnd).toBeGreaterThan(audioElementStart);
+    expect(audioElementSource).toMatch(/preload="none"/);
+    expect(audioElementSource).not.toMatch(/\bsrc=/);
+    expect(readerSource).not.toMatch(/generatedAudioPrimed/);
+    expect(readerSource).toMatch(/audio\.src = generatedAudioUrl/);
     expect(readerSource).toMatch(/selectedGeneratedAudioTrack\.nextSegmentId/);
     expect(readerSource).toMatch(/selectedGeneratedAudioTrack\.nextChapterId/);
     expect(readerSource).toMatch(/setGeneratedAudioSegmentId\(selectedGeneratedAudioTrack\.nextSegmentId\)/);
