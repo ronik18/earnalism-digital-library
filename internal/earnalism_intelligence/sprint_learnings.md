@@ -1282,3 +1282,41 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Automated checks plus direct master/thumbnail inspection can advance the
   pair to `PRIVATE_CANDIDATE_EDITORIAL_REVIEW_REQUIRED`; they do not authorize
   upload, canonicalization, public exposure, audiobook generation, or release.
+
+## 2026-07-30 — Reconcile DR by receipts and serialize complete package lifecycles
+
+- The Open Window DR console observation of `15` current files and `48.8 MB`
+  reconciles exactly to receipt evidence: `14` package objects plus one final
+  release manifest total `48,771,512` bytes (`48.771512` decimal MB). The
+  catalog-bound payload and final-manifest replica receipt SHA-256 values are
+  `2931065d6cde26e60bc7b4635eb0db20b7c7834d25e269e0461d070562416f1c`
+  and
+  `e455d8d1395496d75aad287a5b42537cf712f21b04d6b2f692132a8f7bd0cea4`.
+- This is exact receipt/UI reconciliation, not a fresh remote bucket audit.
+  Production HTTP evidence was supplied by the coordinator rather than rerun
+  by this change: the public home truth is `4/32`; The Open Window package
+  manifest returns `200` with one segment, a 1024-byte Range request returns
+  `206`, invalid Range returns `416`, and stale/cross-title package requests
+  return `404`. The other three live titles still return `404` from the
+  package-manifest route and remain on legacy delivery.
+- `upload` creates a primary receipt; `verify` consumes that existing receipt
+  and does not create one. `replicate` creates the DR receipt, which the DR
+  verification then consumes. Preserve this distinction for both the payload
+  plan and the separately generated one-object final-manifest plan.
+- Complete every title serially through payload upload, primary verification,
+  DR replication, DR verification, finalization, final-manifest upload, final
+  primary verification, final-manifest DR replication, and final DR
+  verification. Do not start A Ghost Story until Sredni Vashtar completes.
+- The selected Sredni package is descriptor
+  `53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3`:
+  one segment, `15` payload objects, `79,267,278` payload bytes, and `16`
+  total immutable objects per store after the final manifest. The selected
+  A Ghost Story package is descriptor
+  `cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40`:
+  two segments, `20` payload objects, `102,547,050` payload bytes, and `21`
+  total immutable objects per store after the final manifest.
+- The focused builder/storage suites passed `70/70`. A disposable in-memory
+  full lifecycle also passed for payload and final-manifest phases, validating
+  report schemas and filenames without cloud calls or candidate mutation.
+  Storage completion alone is not publication authorization; catalog
+  activation, deployment, endpoint checks, and browser proof remain separate.

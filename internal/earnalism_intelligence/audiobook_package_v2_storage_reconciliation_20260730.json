@@ -1,0 +1,160 @@
+{
+  "schema_version": "earnalism_audiobook_package_v2_storage_reconciliation.v1",
+  "generated_at": "2026-07-30T07:52:50Z",
+  "scope": "evidence_only_storage_reconciliation_and_offline_operator_validation",
+  "evidence_freshness": {
+    "cloud_state_queried_by_this_change": false,
+    "production_http_queried_by_this_change": false,
+    "dr_reconciliation_basis": [
+      "catalog-bound local receipt evidence",
+      "observed DR console current-file count and rounded size"
+    ],
+    "production_http_evidence_source": "coordinator_supplied_current_production_probe"
+  },
+  "current_public_truth": {
+    "sprint1_reader_count": 32,
+    "public_audiobook_count": 4,
+    "public_audiobook_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ]
+  },
+  "the_open_window_dr_reconciliation": {
+    "slug": "the-open-window",
+    "release_descriptor_sha256": "0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0",
+    "package_version": "sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd",
+    "package_manifest_sha256": "736fee5fa4af7b53aab04583455517b0ccffd0699d4f3250be9503ea07a7e292",
+    "candidate_object_count": 14,
+    "final_release_manifest_object_count": 1,
+    "expected_current_file_count": 15,
+    "expected_total_size_bytes": 48771512,
+    "expected_total_size_decimal_mb": 48.771512,
+    "expected_total_size_binary_mib": 46.512138,
+    "observed_console_current_file_count": 15,
+    "observed_console_rounded_size": "48.8 MB",
+    "count_and_size_reconcile_exactly": true,
+    "catalog_bound_replica_receipt_sha256": "2931065d6cde26e60bc7b4635eb0db20b7c7834d25e269e0461d070562416f1c",
+    "catalog_bound_final_manifest_replica_receipt_sha256": "e455d8d1395496d75aad287a5b42537cf712f21b04d6b2f692132a8f7bd0cea4",
+    "both_replica_receipt_hashes_bound_in_mirrored_controlled_catalog": true,
+    "fresh_remote_verification_claimed": false,
+    "conclusion": "The observed DR console count and rounded size reconcile exactly to the 14 package objects plus one final release manifest recorded by local receipt evidence."
+  },
+  "coordinator_supplied_production_runtime_proof": {
+    "the-open-window": {
+      "package_manifest_status": 200,
+      "segment_count": 1,
+      "valid_range_status": 206,
+      "valid_range_response_bytes": 1024,
+      "invalid_range_status": 416,
+      "stale_package_status": 404,
+      "cross_title_segment_status": 404,
+      "delivery_mode": "package_v2"
+    },
+    "book-2b9853ec52": {
+      "package_manifest_status": 404,
+      "delivery_mode": "legacy"
+    },
+    "a-ghost-story": {
+      "package_manifest_status": 404,
+      "delivery_mode": "legacy"
+    },
+    "sredni-vashtar": {
+      "package_manifest_status": 404,
+      "delivery_mode": "legacy"
+    }
+  },
+  "serialized_candidate_order": [
+    {
+      "order": 1,
+      "slug": "sredni-vashtar",
+      "release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
+      "segment_count": 1,
+      "payload_object_count": 15,
+      "payload_size_bytes": 79267278,
+      "final_release_manifest_object_count": 1,
+      "expected_total_objects_per_store": 16,
+      "release_blockers": []
+    },
+    {
+      "order": 2,
+      "slug": "a-ghost-story",
+      "release_descriptor_sha256": "cec2bb829531e0f820b8fd11d0881ecb42fc2d088adc5e93e7259e41d6026b40",
+      "segment_count": 2,
+      "payload_object_count": 20,
+      "payload_size_bytes": 102547050,
+      "final_release_manifest_object_count": 1,
+      "expected_total_objects_per_store": 21,
+      "release_blockers": []
+    }
+  ],
+  "corrected_serial_operator_sequence": [
+    "validate release candidate build result and upload plan locally",
+    "preflight production and DR stores before any object write",
+    "upload payload plan to production and create primary_receipt.json",
+    "verify production payload using primary_receipt.json",
+    "replicate payload to DR and create replica_receipt.json",
+    "verify DR payload using replica_receipt.json",
+    "finalize the package using both verified payload receipts",
+    "upload release-manifest-upload-plan.json to production and create primary_release_manifest_receipt.json",
+    "verify the production release manifest using primary_release_manifest_receipt.json",
+    "replicate the release manifest to DR and create replica_release_manifest_receipt.json",
+    "verify the DR release manifest using replica_release_manifest_receipt.json",
+    "complete one title before starting the next title"
+  ],
+  "receipt_semantics": {
+    "upload_creates_receipt": true,
+    "verify_creates_receipt": false,
+    "verify_consumes_existing_receipt": true,
+    "replicate_creates_replica_receipt": true
+  },
+  "offline_validation": {
+    "storage_tool_commit": "0ee001df6e9d302e0c7e5c42469db56366521412",
+    "focused_tests": {
+      "result": "PASS",
+      "passed": 70,
+      "failed": 0
+    },
+    "disposable_fake_lifecycle": {
+      "result": "PASS",
+      "in_memory_storage_only": true,
+      "payload_objects_per_store": 8,
+      "final_manifest_objects_per_store": 1,
+      "primary_current_objects": 9,
+      "replica_current_objects": 9
+    },
+    "candidate_packages_mutated": false,
+    "receipts_created_outside_disposable_fixture": false,
+    "cloud_calls_made": false,
+    "controlled_publication_mutated": false,
+    "release_gate_mutated": false,
+    "paid_tts_lock_touched": false
+  },
+  "validated_evidence_filenames": [
+    "storage_preflight_report.json",
+    "primary_receipt.json",
+    "primary_upload_report.json",
+    "primary_post_upload_verify_report.json",
+    "replica_receipt.json",
+    "replica_replication_report.json",
+    "replica_post_upload_verify_report.json",
+    "audiobook_package_manifest.v2.json",
+    "release-manifest.json",
+    "release-manifest-upload-plan.json",
+    "finalize-result.json",
+    "primary_release_manifest_receipt.json",
+    "primary_release_manifest_upload_report.json",
+    "primary_release_manifest_post_upload_verify_report.json",
+    "replica_release_manifest_receipt.json",
+    "replica_release_manifest_replication_report.json",
+    "replica_release_manifest_post_upload_verify_report.json"
+  ],
+  "publication_status": {
+    "storage_evidence_is_publication_authorization": false,
+    "sredni_or_ghost_package_v2_uploaded_by_this_change": false,
+    "sredni_or_ghost_package_v2_activated_by_this_change": false,
+    "public_audiobook_count_changed_by_this_change": false
+  },
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/audiobook_package_storage_v2.py preflight --retention-days 30 --report /private/tmp/earnalism-package-v2-production-dr-preflight.json"
+}
