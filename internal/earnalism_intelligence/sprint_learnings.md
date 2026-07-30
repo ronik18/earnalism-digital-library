@@ -1826,3 +1826,26 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The provider-free preflight passed with an estimated TTS cost of USD 0.03846.
   No synthesis, upload, publication, release mutation, or paid-lock write ran,
   and Jekyll remains audio-hidden.
+
+## 2026-07-30 — A first-package canary needs an explicit no-audio identity
+
+- A package-versus-legacy rollout cannot safely represent a newly approved
+  title because the title has no approved legacy audio. Model the active
+  fallback as the canonical SHA-256 of slug, source hash, manuscript hash, and
+  `NO_PUBLIC_AUDIO`; any other missing-package descriptor fails closed.
+- Keep the 5% checkpoint transport-only. The exact candidate cohort may call
+  the package manifest and segment routes, while the 95% hidden cohort receives
+  404. Catalog, Home, legacy audio routes, and reader Listen controls remain
+  disabled for every customer until a separate production-proof promotion.
+- Bind the canary to exact QA-candidate evidence, Tier A rights, both covers,
+  ASR/source at least 9.7/0.98, listening dimensions at least 9.2 with
+  confidence at least 0.90 and no fatal flags, production plus independent DR
+  receipts, a hidden-before browser proof, and an explicit owner environment
+  approval.
+- Do not Redis-cache a cohort manifest. Use a sticky HttpOnly cookie,
+  `private, no-store`, and `Vary: Cookie`; segment requests never mint a new
+  identity.
+- Generic rollout advancement is unsafe for a new title because it lacks the
+  mandatory post-deploy manifest, 206 Range, timestamps, and browser playback
+  evidence. Permit only rollback to 0 or explicit revocation until a dedicated
+  proof-bound promotion command exists.

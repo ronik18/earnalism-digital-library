@@ -96,6 +96,7 @@ try:
         PACKAGE_SCHEMA_VERSION as AUDIOBOOK_PACKAGE_SCHEMA_VERSION,
         AudiobookPackageValidationError,
         AudiobookReleaseSelectionError,
+        canonical_json_bytes,
         select_release_descriptor_sha256,
         validate_active_release_state,
         validate_audiobook_package as validate_audiobook_package_contract,
@@ -106,6 +107,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         PACKAGE_SCHEMA_VERSION as AUDIOBOOK_PACKAGE_SCHEMA_VERSION,
         AudiobookPackageValidationError,
         AudiobookReleaseSelectionError,
+        canonical_json_bytes,
         select_release_descriptor_sha256,
         validate_active_release_state,
         validate_audiobook_package as validate_audiobook_package_contract,
@@ -1978,6 +1980,8 @@ AUDIOBOOK_RELEASE_EVIDENCE_FIELD = "audiobook_package_release_evidence"
 AUDIOBOOK_RELEASE_PRIMARY_STORE = "prod"
 AUDIOBOOK_RELEASE_REPLICA_STORE = "dr"
 AUDIOBOOK_ROLLOUT_COOKIE = "earnalism_audiobook_rollout"
+AUDIOBOOK_NEW_TITLE_CANARY_SCHEMA = "audiobook_new_title_package_canary.v1"
+AUDIOBOOK_HIDDEN_IDENTITY_SCHEMA = "audiobook_hidden_release_identity.v1"
 _AUDIOBOOK_ROLLOUT_COOKIE_RE = re.compile(r"^[A-Za-z0-9_-]{24,160}$")
 
 
@@ -2102,6 +2106,153 @@ def _controlled_audiobook_manuscript_sha256(book: dict) -> str:
     ).strip().lower()
 
 
+def _hidden_audiobook_release_descriptor_sha256(book: dict, slug: str) -> str:
+    source_hashes = {
+        str(book.get(key) or "").strip().lower().removeprefix("sha256:")
+        for key in ("content_hash", "source_hash")
+        if str(book.get(key) or "").strip()
+    }
+    source_hashes = {
+        value for value in source_hashes if _SHA256_RE.fullmatch(value)
+    }
+    canary = book.get("audiobook_package_canary")
+    candidate_descriptor = (
+        str(canary.get("candidate_release_descriptor_sha256") or "")
+        if isinstance(canary, dict)
+        else ""
+    )
+    candidate_package = _book_audiobook_release_packages(book).get(
+        candidate_descriptor
+    )
+    candidate_source = (
+        str(candidate_package.get("source_sha256") or "").strip().lower()
+        if isinstance(candidate_package, dict)
+        else ""
+    )
+    source_sha256 = (
+        candidate_source
+        if candidate_source in source_hashes
+        else next(iter(source_hashes))
+        if len(source_hashes) == 1
+        else ""
+    )
+    manuscript_sha256 = _controlled_audiobook_manuscript_sha256(book)
+    if not source_sha256 or not _SHA256_RE.fullmatch(manuscript_sha256):
+        return ""
+    identity = {
+        "schema_version": AUDIOBOOK_HIDDEN_IDENTITY_SCHEMA,
+        "slug": str(slug or "").strip().lower(),
+        "state": "NO_PUBLIC_AUDIO",
+        "source_sha256": source_sha256,
+        "manuscript_sha256": manuscript_sha256,
+    }
+    return hashlib.sha256(canonical_json_bytes(identity)).hexdigest()
+
+
+def _can_expose_audiobook_package_canary(book: dict, slug: str) -> bool:
+    normalized_slug = str(slug or "").strip().lower()
+    canary = book.get("audiobook_package_canary")
+    if not isinstance(canary, dict):
+        return False
+    state_raw = _book_audiobook_release_state(book)
+    packages = _book_audiobook_release_packages(book)
+    evidence = book.get(AUDIOBOOK_RELEASE_EVIDENCE_FIELD)
+    try:
+        state = validate_active_release_state(state_raw)
+    except AudiobookReleaseSelectionError:
+        return False
+    hidden = _hidden_audiobook_release_descriptor_sha256(book, normalized_slug)
+    candidate = str(
+        state.get("candidate_release_descriptor_sha256") or ""
+    ).strip().lower()
+    package = packages.get(candidate)
+    package_version = (
+        str(package.get("package_version") or "")
+        if isinstance(package, dict)
+        else ""
+    )
+    evidence_item = (
+        evidence.get(candidate)
+        if isinstance(evidence, dict)
+        else None
+    )
+    evidence_sha256 = (
+        hashlib.sha256(canonical_json_bytes(evidence_item)).hexdigest()
+        if isinstance(evidence_item, dict)
+        else ""
+    )
+    receipt_fields = (
+        "primary_receipt_sha256",
+        "replica_receipt_sha256",
+        "primary_release_manifest_receipt_sha256",
+        "replica_release_manifest_receipt_sha256",
+    )
+    return bool(
+        canary.get("schema_version") == AUDIOBOOK_NEW_TITLE_CANARY_SCHEMA
+        and canary.get("status") == "PUBLIC_AUDIO_PACKAGE_CANARY_APPROVED"
+        and canary.get("slug") == normalized_slug
+        and canary.get("catalog_audio_enabled") is False
+        and canary.get("package_endpoint_enabled") is True
+        and canary.get("approval_scope")
+        == "transport_canary_only_no_customer_discovery"
+        and canary.get("blockers") == []
+        and canary.get("post_deploy_proof_required")
+        == [
+            "PACKAGE_MANIFEST_200_COHORT_AND_404_NON_COHORT",
+            "SEGMENT_RANGE_206",
+            "TIMESTAMPS_200",
+            "BROWSER_PLAYBACK_PASS",
+        ]
+        and bool(str(canary.get("generated_at") or "").strip())
+        and book.get("audio_enabled") is False
+        and book.get("audiobook_enabled") is False
+        and state.get("status") == "ACTIVE"
+        and state.get("slug") == normalized_slug
+        and int((state.get("rollout") or {}).get("percentage") or 0) == 5
+        and canary.get("rollout_percentage") == 5
+        and canary.get("rollout_salt") == (state.get("rollout") or {}).get("salt")
+        and hidden
+        and canary.get("hidden_release_descriptor_sha256") == hidden
+        and canary.get("rollback_descriptor_sha256") == hidden
+        and _SHA256_RE.fullmatch(
+            str(canary.get("hidden_before_proof_sha256") or "")
+        )
+        and _SHA256_RE.fullmatch(
+            str(
+                canary.get(
+                    "qa_candidate_release_descriptor_file_sha256"
+                )
+                or ""
+            )
+        )
+        and book.get("audiobook_hidden_release_descriptor_sha256") == hidden
+        and state.get("active_release_descriptor_sha256") == hidden
+        and canary.get("candidate_release_descriptor_sha256") == candidate
+        and canary.get("candidate_package_version") == package_version
+        and evidence_sha256
+        and canary.get("package_release_evidence_sha256") == evidence_sha256
+        and isinstance(evidence_item, dict)
+        and all(
+            canary.get(field) == evidence_item.get(field)
+            and _SHA256_RE.fullmatch(str(canary.get(field) or ""))
+            for field in receipt_fields
+        )
+        and _validated_audiobook_package(
+            book,
+            normalized_slug,
+            raw_package=package,
+            expected_release_descriptor_sha256=candidate,
+        )
+        is not None
+        and _has_release_eligible_audiobook_package_evidence(
+            book,
+            normalized_slug,
+            candidate,
+            package,
+        )
+    )
+
+
 def _validated_audiobook_package(
     book: dict,
     slug: str,
@@ -2189,8 +2340,19 @@ def _selected_audiobook_package(
             return None, "", ""
         raw_package = packages.get(descriptor)
         if not raw_package:
-            # The selected active descriptor may intentionally be the approved
-            # legacy monolithic release during a 5%/25% package-v2 canary.
+            legacy = str(
+                book.get("audiobook_legacy_release_descriptor_sha256") or ""
+            ).strip().lower()
+            hidden = _hidden_audiobook_release_descriptor_sha256(book, slug)
+            bound_hidden = str(
+                book.get("audiobook_hidden_release_descriptor_sha256") or ""
+            ).strip().lower()
+            # Only an exact controlled legacy identity or the deterministic
+            # no-audio identity may intentionally omit a package manifest.
+            if descriptor not in {legacy, hidden} or (
+                descriptor == hidden and bound_hidden != hidden
+            ):
+                return None, "", sticky_key if created else ""
             return None, descriptor, sticky_key if created else ""
         package = _validated_audiobook_package(
             book,
@@ -7735,6 +7897,9 @@ _READER_AUDIO_BOOK_PROJECTION = {
     "audiobook_active_release": 1,
     "audiobook_manuscript_sha256": 1,
     "audiobook_release_descriptor_sha256": 1,
+    "audiobook_legacy_release_descriptor_sha256": 1,
+    "audiobook_hidden_release_descriptor_sha256": 1,
+    "audiobook_package_canary": 1,
     "audiobook_assets": 1,
     "audiobook_provider": 1,
     "audiobook_enabled": 1,
@@ -7763,6 +7928,17 @@ async def _reader_audio_book_for_slug(slug: str) -> dict:
     if not book or not can_expose_audio({**book, "slug": slug}):
         raise HTTPException(status_code=404, detail="Audiobook asset not found")
     return book
+
+
+async def _reader_audio_package_book_for_slug(slug: str) -> dict:
+    if not _is_controlled_public_slug(slug):
+        raise HTTPException(status_code=404, detail="Audiobook asset not found")
+    artifact = _controlled_artifact_doc(slug, include_content=False)
+    if artifact and _can_expose_audiobook_package_canary(artifact, slug):
+        return artifact
+    # Stable releases continue through the legacy-safe resolver; its global
+    # release gate must not be relaxed for a transport-only package canary.
+    return await _reader_audio_book_for_slug(slug)
 
 
 async def _stream_audiobook_asset_url(
@@ -8032,7 +8208,8 @@ async def reader_book_audiobook(
 
 
 async def _reader_book_audiobook_package_manifest_response(slug: str, request: Request):
-    book = await _reader_audio_book_for_slug(slug)
+    book = await _reader_audio_package_book_for_slug(slug)
+    package_canary = _can_expose_audiobook_package_canary(book, slug)
     package, _descriptor, new_rollout_identity = _selected_audiobook_package(
         book,
         slug,
@@ -8044,7 +8221,10 @@ async def _reader_book_audiobook_package_manifest_response(slug: str, request: R
         response = UTF8JSONResponse(
             status_code=404,
             content={"detail": "Audiobook package manifest not found"},
-            headers={"Cache-Control": "private, no-store"},
+            headers={
+                "Cache-Control": "private, no-store",
+                "Vary": "Cookie",
+            },
         )
         if new_rollout_identity:
             response.set_cookie(
@@ -8054,20 +8234,27 @@ async def _reader_book_audiobook_package_manifest_response(slug: str, request: R
                 secure=ENVIRONMENT == "production",
                 httponly=True,
                 samesite="lax",
+                path=f"/api/reader/book/{slug}",
             )
         return response
-    cache_key = f"audiobook-package:{manifest['package_version']}"
-    cached_manifest = await _redis_cache_get("reader-manifest", cache_key)
-    if isinstance(cached_manifest, dict):
-        manifest = cached_manifest
-    else:
-        await _redis_cache_set("reader-manifest", cache_key, manifest, 3600)
+    if not package_canary:
+        cache_key = f"audiobook-package:{manifest['package_version']}"
+        cached_manifest = await _redis_cache_get("reader-manifest", cache_key)
+        if isinstance(cached_manifest, dict):
+            manifest = cached_manifest
+        else:
+            await _redis_cache_set("reader-manifest", cache_key, manifest, 3600)
     etag = f'"{manifest["package_version"]}"'
-    cache_control = "private, max-age=60, must-revalidate"
+    cache_control = (
+        "private, no-store"
+        if package_canary
+        else "private, max-age=60, must-revalidate"
+    )
     headers = {
         "Cache-Control": cache_control,
         "ETag": etag,
         "X-Audiobook-Package-Version": manifest["package_version"],
+        **({"Vary": "Cookie"} if package_canary else {}),
     }
     if _client_etag_matches(request, etag):
         response = Response(status_code=304, headers=headers)
@@ -8087,6 +8274,7 @@ async def _reader_book_audiobook_package_manifest_response(slug: str, request: R
             secure=ENVIRONMENT == "production",
             httponly=True,
             samesite="lax",
+            path=f"/api/reader/book/{slug}",
         )
     return response
 
@@ -8098,7 +8286,8 @@ async def _reader_book_audiobook_package_segment(
     asset_key: str,
     request: Request,
 ):
-    book = await _reader_audio_book_for_slug(slug)
+    book = await _reader_audio_package_book_for_slug(slug)
+    package_canary = _can_expose_audiobook_package_canary(book, slug)
     package, _descriptor, _new_identity = _selected_audiobook_package(
         book,
         slug,
@@ -8124,12 +8313,22 @@ async def _reader_book_audiobook_package_segment(
     if not asset_url:
         raise HTTPException(status_code=503, detail="Audiobook package storage is not configured")
     normalized_key = "mp3" if asset_name == "audio" else asset_name
+    response_headers = {
+        "X-Audiobook-Package-Version": package["package_version"],
+    }
+    if package_canary:
+        response_headers.update(
+            {
+                "Cache-Control": "private, no-store",
+                "Vary": "Cookie",
+            }
+        )
     return await _stream_audiobook_asset_url(
         slug,
         normalized_key,
         asset_url,
         request,
-        extra_headers={"X-Audiobook-Package-Version": package["package_version"]},
+        extra_headers=response_headers,
         version_id=asset["storage"]["version_id"],
     )
 
