@@ -1,12 +1,12 @@
 {
   "schema_version": "earnalism.jekyll_chunk9_sentence_safe_repair_preflight_evidence.v1",
-  "generated_at": "2026-07-30T16:45:00Z",
+  "generated_at": "2026-07-30T16:30:17Z",
   "status": "PREFLIGHT_PASS_NO_PROVIDER_CALL_AUDIO_HIDDEN",
   "slug": "jekyll-and-hyde",
   "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
   "author": "Robert Louis Stevenson",
-  "private_preflight_report_path": "/private/tmp/earnalism-jekyll-charon-private/jekyll-and-hyde/repaired_full/a408cba50da94ae1/chunk9_repair_preflight/sentence_safe_plan.json",
-  "private_preflight_report_sha256": "cac128be35bdc7f70e9211658a6f8368608c49cf9c1e0646e92bcde8f0b4dba5",
+  "private_preflight_report_path": "/private/tmp/earnalism-jekyll-charon-private/jekyll-and-hyde/repaired_full/a408cba50da94ae1/chunk9_repair_preflight/sentence_safe_plan_20260730T163017Z.json",
+  "private_preflight_report_sha256": "37fecc8680d8d0becf0af9331e69f0f876866062ea2934bbb69d64bf9a9a4a8d",
   "preflight_binding_sha256": "a60fa7da7ded382bb9f3b6bb45641c08d8df39c782a0356d491aceccd70d9e6f",
   "parent_candidate": {
     "root_full_manifest_sha256": "5bbbc01f9ab2dcba7194c1a0a28f636863896e68adb2f9a743ee33ddd7395439",

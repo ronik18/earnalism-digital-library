@@ -2137,7 +2137,7 @@
     "jekyll-and-hyde": {
       "latest_decision": "CHUNK9_SENTENCE_SAFE_REPAIR_PREFLIGHT_PASS_PARENT_CHUNK36_REPAIR_PRESERVED_AUDIO_HIDDEN",
       "decision_reason": "The exact already-repaired Charon parent candidate is now bound by manifest SHA-256 616080b550edecc4320812ea09c0e0cf3f4f5afd96210247b5f1e6e3477a4632. Its completed chunk_0036 replacement remains immutable at audio SHA-256 d7d83110d869e2d40c59855e2d3e2252e9b642b6fa14e9790591cbb6c0d8702c. A no-provider-call chunk_0009 preflight binds the exact 16-token omission, adjacent source context, measured 30.10s-to-31.92s defective clause window, Google Charon local settings, $0.005760 estimate, future paid-lock scope, 91-file preservation set, fresh objective/listening requirements, and package-v2 blockers. The only permitted future parent-to-child audio change is index 9; relative to the root candidate the cumulative change set must be [9,36]. No synthesis, audio modification, lock mutation, upload, publication, or release mutation ran; Jekyll remains audio-hidden.",
-      "updated_at": "2026-07-30T16:45:00Z",
+      "updated_at": "2026-07-30T16:30:17Z",
       "language": "eng",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
@@ -2231,7 +2231,7 @@
       "google_charon_chunk36_incremental_listening_new_judgments_required": 1,
       "google_charon_chunk9_sentence_safe_preflight_status": "PREFLIGHT_PASS_NO_PROVIDER_CALL_AUDIO_HIDDEN",
       "google_charon_chunk9_sentence_safe_preflight_binding_sha256": "a60fa7da7ded382bb9f3b6bb45641c08d8df39c782a0356d491aceccd70d9e6f",
-      "google_charon_chunk9_sentence_safe_private_report_sha256": "cac128be35bdc7f70e9211658a6f8368608c49cf9c1e0646e92bcde8f0b4dba5",
+      "google_charon_chunk9_sentence_safe_private_report_sha256": "37fecc8680d8d0becf0af9331e69f0f876866062ea2934bbb69d64bf9a9a4a8d",
       "google_charon_chunk9_sentence_safe_replacement_clause_sha256": "9f5b63510b260f3e2c2bbcd691319cea1fd3b7b59908efa5605a49b0821d01f5",
       "google_charon_chunk9_sentence_safe_synthesis_context_sha256": "977e108da205532a2379eb254bdb95b087064714cbdeecef583e8e14b8e13884",
       "google_charon_chunk9_sentence_safe_synthesis_characters": 192,
