@@ -1403,3 +1403,26 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   media, catalog, release-gate, cloud, or paid-lock state changed. Post-deploy
   one-click browser proof remains required because the browser runtime was not
   available in this isolated run.
+
+## 2026-07-30 — Keep lazy media source ownership outside React
+
+- Moving `play()` into the explicit click stack was necessary but not
+  sufficient while React still controlled the hidden audio element's `src`.
+  The click handler assigned the approved package URL imperatively, then the
+  `generatedAudioPrimed` state update caused React to commit the same URL as a
+  newly present `src` prop.
+- Setting a media source again restarts the browser's media-selection
+  algorithm. That follow-up React commit aborted the first pending `play()`
+  request while the resource continued loading, exactly matching the observed
+  `readyState = 4`, `paused = true`, `currentTime = 0` result. The audio node
+  itself was stable and was not remounted.
+- Keep the hidden audio element source-free with `preload="none"` in JSX.
+  Approved source assignment, `load()`, and `play()` remain imperative and
+  synchronous inside explicit playback intent; segment transitions reuse the
+  same exact release-gated path. React rerenders can no longer restart the
+  package request.
+- Local validation passed 70 focused reader/audio safety tests and an optimized
+  production build. Pre-intent source absence, measured timestamps, package-v2
+  URL binding, service-worker Range bypass, release truth, and the public
+  audiobook count are unchanged. Deployment and one-click production browser
+  proof remain required.
