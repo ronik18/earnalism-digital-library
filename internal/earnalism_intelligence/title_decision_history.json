@@ -1294,9 +1294,9 @@
       "audiobook_next_action": "Run gcloud auth application-default login, then execute one bounded source-bound representative audition; do not run full TTS unless every audition passage passes."
     },
     "the-open-window": {
-      "latest_decision": "PACKAGE_V2_CANDIDATE_STAGED_ZERO_PERCENT_LEGACY_RELEASE_REMAINS_ACTIVE",
-      "decision_reason": "The exact approved Open Window narration was finalized as a 14-asset package-v2 candidate and independently full-download verified under Governance retention in production and DR. Rollout remains 0%, so the proven legacy descriptor remains active and the public audiobook count remains four.",
-      "updated_at": "2026-07-29T20:22:22Z",
+      "latest_decision": "PACKAGE_V2_FIVE_PERCENT_CANDIDATE_BROWSER_CHECKPOINT_PASSED",
+      "decision_reason": "The original 0% staged checkpoint and the completed 5% HTTP/legacy-browser checkpoint remain preserved. A later isolated Chromium 149 candidate context proved zero pre-intent audio, exact package-segment 206 playback, seek-range continuity, safe page reset, cached replay, and zero console/page errors. The package has one segment, so cross-segment auto-advance is not claimed; the active legacy descriptor remains retained and the public audiobook count remains four.",
+      "updated_at": "2026-07-30T04:08:42Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "PUBLIC_AUDIO_RELEASE_APPROVED_AND_PROVEN",
@@ -1319,7 +1319,7 @@
       "browser_audio_start_latency_ms": 144.4,
       "narration_disclosure": "Narration: AI voice",
       "ten_of_ten_claimed": false,
-      "audiobook_next_action": "Deploy the package-v2 implementation with rollout held at 0%, verify legacy production playback is unchanged, then run the already-authorized endpoint and browser canary before any rollout increase.",
+      "audiobook_next_action": "Preserve the completed 0% and 5% candidate/legacy evidence. Treat any proposed 25% pointer change as a separate deploy and validate both sticky cohorts, rollback behavior, public live-count truth, and any multi-segment title separately before widening further.",
       "production_release_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_production_release_proof.json",
       "package_v2_canary": {
         "active_release_descriptor_sha256": "81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe",
@@ -1332,9 +1332,40 @@
         "object_lock_mode": "GOVERNANCE",
         "object_lock_default_retention_days_floor": 30,
         "verified_object_retention_minimum_days": 29,
-        "rollout_percentage": 0,
+        "rollout_percentage": 5,
         "legacy_descriptor_still_active": true,
         "public_audiobook_count": 4,
+        "rollout_history": [
+          {
+            "checkpoint": "ZERO_PERCENT_STAGED",
+            "recorded_at": "2026-07-29T20:06:54Z",
+            "rollout_percentage": 0,
+            "candidate_selected_for_customers": false
+          },
+          {
+            "checkpoint": "FIVE_PERCENT_PRODUCTION",
+            "recorded_at": "2026-07-30T03:58:13Z",
+            "rollout_percentage": 5,
+            "sticky_cohort_sample_count": 62,
+            "candidate_cohort_count": 1,
+            "legacy_cohort_count": 61,
+            "candidate_manifest_status": 200,
+            "candidate_segment_status": 206,
+            "legacy_manifest_status": 404,
+            "legacy_browser_no_regression": true,
+            "candidate_browser_playback_validated": true,
+            "candidate_browser": "Chromium 149.0.7827.55",
+            "candidate_browser_contexts_sampled": 19,
+            "candidate_browser_preintent_audio_absent": true,
+            "candidate_browser_initial_range_status": 206,
+            "candidate_browser_seek_range_status": 206,
+            "candidate_browser_reload_replay_passed": true,
+            "candidate_browser_console_error_count": 0,
+            "candidate_browser_page_error_count": 0,
+            "cross_segment_auto_advance_validated": false,
+            "public_audiobook_count": 4
+          }
+        ],
         "combined_regression_status": "PASS_136_OF_136_FRONTEND_164_OF_164",
         "combined_regression_validated_at": "2026-07-29T20:22:22Z",
         "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_the-open-window_20260729.json"

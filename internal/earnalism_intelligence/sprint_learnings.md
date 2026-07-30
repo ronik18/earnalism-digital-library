@@ -1006,3 +1006,34 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   the old cache key and proves that the rebuilt reader manifest contains the
   same-origin package-manifest route. Focused backend validation passed
   `92 / 92`.
+
+## 2026-07-30 — Five-percent package-v2 cohorts remain sticky and fail closed
+
+- Preserve the 0% storage-and-selection checkpoint as history; a later rollout
+  observation must not rewrite the state that was true at the earlier gate.
+- At the completed `the-open-window` 5% production checkpoint, 62 newly issued
+  sticky identities produced one candidate cohort and 61 legacy cohorts. The
+  candidate cookie repeated the same immutable package at HTTP `200`; the
+  legacy cookie repeated HTTP `404` with `private, no-store`.
+- Candidate HTTP delivery passed exact package-version binding, a 64-byte
+  `206` request over `bytes 0-63/4712013`, the measured timestamp sidecar,
+  `416` for an invalid range, and `404` for both a wrong package version and a
+  candidate-segment request from the legacy cohort.
+- The legacy browser no-regression checkpoint proved `src=null` and
+  `preload=none` before intent, then `readyState=4`, active playback, visible
+  Pause/Stop controls, and an empty console after intent. Playback was stopped
+  after validation.
+- Do not convert that legacy-browser proof into a candidate-browser claim.
+  Candidate playback was validated at the HTTP layer only, no browser latency
+  was measured, the active legacy descriptor remains retained, and the public
+  audiobook count remains four.
+- A subsequent isolated Chromium `149.0.7827.55` run sampled 19 independent
+  production `www` contexts to obtain a candidate cohort. It proved no audio
+  source or loading before intent, exact package-segment `206` playback,
+  continued playback after a 300-second seek, safe page-advance reset,
+  successful re-prime, and successful cached replay after reload.
+- Candidate playback produced no console or page errors; only non-error preload
+  warnings appeared. Stop reset the source and current time.
+- Do not claim cross-segment auto-advance from this checkpoint: the Open Window
+  package contains exactly one segment. Test that behavior only on a future
+  multi-segment package. No browser latency was measured.

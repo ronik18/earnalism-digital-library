@@ -1,12 +1,12 @@
 # Audiobook package v2 canary — The Open Window
 
-Status: **candidate package finalized and independently stored; rollout remains
-0%; the legacy release remains active**.
+Status: **5% sticky-cohort production checkpoint passed; candidate HTTP and
+real-browser delivery plus legacy browser no-regression are proven**.
 
 This evidence records the completed production-and-DR staging canary for the
-already-live audiobook `the-open-window`. It does not approve a new audiobook,
-increase rollout, replace the active descriptor, or change the truthful public
-audiobook count of four.
+already-live audiobook `the-open-window`, followed by the completed 5%
+production checkpoint. It does not approve a new audiobook, replace the active
+legacy descriptor, or change the truthful public audiobook count of four.
 
 ## Release selection truth
 
@@ -14,14 +14,85 @@ audiobook count of four.
   `81da7eb58ffe821cf708b7917af13f066929fccbaed0013394b8bf4f013c7ffe`
 - Package-v2 candidate descriptor:
   `0f57074e12efe5e4478e26efec4b619231a22123eb5c5ec630026f7202421ed0`
-- Candidate rollout: `0%`
-- Customer-selected delivery: legacy
+- Candidate rollout: `5%`
+- Customer-selected delivery: sticky cohort selection between the legacy
+  descriptor and the package-v2 candidate
 - Public audiobooks remain:
   `book-2b9853ec52`, `a-ghost-story`, `sredni-vashtar`, and
   `the-open-window`
 
-The canary therefore proves staged rollback-safe delivery readiness without
-claiming a fifth live audiobook.
+The original `0%` checkpoint remains part of the evidence history: the
+candidate was stored and bound while all customers remained on legacy
+delivery. The subsequent `5%` checkpoint proves that candidate and legacy
+cohorts remain sticky and fail closed without claiming a fifth live audiobook.
+
+## Five-percent production checkpoint
+
+- Rollout commit:
+  `7e900197a77f4a90ea4b803d3796ef74a0ae868d`
+- Main merge commit:
+  `83e806d52787605c3396d61bebefd6aa3e3d742f`
+- Rollout salt: `open-window-package-v2-canary-20260729`
+- New sticky identities sampled: `62`
+- Candidate selections: `1` (sample 62)
+- Legacy selections: `61`
+- Repeating the candidate cookie returned HTTP `200` and the same immutable
+  package version.
+- Repeating the legacy cookie returned HTTP `404` with
+  `private, no-store`.
+
+The candidate manifest returned HTTP `200`,
+`private, max-age=60, must-revalidate`, and package version
+`sha256-4bf8a83a0181bd10f22cfe32aba18f80e1a357dc7e73aa27c026d6d5c36a83fd`.
+Its segment route returned HTTP `206`, exactly 64 bytes for
+`bytes 0-63/4712013`, `audio/mpeg`, the matching package-version header, and
+an MP3/ID3 prefix. The measured timestamp sidecar was fetched as 12,839 bytes
+with SHA-256
+`637ed34e55d13818dac7ddf4421425d58da2fea17300203b4c9365669b2fe070`.
+An invalid range returned `416`; a wrong package version and a candidate
+segment request from the legacy cohort each returned `404`.
+
+The in-app browser loaded
+`https://www.theearnalism.com/reader/the-open-window` in a legacy cohort.
+Page 1 correctly kept the audio control disabled with
+“Audio starts on reading pages”. On page 2, before user intent, the audio
+element had `src=null` and `preload=none`. The first click primed
+`/api/reader/book/the-open-window/audiobook` without error; the second click
+produced `paused=false`, `readyState=4`, `preload=auto`, and visible
+“Pause narration” and “Stop narration” controls. Console logs were empty and
+playback was stopped after validation.
+
+That first browser observation is legacy browser no-regression evidence. It
+did not itself test candidate playback, and no browser latency was measured.
+
+### Candidate real-browser checkpoint
+
+A subsequent isolated Chromium `149.0.7827.55` production-browser run sampled
+19 independent `www.theearnalism.com` contexts to obtain one 5% candidate
+context. In that candidate context:
+
+- the reader manifest returned HTTP `200` twice;
+- before user intent, the audio element had `src=null`, empty `currentSrc`,
+  `preload=none`, `readyState=0`, and `paused=true`;
+- on page 2, the first “Start narration” click bound the exact canonical
+  package-segment route and received HTTP `206` for `bytes=0-`;
+- after that first click, the element had `readyState=4`, `paused=true`,
+  duration `392.6` seconds, and no error;
+- the second click started playback with `paused=false`, current time about
+  `2.06` seconds, `preload=auto`, visible Pause/Stop controls, and a second
+  `206` request for `bytes=98304-`;
+- a programmatic seek to 300 seconds continued playback at about `302.04`
+  seconds and produced `206` for `bytes=3571712-`;
+- advancing to page 3 safely stopped and reset audio to `src=null`, after which
+  re-priming succeeded;
+- reloading returned to page 1 with no pre-intent audio, and page 2 replay then
+  succeeded from cached manifest/media with `paused=false`, current time about
+  `1.46` seconds, and the exact package route retained; and
+- console and page errors remained empty. Only non-error preload warnings were
+  observed. Stop reset the source and current time.
+
+The package has one segment, so this checkpoint does not claim cross-segment
+auto-advance. No browser latency was measured.
 
 ## Exact package identity
 
@@ -79,9 +150,8 @@ Passing:
 The combined builder, storage, selector, backend package, B2-routing, and
 Sprint 1 cleanup and Redis-policy regression run completed at
 `2026-07-29T20:17:49Z` with `136 passed / 0 failed`. The formerly stale
-proxy-asset assertion is resolved. The package-v2 candidate nevertheless
-remains at `0%` until the deployed zero-percent checkpoint is proven, followed
-by the already-authorized endpoint and browser canary before rollout increases.
+proxy-asset assertion is resolved. The production checkpoint then passed at
+`5%` with the sticky-cohort and HTTP/browser evidence recorded above.
 
 ## Safety boundary
 
@@ -90,10 +160,10 @@ private object key, or ephemeral local path. It intentionally retains the
 non-secret account fingerprints, bucket names, and regions needed to prove
 production/DR separation.
 
-This evidence-only task did not generate narration, call a paid provider,
-touch `paid_tts.lock`, mutate campaign policy/state, edit controlled
-publications or code, perform cloud writes, change the rollout percentage,
-flip the active descriptor, or change the public live count.
+This evidence update did not generate narration, call a paid provider, touch
+`paid_tts.lock`, mutate campaign policy/state, edit controlled publications or
+code, perform cloud writes, flip the active descriptor, or change the public
+live count. It records the independently completed 5% rollout checkpoint.
 
 Machine-readable evidence:
 
