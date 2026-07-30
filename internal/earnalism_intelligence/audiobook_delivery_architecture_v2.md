@@ -56,13 +56,19 @@ Production preflight requires:
 - versioning enabled;
 - private-bucket evidence;
 - Governance Object Lock with active default retention;
-- no lifecycle deletion that overlaps `v1/prod/`; and
+- no lifecycle hiding or deletion that overlaps `v1/prod/`; and
 - distinct account, credential, region, endpoint, and bucket identities.
 
 The runtime receives only a bucket-scoped primary read credential. Controlled
-operators use separate upload and retention-administration credentials;
-production deletion credentials are deliberately unsupported and remain
-offline. The unpopulated operator contract is
+operators use separate upload and retention-preflight credentials. Lifecycle
+rules are read through the supported B2 Native `b2_list_buckets` API because
+lifecycle-read capability support is inconsistent across the documented and
+deployed B2 S3-compatible surfaces. The retention-preflight credential is
+read-only; its legacy environment variable name still says `RETENTION_ADMIN`
+for compatibility. Exact least-privilege capabilities are documented in the
+operator environment example. Production deletion credentials are
+deliberately unsupported and remain offline. The unpopulated operator contract
+is
 `internal/audiobook_lab/config/audiobook_package_storage.env.example`. The
 current and at least two prior approved releases are retained.
 

@@ -30,13 +30,11 @@ class FakeS3:
         *,
         versioning: str = "Enabled",
         lock_mode: str = "GOVERNANCE",
-        lifecycle_rules: list[dict] | None = None,
         public: bool = False,
         default_retention_days: int = 365,
     ) -> None:
         self.versioning = versioning
         self.lock_mode = lock_mode
-        self.lifecycle_rules = lifecycle_rules or []
         self.public = public
         self.default_retention_days = default_retention_days
         self.objects: dict[tuple[str, str], dict] = {}
@@ -97,10 +95,6 @@ class FakeS3:
                 ]
             }
         return {"Grants": []}
-
-    def get_bucket_lifecycle_configuration(self, **kwargs):
-        self.method_calls.append("get_bucket_lifecycle_configuration")
-        return {"Rules": self.lifecycle_rules}
 
     def head_object(self, *, Bucket, Key, VersionId=None):
         self.method_calls.append("head_object")
@@ -164,6 +158,19 @@ class FakeS3:
                     }
                 )
         return {"Versions": versions, "IsTruncated": False}
+
+
+class FakeNativeLifecycleReader:
+    def __init__(self, rules: object = None, error: Exception | None = None) -> None:
+        self.rules = [] if rules is None else rules
+        self.error = error
+        self.read_calls = 0
+
+    def read(self):
+        self.read_calls += 1
+        if self.error is not None:
+            raise self.error
+        return self.rules
 
 
 def config(role: str, *, release_eligible: bool = True) -> storage.StorageConfig:
@@ -378,6 +385,7 @@ class StorageToolTests(unittest.TestCase):
             upload_client,
             config("prod"),
             retention_admin_client,
+            FakeNativeLifecycleReader(),
         )
 
         self.assertTrue(report["passed"])
@@ -386,9 +394,13 @@ class StorageToolTests(unittest.TestCase):
             "get_object_lock_configuration",
             retention_admin_client.method_calls,
         )
-        self.assertIn(
+        self.assertNotIn(
             "get_bucket_lifecycle_configuration",
             retention_admin_client.method_calls,
+        )
+        self.assertEqual(
+            report["checks"]["production_lifecycle_source"],
+            "B2_NATIVE_API_V4_B2_LIST_BUCKETS",
         )
         self.assertEqual(
             report["profiles_used"],
@@ -397,6 +409,173 @@ class StorageToolTests(unittest.TestCase):
                 "retention_preflight": "retention_admin",
             },
         )
+
+    def test_native_lifecycle_reader_lists_only_the_exact_bucket(self) -> None:
+        production = config("prod")
+        authorization = {
+            "accountId": production.account_id,
+            "authorizationToken": "opaque-token",
+            "apiInfo": {
+                "storageApi": {
+                    "apiUrl": "https://api001.backblazeb2.com",
+                    "allowed": {
+                        "capabilities": ["listBuckets"],
+                        "buckets": [
+                            {
+                                "id": "opaque-bucket-id",
+                                "name": production.bucket,
+                            }
+                        ],
+                    },
+                }
+            },
+        }
+        bucket_list = {
+            "buckets": [
+                {
+                    "accountId": production.account_id,
+                    "bucketName": production.bucket,
+                    "lifecycleRules": [
+                        {
+                            "fileNamePrefix": "qa/",
+                            "daysFromUploadingToHiding": 1,
+                            "daysFromHidingToDeleting": 7,
+                        }
+                    ],
+                }
+            ]
+        }
+        with mock.patch.object(
+            storage,
+            "_native_json_request",
+            side_effect=[authorization, bucket_list],
+        ) as request:
+            rules = storage.create_native_lifecycle_reader(production).read()
+
+        self.assertEqual(len(rules), 1)
+        self.assertEqual(request.call_count, 2)
+        list_request = request.call_args_list[1].args[0]
+        self.assertEqual(list_request.get_method(), "POST")
+        self.assertEqual(
+            json.loads(list_request.data.decode("utf-8")),
+            {
+                "accountId": production.account_id,
+                "bucketName": production.bucket,
+            },
+        )
+
+    def test_native_lifecycle_reader_requires_list_buckets_capability(self) -> None:
+        production = config("prod")
+        authorization = {
+            "accountId": production.account_id,
+            "authorizationToken": "opaque-token",
+            "apiInfo": {
+                "storageApi": {
+                    "apiUrl": "https://api001.backblazeb2.com",
+                    "allowed": {
+                        "capabilities": ["readBuckets"],
+                        "buckets": [
+                            {
+                                "id": "opaque-bucket-id",
+                                "name": production.bucket,
+                            }
+                        ],
+                    },
+                }
+            },
+        }
+        with mock.patch.object(
+            storage,
+            "_native_json_request",
+            return_value=authorization,
+        ):
+            with self.assertRaisesRegex(
+                storage.StorageSafetyError,
+                "NATIVE_LIFECYCLE_CAPABILITY_MISSING",
+            ):
+                storage.create_native_lifecycle_reader(production).read()
+
+    def test_native_lifecycle_reader_requires_exact_bucket_scope(self) -> None:
+        production = config("prod")
+        authorization = {
+            "accountId": production.account_id,
+            "authorizationToken": "opaque-token",
+            "apiInfo": {
+                "storageApi": {
+                    "apiUrl": "https://api001.backblazeb2.com",
+                    "allowed": {
+                        "capabilities": ["listBuckets"],
+                        "buckets": [],
+                    },
+                }
+            },
+        }
+        with mock.patch.object(
+            storage,
+            "_native_json_request",
+            return_value=authorization,
+        ):
+            with self.assertRaisesRegex(
+                storage.StorageSafetyError,
+                "NATIVE_LIFECYCLE_BUCKET_SCOPE_MISMATCH",
+            ):
+                storage.create_native_lifecycle_reader(production).read()
+
+    def test_native_lifecycle_reader_repr_does_not_expose_credentials(self) -> None:
+        production = config("prod")
+        representation = repr(
+            storage.create_native_lifecycle_reader(production)
+        )
+        self.assertNotIn(
+            production.retention_admin_credentials.access_key_id,
+            representation,
+        )
+        self.assertNotIn(
+            production.retention_admin_credentials.secret_access_key,
+            representation,
+        )
+
+    def test_preflight_rejects_malformed_native_lifecycle_response(self) -> None:
+        with self.assertRaisesRegex(
+            storage.StorageSafetyError,
+            "NATIVE_LIFECYCLE_RESPONSE_INVALID",
+        ):
+            storage.preflight_store(
+                FakeS3(),
+                config("prod"),
+                retention_admin_client=FakeS3(),
+                native_lifecycle_reader=FakeNativeLifecycleReader(
+                    [
+                        {
+                            "fileNamePrefix": "v1/prod/",
+                            "daysFromUploadingToHiding": None,
+                            "daysFromHidingToDeleting": "thirty",
+                        }
+                    ]
+                ),
+            )
+
+    def test_native_lifecycle_failure_prevents_any_object_write(self) -> None:
+        upload_client = FakeS3()
+        with self.assertRaisesRegex(
+            storage.StorageSafetyError,
+            "NATIVE_LIFECYCLE_API_FAILED",
+        ):
+            storage.upload_plan(
+                upload_client,
+                config("prod"),
+                self._plan(),
+                retention_days=30,
+                retention_admin_client=FakeS3(default_retention_days=30),
+                native_lifecycle_reader=FakeNativeLifecycleReader(
+                    error=storage.StorageSafetyError(
+                        "NATIVE_LIFECYCLE_API_FAILED",
+                        "list_buckets:HTTP_501",
+                    )
+                ),
+            )
+        self.assertEqual(upload_client.put_calls, [])
+        self.assertNotIn("put_object", upload_client.method_calls)
 
     def test_independence_requires_account_region_endpoint_and_bucket(self) -> None:
         prod = config("prod")
@@ -486,20 +665,39 @@ class StorageToolTests(unittest.TestCase):
             self._plan()
 
     def test_preflight_rejects_deleting_lifecycle_rule(self) -> None:
-        client = FakeS3(
-            lifecycle_rules=[
+        reader = FakeNativeLifecycleReader(
+            [
                 {
-                    "ID": "expire-production",
-                    "Status": "Enabled",
-                    "Filter": {"Prefix": "v1/prod/"},
-                    "Expiration": {"Days": 30},
+                    "fileNamePrefix": "v1/prod/",
+                    "daysFromUploadingToHiding": 1,
+                    "daysFromHidingToDeleting": 30,
                 }
             ]
         )
         report = storage.preflight_store(
             FakeS3(),
             config("prod"),
-            retention_admin_client=client,
+            retention_admin_client=FakeS3(),
+            native_lifecycle_reader=reader,
+        )
+        self.assertFalse(report["passed"])
+        self.assertIn("PRODUCTION_LIFECYCLE_DELETION_CONFIGURED", report["blockers"])
+
+    def test_preflight_rejects_lifecycle_rule_that_hides_live_objects(self) -> None:
+        reader = FakeNativeLifecycleReader(
+            [
+                {
+                    "fileNamePrefix": "v1/prod/",
+                    "daysFromUploadingToHiding": 30,
+                    "daysFromHidingToDeleting": None,
+                }
+            ]
+        )
+        report = storage.preflight_store(
+            FakeS3(),
+            config("prod"),
+            retention_admin_client=FakeS3(),
+            native_lifecycle_reader=reader,
         )
         self.assertFalse(report["passed"])
         self.assertIn("PRODUCTION_LIFECYCLE_DELETION_CONFIGURED", report["blockers"])
@@ -516,6 +714,7 @@ class StorageToolTests(unittest.TestCase):
             retention_days=90,
             now=now,
             retention_admin_client=retention_admin,
+            native_lifecycle_reader=FakeNativeLifecycleReader(),
         )
         self.assertEqual(receipt["receipt_schema"], storage.RECEIPT_SCHEMA)
         self.assertEqual(receipt["receipt_role"], "primary")
@@ -565,6 +764,7 @@ class StorageToolTests(unittest.TestCase):
             records,
             now=now,
             retention_admin_client=retention_admin,
+            native_lifecycle_reader=FakeNativeLifecycleReader(),
         )
         self.assertTrue(verified["passed"])
         self.assertTrue(all(item["receipt_verified"] for item in verified["objects"]))
@@ -576,6 +776,7 @@ class StorageToolTests(unittest.TestCase):
             retention_days=90,
             now=now,
             retention_admin_client=retention_admin,
+            native_lifecycle_reader=FakeNativeLifecycleReader(),
         )
         self.assertEqual(len(client.put_calls), 2)
         self.assertTrue(all(item["action"] == "ALREADY_PRESENT_VERIFIED" for item in second["objects"]))
@@ -594,6 +795,7 @@ class StorageToolTests(unittest.TestCase):
                 self._plan(),
                 retention_days=90,
                 retention_admin_client=retention_admin,
+                native_lifecycle_reader=FakeNativeLifecycleReader(),
             )
 
         self.assertEqual(upload_client.put_calls, [])
@@ -605,7 +807,6 @@ class StorageToolTests(unittest.TestCase):
                 "get_public_access_block",
                 "get_bucket_policy_status",
                 "get_bucket_acl",
-                "get_bucket_lifecycle_configuration",
             ],
         )
 
@@ -616,6 +817,7 @@ class StorageToolTests(unittest.TestCase):
             upload_client,
             config("prod"),
             retention_admin,
+            FakeNativeLifecycleReader(),
             minimum_default_retention_days=30,
         )
 
@@ -636,6 +838,7 @@ class StorageToolTests(unittest.TestCase):
             self._plan(),
             retention_days=30,
             retention_admin_client=retention_admin,
+            native_lifecycle_reader=FakeNativeLifecycleReader(),
         )
         self.assertTrue(receipt["passed"])
         self.assertEqual(len(upload_client.put_calls), 2)
@@ -654,6 +857,7 @@ class StorageToolTests(unittest.TestCase):
             retention_days=30,
             now=now,
             retention_admin_client=primary_retention,
+            native_lifecycle_reader=FakeNativeLifecycleReader(),
         )
         primary_records = {item["asset_id"]: item for item in primary_receipt["objects"]}
         replica_receipt = storage.replicate_plan(
@@ -667,6 +871,8 @@ class StorageToolTests(unittest.TestCase):
             now=now,
             prod_retention_admin_client=primary_retention,
             dr_retention_admin_client=replica_retention,
+            prod_native_lifecycle_reader=FakeNativeLifecycleReader(),
+            dr_native_lifecycle_reader=FakeNativeLifecycleReader(),
         )
         self.assertEqual(replica_receipt["receipt_role"], "replica")
         self.assertEqual(len(replica.put_calls), 2)
@@ -692,7 +898,15 @@ class StorageToolTests(unittest.TestCase):
                     ("dr", "retention_admin"): replica_retention,
                 }[(store_config.role, profile_name)]
 
-            with mock.patch.object(storage, "create_s3_client", side_effect=client_for_store):
+            with mock.patch.object(
+                storage,
+                "create_s3_client",
+                side_effect=client_for_store,
+            ), mock.patch.object(
+                storage,
+                "create_native_lifecycle_reader",
+                side_effect=lambda _: FakeNativeLifecycleReader(),
+            ):
                 output = io.StringIO()
                 with mock.patch("sys.stdout", new=output):
                     code = storage.main(["preflight", "--retention-days", "30"])
@@ -710,7 +924,15 @@ class StorageToolTests(unittest.TestCase):
             self.assertEqual(primary.put_calls, [])
             self.assertEqual(replica.put_calls, [])
 
-            with mock.patch.object(storage, "create_s3_client", side_effect=client_for_store):
+            with mock.patch.object(
+                storage,
+                "create_s3_client",
+                side_effect=client_for_store,
+            ), mock.patch.object(
+                storage,
+                "create_native_lifecycle_reader",
+                side_effect=lambda _: FakeNativeLifecycleReader(),
+            ):
                 with mock.patch("sys.stdout", new=io.StringIO()):
                     code = storage.main(["upload", "--plan", str(self.plan_path), "--retention-days", "30"])
             self.assertEqual(code, 0)
@@ -719,7 +941,15 @@ class StorageToolTests(unittest.TestCase):
             primary_raw = json.loads(primary_path.read_text(encoding="utf-8"))
             self.assertEqual(primary_raw["receipt_role"], "primary")
 
-            with mock.patch.object(storage, "create_s3_client", side_effect=client_for_store):
+            with mock.patch.object(
+                storage,
+                "create_s3_client",
+                side_effect=client_for_store,
+            ), mock.patch.object(
+                storage,
+                "create_native_lifecycle_reader",
+                side_effect=lambda _: FakeNativeLifecycleReader(),
+            ):
                 with mock.patch("sys.stdout", new=io.StringIO()):
                     code = storage.main(["replicate", "--plan", str(self.plan_path), "--retention-days", "30"])
             self.assertEqual(code, 0)
@@ -732,7 +962,15 @@ class StorageToolTests(unittest.TestCase):
                 {"master-audio", "release-manifest"},
             )
 
-            with mock.patch.object(storage, "create_s3_client", side_effect=client_for_store):
+            with mock.patch.object(
+                storage,
+                "create_s3_client",
+                side_effect=client_for_store,
+            ), mock.patch.object(
+                storage,
+                "create_native_lifecycle_reader",
+                side_effect=lambda _: FakeNativeLifecycleReader(),
+            ):
                 with mock.patch("sys.stdout", new=io.StringIO()):
                     code = storage.main(
                         [
@@ -756,6 +994,7 @@ class StorageToolTests(unittest.TestCase):
             plan,
             retention_days=30,
             retention_admin_client=FakeS3(),
+            native_lifecycle_reader=FakeNativeLifecycleReader(),
         )
         receipt["objects"][0]["sha256"] = "0" * 64
         receipt_path = self.root / "primary_receipt.json"
@@ -787,6 +1026,7 @@ class StorageToolTests(unittest.TestCase):
             "muchiram-gurer-jibanchorit",
             release_descriptors[0],
             retention_admin_client=FakeS3(),
+            native_lifecycle_reader=FakeNativeLifecycleReader(),
         )
         self.assertEqual(len(report["retained_release_generations"]), 3)
         self.assertEqual(
