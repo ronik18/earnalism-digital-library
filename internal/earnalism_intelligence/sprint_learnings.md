@@ -1849,3 +1849,22 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   mandatory post-deploy manifest, 206 Range, timestamps, and browser playback
   evidence. Permit only rollback to 0 or explicit revocation until a dedicated
   proof-bound promotion command exists.
+
+## 2026-07-30 — New-title canary quality must bind language and policy
+
+- A single hard-coded listening cutoff is not safe across languages. Bind the
+  QA-candidate release descriptor to the exact controlled language and the
+  exact policy used by the hash-bound six-sample report.
+- English QA candidates use
+  `platform_audiobook_acceptance_v4_89`: every listening dimension and overall
+  score must be at least 8.9, confidence at least 0.90, and every fatal flag
+  false.
+- Bengali QA candidates retain
+  `bengali_audiobook_acceptance_v2_92`: every listening dimension and overall
+  score must be at least 9.2, confidence at least 0.90, and every fatal flag
+  false.
+- Unknown languages, cross-language descriptors, stale policy names, missing
+  policy bindings, and sub-threshold evidence fail before controlled
+  publication mutation. ASR 9.7, coverage 0.98, exact ordered content,
+  measured sync, rights, covers, primary/DR receipts, endpoint and browser
+  proof remain unchanged.

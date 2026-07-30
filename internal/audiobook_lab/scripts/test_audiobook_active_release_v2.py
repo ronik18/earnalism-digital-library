@@ -60,6 +60,7 @@ class ActiveReleaseManagerTests(unittest.TestCase):
         reader_manifest = {
             "slug": self.slug,
             "chapter_count": 1,
+            "language": "en",
             "audio_enabled": False,
             "audiobook_enabled": False,
         }
@@ -323,6 +324,10 @@ class ActiveReleaseManagerTests(unittest.TestCase):
                     "reader_truth": "PASS",
                     "source_content_toc": "PASS",
                     "rights_tier": "A",
+                    "language": "en",
+                    "listening_policy": (
+                        manager.QA_CANDIDATE_ENGLISH_LISTENING_POLICY
+                    ),
                     "covers": {
                         "front": {"url": "https://covers.invalid/front.jpg"},
                         "back": {"url": "https://covers.invalid/back.jpg"},
@@ -335,7 +340,7 @@ class ActiveReleaseManagerTests(unittest.TestCase):
                     "listening_minimum_scores": {
                         key: minimum
                         for key, minimum in (
-                            manager.QA_CANDIDATE_LISTENING_MINIMUMS.items()
+                            manager.QA_CANDIDATE_ENGLISH_LISTENING_MINIMUMS.items()
                         )
                     },
                     "listening_sample_count": 6,
@@ -1062,6 +1067,30 @@ class ActiveReleaseManagerTests(unittest.TestCase):
             self._invoke_new_title_canary(release_descriptor=failed_quality)
         self.assertEqual(baseline, self._snapshot())
 
+        failed_listening = self._qa_candidate_release_descriptor()
+        failed_listening["release_candidate_evidence"]["gates"][
+            "listening_minimum_scores"
+        ]["overall_listening_score"] = 8.89
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "listening scores",
+        ):
+            self._invoke_new_title_canary(
+                release_descriptor=failed_listening
+            )
+        self.assertEqual(baseline, self._snapshot())
+
+        stale_policy = self._qa_candidate_release_descriptor()
+        stale_policy["release_candidate_evidence"]["gates"][
+            "listening_policy"
+        ] = "tiered_audiobook_acceptance_v1"
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "active english policy",
+        ):
+            self._invoke_new_title_canary(release_descriptor=stale_policy)
+        self.assertEqual(baseline, self._snapshot())
+
         wrong_title = self._qa_candidate_release_descriptor()
         wrong_title["title"] = "Another Book"
         with self.assertRaisesRegex(
@@ -1095,6 +1124,73 @@ class ActiveReleaseManagerTests(unittest.TestCase):
         ):
             self._invoke_new_title_canary(expected_package_sha256="f" * 64)
         self.assertEqual(baseline, self._snapshot())
+
+    def test_new_title_canary_keeps_bengali_at_9_2(self) -> None:
+        self._prepare_approved_reader_only()
+        for publication in manager.publication_dirs(self.repo, self.slug):
+            reader = manager.read_json(
+                publication / "reader_manifest.json"
+            )
+            reader["language"] = "ben"
+            self._write(publication / "reader_manifest.json", reader)
+            self._refresh_checksums(publication)
+
+        below_bengali_gate = self._qa_candidate_release_descriptor()
+        gates = below_bengali_gate["release_candidate_evidence"]["gates"]
+        gates["language"] = "ben"
+        gates["listening_policy"] = (
+            manager.QA_CANDIDATE_BENGALI_LISTENING_POLICY
+        )
+        gates["listening_minimum_scores"] = {
+            key: minimum
+            for key, minimum in (
+                manager.QA_CANDIDATE_ENGLISH_LISTENING_MINIMUMS.items()
+            )
+        }
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "listening scores",
+        ):
+            self._invoke_new_title_canary(
+                release_descriptor=below_bengali_gate
+            )
+
+        passing_bengali = self._qa_candidate_release_descriptor()
+        gates = passing_bengali["release_candidate_evidence"]["gates"]
+        gates["language"] = "bn"
+        gates["listening_policy"] = (
+            manager.QA_CANDIDATE_BENGALI_LISTENING_POLICY
+        )
+        gates["listening_minimum_scores"] = {
+            key: minimum
+            for key, minimum in (
+                manager.QA_CANDIDATE_BENGALI_LISTENING_MINIMUMS.items()
+            )
+        }
+        result = self._invoke_new_title_canary(
+            release_descriptor=passing_bengali
+        )
+        self.assertEqual(result["status"], "NEW_TITLE_PACKAGE_CANARY_STAGED")
+
+    def test_new_title_canary_rejects_language_mismatch(self) -> None:
+        self._prepare_approved_reader_only()
+        descriptor = self._qa_candidate_release_descriptor()
+        gates = descriptor["release_candidate_evidence"]["gates"]
+        gates["language"] = "ben"
+        gates["listening_policy"] = (
+            manager.QA_CANDIDATE_BENGALI_LISTENING_POLICY
+        )
+        gates["listening_minimum_scores"] = {
+            key: minimum
+            for key, minimum in (
+                manager.QA_CANDIDATE_BENGALI_LISTENING_MINIMUMS.items()
+            )
+        }
+        with self.assertRaisesRegex(
+            manager.ReleasePointerError,
+            "does not match controlled truth",
+        ):
+            self._invoke_new_title_canary(release_descriptor=descriptor)
 
     def test_new_title_canary_rolls_back_to_hidden_and_revokes(self) -> None:
         self._prepare_approved_reader_only()

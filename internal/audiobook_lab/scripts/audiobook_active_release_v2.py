@@ -14,6 +14,7 @@ import argparse
 import copy
 import hashlib
 import json
+import math
 import os
 import re
 import sys
@@ -57,7 +58,26 @@ QA_CANDIDATE_DOWNSTREAM_GATES = [
     "CONTROLLED_RELEASE_ACTIVATION_REQUIRED",
     "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED",
 ]
-QA_CANDIDATE_LISTENING_MINIMUMS = {
+QA_CANDIDATE_ENGLISH_LISTENING_POLICY = (
+    "platform_audiobook_acceptance_v4_89"
+)
+QA_CANDIDATE_BENGALI_LISTENING_POLICY = (
+    "bengali_audiobook_acceptance_v2_92"
+)
+QA_CANDIDATE_ENGLISH_LISTENING_MINIMUMS = {
+    "naturalness_score": 8.9,
+    "pronunciation_score": 8.9,
+    "emotional_expression_score": 8.9,
+    "punctuation_pause_score": 8.9,
+    "pacing_score": 8.9,
+    "continuity_score": 8.9,
+    "anti_robotic_texture_score": 8.9,
+    "anti_choppy_join_score": 8.9,
+    "listener_enjoyment_score": 8.9,
+    "overall_listening_score": 8.9,
+    "confidence_score": 0.9,
+}
+QA_CANDIDATE_BENGALI_LISTENING_MINIMUMS = {
     "naturalness_score": 9.2,
     "pronunciation_score": 9.2,
     "emotional_expression_score": 9.2,
@@ -69,6 +89,15 @@ QA_CANDIDATE_LISTENING_MINIMUMS = {
     "listener_enjoyment_score": 9.2,
     "overall_listening_score": 9.2,
     "confidence_score": 0.9,
+}
+QA_CANDIDATE_LANGUAGE_ALIASES = {
+    "en": "english",
+    "eng": "english",
+    "english": "english",
+    "bn": "bengali",
+    "ben": "bengali",
+    "bengali": "bengali",
+    "bangla": "bengali",
 }
 RELEASE_STORE_ROLES = {"primary": "prod", "replica": "dr"}
 CHECKSUM_VERIFIED_UPLOAD_STATUSES = frozenset(
@@ -649,6 +678,8 @@ def validate_release_descriptor(
 def validate_qa_candidate_release_descriptor(
     release_descriptor: Mapping[str, Any],
     package: Mapping[str, Any],
+    *,
+    controlled_language: Any,
 ) -> dict[str, Any]:
     """Validate the exact post-QA/pre-storage descriptor emitted by builder v2."""
 
@@ -711,25 +742,62 @@ def validate_qa_candidate_release_descriptor(
         raise ReleasePointerError(
             "QA-candidate release evidence does not pass every non-storage gate"
         )
+    declared_language = str(gates.get("language") or "").strip().lower()
+    controlled_language_value = str(controlled_language or "").strip().lower()
+    declared_family = QA_CANDIDATE_LANGUAGE_ALIASES.get(declared_language)
+    controlled_family = QA_CANDIDATE_LANGUAGE_ALIASES.get(
+        controlled_language_value
+    )
+    if not declared_family or not controlled_family:
+        raise ReleasePointerError(
+            "QA-candidate controlled or declared language is unsupported"
+        )
+    if declared_family != controlled_family:
+        raise ReleasePointerError(
+            "QA-candidate listening language does not match controlled truth"
+        )
+    if controlled_family == "english":
+        required_policy = QA_CANDIDATE_ENGLISH_LISTENING_POLICY
+        listening_minimums = QA_CANDIDATE_ENGLISH_LISTENING_MINIMUMS
+    else:
+        required_policy = QA_CANDIDATE_BENGALI_LISTENING_POLICY
+        listening_minimums = QA_CANDIDATE_BENGALI_LISTENING_MINIMUMS
+    if gates.get("listening_policy") != required_policy:
+        raise ReleasePointerError(
+            "QA-candidate listening policy does not match the active "
+            f"{controlled_family} policy"
+        )
     try:
         asr_score = float(gates["asr_score"])
         coverage = float(gates["source_coverage"])
         listening_values = {
             name: float(minimums[name])
-            for name in QA_CANDIDATE_LISTENING_MINIMUMS
+            for name in listening_minimums
         }
     except (KeyError, TypeError, ValueError):
         raise ReleasePointerError(
             "QA-candidate objective/listening scores are incomplete"
         ) from None
-    if asr_score < 9.7 or coverage < 0.98:
+    if (
+        not math.isfinite(asr_score)
+        or not 0.0 <= asr_score <= 10.0
+        or not math.isfinite(coverage)
+        or not 0.0 <= coverage <= 1.0
+        or asr_score < 9.7
+        or coverage < 0.98
+    ):
         raise ReleasePointerError(
             "QA-candidate objective ASR/source coverage does not pass"
         )
     failed_scores = [
         name
-        for name, minimum in QA_CANDIDATE_LISTENING_MINIMUMS.items()
-        if listening_values[name] < minimum
+        for name, minimum in listening_minimums.items()
+        if (
+            not math.isfinite(listening_values[name])
+            or listening_values[name] < minimum
+            or listening_values[name]
+            > (1.0 if name == "confidence_score" else 10.0)
+        )
     ]
     if failed_scores:
         raise ReleasePointerError(
@@ -1836,7 +1904,16 @@ def activate_new_title_package_canary(
         replica_release_manifest_receipt_sha256=(
             expected_replica_release_manifest_receipt_sha256
         ),
-        descriptor_validator=validate_qa_candidate_release_descriptor,
+        descriptor_validator=(
+            lambda descriptor, validated_package:
+            validate_qa_candidate_release_descriptor(
+                descriptor,
+                validated_package,
+                controlled_language=context["reader_manifest"].get(
+                    "language"
+                ),
+            )
+        ),
     )
     candidate_descriptor = validated["release_descriptor_sha256"]
     if candidate_descriptor == hidden_descriptor:

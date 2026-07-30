@@ -267,6 +267,7 @@ def _fixture(tmp_path: Path) -> dict[str, Any]:
         "slug": slug,
         "title": "Exact Candidate",
         "author": "Exact Author",
+        "language": "English",
         "provider": "google",
         "voice": "en-GB-Chirp3-HD-Charon",
         "language_code": "en-GB",
@@ -425,6 +426,7 @@ def _fixture(tmp_path: Path) -> dict[str, Any]:
         "slug": slug,
         "title": "Exact Candidate",
         "author": "Exact Author",
+        "language": "English",
         "provider": "google",
         "voice": manifest["voice"],
         "language_code": "en-GB",
@@ -504,6 +506,7 @@ def _fixture(tmp_path: Path) -> dict[str, Any]:
         "slug": slug,
         "title": "Exact Candidate",
         "author": "Exact Author",
+        "language": "English",
         "provider": "google",
         "voice": manifest["voice"],
         "full_manifest_sha256": manifest_sha256,
@@ -529,13 +532,14 @@ def _fixture(tmp_path: Path) -> dict[str, Any]:
             "slug": slug,
             "title": "Exact Candidate",
             "author": "Exact Author",
+            "language": "English",
             "audio_hash": sequence_sha256,
             "candidate_binding_sha256": binding_sha256,
-            "release_policy": "tiered_audiobook_acceptance_v1",
+            "release_policy": "platform_audiobook_acceptance_v4_89",
             "listening_quality": {
                 "status": "PASS",
                 "audio_hash": sequence_sha256,
-                "release_policy": "tiered_audiobook_acceptance_v1",
+                "release_policy": "platform_audiobook_acceptance_v4_89",
                 "samples": samples,
                 "aggregate": score_fields,
                 **flag_fields,
@@ -690,6 +694,13 @@ def test_builds_private_new_title_without_existing_public_audio(
         builder.QA_CANDIDATE_DOWNSTREAM_GATES
     )
     assert descriptor["provider_source_files_unchanged"] is True
+    gates = descriptor["release_candidate_evidence"]["gates"]
+    assert gates["language"] == "en"
+    assert (
+        gates["listening_policy"]
+        == "platform_audiobook_acceptance_v4_89"
+    )
+    assert gates["listening_minimum_scores"]["overall_listening_score"] == 9.4
 
 
 @pytest.mark.parametrize(
@@ -699,6 +710,9 @@ def test_builds_private_new_title_without_existing_public_audio(
         ("estimated_sync", "Measured sync"),
         ("five_samples", "six passes"),
         ("paid_lock_not_restored", "listening QA"),
+        ("english_below_89", "overall_listening_score"),
+        ("listening_language_mismatch", "Listening quality"),
+        ("stale_listening_policy", "six passes"),
         ("release_hash", "release evidence"),
         ("release_extra_field", "release evidence"),
         ("title", "title identity"),
@@ -727,6 +741,25 @@ def test_rejects_stale_or_nonpassing_candidate_evidence(
     elif mutation == "paid_lock_not_restored":
         payload = json.loads(fixture["listening"].read_text(encoding="utf-8"))
         payload["paid_lock_sha256_after"] = "6" * 64
+        _write_json(fixture["listening"], payload)
+    elif mutation == "english_below_89":
+        payload = json.loads(fixture["listening"].read_text(encoding="utf-8"))
+        payload["listening_quality_report"]["listening_quality"][
+            "aggregate"
+        ]["overall_listening_score"] = 8.89
+        _write_json(fixture["listening"], payload)
+    elif mutation == "listening_language_mismatch":
+        payload = json.loads(fixture["listening"].read_text(encoding="utf-8"))
+        payload["listening_quality_report"]["language"] = "Bengali"
+        _write_json(fixture["listening"], payload)
+    elif mutation == "stale_listening_policy":
+        payload = json.loads(fixture["listening"].read_text(encoding="utf-8"))
+        payload["listening_quality_report"][
+            "release_policy"
+        ] = "tiered_audiobook_acceptance_v1"
+        payload["listening_quality_report"]["listening_quality"][
+            "release_policy"
+        ] = "tiered_audiobook_acceptance_v1"
         _write_json(fixture["listening"], payload)
     elif mutation == "release_hash":
         payload = json.loads(fixture["release"].read_text(encoding="utf-8"))
