@@ -81,6 +81,28 @@ def candidate(body: bytes | None = None) -> dict:
     }
 
 
+def back_candidate(body: bytes | None = None) -> dict:
+    body = body or image_bytes()
+    result = candidate(body)
+    digest = result["sha256"]
+    public_id = content_addressed_cover_candidate_public_id(
+        SLUG,
+        "back",
+        digest,
+    )
+    immutable_url = (
+        "https://res.cloudinary.com/demo/image/upload/v1785384000/"
+        f"{public_id}.png"
+    )
+    return {
+        **result,
+        "kind": "back",
+        "candidate_url": immutable_url,
+        "immutable_candidate_url": immutable_url,
+        "cloudinary_public_id": public_id,
+    }
+
+
 def controlled_repo(tmp_path: Path) -> Path:
     source = ROOT / "data" / "controlled_publications" / SLUG
     for relative in (
@@ -217,6 +239,34 @@ def test_promotion_updates_both_mirrors_checksums_and_approval_history_only(tmp_
     assert rows["cover_approval_evidence.json"] == hashlib.sha256(
         (primary / "cover_approval_evidence.json").read_bytes()
     ).hexdigest()
+
+
+def test_back_promotion_updates_every_canonical_url_alias(tmp_path):
+    repo_root = controlled_repo(tmp_path)
+    body = image_bytes()
+    selected = back_candidate(body)
+
+    promote(
+        repo_root,
+        kind="back",
+        candidate=selected,
+        body=body,
+        event_id="back-cover-event-001",
+        approval_note="Owner approved the exact reviewed back cover candidate.",
+    )
+
+    primary = repo_root / "data/controlled_publications" / SLUG
+    public_book = json.loads((primary / "public_book.json").read_text())
+    expected = selected["immutable_candidate_url"]
+    assert public_book["back_cover_url"] == expected
+    assert public_book["back_cover_image_url"] == expected
+    assert public_book["backCoverImage"] == expected
+
+    evidence = json.loads(
+        (primary / "cover_approval_evidence.json").read_text(encoding="utf-8")
+    )
+    previous = evidence["rollback_pointers"]["back"]["previous_canonical_cover"]
+    assert "backCoverImage" in previous
 
 
 def test_upload_after_promotion_cannot_overwrite_promoted_content_addressed_url(
