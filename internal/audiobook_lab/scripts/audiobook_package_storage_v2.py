@@ -1717,24 +1717,12 @@ def _write_receipt(receipt: Mapping[str, Any], path: Path) -> None:
 
 def _preflight_command(args: argparse.Namespace) -> dict[str, Any]:
     prod = config_from_env("prod", args.allow_private_qa_staging)
-    prod_upload_client = create_s3_client(prod, "upload")
-    prod_retention_client = (
-        create_s3_client(prod, "retention_admin")
-        if prod.release_eligible
-        else None
-    )
-    prod_report = preflight_store(
-        prod_upload_client,
-        prod,
-        prod_retention_client,
-        (
-            create_native_lifecycle_reader(prod)
-            if prod.release_eligible
-            else None
-        ),
-        minimum_default_retention_days=args.retention_days,
-    )
     if not prod.release_eligible:
+        prod_report = preflight_store(
+            create_s3_client(prod, "upload"),
+            prod,
+            minimum_default_retention_days=args.retention_days,
+        )
         return {
             "operation": "preflight",
             "generated_at": utc_now(),
@@ -1743,8 +1731,20 @@ def _preflight_command(args: argparse.Namespace) -> dict[str, Any]:
             "stores": [prod_report],
             "passed": prod_report["passed"],
         }
+
+    # Treat production and DR configuration as one atomic release preflight.
+    # Constructing even the production client before DR is fully configured and
+    # independent can make a locally incomplete command touch live storage.
     dr = config_from_env("dr")
     validate_independent_stores(prod, dr)
+
+    prod_report = preflight_store(
+        create_s3_client(prod, "upload"),
+        prod,
+        create_s3_client(prod, "retention_admin"),
+        create_native_lifecycle_reader(prod),
+        minimum_default_retention_days=args.retention_days,
+    )
     dr_report = preflight_store(
         create_s3_client(dr, "upload"),
         dr,

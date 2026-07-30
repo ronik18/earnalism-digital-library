@@ -1320,3 +1320,15 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   report schemas and filenames without cloud calls or candidate mutation.
   Storage completion alone is not publication authorization; catalog
   activation, deployment, endpoint checks, and browser proof remain separate.
+
+## 2026-07-30 Package-v2 Atomic Storage Preflight
+
+- Production and DR configuration form one release unit. The package-v2
+  preflight must load and validate both stores and prove their independence
+  before constructing either store's S3 client or starting a lifecycle probe.
+- A complete production configuration paired with missing DR configuration now
+  fails with zero client, lifecycle-reader, or preflight-probe calls. The same
+  zero-call rule applies when both stores are configured but not independent.
+- Private-QA staging remains an explicit, non-release-eligible single-store
+  mode. No cloud, upload, catalog, release-gate, or paid-provider mutation was
+  performed while implementing and testing this guard.

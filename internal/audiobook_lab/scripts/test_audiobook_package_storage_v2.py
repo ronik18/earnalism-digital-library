@@ -379,6 +379,69 @@ class StorageToolTests(unittest.TestCase):
             self.assertNotIn(secret, encoded)
             self.assertNotIn(secret, repr(production))
 
+    def test_cli_preflight_missing_dr_configuration_never_constructs_clients_or_probes(
+        self,
+    ) -> None:
+        prod_only = {
+            key: value
+            for key, value in self._release_env().items()
+            if key.startswith("B2_AUDIOBOOK_PROD_")
+        }
+        with mock.patch.dict(os.environ, prod_only, clear=True), mock.patch.object(
+            storage,
+            "create_s3_client",
+        ) as create_client, mock.patch.object(
+            storage,
+            "create_native_lifecycle_reader",
+        ) as create_lifecycle_reader, mock.patch.object(
+            storage,
+            "preflight_store",
+        ) as preflight_store:
+            output = io.StringIO()
+            with mock.patch("sys.stdout", new=output):
+                code = storage.main(["preflight", "--retention-days", "30"])
+
+        self.assertEqual(code, 1)
+        report = json.loads(output.getvalue())
+        self.assertEqual(report["error"], "STORAGE_CONFIGURATION_MISSING")
+        self.assertEqual(report["detail"], "dr")
+        create_client.assert_not_called()
+        create_lifecycle_reader.assert_not_called()
+        preflight_store.assert_not_called()
+
+    def test_cli_preflight_nonindependent_stores_never_constructs_clients_or_probes(
+        self,
+    ) -> None:
+        nonindependent = self._release_env()
+        nonindependent["B2_AUDIOBOOK_DR_ACCOUNT_ID"] = nonindependent[
+            "B2_AUDIOBOOK_PROD_ACCOUNT_ID"
+        ]
+        with mock.patch.dict(
+            os.environ,
+            nonindependent,
+            clear=True,
+        ), mock.patch.object(
+            storage,
+            "create_s3_client",
+        ) as create_client, mock.patch.object(
+            storage,
+            "create_native_lifecycle_reader",
+        ) as create_lifecycle_reader, mock.patch.object(
+            storage,
+            "preflight_store",
+        ) as preflight_store:
+            output = io.StringIO()
+            with mock.patch("sys.stdout", new=output):
+                code = storage.main(["preflight", "--retention-days", "30"])
+
+        self.assertEqual(code, 1)
+        report = json.loads(output.getvalue())
+        self.assertEqual(report["error"], "STORES_NOT_INDEPENDENT")
+        self.assertIn("account", report["detail"].split(","))
+        create_client.assert_not_called()
+        create_lifecycle_reader.assert_not_called()
+        preflight_store.assert_not_called()
+
     def test_bucket_preflight_uses_retention_admin_not_upload_profile(self) -> None:
         upload_client = FakeS3()
         retention_admin_client = FakeS3()
