@@ -2010,7 +2010,22 @@
       "kokoro_listening_qa_run": false,
       "completed_attempts_must_not_repeat": true,
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_kokoro_bf_emma_asr_repair_v1.json",
-      "audiobook_next_action": "Use only the reconciled exact manuscript for a genuinely different source-bound delivery. Do not repeat the closed bf_emma fingerprints, and keep audio hidden until all objective, listening, storage, endpoint, and browser gates pass."
+      "audiobook_next_action": "Use only the reconciled exact manuscript for a genuinely different source-bound delivery. Do not repeat the closed bf_emma fingerprints, and keep audio hidden until all objective, listening, storage, endpoint, and browser gates pass.",
+      "cover_editorial_candidate": {
+        "status": "PRIVATE_CANDIDATE_EDITORIAL_REVIEW_REQUIRED",
+        "prepared_at": "2026-07-30T06:17:20Z",
+        "source_artist": "Odilon Redon",
+        "source_work_year": 1883,
+        "source_rights_mark": "Public Domain Mark 1.0",
+        "source_art_sha256": "075f2c285d2f546076e8f1f50f03da43184f4c51d47746fbabc2358f9d37ed56",
+        "front_sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+        "back_sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+        "visual_review_status": "CODEX_VISUAL_INSPECTION_PASS_OWNER_REVIEW_PENDING",
+        "admin_upload_status": "NOT_UPLOADED_CREDENTIALS_ABSENT",
+        "canonical_promotion_status": "NOT_PROMOTED",
+        "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/the-tell-tale-heart/candidate_manifest.json",
+        "next_action": "Complete owner/editorial review, then upload both sides through the authenticated admin Covers workspace as pending canonical-review candidates."
+      }
     }
   },
   "bengali_audio_lane_status": "D19_HUMAN_NARRATION_REQUIRED_NO_SCALE_V3_PREFLIGHT_RECONCILED",

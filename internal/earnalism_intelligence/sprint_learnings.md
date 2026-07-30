@@ -1181,3 +1181,22 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   reader-live and audio-hidden; the closed Kokoro fingerprint remains closed,
   and all objective, listening, delivery, endpoint, and browser gates remain
   mandatory for a future distinct audio candidate.
+
+## 2026-07-30 — Public-domain source art still requires a private editorial boundary
+
+- A retained cover-generator `PASS` is not sufficient cover evidence when the
+  visual was code-generated without separate editorial approval. The retained
+  Tell-Tale back cover visibly collided manuscript text, so it remained
+  ineligible despite exact dimensions and matching Cloudinary checksums.
+- Odilon Redon's 1883 *The Tell-Tale Heart* source art is independently
+  hash-bound at
+  `075f2c285d2f546076e8f1f50f03da43184f4c51d47746fbabc2358f9d37ed56`
+  with Public Domain Mark evidence. Preserve the unmodified source beside any
+  derivative cover package.
+- Deterministic crop, tonal treatment, border, and catalog-text overlay can
+  prepare a finished front/back candidate without AI-generated imagery.
+  Geometry checks and backend image validation must precede visual review.
+- The finished pair remains private and pending owner/editorial review.
+  Absence of admin credentials means no upload was attempted; even a successful
+  admin upload must remain `ADMIN_UPLOADED_PENDING_CANONICAL_REVIEW` and cannot
+  promote the canonical catalog or change audiobook truth.
