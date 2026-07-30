@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theearnalism.com/schemas/audiobook_qa_candidate_release_evidence.v1.schema.json",
+  "title": "Earnalism QA-candidate package-build authorization",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "slug",
+    "title",
+    "author",
+    "controlled_source_sha256",
+    "manuscript_sha256",
+    "full_generation_manifest_sha256",
+    "objective_qa_sha256",
+    "listening_qa_sha256",
+    "candidate_audio_sequence_sha256",
+    "candidate_binding_sha256",
+    "controlled_evidence_sha256",
+    "controlled_chapter_sha256",
+    "package_build_authorized",
+    "public_release_authorized",
+    "upload_authorized",
+    "catalog_mutation_authorized",
+    "downstream_release_gates_required",
+    "release_evidence_version",
+    "prepared_by",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "earnalism.audiobook_qa_candidate_release_evidence.v1"
+    },
+    "status": {
+      "const": "QA_CANDIDATE_PACKAGE_BUILD_AUTHORIZED"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,119}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1
+    },
+    "controlled_source_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "manuscript_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "full_generation_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "objective_qa_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "listening_qa_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "candidate_audio_sequence_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "candidate_binding_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "controlled_evidence_sha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "public_book.json",
+        "reader_manifest.json",
+        "source_evidence.json",
+        "approval_evidence.json",
+        "checksum_manifest.json",
+        "cover_approval_evidence.json"
+      ],
+      "properties": {
+        "public_book.json": {
+          "$ref": "#/$defs/sha256"
+        },
+        "reader_manifest.json": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_evidence.json": {
+          "$ref": "#/$defs/sha256"
+        },
+        "approval_evidence.json": {
+          "$ref": "#/$defs/sha256"
+        },
+        "checksum_manifest.json": {
+          "$ref": "#/$defs/sha256"
+        },
+        "cover_approval_evidence.json": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "controlled_chapter_sha256": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,119}$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/sha256"
+      }
+    },
+    "package_build_authorized": {
+      "const": true
+    },
+    "public_release_authorized": {
+      "const": false
+    },
+    "upload_authorized": {
+      "const": false
+    },
+    "catalog_mutation_authorized": {
+      "const": false
+    },
+    "downstream_release_gates_required": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "const": "PRIVATE_B2_PRIMARY_UPLOAD_REQUIRED"
+        },
+        {
+          "const": "PRIVATE_B2_DR_REPLICA_REQUIRED"
+        },
+        {
+          "const": "CONTROLLED_RELEASE_ACTIVATION_REQUIRED"
+        },
+        {
+          "const": "PRODUCTION_ENDPOINT_AND_BROWSER_PROOF_REQUIRED"
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "release_evidence_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prepared_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

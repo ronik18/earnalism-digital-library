@@ -1777,3 +1777,28 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Preserve dated missing-cover inventories as historical snapshots. Record a
   new reconciliation artifact and remove the title only from current runtime
   fallback evidence.
+
+## 2026-07-30 — New-title package construction must not depend on public audio
+
+- Requiring an already-approved public legacy audiobook before package-v2
+  construction creates a circular release dependency for a newly QA-passed
+  title. Keep the legacy migration profile intact and add a separate,
+  narrower private-new-title profile instead of weakening it.
+- Bind the new-title profile to the exact Google full-generation manifest,
+  full audio-derived ASR/sync report, six-sample listening report, controlled
+  reader/source/rights/cover records, every controlled chapter, and an
+  explicit package-build-only authorization descriptor.
+- Derive chapter and paragraph timing from the raw transcript token sequence
+  mapped to audio-derived timestamp groups. One timestamp group may contain
+  several tokens, but fail closed if a canonical paragraph boundary falls
+  inside that group. This permits chapter-aligned segments only at measured
+  canonical paragraph boundaries without estimated sync or a public
+  word-level claim.
+- Preserve every provider MP3 unchanged as provenance, assemble one PCM/WAV
+  master for future encodes, and produce only 96-kbps mono delivery segments
+  no longer than twelve minutes.
+- Package construction is pre-storage evidence, not publication. Keep
+  production-primary upload, independent DR verification, controlled
+  activation, deployment, endpoint, and browser proof as explicit downstream
+  blockers. No provider, cloud, public asset, release gate, or paid-lock state
+  changes during the build.
