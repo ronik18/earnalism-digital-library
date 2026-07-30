@@ -1,7 +1,7 @@
 # Audiobook package v2 canary — Sredni Vashtar
 
-Status: **the 5% production checkpoint passed and the package-v2 candidate is
-prepared for a controlled 25% canary**.
+Status: **the 25% production checkpoint passed and the package-v2 release is
+prepared for full promotion**.
 
 This is a delivery migration for the existing live audiobook. It does not
 approve a new audiobook, regenerate narration, or change the public count of
@@ -39,10 +39,10 @@ production/DR receipt lifecycle. No released key was overwritten.
 
 ## Release selection truth
 
-The candidate rollout percentage is now `25%` in this isolated branch. The
-legacy descriptor remains active and retained, and the package-v2 descriptor
-remains the candidate. This is a delivery-only canary: it does not change the
-audio approval flags or the public audiobook count.
+The package-v2 descriptor is now active in this isolated branch. The candidate
+field and percentage rollout are cleared, while the approved legacy descriptor
+remains retained for explicit rollback. This is a delivery-only promotion: it
+does not change audio approval flags or the public audiobook count.
 
 At production `0%`, the exact merged commit
 `6954b7387beaf0f9e8ceeca01d72928e5b371ede` deployed successfully through
@@ -71,6 +71,19 @@ Railway deployment `de96f4c9-49b8-44af-a9bc-b515881df747`.
   advanced to `3.523786` seconds with zero console errors.
 - Public catalog remained exactly four approved audiobooks.
 
+At production `25%`, exact commit
+`5980ef9b64a45e04362fdcd9d6be61d326db8b8e` deployed automatically after CI
+through Railway deployment `66052e5a-7f63-4a54-97da-dfddd8224395`.
+
+- Deterministic candidate identity: manifest `200`, exact package version,
+  segment Range `206`, invalid Range `416`.
+- Deterministic legacy identity: package manifest `404`, monolith Range `206`.
+- Cross-cohort segment request: `404`.
+- Real browser legacy cohort before intent: no `src`, `readyState=0`.
+- One browser click: legacy route reached `readyState=4`, remained playing, and
+  advanced to `5.171145` seconds with zero console errors.
+- Public catalog remained exactly four approved audiobooks.
+
 ## Validation
 
 - Active-release pointer validation: pass, zero blockers.
@@ -84,9 +97,13 @@ Railway deployment `de96f4c9-49b8-44af-a9bc-b515881df747`.
   legacy-cohort proof: pass.
 - `5%` focused builder, selector, storage, backend package, routing,
   publication, Redis policy, and source-cleanup tests: `172 passed`.
-- `25%` pointer mutation: local green in an isolated branch.
+- `25%` merge, deployment, deterministic cohort HTTP proof, and real browser
+  legacy-cohort proof: pass.
 - `25%` focused tests: `172 passed`.
-- Production `25%` cohort HTTP and browser proof: pending merge/deployment.
+- Full package-v2 promotion: local green in an isolated branch.
+- Full-promotion focused tests: `172 passed`.
+- Production full-promotion manifest, Range, fail-closed, and mandatory
+  package-v2 one-click browser proof: pending merge/deployment.
 
 Next exact command:
 

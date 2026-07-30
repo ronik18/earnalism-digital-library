@@ -1631,11 +1631,11 @@
       "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_the-open-window_20260729.json"
     },
     "sredni-vashtar": {
-      "latest_decision": "PACKAGE_V2_FIVE_PERCENT_PRODUCTION_GREEN_TWENTY_FIVE_PERCENT_CANARY_PREPARED",
-      "decision_reason": "The five-percent commit deployed successfully. Deterministic candidate and legacy identities passed manifest, Range, invalid, cross-cohort and wrong-version routing; ten bounded Range probes all returned 206 within 0.797-1.113 seconds time to first byte; and the real browser legacy cohort played with one click and zero console errors. The isolated twenty-five-percent branch changes only the rollout percentage.",
-      "updated_at": "2026-07-30T10:43:58Z",
+      "latest_decision": "PACKAGE_V2_TWENTY_FIVE_PERCENT_PRODUCTION_GREEN_FULL_PROMOTION_PREPARED",
+      "decision_reason": "The twenty-five-percent commit deployed automatically after green CI. Deterministic candidate and legacy identities again passed manifest, Range, invalid and cross-cohort routing, the real browser legacy cohort played in one click with zero console errors, and public truth remained four. The isolated full-promotion branch makes package-v2 active while retaining the approved legacy descriptor for rollback.",
+      "updated_at": "2026-07-30T10:57:01Z",
       "language": "en",
-      "public_audio_status": "APPROVED_AND_LIVE_PACKAGE_V2_TWENTY_FIVE_PERCENT_CANARY_PREPARED",
+      "public_audio_status": "APPROVED_AND_LIVE_PACKAGE_V2_FULL_PROMOTION_PREPARED",
       "provider": "openai",
       "model": "gpt-4o-mini-tts",
       "voice": "verse",
@@ -1652,16 +1652,16 @@
       "measured_sync_score": 9.7997,
       "public_sync_mode": "section_following",
       "release_source_commit": "b337300763b874b434938ee09519208512be34bb",
-      "production_deploy_status": "PACKAGE_V2_FIVE_PERCENT_GREEN_TWENTY_FIVE_PERCENT_LOCAL_GREEN_PENDING_PR",
+      "production_deploy_status": "PACKAGE_V2_TWENTY_FIVE_PERCENT_GREEN_FULL_PROMOTION_LOCAL_GREEN_PENDING_PR",
       "production_audio_enabled": true,
       "owner_minimum_score": 9.4,
       "plateau_confirmed": true,
       "package_v2_release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
       "package_v2_version": "sha256-9f1e84d4377dff2d5778dd158393fd450feb37fdef5ca6e88c67191cbe277edd",
-      "package_v2_rollout_percentage": 25,
+      "package_v2_rollout_percentage": 100,
       "package_v2_storage_status": "PRODUCTION_AND_DR_FULL_DOWNLOAD_VERIFIED",
       "package_v2_evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_sredni_vashtar_20260730.json",
-      "audiobook_next_action": "Test, merge, and deploy the isolated 25% pointer change, then repeat deterministic candidate and legacy cohort HTTP proof and real browser playback before considering 100%."
+      "audiobook_next_action": "Test, merge, and deploy the isolated full promotion, then require all identities to receive the exact package manifest/segment and prove one-click package-v2 browser playback before starting A Ghost Story."
     },
     "dsires-baby": {
       "latest_decision": "KOKORO_OBJECTIVE_PASS_LISTENING_TRANSPORT_INVALID_AND_AUDIBLE_SAMPLE_FATAL_CONFIGURATION_CLOSED",

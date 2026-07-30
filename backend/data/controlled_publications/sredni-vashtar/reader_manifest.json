@@ -1,15 +1,15 @@
 {
   "audio_enabled": true,
   "audiobook_active_release": {
-    "active_release_descriptor_sha256": "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
-    "candidate_release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
+    "active_release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
+    "candidate_release_descriptor_sha256": "",
     "retained_release_descriptor_sha256s": [
-      "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
-      "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3"
+      "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
+      "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c"
     ],
     "rollout": {
-      "percentage": 25,
-      "salt": "sredni-vashtar-package-v2-20260730"
+      "percentage": 0,
+      "salt": ""
     },
     "schema_version": "audiobook_active_release.v1",
     "slug": "sredni-vashtar",
@@ -162,7 +162,7 @@
       "word_count": 1784
     }
   },
-  "audiobook_release_descriptor_sha256": "1f8e4e1f81fc42419215b99afb652b1b120a4be42685c0af6ca36c00697bb50c",
+  "audiobook_release_descriptor_sha256": "53458d86308f4718d46334d23aff725db31b70ed8f2736f9b731ca429e550fd3",
   "author": "Saki",
   "chapter_count": 1,
   "chapters": [
