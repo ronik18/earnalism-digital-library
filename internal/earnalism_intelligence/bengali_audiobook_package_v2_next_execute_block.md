@@ -64,6 +64,13 @@ Run once per slug above. Example:
   `bash internal/audiobook_lab/storage_containment/run_sprint1_private_b2_wave1.sh --execute-reviewed`
   once approval and credentials are supplied.
 
+## Single-command batch flow (recommended)
+Use this composite wrapper for precheck + migrate + postcheck:
+`bash internal/audiobook_lab/storage_containment/run_wave1_with_validation.sh --dry-run`
+`bash internal/audiobook_lab/storage_containment/run_wave1_with_validation.sh --execute-reviewed`
+or pass a custom order/list of slugs as trailing arguments:
+`bash internal/audiobook_lab/storage_containment/run_wave1_with_validation.sh --execute-reviewed radharani book-d19e96859f ...`
+
 ## End-to-end success condition (this wave)
 - First practical milestone: all eight titles in this target list become private-B2 package-v2, not exposed from Cloudinary/public remotes.
 - Current hard stop: private-B2 count moves from **2 -> 10** for package-v2 in `sprint1_package_v2_readiness.json` before broader sprint1 expansion.
