@@ -10,8 +10,6 @@ ROOT_CONTROLLED_LAUNCH = ROOT / "data" / "controlled_launch.json"
 
 APPROVED_BENGALI_PILOT = "book-2b9853ec52"
 APPROVED_ENGLISH_STORY = "a-ghost-story"
-APPROVED_REUSE_STORY = "sredni-vashtar"
-APPROVED_KOKORO_STORY = "the-open-window"
 PRIVATE_QA_AUDIO_HOLD = "bn-066"
 BLOCKED_BENGALI_CANARIES = {
     "book-d19e96859f",
@@ -63,8 +61,6 @@ def test_backend_controlled_launch_preserves_audio_hold_states():
     assert backend_audio == {
         APPROVED_BENGALI_PILOT,
         APPROVED_ENGLISH_STORY,
-        APPROVED_REUSE_STORY,
-        APPROVED_KOKORO_STORY,
     }
 
 
@@ -76,12 +72,10 @@ def test_root_controlled_launch_keeps_bn_066_reader_live_and_audio_hidden():
     assert set(root_launch["audio_enabled_slugs"]) == {
         APPROVED_BENGALI_PILOT,
         APPROVED_ENGLISH_STORY,
-        APPROVED_REUSE_STORY,
-        APPROVED_KOKORO_STORY,
     }
 
 
-def test_sprint1_reader_additions_are_live_in_both_trees_and_audio_hidden():
+def test_sprint1_reader_additions_are_live_in_both_trees_and_audio_hidden_from_dupe():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
 
