@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-07-10T19:16:02Z",
+  "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3C_BOUNDED_LISTENING_QA_HELD_AFTER_ASR_SOURCE_FAILURE",
+  "slug": "bn-066",
+  "status": "NOT_RUN_ASR_SOURCE_GATE_FAILED",
+  "classification": "LISTENING_QA_NOT_RUN",
+  "reason": "Checkpointed ASR completed for all 152 chunks, but source alignment failed the required 9.7 gate and first/last words did not match. Listening QA was not run, preventing additional provider spend before source provenance is repaired.",
+  "planned_samples": [
+    "opening",
+    "middle",
+    "dialogue_or_difficult_phrase",
+    "ending",
+    "random_sample_1",
+    "random_sample_2"
+  ],
+  "budget_gate": {
+    "env": "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD",
+    "cap_usd": 0.75,
+    "estimated_qa_cost_usd": 0.3,
+    "actual_qa_spend_usd": 0.0
+  },
+  "asr_prerequisite": {
+    "completed_checkpoints": 152,
+    "source_alignment_score": 0.8403,
+    "required_score": 9.7,
+    "first_words_match": false,
+    "last_words_match": false,
+    "tts_by_construction_verified": false
+  },
+  "results": {
+    "overall_listening_score": null,
+    "confidence": null,
+    "fatal_flags": "NOT_RUN",
+    "pronunciation": "NOT_RUN",
+    "pacing": "NOT_RUN",
+    "tone": "NOT_RUN",
+    "clipping_noise": "NOT_RUN",
+    "missing_or_duplicated_content": "NOT_RUN",
+    "bengali_naturalness": "NOT_RUN"
+  },
+  "blockers": [
+    "ASR_SOURCE_MISMATCH",
+    "FIRST_LAST_MISMATCH",
+    "TTS_BY_CONSTRUCTION_NOT_VERIFIED",
+    "LISTENING_QA_NOT_RUN"
+  ],
+  "next_action": "Repair and test the fresh-generation group_repair manifest semantics, then reuse all 152 ASR checkpoints. Run bounded listening QA only if the source/construction gate passes."
+}

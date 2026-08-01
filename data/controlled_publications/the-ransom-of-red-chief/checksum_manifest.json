@@ -1,0 +1,34 @@
+{
+  "slug": "the-ransom-of-red-chief",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "71a512b08d3e58cd5e72979b665d2a9d9b67e813c34edb4d730b3f5a4cbfef85"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "3bee410d251dbfb5fd118935541e7e28df1f80de5dd81c311bbf794f46140284"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "53c37f2a0626c1337aa69192c954cb3f5b207f5bbbea5226a8fe926d435baaa5"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "c938d5107d7d8cc56df5eea1b15ebd9151dbd57090efda38808fde5a4813e8a3"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "9d644e3812d57a2927d9db3e0c6fee348a87e62fd0f15fa73d2ed7e8258d72bc"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "7da8bbd9f16959b911f522731799d9dc1f0ae5200bec04f98fe334f972d7a6f4"
+    }
+  ]
+}

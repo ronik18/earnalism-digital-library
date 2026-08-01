@@ -1,0 +1,34 @@
+{
+  "slug": "the-adventure-of-the-beryl-coronet",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "87e01391cafe9aca36d53104b7736aa01fea4e37429da1622d5c80cacb191d26"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "1878ce5c77f9e7ee4412f8df2bcd943631ab0b6861ff0b1424cc5b22afb89532"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "501d862fad7c6ebe4bf6c63407b62422dc25fc90f6494fd0223d92d6e4fead08"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "c8676f61f1d249819e65861dda1efa9681a216d9786530e15d2ae82a1bc07d03"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "2c9b0844d914951e6ccd9fae9348f27336ac8343e7d7407eddd334d7daf8cf1d"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "c8402c2184dc96144ae1f1bf258487f2a929a805ba3eb9d4f32a216619699739"
+    }
+  ]
+}

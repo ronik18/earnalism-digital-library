@@ -1,0 +1,34 @@
+{
+  "slug": "the-adventure-of-the-solitary-cyclist",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "a7ae152f064ca056bcd63fd8265e8469ed1791a4b725e3062eb8181776d17f6a"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "975affa4ba61cdefb7f86fabd2c669c215bbf689ad4cefafff6a3c5b06fc0c4f"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "b54d1f6ed0521ec8a5ee8a29fde4adc2784f0409bef7c38629def4fd2327a6b3"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "90819a624a4ff958b0a80fa2f72c62fc0e4c0bcc46ac2968f94314b368864307"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "e5b158149a8f316f383cea69be0280fa6daa6e62e8a607bac087ae517e3c7eea"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "643e2566369fb83520477a8e70b595992cf98891d194347aaa4ada9570f12f24"
+    }
+  ]
+}

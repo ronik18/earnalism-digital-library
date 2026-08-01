@@ -1,0 +1,13 @@
+{
+  "slug": "rikki-tikki-tavi",
+  "source_url": "https://www.gutenberg.org/ebooks/35997",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "9fb989d890306e186ad819ae9917d27b053bad992c2910b016dbf5540b28faf9",
+  "content_hash": "213c2a4d8a06ab1ef0a043434d8026e50b6a01eff59a8ec74287afaf2c0f9ff7",
+  "provenance_hash": "50b412128c232ff4cb8be5219da80cc52acbdcbecb4a58dfd0a934dc6514dde3",
+  "rights_basis": "Rudyard Kipling died 1936; first published 1894. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.479465+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

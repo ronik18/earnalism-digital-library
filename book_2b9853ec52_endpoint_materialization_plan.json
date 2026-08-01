@@ -1,0 +1,70 @@
+{
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "current_metadata_state": {
+    "admin_audiobook_enabled": true,
+    "admin_generate_audiobook": false,
+    "admin_provider": "sarvam",
+    "admin_voice": "ratan",
+    "admin_audio_asset_slug": "book-2b9853ec52",
+    "admin_assets_keys": [
+      "chapters",
+      "meta",
+      "mp3",
+      "timestamps",
+      "vtt"
+    ],
+    "metadata_api_status": "PASS"
+  },
+  "current_endpoint_url": "https://api.theearnalism.com/api/reader/book/book-2b9853ec52/audiobook",
+  "expected_endpoint_url": "https://api.theearnalism.com/api/reader/book/book-2b9853ec52/audiobook",
+  "upload_asset_urls": {
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_mp3_a974819392d7.mp3",
+    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_timestamps_0a1f26d13d4e.json",
+    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_vtt_754b15bd98e2.vtt",
+    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_chapters_5e1cfdd88492.json",
+    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_meta_d953726284f1.json"
+  },
+  "sidecar_urls": {
+    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_timestamps_0a1f26d13d4e.json",
+    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_vtt_754b15bd98e2.vtt",
+    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_chapters_5e1cfdd88492.json",
+    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_meta_d953726284f1.json"
+  },
+  "checksum_status": "PASS",
+  "metadata_approval_payload": {
+    "audiobook_enabled": true,
+    "generate_audiobook": false,
+    "audiobook_provider": "sarvam",
+    "audiobook_model": "bulbul:v3",
+    "audiobook_voice": "ratan",
+    "audiobook_style": "literary_warm_pacing",
+    "audio_asset_slug": "book-2b9853ec52",
+    "audiobook_assets": {
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_mp3_a974819392d7.mp3",
+      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_timestamps_0a1f26d13d4e.json",
+      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_vtt_754b15bd98e2.vtt",
+      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_chapters_5e1cfdd88492.json",
+      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_meta_d953726284f1.json"
+    },
+    "audiobook_size": 5233965,
+    "audiobook_duration_ms": 327069
+  },
+  "backend_route_expected_behavior": "GET/HEAD /api/reader/book/book-2b9853ec52/audiobook should return 200/206 or redirect only when the book is live-approved, audiobook metadata is approved, audio assets are present, and release truth allows this slug.",
+  "suspected_endpoint_404_cause": "Production public resolver uses static controlled-launch/audio allowlist loaded at backend process import. Root data/controlled_launch.json contains the pilot, but backend/data/controlled_launch.json does not, and deployed production public routes still hide the slug despite admin DB audiobook metadata.",
+  "controlled_launch_comparison": {
+    "root_live_contains": true,
+    "root_audio_contains": true,
+    "backend_live_contains": false,
+    "backend_audio_contains": false
+  },
+  "rollback_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_audiobook_reset_payload.json",
+  "exact_repair_plan": [
+    "Do not regenerate TTS/ASR/sync/listening or reupload assets.",
+    "Diagnose public/admin API split and route truth-gate fields.",
+    "If only stale process/static allowlist is blocking, deploy/restart backend with updated controlled-launch/audio metadata or source fix.",
+    "If backend source is too strict, add minimal release-gate-aware audio exposure logic that requires audiobook_release_gate=APPROVED or static allowlist and does not expose unapproved audio.",
+    "Resume metadata/browser only with generation/upload workers disabled."
+  ],
+  "written_at_utc": "2026-07-07T07:40:17Z"
+}

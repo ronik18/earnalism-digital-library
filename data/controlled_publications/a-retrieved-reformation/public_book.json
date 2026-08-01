@@ -1,0 +1,105 @@
+{
+  "id": "controlled-a-retrieved-reformation",
+  "slug": "a-retrieved-reformation",
+  "title": "A Retrieved Reformation",
+  "subtitle": "",
+  "author": "O. Henry",
+  "category_slug": "adventure",
+  "short_description": "A reformed safe-cracker is forced to reveal his past to save a child trapped in a bank vault.",
+  "description": "Jimmy Valentine gives up his criminal life for love — but when a child is accidentally locked in a bank vault, he must crack it open and expose himself. O. Henry's most celebrated story of moral courage.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "12 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "O. Henry (1862–1910) was an American short story writer celebrated for his wit, wordplay, and surprise endings.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "A Retrieved Reformation",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2821,
+      "reading_minutes": 12,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "03fc9a36b9e316f3c2d02902dd5cddcacd1724ac42b9602827f8914ead6c27b3",
+  "content_hash": "26333f5658cfcb36488d5d64200a0db57a6693bcea82c1bcbcef7a41d35be761",
+  "provenance_hash": "1ee6272d06c799a412b12b5e694682891db8412ddd256b677456862eb46d4e71",
+  "rights_basis": "O. Henry died 1910; first published 1903. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "a-retrieved-reformation",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581008/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581009/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581010/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581011/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581012/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581008/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581008/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581009/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581010/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581011/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581012/earnalism/audiobooks/en/a-retrieved-reformation/a-retrieved-reformation_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

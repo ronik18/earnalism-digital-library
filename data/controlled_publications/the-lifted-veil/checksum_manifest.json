@@ -1,0 +1,38 @@
+{
+  "slug": "the-lifted-veil",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "fb5f2baededb0dfa7fb5f9489ecd6390b9ad8542ba2f2096e3c63d9cc55d1dfb"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "7727cdc7d36b0bc49ccae3c9c975b83da4403bbcafcfd3931f83e77b14951200"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "7dce4241b0b84565498a23c8b24dd7847650f39f06c3abee0a820414ba7d46cf"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "af4782533a36ed1362bef06a292438f3082f87df1c97dd46fd8393345df4e8cb"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "9db3e6b1e0d52ff3c6cbe25cb20595b66ff51b34337ca44cfe04b0beffa218b8"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "af6a6662de70d0ab939eef192e75533c5c3052d8f5ffe5b829c62ed78731116e"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "fa2128719bfb107386fb0e44fa8a8ce721cf435a737ff738bf9552db5d7ec292"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "54cca76528a8f61f8024406bd99e019e0c6e30c13cf60ca0a04bb41f11c47b6e"
+    }
+  ]
+}

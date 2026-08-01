@@ -1,0 +1,134 @@
+{
+  "audit_id": "LIVE_SITE_PREMIUM_UX_ANOMALY_AUDIT_20260713",
+  "observed_at": "2026-07-13T08:38:02Z",
+  "summary": {
+    "mismatch_count": 10,
+    "p0": 0,
+    "p1": 7,
+    "p2": 3,
+    "live_unauthorized_audio_dom_exposure": 0,
+    "api_live_reader_cards_misrouted_to_contact": 26
+  },
+  "mismatches": [
+    {
+      "id": "API-DOM-001",
+      "severity": "P1",
+      "confidence": 1.0,
+      "route": "/library",
+      "slugs_affected": ["bn-027","lokrahasya","mrinalini","nishkriti","bn-066","book-2b9853ec52","book-edfcf810c5","alices-adventures-in-wonderland","the-wonderful-wizard-of-oz","a-ghost-story","the-call-of-the-wild","the-time-machine","white-fang","pride-and-prejudice","the-secret-garden","the-gift-of-the-magi","the-tell-tale-heart","the-open-window","sredni-vashtar","dsires-baby","the-cop-and-the-anthem","the-last-leaf","the-masque-of-the-red-death","the-yellow-wallpaper","the-monkeys-paw","the-necklace"],
+      "api_field": "publication_status=LIVE_APPROVED and reader_enabled=true",
+      "dom_field": "Reader Ready plus 'not readable or listenable yet'; CTA targets /contact?interest=...",
+      "mismatch": "Twenty-six live reader titles are treated as pipeline-only because the UI applies an eleven-slug static allowlist after receiving live API truth.",
+      "likely_files": ["frontend/src/lib/controlledLaunch.js","frontend/src/components/BookCard.jsx","frontend/src/pages/Library.jsx"],
+      "guardrail": "Reader routing must derive from canonical reader-live evidence; audiobook eligibility remains a separate fail-closed predicate."
+    },
+    {
+      "id": "API-DOM-002",
+      "severity": "P1",
+      "confidence": 1.0,
+      "route": "/library?availability=approved-audiobook",
+      "slugs_affected": ["book-2b9853ec52","a-ghost-story"],
+      "api_field": "reader manifests: audio.enabled=true, release_gate=APPROVED, qa_status=QA_PASSED; audiobook endpoints return 206",
+      "dom_field": "zero approved audiobook cards, zero Listen links, and both titles display Audio Hidden in the unfiltered Library",
+      "mismatch": "Approved audiobooks are absent from the catalog surface while their Book Detail pages correctly show Audiobook Approved and Listen in Reader.",
+      "likely_files": ["backend/catalog_truth.py","backend/server.py","frontend/src/components/ApprovedAudiobookSpotlight.jsx","frontend/src/components/BookCard.jsx","frontend/src/pages/Library.jsx"],
+      "guardrail": "Only the exact approved set may receive Listen; bn-066 and every other title remain Audio Hidden."
+    },
+    {
+      "id": "API-DOM-003",
+      "severity": "P1",
+      "confidence": 1.0,
+      "route": "/api/books/{slug} versus /api/reader/book/{slug}/manifest",
+      "slugs_affected": ["book-2b9853ec52","a-ghost-story"],
+      "api_field": "book summaries report audio_enabled=false, audiobook_enabled=false, audio_status=NOT_AVAILABLE and no release-gate fields",
+      "dom_field": "Book Detail renders Audiobook Approved and Listen in Reader from manifest evidence",
+      "mismatch": "Two public API projections disagree about approved audio state, forcing each frontend surface to invent its own authority.",
+      "likely_files": ["backend/catalog_truth.py","backend/server.py","frontend/src/pages/BookDetail.jsx","frontend/src/pages/Reader.jsx"],
+      "guardrail": "Expose one canonical approved-audio projection or explicitly require manifest evidence everywhere; never infer approval from a URL."
+    },
+    {
+      "id": "API-DOM-004",
+      "severity": "P1",
+      "confidence": 1.0,
+      "route": "/ and /library",
+      "slugs_affected": ["frankenstein","book-edfcf810c5"],
+      "api_field": "LIVE_APPROVED, reader_enabled=true, published chapters and cover",
+      "dom_field": "Homepage pipeline cards show Coming Soon/contact-only state; Kshudhita Pashan uses a stale alias rather than the current slug",
+      "mismatch": "Static homepage shelf data is stale relative to catalog truth.",
+      "likely_files": ["frontend/src/pages/Home.jsx","frontend/src/components/ShelfTwoSlideshow.jsx","frontend/src/lib/controlledLaunch.js"],
+      "guardrail": "Version or fetch shelf truth and fail closed only for audio, not for already-approved reader access."
+    },
+    {
+      "id": "API-DOM-005",
+      "severity": "P1",
+      "confidence": 1.0,
+      "route": "/api/controlled-launch/status versus /api/books and /library",
+      "slugs_affected": ["book-d19e96859f","book-f5d593e1f4","muchiram-gurer-jibanchorit","radharani","bn-059","the-art-of-money-getting"],
+      "api_field": "controlled status declares 43 live slugs while the catalog lists 37",
+      "dom_field": "four valid reader/detail slugs are undiscoverable in Library; two declared-live slugs return 404",
+      "mismatch": "Controlled-live status, catalog discovery, detail availability, and reader availability do not share one canonical public-title set.",
+      "likely_files": ["backend/catalog_truth.py","backend/server.py","backend/data/controlled_launch.json","frontend/src/pages/Library.jsx"],
+      "guardrail": "Set reconciliation must never auto-publish a title whose rights or reader evidence is missing."
+    },
+    {
+      "id": "API-DOM-006",
+      "severity": "P1",
+      "confidence": 1.0,
+      "route": "/sitemap.xml and /book/*",
+      "slugs_affected_count": 34,
+      "api_field": "book API and reader manifest return 404 for thirty-four sitemap slugs",
+      "dom_field": "SPA shells return HTTP 200 and are indexable",
+      "mismatch": "The sitemap advertises dead public titles and the SPA converts absent content into crawler-visible soft 404s.",
+      "likely_files": ["frontend/scripts/generate-seo-assets.mjs","frontend/scripts/generate-static-seo-snapshots.mjs","frontend/vercel.json","frontend/src/App.js"],
+      "guardrail": "Only source-backed public books belong in the sitemap; removed routes return 404/410 or a deliberate 3xx alias."
+    },
+    {
+      "id": "API-DOM-007",
+      "severity": "P1",
+      "confidence": 1.0,
+      "route": "/book/* and /reader/* raw HTML",
+      "slugs_affected": ["book-2b9853ec52","a-ghost-story","bn-066","all non-Dracula books"],
+      "api_field": "unique title, author, cover, language/script and reader state exist after API hydration",
+      "dom_field": "server-visible HTML is the generic homepage shell/root canonical; reader pages are not statically noindex with book canonicals",
+      "mismatch": "Hydrated DOM is mostly correct while crawler-visible metadata is generic or stale.",
+      "likely_files": ["frontend/scripts/generate-static-seo-snapshots.mjs","frontend/src/hooks/useSEO.js","frontend/public/index.html"],
+      "guardrail": "Every indexable book route needs API-bound raw metadata; reader routes use noindex and book canonical."
+    },
+    {
+      "id": "API-DOM-008",
+      "severity": "P2",
+      "confidence": 1.0,
+      "route": "/api/books/a-ghost-story collection versus detail",
+      "slugs_affected": ["a-ghost-story"],
+      "api_field": "collection and detail disagree on ID, cover version, formats, chapters/order and creation date",
+      "dom_field": "different surfaces can render different cover and format truth",
+      "mismatch": "List and detail endpoints project different identities for one title.",
+      "likely_files": ["backend/server.py","backend/catalog_truth.py","frontend/src/lib/bookCoverResolver.js"],
+      "guardrail": "Use one canonical record projection for list, detail, home and manifest identity fields."
+    },
+    {
+      "id": "API-DOM-009",
+      "severity": "P2",
+      "confidence": 1.0,
+      "route": "/api/books and Bengali UI",
+      "slugs_affected_count": 37,
+      "api_field": "language is absent from every public catalog summary sampled",
+      "dom_field": "frontend infers Bengali via text regex; most Bengali titles lack lang=bn outside reader prose and document lang remains en",
+      "mismatch": "Language truth is heuristic rather than authoritative, reducing typography and assistive-technology reliability.",
+      "likely_files": ["backend/catalog_truth.py","backend/server.py","frontend/src/pages/Library.jsx","frontend/src/components/BookCard.jsx","frontend/src/pages/BookDetail.jsx"],
+      "guardrail": "Add canonical language codes and script-level lang attributes without changing release state."
+    },
+    {
+      "id": "API-DOM-010",
+      "severity": "P2",
+      "confidence": 0.99,
+      "route": "/api/reader/book/book-2b9853ec52/manifest and reader player",
+      "slugs_affected": ["book-2b9853ec52"],
+      "api_field": "audio.sync_mode is empty and highlight_sync_enabled=false while sidecar metadata claims measured paragraph/stanza cues; timestamp entries use start/end seconds rather than start_ms/end_ms",
+      "dom_field": "Reader code expects normalized millisecond and word-index fields; automated browser playback did not advance and displayed a browser-start error toast",
+      "mismatch": "Manifest, sidecar and player schemas are not self-consistent enough to claim browser playback/sync green.",
+      "likely_files": ["backend/server.py","frontend/src/pages/Reader.jsx","frontend/src/lib/audioReleaseSafety.js"],
+      "guardrail": "Keep customer copy at section-following narration, reject estimated cues, and validate real playback advancement before release-green."
+    }
+  ]
+}

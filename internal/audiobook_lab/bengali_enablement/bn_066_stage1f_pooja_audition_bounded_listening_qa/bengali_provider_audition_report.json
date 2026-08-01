@@ -1,0 +1,173 @@
+{
+  "status": "PASS",
+  "qa_schema_version": 3,
+  "release_policy": "bengali_audiobook_acceptance_v2_92",
+  "policy_decision_path": "internal/audiobook_lab/release_gate/bengali_audiobook_acceptance_v2_92_policy_decision.json",
+  "listening_thresholds_applied": {
+    "naturalness_score": 8.9,
+    "pronunciation_score": 8.9,
+    "emotional_expression_score": 8.9,
+    "punctuation_pause_score": 8.9,
+    "pacing_score": 8.9,
+    "continuity_score": 8.9,
+    "anti_robotic_texture_score": 9.2,
+    "anti_choppy_join_score": 9.2,
+    "listener_enjoyment_score": 8.9,
+    "overall_listening_score": 9.2,
+    "confidence_score": 0.9
+  },
+  "started_at": "2026-07-10T09:31:03Z",
+  "finished_at": "2026-07-10T09:31:23Z",
+  "providers_requested": [
+    "sarvam"
+  ],
+  "providers_detected": {
+    "openai": {
+      "detected": true,
+      "env": {
+        "OPENAI_API_KEY": true
+      }
+    },
+    "google": {
+      "detected": true,
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": true,
+        "GOOGLE_CLOUD_PROJECT": true,
+        "GOOGLE_TTS_PROJECT": false
+      }
+    },
+    "azure": {
+      "detected": false,
+      "env": {
+        "AZURE_SPEECH_KEY": false,
+        "AZURE_SPEECH_REGION": false
+      }
+    },
+    "sarvam": {
+      "detected": true,
+      "env": {
+        "SARVAM_API_KEY": true
+      },
+      "status": "adapter_available"
+    },
+    "human_licensed_import": {
+      "detected": false,
+      "env": {
+        "EARNALISM_LICENSED_AUDIO_IMPORT_DIR": false,
+        "EARNALISM_HUMAN_AUDIO_IMPORT_DIR": false
+      }
+    }
+  },
+  "provider_capability_probe_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_provider_capability_probe.json",
+  "cost_estimate": {
+    "estimated_cost_usd": 0.0119,
+    "budget_usd": 5.0,
+    "actual_cost_if_available": "not_available"
+  },
+  "voice_results": [
+    {
+      "provider": "sarvam",
+      "voice": "pooja",
+      "release_policy": "bengali_audiobook_acceptance_v2_92",
+      "listening_thresholds_applied": {
+        "naturalness_score": 8.9,
+        "pronunciation_score": 8.9,
+        "emotional_expression_score": 8.9,
+        "punctuation_pause_score": 8.9,
+        "pacing_score": 8.9,
+        "continuity_score": 8.9,
+        "anti_robotic_texture_score": 9.2,
+        "anti_choppy_join_score": 9.2,
+        "listener_enjoyment_score": 8.9,
+        "overall_listening_score": 9.2,
+        "confidence_score": 0.9
+      },
+      "language_code": "bn-IN",
+      "style_profile": "literary_warm_pacing",
+      "model": "bulbul:v3",
+      "style_control": false,
+      "endpoint_used": "https://api.sarvam.ai/text-to-speech",
+      "output_codec": "wav",
+      "sample_count": 1,
+      "expected_sample_count": 1,
+      "aggregate": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.4,
+        "emotional_expression_score": 9.3,
+        "punctuation_pause_score": 9.2,
+        "pacing_score": 9.1,
+        "continuity_score": 9.4,
+        "anti_robotic_texture_score": 9.6,
+        "anti_choppy_join_score": 9.5,
+        "listener_enjoyment_score": 9.3,
+        "overall_listening_score": 9.3,
+        "confidence_score": 0.95
+      },
+      "flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "overall_listening_score": 9.3,
+      "confidence_score": 0.95,
+      "status": "PASS",
+      "blockers": []
+    }
+  ],
+  "auditions": [
+    {
+      "provider": "sarvam",
+      "voice": "pooja",
+      "model": "bulbul:v3",
+      "style_profile": "literary_warm_pacing",
+      "style_control": false,
+      "passage_id": "narrative_opening",
+      "passage_slug": "bn-066",
+      "sample_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d_clipped.mp3",
+      "sample_hash": "99ca5cffad8b6cb4767b51fee9458377ad8b47e93b50487d6800e2c35abe3c3a",
+      "duration_seconds": 45.0,
+      "release_policy": "bengali_audiobook_acceptance_v2_92",
+      "listening_thresholds_applied": {
+        "naturalness_score": 8.9,
+        "pronunciation_score": 8.9,
+        "emotional_expression_score": 8.9,
+        "punctuation_pause_score": 8.9,
+        "pacing_score": 8.9,
+        "continuity_score": 8.9,
+        "anti_robotic_texture_score": 9.2,
+        "anti_choppy_join_score": 9.2,
+        "listener_enjoyment_score": 8.9,
+        "overall_listening_score": 9.2,
+        "confidence_score": 0.9
+      },
+      "scores": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.4,
+        "emotional_expression_score": 9.3,
+        "punctuation_pause_score": 9.2,
+        "pacing_score": 9.1,
+        "continuity_score": 9.4,
+        "anti_robotic_texture_score": 9.6,
+        "anti_choppy_join_score": 9.5,
+        "listener_enjoyment_score": 9.3,
+        "overall_listening_score": 9.3,
+        "confidence_score": 0.95
+      },
+      "confidence_score": 0.95,
+      "judge_notes": "The narration is smooth, with a natural and warm tone. Pronunciation is clear and accurate. Pacing is pleasant, though slightly on the slower side. Emotional expression is present but could be slightly more dynamic. No robotic texture or choppy joins detected. Overall, a high-quality sample, but not fully at the premium release-ready level.",
+      "pass_fail": "PASS",
+      "blockers": []
+    }
+  ],
+  "best_provider": "sarvam",
+  "best_voice": "pooja",
+  "best_score": 9.3,
+  "best_confidence": 0.95,
+  "any_audition_passed": true,
+  "recommendation": "Generate one guarded Bengali pilot with the selected provider/voice under the recorded release policy."
+}

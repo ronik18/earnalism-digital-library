@@ -1,0 +1,34 @@
+{
+  "slug": "rappaccinis-daughter",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "08c1111d9d2079d4d87d35ed9fe0086408fa15d5f6dc06f42ae17db16c3823b5"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "af1f6fca6f7f0b5620e7fe7554a1b9e6cd56b2d0bdc15b36e6f8992d9a47856a"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "b668e8f74aaf696918e75b409183459790f08e7825796182365ed3e4fdb83e71"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "4e2c753fbc8f3b363219bb062aad488ebd6f9e845061a86445b2d7d0a5d56eb8"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "287c41f25f969e4cac583740f4253113a8f291a640681e6536bb00d40c80dc42"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "440b993aabe5291db3d86fd941fe05efa33e2d5a788818a55cdeac278481ccc2"
+    }
+  ]
+}

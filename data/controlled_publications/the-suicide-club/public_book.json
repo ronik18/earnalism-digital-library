@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-suicide-club",
+  "slug": "the-suicide-club",
+  "title": "The Suicide Club",
+  "subtitle": "Selected Stories",
+  "author": "Robert Louis Stevenson",
+  "category_slug": "adventure",
+  "short_description": "A young prince and his aide infiltrate a secret London club where members gamble for their own deaths.",
+  "description": "Prince Florizel and his aide discover a London club where bored, ruined men play cards for the privilege of either killing or being killed. Stevenson's most atmospheric and chilling adventure cycle.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "116 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Robert Louis Stevenson (1850–1894) was a Scottish novelist and travel writer, author of Treasure Island and Strange Case of Dr Jekyll and Mr Hyde.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Suicide Club",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 27707,
+      "reading_minutes": 116,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "36f2eab8f19108f05a306169130f8bddc9c21c23725e7c12a330ac18cfdb9e39",
+  "content_hash": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
+  "provenance_hash": "06055fded54812b2a06957fef8e55de7d89f2d115b9cc403a8ca1d834aa330a6",
+  "rights_basis": "Robert Louis Stevenson died 1894; first published 1882. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-suicide-club",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780594064/earnalism/audiobooks/en/the-suicide-club/the-suicide-club.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594069/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594070/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594071/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594072/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780594064/earnalism/audiobooks/en/the-suicide-club/the-suicide-club.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780594064/earnalism/audiobooks/en/the-suicide-club/the-suicide-club.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594069/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594070/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594071/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594072/earnalism/audiobooks/en/the-suicide-club/the-suicide-club_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:49Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z"
+}

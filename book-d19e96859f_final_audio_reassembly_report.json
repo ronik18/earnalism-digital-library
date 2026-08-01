@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-07-07T19:08:13Z",
+  "slug": "book-d19e96859f",
+  "status": "NOT_REASSEMBLED_PENDING_GROUP_4_REGENERATION",
+  "final_audio_path_before_repair": "internal/audiobook_lab/release_gate/book-d19e96859f_20260707T155229Z/book-d19e96859f_sarvam_bulbul_v3_ratan_literary_warm_pacing_final.mp3",
+  "final_audio_hash_before_repair": "79199565945dbdc2829f879214db5c60e0a949c4b6602fd64443ba428ff6225d",
+  "final_audio_hash_after_repair": null,
+  "total_duration_before_repair_seconds": 588.332021,
+  "group_order": [0, 1, 2, 3, 4],
+  "reused_groups": [0, 1, 2, 3],
+  "regenerated_groups": [],
+  "planned_regenerated_groups": [4],
+  "gap_pause_handling": "existing deterministic ffmpeg concat/loudnorm path retained",
+  "no_frontmatter_confirmed": false,
+  "reason": "Existing final group narrates standalone source year ১২৯৮?; publish remains blocked until regenerated and reassembled."
+}

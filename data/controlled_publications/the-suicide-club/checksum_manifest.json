@@ -1,0 +1,34 @@
+{
+  "slug": "the-suicide-club",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "2e4a1bc9da26af5876d1301394bbff413ac7e3ebf59c060e1c6cc72127c93959"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "eab9486c4e8beed6ff75490fbfde1b0664967c583fe0a89420dc7174edc91457"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "7463e1329e06029b49d79d55df1aabd45ff33aaad98781e65d51d3b506fe40de"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "bb7fd05d82bf0328c08589c8af595163dd6ea36f1b5bde85bb9528c3609d297d"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "162aeaf7807c66c64a3b0322a153d786c2b8b28e998b2691c6769e86b9a659ef"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "abaf4043dc552ce0b278ed155ec9d63a64ec01df68dfd972a4ee3253ffbd40b3"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "0c1a58321e2dd6cd59df58b32ed9fad155a7a7666860796144025e8c0aee3a66"
+    }
+  ]
+}

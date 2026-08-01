@@ -1,0 +1,34 @@
+{
+  "slug": "the-pit-and-the-pendulum",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "9e4d5c4995ea1a511f880e42c607b08067078df68e5eb17e84e29ba053931022"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "7a88194915d60ad86dc40e379af14e0f584e8e4c75fa8c31e8b2168105d1a8cd"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "847d75341ac18afa8dab2295389e84836c13c7c9708305737d8d1c9c707d271a"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "e4ee6df552a15a44e112a081423e605e31c90aab93d1217c2673fe0f59b309b2"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "44eebfecfb6d8461754f3f48f690510a7c15a1e422a40bbe522643a71bf118da"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "8f5b385e9f1c35e546383b0f0f11033e9d362642f68630389d24d79c2fd0da64"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "142dcfe5d3fcd6f491c5e56dd2eb893a67bae94cfa1cfb3cb9621694e4b120f5"
+    }
+  ]
+}

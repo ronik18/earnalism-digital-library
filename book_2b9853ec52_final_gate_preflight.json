@@ -1,0 +1,97 @@
+{
+  "generated_at": "20260707T071919Z",
+  "pilot_slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "run_dir": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z",
+  "provider_model_voice_style": "Sarvam / bulbul:v3 / ratan / literary_warm_pacing",
+  "final_audio_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/book-2b9853ec52_sarvam_bulbul_v3_ratan_literary_warm_pacing_final.mp3",
+  "final_audio_exists": true,
+  "final_audio_hash": "a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5",
+  "sidecars": [
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/timestamps.json",
+      "exists": true,
+      "sha256": "0a1f26d13d4e8ede5024988b72b0415c2ce426e6b1a0be395a6669223870ae7c",
+      "size_bytes": 19337
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/highlight.vtt",
+      "exists": true,
+      "sha256": "754b15bd98e2ea4f186326948ddd493487f28b9f523f53915cf2f082ae1dbe5f",
+      "size_bytes": 8336
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/chapters.json",
+      "exists": true,
+      "sha256": "5e1cfdd8849224bb565b84523433a042ccce583aea3c876cf0018c583b59557b",
+      "size_bytes": 259
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/meta.json",
+      "exists": true,
+      "sha256": "d953726284f120ef8d78a08d3548b0d24f38955a410d7d0343d30c570a619340",
+      "size_bytes": 1198
+    }
+  ],
+  "asr_source_status": {
+    "asr_sync_status": "PASS",
+    "transcript_match_score": 10.0,
+    "source_match_score": 10.0,
+    "asr_transcript_match_score": 1.1258,
+    "asr_release_status": "SUPPORTING_DIAGNOSTIC_WEAK",
+    "source_verification_method": "clean_tts_source_provenance_static_audit",
+    "tts_by_construction_verified": true,
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_clean_match_score": 1.0
+  },
+  "sync_status": {
+    "sync_score": 10.0,
+    "vtt_alignment_score": 10.0,
+    "sync_release_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "sync_granularity": "paragraph_or_stanza",
+    "sync_method": "measured_group_audio_duration",
+    "auto_estimated_sync": false
+  },
+  "listening_status": {
+    "status": "PASS",
+    "policy": "bengali_audiobook_acceptance_v2_92",
+    "overall_listening_score": 9.4,
+    "confidence": 0.95,
+    "sample_count": 6,
+    "fatal_flags": {
+      "robotic_texture_detected": false,
+      "mechanical_cadence_detected": false,
+      "list_reading_rhythm_detected": false,
+      "choppy_joins_detected": false,
+      "fallback_tts_detected": false
+    }
+  },
+  "preflight_checks": {
+    "clean_tts_input": true,
+    "no_frontmatter_or_source_metadata_narrated": true,
+    "tts_by_construction_verified": true,
+    "asr_source_verification_accepted": true,
+    "measured_paragraph_stanza_sync_accepted": true,
+    "auto_estimated_sync_false": true,
+    "listening_score_pass": true,
+    "listening_confidence_pass": true,
+    "fatal_flags_clear": true,
+    "final_audio_hash_exists": true,
+    "sidecars_exist": true,
+    "chapters_match_audio_duration": true,
+    "cue_coverage_100_percent": true
+  },
+  "safe_to_run_final_gates": true,
+  "allowed_next_gates": [
+    "upload/checksum",
+    "metadata approval",
+    "browser gate"
+  ],
+  "disallowed_next_work": [
+    "TTS",
+    "ASR",
+    "sync regeneration",
+    "provider bakeoff",
+    "canary wave"
+  ]
+}

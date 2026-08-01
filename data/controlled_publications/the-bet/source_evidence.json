@@ -1,0 +1,13 @@
+{
+  "slug": "the-bet",
+  "source_url": "https://www.gutenberg.org/ebooks/55283",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "35a9b8d90a0313a1e129715e179023051ed043b569e2d6f69d50d5a60e3e5fe2",
+  "content_hash": "8ecb474057e0f376df471ae3b52ee18bfe7f0f24e31b3e683b4929af6d57045e",
+  "provenance_hash": "d73ddc380058122db42e10b77dbc124fa00a25b67670e19c5fa35e0eaa66e2c0",
+  "rights_basis": "Anton Chekhov died 1904; first published 1889. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.924123+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

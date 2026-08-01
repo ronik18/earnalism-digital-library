@@ -1,0 +1,41 @@
+{
+  "slug": "pather-panchali",
+  "title": "পথের পাঁচালী / Pather Panchali",
+  "author": "Bibhutibhushan Bandyopadhyay",
+  "language": "ben",
+  "author_identity": "Bibhutibhushan Bandyopadhyay",
+  "author_death_year": 1950,
+  "original_publication_year": null,
+  "public_domain_license_basis": "public_domain",
+  "source_provenance": {
+    "source_url": "https://bn.wikisource.org/wiki/পথের_পাঁচালী",
+    "source_name": "Bengali Wikisource",
+    "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+    "source_hash": "0f3626226a1ecc776a89670b8a9e53d2a6c4ee373afab6be0fa387ae59f90c8f",
+    "content_hash": "51a3175817002fb99a5cdf88b6e51819855b6c92a985558071fe1df0bde33435"
+  },
+  "text_complete_status": "BLOCKED_MANUAL_SOURCE_DECISION_REQUIRED",
+  "text_abridged_status": "UNKNOWN_OR_POSSIBLY_INCOMPLETE_BLOCKED",
+  "chapters_complete_status": "BLOCKED_MANUAL_SOURCE_DECISION_REQUIRED",
+  "chapter_count_content": 12,
+  "chapter_count_controlled": 12,
+  "toc_index_exists": true,
+  "bengali_text_clean_for_reader": true,
+  "ocr_junk_detected": false,
+  "embedded_page_numbers_or_source_headers": false,
+  "source_frontmatter_license_metadata_present_in_reader_text": false,
+  "reader_display_and_audiobook_clean_text_separated": true,
+  "covers_exist": false,
+  "cover_art_graphical_not_typographic_only": true,
+  "status": "BLOCKED_FOR_AUDIOBOOK_PRELAUNCH",
+  "blockers": [
+    "Territory caveat in source-rights requires owner/editor review before commercial promotion outside controlled allowlist.",
+    "Full audiobook is blocked until complete source scope is proven."
+  ],
+  "notes": [
+    "Canonical pather-panchali reader has 12 chapter files and is approved reader-ready locally.",
+    "Raw root source parse artifact reports missingtitle for the root Wikisource page.",
+    "Raw chapter 12 HTML advertises a redlinked thirteenth chapter, so full-work completeness cannot be proven from local evidence.",
+    "Separate manifest entry bn-086 is explicitly titled পথের পাঁচালী (অংশ), increasing ambiguity risk for audiobook marketing/full-work claims."
+  ]
+}

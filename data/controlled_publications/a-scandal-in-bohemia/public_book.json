@@ -1,0 +1,105 @@
+{
+  "id": "controlled-a-scandal-in-bohemia",
+  "slug": "a-scandal-in-bohemia",
+  "title": "A Scandal in Bohemia",
+  "subtitle": "",
+  "author": "Arthur Conan Doyle",
+  "category_slug": "gothic-fiction",
+  "short_description": "Sherlock Holmes meets his match in Irene Adler — the only woman who ever outwitted him.",
+  "description": "Holmes is hired to recover a compromising photograph from the brilliant and fearless Irene Adler. For once, the world's greatest detective is outplayed — and he never forgets her. The story that introduced The Woman.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "36 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Arthur Conan Doyle (1859–1930) was a British author and physician, creator of Sherlock Holmes and Dr. Watson.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "A Scandal in Bohemia",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 8580,
+      "reading_minutes": 36,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "c8a8c8bd954f303cb9a2ebdbb67935fe88c9b623afa510883e23dfc86026212c",
+  "content_hash": "2ccaff29b665baea447108f4fd539a1ac3254a7dbcb33d51f3188a24fdee5e4c",
+  "provenance_hash": "62b4c9d59041a4600f26839f7d179395c741d2438edd6d6a3e654e2f30ce678d",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1891. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "a-scandal-in-bohemia",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585124/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585125/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585126/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585127/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585128/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585124/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585124/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585125/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585126/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585127/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585128/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

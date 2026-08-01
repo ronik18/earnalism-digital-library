@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-07-07T19:08:13Z",
+  "slug": "book-d19e96859f",
+  "status": "PENDING_PAID_GROUP_REGENERATION",
+  "regenerated_group_ids": [],
+  "planned_regenerated_group_ids": [4],
+  "reused_group_ids": [0, 1, 2, 3],
+  "old_audio_hash_by_group": {
+    "0": "1f952b1d89be29fe0b0753b370a92f74e07e4144c3bc2f82e1983852c8805bb6",
+    "1": "5dc90de3654a9e056ec2e3e37766ea3926d66ff0e2064bfa4c6867179a66daf6",
+    "2": "fff639dc3d6adf371da9e50a59f8b9faa2df6634cfba8a052095e253621e3519",
+    "3": "ea3f566297cbcdcca89d504e12baae5af85783969e2f1e3a41ae58b0ecff2c9b",
+    "4": "49b14004f94fe39dda5244a3962824ac946647f67ce544d377d8fb12c95358fe"
+  },
+  "new_audio_hash_by_group": {},
+  "text_sent_to_sarvam_for_repair": {
+    "4": "আশু পশ্চাৎ ফিরিয়া দেখে ... দিনের কথা ভুলিয়া যাইবে এ তাহার মনে বিশ্বাস হইল না"
+  },
+  "removed_text": ["১২৯৮?"],
+  "duration_before_repair_seconds": 588.332021,
+  "estimated_incremental_cost_usd": 0.01,
+  "sarvam_response_status": "NOT_RUN",
+  "failure": "No paid group-regeneration command was run in this step; source fix and repair manifest path are ready."
+}

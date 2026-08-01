@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-red-headed-league",
+  "slug": "the-red-headed-league",
+  "title": "The Red-Headed League",
+  "subtitle": "",
+  "author": "Arthur Conan Doyle",
+  "category_slug": "literary-fiction",
+  "short_description": "A pawnbroker is hired by a mysterious League of Red-Headed Men — the most elaborate robbery distraction Holmes ever unravels.",
+  "description": "The scheme to keep Jabez Wilson occupied with a preposterous copying job while criminals tunnel into a bank vault beneath his shop is one of the most ingenious in detective fiction history.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "39 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Arthur Conan Doyle (1859–1930) was a British author and physician, creator of Sherlock Holmes and Dr. Watson.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Red-Headed League",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 9178,
+      "reading_minutes": 39,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "908533b5a44104e7a8675a3d9a06b3526dea93d125afd859f998b5f6d1e0d0fe",
+  "content_hash": "596bf4c4ffc933a0b09dc4f7ad39db6cb0377154b14cd10744de5e45df14a8ea",
+  "provenance_hash": "e792349c3b8700617f947eb7d677ea9b740f892f0394595385b5c0080a25f22a",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1891. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-red-headed-league",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585977/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585979/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585980/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585981/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585981/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585977/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585977/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585979/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585980/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585981/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585981/earnalism/audiobooks/en/the-red-headed-league/the-red-headed-league_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:49Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z"
+}

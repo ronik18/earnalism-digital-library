@@ -1,0 +1,13 @@
+{
+  "slug": "a-scandal-in-bohemia",
+  "source_url": "https://www.gutenberg.org/ebooks/1661",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "c8a8c8bd954f303cb9a2ebdbb67935fe88c9b623afa510883e23dfc86026212c",
+  "content_hash": "2ccaff29b665baea447108f4fd539a1ac3254a7dbcb33d51f3188a24fdee5e4c",
+  "provenance_hash": "62b4c9d59041a4600f26839f7d179395c741d2438edd6d6a3e654e2f30ce678d",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1891. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.934915+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

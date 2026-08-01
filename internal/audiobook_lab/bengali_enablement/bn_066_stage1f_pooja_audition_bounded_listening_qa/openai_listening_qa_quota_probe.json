@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "available": true,
+  "quota_blocked": false,
+  "started_at": "2026-07-10T09:31:03Z",
+  "finished_at": "2026-07-10T09:31:08Z",
+  "openai_key_detected": true,
+  "listening_qa_enabled": true,
+  "model": "gpt-audio",
+  "probe_audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/openai_listening_qa_quota_probe_silence.mp3",
+  "probe_audio_source": "local_silence_probe",
+  "budget_guard": {
+    "ok": true,
+    "code": "LISTENING_QA_BUDGET_OK",
+    "cap_env": "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD",
+    "estimated_qa_cost_usd": 0.05,
+    "listening_qa_cap_usd": 1.0,
+    "total_budget_cap_usd": 5.0,
+    "total_estimated_usd": 0.0619,
+    "sample_count": 1
+  },
+  "error_message_redacted": "",
+  "exact_next_fix": "",
+  "raw_probe_blocker_reason": "",
+  "raw_probe_notes": "The narration is generally clear with acceptable pronunciation and pacing. However, there is a noticeable list-reading rhythm in parts, and emotional expression could be improved. The pauses around punctuation could be more natural. Overall, it’s an acceptable draft quality but not ready for premium release without further refinement."
+}

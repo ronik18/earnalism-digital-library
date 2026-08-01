@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-07-08T00:00:00+05:30",
+  "branch": "sprint/luxury-ux-rebirth",
+  "dependency_recovery_status": "PASS",
+  "dependency_recovery_command": "npm ci --prefix frontend --legacy-peer-deps --no-audit --no-fund",
+  "legacy_peer_deps_needed": true,
+  "source_only_ux_truth_files": [
+    "frontend/public/index.html",
+    "frontend/src/components/AudioPlayer.jsx",
+    "frontend/src/components/AudioPlayer 2.jsx",
+    "frontend/src/components/AudioPlayer.css",
+    "frontend/src/lib/api.js",
+    "frontend/src/lib/api.test.js",
+    "frontend/src/lib/audioReleaseSafety.js",
+    "frontend/src/lib/audioReleaseSafety.test.js",
+    "internal/earnalism_intelligence/ux_governor/**"
+  ],
+  "truth_hardening_preserved": {
+    "production_api_same_origin_default": true,
+    "localhost_production_backend_rejected": true,
+    "direct_api_theearnalism_preconnect_removed": true,
+    "legacy_audio_player_fails_closed": true,
+    "no_slug_derived_static_audio_url": true,
+    "no_browser_speech_fallback_as_audiobook": true,
+    "paragraph_stanza_sync_not_word_level": true,
+    "posthog_only_when_enabled": true
+  },
+  "validation": {
+    "npm_ci": "PASS",
+    "audio_release_safety_test": "PASS 4/4",
+    "api_test": "PASS 4/4",
+    "frontend_build": "PASS",
+    "cover_audit": "PASS 0 typographic-only public covers",
+    "visual_luxury_smoke": "PASS 72/72",
+    "python_py_compile_factory_hooks": "PASS",
+    "factory_stop_guards": "PASS",
+    "sarvam_hook_tests": "PASS 10 guarded Sarvam full-pilot TTS tests",
+    "listening_qa_schema": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "generated_artifacts_excluded": [
+    "frontend/build/**",
+    "frontend/public/sitemap.xml",
+    "ux_visual_regression_report.json",
+    "release_gate outputs",
+    "generated audio",
+    "sidecars",
+    "logs",
+    "screenshots",
+    "traces/videos",
+    "caches",
+    "signed URLs",
+    "secrets"
+  ],
+  "commit_status": {
+    "committed": false,
+    "reason": "Canonical workspace has a large mixed dirty state with unrelated content/generated evidence. Source-only UX changes are validated and preserved, but should be promoted from a clean source-only worktree or exact-path staged branch.",
+    "recommended_branch": "codex/ux-release-truth-governor",
+    "safe_commit_rule": "Stage only the listed source/test/policy files after confirming no generated artifacts are included."
+  },
+  "next_exact_command": "cd /Users/ronikbasak/Documents/GitHub/earnalism-digital-library && git status --short -- frontend/public/index.html frontend/src/components/AudioPlayer.jsx 'frontend/src/components/AudioPlayer 2.jsx' frontend/src/components/AudioPlayer.css frontend/src/lib/api.js frontend/src/lib/api.test.js frontend/src/lib/audioReleaseSafety.js frontend/src/lib/audioReleaseSafety.test.js internal/earnalism_intelligence/ux_governor"
+}

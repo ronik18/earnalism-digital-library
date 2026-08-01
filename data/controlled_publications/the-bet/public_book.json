@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-bet",
+  "slug": "the-bet",
+  "title": "The Bet",
+  "subtitle": "",
+  "author": "Anton Chekhov",
+  "category_slug": "literary-fiction",
+  "short_description": "A lawyer agrees to fifteen years of voluntary solitary confinement for two million roubles — and walks away on the final night.",
+  "description": "A bet about the death penalty becomes a philosophical experiment in what isolation does to a human soul. After fifteen years of reading everything, the lawyer walks free — rejecting the money and condemning all of humanity.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "11 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Anton Chekhov (1860–1904) was a Russian physician and writer, supreme master of the modern short story.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Bet",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2720,
+      "reading_minutes": 12,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "35a9b8d90a0313a1e129715e179023051ed043b569e2d6f69d50d5a60e3e5fe2",
+  "content_hash": "8ecb474057e0f376df471ae3b52ee18bfe7f0f24e31b3e683b4929af6d57045e",
+  "provenance_hash": "d73ddc380058122db42e10b77dbc124fa00a25b67670e19c5fa35e0eaa66e2c0",
+  "rights_basis": "Anton Chekhov died 1904; first published 1889. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-bet",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580919/earnalism/audiobooks/en/the-bet/the-bet.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580920/earnalism/audiobooks/en/the-bet/the-bet_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580922/earnalism/audiobooks/en/the-bet/the-bet_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580923/earnalism/audiobooks/en/the-bet/the-bet_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580923/earnalism/audiobooks/en/the-bet/the-bet_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580919/earnalism/audiobooks/en/the-bet/the-bet.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580919/earnalism/audiobooks/en/the-bet/the-bet.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580920/earnalism/audiobooks/en/the-bet/the-bet_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580922/earnalism/audiobooks/en/the-bet/the-bet_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580923/earnalism/audiobooks/en/the-bet/the-bet_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580923/earnalism/audiobooks/en/the-bet/the-bet_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

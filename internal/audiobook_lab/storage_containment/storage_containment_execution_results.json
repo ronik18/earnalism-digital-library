@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-13T20:16:58Z",
+  "decision": "AUTHORIZE_P0_REMOTE_STORAGE_CONTAINMENT_FOR_UNAPPROVED_AUDIO_OBJECTS.",
+  "inventory_sha256": "21c9f5c85c56be3779822b90fb31c178db8131f7f39f7d2bdae1d00a5f61b23c",
+  "overall_result": "BLOCKED_PRIVATE_BUCKET_STORAGE_CAP",
+  "completion": false,
+  "canary_result": "PASS",
+  "full_run": {
+    "reviewed_target_count": 606,
+    "execution_strategy": "four disjoint shards validated against the complete frozen target set",
+    "shard_target_counts": [
+      152,
+      152,
+      151,
+      151
+    ],
+    "shard_logs_sha256": {
+      "shard_0": "227e7e21990ba301665818d82fce685ef50c3dcb8f176a876f202027b4d6c825",
+      "shard_1": "04a5e8ecdb03459b406e0c52b850b5e6dc4a4a0f695bc8ecd6118612f3dca61e",
+      "shard_2": "bc1853d3037923db9cae4a93515aa9a7c57de24bbe5933fbbe2080b494f89a69",
+      "shard_3": "65ef233afaf7ffb10997fa5f4f031504b77a457050b290680d5f25780c5f77f8"
+    },
+    "successful_records_before_stop": 175,
+    "newly_contained_in_shard_logs": 163,
+    "already_contained_in_shard_logs": 12,
+    "failed_upload_attempts": 4,
+    "failed_objects": [
+      {
+        "object_id": "audio-d10800ec4f1ad3d2",
+        "slug": "the-pit-and-the-pendulum",
+        "provider": "Cloudinary",
+        "error_type": "S3UploadFailedError",
+        "error": "Failed to upload /tmp/earnalism-storage-containment-26dyv3nd/audio-d10800ec4f1ad3d2-the-pit-and-the-pendulum.mp3 to earnalism-private-qa-audio/storage-containment/the-pit-and-the-pendulum/audio-d10800ec4f1ad3d2/the-pit-and-the-pendulum.mp3: An error occurred (AccessDenied) when calling the UploadPart operation: Cannot upload files, storage cap exceeded. See the Caps & Alerts page to increase your cap."
+      },
+      {
+        "object_id": "audio-550c394313c449f1",
+        "slug": "the-pit-and-the-pendulum",
+        "provider": "Cloudinary",
+        "error_type": "S3UploadFailedError",
+        "error": "Failed to upload /tmp/earnalism-storage-containment-fwqm75h1/audio-550c394313c449f1-the-pit-and-the-pendulum-english-polish-queue-v1.mp3.mp3 to earnalism-private-qa-audio/storage-containment/the-pit-and-the-pendulum/audio-550c394313c449f1/the-pit-and-the-pendulum-english-polish-queue-v1.mp3.mp3: An error occurred (AccessDenied) when calling the UploadPart operation: Cannot upload files, storage cap exceeded. See the Caps & Alerts page to increase your cap."
+      },
+      {
+        "object_id": "audio-419ca87e6d3174b5",
+        "slug": "the-principles-of-scientific-management",
+        "provider": "Cloudinary",
+        "error_type": "S3UploadFailedError",
+        "error": "Failed to upload /tmp/earnalism-storage-containment-2md7noew/audio-419ca87e6d3174b5-the-principles-of-scientific-management.mp3 to earnalism-private-qa-audio/storage-containment/the-principles-of-scientific-management/audio-419ca87e6d3174b5/the-principles-of-scientific-management.mp3: An error occurred (AccessDenied) when calling the UploadPart operation: Cannot upload files, storage cap exceeded. See the Caps & Alerts page to increase your cap."
+      },
+      {
+        "object_id": "audio-2f3343537d38fe84",
+        "slug": "the-outcasts-of-poker-flat",
+        "provider": "Cloudinary",
+        "error_type": "S3UploadFailedError",
+        "error": "Failed to upload /tmp/earnalism-storage-containment-ca4f222c/audio-2f3343537d38fe84-the-outcasts-of-poker-flat-english-polish-queue-v1.mp3.mp3 to earnalism-private-qa-audio/storage-containment/the-outcasts-of-poker-flat/audio-2f3343537d38fe84/the-outcasts-of-poker-flat-english-polish-queue-v1.mp3.mp3: An error occurred (AccessDenied) when calling the UploadPart operation: Cannot upload files, storage cap exceeded. See the Caps & Alerts page to increase your cap."
+      }
+    ],
+    "blocker": "B2 private QA bucket rejected UploadPart with AccessDenied: storage cap exceeded",
+    "failed_object_public_delivery_deleted": false,
+    "retry_performed_after_capacity_error": false
+  },
+  "retention": {
+    "private_object_count": 179,
+    "private_bytes": 4068062849,
+    "positive_size_count": 179,
+    "source_sha256_metadata_count": 179,
+    "private_ids_match_inaccessible_target_ids": true,
+    "incomplete_multipart_uploads_remaining": 0
+  },
+  "public_delivery_post_probe": {
+    "inaccessible_403_or_404": 179,
+    "remaining_reachable_or_error": 427,
+    "http_status_counts": {
+      "200": 291,
+      "206": 136,
+      "404": 179
+    },
+    "providers": {
+      "Cloudinary": {
+        "targets": 603,
+        "inaccessible": 177,
+        "reachable_or_error": 426
+      },
+      "B2": {
+        "targets": 3,
+        "inaccessible": 2,
+        "reachable_or_error": 1
+      }
+    }
+  },
+  "approved_controls": [
+    {
+      "slug": "book-2b9853ec52",
+      "manifest_http_status": 200,
+      "audio_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_http_status": 206,
+      "content_range": "bytes 0-1023/5233965",
+      "control_result": "PASS"
+    },
+    {
+      "slug": "a-ghost-story",
+      "manifest_http_status": 200,
+      "audio_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_http_status": 206,
+      "content_range": "bytes 0-1023/7047789",
+      "control_result": "PASS"
+    }
+  ],
+  "hidden_controls": [
+    {
+      "slug": "bn-066",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "the-open-window",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "dsires-baby",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    }
+  ],
+  "protected_current_approved_assets_preserved": true,
+  "release_gate_mutation": false,
+  "listen_exposure_change": false,
+  "paid_tts_lock_touched": false,
+  "source_cleanup_performed": false,
+  "source_cleanup_prompt": "internal/audiobook_lab/storage_containment/P0_source_cleanup_prompt.md",
+  "remaining_prerequisite": {
+    "owner_action": "Increase the confirmed-private B2 QA bucket/account storage cap to at least 10 GiB.",
+    "rationale": "The bucket stopped at 4,068,062,849 retained bytes. The frozen target set requires at least 5,341,752,636 known bytes and includes sidecars without reliable Content-Length; 10 GiB provides required safety margin.",
+    "remaining_target_count": 427,
+    "resume_is_idempotent": true
+  }
+}

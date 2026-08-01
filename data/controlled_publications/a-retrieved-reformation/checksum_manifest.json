@@ -1,0 +1,34 @@
+{
+  "slug": "a-retrieved-reformation",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "a36171ca2221296c6ddc21caa7e9a057e996572ff57c4deba6d2b5ca83ce3b74"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "5bd3ac95cadb852087afb10c9a7df87eb469342d1602e4dc1617a747cb0e6713"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "0e4d105bbc01a5de033a2a07ca59208b428cd64a6fc8eec8e29d1fb068c68b13"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "7f353405bc4664020c95c8d04f0763172880474d6c5c7caa9613d2b92e2ac087"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "0f19e7e31aa10b6fd209ece0c6a9d6ed4c8e10671fc17a6b16c15f239a0c191a"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "dd1b8bdb0eb30ccbfc58fa812ad928896b96432b6a4e6f9800a0520575a97899"
+    }
+  ]
+}

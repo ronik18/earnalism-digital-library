@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-07-10T20:02:48Z",
+  "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3D_ASR_MISMATCH_DIAGNOSIS_AND_VERIFIER_SEMANTICS_REPAIR",
+  "owner_decision": "AUTHORIZE_BENGALI_AUDIOBOOK_STAGE_3C_BN_066_BOUNDED_ASR_RESUME_WITH_UNKNOWN_PARTIAL_BILLING_RISK",
+  "slug": "bn-066",
+  "status": "BLOCKED_ASR_LANGUAGE_AND_NORMALIZATION_REPAIR_REQUIRED",
+  "classification": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED",
+  "pipeline": {
+    "entrypoint": "internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py",
+    "provider": "openai_audio_transcriptions",
+    "model": "whisper-1",
+    "audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3",
+    "chunk_manifest": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/tts_chunk_manifest.json",
+    "checkpoint_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/asr_checkpoints"
+  },
+  "budget_gate": {
+    "asr_cap_env": "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD",
+    "asr_cap_usd": 3.0,
+    "estimated_usd_per_minute": 0.008,
+    "estimated_current_asr_cost_usd": 2.86,
+    "prior_tts_estimated_usd": 1.2226,
+    "estimated_stage2_tts_plus_stage3c_asr_usd": 4.0826,
+    "configured_total_cap_usd": 5.0,
+    "listening_qa_cap_usd": 0.75,
+    "listening_qa_estimated_usd": 0.3,
+    "prior_partial_asr_billing": "unknown_owner_risk_accepted_for_single_bounded_retry",
+    "actual_current_asr_spend_usd": "not_reported_by_provider_tools",
+    "guard_artifact": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/asr_sync_budget_guard.json"
+  },
+  "execution": {
+    "ran": true,
+    "completed": true,
+    "started_at": "2026-07-10T17:44:59Z",
+    "finished_at": "2026-07-10T19:16:02Z",
+    "checkpoint_total": 152,
+    "checkpoint_pass": 152,
+    "checkpoint_provider_timeout": 0,
+    "checkpoint_failed": 0,
+    "checkpoints_with_more_than_one_attempt": 0,
+    "transcript_artifact_written": true,
+    "alignment_diagnosis_written": true,
+    "listening_qa_ran": false,
+    "stage3d_provider_calls_ran": false
+  },
+  "results": {
+    "source_alignment_score": 0.8403,
+    "required_source_alignment_score": 9.7,
+    "raw_similarity": 0.2028,
+    "coverage": 0.084,
+    "normalized_bengali_score": 0.0781,
+    "phonetic_shadow_score": 0.211,
+    "projection_confidence": 0.0188,
+    "raw_asr_script": "mixed",
+    "first_words_match": false,
+    "last_words_match": false,
+    "frontmatter_absent": true,
+    "word_timestamp_count": 21649,
+    "tts_by_construction_verified": true,
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_clean_match_score": 1.0,
+    "first_last_tts_input_boundary_pass": true,
+    "construction_source_evidence_status": "PASS_DIAGNOSTIC_ONLY",
+    "group_repair_semantics": {
+      "status": "NOT_REQUESTED",
+      "repair_requested": false,
+      "accepted": true,
+      "reason": "legacy_fresh_generation_verified"
+    },
+    "full_transcript_script_profile": {
+      "bengali_ratio": 0.2801,
+      "devanagari_ratio": 0.7113,
+      "latin_ratio": 0.0086
+    }
+  },
+  "artifacts": {
+    "hook_result": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/asr_sync_hook_result.json",
+    "transcript": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/asr_transcript.txt",
+    "alignment_diagnosis": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/asr_alignment_diagnosis.json",
+    "bengali_mismatch_diagnosis": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bengali_asr_mismatch_diagnosis.json",
+    "bengali_projection_report": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bengali_asr_projection_report.json",
+    "phonetic_alignment": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/phonetic_alignment.json",
+    "tts_by_construction_report": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bengali_tts_by_construction_report.json",
+    "stage3d_diagnosis": "internal/audiobook_lab/bengali_enablement/bn_066_stage3d_asr_mismatch_diagnosis.json"
+  },
+  "blockers": [
+    "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED",
+    "ASR_MODEL_OUTPUT_MIXED_SCRIPT",
+    "ASR_NORMALIZATION_REPAIR_REQUIRED",
+    "SOURCE_ALIGNMENT_LAYER_MISMATCH",
+    "FIRST_LAST_EXPECTATION_LAYER_MISMATCH",
+    "ASR_SCORE_BELOW_9_7",
+    "FIRST_WORDS_MISMATCH",
+    "LAST_WORDS_MISMATCH",
+    "MIXED_SCRIPT_ASR_TRANSCRIPT",
+    "LISTENING_QA_NOT_RUN_ASR_SOURCE_GATE_FAILED",
+    "RELEASE_GATE_NOT_RUN",
+    "PUBLIC_AUDIO_APPROVAL_NONE"
+  ],
+  "next_action": "Run an owner-authorized bounded ASR language/model recalibration on representative existing chunks, requiring Bengali-script output before any full alignment retry. Keep listening QA and release readiness blocked until the ASR/source score reaches 9.7 with first/last checks passing."
+}

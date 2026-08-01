@@ -1,0 +1,195 @@
+{
+  "generated_at": "2026-07-07T18:30:00Z",
+  "release_truth_policy": "Only production-approved, asset-backed audiobooks may receive Listen CTAs. Candidates may be marketed only as coming soon or selected for the Founding Audiobook Lot.",
+  "live_now_approved_audiobooks": [
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "live_reader_url": "https://www.theearnalism.com/reader/book-2b9853ec52",
+      "live_audiobook_url_or_route": "https://www.theearnalism.com/api/reader/book/book-2b9853ec52/audiobook",
+      "approved_sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+      "customer_sync_copy": "section-following narration",
+      "listen_cta_copy": "Listen to the approved Bengali audiobook",
+      "teaser_15_seconds_allowed": true,
+      "teaser_30_seconds_allowed": true,
+      "allowed_ad_claims": [
+        "First approved Bengali audiobook on Earnalism",
+        "Natural Bengali narration approved by quality gates",
+        "Read or listen with section-following narration"
+      ],
+      "production_evidence": "book_2b9853ec52_goliveevidence.json"
+    },
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "author": "Mark Twain",
+      "language": "eng",
+      "live_reader_url": "https://www.theearnalism.com/reader/a-ghost-story",
+      "live_audiobook_url_or_route": "https://www.theearnalism.com/reader/a-ghost-story",
+      "approved_sync_tier": "APPROVED_AUDIOBOOK_ASSET_BACKED",
+      "customer_sync_copy": "approved narration",
+      "listen_cta_copy": "Listen to the approved comic ghost story",
+      "teaser_15_seconds_allowed": true,
+      "teaser_30_seconds_allowed": true,
+      "allowed_ad_claims": [
+        "Approved English audiobook",
+        "Mark Twain turns a haunting into comedy",
+        "Read or listen in Earnalism"
+      ],
+      "production_evidence": "data/controlled_publications/a-ghost-story/public_book.json",
+      "route_note": "Audio assets resolve 200 and local controlled-publication gate is APPROVED; guessed public API audiobook/manifest paths returned 404, so paid listen ads require a final browser/manifest route check."
+    }
+  ],
+  "coming_to_the_listening_room": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "ben",
+      "status": "selected_for_founding_lot_not_audio_live",
+      "allowed_cta": "Read now / Follow for listening release",
+      "prohibited_cta": "Listen now"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "bengali_title": "গিন্নি",
+      "english_title_or_translation": "Ginni",
+      "title_resolution_source": "launch_title_public_naming_map.json",
+      "title_resolution_confidence": 1.0,
+      "title_resolution_ambiguity": false,
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "status": "selected_for_founding_lot_not_audio_live_group_only_asr_source_repair_pending",
+      "allowed_cta": "Read now / Follow for listening release",
+      "prohibited_cta": "Listen now",
+      "release_truth_note": "Full TTS exists but final group contains standalone source year; audio remains hidden until group-only repair, TTS-by-construction, listening, sync, upload, metadata, endpoint, and browser gates pass."
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "bengali_title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "english_title_or_translation": "Ramkanaiyer Nirbuddhita",
+      "title_resolution_source": "launch_title_public_naming_map.json",
+      "title_resolution_confidence": 1.0,
+      "title_resolution_ambiguity": false,
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "status": "selected_for_founding_lot_not_audio_live_group_only_asr_source_repair_pending",
+      "allowed_cta": "Read now / Follow for listening release",
+      "prohibited_cta": "Listen now",
+      "release_truth_note": "Full TTS exists but final group contains standalone source year; audio remains hidden until group-only repair, TTS-by-construction, listening, sync, upload, metadata, endpoint, and browser gates pass."
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "status": "reserve_candidate_not_audio_live",
+      "allowed_cta": "Read now / Coming to the listening room",
+      "prohibited_cta": "Listen now"
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "author": "O. Henry",
+      "language": "eng",
+      "status": "selected_for_founding_lot_not_audio_live",
+      "allowed_cta": "Read now / Coming to the listening room",
+      "prohibited_cta": "Listen now"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "author": "Edgar Allan Poe",
+      "language": "eng",
+      "status": "selected_for_founding_lot_not_audio_live",
+      "allowed_cta": "Read now / Coming to the listening room",
+      "prohibited_cta": "Listen now"
+    },
+    {
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "author": "Saki",
+      "language": "eng",
+      "status": "selected_for_founding_lot_not_audio_live",
+      "allowed_cta": "Read now / Coming to the listening room",
+      "prohibited_cta": "Listen now"
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "author": "Saki",
+      "language": "eng",
+      "status": "selected_for_founding_lot_not_audio_live",
+      "allowed_cta": "Read now / Coming to the listening room",
+      "prohibited_cta": "Listen now"
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "author": "Kate Chopin",
+      "language": "eng",
+      "status": "selected_for_founding_lot_not_audio_live",
+      "allowed_cta": "Read now / Coming to the listening room",
+      "prohibited_cta": "Listen now"
+    },
+    {
+      "slug": "bn-066",
+      "title": "আনন্দমঠ",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "ben",
+      "status": "priority_bengali_prelaunch_candidate_not_audio_live",
+      "allowed_cta": "Read now / Priority listening candidate after gates",
+      "prohibited_cta": "Listen now",
+      "release_truth_note": "Reader/source/cover/audiobook-clean gates pass, but representative Sarvam audition and every downstream gate remain NOT_RUN because paid_tts.lock is active."
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "author": "Bibhutibhushan Bandyopadhyay",
+      "language": "ben",
+      "status": "priority_bengali_prelaunch_candidate_audio_blocked",
+      "allowed_cta": "Read only where controlled-publication policy allows / Candidate review",
+      "prohibited_cta": "Listen now",
+      "release_truth_note": "Reader exists, but audiobook is blocked pending full-work source completeness proof, owner/editor rights-scope review, cover repair, representative audition, and downstream gates."
+    }
+  ],
+  "reader_first_classics": [
+    "book-1090573dff",
+    "book-edfcf810c5",
+    "book-4b944e64fa",
+    "radharani",
+    "nishkriti",
+    "dracula",
+    "the-cop-and-the-anthem",
+    "the-last-leaf",
+    "the-masque-of-the-red-death",
+    "the-yellow-wallpaper",
+    "the-monkeys-paw",
+    "the-necklace"
+  ],
+  "seo_long_form_flagship_shelf": [
+    "dracula",
+    "frankenstein",
+    "the-strange-case-of-dr-jekyll-and-mr-hyde",
+    "the-picture-of-dorian-gray",
+    "the-time-machine",
+    "the-call-of-the-wild",
+    "white-fang",
+    "great-expectations",
+    "jane-eyre",
+    "pride-and-prejudice",
+    "the-secret-garden",
+    "alices-adventures-in-wonderland"
+  ],
+  "global_prohibited_claims": [
+    "All Tier 1 books are audiobooks now",
+    "Full audiobook library live",
+    "Word-level sync for paragraph/stanza titles",
+    "Listen now for non-approved titles",
+    "Browser speech or system TTS as an audiobook"
+  ]
+}

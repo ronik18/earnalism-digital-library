@@ -1,0 +1,26 @@
+{
+  "version": "v1",
+  "timestamp_utc": "2026-07-31T07:00:39.173529Z",
+  "objective": "Sprint1 Wave1 private-B2 containment",
+  "owner": {
+    "approval_token": null,
+    "allow_remote_mutation": null,
+    "reviewed_inventory_sha256": null,
+    "b2_private_qa_bucket_confirmed_private": null
+  },
+  "targets": [
+    "radharani",
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "book-f5d593e1f4",
+    "book-edfcf810c5",
+    "the-tell-tale-heart",
+    "the-yellow-wallpaper",
+    "the-necklace"
+  ],
+  "commands": [
+    "set -a; source secrets.env; source .secrets/earnalism-import.env; set +a; export SPRINT1_CONTAINMENT_TARGETS_JSON=internal/audiobook_lab/storage_containment/sprint1_scoped_containment_targets.json",
+    "bash internal/audiobook_lab/storage_containment/run_wave1_with_validation.sh --dry-run",
+    "bash internal/audiobook_lab/storage_containment/run_wave1_one_by_one_with_postcheck.sh --execute-reviewed"
+  ]
+}

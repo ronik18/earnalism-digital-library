@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-07-07T05:54:36Z",
+  "status": "PILOT_AUDIO_QA_PASSED_READY_FOR_UPLOAD_METADATA_BROWSER",
+  "policy_version": "bengali_audiobook_acceptance_v2_92",
+  "pilot_slug": "book-2b9853ec52",
+  "provider": "sarvam",
+  "model": "bulbul:v3",
+  "voice": "ratan",
+  "style_profile": "literary_warm_pacing",
+  "representative_score": 9.3,
+  "confidence": 0.95,
+  "representative_passed_9_2": true,
+  "full_pilot_generated": true,
+  "full_pilot_listening_score": 9.4,
+  "asr_score": 1.1258,
+  "source_match_score": 10.0,
+  "source_verification_method": "clean_tts_source_provenance_static_audit",
+  "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+  "auto_estimated_sync": false,
+  "upload_checksum_status": "NOT_RUN",
+  "metadata_status": "NOT_RUN",
+  "browser_status": "NOT_RUN",
+  "publish_decision": "DO_NOT_PUBLISH_YET_UPLOAD_METADATA_BROWSER_GATES_NOT_RUN",
+  "hard_gates_before_publish_remaining": [
+    "upload/checksum PASS",
+    "metadata approval PASS",
+    "audiobook endpoint 200/206",
+    "browser playback PASS",
+    "other Bengali reader-only titles remain audio-hidden",
+    "goliveevidence blocker_list empty"
+  ],
+  "representative_report_path": "bengali_representative_audition_report.json",
+  "asr_sync_result_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/asr_sync_hook_result.json",
+  "next_exact_command": "cd /Users/ronikbasak/Documents/GitHub/earnalism-digital-library && source ~/.zshrc && railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD=8 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio EARNALISM_LISTENING_POLICY_VERSION=bengali_audiobook_acceptance_v2_92 EARNALISM_SYNC_POLICY_VERSION=tiered_sync_acceptance_v1 EARNALISM_BENGALI_TTS_PROVIDER=sarvam EARNALISM_BENGALI_TTS_MODEL=bulbul:v3 EARNALISM_BENGALI_TTS_VOICE=ratan EARNALISM_BENGALI_TTS_STYLE=literary_warm_pacing python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.json --slugs book-2b9853ec52 --languages ben --max-books-active 1 --max-preflight-workers 0 --max-cover-workers 0 --max-audio-reuse-workers 0 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 1 --max-metadata-workers 1 --max-browser-workers 1 --max-attempts 2 --publish-approved --resume-from-latest --fail-closed --stop-after-published 1 --max-run-minutes 60",
+  "paid_operations_run": {
+    "full_pilot_tts_generated": true,
+    "asr_sync_listening_gates_run": true,
+    "upload_metadata_browser_gates_run": false
+  },
+  "paid_operations_skipped": [
+    "31-title wave",
+    "additional representative auditions",
+    "additional full Bengali audiobooks"
+  ],
+  "actual_cost_if_available": "not_available"
+}

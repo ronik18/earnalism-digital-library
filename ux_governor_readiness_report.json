@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-07-07T17:57:07.657351+00:00",
+  "status": "PASS",
+  "repo_root": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library",
+  "governor_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/ux_governor",
+  "missing_governor_files": [],
+  "missing_frontend_validation_files": [],
+  "token_json_status": "PASS",
+  "token_json_error": null,
+  "missing_token_colors": [],
+  "scorecard_json_status": "PASS",
+  "scorecard_json_error": null,
+  "missing_score_categories": [],
+  "green_requirements_ok": true,
+  "doc_checks": {
+    "EARNALISM_PREMIUM_LIBRARY_UX_GOVERNOR.md": {
+      "exists": true,
+      "phrases_present": {
+        "premium literary sanctuary": true,
+        "Do not expose unapproved audiobooks": true
+      }
+    },
+    "home_page_10_spec.md": {
+      "exists": true,
+      "phrases_present": {
+        "Dracula must not be the main brand hero": true
+      }
+    },
+    "cover_art_policy.md": {
+      "exists": true,
+      "phrases_present": {
+        "No typographic-only public covers": true
+      }
+    },
+    "release_gate_ux_policy.md": {
+      "exists": true,
+      "phrases_present": {
+        "section-following narration": true
+      }
+    }
+  },
+  "blockers": []
+}

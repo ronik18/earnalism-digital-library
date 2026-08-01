@@ -1,0 +1,13 @@
+{
+  "slug": "young-goodman-brown",
+  "source_url": "https://www.gutenberg.org/ebooks/512",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "6569a27858b3aa4f73b86e1879089d231bf15e4cf1027a25a66530bbd60688d3",
+  "content_hash": "c0952917b250f919d97d849ec8ac271ca8d5b710808f5dad6abffc70304818db",
+  "provenance_hash": "bc05c1a07f993c98e09a0a567641cd75133546c8d44d1d362435562187bcd58d",
+  "rights_basis": "Nathaniel Hawthorne died 1864; first published 1835. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.058586+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "nishkriti",
+  "source_url": "https://bn.wikisource.org/wiki/%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%95%E0%A7%83%E0%A6%A4%E0%A6%BF_(%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0_%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC,_%E0%A7%A7%E0%A7%AF%E0%A7%AB%E0%A7%A8)",
+  "source_name": "Bengali Wikisource",
+  "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+  "source_hash": "bc5b99f4e931e55e74ad67a6999a0c8835ca0de99b65d994761a71229546d0cd",
+  "content_hash": "cdb373751bb4dabafa6e6b4aff5f00213c876c35f22feb981ba64b8d9f4246bf",
+  "provenance_hash": "d17e9ad2b3d5228979f0cd25bbdbc393e2853625576408f1a9f29adf5258938e",
+  "rights_basis": "Author died 1938. Original publication 1917. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
+  "downloaded_at": "2026-06-03T08:51:47.786629+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

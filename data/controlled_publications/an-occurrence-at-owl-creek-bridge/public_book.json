@@ -1,0 +1,105 @@
+{
+  "id": "controlled-an-occurrence-at-owl-creek-bridge",
+  "slug": "an-occurrence-at-owl-creek-bridge",
+  "title": "An Occurrence at Owl Creek Bridge",
+  "subtitle": "",
+  "author": "Ambrose Bierce",
+  "category_slug": "history-strategy",
+  "short_description": "A Confederate civilian is hanged from a bridge — and in the split second of dying, escapes through an entire fantasy of survival.",
+  "description": "Peyton Farquhar falls from the bridge — and in the fractured seconds of his death, lives out an elaborate, vivid escape home. The story that invented the unreliable dying mind as a narrative device. Bierce's finest achievement.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "16 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Ambrose Bierce (1842–1914) was an American Civil War veteran, journalist, and author of sardonic fiction and The Devil's Dictionary.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "An Occurrence at Owl Creek Bridge",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 3776,
+      "reading_minutes": 16,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "403d163c894a364aa545f11f0a1e491f8f017f217ecaa61d94f09000e57156d6",
+  "content_hash": "fb7311854f4b97292695f4191bfbbde640a7d9c11cd323d6206a10ddb70e7001",
+  "provenance_hash": "0282dbd95fcb26c331389bcc94de8fce14bb66c7e6171cd10e2c57b1c79f4e5a",
+  "rights_basis": "Ambrose Bierce died 1914; first published 1890. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "an-occurrence-at-owl-creek-bridge",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581358/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581359/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581359/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581360/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581361/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581358/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581358/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581359/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581359/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581360/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581361/earnalism/audiobooks/en/an-occurrence-at-owl-creek-bridge/an-occurrence-at-owl-creek-bridge_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

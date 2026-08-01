@@ -1,0 +1,13 @@
+{
+  "slug": "love-of-life",
+  "source_url": "https://www.gutenberg.org/ebooks/710",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "44069e2bfaffc40f5d83a63069c8d136c1081b896a81edc31ce3d95e0f97bae5",
+  "content_hash": "d334b92a83ba250d3d90e42a110bde7c9e5ceecf9798ec324ac10e383d2f8d59",
+  "provenance_hash": "5050fdeb7274e0dd8fac9c1ef70e450adb5ed70cbe793f6a9ba677c4b3639833",
+  "rights_basis": "Jack London died 1916; first published 1905. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.995272+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-07-08T00:00:00+05:30",
+  "governor": "Earnalism Launch Convergence + Bengali ASR Autonomous Repair Governor",
+  "current_audiobook_live_counts": {
+    "total_audiobook_live": 2,
+    "bengali_audiobook_live": 1,
+    "live_audio_marketable_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story"
+    ]
+  },
+  "launch_truth_status": {
+    "paid_ads_allowed": false,
+    "only_live_audio_marketable_titles": [
+      "book-2b9853ec52",
+      "a-ghost-story"
+    ],
+    "canary_titles_public_state": "COMING_SOON_OR_PRODUCTION_CANDIDATE_ONLY",
+    "listen_cta_allowed_for_canary_titles": false,
+    "unapproved_audio_exposure_allowed": false
+  },
+  "ux_validation_blocker": {
+    "reported_blocker": "frontend dependency state previously left react-scripts missing and craco commands failing",
+    "current_action": "recover frontend/node_modules with npm ci --legacy-peer-deps, then rerun audio safety, API safety, build, cover audit, visual smoke, and git diff --check",
+    "source_only_preservation_required": true
+  },
+  "bengali_canary_blockers": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "blocker": "Sarvam representative opening sample timed out; full-book TTS must remain blocked until per-title representative evidence passes",
+      "next_safe_action": "Retry representative evidence only with shorter split samples after paid_tts lock permits paid provider calls"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "blocker": "Full TTS generated but final group includes standalone source year; ASR/source remains blocked",
+      "next_safe_action": "Regenerate group 4 only, reassemble, rerun TTS-by-construction, listening QA, measured paragraph/stanza sync, upload, metadata, endpoint, and browser gates"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "blocker": "Full TTS generated but final group includes standalone source year; ASR/source remains blocked",
+      "next_safe_action": "Regenerate group 7 only, reassemble, rerun TTS-by-construction, listening QA, measured paragraph/stanza sync, upload, metadata, endpoint, and browser gates"
+    }
+  ],
+  "clean_source_paths": {
+    "canonical_workspace": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library",
+    "canary_artifact_worktree": "/private/tmp/earnalism-post-pr88-canary",
+    "source_only_integration_worktree": "/private/tmp/earnalism-source-only-clean-integration"
+  },
+  "locks": {
+    "paid_tts": {
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "effect": "Blocks Sarvam representative retry and group-only paid regeneration in this sprint pass"
+    },
+    "production_metadata": {
+      "status": "active",
+      "effect": "No metadata mutation unless the lock allows the lane"
+    },
+    "backend_deploy": {
+      "status": "active",
+      "effect": "No backend deploy/restart from dirty workspace"
+    }
+  },
+  "lane_1_plan": [
+    "Preserve ASR/source forensic reports for book-d19e96859f and book-f5d593e1f4.",
+    "Treat weak Bengali ASR as diagnostic only after clean TTS-by-construction, full listening QA, and measured sync pass.",
+    "Do not publish either title while source-year contamination remains in current audio.",
+    "Do not rerun paid Sarvam work while paid_tts.lock has no allowed holder.",
+    "Prepare exact group-only repair commands for the next unlocked paid TTS run."
+  ],
+  "lane_2_plan": [
+    "Recover frontend dependencies with npm ci --legacy-peer-deps.",
+    "Run audio safety, API safety, production build, cover audit, visual smoke, and git diff --check.",
+    "Preserve source-only UX truth hardening if validation passes.",
+    "Do not stage generated build, screenshot, release_gate, audio, sidecar, cache, signed URL, or log files."
+  ],
+  "cost_guardrails": {
+    "paid_ads": "blocked",
+    "broad_audiobook_wave": "blocked",
+    "paid_tts_this_pass": "blocked_by_paid_tts_lock",
+    "future_group_only_repair_estimated_scope": "two short final-group Sarvam regenerations plus QA; no full-book regeneration unless group repair fails"
+  },
+  "validation_plan": [
+    "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+    "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+    "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+    "python3 internal/audiobook_lab/scripts/test_sarvam_full_pilot_tts_hook.py",
+    "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py",
+    "npm ci --prefix frontend --legacy-peer-deps --no-audit --no-fund",
+    "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+    "npm --prefix frontend test -- --runTestsByPath src/lib/api.test.js --watchAll=false",
+    "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+    "node frontend/scripts/audit-book-covers.mjs",
+    "node frontend/scripts/visual-luxury-smoke.mjs",
+    "git diff --check"
+  ],
+  "next_commands": {
+    "frontend_dependency_recovery": "cd /Users/ronikbasak/Documents/GitHub/earnalism-digital-library && rm -rf frontend/node_modules && npm ci --prefix frontend --legacy-peer-deps --no-audit --no-fund",
+    "next_paid_tts_after_lock_release": "Run only group repair for book-d19e96859f group 4 and book-f5d593e1f4 group 7; do not rerun full books unless group repair is impossible"
+  }
+}

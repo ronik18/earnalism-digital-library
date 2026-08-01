@@ -1,0 +1,34 @@
+{
+  "slug": "the-murders-in-the-rue-morgue",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "dd7d47e182fd0af117c062d12718c897841640775fa387cbb4d13ca9448b3aee"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "e3116c78f0c276dcc690a172fa2232923de9488a4283ef29788373fe500621c9"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "d23d5f5bf8466b0534ed4df0896fc060935f393942c1c84c54f2bb9d74cf13b4"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "84037d9506bf608a9ad29f78bc9ff099f337bf9e2ac9352da1fb9fceab4cb6ff"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "ce138f34b5bad7de3fdb8230fd73f8b4a72fec3b378c8ebaeb6239b882e9924c"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "6c780d1c2d7d47298c47a43916a4587c37091f9dad1553e3839ac7db7738b29b"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-07-07T05:54:36Z",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "stage": "sync_validation",
+  "status": "PASS",
+  "sync_policy_version": "tiered_sync_acceptance_v1",
+  "sync_release_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+  "sync_granularity": "paragraph_or_stanza",
+  "sync_method": "measured_group_audio_duration",
+  "auto_estimated_sync": false,
+  "estimated_sync_used": false,
+  "sync_score": 10.0,
+  "vtt_alignment_score": 10.0,
+  "vtt_drift_ms": 0,
+  "cue_coverage_percent": 100.0,
+  "manuscript_coverage_percent": 100.0,
+  "audio_hash": "a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5",
+  "source_text_hash": "464bc32b7b1ae05b62fe4dfb2c9827e6eaefb3cf72ff52c79798d81737fa5afd",
+  "sidecars_written": true,
+  "sidecars_reference_final_audio_hash": true,
+  "why_finer_sync_failed": "Bengali ASR provider returned weak/mixed-script timestamps; source-to-TTS provenance is verified.",
+  "why_selected_sync_tier_is_acceptable": "Paragraph/stanza cues are measured from actual generated group audio durations and cover the clean manuscript with auto_estimated_sync=false.",
+  "artifacts": {
+    "timestamps": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/timestamps.json",
+    "highlight_vtt": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/highlight.vtt",
+    "chapters": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/chapters.json",
+    "meta": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/meta.json",
+    "alignment_diagnostics": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/alignment_diagnostics.json"
+  },
+  "blockers": []
+}

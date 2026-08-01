@@ -1,0 +1,90 @@
+{
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "status": "POLICY_AND_FINAL_GATE_PATCH_PRESERVED",
+  "backup_path": "/tmp/earnalism_bengali_final_gate_patch_20260707T072710Z",
+  "changed_files": [
+    {
+      "path": "internal/audiobook_lab/scripts/release_catalog_factory.py",
+      "exists": true,
+      "sha256": "540234f770bcf5c9c47aa1d9c4dfec629168810fbc87de2ee192503c2f2c4635",
+      "size_bytes": 183221
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/metadata_hook.py",
+      "exists": true,
+      "sha256": "d261bda2f10a9e028338ea4ac9cd26016306882ca0ff0a26b7a9e02e651725c0",
+      "size_bytes": 39152
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+      "exists": true,
+      "sha256": "bdc4d8ba7def0c04dc562cd6f8f54fc25f95ad953c235d63f2aa7f185e4edc2d",
+      "size_bytes": 12032
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/test_sarvam_full_pilot_tts_hook.py",
+      "exists": true,
+      "sha256": "eac9eef2a64f5d676ff61c670edab346fc0e0e934677b525220aa045deb622b4",
+      "size_bytes": 14425
+    },
+    {
+      "path": "internal/earnalism_intelligence/decision_ledger.jsonl",
+      "exists": true,
+      "sha256": "49d805be704c7e9e6acf2ac0cbdcdecf761fa8f744955774ea36736328341ff8",
+      "size_bytes": 40268
+    },
+    {
+      "path": "internal/earnalism_intelligence/sprint_learnings.md",
+      "exists": true,
+      "sha256": "b9ab7a389a55893aaf13412fe1be15c1d57995f6716697a8de54f6cf3743f145",
+      "size_bytes": 11629
+    },
+    {
+      "path": "internal/earnalism_intelligence/provider_performance_memory.json",
+      "exists": true,
+      "sha256": "b961d4fb940cdafc54b1452315a2285323000074563f83ad7f15f0a587c400e7",
+      "size_bytes": 9543
+    },
+    {
+      "path": "internal/earnalism_intelligence/title_decision_history.json",
+      "exists": true,
+      "sha256": "ef2423c118c81973c632979960482f60ccfe7462c115ed154d7b5478b84dc1ec",
+      "size_bytes": 62045
+    },
+    {
+      "path": "bengali_audiobook_campaign_dashboard.json",
+      "exists": true,
+      "sha256": "35cbaeb4a44d7388008799bc355520545283cddae06fba4690a5ffbdea9f9136",
+      "size_bytes": 7571
+    },
+    {
+      "path": "book_2b9853ec52_final_gate_closeout.json",
+      "exists": true,
+      "sha256": "6379970be2bdca74e89c728aa21533a8df2038411178c7c86e636e093563aef0",
+      "size_bytes": 5304
+    },
+    {
+      "path": "book_2b9853ec52_final_gate_preflight.json",
+      "exists": true,
+      "sha256": "bb4b1062fca0cd9dc2d1be7e8041fdb519091442ebcf3029a0d701eb9c642efb",
+      "size_bytes": 3495
+    }
+  ],
+  "exact_policy_change": "Bengali policy bengali_audiobook_acceptance_v2_92 uses intended 9.2 release threshold while fatal red flags and objective source/sync/upload/metadata/browser gates remain strict.",
+  "metadata_hook_change": "Metadata hook preserves Sarvam provenance and resets partial audiobook metadata before book-rights PUT, then reapplies approved audio through dedicated audiobook PATCH.",
+  "why_required": "The pilot passed audio/source/sync/listening and upload, but final gates need idempotent metadata resume and correct Sarvam provenance before endpoint/browser validation.",
+  "risk_assessment": "Source-only hook/test/report changes are safe; generated release_gate folders and audio/sidecars remain excluded. Production endpoint still returns 404, so no live publish claim is made.",
+  "tests_proving_objective_gates_remain_strict": [
+    "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/metadata_hook.py",
+    "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+    "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py",
+    "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+    "python3 internal/audiobook_lab/scripts/test_sarvam_full_pilot_tts_hook.py",
+    "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py",
+    "git diff --check"
+  ],
+  "generated_artifacts_excluded": true,
+  "safe_for_final_gate_run": true,
+  "updated_at_utc": "2026-07-07T07:27:10Z"
+}

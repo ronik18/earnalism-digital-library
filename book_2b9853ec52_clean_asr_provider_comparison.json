@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-07-07T05:21:09.067929+00:00",
+  "slug": "book-2b9853ec52",
+  "status": "NOT_RUN_REQUIRES_REPAIRED_AUDIO",
+  "providers": [],
+  "decision": "ASR comparison must run after regenerated group(s) and final audio reassembly. Existing ASR 7.0199 applies to contaminated audio only."
+}

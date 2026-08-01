@@ -1,0 +1,34 @@
+{
+  "slug": "to-build-a-fire",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "f40d49f77443aaffd9b2874cc77247555bad7335f7e741e7fa31e04b75c463bd"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "dbc4b614e9dc50eb8d40fabc0bf38c6b0377eedeeb465ec1e19169f56f646d32"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "c926b46e454ffe999c18f4307a05ed6a4ab76f9102046135f673b75edf4738ce"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "0eb1789863e4c283b01bf398d3db323d453fd5e6a143b0013d29acb08363b0df"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "9c02ba12aeff3dc400bce4271eb3786009f4f9a5e13c8640e4ebb072f600be1b"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "0bd1457cf6198d4dcf172044d1dabf3d989636df872d99fa34597c4df81d9e14"
+    }
+  ]
+}

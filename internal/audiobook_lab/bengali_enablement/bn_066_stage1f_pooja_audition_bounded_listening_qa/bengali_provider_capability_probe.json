@@ -1,0 +1,20 @@
+{
+  "sarvam": {
+    "provider": "sarvam",
+    "credentials_detected": true,
+    "auth_status": "usable",
+    "endpoint_used": "https://api.sarvam.ai/text-to-speech",
+    "region": "",
+    "voices_listed": [
+      "pooja"
+    ],
+    "bengali_voices_detected": [
+      "pooja"
+    ],
+    "sample_synthesis_succeeded": true,
+    "error_message_redacted": "",
+    "retryable": false,
+    "exact_next_fix": "",
+    "style_control": false
+  }
+}

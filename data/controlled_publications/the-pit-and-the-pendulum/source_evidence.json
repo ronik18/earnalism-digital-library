@@ -1,0 +1,13 @@
+{
+  "slug": "the-pit-and-the-pendulum",
+  "source_url": "https://www.gutenberg.org/ebooks/2148",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "44c59e6e27d1402d0ac587da78370177b575b3acc9144b2f4e52fdee018b3781",
+  "content_hash": "653415e3c50cce28870f548e3df8a67dfcd98687051542bd80d3073f2aed3296",
+  "provenance_hash": "0a02f1f7b95ee544a7190f29fa16011c9265850a3501b40446722386388fc78c",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1842. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.086066+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

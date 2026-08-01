@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-07-07T05:21:09.067929+00:00",
+  "slug": "book-2b9853ec52",
+  "status": "NOT_BUILT_REQUIRES_REPAIRED_AUDIO",
+  "sync_policy_version": "tiered_sync_acceptance_v1",
+  "sync_release_tier": "PENDING_PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+  "sync_granularity": "paragraph_or_stanza",
+  "sync_method": "measured_group_audio_duration_after_repair",
+  "auto_estimated_sync": false,
+  "cue_coverage_percent": null,
+  "manuscript_coverage_percent": 100.0,
+  "why_finer_sync_failed": "Existing ASR returned no word/segment timestamps; rerun ASR after repair.",
+  "why_selected_sync_tier_is_acceptable": "Allowed only after repaired audio exists; group durations are measured from actual audio, not estimated text duration."
+}

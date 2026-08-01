@@ -1,0 +1,105 @@
+{
+  "id": "controlled-a-white-heron",
+  "slug": "a-white-heron",
+  "title": "A White Heron",
+  "subtitle": "",
+  "author": "Sarah Orne Jewett",
+  "category_slug": "literary-fiction",
+  "short_description": "A girl who knows where a rare white heron nests must choose between telling a hunter she admires and protecting the bird.",
+  "description": "Sylvia climbs a great pine tree at dawn and sees the whole world — including the white heron's nest. When she returns to the hunter who wants the bird for his collection, she finds she cannot speak. A perfect story about loyalty to the natural world over human desire.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "18 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Sarah Orne Jewett (1849–1909) was an American author of regional fiction celebrated for her precise, loving portraits of rural New England life.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "A White Heron",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 4319,
+      "reading_minutes": 18,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "c2fa6ab0fcbb8393f08987e8af21a7f18b867ad857ed3cd31f12c974e348943b",
+  "content_hash": "2c380a332c7be5fd8137fa7aa598dffbb7ffc0e0e369795abaf0ce2cceb6b9f7",
+  "provenance_hash": "3a4dc4ec0589f21d5425bad9341a84c7411990dd4859e84d91972a8a5a3708bf",
+  "rights_basis": "Sarah Orne Jewett died 1909; first published 1886. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "a-white-heron",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581573/earnalism/audiobooks/en/a-white-heron/a-white-heron.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581574/earnalism/audiobooks/en/a-white-heron/a-white-heron_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581575/earnalism/audiobooks/en/a-white-heron/a-white-heron_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581576/earnalism/audiobooks/en/a-white-heron/a-white-heron_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581577/earnalism/audiobooks/en/a-white-heron/a-white-heron_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581573/earnalism/audiobooks/en/a-white-heron/a-white-heron.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581573/earnalism/audiobooks/en/a-white-heron/a-white-heron.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581574/earnalism/audiobooks/en/a-white-heron/a-white-heron_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581575/earnalism/audiobooks/en/a-white-heron/a-white-heron_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581576/earnalism/audiobooks/en/a-white-heron/a-white-heron_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581577/earnalism/audiobooks/en/a-white-heron/a-white-heron_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

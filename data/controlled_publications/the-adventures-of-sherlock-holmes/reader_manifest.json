@@ -1,0 +1,62 @@
+{
+  "slug": "the-adventures-of-sherlock-holmes",
+  "title": "The Adventures of Sherlock Holmes",
+  "author": "Arthur Conan Doyle",
+  "language": "en",
+  "chapter_count": 3,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "I",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 3455,
+      "reading_minutes": 15,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "II",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 4034,
+      "reading_minutes": 17,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    },
+    {
+      "id": "chapter-003",
+      "order": 3,
+      "title": "III",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 97627,
+      "reading_minutes": 407,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001",
+    "chapter-002",
+    "chapter-003"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:48Z"
+}

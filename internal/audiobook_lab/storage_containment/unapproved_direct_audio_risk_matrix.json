@@ -1,0 +1,5246 @@
+{
+  "schema_version": 1,
+  "audit_id": "P0_UNAPPROVED_AUDIO_STORAGE_CONTAINMENT_DRY_RUN",
+  "mode": "DRY_RUN_ONLY",
+  "generated_at": "2026-07-13T09:47:01Z",
+  "inventory_sha256": "21c9f5c85c56be3779822b90fb31c178db8131f7f39f7d2bdae1d00a5f61b23c",
+  "summary": {
+    "slug_count": 146,
+    "slugs_with_storage_bypass_risk": 145,
+    "approved_slugs": [
+      "a-ghost-story",
+      "book-2b9853ec52"
+    ],
+    "unapproved_or_stale_reachable_objects_including_sidecars": 606
+  },
+  "rows": [
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": true,
+      "public_api_exposes_audio": true,
+      "public_ui_exposes_audio": true,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 3,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 1,
+      "recommended_containment_action": "MOVE_STALE_OBJECTS_TO_PRIVATE_QA_BUCKET_AND_RETAIN_APPROVED_PUBLIC",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-7e60f2c7f61c7a7e",
+        "audio-77023920a02496bd",
+        "audio-fa63599c4eab4a75"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": true,
+        "direct_audio_object_ids": [
+          "audio-7e60f2c7f61c7a7e",
+          "audio-77023920a02496bd",
+          "audio-fa63599c4eab4a75",
+          "audio-db2d15bffed5f64f"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-ab0664c9e8be9a38",
+          "sidecar-05a47aba4ce097f9",
+          "sidecar-7c5b207970ca90c7",
+          "sidecar-9421f36532ab5397"
+        ]
+      }
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "title": "A Horseman in the Sky",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-f84c58005758e9b9",
+        "audio-380994839a11b488",
+        "sidecar-671b29a41bdbb558",
+        "sidecar-7fa162ee901082b3",
+        "sidecar-f4d06a2dc55f3b38",
+        "sidecar-9b438867d7878d23"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-f84c58005758e9b9",
+          "audio-380994839a11b488"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-671b29a41bdbb558",
+          "sidecar-7fa162ee901082b3",
+          "sidecar-f4d06a2dc55f3b38",
+          "sidecar-9b438867d7878d23"
+        ]
+      }
+    },
+    {
+      "slug": "a-jury-of-her-peers",
+      "title": "A Jury of Her Peers",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-ac56caf30013a2e6",
+        "sidecar-f4130f66360b66d0",
+        "sidecar-315bff8298acdcc4",
+        "sidecar-d7c2755e93c13e39",
+        "sidecar-0f4280c2175c160b"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-ac56caf30013a2e6"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-f4130f66360b66d0",
+          "sidecar-315bff8298acdcc4",
+          "sidecar-d7c2755e93c13e39",
+          "sidecar-0f4280c2175c160b"
+        ]
+      }
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "title": "A Mystery of Heroism",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-bfbdd5e26cb4acf6",
+        "sidecar-c92c668092544d0a",
+        "sidecar-b8d9da56c313c79f",
+        "sidecar-176e3015c453f37f",
+        "sidecar-0a9783157cde6e7d"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-bfbdd5e26cb4acf6"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-c92c668092544d0a",
+          "sidecar-b8d9da56c313c79f",
+          "sidecar-176e3015c453f37f",
+          "sidecar-0a9783157cde6e7d"
+        ]
+      }
+    },
+    {
+      "slug": "a-retrieved-reformation",
+      "title": "A Retrieved Reformation",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-c24846055586ae4b",
+        "sidecar-3ab81ce75f0892c7",
+        "sidecar-8a6e3120a47f3190",
+        "sidecar-9df233d27ddc4ab1",
+        "sidecar-3e12ef6ebe025276"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c24846055586ae4b"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-3ab81ce75f0892c7",
+          "sidecar-8a6e3120a47f3190",
+          "sidecar-9df233d27ddc4ab1",
+          "sidecar-3e12ef6ebe025276"
+        ]
+      }
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "title": "A Scandal in Bohemia",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-6e6e147384d559e7",
+        "audio-e0b1f321c89f3873",
+        "sidecar-c426f33083254121",
+        "sidecar-bd660c1eb66e0680",
+        "sidecar-e8fc50430fc9fb8c",
+        "sidecar-89def1fb885bc70f"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-6e6e147384d559e7",
+          "audio-e0b1f321c89f3873"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-c426f33083254121",
+          "sidecar-bd660c1eb66e0680",
+          "sidecar-e8fc50430fc9fb8c",
+          "sidecar-89def1fb885bc70f"
+        ]
+      }
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "title": "A Wagner Matinee",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-bb4acf6a9d52e5d7",
+        "audio-193d865bb934f441",
+        "sidecar-c03e73340f0fffde",
+        "sidecar-efa86a23a0e18d3f",
+        "sidecar-373dce125e4c994e",
+        "sidecar-c788655bc675df49"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-bb4acf6a9d52e5d7",
+          "audio-193d865bb934f441"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-c03e73340f0fffde",
+          "sidecar-efa86a23a0e18d3f",
+          "sidecar-373dce125e4c994e",
+          "sidecar-c788655bc675df49"
+        ]
+      }
+    },
+    {
+      "slug": "a-white-heron",
+      "title": "A White Heron",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-af74a817f73f145b",
+        "audio-e2f06bc734be48e8",
+        "sidecar-b8e7f5e06fff8342",
+        "sidecar-1dc1e82456f30795",
+        "sidecar-7b93f2b37dab5cee",
+        "sidecar-5efef6408f25d5f0"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-af74a817f73f145b",
+          "audio-e2f06bc734be48e8"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-b8e7f5e06fff8342",
+          "sidecar-1dc1e82456f30795",
+          "sidecar-7b93f2b37dab5cee",
+          "sidecar-5efef6408f25d5f0"
+        ]
+      }
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "title": "Acres of Diamonds",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-84382398ca7a7f22"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-84382398ca7a7f22"
+        ],
+        "supporting_asset_object_ids": []
+      }
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "title": "Alice's Adventures in Wonderland",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 8,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-c333a50ccf9861b7",
+        "audio-a153540a1ffe5bdf",
+        "sidecar-50c48ea668281998",
+        "sidecar-a95c8f908190ac46",
+        "sidecar-8e0e3c1bad79d8f4",
+        "sidecar-8b64744a54b0c92c",
+        "sidecar-ba8ae873808b453b",
+        "sidecar-36dc5ebd1635581b",
+        "sidecar-39ce48c90796856f",
+        "sidecar-5c12f3939131f79f"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c333a50ccf9861b7",
+          "audio-a153540a1ffe5bdf"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-50c48ea668281998",
+          "sidecar-a95c8f908190ac46",
+          "sidecar-8e0e3c1bad79d8f4",
+          "sidecar-8b64744a54b0c92c",
+          "sidecar-ba8ae873808b453b",
+          "sidecar-36dc5ebd1635581b",
+          "sidecar-39ce48c90796856f",
+          "sidecar-5c12f3939131f79f"
+        ]
+      }
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "title": "An Occurrence at Owl Creek Bridge",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-9f0795bd1671822a",
+        "audio-e1bf73c5d0a9f288",
+        "sidecar-296cdc68ff116bb4",
+        "sidecar-5e61af02cd498e81",
+        "sidecar-5085928207bda8e4",
+        "sidecar-fd08a13397b3e2ce"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-9f0795bd1671822a",
+          "audio-e1bf73c5d0a9f288"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-296cdc68ff116bb4",
+          "sidecar-5e61af02cd498e81",
+          "sidecar-5085928207bda8e4",
+          "sidecar-fd08a13397b3e2ce"
+        ]
+      }
+    },
+    {
+      "slug": "berenice",
+      "title": "Berenice",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-6390b589317bf07c",
+        "audio-6af2fa7c5838a4a0",
+        "sidecar-84d2be3bebb10b9a",
+        "sidecar-4cdf3bfa485b860a",
+        "sidecar-acb0a2ca8b72162a",
+        "sidecar-d685d911d4a1b70f"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-6390b589317bf07c",
+          "audio-6af2fa7c5838a4a0"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-84d2be3bebb10b9a",
+          "sidecar-4cdf3bfa485b860a",
+          "sidecar-acb0a2ca8b72162a",
+          "sidecar-d685d911d4a1b70f"
+        ]
+      }
+    },
+    {
+      "slug": "bharat-at-the-crossroads",
+      "title": "Bharat at the Crossroads",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-499d97e35288398e",
+        "sidecar-fbcaa893834c5373",
+        "sidecar-4c13c4801da1b9b9",
+        "sidecar-fd0ab67d93cb7a6e",
+        "sidecar-2a0ad77113d575c7"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-499d97e35288398e"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-fbcaa893834c5373",
+          "sidecar-4c13c4801da1b9b9",
+          "sidecar-fd0ab67d93cb7a6e",
+          "sidecar-2a0ad77113d575c7"
+        ]
+      }
+    },
+    {
+      "slug": "bn-027",
+      "title": "অপরিচিতা",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-8bda199290c4ef06",
+        "sidecar-181816b309eb54d2",
+        "sidecar-2fed24674aff754f",
+        "sidecar-c3213fd5ea2318c0",
+        "sidecar-37c00d7c0ecbd7b6"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-f37a3fde0326761e",
+          "audio-8bda199290c4ef06"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-3e066db0ec2b7f95",
+          "sidecar-7f98501daaaa87ff",
+          "sidecar-21947f6d4a9da28c",
+          "sidecar-effec656e51af8ab",
+          "sidecar-181816b309eb54d2",
+          "sidecar-2fed24674aff754f",
+          "sidecar-c3213fd5ea2318c0",
+          "sidecar-37c00d7c0ecbd7b6"
+        ]
+      }
+    },
+    {
+      "slug": "bn-031",
+      "title": "মহেশ",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-d9437b7d70084650"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-1cedbceb0f4dd75c",
+          "audio-d9437b7d70084650"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-f4219a6adf735830",
+          "sidecar-6382639f28ab1a01",
+          "sidecar-2d4a695c25fe54cc",
+          "sidecar-024d1621e9cdcdb1"
+        ]
+      }
+    },
+    {
+      "slug": "bn-035",
+      "title": "বড়দিদি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-9b4ddde370651c46"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-ff50bf3ffdd0dd2b",
+          "audio-9b4ddde370651c46"
+        ],
+        "supporting_asset_object_ids": []
+      }
+    },
+    {
+      "slug": "bn-036",
+      "title": "মেজদিদি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-866c0028e4cef2f2"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-2e71c26eb9d67d99",
+          "audio-866c0028e4cef2f2"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-303ec99a1cae0362",
+          "sidecar-d24e8f9337fa5756",
+          "sidecar-aa8578145c29393e",
+          "sidecar-892783eb16886832"
+        ]
+      }
+    },
+    {
+      "slug": "bn-041",
+      "title": "আঁধারে আলো",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-8133b75d281e28e0"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-71d9da2f0019bdf6",
+          "audio-8133b75d281e28e0"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-c6816852b33c4cce",
+          "sidecar-d7c4b3d3143b3e8d",
+          "sidecar-aea667cb0bed115b",
+          "sidecar-43ce8fbf148335b1"
+        ]
+      }
+    },
+    {
+      "slug": "bn-059",
+      "title": "কমলাকান্তের দপ্তর",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-242787c67e635295",
+        "sidecar-ecbe855d2a39fde7",
+        "sidecar-678f70c7f09f5b83",
+        "sidecar-eed8f024678ef727",
+        "sidecar-6875054189e0a80f"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-312ca6774d62c895",
+          "audio-242787c67e635295"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-ecbe855d2a39fde7",
+          "sidecar-678f70c7f09f5b83",
+          "sidecar-eed8f024678ef727",
+          "sidecar-6875054189e0a80f"
+        ]
+      }
+    },
+    {
+      "slug": "bn-060",
+      "title": "ইন্দিরা",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-1c3456c504f47fe7"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-d35fcec1a9959be2",
+          "audio-1c3456c504f47fe7"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-cb1e159e92d28d8a",
+          "sidecar-7fe3621901a71df4",
+          "sidecar-789277c18acd9bd6",
+          "sidecar-0138fb8f863be553"
+        ]
+      }
+    },
+    {
+      "slug": "bn-066",
+      "title": "আনন্দমঠ",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-b6a71ac20e4149d9",
+        "sidecar-f64f5ce21cce5e58",
+        "sidecar-b3e025558ecf7c07",
+        "sidecar-0d64db2ec393d6d3",
+        "sidecar-e987ca6cdc928127"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-5c33345f05f8d4dc",
+          "audio-b6a71ac20e4149d9"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-f64f5ce21cce5e58",
+          "sidecar-b3e025558ecf7c07",
+          "sidecar-0d64db2ec393d6d3",
+          "sidecar-e987ca6cdc928127"
+        ]
+      }
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "title": "হৈমন্তী",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-299ac9e4bef59809"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-97be0407e8ada94f",
+          "audio-299ac9e4bef59809"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-f2b0c627ec401898",
+          "sidecar-276fd0871fc1d8f6",
+          "sidecar-f92a78274dcc107a",
+          "sidecar-5c4a292bdb7a34fc"
+        ]
+      }
+    },
+    {
+      "slug": "book-0deb35c750",
+      "title": "খাতা",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-1151f03bf159cedc"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c1d6496989cccfed",
+          "audio-1151f03bf159cedc"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-3cbc0b3c9c9c04e5",
+          "sidecar-04ae0205241255aa",
+          "sidecar-be25897338aa47b2",
+          "sidecar-a9f162e9ab495783"
+        ]
+      }
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "title": "গুপ্তধন",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-1852358d6943eaf5"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-606ee0cc03a5a33a",
+          "audio-1852358d6943eaf5"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-4be4d047141220b6",
+          "sidecar-12b77de7574e0c9d",
+          "sidecar-5dc3c54ef41f39b2",
+          "sidecar-f049a5238bdb9f1b"
+        ]
+      }
+    },
+    {
+      "slug": "book-1090573dff",
+      "title": "ছুটি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-0500f600cc131d28"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-48dac5599074b11f",
+          "audio-0500f600cc131d28"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-433e8ca971010895",
+          "sidecar-91070d752034560a",
+          "sidecar-e8a225a1f68eedce",
+          "sidecar-3e9f4d251bc12a9f"
+        ]
+      }
+    },
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": true,
+      "public_api_exposes_audio": true,
+      "public_ui_exposes_audio": true,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 1,
+      "recommended_containment_action": "MOVE_STALE_OBJECTS_TO_PRIVATE_QA_BUCKET_AND_RETAIN_APPROVED_PUBLIC",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-9d8ba02f4210cb0b"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": true,
+        "direct_audio_object_ids": [
+          "audio-570a4290b8cf94a3",
+          "audio-9d8ba02f4210cb0b",
+          "audio-75b4659201394da3"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-445026f8bf0b78a4",
+          "sidecar-a7fe94b9a92bb2a0",
+          "sidecar-f0a098c24427679f",
+          "sidecar-18851f1e4a7791c0"
+        ]
+      }
+    },
+    {
+      "slug": "book-2ddbed8293",
+      "title": "ব্যবধান",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-7390e2b7cb8811fe"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-a6f71b44b39e2ead",
+          "audio-7390e2b7cb8811fe"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-e5344b2e55dfe734",
+          "sidecar-a2d999f6ee5c4d5b",
+          "sidecar-1702ba45742d76a3",
+          "sidecar-eeb2954d9e5d3aed"
+        ]
+      }
+    },
+    {
+      "slug": "book-2e468c4990",
+      "title": "কাবুলিওয়ালা",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-c3708d9766f2ed18"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-907e2eaa0fde4aa3",
+          "audio-c3708d9766f2ed18"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-c0afd838d52756c9",
+          "sidecar-666b3147e9b2cb71",
+          "sidecar-127e2d7fd85fc2d6",
+          "sidecar-e6ffdd1e26c756bf"
+        ]
+      }
+    },
+    {
+      "slug": "book-4968248842",
+      "title": "বলাই",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-f1d1a7b58f015198"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-54cf58e4f9a3c650",
+          "audio-f1d1a7b58f015198"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-533534a0b213cc61",
+          "sidecar-b438ef11688c2d95",
+          "sidecar-70ef09aa54644b74",
+          "sidecar-511e0431395024c8"
+        ]
+      }
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "title": "একরাত্রি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-7f4fa03b523834ec"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-479a1019c2cba965",
+          "audio-7f4fa03b523834ec"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-45d7c84e3b37e535",
+          "sidecar-d3052d926ced9e5c",
+          "sidecar-993257f3f195eb18",
+          "sidecar-58ab5d5e1c602f44"
+        ]
+      }
+    },
+    {
+      "slug": "book-5461971092",
+      "title": "মেঘ ও রৌদ্র",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-c05d1d872bc78960"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-45a0210c022af711",
+          "audio-c05d1d872bc78960"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-a09bc9d9085235b8",
+          "sidecar-9900f27ba1104d48",
+          "sidecar-d79aec9e08ff0fa7",
+          "sidecar-f5e9497645f455d5"
+        ]
+      }
+    },
+    {
+      "slug": "book-5704b31005",
+      "title": "বিচারক",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-ba3068b6b13f9eec"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-469a86fc07d9cb7b",
+          "audio-ba3068b6b13f9eec"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-a0c2d9e2f337ad2a",
+          "sidecar-7faf80b7ce7cf0a9",
+          "sidecar-0e29ac682c08dd98",
+          "sidecar-abf6132b34d1758f"
+        ]
+      }
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "title": "শাস্তি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-d6f2c4cce8d00b9d"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-8eaf5bbd2eb4626d",
+          "audio-d6f2c4cce8d00b9d"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-90e391a4c204ce4f",
+          "sidecar-49f5420289c569c2",
+          "sidecar-9a06ee1cd22b19a5",
+          "sidecar-f49758a07b83ba53"
+        ]
+      }
+    },
+    {
+      "slug": "book-63afd5e9be",
+      "title": "দেনাপাওনা",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-1e0ae727036e07dc"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-a813999bdd17108b",
+          "audio-1e0ae727036e07dc"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-a7342a3d03977fd4",
+          "sidecar-b52d782d0584b530",
+          "sidecar-78b1d05749261024",
+          "sidecar-41ef1cbd77c4106a"
+        ]
+      }
+    },
+    {
+      "slug": "book-754da4eab8",
+      "title": "তারাপ্রসন্নের কীর্তি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-87d0bf459f5c5d14"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-aab527e344c676ac",
+          "audio-87d0bf459f5c5d14"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-4c00c2d3c33daf06",
+          "sidecar-d0f05b6365b7d662",
+          "sidecar-569a536f99a0d3be",
+          "sidecar-8c2f77b525e0ae51"
+        ]
+      }
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "title": "রাসমণির ছেলে",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-840d32eced2d7f9f"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-d795d05907afdeb0",
+          "audio-840d32eced2d7f9f"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-ff9dcab2c14fa3cd",
+          "sidecar-7527438694afdf23",
+          "sidecar-e2160064fd8c3ed9",
+          "sidecar-4c6b468e8d85e35c"
+        ]
+      }
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "title": "মানভঞ্জন",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-57826d42f6dba8c7"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-62c13607339ba4ba",
+          "audio-57826d42f6dba8c7"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-d73a62403d0bee5c",
+          "sidecar-ae39f8a559f1a3ce",
+          "sidecar-07f61392fbe66db4",
+          "sidecar-37e0c94bc74c1604"
+        ]
+      }
+    },
+    {
+      "slug": "book-95624627d5",
+      "title": "মধ্যবর্তিনী",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-d8a9643145bb0c53"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c7e781f11b0f41bc",
+          "audio-d8a9643145bb0c53"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-20e74f535bf01924",
+          "sidecar-09dc841f6e8f2ea2",
+          "sidecar-21f99dc6dc2cf524",
+          "sidecar-55f97d5728961c93"
+        ]
+      }
+    },
+    {
+      "slug": "book-9a7f771921",
+      "title": "কর্মফল",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-3496537f2dde4c28"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-f7863909a3da57c5",
+          "audio-3496537f2dde4c28"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-1a71c2b077a21944",
+          "sidecar-2d3d079f92d8f613",
+          "sidecar-c4d5d4ba01d0aae0",
+          "sidecar-131eb3b1ac1a1ddf"
+        ]
+      }
+    },
+    {
+      "slug": "book-a23625bf36",
+      "title": "সমাপ্তি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-3e7b4b6bda715b23"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c961e398d04ab6b4",
+          "audio-3e7b4b6bda715b23"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-e1af5542c141aab8",
+          "sidecar-0fa821985d32bdf5",
+          "sidecar-ecf0b3231d8bb2ac",
+          "sidecar-9c8cb38a5db7c838"
+        ]
+      }
+    },
+    {
+      "slug": "book-a4a369483f",
+      "title": "সম্পত্তি সমর্পণ",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-08cb4a680895f4a6"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-214d4f44b375bd10",
+          "audio-08cb4a680895f4a6"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-5635b08f8c28ff43",
+          "sidecar-85c08a538a901e06",
+          "sidecar-16cd8defecc795b3",
+          "sidecar-bcdbb01b4c53397c"
+        ]
+      }
+    },
+    {
+      "slug": "book-a74c1a1451",
+      "title": "দালিয়া",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-46e145db3df8a2d4"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-ee51d6cf282e003f",
+          "audio-46e145db3df8a2d4"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-4f1673cbc2630953",
+          "sidecar-281efb686fc07448",
+          "sidecar-8b02cd9e9ad27d68",
+          "sidecar-cc65d5cd4006b81e"
+        ]
+      }
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-c63faeec734e63c6"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-4e29878de83dda04",
+          "audio-c63faeec734e63c6"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-e02e2f440ed01647",
+          "sidecar-c53cfbf2fc089109",
+          "sidecar-726048a78a85a34d",
+          "sidecar-256676b2c10193bb"
+        ]
+      }
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "title": "নিশীথে",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-bd5dee95e2eb0a28"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-5b0761a5ca47f1ed",
+          "audio-bd5dee95e2eb0a28"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-c8ed573307bd32cd",
+          "sidecar-926d0547cd24b4f8",
+          "sidecar-a57f216782ac6b70",
+          "sidecar-e92720a4e6dd35fc"
+        ]
+      }
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "title": "অতিথি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-68267a42d9dc041d"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-230148d46abf50c8",
+          "audio-68267a42d9dc041d"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-b61440ba4740b491",
+          "sidecar-794dcba77fb0cde2",
+          "sidecar-c12251f08bbcadbb",
+          "sidecar-53bad1d9c276b726"
+        ]
+      }
+    },
+    {
+      "slug": "book-c307a57868",
+      "title": "স্ত্রীর পত্র",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-e67fda4fd3e54491"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-493e1685bf77a121",
+          "audio-e67fda4fd3e54491"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-9d3d2f7fdec9ef2a",
+          "sidecar-221aaef1240c0ae9",
+          "sidecar-3ce9a6d730515c72",
+          "sidecar-c57ac9ce633b9881"
+        ]
+      }
+    },
+    {
+      "slug": "book-c7f3ce526c",
+      "title": "খোকাবাবুর প্রত্যাবর্তন",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-e765c65e97fc61bc"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-9a426a2bf2568ef1",
+          "audio-e765c65e97fc61bc"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-ae0c253721728a38",
+          "sidecar-5a9ad86cc2a46a18",
+          "sidecar-990d51f71ad69dc0",
+          "sidecar-de511a93eb6a109f"
+        ]
+      }
+    },
+    {
+      "slug": "book-c85323409f",
+      "title": "জীবিত ও মৃত",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-4fda15e69b7341ae"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-e5d58ba5d27ee89b",
+          "audio-4fda15e69b7341ae"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-9f2af1e11b4e81a4",
+          "sidecar-bd1142c485e08870",
+          "sidecar-1c41e9a8dbfa99b1",
+          "sidecar-419862df3351a22e"
+        ]
+      }
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-5a74ff7f84dbe940"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-89a3756941612d2f",
+          "audio-5a74ff7f84dbe940"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-0fb2046e3701f948",
+          "sidecar-d87cd8e8716d233a",
+          "sidecar-ebc921f08baf37c7",
+          "sidecar-236fc4c4482b8ce5"
+        ]
+      }
+    },
+    {
+      "slug": "book-d2fe532e1c",
+      "title": "স্বর্ণমৃগ",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-dec4823c28ef8ff2"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-77838b0cfbd52d27",
+          "audio-dec4823c28ef8ff2"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-518d5b896aa5bd89",
+          "sidecar-4f793663f09449ae",
+          "sidecar-2868e3b03fa2e39c",
+          "sidecar-3896367d41c2e9c6"
+        ]
+      }
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-6499085ee54c79d0"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-8d8dc399cf994c93",
+          "audio-6499085ee54c79d0"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-24fa6e598f588816",
+          "sidecar-a328c77002aef165",
+          "sidecar-e8ccef3be6b132c0",
+          "sidecar-27e565dfeb6d7e76"
+        ]
+      }
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "title": "দিদি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-dc9a56ec772a99d2"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-b7231f1a3be502c6",
+          "audio-dc9a56ec772a99d2"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-832e7b699ba43126",
+          "sidecar-85fddd29f6248336",
+          "sidecar-7fc62a31e428f493",
+          "sidecar-329044f7d0c11ede"
+        ]
+      }
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-118e7511e6404397"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-4094b805503f990e",
+          "audio-118e7511e6404397"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-d18a5c21af35f5b3",
+          "sidecar-bfd901c558103009",
+          "sidecar-d7769889c15db8a8",
+          "sidecar-a06e16e20cc144dc"
+        ]
+      }
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "title": "সুভা",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-a263325a8fad2d64"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c52b93e16295bf4a",
+          "audio-a263325a8fad2d64"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-58ec59931855fc43",
+          "sidecar-34deb9e0cb5e3a39",
+          "sidecar-7c45af4f83db6e05",
+          "sidecar-26a1d2b937977a97"
+        ]
+      }
+    },
+    {
+      "slug": "boule-de-suif",
+      "title": "Boule de Suif",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-c12111af84beb84a",
+        "sidecar-b4af0f8a1a2ddc71",
+        "sidecar-6e46e9ca5083f0f0",
+        "sidecar-169aa77c3cb95b20",
+        "sidecar-6bc9acffc49d0abe"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c12111af84beb84a"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-b4af0f8a1a2ddc71",
+          "sidecar-6e46e9ca5083f0f0",
+          "sidecar-169aa77c3cb95b20",
+          "sidecar-6bc9acffc49d0abe"
+        ]
+      }
+    },
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "direct_object_accessible_now": false,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": false,
+      "reachable_unapproved_or_stale_direct_audio_count": 0,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "REVOKE_PUBLIC_DELIVERY",
+      "risk_level": "P1_HIGH",
+      "owner_approval_needed": false,
+      "containment_object_ids": [],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c733032917d98fb4"
+        ],
+        "supporting_asset_object_ids": []
+      }
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-53df33d0604d6b74",
+        "audio-118ace665e804f00",
+        "sidecar-aef23f8f3b14ad33",
+        "sidecar-1756c8b5bfc27bce",
+        "sidecar-31d34268c1fa45d2",
+        "sidecar-c325371330101ac7"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-53df33d0604d6b74",
+          "audio-118ace665e804f00"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-aef23f8f3b14ad33",
+          "sidecar-1756c8b5bfc27bce",
+          "sidecar-31d34268c1fa45d2",
+          "sidecar-c325371330101ac7"
+        ]
+      }
+    },
+    {
+      "slug": "feathertop",
+      "title": "Feathertop",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-d4a98a9940826efc",
+        "audio-37b167c09eafb2fb",
+        "sidecar-64b54ec7db7a68b0",
+        "sidecar-9b5dcbe1f3c5983a",
+        "sidecar-7d61eb76f84593f2",
+        "sidecar-17bccad2a9460443"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-d4a98a9940826efc",
+          "audio-37b167c09eafb2fb"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-64b54ec7db7a68b0",
+          "sidecar-9b5dcbe1f3c5983a",
+          "sidecar-7d61eb76f84593f2",
+          "sidecar-17bccad2a9460443"
+        ]
+      }
+    },
+    {
+      "slug": "jane-eyre",
+      "title": "Jane Eyre",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-37b8c294986f8a0b",
+        "sidecar-45ebf19b680c8bba",
+        "sidecar-5fc1c18be68ea61f",
+        "sidecar-c8f1dddd554c96be",
+        "sidecar-763690b247e96e71"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-37b8c294986f8a0b"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-45ebf19b680c8bba",
+          "sidecar-5fc1c18be68ea61f",
+          "sidecar-c8f1dddd554c96be",
+          "sidecar-763690b247e96e71"
+        ]
+      }
+    },
+    {
+      "slug": "lokrahasya",
+      "title": "লোকরহস্য",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-17fd970d6f45ebdf",
+        "sidecar-627548312f1b7cfc",
+        "sidecar-9106f7c0b3a9c3e6",
+        "sidecar-a81df63f8ebe94ec",
+        "sidecar-51db755eb0c51bb8"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-9571948ac13d20dd",
+          "audio-17fd970d6f45ebdf"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-3633cc8d401b44da",
+          "sidecar-241db8fef32a4a04",
+          "sidecar-79c78ffa5c08be82",
+          "sidecar-c05a53bd0b009693",
+          "sidecar-627548312f1b7cfc",
+          "sidecar-9106f7c0b3a9c3e6",
+          "sidecar-a81df63f8ebe94ec",
+          "sidecar-51db755eb0c51bb8"
+        ]
+      }
+    },
+    {
+      "slug": "love-of-life",
+      "title": "Love of Life",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-da9addacb5bb185f",
+        "sidecar-612fa9aac0c3646c",
+        "sidecar-5333fb18731072f1",
+        "sidecar-9e001a495885ef17",
+        "sidecar-aa17ee0c0fc6b403"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-da9addacb5bb185f"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-612fa9aac0c3646c",
+          "sidecar-5333fb18731072f1",
+          "sidecar-9e001a495885ef17",
+          "sidecar-aa17ee0c0fc6b403"
+        ]
+      }
+    },
+    {
+      "slug": "markheim",
+      "title": "Markheim",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-197e28802c67c93d",
+        "audio-766f170fef3e9dfe",
+        "sidecar-edb1ce3aa95fdae3",
+        "sidecar-0f548d2d8f15d8c3",
+        "sidecar-fb77fd0b16a2eb76",
+        "sidecar-f2e2615717d48fec"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-197e28802c67c93d",
+          "audio-766f170fef3e9dfe"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-edb1ce3aa95fdae3",
+          "sidecar-0f548d2d8f15d8c3",
+          "sidecar-fb77fd0b16a2eb76",
+          "sidecar-f2e2615717d48fec"
+        ]
+      }
+    },
+    {
+      "slug": "mrinalini",
+      "title": "মৃণালিনী",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-9acbe327e46bf107",
+        "sidecar-9c7b64c1ed90ff8f",
+        "sidecar-f803bc0cd223334a",
+        "sidecar-8e2c1c1aaf57decc",
+        "sidecar-cd2ba28b65851531"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-5c2ef248f83ff9ba",
+          "audio-9acbe327e46bf107"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-1da8ece9f35977e9",
+          "sidecar-ef80d6eee44831ea",
+          "sidecar-52e0308d08354d42",
+          "sidecar-b6c399cc7a90e62e",
+          "sidecar-9c7b64c1ed90ff8f",
+          "sidecar-f803bc0cd223334a",
+          "sidecar-8e2c1c1aaf57decc",
+          "sidecar-cd2ba28b65851531"
+        ]
+      }
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-006bc0245fc98a0b"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-42ed59f8a813c9dd",
+          "audio-006bc0245fc98a0b"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-07d4f062db2ce157",
+          "sidecar-e58336d6cdf35912",
+          "sidecar-e5fb15bb7f2313a3",
+          "sidecar-4ff36297908b3941"
+        ]
+      }
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-372872d61358d6eb",
+        "sidecar-1d0780793328c792",
+        "sidecar-15bac5324ff40980",
+        "sidecar-616507afb116872c",
+        "sidecar-055cecf391ec9151"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-77c0593fab0fc458",
+          "audio-372872d61358d6eb"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-9699f4f5ffc85f2b",
+          "sidecar-9a55907e31cf145a",
+          "sidecar-e55f04651f1cf5c8",
+          "sidecar-c1dcbabd1000bbce",
+          "sidecar-1d0780793328c792",
+          "sidecar-15bac5324ff40980",
+          "sidecar-616507afb116872c",
+          "sidecar-055cecf391ec9151"
+        ]
+      }
+    },
+    {
+      "slug": "pauls-case",
+      "title": "Paul's Case",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-d42c993c6015fa81",
+        "sidecar-8d29846bb38530a1",
+        "sidecar-7b95d5d6fc952fc1",
+        "sidecar-1fdb56fce77e8ce6",
+        "sidecar-0e2e7f503ecacccb"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-d42c993c6015fa81"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-8d29846bb38530a1",
+          "sidecar-7b95d5d6fc952fc1",
+          "sidecar-1fdb56fce77e8ce6",
+          "sidecar-0e2e7f503ecacccb"
+        ]
+      }
+    },
+    {
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-920169fb79223b16"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-e39462befdc33658",
+          "audio-920169fb79223b16"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-d6e3905873afe65f",
+          "sidecar-f1caa532723402b8",
+          "sidecar-f1c7d2795c944fb9",
+          "sidecar-21b3fdbffbb26957"
+        ]
+      }
+    },
+    {
+      "slug": "rappaccinis-daughter",
+      "title": "Rappaccini's Daughter",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-e54f92e04c7da867",
+        "audio-62acd92c37357985",
+        "sidecar-0d821afb8d85981e",
+        "sidecar-d7a73324716ea41d",
+        "sidecar-bb0b653667c3afca",
+        "sidecar-105ea3fac41f4b29"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-e54f92e04c7da867",
+          "audio-62acd92c37357985"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-0d821afb8d85981e",
+          "sidecar-d7a73324716ea41d",
+          "sidecar-bb0b653667c3afca",
+          "sidecar-105ea3fac41f4b29"
+        ]
+      }
+    },
+    {
+      "slug": "rikki-tikki-tavi",
+      "title": "Rikki-Tikki-Tavi",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-0d9b1abfd6667462",
+        "sidecar-41e26656e2165b14",
+        "sidecar-ea3b9bbbbfee6508",
+        "sidecar-dbd45df7634f1bf8",
+        "sidecar-31f769ae36d0ced9"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-0d9b1abfd6667462"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-41e26656e2165b14",
+          "sidecar-ea3b9bbbbfee6508",
+          "sidecar-dbd45df7634f1bf8",
+          "sidecar-31f769ae36d0ced9"
+        ]
+      }
+    },
+    {
+      "slug": "rip-van-winkle",
+      "title": "Rip Van Winkle",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-3580dc4b9531372f",
+        "audio-ab10357d75cc53c7",
+        "sidecar-91190d687f4511c2",
+        "sidecar-f6a0b2fc59c3c152",
+        "sidecar-fb9e9984f837484b",
+        "sidecar-c0e6e96be203c2a8"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-3580dc4b9531372f",
+          "audio-ab10357d75cc53c7"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-91190d687f4511c2",
+          "sidecar-f6a0b2fc59c3c152",
+          "sidecar-fb9e9984f837484b",
+          "sidecar-c0e6e96be203c2a8"
+        ]
+      }
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-8969bad2aa744566",
+        "audio-0a257b5c91873857",
+        "sidecar-24947cddf3aa0cf9",
+        "sidecar-194819686e228bb5",
+        "sidecar-ee996d60c4df205f",
+        "sidecar-a08bcc9da5486cf8"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-8969bad2aa744566",
+          "audio-0a257b5c91873857"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-24947cddf3aa0cf9",
+          "sidecar-194819686e228bb5",
+          "sidecar-ee996d60c4df205f",
+          "sidecar-a08bcc9da5486cf8"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "title": "The Adventure of Charles Augustus Milverton",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-89f566f64a80909b",
+        "audio-983c6a22d743b82b",
+        "sidecar-28d2dd93c6dc109a",
+        "sidecar-c9e60aa780b71d85",
+        "sidecar-0a29ffd12ddcf736",
+        "sidecar-c6537d13adbe3931"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-89f566f64a80909b",
+          "audio-983c6a22d743b82b"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-28d2dd93c6dc109a",
+          "sidecar-c9e60aa780b71d85",
+          "sidecar-0a29ffd12ddcf736",
+          "sidecar-c6537d13adbe3931"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "title": "The Adventure of the Abbey Grange",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-67ec3a266047f59c",
+        "audio-7f0e4053ef0c7f80",
+        "sidecar-18c5122b770e054f",
+        "sidecar-074ec5b9b0222854",
+        "sidecar-d6433ef982ba3688",
+        "sidecar-d1c213657e56a1ec"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-67ec3a266047f59c",
+          "audio-7f0e4053ef0c7f80"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-18c5122b770e054f",
+          "sidecar-074ec5b9b0222854",
+          "sidecar-d6433ef982ba3688",
+          "sidecar-d1c213657e56a1ec"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "title": "The Adventure of the Beryl Coronet",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-07b65799646ea83d",
+        "audio-4b3571b678ab3af3",
+        "sidecar-82a5ced6d8de8046",
+        "sidecar-435ff3b854f06801",
+        "sidecar-06cd742e45fa5598",
+        "sidecar-070336874f329298"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-07b65799646ea83d",
+          "audio-4b3571b678ab3af3"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-82a5ced6d8de8046",
+          "sidecar-435ff3b854f06801",
+          "sidecar-06cd742e45fa5598",
+          "sidecar-070336874f329298"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "title": "The Adventure of the Blue Carbuncle",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-4d7c2096c9689d4f",
+        "audio-a1753e4ab88ec857",
+        "sidecar-239082f6c4c09f9f",
+        "sidecar-244643794f7beaf7",
+        "sidecar-18c7e8f8a95ff0f2",
+        "sidecar-8d01bb89556caca2"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-4d7c2096c9689d4f",
+          "audio-a1753e4ab88ec857"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-239082f6c4c09f9f",
+          "sidecar-244643794f7beaf7",
+          "sidecar-18c7e8f8a95ff0f2",
+          "sidecar-8d01bb89556caca2"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "title": "The Adventure of the Copper Beeches",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-696df009cad449e6",
+        "audio-2c6dcbe7bab6cfa5",
+        "sidecar-9d7301be88528580",
+        "sidecar-e1521dc02a74d1b9",
+        "sidecar-806b8892c88668da",
+        "sidecar-4c5ecb1ac9698afe"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-696df009cad449e6",
+          "audio-2c6dcbe7bab6cfa5"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-9d7301be88528580",
+          "sidecar-e1521dc02a74d1b9",
+          "sidecar-806b8892c88668da",
+          "sidecar-4c5ecb1ac9698afe"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "title": "The Adventure of the Dancing Men",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-ddfb8b016825d609",
+        "audio-eddbfe5b4fae5ee4",
+        "sidecar-1499e36c26c972ed",
+        "sidecar-2e945e4d0f40d246",
+        "sidecar-78bb4b3f7f4b4f33",
+        "sidecar-6ccf0573a91ca0b4"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-ddfb8b016825d609",
+          "audio-eddbfe5b4fae5ee4"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-1499e36c26c972ed",
+          "sidecar-2e945e4d0f40d246",
+          "sidecar-78bb4b3f7f4b4f33",
+          "sidecar-6ccf0573a91ca0b4"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "title": "The Adventure of the Empty House",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-0933a421562c0ef5",
+        "audio-c3498c976209bd05",
+        "sidecar-de2747ad8933e358",
+        "sidecar-3871c33831f45283",
+        "sidecar-2918c8bc6154d072",
+        "sidecar-fea48d97d229c5c2"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-0933a421562c0ef5",
+          "audio-c3498c976209bd05"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-de2747ad8933e358",
+          "sidecar-3871c33831f45283",
+          "sidecar-2918c8bc6154d072",
+          "sidecar-fea48d97d229c5c2"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "title": "The Adventure of the Engineer's Thumb",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-cfcee68a625b0c84",
+        "audio-c8a903fa24e64ac6",
+        "sidecar-7f2ea1211214e12f",
+        "sidecar-0241bc1ee40d0af2",
+        "sidecar-38137814faa5df5b",
+        "sidecar-adef584ac9bb3f00"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-cfcee68a625b0c84",
+          "audio-c8a903fa24e64ac6"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-7f2ea1211214e12f",
+          "sidecar-0241bc1ee40d0af2",
+          "sidecar-38137814faa5df5b",
+          "sidecar-adef584ac9bb3f00"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "title": "The Adventure of the Final Problem",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-11b16f695d218fb6",
+        "audio-fee4eba2cf65d9b1",
+        "sidecar-240c0f52d1a35c73",
+        "sidecar-40836f24fa8863fc",
+        "sidecar-ae392fff2e3d7bff",
+        "sidecar-c58ea9502fedd6b1"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-11b16f695d218fb6",
+          "audio-fee4eba2cf65d9b1"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-240c0f52d1a35c73",
+          "sidecar-40836f24fa8863fc",
+          "sidecar-ae392fff2e3d7bff",
+          "sidecar-c58ea9502fedd6b1"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "title": "The Adventure of the Greek Interpreter",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-db939dfc5a78e3e5",
+        "audio-91569f3e683cae8f",
+        "sidecar-0c8d60910c4d558e",
+        "sidecar-3270bdee37bf5b55",
+        "sidecar-5a22674f19cac0fe",
+        "sidecar-df8572a85c1e52c9"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-db939dfc5a78e3e5",
+          "audio-91569f3e683cae8f"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-0c8d60910c4d558e",
+          "sidecar-3270bdee37bf5b55",
+          "sidecar-5a22674f19cac0fe",
+          "sidecar-df8572a85c1e52c9"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "title": "The Adventure of the Noble Bachelor",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-c391aeb9cae631fa",
+        "audio-15f9ea039aff8519",
+        "sidecar-486dd5281b8a620d",
+        "sidecar-1eb52bd03e1ce5f6",
+        "sidecar-5970bc7fd69e1122",
+        "sidecar-862b3d6537b8cc46"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c391aeb9cae631fa",
+          "audio-15f9ea039aff8519"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-486dd5281b8a620d",
+          "sidecar-1eb52bd03e1ce5f6",
+          "sidecar-5970bc7fd69e1122",
+          "sidecar-862b3d6537b8cc46"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "title": "The Adventure of the Priory School",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-dbb994fc8ac0afe1",
+        "audio-229042c40a278df7",
+        "sidecar-5440158e2a010773",
+        "sidecar-5028e69efc610fdd",
+        "sidecar-0b9a8b0f0b068cb6",
+        "sidecar-bbd602e6b04645ce"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-dbb994fc8ac0afe1",
+          "audio-229042c40a278df7"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-5440158e2a010773",
+          "sidecar-5028e69efc610fdd",
+          "sidecar-0b9a8b0f0b068cb6",
+          "sidecar-bbd602e6b04645ce"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "title": "The Adventure of the Second Stain",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-fe5d7220c366035b",
+        "audio-0f6ca64420fa86e3",
+        "sidecar-b249a743a3739da6",
+        "sidecar-9089c99cb3aaebf3",
+        "sidecar-63ba02f3d0a49b5a",
+        "sidecar-55d3d301934771eb"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-fe5d7220c366035b",
+          "audio-0f6ca64420fa86e3"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-b249a743a3739da6",
+          "sidecar-9089c99cb3aaebf3",
+          "sidecar-63ba02f3d0a49b5a",
+          "sidecar-55d3d301934771eb"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "title": "The Adventure of the Solitary Cyclist",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-67715dffc787bcbf",
+        "audio-c3ff1242d595f638",
+        "sidecar-873522e9664e0c47",
+        "sidecar-6f7c126ed5c3742e",
+        "sidecar-ef12ba4bdc67779e",
+        "sidecar-adf0ddba36f23495"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-67715dffc787bcbf",
+          "audio-c3ff1242d595f638"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-873522e9664e0c47",
+          "sidecar-6f7c126ed5c3742e",
+          "sidecar-ef12ba4bdc67779e",
+          "sidecar-adf0ddba36f23495"
+        ]
+      }
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "title": "The Adventures of Sherlock Holmes",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-68dbb96735060dcc"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-68dbb96735060dcc"
+        ],
+        "supporting_asset_object_ids": []
+      }
+    },
+    {
+      "slug": "the-ambitious-guest",
+      "title": "The Ambitious Guest",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-fb1ff6d6a9f9877f",
+        "audio-c78490f369cce64f",
+        "sidecar-2390d613d7b79978",
+        "sidecar-c54af240f6cb1286",
+        "sidecar-a433e5df59501ab0",
+        "sidecar-4e421ca598639ac0"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-fb1ff6d6a9f9877f",
+          "audio-c78490f369cce64f"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-2390d613d7b79978",
+          "sidecar-c54af240f6cb1286",
+          "sidecar-a433e5df59501ab0",
+          "sidecar-4e421ca598639ac0"
+        ]
+      }
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "title": "The Art of Money Getting",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-dc3e9ab645a73403",
+        "audio-72f8d97096a7bae3",
+        "sidecar-14de6988c92b8fd6",
+        "sidecar-2c55f9191a39e0ba",
+        "sidecar-9577a592dd656038",
+        "sidecar-51f8557c156d418e"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-dc3e9ab645a73403",
+          "audio-72f8d97096a7bae3"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-14de6988c92b8fd6",
+          "sidecar-2c55f9191a39e0ba",
+          "sidecar-9577a592dd656038",
+          "sidecar-51f8557c156d418e"
+        ]
+      }
+    },
+    {
+      "slug": "the-bet",
+      "title": "The Bet",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-a41da912937a6be8",
+        "audio-aa3b5f8279b98a4d",
+        "sidecar-2f1a8d8e435c7361",
+        "sidecar-1dde7d13973cd5c2",
+        "sidecar-34e6e204bb40c602",
+        "sidecar-39755a59398764c5"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-a41da912937a6be8",
+          "audio-aa3b5f8279b98a4d"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-2f1a8d8e435c7361",
+          "sidecar-1dde7d13973cd5c2",
+          "sidecar-34e6e204bb40c602",
+          "sidecar-39755a59398764c5"
+        ]
+      }
+    },
+    {
+      "slug": "the-bishop",
+      "title": "The Bishop",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-d3a3e9952f2e3ab8",
+        "sidecar-a730cc599faa4b91",
+        "sidecar-aaea118017c020e0",
+        "sidecar-b92051d74fa00b7f",
+        "sidecar-f5e95ed23390b7b4"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-d3a3e9952f2e3ab8"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-a730cc599faa4b91",
+          "sidecar-aaea118017c020e0",
+          "sidecar-b92051d74fa00b7f",
+          "sidecar-f5e95ed23390b7b4"
+        ]
+      }
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "title": "The Call of the Wild",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-60beddfa8c1e09c3",
+        "sidecar-79da8fc9aab11185",
+        "sidecar-f6dfa10b1f33d178",
+        "sidecar-3801c7195fde78a5",
+        "sidecar-e124ccc1e24fd3fe"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-60beddfa8c1e09c3"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-79da8fc9aab11185",
+          "sidecar-f6dfa10b1f33d178",
+          "sidecar-3801c7195fde78a5",
+          "sidecar-e124ccc1e24fd3fe"
+        ]
+      }
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "title": "The Canterville Ghost",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-d7988457134d2dc6",
+        "sidecar-32a700ee2cc54749",
+        "sidecar-dd371d996336c2d3",
+        "sidecar-187fd315a9c055b4",
+        "sidecar-6911b93e1ab6842a"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-d7988457134d2dc6"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-32a700ee2cc54749",
+          "sidecar-dd371d996336c2d3",
+          "sidecar-187fd315a9c055b4",
+          "sidecar-6911b93e1ab6842a"
+        ]
+      }
+    },
+    {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "title": "The Celebrated Jumping Frog of Calaveras County",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-9d4cbdb4ec8b2813",
+        "audio-caf3ef9cba71be3f",
+        "sidecar-006387728ff17623",
+        "sidecar-7620ee900f039d1e",
+        "sidecar-63df0d722d34db4d",
+        "sidecar-5d8bf93d8a43ba1f"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-9d4cbdb4ec8b2813",
+          "audio-caf3ef9cba71be3f"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-006387728ff17623",
+          "sidecar-7620ee900f039d1e",
+          "sidecar-63df0d722d34db4d",
+          "sidecar-5d8bf93d8a43ba1f"
+        ]
+      }
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-32dcc4f7b3ed64f5",
+        "audio-0ec8ff9b5e384d25",
+        "sidecar-79ad03b901c376e8",
+        "sidecar-aec62bb3c4be7ea2",
+        "sidecar-e51cfebbe440b4ee",
+        "sidecar-cee785d5ad7ec8aa"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-32dcc4f7b3ed64f5",
+          "audio-0ec8ff9b5e384d25"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-79ad03b901c376e8",
+          "sidecar-aec62bb3c4be7ea2",
+          "sidecar-e51cfebbe440b4ee",
+          "sidecar-cee785d5ad7ec8aa"
+        ]
+      }
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "title": "The Country of the Blind",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-8d7cc82f69293cc0",
+        "sidecar-8dde2af3aa636252",
+        "sidecar-3fdd1ab606b2206b",
+        "sidecar-c714be15cbe0b74b",
+        "sidecar-892f4e4897b5016c"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-8d7cc82f69293cc0"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-8dde2af3aa636252",
+          "sidecar-3fdd1ab606b2206b",
+          "sidecar-c714be15cbe0b74b",
+          "sidecar-892f4e4897b5016c"
+        ]
+      }
+    },
+    {
+      "slug": "the-darling",
+      "title": "The Darling",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-5ee4cce450f23f5a",
+        "sidecar-1a56bc00988e0cd8",
+        "sidecar-fc75d48154f95955",
+        "sidecar-f3ab79cd775e9779",
+        "sidecar-686de6e51e7a7001"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-5ee4cce450f23f5a"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-1a56bc00988e0cd8",
+          "sidecar-fc75d48154f95955",
+          "sidecar-f3ab79cd775e9779",
+          "sidecar-686de6e51e7a7001"
+        ]
+      }
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "title": "The Door in the Wall",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-3125b110b5c9af55"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-3125b110b5c9af55"
+        ],
+        "supporting_asset_object_ids": []
+      }
+    },
+    {
+      "slug": "the-enchanted-april",
+      "title": "The Enchanted April",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-301d869b1da49f76"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-301d869b1da49f76"
+        ],
+        "supporting_asset_object_ids": []
+      }
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "title": "The Fall of the House of Usher",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-00999f727433c51c",
+        "audio-d5dccd355b7d2fa7",
+        "sidecar-80d714930513b1cd",
+        "sidecar-54f5c1e5861c1512",
+        "sidecar-2c980397a85433cb",
+        "sidecar-c466e23101e77776"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-00999f727433c51c",
+          "audio-d5dccd355b7d2fa7"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-80d714930513b1cd",
+          "sidecar-54f5c1e5861c1512",
+          "sidecar-2c980397a85433cb",
+          "sidecar-c466e23101e77776"
+        ]
+      }
+    },
+    {
+      "slug": "the-five-orange-pips",
+      "title": "The Five Orange Pips",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-b5f17d3f6fb7e419",
+        "audio-abb75be1d0dfa8f2",
+        "sidecar-a6064fd1e2f11057",
+        "sidecar-18b644610a79e062",
+        "sidecar-d1b28b74f22ae16a",
+        "sidecar-0539706a013bb954"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-b5f17d3f6fb7e419",
+          "audio-abb75be1d0dfa8f2"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-a6064fd1e2f11057",
+          "sidecar-18b644610a79e062",
+          "sidecar-d1b28b74f22ae16a",
+          "sidecar-0539706a013bb954"
+        ]
+      }
+    },
+    {
+      "slug": "the-furnished-room",
+      "title": "The Furnished Room",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-287776f32ed33681",
+        "audio-036ed045aa2afdfd",
+        "sidecar-29f82070814b68eb",
+        "sidecar-09a2df9cd5541a8d",
+        "sidecar-0019c31407a7d733",
+        "sidecar-fcffd6a26ec88022"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-287776f32ed33681",
+          "audio-036ed045aa2afdfd"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-29f82070814b68eb",
+          "sidecar-09a2df9cd5541a8d",
+          "sidecar-0019c31407a7d733",
+          "sidecar-fcffd6a26ec88022"
+        ]
+      }
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-ef7939c6b9280824",
+        "audio-233bb2eb41ea12a4",
+        "sidecar-d07dc11c9268e0e5",
+        "sidecar-87434584f00aebef",
+        "sidecar-1a29e0d4e1114b02",
+        "sidecar-0ee485e9366fa5ca"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-ef7939c6b9280824",
+          "audio-233bb2eb41ea12a4"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-d07dc11c9268e0e5",
+          "sidecar-87434584f00aebef",
+          "sidecar-1a29e0d4e1114b02",
+          "sidecar-0ee485e9366fa5ca"
+        ]
+      }
+    },
+    {
+      "slug": "the-great-gatsby",
+      "title": "The Great Gatsby",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-67c6b975eeec464f",
+        "sidecar-3faa9394adbe342e",
+        "sidecar-ddbf7139c5fa97f3",
+        "sidecar-738b39360890115c",
+        "sidecar-b655edfa3f003878"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-67c6b975eeec464f"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-3faa9394adbe342e",
+          "sidecar-ddbf7139c5fa97f3",
+          "sidecar-738b39360890115c",
+          "sidecar-b655edfa3f003878"
+        ]
+      }
+    },
+    {
+      "slug": "the-happy-prince",
+      "title": "The Happy Prince",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-ae4e8f3b0309df6d",
+        "audio-785e60f79cd41132",
+        "sidecar-c994fbebe3e7aca2",
+        "sidecar-182377bda0018437",
+        "sidecar-ce3adedfe4307c31",
+        "sidecar-878be92354e9a6fc"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-ae4e8f3b0309df6d",
+          "audio-785e60f79cd41132"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-c994fbebe3e7aca2",
+          "sidecar-182377bda0018437",
+          "sidecar-ce3adedfe4307c31",
+          "sidecar-878be92354e9a6fc"
+        ]
+      }
+    },
+    {
+      "slug": "the-imp-of-the-perverse",
+      "title": "The Imp of the Perverse",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-0b94266e0ef46b58",
+        "audio-c8d3b6a1d382a67b",
+        "sidecar-eb6ea621e4dd2de0",
+        "sidecar-58538c667936049b",
+        "sidecar-f784338158f2e59a",
+        "sidecar-b29c56c541b5b44d"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-0b94266e0ef46b58",
+          "audio-c8d3b6a1d382a67b"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-eb6ea621e4dd2de0",
+          "sidecar-58538c667936049b",
+          "sidecar-f784338158f2e59a",
+          "sidecar-b29c56c541b5b44d"
+        ]
+      }
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "title": "The Lady with the Dog",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-e76236ddb6179f3d",
+        "sidecar-a61e319112dd65b5",
+        "sidecar-b1fd1eab19c5c365",
+        "sidecar-46e9ea0e7f63bc6a",
+        "sidecar-a423e7d67a4db391"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-e76236ddb6179f3d"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-a61e319112dd65b5",
+          "sidecar-b1fd1eab19c5c365",
+          "sidecar-46e9ea0e7f63bc6a",
+          "sidecar-a423e7d67a4db391"
+        ]
+      }
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-c60d13469b978607",
+        "audio-1ba1b092815e955c",
+        "sidecar-21237050920b97af",
+        "sidecar-6cac4c94dd622b93",
+        "sidecar-44fe39d61eab59f0",
+        "sidecar-2815355b543ecb06"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c60d13469b978607",
+          "audio-1ba1b092815e955c"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-21237050920b97af",
+          "sidecar-6cac4c94dd622b93",
+          "sidecar-44fe39d61eab59f0",
+          "sidecar-2815355b543ecb06"
+        ]
+      }
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "title": "The Legend of Sleepy Hollow",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-6379c1f8be0af848",
+        "audio-ff5867a6a058b27c",
+        "sidecar-f290138606dd6170",
+        "sidecar-77697957d431b301",
+        "sidecar-fb0407f81743ceba",
+        "sidecar-37e69122d94dacdc"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-6379c1f8be0af848",
+          "audio-ff5867a6a058b27c"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-f290138606dd6170",
+          "sidecar-77697957d431b301",
+          "sidecar-fb0407f81743ceba",
+          "sidecar-37e69122d94dacdc"
+        ]
+      }
+    },
+    {
+      "slug": "the-lifted-veil",
+      "title": "The Lifted Veil",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-c99a32197fa83d52",
+        "sidecar-e05ffb367ce9cea8",
+        "sidecar-544bbae10b5ae63c",
+        "sidecar-dc64e7902572d37e",
+        "sidecar-25a38a0adafa2b93"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-c99a32197fa83d52"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-e05ffb367ce9cea8",
+          "sidecar-544bbae10b5ae63c",
+          "sidecar-dc64e7902572d37e",
+          "sidecar-25a38a0adafa2b93"
+        ]
+      }
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "title": "The Luck of Roaring Camp",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-5fc35bc1ac281852",
+        "audio-79486e41ab4b53d1",
+        "sidecar-c63003ab6030caba",
+        "sidecar-142a57ed11e1d407",
+        "sidecar-184e2a37c827d557",
+        "sidecar-d64ed6ceace76896"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-5fc35bc1ac281852",
+          "audio-79486e41ab4b53d1"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-c63003ab6030caba",
+          "sidecar-142a57ed11e1d407",
+          "sidecar-184e2a37c827d557",
+          "sidecar-d64ed6ceace76896"
+        ]
+      }
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "title": "The Man in a Case",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-03b7b9964efffdbb",
+        "audio-0524b6c74c7e6f0d",
+        "sidecar-4d833eb1a69513f4",
+        "sidecar-8510fab8073dbe97",
+        "sidecar-4e9443735d2d5130",
+        "sidecar-0c9746cefaa6a8b0"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-03b7b9964efffdbb",
+          "audio-0524b6c74c7e6f0d"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-4d833eb1a69513f4",
+          "sidecar-8510fab8073dbe97",
+          "sidecar-4e9443735d2d5130",
+          "sidecar-0c9746cefaa6a8b0"
+        ]
+      }
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "title": "The Man Who Would Be King",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-1f7714eeaef3c702",
+        "audio-4737a8fd367979ae",
+        "sidecar-5108828c6aa610a8",
+        "sidecar-bca86137815f25d7",
+        "sidecar-7774ed9960537bfa",
+        "sidecar-87afcde973607853"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-1f7714eeaef3c702",
+          "audio-4737a8fd367979ae"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-5108828c6aa610a8",
+          "sidecar-bca86137815f25d7",
+          "sidecar-7774ed9960537bfa",
+          "sidecar-87afcde973607853"
+        ]
+      }
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "title": "The Man with the Twisted Lip",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-839b884f81d731a9",
+        "audio-d8419986d62fdede",
+        "sidecar-19ccd88cbf577348",
+        "sidecar-2d65e00f8fdde622",
+        "sidecar-d5ec4127c660075a",
+        "sidecar-a3f8314d01fb211b"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-839b884f81d731a9",
+          "audio-d8419986d62fdede"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-19ccd88cbf577348",
+          "sidecar-2d65e00f8fdde622",
+          "sidecar-d5ec4127c660075a",
+          "sidecar-a3f8314d01fb211b"
+        ]
+      }
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-184bd15417c5839f",
+        "audio-4d0c47e4c4b6d067",
+        "sidecar-e4972f7fc92a1405",
+        "sidecar-3163613a8fd0d178",
+        "sidecar-03e3a2bd47f137dd",
+        "sidecar-009ffdb5ba036ec4"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-184bd15417c5839f",
+          "audio-4d0c47e4c4b6d067"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-e4972f7fc92a1405",
+          "sidecar-3163613a8fd0d178",
+          "sidecar-03e3a2bd47f137dd",
+          "sidecar-009ffdb5ba036ec4"
+        ]
+      }
+    },
+    {
+      "slug": "the-metamorphosis",
+      "title": "The Metamorphosis",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-094851a657053bb6",
+        "audio-77638ec65a05d7a0",
+        "sidecar-629adba7d8499b6a",
+        "sidecar-c87d426529356e43",
+        "sidecar-b1f989579c35c560",
+        "sidecar-4d330070da353f1b"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-094851a657053bb6",
+          "audio-77638ec65a05d7a0"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-629adba7d8499b6a",
+          "sidecar-c87d426529356e43",
+          "sidecar-b1f989579c35c560",
+          "sidecar-4d330070da353f1b"
+        ]
+      }
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "title": "The Minister's Black Veil",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-1eb2d0f0e438eb5f",
+        "audio-9ae63c81f7133fcd",
+        "sidecar-3ce885b004380d52",
+        "sidecar-e0b806312a283fd0",
+        "sidecar-fd00cfc8cb4646b4",
+        "sidecar-37a89d78c963f032"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-1eb2d0f0e438eb5f",
+          "audio-9ae63c81f7133fcd"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-3ce885b004380d52",
+          "sidecar-e0b806312a283fd0",
+          "sidecar-fd00cfc8cb4646b4",
+          "sidecar-37a89d78c963f032"
+        ]
+      }
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "title": "The Monkey's Paw",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-a9ae5b339149aef9",
+        "audio-9d237c1e2118176b",
+        "sidecar-ae1fff5a650b994d",
+        "sidecar-463b46064db93bbb",
+        "sidecar-4380499a42b84d3b",
+        "sidecar-fdeb59626be2020c"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-a9ae5b339149aef9",
+          "audio-9d237c1e2118176b"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-ae1fff5a650b994d",
+          "sidecar-463b46064db93bbb",
+          "sidecar-4380499a42b84d3b",
+          "sidecar-fdeb59626be2020c"
+        ]
+      }
+    },
+    {
+      "slug": "the-most-dangerous-game",
+      "title": "The Most Dangerous Game",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-0d8a01965388ecb3",
+        "audio-3a65d9a867ecfc0b",
+        "sidecar-8931577298820851",
+        "sidecar-9d591748c20779c4",
+        "sidecar-c77af7580f66428c",
+        "sidecar-5f3fc3a907d112f2"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-0d8a01965388ecb3",
+          "audio-3a65d9a867ecfc0b"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-8931577298820851",
+          "sidecar-9d591748c20779c4",
+          "sidecar-c77af7580f66428c",
+          "sidecar-5f3fc3a907d112f2"
+        ]
+      }
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "title": "The Murders in the Rue Morgue",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-431e1c6ad77734d9",
+        "audio-07be6ccf3acf5978",
+        "sidecar-01be09b9c5521dbb",
+        "sidecar-59fdd0f6d79adefa",
+        "sidecar-900219fb94a776cb",
+        "sidecar-ac8b0c77f9540e94"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-431e1c6ad77734d9",
+          "audio-07be6ccf3acf5978"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-01be09b9c5521dbb",
+          "sidecar-59fdd0f6d79adefa",
+          "sidecar-900219fb94a776cb",
+          "sidecar-ac8b0c77f9540e94"
+        ]
+      }
+    },
+    {
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-edf6d7c46eedc284",
+        "sidecar-844031331ff624b2",
+        "sidecar-ca20fa9222b8649a",
+        "sidecar-8bf5211ba7ba3430",
+        "sidecar-3e9343def17b7c2c"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-edf6d7c46eedc284"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-844031331ff624b2",
+          "sidecar-ca20fa9222b8649a",
+          "sidecar-8bf5211ba7ba3430",
+          "sidecar-3e9343def17b7c2c"
+        ]
+      }
+    },
+    {
+      "slug": "the-open-boat",
+      "title": "The Open Boat",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-46a889f4f14ca7c5",
+        "sidecar-c694b23f57f9caac",
+        "sidecar-0b6561afc71f3ea9",
+        "sidecar-4d670f75c2654b1f",
+        "sidecar-8209aeb7221c87c3"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-46a889f4f14ca7c5"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-c694b23f57f9caac",
+          "sidecar-0b6561afc71f3ea9",
+          "sidecar-4d670f75c2654b1f",
+          "sidecar-8209aeb7221c87c3"
+        ]
+      }
+    },
+    {
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-f1f58109e2c04424",
+        "audio-3774f44b02cd2a43",
+        "sidecar-4ef080dbd3f30287",
+        "sidecar-ee251185b6bc2c3c",
+        "sidecar-355d5f5681c4f166",
+        "sidecar-e17ee06f17746dbe"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-f1f58109e2c04424",
+          "audio-3774f44b02cd2a43"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-4ef080dbd3f30287",
+          "sidecar-ee251185b6bc2c3c",
+          "sidecar-355d5f5681c4f166",
+          "sidecar-e17ee06f17746dbe"
+        ]
+      }
+    },
+    {
+      "slug": "the-outcasts-of-poker-flat",
+      "title": "The Outcasts of Poker Flat",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-09003e0a5643eb60",
+        "audio-2f3343537d38fe84",
+        "sidecar-e7daa7ea3ff2b45c",
+        "sidecar-d631125287d599aa",
+        "sidecar-a008281b9102b236",
+        "sidecar-f89e45ccc86c0b6a"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-09003e0a5643eb60",
+          "audio-2f3343537d38fe84"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-e7daa7ea3ff2b45c",
+          "sidecar-d631125287d599aa",
+          "sidecar-a008281b9102b236",
+          "sidecar-f89e45ccc86c0b6a"
+        ]
+      }
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "title": "The Pit and the Pendulum",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-d10800ec4f1ad3d2",
+        "audio-550c394313c449f1",
+        "sidecar-a684b36417a032f4",
+        "sidecar-60e92ad4d98578a9",
+        "sidecar-0f83be62826677b8",
+        "sidecar-16fd168a608a9391"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-d10800ec4f1ad3d2",
+          "audio-550c394313c449f1"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-a684b36417a032f4",
+          "sidecar-60e92ad4d98578a9",
+          "sidecar-0f83be62826677b8",
+          "sidecar-16fd168a608a9391"
+        ]
+      }
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "title": "The Principles of Scientific Management",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-419ca87e6d3174b5"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-419ca87e6d3174b5"
+        ],
+        "supporting_asset_object_ids": []
+      }
+    },
+    {
+      "slug": "the-purloined-letter",
+      "title": "The Purloined Letter",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-0d2a9a6b266b4ac3",
+        "audio-5b1303ba76df4cce",
+        "sidecar-0e51b92252a771b0",
+        "sidecar-4ea4dc03d7018c60",
+        "sidecar-476cfb686720f29e",
+        "sidecar-a1ee600a87d8aeb0"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-0d2a9a6b266b4ac3",
+          "audio-5b1303ba76df4cce"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-0e51b92252a771b0",
+          "sidecar-4ea4dc03d7018c60",
+          "sidecar-476cfb686720f29e",
+          "sidecar-a1ee600a87d8aeb0"
+        ]
+      }
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "title": "The Ransom of Red Chief",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-ae4e3ffabdd1e9a1",
+        "audio-950550216273b357",
+        "sidecar-8fad5ceb92b9048c",
+        "sidecar-67a249c504369e66",
+        "sidecar-48c8c460d7d11c45",
+        "sidecar-ccc2ee3eb3a514c0"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-ae4e3ffabdd1e9a1",
+          "audio-950550216273b357"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-8fad5ceb92b9048c",
+          "sidecar-67a249c504369e66",
+          "sidecar-48c8c460d7d11c45",
+          "sidecar-ccc2ee3eb3a514c0"
+        ]
+      }
+    },
+    {
+      "slug": "the-red-headed-league",
+      "title": "The Red-Headed League",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-2b6398925be77b29",
+        "audio-bd43e910657a4398",
+        "sidecar-b44f827c5c54387a",
+        "sidecar-64a605cb33a4e960",
+        "sidecar-5b1d4a4dfb20695f",
+        "sidecar-4c0e2c5077bc60a7"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-2b6398925be77b29",
+          "audio-bd43e910657a4398"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-b44f827c5c54387a",
+          "sidecar-64a605cb33a4e960",
+          "sidecar-5b1d4a4dfb20695f",
+          "sidecar-4c0e2c5077bc60a7"
+        ]
+      }
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "title": "The Science of Getting Rich",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-ed6a56661c736321",
+        "audio-f1e89a2d0e335795"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-ed6a56661c736321",
+          "audio-f1e89a2d0e335795"
+        ],
+        "supporting_asset_object_ids": []
+      }
+    },
+    {
+      "slug": "the-selfish-giant",
+      "title": "The Selfish Giant",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-b9cc52fb43552b0e",
+        "audio-5114bc1b4826b9b4",
+        "sidecar-d29f3f6abfbe6e60",
+        "sidecar-69f520be95fe5778",
+        "sidecar-7a2c0b8c71e9094d",
+        "sidecar-91bb87e6887e81d8"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-b9cc52fb43552b0e",
+          "audio-5114bc1b4826b9b4"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-d29f3f6abfbe6e60",
+          "sidecar-69f520be95fe5778",
+          "sidecar-7a2c0b8c71e9094d",
+          "sidecar-91bb87e6887e81d8"
+        ]
+      }
+    },
+    {
+      "slug": "the-speckled-band",
+      "title": "The Speckled Band",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-2a12d764d8086f98",
+        "audio-262ff52aa56003d9",
+        "sidecar-33d7e23c325feaf7",
+        "sidecar-1997d308b659e146",
+        "sidecar-476c892c9574dd77",
+        "sidecar-dfcad107592284ff"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-2a12d764d8086f98",
+          "audio-262ff52aa56003d9"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-33d7e23c325feaf7",
+          "sidecar-1997d308b659e146",
+          "sidecar-476c892c9574dd77",
+          "sidecar-dfcad107592284ff"
+        ]
+      }
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "title": "The Stolen White Elephant",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-7c05c330c5d110af",
+        "sidecar-05be2fcf085cde23",
+        "sidecar-d82a6778030759d0",
+        "sidecar-4d5d7bfd76bc2d42",
+        "sidecar-db8d898521164083"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-7c05c330c5d110af"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-05be2fcf085cde23",
+          "sidecar-d82a6778030759d0",
+          "sidecar-4d5d7bfd76bc2d42",
+          "sidecar-db8d898521164083"
+        ]
+      }
+    },
+    {
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-36d5a43e1c51e9bb",
+        "audio-5601fb86133ddfe8",
+        "sidecar-2bccbd094912a335",
+        "sidecar-95a19f010494f43d",
+        "sidecar-d2ba2f279c902a69",
+        "sidecar-7b276661f79f3e59"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-36d5a43e1c51e9bb",
+          "audio-5601fb86133ddfe8"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-2bccbd094912a335",
+          "sidecar-95a19f010494f43d",
+          "sidecar-d2ba2f279c902a69",
+          "sidecar-7b276661f79f3e59"
+        ]
+      }
+    },
+    {
+      "slug": "the-student",
+      "title": "The Student",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-b192cc34fd9a30aa",
+        "audio-fc06ecec376f201d",
+        "sidecar-695c77542c997889",
+        "sidecar-17c314897be69544",
+        "sidecar-9bfca57ef765b39c",
+        "sidecar-3c61af59e4a8aa96"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-b192cc34fd9a30aa",
+          "audio-fc06ecec376f201d"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-695c77542c997889",
+          "sidecar-17c314897be69544",
+          "sidecar-9bfca57ef765b39c",
+          "sidecar-3c61af59e4a8aa96"
+        ]
+      }
+    },
+    {
+      "slug": "the-suicide-club",
+      "title": "The Suicide Club",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-076d15e0bfbd7e56",
+        "sidecar-7c9397bc61adb52a",
+        "sidecar-d945f322bb903c67",
+        "sidecar-2e6c9a5410c443ab",
+        "sidecar-110af3c0262c0e9e"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-076d15e0bfbd7e56"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-7c9397bc61adb52a",
+          "sidecar-d945f322bb903c67",
+          "sidecar-2e6c9a5410c443ab",
+          "sidecar-110af3c0262c0e9e"
+        ]
+      }
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-2b116904d1b65ff5",
+        "audio-edb542da8bc888b2",
+        "sidecar-668f3562d5349aa4",
+        "sidecar-54f787b9bdf771ed",
+        "sidecar-ee621c7376509680",
+        "sidecar-682696f443e2e963"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-2b116904d1b65ff5",
+          "audio-edb542da8bc888b2"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-668f3562d5349aa4",
+          "sidecar-54f787b9bdf771ed",
+          "sidecar-ee621c7376509680",
+          "sidecar-682696f443e2e963"
+        ]
+      }
+    },
+    {
+      "slug": "the-time-machine",
+      "title": "The Time Machine",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-ba9f7e43177e3777",
+        "sidecar-87864fb08e25de0b",
+        "sidecar-1ce09cf95dd47f34",
+        "sidecar-5c7b8bc3126c3046",
+        "sidecar-fa11f1cec70f9ef9"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-ba9f7e43177e3777"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-87864fb08e25de0b",
+          "sidecar-1ce09cf95dd47f34",
+          "sidecar-5c7b8bc3126c3046",
+          "sidecar-fa11f1cec70f9ef9"
+        ]
+      }
+    },
+    {
+      "slug": "the-withered-arm",
+      "title": "The Withered Arm",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-04ab6efefbc1d15c",
+        "audio-e284df4139980e2e",
+        "sidecar-0a006d12f4bfe31b",
+        "sidecar-0e8848e6194b0503",
+        "sidecar-00932717a7aef830",
+        "sidecar-f247c42ac11ecd1a"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-04ab6efefbc1d15c",
+          "audio-e284df4139980e2e"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-0a006d12f4bfe31b",
+          "sidecar-0e8848e6194b0503",
+          "sidecar-00932717a7aef830",
+          "sidecar-f247c42ac11ecd1a"
+        ]
+      }
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "title": "The Wonderful Wizard of Oz",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 8,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-d36aa0d759826a1f",
+        "audio-f241e23d457fe0ee",
+        "sidecar-e0ae9bb851f48365",
+        "sidecar-2ae03aa61ed3f4d5",
+        "sidecar-08eb47441df43231",
+        "sidecar-f6bc08ec10229a76",
+        "sidecar-c25a9becda0d4303",
+        "sidecar-65c238160cf14b31",
+        "sidecar-0dec5f504ba38beb",
+        "sidecar-71c956680749b0e3"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-d36aa0d759826a1f",
+          "audio-f241e23d457fe0ee"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-e0ae9bb851f48365",
+          "sidecar-2ae03aa61ed3f4d5",
+          "sidecar-08eb47441df43231",
+          "sidecar-f6bc08ec10229a76",
+          "sidecar-c25a9becda0d4303",
+          "sidecar-65c238160cf14b31",
+          "sidecar-0dec5f504ba38beb",
+          "sidecar-71c956680749b0e3"
+        ]
+      }
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-89b5a7131f0178bd",
+        "audio-d7bd542e397b1318",
+        "sidecar-a35c530ceb4c06e3",
+        "sidecar-c2d83e25dc374b76",
+        "sidecar-0a00de2a44d05f1e",
+        "sidecar-724f780e94d25be4"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-89b5a7131f0178bd",
+          "audio-d7bd542e397b1318"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-a35c530ceb4c06e3",
+          "sidecar-c2d83e25dc374b76",
+          "sidecar-0a00de2a44d05f1e",
+          "sidecar-724f780e94d25be4"
+        ]
+      }
+    },
+    {
+      "slug": "to-build-a-fire",
+      "title": "To Build a Fire",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-0c5e00664654349d",
+        "audio-8714fb57f5ffab88",
+        "sidecar-fc4300949a5f6cd1",
+        "sidecar-a1ba76d8c26300aa",
+        "sidecar-3bc24539874902e1",
+        "sidecar-57f1ce291583b690"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-0c5e00664654349d",
+          "audio-8714fb57f5ffab88"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-fc4300949a5f6cd1",
+          "sidecar-a1ba76d8c26300aa",
+          "sidecar-3bc24539874902e1",
+          "sidecar-57f1ce291583b690"
+        ]
+      }
+    },
+    {
+      "slug": "tobermory",
+      "title": "Tobermory",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-b618b7a25eda4bb9",
+        "sidecar-62c9dd793fe7cfba",
+        "sidecar-d6597271f028c190",
+        "sidecar-5c277eedeb2ce3d5",
+        "sidecar-03c06bffca1df8c6"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-b618b7a25eda4bb9"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-62c9dd793fe7cfba",
+          "sidecar-d6597271f028c190",
+          "sidecar-5c277eedeb2ce3d5",
+          "sidecar-03c06bffca1df8c6"
+        ]
+      }
+    },
+    {
+      "slug": "ward-no-6",
+      "title": "Ward No. 6",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-44c31d5fc7c500f6",
+        "sidecar-654fd1469d9eda7f",
+        "sidecar-4b59bd636608882b",
+        "sidecar-402621b1156a2377",
+        "sidecar-6a6a6316a6fdef62"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-44c31d5fc7c500f6"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-654fd1469d9eda7f",
+          "sidecar-4b59bd636608882b",
+          "sidecar-402621b1156a2377",
+          "sidecar-6a6a6316a6fdef62"
+        ]
+      }
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-60792fb29d85b951"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 200,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-60792fb29d85b951"
+        ],
+        "supporting_asset_object_ids": []
+      }
+    },
+    {
+      "slug": "young-goodman-brown",
+      "title": "Young Goodman Brown",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 2,
+      "reachable_unapproved_or_stale_sidecar_count": 4,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 0,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-325f4cae9800c2da",
+        "audio-d0ad4f39a462810c",
+        "sidecar-1cee46485c99f11e",
+        "sidecar-ffee314e26419a25",
+        "sidecar-117db143adfb6a0f",
+        "sidecar-8320fdef273fad7f"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-325f4cae9800c2da",
+          "audio-d0ad4f39a462810c"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-1cee46485c99f11e",
+          "sidecar-ffee314e26419a25",
+          "sidecar-117db143adfb6a0f",
+          "sidecar-8320fdef273fad7f"
+        ]
+      }
+    },
+    {
+      "slug": "yugalanguriya",
+      "title": "যুগলাঙ্গুরীয়",
+      "direct_object_accessible_now": true,
+      "release_gate_approved": false,
+      "public_api_exposes_audio": false,
+      "public_ui_exposes_audio": false,
+      "storage_bypass_risk": true,
+      "reachable_unapproved_or_stale_direct_audio_count": 1,
+      "reachable_unapproved_or_stale_sidecar_count": 0,
+      "inaccessible_unapproved_or_stale_direct_audio_count": 1,
+      "current_approved_direct_audio_count": 0,
+      "recommended_containment_action": "MOVE_TO_PRIVATE_QA_BUCKET",
+      "risk_level": "P0_CRITICAL",
+      "owner_approval_needed": true,
+      "containment_object_ids": [
+        "audio-afcc90a86cabed90"
+      ],
+      "evidence": {
+        "production_manifest_http_status": 404,
+        "production_audio_enabled": false,
+        "direct_audio_object_ids": [
+          "audio-8f6b582d507bf580",
+          "audio-afcc90a86cabed90"
+        ],
+        "supporting_asset_object_ids": [
+          "sidecar-b4633744486175ea",
+          "sidecar-cdaf23234ea786bc",
+          "sidecar-1e43ded76260f1b9",
+          "sidecar-6c6e2845e78ca96e"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "the-adventure-of-the-engineers-thumb",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "de78ff2a98e0f1c817977b680d3cd5cf89098df63d204522d1c7114a621faa6a"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "b2c5a80b0fdb2703fe217c61982702ea5691ea4b2f7342a8d455decbf794e2c0"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "a207de77dedc64d8de3c08f181a2069a82d6e6c382f4174f02ff83313b972bec"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "cb75b90fa9b8e613fb36a802fe44be29ec7c3210f49edea2fedab7003a4acf8d"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "ad1a8b86a6dd2a98754062074fc71cf2337b169ee9cf045145cc4935f10075c7"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "7323c35e43db9fef07f912532e800533d23a6ceb5ac8dedf6715d910a4fd2921"
+    }
+  ]
+}

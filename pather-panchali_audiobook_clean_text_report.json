@@ -1,0 +1,18 @@
+{
+  "slug": "pather-panchali",
+  "title": "পথের পাঁচালী / Pather Panchali",
+  "status": "PASS_CLEAN_TEXT_EXTRACTED",
+  "canonical_reader_hash": "77bbc0ac1cb7c0548efb0139c13fa50252dfeff32503edb74f8ee6a857f0d751",
+  "audiobook_clean_hash": "9756252bd4460b5ebea2aff152b29c0dbfcf0d6f9668e3f10790d30592d48a41",
+  "removed_spans": [],
+  "removed_span_count": 0,
+  "removal_reason": "Strip source/page/date headers from narration while preserving reader display text.",
+  "first_words": "নিশ্চিন্দিপুর গ্রামের একেবারে উত্তরপ্রান্তে হরিহর রায়ের ক্ষুদ্র কোঠাবাড়ী। হরিহর সাধারণ অবস্থার গৃহস্থ, পৈতৃক আমলের সামান্য জমিজমার আয় ও",
+  "last_words": "ঠাকুর, ওদের তুমি বাঁচিয়ে বর্ত্তে রেখো ঠাকুর। ওদের তুমি মঙ্গল কোরো। তুমি ওদের মুখের দিকে চেও। দোহাই ঠাকুর।",
+  "chapter_section_count": 12,
+  "estimated_character_count": 126245,
+  "estimated_duration_minutes": 140.7,
+  "estimated_tts_cost_usd": 0.15,
+  "full_text_in": "pather-panchali_audiobook_clean_text.json",
+  "blockers": []
+}

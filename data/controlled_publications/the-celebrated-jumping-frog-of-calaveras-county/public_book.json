@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-celebrated-jumping-frog-of-calaveras-county",
+  "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+  "title": "The Celebrated Jumping Frog of Calaveras County",
+  "subtitle": "",
+  "author": "Mark Twain",
+  "category_slug": "literary-fiction",
+  "short_description": "A garrulous gambler in a California mining camp bets on the jumping ability of his educated frog — and gets swindled.",
+  "description": "Jim Smiley will bet on anything — and his trained jumping frog Dan'l Webster is his prize asset, until a stranger quietly fills the frog with quail shot. The story that made Mark Twain famous overnight.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "11 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Mark Twain (1835–1910) was an American author and humorist, one of the great literary voices of American democracy and vernacular wit.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Celebrated Jumping Frog of Calaveras County",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2713,
+      "reading_minutes": 12,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "28b3c1e687145e6bfb8871dfde7c6dc6f55a69b7eae41e0933bca9e08cc6b44a",
+  "content_hash": "5e7e1d54abb8eb87764f4118319ef5c11224381b11b8d3a3b198ce85d016f722",
+  "provenance_hash": "ee9166ef167cd220b4386ad52881dff2c0fabc9149b4f073fd293f815e1d8448",
+  "rights_basis": "Mark Twain died 1910; first published 1865. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-celebrated-jumping-frog-of-calaveras-county",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580717/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580719/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580720/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580722/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580723/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580717/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580717/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580719/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580720/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580722/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580723/earnalism/audiobooks/en/the-celebrated-jumping-frog-of-calaveras-county/the-celebrated-jumping-frog-of-calaveras-county_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

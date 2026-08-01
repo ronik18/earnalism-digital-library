@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-07-08T00:00:00+05:30",
+  "status": "PARTIAL_RESOLUTION_WITH_PATHER_PANCHALI_AMBIGUITY",
+  "requested_titles": [
+    "anandamathh / আনন্দমঠ",
+    "Pather Panchali / পথের পাঁচালী"
+  ],
+  "titles": [
+    {
+      "requested_name": "anandamathh",
+      "canonical_slug": "bn-066",
+      "public_title": "আনন্দমঠ",
+      "bengali_title": "আনন্দমঠ",
+      "english_transliteration_or_title": "Anandamath",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "ben",
+      "source_path": "content/books/bn-066",
+      "controlled_publication_path": "data/controlled_publications/bn-066",
+      "current_production_reader_status": "reader_ready",
+      "current_audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "confidence": 0.96,
+      "ambiguity": false,
+      "exact_blocker_if_unresolved": null
+    },
+    {
+      "requested_name": "Pather Panchali",
+      "canonical_slug": "pather-panchali",
+      "public_title": "পথের পাঁচালী / Pather Panchali",
+      "bengali_title": "পথের পাঁচালী",
+      "english_transliteration_or_title": "Pather Panchali",
+      "author": "Bibhutibhushan Bandyopadhyay",
+      "language": "ben",
+      "source_path": "content/books/pather-panchali",
+      "controlled_publication_path": "data/controlled_publications/pather-panchali",
+      "current_production_reader_status": "reader_ready",
+      "current_audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "confidence": 0.84,
+      "ambiguity": true,
+      "exact_blocker_if_unresolved": "User request Pather Panchali maps to complete-looking pather-panchali local reader, but local source evidence cannot prove full-work completeness and there is a separate partial manifest entry bn-086."
+    }
+  ],
+  "do_not_proceed_if_ambiguous": true,
+  "stage_1_overall_status": "BLOCKED_FOR_FULL_AUDIOBOOK_BY_PATHER_PANCHALI_SOURCE_COMPLETENESS_AND_PAID_TTS_LOCK"
+}

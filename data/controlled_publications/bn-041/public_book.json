@@ -1,0 +1,191 @@
+{
+  "id": "controlled-bn-041",
+  "slug": "bn-041",
+  "title": "আঁধারে আলো",
+  "subtitle": "",
+  "author": "শরৎচন্দ্র চট্টোপাধ্যায়",
+  "category_slug": "literary-fiction",
+  "short_description": "অন্ধকারের মধ্যে যে আলোর সন্ধান করা যায়, সেই বিশ্বাসের গল্প।",
+  "description": "A story about finding light in impossible darkness — Sarat Chandra's abiding faith in human goodness expressed through a crisis that strips everything away.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270649/earnalism/covers/front/bn-041_front_1600x2400.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270649/earnalism/covers/front/bn-041_front_1600x2400.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270649/earnalism/covers/front/bn-041_front_1600x2400.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270649/earnalism/covers/front/bn-041_front_1600x2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270650/earnalism/covers/back/bn-041_back_1600x2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270650/earnalism/covers/back/bn-041_back_1600x2400.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270650/earnalism/covers/back/bn-041_back_1600x2400.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "21 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "শরৎচন্দ্র চট্টোপাধ্যায় (১৮৭৬–১৯৩৮) বাংলা সাহিত্যের সবচেয়ে জনপ্রিয় কথাসাহিত্যিক।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Chapter 1. এক",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 631,
+      "reading_minutes": 3,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "Chapter 2. দুই",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 392,
+      "reading_minutes": 2,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    {
+      "id": "chapter-003",
+      "order": 3,
+      "title": "Chapter 3. তিন",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 849,
+      "reading_minutes": 4,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    {
+      "id": "chapter-004",
+      "order": 4,
+      "title": "Chapter 4. চার",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 443,
+      "reading_minutes": 2,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    {
+      "id": "chapter-005",
+      "order": 5,
+      "title": "Chapter 5. পাঁচ",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1642,
+      "reading_minutes": 7,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    {
+      "id": "chapter-006",
+      "order": 6,
+      "title": "Chapter 6. ছয়",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1109,
+      "reading_minutes": 5,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "c7639924d0638986453e3ab15aa949220b38a0ae1edc1619d44370d733e046d7",
+  "content_hash": "45f66af7c4420dc81e5fdb8f66337383b4d6e1ccc6ddc32aa17ac555d8e0ba88",
+  "provenance_hash": "df2e91922dcc4b741c41292472840b833f6ef0d9b3d8fea9ecc7d70e85bca31e",
+  "rights_basis": "Author died 1938. Published 1922. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "bn-041",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780680250/earnalism/audiobooks/ben/bn-041/bn-041.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780680251/earnalism/audiobooks/ben/bn-041/bn-041_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780680252/earnalism/audiobooks/ben/bn-041/bn-041_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780680253/earnalism/audiobooks/ben/bn-041/bn-041_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780680253/earnalism/audiobooks/ben/bn-041/bn-041_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780680250/earnalism/audiobooks/ben/bn-041/bn-041.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780680250/earnalism/audiobooks/ben/bn-041/bn-041.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780680251/earnalism/audiobooks/ben/bn-041/bn-041_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780680252/earnalism/audiobooks/ben/bn-041/bn-041_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780680253/earnalism/audiobooks/ben/bn-041/bn-041_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780680253/earnalism/audiobooks/ben/bn-041/bn-041_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:46Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "cover_semantic_match_score": 9.8
+}

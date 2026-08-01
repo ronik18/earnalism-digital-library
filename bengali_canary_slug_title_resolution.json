@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-08T00:00:00+05:30",
+  "status": "BENGALI_CANARY_TITLES_RESOLVED",
+  "resolution_rule": "Search canonical sources in requested order and stop at the first deterministic local source. Use production/public API only if local canonical data is missing.",
+  "source_order_checked": [
+    "launch_title_public_naming_map.json",
+    "earnalism_book_inventory_for_launch.json",
+    "launch_fitness_scorecard.json",
+    "book_import_manifest.json",
+    "data/controlled_publications/<slug>/public_book.json",
+    "content/books/<slug>/",
+    "latest release_gate folders",
+    "bengali_audiobook_campaign_dashboard.json",
+    "internal/earnalism_intelligence/title_decision_history.json"
+  ],
+  "production_api_used": false,
+  "titles": [
+    {
+      "slug": "book-d19e96859f",
+      "public_title": "গিন্নি",
+      "bengali_title": "গিন্নি",
+      "english_title_or_translation": "Ginni",
+      "english_title_or_translation_type": "transliteration",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "source_file_used": "launch_title_public_naming_map.json",
+      "corroborating_sources": [
+        "earnalism_book_inventory_for_launch.json",
+        "launch_fitness_scorecard.json",
+        "data/controlled_publications/book-d19e96859f/public_book.json",
+        "content/books/book-d19e96859f/book.json",
+        "bengali_audiobook_campaign_dashboard.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
+      ],
+      "confidence": 1.0,
+      "ambiguity": false,
+      "notes": "Resolved deterministically from the first requested source. Local controlled publication and content book agree on Bengali title and author. No explicit English translation field was found; the available customer-safe English value is transliteration."
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "public_title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "bengali_title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "english_title_or_translation": "Ramkanaiyer Nirbuddhita",
+      "english_title_or_translation_type": "transliteration",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "source_file_used": "launch_title_public_naming_map.json",
+      "corroborating_sources": [
+        "earnalism_book_inventory_for_launch.json",
+        "launch_fitness_scorecard.json",
+        "data/controlled_publications/book-f5d593e1f4/public_book.json",
+        "content/books/book-f5d593e1f4/book.json",
+        "bengali_audiobook_campaign_dashboard.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
+      ],
+      "confidence": 1.0,
+      "ambiguity": false,
+      "notes": "Resolved deterministically from the first requested source. Local controlled publication and content book agree on Bengali title and author. No explicit English translation field was found; the available customer-safe English value is transliteration."
+    }
+  ]
+}

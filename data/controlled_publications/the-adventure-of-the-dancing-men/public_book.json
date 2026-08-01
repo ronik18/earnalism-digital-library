@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-adventure-of-the-dancing-men",
+  "slug": "the-adventure-of-the-dancing-men",
+  "title": "The Adventure of the Dancing Men",
+  "subtitle": "",
+  "author": "Arthur Conan Doyle",
+  "category_slug": "adventure",
+  "short_description": "Holmes deciphers a cipher of stick-figure dancing men — but solves it too late to save an innocent life.",
+  "description": "A Norfolk squire's American wife is terrified by stick-figure drawings appearing around their estate. Holmes breaks the cipher — but the warning arrives too late. One of the Holmes stories where the detective's triumph is incomplete and tragedy stands.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "41 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Arthur Conan Doyle (1859–1930) was a British author and physician, creator of Sherlock Holmes and Dr. Watson.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Adventure of the Dancing Men",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 9716,
+      "reading_minutes": 41,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "f8acdaa228e5ed8f8f5672316f2c6044c44da568fa9398e65a1267456b6a1774",
+  "content_hash": "924f60975fb2a9e147ac51b8abba1a0d1bee1efa475de9ece38615ac615fc755",
+  "provenance_hash": "17c0db286dcfaf0b34d86e4c47731ee963af1444b0a00f85d12d76981c1c4853",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1903. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-adventure-of-the-dancing-men",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780586368/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586369/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586370/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586371/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586371/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780586368/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780586368/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586369/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586370/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586371/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780586371/earnalism/audiobooks/en/the-adventure-of-the-dancing-men/the-adventure-of-the-dancing-men_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

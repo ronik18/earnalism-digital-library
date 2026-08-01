@@ -1,0 +1,3372 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-14T02:08:36Z",
+  "owner_decision": "AUTHORIZE_SPRINT1_SCOPED_STORAGE_CONTAINMENT_AND_DEFER_NONSPRINT_REMOTE_CONTAINMENT.",
+  "inventory_sha256": "21c9f5c85c56be3779822b90fb31c178db8131f7f39f7d2bdae1d00a5f61b23c",
+  "selection_mode": "ACTIVE_SPRINT1_ONLY",
+  "active_slugs": [
+    "a-ghost-story",
+    "alices-adventures-in-wonderland",
+    "bn-066",
+    "book-2b9853ec52",
+    "book-d19e96859f",
+    "book-edfcf810c5",
+    "book-f5d593e1f4",
+    "devdas",
+    "dracula",
+    "dsires-baby",
+    "frankenstein",
+    "jekyll-and-hyde",
+    "muchiram-gurer-jibanchorit",
+    "nishkriti",
+    "pather-panchali",
+    "picture-of-dorian-gray",
+    "pride-and-prejudice",
+    "radharani",
+    "sredni-vashtar",
+    "the-call-of-the-wild",
+    "the-cop-and-the-anthem",
+    "the-gift-of-the-magi",
+    "the-last-leaf",
+    "the-masque-of-the-red-death",
+    "the-monkeys-paw",
+    "the-necklace",
+    "the-open-window",
+    "the-secret-garden",
+    "the-tell-tale-heart",
+    "the-time-machine",
+    "the-yellow-wallpaper",
+    "white-fang"
+  ],
+  "deferred_excluded": [
+    "great-expectations",
+    "jane-eyre"
+  ],
+  "summary": {
+    "active_sprint1_slug_count": 32,
+    "scoped_reviewed_object_count": 135,
+    "executable_target_count": 70,
+    "already_contained_private_verified_count": 35,
+    "inaccessible_without_private_retention_count": 30,
+    "protected_current_approved_asset_count": 10,
+    "estimated_scoped_storage_bytes_known": 812507036,
+    "estimated_scoped_storage_unknown_size_count": 58,
+    "estimated_remaining_storage_bytes_known": 206710025,
+    "estimated_remaining_storage_unknown_size_count": 48,
+    "cloudinary_target_count": 70,
+    "b2_target_count": 0,
+    "mp3_target_count": 6,
+    "sidecar_target_count": 64,
+    "non_sprint_reviewed_targets_deferred": 471
+  },
+  "targets": [
+    {
+      "object_id": "audio-2b116904d1b65ff5",
+      "slug": "the-tell-tale-heart",
+      "associated_slugs": [
+        "the-tell-tale-heart"
+      ],
+      "title": "The Tell-Tale Heart",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580534/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart.mp3",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "audio/mpeg",
+      "byte_size": 4169213,
+      "source_files": [
+        "data/controlled_publications/the-tell-tale-heart/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+        "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/the_tell_tale_heart_repair_plan.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-tell-tale-heart/audio-2b116904d1b65ff5/the-tell-tale-heart.mp3",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "audio-edb542da8bc888b2",
+      "slug": "the-tell-tale-heart",
+      "associated_slugs": [
+        "the-tell-tale-heart"
+      ],
+      "title": "The Tell-Tale Heart",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781306959/earnalism/audiobooks-polished/en/the-tell-tale-heart/the-tell-tale-heart-english-polish-queue-v1.mp3.mp3",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "audio/mpeg",
+      "byte_size": 8614182,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-tell-tale-heart/audio-edb542da8bc888b2/the-tell-tale-heart-english-polish-queue-v1.mp3.mp3",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "audio-ba9f7e43177e3777",
+      "slug": "the-time-machine",
+      "associated_slugs": [
+        "the-time-machine"
+      ],
+      "title": "The Time Machine",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780595371/earnalism/audiobooks/en/the-time-machine/the-time-machine.mp3",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "audio/mpeg",
+      "byte_size": 63694228,
+      "source_files": [
+        "data/controlled_publications/the-time-machine/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-time-machine/audio-ba9f7e43177e3777/the-time-machine.mp3",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "audio-89b5a7131f0178bd",
+      "slug": "the-yellow-wallpaper",
+      "associated_slugs": [
+        "the-yellow-wallpaper"
+      ],
+      "title": "The Yellow Wallpaper",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582188/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper.mp3",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "audio/mpeg",
+      "byte_size": 11018362,
+      "source_files": [
+        "data/controlled_publications/the-yellow-wallpaper/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-yellow-wallpaper/audio-89b5a7131f0178bd/the-yellow-wallpaper.mp3",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "audio-d7bd542e397b1318",
+      "slug": "the-yellow-wallpaper",
+      "associated_slugs": [
+        "the-yellow-wallpaper"
+      ],
+      "title": "The Yellow Wallpaper",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781436815/earnalism/audiobooks-polished/en/the-yellow-wallpaper/the-yellow-wallpaper-english-polish-edge-queue-v1.mp3.mp3",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "audio/mpeg",
+      "byte_size": 20146303,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-yellow-wallpaper/audio-d7bd542e397b1318/the-yellow-wallpaper-english-polish-edge-queue-v1.mp3.mp3",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "audio-60792fb29d85b951",
+      "slug": "white-fang",
+      "associated_slugs": [
+        "white-fang"
+      ],
+      "title": "White Fang",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780804772/earnalism/audiobooks/en/white-fang/white-fang.mp3",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "audio/mpeg",
+      "byte_size": 92750908,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/white-fang/audio-60792fb29d85b951/white-fang.mp3",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-a95c8f908190ac46",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593687/earnalism/audiobooks/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/alices-adventures-in-wonderland/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/sidecar-a95c8f908190ac46/alices-adventures-in-wonderland_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-39ce48c90796856f",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438363/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/alices-adventures-in-wonderland/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/sidecar-39ce48c90796856f/alices-adventures-in-wonderland-english-polish-edge-queue-v1_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-8b64744a54b0c92c",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593688/earnalism/audiobooks/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/alices-adventures-in-wonderland/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/sidecar-8b64744a54b0c92c/alices-adventures-in-wonderland_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-5c12f3939131f79f",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438363/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/alices-adventures-in-wonderland/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/sidecar-5c12f3939131f79f/alices-adventures-in-wonderland-english-polish-edge-queue-v1_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-50c48ea668281998",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593685/earnalism/audiobooks/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/alices-adventures-in-wonderland/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/sidecar-50c48ea668281998/alices-adventures-in-wonderland_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-ba8ae873808b453b",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438361/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/alices-adventures-in-wonderland/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/sidecar-ba8ae873808b453b/alices-adventures-in-wonderland-english-polish-edge-queue-v1_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-8e0e3c1bad79d8f4",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593687/earnalism/audiobooks/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 994087,
+      "source_files": [
+        "data/controlled_publications/alices-adventures-in-wonderland/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/sidecar-8e0e3c1bad79d8f4/alices-adventures-in-wonderland_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-36dc5ebd1635581b",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438362/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 1135335,
+      "source_files": [
+        "backend/data/controlled_publications/alices-adventures-in-wonderland/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/sidecar-36dc5ebd1635581b/alices-adventures-in-wonderland-english-polish-edge-queue-v1_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-31d34268c1fa45d2",
+      "slug": "dsires-baby",
+      "associated_slugs": [
+        "dsires-baby"
+      ],
+      "title": "Désirée's Baby",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580572/earnalism/audiobooks/en/dsires-baby/dsires-baby_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/dsires-baby/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/dsires-baby/sidecar-31d34268c1fa45d2/dsires-baby_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-c325371330101ac7",
+      "slug": "dsires-baby",
+      "associated_slugs": [
+        "dsires-baby"
+      ],
+      "title": "Désirée's Baby",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580572/earnalism/audiobooks/en/dsires-baby/dsires-baby_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/dsires-baby/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/dsires-baby/sidecar-c325371330101ac7/dsires-baby_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-aef23f8f3b14ad33",
+      "slug": "dsires-baby",
+      "associated_slugs": [
+        "dsires-baby"
+      ],
+      "title": "Désirée's Baby",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580569/earnalism/audiobooks/en/dsires-baby/dsires-baby_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/dsires-baby/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/dsires-baby/sidecar-aef23f8f3b14ad33/dsires-baby_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-1756c8b5bfc27bce",
+      "slug": "dsires-baby",
+      "associated_slugs": [
+        "dsires-baby"
+      ],
+      "title": "Désirée's Baby",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580571/earnalism/audiobooks/en/dsires-baby/dsires-baby_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 83089,
+      "source_files": [
+        "data/controlled_publications/dsires-baby/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/dsires-baby/sidecar-1756c8b5bfc27bce/dsires-baby_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-616507afb116872c",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781268521/earnalism/audiobooks-polished/ben/nishkriti/nishkriti-bengali-polish-queue-v1_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/sidecar-616507afb116872c/nishkriti-bengali-polish-queue-v1_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-055cecf391ec9151",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781268522/earnalism/audiobooks-polished/ben/nishkriti/nishkriti-bengali-polish-queue-v1_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/sidecar-055cecf391ec9151/nishkriti-bengali-polish-queue-v1_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-1d0780793328c792",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781268518/earnalism/audiobooks-polished/ben/nishkriti/nishkriti-bengali-polish-queue-v1_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/sidecar-1d0780793328c792/nishkriti-bengali-polish-queue-v1_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-15bac5324ff40980",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781268520/earnalism/audiobooks-polished/ben/nishkriti/nishkriti-bengali-polish-queue-v1_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 717938,
+      "source_files": [
+        "backend/data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/sidecar-15bac5324ff40980/nishkriti-bengali-polish-queue-v1_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-ee996d60c4df205f",
+      "slug": "sredni-vashtar",
+      "associated_slugs": [
+        "sredni-vashtar"
+      ],
+      "title": "Sredni Vashtar",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580506/earnalism/audiobooks/en/sredni-vashtar/sredni-vashtar_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/sredni-vashtar/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/sredni-vashtar/sidecar-ee996d60c4df205f/sredni-vashtar_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-a08bcc9da5486cf8",
+      "slug": "sredni-vashtar",
+      "associated_slugs": [
+        "sredni-vashtar"
+      ],
+      "title": "Sredni Vashtar",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580507/earnalism/audiobooks/en/sredni-vashtar/sredni-vashtar_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/sredni-vashtar/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/sredni-vashtar/sidecar-a08bcc9da5486cf8/sredni-vashtar_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-194819686e228bb5",
+      "slug": "sredni-vashtar",
+      "associated_slugs": [
+        "sredni-vashtar"
+      ],
+      "title": "Sredni Vashtar",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580505/earnalism/audiobooks/en/sredni-vashtar/sredni-vashtar_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/sredni-vashtar/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/sredni-vashtar/sidecar-194819686e228bb5/sredni-vashtar_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-24947cddf3aa0cf9",
+      "slug": "sredni-vashtar",
+      "associated_slugs": [
+        "sredni-vashtar"
+      ],
+      "title": "Sredni Vashtar",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580505/earnalism/audiobooks/en/sredni-vashtar/sredni-vashtar_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 67609,
+      "source_files": [
+        "data/controlled_publications/sredni-vashtar/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/sredni-vashtar/sidecar-24947cddf3aa0cf9/sredni-vashtar_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-3801c7195fde78a5",
+      "slug": "the-call-of-the-wild",
+      "associated_slugs": [
+        "the-call-of-the-wild"
+      ],
+      "title": "The Call of the Wild",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594922/earnalism/audiobooks/en/the-call-of-the-wild/the-call-of-the-wild_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-call-of-the-wild/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-call-of-the-wild/sidecar-3801c7195fde78a5/the-call-of-the-wild_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-e124ccc1e24fd3fe",
+      "slug": "the-call-of-the-wild",
+      "associated_slugs": [
+        "the-call-of-the-wild"
+      ],
+      "title": "The Call of the Wild",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594922/earnalism/audiobooks/en/the-call-of-the-wild/the-call-of-the-wild_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-call-of-the-wild/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-call-of-the-wild/sidecar-e124ccc1e24fd3fe/the-call-of-the-wild_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-79da8fc9aab11185",
+      "slug": "the-call-of-the-wild",
+      "associated_slugs": [
+        "the-call-of-the-wild"
+      ],
+      "title": "The Call of the Wild",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594920/earnalism/audiobooks/en/the-call-of-the-wild/the-call-of-the-wild_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-call-of-the-wild/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-call-of-the-wild/sidecar-79da8fc9aab11185/the-call-of-the-wild_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-f6dfa10b1f33d178",
+      "slug": "the-call-of-the-wild",
+      "associated_slugs": [
+        "the-call-of-the-wild"
+      ],
+      "title": "The Call of the Wild",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780594921/earnalism/audiobooks/en/the-call-of-the-wild/the-call-of-the-wild_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 1179516,
+      "source_files": [
+        "data/controlled_publications/the-call-of-the-wild/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-call-of-the-wild/sidecar-f6dfa10b1f33d178/the-call-of-the-wild_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-e51cfebbe440b4ee",
+      "slug": "the-cop-and-the-anthem",
+      "associated_slugs": [
+        "the-cop-and-the-anthem"
+      ],
+      "title": "The Cop and the Anthem",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580682/earnalism/audiobooks/en/the-cop-and-the-anthem/the-cop-and-the-anthem_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-cop-and-the-anthem/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-cop-and-the-anthem/sidecar-e51cfebbe440b4ee/the-cop-and-the-anthem_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-cee785d5ad7ec8aa",
+      "slug": "the-cop-and-the-anthem",
+      "associated_slugs": [
+        "the-cop-and-the-anthem"
+      ],
+      "title": "The Cop and the Anthem",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580682/earnalism/audiobooks/en/the-cop-and-the-anthem/the-cop-and-the-anthem_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-cop-and-the-anthem/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-cop-and-the-anthem/sidecar-cee785d5ad7ec8aa/the-cop-and-the-anthem_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-79ad03b901c376e8",
+      "slug": "the-cop-and-the-anthem",
+      "associated_slugs": [
+        "the-cop-and-the-anthem"
+      ],
+      "title": "The Cop and the Anthem",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580680/earnalism/audiobooks/en/the-cop-and-the-anthem/the-cop-and-the-anthem_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-cop-and-the-anthem/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-cop-and-the-anthem/sidecar-79ad03b901c376e8/the-cop-and-the-anthem_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-aec62bb3c4be7ea2",
+      "slug": "the-cop-and-the-anthem",
+      "associated_slugs": [
+        "the-cop-and-the-anthem"
+      ],
+      "title": "The Cop and the Anthem",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580681/earnalism/audiobooks/en/the-cop-and-the-anthem/the-cop-and-the-anthem_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 84627,
+      "source_files": [
+        "data/controlled_publications/the-cop-and-the-anthem/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-cop-and-the-anthem/sidecar-aec62bb3c4be7ea2/the-cop-and-the-anthem_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-87434584f00aebef",
+      "slug": "the-gift-of-the-magi",
+      "associated_slugs": [
+        "the-gift-of-the-magi"
+      ],
+      "title": "The Gift of the Magi",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780552784/earnalism/audiobooks/en/the-gift-of-the-magi/the-gift-of-the-magi_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-gift-of-the-magi/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-gift-of-the-magi/sidecar-87434584f00aebef/the-gift-of-the-magi_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-0ee485e9366fa5ca",
+      "slug": "the-gift-of-the-magi",
+      "associated_slugs": [
+        "the-gift-of-the-magi"
+      ],
+      "title": "The Gift of the Magi",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780552785/earnalism/audiobooks/en/the-gift-of-the-magi/the-gift-of-the-magi_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-gift-of-the-magi/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-gift-of-the-magi/sidecar-0ee485e9366fa5ca/the-gift-of-the-magi_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-d07dc11c9268e0e5",
+      "slug": "the-gift-of-the-magi",
+      "associated_slugs": [
+        "the-gift-of-the-magi"
+      ],
+      "title": "The Gift of the Magi",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780552783/earnalism/audiobooks/en/the-gift-of-the-magi/the-gift-of-the-magi_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-gift-of-the-magi/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-gift-of-the-magi/sidecar-d07dc11c9268e0e5/the-gift-of-the-magi_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-1a29e0d4e1114b02",
+      "slug": "the-gift-of-the-magi",
+      "associated_slugs": [
+        "the-gift-of-the-magi"
+      ],
+      "title": "The Gift of the Magi",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780552784/earnalism/audiobooks/en/the-gift-of-the-magi/the-gift-of-the-magi_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 75295,
+      "source_files": [
+        "data/controlled_publications/the-gift-of-the-magi/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-gift-of-the-magi/sidecar-1a29e0d4e1114b02/the-gift-of-the-magi_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-44fe39d61eab59f0",
+      "slug": "the-last-leaf",
+      "associated_slugs": [
+        "the-last-leaf"
+      ],
+      "title": "The Last Leaf",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580607/earnalism/audiobooks/en/the-last-leaf/the-last-leaf_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-last-leaf/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-last-leaf/sidecar-44fe39d61eab59f0/the-last-leaf_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-2815355b543ecb06",
+      "slug": "the-last-leaf",
+      "associated_slugs": [
+        "the-last-leaf"
+      ],
+      "title": "The Last Leaf",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580608/earnalism/audiobooks/en/the-last-leaf/the-last-leaf_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-last-leaf/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-last-leaf/sidecar-2815355b543ecb06/the-last-leaf_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-6cac4c94dd622b93",
+      "slug": "the-last-leaf",
+      "associated_slugs": [
+        "the-last-leaf"
+      ],
+      "title": "The Last Leaf",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580606/earnalism/audiobooks/en/the-last-leaf/the-last-leaf_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-last-leaf/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-last-leaf/sidecar-6cac4c94dd622b93/the-last-leaf_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-21237050920b97af",
+      "slug": "the-last-leaf",
+      "associated_slugs": [
+        "the-last-leaf"
+      ],
+      "title": "The Last Leaf",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580606/earnalism/audiobooks/en/the-last-leaf/the-last-leaf_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 87761,
+      "source_files": [
+        "data/controlled_publications/the-last-leaf/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-last-leaf/sidecar-21237050920b97af/the-last-leaf_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-03e3a2bd47f137dd",
+      "slug": "the-masque-of-the-red-death",
+      "associated_slugs": [
+        "the-masque-of-the-red-death"
+      ],
+      "title": "The Masque of the Red Death",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580759/earnalism/audiobooks/en/the-masque-of-the-red-death/the-masque-of-the-red-death_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-masque-of-the-red-death/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-masque-of-the-red-death/sidecar-03e3a2bd47f137dd/the-masque-of-the-red-death_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-009ffdb5ba036ec4",
+      "slug": "the-masque-of-the-red-death",
+      "associated_slugs": [
+        "the-masque-of-the-red-death"
+      ],
+      "title": "The Masque of the Red Death",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580760/earnalism/audiobooks/en/the-masque-of-the-red-death/the-masque-of-the-red-death_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-masque-of-the-red-death/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-masque-of-the-red-death/sidecar-009ffdb5ba036ec4/the-masque-of-the-red-death_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-e4972f7fc92a1405",
+      "slug": "the-masque-of-the-red-death",
+      "associated_slugs": [
+        "the-masque-of-the-red-death"
+      ],
+      "title": "The Masque of the Red Death",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580757/earnalism/audiobooks/en/the-masque-of-the-red-death/the-masque-of-the-red-death_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-masque-of-the-red-death/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-masque-of-the-red-death/sidecar-e4972f7fc92a1405/the-masque-of-the-red-death_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-3163613a8fd0d178",
+      "slug": "the-masque-of-the-red-death",
+      "associated_slugs": [
+        "the-masque-of-the-red-death"
+      ],
+      "title": "The Masque of the Red Death",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580758/earnalism/audiobooks/en/the-masque-of-the-red-death/the-masque-of-the-red-death_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 90565,
+      "source_files": [
+        "data/controlled_publications/the-masque-of-the-red-death/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-masque-of-the-red-death/sidecar-3163613a8fd0d178/the-masque-of-the-red-death_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-4380499a42b84d3b",
+      "slug": "the-monkeys-paw",
+      "associated_slugs": [
+        "the-monkeys-paw"
+      ],
+      "title": "The Monkey's Paw",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581422/earnalism/audiobooks/en/the-monkeys-paw/the-monkeys-paw_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-monkeys-paw/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-monkeys-paw/sidecar-4380499a42b84d3b/the-monkeys-paw_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-fdeb59626be2020c",
+      "slug": "the-monkeys-paw",
+      "associated_slugs": [
+        "the-monkeys-paw"
+      ],
+      "title": "The Monkey's Paw",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581423/earnalism/audiobooks/en/the-monkeys-paw/the-monkeys-paw_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-monkeys-paw/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-monkeys-paw/sidecar-fdeb59626be2020c/the-monkeys-paw_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-ae1fff5a650b994d",
+      "slug": "the-monkeys-paw",
+      "associated_slugs": [
+        "the-monkeys-paw"
+      ],
+      "title": "The Monkey's Paw",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581420/earnalism/audiobooks/en/the-monkeys-paw/the-monkeys-paw_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-monkeys-paw/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-monkeys-paw/sidecar-ae1fff5a650b994d/the-monkeys-paw_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-463b46064db93bbb",
+      "slug": "the-monkeys-paw",
+      "associated_slugs": [
+        "the-monkeys-paw"
+      ],
+      "title": "The Monkey's Paw",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581421/earnalism/audiobooks/en/the-monkeys-paw/the-monkeys-paw_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 145318,
+      "source_files": [
+        "data/controlled_publications/the-monkeys-paw/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-monkeys-paw/sidecar-463b46064db93bbb/the-monkeys-paw_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-ca20fa9222b8649a",
+      "slug": "the-necklace",
+      "associated_slugs": [
+        "the-necklace"
+      ],
+      "title": "The Necklace",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581055/earnalism/audiobooks/en/the-necklace/the-necklace_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-necklace/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-necklace/sidecar-ca20fa9222b8649a/the-necklace_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-3e9343def17b7c2c",
+      "slug": "the-necklace",
+      "associated_slugs": [
+        "the-necklace"
+      ],
+      "title": "The Necklace",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581057/earnalism/audiobooks/en/the-necklace/the-necklace_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-necklace/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-necklace/sidecar-3e9343def17b7c2c/the-necklace_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-844031331ff624b2",
+      "slug": "the-necklace",
+      "associated_slugs": [
+        "the-necklace"
+      ],
+      "title": "The Necklace",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581054/earnalism/audiobooks/en/the-necklace/the-necklace_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-necklace/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-necklace/sidecar-844031331ff624b2/the-necklace_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-8bf5211ba7ba3430",
+      "slug": "the-necklace",
+      "associated_slugs": [
+        "the-necklace"
+      ],
+      "title": "The Necklace",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581055/earnalism/audiobooks/en/the-necklace/the-necklace_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 104738,
+      "source_files": [
+        "data/controlled_publications/the-necklace/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-necklace/sidecar-8bf5211ba7ba3430/the-necklace_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-ee251185b6bc2c3c",
+      "slug": "the-open-window",
+      "associated_slugs": [
+        "the-open-window"
+      ],
+      "title": "The Open Window",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580426/earnalism/audiobooks/en/the-open-window/the-open-window_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-open-window/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-open-window/sidecar-ee251185b6bc2c3c/the-open-window_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-e17ee06f17746dbe",
+      "slug": "the-open-window",
+      "associated_slugs": [
+        "the-open-window"
+      ],
+      "title": "The Open Window",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580427/earnalism/audiobooks/en/the-open-window/the-open-window_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-open-window/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-open-window/sidecar-e17ee06f17746dbe/the-open-window_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-4ef080dbd3f30287",
+      "slug": "the-open-window",
+      "associated_slugs": [
+        "the-open-window"
+      ],
+      "title": "The Open Window",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580425/earnalism/audiobooks/en/the-open-window/the-open-window_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-open-window/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-open-window/sidecar-4ef080dbd3f30287/the-open-window_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-355d5f5681c4f166",
+      "slug": "the-open-window",
+      "associated_slugs": [
+        "the-open-window"
+      ],
+      "title": "The Open Window",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580426/earnalism/audiobooks/en/the-open-window/the-open-window_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 44913,
+      "source_files": [
+        "data/controlled_publications/the-open-window/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-open-window/sidecar-355d5f5681c4f166/the-open-window_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-ee621c7376509680",
+      "slug": "the-tell-tale-heart",
+      "associated_slugs": [
+        "the-tell-tale-heart"
+      ],
+      "title": "The Tell-Tale Heart",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580537/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-tell-tale-heart/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-tell-tale-heart/sidecar-ee621c7376509680/the-tell-tale-heart_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-682696f443e2e963",
+      "slug": "the-tell-tale-heart",
+      "associated_slugs": [
+        "the-tell-tale-heart"
+      ],
+      "title": "The Tell-Tale Heart",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580538/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-tell-tale-heart/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-tell-tale-heart/sidecar-682696f443e2e963/the-tell-tale-heart_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-668f3562d5349aa4",
+      "slug": "the-tell-tale-heart",
+      "associated_slugs": [
+        "the-tell-tale-heart"
+      ],
+      "title": "The Tell-Tale Heart",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580535/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-tell-tale-heart/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-tell-tale-heart/sidecar-668f3562d5349aa4/the-tell-tale-heart_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-54f787b9bdf771ed",
+      "slug": "the-tell-tale-heart",
+      "associated_slugs": [
+        "the-tell-tale-heart"
+      ],
+      "title": "The Tell-Tale Heart",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580536/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 80213,
+      "source_files": [
+        "data/controlled_publications/the-tell-tale-heart/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-tell-tale-heart/sidecar-54f787b9bdf771ed/the-tell-tale-heart_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-5c7b8bc3126c3046",
+      "slug": "the-time-machine",
+      "associated_slugs": [
+        "the-time-machine"
+      ],
+      "title": "The Time Machine",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780595375/earnalism/audiobooks/en/the-time-machine/the-time-machine_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-time-machine/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-time-machine/sidecar-5c7b8bc3126c3046/the-time-machine_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-fa11f1cec70f9ef9",
+      "slug": "the-time-machine",
+      "associated_slugs": [
+        "the-time-machine"
+      ],
+      "title": "The Time Machine",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780595376/earnalism/audiobooks/en/the-time-machine/the-time-machine_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-time-machine/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-time-machine/sidecar-fa11f1cec70f9ef9/the-time-machine_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-87864fb08e25de0b",
+      "slug": "the-time-machine",
+      "associated_slugs": [
+        "the-time-machine"
+      ],
+      "title": "The Time Machine",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780595373/earnalism/audiobooks/en/the-time-machine/the-time-machine_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-time-machine/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-time-machine/sidecar-87864fb08e25de0b/the-time-machine_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-1ce09cf95dd47f34",
+      "slug": "the-time-machine",
+      "associated_slugs": [
+        "the-time-machine"
+      ],
+      "title": "The Time Machine",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780595374/earnalism/audiobooks/en/the-time-machine/the-time-machine_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 1200812,
+      "source_files": [
+        "data/controlled_publications/the-time-machine/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-time-machine/sidecar-1ce09cf95dd47f34/the-time-machine_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-0a00de2a44d05f1e",
+      "slug": "the-yellow-wallpaper",
+      "associated_slugs": [
+        "the-yellow-wallpaper"
+      ],
+      "title": "The Yellow Wallpaper",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582192/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_chapters.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-yellow-wallpaper/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-yellow-wallpaper/sidecar-0a00de2a44d05f1e/the-yellow-wallpaper_chapters.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-724f780e94d25be4",
+      "slug": "the-yellow-wallpaper",
+      "associated_slugs": [
+        "the-yellow-wallpaper"
+      ],
+      "title": "The Yellow Wallpaper",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582193/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_meta.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-yellow-wallpaper/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-yellow-wallpaper/sidecar-724f780e94d25be4/the-yellow-wallpaper_meta.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-a35c530ceb4c06e3",
+      "slug": "the-yellow-wallpaper",
+      "associated_slugs": [
+        "the-yellow-wallpaper"
+      ],
+      "title": "The Yellow Wallpaper",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582190/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_timestamps.json",
+      "current_http_status": 200,
+      "current_range_status": 200,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/the-yellow-wallpaper/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-yellow-wallpaper/sidecar-a35c530ceb4c06e3/the-yellow-wallpaper_timestamps.json",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    },
+    {
+      "object_id": "sidecar-c2d83e25dc374b76",
+      "slug": "the-yellow-wallpaper",
+      "associated_slugs": [
+        "the-yellow-wallpaper"
+      ],
+      "title": "The Yellow Wallpaper",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582191/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_highlight.vtt",
+      "current_http_status": 206,
+      "current_range_status": 206,
+      "content_type": "text/vtt",
+      "byte_size": 225013,
+      "source_files": [
+        "data/controlled_publications/the-yellow-wallpaper/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-yellow-wallpaper/sidecar-c2d83e25dc374b76/the-yellow-wallpaper_highlight.vtt",
+      "target_action": "MOVE_TO_PRIVATE_QA_BUCKET_THEN_REVOKE_PUBLIC_DELIVERY",
+      "reason_included": "Active Sprint1 stale/unapproved direct object remains publicly reachable"
+    }
+  ],
+  "already_contained_private_verified": [
+    {
+      "object_id": "audio-7e60f2c7f61c7a7e",
+      "slug": "a-ghost-story",
+      "associated_slugs": [
+        "a-ghost-story"
+      ],
+      "title": "A Ghost Story",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1783227444/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_00190d747d28.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 4594121,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/metadata_book_rights_response.json",
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/upload_queue_hook.log"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/a-ghost-story/audio-7e60f2c7f61c7a7e/a-ghost-story_mp3_00190d747d28.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-77023920a02496bd",
+      "slug": "a-ghost-story",
+      "associated_slugs": [
+        "a-ghost-story"
+      ],
+      "title": "A Ghost Story",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580641/earnalism/audiobooks/en/a-ghost-story/a-ghost-story.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 4594121,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/auto_premium_qa.json",
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/goliveevidence.json",
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T150049Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/catalog_20260704T184613Z/catalog_state.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/a-ghost-story/audio-77023920a02496bd/a-ghost-story.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-fa63599c4eab4a75",
+      "slug": "a-ghost-story",
+      "associated_slugs": [
+        "a-ghost-story"
+      ],
+      "title": "A Ghost Story",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781303558/earnalism/audiobooks-polished/en/a-ghost-story/a-ghost-story-english-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 8850329,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/rights_metadata_failure_diagnosis.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/a-ghost-story/audio-fa63599c4eab4a75/a-ghost-story-english-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-c333a50ccf9861b7",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780593683/earnalism/audiobooks/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 49882454,
+      "source_files": [
+        "data/controlled_publications/alices-adventures-in-wonderland/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/audio-c333a50ccf9861b7/alices-adventures-in-wonderland.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-a153540a1ffe5bdf",
+      "slug": "alices-adventures-in-wonderland",
+      "associated_slugs": [
+        "alices-adventures-in-wonderland"
+      ],
+      "title": "Alice's Adventures in Wonderland",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781438358/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 92078333,
+      "source_files": [
+        "backend/data/controlled_publications/alices-adventures-in-wonderland/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/alices-adventures-in-wonderland/audio-a153540a1ffe5bdf/alices-adventures-in-wonderland-english-polish-edge-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-b6a71ac20e4149d9",
+      "slug": "bn-066",
+      "associated_slugs": [
+        "bn-066"
+      ],
+      "title": "আনন্দমঠ",
+      "provider": "B2",
+      "object_type": "mp3",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 156318450,
+      "source_files": [
+        "backend/data/controlled_publications/bn-066/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/bn-066/audio-b6a71ac20e4149d9/bn-066-bengali-polish-queue-v1.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-9d8ba02f4210cb0b",
+      "slug": "book-2b9853ec52",
+      "associated_slugs": [
+        "book-2b9853ec52"
+      ],
+      "title": "দুই বিঘা জমি",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781239035/earnalism/audiobooks-polished/ben/book-2b9853ec52/book-2b9853ec52-bengali-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 2455345,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-2b9853ec52/audio-9d8ba02f4210cb0b/book-2b9853ec52-bengali-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-5a74ff7f84dbe940",
+      "slug": "book-d19e96859f",
+      "associated_slugs": [
+        "book-d19e96859f"
+      ],
+      "title": "গিন্নি",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781239137/earnalism/audiobooks-polished/ben/book-d19e96859f/book-d19e96859f-bengali-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 4173157,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-d19e96859f/audio-5a74ff7f84dbe940/book-d19e96859f-bengali-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-6499085ee54c79d0",
+      "slug": "book-edfcf810c5",
+      "associated_slugs": [
+        "book-edfcf810c5"
+      ],
+      "title": "ক্ষুধিত পাষাণ",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781262017/earnalism/audiobooks-polished/ben/book-edfcf810c5/book-edfcf810c5-bengali-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 14079835,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-edfcf810c5/audio-6499085ee54c79d0/book-edfcf810c5-bengali-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-118e7511e6404397",
+      "slug": "book-f5d593e1f4",
+      "associated_slugs": [
+        "book-f5d593e1f4"
+      ],
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781239360/earnalism/audiobooks-polished/ben/book-f5d593e1f4/book-f5d593e1f4-bengali-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 6270267,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-f5d593e1f4/audio-118e7511e6404397/book-f5d593e1f4-bengali-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-53df33d0604d6b74",
+      "slug": "dsires-baby",
+      "associated_slugs": [
+        "dsires-baby"
+      ],
+      "title": "Désirée's Baby",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580568/earnalism/audiobooks/en/dsires-baby/dsires-baby.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 4248834,
+      "source_files": [
+        "data/controlled_publications/dsires-baby/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+        "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/tts_queue_hook.log"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/dsires-baby/audio-53df33d0604d6b74/dsires-baby.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-118ace665e804f00",
+      "slug": "dsires-baby",
+      "associated_slugs": [
+        "dsires-baby"
+      ],
+      "title": "Désirée's Baby",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781304763/earnalism/audiobooks-polished/en/dsires-baby/dsires-baby-english-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 8203746,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/dsires-baby/audio-118ace665e804f00/dsires-baby-english-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-006bc0245fc98a0b",
+      "slug": "muchiram-gurer-jibanchorit",
+      "associated_slugs": [
+        "muchiram-gurer-jibanchorit"
+      ],
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781239082/earnalism/audiobooks-polished/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit-bengali-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 4388197,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/muchiram-gurer-jibanchorit/audio-006bc0245fc98a0b/muchiram-gurer-jibanchorit-bengali-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-372872d61358d6eb",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781268514/earnalism/audiobooks-polished/ben/nishkriti/nishkriti-bengali-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 59435511,
+      "source_files": [
+        "backend/data/controlled_publications/nishkriti/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/audio-372872d61358d6eb/nishkriti-bengali-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-920169fb79223b16",
+      "slug": "radharani",
+      "associated_slugs": [
+        "radharani"
+      ],
+      "title": "রাধারাণী",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781264496/earnalism/audiobooks-polished/ben/radharani/radharani-bengali-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 28690434,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/radharani/audio-920169fb79223b16/radharani-bengali-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-8969bad2aa744566",
+      "slug": "sredni-vashtar",
+      "associated_slugs": [
+        "sredni-vashtar"
+      ],
+      "title": "Sredni Vashtar",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580503/earnalism/audiobooks/en/sredni-vashtar/sredni-vashtar.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 3540393,
+      "source_files": [
+        "data/controlled_publications/sredni-vashtar/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+        "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/sredni_vashtar_audio_provenance_report.json",
+        "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/sredni_vashtar_release_plan.json",
+        "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/tts_queue_hook.log"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/sredni-vashtar/audio-8969bad2aa744566/sredni-vashtar.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-0a257b5c91873857",
+      "slug": "sredni-vashtar",
+      "associated_slugs": [
+        "sredni-vashtar"
+      ],
+      "title": "Sredni Vashtar",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781302004/earnalism/audiobooks-polished/en/sredni-vashtar/sredni-vashtar-english-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 6493457,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/sredni-vashtar/audio-0a257b5c91873857/sredni-vashtar-english-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-60beddfa8c1e09c3",
+      "slug": "the-call-of-the-wild",
+      "associated_slugs": [
+        "the-call-of-the-wild"
+      ],
+      "title": "The Call of the Wild",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780594917/earnalism/audiobooks/en/the-call-of-the-wild/the-call-of-the-wild.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 61557935,
+      "source_files": [
+        "data/controlled_publications/the-call-of-the-wild/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-call-of-the-wild/audio-60beddfa8c1e09c3/the-call-of-the-wild.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-32dcc4f7b3ed64f5",
+      "slug": "the-cop-and-the-anthem",
+      "associated_slugs": [
+        "the-cop-and-the-anthem"
+      ],
+      "title": "The Cop and the Anthem",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580677/earnalism/audiobooks/en/the-cop-and-the-anthem/the-cop-and-the-anthem.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 4576410,
+      "source_files": [
+        "data/controlled_publications/the-cop-and-the-anthem/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+        "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z/tts_queue_hook.log"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-cop-and-the-anthem/audio-32dcc4f7b3ed64f5/the-cop-and-the-anthem.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-0ec8ff9b5e384d25",
+      "slug": "the-cop-and-the-anthem",
+      "associated_slugs": [
+        "the-cop-and-the-anthem"
+      ],
+      "title": "The Cop and the Anthem",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781303768/earnalism/audiobooks-polished/en/the-cop-and-the-anthem/the-cop-and-the-anthem-english-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 8760050,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-cop-and-the-anthem/audio-0ec8ff9b5e384d25/the-cop-and-the-anthem-english-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-ef7939c6b9280824",
+      "slug": "the-gift-of-the-magi",
+      "associated_slugs": [
+        "the-gift-of-the-magi"
+      ],
+      "title": "The Gift of the Magi",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780552781/earnalism/audiobooks/en/the-gift-of-the-magi/the-gift-of-the-magi.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 3913265,
+      "source_files": [
+        "data/controlled_publications/the-gift-of-the-magi/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+        "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/tts_queue_hook.log"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-gift-of-the-magi/audio-ef7939c6b9280824/the-gift-of-the-magi.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-233bb2eb41ea12a4",
+      "slug": "the-gift-of-the-magi",
+      "associated_slugs": [
+        "the-gift-of-the-magi"
+      ],
+      "title": "The Gift of the Magi",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781306661/earnalism/audiobooks-polished/en/the-gift-of-the-magi/the-gift-of-the-magi-english-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 7827792,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-gift-of-the-magi/audio-233bb2eb41ea12a4/the-gift-of-the-magi-english-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-c60d13469b978607",
+      "slug": "the-last-leaf",
+      "associated_slugs": [
+        "the-last-leaf"
+      ],
+      "title": "The Last Leaf",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580604/earnalism/audiobooks/en/the-last-leaf/the-last-leaf.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 4505879,
+      "source_files": [
+        "data/controlled_publications/the-last-leaf/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-last-leaf/audio-c60d13469b978607/the-last-leaf.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-1ba1b092815e955c",
+      "slug": "the-last-leaf",
+      "associated_slugs": [
+        "the-last-leaf"
+      ],
+      "title": "The Last Leaf",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781306623/earnalism/audiobooks-polished/en/the-last-leaf/the-last-leaf-english-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 8966940,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-last-leaf/audio-1ba1b092815e955c/the-last-leaf-english-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-184bd15417c5839f",
+      "slug": "the-masque-of-the-red-death",
+      "associated_slugs": [
+        "the-masque-of-the-red-death"
+      ],
+      "title": "The Masque of the Red Death",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580755/earnalism/audiobooks/en/the-masque-of-the-red-death/the-masque-of-the-red-death.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 4688161,
+      "source_files": [
+        "data/controlled_publications/the-masque-of-the-red-death/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-masque-of-the-red-death/audio-184bd15417c5839f/the-masque-of-the-red-death.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-4d0c47e4c4b6d067",
+      "slug": "the-masque-of-the-red-death",
+      "associated_slugs": [
+        "the-masque-of-the-red-death"
+      ],
+      "title": "The Masque of the Red Death",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781306706/earnalism/audiobooks-polished/en/the-masque-of-the-red-death/the-masque-of-the-red-death-english-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 8654097,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-masque-of-the-red-death/audio-4d0c47e4c4b6d067/the-masque-of-the-red-death-english-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-a9ae5b339149aef9",
+      "slug": "the-monkeys-paw",
+      "associated_slugs": [
+        "the-monkeys-paw"
+      ],
+      "title": "The Monkey's Paw",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581419/earnalism/audiobooks/en/the-monkeys-paw/the-monkeys-paw.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 7727247,
+      "source_files": [
+        "data/controlled_publications/the-monkeys-paw/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-monkeys-paw/audio-a9ae5b339149aef9/the-monkeys-paw.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-9d237c1e2118176b",
+      "slug": "the-monkeys-paw",
+      "associated_slugs": [
+        "the-monkeys-paw"
+      ],
+      "title": "The Monkey's Paw",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781436805/earnalism/audiobooks-polished/en/the-monkeys-paw/the-monkeys-paw-english-polish-edge-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 14155694,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-monkeys-paw/audio-9d237c1e2118176b/the-monkeys-paw-english-polish-edge-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-edf6d7c46eedc284",
+      "slug": "the-necklace",
+      "associated_slugs": [
+        "the-necklace"
+      ],
+      "title": "The Necklace",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581052/earnalism/audiobooks/en/the-necklace/the-necklace.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 5505690,
+      "source_files": [
+        "data/controlled_publications/the-necklace/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-necklace/audio-edf6d7c46eedc284/the-necklace.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-f1f58109e2c04424",
+      "slug": "the-open-window",
+      "associated_slugs": [
+        "the-open-window"
+      ],
+      "title": "The Open Window",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580423/earnalism/audiobooks/en/the-open-window/the-open-window.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 2338081,
+      "source_files": [
+        "data/controlled_publications/the-open-window/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+        "internal/audiobook_lab/release_gate/the-open-window_20260705T161042Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/the-open-window_20260705T161042Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/the-open-window_20260705T161042Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/the-open-window_20260705T161042Z/tts_queue_hook.log"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-open-window/audio-f1f58109e2c04424/the-open-window.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "audio-3774f44b02cd2a43",
+      "slug": "the-open-window",
+      "associated_slugs": [
+        "the-open-window"
+      ],
+      "title": "The Open Window",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781301969/earnalism/audiobooks-polished/en/the-open-window/the-open-window-english-polish-queue-v1.mp3.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "audio/mpeg",
+      "byte_size": 4322786,
+      "source_files": [
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/the-open-window/audio-3774f44b02cd2a43/the-open-window-english-polish-queue-v1.mp3.mp3",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "sidecar-0d64db2ec393d6d3",
+      "slug": "bn-066",
+      "associated_slugs": [
+        "bn-066"
+      ],
+      "title": "আনন্দমঠ",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286680/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_chapters.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/bn-066/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/bn-066/sidecar-0d64db2ec393d6d3/bn-066-bengali-polish-queue-v1_chapters.json",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "sidecar-e987ca6cdc928127",
+      "slug": "bn-066",
+      "associated_slugs": [
+        "bn-066"
+      ],
+      "title": "আনন্দমঠ",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286681/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_meta.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/bn-066/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/bn-066/sidecar-e987ca6cdc928127/bn-066-bengali-polish-queue-v1_meta.json",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "sidecar-f64f5ce21cce5e58",
+      "slug": "bn-066",
+      "associated_slugs": [
+        "bn-066"
+      ],
+      "title": "আনন্দমঠ",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286676/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_timestamps.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "application/json",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/bn-066/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/bn-066/sidecar-f64f5ce21cce5e58/bn-066-bengali-polish-queue-v1_timestamps.json",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    },
+    {
+      "object_id": "sidecar-b3e025558ecf7c07",
+      "slug": "bn-066",
+      "associated_slugs": [
+        "bn-066"
+      ],
+      "title": "আনন্দমঠ",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286679/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_highlight.vtt",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "text/vtt",
+      "byte_size": null,
+      "source_files": [
+        "backend/data/controlled_publications/bn-066/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/bn-066/sidecar-b3e025558ecf7c07/bn-066-bengali-polish-queue-v1_highlight.vtt",
+      "target_action": "SKIP_ALREADY_CONTAINED",
+      "private_retention_verified": true,
+      "reason_excluded": "Old URL is inaccessible and matching private retention object exists"
+    }
+  ],
+  "inaccessible_without_private_retention": [
+    {
+      "object_id": "audio-89a3756941612d2f",
+      "slug": "book-d19e96859f",
+      "associated_slugs": [
+        "book-d19e96859f"
+      ],
+      "title": "গিন্নি",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780556327/earnalism/audiobooks/ben/book-d19e96859f/book-d19e96859f.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/book-d19e96859f/public_book.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T085642Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T085642Z/stage_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T085642Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T085642Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T085642Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T090035Z/auto_premium_qa.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T090035Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T090035Z/goliveevidence.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T090035Z/stage_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T090035Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T090035Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T090035Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T100651Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T100651Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T100651Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T100651Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T112521Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T112521Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T112521Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T112521Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T113435Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T113435Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T113435Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T113435Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T113545Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T113545Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T113545Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T113545Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150204Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150204Z/stage_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150204Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150204Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150204Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150228Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150228Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150228Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150228Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/catalog_20260705T054627Z/catalog_tts_404_diagnosis.json",
+        "internal/audiobook_lab/release_gate/catalog_20260705T095238Z/catalog_state.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-d19e96859f/audio-89a3756941612d2f/book-d19e96859f.mp3",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "audio-8d8dc399cf994c93",
+      "slug": "book-edfcf810c5",
+      "associated_slugs": [
+        "book-edfcf810c5"
+      ],
+      "title": "ক্ষুধিত পাষাণ",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780571946/earnalism/audiobooks/ben/book-edfcf810c5/book-edfcf810c5.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/book-edfcf810c5/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-edfcf810c5/audio-8d8dc399cf994c93/book-edfcf810c5.mp3",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "audio-4094b805503f990e",
+      "slug": "book-f5d593e1f4",
+      "associated_slugs": [
+        "book-f5d593e1f4"
+      ],
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780556631/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/book-f5d593e1f4/public_book.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T085642Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T085642Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T085642Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T085642Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T090035Z/auto_premium_qa.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T090035Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T090035Z/goliveevidence.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T090035Z/stage_result.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T090035Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T090035Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T090035Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T150741Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T150741Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T150741Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T150741Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/catalog_20260705T054627Z/catalog_tts_404_diagnosis.json",
+        "internal/audiobook_lab/release_gate/catalog_20260705T150741Z/catalog_state.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-f5d593e1f4/audio-4094b805503f990e/book-f5d593e1f4.mp3",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "audio-42ed59f8a813c9dd",
+      "slug": "muchiram-gurer-jibanchorit",
+      "associated_slugs": [
+        "muchiram-gurer-jibanchorit"
+      ],
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780555866/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json",
+        "internal/audiobook_lab/release_gate/catalog_20260705T054627Z/catalog_tts_404_diagnosis.json",
+        "internal/audiobook_lab/release_gate/catalog_20260705T095238Z/catalog_state.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T085642Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T085642Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T085642Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T085642Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T090035Z/auto_premium_qa.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T090035Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T090035Z/goliveevidence.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T090035Z/stage_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T090035Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T090035Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T090035Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T100616Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T100616Z/stage_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T100616Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T100616Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T100616Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T100651Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T100651Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T100651Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T100651Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T112521Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T112521Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T112521Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T112521Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T113435Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T113435Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T113435Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T113435Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T113545Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T113545Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T113545Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T113545Z/tts_queue_hook.log",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T150228Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T150228Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T150228Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T150228Z/tts_queue_hook.log"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/muchiram-gurer-jibanchorit/audio-42ed59f8a813c9dd/muchiram-gurer-jibanchorit.mp3",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "audio-77c0593fab0fc458",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780577217/earnalism/audiobooks/ben/nishkriti/nishkriti.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/nishkriti/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+        "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/tts_queue_hook.log"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/audio-77c0593fab0fc458/nishkriti.mp3",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "audio-e39462befdc33658",
+      "slug": "radharani",
+      "associated_slugs": [
+        "radharani"
+      ],
+      "title": "রাধারাণী",
+      "provider": "Cloudinary",
+      "object_type": "mp3",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780574837/earnalism/audiobooks/ben/radharani/radharani.mp3",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": null,
+      "source_files": [
+        "data/controlled_publications/radharani/public_book.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+        "internal/audiobook_lab/release_gate/radharani_20260705T165712Z/book_release_state.json",
+        "internal/audiobook_lab/release_gate/radharani_20260705T165712Z/tts_chunk_manifest.json",
+        "internal/audiobook_lab/release_gate/radharani_20260705T165712Z/tts_hook_result.json",
+        "internal/audiobook_lab/release_gate/radharani_20260705T165712Z/tts_queue_hook.log"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/radharani/audio-e39462befdc33658/radharani.mp3",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-d87cd8e8716d233a",
+      "slug": "book-d19e96859f",
+      "associated_slugs": [
+        "book-d19e96859f"
+      ],
+      "title": "গিন্নি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556329/earnalism/audiobooks/ben/book-d19e96859f/book-d19e96859f_chapters.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-d19e96859f/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-d19e96859f/sidecar-d87cd8e8716d233a/book-d19e96859f_chapters.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-236fc4c4482b8ce5",
+      "slug": "book-d19e96859f",
+      "associated_slugs": [
+        "book-d19e96859f"
+      ],
+      "title": "গিন্নি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556330/earnalism/audiobooks/ben/book-d19e96859f/book-d19e96859f_meta.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-d19e96859f/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-d19e96859f/sidecar-236fc4c4482b8ce5/book-d19e96859f_meta.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-0fb2046e3701f948",
+      "slug": "book-d19e96859f",
+      "associated_slugs": [
+        "book-d19e96859f"
+      ],
+      "title": "গিন্নি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556328/earnalism/audiobooks/ben/book-d19e96859f/book-d19e96859f_timestamps.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-d19e96859f/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-d19e96859f/sidecar-0fb2046e3701f948/book-d19e96859f_timestamps.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-ebc921f08baf37c7",
+      "slug": "book-d19e96859f",
+      "associated_slugs": [
+        "book-d19e96859f"
+      ],
+      "title": "গিন্নি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556329/earnalism/audiobooks/ben/book-d19e96859f/book-d19e96859f_highlight.vtt",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-d19e96859f/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-d19e96859f/sidecar-ebc921f08baf37c7/book-d19e96859f_highlight.vtt",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-a328c77002aef165",
+      "slug": "book-edfcf810c5",
+      "associated_slugs": [
+        "book-edfcf810c5"
+      ],
+      "title": "ক্ষুধিত পাষাণ",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571948/earnalism/audiobooks/ben/book-edfcf810c5/book-edfcf810c5_chapters.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-edfcf810c5/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-edfcf810c5/sidecar-a328c77002aef165/book-edfcf810c5_chapters.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-27e565dfeb6d7e76",
+      "slug": "book-edfcf810c5",
+      "associated_slugs": [
+        "book-edfcf810c5"
+      ],
+      "title": "ক্ষুধিত পাষাণ",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571949/earnalism/audiobooks/ben/book-edfcf810c5/book-edfcf810c5_meta.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-edfcf810c5/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-edfcf810c5/sidecar-27e565dfeb6d7e76/book-edfcf810c5_meta.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-24fa6e598f588816",
+      "slug": "book-edfcf810c5",
+      "associated_slugs": [
+        "book-edfcf810c5"
+      ],
+      "title": "ক্ষুধিত পাষাণ",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571947/earnalism/audiobooks/ben/book-edfcf810c5/book-edfcf810c5_timestamps.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-edfcf810c5/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-edfcf810c5/sidecar-24fa6e598f588816/book-edfcf810c5_timestamps.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-e8ccef3be6b132c0",
+      "slug": "book-edfcf810c5",
+      "associated_slugs": [
+        "book-edfcf810c5"
+      ],
+      "title": "ক্ষুধিত পাষাণ",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571948/earnalism/audiobooks/ben/book-edfcf810c5/book-edfcf810c5_highlight.vtt",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-edfcf810c5/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-edfcf810c5/sidecar-e8ccef3be6b132c0/book-edfcf810c5_highlight.vtt",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-bfd901c558103009",
+      "slug": "book-f5d593e1f4",
+      "associated_slugs": [
+        "book-f5d593e1f4"
+      ],
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556633/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_chapters.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-f5d593e1f4/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-f5d593e1f4/sidecar-bfd901c558103009/book-f5d593e1f4_chapters.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-a06e16e20cc144dc",
+      "slug": "book-f5d593e1f4",
+      "associated_slugs": [
+        "book-f5d593e1f4"
+      ],
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556634/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_meta.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-f5d593e1f4/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-f5d593e1f4/sidecar-a06e16e20cc144dc/book-f5d593e1f4_meta.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-d18a5c21af35f5b3",
+      "slug": "book-f5d593e1f4",
+      "associated_slugs": [
+        "book-f5d593e1f4"
+      ],
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556632/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_timestamps.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-f5d593e1f4/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-f5d593e1f4/sidecar-d18a5c21af35f5b3/book-f5d593e1f4_timestamps.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-d7769889c15db8a8",
+      "slug": "book-f5d593e1f4",
+      "associated_slugs": [
+        "book-f5d593e1f4"
+      ],
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556633/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_highlight.vtt",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/book-f5d593e1f4/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/book-f5d593e1f4/sidecar-d7769889c15db8a8/book-f5d593e1f4_highlight.vtt",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-e58336d6cdf35912",
+      "slug": "muchiram-gurer-jibanchorit",
+      "associated_slugs": [
+        "muchiram-gurer-jibanchorit"
+      ],
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555868/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_chapters.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/muchiram-gurer-jibanchorit/sidecar-e58336d6cdf35912/muchiram-gurer-jibanchorit_chapters.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-4ff36297908b3941",
+      "slug": "muchiram-gurer-jibanchorit",
+      "associated_slugs": [
+        "muchiram-gurer-jibanchorit"
+      ],
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555869/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_meta.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/muchiram-gurer-jibanchorit/sidecar-4ff36297908b3941/muchiram-gurer-jibanchorit_meta.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-07d4f062db2ce157",
+      "slug": "muchiram-gurer-jibanchorit",
+      "associated_slugs": [
+        "muchiram-gurer-jibanchorit"
+      ],
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555867/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_timestamps.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/muchiram-gurer-jibanchorit/sidecar-07d4f062db2ce157/muchiram-gurer-jibanchorit_timestamps.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-e5fb15bb7f2313a3",
+      "slug": "muchiram-gurer-jibanchorit",
+      "associated_slugs": [
+        "muchiram-gurer-jibanchorit"
+      ],
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555868/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_highlight.vtt",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/muchiram-gurer-jibanchorit/sidecar-e5fb15bb7f2313a3/muchiram-gurer-jibanchorit_highlight.vtt",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-e55f04651f1cf5c8",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577222/earnalism/audiobooks/ben/nishkriti/nishkriti_chapters.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/sidecar-e55f04651f1cf5c8/nishkriti_chapters.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-c1dcbabd1000bbce",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577222/earnalism/audiobooks/ben/nishkriti/nishkriti_meta.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/sidecar-c1dcbabd1000bbce/nishkriti_meta.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-9699f4f5ffc85f2b",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577220/earnalism/audiobooks/ben/nishkriti/nishkriti_timestamps.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/sidecar-9699f4f5ffc85f2b/nishkriti_timestamps.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-9a55907e31cf145a",
+      "slug": "nishkriti",
+      "associated_slugs": [
+        "nishkriti"
+      ],
+      "title": "নিষ্কৃতি",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577221/earnalism/audiobooks/ben/nishkriti/nishkriti_highlight.vtt",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/nishkriti/sidecar-9a55907e31cf145a/nishkriti_highlight.vtt",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-f1caa532723402b8",
+      "slug": "radharani",
+      "associated_slugs": [
+        "radharani"
+      ],
+      "title": "রাধারাণী",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574841/earnalism/audiobooks/ben/radharani/radharani_chapters.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/radharani/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/radharani/sidecar-f1caa532723402b8/radharani_chapters.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-21b3fdbffbb26957",
+      "slug": "radharani",
+      "associated_slugs": [
+        "radharani"
+      ],
+      "title": "রাধারাণী",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574842/earnalism/audiobooks/ben/radharani/radharani_meta.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/radharani/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/radharani/sidecar-21b3fdbffbb26957/radharani_meta.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-d6e3905873afe65f",
+      "slug": "radharani",
+      "associated_slugs": [
+        "radharani"
+      ],
+      "title": "রাধারাণী",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574839/earnalism/audiobooks/ben/radharani/radharani_timestamps.json",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/radharani/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/radharani/sidecar-d6e3905873afe65f/radharani_timestamps.json",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    },
+    {
+      "object_id": "sidecar-f1c7d2795c944fb9",
+      "slug": "radharani",
+      "associated_slugs": [
+        "radharani"
+      ],
+      "title": "রাধারাণী",
+      "provider": "Cloudinary",
+      "object_type": "sidecar",
+      "direct_url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574841/earnalism/audiobooks/ben/radharani/radharani_highlight.vtt",
+      "current_http_status": 404,
+      "current_range_status": 404,
+      "content_type": "image/gif",
+      "byte_size": 0,
+      "source_files": [
+        "data/controlled_publications/radharani/public_book.json"
+      ],
+      "approved_current_asset": false,
+      "private_retention_destination_key": "storage-containment/radharani/sidecar-f1c7d2795c944fb9/radharani_highlight.vtt",
+      "target_action": "NO_PUBLIC_BYPASS_CURRENTLY_PRIVATE_RETENTION_MISSING",
+      "private_retention_verified": false,
+      "reason_excluded": "Old URL is inaccessible but no matching private retention object exists; source-bound recovery requires separate evidence"
+    }
+  ],
+  "protected_current_approved_assets": [
+    {
+      "object_id": "audio-db2d15bffed5f64f",
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "provider": "B2",
+      "object_type": "mp3",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_00190d747d28.mp3",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    },
+    {
+      "object_id": "audio-75b4659201394da3",
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "provider": "B2",
+      "object_type": "mp3",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_mp3_a974819392d7.mp3",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    },
+    {
+      "object_id": "sidecar-ab0664c9e8be9a38",
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "provider": "B2",
+      "object_type": "sidecar",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ac71009c4360.json",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    },
+    {
+      "object_id": "sidecar-05a47aba4ce097f9",
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "provider": "B2",
+      "object_type": "sidecar",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_46edb6c41d19.json",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    },
+    {
+      "object_id": "sidecar-7c5b207970ca90c7",
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "provider": "B2",
+      "object_type": "sidecar",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_07df83f07459.json",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    },
+    {
+      "object_id": "sidecar-9421f36532ab5397",
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "provider": "B2",
+      "object_type": "sidecar",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_64fa7a15a5a9.vtt",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    },
+    {
+      "object_id": "sidecar-445026f8bf0b78a4",
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "provider": "B2",
+      "object_type": "sidecar",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_chapters_5e1cfdd88492.json",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    },
+    {
+      "object_id": "sidecar-a7fe94b9a92bb2a0",
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "provider": "B2",
+      "object_type": "sidecar",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_meta_d953726284f1.json",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    },
+    {
+      "object_id": "sidecar-f0a098c24427679f",
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "provider": "B2",
+      "object_type": "sidecar",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_timestamps_0a1f26d13d4e.json",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    },
+    {
+      "object_id": "sidecar-18851f1e4a7791c0",
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "provider": "B2",
+      "object_type": "sidecar",
+      "direct_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/book-2b9853ec52/book-2b9853ec52_vtt_754b15bd98e2.vtt",
+      "approved_current_asset": true,
+      "target_action": "PRESERVE_APPROVED_PUBLIC",
+      "reason_excluded": "Exact current manifest-bound approved package"
+    }
+  ]
+}

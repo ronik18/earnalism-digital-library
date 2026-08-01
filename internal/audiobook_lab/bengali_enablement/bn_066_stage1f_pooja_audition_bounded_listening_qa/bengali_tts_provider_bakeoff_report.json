@@ -1,0 +1,228 @@
+{
+  "status": "PASS",
+  "started_at": "2026-07-10T09:31:03Z",
+  "finished_at": "2026-07-10T09:31:23Z",
+  "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa",
+  "release_policy": "bengali_audiobook_acceptance_v2_92",
+  "policy_decision_path": "internal/audiobook_lab/release_gate/bengali_audiobook_acceptance_v2_92_policy_decision.json",
+  "candidate_source": "explicit_candidate_slugs",
+  "bengali_audiobook_92_rescue": true,
+  "adaptive_optimizer": false,
+  "pilot_selection_report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_audiobook_pilot_selection_report.json",
+  "text_prep_comparison_report_path": "",
+  "postprocess_report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_audio_postprocess_report.json",
+  "listening_thresholds_applied": {
+    "naturalness_score": 8.9,
+    "pronunciation_score": 8.9,
+    "emotional_expression_score": 8.9,
+    "punctuation_pause_score": 8.9,
+    "pacing_score": 8.9,
+    "continuity_score": 8.9,
+    "anti_robotic_texture_score": 9.2,
+    "anti_choppy_join_score": 9.2,
+    "listener_enjoyment_score": 8.9,
+    "overall_listening_score": 9.2,
+    "confidence_score": 0.9
+  },
+  "fatal_flags_required": {
+    "robotic_texture_detected": false,
+    "mechanical_cadence_detected": false,
+    "choppy_joins_detected": false,
+    "fallback_tts_detected": false,
+    "list_reading_rhythm_detected": false,
+    "repeated_identical_sentence_endings_detected": false,
+    "abrupt_tts_resets_detected": false,
+    "placeholder_audio_detected": false
+  },
+  "generate_full_pilot_if_policy_pass": false,
+  "allow_audio_only_with_reader": false,
+  "disable_fragile_highlight_sync": false,
+  "max_pilot_count": 0,
+  "providers_requested": [
+    "sarvam"
+  ],
+  "providers_detected": {
+    "openai": {
+      "detected": true,
+      "env": {
+        "OPENAI_API_KEY": true
+      }
+    },
+    "google": {
+      "detected": true,
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": true,
+        "GOOGLE_CLOUD_PROJECT": true,
+        "GOOGLE_TTS_PROJECT": false
+      }
+    },
+    "azure": {
+      "detected": false,
+      "env": {
+        "AZURE_SPEECH_KEY": false,
+        "AZURE_SPEECH_REGION": false
+      }
+    },
+    "sarvam": {
+      "detected": true,
+      "env": {
+        "SARVAM_API_KEY": true
+      },
+      "status": "adapter_available"
+    },
+    "human_licensed_import": {
+      "detected": false,
+      "env": {
+        "EARNALISM_LICENSED_AUDIO_IMPORT_DIR": false,
+        "EARNALISM_HUMAN_AUDIO_IMPORT_DIR": false
+      }
+    }
+  },
+  "provider_capability_probe_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_provider_capability_probe.json",
+  "provider_capability_probe": {
+    "sarvam": {
+      "provider": "sarvam",
+      "credentials_detected": true,
+      "auth_status": "usable",
+      "endpoint_used": "https://api.sarvam.ai/text-to-speech",
+      "region": "",
+      "voices_listed": [
+        "pooja"
+      ],
+      "bengali_voices_detected": [
+        "pooja"
+      ],
+      "sample_synthesis_succeeded": true,
+      "error_message_redacted": "",
+      "retryable": false,
+      "exact_next_fix": "",
+      "style_control": false
+    }
+  },
+  "providers_unavailable": [
+    {
+      "provider": "bakeoff_scheduler",
+      "reason": "voice-filter enabled; testing only requested provider voices.",
+      "voice_filter": [
+        "pooja"
+      ]
+    },
+    {
+      "provider": "bakeoff_scheduler",
+      "reason": "second-pass-polish enabled; testing/resummarizing near-pass voices with style/text-preparation variants only.",
+      "style_profiles": [
+        "literary_warm_pacing"
+      ]
+    }
+  ],
+  "voices_tested": [
+    {
+      "provider": "sarvam",
+      "voice": "pooja",
+      "language_code": "bn-IN"
+    }
+  ],
+  "passage_ids": [
+    "narrative_opening"
+  ],
+  "passages_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bakeoff_passages.json",
+  "sample_results_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bakeoff_sample_results.json",
+  "bengali_existing_sample_judging_report_path": "",
+  "cost_estimate": {
+    "estimated_cost_usd": 0.0119,
+    "budget_usd": 5.0,
+    "actual_cost_if_available": "not_available"
+  },
+  "quota_probe_status": "PASS",
+  "quota_probe_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/openai_listening_qa_quota_probe.json",
+  "existing_audio_inventory": {
+    "audio_file_count": 2,
+    "canonical_sample_count": 1,
+    "audio_counts_by_provider_voice": {
+      "sarvam/pooja": 2
+    },
+    "canonical_counts_by_provider_voice": {
+      "sarvam/pooja": 1
+    },
+    "audio_paths": [
+      "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d.wav",
+      "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d_clipped.mp3"
+    ],
+    "canonical_sample_paths": [
+      "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d.wav"
+    ]
+  },
+  "cache_hit_samples_reused": 0,
+  "new_samples_generated": 1,
+  "adaptive_early_stop_events": [],
+  "voice_results": [
+    {
+      "provider": "sarvam",
+      "voice": "pooja",
+      "release_policy": "bengali_audiobook_acceptance_v2_92",
+      "listening_thresholds_applied": {
+        "naturalness_score": 8.9,
+        "pronunciation_score": 8.9,
+        "emotional_expression_score": 8.9,
+        "punctuation_pause_score": 8.9,
+        "pacing_score": 8.9,
+        "continuity_score": 8.9,
+        "anti_robotic_texture_score": 9.2,
+        "anti_choppy_join_score": 9.2,
+        "listener_enjoyment_score": 8.9,
+        "overall_listening_score": 9.2,
+        "confidence_score": 0.9
+      },
+      "language_code": "bn-IN",
+      "style_profile": "literary_warm_pacing",
+      "model": "bulbul:v3",
+      "style_control": false,
+      "endpoint_used": "https://api.sarvam.ai/text-to-speech",
+      "output_codec": "wav",
+      "sample_count": 1,
+      "expected_sample_count": 1,
+      "aggregate": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.4,
+        "emotional_expression_score": 9.3,
+        "punctuation_pause_score": 9.2,
+        "pacing_score": 9.1,
+        "continuity_score": 9.4,
+        "anti_robotic_texture_score": 9.6,
+        "anti_choppy_join_score": 9.5,
+        "listener_enjoyment_score": 9.3,
+        "overall_listening_score": 9.3,
+        "confidence_score": 0.95
+      },
+      "flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "overall_listening_score": 9.3,
+      "confidence_score": 0.95,
+      "status": "PASS",
+      "blockers": []
+    }
+  ],
+  "best_provider": "sarvam",
+  "best_voice": "pooja",
+  "best_style_profile": "literary_warm_pacing",
+  "best_score": 9.3,
+  "best_confidence": 0.95,
+  "any_audition_passed": true,
+  "pass_fail_decision": "BENGALI_AUDIO_PATH_FOUND",
+  "recommendation": "Generate one guarded Bengali pilot with the selected provider/voice under the recorded release policy.",
+  "pilot_slug": "bn-066",
+  "blockers": [],
+  "report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_tts_provider_bakeoff_report.json",
+  "status_path": "internal/audiobook_lab/release_gate/bengali_provider_bakeoff_status.json",
+  "bengali_provider_audition_report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_provider_audition_report.json",
+  "bengali_representative_audition_report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_representative_audition_report.json",
+  "sarvam_corrective_audition_report_path": "sarvam_corrective_audition_report.json"
+}

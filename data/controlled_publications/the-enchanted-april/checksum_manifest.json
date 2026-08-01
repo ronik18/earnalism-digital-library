@@ -1,0 +1,118 @@
+{
+  "slug": "the-enchanted-april",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "3d3bb0c356acc96ae180b4d599c8a1e1fd4f681a10ffd5165b41108870daa486"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "8c9af94134ec46d43d04422ed4464f99448506e1fe9319baad4b84fa96bdd5a2"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "1a9f06450281eec34410e65dd922b24fdde77885cd8b047103bda8f91e935add"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "3d5accda1532291bc2e5807e70d26990446189a027284447c92b7d23060c86ba"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "2e09524ea213f35fc97e1ed0bd32447a1913f47f3b65443d9bc1cedf74e97f8d"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "ca8206df0f2c88559bcf2ff75a5f943e85b55f064aeff0ea721c1c5f131be883"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "9115734081a75ec09d7dfc178b53f69509f402b1de273ebaf2c0a1470324201a"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "7efca6b8e28700f79408a15693cef9162d7b3ded70a31c58a51e72eb2877b801"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "843b6abc7025391ebc8d462410ce90061c5f7dcbbfc5802cbfc10791cdb58b4a"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "e75da0301a837e9124005a80ec0d73a9615949107956c839bf68c6d5b9bd9ec5"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "c3e61106f6a53681bd6c372be17052e84abb7f6785990d74361716580b476295"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "1df69ce171a9f9f905d2df0f4fb02ccd082fd8085a551bbc8c18db2e7a776076"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "9cae258562d52b220bd97f959afb4ace972f54b199869c6a789144af9c5ace1e"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "e531e0f2e880963d469de09f6d965db529ae69e7ade4e3eaefb0c2dbfd80f67a"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "f788b6aa56fd1ccd2bbb9b0e58361e94f0eeda7de582fe5629d3f152154b02eb"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "f153d4d174c10ad7c1f3627f077700793ba8e68623d2e6bdb7ee2620dcd9fda2"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "7c97479413cea51f366fcd2df8ea6c3b00465acc149a5d000646c0eefca00d8a"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "2425a83e0732f27af14d8564b0fda6303f2c903d1d6ed0796c8da57ee366516a"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "fe07218d0c8817667bccaa3f2ef2f03d10ad263c38c7f4465f7d4ada5ae58ffc"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "a2b6ac7ccc0415916f470459d6723409a74d93546d90ac5b627f112fdadda712"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "281c693b17b29c3bc9f6a530c9b214e0b039f6ed5e0264ffd162b5672a7e2146"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "5ff2770240ea9ebd4b3f8e35cd5799ce33a1b69956324cc24d81e129325027dc"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "bd620d7aa7adad3514ccb6e87578ebdfb3b4516ddc146ba466d2203e5685c15f"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "b2918c9827a5deadb2a1b62a1a975a752a5744cf6d5da9f4a3bdb1e8dcbe0e0b"
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "b703df96b6fe2f5d36d204842065cce75e66065970e9eb0ab7f769b8d104fc6e"
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "c0400a58f06f2576122886fcd13f1c514b46db2b685a4a06a739bdda1579f44e"
+    },
+    {
+      "file": "chapters/chapter-021.json",
+      "sha256": "a100ac8fbbf58a9be8c89d73689731020fb55017855bde4ce83c1ec1c5c98414"
+    },
+    {
+      "file": "chapters/chapter-022.json",
+      "sha256": "38498e7520305a0445c702ad688fa78d0b8a2b12792917ac78e15b9ade8f0a51"
+    }
+  ]
+}

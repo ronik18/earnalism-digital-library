@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-13T20:02:00Z",
+  "decision": "AUTHORIZE_P0_REMOTE_STORAGE_CONTAINMENT_FOR_UNAPPROVED_AUDIO_OBJECTS.",
+  "inventory_sha256": "21c9f5c85c56be3779822b90fb31c178db8131f7f39f7d2bdae1d00a5f61b23c",
+  "result": "PASS",
+  "transport": {
+    "execution_location": "Railway production backend instance",
+    "deployment_instance": "83c34320-32ad-4258-bf7e-0fc444dfaace",
+    "local_attempt": "INTERRUPTED_BEFORE_MUTATION_DUE_TO_LOCAL_UPLINK_STALL",
+    "local_incomplete_multipart_uploads_remaining": 0
+  },
+  "private_qa_environment": {
+    "destination_bucket_confirmed_private": true,
+    "source_and_destination_buckets_distinct": true,
+    "source_credentials_scoped": true,
+    "destination_credentials_scoped": true,
+    "secret_values_recorded": false
+  },
+  "execution": {
+    "slug": "bn-066",
+    "target_count": 5,
+    "retained_private": 5,
+    "newly_contained": 5,
+    "already_contained": 0,
+    "failed": 0,
+    "providers": {
+      "B2": 1,
+      "Cloudinary": 4
+    },
+    "started_at": "2026-07-13T20:00:22Z",
+    "completed_at": "2026-07-13T20:01:16Z"
+  },
+  "private_retention": [
+    {
+      "object_id": "audio-b6a71ac20e4149d9",
+      "key": "storage-containment/bn-066/audio-b6a71ac20e4149d9/bn-066-bengali-polish-queue-v1.mp3",
+      "byte_size": 156318450,
+      "source_sha256_present": true
+    },
+    {
+      "object_id": "sidecar-0d64db2ec393d6d3",
+      "key": "storage-containment/bn-066/sidecar-0d64db2ec393d6d3/bn-066-bengali-polish-queue-v1_chapters.json",
+      "byte_size": 6388,
+      "source_sha256_present": true
+    },
+    {
+      "object_id": "sidecar-e987ca6cdc928127",
+      "key": "storage-containment/bn-066/sidecar-e987ca6cdc928127/bn-066-bengali-polish-queue-v1_meta.json",
+      "byte_size": 2089,
+      "source_sha256_present": true
+    },
+    {
+      "object_id": "sidecar-f64f5ce21cce5e58",
+      "key": "storage-containment/bn-066/sidecar-f64f5ce21cce5e58/bn-066-bengali-polish-queue-v1_timestamps.json",
+      "byte_size": 2810309,
+      "source_sha256_present": true
+    },
+    {
+      "object_id": "sidecar-b3e025558ecf7c07",
+      "key": "storage-containment/bn-066/sidecar-b3e025558ecf7c07/bn-066-bengali-polish-queue-v1_highlight.vtt",
+      "byte_size": 1691130,
+      "source_sha256_present": true
+    }
+  ],
+  "old_url_postcheck": [
+    {
+      "object_id": "audio-b6a71ac20e4149d9",
+      "provider": "B2",
+      "http_status": 404
+    },
+    {
+      "object_id": "sidecar-0d64db2ec393d6d3",
+      "provider": "Cloudinary",
+      "http_status": 404
+    },
+    {
+      "object_id": "sidecar-e987ca6cdc928127",
+      "provider": "Cloudinary",
+      "http_status": 404
+    },
+    {
+      "object_id": "sidecar-f64f5ce21cce5e58",
+      "provider": "Cloudinary",
+      "http_status": 404
+    },
+    {
+      "object_id": "sidecar-b3e025558ecf7c07",
+      "provider": "Cloudinary",
+      "http_status": 404
+    }
+  ],
+  "approved_controls": [
+    {
+      "slug": "book-2b9853ec52",
+      "manifest_status": 200,
+      "enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_status": 206,
+      "content_range": "bytes 0-1023/5233965"
+    },
+    {
+      "slug": "a-ghost-story",
+      "manifest_status": 200,
+      "enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_status": 206,
+      "content_range": "bytes 0-1023/7047789"
+    }
+  ],
+  "hidden_control": {
+    "slug": "bn-066",
+    "manifest_status": 200,
+    "enabled": false,
+    "provider": "",
+    "voice": "",
+    "url": "",
+    "assets": {},
+    "proxy_status": 404
+  },
+  "mutation_log_sha256": "e37819ab04c54387f9f36e9947b2b564667e15b0328d27cebb50b0a63d47d240",
+  "release_gate_mutation": false,
+  "paid_tts_lock_touched": false
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "a-retrieved-reformation",
+  "source_url": "https://www.gutenberg.org/ebooks/1646",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "03fc9a36b9e316f3c2d02902dd5cddcacd1724ac42b9602827f8914ead6c27b3",
+  "content_hash": "26333f5658cfcb36488d5d64200a0db57a6693bcea82c1bcbcef7a41d35be761",
+  "provenance_hash": "1ee6272d06c799a412b12b5e694682891db8412ddd256b677456862eb46d4e71",
+  "rights_basis": "O. Henry died 1910; first published 1903. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.874505+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

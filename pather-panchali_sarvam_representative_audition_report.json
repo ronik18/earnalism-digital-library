@@ -1,0 +1,29 @@
+{
+  "slug": "pather-panchali",
+  "title": "পথের পাঁচালী / Pather Panchali",
+  "provider": "Sarvam",
+  "model": "bulbul:v3",
+  "voice": "ratan",
+  "style": "literary_warm_pacing",
+  "status": "NOT_RUN_BLOCKED_BY_SOURCE_OR_COVER_GATE",
+  "policy": "bengali_audiobook_acceptance_v2_92",
+  "required_score": 9.2,
+  "required_confidence": 0.9,
+  "representative_passages_planned": [
+    "opening",
+    "dialogue",
+    "emotional passage",
+    "descriptive passage",
+    "long punctuation-heavy passage",
+    "chapter ending"
+  ],
+  "score": null,
+  "confidence": null,
+  "fatal_flags": null,
+  "blockers": [
+    "full-work completeness not proven",
+    "cover repair required",
+    "paid_tts.lock active with no allowed next holders"
+  ],
+  "full_audiobook_generation_allowed": false
+}

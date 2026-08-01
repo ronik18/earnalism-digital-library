@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-five-orange-pips",
+  "slug": "the-five-orange-pips",
+  "title": "The Five Orange Pips",
+  "subtitle": "",
+  "author": "Arthur Conan Doyle",
+  "category_slug": "literary-fiction",
+  "short_description": "Three men receive envelopes containing five orange pips — and die shortly after. Holmes investigates the Ku Klux Klan.",
+  "description": "A young man comes to Holmes in terror after his uncle and father died upon receiving the mysterious orange pips — one of the few Holmes stories where justice arrives too late, and Holmes himself feels the sting of failure.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "31 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Arthur Conan Doyle (1859–1930) was a British author and physician, creator of Sherlock Holmes and Dr. Watson.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Five Orange Pips",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 7342,
+      "reading_minutes": 31,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "5d37ae2d72dd6654476af65bcaeabefeb7d0f105910f7e0070803fce1e6a767e",
+  "content_hash": "879efaad73ff552d7c0b7bafc862306936c5aaa1d278dd9e89ecc3a3c9e5c213",
+  "provenance_hash": "eb6e24a5e4ee9a56708d8001f1736cdb05ec1f31bbe72be7739b0536b91dc6bb",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1891. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-five-orange-pips",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583693/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583694/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583695/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583696/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583696/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583693/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583693/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583694/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583695/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583696/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583696/earnalism/audiobooks/en/the-five-orange-pips/the-five-orange-pips_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:49Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z"
+}

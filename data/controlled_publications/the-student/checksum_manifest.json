@@ -1,0 +1,34 @@
+{
+  "slug": "the-student",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "4b1aad52062e04aa8c6d87072d16c1379a15800d2f349eadeeef1000ae19b0eb"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "c87718a1d25fdb034b34c13bfbdf16d93c6bce27867c91c6b85b3f2ed8a484e4"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "bc843a767d245ed23d5b73c4704579b95f716c3325eba6edc3433ac6376da3ed"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "5bb00400d87d9964223e2299081ca5b3f287c4dc56667deb883327f255a3d79a"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "525f6b25daa31ec8abf11c1e603fd1ca8d1b315aaf41250956abe6d3d69f2022"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "2831060443c651368848707b46ce1188ba3886dbb946eec86483c322fc643d37"
+    }
+  ]
+}

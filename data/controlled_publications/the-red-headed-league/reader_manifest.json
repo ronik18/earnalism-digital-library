@@ -1,0 +1,30 @@
+{
+  "slug": "the-red-headed-league",
+  "title": "The Red-Headed League",
+  "author": "Arthur Conan Doyle",
+  "language": "en",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Red-Headed League",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 9178,
+      "reading_minutes": 39,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:49Z"
+}

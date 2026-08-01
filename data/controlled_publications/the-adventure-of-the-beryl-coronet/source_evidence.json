@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-beryl-coronet",
+  "source_url": "https://www.gutenberg.org/ebooks/1661",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "3838f62e17d9f75f271b8857446972cf633b14049e3fde5a8963e88d89e37ffc",
+  "content_hash": "430c6724b01d315313ae2fd20b3ef7947d876e4d8a29a523873980e3c787f94b",
+  "provenance_hash": "cb48b0d389499bb7b0e7d5ef5387c4c473e8e07ec2f3ebb91d8b5f6a87ac43fb",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.231484+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

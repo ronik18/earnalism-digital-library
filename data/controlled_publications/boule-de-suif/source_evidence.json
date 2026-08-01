@@ -1,0 +1,13 @@
+{
+  "slug": "boule-de-suif",
+  "source_url": "https://www.gutenberg.org/ebooks/3077",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+  "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+  "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
+  "rights_basis": "Guy de Maupassant died 1893; first published 1880. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.017008+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

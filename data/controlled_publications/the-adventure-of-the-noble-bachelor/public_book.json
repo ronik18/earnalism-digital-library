@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-adventure-of-the-noble-bachelor",
+  "slug": "the-adventure-of-the-noble-bachelor",
+  "title": "The Adventure of the Noble Bachelor",
+  "subtitle": "",
+  "author": "Arthur Conan Doyle",
+  "category_slug": "adventure",
+  "short_description": "A lord's American bride vanishes from their wedding reception — Holmes discovers she already has a husband.",
+  "description": "Lady St. Simon disappears during her own wedding breakfast. Holmes traces her to a restaurant where she sits with a man — the husband she believed drowned in a San Francisco river. A story about misunderstanding, presumed death, and transatlantic lives.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "34 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Arthur Conan Doyle (1859–1930) was a British author and physician, creator of Sherlock Holmes and Dr. Watson.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Adventure of the Noble Bachelor",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 8175,
+      "reading_minutes": 35,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "38eca8ce65749233c926c71ed3ae28a8548cc71aa703b2419bf8363915432a64",
+  "content_hash": "911e6f7b701ecab9cc374fa23faffb75d96268af87ce187164c598ba2ad33f17",
+  "provenance_hash": "a4dc33f4ec0382e477b0407fae1a3916c421ce9f0b4dc4c8a4782e51cc893257",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-adventure-of-the-noble-bachelor",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584592/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584593/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584593/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584594/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584595/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584592/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584592/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584593/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584593/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584594/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584595/earnalism/audiobooks/en/the-adventure-of-the-noble-bachelor/the-adventure-of-the-noble-bachelor_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

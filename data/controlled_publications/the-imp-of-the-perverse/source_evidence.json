@@ -1,0 +1,13 @@
+{
+  "slug": "the-imp-of-the-perverse",
+  "source_url": "https://www.gutenberg.org/ebooks/2148",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "596cf1c38d455304f0df2163666ee8c12691292e23b61f0a8f74914f67b01b2e",
+  "content_hash": "6902c40654ed82160028cc915dacce07a8959e45a40beef469829aa6b420eb41",
+  "provenance_hash": "697f0e1ce450200e5e9c6787ba85ec53c45d939654964c7f04b36f620c4f8a40",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1845. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.423797+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

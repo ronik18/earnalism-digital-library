@@ -1,0 +1,34 @@
+{
+  "slug": "the-outcasts-of-poker-flat",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "82e8deedd2fa06ad67edf7f5996fb8f4b66af429f01ec6a6af9bfaf51f6e817c"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "a752991626ac130ba7c45447ebb6580e70d16ce38d34116dfbae7d6ece0cd690"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "5d9d669d1beb837de0bd640b08b5156d67d7927a0addcc5d276db8a73d154ab1"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "18f0f53c139be991b3af1fd94c6dfb84bee7905e4f467020a126c503fbac7953"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "9e75f83f61c7d132e2f48a6d231992238e16b2bffb3ad8756e8c1d3c37fe7cb3"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "0aad8317f1e4689fdca6a28416795297a73cbfbb30736d8399fa926c4cf68498"
+    }
+  ]
+}

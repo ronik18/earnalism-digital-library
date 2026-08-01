@@ -1,0 +1,42 @@
+{
+  "slug": "the-adventures-of-sherlock-holmes",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "0dde1e663113459200758e217fbccdab3dbbd002a4ecb73967da8441a5dca4e3"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "288969ca7bee5e1035722c6612ae7ba5defdfaa4bd1b13737ccf9ec34dceab38"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "61f181d996f45e7802392af19274f99a6bf6fbbd89ce37cb354c9b6ff2d69c47"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "415112a3c1149886a44456059eb9c09b79203e8fa50e2010aaaedfeabc5ee600"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "2b28ed62ed7ed47e3044ba8bb15c53cdd9dc79f8030db0ea7643ca28bcf15c75"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "0faf82709ce4932c16213ccc92affa5fdb27a4a34e7e5eae48b50457b056c8ba"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "3e217e5b2a59f4b690441743596d24c477fd8e6d96b8896fa8bb7c4359b9999d"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "482281a15e9ff4baa13e8ee0c43a4262e248413a840407d37baa02093d5c15fc"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "7f2d296fc4bc823c2fd929dcb572993e058c51c3232fc006312fcb45aa49f6ec"
+    }
+  ]
+}

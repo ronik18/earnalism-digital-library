@@ -1,0 +1,110 @@
+{
+  "slug": "my-life-and-work",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "2f8890741932b8c0fe7e7f9088b4ff0f6c233b07d79160a6feeabbdcfcacd69c"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "8f687463788c8d6afc2453e86ba3229067f9b4f689a079df46e8bd85779fbd53"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "0c00b96caba8dc3931d1fde1b5e1d99db1d556d6fd32c3b9ee2229581f044df1"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "2b7dd39c921abd88afc285958c5660e70b8e2295fd0d30112e023b4f1246fe4d"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "8101b45d51b353e0112bad7600e1cd8e71f1759c18ec7f9e1060b8e9db589559"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "d7895ebd47275ea493ebc43690a6f722c132242bf7ac30da3b51f508f5e8228a"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "2a1fd4c3e04b1ebb563d265d3a320f331755941a1afa095f7a7177e289afc384"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "a7bcb5cef6577ddfa014b01d9800e487652bb517fb97a6763b3eaf2f7ad293e3"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "dd45c004ed530f20cfd00ffbb31e0ed212e85836913ab9ba79719e7165f1bd11"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "c0fa9c85a48b57bce9b4fb877b6b6603f3dc70d0561a3511979ea433fab6219b"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "02b539eac32e6cfaab454bc1b0c5bd2d3cb57788da0b2c8fd44fd1d0bf5b054b"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "ec5547b4d4f8056ed8353d022a7c0cf3722a30067b5a9cad8e1803143f3cc596"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "cabea63030da009912cb6c1cf7d8a086eaceb6bf806f6851fb5a80aa29186d03"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "ef5c0035b6eeff68add7a9965d06956b3b49b1aca97c7814cef41da6f0482593"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "7a87f5c0a32f1f6845ff1dc8ff345211a702d06f9531e1a6e4662458639d8e46"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "eee3343808fd2eaed81f5bd46fd8d42c386788237aeaede07dc3d714ad9da9b0"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "eeaa335e4e455dfd05745e645018b6f12c6660105ef0ad69e1b2a2801a3d6bcb"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "61cb29ad3cd6d127db6a4a62384e035e08b548fe5d595f3afb0f725ca5ba90e8"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "5b5474245f0bb790faa6d972cfb9a982acca24d9061fd73647056d88e7235e6b"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "1c5e0d62db59e3ee4582e777ff2c642be4dde24114bcd28144485e16fe578a83"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "ef3867bb022a01be23bcf218fde2d808519ad55aa3dcfa8b183c66b031936798"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "74ba7b50b8f06cad4ab57dd5ef18f7930a27c4f706aaa5650ab7e35c6eb47aca"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "5266d6958665c159f3c2bb0b78a3d49aca761026f7dfe05b8702b256845d35b8"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "ef89755dc7219ef22e39dfb9152682d3e3372afc3125e7e55bb0f95cd9dae868"
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "c1322b3da8525cbcb717bc06c2be1b5af15c891d288e1c337aad70b7caf09049"
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "acd20f34eb13df93e82688fc463925a77298b69ae984987b9efabb5e11b7810c"
+    }
+  ]
+}

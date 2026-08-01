@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-07-07T18:30:00Z",
+  "status": "LAUNCH_ACTIVATION_READY_FOR_REVIEW",
+  "scope": "Season 1 launch activation planning and asset pipeline only; no ads, no paid audio, no publishing, no production metadata mutation.",
+  "source_strategy_files": [
+    "earnalism_book_inventory_for_launch.json",
+    "launch_fitness_scorecard.json",
+    "earnalism_first_lot_decision.md",
+    "earnalism_90_day_marketing_plan.md",
+    "earnalism_launch_campaign_calendar.csv"
+  ],
+  "release_truth_summary": {
+    "audio_marketable_now": [
+      "book-2b9853ec52",
+      "a-ghost-story"
+    ],
+    "book_2b9853ec52_status": "Production book API 200, reader shell 200, manifest 200, audiobook endpoint 200, audio/sidecars 200, go-live evidence published=true.",
+    "a_ghost_story_status": "Local controlled-publication evidence marks audiobook_release_gate=APPROVED and audio assets resolve 200; production reader/book routes return app shell 200. Guessed public API manifest/audiobook paths returned 404, so paid listen ads should use reader route and require one final browser/manifest confirmation before spend.",
+    "non_live_tier_1_rule": "May be described only as coming soon, in production, or selected for the Founding Audiobook Lot. No Listen CTA."
+  },
+  "public_groups": {
+    "live_now_approved_audiobooks": [
+      "book-2b9853ec52",
+      "a-ghost-story"
+    ],
+    "coming_to_the_listening_room": [
+      "muchiram-gurer-jibanchorit",
+      "book-d19e96859f",
+      "book-f5d593e1f4",
+      "book-ac5a71075e",
+      "the-gift-of-the-magi",
+      "the-tell-tale-heart",
+      "the-open-window",
+      "sredni-vashtar",
+      "dsires-baby"
+    ],
+    "reader_first_classics": [
+      "book-1090573dff",
+      "book-edfcf810c5",
+      "book-4b944e64fa",
+      "radharani",
+      "nishkriti",
+      "dracula",
+      "the-cop-and-the-anthem",
+      "the-last-leaf",
+      "the-masque-of-the-red-death",
+      "the-yellow-wallpaper",
+      "the-monkeys-paw",
+      "the-necklace"
+    ],
+    "seo_long_form_flagship_shelf": [
+      "dracula",
+      "frankenstein",
+      "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "the-picture-of-dorian-gray",
+      "the-time-machine",
+      "the-call-of-the-wild",
+      "white-fang",
+      "great-expectations",
+      "jane-eyre",
+      "pride-and-prejudice",
+      "the-secret-garden",
+      "alices-adventures-in-wonderland"
+    ]
+  },
+  "activation_sequence": [
+    "Publish Season 1 positioning internally and align public copy to release-truth matrix.",
+    "Use the 14-day asset pack for organic posts only.",
+    "Use audio teasers only for book-2b9853ec52 and a-ghost-story after final route check on the asset being clipped.",
+    "Route non-live audiobook candidates to Read or Coming Soon CTAs only.",
+    "Delay paid ads until at least 4-6 audiobooks are live, except a tiny reader-first validation test."
+  ],
+  "asset_pipeline": {
+    "live_audio_assets": "15s and 30s clips are eligible only for approved live audiobooks.",
+    "candidate_assets": "Cover reveal, quote card, reader excerpt, quality-gate story, poll, and coming-soon card.",
+    "reader_first_assets": "Reader challenge, classroom/culture posts, cover-led posts, and nostalgia prompts.",
+    "tracking": "First-party events only unless REACT_APP_ENABLE_POSTHOG=true or equivalent config explicitly enables third-party tracking."
+  },
+  "validation_summary": {
+    "json_sources_validated": "PASS",
+    "frontend_files_changed": false,
+    "frontend_validation_required": false,
+    "release_truth_status": "PASS_FOR_DOCS; safe copy generated; no unapproved Listen CTA in docs"
+  },
+  "next_exact_command": "python3 -m json.tool public_launch_lot_release_truth_matrix.json >/dev/null && python3 -m json.tool launch_title_public_naming_map.json >/dev/null && git diff --check"
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "rikki-tikki-tavi",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "dad32cd0cc9d5e7625c387ba07ed7796cf64291a788c9a3cabd4ab78db20f5bc"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "93cd8629a09a66fe00f0737f643a13e0123d4d859477c6b1feba58543b5980dc"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "875a6df75bb02ed89dcbf6d242c8a9800350a8441ec77bec32c278304f506445"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "50354e94d87f75e1fddf21b855835186a72cae9e27b1a34e020f0f9210e55c85"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "53ad1b485103b247da45ee2a8e73b0f770d257b9e97623ffcf381d3795758399"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "2bc739a93c13a1c203cbfb8fa0bffc09722e046918c35ddae377a204d33dcc24"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "91206afb10aed8e4020989d533e107c483b6ef0871ee40f9e91b0f2773bc1e4c"
+    }
+  ]
+}

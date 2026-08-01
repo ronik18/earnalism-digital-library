@@ -1,0 +1,249 @@
+{
+  "slug": "bn-066",
+  "title": "আনন্দমঠ",
+  "status": "PASS_CLEAN_TEXT_EXTRACTED",
+  "canonical_reader_hash": "9b68025a5b5038a7e8a868b1f5c1b3ba42f10685aeb8486153638873f3f3d738",
+  "audiobook_clean_hash": "5f73247d4ed09257428907b1c9fbd19576ce449359d7dd221bd521b9fe533420",
+  "removed_spans": [
+    {
+      "text": "১৮৮৩ (পৃ. ১-২)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/001-chapter-1-উপক্রমণিকা.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১০২-১০৬)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/002-chapter-2-দ্বিতীয়-খণ্ড-প্রথম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১০৬-১১০)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/003-chapter-3-দ্বিতীয়-খণ্ড-দ্বিতীয়-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১১০-১১৩)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/004-chapter-4-দ্বিতীয়-খণ্ড-তৃতীয়-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১১৩-১২১)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/005-chapter-5-দ্বিতীয়-খণ্ড-চতুর্থ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১২১-১২৫)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/006-chapter-6-দ্বিতীয়-খণ্ড-পঞ্চম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১২৫-১২৬)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/007-chapter-7-দ্বিতীয়-খণ্ড-ষষ্ঠ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১২৭-১৩০)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/008-chapter-8-দ্বিতীয়-খণ্ড-সপ্তম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৩০-১৩২)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/009-chapter-9-দ্বিতীয়-খণ্ড-অষ্টম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৩২-১৩৬)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/010-chapter-10-দ্বিতীয়-খণ্ড-নবম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৩৬-১৪০)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/011-chapter-11-দ্বিতীয়-খণ্ড-দশম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৪০-১৪৫)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/012-chapter-12-দ্বিতীয়-খণ্ড-একাদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৪৫-১৫০)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/013-chapter-13-দ্বিতীয়-খণ্ড-দ্বাদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৫০-১৫৪)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/014-chapter-14-দ্বিতীয়-খণ্ড-ত্রয়োদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৫৪-১৫৬)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/015-chapter-15-দ্বিতীয়-খণ্ড-চতুর্দ্দশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৫৬-১৫৯)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/016-chapter-16-দ্বিতীয়-খণ্ড-পঞ্চদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৬০-১৬২)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/017-chapter-17-দ্বিতীয়-খণ্ড-ষোড়শ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৬২-১৬৬)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/018-chapter-18-দ্বিতীয়-খণ্ড-সপ্তদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৬৬-১৭২)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/019-chapter-19-দ্বিতীয়-খণ্ড-অষ্টাদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৭২-১৭৭)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/020-chapter-20-দ্বিতীয়-খণ্ড-ঊনবিংশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৭৭-১৮০)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/021-chapter-21-দ্বিতীয়-খণ্ড-বিংশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৩-৮)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/022-chapter-22-প্রথম-খণ্ড-প্রথম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৮-৯)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/023-chapter-23-প্রথম-খণ্ড-দ্বিতীয়-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৯-১১)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/024-chapter-24-প্রথম-খণ্ড-তৃতীয়-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১২-১৪)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/025-chapter-25-প্রথম-খণ্ড-চতুর্থ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৪-১৬)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/026-chapter-26-প্রথম-খণ্ড-পঞ্চম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৭-১৮)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/027-chapter-27-প্রথম-খণ্ড-ষষ্ঠ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ১৯-২১)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/028-chapter-28-প্রথম-খণ্ড-সপ্তম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ২২-২৫)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/029-chapter-29-প্রথম-খণ্ড-অষ্টম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ২৬-২৭)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/030-chapter-30-প্রথম-খণ্ড-নবম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ২৭-৩৩)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/031-chapter-31-প্রথম-খণ্ড-দশম-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৩৩-৩৮)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/032-chapter-32-প্রথম-খণ্ড-একাদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৩৮-৪৯)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/033-chapter-33-প্রথম-খণ্ড-দ্বাদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৪৯-৫২)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/034-chapter-34-প্রথম-খণ্ড-ত্রয়োদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৫২-৫৪)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/035-chapter-35-প্রথম-খণ্ড-চতুর্দ্দশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৫৪-৬৩)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/036-chapter-36-প্রথম-খণ্ড-পঞ্চদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৬৩-৬৬)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/037-chapter-37-প্রথম-খণ্ড-ষোড়শ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৬৬-৬৮)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/038-chapter-38-প্রথম-খণ্ড-সপ্তদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৬৯-৭১)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/039-chapter-39-প্রথম-খণ্ড-অষ্টাদশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৭১-৭৫)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/040-chapter-40-প্রথম-খণ্ড-ঊনবিংশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৭৫-৭৯)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/041-chapter-41-প্রথম-খণ্ড-বিংশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৭৯-৮২)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/042-chapter-42-প্রথম-খণ্ড-একবিংশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৮৬-৯২)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/043-chapter-43-প্রথম-খণ্ড-চতুর্ব্বিংশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৮৫-৮৬)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/044-chapter-44-প্রথম-খণ্ড-ত্রয়োবিংশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৮২-৮৫)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/045-chapter-45-প্রথম-খণ্ড-দ্বাবিংশ-পরিচ্ছেদ.json"
+    },
+    {
+      "text": "১৮৮৩ (পৃ. ৯২-১০১)",
+      "reason": "source/page/date header removed from audiobook narration",
+      "chapter_file": "content/books/bn-066/chapters/046-chapter-46-প্রথম-খণ্ড-পঞ্চবিংশ-পরিচ্ছেদ.json"
+    }
+  ],
+  "removed_span_count": 46,
+  "removal_reason": "Strip source/page/date headers from narration while preserving reader display text.",
+  "first_words": "অতি বিস্তৃত অরণ্য। অরণ্যমধ্যে অধিকাংশ বৃক্ষই শাল, কিন্তু তদ্ভিন্ন আরও অনেকজাতীয় গাছ আছে। গাছের মাথায় মাথায় পাতায় পাতায়",
+  "last_words": "গেলে আমার দাড়ি খুলিব না। দাড়ি না খুলিলে তুমি এ পোড়র মুখ চিনিতে পারিবে না। ছি! পুরুষ এমন!",
+  "chapter_section_count": 46,
+  "estimated_character_count": 205531,
+  "estimated_duration_minutes": 220.3,
+  "estimated_tts_cost_usd": 0.25,
+  "full_text_in": "bn-066_audiobook_clean_text.json",
+  "blockers": []
+}

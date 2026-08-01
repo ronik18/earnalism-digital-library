@@ -1,0 +1,105 @@
+{
+  "id": "controlled-a-horseman-in-the-sky",
+  "slug": "a-horseman-in-the-sky",
+  "title": "A Horseman in the Sky",
+  "subtitle": "",
+  "author": "Ambrose Bierce",
+  "category_slug": "history-strategy",
+  "short_description": "A Union soldier spots a Confederate scout on a cliff — and shoots him, not knowing it is his own father.",
+  "description": "Carter Druse, a Virginian fighting for the Union, falls asleep on sentry duty and wakes to see a Confederate horseman on a cliff commanding a view of the entire Union position. He fires — and only a sergeant later witnesses what falls from the cliff.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "11 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Ambrose Bierce (1842–1914) was an American Civil War veteran, journalist, and author of sardonic fiction and The Devil's Dictionary.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "A Horseman in the Sky",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2574,
+      "reading_minutes": 11,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "80fcddf28824332d64cd71c5715a34fe73be1c4c51959edb7e6a6513338afaa7",
+  "content_hash": "d10cd55ffc2face83193bc52da17c1c15a4511d50da75709b0925a84c92f9e17",
+  "provenance_hash": "9afc41f924ee4bb02044c413e83e1ff9ec50ad964ca96e19b74486f7fce97d0b",
+  "rights_basis": "Ambrose Bierce died 1914; first published 1889. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "a-horseman-in-the-sky",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580875/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580877/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580878/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580879/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580880/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580875/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580875/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580877/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580878/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580879/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580880/earnalism/audiobooks/en/a-horseman-in-the-sky/a-horseman-in-the-sky_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

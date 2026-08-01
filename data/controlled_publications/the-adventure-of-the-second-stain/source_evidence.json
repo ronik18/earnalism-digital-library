@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-second-stain",
+  "source_url": "https://www.gutenberg.org/ebooks/108",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "0318bc5ec52f3dc20404f2834fd87cb5e6156380568729a26dd82cfd73344a09",
+  "content_hash": "ce1b8cf942e80535b2575d5c030c28c40062edb2a0071f9a380898ea03409ace",
+  "provenance_hash": "4fb3490b13cc83101581af9778eec4d40f99e87e077709ceb8095dac91c1a299",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1904. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.368825+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

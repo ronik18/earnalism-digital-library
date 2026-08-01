@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-07-07T12:08:38Z",
+  "status": "CANARY_NOT_RUN_NO_GO_PREFLIGHT",
+  "title_level_blockers": {
+    "muchiram-gurer-jibanchorit": [],
+    "book-d19e96859f": [
+      "AUDIOBOOK_CLEAN_TEXT_EXTRACTION_NOT_PROVEN_FRONTMATTER_STRIPPED"
+    ],
+    "book-2ddbed8293": [
+      "AUDIOBOOK_CLEAN_TEXT_EXTRACTION_NOT_PROVEN_FRONTMATTER_STRIPPED"
+    ]
+  },
+  "system_blockers": [
+    "paid_tts.lock active",
+    "production_metadata.lock active",
+    "factory/browser hook source untracked",
+    "pilot detail page copy mismatch"
+  ],
+  "sarvam_ratan_viability": "REMAINS_VIABLE_FROM_LIVE_PILOT; do not infer success for new titles without representative auditions.",
+  "cost": 0,
+  "recommendation": "Do not run paid canary yet. Promote source, clear locks intentionally, repair clean-text extraction for skipped candidates, then rerun preflight.",
+  "next_exact_command": "cd /private/tmp/earnalism-source-only-clean-integration && git status --short && git diff --stat"
+}

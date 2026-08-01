@@ -1,0 +1,79 @@
+{
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "status": "ENDPOINT_404_DIAGNOSED",
+  "public_api_book_lookup_result": {
+    "status": 404,
+    "result": "not exposed by public API"
+  },
+  "public_reader_manifest_result": {
+    "status": 404,
+    "result": "not exposed by public API"
+  },
+  "public_audiobook_endpoint_result": {
+    "status": 404,
+    "detail": "Audiobook asset not found"
+  },
+  "admin_api_metadata_lookup_result": {
+    "status": 200,
+    "audiobook_enabled": true,
+    "generate_audiobook": false,
+    "provider": "sarvam",
+    "voice": "ratan",
+    "asset_slug": "book-2b9853ec52",
+    "asset_keys": [
+      "chapters",
+      "meta",
+      "mp3",
+      "timestamps",
+      "vtt"
+    ],
+    "nested_provider": "sarvam",
+    "nested_url_present": true
+  },
+  "upload_asset_resolution": {
+    "status": "PASS",
+    "asset_count": 5,
+    "head_checks": "PASS: mp3/timestamps/vtt/chapters/meta all returned 200 in this run"
+  },
+  "controlled_publication_record": {
+    "path": "data/controlled_publications/book-2b9853ec52/public_book.json",
+    "audiobook_release_gate": "APPROVED",
+    "production_approved": true,
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style": "literary_warm_pacing"
+  },
+  "controlled_launch_records": {
+    "root_data_controlled_launch": {
+      "live_contains_slug": true,
+      "audio_contains_slug": true,
+      "live_count": 64,
+      "audio_count": 53
+    },
+    "backend_packaged_controlled_launch": {
+      "live_contains_slug": false,
+      "audio_contains_slug": false,
+      "live_count": 21,
+      "audio_count": 10
+    }
+  },
+  "backend_route_logs": {
+    "deployment_id": "a9ddecd2-abd2-4ba2-868b-63efa4552553",
+    "observed_http_logs": "GET/HEAD /api/reader/book/book-2b9853ec52/audiobook returned 404 on latest deployment; no upstream errors reported."
+  },
+  "endpoint_resolver_decision": "Route resolver hides the audiobook because public controlled-launch truth gate does not consider this slug live/audio-enabled in the packaged backend deployment, despite admin DB audiobook metadata being present.",
+  "route_cache_status": "No evidence that object upload or admin metadata is stale; 404 is consistent with static public truth gate, not missing storage.",
+  "exact_failing_field": "backend/data/controlled_launch.json lacks book-2b9853ec52 in live_approved_slugs and audio_enabled_slugs; deployed backend also does not materialize DB-approved audiobook metadata into public route exposure.",
+  "policy_sync_tier_rejected": false,
+  "uploaded_audio_url_missing_or_stale": false,
+  "slug_mismatch": false,
+  "language_mismatch": false,
+  "frontend_backend_api_path_mismatch": false,
+  "backend_restart_attempted": false,
+  "backend_redeploy_attempted": false,
+  "why_restart_not_attempted": "Restarting the same deployment would reload the same packaged backend controlled-launch file, which lacks the pilot. A clean source/data deploy is required; railway up from the current dirty workspace is unsafe.",
+  "exact_fix_required": "Deploy a clean backend package that includes book-2b9853ec52 in the packaged controlled-launch live/audio allowlist, or implement a release-gate-aware backend resolver that exposes DB-approved audiobook metadata only when all strict gates are approved.",
+  "written_at_utc": "2026-07-07T07:42:24Z"
+}

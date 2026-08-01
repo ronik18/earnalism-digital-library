@@ -1,0 +1,120 @@
+{
+  "id": "controlled-the-lifted-veil",
+  "slug": "the-lifted-veil",
+  "title": "The Lifted Veil",
+  "subtitle": "",
+  "author": "George Eliot",
+  "category_slug": "gothic-fiction",
+  "short_description": "A man cursed with clairvoyance sees every mind around him — except the one woman he loves.",
+  "description": "Latimer can read every mind he encounters, foreseeing futures in vivid visions — but Bertha's mind alone remains opaque, which makes him love her obsessively. When the veil lifts at last, what he sees destroys him. George Eliot's only supernatural story.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "74 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "George Eliot (Mary Ann Evans, 1819–1880) was an English novelist, one of the leading writers of the Victorian era, celebrated for Middlemarch.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "CHAPTER I",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 9204,
+      "reading_minutes": 39,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "CHAPTER II",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 8489,
+      "reading_minutes": 36,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "53fcae1e2c80c9265a01a5d40a3e35bb661e311018ba965982306be7bf3abff6",
+  "content_hash": "219375fc5342ed68872f60e0aa9cd130666c6b09fbbab4add27a550d9c6f068e",
+  "provenance_hash": "6a1c7c08efed73d87d76e7e99145d2df2166ad241cba7e35396022c6ff7b4469",
+  "rights_basis": "Author died 1880. Published 1859. Public domain in U.S. and worldwide.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-lifted-veil",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780592278/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592282/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592283/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592284/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592284/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780592278/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780592278/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592282/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592283/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592284/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592284/earnalism/audiobooks/en/the-lifted-veil/the-lifted-veil_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

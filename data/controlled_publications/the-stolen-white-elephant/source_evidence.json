@@ -1,0 +1,13 @@
+{
+  "slug": "the-stolen-white-elephant",
+  "source_url": "https://www.gutenberg.org/ebooks/3181",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "fe0f4b88b895ed50544c4d0c7e4a42f370cfcf59dcf2643009c4a5cc3a4c1517",
+  "content_hash": "1326719fd8f0cb9f2c3f31ee91c47db9d8490e1054f3262ca2a66df495ccc236",
+  "provenance_hash": "ed4c47d4cba508ecf8a41ab13c07086e8834b05f3100865e45b008b780bff1c3",
+  "rights_basis": "Mark Twain died 1910; first published 1882. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.294244+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

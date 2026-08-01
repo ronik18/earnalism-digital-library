@@ -1,0 +1,34 @@
+{
+  "slug": "love-of-life",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "483521c79b86b8947e5568c32505a85d4d64dbd6f0582ed244acdd421471f4cb"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "e757df7f0873382aee3956c47dc1b69e17b30906e936a58a6b0459d89817f108"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "88acde8d4b56f889d9ad60f04e8fc38af7ca57cebff7dff160a32a9c38ade978"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "a583fe26a93475a45c2a038bd7990dd5194b8217004e1444a61f04dfc66ba115"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "94048353c7c9912ed612627651f298f5a4efa400dc16dea201f3b1342f815a21"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "178c4746c053eeb486e79a665254689383505c1774b9e1f4d27dbf422341338c"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "f5c8d24833cf7ae1eccccc17d25955c572460efb25ea4932b82365fd0bdf88de"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "generated_at": "2026-07-08T00:30:00+05:30",
+  "gate": "LAUNCH_GATE_0_MARKETING_TRUTH",
+  "public_audio_states": [
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "public_state": "LIVE_AUDIO_MARKETABLE",
+      "reader_route_status": 200,
+      "book_api_status": 200,
+      "reader_manifest_status": 200,
+      "audiobook_endpoint_status": 200,
+      "asset_status": "audio and sidecars resolve",
+      "allowed_cta": "Read / Listen",
+      "paid_listen_status": "PASS",
+      "copy_guardrail": "Use section-following narration; do not claim word-level sync."
+    },
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "public_state": "APPROVED_LOCAL_ASSET_BACKED_BUT_PRODUCTION_API_HOLD",
+      "reader_route_status": 200,
+      "book_api_status": 404,
+      "reader_manifest_status": 404,
+      "audiobook_endpoint_status": 404,
+      "asset_status": "local controlled-publication assets resolve 200",
+      "allowed_cta": "Read; Listen only after exact production browser/manifest/player route is verified",
+      "paid_listen_status": "HOLD",
+      "copy_guardrail": "Do not run paid Listen ads from guessed endpoints."
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "public_state": "COMING_SOON_PRODUCTION_CANDIDATE",
+      "allowed_cta": "Read / Coming soon",
+      "paid_listen_status": "BLOCKED",
+      "blocker": "Representative evidence did not pass; no full audio published."
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "public_state": "COMING_SOON_PRODUCTION_CANDIDATE",
+      "audiobook_endpoint_status": 404,
+      "allowed_cta": "Read / Coming soon",
+      "paid_listen_status": "BLOCKED",
+      "blocker": "ASR/source first-last mismatch; no public audio."
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "public_state": "COMING_SOON_PRODUCTION_CANDIDATE",
+      "allowed_cta": "Read / Coming soon",
+      "paid_listen_status": "BLOCKED",
+      "blocker": "ASR/source first-last mismatch; no public audio."
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "public_state": "COMING_SOON_PRODUCTION_CANDIDATE",
+      "audiobook_endpoint_status": 404,
+      "allowed_cta": "Read / Coming soon",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "public_state": "COMING_SOON_PRODUCTION_CANDIDATE",
+      "audiobook_endpoint_status": 404,
+      "allowed_cta": "Read / Coming soon",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "public_state": "COMING_SOON_PRODUCTION_CANDIDATE",
+      "allowed_cta": "Read / Coming soon",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "public_state": "COMING_SOON_PRODUCTION_CANDIDATE",
+      "allowed_cta": "Read / Coming soon",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "public_state": "COMING_SOON_PRODUCTION_CANDIDATE",
+      "allowed_cta": "Read / Coming soon",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "public_state": "COMING_SOON_PRODUCTION_CANDIDATE",
+      "allowed_cta": "Read / Coming soon",
+      "paid_listen_status": "BLOCKED"
+    }
+  ],
+  "campaign_files_audited": [
+    "earnalism_first_lot_decision.md",
+    "earnalism_90_day_marketing_plan.md",
+    "earnalism_launch_campaign_calendar.csv",
+    "earnalism_season_1_positioning.md",
+    "earnalism_14_day_launch_asset_pack.md",
+    "live_audiobook_social_scripts.json",
+    "reader_only_social_promotion_pack.md",
+    "paid_ads_readiness_plan.md",
+    "earnalism_growth_tracking_plan.md",
+    "public_launch_lot_release_truth_matrix.json",
+    "launch_title_public_naming_map.json"
+  ],
+  "campaign_truth_findings": {
+    "non_live_tier_1_listen_cta": "PASS",
+    "audio_teasers_limited_to_live_titles": "PASS_WITH_A_GHOST_STORY_HOLD_FOR_PAID",
+    "reader_first_copy_premium_not_apologetic": "PASS",
+    "a_ghost_story_paid_listen": "HOLD_UNTIL_PRODUCTION_MANIFEST_PLAYER_ROUTE_VERIFIED",
+    "book_2b9853ec52_paid_listen": "PASS"
+  },
+  "go_no_go_table": [
+    {
+      "campaign": "Organic reader-first Season 1",
+      "decision": "GO",
+      "condition": "Use Read/Explore CTAs and release-truth badges."
+    },
+    {
+      "campaign": "Organic book-2b9853ec52 listen",
+      "decision": "GO",
+      "condition": "Use section-following narration language."
+    },
+    {
+      "campaign": "Paid book-2b9853ec52 listen",
+      "decision": "GO",
+      "condition": "Keep route to verified reader/audiobook path."
+    },
+    {
+      "campaign": "Organic A Ghost Story reader",
+      "decision": "GO",
+      "condition": "Use reader route; avoid guessed API route claims."
+    },
+    {
+      "campaign": "Paid A Ghost Story listen",
+      "decision": "HOLD",
+      "condition": "Requires exact production manifest/player route verification."
+    },
+    {
+      "campaign": "Coming-soon Tier 1 audiobook candidates",
+      "decision": "GO_FOR_READ_OR_COMING_SOON_ONLY",
+      "condition": "No Listen CTA, no audio teaser, no duration/narrator metadata."
+    }
+  ]
+}

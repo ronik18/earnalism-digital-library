@@ -1,0 +1,98 @@
+{
+  "generated_at": "2026-07-07T19:08:13Z",
+  "scope": "Bengali canary ASR/source autonomous repair for book-d19e96859f and book-f5d593e1f4",
+  "policy": {
+    "do_not_publish_until_all_objective_gates_pass": true,
+    "do_not_lower_asr_or_source_gates": true,
+    "weak_bengali_asr_can_be_diagnostic_only_after_clean_tts_by_construction": true,
+    "group_only_repair_preferred": true,
+    "broad_wave_allowed": false
+  },
+  "prompted_paths_status": {
+    "main_workspace_prompted_20260707T155229Z_paths_present": false,
+    "actual_artifact_worktree": "/private/tmp/earnalism-post-pr88-canary",
+    "actual_run_dirs": [
+      "internal/audiobook_lab/release_gate/book-d19e96859f_20260707T155229Z",
+      "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260707T155229Z"
+    ],
+    "diagnostic_note": "The prompt's relative release_gate paths were absent from the canonical workspace but present in /private/tmp/earnalism-post-pr88-canary."
+  },
+  "diagnostic_summary": [
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "current_asr_score": 1.602,
+      "normalized_score": 0.3101,
+      "phonetic_score": 0.324,
+      "first_last_mismatch_status": "ASR alignment first=false last=false; projection report first=true last=true",
+      "representative_evidence": "passed 9.4 / 0.95 per canary closeout, but embedded TTS report lacks score field and records confidence 0.95",
+      "suspected_root_cause": "mixed: weak ASR/transliteration plus real audiobook-clean contamination from standalone source year ১২৯৮? in final group; prior verifier also had a false-positive পৃ substring detector on literary words",
+      "available_artifacts": [
+        "clean_manuscript.txt",
+        "tts_chunk_manifest.json",
+        "sarvam_full_pilot_tts_report.json",
+        "bengali_tts_by_construction_report.json",
+        "asr_alignment_diagnosis.json",
+        "bengali_asr_projection_report.json",
+        "asr_transcript.txt",
+        "book_release_state.json"
+      ],
+      "missing_artifacts": [
+        "full listening QA after repaired audio",
+        "measured paragraph/stanza sync after repaired audio",
+        "upload/checksum after repaired audio",
+        "metadata/browser gates after repaired audio"
+      ],
+      "cheapest_safe_repair_path": "Regenerate only group 4 with Sarvam after stripping trailing standalone source year; reuse groups 0-3 by hash; reassemble; rerun TTS-by-construction, ASR diagnostic, listening, measured sync, upload, metadata, endpoint, and browser gates.",
+      "paid_work_needed": true,
+      "publish_allowed_now": false
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "current_asr_score": 0.3317,
+      "normalized_score": 0.2248,
+      "phonetic_score": 0.307,
+      "first_last_mismatch_status": "ASR alignment first=false last=false; projection report first=true last=true",
+      "representative_evidence": "passed 9.4 / 0.95 per canary closeout, but embedded TTS report lacks score field and records confidence 0.95",
+      "suspected_root_cause": "mixed: weak ASR/transliteration plus real audiobook-clean contamination from standalone source year ১২৯৮? in final group; prior verifier also had a false-positive পৃ substring detector on literary words",
+      "available_artifacts": [
+        "clean_manuscript.txt",
+        "tts_chunk_manifest.json",
+        "sarvam_full_pilot_tts_report.json",
+        "bengali_tts_by_construction_report.json",
+        "asr_alignment_diagnosis.json",
+        "bengali_asr_projection_report.json",
+        "asr_transcript.txt",
+        "book_release_state.json"
+      ],
+      "missing_artifacts": [
+        "full listening QA after repaired audio",
+        "measured paragraph/stanza sync after repaired audio",
+        "upload/checksum after repaired audio",
+        "metadata/browser gates after repaired audio"
+      ],
+      "cheapest_safe_repair_path": "Regenerate only group 7 with Sarvam after stripping trailing standalone source year; reuse groups 0-6 by hash; reassemble; rerun TTS-by-construction, ASR diagnostic, listening, measured sync, upload, metadata, endpoint, and browser gates.",
+      "paid_work_needed": true,
+      "publish_allowed_now": false
+    }
+  ],
+  "source_code_fix_applied": {
+    "frontmatter_detector_false_positive_fixed": true,
+    "details": [
+      "Replaced raw পৃ substring frontmatter checks with boundary-safe page-reference detection.",
+      "Added explicit standalone Bengali year-line detection so ১২৯৮? remains a blocker.",
+      "Updated Bengali TTS cleaning to remove trailing standalone source-year lines.",
+      "Adjusted chunk-level repair cleaning so clean title openings are preserved unless source metadata context exists."
+    ],
+    "files": [
+      "internal/audiobook_lab/scripts/factory_hooks/tts_hook.py",
+      "internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py",
+      "internal/audiobook_lab/scripts/bengali_asr_normalization.py",
+      "internal/audiobook_lab/scripts/bengali_sync_by_construction.py",
+      "internal/audiobook_lab/scripts/test_sarvam_full_pilot_tts_hook.py"
+    ]
+  },
+  "global_decision": "PARTIAL_REPAIR_READY_GROUP_ONLY_REGENERATION_REQUIRED",
+  "next_exact_command": "cd /Users/ronikbasak/Documents/GitHub/earnalism-digital-library && source ~/.zshrc && railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD=4 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio EARNALISM_LISTENING_POLICY_VERSION=bengali_audiobook_acceptance_v2_92 EARNALISM_SYNC_POLICY_VERSION=tiered_sync_acceptance_v1 EARNALISM_BENGALI_TTS_PROVIDER=sarvam EARNALISM_BENGALI_TTS_MODEL=bulbul:v3 EARNALISM_BENGALI_TTS_VOICE=ratan EARNALISM_BENGALI_TTS_STYLE=literary_warm_pacing EARNALISM_BENGALI_SARVAM_REPRESENTATIVE_EVIDENCE_DIR=/private/tmp/earnalism-post-pr88-canary/internal/audiobook_lab/release_gate/bengali_sarvam_representative_evidence_20260707T172057Z EARNALISM_SARVAM_GROUP_REPAIR_MANIFEST=/private/tmp/earnalism-post-pr88-canary/internal/audiobook_lab/release_gate/book-d19e96859f_20260707T155229Z/tts_chunk_manifest.json python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.json --slugs book-d19e96859f --languages ben --max-books-active 1 --max-preflight-workers 0 --max-cover-workers 0 --max-audio-reuse-workers 0 --max-tts-workers 1 --max-paid-workers 1 --max-asr-workers 1 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --publish-approved --resume-from-latest --fail-closed --stop-after-terminal-books 1 --max-run-minutes 90"
+}

@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-07-08T00:00:00+05:30",
+  "slug": "book-f5d593e1f4",
+  "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+  "source_report": "book-f5d593e1f4_source_provenance_audit.json",
+  "current_status": "BLOCKED_NOT_PUBLISHED",
+  "root_cause": "frontmatter/source metadata contamination in final TTS group: standalone Bengali source/publication year ১২৯৮",
+  "secondary_diagnostic": "Bengali ASR is weak/noisy, but cannot be treated as diagnostic-only until repaired TTS-by-construction, full listening QA, and measured sync pass",
+  "title_body_mismatch_detected": false,
+  "canonical_to_corrected_tts_match_score": 1.0,
+  "tts_input_coverage_percent": 100.0,
+  "current_asr_source_score": 0.3317,
+  "normalized_bengali_score": 0.2248,
+  "phonetic_shadow_score": 0.307,
+  "frontmatter_source_metadata_contamination": true,
+  "failing_group_ids": [
+    7
+  ],
+  "unaffected_group_ids_reusable": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "repair_decision": "REGENERATE_GROUP_7_ONLY_THEN_REASSEMBLE",
+  "publish_allowed_now": false
+}

@@ -1,0 +1,300 @@
+{
+  "generated_at": "2026-07-31",
+  "objective": "pursue_9_live",
+  "live_not_private_b2_for_package_v2": [
+    {
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "audio_enabled": true,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780574837/earnalism/audiobooks/ben/radharani/radharani.mp3",
+      "reason": "approved+qa+can_expose+cloudinary_or_other"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "audio_enabled": true,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780555866/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit.mp3",
+      "reason": "approved+qa+can_expose+cloudinary_or_other"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "audio_enabled": true,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780556327/earnalism/audiobooks/ben/book-d19e96859f/book-d19e96859f.mp3",
+      "reason": "approved+qa+can_expose+cloudinary_or_other"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "audio_enabled": true,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780556631/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4.mp3",
+      "reason": "approved+qa+can_expose+cloudinary_or_other"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "audio_enabled": true,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780571946/earnalism/audiobooks/ben/book-edfcf810c5/book-edfcf810c5.mp3",
+      "reason": "approved+qa+can_expose+cloudinary_or_other"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "audio_enabled": true,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580534/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart.mp3",
+      "reason": "approved+qa+can_expose+cloudinary_or_other"
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper",
+      "audio_enabled": true,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582188/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper.mp3",
+      "reason": "approved+qa+can_expose+cloudinary_or_other"
+    },
+    {
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "audio_enabled": true,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581052/earnalism/audiobooks/en/the-necklace/the-necklace.mp3",
+      "reason": "approved+qa+can_expose+cloudinary_or_other"
+    }
+  ],
+  "not_live": [
+    {
+      "slug": "bn-066",
+      "title": "আনন্দমঠ",
+      "reason": "not_live_approved",
+      "audio_enabled": true,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1.mp3"
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "reason": "not_live_approved",
+      "audio_enabled": true,
+      "live_approved": false,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781268514/earnalism/audiobooks-polished/ben/nishkriti/nishkriti-bengali-polish-queue-v1.mp3.mp3"
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": true,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "frankenstein",
+      "title": "Frankenstein",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "the-time-machine",
+      "title": "The Time Machine",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "title": "The Call of the Wild",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "title": "Pride and Prejudice",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "the-secret-garden",
+      "title": "The Secret Garden",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "title": "Alice's Adventures in Wonderland",
+      "reason": "not_live_approved",
+      "audio_enabled": true,
+      "live_approved": false,
+      "release": "APPROVED",
+      "qa": "QA_PASSED",
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781438358/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1.mp3.mp3"
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "title": "The Monkey's Paw",
+      "reason": "not_audio_enabled",
+      "audio_enabled": false,
+      "live_approved": false,
+      "release": null,
+      "qa": null,
+      "mp3": null
+    }
+  ]
+}

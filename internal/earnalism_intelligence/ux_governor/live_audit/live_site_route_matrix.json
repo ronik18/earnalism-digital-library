@@ -1,0 +1,66 @@
+{
+  "audit_id": "LIVE_SITE_PREMIUM_UX_ANOMALY_AUDIT_20260713",
+  "observed_at": "2026-07-13T08:38:02Z",
+  "site": "https://www.theearnalism.com",
+  "api_origin": "https://api.theearnalism.com",
+  "audit_mode": "read_only_live_browser_and_http",
+  "critical_route_count": 20,
+  "requested_viewports": [
+    {"width": 1440, "height": 900},
+    {"width": 1536, "height": 864},
+    {"width": 390, "height": 844},
+    {"width": 430, "height": 932}
+  ],
+  "clean_viewport_screenshot_count": 80,
+  "screenshot_root": "/tmp/earnalism-live-ux-audit/viewport_screenshots",
+  "contact_sheet_root": "/tmp/earnalism-live-ux-audit/contact_sheets",
+  "route_summary": {
+    "http_200": 20,
+    "desktop_render_pass": 20,
+    "mobile_render_pass": 20,
+    "console_error_routes": 0,
+    "document_horizontal_overflow_routes_at_requested_viewports": 0,
+    "reader_routes_without_semantic_h1": 5,
+    "approved_audio_reader_routes": ["/reader/book-2b9853ec52", "/reader/a-ghost-story"],
+    "audio_hidden_control_routes": ["/reader/bn-066", "/reader/book-d19e96859f", "/reader/book-f5d593e1f4", "/reader/muchiram-gurer-jibanchorit", "/reader/dracula"]
+  },
+  "routes": [
+    {"path":"/","route_type":"HOME","http_status":200,"rendered_title":"Earnalism | Bengali and English Classics in a Calm Digital Library","primary_heading":"A calm digital reading room for timeless Bengali and English literature.","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":[],"screenshot_key":"home"},
+    {"path":"/library","route_type":"LIBRARY","http_status":200,"rendered_title":"Library | Bengali and English Classics on Earnalism","primary_heading":"Bengali and English classics, opened with release truth.","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/books"],"screenshot_key":"library"},
+    {"path":"/book/book-2b9853ec52","route_type":"BOOK_DETAIL","http_status":200,"rendered_title":"দুই বিঘা জমি — The Earnalism Digital Library","primary_heading":"দুই বিঘা জমি","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/books/book-2b9853ec52","/api/reader/book/book-2b9853ec52/manifest"],"screenshot_key":"book__book-2b9853ec52"},
+    {"path":"/reader/book-2b9853ec52","route_type":"READER_APPROVED_AUDIO","http_status":200,"rendered_title":"দুই বিঘা জমি - Reader - The Earnalism Digital Library","primary_heading":"","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/reader/book/book-2b9853ec52/manifest","/api/reader/book/book-2b9853ec52/audiobook","/api/reader/book/book-2b9853ec52/audiobook/timestamps"],"screenshot_key":"reader__book-2b9853ec52"},
+    {"path":"/book/a-ghost-story","route_type":"BOOK_DETAIL","http_status":200,"rendered_title":"A Ghost Story — The Earnalism Digital Library","primary_heading":"A Ghost Story","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/books/a-ghost-story","/api/reader/book/a-ghost-story/manifest"],"screenshot_key":"book__a-ghost-story"},
+    {"path":"/reader/a-ghost-story","route_type":"READER_APPROVED_AUDIO","http_status":200,"rendered_title":"A Ghost Story - Reader - The Earnalism Digital Library","primary_heading":"","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/reader/book/a-ghost-story/manifest","/api/reader/book/a-ghost-story/audiobook","/api/reader/book/a-ghost-story/audiobook/timestamps"],"screenshot_key":"reader__a-ghost-story"},
+    {"path":"/book/bn-066","route_type":"BOOK_DETAIL","http_status":200,"rendered_title":"আনন্দমঠ — The Earnalism Digital Library","primary_heading":"আনন্দমঠ","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/books/bn-066","/api/reader/book/bn-066/manifest"],"screenshot_key":"book__bn-066"},
+    {"path":"/reader/bn-066","route_type":"READER_AUDIO_HIDDEN","http_status":200,"rendered_title":"আনন্দমঠ - Reader - The Earnalism Digital Library","primary_heading":"","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/reader/book/bn-066/manifest"],"screenshot_key":"reader__bn-066"},
+    {"path":"/book/book-d19e96859f","route_type":"BOOK_DETAIL","http_status":200,"rendered_title":"গিন্নি — The Earnalism Digital Library","primary_heading":"গিন্নি","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/books/book-d19e96859f","/api/reader/book/book-d19e96859f/manifest"],"screenshot_key":"book__book-d19e96859f"},
+    {"path":"/reader/book-d19e96859f","route_type":"READER_AUDIO_HIDDEN","http_status":200,"rendered_title":"গিন্নি - Reader - The Earnalism Digital Library","primary_heading":"Full Text","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/reader/book/book-d19e96859f/manifest"],"screenshot_key":"reader__book-d19e96859f"},
+    {"path":"/book/book-f5d593e1f4","route_type":"BOOK_DETAIL","http_status":200,"rendered_title":"রামকানাইয়ের নির্বুদ্ধিতা — The Earnalism Digital Library","primary_heading":"রামকানাইয়ের নির্বুদ্ধিতা","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/books/book-f5d593e1f4","/api/reader/book/book-f5d593e1f4/manifest"],"screenshot_key":"book__book-f5d593e1f4"},
+    {"path":"/reader/book-f5d593e1f4","route_type":"READER_AUDIO_HIDDEN","http_status":200,"rendered_title":"রামকানাইয়ের নির্বুদ্ধিতা - Reader - The Earnalism Digital Library","primary_heading":"Full Text","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/reader/book/book-f5d593e1f4/manifest"],"screenshot_key":"reader__book-f5d593e1f4"},
+    {"path":"/book/muchiram-gurer-jibanchorit","route_type":"BOOK_DETAIL","http_status":200,"rendered_title":"মুচিরাম গুড়ের জীবনচরিত — The Earnalism Digital Library","primary_heading":"মুচিরাম গুড়ের জীবনচরিত","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/books/muchiram-gurer-jibanchorit","/api/reader/book/muchiram-gurer-jibanchorit/manifest"],"screenshot_key":"book__muchiram-gurer-jibanchorit"},
+    {"path":"/reader/muchiram-gurer-jibanchorit","route_type":"READER_AUDIO_HIDDEN","http_status":200,"rendered_title":"মুচিরাম গুড়ের জীবনচরিত - Reader - The Earnalism Digital Library","primary_heading":"","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/reader/book/muchiram-gurer-jibanchorit/manifest"],"screenshot_key":"reader__muchiram-gurer-jibanchorit"},
+    {"path":"/book/dracula","route_type":"BOOK_DETAIL","http_status":200,"rendered_title":"Dracula by Bram Stoker | Read Chapter 1 Free on Earnalism","primary_heading":"Dracula","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/books/dracula","/api/reader/book/dracula/manifest"],"screenshot_key":"book__dracula"},
+    {"path":"/reader/dracula","route_type":"READER_AUDIO_HIDDEN","http_status":200,"rendered_title":"Dracula - Reader - The Earnalism Digital Library","primary_heading":"","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/reader/book/dracula/manifest"],"screenshot_key":"reader__dracula"},
+    {"path":"/contact","route_type":"MARKETING_CONTACT","http_status":200,"rendered_title":"Contact — The Earnalism","primary_heading":"Write to us — we read every letter.","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":[],"screenshot_key":"contact"},
+    {"path":"/about","route_type":"MARKETING_ABOUT","http_status":200,"rendered_title":"About Earnalism — Bengali and English Digital Library","primary_heading":"A quiet reading room for Bengali and English classics.","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":[],"screenshot_key":"about"},
+    {"path":"/pricing","route_type":"MARKETING_PRICING","http_status":200,"rendered_title":"Reading Time — The Earnalism Digital Library","primary_heading":"Choose your reading time. Return whenever the book calls.","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":[],"screenshot_key":"pricing"},
+    {"path":"/journal","route_type":"MARKETING_JOURNAL","http_status":200,"rendered_title":"The Journal — Notes from The Earnalism Reading Room","primary_heading":"The Journal — notes from a reading room that moves carefully.","desktop_load":"PASS","mobile_load":"PASS","console_errors":0,"network_errors":0,"api_calls":["/api/blog"],"screenshot_key":"journal"}
+  ],
+  "additional_discovery": {
+    "settings_surface": "Reader Settings is a dialog on /reader/:slug; no standalone public /settings route was discovered.",
+    "nav_routes": ["/library", "/library?language=bn&availability=reader-ready", "/library?language=en", "/library?availability=reader-ready", "/about", "/login"],
+    "additional_public_routes": ["/signup", "/micro-story", "/journal/how-reading-shapes-better-founders", "/journal/why-every-small-business-needs-a-story-before-a-strategy"],
+    "soft_redirect_or_soft_404_routes": ["/account", "/signin", "/publishing", "/publishing/*", "unknown paths"],
+    "sitemap_book_slug_count": 75,
+    "api_catalog_slug_count": 37,
+    "controlled_live_slug_count": 43,
+    "dead_sitemap_slug_count": 34,
+    "api_live_orphan_slugs": ["book-d19e96859f", "book-f5d593e1f4", "muchiram-gurer-jibanchorit", "radharani"],
+    "phantom_controlled_live_slugs": ["bn-059", "the-art-of-money-getting"]
+  },
+  "interaction_evidence": {
+    "mobile_menu": {"result":"PASS","viewports":["390x844","430x932"],"aria_expanded_transition":"false_to_true","open_label":"Close menu"},
+    "homepage_slideshow": {"manual_next":"PASS","page_transition":"1_to_2","autoplay_observed":"PASS","reduced_motion_source_guard":"PRESENT","persistent_pause_control":"MISSING"},
+    "approved_audio": {"range_requests":"PASS_206","automated_browser_playback_advancement":"NOT_PROVEN","observed_toast":"Generated audiobook could not start in this browser.","interpretation":"Endpoint and metadata passed, but in-app automated playback did not advance; require a real-browser playback gate before claiming end-to-end green."}
+  }
+}

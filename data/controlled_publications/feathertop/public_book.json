@@ -1,0 +1,105 @@
+{
+  "id": "controlled-feathertop",
+  "slug": "feathertop",
+  "title": "Feathertop",
+  "subtitle": "",
+  "author": "Nathaniel Hawthorne",
+  "category_slug": "literary-fiction",
+  "short_description": "A witch brings a scarecrow to life as a fashionable gentleman — and he fools everyone until he sees himself in a mirror.",
+  "description": "Mother Rigby's scarecrow Feathertop walks into town as a gentleman, charms a judge's daughter, and is universally admired — until a mirror shows him what he really is. Hawthorne's most biting satire on social performance and the emptiness of appearance.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "33 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Nathaniel Hawthorne (1804–1864) was an American author preoccupied with Puritan guilt, sin, and moral ambiguity.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Feathertop",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 7844,
+      "reading_minutes": 33,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "85a78b4e74dc88dd691687eddd599571e215524da97a6a85b6500ac16ef05636",
+  "content_hash": "f5450bba2ac3ccb0f570a34f3ecf914465b6dbb81ecf248fb1a9a07b03065e9c",
+  "provenance_hash": "d4ff427ea8ab960cfd26f22d43ec28355535d97a75927c94c6586e96d6ddb46c",
+  "rights_basis": "Nathaniel Hawthorne died 1864; first published 1852. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "feathertop",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584462/earnalism/audiobooks/en/feathertop/feathertop.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584463/earnalism/audiobooks/en/feathertop/feathertop_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584463/earnalism/audiobooks/en/feathertop/feathertop_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584464/earnalism/audiobooks/en/feathertop/feathertop_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584465/earnalism/audiobooks/en/feathertop/feathertop_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584462/earnalism/audiobooks/en/feathertop/feathertop.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584462/earnalism/audiobooks/en/feathertop/feathertop.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584463/earnalism/audiobooks/en/feathertop/feathertop_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584463/earnalism/audiobooks/en/feathertop/feathertop_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584464/earnalism/audiobooks/en/feathertop/feathertop_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584465/earnalism/audiobooks/en/feathertop/feathertop_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

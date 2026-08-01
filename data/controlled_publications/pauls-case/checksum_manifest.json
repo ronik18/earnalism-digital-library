@@ -1,0 +1,34 @@
+{
+  "slug": "pauls-case",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "ccfd5d84d02bcd792ee09a1f4c441d90f0fcd4eb0236496a5e8f3ef558960041"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "0d319e4b76ae4eb70a30a194d5f71e87c33f1cbacc5be31d96e6fc176ce239c8"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "f688d2ca36030176e376c0353de3ea48519d19ed8707ec4ff78279692eab6660"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "a4ed4ad9ef29baf39d455c28a100236eebbdd8c28f36794b3cd65888c738c594"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "0ae2f387edef1df668b150ebe5bc12d1ae17e59064998c222c220c4519f64db7"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "752ec4beed066b2abf51ea5e67fbdca8135266da66f45f09cc9e79adff72c8b7"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "012800a583234fc2e6b833b1cd06b4a5daa9d0000f0333aa0182743cad0a6c28"
+    }
+  ]
+}

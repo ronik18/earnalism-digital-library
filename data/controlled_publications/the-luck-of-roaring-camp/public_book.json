@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-luck-of-roaring-camp",
+  "slug": "the-luck-of-roaring-camp",
+  "title": "The Luck of Roaring Camp",
+  "subtitle": "",
+  "author": "Bret Harte",
+  "category_slug": "adventure",
+  "short_description": "A California gold-rush camp adopts an orphaned baby — and the infant civilises every rough miner who cares for him.",
+  "description": "When the only woman in Roaring Camp dies in childbirth, the rough miners adopt her baby and name him Luck. The child transforms the entire camp — until a flood takes both Luck and the man who loved him most.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "18 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Bret Harte (1836–1902) was an American author celebrated for his short stories set in the California Gold Rush.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Luck of Roaring Camp",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 4188,
+      "reading_minutes": 18,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "d64c82d8f35d3e817f9c8f75d0a500fe408f85e519258f7a902fc565e1fc8264",
+  "content_hash": "e8cf5138f084af3e5b585c5f3512192549d5f778e98275fd9be1208a5d394472",
+  "provenance_hash": "179a519aaf069211f7157fae4c280d1b07bb911a506178cff2e25f889e79e7dd",
+  "rights_basis": "Bret Harte died 1902; first published 1868. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-luck-of-roaring-camp",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581689/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581691/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581692/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581693/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581695/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581689/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581689/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581691/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581692/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581693/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581695/earnalism/audiobooks/en/the-luck-of-roaring-camp/the-luck-of-roaring-camp_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:49Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z"
+}

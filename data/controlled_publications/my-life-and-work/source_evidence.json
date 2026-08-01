@@ -1,0 +1,13 @@
+{
+  "slug": "my-life-and-work",
+  "source_url": "https://www.gutenberg.org/ebooks/7213",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain; commercial use allowed in the United States.",
+  "source_hash": "0d6d9463085c9411e41dd19eed8fe9c8678708490bff6f17764224a6a4d701e5",
+  "content_hash": "732f86e53656c3ea2354d306f42616d82af69aae60c40845a651b2ee8ff7e7e8",
+  "provenance_hash": "88e5a40d94c44697246fb1cc266abef38a9ff8a954b546ff41313497a684ec01",
+  "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+  "downloaded_at": "2026-06-08T20:17:55.633502+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "ward-no-6",
+  "source_url": "https://www.gutenberg.org/ebooks/13409",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "d105256944cc16cf2d440209e9d086608457234990d68addc3350a5a9b80e512",
+  "content_hash": "1289360732f7dc04fce81d0675a38c361391675746174274a40f8f088f1747f8",
+  "provenance_hash": "9df41865d01bfebd92c589f2c103d8dce9ecce3ee29d868e8d9798dd04237b49",
+  "rights_basis": "Anton Chekhov died 1904; first published 1892. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.920352+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

@@ -1,0 +1,30 @@
+{
+  "slug": "the-man-who-would-be-king",
+  "title": "The Man Who Would Be King",
+  "author": "Rudyard Kipling",
+  "language": "en",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Man Who Would Be King",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 14705,
+      "reading_minutes": 62,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:48Z"
+}

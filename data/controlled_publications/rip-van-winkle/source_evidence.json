@@ -1,0 +1,13 @@
+{
+  "slug": "rip-van-winkle",
+  "source_url": "https://www.gutenberg.org/ebooks/60976",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "2498820aafa64ce1ba7fe577338b4e4f680aa95ed1cf5944ad61ca9e4a255c66",
+  "content_hash": "879951dca445b3fb065612687474f9eff66c80ef0abec75958c3666a6498f02b",
+  "provenance_hash": "e07b6c4fccb9b68c35366f1794098a99f881384baca70c7f61d05eb7abe2fffa",
+  "rights_basis": "Washington Irving died 1859; first published 1819. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.036927+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

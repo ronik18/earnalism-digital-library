@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-07-07T18:20:00Z",
+  "scope": ["home", "library", "reader_audiobook"],
+  "governor_files_read": [
+    "internal/earnalism_intelligence/ux_governor/EARNALISM_PREMIUM_LIBRARY_UX_GOVERNOR.md",
+    "internal/earnalism_intelligence/ux_governor/home_page_10_spec.md",
+    "internal/earnalism_intelligence/ux_governor/library_page_10_spec.md",
+    "internal/earnalism_intelligence/ux_governor/reader_audiobook_10_spec.md",
+    "internal/earnalism_intelligence/ux_governor/fixed_design_tokens.json",
+    "internal/earnalism_intelligence/ux_governor/ux_10_scorecard_schema.json",
+    "internal/earnalism_intelligence/ux_governor/release_gate_ux_policy.md",
+    "internal/earnalism_intelligence/ux_governor/cover_art_policy.md",
+    "internal/earnalism_intelligence/ux_governor/typography_policy.md"
+  ],
+  "audit_summary": {
+    "home": {
+      "current_source_status": "ALIGNED_SOURCE_LEVEL",
+      "visual_structure": "Hybrid editorial hero with three curated action cards.",
+      "dracula_main_hero": false,
+      "bengali_classics_visible": true,
+      "approved_audiobooks_gated": true,
+      "graphical_covers": true,
+      "typography_risk": "Low; source uses restrained hero and card scale.",
+      "release_gate_risk": "Low; approved audiobook surface remains gated."
+    },
+    "library": {
+      "current_source_status": "ALIGNED_SOURCE_LEVEL",
+      "catalog_structure": "Premium catalog with search, category, language, availability, sort, and view controls.",
+      "status_badges": ["Reader Ready", "Audio Hidden", "Audiobook Approved", "In Review"],
+      "graphical_covers": true,
+      "reader_only_premium_state": true,
+      "release_gate_risk": "Low; Listen CTA depends on audiobookReleaseState().canShowControls."
+    },
+    "reader_audiobook": {
+      "current_source_status": "REPAIRED_SOURCE_LEVEL",
+      "settings_panel": true,
+      "themes": ["Light", "Sepia", "Dark"],
+      "font_size_controls": true,
+      "line_height_controls": true,
+      "margin_controls": true,
+      "focus_mode": true,
+      "highlight_intensity": true,
+      "approved_audiobook_player": true,
+      "paragraph_stanza_sync_copy": true,
+      "word_level_claim_found": false,
+      "browser_speech_fallback_found_before_fix": true,
+      "browser_speech_fallback_found_after_fix": false,
+      "static_audio_path_fallback_found_before_fix": true,
+      "static_audio_path_fallback_found_after_fix": false,
+      "release_gate_risk": "Reduced; Reader now requires explicit approved assets/manifests instead of browser speech or inferred static /audio paths."
+    }
+  },
+  "source_files_responsible": [
+    "frontend/src/pages/Home.jsx",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/pages/Reader.jsx",
+    "frontend/src/components/ComingSoonBoard.jsx",
+    "frontend/src/components/BookCard.jsx",
+    "frontend/src/lib/audioReleaseSafety.js",
+    "frontend/src/lib/bookCoverResolver.js",
+    "frontend/src/index.css"
+  ],
+  "high_impact_changes_applied": [
+    {
+      "file": "frontend/src/pages/Reader.jsx",
+      "change": "Removed browser speechSynthesis fallback paths so browser/system speech cannot be presented as audiobook."
+    },
+    {
+      "file": "frontend/src/pages/Reader.jsx",
+      "change": "Removed inferred static /audio/{lang}/{slug} fallback URLs; audio now requires explicit approved assets or manifest."
+    },
+    {
+      "file": "frontend/src/pages/Reader.jsx",
+      "change": "Changed reader audio copy and speed control to approved-audiobook language."
+    }
+  ],
+  "blockers": [
+    {
+      "id": "FRONTEND_DEPENDENCY_INSTALL_STALLED",
+      "severity": "validation_blocker",
+      "details": "npm ci stalled in npm ideal-tree construction and left frontend/node_modules incomplete; craco/react-scripts validation commands cannot run until dependencies are restored."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "the-ambitious-guest",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "db4c1757772f927d4f164c215d46b2f695d9dbd6e573874d8436434a5c482619"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "becf3a7ee849c133681d7af51576258d1ac69bff85297541deb20c8b8dcab622"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "58fe5efcac6c8b3f3adb02b068aed0319d9f22fdf706b3740b8c426760187036"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "9aa9aff83c8ac5a1967d0c85d45391d2e040f9959300e077bb3381120b718c3e"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "09e881695ec1819f851c5fd346161e3e4557d68591014e4a1766178aad168c5b"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "344fe1a9fac580c744df699ee7f0acbbbc04ac7e130e708b8a3056729e7d881b"
+    }
+  ]
+}

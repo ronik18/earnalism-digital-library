@@ -1,69 +1,69 @@
 {
   "slug": "frankenstein",
-  "title": "Frankenstein; or, The Modern Prometheus",
-  "author": "Mary Shelley",
+  "title": "Frankenstein",
+  "author": "Mary Wollstonecraft Shelley",
   "language": "en",
   "chapter_count": 28,
   "chapters": [
     {
       "id": "chapter-001",
       "order": 1,
-      "title": "Letter 1",
+      "title": "Letter 1. To Mrs. Saville, England",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1203,
-      "reading_minutes": 6,
+      "word_count": 1199,
+      "reading_minutes": 5,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-002",
       "order": 2,
-      "title": "Letter 2",
+      "title": "Letter 2. To Mrs. Saville, England",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1313,
+      "word_count": 1309,
       "reading_minutes": 6,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-003",
       "order": 3,
-      "title": "Letter 3",
+      "title": "Letter 3. To Mrs. Saville, England",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 301,
+      "word_count": 296,
       "reading_minutes": 2,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-004",
       "order": 4,
-      "title": "Letter 4",
+      "title": "Letter 4. To Mrs. Saville, England",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2734,
+      "word_count": 2733,
       "reading_minutes": 12,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-005",
@@ -72,13 +72,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1775,
+      "word_count": 1780,
       "reading_minutes": 8,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-006",
@@ -87,13 +87,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2207,
+      "word_count": 2211,
       "reading_minutes": 10,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-007",
@@ -102,13 +102,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2683,
+      "word_count": 2688,
       "reading_minutes": 12,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-008",
@@ -117,13 +117,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2536,
+      "word_count": 2537,
       "reading_minutes": 11,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-009",
@@ -132,13 +132,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2356,
+      "word_count": 2359,
       "reading_minutes": 10,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-010",
@@ -147,13 +147,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2726,
+      "word_count": 2728,
       "reading_minutes": 12,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-011",
@@ -162,13 +162,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3560,
+      "word_count": 3566,
       "reading_minutes": 15,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-012",
@@ -177,13 +177,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3092,
+      "word_count": 3100,
       "reading_minutes": 13,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-013",
@@ -192,13 +192,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2219,
+      "word_count": 2222,
       "reading_minutes": 10,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-014",
@@ -207,28 +207,28 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2358,
+      "word_count": 2361,
       "reading_minutes": 10,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-015",
       "order": 15,
-      "title": "Chapter 11",
+      "title": "Chapter 11. “It is with considerable difficulty that I remember the original era of",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2905,
+      "word_count": 2896,
       "reading_minutes": 13,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-016",
@@ -237,13 +237,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2075,
+      "word_count": 2076,
       "reading_minutes": 9,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-017",
@@ -252,13 +252,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2035,
+      "word_count": 2038,
       "reading_minutes": 9,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-018",
@@ -267,13 +267,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1852,
+      "word_count": 1853,
       "reading_minutes": 8,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-019",
@@ -282,13 +282,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3012,
+      "word_count": 3017,
       "reading_minutes": 13,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-020",
@@ -297,13 +297,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3203,
+      "word_count": 3204,
       "reading_minutes": 14,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-021",
@@ -312,13 +312,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1918,
+      "word_count": 1920,
       "reading_minutes": 8,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-022",
@@ -327,13 +327,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2846,
+      "word_count": 2853,
       "reading_minutes": 12,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-023",
@@ -342,13 +342,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2610,
+      "word_count": 2615,
       "reading_minutes": 11,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-024",
@@ -357,13 +357,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3523,
+      "word_count": 3525,
       "reading_minutes": 15,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-025",
@@ -372,13 +372,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3738,
+      "word_count": 3745,
       "reading_minutes": 16,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-026",
@@ -387,13 +387,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3417,
+      "word_count": 3424,
       "reading_minutes": 15,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-027",
@@ -402,13 +402,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2595,
+      "word_count": 2597,
       "reading_minutes": 11,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-028",
@@ -417,13 +417,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 8245,
+      "word_count": 8251,
       "reading_minutes": 35,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-01T10:36:20Z",
-      "updated_at": "2026-07-01T10:36:20Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     }
   ],
   "preview_chapter_ids": [
@@ -458,5 +458,5 @@
   ],
   "audio_enabled": false,
   "audiobook_enabled": false,
-  "generated_at": "2026-07-01T10:36:20Z"
+  "generated_at": "2026-07-03T20:07:47Z"
 }

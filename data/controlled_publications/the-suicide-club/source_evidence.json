@@ -1,0 +1,13 @@
+{
+  "slug": "the-suicide-club",
+  "source_url": "https://www.gutenberg.org/ebooks/839",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "36f2eab8f19108f05a306169130f8bddc9c21c23725e7c12a330ac18cfdb9e39",
+  "content_hash": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
+  "provenance_hash": "06055fded54812b2a06957fef8e55de7d89f2d115b9cc403a8ca1d834aa330a6",
+  "rights_basis": "Robert Louis Stevenson died 1894; first published 1882. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.410682+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

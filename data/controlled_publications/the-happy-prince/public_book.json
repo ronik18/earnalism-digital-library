@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-happy-prince",
+  "slug": "the-happy-prince",
+  "title": "The Happy Prince",
+  "subtitle": "",
+  "author": "Oscar Wilde",
+  "category_slug": "young-readers",
+  "short_description": "A gilded statue and a swallow strip themselves of all beauty to give to the poor — and are destroyed for it.",
+  "description": "The statue of the Happy Prince sends a swallow to deliver his gold leaf and jewels to the city's suffering poor — until the Prince is lead and the swallow is dead. God's angels call them the two most precious things in the city. Wilde's most beautiful and heartbreaking fairy tale.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "25 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Oscar Wilde (1854–1900) was an Irish poet, playwright, and author celebrated for his wit and his fairy tales.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Happy Prince",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 5864,
+      "reading_minutes": 25,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "aec5f24c5cef2533989442028811632667522939a78217a9f3d07389b5c6d145",
+  "content_hash": "9ad0f9ef8628f87ababf0e361848713b585f5408d5929a6fef95c2afd18388b7",
+  "provenance_hash": "dbd1d86c2d74f3601aeffc97cb23266acf8e07328441266e648d2040e0490554",
+  "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-happy-prince",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582086/earnalism/audiobooks/en/the-happy-prince/the-happy-prince.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582093/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582094/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582095/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582095/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582086/earnalism/audiobooks/en/the-happy-prince/the-happy-prince.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582086/earnalism/audiobooks/en/the-happy-prince/the-happy-prince.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582093/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582094/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582095/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582095/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:49Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z"
+}

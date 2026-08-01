@@ -1,0 +1,13 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "source_url": "https://www.gutenberg.org/ebooks/55",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
+  "source_hash": "20b4fa5a47c6e23b6093c2eedbf5d0b2930c6eefe5c8646e009a98bd0131c85e",
+  "content_hash": "1256f90f4c8943940d6520a4322fe67ddb2d6537d1ae8577b8a4be713531291c",
+  "provenance_hash": "b79ac47434fc029bf7c4110ee5f38fb9b705ccb6c83a3fcbc49cef7d0a9d9df0",
+  "rights_basis": "Author died in 1919. Work published in 1900, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "downloaded_at": "2026-05-25T20:10:02.942458+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

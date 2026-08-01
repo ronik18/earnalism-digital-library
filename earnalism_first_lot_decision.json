@@ -1,0 +1,659 @@
+{
+  "generated_at": "2026-07-07T17:06:05Z",
+  "status": "LAUNCH_STRATEGY_READY_FOR_REVIEW_NO_PUBLISHING",
+  "inventory_counts": {
+    "total_books_inventoried": 229,
+    "bengali_books": 106,
+    "english_books": 123,
+    "other_or_unknown_language_books": 0,
+    "reader_live_books": 161,
+    "audiobook_live_books_evidence_backed": 2
+  },
+  "tier_1_founding_audiobook_lot": [
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "genre_category": "history-strategy",
+      "length_bucket": "short",
+      "role": "Bengali proof audiobook",
+      "readiness": "APPROVED_LIVE_NOW",
+      "audiobook_status": "BENGALI_AUDIOBOOK_LIVE",
+      "release_confidence": 0.98,
+      "estimated_audiobook_cost_usd": 0.0501,
+      "marketing_hook": "First live Bengali audiobook: land, loss, and dignity in a compact Tagore classic.",
+      "known_blockers": []
+    },
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "author": "Mark Twain",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "short",
+      "role": "English proof audiobook",
+      "readiness": "APPROVED_LIVE_NOW",
+      "audiobook_status": "AUDIOBOOK_LIVE",
+      "release_confidence": 0.98,
+      "estimated_audiobook_cost_usd": 0.294,
+      "marketing_hook": "Approved comic ghost audiobook: Mark Twain turns haunting into absurdity.",
+      "known_blockers": []
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "ben",
+      "genre_category": "literary-fiction",
+      "length_bucket": "short",
+      "role": "Bengali satirical canary",
+      "readiness": "PRODUCTION_CANDIDATE_REQUIRES_CANARY_TTS_GATES",
+      "audiobook_status": "CANARY_CANDIDATE_NOT_GENERATED",
+      "release_confidence": 0.92,
+      "estimated_audiobook_cost_usd": 0.0822,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": [
+        "Canary preflight candidate; full TTS currently blocked until Sarvam hook supports bounded canary and per-title representative evidence."
+      ]
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "genre_category": "bengali-classics",
+      "length_bucket": "short",
+      "role": "Bengali Tagore short canary",
+      "readiness": "PRODUCTION_CANDIDATE_REQUIRES_CANARY_TTS_GATES",
+      "audiobook_status": "CANARY_CANDIDATE_NOT_GENERATED",
+      "release_confidence": 0.92,
+      "estimated_audiobook_cost_usd": 0.0906,
+      "marketing_hook": "Bengali classic with strong cultural recall and reader-first appeal.",
+      "known_blockers": [
+        "Canary preflight candidate; full TTS currently blocked until Sarvam hook supports bounded canary and per-title representative evidence."
+      ]
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "genre_category": "bengali-classics",
+      "length_bucket": "short",
+      "role": "Bengali comic Tagore canary",
+      "readiness": "PRODUCTION_CANDIDATE_REQUIRES_CANARY_TTS_GATES",
+      "audiobook_status": "CANARY_CANDIDATE_NOT_GENERATED",
+      "release_confidence": 0.92,
+      "estimated_audiobook_cost_usd": 0.1266,
+      "marketing_hook": "Bengali classic with strong cultural recall and reader-first appeal.",
+      "known_blockers": [
+        "Canary preflight candidate; full TTS currently blocked until Sarvam hook supports bounded canary and per-title representative evidence."
+      ]
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "genre_category": "literary-fiction",
+      "length_bucket": "short",
+      "role": "Bengali audience anchor",
+      "readiness": "RESERVE_REQUIRES_REPRESENTATIVE_AUDITION",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.1527,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": []
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "author": "O. Henry",
+      "language": "eng",
+      "genre_category": "literary-fiction",
+      "length_bucket": "short",
+      "role": "English conversion classic",
+      "readiness": "PRODUCTION_CANDIDATE_REQUIRES_AUDIO_GATES",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.2531,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": []
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "author": "Edgar Allan Poe",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "short",
+      "role": "English gothic short",
+      "readiness": "PRODUCTION_CANDIDATE_REQUIRES_AUDIO_GATES",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.2586,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": []
+    },
+    {
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "author": "Saki",
+      "language": "eng",
+      "genre_category": "literary-fiction",
+      "length_bucket": "short",
+      "role": "English very-short social hook",
+      "readiness": "PRODUCTION_CANDIDATE_REQUIRES_AUDIO_GATES",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.1463,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": []
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "author": "Saki",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "short",
+      "role": "English dark-comic short",
+      "readiness": "PRODUCTION_CANDIDATE_REQUIRES_AUDIO_GATES",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.2144,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": []
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "author": "Kate Chopin",
+      "language": "eng",
+      "genre_category": "literary-fiction",
+      "length_bucket": "short",
+      "role": "English literary/emotional short",
+      "readiness": "PRODUCTION_CANDIDATE_REQUIRES_AUDIO_GATES",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.2614,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": []
+    }
+  ],
+  "tier_1_rule": "Only APPROVED_LIVE_NOW titles may be marketed as audiobooks today. Production candidates are first-lot targets but must not receive audio CTAs or teasers until all release gates pass.",
+  "tier_2_reader_first_shelf": [
+    {
+      "slug": "book-1090573dff",
+      "title": "ছুটি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "genre_category": "young-readers",
+      "length_bucket": "short",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.1612,
+      "marketing_hook": "Accessible emotional classic with student/family appeal.",
+      "known_blockers": []
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "medium",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.83,
+      "estimated_audiobook_cost_usd": 0.3028,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": []
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "title": "একরাত্রি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "genre_category": "literary-fiction",
+      "length_bucket": "short",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.1607,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": []
+    },
+    {
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "ben",
+      "genre_category": "literary-fiction",
+      "length_bucket": "medium",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.83,
+      "estimated_audiobook_cost_usd": 0.5363,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": []
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "author": "শরৎচন্দ্র চট্টোপাধ্যায়",
+      "language": "ben",
+      "genre_category": "literary-fiction",
+      "length_bucket": "long",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 1.2317,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "author": "Bram Stoker",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "long",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 19.5128,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "author": "O. Henry",
+      "language": "eng",
+      "genre_category": "literary-fiction",
+      "length_bucket": "short",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.2767,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": []
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "author": "O. Henry",
+      "language": "eng",
+      "genre_category": "literary-fiction",
+      "length_bucket": "short",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.2882,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": []
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "author": "Edgar Allan Poe",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "short",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.2905,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": []
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper",
+      "author": "Charlotte Perkins Gilman",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "medium",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.83,
+      "estimated_audiobook_cost_usd": 0.747,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": []
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "title": "The Monkey's Paw",
+      "author": "W.W. Jacobs",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "medium",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.83,
+      "estimated_audiobook_cost_usd": 0.484,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": []
+    },
+    {
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "author": "Guy de Maupassant",
+      "language": "eng",
+      "genre_category": "literary-fiction",
+      "length_bucket": "short",
+      "role": "Reader-first acquisition shelf",
+      "readiness": "READER_READY_AUDIO_HIDDEN_OR_AUDIO_PENDING",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.9,
+      "estimated_audiobook_cost_usd": 0.3416,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": []
+    }
+  ],
+  "tier_3_seo_flagship_long_form_shelf": [
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "author": "Bram Stoker",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 19.5128,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "frankenstein",
+      "title": "Frankenstein",
+      "author": "Mary Wollstonecraft Shelley",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 9.0124,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+      "author": "Robert Louis Stevenson",
+      "language": "eng",
+      "genre_category": "gothic-fiction",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 3.1067,
+      "marketing_hook": "Gothic atmosphere and suspense for short-form literary discovery.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "the-picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "language": "eng",
+      "genre_category": "literary-fiction",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 9.529,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "the-time-machine",
+      "title": "The Time Machine",
+      "author": "H. G. Wells",
+      "language": "eng",
+      "genre_category": "science-fiction",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 3.9128,
+      "marketing_hook": "Classic literature positioned through a premium reader-first edition.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "title": "The Call of the Wild",
+      "author": "Jack London",
+      "language": "eng",
+      "genre_category": "adventure",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 3.8401,
+      "marketing_hook": "Classic literature positioned through a premium reader-first edition.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "author": "Jack London",
+      "language": "eng",
+      "genre_category": "adventure",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 8.7239,
+      "marketing_hook": "Classic literature positioned through a premium reader-first edition.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "great-expectations",
+      "title": "Great Expectations",
+      "author": "Charles Dickens",
+      "language": "eng",
+      "genre_category": "classic-literature",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 22.5128,
+      "marketing_hook": "Classic literature positioned through a premium reader-first edition.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "jane-eyre",
+      "title": "Jane Eyre",
+      "author": "Charlotte Brontë",
+      "language": "eng",
+      "genre_category": "classic-literature",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 22.4671,
+      "marketing_hook": "Classic literature positioned through a premium reader-first edition.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "language": "eng",
+      "genre_category": "literary-fiction",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 14.6665,
+      "marketing_hook": "Compact human drama suited to quote cards and audio teasers.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "the-secret-garden",
+      "title": "The Secret Garden",
+      "author": "Frances Hodgson Burnett",
+      "language": "eng",
+      "genre_category": "children-classics",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 9.906,
+      "marketing_hook": "Classic literature positioned through a premium reader-first edition.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "title": "Alice's Adventures in Wonderland",
+      "author": "Lewis Carroll",
+      "language": "eng",
+      "genre_category": "young-readers",
+      "length_bucket": "long",
+      "role": "SEO/flagship long-form shelf",
+      "readiness": "READER_SEO_ANCHOR_NOT_FIRST_AUDIO_LOT",
+      "audiobook_status": "NOT_APPROVED_OR_NOT_RUN",
+      "release_confidence": 0.75,
+      "estimated_audiobook_cost_usd": 3.2606,
+      "marketing_hook": "Accessible emotional classic with student/family appeal.",
+      "known_blockers": [
+        "LONG_FORM_AUDIO_COST_AND_QA_RISK"
+      ]
+    }
+  ],
+  "rejected_or_deferred_titles": [
+    {
+      "slug": "book-2ddbed8293",
+      "title": "ব্যবধান",
+      "reason": "recent canary blocker: missing public controlled-publication source/API visibility"
+    },
+    {
+      "slug": "book-4968248842",
+      "title": "বলাই",
+      "reason": "source/title provenance review required before audio"
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "reason": "long-form audio QA/cost risk for first audiobook lot"
+    },
+    {
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "reason": "better fit for reader-first/SEO shelf than first audio lot"
+    },
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "reason": "long-form audio QA/cost risk for first audiobook lot"
+    },
+    {
+      "slug": "frankenstein",
+      "title": "Frankenstein",
+      "reason": "long-form audio QA/cost risk for first audiobook lot"
+    },
+    {
+      "slug": "the-picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "reason": "long-form audio QA/cost risk for first audiobook lot"
+    },
+    {
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+      "reason": "long-form audio QA/cost risk for first audiobook lot; physical cover should be reviewed before paid launch creative"
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "reason": "physical cover should be reviewed before paid launch creative"
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "reason": "physical cover should be reviewed before paid launch creative"
+    }
+  ],
+  "estimated_incremental_tier1_audio_production_cost_usd": 1.59,
+  "estimated_timeline": {
+    "week_1": "Production hardening: canary-aware Sarvam guard, English short audio provider proof, release-gate smoke.",
+    "weeks_2_3": "Generate/QA 3 Bengali canary plus 2 English short-story audiobooks if representative gates pass.",
+    "weeks_4_6": "Complete remaining first-lot audio candidates, publish only titles with endpoint/browser PASS, prepare paid launch creative.",
+    "weeks_7_12": "Scale content engine, SEO pages, newsletter, retargeting, and community loops after first-lot proof."
+  },
+  "marketing_sources": [
+    {
+      "name": "Google Ads responsive search ads best practices",
+      "url": "https://support.google.com/google-ads/answer/6167122?hl=en",
+      "used_for": "Search ad asset, landing-page match, and CTA guidance."
+    },
+    {
+      "name": "YouTube for Creators Shorts guidance",
+      "url": "https://www.youtube.com/creators/create/shorts/",
+      "used_for": "Short-form video and YouTube channel strategy."
+    },
+    {
+      "name": "TikTok For Business creative best practices",
+      "url": "https://ads.tiktok.com/help/article/creative-best-practices",
+      "used_for": "Vertical creative structure, early hook, caption/text overlay, and creator-native approach."
+    },
+    {
+      "name": "TikTok Ads best practices",
+      "url": "https://ads.tiktok.com/help/article/tiktok-ads-best-practices?lang=en",
+      "used_for": "Paid TikTok testing and creative fatigue guardrails."
+    }
+  ]
+}

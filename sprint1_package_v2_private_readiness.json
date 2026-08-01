@@ -1,0 +1,107 @@
+{
+  "generated_at": "2026-07-31",
+  "source_report": "sprint1_package_v2_local_readiness_report.json",
+  "ready_candidates_count": 12,
+  "private_b2_ready_count": 2,
+  "private_b2_ready": [
+    {
+      "slug": "book-2b9853ec52",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": true,
+      "package_version": "773d38442e420873317e"
+    },
+    {
+      "slug": "a-ghost-story",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": true,
+      "package_version": "f246a28a72aeb5de23df"
+    }
+  ],
+  "ready_non_b2_count": 10,
+  "ready_non_b2": [
+    {
+      "slug": "radharani",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "7f7d4d42587ee797d11e"
+    },
+    {
+      "slug": "nishkriti",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "12f3fc4d6e583d7515d1"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "923128d26893edc64d1c"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "ff67fe8db5f8b923f360"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "0b29e1b63b309b5e2d2f"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "e812d431ab877e5ac32d"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "0fa18112ce608529e03c"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "8d72a8d4349bc40e7aa6"
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "a6d59411b493b3f7d8b7"
+    },
+    {
+      "slug": "the-necklace",
+      "artifact": true,
+      "audio_gate": true,
+      "manifest_ready": true,
+      "b2_private": false,
+      "package_version": "20fccd3998d45d78cf4c"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-07-07T05:54:36Z",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "status": "BENGALI_AUDIOBOOK_PILOT_ASR_SYNC_LISTENING_PASSED_READY_FOR_UPLOAD_METADATA_BROWSER",
+  "latest_catalog_run": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z",
+  "latest_title_run": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z",
+  "exact_remaining_blocker": "Repaired audio now passes clean TTS-by-construction verification, measured paragraph/stanza sync, and full listening QA. Upload/checksum, metadata approval, endpoint exposure, and browser gate have not run yet.",
+  "blocker_category": "ready_for_upload_metadata_browser_gates_not_run",
+  "regenerated_groups": [
+    0
+  ],
+  "reused_groups": [
+    1,
+    2
+  ],
+  "tts_input_clean": true,
+  "latest_tts_by_construction_probe": {
+    "status": "PASS",
+    "tts_by_construction_verified": true,
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_clean_match_score": 1.0,
+    "first_last_tts_input_boundary_pass": true,
+    "report_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/bengali_tts_by_construction_report.json"
+  },
+  "latest_asr_sync_listening_gate": {
+    "status": "PASS",
+    "transcript_match_score": 10.0,
+    "asr_transcript_match_score": 1.1258,
+    "source_match_score": 10.0,
+    "asr_release_status": "SUPPORTING_DIAGNOSTIC_WEAK",
+    "sync_score": 10.0,
+    "vtt_alignment_score": 10.0,
+    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "sync_method": "measured_group_audio_duration",
+    "auto_estimated_sync": false,
+    "listening_qa_status": "PASS",
+    "listening_score": 9.4,
+    "listening_confidence": 0.95,
+    "fatal_red_flags": {
+      "robotic_texture_detected": false,
+      "mechanical_cadence_detected": false,
+      "list_reading_rhythm_detected": false,
+      "choppy_joins_detected": false,
+      "fallback_tts_detected": false
+    },
+    "report_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/asr_sync_hook_result.json"
+  },
+  "tts_by_construction_verification_source_added": "internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py",
+  "source_fix_summary": "Added a fail-closed Bengali TTS-by-construction verification path that requires clean saved TTS input, chunk/final hashes, nonzero measured durations, no stale/local/fallback TTS, 100% manuscript coverage, and first/last literary boundary proof before measured paragraph/stanza sync can be written. Full listening QA remains mandatory before upload/metadata/browser.",
+  "validation": {
+    "sarvam_full_pilot_hook_tests": "PASS 8",
+    "py_compile": "PASS",
+    "listening_qa_schema3": "PASS",
+    "release_catalog_factory_stop_guards": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "cost": {
+    "prior_full_pilot_cost_usd": 0.0197,
+    "latest_repair_cost_usd": "not_reported",
+    "additional_paid_operations_run_by_this_patch": 0
+  },
+  "sarvam_ratan_literary_warm_pacing_viable": true,
+  "another_sarvam_voice_style_should_be_tried": false,
+  "published": false,
+  "upload_metadata_browser_run": false,
+  "next_recommended_bengali_pilot_action": "Run the factory resume/publish barrier for book-2b9853ec52 with upload, metadata, and browser workers enabled. Publish only if upload/checksum, metadata approval, endpoint 200/206, and browser gate pass."
+}

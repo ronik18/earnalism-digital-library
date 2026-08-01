@@ -1,0 +1,70 @@
+{
+  "slug": "bn-035",
+  "generated_at": "2026-07-03T20:07:46Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "25a9afd4b8b1301aeaf6be4af201eb6c98526c66f2b074fd24256c610cd5fcae"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "39bb896f3c6faab6ac5a79d18c448ce7f18818f784350686f4e400f15bad43a2"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "3b4e3c6225aed4e7bfb433a896fd324c210f7e71593f6128b2152624f31964fb"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "59e5171a3d7e4912d858f1c544c1d0ee4acfdd20c6a1c1f360cfa900a70032af"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "890204930ed4a78614af0a089eb43192c4bf9818acbeb1d601cb01a60b972361"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "77cfb83897d31c34e6cfba98a368f1b037ca30a3e8d8cede4d64c6ae8f1692a5"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "384d8ad35525e86247ff4c1a5dce1ddb7b2b44da5ebbf64f8c024e2cc2fc4118"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "0c99290f4bd70dae4cd2d48591ff2c38e9698df551325a31505bdcb278088458"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "5f1b2700efe096da53e430af41e04fef3b1094392be1cf46504cccd49c7d328c"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "8d4a9d55ce82a6f2f3e5cdb981a49ed7d6a0c7b582c6ebc2440a93e217d661c4"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "6d0d599732db7c87a3a95de0e1bfefed03efc3e1abd74e5b7d46d94e6265bf31"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "8edcda60d77744f688d4bfa954976d63005bd0d6b9bf6922e69b9c9b663617c7"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "01bfa18eb8f8f4398e505e81ddf1ec1da2232a13657ce4493d30832a2735d308"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "02555b0ca0c324eae49e015156a04d4d647bedc20316161755c2287371adbc45"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "e521786693f8b4ca140e1b0e43e68b1111436d4868cc5493547938f67b3bc0a5"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "dd40adb77529aff23035dad9dcfc14e48c5b0ff3722fa249dc3ce7fdb79227bc"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-07-07T05:21:09.067929+00:00",
+  "slug": "book-2b9853ec52",
+  "status": "NOT_RUN_PROVIDER_REGENERATION_REQUIRED",
+  "final_audio_path": null,
+  "final_audio_hash": null,
+  "total_duration": null,
+  "group_order": [
+    0,
+    1,
+    2
+  ],
+  "per_group_duration": [
+    {
+      "group_id": 0,
+      "duration_seconds": null
+    },
+    {
+      "group_id": 1,
+      "duration_seconds": 135.793061
+    },
+    {
+      "group_id": 2,
+      "duration_seconds": 52.555964
+    }
+  ],
+  "reused_vs_regenerated_groups": {
+    "reused": [
+      1,
+      2
+    ],
+    "regenerated": [
+      0
+    ]
+  },
+  "gap_pause_handling": "Factory concat_audio_chunks uses ffmpeg concat plus loudness normalization after regenerated group exists.",
+  "no_frontmatter_confirmed": true
+}

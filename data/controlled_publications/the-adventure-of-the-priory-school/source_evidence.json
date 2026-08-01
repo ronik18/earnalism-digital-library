@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-priory-school",
+  "source_url": "https://www.gutenberg.org/ebooks/108",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "1c0eeb56e57f62d657701f3711cd5aa6d470a38cf009da0602b3fbdf6f591635",
+  "content_hash": "f53e83470106d20a25b54ae5c640c8bc6a15fcdc2ab22a77347fc0cc1b025e64",
+  "provenance_hash": "8a4567cd207a26feaa1fbdc0b0d6057b3920ff8ea200a66fdd6e69c33d4b2e40",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1904. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.438267+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

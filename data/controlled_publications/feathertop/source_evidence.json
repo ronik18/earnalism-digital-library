@@ -1,0 +1,13 @@
+{
+  "slug": "feathertop",
+  "source_url": "https://www.gutenberg.org/ebooks/512",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "85a78b4e74dc88dd691687eddd599571e215524da97a6a85b6500ac16ef05636",
+  "content_hash": "f5450bba2ac3ccb0f570a34f3ecf914465b6dbb81ecf248fb1a9a07b03065e9c",
+  "provenance_hash": "d4ff427ea8ab960cfd26f22d43ec28355535d97a75927c94c6586e96d6ddb46c",
+  "rights_basis": "Nathaniel Hawthorne died 1864; first published 1852. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.420347+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

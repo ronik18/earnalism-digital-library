@@ -2,7 +2,8 @@
   "batchId": "controlled-bilingual-book-release-batch-1",
   "requiredScore": 100,
   "totalBooksConfigured": 10,
-  "passingBooks": [
+  "passingBooks": [],
+  "heldBooks": [
     "frankenstein",
     "jekyll-and-hyde",
     "carmilla",
@@ -14,20 +15,28 @@
     "pather-panchali",
     "eyesore-chokher-bali"
   ],
-  "heldBooks": [],
   "books": [
     {
       "slug": "frankenstein",
       "title": "Frankenstein; or, The Modern Prometheus",
       "language": "en",
       "sourceUrl": "https://www.gutenberg.org/ebooks/84",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 28,
       "wordCountApprox": 75037,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json showInHomepage must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion.",
+        "showInHomepage must remain false."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -35,7 +44,16 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json showInHomepage must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion.",
+          "showInHomepage must remain false."
+        ]
       }
     },
     {
@@ -43,13 +61,20 @@
       "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
       "language": "en",
       "sourceUrl": "https://www.gutenberg.org/ebooks/43",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 11,
       "wordCountApprox": 25606,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -57,7 +82,14 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion."
+        ]
       }
     },
     {
@@ -65,13 +97,20 @@
       "title": "Carmilla",
       "language": "en",
       "sourceUrl": "https://www.gutenberg.org/ebooks/10007",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 1,
       "wordCountApprox": 28115,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -79,7 +118,14 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion."
+        ]
       }
     },
     {
@@ -87,13 +133,20 @@
       "title": "The Hound of the Baskervilles",
       "language": "en",
       "sourceUrl": "https://www.gutenberg.org/ebooks/2852",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 15,
       "wordCountApprox": 59233,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -101,7 +154,14 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion."
+        ]
       }
     },
     {
@@ -109,13 +169,20 @@
       "title": "The Picture of Dorian Gray",
       "language": "en",
       "sourceUrl": "https://www.gutenberg.org/ebooks/174",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 21,
       "wordCountApprox": 79090,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -123,7 +190,14 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion."
+        ]
       }
     },
     {
@@ -131,13 +205,20 @@
       "title": "The Woman in White",
       "language": "en",
       "sourceUrl": "https://www.gutenberg.org/ebooks/583",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 25,
       "wordCountApprox": 246744,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -145,7 +226,14 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion."
+        ]
       }
     },
     {
@@ -153,13 +241,20 @@
       "title": "Kshudhita Pashan / The Hungry Stones",
       "language": "en",
       "sourceUrl": "https://www.gutenberg.org/ebooks/2518",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 1,
       "wordCountApprox": 4793,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -167,7 +262,14 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion."
+        ]
       }
     },
     {
@@ -175,13 +277,20 @@
       "title": "দেবদাস / Devdas",
       "language": "bn",
       "sourceUrl": "https://bn.wikisource.org/wiki/দেবদাস_(শরৎচন্দ্র_চট্টোপাধ্যায়)",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 16,
       "wordCountApprox": 24988,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -189,7 +298,14 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion."
+        ]
       }
     },
     {
@@ -197,13 +313,20 @@
       "title": "পথের পাঁচালী / Pather Panchali",
       "language": "bn",
       "sourceUrl": "https://bn.wikisource.org/wiki/পথের_পাঁচালী",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 12,
       "wordCountApprox": 20871,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -211,7 +334,14 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion."
+        ]
       }
     },
     {
@@ -219,13 +349,20 @@
       "title": "Eyesore (Chokher Bali)",
       "language": "en",
       "sourceUrl": "https://en.wikisource.org/wiki/Eyesore",
-      "score": 100,
-      "status": "PASS_100",
+      "score": 90,
+      "status": "HOLD",
       "chapterCount": 39,
       "wordCountApprox": 48588,
-      "routeStatus": "READY",
+      "routeStatus": "HOLD",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
+      "blockers": [
+        "Draft book.json isPublic must be false before promotion.",
+        "Draft book.json isLive must be false before promotion.",
+        "Draft book.json showInPublicLibrary must be false before promotion.",
+        "Draft book.json allowPublicReading must be false before promotion.",
+        "Draft book.json is_published must be false before promotion.",
+        "Draft book.json publicationStatus must be draft before promotion."
+      ],
       "areaIssues": {
         "sourceLegalCompleteness": [],
         "boilerplateJunkRemoval": [],
@@ -233,7 +370,14 @@
         "textFidelity": [],
         "bengaliRendering": [],
         "readerUxRendering": [],
-        "publicGovernanceSafety": []
+        "publicGovernanceSafety": [
+          "Draft book.json isPublic must be false before promotion.",
+          "Draft book.json isLive must be false before promotion.",
+          "Draft book.json showInPublicLibrary must be false before promotion.",
+          "Draft book.json allowPublicReading must be false before promotion.",
+          "Draft book.json is_published must be false before promotion.",
+          "Draft book.json publicationStatus must be draft before promotion."
+        ]
       }
     }
   ]

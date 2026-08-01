@@ -1,0 +1,66 @@
+{
+  "slug": "the-great-gatsby",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "a2514140d86cb8cd531dd0a760fe510389c4e75a0c025798563ebad21cc4f2fd"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "654179d5eae580b5a311d66fd24565d24a923d124d440da8e2195d0f488812e7"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "818d10b268f9074dc570150b2a6ed9b1bdd9b7e220052e99bf896a48b554951e"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "34604f3dbd29fad51b5e2e0c4376bfacd5fa87d60daf08656662e383afc10aa6"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "49538cd1e7a82e1a711650f3c5aa50e64437590caa147491ae067abaf448d061"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "b9ad66404a9b5f5987b59586800a5996366e39361591718c354652c01fbf4275"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "aac23556e123fabcade68990e71e603551b053032409184da977fe59467b9b24"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "206fa6051c8899496593542c7db93be3a4e135c7989f6e33cefa3a544b513e1a"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "a1deec05a5fc1928c7cbb4e5278a97fc0d19126528221b5062d0ea78aa13ce3e"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "10ccdb0343493abcb661315e398d3c84826536a24a17910d617566d379af0f31"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "60c74055af0aaa0cbae7905374c582963abb37186adeaceb3260bd31d25c46e4"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "bbaac097a8fa5fe737984a2d82e5b21bfe85587132683b2d60bcbf6600d03d75"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "a5487c8107134e7f771b42f9c384c2a8bf62eddb20b83f8a5c1d64479373e196"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "e5f7ba205fc69be2a14709cb865a5d96ad56512be166c58c3591ed57e9c3c4e5"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "c1e2089309e5020916f60ff09b2ea300af01b18fb6313fc428c8b67b32ba7e8b"
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "slug": "book-63afd5e9be",
+  "title": "দেনাপাওনা",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "generated_at": "2026-07-04T14:48:33Z",
+  "overall_status": "NO_GO",
+  "publish_command_run": false,
+  "publish_guard": "Publish is blocked until every Phase 5 QA gate is GREEN or --publish-approved is supplied by an authorised operator.",
+  "audit_state": {
+    "requested_audit_path": "output/go_live_blocker_audit/book_go_live_blocker_audit.json",
+    "requested_audit_path_present": false,
+    "book_specific_release_gate_path": "internal/audiobook_lab/bengali_store_candidates/book-63afd5e9be/release_gate_report.json",
+    "book_specific_release_gate_used": true
+  },
+  "rights_qa": {
+    "status": "GREEN",
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "source_evidence_present_internal": true,
+    "basis": "Author died in 1941, so the original literary work is public domain in India under life plus 60 years. Original publication before 1931 supports U.S. public-domain status."
+  },
+  "content_qa": {
+    "status": "GREEN_WITH_NOTE",
+    "chapter_files": 1,
+    "reader_manifest_chapter_count": 1,
+    "public_book_chapter_count": 1,
+    "chapter_count_match": true,
+    "suspicious_boilerplate_hits": 0,
+    "raw_html_hits": 0,
+    "source_url_leak_hits": 0,
+    "note": "Reader content includes bibliographic frontmatter lines before the story body; this did not match the boilerplate scan patterns but must not be narrated as audiobook manuscript content."
+  },
+  "reader_ux_qa": {
+    "status": "PARTIAL",
+    "production_detail_route": {
+      "url": "https://theearnalism.com/book/book-63afd5e9be",
+      "http_status": 200,
+      "book_not_found": false
+    },
+    "production_reader_route": {
+      "url": "https://theearnalism.com/reader/book-63afd5e9be",
+      "http_status": 200,
+      "book_not_found": false
+    },
+    "production_reader_chapter_api": {
+      "url": "https://api.theearnalism.com/api/reader/chapter/book-63afd5e9be/chapter-001",
+      "http_status": 200,
+      "content_starts_with": "রবীন্দ্রনাথ ঠাকুর"
+    },
+    "blocker": "No browser WCAG 2.1 AA audit and no 320-1920px responsive visual audit produced in this pass."
+  },
+  "cover_qa": {
+    "status": "RED",
+    "front": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779453498/earnalism/covers/front/cover_7d71638e-e3a9-44ca-a477-6d6d03d28925.png",
+      "http_status": 200,
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "required_dimensions": [
+        1600,
+        2400
+      ],
+      "placeholder_flag": false
+    },
+    "back": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779453509/earnalism/covers/back/back_cover_7d71638e-e3a9-44ca-a477-6d6d03d28925.png",
+      "http_status": 200,
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "required_dimensions": [
+        1600,
+        2400
+      ],
+      "placeholder_flag": false
+    },
+    "blocker": "Both cover images resolve but fail the exact 1600x2400 requirement."
+  },
+  "audio_qa": {
+    "status": "RED",
+    "production_api_audio": {
+      "url": "https://api.theearnalism.com/api/reader/book/book-63afd5e9be/audiobook",
+      "http_status": 404,
+      "message": "Audiobook asset not found"
+    },
+    "public_book_metadata_audio_flags_local": {
+      "audio_enabled": true,
+      "audiobook_enabled": true,
+      "production_approved": null,
+      "audiobook_release_gate": null
+    },
+    "production_api_audio_flags": {
+      "audio_enabled": false,
+      "audiobook_enabled": false,
+      "audiobook_assets": null,
+      "audiobook": null
+    },
+    "candidate_release_gate": {
+      "production_approved": false,
+      "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+      "public_serving_status": "BLOCKED",
+      "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+      "upload_status": "NOT_UPLOADED",
+      "blockers": [
+        "objective_audio_score_9_5",
+        "sync_usability_score_9_5",
+        "bengali_human_listening_qa_9_5",
+        "accessibility_listening_qa_9_5",
+        "source_text_rights_evidence_exists",
+        "derivative_audiobook_rights_evidence_exists",
+        "owner_approval_exists",
+        "legal_internal_review_exists",
+        "rollback_plan_exists"
+      ]
+    },
+    "local_audio_file": {
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-63afd5e9be/book-63afd5e9be.mp3",
+      "bytes": 8217539,
+      "sha256": "5c90929983842b1bde5b827a70a7aa59abad30106afadd2771e3ba5a63e1e298",
+      "duration_seconds": 1027.104,
+      "objective_audio_score": 8.8
+    },
+    "sync_qa": {
+      "sync_usability_score": 7.6,
+      "required_score": 9.5,
+      "status": "HOLD_SYNC_QA_REQUIRED"
+    },
+    "polished_cloudinary_assets_found_but_not_release_approved": {
+      "mp3": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781260354/earnalism/audiobooks-polished/ben/book-63afd5e9be/book-63afd5e9be-bengali-polish-queue-v1.mp3.mp3",
+        "http_status": 200,
+        "bytes": 8217539
+      },
+      "timestamps": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781260355/earnalism/audiobooks-polished/ben/book-63afd5e9be/book-63afd5e9be-bengali-polish-queue-v1_timestamps.json",
+        "http_status": 200,
+        "sha256": "96a7d07a85756eb9647001f509c3a017c70a8c09eb44733bacf4136de2cd36df"
+      },
+      "highlight_vtt": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781260356/earnalism/audiobooks-polished/ben/book-63afd5e9be/book-63afd5e9be-bengali-polish-queue-v1_highlight.vtt",
+        "http_status": 200,
+        "sha256": "2b43fcc565657482d93c49b2a2b394a18382bbfab651601e1ec48e15aa12fa43"
+      }
+    },
+    "manuscript_scope_blocker": "Sidecar first words include bibliographic/frontmatter tokens: রবীন্দ্রনাথ, ঠাকুর, গল্পগুচ্ছ, ১৯৫০, পৃ, ২০, থেকে, ২৭. The audiobook must be regenerated or trimmed from sanitized manuscript-story content only."
+  },
+  "a11y_qa": {
+    "status": "RED",
+    "blocker": "WCAG 2.1 AA audit was not run green."
+  },
+  "security_qa": {
+    "status": "GREEN_FOR_CHECKED_ROUTES",
+    "checked_routes": [
+      "https://theearnalism.com/book/book-63afd5e9be",
+      "https://theearnalism.com/reader/book-63afd5e9be",
+      "https://api.theearnalism.com/api/books/book-63afd5e9be",
+      "https://api.theearnalism.com/api/reader/book/book-63afd5e9be/manifest",
+      "https://api.theearnalism.com/api/reader/chapter/book-63afd5e9be/chapter-001"
+    ],
+    "internal_path_leaks_detected": false,
+    "source_url_leaks_detected": false
+  },
+  "perf_qa": {
+    "status": "RED",
+    "blocker": "No simulated 4G LCP < 2.5s result and no audio stream starts < 1s result produced."
+  },
+  "canary": {
+    "status": "RED",
+    "detail_route_200": true,
+    "reader_route_200": true,
+    "reader_manifest_200": true,
+    "reader_chapter_200": true,
+    "audiobook_endpoint_status": 404,
+    "audio_only_on_content_pages": "PASS_BY_ABSENCE",
+    "console_errors": "NOT_RUN_BROWSER_CONSOLE"
+  },
+  "release_gate": {
+    "status": "RED",
+    "audiobook_release_gate": null,
+    "production_approved": null,
+    "internal_public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED"
+  },
+  "phase_5_summary": {
+    "content_qa": "GREEN_WITH_NOTE",
+    "cover_qa": "RED",
+    "audio_qa": "RED",
+    "a11y_qa": "RED",
+    "security_qa": "GREEN_FOR_CHECKED_ROUTES",
+    "perf_qa": "RED",
+    "canary": "RED",
+    "release_gate": "RED"
+  },
+  "next_actions_required": [
+    "Replace or transform front and back Cloudinary covers to exact 1600x2400 assets and update metadata after verification.",
+    "Regenerate or trim audiobook from sanitized manuscript-story content only; remove bibliographic/frontmatter narration from audio and sidecars.",
+    "Repair VTT/timestamp sync to >= 9.5 and produce word-level highlight evidence within the required tolerance.",
+    "Complete Bengali human listening QA, accessibility listening QA, source/derivative rights review, owner approval, legal review, and rollback plan.",
+    "Upload approved MP3 and sidecars, verify checksums, then set production_approved true and audiobook_release_gate APPROVED through the authorised workflow.",
+    "Run browser a11y, responsive UX, console, and simulated 4G perf canaries before publishing."
+  ]
+}

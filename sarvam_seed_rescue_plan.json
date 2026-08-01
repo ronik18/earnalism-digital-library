@@ -1,0 +1,81 @@
+{
+  "generated_at": "2026-07-06T19:12:13Z",
+  "status": "BLOCKED_BEFORE_PAID_AUDITION",
+  "objective": "Test whether Sarvam bulbul:v3 pooja/dialogue_human_touch isolated 9.6 sample generalizes across representative Bengali narration before any full pilot.",
+  "known_truth": {
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "best_isolated_sample": {
+      "voice": "pooja",
+      "style": "dialogue_human_touch",
+      "passage_type": "emotional",
+      "score": 9.6,
+      "confidence": 0.95,
+      "fatal_flags": false
+    },
+    "best_representative_score_before_this_run": 8.1,
+    "best_representative_confidence_before_this_run": 0.9,
+    "representative_threshold": 9.3,
+    "full_pilot_generated": false,
+    "publish_allowed": false
+  },
+  "rescue_matrix": {
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voices": [
+      "pooja",
+      "ritu"
+    ],
+    "primary_voice_style": "pooja/dialogue_human_touch",
+    "close_variants": [
+      "pooja/literary_warm_pacing",
+      "pooja/punctuation_aware_emotional",
+      "ritu/dialogue_human_touch"
+    ],
+    "passage_types_required": [
+      "opening_narration",
+      "dialogue",
+      "emotional",
+      "punctuation_heavy",
+      "ending_style"
+    ],
+    "candidate_slugs": [
+      "book-ac5a71075e",
+      "book-1090573dff",
+      "book-4b944e64fa",
+      "book-0deb35c750",
+      "book-2ddbed8293",
+      "book-2e468c4990"
+    ],
+    "broad_voice_retest_allowed": false
+  },
+  "pass_criteria": {
+    "representative_overall_score_min": 9.3,
+    "confidence_min": 0.9,
+    "no_robotic_mechanical_choppy_fallback_flags": true,
+    "full_pilot_requires_env": "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true",
+    "publish_requires_all_objective_gates": true
+  },
+  "current_run_result": {
+    "representative_audition_run": false,
+    "reason": "Paid provider/listening-QA approval env is missing; cost governor blocked before Sarvam/OpenAI calls.",
+    "missing_required_env_for_audition": [
+      "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS",
+      "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF",
+      "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD",
+      "EARNALISM_STOP_ON_BUDGET_EXCEEDED",
+      "EARNALISM_ENABLE_OPENAI_LISTENING_QA"
+    ],
+    "missing_required_env_for_full_pilot_after_pass": [
+      "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS"
+    ],
+    "paid_operations_run": [],
+    "paid_operations_skipped": [
+      "sarvam_tts_audition",
+      "openai_listening_qa",
+      "full_bengali_pilot_tts"
+    ],
+    "publish_decision": "DO_NOT_PUBLISH"
+  },
+  "next_exact_command": "cd /Users/ronikbasak/Documents/GitHub/earnalism-digital-library && source ~/.zshrc && railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS=true EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF=true EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD=20 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio EARNALISM_LISTENING_POLICY_VERSION=tiered_audiobook_acceptance_v1 python3 internal/audiobook_lab/scripts/bengali_tts_provider_bakeoff.py --manifest book_import_manifest.json --providers sarvam --candidate-slugs book-ac5a71075e,book-1090573dff,book-4b944e64fa,book-0deb35c750,book-2ddbed8293,book-2e468c4990 --max-passages 5 --max-seconds-per-sample 75 --max-voices-per-provider 40 --voice-filter sarvam/pooja,sarvam/ritu --second-pass-polish --style-profiles dialogue_human_touch,literary_warm_pacing,punctuation_aware_emotional --policy tiered_audiobook_acceptance_v1 --fail-closed"
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "the-red-headed-league",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "c4e86e2697f7f156f03e4cb3490ef894d93363c540d32f068ffb9cd8237a37fc"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "fc2ca6c538f9e6ef6c954048377b5828551659cc04d183e3db6373bda5ce9291"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "2e46cf9e98cdafd7dbcdeca1057120ad6ff026434c4261abd99f24290f758cbc"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "77cbbee453fd218ecdd14470be94057e8f82a82cd053acda666c1f1dbcd3f6e0"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "c7779fb3a85b5b407fe8fd55423a74e7656de0ffa4c977a815bc78e654b0ea2a"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "58f52424237880402e06236f59827e68274098130a7cd9a08ebfddde75cf371f"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "9193f7c35d1cd49e445000349d10fc1ba9d69249169381c9fb2eb2920a8fc922"
+    }
+  ]
+}
