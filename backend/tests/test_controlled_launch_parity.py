@@ -90,6 +90,15 @@ def test_sprint1_reader_additions_are_live_in_both_trees_and_audio_hidden():
         assert set(launch["audio_enabled_slugs"]).isdisjoint(SPRINT1_READER_ONLY_ADDITIONS)
 
 
+def test_sprint1_reader_additions_are_live_in_both_trees_and_audio_hidden():
+    root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
+    backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
+
+    for launch in (root_launch, backend_launch):
+        assert SPRINT1_READER_ONLY_ADDITIONS.issubset(launch["live_approved_slugs"])
+        assert set(launch["audio_enabled_slugs"]).isdisjoint(SPRINT1_READER_ONLY_ADDITIONS)
+
+
 def test_historical_reconstruction_evidence_does_not_approve_public_audio():
     for slug in HISTORICAL_RECONSTRUCTION_AUDIO_HOLDS:
         evidence = load_json(
