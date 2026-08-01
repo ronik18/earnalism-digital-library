@@ -1,0 +1,34 @@
+{
+  "slug": "the-adventure-of-the-blue-carbuncle",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "2cb6989d8f241d945e069a6a22d9d75ad2534ab80a9e7fdcb67bfa3565e74bc7"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "80a9e93ed28bac1e2d28dff02d3d75fb977915e474ef8c301f08797a201ccf1d"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "2f2a51cc680a705ef2a968013cf2041ff1a1a60c8cac12bd163de21dcf8693bd"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "dc2a5a960704e36f0c1f0b8e0367464be529835687d1c7f6c75b7e584113aa9d"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "d5dbdfe03859811c57bf50a13b217574e3943049309fc2c51f5e4e4b41420cee"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "211044d68c58cad4de2e4071a6be9e856615880675a360bb356c4062a150e4ea"
+    }
+  ]
+}

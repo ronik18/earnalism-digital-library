@@ -1,0 +1,13 @@
+{
+  "slug": "the-picture-of-dorian-gray",
+  "source_url": "https://www.gutenberg.org/ebooks/174",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
+  "source_hash": "1cda06b7812569935ff0f82ad61f3641f83efbf48f54d93146e1ba77718b8fe8",
+  "content_hash": "3e69458217762b479cb7f84a44fd8e88fdf885ffff2840cf82c771712c54d0e8",
+  "provenance_hash": "c56ebdcc8798bf41cfaa231b524fdbddfe29c643e59bea18a5c371255909acdb",
+  "rights_basis": "Author died in 1900. Work published in 1890, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "downloaded_at": "2026-05-25T20:10:00.656043+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

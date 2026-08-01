@@ -1,0 +1,80 @@
+{
+  "audit_id": "LIVE_SITE_PREMIUM_UX_ANOMALY_AUDIT_20260713",
+  "observed_at": "2026-07-13T08:38:02Z",
+  "rubric": {
+    "target_page_score": 9.8,
+    "target_category_floor": 9.6,
+    "hard_failures": ["release-gate failure","accessibility failure","severe performance regression","typographic-only public cover","unapproved audio exposure"],
+    "claim_10_of_10": false,
+    "reason": "The route floor is 6.4; P0 release-storage and multiple P1 truth/accessibility defects remain."
+  },
+  "overall": {
+    "route_floor": 6.4,
+    "median_route_score": 8.0,
+    "deterministic_10_of_10": "NOT_MET",
+    "live_visual_strengths": ["restrained paper/burgundy/gold palette","graphical cover-first layouts","calm non-tour motion","zero document overflow at requested widths","consistent premium surface treatment"],
+    "hard_caps": ["unapproved direct storage audio is publicly reachable","serious axe violations","catalog truth mismatch","clean-build release-policy drift"]
+  },
+  "score_profiles": {
+    "HOME": {"page_score":7.6,"premium_brand_identity":9.1,"visual_distinctiveness":9.0,"calmness":7.7,"typography_elegance":7.3,"color_consistency":9.2,"cover_quality":7.7,"information_hierarchy":8.3,"conversion_clarity":6.4,"catalog_discovery":6.8,"reader_comfort":8.2,"audiobook_experience":5.8,"settings_usefulness":7.8,"Bengali_typography":6.7,"English_typography":7.4,"mobile_experience":7.8,"accessibility":6.2,"performance":8.8,"SEO":7.4,"release_gate_truth":7.0,"no_regressions":6.8},
+    "LIBRARY": {"page_score":6.4,"premium_brand_identity":7.8,"visual_distinctiveness":7.8,"calmness":5.8,"typography_elegance":7.0,"color_consistency":9.0,"cover_quality":7.0,"information_hierarchy":5.4,"conversion_clarity":3.8,"catalog_discovery":3.0,"reader_comfort":7.4,"audiobook_experience":2.8,"settings_usefulness":7.5,"Bengali_typography":6.6,"English_typography":7.0,"mobile_experience":6.0,"accessibility":6.4,"performance":7.2,"SEO":6.2,"release_gate_truth":6.0,"no_regressions":6.0},
+    "BOOK_APPROVED": {"page_score":8.3,"premium_brand_identity":8.9,"visual_distinctiveness":8.8,"calmness":8.6,"typography_elegance":7.8,"color_consistency":9.2,"cover_quality":6.8,"information_hierarchy":8.7,"conversion_clarity":8.8,"catalog_discovery":8.0,"reader_comfort":8.5,"audiobook_experience":8.0,"settings_usefulness":7.8,"Bengali_typography":7.0,"English_typography":7.8,"mobile_experience":8.2,"accessibility":7.0,"performance":8.7,"SEO":6.4,"release_gate_truth":8.0,"no_regressions":7.0},
+    "BOOK_HIDDEN": {"page_score":8.8,"premium_brand_identity":9.0,"visual_distinctiveness":8.8,"calmness":8.8,"typography_elegance":7.8,"color_consistency":9.2,"cover_quality":8.8,"information_hierarchy":8.8,"conversion_clarity":8.8,"catalog_discovery":8.0,"reader_comfort":8.6,"audiobook_experience":8.8,"settings_usefulness":7.8,"Bengali_typography":7.0,"English_typography":7.8,"mobile_experience":8.3,"accessibility":7.0,"performance":8.7,"SEO":6.4,"release_gate_truth":9.4,"no_regressions":7.2},
+    "READER_APPROVED": {"page_score":7.5,"premium_brand_identity":8.9,"visual_distinctiveness":8.6,"calmness":8.7,"typography_elegance":6.8,"color_consistency":9.1,"cover_quality":6.5,"information_hierarchy":7.8,"conversion_clarity":7.0,"catalog_discovery":7.5,"reader_comfort":6.4,"audiobook_experience":5.8,"settings_usefulness":8.1,"Bengali_typography":6.2,"English_typography":6.5,"mobile_experience":7.0,"accessibility":5.8,"performance":8.0,"SEO":5.8,"release_gate_truth":7.4,"no_regressions":6.7},
+    "READER_HIDDEN": {"page_score":8.0,"premium_brand_identity":8.9,"visual_distinctiveness":8.6,"calmness":8.8,"typography_elegance":6.8,"color_consistency":9.1,"cover_quality":8.7,"information_hierarchy":7.8,"conversion_clarity":8.6,"catalog_discovery":7.5,"reader_comfort":6.5,"audiobook_experience":9.0,"settings_usefulness":8.1,"Bengali_typography":6.2,"English_typography":6.5,"mobile_experience":7.2,"accessibility":5.8,"performance":8.2,"SEO":5.8,"release_gate_truth":9.5,"no_regressions":6.8},
+    "MARKETING": {"page_score":8.2,"premium_brand_identity":8.8,"visual_distinctiveness":8.6,"calmness":8.4,"typography_elegance":6.9,"color_consistency":9.1,"cover_quality":8.5,"information_hierarchy":7.8,"conversion_clarity":8.1,"catalog_discovery":7.5,"reader_comfort":8.0,"audiobook_experience":8.0,"settings_usefulness":7.8,"Bengali_typography":7.0,"English_typography":7.0,"mobile_experience":8.0,"accessibility":6.7,"performance":8.8,"SEO":7.2,"release_gate_truth":9.0,"no_regressions":7.0}
+  },
+  "route_scores": [
+    {"path":"/","profile":"HOME","page_score":7.6,"screenshots":["/tmp/earnalism-live-ux-audit/viewport_screenshots/home__1440x900.png","/tmp/earnalism-live-ux-audit/viewport_screenshots/home__1536x864.png","/tmp/earnalism-live-ux-audit/viewport_screenshots/home__390x844.png","/tmp/earnalism-live-ux-audit/viewport_screenshots/home__430x932.png"]},
+    {"path":"/library","profile":"LIBRARY","page_score":6.4,"screenshots":["/tmp/earnalism-live-ux-audit/viewport_screenshots/library__1440x900.png","/tmp/earnalism-live-ux-audit/viewport_screenshots/library__1536x864.png","/tmp/earnalism-live-ux-audit/viewport_screenshots/library__390x844.png","/tmp/earnalism-live-ux-audit/viewport_screenshots/library__430x932.png"]},
+    {"path":"/book/book-2b9853ec52","profile":"BOOK_APPROVED","page_score":8.3,"screenshot_key":"book__book-2b9853ec52"},
+    {"path":"/reader/book-2b9853ec52","profile":"READER_APPROVED","page_score":7.5,"screenshot_key":"reader__book-2b9853ec52"},
+    {"path":"/book/a-ghost-story","profile":"BOOK_APPROVED","page_score":8.5,"screenshot_key":"book__a-ghost-story"},
+    {"path":"/reader/a-ghost-story","profile":"READER_APPROVED","page_score":7.4,"screenshot_key":"reader__a-ghost-story"},
+    {"path":"/book/bn-066","profile":"BOOK_HIDDEN","page_score":8.8,"screenshot_key":"book__bn-066"},
+    {"path":"/reader/bn-066","profile":"READER_HIDDEN","page_score":8.0,"screenshot_key":"reader__bn-066"},
+    {"path":"/book/book-d19e96859f","profile":"BOOK_HIDDEN","page_score":8.8,"screenshot_key":"book__book-d19e96859f"},
+    {"path":"/reader/book-d19e96859f","profile":"READER_HIDDEN","page_score":8.0,"screenshot_key":"reader__book-d19e96859f"},
+    {"path":"/book/book-f5d593e1f4","profile":"BOOK_HIDDEN","page_score":8.8,"screenshot_key":"book__book-f5d593e1f4"},
+    {"path":"/reader/book-f5d593e1f4","profile":"READER_HIDDEN","page_score":8.0,"screenshot_key":"reader__book-f5d593e1f4"},
+    {"path":"/book/muchiram-gurer-jibanchorit","profile":"BOOK_HIDDEN","page_score":8.8,"screenshot_key":"book__muchiram-gurer-jibanchorit"},
+    {"path":"/reader/muchiram-gurer-jibanchorit","profile":"READER_HIDDEN","page_score":8.0,"screenshot_key":"reader__muchiram-gurer-jibanchorit"},
+    {"path":"/book/dracula","profile":"BOOK_HIDDEN","page_score":8.7,"screenshot_key":"book__dracula"},
+    {"path":"/reader/dracula","profile":"READER_HIDDEN","page_score":8.0,"screenshot_key":"reader__dracula"},
+    {"path":"/contact","profile":"MARKETING","page_score":8.0,"screenshot_key":"contact"},
+    {"path":"/about","profile":"MARKETING","page_score":8.2,"screenshot_key":"about"},
+    {"path":"/pricing","profile":"MARKETING","page_score":7.8,"screenshot_key":"pricing"},
+    {"path":"/journal","profile":"MARKETING","page_score":8.2,"screenshot_key":"journal"}
+  ],
+  "accessibility_measurement": {
+    "axe_core_version": "4.11.4",
+    "routes_with_violations": ["/","/library","sampled /book routes","initial /reader cover pages","/pricing"],
+    "serious_findings": ["aria-hidden carousel slide retains focusable controls","reader dialogs do not trap/restore focus","contact focus indicator is imperceptible","pricing duration labels measure 4.06:1"],
+    "passes": ["no missing image alt in sampled routes","no unlabeled native form controls","reduced motion stops carousel and reader animation","no requested-viewport horizontal overflow"],
+    "a11y_green_claim": false
+  },
+  "performance_measurement": {
+    "latest_production_k6": {
+      "status":"PASS",
+      "virtual_users":100,
+      "duration":"2m",
+      "checks":"33360/33360",
+      "http_failure_rate":"0.00%",
+      "overall_p95_ms":1080,
+      "catalog_p95_ms":1170,
+      "reader_p95_ms":1060,
+      "deployment_sha_bound":false,
+      "evidence_note":"Load ended one second before Vercel completed; nine of the prior fifteen catalog runs exceeded 1.20s."
+    },
+    "mobile_lighthouse_lab": {
+      "tool":"cached Lighthouse 13.4.0 via npx --no-install",
+      "home":{"score":98,"lcp_ms":2235},
+      "library":{"score":87,"lcp_ms":3864,"cls":0.068},
+      "reader_dracula":{"score":80,"lcp_ms":5046,"cls":0.068},
+      "tbt_ms":0,
+      "field_web_vitals_available":false
+    },
+    "lighthouse_cli_available":true,
+    "lighthouse_green_claim":false
+  }
+}

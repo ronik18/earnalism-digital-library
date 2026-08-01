@@ -1,0 +1,13 @@
+{
+  "slug": "the-great-gatsby",
+  "source_url": "https://www.gutenberg.org/ebooks/64317",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
+  "source_hash": "db94f400f97c4f541fd791d9efbae5739245ad16764d0fe340d395be5f4dee0b",
+  "content_hash": "504cdaac835b04c991238a0d9e6f4f5bfabcebc85843f031fc6e0ba2ef18f205",
+  "provenance_hash": "67580d34f092b0bfcbacf555d36ac3c5db0bf7c4b9188ff5644d4054e01e6763",
+  "rights_basis": "Author died in 1940. Work published in 1925, before 1928. Entered U.S. public domain on 1 January 2021 under the pre-1928 publication rule.",
+  "downloaded_at": "2026-05-25T20:09:51.426847+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

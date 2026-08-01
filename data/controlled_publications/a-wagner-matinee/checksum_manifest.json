@@ -1,0 +1,34 @@
+{
+  "slug": "a-wagner-matinee",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "cf8741c7e7c7ef7e2c862c9e63359824b2125f40f15d6c111b16c491add01099"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "386f691a16cd7443d6ad3bda71221dbec2c343dbbbeb6352be808f5829660961"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "1ec02f0663a8036fb2f880da5ad7978f133584140f6779194bf3cf07c0620722"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "3a7886f07fa9895b64c858caa5240c6d935adb8fc9e894cca5503fb06a428a32"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "c59954e1575c9a8e025b8f80dcb4009e6b28d641f0d554a6b549b3b3ae15d488"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "9cbd9fe333b76136c9d0c55044655605eb03f8658528bad31a6b7bd38ce0adde"
+    }
+  ]
+}

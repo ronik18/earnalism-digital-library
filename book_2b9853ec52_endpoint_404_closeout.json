@@ -1,0 +1,18 @@
+{
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "status": "ENDPOINT_MATERIALIZATION_BLOCKED",
+  "exact_root_cause": "Admin DB metadata and uploaded assets are present, but deployed public route truth gate still hides the slug because the packaged backend controlled-launch live/audio allowlist does not include book-2b9853ec52.",
+  "backend_restart_attempted": false,
+  "backend_redeploy_attempted": false,
+  "metadata_persisted": true,
+  "public_api_sees_audiobook_approval": false,
+  "admin_api_sees_audiobook_approval": true,
+  "endpoint_route_sees_approval": false,
+  "policy_sync_tier_rejected": false,
+  "backend_code_or_data_fix_required": true,
+  "rollback_recommendation": "Do not rollback unless public unsafe exposure appears. Endpoint remains 404, so public audio is not exposed. If rollback is required, apply the reset payload at internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_audiobook_reset_payload.json through the admin audiobook endpoint; do not delete uploaded artifacts without explicit cleanup approval.",
+  "next_exact_command": "Prepare a clean backend deploy package with backend/data/controlled_launch.json including book-2b9853ec52 in live_approved_slugs and audio_enabled_slugs, deploy it to Railway, then run the metadata/browser-only resume command from book_2b9853ec52_final_gate_closeout.json.",
+  "diagnosis_path": "book_2b9853ec52_endpoint_404_diagnosis.json",
+  "written_at_utc": "2026-07-07T07:42:24Z"
+}

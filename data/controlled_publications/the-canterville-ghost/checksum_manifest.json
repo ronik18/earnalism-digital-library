@@ -1,0 +1,58 @@
+{
+  "slug": "the-canterville-ghost",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "1bbc7544eeba2053505c4982f9592c2ed5fd8bb6602cdc401eb91ba0c187f0bc"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "a97daad0670e2148187ea5e6adfc312ef35768971182ce22fb49f8c743a0f5f9"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "b3047affb5b61197ad0d96b7a6df583488b1ffbf827412f80766cd8b9ca4e7da"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "27b5913e738c20d25d54015c18e706e6c329bf3069f6ffb8ecaa14ffe166afbb"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "b93e14acd7feb09a636cbf7efa29c4d102a0fa4e37e76f45cd0de932e5921698"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "3b65c651ce84834969cd6afa1d7e9c7c4c14d6687ecaf27c1383abb0a8ca403f"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "5c8d57bcca4bad570ac34c96ac15fb4f2baffb72713f1b21d78bc0026d037df4"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "a87846622128a9fc91dc961b81c285a36b5c9cd0c9d704630fb907254c6dae4c"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "648f478699ff5d35a9f821773bb1c5157845291d9cada1e20c82b9a74b606523"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "57206cca419918eea2d5e63afe9dd39624a1d32b3dedb38d62a849d87ca72ac3"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "90715783c0456ac6a3d33e36a3da4c2d765f00326783782b4f440628aedc77e2"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "cf5b9816f8aab2f5d71c521ba652f1addea52d7bdc46023b142326e47ec07723"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "7fe2d3191ab89d5ccdfda3ca6983f355af45362f404f61d35410d6cc14c6c365"
+    }
+  ]
+}

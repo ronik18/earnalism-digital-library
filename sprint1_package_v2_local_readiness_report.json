@@ -1,0 +1,101 @@
+{
+  "generated_at": "2026-07-31T00:00:00Z",
+  "sprint1_target_count": 32,
+  "ready_candidates_count": 12,
+  "ready_candidates": [
+    "book-2b9853ec52",
+    "radharani",
+    "nishkriti",
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "book-f5d593e1f4",
+    "book-edfcf810c5",
+    "a-ghost-story",
+    "alices-adventures-in-wonderland",
+    "the-tell-tale-heart",
+    "the-yellow-wallpaper",
+    "the-necklace"
+  ],
+  "blocked_count": 6,
+  "blocked": [
+    {
+      "slug": "pather-panchali",
+      "state": "blocked",
+      "can_audio": false,
+      "in_live_set": true,
+      "audio_enabled": false,
+      "audio_enabled_field": false,
+      "audiobook_enabled_field": false,
+      "audio_enabled_gate": false,
+      "qa": "QA_PASSED",
+      "rights": "A",
+      "verification": "approved"
+    },
+    {
+      "slug": "devdas",
+      "state": "blocked",
+      "can_audio": false,
+      "in_live_set": true,
+      "audio_enabled": false,
+      "audio_enabled_field": false,
+      "audiobook_enabled_field": false,
+      "audio_enabled_gate": false,
+      "qa": "QA_PASSED",
+      "rights": "A",
+      "verification": "approved"
+    },
+    {
+      "slug": "dracula",
+      "state": "blocked",
+      "can_audio": false,
+      "in_live_set": true,
+      "audio_enabled": false,
+      "audio_enabled_field": false,
+      "audiobook_enabled_field": false,
+      "audio_enabled_gate": false,
+      "qa": "QA_PASSED",
+      "rights": "A",
+      "verification": "approved"
+    },
+    {
+      "slug": "frankenstein",
+      "state": "blocked",
+      "can_audio": false,
+      "in_live_set": true,
+      "audio_enabled": false,
+      "audio_enabled_field": false,
+      "audiobook_enabled_field": false,
+      "audio_enabled_gate": false,
+      "qa": "QA_PASSED",
+      "rights": "A",
+      "verification": "approved"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "state": "blocked",
+      "can_audio": false,
+      "in_live_set": true,
+      "audio_enabled": false,
+      "audio_enabled_field": false,
+      "audiobook_enabled_field": false,
+      "audio_enabled_gate": false,
+      "qa": "QA_PASSED",
+      "rights": "A",
+      "verification": "approved"
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "state": "blocked",
+      "can_audio": false,
+      "in_live_set": true,
+      "audio_enabled": false,
+      "audio_enabled_field": false,
+      "audiobook_enabled_field": false,
+      "audio_enabled_gate": false,
+      "qa": "QA_PASSED",
+      "rights": "A",
+      "verification": "approved"
+    }
+  ],
+  "missing_backend_count": 14
+}

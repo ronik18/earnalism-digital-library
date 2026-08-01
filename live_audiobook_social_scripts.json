@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-07-07T18:30:00Z",
+  "rules": [
+    "Use only approved live/asset-backed audio.",
+    "Do not claim word-level sync.",
+    "For A Ghost Story paid ads, reconfirm exact production browser/manifest route before spend."
+  ],
+  "books": [
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "positioning": "Bengali-first Tagore classic with approved section-following narration.",
+      "youtube_shorts": [
+        {"hook":"একটি জমির গল্প, কিন্তু আসলে মর্যাদার গল্প।","beats":["Open on cover","Play 5-7s approved narration","Text: section-following narration","End: Read or listen in Earnalism"],"cta":"Listen now"},
+        {"hook":"Tagore, heard quietly.","beats":["Cover close-up","Narration clip","Show reading room UI","End with title"],"cta":"Start listening"},
+        {"hook":"দুই বিঘা জমি: now in Earnalism's Bengali listening room.","beats":["Bengali title card","Approved audio clip","Trust badge: quality-gated"],"cta":"Listen"},
+        {"hook":"A short classic for tonight.","beats":["Ivory background","Quote visual","Audio clip","Reader route"],"cta":"Read or listen"},
+        {"hook":"Not every narration gets published. This one passed.","beats":["Gate checklist","Narration clip","Cover","CTA"],"cta":"Enter the listening room"}
+      ],
+      "instagram_reels": [
+        {"hook":"Bengali literature, without the noise.","caption":"দুই বিঘা জমি is live with approved section-following narration.","cta":"Listen in Earnalism"},
+        {"hook":"A quiet classic for your evening.","caption":"Read or listen to Tagore in a calmer digital reading room.","cta":"Start now"},
+        {"hook":"প্রথম বাংলা audiobook is live.","caption":"Quality-gated narration, reader-first presentation, no fake sync claims.","cta":"Listen"},
+        {"hook":"One story. Land, loss, dignity.","caption":"দুই বিঘা জমি is now available to read and listen.","cta":"Open Earnalism"},
+        {"hook":"Section-following narration, not karaoke sync.","caption":"Earnalism keeps audiobook claims honest.","cta":"Listen safely"}
+      ],
+      "facebook_whatsapp_captions": [
+        "দুই বিঘা জমি is live on Earnalism. Read or listen with approved section-following narration.",
+        "Tonight's Bengali classic: Tagore's দুই বিঘা জমি, now in the Earnalism listening room.",
+        "A calmer way to return to Bengali literature: read or listen to দুই বিঘা জমি.",
+        "Earnalism publishes audio only after quality gates pass. দুই বিঘা জমি is approved and live.",
+        "Share this with someone who grew up with Bengali classics: দুই বিঘা জমি is ready to read or hear."
+      ],
+      "linkedin_posts": [
+        "Earnalism's first Bengali audiobook is live: দুই বিঘা জমি by রবীন্দ্রনাথ ঠাকুর. The important product decision was not speed; it was release truth. We waited for source verification, listening QA, measured paragraph/stanza sync, metadata, endpoint, and browser gates.",
+        "Bengali typography and narration deserve the same product rigor as English classics. Earnalism now has an approved Bengali audiobook live, but we still label the experience honestly as section-following narration, not word-level sync.",
+        "Our launch principle: reader editions can be live before audio, but audio never appears until it passes gates. দুই বিঘা জমি is the first Bengali proof point."
+      ],
+      "google_search_ads": [
+        {"headline":"Listen To Dui Bigha Jomi","description":"Read or hear Tagore's Bengali classic in Earnalism's calm digital library.","cta":"Listen now"},
+        {"headline":"Bengali Classics Online","description":"A premium reading room for Bengali literature, with approved narration where available.","cta":"Explore Earnalism"},
+        {"headline":"দুই বিঘা জমি Audiobook","description":"Approved Bengali narration with section-following reading support.","cta":"Start listening"}
+      ]
+    },
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "positioning": "Mark Twain comic ghost story: gothic setup, absurd payoff.",
+      "youtube_shorts": [
+        {"hook":"A ghost story that refuses to stay serious.","beats":["Cover reveal","Approved audio clip","Twain punchline setup","CTA"],"cta":"Listen"},
+        {"hook":"Mark Twain walks into a haunted room.","beats":["Dark cover mood","Audio clip","Comic twist text"],"cta":"Read or listen"},
+        {"hook":"Classic haunting, comic timing.","beats":["Fog motif","Narration clip","Earnalism reader"],"cta":"Open the story"},
+        {"hook":"Not all ghost stories want to scare you.","beats":["Question text","Audio clip","Cover"],"cta":"Listen"},
+        {"hook":"Short classic, perfect for one sitting.","beats":["Duration-safe copy","Audio clip","Reader route"],"cta":"Start A Ghost Story"}
+      ],
+      "instagram_reels": [
+        {"hook":"A ghost story with a grin.","caption":"Mark Twain turns haunting into absurdity in Earnalism.","cta":"Listen"},
+        {"hook":"Gothic mood. Comic payoff.","caption":"A Ghost Story is approved and ready to read or hear.","cta":"Open Earnalism"},
+        {"hook":"The classic ghost story you can finish tonight.","caption":"A short listen for the literary after-dark shelf.","cta":"Read or listen"},
+        {"hook":"Twain does not haunt politely.","caption":"A Ghost Story is Earnalism's comic-gothic listen.","cta":"Listen"},
+        {"hook":"For readers who like their ghosts with timing.","caption":"Start with Mark Twain's approved audiobook.","cta":"Start now"}
+      ],
+      "facebook_whatsapp_captions": [
+        "A Ghost Story by Mark Twain is ready to read or listen in Earnalism.",
+        "Tonight's short classic: a haunted setup, a comic turn, and Mark Twain's timing.",
+        "A Ghost Story is an approved English audiobook in Earnalism. Read or listen when you want one sharp classic.",
+        "Not every classic needs to be long. A Ghost Story is a compact comic-gothic listen.",
+        "Share this with someone who likes ghost stories but also likes jokes."
+      ],
+      "linkedin_posts": [
+        "A Ghost Story is part of Earnalism's live audiobook shelf because it is short, marketable, and asset-backed. It also shows why short classics are better first paid tests than long prestige titles.",
+        "For launch, we are separating reader-first authority from audiobook conversion. A Ghost Story is a good conversion candidate; Dracula stays a long-form reader/SEO anchor until audio QA is safe.",
+        "Earnalism's first English audio marketing should start with stories that can prove completion, listening quality, and conversion quickly. A Ghost Story fits that role."
+      ],
+      "google_search_ads": [
+        {"headline":"A Ghost Story Audiobook","description":"Mark Twain's comic ghost classic, ready to read or listen in Earnalism.","cta":"Listen"},
+        {"headline":"Short Classic Audiobooks","description":"Premium English classics with approved narration where available.","cta":"Explore Earnalism"},
+        {"headline":"Mark Twain Ghost Story","description":"Read or listen to A Ghost Story in a calm digital literary room.","cta":"Start now"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-most-dangerous-game",
+  "slug": "the-most-dangerous-game",
+  "title": "The Most Dangerous Game",
+  "subtitle": "The Most Dangerous Game",
+  "author": "Richard Connell",
+  "category_slug": "literary-fiction",
+  "short_description": "A big-game hunter is shipwrecked on an island where a Russian general hunts humans for sport.",
+  "description": "Rainsford falls off a yacht and swims to Ship Trap Island, where General Zaroff hunts shipwrecked men as the only quarry worthy of his skill. Rainsford must survive three days in the jungle. The most widely anthologised thriller in American literature.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "34 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Richard Connell (1893–1949) was an American author and journalist, best known for The Most Dangerous Game.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Most Dangerous Game",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 8196,
+      "reading_minutes": 35,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "213e4a287408e7c78cb14a5d94dfcc519a378c710ca8739601220f6d51df52b1",
+  "content_hash": "f981f1417bf9faaba3435f21a829235dcba0daec5194bc7b777973dd6a7fc296",
+  "provenance_hash": "26f188eca9b3e139d19abacaf95ec5e3d4db416d1c2cf7d9909f8b0c1e09b179",
+  "rights_basis": "Richard Connell died in 1949 and the story was first published in 1924. Public domain in India and the U.S.; canonical title corrected from manifest alias.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-most-dangerous-game",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584985/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584986/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584987/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584987/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584988/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584985/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584985/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584986/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584987/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584987/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584988/earnalism/audiobooks/en/the-most-dangerous-game/the-most-dangerous-game_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:49Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z"
+}

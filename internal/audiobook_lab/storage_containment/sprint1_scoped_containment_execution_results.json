@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-14T03:00:42Z",
+  "owner_decision": "AUTHORIZE_SPRINT1_SCOPED_STORAGE_CONTAINMENT_AND_DEFER_NONSPRINT_REMOTE_CONTAINMENT.",
+  "inventory_sha256": "21c9f5c85c56be3779822b90fb31c178db8131f7f39f7d2bdae1d00a5f61b23c",
+  "overall_result": "SPRINT1_STORAGE_BYPASS_CONTAINED",
+  "completion": true,
+  "remote_mutation_performed_this_run": true,
+  "scoped_execution_attempted": true,
+  "scope": {
+    "active_sprint1_slug_count": 32,
+    "deferred_excluded": [
+      "great-expectations",
+      "jane-eyre"
+    ],
+    "scoped_reviewed_object_count": 135,
+    "executable_target_count": 70,
+    "cloudinary_target_count": 70,
+    "b2_target_count": 0,
+    "mp3_target_count": 6,
+    "sidecar_target_count": 64,
+    "actual_newly_retained_bytes": 219315085,
+    "approved_current_package_objects_excluded": 10,
+    "non_sprint_reviewed_targets_deferred": 471
+  },
+  "executor_dry_run": {
+    "result": "PASS",
+    "selection_mode": "SCOPED_TARGET_LIST",
+    "target_count": 70,
+    "approved_current_package_objects_excluded": 10,
+    "full_inventory_guard_regression_check_target_count": 606,
+    "bn_066_canary_guard_regression_check_target_count": 5
+  },
+  "private_qa_preflight": {
+    "required_environment_ready": true,
+    "bucket_confirmed_private": true,
+    "write_head_delete_test": "PASS",
+    "probe_byte_size": 22,
+    "revocation_allowed": true
+  },
+  "execution": {
+    "execution_location": "Railway service container",
+    "run_id": "storage-containment-306318ac3882",
+    "started_at": "2026-07-14T02:50:04Z",
+    "completed_at": "2026-07-14T02:57:28Z",
+    "target_count": 70,
+    "retained_private": 70,
+    "newly_contained": 70,
+    "already_contained": 0,
+    "failed": 0,
+    "provider_results": {
+      "Cloudinary": {
+        "target_count": 70,
+        "newly_contained": 70,
+        "failed": 0
+      }
+    },
+    "mutation_log_sha256": "abbf9db41f5ac49d7d27ac561ea4ffbdc2b1bae7b5529ad86e5497b905c5f386",
+    "mutation_log_record_count": 70,
+    "mutation_log_object_ids_match_scoped_targets": true,
+    "mutation_log_result": "CONTAINED_PRIVATE_COPY_VERIFIED",
+    "private_head_size_sha_object_id_reverified": 70,
+    "local_upload_attempt_aborted_before_mutation": true,
+    "temporary_railway_ssh_key_removed": true,
+    "remote_and_local_scratch_files_removed": true
+  },
+  "retention": {
+    "scoped_objects_already_contained_with_private_copy_verified": 35,
+    "scoped_objects_newly_contained_with_private_copy_verified": 70,
+    "scoped_objects_total_with_private_copy_verified": 105,
+    "scoped_objects_inaccessible_without_private_retention_evidence": 30,
+    "private_retention_evidence_gap_is_public_bypass": false
+  },
+  "public_delivery_post_probe": {
+    "target_count": 135,
+    "http_status_counts": {
+      "404": 135
+    },
+    "inaccessible_403_or_404": 135,
+    "reachable": 0,
+    "remaining_reachable_slugs": []
+  },
+  "approved_controls": [
+    {
+      "slug": "book-2b9853ec52",
+      "manifest_http_status": 200,
+      "audio_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_http_status": 206,
+      "content_range": "bytes 0-1023/5233965",
+      "control_result": "PASS"
+    },
+    {
+      "slug": "a-ghost-story",
+      "manifest_http_status": 200,
+      "audio_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_http_status": 206,
+      "content_range": "bytes 0-1023/7047789",
+      "control_result": "PASS"
+    }
+  ],
+  "hidden_controls": [
+    {
+      "slug": "bn-066",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "the-open-window",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "dsires-baby",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    }
+  ],
+  "protected_current_approved_assets_preserved": true,
+  "non_sprint_objects_mutated": false,
+  "release_gate_mutation": false,
+  "listen_exposure_change": false,
+  "paid_tts_lock_touched": false,
+  "source_cleanup_performed": false,
+  "go_live_implication": "SPRINT1_STORAGE_BYPASS_CONTAINED",
+  "residual_risk": "NONSPRINT_REMOTE_CONTAINMENT_DEFERRED_BY_OWNER",
+  "retention_evidence_residual": "30_ALREADY_INACCESSIBLE_SCOPED_OBJECTS_WITHOUT_PRIVATE_RETENTION_EVIDENCE",
+  "source_cleanup_prompt": "internal/audiobook_lab/storage_containment/P0_sprint1_source_cleanup_prompt.md",
+  "validation": {
+    "inventory_sha_validation": "PASS",
+    "json_validation": "PASS",
+    "python_compile": "PASS",
+    "bash_syntax": "PASS",
+    "git_diff_check": "PASS",
+    "scoped_executor_dry_run": "PASS_70_TARGETS",
+    "full_executor_regression_dry_run": "PASS_606_TARGETS",
+    "canary_executor_regression_dry_run": "PASS_5_TARGETS",
+    "backend_b2_routing_tests": "PASS_5_OF_5",
+    "frontend_audio_release_safety_tests": "PASS_4_OF_4",
+    "backend_release_gate_applicable_tests": "PASS_12_OF_12",
+    "public_media_file_scan": "PASS_NO_AUDIO_FILES",
+    "browser_speech_scan": "PASS_NO_IMPLEMENTATION_REFERENCES_ONE_GUARDRAIL_COMMENT",
+    "word_level_sync_claim_scan": "PASS_NO_REFERENCES",
+    "static_audio_production_probe": "PASS_API_AND_WEB_404",
+    "scoped_direct_url_post_probe": "PASS_135_OF_135_HTTP_404",
+    "approved_proxy_post_probe": "PASS_2_OF_2_HTTP_206",
+    "hidden_control_post_probe": "PASS_6_OF_6_AUDIO_DISABLED_AND_PROXY_404",
+    "temporary_railway_access_cleanup": "PASS",
+    "paid_tts_lock_unchanged_mtime": 1783923986,
+    "runtime_source_direct_url_risk_files": 23
+  },
+  "exact_next_action": "Obtain separate authorization for P0_REMOVE_SPRINT1_UNAPPROVED_DIRECT_AUDIO_REFERENCES_FROM_PUBLIC_SOURCE and execute the prepared source-cleanup prompt."
+}

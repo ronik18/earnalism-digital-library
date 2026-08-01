@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-strange-case-of-dr-jekyll-and-mr-hyde",
+  "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+  "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+  "subtitle": "Selected Chapters",
+  "author": "Robert Louis Stevenson",
+  "category_slug": "gothic-fiction",
+  "short_description": "A respectable doctor creates a potion that transforms him into his savage alter ego — until Hyde takes over completely.",
+  "description": "Dr Henry Jekyll's experiment to separate good and evil within himself produces Edward Hyde — a creature of pure appetite who grows stronger with each transformation until Jekyll can no longer return. The defining story of human duality.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "109 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Robert Louis Stevenson (1850–1894) was a Scottish novelist and travel writer, author of Treasure Island and Kidnapped.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 25889,
+      "reading_minutes": 108,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "f4f2ec3d1daaec7119c14f53ecf5b9d91f1450d3b92751cf384645d2c5ca852a",
+  "content_hash": "9c947f4822650216cb2b84263bdc08d338302960bca7093a579b51442841fbd9",
+  "provenance_hash": "2df89b6a3a50ac850f0c2314346990e3bbb068ed4e1638d8f0bd8640dbaf9f14",
+  "rights_basis": "Author died 1894. Published 1886. Public domain in U.S. and worldwide.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780593307/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593312/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593313/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593314/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593315/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780593307/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780593307/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593312/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593313/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593314/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780593315/earnalism/audiobooks/en/the-strange-case-of-dr-jekyll-and-mr-hyde/the-strange-case-of-dr-jekyll-and-mr-hyde_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

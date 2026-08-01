@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-07-06T18:44:02.494690+00:00",
+  "current_sprint_state": {
+    "ux_score_current_evidence": 9.66,
+    "lighthouse_performance_current_evidence": 90,
+    "cover_audit_typography_only_remaining": 0,
+    "visual_smoke_status": "PASS",
+    "bengali_reader_only_approved_after": 31,
+    "bengali_rights_blockers": 0,
+    "worktree_noise": "high; many unrelated catalog/content/release artifacts present"
+  },
+  "completed_wins": [
+    "Homepage/library visual smoke passes at current source state",
+    "Customer-facing covers resolve through graphical cover resolver/fallback; audit found 0 typography-only covers",
+    "Bengali reader-only/audio-hidden is complete for 31/31 route-live titles in latest integration evidence",
+    "Audio safety test passed in latest graphical cover validation; no unapproved audio controls reported"
+  ],
+  "unresolved_blockers": [
+    "Current evidence-based UX score is 9.66, below 9.7, because Lighthouse performance guardrail is 90/LCP 3.6 after cover/type changes",
+    "Clean source-only merge package is not prepared; dirty worktree contains unrelated generated/imported content",
+    "Bengali audiobook lane remains AUDIO_PROVIDER_QUALITY_LIMIT and should stay hidden"
+  ],
+  "highest_value_next_actions": [
+    {
+      "action": "Create clean source-only PR worktree from origin/main and promote only validated source/docs",
+      "priority_score": 95,
+      "expected_business_impact": "merge-ready package without artifact pollution",
+      "customer_experience_impact": "preserves validated UX and Bengali reader-only state",
+      "risk": "medium if copied broadly; low with explicit file list",
+      "cost_estimate": "local git/file operations only",
+      "validation_plan": "npm ci/build/audio safety, cover audit, visual smoke, git diff --check",
+      "rollback_plan": "discard clean worktree branch"
+    },
+    {
+      "action": "Target one frontend performance/LCP fix only if GREEN claim is required before merge",
+      "priority_score": 80,
+      "expected_business_impact": "restore >=9.7 claim",
+      "customer_experience_impact": "faster first paint without redesign",
+      "risk": "medium; avoid hero redesign",
+      "cost_estimate": "local build/lighthouse only after source change",
+      "validation_plan": "Lighthouse single route plus visual smoke",
+      "rollback_plan": "revert performance patch"
+    },
+    {
+      "action": "Skip Bengali reader-only mutation reruns",
+      "priority_score": 78,
+      "expected_business_impact": "avoids production write duplication",
+      "customer_experience_impact": "no risk to approved reader-only titles",
+      "risk": "low",
+      "cost_estimate": "zero",
+      "validation_plan": "hash/dashboard evidence only",
+      "rollback_plan": "not applicable"
+    },
+    {
+      "action": "Defer Sarvam corrective auditions",
+      "priority_score": 40,
+      "expected_business_impact": "future audio lane only",
+      "customer_experience_impact": "none until quality passes",
+      "risk": "paid/API cost and weak quality",
+      "cost_estimate": "paid/provider credits if run",
+      "validation_plan": "only after explicit env and cheaper blockers closed",
+      "rollback_plan": "do not publish weak audio"
+    }
+  ],
+  "stop_conditions": [
+    "Do not run provider/deploy/paid operations without explicit env and evidence of need",
+    "Do not claim sprint GREEN while current UX index remains below 9.7",
+    "Do not mutate Bengali reader-only metadata already matching production state",
+    "Stop with YELLOW if clean merge package or performance green remains unresolved"
+  ]
+}

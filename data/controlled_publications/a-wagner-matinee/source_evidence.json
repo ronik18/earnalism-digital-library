@@ -1,0 +1,13 @@
+{
+  "slug": "a-wagner-matinee",
+  "source_url": "https://www.gutenberg.org/ebooks/346",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "0fcf30f0d708bfe3dbde73b23676faf5cc7ae069dcb76fb23ad3e4cd2b353bb3",
+  "content_hash": "b2f80c6bef9230701b586cb9f75fd159fb9cdddd338aa5dc181f802390ad258a",
+  "provenance_hash": "7387f9fb2c7162dd6ef8b7e5b6b0699a397f5fdfb5ecaa00384efa1ee631acb4",
+  "rights_basis": "Willa Cather died 1947; first published 1904. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.199826+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

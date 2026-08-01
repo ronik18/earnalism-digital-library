@@ -25,11 +25,18 @@ Targets:
   - `backend/tests/test_redis_cache_policy.py`
 
 ## Execute (requires explicit approval + credentials)
+Token mode matrix:
+
+- `run_wave1_with_validation` / `run_wave1_with_guard` / `run_sprint1_private_b2_wave1` (scoped mode):  
+  `OWNER_APPROVAL_TOKEN=AUTHORIZE_SPRINT1_SCOPED_STORAGE_CONTAINMENT_AND_DEFER_NONSPRINT_REMOTE_CONTAINMENT.`
+- per-title execution (`unapproved_direct_audio_remediation_commands.sh` via `TARGET_SLUG` / `run_wave1_one_by_one_with_postcheck.sh`):  
+  `OWNER_APPROVAL_TOKEN=AUTHORIZE_P0_REMOTE_STORAGE_CONTAINMENT_FOR_UNAPPROVED_AUDIO_OBJECTS.`
+
 Use exactly this command pattern for each title:
 
 ```
 ALLOW_REMOTE_MUTATION=true \
-OWNER_APPROVAL_TOKEN=AUTHORIZE_SPRINT1_SCOPED_STORAGE_CONTAINMENT_AND_DEFER_NONSPRINT_REMOTE_CONTAINMENT. \
+OWNER_APPROVAL_TOKEN=AUTHORIZE_P0_REMOTE_STORAGE_CONTAINMENT_FOR_UNAPPROVED_AUDIO_OBJECTS. \
 REVIEWED_INVENTORY_SHA256=21c9f5c85c56be3779822b90fb31c178db8131f7f39f7d2bdae1d00a5f61b23c \
 B2_PRIVATE_QA_BUCKET_CONFIRMED_PRIVATE=true \
 B2_ACCESS_KEY_ID=... \
@@ -42,19 +49,21 @@ B2_SOURCE_SECRET_ACCESS_KEY=... \
 B2_SOURCE_S3_ENDPOINT=... \
 B2_SOURCE_REGION=... \
 TARGET_SLUG=<slug> \
-SPRINT1_CONTAINMENT_TARGETS_JSON=internal/audiobook_lab/storage_containment/sprint1_scoped_containment_targets.json \
 bash internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh --execute-reviewed
 ```
 
 Run once per slug above. Example:
 - `TARGET_SLUG=radharani ... bash ... --execute-reviewed`
 
+Notes:
+- `TARGET_SLUG` and `SPRINT1_CONTAINMENT_TARGETS_JSON` are mutually exclusive for this per-title flow.
+- `SPRINT1_CONTAINMENT_TARGETS_JSON` is only needed for fully scoped dry-runs/validation workflows.
+
 ## Post-iteration validation after each batch
 1) Re-run:
    - `python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_package_v2_readiness.json`
 2) Confirm candidate drops from:
-   - `live_not_private_b2_for_package_v2`
-   - `can_expose_non_private`
+   - `can_expose` with `private_b2=false`
    and increments `live_private_b2_count`.
 
 ## Batch-run command (wave driver)

@@ -1,0 +1,13 @@
+{
+  "slug": "the-legend-of-sleepy-hollow",
+  "source_url": "https://www.gutenberg.org/ebooks/41",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "8bb82877a5f11221b4aad10ee6b048d7171f48e5a4b600d67c57839fcfb873a4",
+  "content_hash": "b461d1dc8d09ff6030890e130f5386489dc3f9764d7c6df2319a5dda60e0c80c",
+  "provenance_hash": "27d2f82e0abdc3be14e8a647096b5a9e59acc561cfa42ed50f1e5af6b363eea5",
+  "rights_basis": "Washington Irving died 1859; first published 1820. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.051784+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

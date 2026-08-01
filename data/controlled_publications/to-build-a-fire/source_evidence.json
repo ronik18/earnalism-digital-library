@@ -1,0 +1,13 @@
+{
+  "slug": "to-build-a-fire",
+  "source_url": "https://www.gutenberg.org/ebooks/2429",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "01770bd52b8e43a3c0eac921a04cd3f7e8d910810320fd17d582e96291dac097",
+  "content_hash": "4dbb7f503073624760a333093d26e14db402904201a956729530f59bfbf3d6b8",
+  "provenance_hash": "1649035511c182a08e80b78f2ab61ccdac3afd2e35e349cb23fb3b96d6b2807a",
+  "rights_basis": "Jack London died 1916; first published 1908. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.985891+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

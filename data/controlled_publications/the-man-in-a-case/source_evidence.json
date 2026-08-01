@@ -1,0 +1,13 @@
+{
+  "slug": "the-man-in-a-case",
+  "source_url": "https://www.gutenberg.org/ebooks/1883",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "4a49f5472e5ce0b39d5022c5e2bf23188cd76f58aa6b3344541cb7b2d9e2173a",
+  "content_hash": "bc9e31688c165ba14e19a48e2b2429792f33e93501255d1a81de39072d16baa4",
+  "provenance_hash": "969075fa229f71f1239b1c51fc96f39f4f6b5c4a9a59b1c126762b4758c38089",
+  "rights_basis": "Anton Chekhov died 1904; first published 1898. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.110313+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

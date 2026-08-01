@@ -1,4 +1,36 @@
 {
+  "slug": "the-principles-of-scientific-management",
   "title": "The Principles of Scientific Management",
-  "author": "Frederick Winslow Taylor"
+  "displayTitle": "The Principles of Scientific Management",
+  "author": "Frederick Winslow Taylor",
+  "translator": "",
+  "language": "en",
+  "originalLanguage": "en",
+  "sourceName": "Project Gutenberg",
+  "sourceUrl": "https://www.gutenberg.org/ebooks/6435",
+  "sourceLandingPage": "https://www.gutenberg.org/ebooks/6435",
+  "sourceFormatImported": "text/plain",
+  "rightsStatus": "public_domain_source_reviewed",
+  "rightsTerritoryBasis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+  "readerStatus": "ready_for_editorial_review",
+  "publicationStatus": "draft",
+  "isPublic": false,
+  "isLive": false,
+  "showInPublicLibrary": false,
+  "showInHomepage": false,
+  "allowPublicReading": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": false,
+  "chapterCount": 4,
+  "wordCountApprox": 36574,
+  "readingTimeMinutesApprox": 153,
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950275/earnalism/covers/front/cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950283/earnalism/covers/back/back_cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+  "coverAssets": [
+    "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950275/earnalism/covers/front/cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+    "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950283/earnalism/covers/back/back_cover_279d4a41-b545-4371-80c9-4dc4e816f934.png"
+  ],
+  "createdAt": "2026-07-03T20:07:49Z",
+  "updatedAt": "2026-07-03T20:07:49Z"
 }

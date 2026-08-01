@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-07-08T00:30:00+05:30",
+  "gate": "LAUNCH_GATE_0_PRODUCTION_TRUTH_VALIDATION_LOCK",
+  "canonical_branch": "sprint/luxury-ux-rebirth",
+  "decision": "LIMITED_GO",
+  "overall_launch_gate_0_score": 9.6,
+  "score_cap_note": "Home/Library/Reader page-level UX scores remain capped at 9.4 because Lighthouse/accessibility scripts are not present in frontend/package.json and were not rerun.",
+  "scores": {
+    "release_gate_truth": 10.0,
+    "audio_marketing_truth": 9.6,
+    "no_unapproved_audio_exposure": 10.0,
+    "cover_quality": 10.0,
+    "frontend_build_health": 10.0,
+    "campaign_claim_truth": 9.6,
+    "production_route_truth": 9.4,
+    "dependency_health": 10.0,
+    "browser_smoke": 10.0,
+    "lighthouse_accessibility_evidence": 8.8
+  },
+  "validation_results": {
+    "dependency_repair": {
+      "command": "npm ci --prefix frontend --legacy-peer-deps --no-audit --no-fund",
+      "status": "PASS",
+      "notes": "Initial rm -rf frontend/node_modules hung; stale tree was renamed in place to frontend/node_modules.stale-20260708T001931 and ignored via .gitignore before reinstall."
+    },
+    "frontend_tests": {
+      "command": "npm test --prefix frontend -- --watchAll=false",
+      "status": "PASS",
+      "test_suites": 3,
+      "tests": 12
+    },
+    "focused_audio_api_tests": {
+      "command": "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js src/lib/api.test.js --watchAll=false",
+      "status": "PASS",
+      "test_suites": 2,
+      "tests": 8
+    },
+    "frontend_build": {
+      "command": "npm run build --prefix frontend",
+      "status": "PASS",
+      "main_js_gzip_kb": 116.32
+    },
+    "cover_audit": {
+      "command": "node frontend/scripts/audit-book-covers.mjs",
+      "status": "PASS",
+      "total_books_scanned": 164,
+      "typographic_only_covers_found": 0,
+      "typographic_only_covers_remaining_in_customer_ui": 0
+    },
+    "local_visual_smoke": {
+      "command": "node frontend/scripts/visual-luxury-smoke.mjs",
+      "status": "PASS",
+      "routes_attempted": 72,
+      "routes_completed": 72,
+      "failed_subchecks": 0,
+      "critical_blockers": 0
+    },
+    "production_visual_smoke": {
+      "command": "VISUAL_SMOKE_BASE_URL=https://www.theearnalism.com VISUAL_SMOKE_SCREENSHOT_DIR=/tmp/launch-gate-0-production-smoke node frontend/scripts/visual-luxury-smoke.mjs",
+      "status": "PASS",
+      "routes_attempted": 72,
+      "routes_completed": 72,
+      "failed_subchecks": 0,
+      "critical_blockers": 0
+    },
+    "source_guard_scan": {
+      "status": "PASS",
+      "direct_api_host_references": 0,
+      "speech_synthesis_references": 0,
+      "audio_object_references": 0,
+      "word_level_claim_references": 0,
+      "static_audio_path_note": "Only remaining /audio/ string is a regex /audio/i used to classify admin blockers, not a public static audio path or CTA."
+    },
+    "missing_scripts": [
+      "npm run lint --prefix frontend",
+      "npm run typecheck --prefix frontend",
+      "npm run test:e2e --prefix frontend",
+      "npm run test:a11y --prefix frontend",
+      "npm run lighthouse --prefix frontend"
+    ],
+    "git_diff_check": "PASS"
+  },
+  "go_no_go": {
+    "organic_reader_brand_campaign": "GO",
+    "book_2b9853ec52_listen_campaign": "GO",
+    "a_ghost_story_paid_listen_campaign": "HOLD",
+    "full_10_10_ux_claim": "HOLD",
+    "reason": "A Ghost Story guessed production API manifest/audiobook routes returned 404, and Lighthouse/accessibility scripts are not available."
+  }
+}

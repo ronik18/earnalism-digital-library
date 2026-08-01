@@ -1,0 +1,13 @@
+{
+  "slug": "the-canterville-ghost",
+  "source_url": "https://www.gutenberg.org/ebooks/14522",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription freely redistributable for any use including commercial.",
+  "source_hash": "c9079f8d4169402f84457ee6081f685e5f8b617d1818454883e46da961040cf8",
+  "content_hash": "d24b6a55d152b0a0024c39cea4a3ee21f348df6d6cf690d76436c3e3ad247931",
+  "provenance_hash": "ae004e150167d1d7b56eb70d39db37135e3b1d6ab2123da4b9be9a420d361128",
+  "rights_basis": "Author died 1900. Published 1887. Public domain in U.S. and worldwide.",
+  "downloaded_at": "2026-06-02T18:57:59.263826+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

@@ -1,0 +1,105 @@
+{
+  "generated_at": "2026-07-07T16:33:36+05:30",
+  "sprint": "parallel_go_live_acceleration",
+  "global_rules": {
+    "production_metadata_lock": "internal/earnalism_intelligence/locks/production_metadata.lock",
+    "backend_deploy_lock": "internal/earnalism_intelligence/locks/backend_deploy.lock",
+    "paid_tts_lock": "internal/earnalism_intelligence/locks/paid_tts.lock",
+    "no_broad_waves": true,
+    "no_generated_artifact_commits": true,
+    "release_gate_truth_fail_closed": true
+  },
+  "baseline": {
+    "internal_audiobook_live_count_before": 1,
+    "bengali_audiobook_live_count_before": 0,
+    "bengali_reader_only_audio_hidden_approved_before": 25,
+    "pilot_slug": "book-2b9853ec52",
+    "pilot_upload_checksum": "PASS",
+    "pilot_metadata": "PASS via admin API",
+    "pilot_asr_source": "PASS_ACCEPTED_BY_TTS_BY_CONSTRUCTION_WITH_SUPPORTING_ASR",
+    "pilot_listening": "9.4 / 0.95",
+    "pilot_sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM"
+  },
+  "lanes": [
+    {
+      "lane": 1,
+      "name": "critical_bengali_endpoint_materialization",
+      "status": "ENDPOINT_MATERIALIZED_BROWSER_GATE_BLOCKED",
+      "worktree": "/private/tmp/earnalism-bengali-endpoint-materialization",
+      "branch": "sprint/bengali-endpoint-materialization",
+      "latest_verified_endpoint_status": 206,
+      "latest_verified_manifest_audio_enabled": true,
+      "latest_verified_non_pilot_audio_hidden": true,
+      "browser_gate_status": "BLOCKED",
+      "browser_gate_blocker": "Production frontend bundle does not render current reader-manifest audio controls; factory browser gate cannot see controls or measure audio start latency. Metadata retry also reported reader-only/audio-hidden policy rejection during publish attempt.",
+      "next_action": "Deploy or merge a frontend bundle containing reader manifest audio support, then rerun metadata/browser-only factory resume with TTS/ASR/sync/upload disabled.",
+      "locks_required": [
+        "production_metadata.lock"
+      ]
+    },
+    {
+      "lane": 2,
+      "name": "bengali_reader_only_rights_repair",
+      "status": "NO_MUTATION_SCRIPT_MISSING_BUT_LATEST_EVIDENCE_SHOWS_REPAIRED",
+      "target_slugs": [
+        "book-0deb35c750",
+        "book-2ddbed8293",
+        "book-2e468c4990",
+        "book-63afd5e9be",
+        "book-a74c1a1451",
+        "book-d2fe532e1c"
+      ],
+      "dry_run_status": "BLOCKED_SCRIPT_NOT_FOUND",
+      "latest_evidence": "bengali_reader_only_final_sprint_status.json and autonomous_prompt_chain.jsonl report 31 reader-only approved, six final repairs completed, and rights blockers 0.",
+      "public_probe_summary": "Three target slugs currently return route-live manifests with audio disabled; three target slugs return 404. None exposed audiobook endpoints.",
+      "next_action": "Do not mutate. Restore or locate the intended rights repair script only if production evidence shows a reader-only regression.",
+      "locks_required_for_apply": [
+        "production_metadata.lock"
+      ]
+    },
+    {
+      "lane": 3,
+      "name": "pr87_frontend_preview_ship_readiness",
+      "status": "SHIP_READY",
+      "worktree": "/private/tmp/earnalism-clean-source-only-merge-20260706T191326Z",
+      "branch": "codex/clean-source-only-merge-20260706T191326Z",
+      "github_checks": "PASS",
+      "vercel_status": "PASS",
+      "protected_preview_validation": "PASS",
+      "next_action": "Owner may merge PR87; do not expect PR87 alone to fix Bengali pilot browser gate because PR87 does not include Reader.jsx/audioReleaseSafety.js manifest-audio support."
+    },
+    {
+      "lane": 4,
+      "name": "bengali_3_title_canary_preparation_only",
+      "status": "PREPARED_NO_TTS",
+      "preflight_path": "bengali_next_3_canary_preflight.json",
+      "selected_slugs": [
+        "muchiram-gurer-jibanchorit",
+        "book-d19e96859f",
+        "book-2ddbed8293"
+      ],
+      "next_action": "Do not run canary until the pilot browser gate passes and the pilot is production-live."
+    },
+    {
+      "lane": 5,
+      "name": "english_audiobook_fallback_preflight",
+      "status": "DEFERRED",
+      "next_action": "Do not run unless all higher-priority lanes are idle and no lock conflicts exist."
+    }
+  ],
+  "paid_operations": {
+    "paid_tts_run": false,
+    "provider_bakeoff_run": false,
+    "image_generation_run": false
+  },
+  "validation": {
+    "endpoint_branch_tests": "PASS_7_OF_7",
+    "factory_py_compile": "PASS",
+    "factory_stop_guard": "PASS",
+    "listening_qa_schema3": "PASS",
+    "npm_ci_frontend": "PASS_WITH_EXISTING_WARNINGS",
+    "audio_release_safety": "PASS_4_OF_4",
+    "frontend_build": "PASS",
+    "git_diff_check": "PASS"
+  }
+}

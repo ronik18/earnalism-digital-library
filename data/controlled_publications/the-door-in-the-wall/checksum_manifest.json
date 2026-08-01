@@ -1,0 +1,34 @@
+{
+  "slug": "the-door-in-the-wall",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "c29c1e66d076a9434184b532f8ac21e5dedab4f9f80dfb48d0ed43fc9a8bc02c"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "8158e044722da337a3aea2b89e65521e8e6da28c19704cfec632a4d04a9fe79f"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "c5504b62f868ae782d814c7b6556afe482d0f2c1cab666ca1e314dce435e4568"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "14c01462e1d03849d166d34678fa5d9e55d63f410b0a90dd95feafde5bc93afa"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "e47492184a8e2c28c9f0279c73c471476abac7e7045696ac35177d0721413cdc"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "fbae279433d37ef9a92b29e2f192a0c031a84caa70ea889a46d0b95ad2ebdc21"
+    }
+  ]
+}

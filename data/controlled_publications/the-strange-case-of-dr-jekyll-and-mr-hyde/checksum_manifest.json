@@ -1,0 +1,34 @@
+{
+  "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "54b83a1fb0d914235c888f3e60b43cc0bc46ceca69bbb0c1f26c269551932bf1"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "3f157c55d2c97cdbff4195e209f89d0d5e44e2234e8df244df5b872459445e9b"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "06b448eba8fc63017f9f2f133ed28124344f103fb50103543ed542b3ddf6d1c9"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "ca4a07a464e594e3bce697b9b3baf7df9e570b1890948e53fce7d9bc78f23f45"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "57ce8c772f686c58bedb590f442c8e933507ad6b29101364140aff0d83ca8f0e"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "fcc81fadbfe36266829ec55d14342372589d45367353952e79f1e123df07fbf2"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "a70441e9db5dac717e9f07209c02be595f6157bd4edbdbd61b9c62ff5acb7280"
+    }
+  ]
+}

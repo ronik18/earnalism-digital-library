@@ -1,0 +1,74 @@
+[
+  {
+    "language": "Bengali",
+    "slug": "book-2b9853ec52",
+    "title": "দুই বিঘা জমি",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "package_version": "773d38442e420873317e",
+    "live_set": "in_live"
+  },
+  {
+    "language": "Bengali",
+    "slug": "radharani",
+    "title": "রাধারাণী",
+    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "package_version": "7f7d4d42587ee797d11e",
+    "live_set": "in_live"
+  },
+  {
+    "language": "Bengali",
+    "slug": "nishkriti",
+    "title": "নিষ্কৃতি",
+    "author": "শরৎচন্দ্র চট্টোপাধ্যায়",
+    "package_version": "12f3fc4d6e583d7515d1",
+    "live_set": "in_live"
+  },
+  {
+    "language": "Bengali",
+    "slug": "muchiram-gurer-jibanchorit",
+    "title": "মুচিরাম গুড়ের জীবনচরিত",
+    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "package_version": "923128d26893edc64d1c",
+    "live_set": "in_live"
+  },
+  {
+    "language": "Bengali",
+    "slug": "book-d19e96859f",
+    "title": "গিন্নি",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "package_version": "ff67fe8db5f8b923f360",
+    "live_set": "in_live"
+  },
+  {
+    "language": "Bengali",
+    "slug": "book-f5d593e1f4",
+    "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "package_version": "0b29e1b63b309b5e2d2f",
+    "live_set": "in_live"
+  },
+  {
+    "language": "Bengali",
+    "slug": "book-edfcf810c5",
+    "title": "ক্ষুধিত পাষাণ",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "package_version": "e812d431ab877e5ac32d",
+    "live_set": "in_live"
+  },
+  {
+    "language": "English",
+    "slug": "a-ghost-story",
+    "title": "A Ghost Story",
+    "author": "Mark Twain",
+    "package_version": "f246a28a72aeb5de23df",
+    "live_set": "in_live"
+  },
+  {
+    "language": "English",
+    "slug": "alices-adventures-in-wonderland",
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "package_version": "0fa18112ce608529e03c",
+    "live_set": "in_live"
+  }
+]

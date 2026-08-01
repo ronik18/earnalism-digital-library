@@ -1,0 +1,150 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-07-11T14:31:37+05:30",
+  "evaluated_main_commit": "12fc406001bc82be0fd377bde864b64a1694d479",
+  "closeout_stage": "GO_LIVE_FINAL_CLOSEOUT_AFTER_BN_066_HOTFIX",
+  "go_live_decision": "GO_LIVE_STAGE_1_APPROVED_WITH_AUDIO_LIMITATIONS",
+  "production_may_remain_online": true,
+  "launch_closeout_approved": true,
+  "workflows": {
+    "latest_relevant_runs_terminal_success": true,
+    "failed_cancelled_or_in_progress": false,
+    "regression_suite": {
+      "status": "PASS",
+      "run_id": 29146484516,
+      "commit": "12fc406001bc82be0fd377bde864b64a1694d479",
+      "url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/29146484516"
+    },
+    "go_live_regression_gate": {
+      "status": "PASS",
+      "run_id": 29146484535,
+      "commit": "12fc406001bc82be0fd377bde864b64a1694d479",
+      "url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/29146484535"
+    },
+    "vercel_production_deploy": {
+      "status": "PASS",
+      "job_id": 86528996592,
+      "commit": "12fc406001bc82be0fd377bde864b64a1694d479"
+    },
+    "production_canary": {
+      "status": "PASS",
+      "job_id": 86529099468,
+      "commit": "12fc406001bc82be0fd377bde864b64a1694d479"
+    },
+    "post_deploy_k6": {
+      "status": "PASS",
+      "run_id": 29146484533,
+      "commit": "12fc406001bc82be0fd377bde864b64a1694d479",
+      "url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/29146484533"
+    },
+    "production_observer": {
+      "status": "PASS",
+      "run_id": 29145987798,
+      "commit": "6445dc5ebf5346d9eb11f8075d61ecc15c187561",
+      "url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/29145987798"
+    },
+    "railway_backend_deploy": {
+      "workflow_job_conclusion": "SUCCESS",
+      "deployment_step": "SKIPPED_MISSING_WORKFLOW_SECRETS",
+      "etag_runtime_rollout": "PENDING_NON_BLOCKING",
+      "current_browser_impact": "MITIGATED_BY_VERSIONED_FRONTEND_REQUESTS"
+    }
+  },
+  "titles": {
+    "book-2b9853ec52": {
+      "book_api": "HTTP_200",
+      "manifest_api": "HTTP_200",
+      "public_reader": true,
+      "public_audio": "APPROVED_EVIDENCE_GATED",
+      "manifest_release_gate": "APPROVED",
+      "manifest_qa_status": "QA_PASSED",
+      "listen_controls": "ALLOWED_FOR_APPROVED_TITLE_ONLY",
+      "decision": "PUBLIC_APPROVED_EVIDENCE_GATED_AUDIOBOOK"
+    },
+    "a-ghost-story": {
+      "book_api": "HTTP_200",
+      "manifest_api": "HTTP_200",
+      "public_reader": true,
+      "public_audio": "HIDDEN",
+      "listen_controls": "HIDDEN",
+      "decision": "READER_FIRST_AUDIO_HIDDEN"
+    },
+    "bn-066": {
+      "book_api": "HTTP_200",
+      "manifest_api": "HTTP_200",
+      "reader_enabled": true,
+      "chapter_count": 46,
+      "manifest_audio_enabled": false,
+      "manifest_audio_provider": "",
+      "manifest_audio_voice": "",
+      "manifest_audio_url": "",
+      "manifest_audio_assets": {},
+      "media_endpoint": "HTTP_404",
+      "public_reader": true,
+      "public_audio": "HIDDEN_PRIVATE_QA_ONLY",
+      "listen_controls": "HIDDEN",
+      "decision": "PUBLIC_READER_ONLY_AUDIO_HIDDEN"
+    },
+    "book-d19e96859f": {
+      "book_api": "HTTP_404",
+      "public_audio": "HIDDEN",
+      "decision": "FAIL_CLOSED_REPAIR_TRACK"
+    },
+    "book-f5d593e1f4": {
+      "public_audio": "NOT_APPROVED",
+      "decision": "ASR_SOURCE_REPAIR_TRACK"
+    },
+    "muchiram-gurer-jibanchorit": {
+      "public_audio": "NOT_APPROVED",
+      "decision": "TIMEOUT_SEGMENTATION_REPAIR_TRACK"
+    },
+    "pather-panchali": {
+      "public_audio": "NOT_APPROVED",
+      "decision": "RIGHTS_SOURCE_COVER_REPAIR_TRACK_NO_PAID_AUDIO"
+    }
+  },
+  "production_ux": {
+    "fresh_browser_viewport": "1280x720",
+    "fresh_desktop_route_checks": "PASS",
+    "fresh_desktop_horizontal_overflow": "PASS",
+    "fresh_mobile_scroll_width_check": "NOT_RUN_BROWSER_VIEWPORT_FIXED",
+    "mobile_continuity_evidence": "MAIN_REGRESSION_PASS_AT_375x900_AND_768x1000_PLUS_PRIOR_PRODUCTION_VALIDATION",
+    "bengali_slideshow_visible": true,
+    "bengali_slideshow_autoplay": "PASS",
+    "slideshow_manual_controls": "PASS",
+    "dracula_dominant_first_story": false,
+    "public_contact": "sales@reoenterprise.org",
+    "forbidden_contact_found": false,
+    "brand_default": "SAFER_TRICOLOR_EARNALISM_BADGE",
+    "exact_indian_flag_default": false
+  },
+  "release_safety": {
+    "static_audio_fallback_found": false,
+    "browser_speech_fallback_found": false,
+    "word_level_sync_claim_found": false,
+    "nonapproved_audio_object_found": false,
+    "unapproved_listen_ui_found": false,
+    "paid_listen_approved": false,
+    "paid_audio_work_ran": false,
+    "release_gate_mutation_ran": false,
+    "paid_tts_lock": {
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": []
+    }
+  },
+  "approved_now": [
+    "PUBLIC_LIBRARY_AND_READER_STAGE_1",
+    "BN_066_PUBLIC_READER_ONLY_AUDIO_HIDDEN",
+    "BOOK_2B9853EC52_APPROVED_EVIDENCE_GATED_PUBLIC_AUDIO"
+  ],
+  "not_approved": [
+    "BN_066_PUBLIC_AUDIO",
+    "PAID_LISTEN",
+    "PAID_TTS_SARVAM_ASR_AUDITIONS_UPLOADS_PUBLICATION",
+    "AUDIOBOOK_RELEASE_GATE_MUTATION",
+    "LIGHTHOUSE_A11Y_GREEN",
+    "LAUNCH_WIDE_10_OF_10"
+  ],
+  "next_exact_command": "cd /tmp/earnalism-bn066-hide-hotfix && gh run list --branch main --limit 5"
+}

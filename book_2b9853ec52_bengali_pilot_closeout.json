@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-07-07T05:05:41.091348+00:00",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "provider_model_voice_style": "Sarvam / bulbul:v3 / ratan / literary_warm_pacing",
+  "representative_score": 9.3,
+  "representative_confidence": 0.95,
+  "mismatch_is_real_or_asr_limitation": "real_tts_input_blocker_with_secondary_asr_weakness",
+  "tts_input_coverage_percent": 100.0,
+  "canonical_to_tts_input_match_score": 0.9885,
+  "source_verification_method": "tts_source_provenance_static_audit; no extra paid ASR run",
+  "asr_comparison_results": "existing OpenAI ASR score 7.0199, no timestamps; Sarvam/Google/Azure not rerun because TTS input fails release provenance first",
+  "tts_by_construction_verified": false,
+  "sync_tier_status": "BLOCKED; paragraph/stanza measured sync possible from group durations but not accepted until content match is proven",
+  "full_listening_qa_status": "NOT_RUN_BLOCKED_BY_TTS_INPUT_MISMATCH",
+  "repair_attempted": false,
+  "cost": {
+    "estimated_cost_usd": 0.0197,
+    "budget_usd": 25.0,
+    "estimated_usd_per_1k_chars": 0.006,
+    "actual_cost_if_available": "not_available"
+  },
+  "sarvam_voice_style_candidate_status": "keep_candidate_for_repaired_pilot; representative audition passed and full-book generation was cheap, but current audio is not publishable",
+  "next_recommended_action": "Run one repaired pilot using same frozen arm after stripping frontmatter/source metadata from TTS input; regenerate only affected groups if hook supports group-level repair, otherwise one full repaired pilot. Then rerun ASR/provenance/sync/listening gates.",
+  "published": false,
+  "tts_by_construction_gate": {
+    "source_verification_method": "tts_source_provenance_static_audit",
+    "asr_release_status": "BLOCKED",
+    "asr_limitation_detected": true,
+    "tts_by_construction_verified": false,
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_input_match_score": 0.9885,
+    "first_last_tts_input_boundary_pass": false,
+    "asr_provider_comparison_path": "book_2b9853ec52_bengali_asr_provider_comparison.json",
+    "source_provenance_report_path": "book_2b9853ec52_tts_source_provenance_report.json",
+    "blocker": "Current TTS input includes frontmatter/source metadata; full listening QA not run; ASR no timestamps."
+  }
+}

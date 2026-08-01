@@ -1,0 +1,46 @@
+{
+  "slug": "the-principles-of-scientific-management",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "5faf355eb5d9705f51dcafc0c63167cbc73970b8e2337494b1ca86f05d7bf93b"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "a3879ee1e2942408ddc0ae6d177bd4b1f9876cd04533f930375932b5615d8805"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "a41defc9882bca4759e902093932f56cbf628eb9f0e3e5860b9295d26a9c6ae0"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "39f1485b436355df74497210af12fd1daeea0963b5c5530d39fbf53af8e95987"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "d16358118d8980331158b8826669c3fd49c2acd3f901ea3e198594455b4947bf"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "5b9146646a76488fce2ee4b93bed396ca2619393add1d1965522061cf1f9949a"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "e15380c04b8aed1e4d3f1a87ad6248685b68f232c9d226920ec6768490c40d86"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "151ad507568985b29c9c9bdbbc9e1aaf3afb626c187d5206987399a13adb96be"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "35c043c70b7fc9b7ae1370c1dc0e2cf9cae364ded24704f453356130a300fed6"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "35834e952f1a0283299d0d4132dab89daa7bd983c95c45390055df25f98ce6e8"
+    }
+  ]
+}

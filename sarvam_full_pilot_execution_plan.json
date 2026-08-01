@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-07-07T04:13:04Z",
+  "status": "FULL_PILOT_ALREADY_GENERATED_BLOCKED_ASR_MANUSCRIPT_MISMATCH",
+  "pilot_slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "provider": "sarvam",
+  "model": "bulbul:v3",
+  "voice": "ratan",
+  "style": "literary_warm_pacing",
+  "representative_audition_evidence": {
+    "report_path": "bengali_representative_audition_report.json",
+    "representative_score": 9.3,
+    "confidence": 0.95,
+    "fatal_red_flags": [],
+    "passed_policy": "bengali_audiobook_acceptance_v2_92"
+  },
+  "text_hash": {
+    "source_text_hash": "788851c603ab1700f9e33bdfdc6a3e3c04f2ebb79890b88bc8c88f138270095d",
+    "tts_prepared_text_hash": "7720fba20d3a611c4611d11938675d21a2eba902d52637eb99dc7616787c857a"
+  },
+  "expected_duration_seconds": 330.061917,
+  "estimated_cost": {
+    "estimated_usd": 0.0197,
+    "per_title_budget_usd": 8,
+    "within_budget": true,
+    "actual_cost_if_available": "not_available"
+  },
+  "approval_env_status": {
+    "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "used in completed guarded run",
+    "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE": 8,
+    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "used in completed guarded run"
+  },
+  "release_gates": {
+    "tts": "PASS",
+    "asr_manuscript": "BLOCKED: score 7.0199 < 9.7; first/last boundaries failed; no word/segment timestamps",
+    "sync": "BLOCKED: no accepted sync tier because ASR/content match was not proven",
+    "listening_qa": "NOT_RUN: blocked before listening QA",
+    "upload_checksum": "NOT_RUN",
+    "metadata": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "published": false
+  },
+  "rollback_plan": {
+    "production_state": "No production upload or metadata mutation occurred; existing Bengali reader-only/audio-hidden state remains the rollback state.",
+    "generated_artifacts": "Keep release-gate audio/evidence out of git unless intentionally archived.",
+    "next_repair": "A repaired second full-pilot generation requires explicit owner approval because the one-pilot guard has already been consumed."
+  },
+  "reports": {
+    "tts": "sarvam_full_pilot_tts_report.json",
+    "asr": "sarvam_full_pilot_asr_report.json",
+    "sync": "sarvam_full_pilot_sync_report.json",
+    "listening": "sarvam_full_pilot_listening_report.json",
+    "golive": "sarvam_bengali_pilot_goliveevidence.json",
+    "dashboard": "bengali_audiobook_campaign_dashboard.json"
+  },
+  "next_exact_command": "Do not rerun full TTS automatically. If the owner explicitly approves a repaired second full pilot, rerun only after verifying TTS-prep frontmatter stripping and bypassing stale audio cache."
+}

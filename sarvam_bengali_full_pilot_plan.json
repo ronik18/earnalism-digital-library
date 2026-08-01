@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-07-07T00:00:00+05:30",
+  "status": "FULL_PILOT_GENERATED_BLOCKED_ASR_MANUSCRIPT_MISMATCH",
+  "pilot_slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "language": "ben",
+  "content_length": {
+    "controlled_chapter_count": 1,
+    "characters": 3283,
+    "whitespace_token_count": 555
+  },
+  "source_content_rights_cover_state": {
+    "content_source_toc_integrity": "PASS_FROM_CONTROLLED_PUBLICATION_EVIDENCE",
+    "rights_metadata": "PASS",
+    "rights_basis": "Author died 1941. Published 1895. Public domain in India and U.S.",
+    "source_name": "Bengali Wikisource",
+    "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "covers": "PASS_FROM_CONTROLLED_PUBLICATION_EVIDENCE",
+    "reader_route_state": "reader-only approved/audio-hidden from latest campaign state"
+  },
+  "representative_audition_evidence": {
+    "report_path": "bengali_representative_audition_report.json",
+    "policy": "bengali_audiobook_acceptance_v2_92",
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style": "literary_warm_pacing",
+    "representative_score": 9.3,
+    "confidence": 0.95,
+    "passage_scores": [
+      9.4,
+      9.3,
+      9.4,
+      9.3,
+      9.4
+    ],
+    "fatal_red_flags": [],
+    "full_pilot_generated": true
+  },
+  "selected_provider_model_voice_settings": {
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style": "literary_warm_pacing",
+    "language_code": "bn-IN",
+    "text_prep": "literary_warm_pacing with punctuation normalization and paragraph/stanza breathing; no reader-visible manuscript change"
+  },
+  "why_arm_is_frozen": "This is the only saved representative Sarvam arm that passed Bengali 9.2 policy with confidence >=0.90 across five representative passages and no fatal red flags. Rerunning the 77-sample audition is unnecessary unless this evidence hash becomes stale.",
+  "estimated_full_pilot_cost": {
+    "hook_estimate_usd": 0.0197,
+    "budget_cap_usd": 25,
+    "actual_cost_if_available": "not_available",
+    "note": "Provider-side billing may differ; EARNALISM_STOP_ON_BUDGET_EXCEEDED=true remains required."
+  },
+  "required_env_approvals": [
+    "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true",
+    "EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD=25",
+    "EARNALISM_STOP_ON_BUDGET_EXCEEDED=true",
+    "EARNALISM_ENABLE_OPENAI_LISTENING_QA=true",
+    "EARNALISM_LISTENING_POLICY_VERSION=bengali_audiobook_acceptance_v2_92",
+    "EARNALISM_SYNC_POLICY_VERSION=tiered_sync_acceptance_v1",
+    "EARNALISM_BENGALI_TTS_PROVIDER=sarvam",
+    "EARNALISM_BENGALI_TTS_MODEL=bulbul:v3",
+    "EARNALISM_BENGALI_TTS_VOICE=ratan",
+    "EARNALISM_BENGALI_TTS_STYLE=literary_warm_pacing"
+  ],
+  "release_gates": {
+    "listening": "full-pilot listening score >=9.2, confidence >=0.90, no robotic/mechanical/list-reading/choppy/fallback flags",
+    "asr": "ASR/manuscript match >=9.7, first/last words match, no missing/duplicated/reordered content",
+    "sync": "measured paragraph/stanza or better; auto_estimated_sync=false",
+    "upload_checksum": "PASS",
+    "metadata_approval": "PASS",
+    "browser_gate": "PASS",
+    "public_exposure": "audio remains hidden until all gates pass"
+  },
+  "rollback_plan": {
+    "before_publish": "Remove generated internal run artifacts and leave Bengali title reader-only/audio-hidden.",
+    "after_failed_gate": "Do not upload or approve metadata; write blocker reports and keep audiobook endpoint hidden.",
+    "after_publish_if_regression": "Use metadata rollback payload from release factory run and revert audiobook release gate to hidden/blocked for book-2b9853ec52."
+  },
+  "next_exact_command": "Do not rerun full TTS automatically. If the owner explicitly approves a repaired second full pilot, rerun the guarded Railway command only after verifying the TTS-prep hash changed and stale audio cache is bypassed.",
+  "updated_at": "2026-07-07T04:14:21Z",
+  "full_pilot_outcome": {
+    "generated": true,
+    "published": false,
+    "asr_score": 7.0199,
+    "required_asr_score": 9.7,
+    "sync_tier": null,
+    "auto_estimated_sync": false,
+    "upload_checksum_status": "NOT_RUN",
+    "metadata_status": "NOT_RUN",
+    "browser_status": "NOT_RUN",
+    "blocker": "ASR_MANUSCRIPT_MATCH_FAILED",
+    "evidence": "sarvam_bengali_pilot_goliveevidence.json"
+  }
+}

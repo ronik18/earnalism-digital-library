@@ -1,0 +1,81 @@
+{
+  "policy_name": "bengali_premium_mvp_v1",
+  "effective_date": "2026-07-06T03:39:04Z",
+  "approval_status": "PRODUCT_POLICY_APPROVED_BY_OWNER_REQUEST",
+  "old_threshold": {
+    "policy": "schema3_universal_9_7",
+    "required_score": 9.7,
+    "scope": "all languages"
+  },
+  "reason_old_threshold_is_impractical_for_bengali": "Provider evidence shows current automated Bengali TTS paths cluster below the universal 9.7 listening threshold even when fatal release defects are absent. Treating a calibrated 9.4 Bengali sample as a zero-ship result blocks the Bengali audiobook MVP indefinitely without improving hard content or technical quality.",
+  "provider_evidence": {
+    "openai_best_score": 8.3,
+    "sarvam_best_score": 9.5,
+    "sarvam_final_polish_score": 9.4,
+    "sarvam_best_voices": [
+      "ratan",
+      "roopa",
+      "ritu",
+      "pooja",
+      "rohan",
+      "simran",
+      "kavya",
+      "dev",
+      "ishita",
+      "shreya"
+    ],
+    "fatal_audio_flags_for_best_sarvam_samples": {
+      "robotic_texture_detected": false,
+      "mechanical_cadence_detected": false,
+      "choppy_joins_detected": false,
+      "fallback_tts_detected": false,
+      "list_reading_rhythm_detected": false
+    }
+  },
+  "new_listening_thresholds": {
+    "naturalness_score": 9.3,
+    "pronunciation_score": 9.3,
+    "emotional_expression_score": 9.2,
+    "punctuation_pause_score": 9.1,
+    "pacing_score": 9.1,
+    "continuity_score": 9.3,
+    "anti_robotic_texture_score": 9.5,
+    "anti_choppy_join_score": 9.5,
+    "listener_enjoyment_score": 9.3,
+    "overall_listening_score": 9.3,
+    "confidence_score": 0.95
+  },
+  "required_fatal_flags": {
+    "robotic_texture_detected": false,
+    "mechanical_cadence_detected": false,
+    "choppy_joins_detected": false,
+    "fallback_tts_detected": false,
+    "list_reading_rhythm_detected": false,
+    "repeated_identical_sentence_endings_detected": false,
+    "abrupt_tts_resets_detected": false,
+    "placeholder_audio_detected": false
+  },
+  "what_remains_hard_blocking": [
+    "source/content/TOC integrity failure",
+    "rights metadata failure",
+    "cover QA failure",
+    "stale local Bengali audio",
+    "fallback/system/browser/offline/placeholder audio",
+    "provider provenance failure",
+    "ASR/source match below release confidence",
+    "missing/duplicated/reordered manuscript content",
+    "upload/checksum failure",
+    "metadata approval failure",
+    "audiobook endpoint failure",
+    "browser playback failure",
+    "unresolved goliveevidence blockers"
+  ],
+  "what_is_relaxed": [
+    "Bengali listening numeric thresholds are evaluated with bengali_premium_mvp_v1 instead of universal 9.7.",
+    "Raw listening scores remain recorded honestly and are not inflated to 9.7."
+  ],
+  "what_is_deferred": [
+    "Fragile word-level Bengali text highlighting can be deferred in favor of audio_only_with_reader or paragraph/section progress."
+  ],
+  "customer_experience_protection": "The policy separates subjective multilingual judge calibration from fatal defects. Bengali audio may only pass if it remains non-robotic, non-mechanical, non-choppy, correctly matched to the manuscript, cleanly playable, and backed by full hard-gate evidence."
+}

@@ -1,0 +1,105 @@
+{
+  "id": "controlled-love-of-life",
+  "slug": "love-of-life",
+  "title": "Love of Life",
+  "subtitle": "",
+  "author": "Jack London",
+  "category_slug": "adventure",
+  "short_description": "An abandoned, starving man crawls across the Arctic tundra in a race against death and a sick wolf.",
+  "description": "Deserted by his partner with a sprained ankle, a man crawls hundreds of miles through the sub-Arctic — matched against a dying wolf in a contest of pure will to live. Lenin requested it be read to him on his deathbed.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "34 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Jack London (1876–1916) was an American author celebrated for adventure stories and naturalist philosophy.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Love of Life",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 8161,
+      "reading_minutes": 35,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "44069e2bfaffc40f5d83a63069c8d136c1081b896a81edc31ce3d95e0f97bae5",
+  "content_hash": "d334b92a83ba250d3d90e42a110bde7c9e5ceecf9798ec324ac10e383d2f8d59",
+  "provenance_hash": "5050fdeb7274e0dd8fac9c1ef70e450adb5ed70cbe793f6a9ba677c4b3639833",
+  "rights_basis": "Jack London died 1916; first published 1905. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "love-of-life",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584330/earnalism/audiobooks/en/love-of-life/love-of-life.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584331/earnalism/audiobooks/en/love-of-life/love-of-life_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584332/earnalism/audiobooks/en/love-of-life/love-of-life_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584333/earnalism/audiobooks/en/love-of-life/love-of-life_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584334/earnalism/audiobooks/en/love-of-life/love-of-life_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584330/earnalism/audiobooks/en/love-of-life/love-of-life.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584330/earnalism/audiobooks/en/love-of-life/love-of-life.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584331/earnalism/audiobooks/en/love-of-life/love-of-life_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584332/earnalism/audiobooks/en/love-of-life/love-of-life_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584333/earnalism/audiobooks/en/love-of-life/love-of-life_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584334/earnalism/audiobooks/en/love-of-life/love-of-life_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

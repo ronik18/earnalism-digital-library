@@ -1,0 +1,13 @@
+{
+  "slug": "berenice",
+  "source_url": "https://www.gutenberg.org/ebooks/2148",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "de65134685ef354f51cfd071587face0fbd7296e09bc5dc9a693179f0b0ab253",
+  "content_hash": "a63a4c21c87b7ee5a1bff8c6e100feefdf9dafd2fe39203b1df4173dcd8f5dc7",
+  "provenance_hash": "f4d2fe8067652c02eecde243c12e29f771e8c6d033c1b7d4f5ec879cf6a628d7",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1835. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.090377+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

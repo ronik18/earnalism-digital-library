@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-07-08T00:00:00+05:30",
+  "summary": "Both failed canary full-book audios are blocked by repairable final-group source-year contamination, not by a proven wrong manuscript/title/body mismatch.",
+  "diagnostic_note": "The requested jq summary reads fields from bengali_asr_mismatch_diagnosis.json that are null in the saved artifacts; the actionable ASR scores are stored in asr_alignment_diagnosis.json and mirrored in the source provenance reports.",
+  "titles": [
+    {
+      "slug": "book-d19e96859f",
+      "public_title": "গিন্নি",
+      "bengali_title": "গিন্নি",
+      "english_title_or_translation": "Ginni",
+      "title_resolution_source": "launch_title_public_naming_map.json",
+      "title_resolution_confidence": 1.0,
+      "title_resolution_ambiguity": false,
+      "title": "গিন্নি",
+      "representative_score": 9.4,
+      "representative_confidence": 0.95,
+      "asr_source_score": 1.602,
+      "root_cause": "standalone source/publication year ১২৯৮ in group 4",
+      "repair": "regenerate group 4 only",
+      "publish_allowed_now": false
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "public_title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "bengali_title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "english_title_or_translation": "Ramkanaiyer Nirbuddhita",
+      "title_resolution_source": "launch_title_public_naming_map.json",
+      "title_resolution_confidence": 1.0,
+      "title_resolution_ambiguity": false,
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "representative_score": 9.4,
+      "representative_confidence": 0.95,
+      "asr_source_score": 0.3317,
+      "root_cause": "standalone source/publication year ১২৯৮ in group 7",
+      "repair": "regenerate group 7 only",
+      "publish_allowed_now": false
+    }
+  ],
+  "shared_source_code_fix": {
+    "false_positive_page_reference_detection_fixed": true,
+    "standalone_bengali_year_line_blocked": true,
+    "trailing_standalone_source_year_stripped_from_clean_tts_input": true
+  },
+  "blocked_by_lock": {
+    "paid_tts_lock_active": true,
+    "allowed_next_holders": [],
+    "effect": "Paid Sarvam group repair and muchiram representative retry are not run in this pass"
+  },
+  "next_safe_action": "Release or update paid_tts.lock for a slug-scoped group-only repair lane, then regenerate only the contaminated final groups and rerun objective gates."
+}

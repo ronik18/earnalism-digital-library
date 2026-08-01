@@ -1,0 +1,13 @@
+{
+  "slug": "the-speckled-band",
+  "source_url": "https://www.gutenberg.org/ebooks/1661",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "6e1a4b7da706a2b3e55ea0be17cf1e2acf6894db69ee6e7974a47d2188bfbb8c",
+  "content_hash": "78c18a18063608bbe008f0b933a47113f21852166857877e5e1d9c770ca621e8",
+  "provenance_hash": "ef4ae9f1cec1960e924230c7208b4d2471297535df3466e5d219d2ca1bc5115e",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.957842+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

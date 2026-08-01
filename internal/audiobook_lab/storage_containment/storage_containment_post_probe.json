@@ -1,0 +1,4361 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-13T20:16:58Z",
+  "inventory_sha256": "21c9f5c85c56be3779822b90fb31c178db8131f7f39f7d2bdae1d00a5f61b23c",
+  "target_count": 606,
+  "summary": {
+    "inaccessible_403_or_404": 179,
+    "remaining_reachable_or_error": 427,
+    "http_status_counts": {
+      "200": 291,
+      "206": 136,
+      "404": 179
+    },
+    "providers": {
+      "Cloudinary": {
+        "targets": 603,
+        "inaccessible": 177,
+        "reachable_or_error": 426
+      },
+      "B2": {
+        "targets": 3,
+        "inaccessible": 2,
+        "reachable_or_error": 1
+      }
+    }
+  },
+  "approved_controls": [
+    {
+      "slug": "book-2b9853ec52",
+      "manifest_http_status": 200,
+      "audio_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_http_status": 206,
+      "content_range": "bytes 0-1023/5233965",
+      "control_result": "PASS"
+    },
+    {
+      "slug": "a-ghost-story",
+      "manifest_http_status": 200,
+      "audio_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_http_status": 206,
+      "content_range": "bytes 0-1023/7047789",
+      "control_result": "PASS"
+    }
+  ],
+  "hidden_controls": [
+    {
+      "slug": "bn-066",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "the-open-window",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "dsires-baby",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "provider": "",
+      "voice": "",
+      "url": "",
+      "assets": {},
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "audio-006bc0245fc98a0b",
+      "slug": "muchiram-gurer-jibanchorit",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-00999f727433c51c",
+      "slug": "the-fall-of-the-house-of-usher",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-036ed045aa2afdfd",
+      "slug": "the-furnished-room",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-03b7b9964efffdbb",
+      "slug": "the-man-in-a-case",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-04ab6efefbc1d15c",
+      "slug": "the-withered-arm",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-0500f600cc131d28",
+      "slug": "book-1090573dff",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-0524b6c74c7e6f0d",
+      "slug": "the-man-in-a-case",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-076d15e0bfbd7e56",
+      "slug": "the-suicide-club",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-07b65799646ea83d",
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-07be6ccf3acf5978",
+      "slug": "the-murders-in-the-rue-morgue",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-08cb4a680895f4a6",
+      "slug": "book-a4a369483f",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-09003e0a5643eb60",
+      "slug": "the-outcasts-of-poker-flat",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-0933a421562c0ef5",
+      "slug": "the-adventure-of-the-empty-house",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-094851a657053bb6",
+      "slug": "the-metamorphosis",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-0a257b5c91873857",
+      "slug": "sredni-vashtar",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-0b94266e0ef46b58",
+      "slug": "the-imp-of-the-perverse",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-0c5e00664654349d",
+      "slug": "to-build-a-fire",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-0d2a9a6b266b4ac3",
+      "slug": "the-purloined-letter",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-0d8a01965388ecb3",
+      "slug": "the-most-dangerous-game",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-0d9b1abfd6667462",
+      "slug": "rikki-tikki-tavi",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-0ec8ff9b5e384d25",
+      "slug": "the-cop-and-the-anthem",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-0f6ca64420fa86e3",
+      "slug": "the-adventure-of-the-second-stain",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-1151f03bf159cedc",
+      "slug": "book-0deb35c750",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-118ace665e804f00",
+      "slug": "dsires-baby",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-118e7511e6404397",
+      "slug": "book-f5d593e1f4",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-11b16f695d218fb6",
+      "slug": "the-adventure-of-the-final-problem",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-15f9ea039aff8519",
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-17fd970d6f45ebdf",
+      "slug": "lokrahasya",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-184bd15417c5839f",
+      "slug": "the-masque-of-the-red-death",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-1852358d6943eaf5",
+      "slug": "book-0fbdaa730e",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-193d865bb934f441",
+      "slug": "a-wagner-matinee",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-197e28802c67c93d",
+      "slug": "markheim",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-1ba1b092815e955c",
+      "slug": "the-last-leaf",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-1c3456c504f47fe7",
+      "slug": "bn-060",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-1e0ae727036e07dc",
+      "slug": "book-63afd5e9be",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-1eb2d0f0e438eb5f",
+      "slug": "the-ministers-black-veil",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-1f7714eeaef3c702",
+      "slug": "the-man-who-would-be-king",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-229042c40a278df7",
+      "slug": "the-adventure-of-the-priory-school",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-233bb2eb41ea12a4",
+      "slug": "the-gift-of-the-magi",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-242787c67e635295",
+      "slug": "bn-059",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-262ff52aa56003d9",
+      "slug": "the-speckled-band",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-287776f32ed33681",
+      "slug": "the-furnished-room",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-299ac9e4bef59809",
+      "slug": "book-0986aeb7e3",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-2a12d764d8086f98",
+      "slug": "the-speckled-band",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-2b116904d1b65ff5",
+      "slug": "the-tell-tale-heart",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-2b6398925be77b29",
+      "slug": "the-red-headed-league",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-2c6dcbe7bab6cfa5",
+      "slug": "the-adventure-of-the-copper-beeches",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-2f3343537d38fe84",
+      "slug": "the-outcasts-of-poker-flat",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-301d869b1da49f76",
+      "slug": "the-enchanted-april",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-3125b110b5c9af55",
+      "slug": "the-door-in-the-wall",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-325f4cae9800c2da",
+      "slug": "young-goodman-brown",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-32dcc4f7b3ed64f5",
+      "slug": "the-cop-and-the-anthem",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-3496537f2dde4c28",
+      "slug": "book-9a7f771921",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-3580dc4b9531372f",
+      "slug": "rip-van-winkle",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-36d5a43e1c51e9bb",
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-372872d61358d6eb",
+      "slug": "nishkriti",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-3774f44b02cd2a43",
+      "slug": "the-open-window",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-37b167c09eafb2fb",
+      "slug": "feathertop",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-37b8c294986f8a0b",
+      "slug": "jane-eyre",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-380994839a11b488",
+      "slug": "a-horseman-in-the-sky",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-3a65d9a867ecfc0b",
+      "slug": "the-most-dangerous-game",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-3e7b4b6bda715b23",
+      "slug": "book-a23625bf36",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-419ca87e6d3174b5",
+      "slug": "the-principles-of-scientific-management",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-431e1c6ad77734d9",
+      "slug": "the-murders-in-the-rue-morgue",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-44c31d5fc7c500f6",
+      "slug": "ward-no-6",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-46a889f4f14ca7c5",
+      "slug": "the-open-boat",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-46e145db3df8a2d4",
+      "slug": "book-a74c1a1451",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-4737a8fd367979ae",
+      "slug": "the-man-who-would-be-king",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-499d97e35288398e",
+      "slug": "bharat-at-the-crossroads",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-4b3571b678ab3af3",
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-4d0c47e4c4b6d067",
+      "slug": "the-masque-of-the-red-death",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-4d7c2096c9689d4f",
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-4fda15e69b7341ae",
+      "slug": "book-c85323409f",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-5114bc1b4826b9b4",
+      "slug": "the-selfish-giant",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-53df33d0604d6b74",
+      "slug": "dsires-baby",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-550c394313c449f1",
+      "slug": "the-pit-and-the-pendulum",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-5601fb86133ddfe8",
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-57826d42f6dba8c7",
+      "slug": "book-88ded9b47c",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-5a74ff7f84dbe940",
+      "slug": "book-d19e96859f",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-5b1303ba76df4cce",
+      "slug": "the-purloined-letter",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-5ee4cce450f23f5a",
+      "slug": "the-darling",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-5fc35bc1ac281852",
+      "slug": "the-luck-of-roaring-camp",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-60792fb29d85b951",
+      "slug": "white-fang",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-60beddfa8c1e09c3",
+      "slug": "the-call-of-the-wild",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-62acd92c37357985",
+      "slug": "rappaccinis-daughter",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-6379c1f8be0af848",
+      "slug": "the-legend-of-sleepy-hollow",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-6390b589317bf07c",
+      "slug": "berenice",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-6499085ee54c79d0",
+      "slug": "book-edfcf810c5",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-67715dffc787bcbf",
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-67c6b975eeec464f",
+      "slug": "the-great-gatsby",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-67ec3a266047f59c",
+      "slug": "the-adventure-of-the-abbey-grange",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-68267a42d9dc041d",
+      "slug": "book-bfc51280b3",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-68dbb96735060dcc",
+      "slug": "the-adventures-of-sherlock-holmes",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-696df009cad449e6",
+      "slug": "the-adventure-of-the-copper-beeches",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-6af2fa7c5838a4a0",
+      "slug": "berenice",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-6e6e147384d559e7",
+      "slug": "a-scandal-in-bohemia",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-72f8d97096a7bae3",
+      "slug": "the-art-of-money-getting",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-7390e2b7cb8811fe",
+      "slug": "book-2ddbed8293",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-766f170fef3e9dfe",
+      "slug": "markheim",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-77023920a02496bd",
+      "slug": "a-ghost-story",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-77638ec65a05d7a0",
+      "slug": "the-metamorphosis",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-785e60f79cd41132",
+      "slug": "the-happy-prince",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-79486e41ab4b53d1",
+      "slug": "the-luck-of-roaring-camp",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-7c05c330c5d110af",
+      "slug": "the-stolen-white-elephant",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-7e60f2c7f61c7a7e",
+      "slug": "a-ghost-story",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-7f0e4053ef0c7f80",
+      "slug": "the-adventure-of-the-abbey-grange",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-7f4fa03b523834ec",
+      "slug": "book-4b944e64fa",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-8133b75d281e28e0",
+      "slug": "bn-041",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-839b884f81d731a9",
+      "slug": "the-man-with-the-twisted-lip",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-840d32eced2d7f9f",
+      "slug": "book-827fdc7aee",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-84382398ca7a7f22",
+      "slug": "acres-of-diamonds",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-866c0028e4cef2f2",
+      "slug": "bn-036",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-8714fb57f5ffab88",
+      "slug": "to-build-a-fire",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-87d0bf459f5c5d14",
+      "slug": "book-754da4eab8",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-8969bad2aa744566",
+      "slug": "sredni-vashtar",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-89b5a7131f0178bd",
+      "slug": "the-yellow-wallpaper",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-89f566f64a80909b",
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-8bda199290c4ef06",
+      "slug": "bn-027",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-8d7cc82f69293cc0",
+      "slug": "the-country-of-the-blind",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-91569f3e683cae8f",
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-920169fb79223b16",
+      "slug": "radharani",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-950550216273b357",
+      "slug": "the-ransom-of-red-chief",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-983c6a22d743b82b",
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-9acbe327e46bf107",
+      "slug": "mrinalini",
+      "provider": "B2",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-9ae63c81f7133fcd",
+      "slug": "the-ministers-black-veil",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-9b4ddde370651c46",
+      "slug": "bn-035",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-9d237c1e2118176b",
+      "slug": "the-monkeys-paw",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-9d4cbdb4ec8b2813",
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-9d8ba02f4210cb0b",
+      "slug": "book-2b9853ec52",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-9f0795bd1671822a",
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-a153540a1ffe5bdf",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-a1753e4ab88ec857",
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-a263325a8fad2d64",
+      "slug": "book-fbdf2991ab",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-a41da912937a6be8",
+      "slug": "the-bet",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-a9ae5b339149aef9",
+      "slug": "the-monkeys-paw",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-aa3b5f8279b98a4d",
+      "slug": "the-bet",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-ab10357d75cc53c7",
+      "slug": "rip-van-winkle",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-abb75be1d0dfa8f2",
+      "slug": "the-five-orange-pips",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-ac56caf30013a2e6",
+      "slug": "a-jury-of-her-peers",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-ae4e3ffabdd1e9a1",
+      "slug": "the-ransom-of-red-chief",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-ae4e8f3b0309df6d",
+      "slug": "the-happy-prince",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-af74a817f73f145b",
+      "slug": "a-white-heron",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-afcc90a86cabed90",
+      "slug": "yugalanguriya",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-b192cc34fd9a30aa",
+      "slug": "the-student",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-b5f17d3f6fb7e419",
+      "slug": "the-five-orange-pips",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-b618b7a25eda4bb9",
+      "slug": "tobermory",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-b6a71ac20e4149d9",
+      "slug": "bn-066",
+      "provider": "B2",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-b9cc52fb43552b0e",
+      "slug": "the-selfish-giant",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-ba3068b6b13f9eec",
+      "slug": "book-5704b31005",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-ba9f7e43177e3777",
+      "slug": "the-time-machine",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-bb4acf6a9d52e5d7",
+      "slug": "a-wagner-matinee",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-bd43e910657a4398",
+      "slug": "the-red-headed-league",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-bd5dee95e2eb0a28",
+      "slug": "book-b9d47814a8",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-bfbdd5e26cb4acf6",
+      "slug": "a-mystery-of-heroism",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c05d1d872bc78960",
+      "slug": "book-5461971092",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c12111af84beb84a",
+      "slug": "boule-de-suif",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c24846055586ae4b",
+      "slug": "a-retrieved-reformation",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c333a50ccf9861b7",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c3498c976209bd05",
+      "slug": "the-adventure-of-the-empty-house",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c3708d9766f2ed18",
+      "slug": "book-2e468c4990",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c391aeb9cae631fa",
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c3ff1242d595f638",
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c60d13469b978607",
+      "slug": "the-last-leaf",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c63faeec734e63c6",
+      "slug": "book-ac5a71075e",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c78490f369cce64f",
+      "slug": "the-ambitious-guest",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c8a903fa24e64ac6",
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c8d3b6a1d382a67b",
+      "slug": "the-imp-of-the-perverse",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-c99a32197fa83d52",
+      "slug": "the-lifted-veil",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-caf3ef9cba71be3f",
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-cfcee68a625b0c84",
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-d0ad4f39a462810c",
+      "slug": "young-goodman-brown",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-d10800ec4f1ad3d2",
+      "slug": "the-pit-and-the-pendulum",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-d36aa0d759826a1f",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-d3a3e9952f2e3ab8",
+      "slug": "the-bishop",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-d42c993c6015fa81",
+      "slug": "pauls-case",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-d4a98a9940826efc",
+      "slug": "feathertop",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-d5dccd355b7d2fa7",
+      "slug": "the-fall-of-the-house-of-usher",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-d6f2c4cce8d00b9d",
+      "slug": "book-5aedda79fe",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-d7988457134d2dc6",
+      "slug": "the-canterville-ghost",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-d7bd542e397b1318",
+      "slug": "the-yellow-wallpaper",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-d8419986d62fdede",
+      "slug": "the-man-with-the-twisted-lip",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-d8a9643145bb0c53",
+      "slug": "book-95624627d5",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-d9437b7d70084650",
+      "slug": "bn-031",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-da9addacb5bb185f",
+      "slug": "love-of-life",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-db939dfc5a78e3e5",
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-dbb994fc8ac0afe1",
+      "slug": "the-adventure-of-the-priory-school",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-dc3e9ab645a73403",
+      "slug": "the-art-of-money-getting",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-dc9a56ec772a99d2",
+      "slug": "book-ef193ffc52",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-ddfb8b016825d609",
+      "slug": "the-adventure-of-the-dancing-men",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-dec4823c28ef8ff2",
+      "slug": "book-d2fe532e1c",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-e0b1f321c89f3873",
+      "slug": "a-scandal-in-bohemia",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-e1bf73c5d0a9f288",
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-e284df4139980e2e",
+      "slug": "the-withered-arm",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-e2f06bc734be48e8",
+      "slug": "a-white-heron",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-e54f92e04c7da867",
+      "slug": "rappaccinis-daughter",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-e67fda4fd3e54491",
+      "slug": "book-c307a57868",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-e76236ddb6179f3d",
+      "slug": "the-lady-with-the-dog",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-e765c65e97fc61bc",
+      "slug": "book-c7f3ce526c",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-ed6a56661c736321",
+      "slug": "the-science-of-getting-rich",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-edb542da8bc888b2",
+      "slug": "the-tell-tale-heart",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-eddbfe5b4fae5ee4",
+      "slug": "the-adventure-of-the-dancing-men",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-edf6d7c46eedc284",
+      "slug": "the-necklace",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-ef7939c6b9280824",
+      "slug": "the-gift-of-the-magi",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-f1d1a7b58f015198",
+      "slug": "book-4968248842",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-f1e89a2d0e335795",
+      "slug": "the-science-of-getting-rich",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-f1f58109e2c04424",
+      "slug": "the-open-window",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-f241e23d457fe0ee",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "B2",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-f84c58005758e9b9",
+      "slug": "a-horseman-in-the-sky",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-fa63599c4eab4a75",
+      "slug": "a-ghost-story",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-fb1ff6d6a9f9877f",
+      "slug": "the-ambitious-guest",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-fc06ecec376f201d",
+      "slug": "the-student",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "audio-fe5d7220c366035b",
+      "slug": "the-adventure-of-the-second-stain",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-fee4eba2cf65d9b1",
+      "slug": "the-adventure-of-the-final-problem",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "audio-ff5867a6a058b27c",
+      "slug": "the-legend-of-sleepy-hollow",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "sidecar-0019c31407a7d733",
+      "slug": "the-furnished-room",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-006387728ff17623",
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-00932717a7aef830",
+      "slug": "the-withered-arm",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-009ffdb5ba036ec4",
+      "slug": "the-masque-of-the-red-death",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-01be09b9c5521dbb",
+      "slug": "the-murders-in-the-rue-morgue",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0241bc1ee40d0af2",
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-03c06bffca1df8c6",
+      "slug": "tobermory",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-03e3a2bd47f137dd",
+      "slug": "the-masque-of-the-red-death",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0539706a013bb954",
+      "slug": "the-five-orange-pips",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-055cecf391ec9151",
+      "slug": "nishkriti",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-05be2fcf085cde23",
+      "slug": "the-stolen-white-elephant",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-06cd742e45fa5598",
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-070336874f329298",
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-074ec5b9b0222854",
+      "slug": "the-adventure-of-the-abbey-grange",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-08eb47441df43231",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-09a2df9cd5541a8d",
+      "slug": "the-furnished-room",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0a006d12f4bfe31b",
+      "slug": "the-withered-arm",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0a00de2a44d05f1e",
+      "slug": "the-yellow-wallpaper",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0a29ffd12ddcf736",
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0a9783157cde6e7d",
+      "slug": "a-mystery-of-heroism",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0b6561afc71f3ea9",
+      "slug": "the-open-boat",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0b9a8b0f0b068cb6",
+      "slug": "the-adventure-of-the-priory-school",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0c8d60910c4d558e",
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0c9746cefaa6a8b0",
+      "slug": "the-man-in-a-case",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0d64db2ec393d6d3",
+      "slug": "bn-066",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "sidecar-0d821afb8d85981e",
+      "slug": "rappaccinis-daughter",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0dec5f504ba38beb",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0e2e7f503ecacccb",
+      "slug": "pauls-case",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0e51b92252a771b0",
+      "slug": "the-purloined-letter",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0e8848e6194b0503",
+      "slug": "the-withered-arm",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0ee485e9366fa5ca",
+      "slug": "the-gift-of-the-magi",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0f4280c2175c160b",
+      "slug": "a-jury-of-her-peers",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0f548d2d8f15d8c3",
+      "slug": "markheim",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-0f83be62826677b8",
+      "slug": "the-pit-and-the-pendulum",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-105ea3fac41f4b29",
+      "slug": "rappaccinis-daughter",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-110af3c0262c0e9e",
+      "slug": "the-suicide-club",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-117db143adfb6a0f",
+      "slug": "young-goodman-brown",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-142a57ed11e1d407",
+      "slug": "the-luck-of-roaring-camp",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1499e36c26c972ed",
+      "slug": "the-adventure-of-the-dancing-men",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-14de6988c92b8fd6",
+      "slug": "the-art-of-money-getting",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-15bac5324ff40980",
+      "slug": "nishkriti",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-169aa77c3cb95b20",
+      "slug": "boule-de-suif",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-16fd168a608a9391",
+      "slug": "the-pit-and-the-pendulum",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1756c8b5bfc27bce",
+      "slug": "dsires-baby",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-176e3015c453f37f",
+      "slug": "a-mystery-of-heroism",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-17bccad2a9460443",
+      "slug": "feathertop",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-17c314897be69544",
+      "slug": "the-student",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-181816b309eb54d2",
+      "slug": "bn-027",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-182377bda0018437",
+      "slug": "the-happy-prince",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-184e2a37c827d557",
+      "slug": "the-luck-of-roaring-camp",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-187fd315a9c055b4",
+      "slug": "the-canterville-ghost",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-18b644610a79e062",
+      "slug": "the-five-orange-pips",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-18c5122b770e054f",
+      "slug": "the-adventure-of-the-abbey-grange",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-18c7e8f8a95ff0f2",
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-194819686e228bb5",
+      "slug": "sredni-vashtar",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1997d308b659e146",
+      "slug": "the-speckled-band",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-19ccd88cbf577348",
+      "slug": "the-man-with-the-twisted-lip",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1a29e0d4e1114b02",
+      "slug": "the-gift-of-the-magi",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1a56bc00988e0cd8",
+      "slug": "the-darling",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1ce09cf95dd47f34",
+      "slug": "the-time-machine",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1cee46485c99f11e",
+      "slug": "young-goodman-brown",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1d0780793328c792",
+      "slug": "nishkriti",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1dc1e82456f30795",
+      "slug": "a-white-heron",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1dde7d13973cd5c2",
+      "slug": "the-bet",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1eb52bd03e1ce5f6",
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-1fdb56fce77e8ce6",
+      "slug": "pauls-case",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-21237050920b97af",
+      "slug": "the-last-leaf",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-239082f6c4c09f9f",
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2390d613d7b79978",
+      "slug": "the-ambitious-guest",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-240c0f52d1a35c73",
+      "slug": "the-adventure-of-the-final-problem",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-244643794f7beaf7",
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-24947cddf3aa0cf9",
+      "slug": "sredni-vashtar",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-25a38a0adafa2b93",
+      "slug": "the-lifted-veil",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2815355b543ecb06",
+      "slug": "the-last-leaf",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-28d2dd93c6dc109a",
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2918c8bc6154d072",
+      "slug": "the-adventure-of-the-empty-house",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-296cdc68ff116bb4",
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-29f82070814b68eb",
+      "slug": "the-furnished-room",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2a0ad77113d575c7",
+      "slug": "bharat-at-the-crossroads",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2ae03aa61ed3f4d5",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2bccbd094912a335",
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2c55f9191a39e0ba",
+      "slug": "the-art-of-money-getting",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2c980397a85433cb",
+      "slug": "the-fall-of-the-house-of-usher",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2d65e00f8fdde622",
+      "slug": "the-man-with-the-twisted-lip",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2e6c9a5410c443ab",
+      "slug": "the-suicide-club",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2e945e4d0f40d246",
+      "slug": "the-adventure-of-the-dancing-men",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2f1a8d8e435c7361",
+      "slug": "the-bet",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-2fed24674aff754f",
+      "slug": "bn-027",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-315bff8298acdcc4",
+      "slug": "a-jury-of-her-peers",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3163613a8fd0d178",
+      "slug": "the-masque-of-the-red-death",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-31d34268c1fa45d2",
+      "slug": "dsires-baby",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-31f769ae36d0ced9",
+      "slug": "rikki-tikki-tavi",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3270bdee37bf5b55",
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-32a700ee2cc54749",
+      "slug": "the-canterville-ghost",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-33d7e23c325feaf7",
+      "slug": "the-speckled-band",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-34e6e204bb40c602",
+      "slug": "the-bet",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-355d5f5681c4f166",
+      "slug": "the-open-window",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-36dc5ebd1635581b",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-373dce125e4c994e",
+      "slug": "a-wagner-matinee",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-37a89d78c963f032",
+      "slug": "the-ministers-black-veil",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-37c00d7c0ecbd7b6",
+      "slug": "bn-027",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-37e69122d94dacdc",
+      "slug": "the-legend-of-sleepy-hollow",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3801c7195fde78a5",
+      "slug": "the-call-of-the-wild",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-38137814faa5df5b",
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3871c33831f45283",
+      "slug": "the-adventure-of-the-empty-house",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-39755a59398764c5",
+      "slug": "the-bet",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-39ce48c90796856f",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3ab81ce75f0892c7",
+      "slug": "a-retrieved-reformation",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3bc24539874902e1",
+      "slug": "to-build-a-fire",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3c61af59e4a8aa96",
+      "slug": "the-student",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3ce885b004380d52",
+      "slug": "the-ministers-black-veil",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3e12ef6ebe025276",
+      "slug": "a-retrieved-reformation",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3e9343def17b7c2c",
+      "slug": "the-necklace",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3faa9394adbe342e",
+      "slug": "the-great-gatsby",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-3fdd1ab606b2206b",
+      "slug": "the-country-of-the-blind",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-402621b1156a2377",
+      "slug": "ward-no-6",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-40836f24fa8863fc",
+      "slug": "the-adventure-of-the-final-problem",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-41e26656e2165b14",
+      "slug": "rikki-tikki-tavi",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-435ff3b854f06801",
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4380499a42b84d3b",
+      "slug": "the-monkeys-paw",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-44fe39d61eab59f0",
+      "slug": "the-last-leaf",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-45ebf19b680c8bba",
+      "slug": "jane-eyre",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-463b46064db93bbb",
+      "slug": "the-monkeys-paw",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-46e9ea0e7f63bc6a",
+      "slug": "the-lady-with-the-dog",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-476c892c9574dd77",
+      "slug": "the-speckled-band",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-476cfb686720f29e",
+      "slug": "the-purloined-letter",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-486dd5281b8a620d",
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-48c8c460d7d11c45",
+      "slug": "the-ransom-of-red-chief",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4b59bd636608882b",
+      "slug": "ward-no-6",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4c0e2c5077bc60a7",
+      "slug": "the-red-headed-league",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4c13c4801da1b9b9",
+      "slug": "bharat-at-the-crossroads",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4c5ecb1ac9698afe",
+      "slug": "the-adventure-of-the-copper-beeches",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4cdf3bfa485b860a",
+      "slug": "berenice",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4d330070da353f1b",
+      "slug": "the-metamorphosis",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4d5d7bfd76bc2d42",
+      "slug": "the-stolen-white-elephant",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4d670f75c2654b1f",
+      "slug": "the-open-boat",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4d833eb1a69513f4",
+      "slug": "the-man-in-a-case",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4e421ca598639ac0",
+      "slug": "the-ambitious-guest",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4e9443735d2d5130",
+      "slug": "the-man-in-a-case",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4ea4dc03d7018c60",
+      "slug": "the-purloined-letter",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-4ef080dbd3f30287",
+      "slug": "the-open-window",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5028e69efc610fdd",
+      "slug": "the-adventure-of-the-priory-school",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5085928207bda8e4",
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-50c48ea668281998",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5108828c6aa610a8",
+      "slug": "the-man-who-would-be-king",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-51db755eb0c51bb8",
+      "slug": "lokrahasya",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-51f8557c156d418e",
+      "slug": "the-art-of-money-getting",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5333fb18731072f1",
+      "slug": "love-of-life",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5440158e2a010773",
+      "slug": "the-adventure-of-the-priory-school",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-544bbae10b5ae63c",
+      "slug": "the-lifted-veil",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-54f5c1e5861c1512",
+      "slug": "the-fall-of-the-house-of-usher",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-54f787b9bdf771ed",
+      "slug": "the-tell-tale-heart",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-55d3d301934771eb",
+      "slug": "the-adventure-of-the-second-stain",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-57f1ce291583b690",
+      "slug": "to-build-a-fire",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-58538c667936049b",
+      "slug": "the-imp-of-the-perverse",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5970bc7fd69e1122",
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-59fdd0f6d79adefa",
+      "slug": "the-murders-in-the-rue-morgue",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5a22674f19cac0fe",
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5b1d4a4dfb20695f",
+      "slug": "the-red-headed-league",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5c12f3939131f79f",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5c277eedeb2ce3d5",
+      "slug": "tobermory",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5c7b8bc3126c3046",
+      "slug": "the-time-machine",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5d8bf93d8a43ba1f",
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5e61af02cd498e81",
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5efef6408f25d5f0",
+      "slug": "a-white-heron",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5f3fc3a907d112f2",
+      "slug": "the-most-dangerous-game",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-5fc1c18be68ea61f",
+      "slug": "jane-eyre",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-60e92ad4d98578a9",
+      "slug": "the-pit-and-the-pendulum",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-612fa9aac0c3646c",
+      "slug": "love-of-life",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-616507afb116872c",
+      "slug": "nishkriti",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-627548312f1b7cfc",
+      "slug": "lokrahasya",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-629adba7d8499b6a",
+      "slug": "the-metamorphosis",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-62c9dd793fe7cfba",
+      "slug": "tobermory",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-63ba02f3d0a49b5a",
+      "slug": "the-adventure-of-the-second-stain",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-63df0d722d34db4d",
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-64a605cb33a4e960",
+      "slug": "the-red-headed-league",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-64b54ec7db7a68b0",
+      "slug": "feathertop",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-654fd1469d9eda7f",
+      "slug": "ward-no-6",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-65c238160cf14b31",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-668f3562d5349aa4",
+      "slug": "the-tell-tale-heart",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-671b29a41bdbb558",
+      "slug": "a-horseman-in-the-sky",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-678f70c7f09f5b83",
+      "slug": "bn-059",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-67a249c504369e66",
+      "slug": "the-ransom-of-red-chief",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-682696f443e2e963",
+      "slug": "the-tell-tale-heart",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-686de6e51e7a7001",
+      "slug": "the-darling",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-6875054189e0a80f",
+      "slug": "bn-059",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-6911b93e1ab6842a",
+      "slug": "the-canterville-ghost",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-695c77542c997889",
+      "slug": "the-student",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-69f520be95fe5778",
+      "slug": "the-selfish-giant",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-6a6a6316a6fdef62",
+      "slug": "ward-no-6",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-6bc9acffc49d0abe",
+      "slug": "boule-de-suif",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-6cac4c94dd622b93",
+      "slug": "the-last-leaf",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-6ccf0573a91ca0b4",
+      "slug": "the-adventure-of-the-dancing-men",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-6e46e9ca5083f0f0",
+      "slug": "boule-de-suif",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-6f7c126ed5c3742e",
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-71c956680749b0e3",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-724f780e94d25be4",
+      "slug": "the-yellow-wallpaper",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-738b39360890115c",
+      "slug": "the-great-gatsby",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7620ee900f039d1e",
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-763690b247e96e71",
+      "slug": "jane-eyre",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-77697957d431b301",
+      "slug": "the-legend-of-sleepy-hollow",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7774ed9960537bfa",
+      "slug": "the-man-who-would-be-king",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-78bb4b3f7f4b4f33",
+      "slug": "the-adventure-of-the-dancing-men",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-79ad03b901c376e8",
+      "slug": "the-cop-and-the-anthem",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-79da8fc9aab11185",
+      "slug": "the-call-of-the-wild",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7a2c0b8c71e9094d",
+      "slug": "the-selfish-giant",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7b276661f79f3e59",
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7b93f2b37dab5cee",
+      "slug": "a-white-heron",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7b95d5d6fc952fc1",
+      "slug": "pauls-case",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7c9397bc61adb52a",
+      "slug": "the-suicide-club",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7d61eb76f84593f2",
+      "slug": "feathertop",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7f2ea1211214e12f",
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-7fa162ee901082b3",
+      "slug": "a-horseman-in-the-sky",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-806b8892c88668da",
+      "slug": "the-adventure-of-the-copper-beeches",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-80d714930513b1cd",
+      "slug": "the-fall-of-the-house-of-usher",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8209aeb7221c87c3",
+      "slug": "the-open-boat",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-82a5ced6d8de8046",
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8320fdef273fad7f",
+      "slug": "young-goodman-brown",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-844031331ff624b2",
+      "slug": "the-necklace",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-84d2be3bebb10b9a",
+      "slug": "berenice",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8510fab8073dbe97",
+      "slug": "the-man-in-a-case",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-862b3d6537b8cc46",
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-873522e9664e0c47",
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-87434584f00aebef",
+      "slug": "the-gift-of-the-magi",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-87864fb08e25de0b",
+      "slug": "the-time-machine",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-878be92354e9a6fc",
+      "slug": "the-happy-prince",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-87afcde973607853",
+      "slug": "the-man-who-would-be-king",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-892f4e4897b5016c",
+      "slug": "the-country-of-the-blind",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8931577298820851",
+      "slug": "the-most-dangerous-game",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-89def1fb885bc70f",
+      "slug": "a-scandal-in-bohemia",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8a6e3120a47f3190",
+      "slug": "a-retrieved-reformation",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8b64744a54b0c92c",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8bf5211ba7ba3430",
+      "slug": "the-necklace",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8d01bb89556caca2",
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8d29846bb38530a1",
+      "slug": "pauls-case",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8dde2af3aa636252",
+      "slug": "the-country-of-the-blind",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8e0e3c1bad79d8f4",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8e2c1c1aaf57decc",
+      "slug": "mrinalini",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-8fad5ceb92b9048c",
+      "slug": "the-ransom-of-red-chief",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-900219fb94a776cb",
+      "slug": "the-murders-in-the-rue-morgue",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9089c99cb3aaebf3",
+      "slug": "the-adventure-of-the-second-stain",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9106f7c0b3a9c3e6",
+      "slug": "lokrahasya",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-91190d687f4511c2",
+      "slug": "rip-van-winkle",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-91bb87e6887e81d8",
+      "slug": "the-selfish-giant",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9577a592dd656038",
+      "slug": "the-art-of-money-getting",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-95a19f010494f43d",
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9b438867d7878d23",
+      "slug": "a-horseman-in-the-sky",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9b5dcbe1f3c5983a",
+      "slug": "feathertop",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9bfca57ef765b39c",
+      "slug": "the-student",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9c7b64c1ed90ff8f",
+      "slug": "mrinalini",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9d591748c20779c4",
+      "slug": "the-most-dangerous-game",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9d7301be88528580",
+      "slug": "the-adventure-of-the-copper-beeches",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9df233d27ddc4ab1",
+      "slug": "a-retrieved-reformation",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-9e001a495885ef17",
+      "slug": "love-of-life",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a008281b9102b236",
+      "slug": "the-outcasts-of-poker-flat",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a08bcc9da5486cf8",
+      "slug": "sredni-vashtar",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a1ba76d8c26300aa",
+      "slug": "to-build-a-fire",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a1ee600a87d8aeb0",
+      "slug": "the-purloined-letter",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a35c530ceb4c06e3",
+      "slug": "the-yellow-wallpaper",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a3f8314d01fb211b",
+      "slug": "the-man-with-the-twisted-lip",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a423e7d67a4db391",
+      "slug": "the-lady-with-the-dog",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a433e5df59501ab0",
+      "slug": "the-ambitious-guest",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a6064fd1e2f11057",
+      "slug": "the-five-orange-pips",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a61e319112dd65b5",
+      "slug": "the-lady-with-the-dog",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a684b36417a032f4",
+      "slug": "the-pit-and-the-pendulum",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a730cc599faa4b91",
+      "slug": "the-bishop",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a81df63f8ebe94ec",
+      "slug": "lokrahasya",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-a95c8f908190ac46",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-aa17ee0c0fc6b403",
+      "slug": "love-of-life",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-aaea118017c020e0",
+      "slug": "the-bishop",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ac8b0c77f9540e94",
+      "slug": "the-murders-in-the-rue-morgue",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-acb0a2ca8b72162a",
+      "slug": "berenice",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-adef584ac9bb3f00",
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-adf0ddba36f23495",
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ae1fff5a650b994d",
+      "slug": "the-monkeys-paw",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ae392fff2e3d7bff",
+      "slug": "the-adventure-of-the-final-problem",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-aec62bb3c4be7ea2",
+      "slug": "the-cop-and-the-anthem",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-aef23f8f3b14ad33",
+      "slug": "dsires-baby",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b1f989579c35c560",
+      "slug": "the-metamorphosis",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b1fd1eab19c5c365",
+      "slug": "the-lady-with-the-dog",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b249a743a3739da6",
+      "slug": "the-adventure-of-the-second-stain",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b29c56c541b5b44d",
+      "slug": "the-imp-of-the-perverse",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b3e025558ecf7c07",
+      "slug": "bn-066",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "sidecar-b44f827c5c54387a",
+      "slug": "the-red-headed-league",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b4af0f8a1a2ddc71",
+      "slug": "boule-de-suif",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b655edfa3f003878",
+      "slug": "the-great-gatsby",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b8d9da56c313c79f",
+      "slug": "a-mystery-of-heroism",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b8e7f5e06fff8342",
+      "slug": "a-white-heron",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-b92051d74fa00b7f",
+      "slug": "the-bishop",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ba8ae873808b453b",
+      "slug": "alices-adventures-in-wonderland",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-bb0b653667c3afca",
+      "slug": "rappaccinis-daughter",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-bbd602e6b04645ce",
+      "slug": "the-adventure-of-the-priory-school",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-bca86137815f25d7",
+      "slug": "the-man-who-would-be-king",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-bd660c1eb66e0680",
+      "slug": "a-scandal-in-bohemia",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c03e73340f0fffde",
+      "slug": "a-wagner-matinee",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c0e6e96be203c2a8",
+      "slug": "rip-van-winkle",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c25a9becda0d4303",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c2d83e25dc374b76",
+      "slug": "the-yellow-wallpaper",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c3213fd5ea2318c0",
+      "slug": "bn-027",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c325371330101ac7",
+      "slug": "dsires-baby",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c426f33083254121",
+      "slug": "a-scandal-in-bohemia",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c466e23101e77776",
+      "slug": "the-fall-of-the-house-of-usher",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c54af240f6cb1286",
+      "slug": "the-ambitious-guest",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c58ea9502fedd6b1",
+      "slug": "the-adventure-of-the-final-problem",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c63003ab6030caba",
+      "slug": "the-luck-of-roaring-camp",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c6537d13adbe3931",
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c694b23f57f9caac",
+      "slug": "the-open-boat",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c714be15cbe0b74b",
+      "slug": "the-country-of-the-blind",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c77af7580f66428c",
+      "slug": "the-most-dangerous-game",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c788655bc675df49",
+      "slug": "a-wagner-matinee",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c87d426529356e43",
+      "slug": "the-metamorphosis",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c8f1dddd554c96be",
+      "slug": "jane-eyre",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c92c668092544d0a",
+      "slug": "a-mystery-of-heroism",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c994fbebe3e7aca2",
+      "slug": "the-happy-prince",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-c9e60aa780b71d85",
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ca20fa9222b8649a",
+      "slug": "the-necklace",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ccc2ee3eb3a514c0",
+      "slug": "the-ransom-of-red-chief",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-cd2ba28b65851531",
+      "slug": "mrinalini",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ce3adedfe4307c31",
+      "slug": "the-happy-prince",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-cee785d5ad7ec8aa",
+      "slug": "the-cop-and-the-anthem",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d07dc11c9268e0e5",
+      "slug": "the-gift-of-the-magi",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d1b28b74f22ae16a",
+      "slug": "the-five-orange-pips",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d1c213657e56a1ec",
+      "slug": "the-adventure-of-the-abbey-grange",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d29f3f6abfbe6e60",
+      "slug": "the-selfish-giant",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d2ba2f279c902a69",
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d5ec4127c660075a",
+      "slug": "the-man-with-the-twisted-lip",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d631125287d599aa",
+      "slug": "the-outcasts-of-poker-flat",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d6433ef982ba3688",
+      "slug": "the-adventure-of-the-abbey-grange",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d64ed6ceace76896",
+      "slug": "the-luck-of-roaring-camp",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d6597271f028c190",
+      "slug": "tobermory",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d685d911d4a1b70f",
+      "slug": "berenice",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d7a73324716ea41d",
+      "slug": "rappaccinis-daughter",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d7c2755e93c13e39",
+      "slug": "a-jury-of-her-peers",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d82a6778030759d0",
+      "slug": "the-stolen-white-elephant",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-d945f322bb903c67",
+      "slug": "the-suicide-club",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-db8d898521164083",
+      "slug": "the-stolen-white-elephant",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-dbd45df7634f1bf8",
+      "slug": "rikki-tikki-tavi",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-dc64e7902572d37e",
+      "slug": "the-lifted-veil",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-dd371d996336c2d3",
+      "slug": "the-canterville-ghost",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ddbf7139c5fa97f3",
+      "slug": "the-great-gatsby",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-de2747ad8933e358",
+      "slug": "the-adventure-of-the-empty-house",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-df8572a85c1e52c9",
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-dfcad107592284ff",
+      "slug": "the-speckled-band",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e05ffb367ce9cea8",
+      "slug": "the-lifted-veil",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e0ae9bb851f48365",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e0b806312a283fd0",
+      "slug": "the-ministers-black-veil",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e124ccc1e24fd3fe",
+      "slug": "the-call-of-the-wild",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e1521dc02a74d1b9",
+      "slug": "the-adventure-of-the-copper-beeches",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e17ee06f17746dbe",
+      "slug": "the-open-window",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e4972f7fc92a1405",
+      "slug": "the-masque-of-the-red-death",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e51cfebbe440b4ee",
+      "slug": "the-cop-and-the-anthem",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e7daa7ea3ff2b45c",
+      "slug": "the-outcasts-of-poker-flat",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e8fc50430fc9fb8c",
+      "slug": "a-scandal-in-bohemia",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-e987ca6cdc928127",
+      "slug": "bn-066",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "sidecar-ea3b9bbbbfee6508",
+      "slug": "rikki-tikki-tavi",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-eb6ea621e4dd2de0",
+      "slug": "the-imp-of-the-perverse",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ecbe855d2a39fde7",
+      "slug": "bn-059",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-edb1ce3aa95fdae3",
+      "slug": "markheim",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ee251185b6bc2c3c",
+      "slug": "the-open-window",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ee621c7376509680",
+      "slug": "the-tell-tale-heart",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ee996d60c4df205f",
+      "slug": "sredni-vashtar",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-eed8f024678ef727",
+      "slug": "bn-059",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ef12ba4bdc67779e",
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-efa86a23a0e18d3f",
+      "slug": "a-wagner-matinee",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f247c42ac11ecd1a",
+      "slug": "the-withered-arm",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f290138606dd6170",
+      "slug": "the-legend-of-sleepy-hollow",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f2e2615717d48fec",
+      "slug": "markheim",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f3ab79cd775e9779",
+      "slug": "the-darling",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f4130f66360b66d0",
+      "slug": "a-jury-of-her-peers",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f4d06a2dc55f3b38",
+      "slug": "a-horseman-in-the-sky",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f5e95ed23390b7b4",
+      "slug": "the-bishop",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f64f5ce21cce5e58",
+      "slug": "bn-066",
+      "provider": "Cloudinary",
+      "http_status": 404,
+      "inaccessible": true
+    },
+    {
+      "object_id": "sidecar-f6a0b2fc59c3c152",
+      "slug": "rip-van-winkle",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f6bc08ec10229a76",
+      "slug": "the-wonderful-wizard-of-oz",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f6dfa10b1f33d178",
+      "slug": "the-call-of-the-wild",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f784338158f2e59a",
+      "slug": "the-imp-of-the-perverse",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f803bc0cd223334a",
+      "slug": "mrinalini",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-f89e45ccc86c0b6a",
+      "slug": "the-outcasts-of-poker-flat",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fa11f1cec70f9ef9",
+      "slug": "the-time-machine",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fb0407f81743ceba",
+      "slug": "the-legend-of-sleepy-hollow",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fb77fd0b16a2eb76",
+      "slug": "markheim",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fb9e9984f837484b",
+      "slug": "rip-van-winkle",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fbcaa893834c5373",
+      "slug": "bharat-at-the-crossroads",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fc4300949a5f6cd1",
+      "slug": "to-build-a-fire",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fc75d48154f95955",
+      "slug": "the-darling",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fcffd6a26ec88022",
+      "slug": "the-furnished-room",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fd00cfc8cb4646b4",
+      "slug": "the-ministers-black-veil",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fd08a13397b3e2ce",
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fd0ab67d93cb7a6e",
+      "slug": "bharat-at-the-crossroads",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fdeb59626be2020c",
+      "slug": "the-monkeys-paw",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-fea48d97d229c5c2",
+      "slug": "the-adventure-of-the-empty-house",
+      "provider": "Cloudinary",
+      "http_status": 200,
+      "inaccessible": false
+    },
+    {
+      "object_id": "sidecar-ffee314e26419a25",
+      "slug": "young-goodman-brown",
+      "provider": "Cloudinary",
+      "http_status": 206,
+      "inaccessible": false
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "slug": "bn-066",
+  "title": "আনন্দমঠ",
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "language": "ben",
+  "author_identity": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "author_death_year": 1894,
+  "original_publication_year": 1882,
+  "public_domain_license_basis": "Author died 1894. Published 1882. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
+  "source_provenance": {
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%86%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%AE%E0%A6%A0_(%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%A9)",
+    "source_name": "Bengali Wikisource",
+    "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+    "source_hash": "e760fa2eaf099b90fb6666a62e29f34a72bd84942bf22d487b7417dce60ba329",
+    "content_hash": "ec3352127f8065ec990f9c10f4a2a069a4a4f0c9e8793c7727b00306fa8d777f"
+  },
+  "text_complete_status": "PASS",
+  "text_abridged_status": "NOT_DETECTED",
+  "chapters_complete_status": "PASS",
+  "chapter_count_content": 46,
+  "chapter_count_controlled": 46,
+  "toc_index_exists": true,
+  "bengali_text_clean_for_reader": true,
+  "ocr_junk_detected": false,
+  "embedded_page_numbers_or_source_headers": true,
+  "source_frontmatter_license_metadata_present_in_reader_text": true,
+  "reader_display_and_audiobook_clean_text_separated": true,
+  "covers_exist": true,
+  "cover_art_graphical_not_typographic_only": true,
+  "status": "PASS",
+  "blockers": [],
+  "notes": [
+    "46 chapter files exist in content and controlled_publications.",
+    "Source rights note and source_evidence mark the reader edition ready/approved.",
+    "Chapter sequence follows the existing imported source order; audiobook must preserve this canonical reader order unless an editorial source-order correction is explicitly made."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "a-white-heron",
+  "source_url": "https://www.gutenberg.org/ebooks/74980",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "c2fa6ab0fcbb8393f08987e8af21a7f18b867ad857ed3cd31f12c974e348943b",
+  "content_hash": "2c380a332c7be5fd8137fa7aa598dffbb7ffc0e0e369795abaf0ce2cceb6b9f7",
+  "provenance_hash": "3a4dc4ec0589f21d5425bad9341a84c7411990dd4859e84d91972a8a5a3708bf",
+  "rights_basis": "Sarah Orne Jewett died 1909; first published 1886. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.140944+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

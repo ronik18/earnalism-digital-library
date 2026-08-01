@@ -1,0 +1,1151 @@
+{
+  "status": "NO_NEW_PUBLISH",
+  "created_from_dashboard": "internal/audiobook_lab/release_gate/catalog_20260705T161042Z/catalog_release_dashboard.json",
+  "run_id": "catalog_20260705T161042Z",
+  "published_before_run": [
+    "a-ghost-story"
+  ],
+  "newly_published_this_run": [],
+  "total_published_after_run": 1,
+  "attempted_slugs": [
+    "bn-036",
+    "the-art-of-money-getting",
+    "nishkriti",
+    "book-ac5a71075e",
+    "book-1090573dff",
+    "book-4b944e64fa",
+    "sredni-vashtar",
+    "book-5704b31005",
+    "the-gift-of-the-magi",
+    "the-tell-tale-heart",
+    "dsires-baby",
+    "the-cop-and-the-anthem"
+  ],
+  "attempted_count": 12,
+  "terminal_blocked_count": 6,
+  "retryable_blocked_count": 6,
+  "terminal_blocked_slugs": [
+    "bn-036",
+    "nishkriti",
+    "book-ac5a71075e",
+    "book-1090573dff",
+    "book-4b944e64fa",
+    "book-5704b31005"
+  ],
+  "retryable_blocked_slugs": [
+    "the-art-of-money-getting",
+    "sredni-vashtar",
+    "the-gift-of-the-magi",
+    "the-tell-tale-heart",
+    "dsires-baby",
+    "the-cop-and-the-anthem"
+  ],
+  "why_no_candidate_reached_publish": [
+    "All 12 attempted books stopped before upload/metadata/browser.",
+    "Six Bengali books failed non-retryable audio/manuscript ASR evidence.",
+    "Five English books reused local audio but failed the 9.7 ASR manuscript-match gate before listening QA.",
+    "One English book blocked at deterministic rights metadata preflight.",
+    "No candidate reached schema-3 listening QA, upload/checksum, metadata approval, or browser gate in this wave."
+  ],
+  "whether_paid_tts_was_needed": false,
+  "whether_paid_tts_ran": false,
+  "tts_estimated_cost": 0,
+  "listening_qa_reached": false,
+  "earlier_ranks_preventing_publish": [
+    "bn-036",
+    "the-art-of-money-getting",
+    "nishkriti",
+    "book-ac5a71075e",
+    "book-1090573dff",
+    "book-4b944e64fa",
+    "sredni-vashtar",
+    "book-5704b31005",
+    "the-gift-of-the-magi",
+    "the-tell-tale-heart",
+    "dsires-baby",
+    "the-cop-and-the-anthem"
+  ],
+  "attempted": [
+    {
+      "slug": "bn-036",
+      "title": "মেজদিদি",
+      "language": "ben",
+      "run_dir": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z",
+      "terminal_status": "TERMINAL_BLOCKED_WITH_EVIDENCE",
+      "retryable": false,
+      "blocker_categories": [
+        "bengali_audio_manuscript_mismatch"
+      ],
+      "blockers": [
+        "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR transcript match score below threshold: 0.0522 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": true,
+      "local_audio_reused": true,
+      "raw_asr_score": 0.0522,
+      "normalized_asr_score": 0.1056,
+      "phonetic_projection_score": 0.208,
+      "projection_confidence": 0.0191,
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.0052,
+        "coverage": 0.0891,
+        "score": 0.0522,
+        "first_words_match": false,
+        "last_words_match": false,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 4181.411633,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 216,
+            "text": "জ্বোর করিয়া ফেলিল্. শাশে ফাল হযিয়া পিকষা করিযা শ্রাদ্দু করিয়া. থারপোরে নারা মাথায়া একটি ছট পুটলি শম্বল করিযা দিদ মানুষ্টি কেষ্টকে পথ ছিনাযা শম্গে আশিযা ছিল তাহাকে খাদম্বিনি খুব করা কারা দুচার কথা শুনাযা দিযা কহিল ফারি আমার মাশিম মা তাকরুন বলিযা দাকিত তাই তো কারুক্তি তেয় হাল ছারিল না কাকুতি মিংত"
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 602,
+            "text": "ḍorāk, nito yoga te gele, ye āmāder ārut khali hāye ābe. Obela dokān teke mandui mora chāl pāṭiye diyo. Nele deule hāte deri hābe nā. Tā bole rākhti. Mirmānti kal jāy ke kheṣṭ mukhāni, āro jukīyā paril. Sekmayer ek tsele, dukhīni janyar kātse, suru chāl khāyate pāyā tsil ki nā, sekpor jāni nā. Kintu"
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 694,
+            "text": "The mother-in-law took the child in her arms and gave him a kiss on the cheek. The mother-in-law said, Oh, what clothes are you going to buy for each of us? Sister, would you like to see a shirt? The mother-in-law said, I don't have any money. The mother-in-law said, You can't answer that. The mothe"
+          },
+          {
+            "index": 3,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0003.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 252,
+            "text": "কেষ্ট একেত শুদাই ওল পেছকে জল আশে তাহাতে এমন স্নেহার দো কন্ত সুপুর তাহার দুচক পল্তল করিতে লাগিল সি ঘাডা হেট করিয়া রহোইল উত্তর দিতে পারিল না মেজ খুডিমা কে শব ঠেলে মেয়া ভাল বাশিট তাহার গলার স্পুর শুনিযা খাদাং বিনির ছটমেয হলকেন কেশ্ট খাড হেট করিযাই রহিল তুনি তাহার হযা জবাব দিল কেশ্ট মামা রোজ তে এমনি ব"
+          },
+          {
+            "index": 4,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0004.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 603,
+            "text": "Ṭahāy ās pādan kariyā. Keṣṭa rūda mātā shok, āj gāliyā jariyā gēl. Uṭibār samāy, mejdir pāyēr dhūlā, mātāyā līyā. Yen bātāse bhāsite-bhāsite, bāhir hāyā āshil. Kintu tahār didir ākrosh, tahār proti, proti dini bāriyāy chalite lāgil. Karan se sahamār chele, se nirupāy, ākṣātir bhāye, tahāke tārāyā de"
+          },
+          {
+            "index": 5,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0005.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 665,
+            "text": "ये तुमी बले बेराबे, ताइ भाबी। मेजब उत्तर दिलिन, के देप्ता, के बादर, शे आमी जानी, किंटु आर आमी किछुई बलोब ना, दीदी, यदी बलित, ये तुमार मत निष्चुर, तुमार मत बेहाया मेह मानुष, आर संग्षार ने, बलिया तीनी, प्रत्यूतुत तोरेर अपेक्षा ना करियाई, जानाला बंध करिया दिलिन। से दिन संजार प्राकाले, अर्थाद कर्तारा, ख"
+          },
+          {
+            "index": 6,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0006.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 158,
+            "text": "ইপাস্ আজ্ দিকে হেমাঞ্ সাঽ্ স্য়ে পর্দিন সাকলে  কোথাও পোরে মোরে তোরে থাক্লে   কোথাও পালিযে তিলি রেকেষ্ট? পালাইনি তোকাল সন্থার পোর দোকানে শুযে ছিলুম্ কুম ভেঙে দেখি দুপুর রাতির ক্ষিদে পেযেতে,  দুোর ভাটি হইতে বোরান্তো ভাবে ছুটিয আশিয নে শব্ধ ইঙিতে জনাইর বারা আস্থন. এক মহুড্তে তাহার মুক শাদা হযা গিল. কি "
+          },
+          {
+            "index": 7,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0007.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 243,
+            "text": "ইজান, জানি বলিয হেমাগ গিনি কথাটা চাপা দিয দিলেন. বিপিন খারে জুকিতে, তিনি কেষ্টকে বাহিরে ডাকিয বলিলেন. কেষ্ট এই চাটি পউসা নিয় দকান থিকে কিছু মুডি তুডি কিনে খে গেয. শিদে পেলে আর আশিস্ নে আমার কাছে. এক দিন বাইকালে পিপিন অতযন্ত বিরক্ত মঁখে খরে জুকিয বলিলেন. এ সবকি তুমি শুরু করলে? মেজবা কেশ্ট তমারকে যে "
+          },
+          {
+            "index": 8,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0008.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 234,
+            "text": "আর এখানে তু যাশিস নে যা অচা বলিয কেষ্ট তাহার মুখের কালি হসি দিয তাকিতে গিয শমস্ত মুখ আরো কালো আরো ভিশ্রি বিকোত করিয অ শোর্ধি বকে বসিয আছে সন্জার দিপ সাবে মাত্র জ্বালা হাইতে ছিল কিকোরবি তুই খুব কাদ্বি যা সেরে আবে বলিয ললিত মাধের বুকের উপর একটা হাত রাখিল ভিটরে ভিটরে তাহার ছিত আস্থির হাযা উজিল মা তাকা "
+          },
+          {
+            "index": 9,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0009.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 200,
+            "text": "കെര്ബാൃ ദരകാർ നിത്ത കൃടെ്യോ ദേവ ന, കേയന്, തുമി കീ ബാരി ഥേകേ, താര്യേ ദേബേ നാ കീ. കേഷ്ട ദു ആടി സ്പാട കിടേ ദേ ന, ദീ ദി, തമര പായ പോഡീ, പുതുലു നാച ദികേ ആസി, ഏ ബുജീ, പുതുലു നാച, ഹച്ചാദം ബിനി, ഗുമ ഗുമ ക� കുരെ പാ ഫേലേ ആ, ചലിയ ഗേലന്. ഹേ മംഗീനീ, കതക്ഷം കാഥേര മന് ബസിയ ഥാകിയ, ശുയാ പരിയ ബലിലന്. കേന, തുി പുതുലു ന"
+          },
+          {
+            "index": 10,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0010.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 162,
+            "text": "টানেযা লীবার জননে কাংগালের. মধ্যি কুরিযাই ন বেডাইতেছে. হেমাগিনি ছক্ মঁছিযা, মনে মনে বলিলেন, কেষ্ট মকানে আমন কোরে গুলি ভাই,    আর কন কথানা কহিযা,    হেমাগিনি ক্ষিপ্তে বো,     এক্ষ বার বলি, তোভু, মেজ্ধি শিবু কে বলে দিস্থ, উমা জবাব দিল না, থিডে থিডে বাহির হযা গেল, রাথ্রে, হেমাগিনি স্বামি কে ডাকিযা আনিয"
+          },
+          {
+            "index": 11,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0011.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 233,
+            "text": "পাছুদা তাকে নারুগো পাল করে মাঠারে দুডো থান ইট দিয়ে বসিয়ে রেখে ছি. লাক্ষমন গেউলা নিঝে এসে বলে গেছে, বলিয লালি তো পডিতে চলিয গেল, খন্তা দুই তিন আর কন গোলক শনা গেল না. বেলা দোষ্টার সমাই রাধুনি খান কাতক রুডি দিয গিয ছিল. হেমাংগিনি বসিবার উজগ করিতে ছিলেন, এমনি সমাই তাঁহারে ঘরের বাহিরে এক পার্ষ্পে শরিয "
+          },
+          {
+            "index": 12,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0012.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 244,
+            "text": "তানিযা আনিযা তাহার কুছার খুড খুলিযা একটা কলা পাতার থঙা বাহির করিযা সকরদে বলিযা উঠিলেন হিংশুক আম্রা খেন্যে ওকে ভাল চোখে দেকে পারিনে তা তুমি নিঝের চোখে জাখো এখান তুমি ভল না কি মতলে ও চুরি করেছে ও কি আমার ভালোর জন্য়ে হেমাং গিনি করেদে জনান হারাইলেন একেকে তাহার আসুস্থে শরির তাহাতে এস্ শমস্ত মিত্যা঵িয় ত"
+          },
+          {
+            "index": 13,
+            "path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_audio_chunks/asr_chunk_0013.mp3",
+            "duration_seconds": 281.411633,
+            "word_count": 552,
+            "text": "बिपिन सजल जक्षु, हाथ दिया मुछिया बलिलेन, तुमी या चाओ, ताइ हाबे, तुमी भाल हाये ओट। हेमाक गिन, आर किठु बलिलेन ना, बाछनाइ उठिया, सुयिया परिलेन, जबोर, रात्रे इच्छारिया गेल पर दिन। शकले उठिया, बिपिन इहा लक्षो करिया, परम आहनलादी थाइलेन, हात मुक धुयिया, कितु जल्योग करिया, दोकाने बाहिर हाइते चिलेन। हेमाक गि"
+          }
+        ],
+        "asr_language": "",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 4181.411633,
+          "chunk_count": 14
+        },
+        "word_timestamp_count": 5058,
+        "bengali_asr_lane_used": true,
+        "bengali_asr_lane_status": "BLOCKED",
+        "raw_asr_script": "mixed",
+        "normalized_asr_score": 0.1056,
+        "phonetic_projection_score": 0.208,
+        "projection_confidence": 0.0191,
+        "bengali_asr_diagnosis_path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/bengali_asr_mismatch_diagnosis.json",
+        "bengali_asr_projection_report": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/bengali_asr_projection_report.json"
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/bn-036_20260705T165712Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "title": "The Art of Money Getting",
+      "language": "eng",
+      "run_dir": "internal/audiobook_lab/release_gate/the-art-of-money-getting_20260705T172629Z",
+      "terminal_status": "BLOCKED",
+      "retryable": true,
+      "blocker_categories": [
+        "metadata_rights",
+        "rights_metadata"
+      ],
+      "blockers": [
+        "Required rights metadata fields are missing: author_death_year, original_publication_year",
+        "Public-domain evidence is incomplete or not deterministic."
+      ],
+      "rights_metadata_status": "BLOCKED",
+      "tts_hook_status": "",
+      "audio_url_404": false,
+      "local_audio_reused": false,
+      "raw_asr_score": "",
+      "normalized_asr_score": "",
+      "phonetic_projection_score": "",
+      "projection_confidence": "",
+      "listening_qa_status": "",
+      "rights_missing_fields": [
+        "author_death_year",
+        "original_publication_year"
+      ],
+      "rights_blocker_reasons": [
+        "Required rights metadata fields are missing: author_death_year, original_publication_year",
+        "Public-domain evidence is incomplete or not deterministic."
+      ],
+      "rights_report_path": "internal/audiobook_lab/release_gate/the-art-of-money-getting_20260705T172629Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "language": "ben",
+      "run_dir": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z",
+      "terminal_status": "TERMINAL_BLOCKED_WITH_EVIDENCE",
+      "retryable": false,
+      "blocker_categories": [
+        "bengali_audio_manuscript_mismatch"
+      ],
+      "blockers": [
+        "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR transcript match score below threshold: 0.0276 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": true,
+      "local_audio_reused": true,
+      "raw_asr_score": 0.0276,
+      "normalized_asr_score": 0.1634,
+      "phonetic_projection_score": 0.2,
+      "projection_confidence": 0.0179,
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.0028,
+        "coverage": 0.1126,
+        "score": 0.0276,
+        "first_words_match": false,
+        "last_words_match": false,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 7429.344308,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 466,
+            "text": "उध्धाय एक, एक, भवानी पुरेर चातुजेरा एकान्न बोर्ती परिबार। दुई शहभदर घिरिष, ओभरिष, एबं खुर्दूतो छटु भाई रमेश। पुर्मे इहादेर पयत्रिक बाटी औ बिशय समपत्ती रुपनरायन नदेर तीरे हाउडा जेलार छट बिश्नुपुर ग्रामे छिलो। तकहन घिरिषेर पिता भवानी चातुजेर अबस्थाओ भालो छिलो। किन्टु ख़ठाक एक समय रुपनरायन एमनी प्रछन्ड"
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 213,
+            "text": "নিছে কানাইলাল প্রদিপের আলোকের সম্মুখে ভোশিআ ভুগল মুখস্তো করিতে ছিলো, অর্থাদ ভোই খুলিআ হা করিআ হুডো হুডি দেখিতে ইহারা সকোলেই মেজ্ করতা হরিশের সন্তান বিপিন সহোশা শরিআ আশিআ শিদের শরির মুখের উপর জুখিআ পরিয় বলিল আজ আমার ডান্ দিখ� আচা আচা আজ তবে বাদিখে জেই বলা অমনি পটলের খূদ্রো মস্তক লেপের ভিতর হেতে উঞ্চ"
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 111,
+            "text": "છટં બનેર મતં તીમી નામ ધરિય ડાકીતેન્ તુમી એધહન ઓઠો દુદ ખાઓ હા રે હોણી ચાડેચ્ટર સમાય તોર માકે ઉસુદ દીય છીલી તોર તુમાકે બોલિની દીદી તુમી ચુપક્કર બોલીય હરીચરણેર બીચાનાર ઉત્તંતો શોણીક્ટે શોરીય આશ� હિટે છેલેકે ઉદ્ધાર કોરીબાર જન્નો શીધેશરી ઉદ્બીગ્ણો હય્યા ઉઠ્યા બોશીયા બોલીલેન્ ક� સૂત ચેલે દીલેયી હલો ના રેહ"
+          },
+          {
+            "index": 3,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0003.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 557,
+            "text": "शुरू करिया छिलेन, जबाब दिलेन ना। मिनित 10 एक परे टाका बाहिर करिया दिते सोईलोजा जखुन घरे आशिया धुकिल, तखण अतूलेर नूतन कोट लेया रिती मता आलचना शुरू हुया गिया छे। अतूल कोट ता गाए दिया इहार काट साथ प्रभृति बुझाया दिते छे, एबं ताहार मा ओहरीचरन मुग्धो चक्खे चाहिया फैशन समबंधे गैनार जन करिते छे। अतूल बोलिल"
+          },
+          {
+            "index": 4,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0004.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 300,
+            "text": "না দিদি ছোখে দেখে তানে শুনেয় বল্তে হোয় আম্রা নূতন লোক তমার সংসারে এশে পডে জদি আপদ বলাই হোয় থাকি বেশ তো তুমি নি� মিষ্টি কথারে বিদে করলেয় তো দেখে শুন্তে ভাল হোয় আম্রা উস মানে ছুলে জাই উহ উনি শুন্লে একে বারে আকাস থেকে পর্ব� তোম্রা এশেজ বলে আমার কতো আহলাড আমার কনাই পটল কে আনো আমি তাদে মতায হাদ দিয়"
+          },
+          {
+            "index": 5,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0005.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 245,
+            "text": "আজ হরিচারনে সম্পন্ন সহানো ভূতি ছিলো অতুলের উপর কারুন তাহারি অকাল্তি করিতে গিযা সে লাংছিতো হোযাছে তাই শেও তাহার পা� এক মাত্র খোবের বস্তু নাই ছে বিদেশ হেতে অনিক ফাশন অনিক কোট পান্ত নেক্টাই লোযা ঘরে ফিডিযাছে নানা রকোমে অনিক উচুত� হোরি চনন এদিকে ওদিকে চাহিয ভোয় ভোয় পরত্তুত্তর করিল আমিয় করিনে ছুপ তানা"
+          },
+          {
+            "index": 6,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0006.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 294,
+            "text": "अभी प्राय जोर कुरिया बैट तो कुरिबार मतो जोर आर जहारी थाक, अन्तो तो ताहार गलाई नाई। ताहार विश्वारी तो बख्खो अपनी कुणची तो हुया गयलो एबंग से चुप कुरिया दाड़ाया रुहिल। ताहार एटुको पर जन्तो सहस हुयल ना कुनरकुम सारा दिया ओ छोटकुरिमार द्रिष्टी आकोशन करे। निला की काजे एइ दिके आशिते चिलो। हथात शेजदार पायर द"
+          },
+          {
+            "index": 7,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0007.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 528,
+            "text": "मुनिन्द्रेर मा शिद्धेशरी आनिक फेलिया छुटिया आसिलेन, मेजबधु निर्जन घरे बोशिया गोता दूई शंदेश गाले दिया जल खाइबार उद्धोक करिते छिलेन, गलमाल शुनिया बाहिरे आशिया अके बारे निल बन्न हिया गैचेन। मुखे शंदेश फेलिया दिया, मराकाना तुलिया जहापाइया आशिया छेलेर उपर उपुध हुया परिलेन। समुस्तो ता मिलिया एमनी एकटा गन"
+          },
+          {
+            "index": 8,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0008.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 381,
+            "text": "शिद्धे शरी खनकाल मौन थाकिया बोलिलेन, देख मेजबू यी भाशूरेर मान मर्जादा ताइम्रा बुझलेना, ताइमार बारी ते अमरा घरदोर झाड दिये चाकुरदेर मत थाते पारी, पिन्टु एखाने आर एक दन्ड बाश करते पारबुना, जदि कोँछ भगवान तैमुन दिन दैन दिडी ताहले ताइमार काछे एखे आमरा थाँगबो, टिन्टु एखाने एक ती दिनो आर थाँगते बलवाश ना द"
+          },
+          {
+            "index": 9,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0009.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 532,
+            "text": "मेरा तमार पर हुए जाच्छे, किन्टु आमार उतुल तुतुल के तम्रा जे जाइ बल, तादेर मा अन्तु प्रान। आमी बोले, साधी की तार अमुन करे घाड नेरे तेच करे बेरिये जाए। एतो ता बारा-बारी किन्टु भालो नाई दीदी। शिद्धे शोरी एतो कथाे बोध करी मन दीते पारें नाई, नीरी हो भाबे जबाब दीलें, ता बोटे। ए बारीर मनी थेके पटुर पर जनतो"
+          },
+          {
+            "index": 10,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0010.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 127,
+            "text": "તા બોઇ કી? એમ્ણી તો છોટુબોયે સંગે એક્ તીલાર્ધ્ બને ના, તાર ઉપોર છોટુબો બાડીતે શાપ્ છેલ એયે છોટુબો, બોલીયાઈ લક્ખો કોરીલેન, શોઈલ્ નીજેર નામ શુણીયા અન્તરાલે શોરીયા દાડાયીલ� ઇજે શોઈલ્ આકોં થિકેઇ ભાયે ભાયે અસુદભાક કોરેડીચે, બર્ હલે ઇરા તો લથા લથી મારામારી કો� આજ તુમી મુણી હોરી કે ડિકે બલે દીયે, તારા જાણ "
+          },
+          {
+            "index": 11,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0011.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 252,
+            "text": "আমার হাতে হেশের থাক্লে আমি নোটা পেরূতে দিই তুমি না বাঁছে লে কার আর কি দিদি আমাদেরি সর্বনাশ না ছল জাহাই দুটো তাইমাক� কে খাইয়ে দিএ একটু শুস্থির হোঈ নায় তালা এক মাসের অধিক কাল এখানে আশি আছে এবং বড্জায়ের জন্নো প্রত্তো হো এই দারুন নায় তালা হাত ধরিয শেদে শরি কে রান্না গারে লেয গালো এবং নিজের হাতে থাই "
+          },
+          {
+            "index": 12,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0012.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 200,
+            "text": "খুডে মোর্ভো. শিদ্ধে শোরি নিঝের কাছে নিঝের লোজিত হোয়া ছিলেন. শুত্রাং দূপুর বালা নিলা কে জিগাশা করিয জখন সুনিতে পাইলেন. খুডিমা ভাথ খাইতে বশিযাছেন. তকহন তাহার আহলাদ কতোকু হোযিল বলা শিদ্ধে শরি অদূরে ম্লান মুখে বশিযাছেন. আজ তাহার দেহু মন কিছুয় ভালায় ছিলো না. গ্রিহিনীর মুখের পানে চাহিযাই গিরিশ কেনে? তা"
+          },
+          {
+            "index": 13,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0013.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 170,
+            "text": "তমাকে খাডের দালালি কাল থেকে শুরু কর্তে হবে  নাডিতে নাডিতে বলিলেন এই আথাজার টাকাই জলে গাল ধুরে রাখুন   গীরিষ কোহিলেন তাহলে তুমি কি রকম করতে বলে? হরিষ বলিলেন রমেশ বেপশা বানিজের জানে কি দাদা? 8 হাজার দিন আর 8 লাখি দিন 8 টা পযসা ও ফিডি আন্তে পারে না আমি বাঝি রেখে বলতে পাডি এই জে ছেলেদের পাডাবার জন্নে আম"
+          },
+          {
+            "index": 14,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0014.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 206,
+            "text": "নে পার মনে করে ছিলম্ সোইলোর চুরি সব্দো হতা বেরি নাডা সব্দো শোবি তাহার কানে আশিতেছে খা঵ান পারান আমার কিসের জন্নে নিলা ছটকূরির কাছে বশিয তাহাকে শাহাজ্য করিতে ছিলো কাছে করিতেছে জে আমি ওপাডার লোগ দেখে এনে ছিথির জবাব লেখার নিলা ও রাক কুরিয বলিল তিথি লেক বার কিযার কিযু নিমা জে আজ সম পেতের মে আমাকে মুখনা ন"
+          },
+          {
+            "index": 15,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0015.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 125,
+            "text": "তোকে জেতে হবে না বলিয নিজেই ধাপ করিয শুযা পরিয অন্ন দিখে মুক করিয রুহিলেন জাও কাছে বোশে দুধন্ড পাই হাত বুলিয দাও তিদি ঘুমিয পরুন রুখ শুরিরে অনেকখন জেগে আছেন নিলা মেজখুরির প্রতি প্রশন্ন ছিলো না পেলিলেন সে বঝেতা করে   সেদে স্রি মোক ফিলাইয বলিলেন   পেলিলেন সে বঝেতা পে তাকা পেছিলেন   সে বঝে তাকা পেছিলেন"
+          },
+          {
+            "index": 16,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0016.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 232,
+            "text": "তাই তিনি জখন তকখন বলেন বার্ভো ধান মুখ ফুটে জানু কারো কাছে কিছু চান্না কিন্তু তাই বলে কি নিঝেদের বিবেছনা থাকেন না জার জামন শক্তি তাঁছ করে তাকে শাহাজো করাতো ছাই শোইল শিন্দুক বন্ধু করিয সুমুখে আশিয সেই চাবিটা তাহা রিঙ্ হোইতে খুলিয শিদের শরির বিছানার উপর ফেলিয দিয নিরে ছলিয জা মতি ব্রম হোতে কতো খন কি বল"
+          },
+          {
+            "index": 17,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0017.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 186,
+            "text": "কতোকত সাচেতান হোযা বলিলেন্ হুম্ সুনেছি বোই কি  ধামক খাইয গিরিষ চমকাইয উঠিয জিগ্গাশা করিলেন্ পথায জাচে? প্যামক সাচেতান হোযে তো তাইমার হাতে পারুপ খানো?  আমার মনি হরি জে কথায দাডাবে? গিরিশ প্রচন্দ একটা ধমক দিআ বলিলেন হের জদি তুই জখডা করবি তো গাইডার চাবুক তাইর পিথে ভাংবো বায় হারাম জদা লেখা পারা সমন্ধু "
+          },
+          {
+            "index": 18,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0018.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 330,
+            "text": "बर्ठाकूरेर अर्धेक रोजगार करेना, तोभो तादेर कारू लाक टाकार कम बैंके जमा नहीं। तादेर परिबारदेर हाथेओ दोश-बिश-हाजारेर कम नहीं। शिद्धेश्वरी इश्वत आक्रिष्टो हुया कोहिलेन, की कोरे जानले मेजबो। नयनतारा कोहिल, उनी जे बैंकेर शाहेब के जिग्गाशा करे चिलेन। तारा शबेर बंधु की ना? काल गोपाल बाबूर स्थृरी आमार कथाई "
+          },
+          {
+            "index": 19,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0019.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 237,
+            "text": "সারা রাত্রি কস্টে কাটাইতে হোইতো, এলোযা তিনি রাগা রাগি করিতে ও ছারিতে না, কানাইয়ে শোআ খারাপ তাহার জন্নো এতোতা সথান ছাই, খুদে পরাই এটা আপরাথ করিযা ফেলিতো, তাহার জন্নো আযল কোথের ব্য়স্থা, ব� পিপিন চক্রাকারে পরিব্ভুমন করিতো, তাহার আরাই প্রকার বন্দো বস্তো, পটলের আরাই প্রহরে সোমাই খুধা বোধ হোইতো, শিয়ের "
+          },
+          {
+            "index": 20,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0020.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 621,
+            "text": "کے میرے فیل بے مہارانیر ایمون کچھ حکم نیں کالی جودی میچ ڈھاکور پای کے دیے اکیلیر چیتھی دی کی ہار تا ہولے بولیا شیدہ شری اتتر ایر آشائے خان کال اپکھا کریا پرتتتر ایر شامیر ناشکا دھونی سونیا راک کریا اٹھیا گیلن شارا راتری تہار لش ماتر گھوم آسیل نا ککھون شکال ہویبے ککھون ہریش کے دیا اکیلیر چیتھی پاتھائ"
+          },
+          {
+            "index": 21,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0021.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 254,
+            "text": "এজ্ বোও আশিআ কোহিল, তিদি, বল্তে পারি নে, কিন্তু আমিয় সঙ্ষার চলিয়ছি, টাকাক্টি হিষাপ পত্রো সব রেখেছী। ছোটু বউন এই বলে জে অতো ঝন্জার তুমি সোঝ্য় কর্বে, আর আমি ভসে ভসে দেগো, ছে ভালো নায়, আমার কাছে কারো চালাকি করে হিষে� করা, খরোঝ করা, পাংকে পাঠানো, সমস্তোই তার কাজ্ এসোপ কি আর আমাকে দিয়ে হয়ে বেশ্তো আ"
+          },
+          {
+            "index": 22,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0022.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 485,
+            "text": "अनेक कश्टे आमाके से ता फाशाते होयेछे। नाइनो तारा फिस-फिस करिया बोलिल, अच्छा, छोड़ ठाकूर पोई जान दोशी, किन्टू, आमी केबल भावी दीदी, छोड़ बोउ की करे एते मत दीले, आम्रा आर शबाई दुष्टू बज्जात होते पारी, किन्टू से तार बध्धाकूर के तो चेने, ताके जेले दिये से की शुक पेथ। शिद्धेश्वरीर आपादमस तोग बारुं बार शिह"
+          },
+          {
+            "index": 23,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0023.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 501,
+            "text": "अच्छा, आमी एकाई देखची। माग मासेर 22 मौग दोमार दिन छिलो। बिशे गिरिषेर एक जाती कुण्नार भिबाहे कुण्नार पिता आशिया गिरिष के चापिया धोरिलेन, दादा, तुमी उपस्थित थेके आमार मेर भिबाहो दाओ, एइ आमार बढ़ साध। तुमाके एक टी दिनेर जन्ने यो अंतोतो देशे जेते होबे। ना शब्दो ता गिरिषेर मुग दिया बाहिर होई बार जो छिलो "
+          },
+          {
+            "index": 24,
+            "path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_audio_chunks/asr_chunk_0024.mp3",
+            "duration_seconds": 229.344308,
+            "word_count": 137,
+            "text": "শুইল অধুমুখে স্থির হোযা রোহিরো গিরিশের কন্ধাশ্র পুনোরারে একাক পড্দা চুরিতে লাগিরো এইহতো ভাধা শুআর বেচে খেয়েছ� গোয়না কার? আমার? ওকে আমি ঝেলে দিয়ে ত঵ে ছাড্গু ইত্তাদি ইত্তাদি বাইশে মক্দমার দিন আপরান্য বেলায় হরিষ মক্কলি করিয হুগলীর আদালত হিতে বাটি ফিরিয আসিলেন এবন্ ধরাচুডা না ছাডিয ভিছানা হাতে শম্ষা"
+          }
+        ],
+        "asr_language": "",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 7429.344308,
+          "chunk_count": 25
+        },
+        "word_timestamp_count": 7690,
+        "bengali_asr_lane_used": true,
+        "bengali_asr_lane_status": "BLOCKED",
+        "raw_asr_script": "mixed",
+        "normalized_asr_score": 0.1634,
+        "phonetic_projection_score": 0.2,
+        "projection_confidence": 0.0179,
+        "bengali_asr_diagnosis_path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/bengali_asr_mismatch_diagnosis.json",
+        "bengali_asr_projection_report": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/bengali_asr_projection_report.json"
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/nishkriti_20260705T172629Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "language": "ben",
+      "run_dir": "internal/audiobook_lab/release_gate/book-ac5a71075e_20260705T174704Z",
+      "terminal_status": "TERMINAL_BLOCKED_WITH_EVIDENCE",
+      "retryable": false,
+      "blocker_categories": [
+        "bengali_audio_manuscript_mismatch"
+      ],
+      "blockers": [
+        "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR transcript match score below threshold: 0.0 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": true,
+      "local_audio_reused": true,
+      "raw_asr_score": "",
+      "normalized_asr_score": 0.2537,
+      "phonetic_projection_score": 0.268,
+      "projection_confidence": 0.024,
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.0,
+        "coverage": 0.0,
+        "score": 0.0,
+        "first_words_match": false,
+        "last_words_match": false,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 916.847982,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/book-ac5a71075e_20260705T174704Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 582,
+            "text": "Postmaster Rabindranath Thakur, Golpoguchho, 1950-pre Atash Theke Chauthrish, Postmaster Prathom kaaj arambh kariyai Ulapur grame postmaster ke asite hoye Gramti oti samanno Nikte ekti nil kuthi ache Tai kuthi saheb anek jogat kariya Ei nuton post office sthapon karayi ache Amader postmaster Kolikat"
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/book-ac5a71075e_20260705T174704Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 448,
+            "text": "अमुन की तहार खुद्रो रिदाश पटे बालिका तहादेर कालपणिक मूर्तियो चीत्री तो करिया लेया छिलो। एक दिन बर्शाकालेर मेगमुक्तो दिप्रहोरे इशद तप्तो सुकमल बाताश दीते छिलो। रोधरे भीजा घाश एबं गाच पाला होईते एक प्रकार गंधो उत्थीतो होईते छिलो। मुले होईते छिलो, जैनो क्लांतो धरणीर उष्णो निशाष गाईर उपरे आशिया लागीते छ"
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/book-ac5a71075e_20260705T174704Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 369,
+            "text": "Postmaster बारी जाच्छी रतोन आबार कबे आशबे? Postmaster आर आशब ना रतोनार कोनो कथा जिग्गाशा करिल ना Postmaster आपनी तहा के बोलिलें तिनी बदलीर जन्नो दर्खास्तो करिया छिलें दर्खास्तो नमन्जूर हुई अचे ताइ तीनी काजे जबाब दिया बानी जाइते छें अनेख कहन आर केहो कोनो कथा कोहिल ना मेट-मेट करिया प्रदिब जलीते लागिल "
+          },
+          {
+            "index": 3,
+            "path": "internal/audiobook_lab/release_gate/book-ac5a71075e_20260705T174704Z/asr_audio_chunks/asr_chunk_0003.mp3",
+            "duration_seconds": 16.847982,
+            "word_count": 32,
+            "text": "बुकेर भीतोरे प्रानपने जराया धरा जाए। अबशुषे एक दिन समस्तो नारी काटिया हुरिदयेर रप्तो शुशिया शे पलायन करे। तकखण चेतना हाई एबंग दीतियो भ्रांति पासे परिबार जण्नो चित्तो बैकूल हुया उठे। 1298"
+          }
+        ],
+        "asr_language": "",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 916.847982,
+          "chunk_count": 4
+        },
+        "word_timestamp_count": 1431,
+        "bengali_asr_lane_used": true,
+        "bengali_asr_lane_status": "BLOCKED",
+        "raw_asr_script": "mixed",
+        "normalized_asr_score": 0.2537,
+        "phonetic_projection_score": 0.268,
+        "projection_confidence": 0.024,
+        "bengali_asr_diagnosis_path": "internal/audiobook_lab/release_gate/book-ac5a71075e_20260705T174704Z/bengali_asr_mismatch_diagnosis.json",
+        "bengali_asr_projection_report": "internal/audiobook_lab/release_gate/book-ac5a71075e_20260705T174704Z/bengali_asr_projection_report.json"
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/book-ac5a71075e_20260705T174704Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/book-ac5a71075e_20260705T174704Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "book-1090573dff",
+      "title": "ছুটি",
+      "language": "ben",
+      "run_dir": "internal/audiobook_lab/release_gate/book-1090573dff_20260705T174704Z",
+      "terminal_status": "TERMINAL_BLOCKED_WITH_EVIDENCE",
+      "retryable": false,
+      "blocker_categories": [
+        "bengali_audio_manuscript_mismatch"
+      ],
+      "blockers": [
+        "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR transcript match score below threshold: 0.069 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": true,
+      "local_audio_reused": true,
+      "raw_asr_score": 0.069,
+      "normalized_asr_score": 0.1112,
+      "phonetic_projection_score": 0.237,
+      "projection_confidence": 0.0215,
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.0069,
+        "coverage": 0.0437,
+        "score": 0.069,
+        "first_words_match": false,
+        "last_words_match": false,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 976.656054,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/book-1090573dff_20260705T174704Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 529,
+            "text": "छुती रोबिंद्रो नाथ ठाकूर, गल्पगुछ्ष, 1950 प्री, 195-203 छुती, बालोग तिगे शर्दार फटिक चक्रोबर्तिर मथाये चट कुरिया एक ता नुतन भाबोदोई हुईल, नोधीर धारे एक टा प्रोकांट शालकाष्टो मास्तुले रुपांतरितो हुईबार प्रतिक्खाये परिया छिलो,  छेलेरा ताहार एइ रूप उदार ओदाशिन्नो देखिया किछु बिमर्षो हुया गयालो, एक जन आ"
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/book-1090573dff_20260705T174704Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 188,
+            "text": "এতিন হোয় দাদা পস্ছিমে কাছ করিতে গিযা ছেলেন.  এবং মানোষিক উন্যতি সম্বন্ধরে পরশনো করিলেন. উত্তরে ফটিকের অবাধ্য উচ্ছেং খল্তা, পাথে অমনো জোগ, ফটিকে জিগাশা করিলেন, ক্যামন রেফটিক, মামার সংগে কলকাতায জাবি. ফটিক লাফাযা উঠিয বলিল, জাবু. জদিয ফটিক কে বিদায করিতে তাহার মায় আপতি ছিলো না, তারণ তাহার মনে শার্রো"
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/book-1090573dff_20260705T174704Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 368,
+            "text": "जखोन मार आरंभो करीतो तकोन भार प्लांतो गर्दोभेर मतो निर्बे सज्जो करीतो छेलेदेर जखोन खेलीबार छूटी होईत तकोन जानालार काछे दाड़ाया दूरेर बारीगुलार छाद निरिक्खन करीतो जखोन से इदिप्रहर रोधरे कुनो एक चादे दू टीक टी छेले में किछु एक टा खेलार छले खनेकेर जण्नो दाखा दिया जाइत तकोन तहार चिप्तो अधिर होया उठीतो ए"
+          },
+          {
+            "index": 3,
+            "path": "internal/audiobook_lab/release_gate/book-1090573dff_20260705T174704Z/asr_audio_chunks/asr_chunk_0003.mp3",
+            "duration_seconds": 76.656054,
+            "word_count": 32,
+            "text": "ಬಿಶಮಹರ ಬಾಭಂ ಸತಿಮಿತಂ ಪರದಿಪಇ ರಗಷ ಜಾಏ ಬಸಿಯಾ ಪರತಿ ಮಹರತಇ ಫಟಿಕರ ಮತಾರ ಜನನವ ಪರತಿಕಖಾ ಕರಿತಇ ಲ� ಬಾಲಕ ರಸಿ ಫಇಲಿಆ ಕಠಾಓ ತಾಹರ ತಲ ಪಈತಿಛಿನ ನಾ ಮಾ ಆಬರ ದಾಕಿಲನ ಅರಫಟಿಕ ಬಾಪಧನ ರಿ ಅರಫಟಿಛಿನ ಬಾಪಧನ ರಿ"
+          }
+        ],
+        "asr_language": "",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 976.656054,
+          "chunk_count": 4
+        },
+        "word_timestamp_count": 1117,
+        "bengali_asr_lane_used": true,
+        "bengali_asr_lane_status": "BLOCKED",
+        "raw_asr_script": "Devanagari",
+        "normalized_asr_score": 0.1112,
+        "phonetic_projection_score": 0.237,
+        "projection_confidence": 0.0215,
+        "bengali_asr_diagnosis_path": "internal/audiobook_lab/release_gate/book-1090573dff_20260705T174704Z/bengali_asr_mismatch_diagnosis.json",
+        "bengali_asr_projection_report": "internal/audiobook_lab/release_gate/book-1090573dff_20260705T174704Z/bengali_asr_projection_report.json"
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/book-1090573dff_20260705T174704Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/book-1090573dff_20260705T174704Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "title": "একরাত্রি",
+      "language": "ben",
+      "run_dir": "internal/audiobook_lab/release_gate/book-4b944e64fa_20260705T181723Z",
+      "terminal_status": "TERMINAL_BLOCKED_WITH_EVIDENCE",
+      "retryable": false,
+      "blocker_categories": [
+        "bengali_audio_manuscript_mismatch"
+      ],
+      "blockers": [
+        "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR transcript match score below threshold: 0.1598 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": true,
+      "local_audio_reused": true,
+      "raw_asr_score": 0.1598,
+      "normalized_asr_score": 0.0987,
+      "phonetic_projection_score": 0.252,
+      "projection_confidence": 0.0229,
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.016,
+        "coverage": 0.0961,
+        "score": 0.1598,
+        "first_words_match": false,
+        "last_words_match": false,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 983.303991,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/book-4b944e64fa_20260705T181723Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 370,
+            "text": "अक्रात्री रोबिन्द्रनाथ ठाकूर, बल्पगुछो, 1950 परी 122-139, अक्रात्री, सूर्बालार संगे अकत्रे पाँछालाई गियाची, एबंग बहु-बहु खेलियाची ताहादेर बारी टे गेले सूर्बालार मा अमाके बड़ो जत्नो करितें, एबंग आमादेर दुई जन के एकउत्रो कुरिया आपना अपनी बलाबली करितें, आहा, तूटिते बेश मानाई छोटो छिलाम, किन्टु कथाटार अ"
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/book-4b944e64fa_20260705T181723Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 209,
+            "text": "উপদেশ এবন উত্সাহ দীব এক এক টি ছাত্রুকে ভাভী ভারত র এক এক টি শেনা পতি করিয টুলিম. এক পেট জবনা খযিতে পাইলে এক সন্তূষ্টা থাকে. লম্ফে জম্ফে আর উত্সাহ থাকে না. আগনি দাহের আসংকাই এক জন করিয মাস্টার সকুলের ঘরেতে ই বাস করিতো. আমি একা মানুষ, আমার উপ্রেই শেই ভার পরিয ছিলো. সকুলের এক কাথা এতো দিং উল্লেক খরি না"
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/book-4b944e64fa_20260705T181723Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 224,
+            "text": "নিতান্তো অসংগোতো এবঙ্ অন্নারে তাহা শিকার করি, টিন্তো অসাভাবিক নহে আখন হোইতে আর কোনো কাজে মন সম্জক করিতে পারিনা দুপুর বেলাই কলাসে জখন ছাত্রেরা গুন্ গুন্ করিতে থাকিতো পাহিরে সমস্তো জহা জহা করিতো তিশোদ উত্তপ্ত বাতাশে নিম গাছে অথাচো কনো ভদ্রলোগ দেখা করিতে আসিলেও অসোজ্য বোধ হোইতো তুমি কিনা হোইতে গেলে গাড"
+          },
+          {
+            "index": 3,
+            "path": "internal/audiobook_lab/release_gate/book-4b944e64fa_20260705T181723Z/asr_audio_chunks/asr_chunk_0003.mp3",
+            "duration_seconds": 83.303991,
+            "word_count": 105,
+            "text": "पृतिबीर उपरे अमारी पासे आशिया समलगनो हुया छिलो।   से धेव ना आशुक। सामी पुत्रो ग्रिहन्जन लुया सूर्बाला चिर्दिन सुखे थाकुक। अमी एक रात्रे महाप्रलाइर तिरे दानडाया अनुंतो आनुंदेर आशात पायाची। रात्री प्राय सेश हुया आशिल। सूर्बाला कनो कथा ना बोलिया बाठी छोलिए गलो। आमयु कनो कथा ना बलिया अमार घ़री गेलम। भाब"
+          }
+        ],
+        "asr_language": "",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 983.303991,
+          "chunk_count": 4
+        },
+        "word_timestamp_count": 908,
+        "bengali_asr_lane_used": true,
+        "bengali_asr_lane_status": "BLOCKED",
+        "raw_asr_script": "mixed",
+        "normalized_asr_score": 0.0987,
+        "phonetic_projection_score": 0.252,
+        "projection_confidence": 0.0229,
+        "bengali_asr_diagnosis_path": "internal/audiobook_lab/release_gate/book-4b944e64fa_20260705T181723Z/bengali_asr_mismatch_diagnosis.json",
+        "bengali_asr_projection_report": "internal/audiobook_lab/release_gate/book-4b944e64fa_20260705T181723Z/bengali_asr_projection_report.json"
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/book-4b944e64fa_20260705T181723Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/book-4b944e64fa_20260705T181723Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "language": "eng",
+      "run_dir": "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z",
+      "terminal_status": "BLOCKED",
+      "retryable": true,
+      "blocker_categories": [
+        "asr"
+      ],
+      "blockers": [
+        "ASR transcript match score below threshold: 1.4099 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": false,
+      "local_audio_reused": false,
+      "raw_asr_score": 1.4099,
+      "normalized_asr_score": "",
+      "phonetic_projection_score": "",
+      "projection_confidence": "",
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.141,
+        "coverage": 0.9728,
+        "score": 1.4099,
+        "first_words_match": false,
+        "last_words_match": false,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 589.972608,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 890,
+            "text": "S. Retney Vasher, Conradin was ten years old, and the doctor had pronounced his professional opinion that the boy would not live another five years, the doctor was silky and effete, and counted for little, but his opinion was endorsed by Mrs. de Ropp, who counted for nearly everything, Mrs. de Ropp "
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 289.972608,
+            "word_count": 932,
+            "text": "which she was ready to rebuke with a flow of excellent precepts and reasoning, but Conradin said nothing. There was nothing to be said, something perhaps in his white-set face, gave her a momentary qualm, for at tea that afternoon there was toast, on the table, a delicacy which she usually banned on"
+          }
+        ],
+        "asr_language": "en",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 589.972608,
+          "chunk_count": 2
+        },
+        "word_timestamp_count": 1822
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "book-5704b31005",
+      "title": "বিচারক",
+      "language": "ben",
+      "run_dir": "internal/audiobook_lab/release_gate/book-5704b31005_20260705T181723Z",
+      "terminal_status": "TERMINAL_BLOCKED_WITH_EVIDENCE",
+      "retryable": false,
+      "blocker_categories": [
+        "bengali_audio_manuscript_mismatch"
+      ],
+      "blockers": [
+        "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR transcript match score below threshold: 0.0516 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": true,
+      "local_audio_reused": true,
+      "raw_asr_score": 0.0516,
+      "normalized_asr_score": 0.1887,
+      "phonetic_projection_score": 0.192,
+      "projection_confidence": 0.0171,
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.0052,
+        "coverage": 0.0441,
+        "score": 0.0516,
+        "first_words_match": false,
+        "last_words_match": false,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 1105.656054,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/book-5704b31005_20260705T181723Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 360,
+            "text": "बिचारोक रोबिंद्रोनाथ ठाकूर गल्पदशोक 1895 प्री 25-830 बिचारोक प्रुथम परिछेड अनेक अबस्थानतरेर पर अबशेशे गतजवणा खिरोदा जे पुरुषेर आस्रोय प्राप्तो हुया छिलो शेव जखन तहाके जिर्ण बस्थरेर नाइ परिट्टाक करिया गयलो तक्हण अन्नमुष्टीर जन्नो दीतियो आस्रोय अनेशनेर चेष्टा करिते तहार उत्तंत धिक्कार बोध हुयलो जवनेर "
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/book-5704b31005_20260705T181723Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 474,
+            "text": "लिलें ना. ना पारिबार कारुन अच्छे. एक दिके तीनी हिंदुं भिलागण के देवी आख्छा दिया थाकेन. अपर दिके स्त्रिजातीर प्रती ताहार आंतरिक अभिशास. ताहार मतो ये जे रमुनिगण कुलबन्धन छेदन करिबार उन्मुख होया अच्छे. शाषन तिल मात्रो शिथिल होईले समाज पिंजरे एटी कुलनारियो अभशिष्टो थाकिबे ना. ताहार एरूप बिशाषेर कारुनो अ"
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/book-5704b31005_20260705T181723Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 405,
+            "text": "बंग आपन मानश पुत्तलिका के से इमायापुरीर माझखाने बशाईया बिश्मितो बिमुग्धोने तरे निरिक्खन करीतो ओई बितो निद्रो निशाचोर आलोकेर मुझ्धे जे एक रिदुजोहिन निष्टुरतार कुटिलहास्यो प्रलोक्रिरा करीते थाके बिद्बा दूर होईते तहां देखिते पाइतो ना हेम आपन निर्जन बातायाने बोशिया तहार एइ माया सर्गो एबों कोल्पितो देब्त"
+          },
+          {
+            "index": 3,
+            "path": "internal/audiobook_lab/release_gate/book-5704b31005_20260705T181723Z/asr_audio_chunks/asr_chunk_0003.mp3",
+            "duration_seconds": 205.656054,
+            "word_count": 156,
+            "text": "ত্লিত্যু পরিছের মোহিত মোহনের পুর্ভো ইতিহাস হেতে একটি মাত্র ঘটনা উল্লেক করিলাম রজনা পাছে এক ঘেরে খুযা উঠে এজন্ন � তিনি আনিক তার্পন করেন এবং সর্ভোদাই শাস্রালোছনা করিয থাকের খিরোদা তাহার পতিত জিবনের সমসতো আপরাদ সরণ করিয অনুতক্তো হোযাছে কিনা জানিবার জন্ন তাহার কউতুহল হোযিলো বন্ধিনি শালায় পরবেশ করিলেন দ"
+          }
+        ],
+        "asr_language": "",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 1105.656054,
+          "chunk_count": 4
+        },
+        "word_timestamp_count": 1395,
+        "bengali_asr_lane_used": true,
+        "bengali_asr_lane_status": "BLOCKED",
+        "raw_asr_script": "Devanagari",
+        "normalized_asr_score": 0.1887,
+        "phonetic_projection_score": 0.192,
+        "projection_confidence": 0.0171,
+        "bengali_asr_diagnosis_path": "internal/audiobook_lab/release_gate/book-5704b31005_20260705T181723Z/bengali_asr_mismatch_diagnosis.json",
+        "bengali_asr_projection_report": "internal/audiobook_lab/release_gate/book-5704b31005_20260705T181723Z/bengali_asr_projection_report.json"
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/book-5704b31005_20260705T181723Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/book-5704b31005_20260705T181723Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "language": "eng",
+      "run_dir": "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z",
+      "terminal_status": "BLOCKED",
+      "retryable": true,
+      "blocker_categories": [
+        "asr"
+      ],
+      "blockers": [
+        "ASR transcript match score below threshold: 6.7837 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": false,
+      "local_audio_reused": false,
+      "raw_asr_score": 6.7837,
+      "normalized_asr_score": "",
+      "phonetic_projection_score": "",
+      "projection_confidence": "",
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.6784,
+        "coverage": 0.9668,
+        "score": 6.7837,
+        "first_words_match": false,
+        "last_words_match": true,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 652.109206,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 934,
+            "text": "The gift of the Magi, $1.87, that was all, and 60 cents of it was in pennies. Penny saved one and two at a time by bulldozing the grocer and the vegetable man and the butcher until one's cheeks burned with the silent imputation of parsimony that such close dealing implied, three times Della counted "
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 980,
+            "text": "at the time in any company, grand as the watch was. He sometimes looked at it on the sly on account of the old leather trap that he used in place of a chain. When Della reached home her intoxication gave way a little to prudence and reason. She got out her curling irons and lighted the gas and went "
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 52.109206,
+            "word_count": 169,
+            "text": "head and smiled. Del, said he, let's put our Christmas presents away and keep them a while, they're too nice to use just at present. I sold the watch to get the money to buy your combs, and now suppose you put the chops on. The Magi, as you know, were wise men wonderfully wise men who brought gifts "
+          }
+        ],
+        "asr_language": "en",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 652.109206,
+          "chunk_count": 3
+        },
+        "word_timestamp_count": 2083
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "language": "eng",
+      "run_dir": "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z",
+      "terminal_status": "BLOCKED",
+      "retryable": true,
+      "blocker_categories": [
+        "asr"
+      ],
+      "blockers": [
+        "ASR transcript match score below threshold: 9.5558 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": false,
+      "local_audio_reused": false,
+      "raw_asr_score": 9.5558,
+      "normalized_asr_score": "",
+      "phonetic_projection_score": "",
+      "projection_confidence": "",
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.9556,
+        "coverage": 0.9812,
+        "score": 9.5558,
+        "first_words_match": false,
+        "last_words_match": true,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 694.775873,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 972,
+            "text": "The tell-tale heart, true exclamation, nervous, very, very dreadfully nervous I had been andam. But why will you say that I am mad? The disease had sharpened my senses, not destroyed, not dulled them. Above all was the sense of hearing acute. I heard all things in the heaven and in the earth. I hear"
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 931,
+            "text": "buzzed him to feel although he neither saw nor heard to feel the presence of my head within the room when I had waited a long time, very patiently, without hearing, him lie down, I resolved to open a little a very, very little, crevice in the lantern, so I opened it you cannot imagine how, stealthil"
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 94.775873,
+            "word_count": 251,
+            "text": "ill but I talked more fluently, and, with a heightened voice, yet the sound increased and what could I do? It was a low, dull, quick sound much such a sound as a watch makes when enveloped in cotton. I gasped for breath and yet the officers heard it not. I talked more quickly more vehemently, but, t"
+          }
+        ],
+        "asr_language": "en",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 694.775873,
+          "chunk_count": 3
+        },
+        "word_timestamp_count": 2154
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "language": "eng",
+      "run_dir": "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z",
+      "terminal_status": "BLOCKED",
+      "retryable": true,
+      "blocker_categories": [
+        "asr"
+      ],
+      "blockers": [
+        "ASR transcript match score below threshold: 9.4039 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": false,
+      "local_audio_reused": false,
+      "raw_asr_score": 9.4039,
+      "normalized_asr_score": "",
+      "phonetic_projection_score": "",
+      "projection_confidence": "",
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.9404,
+        "coverage": 0.9653,
+        "score": 9.4039,
+        "first_words_match": false,
+        "last_words_match": true,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 708.034467,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 914,
+            "text": "Désirée's baby, as the day was pleasant, Madame Valmonday drove over to El Abri to see Désirée and the baby, it made her laugh to think of Désirée with a baby, why, it seemed but, yesterday that Désirée was little more than a baby herself, when, Messire in riding through the gateway of Valmonday had"
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 910,
+            "text": "but made the gentle Desirée so happy, for she loved him. Desperately, when he frowned she trembled, but loved him. When he smiled, she asked no greater blessing of God. But Armand's dark, handsome face had not often been disfigured by frowns, since the day he fell in love with her, when the baby was"
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 108.034467,
+            "word_count": 341,
+            "text": "October afternoon, the sun was just sinking. Out in the still fields the negroes were picking cotton. Desiree had not changed the thin white garment nor the slippers which she wore. Her hair was uncovered and the sun's rays brought a golden gleam from its brown meshes. She did not take the broad, be"
+          }
+        ],
+        "asr_language": "en",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 708.034467,
+          "chunk_count": 3
+        },
+        "word_timestamp_count": 2165
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/rights_metadata_report.json"
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "language": "eng",
+      "run_dir": "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z",
+      "terminal_status": "BLOCKED",
+      "retryable": true,
+      "blocker_categories": [
+        "asr"
+      ],
+      "blockers": [
+        "ASR transcript match score below threshold: 3.3748 < 9.7"
+      ],
+      "rights_metadata_status": "PASS",
+      "tts_hook_status": "PASS",
+      "audio_url_404": false,
+      "local_audio_reused": false,
+      "raw_asr_score": 3.3748,
+      "normalized_asr_score": "",
+      "phonetic_projection_score": "",
+      "projection_confidence": "",
+      "listening_qa_status": "",
+      "asr_metrics": {
+        "raw_similarity": 0.3375,
+        "coverage": 0.9625,
+        "score": 3.3748,
+        "first_words_match": false,
+        "last_words_match": true,
+        "frontmatter_absent": true,
+        "audio_duration_seconds": 762.62458,
+        "asr_chunks": [
+          {
+            "index": 0,
+            "path": "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z/asr_audio_chunks/asr_chunk_0000.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 903,
+            "text": "The Cop and the Anthem On his bench in Madison Square Soapy moved uneasily When wild geese honk high of nights And when women without seal-skin coats grow kind to Their husbands And when Soapy moves uneasily on his bench in the park You may know that winter is near at hand A dead leaf fell in Soapy'"
+          },
+          {
+            "index": 1,
+            "path": "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z/asr_audio_chunks/asr_chunk_0001.mp3",
+            "duration_seconds": 300.0,
+            "word_count": 895,
+            "text": "To catch a car withdrawn club he joined in the pursuit. Soapy, with disgust in his heart, loafed along twice unsuccessful. On the opposite side of the street was a restaurant of no great pretensions. It catered to large appetites and modest purses. Its brocquerie and atmosphere were thick, its soup "
+          },
+          {
+            "index": 2,
+            "path": "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z/asr_audio_chunks/asr_chunk_0002.mp3",
+            "duration_seconds": 162.62458,
+            "word_count": 490,
+            "text": "Eastman hurried to assist a tall, blonde-in-an-opera cloak across the street in front of a street car that was approaching two blocks away. Soapy walked eastward through a street damaged by improvements. He hurled the umbrella wrathfully into an excavation. He muttered against the men who wear helme"
+          }
+        ],
+        "asr_language": "en",
+        "asr_split_report": {
+          "status": "PASS",
+          "chunk_seconds": 300,
+          "source_duration_seconds": 762.62458,
+          "chunk_count": 3
+        },
+        "word_timestamp_count": 2288
+      },
+      "asr_hook_result_path": "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z/asr_sync_hook_result.json",
+      "rights_missing_fields": [],
+      "rights_blocker_reasons": [],
+      "rights_report_path": "internal/audiobook_lab/release_gate/the-cop-and-the-anthem_20260705T181723Z/rights_metadata_report.json"
+    }
+  ],
+  "next_most_likely_publishable_title": "the-tell-tale-heart",
+  "next_target_reason": "Highest English retryable ASR score among this wave; should be targeted only after English ASR/source-provenance repair, not by blind rerun.",
+  "required_repair_before_next_target": [
+    "For English ASR near-misses, compare local audio transcript against clean manuscript/source to identify whether the local audio includes title/publisher/edition differences or belongs to a different narration.",
+    "If local audio is wrong or cannot pass >=9.7, regenerate from clean manuscript with approved OpenAI TTS budget, then run schema-3 listening QA before upload.",
+    "Do not publish without schema-3 listening evidence and no unresolved blockers."
+  ],
+  "exact_command_to_target_safely_after_repair": "railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_PAID_OPENAI_TTS=true EARNALISM_TTS_MAX_ESTIMATED_USD=35 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.json --slugs the-tell-tale-heart --languages eng,ben --max-books-active 1 --max-preflight-workers 1 --max-audio-reuse-workers 1 --max-tts-workers 1 --max-paid-workers 1 --max-asr-workers 1 --max-cover-workers 1 --max-upload-workers 1 --max-metadata-workers 1 --max-browser-workers 1 --max-attempts 2 --priority ready-first --order-by content-size --release-order ascending-content-size --allow-blocked-order-skip --exclude-slugs \"$(cat internal/audiobook_lab/release_gate/terminal_blocker_exclusions.txt)\" --publish-approved --resume-from-latest --fail-closed --stop-after-published 1 --max-run-minutes 90",
+  "terminal_exclusion_file": "internal/audiobook_lab/release_gate/terminal_blocker_exclusions.txt",
+  "terminal_exclusion_count": 31
+}

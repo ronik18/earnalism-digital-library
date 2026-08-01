@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-07-07T11:48:33Z",
+  "status": "PASS",
+  "production_url": "https://theearnalism.com",
+  "pilot_slug": "book-2b9853ec52",
+  "pilot_title": "দুই বিঘা জমি",
+  "frontend_deploy_status": "DEPLOYED",
+  "frontend_source_commit": "bbf5c17f06643c12c52a4aff4062b25da0f0cc6b",
+  "same_origin_api_verified": true,
+  "production_checks": {
+    "homepage_loads": "PASS",
+    "library_loads": "PASS",
+    "reader_route_loads": "PASS",
+    "reader_manifest_status": 200,
+    "audiobook_endpoint_status": 200,
+    "audiobook_endpoint_accepts_ranges": true,
+    "audio_controls_visible_for_pilot": true,
+    "audio_controls_hidden_for_unapproved_bengali_sample": true,
+    "console_errors": "PASS",
+    "vercel_login_shell": false
+  },
+  "pilot_manifest": {
+    "book_audio_enabled": true,
+    "manifest_audio_enabled": true,
+    "audio_url_present": true,
+    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "customer_facing_sync_copy": "Section-following narration",
+    "word_level_sync_claimed": false
+  },
+  "unapproved_bengali_sample": {
+    "slug": "book-ac5a71075e",
+    "book_audio_enabled": false,
+    "manifest_audio_enabled": false,
+    "audio_url_present": false
+  },
+  "browser_gate": {
+    "status": "PASS",
+    "audio_control_visible": true,
+    "audio_start_latency_ms": 0.0,
+    "report_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/browser_hook_result.json"
+  }
+}

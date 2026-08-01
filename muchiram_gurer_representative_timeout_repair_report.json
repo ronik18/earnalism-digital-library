@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-07-08T00:00:00+05:30",
+  "slug": "muchiram-gurer-jibanchorit",
+  "current_status": "REPRESENTATIVE_EVIDENCE_BLOCKED_NOT_FULL_TTS_ELIGIBLE",
+  "previous_representative_attempt": {
+    "evidence_dir": "/private/tmp/earnalism-post-pr88-canary/internal/audiobook_lab/release_gate/bengali_sarvam_representative_evidence_20260707T172057Z",
+    "score": 0.0,
+    "confidence": 0.0,
+    "frontmatter_stripped": true,
+    "blockers": [
+      "representative listening score below 9.2: 0.0",
+      "representative confidence below 0.9: 0.0",
+      "Sarvam request timed out"
+    ]
+  },
+  "repair_plan": {
+    "full_book_tts_allowed_before_representative_pass": false,
+    "next_attempt_type": "representative_evidence_only",
+    "sample_strategy": [
+      "split opening passage into smaller samples",
+      "lower max seconds per sample",
+      "keep no more than five representative passages",
+      "preserve audiobook-clean frontmatter stripping",
+      "fail closed if any representative evidence field is incomplete"
+    ],
+    "provider": "Sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style": "literary_warm_pacing"
+  },
+  "lock_status": {
+    "paid_tts_lock_active": true,
+    "allowed_next_holders": [],
+    "effect": "Representative retry is not run in this pass"
+  },
+  "publish_allowed_now": false,
+  "next_exact_command_after_lock_release": "railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF=true EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD=2 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio EARNALISM_LISTENING_POLICY_VERSION=bengali_audiobook_acceptance_v2_92 EARNALISM_BENGALI_TTS_PROVIDER=sarvam EARNALISM_BENGALI_TTS_MODEL=bulbul:v3 EARNALISM_BENGALI_TTS_VOICE=ratan EARNALISM_BENGALI_TTS_STYLE=literary_warm_pacing python3 internal/audiobook_lab/scripts/bengali_sarvam_representative_evidence.py --manifest book_import_manifest.json --slugs muchiram-gurer-jibanchorit --max-passages 5 --max-seconds-per-sample 35 --fail-closed"
+}

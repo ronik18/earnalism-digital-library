@@ -1,0 +1,130 @@
+{
+  "audit_id": "LIVE_SITE_PREMIUM_UX_ANOMALY_AUDIT_20260713",
+  "observed_at": "2026-07-13T08:38:02Z",
+  "decision": "P0_REMEDIATION_REQUIRED_BEFORE_RELEASE_TRUTH_GREEN",
+  "approved_public_audio_slugs": ["book-2b9853ec52", "a-ghost-story"],
+  "live_api_exposure_set_matches_policy": true,
+  "direct_storage_exposure_set_matches_policy": false,
+  "findings": [
+    {
+      "id": "RT-001",
+      "severity": "P0",
+      "confidence": 1.0,
+      "status": "FAIL",
+      "surface": "direct B2/Cloudinary storage",
+      "slugs": ["alices-adventures-in-wonderland","bn-027","lokrahasya","mrinalini","nishkriti","the-wonderful-wizard-of-oz","bn-059","bn-066","the-art-of-money-getting"],
+      "evidence": "Unapproved MP3 object URLs returned HTTP 206 audio/mpeg directly from storage. API audiobook endpoints correctly returned 404, but API denial does not make the underlying objects private. bn-066 sidecars are also directly reachable.",
+      "likely_files": ["backend/data/controlled_publications/*/public_book.json","data/controlled_publications/*/public_book.json","internal/earnalism_intelligence/bengali_audiobook_campaign_state.json"],
+      "required_outcome": "Every unapproved MP3 and sidecar returns 403 or 404 directly from storage while approved endpoint-backed audio remains 206.",
+      "owner_boundary": "Remote deletion or ACL mutation requires an owner-reviewed dry-run inventory and proof that private QA copies are preserved."
+    },
+    {
+      "id": "RT-002",
+      "severity": "P0",
+      "confidence": 1.0,
+      "status": "FAIL_DEPLOYMENT_RISK",
+      "surface": "repository clean-build release policy",
+      "evidence": "Production status enables exactly two approved slugs. The current root controlled-launch file lists 53 audio-enabled slugs and the backend file lists 10, both including bn-066. The current immutable HEAD also contains slug-derived /audio probing and browser speech fallback while safer files are only dirty/untracked.",
+      "likely_files": ["data/controlled_launch.json","backend/data/controlled_launch.json","backend/catalog_truth.py","frontend/src/pages/Reader.jsx","frontend/src/lib/audioReleaseSafety.js"],
+      "required_outcome": "A clean origin/main build must reproduce the exact two-title allowlist and contain no static-audio or browser-speech fallback.",
+      "owner_boundary": "Focused safety PR allowed; no new title approval."
+    },
+    {
+      "id": "RT-003",
+      "severity": "INFO",
+      "confidence": 1.0,
+      "status": "PASS",
+      "surface": "production controlled-launch API",
+      "evidence": "audio_enabled_slugs equals exactly [a-ghost-story, book-2b9853ec52]."
+    },
+    {
+      "id": "RT-004",
+      "severity": "INFO",
+      "confidence": 1.0,
+      "status": "PASS",
+      "surface": "approved audio endpoint range",
+      "slugs": ["book-2b9853ec52","a-ghost-story"],
+      "evidence": "Both approved endpoint-backed MP3 routes returned HTTP 206 audio/mpeg with non-zero duration and size."
+    },
+    {
+      "id": "RT-005",
+      "severity": "INFO",
+      "confidence": 1.0,
+      "status": "PASS",
+      "surface": "bn-066 public API and DOM",
+      "evidence": "Reader manifest has audio.enabled=false, empty provider/voice/URL/assets; audiobook endpoint returns 404; hydrated Book and Reader expose no Listen, approval badge, audio element, controls, sync copy, or AudioObject. Reader content remains available."
+    },
+    {
+      "id": "RT-006",
+      "severity": "INFO",
+      "confidence": 1.0,
+      "status": "PASS",
+      "surface": "other sampled non-approved titles",
+      "slugs": ["book-d19e96859f","book-f5d593e1f4","muchiram-gurer-jibanchorit","dracula","pather-panchali"],
+      "evidence": "Manifests are audio-disabled with empty assets and audiobook endpoints return 404. No public player DOM was observed."
+    },
+    {
+      "id": "RT-007",
+      "severity": "INFO",
+      "confidence": 1.0,
+      "status": "PASS",
+      "surface": "static public audio fallback",
+      "evidence": "A sampled /audio/test.mp3 request returned 404; the deployed JavaScript bundle contains no static /audio path token; no audio-like files were found in frontend/public or frontend/build."
+    },
+    {
+      "id": "RT-008",
+      "severity": "INFO",
+      "confidence": 1.0,
+      "status": "PASS_LIVE_ONLY",
+      "surface": "browser speech fallback",
+      "evidence": "The deployed bundle contains no speechSynthesis or SpeechSynthesisUtterance token. Repository clean-HEAD risk is tracked separately in RT-002."
+    },
+    {
+      "id": "RT-009",
+      "severity": "INFO",
+      "confidence": 1.0,
+      "status": "PASS",
+      "surface": "structured data",
+      "evidence": "No AudioObject was observed on non-approved Book or Reader routes. Book pages emit Book JSON-LD only."
+    },
+    {
+      "id": "RT-010",
+      "severity": "P1",
+      "confidence": 0.99,
+      "status": "FAIL",
+      "surface": "approved sidecar/player schema",
+      "slugs": ["book-2b9853ec52","a-ghost-story"],
+      "evidence": "Live timestamp sidecars use start/end seconds and contain no start_ms fields. book-2b9853ec52 stores three paragraph/stanza groups in a top-level words array while player code consumes word-index/millisecond fields. The 2b manifest also leaves sync_mode empty.",
+      "required_outcome": "One validated schema must distinguish section cues from words, normalize units, and preserve the customer-safe section-following claim."
+    },
+    {
+      "id": "RT-011",
+      "severity": "P1",
+      "confidence": 0.85,
+      "status": "BROWSER_GATE_NOT_PROVEN",
+      "surface": "approved reader playback",
+      "slugs": ["book-2b9853ec52","a-ghost-story"],
+      "evidence": "Audio metadata reached readyState=4 and Play became enabled after moving from cover to content, but an automated user click produced 'Generated audiobook could not start in this browser' and currentTime did not advance. This may be environment-specific; do not claim the browser gate green until a supported browser proves advancement.",
+      "required_outcome": "Play advances currentTime in an actual supported browser, pause/resume/seek work, and the Listen CTA lands on the first playable content page without autoplay."
+    },
+    {
+      "id": "RT-012",
+      "severity": "P2",
+      "confidence": 1.0,
+      "status": "FAIL",
+      "surface": "audio proxy range semantics",
+      "slugs": ["book-2b9853ec52"],
+      "evidence": "A valid GET Range returns 206. An unsatisfiable GET Range returns 502 while the equivalent HEAD path returns 416.",
+      "likely_files": ["backend/server.py"],
+      "required_outcome": "Invalid GET and HEAD ranges return 416 without upstream proxy ambiguity."
+    }
+  ],
+  "global_guardrails": [
+    "The public approved-audio set remains exactly book-2b9853ec52 and a-ghost-story until new title evidence passes.",
+    "bn-066 remains public reader/audio-hidden.",
+    "No static /audio fallback, browser speech fallback, stale URL inference, estimated sync, or word-level sync claim.",
+    "No AudioObject for non-approved titles.",
+    "Every unapproved direct storage object must be inaccessible, not merely hidden from API and DOM.",
+    "A clean committed build must reproduce production release truth."
+  ]
+}

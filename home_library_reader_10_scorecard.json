@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-07-07T18:20:00Z",
+  "schema": "internal/earnalism_intelligence/ux_governor/ux_10_scorecard_schema.json",
+  "green_eligible": false,
+  "green_blocker": "Frontend dependency validation blocked after npm ci/install stalled and left react-scripts missing.",
+  "scores": {
+    "home": {
+      "source_candidate_score": 9.84,
+      "validated_score": 9.4,
+      "lowest_category": "no_regressions",
+      "lowest_category_score": 9.4,
+      "notes": "Source meets Home structure target, but build/smoke could not be rerun after dependency install failure."
+    },
+    "library": {
+      "source_candidate_score": 9.83,
+      "validated_score": 9.4,
+      "lowest_category": "no_regressions",
+      "lowest_category_score": 9.4,
+      "notes": "Source has premium catalog controls and gated audio CTAs, but build/smoke could not be rerun after dependency install failure."
+    },
+    "reader_audiobook": {
+      "source_candidate_score": 9.82,
+      "validated_score": 9.4,
+      "lowest_category": "no_regressions",
+      "lowest_category_score": 9.4,
+      "notes": "Source fix removed browser speech fallback and static audio URL inference; validation remains capped by dependency/tooling blocker."
+    }
+  },
+  "category_floor_status": {
+    "source_level_no_category_below_9_6": true,
+    "validated_no_category_below_9_6": false,
+    "reason": "Validation cap applied because required frontend tests/build/smoke could not run after dependency restoration stalled."
+  },
+  "hard_gate_status": {
+    "release_gate_failure": false,
+    "accessibility_failure": "not_detected_source_level_but_not_fully_validated",
+    "performance_regression": "not_validated_this_run",
+    "typographic_only_public_cover": false,
+    "unapproved_audio_exposure": false,
+    "word_level_claim_for_paragraph_stanza_sync": false,
+    "browser_speech_fallback_as_audiobook": false
+  },
+  "validation": {
+    "npm_ci": "BLOCKED_STALLED_LEFT_NODE_MODULES_INCOMPLETE",
+    "audio_release_safety": "NOT_RUN_AFTER_DEPENDENCY_BLOCKER_craco_missing",
+    "build": "NOT_RUN_AFTER_DEPENDENCY_BLOCKER_craco_missing",
+    "cover_audit": "PASS_164_AUDITED_0_TYPOGRAPHIC_ONLY",
+    "visual_smoke": "NOT_RUN_AFTER_DEPENDENCY_BLOCKER",
+    "git_diff_check": "PASS"
+  }
+}

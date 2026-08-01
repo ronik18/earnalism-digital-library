@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-blue-carbuncle",
+  "source_url": "https://www.gutenberg.org/ebooks/1661",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "8a37410ac7374823466af3ed1332e7b85235aca89e4c39cc12bd9834696cbddc",
+  "content_hash": "2b480523e8ff22604f51984f6fbd495a5ab02b7213247985a4ca18de1a2c22fe",
+  "provenance_hash": "0ee937916f54c6bc72d06dddc2cd8f2af82a7a1671389d63349552ccbc82972e",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.123548+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

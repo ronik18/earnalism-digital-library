@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventures-of-sherlock-holmes",
+  "source_url": "https://www.gutenberg.org/ebooks/1661",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
+  "source_hash": "bde9b313e5f4e7674d64afb47af1e6ba4e312ca68ad360c1fb575c717691908a",
+  "content_hash": "6e3de09d0cb05986f7c5930f55fda74a2525d89ae70d6e740a17511ef5236cd0",
+  "provenance_hash": "f2dbfa05112dbd38c0d0fc7b744ed21c2bf368f070f7d973c9a93bc22fcc8634",
+  "rights_basis": "Author died in 1930. Work published in 1892, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "downloaded_at": "2026-05-25T20:09:56.810976+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

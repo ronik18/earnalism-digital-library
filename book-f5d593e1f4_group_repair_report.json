@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-07-07T19:08:13Z",
+  "slug": "book-f5d593e1f4",
+  "status": "PENDING_PAID_GROUP_REGENERATION",
+  "regenerated_group_ids": [],
+  "planned_regenerated_group_ids": [7],
+  "reused_group_ids": [0, 1, 2, 3, 4, 5, 6],
+  "old_audio_hash_by_group": {
+    "0": "b2f1ed1c4eafa81a7d70b1a9751c8e942c760a38428ce1c6df3883fd38452a7f",
+    "1": "d63d1bd9e0f6178514b12632e9c8368cd0eb6dfa53802a560eea12a00530c302",
+    "2": "a56736836ff43d254090b63673783ea2eab7844e77936a18e74e850750db10d4",
+    "3": "b43d0c027529832266d17419d061d5430462d02d8ef033870ddc213a23aeb04e",
+    "4": "f0958289e645561dbf39f74704c4a6d7f5858fe46e40bfb71807ec07169428a8",
+    "5": "2c95ca79aa762475d8780cf83f4da24969e8fe18203510d03e5b9f2d366705b3",
+    "6": "012b52eff8779f62a2d070fdb0c37df5bb83cc8767c5b8cc22e3cf0ad5230f16",
+    "7": "2aff855663f092f30952ec3404f31c0aa09bc2bdf87f57b5829d190f2c0c990e"
+  },
+  "new_audio_hash_by_group": {},
+  "text_sent_to_sarvam_for_repair": {
+    "7": "প্রলাপে পুত্রের নাম উচ্চারণ করিতে করিতে ... কিন্তু তাহাদের নাম করিতে চাহি না"
+  },
+  "removed_text": ["১২৯৮?"],
+  "duration_before_repair_seconds": 855.520104,
+  "estimated_incremental_cost_usd": 0.01,
+  "sarvam_response_status": "NOT_RUN",
+  "failure": "No paid group-regeneration command was run in this step; source fix and repair manifest path are ready."
+}

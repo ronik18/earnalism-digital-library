@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-legend-of-sleepy-hollow",
+  "slug": "the-legend-of-sleepy-hollow",
+  "title": "The Legend of Sleepy Hollow",
+  "subtitle": "",
+  "author": "Washington Irving",
+  "category_slug": "gothic-fiction",
+  "short_description": "The superstitious schoolmaster Ichabod Crane is pursued through a dark forest by the Headless Horseman.",
+  "description": "Ichabod Crane, a superstitious schoolmaster and rival in love, is chased home through Sleepy Hollow by what may be a ghost or may be his romantic rival in disguise — America's first great Gothic tale.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "52 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Washington Irving (1783–1859) was an American author and the first writer of fiction to achieve international fame from the United States.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Legend of Sleepy Hollow",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 12267,
+      "reading_minutes": 52,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "8bb82877a5f11221b4aad10ee6b048d7171f48e5a4b600d67c57839fcfb873a4",
+  "content_hash": "b461d1dc8d09ff6030890e130f5386489dc3f9764d7c6df2319a5dda60e0c80c",
+  "provenance_hash": "27d2f82e0abdc3be14e8a647096b5a9e59acc561cfa42ed50f1e5af6b363eea5",
+  "rights_basis": "Washington Irving died 1859; first published 1820. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-legend-of-sleepy-hollow",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591150/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591152/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591153/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591154/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591154/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591150/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591150/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591152/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591153/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591154/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591154/earnalism/audiobooks/en/the-legend-of-sleepy-hollow/the-legend-of-sleepy-hollow_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:49Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z"
+}

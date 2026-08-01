@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-07-07T12:04:53Z",
+  "frontend_source_worktree": "/private/tmp/earnalism-frontend-prod-main",
+  "frontend_source_branch": "codex/bengali-approved-audio-locked-reader-panel",
+  "frontend_source_commit": "bbf5c17f06643c12c52a4aff4062b25da0f0cc6b",
+  "frontend_status_short": "CLEAN",
+  "backend_factory_source_status": "?? internal/audiobook_lab/scripts/factory_hooks/browser_hook.py\n?? internal/audiobook_lab/scripts/release_catalog_factory.py",
+  "backend_factory_source_files": [
+    {
+      "path": "internal/audiobook_lab/scripts/release_catalog_factory.py",
+      "exists": true,
+      "tracked": false,
+      "status_line": "?? internal/audiobook_lab/scripts/release_catalog_factory.py"
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/browser_hook.py",
+      "exists": true,
+      "tracked": false,
+      "status_line": "?? internal/audiobook_lab/scripts/factory_hooks/browser_hook.py"
+    }
+  ],
+  "changes_must_be_preserved": [
+    "frontend Reader.jsx/index.css reader-manifest audio support already committed and deployed from codex/bengali-approved-audio-locked-reader-panel",
+    "internal/audiobook_lab/scripts/release_catalog_factory.py resume/final evidence blocker clearing logic",
+    "internal/audiobook_lab/scripts/factory_hooks/browser_hook.py production browser gate support for approved reader-manifest audio"
+  ],
+  "generated_local_only_files": [
+    "internal/audiobook_lab/release_gate/**",
+    "frontend/build/**",
+    "ux_visual_regression_report.json",
+    "book_cover_audit_*",
+    "generated audio/sidecars/logs/screenshots/caches/signed URLs"
+  ],
+  "exact_commit_merge_recommendation": "Promote the untracked factory/browser hook source through /private/tmp/earnalism-source-only-clean-integration or a dedicated source-only branch; do not commit release_gate outputs or imported content. Frontend production patch is already committed at bbf5c17f06643c12c52a4aff4062b25da0f0cc6b and should be merged from its PR/branch if not already merged.",
+  "risk_if_not_preserved": "Future factory resumes can regress to stale blocker accumulation or fail browser gates despite live audio; future frontend deploys can hide approved Bengali audio controls again.",
+  "source_preservation_status": "PARTIAL_FRONTEND_COMMITTED_FACTORY_SOURCE_UNTRACKED"
+}

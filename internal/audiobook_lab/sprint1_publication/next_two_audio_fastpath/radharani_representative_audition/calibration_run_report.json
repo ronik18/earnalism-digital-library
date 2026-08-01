@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "slug": "radharani",
+  "mode": "BOUNDED_REPRESENTATIVE_CALIBRATION",
+  "scope": {"max_passages": 2, "providers": ["sarvam"], "voice": "sarvam:ratan", "full_book_tts": false},
+  "status": "STOPPED_PROVIDER_TIMEOUT_NO_ARTIFACTS",
+  "provider_calls_started": true,
+  "provider_calls_completed": false,
+  "publication_attempted": false,
+  "release_gate_mutated": false,
+  "reason": "The bounded Sarvam process produced no audition artifacts and exceeded the operational timeout boundary; it was terminated fail-closed.",
+  "budget_env_supplied": true,
+  "budget_cap_usd": 175.0,
+  "per_title_cap_usd": 30.0,
+  "audition_cap_usd": 1.0,
+  "actual_spend_usd": "not_available",
+  "next_action": "Do not retry the same provider/voice blindly; use the reviewed Radharani rescue/import path or a separately approved alternate provider."
+}

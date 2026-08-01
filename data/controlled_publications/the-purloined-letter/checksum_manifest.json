@@ -1,0 +1,34 @@
+{
+  "slug": "the-purloined-letter",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "12d785fc5c7091756b9ef88ab34c19c8e94e90f29843b108045d97bd0f042ed9"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "485b89a0872f1a7815a4b4261110a6987709c51eedddb49c50c677ea6eb050b2"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "32a3cf87c128627123cccf37c3fe2c3a3aae8c40564cfcd3bd42b76597d30408"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "b3a63ad3cb0a48702a5fa94009c2ff4eb9357291bb39bbf820ba72b3a6f22170"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "bd42da9003f879eea7c3746be87d491085f336a51b1363ed44d61f35d3402f33"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "23d67370acaeb2f78188f15d55ef5c4512147b593a17d8c55d071629474bdc95"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "the-imp-of-the-perverse",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "e33cac9a4c50a73e70104ae773954315695ce18a6eb44e1a37ae5f881239e65f"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "301d25f29901377c969b8d77006ee72b6fa8f5409c5be721de2a4f18a0408ad9"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "0f8706e91dce5be420da44bad2114aa072e4ef28ad377900fcc8d257f0bfac6f"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "24b22c5e5d2631d7dd5551a1cb95acad422d6d9454d5c0f70608972d3c7b222c"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "8e4dbdaa116d75d0997b8b5ef75c5775d02332fc518280b0714de72e3615493a"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "bbce0a00add361ab719d9f97e7d630c0989bef4c074348b70500a8a5bc9bdd01"
+    }
+  ]
+}

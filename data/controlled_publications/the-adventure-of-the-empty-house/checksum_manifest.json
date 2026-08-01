@@ -1,0 +1,34 @@
+{
+  "slug": "the-adventure-of-the-empty-house",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "2ed89c30eeed40144a511d282b5a7ea5c5f1462fea12f5ae803884eca4aaef1f"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "8231ec864f1979f11e0f408bf533888c8ec0b85dc143d32f7cd9e56394a2b488"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "0c1e349389cf3e84be2a54883efef74d906a0223770b8ca832122869b877bc36"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "b63b4d826395bc802b4bfde37f98d277eeb44673862b202faa9e022ad494be7b"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "d6f2d3cc631c88b2ac6b6e6d45b5df8e743e21035fa081702148b0f89c396257"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "1e97d33c69253a1322ddec44d72832feef63eec6c9f83fb0620aebc350cb6036"
+    }
+  ]
+}

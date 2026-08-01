@@ -1,0 +1,13 @@
+{
+  "slug": "the-furnished-room",
+  "source_url": "https://www.gutenberg.org/ebooks/2776",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "d684d8a0b1f05e3d9fcc773a1865638899d10056ae68982e9bfb8cc16bfe0596",
+  "content_hash": "31f02252aef36b093080d6896220b58079628e8f6c15a00c1c575c8e5b6f2830",
+  "provenance_hash": "28234022f7b918ca569e0f1b59cb57bba80e54ce149e25ed61ba044ee2104046",
+  "rights_basis": "O. Henry died 1910; first published 1904. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.093874+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

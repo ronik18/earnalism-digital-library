@@ -1,0 +1,13 @@
+{
+  "slug": "the-purloined-letter",
+  "source_url": "https://www.gutenberg.org/ebooks/2148",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "99de013d9419389e884e72a91328bc815ac35158c71aaf703d57b9f0a4de836b",
+  "content_hash": "cd6b9310551df3ad1a0618cff3295671a7b120a29d4e7084b21ac26019fcda82",
+  "provenance_hash": "5c62101e10697153b9580b73f755beb9b87e52472ec5b56742eab750433cc711",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1844. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.168135+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

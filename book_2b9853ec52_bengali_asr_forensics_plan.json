@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-07-07T05:05:41.090556+00:00",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "provider": "sarvam",
+  "model": "bulbul:v3",
+  "voice": "ratan",
+  "style": "literary_warm_pacing",
+  "available_artifacts": {
+    "run_dir": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z",
+    "tts_report": "sarvam_full_pilot_tts_report.json",
+    "run_tts_report": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/sarvam_full_pilot_tts_report.json",
+    "chunk_manifest": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/tts_chunk_manifest.json",
+    "clean_manuscript": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/clean_manuscript.txt",
+    "asr_report": "sarvam_full_pilot_asr_report.json",
+    "asr_transcript": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/asr_transcript.txt",
+    "asr_alignment_diagnosis": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/asr_alignment_diagnosis.json",
+    "bengali_asr_mismatch_diagnosis": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/bengali_asr_mismatch_diagnosis.json",
+    "sync_report": "sarvam_full_pilot_sync_report.json",
+    "golive_evidence": "sarvam_bengali_pilot_goliveevidence.json",
+    "final_audio": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/book-2b9853ec52_sarvam_bulbul_v3_ratan_literary_warm_pacing_final.mp3"
+  },
+  "missing_artifacts": {
+    "word_or_segment_timestamps": true,
+    "release_approved_sidecars": true,
+    "full_listening_qa_report": true,
+    "upload_checksum_evidence": true,
+    "metadata_approval_evidence": true,
+    "browser_gate_evidence": true
+  },
+  "canonical_manuscript_hash": "1e1d0b25627df784b861b8c6314b8bade1baabc554122dabf00dd8c5f2ae4dd9",
+  "saved_clean_manuscript_hash": "788851c603ab1700f9e33bdfdc6a3e3c04f2ebb79890b88bc8c88f138270095d",
+  "tts_input_hash_from_report": "7720fba20d3a611c4611d11938675d21a2eba902d52637eb99dc7616787c857a",
+  "final_audio_hash": "fbe8f561a95f0a0a102944988b5d1dfa7704d50abf18bd1b2511dda11e768022",
+  "group_count": 3,
+  "final_audio_duration_seconds": 330.061917,
+  "asr_provider_used": "gpt-4o-mini-transcribe",
+  "normalization_used": {
+    "existing_alignment_normalized_asr_score": 0.299,
+    "existing_phonetic_projection_score": 0.299,
+    "forensic_bengali_char_normalization": "Bengali letters/digits retained; punctuation/spacing dropped for provenance comparison"
+  },
+  "suspected_failure_mode": "mixed: current audio was generated from saved source text that includes disallowed frontmatter/source lines; ASR is also weak/no-timestamp but cannot be treated as sole blocker",
+  "cheapest_safe_repair_path": "Do not rerun auditions. Regenerate only the affected TTS groups, or a second pilot if grouping changes, using the already-patched frontmatter-stripping TTS prep and the frozen Sarvam ratan/literary_warm_pacing arm; then rerun ASR/provenance/sync/listening gates before upload.",
+  "publish_allowed_now": false
+}

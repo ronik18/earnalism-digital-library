@@ -1,0 +1,470 @@
+{
+  "generated_at": "2026-07-07T17:06:05Z",
+  "rules": [
+    "No audio teaser for unapproved audio.",
+    "No word-level sync claim for paragraph/stanza sync.",
+    "Use graphical covers only.",
+    "Do not mention internal source URLs."
+  ],
+  "books": [
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "language": "ben",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267849/earnalism/covers/front/book-2b9853ec52_front_1600x2400.png",
+      "audio_teaser_15s": "Create from approved endpoint only",
+      "audio_teaser_30s": "Create from approved endpoint only",
+      "quote_card": "Use a short public-domain excerpt from দুই বিঘা জমি after source/body verification.",
+      "reel_script": "Hook: First live Bengali audiobook: land, loss, and dignity in a compact Tagore classic. Show cover, one line of context, CTA: Listen now.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: দুই বিঘা জমি in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why দুই বিঘা জমি still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "দুই বিঘা জমি হারানো এক কৃষকের মর্মান্তিক বিচ্ছেদের কাব্যকাহিনি।",
+      "ad_copy_variants": [
+        "Read দুই বিঘা জমি in a calmer digital library.",
+        "A premium edition of দুই বিঘা জমি for focused reading.",
+        "Listen to দুই বিঘা জমি on Earnalism."
+      ],
+      "bengali_caption": "দুই বিঘা জমি পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "language": "eng",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783227075/earnalism/covers/front/a-ghost-story_front_1600x2400.png",
+      "audio_teaser_15s": "Create from approved endpoint only",
+      "audio_teaser_30s": "Create from approved endpoint only",
+      "quote_card": "Use a short public-domain excerpt from A Ghost Story after source/body verification.",
+      "reel_script": "Hook: Approved comic ghost audiobook: Mark Twain turns haunting into absurdity. Show cover, one line of context, CTA: Listen now.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: A Ghost Story in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why A Ghost Story still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "A man is haunted all night by the ghost of the Cardiff Giant — who himself is being haunted by the original petrified man.",
+      "ad_copy_variants": [
+        "Read A Ghost Story in a calmer digital library.",
+        "A premium edition of A Ghost Story for focused reading.",
+        "Listen to A Ghost Story on Earnalism."
+      ],
+      "bengali_caption": "",
+      "english_caption": "Read A Ghost Story in Earnalism's calm digital reading room."
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "language": "ben",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783226942/earnalism/covers/front/muchiram-gurer-jibanchorit_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from মুচিরাম গুড়ের জীবনচরিত after source/body verification.",
+      "reel_script": "Hook: Compact human drama suited to quote cards and audio teasers. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: মুচিরাম গুড়ের জীবনচরিত in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why মুচিরাম গুড়ের জীবনচরিত still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "ঔপনিবেশিক আমলের সুবিধাবাদী বাঙালি চরিত্রের নির্মম ব্যঙ্গচিত্র।",
+      "ad_copy_variants": [
+        "Read মুচিরাম গুড়ের জীবনচরিত in a calmer digital library.",
+        "A premium edition of মুচিরাম গুড়ের জীবনচরিত for focused reading.",
+        "Read মুচিরাম গুড়ের জীবনচরিত on Earnalism."
+      ],
+      "bengali_caption": "মুচিরাম গুড়ের জীবনচরিত পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "language": "ben",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783226957/earnalism/covers/front/book-d19e96859f_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from গিন্নি after source/body verification.",
+      "reel_script": "Hook: Bengali classic with strong cultural recall and reader-first appeal. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: গিন্নি in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why গিন্নি still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "রবীন্দ্রনাথ ঠাকুরের একটি বাংলা ছোটগল্প।",
+      "ad_copy_variants": [
+        "Read গিন্নি in a calmer digital library.",
+        "A premium edition of গিন্নি for focused reading.",
+        "Read গিন্নি on Earnalism."
+      ],
+      "bengali_caption": "গিন্নি পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "language": "ben",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783226987/earnalism/covers/front/book-f5d593e1f4_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from রামকানাইয়ের নির্বুদ্ধিতা after source/body verification.",
+      "reel_script": "Hook: Bengali classic with strong cultural recall and reader-first appeal. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: রামকানাইয়ের নির্বুদ্ধিতা in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why রামকানাইয়ের নির্বুদ্ধিতা still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "রবীন্দ্রনাথ ঠাকুরের একটি প্রারম্ভিক বাংলা ছোটগল্প।",
+      "ad_copy_variants": [
+        "Read রামকানাইয়ের নির্বুদ্ধিতা in a calmer digital library.",
+        "A premium edition of রামকানাইয়ের নির্বুদ্ধিতা for focused reading.",
+        "Read রামকানাইয়ের নির্বুদ্ধিতা on Earnalism."
+      ],
+      "bengali_caption": "রামকানাইয়ের নির্বুদ্ধিতা পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "language": "ben",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273666/earnalism/covers/front/book-ac5a71075e_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from পোস্টমাস্টার after source/body verification.",
+      "reel_script": "Hook: Compact human drama suited to quote cards and audio teasers. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: পোস্টমাস্টার in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why পোস্টমাস্টার still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "একজন তরুণ পোস্টমাস্টার ও তার এতিম সহায়িকার মধ্যে গড়ে ওঠা নিঃসঙ্গতার গল্প।",
+      "ad_copy_variants": [
+        "Read পোস্টমাস্টার in a calmer digital library.",
+        "A premium edition of পোস্টমাস্টার for focused reading.",
+        "Read পোস্টমাস্টার on Earnalism."
+      ],
+      "bengali_caption": "পোস্টমাস্টার পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "language": "eng",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from The Gift of the Magi after source/body verification.",
+      "reel_script": "Hook: Compact human drama suited to quote cards and audio teasers. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: The Gift of the Magi in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why The Gift of the Magi still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "A poor couple each secretly sell their most prized possession to buy a Christmas gift for the other.",
+      "ad_copy_variants": [
+        "Read The Gift of the Magi in a calmer digital library.",
+        "A premium edition of The Gift of the Magi for focused reading.",
+        "Read The Gift of the Magi on Earnalism."
+      ],
+      "bengali_caption": "",
+      "english_caption": "Read The Gift of the Magi in Earnalism's calm digital reading room."
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "language": "eng",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275496/earnalism/covers/front/the-tell-tale-heart_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from The Tell-Tale Heart after source/body verification.",
+      "reel_script": "Hook: Gothic atmosphere and suspense for short-form literary discovery. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: The Tell-Tale Heart in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why The Tell-Tale Heart still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "A murderer's guilty conscience manifests as the relentless beating of his victim's heart beneath the floorboards.",
+      "ad_copy_variants": [
+        "Read The Tell-Tale Heart in a calmer digital library.",
+        "A premium edition of The Tell-Tale Heart for focused reading.",
+        "Read The Tell-Tale Heart on Earnalism."
+      ],
+      "bengali_caption": "",
+      "english_caption": "Read The Tell-Tale Heart in Earnalism's calm digital reading room."
+    },
+    {
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "language": "eng",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from The Open Window after source/body verification.",
+      "reel_script": "Hook: Compact human drama suited to quote cards and audio teasers. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: The Open Window in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why The Open Window still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "A self-possessed fifteen-year-old girl tells a nervous visitor a ghost story — and it works perfectly.",
+      "ad_copy_variants": [
+        "Read The Open Window in a calmer digital library.",
+        "A premium edition of The Open Window for focused reading.",
+        "Read The Open Window on Earnalism."
+      ],
+      "bengali_caption": "",
+      "english_caption": "Read The Open Window in Earnalism's calm digital reading room."
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "language": "eng",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from Sredni Vashtar after source/body verification.",
+      "reel_script": "Hook: Gothic atmosphere and suspense for short-form literary discovery. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: Sredni Vashtar in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why Sredni Vashtar still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "A sickly boy worships a ferret as a god — and prays for it to destroy his cruel guardian.",
+      "ad_copy_variants": [
+        "Read Sredni Vashtar in a calmer digital library.",
+        "A premium edition of Sredni Vashtar for focused reading.",
+        "Read Sredni Vashtar on Earnalism."
+      ],
+      "bengali_caption": "",
+      "english_caption": "Read Sredni Vashtar in Earnalism's calm digital reading room."
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "language": "eng",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from Désirée's Baby after source/body verification.",
+      "reel_script": "Hook: Compact human drama suited to quote cards and audio teasers. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: Désirée's Baby in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why Désirée's Baby still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "A Louisiana plantation wife is cast out when her baby shows signs of Black ancestry — but the truth points elsewhere.",
+      "ad_copy_variants": [
+        "Read Désirée's Baby in a calmer digital library.",
+        "A premium edition of Désirée's Baby for focused reading.",
+        "Read Désirée's Baby on Earnalism."
+      ],
+      "bengali_caption": "",
+      "english_caption": "Read Désirée's Baby in Earnalism's calm digital reading room."
+    },
+    {
+      "slug": "book-1090573dff",
+      "title": "ছুটি",
+      "language": "ben",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273676/earnalism/covers/front/book-1090573dff_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from ছুটি after source/body verification.",
+      "reel_script": "Hook: Accessible emotional classic with student/family appeal. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: ছুটি in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why ছুটি still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "প্রকৃতির সাথে একাত্ম এক কিশোরের ছুটির আনন্দ ও তার বিষণ্ণ পরিণতির গল্প।",
+      "ad_copy_variants": [
+        "Read ছুটি in a calmer digital library.",
+        "A premium edition of ছুটি for focused reading.",
+        "Read ছুটি on Earnalism."
+      ],
+      "bengali_caption": "ছুটি পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "language": "ben",
+      "cover_image": "runtime_graphical_cover_fallback",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from ক্ষুধিত পাষাণ after source/body verification.",
+      "reel_script": "Hook: Gothic atmosphere and suspense for short-form literary discovery. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: ক্ষুধিত পাষাণ in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why ক্ষুধিত পাষাণ still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "একটি প্রাচীন প্রাসাদে অতৃপ্ত আত্মার সাথে এক রাত কাটানোর রহস্যময় অভিজ্ঞতা।",
+      "ad_copy_variants": [
+        "Read ক্ষুধিত পাষাণ in a calmer digital library.",
+        "A premium edition of ক্ষুধিত পাষাণ for focused reading.",
+        "Read ক্ষুধিত পাষাণ on Earnalism."
+      ],
+      "bengali_caption": "ক্ষুধিত পাষাণ পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "title": "একরাত্রি",
+      "language": "ben",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275463/earnalism/covers/front/book-4b944e64fa_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from একরাত্রি after source/body verification.",
+      "reel_script": "Hook: Compact human drama suited to quote cards and audio teasers. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: একরাত্রি in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why একরাত্রি still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "একটি বন্যার রাতে দুটি হৃদয়ের মিলন ও বিচ্ছেদের অমর গল্প।",
+      "ad_copy_variants": [
+        "Read একরাত্রি in a calmer digital library.",
+        "A premium edition of একরাত্রি for focused reading.",
+        "Read একরাত্রি on Earnalism."
+      ],
+      "bengali_caption": "একরাত্রি পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "language": "ben",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270666/earnalism/covers/front/radharani_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from রাধারাণী after source/body verification.",
+      "reel_script": "Hook: Compact human drama suited to quote cards and audio teasers. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: রাধারাণী in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why রাধারাণী still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "দারিদ্র্যের মধ্যে বড় হওয়া রাধারাণীর সরলতা ও সৌন্দর্যের মধ্য দিয়ে ভালোবাসার জয়ের গল্প।",
+      "ad_copy_variants": [
+        "Read রাধারাণী in a calmer digital library.",
+        "A premium edition of রাধারাণী for focused reading.",
+        "Read রাধারাণী on Earnalism."
+      ],
+      "bengali_caption": "রাধারাণী পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "language": "ben",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273654/earnalism/covers/front/nishkriti_front_1600x2400.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from নিষ্কৃতি after source/body verification.",
+      "reel_script": "Hook: Compact human drama suited to quote cards and audio teasers. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: নিষ্কৃতি in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why নিষ্কৃতি still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "সামাজিক বন্ধন থেকে মুক্তির সন্ধানে এক নারীর সাহসী পদক্ষেপের গল্প।",
+      "ad_copy_variants": [
+        "Read নিষ্কৃতি in a calmer digital library.",
+        "A premium edition of নিষ্কৃতি for focused reading.",
+        "Read নিষ্কৃতি on Earnalism."
+      ],
+      "bengali_caption": "নিষ্কৃতি পড়ুন Earnalism-এ।",
+      "english_caption": ""
+    },
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "language": "eng",
+      "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+      "audio_teaser_15s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "audio_teaser_30s": "BLOCKED_UNTIL_AUDIO_RELEASE_GATES_PASS",
+      "quote_card": "Use a short public-domain excerpt from Dracula after source/body verification.",
+      "reel_script": "Hook: Gothic atmosphere and suspense for short-form literary discovery. Show cover, one line of context, CTA: Read the edition.",
+      "carousel_script": [
+        "Cover/title",
+        "Why it matters",
+        "One safe excerpt",
+        "Reader/audio availability truth",
+        "CTA"
+      ],
+      "youtube_shorts_script": "0-3s hook: Dracula in one sentence. 3-12s theme/context. 12-20s reading-room visual. CTA.",
+      "long_form_video_idea": "Why Dracula still works today: context, theme, and how Earnalism prepared the edition.",
+      "landing_page_copy": "An epistolary Gothic horror novel tracing Count Dracula's attempt to move from Transylvania to England.",
+      "ad_copy_variants": [
+        "Read Dracula in a calmer digital library.",
+        "A premium edition of Dracula for focused reading.",
+        "Read Dracula on Earnalism."
+      ],
+      "bengali_caption": "",
+      "english_caption": "Read Dracula in Earnalism's calm digital reading room."
+    }
+  ]
+}

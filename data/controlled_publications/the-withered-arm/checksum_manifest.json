@@ -1,0 +1,34 @@
+{
+  "slug": "the-withered-arm",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "de34d87038b46268b04e787ba6e0c518e7fcc627df1ebc3f3c8a494455451516"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "d52378cb81a1b809a84c4065faaa80eaed4e861eb32e7d182d5139a0059d7a43"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "af75fb0d6d23a45917f55dc3b842c1dbc2fbfc4fb2106e39dc46fe9dd05ed11a"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "9579fb565dede58157ee23cd1851b52caff5942d071804368164dbf61f3dac2f"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "2fde117267249fb6a98ad38bd548c58a45ce3a371d01ed0196bfefc0c80459c3"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "d68605e66e4a4d9adb6783851f014337e244d26111c04949fd12357b21ccbbc9"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "62cbc49e83294f28b40a873818f1ef0c902775c2c6aecd5739cff6e8bcf1fafe"
+    }
+  ]
+}

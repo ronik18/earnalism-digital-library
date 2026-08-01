@@ -1,0 +1,34 @@
+{
+  "slug": "rip-van-winkle",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "0a72c93746942e3342969beda4951653de11bfcd9eaa7da27c9420f78c362541"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "8d7946a03f39338c27d819204d69cae163b03cc62d2f2f9ec0a322847e2dfef4"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "ccdd498249077288ac56c0c9e0eca3a96d57e28916baeb9decf601ec87921cf7"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "122416a181376f001800dcb193e58c142a3ac04a66ba201ef42c96dccd3be7f7"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "1fb6f6e6ff512ca21fa0b4458765ecf1e0711cc4e952bfade003f3079dbdae87"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "df60eaedc97681e0bd0d173ec2e2857486ae3ed5a213a3d0ca98e72c729e5bca"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "358cc805ffccb137fe11c57a14efcb614e27bba1d7eb0cf303d8b34f840b3323"
+    }
+  ]
+}

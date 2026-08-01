@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-07-07T05:21:09.067929+00:00",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "provider_model_voice_style": "Sarvam / bulbul:v3 / ratan / literary_warm_pacing",
+  "contaminated_group_ids": [
+    0
+  ],
+  "exact_disallowed_frontmatter_source_metadata_detected": [
+    {
+      "group_id": 0,
+      "text": "রবীন্দ্রনাথ ঠাকুর",
+      "reason": "source/title-page metadata excluded from audiobook narration"
+    },
+    {
+      "group_id": 0,
+      "text": "চিত্রা",
+      "reason": "source/title-page metadata excluded from audiobook narration"
+    },
+    {
+      "group_id": 0,
+      "text": "১৮৯৫ (পৃ. ৬৫-৬৯)",
+      "reason": "source/title-page metadata excluded from audiobook narration"
+    },
+    {
+      "group_id": 0,
+      "text": "দুই বিঘা জমি।",
+      "reason": "source/title-page metadata excluded from audiobook narration"
+    }
+  ],
+  "clean_audiobook_opening_text": "শুধু বিঘে দুই ছিল মোর ভুঁই আর সবি গেছে ঋণে বাবু বলিলেন",
+  "canonical_manuscript_hash": "1e1d0b25627df784b861b8c6314b8bade1baabc554122dabf00dd8c5f2ae4dd9",
+  "current_tts_input_hash": "7720fba20d3a611c4611d11938675d21a2eba902d52637eb99dc7616787c857a",
+  "corrected_tts_input_hash": "8bb44a151a11fa7f3206c7562a7e8bf72fdb36787b84276f6559aab7a7a9a690",
+  "affected_audio_files": [
+    "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/sarvam_tts_chunks/group_0000_00df83ccad96.wav"
+  ],
+  "unaffected_audio_files_reusable": [
+    "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/sarvam_tts_chunks/group_0001_4813e6b989d0.wav",
+    "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/sarvam_tts_chunks/group_0002_376c145f02f3.wav"
+  ],
+  "cheapest_safe_repair_path": "Regenerate only contaminated group(s); reuse unchanged groups from previous Sarvam run; reassemble and rerun provenance, ASR/supporting, measured paragraph/stanza sync, listening QA, upload/metadata/browser gates.",
+  "estimated_cost": {
+    "estimated_regenerated_chars": 1326,
+    "estimated_cost_usd": 0.008,
+    "prior_full_pilot_cost_usd": 0.0197
+  },
+  "approval_env_status": {
+    "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": false,
+    "EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD": false,
+    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": false,
+    "EARNALISM_ENABLE_OPENAI_LISTENING_QA": false,
+    "EARNALISM_OPENAI_LISTENING_QA_MODEL": false,
+    "EARNALISM_LISTENING_POLICY_VERSION": false,
+    "SARVAM_API_KEY": true,
+    "OPENAI_API_KEY": true
+  },
+  "expected_verification_gates": [
+    "clean TTS provenance",
+    "ASR/supporting verification",
+    "PARAGRAPH_OR_STANZA_SYNC_PREMIUM measured sync",
+    "full listening QA",
+    "upload/checksum",
+    "metadata approval",
+    "endpoint/browser gate"
+  ],
+  "group_repair_plan_status": "PASS",
+  "group_repair_manifest_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/tts_chunk_manifest.json",
+  "group_repair_blockers": []
+}

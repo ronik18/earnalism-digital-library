@@ -1,0 +1,525 @@
+# Repo Hygiene Post Bengali Pilot Report
+
+Generated: 2026-07-07T12:07:38Z
+
+## Summary
+
+- SOURCE_KEEP: 56
+- TEST_KEEP: 8
+- POLICY_MEMORY_KEEP: 21
+- DOC_REPORT_KEEP: 90
+- LOCAL_EVIDENCE_PRESERVE_NOT_GIT: 22
+- GENERATED_ARTIFACT_IGNORE: 0
+- ROLLBACK_PAYLOAD_PRESERVE_NOT_GIT: 0
+- UNKNOWN_REQUIRES_OWNER_DECISION: 2771
+
+## Key Decisions
+
+- No destructive cleanup was run.
+- Do not stage release_gate folders, audio, sidecars, build output, screenshots, logs, caches, signed URLs, or imported content noise.
+- Factory/browser hook source is still untracked and must be promoted through `/private/tmp/earnalism-source-only-clean-integration` or a dedicated source-only branch before canary work.
+- `frontend/package-lock.json` and `frontend/public/sitemap.xml` remain owner-review files from repo hygiene; do not promote without review.
+
+## Files
+
+- `SOURCE_KEEP` ` M` `.gitignore`
+- `POLICY_MEMORY_KEEP` ` M` `AGENTS.md`
+- `SOURCE_KEEP` ` M` `backend/data/controlled_launch.json`
+- `SOURCE_KEEP` ` M` `backend/server.py`
+- `TEST_KEEP` ` M` `backend/tests/test_b2_audiobook_routing.py`
+- `TEST_KEEP` ` M` `backend/tests/test_redis_cache_policy.py`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/bn-031/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/005-chapter-1.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/006-chapter-2.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/007-chapter-3.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/008-chapter-4.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/009-chapter-5.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/010-chapter-6.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/011-chapter-7.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/012-chapter-8.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/013-chapter-9.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/014-chapter-10.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/016-chapter-12.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/017-chapter-13.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/018-chapter-14.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/019-chapter-15.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/020-chapter-16.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/021-chapter-17.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/022-chapter-18.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/023-chapter-19.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/024-chapter-20.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/025-chapter-21.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/026-chapter-22.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/027-chapter-23.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/chapters/028-chapter-24.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/frankenstein/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/reader-content-quality-report.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-ambitious-guest/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-bet/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-celebrated-jumping-frog-of-calaveras-county/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-cop-and-the-anthem/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-enchanted-april/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-five-orange-pips/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-furnished-room/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-gift-of-the-magi/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-happy-prince/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-imp-of-the-perverse/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-last-leaf/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-legend-of-sleepy-hollow/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-luck-of-roaring-camp/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-man-in-a-case/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-man-with-the-twisted-lip/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-masque-of-the-red-death/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-metamorphosis/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-ministers-black-veil/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-most-dangerous-game/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-murders-in-the-rue-morgue/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-open-window/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-outcasts-of-poker-flat/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-pit-and-the-pendulum/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-principles-of-scientific-management/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-purloined-letter/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-ransom-of-red-chief/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-red-headed-league/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-science-of-getting-rich/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-selfish-giant/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-speckled-band/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-student/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-suicide-club/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/the-withered-arm/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/to-build-a-fire/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `content/books/young-goodman-brown/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_launch.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/a-jury-of-her-peers/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/a-mystery-of-heroism/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/a-retrieved-reformation/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/berenice/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-0986aeb7e3/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-0fbdaa730e/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-1090573dff/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-2b9853ec52/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-4968248842/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-4b944e64fa/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-5461971092/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-5704b31005/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-5aedda79fe/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-827fdc7aee/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-88ded9b47c/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-95624627d5/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-9a7f771921/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-a23625bf36/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-a4a369483f/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-ac5a71075e/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-b9d47814a8/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-bfc51280b3/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-c307a57868/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-c85323409f/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-edfcf810c5/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-ef193ffc52/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/book-fbdf2991ab/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/boule-de-suif/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/approval_evidence.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-001.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-002.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-003.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-004.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-005.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-006.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-007.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-008.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-009.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-010.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-011.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-012.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-013.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-014.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-015.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-016.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-017.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-018.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-019.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-020.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-021.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-022.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-023.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-024.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-025.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-026.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/chapters/chapter-027.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/checksum_manifest.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/public_book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/reader_manifest.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/dracula/source_evidence.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/approval_evidence.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-001.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-002.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-003.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-004.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-005.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-006.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-007.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-008.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-009.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-010.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-011.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-012.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-013.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-014.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-015.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-016.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-017.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-018.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-019.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-020.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-021.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-022.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-023.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-024.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-025.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-026.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-027.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/chapters/chapter-028.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/checksum_manifest.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/public_book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/reader_manifest.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/frankenstein/source_evidence.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/love-of-life/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/pauls-case/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/rikki-tikki-tavi/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/the-bishop/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/the-canterville-ghost/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/the-country-of-the-blind/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `data/controlled_publications/the-darling/highlight_sync.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `frontend/package-lock.json`
+- `SOURCE_KEEP` ` M` `frontend/public/index.html`
+- `SOURCE_KEEP` ` M` `frontend/public/robots.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` ` M` `frontend/public/sitemap.xml`
+- `SOURCE_KEEP` ` M` `frontend/scripts/generate-static-seo-snapshots.mjs`
+- `SOURCE_KEEP` ` M` `frontend/src/App.js`
+- `SOURCE_KEEP` ` M` `frontend/src/components/AudioPlayer.css`
+- `SOURCE_KEEP` ` M` `frontend/src/components/BookCard.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/components/BookCoverImage.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/components/BrandMark.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/components/FirstVisitSiteTour.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/components/Footer.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/components/Header.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/components/HeroBookObject.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/components/Layout.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/components/ShelfTwoSlideshow.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/context/SettingsContext.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/index.css`
+- `SOURCE_KEEP` ` M` `frontend/src/lib/api.js`
+- `SOURCE_KEEP` ` M` `frontend/src/lib/funnelAnalytics.js`
+- `SOURCE_KEEP` ` M` `frontend/src/lib/images.js`
+- `SOURCE_KEEP` ` M` `frontend/src/pages/BookDetail.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/pages/Home.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/pages/Library.jsx`
+- `SOURCE_KEEP` ` M` `frontend/src/pages/Reader.jsx`
+- `LOCAL_EVIDENCE_PRESERVE_NOT_GIT` ` D` `internal/audiobook_lab/release_gate/.audiobook_pipeline.run.lock`
+- `LOCAL_EVIDENCE_PRESERVE_NOT_GIT` ` M` `internal/audiobook_lab/release_gate/go_live_readiness_ranking.json`
+- `LOCAL_EVIDENCE_PRESERVE_NOT_GIT` ` M` `internal/audiobook_lab/release_gate/go_live_readiness_ranking.md`
+- `LOCAL_EVIDENCE_PRESERVE_NOT_GIT` ` M` `output/launch/post_deploy_route_canary.json`
+- `SOURCE_KEEP` ` M` `scripts/rank_go_live_readiness.py`
+- `DOC_REPORT_KEEP` `??` `autonomous_sprint_recovery_plan.json`
+- `DOC_REPORT_KEEP` `??` `bengali_audio_postprocess_report.json`
+- `DOC_REPORT_KEEP` `??` `bengali_audiobook_31_campaign_queue.json`
+- `DOC_REPORT_KEEP` `??` `bengali_audiobook_92_rescue_plan.json`
+- `DOC_REPORT_KEEP` `??` `bengali_audiobook_acceptance_v2_92_policy_decision.json`
+- `DOC_REPORT_KEEP` `??` `bengali_audiobook_campaign_dashboard.json`
+- `DOC_REPORT_KEEP` `??` `bengali_audiobook_future_strategy.md`
+- `DOC_REPORT_KEEP` `??` `bengali_audiobook_next_actions.md`
+- `DOC_REPORT_KEEP` `??` `bengali_audiobook_pilot_report.json`
+- `DOC_REPORT_KEEP` `??` `bengali_audiobook_pilot_selection_report.json`
+- `DOC_REPORT_KEEP` `??` `bengali_next_3_canary_preflight.json`
+- `DOC_REPORT_KEEP` `??` `bengali_pilot_policy_patch_preservation_report.json`
+- `DOC_REPORT_KEEP` `??` `bengali_pilot_source_preservation_report.json`
+- `DOC_REPORT_KEEP` `??` `bengali_reader_only_final_sprint_status.json`
+- `DOC_REPORT_KEEP` `??` `bengali_representative_audition_report.json`
+- `DOC_REPORT_KEEP` `??` `bengali_tts_text_prep_comparison.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_bengali_asr_forensics_plan.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_bengali_asr_provider_comparison.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_bengali_pilot_closeout.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_clean_asr_provider_comparison.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_clean_audiobook_text.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_clean_repair_closeout.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_clean_sync_plan.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_clean_tts_repair_plan.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_endpoint_404_closeout.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_endpoint_404_diagnosis.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_endpoint_materialization_plan.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_final_audio_reassembly_report.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_final_gate_closeout.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_final_gate_preflight.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_goliveevidence.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_group_repair_report.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_post_golive_verification.json`
+- `DOC_REPORT_KEEP` `??` `book_2b9853ec52_tts_source_provenance_report.json`
+- `DOC_REPORT_KEEP` `??` `book_cover_art_briefs.json`
+- `DOC_REPORT_KEEP` `??` `clean_integration_promotion_report.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-ghost-story/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-ghost-story/chapters/001-a-ghost-story.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-ghost-story/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-ghost-story/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-horseman-in-the-sky/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-horseman-in-the-sky/chapters/001-a-horseman-in-the-sky.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-horseman-in-the-sky/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-horseman-in-the-sky/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-jury-of-her-peers/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-jury-of-her-peers/chapters/001-a-jury-of-her-peers.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-jury-of-her-peers/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-jury-of-her-peers/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-mystery-of-heroism/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-mystery-of-heroism/chapters/001-a-mystery-of-heroism.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-mystery-of-heroism/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-mystery-of-heroism/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-retrieved-reformation/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-retrieved-reformation/chapters/001-a-retrieved-reformation.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-retrieved-reformation/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-retrieved-reformation/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-scandal-in-bohemia/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-scandal-in-bohemia/chapters/001-a-scandal-in-bohemia.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-scandal-in-bohemia/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-scandal-in-bohemia/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-wagner-matinee/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-wagner-matinee/chapters/001-a-wagner-matinee.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-wagner-matinee/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-wagner-matinee/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-white-heron/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-white-heron/chapters/001-a-white-heron.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-white-heron/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/a-white-heron/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/001-an-appreciation.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/002-acres-of-diamonds.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/003-i-the-story-of-the-sword.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/004-ii-the-beginning-at-old-lexington.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/005-iii-story-of-the-fifty-seven-cents.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/006-iv-his-power-as-orator-and-preacher.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/007-v-gift-for-inspiring-others.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/008-vi-millions-of-hearers.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/009-vii-how-a-university-was-founded.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/010-viii-his-splendid-efficiency.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/011-ix-the-story-of-acres-of-diamonds.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/chapters/012-fifty-years-on-the-lecture-platform.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/acres-of-diamonds/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/001-chapter-i.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/002-chapter-ii-the-pool-of-tears.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/003-chapter-iii.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/004-chapter-iv.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/005-chapter-v.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/006-chapter-vi.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/007-chapter-vii-a-mad-tea-party.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/008-chapter-viii-the-queens-croquet-ground.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/009-chapter-ix-the-mock-turtles-story.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/010-chapter-x-the-lobster-quadrille.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/011-chapter-xi.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/chapters/012-chapter-xii-alices-evidence.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/alices-adventures-in-wonderland/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/an-occurrence-at-owl-creek-bridge/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/an-occurrence-at-owl-creek-bridge/chapters/001-an-occurrence-at-owl-creek-bridge.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/an-occurrence-at-owl-creek-bridge/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/an-occurrence-at-owl-creek-bridge/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/berenice/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/berenice/chapters/001-berenice.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/berenice/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/berenice/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bharat-at-the-crossroads/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bharat-at-the-crossroads/chapters/001-full-text.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bharat-at-the-crossroads/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bharat-at-the-crossroads/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-027/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-027/chapters/001-অপরিচিতা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-027/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-027/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-031/chapters/001-chapter-1-১.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-031/chapters/002-chapter-2-২.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-031/chapters/003-chapter-3-৩.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-031/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-031/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/001-chapter-1-প্রথম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/002-chapter-2-দ্বিতীয়-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/003-chapter-3-তৃতীয়-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/004-chapter-4-চতুর্থ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/005-chapter-5-পঞ্চম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/006-chapter-6-ষষ্ঠ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/007-chapter-7-সপ্তম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/008-chapter-8-অষ্টম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/009-chapter-9-নবম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/chapters/010-chapter-10-দশম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-035/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/001-chapter-1-আঁধারে-আলো-এক.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/002-chapter-2-আঁধারে-আলো-দুই.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/003-chapter-3-আঁধারে-আলো-তিন.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/004-chapter-4-আঁধারে-আলো-চার.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/005-chapter-5-আঁধারে-আলো-পাঁচ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/006-chapter-6-আঁধারে-আলো-ছয়.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/007-chapter-7-মেজদিদি-এক.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/008-chapter-8-মেজদিদি-দুই.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/009-chapter-9-মেজদিদি-তিন.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/010-chapter-10-মেজদিদি-চার.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/011-chapter-11-মেজদিদি-পাঁচ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/012-chapter-12-মেজদিদি-ছয়.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/013-chapter-13-মেজদিদি-সাত.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/chapters/014-chapter-14-মেজদিদি-আট.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-036/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-041/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-041/chapters/001-chapter-1-এক.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-041/chapters/002-chapter-2-দুই.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-041/chapters/003-chapter-3-তিন.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-041/chapters/004-chapter-4-চার.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-041/chapters/005-chapter-5-পাঁচ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-041/chapters/006-chapter-6-ছয়.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-041/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-041/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/001-chapter-1-অষ্টম-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/002-chapter-2-একাদশ-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/003-chapter-3-চতুর্থ-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/004-chapter-4-তৃতীয়-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/005-chapter-5-ত্রয়োদশ-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/006-chapter-6-দশম-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/007-chapter-7-দ্বাদশ-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/008-chapter-8-দ্বিতীয়-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/009-chapter-9-নবম-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/010-chapter-10-পঞ্চম-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/011-chapter-11-প্রথম-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/012-chapter-12-ষষ্ঠ-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/chapters/013-chapter-13-সপ্তম-সংখ্যা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-059/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/chapters/001-chapter-1-প্রথম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/chapters/002-chapter-2-দ্বিতীয়-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/chapters/003-chapter-3-তৃতীয়-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/chapters/004-chapter-4-চতুর্থ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/chapters/005-chapter-5-পঞ্চম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/chapters/006-chapter-6-ষষ্ঠ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/chapters/007-chapter-7-সপ্তম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/chapters/008-chapter-8-অষ্টম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-060/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/001-chapter-1-উপক্রমণিকা.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/002-chapter-2-দ্বিতীয়-খণ্ড-প্রথম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/003-chapter-3-দ্বিতীয়-খণ্ড-দ্বিতীয়-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/004-chapter-4-দ্বিতীয়-খণ্ড-তৃতীয়-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/005-chapter-5-দ্বিতীয়-খণ্ড-চতুর্থ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/006-chapter-6-দ্বিতীয়-খণ্ড-পঞ্চম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/007-chapter-7-দ্বিতীয়-খণ্ড-ষষ্ঠ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/008-chapter-8-দ্বিতীয়-খণ্ড-সপ্তম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/009-chapter-9-দ্বিতীয়-খণ্ড-অষ্টম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/010-chapter-10-দ্বিতীয়-খণ্ড-নবম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/011-chapter-11-দ্বিতীয়-খণ্ড-দশম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/012-chapter-12-দ্বিতীয়-খণ্ড-একাদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/013-chapter-13-দ্বিতীয়-খণ্ড-দ্বাদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/014-chapter-14-দ্বিতীয়-খণ্ড-ত্রয়োদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/015-chapter-15-দ্বিতীয়-খণ্ড-চতুর্দ্দশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/016-chapter-16-দ্বিতীয়-খণ্ড-পঞ্চদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/017-chapter-17-দ্বিতীয়-খণ্ড-ষোড়শ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/018-chapter-18-দ্বিতীয়-খণ্ড-সপ্তদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/019-chapter-19-দ্বিতীয়-খণ্ড-অষ্টাদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/020-chapter-20-দ্বিতীয়-খণ্ড-ঊনবিংশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/021-chapter-21-দ্বিতীয়-খণ্ড-বিংশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/022-chapter-22-প্রথম-খণ্ড-প্রথম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/023-chapter-23-প্রথম-খণ্ড-দ্বিতীয়-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/024-chapter-24-প্রথম-খণ্ড-তৃতীয়-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/025-chapter-25-প্রথম-খণ্ড-চতুর্থ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/026-chapter-26-প্রথম-খণ্ড-পঞ্চম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/027-chapter-27-প্রথম-খণ্ড-ষষ্ঠ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/028-chapter-28-প্রথম-খণ্ড-সপ্তম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/029-chapter-29-প্রথম-খণ্ড-অষ্টম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/030-chapter-30-প্রথম-খণ্ড-নবম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/031-chapter-31-প্রথম-খণ্ড-দশম-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/032-chapter-32-প্রথম-খণ্ড-একাদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/033-chapter-33-প্রথম-খণ্ড-দ্বাদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/034-chapter-34-প্রথম-খণ্ড-ত্রয়োদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/035-chapter-35-প্রথম-খণ্ড-চতুর্দ্দশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/036-chapter-36-প্রথম-খণ্ড-পঞ্চদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/037-chapter-37-প্রথম-খণ্ড-ষোড়শ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/038-chapter-38-প্রথম-খণ্ড-সপ্তদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/039-chapter-39-প্রথম-খণ্ড-অষ্টাদশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/040-chapter-40-প্রথম-খণ্ড-ঊনবিংশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/041-chapter-41-প্রথম-খণ্ড-বিংশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/042-chapter-42-প্রথম-খণ্ড-একবিংশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/043-chapter-43-প্রথম-খণ্ড-চতুর্ব্বিংশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/044-chapter-44-প্রথম-খণ্ড-ত্রয়োবিংশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/045-chapter-45-প্রথম-খণ্ড-দ্বাবিংশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/chapters/046-chapter-46-প্রথম-খণ্ড-পঞ্চবিংশ-পরিচ্ছেদ.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/bn-066/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0986aeb7e3/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0986aeb7e3/chapters/001-হৈমন্তী.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0986aeb7e3/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0986aeb7e3/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0deb35c750/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0deb35c750/chapters/001-full-text.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0deb35c750/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0deb35c750/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0fbdaa730e/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0fbdaa730e/chapters/001-গুপ্তধন.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0fbdaa730e/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-0fbdaa730e/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-1090573dff/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-1090573dff/chapters/001-ছুটি.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-1090573dff/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-1090573dff/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2b9853ec52/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2b9853ec52/chapters/001-দুই-বিঘা-জমি.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2b9853ec52/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2b9853ec52/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2ddbed8293/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2ddbed8293/chapters/001-full-text.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2ddbed8293/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2ddbed8293/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2e468c4990/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2e468c4990/chapters/001-full-text.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2e468c4990/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-2e468c4990/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-4968248842/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-4968248842/chapters/001-বলাই.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-4968248842/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-4968248842/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-4b944e64fa/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-4b944e64fa/chapters/001-একরাত্রি.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-4b944e64fa/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-4b944e64fa/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5461971092/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5461971092/chapters/001-মেঘ-ও-রৌদ্র.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5461971092/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5461971092/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5704b31005/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5704b31005/chapters/001-বিচারক.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5704b31005/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5704b31005/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5aedda79fe/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5aedda79fe/chapters/001-শাস্তি.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5aedda79fe/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-5aedda79fe/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-63afd5e9be/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-63afd5e9be/chapters/001-full-text.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-63afd5e9be/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-63afd5e9be/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-754da4eab8/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-754da4eab8/chapters/001-full-text.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-754da4eab8/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-754da4eab8/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-827fdc7aee/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-827fdc7aee/chapters/001-রাসমণির-ছেলে.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-827fdc7aee/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-827fdc7aee/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-88ded9b47c/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-88ded9b47c/chapters/001-মানভঞ্জন.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-88ded9b47c/raw/source.txt`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-88ded9b47c/source-rights.md`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-95624627d5/book.json`
+- `UNKNOWN_REQUIRES_OWNER_DECISION` `??` `content/books/book-95624627d5/chapters/001-মধ্যবর্তিনী.json`
+- ... truncated 2468 additional entries; see git status for full list.

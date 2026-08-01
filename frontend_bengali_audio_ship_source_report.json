@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-07-07T11:48:33Z",
+  "status": "PRODUCTION_FRONTEND_DEPLOYED",
+  "pilot_slug": "book-2b9853ec52",
+  "pilot_title": "দুই বিঘা জমি",
+  "source_worktree": "/private/tmp/earnalism-frontend-prod-main",
+  "source_branch": "codex/bengali-approved-audio-locked-reader-panel",
+  "source_commit": "bbf5c17f06643c12c52a4aff4062b25da0f0cc6b",
+  "production_deploy": {
+    "provider": "vercel",
+    "deployment_id": "dpl_8d4m6uSb3NAkdiHB7TQaRAPevgFi",
+    "deployment_url": "https://earnalism-9iixfi2cz-sales-8498s-projects.vercel.app",
+    "production_aliases": [
+      "https://theearnalism.com",
+      "https://www.theearnalism.com"
+    ],
+    "status": "READY_AND_ALIASED"
+  },
+  "frontend_files_included": [
+    "frontend/src/pages/Reader.jsx",
+    "frontend/src/index.css",
+    "frontend/src/lib/audioReleaseSafety.js",
+    "frontend/src/lib/audioReleaseSafety.test.js",
+    "frontend/src/lib/api.js",
+    "frontend/src/components/ApprovedAudiobookSpotlight.jsx",
+    "frontend/scripts/visual-luxury-smoke.mjs"
+  ],
+  "reader_audio_support": {
+    "approved_reader_manifest_audio_rendered": true,
+    "locked_reader_audio_panel_rendered_for_approved_pilot": true,
+    "customer_facing_sync_wording": "Section-following narration",
+    "word_level_sync_claimed": false
+  },
+  "tests_already_passed": [
+    "npm ci --prefix frontend",
+    "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+    "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+    "git diff --check"
+  ],
+  "preview_validation_evidence": {
+    "pr87_status": "SHIP_READY",
+    "github_checks": "PASS",
+    "vercel_preview": "PASS",
+    "protected_preview_visual_smoke": "PASS"
+  },
+  "generated_artifacts_excluded": [
+    "frontend/build",
+    "frontend/public/sitemap.xml",
+    "screenshots",
+    "traces/videos",
+    "logs",
+    "caches",
+    "release_gate outputs",
+    "generated audio",
+    "sidecars",
+    "signed URLs",
+    "secrets"
+  ]
+}

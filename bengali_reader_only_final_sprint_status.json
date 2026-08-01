@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-07-06T20:36:38Z",
+  "status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+  "business_decision": "Bengali reader-only remains live/audio-hidden; automated Bengali audiobooks paused until materially new evidence exists.",
+  "provider_evidence": {
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "pooja",
+    "styles_tested": [
+      "dialogue_human_touch",
+      "literary_warm_pacing",
+      "punctuation_aware_emotional"
+    ],
+    "best_isolated_score": 9.6,
+    "best_isolated_confidence": 0.95,
+    "best_isolated_note": "Earlier isolated pooja/dialogue_human_touch emotional sample; not sufficient for release.",
+    "representative_score": 7.9,
+    "representative_confidence": 0.85,
+    "red_flags": [
+      "list_reading_rhythm_detected",
+      "mechanical_cadence_detected"
+    ],
+    "seed_generalized": false,
+    "full_pilot_generated": false,
+    "publish_decision": "DO_NOT_PUBLISH_KEEP_BENGALI_AUDIO_HIDDEN",
+    "estimated_cost_usd": 0.1699,
+    "actual_cost_if_available": "not_available"
+  },
+  "reader_only_status": {
+    "dashboard_path": "/private/tmp/earnalism-sprint-integration-clean/internal/audiobook_lab/release_gate/catalog_20260706T100008Z/bengali_go_live_dashboard.json",
+    "status": "BENGALI_READER_ONLY_LIVE_VERIFIED",
+    "total_bengali_titles": 106,
+    "eligible_reader_only_titles": 31,
+    "reader_only_approved": 31,
+    "reader_only_newly_approved_final_repair": 6,
+    "audiobook_live": 0,
+    "audiobook_endpoints_hidden": 31,
+    "audio_controls_hidden_verification": "PASS",
+    "rights_metadata_blockers": 0,
+    "allowlist_blockers": 0,
+    "schema_api_blockers": 0,
+    "permission_blockers": 0,
+    "rollback_path": "internal/audiobook_lab/release_gate/catalog_20260706T100008Z/bengali_reader_only_golive_evidence"
+  },
+  "future_reopening_criteria": [
+    "new Bengali provider/model with representative audition evidence >=9.3 and confidence >=0.90",
+    "human/professional narration workflow with representative audition pass",
+    "licensed audiobook import with rights, provenance, ASR/manuscript match, and measured sync",
+    "manually approved exceptional sample set that covers opening, dialogue, emotional, punctuation-heavy, and ending-style passages",
+    "improved Sarvam model/voice with fresh capability evidence and no mechanical/list-reading flags"
+  ],
+  "do_not_do": [
+    "do not run more automated Bengali TTS auditions in this sprint",
+    "do not generate a full Bengali pilot from isolated samples",
+    "do not expose Bengali audio publicly without all objective gates",
+    "do not mutate the 31 reader-only/audio-hidden titles again unless regression evidence exists"
+  ],
+  "next_bengali_strategy": "Preserve reader-only/audio-hidden Bengali catalog and resume audio only through materially new provider/model, licensed import, or human narration evidence."
+}

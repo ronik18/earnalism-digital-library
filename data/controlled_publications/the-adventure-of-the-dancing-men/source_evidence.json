@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-dancing-men",
+  "source_url": "https://www.gutenberg.org/ebooks/108",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "f8acdaa228e5ed8f8f5672316f2c6044c44da568fa9398e65a1267456b6a1774",
+  "content_hash": "924f60975fb2a9e147ac51b8abba1a0d1bee1efa475de9ece38615ac615fc755",
+  "provenance_hash": "17c0db286dcfaf0b34d86e4c47731ee963af1444b0a00f85d12d76981c1c4853",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1903. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.346626+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

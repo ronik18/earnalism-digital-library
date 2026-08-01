@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-engineers-thumb",
+  "source_url": "https://www.gutenberg.org/ebooks/1661",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "0a430ed09fb1ae520258e09ff18b49f4b53274301a20a76e517280b6be327861",
+  "content_hash": "a6aada95decc4f51b9563cf2ae9d928434298e484d158fb62cac729c85422946",
+  "provenance_hash": "8aab0fffcd582e9fd7601030b845d72895f46a9a7ca8fbd7acf451fff31486b7",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.177962+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

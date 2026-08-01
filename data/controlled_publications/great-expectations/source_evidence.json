@@ -1,0 +1,13 @@
+{
+  "slug": "great-expectations",
+  "source_url": "https://www.gutenberg.org/ebooks/1400.txt.utf-8",
+  "source_name": "Earnalism historical import",
+  "source_license": "Public domain",
+  "source_hash": "838b7315c58734824d4441c58a11cdb96eb05c3a766ea7a6d3011d619da80523",
+  "content_hash": "63a8e9aa1d418a2cac304e2b8628f0f170b1faa760bc52dbfd20409cc38ad389",
+  "provenance_hash": "5d09e07ba07bfed1e7aa1dc4453d159251b11670860335522f4bb2e0ae01abeb",
+  "rights_basis": "Public domain in India based on life plus 60 years; public domain in the U.S. based on original publication before 1931.",
+  "downloaded_at": "2026-05-20T08:24:18.856060+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

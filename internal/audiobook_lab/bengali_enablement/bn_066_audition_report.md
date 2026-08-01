@@ -106,3 +106,19 @@ Do not run full-book TTS before a representative audition passes.
 ## Release Truth
 
 No public audio approval changed. `bn-066` remains Stage 1 only while `paid_tts.lock` is active and until future representative plus full release gates pass.
+
+## Stage 2 Full-Book TTS Result
+
+Generated: 2026-07-10T10:54:33Z
+
+- Classification: `FULL_BOOK_TTS_PASS_QA_PENDING`
+- Provider/voice/style: `sarvam` / `pooja` / `literary_warm_pacing`
+- Final private MP3: `internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3`
+- Duration seconds: `21449.85075`
+- Chunks: `152`
+- Estimated TTS spend: `1.2226 USD`
+- Actual billing: not reported by provider tools
+- ASR/source alignment: `NOT_RUN_ASR_BUDGET_GATE_MISSING`
+- Full-book listening QA: `NOT_RUN_PENDING_BOUNDED_FULL_BOOK_QA_STAGE`
+- Release-gate owner approval readiness: `false`
+- Public audio approval: none

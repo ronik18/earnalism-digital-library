@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-07-05T17:45:00Z",
+  "total_unique_title_count": 262,
+  "latest_ranked_after_exclusions": 239,
+  "published_titles": [
+    "a-ghost-story"
+  ],
+  "published_total": 1,
+  "terminal_blockers_excluded_count": 25,
+  "terminal_blockers_excluded": [
+    "book-63afd5e9be",
+    "a-ghost-story",
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "book-2ddbed8293",
+    "book-f5d593e1f4",
+    "book-0deb35c750",
+    "book-754da4eab8",
+    "book-c7f3ce526c",
+    "book-a74c1a1451",
+    "book-2e468c4990",
+    "book-d2fe532e1c",
+    "bn-031",
+    "bn-027",
+    "book-2b9853ec52",
+    "the-open-window",
+    "book-4968248842",
+    "book-fbdf2991ab",
+    "the-student",
+    "the-selfish-giant",
+    "yugalanguriya",
+    "bn-041",
+    "bn-060",
+    "radharani",
+    "bn-035"
+  ],
+  "next_12_content_size_ranked_candidates_after_exclusions": [
+    {
+      "canonical_index": 204,
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 1717,
+      "content_size_rank": 1
+    },
+    {
+      "canonical_index": 193,
+      "slug": "book-1090573dff",
+      "title": "ছুটি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 1814,
+      "content_size_rank": 2
+    },
+    {
+      "canonical_index": 194,
+      "slug": "book-4b944e64fa",
+      "title": "একরাত্রি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 1822,
+      "content_size_rank": 3
+    },
+    {
+      "canonical_index": 159,
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "author": "Saki",
+      "language": "eng",
+      "word_count": 1825,
+      "content_size_rank": 4
+    },
+    {
+      "canonical_index": 196,
+      "slug": "book-5704b31005",
+      "title": "বিচারক",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 2027,
+      "content_size_rank": 5
+    },
+    {
+      "canonical_index": 100,
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "author": "O. Henry",
+      "language": "eng",
+      "word_count": 2117,
+      "content_size_rank": 6
+    },
+    {
+      "canonical_index": 95,
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "author": "Edgar Allan Poe",
+      "language": "eng",
+      "word_count": 2156,
+      "content_size_rank": 7
+    },
+    {
+      "canonical_index": 214,
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "author": "Kate Chopin",
+      "language": "eng",
+      "word_count": 2233,
+      "content_size_rank": 8
+    },
+    {
+      "canonical_index": 136,
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "author": "O. Henry",
+      "language": "eng",
+      "word_count": 2317,
+      "content_size_rank": 9
+    },
+    {
+      "canonical_index": 203,
+      "slug": "book-a4a369483f",
+      "title": "সম্পত্তি সমর্পণ",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 2329,
+      "content_size_rank": 10
+    },
+    {
+      "canonical_index": 101,
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "author": "O. Henry",
+      "language": "eng",
+      "word_count": 2424,
+      "content_size_rank": 11
+    },
+    {
+      "canonical_index": 98,
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "author": "Edgar Allan Poe",
+      "language": "eng",
+      "word_count": 2434,
+      "content_size_rank": 12
+    }
+  ],
+  "most_likely_to_publish": [
+    "sredni-vashtar",
+    "the-gift-of-the-magi",
+    "the-tell-tale-heart",
+    "dsires-baby",
+    "the-cop-and-the-anthem"
+  ],
+  "expected_paid_cost_usd": "0 if valid local/production audio is reusable; hard cap 25 if new OpenAI TTS is needed",
+  "state_checks": {
+    "a_ghost_story_excluded": true,
+    "book_63afd5e9be_excluded": true,
+    "cover_credential_blockers_retryable_in_railway": true,
+    "missing_listening_qa_classification": "LISTENING_QA_NOT_RUN or LISTENING_QA_SCHEMA_MISSING"
+  },
+  "resume_command": "railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_PAID_OPENAI_TTS=true EARNALISM_TTS_MAX_ESTIMATED_USD=25 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.json --languages eng,ben --max-books-active 6 --max-preflight-workers 4 --max-audio-reuse-workers 4 --max-tts-workers 1 --max-paid-workers 1 --max-asr-workers 1 --max-cover-workers 1 --max-upload-workers 1 --max-metadata-workers 1 --max-browser-workers 1 --max-attempts 2 --wave-size 6 --priority ready-first --order-by content-size --release-order ascending-content-size --enforce-release-order --allow-blocked-order-skip --exclude-slugs \"$(cat internal/audiobook_lab/release_gate/terminal_blocker_exclusions.txt)\" --publish-approved --resume-from-latest --fail-closed --stop-after-attempted 6 --max-run-minutes 90",
+  "updated_at": "2026-07-05T18:16:00Z",
+  "zero_publish_diagnosis_path": "internal/audiobook_lab/release_gate/zero_publish_wave_diagnosis.json"
+}

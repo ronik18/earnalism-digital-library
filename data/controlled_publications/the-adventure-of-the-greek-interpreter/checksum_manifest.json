@@ -1,0 +1,34 @@
+{
+  "slug": "the-adventure-of-the-greek-interpreter",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "c576ed3a0b7a8ac54de0f8d37dbbfb454192e619e15a89484543f290ac1ceaf7"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "c12234351c743208a16debbb0d284782419d53f1da7c70d889559e0647f74fa3"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "62a1055c31f4c62c42dce840de67a4c8b307031c645689e6958827c42aad6e10"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "a30556f97a3c0dd4f7e0c0d3fd9be31aa4452b4b4f552c3a310992c8b7e63e77"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "8b6c3d7d1517cc12b499a06c764de2d91435d8fdec09ec5b8c24c01a79a2ea7d"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "ec4b917db86e196905a8c7e847b79da50109e582aa6808557175ff953ba663ae"
+    }
+  ]
+}

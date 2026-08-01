@@ -1,0 +1,13 @@
+{
+  "slug": "the-murders-in-the-rue-morgue",
+  "source_url": "https://www.gutenberg.org/ebooks/2147",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "cb52ddf4a8617bb3331028ff932c34daf7f762a33ea13563cd5d7e983b095c11",
+  "content_hash": "e2683c1bec04ea4cc15f1777fe762bb4227daae89dea7fdbbbc1f9751d0b84bc",
+  "provenance_hash": "2434e19f68e93e8072b0659424b44b4fcf95b05de66fe6defec57cec10c9afb0",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1841. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.855424+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

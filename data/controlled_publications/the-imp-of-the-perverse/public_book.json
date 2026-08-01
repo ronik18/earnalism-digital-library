@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-imp-of-the-perverse",
+  "slug": "the-imp-of-the-perverse",
+  "title": "The Imp of the Perverse",
+  "subtitle": "",
+  "author": "Edgar Allan Poe",
+  "category_slug": "literary-fiction",
+  "short_description": "A murderer who has escaped justice for years feels an irresistible urge to confess — and cannot stop himself.",
+  "description": "Poe's essay-story about the human impulse to do precisely what is most harmful to oneself — the imp of the perverse — narrated by a man who has gotten away with murder and then confesses because he cannot not. A psychological document of terrifying precision.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "10 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Edgar Allan Poe (1809–1849) was an American writer, poet, and critic, master of Gothic horror and inventor of the detective story.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Imp of the Perverse",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2430,
+      "reading_minutes": 11,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "596cf1c38d455304f0df2163666ee8c12691292e23b61f0a8f74914f67b01b2e",
+  "content_hash": "6902c40654ed82160028cc915dacce07a8959e45a40beef469829aa6b420eb41",
+  "provenance_hash": "697f0e1ce450200e5e9c6787ba85ec53c45d939654964c7f04b36f620c4f8a40",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1845. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-imp-of-the-perverse",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580834/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580836/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580837/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580838/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580839/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580834/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580834/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580836/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580837/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580838/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580839/earnalism/audiobooks/en/the-imp-of-the-perverse/the-imp-of-the-perverse_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:49Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z"
+}

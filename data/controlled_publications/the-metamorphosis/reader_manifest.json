@@ -1,0 +1,62 @@
+{
+  "slug": "the-metamorphosis",
+  "title": "The Metamorphosis",
+  "author": "Franz Kafka",
+  "language": "en",
+  "chapter_count": 3,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "I",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 7256,
+      "reading_minutes": 31,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "II",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 7566,
+      "reading_minutes": 32,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    },
+    {
+      "id": "chapter-003",
+      "order": 3,
+      "title": "III",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 7514,
+      "reading_minutes": 32,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001",
+    "chapter-002",
+    "chapter-003"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:49Z"
+}

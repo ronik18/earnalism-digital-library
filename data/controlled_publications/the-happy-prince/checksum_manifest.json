@@ -1,0 +1,34 @@
+{
+  "slug": "the-happy-prince",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "4c1ebe2ad9b439f98ab348c591b62f889d738d5c8117b6bbb5f3fa09077f6159"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "9937355da97e9990a42d4aa3a2bad95ede9e807d5a1d52866310ee9fed1d79e3"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "aeeb37123da07d7ece7d74bbf7c701115c64a9e0819240855f77b6c352781de8"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "23581c575b56736d2ae13581017ae576e53214854df3c47ad157a27a09a921ea"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "a8ec06c8652132f2a9ca7189f6cce946f61290c2fdddf0e4d0040a2ee527bc49"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "711537437892193f15583ba64f2d70d61eb762259c734df20fc18d5b762143dd"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "69aefbd3475705bae77f926f4bd8e3513e6fa602978cc78a22845b63af71408b"
+    }
+  ]
+}

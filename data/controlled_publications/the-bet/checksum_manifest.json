@@ -1,0 +1,34 @@
+{
+  "slug": "the-bet",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "641fd33ad7f8a11860a22776b29386a61d53f0bd406f1c6da1bce3a6d9a0b8ca"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "5ff3afa5c7ff7f0c0c0126121614a9cfb3dab21cedb8ebd1b93503bf89a8560a"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "d1f67f2e756f25748180bf40ed9092b63b6be92465c99d1d1c8a42f4a680343a"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "db895dbd18f1cebbe264ec471b726368c1d41abbe7d9d329cb68569ee0947fbd"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "f8b9253b7b2e77b5a6fc588f9ff6fe8066dd7dcd32157728b4a758d0733c7aa3"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "e95906b22afb7282061e92e98abec46ebade0486547726312443d77703bb1aef"
+    }
+  ]
+}

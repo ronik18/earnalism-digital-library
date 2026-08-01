@@ -1,0 +1,1528 @@
+{
+  "generated_at": "2026-07-03T20:07:49Z",
+  "total_requested": 152,
+  "rebuilt_count": 152,
+  "missing_metadata_count": 0,
+  "rows": [
+    {
+      "slug": "bn-027",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_wikisource_deep_repair_bn027_retry/20260604T170954Z/metadata/book-1.json"
+    },
+    {
+      "slug": "bn-031",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 3,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_wikisource_deep_repair_upload/20260604T165108Z/metadata/book-2.json"
+    },
+    {
+      "slug": "bn-035",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 10,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_wikisource_deep_repair_upload/20260604T165108Z/metadata/book-3.json"
+    },
+    {
+      "slug": "bn-036",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 14,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_wikisource_deep_repair_upload/20260604T165108Z/metadata/book-4.json"
+    },
+    {
+      "slug": "bn-041",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 6,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_wikisource_deep_repair_upload/20260604T165108Z/metadata/book-5.json"
+    },
+    {
+      "slug": "bn-059",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 13,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_wikisource_deep_repair_upload/20260604T165108Z/metadata/book-7.json"
+    },
+    {
+      "slug": "bn-060",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 8,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_wikisource_deep_repair_upload/20260604T165108Z/metadata/book-8.json"
+    },
+    {
+      "slug": "bn-066",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 46,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_wikisource_deep_repair_upload/20260604T165108Z/metadata/book-9.json"
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-5.json"
+    },
+    {
+      "slug": "book-0deb35c750",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T090809Z/metadata/book-3.json"
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-17.json"
+    },
+    {
+      "slug": "book-1090573dff",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-2.json"
+    },
+    {
+      "slug": "book-2b9853ec52",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-20.json"
+    },
+    {
+      "slug": "book-2ddbed8293",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T090809Z/metadata/book-2.json"
+    },
+    {
+      "slug": "book-2e468c4990",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T203358Z/metadata/book-7.json"
+    },
+    {
+      "slug": "book-4968248842",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-14.json"
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-8.json"
+    },
+    {
+      "slug": "book-5461971092",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-3.json"
+    },
+    {
+      "slug": "book-5704b31005",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-16.json"
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/book-1.json"
+    },
+    {
+      "slug": "book-63afd5e9be",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260522T123401Z/metadata/book-1.json"
+    },
+    {
+      "slug": "book-754da4eab8",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T203358Z/metadata/book-1.json"
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-10.json"
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-13.json"
+    },
+    {
+      "slug": "book-95624627d5",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-11.json"
+    },
+    {
+      "slug": "book-9a7f771921",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-15.json"
+    },
+    {
+      "slug": "book-a23625bf36",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-4.json"
+    },
+    {
+      "slug": "book-a4a369483f",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-19.json"
+    },
+    {
+      "slug": "book-a74c1a1451",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T203358Z/metadata/book-4.json"
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-1.json"
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-18.json"
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-9.json"
+    },
+    {
+      "slug": "book-c307a57868",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-6.json"
+    },
+    {
+      "slug": "book-c7f3ce526c",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T090809Z/metadata/book-5.json"
+    },
+    {
+      "slug": "book-c85323409f",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/book-2.json"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T090809Z/metadata/book-4.json"
+    },
+    {
+      "slug": "book-d2fe532e1c",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T203358Z/metadata/book-6.json"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-12.json"
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/source_repair/20260602T192021Z/upload_pipeline/20260602T192343Z/production/20260602T192344Z/import_books/20260602T192344Z/metadata/book-7.json"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T203358Z/metadata/book-3.json"
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 3,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/book-3.json"
+    },
+    {
+      "slug": "lokrahasya",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 16,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_source_repair/20260603T084835Z/direct_upload/20260603T085147Z/metadata/book-5.json"
+    },
+    {
+      "slug": "mrinalini",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 46,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_source_repair/20260603T084835Z/direct_upload/20260603T085147Z/metadata/book-6.json"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 2,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_source_repair/20260603T084835Z/direct_upload/20260603T085147Z/metadata/book-4.json"
+    },
+    {
+      "slug": "nishkriti",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 9,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_source_repair/20260603T084835Z/direct_upload/20260603T085147Z/metadata/book-1.json"
+    },
+    {
+      "slug": "radharani",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 8,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_source_repair/20260603T084835Z/direct_upload/20260603T085147Z/metadata/book-2.json"
+    },
+    {
+      "slug": "yugalanguriya",
+      "status": "rebuilt",
+      "language": "ben",
+      "chapters": 10,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bengali_source_repair/20260603T084835Z/direct_upload/20260603T085147Z/metadata/book-3.json"
+    },
+    {
+      "slug": "a-jury-of-her-peers",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/a-jury-of-her-peers.json"
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/a-mystery-of-heroism.json"
+    },
+    {
+      "slug": "a-retrieved-reformation",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/a-retrieved-reformation.json"
+    },
+    {
+      "slug": "berenice",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/berenice.json"
+    },
+    {
+      "slug": "boule-de-suif",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/boule-de-suif.json"
+    },
+    {
+      "slug": "love-of-life",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/love-of-life.json"
+    },
+    {
+      "slug": "pauls-case",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/pauls-case.json"
+    },
+    {
+      "slug": "rikki-tikki-tavi",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/rikki-tikki-tavi.json"
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_publishing_pipeline/20260608T201749Z/production/20260608T201749Z/import_books/20260608T201749Z/metadata/the-art-of-money-getting.json"
+    },
+    {
+      "slug": "the-bishop",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-bishop.json"
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 7,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/the-canterville-ghost.json"
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-country-of-the-blind.json"
+    },
+    {
+      "slug": "the-darling",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-darling.json"
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-door-in-the-wall.json"
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-lady-with-the-dog.json"
+    },
+    {
+      "slug": "the-lifted-veil",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 2,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/the-lifted-veil.json"
+    },
+    {
+      "slug": "the-necklace",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-necklace.json"
+    },
+    {
+      "slug": "the-open-boat",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-open-boat.json"
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-stolen-white-elephant.json"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-tell-tale-heart.json"
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 24,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import_golive_upload/20260525T200932Z/metadata/the-wonderful-wizard-of-oz.json"
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/the-yellow-wallpaper.json"
+    },
+    {
+      "slug": "tobermory",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/tobermory.json"
+    },
+    {
+      "slug": "ward-no-6",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/ward-no-6.json"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 12,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import_golive_upload/20260525T200932Z/metadata/alices-adventures-in-wonderland.json"
+    },
+    {
+      "slug": "bharat-at-the-crossroads",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": false,
+      "metadata_path": "output/bharat_at_the_crossroads/bharat-at-the-crossroads_upload.json"
+    },
+    {
+      "slug": "dracula",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 27,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/book_import_golive_upload/20260525T200932Z/metadata/dracula.json"
+    },
+    {
+      "slug": "frankenstein",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 28,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T082330Z/metadata/frankenstein.json"
+    },
+    {
+      "slug": "great-expectations",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 59,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T082330Z/metadata/great-expectations.json"
+    },
+    {
+      "slug": "jane-eyre",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 38,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T082330Z/metadata/jane-eyre.json"
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 61,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/book_import_golive_upload/20260525T200932Z/metadata/pride-and-prejudice.json"
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 3,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/book_import_golive_upload/20260525T200932Z/metadata/the-adventures-of-sherlock-holmes.json"
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 7,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/call_of_the_wild/upload_run/20260524T041412Z/metadata/the-call-of-the-wild.json"
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/the-fall-of-the-house-of-usher.json"
+    },
+    {
+      "slug": "the-great-gatsby",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 9,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/book_import_golive_upload/20260525T200932Z/metadata/the-great-gatsby.json"
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/the-man-who-would-be-king.json"
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 3,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/the-monkeys-paw.json"
+    },
+    {
+      "slug": "the-picture-of-dorian-gray",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 20,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/book_import_golive_upload/20260525T200932Z/metadata/the-picture-of-dorian-gray.json"
+    },
+    {
+      "slug": "the-secret-garden",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 27,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/book_import/20260520T082330Z/metadata/the-secret-garden.json"
+    },
+    {
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/the-strange-case-of-dr-jekyll-and-mr-hyde.json"
+    },
+    {
+      "slug": "the-time-machine",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 16,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/time_machine/import_run/20260524T044652Z/metadata/the-time-machine.json"
+    },
+    {
+      "slug": "white-fang",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 25,
+      "has_cover_pair": false,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/white-fang.json"
+    },
+    {
+      "slug": "a-ghost-story",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": true,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/a-ghost-story.json"
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/a-horseman-in-the-sky.json"
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/a-scandal-in-bohemia.json"
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/a-wagner-matinee.json"
+    },
+    {
+      "slug": "a-white-heron",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/a-white-heron.json"
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 12,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_publishing_pipeline/20260608T201749Z/production/20260608T201749Z/import_books/20260608T201749Z/metadata/acres-of-diamonds.json"
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/an-occurrence-at-owl-creek-bridge.json"
+    },
+    {
+      "slug": "dsires-baby",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/dsires-baby.json"
+    },
+    {
+      "slug": "feathertop",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/feathertop.json"
+    },
+    {
+      "slug": "markheim",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/markheim.json"
+    },
+    {
+      "slug": "my-life-and-work",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 20,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_publishing_pipeline/20260608T201749Z/production/20260608T201749Z/import_books/20260608T201749Z/metadata/my-life-and-work.json"
+    },
+    {
+      "slug": "rappaccinis-daughter",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/rappaccinis-daughter.json"
+    },
+    {
+      "slug": "rip-van-winkle",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/rip-van-winkle.json"
+    },
+    {
+      "slug": "sredni-vashtar",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/sredni-vashtar.json"
+    },
+    {
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-charles-augustus-milverton.json"
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-abbey-grange.json"
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-beryl-coronet.json"
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-blue-carbuncle.json"
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-copper-beeches.json"
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-dancing-men.json"
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-empty-house.json"
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-engineers-thumb.json"
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-final-problem.json"
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-greek-interpreter.json"
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-noble-bachelor.json"
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-priory-school.json"
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-second-stain.json"
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-adventure-of-the-solitary-cyclist.json"
+    },
+    {
+      "slug": "the-ambitious-guest",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-ambitious-guest.json"
+    },
+    {
+      "slug": "the-bet",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-bet.json"
+    },
+    {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-celebrated-jumping-frog-of-calaveras-county.json"
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-cop-and-the-anthem.json"
+    },
+    {
+      "slug": "the-enchanted-april",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 22,
+      "has_cover_pair": false,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/the-enchanted-april.json"
+    },
+    {
+      "slug": "the-five-orange-pips",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-five-orange-pips.json"
+    },
+    {
+      "slug": "the-furnished-room",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-furnished-room.json"
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-gift-of-the-magi.json"
+    },
+    {
+      "slug": "the-happy-prince",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-happy-prince.json"
+    },
+    {
+      "slug": "the-imp-of-the-perverse",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-imp-of-the-perverse.json"
+    },
+    {
+      "slug": "the-last-leaf",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-last-leaf.json"
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-legend-of-sleepy-hollow.json"
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-luck-of-roaring-camp.json"
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-man-in-a-case.json"
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-man-with-the-twisted-lip.json"
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-masque-of-the-red-death.json"
+    },
+    {
+      "slug": "the-metamorphosis",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 3,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_upload_manifest/20260602T185043Z/upload_pipeline/20260602T185714Z/production/20260602T185714Z/import_books/20260602T185714Z/metadata/the-metamorphosis.json"
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-ministers-black-veil.json"
+    },
+    {
+      "slug": "the-most-dangerous-game",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-most-dangerous-game.json"
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-murders-in-the-rue-morgue.json"
+    },
+    {
+      "slug": "the-open-window",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-open-window.json"
+    },
+    {
+      "slug": "the-outcasts-of-poker-flat",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-outcasts-of-poker-flat.json"
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-pit-and-the-pendulum.json"
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 4,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_publishing_pipeline/20260608T201749Z/production/20260608T201749Z/import_books/20260608T201749Z/metadata/the-principles-of-scientific-management.json"
+    },
+    {
+      "slug": "the-purloined-letter",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-purloined-letter.json"
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-ransom-of-red-chief.json"
+    },
+    {
+      "slug": "the-red-headed-league",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-red-headed-league.json"
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 19,
+      "has_cover_pair": true,
+      "has_audio_assets": false,
+      "source_url_present": true,
+      "metadata_path": "output/bulk_publishing_pipeline/20260608T201749Z/production/20260608T201749Z/import_books/20260608T201749Z/metadata/the-science-of-getting-rich.json"
+    },
+    {
+      "slug": "the-selfish-giant",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-selfish-giant.json"
+    },
+    {
+      "slug": "the-speckled-band",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-speckled-band.json"
+    },
+    {
+      "slug": "the-student",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-student.json"
+    },
+    {
+      "slug": "the-suicide-club",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-suicide-club.json"
+    },
+    {
+      "slug": "the-withered-arm",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/the-withered-arm.json"
+    },
+    {
+      "slug": "to-build-a-fire",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/to-build-a-fire.json"
+    },
+    {
+      "slug": "young-goodman-brown",
+      "status": "rebuilt",
+      "language": "en",
+      "chapters": 1,
+      "has_cover_pair": false,
+      "has_audio_assets": true,
+      "source_url_present": true,
+      "metadata_path": "output/gutenberg_collection_extract/20260603T030402Z/direct_upload/20260603T080421Z/metadata/young-goodman-brown.json"
+    }
+  ]
+}

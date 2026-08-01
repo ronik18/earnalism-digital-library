@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-copper-beeches",
+  "source_url": "https://www.gutenberg.org/ebooks/1661",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "bd867c2b7a24654e27ccdc0e02a61b30c91ce61a1cf28a04bd9884811e332b90",
+  "content_hash": "9b9c7ba40e8ed216b596a5037e98da10b797866ec6978c64496b69d5dbca36ec",
+  "provenance_hash": "98236e5ca9c3a3610401ab6c7149d86ba024b2b7a8c8b3772afa67a44baa27df",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.135594+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

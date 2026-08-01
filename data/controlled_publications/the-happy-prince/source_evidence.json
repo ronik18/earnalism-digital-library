@@ -1,0 +1,13 @@
+{
+  "slug": "the-happy-prince",
+  "source_url": "https://www.gutenberg.org/ebooks/902",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "aec5f24c5cef2533989442028811632667522939a78217a9f3d07389b5c6d145",
+  "content_hash": "9ad0f9ef8628f87ababf0e361848713b585f5408d5929a6fef95c2afd18388b7",
+  "provenance_hash": "dbd1d86c2d74f3601aeffc97cb23266acf8e07328441266e648d2040e0490554",
+  "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.247776+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

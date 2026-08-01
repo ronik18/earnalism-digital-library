@@ -1,0 +1,13 @@
+{
+  "slug": "pauls-case",
+  "source_url": "https://www.gutenberg.org/ebooks/346",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "91d773236f32e0fc615e5efc326c5aec8aa7c4984cd2c9a6dc0a626d954676fb",
+  "content_hash": "9f6c9dbd187c102c629cfc21b94af323200799e8a9784a431b93c3b5650c16f9",
+  "provenance_hash": "78d6cd8d5fcee7138329fddc0af062fdb4d05bc2b7e651986e2c525894a5e9d9",
+  "rights_basis": "Willa Cather died 1947; first published 1905. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.219889+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

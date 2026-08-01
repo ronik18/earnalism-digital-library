@@ -1,0 +1,78 @@
+{
+  "slug": "the-principles-of-scientific-management",
+  "title": "The Principles of Scientific Management",
+  "author": "Frederick Winslow Taylor",
+  "language": "en",
+  "chapter_count": 4,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "INTRODUCTION",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 795,
+      "reading_minutes": 4,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "CHAPTER I. FUNDAMENTALS OF SCIENTIFIC MANAGEMENT",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 5370,
+      "reading_minutes": 23,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    },
+    {
+      "id": "chapter-003",
+      "order": 3,
+      "title": "CHAPTER II. THE PRINCIPLES OF SCIENTIFIC MANAGEMENT",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 109,
+      "reading_minutes": 1,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    },
+    {
+      "id": "chapter-004",
+      "order": 4,
+      "title": "THE FINEST TYPE OF ORDINARY MANAGEMENT",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 30300,
+      "reading_minutes": 127,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001",
+    "chapter-002",
+    "chapter-003",
+    "chapter-004"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:49Z"
+}

@@ -1,0 +1,1037 @@
+{
+  "generated_at": "2026-07-07T11:54:53Z",
+  "policy": "Preserve rollback and release-gate evidence locally; promote only reusable source/test/policy/docs.",
+  "entry_count": 103,
+  "entries": [
+    {
+      "path": "bengali_audiobook_campaign_dashboard.json",
+      "purpose": "Sprint policy/dashboard evidence.",
+      "sha256": "247cc176400fb56b3e0f7e9dd363c932bfd684cd114113dc15b0dc590e08f9a4",
+      "size_bytes": 8160,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "bengali_reader_only_final_sprint_status.json",
+      "purpose": "Bengali reader-only status evidence.",
+      "sha256": "4a07554ae222669da81c0abed9cabd1dd2a9b3f8ed1acbd6edc82de0c1b6283f",
+      "size_bytes": 2879,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_bengali_asr_forensics_plan.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "0083c94a95e8448c6ea6d6d3b61815e7d83c904e0587d748e8402673a9f4795c",
+      "size_bytes": 3084,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_bengali_asr_provider_comparison.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "15f71e74c78bbbffd83a3f6e5576582f5d2177857252f3257f46c2b8565d7af9",
+      "size_bytes": 2874,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_bengali_pilot_closeout.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "fa750defc3da24db1763c1c0592c78a2d4855498eb0965a3cc562adfbc7ebf75",
+      "size_bytes": 2327,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_asr_provider_comparison.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "9e848b545879ad6c397a4db0d5f2f0e6c902043e22b88905b593676d8175ec15",
+      "size_bytes": 304,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_audiobook_text.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "e2907d58214ab5f11f42e3cd50e90dbf19e262c00b1bea8d19952868887b5aba",
+      "size_bytes": 2155,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_repair_closeout.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "745b3e6bd23e6e44552e63050c6c57e13ff4c7d084ade78319961e20ce7424cc",
+      "size_bytes": 3371,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_sync_plan.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "5ed51ea8eb2d7b3a289a709d78a8596fac5bb4d34e36b1a73a663de7b7be75a5",
+      "size_bytes": 736,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_tts_repair_plan.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "be7a8c0868b8771004436208d763651cf308253023f4e514e077f3839e51d086",
+      "size_bytes": 3208,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_endpoint_404_closeout.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "993868dfc73eded927858cbfa4e16f462bcc400312b432c29a8483e08a57308a",
+      "size_bytes": 1503,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_endpoint_404_diagnosis.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "e009b4f9bbc6db8e88fdf9733a8a22fb398c122c1dd7d104d2248669a68054f4",
+      "size_bytes": 3363,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_endpoint_materialization_plan.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "14295d80eaaba6785747463b4b86ab23fce47f58f3ef11c0adc399f98e0b7bb0",
+      "size_bytes": 4822,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_final_audio_reassembly_report.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "7e1de5a110c3aa73ffb185acf75ebe7fedd295defbc98dda818faf930afe530f",
+      "size_bytes": 788,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_final_gate_closeout.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "6379970be2bdca74e89c728aa21533a8df2038411178c7c86e636e093563aef0",
+      "size_bytes": 5304,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_final_gate_preflight.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "bb4b1062fca0cd9dc2d1be7e8041fdb519091442ebcf3029a0d701eb9c642efb",
+      "size_bytes": 3495,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_goliveevidence.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "f1859434b93147382beac3a02cfdaaf46906552aa62ab10f112da7951d067aab",
+      "size_bytes": 1088,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_group_repair_report.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "4ca168c7068ff3437e01d60bd9ee75a6c0ab25576ca40c6f5df898da603fb6c9",
+      "size_bytes": 10533,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "book_2b9853ec52_tts_source_provenance_report.json",
+      "purpose": "Bengali pilot closeout/golive source report.",
+      "sha256": "818199ad922936208bcbcec3fc4a4b2f489b1aca3a19c60d7d74e9a87434ec68",
+      "size_bytes": 2966,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "frontend_bengali_audio_production_deploy_verification.json",
+      "purpose": "Sprint policy/dashboard evidence.",
+      "sha256": "88e404b7df2f7cd99c6469e30aba3fa54945c03dfdc2ad4998b40ce4adabd553",
+      "size_bytes": 1447,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "frontend_bengali_audio_ship_source_report.json",
+      "purpose": "Sprint policy/dashboard evidence.",
+      "sha256": "a95e0b8f8ce77a7efe460e5820d1fd33e2069d763c1342a760d3453ab3563ef1",
+      "size_bytes": 2013,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/alignment_diagnostics.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "cf15727d42e7d11579728737ffd1f208d9bd089f6f4d28a2c2c9c1632ade2ef9",
+      "size_bytes": 640,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/asr_alignment_diagnosis.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "bcbf9658ce9abe87ae9d9e0b4a78395f93d1f8fdfa8d8566569e79d1d7915351",
+      "size_bytes": 4259,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/asr_sync_hook_result.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "5b8bf91548ff56986c51044a834682424497f667e6ceac6e5f8d65bbe0c56e4e",
+      "size_bytes": 44180,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/asr_sync_queue_hook.log",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "744c051f9c1fe3c4bd33483d0f0adf5bcd76c0822619153ab334dbdb3a416dea",
+      "size_bytes": 6176,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/asr_transcript.txt",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "41815783228b5a1ab6682cf7d84614500b48da482ba412c2ad429055d0be8893",
+      "size_bytes": 6081,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/audio_latency_diagnosis.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "341cd2b0c119ae0c45a42c0a7d9feb2d839475616d838694d05cd36a9017c0bf",
+      "size_bytes": 12851,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/auto_premium_qa.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "b3d5baa6e5a2e59718f13ef47651313297cf179e951413918b4b6397ce645323",
+      "size_bytes": 93776,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/bengali_asr_mismatch_diagnosis.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "51d0187b75797b2367f56d0e48969892d32d13f6154aa3b2f09e6eb540b6403e",
+      "size_bytes": 9322,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/bengali_asr_projection_report.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "51d0187b75797b2367f56d0e48969892d32d13f6154aa3b2f09e6eb540b6403e",
+      "size_bytes": 9322,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/bengali_tts_by_construction_report.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "aa9ead0d49cfab8e720f31f6e2b1f7046039dfa1b530601681faaa43848f9303",
+      "size_bytes": 3609,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/book-2b9853ec52_sarvam_bulbul_v3_ratan_literary_warm_pacing_final.mp3",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5",
+      "size_bytes": 5233965,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/book_release.log",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "f4ec2590c1f344363510ad9a18f17ba0e5bbcd4ca9e9df0781eb3b83eab32240",
+      "size_bytes": 39460,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/book_release_state.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "4b6f2ee1ba45c7d5f67a718d4936d9790d3d5de688aecfac3b113649a305e5db",
+      "size_bytes": 93001,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/browser_gate_queue_hook.log",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "52e637ec518c3b2fc753f8ab459ea626393bb53d51ef404ccad01f6cac277e44",
+      "size_bytes": 6389,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/browser_hook_result.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "fce950158489cf17cd9691a36b537560b6cbf01538e3b6176593b99947c6963e",
+      "size_bytes": 15344,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/chapters.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "5e1cfdd8849224bb565b84523433a042ccce583aea3c876cf0018c583b59557b",
+      "size_bytes": 259,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/clean_manuscript.txt",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "788851c603ab1700f9e33bdfdc6a3e3c04f2ebb79890b88bc8c88f138270095d",
+      "size_bytes": 8384,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/content_integrity_report.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "87f53131e21dc8193b786ac1a77afbed816c6145f4ca52bb88c23ef8c8ef013b",
+      "size_bytes": 1088,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/cost_optimization_decision.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "5adad65260481ddbfc4f2965cfbe6697ed8302b5bd536f1e12f74bc4155b4786",
+      "size_bytes": 974,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/cover_content_brief.md",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "8a54c3a27b14456d1aa3282a9f60fa5772e602fd77890e602bff05ed84b98d5d",
+      "size_bytes": 1922,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/forced_alignment_chunks.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "5057044c47110b941a2f20eaa5b66e47362f7f562316282774085e1c9432a4da",
+      "size_bytes": 881,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/forced_alignment_global.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "754f0ffbd449d7d8b5f204305aef0a1495bed0dc047c27f60adc8556a5170f31",
+      "size_bytes": 1309,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/goliveevidence.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "62bbb3d872e2689810b0227997e1ac7c5829a73143ded563af45800e28cc1882",
+      "size_bytes": 93124,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/highlight.vtt",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "754b15bd98e2ea4f186326948ddd493487f28b9f523f53915cf2f082ae1dbe5f",
+      "size_bytes": 8336,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/inventory.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "a200347fe5dfda312330c33647e49f7060a43abd1099dc3fa519b3902bbea6ed",
+      "size_bytes": 4642,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/listening_qa_samples.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "6f51cee62f371924307c1a98e33b4a944c69c178b3acf4117a9b976f5c2cf176",
+      "size_bytes": 3149,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/listening_qa_samples/sample_01_first_60s.mp3",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "ab28f8a3cec4125fc0b5912838627966b11b806eaa291ee25f6656150f025ff5",
+      "size_bytes": 960813,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/listening_qa_samples/sample_02_middle_60s.mp3",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "ec1ed73de1a73e6aec616497e97d62dfdbd8bcdc710975e1037d1caaebc8e690",
+      "size_bytes": 960813,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/listening_qa_samples/sample_03_final_60s.mp3",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "96315b28055374f0e67f549b606272642e5c5b4adf16db4f32c848306bdf34dc",
+      "size_bytes": 960813,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/listening_qa_samples/sample_04_random_1.mp3",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "60ccb00e9f5040984fede5f46d792e1e2b950a4c90d94111aae555114c99e841",
+      "size_bytes": 960813,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/listening_qa_samples/sample_05_random_2.mp3",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "5c41269978c911a458a4f56143b88a0858485bab2d2052e05b8b9e6f5e1c249c",
+      "size_bytes": 960813,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/listening_qa_samples/sample_06_random_3.mp3",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "05dfe0bc390a651e7ad2ab3edbc4eb10e20c58ea769709d7b82c74f532bfb7fc",
+      "size_bytes": 960813,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/listening_quality_report.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "d238bf62153b1d25466f64b5c40741199445de5b7d7ee7079e61ad0951eb6ec0",
+      "size_bytes": 19412,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/meta.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "d953726284f120ef8d78a08d3548b0d24f38955a410d7d0343d30c570a619340",
+      "size_bytes": 1198,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_admin_response.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "de5585d6b5e4e74a3da3df8a2082fa9ee2fca6bd23db1e207b86a7b9b6e1b1ec",
+      "size_bytes": 15943,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_audiobook_reset_payload.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "e3e8664512f50e26d222100320389906486ab765183238d10819c9a2d44f9bfc",
+      "size_bytes": 237,
+      "hash_error": null,
+      "needed_for_rollback": true,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_audiobook_reset_response.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "eb185706f9ceb67671b315b80ea6acba6f7f024349da40192a5d80768fb059aa",
+      "size_bytes": 14229,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_book_rights_payload.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "bbd900509624cc1e09f9ce68eea49394f5ed276d9919bd445941576d4ccd0978",
+      "size_bytes": 4089,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_book_rights_response.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "eb185706f9ceb67671b315b80ea6acba6f7f024349da40192a5d80768fb059aa",
+      "size_bytes": 14229,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_hook_result.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "6a9ba699aa6ad895fe8eb25e9d93f3c52465c56c61e19568e971e6ab8e6e96d4",
+      "size_bytes": 2628,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_publish_queue_hook.log",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "162acc4b493a28ab8c894efd0a1fed6dbe4392bcf23d6223c07a5e991d018461",
+      "size_bytes": 2450,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_update_payload.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "07bc4705d346d76fd6873c7aabdcf38dcba51db7b5ade174eb3e469e93f3f850",
+      "size_bytes": 1108,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/normalized_asr_tokens.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "6d3ce2f5d446ca751583475c87a511885befa87ca4f60bcd98dff65ddd0a0298",
+      "size_bytes": 67278,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/normalized_manuscript_tokens.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "dd9863dd616fb73cbcae6c937775ff8f4b3b4013939474aec9cac48c1fa47caf",
+      "size_bytes": 86259,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/phonetic_alignment.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "4151fbef8c2fbd10a1c00279580d9286d516d82a26a9bb521627a80c2090d60e",
+      "size_bytes": 17967,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/rights_metadata_failure_diagnosis.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "95a6fe77f11a9afe93d226a00334e707a93ad8bdd4760cfd6031e68ef0717f34",
+      "size_bytes": 4245,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/rights_metadata_report.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "d810a95a2ceba059edda027634625ff02a400e3bda8632f182deb20440d86ab6",
+      "size_bytes": 2588,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/sarvam_concat_chunks.txt",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "0ffcc26caa3137a45f5c82b459ab711beef1fec6a9c5a963de9b673d8a32c080",
+      "size_bytes": 549,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/sarvam_full_pilot_tts_report.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "dd6ed62d5b0a0ad4b5fc6780c5197139eb789d8a54c31a4994e6893309cd3d58",
+      "size_bytes": 399293,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/sarvam_tts_chunks/group_0000_797b8389d279.wav",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "86ea5da35a3a8258010c10acdcc750cda3d723d923abcb2a24f844e5ed43d467",
+      "size_bytes": 6117598,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/sarvam_tts_chunks/group_0001_8e69b4daa5e8.wav",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "f1b961113ade7e0e898f5a17cd3527b6767243766933d998e340f8c6993bbf96",
+      "size_bytes": 5988518,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/sarvam_tts_chunks/group_0002_afb4d07aa398.wav",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "c4d6170e7d41f1a6e3eae9918a37c4e26de4a90be5775d26dc778bca273e6c91",
+      "size_bytes": 2317762,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/stage_event_log.jsonl",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "fc44925a21ba18097a974fc08d0395bb9927b11f7fa8b05bb3d2cf391fbc79fe",
+      "size_bytes": 76900,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/stage_result.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "fce950158489cf17cd9691a36b537560b6cbf01538e3b6176593b99947c6963e",
+      "size_bytes": 15344,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/timestamps.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "0a1f26d13d4e8ede5024988b72b0415c2ce426e6b1a0be395a6669223870ae7c",
+      "size_bytes": 19337,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/tts_chunk_manifest.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "498df0184d3277587bd927947595e403914fc49ddc6ff322455ef7e7662e3ed8",
+      "size_bytes": 23502,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/tts_hook_result.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "63f9b159b2a8ac7eda968601a171d34b0d4c8e93bf238737b8fba167995f3b12",
+      "size_bytes": 2596,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/tts_queue_hook.log",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "e9234c533ef33f7fdaf6b9faefba6ab367f12d76a9b3a447fd8aa63d9674f66e",
+      "size_bytes": 2713,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/upload_hook_result.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "f7dcf2c44141d3e49f79d898bb1a78d53b901feec1ceed125c6ed6052ecb6752",
+      "size_bytes": 8224,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/upload_manifest.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "026d9d716e177e66b870ef60ba705d6d03101b3331f36bed2ca9e9e8f5e96a10",
+      "size_bytes": 5123,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/upload_queue_hook.log",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "97895ff5b7fca14b03678405803e7c5b340daecc102047cbbdf90be6e9028d0a",
+      "size_bytes": 7678,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_content_size_ranking.csv",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "b4796338cce46aba06143ca40a6f64d499476dd8770543951f19600d3f8b5966",
+      "size_bytes": 185,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_content_size_ranking.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "e6f054d220498bde65d96a2fa67d716b09d0b347efe229eb95a33a0047a25818",
+      "size_bytes": 293,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_cost_time_forecast.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "87b4cb6060c24c817c3920c923afa28eda0f63556a5122058c530b286f25ba81",
+      "size_bytes": 499,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_duplicate_titles.csv",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "size_bytes": 2,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_duplicate_titles.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "6946637baba123f3f766208f00617a7151ad2a1c612222c78243d67f65da62fc",
+      "size_bytes": 47,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_event_log.jsonl",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "421f138007967c99cd7467d4df168bd3da19e2e2d430c824e1566613008f3331",
+      "size_bytes": 247424,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_inventory.csv",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "c772de3d2a968f1a2e2dba06d4fc0837521d12829e88534e4bbb19b13ffd455b",
+      "size_bytes": 498,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_inventory.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "614cb3c2526b385d8b2365e60fb471f33b9c10bf550bc8c10cc969fadfdb152a",
+      "size_bytes": 678,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_release_dashboard.csv",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "1767657c27a0c3505e2291cd9761f0b8ef756bd50928b779a3796c8b4be5bb31",
+      "size_bytes": 2075,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_release_dashboard.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "3a0c4b2201a8d49a4e304a88fc788c1b7e3cff03958b16d0d55e3207df988c72",
+      "size_bytes": 12341,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_release_dashboard.md",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "03195fc4d666bdfe85e1beb464e980719e6386673d825d35cdc4b95b45a25c6f",
+      "size_bytes": 3130,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_state.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "982242c20a9d60e3e2ab66ea6a2fd890dbdeeb7259780d69680b077bc28da167",
+      "size_bytes": 105213,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_unique_titles.csv",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "b4796338cce46aba06143ca40a6f64d499476dd8770543951f19600d3f8b5966",
+      "size_bytes": 185,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_unique_titles.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "faa8914993df2cff4dbc86ba55707ca13dddf576f12429e32b7e0ea1e5fdbb82",
+      "size_bytes": 320,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_worker.pid",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "be83005f835527af997d4d181a69d813d149bc9d75d7dadf112055d45ddfcc83",
+      "size_bytes": 638,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/audiobook_lab/release_gate/catalog_20260707T053510Z/catalog_worker_heartbeat.json",
+      "purpose": "Bengali pilot release-gate evidence, generated artifact preserved locally.",
+      "sha256": "77f36e795a970b040618b0bbf88498a90efe6237fea44c3ccce323692adc1b53",
+      "size_bytes": 2561,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": true,
+      "should_remain_local_only": true
+    },
+    {
+      "path": "internal/earnalism_intelligence/decision_ledger.jsonl",
+      "purpose": "Sprint policy/dashboard evidence.",
+      "sha256": "7b12227a4f0eeb0c245d43eae0c70eb57b13989722b2058c5d7cecfd17421a55",
+      "size_bytes": 48469,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/provider_performance_memory.json",
+      "purpose": "Sprint policy/dashboard evidence.",
+      "sha256": "6cea2faf7638136b2e0de80b84fdd91688d062560ad363254ec9aeb4c9e68a77",
+      "size_bytes": 9604,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/title_decision_history.json",
+      "purpose": "Sprint policy/dashboard evidence.",
+      "sha256": "1a73cb8cd3cd35e2bd9ce185e828af2d42054d7faa794d376ea1e34e6eba4434",
+      "size_bytes": 61942,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "repo_cleanup_report.md",
+      "purpose": "Sprint policy/dashboard evidence.",
+      "sha256": "bb57a3a8e650bfc40ec48ed3217d9bd80506a666e6950d14ad6ccf945815fa0d",
+      "size_bytes": 56163,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    },
+    {
+      "path": "sprint_go_live_dashboard.md",
+      "purpose": "Sprint policy/dashboard evidence.",
+      "sha256": "32b9864f76cff840572d48f2094799f66e666480ce15066948503d87fd5bf5e7",
+      "size_bytes": 23495,
+      "hash_error": null,
+      "needed_for_rollback": false,
+      "safe_to_ignore_from_git": false,
+      "should_remain_local_only": false
+    }
+  ]
+}

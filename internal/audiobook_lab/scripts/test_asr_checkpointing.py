@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import sys
@@ -18,6 +19,8 @@ from asr_sync_hook import (  # noqa: E402
     asr_checkpoint_path,
     asr_source_gate_blockers,
     asr_sync_budget_guard,
+    existing_sidecar_reuse,
+    listening_qa_only,
     transcript_script_profile,
     transcript_similarity,
     transcribe_chunk_with_checkpoint,
@@ -179,6 +182,52 @@ def assert_missing_asr_cap_blocks_before_provider_call() -> None:
     assert guard["code"] == "ASR_SYNC_BUDGET_GATE_MISSING", guard
 
 
+def assert_hash_bound_local_sidecars_skip_asr_provider_path() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        run_dir = Path(raw)
+        audio = run_dir / "candidate.mp3"
+        audio.write_bytes(b"validated-private-audio")
+        manuscript = "A validated source passage."
+        audio_hash = hashlib.sha256(audio.read_bytes()).hexdigest()
+        source_hash = hashlib.sha256(manuscript.encode("utf-8")).hexdigest()
+        write_json(
+            run_dir / "reused_timestamps.json",
+            {
+                "slug": Args.slug,
+                "words": [{"word": "validated", "start": 0.0, "end": 0.5}],
+                "audio_hash": audio_hash,
+                "source_text_hash": source_hash,
+                "auto_estimated_sync": False,
+            },
+        )
+        (run_dir / "reused_vtt.vtt").write_text("WEBVTT\n\n00:00.000 --> 00:00.500\nvalidated\n", encoding="utf-8")
+        write_json(run_dir / "reused_chapters.json", {"slug": Args.slug, "chapters": [{"id": "chapter-1"}]})
+        write_json(
+            run_dir / "reused_meta.json",
+            {
+                "slug": Args.slug,
+                "audio_hash": audio_hash,
+                "source_text_hash": source_hash,
+                "auto_estimated_sync": False,
+                "sync_score": 9.8,
+                "vtt_alignment_score": 9.8,
+                "transcript_match_score": 9.8,
+            },
+        )
+
+        result = existing_sidecar_reuse(Args(), run_dir, {}, audio, manuscript)
+
+    assert result and result["status"] == "PASS", result
+    assert result["reuse_source"] == "local_hash_bound_release_grade_sidecars", result
+
+
+def assert_listening_qa_only_flag_is_explicit() -> None:
+    with temporary_env(EARNALISM_LISTENING_QA_ONLY="true"):
+        assert listening_qa_only()
+    with temporary_env(EARNALISM_LISTENING_QA_ONLY=None):
+        assert not listening_qa_only()
+
+
 def assert_mixed_script_transcript_cannot_be_release_ready() -> None:
     manuscript = "অতি বিস্তৃত অরণ্য। অরণ্যমধ্যে অধিকাংশ বৃক্ষই শাল।"
     transcript = "ओती बिस्ट्रितो अरन्नो। अरन्नो मध्ये अधिकाम्षो ब्रिख्खोई शाल।"
@@ -223,6 +272,8 @@ def main() -> int:
     assert_retry_count_is_bounded()
     assert_budget_estimate_uses_remaining_duration()
     assert_missing_asr_cap_blocks_before_provider_call()
+    assert_hash_bound_local_sidecars_skip_asr_provider_path()
+    assert_listening_qa_only_flag_is_explicit()
     assert_mixed_script_transcript_cannot_be_release_ready()
     assert_low_asr_score_blocks_without_mutating_release_state()
     print("ASR checkpointing regression checks PASS")

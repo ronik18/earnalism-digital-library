@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-14T03:00:42Z",
+  "owner_decision": "AUTHORIZE_SPRINT1_SCOPED_STORAGE_CONTAINMENT_AND_DEFER_NONSPRINT_REMOTE_CONTAINMENT.",
+  "inventory_sha256": "21c9f5c85c56be3779822b90fb31c178db8131f7f39f7d2bdae1d00a5f61b23c",
+  "mutation_performed_this_run": true,
+  "target_count": 135,
+  "object_probe_evidence_source": "internal/audiobook_lab/storage_containment/sprint1_scoped_containment_targets.json",
+  "object_probe_method": "HTTP Range bytes=0-0 against every scoped target, previously contained object, and previously inaccessible object",
+  "summary": {
+    "http_status_counts": {
+      "404": 135
+    },
+    "inaccessible_403_or_404": 135,
+    "reachable": 0,
+    "privately_retained_and_inaccessible": 105,
+    "inaccessible_without_private_retention_evidence": 30,
+    "remaining_reachable_scoped_targets": 0,
+    "remaining_reachable_slugs": []
+  },
+  "new_execution_probe": {
+    "target_count": 70,
+    "http_status_counts": {
+      "404": 70
+    },
+    "private_head_size_sha_object_id_verified": 70,
+    "failed": 0
+  },
+  "approved_controls": [
+    {
+      "slug": "book-2b9853ec52",
+      "manifest_http_status": 200,
+      "audio_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_http_status": 206,
+      "content_range": "bytes 0-1023/5233965",
+      "control_result": "PASS"
+    },
+    {
+      "slug": "a-ghost-story",
+      "manifest_http_status": 200,
+      "audio_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "proxy_http_status": 206,
+      "content_range": "bytes 0-1023/7047789",
+      "control_result": "PASS"
+    }
+  ],
+  "hidden_controls": [
+    {
+      "slug": "bn-066",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "the-open-window",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    },
+    {
+      "slug": "dsires-baby",
+      "manifest_http_status": 200,
+      "audio_enabled": false,
+      "public_audio_fields_empty": true,
+      "proxy_http_status": 404,
+      "control_result": "PASS"
+    }
+  ],
+  "protected_current_approved_assets_preserved": true,
+  "non_sprint_objects_mutated": false,
+  "classification": "SPRINT1_STORAGE_BYPASS_CONTAINED",
+  "residual_risk": "NONSPRINT_REMOTE_CONTAINMENT_DEFERRED_BY_OWNER"
+}

@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-14T02:08:36Z",
+  "inventory_sha256": "21c9f5c85c56be3779822b90fb31c178db8131f7f39f7d2bdae1d00a5f61b23c",
+  "source_matrices": [
+    "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json",
+    "internal/audiobook_lab/sprint1_publication/sprint1_final_yes_yes_matrix.json"
+  ],
+  "active_sprint1_slug_count": 32,
+  "deferred_excluded": [
+    {
+      "slug": "great-expectations",
+      "reason": "Post-Sprint Long Classics Deferred"
+    },
+    {
+      "slug": "jane-eyre",
+      "reason": "Post-Sprint Long Classics Deferred"
+    }
+  ],
+  "active_slugs": [
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "PUBLIC_AUDIO_APPROVED"
+    },
+    {
+      "slug": "bn-066",
+      "title": "আনন্দমঠ",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "language": "Bengali",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "frankenstein",
+      "title": "Frankenstein",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-time-machine",
+      "title": "The Time Machine",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "title": "The Call of the Wild",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "title": "Pride and Prejudice",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-secret-garden",
+      "title": "The Secret Garden",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "title": "Alice's Adventures in Wonderland",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "title": "The Monkey's Paw",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
+    {
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "language": "English",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN"
+    }
+  ]
+}

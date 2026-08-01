@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-07-31",
+  "scope": "sprint1_private_b2_migration_wave_1",
+  "target_count": 8,
+  "targets": [
+    "radharani",
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "book-f5d593e1f4",
+    "book-edfcf810c5",
+    "the-tell-tale-heart",
+    "the-yellow-wallpaper",
+    "the-necklace"
+  ],
+  "next_actions": [
+    "Run scoped dry-run for sprint1_scoped_containment_targets.json",
+    "Execute per-title migration through unapproved_direct_audio_remediation_commands.sh with reviewed inventory hash",
+    "Run package_v2 readiness + API validation after each title"
+  ],
+  "precomputed_next_commands": [
+    "TARGET_SLUG=radharani bash internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh --execute-reviewed",
+    "TARGET_SLUG=muchiram-gurer-jibanchorit bash internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh --execute-reviewed",
+    "TARGET_SLUG=book-d19e96859f bash internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh --execute-reviewed",
+    "TARGET_SLUG=book-f5d593e1f4 bash internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh --execute-reviewed",
+    "TARGET_SLUG=book-edfcf810c5 bash internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh --execute-reviewed",
+    "TARGET_SLUG=the-tell-tale-heart bash internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh --execute-reviewed",
+    "TARGET_SLUG=the-yellow-wallpaper bash internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh --execute-reviewed",
+    "TARGET_SLUG=the-necklace bash internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh --execute-reviewed"
+  ]
+}

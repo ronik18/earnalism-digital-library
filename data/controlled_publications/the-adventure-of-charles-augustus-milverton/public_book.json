@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-adventure-of-charles-augustus-milverton",
+  "slug": "the-adventure-of-charles-augustus-milverton",
+  "title": "The Adventure of Charles Augustus Milverton",
+  "subtitle": "",
+  "author": "Arthur Conan Doyle",
+  "category_slug": "adventure",
+  "short_description": "Holmes calls Milverton the worst man in London — and watches him shot dead without intervening.",
+  "description": "Holmes and Watson burgle Milverton's house to recover letters — and witness his murder by one of his victims. Holmes tells the police he cannot identify the killer and refuses to help. One of the most morally complex Holmes stories ever written.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "28 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Arthur Conan Doyle (1859–1930) was a British author and physician, creator of Sherlock Holmes and Dr. Watson.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Adventure of Charles Augustus Milverton",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 6618,
+      "reading_minutes": 28,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "2821fd715a52eb3293bbe0363ce49b1057b55af7999d59be9ee09548db90fefe",
+  "content_hash": "d1250da3fea3ec9bc6da2e9f9fe8a6b1ad8c8f71f1c1ee6460297071320316da",
+  "provenance_hash": "57dcfcba138fe3d9d3741402100a5cf67aeabf7a3a4c420665891617f7844c70",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1904. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-adventure-of-charles-augustus-milverton",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582517/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582520/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582521/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582522/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582523/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582517/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582517/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582520/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582521/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582522/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582523/earnalism/audiobooks/en/the-adventure-of-charles-augustus-milverton/the-adventure-of-charles-augustus-milverton_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-07-07T05:21:09.067929+00:00",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "source_of_truth_path": "data/controlled_publications/book-2b9853ec52/chapters/chapter-001.json",
+  "canonical_display_text_hash": "1e1d0b25627df784b861b8c6314b8bade1baabc554122dabf00dd8c5f2ae4dd9",
+  "audiobook_clean_text_hash": "8bb44a151a11fa7f3206c7562a7e8bf72fdb36787b84276f6559aab7a7a9a690",
+  "corrected_tts_input_hash": "464bc32b7b1ae05b62fe4dfb2c9827e6eaefb3cf72ff52c79798d81737fa5afd",
+  "tts_input_coverage_percent": 100.0,
+  "disallowed_extra_frontmatter_count": 0,
+  "canonical_to_tts_clean_match_score": 1.0,
+  "first_literary_words_present_in_first_group": true,
+  "final_manuscript_words_present_in_final_group": true,
+  "missing_groups": [],
+  "duplicated_groups": [],
+  "reordered_groups": [],
+  "frontmatter_source_metadata_present": false,
+  "fallback_tts_used": false,
+  "tts_by_construction_verified": true,
+  "source_verification_method": "clean_tts_source_provenance_static_audit",
+  "tts_input_clean": true,
+  "groups": [
+    {
+      "group_id": 0,
+      "repair_action": "REGENERATE_CLEANED_GROUP",
+      "text_hash": "ee7c4d8695f6939d8948a7318df648e44dc1ed0fb94407d74604602137ae06fe",
+      "first_words": [
+        "শুধু",
+        "বিঘে",
+        "দুই",
+        "ছিল",
+        "মোর",
+        "ভুঁই",
+        "আর",
+        "সবি"
+      ],
+      "last_words": [
+        "রাখালের",
+        "খেলাগেহ",
+        "স্তব্ধ",
+        "অতল",
+        "দীঘি",
+        "কালোজল",
+        "নিশীথশীতল",
+        "স্নেহ"
+      ]
+    },
+    {
+      "group_id": 1,
+      "repair_action": "REUSE_UNAFFECTED_GROUP",
+      "text_hash": "ad61c29538df8e22c109b8b2ce9eff4ae15f8449d3c1f58767da285badef54d7",
+      "first_words": [
+        "বুকভরা",
+        "মধু",
+        "বঙ্গের",
+        "বধূ",
+        "জল",
+        "লয়ে",
+        "যায়",
+        "ঘরে"
+      ],
+      "last_words": [
+        "হেনকালে",
+        "হায়",
+        "যমদূত",
+        "প্রায়",
+        "কোথা",
+        "হতে",
+        "এল",
+        "মালী"
+      ]
+    },
+    {
+      "group_id": 2,
+      "repair_action": "REUSE_UNAFFECTED_GROUP",
+      "text_hash": "bbd175256e357409a01762c9847d9ca7be5cce3a03762b5776d2c78e359e93a3",
+      "first_words": [
+        "ঝুটি",
+        "বাঁধা",
+        "উড়ে",
+        "সপ্তম",
+        "সুয়ে",
+        "পাড়িতে",
+        "লাগিল",
+        "গালী"
+      ],
+      "last_words": [
+        "আমি",
+        "আজ",
+        "চোর",
+        "বটে",
+        "৩১",
+        "শে",
+        "জ্যৈষ্ঠ",
+        "১৩০২"
+      ]
+    }
+  ]
+}

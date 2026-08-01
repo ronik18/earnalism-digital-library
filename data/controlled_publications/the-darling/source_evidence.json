@@ -1,0 +1,13 @@
+{
+  "slug": "the-darling",
+  "source_url": "https://www.gutenberg.org/ebooks/13416",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "447caa75d91256a4028eb69688345d10f5a0d76c971b39961a0e159e1a159ba1",
+  "content_hash": "669f2abf5030d78bc962625a87b9a6a5ca3bafaeed02df6c833613c04109b73f",
+  "provenance_hash": "8bdfc026d5b2f3904082594b36192c265c6b95cd0a4c5414f545645e113e63ea",
+  "rights_basis": "Anton Chekhov died 1904; first published 1899. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.103723+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

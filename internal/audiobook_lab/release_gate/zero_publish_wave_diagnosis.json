@@ -1,0 +1,133 @@
+{
+  "generated_at": "2026-07-05T18:15:00Z",
+  "run_id": "catalog_20260705T161042Z",
+  "dashboard_path": "internal/audiobook_lab/release_gate/catalog_20260705T161042Z/catalog_release_dashboard.json",
+  "published_this_wave": 0,
+  "railway_credentials_available": true,
+  "paid_tts_used": false,
+  "tts_estimated_cost": 0,
+  "attempted_slugs": [
+    "bn-035",
+    "bn-036",
+    "the-art-of-money-getting",
+    "nishkriti",
+    "book-ac5a71075e",
+    "book-1090573dff"
+  ],
+  "attempted_books": [
+    {
+      "slug": "bn-035",
+      "title": "বড়দিদি",
+      "language": "ben",
+      "current_stage": "",
+      "terminal_status": "TERMINAL_BLOCKED_WITH_EVIDENCE",
+      "published": false,
+      "blocker_category": "bengali_audio_manuscript_mismatch",
+      "blocker": "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR transcript match score below threshold: 0.0381 < 9.7",
+      "terminal_or_retryable": "terminal",
+      "next_wave_action": "terminal_skip_next_wave",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    },
+    {
+      "slug": "bn-036",
+      "title": "মেজদিদি",
+      "language": "ben",
+      "current_stage": "asr_sync_queue",
+      "terminal_status": "",
+      "published": false,
+      "blocker_category": "",
+      "blocker": "",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "resume_incomplete_stage",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "title": "The Art of Money Getting",
+      "language": "eng",
+      "current_stage": "",
+      "terminal_status": "BLOCKED",
+      "published": false,
+      "blocker_category": "metadata_rights|rights_metadata",
+      "blocker": "Required rights metadata fields are missing: author_death_year, original_publication_year || Public-domain evidence is incomplete or not deterministic.",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "retryable_after_rights_metadata_repair",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "language": "ben",
+      "current_stage": "asr_sync_queue",
+      "terminal_status": "",
+      "published": false,
+      "blocker_category": "",
+      "blocker": "",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "resume_incomplete_stage",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "language": "ben",
+      "current_stage": "rights_metadata_preflight_queue",
+      "terminal_status": "",
+      "published": false,
+      "blocker_category": "",
+      "blocker": "",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "resume_incomplete_stage",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    },
+    {
+      "slug": "book-1090573dff",
+      "title": "ছুটি",
+      "language": "ben",
+      "current_stage": "manuscript_queue",
+      "terminal_status": "",
+      "published": false,
+      "blocker_category": "",
+      "blocker": "",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "resume_incomplete_stage",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    }
+  ],
+  "terminal_blockers_to_skip_next_wave": [
+    "bn-035"
+  ],
+  "retryable_or_incomplete_books": [
+    "bn-036",
+    "the-art-of-money-getting",
+    "nishkriti",
+    "book-ac5a71075e",
+    "book-1090573dff"
+  ],
+  "blockers_by_category": {
+    "bengali_audio_manuscript_mismatch": 1,
+    "metadata_rights": 1,
+    "rights_metadata": 1
+  },
+  "summary_counts": {
+    "terminal_book_count": 2,
+    "blocked_by_rights_metadata_missing": 1,
+    "blocked_by_rights_evidence_incomplete": 1,
+    "blocked_by_bengali_audio_manuscript_mismatch": 1,
+    "blocked_by_listening_qa_not_run": 0,
+    "blocked_by_audio_listening_quality_failed": 0
+  },
+  "recommendation": "Do not rerun bn-035. Resume only after keeping bn-035 in terminal exclusions; repair rights metadata for the-art-of-money-getting if evidence is available; continue incomplete prepared candidates without paid TTS unless valid audio is absent and budget approval remains present."
+}

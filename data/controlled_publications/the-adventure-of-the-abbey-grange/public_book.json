@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-adventure-of-the-abbey-grange",
+  "slug": "the-adventure-of-the-abbey-grange",
+  "title": "The Adventure of the Abbey Grange",
+  "subtitle": "",
+  "author": "Arthur Conan Doyle",
+  "category_slug": "adventure",
+  "short_description": "Holmes solves a murder — then convenes a one-man jury and acquits the killer.",
+  "description": "Sir Eustace Brackenstall is killed — supposedly by burglars. Holmes unravels the truth, identifies the real killer, and decides the man deserves to go free. He appoints Watson his jury, delivers the verdict himself, and lets justice stand aside for the first time.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "39 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Arthur Conan Doyle (1859–1930) was a British author and physician, creator of Sherlock Holmes and Dr. Watson.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Adventure of the Abbey Grange",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 9233,
+      "reading_minutes": 39,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "a42a5efecaf8ca98b72329b6c31d8a0bda6334be40692e3d1127ea8fe60d97e6",
+  "content_hash": "3ddcb0f37f27c617939219e75e1876087ae9475f1bee8bfdc5f5d21f1240dc4c",
+  "provenance_hash": "708b91110d03fd1bf84fbf1305226b85104f15f4d7895a583c26443d95d45219",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1904. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-adventure-of-the-abbey-grange",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585609/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585610/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585611/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585611/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585613/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585609/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585609/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585610/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585611/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585611/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585613/earnalism/audiobooks/en/the-adventure-of-the-abbey-grange/the-adventure-of-the-abbey-grange_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

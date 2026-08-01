@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-07-07T19:08:13Z",
+  "status": "NO_REPLACEMENT_SELECTED_YET",
+  "reason": "Both failed titles are repairable by final-group-only regeneration; replacing them before repair would spend more than the cheapest safe path.",
+  "blocked_titles": [],
+  "repairable_titles": [
+    "book-d19e96859f",
+    "book-f5d593e1f4"
+  ],
+  "fallback_replacement_pool_if_repair_fails": [
+    {
+      "slug": "book-ac5a71075e",
+      "selection_reason": "Tier-1 Bengali reserve candidate with prior launch-lot relevance; requires fresh content/rights/cover/reader/audiobook-clean preflight before TTS."
+    },
+    {
+      "slug": "book-1090573dff",
+      "selection_reason": "Reader-approved Bengali candidate in launch truth matrix; requires fresh audiobook-clean and representative-evidence preflight before TTS."
+    }
+  ],
+  "next_action": "Attempt group-only repair for book-d19e96859f and book-f5d593e1f4 first; select replacement only if repaired TTS-by-construction or full listening/sync gates fail."
+}

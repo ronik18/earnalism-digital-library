@@ -1,0 +1,13 @@
+{
+  "slug": "the-withered-arm",
+  "source_url": "https://www.gutenberg.org/ebooks/3056",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "b9697ff53faa2aa6ace3c91156126068c302e360124aff1633e1cb319a471bc1",
+  "content_hash": "fb42b9f8bea73e8b961a09fee5f4baaffada54127880695f2792456d9ebf7cd2",
+  "provenance_hash": "653acab377c282abd241e7cd35d1d6b93c2300570ea63473d4321c8af5c7164d",
+  "rights_basis": "Thomas Hardy died 1928; first published 1888. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.281501+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

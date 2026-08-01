@@ -1,0 +1,612 @@
+{
+  "generated_at": "2026-07-05T18:25:00Z",
+  "published_books": [
+    "a-ghost-story"
+  ],
+  "published_total": 1,
+  "terminal_blockers_excluded_count": 25,
+  "terminal_blockers_excluded": [
+    "book-63afd5e9be",
+    "a-ghost-story",
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "book-2ddbed8293",
+    "book-f5d593e1f4",
+    "book-0deb35c750",
+    "book-754da4eab8",
+    "book-c7f3ce526c",
+    "book-a74c1a1451",
+    "book-2e468c4990",
+    "book-d2fe532e1c",
+    "bn-031",
+    "bn-027",
+    "book-2b9853ec52",
+    "the-open-window",
+    "book-4968248842",
+    "book-fbdf2991ab",
+    "the-student",
+    "the-selfish-giant",
+    "yugalanguriya",
+    "bn-041",
+    "bn-060",
+    "radharani",
+    "bn-035"
+  ],
+  "retryable_incomplete_books_from_latest_wave": [
+    {
+      "slug": "bn-036",
+      "title": "মেজদিদি",
+      "language": "ben",
+      "current_stage": "asr_sync_queue",
+      "terminal_status": "",
+      "published": false,
+      "blocker_category": "",
+      "blocker": "",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "resume_incomplete_stage",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "title": "The Art of Money Getting",
+      "language": "eng",
+      "current_stage": "",
+      "terminal_status": "BLOCKED",
+      "published": false,
+      "blocker_category": "metadata_rights|rights_metadata",
+      "blocker": "Required rights metadata fields are missing: author_death_year, original_publication_year || Public-domain evidence is incomplete or not deterministic.",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "retryable_after_rights_metadata_repair",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "language": "ben",
+      "current_stage": "asr_sync_queue",
+      "terminal_status": "",
+      "published": false,
+      "blocker_category": "",
+      "blocker": "",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "resume_incomplete_stage",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "language": "ben",
+      "current_stage": "rights_metadata_preflight_queue",
+      "terminal_status": "",
+      "published": false,
+      "blocker_category": "",
+      "blocker": "",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "resume_incomplete_stage",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    },
+    {
+      "slug": "book-1090573dff",
+      "title": "ছুটি",
+      "language": "ben",
+      "current_stage": "manuscript_queue",
+      "terminal_status": "",
+      "published": false,
+      "blocker_category": "",
+      "blocker": "",
+      "terminal_or_retryable": "retryable",
+      "next_wave_action": "resume_incomplete_stage",
+      "railway_credentials_available": true,
+      "paid_tts_used": false,
+      "listening_qa_status": ""
+    }
+  ],
+  "next_20_content_size_ranked_candidates_after_exclusions": [
+    {
+      "canonical_index": 204,
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 1717,
+      "content_size_rank": 1,
+      "is_bengali": true,
+      "is_english": false,
+      "local_audio_candidates": [
+        "internal/audiobook_lab/enhanced_candidates/book-ac5a71075e/book-ac5a71075e_enhanced.mp3"
+      ],
+      "has_local_audio": true,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "reuse local audio; run ASR/sync/listening QA",
+        "fail closed on Bengali ASR/audio mismatch; do not paid-regenerate without provider strategy"
+      ],
+      "most_likely_publishable": false
+    },
+    {
+      "canonical_index": 193,
+      "slug": "book-1090573dff",
+      "title": "ছুটি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 1814,
+      "content_size_rank": 2,
+      "is_bengali": true,
+      "is_english": false,
+      "local_audio_candidates": [
+        "internal/audiobook_lab/enhanced_candidates/book-1090573dff/book-1090573dff_enhanced.mp3"
+      ],
+      "has_local_audio": true,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "reuse local audio; run ASR/sync/listening QA",
+        "fail closed on Bengali ASR/audio mismatch; do not paid-regenerate without provider strategy"
+      ],
+      "most_likely_publishable": false
+    },
+    {
+      "canonical_index": 194,
+      "slug": "book-4b944e64fa",
+      "title": "একরাত্রি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 1822,
+      "content_size_rank": 3,
+      "is_bengali": true,
+      "is_english": false,
+      "local_audio_candidates": [
+        "internal/audiobook_lab/enhanced_candidates/book-4b944e64fa/book-4b944e64fa_enhanced.mp3"
+      ],
+      "has_local_audio": true,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "reuse local audio; run ASR/sync/listening QA",
+        "fail closed on Bengali ASR/audio mismatch; do not paid-regenerate without provider strategy"
+      ],
+      "most_likely_publishable": false
+    },
+    {
+      "canonical_index": 159,
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "author": "Saki",
+      "language": "eng",
+      "word_count": 1825,
+      "content_size_rank": 4,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 196,
+      "slug": "book-5704b31005",
+      "title": "বিচারক",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 2027,
+      "content_size_rank": 5,
+      "is_bengali": true,
+      "is_english": false,
+      "local_audio_candidates": [
+        "internal/audiobook_lab/enhanced_candidates/book-5704b31005/book-5704b31005_enhanced.mp3",
+        "internal/audiobook_lab/bengali_store_candidates/book-5704b31005/improved_internal/audio/book-5704b31005_internal_remaster_review.mp3"
+      ],
+      "has_local_audio": true,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "reuse local audio; run ASR/sync/listening QA",
+        "fail closed on Bengali ASR/audio mismatch; do not paid-regenerate without provider strategy"
+      ],
+      "most_likely_publishable": false
+    },
+    {
+      "canonical_index": 100,
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "author": "O. Henry",
+      "language": "eng",
+      "word_count": 2117,
+      "content_size_rank": 6,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 95,
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "author": "Edgar Allan Poe",
+      "language": "eng",
+      "word_count": 2156,
+      "content_size_rank": 7,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [
+        "internal/audiobook_lab/enhanced_candidates/the-tell-tale-heart/the-tell-tale-heart_enhanced.mp3"
+      ],
+      "has_local_audio": true,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "reuse local audio; run ASR/sync/listening QA",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 214,
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "author": "Kate Chopin",
+      "language": "eng",
+      "word_count": 2233,
+      "content_size_rank": 8,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 136,
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "author": "O. Henry",
+      "language": "eng",
+      "word_count": 2317,
+      "content_size_rank": 9,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 203,
+      "slug": "book-a4a369483f",
+      "title": "সম্পত্তি সমর্পণ",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 2329,
+      "content_size_rank": 10,
+      "is_bengali": true,
+      "is_english": false,
+      "local_audio_candidates": [
+        "internal/audiobook_lab/enhanced_candidates/book-a4a369483f/book-a4a369483f_enhanced.mp3"
+      ],
+      "has_local_audio": true,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "reuse local audio; run ASR/sync/listening QA",
+        "fail closed on Bengali ASR/audio mismatch; do not paid-regenerate without provider strategy"
+      ],
+      "most_likely_publishable": false
+    },
+    {
+      "canonical_index": 101,
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "author": "O. Henry",
+      "language": "eng",
+      "word_count": 2424,
+      "content_size_rank": 11,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 98,
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "author": "Edgar Allan Poe",
+      "language": "eng",
+      "word_count": 2434,
+      "content_size_rank": 12,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 183,
+      "slug": "the-imp-of-the-perverse",
+      "title": "The Imp of the Perverse",
+      "author": "Edgar Allan Poe",
+      "language": "eng",
+      "word_count": 2445,
+      "content_size_rank": 13,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 135,
+      "slug": "the-furnished-room",
+      "title": "The Furnished Room",
+      "author": "O. Henry",
+      "language": "eng",
+      "word_count": 2507,
+      "content_size_rank": 14,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 162,
+      "slug": "a-horseman-in-the-sky",
+      "title": "A Horseman in the Sky",
+      "author": "Ambrose Bierce",
+      "language": "eng",
+      "word_count": 2595,
+      "content_size_rank": 15,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 108,
+      "slug": "the-bet",
+      "title": "The Bet",
+      "author": "Anton Chekhov",
+      "language": "eng",
+      "word_count": 2736,
+      "content_size_rank": 16,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 124,
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "title": "The Celebrated Jumping Frog of Calaveras County",
+      "author": "Mark Twain",
+      "language": "eng",
+      "word_count": 2743,
+      "content_size_rank": 17,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [],
+      "has_local_audio": false,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "verify production audio URL; rebuild stale sidecars if needed",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 168,
+      "slug": "tobermory",
+      "title": "Tobermory",
+      "author": "Saki",
+      "language": "eng",
+      "word_count": 2788,
+      "content_size_rank": 18,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [
+        "internal/audiobook_lab/enhanced_candidates/tobermory/tobermory_enhanced.mp3"
+      ],
+      "has_local_audio": true,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "reuse local audio; run ASR/sync/listening QA",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 118,
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "author": "Guy de Maupassant",
+      "language": "eng",
+      "word_count": 2878,
+      "content_size_rank": 19,
+      "is_bengali": false,
+      "is_english": true,
+      "local_audio_candidates": [
+        "internal/audiobook_lab/enhanced_candidates/the-necklace/the-necklace_enhanced.mp3"
+      ],
+      "has_local_audio": true,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "reuse local audio; run ASR/sync/listening QA",
+        "if audio wrong/stale, regenerate English audio from clean manuscript under budget"
+      ],
+      "most_likely_publishable": true
+    },
+    {
+      "canonical_index": 199,
+      "slug": "book-88ded9b47c",
+      "title": "মানভঞ্জন",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "language": "ben",
+      "word_count": 2930,
+      "content_size_rank": 20,
+      "is_bengali": true,
+      "is_english": false,
+      "local_audio_candidates": [
+        "internal/audiobook_lab/enhanced_candidates/book-88ded9b47c/book-88ded9b47c_enhanced.mp3",
+        "internal/audiobook_lab/bengali_store_candidates/book-88ded9b47c/improved_internal/audio/book-88ded9b47c_internal_remaster_review.mp3"
+      ],
+      "has_local_audio": true,
+      "has_audio_url": true,
+      "requires_tts": false,
+      "has_rights_metadata_blocker_risk": false,
+      "expected_cheapest_safe_repair_path": [
+        "reuse local audio; run ASR/sync/listening QA",
+        "fail closed on Bengali ASR/audio mismatch; do not paid-regenerate without provider strategy"
+      ],
+      "most_likely_publishable": false
+    }
+  ],
+  "bengali_candidates": [
+    "book-ac5a71075e",
+    "book-1090573dff",
+    "book-4b944e64fa",
+    "book-5704b31005",
+    "book-a4a369483f",
+    "book-88ded9b47c"
+  ],
+  "english_candidates": [
+    "sredni-vashtar",
+    "the-gift-of-the-magi",
+    "the-tell-tale-heart",
+    "dsires-baby",
+    "the-cop-and-the-anthem",
+    "the-last-leaf",
+    "the-masque-of-the-red-death",
+    "the-imp-of-the-perverse",
+    "the-furnished-room",
+    "a-horseman-in-the-sky",
+    "the-bet",
+    "the-celebrated-jumping-frog-of-calaveras-county",
+    "tobermory",
+    "the-necklace"
+  ],
+  "candidates_with_local_audio": [
+    "book-ac5a71075e",
+    "book-1090573dff",
+    "book-4b944e64fa",
+    "book-5704b31005",
+    "the-tell-tale-heart",
+    "book-a4a369483f",
+    "tobermory",
+    "the-necklace",
+    "book-88ded9b47c"
+  ],
+  "candidates_requiring_tts": [],
+  "candidates_with_rights_metadata_blocker_risk": [],
+  "most_likely_next_publishable_candidates": [
+    "sredni-vashtar",
+    "the-gift-of-the-magi",
+    "the-tell-tale-heart",
+    "dsires-baby",
+    "the-cop-and-the-anthem",
+    "the-last-leaf",
+    "the-masque-of-the-red-death",
+    "the-imp-of-the-perverse"
+  ],
+  "expected_paid_cost": "0 if local/production audio is reusable; capped at 35 USD if English TTS regeneration is required after cheaper gates pass",
+  "state_consistency": {
+    "a_ghost_story_excluded": true,
+    "book_63afd5e9be_excluded": true,
+    "dashboard_wave_published_count": 0,
+    "dashboard_total_published_before_patch": 0,
+    "factory_patch_expected_total_published_after_next_run": 1,
+    "stale_pid_detected": false,
+    "workers_currently_running": false
+  },
+  "resume_strategy": "Railway-backed next-publish wave with stop-after-published=1 and stop-after-terminal-books=12; no stop-after-attempted cap."
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "an-occurrence-at-owl-creek-bridge",
+  "source_url": "https://www.gutenberg.org/ebooks/375",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "403d163c894a364aa545f11f0a1e491f8f017f217ecaa61d94f09000e57156d6",
+  "content_hash": "fb7311854f4b97292695f4191bfbbde640a7d9c11cd323d6206a10ddb70e7001",
+  "provenance_hash": "0282dbd95fcb26c331389bcc94de8fce14bb66c7e6171cd10e2c57b1c79f4e5a",
+  "rights_basis": "Ambrose Bierce died 1914; first published 1890. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.024849+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

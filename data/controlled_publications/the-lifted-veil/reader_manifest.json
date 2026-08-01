@@ -1,0 +1,46 @@
+{
+  "slug": "the-lifted-veil",
+  "title": "The Lifted Veil",
+  "author": "George Eliot",
+  "language": "en",
+  "chapter_count": 2,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "CHAPTER I",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 9204,
+      "reading_minutes": 39,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "CHAPTER II",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 8489,
+      "reading_minutes": 36,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001",
+    "chapter-002"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:47Z"
+}

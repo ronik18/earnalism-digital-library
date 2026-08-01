@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-final-problem",
+  "source_url": "https://www.gutenberg.org/ebooks/834",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "b4779b3e521590be2dc8773a1e83bdcadf78abeb2f2de5bca52d56c8189d1ec1",
+  "content_hash": "d2a21379a278bf64fb92743b55f1ab9ac201582359c3955956ca6b30944a6f11",
+  "provenance_hash": "e9e7696d32b14368eb4f60192167e5eb6533cd7ba75faf5c303586675d77871a",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1893. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.268138+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

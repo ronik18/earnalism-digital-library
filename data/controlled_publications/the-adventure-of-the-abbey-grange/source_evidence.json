@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-abbey-grange",
+  "source_url": "https://www.gutenberg.org/ebooks/108",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "a42a5efecaf8ca98b72329b6c31d8a0bda6334be40692e3d1127ea8fe60d97e6",
+  "content_hash": "3ddcb0f37f27c617939219e75e1876087ae9475f1bee8bfdc5f5d21f1240dc4c",
+  "provenance_hash": "708b91110d03fd1bf84fbf1305226b85104f15f4d7895a583c26443d95d45219",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1904. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.470465+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

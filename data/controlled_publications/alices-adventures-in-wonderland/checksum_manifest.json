@@ -1,0 +1,78 @@
+{
+  "slug": "alices-adventures-in-wonderland",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "515c93c08066deefccf33f7a69b36aabf04fab5e252673b716a164bb267937ad"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "71659c3c25cd4a47785f66741936a1b367303547d726b6e20ea8001214adb53b"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "fb96a7aced05433c8bc5892633eed9d69df5f9640d5c2795483da6c51d17ebf4"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "63fa6d6573cbbc6ff93b1eb875968f08ea3ec9cdd321fd0ed51936c3906ffdc2"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "62b59134df986b6deaa654c0a1c6012250260cd60d0fa35ea8ed3cefa4117384"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "e43f6986be308931430ef92ee06633712f0272837c465b724f745efed84296a6"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "66bab26e98069495b7f6702de87ae2a32ba3723d763ad02fd863fa187a4b36d3"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "788f02016434b4cb8e4193327e7b854022bf07559d356f04bf98536390daa473"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "5c83157736ddce90c7be60de1f4286bc41d0c6bea8a2e0abd7bae23d194bf80b"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "ce2a47a67c46d131e0a7c3b3d50389a27bc24d3eab892e8fc59eabd64d048b47"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "a04d86edace13b0642d49f7ae9d2f8285b663f3bc1891c2e5b7260d13f51f85d"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "ffd2ff398d456aca20a4edf5fe7562f300cc77d04ede75d85dfcc422944ec7be"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "f63681a2a381bee8ee6cfdf209f6b4bb851991cc984da79f1f56e80cc284e231"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "7af3063cc4e14da19aa5c786cf6b54606b85d4df7bc11e935898f7176b2eac12"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "7862da243af51cf9e6c6f7558353590bf7f499121d460413cc0629cd629cd491"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "0d0bc512cacd8975146429daa5b57dfcf26f84d836ace38354c10e170644ef4c"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "2581e99590e1f9654ccbb3ef9b3df70cc850a78f26b0d6e21feba24b06db8cf9"
+    }
+  ]
+}

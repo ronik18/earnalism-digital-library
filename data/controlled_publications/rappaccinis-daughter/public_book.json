@@ -1,0 +1,105 @@
+{
+  "id": "controlled-rappaccinis-daughter",
+  "slug": "rappaccinis-daughter",
+  "title": "Rappaccini's Daughter",
+  "subtitle": "",
+  "author": "Nathaniel Hawthorne",
+  "category_slug": "gothic-fiction",
+  "short_description": "A scientist raises his daughter among poisonous plants until she herself becomes toxic — and deadly to those who love her.",
+  "description": "Beatrice has been raised in a poisonous garden by her obsessive scientist father until she herself is deadly to all who touch her. When a young man falls in love with her, the consequences are irreversible. Hawthorne's most haunting science-gothic tale.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "48 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Nathaniel Hawthorne (1804–1864) was an American author preoccupied with Puritan guilt, sin, and moral ambiguity.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Rappaccini's Daughter",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 11465,
+      "reading_minutes": 48,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "5c406033a5c3d1c4f7ccafb13ad5303d631cc19ad4403382407fcbb435e71d4a",
+  "content_hash": "57b2ef721088ddee8684f8f1d080065501760da3659ef86e11453d43e6355959",
+  "provenance_hash": "4d1aee24155cbed5d82ea7f1593935e34b402079c365c564814f4d1384445f10",
+  "rights_basis": "Nathaniel Hawthorne died 1864; first published 1844. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "rappaccinis-daughter",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780590980/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780590981/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780590982/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780590982/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780590983/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780590980/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780590980/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780590981/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780590982/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780590982/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780590983/earnalism/audiobooks/en/rappaccinis-daughter/rappaccinis-daughter_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:48Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z"
+}

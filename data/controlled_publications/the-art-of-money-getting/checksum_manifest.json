@@ -1,0 +1,34 @@
+{
+  "slug": "the-art-of-money-getting",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "413b432c817d5a38aa24bb1741340d85bd197c16c6164948513db56b10ea7486"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "2c0a23dc53450ae1b4edce09bddecd22bf50dcdfe525ff8099dd3ac7b427a617"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "1230bdd0be1880eb2cb1f43206c7eb8e44fd2161641843615134ef3343e6662a"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "ae4b8185830f9e7f2b7562cc5d76319c31c2fde2281e8097e0b4a2c0443f2e3a"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "76b02cdbd5acd684646c2d2cd89aef693b48fdf681b56f32b785c554149dfccb"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "ca5f7b0a782a8bf6c6d3e04bb4ad20e9e97f387945f0fb899f6e2c1bc18b7105"
+    }
+  ]
+}

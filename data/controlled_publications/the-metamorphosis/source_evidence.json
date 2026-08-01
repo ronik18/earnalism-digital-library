@@ -1,0 +1,13 @@
+{
+  "slug": "the-metamorphosis",
+  "source_url": "https://www.gutenberg.org/ebooks/5200",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription freely redistributable for any use including commercial.",
+  "source_hash": "4668a0a73a218a2f7ce39133432c411bc4acdf307c6d40ce300bfee15750d56c",
+  "content_hash": "7f7b0c9985633cfcc77657523a5ee407a8e7727403d7dcf4a42e4b52e90ca887",
+  "provenance_hash": "431004b47ba51f77b0d84594f1e919da208aaada82d076852d67010839124edd",
+  "rights_basis": "Author died 1924. Published 1915. Pre-1928 publication supports U.S. public-domain status.",
+  "downloaded_at": "2026-06-02T18:58:13.307462+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

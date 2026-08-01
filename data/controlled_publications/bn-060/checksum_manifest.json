@@ -1,0 +1,62 @@
+{
+  "slug": "bn-060",
+  "generated_at": "2026-07-03T20:07:46Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "7b36b79e5ada8184797b40094a7d82bfcbfae7e285a1c9f9faaa71eefbfb7064"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "1e011767e925f46d6fe793310026e5fd3e35275847a7a49cd8c1b83e475977c0"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "aae6bd76b677683a2a97d28d4763e0cbda526a5e88c2af56b1838eec465b02d4"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "40f7bb0f5567dd3226375eb5ac430e587e586a196eb49a35030ff163497dab99"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "9da890b0ad6e5f074aafb48551cde6b1c8b7b90083b14c665a14491b54bcf6de"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "e5e4ce408f4c7d9358d1fc07942b6040e2e3769d501358183fbbb4b0b9f37be9"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "2293b8b33a4deee66ee955140f17730786e5f76e2fbfb45f1f7d9f2fc51a0256"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "70ac9626e1e34773041c0ef01b3eb4ad16c1f087858154c7b79e928727788bbb"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "e1cf858f18fdbdeece53f319fafac6886d55ab9953f605ca44f078f6c1c4ff6e"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "a3ffb67735da8446041a00e49eecd5da11081d6754546cfba48b4870d2811572"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "1d1c3adac84a293e59f172ecc4de63e7efb214d4533a2888e07db8accde8330f"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "1d33eb058f3f91cc746e128d4e1f58d8955f16216a8bf6d1add35b9d2237536c"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "a7d35ad28aadb5b1202c02f12ce64a7c429b33d8b8e2629e6c46d26185800e39"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "e1938414f2a944c498e74aeb2965d67fb0861dcfd6c6a767eceeb398abf0fb92"
+    }
+  ]
+}

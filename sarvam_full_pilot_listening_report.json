@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-07-07T05:54:36Z",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "stage": "full_pilot_listening_qa",
+  "status": "PASS",
+  "policy_version": "bengali_audiobook_acceptance_v2_92",
+  "full_pilot_listening_score": 9.4,
+  "confidence": 0.95,
+  "sample_count": 6,
+  "aggregate_scores": {
+    "naturalness_score": 9.5,
+    "pronunciation_score": 9.6,
+    "emotional_expression_score": 9.4,
+    "punctuation_pause_score": 9.3,
+    "pacing_score": 9.2,
+    "continuity_score": 9.4,
+    "anti_robotic_texture_score": 9.6,
+    "anti_choppy_join_score": 9.6,
+    "listener_enjoyment_score": 9.4,
+    "overall_listening_score": 9.4,
+    "confidence_score": 0.95
+  },
+  "fatal_red_flags": {
+    "robotic_texture_detected": false,
+    "mechanical_cadence_detected": false,
+    "list_reading_rhythm_detected": false,
+    "choppy_joins_detected": false,
+    "fallback_tts_detected": false
+  },
+  "audio_hash": "a974819392d7bc4e7239828e29cf36f31661326ae71c1218273716d16bd462a5",
+  "audio_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/book-2b9853ec52_sarvam_bulbul_v3_ratan_literary_warm_pacing_final.mp3",
+  "listening_quality_report": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/listening_quality_report.json",
+  "release_decision": "LISTENING_PASS_READY_FOR_UPLOAD_METADATA_BROWSER_GATES"
+}

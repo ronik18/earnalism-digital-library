@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-07-07T12:07:00Z",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "status": "PASS_WITH_DETAIL_COPY_MISMATCH",
+  "production_base": "https://www.theearnalism.com",
+  "api_checks": {
+    "detail_api": "PASS_200_GET",
+    "reader_manifest": "PASS_200_GET_/api/reader/book/book-2b9853ec52/manifest",
+    "audiobook_endpoint": "PASS_206_RANGE",
+    "sidecars": {
+      "timestamps": "PASS_200",
+      "vtt": "PASS_200",
+      "chapters": "PASS_200",
+      "meta": "PASS_200"
+    },
+    "unapproved_bengali_sample_manifest": "PASS_AUDIO_DISABLED",
+    "unapproved_bengali_sample_audiobook": "PASS_404_HIDDEN"
+  },
+  "browser_checks": {
+    "home": "PASS_200_NO_CONSOLE_ERRORS_NO_OVERFLOW",
+    "detail_route": "PASS_200_COVER_VISIBLE_BUT_STALE_QA_COPY",
+    "reader_desktop": "PASS_200_AUDIO_ELEMENT_VISIBLE_SECTION_FOLLOWING_NO_WORD_LEVEL_CLAIM",
+    "reader_mobile": "PASS_200_AUDIO_DURATION_327_069_NO_OVERFLOW",
+    "unapproved_sample_reader": "PASS_NO_AUDIO_CONTROLS_NO_AUDIO_ELEMENT"
+  },
+  "audio_controls_visible_for_pilot": true,
+  "audio_controls_hidden_for_unapproved_bengali": true,
+  "paragraph_stanza_ui_status": "PASS_SECTION_FOLLOWING_NARRATION_NO_WORD_LEVEL_SYNC_CLAIM",
+  "frontmatter_contamination_reference": "NOT_DETECTED_IN_SIDECAR_SAMPLE; VTT starts with literary body text",
+  "console_errors": [],
+  "mobile_reader": "PASS",
+  "cover_displays": "PASS_ON_DETAIL_ROUTE",
+  "reader_content_access": "READER_ACCESS_WALL_PRESENT_WITH_APPROVED_AUDIO; content remains gated by reader policy",
+  "post_golive_regressions": [
+    {
+      "severity": "non_blocking_release_truth_copy",
+      "route": "/book/book-2b9853ec52",
+      "issue": "Detail page still displays Audiobook held for QA despite approved reader manifest audio."
+    }
+  ],
+  "rollback_recommended": false,
+  "canary_allowed_by_post_golive": false,
+  "canary_blocker": "Detail copy mismatch should be fixed before canary; source preservation is also partial."
+}

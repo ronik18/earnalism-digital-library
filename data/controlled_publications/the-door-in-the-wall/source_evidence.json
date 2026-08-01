@@ -1,0 +1,13 @@
+{
+  "slug": "the-door-in-the-wall",
+  "source_url": "https://www.gutenberg.org/ebooks/11870",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "dd1e44d2ddf9f3a49bc10d51c90eb9a3dc5fde221d972bd59a4a3fd54e130ff6",
+  "content_hash": "b587a74512de6a7607f81bee7180c0529d8088d0bc6afd6222fb43c971bb5b83",
+  "provenance_hash": "ea1c878f2a5bb0147afe371b1d7fd60204e5596f1470483b9b716e53a2426415",
+  "rights_basis": "H.G. Wells died 1946; first published 1906. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.334556+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

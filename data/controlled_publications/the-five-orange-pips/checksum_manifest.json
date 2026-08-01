@@ -1,0 +1,34 @@
+{
+  "slug": "the-five-orange-pips",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "23e79fc9ba56f77e3ddad9f8af4fe79761766f188cbec45dbe02144d8de6c1ad"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "620f7207086ea1c4ee05dda686dcf31203c3b2d6a163f4a6c326278fd7b651b3"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "b5e829a55cde2e8550ff31f8321d41333740815a16320c85d5151842d34c6377"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "480c8f53eeda7665a0311ea1eed7023da609552547297fc5b14f54ba186a00c0"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "9e660d67515f7bd0a8ef45402eace1039a6cd3dc81cc75eeb210390fccf72210"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "c2c98591429b9ceafdb15ae518a86421fdf4659cc61476fe5b640b9efdeecede"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "73e4e3c28a0aa9601d88c8ee192f32bce6feb3aceea92420ff4b902ddff4dbf5"
+    }
+  ]
+}

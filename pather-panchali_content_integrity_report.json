@@ -1,0 +1,36 @@
+{
+  "slug": "pather-panchali",
+  "title": "পথের পাঁচালী / Pather Panchali",
+  "status": "PASS_READER_READY_AUDIOBOOK_SCOPE_BLOCKED",
+  "chapter_count": 12,
+  "controlled_chapter_count": 12,
+  "direct_chapter_links_status": "PASS_LOCAL_FILES_PRESENT",
+  "toc_index_status": "PASS_LOCAL_CHAPTER_SEQUENCE_PRESENT",
+  "title_author_consistency": "PASS",
+  "title_body_mismatch": "NOT_DETECTED",
+  "wrong_book_mixed_content": "NOT_DETECTED",
+  "duplicated_missing_chapters": "NOT_DETECTED_BY_LOCAL_FILE_SEQUENCE",
+  "clean_bengali_rendering": "PASS_TEXT_PRESENT",
+  "route_detail_reader_behavior": "LOCAL_CONTROLLED_PUBLICATION_PRESENT_NOT_BROWSER_PROBED",
+  "stale_audio_exposed": "NO_LOCAL_AUDIO_IN_READER_MANIFEST",
+  "chapter_titles": [
+    "প্রথম পরিচ্ছেদ",
+    "দ্বিতীয় পরিচ্ছেদ",
+    "তৃতীয় পরিচ্ছেদ",
+    "চতুর্থ পরিচ্ছেদ",
+    "পঞ্চম পরিচ্ছেদ",
+    "ষষ্ঠ পরিচ্ছেদ",
+    "সপ্তম পরিচ্ছেদ",
+    "অষ্টম পরিচ্ছেদ",
+    "নবম পরিচ্ছেদ",
+    "দশম পরিচ্ছেদ",
+    "একাদশ পরিচ্ছেদ",
+    "দ্বাদশ পরিচ্ছেদ"
+  ],
+  "content_hash": "77bbc0ac1cb7c0548efb0139c13fa50252dfeff32503edb74f8ee6a857f0d751",
+  "word_count": 19699,
+  "character_count": 125478,
+  "blockers": [
+    "Full-work completeness cannot be proven from local source artifacts; do not generate full audiobook."
+  ]
+}

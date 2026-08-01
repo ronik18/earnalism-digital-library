@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-noble-bachelor",
+  "source_url": "https://www.gutenberg.org/ebooks/1661",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "38eca8ce65749233c926c71ed3ae28a8548cc71aa703b2419bf8363915432a64",
+  "content_hash": "911e6f7b701ecab9cc374fa23faffb75d96268af87ce187164c598ba2ad33f17",
+  "provenance_hash": "a4dc33f4ec0382e477b0407fae1a3916c421ce9f0b4dc4c8a4782e51cc893257",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.209535+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

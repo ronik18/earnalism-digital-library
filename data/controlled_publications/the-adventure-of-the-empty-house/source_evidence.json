@@ -1,0 +1,13 @@
+{
+  "slug": "the-adventure-of-the-empty-house",
+  "source_url": "https://www.gutenberg.org/ebooks/108",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "ee5dd7cf242158b7805d53f7d1c251893c338689056297a6e0a3fb23aca5f2b6",
+  "content_hash": "6bf0c63b087dee0ced53a0c8c74c637bf13e11aeda9ca65846a2d801c06dee21",
+  "provenance_hash": "d115aa91dc3a3bb82e642e4cc6cb2d0d02e207d6e0da6b19447bdbe11e3f2a2a",
+  "rights_basis": "Arthur Conan Doyle died 1930; first published 1903. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.314264+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

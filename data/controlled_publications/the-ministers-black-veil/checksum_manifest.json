@@ -1,0 +1,34 @@
+{
+  "slug": "the-ministers-black-veil",
+  "generated_at": "2026-07-03T20:07:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "8da5b7419325b6094978f6f31baa0ef0603bf7ea70d53a7ccb9cc4df6d166072"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "4f3843bfa0b78d041ed6b223aeca80caa9c212370a4c9ac13f20c2bfaad2617b"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "54007edcbef9e9a6e4f9799cf834891c60bb0cbbe71408fbb53f444953788ca7"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "ff11eed7b324f0918e5b06215500bec6ca06ed52224bf158d9efebf37ca0cf6e"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "f0329703d9342e31d09c4b2c1c9cd43de6a6b596eb307558572f7a60fc51f89a"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "efb995d6f49b9f46dbf7eb0843b4a28e6169a7c3be5abdf6adeaa450648d8506"
+    }
+  ]
+}

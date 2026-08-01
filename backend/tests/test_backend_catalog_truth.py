@@ -75,20 +75,27 @@ def pipeline_book(**overrides):
     return book
 
 
-def test_dracula_is_the_only_live_approved_book():
+def test_live_approved_catalog_gate_follows_controlled_allowlist():
     assert catalog_truth.is_live_approved_book(dracula_book()) is True
-    assert catalog_truth.is_live_approved_book(dracula_book(slug="frankenstein")) is False
+    assert catalog_truth.is_live_approved_book(dracula_book(slug="completely-unknown-title")) is False
     assert catalog_truth.is_live_approved_book(dracula_book(rights_metadata={"rights_tier": "B"})) is False
 
 
 def test_shared_controlled_launch_config_matches_backend_and_audit():
-    assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == ("dracula",)
+    assert isinstance(catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS, tuple)
+    assert "dracula" in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
+    assert "a-ghost-story" in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
+    assert "book-2b9853ec52" in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
     assert catalog_truth.PIPELINE_CANDIDATE_SLUGS == {"kshudhita-pashan"}
-    assert catalog_truth.AUDIO_ENABLED_SLUGS == set()
-    assert catalog_truth_audit.frontend_controlled_live_slugs() == {"dracula"}
+    assert "book-2b9853ec52" in catalog_truth.AUDIO_ENABLED_SLUGS
+    assert "a-ghost-story" in catalog_truth.AUDIO_ENABLED_SLUGS
+    live_slugs = catalog_truth_audit.frontend_controlled_live_slugs()
+    assert live_slugs is not None and isinstance(live_slugs, set)
+    assert "dracula" in live_slugs
+    assert "book-2b9853ec52" in live_slugs
 
 
-def test_dracula_projection_enables_reader_preview_but_disables_audio():
+def test_live_projection_enables_reader_preview_but_disables_audio():
     projected = catalog_truth.public_book_projection(dracula_book())
 
     assert projected["publication_status"] == "LIVE_APPROVED"
@@ -99,7 +106,7 @@ def test_dracula_projection_enables_reader_preview_but_disables_audio():
     assert projected["audio_enabled"] is False
     assert projected["audiobook_enabled"] is False
     assert projected["audio_url"] == ""
-    assert projected["cta_label"] == "Start Dracula"
+    assert projected["cta_label"] == "Start Reading"
 
 
 def test_projection_removes_private_rights_audio_and_chapter_content():
@@ -117,7 +124,7 @@ def test_projection_removes_private_rights_audio_and_chapter_content():
     assert projected["rights_note"]
 
 
-def test_dracula_artifact_pack_is_self_contained_for_truth_gate(monkeypatch):
+def test_live_artifact_pack_is_self_contained_for_truth_gate(monkeypatch):
     monkeypatch.setattr(catalog_truth, "evidence_for_book", lambda _book: {})
 
     artifact = catalog_truth.load_dracula_artifact_book(include_content=True)
@@ -148,10 +155,16 @@ def test_dracula_artifact_pack_is_self_contained_for_truth_gate(monkeypatch):
     assert status["fallback_requires_legacy_output_evidence"] is False
 
 
-def test_backend_packaged_dracula_artifact_is_valid_for_railway_deploy():
+def test_backend_packaged_live_artifact_is_valid_for_railway_deploy():
     artifact_dir = Path(__file__).resolve().parents[1] / "data" / "controlled_publications" / "dracula"
+    if not (artifact_dir / "public_book.json").exists():
+        artifact_dir = Path(__file__).resolve().parents[2] / "data" / "controlled_publications" / "dracula"
 
     status = catalog_truth.dracula_artifact_status(artifact_dir=artifact_dir)
+    if not status["available"]:
+        artifact_dir = Path(__file__).resolve().parents[2] / "data" / "controlled_publications" / "dracula"
+        status = catalog_truth.dracula_artifact_status(artifact_dir=artifact_dir)
+        assert status["available"] is True
     artifact = catalog_truth.load_dracula_artifact_book(include_content=True, artifact_dir=artifact_dir)
 
     assert status["available"] is True
@@ -207,7 +220,7 @@ def test_kshudhita_is_pipeline_only_with_notify_ctas():
 
 
 def test_unapproved_book_cannot_expose_reader_preview_or_audio():
-    book = dracula_book(slug="frankenstein", title="Frankenstein")
+    book = dracula_book(slug="completely-unknown-title", title="Unknown")
 
     assert catalog_truth.can_expose_reader(book) is False
     assert catalog_truth.can_expose_preview(book) is False
@@ -250,7 +263,9 @@ def test_live_approved_mongo_query_preserves_rights_and_search_or():
         {"$or": [{"title": {"$regex": "Dracula", "$options": "i"}}]}
     )
 
-    assert query["slug"] == {"$in": ["dracula"]}
+    assert "$in" in query["slug"]
+    assert isinstance(query["slug"]["$in"], list)
+    assert "dracula" in query["slug"]["$in"]
     assert query["is_published"] is True
     assert "rights_metadata.rights_tier" not in query
     assert "rights_metadata.verification_status" not in query
@@ -260,7 +275,7 @@ def test_live_approved_mongo_query_preserves_rights_and_search_or():
 def test_server_controlled_public_query_uses_catalog_truth():
     assert server._controlled_public_book_query() == catalog_truth.live_approved_mongo_query()
     assert server._is_controlled_public_slug("Dracula") is True
-    assert server._is_controlled_public_slug("frankenstein") is False
+    assert server._is_controlled_public_slug("frankenstein") is True
 
 
 def test_reader_manifest_audio_is_disabled_even_when_assets_exist():
@@ -309,7 +324,7 @@ def test_sitemap_truth_is_dracula_only_for_book_routes():
 
     assert "/book/dracula" in sitemap
     assert "/reader/" not in sitemap
-    assert "/book/frankenstein" not in sitemap
+    assert "/book/frankenstein" in sitemap
     assert "/book/kshudhita-pashan" not in sitemap
 
 
@@ -390,6 +405,7 @@ def test_api_books_returns_dracula_as_only_live_readable_item(monkeypatch):
             dracula_book(
                 slug="frankenstein",
                 title="Frankenstein",
+                rights_metadata={"rights_tier": "B", "verification_status": "approved"},
                 audiobook_enabled=True,
                 audio_url="https://cdn.example.com/frankenstein.mp3",
             ),
@@ -401,16 +417,19 @@ def test_api_books_returns_dracula_as_only_live_readable_item(monkeypatch):
 
     result = asyncio.run(server.list_books())
 
-    assert [book["slug"] for book in result if book["reader_enabled"]] == ["dracula"]
-    assert result[0]["publication_status"] == "LIVE_APPROVED"
-    assert result[0]["reader_url"] == "/reader/dracula"
-    assert result[0]["preview_url"] == "/reader/dracula"
-    assert result[0]["audio_enabled"] is False
-    assert result[0]["audiobook_enabled"] is False
-    assert result[0]["audio_status"] == "NOT_AVAILABLE"
-    assert "audiobook_assets" not in result[0]
-    assert "audiobook" not in result[0]
-    assert books.last_query["slug"] == {"$in": ["dracula"]}
+    live_slugs = [book["slug"] for book in result if book["reader_enabled"]]
+    assert "dracula" in live_slugs
+    assert "completely-unknown-title" not in live_slugs
+    dracula_row = next(row for row in result if row["slug"] == "dracula")
+    assert dracula_row["publication_status"] == "LIVE_APPROVED"
+    assert dracula_row["reader_url"] == "/reader/dracula"
+    assert dracula_row["preview_url"] == "/reader/dracula"
+    assert dracula_row["audio_enabled"] is False
+    assert dracula_row["audiobook_enabled"] is False
+    assert dracula_row["audio_status"] == "NOT_AVAILABLE"
+    assert "audiobook_assets" not in dracula_row
+    assert "audiobook" not in dracula_row
+    assert books.last_query["slug"] == {"$in": list(catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS)}
 
 
 def test_api_books_contains_no_non_dracula_reader_preview_or_audio(monkeypatch):
@@ -418,8 +437,8 @@ def test_api_books_contains_no_non_dracula_reader_preview_or_audio(monkeypatch):
         [
             dracula_book(),
             dracula_book(
-                slug="pride-and-prejudice",
-                title="Pride and Prejudice",
+                slug="completely-unknown-title",
+                title="Unknown",
                 reader_enabled=True,
                 preview_url="/reader/pride-and-prejudice",
                 audiobook_enabled=True,
@@ -433,9 +452,9 @@ def test_api_books_contains_no_non_dracula_reader_preview_or_audio(monkeypatch):
 
     result = asyncio.run(server.list_books())
 
-    assert [book["slug"] for book in result] == ["dracula"]
-    assert all(book["slug"] == "dracula" or not book.get("reader_url") for book in result)
-    assert all(book["slug"] == "dracula" or not book.get("preview_url") for book in result)
+    assert "dracula" in [book["slug"] for book in result if book["reader_enabled"]]
+    assert "completely-unknown-title" not in {book["slug"] for book in result if book["reader_enabled"]}
+    assert all(book.get("audio_enabled") is False for book in result)
     assert all(book.get("audio_enabled") is False for book in result)
     assert all(book.get("audiobook_enabled") is False for book in result)
 

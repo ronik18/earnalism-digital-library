@@ -1,0 +1,34 @@
+{
+  "slug": "the-adventure-of-charles-augustus-milverton",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "ef6c5eb63aca69920fb6b954718cc7b5101ba109dd5fd08573c303908e5b83cf"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "e859a60a1252bbbae34c3c1723129f9f4997c72550bf02275c0442345ccb0c93"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "bb28599957d7bb1695793bfe821ec17e953ea750228848a80fb61bcbd5ba1151"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "8cb87f3346a0d371bcaf9710d2a76c726353b771fe0485fbfc929d46adbc8262"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "9ea0e2da0296f71732f02c5eaa361012347e1c109038f3eb8924c791993015f4"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "d35a8fb193f745272c60c3e2c61c3a6f2118eb710d29a88c1491b2bac347dd10"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "499a4148c37036c7df570ac4894f8c2c4fca0a036c4833feaf185fecb8033163"
+    }
+  ]
+}

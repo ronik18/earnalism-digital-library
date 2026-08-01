@@ -1,0 +1,86 @@
+{
+  "slug": "bn-036",
+  "generated_at": "2026-07-03T20:07:46Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "e1a0a87a37e020dea65f65225c6c3af837b331eb074a5e7dc2f64628941964a3"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "194345dea8d67f0ccd6e728c575d696e5c759125dbbf76206f9baae24807f8d2"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "e6e46f2b70a067bd24828d06bb5a5452479b59ced3aa9aef0b02fa7d938c3a80"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "bf02fa1e34c2f5e36e89d1eca5165e3b198ef94e47fecf3a111d3a084b936649"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "9554ba2587e03df5f1d870fa9b8616901848f2ca10187a387cb66cbd84c9b128"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "bffaa7243b28e6383875233592e74844caca442e81e578e79288d432e318bc05"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "61e973ebea31dee1c16151f893a66217969edd6e6c25c23882ecbd3a38a7e867"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "0f5dbab86b3fc33c8d51fe8fd9435dc1136c186b2f7ddeeb983eefce0ca0b4db"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "f5a1a042bb1cc02e295b79a4c0aceda3ac1aa1670a776a10a6c2a1e1d88ca9f8"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "64fdb5f431f43d0ee4cfc2c850c640a569d18af169dda804d4b99d21c6d7d433"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "cf00ddc7253ca6bcf2885a6114a736fbc46fbe86ebad6f569008772e371be83f"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "a79257dffa1b15855b61ac5505d91bae5e11a97b48878971dc9a09caaaf5ef11"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "60ca58545bad84cb44a3509fd27601676cf51496987c405dc0381626f50c4151"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "8dc927378058d9ae61025085e2d7073ee0d24f8564e98ab11b8c2af7aefee4db"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "ecda0a04b298190d46c7639b18c28bbb10a28e84fa236324c115f39ecb0445c9"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "8f603f0be141008ddef46bc6f8592cbc42eaa81d0db4405bc01a1c2a00b256b2"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "1efcef191b62dbe28527d486d3bb4f6f85f003c2c0f68224ea07dcd011036335"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "cc7a2f723d315c696844cf07833b7a4a4176dd4397e48b7b211aa86b3d0bb1cd"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "6c0f12330a331cb7e7aa5d5f276de01dd3d1a15e7b41cfc22854e85d309e21ef"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "deae3f3f18a7875d80387b69511e31eaba8e7a22c124707624d5f3344f3ff74e"
+    }
+  ]
+}

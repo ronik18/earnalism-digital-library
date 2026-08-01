@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-purloined-letter",
+  "slug": "the-purloined-letter",
+  "title": "The Purloined Letter",
+  "subtitle": "",
+  "author": "Edgar Allan Poe",
+  "category_slug": "literary-fiction",
+  "short_description": "A stolen letter hidden in plain sight — Dupin recovers it by thinking like the thief rather than the police.",
+  "description": "The police search every inch of Minister D's apartment for a stolen letter and find nothing. Dupin walks in, glances at the mantelpiece, and retrieves it immediately — because the best hiding place is always in plain sight. The story that founded the logic of detective fiction.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "30 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Edgar Allan Poe (1809–1849) was an American writer, poet, and critic, master of Gothic horror and inventor of the detective story.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Purloined Letter",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 7062,
+      "reading_minutes": 30,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "99de013d9419389e884e72a91328bc815ac35158c71aaf703d57b9f0a4de836b",
+  "content_hash": "cd6b9310551df3ad1a0618cff3295671a7b120a29d4e7084b21ac26019fcda82",
+  "provenance_hash": "5c62101e10697153b9580b73f755beb9b87e52472ec5b56742eab750433cc711",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1844. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-purloined-letter",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583817/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583818/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583819/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583820/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583820/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583817/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780583817/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583818/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583819/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583820/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780583820/earnalism/audiobooks/en/the-purloined-letter/the-purloined-letter_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:49Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z"
+}

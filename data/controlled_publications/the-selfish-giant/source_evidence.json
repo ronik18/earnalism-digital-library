@@ -1,0 +1,13 @@
+{
+  "slug": "the-selfish-giant",
+  "source_url": "https://www.gutenberg.org/ebooks/902",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
+  "content_hash": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
+  "provenance_hash": "d426354bb000f4b72606e782483eb2882f5510e7e12087388d667120d1ba8053",
+  "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.250185+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

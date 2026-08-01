@@ -1,0 +1,18 @@
+{
+  "slug": "pather-panchali",
+  "title": "পথের পাঁচালী / Pather Panchali",
+  "status": "BLOCKED_COVER_REPAIR_REQUIRED",
+  "front_cover_url": "",
+  "back_cover_url": "",
+  "inventory_cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "cover_audit_status": "GRAPHICAL_COVER_APPROVED",
+  "graphical_content_themed": false,
+  "typographic_only": false,
+  "cropped_or_stale_cover_detected": "NOT_PROBED_VISUALLY_THIS_RUN",
+  "lightweight_assets": "CLOUDINARY_OR_RUNTIME_FALLBACK",
+  "repair_needed": true,
+  "suggested_visual_theme": "rural Bengal path, fields, monsoon, childhood, quiet village atmosphere",
+  "notes": [
+    "Inventory/controlled data does not provide approved graphical front/back cover URLs for the pre-launch gate."
+  ]
+}

@@ -88,3 +88,19 @@ Stage 1F added a repo-enforced bounded OpenAI listening-QA budget gate and ran e
 - `book-f5d593e1f4`: `NEEDS_TEXT_REPAIR`.
 - `pather-panchali`: `NEEDS_RIGHTS_DOCUMENT`.
 - `a-ghost-story`: `HOLD_WITH_NEXT_ACTION`.
+
+## Stage 2 Full-Book TTS Addendum
+
+Generated: 2026-07-10T10:54:33Z
+
+- Stage: `BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_2_FULL_BOOK_TTS_PREFLIGHT_AND_BOUNDED_GENERATION`
+- Result: `FULL_BOOK_TTS_PASS_QA_PENDING`
+- Slug: `bn-066`
+- Provider/voice/style: `sarvam` / `pooja` / `literary_warm_pacing`
+- Final private MP3: `internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3`
+- Chunk count: `152`
+- Duration seconds: `21449.85075`
+- Estimated TTS spend: `1.2226 USD`
+- Actual billing: not reported by provider tools
+- Public audio approval: none
+- Release gate readiness: blocked pending bounded ASR/source alignment and full-book listening QA

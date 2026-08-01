@@ -1,0 +1,78 @@
+{
+  "slug": "acres-of-diamonds",
+  "generated_at": "2026-07-03T20:07:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "a956284fbc1b1e4781c33a43ec24a23b0be1135b3ab9db5b5b2b8b638d8cdf8b"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "b151a2ee38a4035c4eb4fb4eccfa8f7e4072d0ae571340289c714fe80014eb8a"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "84ef6e4ed91b15636601d99de2953f9e7c9e90b235f80f028e172de98c0af5a1"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "b77d8dc1ae05f32dcd5371ecdba824d919f4cd65f8696d83feb5f5ecb9a52697"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "578f3b135a997a082abc385085dc591941c84c2687605bc3628263c488d0615c"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "674ef16c69cbaec09f2e41909552617b41fe9c7642e461f2dd967af0da5532e3"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "0b96f420adae8377311fd8b0c46a422e54f1e99d2060049e220d432e12be75e7"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "a100a00e49d0942e69105f6392e520cd4f4fa0818e1f0806c8ebe7f0de2dd6e4"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "14b0dd55652724a5398d4887e84c6716ff642e13a818a18b30706dad6ae4b745"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "ab1fec1a0b149a93b2ba821f982048584f8c808e4e839d41208378741a2dfd17"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "6162e07e1b2656da98c917613cb3e40e953743a0a183fbb0c95269bae67c300e"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "7e0d097993d904a7744fa5b4af223ccb7d08057200df0c4772ce6335a2fd8409"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "7bf13d2ab858fccffc31f278f2bba3efaabb4fe77978246e0fc98434640255c3"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "46446338902ad15f0f4426494a0f9da44e34b557991e5d8aa0d24ea588ad1741"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "188714d4ce92790cb3bd4bee7efa682f636ca8dadf6cb749c674ec36173329d9"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "1a009448e9768cbf3702665b8c3bb8a99c2fa23195dd1beacf0db02770080a18"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "bfaa3c6c5fbdb07000d6ec990bbdefaec163f7479602f710275a1547a561da22"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "dd4329411e50159b4c0806c37b31a17133dcfd29aab233fe97aac41004abf2f6"
+    }
+  ]
+}

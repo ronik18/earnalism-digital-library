@@ -1,0 +1,123 @@
+{
+  "status": "EXTERNAL_ACTION_REQUIRED",
+  "reason": "Native Bengali provider path is blocked by provider account/auth issues; OpenAI baseline remains below schema-3 listening thresholds.",
+  "providers_detected": {
+    "sarvam": true,
+    "google": true,
+    "azure": true,
+    "openai": true
+  },
+  "providers_fixed": [
+    "Implemented Sarvam adapter at internal/audiobook_lab/scripts/providers/sarvam_tts_adapter.py",
+    "Updated Sarvam Bulbul v3 request parameters and compatible speaker list",
+    "Added provider selection and capability probe output to bengali_tts_provider_bakeoff.py",
+    "Hardened Azure cancellation diagnostics"
+  ],
+  "provider_status": {
+    "sarvam": {
+      "provider": "sarvam",
+      "credentials_detected": true,
+      "auth_status": "blocked",
+      "endpoint_used": "https://api.sarvam.ai/text-to-speech",
+      "region": "",
+      "voices_listed": [
+        "aditya",
+        "ritu",
+        "ashutosh"
+      ],
+      "bengali_voices_detected": [
+        "aditya",
+        "ritu",
+        "ashutosh"
+      ],
+      "sample_synthesis_succeeded": false,
+      "error_message_redacted": "Sarvam TTS HTTP 402: {\"error\":{\"message\":\"No credits available.\",\"code\":\"insufficient_quota_error\",\"request_id\":\"20260705_3273f307-8778-433a-9d18-f01c89b357ac\"}}",
+      "retryable": true,
+      "exact_next_fix": "Verify Sarvam model/speaker/request parameters and account TTS access.",
+      "style_control": false
+    },
+    "google": {
+      "provider": "google",
+      "credentials_detected": true,
+      "auth_status": "blocked",
+      "endpoint_used": "google.cloud.texttospeech.TextToSpeechClient",
+      "region": "earnalism",
+      "voices_listed": [],
+      "bengali_voices_detected": [],
+      "sample_synthesis_succeeded": false,
+      "error_message_redacted": "Google voice listing failed: 503 Getting metadata from plugin failed with error: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.",
+      "retryable": true,
+      "exact_next_fix": "Verify Google TTS is enabled and Bengali voices are available for the configured project."
+    },
+    "azure": {
+      "provider": "azure",
+      "credentials_detected": true,
+      "auth_status": "blocked",
+      "endpoint_used": "azure.cognitiveservices.speech.SpeechSynthesizer",
+      "region": "centralindia",
+      "voices_listed": [
+        "bn-IN-TanishaaNeural"
+      ],
+      "bengali_voices_detected": [
+        "bn-IN-TanishaaNeural"
+      ],
+      "sample_synthesis_succeeded": false,
+      "error_message_redacted": "Azure synthesis failed: ResultReason.Canceled reason=CancellationReason.Error; error_code=CancellationErrorCode.AuthenticationFailure; error_details=WebSocket upgrade failed: Authentication error (401). Please check subscription information and region name. USP state: Sending. Received audio size: 0 bytes.",
+      "retryable": true,
+      "exact_next_fix": "Verify AZURE_SPEECH_KEY matches AZURE_SPEECH_REGION and that Bengali neural TTS is enabled in that region."
+    },
+    "openai": {
+      "auth_status": "usable",
+      "sample_synthesis_succeeded": true,
+      "best_voice": "cedar",
+      "best_score": 8.3,
+      "best_confidence": 0.9,
+      "any_audition_passed": false
+    }
+  },
+  "voices_tested": {
+    "sarvam": [
+      "aditya",
+      "ritu",
+      "ashutosh"
+    ],
+    "google": [],
+    "azure": [
+      "bn-IN-TanishaaNeural",
+      "bn-IN-BashkarNeural"
+    ],
+    "openai": [
+      "marin",
+      "cedar",
+      "verse",
+      "coral",
+      "sage",
+      "alloy"
+    ]
+  },
+  "best_provider": "openai",
+  "best_voice": "cedar",
+  "best_audition_score": 8.3,
+  "any_audition_passed": false,
+  "pilot_slug": "",
+  "pilot_status": "NOT_RUN_BLOCKED_BY_PROVIDER_FAST_PATH",
+  "asr_score": null,
+  "sync_score": null,
+  "listening_qa_score": 8.3,
+  "upload_checksum_status": "NOT_RUN",
+  "metadata_status": "NOT_RUN",
+  "browser_status": "NOT_RUN",
+  "cost": {
+    "sarvam_estimated_usd": 0.0345,
+    "google_azure_estimated_usd": 0.023,
+    "openai_baseline_estimated_usd": 0.5664,
+    "actual_cost_if_available": "not_available"
+  },
+  "report_paths": {
+    "sarvam": "internal/audiobook_lab/release_gate/bengali_tts_provider_bakeoff_20260705T204419Z/bengali_tts_provider_bakeoff_report.json",
+    "google_azure": "internal/audiobook_lab/release_gate/bengali_tts_provider_bakeoff_20260705T204439Z/bengali_tts_provider_bakeoff_report.json",
+    "azure_diagnostic": "internal/audiobook_lab/release_gate/bengali_tts_provider_bakeoff_20260705T204515Z/bengali_tts_provider_bakeoff_report.json",
+    "openai_baseline": "internal/audiobook_lab/release_gate/bengali_tts_provider_bakeoff_20260705T201833Z/bengali_tts_provider_bakeoff_report.json"
+  },
+  "next_exact_command": "After adding Sarvam credits or fixing Google/Azure credentials, rerun: railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF=true EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD=25 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio python3 internal/audiobook_lab/scripts/bengali_tts_provider_bakeoff.py --manifest book_import_manifest.json --candidate-slugs book-ac5a71075e,book-1090573dff,book-4b944e64fa --providers sarvam,google,azure,openai --max-passages 5 --max-seconds-per-sample 75 --fail-closed"
+}

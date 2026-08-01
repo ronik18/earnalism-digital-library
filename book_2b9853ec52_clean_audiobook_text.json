@@ -1,0 +1,64 @@
+{
+  "generated_at": "2026-07-07T05:21:09.067929+00:00",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "canonical_display_text_hash": "1e1d0b25627df784b861b8c6314b8bade1baabc554122dabf00dd8c5f2ae4dd9",
+  "audiobook_clean_text_hash": "8bb44a151a11fa7f3206c7562a7e8bf72fdb36787b84276f6559aab7a7a9a690",
+  "removed_frontmatter_spans": [
+    {
+      "group_id": 0,
+      "text": "রবীন্দ্রনাথ ঠাকুর",
+      "reason": "source/title-page metadata excluded from audiobook narration"
+    },
+    {
+      "group_id": 0,
+      "text": "চিত্রা",
+      "reason": "source/title-page metadata excluded from audiobook narration"
+    },
+    {
+      "group_id": 0,
+      "text": "১৮৯৫ (পৃ. ৬৫-৬৯)",
+      "reason": "source/title-page metadata excluded from audiobook narration"
+    },
+    {
+      "group_id": 0,
+      "text": "দুই বিঘা জমি।",
+      "reason": "source/title-page metadata excluded from audiobook narration"
+    }
+  ],
+  "removal_reason_per_span": {
+    "রবীন্দ্রনাথ ঠাকুর": "source/title-page metadata excluded from audiobook narration",
+    "চিত্রা": "source/title-page metadata excluded from audiobook narration",
+    "১৮৯৫ (পৃ. ৬৫-৬৯)": "source/title-page metadata excluded from audiobook narration",
+    "দুই বিঘা জমি।": "source/title-page metadata excluded from audiobook narration"
+  },
+  "final_opening_words": [
+    "শুধু",
+    "বিঘে",
+    "দুই",
+    "ছিল",
+    "মোর",
+    "ভুঁই",
+    "আর",
+    "সবি",
+    "গেছে",
+    "ঋণে"
+  ],
+  "final_ending_words": [
+    "হলে",
+    "আজ",
+    "আমি",
+    "আজ",
+    "চোর",
+    "বটে",
+    "৩১",
+    "শে",
+    "জ্যৈষ্ঠ",
+    "১৩০২"
+  ],
+  "line_stanza_paragraph_count": 74,
+  "content_coverage_after_cleaning_percent": 100.0,
+  "approval_status": "PASS_CLEAN_TEXT_READY_FOR_TTS",
+  "reader_display_text_unchanged": true
+}

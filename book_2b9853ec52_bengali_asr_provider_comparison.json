@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-07-07T05:05:41.091336+00:00",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "cost_policy": "No additional paid ASR/STT call was run because provenance already fails and EARNALISM_STOP_ON_BUDGET_EXCEEDED / listening QA gates are not set in the local environment.",
+  "providers": [
+    {
+      "provider": "openai_existing_run",
+      "model": "gpt-4o-mini-transcribe",
+      "language_script_detected": "Bengali",
+      "transcript_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T040427Z/asr_transcript.txt",
+      "raw_transcript_score_vs_canonical": 7.0199,
+      "normalized_bengali_score": 0.299,
+      "phonetic_shadow_score": 0.299,
+      "first_boundary_match": false,
+      "last_boundary_match": false,
+      "coverage": 0.702,
+      "confidence": null,
+      "timestamps_available": false,
+      "diagnosis": "Existing ASR is not release-sufficient and provides no timestamps; however current TTS input mismatch/frontmatter is already enough to block."
+    },
+    {
+      "provider": "sarvam_stt",
+      "model": null,
+      "language_script_detected": null,
+      "transcript_path": null,
+      "raw_transcript_score_vs_canonical": null,
+      "normalized_bengali_score": null,
+      "phonetic_shadow_score": null,
+      "first_boundary_match": null,
+      "last_boundary_match": null,
+      "coverage": null,
+      "confidence": null,
+      "timestamps_available": null,
+      "diagnosis": "Not run in this forensic pass; no extra provider spend justified until TTS input is repaired."
+    },
+    {
+      "provider": "google_stt",
+      "model": null,
+      "language_script_detected": null,
+      "transcript_path": null,
+      "raw_transcript_score_vs_canonical": null,
+      "normalized_bengali_score": null,
+      "phonetic_shadow_score": null,
+      "first_boundary_match": null,
+      "last_boundary_match": null,
+      "coverage": null,
+      "confidence": null,
+      "timestamps_available": null,
+      "diagnosis": "Credentials appear configured locally, but not run because current source-to-TTS provenance fails before ASR comparison would be actionable."
+    },
+    {
+      "provider": "azure_stt",
+      "model": null,
+      "language_script_detected": null,
+      "transcript_path": null,
+      "raw_transcript_score_vs_canonical": null,
+      "normalized_bengali_score": null,
+      "phonetic_shadow_score": null,
+      "first_boundary_match": null,
+      "last_boundary_match": null,
+      "coverage": null,
+      "confidence": null,
+      "timestamps_available": null,
+      "diagnosis": "Not available in local environment."
+    }
+  ],
+  "summary": "ASR weakness exists, but the decisive blocker is not ASR alone: the current audio was generated from an audiobook-unclean TTS input containing frontmatter/source metadata and cannot be verified by construction."
+}

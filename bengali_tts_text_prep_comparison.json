@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-07-06T21:47:04Z",
+  "canonical_reader_manuscript_changed": false,
+  "variants_tested": [
+    "punctuation_aware_emotional",
+    "dialogue_human_touch",
+    "literary_warm_pacing",
+    "anti_list_reading_flow",
+    "anti_mechanical_cadence",
+    "stanza_paragraph_breathing"
+  ],
+  "variant_rules": {
+    "punctuation_aware_emotional": {
+      "instruction": "Bengali literary narration with clearer comma and sentence pauses, natural paragraph breaks, and gentle emotional shading. Expressive but restrained; never theatrical or mechanical.",
+      "display_text_changed": false,
+      "tts_only_preparation": true,
+      "meaning_preserved": true
+    },
+    "dialogue_human_touch": {
+      "instruction": "Human, warm Bengali storytelling for dialogue-heavy passages. Dialogue should feel alive and intimate, without overacting. Avoid identical sentence endings and robotic tone resets.",
+      "display_text_changed": false,
+      "tts_only_preparation": true,
+      "meaning_preserved": true
+    },
+    "literary_warm_pacing": {
+      "instruction": "Warm Bengali literary storyteller with slightly slower-than-neutral pacing. Preserve Bengali literary rhythm, punctuation, and emotional restraint. Avoid robotic cadence, rushing, and list-reading rhythm.",
+      "display_text_changed": false,
+      "tts_only_preparation": true,
+      "meaning_preserved": true
+    },
+    "anti_list_reading_flow": {
+      "instruction": "Natural Bengali literary narration with flowing paragraphs, varied phrase endings, and no list-reading rhythm. Preserve every word and meaning while avoiding itemized or recitation-like cadence.",
+      "display_text_changed": false,
+      "tts_only_preparation": true,
+      "meaning_preserved": true
+    },
+    "anti_mechanical_cadence": {
+      "instruction": "Human Bengali storytelling with organic breath, non-repeating sentence endings, and smooth continuity. Avoid mechanical cadence, robotic resets, and clipped phrase joins.",
+      "display_text_changed": false,
+      "tts_only_preparation": true,
+      "meaning_preserved": true
+    },
+    "stanza_paragraph_breathing": {
+      "instruction": "Bengali literary narration with graceful paragraph breathing and restrained emotional continuity. Use natural pauses between thought groups without sounding slow, choppy, or overdramatic.",
+      "display_text_changed": false,
+      "tts_only_preparation": true,
+      "meaning_preserved": true
+    }
+  },
+  "passage_text_hashes": [
+    {
+      "passage_id": "narrative_opening",
+      "slug": "book-2b9853ec52",
+      "canonical_hash": "864ea73ccc60740fe6264da3263201cb6b261724872ff174f60435ab357b6a94",
+      "prepared_hashes": {
+        "punctuation_aware_emotional": "4fd66af187380fc791fd0e02cfb56060303ed4eb6147081af70f0ff039ab8143",
+        "dialogue_human_touch": "cac3beb5056ed99927d011ce1be1d55111056f3d6dd0dc9fa04742137d275d03",
+        "literary_warm_pacing": "ca9c739553c7217efe96868b78ae4cbedc381ba4b87bafe3e299b4a553259a0f",
+        "anti_list_reading_flow": "4fd66af187380fc791fd0e02cfb56060303ed4eb6147081af70f0ff039ab8143",
+        "anti_mechanical_cadence": "d9bb423ca3d3ba540822a484b080f7a5dd18aac3af6b64d76ffe5306a9957f36",
+        "stanza_paragraph_breathing": "79a429348819ae8dabb1a8f731666d830805264c6a3f8c25f0c21ff9f8ae85f5"
+      }
+    },
+    {
+      "passage_id": "dialogue",
+      "slug": "muchiram-gurer-jibanchorit",
+      "canonical_hash": "f57b0b5362d330ff5ad5c9483aaf4b5ddf5f77b8f08b8115b8db8097430b3bd3",
+      "prepared_hashes": {
+        "punctuation_aware_emotional": "ecc139f505e349f20e3b31c0037df767d5b01da0c4566a19d1447842d6ed4250",
+        "dialogue_human_touch": "8484ad4618029eca5db66f321c45c2d7ab4ff69e4e6fc4af44346313815a25ec",
+        "literary_warm_pacing": "8484ad4618029eca5db66f321c45c2d7ab4ff69e4e6fc4af44346313815a25ec",
+        "anti_list_reading_flow": "ecc139f505e349f20e3b31c0037df767d5b01da0c4566a19d1447842d6ed4250",
+        "anti_mechanical_cadence": "8484ad4618029eca5db66f321c45c2d7ab4ff69e4e6fc4af44346313815a25ec",
+        "stanza_paragraph_breathing": "46612163e62b974c55da92fa17d30692b4f274c89d8f24273a75802d63696fdf"
+      }
+    },
+    {
+      "passage_id": "emotional",
+      "slug": "book-d19e96859f",
+      "canonical_hash": "cef13c2134ea080e13d1d476a5b58e8e5771211472ebf359588fcc4ceffa8357",
+      "prepared_hashes": {
+        "punctuation_aware_emotional": "114c14d1ab8dc76108eab1ed48676dffba414105d8a32ac1f956e13bb7179080",
+        "dialogue_human_touch": "114c14d1ab8dc76108eab1ed48676dffba414105d8a32ac1f956e13bb7179080",
+        "literary_warm_pacing": "114c14d1ab8dc76108eab1ed48676dffba414105d8a32ac1f956e13bb7179080",
+        "anti_list_reading_flow": "114c14d1ab8dc76108eab1ed48676dffba414105d8a32ac1f956e13bb7179080",
+        "anti_mechanical_cadence": "114c14d1ab8dc76108eab1ed48676dffba414105d8a32ac1f956e13bb7179080",
+        "stanza_paragraph_breathing": "a0d535517dc1cbe4beab4b701d1113704d6f876cd3ca7ae25d3bfe55f7942c34"
+      }
+    },
+    {
+      "passage_id": "punctuation_heavy",
+      "slug": "book-2b9853ec52",
+      "canonical_hash": "7fc96ceb647d04cf961edcb2369e8d7e2e5da46677bcfc3e35afd6d3414ddad0",
+      "prepared_hashes": {
+        "punctuation_aware_emotional": "968c43708cc0ef481b1a55429a042612c121f7ade1a976b8a7f2e3a9832f693f",
+        "dialogue_human_touch": "56d83a9c48ca91cd11ac57af1b4e9ad6664dcb92e6a2414c6847a8f2a0460128",
+        "literary_warm_pacing": "99c5cc993fb275f88fd4f06eacc9bb40ad1a1a7d601939b959a5cc8712beca0c",
+        "anti_list_reading_flow": "968c43708cc0ef481b1a55429a042612c121f7ade1a976b8a7f2e3a9832f693f",
+        "anti_mechanical_cadence": "93d5de611823bfa90fe410ce16921e26d302f9e6ded4cda202e93c08bdc85b42",
+        "stanza_paragraph_breathing": "c3b002a222683800746345472615b0175fbda42e282879ef45b22cee136286eb"
+      }
+    },
+    {
+      "passage_id": "punctuation_heavy",
+      "slug": "muchiram-gurer-jibanchorit",
+      "canonical_hash": "c5b58a46fa368f8f03582d40c2a54883db7270d6dae75ce28648a243b928574d",
+      "prepared_hashes": {
+        "punctuation_aware_emotional": "47ce8c55525b8dd02a3be039107b33c5cfdfd078339b64280cfc7e93afcef7b6",
+        "dialogue_human_touch": "61b96e3c62611d134964a8db6758f152cc1641d063aa8c921a9a77507248e058",
+        "literary_warm_pacing": "61b96e3c62611d134964a8db6758f152cc1641d063aa8c921a9a77507248e058",
+        "anti_list_reading_flow": "47ce8c55525b8dd02a3be039107b33c5cfdfd078339b64280cfc7e93afcef7b6",
+        "anti_mechanical_cadence": "61b96e3c62611d134964a8db6758f152cc1641d063aa8c921a9a77507248e058",
+        "stanza_paragraph_breathing": "bbd167c68e07a63fa14a74e85a5e5f13660bb8a97e0080afa327078606ac577f"
+      }
+    }
+  ]
+}

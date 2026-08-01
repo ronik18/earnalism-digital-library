@@ -1,0 +1,13 @@
+{
+  "slug": "acres-of-diamonds",
+  "source_url": "https://www.gutenberg.org/ebooks/368",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain; commercial use allowed in the United States.",
+  "source_hash": "7d76b89150b79dc7511527704c2c07387913f3ea1904523b72c60e6742744c39",
+  "content_hash": "81cee3802b924fe4e2c5d504f4b8256455bb60a14c31055f50816a8bbbc2ab37",
+  "provenance_hash": "b2c2559b19431922e4c7eb02f43a34e5f8a91927b3b6486f88791292aec0924e",
+  "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+  "downloaded_at": "2026-06-08T20:17:58.132847+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

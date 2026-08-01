@@ -1,0 +1,13 @@
+{
+  "slug": "rappaccinis-daughter",
+  "source_url": "https://www.gutenberg.org/ebooks/512",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "5c406033a5c3d1c4f7ccafb13ad5303d631cc19ad4403382407fcbb435e71d4a",
+  "content_hash": "57b2ef721088ddee8684f8f1d080065501760da3659ef86e11453d43e6355959",
+  "provenance_hash": "4d1aee24155cbed5d82ea7f1593935e34b402079c365c564814f4d1384445f10",
+  "rights_basis": "Nathaniel Hawthorne died 1864; first published 1844. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.078560+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

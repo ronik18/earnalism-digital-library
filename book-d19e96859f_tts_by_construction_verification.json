@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-07-07T19:08:13Z",
+  "slug": "book-d19e96859f",
+  "status": "PENDING_REPAIR",
+  "tts_by_construction_verified": false,
+  "source_verification_method": "clean_tts_source_provenance_static_audit_after_group_repair_required",
+  "tts_input_clean": false,
+  "tts_input_coverage_percent": 100.0,
+  "canonical_to_tts_clean_match_score": 1.0,
+  "first_last_tts_input_boundary_pass": true,
+  "blockers": [
+    "Existing final group includes standalone source year ১২৯৮?",
+    "Group 4 must be regenerated with corrected clean text before this can pass"
+  ],
+  "expected_after_repair": {
+    "tts_input_clean": true,
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_clean_match_score": 1.0,
+    "first_literary_words_present": true,
+    "final_literary_words_present": true
+  }
+}
