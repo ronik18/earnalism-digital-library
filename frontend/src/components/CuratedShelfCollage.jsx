@@ -8,7 +8,6 @@ import { buildShelfGridLayout, normalizeShelfArea, SHELF_AREAS } from "../lib/sh
 export default function CuratedShelfCollage({ curation }) {
   const groups = Array.isArray(curation?.groups)
     ? allocateUniqueShelfBooks(curation.groups
-      .filter((group) => group?.books?.length || group?.reserve_books?.length)
       .map((group) => ({ ...group, layout_area: normalizeShelfArea(group) }))
       .sort((left, right) => SHELF_RUNWAY_ORDER.indexOf(left.id) - SHELF_RUNWAY_ORDER.indexOf(right.id)))
     : [];

@@ -774,6 +774,104 @@
   .selected-listening-card { scroll-snap-align: start; }
 }
 
+/* Editorial shelf composition v5: the canonical cover is a nested image, so
+   cropping belongs on the image rather than the BookCoverImage wrapper. */
+.curated-shelf-tile__cover .book-cover-image__img,
+.curated-shelf-tile__cover .book-cover-image__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.curated-shelf-tile__cover-link {
+  background: #2d1718;
+}
+
+.curated-shelf-tile--editorial .curated-shelf-tile__cover-stage {
+  place-items: center;
+}
+
+.curated-shelf-tile__editorial-mark {
+  display: grid;
+  width: min(100%, 9rem);
+  min-height: 9.5rem;
+  place-items: center;
+  color: color-mix(in srgb, var(--tile-accent) 62%, #6f2638);
+  border: 1px solid color-mix(in srgb, var(--tile-accent) 24%, transparent);
+  border-radius: 999px 999px 0.85rem 0.85rem;
+  background: linear-gradient(155deg, rgba(255, 252, 243, 0.72), rgba(246, 232, 205, 0.28));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.72), 0 1rem 2rem rgba(65, 33, 29, 0.08);
+}
+
+.curated-shelf-tile__editorial-mark span {
+  width: 58%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+}
+
+.curated-shelf-tile__covers {
+  align-items: center;
+  justify-content: center;
+}
+
+.curated-shelf-tile--spotlight .curated-shelf-tile__covers {
+  grid-template-columns: minmax(7.75rem, 9.5rem);
+}
+
+.curated-shelf-tile--duo-shelf .curated-shelf-tile__covers {
+  grid-template-columns: repeat(2, minmax(5.75rem, 8.25rem));
+}
+
+.curated-shelf-tile--duo-shelf .curated-shelf-tile__cover-item:first-child {
+  transform: translateY(0.55rem) rotate(-1.25deg);
+}
+
+.curated-shelf-tile--duo-shelf .curated-shelf-tile__cover-item:last-child {
+  transform: translateY(-0.4rem) rotate(1.1deg);
+}
+
+.curated-shelf-tile--shelf-feature .curated-shelf-tile__cover-item:nth-child(1) {
+  transform: translateY(0.7rem) rotate(-1.15deg);
+}
+
+.curated-shelf-tile--shelf-feature .curated-shelf-tile__cover-item:nth-child(2) {
+  z-index: 2;
+  transform: translateY(-0.45rem);
+}
+
+.curated-shelf-tile--shelf-feature .curated-shelf-tile__cover-item:nth-child(3) {
+  transform: translateY(0.8rem) rotate(1.15deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .curated-shelf-tile__cover-item:hover {
+    transform: translateY(-0.25rem) scale(1.015);
+  }
+}
+
+@media (max-width: 767px) {
+  .curated-shelf-tile__cover-stage {
+    min-height: 10.5rem;
+  }
+
+  .curated-shelf-tile--spotlight .curated-shelf-tile__covers {
+    grid-template-columns: minmax(7.5rem, 9rem);
+  }
+
+  .curated-shelf-tile--duo-shelf .curated-shelf-tile__covers {
+    grid-template-columns: repeat(2, minmax(5.5rem, 7.75rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curated-shelf-tile__cover-item,
+  .curated-shelf-tile__cover-item:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .curated-shelf-tile__cover-item:hover, .curated-shelf-tile__cover-link, .curated-shelf-tile__cta { transition: none; transform: none; }
   .selected-listening-rail__viewport { scroll-behavior: auto; }

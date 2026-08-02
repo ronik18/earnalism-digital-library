@@ -312,6 +312,7 @@ def _build_shelf_collage(
             for raw_slug in raw_group.get("slugs", [])
             if str(raw_slug or "").strip()
         ]
+        mapped_slugs = list(dict.fromkeys(group_slugs))
         candidates = [
             contracts_by_slug[slug]
             for slug in group_slugs
@@ -320,6 +321,9 @@ def _build_shelf_collage(
             and contracts_by_slug[slug].get("cover_valid") is True
         ]
         ranked_candidates = select_curated_books(candidates, len(candidates))
+        featured_slug = str(raw_group.get("featured_slug") or "").strip().lower()
+        if featured_slug:
+            ranked_candidates.sort(key=lambda book: book["slug"] != featured_slug)
         limit = max(0, _rank_value(raw_group.get("cover_limit", raw_group.get("limit")), 3))
         # Reserve hero covers first, then avoid cross-shelf repeats when a real
         # canonical alternative exists. A repeat is only a last resort.
@@ -339,7 +343,7 @@ def _build_shelf_collage(
             "id": str(raw_group.get("id") or "").strip(),
             "title": str(raw_group.get("title") or "").strip(),
             "description": str(raw_group.get("description") or "").strip(),
-            "book_count": len(selected),
+            "book_count": len(mapped_slugs),
             "books": [_public_book(book) for book in selected],
             "cta_label": str(raw_group.get("cta_label") or "Explore the library").strip(),
             "cta_url": str(raw_group.get("cta_url") or "/library").strip(),
@@ -348,6 +352,7 @@ def _build_shelf_collage(
             "layout_area": str(raw_group.get("layout_area") or raw_group.get("id") or "shelf").strip(),
             "editorial_line": str(raw_group.get("editorial_line") or "").strip(),
             "icon": str(raw_group.get("icon") or "book-open").strip(),
+            "featured_slug": featured_slug,
         })
 
     approved_audio_visuals = [

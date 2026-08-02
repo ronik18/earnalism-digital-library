@@ -1929,3 +1929,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   objective and listening judgments for `chunk_0009` and the already-repaired
   `chunk_0036`, then full-title strict objective/sync proof before package-v2
   construction.
+
+## Homepage Primary Shelf Taxonomy and Ginni Crop - 2026-08-02
+
+- The authoritative 32-title Sprint 1 set must map one-to-one to the five homepage editorial shelves; do not repeat titles to increase visual density.
+- Ginni's canonical 1122x1402 front and back assets contain no white top/bottom padding. The visible bands came from applying `object-fit: cover` to the wrapper while the nested image retained global `object-fit: contain`.
+- Shelf counts should describe all uniquely mapped reader titles, while cover compositions may show a smaller truth-gated selection of canonical graphical covers.
+- Sparse shelves should use spotlight or duo composition; they must not borrow duplicate titles from another primary shelf.

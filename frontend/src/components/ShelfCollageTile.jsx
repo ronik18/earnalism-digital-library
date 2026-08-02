@@ -24,8 +24,6 @@ export default function ShelfCollageTile({ group, index = 0 }) {
     books: candidateBooks
       .filter((book) => book?.slug && !failedSlugs.has(book.slug)),
   }, group.display_mode === "runway" ? 6 : group.display_mode === "duo" ? 2 : group.display_mode === "spotlight" ? 1 : 3);
-  if (!books.length) return null;
-
   const Icon = ICONS[group.icon] || BookOpen;
   const shelfArea = normalizeShelfArea(group);
   const headingId = `curated-shelf-${group.id || index}-title`;
@@ -43,6 +41,7 @@ export default function ShelfCollageTile({ group, index = 0 }) {
       data-layout-area={shelfArea || `shelf-${index}`}
       data-shelf-area={shelfArea || `shelf-${index}`}
       data-variant={variant}
+      data-cover-count={books.length}
       aria-labelledby={headingId}
     >
       <div className="curated-shelf-tile__body">
@@ -58,8 +57,8 @@ export default function ShelfCollageTile({ group, index = 0 }) {
         <ul className="curated-shelf-tile__themes" aria-label={`${group.title} themes`} data-content-zone="chips">
           {themeChips.map((theme) => <li key={theme}>{theme}</li>)}
         </ul>
-        <div className="curated-shelf-tile__cover-stage" data-content-zone="covers">
-          <ul className="curated-shelf-tile__covers" aria-label={`${group.title} books`}>
+        <div className="curated-shelf-tile__cover-stage" data-content-zone="covers" aria-hidden={books.length ? undefined : "true"}>
+          {books.length ? <ul className="curated-shelf-tile__covers" aria-label={`${group.title} books`}>
             {books.map((book, bookIndex) => (
               <li className={`curated-shelf-tile__cover-item ${variant === "shelf-feature" && bookIndex === 1 ? "curated-shelf-tile__cover-item--dominant" : ""}`} key={book.slug}>
                 <Link to={book.book_url} className="curated-shelf-tile__cover-link" aria-label={`Open ${book.title} by ${book.author}`}>
@@ -67,7 +66,7 @@ export default function ShelfCollageTile({ group, index = 0 }) {
                 </Link>
               </li>
             ))}
-          </ul>
+          </ul> : <div className="curated-shelf-tile__editorial-mark"><Icon size={46} strokeWidth={0.9} /><span /></div>}
         </div>
         <Link className="curated-shelf-tile__cta" to={ctaUrl} data-content-zone="cta"><span>{ctaLabel}</span><ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" /></Link>
       </div>

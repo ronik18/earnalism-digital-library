@@ -145,8 +145,18 @@ describe("CuratedShelfCollage", () => {
     expect(getShelfVariant({ books: [readerBook] })).toBe("spotlight");
     expect(getShelfVariant({ books: [readerBook, { ...readerBook, slug: "second" }] })).toBe("duo-shelf");
     expect(getShelfVariant({ books: [readerBook, { ...readerBook, slug: "second" }, { ...readerBook, slug: "third" }] })).toBe("shelf-feature");
+    expect(getShelfVariant({ books: [] })).toBe("editorial");
     expect(getShelfCountLabel({ books: [readerBook] })).toBe("Featured classic");
+    expect(getShelfCountLabel({ book_count: 10, books: [readerBook] })).toBe("10 curated titles");
     expect(getUniqueShelfBooks({ books: [readerBook, readerBook, { ...readerBook, slug: "second" }] })).toHaveLength(2);
+  });
+
+  test("crops the nested canonical cover image and exposes stable cover-count variants", () => {
+    expect(stylesSource).toContain(".curated-shelf-tile__cover .book-cover-image__img");
+    expect(stylesSource).toContain("object-fit: cover;");
+    expect(tileSource).toContain("data-cover-count={books.length}");
+    expect(stylesSource).toContain(".curated-shelf-tile--spotlight .curated-shelf-tile__covers");
+    expect(stylesSource).toContain(".curated-shelf-tile--duo-shelf .curated-shelf-tile__covers");
   });
 
   test("allocates each canonical cover to only one collage tile", () => {
@@ -162,6 +172,17 @@ describe("CuratedShelfCollage", () => {
       ["unique"],
     ]);
     expect(componentSource).toContain("allocateUniqueShelfBooks");
+  });
+
+  test("preserves an editorial shelf when canonical cover art is unavailable", () => {
+    const groups = allocateUniqueShelfBooks([{ id: "sparse", book_count: 4, books: [] }]);
+    expect(groups).toHaveLength(1);
+    expect(groups[0]).toMatchObject({ id: "sparse", book_count: 4, books: [] });
+    expect(tileSource).toContain("curated-shelf-tile__editorial-mark");
+    const normalized = normalizeHomeCuration({
+      shelf_collage: { groups: [{ id: "sparse", book_count: 4, books: [] }] },
+    });
+    expect(normalized.shelf_collage.groups).toHaveLength(1);
   });
 
   test("keeps the final production geometry contract collision resistant", () => {

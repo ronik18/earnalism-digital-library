@@ -175,6 +175,15 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "book-d19e96859f": {
+      "homepage_cover_display": {
+        "status": "CANONICAL_SOURCE_VALID_NESTED_IMAGE_CROP_FIXED",
+        "verified_at": "2026-08-02T06:30:00Z",
+        "front_dimensions": "1122x1402",
+        "back_dimensions": "1122x1402",
+        "source_assets_changed": false,
+        "rendering_fix": "Apply object-fit cover to nested BookCoverImage img in curated shelf tiles.",
+        "release_truth_unchanged": true
+      },
       "latest_decision": "INDIC_PARLER_PRIVATE_REPRESENTATIVE_OBJECTIVE_ASR_FAIL_CLOSED",
       "decision_reason": "The exact four-file Indic Parler/Aditi representative attempt produced an aggregate raw ASR/source score of 1.2617 and ordered coverage of 0.1011, failed both boundaries, omitted 235 of 267 ordered source tokens, and contained repeated and unexpected content. Listening, full-title generation, sync, upload, and publication correctly did not run.",
       "updated_at": "2026-07-30T09:15:47Z",

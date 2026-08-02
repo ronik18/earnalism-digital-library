@@ -292,6 +292,28 @@ def test_shelf_collage_is_dynamic_canonical_and_deduplicated():
         for group in collage["groups"]
         for book in group["books"]
     )
+
+
+def test_sprint1_primary_shelf_taxonomy_is_complete_unique_and_counted():
+    config = json.loads((ROOT / "backend/data/home_hero_curation.json").read_text(encoding="utf-8"))
+    active_slugs = config["sprint1_active_slugs"]
+    groups = config["shelf_collage"]["groups"]
+    mapped_slugs = [slug for group in groups for slug in group["slugs"]]
+
+    assert len(active_slugs) == 32
+    assert len(mapped_slugs) == len(set(mapped_slugs)) == 32
+    assert set(mapped_slugs) == set(active_slugs)
+    assert "book-d19e96859f" in groups[0]["slugs"]
+    assert groups[0]["featured_slug"] == "book-d19e96859f"
+    assert "frankenstein" in next(
+        group["slugs"] for group in groups if group["id"] == "gothic-and-the-uncanny"
+    )
+
+    collage = build_home_curated_payload()["shelf_collage"]
+    collage_by_id = {group["id"]: group for group in collage["groups"]}
+    for group in groups:
+        assert collage_by_id[group["id"]]["book_count"] == len(set(group["slugs"]))
+    assert collage_by_id[groups[0]["id"]]["books"][0]["slug"] == "book-d19e96859f"
     assert all(
         book["cover_valid"] is True
         and book["is_placeholder"] is False

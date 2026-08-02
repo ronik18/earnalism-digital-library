@@ -92,6 +92,7 @@
         "editorial_line": "Begin with stories rooted in land, longing, dignity, and change.",
         "icon": "book-open",
         "cover_limit": 3,
+        "featured_slug": "book-d19e96859f",
         "slugs": [
           "book-2b9853ec52",
           "bn-066",
@@ -119,14 +120,14 @@
         "slugs": [
           "a-ghost-story",
           "dracula",
+          "frankenstein",
           "jekyll-and-hyde",
           "picture-of-dorian-gray",
           "the-tell-tale-heart",
           "the-masque-of-the-red-death",
           "the-yellow-wallpaper",
           "the-monkeys-paw",
-          "sredni-vashtar",
-          "book-edfcf810c5"
+          "sredni-vashtar"
         ]
       },
       {
@@ -141,14 +142,10 @@
         "icon": "heart",
         "cover_limit": 2,
         "slugs": [
-          "devdas",
           "pride-and-prejudice",
           "the-necklace",
           "dsires-baby",
-          "the-last-leaf",
-          "radharani",
-          "nishkriti",
-          "dsires-baby"
+          "the-last-leaf"
         ]
       },
       {
@@ -184,11 +181,7 @@
         "slugs": [
           "the-gift-of-the-magi",
           "the-open-window",
-          "the-cop-and-the-anthem",
-          "the-last-leaf",
-          "the-necklace",
-          "sredni-vashtar",
-          "the-tell-tale-heart"
+          "the-cop-and-the-anthem"
         ]
       }
     ]

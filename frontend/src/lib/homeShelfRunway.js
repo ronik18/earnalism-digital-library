@@ -23,10 +23,13 @@ export function getShelfVariant(group) {
   if (count >= 3) return "shelf-feature";
   if (count === 2) return "duo-shelf";
   if (count === 1) return "spotlight";
-  return "hidden";
+  return "editorial";
 }
 export function getShelfCountLabel(group) {
-  const count = Array.isArray(group?.books) ? group.books.length : 0;
+  const mappedCount = Number(group?.book_count);
+  const count = Number.isFinite(mappedCount) && mappedCount >= 0
+    ? mappedCount
+    : (Array.isArray(group?.books) ? group.books.length : 0);
   if (count === 1) return "Featured classic";
   return `${count} curated titles`;
 }
@@ -79,5 +82,5 @@ export function allocateUniqueShelfBooks(groups = []) {
       reserve_books: [],
       total_count: books.length,
     };
-  }).filter((group) => group.books.length > 0);
+  });
 }

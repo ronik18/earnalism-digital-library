@@ -188,7 +188,7 @@ export function normalizeHomeCuration(payload = {}) {
 
   const groups = sourceShelves
     .map(normalizeShelf)
-    .filter((shelf) => !["selected-listening", "approved_audiobooks"].includes(shelf.id) && shelf.total_count > 0 && shelf.books.length > 0);
+    .filter((shelf) => !["selected-listening", "approved_audiobooks"].includes(shelf.id) && shelf.total_count > 0);
 
   const selectedAudioSource = extractListeningSource(payload);
   const reserveAudioSource = extractListeningReserve(payload);
