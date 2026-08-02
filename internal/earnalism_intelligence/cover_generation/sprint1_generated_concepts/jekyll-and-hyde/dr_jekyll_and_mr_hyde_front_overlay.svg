@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="3072" viewBox="0 0 2048 3072" role="img" aria-label="Deterministic front-cover text overlay for Dr. Jekyll and Mr. Hyde">
+  <defs>
+    <linearGradient id="titleWash" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#050403" stop-opacity="0.72"/>
+      <stop offset="0.72" stop-color="#050403" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#050403" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="2048" height="1120" fill="url(#titleWash)"/>
+  <text x="1024" y="300" text-anchor="middle" font-family="Baskerville, Georgia, serif" font-size="150" font-weight="600" fill="#f4ead1" filter="url(#shadow)">
+    <tspan x="1024" y="300">Dr. Jekyll and</tspan>
+<tspan x="1024" y="462">Mr. Hyde</tspan>
+  </text>
+  <line x1="690" y1="562" x2="1358" y2="562" stroke="#b78b3d" stroke-width="3" opacity="0.9"/>
+  <circle cx="1024" cy="562" r="8" fill="#d9b45f"/>
+  <text x="1024" y="652" text-anchor="middle" font-family="Baskerville, Georgia, serif" font-size="62" font-weight="500" fill="#d9b45f" filter="url(#shadow)">Robert Louis Stevenson</text>
+  <text x="1024" y="2920" text-anchor="middle" font-family="Baskerville, Georgia, serif" font-size="42" letter-spacing="1.4" fill="#ead7a5" filter="url(#shadow)">Earnalism - A Reo Enterprise Venture</text>
+</svg>

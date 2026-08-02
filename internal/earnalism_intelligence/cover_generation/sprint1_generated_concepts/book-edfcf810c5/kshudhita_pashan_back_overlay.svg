@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="3072" viewBox="0 0 2048 3072" role="img" aria-label="Deterministic back-cover text overlay for ক্ষুধিত পাষাণ">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#f8edcf" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <line x1="540" y1="1725" x2="1510" y2="1725" stroke="#8b6428" stroke-width="3"/>
+  <circle cx="1025" cy="1725" r="7" fill="#8b6428"/>
+  <text x="1025" y="1937" text-anchor="middle" font-family="Baskerville, Georgia, serif" font-size="49" font-weight="400" fill="#2a1b10" filter="url(#softShadow)">
+    <tspan x="1025" y="1937">In this haunting masterpiece, Rabindranath Tagore</tspan>
+<tspan x="1025" y="2006">blurs memory, desire, and the supernatural within</tspan>
+<tspan x="1025" y="2075">the silent stones of an abandoned palace. Hungry</tspan>
+<tspan x="1025" y="2144">for human passion and history, the past seems to</tspan>
+<tspan x="1025" y="2213">awaken around a solitary visitor in one of Bengali</tspan>
+<tspan x="1025" y="2282">literature&#x27;s most atmospheric ghostly tales.</tspan>
+  </text>
+  <line x1="540" y1="2495" x2="1510" y2="2495" stroke="#8b6428" stroke-width="3"/>
+  <circle cx="1025" cy="2495" r="7" fill="#8b6428"/>
+  <text x="1024" y="2920" text-anchor="middle" font-family="Baskerville, Georgia, serif" font-size="42" letter-spacing="1.4" fill="#ead7a5" stroke="#120d08" stroke-width="1.1" paint-order="stroke fill">Earnalism - A Reo Enterprise Venture</text>
+</svg>

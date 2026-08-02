@@ -1,0 +1,63 @@
+{
+  "status": "EXTERNAL_ACTION_REQUIRED",
+  "qa_schema_version": 3,
+  "release_policy": "schema3_universal_9_7",
+  "policy_decision_path": "",
+  "listening_thresholds_applied": {},
+  "started_at": "2026-07-10T06:42:24Z",
+  "finished_at": "2026-07-10T06:42:24Z",
+  "providers_requested": [
+    "sarvam"
+  ],
+  "providers_detected": {
+    "openai": {
+      "detected": true,
+      "env": {
+        "OPENAI_API_KEY": true
+      }
+    },
+    "google": {
+      "detected": true,
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": true,
+        "GOOGLE_CLOUD_PROJECT": true,
+        "GOOGLE_TTS_PROJECT": false
+      }
+    },
+    "azure": {
+      "detected": false,
+      "env": {
+        "AZURE_SPEECH_KEY": false,
+        "AZURE_SPEECH_REGION": false
+      }
+    },
+    "sarvam": {
+      "detected": true,
+      "env": {
+        "SARVAM_API_KEY": true
+      },
+      "status": "adapter_available"
+    },
+    "human_licensed_import": {
+      "detected": false,
+      "env": {
+        "EARNALISM_LICENSED_AUDIO_IMPORT_DIR": false,
+        "EARNALISM_HUMAN_AUDIO_IMPORT_DIR": false
+      }
+    }
+  },
+  "provider_capability_probe_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition/bengali_provider_capability_probe.json",
+  "cost_estimate": {
+    "estimated_cost_usd": 0.0119,
+    "budget_usd": 5.0,
+    "actual_cost_if_available": "not_available"
+  },
+  "voice_results": [],
+  "auditions": [],
+  "best_provider": "",
+  "best_voice": "",
+  "best_score": 0.0,
+  "best_confidence": 0.0,
+  "any_audition_passed": false,
+  "recommendation": "Restore OpenAI listening-QA availability, then resume with --resume-existing-samples --judge-existing-only --target-near-pass-only --no-new-synthesis."
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "wave": "WAVE_3_CLEAN_SHORT_TITLE_TTS",
+  "status": "NOT_STARTED_PAID_GATES_BLOCKED",
+  "priority": ["nishkriti","radharani","book-edfcf810c5","devdas","jekyll-and-hyde"],
+  "representative_auditions": [],
+  "full_tts_runs": [],
+  "newly_published": [],
+  "reason": "Required paid approval/budget environment is absent; no representative audition or full TTS was run."
+}

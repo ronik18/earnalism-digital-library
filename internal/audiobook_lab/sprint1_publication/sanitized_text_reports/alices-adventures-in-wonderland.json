@@ -1,0 +1,48 @@
+{
+  "slug": "alices-adventures-in-wonderland",
+  "title": "Alice's Adventures in Wonderland",
+  "status": "PASS",
+  "source_chapter_count": 12,
+  "sanitized_chapter_count": 12,
+  "word_count": 27286,
+  "character_count": 144757,
+  "sha256": "3bdf6a6c7c08f68cece5b0c725841b5350262103b95f31741dbef753b3ef0b7e",
+  "removed": {
+    "consecutive_duplicate_lines": 3
+  },
+  "resolved_near_duplicate_chapter_ids": [],
+  "duplicate_chapter_ids": [],
+  "duplicate_chapter_titles": [],
+  "post_sanitation_issues": [],
+  "first_words": [
+    "Down",
+    "the",
+    "Rabbit",
+    "Hole",
+    "Alice",
+    "was",
+    "beginning",
+    "to",
+    "get",
+    "very",
+    "tired",
+    "of"
+  ],
+  "last_words": [
+    "remembering",
+    "her",
+    "own",
+    "child",
+    "life",
+    "and",
+    "the",
+    "happy",
+    "summer",
+    "days",
+    "THE",
+    "END"
+  ],
+  "language": "English",
+  "source_path": "content/books/alices-adventures-in-wonderland/chapters",
+  "sanitized_text_path": "internal/audiobook_lab/sprint1_publication/sanitized_text/alices-adventures-in-wonderland.txt"
+}

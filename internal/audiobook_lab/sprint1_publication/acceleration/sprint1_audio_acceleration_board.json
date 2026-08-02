@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "run_id": "SPRINT1_AUDIOBOOK_ACCELERATION_REUSE_ASR_SHORT_TITLE_WAVES_20260715",
+  "owner_decision": "AUTHORIZE_SPRINT1_AUDIOBOOK_ACCELERATION_WITH_REUSE_FIRST_ASR_RESCUE_AND_SHORT_TITLE_WAVES",
+  "status": "COMPLETED_FAIL_CLOSED",
+  "starting_public_audiobooks": 3,
+  "ending_public_audiobooks": 3,
+  "starting_yes_yes": ["book-2b9853ec52","a-ghost-story","sredni-vashtar"],
+  "ending_yes_yes": ["book-2b9853ec52","a-ghost-story","sredni-vashtar"],
+  "newly_yes_yes": [],
+  "waves": {"wave_1_reuse":"completed_no_new_publications","wave_2_bengali_asr":"radharani_bounded_calibration_timeout_no_artifacts","wave_3_short_title":"not_started","wave_4_human_import":"packets_only_no_received_audio_detected"},
+  "paid_calls": 1,
+  "release_gate_mutations": false,
+  "listen_exposure_changes": false,
+  "next_best_candidates": ["radharani","nishkriti","book-edfcf810c5"],
+  "next_exact_command": "Do not retry Sarvam ratan blindly; review the Radharani import/rescue path and obtain a separately approved alternate-provider calibration if desired."
+}

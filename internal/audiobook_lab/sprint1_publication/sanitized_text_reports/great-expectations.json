@@ -1,0 +1,48 @@
+{
+  "slug": "great-expectations",
+  "title": "Great Expectations",
+  "status": "PASS",
+  "source_chapter_count": 59,
+  "sanitized_chapter_count": 59,
+  "word_count": 188782,
+  "character_count": 1004497,
+  "sha256": "458861049f005cfb784f20050b578b68e39a1ea7ebe1732dee03f2a2db459b84",
+  "removed": {
+    "consecutive_duplicate_lines": 2
+  },
+  "resolved_near_duplicate_chapter_ids": [],
+  "duplicate_chapter_ids": [],
+  "duplicate_chapter_titles": [],
+  "post_sanitation_issues": [],
+  "first_words": [
+    "My",
+    "father",
+    "s",
+    "family",
+    "name",
+    "being",
+    "Pirrip",
+    "and",
+    "my",
+    "Christian",
+    "name",
+    "Philip"
+  ],
+  "last_words": [
+    "showed",
+    "to",
+    "me",
+    "I",
+    "saw",
+    "no",
+    "shadow",
+    "of",
+    "another",
+    "parting",
+    "from",
+    "her"
+  ],
+  "language": "English",
+  "source_path": "content/books/great-expectations/chapters",
+  "sanitized_text_path": "internal/audiobook_lab/sprint1_publication/sanitized_text/great-expectations.txt"
+}

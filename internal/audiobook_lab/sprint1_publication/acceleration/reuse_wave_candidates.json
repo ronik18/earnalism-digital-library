@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "wave": "WAVE_1_REUSE_FIRST",
+  "status": "COMPLETE_NO_NEW_PUBLICATIONS",
+  "candidates": [
+    {"slug":"book-2b9853ec52","classification":"ALREADY_YES_YES","technical_qa":"PASS","action":"preserve_and_regression_check"},
+    {"slug":"a-ghost-story","classification":"ALREADY_YES_YES","technical_qa":"PASS","action":"preserve_and_regression_check"},
+    {"slug":"sredni-vashtar","classification":"ALREADY_YES_YES","technical_qa":"PASS","action":"preserve_and_regression_check"},
+    {"slug":"bn-066","classification":"PRIVATE_AUDIO_ASR_RESCUE_CANDIDATE","technical_qa":"ASR_SOURCE_FAIL","action":"defer_to_wave_2"},
+    {"slug":"book-d19e96859f","classification":"PRIVATE_AUDIO_DIAGNOSTIC_ONLY","technical_qa":"FULL_SOURCE_GATE_FAIL","action":"human_or_licensed_import"},
+    {"slug":"book-f5d593e1f4","classification":"PRIVATE_AUDIO_DIAGNOSTIC_ONLY","technical_qa":"FULL_SOURCE_GATE_FAIL","action":"human_or_licensed_import"},
+    {"slug":"muchiram-gurer-jibanchorit","classification":"PRIVATE_AUDIO_REPAIR_CANDIDATE","technical_qa":"REPRESENTATIVE_TIMEOUT","action":"segmentation_then_human_or_import"}
+  ],
+  "newly_published": [],
+  "publication_attempted": false,
+  "reason": "No unapproved reuse package had complete release-ready evidence; no new TTS was run."
+}

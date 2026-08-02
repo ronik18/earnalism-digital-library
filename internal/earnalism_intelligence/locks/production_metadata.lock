@@ -1,0 +1,18 @@
+{
+  "lock": "production_metadata",
+  "owner": "parallel_go_live_sprint",
+  "created_at": "2026-07-07T16:33:36+05:30",
+  "status": "active",
+  "purpose": "Prevent concurrent production metadata mutations across Bengali endpoint materialization, reader-only rights repair, and audiobook publish gates.",
+  "rules": [
+    "Only one lane may mutate production metadata at a time.",
+    "Metadata mutation must be slug-scoped and fail-closed.",
+    "Reader-only rights repair and Bengali audiobook endpoint/publish gates must not mutate the same slug concurrently.",
+    "No generated release_gate artifacts, audio, sidecars, logs, signed URLs, or secrets may be committed."
+  ],
+  "current_holder": "none",
+  "allowed_next_holders": [
+    "lane_1_book-2b9853ec52_metadata_browser_resume",
+    "lane_2_bengali_reader_only_rights_repair_if_dry_run_passes"
+  ]
+}

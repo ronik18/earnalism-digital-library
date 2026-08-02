@@ -1,0 +1,54 @@
+{
+  "slug": "frankenstein",
+  "title": "Frankenstein",
+  "status": "PASS",
+  "source_chapter_count": 33,
+  "sanitized_chapter_count": 28,
+  "word_count": 75256,
+  "character_count": 423364,
+  "sha256": "0d005b587ef74616dadc280c9a0ea8b7d0f5190bb1d3f66faf532498a30a545f",
+  "removed": {
+    "near_duplicate_chapters": 5
+  },
+  "resolved_near_duplicate_chapter_ids": [
+    "chapter-001",
+    "chapter-002",
+    "chapter-003",
+    "chapter-004",
+    "chapter-015"
+  ],
+  "duplicate_chapter_ids": [],
+  "duplicate_chapter_titles": [],
+  "post_sanitation_issues": [],
+  "first_words": [
+    "_To",
+    "Mrs",
+    "Saville",
+    "England",
+    "_",
+    "St",
+    "Petersburgh",
+    "Dec",
+    "11th",
+    "17",
+    "You",
+    "will"
+  ],
+  "last_words": [
+    "soon",
+    "borne",
+    "away",
+    "by",
+    "the",
+    "waves",
+    "and",
+    "lost",
+    "in",
+    "darkness",
+    "and",
+    "distance"
+  ],
+  "language": "English",
+  "source_path": "content/books/frankenstein/chapters",
+  "sanitized_text_path": "internal/audiobook_lab/sprint1_publication/sanitized_text/frankenstein.txt"
+}

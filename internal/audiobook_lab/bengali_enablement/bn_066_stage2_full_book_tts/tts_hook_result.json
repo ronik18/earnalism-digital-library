@@ -1,0 +1,49 @@
+{
+  "slug": "bn-066",
+  "stage": "tts",
+  "status": "PASS",
+  "ready_for_next_stage": true,
+  "blocker_category": "none",
+  "blockers": [],
+  "retryable": false,
+  "artifacts": {
+    "final_audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3",
+    "chunk_manifest": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/tts_chunk_manifest.json",
+    "sarvam_full_pilot_tts_report": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/sarvam_full_pilot_tts_report.json",
+    "cost_optimization_decision": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/cost_optimization_decision.json"
+  },
+  "metrics": {
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "pooja",
+    "profile": "literary_warm_pacing",
+    "fallback_tts_used": false,
+    "local_audio_reused": false,
+    "stale_audio_reused": false,
+    "audio_regenerated": true,
+    "tts_estimated_cost": 1.2226,
+    "tts_budget_limit": 5.0,
+    "word_count": null,
+    "duration_seconds": 21449.85075,
+    "group_count": 152,
+    "cache_hits": 0,
+    "cache_misses": 152,
+    "representative_score": 9.3,
+    "representative_confidence": 0.95
+  },
+  "updated_fields": {
+    "final_audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3",
+    "fallback_tts_used": false,
+    "local_audio_reused": false,
+    "stale_audio_reused": false,
+    "tts_provider": "sarvam",
+    "tts_model": "bulbul:v3",
+    "tts_voice": "pooja",
+    "tts_style": "literary_warm_pacing"
+  },
+  "command_used": "internal/audiobook_lab/scripts/factory_hooks/tts_hook.py --slug bn-066 --run-dir internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts --manifest book_import_manifest.json --language ben --title আনন্দমঠ --author বঙ্কিমচন্দ্র চট্টোপাধ্যায় --max-attempts 2 --fail-closed",
+  "started_at": "2026-07-10T10:07:52Z",
+  "finished_at": "2026-07-10T10:50:29Z",
+  "fallback_tts_used": false,
+  "final_audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3"
+}

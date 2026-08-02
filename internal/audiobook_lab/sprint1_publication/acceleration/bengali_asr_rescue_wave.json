@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "wave": "WAVE_2_BENGALI_ASR_RESCUE",
+  "status": "BOUNDED_RADHARANI_CALIBRATION_ATTEMPTED_FAIL_CLOSED",
+  "script": "internal/audiobook_lab/scripts/bengali_script_normalized_asr_rescue.py",
+  "script_present": false,
+  "results": [
+    {"slug":"radharani","status":"STOPPED_PROVIDER_TIMEOUT_NO_ARTIFACTS","reason":"bounded Sarvam representative calibration started with explicit caps but produced no artifacts before timeout"},
+    {"slug":"bn-066","status":"STOPPED","reason":"prior bounded calibration produced ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED and first/middle checks failed"},
+    {"slug":"book-d19e96859f","status":"DIAGNOSTIC_ONLY","reason":"full-book source gate failed"},
+    {"slug":"book-f5d593e1f4","status":"DIAGNOSTIC_ONLY","reason":"full-book source gate failed"},
+    {"slug":"muchiram-gurer-jibanchorit","status":"DEFERRED","reason":"segmentation repair required before rescue"}
+  ],
+  "newly_published": [],
+  "paid_calls": 0,
+  "release_gate_mutations": false
+}

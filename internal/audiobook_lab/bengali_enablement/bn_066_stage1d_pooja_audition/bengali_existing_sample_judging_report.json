@@ -1,0 +1,20 @@
+{
+  "status": "EXTERNAL_ACTION_REQUIRED",
+  "qa_schema_version": 3,
+  "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition",
+  "started_at": "2026-07-10T06:42:24Z",
+  "finished_at": "2026-07-10T06:42:24Z",
+  "quota_probe_status": "BLOCKED",
+  "existing_audio_inventory": {
+    "audio_file_count": 0,
+    "canonical_sample_count": 0,
+    "audio_counts_by_provider_voice": {},
+    "canonical_counts_by_provider_voice": {},
+    "audio_paths": [],
+    "canonical_sample_paths": []
+  },
+  "samples": [],
+  "samples_with_complete_schema3_judgment": 0,
+  "samples_quota_blocked": 0,
+  "samples_true_quality_failed": 0
+}

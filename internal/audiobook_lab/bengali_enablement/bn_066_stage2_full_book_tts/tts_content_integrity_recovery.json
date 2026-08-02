@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "reason": "Bengali reader manuscript contains page-number source lines, but TTS preparation strips them before provider calls.",
+  "original_content_integrity_status": "FAIL",
+  "original_blockers": [
+    "Body junk detected: page_number_line"
+  ],
+  "prepared_text_source_terms": [],
+  "chapter_order_match": true,
+  "chapter_title_match": true,
+  "toc_links_valid": true
+}

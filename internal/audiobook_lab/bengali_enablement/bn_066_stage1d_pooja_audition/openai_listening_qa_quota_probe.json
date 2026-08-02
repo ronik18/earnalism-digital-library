@@ -1,0 +1,14 @@
+{
+  "status": "BLOCKED",
+  "available": false,
+  "quota_blocked": false,
+  "started_at": "2026-07-10T06:42:24Z",
+  "finished_at": "2026-07-10T06:42:24Z",
+  "openai_key_detected": true,
+  "listening_qa_enabled": false,
+  "model": "",
+  "probe_audio_path": "",
+  "probe_audio_source": "",
+  "error_message_redacted": "EARNALISM_ENABLE_OPENAI_LISTENING_QA is not true",
+  "exact_next_fix": "Set EARNALISM_ENABLE_OPENAI_LISTENING_QA=true before schema-3 listening QA."
+}

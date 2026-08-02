@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "slug": "bn-066",
+  "mode": "EXECUTE",
+  "plan": {
+    "slug": "bn-066",
+    "strategy": "probe_all_language_options_on_opening_then_validate_best_on_middle_and_ending",
+    "language_options": [
+      "auto",
+      "bn",
+      "ben",
+      "bengali"
+    ],
+    "selected_chunks": [
+      {
+        "chunk_id": "group_0000",
+        "index": 0,
+        "path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/sarvam_tts_chunks/group_0000_eefc4672a1b4.wav",
+        "duration_seconds": 145.841179,
+        "source_text_chars": 1397,
+        "source_text_hash": "e979c0aced13b054d50429019828735f8ea7705eefa3c40fd140d61817557558"
+      },
+      {
+        "chunk_id": "group_0076",
+        "index": 76,
+        "path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/sarvam_tts_chunks/group_0076_b9d16ab303c9.wav",
+        "duration_seconds": 135.22127,
+        "source_text_chars": 1379,
+        "source_text_hash": "95cd47462a1f5913e5e6136a11464030897c9741bc3ab7b159979b7327c18d0a"
+      },
+      {
+        "chunk_id": "group_0151",
+        "index": 151,
+        "path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/sarvam_tts_chunks/group_0151_f0da02594c3b.wav",
+        "duration_seconds": 66.628662,
+        "source_text_chars": 515,
+        "source_text_hash": "17fd7b632d64eb4e83a4d5450a6216947f9e94293202d158cc68c210b6cd7d4d"
+      }
+    ],
+    "planned_provider_calls": 6,
+    "planned_transcribed_seconds": 785.215,
+    "estimated_cost_usd": 0.1047,
+    "calls": [
+      {
+        "phase": "opening_language_probe",
+        "chunk_id": "group_0000",
+        "language_option": "auto",
+        "duration_seconds": 145.841179
+      },
+      {
+        "phase": "opening_language_probe",
+        "chunk_id": "group_0000",
+        "language_option": "bn",
+        "duration_seconds": 145.841179
+      },
+      {
+        "phase": "opening_language_probe",
+        "chunk_id": "group_0000",
+        "language_option": "ben",
+        "duration_seconds": 145.841179
+      },
+      {
+        "phase": "opening_language_probe",
+        "chunk_id": "group_0000",
+        "language_option": "bengali",
+        "duration_seconds": 145.841179
+      },
+      {
+        "phase": "best_option_validation",
+        "chunk_id": "group_0076",
+        "language_option": "BEST_FROM_OPENING_PROBE",
+        "duration_seconds": 135.22127
+      },
+      {
+        "phase": "best_option_validation",
+        "chunk_id": "group_0151",
+        "language_option": "BEST_FROM_OPENING_PROBE",
+        "duration_seconds": 66.628662
+      }
+    ]
+  },
+  "preflight": {
+    "status": "PASS",
+    "provider_calls_allowed": true,
+    "estimated_cost_usd": 0.1047,
+    "total_cap_usd": 175.0,
+    "asr_cap_usd": 40.0,
+    "lock_status": "active",
+    "lock_holder": "audiobook_public_access_sprint_1_bn_066_asr_calibration",
+    "expected_lock_holder": "audiobook_public_access_sprint_1_bn_066_asr_calibration",
+    "blockers": []
+  },
+  "provider_calls_ran": true,
+  "public_release_approval": "NONE",
+  "result": {
+    "status": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED",
+    "public_release_approval": "NONE",
+    "best_language_option": "auto",
+    "opening_results": [
+      {
+        "chunk_id": "group_0000",
+        "language_option": "auto",
+        "status": "PASS",
+        "transcript_text": "বো্রी ପੀਸ੍বেਤੋ અરણં  તારંગો બીખિપ્તં કોરીતે કોરીતે છોલીયાછે નીચે ગ્હણાં ધકાર રાત્રે દીતીયો પ્રભોર કીછુ કાલ પોરે આબાર શબ્દં હોયિલો આબાર શે નીચ્તબ્ધં મોથીતો કોરીયા પ્રોટે નીચ્તબ્ધૂ ચેયુતે કોરી હાય્ સેસેને ક્ટે આપ્ટ મેક્ટ નીચ્તુ તાંડે ંપે આર્યોં ઠ",
+        "transcript_chars": 244,
+        "script_profile": {
+          "counts": {
+            "bengali": 6,
+            "devanagari": 1,
+            "latin": 0
+          },
+          "ratios": {
+            "bengali": 0.8571,
+            "devanagari": 0.1429,
+            "latin": 0.0
+          },
+          "dominant_script": "bengali",
+          "script_total": 7
+        },
+        "alignment": {
+          "raw_similarity": 0.0105,
+          "char_similarity": 0.0105,
+          "token_order_similarity": 0.0,
+          "coverage": 0.0,
+          "score": 0.0,
+          "first_words_match": false,
+          "last_words_match": false,
+          "first_words_match_score": 0.0,
+          "last_words_match_score": 0.0
+        }
+      },
+      {
+        "chunk_id": "group_0000",
+        "language_option": "bn",
+        "status": "PROVIDER_ERROR",
+        "error": "Error code: 400 - {'error': {'message': \"Language 'bn' is not supported.\", 'type': 'invalid_request_error', 'param': 'language', 'code': 'unsupported_language'}, 'usage': {'type': 'duration', 'seconds': 0}}"
+      },
+      {
+        "chunk_id": "group_0000",
+        "language_option": "ben",
+        "status": "PROVIDER_ERROR",
+        "error": "Error code: 400 - {'error': {'message': \"Invalid language 'ben'. Language parameter must be specified in ISO-639-1 format.\", 'type': 'invalid_request_error', 'param': 'language', 'code': 'invalid_language_format'}, 'usage': {'type': 'duration', 'seconds': 0}}"
+      },
+      {
+        "chunk_id": "group_0000",
+        "language_option": "bengali",
+        "status": "PROVIDER_ERROR",
+        "error": "Error code: 400 - {'error': {'message': \"Invalid language 'bengali'. Language parameter must be specified in ISO-639-1 format.\", 'type': 'invalid_request_error', 'param': 'language', 'code': 'invalid_language_format'}, 'usage': {'type': 'duration', 'seconds': 0}}"
+      }
+    ],
+    "followup_results": [
+      {
+        "chunk_id": "group_0076",
+        "language_option": "auto",
+        "status": "PASS",
+        "transcript_text": "आज जहा लुठिया आनी आछी, ताहाई खाइब, इस ओइ कोछी मेइटा के पड़ाईया खाई। आर एक जोन बोलीलो, जहा है पड़ा बापू, आर खुदा सहयना, तखण शकले लो लूप होया जे खाने, कॉल्लाणी कॉन्णा सूया छिलो, से इ दिके चाहिलो। देखिल जे, शे स्थान शुन्ण कॉन्ना अणाई, माताओ नाई। दोष्षु दिगेर बिबादेर समाई, सू जोग देखिया, कॉल्लाणी कॉणा कॉले करिया, कॉण्नार मुखे स्तॉंती दिया, बनमध्य पलाय आछे। शिकार पलाय आछे देखिया, मार मार सब्द करिया, सि प्रेतमुर्ती दोष्षु दल चारी दिके छुतिलो, अबस्था बिशेशे मुनुष्यो हिंस्रो जन्तु मात्रो। बन अत्तंतो अन्धोकार, कॉल्लानी ताहर भीतोर पत पाये ना। बृखलता कॉंटकेर घनविन्नाशे एके पत नाई, ताहते आबर घनअंधोकार। बृखलता कॉंटक भेद करिया कॉल्लानी बन मध्ये प्रबेश करीते लागीलो, मेटीर गाए काटा फूटीते लागीलो, मेटी मध्ये-मध्ये काधीते लागिलो, सुनिया दोष्षु रा, आरो चीतकार करीते लागीलो. कॉल्लानी एरूपे रुधी राख्तो कलेबर होया अनेक दूर बनवध्ये प्रबेश करीलें, कि अतकण परे चंद्रोदाय होईलो. अतकण कॉल्लानीर मने किछु भर्षा चीलो जे अन्धोकारे ताहा के दोष्षु रा देखिते पाइबेना, कि अतकण खुजिया निरस्त आलो ते भिजिया उठीलो. अन्धोकार उज्जल होईलो. माझे-माझे चीद्रेर भीतर दिया आलो बनेर भीतर प्रबेश करिया, उकी-जूकी मारीते लागिलो. चाद जतो उचुते उठीते लागीलो, ततो आरो आलो बने डूकीते लागीलो. अन्धोकार शोकल आरो बनेर भीतर लुकाईते लागीलो. कोल्लानी कोंडा लोया आरो बनेर भीतर लुकाईते लागीलो.",
+        "transcript_chars": 1243,
+        "script_profile": {
+          "counts": {
+            "bengali": 0,
+            "devanagari": 996,
+            "latin": 0
+          },
+          "ratios": {
+            "bengali": 0.0,
+            "devanagari": 1.0,
+            "latin": 0.0
+          },
+          "dominant_script": "devanagari",
+          "script_total": 996
+        },
+        "alignment": {
+          "raw_similarity": 0.0,
+          "char_similarity": 0.0,
+          "token_order_similarity": 0.0,
+          "coverage": 0.0,
+          "score": 0.0,
+          "first_words_match": false,
+          "last_words_match": false,
+          "first_words_match_score": 0.0,
+          "last_words_match_score": 0.0
+        }
+      },
+      {
+        "chunk_id": "group_0151",
+        "language_option": "auto",
+        "status": "PASS",
+        "transcript_text": "তী প্রকারে আশিলাম হাটিয এ বেশ কেনো আমার শক আর এতো রঙো শিখিলাম কোথায একটি পুরুষ মানোষের কাছে সব তোমায ভাংগিয বোলিব কিন্তো এখানে বনে ভসিব কেনো  শান্তি আমার প্রতি মহারাজের অনুমতি আছে কুন্জেই ছল সব বলিতে ছি ভিশেশ ঘরের ভিতোর না গেলে আমার দাডি খুলিব না দাডি না খুলিলে তুমি এ পোডার মুখ ছিনিতে পারিবে না ছি পুরুষ এমন",
+        "transcript_chars": 308,
+        "script_profile": {
+          "counts": {
+            "bengali": 248,
+            "devanagari": 0,
+            "latin": 0
+          },
+          "ratios": {
+            "bengali": 1.0,
+            "devanagari": 0.0,
+            "latin": 0.0
+          },
+          "dominant_script": "bengali",
+          "script_total": 248
+        },
+        "alignment": {
+          "raw_similarity": 0.7455,
+          "char_similarity": 0.7455,
+          "token_order_similarity": 0.4828,
+          "coverage": 0.4375,
+          "score": 4.375,
+          "first_words_match": false,
+          "last_words_match": false,
+          "first_words_match_score": 0.5,
+          "last_words_match_score": 0.7857
+        }
+      }
+    ],
+    "calibration_usable_for_full_asr_plan": false
+  },
+  "status": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED",
+  "report_path": "internal/audiobook_lab/public_access/bn_066_asr_calibration_preflight.json"
+}

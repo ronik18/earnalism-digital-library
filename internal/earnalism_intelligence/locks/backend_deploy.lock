@@ -1,0 +1,17 @@
+{
+  "lock": "backend_deploy",
+  "owner": "parallel_go_live_sprint",
+  "created_at": "2026-07-07T16:33:36+05:30",
+  "status": "active",
+  "purpose": "Prevent concurrent backend deploy/restart work while Bengali audiobook endpoint materialization is being verified.",
+  "rules": [
+    "Only one lane may deploy or restart the backend at a time.",
+    "Deploys must originate from a clean source-only worktree or a reviewed branch.",
+    "Backend changes must preserve release-gate truth and keep unapproved audiobooks hidden.",
+    "Do not deploy from the dirty main workspace."
+  ],
+  "current_holder": "none",
+  "allowed_next_holders": [
+    "lane_1_bengali_endpoint_materialization"
+  ]
+}

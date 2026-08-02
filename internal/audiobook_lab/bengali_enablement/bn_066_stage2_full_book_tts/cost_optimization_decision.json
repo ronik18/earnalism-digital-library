@@ -1,0 +1,24 @@
+{
+  "slug": "bn-066",
+  "stage": "tts",
+  "blocker": "",
+  "options": [
+    "reuse_existing_or_local_audio",
+    "regenerate_openai_tts",
+    "generate_guarded_sarvam_full_pilot"
+  ],
+  "selected_option": "generate_guarded_sarvam_full_pilot",
+  "reason": "Representative Bengali audition passed for the frozen Sarvam arm; stale reuse and fallback TTS are disallowed.",
+  "estimated_cost_usd": 1.2226,
+  "estimated_time_seconds": null,
+  "quality_impact": "full-book Sarvam pilot; ASR/sync/listening/upload/metadata/browser gates remain mandatory",
+  "artifacts_reused": [],
+  "artifacts_regenerated": [
+    "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3"
+  ],
+  "cache_hits": 0,
+  "cache_misses": 152,
+  "paid_api_calls": true,
+  "budget_status": "approved_within_budget",
+  "risk": "full-book consistency and objective gates remain unproven until downstream stages pass"
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "bn-066",
+  "title": "আনন্দমঠ",
+  "status": "PASS",
+  "source_chapter_count": 46,
+  "sanitized_chapter_count": 46,
+  "word_count": 31541,
+  "character_count": 203760,
+  "sha256": "99f7fed78d32901f48d43c04cbe1a8e899d1e4166055e8d6ff4eda70123d2c2b",
+  "removed": {
+    "page_number_lines": 1
+  },
+  "resolved_near_duplicate_chapter_ids": [],
+  "duplicate_chapter_ids": [],
+  "duplicate_chapter_titles": [],
+  "post_sanitation_issues": [],
+  "first_words": [
+    "১৮৮৩",
+    "পৃ",
+    "১",
+    "২",
+    "অতি",
+    "বিস্তৃত",
+    "অরণ্য",
+    "অরণ্যমধ্যে",
+    "অধিকাংশ",
+    "বৃক্ষই",
+    "শাল",
+    "কিন্তু"
+  ],
+  "last_words": [
+    "না",
+    "খুলিলে",
+    "তুমি",
+    "এ",
+    "পোড়র",
+    "মুখ",
+    "চিনিতে",
+    "পারিবে",
+    "না",
+    "ছি",
+    "পুরুষ",
+    "এমন"
+  ],
+  "language": "Bengali",
+  "source_path": "content/books/bn-066/chapters",
+  "sanitized_text_path": "internal/audiobook_lab/sprint1_publication/sanitized_text/bn-066.txt"
+}

@@ -1,0 +1,15 @@
+{
+  "lock": "paid_tts",
+  "owner": "parallel_go_live_sprint",
+  "created_at": "2026-07-07T16:33:36+05:30",
+  "status": "active",
+  "purpose": "Prevent duplicate paid TTS/provider work during this parallel sprint.",
+  "rules": [
+    "Only one lane may run paid TTS at a time.",
+    "No paid TTS may run without explicit approval and budget environment variables.",
+    "This sprint must not regenerate the Bengali pilot audio or start the 3-title canary.",
+    "Provider bakeoffs and broad audiobook waves are out of scope."
+  ],
+  "current_holder": "none",
+  "allowed_next_holders": []
+}

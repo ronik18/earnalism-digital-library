@@ -1,0 +1,12 @@
+{
+  "slug": "the-lady-with-the-dog",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "historical_admin_import_reconstruction",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": true
+}

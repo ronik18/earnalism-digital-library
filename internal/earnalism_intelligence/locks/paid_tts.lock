@@ -1,0 +1,76 @@
+{
+  "lock": "paid_tts",
+  "owner": "parallel_go_live_sprint",
+  "created_at": "2026-07-07T16:33:36+05:30",
+  "status": "active",
+  "purpose": "Prevent duplicate paid TTS/provider work during this parallel sprint.",
+  "rules": [
+    "Only one lane may run paid TTS at a time.",
+    "No paid TTS may run without explicit approval and budget environment variables.",
+    "This sprint must not regenerate the Bengali pilot audio or start the 3-title canary.",
+    "Provider bakeoffs and broad audiobook waves are out of scope."
+  ],
+  "current_holder": "none",
+  "allowed_next_holders": [],
+  "holder_started_at": null,
+  "holder_closed_at": "2026-07-15T13:21:30Z",
+  "last_closed_holder": "audiobook_public_access_sprint_1_bn_066_asr_calibration",
+  "last_closeout_status": "BN_066_ASR_LANGUAGE_CALIBRATION_COMPLETE_OR_FAILED_CLOSED",
+  "last_actual_spend_usd": "not_available",
+  "last_budget_remaining_usd": "0.9174_before_unknown_prior_partial_asr_billing",
+  "budget_cap_usd": 175.0,
+  "approved_scope": "Sprint1 Nishkriti full pipeline using the passed Sarvam representative arm; publish only if all gates pass.",
+  "allowed_slugs": [
+    "nishkriti"
+  ],
+  "stop_conditions": [
+    "MAX_TTS_BUDGET_USD missing or above approved cap",
+    "MAX_TTS_BUDGET_USD, ASR retry cap, or listening-QA cap missing or invalid",
+    "ASR or listening-QA budget guard blocks the run",
+    "OPENAI_API_KEY missing",
+    "A duplicate bn-066 ASR process is detected",
+    "Private Stage 2 audio or Stage 3B checkpoint implementation is missing",
+    "A chunk writes PROVIDER_TIMEOUT or exceeds its bounded retry count",
+    "ASR/source alignment does not complete",
+    "Any upload, publication, public Listen, or release-gate mutation is attempted"
+  ],
+  "updated_at": "2026-07-15T13:21:30Z",
+  "stage_3_scope": {
+    "slug": "bn-066",
+    "scope": "bounded ASR/source alignment and listening QA only; no TTS regeneration, no upload, no publication, no release-gate mutation",
+    "max_tts_budget_usd": 5,
+    "asr_sync_cap_usd": 3,
+    "listening_qa_cap_usd": 0.75,
+    "estimated_prior_tts_usd": 1.2226,
+    "estimated_asr_usd": 2.86,
+    "estimated_listening_qa_usd": 0.3,
+    "estimated_total_usd": 4.3826
+  },
+  "stage_3c_scope": {
+    "owner_decision": "AUTHORIZE_BENGALI_AUDIOBOOK_STAGE_3C_BN_066_BOUNDED_ASR_RESUME_WITH_UNKNOWN_PARTIAL_BILLING_RISK",
+    "slug": "bn-066",
+    "scope": "checkpointed ASR/source alignment resume on existing private audio; bounded listening QA only after ASR completion; no TTS regeneration, upload, publication, public Listen, or release-gate mutation",
+    "max_tts_budget_usd": 5,
+    "asr_sync_cap_usd": 3,
+    "asr_retry_cap_usd": 3,
+    "listening_qa_cap_usd": 0.75,
+    "request_timeout_seconds": 180,
+    "max_retries_per_chunk": 1,
+    "resume_from_checkpoints": true,
+    "prior_partial_asr_billing": "unknown_owner_risk_accepted_for_single_bounded_retry"
+  },
+  "stage_3c_result": {
+    "asr_completed": true,
+    "checkpoint_pass_count": 152,
+    "checkpoint_timeout_count": 0,
+    "checkpoint_failure_count": 0,
+    "estimated_current_asr_spend_usd": 2.86,
+    "actual_current_asr_spend_usd": "not_reported",
+    "prior_partial_asr_billing": "unknown",
+    "asr_source_alignment": "ASR_SOURCE_MISMATCH",
+    "listening_qa": "NOT_RUN_ASR_SOURCE_GATE_FAILED",
+    "public_release_approval": "NONE"
+  },
+  "last_estimated_spend_usd": "4.0826_including_stage2_tts_and_stage3c_asr_plus_unknown_prior_partial_asr",
+  "estimated_stage_spend_usd": 1.0
+}
