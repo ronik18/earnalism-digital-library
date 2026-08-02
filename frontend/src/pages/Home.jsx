@@ -121,6 +121,8 @@ export default function Home() {
       <PremiumListeningRail
         books={homeCuration.listening_rooms?.items || homeCuration.selected_audiobooks || []}
         reserveBooks={homeCuration.listening_rooms?.reserve_items || homeCuration.reserve_audiobooks || []}
+        loading={homeCurationLoading}
+        error={homeCurationError}
       />
       <div id="curated-action-cards-title" data-testid="home-shelf-architecture">
         <CuratedShelfCollage curation={homeCuration} />
