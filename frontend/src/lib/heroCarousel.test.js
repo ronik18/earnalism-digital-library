@@ -22,16 +22,16 @@ function book(index) {
   };
 }
 
-test("carousel merges selected shelf books into hero stream", () => {
+test("carousel uses the explicit server-owned hero contract", () => {
   const shelfBook = book(0);
 
   expect(heroCarouselBooks({
     hero: { carousel_books: [] },
     shelves: [{ id: "selected-listening", books: [shelfBook] }],
-  }).map((item) => item.slug)).toEqual(["sprint1-0"]);
+  })).toEqual([]);
 });
 
-test("carousel merges sprint-1 approved sets (carousel, featured, shelves, audiobooks) and deduplicates", () => {
+test("carousel keeps only the explicit hero carousel books", () => {
   const carousel = [book(0), book(1)];
   const featured = [book(1), book(2)];
   const shelfBooks = [{ ...book(3) }];
@@ -46,28 +46,20 @@ test("carousel merges sprint-1 approved sets (carousel, featured, shelves, audio
   expect(slides.map((book) => book.slug)).toEqual([
     "sprint1-0",
     "sprint1-1",
-    "sprint1-2",
-    "sprint1-3",
-    "sprint1-4",
   ]);
 });
 
-test("carousel includes sprint1 approved audiobook entries even when cover_valid is false", () => {
+test("carousel rejects invalid covers even when they appear in the hero contract", () => {
   expect(heroCarouselBooks({
-    shelves: {
-      approved_audiobooks: [{
-        ...book(0),
-        title: "Sprint 1 blocked cover",
-        cover_valid: false,
-      }],
-    },
-  })).toHaveLength(1);
+    hero: { carousel_books: [{ ...book(0), cover_valid: false }] },
+  })).toHaveLength(0);
+});
 
+test("carousel does not admit non-hero shelf or listening records", () => {
   const slides = heroCarouselBooks({
-    hero: { carousel_books: [{ ...book(1), cover_valid: false }] },
-    shelves: {
-      approved_audiobooks: [{ ...book(0), cover_valid: false }],
-    },
+    hero: { carousel_books: [book(0)] },
+    groups: [{ books: [{ ...book(1), slug: "non-sprint1-shelf-book" }] }],
+    selected_audiobooks: [{ ...book(2), slug: "non-sprint1-audio-book" }],
   });
 
   expect(slides.map((item) => item.slug)).toEqual(["sprint1-0"]);

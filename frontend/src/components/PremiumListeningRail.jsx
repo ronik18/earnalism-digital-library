@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, BookOpen, CirclePlay, Headphones } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  BookOpen,
+  CirclePlay,
+  Headphones,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import BookCoverImage from "./BookCoverImage";
 import "./PremiumListeningRail.css";
@@ -9,14 +15,19 @@ function listenUrl(book) {
 }
 
 function canListen(book) {
-  if (book?.audio_available === false || book?.rights_restricted === true) return false;
+  if (book?.audio_available === false || book?.rights_restricted === true)
+    return false;
   const url = listenUrl(book);
   return book?.cta_kind === "listen" || /[?&]listen=1(?:&|$)/.test(url);
 }
 
 function realProgress(book) {
-  const value = Number(book?.listening_progress_percent ?? book?.progress_percent);
-  return Number.isFinite(value) && value > 0 && value < 100 ? Math.round(value) : null;
+  const value = Number(
+    book?.listening_progress_percent ?? book?.progress_percent,
+  );
+  return Number.isFinite(value) && value > 0 && value < 100
+    ? Math.round(value)
+    : null;
 }
 
 function ListeningCard({ book, featured, onCoverFailure }) {
@@ -34,6 +45,14 @@ function ListeningCard({ book, featured, onCoverFailure }) {
       data-book-slug={book.slug}
       data-audio-state={available ? "available" : "unavailable"}
     >
+      {featured && (
+        <span
+          className="premium-listening-card__edition-mark"
+          aria-hidden="true"
+        >
+          Featured listening edition
+        </span>
+      )}
       <div className="premium-listening-card__art">
         <Link
           className="premium-listening-card__cover-link"
@@ -42,7 +61,9 @@ function ListeningCard({ book, featured, onCoverFailure }) {
         >
           <BookCoverImage
             book={book}
-            alt={book.cover_alt_text || `${title}${author ? ` by ${author}` : ""}`}
+            alt={
+              book.cover_alt_text || `${title}${author ? ` by ${author}` : ""}`
+            }
             width={180}
             height={270}
             widths={[150, 180, 240]}
@@ -59,7 +80,11 @@ function ListeningCard({ book, featured, onCoverFailure }) {
       <div className="premium-listening-card__copy">
         <div className="premium-listening-card__labels">
           <span>{synchronized ? "Read + Listen" : "Audiobook"}</span>
-          {!available && <span className="premium-listening-card__unavailable">Audio unavailable</span>}
+          {!available && (
+            <span className="premium-listening-card__unavailable">
+              Audio unavailable
+            </span>
+          )}
         </div>
         <h3>
           <Link to={book.book_url || `/book/${book.slug}`}>{title}</Link>
@@ -74,7 +99,10 @@ function ListeningCard({ book, featured, onCoverFailure }) {
         )}
 
         {progress !== null && (
-          <div className="premium-listening-card__progress" aria-label={`${progress}% listened`}>
+          <div
+            className="premium-listening-card__progress"
+            aria-label={`${progress}% listened`}
+          >
             <span style={{ width: `${progress}%` }} />
           </div>
         )}
@@ -86,10 +114,15 @@ function ListeningCard({ book, featured, onCoverFailure }) {
             aria-label={`${progress === null ? "Play" : "Continue"} ${title}`}
           >
             <CirclePlay size={18} strokeWidth={1.55} aria-hidden="true" />
-            <span>{progress === null ? "Begin listening" : "Continue listening"}</span>
+            <span>
+              {progress === null ? "Begin listening" : "Continue listening"}
+            </span>
           </Link>
         ) : (
-          <Link className="premium-listening-card__cta premium-listening-card__cta--reader" to={book.book_url || `/book/${book.slug}`}>
+          <Link
+            className="premium-listening-card__cta premium-listening-card__cta--reader"
+            to={book.book_url || `/book/${book.slug}`}
+          >
             <BookOpen size={17} strokeWidth={1.55} aria-hidden="true" />
             <span>View reader edition</span>
           </Link>
@@ -99,15 +132,28 @@ function ListeningCard({ book, featured, onCoverFailure }) {
   );
 }
 
-export default function PremiumListeningRail({ books = [], reserveBooks = [], loading = false, error = false }) {
+export default function PremiumListeningRail({
+  books = [],
+  reserveBooks = [],
+  loading = false,
+  error = false,
+}) {
   const [failedSlugs, setFailedSlugs] = useState(() => new Set());
-  const [scrollState, setScrollState] = useState({ previous: false, next: false });
+  const [scrollState, setScrollState] = useState({
+    previous: false,
+    next: false,
+  });
   const viewportRef = useRef(null);
   const visibleBooks = useMemo(() => {
-    const primary = books.filter((book) => book?.slug && !failedSlugs.has(book.slug));
-    const reserve = reserveBooks.filter((book) => (
-      book?.slug && !failedSlugs.has(book.slug) && !primary.some((item) => item.slug === book.slug)
-    ));
+    const primary = books.filter(
+      (book) => book?.slug && !failedSlugs.has(book.slug),
+    );
+    const reserve = reserveBooks.filter(
+      (book) =>
+        book?.slug &&
+        !failedSlugs.has(book.slug) &&
+        !primary.some((item) => item.slug === book.slug),
+    );
     const targetCount = Math.max(1, books.length || reserveBooks.length);
     return [...primary, ...reserve].slice(0, targetCount);
   }, [books, reserveBooks, failedSlugs]);
@@ -120,9 +166,11 @@ export default function PremiumListeningRail({ books = [], reserveBooks = [], lo
       previous: viewport.scrollLeft > 8,
       next: viewport.scrollLeft < maxScroll - 8,
     };
-    setScrollState((current) => (
-      current.previous === nextState.previous && current.next === nextState.next ? current : nextState
-    ));
+    setScrollState((current) =>
+      current.previous === nextState.previous && current.next === nextState.next
+        ? current
+        : nextState,
+    );
   }, []);
 
   useEffect(() => {
@@ -138,7 +186,10 @@ export default function PremiumListeningRail({ books = [], reserveBooks = [], lo
     };
     schedule();
     viewport.addEventListener("scroll", schedule, { passive: true });
-    const resizeObserver = typeof ResizeObserver === "function" ? new ResizeObserver(schedule) : null;
+    const resizeObserver =
+      typeof ResizeObserver === "function"
+        ? new ResizeObserver(schedule)
+        : null;
     resizeObserver?.observe(viewport);
     return () => {
       viewport.removeEventListener("scroll", schedule);
@@ -150,7 +201,9 @@ export default function PremiumListeningRail({ books = [], reserveBooks = [], lo
   const move = (direction) => {
     const viewport = viewportRef.current;
     if (!viewport) return;
-    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    const reduceMotion = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)",
+    )?.matches;
     viewport.scrollBy({
       left: direction * Math.max(280, viewport.clientWidth * 0.72),
       behavior: reduceMotion ? "auto" : "smooth",
@@ -163,13 +216,14 @@ export default function PremiumListeningRail({ books = [], reserveBooks = [], lo
     move(event.key === "ArrowLeft" ? -1 : 1);
   };
 
-  const status = loading && !visibleBooks.length
-    ? "loading"
-    : error && !visibleBooks.length
-      ? "error"
-      : !visibleBooks.length
-        ? "empty"
-        : "ready";
+  const status =
+    loading && !visibleBooks.length
+      ? "loading"
+      : error && !visibleBooks.length
+        ? "error"
+        : !visibleBooks.length
+          ? "empty"
+          : "ready";
 
   return (
     <section
@@ -186,47 +240,115 @@ export default function PremiumListeningRail({ books = [], reserveBooks = [], lo
               <Headphones size={15} strokeWidth={1.55} aria-hidden="true" />
               THE LISTENING ROOM
             </div>
-            <h2 id="premium-listening-title" data-testid="premium-listening-title">Literature, in a more intimate form.</h2>
+            <h2
+              id="premium-listening-title"
+              data-testid="premium-listening-title"
+            >
+              Literature, in a more intimate form.
+            </h2>
             <p>Curated performances with seamless read-along listening.</p>
           </div>
           <div className="premium-listening-rail__actions">
             {visibleBooks.length > 1 && (
-              <div className="premium-listening-rail__controls" aria-label="Audiobook gallery controls">
-                <button type="button" className="premium-listening-rail__control" aria-label="Previous audiobooks" aria-controls="premium-listening-viewport" disabled={!scrollState.previous} onClick={() => move(-1)}>
+              <div
+                className="premium-listening-rail__controls"
+                aria-label="Audiobook gallery controls"
+              >
+                <button
+                  type="button"
+                  className="premium-listening-rail__control"
+                  aria-label="Previous audiobooks"
+                  aria-controls="premium-listening-viewport"
+                  disabled={!scrollState.previous}
+                  onClick={() => move(-1)}
+                >
                   <ArrowLeft size={16} aria-hidden="true" />
                 </button>
-                <button type="button" className="premium-listening-rail__control" aria-label="Next audiobooks" aria-controls="premium-listening-viewport" disabled={!scrollState.next} onClick={() => move(1)}>
+                <button
+                  type="button"
+                  className="premium-listening-rail__control"
+                  aria-label="Next audiobooks"
+                  aria-controls="premium-listening-viewport"
+                  disabled={!scrollState.next}
+                  onClick={() => move(1)}
+                >
                   <ArrowRight size={16} aria-hidden="true" />
                 </button>
               </div>
             )}
-            <Link className="premium-listening-rail__browse" to="/library?audio=approved">
-              Explore audiobooks <ArrowRight size={15} strokeWidth={1.6} aria-hidden="true" />
+            <Link
+              className="premium-listening-rail__browse"
+              to="/library?audio=approved"
+            >
+              Explore audiobooks{" "}
+              <ArrowRight size={15} strokeWidth={1.6} aria-hidden="true" />
             </Link>
           </div>
         </div>
 
         {status === "ready" ? (
-          <div className="premium-listening-rail__viewport" ref={viewportRef} id="premium-listening-viewport" tabIndex="0" onKeyDown={onRailKeyDown} aria-label="Audiobook cards. Use arrow keys, the previous and next buttons, or swipe.">
-            <ul className="premium-listening-rail__items" id="premium-listening-items" aria-label="Curated audiobooks">
-              {visibleBooks.map((book, index) => (
-                <ListeningCard
-                  book={book}
-                  featured={index === 0}
-                  key={book.slug}
-                  onCoverFailure={() => setFailedSlugs((current) => new Set([...current, book.slug]))}
-                />
-              ))}
-            </ul>
+          <div className="premium-listening-rail__salon">
+            <div
+              className="premium-listening-rail__atmosphere"
+              aria-hidden="true"
+            >
+              <span className="premium-listening-rail__resonance premium-listening-rail__resonance--one" />
+              <span className="premium-listening-rail__resonance premium-listening-rail__resonance--two" />
+              <span className="premium-listening-rail__soundline" />
+            </div>
+            <div
+              className="premium-listening-rail__salon-note"
+              aria-hidden="true"
+            >
+              <span>CURATED LISTENING EDITIONS</span>
+              <span>VOICE · TEXT · ATMOSPHERE</span>
+            </div>
+            <div
+              className="premium-listening-rail__viewport"
+              ref={viewportRef}
+              id="premium-listening-viewport"
+              tabIndex="0"
+              onKeyDown={onRailKeyDown}
+              aria-label="Audiobook cards. Use arrow keys, the previous and next buttons, or swipe."
+            >
+              <ul
+                className="premium-listening-rail__items"
+                id="premium-listening-items"
+                aria-label="Curated audiobooks"
+              >
+                {visibleBooks.map((book, index) => (
+                  <ListeningCard
+                    book={book}
+                    featured={index === 0}
+                    key={book.slug}
+                    onCoverFailure={() =>
+                      setFailedSlugs(
+                        (current) => new Set([...current, book.slug]),
+                      )
+                    }
+                  />
+                ))}
+              </ul>
+            </div>
           </div>
         ) : status === "loading" ? (
-          <div className="premium-listening-rail__skeleton" role="status" aria-label="Loading audiobooks">
-            <span /><span /><span />
+          <div
+            className="premium-listening-rail__skeleton"
+            role="status"
+            aria-label="Loading audiobooks"
+          >
+            <span />
+            <span />
+            <span />
           </div>
         ) : (
           <div className="premium-listening-rail__status" role="status">
             <Headphones size={20} strokeWidth={1.45} aria-hidden="true" />
-            <p>{status === "error" ? "The listening room could not be refreshed." : "More listening editions are being prepared."}</p>
+            <p>
+              {status === "error"
+                ? "The listening room could not be refreshed."
+                : "More listening editions are being prepared."}
+            </p>
             <Link to="/library">Browse the library</Link>
           </div>
         )}

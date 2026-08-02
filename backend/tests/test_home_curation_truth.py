@@ -236,7 +236,7 @@ def test_admin_curation_cannot_enable_audio(tmp_path):
 
 def test_server_registers_the_preferred_endpoint():
     source = (ROOT / "backend/server.py").read_text(encoding="utf-8")
-    assert '@api.get("/home/curated")' in source
+    assert source.count('@api.get("/home/curated")') == 1
     assert "canonical, release-safe Home curation contract" in source
 
 

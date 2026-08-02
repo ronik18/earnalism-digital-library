@@ -10,59 +10,20 @@ function normalizeSlug(value) {
   return String(value || "").trim().toLowerCase();
 }
 
-function sprint1ApprovedSlugs(curation = {}) {
-  const shelves = curation.shelves;
-  const approved = Array.isArray(curation.approved_audiobooks)
-    ? curation.approved_audiobooks
-    : (shelves && typeof shelves === "object" && !Array.isArray(shelves))
-      ? shelves.approved_audiobooks
-      : [];
-
-  if (!Array.isArray(approved)) return new Set();
-  return new Set(
-    approved
-      .map((book) => normalizeSlug(book?.slug))
-      .filter(Boolean),
-  );
-}
-
 function resolveCarouselInput(curation = {}) {
   const hero = curation.hero || {};
-  const approved = Array.isArray(curation.approved_audiobooks)
-    ? curation.approved_audiobooks
-    : (curation.shelves && typeof curation.shelves === "object" && !Array.isArray(curation.shelves))
-      ? curation.shelves.approved_audiobooks || []
-      : [];
-  const shelves = Array.isArray(curation.shelves)
-    ? curation.shelves
-    : Array.isArray(curation.groups)
-      ? curation.groups
-      : [];
-  const shelfBooks = shelves.flatMap((shelf = {}) => (
-    Array.isArray(shelf.visible_books)
-      ? shelf.visible_books
-      : Array.isArray(shelf.books)
-        ? shelf.books
-        : []
-  ));
-  const fromAudio = Array.isArray(curation.selected_audiobooks)
-    ? curation.selected_audiobooks
-    : Array.isArray(curation.listening_rooms?.items)
-      ? curation.listening_rooms.items
-      : [];
-
+  // `hero.carousel_books` is the server-owned Sprint1 allowlist. Do not
+  // rebuild the hero from shelves or audiobook collections: those are valid
+  // for their own surfaces, but are not a hero publication contract.
   return [
     ...Array.isArray(hero.carousel_books) ? hero.carousel_books : [],
-    ...Array.isArray(hero.featured_books) ? hero.featured_books : [],
-    ...shelfBooks,
-    ...approved,
-    ...fromAudio,
+    ...(Array.isArray(hero.carousel_books) && hero.carousel_books.length > 0
+      ? []
+      : Array.isArray(hero.featured_books) ? hero.featured_books : []),
   ];
 }
 
 export function heroCarouselBooks(curation = {}) {
-  const sprint1Approved = sprint1ApprovedSlugs(curation);
-
   return Array.from(new Map(
     resolveCarouselInput(curation)
       .filter((book) => {
@@ -70,7 +31,7 @@ export function heroCarouselBooks(curation = {}) {
         if (!slug) return false;
         if (HERO_CAROUSEL_EXCLUDED_SLUG_SET.has(slug)) return false;
         if (book?.reader_enabled === false) return false;
-        if (book?.cover_valid === false && !sprint1Approved.has(slug)) return false;
+        if (book?.cover_valid === false) return false;
         if (!book?.front_cover_url) return false;
         if (!book?.book_url) return false;
         return true;

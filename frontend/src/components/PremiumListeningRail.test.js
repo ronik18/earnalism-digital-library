@@ -1,16 +1,32 @@
 import fs from "fs";
 import path from "path";
 
-const rail = fs.readFileSync(path.join(process.cwd(), "src/components/PremiumListeningRail.jsx"), "utf8");
-const styles = fs.readFileSync(path.join(process.cwd(), "src/components/PremiumListeningRail.css"), "utf8");
-const home = fs.readFileSync(path.join(process.cwd(), "src/pages/Home.jsx"), "utf8");
-const covers = fs.readFileSync(path.join(process.cwd(), "src/components/BookCoverImage.jsx"), "utf8");
+const rail = fs.readFileSync(
+  path.join(process.cwd(), "src/components/PremiumListeningRail.jsx"),
+  "utf8",
+);
+const styles = fs.readFileSync(
+  path.join(process.cwd(), "src/components/PremiumListeningRail.css"),
+  "utf8",
+);
+const home = fs.readFileSync(
+  path.join(process.cwd(), "src/pages/Home.jsx"),
+  "utf8",
+);
+const covers = fs.readFileSync(
+  path.join(process.cwd(), "src/components/BookCoverImage.jsx"),
+  "utf8",
+);
 
 describe("PremiumListeningRail Home contract", () => {
   test("mounts in Hero to Listening Room to Collage order", () => {
     expect(home.indexOf("<PremiumHero")).toBeGreaterThan(-1);
-    expect(home.indexOf("<PremiumListeningRail")).toBeGreaterThan(home.indexOf("<PremiumHero"));
-    expect(home.indexOf("<CuratedShelfCollage")).toBeGreaterThan(home.indexOf("<PremiumListeningRail"));
+    expect(home.indexOf("<PremiumListeningRail")).toBeGreaterThan(
+      home.indexOf("<PremiumHero"),
+    );
+    expect(home.indexOf("<CuratedShelfCollage")).toBeGreaterThan(
+      home.indexOf("<PremiumListeningRail"),
+    );
     expect(home).toContain("loading={homeCurationLoading}");
     expect(home).toContain("error={homeCurationError}");
   });
@@ -18,10 +34,22 @@ describe("PremiumListeningRail Home contract", () => {
   test("uses the compact customer-facing listening copy and canonical routes", () => {
     expect(rail).toContain("THE LISTENING ROOM");
     expect(rail).toContain("Literature, in a more intimate form.");
-    expect(rail).toContain("Curated performances with seamless read-along listening.");
+    expect(rail).toContain(
+      "Curated performances with seamless read-along listening.",
+    );
     expect(rail).toContain("Explore audiobooks");
     expect(rail).toContain("/library?audio=approved");
     expect(rail).not.toMatch(/autoplay|<audio|preload=/i);
+  });
+
+  test("art-directs the approved covers inside a restrained listening salon", () => {
+    expect(rail).toContain("premium-listening-rail__salon");
+    expect(rail).toContain("premium-listening-rail__resonance");
+    expect(rail).toContain("CURATED LISTENING EDITIONS");
+    expect(rail).toContain("Featured listening edition");
+    expect(styles).toContain("radial-gradient");
+    expect(styles).toContain("mix-blend-mode: soft-light");
+    expect(styles).toContain("object-fit: cover");
   });
 
   test("renders only real progress and real metadata", () => {
@@ -48,7 +76,7 @@ describe("PremiumListeningRail Home contract", () => {
     expect(rail).toContain("disabled={!scrollState.next}");
     expect(rail).toContain('event.key !== "ArrowLeft"');
     expect(rail).toContain('event.key !== "ArrowRight"');
-    expect(rail).toContain('{ passive: true }');
+    expect(rail).toContain("{ passive: true }");
   });
 
   test("uses a single responsive snap rail with reduced-motion support", () => {
