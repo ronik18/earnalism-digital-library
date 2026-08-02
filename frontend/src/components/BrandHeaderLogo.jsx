@@ -1,7 +1,6 @@
 import { useSettings } from "../context/SettingsContext";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
-const DEFAULT_BRAND_LOCKUP = `${PUBLIC_URL}/assets/brand/earnalism-brand-lockup.png`;
 const HEADER_LOGO_ICON = `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-96.webp`;
 const HEADER_LOGO_SRC_SET = [
   `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-96.webp 96w`,
@@ -78,7 +77,7 @@ export default function BrandHeaderLogo({
     ? badgeVariant
     : BRAND_HEADER_BADGE_VARIANTS.tricolor;
   const customLogo = brand?.logo_url?.trim();
-  const resolvedLogo = customLogo || DEFAULT_BRAND_LOCKUP;
+  const resolvedLogo = customLogo;
 
   if (resolvedLogo) {
     return (
@@ -88,7 +87,7 @@ export default function BrandHeaderLogo({
         aria-label="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"
         data-testid="brand-header-logo"
         data-badge-variant={safeBadgeVariant}
-        data-logo-source={customLogo ? "admin-setting" : "bundled-owner-asset"}
+        data-logo-source="admin-setting"
       >
         <img
           src={resolvedLogo}

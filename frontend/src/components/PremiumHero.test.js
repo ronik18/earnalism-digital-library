@@ -156,9 +156,9 @@ describe("PremiumHero public contract", () => {
   });
 
   test("reserves responsive safe zones without fixed screenshot-only horizontal offsets", () => {
-    expect(styles).toContain("width: clamp(440px, 34vw, 550px);");
+    expect(styles).toContain("width: clamp(484px, 37.4vw, 605px);");
     expect(styles).toContain("right: clamp(32px, 3.4vw, 56px);");
-    expect(styles).toContain("--coverflow-active-height: clamp(180px, 12vw, 192px);");
+    expect(styles).toContain("--coverflow-active-height: clamp(189px, 12.6vw, 202px);");
     expect(styles).toContain('grid-template-areas: "plaque stage";');
     expect(styles).toContain("@media (min-width: 1024px) and (max-height: 800px)");
     expect(styles).toContain("@media (max-width: 767px)");

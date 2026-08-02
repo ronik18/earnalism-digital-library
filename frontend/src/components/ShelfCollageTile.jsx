@@ -32,6 +32,8 @@ export default function ShelfCollageTile({ group, index = 0 }) {
   const variant = getShelfVariant({ ...group, books });
   const countLabel = getShelfCountLabel({ ...group, books });
   const themeChips = getShelfThemeChips(group);
+  const ctaLabel = group.cta_label?.trim() || `Explore ${group.title || "this shelf"}`;
+  const ctaUrl = group.cta_url || "/library";
 
   return (
     <article
@@ -67,7 +69,7 @@ export default function ShelfCollageTile({ group, index = 0 }) {
             ))}
           </ul>
         </div>
-        <Link className="curated-shelf-tile__cta" to={group.cta_url} data-content-zone="cta"><span>{group.cta_label}</span><ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" /></Link>
+        <Link className="curated-shelf-tile__cta" to={ctaUrl} data-content-zone="cta"><span>{ctaLabel}</span><ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" /></Link>
       </div>
     </article>
   );

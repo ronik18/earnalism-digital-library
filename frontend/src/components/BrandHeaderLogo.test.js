@@ -14,7 +14,7 @@ describe("BrandHeaderLogo", () => {
   test("uses the existing bundled Earnalism icon asset unchanged", () => {
     expect(componentSource).toMatch(/earnalism-logo-transparent-96\.webp/);
     expect(componentSource).toMatch(/earnalism-logo-transparent-128\.webp/);
-    expect(componentSource).toMatch(/earnalism-brand-lockup\.png/);
+    expect(componentSource).not.toMatch(/earnalism-brand-lockup\.png/);
     expect(componentSource).not.toMatch(/canvas|generated|ai-garbled|data:image/i);
   });
 
@@ -47,7 +47,7 @@ describe("BrandHeaderLogo", () => {
 
   test("keeps badge variants available while allowing the public header to omit the badge", () => {
     expect(componentSource.match(/<TricolorLiteraryBadge \/>/g)).toHaveLength(2);
-    expect(componentSource).toContain('data-logo-source={customLogo ? "admin-setting" : "bundled-owner-asset"}');
+    expect(componentSource).toContain('data-logo-source="admin-setting"');
   });
 
   test("public header omits the badge from the latest lockup", () => {

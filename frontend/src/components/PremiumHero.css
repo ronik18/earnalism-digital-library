@@ -49,7 +49,7 @@
   max-width: 42rem;
   margin: 1rem 0 0;
   color: #fffaf0;
-  font-family: var(--font-display);
+  font-family: Georgia, 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-size: clamp(2.15rem, 9.6vw, 3rem);
   font-weight: 400;
   letter-spacing: -0.035em;
