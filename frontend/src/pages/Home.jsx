@@ -22,7 +22,11 @@ import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
-import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
+import {
+  fetchHomeCuration,
+  getHomeCurationCache,
+  getHomeCurationSnapshot,
+} from "../lib/homeCuration";
 import useSEO from "../hooks/useSEO";
 
 // HomeShelfArchitecture remains the compatibility name for the editorial Home mount.
@@ -46,8 +50,9 @@ export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [homeCuration, setHomeCuration] = useState(() => getHomeCurationSnapshot());
-  const [homeCurationLoading, setHomeCurationLoading] = useState(true);
+  const cachedHomeCuration = getHomeCurationCache();
+  const [homeCuration, setHomeCuration] = useState(() => cachedHomeCuration || getHomeCurationSnapshot());
+  const [homeCurationLoading, setHomeCurationLoading] = useState(() => !cachedHomeCuration);
   const [homeCurationError, setHomeCurationError] = useState(false);
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)

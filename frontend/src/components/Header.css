@@ -1,6 +1,6 @@
 .premium-site-header {
-  --premium-header-menu-size: calc(0.92rem + 2px);
-  --premium-header-cta-size: calc(0.98rem + 2px);
+  --premium-header-menu-size: calc((0.92rem + 2px) * 1.02);
+  --premium-header-cta-size: calc((0.98rem + 2px) * 1.02);
   background: linear-gradient(180deg, rgba(255, 251, 242, 0.99), rgba(250, 242, 228, 0.97));
   border-bottom-color: rgba(174, 111, 33, 0.48);
   box-shadow: 0 14px 36px -30px rgba(70, 24, 10, 0.72), inset 0 1px rgba(255, 255, 255, 0.92);
@@ -207,7 +207,7 @@
     display: inline-flex;
     min-height: 2.75rem;
     align-items: center;
-    font-size: clamp(calc(0.88rem + 2px), calc(0.95vw + 2px), calc(0.98rem + 2px)) !important;
+    font-size: clamp(calc((0.88rem + 2px) * 1.02), calc((0.95vw + 2px) * 1.02), calc((0.98rem + 2px) * 1.02)) !important;
     letter-spacing: 0.01em !important;
   }
 
@@ -251,7 +251,7 @@
   }
 
   .premium-site-header--reference-home .premium-header-nav--reference-home a {
-    font-size: calc(0.78rem + 2px) !important;
+    font-size: calc((0.78rem + 2px) * 1.02) !important;
   }
 
   .premium-site-header--reference-home .reference-home-header-icon {

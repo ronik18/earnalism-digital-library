@@ -1,7 +1,7 @@
 :root {
   --font-display: 'Cormorant Garamond', 'Noto Serif Bengali', Georgia, serif;
   --font-ui: 'Outfit', 'Noto Sans Bengali', sans-serif;
-  --site-header-height: 4rem;
+  --site-header-height: 3.6rem;
   --beige-canvas: #FAF7F0;
   --beige-surface: #F5F0E8;
   --burgundy-deep: #6B1020;
@@ -18,7 +18,7 @@
 @media (min-width: 1024px) {
   /* Keep every desktop route aligned with the reference hero header. */
   :root {
-    --site-header-height: clamp(4.5rem, 6.5vw, 6rem);
+    --site-header-height: clamp(4.05rem, 5.85vw, 5.4rem);
   }
 }
 

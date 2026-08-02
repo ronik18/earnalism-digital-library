@@ -67,7 +67,7 @@ export default function Header() {
       className={`sticky top-0 z-50 glass-header premium-site-header${isReferenceHome ? " premium-site-header--reference-home" : ""}`}
       data-testid="site-header"
     >
-      <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-[var(--site-header-height)] flex items-center justify-between gap-4">
         <div className="header-brand-cluster">
           <Link to="/" className="flex items-center min-w-0" data-testid="brand-logo">
             <BrandHeaderLogo badgeVariant="none" />
@@ -85,7 +85,7 @@ export default function Header() {
               end={n.to === "/"}
               data-testid={`nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
               className={({ isActive }) =>
-                `text-[0.88rem] tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+                `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
               }
             >
               {n.label}
@@ -115,7 +115,7 @@ export default function Header() {
               to={accountHref}
               data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
               className={({ isActive }) =>
-                `text-[0.88rem] tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+                `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
               }
             >
               {accountLabel}

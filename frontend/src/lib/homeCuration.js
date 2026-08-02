@@ -1,6 +1,15 @@
 import { api } from "./api";
 import homeCuratedSprint1 from "../data/homeCuratedSprint1.json";
 
+const HOME_CURATION_CACHE_KEY = "earnalism_home_curation_v3";
+const HOME_CURATION_CACHE_TTL_MS = 60 * 60 * 1000;
+const HOME_CURATION_LEGACY_KEYS = [
+  "earnalism_home_curation_v2",
+  "earnalism_home_curation",
+];
+
+let homeCurationMemoryCache = null;
+
 export const HOME_SHELF_ORDER = [
   "bengali-life-and-legacy",
   "gothic-and-the-uncanny",
@@ -103,6 +112,57 @@ function normalizeShelf(shelf = {}) {
   };
 }
 
+function normalizeShelfFromPayloadEntry(entry, fallbackId) {
+  if (!entry || typeof entry !== "object") return null;
+  const shelf = Array.isArray(entry)
+    ? { id: fallbackId, books: entry }
+    : entry;
+  const id = shelf.id || fallbackId;
+  const books = shelf.visible_books || shelf.books || [];
+  return {
+    ...shelf,
+    id,
+    visible_books: books,
+    books,
+  };
+}
+
+function normalizeShelfSource(payloadShelves) {
+  if (Array.isArray(payloadShelves)) {
+    return payloadShelves;
+  }
+
+  if (!payloadShelves || typeof payloadShelves !== "object" || Array.isArray(payloadShelves)) {
+    return null;
+  }
+
+  return Object.entries(payloadShelves).flatMap(([key, value]) => {
+    const normalized = normalizeShelfFromPayloadEntry(value, key);
+    return normalized ? [normalized] : [];
+  });
+}
+
+function extractListeningSource(payload = {}) {
+  if (payload.shelves && typeof payload.shelves === "object" && !Array.isArray(payload.shelves) && Array.isArray(payload.shelves.approved_audiobooks)) {
+    return payload.shelves.approved_audiobooks;
+  }
+
+  const legacy = payload.shelf_collage || {};
+  const listeningRooms = payload.listening_rooms || {};
+  if (Array.isArray(listeningRooms.items)) return listeningRooms.items;
+  if (Array.isArray(payload.audiobook_shelf?.books)) return payload.audiobook_shelf.books;
+  if (Array.isArray(payload.selected_audiobooks)) return payload.selected_audiobooks;
+  if (Array.isArray(legacy.selected_audiobooks)) return legacy.selected_audiobooks;
+  return [];
+}
+
+function extractListeningReserve(payload = {}) {
+  const listeningRooms = payload.listening_rooms || {};
+  if (Array.isArray(listeningRooms.reserve_items)) return listeningRooms.reserve_items;
+  if (Array.isArray(payload.audiobook_shelf?.reserve_books)) return payload.audiobook_shelf.reserve_books;
+  return [];
+}
+
 export function normalizeHomeCuration(payload = {}) {
   const legacy = payload.shelf_collage || {};
   const hero = payload.hero || {};
@@ -111,23 +171,38 @@ export function normalizeHomeCuration(payload = {}) {
     featured_books: normalizeBooks(hero.featured_books || []),
     carousel_books: normalizeBooks(hero.carousel_books || []),
   };
-  const sourceShelves = Array.isArray(payload.literary_shelves)
+
+  const rawShelves = Array.isArray(payload.literary_shelves) && payload.literary_shelves.length > 0
     ? payload.literary_shelves
     : Array.isArray(payload.shelves)
-      ? payload.shelves.filter((shelf) => shelf.id !== "selected-listening")
-      : legacy.groups || [];
-  const groups = sourceShelves.map(normalizeShelf).filter((shelf) => shelf.total_count > 0 && shelf.books.length > 0);
-  const listeningRooms = payload.listening_rooms || {};
-  const audioSource = listeningRooms.items || payload.audiobook_shelf?.books || payload.selected_audiobooks || legacy.selected_audiobooks || [];
-  const audioReserve = listeningRooms.reserve_items || payload.audiobook_shelf?.reserve_books || [];
-  const selectedAudiobooks = normalizeBooks(audioSource, { audioOnly: true });
-  const reserveAudiobooks = normalizeBooks(audioReserve, { audioOnly: true });
+      ? payload.shelves
+      : Array.isArray(legacy.groups) && legacy.groups.length > 0
+        ? legacy.groups
+        : payload.shelves || [];
+  const shelfSource = normalizeShelfSource(rawShelves) || [];
+  const sourceShelves = shelfSource.length > 0
+    ? shelfSource
+    : Array.isArray(rawShelves)
+      ? rawShelves
+      : [];
+
+  const groups = sourceShelves
+    .map(normalizeShelf)
+    .filter((shelf) => !["selected-listening", "approved_audiobooks"].includes(shelf.id) && shelf.total_count > 0 && shelf.books.length > 0);
+
+  const selectedAudioSource = extractListeningSource(payload);
+  const reserveAudioSource = extractListeningReserve(payload);
+  const selectedAudiobooks = normalizeBooks(selectedAudioSource, { audioOnly: true });
+  const reserveAudiobooks = normalizeBooks(reserveAudioSource, { audioOnly: true });
+
   const shelfCollage = {
     ...legacy,
     groups: groups.sort((left, right) => HOME_SHELF_ORDER.indexOf(left.id) - HOME_SHELF_ORDER.indexOf(right.id)),
     selected_audiobooks: selectedAudiobooks,
+    approved_audiobooks: selectedAudioSource,
     reserve_audiobooks: reserveAudiobooks,
   };
+
   return {
     ...payload,
     hero: normalizedHero,
@@ -156,7 +231,104 @@ export function getHomeCurationSnapshot() {
   });
 }
 
+function getStorage() {
+  return typeof window === "undefined" ? null : window.localStorage;
+}
+
+function getSessionStorage() {
+  return typeof window === "undefined" ? null : window.sessionStorage;
+}
+
+function isRecentCache(payload = {}) {
+  const age = Date.now() - Number(payload.cached_at || 0);
+  return Number.isFinite(age) && age >= 0 && age <= HOME_CURATION_CACHE_TTL_MS;
+}
+
+function parseCachePayload(raw) {
+  try {
+    const parsed = typeof raw === "string" ? JSON.parse(raw) : null;
+    if (!parsed || typeof parsed !== "object" || !parsed.payload) return null;
+    const cachedAt = Number(parsed.cached_at);
+    if (!Number.isFinite(cachedAt) || cachedAt > Date.now()) return null;
+    return { cached_at: cachedAt, payload: parsed.payload };
+  } catch {
+    return null;
+  }
+}
+
+function getCacheCandidates() {
+  const stores = [getSessionStorage(), getStorage()].filter(Boolean);
+  const keys = [HOME_CURATION_CACHE_KEY, ...HOME_CURATION_LEGACY_KEYS];
+  const candidates = [];
+
+  for (const storage of stores) {
+    for (const key of keys) {
+      try {
+        const raw = storage.getItem(key);
+        const parsed = parseCachePayload(raw);
+        if (parsed && isRecentCache(parsed)) {
+          candidates.push(parsed);
+        }
+      } catch {
+        // ignore storage read failures
+      }
+    }
+  }
+  return candidates;
+}
+
+function pickNewestCache(candidates = []) {
+  if (candidates.length === 0) return null;
+  return candidates.reduce((newest, candidate) => (
+    !newest || candidate.cached_at > newest.cached_at ? candidate : newest
+  ), null);
+}
+
+export function getHomeCurationCache() {
+  if (homeCurationMemoryCache && isRecentCache(homeCurationMemoryCache)) {
+    return homeCurationMemoryCache.payload;
+  }
+
+  const newest = pickNewestCache(getCacheCandidates());
+  if (!newest) return null;
+
+  homeCurationMemoryCache = newest;
+  return newest.payload;
+}
+
+export function setHomeCurationCache(payload = null) {
+  if (!payload) return null;
+  const record = { cached_at: Date.now(), payload };
+  homeCurationMemoryCache = record;
+
+  for (const storage of [getSessionStorage(), getStorage()].filter(Boolean)) {
+    try {
+      storage.setItem(HOME_CURATION_CACHE_KEY, JSON.stringify(record));
+      HOME_CURATION_LEGACY_KEYS.forEach((key) => storage.removeItem(key));
+    } catch {
+      // ignore quota / private-mode failures
+    }
+  }
+  return record.payload;
+}
+
+export function clearHomeCurationCache() {
+  homeCurationMemoryCache = null;
+  const keys = [HOME_CURATION_CACHE_KEY, ...HOME_CURATION_LEGACY_KEYS];
+  for (const storage of [getSessionStorage(), getStorage()].filter(Boolean)) {
+    for (const key of keys) {
+      try {
+        storage.removeItem(key);
+      } catch {
+        // ignore
+      }
+    }
+  }
+}
+
 export async function fetchHomeCuration(signal) {
   const { data } = await api.get("/home/curated", { signal });
-  return normalizeHomeCuration(data);
+  const normalized = normalizeHomeCuration(data);
+  setHomeCurationCache(normalized);
+  return normalized;
 }
