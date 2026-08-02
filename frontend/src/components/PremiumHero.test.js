@@ -9,7 +9,7 @@ const publicIndex = fs.readFileSync(path.join(process.cwd(), "public/index.html"
 describe("PremiumHero public contract", () => {
   test("uses only valid dynamic Sprint 1 carousel records", () => {
     expect(source).toContain("{books.map");
-    expect(carouselSource).toContain("hero?.carousel_books");
+    expect(carouselSource).toContain("hero.carousel_books");
     expect(source).toContain("heroCarouselBooks(curation)");
     expect(carouselSource).not.toContain("[...featured, ...shelfBooks]");
     expect(carouselSource).toContain("book.front_cover_url");

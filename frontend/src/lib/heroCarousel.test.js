@@ -22,13 +22,55 @@ function book(index) {
   };
 }
 
-test("carousel fails closed instead of importing general shelf books", () => {
+test("carousel merges selected shelf books into hero stream", () => {
   const shelfBook = book(0);
 
   expect(heroCarouselBooks({
     hero: { carousel_books: [] },
-    literary_shelves: [{ books: [shelfBook] }],
-  })).toEqual([]);
+    shelves: [{ id: "selected-listening", books: [shelfBook] }],
+  }).map((item) => item.slug)).toEqual(["sprint1-0"]);
+});
+
+test("carousel merges sprint-1 approved sets (carousel, featured, shelves, audiobooks) and deduplicates", () => {
+  const carousel = [book(0), book(1)];
+  const featured = [book(1), book(2)];
+  const shelfBooks = [{ ...book(3) }];
+  const audiobooks = [{ ...book(4), audiobook_enabled: true, audiobook_release_gate: "APPROVED", audio_qa_status: "QA_PASSED", audio_url: "/api/reader/book/book-4/audiobook" }];
+
+  const slides = heroCarouselBooks({
+    hero: { carousel_books: carousel, featured_books: featured },
+    shelves: [{ id: "selected-listening", visible_books: shelfBooks }],
+    selected_audiobooks: audiobooks,
+  });
+
+  expect(slides.map((book) => book.slug)).toEqual([
+    "sprint1-0",
+    "sprint1-1",
+    "sprint1-2",
+    "sprint1-3",
+    "sprint1-4",
+  ]);
+});
+
+test("carousel includes sprint1 approved audiobook entries even when cover_valid is false", () => {
+  expect(heroCarouselBooks({
+    shelves: {
+      approved_audiobooks: [{
+        ...book(0),
+        title: "Sprint 1 blocked cover",
+        cover_valid: false,
+      }],
+    },
+  })).toHaveLength(1);
+
+  const slides = heroCarouselBooks({
+    hero: { carousel_books: [{ ...book(1), cover_valid: false }] },
+    shelves: {
+      approved_audiobooks: [{ ...book(0), cover_valid: false }],
+    },
+  });
+
+  expect(slides.map((item) => item.slug)).toEqual(["sprint1-0"]);
 });
 
 test("carousel deduplicates valid explicit books and rejects unsafe records", () => {
