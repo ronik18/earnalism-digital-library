@@ -834,8 +834,10 @@
     top: calc(48.2% - 0.9vh);
     right: clamp(32px, 3.4vw, 56px);
     z-index: 4;
-    width: clamp(440px, 34vw, 550px);
-    height: clamp(196px, 14.2vw, 218px);
+    /* Keep the right and top anchors fixed so the larger showcase grows
+       deliberately toward the hero copy (left) and lower artwork (bottom). */
+    width: clamp(484px, 37.4vw, 605px);
+    height: clamp(206px, 14.91vw, 229px);
     pointer-events: none;
   }
 
@@ -860,7 +862,7 @@
   }
 
   .premium-coverflow--reference {
-    --coverflow-active-height: clamp(180px, 12vw, 192px);
+    --coverflow-active-height: clamp(189px, 12.6vw, 202px);
     --coverflow-stage-height: 100%;
     --coverflow-book-depth: clamp(8px, 0.68vw, 11px);
     position: absolute;
@@ -878,7 +880,7 @@
 
   .premium-coverflow--reference .premium-coverflow__plaque {
     align-self: center;
-    min-height: clamp(152px, 11.8vw, 180px);
+    min-height: clamp(160px, 12.39vw, 189px);
     gap: clamp(0.48rem, 0.6vw, 0.72rem);
     padding: clamp(0.72rem, 0.8vw, 0.9rem);
   }
