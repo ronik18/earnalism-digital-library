@@ -2,7 +2,7 @@
   position: relative;
   isolation: isolate;
   overflow: clip;
-  padding: clamp(2.5rem, 3vw, 2.75rem) clamp(1rem, 4vw, 3rem);
+  padding: clamp(2.25rem, 2.7vw, 2.5rem) clamp(1rem, 4vw, 3rem);
   color: #fff7e8;
   border-top: 1px solid rgba(232, 201, 122, 0.22);
   border-bottom: 1px solid rgba(232, 201, 122, 0.2);

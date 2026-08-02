@@ -173,7 +173,7 @@ export default function PremiumListeningRail({ books = [], reserveBooks = [], lo
 
   return (
     <section
-      className="premium-listening-rail selected-listening-rail"
+      className="premium-listening-rail"
       aria-labelledby="premium-listening-title"
       aria-busy={status === "loading"}
       data-state={status}
@@ -182,33 +182,33 @@ export default function PremiumListeningRail({ books = [], reserveBooks = [], lo
       <div className="premium-listening-rail__inner">
         <div className="premium-listening-rail__heading">
           <div className="premium-listening-rail__intro">
-            <div className="premium-listening-rail__eyebrow selected-listening-rail__eyebrow">
+            <div className="premium-listening-rail__eyebrow">
               <Headphones size={15} strokeWidth={1.55} aria-hidden="true" />
               THE LISTENING ROOM
             </div>
             <h2 id="premium-listening-title" data-testid="premium-listening-title">Literature, in a more intimate form.</h2>
             <p>Curated performances with seamless read-along listening.</p>
           </div>
-          <div className="premium-listening-rail__actions selected-listening-rail__actions">
+          <div className="premium-listening-rail__actions">
             {visibleBooks.length > 1 && (
               <div className="premium-listening-rail__controls" aria-label="Audiobook gallery controls">
-                <button type="button" className="premium-listening-rail__control selected-listening-rail__control" aria-label="Previous audiobooks" aria-controls="premium-listening-viewport" disabled={!scrollState.previous} onClick={() => move(-1)}>
+                <button type="button" className="premium-listening-rail__control" aria-label="Previous audiobooks" aria-controls="premium-listening-viewport" disabled={!scrollState.previous} onClick={() => move(-1)}>
                   <ArrowLeft size={16} aria-hidden="true" />
                 </button>
-                <button type="button" className="premium-listening-rail__control selected-listening-rail__control" aria-label="Next audiobooks" aria-controls="premium-listening-viewport" disabled={!scrollState.next} onClick={() => move(1)}>
+                <button type="button" className="premium-listening-rail__control" aria-label="Next audiobooks" aria-controls="premium-listening-viewport" disabled={!scrollState.next} onClick={() => move(1)}>
                   <ArrowRight size={16} aria-hidden="true" />
                 </button>
               </div>
             )}
-            <Link className="premium-listening-rail__browse selected-listening-rail__browse" to="/library?audio=approved">
+            <Link className="premium-listening-rail__browse" to="/library?audio=approved">
               Explore audiobooks <ArrowRight size={15} strokeWidth={1.6} aria-hidden="true" />
             </Link>
           </div>
         </div>
 
         {status === "ready" ? (
-          <div className="premium-listening-rail__viewport selected-listening-rail__viewport" ref={viewportRef} id="premium-listening-viewport" tabIndex="0" onKeyDown={onRailKeyDown} aria-label="Audiobook cards. Use arrow keys, the previous and next buttons, or swipe.">
-            <ul className="premium-listening-rail__items selected-listening-rail__items" id="premium-listening-items" aria-label="Curated audiobooks">
+          <div className="premium-listening-rail__viewport" ref={viewportRef} id="premium-listening-viewport" tabIndex="0" onKeyDown={onRailKeyDown} aria-label="Audiobook cards. Use arrow keys, the previous and next buttons, or swipe.">
+            <ul className="premium-listening-rail__items" id="premium-listening-items" aria-label="Curated audiobooks">
               {visibleBooks.map((book, index) => (
                 <ListeningCard
                   book={book}
