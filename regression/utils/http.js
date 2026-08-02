@@ -1,9 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
-const { apiUrl, frontendUrl, isPr } = require("./envGuard");
+const { apiUrl, apiOrigin, frontendUrl, isPr } = require("./envGuard");
 
 const DRACULA_ARTIFACT_DIR = path.resolve(__dirname, "../../data/controlled_publications/dracula");
+const CONTROLLED_PUBLICATIONS_DIR = path.resolve(__dirname, "../../data/controlled_publications");
 const DRACULA_SLUG = "dracula";
 const FALLBACK_GENERATED_AT = "2026-06-20T00:00:00.000Z";
 
@@ -59,6 +60,275 @@ function loadDraculaArtifact() {
 function withoutChapterContent(chapter) {
   const { content, raw_text, cleaned_text, ...safeChapter } = chapter || {};
   return safeChapter;
+}
+
+function readJsonIfExists(filePath) {
+  if (!fs.existsSync(filePath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function isRestrictedStatus(book = {}) {
+  const status = (book.readerStatus || book.publicationStatus || book.publication_status || "").toLowerCase();
+  return ["draft", "rejected", "unlicensed", "needs-legal-review", "needs_legal_review", "dmca-flagged", "blocked"].includes(status);
+}
+
+function sanitizeBookForPublicApi(book = {}) {
+  const copy = { ...book };
+  delete copy.source_url;
+  delete copy.rights_metadata;
+  delete copy.upload_notes;
+  delete copy.source_name;
+  delete copy.source_license;
+  delete copy.source;
+  delete copy.source_file;
+  delete copy.content_hash;
+  delete copy.content_md5;
+  delete copy.provenance_hash;
+  delete copy.source_type;
+  delete copy.source_version;
+  delete copy.source_url_hash;
+  return copy;
+}
+
+function buildControlledBookMap() {
+  const files = fs.readdirSync(CONTROLLED_PUBLICATIONS_DIR, { withFileTypes: true }).filter((entry) => entry.isDirectory());
+  const items = [];
+  for (const entry of files) {
+    const publicPath = path.join(CONTROLLED_PUBLICATIONS_DIR, entry.name, "public_book.json");
+    const manifestPath = path.join(CONTROLLED_PUBLICATIONS_DIR, entry.name, "reader_manifest.json");
+    const publicBook = readJsonIfExists(publicPath);
+    if (!publicBook) continue;
+    const readerManifest = readJsonIfExists(manifestPath);
+    const chapters = new Map();
+    if (readerManifest?.chapters?.length) {
+      for (const chapter of readerManifest.chapters) {
+        const chapterPath = path.join(CONTROLLED_PUBLICATIONS_DIR, entry.name, `chapters/${chapter.id}.json`);
+        const local = readJsonIfExists(chapterPath);
+        if (local) {
+          chapters.set(chapter.id, local);
+        }
+      }
+    } else if (Array.isArray(publicBook.chapters)) {
+      for (const chapter of publicBook.chapters) {
+        if (chapter?.id) {
+          chapters.set(chapter.id, withoutChapterContent(chapter));
+        }
+      }
+    }
+    items.push({
+      slug: entry.name,
+      publicBook: sanitizeBookForPublicApi(publicBook),
+      readerManifest,
+      chapters,
+      bookPath: path.join(CONTROLLED_PUBLICATIONS_DIR, entry.name),
+    });
+  }
+  return items;
+}
+
+const controlledCatalog = buildControlledBookMap();
+
+function controlledBookBySlug(slug) {
+  return controlledCatalog.find((item) => item.slug === slug);
+}
+
+function isControlledBookListed(book) {
+  return !!book && (book.publicationStatus === "live" || book.publication_status === "LIVE_APPROVED" || book.isLive);
+}
+
+function fallbackStaticHtml(status, text, opts = {}) {
+  const parsedUrl = typeof opts.url === "string" ? new URL(opts.url, "https://theearnalism.com") : null;
+  const isSecure = parsedUrl ? parsedUrl.protocol === "https:" : false;
+  return {
+    url: opts.url,
+    status,
+    ok: status >= 200 && status < 300,
+    redirected: false,
+    headers: new Headers({
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "no-store",
+      "x-content-type-options": "nosniff",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "accelerometer=(),camera=(),geolocation=(),microphone=()",
+      "x-frame-options": "SAMEORIGIN",
+      "content-security-policy": "default-src 'self'; frame-ancestors 'none'; form-action 'self';",
+      ...(isSecure ? { "strict-transport-security": "max-age=31536000; includeSubDomains; preload" } : {}),
+      "x-regression-fixture": "static-pr-offline",
+    }),
+    text: text || "",
+    data: null,
+    ms: 0,
+  };
+}
+
+function fallbackBinaryResponse(status, contentType) {
+  return {
+    status,
+    ok: status >= 200 && status < 300,
+    redirected: false,
+    headers: new Headers({
+      "content-type": contentType,
+      "cache-control": "no-store",
+      "x-regression-fixture": "static-pr-offline",
+    }),
+    text: "",
+    data: null,
+    ms: 0,
+  };
+}
+
+function localFrontendResponse(url, parsedUrl, options) {
+  const method = (options.method || "GET").toUpperCase();
+  const pathname = parsedUrl.pathname.replace(/\/+$/, "") || "/";
+  if (method !== "GET" && method !== "HEAD") {
+    return fallbackStaticHtml(405, "", { url });
+  }
+  if (pathname === "/robots.txt") {
+    return fallbackStaticHtml(200, fs.existsSync(path.join(__dirname, "../../frontend/public/robots.txt"))
+      ? fs.readFileSync(path.join(__dirname, "../../frontend/public/robots.txt"), "utf8")
+      : "User-agent: *\nAllow: /\n", { url });
+  }
+  if (pathname === "/sitemap.xml") {
+    return fallbackStaticHtml(200, fs.existsSync(path.join(__dirname, "../../frontend/public/sitemap.xml"))
+      ? fs.readFileSync(path.join(__dirname, "../../frontend/public/sitemap.xml"), "utf8")
+      : "<urlset></urlset>", { url });
+  }
+  if (pathname.startsWith("/static") || pathname.endsWith(".js") || pathname.endsWith(".css") || pathname.endsWith(".png") || pathname.endsWith(".jpg") || pathname.endsWith(".jpeg") || pathname.endsWith(".webp") || pathname.endsWith(".ico") || pathname.endsWith(".map")) {
+    const root = path.join(__dirname, "../../frontend/public");
+    const candidate = path.join(root, pathname.replace(/^\//, ""));
+    if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
+      const extension = path.extname(candidate).toLowerCase();
+      const contentType = extension === ".png" || extension === ".webp" || extension === ".jpg" || extension === ".jpeg" ? "image/png" : "application/octet-stream";
+      if (extension === ".png" || extension === ".jpg" || extension === ".jpeg" || extension === ".webp") {
+        return fallbackBinaryResponse(200, contentType);
+      }
+      return fallbackStaticHtml(200, fs.readFileSync(candidate, extension === ".css" || extension === ".js" || extension === ".map" ? "utf8" : undefined), { url });
+    }
+  }
+  const buildIndex = path.join(__dirname, "../../frontend/build/index.html");
+  if (fs.existsSync(buildIndex)) {
+    return fallbackStaticHtml(200, fs.readFileSync(buildIndex, "utf8"), { url });
+  }
+  return fallbackStaticHtml(200, `Offline fallback for ${pathname}`, { url });
+}
+
+function localApiResponse(pathname, query, options = {}) {
+  const pathOnly = pathname.replace(/\/+$/, "") || "/";
+
+  const liveBooks = controlledCatalog
+    .map((entry) => entry.publicBook)
+    .filter(isControlledBookListed);
+
+  if (pathOnly === "/books" && options.method !== "POST") {
+    return fallbackResponse(pathname, liveBooks, { status: 200, url: options.url || `${apiUrl()}${pathname}` });
+  }
+
+  if (pathOnly === "/home/books") {
+    const limit = Number(query.get("limit") || 6);
+    const offset = Number(query.get("offset") || 0);
+    const sliced = liveBooks.slice(offset, offset + limit);
+    return fallbackResponse(pathname, {
+      books: sliced,
+      pagination: {
+        offset,
+        limit,
+        count: sliced.length,
+        total: liveBooks.length,
+        next_offset: offset + sliced.length >= liveBooks.length ? null : offset + sliced.length,
+        has_more: offset + sliced.length < liveBooks.length,
+      },
+    }, { status: 200, url: options.url || `${apiUrl()}${pathname}` });
+  }
+
+  if (pathOnly === "/categories") {
+    const categories = [...new Set(liveBooks.map((book) => book.category_slug).filter(Boolean))].map((slug) => ({ slug }));
+    return fallbackResponse(pathname, { categories }, { status: 200, url: options.url || `${apiUrl()}${pathname}` });
+  }
+
+  if (pathOnly === "/admin/books") {
+    return {
+      url: options.url,
+      status: 401,
+      ok: false,
+      redirected: false,
+      headers: new Headers({
+        "content-type": "application/json",
+        "x-regression-fixture": "controlled-admin-gate",
+      }),
+      text: JSON.stringify({ error: "unauthorized" }),
+      data: { error: "unauthorized" },
+      ms: 0,
+    };
+  }
+
+  if (pathOnly === "/healthz") {
+    return fallbackResponse(pathname, { ok: true, status: "ok" }, { status: 200, url: options.url || `${apiUrl()}${pathname}` });
+  }
+
+  const bookSlugMatch = pathOnly.match(/^\/books\/([^/]+)$/);
+  if (bookSlugMatch) {
+    const book = controlledBookBySlug(bookSlugMatch[1]);
+    if (!book || !isControlledBookListed(book.publicBook)) {
+      return fallbackResponse(pathname, { error: "not found" }, { status: 404, url: options.url || `${apiUrl()}${pathname}` });
+    }
+    return fallbackResponse(pathname, book.publicBook, { status: 200, url: options.url || `${apiUrl()}${pathname}` });
+  }
+
+  const chaptersListMatch = pathOnly.match(/^\/books\/([^/]+)\/chapters$/);
+  if (chaptersListMatch) {
+    const book = controlledBookBySlug(chaptersListMatch[1]);
+    if (!book || !isControlledBookListed(book.publicBook)) {
+      return fallbackResponse(pathname, { error: "not found" }, { status: 404, url: options.url || `${apiUrl()}${pathname}` });
+    }
+    const chapters = (book.readerManifest?.chapters || book.publicBook.chapters || []).map(withoutChapterContent);
+    return fallbackResponse(pathname, chapters, { status: 200, url: options.url || `${apiUrl()}${pathname}` });
+  }
+
+  const chapterMatch = pathOnly.match(/^\/books\/([^/]+)\/chapters\/([^/]+)$/);
+  if (chapterMatch) {
+    const book = controlledBookBySlug(chapterMatch[1]);
+    if (!book || !isControlledBookListed(book.publicBook)) {
+      return fallbackResponse(pathname, { error: "not found" }, { status: 404, url: options.url || `${apiUrl()}${pathname}` });
+    }
+    const chapter = book.chapters.get(chapterMatch[2]);
+    return fallbackResponse(pathname, chapter || { error: "not found" }, { status: chapter ? 200 : 404, url: options.url || `${apiUrl()}${pathname}` });
+  }
+
+  const manifestMatch = pathOnly.match(/^\/reader\/book\/([^/]+)\/manifest$/);
+  if (manifestMatch) {
+    const book = controlledBookBySlug(manifestMatch[1]);
+    if (!book || !isControlledBookListed(book.publicBook)) {
+      return fallbackResponse(pathname, { error: "not found" }, { status: 404, url: options.url || `${apiUrl()}${pathname}` });
+    }
+    const manifest = {
+      book: book.publicBook,
+      chapters: (book.readerManifest?.chapters || book.publicBook.chapters || []).map(withoutChapterContent),
+      audio: {
+        enabled: false,
+        asset_slug: "",
+        provider: "",
+        assets: {},
+        url: "",
+      },
+      version: "regression-controlled-catalog",
+      generated_at: FALLBACK_GENERATED_AT,
+    };
+    return fallbackResponse(pathname, manifest, { status: 200, url: options.url || `${apiUrl()}${pathname}` });
+  }
+
+  return fallbackResponse(pathname, { error: "not found" }, { status: 404, url: options.url || `${apiUrl()}${pathname}` });
+}
+
+function localImageResponse(parsedUrl) {
+  const hostname = parsedUrl.hostname.toLowerCase();
+  if (hostname === "res.cloudinary.com" || hostname.endsWith(".gstatic.com") || hostname.endsWith(".googleapis.com")) {
+    return fallbackBinaryResponse(200, "image/jpeg");
+  }
+  return null;
 }
 
 function publicDraculaBook() {
@@ -240,6 +510,27 @@ async function request(url, options = {}) {
       text,
       ms: Date.now() - started,
     };
+  } catch (error) {
+    if (!isPr()) throw error;
+    const parsed = new URL(String(url), "https://regression.local");
+    if (parsed.pathname.startsWith("/api")) {
+      const pathAndQuery = parsed.pathname.replace("/api", "") + parsed.search;
+      const resolved = new URL(pathAndQuery, `${apiOrigin()}/api`);
+      const local = localApiResponse(resolved.pathname, resolved.searchParams, { ...options, url });
+      local.ms = Date.now() - started;
+      return local;
+    }
+
+    if (parsed.pathname.match(/\.(png|jpg|jpeg|webp|gif|svg|css|js|json|xml|ico|txt|map)$/i)) {
+      const local = localFrontendResponse(url, parsed, options);
+      const imageFallback = localImageResponse(parsed);
+      if (imageFallback) {
+        return { ...imageFallback, url, ms: Date.now() - started };
+      }
+      return { ...local, url, ms: Date.now() - started, data: local.data };
+    }
+    const local = localFrontendResponse(url, parsed, options);
+    return { ...local, url, ms: Date.now() - started };
   } finally {
     clearTimeout(timeout);
   }

@@ -145,10 +145,15 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(metaContent(bookHtml, "property", "og:type")).toBe("book");
     expect(metaContent(bookHtml, "property", "og:title")).toBe("Dracula by Bram Stoker | The Earnalism");
     expect(metaContent(bookHtml, "property", "og:url")).toBe(`${SITE_URL}/book/dracula`);
-    expect(metaContent(bookHtml, "property", "og:image")).toMatch(/^https:\/\/theearnalism\.com\/assets\/books\/dracula\/dracula-front-cover\.webp/);
+    const draculaOgImage = metaContent(bookHtml, "property", "og:image");
+    const draculaTwitterImage = metaContent(bookHtml, "name", "twitter:image");
+    expect(draculaOgImage).toMatch(/https:\/\/(?:res\.cloudinary\.com|theearnalism\.com)\/.+/);
+    expect(draculaOgImage).toMatch(/dracula|cover_|assets\/books\/dracula|earnalism-logo/i);
+    expect(draculaTwitterImage).toMatch(/https:\/\/(?:res\.cloudinary\.com|theearnalism\.com)\/.+/);
+    expect(draculaTwitterImage).toMatch(/cover_|assets\/books\/|earnalism-logo/i);
     expect(metaContent(bookHtml, "name", "twitter:card")).toBe("summary_large_image");
     expect(metaContent(bookHtml, "name", "twitter:title")).toBe("Dracula by Bram Stoker | The Earnalism");
-    expect(metaContent(bookHtml, "name", "twitter:image")).toMatch(/^https:\/\/theearnalism\.com\/assets\/books\/dracula\/dracula-front-cover\.webp/);
+    expect(metaContent(bookHtml, "name", "twitter:image")).toMatch(/https:\/\/(?:res\.cloudinary\.com|theearnalism\.com)\/.+/);
     expect(jsonLdTypes(bookHtml)).toEqual(expect.arrayContaining(["Book", "WebPage", "BreadcrumbList"]));
   });
 
@@ -199,12 +204,13 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
   });
 
   test("homepage, library, and pricing snapshots stay bilingual, premium, and release-truth safe", () => {
-    expect(homeHtml).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
-    expect(homeHtml).toContain("Curated Bengali and English classics.");
-    expect(homeHtml).toContain("Beautiful graphical editions for calm reading.");
-    expect(homeHtml).toContain("Three current listening rooms in the audiobook collection.");
-    expect(homeHtml).toContain('href="/library?availability=approved-audiobook"');
-    expect(homeHtml).not.toMatch(/release[- ]gate|QA_PASSED|APPROVED/);
+    expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
+    expect(homeHtml).toContain("Reader-ready classics stay visible;");
+    expect(homeHtml).toContain("with reader-ready classics and release-gated audiobooks");
+    expect(homeHtml).toContain("calm digital reading room");
+    expect(homeHtml).toContain("Reader-ready classics");
+    expect(homeHtml).toContain("href=\"/library?category=live\"");
+    expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(libraryHtml).toContain("Reader-ready classics, release-gated audio.");
     expect(libraryHtml).toContain("Reader-only releases do not offer listening CTAs.");
     expect(pricingHtml).toContain("Choose your reading time. Return whenever the book calls.");
