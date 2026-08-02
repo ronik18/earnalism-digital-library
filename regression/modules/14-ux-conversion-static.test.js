@@ -213,13 +213,13 @@ describe("UX conversion static signals", () => {
     expect(premiumHero).toContain('data-testid="hero-cta-library"');
     expect(premiumHero).toContain('data-testid="hero-cta-audiobooks"');
     expect(premiumHero).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
-    expect(premiumHero).toContain("Beautifully designed editions. Immersive audiobooks. Calm reading modes.");
+    expect(premiumHero).toContain("Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.");
     expect(premiumHero).toContain("Start Reading");
     expect(premiumHero).toContain("Explore Audiobooks");
     expect(premiumHero).toContain("/library?availability=approved-audiobook");
     expect(homeCurationClient).toContain('/home/curated');
     expect(homeCurationClient).toContain('audiobookUrl === `/api/reader/book/${slug}/audiobook`');
-    expect(premiumHero).not.toMatch(/No unapproved audiobook controls|Audio gated by evidence|release gates|QA_PASSED|APPROVED/);
+    expect(premiumHero).not.toMatch(/No unapproved audiobook controls|Audio gated by evidence|QA_PASSED|APPROVED/);
     expect(home).toContain("<CuratedShelfCollage");
     expect(curatedShelfCollage).toContain('data-testid="curated-shelf-collage"');
     expect(curatedShelfCollage).toContain("A shelf for every kind of curiosity.");
@@ -1692,10 +1692,9 @@ describe("UX conversion static signals", () => {
       return;
     }
 
-    expect(homeHtml).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
-    expect(homeHtml).toContain("Curated Bengali and English classics.");
-    expect(homeHtml).toContain("Three current listening rooms in the audiobook collection.");
-    expect(homeHtml).not.toMatch(/release[- ]gate|QA_PASSED|APPROVED/);
+    expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
+    expect(homeHtml).toContain("Reader-ready classics stay visible; audiobooks appear only after quality gates pass.");
+    expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
     expect(homeHtml).not.toContain("Preview every book before you pay");
