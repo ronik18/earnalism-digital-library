@@ -32,6 +32,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlparse, urlunparse
 from urllib.request import Request, urlopen
 
+from backend.publication_workflow_adapter import canonical_update
+
 try:
     from publication_safety_mode import (
         DRAFT_EDITORIAL_REVIEW_FLAGS,
@@ -1446,6 +1448,7 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
             "Draft mode; human review required before publishing.",
         ],
     }
+    upload_object["publication_workflow"] = canonical_update(upload_object)
     upload_object = apply_draft_editorial_review_flags(upload_object)
     if len(upload_object["chapters"]) == 1 and upload_object["chapters"][0].get("title") == "Full Text":
         upload_object["chapters"][0]["title"] = metadata.get("title") or "Full Text"

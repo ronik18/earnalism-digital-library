@@ -8,6 +8,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from backend.publication_workflow_adapter import canonical_update
+
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT_ROOT = ROOT / "content" / "books"
@@ -98,6 +100,10 @@ def apply_artifact_flags(slug: str, promote: bool) -> None:
     payload["generate_audiobook"] = False
     payload["audiobook_assets"] = {}
     payload["audiobook"] = {}
+    workflow = canonical_update(payload)
+    workflow["publication"]["reader_exposed"] = bool(promote)
+    workflow["publication"]["audio_exposed"] = False
+    payload["publication_workflow"] = workflow
     payload["updated_at"] = now()
     write_json(public_book_path, payload)
 

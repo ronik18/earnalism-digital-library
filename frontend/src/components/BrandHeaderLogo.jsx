@@ -68,6 +68,34 @@ function TricolorLiteraryBadge() {
   );
 }
 
+function IndiaFlagMark() {
+  return (
+    <span
+      className="brand-header-logo__india-flag"
+      data-testid="brand-header-logo-india-flag"
+      role="img"
+      aria-label="Made in India"
+    >
+      <svg viewBox="0 0 30 20" focusable="false" aria-hidden="true">
+        <rect x="0" y="0" width="30" height="6.6667" rx="1.2" fill="#FF9933" />
+        <rect x="0" y="6.6667" width="30" height="6.6667" fill="#FFFFFF" />
+        <rect x="0" y="13.3333" width="30" height="6.6667" rx="1.2" fill="#138808" />
+        <circle cx="15" cy="10" r="2.05" fill="none" stroke="#000080" strokeWidth="0.42" />
+        {Array.from({ length: 12 }).map((_, index) => (
+          <path
+            key={index}
+            d="M15 10 L15 8.06"
+            stroke="#000080"
+            strokeLinecap="round"
+            strokeWidth="0.2"
+            transform={`rotate(${index * 30} 15 10)`}
+          />
+        ))}
+      </svg>
+    </span>
+  );
+}
+
 export default function BrandHeaderLogo({
   badgeVariant = BRAND_HEADER_BADGE_VARIANTS.tricolor,
   className = "",
@@ -96,6 +124,7 @@ export default function BrandHeaderLogo({
           decoding="async"
           className="brand-header-logo__custom"
         />
+        <IndiaFlagMark />
         {safeBadgeVariant === BRAND_HEADER_BADGE_VARIANTS.exactFlag && <ExactFlagBadge />}
         {safeBadgeVariant === BRAND_HEADER_BADGE_VARIANTS.tricolor && <TricolorLiteraryBadge />}
       </span>
@@ -133,6 +162,7 @@ export default function BrandHeaderLogo({
           A REO ENTERPRISE VENTURE
         </span>
       </span>
+      <IndiaFlagMark />
       {safeBadgeVariant === BRAND_HEADER_BADGE_VARIANTS.exactFlag && <ExactFlagBadge />}
       {safeBadgeVariant === BRAND_HEADER_BADGE_VARIANTS.tricolor && <TricolorLiteraryBadge />}
     </span>

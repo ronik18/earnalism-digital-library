@@ -39,6 +39,10 @@ from contextlib import asynccontextmanager
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorGridFSBucket
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from pymongo.errors import AutoReconnect, DuplicateKeyError, ServerSelectionTimeoutError
+try:
+    from publication_workflow_adapter import canonical_update
+except ImportError:  # pragma: no cover
+    from backend.publication_workflow_adapter import canonical_update
 
 try:
     from rights_engine import RIGHTS_REPORT_FILENAMES, rights_publish_blockers, rights_report_csv, rights_report_rows
@@ -5743,6 +5747,7 @@ async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
     book = Book(id=book_id, slug=slug, **data)
     doc = book.model_dump()
     doc["rights_metadata"] = rights_metadata
+    doc["publication_workflow"] = canonical_update(doc)
     _assert_publishable(doc)
     await db.books.insert_one(doc)
     return doc
@@ -5775,6 +5780,7 @@ async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)
     _assert_publishable(candidate)
     if rights_metadata:
         update["rights_metadata"] = rights_metadata
+    update["publication_workflow"] = canonical_update(candidate)
     await db.books.update_one({"slug": slug}, {"$set": update})
     refreshed = await db.books.find_one({"slug": new_slug}, {"_id": 0})
     return refreshed
@@ -5809,6 +5815,7 @@ async def admin_update_book_audiobook(slug: str, payload: BookAudiobookIn, _=Dep
         "audiobook": audiobook_doc,
         "audiobook_assets_updated_at": now_iso(),
     }
+    update["publication_workflow"] = canonical_update({**existing, **update})
     await db.books.update_one({"slug": slug}, {"$set": update})
     refreshed = await db.books.find_one({"slug": slug}, {"_id": 0})
     return refreshed
@@ -5839,6 +5846,7 @@ async def admin_update_home_curation(slug: str, payload: HomeCurationIn, _=Depen
     if not update:
         raise HTTPException(status_code=400, detail="At least one curation field is required")
     await db.books.update_one({"slug": slug}, {"$set": update})
+    await _sync_canonical_book_workflow(slug)
     global _public_cache_generation
     _public_cache_generation += 1
     return {"slug": slug, "updated": sorted(update), "reader_audio_release_truth_unchanged": True}
@@ -6274,6 +6282,17 @@ async def _load_book_or_404(slug: str) -> dict:
         raise HTTPException(status_code=404, detail="Book not found")
     return doc
 
+
+async def _sync_canonical_book_workflow(slug: str) -> None:
+    """Rebuild canonical publication truth after a book document mutation."""
+    current = await db.books.find_one({"slug": slug}, {"_id": 0})
+    if not current:
+        return
+    await db.books.update_one(
+        {"slug": slug},
+        {"$set": {"publication_workflow": canonical_update(current)}},
+    )
+
 @api.post("/admin/books/{slug}/chapters", response_model=Book)
 async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_admin)):
     book = await _load_book_or_404(slug)
@@ -6294,6 +6313,7 @@ async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_adm
         updated_at=now_iso(),
     ).model_dump()
     await db.books.update_one({"slug": slug}, {"$push": {"chapters": chapter}})
+    await _sync_canonical_book_workflow(slug)
     return await _load_book_or_404(slug)
 
 @api.put("/admin/books/{slug}/chapters/reorder", response_model=Book)
@@ -6308,6 +6328,7 @@ async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends
         c["order"] = i
         reordered.append(c)
     await db.books.update_one({"slug": slug}, {"$set": {"chapters": reordered}})
+    await _sync_canonical_book_workflow(slug)
     return await _load_book_or_404(slug)
 
 @api.put("/admin/books/{slug}/chapters/{cid}", response_model=Book)
@@ -6332,6 +6353,7 @@ async def admin_update_chapter(slug: str, cid: str, payload: ChapterIn, _=Depend
     )
     if res.matched_count == 0:
         raise HTTPException(status_code=404, detail="Chapter not found")
+    await _sync_canonical_book_workflow(slug)
     return await _load_book_or_404(slug)
 
 @api.delete("/admin/books/{slug}/chapters/{cid}", response_model=Book)
@@ -6340,6 +6362,7 @@ async def admin_delete_chapter(slug: str, cid: str, _=Depends(require_admin)):
     res = await db.books.update_one({"slug": slug}, {"$pull": {"chapters": {"id": cid}}})
     if res.modified_count == 0:
         raise HTTPException(status_code=404, detail="Chapter not found")
+    await _sync_canonical_book_workflow(slug)
     return await _load_book_or_404(slug)
 
 
@@ -6988,6 +7011,7 @@ async def admin_upload_chapter_file(
                 c["updated_at"] = now_iso()
             new_chapters.append(c)
         await db.books.update_one({"slug": slug}, {"$set": {"chapters": new_chapters}})
+        await _sync_canonical_book_workflow(slug)
         return {
             "success": True,
             "processing_status": "ready",

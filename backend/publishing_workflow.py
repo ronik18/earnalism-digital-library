@@ -7,6 +7,8 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any
 
+from backend.publication_workflow_schema import normalize_publication_workflow, validate_publication_workflow
+
 
 PUBLISHING_WORKFLOW_VERSION = "earnalism-publishing-workflow-v1"
 
@@ -95,35 +97,36 @@ class DryRunPublicationPlan:
 
 
 def workflow_signals_from_book(book: dict[str, Any]) -> WorkflowSignals:
-    rights = book.get("rights_metadata") if isinstance(book.get("rights_metadata"), dict) else {}
-    workflow = book.get("publishing_workflow") if isinstance(book.get("publishing_workflow"), dict) else {}
-    demand = book.get("demand") if isinstance(book.get("demand"), dict) else {}
-    qa = book.get("qa") if isinstance(book.get("qa"), dict) else {}
-    cost = book.get("cost") if isinstance(book.get("cost"), dict) else {}
+    workflow = book.get("publication_workflow") if isinstance(book.get("publication_workflow"), dict) else {}
+    if validate_publication_workflow(workflow):
+        workflow = {}
+    rights = workflow.get("rights", {})
+    demand = workflow.get("demand", {})
+    qa = workflow.get("qa", {})
+    cost = workflow.get("cost", {})
+    publication = workflow.get("publication", {})
     return WorkflowSignals(
-        slug=text(book.get("slug") or rights.get("work_slug") or workflow.get("slug")),
-        title=text(book.get("title") or rights.get("work_title") or workflow.get("title")),
-        rights_tier=normalize_tier(rights.get("rights_tier") or book.get("rights_tier")),
-        verification_status=normalize_status(rights.get("verification_status") or book.get("verification_status")),
-        blocked_reason=text(rights.get("blocked_reason") or book.get("blocked_reason")),
-        publication_region=text(rights.get("publication_region") or book.get("publication_region") or "global").lower(),
-        demand_score=float_or_zero(demand.get("demand_score") or book.get("demand_score")),
-        action_status=normalize_status(demand.get("action_status") or book.get("action_status")),
-        ingestion_status=normalize_status(book.get("ingestion_status") or workflow.get("ingestion_status")),
-        edition_generation_status=normalize_status(
-            book.get("edition_generation_status") or workflow.get("edition_generation_status")
-        ),
-        visual_status=normalize_status(book.get("visual_status") or workflow.get("visual_status")),
-        audio_status=normalize_status(book.get("audio_status") or workflow.get("audio_status")),
-        qa_status=normalize_status(qa.get("qa_status") or book.get("qa_status")),
-        qa_warnings=list(qa.get("warnings") or book.get("qa_warnings") or []),
-        cost_used=float_or_zero(cost.get("used") or book.get("cost_used")),
-        cost_budget=float_or_zero(cost.get("budget") or book.get("cost_budget")),
-        is_published=bool(book.get("is_published")),
-        paused=bool(workflow.get("paused") or book.get("paused")),
-        quarantined=bool(workflow.get("quarantined") or book.get("quarantined")),
-        archived=bool(workflow.get("archived") or book.get("archived")),
-        current_state=normalize_status(workflow.get("state") or book.get("workflow_state")),
+        slug=text(book.get("slug") or rights.get("work_slug")),
+        title=text(book.get("title") or rights.get("work_title")),
+        rights_tier=normalize_tier(rights.get("tier")),
+        verification_status=normalize_status(rights.get("verification_status")),
+        blocked_reason=text(rights.get("blocked_reason")),
+        publication_region=text(rights.get("publication_region") or "global").lower(),
+        demand_score=float_or_zero(demand.get("score")),
+        action_status=normalize_status(demand.get("action_status")),
+        ingestion_status=normalize_status(workflow.get("ingestion", {}).get("status")),
+        edition_generation_status=normalize_status(workflow.get("edition", {}).get("status")),
+        visual_status=normalize_status(workflow.get("visual", {}).get("status")),
+        audio_status=normalize_status(workflow.get("audio", {}).get("status")),
+        qa_status=normalize_status(qa.get("status")),
+        qa_warnings=list(qa.get("warnings") or []),
+        cost_used=float_or_zero(cost.get("used")),
+        cost_budget=float_or_zero(cost.get("budget")),
+        is_published=publication.get("state") == "PUBLISHED",
+        paused=bool(workflow.get("publication", {}).get("paused")),
+        quarantined=bool(workflow.get("publication", {}).get("quarantined")),
+        archived=bool(workflow.get("publication", {}).get("archived")),
+        current_state=normalize_status(publication.get("state")),
     )
 
 

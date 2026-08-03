@@ -140,7 +140,7 @@ export default function BookDetail() {
   }, [book, loading]);
 
   const bookLanguage = publicBook && BENGALI_RE.test(`${publicBook.title || ""} ${publicBook.description || ""} ${publicBook.short_description || ""}`) ? "bn" : "en";
-  const rights = publicBook?.rights_metadata || publicBook?.rights || {};
+  const rights = publicBook?.publication_workflow?.rights || {};
   const bookSchemaAllowed = publicBook?.public_json_ld_enabled === true || publicBook?.slug === LIVE_APPROVED_SLUG || (
     rights?.rights_tier === "A"
     && rights?.verification_status === "approved"

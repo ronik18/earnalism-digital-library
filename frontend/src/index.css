@@ -3007,7 +3007,7 @@ textarea.input-elegant {
   color: var(--brand-burgundy-deep);
   font-family: "Bradley Hand", "Segoe Print", cursive;
   font-size: 1.22rem;
-  font-weight: 900;
+  font-weight: 950;
   letter-spacing: -0.09em;
   line-height: 1;
   text-shadow: 0 1px 0 rgba(251, 246, 236, 0.88);
@@ -3016,7 +3016,7 @@ textarea.input-elegant {
 .brand-header-logo__caret {
   position: absolute;
   left: 0.04rem;
-  bottom: -0.02rem;
+  bottom: -0.08rem;
   z-index: 1;
   color: var(--brand-gold-muted);
   font-family: Georgia, serif;
@@ -3024,6 +3024,26 @@ textarea.input-elegant {
   font-weight: 800;
   line-height: 1;
   transform: scaleX(0.82);
+  margin-right: 0.14rem;
+  transform: translateY(0.08rem) scaleX(0.82);
+}
+.brand-header-logo__india-flag {
+  display: inline-flex;
+  width: 1.28rem;
+  height: 0.86rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(181, 138, 69, 0.38);
+  border-radius: 0.17rem;
+  background: #fbf6ec;
+  box-shadow: 0 3px 7px rgba(36, 23, 19, 0.14);
+}
+.brand-header-logo__india-flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .brand-header-logo__tagline {
   max-width: 13.8rem;
@@ -3092,6 +3112,10 @@ textarea.input-elegant {
   }
   .brand-header-logo__caret {
     font-size: 0.74rem;
+  }
+  .brand-header-logo__india-flag {
+    width: 1.08rem;
+    height: 0.73rem;
   }
   .brand-header-logo__tagline {
     display: none;

@@ -18,52 +18,51 @@ function normalizeStatus(value) {
   return String(value || "").trim().toUpperCase().replace(/[-\s]+/g, "_");
 }
 
-function rightsMetadata(book) {
-  return book?.rights_metadata && typeof book.rights_metadata === "object" ? book.rights_metadata : {};
-}
-
 export function derivePublishingWorkflow(book = {}) {
-  const report = book.publishing_workflow_report || book.workflow_report;
-  if (report && typeof report === "object") {
-    return workflowFromReport(report);
-  }
-
-  const rights = rightsMetadata(book);
-  const workflow = book.publishing_workflow && typeof book.publishing_workflow === "object" ? book.publishing_workflow : {};
-  const demand = book.demand && typeof book.demand === "object" ? book.demand : {};
-  const qa = book.qa && typeof book.qa === "object" ? book.qa : {};
-  const cost = book.cost && typeof book.cost === "object" ? book.cost : {};
-
-  const rightsTier = normalizeStatus(rights.rights_tier || book.rights_tier);
-  const verificationStatus = normalizeStatus(rights.verification_status || book.verification_status);
-  const qaStatus = normalizeStatus(qa.qa_status || book.qa_status);
-  const actionStatus = normalizeStatus(demand.action_status || book.action_status);
-  const ingestionStatus = normalizeStatus(book.ingestion_status || workflow.ingestion_status);
-  const editionStatus = normalizeStatus(book.edition_generation_status || workflow.edition_generation_status);
-  const visualStatus = normalizeStatus(book.visual_status || workflow.visual_status);
-  const audioStatus = normalizeStatus(book.audio_status || workflow.audio_status);
-  const costUsed = Number(cost.used || book.cost_used || 0);
-  const costBudget = Number(cost.budget || book.cost_budget || 0);
+  const canonical = book.publication_workflow && typeof book.publication_workflow === "object"
+    ? book.publication_workflow
+    : {};
+  const canonicalRights = canonical.rights || {};
+  const canonicalDemand = canonical.demand || {};
+  const canonicalIngestion = canonical.ingestion || {};
+  const canonicalEdition = canonical.edition || {};
+  const canonicalVisual = canonical.visual || {};
+  const canonicalAudio = canonical.audio || {};
+  const canonicalQa = canonical.qa || {};
+  const canonicalCost = canonical.cost || {};
+  const canonicalPublication = canonical.publication || {};
+  const rightsTier = normalizeStatus(canonicalRights.tier);
+  const verificationStatus = normalizeStatus(canonicalRights.verification_status);
+  const qaStatus = normalizeStatus(canonicalQa.status);
+  const actionStatus = normalizeStatus(canonicalDemand.action_status);
+  const ingestionStatus = normalizeStatus(canonicalIngestion.status);
+  const editionStatus = normalizeStatus(canonicalEdition.status);
+  const visualStatus = normalizeStatus(canonicalVisual.status);
+  const audioStatus = normalizeStatus(canonicalAudio.status);
+  const costUsed = Number(canonicalCost.used ?? 0);
+  const costBudget = Number(canonicalCost.budget ?? 0);
   const blockers = [];
 
   if (rightsTier === "C") blockers.push("BLOCKED_RIGHTS: Tier C cannot publish anywhere.");
   if (rightsTier === "B") blockers.push("REGION_GATED_REVIEW: Tier B is not eligible for normal global publication.");
   if (!["A", "B", "C"].includes(rightsTier)) blockers.push("Rights approval is required.");
   if (rightsTier === "A" && verificationStatus !== "APPROVED") blockers.push("Rights verification must be approved.");
-  if (rights.blocked_reason || book.blocked_reason) blockers.push("Rights blocked reason must be cleared.");
+  if (canonicalRights.blocked_reason) blockers.push("Rights blocked reason must be cleared.");
   if (actionStatus !== "READY_FOR_GENERATION") blockers.push("BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.");
   if (!ALLOWED_INGESTION_STATUSES.has(ingestionStatus)) blockers.push("BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.");
   if (!ALLOWED_GENERATION_STATUSES.has(editionStatus)) blockers.push("BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.");
   if (!ALLOWED_GENERATION_STATUSES.has(visualStatus)) blockers.push("BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.");
   if (!ALLOWED_AUDIO_STATUSES.has(audioStatus)) blockers.push("BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.");
-  if (qaStatus !== "QA_PASSED") blockers.push("QA pass is required.");
+  if (qaStatus !== "QA_PASSED" && canonicalPublication.state !== "PUBLISHED") blockers.push("QA pass is required.");
   if (costBudget > 0 && costUsed > costBudget) blockers.push("BLOCKED_COST: Cost budget is exceeded.");
+  const isPublished = canonicalPublication.state === "PUBLISHED";
+  if (isPublished) blockers.splice(0, blockers.length);
 
   let state = "DISCOVERED";
-  if (workflow.archived || book.archived) state = "ARCHIVED";
-  else if (workflow.quarantined || book.quarantined || rightsTier === "C" || rights.blocked_reason) state = "QUARANTINED";
-  else if (workflow.paused || book.paused) state = "PAUSED";
-  else if (book.is_published) state = "PUBLISHED";
+  if (canonicalPublication.archived) state = "ARCHIVED";
+  else if (canonicalPublication.quarantined || rightsTier === "C" || canonicalRights.blocked_reason) state = "QUARANTINED";
+  else if (canonicalPublication.paused) state = "PAUSED";
+  else if (isPublished) state = "PUBLISHED";
   else if (blockers.length && blockers.some((item) => /rights|tier/i.test(item))) state = "RIGHTS_PENDING";
   else if (blockers.length && blockers.some((item) => /priority/i.test(item))) state = "DEMAND_SCORED";
   else if (blockers.length && blockers.some((item) => /ingestion/i.test(item))) state = ingestionStatus === "INGESTED" ? "INGESTED" : "RIGHTS_APPROVED";
@@ -94,12 +93,12 @@ export function derivePublishingWorkflow(book = {}) {
     blockers,
     sections: {
       "rights status": `${rightsTier || "UNKNOWN"} ${verificationStatus || ""}`.trim(),
-      "demand score": demand.demand_score || book.demand_score || "not scored",
+      "demand score": canonicalDemand.score || "not scored",
       "ingestion status": ingestionStatus || "missing",
       "edition generation status": editionStatus || "missing",
       "visual status": visualStatus || "missing",
       "audio status": audioStatus || "missing",
-      "QA warnings": (qa.warnings || book.qa_warnings || []).length,
+      "QA warnings": (canonicalQa.warnings || []).length,
       "cost used": costBudget ? `${costUsed}/${costBudget}` : costUsed,
       "publish readiness": publishReadiness,
     },

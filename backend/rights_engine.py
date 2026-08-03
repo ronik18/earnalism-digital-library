@@ -116,7 +116,10 @@ def _source_has_strong_confidence(metadata: dict[str, Any]) -> bool:
 
 
 def rights_metadata_for_book(book: dict[str, Any]) -> dict[str, Any]:
-    raw = book.get("rights_metadata") if isinstance(book.get("rights_metadata"), dict) else {}
+    workflow = book.get("publication_workflow") if isinstance(book.get("publication_workflow"), dict) else {}
+    canonical = workflow.get("rights") if isinstance(workflow.get("rights"), dict) else {}
+    legacy = book.get("rights_metadata") if isinstance(book.get("rights_metadata"), dict) else {}
+    raw = {**legacy, **canonical}
     metadata = {field: raw.get(field, "") for field in RIGHTS_METADATA_FIELDS}
     metadata["work_title"] = _text(metadata.get("work_title") or book.get("title"))
     metadata["work_slug"] = _text(metadata.get("work_slug") or book.get("slug"))

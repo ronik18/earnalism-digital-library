@@ -200,11 +200,11 @@ function normalizedSlug(book = {}) {
 }
 
 function normalizedRightsTier(book = {}) {
-  return String(book?.rights_tier || book?.rights_metadata?.rights_tier || "").trim().toUpperCase();
+  return String(book?.publication_workflow?.rights?.tier || "").trim().toUpperCase();
 }
 
 function normalizedVerificationStatus(book = {}) {
-  return String(book?.verification_status || book?.rights_metadata?.verification_status || "").trim().toLowerCase();
+  return String(book?.publication_workflow?.rights?.verification_status || "").trim().toLowerCase();
 }
 
 export function isLiveApprovedBook(book = {}) {
@@ -217,7 +217,7 @@ export function isLiveApprovedBook(book = {}) {
   if (slug !== LIVE_APPROVED_SLUG) {
     const publicationStatus = String(book?.publication_status || book?.launch_status || book?.publicationStatus || "").trim().toUpperCase();
     const readerEnabled = book?.reader_enabled === true || book?.allowPublicReading === true;
-    const published = book?.is_published !== false && book?.isPublic !== false && book?.isLive !== false;
+    const published = book?.publication_status === "LIVE_APPROVED";
     const noCommerce = book?.allowCheckout !== true && book?.allowPayment !== true;
     const noAudio = book?.audio_enabled !== true && book?.audiobook_enabled !== true && book?.generate_audiobook !== true;
     return publicationStatus === "LIVE_APPROVED" && readerEnabled && published && noCommerce && noAudio;

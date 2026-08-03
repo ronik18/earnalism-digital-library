@@ -25,6 +25,7 @@ describe("BrandHeaderLogo", () => {
     expect(componentSource).toContain("brand-header-logo__caret");
     expect(componentSource).toContain("Where Learning Becomes Earning");
     expect(componentSource).toContain("A REO ENTERPRISE VENTURE");
+    expect(componentSource).toContain('data-testid="brand-header-logo-india-flag"');
   });
 
   test("keeps all three requested badge variants available", () => {

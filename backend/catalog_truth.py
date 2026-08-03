@@ -733,37 +733,60 @@ def evidence_for_book(book: dict[str, Any]) -> dict[str, Any]:
     return dracula_approval_evidence() if normalize_slug(book.get("slug")) == LIVE_APPROVED_SLUG else {}
 
 
+def canonical_workflow(book: dict[str, Any]) -> dict[str, Any]:
+    value = book.get("publication_workflow")
+    return value if isinstance(value, dict) and value.get("schema_name") == "earnalism-publication-workflow" and value.get("schema_version") == 2 else {}
+
+
 def rights_tier(book: dict[str, Any]) -> str:
+    workflow = canonical_workflow(book)
+    if workflow:
+        return normalize_upper(nested_dict(workflow, "rights").get("tier"))
     return normalize_upper(first_text(book, "rights_tier", fallback_evidence=evidence_for_book(book)))
 
 
 def verification_status(book: dict[str, Any]) -> str:
+    workflow = canonical_workflow(book)
+    if workflow:
+        return normalize_text(nested_dict(workflow, "rights").get("verification_status")).lower()
     return normalize_text(first_text(book, "verification_status", fallback_evidence=evidence_for_book(book))).lower()
 
 
 def qa_status(book: dict[str, Any]) -> str:
+    workflow = canonical_workflow(book)
+    if workflow:
+        return normalize_upper(nested_dict(workflow, "qa").get("status"))
     return normalize_upper(first_text(book, "qa_status", "source_qa_status", fallback_evidence=evidence_for_book(book)))
 
 
 def blocked_reason(book: dict[str, Any]) -> str:
+    workflow = canonical_workflow(book)
+    if workflow:
+        return normalize_text(nested_dict(workflow, "rights").get("blocked_reason"))
     return first_text(book, "blocked_reason", fallback_evidence=evidence_for_book(book))
 
 
 def publication_status(book: dict[str, Any]) -> str:
+    workflow = canonical_workflow(book)
+    if workflow:
+        return normalize_upper(nested_dict(workflow, "publication").get("state"))
     return normalize_upper(first_text(book, "publication_status", "launch_status", fallback_evidence=evidence_for_book(book)))
 
 
 def approved_to_publish(book: dict[str, Any]) -> bool:
+    workflow = canonical_workflow(book)
+    if workflow:
+        publication = nested_dict(workflow, "publication")
+        return (
+            publication.get("reader_exposed") is True
+            and publication_status(book) in {"LIVE_APPROVED", "APPROVED_TO_PUBLISH", "PUBLISHED_CORE_READING_ONLY", "PUBLISHED"}
+        )
     evidence = evidence_for_book(book)
     explicit = book.get("approved_to_publish")
     if isinstance(explicit, bool):
         return explicit
     status = publication_status(book)
-    return bool(
-        explicit
-        or evidence.get("approved_to_publish_artifact")
-        or status in {"LIVE_APPROVED", "APPROVED_TO_PUBLISH", "PUBLISHED_CORE_READING_ONLY"}
-    )
+    return bool(explicit or evidence.get("approved_to_publish_artifact") or status in {"LIVE_APPROVED", "APPROVED_TO_PUBLISH", "PUBLISHED_CORE_READING_ONLY"})
 
 
 def traceability_hashes(book: dict[str, Any]) -> dict[str, str]:
@@ -786,7 +809,11 @@ def source_metadata_present(book: dict[str, Any]) -> bool:
 def is_live_approved_book(book: dict[str, Any]) -> bool:
     if normalize_slug(book.get("slug")) not in CONTROLLED_LIVE_BOOK_SLUGS:
         return False
-    if book.get("is_published") is not True:
+    workflow = canonical_workflow(book)
+    if workflow:
+        if nested_dict(workflow, "publication").get("reader_exposed") is not True:
+            return False
+    elif book.get("is_published") is not True:
         return False
     if rights_tier(book) != "A":
         return False
@@ -953,7 +980,7 @@ def live_approved_mongo_query(extra: dict[str, Any] | None = None) -> dict[str, 
 
     query: dict[str, Any] = {
         "slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)},
-        "is_published": True,
+        "publication_workflow.publication.reader_exposed": True,
     }
     if extra:
         for key, value in extra.items():

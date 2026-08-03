@@ -12,7 +12,7 @@
 }
 
 .premium-site-header .brand-header-logo {
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   height: min(5.9rem, calc(var(--site-header-height) - 1.35rem));
   margin-top: 2px;
   max-width: 23.8rem;
@@ -51,11 +51,18 @@
   left: -0.22rem;
   top: -0.3rem;
   font-size: 1.52rem;
+  font-weight: 950;
 }
 .premium-site-header .brand-header-logo__caret {
   left: 0.08rem;
-  bottom: -0.1rem;
+  bottom: -0.16rem;
   font-size: 0.96rem;
+  margin-right: 0.16rem;
+  transform: translateY(0.08rem) scaleX(0.82);
+}
+.premium-site-header .brand-header-logo__india-flag {
+  width: 1.22rem;
+  height: 0.82rem;
 }
 .premium-site-header .brand-header-logo__tagline {
   max-width: 16rem;
@@ -281,7 +288,9 @@
   .premium-site-header .brand-header-logo--custom { width: min(15rem, calc(100vw - 5.6rem)); height: 2.85rem; }
   .premium-site-header .brand-header-logo__base { font-size: 1.22rem; }
   .premium-site-header .brand-header-logo__inserted-l { font-size: 1.18rem; }
+  .premium-site-header .brand-header-logo__inserted-l { font-weight: 950; }
   .premium-site-header .brand-header-logo__tagline { display: block; max-width: 11rem; font-size: 0.49rem; }
   .premium-site-header .brand-header-logo__venture { display: none; }
   .premium-site-header .brand-header-logo__badge { width: 2rem; height: 2rem; }
+  .premium-site-header .brand-header-logo__india-flag { width: 1.08rem; height: 0.73rem; }
 }

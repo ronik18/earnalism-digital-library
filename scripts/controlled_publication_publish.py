@@ -25,6 +25,7 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 from pymongo import MongoClient
+from backend.publication_workflow_adapter import canonical_update
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -584,6 +585,7 @@ def publish(args: argparse.Namespace) -> dict[str, Any]:
         return payload
 
     update = controlled_publication_update(context.source_evidence, now=payload["generated_at"])
+    update["publication_workflow"] = canonical_update({**before, **update})
     payload["rollback_plan"] = rollback_plan(payload["before_state"])
     if args.commit:
         result = db.books.update_one({"slug": ALLOWED_SLUG}, {"$set": update})

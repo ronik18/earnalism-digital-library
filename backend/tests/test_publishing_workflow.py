@@ -14,6 +14,7 @@ from backend.publishing_workflow import (
     workflow_report_json,
     workflow_signals_from_book,
 )
+from backend.publication_workflow_schema import normalize_publication_workflow
 from scripts.publishing_workflow import write_reports
 
 
@@ -40,6 +41,7 @@ def sample_book(**overrides):
         "is_published": False,
     }
     book.update(overrides)
+    book["publication_workflow"] = normalize_publication_workflow(book).workflow
     return book
 
 
@@ -287,11 +289,10 @@ def test_cli_rejects_publish_options(tmp_path: Path):
     assert "dry-run only" in completed.stderr
 
 
-def test_admin_panel_is_read_only_and_prefers_report_data():
+def test_admin_panel_is_read_only_and_uses_canonical_data():
     panel = (ROOT / "frontend/src/components/Admin/PublishingWorkflowPanel.jsx").read_text(encoding="utf-8")
 
-    assert "book.publishing_workflow_report || book.workflow_report" in panel
-    assert "function workflowFromReport" in panel
+    assert "book.publishing_workflow_report || book.workflow_report" not in panel
     assert "read-only dry-run estimate" in panel
     assert 'type="button" disabled' in panel
     assert "onClick" not in panel

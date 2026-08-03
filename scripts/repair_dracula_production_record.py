@@ -21,6 +21,7 @@ from backend.catalog_truth import (  # noqa: E402
     dracula_artifact_status,
     load_dracula_artifact_book,
 )
+from backend.publication_workflow_adapter import canonical_update  # noqa: E402
 
 
 DEFAULT_OUTPUT_DIR = ROOT / "output" / "production" / "dracula_repair"
@@ -180,6 +181,8 @@ def run_repair(*, apply: bool, output_dir: Path) -> dict[str, Any]:
             db_error = str(exc)
     if db_error:
         blockers.append(db_error)
+    if desired:
+        desired["publication_workflow"] = canonical_update({**(current or {}), **desired})
 
     changed_fields = comparable_changes(current, desired) if desired else []
     would_insert = current is None and bool(desired) and not blockers
