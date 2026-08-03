@@ -7,7 +7,10 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any
 
-from backend.publication_workflow_schema import normalize_publication_workflow, validate_publication_workflow
+try:
+    from publication_workflow_schema import normalize_publication_workflow, validate_publication_workflow
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.publication_workflow_schema import normalize_publication_workflow, validate_publication_workflow
 
 
 PUBLISHING_WORKFLOW_VERSION = "earnalism-publishing-workflow-v1"

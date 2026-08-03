@@ -12,7 +12,10 @@ import hashlib
 import json
 from typing import Any
 
-from backend.publication_workflow_schema import SCHEMA_NAME, SCHEMA_VERSION, normalize_publication_workflow, validate_publication_workflow
+try:
+    from publication_workflow_schema import SCHEMA_NAME, SCHEMA_VERSION, normalize_publication_workflow, validate_publication_workflow
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.publication_workflow_schema import SCHEMA_NAME, SCHEMA_VERSION, normalize_publication_workflow, validate_publication_workflow
 
 
 def canonical_workflow(book: dict[str, Any]) -> dict[str, Any]:
