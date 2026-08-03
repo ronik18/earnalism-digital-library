@@ -567,7 +567,13 @@ async function finalizeArtifacts(videoPath) {
   console.log(`\nSigned-user journey audit artifacts written to ${path.relative(ROOT, OUTPUT_DIR)}`);
   if (results.video_path) console.log(`Video: ${results.video_path}`);
   if (IS_SMOKE && results.failures.some((failure) => failure.severity === "FAIL")) {
-    console.error(`Journey smoke failed with ${results.failures.filter((failure) => failure.severity === "FAIL").length} blocker(s).`);
+    const blockers = results.failures.filter((failure) => failure.severity === "FAIL");
+    console.error(`Journey smoke failed with ${blockers.length} blocker(s).`);
+    for (const blocker of blockers) {
+      console.error(
+        `[journey-smoke:${redactSensitive(blocker.id || "unknown")}] ${redactSensitive(blocker.message || "No message").slice(0, 1000)}`
+      );
+    }
     process.exitCode = 1;
   }
 }
