@@ -1,11 +1,7 @@
 import { useSettings } from "../context/SettingsContext";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
-const HEADER_LOGO_ICON = `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-96.webp`;
-const HEADER_LOGO_SRC_SET = [
-  `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-96.webp 96w`,
-  `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-128.webp 128w`,
-].join(", ");
+const HEADER_LOGO = `${PUBLIC_URL}/assets/brand/earnalism-logo-text.png`;
 
 export const BRAND_HEADER_BADGE_VARIANTS = {
   exactFlag: "exact-flag",
@@ -133,38 +129,19 @@ export default function BrandHeaderLogo({
 
   return (
     <span
-      className={`brand-header-logo brand-header-logo--${safeBadgeVariant} ${className}`.trim()}
+      className={`brand-header-logo brand-header-logo--wordmark ${className}`.trim()}
       role="img"
       aria-label="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"
       data-testid="brand-header-logo"
       data-badge-variant={safeBadgeVariant}
     >
       <img
-        src={HEADER_LOGO_ICON}
-        srcSet={HEADER_LOGO_SRC_SET}
-        sizes="44px"
-        alt=""
-        aria-hidden="true"
+        src={HEADER_LOGO}
+        alt="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"
         loading="eager"
         decoding="async"
-        className="brand-header-logo__icon"
+        className="brand-header-logo__wordmark-image"
       />
-      <span className="brand-header-logo__text" aria-hidden="true">
-        <span className="brand-header-logo__proofread" data-testid="brand-header-logo-proofread">
-          <span className="brand-header-logo__inserted-l">L</span>
-          <span className="brand-header-logo__caret">^</span>
-          <span className="brand-header-logo__base">earnalism</span>
-        </span>
-        <span className="brand-header-logo__tagline" data-testid="brand-header-logo-tagline">
-          Where Learning Becomes Earning
-        </span>
-        <span className="brand-header-logo__venture" data-testid="brand-header-logo-venture">
-          A REO ENTERPRISE VENTURE
-        </span>
-      </span>
-      <IndiaFlagMark />
-      {safeBadgeVariant === BRAND_HEADER_BADGE_VARIANTS.exactFlag && <ExactFlagBadge />}
-      {safeBadgeVariant === BRAND_HEADER_BADGE_VARIANTS.tricolor && <TricolorLiteraryBadge />}
     </span>
   );
 }

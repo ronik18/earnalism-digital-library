@@ -2938,6 +2938,18 @@ textarea.input-elegant {
   align-items: center;
   gap: 0.72rem;
 }
+
+.brand-header-logo--wordmark {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.brand-header-logo__wordmark-image {
+  display: block;
+  width: clamp(10.5rem, 13vw, 13.5rem);
+  height: auto;
+}
 .brand-header-logo {
   position: relative;
   display: inline-grid;

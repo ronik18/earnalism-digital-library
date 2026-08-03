@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  BookHeart,
   BookOpen,
   Bookmark,
   ChevronLeft,
@@ -43,8 +42,8 @@ const REFERENCE_HERO_AVIF_SRCSET = [
 ].join(", ");
 const HERO_CAROUSEL_INTERVAL_MS = 7000;
 
-const DEFAULT_HEADLINE = "A premium reading and listening sanctuary for timeless Bengali and English classics.";
-const DEFAULT_SUBHEADLINE = "Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.";
+const DEFAULT_HEADLINE = "A quieter, more beautiful way to read and listen.";
+const DEFAULT_SUBHEADLINE = "Timeless literature, presented with the care and attention it deserves.";
 
 const FEATURE_CHIPS = [
   "Curated Classics",
@@ -53,35 +52,11 @@ const FEATURE_CHIPS = [
   "Beautiful Graphical Covers",
 ];
 
-const PREMIUM_CARDS = [
-  {
-    title: "Curated Classics",
-    description: "Handpicked Bengali & English classics you’ll love forever.",
-    Icon: BookOpen,
-  },
-  {
-    title: "Immersive Audiobooks",
-    description: "Studio-quality narration for deeper connection.",
-    Icon: Headphones,
-  },
-  {
-    title: "Beautiful Editions",
-    description: "Thoughtful design. Elegant covers. Collector’s delight.",
-    Icon: Feather,
-  },
-  {
-    title: "Calm Reading Modes",
-    description: "Distraction-free reading for perfect focus.",
-    Icon: MoonStar,
-  },
-];
-
 const FEATURE_RAIL = [
-  { title: "Curated Bengali & English Classics", Icon: BookHeart },
-  { title: "Immersive Audiobook Rooms", Icon: Headphones },
-  { title: "Beautiful Graphical Editions", Icon: BookOpen },
-  { title: "Calm Reader Modes", Icon: MoonStar },
-  { title: "Your Library, Everywhere", Icon: Bookmark },
+  { title: "Beautiful Editions", description: "Thoughtfully designed for every page", Icon: Feather },
+  { title: "Immersive Audiobooks", description: "Narration that draws you into the story", Icon: Headphones },
+  { title: "Calm Reading Modes", description: "Focused, distraction-free reading", Icon: MoonStar },
+  { title: "Your Library, Everywhere", description: "Seamless across web, tablet and mobile", Icon: Bookmark },
 ];
 
 function track(onTrack, event, metadata) {
@@ -729,16 +704,12 @@ export default function PremiumHero({
   const secondaryCta = hero.secondary_cta?.url
     ? hero.secondary_cta
     : { label: "Explore Audiobooks", url: "/library?availability=approved-audiobook" };
-  const headline = hero.headline || fallbackHeadline;
-  const subheadline = hero.subheadline || DEFAULT_SUBHEADLINE;
-  const goldHeadline = "timeless Bengali and English classics.";
-  const headlineLead = headline.includes(goldHeadline)
-    ? headline.replace(goldHeadline, "").trim()
-    : headline;
+  const headline = DEFAULT_HEADLINE;
+  const subheadline = DEFAULT_SUBHEADLINE;
 
   return (
     <section
-      className={`premium-landing-hero premium-dynamic-hero premium-reference-hero premium-reference-hero--exact${headerMode === "in-flow" ? " premium-reference-hero--in-flow" : ""}${referenceArtFailed ? " premium-reference-hero--art-failed" : ""}`}
+      className={`premium-landing-hero premium-dynamic-hero premium-reference-hero premium-reference-hero--art-directed${headerMode === "in-flow" ? " premium-reference-hero--in-flow" : ""}${referenceArtFailed ? " premium-reference-hero--art-failed" : ""}`}
       data-testid="premium-landing-hero"
       data-catalog-state={loading ? "loading" : error ? "unavailable" : "ready"}
       aria-label={headline}
@@ -746,11 +717,9 @@ export default function PremiumHero({
     >
       {isDesktopReference ? (
         <picture>
-          <source type="image/avif" srcSet={REFERENCE_HERO_AVIF_SRCSET} sizes="100vw" />
-          <source type="image/webp" srcSet={REFERENCE_HERO_SRCSET} sizes="100vw" />
           <img
             className="premium-reference-hero__art"
-            src={REFERENCE_HERO_IMAGE}
+            src={`${PUBLIC_URL}/assets/hero/premium-library-listening-ribbon.png`}
             alt=""
             aria-hidden="true"
             width="2180"
@@ -765,11 +734,10 @@ export default function PremiumHero({
       <div className="premium-hero-copy">
         <div className="premium-hero-eyebrow">
           <Sparkles size={15} strokeWidth={1.6} aria-hidden="true" />
-          <span>Curated Digital Library</span>
+          <span>Curated Bengali &amp; English Library</span>
         </div>
         <h1 id="premium-hero-title" data-testid="hero-headline">
-          {headlineLead}{" "}
-          {headline.includes(goldHeadline) ? <span>{goldHeadline}</span> : null}
+          {headline}
         </h1>
         <p>{subheadline}</p>
         <p className="sr-only">Reading time is used only while you read. Chapter 1 remains free to preview.</p>
@@ -825,23 +793,11 @@ export default function PremiumHero({
         )}
       </div>
 
-      <aside className="premium-hero-cards" aria-label="Premium library features" data-testid="premium-hero-feature-cards">
-        {PREMIUM_CARDS.map(({ title, description, Icon }) => (
-          <article key={title}>
-            <Icon size={23} strokeWidth={1.35} aria-hidden="true" />
-            <div>
-              <h2>{title}</h2>
-              <p>{description}</p>
-            </div>
-          </article>
-        ))}
-      </aside>
-
       <div className="premium-hero-rail" aria-label="Earnalism library benefits">
-        {FEATURE_RAIL.map(({ title, Icon }) => (
+        {FEATURE_RAIL.map(({ title, description, Icon }) => (
           <div key={title}>
-            <Icon size={25} strokeWidth={1.3} aria-hidden="true" />
-            <span>{title}</span>
+            <Icon size={29} strokeWidth={1.3} aria-hidden="true" />
+            <p><strong>{title}</strong><span>{description}</span></p>
           </div>
         ))}
       </div>

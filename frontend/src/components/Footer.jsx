@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
-import BrandMark from "./BrandMark";
 
 const CONTACT_EMAIL = "sales@reoenterprise.org";
 
@@ -11,7 +10,15 @@ export default function Footer() {
     <footer className="mt-24 sm:mt-32 border-t border-brand bg-ivory" data-testid="site-footer">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="md:col-span-2">
-          <div className="mb-4 leading-none" data-testid="footer-brand"><BrandMark variant="footer" /></div>
+          <div className="mb-4 leading-none" data-testid="footer-brand">
+            <img
+              src={`${process.env.PUBLIC_URL || ""}/assets/brand/earnalism-logo-text.png`}
+              alt="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"
+              loading="lazy"
+              decoding="async"
+              className="h-auto w-72 max-w-full object-contain object-left"
+            />
+          </div>
           <p className="font-serif-display italic text-base text-charcoal-soft mb-4">Bengali and English classics, presented with quiet release truth.</p>
           <p className="text-charcoal-soft max-w-md leading-[1.8] font-light text-[0.95rem]">
             A calm digital reading room for timeless literature. Reader-ready classics stay visible; audiobooks appear only after evidence proves they are ready.

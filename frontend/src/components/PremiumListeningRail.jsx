@@ -38,6 +38,12 @@ function ListeningCard({ book, featured, onCoverFailure }) {
   const narrator = String(book?.narrator || book?.narrator_name || "").trim();
   const title = book?.title || "Untitled edition";
   const author = book?.author || "";
+  const destination = available
+    ? listenUrl(book)
+    : book.book_url || `/book/${book.slug}`;
+  const metadata = [author, duration > 0 ? `${Math.round(duration / 60000)} min` : ""]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <li
@@ -53,12 +59,13 @@ function ListeningCard({ book, featured, onCoverFailure }) {
           Featured listening edition
         </span>
       )}
-      <div className="premium-listening-card__art">
-        <Link
-          className="premium-listening-card__cover-link"
-          to={book.book_url || `/book/${book.slug}`}
-          aria-label={`Open ${title}${author ? ` by ${author}` : ""}`}
-        >
+      <Link
+        className="premium-listening-card__link"
+        to={destination}
+        aria-label={`${available ? "Begin listening to" : "Open"} ${title}${author ? ` by ${author}` : ""}`}
+      >
+        <div className="premium-listening-card__art">
+          <div className="premium-listening-card__cover-link">
           <BookCoverImage
             book={book}
             alt={
@@ -73,11 +80,11 @@ function ListeningCard({ book, featured, onCoverFailure }) {
             allowGraphicalFallback={false}
             onPermanentFailure={onCoverFailure}
           />
-        </Link>
-        <span className="premium-listening-card__waveform" aria-hidden="true" />
-      </div>
+          </div>
+          <span className="premium-listening-card__waveform" aria-hidden="true" />
+        </div>
 
-      <div className="premium-listening-card__copy">
+        <div className="premium-listening-card__copy">
         <div className="premium-listening-card__labels">
           <span>{synchronized ? "Read + Listen" : "Audiobook"}</span>
           {!available && (
@@ -86,15 +93,11 @@ function ListeningCard({ book, featured, onCoverFailure }) {
             </span>
           )}
         </div>
-        <h3>
-          <Link to={book.book_url || `/book/${book.slug}`}>{title}</Link>
-        </h3>
-        {author && <p className="premium-listening-card__author">{author}</p>}
-        {(narrator || duration > 0) && (
+          <h3>{title}</h3>
+        {metadata && (
           <p className="premium-listening-card__meta">
-            {narrator ? `Narrated by ${narrator}` : ""}
-            {narrator && duration > 0 ? " · " : ""}
-            {duration > 0 ? `${Math.round(duration / 60000)} min` : ""}
+            {metadata}
+            {narrator ? ` · ${narrator}` : ""}
           </p>
         )}
 
@@ -108,26 +111,20 @@ function ListeningCard({ book, featured, onCoverFailure }) {
         )}
 
         {available ? (
-          <Link
-            className="premium-listening-card__cta"
-            to={listenUrl(book)}
-            aria-label={`${progress === null ? "Play" : "Continue"} ${title}`}
-          >
+          <span className="premium-listening-card__cta">
             <CirclePlay size={18} strokeWidth={1.55} aria-hidden="true" />
             <span>
               {progress === null ? "Begin listening" : "Continue listening"}
             </span>
-          </Link>
+          </span>
         ) : (
-          <Link
-            className="premium-listening-card__cta premium-listening-card__cta--reader"
-            to={book.book_url || `/book/${book.slug}`}
-          >
+          <span className="premium-listening-card__cta premium-listening-card__cta--reader">
             <BookOpen size={17} strokeWidth={1.55} aria-hidden="true" />
             <span>View reader edition</span>
-          </Link>
+          </span>
         )}
-      </div>
+        </div>
+      </Link>
     </li>
   );
 }

@@ -39,28 +39,17 @@ describe("PremiumHero public contract", () => {
     expect(source).toContain("Premium Listening Rooms");
   });
 
-  test("keeps the owner reference artwork and existing transparent CTA hotspots unchanged", () => {
-    const referenceAsset = path.join(process.cwd(), "public/assets/hero/premium-library-reference-exact.webp");
-    const responsiveReferenceAssets = [
-      "premium-library-reference-exact-1024.webp",
-      "premium-library-reference-exact-1440.webp",
-    ].map((filename) => path.join(process.cwd(), "public/assets/hero", filename));
+  test("uses the art-directed hero background and live editorial controls", () => {
+    const referenceAsset = path.join(process.cwd(), "public/assets/hero/premium-library-listening-ribbon.png");
 
-    expect(source).toContain("premium-library-reference-exact.webp");
-    expect(source).toContain("premium-library-reference-exact-1024.webp 1024w");
-    expect(source).toContain("premium-library-reference-exact-1440.webp");
-    expect(source).toContain("REFERENCE_HERO_AVIF_SRCSET");
-    expect(source).toContain('type="image/avif"');
-    expect(publicIndex).toContain("premium-library-reference-exact-1440.avif");
-    expect(publicIndex).toContain('imagesizes="100vw"');
+    expect(source).toContain("premium-library-listening-ribbon.png");
+    expect(source).toContain("premium-reference-hero--art-directed");
     expect(source).toContain('width="2180"');
     expect(source).toContain('height="1032"');
     expect(source).toContain('fetchPriority="high"');
     expect(source).toContain("premium-hero-action--primary");
     expect(source).toContain("premium-hero-action--secondary");
-    expect(fs.statSync(referenceAsset).size).toBeLessThan(300_000);
-    expect(responsiveReferenceAssets.every((asset) => fs.statSync(asset).size < 160_000)).toBe(true);
-    expect(fs.statSync(path.join(process.cwd(), "public/assets/hero/premium-library-reference-exact.avif")).size).toBeLessThan(200_000);
+    expect(fs.statSync(referenceAsset).size).toBeGreaterThan(10_000);
 
     const hoverRule = styles.match(/\.premium-hero-action:hover\s*\{([\s\S]*?)\}/)?.[1];
     expect(hoverRule).toContain("background: transparent;");
@@ -166,11 +155,14 @@ describe("PremiumHero public contract", () => {
   });
 
   test("retains approved reader-facing copy and excludes engineering status language", () => {
-    expect(source).toContain("Curated Classics");
+    expect(source).toContain("Curated Bengali &amp; English Library");
     expect(source).toContain("Immersive Audiobooks");
     expect(source).toContain("Beautiful Editions");
     expect(source).toContain("Calm Reading Modes");
     expect(source).toContain("Your Library, Everywhere");
+    expect(source).toContain("A quieter, more beautiful way to read and listen.");
+    expect(source).not.toContain("PREMIUM_CARDS");
+    expect(source).not.toContain("Curated Bengali & English Classics");
     expect(source).toContain("Featured classic");
     expect(source).not.toMatch(/release gates|QA_PASSED|PUBLIC_AUDIO|Audio gated by evidence|typographic-only cover fallback/i);
   });

@@ -1306,3 +1306,90 @@
     animation: none;
   }
 }
+
+/* Art-directed desktop composition: the background carries product atmosphere;
+   the DOM owns every explanatory message exactly once. */
+@media (min-width: 1024px) {
+  .premium-reference-hero--art-directed {
+    height: clamp(700px, 51vw, 740px);
+  }
+
+  .premium-reference-hero--art-directed .premium-reference-hero__art {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .premium-reference-hero--art-directed .premium-hero-copy {
+    position: absolute !important;
+    top: clamp(6.1rem, 8vw, 8.3rem);
+    left: clamp(4rem, 5.5vw, 5.5rem);
+    z-index: 3;
+    width: min(40vw, 37.5rem) !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+    border: 0 !important;
+  }
+
+  .premium-reference-hero--art-directed .premium-hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; }
+  .premium-reference-hero--art-directed .premium-hero-copy h1 { max-width: 37rem; margin-top: 1.1rem; font-size: clamp(3.25rem, 4.15vw, 4rem); line-height: 1.04; }
+  .premium-reference-hero--art-directed .premium-hero-copy > p { max-width: 31rem; margin-top: 1.35rem; font-family: var(--font-ui, sans-serif); font-size: clamp(1rem, 1.25vw, 1.12rem); line-height: 1.55; }
+
+  .premium-reference-hero--art-directed .premium-hero-actions {
+    position: absolute;
+    top: clamp(27rem, 34vw, 30.5rem);
+    left: clamp(4rem, 5.5vw, 5.5rem);
+    z-index: 5;
+    display: flex;
+    gap: 0.8rem;
+    padding: 0;
+    pointer-events: auto;
+  }
+  .premium-reference-hero--art-directed .premium-hero-action { position: static; min-height: 3.35rem; border: 1px solid rgba(228,180,92,.7); padding: .8rem 1.5rem; color: #fff5e2; background: rgba(12,5,4,.54); box-shadow: none; }
+  .premium-reference-hero--art-directed .premium-hero-action svg,
+  .premium-reference-hero--art-directed .premium-hero-action span { opacity: 1; }
+  .premium-reference-hero--art-directed .premium-hero-action--primary { color: #2c140b; background: linear-gradient(135deg,#f7d596,#d9983e); }
+
+  .premium-reference-hero--art-directed .premium-hero-chips,
+  .premium-reference-hero--art-directed .premium-hero-cards { display: none !important; }
+
+  .premium-reference-hero--art-directed .premium-hero-rail {
+    position: absolute !important;
+    right: clamp(4rem, 5.5vw, 5.5rem);
+    bottom: 1.5rem;
+    left: clamp(4rem, 5.5vw, 5.5rem);
+    z-index: 5;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: auto !important;
+    height: 6.25rem !important;
+    min-height: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+    border: 1px solid rgba(203,153,65,.28) !important;
+    border-radius: 1.2rem;
+    background: linear-gradient(90deg,rgba(13,10,7,.88),rgba(22,16,10,.78));
+    box-shadow: 0 14px 38px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,225,168,.05);
+    backdrop-filter: blur(16px);
+  }
+  .premium-reference-hero--art-directed .premium-hero-rail > div { min-height: 0; gap: .85rem; padding: 1rem 1.35rem; border: 0; border-inline-end: 1px solid rgba(203,153,65,.18); }
+  .premium-reference-hero--art-directed .premium-hero-rail > div:last-child { border-inline-end: 0; }
+  .premium-reference-hero--art-directed .premium-hero-rail p { display: grid; gap: .25rem; margin: 0; }
+  .premium-reference-hero--art-directed .premium-hero-rail strong { color: #fff5e2; font: 600 .9rem/1.2 var(--font-ui,sans-serif); }
+  .premium-reference-hero--art-directed .premium-hero-rail span { color: rgba(255,245,226,.68); font: .75rem/1.35 var(--font-ui,sans-serif); }
+
+  .premium-reference-hero--art-directed .premium-reference-catalog { pointer-events: none; }
+  .premium-reference-hero--art-directed .premium-reference-device-group,
+  .premium-reference-hero--art-directed .premium-reference-catalog-books { display: none; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .premium-hero-cards { display: none; }
+  .premium-hero-rail > div:last-child { grid-column: auto; }
+}
