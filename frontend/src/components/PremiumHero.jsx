@@ -7,13 +7,13 @@ import {
   Bookmark,
   ChevronLeft,
   ChevronRight,
-  Feather,
   Globe2,
   Headphones,
   MoonStar,
   Pause,
   Play,
   Sparkles,
+  WalletCards,
 } from "lucide-react";
 import BookCoverImage from "./BookCoverImage";
 import { bookCoverImageSources } from "../lib/images";
@@ -51,29 +51,6 @@ const FEATURE_CHIPS = [
   "Premium Reading Experience",
   "Immersive Audiobooks",
   "Beautiful Graphical Covers",
-];
-
-const PREMIUM_CARDS = [
-  {
-    title: "Curated Classics",
-    description: "Handpicked Bengali & English classics you’ll love forever.",
-    Icon: BookOpen,
-  },
-  {
-    title: "Immersive Audiobooks",
-    description: "Studio-quality narration for deeper connection.",
-    Icon: Headphones,
-  },
-  {
-    title: "Beautiful Editions",
-    description: "Thoughtful design. Elegant covers. Collector’s delight.",
-    Icon: Feather,
-  },
-  {
-    title: "Calm Reading Modes",
-    description: "Distraction-free reading for perfect focus.",
-    Icon: MoonStar,
-  },
 ];
 
 const FEATURE_RAIL = [
@@ -825,16 +802,23 @@ export default function PremiumHero({
         )}
       </div>
 
-      <aside className="premium-hero-cards" aria-label="Premium library features" data-testid="premium-hero-feature-cards">
-        {PREMIUM_CARDS.map(({ title, description, Icon }) => (
-          <article key={title}>
-            <Icon size={23} strokeWidth={1.35} aria-hidden="true" />
-            <div>
-              <h2>{title}</h2>
-              <p>{description}</p>
-            </div>
-          </article>
-        ))}
+      <aside className="premium-hero-offer" aria-label="Earnalism Reading Pass" data-testid="premium-hero-reading-pass">
+        <div className="premium-hero-offer__eyebrow">
+          <WalletCards size={19} strokeWidth={1.45} aria-hidden="true" />
+          <span>Reading Pass</span>
+        </div>
+        <h2>Start free. Continue when the story earns it.</h2>
+        <p>Chapter 1 is free. Add reading time only when you choose to continue.</p>
+        <Link
+          to="/pricing"
+          className="premium-hero-offer__cta"
+          data-testid="hero-pricing-cta"
+          onClick={() => track(onTrack, "hero_pricing_cta_click", { cta: `${analyticsNamespace}_hero_reading_pass` })}
+        >
+          <span>View Reading Passes</span>
+          <ArrowRight size={15} strokeWidth={1.7} aria-hidden="true" />
+        </Link>
+        <small>Reading time runs only while you read.</small>
       </aside>
 
       <div className="premium-hero-rail" aria-label="Earnalism library benefits">

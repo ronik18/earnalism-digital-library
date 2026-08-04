@@ -2947,7 +2947,7 @@ textarea.input-elegant {
 
 .brand-header-logo__wordmark-image {
   display: block;
-  width: clamp(10.5rem, 13vw, 13.5rem);
+  width: clamp(15.75rem, 19.5vw, 20.25rem);
   height: auto;
 }
 .brand-header-logo {

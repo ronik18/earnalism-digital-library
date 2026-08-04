@@ -168,10 +168,13 @@ describe("PremiumHero public contract", () => {
   test("retains approved reader-facing copy and excludes engineering status language", () => {
     expect(source).toContain("Curated Classics");
     expect(source).toContain("Immersive Audiobooks");
-    expect(source).toContain("Beautiful Editions");
-    expect(source).toContain("Calm Reading Modes");
+    expect(source).toContain("Beautiful Graphical Editions");
+    expect(source).toContain("Calm Reader Modes");
     expect(source).toContain("Your Library, Everywhere");
     expect(source).toContain("Featured classic");
+    expect(source).toContain("Reading Pass");
+    expect(source).toContain("Chapter 1 is free");
+    expect(source).not.toContain("PREMIUM_CARDS");
     expect(source).not.toMatch(/release gates|QA_PASSED|PUBLIC_AUDIO|Audio gated by evidence|typographic-only cover fallback/i);
   });
 });
