@@ -11,20 +11,16 @@ const headerSource = fs.readFileSync(
 );
 
 describe("BrandHeaderLogo", () => {
-  test("uses the existing bundled Earnalism icon asset unchanged", () => {
-    expect(componentSource).toMatch(/earnalism-logo-transparent-96\.webp/);
-    expect(componentSource).toMatch(/earnalism-logo-transparent-128\.webp/);
+  test("uses the approved bundled Earnalism wordmark asset", () => {
+    expect(componentSource).toContain('earnalism-logo-text.png');
     expect(componentSource).not.toMatch(/earnalism-brand-lockup\.png/);
     expect(componentSource).not.toMatch(/canvas|generated|ai-garbled|data:image/i);
   });
 
-  test("renders deterministic proofreader wordmark text with the complete accessible brand label", () => {
+  test("renders the approved wordmark with the complete accessible brand label", () => {
     expect(componentSource).toContain('aria-label="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"');
-    expect(componentSource).toContain('brand-header-logo__base">earnalism');
-    expect(componentSource).toContain("brand-header-logo__inserted-l");
-    expect(componentSource).toContain("brand-header-logo__caret");
-    expect(componentSource).toContain("Where Learning Becomes Earning");
-    expect(componentSource).toContain("A REO ENTERPRISE VENTURE");
+    expect(componentSource).toContain('className="brand-header-logo__wordmark-image"');
+    expect(componentSource).toContain('alt="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"');
     expect(componentSource).toContain('data-testid="brand-header-logo-india-flag"');
   });
 
@@ -47,13 +43,13 @@ describe("BrandHeaderLogo", () => {
   });
 
   test("keeps badge variants available while allowing the public header to omit the badge", () => {
-    expect(componentSource.match(/<TricolorLiteraryBadge \/>/g)).toHaveLength(2);
+    expect(componentSource.match(/<TricolorLiteraryBadge \/>/g)).toHaveLength(1);
     expect(componentSource).toContain('data-logo-source="admin-setting"');
   });
 
-  test("public header omits the badge from the latest lockup", () => {
-    expect(headerSource).toContain("BrandHeaderLogo");
-    expect(headerSource).toContain('badgeVariant="none"');
+  test("public header reuses the footer lockup without the obsolete badge component", () => {
+    expect(headerSource).toContain('import BrandMark from "./BrandMark";');
+    expect(headerSource).toContain('<BrandMark variant="footer" />');
     expect(headerSource).not.toContain("IndiaCraftBadge");
   });
 });
