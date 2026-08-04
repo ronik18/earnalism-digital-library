@@ -12,8 +12,8 @@ Status: `PASS`
 
 | Signal | Value |
 | --- | --- |
-| JS file count | 20 |
-| Total JS bytes | 812785 |
+| JS file count | 23 |
+| Total JS bytes | 1055582 |
 | Route lazy loading | True |
 | Health endpoint | True |
 | Redis detected | True |
@@ -24,13 +24,13 @@ Status: `PASS`
 
 | File | Bytes |
 | --- | --- |
-| main.1bc11954.js | 361013 |
-| 453.3e5c713c.chunk.js | 112480 |
-| 429.44085a1a.chunk.js | 93263 |
-| 556.3a2360f7.chunk.js | 65384 |
-| 828.125aefc0.chunk.js | 40142 |
-| 660.095f68a5.chunk.js | 22377 |
-| 467.f5131a2b.chunk.js | 16614 |
-| 565.4d3ed07c.chunk.js | 12592 |
+| main.38ca4708.js | 368266 |
+| 629.cd22323b.chunk.js | 134790 |
+| 308.34e93c08.chunk.js | 120616 |
+| 634.1cb9a652.chunk.js | 108938 |
+| 133.1683d239.chunk.js | 65954 |
+| 681.fef3455a.chunk.js | 39677 |
+| 789.810092c1.chunk.js | 33598 |
+| 176.4a49e3eb.chunk.js | 27934 |
 
 No k6 load test was executed by this launch audit. If no result file is present, latency and autoscaling evidence remain operator-required.

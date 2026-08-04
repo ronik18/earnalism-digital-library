@@ -1,7 +1,7 @@
 # Phase 13 Validation Report
 
-Commit SHA at report generation: `302237d8807d628dcbf16d15f10921bfae5929d4`
-Final score: `7.0/10`
+Commit SHA at report generation: `82dc3bd49de2914e30db747d2f307756a18a4d7b`
+Final score: `7.84/10`
 Recommendation: `HOLD_FOR_FIXES`
 
 ## Commands Added
@@ -29,10 +29,10 @@ Recommendation: `HOLD_FOR_FIXES`
 | growth_daily | npm run growth:daily | PASS, dry-run |
 | observability | npm run observability:audit | PASS command; dry-run report status=BLOCKED |
 | launch_payment_smoke | npm run launch:payment-smoke | PASS_WITH_WARNINGS |
-| launch_production_parity | npm run launch:production-parity | BLOCKED |
-| launch_seo | npm run launch:seo-audit | BLOCKED_FOR_BOOK_SEO |
+| launch_production_parity | npm run launch:production-parity | PASS |
+| launch_seo | npm run launch:seo-audit | BLOCKED |
 | launch_performance | npm run launch:performance-audit | PASS |
-| launch_audio | npm run launch:audio-audit | PASS_WITH_WARNINGS |
+| launch_audio | npm run launch:audio-audit | PASS |
 | launch_readiness | npm run launch:readiness | HOLD_FOR_FIXES |
 | public_content_governance | npm run regression -- modules/13-public-content-governance.test.js | PASS, 15 passed |
 | frontend_build | npm --prefix frontend run build | PASS |
@@ -41,21 +41,20 @@ Recommendation: `HOLD_FOR_FIXES`
 
 | Area | Status |
 | --- | --- |
-| Production parity | BLOCKED |
-| SEO/crawlability | BLOCKED_FOR_BOOK_SEO |
+| Production parity | PASS |
+| SEO/crawlability | BLOCKED |
 | UX/conversion | PASS |
-| Payment/revenue | PASS_WITH_WARNINGS |
-| Security/privacy | PASS |
+| Payment/revenue | PASS_TEST_MODE |
+| Security/privacy | BLOCKED |
 | Performance/autoscaling | PASS |
-| Audiobook readiness | PASS_WITH_WARNINGS |
+| Audiobook readiness | PASS |
 
 ## Remaining Blockers
 
 | Area | Severity | Blocker |
 | --- | --- | --- |
-| production_parity | HIGH | Production https://theearnalism.com/shop returned redirect HTTP 308. |
-| production_parity | HIGH | Production /shop returned HTTP 308; /shop must not redirect. |
-| seo | HIGH | Book detail metadata is generated client-side after API load in the CRA app. |
+| seo | HIGH | Homepage raw HTML failed check: dracula_first. |
+| security | CRITICAL | Potential committed secrets in ['backend/tests/test_b2_audiobook_routing.py', 'internal/audiobook_lab/scripts/test_cloudinary_credentials_and_cover_hook.py', 'internal/audiobook_lab/storage_containment/ensure_wave1_b2_destination_key.sh', 'internal/audiobook_lab/storage_containment/run_wave1_one_by_one_auto.sh', 'internal/audiobook_lab/storage_containment/run_wave1_restore_then_migrate.sh', 'internal/audiobook_lab/storage_containment/run_wave1_with_guard.sh', 'internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh', 'internal/earnalism_intelligence/bengali_audiobook_package_v2_wave1_env_bootstrap.sh']. |
 | rights_source_readiness | HIGH | First batch has no approved real source metadata in the dry-run evidence. |
 
 No production content was mutated. No public publishing, deploy, provider call, email, social post, LLM, TTS, OCR, or image generation was performed.

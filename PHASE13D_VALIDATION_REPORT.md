@@ -1,7 +1,7 @@
 # Phase 13D Validation Report
 
-Commit SHA at report generation: `c2a39c74d1803cc3fb043bc25838b3f35ea8b302`
-Final score: `7.0/10`
+Commit SHA at report generation: `82dc3bd49de2914e30db747d2f307756a18a4d7b`
+Final score: `7.84/10`
 Recommendation: `HOLD_FOR_FIXES`
 
 ## Release-Flow Closure
@@ -26,10 +26,10 @@ Recommendation: `HOLD_FOR_FIXES`
 | npm run first-batch:dry-run | PASS, DRY_RUN_COMPLETE_WITH_BLOCKS |
 | npm run growth:daily | PASS, dry-run tasks=17 blocked=3 |
 | npm run observability:audit | PASS command; dry-run report status=BLOCKED as guardrail evidence |
-| npm run launch:production-parity | BLOCKED |
-| npm run launch:seo-audit | BLOCKED_FOR_BOOK_SEO |
+| npm run launch:production-parity | PASS |
+| npm run launch:seo-audit | BLOCKED |
 | npm run launch:payment-smoke | PASS_TEST_MODE |
-| npm run launch:audio-audit | PASS_WITH_WARNINGS |
+| npm run launch:audio-audit | PASS |
 | npm run launch:readiness | HOLD_FOR_FIXES |
 | npm run controlled-publication:precheck | EXPECTED_FAIL_CLOSED, APPROVED_TO_PUBLISH.md does not exist |
 | npm run regression -- modules/13-public-content-governance.test.js | PASS, 18 passed |

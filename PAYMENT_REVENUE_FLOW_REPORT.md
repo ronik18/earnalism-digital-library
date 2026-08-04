@@ -2,7 +2,25 @@
 
 Status: `PASS_TEST_MODE`
 
-This standalone smoke is dry-run/static only. It makes no Razorpay, wallet, email, or production calls.
+| Check | Value |
+| --- | --- |
+| pricing_packs_render | True |
+| razorpay_checkout_loaded | True |
+| test_mode_banner | True |
+| order_creation_endpoint | True |
+| verify_endpoint | True |
+| webhook_endpoint | True |
+| webhook_signature | True |
+| wallet_credit_idempotency | True |
+| payment_tests_present | True |
+| support_refund_copy | True |
+| dry_run_payment_smoke_written | True |
+| dry_run_payment_smoke_not_blocked | True |
+
+## Dry-Run Payment Smoke
+
+Smoke status: `PASS_TEST_MODE`
+Smoke artifact: `/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/pytest-of-ronikbasak/pytest-14/test_all_audit_writes_required0/launch/payment_smoke.json`
 
 | Smoke Check | Value |
 | --- | --- |
@@ -36,8 +54,4 @@ This standalone smoke is dry-run/static only. It makes no Razorpay, wallet, emai
 | no_public_audiobook_sale_detected | True |
 | analytics_schema_has_payment_events | True |
 
-Artifact: `/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/payment_smoke.json`
-
-Revenue launch remains HOLD until a separate controlled Razorpay test-mode checkout verifies the hosted checkout window, wallet credit, webhook idempotency, failed-payment handling, and post-payment return UX.
-
-This smoke does not prove live-money readiness, does not mutate production payments or wallets, and does not enable audiobook monetization.
+Revenue launch remains HOLD until a separate controlled Razorpay test-mode payment smoke verifies a real checkout window, wallet credit, webhook idempotency, payment_failed analytics, and post-payment return in production.

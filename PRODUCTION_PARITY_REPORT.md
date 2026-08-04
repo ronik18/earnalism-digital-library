@@ -10,34 +10,36 @@ Removed/demo routes must return `410` or `404` with exactly `X-Robots-Tag: noind
 | --- | --- | --- | --- | --- |
 | /product/patterned-wrap-dress | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /journal/denim-jackets | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /journal/the-quiet-power-of-a-premium-bookstore-brand | 404 | removed-content | noindex, nofollow, noarchive | False |
+| /blog/lorem-ipsum | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /post/sample-product | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /shop | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /shop/ | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /shop/example | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /fashion | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /clothing | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /category/fashion | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /tag/fashion | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /cart | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /checkout | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /my-account | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /woocommerce | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /woocommerce/test | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /sample-product | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /sample-product/test | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /placeholder-product | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /placeholder-product/test | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /lorem-ipsum | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /wp-content/uploads/demo.jpg | 410 | removed-content | noindex, nofollow, noarchive | False |
 
 ## Production Removed Routes
 
-| URL | Status | Final URL | X-Robots-Tag | Generic Shell | Error |
-| --- | --- | --- | --- | --- | --- |
-| https://theearnalism.com/product/patterned-wrap-dress | 410 | https://theearnalism.com/product/patterned-wrap-dress | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/journal/denim-jackets | 410 | https://theearnalism.com/journal/denim-jackets | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/shop | 410 | https://theearnalism.com/shop | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/shop/ | 410 | https://theearnalism.com/shop/ | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/shop/example | 410 | https://theearnalism.com/shop/example | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/fashion | 410 | https://theearnalism.com/fashion | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/clothing | 410 | https://theearnalism.com/clothing | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/woocommerce/test | 410 | https://theearnalism.com/woocommerce/test | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/sample-product/test | 410 | https://theearnalism.com/sample-product/test | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/placeholder-product/test | 410 | https://theearnalism.com/placeholder-product/test | noindex, nofollow, noarchive | False |  |
+Production network check was skipped.
 
 ## Raw Evidence Files
 
-- `/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/production_removed_routes_curl.txt`
-- `/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/production_removed_routes.json`
+- `/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/pytest-of-ronikbasak/pytest-14/test_all_audit_writes_required0/launch/production_removed_routes_curl.txt`
+- `/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/pytest-of-ronikbasak/pytest-14/test_all_audit_writes_required0/launch/production_removed_routes.json`
 
 ## Operator Verification Commands
 
@@ -46,12 +48,3 @@ for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/ /s
   curl -i --max-time 10 "https://theearnalism.com$path" | sed -n '1,24p'
 done
 ```
-
-## Dracula Candidate Impact
-
-The latest post-deploy route canary is `PASS`.
-
-- `output/launch/post_deploy_route_canary.json`
-- `output/launch/post_deploy_route_canary.txt`
-
-If this canary becomes `BLOCKED`, Dracula approval must remain blocked and `APPROVED_TO_PUBLISH.md` must not be generated.

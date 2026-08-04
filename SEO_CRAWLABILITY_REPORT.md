@@ -1,11 +1,11 @@
 # SEO Crawlability Report
 
-Status: `PASS`
+Status: `BLOCKED`
 
 | Check | Value |
 | --- | --- |
-| Sitemap URL count | 23 |
-| Book URL count | 11 |
+| Sitemap URL count | 94 |
+| Book URL count | 77 |
 | Demo URL count | 0 |
 | Robots sitemap present | True |
 | Retired routes crawlable for deindexing | True |
@@ -39,7 +39,7 @@ Launch SEO remains HOLD only when the raw HTML checks below fail. Passing checks
 ### /
 | Check | Pass |
 | --- | --- |
-| dracula_first | True |
+| dracula_first | False |
 | no_broad_catalog_claim | True |
 | organization_json_ld | True |
 | website_json_ld | True |
@@ -59,17 +59,17 @@ Launch SEO remains HOLD only when the raw HTML checks below fail. Passing checks
 | / |
 | /library |
 | /pricing |
-| /book/dracula |
-| /book/carmilla |
-| /book/devdas |
-| /book/eyesore-chokher-bali |
-| /book/frankenstein |
+| /book/a-ghost-story |
+| /book/a-jury-of-her-peers |
+| /book/a-mystery-of-heroism |
+| /book/alices-adventures-in-wonderland |
+| /book/bn-027 |
 
 Blocked reason: `none`
 
 No unsafe/fake Book schema is emitted by this audit. Book SEO must use available data only.
 
-Book JSON-LD rights gated: `True`
+Book JSON-LD rights gated: `False`
 Unsafe Book schema emitted: `False`
 
 See `BOOK_SEO_PRERENDER_PLAN.md` for the controlled plan to close book-specific SEO without fake metadata.

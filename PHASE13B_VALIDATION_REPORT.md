@@ -1,7 +1,7 @@
 # Phase 13B Validation Report
 
-Commit SHA at report generation: `302237d8807d628dcbf16d15f10921bfae5929d4`
-Final score: `7.0/10`
+Commit SHA at report generation: `82dc3bd49de2914e30db747d2f307756a18a4d7b`
+Final score: `7.84/10`
 Recommendation: `HOLD_FOR_FIXES`
 
 ## Commands
@@ -21,10 +21,10 @@ Recommendation: `HOLD_FOR_FIXES`
 | growth_daily | npm run growth:daily | PASS, dry-run tasks=17 blocked=3 |
 | observability | npm run observability:audit | PASS command; dry-run report status=BLOCKED as guardrail evidence |
 | launch_payment_smoke | npm run launch:payment-smoke | PASS_WITH_WARNINGS |
-| launch_production_parity | npm run launch:production-parity | BLOCKED |
-| launch_seo | npm run launch:seo-audit | BLOCKED_FOR_BOOK_SEO |
+| launch_production_parity | npm run launch:production-parity | PASS |
+| launch_seo | npm run launch:seo-audit | BLOCKED |
 | launch_performance | npm run launch:performance-audit | PASS |
-| launch_audio | npm run launch:audio-audit | PASS_WITH_WARNINGS |
+| launch_audio | npm run launch:audio-audit | PASS |
 | launch_readiness | npm run launch:readiness | HOLD_FOR_FIXES |
 | public_content_governance | npm run regression -- modules/13-public-content-governance.test.js | PASS, 15 passed |
 | frontend_build | npm --prefix frontend run build | PASS |

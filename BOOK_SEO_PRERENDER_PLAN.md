@@ -1,6 +1,6 @@
 # Book SEO Prerender Plan
 
-Current status: `PASS`
+Current status: `BLOCKED`
 
 CRA book pages still hydrate client-side, but priority launch routes now use static SEO snapshots when `frontend/build` exists. The audit remains blocked only if `/book/dracula` lacks raw title, description, canonical, OG/Twitter tags, or Book JSON-LD before JavaScript runs.
 
@@ -24,4 +24,8 @@ CRA book pages still hydrate client-side, but priority launch routes now use sta
 | / |
 | /library |
 | /pricing |
-| /book/dracula |
+| /book/a-ghost-story |
+| /book/a-jury-of-her-peers |
+| /book/a-mystery-of-heroism |
+| /book/alices-adventures-in-wonderland |
+| /book/bn-027 |

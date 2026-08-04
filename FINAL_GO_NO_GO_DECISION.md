@@ -1,67 +1,24 @@
 # Final GO/NO-GO Decision
 
 Decision: `NO-GO / HOLD`
-Owner recommendation: `KEEP_DRACULA_LIVE`
+Launch readiness score: `7.84/10`
 
-GO requires passing production canaries, visible overlay export, verified captions, full artifact indexing, real social profile validation, and explicit human owner approval. Current evidence keeps Dracula live but holds advertising, public audio, broad campaigns, and additional books.
+GO requires score `>= 9.7/10` and zero critical/high launch blockers. Current evidence does not meet that threshold.
 
-## Brand Site-Tour Update
+Production route parity passed in the latest audit, so it no longer caps the current report at 7.0. It still remains a mandatory post-deploy canary for every future main-branch deployment. Test-mode payment smoke, unknown audiobook rights/QA, and missing broader first-batch source evidence must not be upgraded to GO language. Dracula book SEO is allowed to pass only when raw static snapshots verify before hydration.
 
-- Site-tour recommendation: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
-- Overlay status: `PASS`
-- Caption status: `MUXED_IN_MASTER_MP4`
-- Site-tour score: `9.0/10`
-- Release post-production canary: must pass again after deploy.
-- SEO audit: must pass again after deploy.
-- Social preview audit: must pass again after deploy.
-- Dracula remains the only live approved reading title.
-- Dracula audio remains disabled.
-- Kshudhita Pashan remains pipeline-only.
-- Paid ads remain held until human owner approval and passing production canaries.
+## Blockers
 
-## Regenerated Audiobook Workflow Update
-
-- Regenerated narration workflow: `REGENERATED_NARRATION_WORKFLOW_READY`
-- Kshudhita Pashan audio release: `PUBLIC_AUDIO_RELEASE_BLOCKED`
-- Kshudhita Pashan full audiobook: `FULL_AUDIOBOOK_BLOCKED`
-- Required owner state: `OWNER_APPROVAL_REQUIRED`
-- No voice generation, upload, public audio URL, Listen Now CTA, or audiobook enablement was performed.
-
-## Dracula SEO Update
-
-- `/book/dracula` has raw static title, description, canonical, Open Graph, Twitter, WebPage JSON-LD, Book JSON-LD, and BreadcrumbList JSON-LD before React hydration.
-- `/reader/dracula` is `noindex,follow` and canonicalized to `/book/dracula`.
-- Social preview audit passes locally for `/`, `/book/dracula`, and `/library`; production mode must verify `/reader/dracula` after deploy.
-- Ads remain held until the deployed build passes `npm run launch:seo-audit`, `npm run launch:social-preview-audit:prod`, `npm run release:post-production-canary`, and `npm run release:ux-go-no-go`.
-
-## Social Profile Revamp Update
-
-- Social profile setup status: `READY_FOR_MANUAL_SOCIAL_PROFILE_SETUP`
-- Paid social status: `NOT_READY_FOR_PAID_SOCIAL_ADS`
-- Owner action: `OWNER_UPLOAD_REQUIRED`
-- Real profile URL validation: `OPERATOR_REQUIRED`
-
-The social kit creates only local copy, SVG assets, checklists, and validation reports. It does not post to social platforms, create profiles, upload assets, send messages, call APIs, or start paid ads.
-
-## Dracula Controlled Candidate
-
-- Candidate package: `GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY`
-- Removed-route canary: `PASS`
-- Backend catalog truth canary: must pass after deploy.
-- Payment smoke: `PASS_TEST_MODE`
-- SEO landing: `PASS_LOCAL_STATIC_SNAPSHOT`
-- Audio: `AUDIO_NOT_REQUIRED`
-- Approval artifact exists: `True`
-
-Dracula remains the only controlled live core reading candidate. No other book may expose live reader, preview, or audio CTAs.
+| Area | Severity | Blocker | Fix |
+| --- | --- | --- | --- |
+| seo | HIGH | Homepage raw HTML failed check: dracula_first. | Make the static homepage snapshot Dracula-first and remove broad catalog claims. |
+| security | CRITICAL | Potential committed secrets in ['backend/tests/test_b2_audiobook_routing.py', 'internal/audiobook_lab/scripts/test_cloudinary_credentials_and_cover_hook.py', 'internal/audiobook_lab/storage_containment/ensure_wave1_b2_destination_key.sh', 'internal/audiobook_lab/storage_containment/run_wave1_one_by_one_auto.sh', 'internal/audiobook_lab/storage_containment/run_wave1_restore_then_migrate.sh', 'internal/audiobook_lab/storage_containment/run_wave1_with_guard.sh', 'internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh', 'internal/earnalism_intelligence/bengali_audiobook_package_v2_wave1_env_bootstrap.sh']. | Rotate and remove secrets immediately. |
+| rights_source_readiness | HIGH | First batch has no approved real source metadata in the dry-run evidence. | Backfill source_url, source_license, source_hash, content_hash, and provenance_hash before publication. |
 
 ## Explicit Non-Actions
 
-- No new book was published.
-- No audiobook was enabled.
-- No public audio URL was exposed.
-- No live payment was run.
-- No email or social post was sent.
-- No social profile, social upload, or paid advertisement was created.
-- No paid provider or generation API was called.
-- No production data was mutated.
+- No public publication was enabled.
+- No production deploy was performed.
+- No production content or database record was mutated.
+- No paid/provider API was called.
+- No `APPROVED_TO_PUBLISH.md` was created from placeholder evidence.

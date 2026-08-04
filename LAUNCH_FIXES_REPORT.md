@@ -10,7 +10,6 @@
 
 | Area | Fix |
 | --- | --- |
-| production_parity | Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing. |
-| production_parity | Deploy current Vercel routing so /shop returns 410/noindex. |
-| seo | For 9.7+ launch SEO, prerender/SSR/static-snapshot priority book pages so crawlers receive book-specific metadata. |
+| seo | Make the static homepage snapshot Dracula-first and remove broad catalog claims. |
+| security | Rotate and remove secrets immediately. |
 | rights_source_readiness | Backfill source_url, source_license, source_hash, content_hash, and provenance_hash before publication. |
