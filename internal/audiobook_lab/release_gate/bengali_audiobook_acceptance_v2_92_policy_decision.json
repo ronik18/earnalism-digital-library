@@ -3,6 +3,12 @@
   "effective_date": "2026-07-10T09:31:03Z",
   "approval_status": "PRODUCT_POLICY_APPROVED_BY_OWNER_REQUEST",
   "scope": "Bengali audiobooks only",
+  "audio_delivery_modes": {
+    "default": "AUDIO_ONLY",
+    "read_along": "OPTIONAL",
+    "read_along_sync_required": false,
+    "transcript_highlighting_public": false
+  },
   "listening_tiers": {
     "FLAGSHIP_AUDIO": {
       "overall_listening_score_min": 9.7
@@ -55,8 +61,8 @@
     "ASR/manuscript match >= 9.7",
     "first/last words match",
     "no missing/duplicated/reordered content",
-    "measured paragraph/stanza sync or better",
-    "auto_estimated_sync=false",
+    "measured paragraph/stanza sync or better when read_along_enabled=true",
+    "auto_estimated_sync=false when read_along_enabled=true",
     "upload/checksum PASS",
     "metadata approval PASS",
     "browser gate PASS"

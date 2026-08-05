@@ -199,16 +199,54 @@ def test_gate_cannot_pass_without_refund_support_owner_legal_and_rollback_approv
 
 
 def test_gate_cannot_pass_without_transcript_and_sync_evidence():
-    result = evaluate_release_gate(base_payload(transcript_present=False, text_audio_sync_tolerance_ms=None))
+    result = evaluate_release_gate(
+        base_payload(
+            read_along_enabled=True,
+            transcript_present=False,
+            text_audio_sync_tolerance_ms=None,
+        )
+    )
 
     assert "TRANSCRIPT_REQUIRED_MISSING" in blocker_codes(result)
     assert "SYNC_TOLERANCE_MISSING" in blocker_codes(result)
 
 
 def test_sync_tolerance_above_threshold_blocks():
-    result = evaluate_release_gate(base_payload(text_audio_sync_tolerance_ms=400))
+    result = evaluate_release_gate(base_payload(read_along_enabled=True, text_audio_sync_tolerance_ms=400))
 
     assert "SYNC_TOLERANCE_TOO_HIGH" in blocker_codes(result)
+
+
+def test_audio_only_does_not_require_transcript_or_sync_evidence():
+    result = evaluate_release_gate(
+        base_payload(
+            read_along_enabled=False,
+            transcript_required=True,
+            transcript_present=False,
+            text_audio_sync_tolerance_ms=None,
+        )
+    )
+
+    assert result["status"] == READY_FOR_INTERNAL_AUDIOBOOK_REVIEW
+    assert result["read_along_enabled"] is False
+    assert "TRANSCRIPT_REQUIRED_MISSING" not in blocker_codes(result)
+    assert "SYNC_TOLERANCE_MISSING" not in blocker_codes(result)
+
+
+def test_read_along_requires_transcript_and_sync_evidence():
+    result = evaluate_release_gate(
+        base_payload(
+            read_along_enabled=True,
+            transcript_required=True,
+            transcript_present=False,
+            text_audio_sync_tolerance_ms=None,
+        )
+    )
+
+    assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert result["read_along_enabled"] is True
+    assert "TRANSCRIPT_REQUIRED_MISSING" in blocker_codes(result)
+    assert "SYNC_TOLERANCE_MISSING" in blocker_codes(result)
 
 
 def test_gate_cannot_pass_without_player_accessibility_evidence():
