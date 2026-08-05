@@ -51,6 +51,7 @@ export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [newsletterStatus, setNewsletterStatus] = useState("");
   const cachedHomeCuration = getHomeCurationCache();
   const [homeCuration, setHomeCuration] = useState(() => cachedHomeCuration || getHomeCurationSnapshot());
   const [homeCurationLoading, setHomeCurationLoading] = useState(false);
@@ -116,14 +117,22 @@ export default function Home() {
 
   const subscribe = async (event) => {
     event.preventDefault();
+    track("newsletter_submit_attempt", { source: "reading_circle" });
     setSubmitting(true);
+    setNewsletterStatus("");
     try {
       const { data } = await api.post("/newsletter", { name, email });
-      toast.success(data.message || "Welcome to the Reading Circle.");
+      const message = "Welcome to the Reading Circle. The next genuine release note will arrive here.";
+      toast.success(data.message || message);
       setName("");
       setEmail("");
+      setNewsletterStatus(message);
+      track("newsletter_submit_success", { source: "reading_circle" });
     } catch (err) {
-      toast.error(formatError(err.response?.data?.detail));
+      const message = formatError(err.response?.data?.detail);
+      toast.error(message);
+      setNewsletterStatus(message);
+      track("newsletter_submit_failure", { source: "reading_circle" });
     } finally {
       setSubmitting(false);
     }
@@ -268,67 +277,57 @@ export default function Home() {
         <div className="reading-circle__orbit" aria-hidden="true" />
         <div className="reading-circle__inner">
           <div className="reading-circle__story">
-            <div className="reading-circle__eyebrow">
-              <span aria-hidden="true" />
-              Reading Circle
-            </div>
-            <h2>Follow the reading room.</h2>
+            <div className="reading-circle__eyebrow">THE READING CIRCLE</div>
+            <h2>A private letter for readers who linger.</h2>
             <p className="reading-circle__description">
-              Receive quiet notes as Bengali and English classics move from rights review to reader-ready release.
+              Occasional notes on reader-ready editions, newly opened listening rooms, and the ideas behind the library—sent only when there is something worth sharing.
             </p>
-            {activeSocials.length > 0 ? (
-              <nav className="reading-circle__socials" aria-label="Earnalism social links" data-testid="home-socials">
-                <div className="reading-circle__social-label">Choose your reading-room channel</div>
-                <div className="reading-circle__social-grid">
-                  {activeSocials.map(({ id, ariaLabel, external, Icon, label, url }) => (
-                    <a
-                      key={id}
-                      href={url}
-                      target={external ? "_blank" : undefined}
-                      rel={external ? "noopener noreferrer" : undefined}
-                      aria-label={ariaLabel}
-                      className="home-social-rail__link"
-                      data-social={id}
-                      data-testid={`home-social-${id}`}
-                    >
-                      <span className="home-social-rail__icon" aria-hidden="true">
-                        <Icon size={18} strokeWidth={1.55} />
-                      </span>
-                      <span className="home-social-rail__copy">{label}</span>
-                      <ArrowUpRight className="home-social-rail__external" size={14} strokeWidth={1.5} aria-hidden="true" />
-                    </a>
-                  ))}
-                </div>
-              </nav>
-            ) : (
-              <div className="home-social-review" data-testid="home-socials-owner-review">
-                No placeholder or fake social links are shown.
-              </div>
-            )}
+            <ul className="reading-circle__signals" aria-label="Reading Circle notes">
+              <li>Reader-ready editions</li>
+              <li>Listening-room openings</li>
+              <li>Notes from the library</li>
+            </ul>
           </div>
-          <form onSubmit={subscribe} className="reading-dispatch" data-testid="newsletter-card" aria-describedby="newsletter-description">
+          <form onSubmit={subscribe} className="reading-dispatch" data-testid="newsletter-card" aria-describedby="newsletter-description newsletter-trust newsletter-status">
             <div className="reading-dispatch__seal" aria-hidden="true">E</div>
             <div className="reading-dispatch__eyebrow">
-              <Mail size={15} strokeWidth={1.6} aria-hidden="true" /> Private dispatch
+              <Mail size={15} strokeWidth={1.6} aria-hidden="true" /> PRIVATE DISPATCH
             </div>
+            <h3>Join the circle.</h3>
             <p id="newsletter-description" className="reading-dispatch__description">
-              Join for reading notes and release updates. No audiobook or paid campaign is live from this form.
+              Leave your name and email to receive the next genuine release note.
             </p>
             <div className="reading-dispatch__fields">
               <label className="reading-dispatch__field">
-                <span className="sr-only">Your name</span>
-                <input required value={name} onChange={(event) => setName(event.target.value)} placeholder="Your name" data-testid="newsletter-name" aria-label="Your name" />
+                <span>Your name</span>
+                <input id="newsletter-name" required autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} data-testid="newsletter-name" />
               </label>
               <label className="reading-dispatch__field">
-                <span className="sr-only">Your email</span>
-                <input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Your email" data-testid="newsletter-email" aria-label="Your email" />
+                <span>Email address</span>
+                <input id="newsletter-email" required type="email" inputMode="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} data-testid="newsletter-email" />
               </label>
             </div>
             <button type="submit" disabled={submitting} className="reading-dispatch__submit" data-testid="newsletter-submit">
-              <span>{submitting ? "Joining..." : "Join the Reading Circle"}</span>
+              <span>{submitting ? "Joining the circle..." : "JOIN THE READING CIRCLE"}</span>
               <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
             </button>
+            <p id="newsletter-trust" className="reading-dispatch__trust">Occasional. Unhurried. Only when something is genuinely ready.</p>
+            <div id="newsletter-status" className={`reading-dispatch__status ${newsletterStatus && !submitting ? "is-visible" : ""}`} aria-live="polite" role="status">{newsletterStatus}</div>
           </form>
+          {activeSocials.length > 0 ? (
+            <nav className="reading-circle__socials" aria-label="Earnalism social links" data-testid="home-socials">
+              <div className="reading-circle__social-label">FOLLOW THE LIBRARY ELSEWHERE</div>
+              <div className="reading-circle__social-grid">
+                {activeSocials.map(({ id, ariaLabel, external, Icon, label, url }) => (
+                  <a key={id} href={url} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} aria-label={ariaLabel} className="home-social-rail__link" data-social={id} data-testid={`home-social-${id}`} onClick={() => track("social_link_click", { source: "reading_circle", social_id: id })}>
+                    <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
+                    <span className="home-social-rail__copy">{label}</span>
+                    <ArrowUpRight className="home-social-rail__external" size={14} strokeWidth={1.5} aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            </nav>
+          ) : null}
         </div>
       </section>
     </div>

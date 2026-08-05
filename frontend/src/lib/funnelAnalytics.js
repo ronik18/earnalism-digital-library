@@ -27,6 +27,10 @@ export const LAUNCH_ANALYTICS_EVENTS = [
   "approved_audio_card_click",
   "book_card_read_click",
   "book_card_listen_click",
+  "newsletter_submit_attempt",
+  "newsletter_submit_success",
+  "newsletter_submit_failure",
+  "social_link_click",
 ];
 
 export const LAUNCH_ANALYTICS_EVENT_ALIASES = {
