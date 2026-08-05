@@ -2,6 +2,12 @@
   --hero-gold: #e4b45c;
   --hero-gold-soft: #f2d49a;
   --hero-cream: #fff8e8;
+  --hero-layer-background: 0;
+  --hero-layer-devices: 2;
+  --hero-layer-plaque: 4;
+  --hero-layer-actions: 5;
+  --hero-layer-offer: 6;
+  --hero-layer-books: 8;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -15,6 +21,7 @@
   display: none;
 }
 
+.premium-reference-hero__backdrop,
 .premium-reference-hero__art,
 .premium-reference-catalog {
   display: none;
@@ -597,8 +604,11 @@
 }
 
 .premium-hero-offer {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0.78rem;
   margin: 0 1.15rem 1.3rem;
   overflow: hidden;
@@ -607,9 +617,65 @@
   padding: 1.15rem;
   color: #fff8e8;
   background:
-    radial-gradient(circle at 92% 8%, rgba(226, 171, 73, 0.18), transparent 34%),
-    linear-gradient(145deg, #2a120a, #100604 72%);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.36);
+    radial-gradient(circle at 86% 11%, rgba(238, 180, 78, 0.2) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 24%, rgba(255, 221, 151, 0.16) 0 1px, transparent 2px),
+    radial-gradient(circle at 92% 38%, rgba(238, 180, 78, 0.14) 0 1px, transparent 2px),
+    radial-gradient(ellipse at 88% 8%, rgba(226, 153, 55, 0.26), transparent 42%),
+    linear-gradient(180deg, rgba(78, 35, 20, 0.2), transparent 48%),
+    linear-gradient(145deg, #32160d, #190908 56%, #0d0503 100%);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 234, 191, 0.13),
+    inset 0 0 34px rgba(83, 35, 17, 0.2);
+}
+
+.premium-hero-offer::before,
+.premium-hero-offer::after {
+  position: absolute;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.premium-hero-offer::before {
+  top: -28%;
+  right: -20%;
+  width: 72%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(228, 180, 92, 0.2);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(225, 166, 68, 0.18) 0 4%, transparent 5% 20%, rgba(226, 176, 86, 0.13) 20.5% 21%, transparent 21.5% 37%, rgba(226, 176, 86, 0.11) 37.5% 38%, transparent 38.5% 56%, rgba(226, 176, 86, 0.09) 56.5% 57%, transparent 57.5%),
+    conic-gradient(from 18deg, transparent 0 11%, rgba(235, 190, 103, 0.2) 11.5% 12%, transparent 12.5% 47%, rgba(235, 190, 103, 0.14) 47.5% 48%, transparent 48.5% 100%);
+  box-shadow:
+    0 0 48px rgba(201, 129, 42, 0.13),
+    inset 0 0 28px rgba(205, 139, 48, 0.08);
+  opacity: 0.82;
+  transform: rotate(-12deg);
+}
+
+.premium-hero-offer::after {
+  top: 14%;
+  right: 9%;
+  width: clamp(2.8rem, 12vw, 4.3rem);
+  aspect-ratio: 0.72;
+  border: 1px solid rgba(242, 200, 119, 0.38);
+  border-radius: 42% 42% 0.45rem 0.45rem;
+  background:
+    linear-gradient(90deg, transparent 48%, rgba(247, 211, 144, 0.34) 49% 51%, transparent 52%),
+    linear-gradient(145deg, rgba(246, 202, 116, 0.11), rgba(75, 31, 15, 0.04));
+  box-shadow:
+    0 0 24px rgba(212, 146, 52, 0.14),
+    inset 0 0 18px rgba(236, 183, 86, 0.08);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+  opacity: 0.72;
+  transform: rotate(5deg);
+}
+
+.premium-hero-offer > * {
+  position: relative;
+  z-index: 2;
+  max-width: 74%;
 }
 
 .premium-hero-offer__eyebrow {
@@ -655,6 +721,14 @@
   font-size: 0.72rem;
   font-weight: 700;
   text-decoration: none;
+  box-shadow: 0 10px 24px -14px rgba(238, 185, 89, 0.86);
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.premium-hero-offer__cta:hover {
+  filter: brightness(1.04);
+  box-shadow: 0 14px 28px -14px rgba(238, 185, 89, 0.94);
+  transform: translateY(-2px);
 }
 
 .premium-hero-offer__cta:focus-visible {
@@ -667,6 +741,11 @@
   font-family: var(--font-ui);
   font-size: 0.66rem;
   line-height: 1.35;
+}
+
+@keyframes premium-offer-orbit {
+  from { transform: rotate(-12deg) translate3d(0, 0, 0); }
+  to { transform: rotate(-8deg) translate3d(-3%, 2%, 0); }
 }
 
 .premium-hero-rail {
@@ -708,6 +787,9 @@
   }
   .premium-hero-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .premium-hero-offer { padding: 1.35rem 1.5rem; }
+  .premium-hero-offer > * { max-width: 64%; }
+  .premium-hero-offer::before { width: min(48%, 20rem); }
+  .premium-hero-offer::after { right: 12%; width: clamp(3.4rem, 8vw, 4.5rem); }
   .premium-hero-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .premium-hero-rail > div:nth-child(odd) { border-right: 1px solid rgba(228, 180, 92, 0.16); }
   .premium-hero-rail > div:last-child { grid-column: 1 / -1; border-right: 0; }
@@ -752,6 +834,15 @@
     image-rendering: auto;
   }
 
+  .premium-reference-hero__backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: var(--hero-layer-background);
+    display: block;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
   /* The supplied owner reference is the complete desktop artwork. Keep the
      live DOM controls as transparent hit areas so the pixels are not doubled. */
   .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-tablet,
@@ -791,7 +882,7 @@
   .premium-hero-actions {
     position: absolute;
     inset: var(--reference-header-height) 0 0;
-    z-index: 5;
+    z-index: var(--hero-layer-actions);
     display: block;
     padding: 0;
     pointer-events: none;
@@ -841,23 +932,43 @@
     position: absolute;
     top: calc(var(--reference-header-height) + 2.55vw);
     right: 4.75%;
-    z-index: 6;
+    z-index: var(--hero-layer-offer);
     box-sizing: border-box;
-    width: 19.2%;
-    height: clamp(260px, 21.5vw, 440px);
+    width: clamp(300px, 23vw, 380px);
+    height: clamp(260px, 21.5vw, 360px);
     min-width: 0;
     margin: 0;
-    justify-content: center;
+    justify-content: flex-end;
     gap: clamp(0.52rem, 0.72vw, 0.9rem);
     border-color: rgba(225, 173, 79, 0.5);
     border-radius: clamp(1rem, 1.45vw, 1.65rem);
     padding: clamp(0.9rem, 1.35vw, 1.55rem);
     background:
-      radial-gradient(circle at 86% 10%, rgba(231, 177, 77, 0.2), transparent 34%),
-      linear-gradient(150deg, #2d160d, #110705 74%);
+      radial-gradient(circle at 86% 11%, rgba(238, 180, 78, 0.22) 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 24%, rgba(255, 221, 151, 0.18) 0 1px, transparent 2px),
+      radial-gradient(circle at 92% 38%, rgba(238, 180, 78, 0.16) 0 1px, transparent 2px),
+      radial-gradient(ellipse at 86% 7%, rgba(226, 153, 55, 0.3), transparent 43%),
+      linear-gradient(180deg, rgba(79, 34, 19, 0.22), transparent 48%),
+      linear-gradient(150deg, #33170e, #180807 60%, #0d0503 100%);
     box-shadow:
       0 24px 54px rgba(0, 0, 0, 0.48),
       inset 0 1px 0 rgba(255, 231, 183, 0.08);
+  }
+
+  .premium-hero-offer > * {
+    max-width: 62%;
+  }
+
+  .premium-hero-offer::before {
+    top: -24%;
+    right: -18%;
+    width: 68%;
+  }
+
+  .premium-hero-offer::after {
+    top: 15%;
+    right: 10%;
+    width: clamp(3.2rem, 4.5vw, 4.8rem);
   }
 
   .premium-hero-offer h2 {
@@ -885,7 +996,7 @@
   .premium-hero-catalog-shell {
     position: absolute;
     inset: var(--reference-header-height) 0 0;
-    z-index: 4;
+    z-index: auto;
     pointer-events: none;
   }
 
@@ -898,7 +1009,7 @@
   .premium-reference-device-group {
     position: absolute;
     inset: 0;
-    z-index: 2;
+    z-index: var(--hero-layer-devices);
     pointer-events: none;
   }
 
@@ -914,7 +1025,7 @@
     position: absolute;
     top: calc(48.2% - 0.9vh);
     right: clamp(32px, 3.4vw, 56px);
-    z-index: 4;
+    z-index: auto;
     /* Keep the right and top anchors fixed so the larger showcase grows
        deliberately toward the hero copy (left) and lower artwork (bottom). */
     width: clamp(484px, 37.4vw, 605px);
@@ -947,6 +1058,7 @@
     --coverflow-stage-height: 100%;
     --coverflow-book-depth: clamp(8px, 0.68vw, 11px);
     position: absolute;
+    z-index: auto;
     inset: 0;
     display: grid;
     grid-template-areas: "plaque stage";
@@ -960,6 +1072,7 @@
   }
 
   .premium-coverflow--reference .premium-coverflow__plaque {
+    z-index: var(--hero-layer-plaque);
     align-self: center;
     min-height: clamp(160px, 12.39vw, 189px);
     gap: clamp(0.48rem, 0.6vw, 0.72rem);
@@ -1005,7 +1118,7 @@
 
   .premium-coverflow--reference .premium-coverflow__stage {
     position: relative;
-    z-index: 2;
+    z-index: var(--hero-layer-books);
     height: 100%;
     perspective-origin: 50% 44%;
   }
@@ -1349,6 +1462,10 @@
 }
 
 @media (max-width: 767px) {
+  .premium-hero-offer > * { max-width: 78%; }
+  .premium-hero-offer::before { top: -18%; right: -24%; width: 70%; opacity: 0.58; }
+  .premium-hero-offer::after { display: none; }
+
   .premium-coverflow__plaque {
     width: min(100%, 340px);
     min-height: 160px;
@@ -1372,10 +1489,57 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .premium-hero-offer > * {
+    max-width: 70%;
+  }
+
+  .premium-hero-offer::before {
+    top: -18%;
+    right: -10%;
+    width: 61%;
+    opacity: 0.92;
+    background:
+      radial-gradient(circle at 58% 47%, rgba(246, 196, 102, 0.32) 0 2px, transparent 3px),
+      radial-gradient(circle at 58% 47%, transparent 0 19%, rgba(222, 168, 79, 0.22) 19.5% 20%, transparent 20.5% 32%, rgba(222, 168, 79, 0.2) 32.5% 33%, transparent 33.5% 46%, rgba(222, 168, 79, 0.15) 46.5% 47%, transparent 47.5%),
+      conic-gradient(from 214deg at 58% 47%, transparent 0 8%, rgba(238, 186, 91, 0.22) 9% 9.6%, transparent 10% 28%, rgba(238, 186, 91, 0.15) 29% 29.6%, transparent 30% 100%);
+    filter: drop-shadow(0 0 24px rgba(198, 125, 39, 0.2));
+    -webkit-mask-image: linear-gradient(90deg, transparent 0 12%, #000 48%);
+    mask-image: linear-gradient(90deg, transparent 0 12%, #000 48%);
+    transform: rotate(-7deg);
+  }
+
+  .premium-hero-offer::after {
+    right: -3%;
+    bottom: -15%;
+    width: 43%;
+    height: 68%;
+    border: 0;
+    border-left: 1px solid rgba(231, 184, 96, 0.32);
+    border-radius: 48% 0 0 12%;
+    opacity: 0.62;
+    background:
+      linear-gradient(rgba(236, 190, 104, 0.48), rgba(236, 190, 104, 0.48)) 58% 30% / 1px 27% no-repeat,
+      linear-gradient(90deg, rgba(236, 190, 104, 0.42), transparent) 58% 30% / 21% 1px no-repeat,
+      linear-gradient(90deg, rgba(236, 190, 104, 0.34), transparent) 58% 43% / 16% 1px no-repeat,
+      linear-gradient(90deg, rgba(236, 190, 104, 0.28), transparent) 58% 56% / 21% 1px no-repeat,
+      repeating-linear-gradient(98deg, transparent 0 9px, rgba(226, 176, 86, 0.12) 10px, transparent 11px 16px),
+      linear-gradient(155deg, rgba(107, 45, 23, 0.24), rgba(10, 4, 3, 0.02) 64%);
+    box-shadow:
+      inset 16px 0 30px rgba(224, 147, 52, 0.06),
+      -10px 0 26px rgba(0, 0, 0, 0.18);
+    clip-path: polygon(18% 0, 100% 9%, 100% 100%, 0 100%, 8% 52%);
+    transform: rotate(-4deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .premium-reference-tablet,
   .premium-reference-listening,
-  .premium-hero-action { transition: none; }
+  .premium-hero-action,
+  .premium-hero-offer__cta { transition: none; }
+
+  .premium-hero-offer::before { animation: none; }
 
   .premium-coverflow__slide {
     transition: opacity 120ms linear;

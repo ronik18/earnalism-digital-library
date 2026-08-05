@@ -718,27 +718,28 @@ export default function PremiumHero({
       className={`premium-landing-hero premium-dynamic-hero premium-reference-hero premium-reference-hero--exact${headerMode === "in-flow" ? " premium-reference-hero--in-flow" : ""}${referenceArtFailed ? " premium-reference-hero--art-failed" : ""}`}
       data-testid="premium-landing-hero"
       data-catalog-state={loading ? "loading" : error ? "unavailable" : "ready"}
-      aria-label={headline}
-      aria-busy={loading}
-    >
-      {isDesktopReference ? (
-        <picture>
-          <source type="image/avif" srcSet={REFERENCE_HERO_AVIF_SRCSET} sizes="100vw" />
-          <source type="image/webp" srcSet={REFERENCE_HERO_SRCSET} sizes="100vw" />
-          <img
-            className="premium-reference-hero__art"
-            src={REFERENCE_HERO_IMAGE}
-            alt=""
-            aria-hidden="true"
-            width="2180"
-            height="1032"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            onError={() => setReferenceArtFailed(true)}
-          />
-        </picture>
-      ) : null}
+          aria-label={headline}
+          aria-busy={loading}
+        >
+          {isDesktopReference ? (
+            <div className="premium-reference-hero__backdrop" aria-hidden="true">
+              <picture>
+                <source type="image/avif" srcSet={REFERENCE_HERO_AVIF_SRCSET} sizes="100vw" />
+                <source type="image/webp" srcSet={REFERENCE_HERO_SRCSET} sizes="100vw" />
+                <img
+                  className="premium-reference-hero__art"
+                  src={REFERENCE_HERO_IMAGE}
+                  alt=""
+                  width="2180"
+                  height="1032"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  onError={() => setReferenceArtFailed(true)}
+                />
+              </picture>
+            </div>
+          ) : null}
       <div className="premium-hero-copy">
         <div className="premium-hero-eyebrow">
           <Sparkles size={15} strokeWidth={1.6} aria-hidden="true" />
