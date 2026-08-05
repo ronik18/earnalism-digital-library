@@ -8,9 +8,9 @@ from datetime import datetime, timezone
 from typing import Any
 
 try:
-    from publication_workflow_schema import normalize_publication_workflow, validate_publication_workflow
+    from publication_workflow_schema import derive_minimal_release, normalize_publication_workflow, validate_publication_workflow
 except ImportError:  # pragma: no cover - supports package-style test imports
-    from backend.publication_workflow_schema import normalize_publication_workflow, validate_publication_workflow
+    from backend.publication_workflow_schema import derive_minimal_release, normalize_publication_workflow, validate_publication_workflow
 
 
 PUBLISHING_WORKFLOW_VERSION = "earnalism-publishing-workflow-v1"
@@ -38,7 +38,7 @@ TERMINAL_STATES = {"PUBLISHED", "PAUSED", "QUARANTINED", "ARCHIVED"}
 ALLOWED_INGESTION_STATUSES = {"INGESTED", "CLEANED"}
 ALLOWED_EDITION_STATUSES = {"READY_FOR_REVIEW", "PARTIAL_DRY_RUN", "QA_PASSED"}
 ALLOWED_VISUAL_STATUSES = {"READY_FOR_REVIEW", "PARTIAL_DRY_RUN", "QA_PASSED"}
-ALLOWED_AUDIO_STATUSES = {"DRY_RUN_READY", "READY_FOR_REVIEW", "QA_PASSED", "AUDIO_NOT_REQUIRED"}
+ALLOWED_AUDIO_STATUSES = {"DRY_RUN_READY", "READY_FOR_REVIEW", "QA_PASSED", "AUDIO_NOT_REQUIRED", "NOT_REQUESTED"}
 
 
 @dataclass
@@ -108,6 +108,7 @@ def workflow_signals_from_book(book: dict[str, Any]) -> WorkflowSignals:
     qa = workflow.get("qa", {})
     cost = workflow.get("cost", {})
     publication = workflow.get("publication", {})
+    release = workflow.get("release") if isinstance(workflow.get("release"), dict) else derive_minimal_release(workflow)
     return WorkflowSignals(
         slug=text(book.get("slug") or rights.get("work_slug")),
         title=text(book.get("title") or rights.get("work_title")),
@@ -117,10 +118,10 @@ def workflow_signals_from_book(book: dict[str, Any]) -> WorkflowSignals:
         publication_region=text(rights.get("publication_region") or "global").lower(),
         demand_score=float_or_zero(demand.get("score")),
         action_status=normalize_status(demand.get("action_status")),
-        ingestion_status=normalize_status(workflow.get("ingestion", {}).get("status")),
+        ingestion_status=normalize_status(release.get("content_status") or workflow.get("ingestion", {}).get("status")),
         edition_generation_status=normalize_status(workflow.get("edition", {}).get("status")),
         visual_status=normalize_status(workflow.get("visual", {}).get("status")),
-        audio_status=normalize_status(workflow.get("audio", {}).get("status")),
+        audio_status=normalize_status(release.get("audio_release") or workflow.get("audio", {}).get("status")),
         qa_status=normalize_status(qa.get("status")),
         qa_warnings=list(qa.get("warnings") or []),
         cost_used=float_or_zero(cost.get("used")),
@@ -262,25 +263,14 @@ def publishing_blockers(signals: WorkflowSignals) -> list[str]:
 
 def build_admin_dashboard_sections(signals: WorkflowSignals, decision: WorkflowDecision) -> list[dict[str, Any]]:
     return [
-        {"section": "rights status", "value": signals.rights_tier or "unknown", "status": signals.verification_status},
-        {"section": "demand score", "value": round(signals.demand_score, 2), "status": signals.action_status},
-        {"section": "ingestion status", "value": signals.ingestion_status or "missing", "status": signals.ingestion_status},
         {
-            "section": "edition generation status",
-            "value": signals.edition_generation_status or "missing",
-            "status": signals.edition_generation_status,
+            "section": "rights status",
+            "value": f"{signals.rights_tier or 'UNKNOWN'} {signals.verification_status or ''}".strip(),
+            "status": signals.verification_status,
         },
-        {"section": "visual status", "value": signals.visual_status or "missing", "status": signals.visual_status},
-        {"section": "audio status", "value": signals.audio_status or "missing", "status": signals.audio_status},
-        {"section": "QA warnings", "value": signals.qa_warnings, "status": signals.qa_status or "missing"},
-        {
-            "section": "cost used",
-            "value": {"used": signals.cost_used, "budget": signals.cost_budget},
-            "status": "OVER_BUDGET" if signals.cost_budget > 0 and signals.cost_used > signals.cost_budget else "OK",
-        },
-        {"section": "publish readiness", "value": decision.publish_readiness, "status": decision.state},
-        {"section": "rollback button", "value": decision.rollback_available, "status": "DRY_RUN_ONLY"},
-        {"section": "pause/kill switch", "value": decision.pause_available, "status": "DRY_RUN_ONLY"},
+        {"section": "content status", "value": signals.ingestion_status or "MISSING", "status": signals.ingestion_status},
+        {"section": "reader release", "value": "LIVE" if signals.is_published else "DRAFT", "status": decision.state},
+        {"section": "audio release", "value": signals.audio_status or "NOT_REQUESTED", "status": signals.audio_status},
     ]
 
 

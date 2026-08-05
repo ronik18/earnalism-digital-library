@@ -1,18 +1,13 @@
 const SECTION_LABELS = [
   "rights status",
-  "demand score",
-  "ingestion status",
-  "edition generation status",
-  "visual status",
-  "audio status",
-  "QA warnings",
-  "cost used",
-  "publish readiness",
+  "content status",
+  "reader release",
+  "audio release",
 ];
 
 const ALLOWED_INGESTION_STATUSES = new Set(["INGESTED", "CLEANED"]);
 const ALLOWED_GENERATION_STATUSES = new Set(["READY_FOR_REVIEW", "PARTIAL_DRY_RUN", "QA_PASSED"]);
-const ALLOWED_AUDIO_STATUSES = new Set(["DRY_RUN_READY", "READY_FOR_REVIEW", "QA_PASSED", "AUDIO_NOT_REQUIRED"]);
+const ALLOWED_AUDIO_STATUSES = new Set(["DRY_RUN_READY", "READY_FOR_REVIEW", "QA_PASSED", "AUDIO_NOT_REQUIRED", "NOT_REQUESTED"]);
 
 function normalizeStatus(value) {
   return String(value || "").trim().toUpperCase().replace(/[-\s]+/g, "_");
@@ -31,14 +26,15 @@ export function derivePublishingWorkflow(book = {}) {
   const canonicalQa = canonical.qa || {};
   const canonicalCost = canonical.cost || {};
   const canonicalPublication = canonical.publication || {};
+  const canonicalRelease = canonical.release || {};
   const rightsTier = normalizeStatus(canonicalRights.tier);
   const verificationStatus = normalizeStatus(canonicalRights.verification_status);
   const qaStatus = normalizeStatus(canonicalQa.status);
   const actionStatus = normalizeStatus(canonicalDemand.action_status);
-  const ingestionStatus = normalizeStatus(canonicalIngestion.status);
+  const ingestionStatus = normalizeStatus(canonicalRelease.content_status || canonicalIngestion.status);
   const editionStatus = normalizeStatus(canonicalEdition.status);
   const visualStatus = normalizeStatus(canonicalVisual.status);
-  const audioStatus = normalizeStatus(canonicalAudio.status);
+  const audioStatus = normalizeStatus(canonicalRelease.audio_release || canonicalAudio.status);
   const costUsed = Number(canonicalCost.used ?? 0);
   const costBudget = Number(canonicalCost.budget ?? 0);
   const blockers = [];
@@ -93,14 +89,9 @@ export function derivePublishingWorkflow(book = {}) {
     blockers,
     sections: {
       "rights status": `${rightsTier || "UNKNOWN"} ${verificationStatus || ""}`.trim(),
-      "demand score": canonicalDemand.score || "not scored",
-      "ingestion status": ingestionStatus || "missing",
-      "edition generation status": editionStatus || "missing",
-      "visual status": visualStatus || "missing",
-      "audio status": audioStatus || "missing",
-      "QA warnings": (canonicalQa.warnings || []).length,
-      "cost used": costBudget ? `${costUsed}/${costBudget}` : costUsed,
-      "publish readiness": publishReadiness,
+      "content status": ingestionStatus || "MISSING",
+      "reader release": canonicalRelease.reader_release || (canonicalPublication.reader_exposed ? "LIVE" : "DRAFT"),
+      "audio release": canonicalRelease.audio_release || (canonicalPublication.audio_exposed ? "LIVE" : "NOT_REQUESTED"),
     },
     rollbackAvailable: ["READY_FOR_PUBLICATION", "PUBLISHED", "PAUSED"].includes(state),
     pauseAvailable: !["ARCHIVED", "QUARANTINED"].includes(state),
@@ -115,7 +106,6 @@ function workflowFromReport(report) {
   SECTION_LABELS.forEach((label) => {
     if (!(label in sections)) sections[label] = "missing";
   });
-  sections["publish readiness"] = report.publish_readiness || sections["publish readiness"];
   return {
     state: normalizeStatus(report.state || "DISCOVERED"),
     publishReadiness: normalizeStatus(report.publish_readiness || "BLOCKED"),
@@ -139,18 +129,10 @@ export default function PublishingWorkflowPanel({ book }) {
           {workflow.publishReadiness}
         </span>
       </div>
-      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-charcoal-soft">
-        {SECTION_LABELS.map((label) => (
-          <div key={label} className="flex justify-between gap-2 border-b border-brand/40 pb-1">
-            <span>{label}</span>
-            <span className="text-right text-burgundy">{String(workflow.sections[label])}</span>
-          </div>
-        ))}
-      </div>
       {workflow.blockers.length > 0 && (
-        <ul className="mt-3 list-disc pl-4 text-xs text-amber-800">
-          {workflow.blockers.slice(0, 3).map((blocker) => <li key={blocker}>{blocker}</li>)}
-        </ul>
+        <p className="mt-3 text-xs text-amber-800">
+          {workflow.blockers[0]}
+        </p>
       )}
       <div className="mt-3 flex flex-wrap gap-2">
         <button type="button" disabled className="rounded-full border border-brand-soft px-3 py-1 text-[0.62rem] uppercase tracking-[0.16em] text-charcoal-soft opacity-70">

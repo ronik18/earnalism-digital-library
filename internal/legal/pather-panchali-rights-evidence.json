@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "slug": "pather-panchali",
+  "work": {
+    "title": "Pather Panchali",
+    "original_title": "পথের পাঁচালী",
+    "author": "Bibhutibhushan Bandyopadhyay",
+    "author_death_year": 1950,
+    "first_book_publication_year": 1929,
+    "language": "bn",
+    "edition_scope": "The original Bengali literary work represented by the controlled Bengali manuscript; no translation, annotation, introduction, cover, scan image, film material, or recording is included."
+  },
+  "source": {
+    "url": "https://bn.wikisource.org/wiki/%E0%A6%AA%E0%A6%A5%E0%A7%87%E0%A6%B0_%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A7%80",
+    "repository_policy_url": "https://wikisource.org/wiki/Wikisource%3ACopyright_policy",
+    "source_format": "mediawiki-parse-api-html",
+    "source_accessed_at": "2026-08-05",
+    "source_use": "controlled source for internal manuscript preparation; repository metadata and boilerplate are excluded from reader content",
+    "source_license_check": "The page license/template must remain attached to the archived source snapshot and be checked before commercial release."
+  },
+  "territory_basis": {
+    "APAC": {
+      "india": "ORIGINAL_WORK_TERM_EXPIRED_PENDING_OWNER_CONFIRMATION",
+      "basis": "India Copyright Act 1957 section 22: published literary works ordinarily run for the author's life plus 60 years."
+    },
+    "USA": {
+      "status": "ORIGINAL_WORK_TERM_AND_PUBLICATION_DATE_SUPPORT_PUBLIC_DOMAIN",
+      "basis": "The work was published as a book in 1929; the controlled source is a public-domain text repository."
+    },
+    "UK": {
+      "status": "ORIGINAL_WORK_TERM_EXPIRED_PENDING_OWNER_CONFIRMATION",
+      "basis": "The standard literary-work term is 70 years after the author's death; the recorded death year is 1950."
+    },
+    "Europe": {
+      "status": "ORIGINAL_WORK_TERM_EXPIRED_PENDING_OWNER_CONFIRMATION",
+      "basis": "The standard author-life-plus-70 framework is consistent with the recorded 1950 death year."
+    }
+  },
+  "separate_rights": {
+    "controlled_reader_text": "Requires hash and edition-scope match to this packet.",
+    "covers": "Not cleared by this packet; requires separate artwork approval and provenance.",
+    "audiobook": "Not cleared by this packet; generated audio requires model/voice terms, generation manifest, QA, and release approval.",
+    "translation_or_annotation": "Not included and not cleared."
+  },
+  "decision": {
+    "document_status": "RIGHTS_DOCUMENT_RECONSTRUCTED",
+    "commercial_release_status": "OWNER_LEGAL_REVIEW_REQUIRED",
+    "audio_status": "NO_AUDIO_GENERATION_UNTIL_OWNER_LEGAL_REVIEW_AND_SOURCE_HASH_MATCH",
+    "next_action": "Attach the controlled manuscript hash and archived source snapshot, then have the owner confirm the territory basis before any paid or public audio operation."
+  },
+  "evidence_urls": [
+    "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+    "https://www.gov.uk/copyright/how-long-copyright-lasts",
+    "https://wikisource.org/wiki/Wikisource%3ACopyright_policy",
+    "https://bibhutibhushan.in/about-him/",
+    "https://en.banglapedia.org/index.php?title=Pather_Panchali"
+  ]
+}

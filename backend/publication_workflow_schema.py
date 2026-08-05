@@ -89,6 +89,35 @@ def _set(mapping: dict[str, Any], path: str, value: Any) -> None:
     target[parts[-1]] = value
 
 
+def derive_minimal_release(workflow: dict[str, Any]) -> dict[str, str]:
+    """Return the four canonical release decisions.
+
+    Exposure and publish readiness are projections, not independent stored
+    decisions. Evidence remains in the detailed sections and audit records.
+    """
+    rights = workflow.get("rights") if isinstance(workflow.get("rights"), dict) else {}
+    ingestion = workflow.get("ingestion") if isinstance(workflow.get("ingestion"), dict) else {}
+    audio = workflow.get("audio") if isinstance(workflow.get("audio"), dict) else {}
+    publication = workflow.get("publication") if isinstance(workflow.get("publication"), dict) else {}
+    rights_status = "APPROVED" if (
+        rights.get("tier") == "A" and rights.get("verification_status") == "APPROVED"
+    ) else str(rights.get("verification_status") or "UNKNOWN")
+    content_status = str(ingestion.get("status") or "MISSING")
+    reader_release = "LIVE" if publication.get("reader_exposed") is True else "DRAFT"
+    if publication.get("audio_exposed") is True:
+        audio_release = "LIVE"
+    else:
+        audio_release = str(audio.get("release_status") or "").strip().upper()
+        if not audio_release:
+            audio_release = "NOT_REQUESTED" if not audio.get("status") or audio.get("status") == "AUDIO_NOT_REQUIRED" else "IN_PROGRESS"
+    return {
+        "rights_status": rights_status,
+        "content_status": content_status,
+        "reader_release": reader_release,
+        "audio_release": audio_release,
+    }
+
+
 def _source_record(source: str, payload: dict[str, Any], path: str) -> tuple[str, Any] | None:
     value = _get(payload, path)
     value = _norm(path, value)
@@ -152,6 +181,7 @@ def normalize_publication_workflow(
     }
     for section in ("rights", "demand", "ingestion", "edition", "visual", "audio", "qa", "cost"):
         workflow.setdefault(section, {})
+    workflow["release"] = derive_minimal_release(workflow)
     workflow["audit"] = {"migration_source": "publication_workflow_schema_v2"}
     changed = workflow != current
     digest = hashlib.sha256(json.dumps(workflow, sort_keys=True).encode()).hexdigest()
