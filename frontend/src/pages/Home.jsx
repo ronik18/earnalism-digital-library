@@ -53,7 +53,7 @@ export default function Home() {
   const [submitting, setSubmitting] = useState(false);
   const cachedHomeCuration = getHomeCurationCache();
   const [homeCuration, setHomeCuration] = useState(() => cachedHomeCuration || getHomeCurationSnapshot());
-  const [homeCurationLoading, setHomeCurationLoading] = useState(() => !cachedHomeCuration);
+  const [homeCurationLoading, setHomeCurationLoading] = useState(false);
   const [homeCurationError, setHomeCurationError] = useState(false);
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)
@@ -80,18 +80,38 @@ export default function Home() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchHomeCuration(controller.signal)
-      .then((payload) => {
-        setHomeCuration(payload);
-        setHomeCurationError(false);
-      })
-      .catch((error) => {
-        if (error?.name !== "CanceledError" && error?.name !== "AbortError") setHomeCurationError(true);
-      })
-      .finally(() => {
-        if (!controller.signal.aborted) setHomeCurationLoading(false);
-      });
-    return () => controller.abort();
+    let idleHandle;
+    let timeoutHandle;
+
+    const refreshCuration = () => {
+      fetchHomeCuration(controller.signal)
+        .then((payload) => {
+          setHomeCuration(payload);
+          setHomeCurationError(false);
+        })
+        .catch((error) => {
+          if (error?.name === "CanceledError" || error?.name === "AbortError") return;
+          // Keep the bundled release snapshot visible if a background refresh fails.
+          setHomeCurationError(false);
+        })
+        .finally(() => {
+          if (!controller.signal.aborted) setHomeCurationLoading(false);
+        });
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      idleHandle = window.requestIdleCallback(refreshCuration, { timeout: 1200 });
+    } else {
+      timeoutHandle = window.setTimeout(refreshCuration, 250);
+    }
+
+    return () => {
+      controller.abort();
+      if (idleHandle !== undefined && typeof window.cancelIdleCallback === "function") {
+        window.cancelIdleCallback(idleHandle);
+      }
+      if (timeoutHandle !== undefined) window.clearTimeout(timeoutHandle);
+    };
   }, []);
 
   const subscribe = async (event) => {

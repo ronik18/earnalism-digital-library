@@ -38,7 +38,7 @@ describe("PremiumListeningRail Home contract", () => {
       "Curated performances with seamless read-along listening.",
     );
     expect(rail).toContain("Explore audiobooks");
-    expect(rail).toContain("/library?audio=approved");
+    expect(rail).toContain("/library?availability=approved-audiobook");
     expect(rail).not.toMatch(/autoplay|<audio|preload=/i);
   });
 

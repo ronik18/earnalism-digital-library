@@ -76,7 +76,7 @@ function ListeningCard({ book, featured, onCoverFailure }) {
             widths={[150, 180, 240]}
             sizes="(min-width: 900px) 126px, 96px"
             className="premium-listening-card__cover"
-            loading="lazy"
+            loading="eager"
             allowGraphicalFallback={false}
             onPermanentFailure={onCoverFailure}
           />
@@ -275,7 +275,7 @@ export default function PremiumListeningRail({
             )}
             <Link
               className="premium-listening-rail__browse"
-              to="/library?audio=approved"
+              to="/library?availability=approved-audiobook"
             >
               Explore audiobooks{" "}
               <ArrowRight size={15} strokeWidth={1.6} aria-hidden="true" />

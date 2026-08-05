@@ -3839,9 +3839,7 @@ textarea.input-elegant {
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 32px 68px -46px rgba(0, 0, 0, 0.88);
 }
-.reference-pipeline-shelf,
-.reference-reading-path,
-#reading-circle {
+.reference-pipeline-shelf {
   content-visibility: auto;
   contain-intrinsic-size: 720px;
 }

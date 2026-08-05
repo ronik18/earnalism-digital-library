@@ -13,6 +13,14 @@ const ICONS = {
   sparkles: Sparkles,
 };
 
+const LIBRARY_ROUTE_BY_SHELF = {
+  "bengali-life-and-legacy": "/library?language=bn&availability=reader-ready",
+  "gothic-and-the-uncanny": "/library?language=en",
+  "love-society-and-human-nature": "/library?language=en",
+  "adventure-nature-and-wonder": "/library?language=en",
+  "short-masterpieces": "/library?language=en",
+};
+
 export default function ShelfCollageTile({ group, index = 0 }) {
   const [failedSlugs, setFailedSlugs] = useState(() => new Set());
   const candidateBooks = [
@@ -31,7 +39,7 @@ export default function ShelfCollageTile({ group, index = 0 }) {
   const countLabel = getShelfCountLabel({ ...group, books });
   const themeChips = getShelfThemeChips(group);
   const ctaLabel = group.cta_label?.trim() || `Explore ${group.title || "this shelf"}`;
-  const ctaUrl = group.cta_url || "/library";
+  const ctaUrl = LIBRARY_ROUTE_BY_SHELF[group.id] || group.cta_url || "/library";
 
   return (
     <article
