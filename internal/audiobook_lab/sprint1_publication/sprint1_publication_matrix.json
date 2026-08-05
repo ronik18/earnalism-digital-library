@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T22:00:32Z",
+  "generated_at": "2026-08-05T04:47:04Z",
   "parallel_sprint": {
     "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_PUBLIC_READER_AND_AUDIOBOOK_LIVE_EXECUTION_WITH_175_USD_CAP",
     "execution_board": "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json",
@@ -115,7 +115,10 @@
       "parallel_agent_id": "019f57d2-6c5c-7792-a11d-0c4468ac6226",
       "parallel_agent_nickname": "Russell",
       "parallel_paid_execution_status": "NOT_REQUIRED_EXISTING_PUBLIC_AUDIO",
-      "parallel_release_truth_status": "APPROVED_AUDIO_ENDPOINT_HEALTHY_FRONTEND_TIMESTAMP_FIX_PENDING_DEPLOY"
+      "parallel_release_truth_status": "APPROVED_AUDIO_ENDPOINT_HEALTHY_FRONTEND_TIMESTAMP_FIX_PENDING_DEPLOY",
+      "autonomous_v3_state": "YES_YES_PRODUCTION_REVALIDATION",
+      "autonomous_v3_next_command": "curl -sS https://api.theearnalism.com/api/reader/book/book-2b9853ec52/manifest | jq '{enabled:.audio.enabled,release_gate:.audio.release_gate,qa_status:.audio.qa_status}'",
+      "autonomous_v3_public_audio_allowed_now": true
     },
     {
       "slug": "bn-066",
@@ -150,7 +153,10 @@
       "parallel_agent_role": "Bengali Long / Repair Lane",
       "parallel_agent_id": "019f57d2-7f7d-74e3-878b-e5d5b2bfc3e5",
       "parallel_agent_nickname": "Newton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "PRIVATE_ARTIFACT_TRACKING_AND_LOCK_SAFE_ASR_CALIBRATION_REQUIRED",
+      "autonomous_v3_next_command": "PYTHONPYCACHEPREFIX=/tmp/earnalism-pycache python3 internal/audiobook_lab/scripts/bengali_asr_language_calibration.py --slug bn-066 --run-dir internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts --chunk-ids group_0000,group_0076,group_0151 --language-options auto,bn,ben,bengali --output internal/audiobook_lab/public_access/bn_066_asr_calibration_preflight.json",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "radharani",
@@ -185,7 +191,10 @@
       "parallel_agent_role": "Short Bengali High-ROI Lane",
       "parallel_agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
       "parallel_agent_nickname": "Galileo",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_SCALE_GATE_BLOCKED",
+      "autonomous_v3_next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs radharani --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "nishkriti",
@@ -220,7 +229,10 @@
       "parallel_agent_role": "Short Bengali High-ROI Lane",
       "parallel_agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
       "parallel_agent_nickname": "Galileo",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "READY_FOR_REPRESENTATIVE_AUDITION_STORAGE_REVOCATION_AND_SCALE_GATE_BLOCKED",
+      "autonomous_v3_next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs nishkriti --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "muchiram-gurer-jibanchorit",
@@ -238,7 +250,7 @@
       "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "AUTOMATED_NARRATION_PLATEAU: FULL_BOOK_MIN_7.8_CONFIDENCE_0.85_WITH_ROBOTIC_MECHANICAL_LIST_READING_FATAL_FLAGS; TARGETED_ACHIRD_MIN_7.4; TARGETED_AOEDE_SLOW_MIN_7.8; HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "reason": "",
-      "next_action": "Obtain source-bound human narration or commercially licensed audio and validate the received file against the prepared packet before full ASR, listening, sync, upload, metadata, endpoint, and browser gates.",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
@@ -255,7 +267,10 @@
       "parallel_agent_role": "Short Bengali High-ROI Lane",
       "parallel_agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
       "parallel_agent_nickname": "Galileo",
-      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED"
+      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "book-d19e96859f",
@@ -270,11 +285,11 @@
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_PASS",
+      "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED: RAW_ASR_SOURCE_0.6838_BELOW_REQUIRED_9.7; CONSTRUCTION_AUDIT_10.0_IS_NOT_AN_ASR_SUBSTITUTE; UPLOAD_RELEASE_PUBLICATION_BLOCKED",
       "reason": "",
-      "next_action": "Run a non-provider ASR language/model calibration preflight against representative chunks of the existing private Google audio; do not upload, build a release packet, mutate metadata, or publish.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -304,7 +319,10 @@
       "parallel_agent_role": "Short Bengali High-ROI Lane",
       "parallel_agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
       "parallel_agent_nickname": "Galileo",
-      "parallel_paid_execution_status": "PRIVATE_TTS_LISTENING_SYNC_PASS_ASR_REPAIR_REQUIRED"
+      "parallel_paid_execution_status": "PRIVATE_TTS_LISTENING_SYNC_PASS_ASR_REPAIR_REQUIRED",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "book-f5d593e1f4",
@@ -322,7 +340,7 @@
       "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "AUTOMATED_NARRATION_PLATEAU: GOOGLE_AOEDE_MIN_7.8_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS; SARVAM_POOJA_MIN_7.8_BELOW_BENGALI_9.2_GATE; HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "reason": "",
-      "next_action": "Obtain source-bound human narration or commercially licensed audio and validate the received file against the prepared packet before full release QA.",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
@@ -339,7 +357,10 @@
       "parallel_agent_role": "Short Bengali High-ROI Lane",
       "parallel_agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
       "parallel_agent_nickname": "Galileo",
-      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED"
+      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "pather-panchali",
@@ -374,7 +395,10 @@
       "parallel_agent_role": "Bengali Long / Repair Lane",
       "parallel_agent_id": "019f57d2-7f7d-74e3-878b-e5d5b2bfc3e5",
       "parallel_agent_nickname": "Newton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "OWNER_DOCUMENT_REQUIRED",
+      "autonomous_v3_next_command": "cat internal/audiobook_lab/public_access/pather_panchali_audio_repair_requirements.md",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "devdas",
@@ -409,7 +433,10 @@
       "parallel_agent_role": "Bengali Long / Repair Lane",
       "parallel_agent_id": "019f57d2-7f7d-74e3-878b-e5d5b2bfc3e5",
       "parallel_agent_nickname": "Newton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "autonomous_v3_next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs devdas --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "book-edfcf810c5",
@@ -444,7 +471,10 @@
       "parallel_agent_role": "Bengali Long / Repair Lane",
       "parallel_agent_id": "019f57d2-7f7d-74e3-878b-e5d5b2bfc3e5",
       "parallel_agent_nickname": "Newton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "READY_FOR_SOURCE_BOUND_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "autonomous_v3_next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs book-edfcf810c5 --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "a-ghost-story",
@@ -514,7 +544,10 @@
       "parallel_agent_id": "019f57d2-6c5c-7792-a11d-0c4468ac6226",
       "parallel_agent_nickname": "Russell",
       "parallel_paid_execution_status": "NOT_REQUIRED_EXISTING_PUBLIC_AUDIO",
-      "parallel_release_truth_status": "APPROVED_AUDIO_ENDPOINT_HEALTHY_FRONTEND_TIMESTAMP_FIX_PENDING_DEPLOY"
+      "parallel_release_truth_status": "APPROVED_AUDIO_ENDPOINT_HEALTHY_FRONTEND_TIMESTAMP_FIX_PENDING_DEPLOY",
+      "autonomous_v3_state": "YES_YES_PRODUCTION_REVALIDATION",
+      "autonomous_v3_next_command": "curl -sS -H 'Range: bytes=0-1023' -o /dev/null -w '%{http_code} %{size_download}\\n' https://api.theearnalism.com/api/reader/book/a-ghost-story/audiobook",
+      "autonomous_v3_public_audio_allowed_now": true
     },
     {
       "slug": "dracula",
@@ -549,7 +582,10 @@
       "parallel_agent_role": "Medium/Long English Lane",
       "parallel_agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
       "parallel_agent_nickname": "Goodall",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "LONG_TITLE_SEQUENCE_HOLD",
+      "autonomous_v3_next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs dracula --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "frankenstein",
@@ -584,7 +620,10 @@
       "parallel_agent_role": "Medium/Long English Lane",
       "parallel_agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
       "parallel_agent_nickname": "Goodall",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "LONG_TITLE_SEQUENCE_HOLD",
+      "autonomous_v3_next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs frankenstein --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "jekyll-and-hyde",
@@ -619,7 +658,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "READY_FOR_REPRESENTATIVE_AUDITION_GOOGLE_ADC_REAUTH_REQUIRED",
+      "autonomous_v3_next_command": "gcloud auth application-default login",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "picture-of-dorian-gray",
@@ -654,7 +696,10 @@
       "parallel_agent_role": "Medium/Long English Lane",
       "parallel_agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
       "parallel_agent_nickname": "Goodall",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "LONG_TITLE_SEQUENCE_HOLD",
+      "autonomous_v3_next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs picture-of-dorian-gray --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-time-machine",
@@ -689,7 +734,10 @@
       "parallel_agent_role": "Medium/Long English Lane",
       "parallel_agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
       "parallel_agent_nickname": "Goodall",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "LONG_TITLE_SEQUENCE_HOLD",
+      "autonomous_v3_next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-time-machine --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-call-of-the-wild",
@@ -724,7 +772,10 @@
       "parallel_agent_role": "Medium/Long English Lane",
       "parallel_agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
       "parallel_agent_nickname": "Goodall",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "LONG_TITLE_SEQUENCE_HOLD",
+      "autonomous_v3_next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-call-of-the-wild --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "white-fang",
@@ -759,7 +810,10 @@
       "parallel_agent_role": "Medium/Long English Lane",
       "parallel_agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
       "parallel_agent_nickname": "Goodall",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "LONG_TITLE_SEQUENCE_HOLD",
+      "autonomous_v3_next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug white-fang --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "great-expectations",
@@ -846,7 +900,10 @@
       "parallel_agent_role": "Medium/Long English Lane",
       "parallel_agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
       "parallel_agent_nickname": "Goodall",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "LONG_TITLE_SEQUENCE_HOLD",
+      "autonomous_v3_next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug pride-and-prejudice --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-secret-garden",
@@ -881,7 +938,10 @@
       "parallel_agent_role": "Medium/Long English Lane",
       "parallel_agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
       "parallel_agent_nickname": "Goodall",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "LONG_TITLE_SEQUENCE_HOLD",
+      "autonomous_v3_next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-secret-garden --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "alices-adventures-in-wonderland",
@@ -916,7 +976,10 @@
       "parallel_agent_role": "Medium/Long English Lane",
       "parallel_agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
       "parallel_agent_nickname": "Goodall",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "LONG_TITLE_SEQUENCE_HOLD",
+      "autonomous_v3_next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs alices-adventures-in-wonderland --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-gift-of-the-magi",
@@ -934,8 +997,8 @@
       "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "BOUNDED_AUTOMATED_AUDITIONS_FAILED: STUDIO_C_MIN_8.5; CHIRP_AOEDE_MIN_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS; CONTEXTUAL_STUDIO_C_MIN_8.3; HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "reason": "",
-      "next_action": "Build the source-bound narration/import packet, then obtain human narration or commercially licensed audio; do not run another bounded Google retry.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -951,7 +1014,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED"
+      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-tell-tale-heart",
@@ -969,8 +1035,8 @@
       "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "BOUNDED_AUTOMATED_AUDITIONS_FAILED: CONTEXTUAL_STUDIO_C_MIN_8.5; SLOW_CONTEXTUAL_STUDIO_C_MIN_8.4; HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "reason": "",
-      "next_action": "Build the source-bound narration/import packet, then obtain human narration or commercially licensed audio; do not run another bounded Google retry.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -986,7 +1052,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED"
+      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-open-window",
@@ -1001,11 +1070,11 @@
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED",
+      "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "REPRESENTATIVE_AUDITION_STUDIO_B_TWILIGHT_SCORE_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS",
       "reason": "",
-      "next_action": "Obtain source-bound human narration or approve another provider audition, then validate the received narration against the generated packet before release-gate QA.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-open-window --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -1056,7 +1125,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-open-window --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "sredni-vashtar",
@@ -1074,8 +1146,8 @@
       "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "BOUNDED_AUTOMATED_AUDITIONS_FAILED: STUDIO_C_MIN_7.3_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS; CHIRP_ACHIRD_MIN_8.5_BELOW_ENGLISH_9.3_GATE; HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "reason": "",
-      "next_action": "Build the source-bound narration/import packet, then obtain human narration or commercially licensed audio; do not run another bounded Google retry.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug sredni-vashtar --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug sredni-vashtar --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -1091,7 +1163,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED"
+      "parallel_paid_execution_status": "AUTOMATED_PAID_RETRIES_STOPPED_EXTERNAL_ACTION_REQUIRED",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug sredni-vashtar --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "dsires-baby",
@@ -1106,11 +1181,11 @@
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "SPRINT_TARGET_INCOMPLETE",
+      "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "reason": "",
-      "next_action": "Run the title's bounded repair command, then request serialized paid execution only after rights, sanitation, and representative gates pass",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug dsires-baby --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug dsires-baby --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -1126,7 +1201,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug dsires-baby --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-cop-and-the-anthem",
@@ -1141,11 +1219,11 @@
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "SPRINT_TARGET_INCOMPLETE",
+      "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "reason": "",
-      "next_action": "Run the title's bounded repair command, then request serialized paid execution only after rights, sanitation, and representative gates pass",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-cop-and-the-anthem --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-cop-and-the-anthem --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -1161,7 +1239,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-cop-and-the-anthem --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-last-leaf",
@@ -1176,11 +1257,11 @@
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "SPRINT_TARGET_INCOMPLETE",
+      "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "reason": "",
-      "next_action": "Run the title's bounded repair command, then request serialized paid execution only after rights, sanitation, and representative gates pass",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-last-leaf --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-last-leaf --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -1196,7 +1277,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-last-leaf --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-masque-of-the-red-death",
@@ -1211,11 +1295,11 @@
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "SPRINT_TARGET_INCOMPLETE",
+      "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "reason": "",
-      "next_action": "Run the title's bounded repair command, then request serialized paid execution only after rights, sanitation, and representative gates pass",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-masque-of-the-red-death --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-masque-of-the-red-death --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -1231,7 +1315,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-masque-of-the-red-death --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-yellow-wallpaper",
@@ -1246,11 +1333,11 @@
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "SPRINT_TARGET_INCOMPLETE",
+      "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "reason": "",
-      "next_action": "Run the title's bounded repair command, then request serialized paid execution only after rights, sanitation, and representative gates pass",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-yellow-wallpaper --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-yellow-wallpaper --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -1266,7 +1353,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-yellow-wallpaper --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-monkeys-paw",
@@ -1281,11 +1371,11 @@
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "SPRINT_TARGET_INCOMPLETE",
+      "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "reason": "",
-      "next_action": "Run the title's bounded repair command, then request serialized paid execution only after rights, sanitation, and representative gates pass",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-monkeys-paw --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -1301,7 +1391,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     },
     {
       "slug": "the-necklace",
@@ -1316,11 +1409,11 @@
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "SPRINT_TARGET_INCOMPLETE",
+      "final_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "reason": "",
-      "next_action": "Run the title's bounded repair command, then request serialized paid execution only after rights, sanitation, and representative gates pass",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-necklace --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Import received source-bound human narration or licensed audio, then run the complete release-gate QA pipeline.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-necklace --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -1336,7 +1429,10 @@
       "parallel_agent_role": "Short English Lane",
       "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
       "parallel_agent_nickname": "Dalton",
-      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING"
+      "parallel_paid_execution_status": "WAITING_SERIALIZED_EXECUTION_RUNTIME_GATES_MISSING",
+      "autonomous_v3_state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "autonomous_v3_next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-necklace --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "autonomous_v3_public_audio_allowed_now": false
     }
   ],
   "stage2_owner_decision": "AUTHORIZE_SPRINT1_STAGE_2_PUBLIC_READER_AND_AUDIO_PUBLICATION_EXECUTION_WITH_175_USD_CAP_AFTER_COVER_COMPLETION",
@@ -1419,5 +1515,15 @@
     "production_audio_hidden": true,
     "paid_tts_lock_restored": true,
     "status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED"
+  },
+  "autonomous_v3": {
+    "owner_decision": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
+    "execution_board": "internal/audiobook_lab/sprint1_publication/sprint1_autonomous_execution_board.json",
+    "human_intake_board": "internal/audiobook_lab/sprint1_publication/sprint1_human_narration_intake_board.json",
+    "provider_failure_registry": "internal/audiobook_lab/sprint1_publication/sprint1_provider_failure_registry.json",
+    "loop_state": "NON_PAID_REPAIR_QUEUE_REMAINS",
+    "provider_calls_ran": false,
+    "new_public_audiobooks": 0,
+    "release_gate_mutated": false
   }
 }

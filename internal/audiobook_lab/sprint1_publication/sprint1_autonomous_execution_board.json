@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-13T07:54:58Z",
+  "generated_at": "2026-08-05T04:47:04Z",
   "owner_decision": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
   "loop_state": "NON_PAID_REPAIR_QUEUE_REMAINS",
   "safety": {
@@ -31,20 +31,20 @@
     },
     "fixed_caps_enforcement": "BOUND_INLINE_FOR_EVERY_CHILD_PROCESS",
     "fixed_caps_observed_in_parent": {
-      "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "MATCH",
-      "SPRINT1_MAX_USD_PER_TITLE": "MATCH",
-      "MAX_TTS_BUDGET_USD": "MATCH",
+      "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "BOUND_BY_CHILD_PROCESS",
+      "SPRINT1_MAX_USD_PER_TITLE": "BOUND_BY_CHILD_PROCESS",
+      "MAX_TTS_BUDGET_USD": "BOUND_BY_CHILD_PROCESS",
       "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "MATCH",
-      "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "MATCH",
-      "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "MATCH",
-      "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "MATCH",
-      "EARNALISM_OPENAI_LISTENING_QA_MODEL": "MATCH",
-      "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "MATCH",
-      "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "MATCH",
-      "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE": "MATCH",
-      "EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS": "MATCH",
-      "EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD": "MATCH",
-      "EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS": "MATCH",
+      "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "BOUND_BY_CHILD_PROCESS",
+      "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "BOUND_BY_CHILD_PROCESS",
+      "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "BOUND_BY_CHILD_PROCESS",
+      "EARNALISM_OPENAI_LISTENING_QA_MODEL": "BOUND_BY_CHILD_PROCESS",
+      "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "BOUND_BY_CHILD_PROCESS",
+      "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "BOUND_BY_CHILD_PROCESS",
+      "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE": "BOUND_BY_CHILD_PROCESS",
+      "EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS": "BOUND_BY_CHILD_PROCESS",
+      "EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD": "BOUND_BY_CHILD_PROCESS",
+      "EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS": "BOUND_BY_CHILD_PROCESS",
       "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": "MATCH",
       "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": "MATCH",
       "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "MATCH"
@@ -76,35 +76,31 @@
       }
     },
     "bengali_campaign_paid_gates": {
-      "ready": false,
-      "missing": [
-        "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN",
-        "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD",
-        "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE"
-      ],
+      "ready": true,
+      "missing": [],
       "source": "internal/earnalism_intelligence/bengali_audiobook_campaign_policy.md"
     },
     "secrets_printed": false
   },
   "reconciled_nonpaid_preflight": {
     "present": true,
-    "path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/sprint1_v3_nonpaid_preflight_results.json",
+    "path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/sprint1_v3_nonpaid_preflight_results.json",
     "generated_at": "2026-07-13T07:30:39Z",
     "matched_title_count": 7
   },
   "lock": {
-    "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+    "path": "/private/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/locks/paid_tts.lock",
     "status": "active",
     "active": true,
     "current_holder": "none",
     "allowed_next_holders": [],
     "available": true,
-    "approved_scope": "Stage 3C bn-066 checkpointed ASR/source alignment resume on existing private audio, followed only by bounded listening QA after ASR completion; total MAX_TTS_BUDGET_USD=5; ASR retry cap=3; listening-QA cap=0.75; prior partial ASR billing risk explicitly accepted for this single retry; no TTS regeneration, upload, publication, public Listen, or release-gate mutation.",
+    "approved_scope": "Sprint1 Nishkriti full pipeline using the passed Sarvam representative arm; publish only if all gates pass.",
     "allowed_slugs": [
-      "bn-066"
+      "nishkriti"
     ],
-    "budget_cap_usd": 5,
-    "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
+    "budget_cap_usd": 175.0,
+    "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3"
   },
   "budget": {
     "cap_usd": 175.0,
@@ -153,7 +149,7 @@
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-gift-of-the-magi"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-gift-of-the-magi"
     },
     {
       "slug": "the-tell-tale-heart",
@@ -165,7 +161,7 @@
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-tell-tale-heart"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-tell-tale-heart"
     },
     {
       "slug": "sredni-vashtar",
@@ -177,91 +173,91 @@
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug sredni-vashtar --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/sredni-vashtar"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/sredni-vashtar"
     },
     {
       "slug": "the-cop-and-the-anthem",
       "title": "The Cop and the Anthem",
       "language": "English",
       "priority": 13,
-      "estimated_incremental_cost_usd": null,
+      "estimated_incremental_cost_usd": 0.1736,
       "public_audio_allowed_now": false,
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-cop-and-the-anthem --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-cop-and-the-anthem"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-cop-and-the-anthem"
     },
     {
       "slug": "the-last-leaf",
       "title": "The Last Leaf",
       "language": "English",
       "priority": 14,
-      "estimated_incremental_cost_usd": null,
+      "estimated_incremental_cost_usd": 0.1792,
       "public_audio_allowed_now": false,
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-last-leaf --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-last-leaf"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-last-leaf"
     },
     {
       "slug": "the-masque-of-the-red-death",
       "title": "The Masque of the Red Death",
       "language": "English",
       "priority": 15,
-      "estimated_incremental_cost_usd": null,
+      "estimated_incremental_cost_usd": 0.1798,
       "public_audio_allowed_now": false,
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-masque-of-the-red-death --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-masque-of-the-red-death"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-masque-of-the-red-death"
     },
     {
       "slug": "the-yellow-wallpaper",
       "title": "The Yellow Wallpaper",
       "language": "English",
       "priority": 16,
-      "estimated_incremental_cost_usd": null,
+      "estimated_incremental_cost_usd": 0.3834,
       "public_audio_allowed_now": false,
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-yellow-wallpaper --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-yellow-wallpaper"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-yellow-wallpaper"
     },
     {
       "slug": "the-monkeys-paw",
       "title": "The Monkey's Paw",
       "language": "English",
       "priority": 17,
-      "estimated_incremental_cost_usd": null,
+      "estimated_incremental_cost_usd": 0.2662,
       "public_audio_allowed_now": false,
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-monkeys-paw"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-monkeys-paw"
     },
     {
       "slug": "the-necklace",
       "title": "The Necklace",
       "language": "English",
       "priority": 18,
-      "estimated_incremental_cost_usd": null,
+      "estimated_incremental_cost_usd": 0.2035,
       "public_audio_allowed_now": false,
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-necklace --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-necklace"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-necklace"
     },
     {
       "slug": "dsires-baby",
       "title": "Désirée's Baby",
       "language": "English",
       "priority": 19,
-      "estimated_incremental_cost_usd": null,
+      "estimated_incremental_cost_usd": 0.1669,
       "public_audio_allowed_now": false,
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug dsires-baby --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/dsires-baby"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/dsires-baby"
     },
     {
       "slug": "the-open-window",
@@ -273,7 +269,7 @@
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-open-window --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-open-window"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-open-window"
     },
     {
       "slug": "book-f5d593e1f4",
@@ -285,7 +281,7 @@
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/book-f5d593e1f4"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/book-f5d593e1f4"
     },
     {
       "slug": "muchiram-gurer-jibanchorit",
@@ -297,7 +293,7 @@
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit"
     },
     {
       "slug": "radharani",
@@ -343,7 +339,7 @@
       "release_gate_mutation_allowed": false,
       "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
       "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f"
+      "packet_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f"
     },
     {
       "slug": "bn-066",

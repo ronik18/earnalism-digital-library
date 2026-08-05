@@ -426,21 +426,25 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
             "Rollback approval for public audiobook removal, refunds, and takedown response is missing.",
         )
 
-    if truthy(data.get("transcript_required")) and not truthy(data.get("transcript_present")):
-        block("TRANSCRIPT_REQUIRED_MISSING", "HIGH", "transcript", "Transcript is required and missing.")
+    read_along_enabled = truthy(data.get("read_along_enabled"))
+    if read_along_enabled:
+        if truthy(data.get("transcript_required")) and not truthy(data.get("transcript_present")):
+            block("TRANSCRIPT_REQUIRED_MISSING", "HIGH", "transcript", "Transcript is required for read-along and missing.")
 
-    sync_ms = data.get("text_audio_sync_tolerance_ms")
-    if sync_ms is None:
-        block("SYNC_TOLERANCE_MISSING", "HIGH", "transcript", "Text/audio sync tolerance evidence is missing.")
-    else:
-        try:
-            if float(sync_ms) > TEXT_SYNC_TOLERANCE_MS:
-                block("SYNC_TOLERANCE_TOO_HIGH", "HIGH", "transcript", "Text/audio sync tolerance exceeds 250 ms.")
-        except (TypeError, ValueError):
-            block("SYNC_TOLERANCE_INVALID", "HIGH", "transcript", "Text/audio sync tolerance is invalid.")
+        sync_ms = data.get("text_audio_sync_tolerance_ms")
+        if sync_ms is None:
+            block("SYNC_TOLERANCE_MISSING", "HIGH", "transcript", "Text/audio sync tolerance evidence is missing for read-along.")
+        else:
+            try:
+                if float(sync_ms) > TEXT_SYNC_TOLERANCE_MS:
+                    block("SYNC_TOLERANCE_TOO_HIGH", "HIGH", "transcript", "Text/audio sync tolerance exceeds 250 ms.")
+            except (TypeError, ValueError):
+                block("SYNC_TOLERANCE_INVALID", "HIGH", "transcript", "Text/audio sync tolerance is invalid.")
 
     player_evidence = data.get("player_accessibility_evidence") or {}
     for field in REQUIRED_PLAYER_ACCESSIBILITY_EVIDENCE:
+        if field == "transcript_accessible" and not read_along_enabled:
+            continue
         if not truthy(player_evidence.get(field)):
             block(
                 f"{field.upper()}_MISSING",
@@ -554,6 +558,7 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
         "command_status": command_status,
         "public_audio_publish_allowed": False,
         "public_audio_release_blocked": status == PUBLIC_AUDIO_RELEASE_BLOCKED,
+        "read_along_enabled": read_along_enabled,
         "qa_threshold": QA_THRESHOLD,
         "text_sync_tolerance_ms": TEXT_SYNC_TOLERANCE_MS,
         "scores": score_from_blockers(blockers),

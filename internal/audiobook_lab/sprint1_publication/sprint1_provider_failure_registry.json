@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-13T07:54:57Z",
+  "generated_at": "2026-08-05T04:47:03Z",
   "owner_decision": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
   "policy": {
     "max_failed_distinct_families_before_external_audio": 2,
@@ -19,7 +19,7 @@
       "classification": "APPROVED_EXISTING_PUBLIC_AUDIO",
       "release_gate_state": "APPROVED_EXISTING_PUBLIC_AUDIO",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/book-2b9853ec52_release_gate_evidence.json",
-      "decision_history_classification": "BENGALI_AUDIOBOOK_LIVE_STABILIZATION_SOURCE_PATCH_READY",
+      "decision_history_classification": "MLX_LARGE_V3_TURBO_RAW_ASR_FAIL_PACKAGE_V2_MIGRATION_BLOCKED",
       "attempts": [
         {
           "provider": "sarvam",
@@ -42,8 +42,8 @@
           "postprocess_sha256": null,
           "postprocess_identity": null,
           "postprocess_variant": null,
-          "status": "BENGALI_AUDIOBOOK_LIVE_STABILIZATION_SOURCE_PATCH_READY",
-          "failed": false,
+          "status": "MLX_LARGE_V3_TURBO_RAW_ASR_FAIL_PACKAGE_V2_MIGRATION_BLOCKED",
+          "failed": true,
           "minimum_observed_score": 9.4,
           "confidence": 0.95,
           "fatal_flags": [],
@@ -123,16 +123,18 @@
       ],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [
+        "353e8c0a66543ba0d5a1be9bf384e9fa640fae5d38c7b76a52378cbb12e28a06",
         "9eff4f8f596354872bf4128800c9844165f498c0e0230a8c25038cacb3fed522"
       ],
       "distinct_failed_provider_voice_families": [
-        "sarvam:bulbul:v3:ratan:literary_warm_pacing:unknown:unknown:historical_pre_repair_full_candidate"
+        "sarvam:bulbul:v3:ratan:literary_warm_pacing:unknown:unknown:historical_pre_repair_full_candidate",
+        "sarvam:bulbul:v3:ratan:literary_warm_pacing:unknown:unknown:title_release_evidence"
       ],
-      "distinct_failed_family_count": 1,
+      "distinct_failed_family_count": 2,
       "automated_tts_exhausted": false,
       "exhaustion_evidence": {
         "external_audio_terminal_state": false,
-        "failed_family_threshold_met": false,
+        "failed_family_threshold_met": true,
         "approved_release_override": true
       },
       "matrix_classification": "Yes, publicly rendered book + Yes, publicly available audiobook",
@@ -153,7 +155,7 @@
       "classification": "INCOMPLETE_FAIL_CLOSED",
       "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/bn-066_release_gate_evidence.json",
-      "decision_history_classification": "PRIVATE_ARTIFACT_TRACKING_AND_LOCK_SAFE_ASR_CALIBRATION_REQUIRED",
+      "decision_history_classification": "ASR_SOURCE_MISMATCH_AUDIO_HIDDEN_AFTER_PREFLIGHT_REPAIR",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -179,10 +181,10 @@
       "slug": "radharani",
       "title": "রাধারাণী",
       "language": "Bengali",
-      "classification": "INCOMPLETE_FAIL_CLOSED",
-      "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+      "classification": "FULL_PIPELINE_FAILED",
+      "release_gate_state": null,
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_release_gate_evidence.json",
-      "decision_history_classification": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_SCALE_GATE_BLOCKED",
+      "decision_history_classification": "RADHARANI_SAARAS_STRICT_RAW_ASR_EXACT_CONTENT_AND_SYNC_NO_GO",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -195,7 +197,7 @@
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "exact_blocker": "LEGACY_AUDIO_DECOMMISSIONED_DERIVATIVE_RIGHTS_AND_SYNC_FAIL; TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
@@ -208,10 +210,10 @@
       "slug": "nishkriti",
       "title": "নিষ্কৃতি",
       "language": "Bengali",
-      "classification": "INCOMPLETE_FAIL_CLOSED",
-      "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+      "classification": "REPRESENTATIVE_AUDITION_FAILED",
+      "release_gate_state": null,
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_release_gate_evidence.json",
-      "decision_history_classification": "READY_FOR_AUDITION_STORAGE_REVOCATION_AND_SCALE_GATE_BLOCKED",
+      "decision_history_classification": "SARVAM_AND_GEMINI_REPRESENTATIVE_QUALITY_FAILED_AUDIO_HIDDEN",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -224,7 +226,7 @@
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; CANONICAL_SOURCE_RECONCILIATION_REQUIRED; TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "exact_blocker": "PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; CANONICAL_SOURCE_RECONCILIATION_REQUIRED; TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
@@ -681,7 +683,7 @@
       "classification": "ASR_SOURCE_MISMATCH",
       "release_gate_state": null,
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json",
-      "decision_history_classification": "ASR_SOURCE_MISMATCH_HUMAN_NARRATION_REQUIRED",
+      "decision_history_classification": "INDIC_PARLER_PRIVATE_REPRESENTATIVE_OBJECTIVE_ASR_FAIL_CLOSED",
       "attempts": [
         {
           "provider": "google",
@@ -909,12 +911,12 @@
       "distinct_failed_family_count": 4,
       "automated_tts_exhausted": true,
       "exhaustion_evidence": {
-        "external_audio_terminal_state": true,
+        "external_audio_terminal_state": false,
         "failed_family_threshold_met": true,
         "approved_release_override": false
       },
-      "matrix_classification": "ASR_SOURCE_MISMATCH",
-      "exact_blocker": "STAGE2G_RAW_ASR_SOURCE_1.3504_BELOW_REQUIRED_9.7; FIRST_LAST_ASR_WORDS_FAILED; LISTENING_MINIMUM_8.0_CONFIDENCE_0.85_WITH_FATAL_LIST_READING_RHYTHM; UPLOAD_RELEASE_PUBLICATION_BLOCKED",
+      "matrix_classification": "AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_PASS",
+      "exact_blocker": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED: RAW_ASR_SOURCE_0.6838_BELOW_REQUIRED_9.7; CONSTRUCTION_AUDIT_10.0_IS_NOT_AN_ASR_SUBSTITUTE; UPLOAD_RELEASE_PUBLICATION_BLOCKED",
       "packet_exists": true,
       "budget_identity_stages": [
         "d19_google_latest_long_bn_in_asr_calibration",
@@ -1274,10 +1276,10 @@
       "slug": "devdas",
       "title": "দেবদাস / Devdas",
       "language": "Bengali",
-      "classification": "INCOMPLETE_FAIL_CLOSED",
-      "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+      "classification": "PREFLIGHT_BLOCKED",
+      "release_gate_state": null,
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/devdas_release_gate_evidence.json",
-      "decision_history_classification": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "decision_history_classification": "COVER_GATE_STILL_BLOCKED_AND_TWO_GEMINI_REPRESENTATIVE_LANES_FAILED",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -1290,7 +1292,7 @@
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
@@ -1303,10 +1305,10 @@
       "slug": "book-edfcf810c5",
       "title": "ক্ষুধিত পাষাণ",
       "language": "Bengali",
-      "classification": "INCOMPLETE_FAIL_CLOSED",
-      "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+      "classification": "PREFLIGHT_BLOCKED",
+      "release_gate_state": null,
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/book-edfcf810c5_release_gate_evidence.json",
-      "decision_history_classification": "READY_FOR_SOURCE_BOUND_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "decision_history_classification": "CANONICAL_READER_REPAIRED_THREE_GEMINI_VOICES_FAILED_REPRESENTATIVE_GATE",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -1319,7 +1321,7 @@
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
@@ -1335,7 +1337,7 @@
       "classification": "YES_PLUS_YES_PRODUCTION_VALIDATED",
       "release_gate_state": null,
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_release_gate_evidence.json",
-      "decision_history_classification": null,
+      "decision_history_classification": "PACKAGE_V2_FULL_PROMOTION_PRODUCTION_GREEN",
       "attempts": [
         {
           "provider": "google",
@@ -1763,7 +1765,8 @@
         "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2d_google_audition_en_gb_studio_b.json",
         "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2d_google_audition_en_gb_studio_c.json",
         "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2d_google_audition_en_gb_studio_c_prosody_repair.json",
-        "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2d_google_full_tts_runtime.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2d_google_full_tts_runtime.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },
@@ -1774,7 +1777,7 @@
       "classification": "INCOMPLETE_FAIL_CLOSED",
       "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/dracula_release_gate_evidence.json",
-      "decision_history_classification": null,
+      "decision_history_classification": "CANONICAL_SOURCE_BINDING_REPAIRED_EXACT_NORMALIZED_ROOT_PARITY_PASS",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -1791,7 +1794,8 @@
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/dracula_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/dracula_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },
@@ -1802,7 +1806,7 @@
       "classification": "INCOMPLETE_FAIL_CLOSED",
       "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/frankenstein_release_gate_evidence.json",
-      "decision_history_classification": null,
+      "decision_history_classification": "NEXT_FOUR_LANE_RANK_2_SOURCE_PREFLIGHT_PASS_ROOT_RECONCILIATION_AND_COVERS_REQUIRED",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -1819,7 +1823,8 @@
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/frankenstein_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/frankenstein_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },
@@ -1827,10 +1832,10 @@
       "slug": "jekyll-and-hyde",
       "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
       "language": "English",
-      "classification": "READY_FOR_REPRESENTATIVE_AUDITION_GOOGLE_ADC_REAUTH_REQUIRED",
-      "release_gate_state": "READY_FOR_REPRESENTATIVE_AUDITION_GOOGLE_ADC_REAUTH_REQUIRED",
+      "classification": "PREFLIGHT_BLOCKED",
+      "release_gate_state": null,
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_release_gate_evidence.json",
-      "decision_history_classification": "READY_FOR_REPRESENTATIVE_AUDITION_GOOGLE_ADC_REAUTH_REQUIRED",
+      "decision_history_classification": "CHUNK9_SENTENCE_SAFE_REPAIR_PREFLIGHT_PASS_PARENT_CHUNK36_REPAIR_PRESERVED_AUDIO_HIDDEN",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -1843,7 +1848,7 @@
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "GOOGLE_ADC_REAUTH_REQUIRED; REPRESENTATIVE_AUDITION_AND_ALL_DOWNSTREAM_RELEASE_GATES_NOT_RUN",
+      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
@@ -1859,7 +1864,7 @@
       "classification": "INCOMPLETE_FAIL_CLOSED",
       "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/picture-of-dorian-gray_release_gate_evidence.json",
-      "decision_history_classification": null,
+      "decision_history_classification": "NEXT_FOUR_LANE_RANK_1_SOURCE_PREFLIGHT_PASS_COVER_REVIEW_REQUIRED",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -1876,7 +1881,8 @@
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/picture-of-dorian-gray_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/picture-of-dorian-gray_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },
@@ -1915,12 +1921,64 @@
       "classification": "INCOMPLETE_FAIL_CLOSED",
       "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_release_gate_evidence.json",
-      "decision_history_classification": null,
-      "attempts": [],
+      "decision_history_classification": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_ONE_OPENAI_REPRESENTATIVE_ASR_FAILURE",
+      "attempts": [
+        {
+          "provider": "openai",
+          "model": "gpt-4o-mini-tts",
+          "voice": "verse",
+          "style": null,
+          "style_profile": null,
+          "scope": "title_release_evidence",
+          "speaking_rate": null,
+          "language": "en",
+          "text_sha256": null,
+          "prepared_text_sha256": null,
+          "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": null,
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_ONE_OPENAI_REPRESENTATIVE_ASR_FAILURE",
+          "failed": true,
+          "minimum_observed_score": null,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": null,
+          "evidence": "internal/earnalism_intelligence/title_decision_history.json",
+          "evidence_kind": "title_decision_history",
+          "family": "openai:gpt-4o-mini-tts:verse:unknown:unknown:unknown:title_release_evidence",
+          "registry_identity_sha256": "f187bb74ac349d2008b720a45e462d22a61c954d1e893ca2655cda9724dda487",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "fingerprint_type": "none",
+          "fingerprint_is_evidence_native": false,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "none",
+            "field": null,
+            "evidence_native": false,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/earnalism_intelligence/title_decision_history.json"
+          ],
+          "evidence_kinds": [
+            "title_decision_history"
+          ]
+        }
+      ],
       "blocked_attempt_fingerprints": [],
-      "blocked_registry_identities": [],
-      "distinct_failed_provider_voice_families": [],
-      "distinct_failed_family_count": 0,
+      "blocked_registry_identities": [
+        "f187bb74ac349d2008b720a45e462d22a61c954d1e893ca2655cda9724dda487"
+      ],
+      "distinct_failed_provider_voice_families": [
+        "openai:gpt-4o-mini-tts:verse:unknown:unknown:unknown:title_release_evidence"
+      ],
+      "distinct_failed_family_count": 1,
       "automated_tts_exhausted": false,
       "exhaustion_evidence": {
         "external_audio_terminal_state": false,
@@ -1932,7 +1990,8 @@
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },
@@ -1943,7 +2002,7 @@
       "classification": "INCOMPLETE_FAIL_CLOSED",
       "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/white-fang_release_gate_evidence.json",
-      "decision_history_classification": null,
+      "decision_history_classification": "NEXT_FOUR_LANE_RANK_3_SOURCE_PREFLIGHT_PASS_NEW_COVER_PAIR_REQUIRED",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -1960,7 +2019,8 @@
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/white-fang_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/white-fang_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },
@@ -1971,7 +2031,7 @@
       "classification": "INCOMPLETE_FAIL_CLOSED",
       "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/pride-and-prejudice_release_gate_evidence.json",
-      "decision_history_classification": null,
+      "decision_history_classification": "CHATTERBOX_V3_PRIVATE_PILOT_CLOSED_OBJECTIVE_FAIL_AUDIO_HIDDEN",
       "attempts": [],
       "blocked_attempt_fingerprints": [],
       "blocked_registry_identities": [],
@@ -1988,7 +2048,8 @@
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/pride-and-prejudice_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/pride-and-prejudice_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },
@@ -1996,15 +2057,67 @@
       "slug": "the-secret-garden",
       "title": "The Secret Garden",
       "language": "English",
-      "classification": "INCOMPLETE_FAIL_CLOSED",
-      "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+      "classification": "SOURCE_BOUND_DELIVERY_REQUIRED",
+      "release_gate_state": "SOURCE_BOUND_DELIVERY_REQUIRED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_release_gate_evidence.json",
-      "decision_history_classification": null,
-      "attempts": [],
+      "decision_history_classification": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_CHAPTER_CANARY_FAILURE",
+      "attempts": [
+        {
+          "provider": "kokoro",
+          "model": "hexgrad/Kokoro-82M",
+          "voice": "bf_emma",
+          "style": null,
+          "style_profile": null,
+          "scope": "title_release_evidence",
+          "speaking_rate": null,
+          "language": "en",
+          "text_sha256": null,
+          "prepared_text_sha256": null,
+          "source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": null,
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_CHAPTER_CANARY_FAILURE",
+          "failed": true,
+          "minimum_observed_score": null,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": null,
+          "evidence": "internal/earnalism_intelligence/title_decision_history.json",
+          "evidence_kind": "title_decision_history",
+          "family": "kokoro:hexgrad/kokoro-82m:bf_emma:unknown:unknown:unknown:title_release_evidence",
+          "registry_identity_sha256": "2ec582c2966bd7562d334f93c3b681773cb1fd7ca2db08e5cf2e26553ce15120",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "fingerprint_type": "none",
+          "fingerprint_is_evidence_native": false,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "none",
+            "field": null,
+            "evidence_native": false,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/earnalism_intelligence/title_decision_history.json"
+          ],
+          "evidence_kinds": [
+            "title_decision_history"
+          ]
+        }
+      ],
       "blocked_attempt_fingerprints": [],
-      "blocked_registry_identities": [],
-      "distinct_failed_provider_voice_families": [],
-      "distinct_failed_family_count": 0,
+      "blocked_registry_identities": [
+        "2ec582c2966bd7562d334f93c3b681773cb1fd7ca2db08e5cf2e26553ce15120"
+      ],
+      "distinct_failed_provider_voice_families": [
+        "kokoro:hexgrad/kokoro-82m:bf_emma:unknown:unknown:unknown:title_release_evidence"
+      ],
+      "distinct_failed_family_count": 1,
       "automated_tts_exhausted": false,
       "exhaustion_evidence": {
         "external_audio_terminal_state": false,
@@ -2012,11 +2125,12 @@
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "exact_blocker": "CHAPTER_001_OBJECTIVE_REPAIR_FAILED; REMAINING_26_CHAPTERS_NOT_GENERATED; FULL_TITLE_AND_DOWNSTREAM_GATES_INCOMPLETE",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },
@@ -2024,15 +2138,67 @@
       "slug": "alices-adventures-in-wonderland",
       "title": "Alice's Adventures in Wonderland",
       "language": "English",
-      "classification": "INCOMPLETE_FAIL_CLOSED",
-      "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+      "classification": "SOURCE_BOUND_DELIVERY_REQUIRED",
+      "release_gate_state": "SOURCE_BOUND_DELIVERY_REQUIRED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_release_gate_evidence.json",
-      "decision_history_classification": null,
-      "attempts": [],
+      "decision_history_classification": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_REPRESENTATIVE_ASR_REPAIR_FAILURE",
+      "attempts": [
+        {
+          "provider": "kokoro",
+          "model": "hexgrad/Kokoro-82M",
+          "voice": "bf_emma",
+          "style": null,
+          "style_profile": null,
+          "scope": "title_release_evidence",
+          "speaking_rate": null,
+          "language": "eng",
+          "text_sha256": null,
+          "prepared_text_sha256": null,
+          "source_sha256": "c8cd98430bcaa621dd206b8d3c880b34ca3daf4776e4b89c8a10d8c5f84cb2d3",
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": null,
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_REPRESENTATIVE_ASR_REPAIR_FAILURE",
+          "failed": true,
+          "minimum_observed_score": null,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": null,
+          "evidence": "internal/earnalism_intelligence/title_decision_history.json",
+          "evidence_kind": "title_decision_history",
+          "family": "kokoro:hexgrad/kokoro-82m:bf_emma:unknown:unknown:unknown:title_release_evidence",
+          "registry_identity_sha256": "a8689e64624f782a5102a09fc30d7e2dd3e9e1d9e36abf966d5b26be217a6d42",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "fingerprint_type": "none",
+          "fingerprint_is_evidence_native": false,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "none",
+            "field": null,
+            "evidence_native": false,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/earnalism_intelligence/title_decision_history.json"
+          ],
+          "evidence_kinds": [
+            "title_decision_history"
+          ]
+        }
+      ],
       "blocked_attempt_fingerprints": [],
-      "blocked_registry_identities": [],
-      "distinct_failed_provider_voice_families": [],
-      "distinct_failed_family_count": 0,
+      "blocked_registry_identities": [
+        "a8689e64624f782a5102a09fc30d7e2dd3e9e1d9e36abf966d5b26be217a6d42"
+      ],
+      "distinct_failed_provider_voice_families": [
+        "kokoro:hexgrad/kokoro-82m:bf_emma:unknown:unknown:unknown:title_release_evidence"
+      ],
+      "distinct_failed_family_count": 1,
       "automated_tts_exhausted": false,
       "exhaustion_evidence": {
         "external_audio_terminal_state": false,
@@ -2040,11 +2206,12 @@
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "exact_blocker": "KOKORO_BF_EMMA_REPRESENTATIVE_EXACT_ORDER_FAILURE; PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; SOURCE_BOUND_FULL_TITLE_DELIVERY_MISSING",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/alices-adventures-in-wonderland_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },
@@ -2055,7 +2222,7 @@
       "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
       "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_release_gate_evidence.json",
-      "decision_history_classification": "AUTOMATED_PROVIDER_PLATEAU_ALTERNATE_PATH_REQUIRED",
+      "decision_history_classification": "COSYVOICE3_BF16_ADVERSARIAL_OBJECTIVE_FAIL_SOURCE_BOUND_DELIVERY_REQUIRED",
       "attempts": [
         {
           "provider": "google",
@@ -2371,6 +2538,53 @@
             "canonical_title_release_evidence",
             "packet_metadata"
           ]
+        },
+        {
+          "provider": "kokoro",
+          "model": "Kokoro-82M 0.9.4",
+          "voice": "af_bella",
+          "style": null,
+          "style_profile": null,
+          "scope": "title_release_evidence",
+          "speaking_rate": null,
+          "language": "en",
+          "text_sha256": null,
+          "prepared_text_sha256": null,
+          "source_sha256": null,
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": null,
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "COSYVOICE3_BF16_ADVERSARIAL_OBJECTIVE_FAIL_SOURCE_BOUND_DELIVERY_REQUIRED",
+          "failed": true,
+          "minimum_observed_score": null,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": null,
+          "evidence": "internal/earnalism_intelligence/title_decision_history.json",
+          "evidence_kind": "title_decision_history",
+          "family": "kokoro:kokoro-82m 0.9.4:af_bella:unknown:unknown:unknown:title_release_evidence",
+          "registry_identity_sha256": "d4c25aa76343267957cf99f5fdcea564ee606270cbce5814762df36834d3df16",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "fingerprint_type": "none",
+          "fingerprint_is_evidence_native": false,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "none",
+            "field": null,
+            "evidence_native": false,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/earnalism_intelligence/title_decision_history.json"
+          ],
+          "evidence_kinds": [
+            "title_decision_history"
+          ]
         }
       ],
       "blocked_attempt_fingerprints": [
@@ -2384,7 +2598,8 @@
         "427c8f2c455c0ae0c13bd681786fd80157a9381ae78eb098ce8a4775e1f77455",
         "7143c623af4765f4e749196026e62aeb7e7da2ee79ef636164e567a77f4f92ba",
         "8670a3375141660ba24a6db80bc70ab0c3b518bcb699b6268588ecc2600ce039",
-        "abb84b0a6408afb5210f848b5dfb5c4fc95101f38f9866d281b372702a80b6bd"
+        "abb84b0a6408afb5210f848b5dfb5c4fc95101f38f9866d281b372702a80b6bd",
+        "d4c25aa76343267957cf99f5fdcea564ee606270cbce5814762df36834d3df16"
       ],
       "distinct_failed_provider_voice_families": [
         "google:google-cloud-texttospeech:en-gb-chirp3-hd-aoede:unknown:unknown:unknown:gift_chirp_aoede_isolated_listening_qa",
@@ -2392,9 +2607,10 @@
         "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:contextual_representative_audition",
         "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:gift_studio_c_contextual_listening_qa",
         "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:gift_studio_c_isolated_listening_qa",
-        "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:representative_audition"
+        "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:representative_audition",
+        "kokoro:kokoro-82m 0.9.4:af_bella:unknown:unknown:unknown:title_release_evidence"
       ],
-      "distinct_failed_family_count": 6,
+      "distinct_failed_family_count": 7,
       "automated_tts_exhausted": true,
       "exhaustion_evidence": {
         "external_audio_terminal_state": true,
@@ -2434,7 +2650,7 @@
       "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
       "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json",
-      "decision_history_classification": "AUTOMATED_PROVIDER_PLATEAU_ALTERNATE_PATH_REQUIRED",
+      "decision_history_classification": "CANONICAL_COVER_PAIR_COMPLETE_AUDIO_REMAINS_HIDDEN",
       "attempts": [
         {
           "provider": "google",
@@ -2696,8 +2912,55 @@
       "classification": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
       "release_gate_state": null,
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json",
-      "decision_history_classification": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED",
+      "decision_history_classification": "PRODUCTION_ACTIVE_PACKAGE_V2_VALIDATED",
       "attempts": [
+        {
+          "provider": "kokoro",
+          "model": "Kokoro-82M 0.9.4",
+          "voice": "af_bella",
+          "style": null,
+          "style_profile": null,
+          "scope": "title_release_evidence",
+          "speaking_rate": null,
+          "language": "en",
+          "text_sha256": null,
+          "prepared_text_sha256": null,
+          "source_sha256": "3f491a3ae042f5c8716dfedba0edccfef5421a889689bf629867491dce219db8",
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": null,
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "PRODUCTION_ACTIVE_PACKAGE_V2_VALIDATED",
+          "failed": false,
+          "minimum_observed_score": 9.4,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": null,
+          "evidence": "internal/earnalism_intelligence/title_decision_history.json",
+          "evidence_kind": "title_decision_history",
+          "family": "kokoro:kokoro-82m 0.9.4:af_bella:unknown:unknown:unknown:title_release_evidence",
+          "registry_identity_sha256": "0a9500774768df3b6c1733c4ec3b9193b918e8aff75074e4f1275376bbce0868",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "fingerprint_type": "none",
+          "fingerprint_is_evidence_native": false,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "none",
+            "field": null,
+            "evidence_native": false,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/earnalism_intelligence/title_decision_history.json"
+          ],
+          "evidence_kinds": [
+            "title_decision_history"
+          ]
+        },
         {
           "provider": "google",
           "model": "google-cloud-texttospeech",
@@ -2916,56 +3179,6 @@
         },
         {
           "provider": "google",
-          "model": null,
-          "voice": "en-GB-Studio-B",
-          "style": null,
-          "style_profile": null,
-          "scope": "title_release_evidence",
-          "speaking_rate": null,
-          "language": "en",
-          "text_sha256": null,
-          "prepared_text_sha256": null,
-          "source_sha256": null,
-          "prep_sha256": null,
-          "prep_identity": null,
-          "text_prep_variant": null,
-          "postprocess_sha256": null,
-          "postprocess_identity": null,
-          "postprocess_variant": null,
-          "status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED",
-          "failed": true,
-          "minimum_observed_score": null,
-          "confidence": null,
-          "fatal_flags": [
-            "mechanical_cadence_detected",
-            "robotic_texture_detected"
-          ],
-          "scores": null,
-          "evidence": "internal/earnalism_intelligence/title_decision_history.json",
-          "evidence_kind": "title_decision_history",
-          "family": "google:unknown:en-gb-studio-b:unknown:unknown:unknown:title_release_evidence",
-          "registry_identity_sha256": "c5446d0395a92176a0cc272668ef679dd9cd8e6d76ac4ae328c6768c89296ee1",
-          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
-          "fingerprint_type": "none",
-          "fingerprint_is_evidence_native": false,
-          "fingerprint_is_provider_native": false,
-          "fingerprint_is_synthetic": false,
-          "fingerprint_provenance": {
-            "source": "none",
-            "field": null,
-            "evidence_native": false,
-            "provider_native": false,
-            "synthetic": false
-          },
-          "evidence_paths": [
-            "internal/earnalism_intelligence/title_decision_history.json"
-          ],
-          "evidence_kinds": [
-            "title_decision_history"
-          ]
-        },
-        {
-          "provider": "google",
           "model": "google-cloud-texttospeech",
           "voice": "en-GB-Studio-C",
           "style": null,
@@ -3080,7 +3293,6 @@
         "919e21709b7828b28f8a68059e71a2cc9f5115686a80a2f19621f87112cce962",
         "9b944956f66989401b891e382de56b7d23e452f8dd62f7737704990af1ae66b0",
         "a77279ee90e40c435f7123d05f7b6cd620b21367141b500c742ad1ae2509f0d1",
-        "c5446d0395a92176a0cc272668ef679dd9cd8e6d76ac4ae328c6768c89296ee1",
         "e5440bbe26e0a4c366512092c47822af724356443f59c67a3147cf3aa3ff6824",
         "e95a62e44bd75f25ae33f9e1cd2ccc6d8d0145edd76b0b59a636839c4d97fa0c"
       ],
@@ -3089,11 +3301,10 @@
         "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:representative_audition_baseline",
         "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:representative_audition_single_prosody_retry",
         "google:unknown:en-gb-studio-b:unknown:unknown:unknown:stage2e_studio_b_final_audition",
-        "google:unknown:en-gb-studio-b:unknown:unknown:unknown:title_release_evidence",
         "google:unknown:en-gb-studio-c:unknown:unknown:unknown:baseline",
         "google:unknown:en-gb-studio-c:unknown:unknown:unknown:single_prosody_retry"
       ],
-      "distinct_failed_family_count": 7,
+      "distinct_failed_family_count": 6,
       "automated_tts_exhausted": true,
       "exhaustion_evidence": {
         "external_audio_terminal_state": true,
@@ -3117,10 +3328,10 @@
       "slug": "sredni-vashtar",
       "title": "Sredni Vashtar",
       "language": "English",
-      "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
-      "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+      "classification": "RELEASE_SOURCE_APPROVED_DEPLOYMENT_RETRY_REQUIRED",
+      "release_gate_state": null,
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_release_gate_evidence.json",
-      "decision_history_classification": "AUTOMATED_PROVIDER_PLATEAU_ALTERNATE_PATH_REQUIRED",
+      "decision_history_classification": "PACKAGE_V2_FULL_PROMOTION_PRODUCTION_GREEN",
       "attempts": [
         {
           "provider": "google",
@@ -3222,13 +3433,13 @@
           "voice": "en-GB-Chirp3-HD-Achird",
           "style": null,
           "style_profile": null,
-          "scope": "final_representative_audition",
+          "scope": "representative_audition_single_prosody_retry",
           "speaking_rate": null,
-          "language": "English",
-          "text_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+          "language": "en",
+          "text_sha256": "7d3a52056069e59d30cc15d474a3612479800dc01345f06719447b060a54fe94",
           "prepared_text_sha256": null,
           "source_sha256": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
-          "prep_sha256": "a94a55af6d9cf71e53401e510e476932be72c674ad782bf32772aec8d7c88ae9",
+          "prep_sha256": null,
           "prep_identity": null,
           "text_prep_variant": null,
           "postprocess_sha256": null,
@@ -3245,10 +3456,10 @@
             8.5,
             9.4
           ],
-          "evidence": "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/3855fd15b4ecf50d/audition_listening_evidence.json",
-          "evidence_kind": "canonical_title_release_evidence",
-          "family": "google:google-cloud-texttospeech:en-gb-chirp3-hd-achird:unknown:unknown:unknown:final_representative_audition",
-          "registry_identity_sha256": "ed8d9f6c36817ea69d4b41769841d11f6d1b30fad93807cd7880cc2fe73b1dab",
+          "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_release_gate_evidence.json",
+          "evidence_kind": "packet_metadata",
+          "family": "google:google-cloud-texttospeech:en-gb-chirp3-hd-achird:unknown:unknown:unknown:representative_audition_single_prosody_retry",
+          "registry_identity_sha256": "ced2befc7e638ab0d0e422ee8943f850cf72e33462610e8acb54c45407cee1d7",
           "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
           "attempt_fingerprint": "3855fd15b4ecf50d4fc5ff20fab6f8ad1ea7329a6a374da3d4e9e762f40d547e",
           "fingerprint_type": "full_sha256",
@@ -3256,21 +3467,66 @@
           "fingerprint_is_provider_native": false,
           "fingerprint_is_synthetic": false,
           "fingerprint_provenance": {
-            "source": "canonical_title_release_evidence",
+            "source": "packet_metadata",
             "field": "attempt_fingerprint",
             "evidence_native": true,
             "provider_native": false,
             "synthetic": false
           },
           "evidence_paths": [
-            "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/3855fd15b4ecf50d/audition_listening_evidence.json",
             "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/3855fd15b4ecf50d/audition_manifest.json",
             "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_release_gate_evidence.json"
           ],
           "evidence_kinds": [
             "budget_identity",
-            "canonical_title_release_evidence",
             "packet_metadata"
+          ]
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-4o-mini-tts",
+          "voice": "verse",
+          "style": "classic_literary_narrator",
+          "style_profile": "classic_literary_narrator",
+          "scope": "full_book_qa",
+          "speaking_rate": null,
+          "language": "en",
+          "text_sha256": null,
+          "prepared_text_sha256": null,
+          "source_sha256": null,
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": null,
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "PACKAGE_V2_FULL_PROMOTION_PRODUCTION_GREEN",
+          "failed": false,
+          "minimum_observed_score": null,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": null,
+          "evidence": "internal/earnalism_intelligence/title_decision_history.json",
+          "evidence_kind": "title_decision_history",
+          "family": "openai:gpt-4o-mini-tts:verse:classic_literary_narrator:unknown:unknown:full_book_qa",
+          "registry_identity_sha256": "3c7b9b4034abb5622f38f7eb7e58b0eed7e0459bdef30025afb38d4dc1189f42",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "fingerprint_type": "none",
+          "fingerprint_is_evidence_native": false,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "none",
+            "field": null,
+            "evidence_native": false,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/earnalism_intelligence/title_decision_history.json"
+          ],
+          "evidence_kinds": [
+            "title_decision_history"
           ]
         },
         {
@@ -3279,13 +3535,13 @@
           "voice": "en-GB-Studio-C",
           "style": null,
           "style_profile": null,
-          "scope": "representative_audition",
+          "scope": "representative_audition_baseline",
           "speaking_rate": null,
-          "language": "English",
-          "text_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+          "language": "en",
+          "text_sha256": "7d3a52056069e59d30cc15d474a3612479800dc01345f06719447b060a54fe94",
           "prepared_text_sha256": null,
           "source_sha256": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
-          "prep_sha256": "8925a3bea1d225ee0e34694ab0ca83c422eaa8cec774721ad6da4c973aa8d439",
+          "prep_sha256": null,
           "prep_identity": null,
           "text_prep_variant": null,
           "postprocess_sha256": null,
@@ -3305,10 +3561,10 @@
             7.3,
             8.4
           ],
-          "evidence": "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/fd3f6a8020d44fb4/audition_listening_evidence.json",
-          "evidence_kind": "canonical_title_release_evidence",
-          "family": "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:representative_audition",
-          "registry_identity_sha256": "ddd728100134320b649a93e18a638a04cd00fae0f3bf673d41db75ef8868c894",
+          "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_release_gate_evidence.json",
+          "evidence_kind": "packet_metadata",
+          "family": "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:representative_audition_baseline",
+          "registry_identity_sha256": "e9de080f46306eb26c9419beb5d96c1c17db8f07041079a70c9c689928521d83",
           "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
           "attempt_fingerprint": "fd3f6a8020d44fb4c6bc59aa7c9488f078662e8bccb3e637b18c8984d69297bb",
           "fingerprint_type": "full_sha256",
@@ -3316,20 +3572,18 @@
           "fingerprint_is_provider_native": false,
           "fingerprint_is_synthetic": false,
           "fingerprint_provenance": {
-            "source": "canonical_title_release_evidence",
+            "source": "packet_metadata",
             "field": "attempt_fingerprint",
             "evidence_native": true,
             "provider_native": false,
             "synthetic": false
           },
           "evidence_paths": [
-            "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/fd3f6a8020d44fb4/audition_listening_evidence.json",
             "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/fd3f6a8020d44fb4/audition_manifest.json",
             "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_release_gate_evidence.json"
           ],
           "evidence_kinds": [
             "budget_identity",
-            "canonical_title_release_evidence",
             "packet_metadata"
           ]
         }
@@ -3341,13 +3595,13 @@
       "blocked_registry_identities": [
         "1649a756a922af3f71cea3a9a8a9d8380a55e7822f8c22769a1ba84ea840ca60",
         "23fcb8bcfa137069a8bfa3bd855a71acb1e28e2e8255d585a74faacbc86194b4",
-        "ddd728100134320b649a93e18a638a04cd00fae0f3bf673d41db75ef8868c894",
-        "ed8d9f6c36817ea69d4b41769841d11f6d1b30fad93807cd7880cc2fe73b1dab"
+        "ced2befc7e638ab0d0e422ee8943f850cf72e33462610e8acb54c45407cee1d7",
+        "e9de080f46306eb26c9419beb5d96c1c17db8f07041079a70c9c689928521d83"
       ],
       "distinct_failed_provider_voice_families": [
-        "google:google-cloud-texttospeech:en-gb-chirp3-hd-achird:unknown:unknown:unknown:final_representative_audition",
+        "google:google-cloud-texttospeech:en-gb-chirp3-hd-achird:unknown:unknown:unknown:representative_audition_single_prosody_retry",
         "google:google-cloud-texttospeech:en-gb-chirp3-hd-achird:unknown:unknown:unknown:sredni_chirp_achird_listening_qa",
-        "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:representative_audition",
+        "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:representative_audition_baseline",
         "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:sredni_studio_c_listening_qa"
       ],
       "distinct_failed_family_count": 4,
@@ -3358,7 +3612,7 @@
         "approved_release_override": false
       },
       "matrix_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "exact_blocker": "BOUNDED_GOOGLE_REPRESENTATIVE_AUDITIONS_FAILED; HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+      "exact_blocker": "BOUNDED_AUTOMATED_AUDITIONS_FAILED: STUDIO_C_MIN_7.3_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS; CHIRP_ACHIRD_MIN_8.5_BELOW_ENGLISH_9.3_GATE; HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "packet_exists": true,
       "budget_identity_stages": [
         "sredni_chirp_achird_listening_qa",
@@ -3367,9 +3621,7 @@
         "sredni_studio_c_private_tts_audition"
       ],
       "evidence_paths": [
-        "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/3855fd15b4ecf50d/audition_listening_evidence.json",
         "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/3855fd15b4ecf50d/audition_manifest.json",
-        "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/fd3f6a8020d44fb4/audition_listening_evidence.json",
         "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/fd3f6a8020d44fb4/audition_manifest.json",
         "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_audition_listening_lock_report.json",
         "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_chirp_achird_listening_lock_report.json",
@@ -3385,7 +3637,7 @@
       "classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json",
-      "decision_history_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "decision_history_classification": "KOKORO_OBJECTIVE_PASS_LISTENING_TRANSPORT_INVALID_AND_AUDIBLE_SAMPLE_FATAL_CONFIGURATION_CLOSED",
       "attempts": [
         {
           "provider": "google",
@@ -3556,8 +3808,8 @@
           "postprocess_sha256": null,
           "postprocess_identity": null,
           "postprocess_variant": null,
-          "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-          "failed": true,
+          "status": "KOKORO_OBJECTIVE_PASS_LISTENING_TRANSPORT_INVALID_AND_AUDIBLE_SAMPLE_FATAL_CONFIGURATION_CLOSED",
+          "failed": false,
           "minimum_observed_score": null,
           "confidence": null,
           "fatal_flags": [
@@ -3653,23 +3905,21 @@
       "blocked_registry_identities": [
         "12cd7b9b263ee2aee0182759f376337608e955db65d97ffce53563012411de1f",
         "cc56db78a1655ea50a6195e6f8405e7833902330bf3e0ddd56bf0072d0d61570",
-        "da70d43939290a414c25277def2721db92378bec702f15f17e605b4a770b9fa8",
         "f64f28a1afdd836748580d6489a85cff9f594a0992f7462cb0708e9652d44cd5"
       ],
       "distinct_failed_provider_voice_families": [
         "google:google-cloud-texttospeech:en-gb-studio-c:unknown:unknown:unknown:dsires_baby_studio_c_source_bound_audition",
         "google:unknown:en-gb-chirp3-hd-achird:unknown:unknown:unknown:alternate_voice_audition",
-        "google:unknown:en-gb-studio-c:unknown:unknown:unknown:bounded_representative_audition",
-        "google:unknown:en-gb-studio-c:unknown:unknown:unknown:title_release_evidence"
+        "google:unknown:en-gb-studio-c:unknown:unknown:unknown:bounded_representative_audition"
       ],
-      "distinct_failed_family_count": 4,
+      "distinct_failed_family_count": 3,
       "automated_tts_exhausted": true,
       "exhaustion_evidence": {
         "external_audio_terminal_state": true,
         "failed_family_threshold_met": true,
         "approved_release_override": false
       },
-      "matrix_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
       "exact_blocker": "STUDIO_C_AND_CHIRP3_HD_ACHIRD_DIALOGUE_RISK_SAMPLES_FAILED_WITH_FATAL_ROBOTIC_TEXTURE_AND_MECHANICAL_CADENCE",
       "packet_exists": true,
       "budget_identity_stages": [
@@ -3691,7 +3941,7 @@
       "classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-cop-and-the-anthem_release_gate_evidence.json",
-      "decision_history_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "decision_history_classification": "KOKORO_REPRESENTATIVE_OBJECTIVE_PASS_LISTENING_FAIL_CONFIGURATION_CLOSED",
       "attempts": [
         {
           "provider": "google",
@@ -3819,7 +4069,7 @@
         "failed_family_threshold_met": true,
         "approved_release_override": false
       },
-      "matrix_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
       "exact_blocker": "TWO_MATERIALLY_DIFFERENT_GOOGLE_VOICE_FAMILIES_FAILED_THE_ALL_SAMPLES_9.4_REPRESENTATIVE_GATE",
       "packet_exists": true,
       "budget_identity_stages": [],
@@ -3836,7 +4086,7 @@
       "classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-last-leaf_release_gate_evidence.json",
-      "decision_history_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "decision_history_classification": "KOKORO_AF_SARAH_REPRESENTATIVE_ASR_REPAIR_FAILED_CONFIGURATION_CLOSED",
       "attempts": [
         {
           "provider": "google",
@@ -3964,7 +4214,7 @@
         "failed_family_threshold_met": true,
         "approved_release_override": false
       },
-      "matrix_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
       "exact_blocker": "TWO_MATERIALLY_DIFFERENT_GOOGLE_VOICE_FAMILIES_FAILED_THE_ALL_SAMPLES_9.4_REPRESENTATIVE_GATE",
       "packet_exists": true,
       "budget_identity_stages": [],
@@ -3981,7 +4231,7 @@
       "classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-masque-of-the-red-death_release_gate_evidence.json",
-      "decision_history_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "decision_history_classification": "KOKORO_BF_EMMA_REPRESENTATIVE_ASR_REPAIR_FAILED_CONFIGURATION_CLOSED",
       "attempts": [
         {
           "provider": "google",
@@ -4109,7 +4359,7 @@
         "failed_family_threshold_met": true,
         "approved_release_override": false
       },
-      "matrix_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
       "exact_blocker": "TWO_MATERIALLY_DIFFERENT_GOOGLE_VOICE_FAMILIES_FAILED_THE_ALL_SAMPLES_9.4_REPRESENTATIVE_GATE",
       "packet_exists": true,
       "budget_identity_stages": [],
@@ -4254,7 +4504,7 @@
         "failed_family_threshold_met": true,
         "approved_release_override": false
       },
-      "matrix_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
       "exact_blocker": "TWO_MATERIALLY_DIFFERENT_GOOGLE_VOICE_FAMILIES_FAILED_THE_ALL_SAMPLES_9.4_REPRESENTATIVE_GATE",
       "packet_exists": true,
       "budget_identity_stages": [],
@@ -4271,7 +4521,7 @@
       "classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_release_gate_evidence.json",
-      "decision_history_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_AFTER_FULL_QA_REPAIR_FAILED",
+      "decision_history_classification": "PRIVATE_B2_PREFIX_EXHAUSTED_TARGET_REPAIRED_AUDIO_ABSENT",
       "attempts": [
         {
           "provider": "google",
@@ -4546,7 +4796,7 @@
         "failed_family_threshold_met": true,
         "approved_release_override": false
       },
-      "matrix_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
       "exact_blocker": "TWO_GOOGLE_VOICE_FAMILIES_AND_ONE_SOURCE_BOUND_ENDING_REPAIR_FAILED_THE_ALL_SAMPLES_9.4_FULL_LISTENING_GATE",
       "packet_exists": true,
       "budget_identity_stages": [],
@@ -4563,7 +4813,7 @@
       "classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-necklace_release_gate_evidence.json",
-      "decision_history_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "decision_history_classification": "KOKORO_AF_SARAH_REPRESENTATIVE_ASR_REPAIR_FAILED_CONFIGURATION_CLOSED",
       "attempts": [
         {
           "provider": "google",
@@ -4694,7 +4944,7 @@
         "failed_family_threshold_met": true,
         "approved_release_override": false
       },
-      "matrix_classification": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
+      "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
       "exact_blocker": "TWO_MATERIALLY_DIFFERENT_GOOGLE_VOICE_FAMILIES_FAILED_THE_ALL_SAMPLES_9.4_REPRESENTATIVE_GATE",
       "packet_exists": true,
       "budget_identity_stages": [],

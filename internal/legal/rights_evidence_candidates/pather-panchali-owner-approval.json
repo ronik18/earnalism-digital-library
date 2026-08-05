@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "slug": "pather-panchali",
+  "approver": "Ronik",
+  "approval_scope": "PRIVATE_TTS_VOICE_AUDITION_AND_QA_ONLY",
+  "territories": ["APAC", "USA", "UK", "Europe"],
+  "approved_text_scope": "Controlled original Bengali text sourced from the documented Bengali Wikisource edition.",
+  "approved_at": "2026-08-05",
+  "approval_statement": "I, Ronik, approve the controlled original Bengali text of Pather Panchali, sourced from the documented Bengali Wikisource edition, for private TTS voice audition and QA only in APAC, USA, UK, and Europe.",
+  "exclusions": [
+    "PUBLIC_READER_RELEASE",
+    "AUDIOBOOK_PUBLICATION",
+    "COVERS",
+    "TRANSLATIONS",
+    "ANNOTATIONS",
+    "THIRD_PARTY_RECORDINGS"
+  ],
+  "next_gate": "PRIVATE_OPEN_SOURCE_VOICE_AUDITION",
+  "publication_state_unchanged": true,
+  "audio_publication_state_unchanged": true
+}
