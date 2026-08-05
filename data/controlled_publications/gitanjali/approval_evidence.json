@@ -1,0 +1,63 @@
+{
+  "slug": "gitanjali",
+  "approved_to_publish": true,
+  "rights_approval": true,
+  "cover_approval": {
+    "status": "APPROVED",
+    "approved_by": "Earnalism content owner",
+    "approved_at": "2026-08-03T06:23:02Z",
+    "scope": "Canonical Gitanjali front and back cover assets only; does not authorize reader or audio exposure.",
+    "front_cover_sha256": "e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8",
+    "back_cover_sha256": "b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147"
+  },
+  "reader_qa": "APPROVED",
+  "audio_qa": "PENDING",
+  "audio_release_gate": "BLOCKED_PENDING_PRIVATE_MEDIA_IMPORT_AND_FULL_AUDIO_GATE",
+  "owner_approval": "APPROVED_READER_ONLY",
+  "public_reader_release": true,
+  "public_audio_release": false,
+  "reader_text_rights": {
+    "status": "APPROVED",
+    "approved_by": "Earnalism content owner",
+    "approved_at": "2026-08-03T06:00:00Z",
+    "scope": "Reader text only; excludes audiobook source, audio derivatives, and public route exposure.",
+    "basis": "Canonical 1913 Macmillan page-image scan; customer text must be a verified transcription of that edition.",
+    "scan_sha256": "13b3cd4ddacc72b184fc34406a6b8cf063e0ca631697e7006752a032165fb202",
+    "territory_note": "The production territory configuration must be confirmed before unrestricted public release."
+  },
+  "reader_editorial_approval": {
+    "status": "APPROVED",
+    "approved_by": "Earnalism content owner",
+    "approved_at": "2026-08-03T11:18:57Z",
+    "statement": "I approve the sanitized Gitanjali reader text as matching the reviewed 1913 Macmillan page-image scan for publication. I approve it for reader use only; audiobook approval remains separate.",
+    "scope": "Reader text only. Excludes audiobook source, audio derivatives, synchronization, audio QA, and public audio exposure."
+  },
+  "audio_derivative_rights_approval": {
+    "status": "APPROVED",
+    "approved_by": "Earnalism content owner",
+    "approved_at": "2026-08-03T14:51:15Z",
+    "statement": "I approve use and distribution of the verified LibriVox Gitanjali recording for Earnalism audiobook publication in all intended launch territories, subject to passing measured alignment, QA, import, and browser release gates.",
+    "scope": "Verified LibriVox Gitanjali source tracks and whole-book derivative only. Does not approve public audio exposure or bypass any release gate.",
+    "source": {
+      "provider": "LibriVox",
+      "archive_item": "gitanjali_1002_librivox",
+      "source_metadata_url": "https://archive.org/metadata/gitanjali_1002_librivox",
+      "provider_rights_url": "https://librivox.org/pages/public-domain/",
+      "source_manifest_sha256": "ebdad964d5c4245abe14145983a08c54e8ff625f5a98c93dbec3aa6723db3b8f"
+    },
+    "conditions": [
+      "measured_alignment",
+      "listening_qa",
+      "draft_import",
+      "browser_route_checks",
+      "full_audio_release_gate"
+    ]
+  },
+  "controlled_reader_release_approval": {
+    "status": "APPROVED",
+    "approved_by": "Earnalism content owner",
+    "approved_at": "2026-08-04T10:09:39Z",
+    "statement": "I approve Gitanjali for public reader release in all intended launch territories, based on the approved 1913 Macmillan reader text and approved covers. Audiobook remains private and disabled until its separate full audio release gate passes.",
+    "scope": "Public reader only. Audiobook remains private and disabled."
+  }
+}

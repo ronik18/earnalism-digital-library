@@ -1,41 +1,6 @@
 {
-  "id": "gitanjali-controlled-1913-v1",
   "slug": "gitanjali",
-  "title": "Gitanjali",
-  "subtitle": "Song Offerings",
-  "author": "Rabindranath Tagore",
-  "category_slug": "literary-fiction",
-  "short_description": "A clean digital reading edition of Rabindranath Tagore's 1913 Song Offerings.",
-  "description": "The approved 1913 Macmillan reader edition of Gitanjali.",
-  "formats": [
-    "Ebook"
-  ],
-  "is_published": true,
-  "isPublic": true,
-  "isLive": true,
-  "showInPublicLibrary": true,
-  "showInHomepage": false,
-  "allowPublicReading": true,
-  "allowCheckout": false,
-  "allowPayment": false,
-  "approved_to_publish": true,
-  "publication_status": "LIVE_APPROVED",
-  "publicationStatus": "LIVE_APPROVED",
-  "verification_status": "approved",
-  "qa_status": "QA_PASSED",
-  "rights_tier": "A",
-  "rights_basis": "1913 Macmillan edition, public-domain scan, reader approval on record.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900201/earnalism/covers/front/cover_candidate_controlled-gitanjali-e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900201/earnalism/covers/front/cover_candidate_controlled-gitanjali-e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900215/earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900215/earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147.png",
-  "cover_status": "CLOUDINARY_ASSIGNED",
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generate_audiobook": false,
-  "audiobook_assets": {},
-  "audiobook": {},
-  "audio_asset_slug": "gitanjali",
+  "chapter_count": 104,
   "chapters": [
     {
       "id": "introduction",
@@ -1598,26 +1563,9 @@
       "updated_at": "2026-08-04T10:09:39Z"
     }
   ],
+  "preview_chapter_ids": [],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
   "content_hash": "169757c4993a9c5e9c08b26792003f37112e03c5c21a5cacfd929559e7165a7f",
-  "created_at": "2026-08-04T10:09:39Z",
-  "updated_at": "2026-08-05T03:43:27.536976+00:00",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900201/earnalism/covers/front/cover_candidate_controlled-gitanjali-e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900201/earnalism/covers/front/cover_candidate_controlled-gitanjali-e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8.png",
-  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785900201/earnalism/covers/front/cover_candidate_controlled-gitanjali-e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8.png",
-  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785900201/earnalism/covers/front/cover_candidate_controlled-gitanjali-e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8.png",
-  "dominant_color": "#7E5C30",
-  "cover_dimensions": {
-    "front": [
-      1024,
-      1536
-    ],
-    "back": [
-      1024,
-      1536
-    ]
-  },
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900215/earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147.png",
-  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785900215/earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147.png",
-  "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785900215/earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147.png",
-  "back_cover_dominant_color": "#D4A45B"
+  "generated_at": "2026-08-04T10:09:39Z"
 }

@@ -1936,3 +1936,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Ginni's canonical 1122x1402 front and back assets contain no white top/bottom padding. The visible bands came from applying `object-fit: cover` to the wrapper while the nested image retained global `object-fit: contain`.
 - Shelf counts should describe all uniquely mapped reader titles, while cover compositions may show a smaller truth-gated selection of canonical graphical covers.
 - Sparse shelves should use spotlight or duo composition; they must not borrow duplicate titles from another primary shelf.
+
+## Gitanjali controlled cover promotion - 2026-08-05
+
+- The production cover-status queue is Sprint 1 scoped and can omit an approved controlled publication; query the exact candidate IDs when release evidence is title-specific.
+- Keep immutable upload and canonical promotion separate. Both Gitanjali candidates were content-addressed, downloaded again, and matched the approved SHA-256 values before promotion.
+- Canonical promotion requires identical primary and backend controlled-publication mirrors. Add the missing primary mirror before running the transaction rather than bypassing the mirror gate.
+- Cover publication must preserve reader/audio separation. Gitanjali remains reader-live with 104 ready chapters while audiobook fields stay disabled and no public audiobook route is authorized.

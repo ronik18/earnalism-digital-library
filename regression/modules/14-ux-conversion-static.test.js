@@ -255,11 +255,16 @@ describe("UX conversion static signals", () => {
   test("premium landing visual pass keeps hero efficient, local, and truthful", () => {
     expect(premiumHero).toContain('data-testid="premium-landing-hero"');
     expect(premiumHero).toContain('data-testid="hero-catalog-visuals"');
-    expect(premiumHero).toContain('data-testid="premium-hero-feature-cards"');
+    expect(premiumHero).toContain('data-testid="premium-hero-reading-pass"');
+    expect(premiumHero).toContain("Start free. Continue when the story earns it.");
+    expect(premiumHero).toContain("View Reading Passes");
+    expect(premiumHero).toContain("Beautiful Graphical Editions");
+    expect(premiumHero).toContain("Calm Reader Modes");
+    expect(premiumHero).toContain("Your Library, Everywhere");
     expect(premiumHero).toContain("Curated Classics");
     expect(premiumHero).toContain("Immersive Audiobooks");
-    expect(premiumHero).toContain("Beautiful Editions");
-    expect(premiumHero).toContain("Calm Reading Modes");
+    expect(premiumHero).toContain("Beautiful Graphical Editions");
+    expect(premiumHero).toContain("Calm Reader Modes");
     expect(heroCarousel).toContain("book.front_cover_url");
     expect(heroCarousel).toContain("book.cover_alt_text");
     expect(premiumHero).toContain("book.coverSrc");
