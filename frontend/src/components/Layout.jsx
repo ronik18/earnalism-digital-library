@@ -5,6 +5,15 @@ import Footer from "./Footer";
 
 const FirstVisitSiteTour = lazy(() => import("./FirstVisitSiteTour"));
 const TOUR_IMPORT_DELAY_MS = 2600;
+const TOUR_STORAGE_KEY = "earnalism:first-visit-site-tour:v1";
+
+function hasCompletedFirstVisitTour() {
+  try {
+    return window.localStorage.getItem(TOUR_STORAGE_KEY) === "complete";
+  } catch (_) {
+    return false;
+  }
+}
 
 export default function Layout() {
   const location = useLocation();
@@ -23,6 +32,12 @@ export default function Layout() {
       setTourReady(true);
       return undefined;
     }
+
+    if (hasCompletedFirstVisitTour()) {
+      setTourReady(false);
+      return undefined;
+    }
+
     const timer = window.setTimeout(() => setTourReady(true), TOUR_IMPORT_DELAY_MS);
     return () => window.clearTimeout(timer);
   }, [forcedTour, location.pathname]);

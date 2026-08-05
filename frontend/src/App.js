@@ -4,10 +4,10 @@ import "@/index.css";
 import { AuthProvider } from "./context/AuthContext";
 import { SettingsProvider } from "./context/SettingsContext";
 import Layout from "./components/Layout";
+import Home from "./pages/Home";
 import { AppToaster } from "./components/AppToaster";
 
 const pageImports = {
-  Home: () => import("./pages/Home"),
   Library: () => import("./pages/Library"),
   BookDetail: () => import("./pages/BookDetail"),
   Journal: () => import("./pages/Journal"),
@@ -27,7 +27,6 @@ const pageImports = {
   GoogleAuthBoundary: () => import("./components/GoogleAuthBoundary"),
 };
 
-const Home = lazy(pageImports.Home);
 const Library = lazy(pageImports.Library);
 const BookDetail = lazy(pageImports.BookDetail);
 const Journal = lazy(pageImports.Journal);

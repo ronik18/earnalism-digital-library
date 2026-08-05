@@ -128,6 +128,7 @@ export default function Header() {
         </div>
 
         <button
+          type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
