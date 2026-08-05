@@ -12,6 +12,15 @@
     "impact_report": "internal/earnalism_intelligence/platform_audiobook_89_cutoff_impact_report.json"
   },
   "titles": {
+    "gitanjali": {
+      "reader_status": "READER_ONLY_LIVE_APPROVED",
+      "cover_status": "CANONICAL_FRONT_AND_BACK_APPROVED",
+      "audio_status": "NOT_AVAILABLE",
+      "audiobook_enabled": false,
+      "front_cover_sha256": "e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8",
+      "back_cover_sha256": "b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147",
+      "updated_at": "2026-08-05T03:45:08Z"
+    },
     "a-ghost-story": {
       "latest_decision": "PACKAGE_V2_FULL_PROMOTION_PRODUCTION_GREEN",
       "decision_reason": "The exact full-promotion merge and Railway deployment are green. Both former rollout identities and the public request received the same exact package manifest; 78 production HTTP checks passed; and a real customer browser played c001-s001, naturally auto-advanced to c001-s002 without a seek or synthetic event, advanced playback, and reported no media or console error. The approved legacy descriptor remains retained for rollback.",

@@ -1,0 +1,95 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "gitanjali",
+  "active_approvals": {
+    "front": "080a4574-0eef-43c6-9071-1cd63b4ac48c",
+    "back": "37aa3772-bbc6-48e6-8e82-d2f659342df1"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "080a4574-0eef-43c6-9071-1cd63b4ac48c",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "",
+        "cover_image_url": "",
+        "coverImage": null,
+        "cover_image": null,
+        "thumbnail_url": null,
+        "blur_placeholder": null,
+        "dominant_color": null,
+        "cover_status": "APPROVED_PENDING_PRIVATE_UPLOAD",
+        "cover_dimensions": null
+      }
+    },
+    "back": {
+      "from_event_id": "37aa3772-bbc6-48e6-8e82-d2f659342df1",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "back_cover_url": "",
+        "back_cover_image_url": "",
+        "backCoverImage": null,
+        "back_cover_thumbnail_url": null,
+        "back_cover_blur_placeholder": null,
+        "back_cover_dominant_color": null,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_dimensions": {
+          "front": [
+            1024,
+            1536
+          ]
+        }
+      }
+    }
+  },
+  "history": [
+    {
+      "event_id": "080a4574-0eef-43c6-9071-1cd63b4ac48c",
+      "slug": "gitanjali",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8",
+      "remote_sha256": "e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900201/earnalism/covers/front/cover_candidate_controlled-gitanjali-e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8.png",
+        "public_id": "earnalism/covers/front/cover_candidate_controlled-gitanjali-e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8",
+        "version": "1785900201",
+        "version_id": "848bb185d2f55eed4a3e8e1b0112c109",
+        "resource_type": "image",
+        "format": "png"
+      },
+      "width": 1024,
+      "height": 1536,
+      "approved_at": "2026-08-05T03:43:25.872834+00:00",
+      "approved_by": "sales@reoenterprise.org",
+      "approval_note": "Approved Gitanjali graphical cover; exact bytes match controlled approval evidence.",
+      "rights_basis": "Owner-supplied Earnalism cover with explicit controlled-publication approval evidence.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "88531312bbb88ebbf58b8414ab5c3218a6f1650e10b2f3a00794bff3de7e1bed"
+    },
+    {
+      "event_id": "37aa3772-bbc6-48e6-8e82-d2f659342df1",
+      "slug": "gitanjali",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147",
+      "remote_sha256": "b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900215/earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147.png",
+        "public_id": "earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147",
+        "version": "1785900215",
+        "version_id": "5e68e13b177d0dfc84949b477d98ab5e",
+        "resource_type": "image",
+        "format": "png"
+      },
+      "width": 1024,
+      "height": 1536,
+      "approved_at": "2026-08-05T03:43:27.536976+00:00",
+      "approved_by": "sales@reoenterprise.org",
+      "approval_note": "Approved Gitanjali graphical cover; exact bytes match controlled approval evidence.",
+      "rights_basis": "Owner-supplied Earnalism cover with explicit controlled-publication approval evidence.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "dc7ceeeeec39c002274354547f9a0bdd1ae599f93a263012b564c4f02482efe1"
+    }
+  ],
+  "updated_at": "2026-08-05T03:43:27.536976+00:00"
+}
