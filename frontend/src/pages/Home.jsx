@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
+  ArrowUpRight,
   BookOpen,
   CircleCheck,
   CreditCard,
@@ -243,19 +244,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="reading-circle" className="relative overflow-hidden bg-[#1b0b10] text-[#FDFCF8]">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-24">
-          <div className="lg:col-span-6">
-            <div className="italic-eyebrow reading-circle-eyebrow mb-4">Reading Circle</div>
-            <h2 className="font-serif-light text-[1.78rem] leading-tight sm:text-[2.24rem]">Follow the reading room.</h2>
-            <p className="mt-6 max-w-xl text-[#F4EFEA]/76 leading-[1.8]">
+      <section id="reading-circle" className="reading-circle">
+        <div className="reading-circle__orbit" aria-hidden="true" />
+        <div className="reading-circle__inner">
+          <div className="reading-circle__story">
+            <div className="reading-circle__eyebrow">
+              <span aria-hidden="true" />
+              Reading Circle
+            </div>
+            <h2>Follow the reading room.</h2>
+            <p className="reading-circle__description">
               Receive quiet notes as Bengali and English classics move from rights review to reader-ready release.
             </p>
             {activeSocials.length > 0 ? (
-              <nav className="mt-9" aria-label="Earnalism social links" data-testid="home-socials">
-                <div className="text-[0.64rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]/90">Follow the reading room</div>
-                <div className="mt-4 flex flex-wrap items-center gap-3">
-                  {activeSocials.map(({ id, ariaLabel, external, Icon, url }) => (
+              <nav className="reading-circle__socials" aria-label="Earnalism social links" data-testid="home-socials">
+                <div className="reading-circle__social-label">Choose your reading-room channel</div>
+                <div className="reading-circle__social-grid">
+                  {activeSocials.map(({ id, ariaLabel, external, Icon, label, url }) => (
                     <a
                       key={id}
                       href={url}
@@ -263,38 +268,45 @@ export default function Home() {
                       rel={external ? "noopener noreferrer" : undefined}
                       aria-label={ariaLabel}
                       className="home-social-rail__link"
+                      data-social={id}
                       data-testid={`home-social-${id}`}
                     >
-                      <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
+                      <span className="home-social-rail__icon" aria-hidden="true">
+                        <Icon size={18} strokeWidth={1.55} />
+                      </span>
+                      <span className="home-social-rail__copy">{label}</span>
+                      <ArrowUpRight className="home-social-rail__external" size={14} strokeWidth={1.5} aria-hidden="true" />
                     </a>
                   ))}
                 </div>
               </nav>
             ) : (
-              <div className="home-social-review mt-9" data-testid="home-socials-owner-review">
+              <div className="home-social-review" data-testid="home-socials-owner-review">
                 No placeholder or fake social links are shown.
               </div>
             )}
           </div>
-          <form onSubmit={subscribe} className="rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.06] p-6 backdrop-blur-sm sm:p-8 lg:col-span-6 lg:p-10" data-testid="newsletter-card" aria-describedby="newsletter-description">
-            <div className="flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">
-              <Mail size={15} strokeWidth={1.6} /> Private dispatch
+          <form onSubmit={subscribe} className="reading-dispatch" data-testid="newsletter-card" aria-describedby="newsletter-description">
+            <div className="reading-dispatch__seal" aria-hidden="true">E</div>
+            <div className="reading-dispatch__eyebrow">
+              <Mail size={15} strokeWidth={1.6} aria-hidden="true" /> Private dispatch
             </div>
-            <p id="newsletter-description" className="mt-4 text-sm leading-relaxed text-[#F4EFEA]/70">
+            <p id="newsletter-description" className="reading-dispatch__description">
               Join for reading notes and release updates. No audiobook or paid campaign is live from this form.
             </p>
-            <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <label>
+            <div className="reading-dispatch__fields">
+              <label className="reading-dispatch__field">
                 <span className="sr-only">Your name</span>
-                <input required value={name} onChange={(event) => setName(event.target.value)} placeholder="Your name" className="input-elegant !border-b-[#FDFCF8]/30 !text-[#FDFCF8] placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-name" aria-label="Your name" />
+                <input required value={name} onChange={(event) => setName(event.target.value)} placeholder="Your name" data-testid="newsletter-name" aria-label="Your name" />
               </label>
-              <label>
+              <label className="reading-dispatch__field">
                 <span className="sr-only">Your email</span>
-                <input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Your email" className="input-elegant !border-b-[#FDFCF8]/30 !text-[#FDFCF8] placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-email" aria-label="Your email" />
+                <input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Your email" data-testid="newsletter-email" aria-label="Your email" />
               </label>
             </div>
-            <button type="submit" disabled={submitting} className="btn-primary mt-8 w-full justify-center" data-testid="newsletter-submit">
-              {submitting ? "Joining..." : "Join the Reading Circle"}
+            <button type="submit" disabled={submitting} className="reading-dispatch__submit" data-testid="newsletter-submit">
+              <span>{submitting ? "Joining..." : "Join the Reading Circle"}</span>
+              <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
             </button>
           </form>
         </div>
