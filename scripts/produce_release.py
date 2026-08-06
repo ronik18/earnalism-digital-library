@@ -21,6 +21,11 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
+try:
+    from release_intelligence import rank_strategies, read_learning_ledger, record_learning, validate_strategy
+except ImportError:  # package-style test imports
+    from scripts.release_intelligence import rank_strategies, read_learning_ledger, record_learning, validate_strategy
+
 
 AUTOMATED_CHECKS = (
     "rights",
@@ -189,6 +194,7 @@ def self_heal(
     audio_approval: Path | None,
     repair_adapter,
     max_attempts: int,
+    learning_ledger: Path | None = None,
 ) -> dict[str, Any]:
     """Repair only explicit transient technical failures, then re-evaluate."""
     history: list[dict[str, Any]] = []
@@ -215,14 +221,20 @@ def self_heal(
             report["self_healing"]["stopped"] = "repair attempt limit reached"
             return report
 
-        strategies = (manifest.get("repair_strategies") or {}).get(check) or []
+        strategies = rank_strategies(
+            check,
+            (manifest.get("repair_strategies") or {}).get(check) or [],
+            read_learning_ledger(learning_ledger),
+        )
         attempt_number = len([item for item in history if item.get("check") == check])
         if attempt_number >= len(strategies):
             report["self_healing"]["stopped"] = f"no untried repair strategy for {check}"
             return report
         strategy = strategies[attempt_number]
-        if str(strategy.get("failure_class", "")).upper() != TRANSIENT_FAILURE_CLASS:
-            report["self_healing"]["stopped"] = f"{check} is not classified as transient"
+        try:
+            validate_strategy(check, strategy)
+        except ValueError as exc:
+            report["self_healing"]["stopped"] = str(exc)
             return report
         try:
             result = repair_adapter(
@@ -233,18 +245,22 @@ def self_heal(
                 reuse_artifacts=True,
             )
         except Exception as exc:  # adapter failures remain blockers
+            record_learning(learning_ledger, check=check, strategy=str(strategy.get("id")), outcome="FAILED")
             history.append({"check": check, "strategy": strategy.get("id"), "status": "FAILED", "detail": str(exc)})
             continue
         evidence_path = result.get("evidence_path") if isinstance(result, dict) else None
         evidence_sha256 = result.get("evidence_sha256") if isinstance(result, dict) else None
         if not isinstance(result, dict) or str(result.get("status", "")).upper() != "PASS":
+            record_learning(learning_ledger, check=check, strategy=str(strategy.get("id")), outcome="BLOCKED", result=result if isinstance(result, dict) else None)
             history.append({"check": check, "strategy": strategy.get("id"), "status": "BLOCKED", "detail": "adapter did not return PASS"})
             continue
         evidence = check_file(root, evidence_path, evidence_sha256, f"{check} repair evidence")
         if evidence["status"] != "PASS":
+            record_learning(learning_ledger, check=check, strategy=str(strategy.get("id")), outcome="BLOCKED", result=result)
             history.append({"check": check, "strategy": strategy.get("id"), "status": "BLOCKED", "detail": evidence["detail"]})
             continue
         if not result.get("reused_artifacts", True) or "regenerated_segments" not in result:
+            record_learning(learning_ledger, check=check, strategy=str(strategy.get("id")), outcome="BLOCKED", result=result)
             history.append({"check": check, "strategy": strategy.get("id"), "status": "BLOCKED", "detail": "repair must declare reuse and regenerated segments"})
             continue
         manifest.setdefault("automated_checks", {})[check] = {
@@ -261,6 +277,7 @@ def self_heal(
                 "reused_artifacts": True,
             }
         )
+        record_learning(learning_ledger, check=check, strategy=str(strategy.get("id")), outcome="PASS", result=result)
     return report
 
 
@@ -274,6 +291,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--self-heal", action="store_true", help="Use an explicit local repair adapter for transient technical failures")
     parser.add_argument("--repair-adapter", type=Path, help="Explicit adapter path required with --self-heal")
     parser.add_argument("--max-repair-attempts", type=int, default=DEFAULT_MAX_REPAIR_ATTEMPTS)
+    parser.add_argument("--learning-ledger", type=Path, help="Optional operational strategy-outcome ledger")
     args = parser.parse_args(argv)
     try:
         manifest = load_json(args.manifest)
@@ -289,6 +307,7 @@ def main(argv: list[str] | None = None) -> int:
                 args.audio_profile_approval,
                 load_repair_adapter(args.repair_adapter),
                 args.max_repair_attempts,
+                args.learning_ledger,
             )
         else:
             report = evaluate(manifest, args.root.resolve(), args.reader_approval, args.audio_profile_approval)
