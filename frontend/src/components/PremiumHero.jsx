@@ -679,6 +679,7 @@ export default function PremiumHero({
   headerMode = "overlay",
   analyticsNamespace = "home",
   fallbackHeadline = DEFAULT_HEADLINE,
+  eyebrowLabel = "Curated Digital Library",
 }) {
   const isDesktopReference = useDesktopReference();
   const [referenceArtFailed, setReferenceArtFailed] = useState(false);
@@ -743,7 +744,7 @@ export default function PremiumHero({
       <div className="premium-hero-copy">
         <div className="premium-hero-eyebrow">
           <Sparkles size={15} strokeWidth={1.6} aria-hidden="true" />
-          <span>Curated Digital Library</span>
+          <span>{eyebrowLabel}</span>
         </div>
         <h1 id="premium-hero-title" data-testid="hero-headline">
           {headlineLead}{" "}

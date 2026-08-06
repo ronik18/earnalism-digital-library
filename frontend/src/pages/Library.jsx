@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowRight, BookOpen, Check, Headphones, Search, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, Check, Headphones, Search, SlidersHorizontal } from "lucide-react";
 import { api } from "../lib/api";
 import BookCard from "../components/BookCard";
+import PremiumHero from "../components/PremiumHero";
 import {
   BATCH_1_READER_ONLY_SLUGS,
   LIVE_APPROVED_SLUG,
@@ -147,6 +148,17 @@ export default function Library() {
     }), sort);
   }, [allBooks, language, listening, query, reading, sort]);
 
+  const libraryHeroCuration = useMemo(() => ({
+    ...curation,
+    hero: {
+      ...curation?.hero,
+      headline: "Find the story that meets you here.",
+      subheadline: "Explore Bengali and English classics through one calm, curated collection—filter by language, literary form, access, and listening availability.",
+      primary_cta: { label: "EXPLORE THE COLLECTION", url: "#library-collection" },
+      secondary_cta: { label: "Explore Audiobooks", url: "/library?availability=approved-audiobook" },
+    },
+  }), [curation]);
+
   const handleSearch = (value) => {
     setQuery(value);
     const next = new URLSearchParams(params);
@@ -157,18 +169,15 @@ export default function Library() {
 
   return (
     <div className="library-page" data-testid="library-page">
-      <section className="library-hero" aria-labelledby="library-title">
-        <div className="library-hero__glow" aria-hidden="true" />
-        <div className="library-hero__inner">
-          <div className="library-hero__copy">
-            <p className="library-overline">THE EARNALISM LIBRARY</p>
-            <h1 id="library-title">Find the story that meets you here.</h1>
-            <p className="library-hero__support">Explore Bengali and English classics through one calm, curated collection—filter by language, literary form, access, and listening availability.</p>
-            <a href="#library-collection" className="library-hero__cta">EXPLORE THE COLLECTION <ArrowRight size={15} aria-hidden="true" /></a>
-          </div>
-          <div className="library-hero__seal" aria-hidden="true"><BookOpen size={24} /><span>E</span></div>
-        </div>
-      </section>
+      <PremiumHero
+        curation={libraryHeroCuration}
+        loading={loading}
+        error={false}
+        headerMode="in-flow"
+        analyticsNamespace="library"
+        eyebrowLabel="THE EARNALISM LIBRARY"
+        fallbackHeadline="Find the story that meets you here."
+      />
 
       <main id="library-collection" className="library-main">
         <section className="library-explorer" aria-labelledby="explorer-title">
