@@ -39,7 +39,7 @@ function BookCard({ book, priority = false }) {
       data-launch-status={status}
       data-cover-status={book.cover_status || ""}
     >
-      <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="block aspect-[3/4] bg-ivory-warm overflow-hidden relative">
+      <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="book-card__cover-link block aspect-[3/4] bg-ivory-warm overflow-hidden relative">
         <BookCoverImage
           book={book}
           alt={displayTitle}
