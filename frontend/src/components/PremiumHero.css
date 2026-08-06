@@ -908,17 +908,17 @@
   .premium-hero-action span { opacity: 0; }
 
   .premium-hero-action--primary {
-    top: 70%;
-    left: 5.32%;
-    width: 15.56%;
-    height: 7.18%;
+    top: 67%;
+    left: 6.15%;
+    width: 14.15%;
+    height: 8.65%;
   }
 
   .premium-hero-action--secondary {
-    top: 70%;
-    left: 21.89%;
-    width: 15.62%;
-    height: 7.18%;
+    top: 67%;
+    left: 21.46%;
+    width: 14.05%;
+    height: 8.65%;
   }
 
   .premium-hero-action:hover {
