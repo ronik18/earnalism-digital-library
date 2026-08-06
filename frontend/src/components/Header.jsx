@@ -46,6 +46,15 @@ const SOCIAL_ICONS = {
   youtube: Youtube,
 };
 
+function isNavItemActive(item, location) {
+  const pathname = location.pathname.replace(/\/+$/, "") || "/";
+  if (item.to === "/library") return pathname === "/library" && !location.search;
+  if (item.to.includes("language=bn")) return pathname === "/library" && location.search.includes("language=bn");
+  if (item.to.includes("language=en")) return pathname === "/library" && location.search.includes("language=en") && !location.search.includes("language=bn");
+  if (item.to.includes("approved-audiobook")) return pathname === "/library" && location.search.includes("approved-audiobook");
+  return pathname === item.to;
+}
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const loc = useLocation();
@@ -79,17 +88,16 @@ export default function Header() {
           aria-label="Primary navigation"
         >
           {(isReferenceHome ? REFERENCE_HOME_NAV.filter((item) => item.key !== "search") : NAV).map((n) => (
-            <NavLink
+            <Link
               key={n.to || n.key}
               to={n.to}
               end={n.to === "/"}
               data-testid={`nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
-              className={({ isActive }) =>
-                `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
-              }
+              className={() => `tracking-[0.12em] transition-colors whitespace-nowrap ${isNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`}
+              aria-current={isNavItemActive(n, loc) ? "page" : undefined}
             >
               {n.label}
-            </NavLink>
+            </Link>
           ))}
           {isReferenceHome ? (
             <>
@@ -144,17 +152,16 @@ export default function Header() {
         <div id="mobile-menu" className="xl:hidden border-t border-brand bg-ivory/95 backdrop-blur-xl" data-testid="mobile-menu">
           <div className="px-5 py-5 flex flex-col">
             {NAV.map((n) => (
-              <NavLink
+              <Link
                 key={n.to}
                 to={n.to}
                 end={n.to === "/"}
                 data-testid={`mobile-nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
-                className={({ isActive }) =>
-                  `py-4 text-[0.95rem] tracking-wide border-b border-brand-soft ${isActive ? "text-burgundy" : "text-charcoal"}`
-                }
+                className={() => `py-4 text-[0.95rem] tracking-wide border-b border-brand-soft ${isNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal"}`}
+                aria-current={isNavItemActive(n, loc) ? "page" : undefined}
               >
                 {n.label}
-              </NavLink>
+              </Link>
             ))}
             <NavLink
               to={accountHref}
