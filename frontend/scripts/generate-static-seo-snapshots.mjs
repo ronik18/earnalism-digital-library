@@ -475,7 +475,16 @@ async function writeSnapshot(page, template) {
 
 async function main() {
   const template = await readSnapshotTemplate();
-  const artifacts = await loadDraculaArtifacts();
+  let artifacts;
+  try {
+    artifacts = await loadDraculaArtifacts();
+  } catch (error) {
+    if (error?.code === "ENOENT") {
+      console.warn("[static-seo] Controlled-publication artifacts are unavailable; skipping static SEO snapshots.");
+      return;
+    }
+    throw error;
+  }
   const pages = buildPages(artifacts);
   const written = [];
 
