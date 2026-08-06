@@ -716,7 +716,7 @@ export default function PremiumHero({
 
   return (
     <section
-      className={`premium-landing-hero premium-dynamic-hero premium-reference-hero premium-reference-hero--exact${headerMode === "in-flow" ? " premium-reference-hero--in-flow" : ""}${referenceArtFailed ? " premium-reference-hero--art-failed" : ""}`}
+      className={`premium-landing-hero premium-dynamic-hero premium-reference-hero premium-reference-hero--exact${headerMode === "in-flow" ? " premium-reference-hero--in-flow" : ""}${headerMode === "document" ? " premium-reference-hero--document" : ""}${referenceArtFailed ? " premium-reference-hero--art-failed" : ""}`}
       data-testid="premium-landing-hero"
       data-catalog-state={loading ? "loading" : error ? "unavailable" : "ready"}
           aria-label={headline}

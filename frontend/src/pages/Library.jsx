@@ -173,7 +173,7 @@ export default function Library() {
         curation={libraryHeroCuration}
         loading={loading}
         error={false}
-        headerMode="in-flow"
+        headerMode="document"
         analyticsNamespace="library"
         eyebrowLabel="THE EARNALISM LIBRARY"
         fallbackHeadline="Find the story that meets you here."
