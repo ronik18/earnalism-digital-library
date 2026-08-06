@@ -529,8 +529,15 @@ async function finalizeArtifacts(videoPath) {
     const finalVideo = path.join(OUTPUT_DIR, "signed-user-full-journey.webm");
     fs.copyFileSync(videoPath, finalVideo);
     results.video_path = path.relative(ROOT, finalVideo);
+  } else if (IS_SMOKE) {
+    results.video_path = "VIDEO_NOT_REQUIRED_IN_SMOKE";
   } else {
     results.video_path = "VIDEO_NOT_AVAILABLE";
+    results.failures.push({
+      priority: "P0",
+      issue: "Signed-user journey video was not captured.",
+      recommendation: "Run the full journey recorder with video capture enabled.",
+    });
   }
 
   const publicAudioScan = scanPublicAudioFiles();

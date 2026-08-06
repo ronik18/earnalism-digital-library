@@ -50,6 +50,7 @@ describe("BrandHeaderLogo", () => {
   test("public header reuses the footer lockup without the obsolete badge component", () => {
     expect(headerSource).toContain('import BrandMark from "./BrandMark";');
     expect(headerSource).toContain('<BrandMark variant="footer" />');
+    expect(headerSource).not.toContain("BrandHeaderLogo badgeVariant");
     expect(headerSource).not.toContain("IndiaCraftBadge");
   });
 });
