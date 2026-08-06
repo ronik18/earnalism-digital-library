@@ -19,6 +19,7 @@ import { getEnabledSocialLinks } from "../config/socialLinks";
 import "./Header.css";
 
 const NAV = [
+  { to: "/", label: "Home" },
   { to: "/library", label: "Library" },
   { to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
   { to: "/library?language=en", label: "English Classics" },
@@ -28,6 +29,7 @@ const NAV = [
 ];
 
 const REFERENCE_HOME_NAV = [
+  { key: "home", to: "/", label: "Home" },
   { key: "library", to: "/library", label: "Library" },
   { key: "bengali", to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
   { key: "english", to: "/library?language=en", label: "English Classics" },
