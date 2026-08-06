@@ -1,6 +1,6 @@
 # Audiobook Release Gate Report
 
-Generated at: 2026-08-03T02:13:52.281254+00:00
+Generated at: 2026-08-06T20:15:08.097593+00:00
 
 Status: `BLOCKED_PUBLIC_AUDIO_RELEASE`
 
@@ -11,6 +11,12 @@ Status: `BLOCKED_PUBLIC_AUDIO_RELEASE`
 
 ## Blockers
 
+- owner approval is missing.
+- rights approval is missing.
+- source_text approval is missing.
+- voice_style approval is missing.
+- qa approval is missing.
+- product_release approval is missing.
 - Rights approval is missing.
 - Source-text approval is missing.
 - Voice profile is not approved for public release.

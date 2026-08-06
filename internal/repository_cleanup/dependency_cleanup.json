@@ -1,0 +1,9 @@
+{
+  "baseline_commit": "dea24a0d29388ae8ae92a04eb2d3f498b1064c54",
+  "branch": "codex/repository-deep-clean",
+  "generated_at_utc": "2026-08-06T20:13:34Z",
+  "origin_main": "dea24a0d29388ae8ae92a04eb2d3f498b1064c54",
+  "reason": "Dependency usage requires import, build, test, subprocess, plugin, and deployment evidence; no package was removed in the baseline pass.",
+  "removed": [],
+  "status": "NO_DEPENDENCY_REMOVAL_PROVEN"
+}
