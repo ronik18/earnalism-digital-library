@@ -145,6 +145,11 @@ build/
 earnalism-main-line-review-bundle/
 earnalism-review-bundle-minimal/
 
+# Codex worktrees and stale local dependency snapshots are never release inputs.
+.codex-worktrees/
+frontend/node_modules.stale-*/
+**/.pytest_cache/
+
 # Local virtualenvs for optional audio tooling
 .venv-edge/
 

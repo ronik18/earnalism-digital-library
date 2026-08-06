@@ -1,6 +1,6 @@
 # Phase 14 Validation Report
 
-Commit SHA at report generation: `82dc3bd49de2914e30db747d2f307756a18a4d7b` (working tree evidence may include uncommitted Phase 14 changes)
+Commit SHA at report generation: `dea24a0d29388ae8ae92a04eb2d3f498b1064c54` (working tree evidence may include uncommitted Phase 14 changes)
 Final score: `7.84/10`
 Recommendation: `HOLD_FOR_FIXES`
 
