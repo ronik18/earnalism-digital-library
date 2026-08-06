@@ -1,0 +1,393 @@
+{
+  "baseline_commit": "dea24a0d29388ae8ae92a04eb2d3f498b1064c54",
+  "branch": "codex/repository-deep-clean",
+  "generated_at_utc": "2026-08-06T20:13:34Z",
+  "items": [
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "README_audio 2.md",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "README_audio.md",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/QUARANTINE_MANIFEST.md",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/config/expected-indexes 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/config/modules 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/config/performance.rules 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/config/seo.rules 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/fixtures/books.manifest 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/modules/06-seo.test 2.js",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/modules/08-mongodb-performance.test 2.js",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/modules/11-security-access-control.test 2.js",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/modules/12-migration-data-consistency.test 2.js",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/reporters/moduleScoreReporter 2.js",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/scripts/assert-go-live-pass 2.js",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/scripts/post-deploy-canary 2.js",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/regression/scripts/update-visual-baselines 2.js",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/requirements 2.txt",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/scripts/audit_bengali_library 2.py",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/scripts/audit_data/bengali_live_source_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/scripts/extract_gutenberg_collection_stories 2.py",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/scripts/k6_10x_spike 2.js",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/scripts/live_library_green_audit 2.py",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/scripts/record_earnalism_tour 2.py",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/scripts/render_bengali_covers 2.mjs",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/scripts/repair_and_prepare_bengali_wikisource 2.py",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/scripts/run_audiobook_backfill 2.command",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/voices 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "archive/unused-candidates/2026-06-27/voices 3.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "backend/data/controlled_publications/the-necklace/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/a-jury-of-her-peers/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/a-mystery-of-heroism/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-0986aeb7e3/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-0fbdaa730e/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-1090573dff/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-2b9853ec52/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-4968248842/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-4b944e64fa/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-5461971092/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-5704b31005/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-5aedda79fe/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-63afd5e9be/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-754da4eab8/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-827fdc7aee/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-88ded9b47c/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-95624627d5/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-9a7f771921/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-a23625bf36/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-ac5a71075e/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-bfc51280b3/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-c307a57868/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-c85323409f/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-d19e96859f/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-d2fe532e1c/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-ef193ffc52/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/book-fbdf2991ab/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/dsires-baby/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/muchiram-gurer-jibanchorit/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/the-bishop/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/the-call-of-the-wild/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/the-cop-and-the-anthem/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/the-gift-of-the-magi/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/the-lady-with-the-dog/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/the-last-leaf/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/the-masque-of-the-red-death/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/the-open-boat/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/the-tell-tale-heart/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/tobermory/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "data/controlled_publications/yugalanguriya/approval_evidence 2.json",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "generate_audio 2.py",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "internal/earnalism_intelligence/locks/paid_tts 2.lock",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "scripts/commit_push_deploy 2.sh",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "scripts/open_source_audiobook_onboarding 2.py",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "scripts/prepare_technical_book 2.py",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "EXTERNALLY_REFERENCED_OR_AMBIGUOUS",
+      "path": "scripts/run_audiobook_backfill 2.sh",
+      "reason": "Duplicate-looking or archived material requires caller, rollback, and historical-reference analysis before deletion."
+    },
+    {
+      "classification": "RETENTION_REQUIRED",
+      "path": "internal/earnalism_intelligence/",
+      "reason": "Decision, campaign, release, rights, and rollback evidence."
+    },
+    {
+      "classification": "RETENTION_REQUIRED",
+      "path": "internal/audiobook_lab/",
+      "reason": "Audiobook release gates, synchronization, checksums, and QA evidence."
+    },
+    {
+      "classification": "RETENTION_REQUIRED",
+      "path": "backend/data/controlled_publications/",
+      "reason": "Controlled publication artifacts and reader-release provenance."
+    }
+  ],
+  "origin_main": "dea24a0d29388ae8ae92a04eb2d3f498b1064c54"
+}

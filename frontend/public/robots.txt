@@ -46,6 +46,7 @@ Allow: /reader/dracula
 Allow: /reader/dsires-baby
 Allow: /reader/eyesore-chokher-bali
 Allow: /reader/frankenstein
+Allow: /reader/gitanjali
 Allow: /reader/hound-of-the-baskervilles
 Allow: /reader/hungry-stones
 Allow: /reader/jekyll-and-hyde

@@ -1,0 +1,76 @@
+{
+  "generated_at_utc": "2026-08-06T20:17:39.558732+00:00",
+  "baseline_commit": "dea24a0d2",
+  "branch": "codex/repository-deep-clean",
+  "scope": "repository cleanup audit and ignore hygiene only; no production mutation",
+  "status": "PARTIAL_VALIDATION_BLOCKED",
+  "passed": [
+    {
+      "check": "cleanup manifest JSON parse",
+      "result": "PASS"
+    },
+    {
+      "check": "git diff --check",
+      "result": "PASS"
+    },
+    {
+      "check": "tracked exact-content duplicate scan",
+      "result": "PASS; none found"
+    },
+    {
+      "check": "Python compileall for backend and scripts",
+      "result": "PASS"
+    },
+    {
+      "check": "frontend test suite",
+      "result": "PASS; 32 suites, 187 tests"
+    },
+    {
+      "check": "frontend production build",
+      "result": "PASS; SEO prebuild emitted offline API warnings only"
+    },
+    {
+      "check": "tracked deletion safety review",
+      "result": "PASS; no file proven unused or safe to delete"
+    }
+  ],
+  "blocked_or_inconclusive": [
+    {
+      "check": "backend full pytest",
+      "result": "BLOCKED_ENVIRONMENT; 738 passed, 150 failed, 49 errors; failures include local-server/network/database-dependent integration fixtures",
+      "cleanup_cause": "NO_BACKEND_SOURCE_CHANGED"
+    },
+    {
+      "check": "publication workflow schema focused test",
+      "result": "1 existing assertion failed, 6 passed; audio_status normalization expectation conflicts with current implementation",
+      "cleanup_cause": "NO_BACKEND_SOURCE_CHANGED"
+    },
+    {
+      "check": "Ruff",
+      "result": "NOT_INSTALLED"
+    },
+    {
+      "check": "Mypy",
+      "result": "NOT_APPLICABLE_TO_CHANGED_SCOPE; no backend/release_pipeline path exists in this checkout"
+    },
+    {
+      "check": "browser visual smoke and Docker runtime validation",
+      "result": "NOT_RUN; no runtime code changed and production/provider access is prohibited for this cleanup"
+    }
+  ],
+  "preserved": [
+    ".codex-worktrees/",
+    "frontend/node_modules.stale-*/",
+    "internal/earnalism_intelligence/",
+    "internal/audiobook_lab/",
+    "backend/data/controlled_publications/",
+    "all existing tracked evidence, release, rights, migration, and rollback artifacts"
+  ],
+  "production": {
+    "mutated": false,
+    "deployed": false,
+    "provider_accessed": false,
+    "credentials_logged": false
+  },
+  "next_action": "Resolve the existing backend test/environment blockers in a separate scoped task before claiming repository-wide validation is green."
+}
