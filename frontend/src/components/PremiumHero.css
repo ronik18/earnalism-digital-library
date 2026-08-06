@@ -819,6 +819,10 @@
     --reference-header-height: var(--site-header-height);
   }
 
+  .premium-reference-hero--document {
+    --reference-header-height: 0px;
+  }
+
   .premium-reference-hero__art {
     position: absolute;
     top: var(--reference-header-height);
