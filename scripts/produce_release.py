@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import sys
 from pathlib import Path
@@ -32,6 +33,17 @@ AUTOMATED_CHECKS = (
     "browser",
     "production",
 )
+
+REPAIRABLE_AUTOMATED_CHECKS = (
+    "audio_artifacts",
+    "synchronization",
+    "checksums",
+    "staging",
+    "browser",
+    "production",
+)
+TRANSIENT_FAILURE_CLASS = "TRANSIENT"
+DEFAULT_MAX_REPAIR_ATTEMPTS = 3
 
 
 def sha256_file(path: Path) -> str:
@@ -157,6 +169,101 @@ def evaluate(manifest: dict[str, Any], root: Path, reader_approval: Path | None,
     }
 
 
+def load_repair_adapter(path: Path):
+    """Load an explicitly selected local adapter; never discover one implicitly."""
+    spec = importlib.util.spec_from_file_location("earnalism_release_repair_adapter", path)
+    if spec is None or spec.loader is None:
+        raise ValueError(f"cannot load repair adapter: {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    repair = getattr(module, "repair", None)
+    if not callable(repair):
+        raise ValueError("repair adapter must export repair(manifest, check, strategy, failed_segments)")
+    return repair
+
+
+def self_heal(
+    manifest: dict[str, Any],
+    root: Path,
+    reader_approval: Path | None,
+    audio_approval: Path | None,
+    repair_adapter,
+    max_attempts: int,
+) -> dict[str, Any]:
+    """Repair only explicit transient technical failures, then re-evaluate."""
+    history: list[dict[str, Any]] = []
+    for cycle in range(max_attempts + 1):
+        report = evaluate(manifest, root, reader_approval, audio_approval)
+        report["self_healing"] = {"cycles": cycle, "attempts": history}
+        if report["release_status"] == "LIVE":
+            return report
+        if any(gate["status"] != "PASS" for gate in report["human_gates"].values()):
+            report["self_healing"]["stopped"] = "human approval gate pending or blocked"
+            return report
+        check = next(
+            (
+                name
+                for name in REPAIRABLE_AUTOMATED_CHECKS
+                if report["automated_checks"].get(name, {}).get("status") != "PASS"
+            ),
+            None,
+        )
+        if check is None:
+            report["self_healing"]["stopped"] = "non-repairable automated blocker"
+            return report
+        if cycle >= max_attempts:
+            report["self_healing"]["stopped"] = "repair attempt limit reached"
+            return report
+
+        strategies = (manifest.get("repair_strategies") or {}).get(check) or []
+        attempt_number = len([item for item in history if item.get("check") == check])
+        if attempt_number >= len(strategies):
+            report["self_healing"]["stopped"] = f"no untried repair strategy for {check}"
+            return report
+        strategy = strategies[attempt_number]
+        if str(strategy.get("failure_class", "")).upper() != TRANSIENT_FAILURE_CLASS:
+            report["self_healing"]["stopped"] = f"{check} is not classified as transient"
+            return report
+        try:
+            result = repair_adapter(
+                manifest=manifest,
+                check=check,
+                strategy=strategy,
+                failed_segments=strategy.get("failed_segments") or [],
+                reuse_artifacts=True,
+            )
+        except Exception as exc:  # adapter failures remain blockers
+            history.append({"check": check, "strategy": strategy.get("id"), "status": "FAILED", "detail": str(exc)})
+            continue
+        evidence_path = result.get("evidence_path") if isinstance(result, dict) else None
+        evidence_sha256 = result.get("evidence_sha256") if isinstance(result, dict) else None
+        if not isinstance(result, dict) or str(result.get("status", "")).upper() != "PASS":
+            history.append({"check": check, "strategy": strategy.get("id"), "status": "BLOCKED", "detail": "adapter did not return PASS"})
+            continue
+        evidence = check_file(root, evidence_path, evidence_sha256, f"{check} repair evidence")
+        if evidence["status"] != "PASS":
+            history.append({"check": check, "strategy": strategy.get("id"), "status": "BLOCKED", "detail": evidence["detail"]})
+            continue
+        if not result.get("reused_artifacts", True) or "regenerated_segments" not in result:
+            history.append({"check": check, "strategy": strategy.get("id"), "status": "BLOCKED", "detail": "repair must declare reuse and regenerated segments"})
+            continue
+        manifest.setdefault("automated_checks", {})[check] = {
+            "status": "PASS",
+            "evidence_path": evidence_path,
+            "evidence_sha256": evidence_sha256,
+        }
+        history.append(
+            {
+                "check": check,
+                "strategy": strategy.get("id"),
+                "status": "PASS",
+                "regenerated_segments": result.get("regenerated_segments") or [],
+                "reused_artifacts": True,
+            }
+        )
+    return report
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, required=True)
@@ -164,9 +271,27 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--audio-profile-approval", type=Path)
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--state-file", type=Path, help="Optional status output; no evidence is written by default")
+    parser.add_argument("--self-heal", action="store_true", help="Use an explicit local repair adapter for transient technical failures")
+    parser.add_argument("--repair-adapter", type=Path, help="Explicit adapter path required with --self-heal")
+    parser.add_argument("--max-repair-attempts", type=int, default=DEFAULT_MAX_REPAIR_ATTEMPTS)
     args = parser.parse_args(argv)
     try:
-        report = evaluate(load_json(args.manifest), args.root.resolve(), args.reader_approval, args.audio_profile_approval)
+        manifest = load_json(args.manifest)
+        if args.self_heal:
+            if not args.repair_adapter:
+                raise ValueError("--repair-adapter is required with --self-heal")
+            if args.max_repair_attempts < 1 or args.max_repair_attempts > 3:
+                raise ValueError("--max-repair-attempts must be between 1 and 3")
+            report = self_heal(
+                manifest,
+                args.root.resolve(),
+                args.reader_approval,
+                args.audio_profile_approval,
+                load_repair_adapter(args.repair_adapter),
+                args.max_repair_attempts,
+            )
+        else:
+            report = evaluate(manifest, args.root.resolve(), args.reader_approval, args.audio_profile_approval)
     except ValueError as exc:
         print(json.dumps({"release_status": "BLOCKED", "error": str(exc)}, indent=2))
         return 2
