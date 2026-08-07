@@ -4,6 +4,16 @@
   "scope": "backend runtime dependency audit",
   "method": "static import graph from backend/server.py plus route-sensitive requirements review",
   "status": "REPORT_ONLY_NO_REMOVALS",
+  "candidate_validation": {
+    "status": "PARTIAL_PASS_WITH_BLOCKERS",
+    "environment": "disposable /tmp virtualenv; no production credentials or services",
+    "package_resolution": "24 candidate pins installed; three source/index mismatches excluded and recorded",
+    "server_import": "PASS with dummy local Mongo URI and dummy JWT secret",
+    "installed_site_packages": "100M",
+    "server_import_wall_seconds": 0.60,
+    "installed_package_count_including_transitives": 58,
+    "baseline_comparison": "not available; do not claim savings"
+  },
   "runtime_image": {
     "build_strategy": "multi-stage",
     "runtime_compilers": false,
@@ -58,6 +68,23 @@
       "package": "python-docx",
       "evidence": "backend/server.py imports docx for DOCX validation and formatting routes, but backend/requirements.txt has no python-docx pin",
       "action": "Resolve in a dedicated route contract change before using any minimized runtime candidate"
+    }
+  ],
+  "candidate_resolution_blockers": [
+    {
+      "package": "judoscale[asgi]==1.13.1",
+      "result": "package index offered versions only through 1.11.0",
+      "action": "Treat as platform-specific until the Railway build source is identified and the pinned version is reproducibly resolvable; do not downgrade silently"
+    },
+    {
+      "package": "python-dotenv==1.2.2",
+      "result": "package index offered versions only through 1.2.1",
+      "action": "Resolve the source/index mismatch before using a minimized runtime candidate; do not downgrade silently"
+    },
+    {
+      "package": "requests==2.33.1",
+      "result": "package index offered versions only through 2.32.5",
+      "action": "Resolve the source/index mismatch before using a minimized runtime candidate; do not downgrade silently"
     }
   ],
   "not_delete_candidates": [
