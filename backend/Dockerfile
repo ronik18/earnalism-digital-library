@@ -1,8 +1,25 @@
+FROM python:3.11-slim AS builder
+
+ENV PIP_NO_CACHE_DIR=1
+
+WORKDIR /build
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends build-essential gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
+RUN python -m pip install --upgrade pip \
+    && python -m pip wheel --wheel-dir /wheels -r requirements.txt \
+    && python -m venv /opt/venv \
+    && /opt/venv/bin/pip install --no-index --find-links=/wheels -r requirements.txt \
+    && find /opt/venv -type d -name __pycache__ -prune -exec rm -rf {} +
+
 FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1 \
     MALLOC_ARENA_MAX=2 \
     COST_CONTROL_MODE=true \
     ENABLE_BACKGROUND_WORKERS=false \
@@ -17,13 +34,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends build-essential gcc \
-    && rm -rf /var/lib/apt/lists/*
-
-COPY requirements.txt .
-RUN python -m pip install --upgrade pip \
-    && pip install -r requirements.txt
+COPY --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:${PATH}"
 
 COPY . .
 
