@@ -2,8 +2,17 @@
   "schema_version": 1,
   "generated_at": "2026-08-07T06:26:24Z",
   "baseline_commit": "335234cc7e4a8a75401b6c3ef81e7f9d98912a76",
-  "status": "NO_DELETIONS_AUTHORIZED_IN_ITERATION_1",
-  "entries": [],
+  "status": "SCOPED_DELETION_RECORDED",
+  "entries": [
+    {
+      "path": "scripts/commit_push_deploy 2.sh",
+      "action": "deleted",
+      "reason": "Unreferenced numbered duplicate of scripts/commit_push_deploy.sh; canonical helper is documented and differs only by the corrected frontend working-directory invocation.",
+      "sha256_before": "d10cff471406288f4cb0061304076788c6652fb92690ff838bd445533b2903e2",
+      "rollback": "Restore from the parent commit before this change or recover from origin/main history.",
+      "expected_saving": "One tracked 9,481-byte duplicate script; no runtime or deployment behavior change."
+    }
+  ],
   "candidate_counts": {
     "numbered_copy_files": 73,
     "exact_controlled_publication_mirror_files": 849
