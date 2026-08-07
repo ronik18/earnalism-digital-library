@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-07T06:26:24Z",
+  "updated_at": "2026-08-07T11:39:51Z",
   "baseline_commit": "335234cc7e4a8a75401b6c3ef81e7f9d98912a76",
   "iteration": 1,
   "status": "IN_PROGRESS",
@@ -9,12 +9,15 @@
     "STAGE_1_RAILWAY_24H_AND_7D_BASELINE",
     "STAGE_1_REPOSITORY_AND_CI_BASELINE",
     "STAGE_2_USAGE_LIMIT_GUARDRAIL",
-    "STAGE_2_REDIS_READ_ONLY_AUTHORITY_AUDIT"
+    "STAGE_2_REDIS_READ_ONLY_AUTHORITY_AUDIT",
+    "STAGE_2_SINGLE_REPLICA_DEPLOYMENT",
+    "STAGE_5_MULTI_STAGE_RUNTIME_IMAGE",
+    "STAGE_9_LIGHTWEIGHT_MONITORING"
   ],
   "in_progress": [
-    "STAGE_2_SINGLE_REPLICA_CONFIG_AND_CANARY",
+    "STAGE_2_NO_REDIS_CANARY",
     "STAGE_4_SINGLE_DEPLOYMENT_CONTROLLER",
-    "STAGE_9_LIGHTWEIGHT_MONITORING"
+    "STAGE_5_RUNTIME_DEPENDENCY_PRUNING"
   ],
   "blocked": [
     {
@@ -28,13 +31,30 @@
     {
       "stage": "STAGE_12_LOCAL_GIT_REPAIR",
       "reason": "The shared local object store contains orphan pack metadata and many live/historical worktrees; use a fresh clone before any repair or pruning."
+    },
+    {
+      "stage": "STAGE_2_PRODUCTION_FLAG_TRANSITION",
+      "reason": "Railway environment overrides still enable Redis, multi-replica mode, and RUM. The persistent production mutation requires explicit owner approval after the read-only Redis audit and bounded rollback plan."
     }
   ],
+  "last_iteration_evidence": {
+    "merged_commit": "b2ca32b78e19b379fde76eeb81469aec86aa1648",
+    "railway_deployment": "d6d1330f-4750-4491-a8ff-497a533f6fcb",
+    "railway_status": "SUCCESS",
+    "railway_commit": "b2ca32b78e19b379fde76eeb81469aec86aa1648",
+    "railway_replicas": 1,
+    "railway_image_digest": "sha256:59cf1702cdc3dfeca803d48fe0f66d77e79cdb64d98a204a5111232e9ffafaa6",
+    "production_monitor": "5 checks, 0 failures, 0 slow warnings",
+    "backend_tests": "27 passed",
+    "frontend_tests": "187 passed",
+    "production_canary": "passed",
+    "local_docker_build": "unavailable: docker executable not installed"
+  },
   "preserved_dirty_work": {
     "path": "/private/tmp/earnalism-main-approved-integration-preserved-20260807",
     "head": "65ae2676658efe357d228eb34963b27b4e828a39",
     "status_paths": 6253,
     "inventory": "/tmp/earnalism-main-approved-integration-preserved-20260807.status"
   },
-  "next_deterministic_action": "Validate iteration 1, deploy from the gated GitHub Actions controller, verify one replica and local-cache behavior, then stop Redis for a bounded rollback window."
+  "next_deterministic_action": "Obtain explicit approval for the three non-secret Railway flag changes, apply them without implicit deploy, run the no-Redis canary, then disconnect the Railway Git source so GitHub Actions is the sole deployment controller."
 }
