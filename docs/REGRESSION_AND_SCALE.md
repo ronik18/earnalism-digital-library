@@ -117,7 +117,7 @@ replica.
 
 ## CI Enforcement
 
-`.github/workflows/regression-suite.yml` runs the regression suite on pull requests and pushes to `main` and `production-deploy`.
+`.github/workflows/regression-suite.yml` is retained for explicit manual audits only. `.github/workflows/regression.yml` owns automatic PR/main regression, deployment, and post-deploy canary execution.
 
 `.github/workflows/post-deploy-k6.yml` runs after pushes to deployment branches and now includes both the existing smoke test and the 100-user k6 load test.
 
