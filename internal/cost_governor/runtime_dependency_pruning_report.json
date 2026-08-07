@@ -25,6 +25,29 @@
     "http_metrics": "not captured; 1d, 7d, and 30d CLI requests rejected because stepSeconds must be at least 87, 605, and 2593 respectively; CLI exposes no interval parameter",
     "interpretation": "very low observed utilization supports retaining one replica; it does not by itself authorize disabling Redis, RUM, or production services"
   },
+  "railway_billing_baseline": {
+    "previous_period": {
+      "usage_dollars": 98.89098340041957,
+      "cpu_dollars": 5.510172023256174,
+      "memory_dollars": 87.39829048511272,
+      "egress_dollars": 5.8118044266,
+      "volume_dollars": 0.17071646545066665
+    },
+    "current_period_to_date": {
+      "usage_dollars": 0.2469946087329525,
+      "estimated_period_dollars": 1.6195327873856473,
+      "cpu_dollars": 0.017865354691358026,
+      "memory_dollars": 0.18640053252515001,
+      "egress_dollars": 0.0212396948,
+      "volume_dollars": 0.021489026716444443
+    },
+    "limits": {
+      "soft_dollars": 5,
+      "hard_dollars": 10,
+      "over_limit": false
+    },
+    "interpretation": "measured current usage and projection show a substantial improvement, but the current billing period is incomplete and should not be reported as finalized savings"
+  },
   "runtime_image": {
     "build_strategy": "multi-stage",
     "runtime_compilers": false,
