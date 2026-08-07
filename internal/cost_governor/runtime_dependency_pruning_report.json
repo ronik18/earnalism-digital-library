@@ -152,7 +152,18 @@
     {
       "group": "ASR/TTS/AI and data tooling",
       "reason": "reachable through administrative, release, or dynamic import paths; no complete route-aware isolation proof yet",
-      "packages": ["google-genai", "google-generativeai", "huggingface_hub", "litellm", "numpy", "openai", "pandas", "s5cmd", "tiktoken", "tokenizers"]
+      "packages": [
+        "google-genai",
+        "google-generativeai",
+        "huggingface_hub",
+        "litellm",
+        "numpy",
+        "openai",
+        "pandas",
+        "s5cmd",
+        "tiktoken",
+        "tokenizers"
+      ]
     }
   ],
   "next_safe_action": "Create a separately tested requirements-runtime.txt from the route-sensitive set, build a canary image from it, and compare import, startup, memory, and route smoke metrics before changing the production requirements contract.",
@@ -162,5 +173,158 @@
     "media_or_database_mutation": false,
     "destructive_cleanup": false,
     "pather_panchali_files_touched": false
+  },
+  "runtime_dependency_split": {
+    "status": "COMPATIBILITY_CANDIDATE_READY_NOT_DEPLOYED",
+    "runtime_lock": "backend/requirements-runtime.txt",
+    "source_lock_preserved": "backend/requirements.txt",
+    "excluded_exactly": [
+      "black",
+      "flake8",
+      "isort",
+      "mypy",
+      "pytest"
+    ],
+    "build_consumers": [
+      "backend/railway.json",
+      "backend/Dockerfile"
+    ],
+    "validation": {
+      "railway_json_parse": "PASS",
+      "git_diff_check": "PASS",
+      "excluded_pin_count": 5,
+      "runtime_excluded_pin_count": 0,
+      "production_or_provider_action": "NONE",
+      "install_and_import": "BLOCKED_LOCK_RESOLUTION",
+      "error": "Public package index reached, but click==8.3.2 has no available distribution; available versions ended at 8.1.8. No pin downgrade applied.",
+      "compatibility_probe": {
+        "tested_substitution": "click==8.1.8",
+        "result": "BLOCKED_LOCK_RESOLUTION",
+        "next_unavailable_pin": "dnspython==2.8.0",
+        "available_max": "2.7.0",
+        "policy": "Do not apply isolated downgrades without complete dependency-graph audit."
+      },
+      "unavailable_exact_pins": [
+        "click==8.3.2",
+        "dnspython==2.8.0",
+        "filelock==3.25.2",
+        "fsspec==2026.3.0",
+        "google-genai==1.71.0",
+        "huggingface_hub==1.9.2",
+        "importlib_metadata==9.0.0",
+        "iniconfig==2.3.0",
+        "jsonschema==4.26.0",
+        "markdown-it-py==4.0.0",
+        "numpy==2.4.4",
+        "pandas==3.0.2",
+        "platformdirs==4.9.6",
+        "pycparser==3.0",
+        "python-dotenv==1.2.2",
+        "referencing==0.37.0",
+        "regex==2026.4.4",
+        "requests==2.33.1",
+        "rpds-py==0.30.0",
+        "tenacity==9.1.4",
+        "typer==0.24.1",
+        "websockets==16.0",
+        "yarl==1.23.0"
+      ],
+      "unavailable_pin_count": 23,
+      "result": "BLOCKED_COMPLETE_COMPATIBILITY_AUDIT_REQUIRED"
+    },
+    "limitation": "No deployment occurred; live image size, cold-start, and cost delta remain unmeasured until the next authorized deploy and observation window.",
+    "compatibility_candidate_v2": {
+      "status": "DISPOSABLE_INSTALL_AND_IMPORT_PASS",
+      "python": "3.11.15",
+      "substitutions": {
+        "click": "8.3.2 -> 8.1.8",
+        "dnspython": "2.8.0 -> 2.7.0",
+        "filelock": "3.25.2 -> 3.19.1",
+        "fsspec": "2026.3.0 -> 2025.10.0",
+        "google-genai": "1.71.0 -> 1.47.0",
+        "huggingface_hub": "1.9.2 -> 1.8.0",
+        "importlib_metadata": "9.0.0 -> 8.7.1",
+        "iniconfig": "2.3.0 -> 2.1.0",
+        "jsonschema": "4.26.0 -> 4.25.1",
+        "markdown-it-py": "4.0.0 -> 3.0.0",
+        "numpy": "2.4.4 -> 2.0.2",
+        "pandas": "3.0.2 -> 2.3.3",
+        "platformdirs": "4.9.6 -> 4.4.0",
+        "pycparser": "3.0 -> 2.23",
+        "python-dotenv": "1.2.2 -> 1.2.1",
+        "referencing": "0.37.0 -> 0.36.2",
+        "regex": "2026.4.4 -> 2026.1.15",
+        "requests": "2.33.1 -> 2.32.5",
+        "rpds-py": "0.30.0 -> 0.27.1",
+        "tenacity": "9.1.4 -> 9.1.2",
+        "typer": "removed direct pin; no backend import; transitive typer remains",
+        "websockets": "16.0 -> 15.0.1",
+        "yarl": "1.23.0 -> 1.22.0",
+        "judoscale[asgi]": "1.13.1 -> 1.11.0"
+      },
+      "removed_direct_unimported": [
+        "litellm",
+        "typer"
+      ],
+      "server_import": "PASS",
+      "site_packages": "525M",
+      "package_count": 130,
+      "production_lock_unchanged": true,
+      "remaining": "Route-level smoke and full dependency/security review required before promotion.",
+      "route_smoke": {
+        "/healthz": 200,
+        "/api/health": 200,
+        "/api/books": "UNVERIFIED_WITH_DUMMY_MONGO_500",
+        "interpretation": "Health routes pass; catalog route requires a real isolated Mongo fixture and was not treated as a compatibility pass."
+      },
+      "repository_lock": {
+        "path": "backend/requirements-runtime.txt",
+        "status": "INSTALLED_AND_IMPORT_ROUTE_SMOKE_PASS",
+        "python": "3.11.15",
+        "health_routes": [
+          200,
+          200
+        ],
+        "api_books_with_isolated_mongo_fixture": 200,
+        "deployment": "NOT_PERFORMED"
+      },
+      "pip_check": "PASS_NO_BROKEN_REQUIREMENTS",
+      "docker_build": "UNAVAILABLE_LOCAL_DOCKER_ENGINE"
+    },
+    "production_lock": {
+      "path": "backend/requirements.txt",
+      "preserved": true,
+      "purpose": "CI/operator and compatibility reference"
+    },
+    "production_canary": {
+      "deployment_id": "17438416-e6dd-4528-b2df-38d9e6b61f6d",
+      "status": "PASS",
+      "flags": {
+        "REDIS_CACHE_ENABLED": false,
+        "MULTI_REPLICA_ENABLED": false,
+        "READER_RUM_ENABLED": false
+      },
+      "rollback_values": {
+        "REDIS_CACHE_ENABLED": true,
+        "MULTI_REPLICA_ENABLED": true,
+        "READER_RUM_ENABLED": true
+      },
+      "checks": {
+        "node_post_deploy_canary": "PASS",
+        "healthz": 200,
+        "api_health": 200,
+        "books": 200,
+        "admin_auth": "PASS",
+        "healthz_replica": "single"
+      },
+      "resource_snapshot": {
+        "cpu_average_vcpu": 0.004077715426997247,
+        "cpu_max_vcpu": 0.04619926666666667,
+        "memory_average_mb": 94.96978829752075,
+        "memory_max_mb": 99.254009856
+      },
+      "redis_service": "preserved_online",
+      "cost_delta": "PENDING_COMPARABLE_OBSERVATION_WINDOW"
+    }
   }
 }

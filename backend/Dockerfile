@@ -8,12 +8,12 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential gcc \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
+COPY requirements-runtime.txt .
 
 RUN python -m pip install --upgrade pip \
-    && python -m pip wheel --wheel-dir /wheels -r requirements.txt \
+    && python -m pip wheel --wheel-dir /wheels -r requirements-runtime.txt \
     && python -m venv /opt/venv \
-    && /opt/venv/bin/pip install --no-index --find-links=/wheels -r requirements.txt \
+    && /opt/venv/bin/pip install --no-index --find-links=/wheels -r requirements-runtime.txt \
     && find /opt/venv -type d -name __pycache__ -prune -exec rm -rf {} +
 
 FROM python:3.11-slim

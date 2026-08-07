@@ -20,11 +20,14 @@
     "STAGE_5_RUNTIME_CANDIDATE_DERIVED"
   ],
   "in_progress": [
-    "STAGE_2_NO_REDIS_CANARY",
     "STAGE_4_SINGLE_DEPLOYMENT_CONTROLLER",
     "STAGE_5_RUNTIME_DEPENDENCY_PRUNING"
   ],
   "blocked": [
+    {
+      "stage": "STAGE_12_LOCAL_GIT_REPAIR",
+      "reason": "The shared local object store contains orphan pack metadata and many live/historical worktrees; use a fresh clone before any repair or pruning."
+    },
     {
       "stage": "STAGE_1_OTHER_PROVIDER_BILLING",
       "reason": "No authenticated billing evidence captured yet for Vercel, MongoDB, B2, or Cloudinary."
@@ -34,12 +37,12 @@
       "reason": "Plan-change control is not exposed by the verified CLI path; evaluate in Railway billing settings after one-replica and no-Redis canaries."
     },
     {
-      "stage": "STAGE_12_LOCAL_GIT_REPAIR",
-      "reason": "The shared local object store contains orphan pack metadata and many live/historical worktrees; use a fresh clone before any repair or pruning."
-    },
-    {
       "stage": "STAGE_2_PRODUCTION_FLAG_TRANSITION",
       "reason": "Railway environment overrides still enable Redis, multi-replica mode, and RUM. The persistent production mutation requires explicit owner approval after the read-only Redis audit and bounded rollback plan."
+    },
+    {
+      "stage": "STAGE_5_RUNTIME_SPLIT_VALIDATION",
+      "reason": "Public package index rejects click==8.3.2; complete lock compatibility audit required before pin changes."
     }
   ],
   "last_iteration_evidence": {
@@ -52,7 +55,15 @@
     "production_monitor": "5 checks, 0 failures, 0 slow warnings",
     "backend_tests": "27 passed",
     "frontend_tests": "187 passed",
-    "production_canary": "passed",
+    "production_canary": {
+      "deployment_id": "17438416-e6dd-4528-b2df-38d9e6b61f6d",
+      "status": "PASS",
+      "flags": "all_false",
+      "node_canary": "PASS",
+      "healthz_replica": "single",
+      "redis": "preserved",
+      "cost_delta": "PENDING_OBSERVATION"
+    },
     "runtime_dependency_audit": "internal/cost_governor/runtime_dependency_pruning_report.json; five formatter/lint/type/test packages are deletion candidates, route-sensitive packages retained",
     "unreferenced_deployment_duplicate": "scripts/commit_push_deploy 2.sh removed; canonical scripts/commit_push_deploy.sh retained; pre-delete SHA recorded in deletion_manifest.json",
     "runtime_candidate": "compatibility candidate installs/imports at 121M site-packages and 0.58s import; Railway 24h resource baseline and current billing usage ($0.247 to date, $1.62 projected) captured; current period incomplete",
@@ -60,7 +71,46 @@
     "automatic_regression_controller": "GitHub Actions GO LIVE regression workflow",
     "legacy_regression_suite": "manual workflow_dispatch only",
     "railway_git_source": "still connected; duplicate controller not yet removed",
-    "controller_consolidation_commit": "622720e4e456f934522effd1d10a553167e80eb0"
+    "controller_consolidation_commit": "622720e4e456f934522effd1d10a553167e80eb0",
+    "runtime_dependency_split": {
+      "status": "COMPATIBILITY_CANDIDATE_READY_NOT_DEPLOYED",
+      "excluded_dev_tools": [
+        "black",
+        "flake8",
+        "isort",
+        "mypy",
+        "pytest"
+      ],
+      "runtime_lock": "backend/requirements-runtime.txt",
+      "build_consumers": [
+        "backend/railway.json",
+        "backend/Dockerfile"
+      ],
+      "production_action": "NONE",
+      "cost_delta": "UNMEASURED_PENDING_AUTHORIZED_DEPLOY",
+      "validation": "BLOCKED_COMPLETE_COMPATIBILITY_AUDIT_REQUIRED",
+      "compatibility_probe": {
+        "click": "8.1.8 tested",
+        "dnspython": "2.8.0 unavailable; max 2.7.0",
+        "result": "BLOCKED_LOCK_RESOLUTION"
+      },
+      "unavailable_pin_count": 23,
+      "compatibility_candidate_v2": {
+        "status": "DISPOSABLE_INSTALL_AND_IMPORT_PASS",
+        "python": "3.11.15",
+        "server_import": "PASS",
+        "site_packages": "525M",
+        "production_mutation": "NONE",
+        "route_smoke": {
+          "healthz": 200,
+          "api_health": 200,
+          "api_books_isolated_mongo_fixture": 200,
+          "production": "NOT_TOUCHED"
+        },
+        "pip_check": "PASS_NO_BROKEN_REQUIREMENTS",
+        "docker_build": "UNAVAILABLE_LOCAL_DOCKER_ENGINE"
+      }
+    }
   },
   "preserved_dirty_work": {
     "path": "/private/tmp/earnalism-main-approved-integration-preserved-20260807",
@@ -68,7 +118,7 @@
     "status_paths": 6253,
     "inventory": "/tmp/earnalism-main-approved-integration-preserved-20260807.status"
   },
-  "next_deterministic_action": "Obtain explicit owner approval for a bounded Railway canary: set REDIS_CACHE_ENABLED=false, MULTI_REPLICA_ENABLED=false, and READER_RUM_ENABLED=false; preserve rollback values true/true/true, run production smoke and cost-control checks, and revert immediately on any regression. Disconnect Railway Git source only after the canary and controller evidence pass.",
+  "next_deterministic_action": "Observe comparable Railway resource and billing metrics after the approved canary; only then evaluate Redis service shutdown or source-disconnect decisions with separate evidence.",
   "ready_for_owner_approval": {
     "mutation_scope": [
       "REDIS_CACHE_ENABLED=false",
@@ -94,5 +144,9 @@
       "production monitor"
     ],
     "not_authorized_without_owner_approval": true
-  }
+  },
+  "completed_stages": [
+    "STAGE_2_NO_REDIS_CANARY_FLAGS_APPLIED_AND_VERIFIED",
+    "STAGE_5_RUNTIME_DEPENDENCY_SPLIT_REPOSITORY_ONLY"
+  ]
 }
