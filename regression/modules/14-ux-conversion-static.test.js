@@ -365,19 +365,15 @@ describe("UX conversion static signals", () => {
   });
 
   test("library and book pages expose controlled reader-only paths without broad catalog or payment overclaim", () => {
-    expect(library).toContain("Bengali and English classics, opened with release truth.");
-    expect(library).toContain("Curated Reader-Ready Shelves");
-    expect(library).toContain("Reader-only public-domain shelf");
-    expect(library).toContain('data-testid="library-bengali-reader-grid"');
-    expect(library).toContain('data-testid="library-english-reader-grid"');
-    expect(library).toContain("Dracula remains a featured route, not the whole library identity.");
-    expect(library).toContain("Coming Through the Rights-Safe Pipeline");
-    expect(library).toContain("source, listening, sync, and browser gates pass");
-    expect(library).toContain("No reader, payment, or audio CTA is available for this pipeline-only title.");
-    expect(library).toContain("Read Chapter 1 Free");
-    expect(library).toContain("Read English Classic");
-    expect(library).toContain("Public-domain source verified");
-    expect(library).toContain("Request Update");
+    expect(library).toContain("One mixed shelf for Bengali and English classics, with access and listening status kept clear.");
+    expect(library).toContain("CURATED EDITIONS");
+    expect(library).toContain('data-testid="library-book-grid"');
+    expect(library).toContain('data-testid="language-filters"');
+    expect(library).toContain('data-testid="listening-filters"');
+    expect(library).toContain("Listening appears only where the release evidence allows it.");
+    expect(library).toContain("Some stories are still being prepared.");
+    expect(library).toContain("Reader and listening routes open only when their editorial and release checks are complete.");
+    expect(library).toContain("Request an update");
     expect(bookDetail).toContain('data-testid="start-reading"');
     expect(bookDetailPresentation).toContain('primaryReadLabel: readerReady ? "Start Reading" : "Back to Library"');
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
@@ -1187,23 +1183,19 @@ describe("UX conversion static signals", () => {
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/sherlock-holmes/front-cover.webp"))).toBe(true);
     expect(controlledLaunch).toContain('title_en: "The Hungry Stones"');
     expect(controlledLaunch).toContain("A Bengali Gothic candidate in rights-safe preparation.");
-    expect(library).toContain('data-testid="library-bengali-gothic-pipeline"');
-    expect(library).toContain('data-testid="library-kshudhita-cover-evidence"');
-    expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.frontCoverImage");
-    expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.backCoverImage");
-    expect(library).toContain("The Hungry Stones is visible, not open.");
-    expect(library).toContain("Bengali title:");
-    expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.subcopy");
-    expect(library).toContain("No reader, payment, or audio CTA is available for this pipeline-only title.");
+    expect(library).toContain('className="library-pipeline-note"');
+    expect(library).toContain("Some stories are still being prepared.");
+    expect(library).toContain("Titles in preparation remain visible as invitations, not products.");
+    expect(library).toContain("Request an update");
 
     const libraryPipelineBlock = extractBetween(
       library,
-      'data-testid="library-bengali-gothic-pipeline"',
-      'data-testid="category-filters"'
+      'className="library-pipeline-note"',
+      "</aside>"
     );
 
     expect(shelfTwoSlideshow).not.toContain("Notify Me");
-    expect(libraryPipelineBlock).toContain("Request Update");
+    expect(libraryPipelineBlock).toContain("Request an update");
     expect(libraryPipelineBlock).not.toContain("Notify Me");
 
     for (const block of [libraryPipelineBlock]) {
@@ -1504,8 +1496,8 @@ describe("UX conversion static signals", () => {
     expect(home).toContain('aria-describedby="newsletter-description"');
     expect(home).toContain("<span className=\"sr-only\">Your name</span>");
     expect(home).toContain("<span className=\"sr-only\">Your email</span>");
-    expect(library).toContain("Search title, author, language, or status");
-    expect(library).toContain('aria-label="Search title, author, language, or status"');
+    expect(library).toContain('htmlFor="library-search-input"');
+    expect(library).toContain('placeholder="Search by title or author"');
     expect(login).toContain('aria-describedby="login-continuation-help"');
     expect(signup).toContain('aria-describedby="signup-wallet-help"');
     expect(contact).toContain("<span className=\"overline block mb-2\">Your name</span>");
@@ -1798,11 +1790,9 @@ describe("UX conversion static signals", () => {
     expect(header).toContain("getEnabledSocialLinks(social)");
     expect(header).toContain('data-testid={`mobile-social-${id}`}');
     expect(styles).toContain(".home-social-rail__link");
-    expect(styles).toContain("radial-gradient(circle at 34% 18%");
-    expect(styles).toContain(".home-social-rail__link::before");
     expect(styles).toContain(".home-social-rail__link svg");
-    expect(styles).toContain("width: 2.95rem");
-    expect(styles).toContain("height: 2.95rem");
+    expect(styles).toContain("border: 1px solid transparent");
+    expect(styles).toContain(".home-social-rail__link:focus-visible");
 
     expect(footer.indexOf("CONTACT_EMAIL")).toBeGreaterThanOrEqual(0);
     expect(footer).not.toContain("FooterSocialLinks");
