@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-07T11:39:51Z",
+  "updated_at": "2026-08-07T11:54:10Z",
   "baseline_commit": "335234cc7e4a8a75401b6c3ef81e7f9d98912a76",
   "iteration": 1,
   "status": "IN_PROGRESS",
@@ -12,7 +12,8 @@
     "STAGE_2_REDIS_READ_ONLY_AUTHORITY_AUDIT",
     "STAGE_2_SINGLE_REPLICA_DEPLOYMENT",
     "STAGE_5_MULTI_STAGE_RUNTIME_IMAGE",
-    "STAGE_9_LIGHTWEIGHT_MONITORING"
+    "STAGE_9_LIGHTWEIGHT_MONITORING",
+    "STAGE_9_DUPLICATE_AUTOMATIC_REGRESSION_REMOVED"
   ],
   "in_progress": [
     "STAGE_2_NO_REDIS_CANARY",
@@ -48,7 +49,11 @@
     "backend_tests": "27 passed",
     "frontend_tests": "187 passed",
     "production_canary": "passed",
-    "local_docker_build": "unavailable: docker executable not installed"
+    "local_docker_build": "unavailable: docker executable not installed",
+    "automatic_regression_controller": "GitHub Actions GO LIVE regression workflow",
+    "legacy_regression_suite": "manual workflow_dispatch only",
+    "railway_git_source": "still connected; duplicate controller not yet removed",
+    "controller_consolidation_commit": "622720e4e456f934522effd1d10a553167e80eb0"
   },
   "preserved_dirty_work": {
     "path": "/private/tmp/earnalism-main-approved-integration-preserved-20260807",
