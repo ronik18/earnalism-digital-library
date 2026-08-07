@@ -12,8 +12,10 @@
     "STAGE_2_REDIS_READ_ONLY_AUTHORITY_AUDIT",
     "STAGE_2_SINGLE_REPLICA_DEPLOYMENT",
     "STAGE_5_MULTI_STAGE_RUNTIME_IMAGE",
+    "STAGE_5_RUNTIME_DEPENDENCY_AUDIT",
     "STAGE_9_LIGHTWEIGHT_MONITORING",
-    "STAGE_9_DUPLICATE_AUTOMATIC_REGRESSION_REMOVED"
+    "STAGE_9_DUPLICATE_AUTOMATIC_REGRESSION_REMOVED",
+    "STAGE_10_UNREFERENCED_DEPLOYMENT_DUPLICATE_REMOVED"
   ],
   "in_progress": [
     "STAGE_2_NO_REDIS_CANARY",
@@ -49,6 +51,8 @@
     "backend_tests": "27 passed",
     "frontend_tests": "187 passed",
     "production_canary": "passed",
+    "runtime_dependency_audit": "internal/cost_governor/runtime_dependency_pruning_report.json; five formatter/lint/type/test packages are deletion candidates, route-sensitive packages retained",
+    "unreferenced_deployment_duplicate": "scripts/commit_push_deploy 2.sh removed; canonical scripts/commit_push_deploy.sh retained; pre-delete SHA recorded in deletion_manifest.json",
     "local_docker_build": "unavailable: docker executable not installed",
     "automatic_regression_controller": "GitHub Actions GO LIVE regression workflow",
     "legacy_regression_suite": "manual workflow_dispatch only",

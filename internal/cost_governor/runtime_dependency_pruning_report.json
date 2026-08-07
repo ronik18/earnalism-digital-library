@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-07T12:01:00Z",
+  "scope": "backend runtime dependency audit",
+  "method": "static import graph from backend/server.py plus route-sensitive requirements review",
+  "status": "REPORT_ONLY_NO_REMOVALS",
+  "runtime_image": {
+    "build_strategy": "multi-stage",
+    "runtime_compilers": false,
+    "evidence": "backend/Dockerfile",
+    "deployment_validation": "Railway deployment d6d1330f-4750-4491-a8ff-497a533f6fcb SUCCESS"
+  },
+  "delete_candidates": [
+    {
+      "package": "black",
+      "reason": "formatter-only; not imported by the production server",
+      "required_proof_before_removal": "CI and operator workflows install it independently"
+    },
+    {
+      "package": "flake8",
+      "reason": "lint-only; not imported by the production server",
+      "required_proof_before_removal": "CI and operator workflows install it independently"
+    },
+    {
+      "package": "isort",
+      "reason": "formatting-only; not imported by the production server",
+      "required_proof_before_removal": "CI and operator workflows install it independently"
+    },
+    {
+      "package": "mypy",
+      "reason": "type-check-only; not imported by the production server",
+      "required_proof_before_removal": "CI and operator workflows install it independently"
+    },
+    {
+      "package": "pytest",
+      "reason": "test-only; not imported by the production server",
+      "required_proof_before_removal": "CI and local test environments install it independently"
+    }
+  ],
+  "route_sensitive_packages": [
+    "boto3",
+    "cloudinary",
+    "docx",
+    "google-auth",
+    "httpx",
+    "judoscale[asgi]",
+    "mammoth",
+    "motor",
+    "pymongo",
+    "razorpay",
+    "redis",
+    "starlette",
+    "uvicorn"
+  ],
+  "not_delete_candidates": [
+    {
+      "group": "ASR/TTS/AI and data tooling",
+      "reason": "reachable through administrative, release, or dynamic import paths; no complete route-aware isolation proof yet",
+      "packages": ["google-genai", "google-generativeai", "huggingface_hub", "litellm", "numpy", "openai", "pandas", "s5cmd", "tiktoken", "tokenizers"]
+    }
+  ],
+  "next_safe_action": "Create a separately tested requirements-runtime.txt from the route-sensitive set, build a canary image from it, and compare import, startup, memory, and route smoke metrics before changing the production requirements contract.",
+  "safety": {
+    "production_mutation": false,
+    "paid_provider_calls": false,
+    "media_or_database_mutation": false,
+    "destructive_cleanup": false,
+    "pather_panchali_files_touched": false
+  }
+}
