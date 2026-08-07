@@ -845,7 +845,7 @@ sequenceDiagram
     GH-->>Dev: fail or skip deploy with reason
   end
   GH->>P: post-deploy k6 smoke/load
-  loop every 30 minutes
+  loop every 6 hours
     GH->>P: production_monitor.mjs
     P-->>GH: health, latency, catalog, reader manifest results
     GH->>GH: upload monitor artifact, optionally open issue
@@ -1253,10 +1253,10 @@ Scale docs:
 
 GitHub Actions gates:
 
-- `.github/workflows/regression-suite.yml`: backend, frontend, and browser regression on PR/push.
+- `.github/workflows/regression-suite.yml`: broader backend, frontend, and browser regression on explicit manual dispatch only; the GO LIVE workflow owns automatic PR/main validation.
 - `.github/workflows/regression.yml`: PR regression; push GO LIVE gate; Railway deploy; Vercel frontend deploy; production canary.
 - `.github/workflows/post-deploy-k6.yml`: post-deploy smoke and 100-user load test.
-- `.github/workflows/production-monitor.yml`: scheduled production health/latency/catalog/reader-manifest observer every 30 minutes.
+- `.github/workflows/production-monitor.yml`: scheduled production health/latency observer every six hours, with catalog/settings/reader checks opt-in.
 
 ## Operations Runbook
 
@@ -1303,8 +1303,8 @@ See `docs/WALLET_REFUND_PIPELINE.md`.
 
 ### Continuous Monitoring
 
-1. Scheduled GitHub Actions runs `scripts/production_monitor.mjs` every 30 minutes.
-2. The monitor checks frontend HTML, asset manifest, sitemap, API health, home payload, catalog, public settings, and a reader manifest for the first published book.
+1. Scheduled GitHub Actions runs `scripts/production_monitor.mjs` every six hours.
+2. The default monitor checks frontend HTML, asset manifest, sitemap, API health, and the home payload; catalog, settings, and reader-manifest checks run only when `deep_checks` is enabled.
 3. When `RAILWAY_TOKEN` and `RAILWAY_SERVICE_ID` are available, the workflow also captures Railway resource metrics, HTTP metrics, recent app logs, and recent HTTP errors.
 4. Reports are uploaded as `production-monitor-report` artifacts.
 5. Required failures fail the workflow and can notify maintainers through GitHub notifications.
