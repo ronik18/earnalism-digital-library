@@ -25,7 +25,8 @@
       "region": "sfo",
       "repository": "ronik18/earnalism-digital-library",
       "redis": "Online",
-      "image_size_or_installed_packages": "not exposed by verified Railway CLI read-only metadata"
+      "image_size_or_installed_packages": "not exposed by verified Railway CLI read-only metadata",
+      "railway_run_probe": "INCONCLUSIVE: railway run executed the command locally with injected environment; it did not provide deployed-container filesystem introspection"
     }
   },
   "delete_candidates": [
