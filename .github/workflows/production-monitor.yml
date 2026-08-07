@@ -2,8 +2,14 @@ name: Production monitoring
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "17 */6 * * *"
   workflow_dispatch:
+    inputs:
+      deep_checks:
+        description: "Also validate catalog, settings, and one reader manifest"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -17,15 +23,13 @@ jobs:
   observe:
     name: production health and latency observer
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     env:
       FRONTEND_URL: ${{ vars.FRONTEND_URL || vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}
       API_URL: ${{ vars.API_URL || vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
       MONITOR_CREATE_ISSUE: ${{ vars.MONITOR_CREATE_ISSUE || 'false' }}
       MONITOR_FAIL_ON_SLOW: ${{ vars.MONITOR_FAIL_ON_SLOW || 'false' }}
-      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
-      RAILWAY_ENVIRONMENT: ${{ vars.RAILWAY_ENVIRONMENT || 'production' }}
+      MONITOR_DEEP_CHECKS: ${{ github.event_name == 'workflow_dispatch' && inputs.deep_checks || 'false' }}
 
     steps:
       - name: Checkout
@@ -40,41 +44,6 @@ jobs:
         id: monitor
         continue-on-error: true
         run: node scripts/production_monitor.mjs
-
-      - name: Install Railway CLI
-        if: env.RAILWAY_TOKEN != '' && env.RAILWAY_SERVICE_ID != ''
-        run: npm install -g @railway/cli
-
-      - name: Capture Railway logs and metrics
-        if: env.RAILWAY_TOKEN != '' && env.RAILWAY_SERVICE_ID != ''
-        shell: bash
-        run: |
-          set -uo pipefail
-          mkdir -p output/monitoring
-          railway metrics \
-            --service "${RAILWAY_SERVICE_ID}" \
-            --environment "${RAILWAY_ENVIRONMENT}" \
-            --since 1h \
-            --json > output/monitoring/railway-metrics.json || true
-          railway metrics \
-            --service "${RAILWAY_SERVICE_ID}" \
-            --environment "${RAILWAY_ENVIRONMENT}" \
-            --since 1h \
-            --http \
-            --json > output/monitoring/railway-http-metrics.json || true
-          railway logs \
-            --service "${RAILWAY_SERVICE_ID}" \
-            --environment "${RAILWAY_ENVIRONMENT}" \
-            --lines 200 \
-            --json > output/monitoring/railway-app-logs.jsonl || true
-          railway logs \
-            --service "${RAILWAY_SERVICE_ID}" \
-            --environment "${RAILWAY_ENVIRONMENT}" \
-            --http \
-            --status ">=400" \
-            --since 1h \
-            --lines 200 \
-            --json > output/monitoring/railway-http-errors.jsonl || true
 
       - name: Upload monitor report
         if: always()

@@ -4,6 +4,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "build",
   "ignoreCommand": "node scripts/vercel-ignore-build.mjs",
+  "git": {
+    "deploymentEnabled": false
+  },
   "redirects": [
     {
       "source": "/book/moby-dick-or-the-whale",

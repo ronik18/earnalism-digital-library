@@ -112,13 +112,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Check Railway deploy scope and secrets
         id: deploy-check
         shell: bash
         run: |
-          if git diff --quiet HEAD^ HEAD -- backend; then
+          before_sha="${{ github.event.before }}"
+          if [[ ! "${before_sha}" =~ ^[0-9a-f]{40}$ ]] || [[ "${before_sha}" =~ ^0+$ ]] || ! git cat-file -e "${before_sha}^{commit}"; then
+            before_sha="$(git rev-list --max-parents=0 "${GITHUB_SHA}" | tail -1)"
+          fi
+          echo "scope_base=${before_sha}"
+          echo "scope_head=${GITHUB_SHA}"
+          if git diff --quiet "${before_sha}" "${GITHUB_SHA}" -- backend; then
             echo "enabled=false" >> "${GITHUB_OUTPUT}"
             echo "Railway deploy skipped: no backend files changed."
           elif [[ -n "${RAILWAY_TOKEN}" && -n "${RAILWAY_SERVICE_ID}" ]]; then
@@ -158,13 +164,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Check Vercel deploy scope and secrets
         id: vercel-check
         shell: bash
         run: |
-          if git diff --quiet HEAD^ HEAD -- frontend; then
+          before_sha="${{ github.event.before }}"
+          if [[ ! "${before_sha}" =~ ^[0-9a-f]{40}$ ]] || [[ "${before_sha}" =~ ^0+$ ]] || ! git cat-file -e "${before_sha}^{commit}"; then
+            before_sha="$(git rev-list --max-parents=0 "${GITHUB_SHA}" | tail -1)"
+          fi
+          echo "scope_base=${before_sha}"
+          echo "scope_head=${GITHUB_SHA}"
+          if git diff --quiet "${before_sha}" "${GITHUB_SHA}" -- frontend; then
             echo "enabled=false" >> "${GITHUB_OUTPUT}"
             echo "Vercel frontend deploy skipped: no frontend files changed."
           elif [[ -n "${VERCEL_TOKEN}" && -n "${VERCEL_ORG_ID}" && -n "${VERCEL_PROJECT_ID}" ]]; then
