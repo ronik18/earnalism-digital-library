@@ -1494,8 +1494,8 @@ describe("UX conversion static signals", () => {
 
   test("public forms and search controls expose accessible labels and descriptions", () => {
     expect(home).toContain('aria-describedby="newsletter-description newsletter-trust newsletter-status"');
-    expect(home).toContain("<span className=\"sr-only\">Your name</span>");
-    expect(home).toContain("<span className=\"sr-only\">Your email</span>");
+    expect(home).toContain("<span>Your name</span>");
+    expect(home).toContain("<span>Email address</span>");
     expect(library).toContain('htmlFor="library-search-input"');
     expect(library).toContain('placeholder="Search by title or author"');
     expect(login).toContain('aria-describedby="login-continuation-help"');
