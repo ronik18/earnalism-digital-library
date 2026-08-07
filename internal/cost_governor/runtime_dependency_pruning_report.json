@@ -22,7 +22,7 @@
     "memory_max_mb": 343.97242436266663,
     "public_egress_average_mb": 0.5182107160110804,
     "public_ingress_average_mb": 1.4300269151024934,
-    "http_metrics": "not captured; CLI requires a coarser supported step interval",
+    "http_metrics": "not captured; 1d, 7d, and 30d CLI requests rejected because stepSeconds must be at least 87, 605, and 2593 respectively; CLI exposes no interval parameter",
     "interpretation": "very low observed utilization supports retaining one replica; it does not by itself authorize disabling Redis, RUM, or production services"
   },
   "runtime_image": {
