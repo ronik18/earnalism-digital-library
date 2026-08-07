@@ -68,5 +68,31 @@
     "status_paths": 6253,
     "inventory": "/tmp/earnalism-main-approved-integration-preserved-20260807.status"
   },
-  "next_deterministic_action": "Build and route-test a minimized runtime dependency candidate without changing production; compare startup, import, memory, and route smoke metrics before requesting approval for Railway flag changes or Git-source disconnection."
+  "next_deterministic_action": "Obtain explicit owner approval for a bounded Railway canary: set REDIS_CACHE_ENABLED=false, MULTI_REPLICA_ENABLED=false, and READER_RUM_ENABLED=false; preserve rollback values true/true/true, run production smoke and cost-control checks, and revert immediately on any regression. Disconnect Railway Git source only after the canary and controller evidence pass.",
+  "ready_for_owner_approval": {
+    "mutation_scope": [
+      "REDIS_CACHE_ENABLED=false",
+      "MULTI_REPLICA_ENABLED=false",
+      "READER_RUM_ENABLED=false"
+    ],
+    "rollback_values": {
+      "REDIS_CACHE_ENABLED": "true",
+      "MULTI_REPLICA_ENABLED": "true",
+      "READER_RUM_ENABLED": "true"
+    },
+    "preconditions": [
+      "Redis read-only audit found no authoritative data",
+      "one replica is already deployed",
+      "24h utilization baseline is low",
+      "production canary currently passes"
+    ],
+    "required_postchecks": [
+      "health and API smoke",
+      "reader and auth route smoke",
+      "payment/webhook route contract checks",
+      "cost-control diagnostics",
+      "production monitor"
+    ],
+    "not_authorized_without_owner_approval": true
+  }
 }
