@@ -87,6 +87,24 @@
       "action": "Resolve the source/index mismatch before using a minimized runtime candidate; do not downgrade silently"
     }
   ],
+  "compatibility_candidate": {
+    "path": "internal/cost_governor/runtime_requirements_compat_candidate.txt",
+    "status": "INSTALL_AND_IMPORT_PASS_CANDIDATE_ONLY",
+    "substitutions": {
+      "judoscale[asgi]": "1.13.1 -> 1.11.0",
+      "python-dotenv": "1.2.2 -> 1.2.1",
+      "requests": "2.33.1 -> 2.32.5",
+      "python-docx": "missing production pin -> 1.2.0"
+    },
+    "safety": "candidate-only; production requirements and Docker build unchanged",
+    "validation": {
+      "server_import": "PASS with dummy local Mongo URI and dummy JWT secret",
+      "installed_site_packages": "121M",
+      "server_import_wall_seconds": 0.58,
+      "installed_package_count_including_transitives": 61,
+      "baseline_comparison": "not available; do not claim savings"
+    }
+  },
   "not_delete_candidates": [
     {
       "group": "ASR/TTS/AI and data tooling",
