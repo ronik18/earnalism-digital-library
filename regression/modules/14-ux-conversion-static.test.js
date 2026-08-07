@@ -368,8 +368,8 @@ describe("UX conversion static signals", () => {
     expect(library).toContain("One mixed shelf for Bengali and English classics, with access and listening status kept clear.");
     expect(library).toContain("CURATED EDITIONS");
     expect(library).toContain('data-testid="library-book-grid"');
-    expect(library).toContain('data-testid="language-filters"');
-    expect(library).toContain('data-testid="listening-filters"');
+    expect(library).toContain('testId="language-filters"');
+    expect(library).toContain('testId="listening-filters"');
     expect(library).toContain("Listening appears only where the release evidence allows it.");
     expect(library).toContain("Some stories are still being prepared.");
     expect(library).toContain("Reader and listening routes open only when their editorial and release checks are complete.");
@@ -1493,7 +1493,7 @@ describe("UX conversion static signals", () => {
   });
 
   test("public forms and search controls expose accessible labels and descriptions", () => {
-    expect(home).toContain('aria-describedby="newsletter-description"');
+    expect(home).toContain('aria-describedby="newsletter-description newsletter-trust newsletter-status"');
     expect(home).toContain("<span className=\"sr-only\">Your name</span>");
     expect(home).toContain("<span className=\"sr-only\">Your email</span>");
     expect(library).toContain('htmlFor="library-search-input"');
