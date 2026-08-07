@@ -1,10 +1,9 @@
 name: Regression suite
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
+  # The GO LIVE regression workflow owns automatic PR/main validation and
+  # deployment. Keep this broader legacy suite available for explicit audits
+  # without running a second full pipeline on every change.
   workflow_dispatch:
 
 concurrency:
