@@ -55,7 +55,7 @@
     "production_canary": "passed",
     "runtime_dependency_audit": "internal/cost_governor/runtime_dependency_pruning_report.json; five formatter/lint/type/test packages are deletion candidates, route-sensitive packages retained",
     "unreferenced_deployment_duplicate": "scripts/commit_push_deploy 2.sh removed; canonical scripts/commit_push_deploy.sh retained; pre-delete SHA recorded in deletion_manifest.json",
-    "runtime_candidate": "compatibility candidate installs/imports in disposable environment at 121M site-packages and 0.58s import; explicit substitutions and python-docx gap are recorded; no baseline savings claim",
+    "runtime_candidate": "compatibility candidate installs/imports in disposable environment at 121M site-packages and 0.58s import; Railway image footprint is not exposed by verified CLI metadata; no baseline savings claim",
     "local_docker_build": "unavailable: docker executable not installed",
     "automatic_regression_controller": "GitHub Actions GO LIVE regression workflow",
     "legacy_regression_suite": "manual workflow_dispatch only",

@@ -18,7 +18,15 @@
     "build_strategy": "multi-stage",
     "runtime_compilers": false,
     "evidence": "backend/Dockerfile",
-    "deployment_validation": "Railway deployment d6d1330f-4750-4491-a8ff-497a533f6fcb SUCCESS"
+    "deployment_validation": "Railway deployment d6d1330f-4750-4491-a8ff-497a533f6fcb SUCCESS",
+    "current_service_metadata": {
+      "service": "earnalism",
+      "status": "Online",
+      "region": "sfo",
+      "repository": "ronik18/earnalism-digital-library",
+      "redis": "Online",
+      "image_size_or_installed_packages": "not exposed by verified Railway CLI read-only metadata"
+    }
   },
   "delete_candidates": [
     {
