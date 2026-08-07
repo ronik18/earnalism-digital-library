@@ -377,29 +377,60 @@ async function main() {
   const homeScreenshot = await snapshot(page, "home");
 
   await gotoAppPath(page, "/library");
-  await page.waitForSelector('[data-testid="shelf-live-controlled-release"]', { timeout: 30000 });
+  await page.waitForSelector('[data-testid="library-book-grid"]', { timeout: 30000 });
   const library = await page.evaluate(() => ({
-    hasLiveShelf: Boolean(document.querySelector('[data-testid="shelf-live-controlled-release"]')),
-    hasPipelineShelf: Boolean(document.querySelector('[data-testid="shelf-pipeline"]')),
-    hasAudioShelf: Boolean(document.querySelector('[data-testid="shelf-audiobooks"]')),
+    hasSingleShelf: Boolean(document.querySelector('[data-testid="library-book-grid"]')),
+    hasSearch: Boolean(document.querySelector('[data-testid="library-search"]')),
+    hasLanguageFilters: Boolean(document.querySelector('[data-testid="language-filters"]')),
+    hasReadingFilters: Boolean(document.querySelector('[data-testid="reading-filters"]')),
+    hasListeningFilters: Boolean(document.querySelector('[data-testid="listening-filters"]')),
+    hasSort: Boolean(document.querySelector('[data-testid="library-sort"]')),
     hasPremiumHero: Boolean(document.querySelector('[data-testid="library-page"] [data-testid="premium-landing-hero"]')),
+    legacyShelfCount: document.querySelectorAll([
+      '[data-testid="shelf-live-controlled-release"]',
+      '[data-testid="shelf-pipeline"]',
+      '[data-testid="shelf-audiobooks"]',
+    ].join(", ")).length,
     previewLinks: [...document.querySelectorAll('[data-testid="library-dracula-preview"], [data-testid^="card-preview-"], a[href^="/reader/"]')]
       .slice(0, 20)
       .map((link) => link.getAttribute("href")),
-    nonDraculaReaderLinks: [...document.querySelectorAll('a[href^="/reader/"]')]
-      .filter((link) => !link.closest('[data-testid="premium-landing-hero"]'))
-      .map((link) => link.getAttribute("href"))
-      .filter((href) => href !== "/reader/dracula"),
-    pipelineStatuses: [...document.querySelectorAll('[data-testid^="book-card-"]')]
-      .map((card) => card.getAttribute("data-launch-status")),
+    cards: [...document.querySelectorAll('[data-testid^="book-card-"]')].map((card) => ({
+      status: card.getAttribute("data-launch-status"),
+      hasNotify: Boolean(card.querySelector('[data-testid^="card-notify-"]')),
+      readerLinks: [...card.querySelectorAll('a[href^="/reader/"]')].map((link) => link.getAttribute("href")),
+      listenLinks: [...card.querySelectorAll('[data-testid^="card-listen-"]')].map((link) => link.getAttribute("href")),
+    })),
   }));
-  assert(library.hasLiveShelf, "library did not render the live controlled shelf");
-  assert(library.hasPipelineShelf, "library did not render the pipeline shelf");
-  assert(library.hasAudioShelf, "library did not render the audiobook status shelf");
+  assert(library.hasSingleShelf, "library did not render the single editorial collection");
+  assert(library.hasSearch, "library search control is missing");
+  assert(library.hasLanguageFilters, "library language filters are missing");
+  assert(library.hasReadingFilters, "library reading filters are missing");
+  assert(library.hasListeningFilters, "library listening filters are missing");
+  assert(library.hasSort, "library sort control is missing");
   assert(library.hasPremiumHero, "library did not render the shared premium hero");
+  assert(library.legacyShelfCount === 0, "retired multi-shelf library architecture rendered unexpectedly");
+  assert(library.cards.length > 0, "library collection rendered no book cards");
   assert(library.previewLinks.includes("/reader/dracula"), "library has no Dracula reader preview CTA");
-  assert(library.nonDraculaReaderLinks.length === 0, `library leaked non-Dracula reader links: ${JSON.stringify(library.nonDraculaReaderLinks)}`);
-  assert(library.pipelineStatuses.every((status) => status === "COMING_SOON_PIPELINE"), `pipeline cards are not notify-only: ${JSON.stringify(library.pipelineStatuses)}`);
+  assert(
+    library.cards.every((card) => ["LIVE_APPROVED", "COMING_SOON_PIPELINE"].includes(card.status)),
+    `library rendered an unknown release state: ${JSON.stringify(library.cards)}`,
+  );
+  assert(
+    library.cards.filter((card) => card.status === "COMING_SOON_PIPELINE")
+      .every((card) => card.readerLinks.every((href) => href?.endsWith("?listen=1"))
+        && card.listenLinks.every((href) => href?.endsWith("?listen=1"))
+        && (card.listenLinks.length > 0 || card.hasNotify)),
+    `pipeline cards exposed an unapproved reader route: ${JSON.stringify(library.cards)}`,
+  );
+  assert(
+    library.cards.every((card) => card.readerLinks.every((href) => card.status === "LIVE_APPROVED" || href?.endsWith("?listen=1"))),
+    `non-live cards exposed reader routes: ${JSON.stringify(library.cards)}`,
+  );
+  assert(
+    library.cards.every((card) => card.listenLinks.length === 0
+      || card.listenLinks.every((href) => href?.endsWith("?listen=1"))),
+    `listening controls escaped the approved release contract: ${JSON.stringify(library.cards)}`,
+  );
 
   await gotoAppPath(page, `/book/${firstSlug}`);
   await page.waitForSelector('[data-testid="book-page"]', { timeout: 30000 });

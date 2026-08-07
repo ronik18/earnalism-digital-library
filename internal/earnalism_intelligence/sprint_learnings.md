@@ -1943,3 +1943,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Keep immutable upload and canonical promotion separate. Both Gitanjali candidates were content-addressed, downloaded again, and matched the approved SHA-256 values before promotion.
 - Canonical promotion requires identical primary and backend controlled-publication mirrors. Add the missing primary mirror before running the transaction rather than bypassing the mirror gate.
 - Cover publication must preserve reader/audio separation. Gitanjali remains reader-live with 104 ready chapters while audiobook fields stay disabled and no public audiobook route is authorized.
+
+## Cost governor baseline and controller repair - 2026-08-07
+
+- Cost work must begin from actual billing data. The prior Railway period cost $98.89, of which $87.40 was memory; the current period projects $2.50 after earlier runtime reductions.
+- A scale request can create a skipped desired deployment while the old successful manifest stays active. Verify active instances and replica metadata; never count the requested topology as a saving.
+- Redis contains only ten cache/RUM keys and no authoritative namespace, but service deletion still requires a deployed no-Redis canary and a rollback window.
+- Complete push-range checks prevent a multi-commit push from hiding backend or frontend changes. `HEAD^..HEAD` is not an adequate deployment scope gate.
+- Scheduled monitoring should verify lightweight liveness. Catalog and reader-manifest checks belong in manual deep monitoring and post-deploy canaries, not a 30-minute loop.

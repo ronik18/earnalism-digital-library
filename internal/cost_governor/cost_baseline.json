@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-08-07T06:26:24Z",
+  "baseline_commit": "335234cc7e4a8a75401b6c3ef81e7f9d98912a76",
+  "origin_main_commit": "335234cc7e4a8a75401b6c3ef81e7f9d98912a76",
+  "production": {
+    "backend_commit": "be601e2eeb82a034b0e3136ece17c05ad06448f5",
+    "frontend_commit": null,
+    "frontend_commit_status": "BLOCKED_UNKNOWN_NOT_EXPOSED_BY_CURRENT_LOCAL_CONTROL_PLANE"
+  },
+  "railway": {
+    "plan": "pro",
+    "project_id": "a8533934-35c4-463e-9f43-577a9ac391ee",
+    "environment_id": "580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+    "backend_service_id": "5af42e7e-f518-4f6a-b602-d9950866501f",
+    "redis_service_id": "f133dcdc-17f4-42a3-92c7-3aa76ccd26b1",
+    "previous_period_actual_usd": 98.89098340041957,
+    "previous_period_line_items_usd": {
+      "cpu": 5.510172023256174,
+      "memory": 87.39829048511272,
+      "egress": 5.8118044266,
+      "volume": 0.17071646545066665
+    },
+    "current_period_usage_usd": 0.2245169319808535,
+    "current_period_projected_usd": 2.4958982691064397,
+    "usage_limit": {
+      "soft_usd": 5,
+      "hard_usd": 10,
+      "verified": true
+    },
+    "backend": {
+      "replicas": 2,
+      "serverless": false,
+      "one_day": {
+        "cpu_vcpu": 0.004045575,
+        "memory_mb": 308.05590016,
+        "egress_mb": 0.112238592,
+        "ingress_mb": 0.377678848
+      },
+      "seven_day": {
+        "cpu_vcpu": 0.003140908888888889,
+        "memory_mb": 310.9788169150638,
+        "egress_mb": 1.300350976,
+        "ingress_mb": 4.407318528
+      }
+    },
+    "redis": {
+      "replicas": 1,
+      "serverless": false,
+      "volume_mb": 1119.10912,
+      "one_day": {
+        "cpu_vcpu": 0.0010336541666666667,
+        "memory_mb": 13.895729152,
+        "egress_mb": 0.0,
+        "ingress_mb": 0.0
+      },
+      "seven_day": {
+        "cpu_vcpu": 0.0007932780555555555,
+        "memory_mb": 13.844237377361702,
+        "egress_mb": 0.0,
+        "ingress_mb": 0.0
+      },
+      "keyspace": {
+        "keys": 10,
+        "values_read": false,
+        "namespaces": {
+          "earnalism:cache": 1,
+          "earnalism:public-cache": 1,
+          "earnalism:reader-content-cache": 1,
+          "earnalism:reader-rum": 7
+        },
+        "authoritative_keys_found": false
+      }
+    }
+  },
+  "github_actions": {
+    "sample_runs": 100,
+    "sample_hours": 90.04194444444444,
+    "total_runner_minutes": 251.88333333333338,
+    "workflows": {
+      "GO LIVE regression gate": {
+        "runs": 32,
+        "minutes": 98.45
+      },
+      "Production monitoring": {
+        "runs": 38,
+        "minutes": 65.3
+      },
+      "Regression suite": {
+        "runs": 30,
+        "minutes": 88.13333333333335
+      }
+    }
+  },
+  "repository": {
+    "tracked_files": 8269,
+    "tracked_blob_bytes": 659787871,
+    "worktree_kib": 664244,
+    "backend_kib": 92712,
+    "controlled_publications_primary_kib": 281776,
+    "controlled_publications_backend_kib": 90900,
+    "root_entries": 548,
+    "numbered_copy_files": 73,
+    "git_pack_mib": 870.95,
+    "git_metadata_status": "CORRUPT_ORPHAN_PACK_METADATA_PRESENT"
+  },
+  "public_route_sample": {
+    "frontend_home_ms": 991,
+    "api_healthz_ms": 581,
+    "api_health_ms": 529,
+    "api_home_ms": 2638,
+    "api_books_ms": 970,
+    "reader_manifest_ms": 863,
+    "checks_passed": 9,
+    "checks_failed": 0
+  },
+  "other_providers": {
+    "vercel": "BILLING_EVIDENCE_NOT_YET_AVAILABLE",
+    "mongodb": "BILLING_EVIDENCE_NOT_YET_AVAILABLE",
+    "b2": "BILLING_EVIDENCE_NOT_YET_AVAILABLE",
+    "cloudinary": "BILLING_EVIDENCE_NOT_YET_AVAILABLE",
+    "paid_tts_asr": "NO_PROVIDER_CALLS_MADE_IN_THIS_ITERATION"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-07T06:26:24Z",
+  "baseline_commit": "335234cc7e4a8a75401b6c3ef81e7f9d98912a76",
+  "status": "NO_DELETIONS_AUTHORIZED_IN_ITERATION_1",
+  "entries": [],
+  "candidate_counts": {
+    "numbered_copy_files": 73,
+    "exact_controlled_publication_mirror_files": 849
+  },
+  "safety_note": "Candidates require reference, hash, release dependency, externalization, and rollback proof before deletion."
+}

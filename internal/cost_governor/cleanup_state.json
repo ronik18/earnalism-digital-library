@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-07T06:26:24Z",
+  "baseline_commit": "335234cc7e4a8a75401b6c3ef81e7f9d98912a76",
+  "iteration": 1,
+  "status": "IN_PROGRESS",
+  "completed": [
+    "STAGE_0_CLEAN_ROOM_BASELINE",
+    "STAGE_1_RAILWAY_24H_AND_7D_BASELINE",
+    "STAGE_1_REPOSITORY_AND_CI_BASELINE",
+    "STAGE_2_USAGE_LIMIT_GUARDRAIL",
+    "STAGE_2_REDIS_READ_ONLY_AUTHORITY_AUDIT"
+  ],
+  "in_progress": [
+    "STAGE_2_SINGLE_REPLICA_CONFIG_AND_CANARY",
+    "STAGE_4_SINGLE_DEPLOYMENT_CONTROLLER",
+    "STAGE_9_LIGHTWEIGHT_MONITORING"
+  ],
+  "blocked": [
+    {
+      "stage": "STAGE_1_OTHER_PROVIDER_BILLING",
+      "reason": "No authenticated billing evidence captured yet for Vercel, MongoDB, B2, or Cloudinary."
+    },
+    {
+      "stage": "STAGE_2_PLAN_DOWNGRADE",
+      "reason": "Plan-change control is not exposed by the verified CLI path; evaluate in Railway billing settings after one-replica and no-Redis canaries."
+    },
+    {
+      "stage": "STAGE_12_LOCAL_GIT_REPAIR",
+      "reason": "The shared local object store contains orphan pack metadata and many live/historical worktrees; use a fresh clone before any repair or pruning."
+    }
+  ],
+  "preserved_dirty_work": {
+    "path": "/private/tmp/earnalism-main-approved-integration-preserved-20260807",
+    "head": "65ae2676658efe357d228eb34963b27b4e828a39",
+    "status_paths": 6253,
+    "inventory": "/tmp/earnalism-main-approved-integration-preserved-20260807.status"
+  },
+  "next_deterministic_action": "Validate iteration 1, deploy from the gated GitHub Actions controller, verify one replica and local-cache behavior, then stop Redis for a bounded rollback window."
+}

@@ -13,6 +13,7 @@ const MAX_FRONTEND_MS = readNumber("MONITOR_MAX_FRONTEND_MS", 4_500);
 const MAX_API_MS = readNumber("MONITOR_MAX_API_MS", 3_000);
 const MIN_BOOKS = readNumber("MONITOR_MIN_BOOKS", 1);
 const FAIL_ON_SLOW = readBoolean("MONITOR_FAIL_ON_SLOW", false);
+const DEEP_CHECKS = readBoolean("MONITOR_DEEP_CHECKS", false);
 const OUTPUT_PATH =
   process.env.MONITOR_OUTPUT_PATH ||
   path.join("output", "monitoring", "production-monitor-latest.json");
@@ -75,55 +76,57 @@ async function main() {
     json: true,
   });
 
-  await runCheck({
-    name: "api:home",
-    url: `${API_URL}/api/home`,
-    maxMs: MAX_API_MS,
-    required: true,
-    json: true,
-  });
-
-  const booksCheck = await runCheck({
-    name: "api:books",
-    url: `${API_URL}/api/books`,
-    maxMs: MAX_API_MS,
-    required: true,
-    json: true,
-    validate: ({ json }) => {
-      const books = extractBooks(json);
-      if (books.length < MIN_BOOKS) {
-        throw new Error(`expected at least ${MIN_BOOKS} published book(s), received ${books.length}`);
-      }
-      const firstBook = books.find((book) => book?.slug) || books[0];
-      return { count: books.length, firstSlug: firstBook?.slug || null };
-    },
-  });
-
-  await runCheck({
-    name: "api:settings-public",
-    url: `${API_URL}/api/settings/public`,
-    maxMs: MAX_API_MS,
-    required: true,
-    json: true,
-  });
-
-  if (booksCheck.ok && booksCheck.detail?.firstSlug) {
+  if (DEEP_CHECKS) {
     await runCheck({
-      name: "api:reader-manifest",
-      url: `${API_URL}/api/reader/book/${encodeURIComponent(booksCheck.detail.firstSlug)}/manifest`,
+      name: "api:home",
+      url: `${API_URL}/api/home`,
+      maxMs: MAX_API_MS,
+      required: true,
+      json: true,
+    });
+
+    const booksCheck = await runCheck({
+      name: "api:books",
+      url: `${API_URL}/api/books`,
       maxMs: MAX_API_MS,
       required: true,
       json: true,
       validate: ({ json }) => {
-        if (!json || typeof json !== "object") {
-          throw new Error("reader manifest was not an object");
+        const books = extractBooks(json);
+        if (books.length < MIN_BOOKS) {
+          throw new Error(`expected at least ${MIN_BOOKS} published book(s), received ${books.length}`);
         }
-        return {
-          slug: json.slug || json.book?.slug || booksCheck.detail.firstSlug,
-          hasAudiobook: Boolean(json.audiobook || json.book?.audiobook),
-        };
+        const firstBook = books.find((book) => book?.slug) || books[0];
+        return { count: books.length, firstSlug: firstBook?.slug || null };
       },
     });
+
+    await runCheck({
+      name: "api:settings-public",
+      url: `${API_URL}/api/settings/public`,
+      maxMs: MAX_API_MS,
+      required: true,
+      json: true,
+    });
+
+    if (booksCheck.ok && booksCheck.detail?.firstSlug) {
+      await runCheck({
+        name: "api:reader-manifest",
+        url: `${API_URL}/api/reader/book/${encodeURIComponent(booksCheck.detail.firstSlug)}/manifest`,
+        maxMs: MAX_API_MS,
+        required: true,
+        json: true,
+        validate: ({ json }) => {
+          if (!json || typeof json !== "object") {
+            throw new Error("reader manifest was not an object");
+          }
+          return {
+            slug: json.slug || json.book?.slug || booksCheck.detail.firstSlug,
+            hasAudiobook: Boolean(json.audiobook || json.book?.audiobook),
+          };
+        },
+      });
+    }
   }
 
   const failures = checks.filter((check) => check.required && !check.ok);
@@ -133,6 +136,7 @@ async function main() {
   const report = {
     ok: passed,
     generatedAt: new Date().toISOString(),
+    mode: DEEP_CHECKS ? "deep" : "lightweight",
     frontendUrl: FRONTEND_URL,
     apiUrl: API_URL,
     budgets: {

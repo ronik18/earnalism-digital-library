@@ -1,13 +1,21 @@
 {
-  "$schema": "https://railway.app/railway.schema.json",
+  "$schema": "https://railway.com/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "pip install -r requirements.txt"
+    "buildCommand": "pip install -r requirements.txt",
+    "watchPatterns": [
+      "/backend/**"
+    ]
   },
   "deploy": {
     "startCommand": "sh ./start_prod.sh",
     "healthcheckPath": "/healthz",
     "healthcheckTimeout": 100,
+    "multiRegionConfig": {
+      "sfo": {
+        "numReplicas": 1
+      }
+    },
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
