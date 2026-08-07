@@ -52,6 +52,14 @@
     "starlette",
     "uvicorn"
   ],
+  "route_dependency_gaps": [
+    {
+      "module": "docx",
+      "package": "python-docx",
+      "evidence": "backend/server.py imports docx for DOCX validation and formatting routes, but backend/requirements.txt has no python-docx pin",
+      "action": "Resolve in a dedicated route contract change before using any minimized runtime candidate"
+    }
+  ],
   "not_delete_candidates": [
     {
       "group": "ASR/TTS/AI and data tooling",
