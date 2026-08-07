@@ -479,3 +479,5 @@ def provider_for_name(name: str) -> NarrationProvider:
     if normalized == "elevenlabs":
         return ElevenLabsProvider()
     raise ValueError(f"unsupported provider: {name}")
+
+# Deployment boundary marker: this module is part of the Railway release surface.
