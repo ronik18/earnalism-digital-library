@@ -318,12 +318,14 @@ async function auditHomeTour(page) {
       recommendation: "Replace with Audiobook experience in private review.",
     });
   }
+  const tour = page.getByTestId("first-visit-site-tour");
   const possibleDismissers = [
+    tour.getByRole("button", { name: /skip|dismiss|close|finish|got it/i }).first(),
     page.getByRole("button", { name: /skip|dismiss|close|finish|got it/i }).first(),
     page.locator('[aria-label*="close" i]').first(),
   ];
   for (const candidate of possibleDismissers) {
-    if (await candidate.isVisible({ timeout: 1500 }).catch(() => false)) {
+    if (await candidate.isVisible({ timeout: 5000 }).catch(() => false)) {
       await candidate.click({ timeout: 5000 }).catch(() => {});
       await sleep(800);
       recordEvent("first_time_site_tour_dismiss_attempted", { route: "/?tour=1" });
