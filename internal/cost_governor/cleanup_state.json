@@ -55,7 +55,7 @@
     "production_canary": "passed",
     "runtime_dependency_audit": "internal/cost_governor/runtime_dependency_pruning_report.json; five formatter/lint/type/test packages are deletion candidates, route-sensitive packages retained",
     "unreferenced_deployment_duplicate": "scripts/commit_push_deploy 2.sh removed; canonical scripts/commit_push_deploy.sh retained; pre-delete SHA recorded in deletion_manifest.json",
-    "runtime_candidate": "internal/cost_governor/runtime_requirements_candidate.txt; 27 existing pins retained for candidate evaluation; python-docx route dependency gap recorded",
+    "runtime_candidate": "internal/cost_governor/runtime_requirements_candidate.txt; disposable install/import passed at 100M site-packages and 0.60s import, with python-docx, Judoscale, python-dotenv, and requests resolution gaps recorded; no baseline savings claim",
     "local_docker_build": "unavailable: docker executable not installed",
     "automatic_regression_controller": "GitHub Actions GO LIVE regression workflow",
     "legacy_regression_suite": "manual workflow_dispatch only",
