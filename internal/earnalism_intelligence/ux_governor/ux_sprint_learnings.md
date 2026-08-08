@@ -145,3 +145,11 @@
 - Editorial plaque and 3-D book stage need separate grid regions. A translucent overlay on top of unrelated decorative book art cannot look intentional or remain accessible across breakpoints.
 - Failed adjacent-cover preloads must reconcile the pending index to the visible index. Otherwise the next manual navigation can jump even when circular index math is correct.
 - Five-viewport browser evidence passed with Devdas absent from the hero DOM, zero hidden focus targets, zero horizontal overflow, synchronized active identities, 44px controls, and one-step pointer and keyboard navigation.
+
+## 2026-08-08 Compact Library Colophon Footer
+
+- Footer compactness must measure both the footer box and its external margin. The live desktop footer used 538 px internally plus a detached 128 px top margin, so the perceived blank area was larger than the component height alone suggested.
+- A premium end-of-page experience does not need more content; it needs clearer jobs. Brand promise, fast exploration, one calm contact action, and a consolidated legal rail replaced widely separated low-information rows.
+- Wrapping the five core navigation links horizontally preserved 44 px touch targets while materially reducing mobile height. Compactness should come from layout structure and copy editing, not undersized controls.
+- Lazy footer imagery must be scrolled into the viewport before visual assertions. Full-page screenshot capture alone can show a valid lazy-loaded wordmark as blank.
+- The source candidate reduced the footer to 281 px at 1440 and 533 px at 390, removed the external margin, preserved zero horizontal overflow, and changed no audio, catalog, route, backend, or release-gate truth.
