@@ -1,0 +1,44 @@
+{
+  "all_or_nothing": true,
+  "books": [
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "title": "The Adventures of Sherlock Holmes",
+      "subtitle": "",
+      "author": "Arthur Conan Doyle",
+      "author_death_year": 1930,
+      "original_publication_year": 1892,
+      "source_url": "https://www.gutenberg.org/ebooks/1661",
+      "source_type": "gutenberg",
+      "source_license": "Public domain; commercial use allowed in the United States and India.",
+      "rights_basis": "Arthur Conan Doyle died in 1930 and the collection was first published in 1892; the work is public domain in India under life plus 60 years and in the United States under the publication-year rule.",
+      "license_notes": "Project Gutenberg catalog and source header reviewed; source furniture must remain outside the reader edition.",
+      "commercial_use_allowed": true,
+      "requires_attribution": false,
+      "requires_sharealike": false,
+      "category_slug": "literary-fiction",
+      "availability": "draft",
+      "availability_territory": "global",
+      "is_published": false,
+      "audiobook_enabled": false,
+      "generate_audiobook": false,
+      "audio_status": "AUDIO_NOT_REQUIRED",
+      "minimum_word_count": 100000,
+      "short_description": "Twelve classic detective stories featuring Sherlock Holmes and Dr. Watson.",
+      "description": "A clean, structured reader edition of Arthur Conan Doyle's 1892 collection.",
+      "formats": ["Ebook"],
+      "chapter_rules": {
+      "heading_regex": "^(?P<title>(?:I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII)\\.\\s+[A-Z][A-Z’' -]+)$"
+      },
+      "forbidden_source_terms": [
+        "Project Gutenberg",
+        "Gutenberg.org",
+        "PGLAF",
+        "Distributed Proofreaders",
+        "donation",
+        "refund",
+        "license agreement"
+      ]
+    }
+  ]
+}

@@ -1139,6 +1139,34 @@ def detect_strict_prepared_chapters(text: str) -> tuple[list[dict[str, Any]], li
     return chapters, warnings
 
 
+def detect_regex_chapters(text: str, heading_pattern: str) -> tuple[list[dict[str, Any]], list[str]]:
+    """Split a sanitized work on title-specific headings declared by its manifest."""
+    try:
+        pattern = re.compile(heading_pattern, re.MULTILINE)
+    except re.error as exc:
+        raise ValueError(f"chapter_rules.heading_regex is invalid: {exc}") from exc
+    matches = list(pattern.finditer(text))
+    if len(matches) < 2:
+        raise ValueError("chapter_rules.heading_regex found fewer than two chapter headings")
+    chapters: list[dict[str, Any]] = []
+    for index, match in enumerate(matches):
+        title = clean_heading_text(match.groupdict().get("title") or match.group(0))
+        body_start = match.end()
+        body_end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        body = text[body_start:body_end].strip()
+        if not body:
+            raise ValueError(f"chapter_rules.heading_regex produced an empty chapter: {title}")
+        chapters.append({
+            "order": index + 1,
+            "title": title,
+            "content": text_to_reader_html(body),
+            "is_preview": index == 0,
+            "summary": chapter_summary(body),
+            "warnings": [],
+        })
+    return chapters, ["Used manifest-owned chapter heading regex for deterministic indexing."]
+
+
 def commercial_rights_validation(book: dict[str, Any]) -> tuple[bool, dict[str, Any], list[str], list[str]]:
     errors: list[str] = []
     warnings: list[str] = []
@@ -1410,6 +1438,9 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
         result.warnings.append("Forced single reader chapter per manifest chapter_rules.")
     elif chapter_rules.get("strict_prepared_chapter_markers"):
         chapters, chapter_warnings = detect_strict_prepared_chapters(cleaned)
+        result.warnings.extend(chapter_warnings)
+    elif chapter_rules.get("heading_regex"):
+        chapters, chapter_warnings = detect_regex_chapters(cleaned, str(chapter_rules["heading_regex"]))
         result.warnings.extend(chapter_warnings)
     else:
         chapters, chapter_warnings = detect_chapters(

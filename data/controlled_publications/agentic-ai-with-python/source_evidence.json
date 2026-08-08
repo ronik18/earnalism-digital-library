@@ -1,11 +1,21 @@
 {
   "slug": "agentic-ai-with-python",
-  "source_type": "original_work",
+  "source_type": "first_party_original",
   "source_name": "Author-owned original work",
   "source_license": "Author-owned original work prepared for Earnalism publication.",
   "copyright_owner": "Ronik Basak",
   "author": "Ronik Basak",
   "commercial_use_allowed": true,
+  "owner_attestation": "Ronik Basak attests that this is author-owned original work and authorizes commercial reader publication.",
+  "rights_basis": "First-party author-owned manuscript approved for commercial Earnalism reader publication.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "global",
+  "verified_at": "2026-08-02T15:41:06.659791+00:00",
   "source_hash": "c0d3577b9b4f7f91c2ecc19ff64e7bc2e64d1091275def3c3849f97e6b1a8a8f",
-  "captured_at": "2026-08-02T15:41:06.659791+00:00"
+  "captured_at": "2026-08-02T15:41:06.659791+00:00",
+  "source_url": "",
+  "content_hash": "ac367d6f454d788e30966dd74bc325d49241f015652606e64e66c4167e5884fd",
+  "provenance_hash": "ebf9cbdbd8fea126f54f57f142d6306ae2946529d5fe710a7c61a3c70dc36d3c",
+  "reader_facing_boilerplate_removed": true
 }

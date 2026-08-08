@@ -30,6 +30,11 @@ RIGHTS_METADATA_FIELDS = [
     "blocked_reason",
     "publication_region",
     "verified_at",
+    "source_type",
+    "copyright_owner",
+    "commercial_use_allowed",
+    "owner_attestation",
+    "rights_basis",
 ]
 
 RIGHTS_REPORT_FILENAMES = {
@@ -115,6 +120,14 @@ def _source_has_strong_confidence(metadata: dict[str, Any]) -> bool:
     return any(token in host for token in ("gutenberg.org", "wikisource.org")) or bool(PUBLIC_DOMAIN_LICENSE_RE.search(source_license))
 
 
+def _is_first_party_original(metadata: dict[str, Any]) -> bool:
+    return _lower(metadata.get("source_type")) in {
+        "first_party_original",
+        "original_work_internal_admin_source",
+        "original_work",
+    }
+
+
 def rights_metadata_for_book(book: dict[str, Any]) -> dict[str, Any]:
     workflow = book.get("publication_workflow") if isinstance(book.get("publication_workflow"), dict) else {}
     canonical = workflow.get("rights") if isinstance(workflow.get("rights"), dict) else {}
@@ -135,21 +148,38 @@ def evaluate_rights(book: dict[str, Any], *, current_year: int | None = None) ->
     metadata = rights_metadata_for_book(book)
     issues: list[str] = []
     quarantine_only = False
+    first_party_original = _is_first_party_original(metadata)
 
-    for field_name in ("work_title", "work_slug", "author_name", "source_url", "source_name", "source_license"):
+    required_fields = ["work_title", "work_slug", "author_name", "source_name", "source_license"]
+    if not first_party_original:
+        required_fields.append("source_url")
+    for field_name in required_fields:
         if not _text(metadata.get(field_name)):
             issues.append(f"{field_name} is required.")
             quarantine_only = True
 
     author_death_year = _year(metadata.get("author_death_year"))
     original_publication_year = _year(metadata.get("original_publication_year"))
-    if author_death_year is None:
+    if first_party_original:
+        if not _text(metadata.get("copyright_owner")):
+            issues.append("copyright_owner is required for first-party original work.")
+            quarantine_only = True
+        if metadata.get("commercial_use_allowed") is not True:
+            issues.append("commercial_use_allowed must be true for first-party original work.")
+            quarantine_only = True
+        if not _text(metadata.get("owner_attestation")):
+            issues.append("owner_attestation is required for first-party original work.")
+            quarantine_only = True
+        if not _text(metadata.get("rights_basis")):
+            issues.append("rights_basis is required for first-party original work.")
+            quarantine_only = True
+    elif author_death_year is None:
         issues.append("author_death_year is required.")
         quarantine_only = True
     elif not _is_public_domain_india(author_death_year, current_year=current_year):
         issues.append("author is not deterministically public domain in India.")
 
-    if original_publication_year is None:
+    if not first_party_original and original_publication_year is None:
         issues.append("original_publication_year is required.")
         quarantine_only = True
 
@@ -198,7 +228,7 @@ def evaluate_rights(book: dict[str, Any], *, current_year: int | None = None) ->
         quarantine_only = True
 
     publication_region = _lower(metadata.get("publication_region") or "global")
-    if rights_tier == TIER_A and not _source_has_strong_confidence(metadata):
+    if rights_tier == TIER_A and not first_party_original and not _source_has_strong_confidence(metadata):
         issues.append("Tier A requires public-domain source confidence.")
     if rights_tier == TIER_B and publication_region in GLOBAL_REGIONS:
         issues.append("Tier B blocks global publishing; use India-only publication_region or upgrade rights evidence.")

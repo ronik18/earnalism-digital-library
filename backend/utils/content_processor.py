@@ -152,12 +152,82 @@ def normalize_render_html(clean_html: str) -> str:
     return clean_html.strip()
 
 
+_HTML_TOKEN_RE = re.compile(r"(<[^>]+>)")
+_HTML_TAG_NAME_RE = re.compile(r"</?\s*([a-zA-Z0-9]+)")
+_VOID_TAGS = {"br", "hr", "img", "input", "link", "meta", "source", "wbr"}
+
+
+def _looks_like_code_block(text: str) -> bool:
+    decoded = html.unescape(text).strip()
+    lines = [line.rstrip() for line in decoded.splitlines() if line.strip()]
+    if not lines:
+        return False
+    if lines[0].lstrip().startswith("```"):
+        return True
+    code_prefixes = (
+        "$ ", ">>> ", "pip ", "python ", "pytest", "npm ", "git ", "curl ",
+        "import ", "from ", "def ", "class ", "assert ", "return ", "raise ",
+    )
+    score = sum(line.lstrip().startswith(code_prefixes) for line in lines)
+    score += sum(bool(re.match(r"\s{2,}\S", line)) for line in decoded.splitlines())
+    score += sum(" = " in line or line.rstrip().endswith(("():", "{")) for line in lines)
+    return score >= max(2, len(lines) // 3)
+
+
+def _wrap_top_level_text(text: str) -> str:
+    blocks = re.split(r"\n\s*\n", (text or "").replace("\r\n", "\n").replace("\r", "\n"))
+    rendered: list[str] = []
+    for block in blocks:
+        block = block.strip()
+        if not block:
+            continue
+        lines = [line.strip() for line in block.splitlines() if line.strip()]
+        if not lines:
+            continue
+        if lines[0].startswith("```"):
+            lines = lines[1:]
+            if lines and lines[-1].startswith("```"):
+                lines = lines[:-1]
+            block = "\n".join(lines).strip()
+        if not block:
+            continue
+        if _looks_like_code_block(block):
+            rendered.append(f"<pre><code>{block}</code></pre>")
+        else:
+            rendered.append(f"<p>{'<br>'.join(lines)}</p>")
+    return "".join(rendered)
+
+
+def structure_top_level_text_nodes(clean_html: str) -> str:
+    """Wrap safe top-level text runs so pagination cannot serialize tags as text."""
+    tokens = _HTML_TOKEN_RE.split(clean_html or "")
+    output: list[str] = []
+    depth = 0
+    for token in tokens:
+        if not token:
+            continue
+        if token.startswith("<"):
+            match = _HTML_TAG_NAME_RE.match(token)
+            tag_name = match.group(1).lower() if match else ""
+            is_closing = token.startswith("</")
+            is_void = tag_name in _VOID_TAGS or token.rstrip().endswith("/>")
+            if is_closing:
+                depth = max(0, depth - 1)
+            output.append(token)
+            if tag_name and not is_closing and not is_void:
+                depth += 1
+            continue
+        output.append(_wrap_top_level_text(token) if depth == 0 else token)
+    return "".join(output)
+
+
 def sanitize_chapter_html_fragment(raw_html: str) -> tuple[str, list[str]]:
     warnings: list[str] = []
     safe_html, removed_unsafe = remove_unsafe_blocks(raw_html)
     if removed_unsafe:
         warnings.append("Unsafe scripts, styles, or embedded content were removed.")
     clean = bleach.clean(safe_html, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRS, strip=True)
+    clean = structure_top_level_text_nodes(clean)
     return normalize_render_html(clean), warnings
 
 
@@ -197,6 +267,7 @@ def process_chapter_content(file_bytes: bytes, filename: str, book_id: str) -> d
 
     processed = extract_and_upload_images(raw_html, book_id)
     clean = bleach.clean(processed, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRS, strip=True)
+    clean = structure_top_level_text_nodes(clean)
     clean = normalize_render_html(clean)
 
     plain = html.unescape(re.sub(r"<[^>]+>", "", clean)).strip()

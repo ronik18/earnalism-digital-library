@@ -1,0 +1,130 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventures-of-sherlock-holmes",
+  "title": "The Adventures of Sherlock Holmes",
+  "generated_at": "2026-08-08T10:14:17.204939+00:00",
+  "content": {
+    "source_hash": "bde9b313e5f4e7674d64afb47af1e6ba4e312ca68ad360c1fb575c717691908a",
+    "content_hash": "b10d37f4214b7f74247590da5140b5ef248c771974262faa9d9f30736090b1ec",
+    "provenance_hash": "70f51eeded680633a8e43f5f1c5aae6469b7fe3a33e5af507c141490a3cf99de",
+    "sanitized": true,
+    "chapter_count": 12,
+    "chapter_index_sha256": "c051b6e27c56488aa445c57078c47b2a3f8e867699becf1a97a4e5123d75f363",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "I. A SCANDAL IN BOHEMIA",
+        "word_count": 8543,
+        "sha256": "852fcb26387a68ebe70749ceb41f0034eec799cadbca2ee7e1c14723d598f3da"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "II. THE RED-HEADED LEAGUE",
+        "word_count": 9107,
+        "sha256": "77d9db5139076bbe4f277f3ecf74777888067cb8066351316cbf64ee9742acc7"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "III. A CASE OF IDENTITY",
+        "word_count": 6989,
+        "sha256": "d3e86c9d39064af3b23dcb980c0e564b0ea836023c38837c36699def33d71e98"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "IV. THE BOSCOMBE VALLEY MYSTERY",
+        "word_count": 9623,
+        "sha256": "f9de0c5a9a3e51b2b755b6c46be7e6ea65b5bcc098753af2230862ccad4cb07a"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "V. THE FIVE ORANGE PIPS",
+        "word_count": 7321,
+        "sha256": "f360ae783f7a59d89c2f13f47ad7ce716695996360d0e8ae5f34e7607d91f7ea"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "VI. THE MAN WITH THE TWISTED LIP",
+        "word_count": 9213,
+        "sha256": "1ad0081d9bc46074608a4513a1c7555c79389d39814c17d7725fd4b047936b06"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "VII. THE ADVENTURE OF THE BLUE CARBUNCLE",
+        "word_count": 7823,
+        "sha256": "92ebc733a1e7e23f3c849382b8f78078d31a0be5a5580f89af60cd000d8a0238"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "VIII. THE ADVENTURE OF THE SPECKLED BAND",
+        "word_count": 9816,
+        "sha256": "b572564beaeb1d37a9b7b5bda18c2bfb710a0cdc0eb6ec898913542d1b6c2299"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "IX. THE ADVENTURE OF THE ENGINEER’S THUMB",
+        "word_count": 8299,
+        "sha256": "19c9040a338b2908520492ea76620880bedaaeccc183e37aa5a8e0dd6d6652bb"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "X. THE ADVENTURE OF THE NOBLE BACHELOR",
+        "word_count": 8126,
+        "sha256": "9ebd6398629b2f234622d5531071f73d6a3f1e79be1004d018565fc659f9d04c"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "XI. THE ADVENTURE OF THE BERYL CORONET",
+        "word_count": 9688,
+        "sha256": "63e5c873ad78050562841cc60693a79954f2e4405d5be6f2d49466693efd2e7d"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "XII. THE ADVENTURE OF THE COPPER BEECHES",
+        "word_count": 9955,
+        "sha256": "a057a3c4f5d978219fccbe5fc5d28d82c979cf2a8a29bf8affaa1f3c6d74f6ff"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "65b96ad26488a9b1b1a97b3e7127da5b5db959802eaa93f7a2ffc498aa5bc108"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779860055/earnalism/covers/front/cover_75d9a463-e201-46e8-9e9d-60321dd13f75.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "1baf721b8a81a5790c6c5daf6e09b1ad46f628740e4b2904ec91732b786b0016",
+    "reader_manifest": "1cea3e4c367856874c8b16320526eff1a4dcc6c2f3be12fea2e3f6055cb852b2",
+    "source_evidence": "65b96ad26488a9b1b1a97b3e7127da5b5db959802eaa93f7a2ffc498aa5bc108",
+    "approval_evidence": "0dde1e663113459200758e217fbccdab3dbbd002a4ecb73967da8441a5dca4e3"
+  },
+  "manifest_sha256": "84005afc412b1de62eb32a95885e9f2f6d1b301c0de8d078447fe9ec48c28ac3"
+}
