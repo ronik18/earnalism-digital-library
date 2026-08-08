@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import SecureReader from "../components/SecureReader";
 import useSEO from "../hooks/useSEO";
+import "./ReaderRoute.css";
 
 function CanvasPage({ page, text, watermark }) {
   const canvasRef = useRef(null);

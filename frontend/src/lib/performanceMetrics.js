@@ -24,10 +24,11 @@ function sendMetric(name, value, extra = {}) {
 }
 
 function rateMetric(name, value) {
-  if (name === "CLS") return value <= 0.1 ? "good" : value <= 0.25 ? "needs-improvement" : "poor";
-  if (name === "LCP") return value <= 2500 ? "good" : value <= 4000 ? "needs-improvement" : "poor";
+  if (name === "CLS") return value < 0.05 ? "good" : value <= 0.1 ? "needs-improvement" : "poor";
+  if (name === "LCP") return value <= 2000 ? "good" : value <= 2500 ? "needs-improvement" : "poor";
   if (name === "FID" || name === "INP") return value <= 200 ? "good" : value <= 500 ? "needs-improvement" : "poor";
-  if (name === "FCP" || name === "TTFB") return value <= 1800 ? "good" : value <= 3000 ? "needs-improvement" : "poor";
+  if (name === "FCP") return value <= 1200 ? "good" : value <= 1800 ? "needs-improvement" : "poor";
+  if (name === "TTFB") return value <= 800 ? "good" : value <= 1800 ? "needs-improvement" : "poor";
   return "info";
 }
 

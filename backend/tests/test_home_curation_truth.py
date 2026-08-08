@@ -5,6 +5,7 @@ from backend import catalog_truth, home_curation
 from backend.home_curation import (
     _build_shelf_collage,
     build_home_curated_payload,
+    compact_home_curated_payload,
     home_curation_evidence,
     is_safe_cover_url,
     select_curated_books,
@@ -14,6 +15,32 @@ from backend.home_curation import (
 ROOT = Path(__file__).resolve().parents[2]
 APPROVED_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story", "sredni-vashtar", "the-open-window"}
 DEFERRED_AUDIO_SLUGS = {"great-expectations", "jane-eyre"}
+
+
+def _expand_compact_home_payload(compact):
+    def expand(value):
+        if isinstance(value, list):
+            return [expand(item) for item in value]
+        if not isinstance(value, dict):
+            return value
+        if isinstance(value.get("$book"), str):
+            return compact["books"][value["$book"]]
+        return {key: expand(item) for key, item in value.items()}
+
+    return expand(compact["payload"])
+
+
+def test_compact_home_payload_is_exact_smaller_and_release_truth_neutral():
+    payload = build_home_curated_payload()
+    compact = compact_home_curated_payload(payload)
+    expanded = _expand_compact_home_payload(compact)
+
+    assert compact["format"] == "home-curation-compact-v1"
+    assert expanded == payload
+    assert len(json.dumps(compact, ensure_ascii=False)) < len(json.dumps(payload, ensure_ascii=False)) * 0.55
+    assert {
+        book["slug"] for book in expanded["shelves"]["approved_audiobooks"]
+    } == APPROVED_AUDIO_SLUGS
 
 
 def all_payload_books(payload):

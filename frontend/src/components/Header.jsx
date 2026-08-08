@@ -93,9 +93,8 @@ export default function Header() {
             <Link
               key={n.to || n.key}
               to={n.to}
-              end={n.to === "/"}
               data-testid={`nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
-              className={() => `tracking-[0.12em] transition-colors whitespace-nowrap ${isNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`}
+              className={`tracking-[0.12em] transition-colors whitespace-nowrap ${isNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`}
               aria-current={isNavItemActive(n, loc) ? "page" : undefined}
             >
               {n.label}

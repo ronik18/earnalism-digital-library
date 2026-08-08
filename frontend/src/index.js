@@ -1,17 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { injectSpeedInsights } from "@vercel/speed-insights";
 import "@/index.css";
 import App from "@/App";
 import { initPerformanceMetrics } from "./lib/performanceMetrics";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+const rootElement = document.getElementById("root");
+const app = (
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
+if (rootElement?.dataset.prerendered === "home" && rootElement.hasChildNodes()) {
+  ReactDOM.hydrateRoot(rootElement, app);
+} else {
+  ReactDOM.createRoot(rootElement).render(app);
+}
+
 initPerformanceMetrics();
+injectSpeedInsights();
 
 const serviceWorkerAvailable = process.env.NODE_ENV === "production" && "serviceWorker" in navigator;
 const serviceWorkerEnabled = process.env.REACT_APP_ENABLE_SERVICE_WORKER === "true";

@@ -1,10 +1,35 @@
 import {
+  expandCompactHomeCuration,
   getHomeCurationCache,
   getHomeCurationSnapshot,
   normalizeHomeCuration,
   setHomeCurationCache,
   shelfMode,
 } from "./homeCuration";
+
+test("compact curation references expand without changing release-gate fields", () => {
+  const approved = {
+    slug: "approved-audio",
+    title: "Approved Audio",
+    front_cover_url: "/cover.webp",
+    audiobook_enabled: true,
+    audiobook_release_gate: "PUBLIC_AUDIO_RELEASE_APPROVED",
+    audio_qa_status: "QA_PASSED",
+    audiobook_url: "/api/reader/book/approved-audio/audiobook",
+  };
+  const expanded = expandCompactHomeCuration({
+    format: "home-curation-compact-v1",
+    books: { "approved-audio:exact": approved },
+    payload: {
+      hero: { carousel_books: [{ $book: "approved-audio:exact" }] },
+      selected_audiobooks: [{ $book: "approved-audio:exact" }],
+    },
+  });
+
+  expect(expanded.hero.carousel_books[0]).toEqual(approved);
+  expect(expanded.selected_audiobooks[0].audiobook_release_gate)
+    .toBe("PUBLIC_AUDIO_RELEASE_APPROVED");
+});
 
 test("shelf modes remain bounded and explicit", () => {
   expect([0, 1, 2, 3, 6, 8].map(shelfMode)).toEqual(["Zero", "Spotlight", "Duo", "Trio", "Runway", "Overflow"]);

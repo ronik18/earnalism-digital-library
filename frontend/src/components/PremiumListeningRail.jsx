@@ -76,7 +76,7 @@ function ListeningCard({ book, featured, onCoverFailure }) {
             widths={[150, 180, 240]}
             sizes="(min-width: 900px) 126px, 96px"
             className="premium-listening-card__cover"
-            loading="eager"
+            loading="lazy"
             allowGraphicalFallback={false}
             onPermanentFailure={onCoverFailure}
           />

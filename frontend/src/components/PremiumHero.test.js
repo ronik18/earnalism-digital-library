@@ -47,7 +47,8 @@ describe("PremiumHero public contract", () => {
     ].map((filename) => path.join(process.cwd(), "public/assets/hero", filename));
 
     expect(source).toContain("premium-library-reference-exact.webp");
-    expect(source).toContain("premium-library-reference-exact-1024.webp 1024w");
+    expect(source).toContain('versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.webp")');
+    expect(source).toContain("HERO_ASSET_VERSION");
     expect(source).toContain("premium-library-reference-exact-1440.webp");
     expect(source).toContain("REFERENCE_HERO_AVIF_SRCSET");
     expect(source).toContain('type="image/avif"');

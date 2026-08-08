@@ -85,9 +85,9 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     )
 
 try:
-    from home_curation import build_home_curated_payload, _read_config as home_curation_config
+    from home_curation import build_home_curated_payload, compact_home_curated_payload, _read_config as home_curation_config
 except ImportError:  # pragma: no cover - supports package-style test imports
-    from backend.home_curation import build_home_curated_payload, _read_config as home_curation_config
+    from backend.home_curation import build_home_curated_payload, compact_home_curated_payload, _read_config as home_curation_config
 
 try:
     from home_curation_v4 import build_home_curated_payload_v4
@@ -5141,6 +5141,10 @@ async def production_hardening_middleware(request: Request, call_next):
             "Cache-Control",
             f"public, max-age={min(PUBLIC_CACHE_TTL_SECONDS, 60)}, stale-while-revalidate=120",
         )
+        if path == "/api/home/curated":
+            edge_cache = "public, s-maxage=600, stale-while-revalidate=86400"
+            response.headers.setdefault("CDN-Cache-Control", edge_cache)
+            response.headers.setdefault("Vercel-CDN-Cache-Control", edge_cache)
     elif path in {"/health", "/healthz", "/api/health", "/api/healthz"}:
         response.headers.setdefault("Cache-Control", "no-store")
     elif path.startswith(("/api/admin", "/api/users", "/api/reader", "/api/reading", "/api/payments")):
@@ -5443,12 +5447,12 @@ async def list_categories():
 
 
 @api.get("/home/curated")
-async def get_home_curated():
+async def get_home_curated(compact: bool = False):
     """Return one canonical, release-safe Home curation contract."""
     cache_key = _public_cache_key("home_curated_v4_controlled_truth_v3")
     cached = await _public_cache_get(cache_key)
     if cached is not None:
-        return cached
+        return compact_home_curated_payload(cached) if compact else cached
 
     docs = await db.books.find(
         _controlled_public_book_query(),
@@ -5479,7 +5483,7 @@ async def get_home_curated():
         audio_contracts=audio_contracts,
     )
     await _public_cache_set(cache_key, payload)
-    return payload
+    return compact_home_curated_payload(payload) if compact else payload
 
 
 # ---------- Public: Books ----------
