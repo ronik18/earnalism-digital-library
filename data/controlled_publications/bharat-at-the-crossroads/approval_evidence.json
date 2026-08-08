@@ -4,8 +4,30 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "explicit_owner_approved_audio_only_release",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "manual_listening_approval": true,
+  "manual_listening_approval_basis": "Explicit owner approval in conversation",
+  "listening_qa_fatal_flags": [],
+  "sync_tier": "AUDIO_ONLY_NO_SYNC",
+  "paragraph_sync": false,
+  "auto_estimated_sync": false,
+  "audio_sha256": "d0684239667b35fb0806d80216c9fdb7e9e6b55b313129cb22e9546e23434084",
+  "source_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "uploaded_artifact_sha256": {
+    "mp3": "d0684239667b35fb0806d80216c9fdb7e9e6b55b313129cb22e9546e23434084"
+  },
+  "uploaded_artifact_size_bytes": {
+    "mp3": 147636213
+  },
+  "upload_status": "UPLOADED_CHECKSUM_VERIFIED",
+  "storage_backend": "b2_s3",
+  "endpoint_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3",
+  "endpoint_http_status": 206,
+  "metadata_approval_status": "PASS",
+  "browser_gate_status": "PENDING_REVERIFY",
+  "release_blockers": [],
   "allowCheckout": false,
   "allowPayment": false,
   "audiobook_enabled": true

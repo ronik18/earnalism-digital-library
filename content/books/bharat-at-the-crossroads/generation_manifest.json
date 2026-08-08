@@ -1,0 +1,14 @@
+{
+  "slug": "bharat-at-the-crossroads",
+  "voice": "bm_george",
+  "speed": 0.92,
+  "max_words": 80,
+  "source_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "source_words": 34761,
+  "chunks": 485,
+  "paragraph_sync": false,
+  "wav_sha256": "74106a83e73373b84e7ca74c669bf85510c9926a0ed3114f4a7f8b51f2bc9d7b",
+  "mp3_sha256": "d0684239667b35fb0806d80216c9fdb7e9e6b55b313129cb22e9546e23434084",
+  "duration_seconds": 19309.325,
+  "audio_file": "bharat-at-the-crossroads_bm_george.mp3"
+}

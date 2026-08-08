@@ -8,23 +8,40 @@
     {
       "id": "chapter-001",
       "order": 1,
-      "title": "Full Text",
+      "title": "Bharat at the Crossroads",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 36712,
-      "reading_minutes": 153,
+      "word_count": 34761,
+      "reading_minutes": 322,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T20:07:47Z",
-      "updated_at": "2026-07-03T20:07:47Z"
+      "uploaded_at": "2026-08-08T00:00:00Z",
+      "updated_at": "2026-08-08T00:00:00Z"
     }
   ],
   "preview_chapter_ids": [
     "chapter-001"
   ],
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generated_at": "2026-07-03T20:07:47Z"
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "audiobook_provider": "kokoro",
+  "audiobook_voice": "bm_george",
+  "audio_asset_slug": "bharat-at-the-crossroads-bm-george-v1",
+  "audiobook_assets": {
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3"
+  },
+  "audiobook": {
+    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3",
+    "provider": "kokoro",
+    "size": 147636213,
+    "duration_ms": 19309325,
+    "assets": {
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3"
+    }
+  },
+  "sync_tier": "AUDIO_ONLY_NO_SYNC",
+  "highlight_sync_enabled": false,
+  "generated_at": "2026-08-08T00:00:00Z"
 }

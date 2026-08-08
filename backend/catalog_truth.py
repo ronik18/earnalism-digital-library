@@ -589,8 +589,15 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
         issues.append("public_book.json audio flags do not match controlled release approval.")
     if audio_approved:
         assets = public_book.get("audiobook_assets") if isinstance(public_book.get("audiobook_assets"), dict) else {}
-        if not assets.get("mp3") or not assets.get("timestamps"):
-            issues.append("public_book.json audiobook assets are incomplete for an audio-enabled slug.")
+        if not assets.get("mp3"):
+            issues.append("public_book.json audiobook assets are missing mp3 for an audio-enabled slug.")
+        sync_tier = normalize_upper(
+            approval_evidence.get("sync_tier")
+            or public_book.get("sync_tier")
+            or ""
+        )
+        if sync_tier not in {"AUDIO_ONLY_NO_SYNC", "NONE", "NO_SYNC"} and not assets.get("timestamps"):
+            issues.append("public_book.json audiobook assets are missing timestamps for a synchronized audio slug.")
     if public_book.get("approved_to_publish") is not True:
         issues.append("public_book.json approved_to_publish is not true.")
     if normalize_text(public_book.get("verification_status")).lower() not in {"approved", "verified"}:
@@ -618,8 +625,12 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
     for key in ("source_hash", "content_hash", "provenance_hash"):
         if not normalize_text(source_evidence.get(key)):
             issues.append(f"source_evidence.json missing {key}.")
-    if not normalize_text(source_evidence.get("source_url")):
-        issues.append("source_evidence.json missing source_url.")
+    source_url = normalize_text(source_evidence.get("source_url"))
+    source_type = normalize_text(source_evidence.get("source_type")).lower()
+    rights_basis = normalize_text(source_evidence.get("rights_basis"))
+    first_party = source_type in {"original_work_internal_admin_source", "first_party_original"}
+    if not source_url and not (first_party and rights_basis):
+        issues.append("source_evidence.json missing source_url or approved first-party rights basis.")
     if approval_evidence.get("approved_to_publish") is not True:
         issues.append("approval_evidence.json approved_to_publish is not true.")
     return tuple(issues)
@@ -800,10 +811,20 @@ def traceability_hashes(book: dict[str, Any]) -> dict[str, str]:
 
 def source_metadata_present(book: dict[str, Any]) -> bool:
     evidence = evidence_for_book(book)
-    return all(
-        first_text(book, key, fallback_evidence=evidence)
-        for key in ("source_url", "source_name", "source_license")
+    source_name = first_text(book, "source_name", fallback_evidence=evidence)
+    source_license = first_text(book, "source_license", fallback_evidence=evidence)
+    source_url = first_text(book, "source_url", fallback_evidence=evidence)
+    rights_basis = first_text(book, "rights_basis", fallback_evidence=evidence)
+    rights_metadata = book.get("rights_metadata") if isinstance(book.get("rights_metadata"), dict) else {}
+    first_party = (
+        str(book.get("rightsStatus") or book.get("rights_status") or "").strip().lower()
+        in {"original_work_source_reviewed", "original_work", "first_party_original"}
+        or str(rights_metadata.get("source_type") or "").strip().lower()
+        in {"original_work_internal_admin_source", "first_party_original"}
     )
+    if first_party:
+        return bool(source_name and source_license and rights_basis)
+    return bool(source_url and source_name and source_license)
 
 
 def is_live_approved_book(book: dict[str, Any]) -> bool:
