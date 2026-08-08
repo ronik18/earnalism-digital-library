@@ -2694,7 +2694,7 @@ def _publish_blockers(book: dict) -> List[str]:
     )
     if slug not in CONTROLLED_LIVE_BOOK_SLUGS and not manifest_approved:
         blockers.append(
-            "An approved publication manifest is required before live publication."
+            "Publication safety allowlist requires an approved publication manifest before live publication."
         )
     if not (book.get("cover_image_url") or book.get("cover_url")):
         blockers.append("Front cover is required before publishing.")

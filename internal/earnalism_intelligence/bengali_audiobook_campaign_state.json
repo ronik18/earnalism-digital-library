@@ -550,5 +550,27 @@
     "upload_performed": false,
     "release_gate_mutated": false,
     "next_action": "Require a genuinely different exact source-bound delivery; do not repeat the closed ASR or listening path."
+  },
+  "pather_panchali_private_audition_20260807": {
+    "status": "AUDIO_PROVIDER_QUALITY_LIMIT_READER_ONLY_PRESERVED",
+    "reader_status": "PUBLIC_READER_LIVE",
+    "public_audio_status": "AUDIO_HIDDEN",
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "simran",
+    "style_profile": "warm_bengali_literary_storyteller",
+    "passage_count": 4,
+    "overall_listening_score": 8.0,
+    "confidence_score": 0.85,
+    "fatal_flags": [
+      "list_reading_rhythm_detected"
+    ],
+    "estimated_cost_usd": 0.0355,
+    "actual_provider_billing": "NOT_REPORTED",
+    "full_title_generated": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "next_action": "Do not repeat this fingerprint; use a materially different provider or approved human or licensed narration path and rerun all gates."
   }
 }

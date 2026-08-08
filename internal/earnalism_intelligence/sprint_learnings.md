@@ -1966,3 +1966,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Imported technical manuscripts can contain safe HTML mixed with top-level plain text. Normalize those text runs into semantic paragraphs or code blocks before hashing; otherwise reader pagination can serialize later markup as visible text.
 - Validate the backend under the Railway launch topology (`backend/start_prod.sh` uses `uvicorn server:app`). A repository-root `backend.server:app` launch can exercise a different optional-import fallback and produce misleading escaped output.
 - Agentic AI With Python passed a 14-chapter index, sanitizer audit, focused tests, production build, and desktop/mobile browser QA. Publish it through the reader lane only; audio remains `NOT_REQUESTED` and hidden.
+
+## Pather Panchali private audition closeout - 2026-08-08
+
+- A strong opening and ending do not compensate for failed dialogue and punctuation-heavy passages. The four-passage Sarvam `bulbul:v3` Simran audition closed at `8.0` with `0.85` confidence and a fatal list-reading-rhythm flag.
+- Keep the existing reader-only edition live and audio hidden. A DNS-blocked source reingestion must not replace or downgrade the approved reader artifact.
+- Do not widen this audition into full-title TTS. The next audio attempt must use a materially different provider or an approved human/licensed path and must pass every 8.9/0.90 listening and objective gate.

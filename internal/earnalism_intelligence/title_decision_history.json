@@ -1385,12 +1385,14 @@
       "public_audio_status": "AUDIO_HIDDEN"
     },
     "pather-panchali": {
-      "latest_decision": "OWNER_DOCUMENT_REQUIRED",
-      "decision_reason": "Reader access and sanitation pass, but repository evidence does not establish the required audio rights, canonical source proof, and cover authorization.",
-      "updated_at": "2026-07-13T07:30:39Z",
+      "latest_decision": "PRIVATE_AUDITION_FAILED_KEEP_READER_ONLY_AUDIO_HIDDEN",
+      "decision_reason": "The four-passage Sarvam bulbul:v3 Simran audition scored 8.0 at 0.85 confidence and triggered list-reading rhythm plus multiple sub-8.9 dimensions. It does not authorize full-title generation or public audio.",
+      "updated_at": "2026-08-07T17:58:14Z",
       "language": "bn",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "obtain the exact owner rights, source, and cover documents in the requirements packet before any paid audio work"
+      "reader_status": "READER_ONLY_LIVE_PRESERVED",
+      "public_audio_status": "AUDIO_HIDDEN",
+      "audiobook_next_action": "Do not repeat the Simran warm_bengali_literary_storyteller fingerprint. Use a materially different provider or approved human/licensed narration path, then rerun all objective and listening gates."
     },
     "jekyll-and-hyde": {
       "latest_decision": "CHUNK9_SENTENCE_SAFE_REPAIR_PREFLIGHT_PASS_PARENT_CHUNK36_REPAIR_PRESERVED_AUDIO_HIDDEN",

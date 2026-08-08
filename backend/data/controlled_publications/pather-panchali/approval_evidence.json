@@ -5,6 +5,18 @@
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approval_scope": "reading_only_public_domain_batch_1",
+  "audiobook_use_approval": {
+    "status": "APPROVED_FOR_PRIVATE_TTS_AUDITION_ONLY",
+    "approver": "Ronik",
+    "approved_at": "2026-08-07",
+    "territories": ["IN"],
+    "provider": "Sarvam",
+    "model": "bulbul:v3",
+    "voice": "simran",
+    "maximum_budget_usd": 5,
+    "manuscript_sha256": "67f3a898e7bdc7a2d9dcc9b4f8e4ad47e5ded81783de0f30f42efc7780ef6350",
+    "scope": "bounded representative audition and private QA; no public release, upload, or publication approval"
+  },
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
   "allowCheckout": false,
   "allowPayment": false

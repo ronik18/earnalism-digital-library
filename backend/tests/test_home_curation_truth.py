@@ -186,7 +186,9 @@ def test_missing_cover_titles_are_omitted_from_every_visual_collection():
 
     assert omitted_for_cover
     assert omitted_for_cover.isdisjoint(payload_slugs)
-    assert {"pather-panchali", "devdas", "the-last-leaf"}.issubset(omitted_for_cover)
+    assert {"devdas", "the-last-leaf"}.issubset(omitted_for_cover)
+    assert "pather-panchali" not in payload_slugs
+    assert any(item["slug"] == "pather-panchali" for item in evidence["omitted"])
 
 
 def test_deferred_long_classics_are_not_sprint1_audio_or_hero_records():

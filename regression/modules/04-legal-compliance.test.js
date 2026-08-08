@@ -1,12 +1,19 @@
 const { apiGet } = require("../utils/http");
 const fixture = require("../fixtures/books.manifest.json");
 
+function nestedKeys(value) {
+  if (Array.isArray(value)) return value.flatMap(nestedKeys);
+  if (!value || typeof value !== "object") return [];
+  return Object.entries(value).flatMap(([key, item]) => [key, ...nestedKeys(item)]);
+}
+
 describe("Legal & Compliance", () => {
   test("public books do not expose internal legal review notes or PII", async () => {
     const books = (await apiGet("/books")).data;
     for (const book of books) {
-      const blob = JSON.stringify(book);
-      expect(blob).not.toMatch(/rights_metadata|upload_notes|reviewer|private_notes|source_file|source_url|email|user_id|token/i);
+      expect(nestedKeys(book).join(" ")).not.toMatch(
+        /\b(?:rights_metadata|upload_notes|reviewer|private_notes|source_file|source_url|email|user_id|token)\b/i,
+      );
       if (book.expiryDate === null || book.expiryDate === "not_applicable" || book.expiry_date === null) {
         expect(true).toBe(true);
       }

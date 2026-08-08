@@ -360,7 +360,7 @@ def test_server_routes_keep_all_required_rights_enforcement_calls():
         "admin_update_chapter(slug: str, cid: str, payload: ChapterIn",
         "admin_upload_chapter_file(",
         "admin_upload_cover(",
-        "_assert_public_rights_approved(book, \"Visual asset\")",
+        "_assert_public_rights_approved(mongo_book, \"Visual asset\")",
         "admin_update_book_audiobook(",
         "_assert_public_rights_approved(existing, \"Audiobook\")",
         "admin_rights_report(filename: str, _=Depends(require_admin))",
