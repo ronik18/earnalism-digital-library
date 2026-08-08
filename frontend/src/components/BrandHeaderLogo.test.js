@@ -20,8 +20,10 @@ describe("BrandHeaderLogo", () => {
   test("renders the approved wordmark with the complete accessible brand label", () => {
     expect(componentSource).toContain('aria-label="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"');
     expect(componentSource).toContain('className="brand-header-logo__wordmark-image"');
-    expect(componentSource).toContain('alt="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"');
-    expect(componentSource).toContain('data-testid="brand-header-logo-india-flag"');
+    expect(componentSource.match(/alt=""/g)).toHaveLength(2);
+    expect(componentSource).toContain('fetchPriority="high"');
+    expect(componentSource).toContain('width="1400"');
+    expect(componentSource).toContain('height="500"');
   });
 
   test("keeps all three requested badge variants available", () => {
@@ -42,15 +44,15 @@ describe("BrandHeaderLogo", () => {
     expect(componentSource).toContain("brand-header-logo__badge--tricolor");
   });
 
-  test("keeps badge variants available while allowing the public header to omit the badge", () => {
-    expect(componentSource.match(/<TricolorLiteraryBadge \/>/g)).toHaveLength(1);
+  test("renders the default tricolour literary medallion for configured and bundled branding", () => {
+    expect(componentSource.match(/<TricolorLiteraryBadge \/>/g)).toHaveLength(2);
     expect(componentSource).toContain('data-logo-source="admin-setting"');
   });
 
-  test("public header uses the approved responsive footer-scale lockup without the obsolete badge component", () => {
-    expect(headerSource).toContain('import BrandMark from "./BrandMark";');
-    expect(headerSource).toContain('<BrandMark variant="footer" />');
-    expect(headerSource).not.toContain("BrandHeaderLogo badgeVariant");
+  test("public header uses the dedicated responsive brand lockup with its tricolour medallion", () => {
+    expect(headerSource).toContain('import BrandHeaderLogo from "./BrandHeaderLogo";');
+    expect(headerSource).toContain('<BrandHeaderLogo />');
+    expect(headerSource).not.toContain('BrandMark variant="footer"');
     expect(headerSource).not.toContain("IndiaCraftBadge");
   });
 });
