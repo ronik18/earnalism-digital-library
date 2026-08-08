@@ -1972,3 +1972,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A strong opening and ending do not compensate for failed dialogue and punctuation-heavy passages. The four-passage Sarvam `bulbul:v3` Simran audition closed at `8.0` with `0.85` confidence and a fatal list-reading-rhythm flag.
 - Keep the existing reader-only edition live and audio hidden. A DNS-blocked source reingestion must not replace or downgrade the approved reader artifact.
 - Do not widen this audition into full-title TTS. The next audio attempt must use a materially different provider or an approved human/licensed path and must pass every 8.9/0.90 listening and objective gate.
+
+## Parameterized Colab audiobook conveyor - 2026-08-09
+
+- Title parameters, canonical controlled-publication identity, voice, model, territory, and owner intent belong in one auditable configuration block; generation cells must not contain title-specific paths or manuscript uploads.
+- Adaptive narration decisions may tune speed and punctuation-aware silence within bounded ranges, but they must preserve canonical token order and produce a deterministic attempt fingerprint so failed settings are never silently repeated.
+- Representative ASR is a cost and quality circuit breaker. Full synthesis may start only after representative source fidelity passes, and one bounded slower repair is the maximum automatic retry for the same title/voice lineage.
+- Emotional expression cannot be self-certified from ASR. Full-title listening remains a human evidence gate at 8.9 per dimension, 0.90 confidence, and zero fatal flags before package construction or public release.
+- Colab artifacts are private release inputs, not public assets. Production storage receipts, checksums, endpoint proof, browser playback, and controlled-publication mutation remain separate guarded stages.
