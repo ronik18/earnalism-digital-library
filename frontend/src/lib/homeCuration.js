@@ -1,4 +1,4 @@
-import { api } from "./api";
+import { API } from "./api";
 import homeCuratedSprint1 from "../data/homeCuratedSprint1.json";
 
 const HOME_CURATION_CACHE_KEY = "earnalism_home_curation_v3";
@@ -161,13 +161,14 @@ function normalizeShelfSource(payloadShelves) {
 }
 
 function extractListeningSource(payload = {}) {
+  const listeningRooms = payload.listening_rooms || {};
+  if (Array.isArray(listeningRooms.items)) return listeningRooms.items;
+
   if (payload.shelves && typeof payload.shelves === "object" && !Array.isArray(payload.shelves) && Array.isArray(payload.shelves.approved_audiobooks)) {
     return payload.shelves.approved_audiobooks;
   }
 
   const legacy = payload.shelf_collage || {};
-  const listeningRooms = payload.listening_rooms || {};
-  if (Array.isArray(listeningRooms.items)) return listeningRooms.items;
   if (Array.isArray(payload.audiobook_shelf?.books)) return payload.audiobook_shelf.books;
   if (Array.isArray(payload.selected_audiobooks)) return payload.selected_audiobooks;
   if (Array.isArray(legacy.selected_audiobooks)) return legacy.selected_audiobooks;
@@ -346,7 +347,14 @@ export function clearHomeCurationCache() {
 }
 
 export async function fetchHomeCuration(signal) {
-  const { data } = await api.get("/home/curated?compact=true", { signal });
+  const response = await fetch(`${API}/home/curated?compact=true`, {
+    method: "GET",
+    credentials: "omit",
+    headers: { Accept: "application/json" },
+    signal,
+  });
+  if (!response.ok) throw new Error(`Home curation request failed with ${response.status}`);
+  const data = await response.json();
   const normalized = normalizeHomeCuration(expandCompactHomeCuration(data));
   setHomeCurationCache(normalized);
   return normalized;

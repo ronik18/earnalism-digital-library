@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, startTransition, Suspense, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -23,14 +23,14 @@ import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
 import {
-  fetchHomeCuration,
-  getHomeCurationCache,
-  getHomeCurationSnapshot,
-} from "../lib/homeCuration";
+  fetchHomeHero,
+  getHomeHeroCache,
+  getHomeHeroSnapshot,
+} from "../lib/homeSurfaces";
 import useSEO from "../hooks/useSEO";
 
-const CuratedShelfCollage = lazy(() => import("../components/CuratedShelfCollage"));
-const PremiumListeningRail = lazy(() => import("../components/PremiumListeningRail"));
+const HomeListeningRoom = lazy(() => import("../components/HomeListeningRoom"));
+const HomeShelfArchitecture = lazy(() => import("../components/HomeShelfArchitecture"));
 
 // HomeShelfArchitecture remains the compatibility name for the editorial Home mount.
 
@@ -54,9 +54,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [newsletterStatus, setNewsletterStatus] = useState("");
-  const [homeCuration, setHomeCuration] = useState(() => getHomeCurationSnapshot());
-  const [homeCurationLoading, setHomeCurationLoading] = useState(false);
-  const [homeCurationError, setHomeCurationError] = useState(false);
+  const [heroCuration, setHeroCuration] = useState(() => getHomeHeroSnapshot());
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
@@ -73,8 +71,8 @@ export default function Home() {
   });
 
   useEffect(() => {
-    const cachedHomeCuration = getHomeCurationCache();
-    if (cachedHomeCuration) setHomeCuration(cachedHomeCuration);
+    const cachedHero = getHomeHeroCache();
+    if (cachedHero) setHeroCuration(cachedHero);
   }, []);
 
   useEffect(() => {
@@ -91,18 +89,13 @@ export default function Home() {
     let timeoutHandle;
 
     const refreshCuration = () => {
-      fetchHomeCuration(controller.signal)
+      fetchHomeHero(controller.signal)
         .then((payload) => {
-          setHomeCuration(payload);
-          setHomeCurationError(false);
+          startTransition(() => setHeroCuration(payload));
         })
         .catch((error) => {
           if (error?.name === "CanceledError" || error?.name === "AbortError") return;
-          // Keep the bundled release snapshot visible if a background refresh fails.
-          setHomeCurationError(false);
-        })
-        .finally(() => {
-          if (!controller.signal.aborted) setHomeCurationLoading(false);
+          // Keep the bundled release snapshot visible if background revalidation fails.
         });
     };
 
@@ -147,28 +140,21 @@ export default function Home() {
   return (
     <div data-testid="home-page">
       <PremiumHero
-        curation={homeCuration}
-        loading={homeCurationLoading}
-        error={homeCurationError}
+        curation={heroCuration}
+        loading={false}
+        error={false}
         headerMode="in-flow"
         analyticsNamespace="home"
         onTrack={(event, metadata) => trackFunnelEvent(event, { source: "home", ...metadata })}
       />
       <DeferredMount className="home-deferred-listening" minHeight={374} rootMargin="480px 0px" testId="deferred-listening-room">
         <Suspense fallback={<div className="home-deferred-listening__fallback" aria-hidden="true" />}>
-          <PremiumListeningRail
-            books={homeCuration.listening_rooms?.items || homeCuration.selected_audiobooks || []}
-            reserveBooks={homeCuration.listening_rooms?.reserve_items || homeCuration.reserve_audiobooks || []}
-            loading={homeCurationLoading}
-            error={homeCurationError}
-          />
+          <HomeListeningRoom />
         </Suspense>
       </DeferredMount>
       <DeferredMount className="home-deferred-shelves" minHeight={0} rootMargin="700px 0px" testId="deferred-home-shelves">
         <Suspense fallback={null}>
-          <div id="curated-action-cards-title" data-testid="home-shelf-architecture">
-            <CuratedShelfCollage curation={homeCuration} />
-          </div>
+          <HomeShelfArchitecture />
         </Suspense>
       </DeferredMount>
       {false && (

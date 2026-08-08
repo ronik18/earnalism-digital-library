@@ -95,6 +95,11 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.home_curation_v4 import build_home_curated_payload_v4
 
 try:
+    from home_surface_contracts import build_home_hero_contract, build_home_listening_contract
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.home_surface_contracts import build_home_hero_contract, build_home_listening_contract
+
+try:
     from audiobook_packages import (
         ACTIVE_RELEASE_SCHEMA_VERSION,
         PACKAGE_SCHEMA_VERSION as AUDIOBOOK_PACKAGE_SCHEMA_VERSION,
@@ -1126,6 +1131,8 @@ PUBLIC_CACHE_PATHS = {
     "/api/home",
     "/api/home/books",
     "/api/home/curated",
+    "/api/home/hero",
+    "/api/home/listening",
     "/api/categories",
     "/api/books",
     "/api/blog",
@@ -4397,6 +4404,7 @@ async def lifespan(_app: FastAPI):
         await _run_startup_database_maintenance()
     else:
         logger.info("Startup database maintenance is disabled by cost-control mode.")
+    _schedule_home_surface_warmup()
 
     yield
 
@@ -5149,8 +5157,12 @@ async def production_hardening_middleware(request: Request, call_next):
             "Cache-Control",
             f"public, max-age={min(PUBLIC_CACHE_TTL_SECONDS, 60)}, stale-while-revalidate=120",
         )
-        if path == "/api/home/curated":
+        if path in {"/api/home/curated", "/api/home/hero"}:
             edge_cache = "public, s-maxage=600, stale-while-revalidate=86400"
+            response.headers.setdefault("CDN-Cache-Control", edge_cache)
+            response.headers.setdefault("Vercel-CDN-Cache-Control", edge_cache)
+        elif path == "/api/home/listening":
+            edge_cache = "public, s-maxage=300, stale-while-revalidate=60"
             response.headers.setdefault("CDN-Cache-Control", edge_cache)
             response.headers.setdefault("Vercel-CDN-Cache-Control", edge_cache)
     elif path in {"/health", "/healthz", "/api/health", "/api/healthz"}:
@@ -5159,6 +5171,7 @@ async def production_hardening_middleware(request: Request, call_next):
         response.headers.setdefault("Cache-Control", "no-store")
     if request.method in {"POST", "PUT", "PATCH", "DELETE"} and response.status_code < 400 and path.startswith("/api/admin"):
         await _public_cache_clear()
+        _schedule_home_surface_warmup()
     logger.info(_json.dumps({
         "event": "http_request",
         "request_id": request_id,
@@ -5462,36 +5475,179 @@ async def get_home_curated(compact: bool = False):
     if cached is not None:
         return compact_home_curated_payload(cached) if compact else cached
 
-    docs = await db.books.find(
-        _controlled_public_book_query(),
-        BOOK_SUMMARY_PROJECTION,
-    ).sort("created_at", -1).to_list(500)
-    docs = _home_curation_controlled_truth_docs(docs)
+    payload = await _build_home_curated_source_payload()
+    await _public_cache_set(cache_key, payload)
+    return compact_home_curated_payload(payload) if compact else payload
 
-    audio_contracts: dict[str, dict[str, Any]] = {}
-    for doc in docs:
-        slug = str(doc.get("slug") or "").strip().lower()
-        if not slug or not can_expose_audio(doc):
-            continue
+
+_home_surface_locks: dict[tuple[int, str], asyncio.Lock] = {}
+_home_surface_warmup_tasks: set[asyncio.Task] = set()
+
+
+def _home_surface_lock(name: str) -> asyncio.Lock:
+    loop = asyncio.get_running_loop()
+    key = (id(loop), name)
+    lock = _home_surface_locks.get(key)
+    if lock is None:
+        lock = asyncio.Lock()
+        _home_surface_locks[key] = lock
+    return lock
+
+
+async def _home_catalog_docs() -> list[dict]:
+    cache_key = _public_cache_key("home_surface_catalog_docs_v1")
+    cached = await _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+
+    async with _home_surface_lock("catalog"):
+        cached = await _public_cache_get(cache_key)
+        if cached is not None:
+            return cached
+        docs = await db.books.find(
+            _controlled_public_book_query(),
+            BOOK_SUMMARY_PROJECTION,
+        ).sort("created_at", -1).to_list(500)
+        resolved = _home_curation_controlled_truth_docs(docs)
+        await _public_cache_set(cache_key, resolved)
+        return resolved
+
+
+async def _home_audio_contract(slug: str) -> tuple[str, dict[str, Any]]:
+    disabled = {
+        "enabled": False,
+        "url": "",
+        "release_gate": "",
+        "qa_status": "",
+        "duration_ms": 0,
+        "package_valid": False,
+        "endpoint_valid": False,
+    }
+    try:
         manifest = await _reader_book_manifest_doc(slug)
-        audio = (manifest or {}).get("audio") or {}
-        audio_contracts[slug] = {
-            "enabled": audio.get("enabled") is True,
-            "url": audio.get("url") or "",
-            "release_gate": audio.get("release_gate") or "",
-            "qa_status": audio.get("qa_status") or "",
-            "duration_ms": audio.get("duration_ms") or 0,
-            "package_valid": bool(audio.get("enabled") is True and audio.get("url") and (audio.get("assets") or audio.get("size") or audio.get("url"))),
-            "endpoint_valid": bool((audio.get("url") or "").startswith(f"/api/reader/book/{slug}/audiobook")),
-        }
+    except Exception:
+        logger.exception("Home listening manifest resolution failed closed for %s", slug)
+        return slug, disabled
+    audio = (manifest or {}).get("audio") or {}
+    url = str(audio.get("url") or "")
+    return slug, {
+        "enabled": audio.get("enabled") is True,
+        "url": url,
+        "release_gate": audio.get("release_gate") or "",
+        "qa_status": audio.get("qa_status") or "",
+        "duration_ms": audio.get("duration_ms") or 0,
+        "package_valid": bool(audio.get("enabled") is True and url and (audio.get("assets") or audio.get("size") or url)),
+        "endpoint_valid": url == f"/api/reader/book/{slug}/audiobook",
+    }
 
-    payload = build_home_curated_payload_v4(
+
+async def _home_audio_contracts(docs: list[dict]) -> dict[str, dict[str, Any]]:
+    cache_key = _public_cache_key("home_surface_audio_contracts_v1")
+    cached = await _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+
+    async with _home_surface_lock("audio-contracts"):
+        cached = await _public_cache_get(cache_key)
+        if cached is not None:
+            return cached
+        slugs = [
+            str(doc.get("slug") or "").strip().lower()
+            for doc in docs
+            if doc.get("slug") and can_expose_audio(doc)
+        ]
+        rows = await asyncio.gather(*(_home_audio_contract(slug) for slug in slugs))
+        contracts = dict(rows)
+        await _public_cache_set(cache_key, contracts)
+        return contracts
+
+
+async def _build_home_curated_source_payload(*, include_audio_manifests: bool = True) -> dict:
+    docs = await _home_catalog_docs()
+    audio_contracts = await _home_audio_contracts(docs) if include_audio_manifests else {}
+    return build_home_curated_payload_v4(
         docs,
         config=home_curation_config(),
         audio_contracts=audio_contracts,
     )
-    await _public_cache_set(cache_key, payload)
-    return compact_home_curated_payload(payload) if compact else payload
+
+
+def _home_surface_response(request: Request, payload: dict, *, browser_cache: str, edge_cache: str) -> Response:
+    etag = f'"{payload["revision"]}"'
+    headers = {
+        "ETag": etag,
+        "Cache-Control": browser_cache,
+        "CDN-Cache-Control": edge_cache,
+        "Vercel-CDN-Cache-Control": edge_cache,
+        "X-Content-Contract": str(payload.get("schema_version") or ""),
+    }
+    if _client_etag_matches(request, etag):
+        return Response(status_code=304, headers=headers)
+    return UTF8JSONResponse(content=payload, headers=headers)
+
+
+@api.get("/home/hero")
+async def get_home_hero(request: Request):
+    cache_key = _public_cache_key("home_hero_contract_v1")
+    payload = await _public_cache_get(cache_key)
+    if payload is None:
+        source = await _build_home_curated_source_payload(include_audio_manifests=False)
+        payload = build_home_hero_contract(source)
+        await _public_cache_set(cache_key, payload)
+    return _home_surface_response(
+        request,
+        payload,
+        browser_cache="public, max-age=300, stale-while-revalidate=3600",
+        edge_cache="public, s-maxage=3600, stale-while-revalidate=86400",
+    )
+
+
+@api.get("/home/listening")
+async def get_home_listening(request: Request, limit: int = 3):
+    bounded_limit = min(6, max(1, int(limit)))
+    cache_key = _public_cache_key("home_listening_contract_v1", limit=bounded_limit)
+    payload = await _public_cache_get(cache_key)
+    if payload is None:
+        source = await _build_home_curated_source_payload(include_audio_manifests=True)
+        payload = build_home_listening_contract(source, limit=bounded_limit)
+        await _public_cache_set(cache_key, payload)
+    return _home_surface_response(
+        request,
+        payload,
+        browser_cache="public, max-age=60, stale-while-revalidate=60",
+        edge_cache="public, s-maxage=300, stale-while-revalidate=60",
+    )
+
+
+async def _warm_home_surface_snapshots() -> None:
+    try:
+        docs = await _home_catalog_docs()
+        hero_source = build_home_curated_payload_v4(
+            docs,
+            config=home_curation_config(),
+            audio_contracts={},
+        )
+        hero = build_home_hero_contract(hero_source)
+        await _public_cache_set(_public_cache_key("home_hero_contract_v1"), hero)
+        listening_source = build_home_curated_payload_v4(
+            docs,
+            config=home_curation_config(),
+            audio_contracts=await _home_audio_contracts(docs),
+        )
+        for limit in (3, 6):
+            listening = build_home_listening_contract(listening_source, limit=limit)
+            await _public_cache_set(_public_cache_key("home_listening_contract_v1", limit=limit), listening)
+    except Exception:
+        logger.exception("Home surface cache warmup failed; requests will retry through fail-closed builders")
+
+
+def _schedule_home_surface_warmup() -> None:
+    try:
+        task = asyncio.create_task(_warm_home_surface_snapshots())
+    except RuntimeError:
+        return
+    _home_surface_warmup_tasks.add(task)
+    task.add_done_callback(_home_surface_warmup_tasks.discard)
 
 
 # ---------- Public: Books ----------
