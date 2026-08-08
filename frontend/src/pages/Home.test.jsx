@@ -12,6 +12,13 @@ describe("Home curated shelf integration", () => {
     expect(source).not.toMatch(/Release truth preserved|No unapproved audio|Reader-only editions live|release gates/i);
   });
 
+  test("keeps live hero and listening refreshes independent", () => {
+    expect(source).toContain("fetchHomeHero(controller.signal)");
+    expect(source).toContain("<HomeListeningRoom />");
+    expect(source).not.toContain("fetchHomeCuration(controller.signal)");
+    expect(source).not.toContain("homeCurationLoading");
+  });
+
   test("uses the Reading Circle as a private dispatch conversion close", () => {
     expect(source).toContain("A private letter for readers who linger.");
     expect(source).toContain("Reader-ready editions");

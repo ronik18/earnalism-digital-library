@@ -13,6 +13,10 @@ const home = fs.readFileSync(
   path.join(process.cwd(), "src/pages/Home.jsx"),
   "utf8",
 );
+const homeListeningRoom = fs.readFileSync(
+  path.join(process.cwd(), "src/components/HomeListeningRoom.jsx"),
+  "utf8",
+);
 const covers = fs.readFileSync(
   path.join(process.cwd(), "src/components/BookCoverImage.jsx"),
   "utf8",
@@ -21,14 +25,15 @@ const covers = fs.readFileSync(
 describe("PremiumListeningRail Home contract", () => {
   test("mounts in Hero to Listening Room to Collage order", () => {
     expect(home.indexOf("<PremiumHero")).toBeGreaterThan(-1);
-    expect(home.indexOf("<PremiumListeningRail")).toBeGreaterThan(
+    expect(home.indexOf("<HomeListeningRoom")).toBeGreaterThan(
       home.indexOf("<PremiumHero"),
     );
-    expect(home.indexOf("<CuratedShelfCollage")).toBeGreaterThan(
-      home.indexOf("<PremiumListeningRail"),
+    expect(home.indexOf("<HomeShelfArchitecture")).toBeGreaterThan(
+      home.indexOf("<HomeListeningRoom"),
     );
-    expect(home).toContain("loading={homeCurationLoading}");
-    expect(home).toContain("error={homeCurationError}");
+    expect(homeListeningRoom).toContain("<PremiumListeningRail");
+    expect(homeListeningRoom).toContain("fetchHomeListening(controller.signal, 3)");
+    expect(homeListeningRoom).toContain("loading={false}");
   });
 
   test("uses the compact customer-facing listening copy and canonical routes", () => {

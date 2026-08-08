@@ -60,6 +60,8 @@ function trackFunnelEventSnippets(source) {
 
 describe("UX conversion static signals", () => {
   const home = read("frontend/src/pages/Home.jsx");
+  const homeShelfArchitecture = read("frontend/src/components/HomeShelfArchitecture.jsx");
+  const homeSurfaces = read("frontend/src/lib/homeSurfaces.js");
   const homeCurationConfig = read("backend/data/home_hero_curation.json");
   const curatedShelfCollage = read("frontend/src/components/CuratedShelfCollage.jsx");
   const shelfCollageTile = read("frontend/src/components/ShelfCollageTile.jsx");
@@ -208,7 +210,9 @@ describe("UX conversion static signals", () => {
   ].join("\n");
 
   test("homepage exposes approved bilingual library positioning and release-truth CTAs", () => {
-    expect(home).toContain("fetchHomeCuration");
+    expect(home).toContain("fetchHomeHero");
+    expect(homeSurfaces).toContain('fetchPublicSurface("/home/hero"');
+    expect(homeSurfaces).toContain('fetchPublicSurface(`/home/listening?limit=${boundedLimit}`');
     expect(home).toContain("<PremiumHero");
     expect(premiumHero).toContain('data-testid="hero-cta-library"');
     expect(premiumHero).toContain('data-testid="hero-cta-audiobooks"');
@@ -220,7 +224,8 @@ describe("UX conversion static signals", () => {
     expect(homeCurationClient).toContain('/home/curated');
     expect(homeCurationClient).toContain('audiobookUrl === `/api/reader/book/${slug}/audiobook`');
     expect(premiumHero).not.toMatch(/No unapproved audiobook controls|Audio gated by evidence|QA_PASSED|APPROVED/);
-    expect(home).toContain("<CuratedShelfCollage");
+    expect(home).toContain("<HomeShelfArchitecture");
+    expect(homeShelfArchitecture).toContain("<CuratedShelfCollage");
     expect(curatedShelfCollage).toContain('data-testid="curated-shelf-collage"');
     expect(curatedShelfCollage).toContain("A shelf for every kind of curiosity.");
     expect(selectedListeningRail).toContain("Selected Listening");
@@ -1166,7 +1171,8 @@ describe("UX conversion static signals", () => {
   });
 
   test("Bengali and Gothic discovery shelves preserve reader-safe browse paths", () => {
-    expect(home).toContain("<CuratedShelfCollage");
+    expect(home).toContain("<HomeShelfArchitecture");
+    expect(homeShelfArchitecture).toContain("<CuratedShelfCollage");
     expect(homeCurationConfig).toContain("Bengali Life & Legacy");
     expect(homeCurationConfig).toContain("Gothic & the Uncanny");
     expect(shelfTwoSlideshow).toContain("Request Update");
@@ -1229,7 +1235,8 @@ describe("UX conversion static signals", () => {
   });
 
   test("future pipeline books do not show live CTAs", () => {
-    expect(home).toContain("<CuratedShelfCollage");
+    expect(home).toContain("<HomeShelfArchitecture");
+    expect(homeShelfArchitecture).toContain("<CuratedShelfCollage");
     expect(curatedShelfCollage).toContain("Browse the complete library");
     expect(curatedShelfCollage).not.toContain("Notify Me");
     expect(curatedShelfCollage).not.toContain("Read Preview");
