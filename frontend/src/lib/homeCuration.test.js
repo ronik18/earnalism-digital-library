@@ -41,6 +41,49 @@ test("curation removes duplicate or coverless books", () => {
   expect(result.shelves[0].mode).toBe("Spotlight");
 });
 
+test("listening curation excludes mismatched and visually blocked covers", () => {
+  const result = normalizeHomeCuration({
+    selected_audiobooks: [
+      {
+        slug: "approved",
+        title: "Approved",
+        author: "Author",
+        front_cover_url: "/approved.jpg",
+        audiobook_enabled: true,
+        audiobook_release_gate: "APPROVED",
+        audio_qa_status: "QA_PASSED",
+        audiobook_url: "/api/reader/book/approved/audiobook",
+      },
+      {
+        slug: "mismatched",
+        title: "Mismatched",
+        author: "Author",
+        front_cover_url: "/wrong-title.jpg",
+        cover_valid: true,
+        canonical_cover_match: false,
+        audiobook_enabled: true,
+        audiobook_release_gate: "APPROVED",
+        audio_qa_status: "QA_PASSED",
+        audiobook_url: "/api/reader/book/mismatched/audiobook",
+      },
+      {
+        slug: "placeholder",
+        title: "Placeholder",
+        author: "Author",
+        front_cover_url: "/placeholder.jpg",
+        cover_valid: true,
+        cover_audit_status: "VISUAL_PLACEHOLDER_BLOCKED",
+        audiobook_enabled: true,
+        audiobook_release_gate: "APPROVED",
+        audio_qa_status: "QA_PASSED",
+        audiobook_url: "/api/reader/book/placeholder/audiobook",
+      },
+    ],
+  });
+
+  expect(result.selected_audiobooks.map((book) => book.slug)).toEqual(["approved"]);
+});
+
 test("curation supports object-based shelves payloads from sprint fixtures", () => {
   const result = normalizeHomeCuration({
     shelves: {
