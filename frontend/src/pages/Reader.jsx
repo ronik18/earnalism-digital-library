@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Play, Pause, Square, Bookmark, BookmarkCheck, Settings, List, X, Loader2, Clock, AlertCircle, LogIn, CreditCard } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause, Square, Bookmark, BookmarkCheck, Settings, List, X, Loader2, Clock, AlertCircle, LogIn, CreditCard, Headphones } from 'lucide-react';
 import axios from 'axios';
 import { API, TOKEN_KEY, USER_TOKEN_KEY, formatError } from '../lib/api';
 import { toast } from 'sonner';
 import ReaderUpsellPrompt from '../components/Funnel/ReaderUpsellPrompt';
+import ReaderAudiobookPanel from '../components/ReaderAudiobookPanel';
 import SecureReader from '../components/SecureReader';
 import { trackFunnelEvent } from '../lib/funnelAnalytics';
 import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/funnelOffers';
@@ -527,6 +528,17 @@ function readerCoverUrl(book = {}, kind = 'front') {
   return optimizedImageUrl(src, { width: 1400 });
 }
 
+function readerListeningCoverUrl(book = {}) {
+  const coverUrl = readerCoverUrl(book, 'front');
+  const slug = String(book?.slug || '').trim().toLowerCase();
+  // Controlled cover audit: this exact object is titled Bharat at the
+  // Crossroads, so it must never be presented as A Ghost Story artwork.
+  if (slug === 'a-ghost-story' && coverUrl.includes('cover_446c5658-2bdd-4bd6-afbe-f5233f280508')) {
+    return '';
+  }
+  return coverUrl;
+}
+
 function referencePageKind(html = '') {
   if (/<h[1-6][^>]*>\s*Index\s*<\/h[1-6]>/i.test(html)) return 'index';
   if (/<h[1-6][^>]*>\s*Bibliography\s*<\/h[1-6]>/i.test(html)) return 'reference';
@@ -802,10 +814,14 @@ async function fetchReaderBook(bookId, requestedAdminPreview = false) {
   }
 }
 
-function readerSearchParams({ chapterId, adminPreview } = {}) {
+function readerSearchParams({ chapterId, adminPreview, listeningMode } = {}) {
   const params = new URLSearchParams();
+  const preserveListeningMode = typeof listeningMode === 'boolean'
+    ? listeningMode
+    : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('listen') === '1';
   if (chapterId) params.set('c', chapterId);
   if (adminPreview) params.set('preview', 'admin');
+  if (preserveListeningMode) params.set('listen', '1');
   const query = params.toString();
   return query ? `?${query}` : '';
 }
@@ -932,10 +948,17 @@ export default function Reader() {
   const [ttsPaused, setTtsPaused] = useState(false);
   const [ttsWordIndex, setTtsWordIndex] = useState(-1);
   const [ttsSpeed, setTtsSpeed] = useState(initialReaderSettings.ttsSpeed);
+  const [showListeningPanel, setShowListeningPanel] = useState(
+    () => new URLSearchParams(window.location.search).get('listen') === '1',
+  );
   const [generatedAudioAvailable, setGeneratedAudioAvailable] = useState(false);
   const [generatedAudioActive, setGeneratedAudioActive] = useState(false);
   const [generatedAudioManifest, setGeneratedAudioManifest] = useState(null);
   const [generatedAudioSegmentId, setGeneratedAudioSegmentId] = useState('');
+  const [generatedAudioCurrentTime, setGeneratedAudioCurrentTime] = useState(0);
+  const [generatedAudioDuration, setGeneratedAudioDuration] = useState(0);
+  const [generatedAudioVolume, setGeneratedAudioVolume] = useState(1);
+  const [generatedAudioMuted, setGeneratedAudioMuted] = useState(false);
   const [processedHtml, setProcessedHtml] = useState('');
   const [ttsHtml, setTtsHtml] = useState('');
   const [totalWords, setTotalWords] = useState(0);
@@ -1030,6 +1053,8 @@ export default function Reader() {
     }
     generatedPageEndRef.current = null;
     setGeneratedAudioSegmentId('');
+    setGeneratedAudioCurrentTime(0);
+    setGeneratedAudioDuration(0);
     setTtsActive(false);
     setTtsPaused(false);
     setGeneratedAudioActive(false);
@@ -1688,6 +1713,64 @@ export default function Reader() {
     persistGeneratedAudioProgressRef.current = persistGeneratedAudioProgress;
   }, [persistGeneratedAudioProgress]);
 
+  const setListeningPanelVisible = useCallback((visible) => {
+    setShowListeningPanel(visible);
+    const params = new URLSearchParams(window.location.search);
+    if (visible) params.set('listen', '1');
+    else params.delete('listen');
+    const query = params.toString();
+    window.history.replaceState(
+      window.history.state,
+      '',
+      `${window.location.pathname}${query ? `?${query}` : ''}`,
+    );
+  }, []);
+
+  const closeListeningPanel = useCallback(() => {
+    setListeningPanelVisible(false);
+  }, [setListeningPanelVisible]);
+
+  const seekGeneratedAudio = useCallback((nextTime) => {
+    const audio = generatedAudioRef.current;
+    if (!audio || !Number.isFinite(audio.duration) || audio.duration <= 0) return;
+    const boundedTime = Math.min(audio.duration, Math.max(0, Number(nextTime) || 0));
+    audio.currentTime = boundedTime;
+    setGeneratedAudioCurrentTime(boundedTime);
+    persistGeneratedAudioProgress({ force: true, offset: boundedTime });
+  }, [persistGeneratedAudioProgress]);
+
+  const skipGeneratedAudio = useCallback((seconds) => {
+    const audio = generatedAudioRef.current;
+    if (!audio) return;
+    seekGeneratedAudio((Number(audio.currentTime) || 0) + Number(seconds || 0));
+  }, [seekGeneratedAudio]);
+
+  const changeNarrationSpeed = useCallback((nextValue) => {
+    const nextSpeed = Math.max(0.7, Math.min(1.8, Number(nextValue) || 1));
+    setTtsSpeed(nextSpeed);
+    if (generatedAudioRef.current) generatedAudioRef.current.playbackRate = nextSpeed;
+    persistGeneratedAudioProgressRef.current({ force: true, speed: nextSpeed });
+  }, []);
+
+  const changeGeneratedAudioVolume = useCallback((nextValue) => {
+    const nextVolume = Math.max(0, Math.min(1, Number(nextValue) || 0));
+    const audio = generatedAudioRef.current;
+    setGeneratedAudioVolume(nextVolume);
+    if (nextVolume > 0) setGeneratedAudioMuted(false);
+    if (audio) {
+      audio.volume = nextVolume;
+      if (nextVolume > 0) audio.muted = false;
+    }
+  }, []);
+
+  const toggleGeneratedAudioMute = useCallback(() => {
+    setGeneratedAudioMuted((muted) => {
+      const nextMuted = !muted;
+      if (generatedAudioRef.current) generatedAudioRef.current.muted = nextMuted;
+      return nextMuted;
+    });
+  }, []);
+
   useEffect(() => {
     const handlePageHide = () => persistGeneratedAudioProgressRef.current({ force: true });
     window.addEventListener('pagehide', handlePageHide);
@@ -2223,6 +2306,9 @@ export default function Reader() {
   }, [applyPendingAudioOffset, currentPageHtml, currentPageWordOffset, generatedAudioAvailable, generatedHighlightSyncEnabled, highlightGeneratedWord, isContentPage, primeGeneratedAudio, readerHtml, selectedGeneratedAudioTrack.segmentId]);
 
   const handleGeneratedAudioMetadata = useCallback(() => {
+    const loadedAudio = generatedAudioRef.current;
+    setGeneratedAudioDuration(Number.isFinite(loadedAudio?.duration) ? loadedAudio.duration : 0);
+    setGeneratedAudioCurrentTime(Number.isFinite(loadedAudio?.currentTime) ? loadedAudio.currentTime : 0);
     applyPendingAudioOffset();
     if (audioLoadStartedAtRef.current) {
       recordGeneratedAudioMetric('reader_audio_metadata_loaded', {
@@ -2377,6 +2463,8 @@ export default function Reader() {
   const handleGeneratedAudioTimeUpdate = useCallback(() => {
     const audio = generatedAudioRef.current;
     if (audio) {
+      setGeneratedAudioCurrentTime(Number.isFinite(audio.currentTime) ? audio.currentTime : 0);
+      if (Number.isFinite(audio.duration)) setGeneratedAudioDuration(audio.duration);
       persistGeneratedAudioProgress();
       prefetchNextGeneratedAudioMetadata(audio);
     }
@@ -2394,6 +2482,8 @@ export default function Reader() {
       generatedHighlightRafRef.current = 0;
     }
     generatedPageEndRef.current = null;
+    setGeneratedAudioCurrentTime(0);
+    setGeneratedAudioDuration(0);
     activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
     activeWordRef.current = null;
     highlightedWordIndexRef.current = -1;
@@ -2739,6 +2829,11 @@ export default function Reader() {
   const topbarPositionLabel = hasPages
     ? [chapterPositionLabel, `Page ${currentPage + 1} of ${paginatedPages.length}`].filter(Boolean).join(' · ')
     : (chapterPositionLabel || `Ch. ${Math.max(0, currentIdx) + 1} of ${chapters.length}`);
+  const listeningCoverUrl = readerListeningCoverUrl(book);
+  const firstNarratedPageIndex = paginatedPages.findIndex((page) => page.type === 'content');
+  const listeningSyncLabel = generatedHighlightSyncEnabled
+    ? 'Paragraph / stanza sync'
+    : 'Section-following narration';
 
   return (
     <div
@@ -2777,6 +2872,39 @@ export default function Reader() {
           onEnded={handleGeneratedAudioEnded}
           style={{ display: 'none' }}
           data-testid="generated-audiobook"
+        />
+      )}
+
+      {showListeningPanel && !narrationDisabledForBook && (
+        <ReaderAudiobookPanel
+          title={readerDisplayTitle}
+          author={readerFrontMatter.author || book?.author || ''}
+          coverUrl={listeningCoverUrl}
+          isPlaying={ttsActive && !ttsPaused}
+          isPaused={ttsPaused}
+          canPlay={!audioDisabledForPage && generatedAudioAvailable}
+          isReadingPage={isContentPage}
+          currentTime={generatedAudioCurrentTime}
+          duration={generatedAudioDuration}
+          playbackRate={ttsSpeed}
+          volume={generatedAudioVolume}
+          muted={generatedAudioMuted}
+          syncLabel={listeningSyncLabel}
+          disclosure={generatedAudioDisclosure}
+          onClose={closeListeningPanel}
+          onPlayPause={handleVoiceToggle}
+          onSkip={skipGeneratedAudio}
+          onSeek={seekGeneratedAudio}
+          onPlaybackRateChange={changeNarrationSpeed}
+          onVolumeChange={changeGeneratedAudioVolume}
+          onToggleMute={toggleGeneratedAudioMute}
+          onOpenReadingPage={() => {
+            if (!isContentPage && firstNarratedPageIndex >= 0) {
+              goToPage(firstNarratedPageIndex, { behavior: 'auto' });
+              return;
+            }
+            closeListeningPanel();
+          }}
         />
       )}
 
@@ -2979,31 +3107,44 @@ export default function Reader() {
             </div>
           ) : (
             <div className="reader-audio-control">
-              <button
-                type="button"
-                onClick={handleVoiceToggle}
-                disabled={audioDisabledForPage}
-                className="reader-audio-button"
-                aria-label={voiceButtonLabel}
-              >
-                {ttsActive && !ttsPaused ? (
-                  <>
-                    <Pause size={17} />
-                    <span>Pause</span>
-                    <span className="reader-waveform" aria-hidden="true"><i /><i /><i /></span>
-                  </>
-                ) : ttsActive && ttsPaused ? (
-                  <>
-                    <Play size={17} />
-                    <span>Resume</span>
-                  </>
-                ) : (
-                  <>
-                    <Play size={17} />
-                    <span>Play</span>
-                  </>
+              <div className="reader-audio-control__actions">
+                <button
+                  type="button"
+                  onClick={handleVoiceToggle}
+                  disabled={audioDisabledForPage}
+                  className="reader-audio-button"
+                  aria-label={voiceButtonLabel}
+                >
+                  {ttsActive && !ttsPaused ? (
+                    <>
+                      <Pause size={17} />
+                      <span>Pause</span>
+                      <span className="reader-waveform" aria-hidden="true"><i /><i /><i /></span>
+                    </>
+                  ) : ttsActive && ttsPaused ? (
+                    <>
+                      <Play size={17} />
+                      <span>Resume</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play size={17} />
+                      <span>Play</span>
+                    </>
+                  )}
+                </button>
+                {generatedAudioAvailable && (
+                  <button
+                    type="button"
+                    className="reader-player-launch"
+                    onClick={() => setListeningPanelVisible(true)}
+                    aria-label="Open audiobook player"
+                  >
+                    <Headphones size={17} aria-hidden="true" />
+                    <span>Player</span>
+                  </button>
                 )}
-              </button>
+              </div>
               {ttsActive && (
                 <button type="button" onClick={stopTTS} className="reader-stop-button" aria-label="Stop narration">
                   <Square size={12} />
@@ -3271,14 +3412,7 @@ export default function Reader() {
                   max="1.8"
                   step="0.1"
                   value={ttsSpeed}
-                  onChange={(event) => {
-                    const nextSpeed = parseFloat(event.target.value);
-                    setTtsSpeed(nextSpeed);
-                    if (generatedAudioRef.current) {
-                      generatedAudioRef.current.playbackRate = nextSpeed;
-                    }
-                    persistGeneratedAudioProgressRef.current({ force: true, speed: nextSpeed });
-                  }}
+                  onChange={(event) => changeNarrationSpeed(parseFloat(event.target.value))}
                 />
               </div>
             )}
