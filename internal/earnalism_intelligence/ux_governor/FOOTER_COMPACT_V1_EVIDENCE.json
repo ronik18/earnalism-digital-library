@@ -25,7 +25,7 @@
       "horizontal_overflow_px": 0
     },
     "mobile_390": {
-      "footer_height_px": 552.9609375,
+      "footer_height_px": 532.9609375,
       "external_margin_top_px": 0,
       "minimum_link_height_px": 44,
       "horizontal_overflow_px": 0
@@ -33,7 +33,9 @@
   },
   "validation": {
     "focused_tests": "PASS 2 suites / 5 tests",
+    "ci_copy_contract_regression": "PASS 1 suite / 60 tests",
     "full_frontend_tests": "PASS 33 suites / 190 tests",
+    "full_live_data_regression": "BLOCKED_UNRELATED: current public title text containing Tokens matched broad internal-field denylist in book-integrity and legal-compliance tests",
     "production_build": "PASS",
     "release_truth": "NO_AUDIO_CATALOG_ROUTE_BACKEND_OR_RELEASE_GATE_CHANGE",
     "title_history_mutated": false

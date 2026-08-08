@@ -152,4 +152,4 @@
 - A premium end-of-page experience does not need more content; it needs clearer jobs. Brand promise, fast exploration, one calm contact action, and a consolidated legal rail replaced widely separated low-information rows.
 - Wrapping the five core navigation links horizontally preserved 44 px touch targets while materially reducing mobile height. Compactness should come from layout structure and copy editing, not undersized controls.
 - Lazy footer imagery must be scrolled into the viewport before visual assertions. Full-page screenshot capture alone can show a valid lazy-loaded wordmark as blank.
-- The source candidate reduced the footer to 281 px at 1440 and 553 px at 390, removed the external margin, preserved zero horizontal overflow, and changed no audio, catalog, route, backend, or release-gate truth.
+- The source candidate reduced the footer to 281 px at 1440 and 533 px at 390, removed the external margin, preserved zero horizontal overflow, and changed no audio, catalog, route, backend, or release-gate truth.

@@ -10,8 +10,8 @@ export default function Footer() {
     <footer className="border-t border-burgundy-600/20 bg-[#f8f1e5] text-charcoal" data-testid="site-footer">
       <div className="h-px bg-gradient-to-r from-transparent via-gold-500/70 to-transparent" aria-hidden="true" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-5 sm:py-8">
-        <div className="grid gap-5 md:grid-cols-2 md:gap-7 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.9fr)_minmax(17rem,0.8fr)] lg:items-start lg:gap-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-4 sm:py-8">
+        <div className="grid gap-4 md:grid-cols-2 md:gap-7 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.9fr)_minmax(17rem,0.8fr)] lg:items-start lg:gap-10">
           <div data-testid="footer-brand">
             <img
               src={`${process.env.PUBLIC_URL || ""}/assets/brand/earnalism-logo-text.png`}
@@ -23,10 +23,10 @@ export default function Footer() {
               className="h-auto w-44 max-w-full object-contain object-left sm:w-56"
             />
             <p id="footer-brand-statement" className="mt-2 max-w-xl font-serif-display text-lg leading-snug text-burgundy sm:mt-3">
-              Timeless literature, presented with quiet release truth.
+              Bengali and English classics, presented with quiet release truth.
             </p>
             <p className="mt-2 max-w-lg text-sm font-light leading-6 text-charcoal-soft">
-              A calm digital library for reader-ready classics and evidence-approved listening rooms.
+              Reader-ready classics stay visible; audiobooks appear only after evidence proves they are ready.
             </p>
           </div>
 
@@ -41,7 +41,7 @@ export default function Footer() {
             </ul>
           </nav>
 
-          <div className="md:col-span-2 lg:col-span-1 rounded-2xl border border-burgundy-600/15 bg-white/45 px-4 py-3 sm:px-5 sm:py-4" data-testid="footer-contact">
+          <div className="md:col-span-2 lg:col-span-1 rounded-2xl border border-burgundy-600/15 bg-white/45 px-4 py-2.5 sm:px-5 sm:py-4" data-testid="footer-contact">
             <div className="overline mb-2">Library desk</div>
             <p className="text-sm leading-5 text-charcoal-soft">Rights, partnerships, or a title suggestion?</p>
             <a
