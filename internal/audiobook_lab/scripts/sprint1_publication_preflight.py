@@ -806,7 +806,11 @@ def main() -> int:
     total_estimate = round(sum(row["estimated_incremental_cost_usd"] for row in active_cost_rows), 4)
     removed_estimate = round(sum(row["deferred_baseline_estimated_cost_usd"] for row in deferred_cost_rows), 4)
     active_english_costs = [row for row in active_cost_rows if row["language"] == "English"]
-    highest_english = max(active_english_costs, key=lambda row: row["estimated_incremental_cost_usd"])
+    highest_english = max(
+        active_english_costs,
+        key=lambda row: row["estimated_incremental_cost_usd"],
+        default={"slug": "none", "title": "none", "estimated_incremental_cost_usd": 0.0},
+    )
     cheapest_eligible = sorted(
         (
             row

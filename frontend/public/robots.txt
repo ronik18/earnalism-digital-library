@@ -7,6 +7,7 @@ Allow: /reader/a-ghost-story
 Allow: /reader/a-jury-of-her-peers
 Allow: /reader/a-mystery-of-heroism
 Allow: /reader/alices-adventures-in-wonderland
+Allow: /reader/bharat-at-the-crossroads
 Allow: /reader/bn-027
 Allow: /reader/bn-059
 Allow: /reader/bn-066

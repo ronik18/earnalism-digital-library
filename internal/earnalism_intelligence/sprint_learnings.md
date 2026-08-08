@@ -1951,3 +1951,24 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Redis contains only ten cache/RUM keys and no authoritative namespace, but service deletion still requires a deployed no-Redis canary and a rollback window.
 - Complete push-range checks prevent a multi-commit push from hiding backend or frontend changes. `HEAD^..HEAD` is not an adequate deployment scope gate.
 - Scheduled monitoring should verify lightweight liveness. Catalog and reader-manifest checks belong in manual deep monitoring and post-deploy canaries, not a 30-minute loop.
+
+## Publication manifest conveyor pilot - 2026-08-08
+
+- Reader, audio, and commerce readiness are independent lanes. `NOT_REQUESTED` audio or commerce must never block a validated reader release.
+- A single checksum-bound manifest should own release truth. Static allowlists remain compatibility inputs only and must not be a second approval authority for migrated titles.
+- Chapter boundaries belong in each import manifest when a source has nested Roman numerals or other ambiguous headings. Sherlock's exact story-heading regex produced the canonical 12-story index; generic heuristics produced false chapters.
+- The migration conveyor must regenerate the legacy checksum bundle whenever it writes chapters or metadata, otherwise compatibility validators can reject otherwise identical content.
+- Readiness is not publication approval. The Sherlock pilot remains `READY_FOR_APPROVAL`, `exposed=false`, with no audiobook requested.
+
+## Agentic AI reader-only publication - 2026-08-08
+
+- First-party original works need an owner attestation, copyright owner, commercial-use permission, rights basis, approval tier, and verification timestamp; public-domain dates and external source URLs are not applicable evidence and must not be fabricated.
+- Imported technical manuscripts can contain safe HTML mixed with top-level plain text. Normalize those text runs into semantic paragraphs or code blocks before hashing; otherwise reader pagination can serialize later markup as visible text.
+- Validate the backend under the Railway launch topology (`backend/start_prod.sh` uses `uvicorn server:app`). A repository-root `backend.server:app` launch can exercise a different optional-import fallback and produce misleading escaped output.
+- Agentic AI With Python passed a 14-chapter index, sanitizer audit, focused tests, production build, and desktop/mobile browser QA. Publish it through the reader lane only; audio remains `NOT_REQUESTED` and hidden.
+
+## Pather Panchali private audition closeout - 2026-08-08
+
+- A strong opening and ending do not compensate for failed dialogue and punctuation-heavy passages. The four-passage Sarvam `bulbul:v3` Simran audition closed at `8.0` with `0.85` confidence and a fatal list-reading-rhythm flag.
+- Keep the existing reader-only edition live and audio hidden. A DNS-blocked source reingestion must not replace or downgrade the approved reader artifact.
+- Do not widen this audition into full-title TTS. The next audio attempt must use a materially different provider or an approved human/licensed path and must pass every 8.9/0.90 listening and objective gate.

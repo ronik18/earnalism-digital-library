@@ -6,6 +6,11 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
+try:
+    from publication_manifest import manifest_reader_exposed, validate_manifest
+except ImportError:  # pragma: no cover
+    from backend.publication_manifest import manifest_reader_exposed, validate_manifest
+
 
 MODULE_DIR = Path(__file__).resolve().parent
 ROOT = MODULE_DIR.parent if MODULE_DIR.name == "backend" else MODULE_DIR
@@ -25,6 +30,7 @@ CONTROLLED_ARTIFACT_REQUIRED_FILES = (
     "source_evidence.json",
     "checksum_manifest.json",
 )
+PUBLICATION_MANIFEST_FILENAME = "publication_manifest.json"
 
 
 def controlled_publications_root_candidates() -> tuple[Path, ...]:
@@ -126,10 +132,25 @@ def normalized_slug_tuple(values: Any, fallback: tuple[str, ...]) -> tuple[str, 
 
 
 CONTROLLED_LAUNCH_CONFIG = controlled_launch_config()
-CONTROLLED_LIVE_BOOK_SLUGS = normalized_slug_tuple(
+LEGACY_CONTROLLED_LIVE_BOOK_SLUGS = normalized_slug_tuple(
     CONTROLLED_LAUNCH_CONFIG.get("live_approved_slugs"),
     ("dracula",),
 )
+
+
+def approved_manifest_slugs() -> tuple[str, ...]:
+    root = first_controlled_publications_root()
+    if not root.exists():
+        return ()
+    approved: list[str] = []
+    for path in root.glob(f"*/{PUBLICATION_MANIFEST_FILENAME}"):
+        manifest = read_json_file(path)
+        if manifest_reader_exposed(manifest):
+            approved.append(str(manifest.get("slug") or path.parent.name).strip().lower())
+    return tuple(sorted(set(approved)))
+
+
+CONTROLLED_LIVE_BOOK_SLUGS = tuple(dict.fromkeys((*LEGACY_CONTROLLED_LIVE_BOOK_SLUGS, *approved_manifest_slugs())))
 LIVE_APPROVED_SLUG = CONTROLLED_LIVE_BOOK_SLUGS[0]
 PIPELINE_CANDIDATE_SLUGS = set(
     normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("pipeline_slugs"), ("kshudhita-pashan",))
@@ -519,6 +540,10 @@ def load_dracula_artifact_book(
         "source_url": evidence_value("source_url"),
         "source_name": evidence_value("source_name"),
         "source_license": evidence_value("source_license"),
+        "source_type": evidence_value("source_type"),
+        "copyright_owner": evidence_value("copyright_owner"),
+        "commercial_use_allowed": evidence_value("commercial_use_allowed", False),
+        "owner_attestation": evidence_value("owner_attestation"),
         "source_hash": evidence_value("source_hash"),
         "content_hash": evidence_value("content_hash"),
         "provenance_hash": evidence_value("provenance_hash"),
@@ -546,7 +571,11 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
         return dracula_artifact_validation_issues(artifact_dir)
     base = Path(artifact_dir) if artifact_dir else controlled_artifact_dir(normalized)
     issues: list[str] = []
-    if normalized not in CONTROLLED_LIVE_BOOK_SLUGS:
+    publication_manifest = read_json_file(base / PUBLICATION_MANIFEST_FILENAME)
+    manifest_approved = bool(
+        publication_manifest and manifest_reader_exposed(publication_manifest)
+    )
+    if normalized not in LEGACY_CONTROLLED_LIVE_BOOK_SLUGS and not manifest_approved:
         issues.append(f"{normalized or 'unknown'} is not in the controlled live allowlist.")
     if not base.exists():
         return (f"Controlled publication artifact directory is missing for {normalized}.",)
@@ -557,6 +586,10 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
     reader_manifest = read_json_file(base / "reader_manifest.json")
     source_evidence = read_json_file(base / "source_evidence.json")
     approval_evidence = read_json_file(base / "approval_evidence.json")
+    if publication_manifest:
+        issues.extend(validate_manifest(publication_manifest))
+        if normalize_slug(publication_manifest.get("slug")) != normalized:
+            issues.append("publication_manifest.json slug does not match artifact slug.")
     if normalize_slug(public_book.get("slug")) != normalized:
         issues.append("public_book.json slug does not match artifact slug.")
     if public_book.get("is_published") is not True:
@@ -673,6 +706,7 @@ def load_controlled_artifact_book(
     public_book = read_json_file(base / "public_book.json")
     approval_evidence = read_json_file(base / "approval_evidence.json")
     source_evidence = read_json_file(base / "source_evidence.json")
+    publication_manifest = read_json_file(base / PUBLICATION_MANIFEST_FILENAME)
     chapters: list[dict[str, Any]] = []
     for chapter_meta in sorted(public_book.get("chapters") or [], key=lambda item: item.get("order", 0)):
         chapter_id = normalize_text(chapter_meta.get("id"))
@@ -714,10 +748,15 @@ def load_controlled_artifact_book(
 
     return {
         **public_book,
+        "publication_manifest": publication_manifest,
         "chapters": chapters,
         "source_url": evidence_value("source_url"),
         "source_name": evidence_value("source_name"),
         "source_license": evidence_value("source_license"),
+        "source_type": evidence_value("source_type"),
+        "copyright_owner": evidence_value("copyright_owner"),
+        "commercial_use_allowed": evidence_value("commercial_use_allowed", False),
+        "owner_attestation": evidence_value("owner_attestation"),
         "source_hash": evidence_value("source_hash"),
         "content_hash": evidence_value("content_hash"),
         "provenance_hash": evidence_value("provenance_hash"),
@@ -819,6 +858,8 @@ def source_metadata_present(book: dict[str, Any]) -> bool:
     first_party = (
         str(book.get("rightsStatus") or book.get("rights_status") or "").strip().lower()
         in {"original_work_source_reviewed", "original_work", "first_party_original"}
+        or str(book.get("source_type") or "").strip().lower()
+        in {"original_work_internal_admin_source", "first_party_original", "original_work"}
         or str(rights_metadata.get("source_type") or "").strip().lower()
         in {"original_work_internal_admin_source", "first_party_original"}
     )
@@ -828,7 +869,10 @@ def source_metadata_present(book: dict[str, Any]) -> bool:
 
 
 def is_live_approved_book(book: dict[str, Any]) -> bool:
-    if normalize_slug(book.get("slug")) not in CONTROLLED_LIVE_BOOK_SLUGS:
+    slug = normalize_slug(book.get("slug"))
+    manifest = book.get("publication_manifest")
+    manifest_approved = manifest_reader_exposed(manifest) if isinstance(manifest, dict) else False
+    if slug not in LEGACY_CONTROLLED_LIVE_BOOK_SLUGS and not manifest_approved:
         return False
     workflow = canonical_workflow(book)
     if workflow:

@@ -57,6 +57,46 @@ def test_tier_a_public_domain_book_is_approved():
     assert rights_publish_blockers(approved_book(), current_year=2026) == []
 
 
+def test_verified_first_party_original_does_not_require_public_domain_fields():
+    book = approved_book(rights_metadata={
+        "source_type": "first_party_original",
+        "source_url": "",
+        "author_death_year": "",
+        "original_publication_year": "",
+        "source_name": "Author-owned original work",
+        "source_license": "Author-owned original work prepared for publication.",
+        "copyright_owner": "Ronik Basak",
+        "commercial_use_allowed": True,
+        "owner_attestation": "The author owns and authorizes commercial reader publication.",
+        "rights_basis": "First-party author-owned manuscript.",
+    })
+
+    decision = evaluate_rights(book, current_year=2026)
+
+    assert decision.approved is True
+    assert rights_publish_blockers(book, current_year=2026) == []
+
+
+def test_first_party_original_still_requires_owner_attestation():
+    book = approved_book(rights_metadata={
+        "source_type": "first_party_original",
+        "source_url": "",
+        "author_death_year": "",
+        "original_publication_year": "",
+        "source_name": "Author-owned original work",
+        "source_license": "Author-owned original work prepared for publication.",
+        "copyright_owner": "Ronik Basak",
+        "commercial_use_allowed": True,
+        "owner_attestation": "",
+        "rights_basis": "First-party author-owned manuscript.",
+    })
+
+    decision = evaluate_rights(book, current_year=2026)
+
+    assert decision.approved is False
+    assert "owner_attestation is required for first-party original work." in decision.issues
+
+
 def test_missing_author_death_year_quarantines_and_blocks_publish():
     book = approved_book(rights_metadata={"author_death_year": ""})
 
@@ -320,7 +360,7 @@ def test_server_routes_keep_all_required_rights_enforcement_calls():
         "admin_update_chapter(slug: str, cid: str, payload: ChapterIn",
         "admin_upload_chapter_file(",
         "admin_upload_cover(",
-        "_assert_public_rights_approved(book, \"Visual asset\")",
+        "_assert_public_rights_approved(mongo_book, \"Visual asset\")",
         "admin_update_book_audiobook(",
         "_assert_public_rights_approved(existing, \"Audiobook\")",
         "admin_rights_report(filename: str, _=Depends(require_admin))",

@@ -20,8 +20,21 @@
   "last_budget_remaining_usd": "0.9174_before_unknown_prior_partial_asr_billing",
   "budget_cap_usd": 175.0,
   "approved_scope": "Sprint1 Nishkriti full pipeline using the passed Sarvam representative arm; publish only if all gates pass.",
+  "pather_panchali_scope": {
+    "slug": "pather-panchali",
+    "scope": "bounded Sarvam representative audition and private QA only",
+    "provider": "Sarvam",
+    "model": "bulbul:v3",
+    "voice": "simran",
+    "max_budget_usd": 5,
+    "public_release": "blocked",
+    "full_generation": "blocked_until_audition_passes"
+  },
   "allowed_slugs": [
-    "nishkriti"
+    "nishkriti",
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "pather-panchali"
   ],
   "stop_conditions": [
     "MAX_TTS_BUDGET_USD missing or above approved cap",

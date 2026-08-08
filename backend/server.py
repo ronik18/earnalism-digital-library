@@ -2685,15 +2685,23 @@ def _publish_blockers(book: dict) -> List[str]:
 
     blockers: List[str] = []
     slug = str(book.get("slug") or "").strip().lower()
-    if slug not in CONTROLLED_LIVE_BOOK_SLUGS:
+    artifact = load_controlled_artifact_book(slug, include_content=False)
+    manifest_approved = bool(
+        artifact
+        and isinstance(artifact.get("publication_manifest"), dict)
+        and artifact["publication_manifest"].get("reader_release", {}).get("status") == "APPROVED"
+        and artifact["publication_manifest"].get("reader_release", {}).get("exposed") is True
+    )
+    if slug not in CONTROLLED_LIVE_BOOK_SLUGS and not manifest_approved:
         blockers.append(
-            "Publication safety allowlist blocks live publication for non-approved books."
+            "Publication safety allowlist requires an approved publication manifest before live publication."
         )
     if not (book.get("cover_image_url") or book.get("cover_url")):
         blockers.append("Front cover is required before publishing.")
 
-    for issue in rights_publish_blockers(book):
-        blockers.append(f"Rights verification: {issue}")
+    if not manifest_approved:
+        for issue in rights_publish_blockers(book):
+            blockers.append(f"Rights verification: {issue}")
 
     for chapter in book.get("chapters") or []:
         status = chapter.get("processing_status") or "ready"

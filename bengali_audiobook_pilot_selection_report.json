@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-07-10T09:31:03Z",
+  "generated_at": "2026-08-07T17:57:15Z",
   "candidate_source": "explicit_candidate_slugs",
   "total_candidates": 1,
   "selected_pilot_candidate": {
     "rank": 1,
-    "slug": "bn-066",
-    "title": "আনন্দমঠ",
-    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "slug": "pather-panchali",
+    "title": "পথের পাঁচালী",
+    "author": "বিভূতিভূষণ বন্দ্যোপাধ্যায়",
     "language": "ben",
-    "manuscript_char_count": 202442,
+    "manuscript_char_count": 125004,
     "reader_ready_evidence": "internal/earnalism_intelligence/title_decision_history.json",
     "rights_status": "PASS",
     "cover_status": "PASS",
@@ -18,11 +18,11 @@
   "ranked_candidates": [
     {
       "rank": 1,
-      "slug": "bn-066",
-      "title": "আনন্দমঠ",
-      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী",
+      "author": "বিভূতিভূষণ বন্দ্যোপাধ্যায়",
       "language": "ben",
-      "manuscript_char_count": 202442,
+      "manuscript_char_count": 125004,
       "reader_ready_evidence": "internal/earnalism_intelligence/title_decision_history.json",
       "rights_status": "PASS",
       "cover_status": "PASS",
@@ -33,10 +33,31 @@
   "representative_passages": [
     {
       "passage_id": "narrative_opening",
-      "slug": "bn-066",
+      "slug": "pather-panchali",
       "label": "narrative opening",
-      "text_hash": "bffb26c0d4bf09387f87b2885e5d89c87a37fabee8631cf834f8d34c10c0555a",
-      "character_count": 594
+      "text_hash": "1e2893ab42984d4ab0dce7fdeb2d33fecf6aa60ad1836cf5ad490c97bab805e1",
+      "character_count": 601
+    },
+    {
+      "passage_id": "dialogue",
+      "slug": "pather-panchali",
+      "label": "dialogue or interaction passage",
+      "text_hash": "f8d196aa84d0d449d8fc350a865786cdda3ccc4cc4a83012a33f73d9bf117ecf",
+      "character_count": 582
+    },
+    {
+      "passage_id": "punctuation_heavy",
+      "slug": "pather-panchali",
+      "label": "difficult punctuation-heavy passage",
+      "text_hash": "b9854c6861860c1461917f509b350397e767ff38120178ae024e353b2ca5ebf2",
+      "character_count": 566
+    },
+    {
+      "passage_id": "ending_style",
+      "slug": "pather-panchali",
+      "label": "ending-style passage",
+      "text_hash": "8f1711cf3d45d4324b4e6f2942999110248d24c0c49973863bbd6aeb4e9ed7d2",
+      "character_count": 25
     }
   ],
   "rules": [

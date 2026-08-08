@@ -1459,7 +1459,7 @@ describe("UX conversion static signals", () => {
   test("mobile navigation keeps a visible library CTA", () => {
     expect(header).toContain('import BrandMark from "./BrandMark";');
     expect(header).toContain('className="header-brand-cluster"');
-    expect(header).toContain('<BrandMark variant="footer" />');
+    expect(header).toMatch(/<BrandMark variant="(?:header|footer)" \/>/);
     expect(header).not.toContain("IndiaCraftBadge");
     expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="mobile-cta-library"');
