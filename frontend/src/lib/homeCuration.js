@@ -43,12 +43,16 @@ export function shelfMode(count) {
 }
 
 function validCover(book = {}) {
+  const auditStatus = String(book.cover_audit_status || book.cover_status || "").toUpperCase();
   return Boolean(
     book.slug
       && (book.front_cover_url || book.cover_image_url || book.cover_url)
       && book.cover_valid !== false
       && book.is_placeholder !== true
-      && book.is_typographic_only !== true,
+      && book.is_typographic_only !== true
+      && book.canonical_cover_match !== false
+      && !auditStatus.includes("BLOCKED")
+      && !auditStatus.includes("MISMATCH")
   );
 }
 
