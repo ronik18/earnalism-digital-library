@@ -1463,10 +1463,10 @@ describe("UX conversion static signals", () => {
     expect(analytics).not.toContain("reading_time_explainer_view");
   });
 
-  test("mobile navigation keeps a visible library CTA", () => {
-    expect(header).toContain('import BrandMark from "./BrandMark";');
+  test("premium brand lockup and mobile navigation keep a visible library CTA", () => {
+    expect(header).toContain('import BrandHeaderLogo from "./BrandHeaderLogo";');
     expect(header).toContain('className="header-brand-cluster"');
-    expect(header).toMatch(/<BrandMark variant="(?:header|footer)" \/>/);
+    expect(header).toContain("<BrandHeaderLogo />");
     expect(header).not.toContain("IndiaCraftBadge");
     expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="mobile-cta-library"');
