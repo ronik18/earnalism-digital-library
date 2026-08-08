@@ -1,6 +1,7 @@
 import { resolveBookCover } from "./bookCoverResolver";
 
 const LOCAL_ASSET_RE = /^\/?assets\//i;
+const EARNALISM_HOST_RE = /^(?:www\.)?theearnalism\.com$/i;
 const IMAGE_EXTENSION_RE = /\.(avif|gif|jpe?g|png|svg|webp)(?:[?#].*)?$/i;
 const HEX_COLOR_RE = /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i;
 const FALLBACK_EXTENSIONS = ["jpg", "png", "webp", "jpeg", "gif"];
@@ -36,10 +37,23 @@ function splitQuery(src) {
   return { path: match?.[1] || "", suffix: match?.[2] || "" };
 }
 
+function sameOriginAssetPath(src) {
+  if (!/^https?:\/\//i.test(src)) return src;
+  try {
+    const url = new URL(src);
+    const browserHost = typeof window !== "undefined" ? window.location.host : "";
+    if (!url.pathname.startsWith("/assets/")) return src;
+    if (url.host !== browserHost && !EARNALISM_HOST_RE.test(url.hostname)) return src;
+    return `${url.pathname}${url.search}${url.hash}`;
+  } catch {
+    return src;
+  }
+}
+
 export function normalizeImageUrl(src, { defaultExtension = "jpg" } = {}) {
   if (!src || typeof src !== "string") return src;
 
-  let value = src.trim();
+  let value = sameOriginAssetPath(src.trim());
   if (!value) return value;
 
   if (LOCAL_ASSET_RE.test(value) && !value.startsWith("/")) {
@@ -58,7 +72,7 @@ export function imageUrlCandidates(src) {
   const normalized = normalizeImageUrl(src);
   if (!normalized || typeof normalized !== "string") return [];
 
-  const original = src.trim();
+  const original = sameOriginAssetPath(src.trim());
   const localAsset = LOCAL_ASSET_RE.test(original);
   if (!localAsset || hasImageExtension(original)) return [normalized];
 
@@ -95,7 +109,22 @@ export function optimizedImageUrl(src, { width = 900, quality = 82 } = {}) {
 
 function responsiveLocalAssetUrl(src, width) {
   const normalized = normalizeImageUrl(src);
-  return LOCAL_RESPONSIVE_ASSETS[normalized]?.[width] || normalized;
+  const { path, suffix } = splitQuery(normalized);
+  const candidates = Object.entries(LOCAL_RESPONSIVE_ASSETS[path] || {})
+    .map(([candidateWidth, url]) => ({ width: Number(candidateWidth), url }))
+    .sort((left, right) => left.width - right.width);
+  if (!candidates.length) return normalized;
+
+  const responsive = candidates.find((candidate) => candidate.width >= width) || candidates.at(-1);
+  return `${responsive.url}${suffix}`;
+}
+
+function responsiveLocalAssetSources(src) {
+  const normalized = normalizeImageUrl(src);
+  const { path, suffix } = splitQuery(normalized);
+  return Object.entries(LOCAL_RESPONSIVE_ASSETS[path] || {})
+    .map(([width, url]) => ({ width: Number(width), url: `${url}${suffix}` }))
+    .sort((left, right) => left.width - right.width);
 }
 
 function normalizeWidthList(widths, fallbackWidth) {
@@ -143,10 +172,14 @@ export function bookCoverImageSources(book, { width = 420, widths, quality = 82,
     ? responsiveLocalAssetUrl(thumbnail, width)
     : (source ? optimizedImageUrl(responsiveLocalAssetUrl(source, width), { width, quality }) : "");
   const responsiveWidths = normalizeWidthList(widths, width);
+  const localResponsiveSources = responsiveLocalAssetSources(cover);
   const srcSet = cover && !resolved.isFallback
-    ? responsiveWidths.map((candidateWidth) => (
-      `${optimizedImageUrl(responsiveLocalAssetUrl(cover, candidateWidth), { width: candidateWidth, quality })} ${candidateWidth}w`
-    )).join(", ")
+    ? (localResponsiveSources.length
+      ? localResponsiveSources.map(({ width: candidateWidth, url }) => `${url} ${candidateWidth}w`)
+      : responsiveWidths.map((candidateWidth) => (
+        `${optimizedImageUrl(responsiveLocalAssetUrl(cover, candidateWidth), { width: candidateWidth, quality })} ${candidateWidth}w`
+      ))
+    ).join(", ")
     : "";
 
   return {

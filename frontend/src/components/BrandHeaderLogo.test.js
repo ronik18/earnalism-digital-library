@@ -47,7 +47,7 @@ describe("BrandHeaderLogo", () => {
     expect(componentSource).toContain('data-logo-source="admin-setting"');
   });
 
-  test("public header reuses the footer lockup without the obsolete badge component", () => {
+  test("public header uses the approved responsive footer-scale lockup without the obsolete badge component", () => {
     expect(headerSource).toContain('import BrandMark from "./BrandMark";');
     expect(headerSource).toContain('<BrandMark variant="footer" />');
     expect(headerSource).not.toContain("BrandHeaderLogo badgeVariant");

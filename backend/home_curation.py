@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from copy import deepcopy
 from functools import lru_cache
@@ -51,6 +52,39 @@ HERO_SUBHEADLINE = (
     "Beautifully designed editions. Immersive audiobooks. Calm reading modes. "
     "A curated literary experience that stays with you."
 )
+
+
+def compact_home_curated_payload(payload: dict) -> dict:
+    """Deduplicate repeated public book cards without changing release truth."""
+    books: dict[str, dict] = {}
+
+    def compact(value):
+        if isinstance(value, list):
+            return [compact(item) for item in value]
+        if not isinstance(value, dict):
+            return value
+        slug = str(value.get("slug") or "").strip().lower()
+        is_book = bool(slug and value.get("title") and (
+            value.get("front_cover_url")
+            or value.get("cover_image_url")
+            or value.get("book_url")
+            or value.get("reader_url")
+        ))
+        if is_book:
+            fingerprint = hashlib.sha256(
+                json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+            ).hexdigest()[:12]
+            book_ref = f"{slug}:{fingerprint}"
+            books[book_ref] = value
+            return {"$book": book_ref}
+        return {key: compact(item) for key, item in value.items()}
+
+    compact_payload = compact(payload)
+    return {
+        "format": "home-curation-compact-v1",
+        "books": books,
+        "payload": compact_payload,
+    }
 
 
 def _read_config(path: str | Path | None = None) -> dict[str, Any]:

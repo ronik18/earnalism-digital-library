@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-08-08T16:20:00+05:30",
+  "scope": "public_home_initial_render_and_field_performance",
+  "status": "SOURCE_VALIDATED_PRODUCTION_FIELD_LCP_PENDING",
+  "baseline_production_mobile": {
+    "lighthouse_score": 64,
+    "fcp_ms": 4854.141,
+    "lcp_ms": 6653.411,
+    "transfer_bytes": 2481398
+  },
+  "candidate_mobile": {
+    "lighthouse_score": 95,
+    "simulated_fcp_ms": 906.758,
+    "simulated_lcp_ms": 2712.137,
+    "observed_fcp_ms": 241,
+    "observed_lcp_ms": 241,
+    "cls": 0,
+    "total_blocking_time_ms": 110,
+    "transfer_bytes": 318382,
+    "requests": 16
+  },
+  "candidate_desktop": {
+    "lighthouse_score": 100,
+    "fcp_ms": 325.133,
+    "lcp_ms": 644.159,
+    "cls": 0,
+    "total_blocking_time_ms": 0,
+    "transfer_bytes": 436838,
+    "requests": 20
+  },
+  "browser_hydration": {
+    "prerendered_shell": true,
+    "loading_preview_nodes": 0,
+    "header_nodes": 1,
+    "hero_nodes": 1,
+    "hydration_errors": 0,
+    "horizontal_overflow_px": 0,
+    "mobile_fcp_ms": 132,
+    "mobile_lcp_ms": 132,
+    "mobile_cls": 0,
+    "responsive_logo": "/assets/performance/earnalism-brand-lockup-320.avif"
+  },
+  "payload_reductions": {
+    "main_css_gzip_before_bytes": 47840,
+    "main_css_gzip_after_bytes": 34930,
+    "curation_json_before_bytes": 131206,
+    "curation_json_compact_bytes": 39572,
+    "curation_gzip_before_bytes": 12582,
+    "curation_gzip_compact_bytes": 6782
+  },
+  "validation": {
+    "frontend_tests": "PASS_34_SUITES_195_TESTS",
+    "backend_compact_release_truth": "PASS_1_TEST_18_DESELECTED",
+    "ux_governor": "PASS_ZERO_BLOCKERS",
+    "production_build": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "release_truth": "NO_AUDIO_PUBLICATION_CATALOG_OR_RELEASE_GATE_CHANGE",
+  "field_gate": "Vercel Speed Insights enabled; production p75 mobile LCP must be <= 2000 ms before the field target is claimed.",
+  "concurrency_boundary": "Sherlock Holmes and Agentic AI publication/import changes observed in the canonical worktree are explicitly excluded from this sprint."
+}

@@ -36,7 +36,10 @@ export default function BookCoverImage({
   onImageError,
   onPermanentFailure,
 }) {
-  const [loaded, setLoaded] = useState(false);
+  // Eager covers are part of the prerendered visual shell. Mark them visible in
+  // both SSR and the client's first render so a cached image cannot finish
+  // before React attaches its onLoad handler and remain permanently transparent.
+  const [loaded, setLoaded] = useState(loading === "eager");
   const [failed, setFailed] = useState(false);
   const [candidateIndex, setCandidateIndex] = useState(0);
   const coverCandidates = useMemo(() => Array.from(new Set([

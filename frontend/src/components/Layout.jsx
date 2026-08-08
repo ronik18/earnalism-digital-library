@@ -4,7 +4,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 const FirstVisitSiteTour = lazy(() => import("./FirstVisitSiteTour"));
-const TOUR_IMPORT_DELAY_MS = 2600;
 const TOUR_STORAGE_KEY = "earnalism:first-visit-site-tour:v1";
 
 function hasCompletedFirstVisitTour() {
@@ -38,7 +37,12 @@ export default function Layout() {
       return undefined;
     }
 
-    const timer = window.setTimeout(() => setTourReady(true), TOUR_IMPORT_DELAY_MS);
+    const prepareTour = () => setTourReady(true);
+    if (typeof window.requestIdleCallback === "function") {
+      const idle = window.requestIdleCallback(prepareTour, { timeout: 6500 });
+      return () => window.cancelIdleCallback(idle);
+    }
+    const timer = window.setTimeout(prepareTour, 6500);
     return () => window.clearTimeout(timer);
   }, [forcedTour, location.pathname]);
 

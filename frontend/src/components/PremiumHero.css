@@ -27,6 +27,20 @@
   display: none;
 }
 
+@media (max-width: 1023px) {
+  .premium-reference-catalog {
+    display: block;
+  }
+
+  .premium-reference-device-group {
+    display: none;
+  }
+
+  .premium-reference-catalog-books {
+    position: static;
+  }
+}
+
 .premium-hero-copy,
 .premium-hero-actions,
 .premium-hero-chips,

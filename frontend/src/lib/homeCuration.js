@@ -10,6 +10,20 @@ const HOME_CURATION_LEGACY_KEYS = [
 
 let homeCurationMemoryCache = null;
 
+export function expandCompactHomeCuration(payload = {}) {
+  if (payload?.format !== "home-curation-compact-v1" || !payload.payload || !payload.books) {
+    return payload;
+  }
+  const books = payload.books;
+  const expand = (value) => {
+    if (Array.isArray(value)) return value.map(expand);
+    if (!value || typeof value !== "object") return value;
+    if (typeof value.$book === "string") return books[value.$book] || {};
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, expand(item)]));
+  };
+  return expand(payload.payload);
+}
+
 export const HOME_SHELF_ORDER = [
   "bengali-life-and-legacy",
   "gothic-and-the-uncanny",
@@ -301,7 +315,8 @@ export function setHomeCurationCache(payload = null) {
   const record = { cached_at: Date.now(), payload };
   homeCurationMemoryCache = record;
 
-  for (const storage of [getSessionStorage(), getStorage()].filter(Boolean)) {
+  const storage = getStorage() || getSessionStorage();
+  if (storage) {
     try {
       storage.setItem(HOME_CURATION_CACHE_KEY, JSON.stringify(record));
       HOME_CURATION_LEGACY_KEYS.forEach((key) => storage.removeItem(key));
@@ -327,8 +342,8 @@ export function clearHomeCurationCache() {
 }
 
 export async function fetchHomeCuration(signal) {
-  const { data } = await api.get("/home/curated", { signal });
-  const normalized = normalizeHomeCuration(data);
+  const { data } = await api.get("/home/curated?compact=true", { signal });
+  const normalized = normalizeHomeCuration(expandCompactHomeCuration(data));
   setHomeCurationCache(normalized);
   return normalized;
 }

@@ -52,4 +52,17 @@ describe("image URL helpers", () => {
     expect(sources.srcSet).toContain("/assets/performance/dracula-front-cover-220.webp 220w");
     expect(sources.srcSet).toContain("/assets/performance/dracula-front-cover-420.webp 420w");
   });
+
+  test("normalizes same-origin absolute assets before selecting responsive derivatives", () => {
+    const sources = bookCoverImageSources({
+      title: "Dracula",
+      cover_image_url: "https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp",
+      thumbnail_url: "https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp",
+    }, { widths: [220, 420], width: 220 });
+
+    expect(normalizeImageUrl("https://theearnalism.com/assets/shelves/bengali-classics.jpg"))
+      .toBe("/assets/shelves/bengali-classics.jpg");
+    expect(sources.src).toBe("/assets/performance/dracula-front-cover-220.webp");
+    expect(sources.srcSet).toContain("/assets/performance/dracula-front-cover-420.webp 420w");
+  });
 });

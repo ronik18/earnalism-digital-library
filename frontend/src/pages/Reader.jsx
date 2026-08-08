@@ -30,6 +30,7 @@ import {
 } from '../lib/audiobookPlayback';
 import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from '../lib/readerSettings';
 import { normalizeReaderContentHtml } from '../lib/readerContent';
+import './ReaderRoute.css';
 
 const THEMES = {
   beige: { canvas: '#F7F0E3', surface: '#FBF6EC', text: '#241713', accent: '#5A1F2B', border: '#D8C2A0', label: 'Light' },

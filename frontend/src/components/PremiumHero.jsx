@@ -29,17 +29,20 @@ import {
 import "./PremiumHero.css";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
-const REFERENCE_HERO_IMAGE = `${PUBLIC_URL}/assets/hero/premium-library-reference-exact-1440.webp`;
-const REFERENCE_HERO_FULL_IMAGE = `${PUBLIC_URL}/assets/hero/premium-library-reference-exact.webp`;
+const HERO_ASSET_VERSION = "20260808-perf1";
+const TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+const versionedHeroAsset = (path) => `${PUBLIC_URL}${path}?v=${HERO_ASSET_VERSION}`;
+const REFERENCE_HERO_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact-1440.webp");
+const REFERENCE_HERO_FULL_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact.webp");
 const REFERENCE_HERO_SRCSET = [
-  `${PUBLIC_URL}/assets/hero/premium-library-reference-exact-1024.webp 1024w`,
+  `${versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.webp")} 1024w`,
   `${REFERENCE_HERO_IMAGE} 1440w`,
   `${REFERENCE_HERO_FULL_IMAGE} 2180w`,
 ].join(", ");
 const REFERENCE_HERO_AVIF_SRCSET = [
-  `${PUBLIC_URL}/assets/hero/premium-library-reference-exact-1024.avif 1024w`,
-  `${PUBLIC_URL}/assets/hero/premium-library-reference-exact-1440.avif 1440w`,
-  `${PUBLIC_URL}/assets/hero/premium-library-reference-exact.avif 2180w`,
+  `${versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.avif")} 1024w`,
+  `${versionedHeroAsset("/assets/hero/premium-library-reference-exact-1440.avif")} 1440w`,
+  `${versionedHeroAsset("/assets/hero/premium-library-reference-exact.avif")} 2180w`,
 ].join(", ");
 const HERO_CAROUSEL_INTERVAL_MS = 7000;
 
@@ -65,31 +68,8 @@ function track(onTrack, event, metadata) {
   if (typeof onTrack === "function") onTrack(event, metadata);
 }
 
-function useDesktopReference() {
-  const [isDesktop, setIsDesktop] = useState(() => (
-    typeof window !== "undefined"
-    && typeof window.matchMedia === "function"
-    && window.matchMedia("(min-width: 1024px)").matches
-  ));
-
-  useEffect(() => {
-    if (typeof window.matchMedia !== "function") return undefined;
-    const media = window.matchMedia("(min-width: 1024px)");
-    const syncViewport = (event) => setIsDesktop(event.matches);
-    setIsDesktop(media.matches);
-    media.addEventListener("change", syncViewport);
-    return () => media.removeEventListener("change", syncViewport);
-  }, []);
-
-  return isDesktop;
-}
-
 function useReducedMotion() {
-  const [reducedMotion, setReducedMotion] = useState(() => (
-    typeof window !== "undefined"
-    && typeof window.matchMedia === "function"
-    && window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  ));
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     if (typeof window.matchMedia !== "function") return undefined;
@@ -104,11 +84,7 @@ function useReducedMotion() {
 }
 
 function useNarrowViewport() {
-  const [isNarrow, setIsNarrow] = useState(() => (
-    typeof window !== "undefined"
-    && typeof window.matchMedia === "function"
-    && window.matchMedia("(max-width: 767px)").matches
-  ));
+  const [isNarrow, setIsNarrow] = useState(false);
 
   useEffect(() => {
     if (typeof window.matchMedia !== "function") return undefined;
@@ -129,8 +105,8 @@ function preloadHeroBook(book) {
 
   return new Promise((resolve) => {
     const sources = bookCoverImageSources(book, {
-      width: 360,
-      widths: [240, 360, 480],
+      width: 240,
+      widths: [180, 240, 360],
       quality: 82,
     });
     if (!sources.src) {
@@ -142,7 +118,7 @@ function preloadHeroBook(book) {
     let settled = false;
     let timeoutId;
     image.decoding = "async";
-    image.sizes = "(min-width: 1280px) 230px, (min-width: 768px) 200px, 176px";
+    image.sizes = "(min-width: 1280px) 230px, (min-width: 768px) 180px, 132px";
     if (sources.srcSet) image.srcset = sources.srcSet;
     const settle = async () => {
       if (settled) return;
@@ -614,10 +590,12 @@ function EditorialCoverflow({
           const isAdjacent = slideState === "previous" || slideState === "next";
           const isHidden = !isActive && !isAdjacent;
           const slideLabel = `${index + 1} of ${books.length}: ${book.title} by ${book.author}`;
-          const jacket = (
+          const jacket = isHidden ? (
+            <span className="premium-book-jacket premium-hero-cover-mask" aria-hidden="true" />
+          ) : (
             <BookJacket
               book={book}
-              sizes="(min-width: 1280px) 230px, (min-width: 768px) 200px, 176px"
+              sizes="(min-width: 1280px) 230px, (min-width: 768px) 180px, 132px"
               widths={[180, 240, 360, 480]}
               eager={index === 0 || isActive || isAdjacent}
               highPriority={index === 0 && carousel.activeIndex === 0}
@@ -681,7 +659,6 @@ export default function PremiumHero({
   fallbackHeadline = DEFAULT_HEADLINE,
   eyebrowLabel = "Curated Digital Library",
 }) {
-  const isDesktopReference = useDesktopReference();
   const [referenceArtFailed, setReferenceArtFailed] = useState(false);
   const [failedCoverSlugs, setFailedCoverSlugs] = useState(() => new Set());
   const hero = curation?.hero || {};
@@ -722,25 +699,24 @@ export default function PremiumHero({
           aria-label={headline}
           aria-busy={loading}
         >
-          {isDesktopReference ? (
-            <div className="premium-reference-hero__backdrop" aria-hidden="true">
-              <picture>
-                <source type="image/avif" srcSet={REFERENCE_HERO_AVIF_SRCSET} sizes="100vw" />
-                <source type="image/webp" srcSet={REFERENCE_HERO_SRCSET} sizes="100vw" />
-                <img
-                  className="premium-reference-hero__art"
-                  src={REFERENCE_HERO_IMAGE}
-                  alt=""
-                  width="2180"
-                  height="1032"
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                  onError={() => setReferenceArtFailed(true)}
-                />
-              </picture>
-            </div>
-          ) : null}
+          <div className="premium-reference-hero__backdrop" aria-hidden="true">
+            <picture>
+              <source type="image/avif" media="(min-width: 1024px)" srcSet={REFERENCE_HERO_AVIF_SRCSET} sizes="100vw" />
+              <source type="image/webp" media="(min-width: 1024px)" srcSet={REFERENCE_HERO_SRCSET} sizes="100vw" />
+              <img
+                className="premium-reference-hero__art"
+                src={TRANSPARENT_PIXEL}
+                data-fallback-src={REFERENCE_HERO_IMAGE}
+                alt=""
+                width="2180"
+                height="1032"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                onError={() => setReferenceArtFailed(true)}
+              />
+            </picture>
+          </div>
       <div className="premium-hero-copy">
         <div className="premium-hero-eyebrow">
           <Sparkles size={15} strokeWidth={1.6} aria-hidden="true" />
@@ -787,21 +763,12 @@ export default function PremiumHero({
         className="premium-hero-catalog-shell"
         data-testid="hero-catalog-visuals"
       >
-        {isDesktopReference ? (
-          <ReferenceCatalogStage
-            books={carouselBooks}
-            carousel={carousel}
-            approvedAudiobooks={approvedAudiobooks}
-            onCoverFailure={recordCoverFailure}
-          />
-        ) : (
-          <EditorialCoverflow
-            books={carouselBooks}
-            carousel={carousel}
-            loading={loading}
-            onCoverFailure={recordCoverFailure}
-          />
-        )}
+        <ReferenceCatalogStage
+          books={carouselBooks}
+          carousel={carousel}
+          approvedAudiobooks={approvedAudiobooks}
+          onCoverFailure={recordCoverFailure}
+        />
       </div>
 
       <aside className="premium-hero-offer" aria-label="Earnalism Reading Pass" data-testid="premium-hero-reading-pass">

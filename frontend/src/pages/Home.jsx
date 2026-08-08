@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -15,9 +15,8 @@ import {
   Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
-import CuratedShelfCollage from "../components/CuratedShelfCollage";
+import DeferredMount from "../components/DeferredMount";
 import PremiumHero from "../components/PremiumHero";
-import PremiumListeningRail from "../components/PremiumListeningRail";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
@@ -29,6 +28,9 @@ import {
   getHomeCurationSnapshot,
 } from "../lib/homeCuration";
 import useSEO from "../hooks/useSEO";
+
+const CuratedShelfCollage = lazy(() => import("../components/CuratedShelfCollage"));
+const PremiumListeningRail = lazy(() => import("../components/PremiumListeningRail"));
 
 // HomeShelfArchitecture remains the compatibility name for the editorial Home mount.
 
@@ -52,8 +54,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [newsletterStatus, setNewsletterStatus] = useState("");
-  const cachedHomeCuration = getHomeCurationCache();
-  const [homeCuration, setHomeCuration] = useState(() => cachedHomeCuration || getHomeCurationSnapshot());
+  const [homeCuration, setHomeCuration] = useState(() => getHomeCurationSnapshot());
   const [homeCurationLoading, setHomeCurationLoading] = useState(false);
   const [homeCurationError, setHomeCurationError] = useState(false);
   const activeSocials = useMemo(() => (
@@ -70,6 +71,11 @@ export default function Home() {
     imageAlt: "Earnalism Bengali and English classics shelf artwork",
     canonicalPath: "/",
   });
+
+  useEffect(() => {
+    const cachedHomeCuration = getHomeCurationCache();
+    if (cachedHomeCuration) setHomeCuration(cachedHomeCuration);
+  }, []);
 
   useEffect(() => {
     trackFunnelEvent("bengali_gothic_pipeline_view", {
@@ -148,15 +154,23 @@ export default function Home() {
         analyticsNamespace="home"
         onTrack={(event, metadata) => trackFunnelEvent(event, { source: "home", ...metadata })}
       />
-      <PremiumListeningRail
-        books={homeCuration.listening_rooms?.items || homeCuration.selected_audiobooks || []}
-        reserveBooks={homeCuration.listening_rooms?.reserve_items || homeCuration.reserve_audiobooks || []}
-        loading={homeCurationLoading}
-        error={homeCurationError}
-      />
-      <div id="curated-action-cards-title" data-testid="home-shelf-architecture">
-        <CuratedShelfCollage curation={homeCuration} />
-      </div>
+      <DeferredMount className="home-deferred-listening" minHeight={374} rootMargin="480px 0px" testId="deferred-listening-room">
+        <Suspense fallback={<div className="home-deferred-listening__fallback" aria-hidden="true" />}>
+          <PremiumListeningRail
+            books={homeCuration.listening_rooms?.items || homeCuration.selected_audiobooks || []}
+            reserveBooks={homeCuration.listening_rooms?.reserve_items || homeCuration.reserve_audiobooks || []}
+            loading={homeCurationLoading}
+            error={homeCurationError}
+          />
+        </Suspense>
+      </DeferredMount>
+      <DeferredMount className="home-deferred-shelves" minHeight={0} rootMargin="700px 0px" testId="deferred-home-shelves">
+        <Suspense fallback={null}>
+          <div id="curated-action-cards-title" data-testid="home-shelf-architecture">
+            <CuratedShelfCollage curation={homeCuration} />
+          </div>
+        </Suspense>
+      </DeferredMount>
       {false && (
       <section
         className="premium-landing-hero reference-library-hero relative isolate overflow-hidden text-[#FDFCF8]"
