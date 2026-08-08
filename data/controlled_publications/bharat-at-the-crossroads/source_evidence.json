@@ -1,13 +1,15 @@
 {
   "slug": "bharat-at-the-crossroads",
-  "source_url": "",
   "source_name": "Reo Enterprise",
-  "source_license": "",
-  "source_hash": "15e74518f9394234afc8f23bde051c7ec052e43f22592731fde4a6ad54cc5f2b",
-  "content_hash": "1046d366e1626a3f617e577e2014ac44f1d7cdc9f06aceead57286a34f5eb605",
-  "provenance_hash": "ae88a247390c4f39ab5a5d971540653fe3a40d1c29b4a00c57938c869ca73d75",
+  "source_type": "original_work_internal_admin_source",
+  "source_license": "Original work; copyright reserved to Reo Enterprise.",
+  "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "content_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "provenance_hash": "272d8f84c8a0b974759463212c60531491030193cd47b57504f106756d06c5da",
   "rights_basis": "Original work authored by Ronik Basak; copyright reserved to Reo Enterprise.",
-  "downloaded_at": "2026-07-03T20:07:47Z",
-  "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "source_url": "",
+  "word_count": 34761,
+  "commercial_use_allowed": true,
+  "generated_at": "2026-08-08T00:00:00Z"
 }

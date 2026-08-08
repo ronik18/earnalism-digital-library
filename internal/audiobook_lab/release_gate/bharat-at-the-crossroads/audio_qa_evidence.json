@@ -1,0 +1,30 @@
+{
+  "slug": "bharat-at-the-crossroads",
+  "audio_file": "bharat-at-the-crossroads_bm_george.mp3",
+  "duration_seconds": 19309.392,
+  "sample_seconds": 60,
+  "samples": {
+    "opening": {
+      "start_seconds": 0,
+      "file": "opening.mp3",
+      "sha256": "7830d6d120f05702d8d99b28a6c45f42bb59276d04f29dc46812954822962060",
+      "bytes": 431277
+    },
+    "middle": {
+      "start_seconds": 9624.696,
+      "file": "middle.mp3",
+      "sha256": "5460f6adfd3c65ad73b380a0d4f1fb14d75f3bbfe60cfb437b6d7a5a20ebc64d",
+      "bytes": 435981
+    },
+    "ending": {
+      "start_seconds": 19249.392,
+      "file": "ending.mp3",
+      "sha256": "e136a8314b142c0b6676e1d22a50e736290995aba856d5b4a4502dad800511f6",
+      "bytes": 435381
+    }
+  },
+  "manual_listening_required": false,
+  "paragraph_sync": false,
+  "manual_listening_approved": true,
+  "approval_basis": "Explicit owner approval in conversation"
+}

@@ -1,34 +1,29 @@
 {
   "slug": "bharat-at-the-crossroads",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-08-08T00:00:00Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "cc3bff685023601ee9eb893951235c4290c87cd4914549ddeedd34eaae7b80ff"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "e3c1f31205d49216087cbe580b14082fcbb9bd74fbc7fd08279d914827533914"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "800de1dc55c5fa17b5d3810f91650935f235bc65891f2f85acf4731e0c5fa0ab"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "c8b375de5f4613911853f41ce1716bc2d4542817dda6428c14adc5787d70afad"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "285c2adfa65e5f01a7468b6de3410556ece88d6b0d9bb5b44a1772099b9b9e08"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "e5552972657e6f9230ceeac8858ba867fd84094ab7150e73ad3d9090aea52d9a"
+      "sha256": "cbd027a6788def63159c79e6191f5ba7bf41e915cb629cdc9edb95820bd0e198"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "bd88d32e95186b6046e8b7cbd9ea5fd2f1046ddfe292520ed30f135db8edc241"
+      "sha256": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "93d2d2080e7ea0c3281551449b22901cae478076c9a4a6d21529ca266ce6dc2e"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "16cd445544a45504dccb84344290caaf2ee7db3146ee7127637ddd1cd6ff3db6"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "c7feef241bf3abb8152d50ae2c9f7ceb3ce298f630813aa7d26a24a47be01ead"
     }
-  ]
+  ],
+  "audio_sha256": "d0684239667b35fb0806d80216c9fdb7e9e6b55b313129cb22e9546e23434084",
+  "audio_size_bytes": 147636213,
+  "audio_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3"
 }
