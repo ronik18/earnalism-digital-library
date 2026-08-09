@@ -18,7 +18,14 @@
 @media (min-width: 1024px) {
   /* Keep every desktop route aligned with the reference hero header. */
   :root {
+    /* The wordmark may scale inside this rail; it must never resize the rail. */
     --site-header-height: clamp(4.05rem, 5.85vw, 5.4rem);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --site-header-height: 3.6rem;
   }
 }
 

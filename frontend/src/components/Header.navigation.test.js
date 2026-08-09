@@ -3,6 +3,7 @@ import path from "path";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/components/Header.jsx"), "utf8");
 const styles = fs.readFileSync(path.join(process.cwd(), "src/components/Header.css"), "utf8");
+const globalStyles = fs.readFileSync(path.join(process.cwd(), "src/index.css"), "utf8");
 
 describe("premium header navigation", () => {
   test("uses only valid application routes and approved library filters", () => {
@@ -27,12 +28,17 @@ describe("premium header navigation", () => {
     expect(styles).toContain("font-size: var(--premium-header-menu-size) !important;");
     expect(styles).toContain("font-size: var(--premium-header-cta-size);");
     expect(styles).toContain("calc((0.95vw + 2px) * 1.02)");
+    expect(globalStyles).toContain("The wordmark may scale inside this rail; it must never resize the rail.");
+    expect(globalStyles).toContain("--site-header-height: clamp(4.05rem, 5.85vw, 5.4rem);");
+    expect(globalStyles).toContain("--site-header-height: 3.6rem;");
+    expect(styles).toContain("max-width: min(34rem, 34vw);");
+    expect(styles).toContain("transform: scale(1.3);");
+    expect(styles).toContain("left: 35.5%;");
     expect(styles).toContain(".premium-site-header #mobile-menu a");
     expect(styles).toContain("font-synthesis: none;");
     expect(styles).toContain("justify-content: flex-end;");
     expect(styles).toContain("min-height: 2.75rem;");
     expect(styles).toContain("min-width: 7.25rem;");
-    expect(styles).toContain("max-width: 23.8rem;");
     expect(styles).toContain("flex: 0 0 2.75rem;");
     expect(styles).toContain("@media (min-width: 1280px)");
     expect(styles).not.toContain("@media (min-width: 1024px) and (max-width: 1279px)");
