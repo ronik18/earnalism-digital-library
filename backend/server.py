@@ -3592,6 +3592,8 @@ class BookAudiobookIn(BaseModel):
 
 class AudiobookPresignIn(BaseModel):
     audio_object_key: str = Field(min_length=1, max_length=300)
+    audio_sha256: str = Field(default="", max_length=71)
+    audio_md5: str = Field(default="", max_length=128)
     evidence_object_key: str = Field(default="", max_length=300)
     expires_in: int = Field(default=600, ge=60, le=900)
 
@@ -3630,13 +3632,22 @@ def _validate_private_audiobook_object_key(slug: str, key: str, suffix: str) -> 
     return normalized_key
 
 
-def _b2_presigned_put_url(key: str, expires_in: int) -> str:
+def _b2_presigned_put_url(key: str, expires_in: int, *, audio_sha256: str = "", audio_md5: str = "") -> str:
     storage = next((store for store in _b2_storage_configs() if store.get("name") == "prod_write"), None)
     client = _b2_client(storage)
     try:
+        params = {
+            "Bucket": storage["bucket"],
+            "Key": key,
+            "ContentType": "application/octet-stream",
+        }
+        if audio_md5:
+            params["ContentMD5"] = audio_md5
+        if audio_sha256:
+            params["Metadata"] = {"sha256": audio_sha256}
         return str(client.generate_presigned_url(
             "put_object",
-            Params={"Bucket": storage["bucket"], "Key": key, "ContentType": "application/octet-stream"},
+            Params=params,
             ExpiresIn=expires_in,
             HttpMethod="PUT",
         ))
@@ -6140,12 +6151,20 @@ async def admin_presign_audiobook_upload(slug: str, payload: AudiobookPresignIn,
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
     audio_key = _validate_private_audiobook_object_key(slug, payload.audio_object_key, ".mp3")
+    audio_sha256 = _release_sha256(payload.audio_sha256)
+    if audio_sha256 and not _SHA256_RE.fullmatch(audio_sha256):
+        raise HTTPException(status_code=422, detail="audio_sha256 must be a SHA-256 digest")
     evidence_key = (
         _validate_private_audiobook_object_key(slug, payload.evidence_object_key, ".zip")
         if payload.evidence_object_key
         else ""
     )
-    audio_url = _b2_presigned_put_url(audio_key, payload.expires_in)
+    audio_url = _b2_presigned_put_url(
+        audio_key,
+        payload.expires_in,
+        audio_sha256=audio_sha256,
+        audio_md5=payload.audio_md5.strip(),
+    )
     evidence_url = _b2_presigned_put_url(evidence_key, payload.expires_in) if evidence_key else ""
     await db.admin_upload_audit.insert_one({
         "admin_user_id": str(admin.get("sub") or admin.get("email") or ""),
