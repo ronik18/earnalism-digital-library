@@ -18,13 +18,13 @@
 @media (min-width: 1024px) {
   /* Keep every desktop route aligned with the reference hero header. */
   :root {
-    --site-header-height: clamp(4.6rem, 7.2vw, 6.8rem);
+    --site-header-height: clamp(5rem, 7.6vw, 7rem);
   }
 }
 
 @media (max-width: 640px) {
   :root {
-    --site-header-height: clamp(4rem, 13vw, 4.5rem);
+    --site-header-height: clamp(4.8rem, 16vw, 5.6rem);
   }
 }
 

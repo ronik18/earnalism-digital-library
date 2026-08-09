@@ -196,10 +196,10 @@
 
   .premium-site-header--reference-home .brand-header-logo__custom {
     width: auto;
-    height: calc(var(--site-header-height) * 0.82);
+    height: calc(var(--site-header-height) * 0.74);
     max-width: min(34rem, 34vw);
     max-height: none;
-    transform: scale(1.15);
+    transform: scale(1.3);
     transform-origin: left center;
   }
 
@@ -212,10 +212,10 @@
 
   .premium-site-header--reference-home .brand-header-logo__wordmark-image {
     width: auto;
-    height: calc(var(--site-header-height) * 0.82);
+    height: calc(var(--site-header-height) * 0.74);
     max-width: min(34rem, 34vw);
     max-height: none;
-    transform: scale(1.15);
+    transform: scale(1.3);
     transform-origin: left center;
     object-fit: contain;
   }

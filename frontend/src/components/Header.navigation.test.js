@@ -28,7 +28,7 @@ describe("premium header navigation", () => {
     expect(styles).toContain("font-size: var(--premium-header-cta-size);");
     expect(styles).toContain("calc((0.95vw + 2px) * 1.02)");
     expect(styles).toContain("max-width: min(34rem, 34vw);");
-    expect(styles).toContain("transform: scale(1.15);");
+    expect(styles).toContain("transform: scale(1.3);");
     expect(styles).toContain("left: 35.5%;");
     expect(styles).toContain(".premium-site-header #mobile-menu a");
     expect(styles).toContain("font-synthesis: none;");
