@@ -2772,7 +2772,8 @@
       "title": "Platform output workspace",
       "release_truth_changed": false,
       "remote_storage_mutated": false,
-      "last_decision_at": "2026-08-08T18:07:55Z",
+      "last_decision_at": "2026-08-08T18:07:55Z"
+    },
     "the-art-of-money-getting": {
       "latest_decision": "PRIVATE_FULL_GENERATION_AUTHORIZED_PIPELINE_READY_PUBLIC_AUDIO_NOT_YET_APPROVED",
       "decision_reason": "The owner explicitly authorized this exact title for Kokoro bm_george full generation and stated public-release intent. The parameterized Colab conveyor may make bounded title-aware pace and pause decisions, but full-title listening, package, storage, endpoint, browser, and controlled-publication gates remain incomplete.",

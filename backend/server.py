@@ -389,6 +389,14 @@ B2_AUDIOBOOK_PROD_READ_SECRET_ACCESS_KEY = os.environ.get(
     "B2_AUDIOBOOK_PROD_READ_SECRET_ACCESS_KEY",
     "",
 ).strip()
+B2_AUDIOBOOK_PROD_WRITE_ACCESS_KEY_ID = (
+    os.environ.get("B2_AUDIOBOOK_PROD_WRITE_ACCESS_KEY_ID")
+    or B2_ACCESS_KEY_ID
+).strip()
+B2_AUDIOBOOK_PROD_WRITE_SECRET_ACCESS_KEY = (
+    os.environ.get("B2_AUDIOBOOK_PROD_WRITE_SECRET_ACCESS_KEY")
+    or B2_SECRET_ACCESS_KEY
+).strip()
 
 # Dependency-free per-process rate limits. For multi-instance scaling, move this
 # counter to Redis or an edge/WAF layer so limits are shared across replicas.
@@ -3604,7 +3612,7 @@ def _validate_private_audiobook_object_key(slug: str, key: str, suffix: str) -> 
 
 
 def _b2_presigned_put_url(key: str, expires_in: int) -> str:
-    storage = next((store for store in _b2_storage_configs() if store.get("name") == "primary"), None)
+    storage = next((store for store in _b2_storage_configs() if store.get("name") == "prod_write"), None)
     client = _b2_client(storage)
     try:
         return str(client.generate_presigned_url(
@@ -7902,6 +7910,14 @@ def _b2_storage_configs() -> list[dict[str, str]]:
             "bucket": B2_AUDIOBOOK_PROD_BUCKET,
             "access_key_id": B2_AUDIOBOOK_PROD_READ_ACCESS_KEY_ID,
             "secret_access_key": B2_AUDIOBOOK_PROD_READ_SECRET_ACCESS_KEY,
+        },
+        {
+            "name": "prod_write",
+            "endpoint": B2_AUDIOBOOK_PROD_S3_ENDPOINT,
+            "region": B2_AUDIOBOOK_PROD_REGION,
+            "bucket": B2_AUDIOBOOK_PROD_BUCKET,
+            "access_key_id": B2_AUDIOBOOK_PROD_WRITE_ACCESS_KEY_ID,
+            "secret_access_key": B2_AUDIOBOOK_PROD_WRITE_SECRET_ACCESS_KEY,
         },
         {
             "name": "primary",
