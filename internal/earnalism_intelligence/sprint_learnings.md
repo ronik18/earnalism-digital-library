@@ -1972,3 +1972,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A strong opening and ending do not compensate for failed dialogue and punctuation-heavy passages. The four-passage Sarvam `bulbul:v3` Simran audition closed at `8.0` with `0.85` confidence and a fatal list-reading-rhythm flag.
 - Keep the existing reader-only edition live and audio hidden. A DNS-blocked source reingestion must not replace or downgrade the approved reader artifact.
 - Do not widen this audition into full-title TTS. The next audio attempt must use a materially different provider or an approved human/licensed path and must pass every 8.9/0.90 listening and objective gate.
+
+## Local audiobook WAV scratch cleanup - 2026-08-08
+
+- `output/**/_work/*.wav` files from legacy polish runs were decoded intermediates: 2,538 files / 27,621,225,718 bytes, with zero tracked references.
+- A safe local cleanup must hash every target, bind the manifest to `HEAD` and `origin/main`, validate path, size, and modification time before deletion, and leave intent plus tombstone evidence.
+- Preserve provider `_work/*.mp3` chunks, final MP3s, source audiobooks, timestamps, VTT, chapter, and metadata sidecars. Their counts and bytes remained unchanged.
+- This cleanup is storage hygiene only; it does not alter release readiness or public audio state.

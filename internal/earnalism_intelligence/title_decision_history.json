@@ -2316,6 +2316,39 @@
       "audio_release_status": "NOT_REQUESTED",
       "audio_exposed": false,
       "last_decision_at": "2026-08-08T10:50:00Z"
+    },
+    "platform-output-workspace": {
+      "decisions": [
+        {
+          "timestamp": "2026-08-08T18:07:55Z",
+          "workstream": "local_audiobook_storage_hygiene",
+          "slug_or_area": "platform-output-workspace",
+          "decision": "delete_only_checksum_manifested_decoded_work_wavs_and_retain_every_release_or_provenance_asset",
+          "evidence": {
+            "head": "a0ca5c6c817409310a9d3f0ade3a3b49b602b314",
+            "manifest": "output/audiobook_storage_cleanup/local-wav-scratch-cleanup-20260808-v1/pre_delete_manifest.json",
+            "manifest_sha256": "db24652cbd0bd08caa42380c73b1f28565765375ff5e87dbc00a633e10ed350d",
+            "tombstone": "output/audiobook_storage_cleanup/local-wav-scratch-cleanup-20260808-v1/deletion_tombstone.json",
+            "deleted_wav_count": 2538,
+            "deleted_bytes": 27621225718,
+            "remaining_work_wav_count": 0,
+            "protected_work_mp3_count": 2539,
+            "protected_work_mp3_bytes": 3759517296,
+            "all_output_mp3_count": 2881,
+            "all_output_mp3_bytes": 18715862872,
+            "remote_storage_mutated": false,
+            "release_truth_changed": false
+          },
+          "selected_option": "Keep final MP3s, source audio, synchronization sidecars, provider MP3 chunks, and all release evidence; remove only unreferenced decoded WAV scratch after per-file SHA-256 capture and fail-closed validation.",
+          "release_gate_reason": "No release or public-audio state changed.",
+          "result": "LOCAL_WAV_SCRATCH_CLEANUP_COMPLETE",
+          "next_action": "Require future local scratch cleanup to use the same manifest-and-tombstone protocol."
+        }
+      ],
+      "title": "Platform output workspace",
+      "release_truth_changed": false,
+      "remote_storage_mutated": false,
+      "last_decision_at": "2026-08-08T18:07:55Z"
     }
   },
   "bengali_audio_lane_status": "D19_INDIC_PARLER_OBJECTIVE_FAIL_SOURCE_BOUND_REPLACEMENT_REQUIRED",
