@@ -22,11 +22,28 @@ describe("Home performance sprint contract", () => {
     const globalStyles = read("src/index.css");
     const readerStyles = read("src/pages/ReaderRoute.css");
 
-    expect(home).toContain('lazy(() => import("../components/PremiumListeningRail"))');
-    expect(home).toContain('lazy(() => import("../components/CuratedShelfCollage"))');
+    expect(home).toContain('lazy(() => import("../components/HomeListeningRoom"))');
+    expect(home).toContain('lazy(() => import("../components/HomeShelfArchitecture"))');
     expect(home).toContain("<DeferredMount");
     expect(globalStyles).not.toContain(".premium-reader {");
     expect(readerStyles).toContain(".premium-reader {");
+  });
+
+  test("splits anonymous hero and listening data without blocking the initial shell", () => {
+    const home = read("src/pages/Home.jsx");
+    const surfaces = read("src/lib/homeSurfaces.js");
+    const listening = read("src/components/HomeListeningRoom.jsx");
+    const vercel = read("vercel.json");
+
+    expect(home).toContain("getHomeHeroSnapshot()");
+    expect(home).toContain("fetchHomeHero(controller.signal)");
+    expect(home).not.toContain("fetchHomeCuration(controller.signal)");
+    expect(listening).toContain("fetchHomeListening(controller.signal, 3)");
+    expect(surfaces).toContain('credentials: "omit"');
+    expect(surfaces).toContain('"/home/hero"');
+    expect(surfaces).toContain('`/home/listening?limit=${boundedLimit}`');
+    expect(vercel).toContain('"source": "/api/home/hero"');
+    expect(vercel).toContain('"source": "/api/home/listening"');
   });
 
   test("ships responsive immutable brand and hero assets plus field metrics", () => {

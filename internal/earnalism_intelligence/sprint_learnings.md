@@ -1979,3 +1979,17 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A safe local cleanup must hash every target, bind the manifest to `HEAD` and `origin/main`, validate path, size, and modification time before deletion, and leave intent plus tombstone evidence.
 - Preserve provider `_work/*.mp3` chunks, final MP3s, source audiobooks, timestamps, VTT, chapter, and metadata sidecars. Their counts and bytes remained unchanged.
 - This cleanup is storage hygiene only; it does not alter release readiness or public audio state.
+## Parameterized Colab audiobook conveyor - 2026-08-09
+
+- Title parameters, canonical controlled-publication identity, voice, model, territory, and owner intent belong in one auditable configuration block; generation cells must not contain title-specific paths or manuscript uploads.
+- Adaptive narration decisions may tune speed and punctuation-aware silence within bounded ranges, but they must preserve canonical token order and produce a deterministic attempt fingerprint so failed settings are never silently repeated.
+- Representative ASR is a cost and quality circuit breaker. Full synthesis may start only after representative source fidelity passes, and one bounded slower repair is the maximum automatic retry for the same title/voice lineage.
+- Emotional expression cannot be self-certified from ASR. Full-title listening remains a human evidence gate at 8.9 per dimension, 0.90 confidence, and zero fatal flags before package construction or public release.
+- Colab artifacts are private release inputs, not public assets. Production storage receipts, checksums, endpoint proof, browser playback, and controlled-publication mutation remain separate guarded stages.
+
+## 2026-08-09 - Colab local output with optional private B2 handoff
+
+- Google Drive is no longer required for the Colab audiobook conveyor. Synthesis and QA default to ephemeral `/content/earnalism-audiobooks` storage.
+- Optional B2 transport accepts only short-lived pre-signed upload URLs from Colab Secrets; permanent B2 credentials remain outside the notebook.
+- The handoff uploads the final MP3 and evidence ZIP only, records local SHA-256 receipts, and never mutates public release fields.
+- The safe Colab integration now obtains title-scoped PUT URLs from the protected admin presign route using an admin bearer token; B2 access keys remain Railway-only.

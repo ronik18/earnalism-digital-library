@@ -67,8 +67,18 @@
       "source_sha256": "c8cd98430bcaa621dd206b8d3c880b34ca3daf4776e4b89c8a10d8c5f84cb2d3",
       "representative_attempt_fingerprint": "c1e8a0ae6617093d8f13b0b07ca3a72115dd56d9336a04716f44d116f7aad458",
       "representative_asr_repair_fingerprint": "59ee181f736e534ccab753a355696de7cc2d40c22e647e68092fec3a056ba20c",
-      "representative_asr_scores": [10.0, 9.9408, 10.0, 10.0],
-      "representative_coverage_scores": [1.0, 0.9882, 1.0, 1.0],
+      "representative_asr_scores": [
+        10.0,
+        9.9408,
+        10.0,
+        10.0
+      ],
+      "representative_coverage_scores": [
+        1.0,
+        0.9882,
+        1.0,
+        1.0
+      ],
       "representative_ordered_content_integrity_pass": false,
       "failed_passage": "caterpillar_identity_dialogue",
       "persistent_missing_tokens": {
@@ -219,13 +229,30 @@
       "last_words_match": false,
       "construction_audit_score": 10.0,
       "construction_audit_satisfies_asr_gate": false,
-      "full_private_listening_scores": [8.0, 8.0, 9.4, 9.4, 9.4, 8.0],
+      "full_private_listening_scores": [
+        8.0,
+        8.0,
+        9.4,
+        9.4,
+        9.4,
+        8.0
+      ],
       "minimum_listening_confidence": 0.85,
-      "fatal_flags": ["list_reading_rhythm_detected"],
+      "fatal_flags": [
+        "list_reading_rhythm_detected"
+      ],
       "publication_performed": false,
       "upload_performed": false,
       "observed_public_endpoint_status": 404,
-      "outstanding_publication_proof": ["human_or_licensed_audio_candidate", "raw_audio_derived_asr_source_gte_9_7", "first_last_pass", "listening_pass", "upload_checksum", "endpoint_hash_binding", "browser_gate"],
+      "outstanding_publication_proof": [
+        "human_or_licensed_audio_candidate",
+        "raw_audio_derived_asr_source_gte_9_7",
+        "first_last_pass",
+        "listening_pass",
+        "upload_checksum",
+        "endpoint_hash_binding",
+        "browser_gate"
+      ],
       "stage2g_estimated_usd": 0.4226,
       "title_conservative_cumulative_usd": 1.5318,
       "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
@@ -273,7 +300,12 @@
         "representative_audio_duration_seconds": 99.300136,
         "representative_audio_size_bytes": 8758448,
         "objective_audio_format_status": "PASS_4_OF_4_PCM_S16LE_MONO_44100",
-        "audio_sha256": ["154ec9fc2aa3513e854d05ac78339994724d5f13858241387ae0658244c248ca", "ce1f1a95f84fa75a4c9a68c919d46b7149b2cb99df9fdea344445cfc5e0e64ad", "aedd8e20c12af01d513d39765d2a846a44d6c395a46cdd363215341fe133aac1", "70f1b9d4a277e9852750569bf985f70a7f180595ad97270a80387f3163db374a"],
+        "audio_sha256": [
+          "154ec9fc2aa3513e854d05ac78339994724d5f13858241387ae0658244c248ca",
+          "ce1f1a95f84fa75a4c9a68c919d46b7149b2cb99df9fdea344445cfc5e0e64ad",
+          "aedd8e20c12af01d513d39765d2a846a44d6c395a46cdd363215341fe133aac1",
+          "70f1b9d4a277e9852750569bf985f70a7f180595ad97270a80387f3163db374a"
+        ],
         "provider_calls_ran": false,
         "estimated_provider_cost_usd": 0.0,
         "asr_run": false,
@@ -292,8 +324,18 @@
         "asr_model_revision": "a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
         "asr_model_weights_sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
         "asr_qa_fingerprint": "86024b6a3a710156072c383e6a13e248401fa2d565b4311e2a17fbd3a3ac8695",
-        "representative_passage_scores": [0.8929, 1.9643, 0.7812, 0.9231],
-        "representative_passage_ordered_coverages": [0.0833, 0.1818, 0.0735, 0.0822],
+        "representative_passage_scores": [
+          0.8929,
+          1.9643,
+          0.7812,
+          0.9231
+        ],
+        "representative_passage_ordered_coverages": [
+          0.0833,
+          0.1818,
+          0.0735,
+          0.0822
+        ],
         "aggregate_raw_asr_source_score": 1.2617,
         "required_raw_asr_source_score": 9.7,
         "aggregate_ordered_coverage": 0.1011,
@@ -367,8 +409,19 @@
       "plateau_confirmed": true,
       "initial_google_aoede_representative_score": 9.3,
       "full_private_qa_status": "FULL_RELEASE_QA_BLOCKED",
-      "full_private_listening_scores": [9.4, 9.5, 9.4, 9.4, 8.0, 7.8],
-      "full_private_fatal_flags": ["list_reading_rhythm_detected", "mechanical_cadence_detected", "robotic_texture_detected"],
+      "full_private_listening_scores": [
+        9.4,
+        9.5,
+        9.4,
+        9.4,
+        8.0,
+        7.8
+      ],
+      "full_private_fatal_flags": [
+        "list_reading_rhythm_detected",
+        "mechanical_cadence_detected",
+        "robotic_texture_detected"
+      ],
       "achird_targeted_repair_representative_score": 7.4,
       "aoede_slow_repair_representative_score": 7.8,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit",
@@ -508,11 +561,22 @@
         "closeout_path": "book_2b9853ec52_bengali_pilot_closeout.json"
       },
       "bengali_audiobook_repair": {
-        "planned_regenerated_groups": [0],
-        "planned_reused_groups": [1, 2],
+        "planned_regenerated_groups": [
+          0
+        ],
+        "planned_reused_groups": [
+          1,
+          2
+        ],
         "tts_input_clean": true,
         "tts_by_construction_verified_for_planned_sequence": true,
-        "report_paths": ["book_2b9853ec52_clean_tts_repair_plan.json", "book_2b9853ec52_clean_audiobook_text.json", "book_2b9853ec52_group_repair_report.json", "book_2b9853ec52_tts_source_provenance_report.json", "book_2b9853ec52_clean_repair_closeout.json"]
+        "report_paths": [
+          "book_2b9853ec52_clean_tts_repair_plan.json",
+          "book_2b9853ec52_clean_audiobook_text.json",
+          "book_2b9853ec52_group_repair_report.json",
+          "book_2b9853ec52_tts_source_provenance_report.json",
+          "book_2b9853ec52_clean_repair_closeout.json"
+        ]
       },
       "provider": "sarvam",
       "model": "bulbul:v3",
@@ -689,7 +753,12 @@
       "canonical_chapter_count": 9,
       "canonical_manuscript_char_count": 83685,
       "canonical_manuscript_sha256": "e53d59d7384eae55da518158f5e6affb9d295abea6fb888eaf3794f0d4f5b660",
-      "representative_passage_hashes": ["f4d1975b39fd3ec3b88356a77a0bcfe4291e22fcecde8fde8ab56c364ed29ac3", "56aeda8fd8e25256db1cd9e035297e0ad6b7bb0a0503282da09aa4b5f85ec4c7", "074db9181d974375131548ba6d6a979349cbe92de847931069a21f4c1477407a", "4f2a2bbd62bcc0057c4f139b29a4e8e9e227e5ddef1516b7d20b9382296f69d4"],
+      "representative_passage_hashes": [
+        "f4d1975b39fd3ec3b88356a77a0bcfe4291e22fcecde8fde8ab56c364ed29ac3",
+        "56aeda8fd8e25256db1cd9e035297e0ad6b7bb0a0503282da09aa4b5f85ec4c7",
+        "074db9181d974375131548ba6d6a979349cbe92de847931069a21f4c1477407a",
+        "4f2a2bbd62bcc0057c4f139b29a4e8e9e227e5ddef1516b7d20b9382296f69d4"
+      ],
       "tts_provider_calls_ran": false,
       "listening_probe_provider_call_ran": true,
       "listening_probe_status": "OPENAI_GPT_AUDIO_429_INSUFFICIENT_QUOTA",
@@ -700,10 +769,24 @@
       "gemini_tts_provider_calls_ran": true,
       "google_adc_status": "USABLE_VERTEX_AND_GEMINI_TTS_CALLS_COMPLETED",
       "representative_results": {
-        "sarvam_ratan_literary_warm_pacing": [9.4, 5.5, 0.0, 0.0],
-        "gemini_charon_dialogue_human_touch": [9.5, 7.0, 0.0, 0.0],
+        "sarvam_ratan_literary_warm_pacing": [
+          9.4,
+          5.5,
+          0.0,
+          0.0
+        ],
+        "gemini_charon_dialogue_human_touch": [
+          9.5,
+          7.0,
+          0.0,
+          0.0
+        ],
         "minimum_required": 9.2,
-        "fatal_flags_observed": ["mechanical_cadence_detected", "list_reading_rhythm_detected", "repeated_identical_sentence_endings_detected"]
+        "fatal_flags_observed": [
+          "mechanical_cadence_detected",
+          "list_reading_rhythm_detected",
+          "repeated_identical_sentence_endings_detected"
+        ]
       },
       "full_title_generated": false,
       "public_release_status": "AUDIO_HIDDEN_NO_RELEASE_GATE_CHANGE"
@@ -732,16 +815,35 @@
       "full_title_duration_seconds": 3563.115792,
       "asr_gate_status": "FAIL_ALL_SAARAS_RAW_CALIBRATION_SCORES_BELOW_9_7_AND_EXACT_GAPS",
       "raw_asr_score": 1.0962,
-      "distinct_calibration_scores": [7.9085, 9.0441],
+      "distinct_calibration_scores": [
+        7.9085,
+        9.0441
+      ],
       "distinct_calibration_ending_status": "ERROR_OPENAI_INSUFFICIENT_QUOTA",
       "google_asr_status": "ADC_REFRESH_UNAVAILABLE_NOT_STARTED",
       "local_whisper_medium_status": "RUNTIME_RESOURCE_KILLED_EXIT_137_NO_TRANSCRIPT",
       "local_whisper_medium_model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
       "local_whisper_medium_cost_usd": 0.0,
-      "saaras_representative_normalized_scores": [9.776, 9.818, 9.737],
-      "saaras_representative_phonetic_scores": [9.936, 9.898, 9.883],
-      "saaras_representative_coverages": [0.9936, 0.9898, 0.9883],
-      "saaras_representative_raw_scores": [8.6275, 8.8971, 8.7179],
+      "saaras_representative_normalized_scores": [
+        9.776,
+        9.818,
+        9.737
+      ],
+      "saaras_representative_phonetic_scores": [
+        9.936,
+        9.898,
+        9.883
+      ],
+      "saaras_representative_coverages": [
+        0.9936,
+        0.9898,
+        0.9883
+      ],
+      "saaras_representative_raw_scores": [
+        8.6275,
+        8.8971,
+        8.7179
+      ],
       "full_asr_groups_attempted": 2,
       "full_asr_groups_passed_under_current_policy": 0,
       "historical_groups_recorded_passed": 1,
@@ -1351,9 +1453,24 @@
         "new_publication_content_hash": "12bc09cce1802df3c03d94ec8dee67e3feedc7fe754887b8e6cdb3acce02e614"
       },
       "representative_results": {
-        "gemini_charon_emotional_but_restrained": [9.3, 9.0, 5.5, 0.0],
-        "gemini_kore_anti_list_reading_flow": [5.8, 0.0, 0.0, 0.0],
-        "gemini_callirrhoe_punctuation_aware_emotional": [8.8, 9.4, 7.5, 0.0],
+        "gemini_charon_emotional_but_restrained": [
+          9.3,
+          9.0,
+          5.5,
+          0.0
+        ],
+        "gemini_kore_anti_list_reading_flow": [
+          5.8,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "gemini_callirrhoe_punctuation_aware_emotional": [
+          8.8,
+          9.4,
+          7.5,
+          0.0
+        ],
         "minimum_required": 9.2
       },
       "full_title_generated": false,
@@ -1376,10 +1493,24 @@
       "audiobook_next_action": "Do not repeat the completed Gemini fingerprints. Repair the owner-approved matched cover pair, then use a genuinely different provider/voice or source-bound narration.",
       "cover_gate_status": "BLOCKED_BACK_COVER_TEXT_OVERLAP_AND_READABILITY_FAILURE",
       "representative_results": {
-        "gemini_callirrhoe_dialogue_human_touch": [9.2, 5.5, 0.0, 0.0],
-        "gemini_charon_anti_mechanical_cadence": [9.4, 5.5, 0.0, 0.0],
+        "gemini_callirrhoe_dialogue_human_touch": [
+          9.2,
+          5.5,
+          0.0,
+          0.0
+        ],
+        "gemini_charon_anti_mechanical_cadence": [
+          9.4,
+          5.5,
+          0.0,
+          0.0
+        ],
         "minimum_required": 9.2,
-        "fatal_flags_observed": ["robotic_texture_detected", "mechanical_cadence_detected", "list_reading_rhythm_detected"]
+        "fatal_flags_observed": [
+          "robotic_texture_detected",
+          "mechanical_cadence_detected",
+          "list_reading_rhythm_detected"
+        ]
       },
       "full_title_generated": false,
       "public_audio_status": "AUDIO_HIDDEN"
@@ -1404,16 +1535,41 @@
       "canonical_source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
       "google_studio_c_attempt_fingerprint": "664d046c50c547837cdbe08ff67b5f657ab63b89dfbab25a7667db1f917c069a",
       "google_studio_c_status": "CLOSED_LISTENING_FAIL_DO_NOT_REPEAT",
-      "google_studio_c_listening_scores": [9.4, 8.4, 8.4, 9.4],
+      "google_studio_c_listening_scores": [
+        9.4,
+        8.4,
+        8.4,
+        9.4
+      ],
       "google_charon_attempt_fingerprint": "8f3cb33e3ef2a8058f6149bd2d100c9fa84233e6346e1d92ec5c9d03c9e16b71",
       "google_charon_voice": "en-GB-Chirp3-HD-Charon",
       "google_charon_speaking_rate": 0.94,
-      "google_charon_raw_asr_scores": [10.0, 9.8438, 10.0, 10.0],
-      "google_charon_normalized_asr_scores": [10.0, 10.0, 10.0, 10.0],
-      "google_charon_normalized_coverages": [1.0, 1.0, 1.0, 1.0],
+      "google_charon_raw_asr_scores": [
+        10.0,
+        9.8438,
+        10.0,
+        10.0
+      ],
+      "google_charon_normalized_asr_scores": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "google_charon_normalized_coverages": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
       "google_charon_ordered_content_integrity_pass": true,
       "google_charon_word_timestamp_evidence_valid": true,
-      "google_charon_listening_scores": [9.4, 9.4, 9.4, 9.4],
+      "google_charon_listening_scores": [
+        9.4,
+        9.4,
+        9.4,
+        9.4
+      ],
       "google_charon_minimum_confidence": 0.95,
       "google_charon_fatal_flags": [],
       "canonical_front_cover_ready": true,
@@ -1500,8 +1656,13 @@
       "google_charon_chunk9_sentence_safe_voice": "en-GB-Chirp3-HD-Charon",
       "google_charon_chunk9_sentence_safe_speaking_rate": 0.94,
       "google_charon_chunk9_sentence_safe_pitch": 0.0,
-      "google_charon_chunk9_sentence_safe_parent_to_child_changed_indexes": [9],
-      "google_charon_chunk9_sentence_safe_root_to_child_changed_indexes": [9, 36],
+      "google_charon_chunk9_sentence_safe_parent_to_child_changed_indexes": [
+        9
+      ],
+      "google_charon_chunk9_sentence_safe_root_to_child_changed_indexes": [
+        9,
+        36
+      ],
       "google_charon_chunk9_sentence_safe_preserved_audio_file_count": 91,
       "google_charon_chunk9_sentence_safe_preserved_hashes_sha256": "ccebbbe37ff877cddb189ee459302e14b863b4514e20f22d75597b67c08f4920",
       "google_charon_chunk9_sentence_safe_provider_calls_ran": false,
@@ -1675,7 +1836,16 @@
             "candidate_release_descriptor_cleared": true,
             "legacy_descriptor_retained_for_explicit_rollback": true,
             "fresh_identity_count": 8,
-            "fresh_identity_manifest_statuses": [200, 200, 200, 200, 200, 200, 200, 200],
+            "fresh_identity_manifest_statuses": [
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200
+            ],
             "fresh_identity_manifests_exact_package": true,
             "previously_legacy_identity_manifest_status": 200,
             "previously_legacy_identity_manifest_exact_package": true,
@@ -1729,13 +1899,30 @@
       "model": "gpt-4o-mini-tts",
       "voice": "verse",
       "style": "classic_literary_narrator",
-      "studio_c_scores": [8.4, 9.4, 7.3, 8.4],
-      "chirp_achird_scores": [9.4, 9.4, 8.5, 9.4],
+      "studio_c_scores": [
+        8.4,
+        9.4,
+        7.3,
+        8.4
+      ],
+      "chirp_achird_scores": [
+        9.4,
+        9.4,
+        8.5,
+        9.4
+      ],
       "reuse_candidate_id": "candidate-61355c7842dbcbae",
       "dedup_group_id": "dedup-4fb10f2026b8c586",
       "asr_source_score": 9.8426,
       "first_last_pass": true,
-      "reuse_listening_scores": [9.4, 9.4, 9.4, 9.5, 9.4, 9.4],
+      "reuse_listening_scores": [
+        9.4,
+        9.4,
+        9.4,
+        9.5,
+        9.4,
+        9.4
+      ],
       "minimum_confidence": 0.95,
       "fatal_flags": [],
       "measured_sync_score": 9.7997,
@@ -1763,21 +1950,44 @@
       "voice": "en-GB-Studio-C",
       "speaking_rate": 0.94,
       "attempt_fingerprint": "bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e",
-      "listening_scores": [9.4, 8.4, 7.5, 9.4],
+      "listening_scores": [
+        9.4,
+        8.4,
+        7.5,
+        9.4
+      ],
       "alternate_voice": "en-GB-Chirp3-HD-Achird",
       "alternate_attempt_fingerprint": "dcef93a40f30b3529eb8958c039aaa309ae2753d44208e0fce5d3a4b754241fa",
-      "alternate_listening_scores": [9.4, 9.4, 7.2, 9.4],
+      "alternate_listening_scores": [
+        9.4,
+        9.4,
+        7.2,
+        9.4
+      ],
       "kokoro_voice": "af_bella",
       "kokoro_base_attempt_fingerprint": "b07e30881ec1c1a04944c8f2ba5ccc1b94bf24dc176a784ae12963b9e072f266",
       "kokoro_execution_fingerprint": "66e0b11cca0c530679ffda849d1069dd4f3f5d6a76ed0b756f719f86256284d3",
       "kokoro_asr_repair_fingerprint": "63c614ca791064d7bdcaaf8ad595c20198af55295a7d4b3a08d7fe4106ebac9e",
-      "kokoro_asr_scores": [10.0, 10.0, 10.0, 10.0],
+      "kokoro_asr_scores": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
       "kokoro_listening_transport_valid_samples": 1,
       "kokoro_listening_transport_invalid_samples": 3,
-      "kokoro_audible_sample_fatal_flags": ["robotic_texture_detected", "mechanical_cadence_detected", "choppy_joins_detected", "fallback_tts_detected"],
+      "kokoro_audible_sample_fatal_flags": [
+        "robotic_texture_detected",
+        "mechanical_cadence_detected",
+        "choppy_joins_detected",
+        "fallback_tts_detected"
+      ],
       "kokoro_platform_screen_pass": false,
       "minimum_confidence": 0.85,
-      "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
+      "fatal_flags": [
+        "mechanical_cadence_detected",
+        "robotic_texture_detected"
+      ],
       "attempt_must_not_repeat": true,
       "alternate_attempt_must_not_repeat": true,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/dsires-baby/metadata.json",
@@ -1802,8 +2012,18 @@
       "actual_provider_billing": "NOT_REPORTED",
       "conservative_provider_spend_usd": 0.031785,
       "model_attempt_consumed": true,
-      "representative_asr_scores": [9.6032, 9.5, 9.7041, 9.5849],
-      "representative_coverage_scores": [0.9528, 0.95, 0.9762, 0.9549],
+      "representative_asr_scores": [
+        9.6032,
+        9.5,
+        9.7041,
+        9.5849
+      ],
+      "representative_coverage_scores": [
+        0.9528,
+        0.95,
+        0.9762,
+        0.9549
+      ],
       "ordered_content_integrity_passed": false,
       "listening_qa_ran": false,
       "paid_lock_restored_byte_for_byte": true,
@@ -1829,7 +2049,12 @@
       "source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
       "representative_attempt_fingerprint": "f849e64889b7a614bce6eb2ad3c0b5630424cf5d338e6a1b9d216318842aceff",
       "representative_asr_repair_fingerprint": "d73039f782de602ae41da7eda483a58c256a8b1be177d3b5aac5e848d89e707f",
-      "representative_asr_scores": [10.0, 10.0, 10.0, 10.0],
+      "representative_asr_scores": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
       "representative_listening_overall_min": 9.0,
       "representative_listening_confidence_min": 0.92,
       "representative_listening_fatal_flags": [],
@@ -1843,7 +2068,13 @@
       "chapter_001_measured_sync_score": 9.6262,
       "chapter_001_measured_sync_coverage": 1.0,
       "chapter_001_ordered_content_integrity_pass": false,
-      "chapter_001_persistent_unexpected_speech": ["is", "the end", "thanks for watching and see you next time", "thanks for watching", "you"],
+      "chapter_001_persistent_unexpected_speech": [
+        "is",
+        "the end",
+        "thanks for watching and see you next time",
+        "thanks for watching",
+        "you"
+      ],
       "remaining_chapters_generated": false,
       "model_attempt_consumed": true,
       "attempt_must_not_repeat": true,
@@ -1859,15 +2090,35 @@
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "studio_c_fingerprint": "bd4b31c2312dfa26",
-      "studio_c_scores": [8.4, 8.4, 8.4, 8.5],
+      "studio_c_scores": [
+        8.4,
+        8.4,
+        8.4,
+        8.5
+      ],
       "chirp_achird_fingerprint": "9311f74b6465c550",
-      "chirp_achird_scores": [8.4, 9.4, 8.5, 8.5],
+      "chirp_achird_scores": [
+        8.4,
+        9.4,
+        8.5,
+        8.5
+      ],
       "kokoro_voice": "af_bella",
       "kokoro_profile": "cop-ironic-restraint-v1",
       "kokoro_attempt_fingerprint": "b693be6196019d6e44b22ac1cdcc7e1ea7099550f69eb326bb3cdacf4f27c6bf",
       "kokoro_asr_config_fingerprint": "3610d60e9094c3f80f4c22d65b63db45f622f48b7ea927301acf01a221444075",
-      "kokoro_asr_scores": [10.0, 10.0, 10.0, 10.0],
-      "kokoro_listening_scores": [8.7, 8.3, 9.5, 9.5],
+      "kokoro_asr_scores": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "kokoro_listening_scores": [
+        8.7,
+        8.3,
+        9.5,
+        9.5
+      ],
       "kokoro_minimum_confidence": 0.85,
       "kokoro_fatal_flags": [],
       "kokoro_platform_screen_pass": false,
@@ -1884,16 +2135,36 @@
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "studio_c_fingerprint": "c0f5f836abe9976e",
-      "studio_c_scores": [8.4, 8.4, 9.4, 8.3],
+      "studio_c_scores": [
+        8.4,
+        8.4,
+        9.4,
+        8.3
+      ],
       "chirp_achird_fingerprint": "313f9bf5249bc7b5",
-      "chirp_achird_scores": [9.4, 9.4, 8.4, 9.4],
+      "chirp_achird_scores": [
+        9.4,
+        9.4,
+        8.4,
+        9.4
+      ],
       "kokoro_voice": "af_sarah",
       "kokoro_voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
       "kokoro_g2p_blocked_fingerprint": "b62c996d97def9e3f805eba13be2aa2b29ebf03858200657b2c959676b9d4935",
       "kokoro_attempt_fingerprint": "f152ffdc135dea3c9ffd463138489739a80a163196059e7cc0130527d83a7ed1",
       "kokoro_asr_repair_fingerprint": "6af4f78de1ff7aef48d178d3ae46d535ce9ad968cde190e4257c0cff16742312",
-      "kokoro_asr_scores": [10.0, 9.8611, 8.6957, 10.0],
-      "kokoro_source_coverages": [1.0, 0.9861, 0.8642, 1.0],
+      "kokoro_asr_scores": [
+        10.0,
+        9.8611,
+        8.6957,
+        10.0
+      ],
+      "kokoro_source_coverages": [
+        1.0,
+        0.9861,
+        0.8642,
+        1.0
+      ],
       "kokoro_ordered_content_integrity_pass": false,
       "kokoro_listening_qa_run": false,
       "completed_attempts_must_not_repeat": true,
@@ -1908,15 +2179,35 @@
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "studio_c_fingerprint": "6f561b31503df395",
-      "studio_c_scores": [8.4, 9.4, 9.4, 9.4],
+      "studio_c_scores": [
+        8.4,
+        9.4,
+        9.4,
+        9.4
+      ],
       "chirp_achird_fingerprint": "c648177b25f4a6c4",
-      "chirp_achird_scores": [8.4, 8.4, 9.4, 9.4],
+      "chirp_achird_scores": [
+        8.4,
+        8.4,
+        9.4,
+        9.4
+      ],
       "kokoro_voice": "bf_emma",
       "kokoro_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
       "kokoro_attempt_fingerprint": "dabff0b69632542f712b259fe039c9fa74092506141c71adb1d76b5afc21f33a",
       "kokoro_asr_repair_fingerprint": "f727d85f6d50cf99038f56b2fe826260dc205bf691d3ac65689c32f46f30f133",
-      "kokoro_asr_scores": [9.7959, 10.0, 9.902, 9.8824],
-      "kokoro_source_coverages": [0.9796, 1.0, 0.9902, 0.9882],
+      "kokoro_asr_scores": [
+        9.7959,
+        10.0,
+        9.902,
+        9.8824
+      ],
+      "kokoro_source_coverages": [
+        0.9796,
+        1.0,
+        0.9902,
+        0.9882
+      ],
       "kokoro_ordered_content_integrity_pass": false,
       "kokoro_listening_qa_run": false,
       "completed_attempts_must_not_repeat": true,
@@ -1932,15 +2223,35 @@
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "studio_c_fingerprint": "2fda4f2789d86388",
-      "studio_c_scores": [8.4, 8.4, 7.0, 9.4],
+      "studio_c_scores": [
+        8.4,
+        8.4,
+        7.0,
+        9.4
+      ],
       "chirp_achird_fingerprint": "8791b401758f5e9a",
-      "chirp_achird_scores": [8.6, 8.5, 9.4, 9.5],
+      "chirp_achird_scores": [
+        8.6,
+        8.5,
+        9.4,
+        9.5
+      ],
       "kokoro_voice": "af_sarah",
       "kokoro_voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
       "kokoro_attempt_fingerprint": "62d2a46ada6314da36e300f334a4cca0526c7ad102a2a4e86f3d7acb0c08d23d",
       "kokoro_asr_repair_fingerprint": "127ebeb2c482a3c7d316e80570b2a6fe39f95d2c1783e185908795c8b7b169c6",
-      "kokoro_asr_scores": [9.9631, 10.0, 10.0, 9.8605],
-      "kokoro_coverages": [0.9926, 1.0, 1.0, 0.9815],
+      "kokoro_asr_scores": [
+        9.9631,
+        10.0,
+        10.0,
+        9.8605
+      ],
+      "kokoro_coverages": [
+        0.9926,
+        1.0,
+        1.0,
+        0.9815
+      ],
       "kokoro_ordered_content_integrity_pass": false,
       "kokoro_listening_qa_run": false,
       "completed_attempts_must_not_repeat": true,
@@ -1958,10 +2269,24 @@
       "full_candidate_fingerprint": "5587b21dfa3da95c",
       "full_asr_source_score": 9.8333,
       "full_first_last_pass": true,
-      "full_listening_scores": [9.4, 9.5, 7.5, 9.5, 9.5, 9.4],
+      "full_listening_scores": [
+        9.4,
+        9.5,
+        7.5,
+        9.5,
+        9.5,
+        9.4
+      ],
       "repaired_candidate_binding": "21d75ab9607f533fc6526ff965b41dfc01d34d3865d423cb23ff2b6e94bdc9bc",
       "repaired_asr_source_score": 9.8519,
-      "repaired_listening_scores": [9.4, 8.4, 9.4, 8.4, 9.4, 9.4],
+      "repaired_listening_scores": [
+        9.4,
+        8.4,
+        9.4,
+        8.4,
+        9.4,
+        9.4
+      ],
       "completed_attempts_must_not_repeat": true,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-monkeys-paw/metadata.json",
       "audiobook_next_action": "Recover the exact `6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8` repaired recording from its original private build only if provenance and source binding can be re-established; otherwise obtain or regenerate one new rights-clear exact source-bound full-title delivery. Do not relabel either retained B2 object.",
@@ -1980,7 +2305,10 @@
         "audio_version_count": 2,
         "delete_marker_count": 0,
         "expected_audio_sha256": "6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8",
-        "observed_audio_sha256": ["044cdb5b0339574bed89fb44a4d57a9dda7fe5d8428dc73c72b6919e7d5a1a7a", "ae054cb6464fd228669304080e173268d2d4d37aabaa01a7b9be0b9f5f116600"],
+        "observed_audio_sha256": [
+          "044cdb5b0339574bed89fb44a4d57a9dda7fe5d8428dc73c72b6919e7d5a1a7a",
+          "ae054cb6464fd228669304080e173268d2d4d37aabaa01a7b9be0b9f5f116600"
+        ],
         "target_found": false,
         "target_immutable_version_id": null,
         "release_eligible": false,
@@ -1995,9 +2323,19 @@
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "studio_c_fingerprint": "ac9895f1da771ed0",
-      "studio_c_scores": [8.4, 9.4, 8.4, 8.4],
+      "studio_c_scores": [
+        8.4,
+        9.4,
+        8.4,
+        8.4
+      ],
       "chirp_achird_fingerprint": "6cdea40403ee92a9",
-      "chirp_achird_scores": [8.4, 9.4, 8.4, 8.4],
+      "chirp_achird_scores": [
+        8.4,
+        9.4,
+        8.4,
+        8.4
+      ],
       "completed_attempts_must_not_repeat": true,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-yellow-wallpaper/metadata.json",
       "audiobook_next_action": "Validate received source-bound narration or licensed audio against the packet before full release QA."
@@ -2014,10 +2352,25 @@
       "canonical_source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
       "kokoro_attempt_fingerprint": "bf5ff8b24d23e4ae912d332b247d26d5efb60eeb0b91ebad0bc179e40a7ea015",
       "kokoro_asr_config_fingerprint": "1b932d7d1193947aad72e51cc2deba889a4c09468b21618d02b21b38db124755",
-      "kokoro_representative_asr_scores": [10.0, 10.0, 10.0, 10.0],
-      "kokoro_representative_coverages": [1.0, 1.0, 1.0, 1.0],
+      "kokoro_representative_asr_scores": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "kokoro_representative_coverages": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
       "kokoro_ordered_content_integrity_pass": true,
-      "kokoro_representative_listening_scores": [9.6, 9.6, 9.5, 9.5],
+      "kokoro_representative_listening_scores": [
+        9.6,
+        9.6,
+        9.5,
+        9.5
+      ],
       "kokoro_minimum_listening_score": 9.5,
       "kokoro_minimum_confidence": 0.95,
       "kokoro_fatal_flags": [],
@@ -2042,8 +2395,18 @@
       "kokoro_bf_emma_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
       "kokoro_bf_emma_attempt_fingerprint": "519fdef2999d9d8e9b7f01cd4b2cb571cff6e41a1457aab1925b45d0c30f9fe3",
       "kokoro_bf_emma_asr_repair_fingerprint": "804d06f2f84ce24a2af4a5e92039d8c28019a782dbe11df958fef91c16647193",
-      "kokoro_bf_emma_asr_scores": [10.0, 9.6552, 10.0, 9.8776],
-      "kokoro_bf_emma_source_coverages": [1.0, 0.9655, 1.0, 0.9758],
+      "kokoro_bf_emma_asr_scores": [
+        10.0,
+        9.6552,
+        10.0,
+        9.8776
+      ],
+      "kokoro_bf_emma_source_coverages": [
+        1.0,
+        0.9655,
+        1.0,
+        0.9758
+      ],
       "kokoro_bf_emma_ordered_content_integrity_pass": false,
       "kokoro_bf_emma_listening_qa_run": false,
       "voxcpm2_model": "aufklarer/VoxCPM2-MLX-int8",
@@ -2059,7 +2422,10 @@
       "voxcpm2_v390_listening_sample_fingerprint": "a057f9adc8b10961784440f609428047f2b2bfef8ee16986083d96d2e548b5a8",
       "voxcpm2_v390_overall_listening_score": 8.5,
       "voxcpm2_v390_confidence": 0.92,
-      "voxcpm2_v390_fatal_flags": ["robotic_texture_detected", "choppy_joins_detected"],
+      "voxcpm2_v390_fatal_flags": [
+        "robotic_texture_detected",
+        "choppy_joins_detected"
+      ],
       "voxcpm2_v390_representative_expansion_performed": false,
       "voxcpm2_v390_full_title_generated": false,
       "qwen3_base_model": "aufklarer/Qwen3-TTS-12Hz-0.6B-Base-MLX-8bit",
@@ -2086,9 +2452,24 @@
       "cosyvoice3_v390_ordered_content_integrity_pass": false,
       "cosyvoice3_v390_listening_qa_run": false,
       "local_synthetic_family_attempts_closed": true,
-      "studio_c_scores": [9.5, 9.4, 8.5, 9.4],
-      "chirp_aoede_scores": [9.4, 9.4, 7.2, 9.5],
-      "contextual_studio_c_scores": [9.5, 9.4, 8.3, 9.5],
+      "studio_c_scores": [
+        9.5,
+        9.4,
+        8.5,
+        9.4
+      ],
+      "chirp_aoede_scores": [
+        9.4,
+        9.4,
+        7.2,
+        9.5
+      ],
+      "contextual_studio_c_scores": [
+        9.5,
+        9.4,
+        8.3,
+        9.5
+      ],
       "owner_minimum_score": 9.4,
       "contextual_risk_sampling_result": "FALSE_CONTEXTLESSNESS_FIXED_NO_PASS_CREATED",
       "plateau_confirmed": false,
@@ -2099,7 +2480,10 @@
         "status": "CANONICAL_ORIGINAL_GRAPHICAL_PAIR_COMPLETE",
         "front_sha256": "76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe",
         "back_sha256": "646ff70b8f6b93ffd4223003c953a20057f326e37808903fdd10af9851044a2a",
-        "dimensions": [1600, 2400],
+        "dimensions": [
+          1600,
+          2400
+        ],
         "generation_mode": "deterministic_original_programmatic_graphical_composition",
         "ocr_proofread_status": "PASS_EXACT_CONTROLLED_COPY",
         "internal_release_copy_absent": true,
@@ -2217,7 +2601,14 @@
       "chatterbox_v3_ordered_content_integrity_pass": false,
       "chatterbox_v3_confirmed_substitution": "Long -> Wong",
       "chatterbox_v3_listening_qa_run": false,
-      "retained_candidate_blockers": ["CHATTERBOX_V3_COVERAGE_BELOW_0_98", "CHATTERBOX_V3_ORDERED_CONTENT_INTEGRITY_FAILED", "CHATTERBOX_V3_LONG_TO_WONG_SUBSTITUTION_CONFIRMED_BY_TWO_DECODERS", "MEASURED_SYNC_MISSING", "FULL_LISTENING_QA_MISSING", "UPLOAD_ENDPOINT_AND_BROWSER_GATES_MISSING"],
+      "retained_candidate_blockers": [
+        "CHATTERBOX_V3_COVERAGE_BELOW_0_98",
+        "CHATTERBOX_V3_ORDERED_CONTENT_INTEGRITY_FAILED",
+        "CHATTERBOX_V3_LONG_TO_WONG_SUBSTITUTION_CONFIRMED_BY_TWO_DECODERS",
+        "MEASURED_SYNC_MISSING",
+        "FULL_LISTENING_QA_MISSING",
+        "UPLOAD_ENDPOINT_AND_BROWSER_GATES_MISSING"
+      ],
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/pride-and-prejudice_chatterbox_v3_private_pilot_closeout_20260728.json",
       "audiobook_next_action": "Keep Pride audio hidden and do not repeat the closed Chatterbox V3 fingerprint. Require one genuinely different exact source-bound delivery, then rerun objective ASR, coverage, first/last, and ordered-content gates before any listening spend."
     },
@@ -2233,8 +2624,18 @@
       "source_wrap_artifacts_removed": 167,
       "manuscript_reconciliation_evidence": "internal/earnalism_intelligence/the_tell_tale_heart_manuscript_reconciliation_20260730.json",
       "provider": "google",
-      "contextual_studio_c_scores": [9.4, 8.5, 9.4, 8.8],
-      "slow_contextual_studio_c_scores": [9.5, 8.4, 9.4, 9.6],
+      "contextual_studio_c_scores": [
+        9.4,
+        8.5,
+        9.4,
+        8.8
+      ],
+      "slow_contextual_studio_c_scores": [
+        9.5,
+        8.4,
+        9.4,
+        9.6
+      ],
       "owner_minimum_score": 9.4,
       "contextual_risk_sampling_result": "FALSE_CONTEXTLESSNESS_FIXED_NO_PASS_CREATED",
       "plateau_confirmed": true,
@@ -2242,15 +2643,35 @@
       "kokoro_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
       "kokoro_attempt_fingerprint": "5ab7a8abdc62cd901d16d7cb9fb6fe10094bb829d279574a6ccd6da88e1562f9",
       "kokoro_asr_repair_fingerprint": "6377ce48f1d97e9f8e5cfdd602dce256332c6a6ced7767877a20774578d72533",
-      "kokoro_asr_scores": [10.0, 10.0, 10.0, 9.8605],
-      "kokoro_source_coverages": [1.0, 1.0, 1.0, 1.0],
+      "kokoro_asr_scores": [
+        10.0,
+        10.0,
+        10.0,
+        9.8605
+      ],
+      "kokoro_source_coverages": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
       "kokoro_ordered_content_integrity_pass": false,
       "kokoro_listening_qa_run": false,
       "cosyvoice3_model_revision": "9b210b2381280b3af1c631d474a250e3e46d7017",
       "cosyvoice3_attempt_fingerprint": "4c8e9feb68fc62b3b002b4ae9e94771aa8945b861cc219b78dfa74cc9c1f4f55",
       "cosyvoice3_asr_qa_fingerprint": "f8d74f4048b76f749047df12963b9c2146c33d4d621e0e9830984e6399096aba",
-      "cosyvoice3_passage_scores": [10.0, 9.505, 8.4, 9.8113],
-      "cosyvoice3_passage_coverages": [1.0, 0.9057, 0.7241, 0.9811],
+      "cosyvoice3_passage_scores": [
+        10.0,
+        9.505,
+        8.4,
+        9.8113
+      ],
+      "cosyvoice3_passage_coverages": [
+        1.0,
+        0.9057,
+        0.7241,
+        0.9811
+      ],
       "cosyvoice3_aggregate_score": 9.3979,
       "cosyvoice3_aggregate_coverage": 0.8908,
       "cosyvoice3_ordered_content_integrity_pass": false,
@@ -2297,7 +2718,10 @@
             "sanitizer_static_audit": "PASS_ZERO_ROOT_TEXT_ZERO_ENCODED_MARKUP",
             "focused_tests": "PASS_9",
             "production_build": "PASS",
-            "browser_viewports": ["1440x900", "390x844"],
+            "browser_viewports": [
+              "1440x900",
+              "390x844"
+            ],
             "browser_index_count": 14,
             "horizontal_overflow_px": 0,
             "desktop_screenshot": "/tmp/earnalism-agentic-reader-clean-desktop.png",
@@ -2348,7 +2772,29 @@
       "title": "Platform output workspace",
       "release_truth_changed": false,
       "remote_storage_mutated": false,
-      "last_decision_at": "2026-08-08T18:07:55Z"
+      "last_decision_at": "2026-08-08T18:07:55Z",
+    "the-art-of-money-getting": {
+      "latest_decision": "PRIVATE_FULL_GENERATION_AUTHORIZED_PIPELINE_READY_PUBLIC_AUDIO_NOT_YET_APPROVED",
+      "decision_reason": "The owner explicitly authorized this exact title for Kokoro bm_george full generation and stated public-release intent. The parameterized Colab conveyor may make bounded title-aware pace and pause decisions, but full-title listening, package, storage, endpoint, browser, and controlled-publication gates remain incomplete.",
+      "updated_at": "2026-08-08T18:33:47Z",
+      "language": "en",
+      "territory": "IN",
+      "public_reader_status": "CONTROLLED_PUBLICATION_STATE_PRESERVED",
+      "public_audio_status": "PRIVATE_GENERATION_AUTHORIZED_NOT_EXPOSED",
+      "provider": "kokoro",
+      "model": "hexgrad/Kokoro-82M",
+      "voice": "bm_george",
+      "adaptive_pacing": true,
+      "punctuation_aware_pauses": true,
+      "owner_full_generation_authorized": true,
+      "owner_public_release_intent": true,
+      "representative_objective_gate": "PENDING",
+      "full_title_objective_gate": "PENDING",
+      "full_title_listening_gate": "PENDING",
+      "production_delivery_gate": "PENDING",
+      "public_release_mutated": false,
+      "notebook": "colab/Earnalism_Audiobook_Pipeline.ipynb",
+      "next_action": "Run the representative gate in Colab, continue resumably only on pass, obtain approved full-title listening evidence, then complete immutable packaging, storage, endpoint, browser, and public-release verification."
     }
   },
   "bengali_audio_lane_status": "D19_INDIC_PARLER_OBJECTIVE_FAIL_SOURCE_BOUND_REPLACEMENT_REQUIRED",

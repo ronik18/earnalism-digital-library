@@ -1378,6 +1378,13 @@
   gap: 0.25rem;
 }
 
+.reader-audio-control__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
 .reader-audio-button {
   display: inline-flex;
   align-items: center;
@@ -1399,6 +1406,34 @@
   cursor: not-allowed;
   opacity: 0.42;
   box-shadow: none;
+}
+
+.reader-player-launch {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.32rem;
+  border: 1px solid color-mix(in srgb, var(--reader-accent) 50%, transparent);
+  border-radius: 999px;
+  padding: 0 0.72rem;
+  color: var(--reader-accent);
+  background: color-mix(in srgb, var(--reader-surface) 84%, transparent);
+  cursor: pointer;
+  font-family: Inter, 'Noto Sans Bengali', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.reader-player-launch:hover {
+  color: var(--reader-surface);
+  background: var(--reader-accent);
+}
+
+.reader-player-launch:focus-visible {
+  outline: 2px solid var(--reader-gold);
+  outline-offset: 2px;
 }
 
 .reader-stop-button {
@@ -1811,6 +1846,20 @@
 
   .reader-audio-button {
     min-width: 96px;
+  }
+
+  .reader-player-launch {
+    width: 44px;
+    padding: 0;
+  }
+
+  .reader-player-launch span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
   }
 
   .reader-audio-unavailable {

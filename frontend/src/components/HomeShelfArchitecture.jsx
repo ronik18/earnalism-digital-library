@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import { api } from "../lib/api";
-import { normalizeHomeCuration } from "../lib/homeCuration";
+import {
+  fetchHomeCuration,
+  getHomeCurationSnapshot,
+  normalizeHomeCuration,
+} from "../lib/homeCuration";
 import CuratedShelfCollage from "./CuratedShelfCollage";
 
 function legacyCurationShape(payload = {}) {
@@ -27,14 +30,18 @@ function legacyCurationShape(payload = {}) {
 }
 
 export default function HomeShelfArchitecture() {
-  const [curation, setCuration] = useState(null);
+  const [curation, setCuration] = useState(() => legacyCurationShape(getHomeCurationSnapshot()));
 
   useEffect(() => {
-    let active = true;
-    api.get("/home/curated")
-      .then(({ data }) => { if (active) setCuration(legacyCurationShape(data)); })
-      .catch(() => { if (active) setCuration({ groups: [], selected_audiobooks: [] }); });
-    return () => { active = false; };
+    const controller = new AbortController();
+    fetchHomeCuration(controller.signal)
+      .then((payload) => setCuration(legacyCurationShape(payload)))
+      .catch((error) => {
+        if (error?.name !== "AbortError") {
+          // Keep the bundled release snapshot visible when the deferred refresh fails.
+        }
+      });
+    return () => controller.abort();
   }, []);
 
   if (!curation || (!curation.groups.length && !curation.selected_audiobooks.length)) return null;

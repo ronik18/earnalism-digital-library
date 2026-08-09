@@ -1,0 +1,45 @@
+{
+  "schema_version": "home-split-surface-api-evidence-v1",
+  "generated_at": "2026-08-08T18:46:28Z",
+  "status": "SOURCE_VALIDATED_READY_FOR_FOCUSED_PR",
+  "contracts": {
+    "hero": {
+      "schema_version": "home-hero-v1",
+      "payload_bytes": 8535,
+      "budget_bytes": 15360,
+      "browser_cache": "public, max-age=300, stale-while-revalidate=3600",
+      "edge_cache": "public, s-maxage=3600, stale-while-revalidate=86400"
+    },
+    "listening": {
+      "schema_version": "home-listening-v1",
+      "payload_bytes": 2722,
+      "budget_bytes": 8192,
+      "item_count": 3,
+      "browser_cache": "public, max-age=60, stale-while-revalidate=60",
+      "edge_cache": "public, s-maxage=300, stale-while-revalidate=60"
+    }
+  },
+  "validation": {
+    "backend_focused_tests": "PASS_23",
+    "frontend_focused_tests": "PASS_19",
+    "frontend_full_tests": "PASS_202",
+    "production_build": "PASS",
+    "browser_viewports": [
+      "1536x864",
+      "390x844",
+      "320x568"
+    ],
+    "horizontal_overflow_px": 0,
+    "minimum_listening_target_px": 44,
+    "visible_loading_frame": false
+  },
+  "release_truth": {
+    "status": "UNCHANGED_FAIL_CLOSED",
+    "audio_publication_mutated": false,
+    "territory_mutated": false,
+    "approval_mutated": false,
+    "admission_rule": "Exact approved audiobook endpoint, QA state, cover validity, and reader state are mandatory."
+  },
+  "full_backend_suite_note": "The repository-wide backend run completed with 742 passes but also inherited environment and stale fixture failures unrelated to these endpoints. Focused Home surface tests pass; no release truth was changed to satisfy contradictory legacy fixtures.",
+  "next_action": "Merge the single focused PR, deploy merged origin/main, and verify live endpoint headers, ETags, payload budgets, homepage rendering, and field metrics."
+}
