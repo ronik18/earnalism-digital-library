@@ -1980,3 +1980,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Representative ASR is a cost and quality circuit breaker. Full synthesis may start only after representative source fidelity passes, and one bounded slower repair is the maximum automatic retry for the same title/voice lineage.
 - Emotional expression cannot be self-certified from ASR. Full-title listening remains a human evidence gate at 8.9 per dimension, 0.90 confidence, and zero fatal flags before package construction or public release.
 - Colab artifacts are private release inputs, not public assets. Production storage receipts, checksums, endpoint proof, browser playback, and controlled-publication mutation remain separate guarded stages.
+
+## 2026-08-09 - Colab local output with optional private B2 handoff
+
+- Google Drive is no longer required for the Colab audiobook conveyor. Synthesis and QA default to ephemeral `/content/earnalism-audiobooks` storage.
+- Optional B2 transport accepts only short-lived pre-signed upload URLs from Colab Secrets; permanent B2 credentials remain outside the notebook.
+- The handoff uploads the final MP3 and evidence ZIP only, records local SHA-256 receipts, and never mutates public release fields.
