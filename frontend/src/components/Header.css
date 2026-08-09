@@ -28,7 +28,7 @@
 .premium-site-header .brand-header-logo__icon { width: 3.35rem; height: 3.35rem; }
 .premium-site-header .brand-header-logo--custom {
   display: inline-flex;
-  width: min(24rem, 44vw);
+  width: min(27rem, 48vw);
   height: min(5.9rem, calc(var(--site-header-height) - 1.35rem));
   align-items: center;
 }
@@ -36,6 +36,13 @@
   display: block;
   width: auto;
   max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.premium-site-header .brand-header-logo__wordmark-image {
+  width: auto;
+  max-width: min(27rem, 28vw);
   max-height: 100%;
   object-fit: contain;
 }
@@ -187,7 +194,7 @@
 
   .premium-site-header--reference-home .brand-header-logo__custom {
     width: auto;
-    max-width: min(21.5rem, 22vw);
+    max-width: min(27rem, 28vw);
     max-height: 100%;
     height: auto;
   }
@@ -201,7 +208,7 @@
 
   .premium-site-header--reference-home .brand-header-logo__wordmark-image {
     width: auto;
-    max-width: min(21.5rem, 22vw);
+    max-width: min(27rem, 28vw);
     max-height: 100%;
     object-fit: contain;
   }
@@ -283,7 +290,8 @@
     gap: 0.45rem;
   }
   .premium-site-header .brand-header-logo__icon { width: 2.45rem; height: 2.45rem; }
-  .premium-site-header .brand-header-logo--custom { width: min(15rem, calc(100vw - 5.6rem)); height: 2.85rem; }
+  .premium-site-header .brand-header-logo--custom { width: min(17rem, calc(100vw - 5.6rem)); height: 2.85rem; }
+  .premium-site-header .brand-header-logo__wordmark-image { max-width: min(17rem, calc(100vw - 5.6rem)); }
   .premium-site-header .brand-header-logo__base { font-size: 1.22rem; }
   .premium-site-header .brand-header-logo__inserted-l { font-size: 1.18rem; }
   .premium-site-header .brand-header-logo__inserted-l { font-weight: 950; }
