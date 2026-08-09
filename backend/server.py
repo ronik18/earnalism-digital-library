@@ -20,6 +20,7 @@ import uuid
 import logging
 import time
 import resource
+import math
 import bcrypt
 import jwt
 import unicodedata
@@ -53,6 +54,7 @@ try:
     from catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         audio_release_qa_status,
         can_expose_audio,
@@ -70,6 +72,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         audio_release_qa_status,
         can_expose_audio,
@@ -3589,8 +3592,24 @@ class BookAudiobookIn(BaseModel):
 
 class AudiobookPresignIn(BaseModel):
     audio_object_key: str = Field(min_length=1, max_length=300)
-    evidence_object_key: str = Field(min_length=1, max_length=300)
+    evidence_object_key: str = Field(default="", max_length=300)
     expires_in: int = Field(default=600, ge=60, le=900)
+
+
+class AudiobookReleaseIn(BaseModel):
+    """Compact, server-verifiable release receipt from the audio runner."""
+
+    audio_object_key: str = Field(min_length=1, max_length=300)
+    audio_sha256: str = Field(min_length=64, max_length=71)
+    audio_size_bytes: int = Field(gt=0)
+    duration_seconds: float = Field(gt=0)
+    manuscript_sha256: str = Field(min_length=64, max_length=71)
+    provider: str = Field(min_length=1, max_length=80)
+    model: str = Field(min_length=1, max_length=160)
+    voice: str = Field(min_length=1, max_length=120)
+    qa: Dict[str, Any] = Field(default_factory=dict)
+    owner_public_release_intent: bool = False
+    release_request_id: str = Field(default="", max_length=160)
 
 
 ALLOWED_AUDIO_ASSET_KEYS = {"mp3", "timestamps", "vtt", "chapters", "meta", "manifest"}
@@ -3638,6 +3657,83 @@ def _safe_audiobook_assets(value: Optional[Dict[str, Any]]) -> Dict[str, str]:
             continue
         assets[normalized_key] = url
     return assets
+
+
+def _release_sha256(value: Any) -> str:
+    return str(value or "").strip().lower().removeprefix("sha256:")
+
+
+def _audiobook_release_qa_summary(value: Optional[Dict[str, Any]]) -> dict[str, Any]:
+    """Normalize the notebook's objective/listening QA into one small receipt."""
+
+    qa = value if isinstance(value, dict) else {}
+
+    def score(*keys: str) -> Optional[float]:
+        for key in keys:
+            raw = qa.get(key)
+            if raw is None:
+                continue
+            try:
+                number = float(raw)
+            except (TypeError, ValueError):
+                continue
+            if math.isfinite(number):
+                return number
+        return None
+
+    fatal_flags = qa.get("fatal_flags") or qa.get("fatal_red_flags") or {}
+    if isinstance(fatal_flags, dict):
+        fatal_flags = [str(key) for key, active in fatal_flags.items() if active is True]
+    elif isinstance(fatal_flags, str):
+        fatal_flags = [fatal_flags] if fatal_flags.strip() else []
+    else:
+        fatal_flags = [str(item) for item in fatal_flags if str(item).strip()]
+
+    blockers = qa.get("blockers") or []
+    if isinstance(blockers, str):
+        blockers = [blockers] if blockers.strip() else []
+    else:
+        blockers = [str(item) for item in blockers if str(item).strip()]
+
+    summary = {
+        "asr_score": score("asr_score", "asr_manuscript_score", "similarity"),
+        "coverage": score("coverage", "asr_coverage"),
+        "first_span_score": score("first_span_score", "first_word_score"),
+        "last_span_score": score("last_span_score", "last_word_score"),
+        "listening_score": score("listening_score", "overall_score", "overall"),
+        "listening_confidence": score("listening_confidence", "confidence"),
+        "fatal_flags": sorted(set(fatal_flags)),
+        "blockers": sorted(set(blockers)),
+        "ordered_content_integrity": qa.get("ordered_content_integrity", qa.get("no_missing_duplicated_reordered_content")),
+        "sync_tier": str(qa.get("sync_tier") or "AUDIO_ONLY_NO_SYNC").strip().upper(),
+    }
+    return summary
+
+
+def _audiobook_release_qa_blockers(summary: dict[str, Any]) -> list[str]:
+    required = {
+        "asr_score": (0.97, "ASR manuscript score must be at least 0.97."),
+        "coverage": (0.98, "ASR/source coverage must be at least 0.98."),
+        "first_span_score": (0.95, "The first audio span must match the manuscript."),
+        "last_span_score": (0.95, "The last audio span must match the manuscript."),
+        "listening_score": (8.9, "Full-title listening score must be at least 8.9."),
+        "listening_confidence": (0.90, "Listening QA confidence must be at least 0.90."),
+    }
+    blockers = [message for key, (minimum, message) in required.items() if summary.get(key) is None or summary[key] < minimum]
+    if summary.get("ordered_content_integrity") is not True:
+        blockers.append("Ordered manuscript content integrity must pass.")
+    if summary.get("fatal_flags"):
+        blockers.append("Fatal listening QA flags must be empty.")
+    if summary.get("blockers"):
+        blockers.append("The release receipt must contain no unresolved blockers.")
+    return blockers
+
+
+def _audiobook_release_fingerprint(payload: AudiobookReleaseIn) -> str:
+    material = payload.model_dump(exclude={"release_request_id"})
+    return hashlib.sha256(
+        _json.dumps(material, sort_keys=True, ensure_ascii=True, default=str).encode("utf-8")
+    ).hexdigest()
 
 class BlogPost(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -6044,14 +6140,18 @@ async def admin_presign_audiobook_upload(slug: str, payload: AudiobookPresignIn,
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
     audio_key = _validate_private_audiobook_object_key(slug, payload.audio_object_key, ".mp3")
-    evidence_key = _validate_private_audiobook_object_key(slug, payload.evidence_object_key, ".zip")
+    evidence_key = (
+        _validate_private_audiobook_object_key(slug, payload.evidence_object_key, ".zip")
+        if payload.evidence_object_key
+        else ""
+    )
     audio_url = _b2_presigned_put_url(audio_key, payload.expires_in)
-    evidence_url = _b2_presigned_put_url(evidence_key, payload.expires_in)
+    evidence_url = _b2_presigned_put_url(evidence_key, payload.expires_in) if evidence_key else ""
     await db.admin_upload_audit.insert_one({
         "admin_user_id": str(admin.get("sub") or admin.get("email") or ""),
         "kind": "AUDIOBOOK_PRIVATE_B2_PRESIGN",
         "slug": slug,
-        "object_keys": [audio_key, evidence_key],
+        "object_keys": [key for key in (audio_key, evidence_key) if key],
         "expires_in": payload.expires_in,
         "created_at": now_iso(),
         "public_release_mutated": False,
@@ -6062,9 +6162,192 @@ async def admin_presign_audiobook_upload(slug: str, payload: AudiobookPresignIn,
         "expires_in": payload.expires_in,
         "objects": {
             "audio": {"key": audio_key, "method": "PUT", "url": audio_url},
-            "evidence": {"key": evidence_key, "method": "PUT", "url": evidence_url},
+            **(
+                {"evidence": {"key": evidence_key, "method": "PUT", "url": evidence_url}}
+                if evidence_key
+                else {}
+            ),
         },
         "public_release_mutated": False,
+    }
+
+
+@api.post("/admin/books/{slug}/audiobook/release")
+async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=Depends(require_admin)):
+    """Verify one uploaded MP3 and atomically activate its public proxy route.
+
+    The release receipt replaces the manual evidence-ZIP/database handoff. It
+    intentionally accepts no permanent storage credentials and never relaxes
+    reader, rights, manuscript, or listening-quality gates.
+    """
+
+    existing = await db.books.find_one({"slug": slug}, {"_id": 0})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Book not found")
+
+    audio_key = _validate_private_audiobook_object_key(slug, payload.audio_object_key, ".mp3")
+    audio_sha256 = _release_sha256(payload.audio_sha256)
+    manuscript_sha256 = _release_sha256(payload.manuscript_sha256)
+    if not _SHA256_RE.fullmatch(audio_sha256) or not _SHA256_RE.fullmatch(manuscript_sha256):
+        raise HTTPException(status_code=422, detail="Audio and manuscript checksums must be SHA-256 digests")
+    if not payload.owner_public_release_intent:
+        raise HTTPException(status_code=409, detail="Explicit public release intent is required")
+
+    workflow = existing.get("publication_workflow") if isinstance(existing.get("publication_workflow"), dict) else {}
+    publication = workflow.get("publication") if isinstance(workflow.get("publication"), dict) else {}
+    reader_ready = bool(
+        existing.get("is_published") is True
+        and (
+            publication.get("reader_exposed") is True
+            or (
+                existing.get("approved_to_publish") is True
+                and str(existing.get("publication_status") or "").upper() == "LIVE_APPROVED"
+            )
+        )
+    )
+    reader_blockers: list[str] = []
+    if not reader_ready:
+        reader_blockers.append("The reader release must already be approved before audio activation.")
+    if not (existing.get("cover_image_url") or existing.get("cover_url")):
+        reader_blockers.append("A front cover is required.")
+    if str(existing.get("qa_status") or "").upper() not in {"QA_PASSED", "PASS", "PASSED", "APPROVED"}:
+        reader_blockers.append("Reader QA must already be passed.")
+    if any((chapter.get("processing_status") or "ready") != "ready" for chapter in existing.get("chapters") or [] if isinstance(chapter, dict)):
+        reader_blockers.append("All reader chapters must be ready.")
+    reader_blockers.extend(f"Rights verification: {issue}" for issue in rights_publish_blockers(existing))
+    if reader_blockers:
+        raise HTTPException(status_code=409, detail={"message": "Reader release is not ready for audio.", "issues": sorted(set(reader_blockers))})
+
+    expected_manuscript_hashes = {
+        _release_sha256(existing.get("audiobook_manuscript_sha256")),
+        _release_sha256(existing.get("content_hash")),
+        _release_sha256(existing.get("source_hash")),
+    }
+    expected_manuscript_hashes.discard("")
+    if manuscript_sha256 not in expected_manuscript_hashes:
+        raise HTTPException(status_code=409, detail="Audio manuscript checksum does not match the approved book record")
+
+    qa_summary = _audiobook_release_qa_summary(payload.qa)
+    qa_blockers = _audiobook_release_qa_blockers(qa_summary)
+    if qa_blockers:
+        raise HTTPException(status_code=422, detail={"message": "Audiobook QA is not release-ready.", "issues": qa_blockers})
+
+    fingerprint = _audiobook_release_fingerprint(payload)
+    previous = existing.get("audiobook_release_conveyor") if isinstance(existing.get("audiobook_release_conveyor"), dict) else {}
+    if previous:
+        if previous.get("release_fingerprint") == fingerprint:
+            refreshed = await db.books.find_one({"slug": slug}, {"_id": 0})
+            return {
+                "slug": slug,
+                "idempotent": True,
+                "go_live": True,
+                "evidence_zip_required": False,
+                "public": public_book_projection(_strip_all_chapter_content(refreshed)),
+            }
+        if previous.get("audio_release_approved") is True:
+            raise HTTPException(status_code=409, detail="An audiobook release is already active for this title")
+
+    storage = next((store for store in _b2_storage_configs() if store.get("name") == AUDIOBOOK_RELEASE_PRIMARY_STORE), None)
+    if not storage:
+        raise HTTPException(status_code=503, detail="Production audiobook storage is not configured")
+    try:
+        head = await _b2_head_object(_b2_client(storage), bucket=storage["bucket"], key=audio_key)
+    except Exception as exc:
+        logger.warning("Audiobook release object verification failed for %s/%s: %s", slug, audio_key, exc)
+        raise HTTPException(status_code=422, detail="Uploaded production MP3 could not be verified") from exc
+    remote_size = int(head.get("ContentLength") or 0)
+    remote_metadata = {str(key).lower(): str(value) for key, value in (head.get("Metadata") or {}).items()}
+    remote_sha256 = _release_sha256(remote_metadata.get("sha256") or remote_metadata.get("x-amz-meta-sha256"))
+    if remote_size != payload.audio_size_bytes or remote_sha256 != audio_sha256:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "message": "Production MP3 checksum receipt does not match the uploaded object.",
+                "expected_size": payload.audio_size_bytes,
+                "actual_size": remote_size,
+                "checksum_verified": remote_sha256 == audio_sha256,
+            },
+        )
+
+    asset_url = _audio_package_storage_url({"store": storage["name"], "bucket": storage["bucket"], "key": audio_key})
+    if not asset_url:
+        raise HTTPException(status_code=503, detail="Production audiobook storage URL could not be resolved")
+    request_id = payload.release_request_id.strip() or f"{slug}-{fingerprint[:16]}"
+    release_record = {
+        "schema_version": AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+        "release_request_id": request_id,
+        "release_fingerprint": fingerprint,
+        "reader_release_approved": True,
+        "audio_release_approved": True,
+        "audio_public_release": "APPROVED",
+        "audio_qa_status": "QA_PASSED",
+        "audio_object_key": audio_key,
+        "audio_sha256": audio_sha256,
+        "audio_size_bytes": payload.audio_size_bytes,
+        "duration_seconds": payload.duration_seconds,
+        "manuscript_sha256": manuscript_sha256,
+        "provider": payload.provider.strip().lower(),
+        "model": payload.model.strip(),
+        "voice": payload.voice.strip(),
+        "qa": qa_summary,
+        "storage": {"store": storage["name"], "bucket": storage["bucket"], "key": audio_key, "version_id": str(head.get("VersionId") or "")},
+        "activated_at": now_iso(),
+    }
+    audiobook_doc = {
+        **_book_audiobook_doc(existing),
+        "url": asset_url,
+        "provider": payload.provider.strip().lower(),
+        "model": payload.model.strip(),
+        "voice": payload.voice.strip(),
+        "size": payload.audio_size_bytes,
+        "duration_ms": round(payload.duration_seconds * 1000),
+        "release_gate": "APPROVED",
+        "qa_status": "QA_PASSED",
+        "assets": {"mp3": asset_url},
+        "updated_at": now_iso(),
+    }
+    update = {
+        "audio_enabled": True,
+        "audiobook_enabled": True,
+        "generate_audiobook": True,
+        "audiobook_provider": payload.provider.strip().lower(),
+        "audiobook_voice": payload.voice.strip(),
+        "audio_asset_slug": slug,
+        "audiobook_assets": {"mp3": asset_url},
+        "audiobook": audiobook_doc,
+        "audiobook_manuscript_sha256": manuscript_sha256,
+        "audiobook_release_conveyor": release_record,
+        "audiobook_assets_updated_at": now_iso(),
+        "audio_status": "AVAILABLE",
+        "audiobook_release_gate": "APPROVED",
+        "audio_qa_status": "QA_PASSED",
+    }
+    update["publication_workflow"] = canonical_update({**existing, **update})
+    result = await db.books.update_one(
+        {"slug": slug, "$or": [{"audiobook_release_conveyor": {"$exists": False}}, {"audiobook_release_conveyor.release_fingerprint": fingerprint}]},
+        {"$set": update},
+    )
+    if not result.modified_count and not previous:
+        raise HTTPException(status_code=409, detail="Audiobook release changed concurrently; retry with the same receipt")
+    await db.admin_upload_audit.insert_one({
+        "admin_user_id": str(admin.get("sub") or admin.get("email") or ""),
+        "kind": "AUDIOBOOK_RELEASE_ACTIVATED",
+        "slug": slug,
+        "object_key": audio_key,
+        "audio_sha256": audio_sha256,
+        "release_fingerprint": fingerprint,
+        "evidence_zip_required": False,
+        "public_release_mutated": True,
+        "created_at": now_iso(),
+    })
+    refreshed = await db.books.find_one({"slug": slug}, {"_id": 0})
+    return {
+        "slug": slug,
+        "idempotent": False,
+        "go_live": True,
+        "evidence_zip_required": False,
+        "release": release_record,
+        "public": public_book_projection(_strip_all_chapter_content(refreshed)),
     }
 
 
@@ -8180,6 +8463,7 @@ _READER_AUDIO_BOOK_PROJECTION = {
     "audiobook_hidden_release_descriptor_sha256": 1,
     "audiobook_package_canary": 1,
     "audiobook_assets": 1,
+    "audiobook_release_conveyor": 1,
     "audiobook_provider": 1,
     "audiobook_enabled": 1,
     "generate_audiobook": 1,
@@ -8197,8 +8481,6 @@ _READER_AUDIO_BOOK_PROJECTION = {
 
 
 async def _reader_audio_book_for_slug(slug: str) -> dict:
-    if not _is_controlled_public_slug(slug):
-        raise HTTPException(status_code=404, detail="Audiobook asset not found")
     book = await db.books.find_one(
         _controlled_public_book_query({"slug": slug}),
         _READER_AUDIO_BOOK_PROJECTION,

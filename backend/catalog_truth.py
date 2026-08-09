@@ -165,6 +165,7 @@ PUBLIC_STATUS_QUARANTINE = "QUARANTINE"
 PUBLIC_STATUS_HIDDEN = "HIDDEN"
 PUBLIC_AUDIO_RELEASE_APPROVED_STATUSES = {"APPROVED", "PUBLIC_AUDIO_RELEASE_APPROVED"}
 PUBLIC_AUDIO_QA_PASSED_STATUSES = {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
+AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA = "earnalism.audiobook_release_conveyor.v1"
 
 SAFE_PUBLIC_BOOK_FIELDS = {
     "id",
@@ -229,6 +230,7 @@ INTERNAL_AUDIO_FIELDS = {
     "audiobook_legacy_release_descriptor_sha256",
     "audiobook_hidden_release_descriptor_sha256",
     "audiobook_package_canary",
+    "audiobook_release_conveyor",
     "audiobook_assets",
     "audiobook_assets_updated_at",
     "audiobook_provider",
@@ -872,7 +874,12 @@ def is_live_approved_book(book: dict[str, Any]) -> bool:
     slug = normalize_slug(book.get("slug"))
     manifest = book.get("publication_manifest")
     manifest_approved = manifest_reader_exposed(manifest) if isinstance(manifest, dict) else False
-    if slug not in LEGACY_CONTROLLED_LIVE_BOOK_SLUGS and not manifest_approved:
+    conveyor = nested_dict(book, "audiobook_release_conveyor")
+    conveyor_reader_approved = (
+        conveyor.get("schema_version") == AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA
+        and conveyor.get("reader_release_approved") is True
+    )
+    if slug not in LEGACY_CONTROLLED_LIVE_BOOK_SLUGS and not manifest_approved and not conveyor_reader_approved:
         return False
     workflow = canonical_workflow(book)
     if workflow:
@@ -931,7 +938,12 @@ def can_expose_preview(book: dict[str, Any]) -> bool:
 
 def can_expose_audio(book: dict[str, Any]) -> bool:
     slug = normalize_slug(book.get("slug"))
-    if slug not in AUDIO_ENABLED_SLUGS or not is_live_approved_book(book):
+    conveyor = nested_dict(book, "audiobook_release_conveyor")
+    conveyor_audio_approved = (
+        conveyor.get("schema_version") == AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA
+        and conveyor.get("audio_release_approved") is True
+    )
+    if (slug not in AUDIO_ENABLED_SLUGS and not conveyor_audio_approved) or not is_live_approved_book(book):
         return False
     evidence = controlled_audio_release_evidence(slug)
     if evidence and evidence.get("audiobook_enabled") is not True:
@@ -1044,11 +1056,19 @@ def live_approved_mongo_query(extra: dict[str, Any] | None = None) -> dict[str, 
     """
 
     query: dict[str, Any] = {
-        "slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)},
+        "$or": [
+            {"slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)}},
+            {"audiobook_release_conveyor.reader_release_approved": True},
+        ],
         "publication_workflow.publication.reader_exposed": True,
     }
     if extra:
+        extra_or = extra.get("$or")
+        if extra_or is not None:
+            query["$and"] = [{"$or": query.pop("$or")}, {"$or": extra_or}]
         for key, value in extra.items():
+            if key == "$or":
+                continue
             query[key] = value
     return query
 
