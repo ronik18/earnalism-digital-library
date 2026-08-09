@@ -1466,7 +1466,7 @@ describe("UX conversion static signals", () => {
   test("premium brand lockup and mobile navigation keep a visible library CTA", () => {
     expect(header).toContain('import BrandHeaderLogo from "./BrandHeaderLogo";');
     expect(header).toContain('className="header-brand-cluster"');
-    expect(header).toContain("<BrandHeaderLogo />");
+    expect(header).toContain('<BrandHeaderLogo badgeVariant="none" />');
     expect(header).not.toContain("IndiaCraftBadge");
     expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="mobile-cta-library"');

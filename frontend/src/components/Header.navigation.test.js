@@ -32,7 +32,7 @@ describe("premium header navigation", () => {
     expect(styles).toContain("justify-content: flex-end;");
     expect(styles).toContain("min-height: 2.75rem;");
     expect(styles).toContain("min-width: 7.25rem;");
-    expect(styles).toContain("max-width: min(21.5rem, 22vw);");
+    expect(styles).toContain("max-width: 23.8rem;");
     expect(styles).toContain("flex: 0 0 2.75rem;");
     expect(styles).toContain("@media (min-width: 1280px)");
     expect(styles).not.toContain("@media (min-width: 1024px) and (max-width: 1279px)");

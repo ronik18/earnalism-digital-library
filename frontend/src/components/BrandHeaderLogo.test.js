@@ -51,7 +51,7 @@ describe("BrandHeaderLogo", () => {
 
   test("public header uses the dedicated responsive brand lockup with its tricolour medallion", () => {
     expect(headerSource).toContain('import BrandHeaderLogo from "./BrandHeaderLogo";');
-    expect(headerSource).toContain('<BrandHeaderLogo />');
+    expect(headerSource).toContain('<BrandHeaderLogo badgeVariant="none" />');
     expect(headerSource).not.toContain('BrandMark variant="footer"');
     expect(headerSource).not.toContain("IndiaCraftBadge");
   });
