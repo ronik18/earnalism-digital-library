@@ -1,0 +1,56 @@
+{
+  "schema_version": "1",
+  "captured_at": "2026-08-09T18:43:36Z",
+  "source_commit": "31c1b1ae730b009c745d75c715893ad311f81f69",
+  "environment": {
+    "local": "canonical integration worktree",
+    "production": "read-only probes only"
+  },
+  "checks": [
+    {
+      "name": "sre-json-validation",
+      "status": "passed",
+      "evidence": "python3 json.loads over sre/*.json and CHANGE_LEDGER.jsonl"
+    },
+    {
+      "name": "sre-yaml-validation",
+      "status": "passed",
+      "evidence": "Ruby stdlib YAML parser over sre/DEPENDENCIES.yaml and sre/SLOS.yaml"
+    },
+    {
+      "name": "frontend-tests",
+      "status": "passed",
+      "result": "36 suites, 208 tests"
+    },
+    {
+      "name": "regression-pr-mode",
+      "status": "passed",
+      "result": "14 suites passed, 2 skipped; 123 tests passed, 4 skipped",
+      "artifact": "/private/tmp/earnalism-sre-quarantine-regression.json"
+    },
+    {
+      "name": "production-monitor",
+      "status": "passed",
+      "result": "5 checks passed, 0 failures, 0 slow warnings",
+      "artifact": "output/monitoring/production-monitor-latest.json"
+    },
+    {
+      "name": "frontend-production-build",
+      "status": "passed",
+      "result": "optimized build compiled successfully against reachable live API"
+    },
+    {
+      "name": "git-diff-check",
+      "status": "passed",
+      "result": "no whitespace errors"
+    }
+  ],
+  "not_verified": [
+    "operator-authorized target scope",
+    "production telemetry and error budgets",
+    "backup restoration",
+    "staging failure injection",
+    "production canary and rollback",
+    "payment and wallet reconciliation convergence"
+  ]
+}

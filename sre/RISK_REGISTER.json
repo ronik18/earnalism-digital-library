@@ -1,0 +1,51 @@
+{
+  "schema_version": "1",
+  "status": "quarantined",
+  "authority_status": "operator_authorization_pending",
+  "captured_at": "2026-08-09T18:43:36Z",
+  "source_commit": "31c1b1ae730b009c745d75c715893ad311f81f69",
+  "findings": [
+    {
+      "id": "SRE-AUTH-001",
+      "severity": "P1",
+      "status": "blocked",
+      "component": "sre-control-plane",
+      "evidence": ["sre/INVENTORY.yaml (absent)", "sre/AUTONOMY_POLICY.yaml (absent)"],
+      "reproduction": "find sre -maxdepth 2 -type f -print returned no authority files",
+      "impact": "Authorized targets, environments, and immutable controls cannot be independently verified; production mutation and deployment cannot proceed safely.",
+      "root_cause": "Operator-owned SRE authority files are missing from the canonical worktree.",
+      "fix": "Restore the operator-managed files without agent-authored target expansion or policy changes.",
+      "tests": ["authority-file presence check"],
+      "rollback": "Not applicable; no authority file was created or modified.",
+      "deployment": "blocked"
+    },
+    {
+      "id": "BUILD-DEP-001",
+      "severity": "P2",
+      "status": "suspected",
+      "component": "frontend dependency and build chain",
+      "evidence": ["frontend/package.json", "frontend/package-lock.json", "npm audit --omit=dev --json"],
+      "reproduction": "Frontend production-scope audit reported 25 advisories: 3 low, 7 moderate, 13 high, and 2 critical.",
+      "impact": "The static production bundle and build chain may inherit known dependency risk.",
+      "root_cause": "Direct and transitive frontend dependencies are not fully current within the existing CRA toolchain.",
+      "fix": "Prepare a separately tested, minimal dependency remediation with lockfile diff, compatibility tests, and rollback.",
+      "tests": ["frontend production build passed", "full frontend suite passed before quarantine bootstrap"],
+      "rollback": "Revert the dependency-only change and restore the prior lockfile.",
+      "deployment": "not attempted"
+    },
+    {
+      "id": "RELEASE-GATE-001",
+      "severity": "P1",
+      "status": "blocked",
+      "component": "release verification",
+      "evidence": ["regression/modules/03-audiobook-sync.test.js", "regression/modules/12-migration-data-consistency.test.js", ".github/workflows/regression.yml"],
+      "reproduction": "PR-mode CI-equivalent regression passes; separate go-live-only checks require controlled production/audio evidence not established in this bootstrap.",
+      "impact": "A green PR suite alone cannot prove production audio availability, migration convergence, canary health, or rollback readiness.",
+      "root_cause": "Production release evidence and operator authorization are incomplete.",
+      "fix": "Restore authority files, establish telemetry and backup evidence, then run controlled staging/canary gates.",
+      "tests": ["CI-equivalent PR regression passed", "production monitor passed 5/5"],
+      "rollback": "Do not deploy until rollback evidence exists.",
+      "deployment": "blocked"
+    }
+  ]
+}

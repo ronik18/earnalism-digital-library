@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "bootstrap_status": "quarantined_blocked",
+  "authority_status": "operator_authorization_pending",
+  "captured_at": "2026-08-09T18:43:36Z",
+  "repository": "ronik18/earnalism-digital-library",
+  "canonical_worktree": "/private/tmp/earnalism-main-approved-integration",
+  "branch": "codex/main-approved-integration",
+  "head": "31c1b1ae730b009c745d75c715893ad311f81f69",
+  "origin_main": "b08378cea94d1497faacf5579db717702258b003",
+  "production_mutation_allowed": false,
+  "deployment_allowed": false,
+  "authority_files": {
+    "sre/INVENTORY.yaml": "missing_operator_input",
+    "sre/AUTONOMY_POLICY.yaml": "missing_operator_input_immutable"
+  },
+  "verified_checks": {
+    "quarantine_artifact_json_yaml": "passed",
+    "frontend_test_suites": "36 passed, 208 tests passed",
+    "regression_pr_mode": "14 passed, 2 skipped suites; 123 passed, 4 skipped tests",
+    "frontend_production_build": "passed against reachable live API",
+    "production_monitor": "5 passed, 0 failures, 0 slow warnings",
+    "python_ast_parse": "203 files parsed, 0 failures",
+    "root_production_dependency_audit": "0 advisories"
+  },
+  "evidence": [
+    "sre/EVIDENCE/quarantine-validation.json",
+    "/private/tmp/earnalism-sre-quarantine-regression.json",
+    "output/monitoring/production-monitor-latest.json"
+  ],
+  "next_required_operator_action": "Restore the two operator-owned authority files, then rerun the authority-file presence check before any deployment action."
+}

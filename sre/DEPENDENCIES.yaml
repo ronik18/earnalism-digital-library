@@ -1,0 +1,51 @@
+schema_version: "1"
+status: observed_only
+authority_status: operator_authorization_pending
+captured_at: "2026-08-09T18:43:36Z"
+source_commit: "31c1b1ae730b009c745d75c715893ad311f81f69"
+note: >-
+  These are repository-derived dependency observations, not an authorization
+  list. Production access and mutation remain blocked until operator-owned
+  inventory and policy files are restored.
+dependencies:
+  - name: frontend_hosting
+    provider: Vercel
+    evidence: frontend/vercel.json
+    role: static frontend build and hosting
+    status: observed_only
+  - name: backend_hosting
+    provider: Railway
+    evidence: backend/railway.json
+    role: backend runtime and healthcheck
+    status: observed_only
+  - name: primary_database
+    provider: MongoDB
+    evidence: backend/server.py
+    role: catalog, account, payment, wallet, and reading state persistence
+    status: observed_only
+  - name: cache
+    provider: Redis
+    evidence: backend/server.py
+    role: response/cache state and bounded runtime coordination
+    status: observed_only
+  - name: payment_provider
+    provider: Razorpay
+    evidence: frontend/src/pages/Pricing.jsx
+    role: checkout, payment verification, webhook, refund, and dispute flows
+    test_mode_only: true
+    status: observed_only
+  - name: image_media_delivery
+    provider: Cloudinary
+    evidence: scripts/audiobook_production_pipeline.py
+    role: cover and image delivery
+    status: observed_only
+  - name: audiobook_media_delivery
+    provider: Backblaze B2
+    evidence: backend/server.py
+    role: protected audiobook object delivery
+    status: observed_only
+  - name: ci_cd
+    provider: GitHub Actions
+    evidence: .github/workflows/regression.yml
+    role: verification and guarded deployment orchestration
+    status: observed_only

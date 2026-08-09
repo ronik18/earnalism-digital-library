@@ -1,0 +1,29 @@
+schema_version: "1"
+status: draft_non_authoritative
+authority_status: operator_authorization_pending
+captured_at: "2026-08-09T18:43:36Z"
+source_commit: "31c1b1ae730b009c745d75c715893ad311f81f69"
+note: >-
+  Candidate targets are recorded for measurement planning only. No production
+  SLO attainment is claimed because the inventory, telemetry, traffic,
+  retention, and error-budget configuration are unavailable.
+candidate_targets:
+  web_performance:
+    mobile_fcp_ms: 1200
+    mobile_lcp_ms: 2000
+    cls_max: 0.05
+    initial_transfer_kb_max: 700
+    desktop_lighthouse_performance_min: 95
+  reliability:
+    measurement_status: not_established
+    availability_target: operator_required
+    error_budget: operator_required
+  business_invariants:
+    payment_credit_idempotency: required
+    wallet_non_negative_balance: required
+    reading_lease_bounded_consumption: required
+    release_gate_server_authoritative: required
+  observability:
+    real_user_metrics: not_verified
+    distributed_traces: not_verified
+    synthetic_critical_journeys: not_verified
