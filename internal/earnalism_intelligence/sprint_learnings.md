@@ -1986,3 +1986,4 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Google Drive is no longer required for the Colab audiobook conveyor. Synthesis and QA default to ephemeral `/content/earnalism-audiobooks` storage.
 - Optional B2 transport accepts only short-lived pre-signed upload URLs from Colab Secrets; permanent B2 credentials remain outside the notebook.
 - The handoff uploads the final MP3 and evidence ZIP only, records local SHA-256 receipts, and never mutates public release fields.
+- The safe Colab integration now obtains title-scoped PUT URLs from the protected admin presign route using an admin bearer token; B2 access keys remain Railway-only.

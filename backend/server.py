@@ -3579,7 +3579,42 @@ class BookAudiobookIn(BaseModel):
     audiobook_duration_ms: int = 0
 
 
+class AudiobookPresignIn(BaseModel):
+    audio_object_key: str = Field(min_length=1, max_length=300)
+    evidence_object_key: str = Field(min_length=1, max_length=300)
+    expires_in: int = Field(default=600, ge=60, le=900)
+
+
 ALLOWED_AUDIO_ASSET_KEYS = {"mp3", "timestamps", "vtt", "chapters", "meta", "manifest"}
+
+
+def _validate_private_audiobook_object_key(slug: str, key: str, suffix: str) -> str:
+    normalized_slug = slugify(slug, fallback="")
+    normalized_key = str(key or "").strip().lstrip("/")
+    expected_prefix = f"audiobooks/{normalized_slug}/"
+    if (
+        not normalized_slug
+        or normalized_key != key.strip().lstrip("/")
+        or ".." in normalized_key.split("/")
+        or not normalized_key.startswith(expected_prefix)
+        or not normalized_key.endswith(suffix)
+    ):
+        raise HTTPException(status_code=400, detail="Object key is not valid for this audiobook title")
+    return normalized_key
+
+
+def _b2_presigned_put_url(key: str, expires_in: int) -> str:
+    storage = next((store for store in _b2_storage_configs() if store.get("name") == "primary"), None)
+    client = _b2_client(storage)
+    try:
+        return str(client.generate_presigned_url(
+            "put_object",
+            Params={"Bucket": storage["bucket"], "Key": key, "ContentType": "application/octet-stream"},
+            ExpiresIn=expires_in,
+            HttpMethod="PUT",
+        ))
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"B2 upload signing failed: {exc}") from exc
 
 
 def _safe_audiobook_assets(value: Optional[Dict[str, Any]]) -> Dict[str, str]:
@@ -5987,6 +6022,42 @@ async def admin_update_book_audiobook(slug: str, payload: BookAudiobookIn, _=Dep
     await db.books.update_one({"slug": slug}, {"$set": update})
     refreshed = await db.books.find_one({"slug": slug}, {"_id": 0})
     return refreshed
+
+
+@api.post("/admin/books/{slug}/audiobook/presign")
+async def admin_presign_audiobook_upload(slug: str, payload: AudiobookPresignIn, admin=Depends(require_admin)):
+    """Issue short-lived private B2 PUT URLs without exposing B2 credentials.
+
+    This transport endpoint does not upload, activate, or publish audio. The
+    controlled release conveyor must verify the remote receipts before any
+    audiobook metadata is changed.
+    """
+    book = await db.books.find_one({"slug": slug}, {"_id": 0, "slug": 1, "title": 1})
+    if not book:
+        raise HTTPException(status_code=404, detail="Book not found")
+    audio_key = _validate_private_audiobook_object_key(slug, payload.audio_object_key, ".mp3")
+    evidence_key = _validate_private_audiobook_object_key(slug, payload.evidence_object_key, ".zip")
+    audio_url = _b2_presigned_put_url(audio_key, payload.expires_in)
+    evidence_url = _b2_presigned_put_url(evidence_key, payload.expires_in)
+    await db.admin_upload_audit.insert_one({
+        "admin_user_id": str(admin.get("sub") or admin.get("email") or ""),
+        "kind": "AUDIOBOOK_PRIVATE_B2_PRESIGN",
+        "slug": slug,
+        "object_keys": [audio_key, evidence_key],
+        "expires_in": payload.expires_in,
+        "created_at": now_iso(),
+        "public_release_mutated": False,
+    })
+    return {
+        "slug": slug,
+        "title": book.get("title", ""),
+        "expires_in": payload.expires_in,
+        "objects": {
+            "audio": {"key": audio_key, "method": "PUT", "url": audio_url},
+            "evidence": {"key": evidence_key, "method": "PUT", "url": evidence_url},
+        },
+        "public_release_mutated": False,
+    }
 
 
 @api.patch("/admin/books/{slug}/home-curation")
