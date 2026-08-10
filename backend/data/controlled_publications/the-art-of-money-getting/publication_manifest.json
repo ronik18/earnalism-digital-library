@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-art-of-money-getting",
   "title": "The Art of Money Getting",
-  "generated_at": "2026-08-10T05:13:24.610445+00:00",
+  "generated_at": "2026-08-10T07:43:55.504527+00:00",
   "content": {
     "source_hash": "0baf572e0ec351e47504ab1d49fb646be164ab6db13d0024cda7567b58dad287",
     "content_hash": "907586f92b4df67b3576f66b89d9c1434bd09200aec7d25926d4fb8253a6761e",
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "fc8d34f95e7d2810d4877fdbe09643f40094566a603a2cb31c0a76719bc8b351",
-    "reader_manifest": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
+    "public_book": "82191df2abb5e775be78134455a2e3dd7faf72bf4b67ae208ccc870ccf1d0b6f",
+    "reader_manifest": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec",
     "source_evidence": "e1b3135f42b112aee673c2acc3b59ec273cc1d5f55eee9cf414d62a4b90d85d7",
     "approval_evidence": "546bbdc22678190b44a9654407fe758ef7b1d50d348d856a5d36f38485641943"
   },
-  "manifest_sha256": "fbad8b6c9f9e4d152c76a1c78eeebddc28144b8ba662319357066ed360c1404c"
+  "manifest_sha256": "ab94f2cbe00abb18f5a62ce226ebb04913bc5874bb1bc7b607ccbd25912aa701"
 }

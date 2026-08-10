@@ -78,7 +78,9 @@
   "audiobook_provider": "historical_mapped_assets",
   "audiobook_voice": "",
   "audio_asset_slug": "the-art-of-money-getting",
-  "audiobook_assets": {},
+  "audiobook_assets": {
+    "mp3": "/api/reader/book/the-art-of-money-getting/audiobook"
+  },
   "audiobook": {
     "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/audiobooks/the-art-of-money-getting/the-art-of-money-getting_bm_george.mp3",
     "provider": "kokoro",
@@ -180,5 +182,6 @@
     "audit": {
       "migration_source": "audiobook_release_conveyor_v1"
     }
-  }
+  },
+  "sync_tier": "AUDIO_ONLY_NO_SYNC"
 }
