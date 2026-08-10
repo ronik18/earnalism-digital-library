@@ -173,7 +173,7 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(settingsSource).not.toMatch(/Listen CTA|AudioObject|browser speech|system speech|word-level|word sync/i);
     expect(settingsSource).toMatch(/Reading tone/);
     expect(settingsSource).toMatch(/Typography/);
-    expect(settingsSource).toMatch(/Bengali comfort/);
+    expect(settingsSource).toMatch(/Font comfort/);
     expect(settingsSource).toMatch(/Focus and motion/);
   });
 });

@@ -378,37 +378,6 @@ function wrapWordsInSpans(html, startWordIndex = 0) {
   return { html: div.innerHTML, totalWords: wrappedWords };
 }
 
-function textSegments(text = '') {
-  const source = String(text || '');
-  if (!source.trim()) return [];
-  const segments = [];
-  const re = /[^।.!?;:]+[।.!?;:]?|[^।.!?;:]+$/g;
-  let match;
-  while ((match = re.exec(source)) !== null) {
-    const raw = match[0].trim();
-    if (!raw) continue;
-    const start = match.index + match[0].indexOf(raw);
-    const end = start + raw.length;
-    const words = raw.split(/\s+/).filter(Boolean);
-    if (words.length > 42) {
-      let cursor = start;
-      for (let index = 0; index < words.length; index += 32) {
-        const part = words.slice(index, index + 32).join(' ');
-        const partStart = source.indexOf(words[index], cursor);
-        const partEnd = partStart >= 0 ? partStart + part.length : end;
-        segments.push({ text: part, start: partStart >= 0 ? partStart : start, end: partEnd, pauseMs: 180 });
-        cursor = partEnd;
-      }
-    } else {
-      const punct = raw.slice(-1);
-      const pauseMs = /[।.!?]/.test(punct) ? 520 : /[,;:]/.test(punct) ? 280 : 180;
-      segments.push({ text: raw, start, end, pauseMs });
-    }
-  }
-  const trimmed = source.trim();
-  return segments.length ? segments : [{ text: trimmed, start: source.indexOf(trimmed), end: source.indexOf(trimmed) + trimmed.length, pauseMs: 240 }];
-}
-
 function countWordsInHtml(html) {
   if (typeof document === 'undefined') return countHighlightUnitsInText(html || '');
   const div = document.createElement('div');
@@ -679,17 +648,18 @@ function normalizeGeneratedTimestamps(raw, html = '', baseWord = 0) {
   return { words, offset };
 }
 
-function splitParagraphNode(node) {
+function splitParagraphNode(node, targetChars = 520) {
   const text = (node.textContent || '').trim();
-  if (!text || text.length < 600) return [node];
+  if (!text || text.length <= targetChars) return [node];
   const chunks = [];
   let buffer = [];
-  textSegments(text).forEach((segment) => {
-    buffer.push(segment.text);
-    if (buffer.join(' ').length >= 520) {
+  text.split(/\s+/).filter(Boolean).forEach((word) => {
+    const nextLength = [...buffer, word].join(' ').length;
+    if (buffer.length && nextLength > targetChars) {
       chunks.push(buffer.join(' '));
       buffer = [];
     }
+    buffer.push(word);
   });
   if (buffer.length) chunks.push(buffer.join(' '));
   return chunks.map((chunk) => {
@@ -699,17 +669,17 @@ function splitParagraphNode(node) {
   });
 }
 
-function splitTextNode(node) {
+function splitTextNode(node, targetChars) {
   const text = (node.textContent || '').trim();
   if (!text) return [];
   const wrapper = document.createElement('p');
   wrapper.textContent = text;
-  return splitParagraphNode(wrapper);
+  return splitParagraphNode(wrapper, targetChars);
 }
 
 function measurePageHeight() {
   if (typeof window === 'undefined') return 760;
-  return Math.max(440, Math.min(780, window.innerHeight - 245));
+  return Math.max(300, Math.min(780, window.innerHeight - 245));
 }
 
 function paginateReaderHtml(html, { isBengali = false, fontSize = '17px', lineHeight } = {}) {
@@ -734,6 +704,8 @@ function paginateReaderHtml(html, { isBengali = false, fontSize = '17px', lineHe
   document.body.appendChild(measure);
 
   const limit = measurePageHeight();
+  const paragraphScale = window.innerHeight < 640 ? 0.58 : 0.72;
+  const paragraphTargetChars = Math.max(180, Math.min(520, Math.floor(limit * paragraphScale)));
   const pages = [];
   let pageNodes = [];
 
@@ -746,8 +718,8 @@ function paginateReaderHtml(html, { isBengali = false, fontSize = '17px', lineHe
 
   const sourceNodes = Array.from(template.content.childNodes)
     .flatMap((node) => {
-      if (node.nodeType === Node.TEXT_NODE) return splitTextNode(node);
-      if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P') return splitParagraphNode(node);
+      if (node.nodeType === Node.TEXT_NODE) return splitTextNode(node, paragraphTargetChars);
+      if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P') return splitParagraphNode(node, paragraphTargetChars);
       return [node];
     })
     .filter((node) => (node.textContent || '').trim() || node.nodeType === Node.ELEMENT_NODE);
@@ -1210,7 +1182,6 @@ export default function Reader() {
 
   useEffect(() => {
     const id = crypto.randomUUID();
-    let protectionInterval;
 
     setSessionId(id);
 
@@ -1237,17 +1208,11 @@ export default function Reader() {
     document.addEventListener('copy', onCopy);
     document.addEventListener('visibilitychange', onVisibilityChange);
 
-    protectionInterval = setInterval(() => {
-      const devtoolsOpen = window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160;
-      setContentBlurred(devtoolsOpen);
-    }, 1000);
-
     return () => {
       document.removeEventListener('contextmenu', onContextMenu);
       document.removeEventListener('keydown', onKeyDown);
       document.removeEventListener('copy', onCopy);
       document.removeEventListener('visibilitychange', onVisibilityChange);
-      clearInterval(protectionInterval);
     };
   }, []);
 
@@ -2846,12 +2811,15 @@ export default function Reader() {
     reducedMotionMode ? 'premium-reader--reduced-motion' : '',
     `premium-reader--highlight-${highlightIntensity}`,
   ].filter(Boolean).join(' ');
+  const useReaderDropCap = isContentPage
+    && currentPageData?.contentIndex === 0
+    && /^[A-Za-z\u0980-\u09FF]/.test(firstParagraphText(currentPageHtml));
   const contentClassName = [
     'reader-content',
     isBengali ? 'reader-content--bengali' : 'reader-content--english',
-    'reader-content--dropcap',
+    useReaderDropCap ? 'reader-content--dropcap' : '',
     fontFamilyMode === 'sans' ? 'reader-content--sans' : 'reader-content--serif',
-  ].join(' ');
+  ].filter(Boolean).join(' ');
   const progressRatio = Math.min(1, Math.max(0, effectiveReadProgress / 100));
   const chapterPositionLabel = chapters.length > 1 && currentIdx >= 0
     ? `Ch. ${currentIdx + 1} of ${chapters.length}`
@@ -3400,8 +3368,8 @@ export default function Reader() {
             </div>
           </section>
 
-          <section className="reader-setting-section" aria-labelledby="reader-bengali-section-label">
-            <h3 id="reader-bengali-section-label">Bengali comfort</h3>
+          <section className="reader-setting-section" aria-labelledby="reader-font-section-label">
+            <h3 id="reader-font-section-label">Font comfort</h3>
             <div className="reader-setting-group">
               <span className="reader-setting-label" id="reader-font-mode-label">{fontModeLabels.group}</span>
               <div className="reader-segmented-control reader-segmented-control--long" role="group" aria-labelledby="reader-font-mode-label">
@@ -3474,7 +3442,7 @@ export default function Reader() {
               <span id="reader-toc-title" style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_DISPLAY, fontSize: 20, color: colors.text }}>
                 Contents
               </span>
-              <button type="button" onClick={() => setShowTOC(false)} aria-label="Close contents">
+              <button type="button" onClick={() => setShowTOC(false)} className="reader-toc-close" aria-label="Close contents">
                 <X size={18} color="#A88A8F" />
               </button>
             </div>
@@ -3483,11 +3451,11 @@ export default function Reader() {
               {chapters.map((item, index) => {
                 const current = index === currentIdx;
                 return (
-                  <button key={item.id} type="button" onClick={() => { setShowTOC(false); goToChapter(item.id); }} className="w-full text-left px-3 py-2.5 rounded-lg transition-all" lang={containsBengaliText(item.title) ? 'bn' : undefined} style={{ background: current ? 'rgba(107,16,32,0.08)' : 'transparent', borderLeft: current ? '2px solid #6B1020' : '2px solid transparent', color: current ? '#6B1020' : colors.text, fontFamily: containsBengaliText(item.title) ? BENGALI_SERIF : READER_SERIF, fontSize: 15, overflowWrap: 'break-word' }}>
+                  <button key={item.id} type="button" onClick={() => { setShowTOC(false); goToChapter(item.id); }} className="reader-toc-item w-full text-left px-3 py-2.5 rounded-lg transition-all" lang={containsBengaliText(item.title) ? 'bn' : undefined} style={{ background: current ? 'rgba(107,16,32,0.08)' : 'transparent', borderLeft: current ? '2px solid #6B1020' : '2px solid transparent', color: current ? '#6B1020' : colors.text, fontFamily: containsBengaliText(item.title) ? BENGALI_SERIF : READER_SERIF, fontSize: 15, overflowWrap: 'break-word' }}>
                     <span style={{ fontFamily: UI_FONT, fontSize: 11, color: '#A88A8F', marginRight: 6 }}>
                       {index + 1}.
                     </span>
-                    {item.title}
+                    {normalizeChapterDisplayTitle(item.title)}
                   </button>
                 );
               })}

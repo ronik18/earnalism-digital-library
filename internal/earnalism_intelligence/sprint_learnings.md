@@ -2007,3 +2007,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Static source assertions are insufficient for API-fed CTA labels. Production must verify the rendered accessible name after live curation data is applied; an approved-audiobook destination now always renders and announces “Approved Audiobooks.”
 - A 44px touch audit must include form controls and short footer links, not only primary buttons and cards. Newsletter inputs and footer navigation now enforce the same minimum target contract.
 - When CI stalls before a deploy command, preserve the merged-main gate result and use the repository-equivalent Vercel pull, prebuilt production build, and production deploy sequence; still require custom-domain browser and API canaries before calling the release live.
+
+## Reader UX 9.8 V2 - 2026-08-11
+
+- Fixed reader chrome needs a viewport-bound paper surface at every breakpoint. A large `min-height` can put apparently valid paginated content behind bottom controls even when the page itself has no horizontal overflow.
+- Production Gutenberg-style prose may already arrive as one HTML paragraph per source-width line. Repair contiguous top-level fragments conservatively at render time so controlled content hashes, punctuation, word order, and release truth remain unchanged.
+- Paragraph pagination on short viewports must split at whitespace without inserting spaces around punctuation. Sentence-token joins changed `8:35` and `M.,`; word-bound chunking preserves fidelity.
+- A drop cap is appropriate only on the first content page when the first paragraph starts with a letter. Applying it to every page or to parenthetical front matter produces decorative noise instead of editorial hierarchy.
+- Outer-versus-inner window dimensions are not a reliable security signal in split-screen, embedded, or in-app browsers. Keep visibility and explicit copy/print protections, but never blur legitimate reading layouts based on viewport deltas.
