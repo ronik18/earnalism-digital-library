@@ -693,7 +693,7 @@ export default function PremiumHero({
     ? "Browse Library"
     : (primaryCta.label || "Browse Library");
   const secondaryCtaLabel = secondaryCta.label || "Explore Approved Audiobooks";
-  const secondaryVisibleLabel = /approved audiobooks/i.test(secondaryCtaLabel)
+  const secondaryVisibleLabel = audiobooksDestination.includes("availability=approved-audiobook")
     ? "Approved Audiobooks"
     : secondaryCtaLabel;
   const headline = hero.headline || fallbackHeadline;
@@ -759,7 +759,7 @@ export default function PremiumHero({
           to={audiobooksDestination}
           className="premium-hero-action premium-hero-action--secondary"
           data-testid="hero-cta-audiobooks"
-          aria-label={secondaryCtaLabel}
+              aria-label={secondaryVisibleLabel}
           onClick={() => track(onTrack, "hero_secondary_cta_click", { cta: `${analyticsNamespace}_hero_approved_audiobooks` })}
         >
           <Headphones size={18} strokeWidth={1.55} aria-hidden="true" />

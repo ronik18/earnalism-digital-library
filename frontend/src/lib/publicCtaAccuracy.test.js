@@ -19,11 +19,15 @@ describe("public CTA accuracy contract", () => {
   const login = source("src/pages/Login.jsx");
   const signup = source("src/pages/Signup.jsx");
   const shareButtons = source("src/components/ShareButtons.jsx");
+  const footer = source("src/components/Footer.jsx");
+  const globalStyles = source("src/index.css");
 
   test("catalog destinations use browsing language instead of claiming that reading has started", () => {
     expect(header).toContain('to="/library" className="premium-header-cta" data-testid="header-cta-library">Browse Library');
     expect(header).toContain('data-testid="mobile-cta-library">Browse Library');
     expect(hero).toContain('? "Browse Library"');
+    expect(hero).toContain('audiobooksDestination.includes("availability=approved-audiobook")');
+    expect(hero).toContain('? "Approved Audiobooks"');
     expect(header).not.toContain('label: "Membership"');
     expect(header).toContain('label: "Reading Passes"');
   });
@@ -71,5 +75,7 @@ describe("public CTA accuracy contract", () => {
     expect(login).toContain("inline-flex min-h-11 items-center");
     expect(signup).toContain("inline-flex min-h-11 items-center");
     expect(shareButtons).toContain('const btn = "w-11 h-11');
+    expect(footer.match(/min-h-11 min-w-11/g)?.length).toBeGreaterThanOrEqual(5);
+    expect(globalStyles).toContain(".reading-dispatch__field input { width: 100%; min-height: 2.75rem;");
   });
 });

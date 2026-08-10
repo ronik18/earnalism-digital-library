@@ -30,11 +30,11 @@ export default function Footer() {
           <nav aria-labelledby="footer-explore-heading">
             <div id="footer-explore-heading" className="overline mb-2.5">Explore</div>
             <ul className="flex flex-wrap gap-x-5 text-sm text-charcoal-soft">
-              <li><Link to="/library" className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">Library</Link></li>
-              <li><Link to="/journal" className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">Journal</Link></li>
-              <li><Link to="/about" className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">About</Link></li>
-              <li><Link to="/contact" className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">Contact</Link></li>
-              <li><Link to={accountHref} className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">{accountLabel}</Link></li>
+              <li><Link to="/library" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-burgundy focus-visible:text-burgundy transition-colors">Library</Link></li>
+              <li><Link to="/journal" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-burgundy focus-visible:text-burgundy transition-colors">Journal</Link></li>
+              <li><Link to="/about" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-burgundy focus-visible:text-burgundy transition-colors">About</Link></li>
+              <li><Link to="/contact" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-burgundy focus-visible:text-burgundy transition-colors">Contact</Link></li>
+              <li><Link to={accountHref} className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-burgundy focus-visible:text-burgundy transition-colors">{accountLabel}</Link></li>
             </ul>
           </nav>
 
