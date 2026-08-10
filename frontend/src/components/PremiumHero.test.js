@@ -68,6 +68,18 @@ describe("PremiumHero public contract", () => {
     expect(hoverRule).toContain("box-shadow: none;");
   });
 
+  test("keeps the hero visible and the audiobook CTA reachable on mobile", () => {
+    expect(source).toContain('media="(max-width: 1023px)"');
+    expect(source).toContain('REFERENCE_HERO_MOBILE_AVIF');
+    expect(source).toContain('REFERENCE_HERO_MOBILE_IMAGE');
+    expect(source).toContain('data-testid="hero-cta-audiobooks"');
+    expect(source).toContain('aria-label="Explore audiobooks"');
+    expect(source).toContain('audiobooksDestination');
+    expect(styles).toContain('.premium-reference-hero__backdrop {');
+    expect(styles).toContain('object-position: 78% top;');
+    expect(styles).toContain('touch-action: manipulation;');
+  });
+
   test("renders one mathematical slide set with exactly three meaningful states", () => {
     expect(source).toContain("carouselSlideState(index, carousel.activeIndex, books.length)");
     expect(source).toContain('slideState === "active"');

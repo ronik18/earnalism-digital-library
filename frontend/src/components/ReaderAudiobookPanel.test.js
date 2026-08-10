@@ -38,6 +38,7 @@ describe('ReaderAudiobookPanel', () => {
     expect(panelSource).not.toContain('reader-listening-room__identity');
     expect(panelSource).toContain("{title || 'Audiobook'} audiobook player");
     expect(panelSource).toContain('className="sr-only"');
+    expect(panelSource).toContain('data-book-slug={bookSlug || undefined}');
   });
 
   test('maintains accessible targets and a mobile full-screen listening room', () => {

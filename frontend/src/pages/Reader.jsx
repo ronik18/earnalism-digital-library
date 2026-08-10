@@ -30,6 +30,8 @@ import {
   shouldPrefetchNextSegment,
 } from '../lib/audiobookPlayback';
 import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from '../lib/readerSettings';
+import { readerBookMatchesRoute, readerRouteForBook } from '../lib/readerNavigation';
+import { readerSwipeDirection } from '../lib/readerSwipe';
 import { normalizeReaderContentHtml } from '../lib/readerContent';
 import './ReaderRoute.css';
 
@@ -51,16 +53,16 @@ const readerChapterResponseCache = new Map();
 const readerAssetPrefetchCache = new Map();
 
 const FONT_SIZES = [
-  { label: 'Small', size: '16px' },
+  { label: 'Small', size: '17px' },
   { label: 'Medium', size: '18px' },
   { label: 'Large', size: '20px' },
   { label: 'XL', size: '22px' },
 ];
 
 const LINE_SPACING_OPTIONS = [
-  { label: 'Comfortable', value: 'comfortable', english: 1.75, bengali: 1.9 },
-  { label: 'Relaxed', value: 'relaxed', english: 1.9, bengali: 2.05 },
-  { label: 'Airy', value: 'airy', english: 2.05, bengali: 2.2 },
+  { label: 'Comfortable', value: 'comfortable', english: 1.62, bengali: 1.74 },
+  { label: 'Relaxed', value: 'relaxed', english: 1.76, bengali: 1.88 },
+  { label: 'Airy', value: 'airy', english: 1.92, bengali: 2.02 },
 ];
 
 const READER_MARGIN_OPTIONS = [
@@ -710,7 +712,7 @@ function measurePageHeight() {
   return Math.max(440, Math.min(780, window.innerHeight - 245));
 }
 
-function paginateReaderHtml(html, { isBengali = false, fontSize = '17px' } = {}) {
+function paginateReaderHtml(html, { isBengali = false, fontSize = '17px', lineHeight } = {}) {
   if (typeof document === 'undefined' || !html) return [];
   const template = document.createElement('template');
   template.innerHTML = html;
@@ -725,7 +727,7 @@ function paginateReaderHtml(html, { isBengali = false, fontSize = '17px' } = {})
     `width:${Math.max(280, Math.min(document.querySelector('.reader-page-shell .reader-content')?.getBoundingClientRect().width || (window.innerWidth - 72), 680))}px`,
     `font-size:${fontSize}`,
     `font-family:${isBengali ? BENGALI_SERIF : READER_SERIF}`,
-    `line-height:${isBengali ? 1.9 : 1.75}`,
+    `line-height:${lineHeight || (isBengali ? 1.74 : 1.62)}`,
     'box-sizing:border-box',
     'padding:0',
   ].join(';');
@@ -1016,6 +1018,7 @@ export default function Reader() {
   const pendingCrossChapterAudioResumeRef = useRef(null);
   const settingsButtonRef = useRef(null);
   const settingsSheetRef = useRef(null);
+  const readerSwipeStartRef = useRef(null);
 
   useSEO({
     title: notFound
@@ -1301,6 +1304,11 @@ export default function Reader() {
         if (cancelled) return;
 
         const isAdminPreview = requestedAdminPreview || Boolean(bookRes.adminPreview);
+        if (!readerBookMatchesRoute(bookRes.data, bookId)) {
+          const identityError = new Error('Reader manifest does not match the requested book.');
+          identityError.code = 'READER_BOOK_IDENTITY_MISMATCH';
+          throw identityError;
+        }
         const manifestAccess = bookRes.data?._readerManifest?.access || bookRes.readerManifest?.access || {};
         const loadedChapters = [...(bookRes.data?.chapters || [])].sort((a, b) => (a.order || 0) - (b.order || 0));
         const activeChapterId = chapterId || loadedChapters[0]?.id;
@@ -1583,6 +1591,7 @@ export default function Reader() {
       const contentPages = paginateReaderHtml(readerHtml, {
         isBengali,
         fontSize: FONT_SIZES[fontSizeIdx].size,
+        lineHeight: isBengali ? lineSpacing.bengali : lineSpacing.english,
       });
       let referenceKind = '';
       const readerPages = contentPages.map((page, index) => {
@@ -1623,7 +1632,7 @@ export default function Reader() {
       window.clearTimeout(resizeTimer);
       window.removeEventListener('resize', onResize);
     };
-  }, [book, chapters.length, currentIdx, fontSizeIdx, isBengali, readerHtml]);
+  }, [book, chapters.length, currentIdx, fontSizeIdx, isBengali, lineSpacing.bengali, lineSpacing.english, readerHtml]);
 
   const currentPageData = paginatedPages.length ? paginatedPages[currentPage] : { type: 'content', html: readerHtml, contentIndex: 0 };
   const isContentPage = !paginatedPages.length || currentPageData?.type === 'content';
@@ -2592,7 +2601,7 @@ export default function Reader() {
 
   const goToChapter = useCallback((id) => {
     stopTTS();
-    navigate(`/reader/${bookId}${readerSearchParams({ chapterId: id, adminPreview })}`);
+    navigate(`${readerRouteForBook(bookId)}${readerSearchParams({ chapterId: id, adminPreview })}`);
   }, [adminPreview, bookId, navigate, stopTTS]);
 
   const goPrev = useCallback(() => {
@@ -2622,6 +2631,27 @@ export default function Reader() {
     setCurrentPage(nextPage);
     scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: options.behavior || 'smooth' });
   }, [currentPage, paginatedPages.length, stopTTS]);
+
+  const onReaderPointerDown = useCallback((event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    if (typeof event.target?.closest === 'function' && event.target.closest('button,a,input,select,textarea,[role="button"]')) return;
+    readerSwipeStartRef.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  }, []);
+
+  const onReaderPointerUp = useCallback((event) => {
+    const start = readerSwipeStartRef.current;
+    readerSwipeStartRef.current = null;
+    if (!start || start.pointerId !== event.pointerId) return;
+    event.currentTarget.releasePointerCapture?.(event.pointerId);
+    const direction = readerSwipeDirection(start, { x: event.clientX, y: event.clientY });
+    if (direction === 'next') goNext();
+    if (direction === 'previous') goPrev();
+  }, [goNext, goPrev]);
+
+  const onReaderPointerCancel = useCallback(() => {
+    readerSwipeStartRef.current = null;
+  }, []);
 
   const toggleBookmark = async () => {
     if (!getUserToken()) {
@@ -2877,6 +2907,7 @@ export default function Reader() {
 
       {showListeningPanel && !narrationDisabledForBook && (
         <ReaderAudiobookPanel
+          bookSlug={bookId}
           title={readerDisplayTitle}
           author={readerFrontMatter.author || book?.author || ''}
           coverUrl={listeningCoverUrl}
@@ -2899,6 +2930,11 @@ export default function Reader() {
           onVolumeChange={changeGeneratedAudioVolume}
           onToggleMute={toggleGeneratedAudioMute}
           onOpenReadingPage={() => {
+            const intendedReaderPath = readerRouteForBook(bookId);
+            if (window.location.pathname !== intendedReaderPath) {
+              navigate(intendedReaderPath);
+              return;
+            }
             if (!isContentPage && firstNarratedPageIndex >= 0) {
               goToPage(firstNarratedPageIndex, { behavior: 'auto' });
               return;
@@ -2949,7 +2985,13 @@ export default function Reader() {
       <main key={chapter?.id || chapterId || bookId} className="reader-main">
         <div className="reader-gutter reader-gutter--left" aria-hidden="true" />
         <article key={`${activeChapterId || chapterId || chapter?.id || bookId}:${currentPage}`} className="reader-canvas page-enter">
-          <section className={bookmarked ? 'reader-page-shell reader-page-shell--bookmarked' : 'reader-page-shell'}>
+          <section
+            className={bookmarked ? 'reader-page-shell reader-page-shell--bookmarked' : 'reader-page-shell'}
+            data-testid="reader-page-shell"
+            onPointerDown={onReaderPointerDown}
+            onPointerUp={onReaderPointerUp}
+            onPointerCancel={onReaderPointerCancel}
+          >
             {showBookHeader && (
               <header className="reader-book-header">
                 {readerFrontMatter.author && <div className="reader-book-header__author">{readerFrontMatter.author}</div>}

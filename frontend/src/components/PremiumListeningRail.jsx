@@ -8,10 +8,15 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import BookCoverImage from "./BookCoverImage";
+import { readerRouteForBook } from "../lib/readerNavigation";
 import "./PremiumListeningRail.css";
 
 function listenUrl(book) {
-  return book?.cta_url || book?.primary_cta_url || "";
+  const configuredUrl = book?.cta_url || book?.primary_cta_url || "";
+  if (book?.slug && (book.cta_kind === "listen" || /[?&]listen=1(?:&|$)/.test(configuredUrl))) {
+    return readerRouteForBook(book.slug, { listen: true });
+  }
+  return configuredUrl;
 }
 
 function canListen(book) {
