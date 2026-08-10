@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Headphones, Sparkles } from "lucide-react";
 import { api } from "../lib/api";
 import { audiobookReleaseState, readerManifestPath } from "../lib/audioReleaseSafety";
+import { readerBookMatchesRoute, readerRouteForBook } from "../lib/readerNavigation";
 
 const DEFAULT_SLUG = process.env.REACT_APP_APPROVED_AUDIO_SPOTLIGHT_SLUG || "";
 
@@ -55,7 +56,7 @@ export default function ApprovedAudiobookSpotlight({ slug = DEFAULT_SLUG, compac
         .then((response) => {
           const nextBook = bookFromReaderManifest(response.data);
           const state = audiobookReleaseState(nextBook || {});
-          setBook(state.canShowControls ? nextBook : null);
+          setBook(state.canShowControls && readerBookMatchesRoute(nextBook, slug) ? nextBook : null);
         })
         .catch(() => setBook(null));
     });
@@ -92,10 +93,10 @@ export default function ApprovedAudiobookSpotlight({ slug = DEFAULT_SLUG, compac
           </p>
         </div>
         <div className="approved-audio-spotlight__actions">
-          <Link to={`/reader/${book.slug}?listen=1`} className="btn-primary">
+          <Link to={readerRouteForBook(book.slug, { listen: true })} className="btn-primary">
             <Headphones size={15} strokeWidth={1.7} /> Open Audiobook
           </Link>
-          <Link to={`/book/${book.slug}`} className="btn-secondary">
+          <Link to={`/book/${encodeURIComponent(book.slug)}`} className="btn-secondary">
             <Sparkles size={15} strokeWidth={1.7} /> View Edition
           </Link>
         </div>

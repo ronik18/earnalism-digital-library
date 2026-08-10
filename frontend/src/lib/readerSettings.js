@@ -2,7 +2,7 @@ export const READER_SETTINGS_STORAGE_KEY = "earnalism.reader.preferences.v1";
 
 export const READER_SETTINGS_DEFAULTS = {
   theme: "beige",
-  fontSizeIdx: 0,
+  fontSizeIdx: 1,
   lineSpacingMode: "comfortable",
   marginMode: "classic",
   fontFamilyMode: "sans",

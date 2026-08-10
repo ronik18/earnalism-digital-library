@@ -36,6 +36,12 @@ describe("PremiumListeningRail Home contract", () => {
     expect(homeListeningRoom).toContain("loading={false}");
   });
 
+  test("derives audiobook links from the card slug instead of trusting a stale CTA URL", () => {
+    expect(rail).toContain("readerRouteForBook(book.slug, { listen: true })");
+    expect(rail).toContain('book.cta_kind === "listen"');
+    expect(rail).toContain("/[?&]listen=1(?:&|$)/");
+  });
+
   test("uses the compact customer-facing listening copy and canonical routes", () => {
     expect(rail).toContain("THE LISTENING ROOM");
     expect(rail).toContain("Literature, in a more intimate form.");

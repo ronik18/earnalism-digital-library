@@ -27,6 +27,7 @@ export function formatAudiobookTime(value = 0) {
 
 export default function ReaderAudiobookPanel({
   title,
+  bookSlug,
   author,
   coverUrl,
   isPlaying,
@@ -80,6 +81,7 @@ export default function ReaderAudiobookPanel({
       aria-labelledby="reader-listening-room-title"
       aria-describedby="reader-listening-room-status"
       data-testid="reader-audiobook-panel"
+      data-book-slug={bookSlug || undefined}
     >
       {coverUrl ? (
         <img className="reader-listening-room__backdrop" src={coverUrl} alt="" aria-hidden="true" decoding="async" />

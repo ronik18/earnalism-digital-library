@@ -34,6 +34,8 @@ const TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAA
 const versionedHeroAsset = (path) => `${PUBLIC_URL}${path}?v=${HERO_ASSET_VERSION}`;
 const REFERENCE_HERO_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact-1440.webp");
 const REFERENCE_HERO_FULL_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact.webp");
+const REFERENCE_HERO_MOBILE_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.webp");
+const REFERENCE_HERO_MOBILE_AVIF = versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.avif");
 const REFERENCE_HERO_SRCSET = [
   `${versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.webp")} 1024w`,
   `${REFERENCE_HERO_IMAGE} 1440w`,
@@ -684,6 +686,9 @@ export default function PremiumHero({
   const secondaryCta = hero.secondary_cta?.url
     ? hero.secondary_cta
     : { label: "Explore Audiobooks", url: "/library?availability=approved-audiobook" };
+  const audiobooksDestination = String(secondaryCta.url || "").startsWith('/')
+    ? secondaryCta.url
+    : "/library?availability=approved-audiobook";
   const headline = hero.headline || fallbackHeadline;
   const subheadline = hero.subheadline || DEFAULT_SUBHEADLINE;
   const goldHeadline = "timeless Bengali and English classics.";
@@ -701,6 +706,8 @@ export default function PremiumHero({
         >
           <div className="premium-reference-hero__backdrop" aria-hidden="true">
             <picture>
+              <source type="image/avif" media="(max-width: 1023px)" srcSet={REFERENCE_HERO_MOBILE_AVIF} sizes="100vw" />
+              <source type="image/webp" media="(max-width: 1023px)" srcSet={REFERENCE_HERO_MOBILE_IMAGE} sizes="100vw" />
               <source type="image/avif" media="(min-width: 1024px)" srcSet={REFERENCE_HERO_AVIF_SRCSET} sizes="100vw" />
               <source type="image/webp" media="(min-width: 1024px)" srcSet={REFERENCE_HERO_SRCSET} sizes="100vw" />
               <img
@@ -742,9 +749,10 @@ export default function PremiumHero({
           <ArrowRight size={17} strokeWidth={1.6} aria-hidden="true" />
         </Link>
         <Link
-          to={secondaryCta.url}
+          to={audiobooksDestination}
           className="premium-hero-action premium-hero-action--secondary"
           data-testid="hero-cta-audiobooks"
+          aria-label="Explore audiobooks"
           onClick={() => track(onTrack, "hero_secondary_cta_click", { cta: `${analyticsNamespace}_hero_approved_audiobooks` })}
         >
           <Headphones size={18} strokeWidth={1.55} aria-hidden="true" />
