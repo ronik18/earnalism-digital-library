@@ -24,7 +24,6 @@ const HISTORICAL_AUDIO_HOLD_SLUGS = [
   "nishkriti",
   "the-wonderful-wizard-of-oz",
   "bn-059",
-  "the-art-of-money-getting",
 ];
 const APPROVED_PUBLIC_AUDIO_SLUGS = publicAudioTruth.approved_public_audio_slugs || [];
 const PRIVATE_QA_AUDIO_HOLD = "bn-066";
