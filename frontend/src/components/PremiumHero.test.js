@@ -73,7 +73,9 @@ describe("PremiumHero public contract", () => {
     expect(source).toContain('REFERENCE_HERO_MOBILE_AVIF');
     expect(source).toContain('REFERENCE_HERO_MOBILE_IMAGE');
     expect(source).toContain('data-testid="hero-cta-audiobooks"');
-    expect(source).toContain('aria-label={secondaryCtaLabel}');
+    expect(source).toContain('audiobooksDestination.includes("availability=approved-audiobook")');
+    expect(source).toContain('aria-label={secondaryVisibleLabel}');
+    expect(source).toContain('? "Approved Audiobooks"');
     expect(source).toContain('"Browse Library"');
     expect(source).toContain('audiobooksDestination');
     expect(styles).toContain('.premium-reference-hero__backdrop {');

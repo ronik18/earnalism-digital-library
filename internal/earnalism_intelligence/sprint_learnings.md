@@ -2001,3 +2001,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - One high-intent action per outcome is clearer than duplicate reader links. Dracula now has one primary “Read Chapter 1 Free” action plus a separate pass-discovery action.
 - At 390x844, a one-viewport hero, immediate Bengali/English/approved-audio quick paths, zero horizontal overflow, and 44px minimum controls materially improve orientation without changing catalog or audiobook release truth.
 - Journey automation must check the current route-specific CTA promise and query parameters. Stale Dracula-first and seven-day-pass assertions can conceal destination drift.
+
+## Mobile CTA V2 production verification - 2026-08-10
+
+- Static source assertions are insufficient for API-fed CTA labels. Production must verify the rendered accessible name after live curation data is applied; an approved-audiobook destination now always renders and announces “Approved Audiobooks.”
+- A 44px touch audit must include form controls and short footer links, not only primary buttons and cards. Newsletter inputs and footer navigation now enforce the same minimum target contract.
+- When CI stalls before a deploy command, preserve the merged-main gate result and use the repository-equivalent Vercel pull, prebuilt production build, and production deploy sequence; still require custom-domain browser and API canaries before calling the release live.
