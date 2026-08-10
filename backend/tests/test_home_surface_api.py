@@ -141,3 +141,21 @@ def test_audio_manifest_resolution_is_parallel_and_fails_closed(monkeypatch):
     assert contracts["two"]["endpoint_valid"] is True
     assert contracts["broken"]["enabled"] is False
     assert contracts["broken"]["package_valid"] is False
+
+
+def test_listening_route_returns_empty_safe_contract_when_builder_fails(monkeypatch):
+    async def unavailable(*_args, **_kwargs):
+        raise RuntimeError("cold-cache source unavailable")
+
+    monkeypatch.setattr(server, "_public_cache_get", _no_cache)
+    monkeypatch.setattr(server, "_public_cache_set", _no_cache_set)
+    monkeypatch.setattr(server, "_build_home_curated_source_payload", unavailable)
+
+    response = asyncio.run(server.get_home_listening(_request("/api/home/listening"), limit=3))
+    payload = json.loads(response.body)
+
+    assert response.status_code == 200
+    assert payload["schema_version"] == "home-listening-v1"
+    assert payload["total"] == 0
+    assert payload["items"] == []
+    assert payload["source"]["truth_source"] == "canonical_public_catalog_fail_closed"

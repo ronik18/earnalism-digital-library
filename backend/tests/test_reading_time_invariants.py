@@ -163,6 +163,10 @@ class FakeDB:
 def _load_server(monkeypatch):
     monkeypatch.setenv("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
     monkeypatch.setenv("JWT_SECRET", "test-secret-for-reading-invariants-32")
+    try:
+        asyncio.get_event_loop()
+    except RuntimeError:
+        asyncio.set_event_loop(asyncio.new_event_loop())
     return importlib.import_module("server")
 
 
