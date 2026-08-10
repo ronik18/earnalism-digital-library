@@ -84,7 +84,7 @@ export default function Signup() {
         </form>
 
         <p className="mt-8 text-sm text-charcoal-soft text-center font-light">
-          Already a reader? <Link to="/login" className="text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-login">Sign in</Link>
+          Already a reader? <Link to="/login" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-login">Sign in</Link>
         </p>
       </div>
     </div>

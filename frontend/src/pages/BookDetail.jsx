@@ -212,7 +212,7 @@ export default function BookDetail() {
     <div className="book-detail-page" data-testid="book-page">
       {bookSchemaAllowed && bookSchema && <JsonLd id="book" data={bookSchema} />}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-10">
-        <Link to="/library" className="inline-flex items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-to-library">
+        <Link to="/library" className="inline-flex min-h-11 items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-to-library">
           <ChevronLeft size={14} /> Back to Library
         </Link>
       </div>
@@ -290,13 +290,15 @@ export default function BookDetail() {
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center" data-testid="book-actions">
             {isDracula && hasFreePreview && (
-              <Link to={readerHref} className="btn-secondary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
+              <Link to={readerHref} className="btn-primary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
             )}
-            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: isDracula ? "book_detail_continue" : "book_detail_reader" })}>
-              {isDracula ? "Continue Dracula" : detailPresentation.primaryReadLabel}
-            </Link>
+            {!isDracula && (
+              <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: "book_detail_reader" })}>
+                {detailPresentation.primaryReadLabel}
+              </Link>
+            )}
             {isDracula && (
-              <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
+              <Link to={passHref} className="btn-link inline-flex min-h-11 items-center justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, cta: "book_detail_pass" })}>View Reading Passes</Link>
             )}
             {detailPresentation.listenCtaVisible && (
               <div className="flex flex-col items-center gap-1.5">
@@ -352,7 +354,7 @@ export default function BookDetail() {
                 {(publicBook.chapters || []).map((c, i) => (
                   <li key={c.id} className="flex items-baseline gap-4 text-charcoal">
                     <span className="italic-accent text-gold-deep shrink-0 w-10">{String(i + 1).padStart(2, "0")}</span>
-                    <Link to={`/reader/${publicBook.slug}?c=${c.id}`} className="font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{normalizeChapterDisplayTitle(c.title)}</Link>
+                    <Link to={`/reader/${publicBook.slug}?c=${c.id}`} className="inline-flex min-h-11 items-center font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{normalizeChapterDisplayTitle(c.title)}</Link>
                   </li>
                 ))}
               </ol>
@@ -433,7 +435,7 @@ export default function BookDetail() {
               <BookOpen size={15} strokeWidth={1.6} /> Read Chapter 1 Free
             </Link>
             <Link to={readingPassUrl("book_preview")} className="btn-primary w-full justify-center" data-testid="bottom-buy-reading-time">
-              <CreditCard size={15} strokeWidth={1.6} /> Get Reading Pass
+              <CreditCard size={15} strokeWidth={1.6} /> View Reading Passes
             </Link>
             {publicBook.buy_url && (
               <a href={publicBook.buy_url} target="_blank" rel="noreferrer" className="preview-payment-shell__external" data-testid="bottom-external-buy">

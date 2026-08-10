@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-08-10T18:21:29Z",
+  "scope": "local production build at 390x844 plus public journey CTA accuracy",
+  "status": "SOURCE_VALIDATED_READY_FOR_OWNER_REVIEW_NOT_DEPLOYED",
+  "weighted_score": 9.86,
+  "score_dimensions": [
+    {
+      "dimension": "mobile hierarchy and orientation",
+      "weight": 0.2,
+      "score": 9.8,
+      "evidence": "The hero is 843px high below the 58px header, quick paths begin immediately after it, and the page has no horizontal overflow."
+    },
+    {
+      "dimension": "CTA promise and destination accuracy",
+      "weight": 0.25,
+      "score": 10.0,
+      "evidence": "Seven high-intent browser click checks passed with exact path and required query parameters."
+    },
+    {
+      "dimension": "mobile interaction accessibility",
+      "weight": 0.15,
+      "score": 10.0,
+      "evidence": "Eight public mobile routes exposed zero visible links or buttons below 44px."
+    },
+    {
+      "dimension": "product and release truth",
+      "weight": 0.15,
+      "score": 10.0,
+      "evidence": "Membership, seven-day-pass, duplicate Dracula CTA, unsupported coupon savings, and false urgency language were removed; approved-audiobook routes remain release-gated."
+    },
+    {
+      "dimension": "brand and visual coherence",
+      "weight": 0.15,
+      "score": 9.7,
+      "evidence": "The existing premium literary system is preserved while the home journey adds compact, consistent language and format paths."
+    },
+    {
+      "dimension": "responsive and build confidence",
+      "weight": 0.1,
+      "score": 9.5,
+      "evidence": "The optimized production build, focused frontend suite, repository E2E regression, and full journey smoke pass; production field metrics remain a post-deploy gate."
+    }
+  ],
+  "measurements": {
+    "viewport": "390x844",
+    "header_height_px": 58,
+    "hero_height_px": 843,
+    "page_height_px": 6626,
+    "horizontal_overflow_px": 0,
+    "visible_controls_below_44_px": 0,
+    "high_intent_cta_click_checks": {
+      "passed": 7,
+      "failed": 0
+    }
+  },
+  "verification": {
+    "focused_frontend_tests": "PASS_5_SUITES_29_TESTS",
+    "production_build": "PASS",
+    "repository_e2e_regression": "PASS",
+    "full_journey_smoke": "PASS_20_ROUTES_ZERO_BLOCKERS",
+    "full_journey_artifacts": "output/ux-journey-regression/2026-08-10T18-21-29-928Z",
+    "mobile_home_screenshot": "test-results/mobile-home-390-final.png"
+  },
+  "release_truth": {
+    "deployed": false,
+    "payment_executed": false,
+    "catalog_exposure_changed": false,
+    "audiobook_exposure_changed": false,
+    "production_postcheck_required": true
+  }
+}

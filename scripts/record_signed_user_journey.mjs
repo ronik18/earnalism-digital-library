@@ -53,10 +53,13 @@ const JOURNEY_ROUTES = [
 ];
 
 const CTA_CHECKS = [
-  { id: "hero_read_chapter_free_click", label: "Read Chapter 1 Free", expectedPath: "/reader/dracula" },
-  { id: "start_dracula_click", label: "Start Dracula", expectedPath: "/reader/dracula" },
-  { id: "get_7_day_reading_pass_click", label: "Get 7-Day Reading Pass", expectedPath: "/pricing" },
-  { id: "explore_library_click", label: "Explore library", expectedPath: "/library", optional: true },
+  { id: "browse_library_click", sourcePath: "/", label: "Browse Library", expectedPath: "/library" },
+  { id: "browse_bengali_click", sourcePath: "/", label: "Browse Bengali classics", expectedPath: "/library", expectedSearch: "language=bn&availability=reader-ready" },
+  { id: "browse_english_click", sourcePath: "/", label: "Browse English classics", expectedPath: "/library", expectedSearch: "language=en" },
+  { id: "approved_audiobooks_click", sourcePath: "/", label: "Explore approved audiobooks", expectedPath: "/library", expectedSearch: "availability=approved-audiobook" },
+  { id: "book_free_chapter_click", sourcePath: "/book/dracula", label: "Read Chapter 1 Free", expectedPath: "/reader/dracula" },
+  { id: "book_reading_passes_click", sourcePath: "/book/dracula", label: "View Reading Passes", expectedPath: "/pricing" },
+  { id: "pricing_free_chapter_click", sourcePath: "/pricing", label: "Read Chapter 1 Free", expectedPath: "/reader/dracula" },
 ];
 
 const results = {
@@ -344,16 +347,20 @@ async function auditHomeTour(page) {
 }
 
 async function auditHeroCtas(page) {
-  await timedGoto(page, { id: "home_cta_base", path: "/", objective: "Homepage CTA base state" });
   for (const check of CTA_CHECKS) {
+    await timedGoto(page, {
+      id: `${check.id}_base`,
+      path: check.sourcePath,
+      objective: `${check.label} CTA source state`,
+    });
     const locator = page.getByRole("link", { name: new RegExp(check.label, "i") }).first();
     if (!(await locator.isVisible({ timeout: 2500 }).catch(() => false))) {
       if (!check.optional) {
         results.enhancement_notes.push({
           priority: "P0",
-          route: "/",
+          route: check.sourcePath,
           issue: `${check.label} CTA was not visible to the recorder.`,
-          recommendation: "Keep primary reading and pass CTAs visible above the fold.",
+          recommendation: "Keep the CTA visible and make its promise match the destination.",
         });
       }
       continue;
@@ -364,7 +371,7 @@ async function auditHeroCtas(page) {
     await locator.click({ timeout: 8000 }).catch((error) => {
       results.enhancement_notes.push({
         priority: "P0",
-        route: "/",
+        route: check.sourcePath,
         issue: `${check.label} click failed: ${redactSensitive(error.message)}`,
         recommendation: "Repair CTA target or hit area.",
       });
@@ -372,15 +379,28 @@ async function auditHeroCtas(page) {
     await page.waitForLoadState("domcontentloaded", { timeout: 8000 }).catch(() => {});
     await sleep(1000);
     const duration_ms = Math.round(performance.now() - started);
+    const finalUrl = new URL(page.url());
+    const expectedParams = new URLSearchParams(check.expectedSearch || "");
+    const destinationMatches = finalUrl.pathname === check.expectedPath
+      && [...expectedParams].every(([key, value]) => finalUrl.searchParams.get(key) === value);
     recordEvent(check.id, {
       label: check.label,
+      source_path: check.sourcePath,
       expected_path: check.expectedPath,
-      final_url: safeUrl(page.url()),
+      expected_search: check.expectedSearch || "",
+      final_url: safeUrl(finalUrl.href),
+      destination_matches: destinationMatches,
       duration_ms,
     });
+    if (!destinationMatches) {
+      results.failures.push({
+        severity: "FAIL",
+        id: `${check.id}_destination_mismatch`,
+        route: check.sourcePath,
+        message: `${check.label} opened ${safeUrl(finalUrl.href)} instead of ${check.expectedPath}${check.expectedSearch ? `?${check.expectedSearch}` : ""}.`,
+      });
+    }
     await capture(page, `cta-${check.id}`);
-    await page.goto(routeUrl("/"), { waitUntil: "domcontentloaded" }).catch(() => {});
-    await sleep(800);
   }
 }
 
@@ -732,6 +752,10 @@ function smokeReport() {
 
 async function installSmokeApiMocks(context) {
   if (!IS_SMOKE || process.env.EARNALISM_JOURNEY_DISABLE_API_MOCKS === "true") return;
+  const homeSnapshot = JSON.parse(fs.readFileSync(
+    path.join(ROOT, "frontend", "src", "data", "homeCuratedSprint1.json"),
+    "utf8",
+  ));
   const book = {
     slug: "dracula",
     title: "Dracula",
@@ -789,6 +813,30 @@ async function installSmokeApiMocks(context) {
       await route.fulfill(json({ books: [book], categories: [], featured: { book } }));
       return;
     }
+    if (pathname === "/home/hero") {
+      await route.fulfill(json({
+        schema_version: "home-hero-v1",
+        revision: "journey-smoke",
+        hero: homeSnapshot.hero,
+        source: { mode: "bundled-release-snapshot" },
+      }));
+      return;
+    }
+    if (pathname === "/home/listening") {
+      const items = homeSnapshot.shelves?.approved_audiobooks || [];
+      await route.fulfill(json({
+        schema_version: "home-listening-v1",
+        revision: "journey-smoke",
+        total: items.length,
+        items,
+        source: { mode: "bundled-release-snapshot" },
+      }));
+      return;
+    }
+    if (pathname === "/home/curated") {
+      await route.fulfill(json(homeSnapshot));
+      return;
+    }
     if (pathname === "/books") {
       await route.fulfill(json([book]));
       return;
@@ -815,8 +863,10 @@ async function installSmokeApiMocks(context) {
     }
     if (pathname === "/payments/packs") {
       await route.fulfill(json([
-        { id: "1h", label: "One-Hour Reading Pass", minutes: 60, price_inr: 99, amount_paise: 9900 },
-        { id: "7d", label: "7-Day Reading Pass", minutes: 420, price_inr: 299, amount_paise: 29900 },
+        { id: "30m", label: "The First Chapter", minutes: 30, price_inr: 49, amount_paise: 4900 },
+        { id: "1h", label: "The Quiet Hour", minutes: 60, price_inr: 89, amount_paise: 8900 },
+        { id: "3h", label: "The Deep Reading Pass", minutes: 180, price_inr: 239, amount_paise: 23900 },
+        { id: "10h", label: "The Reader’s Reserve", minutes: 600, price_inr: 499, amount_paise: 49900 },
       ]));
       return;
     }

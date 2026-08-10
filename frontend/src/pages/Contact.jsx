@@ -58,7 +58,7 @@ export default function Contact() {
           <p className="text-charcoal-soft mt-7 leading-[1.8] font-light">For book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader.</p>
 
           <div className="mt-10 space-y-5">
-            <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-charcoal hover:text-burgundy" data-testid="contact-email-link">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="flex min-h-11 items-center gap-3 text-charcoal hover:text-burgundy" data-testid="contact-email-link">
               <Mail size={16} className="text-gold" strokeWidth={1.5} /> <span className="font-serif-display italic text-lg">{CONTACT_EMAIL}</span>
             </a>
             {activeSocials.length > 0 && (
@@ -70,7 +70,7 @@ export default function Contact() {
                     target={external ? "_blank" : undefined}
                     rel={external ? "noopener noreferrer" : undefined}
                     aria-label={ariaLabel}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-soft text-charcoal-soft transition-colors duration-300 hover:border-gold hover:text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-soft text-charcoal-soft transition-colors duration-300 hover:border-gold hover:text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
                     data-testid={`contact-social-${id}`}
                   >
                     <Icon size={17} strokeWidth={1.5} aria-hidden="true" />

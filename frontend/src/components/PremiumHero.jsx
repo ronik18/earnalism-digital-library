@@ -682,13 +682,20 @@ export default function PremiumHero({
       : Array.isArray(curation?.audiobook_shelf?.books)
         ? curation.audiobook_shelf.books
         : [];
-  const primaryCta = hero.primary_cta?.url ? hero.primary_cta : { label: "Start Reading", url: "/library" };
+  const primaryCta = hero.primary_cta?.url ? hero.primary_cta : { label: "Browse Library", url: "/library" };
   const secondaryCta = hero.secondary_cta?.url
     ? hero.secondary_cta
-    : { label: "Explore Audiobooks", url: "/library?availability=approved-audiobook" };
+    : { label: "Explore Approved Audiobooks", url: "/library?availability=approved-audiobook" };
   const audiobooksDestination = String(secondaryCta.url || "").startsWith('/')
     ? secondaryCta.url
     : "/library?availability=approved-audiobook";
+  const primaryCtaLabel = primaryCta.url === "/library" && /start reading/i.test(primaryCta.label || "")
+    ? "Browse Library"
+    : (primaryCta.label || "Browse Library");
+  const secondaryCtaLabel = secondaryCta.label || "Explore Approved Audiobooks";
+  const secondaryVisibleLabel = /approved audiobooks/i.test(secondaryCtaLabel)
+    ? "Approved Audiobooks"
+    : secondaryCtaLabel;
   const headline = hero.headline || fallbackHeadline;
   const subheadline = hero.subheadline || DEFAULT_SUBHEADLINE;
   const goldHeadline = "timeless Bengali and English classics.";
@@ -745,18 +752,18 @@ export default function PremiumHero({
           onClick={() => track(onTrack, "hero_primary_cta_click", { cta: `${analyticsNamespace}_hero_start_reading` })}
         >
           <BookOpen size={19} strokeWidth={1.55} aria-hidden="true" />
-          <span>{primaryCta.label || "Start Reading"}</span>
+          <span>{primaryCtaLabel}</span>
           <ArrowRight size={17} strokeWidth={1.6} aria-hidden="true" />
         </Link>
         <Link
           to={audiobooksDestination}
           className="premium-hero-action premium-hero-action--secondary"
           data-testid="hero-cta-audiobooks"
-          aria-label="Explore audiobooks"
+          aria-label={secondaryCtaLabel}
           onClick={() => track(onTrack, "hero_secondary_cta_click", { cta: `${analyticsNamespace}_hero_approved_audiobooks` })}
         >
           <Headphones size={18} strokeWidth={1.55} aria-hidden="true" />
-          <span>{secondaryCta.label || "Explore Audiobooks"}</span>
+          <span>{secondaryVisibleLabel}</span>
           <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
         </Link>
       </div>

@@ -24,7 +24,7 @@ const NAV = [
   { to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
   { to: "/library?language=en", label: "English Classics" },
   { to: "/library?availability=approved-audiobook", label: "Audiobooks" },
-  { to: "/pricing", label: "Membership" },
+  { to: "/pricing", label: "Reading Passes" },
   { to: "/about", label: "About" },
 ];
 
@@ -34,7 +34,7 @@ const REFERENCE_HOME_NAV = [
   { key: "bengali", to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
   { key: "english", to: "/library?language=en", label: "English Classics" },
   { key: "audiobooks", to: "/library?availability=approved-audiobook", label: "Audiobooks" },
-  { key: "membership", to: "/pricing", label: "Membership" },
+  { key: "reading-passes", to: "/pricing", label: "Reading Passes" },
   { key: "about", to: "/about", label: "About" },
   { key: "search", to: "/library", label: "Search the library" },
 ];
@@ -105,7 +105,7 @@ export default function Header() {
               <Link
                 to="/library"
                 className="reference-home-header-icon"
-                aria-label="Search the library"
+                aria-label="Open library search"
                 data-testid="nav-search"
               >
                 <Search size={22} strokeWidth={1.55} aria-hidden="true" />
@@ -133,7 +133,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden xl:block premium-reference-home-cta-wrap">
-          <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Start Reading</Link>
+          <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Browse Library</Link>
         </div>
 
         <button
@@ -142,7 +142,7 @@ export default function Header() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="xl:hidden p-2 -mr-2 text-burgundy"
+          className="xl:hidden inline-flex min-h-11 min-w-11 items-center justify-center p-2 -mr-2 text-burgundy"
           data-testid="mobile-menu-toggle"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -173,7 +173,7 @@ export default function Header() {
             >
               {accountLabel}
             </NavLink>
-            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Start Reading</Link>
+            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Browse Library</Link>
 
             {activeSocials.length > 0 && (
               <nav className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-4" aria-label="Earnalism social links" data-testid="mobile-socials">

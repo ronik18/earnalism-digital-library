@@ -270,7 +270,7 @@ export default function Login() {
         </form>
 
         <p className="mt-8 text-sm text-charcoal-soft text-center font-light">
-          New to The Earnalism? <Link to="/signup" className="text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-signup">Create an account</Link>
+          New to The Earnalism? <Link to="/signup" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-signup">Create an account</Link>
         </p>
       </div>
     </div>

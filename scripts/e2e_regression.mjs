@@ -329,7 +329,7 @@ async function main() {
     `hero headline does not match the approved premium catalog hero: ${home.headline}`,
   );
   assert(!/Begin with Dracula|Step into Dracula/i.test(home.headline || ""), `homepage regressed to Dracula-first headline: ${home.headline}`);
-  assert(home.heroLibraryHref === "/library", `hero Start Reading CTA should open library, got ${home.heroLibraryHref}`);
+  assert(home.heroLibraryHref === "/library", `hero Browse Library CTA should open library, got ${home.heroLibraryHref}`);
   assert(
     home.heroAudiobooksHref === "/library?availability=approved-audiobook",
     `hero audiobook CTA should open only the approved-audiobook collection, got ${home.heroAudiobooksHref}`,
@@ -449,10 +449,7 @@ async function main() {
   if (bookDetail.topPreviewHref) {
     assert(bookDetail.topPreviewHref === `/reader/${firstSlug}`, `top preview CTA mismatch: ${bookDetail.topPreviewHref}`);
   }
-  assert(
-    bookDetail.topStartHref === `/reader/${firstSlug}`,
-    `top Start Reading CTA should open Dracula reader, got ${bookDetail.topStartHref}`,
-  );
+  assert(bookDetail.topStartHref === undefined, `Dracula detail should not duplicate its free reader CTA: ${bookDetail.topStartHref}`);
   assert(
     bookDetail.topPassHref === `/pricing?source=book_detail&book=${firstSlug}`,
     `top reading pass CTA should open book-specific pricing, got ${bookDetail.topPassHref}`,

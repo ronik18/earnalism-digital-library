@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail } from "lucide-react";
 import BrandMark from "./BrandMark";
+import { useAuth } from "../context/AuthContext";
 
 const CONTACT_EMAIL = "sales@reoenterprise.org";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { user } = useAuth();
+  const accountHref = user && typeof user === "object" ? "/account" : "/login";
+  const accountLabel = user && typeof user === "object" ? "Account" : "Sign In";
 
   return (
     <footer className="border-t border-burgundy-600/20 bg-[#f8f1e5] text-charcoal" data-testid="site-footer">
@@ -30,7 +34,7 @@ export default function Footer() {
               <li><Link to="/journal" className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">Journal</Link></li>
               <li><Link to="/about" className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">About</Link></li>
               <li><Link to="/contact" className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">Contact</Link></li>
-              <li><Link to="/login" className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">Sign In</Link></li>
+              <li><Link to={accountHref} className="inline-flex min-h-11 items-center hover:text-burgundy focus-visible:text-burgundy transition-colors">{accountLabel}</Link></li>
             </ul>
           </nav>
 

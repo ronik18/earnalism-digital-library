@@ -195,7 +195,7 @@ export default function Account() {
             </p>
             <div className="mt-auto pt-6">
               <Link
-                to="/library"
+                to="/reader/dracula"
                 className="btn-primary w-full sm:w-auto"
                 data-testid="account-go-library"
                 onClick={() => trackFunnelEvent("return_resume_reading_click", {
@@ -203,7 +203,7 @@ export default function Account() {
                   book_slug: "dracula",
                 })}
               >
-                Open Dracula Shelf
+                Continue Dracula
               </Link>
             </div>
           </div>

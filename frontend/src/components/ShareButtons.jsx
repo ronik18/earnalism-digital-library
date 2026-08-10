@@ -22,7 +22,7 @@ export default function ShareButtons({ title = "", variant = "product", testIdPr
     }
   };
 
-  const btn = "w-10 h-10 inline-flex items-center justify-center rounded-full border border-[var(--brand-border)] text-[var(--brand-charcoal-soft)] hover:text-[var(--brand-burgundy)] hover:border-[var(--brand-gold)] transition-colors";
+  const btn = "w-11 h-11 inline-flex items-center justify-center rounded-full border border-[var(--brand-border)] text-[var(--brand-charcoal-soft)] hover:text-[var(--brand-burgundy)] hover:border-[var(--brand-gold)] transition-colors";
 
   return (
     <div className="flex items-center gap-3" data-testid={`${testIdPrefix}-row`}>

@@ -19,6 +19,14 @@ describe("Home curated shelf integration", () => {
     expect(source).not.toContain("homeCurationLoading");
   });
 
+  test("places three accurate discovery paths before monetization", () => {
+    expect(source).toContain("home-quick-paths");
+    expect(source).toContain("Browse Bengali classics");
+    expect(source).toContain("Browse English classics");
+    expect(source).toContain("Explore approved audiobooks");
+    expect(source.indexOf("home-quick-paths")).toBeLessThan(source.indexOf("reading-time-library-path"));
+  });
+
   test("uses the Reading Circle as a private dispatch conversion close", () => {
     expect(source).toContain("A private letter for readers who linger.");
     expect(source).toContain("Reader-ready editions");

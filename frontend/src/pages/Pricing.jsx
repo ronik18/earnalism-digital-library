@@ -34,8 +34,8 @@ function loadRazorpayScript() {
 
 export default function Pricing() {
   useSEO({
-    title: "Reading Time — The Earnalism Digital Library",
-    description: "Reading-time packs at The Earnalism. Buy minutes, read at your own pace, and return whenever you wish.",
+    title: "Reading Passes — The Earnalism Digital Library",
+    description: "Reading-time passes at The Earnalism. Add minutes to your wallet, read at your own pace, and return whenever you wish.",
   });
   const { user, refreshUser } = useAuth();
   const [packs, setPacks] = useState([]);
@@ -44,13 +44,11 @@ export default function Pricing() {
   const [searchParams] = useSearchParams();
   const nav = useNavigate();
   const selectedPackId = searchParams.get("pack");
-  const couponCode = searchParams.get("coupon");
   const funnelSource = searchParams.get("source");
 
   useEffect(() => {
     trackFunnelEvent("pricing_page_view", {
       selected_pack_id: selectedPackId || "",
-      coupon: couponCode || "",
       source: funnelSource || "pricing",
     });
     Promise.all([api.get("/payments/packs"), api.get("/payments/config")])
@@ -60,12 +58,12 @@ export default function Pricing() {
         setConfig(configRes.data || {});
       })
       .catch(() => setPacks([]));
-  }, [couponCode, funnelSource, selectedPackId]);
+  }, [funnelSource, selectedPackId]);
 
   const isAuthed = !!user && typeof user === "object";
 
-  const handleDraculaContinueClick = () => {
-    trackFunnelEvent("continue_reading_click", {
+  const handleDraculaPreviewClick = () => {
+    trackFunnelEvent("start_dracula_click", {
       book_slug: "dracula",
       selected_pack_id: selectedPackId || "",
       source: funnelSource || "pricing",
@@ -82,7 +80,6 @@ export default function Pricing() {
     trackFunnelEvent("checkout_started", {
       pack_id: pack.id,
       price_inr: pack.price_inr,
-      coupon: couponCode || "",
       source: funnelSource || "pricing",
       payment_mode: config.configured ? "razorpay" : config.mode || "unconfigured",
     });
@@ -249,23 +246,18 @@ export default function Pricing() {
           </p>
           <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to="/book/dracula"
-              onClick={handleDraculaContinueClick}
+              to="/reader/dracula"
+              onClick={handleDraculaPreviewClick}
               className="btn-secondary"
               data-testid="dracula-continue-from-pricing"
             >
-              Continue Dracula
+              Read Chapter 1 Free
             </Link>
             <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">Chapter 1 remains free to preview</span>
           </div>
           {showSimulator && (
             <div className="mt-7 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--brand-gold)]/40 text-[0.7rem] tracking-[0.22em] uppercase text-gold-deep" data-testid="pricing-test-mode-banner">
               <Lock size={11} strokeWidth={1.5} /> Test mode — Razorpay keys not configured. Purchases use a local simulator.
-            </div>
-          )}
-          {couponCode && (
-            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--brand-gold)]/45 bg-white/50 text-xs tracking-[0.16em] uppercase text-gold-deep">
-              Coupon {couponCode} applied at checkout
             </div>
           )}
         </div>
@@ -348,7 +340,7 @@ export default function Pricing() {
           </div>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact" className="btn-secondary">Need help?</Link>
-            <Link to="/library" className="btn-link" data-testid="pricing-to-library">Browse the library →</Link>
+            <Link to="/library" className="btn-link inline-flex min-h-11 items-center" data-testid="pricing-to-library">Browse the library →</Link>
           </div>
         </div>
       </div>
