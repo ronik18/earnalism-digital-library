@@ -2690,7 +2690,7 @@ export default function Reader() {
             <button type="button" onClick={() => navigate('/library')} className="btn-primary w-full justify-center">
               Back to Library
             </button>
-            <button type="button" onClick={() => navigate('/')} className="text-sm text-charcoal-soft underline decoration-[var(--brand-gold)]/60 underline-offset-4">
+            <button type="button" onClick={() => navigate('/')} className="inline-flex min-h-11 items-center justify-center text-sm text-charcoal-soft underline decoration-[var(--brand-gold)]/60 underline-offset-4">
               Go home
             </button>
           </div>
@@ -2706,7 +2706,7 @@ export default function Reader() {
         <div style={{ fontFamily: READER_SERIF, fontSize: 18, color: '#6B1020' }}>
           {error}
         </div>
-        <button type="button" onClick={() => navigate(-1)} className="px-6 py-2 rounded-full" style={{ background: '#6B1020', color: '#FAF7F0', fontFamily: 'Inter', fontSize: 14 }}>
+        <button type="button" onClick={() => navigate(-1)} className="min-h-11 px-6 py-2 rounded-full" style={{ background: '#6B1020', color: '#FAF7F0', fontFamily: 'Inter', fontSize: 14 }}>
           Back
         </button>
       </div>
@@ -2802,7 +2802,7 @@ export default function Reader() {
                 });
                 navigate(`/book/${bookId}`);
               }}
-              className="text-sm text-charcoal-soft underline decoration-[var(--brand-gold)]/60 underline-offset-4"
+              className="inline-flex min-h-11 items-center justify-center text-sm text-charcoal-soft underline decoration-[var(--brand-gold)]/60 underline-offset-4"
             >
               Back to book
             </button>

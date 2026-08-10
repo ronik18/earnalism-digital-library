@@ -56,7 +56,7 @@ export default function Journal() {
               key={c}
               onClick={() => setActive(c)}
               data-testid={`journal-filter-${c.toLowerCase()}`}
-              className={`px-4 py-2 rounded-full text-[0.68rem] tracking-[0.24em] uppercase transition-colors ${active === c ? "bg-burgundy text-[var(--brand-ivory)]" : "text-charcoal-soft hover:text-burgundy border border-transparent hover:border-[var(--brand-gold)]/40"}`}
+              className={`min-h-11 px-4 py-2 rounded-full text-[0.68rem] tracking-[0.24em] uppercase transition-colors ${active === c ? "bg-burgundy text-[var(--brand-ivory)]" : "text-charcoal-soft hover:text-burgundy border border-transparent hover:border-[var(--brand-gold)]/40"}`}
             >
               {c === "all" ? "All Notes" : c}
             </button>

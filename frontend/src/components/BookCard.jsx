@@ -59,7 +59,7 @@ function BookCard({ book, priority = false }) {
             {presentation.audioBadgeLabel}
           </span>
         </div>
-        <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="group/title">
+        <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="group/title inline-flex min-h-11 items-center">
           <h3 className="font-serif-display text-[1.12rem] sm:text-[1.22rem] text-burgundy leading-[1.24] group-hover/title:text-burgundy-soft transition-colors">{displayTitle}</h3>
         </Link>
         {secondaryTitle && (
@@ -82,7 +82,7 @@ function BookCard({ book, priority = false }) {
             {showPreview && (
               <Link
                 to={`/reader/${book.slug}`}
-                className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors"
+                className="flex-1 min-h-11 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors"
                 data-testid={`card-preview-${book.slug}`}
                 onClick={() => {
                   track("book_card_read_click", { cta: "book_card_preview", release_state: status });
@@ -95,7 +95,7 @@ function BookCard({ book, priority = false }) {
             {audioState.canShowControls && (
               <Link
                 to={`/reader/${book.slug}?listen=1`}
-                className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-[var(--brand-charcoal)] text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
+                className="flex-1 min-h-11 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-[var(--brand-charcoal)] text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
                 data-testid={`card-listen-${book.slug}`}
                 onClick={() => track("book_card_listen_click", { cta: "book_card_listen", release_state: audioState.status })}
               >
@@ -105,17 +105,17 @@ function BookCard({ book, priority = false }) {
             {showStartReading && showReadingPass && (
               <Link
                 to={readingPassUrl("book_card")}
-                className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
+                className="flex-1 min-h-11 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
                 data-testid={`card-start-${book.slug}`}
                 onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "book_card_pass" })}
               >
-                Reading Pass
+                View Passes
               </Link>
             )}
             {showStartReading && !showReadingPass && (
               <Link
                 to={`/book/${book.slug}`}
-                className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
+                className="flex-1 min-h-11 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
                 data-testid={`card-details-${book.slug}`}
                 onClick={() => {
                   track("book_card_read_click", { cta: "book_card_details", release_state: status });
@@ -133,7 +133,7 @@ function BookCard({ book, priority = false }) {
             </p>
             <Link
               to={notifyUrl(book.slug)}
-              className="mt-4 inline-flex w-full items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors"
+              className="mt-4 inline-flex min-h-11 w-full items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors"
               data-testid={`card-notify-${book.slug}`}
               onClick={() => track(DRACULA_CTA_EVENTS.notifyMe, { future_title: book.slug })}
             >

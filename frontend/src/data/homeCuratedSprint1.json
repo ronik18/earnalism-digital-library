@@ -3,11 +3,11 @@
     "headline": "A premium reading and listening sanctuary for timeless Bengali and English classics.",
     "subheadline": "Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.",
     "primary_cta": {
-      "label": "Start Reading",
+      "label": "Browse Library",
       "url": "/library"
     },
     "secondary_cta": {
-      "label": "Explore Audiobooks",
+      "label": "Explore Approved Audiobooks",
       "url": "/library?availability=approved-audiobook"
     },
     "featured_books": [

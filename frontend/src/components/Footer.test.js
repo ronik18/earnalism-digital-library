@@ -14,9 +14,10 @@ describe("Footer compact colophon", () => {
   });
 
   test("preserves core public routes and the canonical contact address", () => {
-    ["/library", "/journal", "/about", "/contact", "/login"].forEach((route) => {
+    ["/library", "/journal", "/about", "/contact"].forEach((route) => {
       expect(footerSource).toContain(`to="${route}"`);
     });
+    expect(footerSource).toContain('const accountHref = user && typeof user === "object" ? "/account" : "/login"');
     expect(footerSource).toContain('sales@reoenterprise.org');
   });
 

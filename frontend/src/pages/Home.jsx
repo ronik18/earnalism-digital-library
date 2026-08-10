@@ -4,12 +4,15 @@ import {
   ArrowRight,
   ArrowUpRight,
   BookOpen,
+  BookText,
   CircleCheck,
   CreditCard,
   Facebook,
   Instagram,
+  Languages,
   Linkedin,
   Mail,
+  Headphones,
   ShieldCheck,
   Twitter,
   Youtube,
@@ -42,6 +45,33 @@ const SOCIAL_ICONS = {
   x: Twitter,
   youtube: Youtube,
 };
+
+const QUICK_PATHS = [
+  {
+    eyebrow: "বাংলা পাঠ",
+    title: "Bengali classics",
+    description: "Reader-ready editions rooted in Bengal.",
+    label: "Browse Bengali classics",
+    to: "/library?language=bn&availability=reader-ready",
+    Icon: Languages,
+  },
+  {
+    eyebrow: "ENGLISH SHELF",
+    title: "English classics",
+    description: "Gothic, human, and adventurous reading rooms.",
+    label: "Browse English classics",
+    to: "/library?language=en",
+    Icon: BookText,
+  },
+  {
+    eyebrow: "LISTENING ROOMS",
+    title: "Approved audiobooks",
+    description: "Only editions that have passed every release gate.",
+    label: "Explore approved audiobooks",
+    to: "/library?availability=approved-audiobook",
+    Icon: Headphones,
+  },
+];
 
 function track(event, metadata = {}) {
   if (!event) return;
@@ -147,12 +177,38 @@ export default function Home() {
         analyticsNamespace="home"
         onTrack={(event, metadata) => trackFunnelEvent(event, { source: "home", ...metadata })}
       />
-      <DeferredMount className="home-deferred-listening" minHeight={374} rootMargin="480px 0px" testId="deferred-listening-room">
+      <section className="home-quick-paths" aria-labelledby="home-quick-paths-title" data-testid="home-quick-paths">
+        <div className="home-quick-paths__inner">
+          <div className="home-quick-paths__heading">
+            <div className="overline">Choose your way in</div>
+            <h2 id="home-quick-paths-title">Read in Bengali. Read in English. Listen when the edition is ready.</h2>
+          </div>
+          <div className="home-quick-paths__grid">
+            {QUICK_PATHS.map(({ description, eyebrow, Icon, label, title, to }) => (
+              <Link
+                key={to}
+                to={to}
+                className="home-quick-path"
+                onClick={() => track("homepage_quick_path_click", { cta: label, destination: to })}
+              >
+                <span className="home-quick-path__icon"><Icon size={20} strokeWidth={1.45} aria-hidden="true" /></span>
+                <span className="home-quick-path__copy">
+                  <span className="home-quick-path__eyebrow">{eyebrow}</span>
+                  <strong>{title}</strong>
+                  <small>{description}</small>
+                </span>
+                <span className="home-quick-path__cta">{label}<ArrowRight size={15} strokeWidth={1.6} aria-hidden="true" /></span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <DeferredMount className="home-deferred-listening" minHeight={374} rootMargin="1100px 0px" testId="deferred-listening-room">
         <Suspense fallback={<div className="home-deferred-listening__fallback" aria-hidden="true" />}>
           <HomeListeningRoom />
         </Suspense>
       </DeferredMount>
-      <DeferredMount className="home-deferred-shelves" minHeight={0} rootMargin="700px 0px" testId="deferred-home-shelves">
+      <DeferredMount className="home-deferred-shelves" minHeight={0} rootMargin="1200px 0px" testId="deferred-home-shelves">
         <Suspense fallback={null}>
           <HomeShelfArchitecture />
         </Suspense>
@@ -239,10 +295,10 @@ export default function Home() {
           <div className="reference-reading-path__copy">
             <div className="overline mb-3">Reading time, clearly priced</div>
             <h2 id="reading-time-library-path-title">
-              A revenue path that still feels like a library.
+              Continue only when the story has earned it.
             </h2>
             <p>
-              No fake urgency, no broad ownership promise, and no hidden audio overclaim. The reader opens calmly, and paid continuation uses a wallet only when someone chooses more quiet reading time.
+              Chapter 1 is free. If you choose to keep reading, a pass adds time to your wallet—without a subscription or autorenewal.
             </p>
             <Link
               to="/pricing"
@@ -250,7 +306,7 @@ export default function Home() {
               data-testid="reading-path-pricing-cta"
               onClick={() => track("homepage_reading_path_click", { cta: "see_reading_passes", source: "homepage_reading_path" })}
             >
-              See Reading Passes <ArrowRight size={15} strokeWidth={1.7} />
+              View Reading Passes <ArrowRight size={15} strokeWidth={1.7} />
             </Link>
           </div>
           <div className="reference-reading-path__cards" aria-label="How Earnalism reading time works">

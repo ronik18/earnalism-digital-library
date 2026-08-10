@@ -1993,3 +1993,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Optional B2 transport accepts only short-lived pre-signed upload URLs from Colab Secrets; permanent B2 credentials remain outside the notebook.
 - The handoff uploads the final MP3 and evidence ZIP only, records local SHA-256 receipts, and never mutates public release fields.
 - The safe Colab integration now obtains title-scoped PUT URLs from the protected admin presign route using an admin bearer token; B2 access keys remain Railway-only.
+
+## Mobile home and CTA accuracy - 2026-08-10
+
+- A catalog destination must use browsing language. “Browse Library” is accurate for `/library`; “Start Reading” is reserved for a route that actually opens a reader.
+- Pricing language must mirror the product model. Earnalism sells minute-based reading passes, not memberships, subscriptions, seven-day access, or an unimplemented coupon discount.
+- One high-intent action per outcome is clearer than duplicate reader links. Dracula now has one primary “Read Chapter 1 Free” action plus a separate pass-discovery action.
+- At 390x844, a one-viewport hero, immediate Bengali/English/approved-audio quick paths, zero horizontal overflow, and 44px minimum controls materially improve orientation without changing catalog or audiobook release truth.
+- Journey automation must check the current route-specific CTA promise and query parameters. Stale Dracula-first and seven-day-pass assertions can conceal destination drift.

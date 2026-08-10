@@ -11,15 +11,15 @@ describe("premium header navigation", () => {
     expect(source).toContain('label: "Bengali Classics"');
     expect(source).toContain('label: "English Classics"');
     expect(source).toContain('{ to: "/library?availability=approved-audiobook", label: "Audiobooks" }');
-    expect(source).toContain('{ to: "/pricing", label: "Membership" }');
+    expect(source).toContain('{ to: "/pricing", label: "Reading Passes" }');
     expect(source).toContain('{ to: "/about", label: "About" }');
     expect(source).toContain('const accountHref = isAuthed ? "/account" : "/login"');
     expect(source).not.toMatch(/href=["']#|to=["']#|javascript:/i);
   });
 
   test("uses a working library CTA on desktop and mobile", () => {
-    expect(source).toContain('data-testid="header-cta-library">Start Reading');
-    expect(source).toContain('data-testid="mobile-cta-library">Start Reading');
+    expect(source).toContain('data-testid="header-cta-library">Browse Library');
+    expect(source).toContain('data-testid="mobile-cta-library">Browse Library');
   });
 
   test("keeps the reference header readable and geometrically stable", () => {
