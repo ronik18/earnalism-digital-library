@@ -1,5 +1,163 @@
 from dotenv import load_dotenv
 from pathlib import Path
+try:
+    from backend.api.schemas import (
+        LoginIn,
+        ChangePasswordIn,
+        TokenOut,
+        Category,
+        CategoryIn,
+        Chapter,
+        ChapterIn,
+        ChapterReorderIn,
+        Book,
+        PublicChapterOut,
+        PublicBookOut,
+        BookIn,
+        HomeCurationIn,
+        CoverPromotionIn,
+        BookAudiobookIn,
+        AudiobookPresignIn,
+        AudiobookReleaseIn,
+        ALLOWED_AUDIO_ASSET_KEYS,
+        BlogPost,
+        BlogPostIn,
+        NewsletterIn,
+        ContactIn,
+        SocialIn,
+        BrandIn,
+        FeaturedIn,
+        ContactStatusIn,
+        VALID_CONTACT_STATUSES,
+        UserSignupIn,
+        UserLoginIn,
+        UserOut,
+        UserAuthOut,
+        GoogleAuthIn,
+        OTPRequestIn,
+        OTPVerifyIn,
+        WalletAdjustIn,
+        WalletRefundApproveIn,
+        WalletTransactionOut,
+        ReaderSessionStartIn,
+        ReaderHeartbeatIn,
+        ReaderSessionEndIn,
+        ReadingPulseIn,
+        ReaderCompletionIn,
+        ReaderMetricIn,
+        AnalyticsEventIn,
+        SecureReaderEventIn,
+        UserStatusIn,
+        PackOut,
+        TopUpCreateIn,
+        TopUpCreateOut,
+        PaymentVerifyIn,
+        PaymentReconcileIn,
+    )
+except ImportError:  # pragma: no cover - supports uvicorn from backend/
+    from api.schemas import (
+        LoginIn,
+        ChangePasswordIn,
+        TokenOut,
+        Category,
+        CategoryIn,
+        Chapter,
+        ChapterIn,
+        ChapterReorderIn,
+        Book,
+        PublicChapterOut,
+        PublicBookOut,
+        BookIn,
+        HomeCurationIn,
+        CoverPromotionIn,
+        BookAudiobookIn,
+        AudiobookPresignIn,
+        AudiobookReleaseIn,
+        ALLOWED_AUDIO_ASSET_KEYS,
+        BlogPost,
+        BlogPostIn,
+        NewsletterIn,
+        ContactIn,
+        SocialIn,
+        BrandIn,
+        FeaturedIn,
+        ContactStatusIn,
+        VALID_CONTACT_STATUSES,
+        UserSignupIn,
+        UserLoginIn,
+        UserOut,
+        UserAuthOut,
+        GoogleAuthIn,
+        OTPRequestIn,
+        OTPVerifyIn,
+        WalletAdjustIn,
+        WalletRefundApproveIn,
+        WalletTransactionOut,
+        ReaderSessionStartIn,
+        ReaderHeartbeatIn,
+        ReaderSessionEndIn,
+        ReadingPulseIn,
+        ReaderCompletionIn,
+        ReaderMetricIn,
+        AnalyticsEventIn,
+        SecureReaderEventIn,
+        UserStatusIn,
+        PackOut,
+        TopUpCreateIn,
+        TopUpCreateOut,
+        PaymentVerifyIn,
+        PaymentReconcileIn,
+    )
+
+try:
+    from backend.domain.audiobook_release import (
+        audiobook_release_fingerprint as _audiobook_release_fingerprint,
+        audiobook_release_qa_blockers as _audiobook_release_qa_blockers,
+        audiobook_release_qa_summary as _audiobook_release_qa_summary,
+        release_sha256 as _release_sha256,
+    )
+except ImportError:  # pragma: no cover - supports uvicorn from backend/
+    from domain.audiobook_release import (
+        audiobook_release_fingerprint as _audiobook_release_fingerprint,
+        audiobook_release_qa_blockers as _audiobook_release_qa_blockers,
+        audiobook_release_qa_summary as _audiobook_release_qa_summary,
+        release_sha256 as _release_sha256,
+    )
+
+try:
+    from backend.domain.reading_billing import (
+        billable_reading_seconds as _domain_billable_reading_seconds,
+        should_reset_reading_clock as _domain_should_reset_reading_clock,
+    )
+except ImportError:  # pragma: no cover - supports uvicorn from backend/
+    from domain.reading_billing import (
+        billable_reading_seconds as _domain_billable_reading_seconds,
+        should_reset_reading_clock as _domain_should_reset_reading_clock,
+    )
+
+try:
+    from backend.domain.catalog import (
+        CANONICAL_CATEGORY_SLUGS,
+        DEFAULT_CATEGORY_SLUG,
+        LEGACY_CATEGORY_SLUG_MAP,
+        canonical_category_slug,
+        category_value_to_slug as _category_value_to_slug,
+        normalize_category_slug,
+        normalize_text,
+        slugify,
+    )
+except ImportError:  # pragma: no cover - supports uvicorn from backend/
+    from domain.catalog import (
+        CANONICAL_CATEGORY_SLUGS,
+        DEFAULT_CATEGORY_SLUG,
+        LEGACY_CATEGORY_SLUG_MAP,
+        canonical_category_slug,
+        category_value_to_slug as _category_value_to_slug,
+        normalize_category_slug,
+        normalize_text,
+        slugify,
+    )
+
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -963,57 +1121,7 @@ def _clear_session_cookie(response: Response) -> None:
 
 
 # ---------- Utils ----------
-def normalize_text(text: str) -> str:
-    return unicodedata.normalize("NFC", text or "")
-
-
-def slugify(text: str, fallback: Optional[str] = None) -> str:
-    text = normalize_text(text)
-    text = re.sub(r"[^a-zA-Z0-9\s-]", "", text).strip().lower()
-    slug = re.sub(r"[\s_-]+", "-", text).strip("-")
-    return slug or fallback or str(uuid.uuid4())[:8]
-
-DEFAULT_CATEGORY_SLUG = "literary-fiction"
-CANONICAL_CATEGORY_SLUGS = {
-    "bengali-classics",
-    "literary-fiction",
-    "young-readers",
-    "business",
-    "technology",
-    "history-strategy",
-    "adventure",
-    "science-fiction",
-    "gothic-fiction",
-}
-LEGACY_CATEGORY_SLUG_MAP = {
-    "classic-literature": "literary-fiction",
-    "literature": "literary-fiction",
-    "children-classics": "young-readers",
-    "children": "young-readers",
-    "business-entrepreneurship": "business",
-    "technology-ai": "technology",
-    "history-politics": "history-strategy",
-    "bengali": "bengali-classics",
-    "bengali-reading": "bengali-classics",
-}
-
-
-def _category_value_to_slug(value: str) -> str:
-    text = normalize_text(value or "")
-    text = re.sub(r"[^a-zA-Z0-9\s-]", "", text).strip().lower()
-    return re.sub(r"[\s_-]+", "-", text).strip("-")
-
-
-def normalize_category_slug(value: str) -> str:
-    slug = _category_value_to_slug(value)
-    return LEGACY_CATEGORY_SLUG_MAP.get(slug, slug)
-
-
-def canonical_category_slug(value: str, default: str = DEFAULT_CATEGORY_SLUG) -> str:
-    slug = normalize_category_slug(value)
-    if slug in CANONICAL_CATEGORY_SLUGS:
-        return slug
-    return default
+# Catalog normalization is imported above; these names remain server-compatible.
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -3306,317 +3414,6 @@ async def _process_docx_upload(
     }
 
 
-# ---------- Models ----------
-class LoginIn(BaseModel):
-    email: EmailStr
-    password: str
-
-class ChangePasswordIn(BaseModel):
-    current_password: str
-    new_password: str
-
-class TokenOut(BaseModel):
-    token: str
-    email: str
-    role: str
-
-class Category(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    slug: str
-    name: str
-    description: str = ""
-    image_url: str = ""
-    order: int = 0
-
-class CategoryIn(BaseModel):
-    name: str
-    description: str = ""
-    image_url: str = ""
-    order: int = 0
-    slug: Optional[str] = None
-
-class Chapter(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    title: str
-    content: str = ""
-    order: int = 0
-    is_preview: bool = False
-    has_images: bool = False
-    image_count: int = 0
-    word_count: int = 0
-    reading_minutes: int = 0
-    language_hint: str = ""
-    processing_status: str = "ready"
-    processing_error: str = ""
-    processing_warnings: List[str] = Field(default_factory=list)
-    source_filename: str = ""
-    uploaded_at: str = ""
-    updated_at: str = ""
-
-class ChapterIn(BaseModel):
-    title: str
-    content: str = ""
-    is_preview: bool = False
-
-class ChapterReorderIn(BaseModel):
-    ids: List[str]
-
-class Book(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    slug: str
-    title: str
-    subtitle: str = ""
-    author: str = "The Earnalism"
-    category_slug: str
-    short_description: str = ""
-    description: str = ""
-    cover_url: str = ""
-    cover_image_url: str = ""
-    thumbnail_url: str = ""
-    blur_placeholder: str = ""
-    dominant_color: str = ""
-    back_cover_url: str = ""
-    back_cover_image_url: str = ""
-    back_cover_thumbnail_url: str = ""
-    back_cover_blur_placeholder: str = ""
-    back_cover_dominant_color: str = ""
-    cover_processing_status: str = ""
-    cover_processing_error: str = ""
-    back_cover_processing_status: str = ""
-    back_cover_processing_error: str = ""
-    cover_width: int = 0
-    cover_height: int = 0
-    cover_sha256: str = ""
-    cover_audit_status: str = ""
-    cover_updated_at: str = ""
-    cover_updated_by: str = ""
-    back_cover_width: int = 0
-    back_cover_height: int = 0
-    back_cover_sha256: str = ""
-    back_cover_audit_status: str = ""
-    back_cover_updated_at: str = ""
-    back_cover_updated_by: str = ""
-    estimated_reading_time: str = ""
-    price_paperback: str = ""
-    price_ebook: str = ""
-    buy_url: str = ""
-    formats: List[str] = Field(default_factory=lambda: ["Paperback", "Ebook"])
-    benefits: List[str] = Field(default_factory=list)
-    who_for: List[str] = Field(default_factory=list)
-    learnings: List[str] = Field(default_factory=list)
-    about_author: str = ""
-    chapters: List[Chapter] = Field(default_factory=list)
-    audiobook_enabled: bool = False
-    generate_audiobook: bool = False
-    audiobook_provider: str = ""
-    audiobook_voice: str = ""
-    audiobook_assets_updated_at: str = ""
-    audio_asset_slug: str = ""
-    audiobook_assets: Dict[str, str] = Field(default_factory=dict)
-    audiobook: Dict[str, Any] = Field(default_factory=dict)
-    language: str = ""
-    language_code: str = ""
-    editorial_shelf_ids: List[str] = Field(default_factory=list)
-    home_shelf_ids: List[str] = Field(default_factory=list)
-    home_feature_eligible: bool = True
-    home_shelf_rank: Optional[int] = None
-    admin_pinned: bool = False
-    do_not_feature: bool = False
-    popularity_score: Optional[float] = None
-    sprint_id: str = ""
-    rights_metadata: Dict[str, Any] = Field(default_factory=dict)
-    readerStatus: str = "ready_for_editorial_review"
-    publicationStatus: str = "draft"
-    isPublic: bool = False
-    isLive: bool = False
-    showInPublicLibrary: bool = False
-    showInHomepage: bool = False
-    allowPublicReading: bool = False
-    allowCheckout: bool = False
-    allowPayment: bool = False
-    is_published: bool = False
-    created_at: str = Field(default_factory=now_iso)
-
-
-class PublicChapterOut(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-
-    id: str = ""
-    title: str = ""
-    order: int = 0
-    is_preview: bool = False
-    has_images: bool = False
-    image_count: int = 0
-    word_count: int = 0
-    reading_minutes: int = 0
-    language_hint: str = ""
-    processing_status: str = ""
-    processing_warnings: List[str] = Field(default_factory=list)
-    source_filename: str = ""
-    uploaded_at: str = ""
-    updated_at: str = ""
-
-
-class PublicBookOut(BaseModel):
-    """Safe public book shape for controlled-launch catalog/detail routes."""
-
-    model_config = ConfigDict(extra="ignore")
-
-    id: str = ""
-    slug: str = ""
-    title: str = ""
-    subtitle: str = ""
-    author: str = ""
-    category_slug: str = ""
-    short_description: str = ""
-    description: str = ""
-    cover_url: str = ""
-    cover_image_url: str = ""
-    thumbnail_url: str = ""
-    blur_placeholder: str = ""
-    dominant_color: str = ""
-    back_cover_url: str = ""
-    back_cover_image_url: str = ""
-    back_cover_thumbnail_url: str = ""
-    back_cover_blur_placeholder: str = ""
-    back_cover_dominant_color: str = ""
-    estimated_reading_time: str = ""
-    formats: List[str] = Field(default_factory=list)
-    benefits: List[str] = Field(default_factory=list)
-    who_for: List[str] = Field(default_factory=list)
-    learnings: List[str] = Field(default_factory=list)
-    about_author: str = ""
-    chapters: List[PublicChapterOut] = Field(default_factory=list)
-    is_published: bool = False
-    created_at: str = ""
-    updated_at: str = ""
-    publication_status: str = ""
-    launch_status: str = ""
-    reader_enabled: bool = False
-    preview_enabled: bool = False
-    audio_enabled: bool = False
-    audiobook_enabled: bool = False
-    public_route: str = ""
-    reader_url: str = ""
-    preview_url: str = ""
-    audio_url: str = ""
-    audio_status: str = ""
-    audiobook_release_gate: str = ""
-    audio_qa_status: str = ""
-    cta_label: str = ""
-    secondary_cta_label: str = ""
-    public_json_ld_enabled: bool = False
-    source_note: str = ""
-    rights_note: str = ""
-
-
-class BookIn(BaseModel):
-    title: str
-    subtitle: str = ""
-    author: str = "The Earnalism"
-    category_slug: str
-    short_description: str = ""
-    description: str = ""
-    cover_image_url: str = ""
-    back_cover_image_url: str = ""
-    estimated_reading_time: str = ""
-    price_paperback: str = ""
-    price_ebook: str = ""
-    buy_url: str = ""
-    formats: List[str] = Field(default_factory=lambda: ["Paperback", "Ebook"])
-    benefits: List[str] = Field(default_factory=list)
-    who_for: List[str] = Field(default_factory=list)
-    learnings: List[str] = Field(default_factory=list)
-    about_author: str = ""
-    rights_metadata: Dict[str, Any] = Field(default_factory=dict)
-    source_url: str = ""
-    source_name: str = ""
-    source_license: str = ""
-    source_hash: str = ""
-    content_hash: str = ""
-    provenance_hash: str = ""
-    rights_basis: str = ""
-    rights_tier: str = ""
-    verification_status: str = ""
-    qa_status: str = ""
-    approved_to_publish: bool = False
-    publication_status: str = ""
-    audiobook_enabled: bool = False
-    generate_audiobook: bool = False
-    readerStatus: str = "ready_for_editorial_review"
-    publicationStatus: str = "draft"
-    isPublic: bool = False
-    isLive: bool = False
-    showInPublicLibrary: bool = False
-    showInHomepage: bool = False
-    allowPublicReading: bool = False
-    allowCheckout: bool = False
-    allowPayment: bool = False
-    is_published: bool = False
-    slug: Optional[str] = None
-
-
-class HomeCurationIn(BaseModel):
-    editorial_shelf_ids: Optional[List[str]] = None
-    home_shelf_ids: Optional[List[str]] = None
-    home_feature_eligible: Optional[bool] = None
-    home_shelf_rank: Optional[int] = None
-    admin_pinned: Optional[bool] = None
-    do_not_feature: Optional[bool] = None
-    popularity_score: Optional[float] = None
-
-
-class CoverPromotionIn(BaseModel):
-    kind: str
-    candidate_sha256: str = Field(min_length=64, max_length=64)
-    approval_decision: str
-    editorial_approved: bool = False
-    rights_cleared: bool = False
-    approval_note: str = Field(min_length=8, max_length=2000)
-    rights_basis: str = Field(min_length=8, max_length=2000)
-
-
-class BookAudiobookIn(BaseModel):
-    audiobook_enabled: bool = True
-    generate_audiobook: bool = True
-    audiobook_provider: str = ""
-    audiobook_voice: str = ""
-    audio_asset_slug: str = ""
-    audiobook_assets: Dict[str, str] = Field(default_factory=dict)
-    audiobook_size: int = 0
-    audiobook_duration_ms: int = 0
-
-
-class AudiobookPresignIn(BaseModel):
-    audio_object_key: str = Field(min_length=1, max_length=300)
-    audio_sha256: str = Field(default="", max_length=71)
-    audio_md5: str = Field(default="", max_length=128)
-    evidence_object_key: str = Field(default="", max_length=300)
-    expires_in: int = Field(default=600, ge=60, le=900)
-
-
-class AudiobookReleaseIn(BaseModel):
-    """Compact, server-verifiable release receipt from the audio runner."""
-
-    audio_object_key: str = Field(min_length=1, max_length=300)
-    audio_sha256: str = Field(min_length=64, max_length=71)
-    audio_size_bytes: int = Field(gt=0)
-    duration_seconds: float = Field(gt=0)
-    manuscript_sha256: str = Field(min_length=64, max_length=71)
-    provider: str = Field(min_length=1, max_length=80)
-    model: str = Field(min_length=1, max_length=160)
-    voice: str = Field(min_length=1, max_length=120)
-    qa: Dict[str, Any] = Field(default_factory=dict)
-    owner_public_release_intent: bool = False
-    release_request_id: str = Field(default="", max_length=160)
-
-
-ALLOWED_AUDIO_ASSET_KEYS = {"mp3", "timestamps", "vtt", "chapters", "meta", "manifest"}
-
-
 def _validate_private_audiobook_object_key(slug: str, key: str, suffix: str) -> str:
     normalized_slug = slugify(slug, fallback="")
     normalized_key = str(key or "").strip().lstrip("/")
@@ -3670,281 +3467,7 @@ def _safe_audiobook_assets(value: Optional[Dict[str, Any]]) -> Dict[str, str]:
     return assets
 
 
-def _release_sha256(value: Any) -> str:
-    return str(value or "").strip().lower().removeprefix("sha256:")
-
-
-def _audiobook_release_qa_summary(value: Optional[Dict[str, Any]]) -> dict[str, Any]:
-    """Normalize the notebook's objective/listening QA into one small receipt."""
-
-    qa = value if isinstance(value, dict) else {}
-
-    def score(*keys: str) -> Optional[float]:
-        for key in keys:
-            raw = qa.get(key)
-            if raw is None:
-                continue
-            try:
-                number = float(raw)
-            except (TypeError, ValueError):
-                continue
-            if math.isfinite(number):
-                return number
-        return None
-
-    fatal_flags = qa.get("fatal_flags") or qa.get("fatal_red_flags") or {}
-    if isinstance(fatal_flags, dict):
-        fatal_flags = [str(key) for key, active in fatal_flags.items() if active is True]
-    elif isinstance(fatal_flags, str):
-        fatal_flags = [fatal_flags] if fatal_flags.strip() else []
-    else:
-        fatal_flags = [str(item) for item in fatal_flags if str(item).strip()]
-
-    blockers = qa.get("blockers") or []
-    if isinstance(blockers, str):
-        blockers = [blockers] if blockers.strip() else []
-    else:
-        blockers = [str(item) for item in blockers if str(item).strip()]
-
-    summary = {
-        "asr_score": score("asr_score", "asr_manuscript_score", "similarity"),
-        "coverage": score("coverage", "asr_coverage"),
-        "first_span_score": score("first_span_score", "first_word_score"),
-        "last_span_score": score("last_span_score", "last_word_score"),
-        "listening_score": score("listening_score", "overall_score", "overall"),
-        "listening_confidence": score("listening_confidence", "confidence"),
-        "fatal_flags": sorted(set(fatal_flags)),
-        "blockers": sorted(set(blockers)),
-        "ordered_content_integrity": qa.get("ordered_content_integrity", qa.get("no_missing_duplicated_reordered_content")),
-        "sync_tier": str(qa.get("sync_tier") or "AUDIO_ONLY_NO_SYNC").strip().upper(),
-    }
-    return summary
-
-
-def _audiobook_release_qa_blockers(summary: dict[str, Any]) -> list[str]:
-    required = {
-        "asr_score": (0.97, "ASR manuscript score must be at least 0.97."),
-        "coverage": (0.98, "ASR/source coverage must be at least 0.98."),
-        "first_span_score": (0.95, "The first audio span must match the manuscript."),
-        "last_span_score": (0.95, "The last audio span must match the manuscript."),
-        "listening_score": (8.9, "Full-title listening score must be at least 8.9."),
-        "listening_confidence": (0.90, "Listening QA confidence must be at least 0.90."),
-    }
-    blockers = [message for key, (minimum, message) in required.items() if summary.get(key) is None or summary[key] < minimum]
-    if summary.get("ordered_content_integrity") is not True:
-        blockers.append("Ordered manuscript content integrity must pass.")
-    if summary.get("fatal_flags"):
-        blockers.append("Fatal listening QA flags must be empty.")
-    if summary.get("blockers"):
-        blockers.append("The release receipt must contain no unresolved blockers.")
-    return blockers
-
-
-def _audiobook_release_fingerprint(payload: AudiobookReleaseIn) -> str:
-    material = payload.model_dump(exclude={"release_request_id"})
-    return hashlib.sha256(
-        _json.dumps(material, sort_keys=True, ensure_ascii=True, default=str).encode("utf-8")
-    ).hexdigest()
-
-class BlogPost(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    slug: str
-    title: str
-    excerpt: str = ""
-    content: str = ""
-    category: str = "Reflections"
-    cover_image_url: str = ""
-    author: str = "The Earnalism"
-    pull_quote: str = ""
-    is_published: bool = True
-    created_at: str = Field(default_factory=now_iso)
-
-class BlogPostIn(BaseModel):
-    title: str
-    excerpt: str = ""
-    content: str = ""
-    category: str = "Reflections"
-    cover_image_url: str = ""
-    author: str = "The Earnalism"
-    pull_quote: str = ""
-    is_published: bool = True
-    slug: Optional[str] = None
-
-class NewsletterIn(BaseModel):
-    name: str
-    email: EmailStr
-
-class ContactIn(BaseModel):
-    name: str
-    email: EmailStr
-    subject: str = ""
-    message: str
-
-class SocialIn(BaseModel):
-    instagram: str = ""
-    facebook: str = ""
-    youtube: str = ""
-    linkedin: str = ""
-    twitter: str = ""
-
-class BrandIn(BaseModel):
-    logo_url: str = ""
-    og_image_url: str = ""
-
-class FeaturedIn(BaseModel):
-    book_slug: str
-
-class ContactStatusIn(BaseModel):
-    status: str  # one of: new, read, responded
-
-VALID_CONTACT_STATUSES = {"new", "read", "responded"}
-
-
-# ---------- Reader User / Wallet / Session models ----------
-class UserSignupIn(BaseModel):
-    name: str
-    email: EmailStr
-    password: str
-
-class UserLoginIn(BaseModel):
-    email: EmailStr
-    password: str
-
-class UserOut(BaseModel):
-    id: str
-    name: str
-    email: EmailStr
-    role: str = "user"
-    reading_seconds_balance: int = 0
-    status: str = "active"
-    auth_provider: str = "email"
-    created_at: str
-
-class UserAuthOut(BaseModel):
-    token: str
-    user: UserOut
-
-class GoogleAuthIn(BaseModel):
-    credential: str
-
-class OTPRequestIn(BaseModel):
-    mobile: str
-
-class OTPVerifyIn(BaseModel):
-    mobile: str
-    otp: str
-
-class WalletAdjustIn(BaseModel):
-    minutes: int  # may be negative; converted to seconds server-side
-    reason: str = ""
-
-class WalletRefundApproveIn(BaseModel):
-    candidate_ids: List[str] = Field(default_factory=list)
-    note: str = ""
-
-class WalletTransactionOut(BaseModel):
-    id: str
-    user_id: str
-    type: str  # "credit" | "debit" | "consume"
-    seconds: int
-    reason: str
-    created_at: str
-    actor: str = "system"  # "admin" | "system" | "user"
-    session_id: str = ""
-
-class ReaderSessionStartIn(BaseModel):
-    session_id: Optional[str] = None
-    book_id: Optional[str] = None
-    book_slug: Optional[str] = None
-    chapter_id: Optional[str] = None
-
-class ReaderHeartbeatIn(BaseModel):
-    session_id: str
-    visible: bool = True
-    idle: bool = False
-    chapter_id: Optional[str] = None
-
-class ReaderSessionEndIn(BaseModel):
-    session_id: str
-
-class ReadingPulseIn(BaseModel):
-    session_id: str
-    visible: bool = True
-    idle: bool = False
-
-class ReaderCompletionIn(BaseModel):
-    book_slug: str
-    chapter_id: str
-    chapter_title: str = ""
-    progress: int = 100
-
-class ReaderMetricIn(BaseModel):
-    event: str = "reader_metric"
-    session_id: str = ""
-    book_slug: str = ""
-    chapter_id: str = ""
-    route: str = ""
-    timings: Dict[str, Any] = Field(default_factory=dict)
-    metrics: Dict[str, Any] = Field(default_factory=dict)
-    tags: Dict[str, Any] = Field(default_factory=dict)
-
-class AnalyticsEventIn(BaseModel):
-    event: str = ""
-    event_name: str = ""
-    route: str = ""
-    book_slug: str = ""
-    anonymous_session_id: str = ""
-    metadata: Dict[str, Any] = Field(default_factory=dict)
-
-class SecureReaderEventIn(BaseModel):
-    session_id: str
-    event_type: str
-    book_slug: str = ""
-    chapter_id: str = ""
-    access_token_fingerprint: str = ""
-    counts: Dict[str, int] = Field(default_factory=dict)
-    metadata: Dict[str, Any] = Field(default_factory=dict)
-
-class UserStatusIn(BaseModel):
-    status: str  # "active" | "blocked"
-
-
-# ---------- Payments / Razorpay top-up models ----------
-class PackOut(BaseModel):
-    id: str
-    label: str
-    minutes: int
-    price_inr: int
-    amount_paise: int
-    note: str
-
-
-class TopUpCreateIn(BaseModel):
-    pack_id: str
-
-
-class TopUpCreateOut(BaseModel):
-    intent_id: str
-    razorpay_order_id: str
-    key_id: str
-    amount: int  # in paise
-    currency: str = "INR"
-    name: str
-    description: str
-    pack: PackOut
-    prefill: dict
-
-
-class PaymentVerifyIn(BaseModel):
-    razorpay_order_id: str
-    razorpay_payment_id: str
-    razorpay_signature: str
-
-
-class PaymentReconcileIn(BaseModel):
-    note: str = ""
-
+# API schemas are imported above; this boundary remains a server compatibility shim.
 
 def _user_public(doc: dict) -> dict:
     return {
@@ -9075,29 +8598,27 @@ def _billable_reading_seconds(
     visible: bool = True,
     idle: bool = False,
 ) -> int:
-    """Return seconds to bill for this heartbeat.
+    """Compatibility wrapper using the current runtime billing thresholds."""
 
-    Billing is pulse-based, not catch-up based. A single heartbeat can never
-    debit more than one 30-second pulse; long gaps usually mean the tab slept,
-    the screen was hidden, or the user was away.
-    """
-    if not visible or idle:
-        return 0
-    last = _as_utc_dt(last_debit_at) or now
-    elapsed = max(0, int((now - last).total_seconds()))
-    if elapsed > READING_SESSION_IDLE_GRACE_SECONDS:
-        return 0
-    if elapsed + READING_HEARTBEAT_EARLY_GRACE_SECONDS < HEARTBEAT_TICK_SECONDS:
-        return 0
-    return HEARTBEAT_TICK_SECONDS
+    return _domain_billable_reading_seconds(
+        last_debit_at,
+        now,
+        visible=visible,
+        idle=idle,
+        heartbeat_tick_seconds=HEARTBEAT_TICK_SECONDS,
+        heartbeat_early_grace_seconds=READING_HEARTBEAT_EARLY_GRACE_SECONDS,
+        session_idle_grace_seconds=READING_SESSION_IDLE_GRACE_SECONDS,
+    )
 
 
 def _should_reset_reading_clock(last_debit_at, now: datetime, *, visible: bool = True, idle: bool = False) -> bool:
-    if not visible or idle:
-        return True
-    last = _as_utc_dt(last_debit_at) or now
-    elapsed = max(0, int((now - last).total_seconds()))
-    return elapsed > READING_SESSION_IDLE_GRACE_SECONDS
+    return _domain_should_reset_reading_clock(
+        last_debit_at,
+        now,
+        visible=visible,
+        idle=idle,
+        session_idle_grace_seconds=READING_SESSION_IDLE_GRACE_SECONDS,
+    )
 
 
 async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, seconds: int) -> Tuple[int, int]:
