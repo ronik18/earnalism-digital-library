@@ -5,8 +5,12 @@
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approval_scope": "historical_admin_import_reconstruction",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING",
+  "audio_public_release": "APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": true,
+  "audio_enabled": true,
+  "audio_status": "AVAILABLE",
+  "audiobook_release_gate": "APPROVED",
+  "audio_qa_status": "QA_PASSED"
 }

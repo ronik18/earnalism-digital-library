@@ -36,5 +36,6 @@
     "listening_confidence": 0.9,
     "fatal_flags": [],
     "blockers": []
-  }
+  },
+  "audiobook_release_gate": "APPROVED"
 }

@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-art-of-money-getting",
+  "title": "The Art of Money Getting",
+  "generated_at": "2026-08-10T05:12:48.277716+00:00",
+  "content": {
+    "source_hash": "0baf572e0ec351e47504ab1d49fb646be164ab6db13d0024cda7567b58dad287",
+    "content_hash": "907586f92b4df67b3576f66b89d9c1434bd09200aec7d25926d4fb8253a6761e",
+    "provenance_hash": "c49460dc49b55ce9b4340e04c2844835981ac4f7042ac2d31c830079fc679dc6",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "6b9aa50d5c4af082d3d408bf4c30dd501aa1b48313da6f3bef6c08ad52d456fd",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Art of Money Getting",
+        "word_count": 13564,
+        "sha256": "ca5f7b0a782a8bf6c6d3e04bb4ad20e9e97f387945f0fb899f6e2c1bc18b7105"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "e1b3135f42b112aee673c2acc3b59ec273cc1d5f55eee9cf414d62a4b90d85d7"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "fc8d34f95e7d2810d4877fdbe09643f40094566a603a2cb31c0a76719bc8b351",
+    "reader_manifest": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
+    "source_evidence": "e1b3135f42b112aee673c2acc3b59ec273cc1d5f55eee9cf414d62a4b90d85d7",
+    "approval_evidence": "67b6de67fba80fa95778e9a581d0dd162dd37f79a2f722b6255fdec087b5af6b"
+  },
+  "manifest_sha256": "78d6f60cd66109299ae2f36d3f508ee7f6c9c734d1050d51a6bb779605dfc8db"
+}
