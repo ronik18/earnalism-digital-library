@@ -218,8 +218,10 @@ describe("UX conversion static signals", () => {
     expect(premiumHero).toContain('data-testid="hero-cta-audiobooks"');
     expect(premiumHero).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
     expect(premiumHero).toContain("Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.");
-    expect(premiumHero).toContain("Start Reading");
-    expect(premiumHero).toContain("Explore Audiobooks");
+    expect(premiumHero).toContain("Browse Library");
+    expect(premiumHero).not.toContain(">Start Reading</Link>");
+    expect(premiumHero).toContain("Approved Audiobooks");
+    expect(premiumHero).not.toContain(">Explore Audiobooks</Link>");
     expect(premiumHero).toContain("/library?availability=approved-audiobook");
     expect(homeCurationClient).toContain('/home/curated');
     expect(homeCurationClient).toContain('audiobookUrl === `/api/reader/book/${slug}/audiobook`');
@@ -233,9 +235,9 @@ describe("UX conversion static signals", () => {
     expect(shelfTwoSlideshow).toContain("/contact?interest=");
     expect(shelfTwoSlideshow).not.toContain("Notify Me");
     expect(home).toContain('data-testid="reading-time-library-path"');
-    expect(home).toContain("A revenue path that still feels like a library.");
-    expect(home).toContain("No fake urgency, no broad ownership promise, and no hidden audio overclaim.");
-    expect(home).toContain("See Reading Passes");
+    expect(home).toContain("Continue only when the story has earned it.");
+    expect(home).toContain("without a subscription or autorenewal");
+    expect(home).toContain("View Reading Passes");
     expect(home).toContain("Open the room");
     expect(home).toContain("Add reading time");
     expect(home).toContain("Return calmly");
@@ -387,7 +389,8 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain("{isDracula && (");
     expect(bookDetail).toContain('data-testid="book-experience-truth"');
     expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room before adding reading time.");
-    expect(bookDetail).toContain("Get 7-Day Reading Pass");
+    expect(bookDetail).toContain("View Reading Passes");
+    expect(bookDetail).not.toContain("Get 7-Day Reading Pass");
     expect(bookDetailPresentation).toContain("No public audio controls are shown until narration, sync, metadata, endpoint, and browser gates pass.");
     expect(bookDetailPresentation).toContain("audioState.canShowControls");
   });
@@ -1433,7 +1436,8 @@ describe("UX conversion static signals", () => {
     expect(signup).toContain("Chapter 1 is free. Reading time is added only when you choose a pass");
     expect(account).toContain('data-testid="account-wallet-explainer"');
     expect(account).toContain("Use this wallet to continue Dracula after the free preview.");
-    expect(account).toContain("Open Dracula Shelf");
+    expect(account).toContain("Continue Dracula");
+    expect(account).not.toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');
     expect(reader).toContain("Other chapters require sign-in and reading time from your wallet.");
     expect(useSeo).toContain("A calm Bengali and English digital library");
@@ -1447,7 +1451,7 @@ describe("UX conversion static signals", () => {
       "payment_success_return",
       "payment_failed_or_cancelled",
       "wallet_credited_visible",
-      "continue_reading_click",
+      "start_dracula_click",
     ]) {
       expect(pricing).toContain(event);
       expect(analytics).toContain(event);
@@ -1470,7 +1474,8 @@ describe("UX conversion static signals", () => {
     expect(header).not.toContain("IndiaCraftBadge");
     expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="mobile-cta-library"');
-    expect(header).toContain("Start Reading");
+    expect(header).toContain("Browse Library");
+    expect(header).not.toContain(">Start Reading</Link>");
     expect(header).toContain("aria-expanded={open}");
     expect(header).toContain('aria-controls="mobile-menu"');
     expect(header).toContain('id="mobile-menu"');
