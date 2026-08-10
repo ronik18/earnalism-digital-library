@@ -5673,7 +5673,27 @@ async def admin_update_book_audiobook(slug: str, payload: BookAudiobookIn, _=Dep
         "audiobook": audiobook_doc,
         "audiobook_assets_updated_at": now_iso(),
     }
-    update["publication_workflow"] = canonical_update({**existing, **update})
+    workflow = canonical_update({**existing, **update})
+    workflow["publication"] = {
+        **(workflow.get("publication") or {}),
+        "state": "LIVE_APPROVED",
+        "reader_exposed": True,
+        "audio_exposed": True,
+    }
+    workflow["audio"] = {
+        **(workflow.get("audio") or {}),
+        "status": "AVAILABLE",
+        "release_status": "LIVE",
+        "qa_status": "QA_PASSED",
+    }
+    workflow["release"] = {
+        **(workflow.get("release") or {}),
+        "rights_status": "APPROVED",
+        "content_status": "READY",
+        "reader_release": "LIVE",
+        "audio_release": "LIVE",
+    }
+    update["publication_workflow"] = workflow
     await db.books.update_one({"slug": slug}, {"$set": update})
     refreshed = await db.books.find_one({"slug": slug}, {"_id": 0})
     return refreshed
