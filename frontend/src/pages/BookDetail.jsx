@@ -421,7 +421,7 @@ export default function BookDetail() {
               <div className="italic-eyebrow">Preview, then continue</div>
             <h2>Read Chapter 1 free. Add reading time only when Dracula has earned your next hour.</h2>
             <p>
-              This controlled launch includes the Dracula core reader only. Reading time is credited to your wallet after payment confirmation and is spent only while you read. Audio, study guide, visual edition, ads, email, and social campaigns are not live in this release.
+              This controlled launch includes the Dracula core reader only. Reading time is credited to your wallet after payment confirmation and is spent only while you read. Dracula audio remains in preparation and will be introduced only after source, rights, and QA pass. Study guide, visual edition, ads, email, and social campaigns are not live in this release.
             </p>
             <div className="preview-payment-shell__proof">
               <span><Sparkles size={14} strokeWidth={1.5} /> No subscription</span>

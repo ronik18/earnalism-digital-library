@@ -98,9 +98,9 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.home_curation_v4 import build_home_curated_payload_v4
 
 try:
-    from home_surface_contracts import build_home_hero_contract, build_home_listening_contract
+    from home_surface_contracts import LISTENING_SCHEMA_VERSION, build_home_hero_contract, build_home_listening_contract
 except ImportError:  # pragma: no cover - supports package-style test imports
-    from backend.home_surface_contracts import build_home_hero_contract, build_home_listening_contract
+    from backend.home_surface_contracts import LISTENING_SCHEMA_VERSION, build_home_hero_contract, build_home_listening_contract
 
 try:
     from audiobook_packages import (
@@ -5758,9 +5758,26 @@ async def get_home_listening(request: Request, limit: int = 3):
     cache_key = _public_cache_key("home_listening_contract_v1", limit=bounded_limit)
     payload = await _public_cache_get(cache_key)
     if payload is None:
-        source = await _build_home_curated_source_payload(include_audio_manifests=True)
-        payload = build_home_listening_contract(source, limit=bounded_limit)
-        await _public_cache_set(cache_key, payload)
+        try:
+            source = await _build_home_curated_source_payload(include_audio_manifests=True)
+            payload = build_home_listening_contract(source, limit=bounded_limit)
+            await _public_cache_set(cache_key, payload)
+        except Exception:
+            # This rail is deferred and non-critical. If a cold cache, catalog
+            # read, or manifest build is temporarily unavailable, keep the
+            # public contract healthy and fail closed instead of returning a
+            # gateway error or exposing unverified audio metadata.
+            logger.exception("Home listening contract unavailable; returning an empty safe contract")
+            payload = build_home_listening_contract(
+                {
+                    "source": {
+                        "truth_source": "canonical_public_catalog_fail_closed",
+                        "catalog_version": LISTENING_SCHEMA_VERSION,
+                    },
+                    "listening_rooms": {"items": []},
+                },
+                limit=bounded_limit,
+            )
     return _home_surface_response(
         request,
         payload,

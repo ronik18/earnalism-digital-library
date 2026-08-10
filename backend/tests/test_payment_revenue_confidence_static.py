@@ -153,8 +153,8 @@ def test_public_payment_copy_does_not_sell_subscription_ownership_or_audiobooks(
         "listen now",
     ]:
         assert forbidden not in lowered
-    assert "dracula audio is not available yet" in lowered
-    assert "coming soon until source, rights, and qa pass" in lowered
+    assert "dracula audio remains in preparation" in lowered
+    assert "will be introduced only after source, rights, and qa pass" in lowered
 
 
 def test_payment_confidence_report_keeps_public_audio_and_live_money_blocked() -> None:
