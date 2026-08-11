@@ -2027,3 +2027,4 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Multi-device authentication and single-device consumption are separate constraints. Keep login sessions available while enforcing one unique account consumption lock and an explicit audited transfer.
 - Every lock-releasing path must settle the final server-timed interval transactionally. Heartbeat-only settlement leaves a repeatable sub-heartbeat evasion path through end, transfer, revoke, or stale-session replacement.
 - Canonical block segmentation must preserve meaningful text between recognized HTML blocks. Dropping unmatched fragments creates deterministic pages with deterministic content loss, which is still a release failure.
+- Access-confirmation copy must describe authorization state, not imply audiobook release state. “Protected listening access verified” is accurate after a lease is issued; “audiobook ready” can overclaim public availability.

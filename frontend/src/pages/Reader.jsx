@@ -3149,7 +3149,7 @@ export default function Reader() {
         setProcessedHtml('');
         setContentBlurred(true);
       }
-      toast.info('Protected audiobook ready. Press Play when you are ready; billing starts with playback.');
+      toast.info('Protected listening access verified. Press Play when you are ready; billing starts with playback.');
     } catch (error) {
       const passError = readingPassError(error);
       setReadingPassPaywall({ ...passError, intent: 'audio' });
