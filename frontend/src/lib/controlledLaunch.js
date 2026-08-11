@@ -30,39 +30,7 @@ export const DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cove
 export const KSHUDHITA_PASHAN_FRONT_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp";
 export const KSHUDHITA_PASHAN_BACK_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp";
 export const SULTANAS_DREAM_FRONT_COVER_IMAGE = "/assets/books/sultanas-dream/front-cover.svg";
-
-function smartTitleCaseSegment(value = "") {
-  const text = String(value || "").trim();
-  const letters = text.match(/[A-Za-z]/g) || [];
-  const upperLetters = text.match(/[A-Z]/g) || [];
-  if (!letters.length || upperLetters.length / letters.length < 0.72) return text;
-  return text
-    .toLowerCase()
-    .replace(/\b([a-z])([a-z'’.]*)/g, (_match, first, rest) => `${first.toUpperCase()}${rest}`)
-    .replace(/\bDr\b\.?/g, "Dr.")
-    .replace(/\bMr\b\.?/g, "Mr.")
-    .replace(/\bMrs\b\.?/g, "Mrs.")
-    .replace(/\bMs\b\.?/g, "Ms.");
-}
-
-export function normalizeChapterDisplayTitle(title = "") {
-  const original = String(title || "").trim();
-  if (!original) return "";
-  const withoutContinuation = original
-    .replace(/[_*`]+/g, "")
-    .replace(/\s*[.:]?\s*(?:--|—|-)\s*continued\.?\s*$/i, "")
-    .replace(/\s+(?:continued)\.?\s*$/i, "")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  const chapterMatch = withoutContinuation.match(/^chapter\s+([ivxlcdm]+|\d+)\.?\s*(.*)$/i);
-  if (!chapterMatch) return smartTitleCaseSegment(withoutContinuation);
-  const [, numeral, remainder] = chapterMatch;
-  const normalizedRemainder = smartTitleCaseSegment(remainder);
-  return normalizedRemainder
-    ? `Chapter ${String(numeral).toUpperCase()}. ${normalizedRemainder}`
-    : `Chapter ${String(numeral).toUpperCase()}`;
-}
+export { normalizeChapterDisplayTitle } from './chapterIndex';
 
 export const DRACULA_FALLBACK_BOOK = {
   slug: LIVE_APPROVED_SLUG,

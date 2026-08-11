@@ -9,7 +9,8 @@ import ReaderAudiobookPanel from '../components/ReaderAudiobookPanel';
 import SecureReader from '../components/SecureReader';
 import { trackFunnelEvent } from '../lib/funnelAnalytics';
 import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/funnelOffers';
-import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG, normalizeChapterDisplayTitle } from '../lib/controlledLaunch';
+import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG } from '../lib/controlledLaunch';
+import { chapterIndexEntry, normalizeChapterDisplayTitle, sortedChapterIndex } from '../lib/chapterIndex';
 import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
 import { resolveBookCover } from '../lib/bookCoverResolver';
@@ -868,14 +869,14 @@ function prefetchAudioMetadata(url) {
 }
 
 function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', adminPreview = false, onChapterSelect }) {
-  const sortedChapters = [...chapters].sort((a, b) => (a.order || 0) - (b.order || 0));
+  const sortedChapters = sortedChapterIndex(chapters);
 
   return (
     <nav className="reader-index-page" aria-label="Book chapter index">
       <div className="reader-index-page__eyebrow">Contents</div>
       <h2>Jump to a chapter</h2>
       <ol>
-        {sortedChapters.map((item, index) => {
+        {sortedChapters.map((item) => {
           const isCurrent = item.id === currentChapterId;
           const href = `/reader/${bookId}${readerSearchParams({ chapterId: item.id, adminPreview })}`;
           return (
@@ -888,8 +889,13 @@ function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '',
                   onChapterSelect?.(item.id);
                 }}
               >
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <strong>{normalizeChapterDisplayTitle(item.title)}</strong>
+                <span className="reader-index-page__sequence" aria-hidden="true">{item.index_sequence_label}</span>
+                <span className="reader-index-page__copy">
+                  {item.index_secondary_label && (
+                    <small>{item.index_secondary_label}</small>
+                  )}
+                  <strong lang={containsBengaliText(item.index_title) ? 'bn' : undefined}>{item.index_title}</strong>
+                </span>
               </a>
             </li>
           );
@@ -3584,7 +3590,11 @@ export default function Reader() {
         <div className="reader-gutter reader-gutter--left" aria-hidden="true" />
         <article key={`${activeChapterId || chapterId || chapter?.id || bookId}:${currentPage}`} className="reader-canvas page-enter">
           <section
-            className={bookmarked ? 'reader-page-shell reader-page-shell--bookmarked' : 'reader-page-shell'}
+            className={[
+              'reader-page-shell',
+              bookmarked ? 'reader-page-shell--bookmarked' : '',
+              isChapterIndexPage ? 'reader-page-shell--index' : '',
+            ].filter(Boolean).join(' ')}
             data-testid="reader-page-shell"
             onPointerDown={onReaderPointerDown}
             onPointerUp={onReaderPointerUp}
@@ -4080,12 +4090,14 @@ export default function Reader() {
             <div className="space-y-1">
               {chapters.map((item, index) => {
                 const current = index === currentIdx;
+                const indexEntry = chapterIndexEntry(item, index + 1, chapters.length);
                 return (
-                  <button key={item.id} type="button" onClick={() => { setShowTOC(false); goToChapter(item.id); }} className="reader-toc-item w-full text-left px-3 py-2.5 rounded-lg transition-all" lang={containsBengaliText(item.title) ? 'bn' : undefined} style={{ background: current ? 'rgba(107,16,32,0.08)' : 'transparent', borderLeft: current ? '2px solid #6B1020' : '2px solid transparent', color: current ? '#6B1020' : colors.text, fontFamily: containsBengaliText(item.title) ? BENGALI_SERIF : READER_SERIF, fontSize: 15, overflowWrap: 'break-word' }}>
-                    <span style={{ fontFamily: UI_FONT, fontSize: 11, color: '#A88A8F', marginRight: 6 }}>
-                      {index + 1}.
+                  <button key={item.id} type="button" onClick={() => { setShowTOC(false); goToChapter(item.id); }} className="reader-toc-item w-full text-left px-3 py-2.5 rounded-lg transition-all" lang={containsBengaliText(indexEntry.index_title) ? 'bn' : undefined} style={{ background: current ? 'rgba(107,16,32,0.08)' : 'transparent', borderLeft: current ? '2px solid #6B1020' : '2px solid transparent', color: current ? '#6B1020' : colors.text, fontFamily: containsBengaliText(indexEntry.index_title) ? BENGALI_SERIF : READER_SERIF, fontSize: 15, overflowWrap: 'break-word' }}>
+                    <span className="reader-toc-item__sequence" aria-hidden="true">{indexEntry.index_sequence_label}</span>
+                    <span className="reader-toc-item__copy">
+                      {indexEntry.index_secondary_label && <small>{indexEntry.index_secondary_label}</small>}
+                      <strong>{indexEntry.index_title}</strong>
                     </span>
-                    {normalizeChapterDisplayTitle(item.title)}
                   </button>
                 );
               })}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "earnalism.audiobook-master-gate-audit.v1",
+  "audited_at": "2026-08-11T19:04:15Z",
+  "book_slug": "dracula",
+  "scope": "PR_269_PRIVATE_STAGING_PREVIEW_ONLY",
+  "status": "FAIL_CLOSED_NO_APPROVED_MASTER",
+  "source_rights": {
+    "status": "PASS",
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "canonical_source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
+    "chapter_count": 27
+  },
+  "existing_full_audio_candidate": {
+    "classification": "HISTORICAL_EDGE_CANDIDATE_NOT_MASTER",
+    "provider": "edge",
+    "voice": "en-IN-NeerjaNeural",
+    "sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+    "bytes": 555959110,
+    "duration_seconds": 69494.786032,
+    "timestamp_words": 163395,
+    "generated_qa_score": 9.49,
+    "generated_qa_is_human_listening_qa": false,
+    "candidate_source_sha256": null,
+    "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED"
+  },
+  "canonical_fidelity_observations": {
+    "reader_manifest_word_count": 162607,
+    "normalized_canonical_token_count": 162286,
+    "normalized_candidate_chunk_token_count": 162306,
+    "first_observed_token_divergence": 652,
+    "result": "BLOCKED_NO_EXACT_CANONICAL_SOURCE_BINDING"
+  },
+  "blockers": [
+    "APPROVED_MASTER_RELEASE_PACKET_MISSING",
+    "CANDIDATE_CANONICAL_SOURCE_CHECKSUM_MISSING",
+    "DERIVATIVE_AUDIOBOOK_RIGHTS_APPROVAL_MISSING",
+    "VOICE_PROVIDER_RIGHTS_APPROVAL_MISSING",
+    "FULL_BOOK_HUMAN_LISTENING_QA_MISSING",
+    "FULL_BOOK_ACCESSIBILITY_LISTENING_QA_MISSING",
+    "FULL_BOOK_CANONICAL_ALIGNMENT_QA_MISSING",
+    "FINAL_OWNER_AUDIO_RELEASE_APPROVAL_MISSING"
+  ],
+  "actions_not_run": [
+    "PREVIEW_GENERATION",
+    "PRIVATE_STORAGE_UPLOAD",
+    "PREVIEW_REGISTRATION",
+    "PREVIEW_ACTIVATION",
+    "PHYSICAL_DEVICE_AUDIO_VALIDATION"
+  ],
+  "release_truth": "PR_269_DRAFT_UNMERGED_PRODUCTION_UNCHANGED",
+  "next_action": "Obtain a checksum-bound full-book master packet with approved derivative and voice rights, canonical alignment evidence, full-book human and accessibility listening QA, and explicit owner release approval; then rerun private staging preview registration."
+}

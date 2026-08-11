@@ -1,0 +1,28 @@
+{
+  "schema_version": "earnalism.reader-index-consistency-evidence.v1",
+  "index_contract": "chapter-index.v1",
+  "status": "SOURCE_AND_LOCAL_BROWSER_PASS",
+  "catalog_audit": {
+    "books": 79,
+    "chapters": 691,
+    "blockers": 0,
+    "report": "/private/tmp/pr269-reader-index-audit.json"
+  },
+  "tests": {
+    "backend": "PASS_10",
+    "frontend": "PASS_31",
+    "production_build": "PASS"
+  },
+  "dracula_mobile_browser": {
+    "viewport": "390x844",
+    "index_client_height_px": 669,
+    "index_scroll_height_px": 1824,
+    "max_scroll_top_px": 1155,
+    "client_width_px": 390,
+    "scroll_width_px": 390,
+    "last_visible_chapter": 27,
+    "result": "PASS"
+  },
+  "release_truth": "PR_269_DRAFT_UNMERGED_PRODUCTION_UNCHANGED",
+  "next_gate": "COMMIT_PUSH_HOSTED_STAGING_AND_CI_VALIDATION"
+}

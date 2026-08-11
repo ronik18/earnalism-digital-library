@@ -193,6 +193,19 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         slugify,
     )
 
+try:
+    from backend.domain.chapter_index import (
+        CHAPTER_INDEX_CONTRACT_VERSION,
+        build_chapter_index_entries,
+        chapter_index_entry,
+    )
+except ImportError:  # pragma: no cover - supports uvicorn from backend/
+    from domain.chapter_index import (
+        CHAPTER_INDEX_CONTRACT_VERSION,
+        build_chapter_index_entries,
+        chapter_index_entry,
+    )
+
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -2775,7 +2788,7 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     if not admin_preview and not _is_controlled_public_slug(slug):
         return None
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
+    cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{CHAPTER_INDEX_CONTRACT_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-manifest", cache_key)
     if cached is not None:
         return cached
@@ -2796,10 +2809,12 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
 
     chapters = []
     preview_ids = _free_preview_chapter_ids(doc)
-    for chapter in sorted((doc.get("chapters") or []), key=lambda c: c.get("order", 0)):
+    source_chapters = sorted((doc.get("chapters") or []), key=lambda c: (c.get("order", 0), c.get("id", "")))
+    total_chapters = len(source_chapters)
+    for position, chapter in enumerate(source_chapters, start=1):
         version = _reader_chapter_content_version(chapter)
         chapter_id = chapter.get("id") or ""
-        chapters.append({
+        chapters.append(chapter_index_entry({
             "id": chapter_id,
             "title": chapter.get("title", ""),
             "order": chapter.get("order", 0),
@@ -2810,7 +2825,7 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
             "processing_status": chapter.get("processing_status", "ready"),
             "has_images": bool(chapter.get("has_images", False)),
             "content_url": f"/api/reader/chapter/{slug}/{chapter_id}?v={version}" if chapter_id else "",
-        })
+        }, position=position, total=total_chapters))
 
     audio_source = doc if admin_preview else (_reader_audio_truth_doc(doc, slug) or {})
     audio = _reader_manifest_audio(audio_source, slug)
@@ -2827,13 +2842,25 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
             "created_at": doc.get("created_at", ""),
             "is_published": doc.get("is_published", False),
         },
-        "chapters": [{c["id"]: c["content_version"]} for c in chapters],
+        "chapter_index_contract": CHAPTER_INDEX_CONTRACT_VERSION,
+        "chapters": [
+            {
+                "id": c["id"],
+                "title": c["title"],
+                "content_version": c["content_version"],
+                "index_contract": c["index_contract"],
+                "index_title": c["index_title"],
+                "index_secondary_label": c["index_secondary_label"],
+            }
+            for c in chapters
+        ],
         "audio": audio.get("version", ""),
     }, length=20)
     result = {
         "book": book_public,
         "chapters": chapters,
         "audio": audio,
+        "chapter_index_contract": CHAPTER_INDEX_CONTRACT_VERSION,
         "version": manifest_version,
         "content_generation": generation,
         "generated_at": now_iso(),
@@ -5555,7 +5582,7 @@ async def get_book(slug: str):
 
 @api.get("/books/{slug}/chapters")
 async def get_book_chapters(slug: str):
-    cache_key = _public_cache_key("book_chapters", slug=slug)
+    cache_key = _public_cache_key("book_chapters", slug=slug, index_contract=CHAPTER_INDEX_CONTRACT_VERSION)
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
@@ -5567,7 +5594,7 @@ async def get_book_chapters(slug: str):
     chapters = _strip_all_chapter_content(doc).get("chapters") or []
     if not chapters:
         return []
-    result = sorted(chapters, key=lambda c: c.get("order", 0))
+    result = build_chapter_index_entries(chapters)
     await _public_cache_set(cache_key, result)
     return result
 

@@ -161,3 +161,10 @@
 - The audiobook preview boundary needs an explicit “Continue audiobook” action. Reusing a generic purchase CTA when a member already has balance makes the access model look inaccurate.
 - Required viewport harnesses passed at 320, 360, 390, 768, 1024, and 1440 px, mobile landscape, and a 200% desktop-zoom equivalent with zero horizontal overflow and 44 px minimum controls.
 - Isolated staging should fail on ledger-derived balance drift even when the wallet compatibility aliases agree. A healthy timer and paywall are not sufficient evidence if admin adjustments and metered debits cannot reconcile to one immutable balance.
+
+## 2026-08-12 Reader Index Consistency v1
+
+- Reader indexes need one shared display contract across API manifests, chapter endpoints, full-page contents, and drawer contents; independent formatting produces deterministic-looking but contradictory labels.
+- A generated ordinal beside a source title such as `Chapter I` creates duplicate numbering. Separate the canonical sequence, structural unit, and primary title while retaining the untouched source title in metadata.
+- Long contents pages must own vertical overflow independently from horizontal reader page gestures. Dracula required 1155 px of vertical scrolling on a 390 x 844 viewport to expose all 27 chapters.
+- The controlled-publication audit covered all 79 manifests and 691 chapter records with zero blank titles, duplicate IDs, sequence gaps, or contract mismatches.

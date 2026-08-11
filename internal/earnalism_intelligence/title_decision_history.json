@@ -2558,9 +2558,9 @@
       "audiobook_next_action": "Prepare and editorially approve an exact-title rights-cleared front/back cover pair, then promote it through the checksum-bound admin gate. Only then admit one source-bound Charon representative candidate."
     },
     "dracula": {
-      "latest_decision": "CANONICAL_SOURCE_BINDING_REPAIRED_EXACT_NORMALIZED_ROOT_PARITY_PASS",
-      "decision_reason": "All 27 canonical chapter records now carry the deterministic dracula bookSlug metadata without changing content or stored content_hash. The English input builder converts only supported p/br reader HTML and proves the canonical and backend roots produce the same exact 848683-character, 27-chapter normalized manuscript hash; unsupported tags and any root divergence fail closed.",
-      "updated_at": "2026-07-30T13:07:53Z",
+      "latest_decision": "PR269_PRIVATE_PREVIEW_FAIL_CLOSED_NO_APPROVED_MASTER",
+      "decision_reason": "The historical Edge full-book file is intact but is not checksum-bound to the frozen canonical manuscript and has no approved derivative/voice-rights packet, full-book human and accessibility listening QA, canonical alignment result, or final owner audio-release approval. Preview derivation, upload, registration, activation, and physical-device audio validation remain blocked.",
+      "updated_at": "2026-08-11T19:04:15Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
@@ -2579,8 +2579,10 @@
       "conditional_speaking_rate": 0.94,
       "preflight_attempt_fingerprint": null,
       "provider_calls_ran": false,
-      "evidence": "internal/earnalism_intelligence/dracula_source_parity_binding_20260730.json",
-      "audiobook_next_action": "Run the exact source-freeze command recorded in the parity evidence, review the deterministic input manifest, and only then admit one title-specific representative candidate through the normal objective and listening gates."
+      "evidence": "internal/audiobook_lab/dracula/pr269_staging_master_gate_audit.json",
+      "prior_source_parity_evidence": "internal/earnalism_intelligence/dracula_source_parity_binding_20260730.json",
+      "audited_full_audio_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+      "audiobook_next_action": "Obtain a checksum-bound approved full-book master packet with derivative and voice rights, canonical alignment, full-book human and accessibility listening QA, and explicit owner release approval before deriving any staging preview."
     },
     "pride-and-prejudice": {
       "latest_decision": "CHATTERBOX_V3_PRIVATE_PILOT_CLOSED_OBJECTIVE_FAIL_AUDIO_HIDDEN",

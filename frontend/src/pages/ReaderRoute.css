@@ -890,6 +890,14 @@
   touch-action: pan-y;
 }
 
+.reader-page-shell--index {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+  touch-action: pan-y;
+}
+
 .reader-book-header,
 .reader-story-header {
   display: none;
@@ -1119,8 +1127,9 @@
 
 .reader-index-page {
   display: grid;
-  align-content: center;
-  min-height: min(74vh, 820px);
+  align-content: start;
+  min-height: 100%;
+  padding-bottom: 1rem;
   color: var(--reader-ink);
 }
 
@@ -1154,9 +1163,9 @@
 .reader-index-page a {
   display: grid;
   grid-template-columns: 2.4rem minmax(0, 1fr);
-  align-items: baseline;
+  align-items: center;
   gap: 0.8rem;
-  min-height: 2.6rem;
+  min-height: 44px;
   border: 1px solid color-mix(in srgb, var(--reader-border) 58%, transparent);
   border-radius: 8px;
   padding: 0.62rem 0.75rem;
@@ -1178,7 +1187,7 @@
   outline-offset: 2px;
 }
 
-.reader-index-page a span {
+.reader-index-page__sequence {
   color: var(--reader-muted);
   font-family: Inter, sans-serif;
   font-size: 0.72rem;
@@ -1186,7 +1195,24 @@
   letter-spacing: 0.08em;
 }
 
-.reader-index-page a strong {
+.reader-index-page__copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.12rem;
+}
+
+.reader-index-page__copy small,
+.reader-toc-item__copy small {
+  color: var(--reader-muted);
+  font-family: Inter, 'Noto Sans Bengali', sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.reader-index-page__copy strong {
   min-width: 0;
   color: var(--reader-accent);
   font-family: Inter, 'Noto Sans Bengali', sans-serif;
@@ -1592,6 +1618,32 @@
 .reader-toc-close,
 .reader-toc-item {
   min-height: 44px;
+}
+
+.reader-toc-item {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.reader-toc-item__sequence {
+  color: #A88A8F;
+  font-family: Inter, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.reader-toc-item__copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.1rem;
+}
+
+.reader-toc-item__copy strong {
+  font: inherit;
+  font-weight: 600;
 }
 
 .reader-toc-close {
