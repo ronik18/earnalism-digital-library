@@ -1,7 +1,7 @@
 {
   "schema_version": "earnalism.catalog-exclusion-evidence.v1",
   "recorded_at": "2026-08-11T03:45:00Z",
-  "status": "SOURCE_VALIDATED_READY_FOR_OWNER_REVIEW_NOT_DEPLOYED",
+  "status": "HOSTED_GATE_PASS_OWNER_APPROVED_READY_TO_MERGE",
   "owner_directive": "Dui Bigha Jomi is totally dropped from the list and must not remain visible in audiobooks.",
   "slug": "book-2b9853ec52",
   "title": "Dui Bigha Jomi",
@@ -43,8 +43,8 @@
     "production_build_network_note": "SEO generation used checked-in catalog truth because the production API was unreachable from the sandbox.",
     "production_state_before_change": "API_AND_FRESH_BROWSER_ALREADY_EXCLUDED_TITLE",
     "focused_failed_regression_recheck": "PASS_3_OF_3_AGAINST_PRODUCTION_API",
-    "hosted_regression_gate": "REPAIR_PENDING_AFTER_STALE_ACTIVE_AUDIO_CLAIM",
+    "hosted_regression_gate": "PASS_RUN_31492159455",
     "production_deployment": "OWNER_APPROVED_PENDING_GREEN_GATE"
   },
-  "next_action": "Rerun the focused and hosted regression gates, then merge and deploy the owner-approved exclusion from origin/main only."
+  "next_action": "Merge PR 268 and deploy the owner-approved exclusion from the resulting origin/main commit only."
 }
