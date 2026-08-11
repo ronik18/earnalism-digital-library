@@ -252,6 +252,29 @@ export function chapterIdForAudioSegment(manifest, segmentId = '') {
   ).some((chunk) => chunk.segmentId === segmentId))?.chapterId || '';
 }
 
+export function audioSegmentAtMediaPosition(manifest, positionSeconds = 0) {
+  const segments = (manifest?.tracks || []).flatMap((track) => (
+    track.chunks || []
+  ).map((chunk) => ({ chunk, track })));
+  if (!segments.length) return null;
+  const positionMs = Math.max(0, finiteNumber(positionSeconds, 0) * 1000);
+  const selected = segments.find(({ chunk }) => (
+    positionMs >= chunk.cumulativeStartMs
+    && positionMs < chunk.cumulativeStartMs + chunk.durationMs
+  )) || segments[segments.length - 1];
+  return {
+    segmentId: selected.chunk.segmentId,
+    chapterId: selected.track.chapterId,
+    offsetSeconds: Math.max(
+      0,
+      Math.min(
+        selected.chunk.durationMs / 1000,
+        (positionMs - selected.chunk.cumulativeStartMs) / 1000,
+      ),
+    ),
+  };
+}
+
 export function selectAudioTrack({
   manifest,
   chapterId,

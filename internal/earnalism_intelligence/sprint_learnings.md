@@ -2022,3 +2022,8 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A dropped-title tombstone must be a final deny rule with higher precedence than historical publication and audio approval evidence in every runtime layout.
 - Listening surfaces should fail closed until canonical API truth arrives; a versioned cache namespace prevents stale installed clients from replaying a previously approved audiobook card.
 - Historical publication packets and media are audit evidence, not active release truth. Retain them privately while blocking reader, audio, and admin republication paths.
+- Metering must settle the preceding interval from server-stored activity before accepting the next client state; otherwise a pause request can erase time already consumed.
+- Native audio cannot attach bearer headers, so protected playback needs a short HttpOnly credential rebound server-side to the active login, exact content, lease hash, and expiry; credentials must never enter media URLs.
+- Multi-device authentication and single-device consumption are separate constraints. Keep login sessions available while enforcing one unique account consumption lock and an explicit audited transfer.
+- Every lock-releasing path must settle the final server-timed interval transactionally. Heartbeat-only settlement leaves a repeatable sub-heartbeat evasion path through end, transfer, revoke, or stale-session replacement.
+- Canonical block segmentation must preserve meaningful text between recognized HTML blocks. Dropping unmatched fragments creates deterministic pages with deterministic content loss, which is still a release failure.

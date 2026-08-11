@@ -1,4 +1,5 @@
 import {
+  audioSegmentAtMediaPosition,
   chapterIdForAudioSegment,
   normalizeAudioManifest,
   normalizeAudioTrack,
@@ -116,6 +117,21 @@ describe('audiobook package manifest', () => {
     expect(second.nextAudioUrl).toBe('');
     expect(second.nextTimestampsUrl).toBe('');
     expect(second.cumulativeStartMs).toBe(300000);
+  });
+
+  test('maps a server media position to its immutable segment and offset', () => {
+    const manifest = normalizeAudioManifest(rawManifest);
+
+    expect(audioSegmentAtMediaPosition(manifest, 180)).toEqual({
+      segmentId: 'c001-s001',
+      chapterId: 'chapter-001',
+      offsetSeconds: 180,
+    });
+    expect(audioSegmentAtMediaPosition(manifest, 305.5)).toEqual({
+      segmentId: 'c001-s002',
+      chapterId: 'chapter-001',
+      offsetSeconds: 5.5,
+    });
   });
 
   test('continues across track boundaries and binds the next chapter', () => {
