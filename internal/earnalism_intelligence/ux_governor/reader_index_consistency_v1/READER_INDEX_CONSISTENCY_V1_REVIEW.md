@@ -1,6 +1,6 @@
 # Reader Index Consistency v1 Review
 
-Status: source and local browser validation passed; staging deployment pending.
+Status: source, hosted CI, isolated staging API, and Vercel preview validation passed.
 
 ## Problem
 
@@ -22,9 +22,12 @@ Reader contents surfaces mixed a generated ordinal with source titles that often
 - Production frontend build: passed.
 - Dracula local browser at 390 x 844: scroll height 1824 px, client height 669 px, maximum scroll 1155 px reached, scroll width equals client width at 390 px.
 - Dracula final visible range included chapters 19 through 27 and the contents footer.
+- Hosted PR regression: passed in 3m08s; production deploy and canary jobs skipped.
+- Railway staging deployment `37b1b381-301f-48f0-a875-802d3ba0cf1c`: healthy; the Dracula manifest returns `chapter-index.v1`, 27 ordered entries, and the normalized first/last labels.
+- Vercel preview deployment `dpl_FdbErLSUAcrdiSjEobrxYGwsrKt5`: ready, preview target, noindex, and its built artifact contains `chapter-index.v1` and the isolated staging API hostname.
 
 The generated full audit remains outside version control at `/private/tmp/pr269-reader-index-audit.json`; rerun it with `python3 scripts/audit_reader_indexes.py`.
 
 ## Release boundary
 
-This evidence does not approve an audiobook, merge PR #269, change production, or enable Reading Pass. Hosted staging and CI must be rerun from the committed PR head.
+This evidence does not approve an audiobook, merge PR #269, or change production. Reading Pass remains confined to the isolated staging environment. Private preview audio is still fail-closed because no approved Dracula master exists.

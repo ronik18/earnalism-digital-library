@@ -1,7 +1,7 @@
 {
   "schema_version": "earnalism.reader-index-consistency-evidence.v1",
   "index_contract": "chapter-index.v1",
-  "status": "SOURCE_AND_LOCAL_BROWSER_PASS",
+  "status": "HOSTED_STAGING_PASS",
   "catalog_audit": {
     "books": 79,
     "chapters": 691,
@@ -23,6 +23,23 @@
     "last_visible_chapter": 27,
     "result": "PASS"
   },
+  "hosted_ci": {
+    "run_id": 31526540761,
+    "head_sha": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+    "regression_gate": "PASS_3M08S",
+    "production_jobs": "SKIPPED"
+  },
+  "staging": {
+    "railway_deployment_id": "37b1b381-301f-48f0-a875-802d3ba0cf1c",
+    "railway_health": "PASS",
+    "manifest_contract": "chapter-index.v1",
+    "manifest_chapters": 27,
+    "vercel_deployment_id": "dpl_FdbErLSUAcrdiSjEobrxYGwsrKt5",
+    "vercel_target": "preview",
+    "vercel_status": "READY",
+    "preview_url": "https://earnalism-jwg60fucf-sales-8498s-projects.vercel.app",
+    "built_api_host": "earnalism-pr269-staging-reading-pass-pr269-staging.up.railway.app"
+  },
   "release_truth": "PR_269_DRAFT_UNMERGED_PRODUCTION_UNCHANGED",
-  "next_gate": "COMMIT_PUSH_HOSTED_STAGING_AND_CI_VALIDATION"
+  "next_gate": "APPROVED_DRACULA_MASTER_PACKET_BEFORE_PRIVATE_AUDIO_PREVIEW"
 }
