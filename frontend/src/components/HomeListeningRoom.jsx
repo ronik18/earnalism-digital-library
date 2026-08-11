@@ -1,15 +1,13 @@
 import { startTransition, useEffect, useState } from "react";
 import {
   fetchHomeListening,
-  getHomeListeningCache,
   getHomeListeningSnapshot,
 } from "../lib/homeSurfaces";
 import PremiumListeningRail from "./PremiumListeningRail";
 
 export default function HomeListeningRoom() {
-  const [curation, setCuration] = useState(() => (
-    getHomeListeningCache() || getHomeListeningSnapshot()
-  ));
+  const [curation, setCuration] = useState(() => getHomeListeningSnapshot());
+  const [loading, setLoading] = useState(true);
   const [refreshFailed, setRefreshFailed] = useState(false);
 
   useEffect(() => {
@@ -18,11 +16,15 @@ export default function HomeListeningRoom() {
       .then((payload) => {
         startTransition(() => {
           setCuration(payload);
+          setLoading(false);
           setRefreshFailed(false);
         });
       })
       .catch((error) => {
-        if (error?.name !== "AbortError") setRefreshFailed(true);
+        if (error?.name !== "AbortError") {
+          setLoading(false);
+          setRefreshFailed(true);
+        }
       });
     return () => controller.abort();
   }, []);
@@ -34,7 +36,7 @@ export default function HomeListeningRoom() {
     <PremiumListeningRail
       books={books}
       reserveBooks={reserveBooks}
-      loading={false}
+      loading={loading}
       error={refreshFailed && books.length === 0}
     />
   );

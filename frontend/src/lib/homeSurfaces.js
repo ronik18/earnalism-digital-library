@@ -7,7 +7,7 @@ import {
 const HERO_SCHEMA_VERSION = "home-hero-v1";
 const LISTENING_SCHEMA_VERSION = "home-listening-v1";
 const HERO_CACHE_KEY = "earnalism_home_hero:v1";
-const LISTENING_CACHE_KEY = "earnalism_home_listening:v1";
+const LISTENING_CACHE_KEY = "earnalism_home_listening:v2";
 const HERO_CACHE_TTL_MS = 60 * 60 * 1000;
 const LISTENING_CACHE_TTL_MS = 5 * 60 * 1000;
 
@@ -90,12 +90,10 @@ export function getHomeHeroSnapshot() {
 }
 
 export function getHomeListeningSnapshot() {
-  const snapshot = getHomeCurationSnapshot();
-  const items = snapshot.listening_rooms?.items || snapshot.selected_audiobooks || [];
   return {
-    listening_rooms: { items, reserve_items: [] },
-    selected_audiobooks: items,
-    source: snapshot.source,
+    listening_rooms: { items: [], reserve_items: [] },
+    selected_audiobooks: [],
+    source: { truth_source: "deferred_live_api_fail_closed" },
   };
 }
 

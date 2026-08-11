@@ -214,6 +214,7 @@ try:
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
         AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
+        PUBLIC_CATALOG_EXCLUDED_SLUGS as CATALOG_TRUTH_EXCLUDED_SLUGS,
         audio_release_qa_status,
         can_expose_audio,
         can_expose_reader,
@@ -232,6 +233,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
         AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
+        PUBLIC_CATALOG_EXCLUDED_SLUGS as CATALOG_TRUTH_EXCLUDED_SLUGS,
         audio_release_qa_status,
         can_expose_audio,
         can_expose_reader,
@@ -2811,6 +2813,9 @@ def _publish_blockers(book: dict) -> List[str]:
 
     blockers: List[str] = []
     slug = str(book.get("slug") or "").strip().lower()
+    if slug in CATALOG_TRUTH_EXCLUDED_SLUGS:
+        blockers.append("Owner exclusion policy blocks this title from public catalog publication.")
+        return blockers
     artifact = load_controlled_artifact_book(slug, include_content=False)
     manifest_approved = bool(
         artifact

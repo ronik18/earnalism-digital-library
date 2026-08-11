@@ -2015,3 +2015,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Paragraph pagination on short viewports must split at whitespace without inserting spaces around punctuation. Sentence-token joins changed `8:35` and `M.,`; word-bound chunking preserves fidelity.
 - A drop cap is appropriate only on the first content page when the first paragraph starts with a letter. Applying it to every page or to parenthetical front matter produces decorative noise instead of editorial hierarchy.
 - Outer-versus-inner window dimensions are not a reliable security signal in split-screen, embedded, or in-app browsers. Keep visibility and explicit copy/print protections, but never blur legitimate reading layouts based on viewport deltas.
+
+## Deterministic catalog exclusion - 2026-08-11
+
+- Removing a title from one catalog list is insufficient when approved manifests, audiobook allowlists, Home curation, bundled snapshots, and installed-app caches can independently restore it.
+- A dropped-title tombstone must be a final deny rule with higher precedence than historical publication and audio approval evidence in every runtime layout.
+- Listening surfaces should fail closed until canonical API truth arrives; a versioned cache namespace prevents stale installed clients from replaying a previously approved audiobook card.
+- Historical publication packets and media are audit evidence, not active release truth. Retain them privately while blocking reader, audio, and admin republication paths.

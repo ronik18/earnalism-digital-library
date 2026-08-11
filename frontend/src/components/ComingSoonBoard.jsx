@@ -14,9 +14,9 @@ const ACTION_CARDS = [
     to: "/library?language=bn&availability=reader-ready",
     event: "bengali_card_click",
     book: {
-      slug: "book-2b9853ec52",
-      title: "দুই বিঘা জমি",
-      author: "রবীন্দ্রনাথ ঠাকুর",
+      slug: "bengali-classics-shelf",
+      title: "Bengali Classics",
+      author: "Earnalism",
       cover_image_url: "/assets/shelves/bengali-classics.jpg",
       back_cover_image_url: "/assets/shelves/bengali.jpg",
       dominant_color: "#24362E",

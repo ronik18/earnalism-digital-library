@@ -3,7 +3,6 @@
   "updated_at": "2026-07-17T08:00:00Z",
   "updated_by": "owner:PREMIUM_HOMEPAGE_HERO_DYNAMIC_SPRINT1_CATALOG_IMPLEMENTATION",
   "sprint1_active_slugs": [
-    "book-2b9853ec52",
     "bn-066",
     "radharani",
     "nishkriti",
@@ -37,7 +36,6 @@
     "the-necklace"
   ],
   "hero_featured_slugs": [
-    "book-2b9853ec52",
     "bn-066",
     "radharani",
     "nishkriti",
@@ -94,7 +92,6 @@
         "cover_limit": 3,
         "featured_slug": "book-d19e96859f",
         "slugs": [
-          "book-2b9853ec52",
           "bn-066",
           "pather-panchali",
           "radharani",
@@ -187,15 +184,6 @@
     ]
   },
   "books": {
-    "book-2b9853ec52": {
-      "hero_pinned": true,
-      "hero_rank": 1,
-      "shelf_rank": 1,
-      "do_not_feature": false,
-      "editorial_badge": "Bengali Classic",
-      "updated_at": "2026-07-17T08:00:00Z",
-      "updated_by": "owner"
-    },
     "bn-066": {
       "hero_pinned": true,
       "hero_rank": 2,

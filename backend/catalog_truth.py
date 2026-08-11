@@ -86,6 +86,12 @@ CONTROLLED_LAUNCH_CONFIG_PATH = first_existing_path(
     Path.cwd() / "data" / "controlled_launch.json",
     Path.cwd() / "backend" / "data" / "controlled_launch.json",
 )
+CATALOG_EXCLUSIONS_CONFIG_PATH = first_existing_path(
+    ROOT / "data" / "catalog_exclusions.json",
+    MODULE_DIR / "data" / "catalog_exclusions.json",
+    Path.cwd() / "data" / "catalog_exclusions.json",
+    Path.cwd() / "backend" / "data" / "catalog_exclusions.json",
+)
 DRACULA_ARTIFACT_DIR = first_controlled_artifact_dir("dracula")
 CONTROLLED_PUBLICATIONS_DIR = first_controlled_publications_root()
 DRACULA_REQUIRED_ARTIFACT_FILES = CONTROLLED_ARTIFACT_REQUIRED_FILES
@@ -104,6 +110,29 @@ def controlled_launch_config() -> dict[str, Any]:
     except json.JSONDecodeError:
         return fallback
     return loaded if isinstance(loaded, dict) else fallback
+
+
+def catalog_exclusions_config() -> dict[str, Any]:
+    if not CATALOG_EXCLUSIONS_CONFIG_PATH.exists():
+        return {"titles": {}}
+    try:
+        loaded = json.loads(CATALOG_EXCLUSIONS_CONFIG_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"titles": {}}
+    return loaded if isinstance(loaded, dict) else {"titles": {}}
+
+
+def public_catalog_excluded_slugs() -> set[str]:
+    titles = catalog_exclusions_config().get("titles")
+    if not isinstance(titles, dict):
+        return set()
+    return {
+        str(slug or "").strip().lower()
+        for slug, policy in titles.items()
+        if str(slug or "").strip()
+        and isinstance(policy, dict)
+        and policy.get("public_catalog_excluded") is True
+    }
 
 
 def read_json_file(path: Path) -> dict[str, Any]:
@@ -132,6 +161,7 @@ def normalized_slug_tuple(values: Any, fallback: tuple[str, ...]) -> tuple[str, 
 
 
 CONTROLLED_LAUNCH_CONFIG = controlled_launch_config()
+PUBLIC_CATALOG_EXCLUDED_SLUGS = public_catalog_excluded_slugs()
 LEGACY_CONTROLLED_LIVE_BOOK_SLUGS = normalized_slug_tuple(
     CONTROLLED_LAUNCH_CONFIG.get("live_approved_slugs"),
     ("dracula",),
@@ -150,12 +180,19 @@ def approved_manifest_slugs() -> tuple[str, ...]:
     return tuple(sorted(set(approved)))
 
 
-CONTROLLED_LIVE_BOOK_SLUGS = tuple(dict.fromkeys((*LEGACY_CONTROLLED_LIVE_BOOK_SLUGS, *approved_manifest_slugs())))
+CONTROLLED_LIVE_BOOK_SLUGS = tuple(
+    slug
+    for slug in dict.fromkeys((*LEGACY_CONTROLLED_LIVE_BOOK_SLUGS, *approved_manifest_slugs()))
+    if slug not in PUBLIC_CATALOG_EXCLUDED_SLUGS
+)
 LIVE_APPROVED_SLUG = CONTROLLED_LIVE_BOOK_SLUGS[0]
 PIPELINE_CANDIDATE_SLUGS = set(
     normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("pipeline_slugs"), ("kshudhita-pashan",))
+) - PUBLIC_CATALOG_EXCLUDED_SLUGS
+AUDIO_ENABLED_SLUGS = (
+    set(normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("audio_enabled_slugs"), ()))
+    - PUBLIC_CATALOG_EXCLUDED_SLUGS
 )
-AUDIO_ENABLED_SLUGS = set(normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("audio_enabled_slugs"), ()))
 
 PUBLIC_STATUS_LIVE_APPROVED = "LIVE_APPROVED"
 PUBLIC_STATUS_PIPELINE_CANDIDATE = "PIPELINE_CANDIDATE"
@@ -872,6 +909,8 @@ def source_metadata_present(book: dict[str, Any]) -> bool:
 
 def is_live_approved_book(book: dict[str, Any]) -> bool:
     slug = normalize_slug(book.get("slug"))
+    if not slug or slug in PUBLIC_CATALOG_EXCLUDED_SLUGS:
+        return False
     manifest = book.get("publication_manifest")
     manifest_approved = manifest_reader_exposed(manifest) if isinstance(manifest, dict) else False
     conveyor = nested_dict(book, "audiobook_release_conveyor")
@@ -905,7 +944,7 @@ def is_live_approved_book(book: dict[str, Any]) -> bool:
 
 def is_pipeline_candidate(book: dict[str, Any]) -> bool:
     slug = normalize_slug(book.get("slug"))
-    if not slug or slug in CONTROLLED_LIVE_BOOK_SLUGS:
+    if not slug or slug in PUBLIC_CATALOG_EXCLUDED_SLUGS or slug in CONTROLLED_LIVE_BOOK_SLUGS:
         return False
     if slug in PIPELINE_CANDIDATE_SLUGS:
         return True

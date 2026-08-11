@@ -3,7 +3,6 @@ import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "./libraryFallbackBooks";
 import { languageOfBook } from "./libraryCatalog";
 
 const BENGALI_READER_SLUG_ORDER = [
-  "book-2b9853ec52",
   "devdas",
   "pather-panchali",
   "hungry-stones",

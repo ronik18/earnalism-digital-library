@@ -82,9 +82,11 @@ test("listening uses its own endpoint and filters any non-approved record", asyn
   expect(result.selected_audiobooks.map((book) => book.slug)).toEqual(["approved"]);
 });
 
-test("bundled hero and listening snapshots make both surfaces render without an API wait", () => {
+test("bundled hero renders immediately while listening waits for canonical API truth", () => {
   expect(getHomeHeroSnapshot().hero.carousel_books.length).toBeGreaterThan(0);
-  expect(getHomeListeningSnapshot().selected_audiobooks.length).toBeGreaterThan(0);
+  expect(getHomeListeningSnapshot().selected_audiobooks).toEqual([]);
+  expect(getHomeListeningSnapshot().source.truth_source).toBe("deferred_live_api_fail_closed");
+  expect(HOME_SURFACE_CACHE_KEYS.listening).toContain(":v2");
 });
 
 test("unknown listening schema fails closed", () => {

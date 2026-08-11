@@ -85,14 +85,23 @@ def test_shared_controlled_launch_config_matches_backend_and_audit():
     assert isinstance(catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS, tuple)
     assert "dracula" in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
     assert "a-ghost-story" in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
-    assert "book-2b9853ec52" in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
+    assert "book-2b9853ec52" in catalog_truth.PUBLIC_CATALOG_EXCLUDED_SLUGS
+    assert "book-2b9853ec52" not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
     assert catalog_truth.PIPELINE_CANDIDATE_SLUGS == {"kshudhita-pashan"}
-    assert "book-2b9853ec52" in catalog_truth.AUDIO_ENABLED_SLUGS
+    assert "book-2b9853ec52" not in catalog_truth.AUDIO_ENABLED_SLUGS
     assert "a-ghost-story" in catalog_truth.AUDIO_ENABLED_SLUGS
     live_slugs = catalog_truth_audit.frontend_controlled_live_slugs()
     assert live_slugs is not None and isinstance(live_slugs, set)
     assert "dracula" in live_slugs
-    assert "book-2b9853ec52" in live_slugs
+    assert "book-2b9853ec52" not in live_slugs
+
+
+def test_owner_exclusion_blocks_admin_republication_even_with_legacy_approval():
+    blockers = server._publish_blockers(dracula_book(slug="book-2b9853ec52"))
+
+    assert blockers == [
+        "Owner exclusion policy blocks this title from public catalog publication."
+    ]
 
 
 def test_live_projection_enables_reader_preview_but_disables_audio():
