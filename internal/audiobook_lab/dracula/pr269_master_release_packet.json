@@ -1,0 +1,129 @@
+{
+  "schema_version": "earnalism.audiobook-master-release-packet.v1",
+  "book_slug": "dracula",
+  "scope": "PR_269_PRIVATE_STAGING_PREVIEW_DERIVATION_ONLY",
+  "status": "HOLD_INCOMPLETE",
+  "master": {
+    "classification": "HISTORICAL_EDGE_CANDIDATE_NOT_MASTER",
+    "provider": "edge-tts",
+    "voice": "en-IN-NeerjaNeural",
+    "sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+    "bytes": 555959110,
+    "duration_seconds": 69494.786032,
+    "mime_type": "audio/mpeg",
+    "sidecars": {
+      "metadata_sha256": "278fceb02f66241b152fd11679644d0659b547020f0cfe73214cce8d25b9aba5",
+      "chapters_sha256": "ad3a19c38e321ad919e9cc8e000486bd5f22f01d3a343d0150919e89a76712a5",
+      "timestamps_sha256": "47b7516665d4798ccabf838c42fdf4c643df714933f797ec4dd5b0b950f4b64f",
+      "highlight_vtt_sha256": "2d3a2f27820e18f9acea9f99390d275c59564a889dc6a8f8b73d8f73524e83bb"
+    }
+  },
+  "canonical_binding": {
+    "status": "HOLD",
+    "canonical_source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
+    "candidate_source_sha256": null,
+    "chapter_count": 27,
+    "evidence": [
+      {
+        "path": "../../earnalism_intelligence/dracula_source_parity_binding_20260730.json",
+        "sha256": "b77587cbbfe5c8f8872fd20ca070f6272c526bbac7489a827795f648293cb2a2"
+      }
+    ]
+  },
+  "rights": {
+    "source_text": {
+      "status": "HOLD_EXACT_MASTER_BINDING_REQUIRED",
+      "master_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+      "evidence": [
+        {
+          "path": "../../../data/controlled_publications/dracula/source_evidence.json",
+          "sha256": "b15cbf60eba259ce9ed7f5a387b27154077ed919d635d36deb6c421759288acb"
+        },
+        {
+          "path": "../../../data/controlled_publications/dracula/approval_evidence.json",
+          "sha256": "edd40ccba60553473d19febe988b7f8d05ecd51cb0c1cec055c493587a471fa7"
+        }
+      ]
+    },
+    "derivative_audiobook": {
+      "status": "HOLD_EXPLICIT_DERIVATIVE_APPROVAL_REQUIRED",
+      "master_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+      "evidence": []
+    },
+    "voice_provider": {
+      "status": "BLOCKED_NO_PAID_AZURE_GENERATION_ENTITLEMENT",
+      "master_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+      "generation_method": "edge-tts online Microsoft Edge service without preserved Azure subscription or paid-tier transaction evidence",
+      "evidence": [
+        {
+          "path": "pr269_edge_voice_rights_review.md",
+          "sha256": "e5bf11eb158b601d5ecd8041701595ca0dafc501e287d65fe8feb1a7c2b0e0be"
+        }
+      ]
+    }
+  },
+  "canonical_alignment": {
+    "status": "FAIL",
+    "master_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+    "score": null,
+    "first_words_match": null,
+    "last_words_match": null,
+    "ordered_content_match": false,
+    "missing_content_count": null,
+    "duplicated_content_count": null,
+    "reordered_content_count": null,
+    "first_observed_token_divergence": 652,
+    "evidence": []
+  },
+  "listening_qa": {
+    "human": {
+      "status": "MISSING",
+      "master_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+      "reviewed_duration_seconds": 0,
+      "overall_score": null,
+      "confidence": null,
+      "dimension_scores": {},
+      "fatal_flags": [
+        "FULL_BOOK_HUMAN_REVIEW_NOT_PERFORMED"
+      ],
+      "evidence": []
+    },
+    "accessibility": {
+      "status": "MISSING",
+      "master_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+      "reviewed_duration_seconds": 0,
+      "overall_score": null,
+      "confidence": null,
+      "dimension_scores": {},
+      "fatal_flags": [
+        "FULL_BOOK_ACCESSIBILITY_REVIEW_NOT_PERFORMED"
+      ],
+      "evidence": []
+    }
+  },
+  "owner_release_approval": {
+    "status": "MISSING",
+    "master_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
+    "approved_by": null,
+    "approved_at": null,
+    "production_release_authorized": false,
+    "evidence": []
+  },
+  "blockers": [
+    "CANDIDATE_CANONICAL_SOURCE_CHECKSUM_MISSING",
+    "DERIVATIVE_AUDIOBOOK_RIGHTS_APPROVAL_MISSING",
+    "VOICE_PROVIDER_PAID_TIER_ENTITLEMENT_MISSING",
+    "FULL_BOOK_HUMAN_LISTENING_QA_MISSING",
+    "FULL_BOOK_ACCESSIBILITY_LISTENING_QA_MISSING",
+    "FULL_BOOK_CANONICAL_ALIGNMENT_QA_FAILED",
+    "FINAL_OWNER_AUDIO_RELEASE_APPROVAL_MISSING"
+  ],
+  "release_truth": {
+    "preview_derivation_allowed": false,
+    "preview_upload_allowed": false,
+    "preview_registration_allowed": false,
+    "production_release_authorized": false,
+    "pr_269_merge_authorized": false
+  },
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/audiobook_master_gate.py --packet internal/audiobook_lab/dracula/pr269_master_release_packet.json --source <approved-checksum-bound-dracula-master.mp3> --slug dracula"
+}

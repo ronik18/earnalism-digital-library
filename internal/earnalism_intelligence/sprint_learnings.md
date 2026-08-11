@@ -2031,3 +2031,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A ledger is not fully canonical if only new metering events have `signed_seconds`. Every compatibility writer, including admin adjustments and migrated wallet rows, must emit the same event shape; health must compare each stored wallet balance with the ledger-derived balance while preserving old rows through `credit - debit` fallback.
 - A local MongoDB replica set with synthetic accounts is sufficient to prove transaction, lease, transfer, exhaustion, and 100-request idempotency invariants without copying production data or provisioning paid staging infrastructure. It does not replace remote private-media, CDN-expiry, provider-payment, or physical-device validation.
 - A valid audio checksum and high automated polish score do not make an audiobook a master. Preview derivation must remain blocked when canonical source binding, derivative/voice rights, full-book human and accessibility listening QA, alignment QA, or explicit owner release approval is absent.
+
+## PR #269 checksum-bound Dracula master gate - 2026-08-12
+
+- A provider voice name does not prove commercial output entitlement. The retained Dracula bundle records `edge-tts` and `en-IN-NeerjaNeural`, but no Azure customer subscription, paid-tier transaction, request ID, or immutable provider output record binds rights to the exact audio checksum.
+- Master approval must be executable, not narrative. Preview generation and registration now require the same packet checksum, exact master SHA-256, canonical source binding, derivative and voice-rights evidence, full-book human and accessibility listening QA, objective alignment, and explicit staging-scoped owner approval.
+- A hold packet is useful release evidence but is not an approval packet. Missing human review or owner approval remains missing even when the audio file is intact and automated QA looks strong.

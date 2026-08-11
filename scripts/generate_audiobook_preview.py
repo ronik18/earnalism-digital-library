@@ -14,6 +14,8 @@ import json
 from pathlib import Path
 import subprocess
 
+from audiobook_master_gate import MasterGateError, validate_master_packet
+
 
 PREVIEW_SECONDS = 180
 
@@ -30,12 +32,21 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--slug", required=True)
     parser.add_argument("--source", type=Path, required=True)
+    parser.add_argument("--master-packet", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--ffmpeg", default="ffmpeg")
     args = parser.parse_args()
 
     if not args.source.is_file():
         parser.error("--source must be an existing approved local audio file")
+    try:
+        master_gate = validate_master_packet(
+            args.master_packet,
+            source_path=args.source,
+            expected_slug=args.slug,
+        )
+    except MasterGateError as exc:
+        parser.error("master packet failed closed: " + ", ".join(exc.blockers))
     args.output_dir.mkdir(parents=True, exist_ok=True)
     output = args.output_dir / f"{args.slug}.preview-180s.mp3"
     command = [
@@ -61,6 +72,8 @@ def main() -> int:
         "book_slug": args.slug,
         "duration_seconds": PREVIEW_SECONDS,
         "source_sha256": sha256_file(args.source),
+        "master_packet_sha256": master_gate["packet_sha256"],
+        "master_approval_status": master_gate["status"],
         "preview_sha256": sha256_file(output),
         "preview_bytes": output.stat().st_size,
         "preview_file": output.name,

@@ -9,12 +9,15 @@ from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+from audiobook_master_gate import MasterGateError, sha256_file, validate_master_packet
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--api-base", required=True)
     parser.add_argument("--admin-token", required=True)
     parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument("--master-packet", type=Path, required=True)
     parser.add_argument("--store", required=True)
     parser.add_argument("--bucket", required=True)
     parser.add_argument("--key", required=True)
@@ -29,6 +32,21 @@ def main() -> int:
     slug = str(manifest.get("book_slug") or "").strip()
     if not slug:
         parser.error("preview manifest is missing book_slug")
+    try:
+        master_gate = validate_master_packet(
+            args.master_packet,
+            expected_slug=slug,
+        )
+    except MasterGateError as exc:
+        parser.error("master packet failed closed: " + ", ".join(exc.blockers))
+    packet_sha256 = sha256_file(args.master_packet.expanduser().resolve())
+    if manifest.get("master_packet_sha256") != packet_sha256:
+        parser.error("preview manifest is not bound to the supplied master packet")
+    if (
+        str(manifest.get("source_sha256") or "").strip().lower()
+        != master_gate["master_sha256"]
+    ):
+        parser.error("preview source checksum does not match the approved master")
     preview_sha = str(manifest.get("preview_sha256") or "").strip().lower()
     payload = {
         "version": args.version or f"sha256-{preview_sha}",

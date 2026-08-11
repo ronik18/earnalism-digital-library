@@ -73,6 +73,7 @@ Public preview assets are separate MP3 files capped at 180 seconds. Generate a l
 python3 scripts/generate_audiobook_preview.py \
   --slug <slug> \
   --source <approved-local-master-or-delivery-file> \
+  --master-packet <checksum-bound-approved-master-packet.json> \
   --output-dir <private-candidate-directory>
 ```
 
@@ -85,9 +86,22 @@ python3 scripts/register_audiobook_preview.py \
   --api-base https://staging-api.example/api \
   --admin-token "$EARNALISM_ADMIN_TOKEN" \
   --manifest <private-candidate-directory>/<slug>.preview-180s.json \
+  --master-packet <checksum-bound-approved-master-packet.json> \
   --store private_audio --bucket <bucket> \
   --key previews/<slug>/<preview_sha256>/<slug>.preview-180s.mp3 \
   --version-id <immutable-object-version>
+```
+
+Both commands fail closed unless the packet binds the exact master checksum to
+source and derivative rights, provider/voice entitlement, canonical alignment,
+full-book human and accessibility listening QA, and an explicit staging-scoped
+owner approval. Validate a packet independently with:
+
+```bash
+python3 scripts/audiobook_master_gate.py \
+  --packet <checksum-bound-approved-master-packet.json> \
+  --source <approved-local-master-or-delivery-file> \
+  --slug <slug>
 ```
 
 Repeat with `--activate` only after reviewing the resolved store, immutable object version ID, object size, SHA-256 metadata, source hash, duration, and distinct content-addressed preview key. The API performs a version-bound storage `HEAD`, rejects full-audio URL reuse, archives the previous active preview, and writes activation plus audit evidence transactionally.
