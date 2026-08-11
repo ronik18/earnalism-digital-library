@@ -3270,8 +3270,12 @@ export default function Reader() {
             onClose={() => navigate('/library')}
             onBuy={() => navigate(`/pricing?next=${encodeURIComponent(getCurrentReaderPath())}`)}
             onSignIn={() => navigate(`/login?next=${encodeURIComponent(getCurrentReaderPath())}`)}
-            onRegister={() => navigate(`/register?next=${encodeURIComponent(getCurrentReaderPath())}`)}
-            onPreview={() => goToCanonicalPage(Math.min(3, canonicalPageIndex))}
+            onRegister={() => navigate(`/signup?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+            onPreview={() => {
+              setLockedState(null);
+              setReadingPassPaywall(null);
+              goToCanonicalPage(Math.min(3, canonicalPageIndex));
+            }}
             onTransfer={() => resumeReadingPass({ transfer: paywall.code === 'SESSION_ACTIVE_ELSEWHERE' })}
           />
         </div>
@@ -3462,7 +3466,7 @@ export default function Reader() {
         onClose={() => setReadingPassPaywall(null)}
         onBuy={() => navigate(`/pricing?next=${encodeURIComponent(getCurrentReaderPath())}`)}
         onSignIn={() => navigate(`/login?next=${encodeURIComponent(getCurrentReaderPath())}`)}
-        onRegister={() => navigate(`/register?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+        onRegister={() => navigate(`/signup?next=${encodeURIComponent(getCurrentReaderPath())}`)}
         onPreview={() => {
           if (readingPassPaywall?.code === 'AUDIO_PREVIEW_ENDED') {
             setReadingPassPaywall(null);

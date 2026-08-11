@@ -50,6 +50,14 @@ describe('Reading Pass responsive access UI', () => {
     expect(readerSource).toContain('resumeReadingPass');
   });
 
+  test('locked reader CTAs return to a real signup route and clear the paywall before reopening preview', () => {
+    expect(readerSource).toContain("navigate(`/signup?next=${encodeURIComponent(getCurrentReaderPath())}`)");
+    expect(readerSource).not.toContain("navigate(`/register?next=${encodeURIComponent(getCurrentReaderPath())}`)");
+    expect(readerSource).toContain('setLockedState(null);');
+    expect(readerSource).toContain('setReadingPassPaywall(null);');
+    expect(readerSource).toContain('goToCanonicalPage(Math.min(3, canonicalPageIndex));');
+  });
+
   test('audiobook preview and protected playback remain separate', () => {
     expect(apiSource).toContain('/preview/manifest');
     expect(apiSource).toContain("content_type: 'audio'");
