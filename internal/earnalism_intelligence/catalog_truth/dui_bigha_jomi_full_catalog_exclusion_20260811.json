@@ -1,0 +1,50 @@
+{
+  "schema_version": "earnalism.catalog-exclusion-evidence.v1",
+  "recorded_at": "2026-08-11T03:45:00Z",
+  "status": "HOSTED_GATE_PASS_OWNER_APPROVED_READY_TO_MERGE",
+  "owner_directive": "Dui Bigha Jomi is totally dropped from the list and must not remain visible in audiobooks.",
+  "slug": "book-2b9853ec52",
+  "title": "Dui Bigha Jomi",
+  "public_contract": {
+    "catalog": "EXCLUDED",
+    "reader": "EXCLUDED",
+    "audiobook": "EXCLUDED",
+    "admin_republication": "BLOCKED_BY_OWNER_EXCLUSION"
+  },
+  "architecture": {
+    "canonical_policy": "data/catalog_exclusions.json",
+    "backend_runtime_mirror": "backend/data/catalog_exclusions.json",
+    "precedence": "EXCLUSION_OVERRIDES_LAUNCH_ALLOWLIST_MANIFEST_CONVEYOR_CURATION_FALLBACK_AND_CACHE",
+    "historical_artifacts_retained": true,
+    "historical_media_retained": true,
+    "destructive_cleanup_performed": false
+  },
+  "stale_sources_reconciled": [
+    "data/controlled_launch.json",
+    "backend/data/controlled_launch.json",
+    "backend/data/home_hero_curation.json",
+    "internal/audiobook_lab/release_gate/claimable_go_live_tranche.json",
+    "frontend/src/data/homeCuratedSprint1.json",
+    "frontend/src/lib/libraryFallbackBooks.js",
+    "frontend/src/lib/shelfTwoBooks.js",
+    "frontend/src/components/ComingSoonBoard.jsx"
+  ],
+  "client_fail_closed_controls": [
+    "Listening Room starts empty until the canonical API responds.",
+    "The listening cache namespace is versioned to invalidate stale installed-app data.",
+    "The bundled Home snapshot contains no excluded title record."
+  ],
+  "validation": {
+    "focused_backend_tests": "PASS_20",
+    "focused_frontend_tests": "PASS_2_SUITES_13_TESTS",
+    "full_frontend_tests": "PASS_40_SUITES_233_TESTS",
+    "home_snapshot_generator_check": "PASS_EXACT_CANONICAL_MATCH",
+    "production_build": "PASS",
+    "production_build_network_note": "SEO generation used checked-in catalog truth because the production API was unreachable from the sandbox.",
+    "production_state_before_change": "API_AND_FRESH_BROWSER_ALREADY_EXCLUDED_TITLE",
+    "focused_failed_regression_recheck": "PASS_3_OF_3_AGAINST_PRODUCTION_API",
+    "hosted_regression_gate": "PASS_RUN_31492159455",
+    "production_deployment": "OWNER_APPROVED_PENDING_GREEN_GATE"
+  },
+  "next_action": "Merge PR 268 and deploy the owner-approved exclusion from the resulting origin/main commit only."
+}

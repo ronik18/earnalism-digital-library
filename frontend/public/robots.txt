@@ -14,7 +14,6 @@ Allow: /reader/bn-066
 Allow: /reader/book-0986aeb7e3
 Allow: /reader/book-0fbdaa730e
 Allow: /reader/book-1090573dff
-Allow: /reader/book-2b9853ec52
 Allow: /reader/book-4968248842
 Allow: /reader/book-4b944e64fa
 Allow: /reader/book-5461971092

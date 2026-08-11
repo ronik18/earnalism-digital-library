@@ -33,7 +33,8 @@ describe("PremiumListeningRail Home contract", () => {
     );
     expect(homeListeningRoom).toContain("<PremiumListeningRail");
     expect(homeListeningRoom).toContain("fetchHomeListening(controller.signal, 3)");
-    expect(homeListeningRoom).toContain("loading={false}");
+    expect(homeListeningRoom).toContain("loading={loading}");
+    expect(homeListeningRoom).not.toContain("getHomeListeningCache");
   });
 
   test("derives audiobook links from the card slug instead of trusting a stale CTA URL", () => {

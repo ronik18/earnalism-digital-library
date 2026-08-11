@@ -1,0 +1,14 @@
+{
+  "schema_version": "earnalism.catalog-exclusions.v1",
+  "updated_at": "2026-08-11T03:45:00Z",
+  "titles": {
+    "book-2b9853ec52": {
+      "public_catalog_excluded": true,
+      "reader_excluded": true,
+      "audio_excluded": true,
+      "reason": "Owner-confirmed full removal from the active Earnalism catalog.",
+      "retain_historical_artifacts": true,
+      "retain_media": true
+    }
+  }
+}

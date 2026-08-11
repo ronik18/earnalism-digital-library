@@ -13,7 +13,7 @@ from backend.home_curation import (
 
 
 ROOT = Path(__file__).resolve().parents[2]
-APPROVED_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story", "sredni-vashtar", "the-open-window"}
+APPROVED_AUDIO_SLUGS = {"a-ghost-story", "sredni-vashtar", "the-open-window"}
 DEFERRED_AUDIO_SLUGS = {"great-expectations", "jane-eyre"}
 
 
@@ -62,7 +62,7 @@ def visual_payload_books(payload):
     return books
 
 
-def test_home_curated_payload_is_deterministic_and_tracks_32_reader_titles():
+def test_home_curated_payload_is_deterministic_and_tracks_current_reader_titles():
     first = build_home_curated_payload()
     second = build_home_curated_payload()
 
@@ -70,14 +70,18 @@ def test_home_curated_payload_is_deterministic_and_tracks_32_reader_titles():
     assert first["source"] == {
         "generated_at": "2026-07-17T08:00:00Z",
         "truth_source": "controlled_publications",
-        "sprint1_active_count": 32,
-        "reader_enabled_count": 32,
-        "approved_audiobook_count": 4,
-        "cover_eligible_count": 16,
-        "hero_carousel_eligible_count": 16,
-        "omitted_visual_count": 16,
+        "sprint1_active_count": 31,
+        "reader_enabled_count": 28,
+        "approved_audiobook_count": 3,
+        "cover_eligible_count": 13,
+        "hero_carousel_eligible_count": 13,
+        "omitted_visual_count": 18,
     }
-    assert first["hero"]["primary_cta"] == {"label": "Start Reading", "url": "/library"}
+    assert first["hero"]["primary_cta"] == {"label": "Browse Library", "url": "/library"}
+    assert first["hero"]["secondary_cta"] == {
+        "label": "Explore Approved Audiobooks",
+        "url": "/library?availability=approved-audiobook",
+    }
     assert first["hero"]["secondary_cta"]["url"] == "/library?availability=approved-audiobook"
     assert len(first["hero"]["carousel_books"]) == first["source"]["hero_carousel_eligible_count"]
     assert all(book["reader_enabled"] is True for book in first["hero"]["carousel_books"])
@@ -91,9 +95,9 @@ def test_featured_books_are_the_exact_admin_pinned_canonical_records():
         "bn-066",
         "radharani",
         "pride-and-prejudice",
-        "nishkriti",
         "muchiram-gurer-jibanchorit",
         "book-d19e96859f",
+        "book-f5d593e1f4",
     ]
 
     for book in featured:
@@ -329,8 +333,8 @@ def test_sprint1_primary_shelf_taxonomy_is_complete_unique_and_counted():
     groups = config["shelf_collage"]["groups"]
     mapped_slugs = [slug for group in groups for slug in group["slugs"]]
 
-    assert len(active_slugs) == 32
-    assert len(mapped_slugs) == len(set(mapped_slugs)) == 32
+    assert len(active_slugs) == 31
+    assert len(mapped_slugs) == len(set(mapped_slugs)) == 31
     assert set(mapped_slugs) == set(active_slugs)
     assert "book-d19e96859f" in groups[0]["slugs"]
     assert groups[0]["featured_slug"] == "book-d19e96859f"
@@ -378,11 +382,7 @@ def test_shelf_collage_rejects_checked_in_runtime_graphical_fallbacks():
         for book in group["books"]
     }
     assert "book-2b9853ec52" not in visible_slugs
-    assert any(
-        item["slug"] == "book-2b9853ec52"
-        and "cover truth" in item["reason"]
-        for item in home_curation_evidence()["omitted"]
-    )
+    assert all(item["slug"] != "book-2b9853ec52" for item in home_curation_evidence()["omitted"])
 
 
 def test_shelf_collage_contains_no_customer_facing_governance_copy():

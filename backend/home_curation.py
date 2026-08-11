@@ -454,9 +454,9 @@ def build_home_curated_payload(
         "hero": {
             "headline": HERO_HEADLINE,
             "subheadline": HERO_SUBHEADLINE,
-            "primary_cta": {"label": "Start Reading", "url": "/library"},
+            "primary_cta": {"label": "Browse Library", "url": "/library"},
             "secondary_cta": {
-                "label": "Explore Audiobooks",
+                "label": "Explore Approved Audiobooks",
                 "url": "/library?availability=approved-audiobook",
             },
             "featured_books": [_public_book(book) for book in featured],
