@@ -197,7 +197,7 @@ The local countdown is visual only. Server renewals replace it with authoritativ
 
 `reading_pass_audit` records session start, lease renew/pause/expiry, transfer, debit, credit, replay suspicion, device revocation, and segment activation without tokens, cookies, protected text, or payment secrets.
 
-`GET /api/admin/reading-pass/health` exposes non-PII active/overdue session counts, negative-wallet invariants, and one-hour audit-event totals for dashboards. Reading Pass routes have their own configurable per-identity rate-limit scope and return `RATE_LIMITED` with `429`.
+`GET /api/admin/reading-pass/health` exposes non-PII active/overdue session counts, negative-wallet invariants, wallet-alias mismatches, immutable-ledger/balance mismatches, and one-hour audit-event totals for dashboards. Ledger reconciliation reads canonical `signed_seconds` and falls back to legacy `credit - debit` rows, so historical compatibility events remain auditable without mutation. Reading Pass routes have their own configurable per-identity rate-limit scope and return `RATE_LIMITED` with `429`.
 
 Operational monitors must alert on:
 

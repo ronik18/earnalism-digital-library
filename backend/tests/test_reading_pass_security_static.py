@@ -37,6 +37,15 @@ def test_service_uses_transactions_unique_idempotency_and_server_time():
     assert 'event_type": "TIME_DEBIT"' in source
 
 
+def test_health_reconciles_canonical_and_legacy_ledger_shapes():
+    source = (ROOT / "backend/server.py").read_text(encoding="utf-8")
+    assert '"ledger_balance_mismatches": ledger_balance_mismatches' in source
+    assert '"$signed_seconds"' in source
+    assert '"$credit"' in source
+    assert '"$debit"' in source
+    assert '"$arrayElemAt": ["$ledger_summary.balance", 0]' in source
+
+
 def test_service_worker_does_not_cache_reading_pass_or_protected_audio():
     source = (ROOT / 'frontend' / 'public' / 'service-worker.js').read_text(encoding='utf-8')
     assert '/api/reading-pass/' in source

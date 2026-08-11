@@ -3585,6 +3585,14 @@ async def _record_wallet_ledger(
 ) -> dict:
     seconds = int(seconds_delta)
     tx_type = "credit" if seconds >= 0 else ("debit" if action == "admin_adjustment" else "consume")
+    if action == "admin_adjustment":
+        event_type = "ADMIN_ADJUSTMENT"
+    elif action in {"refund_adjustment", "refund"}:
+        event_type = "REFUND_ADJUSTMENT"
+    elif seconds < 0 or action in {"reading_debit", "time_debit"}:
+        event_type = "TIME_DEBIT"
+    else:
+        event_type = "PASS_CREDIT"
     tx = {
         "id": source_transaction_id or str(uuid.uuid4()),
         "user_id": user_id,
@@ -3609,13 +3617,17 @@ async def _record_wallet_ledger(
         "user_id": user_id,
         "session_id": session_id,
         "action": action,
+        "event_type": event_type,
+        "signed_seconds": seconds,
         "debit": max(0, -seconds),
         "credit": max(0, seconds),
         "timestamp": now_iso(),
         "reason": reason,
         "actor": actor,
+        "creating_service": "earnalism-api",
         "balance_after": int(balance_after or 0),
         "source_transaction_id": tx["id"],
+        "idempotency_key": f"wallet:{tx['id']}",
     }
     if extra:
         ledger["metadata"] = {k: str(v)[:240] for k, v in extra.items()}
@@ -3641,6 +3653,15 @@ async def _migrate_wallet_transactions_to_ledger() -> None:
         if not user_id:
             continue
         seconds = int(tx.get("seconds", 0) or 0)
+        action = str(tx.get("type") or "wallet_adjustment")
+        if action == "admin_adjustment":
+            event_type = "ADMIN_ADJUSTMENT"
+        elif action in {"refund_adjustment", "refund"}:
+            event_type = "REFUND_ADJUSTMENT"
+        elif seconds < 0 or action in {"reading_debit", "time_debit", "consume"}:
+            event_type = "TIME_DEBIT"
+        else:
+            event_type = "PASS_CREDIT"
         running[user_id] = running.get(user_id, 0) + seconds
         await db.wallet_ledger.update_one(
             {"source_transaction_id": tx_id},
@@ -3649,14 +3670,18 @@ async def _migrate_wallet_transactions_to_ledger() -> None:
                     "id": str(uuid.uuid4()),
                     "user_id": user_id,
                     "session_id": tx.get("session_id", ""),
-                    "action": tx.get("type", "wallet_adjustment"),
+                    "action": action,
+                    "event_type": event_type,
+                    "signed_seconds": seconds,
                     "debit": max(0, -seconds),
                     "credit": max(0, seconds),
                     "timestamp": tx.get("created_at", now_iso()),
                     "reason": tx.get("reason", ""),
                     "actor": tx.get("actor", "system"),
+                    "creating_service": "earnalism-api",
                     "balance_after": running[user_id],
                     "source_transaction_id": tx_id,
+                    "idempotency_key": f"wallet:{tx_id}",
                     "migrated": True,
                 }
             },
@@ -9091,19 +9116,65 @@ async def admin_reading_pass_health(admin=Depends(require_admin)):
             {"$sort": {"count": -1}},
         ]
     ).to_list(100)
+    ledger_mismatch_rows = await db.users.aggregate(
+        [
+            {"$match": {"role": "user"}},
+            {
+                "$lookup": {
+                    "from": "wallet_ledger",
+                    "let": {"health_user_id": "$id"},
+                    "pipeline": [
+                        {"$match": {"$expr": {"$eq": ["$user_id", "$$health_user_id"]}}},
+                        {
+                            "$group": {
+                                "_id": None,
+                                "balance": {
+                                    "$sum": {
+                                        "$ifNull": [
+                                            "$signed_seconds",
+                                            {
+                                                "$subtract": [
+                                                    {"$ifNull": ["$credit", 0]},
+                                                    {"$ifNull": ["$debit", 0]},
+                                                ]
+                                            },
+                                        ]
+                                    }
+                                },
+                            }
+                        },
+                    ],
+                    "as": "ledger_summary",
+                }
+            },
+            {
+                "$project": {
+                    "wallet_balance": {"$ifNull": ["$reading_seconds_balance", 0]},
+                    "ledger_balance": {
+                        "$ifNull": [{"$arrayElemAt": ["$ledger_summary.balance", 0]}, 0]
+                    },
+                }
+            },
+            {"$match": {"$expr": {"$ne": ["$wallet_balance", "$ledger_balance"]}}},
+            {"$count": "count"},
+        ]
+    ).to_list(1)
+    ledger_balance_mismatches = int((ledger_mismatch_rows[0] if ledger_mismatch_rows else {}).get("count", 0))
     events = {str(row.get("_id") or "unknown"): int(row.get("count", 0)) for row in event_rows}
     healthy = (
         overdue_sessions == 0
         and negative_wallets == 0
         and wallet_alias_mismatches == 0
+        and ledger_balance_mismatches == 0
         and open_integrity_alerts == 0
     )
     if not healthy:
         logger.error(
-            "reading_pass_invariant_violation overdue_sessions=%s negative_wallets=%s alias_mismatches=%s open_integrity_alerts=%s",
+            "reading_pass_invariant_violation overdue_sessions=%s negative_wallets=%s alias_mismatches=%s ledger_mismatches=%s open_integrity_alerts=%s",
             overdue_sessions,
             negative_wallets,
             wallet_alias_mismatches,
+            ledger_balance_mismatches,
             open_integrity_alerts,
         )
     return {
@@ -9115,11 +9186,13 @@ async def admin_reading_pass_health(admin=Depends(require_admin)):
         "overdue_active_sessions": overdue_sessions,
         "negative_wallets": negative_wallets,
         "wallet_alias_mismatches": wallet_alias_mismatches,
+        "ledger_balance_mismatches": ledger_balance_mismatches,
         "open_wallet_integrity_alerts": open_integrity_alerts,
         "events": events,
         "alert_on": [
             "negative_wallets",
             "wallet_alias_mismatches",
+            "ledger_balance_mismatches",
             "open_wallet_integrity_alerts",
             "overdue_active_sessions",
             "suspected_replay",

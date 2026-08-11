@@ -160,3 +160,4 @@
 - On narrow screens, centering the compact timer above the bottom reader controls preserves both thumb reach and unobstructed text. Desktop placement can remain fixed at the upper right.
 - The audiobook preview boundary needs an explicit “Continue audiobook” action. Reusing a generic purchase CTA when a member already has balance makes the access model look inaccurate.
 - Required viewport harnesses passed at 320, 360, 390, 768, 1024, and 1440 px, mobile landscape, and a 200% desktop-zoom equivalent with zero horizontal overflow and 44 px minimum controls.
+- Isolated staging should fail on ledger-derived balance drift even when the wallet compatibility aliases agree. A healthy timer and paywall are not sufficient evidence if admin adjustments and metered debits cannot reconcile to one immutable balance.
