@@ -23,6 +23,7 @@
     "data/controlled_launch.json",
     "backend/data/controlled_launch.json",
     "backend/data/home_hero_curation.json",
+    "internal/audiobook_lab/release_gate/claimable_go_live_tranche.json",
     "frontend/src/data/homeCuratedSprint1.json",
     "frontend/src/lib/libraryFallbackBooks.js",
     "frontend/src/lib/shelfTwoBooks.js",
@@ -41,7 +42,9 @@
     "production_build": "PASS",
     "production_build_network_note": "SEO generation used checked-in catalog truth because the production API was unreachable from the sandbox.",
     "production_state_before_change": "API_AND_FRESH_BROWSER_ALREADY_EXCLUDED_TITLE",
-    "production_deployment": "NOT_AUTHORIZED_FOR_THIS_CHANGE"
+    "focused_failed_regression_recheck": "PASS_3_OF_3_AGAINST_PRODUCTION_API",
+    "hosted_regression_gate": "REPAIR_PENDING_AFTER_STALE_ACTIVE_AUDIO_CLAIM",
+    "production_deployment": "OWNER_APPROVED_PENDING_GREEN_GATE"
   },
-  "next_action": "Open one focused draft PR and await explicit owner approval before merge or deployment."
+  "next_action": "Rerun the focused and hosted regression gates, then merge and deploy the owner-approved exclusion from origin/main only."
 }

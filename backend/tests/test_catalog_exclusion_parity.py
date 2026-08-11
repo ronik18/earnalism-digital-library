@@ -82,3 +82,9 @@ def test_home_api_and_bundled_client_surfaces_exclude_dropped_title():
     assert contains_slug(read_json("frontend/src/data/homeCuratedSprint1.json")) is False
     for relative_path in ACTIVE_FRONTEND_PATHS[1:]:
         assert DROPPED_SLUG not in (ROOT / relative_path).read_text(encoding="utf-8")
+
+
+def test_active_audio_release_tranche_does_not_claim_excluded_title():
+    tranche = read_json("internal/audiobook_lab/release_gate/claimable_go_live_tranche.json")
+
+    assert DROPPED_SLUG not in tranche["approved_public_audio_slugs"]
