@@ -1,0 +1,21 @@
+{
+  "schema_version": "earnalism.audiobook_accessibility_exception.v1",
+  "title_slug": "dracula",
+  "candidate_fingerprint": "91f872c6dfff5871e6e0fed2f0095386d7bf37e4922cb1c273215d84c9e23f35",
+  "audio_sha256": "123d9cb1759887786d4e48d5322d327dc822ee0265ae2824cce989681ab9efab",
+  "owner_name": "Ronik Basak",
+  "owner_role": "Earnalism owner and product owner",
+  "decision": "OWNER_ACCEPTED_RESIDUAL_RISK",
+  "accepted_residual_risk": true,
+  "reason": "VoiceOver and TalkBack physical-device validation is deferred because the owner currently has no compatible device. Neither check may be represented as passed.",
+  "confidence": 0.92,
+  "voiceover_status": "NOT_TESTED",
+  "talkback_status": "NOT_TESTED",
+  "waived_checks": [
+    "voiceover_physical_device",
+    "talkback_physical_device"
+  ],
+  "other_release_gates_waived": false,
+  "recorded_at": "2026-08-13T11:47:29Z",
+  "exception_sha256": "fb5ace6997120128f4b173afb5af12075e8ed768c79243a417e932f179245c74"
+}

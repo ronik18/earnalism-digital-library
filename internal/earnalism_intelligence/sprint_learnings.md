@@ -2037,3 +2037,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A provider voice name does not prove commercial output entitlement. The retained Dracula bundle records `edge-tts` and `en-IN-NeerjaNeural`, but no Azure customer subscription, paid-tier transaction, request ID, or immutable provider output record binds rights to the exact audio checksum.
 - Master approval must be executable, not narrative. Preview generation and registration now require the same packet checksum, exact master SHA-256, canonical source binding, derivative and voice-rights evidence, full-book human and accessibility listening QA, objective alignment, and explicit staging-scoped owner approval.
 - A hold packet is useful release evidence but is not an approval packet. Missing human review or owner approval remains missing even when the audio file is intact and automated QA looks strong.
+
+## Checksum-bound accessibility exception - 2026-08-13
+
+- A physical-device accessibility exception must preserve `NOT_TESTED`; owner acceptance cannot be relabeled as a test pass.
+- Bind the exception to the exact audiobook attempt fingerprint, audio SHA-256, listening confidence, owner identity, timestamp, and a deterministic exception checksum so it cannot drift to another candidate.
+- Limit the exception to VoiceOver and TalkBack physical-device checks. Keyboard controls, chapter navigation, pause/resume recovery, rights, objective/audio QA, listening, storage, endpoint, browser, Git, and deployment gates remain fail-closed.

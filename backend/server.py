@@ -5952,8 +5952,11 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
     audio_key = _validate_private_audiobook_object_key(slug, payload.audio_object_key, ".mp3")
     audio_sha256 = _release_sha256(payload.audio_sha256)
     manuscript_sha256 = _release_sha256(payload.manuscript_sha256)
+    attempt_fingerprint = _release_sha256(payload.attempt_fingerprint)
     if not _SHA256_RE.fullmatch(audio_sha256) or not _SHA256_RE.fullmatch(manuscript_sha256):
         raise HTTPException(status_code=422, detail="Audio and manuscript checksums must be SHA-256 digests")
+    if attempt_fingerprint and not _SHA256_RE.fullmatch(attempt_fingerprint):
+        raise HTTPException(status_code=422, detail="attempt_fingerprint must be a SHA-256 digest")
     if not payload.owner_public_release_intent:
         raise HTTPException(status_code=409, detail="Explicit public release intent is required")
 
@@ -5992,7 +5995,12 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
         raise HTTPException(status_code=409, detail="Audio manuscript checksum does not match the approved book record")
 
     qa_summary = _audiobook_release_qa_summary(payload.qa)
-    qa_blockers = _audiobook_release_qa_blockers(qa_summary)
+    qa_blockers = _audiobook_release_qa_blockers(
+        qa_summary,
+        title_slug=slug,
+        audio_sha256=audio_sha256,
+        attempt_fingerprint=attempt_fingerprint,
+    )
     if qa_blockers:
         raise HTTPException(status_code=422, detail={"message": "Audiobook QA is not release-ready.", "issues": qa_blockers})
 
@@ -6053,6 +6061,7 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
         "provider": payload.provider.strip().lower(),
         "model": payload.model.strip(),
         "voice": payload.voice.strip(),
+        "attempt_fingerprint": attempt_fingerprint,
         "qa": qa_summary,
         "storage": {"store": storage["name"], "bucket": storage["bucket"], "key": audio_key, "version_id": str(head.get("VersionId") or "")},
         "activated_at": now_iso(),

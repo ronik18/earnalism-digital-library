@@ -319,6 +319,7 @@ class AudiobookReleaseIn(BaseModel):
     provider: str = Field(min_length=1, max_length=80)
     model: str = Field(min_length=1, max_length=160)
     voice: str = Field(min_length=1, max_length=120)
+    attempt_fingerprint: str = Field(default="", max_length=71)
     qa: Dict[str, Any] = Field(default_factory=dict)
     owner_public_release_intent: bool = False
     release_request_id: str = Field(default="", max_length=160)

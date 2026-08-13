@@ -14,6 +14,8 @@ The evidence ZIP is no longer a required transport artifact. The release receipt
 
 - Permanent B2 credentials never enter Colab or the browser.
 - Public activation is fail-closed when any checksum, rights, reader, QA, or storage check is incomplete.
+- VoiceOver and TalkBack physical-device checks may remain truthfully `NOT_TESTED` only under the narrow accessibility exception in `audiobook_acceptance_policy.json`. The exception must identify the owner, accept the residual risk, match the release attempt fingerprint and audio SHA-256, carry its own valid checksum, and set `other_release_gates_waived` to `false`.
+- Keyboard controls, chapter navigation, pause/resume recovery, every objective and human-listening threshold, rights, storage, endpoint, browser, Git, and deployment gate remain mandatory; the accessibility exception cannot convert them to a pass or waive them.
 - The same receipt is safe to retry; a different receipt cannot silently replace an active title.
 - Paragraph synchronization is not a release requirement for the audio-only lane. The reader/audio lanes remain independent.
 - The release record is written with an audit event and the public URL remains the gated reader proxy, never the raw B2 URL.
