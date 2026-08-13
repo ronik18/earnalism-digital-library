@@ -6,7 +6,7 @@ Run self-healing only with an explicitly selected local adapter:
 python3 scripts/produce_release.py \
   --manifest /path/to/title-manifest.json \
   --reader-approval /path/to/reader-approval.json \
-  --audio-profile-approval /path/to/audio-profile-approval.json \
+  --audio-samples-approval /path/to/audio-samples-approval.json \
   --repair-adapter /path/to/repair_adapter.py \
   --self-heal --max-repair-attempts 3
 ```

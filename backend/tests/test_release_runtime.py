@@ -8,7 +8,10 @@ import pytest
 
 from backend.audiobook_generation.provider_adapter import ProviderResult
 from scripts.release_runtime import (
+    HttpProductionPromoter,
+    PROMOTION_REQUIRED_AUTOMATED_CHECKS,
     RuntimeBlocked,
+    audio_sample_set_sha256,
     generate_segments,
     promote,
     stage_local,
@@ -48,29 +51,58 @@ class FakeProvider:
 
 
 def manifest():
-    return {
+    audio = {
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "style",
+        "voice_source_type": "STYLE_PROFILE",
+        "consent_status": "NOT_APPLICABLE_STYLE_PROFILE",
+        "review_samples": [
+            {
+                "id": f"sample-{index}",
+                "sha256": f"{index:064x}",
+                "source_sha256": f"{index + 10:064x}",
+            }
+            for index in range(1, 7)
+        ],
+    }
+    value = {
         "slug": "pilot",
         "manifest_version": "1",
         "language": "en",
+        "manuscript": {"sha256": "a" * 64},
+        "reader": {"preview_sha256": "b" * 64},
         "rights": {
             "commercial_use": "APPROVED",
             "territories": ["IN"],
             "audio_derivative_rights_status": "APPROVED",
         },
-        "audio": {
-            "provider": "sarvam",
-            "model": "bulbul:v3",
-            "voice": "style",
-            "profile_sha256": "profile",
-            "voice_source_type": "STYLE_PROFILE",
-            "consent_status": "NOT_APPLICABLE_STYLE_PROFILE",
-        },
-        "audio_profile_approval": {
+        "audio": audio,
+        "audio_samples_approval": {
             "status": "APPROVED",
-            "provider": "sarvam",
+            "approval_type": "AUDIO_SAMPLE_SET",
+            "render_surface": "CONVERSATION",
+            "listened_all_samples": True,
+            "every_fatal_flag_false": True,
+            "owner_public_release_intent": True,
+            "slug": "pilot",
+            "approved_by": "Test Reviewer",
+            "approved_at": "2026-08-13T12:01:00Z",
             "model": "bulbul:v3",
             "voice": "style",
-            "profile_sha256": "profile",
+            "sample_count": 6,
+            "sample_set_sha256": audio_sample_set_sha256(audio),
+            "overall_score": 9.0,
+            "confidence": 0.92,
+            "dimension_scores": {
+                "naturalness": 9.0,
+                "pronunciation": 9.0,
+                "expression": 9.0,
+                "punctuation_pauses": 9.0,
+                "pacing": 9.0,
+                "silence_clipping": 9.0,
+                "glitches": 9.0,
+            },
         },
         "segments": [
             {
@@ -81,6 +113,7 @@ def manifest():
             }
         ],
     }
+    return value
 
 
 def test_paid_generation_is_blocked_without_runtime_authorization(
@@ -157,7 +190,7 @@ def test_local_staging_is_checksum_bound_and_idempotent(tmp_path, monkeypatch):
 
 
 def test_promotion_fails_closed_before_network_without_all_passes(tmp_path):
-    with pytest.raises(RuntimeBlocked, match="existing release evaluator"):
+    with pytest.raises(RuntimeBlocked, match="release evaluator"):
         promote(
             manifest(), {"passed": True, "release_eligible": False, "release_id": "x"}
         )
@@ -167,22 +200,21 @@ def test_promotion_uses_explicit_live_and_audio_gate_evidence():
     value = manifest()
     value.update(
         {
-            "release_status": "LIVE",
+            "release_status": "READY_FOR_GO_LIVE",
             "audio_release_gate_status": "PASS",
-            "reader_approval": {"status": "APPROVED"},
+            "reader_approval": {
+                "status": "APPROVED",
+                "approval_type": "READER_PREVIEW",
+                "render_surface": "CONVERSATION",
+                "preview_reviewed": True,
+                "slug": "pilot",
+                "approved_by": "Test Reviewer",
+                "approved_at": "2026-08-13T12:00:00Z",
+                "manuscript_sha256": "a" * 64,
+                "preview_sha256": "b" * 64,
+            },
             "automated_checks": {
-                name: {"status": "PASS"}
-                for name in (
-                    "rights",
-                    "manuscript",
-                    "reader_artifacts",
-                    "audio_artifacts",
-                    "synchronization",
-                    "checksums",
-                    "staging",
-                    "browser",
-                    "production",
-                )
+                name: {"status": "PASS"} for name in PROMOTION_REQUIRED_AUTOMATED_CHECKS
             },
         }
     )
@@ -200,3 +232,63 @@ def test_promotion_uses_explicit_live_and_audio_gate_evidence():
         promoter=FakePromoter(),
     )
     assert result["status"] == "PROMOTED"
+
+
+def test_http_promoter_requires_every_post_deploy_check(monkeypatch):
+    monkeypatch.setenv("EARNALISM_ENABLE_PRODUCTION_PROMOTION", "true")
+    monkeypatch.setenv("EARNALISM_PRODUCTION_PROMOTION_APPROVED", "true")
+    monkeypatch.setenv(
+        "EARNALISM_PRODUCTION_PROMOTION_ENDPOINT", "https://example.test/promote"
+    )
+    monkeypatch.setenv("EARNALISM_PRODUCTION_PROMOTION_TOKEN", "redacted-test-token")
+    post_deploy_checks = {
+        "public_book_api": "PASS",
+        "publication_status": "PASS",
+        "audio_endpoint": "PASS",
+        "byte_range": "PASS",
+        "browser_playback": "PASS",
+        "cache_control": "PASS",
+    }
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def read(self):
+            return json.dumps(
+                {
+                    "status": "PROMOTED",
+                    "slug": "pilot",
+                    "post_deploy_checks": post_deploy_checks,
+                }
+            ).encode()
+
+    monkeypatch.setattr(
+        "scripts.release_runtime.urllib.request.urlopen",
+        lambda *_args, **_kwargs: Response(),
+    )
+
+    with pytest.raises(RuntimeBlocked, match="no_stale_audio_url"):
+        HttpProductionPromoter().promote(
+            {
+                "slug": "pilot",
+                "promotion_key": "promotion-key",
+            },
+            execute=True,
+        )
+
+    post_deploy_checks.update(
+        {
+            "mobile_reader_journey": "PASS",
+            "mobile_audio_playback": "PASS",
+            "resume_recovery": "PASS",
+            "no_stale_audio_url": "PASS",
+        }
+    )
+    result = HttpProductionPromoter().promote(
+        {"slug": "pilot", "promotion_key": "promotion-key"}, execute=True
+    )
+    assert result["status"] == "LIVE"

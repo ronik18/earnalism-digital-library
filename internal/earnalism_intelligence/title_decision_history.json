@@ -2810,6 +2810,24 @@
       "public_release_mutated": false,
       "notebook": "colab/Earnalism_Audiobook_Pipeline.ipynb",
       "next_action": "Run the representative gate in Colab, continue resumably only on pass, obtain approved full-title listening evidence, then complete immutable packaging, storage, endpoint, browser, and public-release verification."
+    },
+    "platform-two-human-gate-release-pipeline": {
+      "latest_decision": "TWO_CONVERSATION_HUMAN_GATES_AUTOMATED_RELEASE_CONTINUATION_IMPLEMENTED",
+      "decision_reason": "The owner approved simplifying each title release to two checksum-bound conversation reviews: one rendered reader preview and one set of six or seven playable audio samples. The second approval also records explicit public-release intent. Every machine-verifiable rights, content, reader, audio, storage, CI, staging, endpoint, cache, browser, and production postcheck remains fail-closed and continues automatically without another per-title human prompt.",
+      "updated_at": "2026-08-13T12:06:44Z",
+      "human_gate_count": 2,
+      "reader_preview_render_surface": "CONVERSATION",
+      "audio_sample_count_min": 6,
+      "audio_sample_count_max": 7,
+      "audio_sample_render_surface": "CONVERSATION",
+      "listening_dimension_min": 8.9,
+      "confidence_min": 0.9,
+      "fatal_flags_required_false": true,
+      "production_operational_kill_switch_preserved": true,
+      "machine_release_gates_waived": false,
+      "public_release_mutated": false,
+      "evidence": "internal/earnalism_intelligence/audiobook_release_conveyor_v2.md",
+      "next_action": "Exercise the focused-test-passed implementation on a checksum-complete private title candidate; permit LIVE only after the production endpoint returns every required post-deploy PASS."
     }
   },
   "bengali_audio_lane_status": "D19_INDIC_PARLER_OBJECTIVE_FAIL_SOURCE_BOUND_REPLACEMENT_REQUIRED",

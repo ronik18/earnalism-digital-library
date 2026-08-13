@@ -2043,3 +2043,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A physical-device accessibility exception must preserve `NOT_TESTED`; owner acceptance cannot be relabeled as a test pass.
 - Bind the exception to the exact audiobook attempt fingerprint, audio SHA-256, listening confidence, owner identity, timestamp, and a deterministic exception checksum so it cannot drift to another candidate.
 - Limit the exception to VoiceOver and TalkBack physical-device checks. Keyboard controls, chapter navigation, pause/resume recovery, rights, objective/audio QA, listening, storage, endpoint, browser, Git, and deployment gates remain fail-closed.
+
+## Two conversation approvals with automatic continuation - 2026-08-13
+
+- Bind reader approval to the sanitized manuscript and rendered preview; bind narration approval to six or seven exact sample/source checksums, model, voice, quality scores, confidence, fatal flags, and public-release intent.
+- Repeated subjective prompts after those checksum-bound decisions add delay. Continue automatically through the remaining machine-verifiable gates.
+- Automatic continuation is not automatic success: rights, structure, full-title fidelity, technical audio, storage, CI, browser, production, and post-deployment evidence remain fail-closed.
+- Preserve the distinction between `READY_FOR_GO_LIVE` and `LIVE`; post-deployment API, range, playback, cache-control, and stale-URL checks establish live truth.
