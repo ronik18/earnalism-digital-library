@@ -9,7 +9,8 @@ import ReaderAudiobookPanel from '../components/ReaderAudiobookPanel';
 import SecureReader from '../components/SecureReader';
 import { trackFunnelEvent } from '../lib/funnelAnalytics';
 import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/funnelOffers';
-import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG, normalizeChapterDisplayTitle } from '../lib/controlledLaunch';
+import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG } from '../lib/controlledLaunch';
+import { chapterIndexEntry, normalizeChapterDisplayTitle, sortedChapterIndex } from '../lib/chapterIndex';
 import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
 import { resolveBookCover } from '../lib/bookCoverResolver';
@@ -17,6 +18,7 @@ import useSEO from '../hooks/useSEO';
 import { audiobookNarrationDisclosure, audiobookReleaseState, canExposeAudiobookControls, isReaderAudiobookManifestPath, readerManifestPath } from '../lib/audioReleaseSafety';
 import { audioTimestampStartMs, normalizeAudioTimestamp } from '../lib/audioTimestampSchema';
 import {
+  audioSegmentAtMediaPosition,
   chapterIdForAudioSegment,
   normalizeAudioManifest,
   selectAudioTrack,
@@ -33,6 +35,21 @@ import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from
 import { readerBookMatchesRoute, readerRouteForBook } from '../lib/readerNavigation';
 import { readerSwipeDirection } from '../lib/readerSwipe';
 import { normalizeReaderContentHtml } from '../lib/readerContent';
+import ReadingPassTimer from '../components/ReadingPass/ReadingPassTimer';
+import ReadingPassPaywall from '../components/ReadingPass/ReadingPassPaywall';
+import {
+  endReadingPassSession,
+  getReadingPassAudioPreview,
+  getReadingPassManifest,
+  getReadingPassPage,
+  getReadingPassPosition,
+  readingPassError,
+  renewReadingPassLease,
+  saveReadingPassAudioPosition,
+  saveReadingPassPosition,
+  startReadingPassAudioSession,
+  startReadingPassSession,
+} from '../lib/readingPassApi';
 import './ReaderRoute.css';
 
 const THEMES = {
@@ -788,12 +805,13 @@ async function fetchReaderBook(bookId, requestedAdminPreview = false) {
   }
 }
 
-function readerSearchParams({ chapterId, adminPreview, listeningMode } = {}) {
+function readerSearchParams({ chapterId, canonicalPageIndex, adminPreview, listeningMode } = {}) {
   const params = new URLSearchParams();
   const preserveListeningMode = typeof listeningMode === 'boolean'
     ? listeningMode
     : typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('listen') === '1';
   if (chapterId) params.set('c', chapterId);
+  if (canonicalPageIndex) params.set('p', String(canonicalPageIndex));
   if (adminPreview) params.set('preview', 'admin');
   if (preserveListeningMode) params.set('listen', '1');
   const query = params.toString();
@@ -851,14 +869,14 @@ function prefetchAudioMetadata(url) {
 }
 
 function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', adminPreview = false, onChapterSelect }) {
-  const sortedChapters = [...chapters].sort((a, b) => (a.order || 0) - (b.order || 0));
+  const sortedChapters = sortedChapterIndex(chapters);
 
   return (
     <nav className="reader-index-page" aria-label="Book chapter index">
       <div className="reader-index-page__eyebrow">Contents</div>
       <h2>Jump to a chapter</h2>
       <ol>
-        {sortedChapters.map((item, index) => {
+        {sortedChapters.map((item) => {
           const isCurrent = item.id === currentChapterId;
           const href = `/reader/${bookId}${readerSearchParams({ chapterId: item.id, adminPreview })}`;
           return (
@@ -871,8 +889,13 @@ function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '',
                   onChapterSelect?.(item.id);
                 }}
               >
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <strong>{normalizeChapterDisplayTitle(item.title)}</strong>
+                <span className="reader-index-page__sequence" aria-hidden="true">{item.index_sequence_label}</span>
+                <span className="reader-index-page__copy">
+                  {item.index_secondary_label && (
+                    <small>{item.index_secondary_label}</small>
+                  )}
+                  <strong lang={containsBengaliText(item.index_title) ? 'bn' : undefined}>{item.index_title}</strong>
+                </span>
               </a>
             </li>
           );
@@ -887,7 +910,10 @@ export default function Reader() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const bookId = slug;
-  const chapterId = new URLSearchParams(window.location.search).get('c');
+  const readerUrlSearch = new URLSearchParams(window.location.search);
+  const chapterId = readerUrlSearch.get('c');
+  const explicitCanonicalPage = readerUrlSearch.has('p');
+  const requestedCanonicalPageIndex = Math.max(1, Number(readerUrlSearch.get('p')) || 1);
 
   const [book, setBook] = useState(null);
   const [chapter, setChapter] = useState(null);
@@ -898,6 +924,26 @@ export default function Reader() {
   const [error, setError] = useState(null);
   const [notFound, setNotFound] = useState(false);
   const [lockedState, setLockedState] = useState(null);
+  const [readingPassMode, setReadingPassMode] = useState(false);
+  const [readingPassManifest, setReadingPassManifest] = useState(null);
+  const [canonicalPageIndex, setCanonicalPageIndex] = useState(requestedCanonicalPageIndex);
+  const [readingPassLease, setReadingPassLease] = useState(null);
+  const readingPassLeaseRef = useRef(null);
+  const [readingPassStatus, setReadingPassStatus] = useState('Preview');
+  const [readingPassPaywall, setReadingPassPaywall] = useState(null);
+  const [readingPassAnnouncement, setReadingPassAnnouncement] = useState('');
+  const [readingPassAudioPreview, setReadingPassAudioPreview] = useState(null);
+  const [readingPassAudioPhase, setReadingPassAudioPhase] = useState('idle');
+  const [readingPassAudioAccessVersion, setReadingPassAudioAccessVersion] = useState(0);
+  const readingPassSequenceRef = useRef(0);
+  const readingPassPositionVersionRef = useRef(0);
+  const readingPassLatestTextPositionRef = useRef({ pageIndex: requestedCanonicalPageIndex, chapterId: '' });
+  const readingPassAudioPositionVersionRef = useRef(0);
+  const readingPassPendingAudioPositionRef = useRef(null);
+  const readingPassAudioPositionSavedAtRef = useRef(0);
+  const readingPassPreviousBalanceRef = useRef(null);
+  const readingPassAudioSyncRef = useRef(Promise.resolve());
+  const readingPassAudioPositionSyncRef = useRef(Promise.resolve());
 
   const initialReaderSettingsRef = useRef(null);
   if (initialReaderSettingsRef.current === null) {
@@ -958,6 +1004,7 @@ export default function Reader() {
 
   const contentRef = useRef(null);
   const generatedAudioRef = useRef(null);
+  const audioPlaybackStateRef = useRef('paused');
   const generatedTimestampsRef = useRef([]);
   const generatedAudioWordOffsetRef = useRef(0);
   const generatedPageEndRef = useRef(null);
@@ -1021,6 +1068,7 @@ export default function Reader() {
     resumeAfterSegmentChangeRef.current = false;
     pendingCrossChapterAudioResumeRef.current = null;
     if (audio) {
+      audioPlaybackStateRef.current = 'paused';
       audio.pause();
       audio.currentTime = 0;
       audio.removeAttribute('src');
@@ -1127,6 +1175,51 @@ export default function Reader() {
       generatedHighlightRafRef.current = 0;
     }
   }, []);
+
+  const storeReadingPassLease = useCallback((value) => {
+    if (!value?.session_id || !value?.lease_token) return null;
+    const lease = {
+      sessionId: value.session_id,
+      token: value.lease_token,
+      version: Number(value.lease_version) || 1,
+      expiresAt: value.lease_expires_at || '',
+      contentType: value.content_type || readingPassLeaseRef.current?.contentType || 'text',
+      contentId: value.content_id || readingPassLeaseRef.current?.contentId || bookId,
+    };
+    readingPassLeaseRef.current = lease;
+    setReadingPassLease(lease);
+    setWalletSeconds(Math.max(0, Number(value.balance_seconds) || 0));
+    setReadingPassStatus(value.status || 'Running');
+    return lease;
+  }, [bookId]);
+
+  const syncReadingPassAudioState = useCallback((playbackState) => {
+    audioPlaybackStateRef.current = playbackState;
+    readingPassAudioSyncRef.current = readingPassAudioSyncRef.current
+      .catch(() => {})
+      .then(async () => {
+        const lease = readingPassLeaseRef.current;
+        if (!readingPassMode || readingPassAudioPhase !== 'protected' || lease?.contentType !== 'audio') return null;
+        const sequence = readingPassSequenceRef.current + 1;
+        readingPassSequenceRef.current = sequence;
+        const renewed = await renewReadingPassLease({
+          lease,
+          sequence,
+          active: playbackState === 'playing',
+          playbackState,
+        });
+        storeReadingPassLease(renewed);
+        return renewed;
+      })
+      .catch((error) => {
+        const passError = readingPassError(error);
+        generatedAudioRef.current?.pause?.();
+        setReadingPassPaywall(passError);
+        setReadingPassStatus('Connecting');
+        return null;
+      });
+    return readingPassAudioSyncRef.current;
+  }, [readingPassAudioPhase, readingPassMode, storeReadingPassLease]);
 
   const sendPulse = useCallback(async () => {
     if (!sessionId || !meteredSessionActive) return;
@@ -1258,6 +1351,7 @@ export default function Reader() {
       setNotFound(false);
       setLockedState(null);
       setMeteredSessionActive(false);
+      setReadingPassPaywall(null);
 
       try {
         const manifestStartedAt = readerNowMs();
@@ -1277,12 +1371,18 @@ export default function Reader() {
         const manifestAccess = bookRes.data?._readerManifest?.access || bookRes.readerManifest?.access || {};
         const loadedChapters = [...(bookRes.data?.chapters || [])].sort((a, b) => (a.order || 0) - (b.order || 0));
         const activeChapterId = chapterId || loadedChapters[0]?.id;
+        const useReadingPass = Boolean(
+          manifestAccess?.reading_pass?.enabled
+          && manifestAccess?.reading_pass?.segments_ready
+          && !isAdminPreview
+        );
 
         setBook(bookRes.data);
         setChapters(loadedChapters);
         setAdminPreview(isAdminPreview);
         setTopUpPacks(packsRes.data || []);
         setActiveChapterId(activeChapterId || null);
+        setReadingPassMode(useReadingPass);
 
         if (!activeChapterId) {
           setChapter(null);
@@ -1313,20 +1413,98 @@ export default function Reader() {
         }
 
         const chapterStartedAt = readerNowMs();
-        const gate = await fetchReaderChapter({
-          bookId,
-          chapterId: activeChapterId,
-          adminPreview: isAdminPreview,
-          version: chapterVersionFor(loadedChapters, activeChapterId),
-        });
+        let gate;
+        let passManifest = null;
+        let leaseForRequest = readingPassLeaseRef.current;
+        if (useReadingPass) {
+          passManifest = await getReadingPassManifest(bookId);
+          if (cancelled) return;
+          let targetCanonicalPageIndex = requestedCanonicalPageIndex;
+          if (getUserToken()) {
+            try {
+              const savedPosition = await getReadingPassPosition({ contentType: 'text', contentId: bookId });
+              readingPassPositionVersionRef.current = Number(savedPosition?.version || 0);
+              const savedPageIndex = Number(savedPosition?.position?.canonical_page_index || 0);
+              if (!explicitCanonicalPage && Number.isInteger(savedPageIndex) && savedPageIndex > 0) {
+                targetCanonicalPageIndex = Math.min(
+                  Number(passManifest.total_pages || savedPageIndex),
+                  savedPageIndex,
+                );
+              }
+            } catch {
+              // A position lookup must never prevent access to an otherwise valid page.
+            }
+          }
+          setReadingPassManifest(passManifest);
+          setCanonicalPageIndex(targetCanonicalPageIndex);
+          readingPassLatestTextPositionRef.current = {
+            pageIndex: targetCanonicalPageIndex,
+            chapterId: '',
+          };
+          if (targetCanonicalPageIndex > Number(passManifest.public_preview_pages || 3)) {
+            const leaseMatchesBook = Boolean(leaseForRequest?.sessionId && leaseForRequest?.token);
+            if (!leaseMatchesBook) {
+              try {
+                const started = await startReadingPassSession({
+                  bookSlug: bookId,
+                  pageIndex: targetCanonicalPageIndex,
+                });
+                leaseForRequest = storeReadingPassLease(started);
+              } catch (leaseError) {
+                const passError = readingPassError(leaseError);
+                setReadingPassStatus(passError.code === 'SESSION_ACTIVE_ELSEWHERE' ? 'Active on another device' : 'Paused');
+                setReadingPassPaywall(passError);
+                setLockedState({
+                  reason: passError.code,
+                  message: passError.message,
+                  chapter: null,
+                });
+                setProcessedHtml('');
+                setTotalWords(0);
+                setLoading(false);
+                return;
+              }
+            }
+          }
+          const page = await getReadingPassPage(bookId, targetCanonicalPageIndex, leaseForRequest);
+          gate = {
+            locked: false,
+            is_preview: Boolean(page.is_preview),
+            chapter: {
+              id: page.chapter_id,
+              title: page.chapter_title,
+              order: targetCanonicalPageIndex,
+              content_version: page.content_sha256,
+              content: page.content,
+              canonical_page_index: page.page_index,
+              total_canonical_pages: page.total_pages,
+            },
+          };
+          setReadingPassStatus(page.is_preview ? 'Preview' : 'Running');
+        } else {
+          setReadingPassManifest(null);
+          gate = await fetchReaderChapter({
+            bookId,
+            chapterId: activeChapterId,
+            adminPreview: isAdminPreview,
+            version: chapterVersionFor(loadedChapters, activeChapterId),
+          });
+        }
         timings.chapter_ms = Math.round(readerNowMs() - chapterStartedAt);
         if (cancelled) return;
 
         const loadedChapter = gate.chapter || gate;
 
         setChapter(loadedChapter);
-        if (!chapterId) {
+        if (useReadingPass && loadedChapter?.id) setActiveChapterId(loadedChapter.id);
+        if (!chapterId && !useReadingPass) {
           window.history.replaceState(window.history.state, '', `${window.location.pathname}${readerSearchParams({ chapterId: activeChapterId, adminPreview: isAdminPreview })}`);
+        } else if (useReadingPass) {
+          window.history.replaceState(
+            window.history.state,
+            '',
+            `${window.location.pathname}${readerSearchParams({ chapterId: loadedChapter.id, canonicalPageIndex: loadedChapter.canonical_page_index, adminPreview: isAdminPreview })}`,
+          );
         }
 
         if (gate.locked) {
@@ -1379,7 +1557,7 @@ export default function Reader() {
         }
         timings.render_prepare_ms = Math.round(readerNowMs() - chapterStartedAt - timings.chapter_ms);
 
-        if (!isAdminPreview && getUserToken() && !gate.is_preview) {
+        if (!useReadingPass && !isAdminPreview && getUserToken() && !gate.is_preview) {
           endSessionHeaders = getUserAuthHeaders();
           await axios.post(`${API}/reading/session/start`, { session_id: sessionId, book_slug: bookId, chapter_id: activeChapterId }, { headers: endSessionHeaders });
           startedSession = true;
@@ -1485,7 +1663,7 @@ export default function Reader() {
         axios.post(`${API}/reading/session/end`, { session_id: sessionId }, { headers: endSessionHeaders }).catch(() => {});
       }
     };
-  }, [bookId, chapterId, sessionId, stopTTS]);
+  }, [bookId, chapterId, explicitCanonicalPage, requestedCanonicalPageIndex, sessionId, stopTTS, storeReadingPassLease]);
 
   const isBengali = useMemo(
     () => containsBengaliText(`${book?.title || ''} ${chapter?.title || ''} ${processedHtml || ''}`),
@@ -1537,6 +1715,151 @@ export default function Reader() {
       window.removeEventListener('blur', handleReaderVisibility);
     };
   }, [chapter, processedHtml, sessionId, meteredSessionActive, sendPulse]);
+
+  useEffect(() => {
+    const leaseIsAudio = readingPassLease?.contentType === 'audio';
+    const protectedTextVisible = readingPassLease?.contentType === 'text' && canonicalPageIndex > 3;
+    if (!readingPassMode || !readingPassLease?.sessionId || (!leaseIsAudio && !protectedTextVisible) || ['Paused', 'Exhausted'].includes(readingPassStatus)) return undefined;
+    let cancelled = false;
+    const heartbeatMs = 10_000;
+
+    const renew = async () => {
+      const idle = Date.now() - lastReaderActivityRef.current >= 120_000;
+      const visible = isReaderVisible() && document.hasFocus();
+      const audio = generatedAudioRef.current;
+      const active = leaseIsAudio
+        ? audioPlaybackStateRef.current === 'playing'
+        : visible && !idle && Boolean(processedHtml);
+      if (leaseIsAudio) {
+        await syncReadingPassAudioState(audioPlaybackStateRef.current);
+        return;
+      }
+      const sequence = readingPassSequenceRef.current + 1;
+      readingPassSequenceRef.current = sequence;
+      try {
+        const renewed = await renewReadingPassLease({
+          lease: readingPassLeaseRef.current,
+          sequence,
+          active,
+          playbackState: leaseIsAudio ? audioPlaybackStateRef.current : '',
+        });
+        if (cancelled) return;
+        storeReadingPassLease(renewed);
+        if (!active || renewed.status === 'Paused') {
+          setReadingPassStatus('Paused');
+          if (leaseIsAudio) {
+            audio?.pause?.();
+            setReadingPassAudioPhase('idle');
+          } else {
+            setProcessedHtml('');
+            setContentBlurred(true);
+          }
+          setReadingPassPaywall({
+            code: 'PAUSED',
+            message: idle
+              ? 'Reading paused after inactivity. Resume explicitly to reveal this protected page.'
+              : leaseIsAudio
+                ? 'Audiobook billing paused with playback. Continue explicitly when you are ready.'
+                : 'Reading paused while the reader was hidden or unfocused.',
+          });
+        } else if (Number(renewed.balance_seconds) <= 0 || renewed.status === 'Exhausted') {
+          setWalletSeconds(0);
+          if (leaseIsAudio) audio?.pause?.();
+          else {
+            setProcessedHtml('');
+            setContentBlurred(true);
+          }
+          setReadingPassPaywall({ code: 'BALANCE_EXHAUSTED', message: 'Your Reading Pass time is exhausted. Your place is saved.' });
+        } else {
+          setContentBlurred(false);
+        }
+      } catch (heartbeatError) {
+        if (cancelled) return;
+        const passError = readingPassError(heartbeatError);
+        setReadingPassStatus('Connecting');
+        const expiry = Date.parse(readingPassLeaseRef.current?.expiresAt || '');
+        if (!Number.isFinite(expiry) || Date.now() >= expiry) {
+          if (leaseIsAudio) audio?.pause?.();
+          else {
+            setProcessedHtml('');
+            setContentBlurred(true);
+          }
+          setReadingPassPaywall(passError);
+        }
+      }
+    };
+
+    const timer = window.setInterval(renew, heartbeatMs);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, [canonicalPageIndex, processedHtml, readingPassLease, readingPassMode, readingPassStatus, storeReadingPassLease, syncReadingPassAudioState]);
+
+  useEffect(() => {
+    const consuming = readingPassLease?.contentType === 'audio'
+      ? readingPassAudioPhase === 'protected' && Boolean(generatedAudioRef.current && !generatedAudioRef.current.paused)
+      : canonicalPageIndex > 3;
+    if (!readingPassMode || readingPassStatus !== 'Running' || !consuming) return undefined;
+    const timer = window.setInterval(() => {
+      setWalletSeconds((seconds) => Math.max(0, Number(seconds || 0) - 1));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [canonicalPageIndex, readingPassAudioPhase, readingPassLease, readingPassMode, readingPassStatus]);
+
+  useEffect(() => {
+    if (!readingPassMode || !readingPassLease?.sessionId || readingPassStatus === 'Preview') return;
+    const seconds = Math.max(0, Number(walletSeconds) || 0);
+    const previous = readingPassPreviousBalanceRef.current;
+    const crossed = previous === null || seconds >= previous
+      ? null
+      : [0, 10, 60, 300].find((threshold) => previous > threshold && seconds <= threshold);
+    if (crossed !== null && crossed !== undefined) {
+      const label = crossed === 0
+        ? 'Reading Pass time exhausted.'
+        : crossed === 10
+          ? '10 seconds of Reading Pass time remaining.'
+          : crossed === 60
+            ? '1 minute of Reading Pass time remaining.'
+            : '5 minutes of Reading Pass time remaining.';
+      setReadingPassAnnouncement(label);
+    }
+    readingPassPreviousBalanceRef.current = seconds;
+  }, [readingPassLease, readingPassMode, readingPassStatus, walletSeconds]);
+
+  useEffect(() => () => {
+    const activeLease = readingPassLeaseRef.current;
+    const latestText = readingPassLatestTextPositionRef.current;
+    if (activeLease?.contentType === 'text' && latestText?.pageIndex) {
+      void saveReadingPassPosition({
+        bookSlug: bookId,
+        pageIndex: latestText.pageIndex,
+        chapterId: latestText.chapterId,
+        version: readingPassPositionVersionRef.current,
+      });
+    }
+    if (activeLease?.sessionId) void endReadingPassSession(activeLease, 'reader_unmount');
+    readingPassLeaseRef.current = null;
+  }, [bookId]);
+
+  useEffect(() => {
+    if (!readingPassMode || !getUserToken() || !chapter?.id) return undefined;
+    readingPassLatestTextPositionRef.current = {
+      pageIndex: canonicalPageIndex,
+      chapterId: chapter.id,
+    };
+    const timer = window.setTimeout(() => {
+      saveReadingPassPosition({
+        bookSlug: bookId,
+        pageIndex: canonicalPageIndex,
+        chapterId: chapter.id,
+        version: readingPassPositionVersionRef.current,
+      }).then((saved) => {
+        readingPassPositionVersionRef.current = Number(saved?.version || readingPassPositionVersionRef.current);
+      }).catch(() => {});
+    }, 500);
+    return () => window.clearTimeout(timer);
+  }, [bookId, canonicalPageIndex, chapter, readingPassMode]);
 
   const currentIdx = useMemo(
     () => chapters.findIndex((item) => item.id === (activeChapterId || chapterId)),
@@ -1615,13 +1938,30 @@ export default function Reader() {
     });
   }, [paginatedPages]);
   const currentPageWordOffset = paginatedPages.length ? (pageWordOffsets[currentPage] || 0) : 0;
-  const effectiveReadProgress = paginatedPages.length > 1
-    ? Math.round(((currentPage + 1) / paginatedPages.length) * 100)
-    : readProgress;
+  const effectiveReadProgress = readingPassMode && Number(readingPassManifest?.total_pages) > 0
+    ? Math.round((canonicalPageIndex / Number(readingPassManifest.total_pages)) * 100)
+    : paginatedPages.length > 1
+      ? Math.round(((currentPage + 1) / paginatedPages.length) * 100)
+      : readProgress;
   const generatedAudioSlug = useMemo(
     () => (hasGeneratedAudioEnabled(book, bookId) ? audioAssetSlugForBook(book, bookId) : ''),
     [book, bookId],
   );
+  useEffect(() => {
+    let cancelled = false;
+    setReadingPassAudioPreview(null);
+    if (!readingPassMode || !generatedAudioSlug) return undefined;
+    getReadingPassAudioPreview(bookId)
+      .then((preview) => {
+        if (!cancelled && preview?.audio_url) setReadingPassAudioPreview(preview);
+      })
+      .catch(() => {
+        if (!cancelled) setReadingPassAudioPreview(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [bookId, generatedAudioSlug, readingPassMode]);
   const generatedAudioReleaseState = useMemo(() => audiobookReleaseState(book || {}), [book]);
   const generatedAudioDisclosure = useMemo(() => audiobookNarrationDisclosure(book || {}), [book]);
   const generatedHighlightSyncEnabled = generatedAudioReleaseState.highlightSyncEnabled === true;
@@ -1770,6 +2110,7 @@ export default function Reader() {
   }, [selectedGeneratedAudioTrack.segmentId]);
 
   const prefetchNextGeneratedAudioMetadata = useCallback((audio) => {
+    if (readingPassMode) return;
     const nextSegmentId = selectedGeneratedAudioTrack.nextSegmentId;
     if (!shouldPrefetchNextSegment(audio?.currentTime, audio?.duration, nextSegmentId)) return;
     const prefetchKey = `${selectedGeneratedAudioTrack.packageVersion}:${nextSegmentId}`;
@@ -1778,14 +2119,15 @@ export default function Reader() {
     // HEAD warms only endpoint/object metadata; the MP3 response body remains untouched.
     prefetchAudioMetadata(selectedGeneratedAudioTrack.nextAudioUrl);
     prefetchAsset(selectedGeneratedAudioTrack.nextTimestampsUrl, { credentials: 'include' });
-  }, [selectedGeneratedAudioTrack]);
+  }, [readingPassMode, selectedGeneratedAudioTrack]);
 
   useEffect(() => {
     let cancelled = false;
     setGeneratedAudioManifest(null);
     setGeneratedAudioSegmentId('');
     if (!generatedAudioManifestUrl || !generatedAudioSlug || lockedState) return undefined;
-    fetch(generatedAudioManifestUrl, { cache: 'force-cache', credentials: 'include' })
+    if (readingPassMode && readingPassLease?.contentType !== 'audio') return undefined;
+    fetch(generatedAudioManifestUrl, { cache: readingPassMode ? 'no-store' : 'force-cache', credentials: 'include' })
       .then((response) => {
         if (!response.ok) throw new Error('Audio manifest unavailable');
         return response.json();
@@ -1799,6 +2141,14 @@ export default function Reader() {
           if (!normalizedManifest.valid) {
             throw new Error('Audio package manifest does not match approved reader release truth');
           }
+          const serverResume = readingPassMode
+            && readingPassAudioPhase === 'protected'
+            && readingPassPendingAudioPositionRef.current !== null
+            ? audioSegmentAtMediaPosition(
+              normalizedManifest,
+              readingPassPendingAudioPositionRef.current,
+            )
+            : null;
           const savedProgress = loadAudiobookProgress(bookId, normalizedManifest.packageVersion);
           const visibleChapterId = activeChapterId || chapterId || '';
           const savedSegmentChapterId = chapterIdForAudioSegment(
@@ -1812,7 +2162,24 @@ export default function Reader() {
           );
           prefetchedAudioSegmentsRef.current.clear();
           setGeneratedAudioManifest(normalizedManifest);
-          if (savedSegmentExists) {
+          if (serverResume?.segmentId && serverResume.chapterId !== visibleChapterId) {
+            pendingCrossChapterAudioResumeRef.current = {
+              bookId,
+              packageVersion: normalizedManifest.packageVersion,
+              chapterId: serverResume.chapterId,
+              segmentId: serverResume.segmentId,
+              offset: serverResume.offsetSeconds,
+            };
+            navigate(`/reader/${bookId}${readerSearchParams({
+              chapterId: serverResume.chapterId,
+              listeningMode: true,
+            })}`);
+          } else if (serverResume?.segmentId) {
+            readingPassPendingAudioPositionRef.current = null;
+            pendingAudioOffsetRef.current = serverResume.offsetSeconds;
+            pendingAudioOffsetSegmentRef.current = serverResume.segmentId;
+            setGeneratedAudioSegmentId(serverResume.segmentId);
+          } else if (savedSegmentExists) {
             pendingAudioOffsetRef.current = savedProgress.offset;
             pendingAudioOffsetSegmentRef.current = savedProgress.segmentId;
             setGeneratedAudioSegmentId(savedProgress.segmentId);
@@ -1837,6 +2204,11 @@ export default function Reader() {
     generatedAudioReleaseState.packageVersion,
     generatedAudioSlug,
     lockedState,
+    navigate,
+    readingPassAudioAccessVersion,
+    readingPassAudioPhase,
+    readingPassLease?.contentType,
+    readingPassMode,
   ]);
 
   useEffect(() => {
@@ -1869,12 +2241,14 @@ export default function Reader() {
       return;
     }
     pendingCrossChapterAudioResumeRef.current = null;
-    pendingAudioOffsetRef.current = 0;
+    pendingAudioOffsetRef.current = Number.isFinite(Number(pending.offset))
+      ? Number(pending.offset)
+      : 0;
     pendingAudioOffsetSegmentRef.current = pending.segmentId;
     saveAudiobookProgress(bookId, {
       packageVersion: generatedAudioManifest.packageVersion,
       segmentId: pending.segmentId,
-      offset: 0,
+      offset: Number.isFinite(Number(pending.offset)) ? Number(pending.offset) : 0,
       speed: ttsSpeed,
     });
     resumeAfterSegmentChangeRef.current = true;
@@ -1914,7 +2288,7 @@ export default function Reader() {
     }
     if (!generatedTimestampsUrl || !readerHtml) return undefined;
 
-    fetch(generatedTimestampsUrl, { cache: 'force-cache', credentials: 'include' })
+    fetch(generatedTimestampsUrl, { cache: readingPassMode ? 'no-store' : 'force-cache', credentials: 'include' })
       .then((response) => {
         if (!response.ok) throw new Error('Generated audio timestamps unavailable');
         return response.json();
@@ -1951,7 +2325,7 @@ export default function Reader() {
     return () => {
       cancelled = true;
     };
-  }, [activeChapterId, bookId, chapter, chapterId, generatedAudioUrl, generatedHighlightSyncEnabled, generatedTimestampsUrl, lockedState, readerHtml, selectedGeneratedAudioTrack, sessionId]);
+  }, [activeChapterId, bookId, chapter, chapterId, generatedAudioUrl, generatedHighlightSyncEnabled, generatedTimestampsUrl, lockedState, readerHtml, readingPassMode, selectedGeneratedAudioTrack, sessionId]);
 
   useEffect(() => {
     if (!resumeAfterSegmentChangeRef.current || !generatedAudioAvailable || !generatedAudioUrl || lockedState) return;
@@ -2315,7 +2689,30 @@ export default function Reader() {
     });
   }, [applyPendingAudioOffset, recordGeneratedAudioMetric, selectedGeneratedAudioTrack.chunked, ttsSpeed]);
 
+  const flushReadingPassAudioPosition = useCallback((force = false) => {
+    const audio = generatedAudioRef.current;
+    if (!audio || !readingPassMode || readingPassAudioPhase !== 'protected') return;
+    if (!force && Date.now() - readingPassAudioPositionSavedAtRef.current < 5000) return;
+    readingPassAudioPositionSavedAtRef.current = Date.now();
+    const cumulativeSeconds = (Number(selectedGeneratedAudioTrack.cumulativeStartMs) || 0) / 1000
+      + (Number(audio.currentTime) || 0);
+    readingPassAudioPositionSyncRef.current = readingPassAudioPositionSyncRef.current
+      .catch(() => {})
+      .then(() => saveReadingPassAudioPosition({
+        bookSlug: bookId,
+        positionSeconds: cumulativeSeconds,
+        version: readingPassAudioPositionVersionRef.current,
+      }))
+      .then((saved) => {
+        readingPassAudioPositionVersionRef.current = Number(
+          saved?.version || readingPassAudioPositionVersionRef.current,
+        );
+      })
+      .catch(() => {});
+  }, [bookId, readingPassAudioPhase, readingPassMode, selectedGeneratedAudioTrack.cumulativeStartMs]);
+
   const handleGeneratedAudioPlaying = useCallback(() => {
+    audioPlaybackStateRef.current = 'playing';
     const now = readerNowMs();
     if (audioIntentStartedAtRef.current) {
       recordGeneratedAudioMetric('reader_audio_ttfa', {
@@ -2348,16 +2745,19 @@ export default function Reader() {
     setGeneratedAudioActive(true);
     setTtsActive(true);
     setTtsPaused(false);
-  }, [recordGeneratedAudioMetric]);
+    void syncReadingPassAudioState('playing');
+  }, [recordGeneratedAudioMetric, syncReadingPassAudioState]);
 
   const markGeneratedAudioStall = useCallback(() => {
+    void syncReadingPassAudioState('buffering');
     if (audioIntentStartedAtRef.current) return;
     if (!audioStallStartedAtRef.current) audioStallStartedAtRef.current = readerNowMs();
-  }, []);
+  }, [syncReadingPassAudioState]);
 
   const handleGeneratedAudioSeeking = useCallback(() => {
+    void syncReadingPassAudioState('buffering');
     if (!audioSeekStartedAtRef.current) audioSeekStartedAtRef.current = readerNowMs();
-  }, []);
+  }, [syncReadingPassAudioState]);
 
   const handleGeneratedAudioSeeked = useCallback(() => {
     if (!audioSeekStartedAtRef.current) return;
@@ -2371,9 +2771,11 @@ export default function Reader() {
   }, [persistGeneratedAudioProgress, recordGeneratedAudioMetric]);
 
   const handleGeneratedAudioPause = useCallback(() => {
+    void syncReadingPassAudioState('paused');
     audioStallStartedAtRef.current = 0;
     persistGeneratedAudioProgress({ force: true });
-  }, [persistGeneratedAudioProgress]);
+    flushReadingPassAudioPosition(true);
+  }, [flushReadingPassAudioPosition, persistGeneratedAudioProgress, syncReadingPassAudioState]);
 
   const startTTS = useCallback(() => {
     if (!isContentPage) {
@@ -2384,10 +2786,29 @@ export default function Reader() {
       toast.info('Audiobook controls stay hidden until the release gate approves this title.');
       return;
     }
+    if (readingPassMode && readingPassAudioPhase !== 'protected' && readingPassAudioPreview?.audio_url) {
+      const audio = generatedAudioRef.current;
+      if (!audio) return;
+      if (audio.getAttribute('src') !== readingPassAudioPreview.audio_url) {
+        audio.src = readingPassAudioPreview.audio_url;
+        audio.currentTime = 0;
+      }
+      setReadingPassAudioPhase('preview');
+      setReadingPassStatus('Preview');
+      setGeneratedAudioActive(true);
+      setTtsActive(true);
+      setTtsPaused(false);
+      requestAudiobookPlayback(audio).catch(() => {
+        setGeneratedAudioActive(false);
+        setTtsActive(false);
+        toast.error('The audiobook preview could not start in this browser.');
+      });
+      return;
+    }
     if (startGeneratedAudio()) return;
 
     toast.info('Approved audiobook audio is not available for this reader page yet.');
-  }, [book, bookId, isContentPage, startGeneratedAudio]);
+  }, [book, bookId, isContentPage, readingPassAudioPhase, readingPassAudioPreview, readingPassMode, startGeneratedAudio]);
 
   const pauseTTS = () => {
     if (generatedAudioActive) {
@@ -2441,6 +2862,7 @@ export default function Reader() {
       if (Number.isFinite(audio.duration)) setGeneratedAudioDuration(audio.duration);
       persistGeneratedAudioProgress();
       prefetchNextGeneratedAudioMetadata(audio);
+      flushReadingPassAudioPosition();
     }
     if (ttsPaused) return;
     if (generatedHighlightRafRef.current) return;
@@ -2448,7 +2870,7 @@ export default function Reader() {
       generatedHighlightRafRef.current = 0;
       syncGeneratedAudioHighlight();
     });
-  }, [persistGeneratedAudioProgress, prefetchNextGeneratedAudioMetadata, syncGeneratedAudioHighlight, ttsPaused]);
+  }, [flushReadingPassAudioPosition, persistGeneratedAudioProgress, prefetchNextGeneratedAudioMetadata, syncGeneratedAudioHighlight, ttsPaused]);
 
   const handleGeneratedAudioEnded = useCallback(() => {
     if (generatedHighlightRafRef.current) {
@@ -2461,7 +2883,21 @@ export default function Reader() {
     activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
     activeWordRef.current = null;
     highlightedWordIndexRef.current = -1;
+    if (readingPassMode && readingPassAudioPhase === 'preview') {
+      setReadingPassAudioPhase('idle');
+      setGeneratedAudioActive(false);
+      setTtsActive(false);
+      setTtsPaused(false);
+      setReadingPassStatus('Preview ended');
+      setReadingPassPaywall({
+        code: 'AUDIO_PREVIEW_ENDED',
+        message: 'The separate 3-minute audiobook preview has ended. Sign in and use Reading Pass time to continue securely.',
+      });
+      return;
+    }
     if (selectedGeneratedAudioTrack.nextSegmentId) {
+      flushReadingPassAudioPosition(true);
+      void syncReadingPassAudioState('buffering');
       persistGeneratedAudioProgress({
         force: true,
         segmentId: selectedGeneratedAudioTrack.nextSegmentId,
@@ -2493,6 +2929,8 @@ export default function Reader() {
       setTtsWordIndex(-1);
       return;
     }
+    void syncReadingPassAudioState('ended');
+    flushReadingPassAudioPosition(true);
     persistGeneratedAudioProgress({ force: true });
     setGeneratedAudioActive(false);
     setTtsActive(false);
@@ -2501,13 +2939,17 @@ export default function Reader() {
   }, [
     adminPreview,
     bookId,
+    flushReadingPassAudioPosition,
     navigate,
     persistGeneratedAudioProgress,
+    readingPassAudioPhase,
+    readingPassMode,
     selectedGeneratedAudioTrack.chapterId,
     selectedGeneratedAudioTrack.nextChapterId,
     selectedGeneratedAudioTrack.nextSegmentId,
     selectedGeneratedAudioTrack.packageVersion,
     selectedGeneratedAudioTrack.segmentId,
+    syncReadingPassAudioState,
   ]);
 
   useEffect(() => {
@@ -2530,15 +2972,21 @@ export default function Reader() {
   const prevChapter = chapters[currentIdx - 1];
   const nextChapter = chapters[currentIdx + 1];
   const hasPages = paginatedPages.length > 1;
-  const canPrev = hasPages ? currentPage > 0 || Boolean(prevChapter) : Boolean(prevChapter);
-  const canNext = hasPages ? currentPage < paginatedPages.length - 1 || Boolean(nextChapter) : Boolean(nextChapter);
+  const hasPreviousCanonicalPage = readingPassMode && canonicalPageIndex > 1;
+  const hasNextCanonicalPage = readingPassMode && canonicalPageIndex < Number(readingPassManifest?.total_pages || 0);
+  const canPrev = readingPassMode
+    ? (currentPage > 0 || hasPreviousCanonicalPage)
+    : (hasPages ? currentPage > 0 || Boolean(prevChapter) : Boolean(prevChapter));
+  const canNext = readingPassMode
+    ? (currentPage < paginatedPages.length - 1 || hasNextCanonicalPage)
+    : (hasPages ? currentPage < paginatedPages.length - 1 || Boolean(nextChapter) : Boolean(nextChapter));
   const readerUserName = user && typeof user === 'object' ? user.name : 'Reader';
   const readerUserEmail = user && typeof user === 'object' ? user.email : '';
   const rightsCopy = rightsForBook(book, readerUserName);
   const narrationDisabledForBook = isNarrationDisabledForBook(book, bookId);
 
   useEffect(() => {
-    if (!book || lockedState || loading || !nextChapter?.id) return undefined;
+    if (readingPassMode || !book || lockedState || loading || !nextChapter?.id) return undefined;
     const idleId = runWhenIdle(() => {
       const nextVersion = chapterVersionFor(chapters, nextChapter.id);
       const canPrefetchPaid = adminPreview || nextChapter.is_preview || walletSeconds > 0;
@@ -2561,13 +3009,33 @@ export default function Reader() {
     loading,
     lockedState,
     nextChapter,
+    readingPassMode,
     walletSeconds,
   ]);
 
   const goToChapter = useCallback((id) => {
     stopTTS();
+    if (readingPassMode) {
+      const chapterSegment = readingPassManifest?.chapters?.find((item) => item.chapter_id === id);
+      const targetPage = Number(chapterSegment?.first_page_index || 1);
+      navigate(`${readerRouteForBook(bookId)}${readerSearchParams({ chapterId: id, canonicalPageIndex: targetPage, adminPreview })}`);
+      return;
+    }
     navigate(`${readerRouteForBook(bookId)}${readerSearchParams({ chapterId: id, adminPreview })}`);
-  }, [adminPreview, bookId, navigate, stopTTS]);
+  }, [adminPreview, bookId, navigate, readingPassManifest, readingPassMode, stopTTS]);
+
+  const goToCanonicalPage = useCallback((pageIndex) => {
+    const bounded = Math.max(1, Math.min(Number(readingPassManifest?.total_pages || 1), Number(pageIndex) || 1));
+    const chapterSegment = readingPassManifest?.chapters?.find(
+      (item) => bounded >= Number(item.first_page_index) && bounded <= Number(item.last_page_index),
+    );
+    stopTTS();
+    navigate(`${readerRouteForBook(bookId)}${readerSearchParams({
+      chapterId: chapterSegment?.chapter_id || activeChapterId || chapterId,
+      canonicalPageIndex: bounded,
+      adminPreview,
+    })}`);
+  }, [activeChapterId, adminPreview, bookId, chapterId, navigate, readingPassManifest, stopTTS]);
 
   const goPrev = useCallback(() => {
     stopTTS();
@@ -2576,8 +3044,12 @@ export default function Reader() {
       scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
       return;
     }
+    if (readingPassMode && hasPreviousCanonicalPage) {
+      goToCanonicalPage(canonicalPageIndex - 1);
+      return;
+    }
     if (prevChapter) goToChapter(prevChapter.id);
-  }, [currentPage, goToChapter, hasPages, prevChapter, stopTTS]);
+  }, [canonicalPageIndex, currentPage, goToCanonicalPage, goToChapter, hasPages, hasPreviousCanonicalPage, prevChapter, readingPassMode, stopTTS]);
 
   const goNext = useCallback(() => {
     stopTTS();
@@ -2586,8 +3058,12 @@ export default function Reader() {
       scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
       return;
     }
+    if (readingPassMode && hasNextCanonicalPage) {
+      goToCanonicalPage(canonicalPageIndex + 1);
+      return;
+    }
     if (nextChapter) goToChapter(nextChapter.id);
-  }, [currentPage, goToChapter, hasPages, nextChapter, paginatedPages.length, stopTTS]);
+  }, [canonicalPageIndex, currentPage, goToCanonicalPage, goToChapter, hasNextCanonicalPage, hasPages, nextChapter, paginatedPages.length, readingPassMode, stopTTS]);
 
   const goToPage = useCallback((index, options = {}) => {
     const nextPage = Math.min(Math.max(Number(index) || 0, 0), Math.max(paginatedPages.length - 1, 0));
@@ -2596,6 +3072,96 @@ export default function Reader() {
     setCurrentPage(nextPage);
     scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: options.behavior || 'smooth' });
   }, [currentPage, paginatedPages.length, stopTTS]);
+
+  const resumeReadingPass = useCallback(async ({ transfer = false } = {}) => {
+    try {
+      const currentLease = readingPassLeaseRef.current;
+      if (currentLease?.sessionId && readingPassStatus === 'Paused') {
+        await endReadingPassSession(currentLease, 'explicit_resume');
+        readingPassLeaseRef.current = null;
+        setReadingPassLease(null);
+      }
+      const started = await startReadingPassSession({
+        bookSlug: bookId,
+        pageIndex: canonicalPageIndex,
+        transfer,
+      });
+      const lease = storeReadingPassLease(started);
+      const page = await getReadingPassPage(bookId, canonicalPageIndex, lease);
+      const loadedChapter = {
+        id: page.chapter_id,
+        title: page.chapter_title,
+        order: canonicalPageIndex,
+        content_version: page.content_sha256,
+        content: page.content,
+        canonical_page_index: page.page_index,
+        total_canonical_pages: page.total_pages,
+      };
+      const safeHtml = sanitizeReaderHtml(loadedChapter.content);
+      setChapter(loadedChapter);
+      setActiveChapterId(loadedChapter.id);
+      setProcessedHtml(safeHtml);
+      setTotalWords(countWordsInHtml(safeHtml));
+      setCurrentPage(0);
+      setContentBlurred(false);
+      setLockedState(null);
+      setReadingPassPaywall(null);
+      setReadingPassStatus('Running');
+    } catch (error) {
+      const passError = readingPassError(error);
+      setReadingPassPaywall(passError);
+      setReadingPassStatus(passError.code === 'SESSION_ACTIVE_ELSEWHERE' ? 'Active on another device' : 'Paused');
+    }
+  }, [bookId, canonicalPageIndex, readingPassStatus, storeReadingPassLease]);
+
+  const resumeReadingPassAudio = useCallback(async ({ transfer = false } = {}) => {
+    if (!getUserToken()) {
+      setReadingPassPaywall({
+        code: 'AUTH_REQUIRED',
+        message: 'Sign in to continue after the free audiobook preview.',
+      });
+      return;
+    }
+    try {
+      let resumePositionSeconds = 180;
+      try {
+        const savedPosition = await getReadingPassPosition({ contentType: 'audio', contentId: bookId });
+        readingPassAudioPositionVersionRef.current = Number(savedPosition?.version || 0);
+        resumePositionSeconds = Math.max(
+          180,
+          Number(savedPosition?.position?.media_position_seconds || 0),
+        );
+      } catch {
+        // Starting at the paid boundary is safe when no cross-device position exists.
+      }
+      readingPassPendingAudioPositionRef.current = resumePositionSeconds;
+      const currentLease = readingPassLeaseRef.current;
+      if (currentLease?.sessionId) {
+        await endReadingPassSession(currentLease, 'switch_to_audiobook');
+        readingPassLeaseRef.current = null;
+        setReadingPassLease(null);
+      }
+      const started = await startReadingPassAudioSession({
+        bookSlug: bookId,
+        positionSeconds: resumePositionSeconds,
+        transfer,
+      });
+      storeReadingPassLease(started);
+      setReadingPassAudioPhase('protected');
+      setReadingPassAudioAccessVersion((version) => version + 1);
+      setReadingPassStatus('Paused');
+      setReadingPassPaywall(null);
+      if (canonicalPageIndex > 3) {
+        setProcessedHtml('');
+        setContentBlurred(true);
+      }
+      toast.info('Protected listening access verified. Press Play when you are ready; billing starts with playback.');
+    } catch (error) {
+      const passError = readingPassError(error);
+      setReadingPassPaywall({ ...passError, intent: 'audio' });
+      setReadingPassStatus(passError.code === 'SESSION_ACTIVE_ELSEWHERE' ? 'Active on another device' : 'Paused');
+    }
+  }, [bookId, canonicalPageIndex, storeReadingPassLease]);
 
   const onReaderPointerDown = useCallback((event) => {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
@@ -2687,6 +3253,40 @@ export default function Reader() {
     const lockedAccessNote = previewChapter
       ? 'A free preview remains available. Other chapters require sign-in and reading time from your wallet.'
       : 'This edition has no free preview. Sign in and add reading time to open the reader.';
+
+    if (readingPassMode) {
+      const paywall = readingPassPaywall || { code: reason, message: lockedState.message };
+      return (
+        <div className="min-h-screen" style={{ background: THEMES.beige.canvas }} data-testid="reader-reading-pass-locked">
+          <ReadingPassTimer
+            enabled
+            balanceSeconds={walletSeconds}
+            status={readingPassStatus}
+            contentType={readingPassLease?.contentType === 'audio' ? 'Listening' : 'Reading'}
+            onOpen={() => setReadingPassPaywall(paywall)}
+            onTopUp={() => navigate('/pricing')}
+          />
+          <p className="sr-only" role="status" aria-live="assertive" aria-atomic="true">{readingPassAnnouncement}</p>
+          <ReadingPassPaywall
+            open
+            reason={paywall.code}
+            message={paywall.message}
+            balanceSeconds={walletSeconds}
+            activeSession={paywall.active_session}
+            onClose={() => navigate('/library')}
+            onBuy={() => navigate(`/pricing?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+            onSignIn={() => navigate(`/login?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+            onRegister={() => navigate(`/signup?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+            onPreview={() => {
+              setLockedState(null);
+              setReadingPassPaywall(null);
+              goToCanonicalPage(Math.min(3, canonicalPageIndex));
+            }}
+            onTransfer={() => resumeReadingPass({ transfer: paywall.code === 'SESSION_ACTIVE_ELSEWHERE' })}
+          />
+        </div>
+      );
+    }
 
     return (
       <div className="flex min-h-screen items-center justify-center px-5 py-14 text-center" style={{ background: THEMES.beige.canvas }} data-testid="reader-locked">
@@ -2824,9 +3424,11 @@ export default function Reader() {
   const chapterPositionLabel = chapters.length > 1 && currentIdx >= 0
     ? `Ch. ${currentIdx + 1} of ${chapters.length}`
     : '';
-  const topbarPositionLabel = hasPages
-    ? [chapterPositionLabel, `Page ${currentPage + 1} of ${paginatedPages.length}`].filter(Boolean).join(' · ')
-    : (chapterPositionLabel || `Ch. ${Math.max(0, currentIdx) + 1} of ${chapters.length}`);
+  const topbarPositionLabel = readingPassMode
+    ? [chapterPositionLabel, `Canonical page ${canonicalPageIndex} of ${readingPassManifest?.total_pages || '?'}`].filter(Boolean).join(' · ')
+    : hasPages
+      ? [chapterPositionLabel, `Page ${currentPage + 1} of ${paginatedPages.length}`].filter(Boolean).join(' · ')
+      : (chapterPositionLabel || `Ch. ${Math.max(0, currentIdx) + 1} of ${chapters.length}`);
   const listeningCoverUrl = readerListeningCoverUrl(book);
   const firstNarratedPageIndex = paginatedPages.findIndex((page) => page.type === 'content');
   const listeningSyncLabel = generatedHighlightSyncEnabled
@@ -2852,6 +3454,40 @@ export default function Reader() {
         '--reader-border': colors.border,
       }}
     >
+      <ReadingPassTimer
+        enabled={readingPassMode}
+        balanceSeconds={walletSeconds}
+        status={readingPassStatus}
+        contentType={readingPassLease?.contentType === 'audio' ? 'Listening' : 'Reading'}
+        onOpen={() => setReadingPassPaywall({ code: 'DETAILS', message: 'Your Reading Pass balance is shared across every eligible book and audiobook.' })}
+        onTopUp={() => navigate(`/pricing?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+      />
+      <p className="sr-only" role="status" aria-live="assertive" aria-atomic="true">{readingPassAnnouncement}</p>
+      <ReadingPassPaywall
+        open={Boolean(readingPassMode && readingPassPaywall)}
+        reason={readingPassPaywall?.code}
+        message={readingPassPaywall?.message}
+        balanceSeconds={walletSeconds}
+        activeSession={readingPassPaywall?.active_session}
+        onClose={() => setReadingPassPaywall(null)}
+        onBuy={() => navigate(`/pricing?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+        onSignIn={() => navigate(`/login?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+        onRegister={() => navigate(`/signup?next=${encodeURIComponent(getCurrentReaderPath())}`)}
+        onPreview={() => {
+          if (readingPassPaywall?.code === 'AUDIO_PREVIEW_ENDED') {
+            setReadingPassPaywall(null);
+            setReadingPassAudioPhase('idle');
+            window.setTimeout(startTTS, 0);
+          } else {
+            goToCanonicalPage(Math.min(3, canonicalPageIndex));
+          }
+        }}
+        onTransfer={() => (
+          readingPassPaywall?.code === 'AUDIO_PREVIEW_ENDED' || readingPassPaywall?.intent === 'audio'
+            ? resumeReadingPassAudio({ transfer: readingPassPaywall?.code === 'SESSION_ACTIVE_ELSEWHERE' })
+            : resumeReadingPass({ transfer: readingPassPaywall?.code === 'SESSION_ACTIVE_ELSEWHERE' })
+        )}
+      />
       {/* Source ownership stays imperative: a controlled `src` transition
           after play() aborts the first user-activated playback request. */}
       {generatedAudioSlug && (
@@ -2954,7 +3590,11 @@ export default function Reader() {
         <div className="reader-gutter reader-gutter--left" aria-hidden="true" />
         <article key={`${activeChapterId || chapterId || chapter?.id || bookId}:${currentPage}`} className="reader-canvas page-enter">
           <section
-            className={bookmarked ? 'reader-page-shell reader-page-shell--bookmarked' : 'reader-page-shell'}
+            className={[
+              'reader-page-shell',
+              bookmarked ? 'reader-page-shell--bookmarked' : '',
+              isChapterIndexPage ? 'reader-page-shell--index' : '',
+            ].filter(Boolean).join(' ')}
             data-testid="reader-page-shell"
             onPointerDown={onReaderPointerDown}
             onPointerUp={onReaderPointerUp}
@@ -3450,12 +4090,14 @@ export default function Reader() {
             <div className="space-y-1">
               {chapters.map((item, index) => {
                 const current = index === currentIdx;
+                const indexEntry = chapterIndexEntry(item, index + 1, chapters.length);
                 return (
-                  <button key={item.id} type="button" onClick={() => { setShowTOC(false); goToChapter(item.id); }} className="reader-toc-item w-full text-left px-3 py-2.5 rounded-lg transition-all" lang={containsBengaliText(item.title) ? 'bn' : undefined} style={{ background: current ? 'rgba(107,16,32,0.08)' : 'transparent', borderLeft: current ? '2px solid #6B1020' : '2px solid transparent', color: current ? '#6B1020' : colors.text, fontFamily: containsBengaliText(item.title) ? BENGALI_SERIF : READER_SERIF, fontSize: 15, overflowWrap: 'break-word' }}>
-                    <span style={{ fontFamily: UI_FONT, fontSize: 11, color: '#A88A8F', marginRight: 6 }}>
-                      {index + 1}.
+                  <button key={item.id} type="button" onClick={() => { setShowTOC(false); goToChapter(item.id); }} className="reader-toc-item w-full text-left px-3 py-2.5 rounded-lg transition-all" lang={containsBengaliText(indexEntry.index_title) ? 'bn' : undefined} style={{ background: current ? 'rgba(107,16,32,0.08)' : 'transparent', borderLeft: current ? '2px solid #6B1020' : '2px solid transparent', color: current ? '#6B1020' : colors.text, fontFamily: containsBengaliText(indexEntry.index_title) ? BENGALI_SERIF : READER_SERIF, fontSize: 15, overflowWrap: 'break-word' }}>
+                    <span className="reader-toc-item__sequence" aria-hidden="true">{indexEntry.index_sequence_label}</span>
+                    <span className="reader-toc-item__copy">
+                      {indexEntry.index_secondary_label && <small>{indexEntry.index_secondary_label}</small>}
+                      <strong>{indexEntry.index_title}</strong>
                     </span>
-                    {normalizeChapterDisplayTitle(item.title)}
                   </button>
                 );
               })}

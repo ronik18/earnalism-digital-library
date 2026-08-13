@@ -43,6 +43,12 @@ try:
         ReaderHeartbeatIn,
         ReaderSessionEndIn,
         ReadingPulseIn,
+        ReadingPassSessionStartIn,
+        ReadingPassLeaseRenewIn,
+        ReadingPassSessionEndIn,
+            ReadingPassPositionIn,
+            ReadingPassPreviewActivationIn,
+            ReadingPassSegmentMigrationIn,
         ReaderCompletionIn,
         ReaderMetricIn,
         AnalyticsEventIn,
@@ -97,6 +103,12 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         ReaderHeartbeatIn,
         ReaderSessionEndIn,
         ReadingPulseIn,
+        ReadingPassSessionStartIn,
+        ReadingPassLeaseRenewIn,
+        ReadingPassSessionEndIn,
+            ReadingPassPositionIn,
+            ReadingPassPreviewActivationIn,
+            ReadingPassSegmentMigrationIn,
         ReaderCompletionIn,
         ReaderMetricIn,
         AnalyticsEventIn,
@@ -136,6 +148,29 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
     )
 
 try:
+    from backend.domain.reading_pass import (
+        PUBLIC_AUDIO_PREVIEW_SECONDS,
+        PUBLIC_TEXT_PAGE_COUNT,
+        ReadingPassConfig,
+        ReadingPassError,
+        canonical_page_records,
+        public_text_page,
+        segment_manifest,
+    )
+    from backend.reading_pass_service import ReadingPassService
+except ImportError:  # pragma: no cover - supports uvicorn from backend/
+    from domain.reading_pass import (  # type: ignore
+        PUBLIC_AUDIO_PREVIEW_SECONDS,
+        PUBLIC_TEXT_PAGE_COUNT,
+        ReadingPassConfig,
+        ReadingPassError,
+        canonical_page_records,
+        public_text_page,
+        segment_manifest,
+    )
+    from reading_pass_service import ReadingPassService  # type: ignore
+
+try:
     from backend.domain.catalog import (
         CANONICAL_CATEGORY_SLUGS,
         DEFAULT_CATEGORY_SLUG,
@@ -156,6 +191,19 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         normalize_category_slug,
         normalize_text,
         slugify,
+    )
+
+try:
+    from backend.domain.chapter_index import (
+        CHAPTER_INDEX_CONTRACT_VERSION,
+        build_chapter_index_entries,
+        chapter_index_entry,
+    )
+except ImportError:  # pragma: no cover - supports uvicorn from backend/
+    from domain.chapter_index import (
+        CHAPTER_INDEX_CONTRACT_VERSION,
+        build_chapter_index_entries,
+        chapter_index_entry,
     )
 
 
@@ -184,7 +232,7 @@ import jwt
 import unicodedata
 from collections import Counter, OrderedDict, defaultdict, deque
 from datetime import datetime, timezone, timedelta
-from typing import Any, Deque, Dict, List, Optional, Tuple
+from typing import Any, Deque, Dict, List, Mapping, Optional, Tuple
 from urllib.parse import quote, unquote, urlencode, urlparse
 from urllib.request import Request as UrlRequest, urlopen
 
@@ -443,9 +491,32 @@ JWT_EXPIRE_MINUTES = _env_int("JWT_EXPIRE_MINUTES", 1440)
 USER_ACCESS_TOKEN_EXPIRE_MINUTES = _env_int("USER_ACCESS_TOKEN_EXPIRE_MINUTES", 30)
 USER_REFRESH_IDLE_MINUTES = _env_int("USER_REFRESH_IDLE_MINUTES", 30)
 USER_REFRESH_TOTAL_HOURS = _env_int("USER_REFRESH_TOTAL_HOURS", 12)
-TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS = _env_int("TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS", 1)
+READING_PASS_V2_ENABLED = _env_bool("READING_PASS_V2_ENABLED", False)
+TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS = _env_int(
+    "TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS", 5 if READING_PASS_V2_ENABLED else 1
+)
 READING_HEARTBEAT_EARLY_GRACE_SECONDS = _env_int("READING_HEARTBEAT_EARLY_GRACE_SECONDS", 5)
 READING_SESSION_IDLE_GRACE_SECONDS = _env_int("READING_SESSION_IDLE_GRACE_SECONDS", 120)
+READING_PASS_HEARTBEAT_SECONDS = _env_int("READING_PASS_HEARTBEAT_SECONDS", 10)
+READING_PASS_MAX_LEASE_SECONDS = _env_int("READING_PASS_MAX_LEASE_SECONDS", 20)
+READING_PASS_RECONNECT_GRACE_SECONDS = _env_int("READING_PASS_RECONNECT_GRACE_SECONDS", 15, minimum=0)
+READING_PASS_TEXT_INACTIVITY_SECONDS = _env_int("READING_PASS_TEXT_INACTIVITY_SECONDS", 120)
+READING_PASS_CONFIG = ReadingPassConfig(
+    heartbeat_seconds=READING_PASS_HEARTBEAT_SECONDS,
+    maximum_lease_seconds=READING_PASS_MAX_LEASE_SECONDS,
+    reconnect_grace_seconds=READING_PASS_RECONNECT_GRACE_SECONDS,
+    text_inactivity_seconds=READING_PASS_TEXT_INACTIVITY_SECONDS,
+)
+_reading_pass_token_secret = os.environ.get("READING_PASS_TOKEN_SECRET", "").strip()
+if READING_PASS_V2_ENABLED and len(_reading_pass_token_secret) < 32:
+    raise RuntimeError("READING_PASS_TOKEN_SECRET must be a dedicated secret of at least 32 characters when Reading Pass v2 is enabled")
+READING_PASS_TOKEN_SECRET = _reading_pass_token_secret or JWT_SECRET
+reading_pass_service = ReadingPassService(
+    db=db,
+    client=client,
+    config=READING_PASS_CONFIG,
+    token_secret=READING_PASS_TOKEN_SECRET,
+)
 SESSION_TOUCH_INTERVAL_SECONDS = _env_int("SESSION_TOUCH_INTERVAL_SECONDS", 60)
 if SESSION_TOUCH_INTERVAL_SECONDS > 0:
     SESSION_TOUCH_INTERVAL_SECONDS = min(
@@ -573,6 +644,7 @@ RATE_LIMIT_PAYMENT_PER_MINUTE = _env_int("RATE_LIMIT_PAYMENT_PER_MINUTE", 300)
 RATE_LIMIT_WEBHOOK_PER_MINUTE = _env_int("RATE_LIMIT_WEBHOOK_PER_MINUTE", 600)
 RATE_LIMIT_ANALYTICS_PER_MINUTE = _env_int("RATE_LIMIT_ANALYTICS_PER_MINUTE", 1800)
 RATE_LIMIT_UPLOAD_PER_MINUTE = _env_int("RATE_LIMIT_UPLOAD_PER_MINUTE", 60)
+RATE_LIMIT_READING_PASS_PER_MINUTE = _env_int("RATE_LIMIT_READING_PASS_PER_MINUTE", 180)
 _rate_limit_hits: Dict[str, Deque[float]] = defaultdict(deque)
 _rate_limit_next_sweep = 0.0
 
@@ -2716,7 +2788,7 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     if not admin_preview and not _is_controlled_public_slug(slug):
         return None
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
+    cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{CHAPTER_INDEX_CONTRACT_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-manifest", cache_key)
     if cached is not None:
         return cached
@@ -2737,10 +2809,12 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
 
     chapters = []
     preview_ids = _free_preview_chapter_ids(doc)
-    for chapter in sorted((doc.get("chapters") or []), key=lambda c: c.get("order", 0)):
+    source_chapters = sorted((doc.get("chapters") or []), key=lambda c: (c.get("order", 0), c.get("id", "")))
+    total_chapters = len(source_chapters)
+    for position, chapter in enumerate(source_chapters, start=1):
         version = _reader_chapter_content_version(chapter)
         chapter_id = chapter.get("id") or ""
-        chapters.append({
+        chapters.append(chapter_index_entry({
             "id": chapter_id,
             "title": chapter.get("title", ""),
             "order": chapter.get("order", 0),
@@ -2751,7 +2825,7 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
             "processing_status": chapter.get("processing_status", "ready"),
             "has_images": bool(chapter.get("has_images", False)),
             "content_url": f"/api/reader/chapter/{slug}/{chapter_id}?v={version}" if chapter_id else "",
-        })
+        }, position=position, total=total_chapters))
 
     audio_source = doc if admin_preview else (_reader_audio_truth_doc(doc, slug) or {})
     audio = _reader_manifest_audio(audio_source, slug)
@@ -2768,13 +2842,25 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
             "created_at": doc.get("created_at", ""),
             "is_published": doc.get("is_published", False),
         },
-        "chapters": [{c["id"]: c["content_version"]} for c in chapters],
+        "chapter_index_contract": CHAPTER_INDEX_CONTRACT_VERSION,
+        "chapters": [
+            {
+                "id": c["id"],
+                "title": c["title"],
+                "content_version": c["content_version"],
+                "index_contract": c["index_contract"],
+                "index_title": c["index_title"],
+                "index_secondary_label": c["index_secondary_label"],
+            }
+            for c in chapters
+        ],
         "audio": audio.get("version", ""),
     }, length=20)
     result = {
         "book": book_public,
         "chapters": chapters,
         "audio": audio,
+        "chapter_index_contract": CHAPTER_INDEX_CONTRACT_VERSION,
         "version": manifest_version,
         "content_generation": generation,
         "generated_at": now_iso(),
@@ -3526,6 +3612,14 @@ async def _record_wallet_ledger(
 ) -> dict:
     seconds = int(seconds_delta)
     tx_type = "credit" if seconds >= 0 else ("debit" if action == "admin_adjustment" else "consume")
+    if action == "admin_adjustment":
+        event_type = "ADMIN_ADJUSTMENT"
+    elif action in {"refund_adjustment", "refund"}:
+        event_type = "REFUND_ADJUSTMENT"
+    elif seconds < 0 or action in {"reading_debit", "time_debit"}:
+        event_type = "TIME_DEBIT"
+    else:
+        event_type = "PASS_CREDIT"
     tx = {
         "id": source_transaction_id or str(uuid.uuid4()),
         "user_id": user_id,
@@ -3550,13 +3644,17 @@ async def _record_wallet_ledger(
         "user_id": user_id,
         "session_id": session_id,
         "action": action,
+        "event_type": event_type,
+        "signed_seconds": seconds,
         "debit": max(0, -seconds),
         "credit": max(0, seconds),
         "timestamp": now_iso(),
         "reason": reason,
         "actor": actor,
+        "creating_service": "earnalism-api",
         "balance_after": int(balance_after or 0),
         "source_transaction_id": tx["id"],
+        "idempotency_key": f"wallet:{tx['id']}",
     }
     if extra:
         ledger["metadata"] = {k: str(v)[:240] for k, v in extra.items()}
@@ -3582,6 +3680,15 @@ async def _migrate_wallet_transactions_to_ledger() -> None:
         if not user_id:
             continue
         seconds = int(tx.get("seconds", 0) or 0)
+        action = str(tx.get("type") or "wallet_adjustment")
+        if action == "admin_adjustment":
+            event_type = "ADMIN_ADJUSTMENT"
+        elif action in {"refund_adjustment", "refund"}:
+            event_type = "REFUND_ADJUSTMENT"
+        elif seconds < 0 or action in {"reading_debit", "time_debit", "consume"}:
+            event_type = "TIME_DEBIT"
+        else:
+            event_type = "PASS_CREDIT"
         running[user_id] = running.get(user_id, 0) + seconds
         await db.wallet_ledger.update_one(
             {"source_transaction_id": tx_id},
@@ -3590,14 +3697,18 @@ async def _migrate_wallet_transactions_to_ledger() -> None:
                     "id": str(uuid.uuid4()),
                     "user_id": user_id,
                     "session_id": tx.get("session_id", ""),
-                    "action": tx.get("type", "wallet_adjustment"),
+                    "action": action,
+                    "event_type": event_type,
+                    "signed_seconds": seconds,
                     "debit": max(0, -seconds),
                     "credit": max(0, seconds),
                     "timestamp": tx.get("created_at", now_iso()),
                     "reason": tx.get("reason", ""),
                     "actor": tx.get("actor", "system"),
+                    "creating_service": "earnalism-api",
                     "balance_after": running[user_id],
                     "source_transaction_id": tx_id,
+                    "idempotency_key": f"wallet:{tx_id}",
                     "migrated": True,
                 }
             },
@@ -3774,6 +3885,11 @@ async def initialize_database_indexes() -> None:
         unique=True,
         partialFilterExpression={"source_transaction_id": {"$type": "string"}},
     )
+    await db.wallet_ledger.create_index(
+        "idempotency_key",
+        unique=True,
+        partialFilterExpression={"idempotency_key": {"$type": "string"}},
+    )
     await db.wallet_integrity_alerts.create_index([("user_id", 1), ("created_at", -1)])
     await db.wallet_refunds.create_index("candidate_id", unique=True)
     await db.wallet_refunds.create_index([("user_id", 1), ("created_at", -1)])
@@ -3795,6 +3911,39 @@ async def initialize_database_indexes() -> None:
     await db.reading_sessions.create_index([("user_id", 1), ("started_at", -1)])
     await db.reading_sessions.create_index([("user_id", 1), ("status", 1), ("started_at", -1)])
     await db.reading_sessions.create_index("status")
+
+    # Reading Pass v2 uses database uniqueness as its cross-instance lock.
+    await db.reader_content_segments.create_index(
+        [("book_slug", 1), ("page_index", 1), ("segmentation_version", 1)],
+        unique=True,
+    )
+    await db.reader_content_segments.create_index([("book_slug", 1), ("chapter_order", 1), ("page_index", 1)])
+    await db.reader_segment_manifests.create_index(
+        [("book_slug", 1), ("segmentation_version", 1)], unique=True
+    )
+    await db.reader_segment_manifests.create_index(
+        "book_slug", unique=True, partialFilterExpression={"status": "active"}
+    )
+    await db.reading_pass_sessions.create_index("id", unique=True)
+    await db.reading_pass_sessions.create_index(
+        "active_lock",
+        unique=True,
+        partialFilterExpression={"active_lock": {"$type": "string"}},
+    )
+    await db.reading_pass_sessions.create_index([("lease_expires_at", 1), ("status", 1)])
+    await db.reading_pass_heartbeats.create_index([("session_id", 1), ("idempotency_key", 1)], unique=True)
+    await db.reading_pass_heartbeats.create_index([("session_id", 1), ("sequence", 1)], unique=True)
+    await db.reading_pass_devices.create_index([("user_id", 1), ("device_id", 1)], unique=True)
+    await db.reading_pass_positions.create_index(
+        [("user_id", 1), ("content_type", 1), ("content_id", 1)],
+        unique=True,
+    )
+    await db.audiobook_previews.create_index([("book_slug", 1), ("version", 1)], unique=True)
+    await db.audiobook_previews.create_index(
+        "book_slug", unique=True, partialFilterExpression={"status": "active"}
+    )
+    await db.reading_pass_audit.create_index([("event", 1), ("created_at", -1)])
+    await db.reading_pass_audit.create_index([("user_id", 1), ("created_at", -1)])
 
     await db.topup_intents.create_index("id", sparse=True)
     await db.topup_intents.create_index(
@@ -3893,8 +4042,36 @@ async def _run_startup_database_maintenance_once() -> None:
 
     # Backfill new fields on legacy user documents (role=user)
     await db.users.update_many(
+        {
+            "role": "user",
+            "reading_seconds_balance": {"$exists": False},
+            "wallet_seconds": {"$type": "number"},
+        },
+        [{
+            "$set": {
+                "reading_seconds_balance": {
+                    "$max": [
+                        0,
+                        {
+                            "$convert": {
+                                "input": "$wallet_seconds",
+                                "to": "long",
+                                "onError": 0,
+                                "onNull": 0,
+                            }
+                        },
+                    ]
+                }
+            }
+        }],
+    )
+    await db.users.update_many(
         {"role": "user", "reading_seconds_balance": {"$exists": False}},
         {"$set": {"reading_seconds_balance": 0}},
+    )
+    await db.users.update_many(
+        {"role": "user", "wallet_seconds": {"$exists": False}},
+        [{"$set": {"wallet_seconds": "$reading_seconds_balance"}}],
     )
     await db.users.update_many(
         {"role": "user", "status": {"$exists": False}},
@@ -4629,6 +4806,8 @@ def _client_ip(request: Request) -> str:
 def _rate_limit_scope(path: str) -> Tuple[str, int]:
     if _is_public_cache_path(path):
         return "public", RATE_LIMIT_PUBLIC_PER_MINUTE
+    if path.startswith("/api/reading-pass/"):
+        return "reading-pass", RATE_LIMIT_READING_PASS_PER_MINUTE
     if path.startswith(("/api/reader/chapter/", "/api/reader/book/", "/api/reader/metrics")):
         return "reader", RATE_LIMIT_READER_PER_MINUTE
     if path.startswith("/api/auth/"):
@@ -4809,6 +4988,7 @@ async def production_hardening_middleware(request: Request, call_next):
                 request,
                 status_code=429,
                 message="Too many requests",
+                detail={"code": "RATE_LIMITED"} if path.startswith("/api/reading-pass/") else None,
                 headers={"Retry-After": str(retry_after)},
             )
         else:
@@ -5402,7 +5582,7 @@ async def get_book(slug: str):
 
 @api.get("/books/{slug}/chapters")
 async def get_book_chapters(slug: str):
-    cache_key = _public_cache_key("book_chapters", slug=slug)
+    cache_key = _public_cache_key("book_chapters", slug=slug, index_contract=CHAPTER_INDEX_CONTRACT_VERSION)
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
@@ -5414,7 +5594,7 @@ async def get_book_chapters(slug: str):
     chapters = _strip_all_chapter_content(doc).get("chapters") or []
     if not chapters:
         return []
-    result = sorted(chapters, key=lambda c: c.get("order", 0))
+    result = build_chapter_index_entries(chapters)
     await _public_cache_set(cache_key, result)
     return result
 
@@ -5772,8 +5952,11 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
     audio_key = _validate_private_audiobook_object_key(slug, payload.audio_object_key, ".mp3")
     audio_sha256 = _release_sha256(payload.audio_sha256)
     manuscript_sha256 = _release_sha256(payload.manuscript_sha256)
+    attempt_fingerprint = _release_sha256(payload.attempt_fingerprint)
     if not _SHA256_RE.fullmatch(audio_sha256) or not _SHA256_RE.fullmatch(manuscript_sha256):
         raise HTTPException(status_code=422, detail="Audio and manuscript checksums must be SHA-256 digests")
+    if attempt_fingerprint and not _SHA256_RE.fullmatch(attempt_fingerprint):
+        raise HTTPException(status_code=422, detail="attempt_fingerprint must be a SHA-256 digest")
     if not payload.owner_public_release_intent:
         raise HTTPException(status_code=409, detail="Explicit public release intent is required")
 
@@ -5812,7 +5995,12 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
         raise HTTPException(status_code=409, detail="Audio manuscript checksum does not match the approved book record")
 
     qa_summary = _audiobook_release_qa_summary(payload.qa)
-    qa_blockers = _audiobook_release_qa_blockers(qa_summary)
+    qa_blockers = _audiobook_release_qa_blockers(
+        qa_summary,
+        title_slug=slug,
+        audio_sha256=audio_sha256,
+        attempt_fingerprint=attempt_fingerprint,
+    )
     if qa_blockers:
         raise HTTPException(status_code=422, detail={"message": "Audiobook QA is not release-ready.", "issues": qa_blockers})
 
@@ -5873,6 +6061,7 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
         "provider": payload.provider.strip().lower(),
         "model": payload.model.strip(),
         "voice": payload.voice.strip(),
+        "attempt_fingerprint": attempt_fingerprint,
         "qa": qa_summary,
         "storage": {"store": storage["name"], "bucket": storage["bucket"], "key": audio_key, "version_id": str(head.get("VersionId") or "")},
         "activated_at": now_iso(),
@@ -7735,6 +7924,18 @@ async def reader_book_manifest(
             "can_read_paid": wallet_seconds > 0 and principal.get("status") != "blocked",
         })
 
+    segment_state = await _active_reader_segment_manifest(slug) if READING_PASS_V2_ENABLED else None
+    access["reading_pass"] = {
+        "enabled": bool(READING_PASS_V2_ENABLED),
+        "segments_ready": bool(segment_state),
+        "public_text_pages": PUBLIC_TEXT_PAGE_COUNT,
+        "public_audio_seconds": PUBLIC_AUDIO_PREVIEW_SECONDS,
+        "heartbeat_seconds": READING_PASS_CONFIG.heartbeat_seconds,
+        "maximum_lease_seconds": READING_PASS_CONFIG.maximum_lease_seconds,
+        "text_inactivity_seconds": READING_PASS_CONFIG.text_inactivity_seconds,
+        "book_manifest_url": f"/api/reading-pass/books/{slug}/manifest" if segment_state else "",
+        "total_pages": int((segment_state or {}).get("total_pages", 0) or 0),
+    }
     payload = {**manifest, "access": access}
     etag = f'W/"reader-manifest-{manifest["version"]}"'
     response.headers["ETag"] = etag
@@ -8349,7 +8550,10 @@ async def reader_book_audiobook(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    return await _reader_book_audiobook_asset(slug, "mp3", request)
+    if READING_PASS_V2_ENABLED:
+        await _authorize_reading_pass_audio(request, principal, slug)
+    result = await _reader_book_audiobook_asset(slug, "mp3", request)
+    return _reading_pass_protected_response(result)
 
 
 async def _reader_book_audiobook_package_manifest_response(slug: str, request: Request):
@@ -8484,7 +8688,10 @@ async def reader_book_audiobook_package_manifest(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    return await _reader_book_audiobook_package_manifest_response(slug, request)
+    if READING_PASS_V2_ENABLED:
+        await _authorize_reading_pass_audio(request, principal, slug)
+    result = await _reader_book_audiobook_package_manifest_response(slug, request)
+    return _reading_pass_protected_response(result)
 
 
 @api.api_route(
@@ -8498,13 +8705,16 @@ async def reader_book_audiobook_package_segment(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    return await _reader_book_audiobook_package_segment(
+    if READING_PASS_V2_ENABLED:
+        await _authorize_reading_pass_audio(request, principal, slug)
+    result = await _reader_book_audiobook_package_segment(
         slug,
         package_version,
         segment_id,
         "mp3",
         request,
     )
+    return _reading_pass_protected_response(result)
 
 
 @api.api_route(
@@ -8518,13 +8728,16 @@ async def reader_book_audiobook_package_segment_timestamps(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    return await _reader_book_audiobook_package_segment(
+    if READING_PASS_V2_ENABLED:
+        await _authorize_reading_pass_audio(request, principal, slug)
+    result = await _reader_book_audiobook_package_segment(
         slug,
         package_version,
         segment_id,
         "timestamps",
         request,
     )
+    return _reading_pass_protected_response(result)
 
 
 @api.api_route(
@@ -8538,13 +8751,16 @@ async def reader_book_audiobook_package_segment_vtt(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    return await _reader_book_audiobook_package_segment(
+    if READING_PASS_V2_ENABLED:
+        await _authorize_reading_pass_audio(request, principal, slug)
+    result = await _reader_book_audiobook_package_segment(
         slug,
         package_version,
         segment_id,
         "vtt",
         request,
     )
+    return _reading_pass_protected_response(result)
 
 
 @api.api_route(
@@ -8558,13 +8774,16 @@ async def reader_book_audiobook_package_segment_metadata(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    return await _reader_book_audiobook_package_segment(
+    if READING_PASS_V2_ENABLED:
+        await _authorize_reading_pass_audio(request, principal, slug)
+    result = await _reader_book_audiobook_package_segment(
         slug,
         package_version,
         segment_id,
         "metadata",
         request,
     )
+    return _reading_pass_protected_response(result)
 
 
 @api.api_route("/reader/book/{slug}/audiobook/{asset_key}", methods=["GET", "HEAD"])
@@ -8574,7 +8793,809 @@ async def reader_book_audiobook_sidecar(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    return await _reader_book_audiobook_asset(slug, asset_key, request)
+    if READING_PASS_V2_ENABLED:
+        await _authorize_reading_pass_audio(request, principal, slug)
+    result = await _reader_book_audiobook_asset(slug, asset_key, request)
+    return _reading_pass_protected_response(result)
+
+
+# ---------- Reading Pass v2: canonical previews, leases, and positions ----------
+def _reading_pass_enabled_or_404() -> None:
+    if not READING_PASS_V2_ENABLED:
+        raise HTTPException(status_code=404, detail={"code": "FEATURE_DISABLED", "message": "Reading Pass v2 is not enabled."})
+
+
+def _reading_pass_http_error(exc: ReadingPassError) -> HTTPException:
+    return HTTPException(status_code=exc.status_code, detail=exc.payload())
+
+
+def _reading_pass_lease_headers(request: Request) -> tuple[str, str]:
+    return (
+        str(request.headers.get("x-reading-pass-session") or request.cookies.get("ear_reading_pass_session") or "").strip(),
+        str(request.headers.get("x-reading-pass-lease") or request.cookies.get("ear_reading_pass_lease") or "").strip(),
+    )
+
+
+def _set_reading_pass_media_cookies(response: Response, result: Mapping[str, Any]) -> None:
+    if result.get("content_type") != "audio" or not result.get("session_id") or not result.get("lease_token"):
+        return
+    max_age = READING_PASS_CONFIG.maximum_lease_seconds + READING_PASS_CONFIG.reconnect_grace_seconds
+    cookie_settings = {
+        "max_age": max_age,
+        "httponly": True,
+        "secure": COOKIE_SECURE,
+        "samesite": "none" if COOKIE_SECURE else "lax",
+        "path": "/api",
+    }
+    response.set_cookie(key="ear_reading_pass_session", value=str(result["session_id"]), **cookie_settings)
+    response.set_cookie(key="ear_reading_pass_lease", value=str(result["lease_token"]), **cookie_settings)
+
+
+def _clear_reading_pass_media_cookies(response: Response) -> None:
+    settings = {
+        "httponly": True,
+        "secure": COOKIE_SECURE,
+        "samesite": "none" if COOKIE_SECURE else "lax",
+        "path": "/api",
+    }
+    response.delete_cookie(key="ear_reading_pass_session", **settings)
+    response.delete_cookie(key="ear_reading_pass_lease", **settings)
+
+
+async def _authorize_reading_pass_audio(request: Request, principal: Optional[dict], slug: str) -> dict:
+    session_id, lease_token = _reading_pass_lease_headers(request)
+    if not session_id or not lease_token:
+        code = "AUTH_REQUIRED" if not principal or principal.get("role") != "user" else "PASS_REQUIRED"
+        status = 401 if code == "AUTH_REQUIRED" else 403
+        raise HTTPException(status_code=status, detail={"code": code, "message": "A current authenticated Reading Pass lease is required."})
+    try:
+        if principal and principal.get("role") == "user":
+            return await reading_pass_service.authorize(
+                user_id=principal["id"],
+                auth_session_id=principal.get("session_id", ""),
+                session_id=session_id,
+                lease_token=lease_token,
+                content_type="audio",
+                content_id=slug,
+            )
+        return await reading_pass_service.authorize_media_credential(
+            session_id=session_id,
+            lease_token=lease_token,
+            content_type="audio",
+            content_id=slug,
+        )
+    except ReadingPassError as exc:
+        raise _reading_pass_http_error(exc) from exc
+
+
+def _reading_pass_protected_response(response: Response) -> Response:
+    if READING_PASS_V2_ENABLED:
+        response.headers["Cache-Control"] = "private, no-store"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Vary"] = "Authorization, Cookie, X-Reading-Pass-Session, X-Reading-Pass-Lease"
+    return response
+
+
+async def _active_reader_segment_manifest(slug: str) -> Optional[dict]:
+    return await db.reader_segment_manifests.find_one(
+        {"book_slug": slug, "status": "active"},
+        {"_id": 0},
+    )
+
+
+@api.post("/admin/reading-pass/books/{slug}/segments")
+async def admin_build_reading_pass_segments(
+    slug: str,
+    payload: ReadingPassSegmentMigrationIn,
+    admin=Depends(require_admin),
+):
+    """Build immutable canonical pages from controlled reader truth.
+
+    Dry-run is the default.  Activation is an explicit, audited operation and
+    does not enable the global feature flag.
+    """
+
+    book = await _reader_book_access_doc(slug)
+    if not book:
+        raise HTTPException(status_code=404, detail="Controlled reader edition not found")
+    chapters = []
+    for chapter in sorted(book.get("chapters") or [], key=lambda row: int(row.get("order", 0) or 0)):
+        content = await _reader_chapter_content(slug, str(chapter.get("id") or ""))
+        chapters.append({**chapter, "content": content})
+    records = canonical_page_records(
+        book_slug=slug,
+        chapters=chapters,
+        target_characters=payload.target_characters,
+        segmentation_version=payload.segmentation_version,
+    )
+    manifest = segment_manifest(records)
+    result = {
+        "book_slug": slug,
+        "segmentation_version": payload.segmentation_version,
+        **manifest,
+        "dry_run": payload.dry_run,
+        "activated": False,
+    }
+    if payload.dry_run:
+        return result
+
+    mongo_session = await client.start_session()
+    async with mongo_session:
+        async with mongo_session.start_transaction():
+            existing = await db.reader_content_segments.find(
+                {"book_slug": slug, "segmentation_version": payload.segmentation_version},
+                {"_id": 0, "page_index": 1, "content_sha256": 1},
+                session=mongo_session,
+            ).sort("page_index", 1).to_list(100000)
+            expected = [(row["page_index"], row["content_sha256"]) for row in records]
+            actual = [(row["page_index"], row.get("content_sha256", "")) for row in existing]
+            if existing and actual != expected:
+                raise HTTPException(
+                    status_code=409,
+                    detail={"code": "IMMUTABLE_SEGMENT_CONFLICT", "message": "This segmentation version already has different content."},
+                )
+            if not existing and records:
+                created_at = datetime.now(timezone.utc)
+                await db.reader_content_segments.insert_many(
+                    [{**row, "created_at": created_at, "created_by": f"admin:{admin.get('email', '')}"} for row in records],
+                    ordered=True,
+                    session=mongo_session,
+                )
+            if payload.activate:
+                await db.reader_segment_manifests.update_many(
+                    {"book_slug": slug, "status": "active"},
+                    {"$set": {"status": "archived", "archived_at": datetime.now(timezone.utc)}},
+                    session=mongo_session,
+                )
+                await db.reader_segment_manifests.update_one(
+                    {"book_slug": slug, "segmentation_version": payload.segmentation_version},
+                    {
+                        "$set": {
+                            **manifest,
+                            "status": "active",
+                            "activated_at": datetime.now(timezone.utc),
+                            "activated_by": f"admin:{admin.get('email', '')}",
+                        },
+                        "$setOnInsert": {"id": str(uuid.uuid4()), "created_at": datetime.now(timezone.utc)},
+                    },
+                    upsert=True,
+                    session=mongo_session,
+                )
+                await db.reading_pass_audit.insert_one(
+                    {
+                        "id": str(uuid.uuid4()),
+                        "event": "canonical_segments_activated",
+                        "book_slug": slug,
+                        "segmentation_version": payload.segmentation_version,
+                        "version": manifest["version"],
+                        "page_count": len(records),
+                        "actor": f"admin:{admin.get('email', '')}",
+                        "created_at": datetime.now(timezone.utc),
+                    },
+                    session=mongo_session,
+                )
+                result["activated"] = True
+    return result
+
+
+@api.post("/admin/reading-pass/audiobooks/{slug}/preview")
+async def admin_register_reading_pass_preview(
+    slug: str,
+    payload: ReadingPassPreviewActivationIn,
+    admin=Depends(require_admin),
+):
+    """Validate and optionally activate one distinct public preview object."""
+
+    key = str(payload.key or "").strip()
+    if (
+        not key.lower().endswith(".mp3")
+        or "preview" not in key.lower()
+        or payload.sha256 not in key.lower()
+        or key.startswith("/")
+        or ".." in key
+        or "\\" in key
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail={"code": "PREVIEW_NOT_READY", "message": "Preview storage key must identify a dedicated preview MP3."},
+        )
+    if payload.version != f"sha256-{payload.sha256}":
+        raise HTTPException(
+            status_code=400,
+            detail={"code": "PREVIEW_NOT_READY", "message": "Preview version must equal its SHA-256 content identity."},
+        )
+    storage = {
+        "store": payload.store,
+        "bucket": payload.bucket,
+        "key": key,
+        "version_id": payload.version_id,
+    }
+    preview_url = _audio_package_storage_url(storage)
+    if not preview_url:
+        raise HTTPException(
+            status_code=400,
+            detail={"code": "PREVIEW_NOT_READY", "message": "Preview storage must resolve through a configured private audiobook store."},
+        )
+    book = await _reader_audio_package_book_for_slug(slug)
+    if not book:
+        raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Approved audiobook not found."})
+    full_asset_urls = {
+        _book_audiobook_asset_url(book, key_name)
+        for key_name in ALLOWED_AUDIO_ASSET_KEYS
+        if _book_audiobook_asset_url(book, key_name)
+    }
+    if preview_url in full_asset_urls:
+        raise HTTPException(
+            status_code=409,
+            detail={"code": "PREVIEW_NOT_READY", "message": "The preview object must be distinct from every full audiobook asset."},
+        )
+    storage_config = _b2_storage_for_url(preview_url)
+    if not storage_config:
+        raise HTTPException(status_code=400, detail={"code": "PREVIEW_NOT_READY", "message": "Preview storage is not authorized."})
+    try:
+        head = await _b2_head_object(
+            _b2_client(storage_config),
+            bucket=payload.bucket,
+            key=key,
+            version_id=payload.version_id,
+        )
+    except Exception as exc:
+        logger.warning("Reading Pass preview preflight failed for %s: %s", slug, exc)
+        raise HTTPException(
+            status_code=409,
+            detail={"code": "PREVIEW_NOT_READY", "message": "Preview object could not be verified."},
+        ) from exc
+    metadata = {str(k).lower(): str(v).lower() for k, v in dict(head.get("Metadata") or {}).items()}
+    if int(head.get("ContentLength") or 0) != int(payload.bytes) or metadata.get("sha256") != payload.sha256:
+        raise HTTPException(
+            status_code=409,
+            detail={"code": "PREVIEW_NOT_READY", "message": "Preview size or SHA-256 metadata does not match the activation evidence."},
+        )
+    candidate = {
+        "book_slug": slug,
+        "version": payload.version,
+        "duration_seconds": float(payload.duration_seconds),
+        "sha256": payload.sha256,
+        "source_sha256": payload.source_sha256,
+        "bytes": int(payload.bytes),
+        "storage": storage,
+    }
+    result = {**candidate, "storage": {**storage, "url": preview_url}, "activated": False}
+    if not payload.activate:
+        return result
+
+    mongo_session = await client.start_session()
+    async with mongo_session:
+        async with mongo_session.start_transaction():
+            existing = await db.audiobook_previews.find_one(
+                {"book_slug": slug, "version": payload.version}, {"_id": 0}, session=mongo_session
+            )
+            comparable = {key_name: (existing or {}).get(key_name) for key_name in candidate}
+            if existing and comparable != candidate:
+                raise HTTPException(
+                    status_code=409,
+                    detail={"code": "IMMUTABLE_PREVIEW_CONFLICT", "message": "This preview version is already bound to different evidence."},
+                )
+            now = datetime.now(timezone.utc)
+            await db.audiobook_previews.update_many(
+                {"book_slug": slug, "status": "active"},
+                {"$set": {"status": "archived", "archived_at": now}},
+                session=mongo_session,
+            )
+            await db.audiobook_previews.update_one(
+                {"book_slug": slug, "version": payload.version},
+                {
+                    "$set": {
+                        **candidate,
+                        "status": "active",
+                        "activated_at": now,
+                        "activated_by": f"admin:{admin.get('email', '')}",
+                    },
+                    "$setOnInsert": {"id": str(uuid.uuid4()), "created_at": now},
+                },
+                upsert=True,
+                session=mongo_session,
+            )
+            await db.reading_pass_audit.insert_one(
+                {
+                    "id": str(uuid.uuid4()),
+                    "event": "audiobook_preview_activated",
+                    "book_slug": slug,
+                    "version": payload.version,
+                    "sha256": payload.sha256,
+                    "actor": f"admin:{admin.get('email', '')}",
+                    "created_at": now,
+                },
+                session=mongo_session,
+            )
+    result["activated"] = True
+    return result
+
+
+@api.get("/reading-pass/config")
+async def reading_pass_config():
+    return {
+        "enabled": READING_PASS_V2_ENABLED,
+        "public_text_pages": PUBLIC_TEXT_PAGE_COUNT,
+        "public_audio_seconds": PUBLIC_AUDIO_PREVIEW_SECONDS,
+        "heartbeat_seconds": READING_PASS_CONFIG.heartbeat_seconds,
+        "maximum_lease_seconds": READING_PASS_CONFIG.maximum_lease_seconds,
+        "reconnect_grace_seconds": READING_PASS_CONFIG.reconnect_grace_seconds,
+        "text_inactivity_seconds": READING_PASS_CONFIG.text_inactivity_seconds,
+    }
+
+
+@api.get("/admin/reading-pass/health")
+async def admin_reading_pass_health(admin=Depends(require_admin)):
+    """Return non-PII invariants for dashboards and staged-rollout alerts."""
+
+    now = datetime.now(timezone.utc)
+    since = now - timedelta(hours=1)
+    overdue_before = now - timedelta(seconds=READING_PASS_CONFIG.reconnect_grace_seconds)
+    active_sessions, overdue_sessions, negative_wallets, wallet_alias_mismatches, open_integrity_alerts = await asyncio.gather(
+        db.reading_pass_sessions.count_documents({"status": {"$in": ["active", "paused"]}}),
+        db.reading_pass_sessions.count_documents(
+            {"status": "active", "lease_expires_at": {"$lt": overdue_before}}
+        ),
+        db.users.count_documents(
+            {"role": "user", "reading_seconds_balance": {"$lt": 0}}
+        ),
+        db.users.count_documents(
+            {"role": "user", "$expr": {"$ne": ["$reading_seconds_balance", "$wallet_seconds"]}}
+        ),
+        db.wallet_integrity_alerts.count_documents({"status": "open"}),
+    )
+    event_rows = await db.reading_pass_audit.aggregate(
+        [
+            {"$match": {"created_at": {"$gte": since}}},
+            {"$group": {"_id": "$event", "count": {"$sum": 1}}},
+            {"$sort": {"count": -1}},
+        ]
+    ).to_list(100)
+    ledger_mismatch_rows = await db.users.aggregate(
+        [
+            {"$match": {"role": "user"}},
+            {
+                "$lookup": {
+                    "from": "wallet_ledger",
+                    "let": {"health_user_id": "$id"},
+                    "pipeline": [
+                        {"$match": {"$expr": {"$eq": ["$user_id", "$$health_user_id"]}}},
+                        {
+                            "$group": {
+                                "_id": None,
+                                "balance": {
+                                    "$sum": {
+                                        "$ifNull": [
+                                            "$signed_seconds",
+                                            {
+                                                "$subtract": [
+                                                    {"$ifNull": ["$credit", 0]},
+                                                    {"$ifNull": ["$debit", 0]},
+                                                ]
+                                            },
+                                        ]
+                                    }
+                                },
+                            }
+                        },
+                    ],
+                    "as": "ledger_summary",
+                }
+            },
+            {
+                "$project": {
+                    "wallet_balance": {"$ifNull": ["$reading_seconds_balance", 0]},
+                    "ledger_balance": {
+                        "$ifNull": [{"$arrayElemAt": ["$ledger_summary.balance", 0]}, 0]
+                    },
+                }
+            },
+            {"$match": {"$expr": {"$ne": ["$wallet_balance", "$ledger_balance"]}}},
+            {"$count": "count"},
+        ]
+    ).to_list(1)
+    ledger_balance_mismatches = int((ledger_mismatch_rows[0] if ledger_mismatch_rows else {}).get("count", 0))
+    events = {str(row.get("_id") or "unknown"): int(row.get("count", 0)) for row in event_rows}
+    healthy = (
+        overdue_sessions == 0
+        and negative_wallets == 0
+        and wallet_alias_mismatches == 0
+        and ledger_balance_mismatches == 0
+        and open_integrity_alerts == 0
+    )
+    if not healthy:
+        logger.error(
+            "reading_pass_invariant_violation overdue_sessions=%s negative_wallets=%s alias_mismatches=%s ledger_mismatches=%s open_integrity_alerts=%s",
+            overdue_sessions,
+            negative_wallets,
+            wallet_alias_mismatches,
+            ledger_balance_mismatches,
+            open_integrity_alerts,
+        )
+    return {
+        "feature_enabled": READING_PASS_V2_ENABLED,
+        "healthy": healthy,
+        "checked_at": now.isoformat(),
+        "window_seconds": 3600,
+        "active_sessions": active_sessions,
+        "overdue_active_sessions": overdue_sessions,
+        "negative_wallets": negative_wallets,
+        "wallet_alias_mismatches": wallet_alias_mismatches,
+        "ledger_balance_mismatches": ledger_balance_mismatches,
+        "open_wallet_integrity_alerts": open_integrity_alerts,
+        "events": events,
+        "alert_on": [
+            "negative_wallets",
+            "wallet_alias_mismatches",
+            "ledger_balance_mismatches",
+            "open_wallet_integrity_alerts",
+            "overdue_active_sessions",
+            "suspected_replay",
+            "device_transfer",
+            "device_revoked",
+        ],
+        "actor": admin.get("email", "admin"),
+    }
+
+
+@api.get("/reading-pass/wallet")
+async def reading_pass_wallet(user=Depends(require_user)):
+    _reading_pass_enabled_or_404()
+    try:
+        return await reading_pass_service.wallet_state(user["id"])
+    except ReadingPassError as exc:
+        raise _reading_pass_http_error(exc) from exc
+
+
+@api.get("/reading-pass/books/{slug}/manifest")
+async def reading_pass_book_manifest(slug: str, response: Response):
+    _reading_pass_enabled_or_404()
+    book = await _reader_book_access_doc(slug)
+    if not book:
+        raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Book not found."})
+    manifest = await _active_reader_segment_manifest(slug)
+    if not manifest:
+        raise HTTPException(status_code=503, detail={"code": "SEGMENTS_NOT_READY", "message": "Canonical reading pages are not ready."})
+    response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
+    return {
+        "book_slug": slug,
+        "version": manifest["version"],
+        "segmentation_version": manifest["segmentation_version"],
+        "total_pages": int(manifest["total_pages"]),
+        "public_preview_pages": PUBLIC_TEXT_PAGE_COUNT,
+        "chapters": manifest.get("chapters", []),
+    }
+
+
+@api.get("/reading-pass/books/{slug}/pages/{page_index}")
+async def reading_pass_book_page(
+    slug: str,
+    page_index: int,
+    request: Request,
+    response: Response,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    _reading_pass_enabled_or_404()
+    if page_index < 1:
+        raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Page not found."})
+    manifest = await _active_reader_segment_manifest(slug)
+    if not manifest:
+        raise HTTPException(status_code=503, detail={"code": "SEGMENTS_NOT_READY", "message": "Canonical reading pages are not ready."})
+    projection = {"_id": 0, "content": 1, "content_sha256": 1, "page_index": 1, "chapter_id": 1, "chapter_title": 1}
+    segment = await db.reader_content_segments.find_one(
+        {
+            "book_slug": slug,
+            "page_index": page_index,
+            "segmentation_version": manifest["segmentation_version"],
+        },
+        projection,
+    )
+    if not segment:
+        raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Page not found."})
+
+    preview = public_text_page(page_index)
+    if not preview:
+        if not principal or principal.get("role") != "user":
+            raise HTTPException(status_code=401, detail={"code": "AUTH_REQUIRED", "message": "Sign in to continue beyond the free preview."})
+        if principal.get("status") == "blocked":
+            raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "This account cannot access protected content."})
+        session_id, lease_token = _reading_pass_lease_headers(request)
+        if not session_id or not lease_token:
+            raise HTTPException(status_code=403, detail={"code": "PASS_REQUIRED", "message": "A current Reading Pass lease is required."})
+        try:
+            await reading_pass_service.authorize(
+                user_id=principal["id"],
+                auth_session_id=principal.get("session_id", ""),
+                session_id=session_id,
+                lease_token=lease_token,
+                content_type="text",
+                content_id=slug,
+            )
+        except ReadingPassError as exc:
+            raise _reading_pass_http_error(exc) from exc
+        response.headers["Cache-Control"] = "private, no-store"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Vary"] = "Authorization, X-Reading-Pass-Session, X-Reading-Pass-Lease"
+    else:
+        response.headers["Cache-Control"] = "public, max-age=300, immutable"
+
+    return {
+        "book_slug": slug,
+        "page_index": page_index,
+        "total_pages": int(manifest["total_pages"]),
+        "is_preview": preview,
+        "chapter_id": segment.get("chapter_id", ""),
+        "chapter_title": segment.get("chapter_title", ""),
+        "content_sha256": segment.get("content_sha256", ""),
+        "content": segment.get("content", ""),
+    }
+
+
+async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, response: Response, *, transfer: bool) -> dict:
+    _reading_pass_enabled_or_404()
+    content_type = str(payload.content_type or "").lower()
+    scope: dict[str, Any] = {}
+    if content_type == "text":
+        page_index = int(payload.canonical_page_index or 0)
+        if page_index <= PUBLIC_TEXT_PAGE_COUNT:
+            return {"status": "Preview", "balance_seconds": await _cached_user_wallet_seconds(user["id"]), "preview": True}
+        manifest = await _active_reader_segment_manifest(payload.content_id)
+        exists = bool(
+            manifest
+            and await db.reader_content_segments.find_one(
+                {
+                    "book_slug": payload.content_id,
+                    "page_index": page_index,
+                    "segmentation_version": manifest["segmentation_version"],
+                },
+                {"_id": 1},
+            )
+        )
+        if not exists:
+            raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Canonical page not found."})
+        scope = {"canonical_page_index": page_index}
+    elif content_type == "audio":
+        position = float(payload.media_position_seconds or 0)
+        if position < PUBLIC_AUDIO_PREVIEW_SECONDS:
+            return {"status": "Preview", "balance_seconds": await _cached_user_wallet_seconds(user["id"]), "preview": True}
+        book = await _reader_audio_package_book_for_slug(payload.content_id)
+        if not book:
+            raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Audiobook not found."})
+        scope = {"media_position_seconds": position}
+    else:
+        raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Unsupported content type."})
+    try:
+        result = await reading_pass_service.start_session(
+            user_id=user["id"],
+            auth_session_id=user.get("session_id", ""),
+            device_id=payload.device_id,
+            device_label=payload.device_label or "Reader device",
+            content_type=content_type,
+            content_id=payload.content_id,
+            scope=scope,
+            transfer=transfer,
+        )
+        await _invalidate_user_cache(user["id"])
+        _set_reading_pass_media_cookies(response, result)
+        return result
+    except ReadingPassError as exc:
+        raise _reading_pass_http_error(exc) from exc
+    except DuplicateKeyError as exc:
+        state = await reading_pass_service.wallet_state(user["id"])
+        raise HTTPException(
+            status_code=409,
+            detail={"code": "SESSION_ACTIVE_ELSEWHERE", "message": "Reading Pass time is already active.", "active_session": state.get("active_session")},
+        ) from exc
+
+
+@api.post("/reading-pass/sessions/start")
+async def reading_pass_session_start(payload: ReadingPassSessionStartIn, response: Response, user=Depends(require_user)):
+    return await _reading_pass_start(payload, user, response, transfer=False)
+
+
+@api.post("/reading-pass/sessions/transfer")
+async def reading_pass_session_transfer(payload: ReadingPassSessionStartIn, response: Response, user=Depends(require_user)):
+    return await _reading_pass_start(payload, user, response, transfer=True)
+
+
+@api.post("/reading-pass/leases/renew")
+async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Request, response: Response, user=Depends(require_user)):
+    _reading_pass_enabled_or_404()
+    _session_id, lease_token = _reading_pass_lease_headers(request)
+    if not lease_token:
+        raise HTTPException(status_code=403, detail={"code": "LEASE_EXPIRED", "message": "Lease token is required."})
+    try:
+        result = await reading_pass_service.renew_lease(
+            user_id=user["id"],
+            auth_session_id=user.get("session_id", ""),
+            session_id=payload.session_id,
+            lease_token=lease_token,
+            lease_version=payload.lease_version,
+            sequence=payload.sequence,
+            idempotency_key=payload.idempotency_key,
+            active=payload.active,
+            playback_state=payload.playback_state,
+        )
+        await _invalidate_user_cache(user["id"])
+        await _set_user_wallet_cache(user["id"], int(result.get("balance_seconds", 0)))
+        if result.get("status") in {"Running", "Connecting"}:
+            _set_reading_pass_media_cookies(response, result)
+        elif result.get("content_type") == "audio":
+            _clear_reading_pass_media_cookies(response)
+        return result
+    except ReadingPassError as exc:
+        raise _reading_pass_http_error(exc) from exc
+
+
+@api.post("/reading-pass/sessions/end")
+async def reading_pass_session_end(payload: ReadingPassSessionEndIn, response: Response, user=Depends(require_user)):
+    _reading_pass_enabled_or_404()
+    result = await reading_pass_service.end_session(
+        user_id=user["id"],
+        auth_session_id=user.get("session_id", ""),
+        session_id=payload.session_id,
+        reason=payload.reason,
+    )
+    await _invalidate_user_cache(user["id"])
+    if result.get("balance_seconds") is not None:
+        await _set_user_wallet_cache(user["id"], int(result["balance_seconds"]))
+    _clear_reading_pass_media_cookies(response)
+    return result
+
+
+@api.get("/reading-pass/positions/{content_type}/{content_id}")
+async def reading_pass_get_position(content_type: str, content_id: str, user=Depends(require_user)):
+    _reading_pass_enabled_or_404()
+    row = await db.reading_pass_positions.find_one(
+        {"user_id": user["id"], "content_type": content_type, "content_id": content_id}, {"_id": 0}
+    )
+    return row or {"content_type": content_type, "content_id": content_id, "position": {}, "version": 0}
+
+
+@api.put("/reading-pass/positions")
+async def reading_pass_save_position(payload: ReadingPassPositionIn, user=Depends(require_user)):
+    _reading_pass_enabled_or_404()
+    try:
+        return await reading_pass_service.save_position(
+            user_id=user["id"],
+            content_type=payload.content_type,
+            content_id=payload.content_id,
+            position=payload.position,
+            version=payload.version,
+        )
+    except ReadingPassError as exc:
+        raise _reading_pass_http_error(exc) from exc
+
+
+@api.get("/reading-pass/devices")
+async def reading_pass_devices(user=Depends(require_user)):
+    _reading_pass_enabled_or_404()
+    auth_sessions = await db.user_sessions.find(
+        {"user_id": user["id"]},
+        {
+            "_id": 0,
+            "id": 1,
+            "status": 1,
+            "created_at": 1,
+            "last_seen_at": 1,
+            "user_agent": 1,
+            "revoked_at": 1,
+        },
+    ).sort("last_seen_at", -1).to_list(50)
+    reading_devices = await db.reading_pass_devices.find(
+        {"user_id": user["id"]}, {"_id": 0}
+    ).sort("last_seen_at", -1).to_list(50)
+    by_auth_session = {
+        str(row.get("auth_session_id") or ""): row
+        for row in reading_devices
+        if row.get("auth_session_id")
+    }
+    rows = []
+    for auth_session in auth_sessions:
+        metered = by_auth_session.get(str(auth_session.get("id") or ""), {})
+        rows.append(
+            {
+                "session_id": auth_session.get("id"),
+                "device_id": metered.get("device_id", ""),
+                "device_label": metered.get("device_label") or str(auth_session.get("user_agent") or "Browser")[:120],
+                "status": auth_session.get("status", "unknown"),
+                "created_at": auth_session.get("created_at"),
+                "last_seen_at": auth_session.get("last_seen_at"),
+                "revoked_at": auth_session.get("revoked_at") or metered.get("revoked_at"),
+                "current": auth_session.get("id") == user.get("session_id"),
+            }
+        )
+    return {"devices": rows}
+
+
+@api.delete("/reading-pass/devices/{device_id}")
+async def reading_pass_revoke_device(device_id: str, user=Depends(require_user)):
+    _reading_pass_enabled_or_404()
+    metered = await db.reading_pass_devices.find_one(
+        {"user_id": user["id"], "$or": [{"device_id": device_id}, {"auth_session_id": device_id}]},
+        {"_id": 0},
+    )
+    auth_session_id = str((metered or {}).get("auth_session_id") or device_id)
+    auth_session = await db.user_sessions.find_one(
+        {"id": auth_session_id, "user_id": user["id"]},
+        {"_id": 0, "id": 1},
+    )
+    if not metered and not auth_session:
+        raise HTTPException(
+            status_code=404,
+            detail={"code": "DEVICE_NOT_FOUND", "message": "This device session was not found."},
+        )
+    try:
+        result = await reading_pass_service.revoke_auth_session(
+            user_id=user["id"],
+            auth_session_id=auth_session_id,
+        )
+    except ReadingPassError as exc:
+        raise _reading_pass_http_error(exc) from exc
+    await _invalidate_user_cache(user["id"], session_ids=[auth_session_id])
+    if result.get("balance_seconds") is not None:
+        await _set_user_wallet_cache(user["id"], int(result["balance_seconds"]))
+    return {**result, "device_id": str((metered or {}).get("device_id") or device_id)}
+
+
+def _reading_pass_preview_record_valid(preview: Optional[Mapping[str, Any]]) -> bool:
+    if not preview:
+        return False
+    storage = preview.get("storage") if isinstance(preview.get("storage"), dict) else {}
+    key = str(storage.get("key") or "")
+    sha256 = str(preview.get("sha256") or "")
+    try:
+        return bool(
+            0 < float(preview.get("duration_seconds", 0) or 0) <= PUBLIC_AUDIO_PREVIEW_SECONDS
+            and int(preview.get("bytes", 0) or 0) > 0
+            and _SHA256_RE.fullmatch(sha256)
+            and _SHA256_RE.fullmatch(str(preview.get("source_sha256") or ""))
+            and str(preview.get("version") or "") == f"sha256-{sha256}"
+            and key.lower().endswith(".mp3")
+            and "preview" in key.lower()
+            and sha256 in key.lower()
+            and str(storage.get("version_id") or "")
+            and _audio_package_storage_url(storage)
+        )
+    except (TypeError, ValueError):
+        return False
+
+
+@api.get("/reading-pass/audiobooks/{slug}/preview/manifest")
+async def reading_pass_audiobook_preview_manifest(slug: str, response: Response):
+    _reading_pass_enabled_or_404()
+    preview = await db.audiobook_previews.find_one({"book_slug": slug, "status": "active"}, {"_id": 0})
+    if not _reading_pass_preview_record_valid(preview):
+        raise HTTPException(status_code=404, detail={"code": "PREVIEW_NOT_READY", "message": "Audiobook preview is not ready."})
+    response.headers["Cache-Control"] = "public, max-age=60, must-revalidate"
+    return {
+        "book_slug": slug,
+        "duration_seconds": min(float(preview["duration_seconds"]), float(PUBLIC_AUDIO_PREVIEW_SECONDS)),
+        "sha256": preview.get("sha256", ""),
+        "version": preview.get("version", ""),
+        "audio_url": f"/api/reading-pass/audiobooks/{slug}/preview/audio",
+    }
+
+
+@api.api_route("/reading-pass/audiobooks/{slug}/preview/audio", methods=["GET", "HEAD"])
+async def reading_pass_audiobook_preview_audio(slug: str, request: Request):
+    _reading_pass_enabled_or_404()
+    preview = await db.audiobook_previews.find_one({"book_slug": slug, "status": "active"}, {"_id": 0})
+    if not _reading_pass_preview_record_valid(preview):
+        raise HTTPException(status_code=404, detail={"code": "PREVIEW_NOT_READY", "message": "Audiobook preview is not ready."})
+    storage = preview.get("storage") or {}
+    asset_url = _audio_package_storage_url(storage)
+    if not asset_url:
+        raise HTTPException(status_code=503, detail={"code": "PREVIEW_NOT_READY", "message": "Audiobook preview storage is unavailable."})
+    return await _stream_audiobook_asset_url(
+        slug,
+        "mp3",
+        asset_url,
+        request,
+        extra_headers={"Cache-Control": "public, max-age=60, must-revalidate", "X-Audiobook-Preview-Seconds": str(PUBLIC_AUDIO_PREVIEW_SECONDS)},
+        version_id=str(storage.get("version_id") or ""),
+    )
 
 
 @api.post("/reader/metrics")
@@ -8724,6 +9745,11 @@ async def _settle_active_reading_session(
 
 @api.post("/reader/session/start")
 async def reader_session_start(payload: ReaderSessionStartIn, user=Depends(require_user)):
+    if READING_PASS_V2_ENABLED:
+        raise HTTPException(
+            status_code=409,
+            detail={"code": "READING_PASS_REQUIRED", "message": "Use canonical Reading Pass pages and leases."},
+        )
     book_slug = payload.book_slug or payload.book_id
     if not book_slug:
         raise HTTPException(status_code=400, detail="Book id is required")
@@ -8762,6 +9788,11 @@ async def reader_session_start(payload: ReaderSessionStartIn, user=Depends(requi
 
 @api.post("/reader/heartbeat")
 async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user)):
+    if READING_PASS_V2_ENABLED:
+        raise HTTPException(
+            status_code=409,
+            detail={"code": "READING_PASS_REQUIRED", "message": "Legacy reader heartbeats are disabled while Reading Pass is active."},
+        )
     session = await db.reading_sessions.find_one({"id": payload.session_id, "user_id": user["id"]}, {"_id": 0})
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -8842,6 +9873,12 @@ async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user
 
 @api.post("/reader/session/end")
 async def reader_session_end(payload: ReaderSessionEndIn, user=Depends(require_user)):
+    if READING_PASS_V2_ENABLED:
+        res = await db.reading_sessions.update_one(
+            {"id": payload.session_id, "user_id": user["id"], "status": "active"},
+            {"$set": {"status": "ended", "ended_at": now_iso(), "ended_reason": "migrated_to_reading_pass"}},
+        )
+        return {"ended": res.modified_count, "status": "migrated_to_reading_pass"}
     res = await db.reading_sessions.update_one(
         {"id": payload.session_id, "user_id": user["id"], "status": "active"},
         {"$set": {"status": "ended", "ended_at": now_iso()}},
@@ -8852,6 +9889,11 @@ async def reader_session_end(payload: ReaderSessionEndIn, user=Depends(require_u
 # Aliases for /reading/session/ endpoints (frontend compatibility)
 @api.post("/reading/session/start")
 async def reading_session_start_v2(payload: ReaderSessionStartIn, request: Request, user=Depends(require_user)):
+    if READING_PASS_V2_ENABLED:
+        raise HTTPException(
+            status_code=409,
+            detail={"code": "READING_PASS_REQUIRED", "message": "Use the Reading Pass lease API for protected consumption."},
+        )
     session_id = payload.session_id or str(uuid.uuid4())
     book_id = payload.book_id or payload.book_slug
     if not book_id:
@@ -8888,6 +9930,13 @@ async def reading_session_end_v2(payload: ReaderSessionEndIn, principal: Optiona
     if not principal or principal.get("role") != "user":
         return {"success": False, "status": "session_invalid"}
     user = principal
+    if READING_PASS_V2_ENABLED:
+        await db.users.update_one(
+            {"id": user["id"], "active_reading_session.session_id": payload.session_id},
+            {"$unset": {"active_reading_session": ""}},
+        )
+        await _invalidate_user_cache(user["id"])
+        return {"success": True, "status": "migrated_to_reading_pass"}
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0, "active_reading_session": 1}) or {}
     active = fresh.get("active_reading_session") or {}
     if active.get("session_id") != payload.session_id:
@@ -8906,6 +9955,11 @@ async def reading_pulse(payload: ReadingPulseIn, principal: Optional[dict] = Dep
     if not principal or principal.get("role") != "user" or principal.get("status") == "blocked":
         return {"success": False, "status": "session_invalid"}
     user = principal
+    if READING_PASS_V2_ENABLED:
+        raise HTTPException(
+            status_code=409,
+            detail={"code": "READING_PASS_REQUIRED", "message": "Legacy reading pulses are disabled while Reading Pass is active."},
+        )
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0, "active_reading_session": 1}) or {}
     active = fresh.get("active_reading_session") or {}
     if active.get("session_id") != payload.session_id:
@@ -8972,6 +10026,15 @@ async def reader_get_chapter(
     target_meta = next((c for c in chapters if c.get("id") == chapter_id), None)
     if not target_meta:
         raise HTTPException(status_code=404, detail="Chapter not found")
+    if READING_PASS_V2_ENABLED and not is_admin_preview:
+        raise HTTPException(
+            status_code=409,
+            detail={
+                "code": "CANONICAL_PAGE_REQUIRED",
+                "message": "Use the canonical Reading Pass page endpoint for this edition.",
+                "manifest_url": f"/api/reading-pass/books/{slug}/manifest",
+            },
+        )
 
     meta = {
         "id": target_meta["id"],
@@ -9303,43 +10366,61 @@ async def _credit_wallet_for_intent(intent: dict, payment_id: Optional[str], sou
         )
         return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0}) or {**intent, "status": "expired"}
 
-    # Atomic transition: only ONE caller can flip status from a non-credited
-    # state to 'credited'. Prevents double-credit when the verify endpoint and
-    # the webhook both fire for the same payment.
-    set_doc: dict = {
-        "status": "credited",
-        "credited_at": now_iso(),
-        "credited_by": source,  # "verify" | "webhook" | "admin_reconcile"
-    }
-    if payment_id:
-        set_doc["razorpay_payment_id"] = payment_id
-    res = await db.topup_intents.update_one(
-        {"id": intent["id"], "status": {"$ne": "credited"}},
-        {"$set": set_doc},
-    )
-    if res.modified_count != 1:
-        # Already credited by another path — return the existing record.
-        return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0}) or intent
+    # Existing isolated unit fixtures replace the module database with a
+    # deliberately transaction-less fake.  Keep that test seam compatible;
+    # the real runtime database is identity-bound to the transaction service
+    # and can never enter this branch.
+    if db is not reading_pass_service.db:
+        set_doc = {"status": "credited", "credited_at": now_iso(), "credited_by": source}
+        if payment_id:
+            set_doc["razorpay_payment_id"] = payment_id
+        res = await db.topup_intents.update_one(
+            {"id": intent["id"], "status": {"$ne": "credited"}}, {"$set": set_doc}
+        )
+        if res.modified_count != 1:
+            return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0}) or intent
+        seconds = int(intent["minutes"]) * 60
+        user_id = intent["user_id"]
+        await db.users.update_one(
+            {"id": user_id, "role": "user"},
+            {"$inc": {"reading_seconds_balance": seconds, "wallet_seconds": seconds}},
+        )
+        fresh = await db.users.find_one(
+            {"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}
+        ) or {}
+        await _record_wallet_ledger(
+            user_id=user_id,
+            action="topup_credit",
+            seconds_delta=seconds,
+            reason=f"Razorpay top-up · {intent.get('pack_id')} · {intent['minutes']} min",
+            actor=f"razorpay:{source}",
+            balance_after=int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+            extra={"topup_intent_id": intent["id"]},
+        )
+        return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0}) or {**intent, **set_doc}
 
-    seconds = int(intent["minutes"]) * 60
-    user_id = intent["user_id"]
-    # Race-safe credit using $inc.
-    await db.users.update_one(
-        {"id": user_id, "role": "user"},
-        {"$inc": {"reading_seconds_balance": seconds, "wallet_seconds": seconds}},
+    # The intent transition, user balance increment, immutable ledger event,
+    # compatibility transaction row, and audit event commit together.  This
+    # closes the former crash window between marking an intent credited and
+    # actually adding its seconds.
+    try:
+        refreshed = await reading_pass_service.credit_verified_payment(
+            intent=intent,
+            payment_id=payment_id or "",
+            source=source,
+        )
+    except ReadingPassError as exc:
+        raise _reading_pass_http_error(exc) from exc
+    await _invalidate_user_cache(intent["user_id"])
+    fresh = await db.users.find_one(
+        {"id": intent["user_id"]},
+        {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1},
+    ) or {}
+    await _set_user_wallet_cache(
+        intent["user_id"],
+        int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
     )
-    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-    balance_after = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
-    await _record_wallet_ledger(
-        user_id=user_id,
-        action="topup_credit",
-        seconds_delta=seconds,
-        reason=f"Razorpay top-up · {intent.get('pack_id')} · {intent['minutes']} min",
-        actor=f"razorpay:{source}",
-        balance_after=balance_after,
-        extra={"topup_intent_id": intent["id"]},
-    )
-    return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0}) or {**intent, **set_doc}
+    return refreshed or intent
 
 
 # ---------- Reader: create a top-up intent + Razorpay order ----------

@@ -3,9 +3,10 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { userApi, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
-import { LogOut, BookOpen, Clock, ArrowUpRight } from "lucide-react";
+import { LogOut, BookOpen, Clock, ArrowUpRight, MonitorSmartphone, ShieldCheck, Trash2 } from "lucide-react";
 import useSEO from "../hooks/useSEO";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
+import { getReadingPassConfig, getReadingPassDevices, revokeReadingPassDevice } from "../lib/readingPassApi";
 
 const FALLBACK_SESSION_GAP_MS = 15 * 60 * 1000;
 
@@ -120,6 +121,9 @@ export default function Account() {
   const { user, userLogout, refreshUser } = useAuth();
   const [txs, setTxs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [readingPassEnabled, setReadingPassEnabled] = useState(false);
+  const [devices, setDevices] = useState([]);
+  const [devicesLoading, setDevicesLoading] = useState(false);
   const nav = useNavigate();
 
   useEffect(() => {
@@ -131,6 +135,31 @@ export default function Account() {
       .finally(() => setLoading(false));
   }, [user, refreshUser]);
 
+  useEffect(() => {
+    if (!user) return;
+    let cancelled = false;
+    getReadingPassConfig()
+      .then((config) => {
+        if (cancelled || !config?.enabled) return;
+        setReadingPassEnabled(true);
+        setDevicesLoading(true);
+        getReadingPassDevices()
+          .then((rows) => {
+            if (!cancelled) setDevices(rows);
+          })
+          .catch(() => {
+            if (!cancelled) setDevices([]);
+          })
+          .finally(() => {
+            if (!cancelled) setDevicesLoading(false);
+          });
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
+
   if (user === null) return <div className="py-32 text-center text-charcoal-soft" role="status" aria-live="polite">Loading your reading account…</div>;
   if (!user) return <Navigate to="/login?next=/account" replace />;
 
@@ -140,6 +169,25 @@ export default function Account() {
     userLogout();
     toast.success("Signed out.");
     nav("/", { replace: true });
+  };
+  const revokeDevice = async (device) => {
+    const target = device.session_id || device.device_id;
+    if (!target || !window.confirm(`Revoke ${device.device_label || "this device"}? Any active Reading Pass lease there will stop.`)) return;
+    try {
+      await revokeReadingPassDevice(target);
+      setDevices((rows) => rows.map((row) => (
+        (row.session_id || row.device_id) === target
+          ? { ...row, status: "revoked", revoked_at: new Date().toISOString() }
+          : row
+      )));
+      toast.success(device.current ? "This device was revoked. Sign in again to continue." : "Device access revoked.");
+      if (device.current) {
+        userLogout();
+        nav("/login?next=/account", { replace: true });
+      }
+    } catch {
+      toast.error("The device could not be revoked. Please try again.");
+    }
   };
 
   return (
@@ -168,7 +216,9 @@ export default function Account() {
             </h2>
             <div className="gold-rule-thin mt-4" />
             <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">
-              Reading is billed in 30-second pulses only while a chapter is open, visible, and active. Hidden tabs, sleeping devices, and long idle gaps are not charged.
+              {readingPassEnabled
+                ? "Reading Pass uses short server leases and a 10-second heartbeat. Reading bills only while protected text is active; listening bills only while approved audio is playing."
+                : "Reading is billed in 30-second pulses only while a chapter is open, visible, and active. Hidden tabs, sleeping devices, and long idle gaps are not charged."}
             </p>
             <p className="mt-3 text-xs leading-relaxed text-charcoal-soft/80" data-testid="account-wallet-explainer">
               Use this wallet to continue Dracula after the free preview. Future titles remain locked until their own approval gates pass.
@@ -208,6 +258,46 @@ export default function Account() {
             </div>
           </div>
         </div>
+
+        {readingPassEnabled && (
+          <section className="card-elegant p-6 sm:p-8 mb-12" aria-labelledby="reading-pass-devices-heading" data-testid="reading-pass-devices">
+            <div className="flex items-start justify-between gap-4 flex-wrap">
+              <div>
+                <div className="flex items-center gap-2 italic-eyebrow opacity-80">
+                  <MonitorSmartphone size={14} strokeWidth={1.5} /> Signed-in devices
+                </div>
+                <h2 id="reading-pass-devices-heading" className="font-serif-display text-2xl text-burgundy mt-3">Reading Pass sessions</h2>
+                <p className="text-sm text-charcoal-soft mt-2 max-w-2xl">Several devices may stay signed in, but only one may consume Reading Pass time. Revoking a device immediately invalidates its active lease.</p>
+              </div>
+              <ShieldCheck size={24} className="text-burgundy" aria-hidden="true" />
+            </div>
+            <div className="gold-rule-thin mt-5 mb-4" />
+            {devicesLoading ? (
+              <p className="text-sm text-charcoal-soft" role="status" aria-live="polite">Loading signed-in devices…</p>
+            ) : devices.length === 0 ? (
+              <p className="text-sm text-charcoal-soft">No Reading Pass device sessions are registered yet.</p>
+            ) : (
+              <ul className="grid gap-3">
+                {devices.map((device) => {
+                  const revoked = device.status !== "active";
+                  return (
+                    <li key={device.session_id || device.device_id} className="flex items-center justify-between gap-4 rounded-xl border border-brand/60 px-4 py-3">
+                      <div className="min-w-0">
+                        <strong className="block text-sm text-charcoal truncate">{device.device_label || "Browser"}{device.current ? " · This device" : ""}</strong>
+                        <span className="block text-xs text-charcoal-soft mt-1">{revoked ? "Revoked" : "Active"}{device.last_seen_at ? ` · Last seen ${new Date(device.last_seen_at).toLocaleString()}` : ""}</span>
+                      </div>
+                      {!revoked && (
+                        <button type="button" onClick={() => revokeDevice(device)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-brand text-burgundy hover:bg-brand-ivory" aria-label={`Revoke ${device.device_label || "device"}`}>
+                          <Trash2 size={16} aria-hidden="true" />
+                        </button>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </section>
+        )}
 
         <div className="card-elegant p-6 sm:p-8 overflow-x-auto" data-testid="account-transactions">
           <h2 className="font-serif-display text-2xl text-burgundy">Recent activity</h2>

@@ -1,4 +1,4 @@
-const CACHE_VERSION = "earnalism-v2";
+const CACHE_VERSION = "earnalism-v3-reading-pass";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const APP_SHELL = ["/", "/index.html", "/favicon.png?v=20260610-transparent", "/apple-touch-icon.png?v=20260610-transparent"];
 
@@ -32,12 +32,18 @@ function isAudiobookApiRequest(request) {
   return /^\/api\/reader\/book\/[^/]+\/audiobook(?:\/|$)/.test(url.pathname);
 }
 
+function isReadingPassApiRequest(request) {
+  const url = new URL(request.url);
+  return url.pathname.startsWith("/api/reading-pass/");
+}
+
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   // Package manifests, sidecars, HEAD probes, and byte-range audio must always
   // reach the release-gated API. Never let the service worker cache or replay
   // an audiobook response after release truth changes.
   if (isAudiobookApiRequest(request)) return;
+  if (isReadingPassApiRequest(request)) return;
   if (request.method !== "GET" || request.headers.has("authorization")) return;
   if (request.headers.has("range")) return;
 

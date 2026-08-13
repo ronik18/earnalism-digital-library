@@ -2022,3 +2022,31 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A dropped-title tombstone must be a final deny rule with higher precedence than historical publication and audio approval evidence in every runtime layout.
 - Listening surfaces should fail closed until canonical API truth arrives; a versioned cache namespace prevents stale installed clients from replaying a previously approved audiobook card.
 - Historical publication packets and media are audit evidence, not active release truth. Retain them privately while blocking reader, audio, and admin republication paths.
+- Metering must settle the preceding interval from server-stored activity before accepting the next client state; otherwise a pause request can erase time already consumed.
+- Native audio cannot attach bearer headers, so protected playback needs a short HttpOnly credential rebound server-side to the active login, exact content, lease hash, and expiry; credentials must never enter media URLs.
+- Multi-device authentication and single-device consumption are separate constraints. Keep login sessions available while enforcing one unique account consumption lock and an explicit audited transfer.
+- Every lock-releasing path must settle the final server-timed interval transactionally. Heartbeat-only settlement leaves a repeatable sub-heartbeat evasion path through end, transfer, revoke, or stale-session replacement.
+- Canonical block segmentation must preserve meaningful text between recognized HTML blocks. Dropping unmatched fragments creates deterministic pages with deterministic content loss, which is still a release failure.
+- Access-confirmation copy must describe authorization state, not imply audiobook release state. “Protected listening access verified” is accurate after a lease is issued; “audiobook ready” can overclaim public availability.
+- A ledger is not fully canonical if only new metering events have `signed_seconds`. Every compatibility writer, including admin adjustments and migrated wallet rows, must emit the same event shape; health must compare each stored wallet balance with the ledger-derived balance while preserving old rows through `credit - debit` fallback.
+- A local MongoDB replica set with synthetic accounts is sufficient to prove transaction, lease, transfer, exhaustion, and 100-request idempotency invariants without copying production data or provisioning paid staging infrastructure. It does not replace remote private-media, CDN-expiry, provider-payment, or physical-device validation.
+- A valid audio checksum and high automated polish score do not make an audiobook a master. Preview derivation must remain blocked when canonical source binding, derivative/voice rights, full-book human and accessibility listening QA, alignment QA, or explicit owner release approval is absent.
+
+## PR #269 checksum-bound Dracula master gate - 2026-08-12
+
+- A provider voice name does not prove commercial output entitlement. The retained Dracula bundle records `edge-tts` and `en-IN-NeerjaNeural`, but no Azure customer subscription, paid-tier transaction, request ID, or immutable provider output record binds rights to the exact audio checksum.
+- Master approval must be executable, not narrative. Preview generation and registration now require the same packet checksum, exact master SHA-256, canonical source binding, derivative and voice-rights evidence, full-book human and accessibility listening QA, objective alignment, and explicit staging-scoped owner approval.
+- A hold packet is useful release evidence but is not an approval packet. Missing human review or owner approval remains missing even when the audio file is intact and automated QA looks strong.
+
+## Checksum-bound accessibility exception - 2026-08-13
+
+- A physical-device accessibility exception must preserve `NOT_TESTED`; owner acceptance cannot be relabeled as a test pass.
+- Bind the exception to the exact audiobook attempt fingerprint, audio SHA-256, listening confidence, owner identity, timestamp, and a deterministic exception checksum so it cannot drift to another candidate.
+- Limit the exception to VoiceOver and TalkBack physical-device checks. Keyboard controls, chapter navigation, pause/resume recovery, rights, objective/audio QA, listening, storage, endpoint, browser, Git, and deployment gates remain fail-closed.
+
+## Two conversation approvals with automatic continuation - 2026-08-13
+
+- Bind reader approval to the sanitized manuscript and rendered preview; bind narration approval to six or seven exact sample/source checksums, model, voice, quality scores, confidence, fatal flags, and public-release intent.
+- Repeated subjective prompts after those checksum-bound decisions add delay. Continue automatically through the remaining machine-verifiable gates.
+- Automatic continuation is not automatic success: rights, structure, full-title fidelity, technical audio, storage, CI, browser, production, and post-deployment evidence remain fail-closed.
+- Preserve the distinction between `READY_FOR_GO_LIVE` and `LIVE`; post-deployment API, range, playback, cache-control, and stale-URL checks establish live truth.

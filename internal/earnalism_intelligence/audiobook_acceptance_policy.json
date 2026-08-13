@@ -166,6 +166,30 @@
     "historical_policy_evidence_immutable": true,
     "scale_rule": "A representative pass may authorize one private full-title pilot only; public release still requires every full-title objective and delivery gate."
   },
+  "physical_device_accessibility_exception_v1": {
+    "status": "ACTIVE_OWNER_APPROVED_NARROW_EXCEPTION",
+    "effective_date": "2026-08-13",
+    "allowed_not_tested_checks": [
+      "voiceover_physical_device",
+      "talkback_physical_device"
+    ],
+    "required_status": "NOT_TESTED",
+    "required_decision": "OWNER_ACCEPTED_RESIDUAL_RISK",
+    "minimum_confidence": 0.9,
+    "checksum_bindings_required": [
+      "candidate_fingerprint",
+      "audio_sha256",
+      "owner_attestation_material"
+    ],
+    "browser_checks_still_required": [
+      "keyboard_controls_status",
+      "chapter_navigation_status",
+      "pause_resume_recovery_status"
+    ],
+    "other_release_gates_waived": false,
+    "public_accessibility_claims_limited_to_verified_evidence": true,
+    "release_rule": "The exception may preserve VoiceOver and TalkBack as NOT_TESTED when compatible physical devices are unavailable; it must never relabel either check as PASS or waive objective, listening, rights, storage, CI, endpoint, browser, or rollback gates."
+  },
   "automated_bengali_audio_pause_policy": {
     "status": "REOPENED_UNDER_PLATFORM_V4_89",
     "updated_at": "2026-07-28T07:47:01Z",

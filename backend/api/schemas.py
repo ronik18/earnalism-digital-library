@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
@@ -319,6 +319,7 @@ class AudiobookReleaseIn(BaseModel):
     provider: str = Field(min_length=1, max_length=80)
     model: str = Field(min_length=1, max_length=160)
     voice: str = Field(min_length=1, max_length=120)
+    attempt_fingerprint: str = Field(default="", max_length=71)
     qa: Dict[str, Any] = Field(default_factory=dict)
     owner_public_release_intent: bool = False
     release_request_id: str = Field(default="", max_length=160)
@@ -452,6 +453,62 @@ class ReadingPulseIn(BaseModel):
     session_id: str
     visible: bool = True
     idle: bool = False
+
+
+class ReadingPassSessionStartIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    device_id: str = Field(min_length=8, max_length=160)
+    device_label: str = Field(default="", max_length=120)
+    content_type: Literal["text", "audio"]
+    content_id: str = Field(min_length=1, max_length=200)
+    canonical_page_index: Optional[int] = Field(default=None, ge=1)
+    media_position_seconds: Optional[float] = Field(default=None, ge=0, le=1_000_000_000)
+
+
+class ReadingPassLeaseRenewIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    session_id: str = Field(min_length=8, max_length=160)
+    lease_version: int = Field(ge=1)
+    sequence: int = Field(ge=1)
+    idempotency_key: str = Field(min_length=8, max_length=160)
+    active: bool = True
+    playback_state: Literal["", "playing", "paused", "buffering", "ended"] = ""
+
+
+class ReadingPassSessionEndIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    session_id: str = Field(min_length=8, max_length=160)
+    reason: str = Field(default="user_end", max_length=80)
+
+
+class ReadingPassPositionIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    content_type: Literal["text", "audio"]
+    content_id: str = Field(min_length=1, max_length=200)
+    position: Dict[str, Any] = Field(default_factory=dict)
+    version: int = Field(default=0, ge=0)
+
+
+class ReadingPassSegmentMigrationIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    segmentation_version: str = Field(default="canonical-html-blocks-v1", min_length=3, max_length=80)
+    target_characters: int = Field(default=3200, ge=800, le=12000)
+    activate: bool = False
+    dry_run: bool = True
+
+
+class ReadingPassPreviewActivationIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    version: str = Field(min_length=3, max_length=120)
+    duration_seconds: float = Field(gt=0, le=180)
+    sha256: str = Field(pattern=r"^[a-f0-9]{64}$")
+    source_sha256: str = Field(pattern=r"^[a-f0-9]{64}$")
+    bytes: int = Field(gt=0, le=100_000_000)
+    store: str = Field(min_length=1, max_length=80)
+    bucket: str = Field(min_length=1, max_length=160)
+    key: str = Field(min_length=8, max_length=500)
+    version_id: str = Field(min_length=1, max_length=240)
+    activate: bool = False
 
 class ReaderCompletionIn(BaseModel):
     book_slug: str

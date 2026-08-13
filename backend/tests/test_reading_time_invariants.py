@@ -375,3 +375,31 @@ def test_wallet_ledger_balance_equals_credits_minus_debits_and_never_negative(mo
     assert user["reading_seconds_balance"] == credits - debits
     assert user["reading_seconds_balance"] >= 0
     assert all(row["balance_after"] >= 0 for row in database.wallet_ledger.documents)
+    assert all(row["signed_seconds"] == row["credit"] - row["debit"] for row in database.wallet_ledger.documents)
+    assert all(row["event_type"] in {"PASS_CREDIT", "TIME_DEBIT"} for row in database.wallet_ledger.documents)
+    assert all(row["creating_service"] == "earnalism-api" for row in database.wallet_ledger.documents)
+    assert all(row["idempotency_key"].startswith("wallet:") for row in database.wallet_ledger.documents)
+
+
+def test_admin_adjustment_uses_canonical_immutable_ledger_shape(monkeypatch):
+    server = _load_server(monkeypatch)
+    database, user = _install_isolated_state(monkeypatch, server)
+
+    _run(
+        server._record_wallet_ledger(
+            user_id=user["id"],
+            action="admin_adjustment",
+            seconds_delta=60,
+            reason="Controlled adjustment",
+            actor="admin:fixture",
+            balance_after=60,
+        )
+    )
+
+    event = database.wallet_ledger.documents[-1]
+    assert event["event_type"] == "ADMIN_ADJUSTMENT"
+    assert event["signed_seconds"] == 60
+    assert event["credit"] == 60
+    assert event["debit"] == 0
+    assert event["creating_service"] == "earnalism-api"
+    assert event["idempotency_key"].startswith("wallet:")

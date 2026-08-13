@@ -38,6 +38,43 @@ class RuntimeBlocked(RuntimeError):
     pass
 
 
+MIN_LISTENING_SCORE = 8.9
+MIN_LISTENING_CONFIDENCE = 0.90
+LISTENING_DIMENSIONS = (
+    "naturalness",
+    "pronunciation",
+    "expression",
+    "punctuation_pauses",
+    "pacing",
+    "silence_clipping",
+    "glitches",
+)
+PROMOTION_REQUIRED_AUTOMATED_CHECKS = (
+    "rights",
+    "manuscript",
+    "reader_artifacts",
+    "audio_review_samples",
+    "sanitization",
+    "chapter_index",
+    "pagination",
+    "covers",
+    "audio_artifacts",
+    "asr_coverage",
+    "boundary_order",
+    "technical_audio",
+    "synchronization",
+    "checksums",
+    "storage",
+    "endpoint_cache",
+    "service_worker",
+    "ci_build",
+    "staging",
+    "device_matrix",
+    "browser",
+    "production",
+)
+
+
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -52,6 +89,13 @@ def canonical_hash(value: Any) -> str:
             value, sort_keys=True, ensure_ascii=False, separators=(",", ":")
         ).encode("utf-8")
     ).hexdigest()
+
+
+def is_sha256(value: Any) -> bool:
+    text = str(value or "").strip().lower()
+    return len(text) == 64 and all(
+        character in "0123456789abcdef" for character in text
+    )
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -83,17 +127,130 @@ def safe_child(root: Path, relative: str) -> Path:
     return candidate
 
 
-def require_profile_approval(manifest: dict[str, Any]) -> dict[str, Any]:
+def audio_sample_set_sha256(audio: dict[str, Any]) -> str:
+    samples = audio.get("review_samples") or []
+    if not isinstance(samples, list) or not 6 <= len(samples) <= 7:
+        raise RuntimeBlocked("exactly 6 or 7 review samples are required")
+    normalized = []
+    for sample in samples:
+        if not isinstance(sample, dict):
+            raise RuntimeBlocked("review sample entries must be objects")
+        item = {
+            "id": str(sample.get("id") or "").strip(),
+            "sha256": str(sample.get("sha256") or "").strip().lower(),
+            "source_sha256": str(sample.get("source_sha256") or "").strip().lower(),
+        }
+        if (
+            not item["id"]
+            or not is_sha256(item["sha256"])
+            or not is_sha256(item["source_sha256"])
+        ):
+            raise RuntimeBlocked(
+                "review samples must include ID, audio checksum, and source checksum"
+            )
+        normalized.append(item)
+    if len({item["id"] for item in normalized}) != len(normalized):
+        raise RuntimeBlocked("review sample IDs must be unique")
+    return canonical_hash(normalized)
+
+
+def require_sample_approval(manifest: dict[str, Any]) -> dict[str, Any]:
     audio = manifest.get("audio") or {}
-    approval = manifest.get("audio_profile_approval") or {}
+    approval = manifest.get("audio_samples_approval") or {}
     if approval.get("status") != "APPROVED":
-        raise RuntimeBlocked("audio profile approval is required before generation")
-    for field in ("profile_sha256", "model", "voice"):
+        raise RuntimeBlocked(
+            "conversation audio-sample approval is required before generation"
+        )
+    if (
+        approval.get("approval_type") != "AUDIO_SAMPLE_SET"
+        or approval.get("render_surface") != "CONVERSATION"
+    ):
+        raise RuntimeBlocked(
+            "audio approval must be the conversation-rendered sample set"
+        )
+    if (
+        approval.get("listened_all_samples") is not True
+        or approval.get("every_fatal_flag_false") is not True
+    ):
+        raise RuntimeBlocked(
+            "audio approval must confirm all samples were heard with no fatal flags"
+        )
+    if approval.get("owner_public_release_intent") is not True:
+        raise RuntimeBlocked(
+            "audio sample approval must include explicit owner public-release intent"
+        )
+    for field in ("model", "voice"):
         if approval.get(field) != audio.get(field):
-            raise RuntimeBlocked(f"audio profile approval does not match {field}")
-    if audio.get("provider") not in {"sarvam", "elevenlabs"}:
-        raise RuntimeBlocked("audio provider is not supported by a real adapter")
+            raise RuntimeBlocked(f"audio sample approval does not match {field}")
+    expected_sample_set = audio_sample_set_sha256(audio)
+    if approval.get("sample_set_sha256") != expected_sample_set:
+        raise RuntimeBlocked(
+            "audio sample approval does not match the checksum-bound sample set"
+        )
+    if approval.get("sample_count") != len(audio.get("review_samples") or []):
+        raise RuntimeBlocked(
+            "audio sample approval count does not match the sample set"
+        )
+    if approval.get("slug") != manifest.get("slug"):
+        raise RuntimeBlocked("audio sample approval slug does not match the title")
+    if (
+        not str(approval.get("approved_by") or "").strip()
+        or not str(approval.get("approved_at") or "").strip()
+    ):
+        raise RuntimeBlocked(
+            "audio sample approval must identify the reviewer and approval time"
+        )
+    try:
+        overall = float(approval.get("overall_score"))
+        confidence = float(approval.get("confidence"))
+        dimensions = approval.get("dimension_scores") or {}
+        if set(dimensions) != set(LISTENING_DIMENSIONS):
+            raise RuntimeBlocked(
+                "audio sample approval must contain exactly the seven listening dimensions"
+            )
+        dimension_scores = [float(dimensions[name]) for name in LISTENING_DIMENSIONS]
+    except KeyError as exc:
+        raise RuntimeBlocked(
+            "audio sample approval must score all seven listening dimensions"
+        ) from exc
+    except (TypeError, ValueError) as exc:
+        raise RuntimeBlocked("audio sample approval scores are invalid") from exc
+    if overall < MIN_LISTENING_SCORE or confidence < MIN_LISTENING_CONFIDENCE:
+        raise RuntimeBlocked(
+            "audio sample approval does not meet listening score/confidence thresholds"
+        )
+    if min(dimension_scores) < MIN_LISTENING_SCORE:
+        raise RuntimeBlocked(
+            "every audio sample review dimension must score at least 8.9"
+        )
     return audio
+
+
+def require_reader_approval(manifest: dict[str, Any]) -> None:
+    approval = manifest.get("reader_approval") or {}
+    manuscript = manifest.get("manuscript") or {}
+    reader = manifest.get("reader") or {}
+    expected = {
+        "status": "APPROVED",
+        "approval_type": "READER_PREVIEW",
+        "render_surface": "CONVERSATION",
+        "preview_reviewed": True,
+        "slug": manifest.get("slug"),
+        "manuscript_sha256": manuscript.get("sha256"),
+        "preview_sha256": reader.get("preview_sha256"),
+    }
+    mismatched = [key for key, value in expected.items() if approval.get(key) != value]
+    if mismatched:
+        raise RuntimeBlocked(
+            "reader preview approval does not match: " + ", ".join(mismatched)
+        )
+    if (
+        not str(approval.get("approved_by") or "").strip()
+        or not str(approval.get("approved_at") or "").strip()
+    ):
+        raise RuntimeBlocked(
+            "reader preview approval must identify the reviewer and approval time"
+        )
 
 
 def require_generation_rights(manifest: dict[str, Any]) -> None:
@@ -126,7 +283,7 @@ class GenerationLedger:
 
 
 def estimate_total(provider: NarrationProvider, manifest: dict[str, Any]) -> float:
-    audio = require_profile_approval(manifest)
+    audio = require_sample_approval(manifest)
     total = 0.0
     for segment in manifest.get("segments") or []:
         if (
@@ -165,7 +322,7 @@ def generate_segments(
     if max_retries < 1 or max_retries > 3:
         raise RuntimeBlocked("max_retries must be between 1 and 3")
     require_generation_rights(manifest)
-    audio = require_profile_approval(manifest)
+    audio = require_sample_approval(manifest)
     provider = provider or provider_for_name(str(audio["provider"]))
     estimated_cost = estimate_total(provider, manifest)
     budget = float(os.environ.get("EARNALISM_PAID_GENERATION_MAX_USD", "0") or 0)
@@ -382,17 +539,44 @@ class HttpProductionPromoter:
             raise RuntimeBlocked("production promotion endpoint failed") from exc
         if (
             not isinstance(result, dict)
-            or result.get("status") != "PROMOTED"
+            or result.get("status") not in {"PROMOTED", "LIVE"}
             or result.get("slug") != payload["slug"]
         ):
             raise RuntimeBlocked(
                 "promotion response did not prove the requested release"
             )
+        required_post_deploy = {
+            "public_book_api",
+            "publication_status",
+            "audio_endpoint",
+            "byte_range",
+            "browser_playback",
+            "mobile_reader_journey",
+            "mobile_audio_playback",
+            "resume_recovery",
+            "cache_control",
+            "no_stale_audio_url",
+        }
+        post_deploy = (
+            result.get("post_deploy_checks")
+            if isinstance(result.get("post_deploy_checks"), dict)
+            else {}
+        )
+        failed_post_deploy = sorted(
+            name
+            for name in required_post_deploy
+            if str(post_deploy.get(name) or "").upper() != "PASS"
+        )
+        if failed_post_deploy:
+            raise RuntimeBlocked(
+                "production post-deploy checks failed: " + ", ".join(failed_post_deploy)
+            )
         return {
-            "status": "PROMOTED",
+            "status": "LIVE",
             "network_calls_performed": 1,
             "passed": True,
             "slug": payload["slug"],
+            "post_deploy_checks": post_deploy,
         }
 
 
@@ -410,36 +594,24 @@ def promote(
         raise RuntimeBlocked(
             "staging receipt is missing or not a private staging receipt"
         )
-    if manifest.get("release_status") != "LIVE":
+    if manifest.get("release_status") != "READY_FOR_GO_LIVE":
         raise RuntimeBlocked(
-            "the existing release evaluator must report LIVE before promotion"
+            "the release evaluator must report READY_FOR_GO_LIVE before promotion"
         )
     if manifest.get("audio_release_gate_status") != "PASS":
         raise RuntimeBlocked(
             "the full audio release gate must be PASS before promotion"
         )
     automated = manifest.get("automated_checks") or {}
-    required = (
-        "rights",
-        "manuscript",
-        "reader_artifacts",
-        "audio_artifacts",
-        "synchronization",
-        "checksums",
-        "staging",
-        "browser",
-        "production",
-    )
-    if any((automated.get(name) or {}).get("status") != "PASS" for name in required):
+    if any(
+        (automated.get(name) or {}).get("status") != "PASS"
+        for name in PROMOTION_REQUIRED_AUTOMATED_CHECKS
+    ):
         raise RuntimeBlocked(
             "all automated release checks must be PASS before promotion"
         )
-    if (manifest.get("reader_approval") or {}).get("status") != "APPROVED" or (
-        manifest.get("audio_profile_approval") or {}
-    ).get("status") != "APPROVED":
-        raise RuntimeBlocked(
-            "both human approval packets must be APPROVED before promotion"
-        )
+    require_reader_approval(manifest)
+    require_sample_approval(manifest)
     payload = {
         "slug": manifest["slug"],
         "release_descriptor_sha256": str(
@@ -498,7 +670,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
         return (
             0
-            if result.get("passed") or result.get("status") in {"PROMOTED", "REUSED"}
+            if result.get("passed") or result.get("status") in {"LIVE", "REUSED"}
             else 1
         )
     except (RuntimeBlocked, ProviderExecutionError, ValueError) as exc:

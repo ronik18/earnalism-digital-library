@@ -81,6 +81,7 @@ describe("UX conversion static signals", () => {
   const shelfTwoSlideshow = read("frontend/src/components/ShelfTwoSlideshow.jsx");
   const heroBookObject = read("frontend/src/components/HeroBookObject.jsx");
   const controlledLaunch = read("frontend/src/lib/controlledLaunch.js");
+  const chapterIndex = read("frontend/src/lib/chapterIndex.js");
   const publicationSafety = read("frontend/src/lib/publicationSafety.js");
   const pricing = read("frontend/src/pages/Pricing.jsx");
   const login = read("frontend/src/pages/Login.jsx");
@@ -1165,10 +1166,12 @@ describe("UX conversion static signals", () => {
   });
 
   test("Dracula chapter titles render clean display text without continuation junk", () => {
-    expect(controlledLaunch).toContain("export function normalizeChapterDisplayTitle");
-    expect(controlledLaunch).toContain(".replace(/\\s*[.:]?\\s*(?:--|—|-)\\s*continued");
-    expect(controlledLaunch).toContain("smartTitleCaseSegment(remainder)");
-    expect(reader).toContain("normalizeChapterDisplayTitle(item.title)");
+    expect(controlledLaunch).toContain("export { normalizeChapterDisplayTitle } from './chapterIndex'");
+    expect(chapterIndex).toContain("CHAPTER_INDEX_CONTRACT_VERSION = 'chapter-index.v1'");
+    expect(chapterIndex).toContain(".replace(/\\s*[.:]?\\s*(?:(?:--|—|-)\\s*)?continued");
+    expect(chapterIndex).toContain("smartTitleCaseSegment(remainder)");
+    expect(reader).toContain("sortedChapterIndex(chapters)");
+    expect(reader).toContain("item.index_secondary_label");
     expect(reader).toContain("normalizeChapterDisplayTitle(chapter.title)");
     expect(bookDetail).toContain("normalizeChapterDisplayTitle(c.title)");
   });

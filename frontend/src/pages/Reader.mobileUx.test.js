@@ -56,7 +56,10 @@ describe('Reader mobile UX contract', () => {
   });
 
   test('normalizes chapter labels consistently in both contents surfaces', () => {
-    expect(readerSource.match(/normalizeChapterDisplayTitle\(item\.title\)/g)).toHaveLength(2);
+    expect(readerSource).toContain('sortedChapterIndex(chapters)');
+    expect(readerSource).toContain('chapterIndexEntry(item, index + 1, chapters.length)');
+    expect(readerSource.match(/index_secondary_label/g).length).toBeGreaterThanOrEqual(2);
+    expect(readerSource).toContain("isChapterIndexPage ? 'reader-page-shell--index' : ''");
     expect(readerSource).toContain('Font comfort');
     expect(readerSource).not.toContain('Bengali comfort');
   });

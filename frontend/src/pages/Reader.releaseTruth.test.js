@@ -123,7 +123,8 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/prefetchAsset\(selectedGeneratedAudioTrack\.nextTimestampsUrl,\s*\{\s*credentials:\s*'include'\s*\}\)/);
     expect(readerSource).toMatch(/method:\s*'HEAD'/);
     expect(readerSource).toMatch(/crossOrigin="use-credentials"/);
-    expect(readerSource).toMatch(/fetch\(generatedAudioManifestUrl,\s*\{\s*cache:\s*'force-cache',\s*credentials:\s*'include'\s*\}\)/);
+    expect(readerSource).toMatch(/fetch\(generatedAudioManifestUrl,\s*\{\s*cache:\s*readingPassMode\s*\?\s*'no-store'\s*:\s*'force-cache',\s*credentials:\s*'include'\s*\}\)/);
+    expect(readerSource).toMatch(/if \(readingPassMode\) return;/);
     expect(readerSource).not.toMatch(/prefetchAsset\(selectedGeneratedAudioTrack\.nextAudioUrl\)/);
   });
 

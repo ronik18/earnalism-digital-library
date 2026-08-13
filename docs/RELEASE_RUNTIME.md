@@ -17,7 +17,7 @@ python3 scripts/release_runtime.py generate \
 
 Paid execution requires all of the following before any provider request:
 
-- the manifest's exact audiobook profile approval;
+- the manifest's checksum-bound conversation audio-sample approval;
 - `EARNALISM_ENABLE_PAID_GENERATION=true`;
 - `EARNALISM_APPROVE_SARVAM_GENERATION=true` or
   `EARNALISM_APPROVE_ELEVENLABS_GENERATION=true`;
@@ -72,9 +72,13 @@ Actual promotion additionally requires `EARNALISM_ENABLE_PRODUCTION_PROMOTION=tr
 `EARNALISM_PRODUCTION_PROMOTION_APPROVED=true`, an explicit
 `EARNALISM_PRODUCTION_PROMOTION_ENDPOINT`, and a secret
 `EARNALISM_PRODUCTION_PROMOTION_TOKEN`. The endpoint must return
-`{"status":"PROMOTED","slug":"..."}` for the exact idempotency key.
-The input manifest must already contain `release_status=LIVE` and
-`audio_release_gate_status=PASS`; the runtime never promotes directly from a
-partial generation or staging receipt.
+`status=PROMOTED` or `status=LIVE`, the exact slug, and `PASS` values for the
+public book API, publication status, audio endpoint, byte-range response,
+browser playback, mobile reader/audio journeys, resume recovery, cache-control,
+and stale-URL checks. The input manifest must already contain
+`release_status=READY_FOR_GO_LIVE`,
+`audio_release_gate_status=PASS`, both checksum-bound conversation approvals,
+and every required automated `PASS`; the runtime never promotes directly from
+a partial generation or staging receipt.
 No catalog flag is flipped locally, and no production status is inferred from
 an HTTP request that does not return explicit promotion evidence.

@@ -1,0 +1,45 @@
+{
+  "schema_version": "earnalism.reader-index-consistency-evidence.v1",
+  "index_contract": "chapter-index.v1",
+  "status": "HOSTED_STAGING_PASS",
+  "catalog_audit": {
+    "books": 79,
+    "chapters": 691,
+    "blockers": 0,
+    "report": "/private/tmp/pr269-reader-index-audit.json"
+  },
+  "tests": {
+    "backend": "PASS_10",
+    "frontend": "PASS_31",
+    "production_build": "PASS"
+  },
+  "dracula_mobile_browser": {
+    "viewport": "390x844",
+    "index_client_height_px": 669,
+    "index_scroll_height_px": 1824,
+    "max_scroll_top_px": 1155,
+    "client_width_px": 390,
+    "scroll_width_px": 390,
+    "last_visible_chapter": 27,
+    "result": "PASS"
+  },
+  "hosted_ci": {
+    "run_id": 31526540761,
+    "head_sha": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+    "regression_gate": "PASS_3M08S",
+    "production_jobs": "SKIPPED"
+  },
+  "staging": {
+    "railway_deployment_id": "37b1b381-301f-48f0-a875-802d3ba0cf1c",
+    "railway_health": "PASS",
+    "manifest_contract": "chapter-index.v1",
+    "manifest_chapters": 27,
+    "vercel_deployment_id": "dpl_FdbErLSUAcrdiSjEobrxYGwsrKt5",
+    "vercel_target": "preview",
+    "vercel_status": "READY",
+    "preview_url": "https://earnalism-jwg60fucf-sales-8498s-projects.vercel.app",
+    "built_api_host": "earnalism-pr269-staging-reading-pass-pr269-staging.up.railway.app"
+  },
+  "release_truth": "PR_269_DRAFT_UNMERGED_PRODUCTION_UNCHANGED",
+  "next_gate": "APPROVED_DRACULA_MASTER_PACKET_BEFORE_PRIVATE_AUDIO_PREVIEW"
+}
