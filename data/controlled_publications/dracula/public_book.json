@@ -40,7 +40,7 @@
     {
       "id": "chapter-001",
       "order": 1,
-      "title": "CHAPTER I. JONATHAN HARKER’S JOURNAL",
+      "title": "CHAPTER I",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -55,7 +55,7 @@
     {
       "id": "chapter-002",
       "order": 2,
-      "title": "CHAPTER II. JONATHAN HARKER’S JOURNAL-- continued",
+      "title": "CHAPTER II",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -70,7 +70,7 @@
     {
       "id": "chapter-003",
       "order": 3,
-      "title": "CHAPTER III. JONATHAN HARKER’S JOURNAL-- continued",
+      "title": "CHAPTER III",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -85,7 +85,7 @@
     {
       "id": "chapter-004",
       "order": 4,
-      "title": "CHAPTER IV. JONATHAN HARKER’S JOURNAL-- continued",
+      "title": "CHAPTER IV",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -115,7 +115,7 @@
     {
       "id": "chapter-006",
       "order": 6,
-      "title": "CHAPTER VI. MINA MURRAY’S JOURNAL",
+      "title": "CHAPTER VI",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -130,7 +130,7 @@
     {
       "id": "chapter-007",
       "order": 7,
-      "title": "CHAPTER VII. CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST",
+      "title": "CHAPTER VII",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -145,7 +145,7 @@
     {
       "id": "chapter-008",
       "order": 8,
-      "title": "CHAPTER VIII. MINA MURRAY’S JOURNAL",
+      "title": "CHAPTER VIII",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -205,7 +205,7 @@
     {
       "id": "chapter-012",
       "order": 12,
-      "title": "CHAPTER XII. DR. SEWARD’S DIARY",
+      "title": "CHAPTER XII",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -235,7 +235,7 @@
     {
       "id": "chapter-014",
       "order": 14,
-      "title": "CHAPTER XIV. MINA HARKER’S JOURNAL",
+      "title": "CHAPTER XIV",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -265,7 +265,7 @@
     {
       "id": "chapter-016",
       "order": 16,
-      "title": "CHAPTER XVI. DR. SEWARD’S DIARY-- continued",
+      "title": "CHAPTER XVI",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -280,7 +280,7 @@
     {
       "id": "chapter-017",
       "order": 17,
-      "title": "CHAPTER XVII. DR. SEWARD’S DIARY-- continued",
+      "title": "CHAPTER XVII",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -295,7 +295,7 @@
     {
       "id": "chapter-018",
       "order": 18,
-      "title": "CHAPTER XVIII. DR. SEWARD’S DIARY",
+      "title": "CHAPTER XVIII",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -310,7 +310,7 @@
     {
       "id": "chapter-019",
       "order": 19,
-      "title": "CHAPTER XIX. JONATHAN HARKER’S JOURNAL",
+      "title": "CHAPTER XIX",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -325,7 +325,7 @@
     {
       "id": "chapter-020",
       "order": 20,
-      "title": "CHAPTER XX. JONATHAN HARKER’S JOURNAL",
+      "title": "CHAPTER XX",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -340,7 +340,7 @@
     {
       "id": "chapter-021",
       "order": 21,
-      "title": "CHAPTER XXI. DR. SEWARD’S DIARY",
+      "title": "CHAPTER XXI",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -355,7 +355,7 @@
     {
       "id": "chapter-022",
       "order": 22,
-      "title": "CHAPTER XXII. JONATHAN HARKER’S JOURNAL",
+      "title": "CHAPTER XXII",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -370,7 +370,7 @@
     {
       "id": "chapter-023",
       "order": 23,
-      "title": "CHAPTER XXIII. DR. SEWARD’S DIARY",
+      "title": "CHAPTER XXIII",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -385,7 +385,7 @@
     {
       "id": "chapter-024",
       "order": 24,
-      "title": "CHAPTER XXIV. DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING",
+      "title": "CHAPTER XXIV",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -400,7 +400,7 @@
     {
       "id": "chapter-025",
       "order": 25,
-      "title": "CHAPTER XXV. DR. SEWARD’S DIARY",
+      "title": "CHAPTER XXV",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -415,7 +415,7 @@
     {
       "id": "chapter-026",
       "order": 26,
-      "title": "CHAPTER XXVI. DR. SEWARD’S DIARY",
+      "title": "CHAPTER XXVI",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -430,12 +430,12 @@
     {
       "id": "chapter-027",
       "order": 27,
-      "title": "CHAPTER XXVII. MINA HARKER’S JOURNAL",
+      "title": "CHAPTER XXVII",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 8233,
-      "reading_minutes": 35,
+      "word_count": 7938,
+      "reading_minutes": 34,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
@@ -444,8 +444,8 @@
     }
   ],
   "source_hash": "3dbe1845a822271cd2b887ebb81301b05844f8fa24133b915e30da35e915483a",
-  "content_hash": "7a398986059b86f35f7eeb583843a24d14998ea39af7c3895c76708042f2e160",
-  "provenance_hash": "7bc749726a9bcf0f22970565592ae8b154f5212a73d40821048f04497b30046a",
+  "content_hash": "5a546ad219d6886b3a43abcfe64f67147ff10db9b3ba2d5c501d89f3a0bb38f4",
+  "provenance_hash": "790858fe254f38fc4ffa55eeda37579df04b747294663521484d62d30e553fd7",
   "rights_basis": "Author died in 1912. Work published in 1897, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
   "rights_tier": "A",
   "verification_status": "approved",

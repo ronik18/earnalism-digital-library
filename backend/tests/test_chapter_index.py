@@ -36,6 +36,33 @@ def test_unsubtitled_and_non_english_units_remain_meaningful():
     )["index_title"] == "প্রথম পরিচ্ছেদ"
 
 
+def test_dracula_index_is_uniform_and_publisher_catalog_is_not_reader_content():
+    artifact_roots = (
+        ROOT / "backend" / "data" / "controlled_publications" / "dracula",
+        ROOT / "data" / "controlled_publications" / "dracula",
+    )
+    expected_titles = [
+        f"CHAPTER {roman}"
+        for roman in (
+            "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
+            "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII",
+            "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI",
+            "XXVII",
+        )
+    ]
+
+    for artifact_root in artifact_roots:
+        manifest = json.loads((artifact_root / "reader_manifest.json").read_text(encoding="utf-8"))
+        assert [chapter["title"] for chapter in manifest["chapters"]] == expected_titles
+
+        ending = json.loads(
+            (artifact_root / "chapters" / "chapter-027.json").read_text(encoding="utf-8")
+        )["content"]
+        assert ending.rstrip().endswith("JONATHAN HARKER.\n\nTHE END")
+        assert "Grosset & Dunlap" not in ending
+        assert "DETECTIVE STORIES BY J. S. FLETCHER" not in ending
+
+
 def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
     manifests = sorted(CONTROLLED_ROOT.glob("*/reader_manifest.json"))
     assert len(manifests) == 79
