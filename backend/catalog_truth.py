@@ -327,6 +327,16 @@ def controlled_audio_release_evidence(slug: str) -> dict[str, Any]:
 
 
 def audio_public_release_status(book: dict[str, Any]) -> str:
+    conveyor = nested_dict(book, "audiobook_release_conveyor")
+    if (
+        conveyor.get("schema_version") == AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA
+        and conveyor.get("audio_release_approved") is True
+    ):
+        return normalize_upper(
+            conveyor.get("audio_public_release")
+            or conveyor.get("audio_release_status")
+            or book.get("audiobook_release_gate")
+        )
     evidence = controlled_audio_release_evidence(normalize_slug(book.get("slug")))
     if evidence:
         return normalize_upper(
@@ -342,6 +352,16 @@ def audio_public_release_status(book: dict[str, Any]) -> str:
 
 
 def audio_release_qa_status(book: dict[str, Any]) -> str:
+    conveyor = nested_dict(book, "audiobook_release_conveyor")
+    if (
+        conveyor.get("schema_version") == AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA
+        and conveyor.get("audio_release_approved") is True
+    ):
+        return normalize_upper(
+            conveyor.get("audio_qa_status")
+            or nested_dict(conveyor, "qa").get("qa_status")
+            or book.get("audio_qa_status")
+        )
     evidence = controlled_audio_release_evidence(normalize_slug(book.get("slug")))
     if evidence:
         return normalize_upper(evidence.get("audio_qa_status") or evidence.get("qa_status"))
@@ -985,7 +1005,7 @@ def can_expose_audio(book: dict[str, Any]) -> bool:
     if (slug not in AUDIO_ENABLED_SLUGS and not conveyor_audio_approved) or not is_live_approved_book(book):
         return False
     evidence = controlled_audio_release_evidence(slug)
-    if evidence and evidence.get("audiobook_enabled") is not True:
+    if evidence and evidence.get("audiobook_enabled") is not True and not conveyor_audio_approved:
         return False
     return (
         audio_public_release_status(book) in PUBLIC_AUDIO_RELEASE_APPROVED_STATUSES

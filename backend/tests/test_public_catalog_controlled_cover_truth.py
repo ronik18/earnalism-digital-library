@@ -146,11 +146,52 @@ def test_controlled_merge_preserves_only_allowlisted_database_editorial_fields()
     assert "audio_qa_status" not in merged
 
 
+def test_controlled_merge_accepts_only_server_owned_conveyor_audio_release():
+    canonical = canonical_jekyll()
+    released = stale_live_mongo_summary()
+    released.update(
+        {
+            "audio_enabled": True,
+            "audiobook_enabled": True,
+            "generate_audiobook": True,
+            "audio_status": "AVAILABLE",
+            "audiobook_release_gate": "APPROVED",
+            "audio_qa_status": "QA_PASSED",
+            "audiobook_provider": "kokoro",
+            "audiobook_voice": "bm_george",
+            "audiobook_assets": {"mp3": "b2://private/released.mp3"},
+            "audiobook": {
+                "release_gate": "APPROVED",
+                "qa_status": "QA_PASSED",
+                "assets": {"mp3": "b2://private/released.mp3"},
+            },
+            "audiobook_release_conveyor": {
+                "schema_version": server.AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+                "reader_release_approved": True,
+                "audio_release_approved": True,
+                "audio_public_release": "APPROVED",
+                "audio_qa_status": "QA_PASSED",
+                "audio_sha256": "a" * 64,
+            },
+        }
+    )
+
+    merged = server._merge_controlled_publication_truth(released, canonical, slug=SLUG)
+    public = server.public_book_projection(merged)
+
+    assert merged["cover_image_url"] == canonical["cover_image_url"]
+    assert public["audio_enabled"] is True
+    assert public["audiobook_enabled"] is True
+    assert public["audio_url"] == f"/api/reader/book/{SLUG}/audiobook"
+    assert public["audiobook_release_gate"] == "APPROVED"
+    assert public["audio_qa_status"] == "QA_PASSED"
+
+
 def test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate():
     cache_key = server._public_cache_key("book_detail", slug=SLUG)
 
     assert '"catalog_truth": "controlled-covers-v1"' in cache_key
-    assert '"truth_gate": "audio-contract-v13"' in cache_key
+    assert '"truth_gate": "audio-contract-v14"' in cache_key
 
 
 def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkeypatch):
@@ -172,11 +213,11 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
     assert seen == [
         (
             "reader-content",
-            "book-access:audio-contract-v13:controlled-covers-v1:37:public:jekyll-and-hyde",
+            "book-access:audio-contract-v14:controlled-covers-v1:37:public:jekyll-and-hyde",
         ),
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v13:controlled-covers-v1:37:public:jekyll-and-hyde",
+            "book-manifest:audio-contract-v14:controlled-covers-v1:chapter-index.v1:37:public:jekyll-and-hyde",
         ),
     ]
 
@@ -241,7 +282,7 @@ def test_reader_manifest_ignores_pre_catalog_truth_namespace_entry(monkeypatch):
     assert seen == [
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v13:controlled-covers-v1:562:public:the-gift-of-the-magi",
+            "book-manifest:audio-contract-v14:controlled-covers-v1:chapter-index.v1:562:public:the-gift-of-the-magi",
         )
     ]
     assert seen[0][1] != stale_key

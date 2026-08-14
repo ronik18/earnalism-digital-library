@@ -776,7 +776,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v13"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v14"
 # Rotate only public catalog/home cache keys for controlled-cover precedence.
 # Reader/audio manifest cache namespaces remain unchanged.
 PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "controlled-covers-v1"
@@ -1324,6 +1324,22 @@ HOME_CURATION_DB_FIELDS = (
 # controls; a same-slug row must never shadow canonical covers, reader state,
 # or audiobook gates.
 CONTROLLED_PUBLICATION_DB_EDITORIAL_FIELDS = HOME_CURATION_DB_FIELDS
+CONTROLLED_PUBLICATION_DB_CONVEYOR_AUDIO_FIELDS = (
+    "audio_enabled",
+    "audiobook_enabled",
+    "generate_audiobook",
+    "audiobook_provider",
+    "audiobook_voice",
+    "audio_asset_slug",
+    "audiobook_assets",
+    "audiobook",
+    "audiobook_manuscript_sha256",
+    "audiobook_release_conveyor",
+    "audiobook_assets_updated_at",
+    "audio_status",
+    "audiobook_release_gate",
+    "audio_qa_status",
+)
 PUBLIC_CACHE_PATHS = {
     "/api/home",
     "/api/home/books",
@@ -1737,6 +1753,15 @@ def _merge_controlled_publication_truth(
         for field in CONTROLLED_PUBLICATION_DB_EDITORIAL_FIELDS:
             if field in database_book:
                 merged[field] = database_book[field]
+        conveyor = database_book.get("audiobook_release_conveyor")
+        if (
+            isinstance(conveyor, dict)
+            and conveyor.get("schema_version") == AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA
+            and conveyor.get("audio_release_approved") is True
+        ):
+            for field in CONTROLLED_PUBLICATION_DB_CONVEYOR_AUDIO_FIELDS:
+                if field in database_book:
+                    merged[field] = database_book[field]
     return merged
 
 
