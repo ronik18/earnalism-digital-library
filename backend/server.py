@@ -776,7 +776,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v14"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v15"
 # Rotate only public catalog/home cache keys for controlled-cover precedence.
 # Reader/audio manifest cache namespaces remain unchanged.
 PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "controlled-covers-v1"
@@ -1670,6 +1670,10 @@ def _controlled_artifact_doc(slug: str, *, include_content: bool = False) -> Opt
 def _reader_audio_truth_doc(book: Optional[dict], slug: str) -> Optional[dict]:
     normalized_slug = str(slug or "").strip().lower()
     artifact = _controlled_artifact_doc(normalized_slug, include_content=False)
+    if normalized_slug == "dracula" and artifact and book:
+        merged = _merge_controlled_publication_truth(book, artifact, slug=normalized_slug)
+        if can_expose_audio(merged):
+            return merged
     if artifact and can_expose_audio({**artifact, "slug": normalized_slug}):
         return artifact
     if normalized_slug in CATALOG_TRUTH_AUDIO_ENABLED_SLUGS:
@@ -2856,7 +2860,16 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
             "content_url": f"/api/reader/chapter/{slug}/{chapter_id}?v={version}" if chapter_id else "",
         }, position=position, total=total_chapters))
 
-    audio_source = doc if admin_preview else (_reader_audio_truth_doc(doc, slug) or {})
+    if admin_preview:
+        audio_source = doc
+    elif _slug_is_dracula(slug):
+        release_doc = await db.books.find_one(
+            _controlled_public_book_query({"slug": "dracula"}),
+            _READER_AUDIO_BOOK_PROJECTION,
+        )
+        audio_source = _reader_audio_truth_doc(release_doc or doc, slug) or {}
+    else:
+        audio_source = _reader_audio_truth_doc(doc, slug) or {}
     audio = _reader_manifest_audio(audio_source, slug)
     book_public = public_book_projection(_strip_all_chapter_content(doc)) or {}
     if not admin_preview and not _public_projection_is_live(book_public):

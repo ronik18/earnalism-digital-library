@@ -272,13 +272,21 @@ def test_live_approved_mongo_query_preserves_rights_and_search_or():
         {"$or": [{"title": {"$regex": "Dracula", "$options": "i"}}]}
     )
 
-    assert "$in" in query["slug"]
-    assert isinstance(query["slug"]["$in"], list)
-    assert "dracula" in query["slug"]["$in"]
-    assert query["is_published"] is True
+    base_or = query["$and"][0]["$or"]
+    workflow_guard = base_or[0]["$and"]
+    controlled_slugs = workflow_guard[0]["$or"][0]["slug"]["$in"]
+    dracula_release = base_or[1]
+    assert isinstance(controlled_slugs, list)
+    assert "dracula" in controlled_slugs
+    assert {"publication_workflow.publication.reader_exposed": True} in workflow_guard
+    assert dracula_release == {
+        "slug": "dracula",
+        "audiobook_release_conveyor.schema_version": catalog_truth.AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+        "audiobook_release_conveyor.audio_release_approved": True,
+    }
     assert "rights_metadata.rights_tier" not in query
     assert "rights_metadata.verification_status" not in query
-    assert query["$or"][0]["title"] == {"$regex": "Dracula", "$options": "i"}
+    assert query["$and"][1]["$or"][0]["title"] == {"$regex": "Dracula", "$options": "i"}
 
 
 def test_server_controlled_public_query_uses_catalog_truth():

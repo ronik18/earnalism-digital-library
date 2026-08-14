@@ -2062,3 +2062,4 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A valid conveyor release can be active in the canonical database while stale controlled-artifact audio-disabled fields still hide public audio.
 - Controlled artifacts remain authoritative for reader, rights, cover, and content truth; a schema-matched conveyor with `audio_release_approved: true` may overlay only the server-owned audio-release fields.
 - Rotate the public and reader cache namespace when changing release precedence, then require fresh API, range, cache, and browser postchecks before declaring the audiobook live.
+- An approved conveyor cannot affect public truth if the Mongo selector excludes the row first. A title-scoped selector exception must require the exact conveyor schema and `audio_release_approved: true`; legacy publication-workflow drift must not justify broadening every controlled-title query.
