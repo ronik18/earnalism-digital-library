@@ -2056,3 +2056,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A chapter number is structural context, not a useful index name when the rest of the title uses journals, letters, or correspondence labels.
 - Preserve the source-document convention across the complete index and fill missing labels from the chapter’s actual opening document; do not invent plot-summary spoilers.
 - Keep canonical and backend artifacts byte-parallel, regenerate their checksum manifests, and rerun the catalog-wide deterministic index audit after any metadata repair.
+
+## Dracula server-owned audiobook release precedence - 2026-08-14
+
+- A valid conveyor release can be active in the canonical database while stale controlled-artifact audio-disabled fields still hide public audio.
+- Controlled artifacts remain authoritative for reader, rights, cover, and content truth; a schema-matched conveyor with `audio_release_approved: true` may overlay only the server-owned audio-release fields.
+- Rotate the public and reader cache namespace when changing release precedence, then require fresh API, range, cache, and browser postchecks before declaring the audiobook live.
