@@ -2571,6 +2571,18 @@
       "normalized_source_characters": 848683,
       "chapter_count": 27,
       "canonical_chapter_slug_bindings": 27,
+      "reader_index_latest_decision": "RESTORE_SOURCE_DOCUMENT_LABELS_AND_FILL_SIX_MISSING_DRACULA_INDEX_NAMES",
+      "reader_index_updated_at": "2026-08-14T03:17:43Z",
+      "reader_index_missing_labels_filled": {
+        "5": "Mina Murray’s Correspondence",
+        "9": "Mina Harker’s Correspondence",
+        "10": "Dr. Seward’s Diary",
+        "11": "Lucy Westenra’s Diary",
+        "13": "Dr. Seward’s Diary",
+        "15": "Dr. Seward’s Diary"
+      },
+      "reader_index_catalog_audit": "PASS_DATA_163_BOOKS_1025_CHAPTERS_BACKEND_79_BOOKS_691_CHAPTERS_ZERO_BLOCKERS",
+      "reader_index_next_action": "Include this checksum-valid metadata repair in PR 270 and require hosted regression before merge.",
       "chapter_content_changed": false,
       "stored_content_hash_changed": false,
       "canonical_covers_ready": true,
