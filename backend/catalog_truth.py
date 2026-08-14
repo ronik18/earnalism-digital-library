@@ -1128,7 +1128,7 @@ def live_approved_mongo_query(extra: dict[str, Any] | None = None) -> dict[str, 
                 ]
             },
             {
-                "slug": "dracula",
+                "slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)},
                 "audiobook_release_conveyor.schema_version": AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
                 "audiobook_release_conveyor.audio_release_approved": True,
             },

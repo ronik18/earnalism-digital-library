@@ -275,12 +275,12 @@ def test_live_approved_mongo_query_preserves_rights_and_search_or():
     base_or = query["$and"][0]["$or"]
     workflow_guard = base_or[0]["$and"]
     controlled_slugs = workflow_guard[0]["$or"][0]["slug"]["$in"]
-    dracula_release = base_or[1]
+    controlled_audio_release = base_or[1]
     assert isinstance(controlled_slugs, list)
     assert "dracula" in controlled_slugs
     assert {"publication_workflow.publication.reader_exposed": True} in workflow_guard
-    assert dracula_release == {
-        "slug": "dracula",
+    assert controlled_audio_release == {
+        "slug": {"$in": controlled_slugs},
         "audiobook_release_conveyor.schema_version": catalog_truth.AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
         "audiobook_release_conveyor.audio_release_approved": True,
     }

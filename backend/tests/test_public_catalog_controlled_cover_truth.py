@@ -159,7 +159,9 @@ def test_controlled_merge_accepts_only_server_owned_conveyor_audio_release():
             "audio_qa_status": "QA_PASSED",
             "audiobook_provider": "kokoro",
             "audiobook_voice": "bm_george",
-            "audiobook_assets": {"mp3": "b2://private/released.mp3"},
+            "audiobook_assets": {
+                "mp3": "https://s3.us-west-004.backblazeb2.com/private/released.mp3",
+            },
             "audiobook": {
                 "release_gate": "APPROVED",
                 "qa_status": "QA_PASSED",
@@ -223,7 +225,7 @@ def test_audiobook_release_falls_back_to_database_when_no_controlled_artifact(mo
     assert server._audiobook_release_reader_truth(database_book, "ordinary-book") is database_book
 
 
-def test_dracula_reader_audio_truth_merges_exact_server_owned_release(monkeypatch):
+def test_controlled_reader_audio_truth_merges_exact_server_owned_release(monkeypatch):
     canonical = canonical_jekyll()
     released = stale_live_mongo_summary()
     released.update(
@@ -249,7 +251,7 @@ def test_dracula_reader_audio_truth_merges_exact_server_owned_release(monkeypatc
     )
     monkeypatch.setattr(server, "_controlled_artifact_doc", lambda *_args, **_kwargs: canonical)
 
-    resolved = server._reader_audio_truth_doc(released, "dracula")
+    resolved = server._reader_audio_truth_doc(released, SLUG)
 
     assert resolved is not None
     assert resolved["audio_enabled"] is True
@@ -257,11 +259,48 @@ def test_dracula_reader_audio_truth_merges_exact_server_owned_release(monkeypatc
     assert resolved["audiobook_release_gate"] == "APPROVED"
 
 
+def test_controlled_reader_manifest_resolves_generic_server_owned_release(monkeypatch):
+    released = stale_live_mongo_summary()
+    released.update(
+        {
+            "audio_enabled": True,
+            "audiobook_enabled": True,
+            "generate_audiobook": True,
+            "audio_status": "AVAILABLE",
+            "audiobook_release_gate": "APPROVED",
+            "audio_qa_status": "QA_PASSED",
+            "audiobook_provider": "kokoro",
+            "audiobook_voice": "af_heart",
+            "audiobook_assets": {
+                "mp3": "https://s3.us-west-004.backblazeb2.com/private/released.mp3",
+            },
+            "audiobook_release_conveyor": {
+                "schema_version": server.AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+                "reader_release_approved": True,
+                "audio_release_approved": True,
+                "audio_public_release": "APPROVED",
+                "audio_qa_status": "QA_PASSED",
+                "audio_sha256": "b" * 64,
+            },
+        }
+    )
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=SameSlugBooks(released)))
+    monkeypatch.setattr(server, "_redis_cache_get", no_cache)
+    monkeypatch.setattr(server, "_redis_cache_set", no_cache_write)
+
+    manifest = asyncio.run(server._reader_book_manifest_doc(SLUG))
+
+    assert manifest is not None
+    assert manifest["audio"]["enabled"] is True
+    assert manifest["audio"]["provider"] == "kokoro"
+    assert manifest["audio"]["assets"]["mp3"] == f"/api/reader/book/{SLUG}/audiobook"
+
+
 def test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate():
     cache_key = server._public_cache_key("book_detail", slug=SLUG)
 
     assert '"catalog_truth": "controlled-covers-v1"' in cache_key
-    assert '"truth_gate": "audio-contract-v15"' in cache_key
+    assert '"truth_gate": "audio-contract-v16"' in cache_key
 
 
 def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkeypatch):
@@ -283,11 +322,11 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
     assert seen == [
         (
             "reader-content",
-            "book-access:audio-contract-v15:controlled-covers-v1:37:public:jekyll-and-hyde",
+            "book-access:audio-contract-v16:controlled-covers-v1:37:public:jekyll-and-hyde",
         ),
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v15:controlled-covers-v1:chapter-index.v1:37:public:jekyll-and-hyde",
+            "book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:37:public:jekyll-and-hyde",
         ),
     ]
 
@@ -298,6 +337,7 @@ def test_gift_reader_manifest_uses_exact_canonical_covers_and_keeps_audio_hidden
         include_content=True,
     )
     assert canonical is not None
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=SameSlugBooks({})))
     monkeypatch.setattr(server, "_redis_cache_get", no_cache)
     monkeypatch.setattr(server, "_redis_cache_set", no_cache_write)
 
@@ -324,6 +364,7 @@ def test_reader_manifest_ignores_pre_catalog_truth_namespace_entry(monkeypatch):
         include_content=True,
     )
     assert canonical is not None
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=SameSlugBooks({})))
     stale_key = "book-manifest:audio-contract-v13:562:public:the-gift-of-the-magi"
     stale_manifest = {
         "book": {
@@ -352,7 +393,7 @@ def test_reader_manifest_ignores_pre_catalog_truth_namespace_entry(monkeypatch):
     assert seen == [
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v15:controlled-covers-v1:chapter-index.v1:562:public:the-gift-of-the-magi",
+            "book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:562:public:the-gift-of-the-magi",
         )
     ]
     assert seen[0][1] != stale_key

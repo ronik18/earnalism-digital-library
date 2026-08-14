@@ -776,7 +776,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v15"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v16"
 # Rotate only public catalog/home cache keys for controlled-cover precedence.
 # Reader/audio manifest cache namespaces remain unchanged.
 PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "controlled-covers-v1"
@@ -1670,7 +1670,7 @@ def _controlled_artifact_doc(slug: str, *, include_content: bool = False) -> Opt
 def _reader_audio_truth_doc(book: Optional[dict], slug: str) -> Optional[dict]:
     normalized_slug = str(slug or "").strip().lower()
     artifact = _controlled_artifact_doc(normalized_slug, include_content=False)
-    if normalized_slug == "dracula" and artifact and book:
+    if artifact and book:
         merged = _merge_controlled_publication_truth(book, artifact, slug=normalized_slug)
         if can_expose_audio(merged):
             return merged
@@ -2883,14 +2883,14 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
 
     if admin_preview:
         audio_source = doc
-    elif _slug_is_dracula(slug):
+    elif can_expose_audio({**doc, "slug": slug}):
+        audio_source = doc
+    else:
         release_doc = await db.books.find_one(
-            _controlled_public_book_query({"slug": "dracula"}),
+            _controlled_public_book_query({"slug": slug}),
             _READER_AUDIO_BOOK_PROJECTION,
         )
         audio_source = _reader_audio_truth_doc(release_doc or doc, slug) or {}
-    else:
-        audio_source = _reader_audio_truth_doc(doc, slug) or {}
     audio = _reader_manifest_audio(audio_source, slug)
     book_public = public_book_projection(_strip_all_chapter_content(doc)) or {}
     if not admin_preview and not _public_projection_is_live(book_public):
