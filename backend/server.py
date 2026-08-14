@@ -1769,6 +1769,27 @@ def _merge_controlled_publication_truth(
     return merged
 
 
+def _audiobook_release_reader_truth(existing: dict, slug: str) -> dict:
+    """Resolve reader eligibility from validated controlled-publication truth.
+
+    Some controlled titles intentionally retain a legacy Mongo shell while the
+    file-backed artifact owns the already-live reader, rights, cover, chapter,
+    and manuscript truth. Audio activation may use that validated artifact for
+    eligibility, but the release conveyor and storage mutation remain
+    database-owned.
+    """
+
+    normalized_slug = str(slug or "").strip().lower()
+    artifact = load_controlled_artifact_book(normalized_slug, include_content=False)
+    if not artifact:
+        return existing
+    return _merge_controlled_publication_truth(
+        existing,
+        artifact,
+        slug=normalized_slug,
+    )
+
+
 def _home_curation_controlled_truth_docs(books: list[dict]) -> list[dict]:
     """Resolve Home books with controlled publication truth taking precedence.
 
@@ -5990,6 +6011,7 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
     existing = await db.books.find_one({"slug": slug}, {"_id": 0})
     if not existing:
         raise HTTPException(status_code=404, detail="Book not found")
+    reader_truth = _audiobook_release_reader_truth(existing, slug)
 
     audio_key = _validate_private_audiobook_object_key(slug, payload.audio_object_key, ".mp3")
     audio_sha256 = _release_sha256(payload.audio_sha256)
@@ -6002,35 +6024,35 @@ async def admin_release_audiobook(slug: str, payload: AudiobookReleaseIn, admin=
     if not payload.owner_public_release_intent:
         raise HTTPException(status_code=409, detail="Explicit public release intent is required")
 
-    workflow = existing.get("publication_workflow") if isinstance(existing.get("publication_workflow"), dict) else {}
+    workflow = reader_truth.get("publication_workflow") if isinstance(reader_truth.get("publication_workflow"), dict) else {}
     publication = workflow.get("publication") if isinstance(workflow.get("publication"), dict) else {}
     reader_ready = bool(
-        existing.get("is_published") is True
+        reader_truth.get("is_published") is True
         and (
             publication.get("reader_exposed") is True
             or (
-                existing.get("approved_to_publish") is True
-                and str(existing.get("publication_status") or "").upper() == "LIVE_APPROVED"
+                reader_truth.get("approved_to_publish") is True
+                and str(reader_truth.get("publication_status") or "").upper() == "LIVE_APPROVED"
             )
         )
     )
     reader_blockers: list[str] = []
     if not reader_ready:
         reader_blockers.append("The reader release must already be approved before audio activation.")
-    if not (existing.get("cover_image_url") or existing.get("cover_url")):
+    if not (reader_truth.get("cover_image_url") or reader_truth.get("cover_url")):
         reader_blockers.append("A front cover is required.")
-    if str(existing.get("qa_status") or "").upper() not in {"QA_PASSED", "PASS", "PASSED", "APPROVED"}:
+    if str(reader_truth.get("qa_status") or "").upper() not in {"QA_PASSED", "PASS", "PASSED", "APPROVED"}:
         reader_blockers.append("Reader QA must already be passed.")
-    if any((chapter.get("processing_status") or "ready") != "ready" for chapter in existing.get("chapters") or [] if isinstance(chapter, dict)):
+    if any((chapter.get("processing_status") or "ready") != "ready" for chapter in reader_truth.get("chapters") or [] if isinstance(chapter, dict)):
         reader_blockers.append("All reader chapters must be ready.")
-    reader_blockers.extend(f"Rights verification: {issue}" for issue in rights_publish_blockers(existing))
+    reader_blockers.extend(f"Rights verification: {issue}" for issue in rights_publish_blockers(reader_truth))
     if reader_blockers:
         raise HTTPException(status_code=409, detail={"message": "Reader release is not ready for audio.", "issues": sorted(set(reader_blockers))})
 
     expected_manuscript_hashes = {
-        _release_sha256(existing.get("audiobook_manuscript_sha256")),
-        _release_sha256(existing.get("content_hash")),
-        _release_sha256(existing.get("source_hash")),
+        _release_sha256(reader_truth.get("audiobook_manuscript_sha256")),
+        _release_sha256(reader_truth.get("content_hash")),
+        _release_sha256(reader_truth.get("source_hash")),
     }
     expected_manuscript_hashes.discard("")
     if manuscript_sha256 not in expected_manuscript_hashes:

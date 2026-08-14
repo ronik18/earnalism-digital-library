@@ -187,6 +187,42 @@ def test_controlled_merge_accepts_only_server_owned_conveyor_audio_release():
     assert public["audio_qa_status"] == "QA_PASSED"
 
 
+def test_audiobook_release_uses_validated_controlled_reader_truth_for_legacy_shell():
+    canonical = catalog_truth.load_controlled_artifact_book(
+        "gitanjali",
+        include_content=False,
+    )
+    assert canonical is not None
+    legacy_shell = {
+        "slug": "gitanjali",
+        "title": "Gitanjali",
+        "is_published": False,
+        "audiobook_enabled": False,
+        "chapters": [{"title": "Legacy shell chapter"}],
+    }
+
+    resolved = server._audiobook_release_reader_truth(legacy_shell, "gitanjali")
+
+    assert resolved["is_published"] is True
+    assert resolved["approved_to_publish"] is True
+    assert resolved["publication_status"] == "LIVE_APPROVED"
+    assert resolved["qa_status"] == "QA_PASSED"
+    assert resolved["cover_image_url"]
+    assert len(resolved["chapters"]) == 104
+    assert resolved["audiobook_manuscript_sha256"] == (
+        "6a14b35ae1ea3d6cc37bb384ca0f96b1f98bb6ddf1ba9f6c535ab3d1f3e442ca"
+    )
+    assert resolved["audio_enabled"] is False
+    assert resolved["audiobook_enabled"] is False
+
+
+def test_audiobook_release_falls_back_to_database_when_no_controlled_artifact(monkeypatch):
+    database_book = {"slug": "ordinary-book", "is_published": True}
+    monkeypatch.setattr(server, "load_controlled_artifact_book", lambda *_args, **_kwargs: None)
+
+    assert server._audiobook_release_reader_truth(database_book, "ordinary-book") is database_book
+
+
 def test_dracula_reader_audio_truth_merges_exact_server_owned_release(monkeypatch):
     canonical = canonical_jekyll()
     released = stale_live_mongo_summary()
