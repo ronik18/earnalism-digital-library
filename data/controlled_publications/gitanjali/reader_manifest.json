@@ -1567,5 +1567,6 @@
   "audio_enabled": false,
   "audiobook_enabled": false,
   "content_hash": "169757c4993a9c5e9c08b26792003f37112e03c5c21a5cacfd929559e7165a7f",
-  "generated_at": "2026-08-04T10:09:39Z"
+  "generated_at": "2026-08-04T10:09:39Z",
+  "audiobook_manuscript_sha256": "6a14b35ae1ea3d6cc37bb384ca0f96b1f98bb6ddf1ba9f6c535ab3d1f3e442ca"
 }
