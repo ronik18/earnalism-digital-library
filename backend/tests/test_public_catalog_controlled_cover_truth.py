@@ -216,6 +216,7 @@ def test_audiobook_release_uses_validated_controlled_reader_truth_for_legacy_she
     )
     assert resolved["audio_enabled"] is False
     assert resolved["audiobook_enabled"] is False
+    assert server.rights_publish_blockers(resolved) == []
 
 
 def test_audiobook_release_falls_back_to_database_when_no_controlled_artifact(monkeypatch):
