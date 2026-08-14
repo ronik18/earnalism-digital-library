@@ -1116,10 +1116,23 @@ def live_approved_mongo_query(extra: dict[str, Any] | None = None) -> dict[str, 
 
     query: dict[str, Any] = {
         "$or": [
-            {"slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)}},
-            {"audiobook_release_conveyor.reader_release_approved": True},
-        ],
-        "publication_workflow.publication.reader_exposed": True,
+            {
+                "$and": [
+                    {
+                        "$or": [
+                            {"slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)}},
+                            {"audiobook_release_conveyor.reader_release_approved": True},
+                        ]
+                    },
+                    {"publication_workflow.publication.reader_exposed": True},
+                ]
+            },
+            {
+                "slug": "dracula",
+                "audiobook_release_conveyor.schema_version": AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+                "audiobook_release_conveyor.audio_release_approved": True,
+            },
+        ]
     }
     if extra:
         extra_or = extra.get("$or")

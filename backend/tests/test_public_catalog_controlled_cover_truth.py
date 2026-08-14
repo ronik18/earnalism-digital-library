@@ -187,11 +187,45 @@ def test_controlled_merge_accepts_only_server_owned_conveyor_audio_release():
     assert public["audio_qa_status"] == "QA_PASSED"
 
 
+def test_dracula_reader_audio_truth_merges_exact_server_owned_release(monkeypatch):
+    canonical = canonical_jekyll()
+    released = stale_live_mongo_summary()
+    released.update(
+        {
+            "audio_enabled": True,
+            "audiobook_enabled": True,
+            "generate_audiobook": True,
+            "audio_status": "AVAILABLE",
+            "audiobook_release_gate": "APPROVED",
+            "audio_qa_status": "QA_PASSED",
+            "audiobook_provider": "kokoro",
+            "audiobook_voice": "bm_george",
+            "audiobook_assets": {"mp3": "b2://private/released.mp3"},
+            "audiobook_release_conveyor": {
+                "schema_version": server.AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
+                "reader_release_approved": True,
+                "audio_release_approved": True,
+                "audio_public_release": "APPROVED",
+                "audio_qa_status": "QA_PASSED",
+                "audio_sha256": "a" * 64,
+            },
+        }
+    )
+    monkeypatch.setattr(server, "_controlled_artifact_doc", lambda *_args, **_kwargs: canonical)
+
+    resolved = server._reader_audio_truth_doc(released, "dracula")
+
+    assert resolved is not None
+    assert resolved["audio_enabled"] is True
+    assert resolved["audiobook_enabled"] is True
+    assert resolved["audiobook_release_gate"] == "APPROVED"
+
+
 def test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate():
     cache_key = server._public_cache_key("book_detail", slug=SLUG)
 
     assert '"catalog_truth": "controlled-covers-v1"' in cache_key
-    assert '"truth_gate": "audio-contract-v14"' in cache_key
+    assert '"truth_gate": "audio-contract-v15"' in cache_key
 
 
 def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkeypatch):
@@ -213,11 +247,11 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
     assert seen == [
         (
             "reader-content",
-            "book-access:audio-contract-v14:controlled-covers-v1:37:public:jekyll-and-hyde",
+            "book-access:audio-contract-v15:controlled-covers-v1:37:public:jekyll-and-hyde",
         ),
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v14:controlled-covers-v1:chapter-index.v1:37:public:jekyll-and-hyde",
+            "book-manifest:audio-contract-v15:controlled-covers-v1:chapter-index.v1:37:public:jekyll-and-hyde",
         ),
     ]
 
@@ -282,7 +316,7 @@ def test_reader_manifest_ignores_pre_catalog_truth_namespace_entry(monkeypatch):
     assert seen == [
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v14:controlled-covers-v1:chapter-index.v1:562:public:the-gift-of-the-magi",
+            "book-manifest:audio-contract-v15:controlled-covers-v1:chapter-index.v1:562:public:the-gift-of-the-magi",
         )
     ]
     assert seen[0][1] != stale_key

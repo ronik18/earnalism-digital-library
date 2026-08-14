@@ -2558,12 +2558,12 @@
       "audiobook_next_action": "Prepare and editorially approve an exact-title rights-cleared front/back cover pair, then promote it through the checksum-bound admin gate. Only then admit one source-bound Charon representative candidate."
     },
     "dracula": {
-      "latest_decision": "SERVER_OWNED_AUDIO_RELEASE_ACTIVE_PUBLIC_PROJECTION_FIX_PENDING_DEPLOY",
-      "decision_reason": "The checksum-bound release endpoint activated the approved Dracula recording after deterministic reader-QA and manuscript-hash reconciliation. The controlled artifact still correctly owns reader, rights, cover, and content truth; a valid server-owned conveyor may now overlay only its approved audio fields. Public audio remains unclaimed until merged deployment and 200/206/browser postchecks pass.",
-      "updated_at": "2026-08-14T08:13:00Z",
+      "latest_decision": "DRACULA_EXACT_RELEASE_SELECTOR_FIX_PENDING_DEPLOY",
+      "decision_reason": "PR 271 deployed the server-owned conveyor overlay, but the public Mongo selector still excluded Dracula because its legacy publication_workflow reader-exposed field is absent. The narrow follow-up admits only slug dracula with the exact conveyor schema and audio_release_approved=true, then keeps every Python reader, rights, content, audio, checksum, and endpoint truth gate fail-closed.",
+      "updated_at": "2026-08-14T08:42:00Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
-      "public_audio_status": "SERVER_APPROVED_PUBLIC_PROJECTION_PENDING_DEPLOY",
+      "public_audio_status": "SERVER_APPROVED_SELECTOR_FIX_PENDING_DEPLOY",
       "canonical_source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
       "backend_mirror_source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
       "canonical_raw_reader_content_sha256": "a9b4c970185b51e95c6904301b5d4273bf7058fd5aab37da9e5a88281c20273e",
@@ -2602,7 +2602,7 @@
       "voice_rights_review": "internal/audiobook_lab/dracula/pr269_edge_voice_rights_review.md",
       "prior_source_parity_evidence": "internal/earnalism_intelligence/dracula_source_parity_binding_20260730.json",
       "audited_full_audio_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
-      "audiobook_next_action": "Merge the focused server-owned conveyor projection fix, deploy only merged origin/main, then require public API 200, audio/mpeg, Range 206, cache safety, browser playback, and temporary SSH-key removal before declaring LIVE."
+      "audiobook_next_action": "Merge the Dracula-only approved-conveyor selector fix, deploy only merged origin/main, then require public API 200, audio/mpeg, Range 206, cache safety, browser playback, and temporary SSH-key removal before declaring LIVE."
     },
     "pride-and-prejudice": {
       "latest_decision": "CHATTERBOX_V3_PRIVATE_PILOT_CLOSED_OBJECTIVE_FAIL_AUDIO_HIDDEN",
