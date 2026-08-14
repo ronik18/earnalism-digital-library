@@ -22,7 +22,7 @@ describe("Footer compact colophon", () => {
   });
 
   test("keeps premium public copy, copyright protection, and accessible navigation", () => {
-    expect(footerSource).toContain("Timeless Bengali and English literature, made beautiful for the way you read and listen now.");
+    expect(footerSource).toContain("Timeless Bengali and English literature, made beautiful for every way you read and listen.");
     expect(footerSource).toContain("Return to beloved classics, discover a voice you have never forgotten");
     expect(footerSource).toContain('aria-labelledby="footer-explore-heading"');
     expect(footerSource).toContain("min-h-11");
