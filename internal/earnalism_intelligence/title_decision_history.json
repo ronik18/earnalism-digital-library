@@ -2558,12 +2558,12 @@
       "audiobook_next_action": "Prepare and editorially approve an exact-title rights-cleared front/back cover pair, then promote it through the checksum-bound admin gate. Only then admit one source-bound Charon representative candidate."
     },
     "dracula": {
-      "latest_decision": "DRACULA_EXACT_RELEASE_SELECTOR_FIX_PENDING_DEPLOY",
-      "decision_reason": "PR 271 deployed the server-owned conveyor overlay, but the public Mongo selector still excluded Dracula because its legacy publication_workflow reader-exposed field is absent. The narrow follow-up admits only slug dracula with the exact conveyor schema and audio_release_approved=true, then keeps every Python reader, rights, content, audio, checksum, and endpoint truth gate fail-closed.",
-      "updated_at": "2026-08-14T08:42:00Z",
+      "latest_decision": "DRACULA_DIGITAL_READER_AND_AUDIOBOOK_LIVE_VERIFIED",
+      "decision_reason": "The checksum-bound Dracula release is serving from merged origin/main. Public book truth is LIVE_APPROVED; the same-origin audio proxy returns HTTP 200 audio/mpeg and byte-range HTTP 206 with private caching; production browser playback advanced and pause/resume controls responded. The temporary Railway SSH key and all local key material were removed after verification.",
+      "updated_at": "2026-08-14T08:56:30Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
-      "public_audio_status": "SERVER_APPROVED_SELECTOR_FIX_PENDING_DEPLOY",
+      "public_audio_status": "LIVE_APPROVED",
       "canonical_source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
       "backend_mirror_source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
       "canonical_raw_reader_content_sha256": "a9b4c970185b51e95c6904301b5d4273bf7058fd5aab37da9e5a88281c20273e",
@@ -2582,7 +2582,7 @@
         "15": "Dr. Seward’s Diary"
       },
       "reader_index_catalog_audit": "PASS_DATA_163_BOOKS_1025_CHAPTERS_BACKEND_79_BOOKS_691_CHAPTERS_ZERO_BLOCKERS",
-      "reader_index_next_action": "Include this checksum-valid metadata repair in PR 270 and require hosted regression before merge.",
+      "reader_index_next_action": "Monitor the normalized 27-chapter index in production; PR 270 is merged and the hosted regression passed.",
       "chapter_content_changed": false,
       "stored_content_hash_changed": false,
       "canonical_covers_ready": true,
@@ -2602,7 +2602,7 @@
       "voice_rights_review": "internal/audiobook_lab/dracula/pr269_edge_voice_rights_review.md",
       "prior_source_parity_evidence": "internal/earnalism_intelligence/dracula_source_parity_binding_20260730.json",
       "audited_full_audio_sha256": "132c19e72a6e6107f8cc91908590eaac17da042e5436dec426b24c7f6746d863",
-      "audiobook_next_action": "Merge the Dracula-only approved-conveyor selector fix, deploy only merged origin/main, then require public API 200, audio/mpeg, Range 206, cache safety, browser playback, and temporary SSH-key removal before declaring LIVE."
+      "audiobook_next_action": "Monitor production availability and retain the checksum-bound release, deployment, range, cache, browser-playback, and SSH-key-removal evidence for rollback and audit."
     },
     "pride-and-prejudice": {
       "latest_decision": "CHATTERBOX_V3_PRIVATE_PILOT_CLOSED_OBJECTIVE_FAIL_AUDIO_HIDDEN",
