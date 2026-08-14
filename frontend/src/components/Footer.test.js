@@ -21,9 +21,9 @@ describe("Footer compact colophon", () => {
     expect(footerSource).toContain('sales@reoenterprise.org');
   });
 
-  test("keeps release truth, copyright protection, and accessible navigation", () => {
-    expect(footerSource).toContain("Bengali and English classics, presented with quiet release truth.");
-    expect(footerSource).toContain("Reader-ready classics stay visible; audiobooks appear only after evidence proves they are ready.");
+  test("keeps premium public copy, copyright protection, and accessible navigation", () => {
+    expect(footerSource).toContain("Timeless Bengali and English literature, made beautiful for every way you read and listen.");
+    expect(footerSource).toContain("Return to beloved classics, discover a voice you have never forgotten");
     expect(footerSource).toContain('aria-labelledby="footer-explore-heading"');
     expect(footerSource).toContain("min-h-11");
     expect(footerSource).toContain('data-testid="footer-content-protection"');

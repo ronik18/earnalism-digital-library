@@ -40,8 +40,9 @@
     content: "";
     pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(12, 5, 2, 0.48) 0%, rgba(12, 5, 2, 0.74) 52%, #0c0502 100%),
-      linear-gradient(90deg, rgba(12, 5, 2, 0.88) 0%, rgba(12, 5, 2, 0.35) 62%, rgba(12, 5, 2, 0.72) 100%);
+      radial-gradient(circle at 84% 58%, rgba(228, 180, 92, 0.15), transparent 31%),
+      linear-gradient(180deg, rgba(8, 3, 2, 0.5) 0%, rgba(8, 3, 2, 0.28) 31%, rgba(8, 3, 2, 0.58) 68%, #0c0502 100%),
+      linear-gradient(90deg, rgba(8, 3, 2, 0.86) 0%, rgba(8, 3, 2, 0.5) 48%, rgba(8, 3, 2, 0.12) 100%);
   }
 
   .premium-reference-hero__backdrop {
@@ -58,8 +59,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 78% top;
-    opacity: 0.48;
+    object-position: center 38%;
+    opacity: 0.92;
+    filter: saturate(0.96) contrast(1.04);
   }
 
   .premium-reference-catalog {
@@ -104,11 +106,13 @@
   max-width: 42rem;
   margin: 1rem 0 0;
   color: #fffaf0;
-  font-family: Georgia, 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-family: var(--font-display);
   font-size: clamp(2.15rem, 9.6vw, 3rem);
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1.06;
+  font-optical-sizing: auto;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 .premium-hero-copy h1 span {
@@ -1516,14 +1520,28 @@
 
 @media (max-width: 767px) {
   .premium-reference-hero { min-height: 0; }
-  .premium-hero-copy { padding: 1.8rem 1.15rem 0; }
-  .premium-hero-copy h1 {
-    margin-top: 0.8rem;
-    font-size: clamp(2rem, 8.7vw, 2.25rem);
-    letter-spacing: -0.03em;
-    line-height: 1.09;
+  .premium-hero-copy { padding: 2.15rem 1.2rem 0; }
+  .premium-hero-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.23em;
   }
-  .premium-hero-copy > p { margin-top: 0.9rem; font-size: 0.98rem; line-height: 1.5; }
+  .premium-hero-copy h1 {
+    max-width: 10.8em;
+    margin-top: 0.9rem;
+    font-size: clamp(2.2rem, 9.5vw, 2.65rem);
+    font-weight: 450;
+    letter-spacing: -0.038em;
+    line-height: 1.01;
+    text-wrap: balance;
+  }
+  .premium-hero-copy > p {
+    max-width: 31rem;
+    margin-top: 1rem;
+    color: rgba(255, 248, 232, 0.9);
+    font-size: 1.02rem;
+    line-height: 1.48;
+    text-wrap: pretty;
+  }
   .premium-hero-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.6rem;

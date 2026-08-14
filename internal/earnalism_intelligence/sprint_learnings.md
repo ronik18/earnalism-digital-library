@@ -2070,3 +2070,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Run full-title ASR on the exact ambience-backed bytes, not only on the clean master. The Gitanjali public candidate passed at `0.985862` similarity, `0.999381` coverage, exact first/last spans, ordered integrity, and zero failed sections.
 - Low-latency playback does not require downloading a multi-gigabyte file. A compact `84,510,093`-byte MP3 plus the existing same-origin byte-range proxy and metadata-only preload keeps initial transfer bounded while preserving seek and resume behavior.
 - A representative listening approval authorizes automatic continuation only for the exact model, voice, and sample set. The final full-title fingerprint, manuscript checksum, audio checksum, objective evidence, storage receipt, browser proof, and production postchecks remain separate mandatory bindings.
+
+## Mobile-first premium home storytelling - 2026-08-15
+
+- A desktop cinematic composite is not a mobile hero merely because `object-fit: cover` can fill the viewport. The crop can remove the emotional focal points while a defensive overlay turns the remaining image into an indistinct dark field.
+- Mobile needs its own composition: portrait-safe negative space for live text, intentional visual anchors below and beside the copy, and a restrained directional overlay that protects contrast without erasing the artwork.
+- Release-gate truth belongs in availability logic and evidence, not in customer-facing aspiration. Public headings should describe the reader's desired experience while links and data filters continue to prevent unavailable media from appearing.
+- Premium literary typography comes from a controlled display face, optical spacing, short balanced measures, and confident scale; decorative menu language or tiny text would reduce trust and accessibility.
+- Exact-copy regression contracts must move with an approved customer-facing rewrite; otherwise a healthy release can fail on intentionally removed legacy language.
+- Keep unsupported-audio guards semantic and strict. Removing an ambiguous phrase such as “listen now” from general brand copy is safer than weakening a crawler-visible availability assertion.

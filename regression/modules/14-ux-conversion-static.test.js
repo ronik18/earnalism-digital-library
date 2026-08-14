@@ -236,12 +236,12 @@ describe("UX conversion static signals", () => {
     expect(shelfTwoSlideshow).toContain("/contact?interest=");
     expect(shelfTwoSlideshow).not.toContain("Notify Me");
     expect(home).toContain('data-testid="reading-time-library-path"');
-    expect(home).toContain("Continue only when the story has earned it.");
+    expect(home).toContain("Stay with the story for as long as it holds you.");
     expect(home).toContain("without a subscription or autorenewal");
     expect(home).toContain("View Reading Passes");
-    expect(home).toContain("Open the room");
-    expect(home).toContain("Add reading time");
-    expect(home).toContain("Return calmly");
+    expect(home).toContain("Meet the story");
+    expect(home).toContain("Choose your time");
+    expect(home).toContain("Carry it with you");
     expect(home).not.toContain('data-testid="dracula-journey-map"');
     expect(home).not.toContain('data-testid="home-live-dracula"');
     expect(home).not.toContain('data-testid="controlled-carousel-section"');
@@ -264,7 +264,7 @@ describe("UX conversion static signals", () => {
     expect(premiumHero).toContain('data-testid="premium-landing-hero"');
     expect(premiumHero).toContain('data-testid="hero-catalog-visuals"');
     expect(premiumHero).toContain('data-testid="premium-hero-reading-pass"');
-    expect(premiumHero).toContain("Start free. Continue when the story earns it.");
+    expect(premiumHero).toContain("Begin with a chapter. Stay for the journey.");
     expect(premiumHero).toContain("View Reading Passes");
     expect(premiumHero).toContain("Beautiful Graphical Editions");
     expect(premiumHero).toContain("Calm Reader Modes");
@@ -1477,7 +1477,7 @@ describe("UX conversion static signals", () => {
     expect(header).not.toContain("IndiaCraftBadge");
     expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="mobile-cta-library"');
-    expect(header).toContain("Browse Library");
+    expect(header).toContain("Enter the Library");
     expect(header).not.toContain(">Start Reading</Link>");
     expect(header).toContain("aria-expanded={open}");
     expect(header).toContain('aria-controls="mobile-menu"');
@@ -1814,8 +1814,8 @@ describe("UX conversion static signals", () => {
     expect(footer).not.toContain("<FooterSocialLinks />");
     expect(footer).toContain("sales@reoenterprise.org");
     expect(footer).not.toContain("sales@reoenterprise.in");
-    expect(footer).toContain("Bengali and English classics, presented with quiet release truth.");
-    expect(footer).toContain("Reader-ready classics stay visible; audiobooks appear only after evidence proves they are ready.");
+    expect(footer).toContain("Timeless Bengali and English literature, made beautiful for every way you read and listen.");
+    expect(footer).toContain("Return to beloved classics, discover a voice you have never forgotten");
     expect(footer).not.toContain("A quiet digital reading room beginning with Dracula by Bram Stoker.");
   });
 });

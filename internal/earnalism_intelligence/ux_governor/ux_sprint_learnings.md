@@ -168,3 +168,9 @@
 - A generated ordinal beside a source title such as `Chapter I` creates duplicate numbering. Separate the canonical sequence, structural unit, and primary title while retaining the untouched source title in metadata.
 - Long contents pages must own vertical overflow independently from horizontal reader page gestures. Dracula required 1155 px of vertical scrolling on a 390 x 844 viewport to expose all 27 chapters.
 - The controlled-publication audit covered all 79 manifests and 691 chapter records with zero blank titles, duplicate IDs, sequence gaps, or contract mismatches.
+
+## 2026-08-15 Mobile Home Cinematic and Voice Refinement
+
+- A wide desktop reference scene cropped into a phone can technically load while appearing visually absent. Use a dedicated portrait composition and verify the actual rendered focal points at phone widths.
+- Emotional public copy and strict release truth are complementary: speak about the experience in the interface, enforce availability with routes and data, and keep operational phrases such as “release gate” out of marketing surfaces.
+- The mobile first glimpse should establish one hierarchy—eyebrow, large literary promise, intimate deck, two clear actions—before secondary cards appear.

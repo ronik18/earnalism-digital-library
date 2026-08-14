@@ -162,6 +162,11 @@ html {
   letter-spacing: -0.025em;
 }
 
+.home-quick-paths__heading h2 em {
+  color: var(--brand-gold-deep);
+  font-weight: 450;
+}
+
 .home-quick-paths__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -195,17 +200,19 @@ html {
 .home-quick-path__icon { display: inline-grid; width: 2.75rem; height: 2.75rem; place-items: center; border: 1px solid rgba(181, 138, 69, 0.38); border-radius: 0.8rem; color: var(--brand-burgundy); background: rgba(239, 226, 204, 0.52); }
 .home-quick-path__copy { display: grid; align-content: start; min-width: 0; }
 .home-quick-path__eyebrow { color: var(--brand-gold-deep); font: 700 0.62rem/1.25 var(--font-ui); letter-spacing: 0.14em; }
-.home-quick-path__copy strong { margin-top: 0.45rem; color: var(--brand-burgundy); font: 500 1.35rem/1.08 var(--font-display); }
+.home-quick-path__copy strong { margin-top: 0.45rem; color: var(--brand-burgundy); font: 550 1.45rem/1.04 var(--font-display); letter-spacing: -0.018em; }
 .home-quick-path__copy small { margin-top: 0.45rem; color: var(--brand-charcoal-soft); font-size: 0.82rem; line-height: 1.5; }
 .home-quick-path__cta { display: inline-flex; min-height: 2.75rem; grid-column: 1 / -1; align-items: center; justify-content: space-between; gap: 0.5rem; border-top: 1px solid rgba(90, 31, 43, 0.12); padding-top: 0.7rem; color: var(--brand-burgundy); font-size: 0.76rem; font-weight: 700; }
 
 @media (max-width: 767px) {
   .home-quick-paths__inner { width: 100%; padding: 2.35rem 0; }
   .home-quick-paths__heading { display: block; margin: 0 1.15rem 1.15rem; }
-  .home-quick-paths__heading h2 { margin-top: 0.55rem; font-size: 1.82rem; line-height: 1.08; }
+  .home-quick-paths__heading h2 { max-width: 13ch; margin-top: 0.65rem; font-size: clamp(2.05rem, 9vw, 2.4rem); line-height: 1.01; letter-spacing: -0.035em; text-wrap: balance; }
   .home-quick-paths__grid { grid-auto-flow: column; grid-auto-columns: min(82vw, 20rem); grid-template-columns: none; gap: 0.75rem; padding: 0 1.15rem 0.35rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
   .home-quick-paths__grid::-webkit-scrollbar { display: none; }
-  .home-quick-path { min-height: 11.5rem; scroll-snap-align: start; }
+  .home-quick-path { min-height: 12.5rem; scroll-snap-align: start; }
+  .home-quick-path__copy strong { font-size: 1.55rem; }
+  .home-quick-path__copy small { font-size: 0.86rem; line-height: 1.48; }
 }
 
 @media (min-width: 1024px) {

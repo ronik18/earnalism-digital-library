@@ -48,26 +48,26 @@ const SOCIAL_ICONS = {
 
 const QUICK_PATHS = [
   {
-    eyebrow: "বাংলা পাঠ",
+    eyebrow: "বাংলার আপন গল্প",
     title: "Bengali classics",
-    description: "Reader-ready editions rooted in Bengal.",
-    label: "Browse Bengali classics",
+    description: "Beloved voices of Bengal, beautifully brought to the page.",
+    label: "Enter the Bengali collection",
     to: "/library?language=bn&availability=reader-ready",
     Icon: Languages,
   },
   {
-    eyebrow: "ENGLISH SHELF",
+    eyebrow: "TIMELESS WORLDS",
     title: "English classics",
-    description: "Gothic, human, and adventurous reading rooms.",
-    label: "Browse English classics",
+    description: "Enduring stories of wonder, courage, mystery, and the human heart.",
+    label: "Enter the English collection",
     to: "/library?language=en",
     Icon: BookText,
   },
   {
-    eyebrow: "LISTENING ROOMS",
-    title: "Approved audiobooks",
-    description: "Only editions that have passed every release gate.",
-    label: "Explore approved audiobooks",
+    eyebrow: "STORIES IN VOICE",
+    title: "Immersive audiobooks",
+    description: "Soulful performances that let every chapter unfold around you.",
+    label: "Step into the listening room",
     to: "/library?availability=approved-audiobook",
     Icon: Headphones,
   },
@@ -94,7 +94,7 @@ export default function Home() {
   useSEO({
     title: "Earnalism | Bengali and English Classics in a Calm Digital Library",
     description:
-      "Earnalism is a calm digital reading room for timeless Bengali and English literature, with reader-only classics, graphical covers, and release-gated audiobooks.",
+      "Earnalism is a calm digital reading room for timeless Bengali and English literature, with beautiful editions, immersive audiobooks, and space to linger.",
     image: "/assets/shelves/bengali-classics.jpg",
     imageAlt: "Earnalism Bengali and English classics shelf artwork",
     canonicalPath: "/",
@@ -151,7 +151,7 @@ export default function Home() {
     setNewsletterStatus("");
     try {
       const { data } = await api.post("/newsletter", { name, email });
-      const message = "Welcome to the Reading Circle. The next genuine release note will arrive here.";
+      const message = "Welcome to the Reading Circle. We will write when a story is worth opening together.";
       toast.success(data.message || message);
       setName("");
       setEmail("");
@@ -175,13 +175,16 @@ export default function Home() {
         error={false}
         headerMode="in-flow"
         analyticsNamespace="home"
+        eyebrowLabel="A library made for lingering"
         onTrack={(event, metadata) => trackFunnelEvent(event, { source: "home", ...metadata })}
       />
       <section className="home-quick-paths" aria-labelledby="home-quick-paths-title" data-testid="home-quick-paths">
         <div className="home-quick-paths__inner">
           <div className="home-quick-paths__heading">
-            <div className="overline">Choose your way in</div>
-            <h2 id="home-quick-paths-title">Read in Bengali. Read in English. Listen when the edition is ready.</h2>
+            <div className="overline">Begin with what moves you</div>
+            <h2 id="home-quick-paths-title">
+              Find the language, voice, and story <em>that feel like home.</em>
+            </h2>
           </div>
           <div className="home-quick-paths__grid">
             {QUICK_PATHS.map(({ description, eyebrow, Icon, label, title, to }) => (
@@ -293,12 +296,12 @@ export default function Home() {
       >
         <div className="reference-reading-path__inner mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
           <div className="reference-reading-path__copy">
-            <div className="overline mb-3">Reading time, clearly priced</div>
+            <div className="overline mb-3">Reading on your terms</div>
             <h2 id="reading-time-library-path-title">
-              Continue only when the story has earned it.
+              Stay with the story for as long as it holds you.
             </h2>
             <p>
-              Chapter 1 is free. If you choose to keep reading, a pass adds time to your wallet—without a subscription or autorenewal.
+              Begin every book with Chapter 1 on us. When you are ready for more, add reading time once—without a subscription or autorenewal.
             </p>
             <Link
               to="/pricing"
@@ -312,18 +315,18 @@ export default function Home() {
           <div className="reference-reading-path__cards" aria-label="How Earnalism reading time works">
             <article className="reference-reading-step">
               <BookOpen size={18} strokeWidth={1.6} aria-hidden="true" />
-              <h3>Open the room</h3>
-              <p>Chapter 1 is free, so the first conversion is trust.</p>
+              <h3>Meet the story</h3>
+              <p>Chapter 1 is yours to explore—because trust begins with the first page.</p>
             </article>
             <article className="reference-reading-step">
               <CreditCard size={18} strokeWidth={1.6} aria-hidden="true" />
-              <h3>Add reading time</h3>
-              <p>Passes credit a wallet; time is spent only while reading.</p>
+              <h3>Choose your time</h3>
+              <p>Add a reading pass only when you want to linger.</p>
             </article>
             <article className="reference-reading-step">
               <CircleCheck size={18} strokeWidth={1.6} aria-hidden="true" />
-              <h3>Return calmly</h3>
-              <p>Sign in to resume your place through account or library.</p>
+              <h3>Carry it with you</h3>
+              <p>Your place waits for you across account and library.</p>
             </article>
           </div>
         </div>
@@ -336,12 +339,12 @@ export default function Home() {
             <div className="reading-circle__eyebrow">THE READING CIRCLE</div>
             <h2>A private letter for readers who linger.</h2>
             <p className="reading-circle__description">
-              Occasional notes on reader-ready editions, newly opened listening rooms, and the ideas behind the library—sent only when there is something worth sharing.
+              Occasional notes on beautiful editions, newly opened listening rooms, and books worth carrying with you.
             </p>
             <ul className="reading-circle__signals" aria-label="Reading Circle notes">
-              <li>Reader-ready editions</li>
-              <li>Listening-room openings</li>
-              <li>Notes from the library</li>
+              <li>Beautiful new editions</li>
+              <li>Intimate listening rooms</li>
+              <li>Letters from the library</li>
             </ul>
           </div>
           <form onSubmit={subscribe} className="reading-dispatch" data-testid="newsletter-card" aria-describedby="newsletter-description newsletter-trust newsletter-status">
@@ -351,7 +354,7 @@ export default function Home() {
             </div>
             <h3>Join the circle.</h3>
             <p id="newsletter-description" className="reading-dispatch__description">
-              Leave your name and email to receive the next genuine release note.
+              Share your name and email; we will write only when a story is worth opening together.
             </p>
             <div className="reading-dispatch__fields">
               <label className="reading-dispatch__field">
@@ -367,7 +370,7 @@ export default function Home() {
               <span>{submitting ? "Joining the circle..." : "JOIN THE READING CIRCLE"}</span>
               <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
             </button>
-            <p id="newsletter-trust" className="reading-dispatch__trust">Occasional. Unhurried. Only when something is genuinely ready.</p>
+            <p id="newsletter-trust" className="reading-dispatch__trust">Occasional. Thoughtful. Made for readers who still believe a book can change the room.</p>
             <div id="newsletter-status" className={`reading-dispatch__status ${newsletterStatus && !submitting ? "is-visible" : ""}`} aria-live="polite" role="status">{newsletterStatus}</div>
           </form>
           {activeSocials.length > 0 ? (

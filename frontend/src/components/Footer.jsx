@@ -20,10 +20,10 @@ export default function Footer() {
           <div data-testid="footer-brand">
             <BrandMark variant="footer" className="w-44 max-w-full sm:w-56" />
             <p id="footer-brand-statement" className="mt-2 max-w-xl font-serif-display text-lg leading-snug text-burgundy sm:mt-3">
-              Bengali and English classics, presented with quiet release truth.
+              Timeless Bengali and English literature, made beautiful for every way you read and listen.
             </p>
             <p className="mt-2 max-w-lg text-sm font-light leading-6 text-charcoal-soft">
-              Reader-ready classics stay visible; audiobooks appear only after evidence proves they are ready.
+              Return to beloved classics, discover a voice you have never forgotten, and carry your library wherever the day takes you.
             </p>
           </div>
 
