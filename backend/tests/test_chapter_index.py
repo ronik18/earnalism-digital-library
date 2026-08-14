@@ -36,6 +36,62 @@ def test_unsubtitled_and_non_english_units_remain_meaningful():
     )["index_title"] == "প্রথম পরিচ্ছেদ"
 
 
+def test_dracula_index_is_uniform_and_publisher_catalog_is_not_reader_content():
+    artifact_roots = (
+        ROOT / "backend" / "data" / "controlled_publications" / "dracula",
+        ROOT / "data" / "controlled_publications" / "dracula",
+    )
+    expected_titles = [
+        "CHAPTER I. JONATHAN HARKER’S JOURNAL",
+        "CHAPTER II. JONATHAN HARKER’S JOURNAL-- continued",
+        "CHAPTER III. JONATHAN HARKER’S JOURNAL-- continued",
+        "CHAPTER IV. JONATHAN HARKER’S JOURNAL-- continued",
+        "CHAPTER V. MINA MURRAY’S CORRESPONDENCE",
+        "CHAPTER VI. MINA MURRAY’S JOURNAL",
+        "CHAPTER VII. CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST",
+        "CHAPTER VIII. MINA MURRAY’S JOURNAL",
+        "CHAPTER IX. MINA HARKER’S CORRESPONDENCE",
+        "CHAPTER X. DR. SEWARD’S DIARY",
+        "CHAPTER XI. LUCY WESTENRA’S DIARY",
+        "CHAPTER XII. DR. SEWARD’S DIARY",
+        "CHAPTER XIII. DR. SEWARD’S DIARY",
+        "CHAPTER XIV. MINA HARKER’S JOURNAL",
+        "CHAPTER XV. DR. SEWARD’S DIARY",
+        "CHAPTER XVI. DR. SEWARD’S DIARY-- continued",
+        "CHAPTER XVII. DR. SEWARD’S DIARY-- continued",
+        "CHAPTER XVIII. DR. SEWARD’S DIARY",
+        "CHAPTER XIX. JONATHAN HARKER’S JOURNAL",
+        "CHAPTER XX. JONATHAN HARKER’S JOURNAL",
+        "CHAPTER XXI. DR. SEWARD’S DIARY",
+        "CHAPTER XXII. JONATHAN HARKER’S JOURNAL",
+        "CHAPTER XXIII. DR. SEWARD’S DIARY",
+        "CHAPTER XXIV. DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING",
+        "CHAPTER XXV. DR. SEWARD’S DIARY",
+        "CHAPTER XXVI. DR. SEWARD’S DIARY",
+        "CHAPTER XXVII. MINA HARKER’S JOURNAL",
+    ]
+
+    for artifact_root in artifact_roots:
+        manifest = json.loads((artifact_root / "reader_manifest.json").read_text(encoding="utf-8"))
+        assert [chapter["title"] for chapter in manifest["chapters"]] == expected_titles
+        index_entries = build_chapter_index_entries(manifest["chapters"])
+        assert [index_entries[index - 1]["index_title"] for index in (5, 9, 10, 11, 13, 15)] == [
+            "Mina Murray’s Correspondence",
+            "Mina Harker’s Correspondence",
+            "Dr. Seward’s Diary",
+            "Lucy Westenra’s Diary",
+            "Dr. Seward’s Diary",
+            "Dr. Seward’s Diary",
+        ]
+
+        ending = json.loads(
+            (artifact_root / "chapters" / "chapter-027.json").read_text(encoding="utf-8")
+        )["content"]
+        assert ending.rstrip().endswith("JONATHAN HARKER.\n\nTHE END")
+        assert "Grosset & Dunlap" not in ending
+        assert "DETECTIVE STORIES BY J. S. FLETCHER" not in ending
+
+
 def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
     manifests = sorted(CONTROLLED_ROOT.glob("*/reader_manifest.json"))
     assert len(manifests) == 79

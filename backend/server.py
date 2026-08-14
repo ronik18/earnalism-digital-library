@@ -153,6 +153,8 @@ try:
         PUBLIC_TEXT_PAGE_COUNT,
         ReadingPassConfig,
         ReadingPassError,
+        canonical_segment_chapter_title,
+        canonicalize_segment_manifest_chapters,
         canonical_page_records,
         public_text_page,
         segment_manifest,
@@ -164,6 +166,8 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         PUBLIC_TEXT_PAGE_COUNT,
         ReadingPassConfig,
         ReadingPassError,
+        canonical_segment_chapter_title,
+        canonicalize_segment_manifest_chapters,
         canonical_page_records,
         public_text_page,
         segment_manifest,
@@ -9258,13 +9262,17 @@ async def reading_pass_book_manifest(slug: str, response: Response):
     if not manifest:
         raise HTTPException(status_code=503, detail={"code": "SEGMENTS_NOT_READY", "message": "Canonical reading pages are not ready."})
     response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
+    chapters = canonicalize_segment_manifest_chapters(
+        manifest.get("chapters", []),
+        book.get("chapters", []),
+    )
     return {
         "book_slug": slug,
         "version": manifest["version"],
         "segmentation_version": manifest["segmentation_version"],
         "total_pages": int(manifest["total_pages"]),
         "public_preview_pages": PUBLIC_TEXT_PAGE_COUNT,
-        "chapters": manifest.get("chapters", []),
+        "chapters": chapters,
     }
 
 
@@ -9326,7 +9334,11 @@ async def reading_pass_book_page(
         "total_pages": int(manifest["total_pages"]),
         "is_preview": preview,
         "chapter_id": segment.get("chapter_id", ""),
-        "chapter_title": segment.get("chapter_title", ""),
+        "chapter_title": canonical_segment_chapter_title(
+            (await _reader_book_access_doc(slug) or {}).get("chapters", []),
+            segment.get("chapter_id"),
+            segment.get("chapter_title", ""),
+        ),
         "content_sha256": segment.get("content_sha256", ""),
         "content": segment.get("content", ""),
     }

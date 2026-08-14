@@ -10,6 +10,8 @@ from backend.api.schemas import ReadingPassPreviewActivationIn
 from backend.domain.reading_pass import (
     PUBLIC_AUDIO_PREVIEW_SECONDS,
     ReadingPassConfig,
+    canonical_segment_chapter_title,
+    canonicalize_segment_manifest_chapters,
     canonical_page_records,
     public_audio_position,
     public_text_page,
@@ -42,6 +44,42 @@ def test_canonical_pages_do_not_depend_on_viewport_or_font_settings():
     assert [row["page_index"] for row in first] == list(range(1, len(first) + 1))
     assert [row["is_public_preview"] for row in first[:4]] == [True, True, True, False]
     assert segment_manifest(first)["total_pages"] == len(first)
+
+
+def test_reading_pass_titles_follow_controlled_reader_truth():
+    stored = [
+        {
+            "chapter_id": "chapter-001",
+            "chapter_title": "CHAPTER I. STALE SUBTITLE",
+            "chapter_order": 1,
+        },
+        {
+            "chapter_id": "chapter-002",
+            "chapter_title": "CHAPTER II. STALE SUBTITLE",
+            "chapter_order": 2,
+        },
+    ]
+    controlled = [
+        {"id": "chapter-001", "title": "CHAPTER I"},
+        {"id": "chapter-002", "title": "CHAPTER II"},
+    ]
+
+    reconciled = canonicalize_segment_manifest_chapters(stored, controlled)
+
+    assert [chapter["chapter_title"] for chapter in reconciled] == [
+        "CHAPTER I",
+        "CHAPTER II",
+    ]
+    assert canonical_segment_chapter_title(
+        controlled,
+        "chapter-002",
+        "stale",
+    ) == "CHAPTER II"
+    assert canonical_segment_chapter_title(
+        controlled,
+        "chapter-missing",
+        "Fallback",
+    ) == "Fallback"
 
 
 def test_canonical_segmentation_preserves_prose_outside_recognized_blocks():

@@ -100,7 +100,7 @@
     {
       "id": "chapter-005",
       "order": 5,
-      "title": "CHAPTER V",
+      "title": "CHAPTER V. MINA MURRAY’S CORRESPONDENCE",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -160,7 +160,7 @@
     {
       "id": "chapter-009",
       "order": 9,
-      "title": "CHAPTER IX",
+      "title": "CHAPTER IX. MINA HARKER’S CORRESPONDENCE",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -175,7 +175,7 @@
     {
       "id": "chapter-010",
       "order": 10,
-      "title": "CHAPTER X",
+      "title": "CHAPTER X. DR. SEWARD’S DIARY",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -190,7 +190,7 @@
     {
       "id": "chapter-011",
       "order": 11,
-      "title": "CHAPTER XI",
+      "title": "CHAPTER XI. LUCY WESTENRA’S DIARY",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -220,7 +220,7 @@
     {
       "id": "chapter-013",
       "order": 13,
-      "title": "CHAPTER XIII",
+      "title": "CHAPTER XIII. DR. SEWARD’S DIARY",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -250,7 +250,7 @@
     {
       "id": "chapter-015",
       "order": 15,
-      "title": "CHAPTER XV",
+      "title": "CHAPTER XV. DR. SEWARD’S DIARY",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -434,8 +434,8 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 8233,
-      "reading_minutes": 35,
+      "word_count": 7938,
+      "reading_minutes": 34,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
@@ -444,8 +444,8 @@
     }
   ],
   "source_hash": "3dbe1845a822271cd2b887ebb81301b05844f8fa24133b915e30da35e915483a",
-  "content_hash": "7a398986059b86f35f7eeb583843a24d14998ea39af7c3895c76708042f2e160",
-  "provenance_hash": "7bc749726a9bcf0f22970565592ae8b154f5212a73d40821048f04497b30046a",
+  "content_hash": "5a546ad219d6886b3a43abcfe64f67147ff10db9b3ba2d5c501d89f3a0bb38f4",
+  "provenance_hash": "790858fe254f38fc4ffa55eeda37579df04b747294663521484d62d30e553fd7",
   "rights_basis": "Author died in 1912. Work published in 1897, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
   "rights_tier": "A",
   "verification_status": "approved",

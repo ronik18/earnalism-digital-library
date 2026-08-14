@@ -68,7 +68,7 @@
     {
       "id": "chapter-005",
       "order": 5,
-      "title": "CHAPTER V",
+      "title": "CHAPTER V. MINA MURRAY’S CORRESPONDENCE",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -128,7 +128,7 @@
     {
       "id": "chapter-009",
       "order": 9,
-      "title": "CHAPTER IX",
+      "title": "CHAPTER IX. MINA HARKER’S CORRESPONDENCE",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -143,7 +143,7 @@
     {
       "id": "chapter-010",
       "order": 10,
-      "title": "CHAPTER X",
+      "title": "CHAPTER X. DR. SEWARD’S DIARY",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -158,7 +158,7 @@
     {
       "id": "chapter-011",
       "order": 11,
-      "title": "CHAPTER XI",
+      "title": "CHAPTER XI. LUCY WESTENRA’S DIARY",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -188,7 +188,7 @@
     {
       "id": "chapter-013",
       "order": 13,
-      "title": "CHAPTER XIII",
+      "title": "CHAPTER XIII. DR. SEWARD’S DIARY",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -218,7 +218,7 @@
     {
       "id": "chapter-015",
       "order": 15,
-      "title": "CHAPTER XV",
+      "title": "CHAPTER XV. DR. SEWARD’S DIARY",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
@@ -402,8 +402,8 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 8233,
-      "reading_minutes": 35,
+      "word_count": 7938,
+      "reading_minutes": 34,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],

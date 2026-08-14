@@ -255,3 +255,39 @@ def segment_manifest(records: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
         "version": hashlib.sha256(version_source.encode("utf-8")).hexdigest()[:24],
         "chapters": sorted(chapters.values(), key=lambda row: (row["chapter_order"], row["first_page_index"])),
     }
+
+
+def canonical_segment_chapter_title(
+    canonical_chapters: Iterable[Mapping[str, Any]],
+    chapter_id: Any,
+    fallback: Any = "",
+) -> str:
+    """Resolve segment metadata through the controlled reader title source."""
+
+    normalized_id = str(chapter_id or "").strip()
+    for chapter in canonical_chapters:
+        if str(chapter.get("id") or "").strip() == normalized_id:
+            title = str(chapter.get("title") or "").strip()
+            if title:
+                return title
+    return str(fallback or "").strip()
+
+
+def canonicalize_segment_manifest_chapters(
+    segment_chapters: Iterable[Mapping[str, Any]],
+    canonical_chapters: Iterable[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    """Keep Reading Pass and standard reader chapter labels identical."""
+
+    canonical = list(canonical_chapters)
+    return [
+        {
+            **dict(chapter),
+            "chapter_title": canonical_segment_chapter_title(
+                canonical,
+                chapter.get("chapter_id"),
+                chapter.get("chapter_title"),
+            ),
+        }
+        for chapter in segment_chapters
+    ]

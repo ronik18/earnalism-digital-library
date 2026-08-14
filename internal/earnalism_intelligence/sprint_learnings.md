@@ -2050,3 +2050,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Repeated subjective prompts after those checksum-bound decisions add delay. Continue automatically through the remaining machine-verifiable gates.
 - Automatic continuation is not automatic success: rights, structure, full-title fidelity, technical audio, storage, CI, browser, production, and post-deployment evidence remain fail-closed.
 - Preserve the distinction between `READY_FOR_GO_LIVE` and `LIVE`; post-deployment API, range, playback, cache-control, and stale-URL checks establish live truth.
+
+## Dracula source-document index labels - 2026-08-14
+
+- A chapter number is structural context, not a useful index name when the rest of the title uses journals, letters, or correspondence labels.
+- Preserve the source-document convention across the complete index and fill missing labels from the chapter’s actual opening document; do not invent plot-summary spoilers.
+- Keep canonical and backend artifacts byte-parallel, regenerate their checksum manifests, and rerun the catalog-wide deterministic index audit after any metadata repair.
