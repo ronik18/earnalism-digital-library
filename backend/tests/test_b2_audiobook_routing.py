@@ -411,7 +411,10 @@ def test_reader_manifest_truth_gate_invalidates_pre_package_v2_cache(monkeypatch
         "book-manifest:audio-contract-v12:17:public:the-open-window"
     )
     current_key = (
-        "book-manifest:audio-contract-v13:controlled-covers-v1:17:public:the-open-window"
+        "book-manifest:"
+        f"{server.CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:"
+        f"{server.PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:"
+        f"{server.CHAPTER_INDEX_CONTRACT_VERSION}:17:public:the-open-window"
     )
     cache = {
         ("reader-manifest", stale_key): {
