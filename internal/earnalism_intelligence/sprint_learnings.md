@@ -2063,3 +2063,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Controlled artifacts remain authoritative for reader, rights, cover, and content truth; a schema-matched conveyor with `audio_release_approved: true` may overlay only the server-owned audio-release fields.
 - Rotate the public and reader cache namespace when changing release precedence, then require fresh API, range, cache, and browser postchecks before declaring the audiobook live.
 - An approved conveyor cannot affect public truth if the Mongo selector excludes the row first. A title-scoped selector exception must require the exact conveyor schema and `audio_release_approved: true`; legacy publication-workflow drift must not justify broadening every controlled-title query.
+
+## Gitanjali checksum-bound hf_alpha candidate - 2026-08-14
+
+- Keep the clean narration as the archival speech master and bind the customer candidate separately when approved ambience is mixed beneath an unchanged speech bed.
+- Run full-title ASR on the exact ambience-backed bytes, not only on the clean master. The Gitanjali public candidate passed at `0.985862` similarity, `0.999381` coverage, exact first/last spans, ordered integrity, and zero failed sections.
+- Low-latency playback does not require downloading a multi-gigabyte file. A compact `84,510,093`-byte MP3 plus the existing same-origin byte-range proxy and metadata-only preload keeps initial transfer bounded while preserving seek and resume behavior.
+- A representative listening approval authorizes automatic continuation only for the exact model, voice, and sample set. The final full-title fingerprint, manuscript checksum, audio checksum, objective evidence, storage receipt, browser proof, and production postchecks remain separate mandatory bindings.

@@ -109,7 +109,13 @@ def derive_minimal_release(workflow: dict[str, Any]) -> dict[str, str]:
     else:
         audio_release = str(audio.get("release_status") or "").strip().upper()
         if not audio_release:
-            audio_release = "NOT_REQUESTED" if not audio.get("status") or audio.get("status") == "AUDIO_NOT_REQUIRED" else "IN_PROGRESS"
+            audio_status = str(audio.get("status") or "").strip().upper()
+            if audio_status == "AUDIO_NOT_REQUIRED":
+                audio_release = "NOT_REQUESTED"
+            elif audio_status:
+                audio_release = "IN_PROGRESS"
+            else:
+                audio_release = ""
     return {
         "rights_status": rights_status,
         "content_status": content_status,

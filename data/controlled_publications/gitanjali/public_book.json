@@ -1619,5 +1619,6 @@
   "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900215/earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147.png",
   "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1785900215/earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147.png",
   "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1785900215/earnalism/covers/back/back_cover_candidate_controlled-gitanjali-b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147.png",
-  "back_cover_dominant_color": "#D4A45B"
+  "back_cover_dominant_color": "#D4A45B",
+  "audiobook_manuscript_sha256": "6a14b35ae1ea3d6cc37bb384ca0f96b1f98bb6ddf1ba9f6c535ab3d1f3e442ca"
 }

@@ -11,9 +11,9 @@
     "back_cover_sha256": "b0d8ce1c341c952a06bf35fe860539de8f47a9d2572e9c461c506079494af147"
   },
   "reader_qa": "APPROVED",
-  "audio_qa": "PENDING",
-  "audio_release_gate": "BLOCKED_PENDING_PRIVATE_MEDIA_IMPORT_AND_FULL_AUDIO_GATE",
-  "owner_approval": "APPROVED_READER_ONLY",
+  "audio_qa": "APPROVED",
+  "audio_release_gate": "READY_FOR_GO_LIVE_PENDING_AUTOMATED_DELIVERY_GATES",
+  "owner_approval": "APPROVED_READER_AND_HF_ALPHA_AUDIO_SAMPLE_GATE",
   "public_reader_release": true,
   "public_audio_release": false,
   "reader_text_rights": {
@@ -59,5 +59,24 @@
     "approved_at": "2026-08-04T10:09:39Z",
     "statement": "I approve Gitanjali for public reader release in all intended launch territories, based on the approved 1913 Macmillan reader text and approved covers. Audiobook remains private and disabled until its separate full audio release gate passes.",
     "scope": "Public reader only. Audiobook remains private and disabled."
+  },
+  "synthetic_audio_derivative_rights_approval": {
+    "status": "APPROVED",
+    "approved_by": "Ronik Basak",
+    "approved_at": "2026-08-14T14:02:24.701Z",
+    "statement": "I approve the revised Gitanjali reader preview and all six checksum-bound hf_alpha samples with optional sitar ambience, with public-release intent true, subject to every automated release gate passing.",
+    "scope": "Kokoro hf_alpha narration derived from the approved public-domain 1913 Macmillan Gitanjali reader text, including the reviewed optional CC0 sitar ambience. This approval does not waive objective, delivery, browser, or production verification.",
+    "territories": [
+      "IN"
+    ],
+    "commercial_use": "APPROVED",
+    "model": "hexgrad/Kokoro-82M",
+    "voice": "hf_alpha",
+    "sample_set_sha256": "62a96064cd570a8f8c8af920af61d460525f84ab27f99e81b632ef38c4f71d9d",
+    "final_attempt_fingerprint": "9bba33300f33b39135dfb045dfa19eee704d269d7f47a355e0b57943ff771b69",
+    "final_audio_sha256": "547d01c7fba08ca3ecff19e6184ece56562e3acaff1127014b2226d3f0e2025e",
+    "manuscript_sha256": "6a14b35ae1ea3d6cc37bb384ca0f96b1f98bb6ddf1ba9f6c535ab3d1f3e442ca",
+    "public_release_intent": true,
+    "automated_release_gates_waived": false
   }
 }
