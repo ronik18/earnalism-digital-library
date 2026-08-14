@@ -23,21 +23,21 @@ describe("public CTA accuracy contract", () => {
   const globalStyles = source("src/index.css");
 
   test("catalog destinations use browsing language instead of claiming that reading has started", () => {
-    expect(header).toContain('to="/library" className="premium-header-cta" data-testid="header-cta-library">Browse Library');
-    expect(header).toContain('data-testid="mobile-cta-library">Browse Library');
-    expect(hero).toContain('? "Browse Library"');
+    expect(header).toContain('to="/library" className="premium-header-cta" data-testid="header-cta-library">Enter the Library');
+    expect(header).toContain('data-testid="mobile-cta-library">Enter the Library');
+    expect(hero).toContain('? "Enter the Library"');
     expect(hero).toContain('audiobooksDestination.includes("availability=approved-audiobook")');
-    expect(hero).toContain('? "Approved Audiobooks"');
+    expect(hero).toContain('? "Enter the Listening Room"');
     expect(header).not.toContain('label: "Membership"');
     expect(header).toContain('label: "Reading Passes"');
   });
 
   test("home paths describe their exact language and release-gated destinations", () => {
-    expect(home).toContain('label: "Browse Bengali classics"');
+    expect(home).toContain('label: "Enter the Bengali collection"');
     expect(home).toContain('to: "/library?language=bn&availability=reader-ready"');
-    expect(home).toContain('label: "Browse English classics"');
+    expect(home).toContain('label: "Enter the English collection"');
     expect(home).toContain('to: "/library?language=en"');
-    expect(home).toContain('label: "Explore approved audiobooks"');
+    expect(home).toContain('label: "Step into the listening room"');
     expect(home).toContain('to: "/library?availability=approved-audiobook"');
   });
 

@@ -47,7 +47,7 @@ describe("PremiumListeningRail Home contract", () => {
     expect(rail).toContain("THE LISTENING ROOM");
     expect(rail).toContain("Literature, in a more intimate form.");
     expect(rail).toContain(
-      "Curated performances with seamless read-along listening.",
+      "Let a remarkable voice draw you closer, with effortless read-along listening.",
     );
     expect(rail).toContain("Explore audiobooks");
     expect(rail).toContain("/library?availability=approved-audiobook");
@@ -76,7 +76,7 @@ describe("PremiumListeningRail Home contract", () => {
   test("supports unavailable audio without exposing a play action", () => {
     expect(rail).toContain("audio_available === false");
     expect(rail).toContain("rights_restricted === true");
-    expect(rail).toContain("Audio unavailable");
+    expect(rail).toContain("Reader edition");
     expect(rail).toContain("View reader edition");
     expect(rail).toContain("available ? (");
   });
@@ -106,7 +106,7 @@ describe("PremiumListeningRail Home contract", () => {
     expect(rail).toContain('status === "loading"');
     expect(rail).toContain('status === "error"');
     expect(rail).toContain('? "empty"');
-    expect(rail).toContain("More listening editions are being prepared.");
+    expect(rail).toContain("Begin with a story from the library.");
     expect(covers).toContain("cover_candidates");
     expect(covers).toContain("onPermanentFailure");
   });

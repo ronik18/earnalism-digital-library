@@ -94,7 +94,7 @@ function ListeningCard({ book, featured, onCoverFailure }) {
           <span>{synchronized ? "Read + Listen" : "Audiobook"}</span>
           {!available && (
             <span className="premium-listening-card__unavailable">
-              Audio unavailable
+              Reader edition
             </span>
           )}
         </div>
@@ -248,7 +248,7 @@ export default function PremiumListeningRail({
             >
               Literature, in a more intimate form.
             </h2>
-            <p>Curated performances with seamless read-along listening.</p>
+            <p>Let a remarkable voice draw you closer, with effortless read-along listening.</p>
           </div>
           <div className="premium-listening-rail__actions">
             {visibleBooks.length > 1 && (
@@ -347,9 +347,9 @@ export default function PremiumListeningRail({
           <div className="premium-listening-rail__status" role="status">
             <Headphones size={20} strokeWidth={1.45} aria-hidden="true" />
             <p>
-              {status === "error"
-                ? "The listening room could not be refreshed."
-                : "More listening editions are being prepared."}
+                  {status === "error"
+                    ? "The listening room is resting. The library remains open."
+                    : "Begin with a story from the library."}
             </p>
             <Link to="/library">Browse the library</Link>
           </div>

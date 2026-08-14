@@ -18,8 +18,8 @@ describe("premium header navigation", () => {
   });
 
   test("uses a working library CTA on desktop and mobile", () => {
-    expect(source).toContain('data-testid="header-cta-library">Browse Library');
-    expect(source).toContain('data-testid="mobile-cta-library">Browse Library');
+    expect(source).toContain('data-testid="header-cta-library">Enter the Library');
+    expect(source).toContain('data-testid="mobile-cta-library">Enter the Library');
   });
 
   test("keeps the reference header readable and geometrically stable", () => {

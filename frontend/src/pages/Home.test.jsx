@@ -21,18 +21,18 @@ describe("Home curated shelf integration", () => {
 
   test("places three accurate discovery paths before monetization", () => {
     expect(source).toContain("home-quick-paths");
-    expect(source).toContain("Browse Bengali classics");
-    expect(source).toContain("Browse English classics");
-    expect(source).toContain("Explore approved audiobooks");
+    expect(source).toContain("Enter the Bengali collection");
+    expect(source).toContain("Enter the English collection");
+    expect(source).toContain("Step into the listening room");
     expect(source.indexOf("home-quick-paths")).toBeLessThan(source.indexOf("reading-time-library-path"));
   });
 
   test("uses the Reading Circle as a private dispatch conversion close", () => {
     expect(source).toContain("A private letter for readers who linger.");
-    expect(source).toContain("Reader-ready editions");
-    expect(source).toContain("Listening-room openings");
-    expect(source).toContain("Notes from the library");
-    expect(source).toContain("Leave your name and email to receive the next genuine release note.");
+    expect(source).toContain("Beautiful new editions");
+    expect(source).toContain("Intimate listening rooms");
+    expect(source).toContain("Letters from the library");
+    expect(source).toContain("Share your name and email; we will write only when a story is worth opening together.");
     expect(source).toContain('id="newsletter-name"');
     expect(source).toContain('id="newsletter-email"');
     expect(source).toContain('aria-live="polite"');

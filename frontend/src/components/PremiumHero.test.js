@@ -47,12 +47,13 @@ describe("PremiumHero public contract", () => {
     ].map((filename) => path.join(process.cwd(), "public/assets/hero", filename));
 
     expect(source).toContain("premium-library-reference-exact.webp");
-    expect(source).toContain('versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.webp")');
+    expect(source).toContain('versionedHeroAsset("/assets/hero/premium-library-mobile-cinematic-v2.webp")');
     expect(source).toContain("HERO_ASSET_VERSION");
     expect(source).toContain("premium-library-reference-exact-1440.webp");
     expect(source).toContain("REFERENCE_HERO_AVIF_SRCSET");
     expect(source).toContain('type="image/avif"');
     expect(publicIndex).toContain("premium-library-reference-exact-1440.avif");
+    expect(publicIndex).toContain("premium-library-mobile-cinematic-v2.webp");
     expect(publicIndex).toContain('imagesizes="100vw"');
     expect(source).toContain('width="2180"');
     expect(source).toContain('height="1032"');
@@ -70,16 +71,15 @@ describe("PremiumHero public contract", () => {
 
   test("keeps the hero visible and the audiobook CTA reachable on mobile", () => {
     expect(source).toContain('media="(max-width: 1023px)"');
-    expect(source).toContain('REFERENCE_HERO_MOBILE_AVIF');
     expect(source).toContain('REFERENCE_HERO_MOBILE_IMAGE');
     expect(source).toContain('data-testid="hero-cta-audiobooks"');
     expect(source).toContain('audiobooksDestination.includes("availability=approved-audiobook")');
     expect(source).toContain('aria-label={secondaryVisibleLabel}');
-    expect(source).toContain('? "Approved Audiobooks"');
-    expect(source).toContain('"Browse Library"');
+    expect(source).toContain('? "Enter the Listening Room"');
+    expect(source).toContain('"Enter the Library"');
     expect(source).toContain('audiobooksDestination');
     expect(styles).toContain('.premium-reference-hero__backdrop {');
-    expect(styles).toContain('object-position: 78% top;');
+    expect(styles).toContain('object-position: center 38%;');
     expect(styles).toContain('touch-action: manipulation;');
   });
 
@@ -189,7 +189,7 @@ describe("PremiumHero public contract", () => {
     expect(source).toContain("Your Library, Everywhere");
     expect(source).toContain("Featured classic");
     expect(source).toContain("Reading Pass");
-    expect(source).toContain("Chapter 1 is free");
+    expect(source).toContain("Chapter 1 is on us");
     expect(source).not.toContain("PREMIUM_CARDS");
     expect(source).not.toMatch(/release gates|QA_PASSED|PUBLIC_AUDIO|Audio gated by evidence|typographic-only cover fallback/i);
   });

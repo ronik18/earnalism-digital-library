@@ -133,7 +133,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden xl:block premium-reference-home-cta-wrap">
-          <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Browse Library</Link>
+          <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Enter the Library</Link>
         </div>
 
         <button
@@ -173,7 +173,7 @@ export default function Header() {
             >
               {accountLabel}
             </NavLink>
-            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Browse Library</Link>
+            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Enter the Library</Link>
 
             {activeSocials.length > 0 && (
               <nav className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-4" aria-label="Earnalism social links" data-testid="mobile-socials">

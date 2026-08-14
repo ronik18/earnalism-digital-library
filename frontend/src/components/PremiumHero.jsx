@@ -29,13 +29,12 @@ import {
 import "./PremiumHero.css";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
-const HERO_ASSET_VERSION = "20260808-perf1";
+const HERO_ASSET_VERSION = "20260815-mobile-luxe1";
 const TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
 const versionedHeroAsset = (path) => `${PUBLIC_URL}${path}?v=${HERO_ASSET_VERSION}`;
 const REFERENCE_HERO_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact-1440.webp");
 const REFERENCE_HERO_FULL_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact.webp");
-const REFERENCE_HERO_MOBILE_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.webp");
-const REFERENCE_HERO_MOBILE_AVIF = versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.avif");
+const REFERENCE_HERO_MOBILE_IMAGE = versionedHeroAsset("/assets/hero/premium-library-mobile-cinematic-v2.webp");
 const REFERENCE_HERO_SRCSET = [
   `${versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.webp")} 1024w`,
   `${REFERENCE_HERO_IMAGE} 1440w`,
@@ -689,12 +688,12 @@ export default function PremiumHero({
   const audiobooksDestination = String(secondaryCta.url || "").startsWith('/')
     ? secondaryCta.url
     : "/library?availability=approved-audiobook";
-  const primaryCtaLabel = primaryCta.url === "/library" && /start reading/i.test(primaryCta.label || "")
-    ? "Browse Library"
+  const primaryCtaLabel = primaryCta.url === "/library"
+    ? "Enter the Library"
     : (primaryCta.label || "Browse Library");
   const secondaryCtaLabel = secondaryCta.label || "Explore Approved Audiobooks";
   const secondaryVisibleLabel = audiobooksDestination.includes("availability=approved-audiobook")
-    ? "Approved Audiobooks"
+    ? "Enter the Listening Room"
     : secondaryCtaLabel;
   const headline = hero.headline || fallbackHeadline;
   const subheadline = hero.subheadline || DEFAULT_SUBHEADLINE;
@@ -713,7 +712,6 @@ export default function PremiumHero({
         >
           <div className="premium-reference-hero__backdrop" aria-hidden="true">
             <picture>
-              <source type="image/avif" media="(max-width: 1023px)" srcSet={REFERENCE_HERO_MOBILE_AVIF} sizes="100vw" />
               <source type="image/webp" media="(max-width: 1023px)" srcSet={REFERENCE_HERO_MOBILE_IMAGE} sizes="100vw" />
               <source type="image/avif" media="(min-width: 1024px)" srcSet={REFERENCE_HERO_AVIF_SRCSET} sizes="100vw" />
               <source type="image/webp" media="(min-width: 1024px)" srcSet={REFERENCE_HERO_SRCSET} sizes="100vw" />
@@ -791,8 +789,8 @@ export default function PremiumHero({
           <WalletCards size={19} strokeWidth={1.45} aria-hidden="true" />
           <span>Reading Pass</span>
         </div>
-        <h2>Start free. Continue when the story earns it.</h2>
-        <p>Chapter 1 is free. Add reading time only when you choose to continue.</p>
+        <h2>Begin with a chapter. Stay for the journey.</h2>
+        <p>Chapter 1 is on us. Add reading time only when you want the story to continue.</p>
         <Link
           to="/pricing"
           className="premium-hero-offer__cta"
