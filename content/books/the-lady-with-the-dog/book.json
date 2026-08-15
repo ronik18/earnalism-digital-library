@@ -3,7 +3,7 @@
   "title": "The Lady with the Dog",
   "displayTitle": "The Lady with the Dog",
   "author": "Anton Chekhov",
-  "translator": "",
+  "translator": "Constance Garnett",
   "language": "en",
   "originalLanguage": "en",
   "sourceName": "Project Gutenberg",
@@ -11,7 +11,7 @@
   "sourceLandingPage": "https://www.gutenberg.org/ebooks/13415",
   "sourceFormatImported": "text/plain",
   "rightsStatus": "public_domain_source_reviewed",
-  "rightsTerritoryBasis": "Anton Chekhov died 1904; first published 1899. Public domain in India and the U.S.",
+  "rightsTerritoryBasis": "Anton Chekhov died in 1904 and English translator Constance Garnett died in 1946; both terms exceed India's life-plus-60 rule. Project Gutenberg identifies this edition as public domain in the USA. Publication remains scoped to India.",
   "readerStatus": "ready_for_editorial_review",
   "publicationStatus": "draft",
   "isPublic": false,
@@ -29,5 +29,5 @@
   "backCoverImage": "",
   "coverAssets": [],
   "createdAt": "2026-07-03T20:07:47Z",
-  "updatedAt": "2026-07-03T20:07:47Z"
+  "updatedAt": "2026-08-15T21:49:10Z"
 }
