@@ -2105,3 +2105,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Structured rights metadata can be deterministically recovered from the existing internal source-rights notes without changing reader content. All 25 resulting rights decisions pass for the unchanged `IN` territory.
 - Missing production covers can be repaired without external art licensing or heavy assets. Eighteen original vector-based front/back pairs passed local visual smoke and stay below 26KB per WebP against the 180KB feature budget.
 - A reusable Colab notebook must fail closed at rest: blank title and voice, Drive persistence on, GO LIVE off, no object key, no public intent, and a hard stop before full synthesis until the checksum-bound six-sample gate is approved.
+
+## Durable Colab checkpoint enforcement - 2026-08-15
+
+- A persistence toggle is not durable evidence unless the notebook actually mounts Google Drive and writes the immutable attempt directory beneath `MyDrive`.
+- Derive the final run directory only after the source-bound attempt fingerprint exists. This prevents unrelated retries from sharing an unfingerprinted folder and makes every sample, unit, ASR chunk, and checkpoint resumable against one identity.
+- Bind launches to an optional exact repository commit and record the resolved commit in the durable output. A moving branch name alone is insufficient provenance for a long-running synthesis job.
