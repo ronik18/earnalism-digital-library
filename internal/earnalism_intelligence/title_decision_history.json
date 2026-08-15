@@ -2885,6 +2885,38 @@
       "public_release_mutated": false,
       "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
     },
+    "the-most-dangerous-game": {
+      "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
+      "decision_reason": "The controlled reader retained a source byline and public-domain notices inside the narrative and carried invalid sync. The checksum-bound repair preserves the exact story between canonical boundaries, restores 211 semantic blocks, binds Wikisource CC BY-SA attribution/share-alike credit outside the narrative, and adds a byte-identical audio-hidden Railway mirror.",
+      "updated_at": "2026-08-15T22:12:42Z",
+      "language": "en",
+      "territory": "IN",
+      "reader_sanitized_sha256": "0fc44f09b5da4dccf181357f25ec32c1b21a9aada4391e51e811bfcd057930d6",
+      "semantic_blocks": 211,
+      "required_attribution_bound": true,
+      "requires_share_alike": true,
+      "public_reader_status": "CONTROLLED_PACKET_READY_NOT_ALLOWLISTED",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
+      "root_backend_byte_parity": true,
+      "legacy_estimated_sync_invalidated": true,
+      "public_release_mutated": false,
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+    },
+    "a-scandal-in-bohemia": {
+      "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
+      "decision_reason": "The controlled reader used hard source wraps as false paragraphs and carried sync extending into the next Sherlock story. The checksum-bound repair restores 262 semantic blocks while preserving every normalized word, Irene Adler's letter structure, and the exact endpoint; it also adds a byte-identical audio-hidden Railway mirror.",
+      "updated_at": "2026-08-15T22:12:42Z",
+      "language": "en",
+      "territory": "IN",
+      "reader_sanitized_sha256": "b916cefa2e3bf0071435341af94c94b7f7ff3466799a79005f8a9ddc60bbf462",
+      "semantic_blocks": 262,
+      "public_reader_status": "CONTROLLED_PACKET_READY_NOT_ALLOWLISTED",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
+      "root_backend_byte_parity": true,
+      "legacy_estimated_sync_invalidated": true,
+      "public_release_mutated": false,
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+    },
     "the-pit-and-the-pendulum": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
       "decision_reason": "The authoritative source was hard-wrapped into 559 artificial reader fragments. The checksum-bound repair restores 40 semantic blocks while preserving every word and its order, invalidates the unmeasured legacy sync, and adds the missing Railway mirror with audio hidden.",
