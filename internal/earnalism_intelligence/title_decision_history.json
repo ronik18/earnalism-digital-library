@@ -2917,6 +2917,24 @@
       "public_release_mutated": false,
       "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
     },
+    "the-canterville-ghost": {
+      "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
+      "decision_reason": "The import had moved the first 11 words of Chapter I into its generated title, omitting them from readable content. The source-bound repair restores that sentence, normalizes the index to Roman numerals I through VII, preserves every later normalized word and order, invalidates legacy sync, and adds a byte-identical audio-hidden Railway mirror.",
+      "updated_at": "2026-08-15T22:23:55Z",
+      "language": "en",
+      "territory": "IN",
+      "chapter_count": 7,
+      "word_count": 11293,
+      "reader_content_hash": "f11621c70a9d8a6452069dea6928cf3f1e634ba80e35268f4cb74a9a612f6601",
+      "opening_sentence_restored_to_chapter_i": true,
+      "chapter_i_title_normalized": "I",
+      "public_reader_status": "CONTROLLED_READER_CORRECTION_READY",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
+      "root_backend_byte_parity": true,
+      "legacy_estimated_sync_invalidated": true,
+      "public_release_mutated": false,
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+    },
     "the-pit-and-the-pendulum": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
       "decision_reason": "The authoritative source was hard-wrapped into 559 artificial reader fragments. The checksum-bound repair restores 40 semantic blocks while preserving every word and its order, invalidates the unmeasured legacy sync, and adds the missing Railway mirror with audio hidden.",
