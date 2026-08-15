@@ -4,8 +4,8 @@
   "source_name": "Project Gutenberg",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
   "source_hash": "aec5f24c5cef2533989442028811632667522939a78217a9f3d07389b5c6d145",
-  "content_hash": "9ad0f9ef8628f87ababf0e361848713b585f5408d5929a6fef95c2afd18388b7",
-  "provenance_hash": "dbd1d86c2d74f3601aeffc97cb23266acf8e07328441266e648d2040e0490554",
+  "content_hash": "82cdacb7a7021d7430a846852f15d69f604e4dd48c07c8e2afac08ff6fc5e4ac",
+  "provenance_hash": "ed8a4b89ffb904aa23145eed7a721f691d87df6e9bcd6acb78a6f5048da3d006",
   "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.247776+00:00",
   "source_format": "text/plain",
@@ -16,6 +16,18 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "publication_region": "IN",
-  "verified_at": "2026-07-03T20:07:49Z",
-  "qa_status": "QA_PASSED"
+  "verified_at": "2026-08-15T21:15:01Z",
+  "qa_status": "QA_PASSED",
+  "source_hash_domain": "utf8_text_normalized_lf_trimmed_terminal_whitespace",
+  "content_hash_domain": "canonical_content_chapter_json_list_sorted_keys_utf8",
+  "provenance_hash_domain": "source_url_lf_source_name_lf_source_license_lf_content_hash",
+  "reader_boundary_repair": {
+    "status": "PASS",
+    "removed_matter": [
+      "picture_placeholders",
+      "the-nightingale-and-the-rose"
+    ],
+    "canonical_endpoint": "Prince shall praise me.”",
+    "sanitized_sha256": "2063240573e7485e286de9b50610adb8ee77297dd2ceebd63583cc782f634247"
+  }
 }

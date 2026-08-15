@@ -20,6 +20,10 @@ FORBIDDEN_READER_FURNITURE = re.compile(
     r"Tomoye Press|Paul Elder and Company",
     re.IGNORECASE,
 )
+PICTURE_PLACEHOLDER_RE = re.compile(r"\[\s*Picture\s*:", re.IGNORECASE)
+KNOWN_CROSS_TITLE_BOUNDARIES = {
+    "the-happy-prince": ("The Nightingale and the Rose.",),
+}
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -100,6 +104,8 @@ def assert_reader_gate(artifact_dir: Path) -> tuple[dict[str, Any], dict[str, An
 def opening_blocks(text: str, word_limit: int) -> list[str]:
     if FORBIDDEN_READER_FURNITURE.search(text):
         raise ValueError("Reader-facing source furniture remains")
+    if PICTURE_PLACEHOLDER_RE.search(text):
+        raise ValueError("Reader-facing picture placeholder remains")
     blocks = [re.sub(r"\s+", " ", block).strip() for block in re.split(r"\n\s*\n", text)]
     selected: list[str] = []
     count = 0
@@ -116,6 +122,12 @@ def opening_blocks(text: str, word_limit: int) -> list[str]:
     return selected
 
 
+def assert_single_title_boundary(slug: str, text: str) -> None:
+    for marker in KNOWN_CROSS_TITLE_BOUNDARIES.get(slug, ()):
+        if marker in text:
+            raise ValueError(f"Cross-title boundary remains in {slug}: {marker}")
+
+
 def render(slug: str, voice: str, output_root: Path, word_limit: int) -> dict[str, Any]:
     artifact_dir = CONTROLLED_ROOT / slug
     manifest_sha = assert_controlled_package(artifact_dir)
@@ -128,7 +140,9 @@ def render(slug: str, voice: str, output_root: Path, word_limit: int) -> dict[st
         raise ValueError("No narrative chapter is available")
     chapter_path = artifact_dir / "chapters" / f"{chapters[0]['id']}.json"
     chapter = read_json(chapter_path)
-    blocks = opening_blocks(str(chapter.get("content") or ""), word_limit)
+    chapter_text = str(chapter.get("content") or "")
+    assert_single_title_boundary(slug, chapter_text)
+    blocks = opening_blocks(chapter_text, word_limit)
     cover = ROOT / "frontend" / "public" / "assets" / "books" / slug / "front-cover.webp"
     if not cover.is_file():
         raise FileNotFoundError(cover)
