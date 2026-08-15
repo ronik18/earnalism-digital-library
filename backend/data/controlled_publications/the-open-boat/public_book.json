@@ -7,16 +7,16 @@
   "category_slug": "adventure",
   "short_description": "Four shipwrecked men row a tiny dinghy toward shore through crushing waves — nature utterly indifferent to their survival.",
   "description": "Based on Crane's own shipwreck, four men — a cook, an oiler, a correspondent, and the captain — row toward a Florida shore that keeps receding. Nature does not care whether they live or die. The oiler, the strongest, is the one who drowns.",
-  "cover_url": "",
-  "cover_image_url": "",
-  "coverImage": "",
-  "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
-  "backCoverImage": "",
-  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
   "dominant_color": "#4A1C27",
-  "estimated_reading_time": "62 min",
+  "estimated_reading_time": "39 min",
   "formats": [
     "Ebook"
   ],
@@ -44,18 +44,18 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 14851,
-      "reading_minutes": 62,
+      "word_count": 9329,
+      "reading_minutes": 39,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:47Z",
-      "updated_at": "2026-07-03T20:07:47Z"
+      "updated_at": "2026-08-15T22:31:13Z"
     }
   ],
   "source_hash": "e7fa51d6106dd371a5600393fcab92df93df0faff629220a2020f78b7c067641",
-  "content_hash": "30022109ee7e0503e89495c105e8a7a3221a3ee8f04c38a90b27181f62d5e52a",
-  "provenance_hash": "381b7560800986250704937d0a5b765d32373241bcc5d3b8136f1a9a884fda6c",
+  "content_hash": "04eec849fe66a679cb800626b13639fc1b805d5b90204add88208aeecca6e966",
+  "provenance_hash": "8228efab2cfc3f454174240566375786cae1cc4d9cae6c6021a0edc18e32ff2e",
   "rights_basis": "Stephen Crane died 1900; first published 1897. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",
@@ -72,34 +72,22 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "historical_mapped_assets",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
   "audiobook_voice": "",
-  "audio_asset_slug": "the-open-boat",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591776/earnalism/audiobooks/en/the-open-boat/the-open-boat.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591779/earnalism/audiobooks/en/the-open-boat/the-open-boat_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591780/earnalism/audiobooks/en/the-open-boat/the-open-boat_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591781/earnalism/audiobooks/en/the-open-boat/the-open-boat_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591781/earnalism/audiobooks/en/the-open-boat/the-open-boat_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591776/earnalism/audiobooks/en/the-open-boat/the-open-boat.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591776/earnalism/audiobooks/en/the-open-boat/the-open-boat.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591779/earnalism/audiobooks/en/the-open-boat/the-open-boat_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591780/earnalism/audiobooks/en/the-open-boat/the-open-boat_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591781/earnalism/audiobooks/en/the-open-boat/the-open-boat_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591781/earnalism/audiobooks/en/the-open-boat/the-open-boat_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:47Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:47Z",
-  "updated_at": "2026-07-03T20:07:47Z"
+  "updated_at": "2026-08-15T22:31:13Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
 }
