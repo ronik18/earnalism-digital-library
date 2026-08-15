@@ -72,19 +72,40 @@ def assert_controlled_package(artifact_dir: Path) -> str:
     return sha256_file(manifest_path)
 
 
-def assert_reader_gate(artifact_dir: Path) -> tuple[dict[str, Any], dict[str, Any]]:
-    public = read_json(artifact_dir / "public_book.json")
-    source = read_json(artifact_dir / "source_evidence.json")
-    approval = read_json(artifact_dir / "approval_evidence.json")
-    reader = read_json(artifact_dir / "reader_manifest.json")
-    if source.get("verification_status") != "approved" or source.get("qa_status") != "QA_PASSED":
+def assert_private_preview_state(
+    public: dict[str, Any],
+    source: dict[str, Any],
+    approval: dict[str, Any],
+    reader: dict[str, Any],
+) -> None:
+    if source.get("verification_status") != "approved" or source.get("qa_status") not in {
+        "QA_PASSED",
+        "READY_FOR_APPROVAL",
+    }:
         raise ValueError("Source rights or QA is not approved")
     if source.get("publication_region") != "IN":
         raise ValueError("Preview territory must remain IN")
     if source.get("reader_facing_boilerplate_removed") is not True:
         raise ValueError("Reader sanitation is not approved")
     if approval.get("approved_to_publish") is not True:
-        raise ValueError("Reader publication approval is absent")
+        pending_private_gate = (
+            source.get("qa_status") == "READY_FOR_APPROVAL"
+            and approval.get("qa_status") == "READY_FOR_APPROVAL"
+            and approval.get("reader_public_release") == "READER_APPROVAL_REQUIRED"
+            and all(
+                value is not True
+                for value in (
+                    public.get("isPublic"),
+                    public.get("isLive"),
+                    public.get("showInPublicLibrary"),
+                    public.get("showInHomepage"),
+                    public.get("allowPublicReading"),
+                    public.get("is_published"),
+                )
+            )
+        )
+        if not pending_private_gate:
+            raise ValueError("Reader publication approval is absent without a safe private gate")
     if approval.get("audio_public_release") != "PUBLIC_AUDIO_RELEASE_NOT_APPROVED":
         raise ValueError("Audio release truth is not safely hidden")
     if any(
@@ -98,6 +119,14 @@ def assert_reader_gate(artifact_dir: Path) -> tuple[dict[str, Any], dict[str, An
         )
     ):
         raise ValueError("Unapproved audio is exposed")
+
+
+def assert_reader_gate(artifact_dir: Path) -> tuple[dict[str, Any], dict[str, Any]]:
+    public = read_json(artifact_dir / "public_book.json")
+    source = read_json(artifact_dir / "source_evidence.json")
+    approval = read_json(artifact_dir / "approval_evidence.json")
+    reader = read_json(artifact_dir / "reader_manifest.json")
+    assert_private_preview_state(public, source, approval, reader)
     return public, source
 
 
@@ -128,7 +157,22 @@ def assert_single_title_boundary(slug: str, text: str) -> None:
             raise ValueError(f"Cross-title boundary remains in {slug}: {marker}")
 
 
-def render(slug: str, voice: str, output_root: Path, word_limit: int) -> dict[str, Any]:
+def resolve_cover(slug: str, cover_path: Path | None = None) -> Path:
+    cover = cover_path or (
+        ROOT / "frontend" / "public" / "assets" / "books" / slug / "front-cover.webp"
+    )
+    if not cover.is_file():
+        raise FileNotFoundError(cover)
+    return cover.resolve()
+
+
+def render(
+    slug: str,
+    voice: str,
+    output_root: Path,
+    word_limit: int,
+    cover_path: Path | None = None,
+) -> dict[str, Any]:
     artifact_dir = CONTROLLED_ROOT / slug
     manifest_sha = assert_controlled_package(artifact_dir)
     public, source = assert_reader_gate(artifact_dir)
@@ -143,9 +187,7 @@ def render(slug: str, voice: str, output_root: Path, word_limit: int) -> dict[st
     chapter_text = str(chapter.get("content") or "")
     assert_single_title_boundary(slug, chapter_text)
     blocks = opening_blocks(chapter_text, word_limit)
-    cover = ROOT / "frontend" / "public" / "assets" / "books" / slug / "front-cover.webp"
-    if not cover.is_file():
-        raise FileNotFoundError(cover)
+    cover = resolve_cover(slug, cover_path)
 
     binding = {
         "schema": "earnalism.private_reader_gate_binding.v1",
@@ -219,8 +261,14 @@ def main() -> int:
     parser.add_argument("--voice", required=True)
     parser.add_argument("--output-root", type=Path, default=Path("/private/tmp/earnalism-25-title-private-reader-previews"))
     parser.add_argument("--word-limit", type=int, default=950)
+    parser.add_argument("--cover-path", type=Path)
     args = parser.parse_args()
-    print(json.dumps(render(args.slug, args.voice, args.output_root, args.word_limit), indent=2))
+    print(
+        json.dumps(
+            render(args.slug, args.voice, args.output_root, args.word_limit, args.cover_path),
+            indent=2,
+        )
+    )
     return 0
 
 
