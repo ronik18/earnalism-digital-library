@@ -2855,6 +2855,36 @@
       "public_release_mutated": false,
       "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
     },
+    "the-fall-of-the-house-of-usher": {
+      "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
+      "decision_reason": "The controlled reader used hard source wraps as false paragraphs. The checksum-bound repair restores 58 semantic blocks while preserving every normalized word, the epigraph, embedded verse, final authorial footnote, and exact endpoint; it also packages a byte-identical audio-hidden Railway mirror.",
+      "updated_at": "2026-08-15T22:01:46Z",
+      "language": "en",
+      "territory": "IN",
+      "reader_sanitized_sha256": "51f5aeca3e88367050046042ca32b6b95522c7ae93150cd95fe06988ef92a353",
+      "semantic_blocks": 58,
+      "public_reader_status": "CONTROLLED_PACKET_READY_NOT_ALLOWLISTED",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
+      "root_backend_byte_parity": true,
+      "legacy_estimated_sync_invalidated": true,
+      "public_release_mutated": false,
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+    },
+    "love-of-life": {
+      "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
+      "decision_reason": "The controlled reader used hard source wraps as false paragraphs. The checksum-bound repair restores 94 semantic blocks while preserving every normalized word, the opening verse, and the exact San Francisco Bay endpoint; it also packages a byte-identical audio-hidden Railway mirror.",
+      "updated_at": "2026-08-15T22:01:46Z",
+      "language": "en",
+      "territory": "IN",
+      "reader_sanitized_sha256": "7ce5b5add01929c47826b8bdedb9230875acc6f41b035451357ffa41aac0ce9f",
+      "semantic_blocks": 94,
+      "public_reader_status": "CONTROLLED_PACKET_READY_NOT_ALLOWLISTED",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
+      "root_backend_byte_parity": true,
+      "legacy_estimated_sync_invalidated": true,
+      "public_release_mutated": false,
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+    },
     "the-pit-and-the-pendulum": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
       "decision_reason": "The authoritative source was hard-wrapped into 559 artificial reader fragments. The checksum-bound repair restores 40 semantic blocks while preserving every word and its order, invalidates the unmeasured legacy sync, and adds the missing Railway mirror with audio hidden.",
