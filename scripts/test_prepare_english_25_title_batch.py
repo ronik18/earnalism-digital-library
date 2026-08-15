@@ -130,10 +130,16 @@ def test_shared_colab_notebook_defaults_are_private_and_stop_before_full_generat
     )
     assert 'BOOK_SLUG = ""' in source
     assert 'VOICE = ""' in source
+    assert 'EXPECTED_REPO_COMMIT = ""' in source
     assert "PERSIST_TO_GOOGLE_DRIVE = True" in source
+    assert 'drive.mount("/content/drive", force_remount=False)' in source
+    assert 'Path("/content/drive/MyDrive/Earnalism/private_audiobook_attempts")' in source
     assert "GO_LIVE_ENABLED = False" in source
     assert 'B2_AUDIO_OBJECT_KEY = ""' in source
     assert "OWNER_FULL_GENERATION_APPROVED = False" in source
     assert "OWNER_PUBLIC_RELEASE_INTENT = False" in source
     assert "Stop after the six-sample pilot" in source
+    assert 'RUN = OUTPUT_ROOT / f"{BOOK_SLUG}-kokoro-{VOICE}-{ATTEMPT_FINGERPRINT[:12]}"' in source
+    assert source.index("ATTEMPT_FINGERPRINT =") < source.index("RUN = OUTPUT_ROOT")
+    assert source.index("RUN = OUTPUT_ROOT") < source.index("SOURCE_PATH = RUN")
     assert all(cell.get("outputs", []) == [] for cell in notebook["cells"] if cell.get("cell_type") == "code")

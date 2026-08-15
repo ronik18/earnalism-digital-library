@@ -2828,9 +2828,9 @@
       "next_action": "Run the representative gate in Colab, continue resumably only on pass, obtain approved full-title listening evidence, then complete immutable packaging, storage, endpoint, browser, and public-release verification."
     },
     "english-25-title-controlled-batch": {
-      "latest_decision": "READER_PREFLIGHT_READY_AUDIO_HIDDEN_PILOT_PENDING",
-      "decision_reason": "The owner authorized one controlled 25-title reader and audiobook batch. Canonical slug resolution, source rights, chapter integrity, graphical covers, checksum coverage, author-profile voice assignments, and fail-closed notebook defaults are complete; audio remains private and ungenerated until the two pilot sample gates pass.",
-      "updated_at": "2026-08-15T06:55:02Z",
+      "latest_decision": "READER_PREFLIGHT_DEPLOYED_DURABLE_PILOT_GATE_PENDING",
+      "decision_reason": "The controlled preparation checkpoint is merged and its frontend canary passed. Live API checks confirm the two pilots are not publicly exposed. The reusable notebook now mounts Google Drive, derives a fingerprinted durable run directory before writing artifacts, and can assert an exact repository commit; synthesis remains blocked on the private reader-preview approval.",
+      "updated_at": "2026-08-15T08:21:41Z",
       "title_count": 25,
       "territory": "IN",
       "reader_manifest_ready_count": 25,
@@ -2844,9 +2844,13 @@
         "the-selfish-giant",
         "a-white-heron"
       ],
-      "pilot_generation_status": "PENDING_PRIVATE_COLAB_EXECUTION",
+      "pilot_generation_status": "PENDING_PRIVATE_READER_GATE",
+      "durable_drive_path_enforced": true,
+      "fingerprinted_run_directory_enforced": true,
+      "repository_commit_binding_supported": true,
+      "preparation_merge_commit": "177c77dab087b5fc59a5c91f328cdae9b5ca3512",
       "public_release_mutated": false,
-      "next_action": "Push the focused preparation branch, run the two private six-sample pilots with Google Drive checkpointing, render both approval packets in conversation, and continue full generation only for exact approved fingerprints."
+      "next_action": "Obtain approval for the two rendered checksum-bound reader previews, then run exactly six private samples per pilot in their fingerprinted Google Drive directories and stop at the second human gate."
     },
     "platform-two-human-gate-release-pipeline": {
       "latest_decision": "TWO_CONVERSATION_HUMAN_GATES_AUTOMATED_RELEASE_CONTINUATION_IMPLEMENTED",
