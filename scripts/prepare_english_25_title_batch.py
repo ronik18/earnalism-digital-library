@@ -248,6 +248,14 @@ def checksum_manifest(
 def prepare_title(plan: TitlePlan, generated_at: str) -> dict[str, Any]:
     artifact_dir = CONTROLLED_ROOT / plan.slug
     rights_path = CONTENT_ROOT / plan.slug / "source-rights.md"
+    semantic_approval_files = sorted(
+        path.name for path in artifact_dir.glob("approval_evidence*.json")
+    )
+    if semantic_approval_files != ["approval_evidence.json"]:
+        raise ValueError(
+            f"{plan.slug}: exactly one canonical approval_evidence.json is required; "
+            f"found {semantic_approval_files}"
+        )
     required = (
         artifact_dir / "public_book.json",
         artifact_dir / "reader_manifest.json",

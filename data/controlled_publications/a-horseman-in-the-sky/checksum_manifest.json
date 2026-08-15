@@ -1,6 +1,6 @@
 {
   "slug": "a-horseman-in-the-sky",
-  "generated_at": "2026-08-15T06:54:10Z",
+  "generated_at": "2026-08-15T20:29:34Z",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -8,23 +8,23 @@
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "3b645c8715447e9d7966acfdf98d19a828fa69d43c4d70c7b7226c29e334470c"
+      "sha256": "528d930f6fcfc8f6a7ec80011ca49a3e67eca6f819190292d5cf3b2a8815cea4"
     },
     {
       "file": "highlight_sync.json",
-      "sha256": "cbabc926a3471ef2b85e37956b28d990772d588a26232d1cb0f2a4e370de4143"
+      "sha256": "05b546dff59917be0427fcd086f35b7f9027dd217d00e7e43999d2e2f8696426"
     },
     {
       "file": "public_book.json",
-      "sha256": "bda309f088a409e57b12e3855ffe8fac5956d363d6b2dc5451eb75d8c763568a"
+      "sha256": "a71a3be63c1b726178143ca04a198b22e83f4982487cbb13685991f4edeb14b8"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "f873623d018509bcb76bd5b8bce92d0739f6d8c9a5eb82636104b8de858e99ab"
+      "sha256": "fcf6313edcaaac648fbc96dcb446bca87b5c5a79118606e3556905d681406748"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "11ab84cff2615c82d91d4a28172a91451381978866590df6f250cbb71bf8b5af"
+      "sha256": "3ff8648598f3766ad11fd1df4f0b6d63f71d2f4061ca95bfbc6caf124574af3c"
     }
   ]
 }

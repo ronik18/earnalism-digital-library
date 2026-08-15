@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 import sys
 from pathlib import Path
+
+import pytest
 
 
 SCRIPT = Path(__file__).with_name("prepare_english_25_title_batch.py")
@@ -116,6 +119,20 @@ def test_checksum_manifest_excludes_itself_and_covers_managed_files(tmp_path):
     assert json.loads(replacement)["audio_enabled"] is False
 
 
+def test_prepare_title_rejects_duplicate_approval_evidence(tmp_path, monkeypatch):
+    artifact_root = tmp_path / "controlled"
+    content_root = tmp_path / "content"
+    artifact_dir = artifact_root / "duplicate-title"
+    artifact_dir.mkdir(parents=True)
+    (artifact_dir / "approval_evidence.json").write_text("{}\n", encoding="utf-8")
+    (artifact_dir / "approval_evidence 2.json").write_text("{}\n", encoding="utf-8")
+    monkeypatch.setattr(MODULE, "CONTROLLED_ROOT", artifact_root)
+    monkeypatch.setattr(MODULE, "CONTENT_ROOT", content_root)
+    plan = MODULE.TitlePlan("Duplicate", "duplicate-title", "bm_george", "male")
+    with pytest.raises(ValueError, match="exactly one canonical approval_evidence.json"):
+        MODULE.prepare_title(plan, "2026-08-16T00:00:00Z")
+
+
 def test_shared_colab_notebook_defaults_are_private_and_stop_before_full_generation():
     notebook = json.loads(
         (MODULE.ROOT / "colab" / "Earnalism_Audiobook_Pipeline.ipynb").read_text(
@@ -142,4 +159,30 @@ def test_shared_colab_notebook_defaults_are_private_and_stop_before_full_generat
     assert 'RUN = OUTPUT_ROOT / f"{BOOK_SLUG}-kokoro-{VOICE}-{ATTEMPT_FINGERPRINT[:12]}"' in source
     assert source.index("ATTEMPT_FINGERPRINT =") < source.index("RUN = OUTPUT_ROOT")
     assert source.index("RUN = OUTPUT_ROOT") < source.index("SOURCE_PATH = RUN")
+    assert 'SPLITTER_SCHEMA = "earnalism.quote_aware_sentence_splitter.v2"' in source
+    assert '"splitter_schema": SPLITTER_SCHEMA' in source
+    assert "split_pattern=SENTENCE_BOUNDARY_PATTERN" in source
     assert all(cell.get("outputs", []) == [] for cell in notebook["cells"] if cell.get("cell_type") == "code")
+
+
+def test_quote_aware_splitter_preserves_owl_creek_text_and_boundaries():
+    chapter = json.loads(
+        (
+            MODULE.ROOT
+            / "data"
+            / "controlled_publications"
+            / "an-occurrence-at-owl-creek-bridge"
+            / "chapters"
+            / "chapter-001.json"
+        ).read_text(encoding="utf-8")
+    )
+    text = re.sub(r"\s+", " ", chapter["content"]).strip()
+    boundary = re.compile(
+        r"(?:(?<=[.!?])|(?<=[.!?][”’\"']))\s+(?=[“‘\"'A-Z0-9])"
+    )
+    unsplit = re.compile(r"[.!?][”’\"']\s+[“‘\"'A-Z0-9]")
+    units = [row.strip() for row in boundary.split(text) if row.strip()]
+    assert " ".join(units) == text
+    assert len(units) == 201
+    assert max(len(row.split()) for row in units) <= 80
+    assert not any(unsplit.search(row) for row in units)
