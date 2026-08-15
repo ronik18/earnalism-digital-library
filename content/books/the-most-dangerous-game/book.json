@@ -23,11 +23,14 @@
   "allowPayment": false,
   "is_published": false,
   "chapterCount": 1,
-  "wordCountApprox": 8196,
-  "readingTimeMinutesApprox": 35,
+  "wordCountApprox": 7990,
+  "readingTimeMinutesApprox": 34,
   "coverImage": "",
   "backCoverImage": "",
   "coverAssets": [],
   "createdAt": "2026-07-03T20:07:49Z",
-  "updatedAt": "2026-07-03T20:07:49Z"
+  "updatedAt": "2026-08-15T22:12:42Z",
+  "requires_attribution": true,
+  "requires_share_alike": true,
+  "required_attribution": "Text transcription adapted from Wikisource contributors, “The Most Dangerous Game,” https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game, under CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. The underlying 1924 story by Richard Connell is public domain in India and the United States."
 }
