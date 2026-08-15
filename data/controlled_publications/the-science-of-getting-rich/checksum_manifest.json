@@ -1,30 +1,10 @@
 {
   "slug": "the-science-of-getting-rich",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "4625aa5824776a97f09f65b00b62ea0a6cf3a98ff3da3d72c8d95789b10813af"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "b217625a869f7857a3650c1392095e64b52130009173318824443ac590bda767"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "ec111056f520942f4673d222cb9a9e8edf94a16809efdc2ce298eace0a910ca6"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "988e1fd6b1b7138cdbbaa806a1dc094cf7b0174df5aeab383407cdef898fb1f1"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "7a79b480e34268e9215a711c199a1f57f1207df57b4deabc59142bd38b6f2def"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "958b73560d2489b42cfb06ebc03258dcd377759554511a6d168dbdc044eee41e"
+      "sha256": "31238800a18fa41244a1d878c1b009629fcee8cd7580c3af35ef8a9bf333f368"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -101,6 +81,22 @@
     {
       "file": "chapters/chapter-019.json",
       "sha256": "056d28b993c65de558cedddc43b6952f802fc8aae0539fa7707f4593ec369ffd"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "ec111056f520942f4673d222cb9a9e8edf94a16809efdc2ce298eace0a910ca6"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "cdaeb04f666aac09d08525d485f3fc3683e4b7b6809cdf03cc229af6547f6095"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "7a79b480e34268e9215a711c199a1f57f1207df57b4deabc59142bd38b6f2def"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "3ccca8e45a13fb185b5a603769ea4b2135736934cfa5c2fe2322b7dd9c28015c"
     }
   ]
 }

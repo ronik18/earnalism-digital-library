@@ -9,5 +9,13 @@
   "rights_basis": "Arthur Conan Doyle died 1930; first published 1891. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:21.934915+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "Arthur Conan Doyle",
+  "author_death_year": 1930,
+  "original_publication_year": 1891,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:48Z",
+  "qa_status": "QA_PASSED"
 }

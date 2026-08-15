@@ -1,14 +1,14 @@
 {
   "slug": "a-white-heron",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "015b5eadf9603a194fd5a98d65426db9c84d3742580df7eadc58ed27acd2e23e"
+      "sha256": "c8ac87c6e2db459dc28230eba37b429d9291fbde878ffa513b36aa35a39fcba6"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "2e32a3d9ec743ff094966b2be87496ea7c46c364a73469df050ccbb42e83148f"
+      "file": "chapters/chapter-001.json",
+      "sha256": "a3f32047e8d1b77134fcfd79c0612644424a192e2d67a672be3252b997c148b4"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "76160b5a8ffb23044601ee9989f79253341316c855c9844d19bb3f17630a3dae"
+      "sha256": "ac91ab520de7efc36f8da57e3d42064438dafb1c339a0ee3f8d9dccd2d382a18"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "3d4629c86e5ece7cb79da097a386a3dd7f058bf75539087cb2e8c813992c4de5"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "a3f32047e8d1b77134fcfd79c0612644424a192e2d67a672be3252b997c148b4"
+      "sha256": "b86befa238d0180d042d266bc40ba267f74874228e48eb429aef071220b16843"
     }
   ]
 }

@@ -9,5 +9,13 @@
   "rights_basis": "Richard Connell died in 1949 and the story was first published in 1924. Public domain in India and the U.S.; canonical title corrected from manifest alias.",
   "downloaded_at": "2026-06-03T08:04:22.491684+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "Richard Connell",
+  "author_death_year": 1949,
+  "original_publication_year": 1924,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:49Z",
+  "qa_status": "QA_PASSED"
 }

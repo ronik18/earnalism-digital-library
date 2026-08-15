@@ -1,30 +1,10 @@
 {
   "slug": "the-great-gatsby",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "a2514140d86cb8cd531dd0a760fe510389c4e75a0c025798563ebad21cc4f2fd"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "654179d5eae580b5a311d66fd24565d24a923d124d440da8e2195d0f488812e7"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "818d10b268f9074dc570150b2a6ed9b1bdd9b7e220052e99bf896a48b554951e"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "34604f3dbd29fad51b5e2e0c4376bfacd5fa87d60daf08656662e383afc10aa6"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "49538cd1e7a82e1a711650f3c5aa50e64437590caa147491ae067abaf448d061"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "b9ad66404a9b5f5987b59586800a5996366e39361591718c354652c01fbf4275"
+      "sha256": "aab157985357771f255ecede4de3a4391ce14779cd533117fdb0a7cfdcc9743f"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -61,6 +41,22 @@
     {
       "file": "chapters/chapter-009.json",
       "sha256": "c1e2089309e5020916f60ff09b2ea300af01b18fb6313fc428c8b67b32ba7e8b"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "818d10b268f9074dc570150b2a6ed9b1bdd9b7e220052e99bf896a48b554951e"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "30d28a316110d229f95a266eeb3b51a937abbab4176253e098fba9073d3398af"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "49538cd1e7a82e1a711650f3c5aa50e64437590caa147491ae067abaf448d061"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "967f822ba8a911fd29dc625f17e129317dc37ebcc47232989d813524a722001f"
     }
   ]
 }

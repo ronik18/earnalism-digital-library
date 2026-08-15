@@ -9,5 +9,13 @@
   "rights_basis": "Author died in 1919. Work published in 1900, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
   "downloaded_at": "2026-05-25T20:10:02.942458+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "L. Frank Baum",
+  "author_death_year": 1919,
+  "original_publication_year": 1900,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:47Z",
+  "qa_status": "QA_PASSED"
 }

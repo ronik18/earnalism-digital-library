@@ -1,30 +1,10 @@
 {
   "slug": "the-enchanted-april",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "3d3bb0c356acc96ae180b4d599c8a1e1fd4f681a10ffd5165b41108870daa486"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "8c9af94134ec46d43d04422ed4464f99448506e1fe9319baad4b84fa96bdd5a2"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "1a9f06450281eec34410e65dd922b24fdde77885cd8b047103bda8f91e935add"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "3d5accda1532291bc2e5807e70d26990446189a027284447c92b7d23060c86ba"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "2e09524ea213f35fc97e1ed0bd32447a1913f47f3b65443d9bc1cedf74e97f8d"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "ca8206df0f2c88559bcf2ff75a5f943e85b55f064aeff0ea721c1c5f131be883"
+      "sha256": "291e253ed51017da9fd40eed74589d8eae75b43515e7a525ef091bf28dd4ecc9"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -113,6 +93,22 @@
     {
       "file": "chapters/chapter-022.json",
       "sha256": "38498e7520305a0445c702ad688fa78d0b8a2b12792917ac78e15b9ade8f0a51"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "1a9f06450281eec34410e65dd922b24fdde77885cd8b047103bda8f91e935add"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "8bbb796fdff090de7e5f8825d264af31e2a2e51e7fb49ee9fc511d53b1baa546"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "2e09524ea213f35fc97e1ed0bd32447a1913f47f3b65443d9bc1cedf74e97f8d"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "537979b21c2db20fcb7750fabc80c0e5721eacee7d2f056cbd225274db000d91"
     }
   ]
 }

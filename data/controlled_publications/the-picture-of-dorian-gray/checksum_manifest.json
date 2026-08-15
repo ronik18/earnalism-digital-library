@@ -1,30 +1,10 @@
 {
   "slug": "the-picture-of-dorian-gray",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "ff011038fe91d77821b2e1f5d90f8a1d133eda7d5f2493fdb13a21c103f2b420"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "b477a12c440817f00f508b9d47634a38f0c3408cce02e5ec4844441687f05dd3"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "d254328e742a7f451d8f3c1b7e5bad94456c23f4321d8c3690a699c8b69bcc68"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "41f764c59a02ecc55007acc7876124abe72f7c0bad4a31e0bc97e5fa1f2f2758"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "cbf2bd2e56b4e7b421e9cfcc8ffeabefaedfbbd0cf22a9d127558c79e72dcbcd"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "af49b87b769670a572dc0b50eea1aa93e3605cdb9860c613ce6f1904e56110d0"
+      "sha256": "69c746c41c6c09d425ffc6ebf01a47b74cf364153e904c282c2f91a32d0354f1"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -105,6 +85,22 @@
     {
       "file": "chapters/chapter-020.json",
       "sha256": "e7454d44ebcf5fb1f24aa42225a2a1aa728a9ea779fdba14ef95092d9dfb727c"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "d254328e742a7f451d8f3c1b7e5bad94456c23f4321d8c3690a699c8b69bcc68"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "195cab92e8f566b8a806c1efb50ef80978791c1c09f4de80cd6ac13fcd0d702a"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "cbf2bd2e56b4e7b421e9cfcc8ffeabefaedfbbd0cf22a9d127558c79e72dcbcd"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "7de85abb1841f7a4320329066a4a5c259356dbb944dfb232b6db66440ae8d08f"
     }
   ]
 }

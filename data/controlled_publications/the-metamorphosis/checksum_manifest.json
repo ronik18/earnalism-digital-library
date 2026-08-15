@@ -1,30 +1,10 @@
 {
   "slug": "the-metamorphosis",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "5f93879b804834bfec573a253b63943353852f9e6a58ec59e1c2be0b74771262"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "40d3b92db0171d5f2bd9a39cdb741b94637217381ea5dba59c24e18fadab7199"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "df46b7db2b664831608032062fbb4d5aea3934cb2132c38b28790290a6e2751d"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "33815c8cf77a2efaf367c609d46cca4189caf1c752225f7887181ab57917359b"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "24d61944c24b7cb268812ac2bb27ec118e7db873c1abdfe732db5ec63533ed29"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "873f4f94f8022064271ba50691ac75fa13431e5de505f02a6b7b7057c9848212"
+      "sha256": "14aa227f4d9e5d710bdf91e6f871fc73035dfdc34f2f2df6dce91e742eff5a7b"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -37,6 +17,22 @@
     {
       "file": "chapters/chapter-003.json",
       "sha256": "9ac218d4e247ed077b1d22bb99afd7f2f284a66e6a615c4d23f6dec14429c6eb"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "df46b7db2b664831608032062fbb4d5aea3934cb2132c38b28790290a6e2751d"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "cc958a4c92008a67d12196ebeed2ff64713fa110f85f9e3782357dcfcc7c385b"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "24d61944c24b7cb268812ac2bb27ec118e7db873c1abdfe732db5ec63533ed29"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "40a713cd4e2623b90f1d44c2fa5def6e89e12b83996a98a847b3236f61697fb6"
     }
   ]
 }

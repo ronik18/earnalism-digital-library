@@ -72,34 +72,12 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "historical_mapped_assets",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
   "audiobook_voice": "",
-  "audio_asset_slug": "the-selfish-giant",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580474/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580475/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580476/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580477/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580478/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580474/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580474/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580475/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580476/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580477/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580478/earnalism/audiobooks/en/the-selfish-giant/the-selfish-giant_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:49Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:49Z",
   "updated_at": "2026-07-03T20:07:49Z",
   "cover_dimensions": {

@@ -9,5 +9,13 @@
   "rights_basis": "Edgar Allan Poe died 1849; first published 1842. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.086066+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "Edgar Allan Poe",
+  "author_death_year": 1849,
+  "original_publication_year": 1842,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:49Z",
+  "qa_status": "QA_PASSED"
 }

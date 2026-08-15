@@ -1,14 +1,14 @@
 {
   "slug": "the-stolen-white-elephant",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "805970b1689e49ac8598e630438d27c6698123ae365365a90555998b15e2c3c7"
+      "sha256": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "b6dcfe255cb020a200c496bd83d2190256ccbe95182c430ba7a8b3c7ce972327"
+      "file": "chapters/chapter-001.json",
+      "sha256": "efea2c6f71f69c7e1b231225621647e839af22c63c679b2ae4306643213dab5d"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "99af0f469372e8869ddb1477a8853b1974e8271098e760ba811a8f6f31cbc448"
+      "sha256": "4c6c9fcb5ce9680fd8067c3af4cc45f4830c2bc0a3b46418df2c7f789c968316"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "3648538fcd90f26a346d9b928331869b110ddc2a7c366a8bd7c6eb15ba6c8615"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "efea2c6f71f69c7e1b231225621647e839af22c63c679b2ae4306643213dab5d"
+      "sha256": "149c7be718f5973e80736be99711712d9e73098b170f3344bb9a70fce229c8d7"
     }
   ]
 }

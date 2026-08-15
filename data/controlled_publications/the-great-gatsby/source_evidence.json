@@ -9,5 +9,13 @@
   "rights_basis": "Author died in 1940. Work published in 1925, before 1928. Entered U.S. public domain on 1 January 2021 under the pre-1928 publication rule.",
   "downloaded_at": "2026-05-25T20:09:51.426847+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "F. Scott Fitzgerald",
+  "author_death_year": 1940,
+  "original_publication_year": 1925,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:48Z",
+  "qa_status": "QA_PASSED"
 }
