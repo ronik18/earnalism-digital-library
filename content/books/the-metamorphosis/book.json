@@ -3,16 +3,16 @@
   "title": "The Metamorphosis",
   "displayTitle": "The Metamorphosis",
   "author": "Franz Kafka",
-  "translator": "",
+  "translator": "David Wyllie",
   "language": "en",
   "originalLanguage": "en",
   "sourceName": "Project Gutenberg",
   "sourceUrl": "https://www.gutenberg.org/ebooks/5200",
   "sourceLandingPage": "https://www.gutenberg.org/ebooks/5200",
   "sourceFormatImported": "text/plain",
-  "rightsStatus": "public_domain_source_reviewed",
-  "rightsTerritoryBasis": "Author died 1924. Published 1915. Pre-1928 publication supports U.S. public-domain status.",
-  "readerStatus": "ready_for_editorial_review",
+  "rightsStatus": "copyrighted_translation_permission_required",
+  "rightsTerritoryBasis": "Franz Kafka's 1915 German original is public domain, but Project Gutenberg ebook 5200 labels the imported David Wyllie English translation copyrighted. Commercial redistribution permission for Earnalism is not established.",
+  "readerStatus": "blocked_rights",
   "publicationStatus": "draft",
   "isPublic": false,
   "isLive": false,
@@ -29,5 +29,5 @@
   "backCoverImage": "",
   "coverAssets": [],
   "createdAt": "2026-07-03T20:07:49Z",
-  "updatedAt": "2026-07-03T20:07:49Z"
+  "updatedAt": "2026-08-15T23:13:35Z"
 }
