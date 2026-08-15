@@ -2827,6 +2827,38 @@
       "notebook": "colab/Earnalism_Audiobook_Pipeline.ipynb",
       "next_action": "Run the representative gate in Colab, continue resumably only on pass, obtain approved full-title listening evidence, then complete immutable packaging, storage, endpoint, browser, and public-release verification."
     },
+    "the-pit-and-the-pendulum": {
+      "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
+      "decision_reason": "The authoritative source was hard-wrapped into 559 artificial reader fragments. The checksum-bound repair restores 40 semantic blocks while preserving every word and its order, invalidates the unmeasured legacy sync, and adds the missing Railway mirror with audio hidden.",
+      "updated_at": "2026-08-15T21:27:37Z",
+      "language": "en",
+      "territory": "IN",
+      "public_reader_status": "CONTROLLED_PACKET_READY_NOT_ALLOWLISTED",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
+      "semantic_blocks": 40,
+      "normalized_text_unchanged": true,
+      "reader_sanitized_sha256": "778162c0eb0685fc28e6433b48e5685e3ae86fd69413588c90c21a967d4babb6",
+      "root_backend_byte_parity": true,
+      "legacy_estimated_sync_invalidated": true,
+      "public_release_mutated": false,
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main for the first human gate."
+    },
+    "the-bishop": {
+      "latest_decision": "READER_PREFLIGHT_RECONCILED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
+      "decision_reason": "The controlled package omitted translator rights and its backend mirror carried stale audio-enabled pointers. Constance Garnett's 1946 death year is now bound for India life-plus-60 evaluation; the contradictory duplicate approval is removed, unmeasured sync is invalidated, and both packages are byte-identical with audio hidden.",
+      "updated_at": "2026-08-15T21:30:20Z",
+      "language": "en",
+      "territory": "IN",
+      "translator": "Constance Garnett",
+      "translator_death_year": 1946,
+      "public_reader_status": "CONTROLLED_READER_READY",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
+      "root_backend_byte_parity": true,
+      "legacy_estimated_sync_invalidated": true,
+      "remote_media_mutated": false,
+      "public_release_mutated": false,
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main for the first human gate."
+    },
     "english-25-title-controlled-batch": {
       "latest_decision": "READER_PREFLIGHT_DEPLOYED_DURABLE_PILOT_GATE_PENDING",
       "decision_reason": "The controlled preparation checkpoint is merged and its frontend canary passed. Live API checks confirm the two pilots are not publicly exposed. The reusable notebook now mounts Google Drive, derives a fingerprinted durable run directory before writing artifacts, and can assert an exact repository commit; synthesis remains blocked on the private reader-preview approval.",

@@ -2111,3 +2111,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A persistence toggle is not durable evidence unless the notebook actually mounts Google Drive and writes the immutable attempt directory beneath `MyDrive`.
 - Derive the final run directory only after the source-bound attempt fingerprint exists. This prevents unrelated retries from sharing an unfingerprinted folder and makes every sample, unit, ASR chunk, and checkpoint resumable against one identity.
 - Bind launches to an optional exact repository commit and record the resolved commit in the durable output. A moving branch name alone is insufficient provenance for a long-running synthesis job.
+
+## Shortest-first English reader repair - 2026-08-16
+
+- Hard-wrapped plain text must be reflowed from authoritative blank-line blocks before reader publication. Whitespace-normalized equality is a strong guard that restores semantic paragraphs without changing words or order.
+- Every controlled reader intended for Railway needs a byte-identical backend mirror and a checksum manifest that excludes itself. A valid root packet alone is not deployable truth.
+- Translated public-domain editions must bind translator identity and death year into the rights engine. Author-only evidence is incomplete even when the source repository labels its U.S. copy public domain.
+- Contradictory duplicate approvals and stale audio URLs never combine into release evidence. Retain the canonical audio-hidden decision, invalidate unmeasured synchronization, and leave remote media untouched until a separately authorized cleanup workflow exists.
