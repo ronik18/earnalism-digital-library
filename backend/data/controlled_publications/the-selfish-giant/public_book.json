@@ -1,0 +1,118 @@
+{
+  "id": "controlled-the-selfish-giant",
+  "slug": "the-selfish-giant",
+  "title": "The Selfish Giant",
+  "subtitle": "",
+  "author": "Oscar Wilde",
+  "category_slug": "young-readers",
+  "short_description": "A giant forbids children from his garden and is punished with eternal winter — until one small boy changes everything.",
+  "description": "The Giant drives children from his garden — and spring refuses to come. One morning a small boy appears who can reach the lowest branch only because the Giant lifts him. When the Giant dies in old age, the boy's wounds reveal who he truly was.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "7 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Oscar Wilde (1854–1900) was an Irish poet, playwright, and author celebrated for his wit and fairy tales.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Selfish Giant",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1678,
+      "reading_minutes": 7,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
+  "content_hash": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
+  "audiobook_manuscript_sha256": "0ec24ecbd6d5d594e74131b529b4e3d3ece31ae9f4130210f3c120c9db1ea62d",
+  "provenance_hash": "d426354bb000f4b72606e782483eb2882f5510e7e12087388d667120d1ba8053",
+  "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S.",
+  "rights_metadata": {
+    "work_title": "The Selfish Giant",
+    "work_slug": "the-selfish-giant",
+    "author_name": "Oscar Wilde",
+    "author_death_year": 1900,
+    "original_publication_year": 1888,
+    "country_of_origin": "United Kingdom",
+    "source_url": "https://www.gutenberg.org/ebooks/902",
+    "source_name": "Project Gutenberg",
+    "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+    "translator_name": "",
+    "translator_death_year": null,
+    "illustrator_name": "",
+    "illustrator_death_year": null,
+    "editor_name": "",
+    "edition_publication_year": null,
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "blocked_reason": "",
+    "publication_region": "in",
+    "verified_at": "2026-07-03T20:07:49Z",
+    "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S."
+  },
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "cover_semantic_match_score": 9.8
+}

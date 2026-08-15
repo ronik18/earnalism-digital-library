@@ -1,0 +1,30 @@
+{
+  "slug": "the-selfish-giant",
+  "generated_at": "2026-08-15T06:54:10Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "936791d55717232ef42257e5e2ebfdd60c8cb9955e1110fb077180fa1989218a"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "c4d06e692633441ba05e0c2bfa7ee1e476c02045df9bb884d0f3ca6810cc753d"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "adca39bf660c75972691324ed871da653e0959e5fcba7da1c1e9bd60b76f9247"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "f8cb945f8478157733769ac11bd39fa7e7e6158a270296e10dd9175fcc5d00c7"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "489eb8ea5d0db8e8c55b2586fc8fdfb29b8cfb7c487a814f785187aacef689f4"
+    }
+  ]
+}
