@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "a-white-heron",
+  "title": "A White Heron",
+  "generated_at": "2026-08-15T19:48:58.304994+00:00",
+  "content": {
+    "source_hash": "c2fa6ab0fcbb8393f08987e8af21a7f18b867ad857ed3cd31f12c974e348943b",
+    "content_hash": "2c380a332c7be5fd8137fa7aa598dffbb7ffc0e0e369795abaf0ce2cceb6b9f7",
+    "provenance_hash": "3a4dc4ec0589f21d5425bad9341a84c7411990dd4859e84d91972a8a5a3708bf",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "eab4e7a2a460c2f07f7ac15c089d99f2b04248af604c4d5538810c45950eed6a",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "A White Heron",
+        "word_count": 4319,
+        "sha256": "a3f32047e8d1b77134fcfd79c0612644424a192e2d67a672be3252b997c148b4"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "b86befa238d0180d042d266bc40ba267f74874228e48eb429aef071220b16843"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "db668759473f66395603696a25dd9b8c1a0942649adcdb17e2fb2d49fcaced9f",
+    "reader_manifest": "c2a62d67afb6b3c58912392fa3dffc61e41fee37023405ddf6decf1721540c77",
+    "source_evidence": "b86befa238d0180d042d266bc40ba267f74874228e48eb429aef071220b16843",
+    "approval_evidence": "c8ac87c6e2db459dc28230eba37b429d9291fbde878ffa513b36aa35a39fcba6"
+  },
+  "manifest_sha256": "1de7106e2a5e20121320f760062225599b0e4829f96fec13ffc2dab39cf80c94"
+}

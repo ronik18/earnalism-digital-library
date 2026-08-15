@@ -16,10 +16,15 @@ export const PAID_ONLY_READER_SLUGS = [
   "book-d19e96859f",
   "book-f5d593e1f4",
 ];
+export const BATCH_2_AUDIOBOOK_SLUGS = [
+  "the-selfish-giant",
+  "a-white-heron",
+];
 export const LIVE_APPROVED_READER_SLUGS = [
   LIVE_APPROVED_SLUG,
   ...BATCH_1_READER_ONLY_SLUGS,
   ...PAID_ONLY_READER_SLUGS,
+  ...BATCH_2_AUDIOBOOK_SLUGS,
 ];
 
 export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
@@ -188,7 +193,8 @@ export function isLiveApprovedBook(book = {}) {
     const published = book?.publication_status === "LIVE_APPROVED";
     const noCommerce = book?.allowCheckout !== true && book?.allowPayment !== true;
     const noAudio = book?.audio_enabled !== true && book?.audiobook_enabled !== true && book?.generate_audiobook !== true;
-    return publicationStatus === "LIVE_APPROVED" && readerEnabled && published && noCommerce && noAudio;
+    const approvedAudiobookLane = BATCH_2_AUDIOBOOK_SLUGS.includes(slug);
+    return publicationStatus === "LIVE_APPROVED" && readerEnabled && published && noCommerce && (approvedAudiobookLane || noAudio);
   }
   return true;
 }
