@@ -16,7 +16,7 @@
   "backCoverImage": "https://theearnalism.com/assets/books/the-happy-prince/back-cover.webp",
   "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
   "dominant_color": "#4A1C27",
-  "estimated_reading_time": "25 min",
+  "estimated_reading_time": "15 min",
   "formats": [
     "Ebook"
   ],
@@ -44,18 +44,18 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 5864,
-      "reading_minutes": 25,
+      "word_count": 3473,
+      "reading_minutes": 15,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:49Z",
-      "updated_at": "2026-07-03T20:07:49Z"
+      "updated_at": "2026-08-15T21:15:01Z"
     }
   ],
   "source_hash": "aec5f24c5cef2533989442028811632667522939a78217a9f3d07389b5c6d145",
-  "content_hash": "9ad0f9ef8628f87ababf0e361848713b585f5408d5929a6fef95c2afd18388b7",
-  "provenance_hash": "dbd1d86c2d74f3601aeffc97cb23266acf8e07328441266e648d2040e0490554",
+  "content_hash": "82cdacb7a7021d7430a846852f15d69f604e4dd48c07c8e2afac08ff6fc5e4ac",
+  "provenance_hash": "ed8a4b89ffb904aa23145eed7a721f691d87df6e9bcd6acb78a6f5048da3d006",
   "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",
@@ -79,7 +79,7 @@
   "audiobook_voice": "",
   "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-08-15T21:15:01Z",
   "cover_dimensions": {
     "front": [
       800,

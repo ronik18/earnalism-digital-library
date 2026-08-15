@@ -1,6 +1,6 @@
 {
   "slug": "the-happy-prince",
-  "generated_at": "2026-08-15T06:54:10Z",
+  "generated_at": "2026-08-15T21:15:01Z",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -8,23 +8,23 @@
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "69aefbd3475705bae77f926f4bd8e3513e6fa602978cc78a22845b63af71408b"
+      "sha256": "4e8e213c3ab5cc89da6bd49dc3beba6c3d5b0eeb5122103143c6f233b4dfc79d"
     },
     {
       "file": "highlight_sync.json",
-      "sha256": "aeeb37123da07d7ece7d74bbf7c701115c64a9e0819240855f77b6c352781de8"
+      "sha256": "5a60e2898370994d24ac6dcb2dc38e65bb7da1cfa5d9728299533f19671e0cfb"
     },
     {
       "file": "public_book.json",
-      "sha256": "1605347a8d357868f116512de903bece945459c651c06dbe352247e2391b0496"
+      "sha256": "c46affd902a336625d53401e7e6542ab252628491e91b0eaa7006600c561b8d8"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "a8ec06c8652132f2a9ca7189f6cce946f61290c2fdddf0e4d0040a2ee527bc49"
+      "sha256": "a868b08d4c712bbec08ed87774cbe0fea07e190a5b72fb0562b5aff1a92591a7"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "570316cd69a486206c75cd3c78a0634ea4bf6d178acb7b7b4a8a1f5fd018fcb9"
+      "sha256": "c0ceb346842e1ffaa420651ec3ca21f774bd0e02bcd459d232fd4effe66aeb50"
     }
   ]
 }
