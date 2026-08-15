@@ -1,6 +1,8 @@
 import {
+  BATCH_2_AUDIOBOOK_SLUGS,
   DRACULA_FALLBACK_BOOK,
   PAID_ONLY_READER_SLUGS,
+  canShowAudioCTA,
   canShowPreview,
   canShowStartReading,
 } from "./controlledLaunch";
@@ -60,5 +62,29 @@ describe("controlled launch preview parity", () => {
   test("preserves Dracula's explicit Chapter 1 preview", () => {
     expect(canShowStartReading(DRACULA_FALLBACK_BOOK)).toBe(true);
     expect(canShowPreview(DRACULA_FALLBACK_BOOK)).toBe(true);
+  });
+
+  test.each(BATCH_2_AUDIOBOOK_SLUGS)("allows checksum-gated audio for %s", (slug) => {
+    const book = {
+      ...paidOnlyBook(slug),
+      audio_enabled: true,
+      audiobook_enabled: true,
+      audio_qa_status: "QA_PASSED",
+    };
+
+    expect(canShowStartReading(book)).toBe(true);
+    expect(canShowAudioCTA(book)).toBe(true);
+  });
+
+  test.each(BATCH_2_AUDIOBOOK_SLUGS)("keeps %s audio hidden until QA passes", (slug) => {
+    const book = {
+      ...paidOnlyBook(slug),
+      audio_enabled: true,
+      audiobook_enabled: true,
+      audio_qa_status: "PENDING",
+    };
+
+    expect(canShowStartReading(book)).toBe(true);
+    expect(canShowAudioCTA(book)).toBe(false);
   });
 });
