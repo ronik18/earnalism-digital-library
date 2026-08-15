@@ -322,6 +322,11 @@ def clean_narration_sentence(
     return text, metadata
 
 
+SENTENCE_BOUNDARY_RE = re.compile(
+    r"(?:(?<=[.!?])|(?<=[.!?][”’\"']))\s+(?=[“‘\"'A-Z0-9])"
+)
+
+
 def split_plain_source_into_sentences(raw_source: str) -> list[str]:
     text = html_to_text(raw_source)
     text = re.sub(r"(?m)^\s*#.*$", "", text)
@@ -329,7 +334,7 @@ def split_plain_source_into_sentences(raw_source: str) -> list[str]:
     paragraphs = [paragraph.strip() for paragraph in re.split(r"\n{2,}", text) if paragraph.strip()]
     sentences: list[str] = []
     for paragraph in paragraphs:
-        parts = re.split(r"(?<=[.!?])\s+(?=[“\"A-Z0-9])", paragraph)
+        parts = SENTENCE_BOUNDARY_RE.split(paragraph)
         for part in parts:
             cleaned = part.strip()
             if cleaned:

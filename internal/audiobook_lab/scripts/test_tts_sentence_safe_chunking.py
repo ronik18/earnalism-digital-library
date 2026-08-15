@@ -27,6 +27,19 @@ def main() -> int:
     assert chunks[0]["text"].endswith("grip."), chunks
     assert not any(item["text"].startswith("and took") for item in chunks[1:]), chunks
     assert all(item["text"][-1] in ".!?।" for item in chunks), chunks
+
+    quoted = (
+        '“How far is it?” Farquhar asked. '
+        '“About thirty miles.” “Is there no force?” '
+        '“Put it back!” He thought he shouted.'
+    )
+    quoted_chunks = chunk_text(quoted, max_chars=25)
+    rebuilt_quoted = " ".join(item["text"] for item in quoted_chunks)
+    assert normalize_text(rebuilt_quoted) == normalize_text(quoted), quoted_chunks
+    assert len(quoted_chunks) == 6, quoted_chunks
+    assert quoted_chunks[0]["text"] == '“How far is it?”', quoted_chunks
+    assert quoted_chunks[2]["text"] == '“About thirty miles.”', quoted_chunks
+    assert quoted_chunks[4]["text"] == '“Put it back!”', quoted_chunks
     print("TTS sentence-safe chunking regression checks PASS")
     return 0
 

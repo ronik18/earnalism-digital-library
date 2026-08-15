@@ -4,8 +4,8 @@
   "source_name": "Project Gutenberg",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
   "source_hash": "80fcddf28824332d64cd71c5715a34fe73be1c4c51959edb7e6a6513338afaa7",
-  "content_hash": "d10cd55ffc2face83193bc52da17c1c15a4511d50da75709b0925a84c92f9e17",
-  "provenance_hash": "9afc41f924ee4bb02044c413e83e1ff9ec50ad964ca96e19b74486f7fce97d0b",
+  "content_hash": "3f89be2c6d914ead58cb73bf95c7912f9061c0552efb0c3c1d4fbc34946752bf",
+  "provenance_hash": "d6b045255992fbb0ad9ef6b59c3017dc1211c4cd52a5ef1eb7b576ddeb7f658e",
   "rights_basis": "Ambrose Bierce died 1914; first published 1889. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.253654+00:00",
   "source_format": "text/plain",
@@ -16,6 +16,15 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "publication_region": "IN",
-  "verified_at": "2026-07-03T20:07:48Z",
-  "qa_status": "QA_PASSED"
+  "verified_at": "2026-08-15T20:29:34Z",
+  "qa_status": "QA_PASSED",
+  "source_hash_domain": "utf8_text_normalized_lf_trimmed_terminal_whitespace",
+  "content_hash_domain": "canonical_content_chapter_json_list_sorted_keys_utf8",
+  "provenance_hash_domain": "source_url_lf_source_name_lf_source_license_lf_content_hash",
+  "reader_boundary_repair": {
+    "status": "PASS",
+    "removed_matter": "publisher_colophon",
+    "canonical_endpoint": "The sergeant rose to his feet and walked away. \"Good God!\" he said.",
+    "sanitized_sha256": "1fa2d6c67f279a3861edbe4a448bc003d23a9546c0d7304e638c902db1a2f552"
+  }
 }

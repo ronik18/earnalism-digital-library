@@ -9,5 +9,13 @@
   "rights_basis": "Stephen Crane died 1900; first published 1895. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.235803+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "Stephen Crane",
+  "author_death_year": 1900,
+  "original_publication_year": 1895,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:47Z",
+  "qa_status": "QA_PASSED"
 }

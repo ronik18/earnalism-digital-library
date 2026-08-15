@@ -164,6 +164,11 @@ def preferred_voice(args) -> str:
     return "verse" if args.language != "ben" else voices_for(args.language)[0]
 
 
+SENTENCE_BOUNDARY_RE = re.compile(
+    r"(?:(?<=[।.!?])|(?<=[।.!?][”’\"']))\s+(?=[“‘\"'A-Z0-9])"
+)
+
+
 def chunk_text(text: str, max_chars: int = 2600) -> list[dict]:
     # Canonical texts may contain a blank line after every source-wrapped line.
     # Treating those wraps as paragraph boundaries can reset a provider in the
@@ -171,7 +176,7 @@ def chunk_text(text: str, max_chars: int = 2600) -> list[dict]:
     # sentence endings so every normal TTS chunk starts and ends on a complete
     # sentence.
     flattened = re.sub(r"\s+", " ", text or "").strip()
-    sentences = [item.strip() for item in re.split(r"(?<=[।.!?])\s+", flattened) if item.strip()]
+    sentences = [item.strip() for item in SENTENCE_BOUNDARY_RE.split(flattened) if item.strip()]
     units: list[str] = []
     for sentence in sentences:
         if len(sentence) <= max_chars:
