@@ -1,30 +1,10 @@
 {
   "slug": "the-wonderful-wizard-of-oz",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "aafd564c1152337e87430645c9d58524de4d2f98e8ef3628f83b9548e2629045"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "23588dbc4ecbbdbb55a1e0d69879dd7e416c50ac677c103b97c184ca76293271"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "32c5e5256e2584ee9acda5cc8a83ecd7dbccd7ba23a224339c0b9b34c5a753d2"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "149ecd57bf227ccc446886b6b6999c9d8cf4071b87655959df1fd859e74867c0"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "48a6523189b097c56f295fb59b6fe93f0c03c65dbea2bc26b5c3557e5ddb6910"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "abd2f08a6924833316c663399e4b135a75ccabbdc6ae388e552c652824213e33"
+      "sha256": "825d869ab62e7fa4dc8352d54fca3c4d8101842441d20fad39d235a1b2ca245d"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -121,6 +101,22 @@
     {
       "file": "chapters/chapter-024.json",
       "sha256": "96aab5ee0649a534096d41b40e497fceee1c4b9400d36d04192da0992c5328a8"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "32c5e5256e2584ee9acda5cc8a83ecd7dbccd7ba23a224339c0b9b34c5a753d2"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "5b103f6e6a091cc6b4eeec5a7e9ce96855f266fc7f668f67b9b153cf91f12e12"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "48a6523189b097c56f295fb59b6fe93f0c03c65dbea2bc26b5c3557e5ddb6910"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "cec0652b80580d3288cd4f569e37c31729552db874df896ae4503290ec44faf7"
     }
   ]
 }

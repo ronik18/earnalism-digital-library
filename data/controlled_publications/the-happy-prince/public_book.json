@@ -7,14 +7,14 @@
   "category_slug": "young-readers",
   "short_description": "A gilded statue and a swallow strip themselves of all beauty to give to the poor — and are destroyed for it.",
   "description": "The statue of the Happy Prince sends a swallow to deliver his gold leaf and jewels to the city's suffering poor — until the Prince is lead and the swallow is dead. God's angels call them the two most precious things in the city. Wilde's most beautiful and heartbreaking fairy tale.",
-  "cover_url": "",
-  "cover_image_url": "",
-  "coverImage": "",
-  "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
-  "backCoverImage": "",
-  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-happy-prince/back-cover.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-happy-prince/back-cover.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-happy-prince/back-cover.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "25 min",
   "formats": [
@@ -72,34 +72,22 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "historical_mapped_assets",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
   "audiobook_voice": "",
-  "audio_asset_slug": "the-happy-prince",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582086/earnalism/audiobooks/en/the-happy-prince/the-happy-prince.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582093/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582094/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582095/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582095/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582086/earnalism/audiobooks/en/the-happy-prince/the-happy-prince.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582086/earnalism/audiobooks/en/the-happy-prince/the-happy-prince.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582093/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582094/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582095/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582095/earnalism/audiobooks/en/the-happy-prince/the-happy-prince_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:49Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-03T20:07:49Z",
+  "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z"
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
 }

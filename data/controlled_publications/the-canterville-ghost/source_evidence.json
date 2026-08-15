@@ -9,5 +9,13 @@
   "rights_basis": "Author died 1900. Published 1887. Public domain in U.S. and worldwide.",
   "downloaded_at": "2026-06-02T18:57:59.263826+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "Oscar Wilde",
+  "author_death_year": 1900,
+  "original_publication_year": 1887,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:47Z",
+  "qa_status": "QA_PASSED"
 }

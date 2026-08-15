@@ -7,14 +7,14 @@
   "category_slug": "adventure",
   "short_description": "Four shipwrecked men row a tiny dinghy toward shore through crushing waves — nature utterly indifferent to their survival.",
   "description": "Based on Crane's own shipwreck, four men — a cook, an oiler, a correspondent, and the captain — row toward a Florida shore that keeps receding. Nature does not care whether they live or die. The oiler, the strongest, is the one who drowns.",
-  "cover_url": "",
-  "cover_image_url": "",
-  "coverImage": "",
-  "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
-  "backCoverImage": "",
-  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "62 min",
   "formats": [
@@ -72,34 +72,22 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "historical_mapped_assets",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
   "audiobook_voice": "",
-  "audio_asset_slug": "the-open-boat",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591776/earnalism/audiobooks/en/the-open-boat/the-open-boat.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591779/earnalism/audiobooks/en/the-open-boat/the-open-boat_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591780/earnalism/audiobooks/en/the-open-boat/the-open-boat_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591781/earnalism/audiobooks/en/the-open-boat/the-open-boat_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591781/earnalism/audiobooks/en/the-open-boat/the-open-boat_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591776/earnalism/audiobooks/en/the-open-boat/the-open-boat.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780591776/earnalism/audiobooks/en/the-open-boat/the-open-boat.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591779/earnalism/audiobooks/en/the-open-boat/the-open-boat_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591780/earnalism/audiobooks/en/the-open-boat/the-open-boat_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591781/earnalism/audiobooks/en/the-open-boat/the-open-boat_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780591781/earnalism/audiobooks/en/the-open-boat/the-open-boat_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:47Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:47Z",
-  "updated_at": "2026-07-03T20:07:47Z"
+  "updated_at": "2026-07-03T20:07:47Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
 }

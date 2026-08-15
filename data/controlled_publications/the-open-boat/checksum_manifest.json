@@ -1,14 +1,18 @@
 {
   "slug": "the-open-boat",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
-      "file": "approval_evidence.json",
+      "file": "approval_evidence 2.json",
       "sha256": "273a0d1a97017844a8d91807516c39ffbcdbb10939e36623450862eadce2c8ea"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "35c491e32d35da605ee5b2dc54873d6d707204fdde003c6e5be431828b4a0e38"
+      "file": "approval_evidence.json",
+      "sha256": "8f6dc1da359bef3f9f9f863924def97e8cc46ebfc6bd014410199452baaa9959"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "ced14fb05f1bd9f96a5063a230af1f682ab9911e1c0a872820ed5b29f5f610b5"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +20,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "4550a3813338a96c2e183356acc0d312680ce3c299680a3af99291dfa8fa76a6"
+      "sha256": "8dec225dc005e79de2636c1eebf27e13bf9e5c7103f6715e51b6af0c1eafa07e"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "88596b822a85db985b0169ab12ab1a97994c745c5c129375e7aabb693345b96e"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "ced14fb05f1bd9f96a5063a230af1f682ab9911e1c0a872820ed5b29f5f610b5"
+      "sha256": "0dc3d6f384a7f411268dad0906324c0a31a383e2b9077cfbe82bbac5f7e2e71c"
     }
   ]
 }

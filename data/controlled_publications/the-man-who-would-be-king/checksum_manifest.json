@@ -1,14 +1,14 @@
 {
   "slug": "the-man-who-would-be-king",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "fd8c4c4730dd298a417f11ffd0c36e8ca56476069c1210fdf24776c0362c75c9"
+      "sha256": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "218a6b6d65af3a0e5ee81cd70a62883e8c9f71d303a8b616e04cb438b28f6de1"
+      "file": "chapters/chapter-001.json",
+      "sha256": "a8a8c3ff1d5ffa3d37aa5e1e5c05c925702219ebb237929373e8efbad0c09803"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "8bf83185b33e765438f367e42e8d4ad225722b31b1f39320322050c7a1bf782b"
+      "sha256": "b99c8846a9943c8bf57bc40eb98cc988bb8f3efaae5b618e8c34f6a2aebe1509"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "4efd43afa0162a392806f556d5d12d5b39028c7001f66e6d5f052307679a56f2"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "a8a8c3ff1d5ffa3d37aa5e1e5c05c925702219ebb237929373e8efbad0c09803"
+      "sha256": "865ef6db7262c9bf58d19e3a47151c234316c0b4c6fb1c753ac7b79421abada5"
     }
   ]
 }

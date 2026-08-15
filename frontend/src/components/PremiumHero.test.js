@@ -144,6 +144,37 @@ describe("PremiumHero public contract", () => {
     expect(styles).not.toContain("premium-coverflow__caption");
   });
 
+  test("collapses the mobile carousel into one compact overlay control rail", () => {
+    expect(source).toContain('aria-label={`Open ${activeSlide.title}`}');
+    expect(source).toContain("<span>Open classic</span>");
+    expect(styles).toContain("height: clamp(15.75rem, 69vw, 17rem);");
+    expect(styles).toContain("min-height: 4.25rem;");
+    expect(styles).toContain("grid-template-columns: minmax(0, 1fr) auto;");
+    expect(styles).toContain("bottom: 4rem;");
+    expect(styles).toContain("backdrop-filter: blur(18px) saturate(1.08);");
+  });
+
+  test("uses a restrained editorial mobile headline treatment", () => {
+    expect(source).toContain('className="premium-hero-title__lead"');
+    expect(source).toContain('className="premium-hero-title__collection"');
+    expect(source).toContain("<em>{goldHeadlineAccent}</em>");
+    expect(styles).toContain("'Cormorant Garamond', 'Crimson Pro'");
+    expect(styles).toContain("font-size: clamp(1.94rem, 8.35vw, 2.2rem);");
+    expect(styles).toContain("font-weight: 300;");
+    expect(styles).toContain("font-style: italic;");
+  });
+
+  test("layers the supplied mobile story artwork into the lower-left hero background", () => {
+    const cornerAsset = path.join(process.cwd(), "public/assets/hero/premium-library-mobile-corner-v1.webp");
+    expect(source).toContain("premium-library-mobile-corner-v1.webp");
+    expect(source).toContain('className="premium-reference-hero__mobile-feature-art"');
+    expect(source).toContain('fetchPriority="low"');
+    expect(styles).toContain("bottom: -1.6rem;");
+    expect(styles).toContain("left: -2.7rem;");
+    expect(styles).toContain("mask-image: radial-gradient");
+    expect(fs.statSync(cornerAsset).size).toBeLessThan(30_000);
+  });
+
   test("supports bounded autoplay, visibility pause, focus stop, keyboard, and swipe", () => {
     expect(source).toContain("HERO_CAROUSEL_INTERVAL_MS = 7000");
     expect(source).toContain("window.setInterval");

@@ -7,14 +7,14 @@
   "category_slug": "literary-fiction",
   "short_description": "Four unhappy English women rent an Italian castle for April and find themselves unexpectedly transformed by beauty.",
   "description": "Four strangers — two bored wives, a widow, and an elderly recluse — rent a medieval Italian castle and discover that wisteria, sunshine, and freedom from ordinary life can remake even the most guarded soul.",
-  "cover_url": "",
-  "cover_image_url": "",
-  "coverImage": "",
-  "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
-  "backCoverImage": "",
-  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-enchanted-april/back-cover.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-enchanted-april/back-cover.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-enchanted-april/back-cover.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "335 min",
   "formats": [
@@ -390,12 +390,19 @@
   "audio_enabled": false,
   "audiobook_enabled": false,
   "generate_audiobook": false,
-  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_provider": "",
   "audiobook_voice": "",
-  "audio_asset_slug": "the-enchanted-april",
-  "audiobook_assets": {},
-  "audiobook": {},
-  "audiobook_assets_updated_at": "",
+  "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
 }

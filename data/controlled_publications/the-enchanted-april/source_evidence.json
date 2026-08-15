@@ -9,5 +9,13 @@
   "rights_basis": "Author died 1941. Published 1922. Pre-1928 publication supports U.S. public-domain status.",
   "downloaded_at": "2026-06-02T18:58:20.020654+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "Elizabeth von Arnim",
+  "author_death_year": 1941,
+  "original_publication_year": 1922,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:48Z",
+  "qa_status": "QA_PASSED"
 }

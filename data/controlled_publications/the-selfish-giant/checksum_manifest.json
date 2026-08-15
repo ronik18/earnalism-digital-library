@@ -1,14 +1,14 @@
 {
   "slug": "the-selfish-giant",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "4f6140fab7a55d7ed37e09881c64de9206d4ebcf159d52dc00d3a3da9cb43f42"
+      "sha256": "936791d55717232ef42257e5e2ebfdd60c8cb9955e1110fb077180fa1989218a"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "f26f4c29a72073f4450f5e0dccaa567f276f5121cd4beb27c77e35426f47f562"
+      "file": "chapters/chapter-001.json",
+      "sha256": "c4d06e692633441ba05e0c2bfa7ee1e476c02045df9bb884d0f3ca6810cc753d"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "81f691cc69a74277f05bfc05c8e270a1b90609d4e3d642d24ce915cd45a865a9"
+      "sha256": "e98f1b019dc77a48eee5319d6edb8d8f2067dec99e6b75f739808bdfca9db81f"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "e5686d1a178b8d8d4ec20a943c88f0d2738985b29fa512a647f2294ab6f0f571"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "c4d06e692633441ba05e0c2bfa7ee1e476c02045df9bb884d0f3ca6810cc753d"
+      "sha256": "489eb8ea5d0db8e8c55b2586fc8fdfb29b8cfb7c487a814f785187aacef689f4"
     }
   ]
 }

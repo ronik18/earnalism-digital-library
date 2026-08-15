@@ -9,5 +9,13 @@
   "rights_basis": "Author died 1936. Published 1888. Pre-1928 publication supports U.S. public-domain status.",
   "downloaded_at": "2026-06-02T18:57:46.206084+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "Rudyard Kipling",
+  "author_death_year": 1936,
+  "original_publication_year": 1888,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:48Z",
+  "qa_status": "QA_PASSED"
 }

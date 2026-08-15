@@ -9,7 +9,7 @@
   "country_of_origin": "United Kingdom",
   "rights_tier": "A",
   "verification_status": "approved",
-  "publication_region": "global",
+  "publication_region": "IN",
   "verified_at": "2026-07-03T20:07:48Z",
   "source_hash": "bde9b313e5f4e7674d64afb47af1e6ba4e312ca68ad360c1fb575c717691908a",
   "content_hash": "b10d37f4214b7f74247590da5140b5ef248c771974262faa9d9f30736090b1ec",
@@ -17,5 +17,6 @@
   "rights_basis": "Author died in 1930. Work published in 1892, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
   "downloaded_at": "2026-05-25T20:09:56.810976+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "qa_status": "QA_PASSED"
 }

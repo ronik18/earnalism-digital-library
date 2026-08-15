@@ -1,14 +1,14 @@
 {
   "slug": "an-occurrence-at-owl-creek-bridge",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-08-15T06:54:10Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "00b6904c42455785007fd98fae8af477b4808f35f36669ad48aab5334b596cf7"
+      "sha256": "21b65127023cd9c82573961460bc545930d3ea7e3c9ae4f88565906ccda6eb4b"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "0b47507b2645beddce0fb3b6adc1c2d075366f5fb48641c07968492872513ccf"
+      "file": "chapters/chapter-001.json",
+      "sha256": "af0c59a7916b991af91ea7a5e4f246daeb4e0155a2a3a613bf5f44fa8995c5af"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "578b5a394f5496a0c3a5df6faab0839d35edc2185a0525a213a94c79130c22c5"
+      "sha256": "67c7c8d79edaec7517a687f4378f20ad47a35704511ff6b146df0e856893f3d8"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "2396a496fae55071a964a238cd6760f67c522d8788ae9081c33b4c384b88da97"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "af0c59a7916b991af91ea7a5e4f246daeb4e0155a2a3a613bf5f44fa8995c5af"
+      "sha256": "ec4489428fce39d3e42cb2f0934a79e555e0c44a3fe9e3a608c81c76e0dafc15"
     }
   ]
 }

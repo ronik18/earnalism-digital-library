@@ -9,5 +9,13 @@
   "rights_basis": "Anton Chekhov died 1904; first published 1899. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:21.882627+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "Anton Chekhov",
+  "author_death_year": 1904,
+  "original_publication_year": 1899,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "IN",
+  "verified_at": "2026-07-03T20:07:47Z",
+  "qa_status": "QA_PASSED"
 }

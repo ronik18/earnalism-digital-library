@@ -7,14 +7,14 @@
   "category_slug": "gothic-fiction",
   "short_description": "Sherlock Holmes meets his match in Irene Adler — the only woman who ever outwitted him.",
   "description": "Holmes is hired to recover a compromising photograph from the brilliant and fearless Irene Adler. For once, the world's greatest detective is outplayed — and he never forgets her. The story that introduced The Woman.",
-  "cover_url": "",
-  "cover_image_url": "",
-  "coverImage": "",
-  "cover_image": "",
-  "back_cover_url": "",
-  "back_cover_image_url": "",
-  "backCoverImage": "",
-  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+  "coverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+  "cover_image": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "36 min",
   "formats": [
@@ -72,34 +72,22 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "historical_mapped_assets",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
   "audiobook_voice": "",
-  "audio_asset_slug": "a-scandal-in-bohemia",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585124/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585125/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585126/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585127/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585128/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585124/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780585124/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585125/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585126/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585127/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780585128/earnalism/audiobooks/en/a-scandal-in-bohemia/a-scandal-in-bohemia_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:48Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-03T20:07:48Z",
+  "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
 }
