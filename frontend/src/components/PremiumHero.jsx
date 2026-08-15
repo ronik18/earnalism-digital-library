@@ -35,6 +35,7 @@ const versionedHeroAsset = (path) => `${PUBLIC_URL}${path}?v=${HERO_ASSET_VERSIO
 const REFERENCE_HERO_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact-1440.webp");
 const REFERENCE_HERO_FULL_IMAGE = versionedHeroAsset("/assets/hero/premium-library-reference-exact.webp");
 const REFERENCE_HERO_MOBILE_IMAGE = versionedHeroAsset("/assets/hero/premium-library-mobile-cinematic-v2.webp");
+const REFERENCE_HERO_MOBILE_FEATURE_IMAGE = versionedHeroAsset("/assets/hero/premium-library-mobile-corner-v1.webp");
 const REFERENCE_HERO_SRCSET = [
   `${versionedHeroAsset("/assets/hero/premium-library-reference-exact-1024.webp")} 1024w`,
   `${REFERENCE_HERO_IMAGE} 1440w`,
@@ -534,8 +535,10 @@ function EditorialCoverflow({
               to={activeSlide.destination}
               data-slide-id={activeSlide.id}
               data-testid="hero-active-book-link"
+              aria-label={`Open ${activeSlide.title}`}
             >
-              Open classic <ArrowRight size={13} strokeWidth={1.7} aria-hidden="true" />
+              <span>Open classic</span>
+              <ArrowRight size={13} strokeWidth={1.7} aria-hidden="true" />
             </Link>
           </div>
           <div
@@ -698,6 +701,8 @@ export default function PremiumHero({
   const headline = hero.headline || fallbackHeadline;
   const subheadline = hero.subheadline || DEFAULT_SUBHEADLINE;
   const goldHeadline = "timeless Bengali and English classics.";
+  const goldHeadlineAccent = "timeless";
+  const goldHeadlineRemainder = "Bengali and English classics.";
   const headlineLead = headline.includes(goldHeadline)
     ? headline.replace(goldHeadline, "").trim()
     : headline;
@@ -729,14 +734,29 @@ export default function PremiumHero({
               />
             </picture>
           </div>
+          <img
+            className="premium-reference-hero__mobile-feature-art"
+            src={REFERENCE_HERO_MOBILE_FEATURE_IMAGE}
+            alt=""
+            width="466"
+            height="564"
+            loading="eager"
+            fetchPriority="low"
+            decoding="async"
+            aria-hidden="true"
+          />
       <div className="premium-hero-copy">
         <div className="premium-hero-eyebrow">
           <Sparkles size={15} strokeWidth={1.6} aria-hidden="true" />
           <span>{eyebrowLabel}</span>
         </div>
         <h1 id="premium-hero-title" data-testid="hero-headline">
-          {headlineLead}{" "}
-          {headline.includes(goldHeadline) ? <span>{goldHeadline}</span> : null}
+          <span className="premium-hero-title__lead">{headlineLead}</span>{" "}
+          {headline.includes(goldHeadline) ? (
+            <span className="premium-hero-title__collection">
+              <em>{goldHeadlineAccent}</em>{" "}{goldHeadlineRemainder}
+            </span>
+          ) : null}
         </h1>
         <p>{subheadline}</p>
         <p className="sr-only">Reading time is used only while you read. Chapter 1 remains free to preview.</p>

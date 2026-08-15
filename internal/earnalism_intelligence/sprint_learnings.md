@@ -2079,3 +2079,21 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Premium literary typography comes from a controlled display face, optical spacing, short balanced measures, and confident scale; decorative menu language or tiny text would reduce trust and accessibility.
 - Exact-copy regression contracts must move with an approved customer-facing rewrite; otherwise a healthy release can fail on intentionally removed legacy language.
 - Keep unsupported-audio guards semantic and strict. Removing an ambiguous phrase such as “listen now” from general brand copy is safer than weakening a crawler-visible availability assertion.
+
+## Compact mobile carousel controls - 2026-08-15
+
+- A separate metadata plaque below a mobile cover stage duplicates vertical structure and weakens first-viewport density, even when each piece is individually polished.
+- A single translucent rail can preserve title identity, the open action, autoplay control, previous and next navigation, count, progress, keyboard behavior, and swipe behavior while returning more than 80px to the composition.
+- Compact must not mean miniature: keep every interactive control at least 44px, truncate metadata before shrinking controls, and verify the 320px narrow-phone breakpoint independently.
+
+## Luxury mobile headline typography - 2026-08-15
+
+- A premium serif becomes loud when scale, weight, and color emphasis all compete at once; reduce at least two before changing the message.
+- Preserve one clear typographic gesture. A light masthead with a single italic keyword feels more editorial than applying the same gold weight to an entire phrase.
+- Font fallback is part of brand quality. Pair the display face with a compatible high-contrast serif before the generic Georgia fallback so intermittent font loading does not collapse the intended voice.
+
+## Mobile hero photographic story layers - 2026-08-15
+
+- A supplied photograph can enrich an established hero without replacing it when the recognizable objects are isolated through position, opacity, and a soft mask rather than a hard rectangular crop.
+- Decorative secondary art should remain lower priority than the primary hero image, carry empty alternative text, and stay beneath live copy and controls.
+- Compress first-viewport story layers aggressively. The owner-supplied 482x564 PNG retained its useful detail as a 466x564 WebP under 20KB.
