@@ -1,34 +1,30 @@
 {
   "slug": "the-lady-with-the-dog",
-  "generated_at": "2026-08-15T06:54:10Z",
+  "generated_at": "2026-08-15T21:49:10Z",
   "files": [
-    {
-      "file": "approval_evidence 2.json",
-      "sha256": "1d9d6a55583c5c713d633fc64c4e208ffa1da0454f8e8382f86d4b5232464520"
-    },
     {
       "file": "approval_evidence.json",
       "sha256": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "4c75fa0770f54aed86eabd0dbc4f507822222b852c53db0c023ffd73c966ce5d"
+      "sha256": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f"
     },
     {
       "file": "highlight_sync.json",
-      "sha256": "6b7b8609b9c779b9a2637926a2b6c18a372427f72d027f2335869d89eaac9c48"
+      "sha256": "16f9d37220950bef9983969503064c4ae2b9714bebdb12715828b7332e628b46"
     },
     {
       "file": "public_book.json",
-      "sha256": "f97c921ea0ab6cd75cc0742c805a299425d069d5aea167d92d1a0603b1803cd8"
+      "sha256": "28924a8a0fcfa792c87b68b9e947a20d191fd343c67aa8a68ec2c544572ee38c"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "5fc56be1953dc1ce3d26e06925c0c14debd09ddd546d65945ea775b427d9c3d3"
+      "sha256": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "5ab49dbc9b4dd28fea67228707dc69f46c25621e5c8b4565ba03a535d653cc90"
+      "sha256": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0"
     }
   ]
 }
