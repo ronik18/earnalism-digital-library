@@ -11,8 +11,8 @@
   "sourceLandingPage": "https://www.gutenberg.org/ebooks/59844",
   "sourceFormatImported": "text/plain",
   "rightsStatus": "public_domain_source_reviewed",
-  "rightsTerritoryBasis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
-  "readerStatus": "ready_for_editorial_review",
+  "rightsTerritoryBasis": "Wallace D. Wattles died in 1911. Under section 22 of India's Copyright Act, the literary-work term ran for 60 years from the beginning of the calendar year following his death and expired on 31 December 1971. The work is public domain for the India-scoped release.",
+  "readerStatus": "ready_for_approval",
   "publicationStatus": "draft",
   "isPublic": false,
   "isLive": false,
@@ -22,9 +22,9 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": false,
-  "chapterCount": 19,
-  "wordCountApprox": 22974,
-  "readingTimeMinutesApprox": 96,
+  "chapterCount": 18,
+  "wordCountApprox": 22649,
+  "readingTimeMinutesApprox": 95,
   "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950227/earnalism/covers/front/cover_ab481468-31e0-4b96-9538-f4d4e944d771.png",
   "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950234/earnalism/covers/back/back_cover_ab481468-31e0-4b96-9538-f4d4e944d771.png",
   "coverAssets": [
@@ -32,5 +32,5 @@
     "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950234/earnalism/covers/back/back_cover_ab481468-31e0-4b96-9538-f4d4e944d771.png"
   ],
   "createdAt": "2026-07-03T20:07:49Z",
-  "updatedAt": "2026-07-03T20:07:49Z"
+  "updatedAt": "2026-08-15T23:13:35Z"
 }

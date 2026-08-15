@@ -3043,6 +3043,34 @@
       "public_release_mutated": false,
       "evidence": "internal/earnalism_intelligence/audiobook_release_conveyor_v2.md",
       "next_action": "Exercise the focused-test-passed implementation on a checksum-complete private title candidate; permit LIVE only after the production endpoint returns every required post-deploy PASS."
+    },
+    "the-science-of-getting-rich": {
+      "latest_decision": "READY_FOR_CHECKSUM_BOUND_READER_APPROVAL",
+      "decision_reason": "The narrative now ends at Chapter XVII; publisher advertisements and the terminal ornament are excluded, source provenance is reproducible, and stale synthetic synchronization is invalidated.",
+      "updated_at": "2026-08-15T23:13:35Z",
+      "language": "en",
+      "territory": "IN",
+      "reader_chapter_count": 18,
+      "publisher_advertising_removed": true,
+      "public_reader_status": "HIDDEN_PENDING_FRESH_APPROVAL",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
+      "legacy_estimated_sync_invalidated": true,
+      "remote_media_mutated": false,
+      "next_action": "Render and obtain fresh checksum-bound reader-preview approval."
+    },
+    "the-metamorphosis": {
+      "latest_decision": "BLOCKED_COPYRIGHTED_TRANSLATION_PERMISSION_REQUIRED",
+      "decision_reason": "The imported David Wyllie English translation is explicitly marked copyrighted by its authoritative source. The original Kafka text being public domain does not establish commercial rights in this translation.",
+      "updated_at": "2026-08-15T23:13:35Z",
+      "language": "en",
+      "territory": "IN",
+      "translator": "David Wyllie",
+      "public_reader_status": "HIDDEN_RIGHTS_BLOCKED",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
+      "manuscript_preserved_private": true,
+      "legacy_estimated_sync_invalidated": true,
+      "public_release_mutated": false,
+      "next_action": "Bind a verified commercially reusable English translation or written permission, then rebuild the checksum-bound reader candidate and repeat both human gates."
     }
   },
   "bengali_audio_lane_status": "D19_INDIC_PARLER_OBJECTIVE_FAIL_SOURCE_BOUND_REPLACEMENT_REQUIRED",
