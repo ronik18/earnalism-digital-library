@@ -56,7 +56,7 @@
   "source_hash": "706d537e20ed0eaeddb883abdd23d76a3fb4e68afe1221dbc04d63fb98314071",
   "content_hash": "ccefe3574393cf2346a494eadfd2d7f8caf8c62dce483ada72923232a8c7bcf6",
   "provenance_hash": "2892eb7ebd706d10de65ac92b95ca09cc9c258f591cc016148ec43253cbc46ef",
-  "rights_basis": "Anton Chekhov died 1904; first published 1902. Public domain in India and the U.S.",
+  "rights_basis": "Anton Chekhov died in 1904 and English translator Constance Garnett died in 1946; both terms exceed India's life-plus-60 rule. Project Gutenberg identifies this edition as public domain in the USA. Publication remains scoped to India.",
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
@@ -89,5 +89,6 @@
       800,
       1200
     ]
-  }
+  },
+  "translator": "Constance Garnett"
 }

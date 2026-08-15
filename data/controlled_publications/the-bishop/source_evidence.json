@@ -6,7 +6,7 @@
   "source_hash": "706d537e20ed0eaeddb883abdd23d76a3fb4e68afe1221dbc04d63fb98314071",
   "content_hash": "ccefe3574393cf2346a494eadfd2d7f8caf8c62dce483ada72923232a8c7bcf6",
   "provenance_hash": "2892eb7ebd706d10de65ac92b95ca09cc9c258f591cc016148ec43253cbc46ef",
-  "rights_basis": "Anton Chekhov died 1904; first published 1902. Public domain in India and the U.S.",
+  "rights_basis": "Anton Chekhov died in 1904 and English translator Constance Garnett died in 1946; both terms exceed India's life-plus-60 rule. Project Gutenberg identifies this edition as public domain in the USA. Publication remains scoped to India.",
   "downloaded_at": "2026-06-03T08:04:21.890588+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -16,6 +16,20 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "publication_region": "IN",
-  "verified_at": "2026-07-03T20:07:47Z",
-  "qa_status": "QA_PASSED"
+  "verified_at": "2026-08-15T21:30:20Z",
+  "qa_status": "QA_PASSED",
+  "translator_name": "Constance Garnett",
+  "translator_death_year": 1946,
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "controlled_reconciliation": {
+    "status": "PASS",
+    "reconciled_at": "2026-08-15T21:30:20Z",
+    "translator_rights_verified": true,
+    "contradictory_duplicate_approval_removed": true,
+    "backend_mirror_rebound": true,
+    "legacy_estimated_sync_invalidated": true,
+    "audio_enabled": false
+  },
+  "rights_law_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html"
 }

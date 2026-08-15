@@ -23,6 +23,7 @@ from backend.catalog_truth import (
 
 ROOT = Path(__file__).resolve().parents[2]
 SHERLOCK = ROOT / "data" / "controlled_publications" / "the-adventures-of-sherlock-holmes"
+BISHOP = ROOT / "data" / "controlled_publications" / "the-bishop"
 
 
 def test_sherlock_pilot_is_reader_ready_without_audio_or_commerce():
@@ -67,6 +68,17 @@ def test_manifest_checksum_rejects_mutation():
     mutated["content"]["chapter_count"] += 1
 
     assert "publication manifest checksum is invalid" in validate_manifest(mutated)
+
+
+def test_manifest_evaluates_translator_rights_from_source_evidence():
+    manifest = build_manifest(BISHOP, generated_at="2026-08-16T00:00:00Z")
+
+    assert manifest["rights"]["status"] == "APPROVED"
+    assert not [
+        blocker
+        for blocker in manifest["reader_release"]["blockers"]
+        if "translator" in blocker.lower()
+    ]
 
 
 def test_migration_regenerates_legacy_checksum_bundle(tmp_path):

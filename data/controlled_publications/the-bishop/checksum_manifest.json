@@ -1,11 +1,7 @@
 {
   "slug": "the-bishop",
-  "generated_at": "2026-08-15T06:54:10Z",
+  "generated_at": "2026-08-15T21:30:20Z",
   "files": [
-    {
-      "file": "approval_evidence 2.json",
-      "sha256": "943111db99f41d5645036359d7c342fd25a2e3899d74f7a353b46262bdad5a8c"
-    },
     {
       "file": "approval_evidence.json",
       "sha256": "8828c4617b1c4d22ef66821816b7c9bb190df1be95374e8f721642164ba92a3e"
@@ -16,11 +12,11 @@
     },
     {
       "file": "highlight_sync.json",
-      "sha256": "b96b309c54f54c3dff34dc889ffd2615fb90d4de1f0fc3ab3018f8f45fa7b71f"
+      "sha256": "fa7f1937db85faa4111179c4da71972695017c82628429df12987494b4176594"
     },
     {
       "file": "public_book.json",
-      "sha256": "6fe15669ba66d0afdd09d8879a1794142dee86d0cfb3de735e2c6e497f869c6b"
+      "sha256": "d252b45134c78fca83fcd9696d609e2b22f05b37663695b7b286e1693af569f0"
     },
     {
       "file": "reader_manifest.json",
@@ -28,7 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "6ccd9e051ae0a84345fd353a91d4ccffadf8f589b576390dc04a8622bf9c4e09"
+      "sha256": "b8aadd0de3fff0bd851d6f6fef54e6ff98d4d3be2dc61dd32a2e14b4f55d2a0e"
     }
   ]
 }
