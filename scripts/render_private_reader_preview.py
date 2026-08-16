@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTROLLED_ROOT = ROOT / "data" / "controlled_publications"
 FORBIDDEN_READER_FURNITURE = re.compile(
     r"Project Gutenberg|Here ends No\. Four of the Western Classics|"
-    r"Tomoye Press|Paul Elder and Company",
+    r"Tomoye Press|Paul Elder and Company|THE MILLENNIUM FULCRUM EDITION",
     re.IGNORECASE,
 )
 PICTURE_PLACEHOLDER_RE = re.compile(r"\[\s*Picture\s*:", re.IGNORECASE)
