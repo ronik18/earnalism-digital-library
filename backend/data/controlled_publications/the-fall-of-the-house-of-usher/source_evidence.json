@@ -26,6 +26,7 @@
     "repaired_at": "2026-08-15T22:01:46Z",
     "semantic_blocks": 58,
     "normalized_text_unchanged": true,
+    "normalized_words_order_match_canonical_source": true,
     "sanitized_sha256": "51f5aeca3e88367050046042ca32b6b95522c7ae93150cd95fe06988ef92a353",
     "root_backend_byte_parity": true,
     "legacy_estimated_sync_invalidated": true,

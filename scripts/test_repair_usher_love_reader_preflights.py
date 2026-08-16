@@ -26,7 +26,11 @@ def test_reflows_preserve_words_order_and_exact_boundaries() -> None:
         repaired = decoded(replacements, content_path)["content"]
         existing = MODULE.read_json(content_path)["content"]
 
-        assert MODULE.normalized(repaired) == MODULE.normalized(existing)
+        if spec.source_new_sha256:
+            assert MODULE.normalized(repaired) == MODULE.normalized(existing)
+            assert "his shirt bosom. Similar were the donations from other grinning sailors." in repaired
+        else:
+            assert MODULE.normalized(repaired) == MODULE.normalized(existing)
         assert len(re.split(r"\n\s*\n", repaired)) == spec.semantic_blocks
         assert MODULE.sha256_text(repaired) == spec.new_sha256
         assert repaired.endswith(spec.endpoint)
@@ -66,4 +70,23 @@ def test_preserves_usher_verse_and_footnote_and_love_opening_verse() -> None:
     assert "Son coeur est un luth suspendu;\nSitot qu'on le touche il resonne." in usher_text
     assert usher_text.endswith(usher.endpoint)
     assert love_text.startswith('"This out of all will remain--\nThey have lived and have tossed:')
+    assert "and thrust it into his shirt bosom. Similar were the donations from other grinning sailors." in love_text
     assert love_text.endswith(love.endpoint)
+
+
+def test_love_source_correction_is_exact_and_checksum_bound() -> None:
+    love = next(item for item in MODULE.SPECS if item.slug == "love-of-life")
+    replacements, evidence = MODULE.build_title(love, "2026-08-16T00:00:00Z")
+    raw_path = MODULE.ROOT / "content" / "books" / love.slug / "raw" / "source.txt"
+    repaired_raw = replacements[raw_path].decode("utf-8")
+
+    assert MODULE.sha256_text(repaired_raw) == love.source_new_sha256
+    assert repaired_raw.count(love.source_new_fragment) == 1
+    legacy_raw = repaired_raw.replace(love.source_new_fragment, love.source_old_fragment, 1)
+    assert MODULE.sha256_text(legacy_raw) == love.source_old_sha256
+    assert evidence["raw_source_corrected"] is True
+    assert evidence["raw_source_mutated_this_run"] is False
+    assert evidence["normalized_text_unchanged"] is False
+    assert evidence["normalized_words_order_match_canonical_source"] is True
+    assert evidence["old_source_hash"] == love.source_old_sha256
+    assert evidence["new_source_hash"] == love.source_new_sha256

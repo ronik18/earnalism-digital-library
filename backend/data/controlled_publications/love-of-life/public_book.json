@@ -44,18 +44,18 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 8161,
+      "word_count": 8172,
       "reading_minutes": 35,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:47Z",
-      "updated_at": "2026-08-15T22:01:46Z"
+      "updated_at": "2026-08-16T10:24:45Z"
     }
   ],
-  "source_hash": "44069e2bfaffc40f5d83a63069c8d136c1081b896a81edc31ce3d95e0f97bae5",
-  "content_hash": "1217f1a01d0925deb810dfd62da1683950e1d416e0d2708c17e19a4b4458ff82",
-  "provenance_hash": "96cc0897b7c4279119594c6aa4729e14f6b7276be244231ff13639e5d6aa1cb5",
+  "source_hash": "edab396a4cde4053abc9e0380d1eb5479493dc5362b8c49c4faa526619fa16a5",
+  "content_hash": "e33bedbb19f9c172f918cdf79f7a00c87c3592a914f9f7e9bbac3b5b75e689f7",
+  "provenance_hash": "d75aa813f122b26404c4fdfbf67bd8a4f8c02e15fbaf8d77e0717f8bb8b4efde",
   "rights_basis": "Jack London died 1916; first published 1905. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",
@@ -79,7 +79,7 @@
   "audiobook_voice": "",
   "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:47Z",
-  "updated_at": "2026-08-15T22:01:46Z",
+  "updated_at": "2026-08-16T10:24:45Z",
   "cover_dimensions": {
     "front": [
       800,
