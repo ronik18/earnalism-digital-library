@@ -2121,3 +2121,17 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Forbidden-furniture checks alone do not detect hard-wrapped reader corruption. Paragraph-count and words-per-block shape metrics exposed The Happy Prince and An Occurrence at Owl Creek Bridge as hundreds of print-line fragments despite otherwise valid boundaries.
 - Publisher edition banners need explicit fail-closed patterns. The private preview renderer now rejects `THE MILLENNIUM FULCRUM EDITION` before a human gate can approve it as reader content.
 - Reflow repairs must bind the immutable raw-source hash, prove normalized narrative equality after allowlisted furniture removal, rebuild root and backend packets byte-for-byte, and invalidate estimated synchronization before any preview is rendered.
+
+## Live pilot audio truth reconciliation - 2026-08-16
+
+- A successful database-owned audiobook release can leave a controlled reader pack stale: the public API and proxy may serve approved exact bytes while the nested reader manifest still says audio is disabled.
+- Reconcile that split without re-uploading media: bind the production object to the exact attempt fingerprint, manuscript hash, audio SHA-256, size, duration, human approvals, objective QA, residual accessibility decision, API 200, Range 206, and observed browser playback.
+- Keep the raw private storage URL inside controlled server artifacts; public projections and reader manifests must expose only the same-origin release-gated API route.
+- A publication manifest must represent approved audio as an independent lane. Reader approval cannot imply audio approval, and approved audio requires explicit release evidence, passing audio QA, a checksum, a fingerprint, and a mapped MP3 asset.
+
+## Live pilot audio truth reconciliation - 2026-08-16
+
+- A successful database-owned audiobook release can leave a controlled reader pack stale: the public API and proxy may serve approved exact bytes while the nested reader manifest still says audio is disabled.
+- Reconcile that split without re-uploading media: bind the production object to the exact attempt fingerprint, manuscript hash, audio SHA-256, size, duration, human approvals, objective QA, residual accessibility decision, API 200, Range 206, and observed browser playback.
+- Keep the raw private storage URL only in the database-owned conveyor; controlled file packs, public projections, and reader manifests must expose only the same-origin release-gated API route.
+- A publication manifest must represent approved audio as an independent lane. Reader approval cannot imply audio approval, and server-owned approved audio requires explicit release evidence, passing audio QA, a checksum, a fingerprint, an exact same-origin endpoint, and a verified production receipt.

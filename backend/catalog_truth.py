@@ -185,7 +185,9 @@ CONTROLLED_LIVE_BOOK_SLUGS = tuple(
     for slug in dict.fromkeys((*LEGACY_CONTROLLED_LIVE_BOOK_SLUGS, *approved_manifest_slugs()))
     if slug not in PUBLIC_CATALOG_EXCLUDED_SLUGS
 )
-LIVE_APPROVED_SLUG = CONTROLLED_LIVE_BOOK_SLUGS[0]
+# Historical compatibility name: this constant is the Dracula-specific slug,
+# not the first item in an expanding controlled-launch allowlist.
+LIVE_APPROVED_SLUG = "dracula"
 PIPELINE_CANDIDATE_SLUGS = set(
     normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("pipeline_slugs"), ("kshudhita-pashan",))
 ) - PUBLIC_CATALOG_EXCLUDED_SLUGS
@@ -660,8 +662,9 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
     if public_book.get("allowCheckout") is not False or public_book.get("allowPayment") is not False:
         issues.append("public_book.json checkout/payment flags must remain false.")
     audio_allowed = normalized in AUDIO_ENABLED_SLUGS
+    server_owned_conveyor = normalize_upper(public_book.get("audiobook_release_mode")) == "SERVER_OWNED_CONVEYOR"
     audio_approved = bool(
-        audio_allowed
+        (audio_allowed or server_owned_conveyor)
         and approval_evidence.get("audiobook_enabled") is True
         and normalize_upper(
             approval_evidence.get("audio_public_release")
@@ -679,7 +682,7 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
         or public_book.get("audiobook_enabled") is not audio_approved
     ):
         issues.append("public_book.json audio flags do not match controlled release approval.")
-    if audio_approved:
+    if audio_approved and audio_allowed:
         assets = public_book.get("audiobook_assets") if isinstance(public_book.get("audiobook_assets"), dict) else {}
         if not assets.get("mp3"):
             issues.append("public_book.json audiobook assets are missing mp3 for an audio-enabled slug.")
@@ -690,6 +693,17 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
         )
         if sync_tier not in {"AUDIO_ONLY_NO_SYNC", "NONE", "NO_SYNC"} and not assets.get("timestamps"):
             issues.append("public_book.json audiobook assets are missing timestamps for a synchronized audio slug.")
+    if server_owned_conveyor and audio_approved:
+        expected_endpoint = f"/api/reader/book/{normalized}/audiobook"
+        if normalize_text(approval_evidence.get("endpoint_url")) != expected_endpoint:
+            issues.append("server-owned audiobook approval endpoint does not match its controlled slug.")
+        if normalize_text(public_book.get("audio_sha256")).lower() != normalize_text(approval_evidence.get("audio_sha256")).lower():
+            issues.append("server-owned audiobook checksum does not match approval evidence.")
+        if normalize_text(public_book.get("candidate_fingerprint")).lower() != normalize_text(approval_evidence.get("candidate_fingerprint")).lower():
+            issues.append("server-owned audiobook fingerprint does not match approval evidence.")
+        serialized_public_book = json.dumps(public_book, sort_keys=True, ensure_ascii=False)
+        if "backblazeb2.com" in serialized_public_book:
+            issues.append("server-owned controlled publication must not contain a raw storage URL.")
     if public_book.get("approved_to_publish") is not True:
         issues.append("public_book.json approved_to_publish is not true.")
     if normalize_text(public_book.get("verification_status")).lower() not in {"approved", "verified"}:

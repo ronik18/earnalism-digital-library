@@ -1,0 +1,48 @@
+{
+  "schema_version": "earnalism.batch2_live_audio_reconciliation.v1",
+  "slug": "the-selfish-giant",
+  "candidate_fingerprint": "92a24c3442fe5ad637e72be523f52baded74d0390a256e3b5d5865bdb3f3d96e",
+  "audio_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67",
+  "audio_size_bytes": 7673229,
+  "duration_seconds": 639.34,
+  "verified_at": "2026-08-16T06:45:34Z",
+  "source_commit": "e03b40e811bd0b1f79c5794b184e02a66d89fa3a",
+  "production_api": {
+    "status": 200,
+    "reader_enabled": true,
+    "audio_enabled": true,
+    "audiobook_enabled": true,
+    "audio_url": "/api/reader/book/the-selfish-giant/audiobook",
+    "audiobook_release_gate": "APPROVED",
+    "audio_qa_status": "QA_PASSED"
+  },
+  "production_audio": {
+    "full_get_status": 200,
+    "full_get_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67",
+    "full_get_size_bytes": 7673229,
+    "range_status": 206,
+    "range_request": "bytes=0-1023",
+    "range_response_bytes": 1024,
+    "content_type": "audio/mpeg",
+    "accept_ranges": "bytes"
+  },
+  "browser": {
+    "reader_url": "https://theearnalism.com/reader/the-selfish-giant?listen=1",
+    "player_visible": true,
+    "first_narrated_page_opened": true,
+    "playback_advanced": true,
+    "elapsed_seconds_observed": 2,
+    "pause_control_visible_while_playing": true
+  },
+  "pre_reconciliation_manifest_contradiction": {
+    "nested_book_audio_enabled": false,
+    "top_level_audio_enabled": true,
+    "manifest_version": "07bf3a01e1ffcc91"
+  },
+  "reconciliation_target": {
+    "nested_book_audio_enabled": true,
+    "top_level_audio_enabled": true,
+    "root_backend_byte_parity": true,
+    "raw_storage_url_exposed_by_public_api": false
+  }
+}

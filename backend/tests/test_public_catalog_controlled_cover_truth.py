@@ -292,8 +292,12 @@ def test_controlled_reader_manifest_resolves_generic_server_owned_release(monkey
     manifest = asyncio.run(server._reader_book_manifest_doc(SLUG))
 
     assert manifest is not None
+    assert manifest["book"]["audio_enabled"] is True
+    assert manifest["book"]["audiobook_enabled"] is True
+    assert manifest["book"]["audio_url"] == f"/api/reader/book/{SLUG}/audiobook"
     assert manifest["audio"]["enabled"] is True
     assert manifest["audio"]["provider"] == "kokoro"
+    assert manifest["audio"]["voice"] == "af_heart"
     assert manifest["audio"]["assets"]["mp3"] == f"/api/reader/book/{SLUG}/audiobook"
 
 

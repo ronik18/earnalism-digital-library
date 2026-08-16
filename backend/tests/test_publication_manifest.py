@@ -5,6 +5,7 @@ import hashlib
 from pathlib import Path
 
 from backend.publication_manifest import (
+    AUDIO_APPROVED,
     AUDIO_NOT_REQUESTED,
     READER_APPROVED,
     READER_READY,
@@ -39,6 +40,41 @@ def test_sherlock_pilot_is_reader_ready_without_audio_or_commerce():
     }
     assert manifest["commerce_release"]["status"] == "NOT_REQUESTED"
     assert validate_manifest(manifest) == []
+
+
+def test_checksum_bound_approved_audio_is_a_separate_exposed_lane():
+    manifest = build_manifest(
+        ROOT / "data" / "controlled_publications" / "the-selfish-giant",
+        publish_approved=True,
+        generated_at="2026-08-16T06:45:34Z",
+    )
+
+    assert manifest["reader_release"]["status"] == READER_APPROVED
+    assert manifest["audio_release"] == {
+        "status": AUDIO_APPROVED,
+        "exposed": True,
+        "required_for_reader_release": False,
+        "qa_status": "QA_PASSED",
+        "audio_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67",
+        "candidate_fingerprint": "92a24c3442fe5ad637e72be523f52baded74d0390a256e3b5d5865bdb3f3d96e",
+        "delivery_mode": "SERVER_OWNED_CONVEYOR",
+        "public_endpoint": "/api/reader/book/the-selfish-giant/audiobook",
+        "discovery_exposed": False,
+        "blockers": [],
+    }
+    assert validate_manifest(manifest) == []
+
+
+def test_server_owned_audio_manifest_fails_closed_for_cross_title_endpoint():
+    manifest = build_manifest(
+        ROOT / "data" / "controlled_publications" / "the-selfish-giant",
+        publish_approved=True,
+        generated_at="2026-08-16T06:45:34Z",
+    )
+    manifest["audio_release"]["public_endpoint"] = "/api/reader/book/a-white-heron/audiobook"
+    manifest["manifest_sha256"] = canonical_sha256(manifest)
+
+    assert "server-owned audio release requires its same-origin public endpoint" in validate_manifest(manifest)
 
 
 def test_manifest_migration_is_deterministic_for_same_inputs():

@@ -2783,7 +2783,14 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
     if package_manifest or _book_has_audiobook_packages(book):
         assets["manifest"] = f"/api/reader/book/{slug}/audiobook/manifest"
     nested = _book_audiobook_doc(book)
+    conveyor = book.get("audiobook_release_conveyor") if isinstance(book.get("audiobook_release_conveyor"), dict) else {}
     provider = _book_audiobook_provider(book)
+    voice = str(
+        book.get("audiobook_voice")
+        or conveyor.get("voice")
+        or nested.get("voice")
+        or ""
+    ).strip()
     audio_slug = slugify(book.get("audio_asset_slug") or slug, fallback=slug)
     release_gate = "APPROVED"
     qa_status = audio_release_qa_status({**book, "slug": slug})
@@ -2806,7 +2813,7 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "enabled": enabled,
         "audio_slug": audio_slug,
         "provider": provider,
-        "voice": book.get("audiobook_voice", ""),
+        "voice": voice,
         "assets": assets,
         "audiobook": nested,
         "release_gate": release_gate,
@@ -2822,7 +2829,7 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "enabled": enabled,
         "asset_slug": audio_slug,
         "provider": provider,
-        "voice": book.get("audiobook_voice", ""),
+        "voice": voice,
         "assets": assets,
         "url": _reader_audio_asset_url(book, slug, "mp3", _book_audiobook_url(book)),
         "size": int(nested.get("size", 0) or 0),
@@ -2892,7 +2899,8 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
         )
         audio_source = _reader_audio_truth_doc(release_doc or doc, slug) or {}
     audio = _reader_manifest_audio(audio_source, slug)
-    book_public = public_book_projection(_strip_all_chapter_content(doc)) or {}
+    projection_source = audio_source if not admin_preview and audio.get("enabled") is True else doc
+    book_public = public_book_projection(_strip_all_chapter_content(projection_source)) or {}
     if not admin_preview and not _public_projection_is_live(book_public):
         return None
     book_public["chapters"] = chapters
