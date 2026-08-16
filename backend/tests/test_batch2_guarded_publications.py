@@ -24,7 +24,15 @@ class ConveyorBooks:
         self.release = release
 
     async def find_one(self, query, _projection=None):
-        return self.release if query.get("slug") == self.slug else None
+        if query.get("slug") != self.slug:
+            return None
+        if not isinstance(_projection, dict):
+            return dict(self.release)
+        return {
+            key: value
+            for key, value in self.release.items()
+            if _projection.get(key) == 1
+        }
 
 
 async def no_cache(*_args, **_kwargs):

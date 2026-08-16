@@ -8322,6 +8322,7 @@ _READER_AUDIO_BOOK_PROJECTION = {
     "audiobook_assets": 1,
     "audiobook_release_conveyor": 1,
     "audiobook_provider": 1,
+    "audio_enabled": 1,
     "audiobook_enabled": 1,
     "generate_audiobook": 1,
     "rights_metadata": 1,
