@@ -40,6 +40,11 @@ class RepairSpec:
     translator_name: str = ""
     translator_death_year: int | None = None
     rights_basis: str = ""
+    legacy_sha256s: tuple[str, ...] = ()
+    source_old_sha256: str = ""
+    source_new_sha256: str = ""
+    source_old_fragment: str = ""
+    source_new_fragment: str = ""
 
 
 SPECS = (
@@ -158,6 +163,24 @@ def build_title(spec: RepairSpec, requested_at: str) -> tuple[dict[Path, bytes],
     )
 
     raw = raw_path.read_text(encoding="utf-8").replace("\r\n", "\n").rstrip()
+    original_raw = raw
+    raw_corrected = False
+    if spec.source_new_sha256:
+        raw_digest = sha256_text(raw)
+        if raw_digest == spec.source_old_sha256:
+            if not spec.source_old_fragment or raw.count(spec.source_old_fragment) != 1:
+                raise ValueError(f"{spec.slug}: canonical source repair anchor changed")
+            raw = raw.replace(spec.source_old_fragment, spec.source_new_fragment, 1)
+            raw_corrected = True
+        elif raw_digest != spec.source_new_sha256:
+            raise ValueError(f"{spec.slug}: unexpected raw-source checksum")
+        if sha256_text(raw) != spec.source_new_sha256:
+            raise ValueError(f"{spec.slug}: repaired raw-source checksum changed")
+        correction = source.get("source_correction")
+        if raw_corrected:
+            repaired_at = requested_at
+        elif isinstance(correction, dict) and correction.get("repaired_at"):
+            repaired_at = str(correction["repaired_at"])
     text = semantic_reflow(raw)
     blocks = re.split(r"\n\s*\n", text)
     if len(blocks) != spec.semantic_blocks:
@@ -172,12 +195,18 @@ def build_title(spec: RepairSpec, requested_at: str) -> tuple[dict[Path, bytes],
     existing = str(content_chapter.get("content") or "")
     if existing != str(controlled_chapter.get("content") or ""):
         raise ValueError(f"{spec.slug}: canonical and controlled chapters diverged")
-    if sha256_text(existing) not in {spec.old_sha256, spec.new_sha256}:
+    if sha256_text(existing) not in {spec.old_sha256, spec.new_sha256, *spec.legacy_sha256s}:
         raise ValueError(f"{spec.slug}: unexpected existing chapter checksum")
-    if normalized(text) != normalized(existing):
-        raise ValueError(f"{spec.slug}: paragraph repair changed words or order")
+    accepted_normalized = {normalized(text)}
+    if spec.source_new_sha256:
+        accepted_normalized.add(normalized(semantic_reflow(original_raw)))
+    if normalized(existing) not in accepted_normalized:
+        raise ValueError(f"{spec.slug}: repair changed words beyond the checksum-bound source correction")
     source_hash = sha256_text(raw)
-    if source_hash != content_chapter.get("sourceSha256"):
+    accepted_source_hashes = {source_hash}
+    if spec.source_old_sha256:
+        accepted_source_hashes.add(spec.source_old_sha256)
+    if content_chapter.get("sourceSha256") not in accepted_source_hashes:
         raise ValueError(f"{spec.slug}: immutable raw-source checksum changed")
 
     words = len(WORD_RE.findall(text))
@@ -187,6 +216,7 @@ def build_title(spec: RepairSpec, requested_at: str) -> tuple[dict[Path, bytes],
         {
             "content": text,
             "sanitizedSha256": spec.new_sha256,
+            "sourceSha256": source_hash,
             "wordCountApprox": words,
             "characterCount": len(text),
             "readingTimeMinutesApprox": minutes,
@@ -198,6 +228,7 @@ def build_title(spec: RepairSpec, requested_at: str) -> tuple[dict[Path, bytes],
             "content": text,
             "content_hash": spec.new_sha256,
             "sanitizedSha256": spec.new_sha256,
+            "sourceSha256": source_hash,
             "word_count": words,
             "reading_minutes": minutes,
             "updated_at": repaired_at,
@@ -247,7 +278,8 @@ def build_title(spec: RepairSpec, requested_at: str) -> tuple[dict[Path, bytes],
                 "status": "PASS",
                 "repaired_at": repaired_at,
                 "semantic_blocks": spec.semantic_blocks,
-                "normalized_text_unchanged": True,
+                "normalized_text_unchanged": not bool(spec.source_new_sha256),
+                "normalized_words_order_match_canonical_source": True,
                 "sanitized_sha256": spec.new_sha256,
                 "root_backend_byte_parity": True,
                 "legacy_estimated_sync_invalidated": True,
@@ -255,6 +287,18 @@ def build_title(spec: RepairSpec, requested_at: str) -> tuple[dict[Path, bytes],
             },
         }
     )
+    if spec.source_new_sha256:
+        source["source_correction"] = {
+            "status": "PASS",
+            "repaired_at": repaired_at,
+            "old_source_hash": spec.source_old_sha256,
+            "new_source_hash": source_hash,
+            "old_sanitized_sha256": spec.old_sha256,
+            "new_sanitized_sha256": spec.new_sha256,
+            "checksum_bound_fragment_replacement": True,
+            "words_added": len(WORD_RE.findall(spec.source_new_fragment))
+            - len(WORD_RE.findall(spec.source_old_fragment)),
+        }
     if spec.translator_name:
         source.update(
             {
@@ -334,6 +378,8 @@ def build_title(spec: RepairSpec, requested_at: str) -> tuple[dict[Path, bytes],
         content_dir / "book.json": json_bytes(book),
         content_dir / "source-rights.md": rights_note(spec, repaired_at),
     }
+    if spec.source_new_sha256:
+        replacements[raw_path] = raw.encode("utf-8")
     for publication_dir in (controlled_dir, backend_dir):
         for relative, payload in controlled_files.items():
             replacements[publication_dir / relative] = payload
@@ -342,14 +388,19 @@ def build_title(spec: RepairSpec, requested_at: str) -> tuple[dict[Path, bytes],
     evidence = {
         "slug": spec.slug,
         "repaired_at": repaired_at,
-        "raw_source_immutable": True,
+        "raw_source_immutable": not bool(spec.source_new_sha256),
+        "raw_source_corrected": bool(spec.source_new_sha256),
+        "raw_source_mutated_this_run": raw_corrected,
+        "old_source_hash": spec.source_old_sha256 or source_hash,
+        "new_source_hash": source_hash,
         "old_sanitized_sha256": spec.old_sha256,
         "new_sanitized_sha256": spec.new_sha256,
         "source_hash": source_hash,
         "content_hash": aggregate_content_hash,
         "provenance_hash": provenance_hash,
         "semantic_blocks": spec.semantic_blocks,
-        "normalized_text_unchanged": True,
+        "normalized_text_unchanged": not bool(spec.source_new_sha256),
+        "normalized_words_order_match_canonical_source": True,
         "word_count": words,
         "reading_minutes": minutes,
         "translator_rights_bound": bool(spec.translator_name),

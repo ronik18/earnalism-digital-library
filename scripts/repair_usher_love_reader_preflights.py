@@ -35,10 +35,18 @@ SPECS = (
     RepairSpec(
         slug="love-of-life",
         chapter_name="001-love-of-life.json",
-        old_sha256="f4943599581e59370ec58f6b0fef2ffc5088e98e327b957c9a1870c8e7a257c7",
-        new_sha256="7ce5b5add01929c47826b8bdedb9230875acc6f41b035451357ffa41aac0ce9f",
+        old_sha256="7ce5b5add01929c47826b8bdedb9230875acc6f41b035451357ffa41aac0ce9f",
+        new_sha256="2267c4f04f8663cce8e90a2c0569eb63abc9d0eb820f811b7b5a37df3b952123",
         semantic_blocks=94,
         endpoint="San Francisco Bay.",
+        legacy_sha256s=("f4943599581e59370ec58f6b0fef2ffc5088e98e327b957c9a1870c8e7a257c7",),
+        source_old_sha256="44069e2bfaffc40f5d83a63069c8d136c1081b896a81edc31ce3d95e0f97bae5",
+        source_new_sha256="edab396a4cde4053abc9e0380d1eb5479493dc5362b8c49c4faa526619fa16a5",
+        source_old_fragment="and thrust it into\n\nThe scientific men were discreet.",
+        source_new_fragment=(
+            "and thrust it into\nhis shirt bosom. Similar were the donations from other grinning\n"
+            "sailors.\n\nThe scientific men were discreet."
+        ),
     ),
 )
 
