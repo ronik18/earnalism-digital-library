@@ -3166,6 +3166,18 @@
       "voice": "hf_alpha",
       "production_audio_verified": true,
       "next_action": "Keep the exact bytes live and monitor API, Range, checksum, cache, and browser playback; do not regenerate or replace without a new checksum-bound two-gate attempt."
+    },
+    "the-enchanted-april": {
+      "latest_decision": "READER_REPAIRED_OWNER_APPROVAL_PENDING",
+      "decision_reason": "Exact source, India rights, semantic structure, cover provenance, checksums, and mirrors pass.",
+      "updated_at": "2026-08-16T00:00:00Z",
+      "language": "en",
+      "territory": "IN",
+      "public_reader_status": "PRIVATE_READER_APPROVAL_REQUIRED",
+      "public_audio_status": "AUDIO_HIDDEN_NOT_REQUESTED",
+      "source_sha256": "d2d5a31f295361fb742f44729d3de6082cd7bff742a0484cd178731d66ef8370",
+      "content_sha256": "3539ad44486bb347c096d9905edc019fada09b3d58f3b1dbfbf375da7a892627",
+      "next_action": "Run private preview prechecks and request fresh checksum-bound owner approval."
     }
   },
   "bengali_audio_lane_status": "D19_INDIC_PARLER_OBJECTIVE_FAIL_SOURCE_BOUND_REPLACEMENT_REQUIRED",
