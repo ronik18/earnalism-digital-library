@@ -2960,13 +2960,13 @@
       "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
     },
     "the-open-boat": {
-      "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
-      "decision_reason": "The standalone package incorrectly continued into later stories from the source collection, carried a contradictory audio-enabled approval duplicate, and had stale backend audio. The repair ends at The Open Boat's exact endpoint, preserves subtitle, sections, and verse, removes the duplicate, invalidates sync, and reconciles a byte-identical audio-hidden backend mirror.",
-      "updated_at": "2026-08-15T22:31:13Z",
+      "latest_decision": "SOURCE_OMISSION_REPAIRED_PENDING_FRESH_OWNER_PREVIEW_GATE",
+      "decision_reason": "A post-preview parity audit found one malformed sentence missing the eleven source words 'warmth which this clumsy cork contrivance could donate, and he seemed'. The exact official Gutenberg 45524 text restores only that phrase; all controlled hashes and the audio-hidden backend mirror are rebound, so the older reader approval is stale.",
+      "updated_at": "2026-08-16T12:46:30Z",
       "language": "en",
       "territory": "IN",
-      "word_count": 9329,
-      "reader_sanitized_sha256": "af681590fc598cd9b03e41bd4c73b4761d3e516c86649d320a446f3aa0913799",
+      "word_count": 9340,
+      "reader_sanitized_sha256": "9405254f452956ccd89e6a084114190b5bb5c11b33f917dd2be5501e3119135e",
       "semantic_blocks": 248,
       "duplicate_approval_removed": true,
       "stale_backend_audio_removed": true,
@@ -2975,7 +2975,9 @@
       "root_backend_byte_parity": true,
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
-      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+      "official_source_download_sha256": "0ebacd153c0ed8e37227d5a41e01da7cee5723ed50b29a15da9e824161793840",
+      "restored_source_words": "warmth which this clumsy cork contrivance could donate, and he seemed",
+      "next_action": "Validate and merge the focused source repair, render a fresh checksum-bound private preview, and require a new owner reader approval before pilot synthesis."
     },
     "the-happy-prince": {
       "latest_decision": "READER_BOUNDARY_AND_PARAGRAPH_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",

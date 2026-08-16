@@ -40,11 +40,11 @@ SPECS = (
         slug="the-open-boat",
         chapter_name="001-the-open-boat.json",
         old_sha256="69426e1ecf9a3d1c173bfa2e0b4a53933c8e23bb705138c61ea4828b14b95c25",
-        new_sha256="af681590fc598cd9b03e41bd4c73b4761d3e516c86649d320a446f3aa0913799",
+        new_sha256="9405254f452956ccd89e6a084114190b5bb5c11b33f917dd2be5501e3119135e",
         semantic_blocks=248,
         start="A Tale intended to be after the Fact.",
         endpoint="and they felt that they could then be interpreters.",
-        expected_words=9329,
+        expected_words=9340,
     ),
 )
 

@@ -58,6 +58,11 @@ def test_open_boat_preserves_subtitle_sections_and_verse_only() -> None:
     assert "\n\nI\n\nNone of them knew the colour of the sky." in text
     assert text.endswith(spec.endpoint)
     assert "A MAN AND SOME OTHERS" not in text
+    assert (
+        "warmth which this clumsy cork contrivance could donate, and he seemed"
+        in text
+    )
+    assert "get even the almost stove-like" not in text
 
 
 def test_packages_are_audio_hidden_complete_and_mirrored() -> None:
