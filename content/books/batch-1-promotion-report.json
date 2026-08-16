@@ -4,7 +4,6 @@
   "totalBooksConfigured": 10,
   "promotedLiveSlugs": [
     "frankenstein",
-    "jekyll-and-hyde",
     "carmilla",
     "hound-of-the-baskervilles",
     "picture-of-dorian-gray",
@@ -14,11 +13,12 @@
     "pather-panchali",
     "eyesore-chokher-bali"
   ],
-  "heldSlugs": [],
+  "heldSlugs": [
+    "jekyll-and-hyde"
+  ],
   "approvedReleaseAllowlist": [
     "dracula",
     "frankenstein",
-    "jekyll-and-hyde",
     "carmilla",
     "hound-of-the-baskervilles",
     "picture-of-dorian-gray",
@@ -53,12 +53,14 @@
       "language": "en",
       "score": 100,
       "status": "PASS_100",
-      "chapterCount": 11,
-      "wordCountApprox": 25606,
-      "routeStatus": "READY",
+      "chapterCount": 10,
+      "wordCountApprox": 25609,
+      "routeStatus": "HIDDEN_PENDING_FRESH_APPROVAL",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
-      "decision": "PROMOTED_LIVE_READER_ONLY"
+      "blockers": [
+        "FRESH_CHECKSUM_BOUND_READER_APPROVAL_REQUIRED"
+      ],
+      "decision": "REPAIRED_READER_PENDING_FRESH_APPROVAL"
     },
     {
       "slug": "carmilla",

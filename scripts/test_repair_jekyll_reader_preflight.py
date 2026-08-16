@@ -84,6 +84,31 @@ def test_duplicate_slug_is_inert_and_contains_no_audio_urls() -> None:
     assert evidence["duplicate_slug_inert"] is True
 
 
+def test_repaired_reader_is_removed_from_release_truth_until_fresh_approval() -> None:
+    replacements, _, evidence = build()
+    for launch_path in (
+        MODULE.ROOT / "data/controlled_launch.json",
+        MODULE.ROOT / "backend/data/controlled_launch.json",
+    ):
+        launch = decoded(replacements, launch_path)
+        assert MODULE.SLUG not in launch["live_approved_slugs"]
+        assert MODULE.SLUG not in launch["audio_enabled_slugs"]
+
+    promotion = decoded(
+        replacements,
+        MODULE.ROOT / "content/books/batch-1-promotion-report.json",
+    )
+    row = next(item for item in promotion["books"] if item["slug"] == MODULE.SLUG)
+    assert MODULE.SLUG not in promotion["promotedLiveSlugs"]
+    assert MODULE.SLUG not in promotion["approvedReleaseAllowlist"]
+    assert promotion["heldSlugs"].count(MODULE.SLUG) == 1
+    assert row["decision"] == "REPAIRED_READER_PENDING_FRESH_APPROVAL"
+    assert row["chapterCount"] == 10
+    assert row["blockers"] == ["FRESH_CHECKSUM_BOUND_READER_APPROVAL_REQUIRED"]
+    assert evidence["release_allowlists_cleared"] is True
+    assert evidence["promotion_report_rebound"] is True
+
+
 def test_ledger_and_history_are_idempotent() -> None:
     replacements, _, _ = build()
     history = decoded(

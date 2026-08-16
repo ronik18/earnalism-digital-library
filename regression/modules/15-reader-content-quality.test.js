@@ -36,6 +36,7 @@ const REQUIRED_LIVE_SLUGS = [
 ];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
+const PENDING_FRESH_READER_APPROVAL_SLUGS = new Set(["jekyll-and-hyde"]);
 
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, relativePath), "utf8"));
@@ -101,9 +102,13 @@ describe("Reader content quality batch 1", () => {
     }
   });
 
-  test("promoted books remain reader-only with no payment, checkout, homepage, or audio exposure", () => {
+  test("batch reader release truth preserves promoted titles and hides repaired titles pending approval", () => {
     for (const slug of BATCH_SLUGS) {
-      expect(launch.live_approved_slugs).toContain(slug);
+      if (PENDING_FRESH_READER_APPROVAL_SLUGS.has(slug)) {
+        expect(launch.live_approved_slugs).not.toContain(slug);
+      } else {
+        expect(launch.live_approved_slugs).toContain(slug);
+      }
     }
     expect(launch.live_approved_slugs).toContain("dracula");
     expect(new Set(launch.live_approved_slugs).size).toBe(launch.live_approved_slugs.length);
@@ -119,6 +124,28 @@ describe("Reader content quality batch 1", () => {
       const contentBook = readJson(`content/books/${slug}/book.json`);
       const publicBook = readJson(`data/controlled_publications/${slug}/public_book.json`);
       const decision = promotion.books.find((item) => item.slug === slug);
+      if (PENDING_FRESH_READER_APPROVAL_SLUGS.has(slug)) {
+        expect(decision.decision).toBe("REPAIRED_READER_PENDING_FRESH_APPROVAL");
+        expect(decision.blockers).toEqual(["FRESH_CHECKSUM_BOUND_READER_APPROVAL_REQUIRED"]);
+        expect(promotion.heldSlugs).toContain(slug);
+        expect(promotion.promotedLiveSlugs).not.toContain(slug);
+        expect(promotion.approvedReleaseAllowlist).not.toContain(slug);
+        for (const book of [contentBook, publicBook]) {
+          expect(book.readerStatus).toBe("ready_for_approval");
+          expect(book.publicationStatus).toBe("draft");
+          expect(book.isPublic).toBe(false);
+          expect(book.isLive).toBe(false);
+          expect(book.showInPublicLibrary).toBe(false);
+          expect(book.showInHomepage).toBe(false);
+          expect(book.allowPublicReading).toBe(false);
+          expect(book.allowCheckout).toBe(false);
+          expect(book.allowPayment).toBe(false);
+          expect(book.is_published).toBe(false);
+        }
+        expect(publicBook.publication_status).toBe("READY_FOR_APPROVAL");
+        for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
+        continue;
+      }
       expect(decision.decision).toBe("PROMOTED_LIVE_READER_ONLY");
       for (const book of [contentBook, publicBook]) {
         expect(["reader_ready", "ready_for_editorial_review"]).toContain(book.readerStatus);

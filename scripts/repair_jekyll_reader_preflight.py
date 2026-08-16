@@ -506,6 +506,47 @@ def build(requested_at: str) -> tuple[dict[Path, bytes], set[Path], dict[str, An
     alias_replacements, alias_stale = build_alias_tombstone(repaired_at)
     replacements.update(alias_replacements)
 
+    for launch_path in (
+        ROOT / "data/controlled_launch.json",
+        ROOT / "backend/data/controlled_launch.json",
+    ):
+        launch = copy.deepcopy(read_json(launch_path))
+        launch["live_approved_slugs"] = [
+            slug for slug in launch.get("live_approved_slugs", []) if slug != SLUG
+        ]
+        launch["audio_enabled_slugs"] = [
+            slug for slug in launch.get("audio_enabled_slugs", []) if slug != SLUG
+        ]
+        replacements[launch_path] = json_bytes(launch)
+
+    promotion_path = ROOT / "content/books/batch-1-promotion-report.json"
+    promotion = copy.deepcopy(read_json(promotion_path))
+    promotion["promotedLiveSlugs"] = [
+        slug for slug in promotion.get("promotedLiveSlugs", []) if slug != SLUG
+    ]
+    promotion["approvedReleaseAllowlist"] = [
+        slug for slug in promotion.get("approvedReleaseAllowlist", []) if slug != SLUG
+    ]
+    held = [slug for slug in promotion.get("heldSlugs", []) if slug != SLUG]
+    held.append(SLUG)
+    promotion["heldSlugs"] = held
+    for row in promotion.get("books", []):
+        if row.get("slug") != SLUG:
+            continue
+        row.update(
+            {
+                "chapterCount": 10,
+                "wordCountApprox": total_words,
+                "routeStatus": "HIDDEN_PENDING_FRESH_APPROVAL",
+                "blockers": ["FRESH_CHECKSUM_BOUND_READER_APPROVAL_REQUIRED"],
+                "decision": "REPAIRED_READER_PENDING_FRESH_APPROVAL",
+            }
+        )
+        break
+    else:
+        raise ValueError("Jekyll batch promotion row is missing")
+    replacements[promotion_path] = json_bytes(promotion)
+
     history_path = ROOT / "internal/earnalism_intelligence/title_decision_history.json"
     history = copy.deepcopy(read_json(history_path))
     titles = history.setdefault("titles", {})
@@ -604,6 +645,8 @@ def build(requested_at: str) -> tuple[dict[Path, bytes], set[Path], dict[str, An
         "legacy_synthetic_audio_rejected": True,
         "audio_enabled": False,
         "reader_release_status": "READY_FOR_APPROVAL",
+        "release_allowlists_cleared": True,
+        "promotion_report_rebound": True,
         "remote_media_mutated": False,
     }
     return replacements, stale_paths, evidence
