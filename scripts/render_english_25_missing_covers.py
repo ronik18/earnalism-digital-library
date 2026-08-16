@@ -63,6 +63,7 @@ THEMES = {
     "the-canterville-ghost": Theme("English manor", (30, 36, 55), (71, 41, 61), (215, 182, 112), "manor"),
     "the-man-who-would-be-king": Theme("mountain crown", (30, 45, 50), (78, 55, 36), (225, 184, 100), "crown"),
     "the-fall-of-the-house-of-usher": Theme("house and tarn", (24, 31, 41), (61, 31, 39), (202, 164, 105), "usher"),
+    "picture-of-dorian-gray": Theme("portrait and gilt frame", (29, 35, 44), (65, 33, 47), (218, 180, 105), "portrait"),
 }
 
 
@@ -263,6 +264,13 @@ def draw_symbol(image: Image.Image, theme: Theme) -> None:
         draw.line((400, 350, 405, 810), fill=gold, width=3)
         draw.line((190, 760, 610, 760), fill=gold, width=3)
         draw.arc((170, 710, 630, 875), 195, 345, fill=gold, width=3)
+    elif symbol == "portrait":
+        draw.rounded_rectangle((235, 360, 565, 790), radius=12, outline=gold, width=7)
+        draw.rounded_rectangle((260, 385, 540, 765), radius=8, outline=(*theme.accent, 125), width=3)
+        draw.ellipse((330, 445, 470, 595), outline=gold, width=4)
+        draw.arc((300, 565, 500, 735), 195, 345, fill=gold, width=5)
+        draw.line((285, 405, 515, 745), fill=(*theme.accent, 80), width=2)
+        draw.line((515, 405, 285, 745), fill=(*theme.accent, 80), width=2)
 
 
 def fit_title(draw: ImageDraw.ImageDraw, title: str, max_width: int) -> tuple[list[str], ImageFont.FreeTypeFont]:
@@ -299,7 +307,6 @@ def render_front(public: dict[str, Any], theme: Theme) -> Image.Image:
         draw.text((400, top + index * line_height), line, anchor="mm", font=title_font, fill=(250, 244, 226, 255))
     author = str(public.get("author") or "").upper()
     draw.text((400, 1060), author, anchor="mm", font=font(24), fill=(*theme.accent, 245))
-    draw.text((400, 1102), theme.name.upper(), anchor="mm", font=font(14, italic=True), fill=(237, 228, 207, 210))
     return image
 
 
@@ -383,13 +390,25 @@ def main() -> int:
                 "back_bytes": back_path.stat().st_size if back_path.is_file() else 0,
             }
         )
+    merged_rows = rows
+    if args.write and AUDIT_PATH.is_file():
+        existing = read_json(AUDIT_PATH)
+        by_slug = {
+            str(row.get("slug")): row
+            for row in existing.get("rows", [])
+            if isinstance(row, dict) and row.get("slug")
+        }
+        by_slug.update({row["slug"]: row for row in rows})
+        merged_rows = [by_slug[slug] for slug in sorted(by_slug)]
     report = {
         "schema": "earnalism-generated-cover-audit-v1",
         "status": "GENERATED_AWAITING_VISUAL_SMOKE" if args.write else "DRY_RUN",
-        "cover_count": len(rows),
+        "cover_count": len(merged_rows),
         "performance_budget_bytes": 180 * 1024,
         "no_unlicensed_external_art": True,
-        "rows": rows,
+        "visual_smoke": "PENDING" if args.write else "NOT_RUN",
+        "visual_smoke_scope": "New or changed covers require visual review; prior checksum-bound rows are preserved.",
+        "rows": merged_rows,
     }
     if args.write:
         AUDIT_PATH.parent.mkdir(parents=True, exist_ok=True)

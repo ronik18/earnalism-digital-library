@@ -1,0 +1,284 @@
+{
+  "schema": "earnalism.reader_alias_retirement.v1",
+  "alias": "the-picture-of-dorian-gray",
+  "canonical_slug": "picture-of-dorian-gray",
+  "retired_at": "2026-08-16T00:00:00Z",
+  "retired_from_git_commit": "e78d0ae77808822ccbe9d6d9d65f3d0cbd29384c",
+  "recovery_command": "git show e78d0ae77808822ccbe9d6d9d65f3d0cbd29384c:<path-from-retired-files>",
+  "retirement_reason": "Malformed duplicate omitted the Preface and absorbed narrative into chapter titles.",
+  "alias_proof": {
+    "method": "casefolded Unicode word-token ordered-subsequence proof",
+    "canonical_token_count": 79657,
+    "alias_narrative_token_count": 79249,
+    "matched_alias_token_count": 79249,
+    "alias_is_exact_ordered_subsequence": true,
+    "alias_contributes_legitimate_narrative_absent_from_canonical": false,
+    "display_only_the_end_removed_before_comparison": true,
+    "canonical_tokens_omitted_by_alias": 408,
+    "omitted_runs": [
+      {
+        "token_count": 382,
+        "text": "artist is the creator of beautiful things to reveal art and conceal the artist is art’s aim the critic is he who can translate into another manner or a new material his impression of beautiful things the highest as the lowest form of criticism is a mode of autobiography those who find ugly meanings in beautiful things are corrupt without being charming this is a fault those who find beautiful meanings in beautiful things are the cultivated for these there is hope they are the elect to whom beautiful things mean only beauty there is no such thing as a moral or an immoral book books are well written or badly written that is all the nineteenth century dislike of realism is the rage of caliban seeing his own face in a glass the nineteenth century dislike of romanticism is the rage of caliban not seeing his own face in a glass the moral life of man forms part of the subject matter of the artist but the morality of art consists in the perfect use of an imperfect medium no artist desires to prove anything even things that are true can be proved no artist has ethical sympathies an ethical sympathy in an artist is an unpardonable mannerism of style no artist is ever morbid the artist can express everything thought and language are to the artist instruments of an art vice and virtue are to the artist materials for an art from the point of view of form the type of all the arts is the art of the musician from the point of view of feeling the actor’s craft is the type all art is at once surface and symbol those who go beneath the surface do so at their peril those who read the symbol do so at their peril it is the spectator and not life that art really mirrors diversity of opinion about a work of art shows that the work is new complex and vital when critics disagree the artist is in accord with himself we can forgive a man for making a useful thing as long as he does not admire it the only excuse for making a useless thing is that one admires it intensely all art is quite useless oscar wilde the"
+      },
+      {
+        "token_count": 12,
+        "text": "mother mother i am so happy whispered the girl burying her face"
+      },
+      {
+        "token_count": 12,
+        "text": "i suppose you have heard the news basil said lord henry that"
+      },
+      {
+        "token_count": 2,
+        "text": "the end"
+      }
+    ],
+    "retired_file_count": 48,
+    "retired_files": [
+      {
+        "path": "content/books/the-picture-of-dorian-gray/book.json",
+        "sha256": "e1700be9aac641f86e468d16197ab2edbefbc579b74fbea25737e7a710a0edd6",
+        "size": 1739
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/001-chapter-i.json",
+        "sha256": "a501b32313d425d1d6335cc2444f8e948f8b8b801316353184383e98a65030b3",
+        "size": 28883
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/002-chapter-ii.json",
+        "sha256": "0ce8bdefa11d0bad4fc80c070a81178c5e140220380aff4997b7ce11f31a1b6a",
+        "size": 32801
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/003-chapter-iii.json",
+        "sha256": "67fa660cf9f564b26ba7e2367c722c2fe990c8a2fc3cdd879072bdee9a4edf85",
+        "size": 26844
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/004-chapter-iv.json",
+        "sha256": "f90eb453c6ee6b14687ef7210a6db8d5d97ec419087e8a89f840e8bcd61c62b6",
+        "size": 32503
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/005-chapter-v-mother-mother-i-am-so-happy-whispered-the-girl-burying-her-face.json",
+        "sha256": "d263fe98ed50c7f09494b3110595c549842c8cee3b26e9c2dde42d1d6db2a59c",
+        "size": 25556
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/006-chapter-vi-i-suppose-you-have-heard-the-news-basil-said-lord-henry-that.json",
+        "sha256": "266f59446b6dd66c8bb5b59a8cae2846b308de5372a3846a63a022927208ce52",
+        "size": 17029
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/007-chapter-vii.json",
+        "sha256": "530dc892de5d6f5686e9c09b92b34dd39aa245afff85a8f5ec787b250df00e18",
+        "size": 25768
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/008-chapter-viii.json",
+        "sha256": "fd8cbcad774d5033f84c72e5acf91d8ff6422c61f4cb314084af2ad44c7cc349",
+        "size": 30512
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/009-chapter-ix.json",
+        "sha256": "3ba5f6145b88668886b47e8f91a8ff0f5efe6cf05d9d3a9d584989c5829a5b76",
+        "size": 22358
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/010-chapter-x.json",
+        "sha256": "5a1379319a0432a62a97cf96ba574066250ca27e9c3edda86a56e462d818dd17",
+        "size": 18971
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/011-chapter-xi.json",
+        "sha256": "0958355602ad7915b10520ba19d9d087d60cca5146ff44c2cf25a4ffc43a22c2",
+        "size": 44261
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/012-chapter-xii.json",
+        "sha256": "d7715ffe910c4cec757892b552f3e0a4e10dc0b14363e577fe60d5dd2fdefa54",
+        "size": 15851
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/013-chapter-xiii.json",
+        "sha256": "6c5ec2ca4839d1d0d21b0bd84979f9d87e83ef53d1d5863ff283d313dfa3e684",
+        "size": 14675
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/014-chapter-xiv.json",
+        "sha256": "b140f24af42b17e8175f2b80ff30bd5ee3094c23ac6cde4e3a85b82e44c1b66d",
+        "size": 26389
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/015-chapter-xv.json",
+        "sha256": "fc734b42af28ec2212b18743b268bb2817ab58fc2ec0aab9a67ed45c2d4d0654",
+        "size": 19115
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/016-chapter-xvi.json",
+        "sha256": "de3a7b8411a29e7df4fc4ef1d1664660db854405c245e7528c1fce02817f0cd0",
+        "size": 18325
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/017-chapter-xvii.json",
+        "sha256": "5e273ad3b5278a5598a6abc34e975208a2b91babff87637843f29cfd8bf0fded",
+        "size": 11589
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/018-chapter-xviii.json",
+        "sha256": "cd779b5abf535fb096b51efd093dbb2cd292fa834fe6ebaab3a6ea9bba22d67f",
+        "size": 19444
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/019-chapter-xix.json",
+        "sha256": "e682133ae51835b6352f1fd81d9c704a542b7292818e7f1e5864ca449c55ffb4",
+        "size": 20720
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/chapters/020-chapter-xx.json",
+        "sha256": "682ac0832d3d80b47be76b0f8c61e5ecca6c6ea7dee47edc91f0e5f02884d7ac",
+        "size": 11095
+      },
+      {
+        "path": "content/books/the-picture-of-dorian-gray/source-rights.md",
+        "sha256": "dc16a0758d2f56e984716ca0fc5408abcb6f41cb864e24f41458a5c40ce9ed62",
+        "size": 924
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/approval_evidence.json",
+        "sha256": "69c746c41c6c09d425ffc6ebf01a47b74cf364153e904c282c2f91a32d0354f1",
+        "size": 367
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-001.json",
+        "sha256": "03d08c55a14a00e1bdb78625754eea8720586b17cc4982bfbcd9e69c533994be",
+        "size": 29097
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-002.json",
+        "sha256": "349c3b79d8bcc5d1b68cf161b295aac64f82aca6ff8189005ffa7d332d6c60f1",
+        "size": 33014
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-003.json",
+        "sha256": "94f398a0b71e7d17e910a5d0bd231e856e32ae3ab62340f50cc829090bb52e75",
+        "size": 27056
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-004.json",
+        "sha256": "9ec4f0a787885cd08e73c07efe08dd4dc6bb46f096545e7c859bfbe3533cfd9b",
+        "size": 32716
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-005.json",
+        "sha256": "637714b3ca9f7e5ad61f90b179abff1510a047ef7c3222b5c9c31450991a8173",
+        "size": 25695
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-006.json",
+        "sha256": "e17bf5ec05d2d8eb3016586a4023f52212c5d6b8c3e000627c177694513394e2",
+        "size": 17172
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-007.json",
+        "sha256": "54f5d3c84785f5376555e135c9e37d78d9f9ebe6e3624e7e36aaedb78bedca9c",
+        "size": 25980
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-008.json",
+        "sha256": "37923e65342302e6244021c147f1b9a90e46b4ca116a582d715929bcf6116aaf",
+        "size": 30723
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-009.json",
+        "sha256": "2dd59bc0b6cf16bb5ed54b6272914089ceae2af82d08d70909aa077b9a601007",
+        "size": 22571
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-010.json",
+        "sha256": "14c06b4aef92cfa309d4db18ffa81bc61571f2345f37cf8c85300946fc340d91",
+        "size": 19185
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-011.json",
+        "sha256": "f179f12061f033d50463c907152af845b2216c42003f26aec9acba96fdc1edd7",
+        "size": 44474
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-012.json",
+        "sha256": "25099d29edc82ae0a7f39fe2056db94399d4cfd5a85e103a3c264de9ed6c3a8c",
+        "size": 16063
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-013.json",
+        "sha256": "cd0d90e3bf2917d038e95abd8bef6918055680a18f376a37adffad3f7715c429",
+        "size": 14886
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-014.json",
+        "sha256": "5f86c8b067485c7c03df0a1636f3cf999c3312e4e8aad260a5b7c79d02d40199",
+        "size": 26601
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-015.json",
+        "sha256": "535c747cba13a5a8e83969ecc5b9815f0254c1fe8472cfdf29074dd62b3b22d4",
+        "size": 19328
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-016.json",
+        "sha256": "cf4c278c95988255d0661857c15d421ce3d797694053c0eee622685e3f5a9777",
+        "size": 18537
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-017.json",
+        "sha256": "720adbd206bf76b9eb062c32b0be3d8d367538c559f5be8c80d2f3ec30ff6680",
+        "size": 11800
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-018.json",
+        "sha256": "23757ef31f00225af3e85731146ee18ce0693354cfa86b1ca944331b476a9fb3",
+        "size": 19654
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-019.json",
+        "sha256": "3ba922e9e946c781bda18586ba77b68ca735fe2c2f40b8545533796624c90ae8",
+        "size": 20932
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/chapters/chapter-020.json",
+        "sha256": "e7454d44ebcf5fb1f24aa42225a2a1aa728a9ea779fdba14ef95092d9dfb727c",
+        "size": 11308
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/checksum_manifest.json",
+        "sha256": "738bb80606b8fa07483924599d7341e5cf185d6c0e785df25c6a2cfe9d8ae14d",
+        "size": 3549
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/highlight_sync.json",
+        "sha256": "d254328e742a7f451d8f3c1b7e5bad94456c23f4321d8c3690a699c8b69bcc68",
+        "size": 8605888
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/public_book.json",
+        "sha256": "195cab92e8f566b8a806c1efb50ef80978791c1c09f4de80cd6ac13fcd0d702a",
+        "size": 11959
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/reader_manifest.json",
+        "sha256": "cbf2bd2e56b4e7b421e9cfcc8ffeabefaedfbbd0cf22a9d127558c79e72dcbcd",
+        "size": 8949
+      },
+      {
+        "path": "data/controlled_publications/the-picture-of-dorian-gray/source_evidence.json",
+        "sha256": "7de85abb1841f7a4320329066a4a5c259356dbb944dfb232b6db66440ae8d08f",
+        "size": 1110
+      }
+    ],
+    "retired_tree_manifest_sha256": "7a96539fe4583d8c22e200737a80defc997bc6e7b483a1c37c27d58a0de5a0d1"
+  },
+  "canonical_source_sha256": "9e37dc7035cb6991073be62b6e8de858173cd8608a25ec5a5ca78c6608458932",
+  "canonical_reader_package_fingerprint": "5f8daba1feaff87cd39969832d96558887f4965051d7945d5a54a999ef38609d",
+  "tombstone_sha256": "6eeea8265cac61a20dbdcfe498414003f637dbab64f44466a181b235e4eac3d2"
+}

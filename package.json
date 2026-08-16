@@ -125,7 +125,7 @@
     "audiobook:missing:dry": ".venv-audio/bin/python scripts/open_source_audiobook_onboarding.py generate --manifest audio_manifests/missing_audiobooks_20260609.json --local-only --no-include-drafts --include-published --dry-run --order-shortest-first",
     "audiobook:missing:validate": ".venv-audio/bin/python scripts/open_source_audiobook_onboarding.py generate --manifest audio_manifests/missing_audiobooks_20260609.json --local-only --no-include-drafts --include-published --validate-only --order-shortest-first",
     "audiobook:missing": ".venv-audio/bin/python scripts/open_source_audiobook_onboarding.py generate --manifest audio_manifests/missing_audiobooks_20260609.json --local-only --no-include-drafts --include-published --order-shortest-first",
-    "audiobook:b2:blocked": ".venv-audio/bin/python scripts/open_source_audiobook_onboarding.py generate --local-only --no-include-drafts --include-published --no-skip-live-audio-assets --upload-to-storage --sync-flags --book frankenstein --book the-picture-of-dorian-gray --book the-secret-garden --book my-life-and-work --book pride-and-prejudice --book dracula --book great-expectations",
+    "audiobook:b2:blocked": ".venv-audio/bin/python scripts/open_source_audiobook_onboarding.py generate --local-only --no-include-drafts --include-published --no-skip-live-audio-assets --upload-to-storage --sync-flags --book frankenstein --book picture-of-dorian-gray --book the-secret-garden --book my-life-and-work --book pride-and-prejudice --book dracula --book great-expectations",
     "audio:backfill": "bash scripts/run_audiobook_backfill.sh",
     "loadtest": "k6 run scripts/k6_10x_spike.js",
     "load:100": "k6 run scripts/k6_load_100.js",

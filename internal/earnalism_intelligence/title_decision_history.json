@@ -2524,23 +2524,16 @@
       }
     },
     "picture-of-dorian-gray": {
-      "latest_decision": "NEXT_FOUR_LANE_RANK_1_SOURCE_PREFLIGHT_PASS_COVER_REVIEW_REQUIRED",
-      "decision_reason": "The canonical and backend controlled roots produce the same exact source, the title has no recorded prior provider attempt, and a title-specific Charon 0.94 dry preflight produced a new four-passage fingerprint. Canonical covers remain empty; the historical pair is keyed to a different slug and cannot be adopted without exact-title audit and checksum-bound promotion.",
-      "updated_at": "2026-07-30T08:54:26Z",
+      "latest_decision": "READER_REPAIRED_COVER_AND_OWNER_APPROVAL_PENDING",
+      "decision_reason": "Exact PG 174 source, India Section 22 rights, semantic structure, alias retirement, checksums, and mirrors pass.",
+      "updated_at": "2026-08-16T00:00:00Z",
       "language": "en",
-      "public_reader_status": "PUBLIC_READER",
-      "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
-      "canonical_source_sha256": "fb64fa570b93f43f1c13973df889bd30e024fc27124a53a5a4427fd6de179d00",
-      "canonical_backend_source_parity": true,
-      "chapter_count": 21,
-      "canonical_covers_ready": false,
-      "prior_provider_attempt_count": 0,
-      "conditional_voice": "en-GB-Chirp3-HD-Charon",
-      "conditional_speaking_rate": 0.94,
-      "preflight_attempt_fingerprint": "b83e0703280dcf9deb42594ca5f12cbb127c559d89bfe53458a2ff527a6c3b5d",
-      "provider_calls_ran": false,
-      "evidence": "internal/earnalism_intelligence/sprint1_next_four_release_lanes_after_d19_20260730.json",
-      "audiobook_next_action": "Audit the historical cover pair against the exact canonical slug/title and promote only a reviewed checksum-bound pair. Then admit at most one source-bound Charon representative candidate through objective and listening QA."
+      "territory": "IN",
+      "public_reader_status": "PRIVATE_COVER_AND_READER_APPROVAL_REQUIRED",
+      "public_audio_status": "AUDIO_HIDDEN_NOT_REQUESTED",
+      "source_sha256": "9e37dc7035cb6991073be62b6e8de858173cd8608a25ec5a5ca78c6608458932",
+      "content_sha256": "73afc95ebd217de9ff7cb189a89308591fa3de51e6d92cbdf70b703ad435ad81",
+      "next_action": "Prove cover provenance, then render private preview."
     },
     "frankenstein": {
       "latest_decision": "NEXT_FOUR_LANE_RANK_2_SOURCE_PREFLIGHT_PASS_ROOT_RECONCILIATION_AND_COVERS_REQUIRED",

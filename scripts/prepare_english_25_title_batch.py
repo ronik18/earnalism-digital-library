@@ -60,7 +60,7 @@ TITLE_PLANS = (
     TitlePlan("The Fall of the House of Usher", "the-fall-of-the-house-of-usher", "bm_george", "male"),
     TitlePlan("The Wonderful Wizard of Oz", "the-wonderful-wizard-of-oz", "bm_george", "male"),
     TitlePlan("The Adventures of Sherlock Holmes", "the-adventures-of-sherlock-holmes", "bm_george", "male"),
-    TitlePlan("The Picture of Dorian Gray", "the-picture-of-dorian-gray", "bm_george", "male"),
+    TitlePlan("The Picture of Dorian Gray", "picture-of-dorian-gray", "bm_george", "male"),
     TitlePlan("The Great Gatsby", "the-great-gatsby", "bm_george", "male"),
 )
 
