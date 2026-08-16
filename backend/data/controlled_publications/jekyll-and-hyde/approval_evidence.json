@@ -4,11 +4,23 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "reading_only_public_domain_batch_1",
+  "approval_scope": "checksum_bound_corrected_reader_approval",
   "audiobook_use_approved": true,
   "audiobook_use_approval_source": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
   "audiobook_use_approved_at": "2026-07-13T07:30:39Z",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
-  "allowPayment": false
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_approval_superseded": true,
+  "reader_public_release": "READER_ONLY_LIVE_APPROVED",
+  "controlled_reader_release_approval": {
+    "status": "APPROVED",
+    "approved_by": "Ronik Basak",
+    "approved_at": "2026-08-16T05:16:57Z",
+    "reader_gate_fingerprint": "36a0b3e4a640bc6f8925979358edbb8009dc5de87618337f7d4dbb38b3a41dd3",
+    "parent_manifest_sha256": "4d23a105ee667d78fb0081a4504ba6118e644c656f5f7e090ec671e6a83ad9d0",
+    "approval_sha256": "fe13259793451f3706d6c739d55d682f3cef95818da84cce90f27c72d3a2961f",
+    "scope": "Corrected canonical reader only; audiobook and stale alias remain disabled."
+  }
 }

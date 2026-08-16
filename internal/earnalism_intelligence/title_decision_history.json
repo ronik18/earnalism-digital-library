@@ -1534,12 +1534,12 @@
       "audiobook_next_action": "Do not repeat the Simran warm_bengali_literary_storyteller fingerprint. Use a materially different provider or approved human/licensed narration path, then rerun all objective and listening gates."
     },
     "jekyll-and-hyde": {
-      "latest_decision": "CHUNK9_SENTENCE_SAFE_REPAIR_PREFLIGHT_PASS_PARENT_CHUNK36_REPAIR_PRESERVED_AUDIO_HIDDEN",
-      "decision_reason": "The exact already-repaired Charon parent candidate is now bound by manifest SHA-256 616080b550edecc4320812ea09c0e0cf3f4f5afd96210247b5f1e6e3477a4632. Its completed chunk_0036 replacement remains immutable at audio SHA-256 d7d83110d869e2d40c59855e2d3e2252e9b642b6fa14e9790591cbb6c0d8702c. A no-provider-call chunk_0009 preflight binds the exact 16-token omission, adjacent source context, measured 30.10s-to-31.92s defective clause window, Google Charon local settings, $0.005760 estimate, future paid-lock scope, 91-file preservation set, fresh objective/listening requirements, and package-v2 blockers. The only permitted future parent-to-child audio change is index 9; relative to the root candidate the cumulative change set must be [9,36]. No synthesis, audio modification, lock mutation, upload, publication, or release mutation ran; Jekyll remains audio-hidden.",
-      "updated_at": "2026-07-30T16:30:17Z",
-      "language": "eng",
-      "public_reader_status": "PUBLIC_READER",
-      "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+      "latest_decision": "READER_ONLY_LIVE_APPROVED_PENDING_MERGE_DEPLOY",
+      "decision_reason": "Owner approved the checksum-bound corrected ten-chapter reader; audio and the stale alias remain disabled.",
+      "updated_at": "2026-08-16T05:16:57Z",
+      "language": "en",
+      "public_reader_status": "READER_ONLY_LIVE_APPROVED_PENDING_MERGE_DEPLOY",
+      "public_audio_status": "HIDDEN_NOT_APPROVED",
       "canonical_source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
       "google_studio_c_attempt_fingerprint": "664d046c50c547837cdbe08ff67b5f657ab63b89dfbab25a7667db1f917c069a",
       "google_studio_c_status": "CLOSED_LISTENING_FAIL_DO_NOT_REPEAT",
@@ -1679,7 +1679,15 @@
       "google_charon_chunk9_sentence_safe_evidence": "internal/earnalism_intelligence/objective_qa/jekyll_chunk9_sentence_safe_repair_preflight_20260730.json",
       "completed_attempts_must_not_repeat": true,
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_google_voice_bakeoff_20260728.json",
-      "audiobook_next_action": "Review and implement a separate hash-bound executor for preflight a60fa7da7ded382bb9f3b6bb45641c08d8df39c782a0356d491aceccd70d9e6f. It may make exactly one private 192-character Google Charon context-window call only after explicit runtime approval and budget gates, must forced-align and splice the exact clause into chunk_0009, must preserve the other 91 parent files byte-for-byte including repaired chunk_0036, and must stop before upload or release. Then require fresh objective evidence for chunks 0009 and 0036, full-title strict QA, and fresh changed-unit listening."
+      "audiobook_next_action": "Review and implement a separate hash-bound executor for preflight a60fa7da7ded382bb9f3b6bb45641c08d8df39c782a0356d491aceccd70d9e6f. It may make exactly one private 192-character Google Charon context-window call only after explicit runtime approval and budget gates, must forced-align and splice the exact clause into chunk_0009, must preserve the other 91 parent files byte-for-byte including repaired chunk_0036, and must stop before upload or release. Then require fresh objective evidence for chunks 0009 and 0036, full-title strict QA, and fresh changed-unit listening.",
+      "territory": "IN",
+      "reader_chapter_count": 10,
+      "false_signature_chapter_removed": true,
+      "duplicate_slug_status": "INERT_ALIAS",
+      "remote_media_mutated": false,
+      "next_action": "Merge PR #293, deploy merged main, and verify the production reader while audio stays disabled.",
+      "reader_gate_fingerprint": "36a0b3e4a640bc6f8925979358edbb8009dc5de87618337f7d4dbb38b3a41dd3",
+      "reader_release_approval_sha256": "fe13259793451f3706d6c739d55d682f3cef95818da84cce90f27c72d3a2961f"
     },
     "the-open-window": {
       "latest_decision": "PRODUCTION_ACTIVE_PACKAGE_V2_VALIDATED",
@@ -3071,6 +3079,15 @@
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
       "next_action": "Bind a verified commercially reusable English translation or written permission, then rebuild the checksum-bound reader candidate and repeat both human gates."
+    },
+    "the-strange-case-of-dr-jekyll-and-mr-hyde": {
+      "latest_decision": "SUPERSEDED_DUPLICATE_SLUG_INERT",
+      "canonical_slug": "jekyll-and-hyde",
+      "updated_at": "2026-08-15T23:43:19Z",
+      "public_reader_status": "HIDDEN",
+      "public_audio_status": "HIDDEN",
+      "remote_media_mutated": false,
+      "next_action": "Retain only as an inert compatibility tombstone; do not publish or synthesize."
     }
   },
   "bengali_audio_lane_status": "D19_INDIC_PARLER_OBJECTIVE_FAIL_SOURCE_BOUND_REPLACEMENT_REQUIRED",

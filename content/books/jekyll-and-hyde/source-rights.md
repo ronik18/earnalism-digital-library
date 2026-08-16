@@ -1,19 +1,23 @@
 # Source Rights Note: The Strange Case of Dr. Jekyll and Mr. Hyde
 
 - Title: The Strange Case of Dr. Jekyll and Mr. Hyde
-- Display title: The Strange Case of Dr. Jekyll and Mr. Hyde
 - Author: Robert Louis Stevenson
 - Author death year: 1894
+- Original publication year: 1886
 - Source URL: https://www.gutenberg.org/ebooks/43
+- Source snapshot URL: https://www.gutenberg.org/cache/epub/43/pg43.txt
+- Source snapshot SHA-256: 7e19df634b5db327f75392f934268bc232179bd17c44e52fc399b640a0375958
+- Source type: gutenberg
 - Source format downloaded: text/plain
-- Date downloaded: 2026-07-01T10:36:20Z
-- Public-domain/source statement: Source is an approved public-domain repository page for this controlled reader-preparation batch. Earnalism stores raw source evidence internally and publishes only a cleaned reader edition after validation gates pass.
-- Territory caveat: Public-domain status can vary by jurisdiction; owner/editor review remains required before commercial promotion outside the controlled allowlist.
-- Removed boilerplate: Project Gutenberg/Wikisource repository page furniture, license boxes, navigation, edit links, producer/donation text, source headers and footers are removed from reader-facing content.
-- Removed edition-specific matter: Modern repository metadata, export UI, page furniture, images, covers, scans, and non-literary source notes are excluded unless explicitly retained by editorial review.
-- Excluded images/covers/annotations: No modern cover art, scan images, film stills, audio, publisher branding, modern introductions, or annotations are imported.
-- Status: ready_for_auto_publication
+- Source license: Public-domain source edition; repository furniture excluded from the reader edition.
+- Rights basis: Robert Louis Stevenson died in 1894. Under section 22 of India's Copyright Act, the literary-work term expired after 31 December 1954. This original 1886 English work is public domain for the India-scoped release.
+- Commercial use allowed: yes
+- Publication region: IN
+- India statutory term: https://copyright.gov.in/Copyright_Act_1957/chapter_v.html
+- Reader-facing boilerplate removed: yes
+- Rights reverified at UTC: 2026-08-15T23:43:19Z
+- Status: ready_for_reader_approval
 - Blockers:
-- None
+  - Fresh checksum-bound reader-preview approval is required before the corrected reader is published.
 
-Reader-facing Earnalism editions must not be marketed as Project Gutenberg or Wikisource editions.
+Reader-facing Earnalism editions must not expose internal admin-only evidence files.

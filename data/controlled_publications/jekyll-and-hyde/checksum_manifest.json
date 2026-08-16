@@ -1,70 +1,74 @@
 {
   "slug": "jekyll-and-hyde",
-  "generated_at": "2026-08-15T06:54:10Z",
+  "generated_at": "2026-08-16T05:16:57Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "d3b8a081db2ff3a523d140c0c961884645f1250a5b5228e2fcf18761c986e0d3"
+      "sha256": "d17ded6fd9f29b76e4c3598b2118dd6d912728c8710435a6c85e4bbcfb401359"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "0c1f15810979e747cf4f9c951da19c4c5cde7771cf439cf2c6050c72a38d9cbc"
+      "sha256": "6741a99c2a840b45efea63acb2a17363b72daafc7ef8ad44dc469a68a1d662f3"
     },
     {
       "file": "chapters/chapter-002.json",
-      "sha256": "54b1b28a1679fc9f336822f2d60c6c37b389d20cabe80acb44a5c710dddef3f0"
+      "sha256": "7a103a9b1585d21216f12bc6de55d47dd7ebf58d02e3b79423f48adb97478f52"
     },
     {
       "file": "chapters/chapter-003.json",
-      "sha256": "d46825ba623fbf02d78e48a5da63b231a5a7ae3309a813643c711c70795ae0f4"
+      "sha256": "706eb38f1f5f89847b3f6e08ade3813100f98fa7071a5b22fdd358adc4141c0f"
     },
     {
       "file": "chapters/chapter-004.json",
-      "sha256": "68876e924908cc87c1b897cc0818d76da955156d3db2b07cf191a8cd8353f368"
+      "sha256": "2cf722f845ea29aa19a75999dac2f9127fe304e8089c367511e6a0a576c89c4a"
     },
     {
       "file": "chapters/chapter-005.json",
-      "sha256": "9dd58e57b1035bff3d65c201d3402c47c2deaf7327621c7b1ed2c189c4563d31"
+      "sha256": "fb2746809d935be3e75c41380f8832bf0e3e50bf95e3f6b9675d1db06c5f37b4"
     },
     {
       "file": "chapters/chapter-006.json",
-      "sha256": "1db638682094499fb0464a69bbda40013168edafc7ff0c7b31dd10fe8bbf4cba"
+      "sha256": "e628e8a18477700ff96312bcc066a5ff7d2f38d61520591098ed6e70b6595f29"
     },
     {
       "file": "chapters/chapter-007.json",
-      "sha256": "c82491b5b157cf98fd93a99c7449863f23793ff0a959f82363128a1e70f686a6"
+      "sha256": "4f19b8a4be9c6c34a8a010177ffdcad1db773054907a8ba44049b0f7f47be92a"
     },
     {
       "file": "chapters/chapter-008.json",
-      "sha256": "e9e7519349b0c68881491b9131c810c1ce4a7cdb063e07c00c6319bf3d2da687"
+      "sha256": "de304ed5e7dd006aba2791fa9db35f3817e82d1ad6ac896df24c646d07e7c2f4"
     },
     {
       "file": "chapters/chapter-009.json",
-      "sha256": "61450b93ca72b887f471f5a0a5a7e833876fea384ca468cbf8b1ce0ebc371c9e"
+      "sha256": "3bd5dfd710ef08e09c07d816b295ad9a2b86799077f343295f1aa615c84a3f35"
     },
     {
       "file": "chapters/chapter-010.json",
-      "sha256": "0e94d4d16a14e148dc4946cad597350dcf8de15bfa6db648ac82175e5489c3d4"
-    },
-    {
-      "file": "chapters/chapter-011.json",
-      "sha256": "bf385b677efead3800f935f1d10aba569228370d5c6abfc417d57a9a0f74fa4a"
+      "sha256": "aec99585a0a0705f25255d8560da47ee7af382755cea957ff03d65896b98ddf9"
     },
     {
       "file": "cover_approval_evidence.json",
       "sha256": "7ff51145b7bb97f64b6f01ddb84d3c75188c15b76ceec3aa8fa9af2dd01782f9"
     },
     {
+      "file": "highlight_sync.json",
+      "sha256": "2881cb072840555624004936e5b3fef9810a5d44cfa9d5657c76f812b01f03cd"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "52cbee1a7c8afc997ffcc64b3a1d3990b2941b58747183461c5247c250e3462a"
+      "sha256": "01c3a333da4712bc8041e8eb16338e5d37dd581dcf9f2ab2a92b56321f42f91a"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "04a0b1df4bd25b9e1d554c3e1aa6994b7b44e5c51810392ff350ec3f998a81b6"
+      "sha256": "c3fff66ff02d37c3fa727c1c2f17a36ace48c1f1368ff3cb5ee69eebcec2a032"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "8ae3d17e5314fe0a58d6e85d89c4ba0593e795e6fcc20e583d4d3c456d85a18b"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "1362c9efd5996f54c458aebe95af86634c745d9f0997c6e3fbbd215eb031a5d3"
+      "sha256": "88d44198ddc62c022897e594901d7f06fd9c4f93a286b29b4b304e46724df644"
     }
   ]
 }

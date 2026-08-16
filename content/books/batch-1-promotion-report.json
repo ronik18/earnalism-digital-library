@@ -4,7 +4,6 @@
   "totalBooksConfigured": 10,
   "promotedLiveSlugs": [
     "frankenstein",
-    "jekyll-and-hyde",
     "carmilla",
     "hound-of-the-baskervilles",
     "picture-of-dorian-gray",
@@ -12,13 +11,13 @@
     "hungry-stones",
     "devdas",
     "pather-panchali",
-    "eyesore-chokher-bali"
+    "eyesore-chokher-bali",
+    "jekyll-and-hyde"
   ],
   "heldSlugs": [],
   "approvedReleaseAllowlist": [
     "dracula",
     "frankenstein",
-    "jekyll-and-hyde",
     "carmilla",
     "hound-of-the-baskervilles",
     "picture-of-dorian-gray",
@@ -26,7 +25,8 @@
     "hungry-stones",
     "devdas",
     "pather-panchali",
-    "eyesore-chokher-bali"
+    "eyesore-chokher-bali",
+    "jekyll-and-hyde"
   ],
   "publicAudioStatus": "PUBLIC_AUDIO_RELEASE_BLOCKED",
   "audiobookProductionStatus": "PRODUCTION_BLOCKED",
@@ -53,8 +53,8 @@
       "language": "en",
       "score": 100,
       "status": "PASS_100",
-      "chapterCount": 11,
-      "wordCountApprox": 25606,
+      "chapterCount": 10,
+      "wordCountApprox": 25609,
       "routeStatus": "READY",
       "bengaliRenderingStatus": "PASS",
       "blockers": [],

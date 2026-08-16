@@ -12,7 +12,7 @@
   "sourceFormatImported": "text/plain",
   "rightsStatus": "public_domain_source_reviewed",
   "rightsTerritoryBasis": "Author died 1894. Published 1886. Public domain in U.S. and worldwide.",
-  "readerStatus": "ready_for_editorial_review",
+  "readerStatus": "superseded_alias",
   "publicationStatus": "draft",
   "isPublic": false,
   "isLive": false,
@@ -29,5 +29,6 @@
   "backCoverImage": "",
   "coverAssets": [],
   "createdAt": "2026-07-03T20:07:48Z",
-  "updatedAt": "2026-07-03T20:07:48Z"
+  "updatedAt": "2026-08-15T23:43:19Z",
+  "canonicalSlug": "jekyll-and-hyde"
 }
