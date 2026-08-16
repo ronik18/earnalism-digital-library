@@ -11,8 +11,8 @@
   "sourceLandingPage": "https://www.gutenberg.org/ebooks/64317",
   "sourceFormatImported": "text/plain",
   "rightsStatus": "public_domain_source_reviewed",
-  "rightsTerritoryBasis": "Author died in 1940. Work published in 1925, before 1928. Entered U.S. public domain on 1 January 2021 under the pre-1928 publication rule.",
-  "readerStatus": "ready_for_editorial_review",
+  "rightsTerritoryBasis": "F. Scott Fitzgerald died in 1940. Under Section 22 of the Copyright Act, 1957 (India), copyright in a literary work subsists until sixty years from the beginning of the calendar year following the author's death; the term therefore expired in India at the end of 2000 and the work entered the public domain there on 1 January 2001. Territory: IN.",
+  "readerStatus": "reader_approval_required",
   "publicationStatus": "draft",
   "isPublic": false,
   "isLive": false,
@@ -23,8 +23,8 @@
   "allowPayment": false,
   "is_published": false,
   "chapterCount": 9,
-  "wordCountApprox": 49713,
-  "readingTimeMinutesApprox": 208,
+  "wordCountApprox": 48425,
+  "readingTimeMinutesApprox": 202,
   "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565318/earnalism/covers/front/cover_82440320-0910-4dfe-97de-540153139e00.png",
   "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565331/earnalism/covers/back/back_cover_82440320-0910-4dfe-97de-540153139e00.png",
   "coverAssets": [
@@ -32,5 +32,7 @@
     "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565331/earnalism/covers/back/back_cover_82440320-0910-4dfe-97de-540153139e00.png"
   ],
   "createdAt": "2026-07-03T20:07:48Z",
-  "updatedAt": "2026-07-03T20:07:48Z"
+  "updatedAt": "2026-08-16T14:30:00Z",
+  "readerPackageFingerprint": "efc7c7af7b439119480f0d8d9780b46b63eaeb0650d3a8fb0eb6910f9b9f29c4",
+  "coverVerificationStatus": "BLOCKED_LOCAL_PROVENANCE_MISSING"
 }

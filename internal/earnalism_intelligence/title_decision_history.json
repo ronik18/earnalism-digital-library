@@ -12,6 +12,18 @@
     "impact_report": "internal/earnalism_intelligence/platform_audiobook_89_cutoff_impact_report.json"
   },
   "titles": {
+    "the-great-gatsby": {
+      "latest_decision": "READER_REPAIRED_COVER_BLOCKED_NO_PREVIEW",
+      "decision_reason": "Exact source, India rights, semantic structure, checksums, and mirrors pass; exact-slug graphical cover proof is absent.",
+      "updated_at": "2026-08-16T14:30:00Z",
+      "language": "en",
+      "territory": "IN",
+      "public_reader_status": "PRIVATE_READER_APPROVAL_BLOCKED_BY_COVER",
+      "public_audio_status": "AUDIO_HIDDEN_NOT_REQUESTED",
+      "source_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+      "content_sha256": "4f6579e08ebba7b91e4a92bf134f29c0a79b7c5575125351a20684c4ff8688ec",
+      "next_action": "Prove an exact-slug graphical cover, rerun reader gates, and render a fresh private preview."
+    },
     "the-adventures-of-sherlock-holmes": {
       "latest_decision": "PUBLICATION_MANIFEST_CONVEYOR_PILOT_READY_FOR_APPROVAL",
       "decision_reason": "The legally cleared source was sanitized and deterministically indexed into twelve canonical stories. Reader, audio, and commerce lanes are independent; no audiobook is requested and no public exposure is authorized.",
