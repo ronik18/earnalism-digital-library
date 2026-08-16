@@ -2154,3 +2154,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Centered Roman chapter headings in the official Gutenberg plain-text edition provide deterministic nine-chapter boundaries; blank-line blocks restore semantic paragraphs while whitespace-normalized equality guards every word, punctuation mark, and ordering decision.
 - A historical remote cover URL is not exact-slug graphical-cover proof. Keep the reader private and do not render an approval preview until the cover passes the active cover policy.
 - India release evidence for Fitzgerald must cite Copyright Act 1957 Section 22 and the 1940 death year, not rely solely on United States public-domain reasoning.
+
+## Enchanted April deterministic reader repair - 2026-08-16
+
+- The official 2025 plaintext preserves exactly 22 chapter headings; exact source-byte hashing and whitespace-normalized chapter comparison make semantic reflow deterministic. Chapters 19 and 22 also restore two exact phrases omitted by the prior package, with no editorial rewriting or reordering.
+- India release evidence for Elizabeth von Arnim must cite Copyright Act 1957 Section 22 and her 1941 death year; the work entered India's public domain on 1 January 2002.
+- Exact-title deterministic vector covers may pass the graphical-cover gate only when dimensions, bytes, checksums, and no-external-art provenance all match the repository audit.

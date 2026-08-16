@@ -11,8 +11,8 @@
   "sourceLandingPage": "https://www.gutenberg.org/ebooks/16389",
   "sourceFormatImported": "text/plain",
   "rightsStatus": "public_domain_source_reviewed",
-  "rightsTerritoryBasis": "Author died 1941. Published 1922. Pre-1928 publication supports U.S. public-domain status.",
-  "readerStatus": "ready_for_editorial_review",
+  "rightsTerritoryBasis": "Elizabeth von Arnim died in 1941. Under Section 22 of the Copyright Act, 1957 (India), copyright in a literary work subsists until sixty years from the beginning of the calendar year following the author's death; the term expired after 2001 and the work entered the public domain in India on 1 January 2002. Territory: IN.",
+  "readerStatus": "reader_approval_required",
   "publicationStatus": "draft",
   "isPublic": false,
   "isLive": false,
@@ -23,11 +23,29 @@
   "allowPayment": false,
   "is_published": false,
   "chapterCount": 22,
-  "wordCountApprox": 79740,
-  "readingTimeMinutesApprox": 333,
-  "coverImage": "",
-  "backCoverImage": "",
-  "coverAssets": [],
+  "wordCountApprox": 78705,
+  "readingTimeMinutesApprox": 328,
+  "coverImage": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-enchanted-april/back-cover.webp",
+  "coverAssets": [
+    {
+      "role": "front",
+      "path": "frontend/public/assets/books/the-enchanted-april/front-cover.webp",
+      "sha256": "094e542561e8ef5ba2d6ed07c989e4ef69bcbcd00ae079525beb1d848a01a7f7",
+      "width": 800,
+      "height": 1200,
+      "format": "webp"
+    },
+    {
+      "role": "back",
+      "path": "frontend/public/assets/books/the-enchanted-april/back-cover.webp",
+      "sha256": "135b4c8820ee8c4eb3d0cf27d5d0e4e013c62ae7df23c390558abca95f39588f",
+      "width": 800,
+      "height": 1200,
+      "format": "webp"
+    }
+  ],
   "createdAt": "2026-07-03T20:07:48Z",
-  "updatedAt": "2026-07-03T20:07:48Z"
+  "updatedAt": "2026-08-16T00:00:00Z",
+  "readerPackageFingerprint": "8e7079121609c34e78de6d7aa987a4f6482e1339329721fbce5d57dfe718dbd3"
 }
