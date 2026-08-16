@@ -1,10 +1,10 @@
 {
   "slug": "the-bishop",
-  "status": "INVALIDATED_UNMEASURED_AUDIO",
-  "generatedAt": "2026-08-15T21:30:20Z",
-  "source": "controlled_package_reconciliation",
+  "status": "INVALIDATED_PARAGRAPH_REPAIR",
+  "generatedAt": "2026-08-16T07:38:39Z",
+  "source": "reader_paragraph_repair",
   "chapters": [],
   "totalDurationMs": 0,
   "audio_enabled": false,
-  "note": "The historical deterministic estimate is not measured synchronization and cannot authorize audio exposure."
+  "note": "The legacy deterministic estimate used corrupted line-wrap paragraphs. Future audio requires measured synchronization."
 }

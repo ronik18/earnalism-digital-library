@@ -50,12 +50,12 @@
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:47Z",
-      "updated_at": "2026-07-03T20:07:47Z"
+      "updated_at": "2026-08-16T07:38:39Z"
     }
   ],
   "source_hash": "706d537e20ed0eaeddb883abdd23d76a3fb4e68afe1221dbc04d63fb98314071",
-  "content_hash": "ccefe3574393cf2346a494eadfd2d7f8caf8c62dce483ada72923232a8c7bcf6",
-  "provenance_hash": "2892eb7ebd706d10de65ac92b95ca09cc9c258f591cc016148ec43253cbc46ef",
+  "content_hash": "1dc838b382d4c4c70b4109b50dafbd63da98d4660bb73af278af06d6ac0d96c1",
+  "provenance_hash": "f45783e085d460e7f411295566a38ea11985d5ae2d6ef4fd28b309da2347a778",
   "rights_basis": "Anton Chekhov died in 1904 and English translator Constance Garnett died in 1946; both terms exceed India's life-plus-60 rule. Project Gutenberg identifies this edition as public domain in the USA. Publication remains scoped to India.",
   "rights_tier": "A",
   "verification_status": "approved",
@@ -79,7 +79,7 @@
   "audiobook_voice": "",
   "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:47Z",
-  "updated_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-08-16T07:38:39Z",
   "cover_dimensions": {
     "front": [
       800,

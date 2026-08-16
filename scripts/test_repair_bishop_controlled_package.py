@@ -19,16 +19,18 @@ def decoded(replacements: dict[Path, bytes], path: Path) -> dict:
     return json.loads(replacements[path].decode("utf-8"))
 
 
-def test_reconciliation_preserves_manuscript_and_hides_audio() -> None:
-    before = MODULE.sha256_file(MODULE.ROOT_PUBLICATION / "chapters" / "chapter-001.json")
+def test_reconciliation_repairs_paragraphs_without_changing_words_and_hides_audio() -> None:
+    before = MODULE.read_json(MODULE.ROOT_PUBLICATION / "chapters" / "chapter-001.json")
     replacements, evidence = MODULE.build_replacements("2026-08-16T00:00:00Z")
-    after = MODULE.sha256_bytes(
-        replacements[MODULE.ROOT_PUBLICATION / "chapters" / "chapter-001.json"]
-    )
+    after = decoded(replacements, MODULE.ROOT_PUBLICATION / "chapters" / "chapter-001.json")
     public = decoded(replacements, MODULE.ROOT_PUBLICATION / "public_book.json")
     sync = decoded(replacements, MODULE.ROOT_PUBLICATION / "highlight_sync.json")
 
-    assert before == after
+    assert MODULE.normalized(before["content"]) == MODULE.normalized(after["content"])
+    assert MODULE.sha256_text(after["content"]) == MODULE.EXPECTED_NEW_SANITIZED_SHA256
+    assert len(MODULE.re.split(r"\n\s*\n", after["content"])) == MODULE.EXPECTED_BLOCK_COUNT
+    assert after["content"].endswith(MODULE.EXPECTED_ENDPOINT)
+    assert evidence["manuscript_normalized_text_unchanged"] is True
     assert evidence["remote_media_mutated"] is False
     assert public["audio_enabled"] is False
     assert public["audiobook_enabled"] is False
