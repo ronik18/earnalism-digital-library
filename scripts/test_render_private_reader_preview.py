@@ -18,6 +18,14 @@ def test_opening_blocks_rejects_picture_placeholders() -> None:
         MODULE.opening_blocks("[Picture: decorative art]\n\nNarrative.", 100)
 
 
+def test_opening_blocks_rejects_publisher_furniture() -> None:
+    with pytest.raises(ValueError, match="Reader-facing source furniture remains"):
+        MODULE.opening_blocks(
+            "THE MILLENNIUM FULCRUM EDITION, 1988\n\nNarrative text.",
+            100,
+        )
+
+
 def test_happy_prince_cross_title_boundary_is_rejected() -> None:
     with pytest.raises(ValueError, match="Cross-title boundary"):
         MODULE.assert_single_title_boundary(
