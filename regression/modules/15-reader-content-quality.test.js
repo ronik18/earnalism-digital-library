@@ -36,7 +36,7 @@ const REQUIRED_LIVE_SLUGS = [
 ];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
-const PENDING_FRESH_READER_APPROVAL_SLUGS = new Set(["jekyll-and-hyde"]);
+const PENDING_FRESH_READER_APPROVAL_SLUGS = new Set();
 
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, relativePath), "utf8"));
@@ -102,7 +102,7 @@ describe("Reader content quality batch 1", () => {
     }
   });
 
-  test("batch reader release truth preserves promoted titles and hides repaired titles pending approval", () => {
+  test("batch reader release truth preserves approved reader-only titles and audio holds", () => {
     for (const slug of BATCH_SLUGS) {
       if (PENDING_FRESH_READER_APPROVAL_SLUGS.has(slug)) {
         expect(launch.live_approved_slugs).not.toContain(slug);

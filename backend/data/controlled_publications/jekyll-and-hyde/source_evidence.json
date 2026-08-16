@@ -21,7 +21,7 @@
   "verification_status": "approved",
   "publication_region": "IN",
   "verified_at": "2026-08-15T23:43:19Z",
-  "qa_status": "READY_FOR_APPROVAL",
+  "qa_status": "QA_PASSED",
   "source_snapshot_url": "https://www.gutenberg.org/cache/epub/43/pg43.txt",
   "source_snapshot_path": "raw/source.txt",
   "source_hash_domain": "official_plaintext_download_exact_bytes",
@@ -41,5 +41,10 @@
     "stale_duplicate_slug_retired": true,
     "legacy_synthetic_audio_rejected": true,
     "audio_enabled": false
-  }
+  },
+  "reader_release_status": "READER_ONLY_LIVE_APPROVED",
+  "reader_release_approved_at": "2026-08-16T05:16:57Z",
+  "reader_release_approval_sha256": "fe13259793451f3706d6c739d55d682f3cef95818da84cce90f27c72d3a2961f",
+  "audio_enabled": false,
+  "audiobook_enabled": false
 }

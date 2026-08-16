@@ -1534,11 +1534,11 @@
       "audiobook_next_action": "Do not repeat the Simran warm_bengali_literary_storyteller fingerprint. Use a materially different provider or approved human/licensed narration path, then rerun all objective and listening gates."
     },
     "jekyll-and-hyde": {
-      "latest_decision": "READY_FOR_CHECKSUM_BOUND_READER_APPROVAL",
-      "decision_reason": "The letter signature HENRY JEKYLL is restored inside The Last Night; the reader now matches the source's exact ten-chapter structure and the stale duplicate slug is inert.",
-      "updated_at": "2026-08-15T23:43:19Z",
+      "latest_decision": "READER_ONLY_LIVE_APPROVED_PENDING_MERGE_DEPLOY",
+      "decision_reason": "Owner approved the checksum-bound corrected ten-chapter reader; audio and the stale alias remain disabled.",
+      "updated_at": "2026-08-16T05:16:57Z",
       "language": "en",
-      "public_reader_status": "HIDDEN_PENDING_FRESH_APPROVAL",
+      "public_reader_status": "READER_ONLY_LIVE_APPROVED_PENDING_MERGE_DEPLOY",
       "public_audio_status": "HIDDEN_NOT_APPROVED",
       "canonical_source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
       "google_studio_c_attempt_fingerprint": "664d046c50c547837cdbe08ff67b5f657ab63b89dfbab25a7667db1f917c069a",
@@ -1685,7 +1685,9 @@
       "false_signature_chapter_removed": true,
       "duplicate_slug_status": "INERT_ALIAS",
       "remote_media_mutated": false,
-      "next_action": "Render and obtain fresh checksum-bound reader-preview approval."
+      "next_action": "Merge PR #293, deploy merged main, and verify the production reader while audio stays disabled.",
+      "reader_gate_fingerprint": "36a0b3e4a640bc6f8925979358edbb8009dc5de87618337f7d4dbb38b3a41dd3",
+      "reader_release_approval_sha256": "fe13259793451f3706d6c739d55d682f3cef95818da84cce90f27c72d3a2961f"
     },
     "the-open-window": {
       "latest_decision": "PRODUCTION_ACTIVE_PACKAGE_V2_VALIDATED",

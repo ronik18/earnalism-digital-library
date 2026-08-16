@@ -1,0 +1,30 @@
+{
+  "schema": "earnalism.reader_release_approval.v1",
+  "slug": "jekyll-and-hyde",
+  "owner": "Ronik Basak",
+  "role": "owner_and_product_owner",
+  "status": "APPROVED",
+  "approved_at": "2026-08-16T05:16:57Z",
+  "statement": "I approve checksum-bound reader fingerprint 36a0b3e4a640bc6f8925979358edbb8009dc5de87618337f7d4dbb38b3a41dd3. Replace the malformed live reader through PR #293; keep audiobook exposure disabled.",
+  "scope": "corrected_canonical_reader_only",
+  "approved_reader_gate_fingerprint": "36a0b3e4a640bc6f8925979358edbb8009dc5de87618337f7d4dbb38b3a41dd3",
+  "approved_parent_manifest_sha256": "4d23a105ee667d78fb0081a4504ba6118e644c656f5f7e090ec671e6a83ad9d0",
+  "binding": {
+    "schema": "earnalism.private_reader_gate_binding.v1",
+    "repository_head": "b0bd9b3a5ccb3c0adf929f59a834a482ef0f3a4d",
+    "slug": "jekyll-and-hyde",
+    "voice": "bm_george",
+    "controlled_manifest_sha256": "4d23a105ee667d78fb0081a4504ba6118e644c656f5f7e090ec671e6a83ad9d0",
+    "source_content_hash": "9b1ab2987886368c4dae32d7fd1c12da9bccb91d74425eccda60333ddfbb5acb",
+    "chapter_sha256": "6741a99c2a840b45efea63acb2a17363b72daafc7ef8ad44dc469a68a1d662f3",
+    "cover_sha256": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+    "preview_text_sha256": "69a45f07c86702868852fad15151add246b984c26a9b0ac145b54deb2b165043"
+  },
+  "preview_sha256": "b3c2eec2285971ff535d8cc354dd41df7e28511256c1ba608a48de154327569a",
+  "public_reader_authorized": true,
+  "public_audiobook_authorized": false,
+  "stale_alias_authorized": false,
+  "audio_release_gate_waived": false,
+  "content_regeneration_authorized": false,
+  "approval_sha256": "fe13259793451f3706d6c739d55d682f3cef95818da84cce90f27c72d3a2961f"
+}

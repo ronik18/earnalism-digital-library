@@ -170,6 +170,6 @@
   ],
   "audio_enabled": false,
   "audiobook_enabled": false,
-  "generated_at": "2026-08-15T23:43:19Z",
-  "reader_release_status": "READY_FOR_APPROVAL"
+  "generated_at": "2026-08-16T05:16:57Z",
+  "reader_release_status": "READER_ONLY_LIVE_APPROVED"
 }

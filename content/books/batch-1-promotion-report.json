@@ -11,11 +11,10 @@
     "hungry-stones",
     "devdas",
     "pather-panchali",
-    "eyesore-chokher-bali"
-  ],
-  "heldSlugs": [
+    "eyesore-chokher-bali",
     "jekyll-and-hyde"
   ],
+  "heldSlugs": [],
   "approvedReleaseAllowlist": [
     "dracula",
     "frankenstein",
@@ -26,7 +25,8 @@
     "hungry-stones",
     "devdas",
     "pather-panchali",
-    "eyesore-chokher-bali"
+    "eyesore-chokher-bali",
+    "jekyll-and-hyde"
   ],
   "publicAudioStatus": "PUBLIC_AUDIO_RELEASE_BLOCKED",
   "audiobookProductionStatus": "PRODUCTION_BLOCKED",
@@ -55,12 +55,10 @@
       "status": "PASS_100",
       "chapterCount": 10,
       "wordCountApprox": 25609,
-      "routeStatus": "HIDDEN_PENDING_FRESH_APPROVAL",
+      "routeStatus": "READY",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [
-        "FRESH_CHECKSUM_BOUND_READER_APPROVAL_REQUIRED"
-      ],
-      "decision": "REPAIRED_READER_PENDING_FRESH_APPROVAL"
+      "blockers": [],
+      "decision": "PROMOTED_LIVE_READER_ONLY"
     },
     {
       "slug": "carmilla",
