@@ -162,6 +162,10 @@ def test_shared_colab_notebook_defaults_are_private_and_stop_before_full_generat
     assert 'SPLITTER_SCHEMA = "earnalism.quote_aware_sentence_splitter.v2"' in source
     assert '"splitter_schema": SPLITTER_SCHEMA' in source
     assert "split_pattern=SENTENCE_BOUNDARY_PATTERN" in source
+    assert "Six distinct source blocks are required." in source
+    assert "len(set(representative_source_hashes)) == 6" in source
+    assert '"sample_set_sha256":representative_sample_set_sha256' in source
+    assert 'earnalism.kokoro_representative_objective_qa.v2' in source
     assert all(cell.get("outputs", []) == [] for cell in notebook["cells"] if cell.get("cell_type") == "code")
 
 
