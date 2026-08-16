@@ -8,13 +8,13 @@
   "content_hash": "a86c3c502a057b707ca3239a978a6b5c2c652656435869b25d49eb1fabb0f02f",
   "sourceSha256": "9e37dc7035cb6991073be62b6e8de858173cd8608a25ec5a5ca78c6608458932",
   "sanitizedSha256": "a86c3c502a057b707ca3239a978a6b5c2c652656435869b25d49eb1fabb0f02f",
-  "word_count": 5579,
+  "word_count": 5631,
   "reading_minutes": 24,
-  "is_preview": true,
+  "is_preview": false,
   "has_images": false,
   "image_count": 0,
   "processing_status": "ready",
   "processing_warnings": [],
   "uploaded_at": "2026-07-01T10:36:20Z",
-  "updated_at": "2026-07-01T10:36:20Z"
+  "updated_at": "2026-08-16T00:00:00Z"
 }

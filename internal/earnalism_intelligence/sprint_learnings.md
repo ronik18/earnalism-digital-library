@@ -2160,3 +2160,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The official 2025 plaintext preserves exactly 22 chapter headings; exact source-byte hashing and whitespace-normalized chapter comparison make semantic reflow deterministic. Chapters 19 and 22 also restore two exact phrases omitted by the prior package, with no editorial rewriting or reordering.
 - India release evidence for Elizabeth von Arnim must cite Copyright Act 1957 Section 22 and her 1941 death year; the work entered India's public domain on 1 January 2002.
 - Exact-title deterministic vector covers may pass the graphical-cover gate only when dimensions, bytes, checksums, and no-external-art provenance all match the repository audit.
+
+## Picture of Dorian Gray canonical reader repair - 2026-08-16
+
+- PG 174 is the revised Preface plus Chapters I-XX edition. The duplicate `the-` slug was an exact ordered subset: it omitted the Preface and two 12-word passages accidentally absorbed into chapter titles, and contributed no unique narrative.
+- Duplicate retirement is recoverable when every retired file is checksum-bound to the pre-repair Git commit and a tombstone records the exact recovery path.
+- Oscar Wilde died in 1900; India Section 22 places this work in India's public domain from 1 January 1961. Cover provenance remains an independent fail-closed gate.

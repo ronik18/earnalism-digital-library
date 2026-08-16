@@ -1,52 +1,12 @@
 {
   "schema": "earnalism-generated-cover-audit-v1",
-  "status": "PASS_LOCAL_VISUAL_SMOKE",
-  "cover_count": 18,
+  "status": "GENERATED_AWAITING_VISUAL_SMOKE",
+  "cover_count": 19,
   "performance_budget_bytes": 184320,
   "no_unlicensed_external_art": true,
-  "visual_smoke": "PASS",
-  "visual_smoke_scope": "18 front covers reviewed together at normal contact-sheet scale; title hierarchy, author identity, graphical theme, contrast, and edge safety passed",
+  "visual_smoke": "PENDING",
+  "visual_smoke_scope": "New or changed covers require visual review; prior checksum-bound rows are preserved.",
   "rows": [
-    {
-      "slug": "the-most-dangerous-game",
-      "title": "The Most Dangerous Game",
-      "author": "Richard Connell",
-      "theme": "island hunt",
-      "art_source": "deterministic_vector_primitives_no_external_art",
-      "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/the-most-dangerous-game/front-cover.webp",
-      "back_path": "frontend/public/assets/books/the-most-dangerous-game/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/back-cover.webp",
-      "dimensions": [
-        800,
-        1200
-      ],
-      "front_sha256": "a8bd7587cbbdd9f5ff8a23d9aa8a258bfa08a9ce110228002f37f52b1f2f0d8c",
-      "back_sha256": "182c419386cdc057a8ac96c3b0ab7d5d935a948e179c812a954bfd41215329fd",
-      "front_bytes": 19740,
-      "back_bytes": 22088
-    },
-    {
-      "slug": "the-stolen-white-elephant",
-      "title": "The Stolen White Elephant",
-      "author": "Mark Twain",
-      "theme": "royal elephant",
-      "art_source": "deterministic_vector_primitives_no_external_art",
-      "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/the-stolen-white-elephant/front-cover.webp",
-      "back_path": "frontend/public/assets/books/the-stolen-white-elephant/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
-      "dimensions": [
-        800,
-        1200
-      ],
-      "front_sha256": "16137ec2a018564aafa68962cf59bed705bdccc6cb89ef6000d431c30f16cddd",
-      "back_sha256": "f6be789f2564035101a7b2fc954a3f72a8553af14e8aa1e7c196363848a1c9a4",
-      "front_bytes": 22560,
-      "back_bytes": 25046
-    },
     {
       "slug": "a-horseman-in-the-sky",
       "title": "A Horseman in the Sky",
@@ -66,26 +26,6 @@
       "back_sha256": "6e55ee7d626fbc330b205a88d8728e456eaeeffd988ecef45022342139008cca",
       "front_bytes": 19374,
       "back_bytes": 22202
-    },
-    {
-      "slug": "the-happy-prince",
-      "title": "The Happy Prince",
-      "author": "Oscar Wilde",
-      "theme": "gilded statue and swallow",
-      "art_source": "deterministic_vector_primitives_no_external_art",
-      "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/the-happy-prince/front-cover.webp",
-      "back_path": "frontend/public/assets/books/the-happy-prince/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/the-happy-prince/back-cover.webp",
-      "dimensions": [
-        800,
-        1200
-      ],
-      "front_sha256": "4d66d9da62bcecf1b6cd4a778a1ff21659454272d4cb7fcddf3e7f396b62955f",
-      "back_sha256": "8c3a27d696997837f3a1f2ea1aa49b74e7993cfaa30bb7abbc6a9f3f91a37334",
-      "front_bytes": 20138,
-      "back_bytes": 24006
     },
     {
       "slug": "a-mystery-of-heroism",
@@ -108,24 +48,24 @@
       "back_bytes": 21818
     },
     {
-      "slug": "the-open-boat",
-      "title": "The Open Boat",
-      "author": "Stephen Crane",
-      "theme": "open sea",
+      "slug": "a-scandal-in-bohemia",
+      "title": "A Scandal in Bohemia",
+      "author": "Arthur Conan Doyle",
+      "theme": "sealed letter",
       "art_source": "deterministic_vector_primitives_no_external_art",
       "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/the-open-boat/front-cover.webp",
-      "back_path": "frontend/public/assets/books/the-open-boat/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+      "front_path": "frontend/public/assets/books/a-scandal-in-bohemia/front-cover.webp",
+      "back_path": "frontend/public/assets/books/a-scandal-in-bohemia/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
       "dimensions": [
         800,
         1200
       ],
-      "front_sha256": "296b67825cf9bd73c3586afdd03cc09f837203e04de9202ea708191dfdb750e4",
-      "back_sha256": "39143f938d1c09214f3bd9ebd9545d404e944b6d0c4c156a89621a469958deee",
-      "front_bytes": 19054,
-      "back_bytes": 25196
+      "front_sha256": "fdaa99cef5754917ec758b27d92fcad1d5cda431037a4d3008987d36d4a78fad",
+      "back_sha256": "98d7d85802e02275a9bbb9bd4cd1844e1e956af310003970272375452621a8b7",
+      "front_bytes": 19456,
+      "back_bytes": 21384
     },
     {
       "slug": "a-white-heron",
@@ -146,26 +86,6 @@
       "back_sha256": "f35ba6ad70577d4026daaed4bc318d605d2033b7844374c8c81f9dacc8bd72fe",
       "front_bytes": 19048,
       "back_bytes": 24314
-    },
-    {
-      "slug": "the-pit-and-the-pendulum",
-      "title": "The Pit and the Pendulum",
-      "author": "Edgar Allan Poe",
-      "theme": "stone chamber",
-      "art_source": "deterministic_vector_primitives_no_external_art",
-      "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-      "back_path": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
-      "dimensions": [
-        800,
-        1200
-      ],
-      "front_sha256": "7c5e56a75f22008a54bf44ba12a445078c8b4d7eae64b900c7aac68af48e414c",
-      "back_sha256": "5c817ec835fdd9c3ae40eaf557337709da69bd4f1ad4ce8a106ada0a501ec8ae",
-      "front_bytes": 17058,
-      "back_bytes": 23152
     },
     {
       "slug": "an-occurrence-at-owl-creek-bridge",
@@ -208,44 +128,24 @@
       "back_bytes": 21950
     },
     {
-      "slug": "a-scandal-in-bohemia",
-      "title": "A Scandal in Bohemia",
-      "author": "Arthur Conan Doyle",
-      "theme": "sealed letter",
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "theme": "portrait and gilt frame",
       "art_source": "deterministic_vector_primitives_no_external_art",
       "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/a-scandal-in-bohemia/front-cover.webp",
-      "back_path": "frontend/public/assets/books/a-scandal-in-bohemia/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+      "front_path": "frontend/public/assets/books/picture-of-dorian-gray/front-cover.webp",
+      "back_path": "frontend/public/assets/books/picture-of-dorian-gray/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/back-cover.webp",
       "dimensions": [
         800,
         1200
       ],
-      "front_sha256": "fdaa99cef5754917ec758b27d92fcad1d5cda431037a4d3008987d36d4a78fad",
-      "back_sha256": "98d7d85802e02275a9bbb9bd4cd1844e1e956af310003970272375452621a8b7",
-      "front_bytes": 19456,
-      "back_bytes": 21384
-    },
-    {
-      "slug": "the-lady-with-the-dog",
-      "title": "The Lady with the Dog",
-      "author": "Anton Chekhov",
-      "theme": "seaside promenade",
-      "art_source": "deterministic_vector_primitives_no_external_art",
-      "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/the-lady-with-the-dog/front-cover.webp",
-      "back_path": "frontend/public/assets/books/the-lady-with-the-dog/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/back-cover.webp",
-      "dimensions": [
-        800,
-        1200
-      ],
-      "front_sha256": "639135ab803048092198578b61e0b119d9b5cf4a9313db3f93bbb2194aec6869",
-      "back_sha256": "3fc989282374d1336f8fe066cf43974e1ad76c7b927817405d3e47c8c53319bb",
-      "front_bytes": 19968,
-      "back_bytes": 20712
+      "front_sha256": "2222284a9d1a2f5e1e5c7f0b95eb3bdfb6775e3b83a953d9ecb3e071d6588657",
+      "back_sha256": "ade357db40d10ab548cdff0ddbf2b77e5f7aeaba8dd7e8a666667d01fd4b50d6",
+      "front_bytes": 19390,
+      "back_bytes": 26352
     },
     {
       "slug": "the-bishop",
@@ -268,6 +168,26 @@
       "back_bytes": 21004
     },
     {
+      "slug": "the-canterville-ghost",
+      "title": "The Canterville Ghost",
+      "author": "Oscar Wilde",
+      "theme": "English manor",
+      "art_source": "deterministic_vector_primitives_no_external_art",
+      "title_author_overlay": "deterministic",
+      "front_path": "frontend/public/assets/books/the-canterville-ghost/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-canterville-ghost/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover.webp",
+      "dimensions": [
+        800,
+        1200
+      ],
+      "front_sha256": "e8b7ee7856cfc3e33b81a0eb170e5e4a19273dafdfd7a5163afedb757594e1da",
+      "back_sha256": "af05718d586c61a2109a312555d5de1b2779407fc5b2839568f9068384fce37b",
+      "front_bytes": 17644,
+      "back_bytes": 23674
+    },
+    {
       "slug": "the-enchanted-april",
       "title": "The Enchanted April",
       "author": "Elizabeth von Arnim",
@@ -288,44 +208,64 @@
       "back_bytes": 23430
     },
     {
-      "slug": "the-metamorphosis",
-      "title": "The Metamorphosis",
-      "author": "Franz Kafka",
-      "theme": "threshold and shadow",
+      "slug": "the-fall-of-the-house-of-usher",
+      "title": "The Fall of the House of Usher",
+      "author": "Edgar Allan Poe",
+      "theme": "house and tarn",
       "art_source": "deterministic_vector_primitives_no_external_art",
       "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/the-metamorphosis/front-cover.webp",
-      "back_path": "frontend/public/assets/books/the-metamorphosis/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/the-metamorphosis/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/the-metamorphosis/back-cover.webp",
+      "front_path": "frontend/public/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-fall-of-the-house-of-usher/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/back-cover.webp",
       "dimensions": [
         800,
         1200
       ],
-      "front_sha256": "959541d1d1733b56eed36e3e9d0fb7a3de006dfe22e5925fd9c2f78eabfb044c",
-      "back_sha256": "b778564df1af8b4df868a244509677d8abd844dfdc30af7dff85ae74b99c2c7f",
-      "front_bytes": 15012,
-      "back_bytes": 19762
+      "front_sha256": "8dfb51de07beed3873dac4d418c0596846b34507f4ae51ef28245f7cd16f6e9d",
+      "back_sha256": "e433337c3b5d5f38ef37b740cf15e6d57534fa8446e5b8ed87a6846fe3d8f168",
+      "front_bytes": 19136,
+      "back_bytes": 22890
     },
     {
-      "slug": "the-canterville-ghost",
-      "title": "The Canterville Ghost",
+      "slug": "the-happy-prince",
+      "title": "The Happy Prince",
       "author": "Oscar Wilde",
-      "theme": "English manor",
+      "theme": "gilded statue and swallow",
       "art_source": "deterministic_vector_primitives_no_external_art",
       "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/the-canterville-ghost/front-cover.webp",
-      "back_path": "frontend/public/assets/books/the-canterville-ghost/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/the-canterville-ghost/back-cover.webp",
+      "front_path": "frontend/public/assets/books/the-happy-prince/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-happy-prince/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-happy-prince/back-cover.webp",
       "dimensions": [
         800,
         1200
       ],
-      "front_sha256": "e8b7ee7856cfc3e33b81a0eb170e5e4a19273dafdfd7a5163afedb757594e1da",
-      "back_sha256": "af05718d586c61a2109a312555d5de1b2779407fc5b2839568f9068384fce37b",
-      "front_bytes": 17644,
-      "back_bytes": 23674
+      "front_sha256": "4d66d9da62bcecf1b6cd4a778a1ff21659454272d4cb7fcddf3e7f396b62955f",
+      "back_sha256": "8c3a27d696997837f3a1f2ea1aa49b74e7993cfaa30bb7abbc6a9f3f91a37334",
+      "front_bytes": 20138,
+      "back_bytes": 24006
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "title": "The Lady with the Dog",
+      "author": "Anton Chekhov",
+      "theme": "seaside promenade",
+      "art_source": "deterministic_vector_primitives_no_external_art",
+      "title_author_overlay": "deterministic",
+      "front_path": "frontend/public/assets/books/the-lady-with-the-dog/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-lady-with-the-dog/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/back-cover.webp",
+      "dimensions": [
+        800,
+        1200
+      ],
+      "front_sha256": "639135ab803048092198578b61e0b119d9b5cf4a9313db3f93bbb2194aec6869",
+      "back_sha256": "3fc989282374d1336f8fe066cf43974e1ad76c7b927817405d3e47c8c53319bb",
+      "front_bytes": 19968,
+      "back_bytes": 20712
     },
     {
       "slug": "the-man-who-would-be-king",
@@ -348,24 +288,104 @@
       "back_bytes": 21472
     },
     {
-      "slug": "the-fall-of-the-house-of-usher",
-      "title": "The Fall of the House of Usher",
-      "author": "Edgar Allan Poe",
-      "theme": "house and tarn",
+      "slug": "the-metamorphosis",
+      "title": "The Metamorphosis",
+      "author": "Franz Kafka",
+      "theme": "threshold and shadow",
       "art_source": "deterministic_vector_primitives_no_external_art",
       "title_author_overlay": "deterministic",
-      "front_path": "frontend/public/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
-      "back_path": "frontend/public/assets/books/the-fall-of-the-house-of-usher/back-cover.webp",
-      "front_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
-      "back_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/back-cover.webp",
+      "front_path": "frontend/public/assets/books/the-metamorphosis/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-metamorphosis/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-metamorphosis/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-metamorphosis/back-cover.webp",
       "dimensions": [
         800,
         1200
       ],
-      "front_sha256": "8dfb51de07beed3873dac4d418c0596846b34507f4ae51ef28245f7cd16f6e9d",
-      "back_sha256": "e433337c3b5d5f38ef37b740cf15e6d57534fa8446e5b8ed87a6846fe3d8f168",
-      "front_bytes": 19136,
-      "back_bytes": 22890
+      "front_sha256": "959541d1d1733b56eed36e3e9d0fb7a3de006dfe22e5925fd9c2f78eabfb044c",
+      "back_sha256": "b778564df1af8b4df868a244509677d8abd844dfdc30af7dff85ae74b99c2c7f",
+      "front_bytes": 15012,
+      "back_bytes": 19762
+    },
+    {
+      "slug": "the-most-dangerous-game",
+      "title": "The Most Dangerous Game",
+      "author": "Richard Connell",
+      "theme": "island hunt",
+      "art_source": "deterministic_vector_primitives_no_external_art",
+      "title_author_overlay": "deterministic",
+      "front_path": "frontend/public/assets/books/the-most-dangerous-game/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-most-dangerous-game/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/back-cover.webp",
+      "dimensions": [
+        800,
+        1200
+      ],
+      "front_sha256": "a8bd7587cbbdd9f5ff8a23d9aa8a258bfa08a9ce110228002f37f52b1f2f0d8c",
+      "back_sha256": "182c419386cdc057a8ac96c3b0ab7d5d935a948e179c812a954bfd41215329fd",
+      "front_bytes": 19740,
+      "back_bytes": 22088
+    },
+    {
+      "slug": "the-open-boat",
+      "title": "The Open Boat",
+      "author": "Stephen Crane",
+      "theme": "open sea",
+      "art_source": "deterministic_vector_primitives_no_external_art",
+      "title_author_overlay": "deterministic",
+      "front_path": "frontend/public/assets/books/the-open-boat/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-open-boat/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+      "dimensions": [
+        800,
+        1200
+      ],
+      "front_sha256": "296b67825cf9bd73c3586afdd03cc09f837203e04de9202ea708191dfdb750e4",
+      "back_sha256": "39143f938d1c09214f3bd9ebd9545d404e944b6d0c4c156a89621a469958deee",
+      "front_bytes": 19054,
+      "back_bytes": 25196
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "title": "The Pit and the Pendulum",
+      "author": "Edgar Allan Poe",
+      "theme": "stone chamber",
+      "art_source": "deterministic_vector_primitives_no_external_art",
+      "title_author_overlay": "deterministic",
+      "front_path": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+      "dimensions": [
+        800,
+        1200
+      ],
+      "front_sha256": "7c5e56a75f22008a54bf44ba12a445078c8b4d7eae64b900c7aac68af48e414c",
+      "back_sha256": "5c817ec835fdd9c3ae40eaf557337709da69bd4f1ad4ce8a106ada0a501ec8ae",
+      "front_bytes": 17058,
+      "back_bytes": 23152
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "title": "The Stolen White Elephant",
+      "author": "Mark Twain",
+      "theme": "royal elephant",
+      "art_source": "deterministic_vector_primitives_no_external_art",
+      "title_author_overlay": "deterministic",
+      "front_path": "frontend/public/assets/books/the-stolen-white-elephant/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-stolen-white-elephant/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+      "dimensions": [
+        800,
+        1200
+      ],
+      "front_sha256": "16137ec2a018564aafa68962cf59bed705bdccc6cb89ef6000d431c30f16cddd",
+      "back_sha256": "f6be789f2564035101a7b2fc954a3f72a8553af14e8aa1e7c196363848a1c9a4",
+      "front_bytes": 22560,
+      "back_bytes": 25046
     }
   ]
 }

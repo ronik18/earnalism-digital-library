@@ -1,0 +1,11 @@
+{
+  "slug": "picture-of-dorian-gray",
+  "status": "INVALIDATED_STALE_OR_ESTIMATED_SYNC",
+  "generatedAt": "2026-08-16T00:00:00Z",
+  "source": "picture-of-dorian-gray-reader-repair-20260816",
+  "chapters": [],
+  "totalDurationMs": 0,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "note": "No synchronization is admissible until measured timing is bound to approved audio bytes."
+}
