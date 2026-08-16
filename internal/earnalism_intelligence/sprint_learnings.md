@@ -2135,3 +2135,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Reconcile that split without re-uploading media: bind the production object to the exact attempt fingerprint, manuscript hash, audio SHA-256, size, duration, human approvals, objective QA, residual accessibility decision, API 200, Range 206, and observed browser playback.
 - Keep the raw private storage URL only in the database-owned conveyor; controlled file packs, public projections, and reader manifests must expose only the same-origin release-gated API route.
 - A publication manifest must represent approved audio as an independent lane. Reader approval cannot imply audio approval, and server-owned approved audio requires explicit release evidence, passing audio QA, a checksum, a fingerprint, an exact same-origin endpoint, and a verified production receipt.
+
+## Post-preview source parity repair - 2026-08-16
+
+- A checksum-bound preview proves what was shown, not that the underlying manuscript matches the authoritative edition. Full source parity remains mandatory before synthesis.
+- The Open Boat retained one syntactically malformed sentence that omitted eleven canonical words even though boundary, paragraph, checksum, and preview gates passed.
+- Repair only the exact source-proven phrase, bind the official download checksum, regenerate root/backend controlled checksums, invalidate the previous preview fingerprint, and keep audio hidden until a fresh owner gate.

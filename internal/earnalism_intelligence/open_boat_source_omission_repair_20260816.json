@@ -1,0 +1,58 @@
+{
+  "schema": "earnalism.shortest_reader_boundary_preflight_repair.v1",
+  "mode": "write",
+  "titles": [
+    {
+      "slug": "the-man-who-would-be-king",
+      "repaired_at": "2026-08-15T22:31:13Z",
+      "raw_source_immutable": true,
+      "old_sanitized_sha256": "9e3575b8a51e0a06410c441a37fd8a277cd81705004e99339e614a8db1dfc58b",
+      "new_sanitized_sha256": "6bb07930606cf29425f255fe36c7aca80ab53654da30c4c01831b01a11be6ccb",
+      "source_hash": "f793cabaf57da4c855c5fefa2783c2f21eaa0a14a9d0199f305b89afe57f75f8",
+      "content_hash": "28f4b454893a6d614cb729f94b3c7cbac26640a9d4f102d585051a8e9532e8e5",
+      "provenance_hash": "f4a3486f775a233fae6df4ae40dafec5bc5ce82e4ad8b1d64c75164c11b01827",
+      "semantic_blocks": 201,
+      "narrative_words_order_unchanged": true,
+      "word_count": 14303,
+      "reading_minutes": 60,
+      "required_attribution_bound": false,
+      "root_backend_byte_parity": true,
+      "legacy_estimated_sync_invalidated": true,
+      "audio_enabled": false,
+      "remote_media_mutated": false
+    },
+    {
+      "slug": "the-open-boat",
+      "repaired_at": "2026-08-15T22:31:13Z",
+      "raw_source_immutable": true,
+      "old_sanitized_sha256": "69426e1ecf9a3d1c173bfa2e0b4a53933c8e23bb705138c61ea4828b14b95c25",
+      "new_sanitized_sha256": "9405254f452956ccd89e6a084114190b5bb5c11b33f917dd2be5501e3119135e",
+      "source_hash": "29a393e33c66ac380b611737429839d88116598a4b6397d03caa3c432175615f",
+      "content_hash": "863ac1ae6501ac2fea00d247925c839a76728c96c12f80bd70c0eddb771182a9",
+      "provenance_hash": "7fd768106afdded9d8170cd9c7b172491097cefb80d6eeb7914a7fb856517149",
+      "semantic_blocks": 248,
+      "narrative_words_order_unchanged": true,
+      "word_count": 9340,
+      "reading_minutes": 39,
+      "required_attribution_bound": false,
+      "root_backend_byte_parity": true,
+      "legacy_estimated_sync_invalidated": true,
+      "audio_enabled": false,
+      "remote_media_mutated": false
+    }
+  ],
+  "changed_files": [
+    "content/books/the-open-boat/chapters/001-the-open-boat.json",
+    "content/books/the-open-boat/book.json",
+    "data/controlled_publications/the-open-boat/chapters/chapter-001.json",
+    "data/controlled_publications/the-open-boat/public_book.json",
+    "data/controlled_publications/the-open-boat/reader_manifest.json",
+    "data/controlled_publications/the-open-boat/source_evidence.json",
+    "data/controlled_publications/the-open-boat/checksum_manifest.json",
+    "backend/data/controlled_publications/the-open-boat/chapters/chapter-001.json",
+    "backend/data/controlled_publications/the-open-boat/public_book.json",
+    "backend/data/controlled_publications/the-open-boat/reader_manifest.json",
+    "backend/data/controlled_publications/the-open-boat/source_evidence.json",
+    "backend/data/controlled_publications/the-open-boat/checksum_manifest.json"
+  ]
+}

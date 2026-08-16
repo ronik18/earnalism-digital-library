@@ -44,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 9329,
+      "word_count": 9340,
       "reading_minutes": 39,
       "language_hint": "en",
       "processing_status": "ready",
@@ -53,9 +53,9 @@
       "updated_at": "2026-08-15T22:31:13Z"
     }
   ],
-  "source_hash": "e7fa51d6106dd371a5600393fcab92df93df0faff629220a2020f78b7c067641",
-  "content_hash": "04eec849fe66a679cb800626b13639fc1b805d5b90204add88208aeecca6e966",
-  "provenance_hash": "8228efab2cfc3f454174240566375786cae1cc4d9cae6c6021a0edc18e32ff2e",
+  "source_hash": "29a393e33c66ac380b611737429839d88116598a4b6397d03caa3c432175615f",
+  "content_hash": "863ac1ae6501ac2fea00d247925c839a76728c96c12f80bd70c0eddb771182a9",
+  "provenance_hash": "7fd768106afdded9d8170cd9c7b172491097cefb80d6eeb7914a7fb856517149",
   "rights_basis": "Stephen Crane died 1900; first published 1897. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",
