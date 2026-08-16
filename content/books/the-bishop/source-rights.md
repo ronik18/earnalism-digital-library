@@ -15,7 +15,7 @@
 - Publication region: IN
 - India statutory term: https://copyright.gov.in/Copyright_Act_1957/chapter_v.html
 - Reader-facing boilerplate removed: source furniture and repository-only matter excluded from reader edition.
-- Rights reverified at UTC: 2026-08-15T21:30:20Z
+- Rights reverified at UTC: 2026-08-16T07:38:39Z
 - Status: ready_for_auto_publication
 - Blockers:
 - None
