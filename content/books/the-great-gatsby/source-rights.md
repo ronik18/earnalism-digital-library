@@ -5,15 +5,11 @@
 - Author death year: 1940
 - Original publication year: 1925
 - Source URL: https://www.gutenberg.org/ebooks/64317
-- Source type: gutenberg_html
-- Source format downloaded: text/plain
-- Source license: Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.
-- Rights basis: Author died in 1940. Work published in 1925, before 1928. Entered U.S. public domain on 1 January 2021 under the pre-1928 publication rule.
-- Commercial use allowed: yes
-- Reader-facing boilerplate removed: source furniture and repository-only matter excluded from reader edition.
-- Updated at UTC: 2026-07-03T20:07:48Z
-- Status: ready_for_auto_publication
-- Blockers:
-- None
-
-Reader-facing Earnalism editions must not expose internal admin-only evidence files.
+- Controlled source download: https://www.gutenberg.org/cache/epub/64317/pg64317.txt
+- Controlled source SHA-256: ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35
+- India commercial-use rights basis: F. Scott Fitzgerald died in 1940. Under Section 22 of the Copyright Act, 1957 (India), copyright in a literary work subsists until sixty years from the beginning of the calendar year following the author's death; the term therefore expired in India at the end of 2000 and the work entered the public domain there on 1 January 2001. Territory: IN.
+- Commercial use allowed in publication territory IN: yes
+- Reader-facing boilerplate removed: Gutenberg header, footer, license, title-page furniture, dedication, and epigraph are outside the nine narrative chapter payloads.
+- Updated at UTC: 2026-08-16T14:30:00Z
+- Status: reader_repair_ready_for_owner_approval
+- Blocker: Exact-title cover lacks repository-local checksum and provenance evidence; inherited URLs must not satisfy the cover gate.

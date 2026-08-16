@@ -2141,3 +2141,16 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A checksum-bound preview proves what was shown, not that the underlying manuscript matches the authoritative edition. Full source parity remains mandatory before synthesis.
 - The Open Boat retained one syntactically malformed sentence that omitted eleven canonical words even though boundary, paragraph, checksum, and preview gates passed.
 - Repair only the exact source-proven phrase, bind the official download checksum, regenerate root/backend controlled checksums, invalidate the previous preview fingerprint, and keep audio hidden until a fresh owner gate.
+
+## Long-form print-line reflow repair - 2026-08-16
+
+- A complete long-form narrative can still be reader-invalid when every physical source line was promoted to a paragraph; source parity and reader structure are separate gates.
+- For The Great Gatsby, bind the exact official download first, split only on the nine canonical chapter headings, join wrapped lines only within source-delimited paragraphs, and prove normalized narrative equality chapter-by-chapter.
+- A semantic reflow changes every chapter checksum and therefore invalidates stale estimated sync and historical reader approval even though no narrative token changes.
+- Retaining a legacy cover URL is not cover approval: without repository-local checksum and rights/provenance evidence, keep the exact-title cover gate blocked and the repaired reader private.
+
+## Great Gatsby deterministic reader repair - 2026-08-16
+
+- Centered Roman chapter headings in the official Gutenberg plain-text edition provide deterministic nine-chapter boundaries; blank-line blocks restore semantic paragraphs while whitespace-normalized equality guards every word, punctuation mark, and ordering decision.
+- A historical remote cover URL is not exact-slug graphical-cover proof. Keep the reader private and do not render an approval preview until the cover passes the active cover policy.
+- India release evidence for Fitzgerald must cite Copyright Act 1957 Section 22 and the 1940 death year, not rely solely on United States public-domain reasoning.
