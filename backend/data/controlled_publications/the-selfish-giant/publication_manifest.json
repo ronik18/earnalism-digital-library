@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-selfish-giant",
   "title": "The Selfish Giant",
-  "generated_at": "2026-08-15T19:48:58.231395+00:00",
+  "generated_at": "2026-08-16T06:45:34Z",
   "content": {
     "source_hash": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
     "content_hash": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
@@ -35,19 +35,26 @@
     "blockers": []
   },
   "audio_release": {
-    "status": "NOT_REQUESTED",
-    "exposed": false,
-    "required_for_reader_release": false
+    "status": "APPROVED",
+    "exposed": true,
+    "required_for_reader_release": false,
+    "qa_status": "QA_PASSED",
+    "audio_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67",
+    "candidate_fingerprint": "92a24c3442fe5ad637e72be523f52baded74d0390a256e3b5d5865bdb3f3d96e",
+    "delivery_mode": "SERVER_OWNED_CONVEYOR",
+    "public_endpoint": "/api/reader/book/the-selfish-giant/audiobook",
+    "discovery_exposed": false,
+    "blockers": []
   },
   "commerce_release": {
     "status": "NOT_REQUESTED",
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "adca39bf660c75972691324ed871da653e0959e5fcba7da1c1e9bd60b76f9247",
-    "reader_manifest": "f8cb945f8478157733769ac11bd39fa7e7e6158a270296e10dd9175fcc5d00c7",
+    "public_book": "796c11191413e8b66e606a3846a491f8ab0763855783a118a1d8840270a18ea0",
+    "reader_manifest": "aedb9cb50bf14839e2bf32a3c6d267ea24b0ff220fe8334069298f4a96bf6eae",
     "source_evidence": "489eb8ea5d0db8e8c55b2586fc8fdfb29b8cfb7c487a814f785187aacef689f4",
-    "approval_evidence": "936791d55717232ef42257e5e2ebfdd60c8cb9955e1110fb077180fa1989218a"
+    "approval_evidence": "6685cd9a36ebf4a130a445837d594198416c97ed6bcb6f2e565b46270eaa7edb"
   },
-  "manifest_sha256": "d790ee171cc0800d9fde32664d4f1a20be020d0b99e06eb1b8fa2955efddcce5"
+  "manifest_sha256": "947d997515d3ef7434ef2a750e0ef2f6ed1a8e0b5445216ff21e8e8d4570d2d2"
 }

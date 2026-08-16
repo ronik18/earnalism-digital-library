@@ -18,7 +18,8 @@
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "7 min",
   "formats": [
-    "Ebook"
+    "Ebook",
+    "Audiobook"
   ],
   "benefits": [
     "Read a legally cleared digital text.",
@@ -96,14 +97,14 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generate_audiobook": false,
-  "audiobook_provider": "",
-  "audiobook_voice": "",
-  "audio_asset_slug": "",
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "kokoro",
+  "audiobook_voice": "bm_george",
+  "audio_asset_slug": "the-selfish-giant",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-08-16T06:45:34Z",
   "cover_dimensions": {
     "front": [
       1600,
@@ -114,5 +115,12 @@
       2400
     ]
   },
-  "cover_semantic_match_score": 9.8
+  "cover_semantic_match_score": 9.8,
+  "audiobook_assets_updated_at": "2026-08-16T06:45:34Z",
+  "audio_status": "AVAILABLE",
+  "audiobook_release_gate": "APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "audiobook_release_mode": "SERVER_OWNED_CONVEYOR",
+  "audio_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67",
+  "candidate_fingerprint": "92a24c3442fe5ad637e72be523f52baded74d0390a256e3b5d5865bdb3f3d96e"
 }

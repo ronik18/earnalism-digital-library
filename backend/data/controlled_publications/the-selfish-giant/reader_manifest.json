@@ -24,7 +24,7 @@
   "preview_chapter_ids": [
     "chapter-001"
   ],
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generated_at": "2026-07-03T20:07:49Z"
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generated_at": "2026-08-16T06:45:34Z"
 }

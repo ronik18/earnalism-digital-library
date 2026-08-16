@@ -1,0 +1,48 @@
+{
+  "schema_version": "earnalism.batch2_live_audio_reconciliation.v1",
+  "slug": "a-white-heron",
+  "candidate_fingerprint": "c8ff940d921f36625fb15ce92b2e6592c9e17dd0fd84e933ea872f73b16242e1",
+  "audio_sha256": "70c94cc660fe15fdb4b5e3ef800643090d0eabd27b07523ffa5859b73e700f69",
+  "audio_size_bytes": 19917837,
+  "duration_seconds": 1659.725,
+  "verified_at": "2026-08-16T06:45:34Z",
+  "source_commit": "e03b40e811bd0b1f79c5794b184e02a66d89fa3a",
+  "production_api": {
+    "status": 200,
+    "reader_enabled": true,
+    "audio_enabled": true,
+    "audiobook_enabled": true,
+    "audio_url": "/api/reader/book/a-white-heron/audiobook",
+    "audiobook_release_gate": "APPROVED",
+    "audio_qa_status": "QA_PASSED"
+  },
+  "production_audio": {
+    "full_get_status": 200,
+    "full_get_sha256": "70c94cc660fe15fdb4b5e3ef800643090d0eabd27b07523ffa5859b73e700f69",
+    "full_get_size_bytes": 19917837,
+    "range_status": 206,
+    "range_request": "bytes=0-1023",
+    "range_response_bytes": 1024,
+    "content_type": "audio/mpeg",
+    "accept_ranges": "bytes"
+  },
+  "browser": {
+    "reader_url": "https://theearnalism.com/reader/a-white-heron?listen=1",
+    "player_visible": true,
+    "first_narrated_page_opened": true,
+    "playback_advanced": true,
+    "elapsed_seconds_observed": 3,
+    "pause_control_visible_while_playing": true
+  },
+  "pre_reconciliation_manifest_contradiction": {
+    "nested_book_audio_enabled": false,
+    "top_level_audio_enabled": true,
+    "manifest_version": "1e5cdb97f89fd8c7"
+  },
+  "reconciliation_target": {
+    "nested_book_audio_enabled": true,
+    "top_level_audio_enabled": true,
+    "root_backend_byte_parity": true,
+    "raw_storage_url_exposed_by_public_api": false
+  }
+}

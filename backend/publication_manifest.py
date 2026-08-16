@@ -25,6 +25,8 @@ SCHEMA_VERSION = 1
 READER_READY = "READY_FOR_APPROVAL"
 READER_APPROVED = "APPROVED"
 AUDIO_NOT_REQUESTED = "NOT_REQUESTED"
+AUDIO_IN_PROGRESS = "IN_PROGRESS"
+AUDIO_APPROVED = "APPROVED"
 SHA256_RE = re.compile(r"^[a-f0-9]{64}$")
 UNSAFE_READER_HTML_RE = re.compile(r"<(?:script|iframe|object|embed)\b", re.IGNORECASE)
 
@@ -169,7 +171,57 @@ def build_manifest(
         or public_book.get("generate_audiobook")
         or public_book.get("audiobook_assets")
     )
-    audio_status = "IN_PROGRESS" if audio_requested else AUDIO_NOT_REQUESTED
+    audio_assets = (
+        public_book.get("audiobook_assets")
+        if isinstance(public_book.get("audiobook_assets"), dict)
+        else {}
+    )
+    audio_delivery_mode = str(public_book.get("audiobook_release_mode") or "").strip().upper()
+    audio_public_endpoint = str(approval.get("endpoint_url") or "").strip()
+    server_owned_conveyor = bool(
+        audio_delivery_mode == "SERVER_OWNED_CONVEYOR"
+        and audio_public_endpoint == f"/api/reader/book/{slug}/audiobook"
+    )
+    audio_release_status = str(
+        approval.get("audio_public_release")
+        or approval.get("public_audio_release")
+        or ""
+    ).strip().upper()
+    audio_qa_status = str(
+        approval.get("audio_qa_status") or approval.get("qa_status") or ""
+    ).strip().upper()
+    audio_sha256 = str(approval.get("audio_sha256") or "").strip().lower()
+    candidate_fingerprint = str(
+        approval.get("candidate_fingerprint")
+        or approval.get("attempt_fingerprint")
+        or ""
+    ).strip().lower()
+    audio_approved = bool(
+        audio_requested
+        and public_book.get("audio_enabled") is True
+        and public_book.get("audiobook_enabled") is True
+        and approval.get("audiobook_enabled") is True
+        and audio_release_status in {"APPROVED", "PUBLIC_AUDIO_RELEASE_APPROVED"}
+        and audio_qa_status in {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
+        and (
+            not server_owned_conveyor
+            or (
+                str(public_book.get("audio_sha256") or "").strip().lower() == audio_sha256
+                and str(public_book.get("candidate_fingerprint") or "").strip().lower() == candidate_fingerprint
+            )
+        )
+        and (
+            str(audio_assets.get("mp3") or "").strip()
+            or server_owned_conveyor
+        )
+    )
+    audio_status = (
+        AUDIO_APPROVED
+        if audio_approved
+        else AUDIO_IN_PROGRESS
+        if audio_requested
+        else AUDIO_NOT_REQUESTED
+    )
 
     approval_present = approval.get("approved_to_publish") is True
     reader_status = "BLOCKED" if blockers else READER_READY
@@ -217,8 +269,27 @@ def build_manifest(
         },
         "audio_release": {
             "status": audio_status,
-            "exposed": False,
+            "exposed": audio_approved,
             "required_for_reader_release": False,
+            **(
+                {
+                    "qa_status": audio_qa_status,
+                    "audio_sha256": audio_sha256,
+                    "candidate_fingerprint": candidate_fingerprint,
+                    **(
+                        {
+                            "delivery_mode": "SERVER_OWNED_CONVEYOR",
+                            "public_endpoint": audio_public_endpoint,
+                            "discovery_exposed": False,
+                            "blockers": [],
+                        }
+                        if server_owned_conveyor
+                        else {}
+                    ),
+                }
+                if audio_approved
+                else {}
+            ),
         },
         "commerce_release": {
             "status": "NOT_REQUESTED",
@@ -250,6 +321,26 @@ def validate_manifest(manifest: Any) -> list[str]:
         issues.append("reader exposure requires an APPROVED reader release")
     if audio.get("status") == AUDIO_NOT_REQUESTED and audio.get("exposed") is True:
         issues.append("audio cannot be exposed when it is NOT_REQUESTED")
+    if audio.get("exposed") is True and audio.get("status") != AUDIO_APPROVED:
+        issues.append("audio exposure requires an APPROVED audio release")
+    if audio.get("status") == AUDIO_APPROVED:
+        if audio.get("exposed") is not True:
+            issues.append("approved audio release must be exposed")
+        if not SHA256_RE.fullmatch(str(audio.get("audio_sha256") or "")):
+            issues.append("approved audio release requires audio_sha256")
+        if (
+            audio.get("delivery_mode") == "SERVER_OWNED_CONVEYOR"
+            and not SHA256_RE.fullmatch(str(audio.get("candidate_fingerprint") or ""))
+        ):
+            issues.append("approved audio release requires candidate_fingerprint")
+        if audio.get("delivery_mode") == "SERVER_OWNED_CONVEYOR":
+            slug = str(manifest.get("slug") or "").strip().lower()
+            if audio.get("public_endpoint") != f"/api/reader/book/{slug}/audiobook":
+                issues.append("server-owned audio release requires its same-origin public endpoint")
+            if audio.get("discovery_exposed") is not False:
+                issues.append("server-owned audio release must keep discovery_exposed false")
+            if audio.get("blockers") != []:
+                issues.append("approved server-owned audio release must have no blockers")
     if audio.get("required_for_reader_release") is not False:
         issues.append("audio must remain independent from reader release")
     return issues
