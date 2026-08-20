@@ -55,9 +55,14 @@ function slugify(value) {
 
 async function capture(page, name) {
   ensureEvidenceDir();
+  // Firefox cannot encode a screenshot taller than 32,767 pixels. Preserve a
+  // real screenshot for every journey while using the visible viewport for
+  // exceptionally long catalog pages; assertions continue to inspect the
+  // complete DOM and no journey behavior is skipped.
+  const pageHeight = await page.evaluate(() => document.documentElement.scrollHeight);
   await page.screenshot({
     path: path.join(EVIDENCE_DIR, `${slugify(name)}.png`),
-    fullPage: true,
+    fullPage: pageHeight <= 32_000,
   });
 }
 
