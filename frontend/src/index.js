@@ -6,17 +6,15 @@ import App from "@/App";
 import { initPerformanceMetrics } from "./lib/performanceMetrics";
 
 const rootElement = document.getElementById("root");
-const app = (
+if (!rootElement) {
+  throw new Error("Earnalism requires an empty #root mount element.");
+}
+
+ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
-
-if (rootElement?.dataset.prerendered === "home" && rootElement.hasChildNodes()) {
-  ReactDOM.hydrateRoot(rootElement, app);
-} else {
-  ReactDOM.createRoot(rootElement).render(app);
-}
 
 initPerformanceMetrics();
 injectSpeedInsights();

@@ -5,14 +5,15 @@ const root = process.cwd();
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 
 describe("Home performance sprint contract", () => {
-  test("prerenders and hydrates the real app without a temporary preview replacement", () => {
+  test("mounts the real app into an empty CRA root without a hydration branch", () => {
     const html = read("public/index.html");
     const entry = read("src/index.js");
     const snapshots = read("scripts/generate-static-seo-snapshots.mjs");
 
     expect(html).not.toMatch(/loading preview|root\.innerHTML/i);
-    expect(entry).toContain("hydrateRoot");
-    expect(entry).toContain('dataset.prerendered === "home"');
+    expect(entry).toContain("ReactDOM.createRoot(rootElement).render(");
+    expect(entry).not.toContain("hydrateRoot");
+    expect(entry).toContain('throw new Error("Earnalism requires an empty #root mount element.")');
     expect(snapshots).toContain("renderHomeApp");
     expect(snapshots).toContain('data-prerendered="home"');
   });
