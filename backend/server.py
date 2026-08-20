@@ -790,7 +790,7 @@ CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS)
 PACKS: List[dict] = [
     {
         "id": "30m",
-        "label": "The First Chapter",
+        "label": "The Opening Hour",
         "minutes": 30,
         "amount_paise": 4900,
         "price_inr": 49,
@@ -8652,6 +8652,10 @@ async def reader_book_audiobook(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
+    # Resolve controlled release truth before applying the paid-media lease.
+    # A disabled title is not protected media and must remain indistinguishable
+    # from any other absent audiobook endpoint (404, never an auth challenge).
+    await _reader_audio_book_for_slug(slug)
     if READING_PASS_V2_ENABLED:
         await _authorize_reading_pass_audio(request, principal, slug)
     result = await _reader_book_audiobook_asset(slug, "mp3", request)

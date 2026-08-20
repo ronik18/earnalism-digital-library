@@ -86,7 +86,7 @@ export default function BookDetail() {
     title: bookNotFound
       ? "Book not found — The Earnalism Digital Library"
       : publicBook?.slug === LIVE_APPROVED_SLUG
-        ? "Dracula by Bram Stoker | Read Chapter 1 Free on Earnalism"
+        ? "Dracula by Bram Stoker | Read the first 3 pages free on Earnalism"
         : publicBook ? `${publicBook.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
     description: bookNotFound
       ? "This Earnalism book is no longer available."
@@ -340,7 +340,7 @@ export default function BookDetail() {
               <BookOpen size={18} strokeWidth={1.55} aria-hidden="true" />
               <div>
                 <strong>{isDracula ? "Preview opens first" : "Reader edition ready"}</strong>
-                <p>{isDracula ? "Chapter 1 opens free so you can feel the room before adding reading time." : detailPresentation.readerBody}</p>
+                <p>{isDracula ? "The first 3 canonical pages open free so you can feel the room before adding reading time." : detailPresentation.readerBody}</p>
               </div>
             </div>
             <div className="book-experience-panel__item">
@@ -444,7 +444,7 @@ export default function BookDetail() {
               <div className="italic-eyebrow">Preview, then continue</div>
             <h2>Read the first 3 canonical pages free. Add reading time only when this book has earned your next hour.</h2>
             <p>
-              This controlled launch includes the Dracula core reader only. Reading time is credited to your wallet after payment confirmation and is spent only while you read. Dracula audio remains in preparation and will be introduced only after source, rights, and QA pass. Study guide, visual edition, ads, email, and social campaigns are not live in this release.
+              This controlled launch includes the core reader only. Reading time is credited to your wallet after payment confirmation and is spent only while you read. Audio is available only for separately approved editions. Study guide, visual edition, ads, email, and social campaigns are not live in this release.
             </p>
             <div className="preview-payment-shell__proof">
               <span><Sparkles size={14} strokeWidth={1.5} /> No subscription</span>

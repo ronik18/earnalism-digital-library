@@ -302,8 +302,8 @@ export default function Pricing() {
         <section className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3" aria-label="Reading time wallet explanation" data-testid="pricing-wallet-explainer">
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <BookOpen size={18} strokeWidth={1.55} className="text-gold" />
-            <h2 className="mt-4 font-serif-display text-xl text-burgundy">Chapter 1 stays free</h2>
-            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">Use the preview to decide whether the book has earned your next hour.</p>
+            <h2 className="mt-4 font-serif-display text-xl text-burgundy">First 3 canonical pages are free</h2>
+            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">Use the server-defined preview to decide whether the book has earned your next hour.</p>
           </div>
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <CreditCard size={18} strokeWidth={1.55} className="text-gold" />

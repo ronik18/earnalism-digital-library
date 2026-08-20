@@ -48,7 +48,7 @@ def test_pack_catalogue_ids_and_amounts_are_unchanged() -> None:
     pack_block = extract_between(SERVER, "PACKS: List[dict] = [", "]\nPACKS_BY_ID")
     for expected in [
         '"id": "30m"',
-        '"label": "The First Chapter"',
+        '"label": "The Opening Hour"',
         '"amount_paise": 4900',
         '"id": "1h"',
         '"label": "The Quiet Hour"',

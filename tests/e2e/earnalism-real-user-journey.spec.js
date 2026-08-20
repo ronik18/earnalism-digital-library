@@ -301,14 +301,15 @@ test.describe("Earnalism real-user UX video audit", () => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await openJourneyPage(page, "/", "homepage-desktop");
 
-    const text = await bodyText(page);
-    expectTextContains(text, "A premium reading and listening sanctuary");
-    expectTextContains(text, "Browse Library");
-    expectTextContains(text, "Approved Audiobooks");
-    expectTextContains(text, "Read in Bengali. Read in English. Listen when the edition is ready.");
-    expectTextContains(text, "Continue only when the story has earned it");
-    expectNoBroadCatalogClaims(text);
+    await expect(page.getByTestId("hero-cta-library")).toHaveAccessibleName("Enter the Library");
     await expect(page.getByTestId("hero-cta-library")).toHaveAttribute("href", "/library");
+    await expect(page.getByTestId("home-cta-complete-library")).toHaveAccessibleName("Browse the complete library");
+    await expect(page.getByTestId("home-cta-complete-library")).toHaveAttribute("href", "/library");
+    await expect(page.getByTestId("home-cta-bengali-classics")).toHaveAttribute("href", "/library?language=bn&availability=reader-ready");
+    await expect(page.getByTestId("home-cta-english-classics")).toHaveAttribute("href", "/library?language=en");
+    await expect(page.getByTestId("home-cta-listening-room")).toHaveAttribute("href", "/library?availability=approved-audiobook");
+    await expect(page.getByRole("complementary", { name: "Earnalism Reading Pass" })).toContainText("The first 3 canonical pages are free.");
+    await expect(page.locator("body")).not.toContainText(/Chapter 1 (remains free|is on us|stays free)/i);
     await expect(page.getByTestId("hero-cta-audiobooks")).toHaveAttribute("href", "/library?availability=approved-audiobook");
   });
 
@@ -316,13 +317,11 @@ test.describe("Earnalism real-user UX video audit", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await openJourneyPage(page, "/", "homepage-mobile");
 
-    const text = await bodyText(page);
-    expectTextContains(text, "A premium reading and listening sanctuary");
-    expectTextContains(text, "Browse Library");
-    expectTextContains(text, "Approved Audiobooks");
-    expectTextContains(text, "Bengali classics");
-    expectTextContains(text, "English classics");
-    expectNoBroadCatalogClaims(text);
+    await expect(page.getByTestId("hero-cta-library")).toHaveAccessibleName("Enter the Library");
+    await expect(page.getByTestId("home-cta-complete-library")).toHaveAttribute("href", "/library");
+    await expect(page.getByTestId("home-cta-bengali-classics")).toHaveAttribute("href", "/library?language=bn&availability=reader-ready");
+    await expect(page.getByTestId("home-cta-english-classics")).toHaveAttribute("href", "/library?language=en");
+    await expect(page.getByTestId("home-cta-listening-room")).toHaveAttribute("href", "/library?availability=approved-audiobook");
     const mobileGeometry = await page.evaluate(() => ({
       heroHeight: Math.round(document.querySelector('[data-testid="premium-landing-hero"]')?.getBoundingClientRect().height || 0),
       scrollWidth: document.documentElement.scrollWidth,
@@ -378,7 +377,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     expectTextContains(text, "Project Gutenberg eBook #345");
     expectTextContains(text, "Preview opens first");
     expectTextContains(text, "Audio waits for release gates");
-    expectTextContains(text, "Read Chapter 1 Free");
+    await expect(page.getByTestId("read-preview")).toHaveAccessibleName("Read the first 3 pages free");
     expectTextContains(text, "View Reading Passes");
     await expect(page.getByTestId("read-preview")).toHaveAttribute("href", "/reader/dracula");
     await expect(page.getByTestId("start-reading")).toHaveCount(0);
@@ -404,7 +403,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     const text = await bodyText(page);
     expectTextContains(text, "Choose your reading time");
     expectTextContains(text, "Start with a free preview");
-    expectTextContains(text, "The First Chapter");
+    await expect(page.getByTestId("pack-30m")).toContainText("The Opening Hour");
     expectTextContains(text, "₹49");
     expectTextContains(text, "The Quiet Hour");
     expectTextContains(text, "₹89");
@@ -417,6 +416,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     expectTextContains(text, "Why reading time?");
     expectTextContains(text, "Secure payment by Razorpay");
     expectTextContains(text, "sales@reoenterprise.org");
+    expect(text.toLowerCase()).not.toContain("the first chapter");
     expectNoOldPackNames(text);
   });
 

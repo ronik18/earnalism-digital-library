@@ -56,7 +56,7 @@ export default function CuratedShelfCollage({ curation }) {
               </h2>
               <p>{curation?.description || "Find a classic for the mood you are carrying today."}</p>
             </div>
-            <Link className="curated-shelf-collage__library-link" to="/library">
+            <Link className="curated-shelf-collage__library-link" to="/library" data-testid="home-cta-complete-library">
               <LibraryBig size={17} strokeWidth={1.5} aria-hidden="true" />
               Browse the complete library
               <ArrowRight size={15} strokeWidth={1.6} aria-hidden="true" />

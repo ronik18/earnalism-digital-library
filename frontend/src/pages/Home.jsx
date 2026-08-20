@@ -52,6 +52,7 @@ const QUICK_PATHS = [
     title: "Bengali classics",
     description: "Beloved voices of Bengal, beautifully brought to the page.",
     label: "Enter the Bengali collection",
+    testId: "home-cta-bengali-classics",
     to: "/library?language=bn&availability=reader-ready",
     Icon: Languages,
   },
@@ -60,6 +61,7 @@ const QUICK_PATHS = [
     title: "English classics",
     description: "Enduring stories of wonder, courage, mystery, and the human heart.",
     label: "Enter the English collection",
+    testId: "home-cta-english-classics",
     to: "/library?language=en",
     Icon: BookText,
   },
@@ -68,6 +70,7 @@ const QUICK_PATHS = [
     title: "Immersive audiobooks",
     description: "Soulful performances that let every chapter unfold around you.",
     label: "Step into the listening room",
+    testId: "home-cta-listening-room",
     to: "/library?availability=approved-audiobook",
     Icon: Headphones,
   },
@@ -187,9 +190,10 @@ export default function Home() {
             </h2>
           </div>
           <div className="home-quick-paths__grid">
-            {QUICK_PATHS.map(({ description, eyebrow, Icon, label, title, to }) => (
+            {QUICK_PATHS.map(({ description, eyebrow, Icon, label, testId, title, to }) => (
               <Link
                 key={to}
+                data-testid={testId}
                 to={to}
                 className="home-quick-path"
                 onClick={() => track("homepage_quick_path_click", { cta: label, destination: to })}
@@ -301,7 +305,7 @@ export default function Home() {
               Stay with the story for as long as it holds you.
             </h2>
             <p>
-              Begin every book with Chapter 1 on us. When you are ready for more, add reading time once—without a subscription or autorenewal.
+              The first 3 canonical pages are free. When you are ready for more, add reading time once—without a subscription or autorenewal.
             </p>
             <Link
               to="/pricing"
@@ -316,7 +320,7 @@ export default function Home() {
             <article className="reference-reading-step">
               <BookOpen size={18} strokeWidth={1.6} aria-hidden="true" />
               <h3>Meet the story</h3>
-              <p>Chapter 1 is yours to explore—because trust begins with the first page.</p>
+              <p>The first 3 canonical pages are yours to explore before you add reading time.</p>
             </article>
             <article className="reference-reading-step">
               <CreditCard size={18} strokeWidth={1.6} aria-hidden="true" />

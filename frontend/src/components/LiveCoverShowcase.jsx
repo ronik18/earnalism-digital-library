@@ -331,7 +331,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
                   to={book.slug === LIVE_APPROVED_SLUG ? `/reader/${book.slug}` : `/book/${LIVE_APPROVED_SLUG}`}
                   tabIndex={isInteractiveCopy ? 0 : -1}
                   className="live-cover-card__link"
-                  aria-label={book.slug === LIVE_APPROVED_SLUG ? `Read Chapter 1 of ${book.title}` : `${book.title} is coming soon`}
+                  aria-label={book.slug === LIVE_APPROVED_SLUG ? `Read the first 3 pages of ${book.title}` : `${book.title} is coming soon`}
                   data-testid={isInteractiveCopy ? `live-cover-preview-${book.slug}` : undefined}
                   draggable="false"
                 >
