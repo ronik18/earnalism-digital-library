@@ -1674,6 +1674,10 @@ def _reader_audio_truth_doc(book: Optional[dict], slug: str) -> Optional[dict]:
         merged = _merge_controlled_publication_truth(book, artifact, slug=normalized_slug)
         if can_expose_audio(merged):
             return merged
+        # A controlled artifact is authoritative even when it deliberately
+        # disables audio.  Falling through to the MongoDB row here would let a
+        # stale package or URL reappear in the reader.
+        return merged
     if artifact and can_expose_audio({**artifact, "slug": normalized_slug}):
         return artifact
     if normalized_slug in CATALOG_TRUTH_AUDIO_ENABLED_SLUGS:
@@ -1766,6 +1770,31 @@ def _merge_controlled_publication_truth(
             for field in CONTROLLED_PUBLICATION_DB_CONVEYOR_AUDIO_FIELDS:
                 if field in database_book:
                     merged[field] = database_book[field]
+
+    # The controlled publication owns release truth.  A false value is an
+    # explicit deny, not an invitation to fill missing values from MongoDB.
+    # Clear every audio-shaped field so a stale release record cannot expose
+    # controls, manifests, sidecars, or a playable URL for any controlled
+    # title (including Dracula).
+    if artifact.get("audio_enabled") is False or artifact.get("audiobook_enabled") is False:
+        merged.update(
+            {
+                "audio_enabled": False,
+                "audiobook_enabled": False,
+                "generate_audiobook": False,
+                "audiobook_provider": "",
+                "audiobook_voice": "",
+                "audio_asset_slug": "",
+                "audiobook_assets": {},
+                "audiobook": {},
+                "audiobook_manuscript_sha256": "",
+                "audiobook_release_conveyor": {},
+                "audiobook_assets_updated_at": "",
+                "audio_status": "",
+                "audiobook_release_gate": "",
+                "audio_qa_status": "",
+            }
+        )
     return merged
 
 
