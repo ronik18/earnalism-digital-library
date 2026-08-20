@@ -1,0 +1,13 @@
+[
+  {
+    "id": "ENV-LOCAL-PORT-8000-001",
+    "severity": "P1",
+    "scope": "local-uat-environment",
+    "status": "BLOCKED_EXTERNAL",
+    "command": "UAT_BASE_URL=http://127.0.0.1:3000 UAT_API_BASE_URL=http://127.0.0.1:8000/api bash scripts/start_local_uat.sh",
+    "exit_code": 1,
+    "error": "Uvicorn could not start the canonical backend because TCP 127.0.0.1:8000 is already occupied by an unrelated Python process (PID 9289).",
+    "remediation_attempted": "Installed pinned backend dependencies in .venv-uat, repaired launcher child-liveness checks, local JWT, and test payment mode; did not terminate the unrelated process.",
+    "evidence": "uat/evidence/system-final/local-launcher.log"
+  }
+]

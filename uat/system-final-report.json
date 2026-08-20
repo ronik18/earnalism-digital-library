@@ -1,0 +1,39 @@
+{
+  "schema_version": "system-uat-state-v1",
+  "generated_at": "2026-08-20T18:02:35+00:00",
+  "environment": {
+    "frontend_url": "http://127.0.0.1:3000",
+    "api_url": "http://127.0.0.1:8000/api",
+    "worktree": "/private/tmp/earnalism-main-approved-integration"
+  },
+  "totals": {
+    "PASS": 11,
+    "FAILED": 0,
+    "BLOCKED": 1,
+    "UNTESTED": 27,
+    "UNVERIFIED": 0
+  },
+  "included_case_count": 39,
+  "excluded_case_count": 7,
+  "score": 2.8205128205128207,
+  "result": "BLOCKED_EXTERNAL",
+  "completion_conditions_met": false,
+  "root_causes_fixed": [
+    "local-only UAT endpoint enforcement",
+    "CRA hydration misuse",
+    "controlled audio release truth",
+    "frontend manifest fail-closed merge",
+    "canonical preview copy",
+    "route status/noindex behavior",
+    "launcher own-child liveness verification"
+  ],
+  "blocking_defect_ids": [
+    "ENV-LOCAL-PORT-8000-001"
+  ],
+  "evidence_paths": [
+    "uat/evidence/system-final/backend-policy-targeted.log",
+    "uat/evidence/system-final/frontend-targeted.log",
+    "uat/evidence/system-final/frontend-build.log",
+    "uat/evidence/system-final/local-launcher.log"
+  ]
+}
