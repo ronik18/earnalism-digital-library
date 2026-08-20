@@ -637,7 +637,7 @@
   --earnalism-beige: #F5F0E8;
   --earnalism-warm-white: #FDFAF4;
   --earnalism-ink: #2C1810;
-  --earnalism-muted: #8B7355;
+  --earnalism-muted: #6C5237;
   --earnalism-gold: #C9A84C;
   --earnalism-gold-light: #E8D5A3;
   --earnalism-shadow: rgba(107, 30, 46, 0.08);
@@ -782,9 +782,8 @@
 
 .reader-topbar__center span {
   max-width: min(32vw, 18rem);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .reader-topbar__actions {
@@ -1875,6 +1874,7 @@
 
   .reader-topbar__center span {
     max-width: 100%;
+    line-height: 1.2;
   }
 
   .reader-topbar__back {
