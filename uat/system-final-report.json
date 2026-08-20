@@ -1,12 +1,12 @@
 {
   "schema_version": "system-uat-state-v1",
-  "generated_at": "2026-08-20T20:36:15+00:00",
+  "generated_at": "2026-08-20T20:36:34+00:00",
   "environment": {
     "frontend_url": "http://127.0.0.1:3000",
     "api_url": "http://127.0.0.1:8000/api",
     "worktree": "/private/tmp/earnalism-main-approved-integration",
     "branch": "codex/main-approved-integration",
-    "head": "2212102d137a60a85fe4471ad2f16156fcba4107"
+    "head": "9844874caa2844421428f4f472efbb50a9d3ed0e"
   },
   "totals": {
     "PASS": 39,
