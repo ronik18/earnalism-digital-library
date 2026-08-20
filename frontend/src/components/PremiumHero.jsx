@@ -759,7 +759,7 @@ export default function PremiumHero({
           ) : null}
         </h1>
         <p>{subheadline}</p>
-        <p className="sr-only">Reading time is used only while you read. Chapter 1 remains free to preview.</p>
+        <p className="sr-only">Reading time is used only while you read. The first 3 canonical pages are free to preview.</p>
       </div>
 
       <div className="premium-hero-actions" data-testid="hero-ctas">
@@ -809,8 +809,8 @@ export default function PremiumHero({
           <WalletCards size={19} strokeWidth={1.45} aria-hidden="true" />
           <span>Reading Pass</span>
         </div>
-        <h2>Begin with a chapter. Stay for the journey.</h2>
-        <p>Chapter 1 is on us. Add reading time only when you want the story to continue.</p>
+        <h2>Begin with three pages. Stay for the journey.</h2>
+        <p>The first 3 canonical pages are free. Add reading time only when you want the story to continue.</p>
         <Link
           to="/pricing"
           className="premium-hero-offer__cta"

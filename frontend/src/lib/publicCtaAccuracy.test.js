@@ -41,9 +41,9 @@ describe("public CTA accuracy contract", () => {
     expect(home).toContain('to: "/library?availability=approved-audiobook"');
   });
 
-  test("Dracula detail has one truthful free-reading CTA and minute-based pass language", () => {
+  test("book detail has one truthful three-page CTA and minute-based pass language", () => {
     expect(bookDetail).toContain('data-testid="read-preview"');
-    expect(bookDetail).toContain('>Read Chapter 1 Free</Link>');
+    expect(bookDetail).toContain('>Read the first 3 pages free</Link>');
     expect(bookDetail).toContain('>View Reading Passes</Link>');
     expect(bookDetail).not.toContain("Get 7-Day Reading Pass");
     expect(bookDetail).not.toContain('isDracula ? "Continue Dracula"');
@@ -52,7 +52,7 @@ describe("public CTA accuracy contract", () => {
 
   test("pricing preview and account continuation lead directly to the reader", () => {
     expect(pricing).toContain('to="/reader/dracula"');
-    expect(pricing).toContain("Read Chapter 1 Free");
+    expect(pricing).toContain("Read the first 3 pages free");
     expect(account).toContain('to="/reader/dracula"');
     expect(account).toContain("Continue Dracula");
   });

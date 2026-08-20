@@ -251,9 +251,9 @@ export default function Pricing() {
               className="btn-secondary"
               data-testid="dracula-continue-from-pricing"
             >
-              Read Chapter 1 Free
+              Read the first 3 pages free
             </Link>
-            <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">Chapter 1 remains free to preview</span>
+            <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">The first 3 canonical pages are free to preview</span>
           </div>
           {showSimulator && (
             <div className="mt-7 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--brand-gold)]/40 text-[0.7rem] tracking-[0.22em] uppercase text-gold-deep" data-testid="pricing-test-mode-banner">
