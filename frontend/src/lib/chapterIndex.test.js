@@ -40,7 +40,7 @@ describe('chapter index contract', () => {
       .map((slug) => path.join(controlledRoot, slug, 'reader_manifest.json'))
       .filter((manifestPath) => fs.existsSync(manifestPath))
       .sort();
-    expect(manifests).toHaveLength(79);
+    expect(manifests).toHaveLength(96);
 
     let auditedChapters = 0;
     manifests.forEach((manifestPath) => {
@@ -54,6 +54,6 @@ describe('chapter index contract', () => {
       expect(first.every((entry) => entry.index_contract === CHAPTER_INDEX_CONTRACT_VERSION)).toBe(true);
       auditedChapters += first.length;
     });
-    expect(auditedChapters).toBe(691);
+    expect(auditedChapters).toBe(760);
   });
 });
