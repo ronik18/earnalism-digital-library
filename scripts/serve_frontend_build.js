@@ -6,8 +6,9 @@ const http = require("node:http");
 const path = require("node:path");
 
 const root = path.resolve(__dirname, "..", "frontend", "build");
-const host = "127.0.0.1";
-const port = 3000;
+const host = process.argv.includes("--host") ? process.argv[process.argv.indexOf("--host") + 1] : "127.0.0.1";
+const port = Number(process.argv.includes("--port") ? process.argv[process.argv.indexOf("--port") + 1] : 3000);
+if (host !== "127.0.0.1" || !Number.isInteger(port) || port < 1024 || port > 65535) throw new Error("Local UAT server requires an unprivileged 127.0.0.1 port.");
 const mime = { ".css": "text/css", ".html": "text/html", ".js": "text/javascript", ".json": "application/json", ".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png", ".xml": "application/xml" };
 const exactRoutes = new Set(["/", "/library", "/journal", "/about", "/contact", "/pricing", "/micro-story", "/secure-reader-test", "/login", "/signup", "/account", "/admin", "/admin/login", "/admin/launch-monitor"]);
 const routePrefixes = ["/book/", "/journal/", "/reader/", "/signin/", "/publishing/"];
