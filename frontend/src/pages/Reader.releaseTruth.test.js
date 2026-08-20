@@ -24,6 +24,12 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/canPlay=\{!audioDisabledForPage && generatedAudioAvailable\}/);
   });
 
+  test("fails closed when a manifest offers audio for a disabled controlled title", () => {
+    expect(readerSource).toContain("readerManifestAudioIsAuthorized(data.book, manifestAudio)");
+    expect(readerSource).toMatch(/book\.audiobook_assets = \{\}/);
+    expect(readerSource).toMatch(/book\.audiobook = \{\}/);
+  });
+
   test("fails closed for the known cross-title A Ghost Story cover binding", () => {
     expect(readerSource).toMatch(/function readerListeningCoverUrl/);
     expect(readerSource).toMatch(/slug === 'a-ghost-story'/);

@@ -20,6 +20,7 @@ import {
 import useSEO from "../hooks/useSEO";
 import { bookDetailPresentationForBook } from "../lib/bookDetailPresentation";
 import { readerManifestPath } from "../lib/audioReleaseSafety";
+import { readerManifestAudioIsAuthorized } from "../lib/readerManifestAccess";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 const SITE_URL = "https://theearnalism.com";
@@ -32,13 +33,33 @@ function mergeReaderManifestIntoBook(book, manifest) {
   if (!book || !manifest || typeof manifest !== "object") return book;
   const manifestBook = manifest.book && typeof manifest.book === "object" ? manifest.book : {};
   const manifestAudio = manifest.audio && typeof manifest.audio === "object" ? manifest.audio : {};
+  const {
+    audio_enabled: _manifestAudioEnabled,
+    audiobook_enabled: _manifestAudiobookEnabled,
+    audiobook_assets: _manifestAudiobookAssets,
+    audiobook_release_gate: _manifestReleaseGate,
+    ...safeManifestBook
+  } = manifestBook;
+  const audioAuthorized = readerManifestAudioIsAuthorized(book, manifestAudio);
+  if (!audioAuthorized) {
+    return {
+      ...book,
+      ...safeManifestBook,
+      _readerManifest: { ...manifest, audio: { enabled: false, assets: {} } },
+      audio_enabled: false,
+      audiobook_enabled: false,
+      audiobook_assets: {},
+      audiobook: {},
+      audio_asset_slug: "",
+    };
+  }
   return {
     ...book,
-    ...manifestBook,
+    ...safeManifestBook,
     _readerManifest: manifest,
-    audiobook_enabled: manifestAudio.enabled ?? manifestBook.audiobook_enabled ?? book.audiobook_enabled,
-    audiobook_release_gate: manifestBook.audiobook_release_gate || manifestAudio.release_gate || book.audiobook_release_gate,
-    audio_qa_status: manifestBook.audio_qa_status || manifestAudio.qa_status || book.audio_qa_status,
+    audiobook_enabled: book.audiobook_enabled,
+    audiobook_release_gate: book.audiobook_release_gate,
+    audio_qa_status: book.audio_qa_status,
     narration_disclosure: manifestAudio.narration_disclosure || book.narration_disclosure,
     sync_mode: manifestBook.sync_mode || manifestAudio.sync_mode || book.sync_mode,
     highlight_sync_enabled: manifestBook.highlight_sync_enabled ?? manifestAudio.highlight_sync_enabled ?? book.highlight_sync_enabled,
@@ -70,7 +91,7 @@ export default function BookDetail() {
     description: bookNotFound
       ? "This Earnalism book is no longer available."
       : publicBook?.slug === LIVE_APPROVED_SLUG
-        ? "Preview Dracula by Bram Stoker on Earnalism. Read Chapter 1 free and continue the approved classic reading release with flexible reading-time access."
+        ? "Preview Dracula by Bram Stoker on Earnalism. Read the first 3 canonical pages free and continue with flexible reading-time access."
         : publicBook?.short_description || publicBook?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
     image: publicBook?.cover_image_url,
     imageAlt: publicBook?.slug === LIVE_APPROVED_SLUG ? "Custom Earnalism Dracula cover artwork" : publicBook?.title,
@@ -290,7 +311,7 @@ export default function BookDetail() {
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center" data-testid="book-actions">
             {isDracula && hasFreePreview && (
-              <Link to={readerHref} className="btn-primary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
+                  <Link to={readerHref} className="btn-primary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>Read the first 3 pages free</Link>
             )}
             {!isDracula && (
               <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: "book_detail_reader" })}>
@@ -421,7 +442,7 @@ export default function BookDetail() {
           </div>
             <div className="preview-payment-shell__copy">
               <div className="italic-eyebrow">Preview, then continue</div>
-            <h2>Read Chapter 1 free. Add reading time only when Dracula has earned your next hour.</h2>
+            <h2>Read the first 3 canonical pages free. Add reading time only when this book has earned your next hour.</h2>
             <p>
               This controlled launch includes the Dracula core reader only. Reading time is credited to your wallet after payment confirmation and is spent only while you read. Dracula audio remains in preparation and will be introduced only after source, rights, and QA pass. Study guide, visual edition, ads, email, and social campaigns are not live in this release.
             </p>
@@ -432,7 +453,7 @@ export default function BookDetail() {
           </div>
           <div className="preview-payment-shell__actions">
             <Link to={`/reader/${publicBook.slug}`} className="btn-secondary w-full justify-center" data-testid="bottom-read-preview">
-              <BookOpen size={15} strokeWidth={1.6} /> Read Chapter 1 Free
+              <BookOpen size={15} strokeWidth={1.6} /> Read the first 3 pages free
             </Link>
             <Link to={readingPassUrl("book_preview")} className="btn-primary w-full justify-center" data-testid="bottom-buy-reading-time">
               <CreditCard size={15} strokeWidth={1.6} /> View Reading Passes

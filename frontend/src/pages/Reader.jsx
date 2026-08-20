@@ -16,6 +16,7 @@ import { optimizedImageUrl } from '../lib/images';
 import { resolveBookCover } from '../lib/bookCoverResolver';
 import useSEO from '../hooks/useSEO';
 import { audiobookNarrationDisclosure, audiobookReleaseState, canExposeAudiobookControls, isReaderAudiobookManifestPath, readerManifestPath } from '../lib/audioReleaseSafety';
+import { readerManifestAudioIsAuthorized } from '../lib/readerManifestAccess';
 import { audioTimestampStartMs, normalizeAudioTimestamp } from '../lib/audioTimestampSchema';
 import {
   audioSegmentAtMediaPosition,
@@ -540,8 +541,13 @@ function audioAssetSlugForBook(book, bookId) {
   return book?.slug || bookId || '';
 }
 
-function normalizeReaderManifestResponse(data = {}) {
+export function normalizeReaderManifestResponse(data = {}) {
   if (!data?.book) return data;
+  const manifestAudio = data.audio && typeof data.audio === 'object' ? data.audio : {};
+  // Audio is an all-of contract.  Never merge a manifest's assets into a book
+  // which has not itself been approved for audio; mixed/stale responses must
+  // render as audio-hidden rather than attempt a useful fallback.
+  const audioApproved = readerManifestAudioIsAuthorized(data.book, manifestAudio);
   const book = {
     ...data.book,
     chapters: data.chapters || data.book.chapters || [],
@@ -549,17 +555,23 @@ function normalizeReaderManifestResponse(data = {}) {
       version: data.version || '',
       content_generation: data.content_generation,
       access: data.access || {},
-      audio: data.audio || {},
+      audio: audioApproved ? manifestAudio : { enabled: false, assets: {} },
       generated_at: data.generated_at || '',
     },
   };
-  if (data.audio) {
+  if (audioApproved) {
     book.audiobook_assets = {
       ...(book.audiobook_assets || {}),
-      ...(data.audio.assets || {}),
+      ...(manifestAudio.assets || {}),
     };
-    book.audio_asset_slug = data.audio.asset_slug || book.audio_asset_slug;
-    book.audiobook_enabled = data.audio.enabled;
+    book.audio_asset_slug = manifestAudio.asset_slug || book.audio_asset_slug;
+  } else {
+    book.audio_enabled = false;
+    book.audiobook_enabled = false;
+    book.generate_audiobook = false;
+    book.audio_asset_slug = '';
+    book.audiobook_assets = {};
+    book.audiobook = {};
   }
   return book;
 }
