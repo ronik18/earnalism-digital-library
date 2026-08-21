@@ -17,6 +17,7 @@ const BATCH_1_READER_ONLY_SLUGS = [
   "pather-panchali",
   "eyesore-chokher-bali",
 ];
+const PENDING_READER_APPROVAL_SLUGS = new Set(["picture-of-dorian-gray"]);
 const CLAIMABLE_LIVE_SLUGS = [
   "alices-adventures-in-wonderland",
   "bn-027",
@@ -225,6 +226,10 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(sitemap).toContain(`${SITE_URL}/pricing`);
     expect(sitemap).not.toContain(`${SITE_URL}/reader/dracula`);
     for (const slug of BATCH_1_READER_ONLY_SLUGS) {
+      if (PENDING_READER_APPROVAL_SLUGS.has(slug)) {
+        expect(sitemap).not.toContain(`${SITE_URL}/book/${slug}`);
+        continue;
+      }
       expect(sitemap).toContain(`${SITE_URL}/book/${slug}`);
       expect(sitemap).not.toContain(`${SITE_URL}/reader/${slug}`);
     }
@@ -235,6 +240,10 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(sitemap).not.toMatch(/kshudhita|\/reader\/|\/shop|\/product\/|\/blog\/|\/post\/|\/category\/|\/tag\//i);
     expect(robots).toContain("Allow: /reader/dracula");
     for (const slug of BATCH_1_READER_ONLY_SLUGS) {
+      if (PENDING_READER_APPROVAL_SLUGS.has(slug)) {
+        expect(robots).not.toContain(`Allow: /reader/${slug}`);
+        continue;
+      }
       expect(robots).toContain(`Allow: /reader/${slug}`);
     }
     for (const slug of CLAIMABLE_LIVE_SLUGS) {

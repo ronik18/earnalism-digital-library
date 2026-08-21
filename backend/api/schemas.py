@@ -209,6 +209,8 @@ class PublicBookOut(BaseModel):
     preview_enabled: bool = False
     audio_enabled: bool = False
     audiobook_enabled: bool = False
+    audiobook_assets: Dict[str, str] = Field(default_factory=dict)
+    audiobook: Optional[Dict[str, Any]] = None
     public_route: str = ""
     reader_url: str = ""
     preview_url: str = ""

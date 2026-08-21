@@ -9,8 +9,8 @@ This report records line-normalization evidence for changed runtime, script, and
 | scripts/launch_readiness_audit.py | 2961 |
 | scripts/open_source_audiobook_onboarding.py | 1628 |
 | backend/tests/test_launch_readiness_audit.py | 270 |
-| frontend/src/pages/Pricing.jsx | 357 |
-| package.json | 145 |
+| frontend/src/pages/Pricing.jsx | 349 |
+| package.json | 147 |
 
 ## Raw GitHub Download Command
 

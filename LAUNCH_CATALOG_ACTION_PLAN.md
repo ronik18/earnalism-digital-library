@@ -4,20 +4,22 @@ Dry-run classification only. No content was deleted or mutated.
 
 | Action | Count |
 | --- | --- |
-| KEEP_PROMOTE | 61 |
-| KEEP_REWRITE | 33 |
+| KEEP_PROMOTE | 64 |
+| KEEP_REWRITE | 32 |
 
 ## Highest-Risk Items
 
 | URL | Action | Reason |
 | --- | --- | --- |
-| https://theearnalism.com/book/bn-027 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/bn-059 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/bn-066 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
+| https://theearnalism.com/book/book-d19e96859f | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
+| https://theearnalism.com/book/book-edfcf810c5 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
+| https://theearnalism.com/book/book-f5d593e1f4 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
+| https://theearnalism.com/book/bn-027 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-0986aeb7e3 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-0fbdaa730e | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-1090573dff | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
-| https://theearnalism.com/book/book-2b9853ec52 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-4968248842 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-4b944e64fa | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-5461971092 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
@@ -38,9 +40,6 @@ Dry-run classification only. No content was deleted or mutated.
 | https://theearnalism.com/book/book-c307a57868 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-c7f3ce526c | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-c85323409f | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
-| https://theearnalism.com/book/book-d19e96859f | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-d2fe532e1c | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
-| https://theearnalism.com/book/book-edfcf810c5 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-ef193ffc52 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
-| https://theearnalism.com/book/book-f5d593e1f4 | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |
 | https://theearnalism.com/book/book-fbdf2991ab | KEEP_REWRITE | Generated or code-like slug should be rewritten before promotion. |

@@ -1,7 +1,7 @@
 # Phase 13 Validation Report
 
-Commit SHA at report generation: `dea24a0d29388ae8ae92a04eb2d3f498b1064c54`
-Final score: `7.84/10`
+Commit SHA at report generation: `55b5be9271f640b01f7c0d47920e2618108fdd5d`
+Final score: `7.72/10`
 Recommendation: `HOLD_FOR_FIXES`
 
 ## Commands Added
@@ -43,7 +43,7 @@ Recommendation: `HOLD_FOR_FIXES`
 | --- | --- |
 | Production parity | PASS |
 | SEO/crawlability | BLOCKED |
-| UX/conversion | PASS |
+| UX/conversion | BLOCKED |
 | Payment/revenue | PASS_TEST_MODE |
 | Security/privacy | BLOCKED |
 | Performance/autoscaling | PASS |
@@ -54,6 +54,7 @@ Recommendation: `HOLD_FOR_FIXES`
 | Area | Severity | Blocker |
 | --- | --- | --- |
 | seo | HIGH | Homepage raw HTML failed check: dracula_first. |
+| ux_conversion | HIGH | Missing UX/conversion signal: book_buy_cta. |
 | security | CRITICAL | Potential committed secrets in ['backend/tests/test_b2_audiobook_routing.py', 'internal/audiobook_lab/scripts/test_cloudinary_credentials_and_cover_hook.py', 'internal/audiobook_lab/storage_containment/ensure_wave1_b2_destination_key.sh', 'internal/audiobook_lab/storage_containment/run_wave1_one_by_one_auto.sh', 'internal/audiobook_lab/storage_containment/run_wave1_restore_then_migrate.sh', 'internal/audiobook_lab/storage_containment/run_wave1_with_guard.sh', 'internal/audiobook_lab/storage_containment/unapproved_direct_audio_remediation_commands.sh', 'internal/earnalism_intelligence/bengali_audiobook_package_v2_wave1_env_bootstrap.sh']. |
 | rights_source_readiness | HIGH | First batch has no approved real source metadata in the dry-run evidence. |
 

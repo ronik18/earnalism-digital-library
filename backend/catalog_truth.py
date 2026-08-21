@@ -1082,17 +1082,9 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
             "audio_status": audio_status,
             "audiobook_release_gate": "APPROVED" if audio else "",
             "audio_qa_status": audio_release_qa_status(book) if audio else "",
-            "cta_label": (
-                "Start Dracula"
-                if live and slug == LIVE_APPROVED_SLUG
-                else "Read"
-                if live
-                else "Notify Me"
-            ),
+            "cta_label": "Read" if live else "Notify Me",
             "secondary_cta_label": (
-                "Read Chapter 1 Free"
-                if preview and slug == LIVE_APPROVED_SLUG
-                else "Read Free Preview"
+                "Read the first 3 pages free"
                 if preview
                 else "Details"
                 if live
@@ -1100,9 +1092,7 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
             ),
             "public_json_ld_enabled": live,
             "source_note": (
-                "Source verified for the controlled Dracula reading launch."
-                if live and slug == LIVE_APPROVED_SLUG
-                else "Public-domain source verified for controlled reading."
+                "Public-domain source verified for controlled reading."
                 if live
                 else "Source and rights verification are still in the pipeline."
             ),

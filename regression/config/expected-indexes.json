@@ -7,7 +7,7 @@
   ],
   "categories": [
     { "keys": { "slug": 1 }, "unique": true },
-    { "keys": { "order": 1 } }
+    { "keys": { "order": 1, "slug": 1 } }
   ],
   "blog_posts": [
     { "keys": { "slug": 1 }, "unique": true },

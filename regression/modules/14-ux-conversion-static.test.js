@@ -69,6 +69,9 @@ describe("UX conversion static signals", () => {
   const premiumHero = read("frontend/src/components/PremiumHero.jsx");
   const premiumHeroStyles = read("frontend/src/components/PremiumHero.css");
   const heroCarousel = read("frontend/src/lib/heroCarousel.js");
+  const regressionWorkflow = read(".github/workflows/regression.yml");
+  const prRegressionRunner = read("scripts/run_pr_regression.sh");
+  const prRegressionGates = read("scripts/run_pr_regression_gates.sh");
   const headerStyles = read("frontend/src/components/Header.css");
   const homeCurationClient = read("frontend/src/lib/homeCuration.js");
   const bookDetail = read("frontend/src/pages/BookDetail.jsx");
@@ -264,7 +267,7 @@ describe("UX conversion static signals", () => {
     expect(premiumHero).toContain('data-testid="premium-landing-hero"');
     expect(premiumHero).toContain('data-testid="hero-catalog-visuals"');
     expect(premiumHero).toContain('data-testid="premium-hero-reading-pass"');
-    expect(premiumHero).toContain("Begin with a chapter. Stay for the journey.");
+    expect(premiumHero).toContain("Begin with three pages. Stay for the journey.");
     expect(premiumHero).toContain("View Reading Passes");
     expect(premiumHero).toContain("Beautiful Graphical Editions");
     expect(premiumHero).toContain("Calm Reader Modes");
@@ -372,6 +375,27 @@ describe("UX conversion static signals", () => {
     expect(premiumLandingSources).not.toMatch(/\b(fashion|clothing|apparel|self-publishing|WooCommerce|Add to cart|Shop now)\b/i);
   });
 
+  test("pull-request regression runs against the isolated local smoke target", () => {
+    const localPrStep = extractBetween(
+      regressionWorkflow,
+      "- name: Run isolated local PR regression",
+      "- name: Run main pre-deploy regression",
+    );
+    expect(regressionWorkflow).toContain("mongo:7.0.14");
+    expect(regressionWorkflow).toContain("--replSet earnalism-uat-rs0");
+    expect(localPrStep).toContain("UAT_EXTERNAL_MONGODB: true");
+    expect(localPrStep).toContain("NODE_ENV: production");
+    expect(localPrStep).toContain("bash scripts/run_pr_regression.sh");
+    expect(prRegressionRunner).toContain('UAT_COMMAND_FILE="$ROOT/scripts/run_pr_regression_gates.sh"');
+    expect(prRegressionRunner).toContain("bash scripts/start_local_uat.sh");
+    expect(prRegressionGates).toContain('EARNALISM_BASE_URL="$UAT_BASE_URL"');
+    expect(prRegressionGates).toContain('REGRESSION_FRONTEND_URL="$UAT_BASE_URL"');
+    expect(prRegressionGates).toContain('REGRESSION_API_URL="${UAT_API_BASE_URL%/api}"');
+    expect(prRegressionGates).toContain("npm run regression:ci");
+    expect(localPrStep).not.toMatch(/theearnalism\.com|continue-on-error/);
+    expect(regressionWorkflow).not.toContain("Report production parity without blocking PR deploy fix");
+  });
+
   test("library and book pages expose controlled reader-only paths without broad catalog or payment overclaim", () => {
     expect(library).toContain("One mixed shelf for Bengali and English classics, with access and listening status kept clear.");
     expect(library).toContain("CURATED EDITIONS");
@@ -389,7 +413,7 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain('data-testid="book-reading-pass"');
     expect(bookDetail).toContain("{isDracula && (");
     expect(bookDetail).toContain('data-testid="book-experience-truth"');
-    expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room before adding reading time.");
+    expect(bookDetail).toContain("The first 3 canonical pages open free so you can feel the room before adding reading time.");
     expect(bookDetail).toContain("View Reading Passes");
     expect(bookDetail).not.toContain("Get 7-Day Reading Pass");
     expect(bookDetailPresentation).toContain("No public audio controls are shown until narration, sync, metadata, endpoint, and browser gates pass.");
@@ -407,7 +431,7 @@ describe("UX conversion static signals", () => {
     expect(launchAudit).toContain('"stale_intent_expiry_detected"');
     expect(launchAudit).toContain('"no_public_audiobook_sale_detected"');
     expect(alwaysVisibleLaunchCopy).toContain("Reading time is used only while you read.");
-    expect(alwaysVisibleLaunchCopy).toContain("Chapter 1 remains free to preview");
+    expect(alwaysVisibleLaunchCopy).toContain("The first 3 canonical pages are free to preview");
     expect(renderedPricingSources).toContain("No subscription or autorenewal");
     expect(renderedPricingSources).not.toMatch(/own forever|ownership forever|permanent ownership|autorenewing plan|recurring subscription/i);
     expect(renderedPricingSources).not.toMatch(/buy audiobook|audiobook pass|Listen Now/i);
@@ -1372,7 +1396,7 @@ describe("UX conversion static signals", () => {
   });
 
   test("pricing packs keep approved premium reading-time labels and notes", () => {
-    expect(backend).toContain('"label": "The First Chapter"');
+    expect(backend).toContain('"label": "The Opening Hour"');
     expect(backend).toContain('"label": "The Quiet Hour"');
     expect(backend).toContain('"label": "The Deep Reading Pass"');
     expect(backend).toContain('"label": "The Reader’s Reserve"');
@@ -1406,8 +1430,8 @@ describe("UX conversion static signals", () => {
     }
     expect(renderedPricingSources).not.toContain("₹49 The First Chapter");
     expect(renderedPricingSources).not.toContain("unlock the ₹49");
-    expect(microStory).toContain("continue with The First Chapter — ₹49");
-    expect(microStory).toContain("unlock <em>The First Chapter</em> for ₹49");
+    expect(microStory).toContain("Start with ₹49");
+    expect(microStory).toContain("Continue with reading time");
     expect(readerUpsell).toContain("The Quiet Hour");
     expect(readerUpsell).not.toContain("An Evening In");
   });

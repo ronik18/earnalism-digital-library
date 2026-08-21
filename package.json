@@ -14,6 +14,8 @@
     "ux:journey-record:local": "EARNALISM_BASE_URL=http://localhost:3000 node scripts/record_signed_user_journey.mjs",
     "ux:journey-record:prod": "EARNALISM_BASE_URL=https://theearnalism.com node scripts/record_signed_user_journey.mjs",
     "ux:journey-regression-report": "EARNALISM_JOURNEY_MODE=regression-report node scripts/record_signed_user_journey.mjs",
+    "uat:start": "UAT_BASE_URL=http://127.0.0.1:3000 UAT_API_BASE_URL=http://127.0.0.1:8000/api bash scripts/start_local_uat.sh",
+    "uat:full": "UAT_BASE_URL=http://127.0.0.1:3000 UAT_API_BASE_URL=http://127.0.0.1:8000/api bash scripts/run_local_uat.sh",
     "release:ux-go-no-go": "npm run ux:real-user-video-audit && python3 scripts/generate_real_user_ux_report.py",
     "regression:visual:update": "node regression/scripts/update-visual-baselines.js",
     "regression:visual:ci": "REGRESSION_MODE=visual-ci npm run regression -- modules/02-rendering-visual.test.*",
@@ -140,6 +142,7 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
+    "mongodb": "6.17.0",
     "playwright": "^1.60.0"
   }
 }

@@ -4,7 +4,7 @@ Status: `BLOCKED`
 
 | Check | Value |
 | --- | --- |
-| Sitemap URL count | 94 |
+| Sitemap URL count | 96 |
 | Book URL count | 77 |
 | Demo URL count | 0 |
 | Robots sitemap present | True |
@@ -59,11 +59,11 @@ Launch SEO remains HOLD only when the raw HTML checks below fail. Passing checks
 | / |
 | /library |
 | /pricing |
-| /book/a-ghost-story |
-| /book/a-jury-of-her-peers |
-| /book/a-mystery-of-heroism |
-| /book/alices-adventures-in-wonderland |
-| /book/bn-027 |
+| /book/dracula |
+| /book/frankenstein |
+| /book/carmilla |
+| /book/hound-of-the-baskervilles |
+| /book/woman-in-white |
 
 Blocked reason: `none`
 

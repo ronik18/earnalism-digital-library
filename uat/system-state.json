@@ -1,0 +1,32 @@
+{
+  "schema_version": "system-uat-state-v2",
+  "generated_at": "2026-08-21T09:46:16+00:00",
+  "environment": {
+    "frontend_url": "http://127.0.0.1:13000",
+    "api_url": "http://127.0.0.1:18000/api",
+    "worktree": "/private/tmp/earnalism-main-approved-integration",
+    "branch": "codex/main-approved-integration",
+    "head": "c4ac6cca21981a9a421ee98062e3a13b4a66177f"
+  },
+  "run_id": "run-20260821T094322Z-52131",
+  "tested_code_head": "c4ac6cca21981a9a421ee98062e3a13b4a66177f",
+  "provenance_tool_head": "c4ac6cca21981a9a421ee98062e3a13b4a66177f",
+  "scope_decisions": {
+    "backend_full": {
+      "required": false,
+      "reason": "The frozen 39-case scope and canonical runner require focused payment, ledger, security, concurrency, and controlled-release suites; repository-wide backend-full is not a System UAT case."
+    }
+  },
+  "run_manifest": "uat/system-run-manifest.json",
+  "run_manifest_sha256": "8c10682603ccdca3929cd75698a185f4c556af92ffd70270110ceb9ecaedd84a",
+  "totals": {
+    "PASS": 39,
+    "FAILED": 0,
+    "BLOCKED": 0,
+    "UNTESTED": 0,
+    "UNVERIFIED": 0
+  },
+  "included_case_count": 39,
+  "excluded_case_count": 7,
+  "score": 10.0
+}

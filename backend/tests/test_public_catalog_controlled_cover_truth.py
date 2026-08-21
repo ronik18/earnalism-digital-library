@@ -142,11 +142,11 @@ def test_controlled_merge_preserves_only_allowlisted_database_editorial_fields()
     assert merged["back_cover_image_url"] == canonical["back_cover_image_url"]
     assert merged["audio_enabled"] is False
     assert merged["audiobook_enabled"] is False
-    assert "audiobook_release_gate" not in merged
-    assert "audio_qa_status" not in merged
+    assert merged["audiobook_release_gate"] == ""
+    assert merged["audio_qa_status"] == ""
 
 
-def test_controlled_merge_accepts_only_server_owned_conveyor_audio_release():
+def test_controlled_merge_fails_closed_when_the_canonical_artifact_disables_audio():
     canonical = canonical_jekyll()
     released = stale_live_mongo_summary()
     released.update(
@@ -182,11 +182,12 @@ def test_controlled_merge_accepts_only_server_owned_conveyor_audio_release():
     public = server.public_book_projection(merged)
 
     assert merged["cover_image_url"] == canonical["cover_image_url"]
-    assert public["audio_enabled"] is True
-    assert public["audiobook_enabled"] is True
-    assert public["audio_url"] == f"/api/reader/book/{SLUG}/audiobook"
-    assert public["audiobook_release_gate"] == "APPROVED"
-    assert public["audio_qa_status"] == "QA_PASSED"
+    assert public["audio_enabled"] is False
+    assert public["audiobook_enabled"] is False
+    assert public["audio_url"] == ""
+    assert public["audiobook_release_gate"] == ""
+    assert public["audio_qa_status"] == ""
+    assert merged["audiobook_assets"] == {}
 
 
 def test_audiobook_release_uses_validated_controlled_reader_truth_for_legacy_shell():
@@ -211,9 +212,7 @@ def test_audiobook_release_uses_validated_controlled_reader_truth_for_legacy_she
     assert resolved["qa_status"] == "QA_PASSED"
     assert resolved["cover_image_url"]
     assert len(resolved["chapters"]) == 104
-    assert resolved["audiobook_manuscript_sha256"] == (
-        "6a14b35ae1ea3d6cc37bb384ca0f96b1f98bb6ddf1ba9f6c535ab3d1f3e442ca"
-    )
+    assert resolved["audiobook_manuscript_sha256"] == ""
     assert resolved["audio_enabled"] is False
     assert resolved["audiobook_enabled"] is False
     assert server.rights_publish_blockers(resolved) == []
@@ -226,7 +225,7 @@ def test_audiobook_release_falls_back_to_database_when_no_controlled_artifact(mo
     assert server._audiobook_release_reader_truth(database_book, "ordinary-book") is database_book
 
 
-def test_controlled_reader_audio_truth_merges_exact_server_owned_release(monkeypatch):
+def test_controlled_reader_audio_truth_keeps_artifact_audio_disabled(monkeypatch):
     canonical = canonical_jekyll()
     released = stale_live_mongo_summary()
     released.update(
@@ -255,12 +254,13 @@ def test_controlled_reader_audio_truth_merges_exact_server_owned_release(monkeyp
     resolved = server._reader_audio_truth_doc(released, SLUG)
 
     assert resolved is not None
-    assert resolved["audio_enabled"] is True
-    assert resolved["audiobook_enabled"] is True
-    assert resolved["audiobook_release_gate"] == "APPROVED"
+    assert resolved["audio_enabled"] is False
+    assert resolved["audiobook_enabled"] is False
+    assert resolved["audiobook_release_gate"] == ""
+    assert resolved["audiobook_assets"] == {}
 
 
-def test_controlled_reader_manifest_resolves_generic_server_owned_release(monkeypatch):
+def test_controlled_reader_manifest_cannot_reenable_an_audio_disabled_artifact(monkeypatch):
     released = stale_live_mongo_summary()
     released.update(
         {
@@ -292,13 +292,13 @@ def test_controlled_reader_manifest_resolves_generic_server_owned_release(monkey
     manifest = asyncio.run(server._reader_book_manifest_doc(SLUG))
 
     assert manifest is not None
-    assert manifest["book"]["audio_enabled"] is True
-    assert manifest["book"]["audiobook_enabled"] is True
-    assert manifest["book"]["audio_url"] == f"/api/reader/book/{SLUG}/audiobook"
-    assert manifest["audio"]["enabled"] is True
-    assert manifest["audio"]["provider"] == "kokoro"
-    assert manifest["audio"]["voice"] == "af_heart"
-    assert manifest["audio"]["assets"]["mp3"] == f"/api/reader/book/{SLUG}/audiobook"
+    assert manifest["book"]["audio_enabled"] is False
+    assert manifest["book"]["audiobook_enabled"] is False
+    assert manifest["book"]["audio_url"] == ""
+    assert manifest["audio"]["enabled"] is False
+    assert manifest["audio"]["provider"] == ""
+    assert manifest["audio"]["voice"] == ""
+    assert manifest["audio"]["assets"] == {}
 
 
 def test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate():

@@ -21,7 +21,9 @@ export function resolveBackendUrl() {
   try {
     const url = new URL(configured);
     if (["localhost", "127.0.0.1", "0.0.0.0"].includes(url.hostname)) {
-      return "";
+      // Production-like UAT builds must retain their explicit loopback API
+      // origin.  All normal production builds continue to reject local hosts.
+      return process.env.REACT_APP_UAT_LOCAL === "true" ? configured : "";
     }
   } catch {
     return "";

@@ -12,6 +12,7 @@ const FIXTURE_DIR = path.join(ROOT, "regression", "fixtures", "catalog-audit");
 const AUDIT_SCRIPT = path.join(ROOT, "scripts", "audit-public-content.mjs");
 const vercelConfig = JSON.parse(fs.readFileSync(path.join(ROOT, "frontend/vercel.json"), "utf8"));
 const backendServer = fs.readFileSync(path.join(ROOT, "backend/server.py"), "utf8");
+const CANONICAL_SITE_URL = "https://theearnalism.com";
 
 const BLOCKED_TERMS = [
   "add-to-cart",
@@ -280,7 +281,7 @@ describe("Public content governance", () => {
       expect(text.toLowerCase()).not.toContain(term);
     }
     for (const required of ["/", "/library", "/journal", "/about", "/contact"]) {
-      expect(text).toContain(`${frontendUrl()}${required === "/" ? "/" : required}`);
+      expect(text).toContain(`${CANONICAL_SITE_URL}${required === "/" ? "/" : required}`);
     }
   });
 

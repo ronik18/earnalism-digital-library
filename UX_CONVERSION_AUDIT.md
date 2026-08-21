@@ -1,6 +1,6 @@
 # UX Conversion Audit
 
-Status: `PASS`
+Status: `BLOCKED`
 
 | Signal | Present |
 | --- | --- |
@@ -8,7 +8,7 @@ Status: `PASS`
 | hero_pricing_path | True |
 | newsletter_entry | True |
 | book_preview_cta | True |
-| book_buy_cta | True |
+| book_buy_cta | False |
 | pricing_cta | True |
 | pricing_trust_statement | True |
 | pricing_support_refund_copy | True |

@@ -1,0 +1,27 @@
+{
+  "schema_version": "system-uat-scope-v1",
+  "frozen_at": "2026-08-20T00:00:00Z",
+  "included_system_cases": [
+    "BE-SYNTAX-001", "BE-CONTROLLED-TRUTH-001", "BE-CANONICAL-PAGE-001", "BE-READING-PASS-SECURITY-001",
+    "BE-PAYMENT-IDEMPOTENCY-001", "BE-LEASE-CONCURRENCY-001", "FE-RELEASE-TRUTH-001", "FE-MANIFEST-ACCESS-001",
+    "FE-PREVIEW-POLICY-001", "FE-CTA-COPY-001", "FE-CRA-MOUNT-001", "FE-PRODUCTION-BUILD-001",
+    "SYS-LOCAL-ENVIRONMENT-001", "SYS-PRODUCTION-NETWORK-DENIAL-001", "SYS-ROUTE-STATUS-001", "SYS-API-CONTRACT-001",
+    "PW-HYDRATION-HOME-001", "PW-HYDRATION-LIBRARY-001", "PW-HYDRATION-BOOK-001", "PW-HYDRATION-READER-001",
+    "PW-HYDRATION-PRICING-001", "PW-HYDRATION-JOURNAL-001", "PW-HYDRATION-CONTACT-001", "PW-RESPONSIVE-001",
+    "PW-CHROMIUM-JOURNEY-01", "PW-CHROMIUM-JOURNEY-02", "PW-CHROMIUM-JOURNEY-03", "PW-CHROMIUM-JOURNEY-04",
+    "PW-CHROMIUM-JOURNEY-05", "PW-CHROMIUM-JOURNEY-06", "PW-CHROMIUM-JOURNEY-07", "PW-CHROMIUM-JOURNEY-08",
+    "PW-CHROMIUM-JOURNEY-09", "PW-CHROMIUM-JOURNEY-10", "PW-CHROMIUM-JOURNEY-11", "PW-CHROMIUM-JOURNEY-12",
+    "PW-FIREFOX-001", "PW-WEBKIT-001", "SYS-CONTRAST-RESPONSIVE-001"
+  ],
+  "excluded_manual_cases": [
+    { "id": "MANUAL-IOS-DEVICE-001", "reason": "physical iPhone/iPad execution requires hardware" },
+    { "id": "MANUAL-ANDROID-DEVICE-001", "reason": "physical Android/tablet/foldable execution requires hardware" },
+    { "id": "MANUAL-VOICEOVER-001", "reason": "manual VoiceOver session requires human assistive-technology operation" },
+    { "id": "MANUAL-TALKBACK-001", "reason": "manual TalkBack session requires human assistive-technology operation" },
+    { "id": "MANUAL-BLUETOOTH-LOCKSCREEN-001", "reason": "physical headphone and lock-screen interruption testing requires hardware" },
+    { "id": "MANUAL-UPI-HANDOFF-001", "reason": "real UPI application handoff requires an external mobile application" },
+    { "id": "MANUAL-VISUAL-APPROVAL-001", "reason": "subjective visual approval requires a human reviewer" }
+  ],
+  "total_included_case_count": 39,
+  "scoring_formula": "10 * PASS / INCLUDED_SYSTEM_CASES; never round upward"
+}

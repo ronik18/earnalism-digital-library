@@ -89,7 +89,7 @@ function BookCard({ book, priority = false }) {
                   track(DRACULA_CTA_EVENTS.previewStart, { cta: "book_card_preview" });
                 }}
               >
-                {isDracula ? "Read Chapter 1" : "Read"}
+                {isDracula ? "Read first 3 pages" : "Read"}
               </Link>
             )}
             {audioState.canShowControls && (

@@ -1,0 +1,34 @@
+{
+  "schema_version": "uat-canonical-recovery-v1",
+  "worktree": "/tmp/earnalism-main-approved-integration",
+  "branch": "codex/main-approved-integration",
+  "head": "8ff4a7ed93b629875da09c4322bb76156459f2d5",
+  "phase": "system-uat-blocked-by-external-port-owner",
+  "last_updated": "2026-08-20T18:03:00Z",
+  "completed_root_cause_groups": [
+    "RC-UAT-001 controlled publication audio fail-closed",
+    "RC-UAT-002 frontend manifest audio fail-closed",
+    "RC-UAT-003 local-only endpoint enforcement and invalid endpoint removal",
+    "RC-UAT-004 CRA createRoot mounting and hydration-branch removal",
+    "RC-UAT-005 canonical preview policy copy and local route status enforcement"
+  ],
+  "active_external_blocker": "TCP 127.0.0.1:8000 is held by unrelated Python PID 9289; launcher verification prevents this process from being mistaken for the UAT backend.",
+  "completed_phases": ["canonical-worktree-verified", "historical-evidence-imported", "pre-edit-reproduction", "controlled-audio-fail-closed", "frontend-manifest-fail-closed", "local-uat-launcher", "focused-frontend-validation", "frontend-production-build", "full-local-uat-attempts-1-3"],
+  "root_causes": [
+    {"id": "RC-UAT-001", "cause": "Controlled publication merge allowed a database audio conveyor to override an artifact's explicit audio-disabled state, and reader fallback could return the stale database row."},
+    {"id": "RC-UAT-002", "cause": "Reader manifest merging accepted manifest audio URLs even when the book response disabled audio."},
+    {"id": "RC-UAT-003", "cause": "UAT browser tests defaulted to production URLs and depended on a nonexistent controlled-launch status route."},
+    {"id": "RC-UAT-004", "cause": "The pinned Chromium binary is blocked by the host Mach-port sandbox before assertions; Firefox and WebKit are not installed in the pinned cache."},
+    {"id": "RC-UAT-005", "cause": "Inherited npx/npm cache is root-owned; direct repository binaries avoid that global cache."},
+    {"id": "RC-UAT-006", "cause": "The first full-UAT attempt invoked a newly added launcher as an executable before its file mode was available; the runner now invokes it through bash."},
+    {"id": "RC-UAT-007", "cause": "The host Python lacks uvicorn and this checkout did not include the static build server; the launcher now preflights uvicorn and provides a loopback-only static server."}
+  ],
+  "commands": [
+    "UAT_BASE_URL=http://127.0.0.1:3000 UAT_API_BASE_URL=http://127.0.0.1:8000/api node_modules/.bin/playwright test tests/e2e/reading-pass-responsive.spec.js --project=chromium",
+    "CI=true npm --prefix frontend test -- --runInBand --runTestsByPath src/pages/Reader.releaseTruth.test.js src/performanceSprint.test.js",
+    "python3 -m py_compile backend/server.py backend/domain/reading_pass.py scripts/generate_local_uat_report.py",
+    "CI=true npm --prefix frontend run build",
+    "UAT_BASE_URL=http://127.0.0.1:3000 UAT_API_BASE_URL=http://127.0.0.1:8000/api bash scripts/run_local_uat.sh (attempts 1-3)"
+  ],
+  "evidence_paths": ["uat/recovery-input", "uat/evidence/final-canonical-recovery/baseline/playwright-responsive-before.log", "uat/evidence/final-canonical-recovery/baseline/playwright-responsive-pinned-before-fix.log", "uat/evidence/final-canonical-recovery/focused-frontend-release-truth.log", "uat/evidence/final-canonical-recovery/python-compile.log", "uat/evidence/final-canonical-recovery/frontend-build-retry.log", "uat/evidence/final-canonical-recovery/full-20260820T170646Z/launcher.log", "uat/evidence/final-canonical-recovery/full-20260820T170758Z/launcher.log", "uat/evidence/final-canonical-recovery/runtime-20260820T170758Z/backend.log", "uat/evidence/final-canonical-recovery/runtime-20260820T170758Z/frontend.log", "uat/evidence/final-canonical-recovery/full-20260820T170914Z/launcher.log", "uat/evidence/final-canonical-recovery/final-static-validation.log", "uat/evidence/final-canonical-recovery/final-git-status.log", "uat/evidence/final-canonical-recovery/final-diff-stat.log"]
+}

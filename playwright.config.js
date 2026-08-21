@@ -1,6 +1,22 @@
 const { defineConfig, devices } = require("playwright/test");
 
 const ARTIFACT_DIR = "output/real-user-ux";
+const FRONTEND_URL = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
+const API_URL = String(process.env.UAT_API_BASE_URL || "").replace(/\/$/, "");
+
+function assertLocalUatUrl(name, value, expectedPath = "") {
+  if (!value) throw new Error(`${name} is required; production fallback is disabled.`);
+  const parsed = new URL(value);
+  if (parsed.protocol !== "http:" || parsed.hostname !== "127.0.0.1") {
+    throw new Error(`${name} must use http://127.0.0.1 only.`);
+  }
+  if (expectedPath && parsed.pathname.replace(/\/$/, "") !== expectedPath) {
+    throw new Error(`${name} must use the ${expectedPath} API prefix.`);
+  }
+}
+
+assertLocalUatUrl("UAT_BASE_URL", FRONTEND_URL);
+assertLocalUatUrl("UAT_API_BASE_URL", API_URL, "/api");
 
 module.exports = defineConfig({
   testDir: "./tests/e2e",
@@ -16,7 +32,7 @@ module.exports = defineConfig({
     ["json", { outputFile: `${ARTIFACT_DIR}/playwright-results.json` }],
   ],
   use: {
-    baseURL: process.env.EARNALISM_FRONTEND_URL || "https://theearnalism.com",
+    baseURL: FRONTEND_URL,
     trace: "on",
     video: "on",
     screenshot: "on",
@@ -27,6 +43,14 @@ module.exports = defineConfig({
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] },
     },
   ],
 });

@@ -11,5 +11,6 @@
 | Area | Fix |
 | --- | --- |
 | seo | Make the static homepage snapshot Dracula-first and remove broad catalog claims. |
+| ux_conversion | Restore the missing CTA or trust statement. |
 | security | Rotate and remove secrets immediately. |
 | rights_source_readiness | Backfill source_url, source_license, source_hash, content_hash, and provenance_hash before publication. |

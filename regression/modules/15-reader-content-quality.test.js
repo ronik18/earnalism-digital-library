@@ -36,7 +36,7 @@ const REQUIRED_LIVE_SLUGS = [
 ];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
-const PENDING_FRESH_READER_APPROVAL_SLUGS = new Set();
+const PENDING_FRESH_READER_APPROVAL_SLUGS = new Set(["picture-of-dorian-gray"]);
 
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, relativePath), "utf8"));
@@ -131,7 +131,7 @@ describe("Reader content quality batch 1", () => {
         expect(promotion.promotedLiveSlugs).not.toContain(slug);
         expect(promotion.approvedReleaseAllowlist).not.toContain(slug);
         for (const book of [contentBook, publicBook]) {
-          expect(book.readerStatus).toBe("ready_for_approval");
+          expect(book.readerStatus).toBe("reader_approval_required");
           expect(book.publicationStatus).toBe("draft");
           expect(book.isPublic).toBe(false);
           expect(book.isLive).toBe(false);
@@ -142,7 +142,7 @@ describe("Reader content quality batch 1", () => {
           expect(book.allowPayment).toBe(false);
           expect(book.is_published).toBe(false);
         }
-        expect(publicBook.publication_status).toBe("READY_FOR_APPROVAL");
+        expect(publicBook.publication_status).toBe("READER_APPROVAL_REQUIRED");
         for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
         continue;
       }

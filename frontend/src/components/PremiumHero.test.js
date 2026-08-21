@@ -220,7 +220,7 @@ describe("PremiumHero public contract", () => {
     expect(source).toContain("Your Library, Everywhere");
     expect(source).toContain("Featured classic");
     expect(source).toContain("Reading Pass");
-    expect(source).toContain("Chapter 1 is on us");
+    expect(source).toContain("The first 3 canonical pages are free");
     expect(source).not.toContain("PREMIUM_CARDS");
     expect(source).not.toMatch(/release gates|QA_PASSED|PUBLIC_AUDIO|Audio gated by evidence|typographic-only cover fallback/i);
   });

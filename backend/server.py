@@ -790,7 +790,7 @@ CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS)
 PACKS: List[dict] = [
     {
         "id": "30m",
-        "label": "The First Chapter",
+        "label": "The Opening Hour",
         "minutes": 30,
         "amount_paise": 4900,
         "price_inr": 49,
@@ -1674,6 +1674,10 @@ def _reader_audio_truth_doc(book: Optional[dict], slug: str) -> Optional[dict]:
         merged = _merge_controlled_publication_truth(book, artifact, slug=normalized_slug)
         if can_expose_audio(merged):
             return merged
+        # A controlled artifact is authoritative even when it deliberately
+        # disables audio.  Falling through to the MongoDB row here would let a
+        # stale package or URL reappear in the reader.
+        return merged
     if artifact and can_expose_audio({**artifact, "slug": normalized_slug}):
         return artifact
     if normalized_slug in CATALOG_TRUTH_AUDIO_ENABLED_SLUGS:
@@ -1766,6 +1770,31 @@ def _merge_controlled_publication_truth(
             for field in CONTROLLED_PUBLICATION_DB_CONVEYOR_AUDIO_FIELDS:
                 if field in database_book:
                     merged[field] = database_book[field]
+
+    # The controlled publication owns release truth.  A false value is an
+    # explicit deny, not an invitation to fill missing values from MongoDB.
+    # Clear every audio-shaped field so a stale release record cannot expose
+    # controls, manifests, sidecars, or a playable URL for any controlled
+    # title (including Dracula).
+    if artifact.get("audio_enabled") is False or artifact.get("audiobook_enabled") is False:
+        merged.update(
+            {
+                "audio_enabled": False,
+                "audiobook_enabled": False,
+                "generate_audiobook": False,
+                "audiobook_provider": "",
+                "audiobook_voice": "",
+                "audio_asset_slug": "",
+                "audiobook_assets": {},
+                "audiobook": {},
+                "audiobook_manuscript_sha256": "",
+                "audiobook_release_conveyor": {},
+                "audiobook_assets_updated_at": "",
+                "audio_status": "",
+                "audiobook_release_gate": "",
+                "audio_qa_status": "",
+            }
+        )
     return merged
 
 
@@ -8008,7 +8037,43 @@ async def reader_book_manifest(
         "book_manifest_url": f"/api/reading-pass/books/{slug}/manifest" if segment_state else "",
         "total_pages": int((segment_state or {}).get("total_pages", 0) or 0),
     }
+    # The interactive reader manifest may describe canonical pages, but never
+    # embeds protected page content.  The independent index makes the preview
+    # boundary stable across viewport, zoom, and browser implementations.
+    canonical_pages = None
+    if segment_state:
+        segment_rows = await db.reader_content_segments.find(
+            {
+                "book_slug": slug,
+                "segmentation_version": segment_state["segmentation_version"],
+            },
+            {"_id": 0, "page_index": 1, "chapter_id": 1, "content_sha256": 1},
+        ).sort("page_index", 1).to_list(100000)
+        canonical_pages = {
+            "schema_version": str(segment_state["segmentation_version"]),
+            "content_revision": str(segment_state["version"]),
+            "page_count": int(segment_state["total_pages"]),
+            "ordering": "page_index_ascending_immutable",
+            "preview_policy": {
+                "unit": "canonical_page",
+                "public_limit": PUBLIC_TEXT_PAGE_COUNT,
+                "enforced_by": "server",
+                "ready": True,
+            },
+            "pages": [
+                {
+                    "page_number": int(row["page_index"]),
+                    "page_id": f"{slug}:{int(row['page_index'])}:{str(row.get('content_sha256', ''))[:16]}",
+                    "chapter_id": str(row.get("chapter_id") or ""),
+                    "content_revision": str(segment_state["version"]),
+                    "content_hash": str(row.get("content_sha256") or ""),
+                }
+                for row in segment_rows
+            ],
+        }
     payload = {**manifest, "access": access}
+    if canonical_pages:
+        payload["canonical_pages"] = canonical_pages
     etag = f'W/"reader-manifest-{manifest["version"]}"'
     response.headers["ETag"] = etag
     response.headers["X-Reader-Manifest-Version"] = manifest["version"]
@@ -8623,6 +8688,10 @@ async def reader_book_audiobook(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
+    # Resolve controlled release truth before applying the paid-media lease.
+    # A disabled title is not protected media and must remain indistinguishable
+    # from any other absent audiobook endpoint (404, never an auth challenge).
+    await _reader_audio_book_for_slug(slug)
     if READING_PASS_V2_ENABLED:
         await _authorize_reading_pass_audio(request, principal, slug)
     result = await _reader_book_audiobook_asset(slug, "mp3", request)
@@ -9345,6 +9414,7 @@ async def reading_pass_book_manifest(slug: str, response: Response):
     }
 
 
+@api.get("/reader/book/{slug}/pages/{page_index}")
 @api.get("/reading-pass/books/{slug}/pages/{page_index}")
 async def reading_pass_book_page(
     slug: str,

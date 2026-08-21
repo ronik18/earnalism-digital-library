@@ -251,9 +251,9 @@ export default function Pricing() {
               className="btn-secondary"
               data-testid="dracula-continue-from-pricing"
             >
-              Read Chapter 1 Free
+              Read the first 3 pages free
             </Link>
-            <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">Chapter 1 remains free to preview</span>
+            <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">The first 3 canonical pages are free to preview</span>
           </div>
           {showSimulator && (
             <div className="mt-7 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--brand-gold)]/40 text-[0.7rem] tracking-[0.22em] uppercase text-gold-deep" data-testid="pricing-test-mode-banner">
@@ -302,8 +302,8 @@ export default function Pricing() {
         <section className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3" aria-label="Reading time wallet explanation" data-testid="pricing-wallet-explainer">
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <BookOpen size={18} strokeWidth={1.55} className="text-gold" />
-            <h2 className="mt-4 font-serif-display text-xl text-burgundy">Chapter 1 stays free</h2>
-            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">Use the preview to decide whether the book has earned your next hour.</p>
+            <h2 className="mt-4 font-serif-display text-xl text-burgundy">First 3 canonical pages are free</h2>
+            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">Use the server-defined preview to decide whether the book has earned your next hour.</p>
           </div>
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <CreditCard size={18} strokeWidth={1.55} className="text-gold" />
