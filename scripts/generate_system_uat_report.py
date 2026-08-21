@@ -36,6 +36,13 @@ REQUIRED_RUNS = {
     "webkit-journeys": {"min_passed": 12, "markers": ("12 passed",)},
     "contrast": {"min_passed": 36, "markers": ("tested=36", "passed=36", "failed=0", "missing=0")},
 }
+REPORT_ONLY_PATHS = {
+    "uat/system-final-report.json",
+    "uat/system-matrix.csv",
+    "uat/system-state.json",
+    "uat/system-defects.json",
+    "uat/system-run-manifest.json",
+}
 
 
 def sha256_file(path: Path) -> str:
@@ -84,24 +91,73 @@ def git_head(root: Path = ROOT) -> str:
     return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
 
 
+def git_branch(root: Path = ROOT) -> str:
+    return subprocess.check_output(["git", "branch", "--show-current"], cwd=root, text=True).strip()
+
+
+def latest_executable_commit(root: Path = ROOT) -> tuple[str, str]:
+    paths = ("backend", "frontend", "scripts", "tests", "package.json", "package-lock.json", "playwright.config.js")
+    output = subprocess.check_output(
+        ["git", "log", "-1", "--format=%H%n%cI", "--", *paths], cwd=root, text=True
+    ).splitlines()
+    if len(output) != 2:
+        raise ValueError("could not determine latest executable commit")
+    return output[0], output[1]
+
+
+def report_only_since(root: Path, tested_head: str, current_head: str) -> bool:
+    if tested_head == current_head:
+        return True
+    changed = subprocess.check_output(
+        ["git", "diff", "--name-only", f"{tested_head}..{current_head}"], cwd=root, text=True
+    ).splitlines()
+    return bool(changed) and all(path in REPORT_ONLY_PATHS or path.startswith("uat/evidence/system-final-verification/") for path in changed)
+
+
 def fail(errors: list[str]) -> None:
     raise ValueError("; ".join(errors))
 
 
-def validate_manifest(payload: object, *, root: Path = ROOT, current_head: str | None = None) -> dict:
+def validate_manifest(
+    payload: object, *, root: Path = ROOT, current_head: str | None = None, require_finalized: bool = True
+) -> dict:
     errors: list[str] = []
     if not isinstance(payload, dict):
         fail(["run manifest must be a JSON object"])
     if payload.get("schema_version") != "system-uat-run-manifest-v1":
         errors.append("unsupported or missing run-manifest schema")
-    tested_head = payload.get("tested_head")
+    run_id = payload.get("run_id")
+    if not isinstance(run_id, str) or not re.fullmatch(r"run-[0-9]{8}T[0-9]{6}Z-[0-9]+", run_id):
+        errors.append("run_id is missing or invalid")
+    if payload.get("canonical_worktree") != str(root.resolve()):
+        errors.append("canonical_worktree does not match the report root")
+    if not isinstance(payload.get("branch"), str) or not payload["branch"].startswith("codex/"):
+        errors.append("branch is missing or invalid")
+    if payload.get("clean_worktree_before_execution") is not True:
+        errors.append("worktree was not clean before execution")
+    tested_head = payload.get("tested_code_head")
     if not isinstance(tested_head, str) or not re.fullmatch(r"[0-9a-f]{40}", tested_head):
-        errors.append("tested_head must be a full git SHA")
-    elif current_head is not None and tested_head != current_head:
-        errors.append("tested_head does not match current code HEAD")
+        errors.append("tested_code_head must be a full git SHA")
+    elif payload.get("tested_head") != tested_head:
+        errors.append("tested_head and tested_code_head disagree")
+    elif current_head is not None and not report_only_since(root, tested_head, current_head):
+        errors.append("tested_code_head does not match current executable code HEAD")
+    executable_head = payload.get("latest_executable_commit")
+    if executable_head != tested_head:
+        errors.append("latest executable commit does not match tested_code_head")
+    try:
+        executable_time = iso8601(payload.get("latest_executable_commit_at"))
+    except ValueError:
+        executable_time = None
+        errors.append("latest executable commit timestamp is missing or invalid")
     scope_path = root / "uat" / "system-scope.json"
     if payload.get("scope_sha256") != sha256_file(scope_path):
         errors.append("scope SHA256 is missing or does not match the frozen scope")
+    scope = json.loads(scope_path.read_text(encoding="utf-8"))
+    if payload.get("scope_version") != scope.get("schema_version") or payload.get("included_case_count") != scope.get("total_included_case_count"):
+        errors.append("scope version or included case count does not match the frozen scope")
+    if scope.get("total_included_case_count") != 39:
+        errors.append("the frozen System UAT scope must contain exactly 39 cases")
     endpoints = payload.get("redacted_local_endpoints")
     if not isinstance(endpoints, dict) or not local_endpoint(endpoints.get("frontend")) or not local_endpoint(endpoints.get("api"), api=True):
         errors.append("redacted local frontend/API endpoints are required")
@@ -112,6 +168,8 @@ def validate_manifest(payload: object, *, root: Path = ROOT, current_head: str |
     backend_full = scope_note.get("backend_full") if isinstance(scope_note, dict) else None
     if not isinstance(backend_full, dict) or backend_full.get("required") is not False or not isinstance(backend_full.get("reason"), str):
         errors.append("backend-full scope decision is missing or ambiguous")
+    if require_finalized and payload.get("aggregate_result") != "PASSED":
+        errors.append("aggregate result is not finalized as PASSED")
     runs = payload.get("runs")
     if not isinstance(runs, list):
         fail(errors + ["runs must be a list"])
@@ -132,8 +190,11 @@ def validate_manifest(payload: object, *, root: Path = ROOT, current_head: str |
         if not isinstance(run.get("command"), str) or not run["command"].strip():
             errors.append(f"{run_id}: command is missing")
         try:
-            if iso8601(run.get("completed_at")) < iso8601(run.get("started_at")):
+            started = iso8601(run.get("started_at")); completed = iso8601(run.get("completed_at"))
+            if completed < started:
                 errors.append(f"{run_id}: completion precedes start")
+            if executable_time is not None and started < executable_time:
+                errors.append(f"{run_id}: evidence predates the tested executable commit")
         except ValueError:
             errors.append(f"{run_id}: timestamps are missing or invalid")
         if run.get("exit_code") != 0:
@@ -156,7 +217,7 @@ def validate_manifest(payload: object, *, root: Path = ROOT, current_head: str |
         markers = tuple(rule.get("markers", ())) + tuple(run.get("required_markers", ()))
         if any(not isinstance(marker, str) or marker not in text for marker in markers):
             errors.append(f"{run_id}: log is missing a required success marker")
-        if re.search(r"\b[1-9][0-9]* (?:failed|errors?)\b", text, flags=re.IGNORECASE):
+        if re.search(r"(?<![=\w])[1-9][0-9]*\s+(?:failed|errors?)\b", text, flags=re.IGNORECASE):
             errors.append(f"{run_id}: log contradicts zero failures")
         if re.search(r"(?:failed|errors?)=[1-9][0-9]*\b", text, flags=re.IGNORECASE):
             errors.append(f"{run_id}: log contradicts zero failures")
@@ -164,7 +225,7 @@ def validate_manifest(payload: object, *, root: Path = ROOT, current_head: str |
             errors.append(f"{run_id}: log contradicts zero missing")
     if errors:
         fail(errors)
-    return {"tested_head": tested_head, "endpoints": endpoints, "runs": by_id}
+    return {"run_id": run_id, "tested_head": tested_head, "endpoints": endpoints, "runs": by_id, "scope_decisions": scope_note}
 
 
 def case_evidence(runs: dict[str, dict]) -> dict[str, bool]:
@@ -198,7 +259,8 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None) -> dict:
     uat = root / "uat"
     scope = json.loads((uat / "system-scope.json").read_text(encoding="utf-8"))
     manifest = manifest or manifest_path(root)
-    validated = validate_manifest(json.loads(manifest.read_text(encoding="utf-8")), root=root, current_head=git_head(root))
+    manifest_payload = json.loads(manifest.read_text(encoding="utf-8"))
+    validated = validate_manifest(manifest_payload, root=root, current_head=git_head(root))
     evidence = case_evidence(validated["runs"])
     included = list(scope["included_system_cases"])
     rows = [{"case_id": case_id, "status": "PASS" if evidence.get(case_id, False) else "UNVERIFIED"} for case_id in included]
@@ -208,7 +270,10 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None) -> dict:
     state = {
         "schema_version": "system-uat-state-v2",
         "generated_at": now,
-        "environment": {"frontend_url": validated["endpoints"]["frontend"], "api_url": validated["endpoints"]["api"], "worktree": str(root), "branch": subprocess.check_output(["git", "branch", "--show-current"], cwd=root, text=True).strip(), "head": validated["tested_head"]},
+        "environment": {"frontend_url": validated["endpoints"]["frontend"], "api_url": validated["endpoints"]["api"], "worktree": str(root.resolve()), "branch": manifest_payload["branch"], "head": validated["tested_head"]},
+        "run_id": validated["run_id"],
+        "tested_code_head": validated["tested_head"],
+        "scope_decisions": validated["scope_decisions"],
         "run_manifest": str(manifest.relative_to(root)),
         "run_manifest_sha256": sha256_file(manifest),
         "totals": totals,
@@ -217,7 +282,7 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None) -> dict:
         "score": 10 * totals["PASS"] / len(included),
     }
     defects = [{"id": f"EVIDENCE-{row['case_id']}", "severity": "P1", "status": "UNVERIFIED", "case_id": row["case_id"]} for row in rows if row["status"] != "PASS"]
-    report = {**state, "result": "PASSED" if complete else "INCOMPLETE", "completion_conditions_met": complete, "blocking_defect_ids": [entry["id"] for entry in defects], "evidence_paths": [run["log"] for run in validated["runs"].values()]}
+    report = {**state, "result": "PASSED" if complete else "INCOMPLETE", "final_system_uat_regression": manifest_payload["aggregate_result"], "completion_conditions_met": complete, "blocking_defect_ids": [entry["id"] for entry in defects], "evidence_paths": [run["log"] for run in validated["runs"].values()], "suite_results": manifest_payload["runs"], "provenance_validation": "PASSED"}
     with (uat / "system-matrix.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=["case_id", "status"])
         writer.writeheader(); writer.writerows(rows)
@@ -231,8 +296,16 @@ def write_manifest(args: argparse.Namespace) -> None:
     path = Path(args.manifest).resolve()
     path.parent.mkdir(parents=True, exist_ok=True)
     if args.init:
+        executable_head, executable_time = latest_executable_commit(ROOT)
+        clean = subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True) == ""
+        scope = json.loads((UAT / "system-scope.json").read_text(encoding="utf-8"))
         payload = {
-            "schema_version": "system-uat-run-manifest-v1", "tested_head": git_head(ROOT),
+            "schema_version": "system-uat-run-manifest-v1", "run_id": args.run_id,
+            "canonical_worktree": str(ROOT.resolve()), "branch": git_branch(ROOT),
+            "tested_head": git_head(ROOT), "tested_code_head": git_head(ROOT),
+            "latest_executable_commit": executable_head, "latest_executable_commit_at": executable_time,
+            "clean_worktree_before_execution": clean, "scope_version": scope.get("schema_version"),
+            "included_case_count": scope.get("total_included_case_count"), "aggregate_result": "RUNNING",
             "scope_sha256": sha256_file(UAT / "system-scope.json"),
             "redacted_local_endpoints": {"frontend": args.frontend, "api": args.api, "mongodb": args.mongodb},
             "scope_decisions": {"backend_full": {"required": False, "reason": "The frozen 39-case scope and canonical runner require focused payment, ledger, security, concurrency, and controlled-release suites; repository-wide backend-full is not a System UAT case."}},
@@ -248,10 +321,21 @@ def write_manifest(args: argparse.Namespace) -> None:
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
+def finalize_manifest(args: argparse.Namespace) -> None:
+    path = Path(args.manifest).resolve()
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    validate_manifest(payload, root=ROOT, current_head=git_head(ROOT), require_finalized=False)
+    payload["aggregate_result"] = "PASSED"
+    payload["completed_at"] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", default=str(manifest_path()))
     parser.add_argument("--init", action="store_true")
+    parser.add_argument("--finalize", action="store_true")
+    parser.add_argument("--run-id", default="")
     parser.add_argument("--record")
     parser.add_argument("--frontend")
     parser.add_argument("--api")
@@ -268,7 +352,12 @@ def main() -> None:
     args = parser.parse_args()
     try:
         if args.init or args.record:
+            if args.init and not re.fullmatch(r"run-[0-9]{8}T[0-9]{6}Z-[0-9]+", args.run_id):
+                raise ValueError("--run-id is required when initializing a manifest")
             write_manifest(args)
+            return
+        if args.finalize:
+            finalize_manifest(args)
             return
         print(json.dumps(generate_report(manifest=Path(args.manifest).resolve())))
     except (ValueError, OSError, subprocess.CalledProcessError, json.JSONDecodeError) as error:

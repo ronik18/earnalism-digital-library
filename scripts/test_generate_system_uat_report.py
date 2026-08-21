@@ -24,12 +24,16 @@ class SystemUatProvenanceTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
         (self.root / "uat" / "evidence" / "system-final" / "run").mkdir(parents=True)
-        (self.root / "uat" / "system-scope.json").write_text('{"scope":"frozen"}\n', encoding="utf-8")
+        (self.root / "uat" / "system-scope.json").write_text(json.dumps({"schema_version": "system-uat-scope-v1", "total_included_case_count": 39}) + "\n", encoding="utf-8")
         self.head = "a" * 40
         now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
         self.payload = {
-            "schema_version": "system-uat-run-manifest-v1",
-            "tested_head": self.head,
+            "schema_version": "system-uat-run-manifest-v1", "run_id": "run-20260821T000000Z-123",
+            "canonical_worktree": str(self.root.resolve()), "branch": "codex/test",
+            "tested_head": self.head, "tested_code_head": self.head,
+            "latest_executable_commit": self.head, "latest_executable_commit_at": now,
+            "clean_worktree_before_execution": True, "scope_version": "system-uat-scope-v1",
+            "included_case_count": 39, "aggregate_result": "PASSED",
             "scope_sha256": self.digest(self.root / "uat" / "system-scope.json"),
             "redacted_local_endpoints": {
                 "frontend": "http://127.0.0.1:13000",
@@ -78,7 +82,23 @@ class SystemUatProvenanceTests(unittest.TestCase):
 
     def test_rejects_stale_tested_head(self) -> None:
         payload = deepcopy(self.payload); payload["tested_head"] = "b" * 40
-        self.assert_rejected(payload, "tested_head does not match")
+        self.assert_rejected(payload, "tested_head and tested_code_head disagree")
+
+    def test_rejects_missing_run_identity_scope_and_clean_status(self) -> None:
+        for key, value, message in (
+            ("run_id", "", "run_id is missing"),
+            ("clean_worktree_before_execution", False, "worktree was not clean"),
+            ("included_case_count", 38, "scope version or included case count"),
+            ("aggregate_result", "RUNNING", "aggregate result is not finalized"),
+        ):
+            payload = deepcopy(self.payload); payload[key] = value
+            self.assert_rejected(payload, message)
+
+    def test_rejects_stale_executable_commit_and_precommit_evidence(self) -> None:
+        payload = deepcopy(self.payload); payload["latest_executable_commit"] = "b" * 40
+        self.assert_rejected(payload, "latest executable commit")
+        payload = deepcopy(self.payload); payload["latest_executable_commit_at"] = "2999-01-01T00:00:00+00:00"
+        self.assert_rejected(payload, "evidence predates")
 
     def test_rejects_missing_browser_evidence(self) -> None:
         payload = deepcopy(self.payload)
@@ -99,6 +119,9 @@ class SystemUatProvenanceTests(unittest.TestCase):
         self.assert_rejected(payload, "contrast: log contradicts zero failures")
         run["sha256"] = "0" * 64
         self.assert_rejected(payload, "contrast: log SHA256 does not match")
+
+    def test_accepts_zero_valued_structured_failure_fields(self) -> None:
+        MODULE.validate_manifest(self.payload, root=self.root, current_head=self.head)
 
 
 if __name__ == "__main__":

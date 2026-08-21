@@ -5,7 +5,7 @@ set -u -o pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"; cd "$ROOT"
 [[ -n "${UAT_RUN_ID:-}" && -n "${UAT_EVIDENCE_DIR:-}" ]] || { echo "UAT run identity is required" >&2; exit 64; }
 MANIFEST="uat/system-run-manifest.json"; overall=0
-python3 scripts/generate_system_uat_report.py --init --manifest "$MANIFEST" --frontend "$UAT_BASE_URL" --api "$UAT_API_BASE_URL" --mongodb "mongodb://127.0.0.1:${UAT_MONGODB_PORT}/earnalism_uat?replicaSet=earnalism-uat-rs0"
+python3 scripts/generate_system_uat_report.py --init --run-id "$UAT_RUN_ID" --manifest "$MANIFEST" --frontend "$UAT_BASE_URL" --api "$UAT_API_BASE_URL" --mongodb "mongodb://127.0.0.1:${UAT_MONGODB_PORT}/earnalism_uat?replicaSet=earnalism-uat-rs0"
 npx playwright install chromium firefox webkit >"$UAT_EVIDENCE_DIR/playwright-install.log" 2>&1 || overall=1
 
 run_gate() {
@@ -31,4 +31,7 @@ run_gate chromium-journeys 12 npx playwright test tests/e2e/earnalism-real-user-
 run_gate firefox-journeys 12 npx playwright test tests/e2e/earnalism-real-user-journey.spec.js --project=firefox
 run_gate webkit-journeys 12 npx playwright test tests/e2e/earnalism-real-user-journey.spec.js --project=webkit
 run_gate contrast 36 node scripts/run_contrast_responsive_gate.mjs
+if [[ "$overall" -eq 0 ]]; then
+  python3 scripts/generate_system_uat_report.py --finalize --manifest "$MANIFEST"
+fi
 exit "$overall"
