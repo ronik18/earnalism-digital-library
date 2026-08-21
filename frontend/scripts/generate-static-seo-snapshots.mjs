@@ -321,7 +321,7 @@ function buildPages({ book, manifest }) {
       staticBody: pageShell({
         eyebrow: "The Earnalism Digital Library",
         title: "A premium reading and listening sanctuary for timeless Bengali and English classics.",
-        body: "Begin with Dracula in a controlled digital reading room for timeless Bengali and English literature. The controlled launch begins with Dracula.",
+        body: "A calm digital reading room for timeless Bengali and English literature. The first 3 canonical pages are free before Reading Pass time begins.",
         facts: ["The first 3 canonical pages are free.", "Reader-ready classics stay visible; audiobooks appear only after quality gates pass.", "No subscription or autorenewal."],
         links: [
           { href: "/library", label: "Start Reading" },

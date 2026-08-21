@@ -752,7 +752,7 @@ def audit_seo() -> dict[str, Any]:
         "not_client_placeholder": "books for those who read with depth" not in html_title(book_html).lower(),
     }
     homepage_checks = {
-        "dracula_first": "begin with dracula" in index_html.lower() and "controlled launch begins with dracula" in index_html.lower(),
+        "canonical_preview_copy": "first 3 canonical pages" in index_html.lower() and "no subscription or autorenewal" in index_html.lower(),
         "no_broad_catalog_claim": not has_broad_catalog_claim(index_html),
         "organization_json_ld": json_ld_has_type(homepage_json_ld, "Organization"),
         "website_json_ld": json_ld_has_type(homepage_json_ld, "WebSite"),

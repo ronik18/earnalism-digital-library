@@ -168,7 +168,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(bookSchema.hasPart).toEqual([
       {
         "@type": "Chapter",
-        name: "Chapter 1 preview",
+        name: "First 3 canonical pages preview",
         isAccessibleForFree: true,
         url: `${SITE_URL}/reader/dracula`,
       },
@@ -181,7 +181,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
   });
 
   test("/reader/dracula is noindex and canonicalized to the public Dracula page", () => {
-    expect(titleText(readerHtml)).toBe("Read Dracula Chapter 1 | The Earnalism Reader");
+    expect(titleText(readerHtml)).toBe("Read the Dracula Preview | The Earnalism Reader");
     expect(metaContent(readerHtml, "name", "robots").replace(/\s/g, "")).toBe("noindex,follow");
     expect(canonicalHref(readerHtml)).toBe(`${SITE_URL}/book/dracula`);
     expect(metaContent(readerHtml, "property", "og:url")).toBe(`${SITE_URL}/book/dracula`);
@@ -204,19 +204,19 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(audioLikeFiles("frontend/build")).toEqual([]);
   });
 
-  test("homepage, library, and pricing snapshots stay bilingual, premium, and release-truth safe", () => {
+  test("homepage, library, and pricing snapshots preserve the canonical preview and release-truth contract", () => {
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("Reader-ready classics stay visible;");
-    expect(homeHtml).toContain("with reader-ready classics and release-gated audiobooks");
-    expect(homeHtml).toContain("calm digital reading room");
-    expect(homeHtml).toContain("Reader-ready classics");
+    expect(homeHtml).toContain("The first 3 canonical pages are free.");
+    expect(homeHtml).toContain("No subscription or autorenewal.");
     expect(homeHtml).toContain("href=\"/library?category=live\"");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(libraryHtml).toContain("Reader-ready classics, release-gated audio.");
     expect(libraryHtml).toContain("Reader-only releases do not offer listening CTAs.");
-    expect(pricingHtml).toContain("Choose your reading time. Return whenever the book calls.");
+    expect(pricingHtml).toContain("The first 3 canonical pages are free.");
+    expect(pricingHtml).toContain("Reading Pass");
+    expect(pricingHtml).toMatch(/No subscription|no subscription/);
     for (const html of [homeHtml, libraryHtml, pricingHtml]) {
-      expect(html).not.toMatch(/Begin with Dracula|Controlled launch begins with Dracula|Dracula remains the featured live approved reading release|Preview every book before you pay|A quieter bookstore for readers who linger|Discover thoughtful books across/i);
+      expect(html).not.toMatch(/Chapter 1 is free|Read Chapter 1|Start with Chapter 1|The First Chapter|7-day/i);
     }
   });
 
