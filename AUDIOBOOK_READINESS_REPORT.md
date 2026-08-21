@@ -19,7 +19,7 @@ Status: `PASS`
 | remote_guard_test_detected | True |
 | final_action_plan_archived | True |
 
-Detailed asset audit: `/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/pytest-of-ronikbasak/pytest-58/test_all_audit_writes_required0/launch/audio_asset_audit.json`
+Detailed asset audit: `/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/pytest-of-ronikbasak/pytest-0/test_all_audit_writes_required0/launch/audio_asset_audit.json`
 
 ## Public Audio Asset Audit
 

@@ -53,7 +53,7 @@ Status: `PASS_WITH_WARNINGS`
 | bengali_voice_sample_interest | False |
 | bengali_gothic_reading_circle_click | False |
 
-Schema artifact: `/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/pytest-of-ronikbasak/pytest-58/test_all_audit_writes_required0/launch/analytics_event_schema.json`
+Schema artifact: `/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/pytest-of-ronikbasak/pytest-0/test_all_audit_writes_required0/launch/analytics_event_schema.json`
 Mock sink supported: `True`
 
 | Mock Validator | Value |

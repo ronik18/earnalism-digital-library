@@ -20,7 +20,7 @@ Status: `PASS_TEST_MODE`
 ## Dry-Run Payment Smoke
 
 Smoke status: `PASS_TEST_MODE`
-Smoke artifact: `/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/pytest-of-ronikbasak/pytest-58/test_all_audit_writes_required0/launch/payment_smoke.json`
+Smoke artifact: `/private/var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/pytest-of-ronikbasak/pytest-0/test_all_audit_writes_required0/launch/payment_smoke.json`
 
 | Smoke Check | Value |
 | --- | --- |

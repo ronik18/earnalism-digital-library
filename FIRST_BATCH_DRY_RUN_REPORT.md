@@ -32,7 +32,7 @@
 - Readiness status: `REGION_GATED_DRAFT_REVIEW`
 - Publication region: `india`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`
 
 ### 2. Devdas Study Edition
 
@@ -51,7 +51,7 @@
 - Readiness status: `REGION_GATED_DRAFT_REVIEW`
 - Publication region: `india`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`
 
 ### 3. Abol Tabol Illustrated Reader
 
@@ -70,7 +70,7 @@
 - Readiness status: `REGION_GATED_DRAFT_REVIEW`
 - Publication region: `india`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`
 
 ### 4. Sultana's Dream Feminist Sci-Fi Edition
 
@@ -89,7 +89,7 @@
 - Readiness status: `SOURCE_METADATA_REQUIRED`
 - Publication region: `global`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`
 
 ### 5. Sherlock Holmes Logic Workbook
 
@@ -108,7 +108,7 @@
 - Readiness status: `SOURCE_METADATA_REQUIRED`
 - Publication region: `global`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`
 
 ### 6. Dracula Gothic Fiction Visual Guide
 
@@ -127,7 +127,7 @@
 - Readiness status: `SOURCE_METADATA_REQUIRED`
 - Publication region: `global`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`
 
 ### 7. Frankenstein Science & Ethics Guide
 
@@ -146,7 +146,7 @@
 - Readiness status: `SOURCE_METADATA_REQUIRED`
 - Publication region: `global`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`
 
 ### 8. Tagore Short Stories for Young Readers
 
@@ -165,7 +165,7 @@
 - Readiness status: `REGION_GATED_DRAFT_REVIEW`
 - Publication region: `india`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`
 
 ### 9. Calculus Made Easy Visual Guide
 
@@ -184,7 +184,7 @@
 - Readiness status: `SOURCE_METADATA_REQUIRED`
 - Publication region: `global`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`
 
 ### 10. Chander Pahar Adventure Companion
 
@@ -203,4 +203,4 @@
 - Readiness status: `REGION_GATED_DRAFT_REVIEW`
 - Publication region: `india`
 - Dry run: `true`
-- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; QA pass is required.`
+- Blocked reasons: `Fixture source metadata must be replaced with verified public source evidence.; Ingestion not ready: SOURCE_METADATA_REQUIRED; Rights approval is required.; BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.; BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.; BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.; BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.; BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.; QA pass is required.`

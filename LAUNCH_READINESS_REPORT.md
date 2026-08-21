@@ -1,6 +1,6 @@
 # Launch Readiness Report
 
-Final launch score: `7.84/10`
+Final launch score: `7.72/10`
 Recommendation: `HOLD_FOR_FIXES`
 
 | Area | Score |
@@ -8,7 +8,7 @@ Recommendation: `HOLD_FOR_FIXES`
 | production_deployment_parity | 8.4 |
 | public_route_correctness | 9.2 |
 | seo_crawlability | 6.5 |
-| ux_conversion | 8.4 |
+| ux_conversion | 6.8 |
 | catalog_content_quality | 7.6 |
 | rights_source_readiness | 5.8 |
 | audiobook_readiness | 8.0 |

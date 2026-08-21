@@ -24,8 +24,8 @@ CRA book pages still hydrate client-side, but priority launch routes now use sta
 | / |
 | /library |
 | /pricing |
-| /book/a-ghost-story |
-| /book/a-jury-of-her-peers |
-| /book/a-mystery-of-heroism |
-| /book/alices-adventures-in-wonderland |
-| /book/bn-027 |
+| /book/dracula |
+| /book/frankenstein |
+| /book/carmilla |
+| /book/hound-of-the-baskervilles |
+| /book/woman-in-white |

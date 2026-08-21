@@ -16,17 +16,54 @@ https://theearnalism.com/library?category=history-strategy,/library?category=his
 https://theearnalism.com/library?category=literary-fiction,/library?category=literary-fiction,library?category=literary-fiction,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
 https://theearnalism.com/library?category=science-fiction,/library?category=science-fiction,library?category=science-fiction,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
 https://theearnalism.com/library?category=young-readers,/library?category=young-readers,library?category=young-readers,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
-https://theearnalism.com/book/a-ghost-story,/book/a-ghost-story,book/a-ghost-story,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/a-jury-of-her-peers,/book/a-jury-of-her-peers,book/a-jury-of-her-peers,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/a-mystery-of-heroism,/book/a-mystery-of-heroism,book/a-mystery-of-heroism,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/alices-adventures-in-wonderland,/book/alices-adventures-in-wonderland,book/alices-adventures-in-wonderland,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/bn-027,/book/bn-027,book/bn-027,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/dracula,/book/dracula,book/dracula,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/frankenstein,/book/frankenstein,book/frankenstein,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/carmilla,/book/carmilla,book/carmilla,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/hound-of-the-baskervilles,/book/hound-of-the-baskervilles,book/hound-of-the-baskervilles,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/woman-in-white,/book/woman-in-white,book/woman-in-white,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/hungry-stones,/book/hungry-stones,book/hungry-stones,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/devdas,/book/devdas,book/devdas,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/pather-panchali,/book/pather-panchali,book/pather-panchali,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/eyesore-chokher-bali,/book/eyesore-chokher-bali,book/eyesore-chokher-bali,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-wonderful-wizard-of-oz,/book/the-wonderful-wizard-of-oz,book/the-wonderful-wizard-of-oz,KEEP_PROMOTE,Launch-aligned public URL.
 https://theearnalism.com/book/bn-059,/book/bn-059,book/bn-059,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/bn-066,/book/bn-066,book/bn-066,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/the-art-of-money-getting,/book/the-art-of-money-getting,book/the-art-of-money-getting,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/a-ghost-story,/book/a-ghost-story,book/a-ghost-story,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/a-mystery-of-heroism,/book/a-mystery-of-heroism,book/a-mystery-of-heroism,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/book-d19e96859f,/book/book-d19e96859f,book/book-d19e96859f,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-edfcf810c5,/book/book-edfcf810c5,book/book-edfcf810c5,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-f5d593e1f4,/book/book-f5d593e1f4,book/book-f5d593e1f4,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/muchiram-gurer-jibanchorit,/book/muchiram-gurer-jibanchorit,book/muchiram-gurer-jibanchorit,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/radharani,/book/radharani,book/radharani,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-bishop,/book/the-bishop,book/the-bishop,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-lady-with-the-dog,/book/the-lady-with-the-dog,book/the-lady-with-the-dog,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-necklace,/book/the-necklace,book/the-necklace,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-open-boat,/book/the-open-boat,book/the-open-boat,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-tell-tale-heart,/book/the-tell-tale-heart,book/the-tell-tale-heart,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-yellow-wallpaper,/book/the-yellow-wallpaper,book/the-yellow-wallpaper,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/sredni-vashtar,/book/sredni-vashtar,book/sredni-vashtar,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-open-window,/book/the-open-window,book/the-open-window,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-call-of-the-wild,/book/the-call-of-the-wild,book/the-call-of-the-wild,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-time-machine,/book/the-time-machine,book/the-time-machine,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/white-fang,/book/white-fang,book/white-fang,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/pride-and-prejudice,/book/pride-and-prejudice,book/pride-and-prejudice,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-secret-garden,/book/the-secret-garden,book/the-secret-garden,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-gift-of-the-magi,/book/the-gift-of-the-magi,book/the-gift-of-the-magi,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/dsires-baby,/book/dsires-baby,book/dsires-baby,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-cop-and-the-anthem,/book/the-cop-and-the-anthem,book/the-cop-and-the-anthem,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-last-leaf,/book/the-last-leaf,book/the-last-leaf,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-masque-of-the-red-death,/book/the-masque-of-the-red-death,book/the-masque-of-the-red-death,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-monkeys-paw,/book/the-monkeys-paw,book/the-monkeys-paw,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/gitanjali,/book/gitanjali,book/gitanjali,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/bharat-at-the-crossroads,/book/bharat-at-the-crossroads,book/bharat-at-the-crossroads,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/jekyll-and-hyde,/book/jekyll-and-hyde,book/jekyll-and-hyde,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/a-jury-of-her-peers,/book/a-jury-of-her-peers,book/a-jury-of-her-peers,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/alices-adventures-in-wonderland,/book/alices-adventures-in-wonderland,book/alices-adventures-in-wonderland,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/bn-027,/book/bn-027,book/bn-027,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-0986aeb7e3,/book/book-0986aeb7e3,book/book-0986aeb7e3,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-0fbdaa730e,/book/book-0fbdaa730e,book/book-0fbdaa730e,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-1090573dff,/book/book-1090573dff,book/book-1090573dff,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
-https://theearnalism.com/book/book-2b9853ec52,/book/book-2b9853ec52,book/book-2b9853ec52,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-4968248842,/book/book-4968248842,book/book-4968248842,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-4b944e64fa,/book/book-4b944e64fa,book/book-4b944e64fa,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-5461971092,/book/book-5461971092,book/book-5461971092,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
@@ -47,49 +84,14 @@ https://theearnalism.com/book/book-bfc51280b3,/book/book-bfc51280b3,book/book-bf
 https://theearnalism.com/book/book-c307a57868,/book/book-c307a57868,book/book-c307a57868,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-c7f3ce526c,/book/book-c7f3ce526c,book/book-c7f3ce526c,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-c85323409f,/book/book-c85323409f,book/book-c85323409f,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
-https://theearnalism.com/book/book-d19e96859f,/book/book-d19e96859f,book/book-d19e96859f,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-d2fe532e1c,/book/book-d2fe532e1c,book/book-d2fe532e1c,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
-https://theearnalism.com/book/book-edfcf810c5,/book/book-edfcf810c5,book/book-edfcf810c5,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-ef193ffc52,/book/book-ef193ffc52,book/book-ef193ffc52,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
-https://theearnalism.com/book/book-f5d593e1f4,/book/book-f5d593e1f4,book/book-f5d593e1f4,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
 https://theearnalism.com/book/book-fbdf2991ab,/book/book-fbdf2991ab,book/book-fbdf2991ab,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
-https://theearnalism.com/book/carmilla,/book/carmilla,book/carmilla,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/devdas,/book/devdas,book/devdas,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/dracula,/book/dracula,book/dracula,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/dsires-baby,/book/dsires-baby,book/dsires-baby,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/eyesore-chokher-bali,/book/eyesore-chokher-bali,book/eyesore-chokher-bali,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/frankenstein,/book/frankenstein,book/frankenstein,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/hound-of-the-baskervilles,/book/hound-of-the-baskervilles,book/hound-of-the-baskervilles,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/hungry-stones,/book/hungry-stones,book/hungry-stones,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/jekyll-and-hyde,/book/jekyll-and-hyde,book/jekyll-and-hyde,KEEP_PROMOTE,Launch-aligned public URL.
 https://theearnalism.com/book/lokrahasya,/book/lokrahasya,book/lokrahasya,KEEP_PROMOTE,Launch-aligned public URL.
 https://theearnalism.com/book/mrinalini,/book/mrinalini,book/mrinalini,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/muchiram-gurer-jibanchorit,/book/muchiram-gurer-jibanchorit,book/muchiram-gurer-jibanchorit,KEEP_PROMOTE,Launch-aligned public URL.
 https://theearnalism.com/book/nishkriti,/book/nishkriti,book/nishkriti,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/pather-panchali,/book/pather-panchali,book/pather-panchali,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/picture-of-dorian-gray,/book/picture-of-dorian-gray,book/picture-of-dorian-gray,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/pride-and-prejudice,/book/pride-and-prejudice,book/pride-and-prejudice,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/radharani,/book/radharani,book/radharani,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/sredni-vashtar,/book/sredni-vashtar,book/sredni-vashtar,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-art-of-money-getting,/book/the-art-of-money-getting,book/the-art-of-money-getting,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-bishop,/book/the-bishop,book/the-bishop,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-call-of-the-wild,/book/the-call-of-the-wild,book/the-call-of-the-wild,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-cop-and-the-anthem,/book/the-cop-and-the-anthem,book/the-cop-and-the-anthem,KEEP_PROMOTE,Launch-aligned public URL.
 https://theearnalism.com/book/the-country-of-the-blind,/book/the-country-of-the-blind,book/the-country-of-the-blind,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-gift-of-the-magi,/book/the-gift-of-the-magi,book/the-gift-of-the-magi,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-lady-with-the-dog,/book/the-lady-with-the-dog,book/the-lady-with-the-dog,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-last-leaf,/book/the-last-leaf,book/the-last-leaf,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-masque-of-the-red-death,/book/the-masque-of-the-red-death,book/the-masque-of-the-red-death,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-monkeys-paw,/book/the-monkeys-paw,book/the-monkeys-paw,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-necklace,/book/the-necklace,book/the-necklace,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-open-boat,/book/the-open-boat,book/the-open-boat,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-open-window,/book/the-open-window,book/the-open-window,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-secret-garden,/book/the-secret-garden,book/the-secret-garden,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-tell-tale-heart,/book/the-tell-tale-heart,book/the-tell-tale-heart,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-time-machine,/book/the-time-machine,book/the-time-machine,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-wonderful-wizard-of-oz,/book/the-wonderful-wizard-of-oz,book/the-wonderful-wizard-of-oz,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/the-yellow-wallpaper,/book/the-yellow-wallpaper,book/the-yellow-wallpaper,KEEP_PROMOTE,Launch-aligned public URL.
 https://theearnalism.com/book/tobermory,/book/tobermory,book/tobermory,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/white-fang,/book/white-fang,book/white-fang,KEEP_PROMOTE,Launch-aligned public URL.
-https://theearnalism.com/book/woman-in-white,/book/woman-in-white,book/woman-in-white,KEEP_PROMOTE,Launch-aligned public URL.
 https://theearnalism.com/book/yugalanguriya,/book/yugalanguriya,book/yugalanguriya,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/journal/how-reading-shapes-better-founders,/journal/how-reading-shapes-better-founders,journal/how-reading-shapes-better-founders,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/journal/why-every-small-business-needs-a-story-before-a-strategy,/journal/why-every-small-business-needs-a-story-before-a-strategy,journal/why-every-small-business-needs-a-story-before-a-strategy,KEEP_PROMOTE,Launch-aligned public URL.
