@@ -1,53 +1,29 @@
 {
-  "schema_version": "system-uat-state-v2",
-  "generated_at": "2026-08-21T07:02:51+00:00",
-  "environment": {
-    "frontend_url": "http://127.0.0.1:13000",
-    "api_url": "http://127.0.0.1:18000/api",
-    "worktree": "/private/tmp/earnalism-main-approved-integration",
-    "branch": "codex/main-approved-integration",
-    "head": "eab1c924675182c8a0209d43d8f07c71ee382df0"
-  },
+  "schema_version": "system-uat-run-manifest-v1",
   "run_id": "run-20260821T063940Z-45901",
+  "canonical_worktree": "/private/tmp/earnalism-main-approved-integration",
+  "branch": "codex/main-approved-integration",
+  "tested_head": "eab1c924675182c8a0209d43d8f07c71ee382df0",
   "tested_code_head": "eab1c924675182c8a0209d43d8f07c71ee382df0",
-  "provenance_tool_head": "19d203a5c5ba4d01809ff47ae6b5c4cc6aadf933",
+  "latest_executable_commit": "eab1c924675182c8a0209d43d8f07c71ee382df0",
+  "latest_executable_commit_at": "2026-08-21T12:09:31+05:30",
+  "clean_worktree_before_execution": true,
+  "scope_version": "system-uat-scope-v1",
+  "included_case_count": 39,
+  "aggregate_result": "PASSED",
+  "scope_sha256": "93a94acd01f1d13aef4584b251b02dc60a470de8c131d605cd3067e69483a464",
+  "redacted_local_endpoints": {
+    "frontend": "http://127.0.0.1:13000",
+    "api": "http://127.0.0.1:18000/api",
+    "mongodb": "mongodb://127.0.0.1:27018/earnalism_uat?replicaSet=earnalism-uat-rs0"
+  },
   "scope_decisions": {
     "backend_full": {
       "required": false,
       "reason": "The frozen 39-case scope and canonical runner require focused payment, ledger, security, concurrency, and controlled-release suites; repository-wide backend-full is not a System UAT case."
     }
   },
-  "run_manifest": "uat/system-run-manifest.json",
-  "run_manifest_sha256": "908ff6cf2a61810a7aac72dec70193d1fe8c0826db7a60e49f31bfef7bf6cb42",
-  "totals": {
-    "PASS": 39,
-    "FAILED": 0,
-    "BLOCKED": 0,
-    "UNTESTED": 0,
-    "UNVERIFIED": 0
-  },
-  "included_case_count": 39,
-  "excluded_case_count": 7,
-  "score": 10.0,
-  "result": "PASSED",
-  "final_system_uat_regression": "PASSED",
-  "completion_conditions_met": true,
-  "blocking_defect_ids": [],
-  "evidence_paths": [
-    "uat/evidence/system-final/run-20260821T063940Z-45901/backend-compile.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/backend-core.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/backend-policy.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/frontend-full.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/frontend-build.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/contracts.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/hydration.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/responsive.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/chromium-journeys.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/firefox-journeys.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/webkit-journeys.log",
-    "uat/evidence/system-final/run-20260821T063940Z-45901/contrast.log"
-  ],
-  "suite_results": [
+  "runs": [
     {
       "id": "backend-compile",
       "command": ".venv-uat/bin/python -m compileall -q backend",
@@ -229,5 +205,5 @@
       "required_markers": []
     }
   ],
-  "provenance_validation": "PASSED"
+  "completed_at": "2026-08-21T06:42:17+00:00"
 }
