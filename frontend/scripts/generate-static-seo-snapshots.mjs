@@ -1,8 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { execFile } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { promisify } from "node:util";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const frontendDir = path.resolve(__dirname, "..");
@@ -10,8 +8,6 @@ const repoRoot = path.resolve(frontendDir, "..");
 const buildDir = path.join(frontendDir, "build");
 const indexPath = path.join(buildDir, "index.html");
 const publicIndexPath = path.join(frontendDir, "public", "index.html");
-const renderHomeAppPath = path.join(frontendDir, "scripts", "render-home-app.cjs");
-const execFileAsync = promisify(execFile);
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const draculaBookPath = path.join(repoRoot, "data", "controlled_publications", "dracula", "public_book.json");
 const draculaManifestPath = path.join(repoRoot, "data", "controlled_publications", "dracula", "reader_manifest.json");
@@ -180,22 +176,6 @@ function withStaticFallback(html, page) {
   return withHead
     .replace(/<noscript>[\s\S]*?<\/noscript>/i, noscript)
     .replace(/<div id="root"><\/div>/i, `<div${rootAttributes}>\n${rootBody}\n</div>`);
-}
-
-async function renderHomeApp() {
-  const { stdout, stderr } = await execFileAsync(process.execPath, [renderHomeAppPath], {
-    cwd: frontendDir,
-    env: { ...process.env, NODE_ENV: "production" },
-    maxBuffer: 8 * 1024 * 1024,
-  });
-  if (stderr.trim()) console.warn(`[static-seo] Home prerender warning: ${stderr.trim()}`);
-  if (!stdout.trim()) throw new Error("Home React prerender produced empty markup.");
-  return stdout.trim();
-}
-
-function isMissingPrerenderRuntime(error) {
-  const output = `${error?.message || ""}\n${error?.stderr || ""}`;
-  return /Cannot find module '(?:react|react-dom(?:\/server)?|@babel\/register)'/.test(output);
 }
 
 function organizationJsonLd() {
@@ -506,15 +486,6 @@ async function main() {
     throw error;
   }
   const pages = buildPages(artifacts);
-  try {
-    pages[0].prerenderedBody = await renderHomeApp();
-  } catch (error) {
-    if (!isMissingPrerenderRuntime(error)) throw error;
-    // Root regression installs only root dependencies. Preserve its
-    // dependency-free SEO snapshot while production builds, which install the
-    // frontend runtime, still fail closed unless the real React shell renders.
-    console.warn("[static-seo] Frontend prerender runtime unavailable; using the static SEO fallback.");
-  }
   const written = [];
 
   for (const page of pages) {
