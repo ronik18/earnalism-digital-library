@@ -1726,7 +1726,7 @@ describe("UX conversion static signals", () => {
     const readerHtml = readOptional("frontend/build/reader/dracula/index.html");
     if (!homeHtml || !readerHtml) {
       expect(staticSnapshotGenerator).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
-      expect(staticSnapshotGenerator).toContain("Three current listening rooms in the audiobook collection.");
+      expect(staticSnapshotGenerator).toContain("The first 3 canonical pages are free.");
       return;
     }
 
