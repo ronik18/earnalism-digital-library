@@ -1001,7 +1001,7 @@ describe("UX conversion static signals", () => {
     expect(app).not.toContain("InternalAudiobookPlayerPrototype");
     expect(app).not.toContain("audiobook-player-prototype");
     expect(staticSnapshotGenerator).not.toContain("audiobook-player-prototype");
-    expect(frontendPackageJson).toContain('"postbuild": "node scripts/generate-static-seo-snapshots.mjs"');
+    expect(frontendPackageJson).toContain('"postbuild": "node scripts/generate-static-seo-snapshots.mjs && node scripts/verify-static-seo-snapshots.mjs"');
   });
 
   test("internal audiobook player prototype uses safe mock metadata and no audio asset", () => {
@@ -1586,7 +1586,8 @@ describe("UX conversion static signals", () => {
   });
 
   test("static SEO snapshot generator is wired into the CRA build", () => {
-    expect(frontendPackageJson).toContain('"postbuild": "node scripts/generate-static-seo-snapshots.mjs"');
+    expect(frontendPackageJson).toContain('"postbuild": "node scripts/generate-static-seo-snapshots.mjs && node scripts/verify-static-seo-snapshots.mjs"');
+    expect(fs.existsSync(path.join(ROOT, "frontend/scripts/verify-static-seo-snapshots.mjs"))).toBe(true);
     expect(staticSnapshotGenerator).toContain("Dracula by Bram Stoker | The Earnalism Digital Library");
     expect(staticSnapshotGenerator).toContain("Book");
     expect(staticSnapshotGenerator).toContain("BreadcrumbList");
