@@ -24,7 +24,7 @@
     "start": "craco start",
     "prebuild": "node scripts/generate-seo-assets.mjs",
     "build": "GENERATE_SOURCEMAP=false craco build",
-    "postbuild": "node scripts/generate-static-seo-snapshots.mjs",
+    "postbuild": "node scripts/generate-static-seo-snapshots.mjs && node scripts/verify-static-seo-snapshots.mjs",
     "test": "craco test"
   },
   "browserslist": {
