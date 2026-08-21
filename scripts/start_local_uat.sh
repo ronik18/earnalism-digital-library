@@ -52,6 +52,10 @@ export UAT_FRONTEND_HOST UAT_BACKEND_HOST UAT_FRONTEND_PORT UAT_BACKEND_PORT UAT
 export UAT_BASE_URL="http://$UAT_FRONTEND_HOST:$UAT_FRONTEND_PORT"
 export UAT_API_BASE_URL="http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT/api"
 export REACT_APP_BACKEND_URL="http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT" REACT_APP_API_URL="$UAT_API_BASE_URL" REACT_APP_UAT_LOCAL=true
+# The static UAT build calls the API on a separately allocated loopback port.
+# Keep that selected origin in the backend's allowlist; 3000 is only the
+# preferred port and may already be occupied on the host running this gate.
+export CORS_ORIGINS="$UAT_BASE_URL"
 export ENVIRONMENT=uat PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 RAZORPAY_MODE=test
 export JWT_SECRET=uat-local-only-jwt-secret-do-not-use-outside-this-worktree-20260820
 export READING_PASS_V2_ENABLED=true READING_PASS_TOKEN_SECRET=uat-local-reading-pass-token-secret-20260820

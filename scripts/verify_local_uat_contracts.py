@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 import os
 from urllib.error import HTTPError
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 
 FRONTEND = os.environ.get("UAT_BASE_URL", "").rstrip("/")
@@ -18,9 +18,9 @@ def ensure_local(value: str, suffix: str = "") -> None:
         raise SystemExit("local UAT URL is required; production fallback is disabled")
 
 
-def get(url: str) -> tuple[int, dict[str, str], object]:
+def get(url: str, headers: dict[str, str] | None = None) -> tuple[int, dict[str, str], object]:
     try:
-        with urlopen(url, timeout=20) as response:
+        with urlopen(Request(url, headers=headers or {}), timeout=20) as response:
             body = response.read().decode("utf-8")
             try:
                 payload = json.loads(body) if body else None
@@ -54,6 +54,19 @@ def main() -> None:
             raise SystemExit(f"route contract failed for {route}: status={status}, robots={headers.get('X-Robots-Tag')!r}")
 
     require_status(f"{API}/books", 200)
+    cors_status, cors_headers, _cors_payload = get(
+        f"{API}/payments/packs",
+        {"Origin": FRONTEND},
+    )
+    cors_allow_origin = next(
+        (value for name, value in cors_headers.items() if name.lower() == "access-control-allow-origin"),
+        None,
+    )
+    if cors_status != 200 or cors_allow_origin != FRONTEND:
+        raise SystemExit(
+            "local UAT API did not allow the selected frontend origin: "
+            f"status={cors_status}, allow-origin={cors_allow_origin!r}"
+        )
     book = require_status(f"{API}/books/dracula", 200)
     expected_audio = {
         "audio_enabled": False,
