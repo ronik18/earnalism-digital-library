@@ -152,6 +152,13 @@ frontend/node_modules.stale-*/
 
 # Local virtualenvs for optional audio tooling
 .venv-edge/
+.venv-uat/
+.npm-cache/
+.pip-cache/
+.playwright-browsers/
+uat/evidence/
+uat/runtime/
+uat/.venv-uat-requirements.sha256
 
 # Internal audiobook lab may keep JSON/Markdown evidence, but never commit real audio binaries.
 internal/audiobook_lab/**/*.mp3

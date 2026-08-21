@@ -119,4 +119,9 @@ for _ in $(seq 1 90); do kill -0 "$FRONTEND_PID" 2>/dev/null || { tail -80 "$RUN
 curl -fsS "$UAT_BASE_URL/" >/dev/null
 printf 'export UAT_BASE_URL=%q\nexport UAT_API_BASE_URL=%q\nexport UAT_FRONTEND_PORT=%q\nexport UAT_BACKEND_PORT=%q\nexport UAT_MONGODB_PORT=%q\nexport UAT_MONGODB_URI=%q\nexport UAT_RUNTIME_DIR=%q\n' "$UAT_BASE_URL" "$UAT_API_BASE_URL" "$UAT_FRONTEND_PORT" "$UAT_BACKEND_PORT" "$UAT_MONGODB_PORT" "$UAT_MONGODB_URI" "$RUNTIME_DIR" > "$RUNTIME_ROOT/environment.sh"
 printf 'UAT_RUNTIME_DIR=%s\nUAT_BASE_URL=%s\nUAT_API_BASE_URL=%s\nUAT_MONGODB_PORT=%s\n' "$RUNTIME_DIR" "$UAT_BASE_URL" "$UAT_API_BASE_URL" "$UAT_MONGODB_PORT"
-wait
+if [[ -n "${UAT_COMMAND_FILE:-}" ]]; then
+  [[ "$UAT_COMMAND_FILE" == "$ROOT_DIR"/* && -f "$UAT_COMMAND_FILE" ]] || { echo "UAT_COMMAND_FILE must be an existing file in this worktree" >&2; exit 64; }
+  bash "$UAT_COMMAND_FILE"
+else
+  wait
+fi
