@@ -297,7 +297,7 @@ def write_manifest(args: argparse.Namespace) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if args.init:
         executable_head, executable_time = latest_executable_commit(ROOT)
-        clean = subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True) == ""
+        clean = args.clean_worktree_before_execution == "true"
         scope = json.loads((UAT / "system-scope.json").read_text(encoding="utf-8"))
         payload = {
             "schema_version": "system-uat-run-manifest-v1", "run_id": args.run_id,
@@ -336,6 +336,7 @@ def main() -> None:
     parser.add_argument("--init", action="store_true")
     parser.add_argument("--finalize", action="store_true")
     parser.add_argument("--run-id", default="")
+    parser.add_argument("--clean-worktree-before-execution", default="")
     parser.add_argument("--record")
     parser.add_argument("--frontend")
     parser.add_argument("--api")
@@ -354,6 +355,8 @@ def main() -> None:
         if args.init or args.record:
             if args.init and not re.fullmatch(r"run-[0-9]{8}T[0-9]{6}Z-[0-9]+", args.run_id):
                 raise ValueError("--run-id is required when initializing a manifest")
+            if args.init and args.clean_worktree_before_execution not in {"true", "false"}:
+                raise ValueError("--clean-worktree-before-execution is required when initializing a manifest")
             write_manifest(args)
             return
         if args.finalize:

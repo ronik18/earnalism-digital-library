@@ -3,9 +3,9 @@
 set -u -o pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"; cd "$ROOT"
-[[ -n "${UAT_RUN_ID:-}" && -n "${UAT_EVIDENCE_DIR:-}" ]] || { echo "UAT run identity is required" >&2; exit 64; }
+[[ -n "${UAT_RUN_ID:-}" && -n "${UAT_EVIDENCE_DIR:-}" && -n "${UAT_CLEAN_WORKTREE_BEFORE_EXECUTION:-}" ]] || { echo "UAT run identity and clean-worktree status are required" >&2; exit 64; }
 MANIFEST="uat/system-run-manifest.json"; overall=0
-python3 scripts/generate_system_uat_report.py --init --run-id "$UAT_RUN_ID" --manifest "$MANIFEST" --frontend "$UAT_BASE_URL" --api "$UAT_API_BASE_URL" --mongodb "mongodb://127.0.0.1:${UAT_MONGODB_PORT}/earnalism_uat?replicaSet=earnalism-uat-rs0"
+python3 scripts/generate_system_uat_report.py --init --run-id "$UAT_RUN_ID" --clean-worktree-before-execution "$UAT_CLEAN_WORKTREE_BEFORE_EXECUTION" --manifest "$MANIFEST" --frontend "$UAT_BASE_URL" --api "$UAT_API_BASE_URL" --mongodb "mongodb://127.0.0.1:${UAT_MONGODB_PORT}/earnalism_uat?replicaSet=earnalism-uat-rs0"
 npx playwright install chromium firefox webkit >"$UAT_EVIDENCE_DIR/playwright-install.log" 2>&1 || overall=1
 
 run_gate() {

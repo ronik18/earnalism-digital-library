@@ -4,6 +4,11 @@ set -Eeuo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"; cd "$ROOT"
 export npm_config_cache="$ROOT/.npm-cache" PLAYWRIGHT_BROWSERS_PATH="$ROOT/.playwright-browsers"
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "System UAT requires a clean worktree before execution" >&2
+  exit 64
+fi
+export UAT_CLEAN_WORKTREE_BEFORE_EXECUTION=true
 RUN_ID="run-$(date -u +%Y%m%dT%H%M%SZ)-$$"
 EVIDENCE_DIR="uat/evidence/system-final/$RUN_ID"; mkdir -p "$EVIDENCE_DIR"
 ENVIRONMENT_FILE="uat/runtime/system-uat/environment.sh"
