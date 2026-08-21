@@ -69,6 +69,7 @@ jobs:
         if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
         env:
           UAT_EXTERNAL_MONGODB: true
+          NODE_ENV: production
         run: bash scripts/run_pr_regression.sh
 
       - name: Stop isolated MongoDB replica set

@@ -384,6 +384,7 @@ describe("UX conversion static signals", () => {
     expect(regressionWorkflow).toContain("mongo:7.0.14");
     expect(regressionWorkflow).toContain("--replSet earnalism-uat-rs0");
     expect(localPrStep).toContain("UAT_EXTERNAL_MONGODB: true");
+    expect(localPrStep).toContain("NODE_ENV: production");
     expect(localPrStep).toContain("bash scripts/run_pr_regression.sh");
     expect(prRegressionRunner).toContain('UAT_COMMAND_FILE="$ROOT/scripts/run_pr_regression_gates.sh"');
     expect(prRegressionRunner).toContain("bash scripts/start_local_uat.sh");
