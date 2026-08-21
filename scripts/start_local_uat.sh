@@ -125,7 +125,10 @@ curl -fsS "http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT/healthz" >/dev/null
 "$VENV_PYTHON" scripts/seed_uat_canonical_pages.py > "$RUNTIME_DIR/canonical-pages.log" 2>&1 || { cat "$RUNTIME_DIR/canonical-pages.log" >&2; exit 1; }
 
 rm -rf "$ROOT_DIR/frontend/build"
-npm --prefix frontend run build > "$RUNTIME_DIR/frontend.log" 2>&1
+if ! npm --prefix frontend run build > "$RUNTIME_DIR/frontend.log" 2>&1; then
+  cat "$RUNTIME_DIR/frontend.log" >&2
+  exit 1
+fi
 node scripts/serve_frontend_build.js --host "$UAT_FRONTEND_HOST" --port "$UAT_FRONTEND_PORT" >> "$RUNTIME_DIR/frontend.log" 2>&1 & FRONTEND_PID=$!
 write_pid "$FRONTEND_PID" frontend "$UAT_FRONTEND_PORT"
 for _ in $(seq 1 90); do kill -0 "$FRONTEND_PID" 2>/dev/null || { tail -80 "$RUNTIME_DIR/frontend.log" >&2; exit 1; }; [[ "$(port_pid "$UAT_FRONTEND_PORT")" == "$FRONTEND_PID" ]] && curl -fsS "$UAT_BASE_URL/" >/dev/null 2>&1 && break; sleep 1; done
