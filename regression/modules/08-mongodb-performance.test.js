@@ -26,16 +26,18 @@ describe("MongoDB Index & Query Performance", () => {
       }
       return { ok: true };
     });
-    if (result.skipped) throw new Error(result.reason);
+    if (result?.skipped) throw new Error(result.reason);
   });
 
   test("published books have no duplicate slugs or duplicate chapter orders", async () => {
-    if (!getMongoUrl()) {
-      const books = (await apiGet("/books")).data;
-      const slugs = books.map((book) => book.slug);
-      expect(new Set(slugs).size).toBe(slugs.length);
-      return;
+    const apiBooks = (await apiGet("/books")).data;
+    const apiSlugs = apiBooks.map((book) => book.slug);
+    expect(new Set(apiSlugs).size).toBe(apiSlugs.length);
+    for (const book of apiBooks) {
+      const orders = (book.chapters || []).map((chapter) => chapter.order);
+      expect(new Set(orders).size).toBe(orders.length);
     }
+    if (!getMongoUrl()) return;
     const result = await withDb(async (db) => {
       const duplicates = await db.collection("books").aggregate([
         { $group: { _id: "$slug", count: { $sum: 1 } } },
@@ -48,6 +50,6 @@ describe("MongoDB Index & Query Performance", () => {
         expect(new Set(orders).size).toBe(orders.length);
       }
     });
-    if (result.skipped) throw new Error(result.reason);
+    if (result?.skipped) throw new Error(result.reason);
   });
 });

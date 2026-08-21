@@ -2166,3 +2166,7 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - PG 174 is the revised Preface plus Chapters I-XX edition. The duplicate `the-` slug was an exact ordered subset: it omitted the Preface and two 12-word passages accidentally absorbed into chapter titles, and contributed no unique narrative.
 - Duplicate retirement is recoverable when every retired file is checksum-bound to the pre-repair Git commit and a tombstone records the exact recovery path.
 - Oscar Wilde died in 1900; India Section 22 places this work in India's public domain from 1 January 1961. Cover provenance remains an independent fail-closed gate.
+
+## Release-truth reconciliation - 2026-08-21
+
+- A reader package marked `reader_approval_required` must be absent from every historical live allowlist and SEO surface; stale promotion records cannot override a current checksum-bound approval blocker.

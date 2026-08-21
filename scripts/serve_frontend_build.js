@@ -13,7 +13,13 @@ const mime = { ".css": "text/css", ".html": "text/html", ".js": "text/javascript
 const exactRoutes = new Set(["/", "/library", "/journal", "/about", "/contact", "/pricing", "/micro-story", "/secure-reader-test", "/login", "/signup", "/account", "/admin", "/admin/login", "/admin/launch-monitor"]);
 const routePrefixes = ["/book/", "/journal/", "/reader/", "/signin/", "/publishing/"];
 const removedRoutes = new Set(["/product/patterned-wrap-dress"]);
-const noIndexHeaders = { "Content-Type": "text/plain", "X-Robots-Tag": "noindex, nofollow, noarchive" };
+const securityHeaders = {
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+  "X-Frame-Options": "DENY",
+};
+const noIndexHeaders = { ...securityHeaders, "Content-Type": "text/plain", "X-Robots-Tag": "noindex, nofollow, noarchive" };
 
 function isSpaRoute(pathname) {
   return exactRoutes.has(pathname) || routePrefixes.some((prefix) => pathname.startsWith(prefix));
@@ -41,6 +47,6 @@ http.createServer((request, response) => {
     return;
   }
   const file = staticFile || path.join(root, "index.html");
-  response.writeHead(200, { "Content-Type": mime[path.extname(file)] || "application/octet-stream", "Cache-Control": file.endsWith("index.html") ? "no-store" : "public, max-age=300" });
+  response.writeHead(200, { ...securityHeaders, "Content-Type": mime[path.extname(file)] || "application/octet-stream", "Cache-Control": file.endsWith("index.html") ? "no-store" : "public, max-age=300" });
   fs.createReadStream(file).pipe(response);
 }).listen(port, host, () => console.log(`Earnalism local UAT frontend: http://${host}:${port}`));

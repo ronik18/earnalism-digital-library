@@ -6,7 +6,6 @@
     "frankenstein",
     "carmilla",
     "hound-of-the-baskervilles",
-    "picture-of-dorian-gray",
     "woman-in-white",
     "hungry-stones",
     "devdas",
@@ -14,13 +13,14 @@
     "eyesore-chokher-bali",
     "jekyll-and-hyde"
   ],
-  "heldSlugs": [],
+  "heldSlugs": [
+    "picture-of-dorian-gray"
+  ],
   "approvedReleaseAllowlist": [
     "dracula",
     "frankenstein",
     "carmilla",
     "hound-of-the-baskervilles",
-    "picture-of-dorian-gray",
     "woman-in-white",
     "hungry-stones",
     "devdas",
@@ -97,10 +97,12 @@
       "status": "PASS_100",
       "chapterCount": 21,
       "wordCountApprox": 79090,
-      "routeStatus": "READY",
+      "routeStatus": "HIDDEN_PENDING_FRESH_APPROVAL",
       "bengaliRenderingStatus": "PASS",
-      "blockers": [],
-      "decision": "PROMOTED_LIVE_READER_ONLY"
+      "blockers": [
+        "FRESH_CHECKSUM_BOUND_READER_APPROVAL_REQUIRED"
+      ],
+      "decision": "REPAIRED_READER_PENDING_FRESH_APPROVAL"
     },
     {
       "slug": "woman-in-white",

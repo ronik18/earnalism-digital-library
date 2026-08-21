@@ -55,7 +55,6 @@ Allow: /reader/mrinalini
 Allow: /reader/muchiram-gurer-jibanchorit
 Allow: /reader/nishkriti
 Allow: /reader/pather-panchali
-Allow: /reader/picture-of-dorian-gray
 Allow: /reader/pride-and-prejudice
 Allow: /reader/radharani
 Allow: /reader/sredni-vashtar

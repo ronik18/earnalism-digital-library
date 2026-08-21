@@ -12,7 +12,9 @@ UAT_BACKEND_HOST="${UAT_BACKEND_HOST:-127.0.0.1}"
 UAT_FRONTEND_PORT="${UAT_FRONTEND_PORT:-3000}"
 UAT_BACKEND_PORT="${UAT_BACKEND_PORT:-8000}"
 UAT_MONGODB_PORT="${UAT_MONGODB_PORT:-27018}"
+UAT_EXTERNAL_MONGODB="${UAT_EXTERNAL_MONGODB:-false}"
 [[ "$UAT_FRONTEND_HOST" == 127.0.0.1 && "$UAT_BACKEND_HOST" == 127.0.0.1 ]] || { echo "UAT hosts must be loopback" >&2; exit 64; }
+[[ "$UAT_EXTERNAL_MONGODB" == true || "$UAT_EXTERNAL_MONGODB" == false ]] || { echo "UAT_EXTERNAL_MONGODB must be true or false" >&2; exit 64; }
 
 port_pid() { lsof -nP -t -iTCP:"$1" -sTCP:LISTEN 2>/dev/null | head -1 || true; }
 pid_cwd() { lsof -a -p "$1" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p' | head -1; }
@@ -47,7 +49,11 @@ select_port() {
 }
 UAT_BACKEND_PORT="$(select_port "$UAT_BACKEND_PORT" backend 18000 18099)"
 UAT_FRONTEND_PORT="$(select_port "$UAT_FRONTEND_PORT" frontend 13000 13099)"
-UAT_MONGODB_PORT="$(select_port "$UAT_MONGODB_PORT" mongodb 27018 27099)"
+if [[ "$UAT_EXTERNAL_MONGODB" == true ]]; then
+  [[ -n "$(port_pid "$UAT_MONGODB_PORT")" ]] || { echo "external MongoDB must already listen on port $UAT_MONGODB_PORT" >&2; exit 1; }
+else
+  UAT_MONGODB_PORT="$(select_port "$UAT_MONGODB_PORT" mongodb 27018 27099)"
+fi
 export UAT_FRONTEND_HOST UAT_BACKEND_HOST UAT_FRONTEND_PORT UAT_BACKEND_PORT UAT_MONGODB_PORT
 export UAT_BASE_URL="http://$UAT_FRONTEND_HOST:$UAT_FRONTEND_PORT"
 export UAT_API_BASE_URL="http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT/api"
@@ -99,12 +105,16 @@ MONGODB_DATA_DIR="$MONGODB_RUN_DIR/data"
 MONGODB_LOG="$MONGODB_RUN_DIR/mongod.log"
 MONGODB_ENGINE_PIDFILE="$MONGODB_RUN_DIR/mongod.engine.pid"
 mkdir -p "$MONGODB_DATA_DIR"
-MONGOD_BIN="${MONGOD_BIN:-$(command -v mongod || true)}"
-[[ -x "$MONGOD_BIN" ]] || { echo "mongod is required for local transaction UAT" >&2; exit 1; }
-"$MONGOD_BIN" --replSet earnalism-uat-rs0 --bind_ip 127.0.0.1 --port "$UAT_MONGODB_PORT" --dbpath "$MONGODB_DATA_DIR" --logpath "$MONGODB_LOG" --pidfilepath "$MONGODB_ENGINE_PIDFILE" --nounixsocket > "$RUNTIME_DIR/mongodb.log" 2>&1 & MONGODB_PID=$!
-write_pid "$MONGODB_PID" mongodb "$UAT_MONGODB_PORT"
-for _ in $(seq 1 45); do kill -0 "$MONGODB_PID" 2>/dev/null || { tail -80 "$RUNTIME_DIR/mongodb.log" >&2; exit 1; }; [[ "$(port_pid "$UAT_MONGODB_PORT")" == "$MONGODB_PID" ]] && break; sleep 1; done
-[[ "$(port_pid "$UAT_MONGODB_PORT")" == "$MONGODB_PID" ]] || { tail -80 "$RUNTIME_DIR/mongodb.log" >&2; exit 1; }
+if [[ "$UAT_EXTERNAL_MONGODB" == true ]]; then
+  "$VENV_PYTHON" -c 'from pymongo import MongoClient; MongoClient("'"$UAT_MONGODB_URI"'", serverSelectionTimeoutMS=5000).admin.command("ping")' > "$RUNTIME_DIR/mongodb-external.log" 2>&1 || { cat "$RUNTIME_DIR/mongodb-external.log" >&2; exit 1; }
+else
+  MONGOD_BIN="${MONGOD_BIN:-$(command -v mongod || true)}"
+  [[ -x "$MONGOD_BIN" ]] || { echo "mongod is required for local transaction UAT" >&2; exit 1; }
+  "$MONGOD_BIN" --replSet earnalism-uat-rs0 --bind_ip 127.0.0.1 --port "$UAT_MONGODB_PORT" --dbpath "$MONGODB_DATA_DIR" --logpath "$MONGODB_LOG" --pidfilepath "$MONGODB_ENGINE_PIDFILE" --nounixsocket > "$RUNTIME_DIR/mongodb.log" 2>&1 & MONGODB_PID=$!
+  write_pid "$MONGODB_PID" mongodb "$UAT_MONGODB_PORT"
+  for _ in $(seq 1 45); do kill -0 "$MONGODB_PID" 2>/dev/null || { tail -80 "$RUNTIME_DIR/mongodb.log" >&2; exit 1; }; [[ "$(port_pid "$UAT_MONGODB_PORT")" == "$MONGODB_PID" ]] && break; sleep 1; done
+  [[ "$(port_pid "$UAT_MONGODB_PORT")" == "$MONGODB_PID" ]] || { tail -80 "$RUNTIME_DIR/mongodb.log" >&2; exit 1; }
+fi
 "$VENV_PYTHON" scripts/init_uat_mongodb.py > "$RUNTIME_DIR/mongodb-primary.log" 2>&1 || { cat "$RUNTIME_DIR/mongodb-primary.log" >&2; exit 1; }
 
 "$VENV_PYTHON" -m uvicorn backend.server:app --host "$UAT_BACKEND_HOST" --port "$UAT_BACKEND_PORT" > "$RUNTIME_DIR/backend.log" 2>&1 & BACKEND_PID=$!

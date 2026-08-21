@@ -2526,14 +2526,14 @@
     "picture-of-dorian-gray": {
       "latest_decision": "READER_REPAIRED_COVER_AND_OWNER_APPROVAL_PENDING",
       "decision_reason": "Exact PG 174 source, India Section 22 rights, semantic structure, alias retirement, checksums, and mirrors pass.",
-      "updated_at": "2026-08-16T00:00:00Z",
+      "updated_at": "2026-08-21T00:00:00Z",
       "language": "en",
       "territory": "IN",
       "public_reader_status": "PRIVATE_COVER_AND_READER_APPROVAL_REQUIRED",
       "public_audio_status": "AUDIO_HIDDEN_NOT_REQUESTED",
       "source_sha256": "9e37dc7035cb6991073be62b6e8de858173cd8608a25ec5a5ca78c6608458932",
       "content_sha256": "73afc95ebd217de9ff7cb189a89308591fa3de51e6d92cbdf70b703ad435ad81",
-      "next_action": "Prove cover provenance, then render private preview."
+      "next_action": "Prove exact-slug cover provenance, render a private checksum-bound preview, and obtain fresh reader approval before restoring public allowlists."
     },
     "frankenstein": {
       "latest_decision": "NEXT_FOUR_LANE_RANK_2_SOURCE_PREFLIGHT_PASS_ROOT_RECONCILIATION_AND_COVERS_REQUIRED",

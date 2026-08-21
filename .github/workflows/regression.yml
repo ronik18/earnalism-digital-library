@@ -23,9 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
-      REGRESSION_FRONTEND_URL: ${{ vars.STAGING_FRONTEND_URL || vars.FRONTEND_URL || 'https://theearnalism.com' }}
-      REGRESSION_API_URL: ${{ vars.STAGING_API_URL || vars.API_URL || 'https://api.theearnalism.com' }}
       NODE_ENV: ci
+      npm_config_cache: ${{ github.workspace }}/.npm-cache
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
 
     steps:
       - name: Checkout
@@ -46,21 +46,41 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci --prefix frontend --legacy-peer-deps
 
+      - name: Set up Python for isolated UAT
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Run PR regression
-        if: github.event_name == 'pull_request'
-        run: npm run regression:ci
+      - name: Start isolated MongoDB replica set
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+        run: |
+          docker run --detach --name earnalism-uat-mongodb --network host mongo:7.0.14 mongod --bind_ip 127.0.0.1 --port 27018 --replSet earnalism-uat-rs0
+          for _ in $(seq 1 30); do
+            docker exec earnalism-uat-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'db.adminCommand({ ping: 1 })' && break
+            sleep 1
+          done
+          docker exec earnalism-uat-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'try { rs.initiate({_id: "earnalism-uat-rs0", members: [{ _id: 0, host: "127.0.0.1:27018" }]}) } catch (error) { if (error.codeName !== "AlreadyInitialized") throw error }'
 
-      - name: Run manual regression
-        if: github.event_name == 'workflow_dispatch'
-        run: npm run regression:ci
+      - name: Run isolated local PR regression
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+        env:
+          UAT_EXTERNAL_MONGODB: true
+        run: bash scripts/run_pr_regression.sh
+
+      - name: Stop isolated MongoDB replica set
+        if: always() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch')
+        run: docker rm --force earnalism-uat-mongodb
 
       - name: Run main pre-deploy regression
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           REGRESSION_MODE: pr
+          REGRESSION_FRONTEND_URL: ${{ vars.STAGING_FRONTEND_URL || vars.FRONTEND_URL || 'https://theearnalism.com' }}
+          REGRESSION_API_URL: ${{ vars.STAGING_API_URL || vars.API_URL || 'https://api.theearnalism.com' }}
           MONGODB_URL: ${{ secrets.STAGING_MONGODB_URL || secrets.MONGODB_URL }}
           REDIS_URL: ${{ secrets.STAGING_REDIS_URL || secrets.REDIS_URL }}
           JUDOSCALE_URL: ${{ secrets.JUDOSCALE_URL }}
@@ -68,11 +88,6 @@ jobs:
           REGRESSION_ENABLE_LOAD_TEST: ${{ vars.REGRESSION_ENABLE_LOAD_TEST || 'false' }}
           REGRESSION_REQUIRE_INFRA_SECRETS: ${{ vars.REGRESSION_REQUIRE_INFRA_SECRETS || 'false' }}
         run: npm run regression:ci
-
-      - name: Report production parity without blocking PR deploy fix
-        if: github.event_name == 'pull_request'
-        continue-on-error: true
-        run: npm run launch:production-parity
 
       - name: Upload regression artifacts
         if: always()

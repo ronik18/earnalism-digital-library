@@ -24,33 +24,33 @@ describe("Migration, Backup & Data Consistency", () => {
   });
 
   test("published books have valid category, author, chapter and cover data", async () => {
-    if (!getMongoUrl()) {
-      const books = (await apiGet("/books")).data;
-      expect(books.length).toBeGreaterThan(0);
-      const bySlug = new Map(books.map((book) => [book.slug, book]));
-      for (const book of books) {
-        expect(book.slug).toBeTruthy();
-        expect(book.category_slug).toBeTruthy();
-        expect(book.author).toBeTruthy();
-      }
-      for (const slug of APPROVED_PUBLIC_AUDIO_SLUGS) {
-        const book = bySlug.get(slug);
-        if (!book && isPr() && CONTROLLED_AUDIO_SLUGS.has(slug)) {
-          continue;
-        }
-        expect(book).toBeTruthy();
-        const sourceCover = isPr() && CONTROLLED_AUDIO_SLUGS.has(slug)
-          ? controlledPublicationCover(slug)
-          : "";
-        expect(book.cover_image_url || book.cover_url || book.thumbnail_url || sourceCover).toBeTruthy();
-      }
-      return;
+    // The controlled reader catalogue is artifact-backed in isolated UAT,
+    // while MongoDB remains authoritative for operational data and indexes.
+    // Validate the public catalogue through its served contract in every mode.
+    const books = (await apiGet("/books")).data;
+    expect(books.length).toBeGreaterThan(0);
+    const bySlug = new Map(books.map((book) => [book.slug, book]));
+    for (const book of books) {
+      expect(book.slug).toBeTruthy();
+      expect(book.category_slug).toBeTruthy();
+      expect(book.author).toBeTruthy();
     }
+    for (const slug of APPROVED_PUBLIC_AUDIO_SLUGS) {
+      const book = bySlug.get(slug);
+      if (!book && isPr() && CONTROLLED_AUDIO_SLUGS.has(slug)) {
+        continue;
+      }
+      expect(book).toBeTruthy();
+      const sourceCover = isPr() && CONTROLLED_AUDIO_SLUGS.has(slug)
+        ? controlledPublicationCover(slug)
+        : "";
+      expect(book.cover_image_url || book.cover_url || book.thumbnail_url || sourceCover).toBeTruthy();
+    }
+    if (!getMongoUrl()) return;
     const result = await withDb(async (db) => {
       const books = await db.collection("books").find({ is_published: true }, {
         projection: { slug: 1, category_slug: 1, author: 1, chapters: 1, cover_image_url: 1, cover_url: 1, rights_metadata: 1 },
       }).toArray();
-      expect(books.length).toBeGreaterThan(0);
       for (const book of books) {
         expect(book.slug).toBeTruthy();
         expect(book.category_slug).toBeTruthy();
@@ -59,7 +59,7 @@ describe("Migration, Backup & Data Consistency", () => {
         expect(book.cover_image_url || book.cover_url).toBeTruthy();
       }
     });
-    if (result.skipped) throw new Error(result.reason);
+    if (result?.skipped) throw new Error(result.reason);
   });
 
   test("no orphaned audio sync records when audio collection exists", async () => {
@@ -77,6 +77,6 @@ describe("Migration, Backup & Data Consistency", () => {
       ]).toArray();
       expect(orphaned).toEqual([]);
     });
-    if (result.skipped) throw new Error(result.reason);
+    if (result?.skipped) throw new Error(result.reason);
   });
 });
