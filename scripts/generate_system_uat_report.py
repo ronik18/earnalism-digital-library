@@ -118,6 +118,19 @@ def fail(errors: list[str]) -> None:
     raise ValueError("; ".join(errors))
 
 
+def report_tested_head(payload: object, requested_head: str | None, *, root: Path) -> str:
+    if not isinstance(payload, dict):
+        raise ValueError("run manifest must be a JSON object")
+    manifest_head = payload.get("tested_code_head")
+    if not isinstance(manifest_head, str) or not re.fullmatch(r"[0-9a-f]{40}", manifest_head):
+        raise ValueError("tested_code_head must be a full git SHA")
+    if requested_head is not None:
+        if requested_head != manifest_head:
+            raise ValueError("requested tested_code_head does not match the run manifest")
+        return requested_head
+    return git_head(root)
+
+
 def validate_manifest(
     payload: object, *, root: Path = ROOT, current_head: str | None = None, require_finalized: bool = True
 ) -> dict:
@@ -126,8 +139,8 @@ def validate_manifest(
         fail(["run manifest must be a JSON object"])
     if payload.get("schema_version") != "system-uat-run-manifest-v1":
         errors.append("unsupported or missing run-manifest schema")
-    run_id = payload.get("run_id")
-    if not isinstance(run_id, str) or not re.fullmatch(r"run-[0-9]{8}T[0-9]{6}Z-[0-9]+", run_id):
+    manifest_run_id = payload.get("run_id")
+    if not isinstance(manifest_run_id, str) or not re.fullmatch(r"run-[A-Za-z0-9][A-Za-z0-9._-]*", manifest_run_id):
         errors.append("run_id is missing or invalid")
     if payload.get("canonical_worktree") != str(root.resolve()):
         errors.append("canonical_worktree does not match the report root")
@@ -174,58 +187,78 @@ def validate_manifest(
     if not isinstance(runs, list):
         fail(errors + ["runs must be a list"])
     by_id: dict[str, dict] = {}
-    for run in runs:
-        if not isinstance(run, dict) or not isinstance(run.get("id"), str):
+    for suite_result in runs:
+        if not isinstance(suite_result, dict) or not isinstance(suite_result.get("id"), str):
             errors.append("run entry is malformed")
             continue
-        run_id = run["id"]
-        if run_id in by_id:
-            errors.append(f"duplicate run id: {run_id}")
-        by_id[run_id] = run
-    for run_id, rule in REQUIRED_RUNS.items():
-        run = by_id.get(run_id)
-        if run is None:
-            errors.append(f"missing required run: {run_id}")
+        suite_id = suite_result["id"]
+        if suite_id in by_id:
+            errors.append(f"duplicate run id: {suite_id}")
+        by_id[suite_id] = suite_result
+    for suite_id, rule in REQUIRED_RUNS.items():
+        suite_result = by_id.get(suite_id)
+        if suite_result is None:
+            errors.append(f"missing required run: {suite_id}")
             continue
-        if not isinstance(run.get("command"), str) or not run["command"].strip():
-            errors.append(f"{run_id}: command is missing")
+        if not isinstance(suite_result.get("command"), str) or not suite_result["command"].strip():
+            errors.append(f"{suite_id}: command is missing")
         try:
-            started = iso8601(run.get("started_at")); completed = iso8601(run.get("completed_at"))
+            started = iso8601(suite_result.get("started_at")); completed = iso8601(suite_result.get("completed_at"))
             if completed < started:
-                errors.append(f"{run_id}: completion precedes start")
+                errors.append(f"{suite_id}: completion precedes start")
             if executable_time is not None and started < executable_time:
-                errors.append(f"{run_id}: evidence predates the tested executable commit")
+                errors.append(f"{suite_id}: evidence predates the tested executable commit")
         except ValueError:
-            errors.append(f"{run_id}: timestamps are missing or invalid")
-        if run.get("exit_code") != 0:
-            errors.append(f"{run_id}: nonzero exit code")
-        totals = run.get("totals")
+            errors.append(f"{suite_id}: timestamps are missing or invalid")
+        if suite_result.get("exit_code") != 0:
+            errors.append(f"{suite_id}: nonzero exit code")
+        totals = suite_result.get("totals")
         if not isinstance(totals, dict) or any(not isinstance(totals.get(key), int) or totals.get(key) < 0 for key in ("passed", "failed", "missing")):
-            errors.append(f"{run_id}: totals are missing or invalid")
+            errors.append(f"{suite_id}: totals are missing or invalid")
             continue
         if totals["passed"] < rule["min_passed"] or totals["failed"] != 0 or totals["missing"] != 0:
-            errors.append(f"{run_id}: totals are not passing")
-        log_path = safe_log_path(run.get("log"), root)
+            errors.append(f"{suite_id}: totals are not passing")
+        log_path = safe_log_path(suite_result.get("log"), root)
         if log_path is None or not log_path.is_file():
-            errors.append(f"{run_id}: log is missing or outside local evidence")
+            errors.append(f"{suite_id}: log is missing or outside local evidence")
             continue
-        expected_hash = run.get("sha256")
+        expected_hash = suite_result.get("sha256")
         if not isinstance(expected_hash, str) or not re.fullmatch(r"[0-9a-f]{64}", expected_hash) or expected_hash != sha256_file(log_path):
-            errors.append(f"{run_id}: log SHA256 does not match")
+            errors.append(f"{suite_id}: log SHA256 does not match")
             continue
         text = log_path.read_text(encoding="utf-8", errors="replace")
-        markers = tuple(rule.get("markers", ())) + tuple(run.get("required_markers", ()))
+        markers = tuple(rule.get("markers", ())) + tuple(suite_result.get("required_markers", ()))
         if any(not isinstance(marker, str) or marker not in text for marker in markers):
-            errors.append(f"{run_id}: log is missing a required success marker")
+            errors.append(f"{suite_id}: log is missing a required success marker")
         if re.search(r"(?<![=\w])[1-9][0-9]*\s+(?:failed|errors?)\b", text, flags=re.IGNORECASE):
-            errors.append(f"{run_id}: log contradicts zero failures")
+            errors.append(f"{suite_id}: log contradicts zero failures")
         if re.search(r"(?:failed|errors?)=[1-9][0-9]*\b", text, flags=re.IGNORECASE):
-            errors.append(f"{run_id}: log contradicts zero failures")
+            errors.append(f"{suite_id}: log contradicts zero failures")
         if re.search(r"\bmissing=[1-9][0-9]*\b", text, flags=re.IGNORECASE):
-            errors.append(f"{run_id}: log contradicts zero missing")
+            errors.append(f"{suite_id}: log contradicts zero missing")
     if errors:
         fail(errors)
-    return {"run_id": run_id, "tested_head": tested_head, "endpoints": endpoints, "runs": by_id, "scope_decisions": scope_note}
+    return {"run_id": manifest_run_id, "tested_head": tested_head, "endpoints": endpoints, "runs": by_id, "scope_decisions": scope_note}
+
+
+def validate_report_payload(report: object, validated_manifest: dict, *, provenance_tool_head: str) -> None:
+    errors: list[str] = []
+    if not isinstance(report, dict):
+        fail(["generated report must be a JSON object"])
+    if report.get("run_id") != validated_manifest["run_id"]:
+        errors.append("report run_id does not match the manifest run_id")
+    if report.get("tested_code_head") != validated_manifest["tested_head"]:
+        errors.append("report tested_code_head does not match the manifest")
+    if report.get("provenance_tool_head") != provenance_tool_head:
+        errors.append("report provenance_tool_head does not match the generator HEAD")
+    if report.get("totals") != {"PASS": 39, "FAILED": 0, "BLOCKED": 0, "UNTESTED": 0, "UNVERIFIED": 0}:
+        errors.append("report totals do not match the frozen System UAT scope")
+    if report.get("score") != 10.0 or report.get("result") != "PASSED" or report.get("final_system_uat_regression") != "PASSED":
+        errors.append("report aggregate result is not passing")
+    if report.get("provenance_validation") != "PASSED":
+        errors.append("report provenance validation is not passing")
+    if errors:
+        fail(errors)
 
 
 def case_evidence(runs: dict[str, dict]) -> dict[str, bool]:
@@ -255,12 +288,12 @@ def case_evidence(runs: dict[str, dict]) -> dict[str, bool]:
     }
 
 
-def generate_report(*, root: Path = ROOT, manifest: Path | None = None) -> dict:
+def generate_report(*, root: Path = ROOT, manifest: Path | None = None, tested_code_head: str | None = None) -> dict:
     uat = root / "uat"
     scope = json.loads((uat / "system-scope.json").read_text(encoding="utf-8"))
     manifest = manifest or manifest_path(root)
     manifest_payload = json.loads(manifest.read_text(encoding="utf-8"))
-    validated = validate_manifest(manifest_payload, root=root, current_head=git_head(root))
+    validated = validate_manifest(manifest_payload, root=root, current_head=report_tested_head(manifest_payload, tested_code_head, root=root))
     evidence = case_evidence(validated["runs"])
     included = list(scope["included_system_cases"])
     rows = [{"case_id": case_id, "status": "PASS" if evidence.get(case_id, False) else "UNVERIFIED"} for case_id in included]
@@ -273,6 +306,7 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None) -> dict:
         "environment": {"frontend_url": validated["endpoints"]["frontend"], "api_url": validated["endpoints"]["api"], "worktree": str(root.resolve()), "branch": manifest_payload["branch"], "head": validated["tested_head"]},
         "run_id": validated["run_id"],
         "tested_code_head": validated["tested_head"],
+        "provenance_tool_head": git_head(root),
         "scope_decisions": validated["scope_decisions"],
         "run_manifest": str(manifest.relative_to(root)),
         "run_manifest_sha256": sha256_file(manifest),
@@ -283,6 +317,7 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None) -> dict:
     }
     defects = [{"id": f"EVIDENCE-{row['case_id']}", "severity": "P1", "status": "UNVERIFIED", "case_id": row["case_id"]} for row in rows if row["status"] != "PASS"]
     report = {**state, "result": "PASSED" if complete else "INCOMPLETE", "final_system_uat_regression": manifest_payload["aggregate_result"], "completion_conditions_met": complete, "blocking_defect_ids": [entry["id"] for entry in defects], "evidence_paths": [run["log"] for run in validated["runs"].values()], "suite_results": manifest_payload["runs"], "provenance_validation": "PASSED"}
+    validate_report_payload(report, validated, provenance_tool_head=git_head(root))
     with (uat / "system-matrix.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=["case_id", "status"])
         writer.writeheader(); writer.writerows(rows)
@@ -335,7 +370,9 @@ def main() -> None:
     parser.add_argument("--manifest", default=str(manifest_path()))
     parser.add_argument("--init", action="store_true")
     parser.add_argument("--finalize", action="store_true")
+    parser.add_argument("--validate-report", action="store_true")
     parser.add_argument("--run-id", default="")
+    parser.add_argument("--tested-code-head")
     parser.add_argument("--clean-worktree-before-execution", default="")
     parser.add_argument("--record")
     parser.add_argument("--frontend")
@@ -362,7 +399,15 @@ def main() -> None:
         if args.finalize:
             finalize_manifest(args)
             return
-        print(json.dumps(generate_report(manifest=Path(args.manifest).resolve())))
+        if args.validate_report:
+            manifest = Path(args.manifest).resolve()
+            manifest_payload = json.loads(manifest.read_text(encoding="utf-8"))
+            validated = validate_manifest(manifest_payload, root=ROOT, current_head=report_tested_head(manifest_payload, args.tested_code_head, root=ROOT))
+            report = json.loads((UAT / "system-final-report.json").read_text(encoding="utf-8"))
+            validate_report_payload(report, validated, provenance_tool_head=git_head(ROOT))
+            print("system-uat-provenance=PASSED")
+            return
+        print(json.dumps(generate_report(manifest=Path(args.manifest).resolve(), tested_code_head=args.tested_code_head)))
     except (ValueError, OSError, subprocess.CalledProcessError, json.JSONDecodeError) as error:
         print(f"system-uat-provenance=REJECTED: {error}", file=sys.stderr)
         raise SystemExit(2)

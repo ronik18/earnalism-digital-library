@@ -80,6 +80,25 @@ class SystemUatProvenanceTests(unittest.TestCase):
     def test_accepts_complete_current_manifest(self) -> None:
         MODULE.validate_manifest(self.payload, root=self.root, current_head=self.head)
 
+    def test_manifest_run_id_is_not_shadowed_by_suite_ids(self) -> None:
+        payload = deepcopy(self.payload)
+        payload["run_id"] = "run-example-123"
+        validated = MODULE.validate_manifest(payload, root=self.root, current_head=self.head)
+        self.assertEqual(validated["run_id"], "run-example-123")
+        payload["runs"].reverse()
+        reordered = MODULE.validate_manifest(payload, root=self.root, current_head=self.head)
+        self.assertEqual(reordered["run_id"], "run-example-123")
+
+    def test_rejects_report_run_id_different_from_manifest(self) -> None:
+        validated = MODULE.validate_manifest(self.payload, root=self.root, current_head=self.head)
+        report = {
+            "run_id": "contrast", "tested_code_head": self.head, "provenance_tool_head": self.head,
+            "totals": {"PASS": 39, "FAILED": 0, "BLOCKED": 0, "UNTESTED": 0, "UNVERIFIED": 0},
+            "score": 10.0, "result": "PASSED", "final_system_uat_regression": "PASSED", "provenance_validation": "PASSED",
+        }
+        with self.assertRaisesRegex(ValueError, "report run_id does not match"):
+            MODULE.validate_report_payload(report, validated, provenance_tool_head=self.head)
+
     def test_rejects_stale_tested_head(self) -> None:
         payload = deepcopy(self.payload); payload["tested_head"] = "b" * 40
         self.assert_rejected(payload, "tested_head and tested_code_head disagree")
