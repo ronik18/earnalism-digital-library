@@ -1,12 +1,12 @@
 {
   "schema_version": "system-uat-run-manifest-v1",
-  "run_id": "run-20260821T063940Z-45901",
+  "run_id": "run-20260821T094322Z-52131",
   "canonical_worktree": "/private/tmp/earnalism-main-approved-integration",
   "branch": "codex/main-approved-integration",
-  "tested_head": "eab1c924675182c8a0209d43d8f07c71ee382df0",
-  "tested_code_head": "eab1c924675182c8a0209d43d8f07c71ee382df0",
-  "latest_executable_commit": "eab1c924675182c8a0209d43d8f07c71ee382df0",
-  "latest_executable_commit_at": "2026-08-21T12:09:31+05:30",
+  "tested_head": "c4ac6cca21981a9a421ee98062e3a13b4a66177f",
+  "tested_code_head": "c4ac6cca21981a9a421ee98062e3a13b4a66177f",
+  "latest_executable_commit": "c4ac6cca21981a9a421ee98062e3a13b4a66177f",
+  "latest_executable_commit_at": "2026-08-21T15:13:12+05:30",
   "clean_worktree_before_execution": true,
   "scope_version": "system-uat-scope-v1",
   "included_case_count": 39,
@@ -27,183 +27,183 @@
     {
       "id": "backend-compile",
       "command": ".venv-uat/bin/python -m compileall -q backend",
-      "started_at": "2026-08-21T06:39:57Z",
-      "completed_at": "2026-08-21T06:39:57Z",
+      "started_at": "2026-08-21T09:43:38Z",
+      "completed_at": "2026-08-21T09:43:38Z",
       "exit_code": 0,
       "totals": {
         "passed": 1,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/backend-compile.log",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/backend-compile.log",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "required_markers": []
     },
     {
       "id": "backend-core",
       "command": "env -u READING_PASS_V2_ENABLED .venv-uat/bin/python -m pytest -q backend/tests/test_reading_pass_policy.py backend/tests/test_reading_time_invariants.py backend/tests/test_payments_razorpay.py backend/tests/test_reading_pass_service_concurrency.py backend/tests/test_reading_pass_security_static.py",
-      "started_at": "2026-08-21T06:39:57Z",
-      "completed_at": "2026-08-21T06:39:59Z",
+      "started_at": "2026-08-21T09:43:38Z",
+      "completed_at": "2026-08-21T09:43:40Z",
       "exit_code": 0,
       "totals": {
         "passed": 47,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/backend-core.log",
-      "sha256": "3832e13bb3f1811d55e246cee7a7a3ada65f60071552a6f9d70e739dbe16bfed",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/backend-core.log",
+      "sha256": "4041c26513d82e3757e8308fd7b80ccf8b56dcd557eacb56b03d83fd463a766b",
       "required_markers": []
     },
     {
       "id": "backend-policy",
       "command": ".venv-uat/bin/python -m pytest -q backend/tests/test_controlled_launch_parity.py",
-      "started_at": "2026-08-21T06:39:59Z",
-      "completed_at": "2026-08-21T06:39:59Z",
+      "started_at": "2026-08-21T09:43:40Z",
+      "completed_at": "2026-08-21T09:43:41Z",
       "exit_code": 0,
       "totals": {
         "passed": 8,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/backend-policy.log",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/backend-policy.log",
       "sha256": "54d62a0149f447ee2867b9e102287fade45e0a057ff3b969489678c98884e9ae",
       "required_markers": []
     },
     {
       "id": "frontend-full",
       "command": "env -u REACT_APP_BACKEND_URL -u REACT_APP_API_URL -u REACT_APP_UAT_LOCAL npm --prefix frontend test -- --watchAll=false --runInBand",
-      "started_at": "2026-08-21T06:40:00Z",
-      "completed_at": "2026-08-21T06:40:02Z",
+      "started_at": "2026-08-21T09:43:41Z",
+      "completed_at": "2026-08-21T09:43:44Z",
       "exit_code": 0,
       "totals": {
         "passed": 258,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/frontend-full.log",
-      "sha256": "5d6fce9ee541b28f3aa5c684bbdbe0733ada59e4868c6198132eedadb0137f2a",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/frontend-full.log",
+      "sha256": "c73ca662eb07129d1a28733e6eb0fc590973756f117ca4beff4e2487cbffac7d",
       "required_markers": []
     },
     {
       "id": "frontend-build",
       "command": "npm --prefix frontend run build",
-      "started_at": "2026-08-21T06:40:02Z",
-      "completed_at": "2026-08-21T06:40:09Z",
+      "started_at": "2026-08-21T09:43:44Z",
+      "completed_at": "2026-08-21T09:43:51Z",
       "exit_code": 0,
       "totals": {
         "passed": 1,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/frontend-build.log",
-      "sha256": "c0ffb6e3a6232d27d836499e9280575d2bcecfa85b157e5b07fef7d5310188b5",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/frontend-build.log",
+      "sha256": "5e28313f628659b897c6357d1262d1a6a3f1844c5a5999f2a04aaafe24f98c41",
       "required_markers": []
     },
     {
       "id": "contracts",
       "command": ".venv-uat/bin/python scripts/verify_local_uat_contracts.py",
-      "started_at": "2026-08-21T06:40:09Z",
-      "completed_at": "2026-08-21T06:40:09Z",
+      "started_at": "2026-08-21T09:43:51Z",
+      "completed_at": "2026-08-21T09:43:51Z",
       "exit_code": 0,
       "totals": {
         "passed": 2,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/contracts.log",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/contracts.log",
       "sha256": "fb165609fe74b5fe34a0a93a27cddf8ecb4799e42aaeb72ec5aaeedefa483a24",
       "required_markers": []
     },
     {
       "id": "hydration",
       "command": "npx playwright test tests/e2e/hydration-routes.spec.js --project=chromium",
-      "started_at": "2026-08-21T06:40:09Z",
-      "completed_at": "2026-08-21T06:40:22Z",
+      "started_at": "2026-08-21T09:43:51Z",
+      "completed_at": "2026-08-21T09:44:04Z",
       "exit_code": 0,
       "totals": {
         "passed": 7,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/hydration.log",
-      "sha256": "15e10697f3b5bff6529492e678bb49643e07d4f6b53cc5feac7ebb6351d71049",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/hydration.log",
+      "sha256": "6f4fc74ad5c0d9e03e2662e2e8fa15882114b967cf37376613ac9d55817c4e3f",
       "required_markers": []
     },
     {
       "id": "responsive",
       "command": "npx playwright test tests/e2e/reading-pass-responsive.spec.js --project=chromium",
-      "started_at": "2026-08-21T06:40:22Z",
-      "completed_at": "2026-08-21T06:40:25Z",
+      "started_at": "2026-08-21T09:44:04Z",
+      "completed_at": "2026-08-21T09:44:07Z",
       "exit_code": 0,
       "totals": {
         "passed": 8,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/responsive.log",
-      "sha256": "976d623136c4c23513bee501ed23086f752e618216003c88bbea7fec151ff0a3",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/responsive.log",
+      "sha256": "18c35f37a8b65df15846ccbdd58b4128d103ef16a45c52b43fc501b15d712e5a",
       "required_markers": []
     },
     {
       "id": "chromium-journeys",
       "command": "npx playwright test tests/e2e/earnalism-real-user-journey.spec.js --project=chromium",
-      "started_at": "2026-08-21T06:40:25Z",
-      "completed_at": "2026-08-21T06:40:49Z",
+      "started_at": "2026-08-21T09:44:07Z",
+      "completed_at": "2026-08-21T09:44:31Z",
       "exit_code": 0,
       "totals": {
         "passed": 12,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/chromium-journeys.log",
-      "sha256": "b91afd61e0bf1c64f75af590a40a053a2775064b453f976163239d4c41219c7e",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/chromium-journeys.log",
+      "sha256": "8157cc074189a176584a8b7dcbb0ffc5a15afb952aa6f20f4f029a5caeb9fb96",
       "required_markers": []
     },
     {
       "id": "firefox-journeys",
       "command": "npx playwright test tests/e2e/earnalism-real-user-journey.spec.js --project=firefox",
-      "started_at": "2026-08-21T06:40:49Z",
-      "completed_at": "2026-08-21T06:41:13Z",
+      "started_at": "2026-08-21T09:44:31Z",
+      "completed_at": "2026-08-21T09:44:55Z",
       "exit_code": 0,
       "totals": {
         "passed": 12,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/firefox-journeys.log",
-      "sha256": "391ed7cf24b69e4cda7d1d125c70931acaa315aa3a7b016e107faa21695e82ef",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/firefox-journeys.log",
+      "sha256": "0ef3ef365534de87b92c19f525aa9b968afb61cbcc6a70d1f81d8e5d536593b0",
       "required_markers": []
     },
     {
       "id": "webkit-journeys",
       "command": "npx playwright test tests/e2e/earnalism-real-user-journey.spec.js --project=webkit",
-      "started_at": "2026-08-21T06:41:13Z",
-      "completed_at": "2026-08-21T06:41:50Z",
+      "started_at": "2026-08-21T09:44:55Z",
+      "completed_at": "2026-08-21T09:45:32Z",
       "exit_code": 0,
       "totals": {
         "passed": 12,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/webkit-journeys.log",
-      "sha256": "91bbe11642543432c9c1e89aa5e8e1363493c90bbb91dea2222bff4dca764e7f",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/webkit-journeys.log",
+      "sha256": "d7605c6794adcafa6e354863f7d41e812975236e6a53ed97517c782deaa2f08a",
       "required_markers": []
     },
     {
       "id": "contrast",
       "command": "node scripts/run_contrast_responsive_gate.mjs",
-      "started_at": "2026-08-21T06:41:50Z",
-      "completed_at": "2026-08-21T06:42:16Z",
+      "started_at": "2026-08-21T09:45:32Z",
+      "completed_at": "2026-08-21T09:46:00Z",
       "exit_code": 0,
       "totals": {
         "passed": 36,
         "failed": 0,
         "missing": 0
       },
-      "log": "uat/evidence/system-final/run-20260821T063940Z-45901/contrast.log",
+      "log": "uat/evidence/system-final/run-20260821T094322Z-52131/contrast.log",
       "sha256": "fe8a95082d53cbbc69400ecefacee2596e22335bfb0b8d14bba3ccd6c76cc020",
       "required_markers": []
     }
   ],
-  "completed_at": "2026-08-21T06:42:17+00:00"
+  "completed_at": "2026-08-21T09:46:00+00:00"
 }
