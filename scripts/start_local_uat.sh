@@ -49,9 +49,7 @@ select_port() {
 }
 UAT_BACKEND_PORT="$(select_port "$UAT_BACKEND_PORT" backend 18000 18099)"
 UAT_FRONTEND_PORT="$(select_port "$UAT_FRONTEND_PORT" frontend 13000 13099)"
-if [[ "$UAT_EXTERNAL_MONGODB" == true ]]; then
-  [[ -n "$(port_pid "$UAT_MONGODB_PORT")" ]] || { echo "external MongoDB must already listen on port $UAT_MONGODB_PORT" >&2; exit 1; }
-else
+if [[ "$UAT_EXTERNAL_MONGODB" == false ]]; then
   UAT_MONGODB_PORT="$(select_port "$UAT_MONGODB_PORT" mongodb 27018 27099)"
 fi
 export UAT_FRONTEND_HOST UAT_BACKEND_HOST UAT_FRONTEND_PORT UAT_BACKEND_PORT UAT_MONGODB_PORT
@@ -106,6 +104,8 @@ MONGODB_LOG="$MONGODB_RUN_DIR/mongod.log"
 MONGODB_ENGINE_PIDFILE="$MONGODB_RUN_DIR/mongod.engine.pid"
 mkdir -p "$MONGODB_DATA_DIR"
 if [[ "$UAT_EXTERNAL_MONGODB" == true ]]; then
+  # Container-hosted MongoDB sockets are not necessarily visible to lsof on
+  # GitHub runners, so this authenticated ping is the reachability authority.
   "$VENV_PYTHON" -c 'from pymongo import MongoClient; MongoClient("'"$UAT_MONGODB_URI"'", serverSelectionTimeoutMS=5000).admin.command("ping")' > "$RUNTIME_DIR/mongodb-external.log" 2>&1 || { cat "$RUNTIME_DIR/mongodb-external.log" >&2; exit 1; }
 else
   MONGOD_BIN="${MONGOD_BIN:-$(command -v mongod || true)}"
