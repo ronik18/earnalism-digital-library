@@ -182,9 +182,9 @@ def route_policy_checks(route: str, html: str) -> dict[str, bool]:
         "no_unapproved_book_route": not any(pattern in lowered for pattern in UNAPPROVED_ROUTE_PATTERNS),
     }
     if route == "/":
-        checks["homepage_dracula_first"] = (
-            "begin with dracula" in lowered
-            or "controlled launch begins with dracula" in lowered
+        checks["homepage_canonical_preview"] = (
+            "first 3 canonical pages" in lowered
+            and "no subscription or autorenewal" in lowered
         )
     if route == "/book/dracula":
         types = json_ld_types(html)

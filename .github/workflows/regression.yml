@@ -297,6 +297,8 @@ jobs:
         run: npm ci
       - name: Run removed-route post-deploy canary
         run: npm run launch:post-deploy-route-canary
+      - name: Run static SEO raw-HTML canary
+        run: npm run launch:post-deploy-static-seo-canary
       - name: Run canary
         run: npm run regression:canary
       - name: Upload canary artifacts
@@ -308,3 +310,5 @@ jobs:
             regression/results.json
             output/launch/post_deploy_route_canary.json
             output/launch/post_deploy_route_canary.md
+            output/launch/post_deploy_static_seo_canary.json
+            output/launch/post_deploy_static_seo_canary.md

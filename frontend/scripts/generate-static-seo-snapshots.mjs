@@ -174,10 +174,8 @@ function withStaticFallback(html, page) {
     "</noscript>",
   ].join("\n");
 
-  const rootAttributes = page.path === "/" && page.prerenderedBody
-    ? ' id="root" data-prerendered="home"'
-    : ' id="root"';
-  const rootBody = page.prerenderedBody || page.staticBody;
+  const rootAttributes = ' id="root"';
+  const rootBody = page.staticBody;
 
   return withHead
     .replace(/<noscript>[\s\S]*?<\/noscript>/i, noscript)
@@ -276,7 +274,7 @@ function draculaBookJsonLd() {
     hasPart: [
       {
         "@type": "Chapter",
-        name: "Chapter 1 preview",
+        name: "First 3 canonical pages preview",
         isAccessibleForFree: true,
         url: absoluteUrl("/reader/dracula"),
       },
@@ -302,12 +300,12 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 
 function buildPages({ book, manifest }) {
   const homeDescription = "A calm digital reading room for timeless Bengali and English literature. Explore a calm digital reading room with reader-ready classics and release-gated audiobooks.";
-  const bookDescription = "Read Dracula by Bram Stoker in The Earnalism’s controlled digital reading room. Chapter 1 is free. Continue with a 7-day reading pass. Audiobook experience is in private review.";
+  const bookDescription = "Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. The first 3 canonical pages are free. Continue with Reading Pass time. Audio is available only for separately approved editions.";
   const libraryDescription = "Browse Earnalism's Bengali and English classics. Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.";
-  const pricingDescription = "Choose your reading time for Dracula on The Earnalism. Chapter 1 is free, with premium reading-time packs and no subscription or autorenewal.";
+  const pricingDescription = "The first 3 canonical pages are free. Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading, works across eligible titles, and never renews automatically.";
   const journalDescription = "Launch notes from The Earnalism's Bengali and English digital reading room and rights-safe publication pipeline.";
   const contactDescription = "Contact The Earnalism about Dracula reading-time access, support, refunds, school interest, and rights-safe publication questions.";
-  const readerDescription = "The Dracula reader is the reading interface for approved Earnalism access. Search engines should use the public Dracula book page instead.";
+  const readerDescription = "Read the Dracula preview. The first 3 canonical pages are available in the public preview. Audio controls are unavailable for this release. Search engines should use the public Dracula book page instead.";
 
   return [
     {
@@ -323,8 +321,8 @@ function buildPages({ book, manifest }) {
       staticBody: pageShell({
         eyebrow: "The Earnalism Digital Library",
         title: "A premium reading and listening sanctuary for timeless Bengali and English classics.",
-        body: homeDescription,
-        facts: ["Reader-ready classics stay visible; audiobooks appear only after quality gates pass.", "Beautiful graphical editions for calm reading.", "Three current listening rooms in the audiobook collection."],
+        body: "A calm digital reading room for timeless Bengali and English literature. The first 3 canonical pages are free before Reading Pass time begins.",
+        facts: ["The first 3 canonical pages are free.", "Reader-ready classics stay visible; audiobooks appear only after quality gates pass.", "No subscription or autorenewal."],
         links: [
           { href: "/library", label: "Start Reading" },
           { href: "/library?category=live", label: "Reader-ready classics" },
@@ -340,9 +338,9 @@ function buildPages({ book, manifest }) {
       canonicalPath: "/book/dracula",
       ogType: "book",
       ogTitle: "Dracula by Bram Stoker | The Earnalism",
-      ogDescription: "Chapter 1 is free. Continue with a 7-day reading pass.",
+      ogDescription: bookDescription,
       twitterTitle: "Dracula by Bram Stoker | The Earnalism",
-      twitterDescription: "Chapter 1 is free. Continue with a 7-day reading pass.",
+      twitterDescription: bookDescription,
       image: book.cover_image_url || DRACULA_IMAGE,
       imageAlt: "Dracula by Bram Stoker on The Earnalism",
       bookOgTags: [
@@ -365,14 +363,14 @@ function buildPages({ book, manifest }) {
         body: bookDescription,
         facts: [
           `${manifest.chapter_count} chapters.`,
-          "Chapter 1 is free.",
+          "The first 3 canonical pages are free.",
           "Source: Project Gutenberg eBook #345.",
           "Rights status: approved Tier A controlled core reading release.",
-          "Audiobook experience is in private review.",
+          "Audio is unavailable in the current controlled release unless separately approved.",
         ],
         links: [
-          { href: "/reader/dracula", label: "Read Chapter 1 Free" },
-          { href: "/pricing?book=dracula", label: "Get 7-Day Reading Pass" },
+          { href: "/reader/dracula", label: "Read the first 3 pages free" },
+          { href: "/pricing?book=dracula", label: "View Reading Passes" },
           { href: "/library", label: "Back to Library" },
         ],
       }),
@@ -396,7 +394,7 @@ function buildPages({ book, manifest }) {
         eyebrow: "Library",
         title: "Reader-ready classics, release-gated audio.",
         body: "Browse Bengali and English classics without audio overclaim. Reader-only releases stay intentional and premium.",
-        facts: ["Unapproved audiobooks stay hidden.", "Reader-only releases do not offer listening CTAs."],
+        facts: ["Dracula remains the featured release.", "Validated public-domain classics open as reader-only releases.", "Unapproved audiobooks stay hidden.", "Reader-only releases do not offer listening CTAs."],
         links: [
           { href: "/library?category=live", label: "Bengali Classics" },
           { href: "/book/dracula", label: "Open Dracula" },
@@ -405,25 +403,22 @@ function buildPages({ book, manifest }) {
     },
     {
       path: "/pricing",
-      title: "Choose Your Reading Time | Dracula on The Earnalism",
+      title: "Choose Your Reading Time | The Earnalism",
       description: pricingDescription,
       canonicalPath: "/pricing",
       ogTitle: "Choose Your Reading Time | The Earnalism",
-      ogDescription: "Continue Dracula with premium reading-time packs. No subscription or autorenewal.",
+      ogDescription: pricingDescription,
       imageAlt: "Earnalism Dracula reading-time pricing",
       jsonLd: [webpageJsonLd({ title: "Choose Your Reading Time", description: pricingDescription, path: "/pricing" })],
       staticBody: pageShell({
         eyebrow: "Reading Time",
         title: "Choose your reading time. Return whenever the book calls.",
-        body: "Start with Chapter 1 free. When you are ready to continue Dracula, add reading time. Your time is used only while you read.",
+        body: "The first 3 canonical pages are free. Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading.",
         facts: [
-          "The First Chapter - Rs 49.",
-          "The Quiet Hour - Rs 89 - Best first choice.",
-          "The Deep Reading Pass - Rs 239.",
-          "The Reader’s Reserve - Rs 499 - Best value.",
+          "Reading Pass time works across eligible titles.",
           "Secure payment by Razorpay. No subscription or autorenewal.",
         ],
-        links: [{ href: "/pricing?book=dracula", label: "Continue Dracula" }],
+        links: [{ href: "/pricing", label: "View Reading Passes" }],
       }),
     },
     {
@@ -467,22 +462,22 @@ function buildPages({ book, manifest }) {
     },
     {
       path: "/reader/dracula",
-      title: "Read Dracula Chapter 1 | The Earnalism Reader",
+      title: "Read the Dracula Preview | The Earnalism Reader",
       description: readerDescription,
       canonicalPath: "/book/dracula",
       robots: "noindex,follow",
-      ogTitle: "Read Dracula Chapter 1 | The Earnalism",
-      ogDescription: "Chapter 1 is free. Use the Dracula book page for sharing and discovery.",
+      ogTitle: "Read the Dracula Preview | The Earnalism",
+      ogDescription: readerDescription,
       imageAlt: "The Earnalism Dracula reader",
-      jsonLd: [webpageJsonLd({ title: "Read Dracula Chapter 1", description: readerDescription, path: "/reader/dracula" })],
+      jsonLd: [webpageJsonLd({ title: "Read the Dracula preview", description: readerDescription, path: "/reader/dracula" })],
       staticBody: pageShell({
         eyebrow: "Reader Interface",
-        title: "Read Dracula Chapter 1.",
-        body: "This reader page is noindex and canonicalized to the public Dracula book page. Audiobook experience is in private review.",
-        facts: [`${manifest.chapter_count} chapters in the manifest.`, "Preview chapter unlocked.", "Audio controls hidden."],
+        title: "Read the Dracula preview.",
+        body: "The first 3 canonical pages are available in the public preview. This reader page is noindex and canonicalized to the public Dracula book page.",
+        facts: [`${manifest.chapter_count} chapters in the manifest.`, "Audio controls are unavailable for this release."],
         links: [
           { href: "/book/dracula", label: "Public Dracula Page" },
-          { href: "/pricing?book=dracula", label: "Get 7-Day Reading Pass" },
+          { href: "/pricing?book=dracula", label: "View Reading Passes" },
         ],
       }),
     },
