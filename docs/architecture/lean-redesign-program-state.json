@@ -1,8 +1,17 @@
 {
   "schema_version": "lean-redesign-program-v1",
-  "phase": "PR1",
-  "status": "in_progress",
-  "completed_prs": [],
-  "open_pr": null,
-  "next_gate": "Commit and merge architecture contract, reference manifest, visual harness, and dry-run inventory."
+  "phase": "PR2",
+  "status": "visual_contract_pending_ci",
+  "completed_prs": [
+    {
+      "phase": "PR1",
+      "merge_commit": "ff6d3315cadcc9f5f53547ac0adc5914a8b47613"
+    }
+  ],
+  "open_pr": {
+    "number": 312,
+    "branch": "codex/main-approved-integration",
+    "url": "https://github.com/ronik18/earnalism-digital-library/pull/312"
+  },
+  "next_gate": "Generate the owner-approved desktop visual goldens, run the deterministic comparison suite, then wait for PR 2 CI and review before merge."
 }

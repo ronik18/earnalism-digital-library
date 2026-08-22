@@ -14,8 +14,8 @@ describe("Home performance sprint contract", () => {
     expect(entry).toContain("ReactDOM.createRoot(rootElement).render(");
     expect(entry).not.toContain("hydrateRoot");
     expect(entry).toContain('throw new Error("Earnalism requires an empty #root mount element.")');
-    expect(snapshots).toContain("renderHomeApp");
-    expect(snapshots).toContain('data-prerendered="home"');
+    expect(snapshots).toContain("buildPages");
+    expect(snapshots).toContain('data-static-seo-snapshot="true"');
   });
 
   test("keeps noncritical Home modules and Reader CSS out of the initial route bundle", () => {

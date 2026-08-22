@@ -17,7 +17,12 @@ ReactDOM.createRoot(rootElement).render(
 );
 
 initPerformanceMetrics();
-injectSpeedInsights();
+const speedInsightsHost = window.location.hostname;
+const canUseSpeedInsights = speedInsightsHost === "theearnalism.com"
+  || speedInsightsHost === "www.theearnalism.com"
+  || speedInsightsHost.endsWith(".vercel.app");
+
+if (canUseSpeedInsights) injectSpeedInsights();
 
 const serviceWorkerAvailable = process.env.NODE_ENV === "production" && "serviceWorker" in navigator;
 const serviceWorkerEnabled = process.env.REACT_APP_ENABLE_SERVICE_WORKER === "true";
