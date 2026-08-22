@@ -1,7 +1,7 @@
 .home-reference-page { background: var(--eds-ink); }
 .commerce-page { min-height: 100svh; background: var(--eds-paper); }
 .commerce-main { width: var(--eds-page); margin-inline: auto; padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
-.commerce-hero { position: relative; overflow: hidden; margin-bottom: clamp(2.5rem, 5vw, 4rem); padding: clamp(3rem, 7vw, 6rem); border-radius: 0.9rem; color: #fff8e8; background: radial-gradient(circle at 78% 35%, rgba(213,173,86,.25), transparent 17rem), radial-gradient(circle at 60% 80%, rgba(55,96,66,.2), transparent 21rem), linear-gradient(115deg,#07100f,#10251f); }
+.commerce-hero { position: relative; overflow: hidden; margin-bottom: clamp(2.5rem, 5vw, 4rem); padding: clamp(3rem, 7vw, 6rem); border-radius: 0.9rem; color: #fff8e8; background-color: #10221e; background-image: radial-gradient(circle at 78% 35%, rgba(213,173,86,.25), transparent 17rem), radial-gradient(circle at 60% 80%, rgba(55,96,66,.2), transparent 21rem), linear-gradient(115deg,#07100f,#10251f); }
 .commerce-hero .italic-eyebrow, .commerce-hero h1, .commerce-hero p, .commerce-hero span { color: inherit; }
 .commerce-hero h1 { max-width: 14ch; margin-inline: auto; font: 500 clamp(2.5rem,5.5vw,4.9rem)/.95 var(--eds-display); letter-spacing: -.045em; }
 .commerce-hero p { margin-inline: auto; }

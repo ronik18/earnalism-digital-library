@@ -48,28 +48,39 @@ try {
       const measured = await locator.evaluate((element, kind) => {
         const parse = (value) => {
           const nums = String(value).match(/[\d.]+/g)?.map(Number) || [];
-          return nums.length >= 3 ? [nums[0], nums[1], nums[2], nums.length > 3 ? nums[3] : 1] : null;
+          if (nums.length < 3) return null;
+          const srgb = String(value).startsWith('color(srgb');
+          return [
+            srgb ? nums[0] * 255 : nums[0],
+            srgb ? nums[1] * 255 : nums[1],
+            srgb ? nums[2] * 255 : nums[2],
+            nums.length > 3 ? nums[3] : 1,
+          ];
         };
         const composite = (foreground, background) => foreground[3] >= 1
           ? foreground.slice(0, 3)
           : foreground.slice(0, 3).map((v, i) => Math.round(v * foreground[3] + background[i] * (1 - foreground[3])));
         const color = parse(getComputedStyle(element).color);
+        const nodes = [];
         let node = element;
-        let background = [255, 255, 255];
         while (node) {
-          const parsed = parse(getComputedStyle(node).backgroundColor);
-          if (parsed && parsed[3] > 0) {
-            background = composite(parsed, background);
-            if (parsed[3] >= 1) break;
-          }
+          nodes.unshift(node);
           node = node.parentElement;
         }
+        let background = [255, 255, 255];
+        for (const ancestor of nodes) {
+          const parsed = parse(getComputedStyle(ancestor).backgroundColor);
+          if (parsed && parsed[3] > 0) {
+            background = composite(parsed, background);
+          }
+        }
+        const foreground = color ? composite(color, background) : null;
         const luminance = (rgb) => rgb.map((v) => {
           const s = v / 255;
           return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
         }).reduce((sum, v, index) => sum + v * [0.2126, 0.7152, 0.0722][index], 0);
-        const ratio = color ? (Math.max(luminance(color.slice(0, 3)), luminance(background)) + 0.05) /
-          (Math.min(luminance(color.slice(0, 3)), luminance(background)) + 0.05) : 0;
+        const ratio = foreground ? (Math.max(luminance(foreground), luminance(background)) + 0.05) /
+          (Math.min(luminance(foreground), luminance(background)) + 0.05) : 0;
         const style = getComputedStyle(element);
         const rect = element.getBoundingClientRect();
         return {
