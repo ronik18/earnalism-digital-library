@@ -1,7 +1,7 @@
 {
   "schema_version": "lean-redesign-program-v1",
-  "phase": "PR4",
-  "status": "cleanup_quarantine_pending",
+  "phase": "PR1_cleanup_policy_checkpoint",
+  "status": "phase1_cleanup_decision_pending_review",
   "completed_prs": [
     {
       "phase": "PR1",
@@ -36,5 +36,15 @@
     "backend_refactor_decision": "no_further_refactor_required",
     "database_change_decision": "no_additional_index_or_projection_required"
   },
-  "next_gate": "PR4 may begin only after the 30-day quarantine completes and an owner explicitly approves exact candidates from cleanup/quarantine-manifest.json."
+  "cleanup_checkpoint": {
+    "destructive_cleanup_status": "DEFERRED_NO_APPROVED_CANDIDATES",
+    "quarantine_candidate_count": 0,
+    "destructive_actions_executed": 0,
+    "production_mutations": 0,
+    "quarantine_started_at": "2026-08-22T09:46:55Z",
+    "next_review_at": "2026-09-21T09:46:55Z",
+    "deletion_allowed": false,
+    "mode": "dry-run"
+  },
+  "next_gate": "PR 2 visual implementation may begin after this Phase 1 checkpoint is merged. Destructive cleanup remains deferred until the earliest review date and explicit candidate-by-candidate approval."
 }
