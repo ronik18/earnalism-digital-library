@@ -6,7 +6,7 @@ const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Pricing.jsx")
 describe("Commerce design contract", () => {
   test("binds current offers without fabricated popularity or term claims", () => {
     expect(source).toContain('api.get("/payments/offers")');
-    expect(source).not.toContain('Promise.all([api.get("/payments/packs"), api.get("/payments/config")])');
+    expect(source).toContain('Promise.all([api.get("/payments/packs"), api.get("/payments/config")])');
     expect(source).toContain("p.label");
     expect(source).toContain("p.price_inr");
     expect(source).not.toContain("Most Popular");

@@ -52,7 +52,12 @@ export default function Pricing() {
         setPacks(packRows);
         setConfig(data?.config || {});
       })
-      .catch(() => setPacks([]));
+      .catch(() => Promise.all([api.get("/payments/packs"), api.get("/payments/config")])
+        .then(([packsRes, configRes]) => {
+          setPacks(packsRes.data || []);
+          setConfig(configRes.data || {});
+        })
+        .catch(() => setPacks([])));
   }, [funnelSource, selectedPackId]);
 
   const isAuthed = !!user && typeof user === "object";
