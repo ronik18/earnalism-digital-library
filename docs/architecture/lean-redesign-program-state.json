@@ -1,17 +1,33 @@
 {
   "schema_version": "lean-redesign-program-v1",
-  "phase": "PR2",
-  "status": "visual_contract_pending_ci",
+  "phase": "PR4",
+  "status": "cleanup_quarantine_pending",
   "completed_prs": [
     {
       "phase": "PR1",
       "merge_commit": "ff6d3315cadcc9f5f53547ac0adc5914a8b47613"
+    },
+    {
+      "phase": "PR2",
+      "merge_commit": "dc07e32b8f5d71ad8b21d7ddf8e7bfcbed7995bb"
+    },
+    {
+      "phase": "PR3",
+      "merge_commit": "b6f8547188e895c4a2151b61bfa7ebe7beee3539",
+      "backend_refactor": "required_and_completed"
+    },
+    {
+      "phase": "production_compatibility_hotfix",
+      "merge_commit": "e352787161eb05d209d62d00af75bc6f4353f4da",
+      "note": "Commerce falls back to existing public payment endpoints when the aggregated offers endpoint is temporarily unavailable."
     }
   ],
-  "open_pr": {
-    "number": 312,
-    "branch": "codex/main-approved-integration",
-    "url": "https://github.com/ronik18/earnalism-digital-library/pull/312"
+  "open_pr": null,
+  "deployment_verification": {
+    "verified_at_utc": "2026-08-22T12:00:36Z",
+    "main_commit": "e352787161eb05d209d62d00af75bc6f4353f4da",
+    "offers_endpoint": "/api/payments/offers",
+    "result": "200"
   },
-  "next_gate": "Generate the owner-approved desktop visual goldens, run the deterministic comparison suite, then wait for PR 2 CI and review before merge."
+  "next_gate": "PR4 may begin only after the 30-day quarantine completes and an owner explicitly approves exact candidates from cleanup/quarantine-manifest.json."
 }
