@@ -29,5 +29,12 @@
     "offers_endpoint": "/api/payments/offers",
     "result": "200"
   },
+  "performance_verification": {
+    "evidence": "docs/architecture/lean-redesign-performance-report.md",
+    "run_at_utc": "2026-08-22T17:57:04Z",
+    "result": "all_page_budgets_passed",
+    "backend_refactor_decision": "no_further_refactor_required",
+    "database_change_decision": "no_additional_index_or_projection_required"
+  },
   "next_gate": "PR4 may begin only after the 30-day quarantine completes and an owner explicitly approves exact candidates from cleanup/quarantine-manifest.json."
 }
