@@ -79,7 +79,6 @@ function FilterChips({ label, value, options, onChange, testId }) {
 
 export default function Library() {
   const [params, setParams] = useSearchParams();
-  const [dracula, setDracula] = useState(null);
   const [liveBooks, setLiveBooks] = useState([]);
   const [curation, setCuration] = useState(() => getHomeCurationSnapshot());
   const [loading, setLoading] = useState(true);
@@ -101,11 +100,9 @@ export default function Library() {
   useEffect(() => {
     const controller = new AbortController();
     Promise.allSettled([
-      api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal }),
       api.get("/books", { signal: controller.signal }),
       fetchHomeCuration(controller.signal),
-    ]).then(([draculaResult, booksResult, curationResult]) => {
-      if (draculaResult.status === "fulfilled") setDracula(draculaResult.value.data);
+    ]).then(([booksResult, curationResult]) => {
       setLiveBooks(
         booksResult.status === "fulfilled" && Array.isArray(booksResult.value.data) && booksResult.value.data.length
           ? booksResult.value.data
@@ -130,12 +127,12 @@ export default function Library() {
   const allBooks = useMemo(() => {
     const bySlug = new Map();
     liveBooks.forEach((book) => book?.slug && bySlug.set(book.slug, book.slug === LIVE_APPROVED_SLUG ? mergeDraculaBook(book) : book));
-    if (dracula || bySlug.has(LIVE_APPROVED_SLUG)) bySlug.set(LIVE_APPROVED_SLUG, mergeDraculaBook(dracula || bySlug.get(LIVE_APPROVED_SLUG)));
+    if (bySlug.has(LIVE_APPROVED_SLUG)) bySlug.set(LIVE_APPROVED_SLUG, mergeDraculaBook(bySlug.get(LIVE_APPROVED_SLUG)));
     PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug)).forEach((book) => {
       if (!bySlug.has(book.slug)) bySlug.set(book.slug, book);
     });
     return Array.from(bySlug.values());
-  }, [dracula, liveBooks]);
+  }, [liveBooks]);
 
   const filteredBooks = useMemo(() => {
     const normalized = query.trim().toLowerCase();
