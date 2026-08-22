@@ -1,3 +1,5 @@
+@import "./design-system/index.css";
+
 :root {
   --font-display: 'Cormorant Garamond', 'Noto Serif Bengali', Georgia, serif;
   --font-ui: 'Outfit', 'Noto Sans Bengali', sans-serif;

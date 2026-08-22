@@ -9,11 +9,6 @@ import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
 const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
 
-const PACK_BADGES = {
-  "1h": "Best first choice",
-  "10h": "Best value",
-};
-
 function loadRazorpayScript() {
   return new Promise((resolve) => {
     if (typeof window === "undefined") return resolve(false);
@@ -233,9 +228,9 @@ export default function Pricing() {
   const showSimulator = !config.configured && config.mode === "test";
 
   return (
-    <div className="min-h-[70vh] px-5 sm:px-8 lg:px-12 py-16 sm:py-24" data-testid="pricing-page">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
+    <div className="commerce-page" data-testid="pricing-page">
+      <div className="commerce-main">
+        <div className="commerce-hero text-center">
           <div className="italic-eyebrow">Reading time, by the pack</div>
           <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.5rem] text-burgundy leading-[1.05] mt-3 max-w-3xl mx-auto">
             Choose your reading time. <span className="italic-accent">Return whenever</span> the book calls.
@@ -265,17 +260,15 @@ export default function Pricing() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {packs.map((p) => {
             const selected = selectedPackId === p.id;
-            const badge = PACK_BADGES[p.id];
             return (
             <div
               key={p.id}
-              className={`card-elegant p-7 flex flex-col ${selected ? "pricing-card--selected" : ""}`}
+              className={`commerce-pack card-elegant p-7 flex flex-col ${selected ? "pricing-card--selected" : ""}`}
               data-testid={`pack-${p.id}`}
-              aria-label={`${p.label}, ${p.minutes} minutes, ₹${p.price_inr}${badge ? `, ${badge}` : ""}${selected ? ", selected offer" : ""}`}
+              aria-label={`${p.label}, ${p.minutes} minutes, ₹${p.price_inr}${selected ? ", selected offer" : ""}`}
             >
               <div className="italic-eyebrow opacity-80 flex items-center gap-2"><Clock size={13} strokeWidth={1.5} /> {p.minutes >= 60 ? `${p.minutes / 60} ${p.minutes === 60 ? "hour" : "hours"}` : `${p.minutes} minutes`}</div>
               <div className="flex flex-wrap gap-2 mt-4 min-h-[2rem]">
-                {badge && <span className="pricing-card__badge">{badge}</span>}
                 {selected && <span className="pricing-card__badge pricing-card__badge--muted">Selected</span>}
               </div>
               <h3 className="font-serif-display text-2xl text-burgundy leading-snug mt-3">{p.label}</h3>
@@ -299,7 +292,7 @@ export default function Pricing() {
           })}
         </div>
 
-        <section className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3" aria-label="Reading time wallet explanation" data-testid="pricing-wallet-explainer">
+        <section className="commerce-trust-grid" aria-label="Reading time wallet explanation" data-testid="pricing-wallet-explainer">
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <BookOpen size={18} strokeWidth={1.55} className="text-gold" />
             <h2 className="mt-4 font-serif-display text-xl text-burgundy">First 3 canonical pages are free</h2>
@@ -331,7 +324,7 @@ export default function Pricing() {
           </div>
         </section>
 
-        <div className="text-center mt-14">
+        <div className="commerce-footer">
           <div className="mx-auto grid max-w-3xl grid-cols-1 gap-3 rounded-lg border border-brand-soft bg-white/50 p-5 text-sm text-charcoal-soft sm:grid-cols-2" data-testid="pricing-trust-copy" role="note" aria-label="Payment and wallet trust notes">
             <span>Secure payment by Razorpay.</span>
             <span>No subscription or autorenewal.</span>

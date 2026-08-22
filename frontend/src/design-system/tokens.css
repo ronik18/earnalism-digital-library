@@ -1,0 +1,9 @@
+:root {
+  --eds-ink: #091310;
+  --eds-paper: #fbf7ef;
+  --eds-gold: #d5ad56;
+  --eds-line: rgba(73, 51, 28, 0.16);
+  --eds-page: min(100% - 2rem, 84rem);
+  --eds-ui: "Outfit", "Noto Sans Bengali", sans-serif;
+  --eds-display: "Cormorant Garamond", "Noto Serif Bengali", Georgia, serif;
+}
