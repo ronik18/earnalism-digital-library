@@ -110,6 +110,13 @@ class TestPublicOffers:
         assert payload["config"]["mode"] == "test"
         assert payload["config"]["key_id"] == ""
 
+    def test_offers_are_title_neutral_shared_reading_passes(self, s):
+        response = s.get(f"{API}/payments/offers")
+        assert response.status_code == 200, response.text
+        notes = " ".join(str(pack.get("note") or "") for pack in response.json()["packs"]).lower()
+        assert "dracula" not in notes
+        assert "eligible" in notes
+
 
 # ---------- /payments/topup ----------
 class TestTopupCreate:

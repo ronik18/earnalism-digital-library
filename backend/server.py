@@ -802,7 +802,7 @@ PACKS: List[dict] = [
         "minutes": 60,
         "amount_paise": 8900,
         "price_inr": 89,
-        "note": "Best first choice — enough time to settle into Dracula.",
+        "note": "An unhurried first return to any eligible title.",
     },
     {
         "id": "3h",
@@ -810,7 +810,7 @@ PACKS: List[dict] = [
         "minutes": 180,
         "amount_paise": 23900,
         "price_inr": 239,
-        "note": "A longer weekend return to the castle and the count.",
+        "note": "A longer weekend return to the classics you choose.",
     },
     {
         "id": "10h",
@@ -818,7 +818,7 @@ PACKS: List[dict] = [
         "minutes": 600,
         "amount_paise": 49900,
         "price_inr": 499,
-        "note": "Ten quiet hours kept for Dracula and the classics coming next.",
+        "note": "Ten quiet hours kept for every eligible classic.",
     },
 ]
 PACKS_BY_ID = {p["id"]: p for p in PACKS}
