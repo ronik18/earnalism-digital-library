@@ -15,6 +15,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TRANSIENT_PREFIXES = (".npm-cache/", ".playwright-browsers/", ".venv-uat/", "frontend/build/", "node_modules/", "frontend/node_modules/")
 PROTECTED_TOKENS = ("payment", "wallet", "ledger", "rights", "publication", "entitlement", "audiobook")
+QUARANTINE_STARTED_AT = "2026-08-22T09:46:55Z"
+EARLIEST_ELIGIBLE_REVIEW_AT = "2026-09-21T09:46:55Z"
+DESTRUCTIVE_CLEANUP_STATUS = "DEFERRED_NO_APPROVED_CANDIDATES"
 
 
 def digest(path: Path) -> str:
@@ -102,6 +105,13 @@ def main() -> int:
         "mode": "dry-run",
         "deletion_allowed": False,
         "minimum_quarantine_days": 30,
+        "quarantine_started_at": QUARANTINE_STARTED_AT,
+        "earliest_eligible_review_at": EARLIEST_ELIGIBLE_REVIEW_AT,
+        "next_review_at": EARLIEST_ELIGIBLE_REVIEW_AT,
+        "approved_candidate_count": 0,
+        "destructive_cleanup_status": DESTRUCTIVE_CLEANUP_STATUS,
+        "destructive_actions_executed": 0,
+        "production_mutations": 0,
         "entries": [],
     })
     write_json(output_dir / "cost-baseline.json", {

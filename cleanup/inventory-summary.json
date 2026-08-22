@@ -1,0 +1,31 @@
+{
+  "schema_version": "lean-redesign-cleanup-summary-v1",
+  "mode": "dry-run",
+  "generated_from": [
+    "cleanup/repository-inventory.json",
+    "cleanup/database-inventory.json",
+    "cleanup/media-reference-inventory.json",
+    "cleanup/orphan-candidates.json",
+    "cleanup/quarantine-manifest.json",
+    "cleanup/cost-baseline.json"
+  ],
+  "safe_immediate_hygiene": [
+    "ignore rules for reproducible local output",
+    "dry-run tooling corrections",
+    "dependency and duplicate-code candidate recording",
+    "deterministic cleanup-safety tests"
+  ],
+  "deferred_destructive_cleanup": [
+    "provider object deletion",
+    "database document deletion",
+    "index dropping",
+    "TTL application",
+    "permanent asset removal",
+    "historical evidence deletion"
+  ],
+  "quarantine_candidate_count": 0,
+  "destructive_cleanup_status": "DEFERRED_NO_APPROVED_CANDIDATES",
+  "destructive_actions_executed": 0,
+  "production_mutations": 0,
+  "next_review_at": "2026-09-21T09:46:55Z"
+}

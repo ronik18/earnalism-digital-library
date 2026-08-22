@@ -36,6 +36,16 @@ class RedesignInventoryTests(unittest.TestCase):
             self.assertEqual(repository["mode"], "dry-run")
             self.assertGreater(repository["candidate_count"], 0)
             self.assertFalse(quarantine["deletion_allowed"])
+            self.assertEqual(quarantine["entries"], [])
+            self.assertEqual(quarantine["approved_candidate_count"], 0)
+            self.assertEqual(
+                quarantine["destructive_cleanup_status"],
+                "DEFERRED_NO_APPROVED_CANDIDATES",
+            )
+            self.assertEqual(quarantine["destructive_actions_executed"], 0)
+            self.assertEqual(quarantine["production_mutations"], 0)
+            self.assertEqual(quarantine["quarantine_started_at"], "2026-08-22T09:46:55Z")
+            self.assertEqual(quarantine["next_review_at"], "2026-09-21T09:46:55Z")
 
 
 if __name__ == "__main__":

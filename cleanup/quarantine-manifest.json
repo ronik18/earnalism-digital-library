@@ -1,7 +1,14 @@
 {
+  "approved_candidate_count": 0,
+  "destructive_actions_executed": 0,
+  "destructive_cleanup_status": "DEFERRED_NO_APPROVED_CANDIDATES",
   "deletion_allowed": false,
+  "earliest_eligible_review_at": "2026-09-21T09:46:55Z",
   "entries": [],
   "minimum_quarantine_days": 30,
   "mode": "dry-run",
+  "next_review_at": "2026-09-21T09:46:55Z",
+  "production_mutations": 0,
+  "quarantine_started_at": "2026-08-22T09:46:55Z",
   "schema_version": "lean-redesign-cleanup-v1"
 }
