@@ -1436,10 +1436,13 @@ describe("UX conversion static signals", () => {
     expect(readerUpsell).not.toContain("An Evening In");
   });
 
-  test("pricing page highlights recommended and best-value packs", () => {
-    expect(pricing).toContain('"1h": "Best first choice"');
-    expect(pricing).toContain('"10h": "Best value"');
-    expect(pricing).toContain("PACK_BADGES[p.id]");
+  test("pricing page decorates only the offer selected from current configuration", () => {
+    expect(pricing).toContain('const selectedPackId = searchParams.get("pack")');
+    expect(pricing).toContain("selectedPackId === p.id");
+    expect(pricing).toContain(">Selected</span>");
+    expect(pricing).not.toContain("Best first choice");
+    expect(pricing).not.toContain("Best value");
+    expect(pricing).not.toContain("PACK_BADGES");
   });
 
   test("pricing page frames Dracula continuation and reading-time value", () => {
