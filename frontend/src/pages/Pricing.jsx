@@ -46,11 +46,11 @@ export default function Pricing() {
       selected_pack_id: selectedPackId || "",
       source: funnelSource || "pricing",
     });
-    Promise.all([api.get("/payments/packs"), api.get("/payments/config")])
-      .then(([packsRes, configRes]) => {
-        const packRows = packsRes.data || [];
+    api.get("/payments/offers")
+      .then(({ data }) => {
+        const packRows = data?.packs || [];
         setPacks(packRows);
-        setConfig(configRes.data || {});
+        setConfig(data?.config || {});
       })
       .catch(() => setPacks([]));
   }, [funnelSource, selectedPackId]);

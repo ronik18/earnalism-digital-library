@@ -1355,6 +1355,7 @@ PUBLIC_CACHE_PATHS = {
     "/api/settings/public",
     "/api/payments/packs",
     "/api/payments/config",
+    "/api/payments/offers",
     "/api/reading/packs",
 }
 PUBLIC_CACHE_PREFIXES = (
@@ -10493,6 +10494,30 @@ async def payments_config():
         "configured": razorpay_keys_configured(),
         "mode": RAZORPAY_MODE,
         "key_id": RAZORPAY_KEY_ID if razorpay_keys_configured() else "",
+    }
+    await _public_cache_set(cache_key, result)
+    return result
+
+
+@api.get("/payments/offers")
+async def payments_public_offers():
+    """One public, cacheable Commerce bootstrap payload.
+
+    Existing packs and config routes remain the compatibility contract; this
+    additive route removes the initial Commerce waterfall without exposing any
+    additional payment or account state.
+    """
+    cache_key = _public_cache_key("payment_offers")
+    cached = await _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+    result = {
+        "packs": [PackOut(**pack).model_dump() for pack in PACKS],
+        "config": {
+            "configured": razorpay_keys_configured(),
+            "mode": RAZORPAY_MODE,
+            "key_id": RAZORPAY_KEY_ID if razorpay_keys_configured() else "",
+        },
     }
     await _public_cache_set(cache_key, result)
     return result

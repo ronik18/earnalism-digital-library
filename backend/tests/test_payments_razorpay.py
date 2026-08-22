@@ -100,6 +100,17 @@ class TestPaymentsConfig:
         assert j.get("key_id") == ""
 
 
+class TestPublicOffers:
+    def test_offers_keeps_pack_and_configuration_contracts_together(self, s):
+        response = s.get(f"{API}/payments/offers")
+        assert response.status_code == 200, response.text
+        payload = response.json()
+        assert [pack["id"] for pack in payload["packs"]] == ["30m", "1h", "3h", "10h"]
+        assert payload["config"]["configured"] is False
+        assert payload["config"]["mode"] == "test"
+        assert payload["config"]["key_id"] == ""
+
+
 # ---------- /payments/topup ----------
 class TestTopupCreate:
     def test_topup_unauth_401(self, s):
