@@ -1396,14 +1396,16 @@ describe("UX conversion static signals", () => {
   });
 
   test("pricing packs keep approved premium reading-time labels and notes", () => {
+    const packs = extractBetween(backend, "PACKS: List[dict] = [", "]\nPACKS_BY_ID");
     expect(backend).toContain('"label": "The Opening Hour"');
     expect(backend).toContain('"label": "The Quiet Hour"');
     expect(backend).toContain('"label": "The Deep Reading Pass"');
     expect(backend).toContain('"label": "The Reader’s Reserve"');
     expect(backend).toContain("Continue after the free preview, one careful sitting at a time.");
-    expect(backend).toContain("Best first choice — enough time to settle into Dracula.");
-    expect(backend).toContain("A longer weekend return to the castle and the count.");
-    expect(backend).toContain("Ten quiet hours kept for Dracula and the classics coming next.");
+    expect(backend).toContain("An unhurried first return to any eligible title.");
+    expect(backend).toContain("A longer weekend return to the classics you choose.");
+    expect(backend).toContain("Ten quiet hours kept for every eligible classic.");
+    expect(packs).not.toMatch(/Dracula/i);
     expect(backend).toContain('reason="The Reader’s Reserve streak credit"');
   });
 
