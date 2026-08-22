@@ -1,0 +1,11 @@
+{
+  "allowed_masks": [
+    "[data-visual-mask='cover-art']",
+    "[data-visual-mask='book-title']",
+    "[data-visual-mask='book-author']",
+    "[data-visual-mask='live-price']",
+    "[data-visual-mask='timestamp']",
+    "[data-visual-mask='availability']"
+  ],
+  "forbidden_masks": ["header", "navigation", "button", "filter", "card geometry", "typography", "border", "background", "trust section"]
+}

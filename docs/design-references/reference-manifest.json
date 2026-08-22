@@ -1,0 +1,24 @@
+{
+  "schema_version": "earnalism-design-reference-v1",
+  "source": "User-supplied approved reference board, preserved at responsive-reference-board.png.",
+  "references": {
+    "commerce-desktop.png": {
+      "height": 760,
+      "sha256": "095d0c30b4952cc93273fcfd853ab094595acc597c9154c73144295fb0af748d",
+      "size_bytes": 534517,
+      "width": 456
+    },
+    "home-library-desktop.png": {
+      "height": 760,
+      "sha256": "5f0d3506e8510eec38ac22402fe2a6c8f3ba20234553c2a9dad6ed32b1cb4efb",
+      "size_bytes": 1308441,
+      "width": 1080
+    },
+    "responsive-reference-board.png": {
+      "height": 1024,
+      "sha256": "c19d324c74e0ac4ea5f474f3353cbfe00aad14509a4166a61bf4a581ca13d4e6",
+      "size_bytes": 2761885,
+      "width": 1536
+    }
+  }
+}

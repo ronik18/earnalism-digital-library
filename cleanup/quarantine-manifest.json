@@ -1,0 +1,7 @@
+{
+  "deletion_allowed": false,
+  "entries": [],
+  "minimum_quarantine_days": 30,
+  "mode": "dry-run",
+  "schema_version": "lean-redesign-cleanup-v1"
+}

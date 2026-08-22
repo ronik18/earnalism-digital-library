@@ -1,0 +1,6 @@
+{
+  "candidates": [],
+  "mode": "dry-run",
+  "note": "No object is an orphan without authoritative database and provider-reference parity.",
+  "schema_version": "lean-redesign-cleanup-v1"
+}

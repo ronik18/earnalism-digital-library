@@ -1,0 +1,8 @@
+{
+  "schema_version": "lean-redesign-program-v1",
+  "phase": "PR1",
+  "status": "in_progress",
+  "completed_prs": [],
+  "open_pr": null,
+  "next_gate": "Commit and merge architecture contract, reference manifest, visual harness, and dry-run inventory."
+}
