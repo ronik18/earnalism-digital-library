@@ -1,0 +1,626 @@
+{
+  "mode": "dry-run",
+  "provider_orphan_detection": "requires a separately approved read-only provider inventory",
+  "provider_query": "not executed",
+  "repository_media": [
+    {
+      "classification": "active",
+      "path": "frontend/public/apple-touch-icon.png",
+      "sha256": "3384ba348ff2ec1091dba26afd3fc07f63232ee2795582d66b1755218ffa7a02",
+      "size_bytes": 50395
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/a-horseman-in-the-sky/back-cover.webp",
+      "sha256": "6e55ee7d626fbc330b205a88d8728e456eaeeffd988ecef45022342139008cca",
+      "size_bytes": 22202
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/a-horseman-in-the-sky/front-cover.webp",
+      "sha256": "b9fb8340aa519d19a32fefc276a26c72ba102f700e9dc9f643fb537f41526ff2",
+      "size_bytes": 19374
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/a-mystery-of-heroism/back-cover.webp",
+      "sha256": "39b2f0614d3b4304ed1bea68056d4b19320997a2c26711a893418323ec70ac29",
+      "size_bytes": 21818
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/a-mystery-of-heroism/front-cover.webp",
+      "sha256": "05dc95c5fb886dce25bc6f0422074c0d0e99879af999e592392800af5d157036",
+      "size_bytes": 17768
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/a-scandal-in-bohemia/back-cover.webp",
+      "sha256": "98d7d85802e02275a9bbb9bd4cd1844e1e956af310003970272375452621a8b7",
+      "size_bytes": 21384
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/a-scandal-in-bohemia/front-cover.webp",
+      "sha256": "fdaa99cef5754917ec758b27d92fcad1d5cda431037a4d3008987d36d4a78fad",
+      "size_bytes": 19456
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/a-white-heron/back-cover.webp",
+      "sha256": "f35ba6ad70577d4026daaed4bc318d605d2033b7844374c8c81f9dacc8bd72fe",
+      "size_bytes": 24314
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/a-white-heron/front-cover.webp",
+      "sha256": "2a52e64d954ecb70d0303fd08d0059398cdad58cb019ef1619d671616bd90911",
+      "size_bytes": 19048
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/agentic-ai-with-python/back-cover.jpg",
+      "sha256": "c667243df0b221cc91a0293ff1fcd1e6d4f337aaa003dcabb079b35d35cb6edd",
+      "size_bytes": 405142
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/agentic-ai-with-python/front-cover.jpg",
+      "sha256": "a70d7bb484478d7f783da00f399f3101500107972f68b11d9d00eb0045bfa592",
+      "size_bytes": 340664
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+      "sha256": "640ba85f97a923cb526413c5d84600be771f7492f05b5dc9fc7730a66c306d31",
+      "size_bytes": 24080
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+      "sha256": "057d26a3babfb4659cb777826880ec625844003a137fa0e5f11828454a97c7cd",
+      "size_bytes": 21582
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/dracula/dracula-back-cover.jpg",
+      "sha256": "4ed5362eada29899e593edfe2426289f9e3ffe310020a44b3d31dd9c365db108",
+      "size_bytes": 451248
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/dracula/dracula-back-cover.webp",
+      "sha256": "a3d0510d60de927b40ee5275a768569a0b80d1e8e86aa00c3e21c2d57d432f1b",
+      "size_bytes": 363176
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/dracula/dracula-front-cover-hero-polished.webp",
+      "sha256": "df44180c00bbde115b32b55c018fe42599c0501f355d32bb7ef5d0a89be24adf",
+      "size_bytes": 382472
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/dracula/dracula-front-cover.jpg",
+      "sha256": "e6008b51538e830df252038f08f16de780614e7ea636d0e1cf8fc5cfd467c14b",
+      "size_bytes": 443331
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/dracula/dracula-front-cover.webp",
+      "sha256": "ae19e27c57a7e4d1544a5e9bf53aaa0f8e76afb738f70bf481c58d52012cc61f",
+      "size_bytes": 342050
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/dracula/dracula-hero-hardcopy-320.webp",
+      "sha256": "1629a1420c42bc6a94f360e7064346220f98c0982384cc489020beb37d6d69e1",
+      "size_bytes": 13296
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/dracula/dracula-hero-hardcopy-420.webp",
+      "sha256": "c152b28ce5a4138ef128f9ce5822e4cc092c884155d5d50eced01d0204d0a0ce",
+      "size_bytes": 19502
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/dracula/dracula-hero-hardcopy-500.webp",
+      "sha256": "1f05e0ddfecbade557904f0e39c9a585c1b03d4dbef3cbf131ed91357ce381ed",
+      "size_bytes": 24116
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/dracula/dracula-hero-hardcopy.webp",
+      "sha256": "89f39f9680c421ffd7e4bb665074e4bef5fdff890ff7d0ba216acc2e1af4ae96",
+      "size_bytes": 66792
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/frankenstein/front-cover.webp",
+      "sha256": "64cb44801d1c76d82d240c4ffa22d1b8b7c5f10532fd553d5773714b04e76e7d",
+      "size_bytes": 108528
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/kshudhita-pashan/front-cover.webp",
+      "sha256": "7f1b6c377177da30d5adf5f049e4e5fff175bb2ece42933082648f3a5fd19f34",
+      "size_bytes": 117262
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp",
+      "sha256": "506b5b5a924dbf9500ddaa672cf4d826a4dc46df30c114dd4910e22dad36282a",
+      "size_bytes": 137980
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp",
+      "sha256": "884ddea11547201fbf6b58c6a34aee9cfdaff00d715123806c4e9baf164af839",
+      "size_bytes": 224502
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/love-of-life/back-cover.webp",
+      "sha256": "fcdd127186c4d4f9e5fd82ecb3cc61e3a867790589ee89b6c62e9ee9989c8f1a",
+      "size_bytes": 21950
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/love-of-life/front-cover.webp",
+      "sha256": "2c38df718cb570fd58c1af8832421188c7dd835452fef3d74cd54e17c0d259b3",
+      "size_bytes": 16680
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/picture-of-dorian-gray/back-cover.webp",
+      "sha256": "ade357db40d10ab548cdff0ddbf2b77e5f7aeaba8dd7e8a666667d01fd4b50d6",
+      "size_bytes": 26352
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/picture-of-dorian-gray/front-cover.webp",
+      "sha256": "2222284a9d1a2f5e1e5c7f0b95eb3bdfb6775e3b83a953d9ecb3e071d6588657",
+      "size_bytes": 19390
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/sherlock-holmes/front-cover.webp",
+      "sha256": "995c89ed5ab7a56210a6a9cc6befcbef258ebe06965207585fd785daa0b1489f",
+      "size_bytes": 129238
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/sultanas-dream/front-cover.svg",
+      "sha256": "3fa805f97f978f2c7b7a4886d6136e83b5d38622089f4e2014c91834ac351690",
+      "size_bytes": 4202
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-bishop/back-cover.webp",
+      "sha256": "a9750874325163a19df349ee9f906a3c6a7c69644360a953d398cd8aaf488e71",
+      "size_bytes": 21004
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-bishop/front-cover.webp",
+      "sha256": "b29a98a47ab7867785aa81db72eb38c591de844b3af7e5aa8b04945e57d6c017",
+      "size_bytes": 15226
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-canterville-ghost/back-cover.webp",
+      "sha256": "af05718d586c61a2109a312555d5de1b2779407fc5b2839568f9068384fce37b",
+      "size_bytes": 23674
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-canterville-ghost/front-cover.webp",
+      "sha256": "e8b7ee7856cfc3e33b81a0eb170e5e4a19273dafdfd7a5163afedb757594e1da",
+      "size_bytes": 17644
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-enchanted-april/back-cover.webp",
+      "sha256": "135b4c8820ee8c4eb3d0cf27d5d0e4e013c62ae7df23c390558abca95f39588f",
+      "size_bytes": 23430
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-enchanted-april/front-cover.webp",
+      "sha256": "094e542561e8ef5ba2d6ed07c989e4ef69bcbcd00ae079525beb1d848a01a7f7",
+      "size_bytes": 20416
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-fall-of-the-house-of-usher/back-cover.webp",
+      "sha256": "e433337c3b5d5f38ef37b740cf15e6d57534fa8446e5b8ed87a6846fe3d8f168",
+      "size_bytes": 22890
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
+      "sha256": "8dfb51de07beed3873dac4d418c0596846b34507f4ae51ef28245f7cd16f6e9d",
+      "size_bytes": 19136
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-happy-prince/back-cover.webp",
+      "sha256": "8c3a27d696997837f3a1f2ea1aa49b74e7993cfaa30bb7abbc6a9f3f91a37334",
+      "size_bytes": 24006
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-happy-prince/front-cover.webp",
+      "sha256": "4d66d9da62bcecf1b6cd4a778a1ff21659454272d4cb7fcddf3e7f396b62955f",
+      "size_bytes": 20138
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-lady-with-the-dog/back-cover.webp",
+      "sha256": "3fc989282374d1336f8fe066cf43974e1ad76c7b927817405d3e47c8c53319bb",
+      "size_bytes": 20712
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-lady-with-the-dog/front-cover.webp",
+      "sha256": "639135ab803048092198578b61e0b119d9b5cf4a9313db3f93bbb2194aec6869",
+      "size_bytes": 19968
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-man-who-would-be-king/back-cover.webp",
+      "sha256": "8c75c153de8810a39f40d568f32f36c4a273deea17732477f84216fc7e565e8d",
+      "size_bytes": 21472
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-man-who-would-be-king/front-cover.webp",
+      "sha256": "ecbcd6cc4640babc136f5e3220fe49849bafabbd8be5600a11dfefdb8f612f76",
+      "size_bytes": 21400
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-metamorphosis/back-cover.webp",
+      "sha256": "b778564df1af8b4df868a244509677d8abd844dfdc30af7dff85ae74b99c2c7f",
+      "size_bytes": 19762
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-metamorphosis/front-cover.webp",
+      "sha256": "959541d1d1733b56eed36e3e9d0fb7a3de006dfe22e5925fd9c2f78eabfb044c",
+      "size_bytes": 15012
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-most-dangerous-game/back-cover.webp",
+      "sha256": "182c419386cdc057a8ac96c3b0ab7d5d935a948e179c812a954bfd41215329fd",
+      "size_bytes": 22088
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-most-dangerous-game/front-cover.webp",
+      "sha256": "a8bd7587cbbdd9f5ff8a23d9aa8a258bfa08a9ce110228002f37f52b1f2f0d8c",
+      "size_bytes": 19740
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-open-boat/back-cover.webp",
+      "sha256": "39143f938d1c09214f3bd9ebd9545d404e944b6d0c4c156a89621a469958deee",
+      "size_bytes": 25196
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-open-boat/front-cover.webp",
+      "sha256": "296b67825cf9bd73c3586afdd03cc09f837203e04de9202ea708191dfdb750e4",
+      "size_bytes": 19054
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+      "sha256": "5c817ec835fdd9c3ae40eaf557337709da69bd4f1ad4ce8a106ada0a501ec8ae",
+      "size_bytes": 23152
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+      "sha256": "7c5e56a75f22008a54bf44ba12a445078c8b4d7eae64b900c7aac68af48e414c",
+      "size_bytes": 17058
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-stolen-white-elephant/back-cover.webp",
+      "sha256": "f6be789f2564035101a7b2fc954a3f72a8553af14e8aa1e7c196363848a1c9a4",
+      "size_bytes": 25046
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/books/the-stolen-white-elephant/front-cover.webp",
+      "sha256": "16137ec2a018564aafa68962cf59bed705bdccc6cb89ef6000d431c30f16cddd",
+      "size_bytes": 22560
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/earnalism-app-icon-192.png",
+      "sha256": "153f64c047620486e726cc6bdde6a17310ad058d16b3a981b48b81525bb332a8",
+      "size_bytes": 56240
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/earnalism-app-icon-512.png",
+      "sha256": "954b40b33fcb4d0655e230ff6f7aff0148fc8358a1ad7b1598865230ac5e35ed",
+      "size_bytes": 267457
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/earnalism-brand-lockup.png",
+      "sha256": "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919",
+      "size_bytes": 650122
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/earnalism-logo-text-original.png",
+      "sha256": "8bb23100d3448ea5baff3c71d8e6a23de7261dbee1e1c97c57711e3e9c2f3809",
+      "size_bytes": 215350
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/earnalism-logo-text.png",
+      "sha256": "a9513b9c17a4e9e303ea5b9483546366f9648a9dfb11bb8691d1fbb297d48da8",
+      "size_bytes": 218020
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/earnalism-logo-transparent-128.webp",
+      "sha256": "18bba14e9aa76746c55302dd333e232c7cda2a33e2e68029ba8b8f105619ced4",
+      "size_bytes": 9576
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/earnalism-logo-transparent-96.webp",
+      "sha256": "8edd982f4c27bba7c0a0cb0dcf5752ddee807c5bb4860bd488a2bf555c7ecdcd",
+      "size_bytes": 6138
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/earnalism-logo-transparent.png",
+      "sha256": "38de33985ed24f38133ff9879f0668ac8c8b505e9642e3a55cd4e6454734bfb2",
+      "size_bytes": 71888
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/earnalism-logo.png",
+      "sha256": "44ee689d5a55e82da2101de838475424390445fa6a3ac29c72c400ed6b0ddef0",
+      "size_bytes": 72735
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/brand/india-brush-flag-badge.png",
+      "sha256": "d7638c72c074a1b04e78f14b1105cca11b1de6a7c1d0b695c3b80b862276730c",
+      "size_bytes": 196236
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/hero/golden-hour-library-hero.webp",
+      "sha256": "cb7c3abfbb207a2c6e3d4c7c90b1a28e7b1bc93da34210ff9e31d43a85271083",
+      "size_bytes": 107080
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/hero/premium-library-mobile-cinematic-v2.webp",
+      "sha256": "3b0c30637f63d39d7f9fde0b48ae3d8c203181410d6c6a359ce59c722150079f",
+      "size_bytes": 104296
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/hero/premium-library-mobile-corner-v1.webp",
+      "sha256": "b8c33d9afa60ac97ab5094eec8332ad506c6ef7ac185fcd5801b28f77a87a5b7",
+      "size_bytes": 19154
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/hero/premium-library-reference-art.webp",
+      "sha256": "3ae81ed6864e913b7ecc95a4ddff3aa4a5562734617e2590420a2fbc64ff170f",
+      "size_bytes": 136142
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/hero/premium-library-reference-exact-1024.webp",
+      "sha256": "a3ede80bae5439f68bc6e73092f867d8ae61b01ef54195e8fab02d0b4413e2db",
+      "size_bytes": 93992
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/hero/premium-library-reference-exact-1440.webp",
+      "sha256": "8e78809c0b83937893161551b426fd00a70b700bc111396570fdfe390db72961",
+      "size_bytes": 149352
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/hero/premium-library-reference-exact.webp",
+      "sha256": "b30dfc133ab7946a0b885702e0a338d3e3c24acc76d50f34efb2d94cb1784def",
+      "size_bytes": 255746
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/hero/premium-library-reference.webp",
+      "sha256": "0a96ba47da39aadedb957293142af4bffb745e0f8a8ad441f82d204b582db8da",
+      "size_bytes": 232064
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/bengali-classics-220.webp",
+      "sha256": "1402643f990796ad0849a9badae57c53a47fe07263f58ecd897fa70e68a079a4",
+      "size_bytes": 6578
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/bengali-classics-320.webp",
+      "sha256": "4639577ce45dd75b9f20c3ee8c9efe86760bc97a657a4faa1959343a85cb122b",
+      "size_bytes": 12194
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/bengali-classics-420.webp",
+      "sha256": "b4c559354d7569f2e0ab2343d8d098d10e68e31ffbc328fec7a94eb1319ecb1a",
+      "size_bytes": 19354
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/dracula-front-cover-220.webp",
+      "sha256": "8a32912d65cd2379a5b7eced269b652fa3b14c45dd89da9f106e5631bd18001a",
+      "size_bytes": 16820
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/dracula-front-cover-320.webp",
+      "sha256": "903ce716a2b4c4ae8ab7d2b771a369b65a56e07ec02ea3aa6c9d6c9872a8443b",
+      "size_bytes": 33262
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/dracula-front-cover-420.webp",
+      "sha256": "899415a7aa8e51d617c9f5f602f3778c853da0265eb999b45b61023f5cadd3a7",
+      "size_bytes": 52638
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/earnalism-brand-lockup-320.webp",
+      "sha256": "c13f4d3a4cf8f10c3f8223b266b4e60f52b5f5842b6251bd12cf9656a74dc92e",
+      "size_bytes": 15268
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/earnalism-brand-lockup-640.webp",
+      "sha256": "98e53ae9c9fe4c73de80a1445c1238ba6d700b2257db73b8110beec9fe1a8db7",
+      "size_bytes": 40082
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/kshudhita-pashan-front-cover-220.webp",
+      "sha256": "6aa89952bdce2dbf906906f16d3152138c71ed1f233dcbcf24aabc591e4bea64",
+      "size_bytes": 11838
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/kshudhita-pashan-front-cover-260.webp",
+      "sha256": "cbb88be5a8cc5b35b526c63203509aadc4b99e5cf6dcf995c5972d64f2d3824d",
+      "size_bytes": 15898
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/kshudhita-pashan-front-cover-360.webp",
+      "sha256": "40a725a645f041f8d3fdbb66139bbf845fb1eb12450f5dd7727e264975aa72d8",
+      "size_bytes": 28148
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/sherlock-holmes-front-cover-220.webp",
+      "sha256": "8100e6f7ba03ef074144902fd54831e0e34a319a5dfb5af081535c7c570aad06",
+      "size_bytes": 13150
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/sherlock-holmes-front-cover-260.webp",
+      "sha256": "548e389a8931e7e19b3a4815c593d03f3f7eac323e1e3fe18bb8c87df7df3717",
+      "size_bytes": 17612
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/performance/sherlock-holmes-front-cover-360.webp",
+      "sha256": "59ba87c30c963b3f566b76c6b459180fbfe5e4e738cf741cc9925043960c1725",
+      "size_bytes": 30934
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/adventure.jpg",
+      "sha256": "4b4b16154b4f752ff93692168a0bb9f2dae1df75e3345c4e2cb6f0874f7b29bc",
+      "size_bytes": 218363
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/bengali-classics.jpg",
+      "sha256": "aeea5ac93844277908cf34ad8ee66e33c97a3d6f971bbf18a6dfef0a522b3b60",
+      "size_bytes": 291520
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/bengali.jpg",
+      "sha256": "b576c95275bddfd688f90ab998096ca5c8d9e1561483928a247aa5eb9f1eca9b",
+      "size_bytes": 764758
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/business.jpg",
+      "sha256": "97cc1fe4f220bf4b315e09da9aaf69155ba51a2e9673357e1a2945616dd4b9cf",
+      "size_bytes": 226570
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/gothic-fiction.jpg",
+      "sha256": "01444636b8a08de77bfbdf306facd346e3468b5568f29012c493ea7ffa40b81a",
+      "size_bytes": 195225
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/history-politics.jpg",
+      "sha256": "345f3a861afc6e3fc6fe7d4b28b1722e60804e733b7b3d00494725f8ac0f4de9",
+      "size_bytes": 367823
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/history-strategy.jpg",
+      "sha256": "2fac2428d1f51e001c9ee5d662d5b6c71849b97ecbbbbf2f9bea1633d539734d",
+      "size_bytes": 221437
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/literary-fiction.jpg",
+      "sha256": "88fe104f4a8a3b973a539a37b1d010ff98d17055ad59e07214bc56fcb180dec3",
+      "size_bytes": 206363
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/literature.jpg",
+      "sha256": "6d412f670a0f65c7e1a8c0486f08de7059b785f37d535b88f3b5566b5581bfcb",
+      "size_bytes": 262472
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/science-fiction.jpg",
+      "sha256": "368abe863a800fccb77a1bab0ac1c10a7a38bee77a1a0320ae5c371f370f24c1",
+      "size_bytes": 80927
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/self-growth.jpg",
+      "sha256": "2f5e1844ccda422c0f0a169e86b7d2f069d7bb897ad0ddf307234e9256ef2103",
+      "size_bytes": 265221
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/technology-ai.jpg",
+      "sha256": "a88554b114c66b3763f33778fc817b2926ffd55fd44814796d35dd6062328ec1",
+      "size_bytes": 157826
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/technology.jpg",
+      "sha256": "fc298390082a6c97449ab366a5de2152b97b8323168fedae0f344c73f07c5ccd",
+      "size_bytes": 149848
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/assets/shelves/young-readers.jpg",
+      "sha256": "dfa9148a5b72b72df24e510a07476e24d78c7ebc329d40c01bca55c31d08c532",
+      "size_bytes": 177918
+    },
+    {
+      "classification": "active",
+      "path": "frontend/public/favicon.png",
+      "sha256": "5ad3848f391307c43bb61e91be2097f514b95e76f00e36b772195005edb39df9",
+      "size_bytes": 9178
+    }
+  ],
+  "schema_version": "lean-redesign-cleanup-v1"
+}

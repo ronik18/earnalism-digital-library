@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism-design-contract-v1",
+  "references": "reference-manifest.json",
+  "viewports": {
+    "desktop": [1440, 1000],
+    "responsive": [[320, 568], [360, 800], [390, 844], [430, 932], [768, 1024], [1024, 768], [1280, 800], [1440, 1000], [1920, 1080]]
+  },
+  "tokens": {
+    "content_max_width_px": 1360,
+    "navigation_height_px": 64,
+    "page_gutter_px": {"mobile": 16, "tablet": 24, "desktop": 40},
+    "book_cover_ratio": "2:3",
+    "desktop_library_columns": 5,
+    "desktop_grid_gap_px": 16,
+    "desktop_sidebar_width_px": 220,
+    "border_radius_px": {"card": 10, "button": 6},
+    "button_height_px": 42,
+    "fonts": {
+      "display": ["Cormorant Garamond", "Noto Serif Bengali", "serif"],
+      "ui": ["Outfit", "Noto Sans Bengali", "sans-serif"]
+    },
+    "palette": {
+      "ink": "#07100f",
+      "ivory": "#f8f0e4",
+      "gold": "#c9a060",
+      "gold_deep": "#765320"
+    }
+  },
+  "comparison": {
+    "max_diff_pixel_ratio": 0.005,
+    "key_geometry_tolerance_px": 2,
+    "font_size_tolerance_px": 1,
+    "spacing_tolerance_px": 2,
+    "disable_animations": true,
+    "mask_only": ["dynamic book-cover art", "dynamic title and author text", "live prices", "timestamps", "dynamic availability labels"]
+  },
+  "invariants": ["no horizontal overflow", "no clipped text", "no console error", "no pageerror", "no hydration error", "release truth outranks visual reference"]
+}

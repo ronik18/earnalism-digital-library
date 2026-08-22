@@ -1,0 +1,7 @@
+{
+  "candidates": [],
+  "mode": "dry-run",
+  "provider_query": "not executed",
+  "reason": "Inventory PR never connects to a production database.",
+  "schema_version": "lean-redesign-cleanup-v1"
+}

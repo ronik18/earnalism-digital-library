@@ -1,0 +1,6 @@
+{
+  "mode": "dry-run",
+  "provider_metrics": "not queried",
+  "reason": "Requires an approved read-only provider metrics export; no provider mutation occurred.",
+  "schema_version": "lean-redesign-cleanup-v1"
+}
