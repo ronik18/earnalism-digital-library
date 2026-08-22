@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowRight, Check, Headphones, Search, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, Check, Headphones, Search, SlidersHorizontal, X } from "lucide-react";
 import { api } from "../lib/api";
 import BookCard from "../components/BookCard";
 import PremiumHero from "../components/PremiumHero";
@@ -83,6 +83,7 @@ export default function Library() {
   const [liveBooks, setLiveBooks] = useState([]);
   const [curation, setCuration] = useState(() => getHomeCurationSnapshot());
   const [loading, setLoading] = useState(true);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [query, setQuery] = useState(params.get("q") || "");
   const language = params.get("language") || "all";
   const reading = params.get("reading") || (params.get("category") && !["all", "live", "pipeline"].includes(params.get("category")) ? params.get("category") : "all");
@@ -200,12 +201,14 @@ export default function Library() {
                 {SORT_OPTIONS.map((option) => <option key={option.slug} value={option.slug}>{option.name}</option>)}
               </select>
             </label>
+            <button type="button" className="library-filter-trigger" onClick={() => setFiltersOpen(true)} aria-haspopup="dialog" aria-expanded={filtersOpen}>Filters</button>
           </div>
           <div className="library-explorer__filters">
             <FilterChips label="Language" value={language} options={LANGUAGE_FILTERS} onChange={(value) => updateParam("language", value)} testId="language-filters" />
             <FilterChips label="Literary form" value={reading} options={READING_FILTERS} onChange={(value) => updateParam("reading", value)} testId="reading-filters" />
             <FilterChips label="Listening" value={listening} options={LISTENING_FILTERS} onChange={(value) => updateParam("listening", value)} testId="listening-filters" />
           </div>
+          {filtersOpen && <div className="library-filter-drawer" role="dialog" aria-modal="true" aria-label="Library filters"><div className="library-filter-drawer__panel"><div className="library-filter-drawer__head"><strong>Filters</strong><button type="button" className="library-filter-trigger" onClick={() => setFiltersOpen(false)} aria-label="Close filters"><X size={16} aria-hidden="true" /> Close</button></div><div className="library-explorer__filters"><FilterChips label="Language" value={language} options={LANGUAGE_FILTERS} onChange={(value) => updateParam("language", value)} testId="mobile-language-filters" /><FilterChips label="Literary form" value={reading} options={READING_FILTERS} onChange={(value) => updateParam("reading", value)} testId="mobile-reading-filters" /><FilterChips label="Listening" value={listening} options={LISTENING_FILTERS} onChange={(value) => updateParam("listening", value)} testId="mobile-listening-filters" /></div></div></div>}
         </section>
 
         <section className="library-collection" aria-labelledby="collection-title">

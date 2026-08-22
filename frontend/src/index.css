@@ -1,3 +1,5 @@
+@import "./design-system/index.css";
+
 :root {
   --font-display: 'Cormorant Garamond', 'Noto Serif Bengali', Georgia, serif;
   --font-ui: 'Outfit', 'Noto Sans Bengali', sans-serif;
@@ -184,7 +186,7 @@ html {
   border-radius: 1.15rem;
   padding: 1.15rem;
   color: var(--brand-charcoal);
-  background: rgba(255, 252, 244, 0.74);
+  background: #fffaf1;
   box-shadow: 0 1rem 2.4rem -2rem rgba(53, 16, 24, 0.45), inset 0 1px rgba(255, 255, 255, 0.86);
   text-decoration: none;
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;

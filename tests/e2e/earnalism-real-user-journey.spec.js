@@ -367,8 +367,12 @@ test.describe("Earnalism real-user UX video audit", () => {
     const text = await bodyText(page);
     expectTextContains(text, "Explore the collection");
     expectTextContains(text, "Request Update");
-    await expect(page.getByTestId("language-filters")).toBeVisible();
-    await expect(page.getByTestId("listening-filters")).toBeVisible();
+    const filterButton = page.getByRole("button", { name: "Filters" });
+    await expect(filterButton).toBeVisible();
+    await filterButton.click();
+    await expect(page.getByRole("dialog", { name: "Library filters" })).toBeVisible();
+    await expect(page.getByTestId("mobile-language-filters")).toBeVisible();
+    await expect(page.getByTestId("mobile-listening-filters")).toBeVisible();
   });
 
   test("Dracula book page exposes rights, source, preview, and reading pass CTAs", async ({ page }) => {
@@ -417,7 +421,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     expectTextContains(text, "₹239");
     expectTextContains(text, "The Reader’s Reserve");
     expectTextContains(text, "₹499");
-    expectTextContains(text, "Best value");
+    expectTextContains(text, "No subscription or autorenewal");
     expectTextContains(text, "Why reading time?");
     expectTextContains(text, "Secure payment by Razorpay");
     expectTextContains(text, "sales@reoenterprise.org");

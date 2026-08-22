@@ -24,5 +24,7 @@ describe("Library experience", () => {
     expect(source).toContain('params.get("sort")');
     expect(source).toContain('params.get("q")');
     expect(source).toContain("Listening appears only where the release evidence allows it.");
+    expect(source).toContain("library-filter-drawer");
+    expect(source).toContain('aria-modal="true"');
   });
 });
