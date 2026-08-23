@@ -1,0 +1,45 @@
+{
+  "schema_version": "earnalism-public-pages-visual-lock-v1",
+  "purpose": "Immutable, non-gameable implementation gate for Home, Library, and Commerce.",
+  "references": {
+    "home-library-desktop.png": "5f0d3506e8510eec38ac22402fe2a6c8f3ba20234553c2a9dad6ed32b1cb4efb",
+    "commerce-desktop.png": "095d0c30b4952cc93273fcfd853ab094595acc597c9154c73144295fb0af748d",
+    "responsive-reference-board.png": "c19d324c74e0ac4ea5f474f3353cbfe00aad14509a4166a61bf4a581ca13d4e6"
+  },
+  "viewports": {
+    "desktop": [1440, 1000],
+    "responsive": [[320, 568], [360, 800], [390, 844], [430, 932], [768, 1024], [1024, 768], [1280, 800], [1440, 1000], [1920, 1080]]
+  },
+  "reference_crops": {
+    "home-desktop": {"file": "responsive-reference-board.png", "x": 10, "y": 18, "width": 538, "height": 746},
+    "library-desktop": {"file": "responsive-reference-board.png", "x": 561, "y": 18, "width": 517, "height": 746},
+    "commerce-desktop": {"file": "commerce-desktop.png", "x": 0, "y": 0, "width": 456, "height": 760},
+    "home-mobile": {"file": "responsive-reference-board.png", "x": 35, "y": 796, "width": 187, "height": 228},
+    "library-mobile": {"file": "responsive-reference-board.png", "x": 260, "y": 796, "width": 188, "height": 228},
+    "commerce-mobile": {"file": "responsive-reference-board.png", "x": 790, "y": 796, "width": 186, "height": 228}
+  },
+  "permitted_dynamic_masks": {
+    "selectors": ["[data-visual-mask='cover-art']", "[data-visual-mask='book-title']", "[data-visual-mask='book-author']", "[data-visual-mask='live-price']", "[data-visual-mask='availability']"],
+    "allowed_content": ["dynamic cover artwork", "dynamic title and author text", "live prices", "changing release labels"],
+    "maximum_total_pixel_coverage_ratio": 0.2,
+    "maximum_single_structural_region_coverage_ratio": 0.25,
+    "prohibited_regions": ["hero", "navigation", "section layout", "filters", "offer-card geometry", "buttons", "trust strip", "spacing", "typography blocks", "backgrounds", "borders"]
+  },
+  "required_regions": {
+    "home": ["site-header", "premium-hero", "two-primary-hero-ctas", "feature-trust-strip", "begin-your-journey", "catalog-shelf", "reading-pass", "reader-trust", "footer"],
+    "library": ["site-header", "library-title", "search", "sort", "filter-sidebar-or-drawer", "live-now", "coming-soon", "audiobooks", "reading-pass-support"],
+    "commerce": ["site-header", "premium-hero", "offer-comparison", "institutional-pathway", "publisher-pathway", "trust-strip", "final-cta", "footer"]
+  },
+  "acceptance": {
+    "key_geometry_tolerance_px": 2,
+    "font_size_tolerance_px": 1,
+    "spacing_tolerance_px": 2,
+    "max_diff_pixel_ratio": 0.005,
+    "required_missing_regions": 0,
+    "horizontal_overflow": false,
+    "clipped_text": false,
+    "console_errors": 0,
+    "page_errors": 0,
+    "hydration_errors": 0
+  }
+}
