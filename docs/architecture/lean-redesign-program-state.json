@@ -83,5 +83,16 @@
     "merge_commit": "0d3b87aed23667135172176acfb77ac973b060c0",
     "status": "merged_immutable_reference_only"
   },
-  "next_gate": "Reader, Listener, and About implementation is eligible to begin from the merged immutable reference prerequisite. Destructive cleanup remains deferred until the earliest review date and explicit candidate-by-candidate approval."
+  "actual_public_pages_implementation": {
+    "status": "owner_visual_approval_required",
+    "visual_lock": "uat/contracts/public-pages-visual-lock.json",
+    "before_evidence": "uat/evidence/actual-redesign/before",
+    "after_evidence": "uat/evidence/actual-redesign/after",
+    "comparison_board": "uat/evidence/actual-redesign/comparison-board.png",
+    "reference_manifest": "docs/design-references/reference-manifest.json",
+    "backend_change_allowed": false,
+    "database_change_allowed": false,
+    "note": "The original Phase 2 validation is historical only. This implementation requires explicit owner visual approval before merge."
+  },
+  "next_gate": "Owner visual approval is required for the actual Home, Library, and Commerce implementation before merge. Destructive cleanup remains deferred until the earliest review date and explicit candidate-by-candidate approval."
 }

@@ -3,7 +3,6 @@ import { Link, useSearchParams } from "react-router-dom";
 import { ArrowRight, Check, Headphones, Search, SlidersHorizontal, X } from "lucide-react";
 import { api } from "../lib/api";
 import BookCard from "../components/BookCard";
-import PremiumHero from "../components/PremiumHero";
 import {
   BATCH_1_READER_ONLY_SLUGS,
   LIVE_APPROVED_SLUG,
@@ -16,6 +15,7 @@ import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
 import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 import useSEO from "../hooks/useSEO";
+import { ReferenceLibrarySurface } from "../components/ReferencePublicPages";
 
 const LANGUAGE_FILTERS = [
   { slug: "all", name: "All languages" },
@@ -146,17 +146,6 @@ export default function Library() {
     }), sort);
   }, [allBooks, language, listening, query, reading, sort]);
 
-  const libraryHeroCuration = useMemo(() => ({
-    ...curation,
-    hero: {
-      ...curation?.hero,
-      headline: "Find the story that meets you here.",
-      subheadline: "Explore Bengali and English classics through one calm, curated collection—filter by language, literary form, access, and listening availability.",
-      primary_cta: { label: "EXPLORE THE COLLECTION", url: "#library-collection" },
-      secondary_cta: { label: "Explore Audiobooks", url: "/library?availability=approved-audiobook" },
-    },
-  }), [curation]);
-
   const handleSearch = (value) => {
     setQuery(value);
     const next = new URLSearchParams(params);
@@ -167,15 +156,20 @@ export default function Library() {
 
   return (
     <div className="library-page" data-testid="library-page">
-      <PremiumHero
-        curation={libraryHeroCuration}
+      <ReferenceLibrarySurface
+        filteredBooks={filteredBooks}
         loading={loading}
-        error={false}
-        headerMode="document"
-        analyticsNamespace="library"
-        eyebrowLabel="THE EARNALISM LIBRARY"
-        fallbackHeadline="Find the story that meets you here."
+        query={query}
+        language={language}
+        reading={reading}
+        listening={listening}
+        sort={sort}
+        onSearch={handleSearch}
+        onParam={updateParam}
+        filtersOpen={filtersOpen}
+        setFiltersOpen={setFiltersOpen}
       />
+      <div className="reference-library__legacy-content" aria-hidden="true">
 
       <main id="library-collection" className="library-main">
         <section className="library-explorer" aria-labelledby="explorer-title">
@@ -226,6 +220,7 @@ export default function Library() {
           <Link to={notifyUrl("library-release-notes")}>Request an update <ArrowRight size={15} aria-hidden="true" /></Link>
         </aside>
       </main>
+      </div>
     </div>
   );
 }

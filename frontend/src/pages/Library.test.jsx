@@ -5,7 +5,7 @@ const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Library.jsx")
 
 describe("Library experience", () => {
   test("uses the single editorial collection architecture and approved copy", () => {
-    expect(source).toContain("Find the story that meets you here.");
+    expect(source).toContain("ReferenceLibrarySurface");
     expect(source).toContain("Explore the collection.");
     expect(source).toContain("Search the Library");
     expect(source).toContain("Search by title or author");

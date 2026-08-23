@@ -19,7 +19,6 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import DeferredMount from "../components/DeferredMount";
-import PremiumHero from "../components/PremiumHero";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
@@ -31,6 +30,7 @@ import {
   getHomeHeroSnapshot,
 } from "../lib/homeSurfaces";
 import useSEO from "../hooks/useSEO";
+import { ReferenceHomeSurface } from "../components/ReferencePublicPages";
 
 const HomeListeningRoom = lazy(() => import("../components/HomeListeningRoom"));
 const HomeShelfArchitecture = lazy(() => import("../components/HomeShelfArchitecture"));
@@ -172,15 +172,8 @@ export default function Home() {
 
   return (
     <div className="home-reference-page" data-testid="home-page">
-      <PremiumHero
-        curation={heroCuration}
-        loading={false}
-        error={false}
-        headerMode="in-flow"
-        analyticsNamespace="home"
-        eyebrowLabel="A library made for lingering"
-        onTrack={(event, metadata) => trackFunnelEvent(event, { source: "home", ...metadata })}
-      />
+      <ReferenceHomeSurface curation={heroCuration} />
+      <div className="reference-home__legacy-content" aria-hidden="true">
       <section className="home-quick-paths" aria-labelledby="home-quick-paths-title" data-testid="home-quick-paths">
         <div className="home-quick-paths__inner">
           <div className="home-quick-paths__heading">
@@ -320,6 +313,7 @@ export default function Home() {
           ) : null}
         </div>
       </section>
+      </div>
     </div>
   );
 }

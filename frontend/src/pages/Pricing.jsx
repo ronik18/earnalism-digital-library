@@ -6,6 +6,7 @@ import { api, userApi, formatError } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
+import { ReferenceCommerceSurface } from "../components/ReferencePublicPages";
 
 const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
 
@@ -234,6 +235,14 @@ export default function Pricing() {
 
   return (
     <div className="commerce-page" data-testid="pricing-page">
+      <ReferenceCommerceSurface
+        packs={packs}
+        config={config}
+        busyId={busyId}
+        selectedPackId={selectedPackId}
+        onBuy={handleBuy}
+      />
+      <div className="reference-commerce__legacy-content" aria-hidden="true">
       <div className="commerce-main">
         <div className="commerce-hero text-center">
           <div className="italic-eyebrow">Reading time, by the pack</div>
@@ -341,6 +350,7 @@ export default function Pricing() {
             <Link to="/library" className="btn-link inline-flex min-h-11 items-center" data-testid="pricing-to-library">Browse the library →</Link>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
