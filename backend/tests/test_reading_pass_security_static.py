@@ -16,12 +16,8 @@ def test_protected_delivery_and_lease_contract_is_fail_closed():
     assert '_reading_pass_protected_response(result)' in source
     assert 'Authorization, Cookie, X-Reading-Pass-Session, X-Reading-Pass-Lease' in source
     assert 'partialFilterExpression={"active_lock": {"$type": "string"}}' in source
-    assert 'Preview size or SHA-256 metadata does not match' in source
-    assert 'Preview version must equal its SHA-256 content identity.' in source
-    assert 'and sha256 in key.lower()' in source
-    assert 'and str(storage.get("version_id") or "")' in source
-    assert 'The preview object must be distinct from every full audiobook asset.' in source
-    assert '_audio_package_storage_url(storage)' in source
+    assert 'AUDIO_PREVIEW_DISABLED' in source
+    assert 'public_audio_seconds": PUBLIC_AUDIO_PREVIEW_SECONDS' in source
     assert 'Legacy reader heartbeats are disabled while Reading Pass is active.' in source
     assert 'Legacy reading pulses are disabled while Reading Pass is active.' in source
     assert 'READING_PASS_V2_ENABLED = _env_bool("READING_PASS_V2_ENABLED", False)' in source

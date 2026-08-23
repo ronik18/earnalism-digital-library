@@ -77,21 +77,14 @@ function isRestrictedStatus(book = {}) {
 }
 
 function sanitizeBookForPublicApi(book = {}) {
-  const copy = { ...book };
-  delete copy.source_url;
-  delete copy.rights_metadata;
-  delete copy.upload_notes;
-  delete copy.source_name;
-  delete copy.source_license;
-  delete copy.source;
-  delete copy.source_file;
-  delete copy.content_hash;
-  delete copy.content_md5;
-  delete copy.provenance_hash;
-  delete copy.source_type;
-  delete copy.source_version;
-  delete copy.source_url_hash;
-  return copy;
+  const projection = {};
+  for (const field of PUBLIC_BOOK_FIELDS) {
+    if (!Object.prototype.hasOwnProperty.call(book, field)) continue;
+    projection[field] = field === "chapters"
+      ? (Array.isArray(book[field]) ? book[field].map(withoutChapterContent) : [])
+      : book[field];
+  }
+  return projection;
 }
 
 function buildControlledBookMap() {
@@ -137,7 +130,13 @@ function controlledBookBySlug(slug) {
 }
 
 function isControlledBookListed(book) {
-  return !!book && (book.publicationStatus === "live" || book.publication_status === "LIVE_APPROVED" || book.isLive);
+  return !!book
+    && book.is_published === true
+    && (book.publicationStatus === "live" || book.publication_status === "LIVE_APPROVED" || book.isLive === true);
+}
+
+function isReaderReadyControlledBook(entry) {
+  return isControlledBookListed(entry?.publicBook) && entry.chapters.size > 0;
 }
 
 function fallbackStaticHtml(status, text, opts = {}) {
@@ -220,8 +219,8 @@ function localApiResponse(pathname, query, options = {}) {
   const pathOnly = pathname.replace(/\/+$/, "") || "/";
 
   const liveBooks = controlledCatalog
-    .map((entry) => entry.publicBook)
-    .filter(isControlledBookListed);
+    .filter(isReaderReadyControlledBook)
+    .map((entry) => entry.publicBook);
 
   if (pathOnly === "/books" && options.method !== "POST") {
     return fallbackResponse(pathname, liveBooks, { status: 200, url: options.url || `${apiUrl()}${pathname}` });
@@ -272,7 +271,7 @@ function localApiResponse(pathname, query, options = {}) {
   const bookSlugMatch = pathOnly.match(/^\/books\/([^/]+)$/);
   if (bookSlugMatch) {
     const book = controlledBookBySlug(bookSlugMatch[1]);
-    if (!book || !isControlledBookListed(book.publicBook)) {
+    if (!book || !isReaderReadyControlledBook(book)) {
       return fallbackResponse(pathname, { error: "not found" }, { status: 404, url: options.url || `${apiUrl()}${pathname}` });
     }
     return fallbackResponse(pathname, book.publicBook, { status: 200, url: options.url || `${apiUrl()}${pathname}` });
@@ -281,7 +280,7 @@ function localApiResponse(pathname, query, options = {}) {
   const chaptersListMatch = pathOnly.match(/^\/books\/([^/]+)\/chapters$/);
   if (chaptersListMatch) {
     const book = controlledBookBySlug(chaptersListMatch[1]);
-    if (!book || !isControlledBookListed(book.publicBook)) {
+    if (!book || !isReaderReadyControlledBook(book)) {
       return fallbackResponse(pathname, { error: "not found" }, { status: 404, url: options.url || `${apiUrl()}${pathname}` });
     }
     const chapters = (book.readerManifest?.chapters || book.publicBook.chapters || []).map(withoutChapterContent);
@@ -291,7 +290,7 @@ function localApiResponse(pathname, query, options = {}) {
   const chapterMatch = pathOnly.match(/^\/books\/([^/]+)\/chapters\/([^/]+)$/);
   if (chapterMatch) {
     const book = controlledBookBySlug(chapterMatch[1]);
-    if (!book || !isControlledBookListed(book.publicBook)) {
+    if (!book || !isReaderReadyControlledBook(book)) {
       return fallbackResponse(pathname, { error: "not found" }, { status: 404, url: options.url || `${apiUrl()}${pathname}` });
     }
     const chapter = book.chapters.get(chapterMatch[2]);
@@ -301,7 +300,7 @@ function localApiResponse(pathname, query, options = {}) {
   const manifestMatch = pathOnly.match(/^\/reader\/book\/([^/]+)\/manifest$/);
   if (manifestMatch) {
     const book = controlledBookBySlug(manifestMatch[1]);
-    if (!book || !isControlledBookListed(book.publicBook)) {
+    if (!book || !isReaderReadyControlledBook(book)) {
       return fallbackResponse(pathname, { error: "not found" }, { status: 404, url: options.url || `${apiUrl()}${pathname}` });
     }
     const manifest = {
@@ -352,7 +351,7 @@ function publicDraculaBook() {
   projected.audio_url = "";
   projected.audio_status = "NOT_AVAILABLE";
   projected.cta_label = "Start Dracula";
-  projected.secondary_cta_label = "Read Chapter 1 Free";
+  projected.secondary_cta_label = "Read the first 3 pages free";
   projected.public_json_ld_enabled = true;
   projected.source_note = "Source verified for the controlled Dracula reading launch.";
   projected.rights_note = "Approved Tier A core reading candidate.";
@@ -397,10 +396,11 @@ function readerDraculaManifest() {
 }
 
 function fallbackResponse(url, data, original = {}) {
+  const status = original.status ?? 200;
   return {
     url,
-    status: 200,
-    ok: true,
+    status,
+    ok: status >= 200 && status < 300,
     redirected: false,
     headers: new Headers({
       "content-type": "application/json",
@@ -438,10 +438,11 @@ function needsManifestFallback(response) {
 
 function maybeApplyDraculaFallback(apiPath, response) {
   if (!isPr()) return response;
+  const fallbackSuccess = { ...response, status: 200 };
   const parsed = new URL(String(apiPath || "/"), "https://regression.local");
   const pathname = parsed.pathname.replace(/\/+$/, "") || "/";
   if (pathname === "/books" && needsListFallback(response)) {
-    return fallbackResponse(response.url, [publicDraculaBook()], response);
+    return fallbackResponse(response.url, [publicDraculaBook()], fallbackSuccess);
   }
   if (pathname === "/home/books" && needsHomeBooksFallback(response)) {
     return fallbackResponse(response.url, {
@@ -454,23 +455,23 @@ function maybeApplyDraculaFallback(apiPath, response) {
         next_offset: null,
         has_more: false,
       },
-    }, response);
+    }, fallbackSuccess);
   }
   if (pathname === "/books/dracula" && needsObjectFallback(response)) {
-    return fallbackResponse(response.url, publicDraculaBook(), response);
+    return fallbackResponse(response.url, publicDraculaBook(), fallbackSuccess);
   }
   if (pathname === "/books/dracula/chapters" && needsListFallback(response)) {
-    return fallbackResponse(response.url, publicDraculaBook().chapters, response);
+    return fallbackResponse(response.url, publicDraculaBook().chapters, fallbackSuccess);
   }
   if (pathname.startsWith("/books/dracula/chapters/") && (response.status === 404 || !response.ok)) {
     const chapterId = pathname.split("/").pop();
     const chapter = loadDraculaArtifact().chapters.get(chapterId);
     if (chapter) {
-      return fallbackResponse(response.url, { ...chapter, is_preview: chapter.id === "chapter-001" }, response);
+      return fallbackResponse(response.url, { ...chapter, is_preview: chapter.id === "chapter-001" }, fallbackSuccess);
     }
   }
   if (pathname === "/reader/book/dracula/manifest" && needsManifestFallback(response)) {
-    return fallbackResponse(response.url, readerDraculaManifest(), response);
+    return fallbackResponse(response.url, readerDraculaManifest(), fallbackSuccess);
   }
   return response;
 }

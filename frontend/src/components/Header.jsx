@@ -72,10 +72,12 @@ export default function Header() {
   const accountHref = isAuthed ? "/account" : "/login";
   const accountLabel = isAuthed ? "Account" : "Sign In";
   const isReferenceHome = loc.pathname === "/";
+  const isReferencePublicPage = ["/", "/library", "/pricing"].includes(loc.pathname);
+  const referencePageClass = loc.pathname === "/library" ? " premium-site-header--reference-library" : "";
 
   return (
     <header
-      className={`sticky top-0 z-50 glass-header premium-site-header${isReferenceHome ? " premium-site-header--reference-home" : ""}`}
+      className={`sticky top-0 z-50 glass-header premium-site-header${isReferenceHome ? " premium-site-header--reference-home" : ""}${isReferencePublicPage ? " premium-site-header--reference-public" : ""}${referencePageClass}`}
       data-testid="site-header"
     >
       <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-[var(--site-header-height)] flex items-center justify-between gap-4">

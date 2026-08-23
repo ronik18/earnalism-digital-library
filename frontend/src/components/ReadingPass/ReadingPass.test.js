@@ -58,13 +58,13 @@ describe('Reading Pass responsive access UI', () => {
     expect(readerSource).toContain('goToCanonicalPage(Math.min(3, canonicalPageIndex));');
   });
 
-  test('audiobook preview and protected playback remain separate', () => {
-    expect(apiSource).toContain('/preview/manifest');
+  test('audiobooks have no public preview and begin at the protected entitlement boundary', () => {
+    expect(apiSource).not.toContain('/preview/manifest');
+    expect(apiSource).toContain('duration_seconds: 0');
     expect(apiSource).toContain("content_type: 'audio'");
     expect(apiSource).toContain('withCredentials: true');
-    expect(readerSource).toContain("code: 'AUDIO_PREVIEW_ENDED'");
     expect(readerSource).toContain("syncReadingPassAudioState('playing')");
-    expect(paywallSource).toContain('Continue audiobook');
+    expect(paywallSource).not.toContain('Replay free preview');
   });
 
   test('account exposes multi-device session revocation only with Reading Pass enabled', () => {

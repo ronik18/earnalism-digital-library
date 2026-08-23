@@ -42,7 +42,7 @@ def test_public_projection_reports_only_release_approved_audio(slug):
     assert projected is not None
     assert projected["audio_enabled"] is True
     assert projected["audiobook_enabled"] is True
-    assert projected["audio_url"] == f"/api/reader/book/{slug}/audiobook"
+    assert projected["audio_url"] == ""
     assert projected["audio_status"] == "AVAILABLE"
     assert projected["audiobook_release_gate"] == "APPROVED"
     assert projected["audio_qa_status"] == "QA_PASSED"
@@ -180,7 +180,7 @@ def test_book_detail_and_reader_manifest_agree_for_live_bengali_audio(monkeypatc
 
     assert detail["audio_enabled"] is True
     assert detail["audiobook_enabled"] is True
-    assert detail["audio_url"] == "/api/reader/book/book-2b9853ec52/audiobook"
+    assert detail["audio_url"] == ""
     assert detail["audio_status"] == "AVAILABLE"
     assert detail["audiobook_release_gate"] == "APPROVED"
     assert detail["audio_qa_status"] == "QA_PASSED"
@@ -190,4 +190,5 @@ def test_book_detail_and_reader_manifest_agree_for_live_bengali_audio(monkeypatc
     assert manifest["audio"]["enabled"] is True
     assert manifest["audio"]["release_gate"] == "APPROVED"
     assert manifest["audio"]["qa_status"] == "QA_PASSED"
-    assert manifest["audio"]["url"] == detail["audio_url"]
+    assert manifest["audio"]["url"] == ""
+    assert manifest["audio"]["assets"] == {}

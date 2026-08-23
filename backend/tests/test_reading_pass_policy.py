@@ -22,8 +22,9 @@ from backend.domain.reading_pass import (
 
 def test_preview_boundaries_are_canonical_and_fixed():
     assert [public_text_page(index) for index in range(1, 5)] == [True, True, True, False]
-    assert public_audio_position(0)
-    assert public_audio_position(179.999)
+    assert PUBLIC_AUDIO_PREVIEW_SECONDS == 0
+    assert not public_audio_position(0)
+    assert not public_audio_position(179.999)
     assert not public_audio_position(PUBLIC_AUDIO_PREVIEW_SECONDS)
     assert not public_audio_position(999)
 
@@ -118,7 +119,7 @@ def test_reading_pass_config_rejects_weak_or_reinterpreted_boundaries():
     with pytest.raises(ValueError):
         ReadingPassConfig(public_text_pages=4)
     with pytest.raises(ValueError):
-        ReadingPassConfig(public_audio_seconds=181)
+        ReadingPassConfig(public_audio_seconds=1)
     with pytest.raises(ValueError):
         ReadingPassConfig(heartbeat_seconds=10, maximum_lease_seconds=5)
 
@@ -126,13 +127,13 @@ def test_reading_pass_config_rejects_weak_or_reinterpreted_boundaries():
 def test_preview_activation_contract_requires_hashes_and_bounded_duration():
     valid = {
         "version": "sha256-" + "a" * 64,
-        "duration_seconds": 180,
+            "duration_seconds": 0,
         "sha256": "a" * 64,
         "source_sha256": "b" * 64,
         "bytes": 2_000_000,
         "store": "private_audio",
         "bucket": "audio",
-        "key": f"previews/book/{'a' * 64}/book.preview-180s.mp3",
+            "key": f"previews/book/{'a' * 64}/book.preview-disabled.mp3",
         "version_id": "immutable-object-version-1",
     }
     assert ReadingPassPreviewActivationIn(**valid).activate is False

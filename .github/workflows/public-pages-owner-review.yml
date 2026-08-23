@@ -1,0 +1,108 @@
+name: Public pages owner review
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - frontend/src/components/ReferencePublicPages.*
+      - frontend/src/pages/Home.*
+      - frontend/src/pages/Library.*
+      - frontend/src/pages/Pricing.*
+      - docs/design-references/**
+      - scripts/generate_public_pages_owner_review.py
+      - uat/contracts/public-pages-visual-contract-v2.json
+      - .github/workflows/public-pages-owner-review.yml
+
+permissions:
+  contents: read
+
+jobs:
+  owner-review:
+    if: github.event.pull_request.number == 322
+    name: Owner-review artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      npm_config_cache: ${{ github.workspace }}/.npm-cache
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+      REACT_APP_BACKEND_URL: http://127.0.0.1:18007/api
+    steps:
+      - name: Checkout pull request head
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned dependencies
+        run: |
+          npm ci
+          npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check -r requirements.txt
+          npx playwright install --with-deps chromium
+
+      - name: Materialize base source without changing the pull request checkout
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          base_dir="$RUNNER_TEMP/earnalism-owner-review-base"
+          mkdir -p "$base_dir"
+          git archive "$BASE_SHA" | tar -x -C "$base_dir"
+          mkdir -p "$base_dir/scripts"
+          cp scripts/capture_public_pages_owner_review.mjs "$base_dir/scripts/"
+          ln -s "$GITHUB_WORKSPACE/node_modules" "$base_dir/node_modules"
+          ln -s "$GITHUB_WORKSPACE/frontend/node_modules" "$base_dir/frontend/node_modules"
+
+      - name: Capture original-main public pages
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          base_dir="$RUNNER_TEMP/earnalism-owner-review-base"
+          (
+            cd "$base_dir"
+            REACT_APP_BACKEND_URL="$REACT_APP_BACKEND_URL" npm --prefix frontend run build
+            python3 -m http.server 13008 --directory frontend/build >"$RUNNER_TEMP/owner-review-base-server.log" 2>&1 &
+            server_pid=$!
+            trap 'kill "$server_pid"' EXIT
+            for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13008/ >/dev/null && break; sleep 1; done
+            UAT_BASE_URL=http://127.0.0.1:13008 OWNER_REVIEW_CAPTURE_STRICT=false node scripts/capture_public_pages_owner_review.mjs
+          )
+          mkdir -p uat/evidence/actual-redesign/before
+          cp "$base_dir"/uat/evidence/actual-redesign/after/*.png uat/evidence/actual-redesign/before/
+
+      - name: Capture current pull-request public pages
+        run: |
+          npm --prefix frontend run build
+          python3 -m http.server 13007 --directory frontend/build >"$RUNNER_TEMP/owner-review-head-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13007/ >/dev/null && break; sleep 1; done
+          UAT_BASE_URL=http://127.0.0.1:13007 OWNER_REVIEW_CAPTURE_STRICT=false node scripts/capture_public_pages_owner_review.mjs
+          mkdir -p uat/evidence/actual-redesign/convergence-v2/current
+          cp uat/evidence/actual-redesign/after/*.png uat/evidence/actual-redesign/convergence-v2/current/
+          node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('uat/evidence/actual-redesign/after/capture.json','utf8')); const items=Array.isArray(data) ? data : data.states; if (!Array.isArray(items)) throw new Error('owner-review capture must contain an array of states'); fs.writeFileSync('uat/evidence/actual-redesign/convergence-v2/current/capture.json',JSON.stringify(items,null,2)+'\\n');"
+
+      - name: Generate labeled review package
+        run: |
+          python3 scripts/audit_public_page_reference_regions.py --captures uat/evidence/actual-redesign/convergence-v2/current/capture.json --output uat/evidence/actual-redesign/owner-review-final/reference-region-results.json || test -f uat/evidence/actual-redesign/owner-review-final/reference-region-results.json
+          python3 scripts/generate_public_pages_owner_review.py
+
+      - name: Upload owner-review artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr-322-owner-review-${{ github.event.pull_request.head.sha }}
+          path: uat/evidence/actual-redesign/owner-review-final/**
+          if-no-files-found: error

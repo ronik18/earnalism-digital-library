@@ -1,0 +1,27 @@
+{
+  "schema_version": "earnalism-public-pages-visual-contract-v2",
+  "supersedes_for_new_runs": "public-pages-visual-lock.json v1 full-viewport comparison only",
+  "historical_v1_status": "HISTORICAL_INVALID_FOR_INCOMPLETE_COMPOSITE_REFERENCES",
+  "capability_matrix": "docs/design-references/public-pages-reference-capability.json",
+  "reference_region_fidelity_gate": {
+    "uniform_scale_transform_required": true,
+    "key_geometry_tolerance_px": 2,
+    "font_size_tolerance_px": 1,
+    "spacing_tolerance_px": 2,
+    "requires": ["required region exists", "correct ordering", "matching background and surface role", "matching border and radius role", "matching button card and filter geometry", "no structural mask", "no missing required component", "no unexpected structural component"],
+    "screenshot_diff_ratio": "reported_only_when_source_and_capture_coverage_differ",
+    "dynamic_masks": ["cover artwork", "book title and author", "actual prices", "live release labels"],
+    "maximum_total_mask_coverage_ratio": 0.2,
+    "maximum_single_structural_region_coverage_ratio": 0.25
+  },
+  "full_viewport_responsive_gate": {
+    "viewports": [[320, 568], [360, 800], [390, 844], [430, 932], [768, 1024], [1024, 768], [1280, 800], [1440, 1000], [1920, 1080]],
+    "requires": ["horizontal overflow=0", "clipped required content=0", "missing required section=0", "inaccessible offscreen CTA=0", "touch controls at least 44x44", "correct keyboard order", "visible focus", "reduced motion support", "console errors=0", "page errors=0", "hydration errors=0", "release truth preserved"],
+    "mobile_full_pixel_match": "NOT_APPLICABLE_REFERENCE_INCOMPLETE"
+  },
+  "owner_visual_approval_gate": {
+    "required_for": ["responsive extrapolated regions", "complete mobile viewport", "dynamic catalog composition", "real configured Commerce offers", "final aesthetic judgement"],
+    "approval_phrase": "APPROVE_PUBLIC_VISUALS",
+    "status_before_phrase": "OWNER_VISUAL_APPROVAL_REQUIRED"
+  }
+}

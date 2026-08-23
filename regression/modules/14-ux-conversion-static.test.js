@@ -68,6 +68,7 @@ describe("UX conversion static signals", () => {
   const selectedListeningRail = read("frontend/src/components/SelectedListeningRail.jsx");
   const premiumHero = read("frontend/src/components/PremiumHero.jsx");
   const premiumHeroStyles = read("frontend/src/components/PremiumHero.css");
+  const referencePublicPages = read("frontend/src/components/ReferencePublicPages.jsx");
   const heroCarousel = read("frontend/src/lib/heroCarousel.js");
   const regressionWorkflow = read(".github/workflows/regression.yml");
   const prRegressionRunner = read("scripts/run_pr_regression.sh");
@@ -217,34 +218,27 @@ describe("UX conversion static signals", () => {
     expect(home).toContain("fetchHomeHero");
     expect(homeSurfaces).toContain('fetchPublicSurface("/home/hero"');
     expect(homeSurfaces).toContain('fetchPublicSurface(`/home/listening?limit=${boundedLimit}`');
-    expect(home).toContain("<PremiumHero");
-    expect(premiumHero).toContain('data-testid="hero-cta-library"');
-    expect(premiumHero).toContain('data-testid="hero-cta-audiobooks"');
-    expect(premiumHero).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
-    expect(premiumHero).toContain("Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.");
-    expect(premiumHero).toContain("Browse Library");
-    expect(premiumHero).not.toContain(">Start Reading</Link>");
-    expect(premiumHero).toContain("Approved Audiobooks");
-    expect(premiumHero).not.toContain(">Explore Audiobooks</Link>");
-    expect(premiumHero).toContain("/library?availability=approved-audiobook");
+    expect(home).toContain("<ReferenceHomeSurface");
+    expect(referencePublicPages).toContain("Enter the Library");
+    expect(referencePublicPages).toContain("Enter the Listening Room");
+    expect(referencePublicPages).toContain("Timeless Bengali and English classics.");
+    expect(referencePublicPages).toContain("A calm reading room for stories that stay with you.");
+    expect(referencePublicPages).not.toContain(">Start Reading</Link>");
+    expect(referencePublicPages).not.toContain(">Explore Audiobooks</Link>");
+    expect(referencePublicPages).toContain("/library?availability=approved-audiobook");
     expect(homeCurationClient).toContain('/home/curated');
     expect(homeCurationClient).toContain('audiobookUrl === `/api/reader/book/${slug}/audiobook`');
     expect(premiumHero).not.toMatch(/No unapproved audiobook controls|Audio gated by evidence|QA_PASSED|APPROVED/);
-    expect(home).toContain("<HomeShelfArchitecture");
-    expect(homeShelfArchitecture).toContain("<CuratedShelfCollage");
-    expect(curatedShelfCollage).toContain('data-testid="curated-shelf-collage"');
-    expect(curatedShelfCollage).toContain("A shelf for every kind of curiosity.");
-    expect(selectedListeningRail).toContain("Selected Listening");
-    expect(shelfTwoSlideshow).toContain("Request Update");
-    expect(shelfTwoSlideshow).toContain("/contact?interest=");
-    expect(shelfTwoSlideshow).not.toContain("Notify Me");
-    expect(home).toContain('data-testid="reading-time-library-path"');
-    expect(home).toContain("Stay with the story for as long as it holds you.");
-    expect(home).toContain("without a subscription or autorenewal");
-    expect(home).toContain("View Reading Passes");
-    expect(home).toContain("Meet the story");
-    expect(home).toContain("Choose your time");
-    expect(home).toContain("Carry it with you");
+    expect(referencePublicPages).toContain('data-testid="home-journey-shelf"');
+    expect(referencePublicPages).toContain("Find the language, voice, and story that feels like home.");
+    expect(referencePublicPages).toContain("Stories in voice, released with care.");
+    expect(referencePublicPages).toContain("Titles without approval show no listening action.");
+    expect(referencePublicPages).toContain("Stay with a story for as long as it holds you.");
+    expect(referencePublicPages).toContain("No subscription or autorenewal");
+    expect(referencePublicPages).toContain("View Reading Passes");
+    expect(referencePublicPages).toContain("Browse the complete library");
+    expect(referencePublicPages).toContain("Add time when you want to continue");
+    expect(referencePublicPages).toContain("Your reading stays private");
     expect(home).not.toContain('data-testid="dracula-journey-map"');
     expect(home).not.toContain('data-testid="home-live-dracula"');
     expect(home).not.toContain('data-testid="controlled-carousel-section"');
@@ -443,7 +437,7 @@ describe("UX conversion static signals", () => {
   test("reading-only revenue launch decision keeps Dracula live and audiobook blocked", () => {
     expect(launchNowReadingOnlyDecision).toContain("GO_READING_ONLY_PRODUCTION_DEPLOY_READY");
     expect(launchNowReadingOnlyDecision).toContain("Dracula core reading product only");
-    expect(launchNowReadingOnlyDecision).toContain("Chapter 1 free preview");
+    expect(launchNowReadingOnlyDecision).toContain("first 3 canonical pages preview");
     expect(launchNowReadingOnlyDecision).toContain("reading-time wallet/pass model");
     expect(launchNowReadingOnlyDecision).toContain("GO_DRACULA_CORE_READING_ONLY");
     expect(launchNowReadingOnlyDecision).toContain("PAYMENT_REVENUE_10X_CONFIDENCE_REPORT.md");
@@ -1465,7 +1459,7 @@ describe("UX conversion static signals", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
     expect(login).toContain("Sign in after choosing a reading pass to return to the reading-time page");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("Chapter 1 is free. Reading time is added only when you choose a pass");
+    expect(signup).toContain("Read the first 3 pages free. Listening requires an active Reading Pass. Reading time is added only when you choose a pass");
     expect(account).toContain('data-testid="account-wallet-explainer"');
     expect(account).toContain("Use this wallet to continue Dracula after the free preview.");
     expect(account).toContain("Continue Dracula");
@@ -1645,7 +1639,7 @@ describe("UX conversion static signals", () => {
     [
       "The Earnalism Digital Library",
       "Step into the classics",
-      "Chapter 1 is free",
+      "Read the first 3 pages free. Listening requires an active Reading Pass.",
       "27 chapters prepared for focused reading",
       "Audio is intentionally disabled until QA passes",
       "Bengali Gothic is moving through the rights-safe pipeline",
@@ -1653,8 +1647,13 @@ describe("UX conversion static signals", () => {
       "Return to reading",
     ].forEach((requiredOverlay) => {
       expect(brandSiteTour).toContain(requiredOverlay);
-      expect(siteTourIndex).toContain(requiredOverlay);
     });
+
+    // The index is immutable historical evidence. It records the copy that was
+    // present when that artifact was generated, not the current product copy.
+    expect(siteTourIndex).toContain("Generated at:");
+    expect(siteTourIndex).toContain("Git SHA:");
+    expect(siteTourIndex).toContain("Overlay status: `PASS`");
 
     expect(siteTourVoiceover).toContain("Status: SCRIPT_ONLY");
     expect(siteTourVoiceover).toContain("No AI voice, TTS, audiobook generation");
@@ -1736,7 +1735,7 @@ describe("UX conversion static signals", () => {
     }
 
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("Reader-ready classics stay visible; audiobooks appear only after quality gates pass.");
+    expect(homeHtml).toContain("Reader-ready classics stay visible; approved audiobooks require an active Reading Pass.");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");

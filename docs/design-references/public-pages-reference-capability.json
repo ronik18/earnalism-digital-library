@@ -1,0 +1,82 @@
+{
+  "schema_version": "earnalism-public-pages-reference-capability-v1",
+  "purpose": "Describe what the immutable composite boards can and cannot certify without stretching, cropping away structure, or inventing a full mobile viewport.",
+  "historical_full_viewport_contract": "HISTORICAL_INVALID_FOR_INCOMPLETE_COMPOSITE_REFERENCES",
+  "states": {
+    "home-desktop": {
+      "source_file": "responsive-reference-board.png",
+      "source_sha256": "c19d324c74e0ac4ea5f474f3353cbfe00aad14509a4166a61bf4a581ca13d4e6",
+      "source_crop": {"x": 10, "y": 18, "width": 538, "height": 746},
+      "native_crop": {"width": 538, "height": 746},
+      "complete_viewport_reference": false,
+      "comparable_regions": ["header", "hero copy", "hero image", "CTAs", "feature strip", "title shelf", "Reading Pass block", "trust section"],
+      "unavailable_regions": ["full 1440x1000 viewport pixel surface", "below-fold continuation outside the composite panel"],
+      "permitted_visual_assertions": ["region ordering", "uniform-scale geometry", "surface roles", "card and button geometry", "type scale", "spacing"],
+      "prohibited_assertions": ["stretched full-viewport pixel ratio", "unmasked dynamic-content equality"],
+      "responsive_extrapolation_required": false
+    },
+    "library-desktop": {
+      "source_file": "responsive-reference-board.png",
+      "source_sha256": "c19d324c74e0ac4ea5f474f3353cbfe00aad14509a4166a61bf4a581ca13d4e6",
+      "source_crop": {"x": 561, "y": 18, "width": 517, "height": 746},
+      "native_crop": {"width": 517, "height": 746},
+      "complete_viewport_reference": false,
+      "comparable_regions": ["header", "title/search/sort", "filter sidebar", "Live Now", "Coming Soon", "Audiobooks", "Reading Pass support card", "cover cards"],
+      "unavailable_regions": ["full 1440x1000 viewport pixel surface", "data-specific cover and metadata content"],
+      "permitted_visual_assertions": ["region ordering", "uniform-scale geometry", "surface roles", "filter and card geometry", "type scale", "spacing"],
+      "prohibited_assertions": ["stretched full-viewport pixel ratio", "dynamic catalog-content equality"],
+      "responsive_extrapolation_required": false
+    },
+    "commerce-desktop": {
+      "source_file": "commerce-desktop.png",
+      "source_sha256": "095d0c30b4952cc93273fcfd853ab094595acc597c9154c73144295fb0af748d",
+      "source_crop": {"x": 0, "y": 0, "width": 456, "height": 760},
+      "native_crop": {"width": 456, "height": 760},
+      "complete_viewport_reference": false,
+      "comparable_regions": ["header", "hero", "offer heading and tabs", "offer-card grid", "institutional card", "publisher card", "trust strip", "footer CTA"],
+      "unavailable_regions": ["full 1440x1000 viewport pixel surface", "real offer price and validity content", "gift area when unavailable"],
+      "permitted_visual_assertions": ["region ordering", "uniform-scale geometry", "dark-to-ivory transition", "offer-card and CTA geometry", "type scale", "spacing"],
+      "prohibited_assertions": ["stretched full-viewport pixel ratio", "fabricated offer-data equality"],
+      "responsive_extrapolation_required": false
+    },
+    "home-mobile": {
+      "source_file": "responsive-reference-board.png",
+      "source_sha256": "c19d324c74e0ac4ea5f474f3353cbfe00aad14509a4166a61bf4a581ca13d4e6",
+      "source_crop": {"x": 35, "y": 796, "width": 187, "height": 228},
+      "native_crop": {"width": 187, "height": 228},
+      "complete_viewport_reference": false,
+      "full_mobile_pixel_match_status": "NOT_APPLICABLE_REFERENCE_INCOMPLETE",
+      "comparable_regions": ["compact header", "hero copy", "two CTAs", "feature strip", "first shelf start"],
+      "unavailable_regions": ["complete 390x844 viewport", "below-panel continuation"],
+      "permitted_visual_assertions": ["native-proportion panel geometry", "surface roles", "type hierarchy", "CTA presence"],
+      "prohibited_assertions": ["stretched 390x844 pixel ratio", "full-viewport pixel certification"],
+      "responsive_extrapolation_required": true
+    },
+    "library-mobile": {
+      "source_file": "responsive-reference-board.png",
+      "source_sha256": "c19d324c74e0ac4ea5f474f3353cbfe00aad14509a4166a61bf4a581ca13d4e6",
+      "source_crop": {"x": 260, "y": 796, "width": 188, "height": 228},
+      "native_crop": {"width": 188, "height": 228},
+      "complete_viewport_reference": false,
+      "full_mobile_pixel_match_status": "NOT_APPLICABLE_REFERENCE_INCOMPLETE",
+      "comparable_regions": ["compact header", "title", "search", "sort", "filter control", "first shelf start"],
+      "unavailable_regions": ["complete 390x844 viewport", "drawer interior"],
+      "permitted_visual_assertions": ["native-proportion panel geometry", "surface roles", "control hierarchy", "filter access"],
+      "prohibited_assertions": ["stretched 390x844 pixel ratio", "full-viewport pixel certification"],
+      "responsive_extrapolation_required": true
+    },
+    "commerce-mobile": {
+      "source_file": "responsive-reference-board.png",
+      "source_sha256": "c19d324c74e0ac4ea5f474f3353cbfe00aad14509a4166a61bf4a581ca13d4e6",
+      "source_crop": {"x": 790, "y": 796, "width": 186, "height": 228},
+      "native_crop": {"width": 186, "height": 228},
+      "complete_viewport_reference": false,
+      "full_mobile_pixel_match_status": "NOT_APPLICABLE_REFERENCE_INCOMPLETE",
+      "comparable_regions": ["compact header", "hero", "offer heading", "first offer card"],
+      "unavailable_regions": ["complete 390x844 viewport", "full offer stack", "pathway and trust continuation"],
+      "permitted_visual_assertions": ["native-proportion panel geometry", "surface roles", "type hierarchy", "offer-card geometry"],
+      "prohibited_assertions": ["stretched 390x844 pixel ratio", "full-viewport pixel certification"],
+      "responsive_extrapolation_required": true
+    }
+  }
+}

@@ -15,6 +15,10 @@ if str(BACKEND_DIR) not in sys.path:
 def _server(monkeypatch):
     monkeypatch.setenv("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
     monkeypatch.setenv("JWT_SECRET", "test-secret")
+    try:
+        asyncio.get_event_loop()
+    except RuntimeError:
+        asyncio.set_event_loop(asyncio.new_event_loop())
     return importlib.import_module("server")
 
 
@@ -271,7 +275,7 @@ def _new_title_canary_book(server):
     return book, package, hidden, salt
 
 
-def test_reader_manifest_rewrites_b2_mp3_to_api_proxy(monkeypatch):
+def test_reader_manifest_hides_b2_audio_routes_from_public_metadata(monkeypatch):
     server = _server(monkeypatch)
     monkeypatch.setattr(server, "can_expose_audio", lambda book: True)
     monkeypatch.setattr(server, "B2_S3_ENDPOINT", "https://s3.us-west-004.backblazeb2.com")
@@ -298,10 +302,8 @@ def test_reader_manifest_rewrites_b2_mp3_to_api_proxy(monkeypatch):
     audio = server._reader_manifest_audio(book, "dracula")
 
     assert audio["provider"] == "b2"
-    assert audio["assets"]["mp3"] == "/api/reader/book/dracula/audiobook"
-    assert audio["assets"]["timestamps"] == "/api/reader/book/dracula/audiobook/timestamps"
-    assert audio["assets"]["vtt"].startswith("https://res.cloudinary.com/")
-    assert audio["url"] == "/api/reader/book/dracula/audiobook"
+    assert audio["assets"] == {}
+    assert audio["url"] == ""
     assert audio["size"] == 120_000_000
     assert audio["duration_ms"] == 1234
 
@@ -344,7 +346,7 @@ def test_package_manifest_projects_only_same_origin_release_gated_urls(monkeypat
     assert "source_sha256" not in manifest
     assert "release_evidence_version" not in manifest
     assert "backblazeb2.com" not in json.dumps(manifest)
-    assert audio["assets"]["manifest"] == "/api/reader/book/the-open-window/audiobook/manifest"
+    assert audio["assets"] == {}
     assert audio["package_version"] == book["audiobook_package"]["package_version"]
 
 

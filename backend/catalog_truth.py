@@ -1078,7 +1078,9 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
             "public_route": f"/book/{slug}" if live else "",
             "reader_url": f"/reader/{slug}" if live else "",
             "preview_url": f"/reader/{slug}" if preview else "",
-            "audio_url": f"/api/reader/book/{slug}/audiobook" if audio else "",
+            # Public catalog payloads may describe an approved audiobook but
+            # never disclose a playable route or provider/storage location.
+            "audio_url": "",
             "audio_status": audio_status,
             "audiobook_release_gate": "APPROVED" if audio else "",
             "audio_qa_status": audio_release_qa_status(book) if audio else "",

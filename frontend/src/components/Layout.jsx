@@ -32,18 +32,10 @@ export default function Layout() {
       return undefined;
     }
 
-    if (hasCompletedFirstVisitTour()) {
-      setTourReady(false);
-      return undefined;
-    }
-
-    const prepareTour = () => setTourReady(true);
-    if (typeof window.requestIdleCallback === "function") {
-      const idle = window.requestIdleCallback(prepareTour, { timeout: 6500 });
-      return () => window.cancelIdleCallback(idle);
-    }
-    const timer = window.setTimeout(prepareTour, 6500);
-    return () => window.clearTimeout(timer);
+    // The public reference surfaces must never be obstructed by an automatic
+    // tour. A tour remains available only through the deliberate ?tour=1 path.
+    setTourReady(false);
+    return undefined;
   }, [forcedTour, location.pathname]);
 
   return (

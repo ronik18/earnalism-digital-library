@@ -28,7 +28,7 @@ def test_social_brand_config_is_dracula_first():
     assert brand["live_title"]["slug"] == "dracula"
     assert brand["live_title"]["title"] == "Dracula"
     assert brand["live_title"]["audio_status"] == "DISABLED"
-    assert "Chapter 1 is free" in brand["approved_claims"]
+    assert "Read the first 3 pages free. Listening requires an active Reading Pass." in brand["approved_claims"]
     assert "Bengali Gothic coming through rights-safe pipeline" in brand["approved_claims"]
 
 

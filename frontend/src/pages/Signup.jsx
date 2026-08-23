@@ -50,7 +50,7 @@ export default function Signup() {
           Create a quiet account for Dracula, your reading-time wallet, and future classics that pass the rights-safe pipeline.
         </p>
         <div className="mt-5 rounded-md border border-brand-soft bg-white/55 px-4 py-3 text-xs leading-relaxed text-charcoal-soft" data-testid="signup-wallet-note">
-          Chapter 1 is free. Reading time is added only when you choose a pass, and there is no subscription or autorenewal.
+          Read the first 3 pages free. Listening requires an active Reading Pass. Reading time is added only when you choose a pass, and there is no subscription or autorenewal.
         </div>
 
         <form onSubmit={submit} className="mt-8 space-y-4" data-testid="user-signup-form" aria-describedby="signup-wallet-help">

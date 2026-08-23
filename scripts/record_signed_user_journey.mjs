@@ -10,10 +10,15 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const ROOT = path.resolve(path.dirname(__filename), "..");
 const DEFAULT_BASE_URL = "https://theearnalism.com";
-const BASE_URL = normalizeBaseUrl(process.env.EARNALISM_BASE_URL || DEFAULT_BASE_URL);
 const MODE = normalizeMode(process.env.EARNALISM_JOURNEY_MODE || process.argv.find((arg) => arg.startsWith("--mode="))?.split("=")[1] || "record");
 const IS_SMOKE = MODE === "smoke";
 const IS_REGRESSION_REPORT = MODE === "regression-report";
+const BASE_URL = normalizeBaseUrl(
+  process.env.EARNALISM_BASE_URL
+  || process.env.REGRESSION_FRONTEND_URL
+  || process.env.UAT_BASE_URL
+  || (IS_SMOKE ? "http://127.0.0.1:3000" : DEFAULT_BASE_URL),
+);
 const HEADLESS = IS_SMOKE ? process.env.EARNALISM_JOURNEY_HEADLESS !== "false" : process.env.EARNALISM_JOURNEY_HEADLESS === "true";
 const INCLUDE_ADMIN = process.env.EARNALISM_JOURNEY_INCLUDE_ADMIN !== "false";
 const SLOW_MO_MS = Number(process.env.EARNALISM_JOURNEY_SLOW_MO_MS || 140);
@@ -42,7 +47,7 @@ const FORBIDDEN_PUBLIC_PATTERNS = [
 const JOURNEY_ROUTES = [
   { id: "home_signed_in", path: "/", objective: "Initial signed-in homepage and Golden Hour hero" },
   { id: "home_forced_tour", path: "/?tour=1", objective: "First-time site tour forced by query" },
-  { id: "dracula_reader_free_chapter", path: "/reader/dracula", objective: "Read Chapter 1 free and reader comfort" },
+  { id: "dracula_reader_public_pages", path: "/reader/dracula", objective: "Read the first 3 pages free and reader comfort" },
   { id: "dracula_book_detail", path: "/book/dracula", objective: "Dracula book page, covers, chapters, CTAs" },
   { id: "pricing", path: "/pricing", objective: "Reading-time pass path without live payment execution" },
   { id: "library", path: "/library", objective: "Approved Dracula release and pipeline-only books" },
@@ -57,9 +62,9 @@ const CTA_CHECKS = [
   { id: "browse_bengali_click", sourcePath: "/", label: "Browse Bengali classics", expectedPath: "/library", expectedSearch: "language=bn&availability=reader-ready" },
   { id: "browse_english_click", sourcePath: "/", label: "Browse English classics", expectedPath: "/library", expectedSearch: "language=en" },
   { id: "approved_audiobooks_click", sourcePath: "/", label: "Explore approved audiobooks", expectedPath: "/library", expectedSearch: "availability=approved-audiobook" },
-  { id: "book_free_chapter_click", sourcePath: "/book/dracula", label: "Read Chapter 1 Free", expectedPath: "/reader/dracula" },
+  { id: "book_public_pages_click", sourcePath: "/book/dracula", label: "Read the first 3 pages free", expectedPath: "/reader/dracula" },
   { id: "book_reading_passes_click", sourcePath: "/book/dracula", label: "View Reading Passes", expectedPath: "/pricing" },
-  { id: "pricing_free_chapter_click", sourcePath: "/pricing", label: "Read Chapter 1 Free", expectedPath: "/reader/dracula" },
+  { id: "pricing_public_pages_click", sourcePath: "/pricing", label: "Read the first 3 pages free", expectedPath: "/reader/dracula" },
 ];
 
 const results = {
@@ -861,13 +866,16 @@ async function installSmokeApiMocks(context) {
       await route.fulfill(json({ book, chapters: [chapter, book.chapters[1]], audio: { enabled: false } }));
       return;
     }
-    if (pathname === "/payments/packs") {
-      await route.fulfill(json([
+    if (pathname === "/payments/packs" || pathname === "/payments/offers") {
+      const packs = [
         { id: "30m", label: "The First Chapter", minutes: 30, price_inr: 49, amount_paise: 4900 },
         { id: "1h", label: "The Quiet Hour", minutes: 60, price_inr: 89, amount_paise: 8900 },
         { id: "3h", label: "The Deep Reading Pass", minutes: 180, price_inr: 239, amount_paise: 23900 },
         { id: "10h", label: "The Reader’s Reserve", minutes: 600, price_inr: 499, amount_paise: 49900 },
-      ]));
+      ];
+      await route.fulfill(json(pathname === "/payments/offers"
+        ? { packs, config: { configured: false, mode: "test", key_id: "" } }
+        : packs));
       return;
     }
     if (pathname === "/payments/config") {
