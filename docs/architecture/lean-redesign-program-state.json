@@ -61,5 +61,27 @@
     "chromium_user_journey": "12 passed",
     "regression_ci": "14 suites passed, 124 tests passed"
   },
-  "next_gate": "Open the focused Phase 2 redesign pull request for review. Destructive cleanup remains deferred until the earliest review date and explicit candidate-by-candidate approval."
+  "phase2_publication": {
+    "pull_request": 318,
+    "tested_head": "5f77510d485aabb7cd8239cdc182586c6c25f808",
+    "merge_commit": "b41f6da90adf1f5f51b92263769a8a885fafba28",
+    "main_workflow_id": 32626423516,
+    "workflow_result": "passed",
+    "initial_live_verification": "CORS failure reproduced and corrected in focused follow-up PR 319",
+    "production_canary_result": "passed",
+    "rollback_commit": "10cdefee46ebeee10be5a528eed8c1509838afbc"
+  },
+  "phase2_cors_followup": {
+    "pull_request": 319,
+    "merge_commit": "2887aa9a6cf2cdfe77216d8bb42239c21e35ec2f",
+    "main_workflow_id": 32627849174,
+    "workflow_result": "passed",
+    "live_verification": "passed"
+  },
+  "reader_listener_about_reference": {
+    "pull_request": 320,
+    "merge_commit": "0d3b87aed23667135172176acfb77ac973b060c0",
+    "status": "merged_immutable_reference_only"
+  },
+  "next_gate": "Reader, Listener, and About implementation is eligible to begin from the merged immutable reference prerequisite. Destructive cleanup remains deferred until the earliest review date and explicit candidate-by-candidate approval."
 }
