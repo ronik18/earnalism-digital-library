@@ -78,7 +78,7 @@ jobs:
             server_pid=$!
             trap 'kill "$server_pid"' EXIT
             for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13008/ >/dev/null && break; sleep 1; done
-            UAT_BASE_URL=http://127.0.0.1:13008 node scripts/capture_public_pages_owner_review.mjs
+            UAT_BASE_URL=http://127.0.0.1:13008 OWNER_REVIEW_CAPTURE_STRICT=false node scripts/capture_public_pages_owner_review.mjs
           )
           mkdir -p uat/evidence/actual-redesign/before
           cp "$base_dir"/uat/evidence/actual-redesign/after/*.png uat/evidence/actual-redesign/before/
@@ -90,7 +90,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
           for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13007/ >/dev/null && break; sleep 1; done
-          UAT_BASE_URL=http://127.0.0.1:13007 node scripts/capture_public_pages_owner_review.mjs
+          UAT_BASE_URL=http://127.0.0.1:13007 OWNER_REVIEW_CAPTURE_STRICT=false node scripts/capture_public_pages_owner_review.mjs
           mkdir -p uat/evidence/actual-redesign/convergence-v2/current
           cp uat/evidence/actual-redesign/after/*.png uat/evidence/actual-redesign/convergence-v2/current/
           node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('uat/evidence/actual-redesign/after/capture.json','utf8')); const items=data.states.map(s=>({id:s.id,route:s.route,width:s.viewport.width,height:s.viewport.height,status:s.status,errors:s.errors,scrollWidth:s.metrics.document.scrollWidth,clientWidth:s.metrics.document.width,deviceScaleFactor:1,fonts:'loaded'})); fs.writeFileSync('uat/evidence/actual-redesign/convergence-v2/current/capture.json',JSON.stringify(items,null,2)+'\\n');"

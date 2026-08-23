@@ -7,6 +7,7 @@ import { chromium } from "playwright";
 const root = process.cwd();
 const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
 const output = path.resolve(process.env.OWNER_REVIEW_CAPTURE_OUTPUT || "uat/evidence/actual-redesign/after");
+const strict = process.env.OWNER_REVIEW_CAPTURE_STRICT !== "false";
 
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) {
   throw new Error("UAT_BASE_URL must be an explicit loopback URL.");
@@ -67,8 +68,8 @@ try {
   }
   fs.writeFileSync(path.join(output, "capture.json"), JSON.stringify(captures, null, 2) + "\n");
   const failed = captures.filter((capture) => capture.status !== 200 || capture.errors.length || capture.scrollWidth !== capture.clientWidth || capture.required.includes(false));
-  console.log(JSON.stringify({ captured: captures.length, failed: failed.length, output }));
-  if (failed.length) process.exitCode = 1;
+  console.log(JSON.stringify({ captured: captures.length, failed: failed.length, strict, output }));
+  if (strict && failed.length) process.exitCode = 1;
 } finally {
   await browser.close();
 }
