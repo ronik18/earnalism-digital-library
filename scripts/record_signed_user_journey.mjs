@@ -10,10 +10,15 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const ROOT = path.resolve(path.dirname(__filename), "..");
 const DEFAULT_BASE_URL = "https://theearnalism.com";
-const BASE_URL = normalizeBaseUrl(process.env.EARNALISM_BASE_URL || DEFAULT_BASE_URL);
 const MODE = normalizeMode(process.env.EARNALISM_JOURNEY_MODE || process.argv.find((arg) => arg.startsWith("--mode="))?.split("=")[1] || "record");
 const IS_SMOKE = MODE === "smoke";
 const IS_REGRESSION_REPORT = MODE === "regression-report";
+const BASE_URL = normalizeBaseUrl(
+  process.env.EARNALISM_BASE_URL
+  || process.env.REGRESSION_FRONTEND_URL
+  || process.env.UAT_BASE_URL
+  || (IS_SMOKE ? "http://127.0.0.1:3000" : DEFAULT_BASE_URL),
+);
 const HEADLESS = IS_SMOKE ? process.env.EARNALISM_JOURNEY_HEADLESS !== "false" : process.env.EARNALISM_JOURNEY_HEADLESS === "true";
 const INCLUDE_ADMIN = process.env.EARNALISM_JOURNEY_INCLUDE_ADMIN !== "false";
 const SLOW_MO_MS = Number(process.env.EARNALISM_JOURNEY_SLOW_MO_MS || 140);
