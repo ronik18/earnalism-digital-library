@@ -11108,21 +11108,38 @@ async def admin_cache_status(_=Depends(require_admin)):
 
 app.include_router(api)
 
-cors_origins = set()
-frontend_url = os.getenv("FRONTEND_URL", "").strip()
-if frontend_url:
-    cors_origins.add(frontend_url)
-elif ENVIRONMENT != "production":
-    cors_origins.add("http://localhost:3000")
-if ENVIRONMENT != "production":
-    cors_origins.update({"http://localhost:3000", "http://127.0.0.1:3000"})
-cors_origins.update(
-    origin.strip()
-    for origin in os.getenv("CORS_ORIGINS", "").split(",")
-    if origin.strip()
+CANONICAL_PRODUCTION_CORS_ORIGINS = frozenset(
+    {"https://theearnalism.com", "https://www.theearnalism.com"}
 )
-if ENVIRONMENT == "production" and not cors_origins:
-    logger.warning("No CORS origins configured for production")
+
+
+def resolve_cors_origins(
+    environment: str,
+    frontend_url: str = "",
+    configured_origins: str = "",
+) -> set[str]:
+    """Build a closed CORS allowlist for the configured deployment."""
+    origins = {
+        origin.strip().rstrip("/")
+        for origin in configured_origins.split(",")
+        if origin.strip()
+    }
+    if frontend_url.strip():
+        origins.add(frontend_url.strip().rstrip("/"))
+    if environment == "production":
+        # The public web origins are an explicit allowlist, not a wildcard or
+        # an environment-dependent deployment assumption.
+        origins.update(CANONICAL_PRODUCTION_CORS_ORIGINS)
+    else:
+        origins.update({"http://localhost:3000", "http://127.0.0.1:3000"})
+    return origins
+
+
+cors_origins = resolve_cors_origins(
+    ENVIRONMENT,
+    os.getenv("FRONTEND_URL", ""),
+    os.getenv("CORS_ORIGINS", ""),
+)
 
 app.add_middleware(GZipMiddleware, minimum_size=1024)
 app.add_middleware(

@@ -11,6 +11,15 @@ os.environ.setdefault("JWT_SECRET", "cors-cache-header-test-secret")
 from backend import server
 
 
+def test_production_cors_has_the_canonical_public_web_origins_without_env_configuration():
+    origins = server.resolve_cors_origins("production")
+
+    assert origins == {
+        "https://theearnalism.com",
+        "https://www.theearnalism.com",
+    }
+
+
 def test_cors_allows_frontend_cache_busting_headers():
     cors = next(middleware for middleware in server.app.user_middleware if middleware.cls is CORSMiddleware)
     allowed_headers = {header.lower() for header in cors.kwargs["allow_headers"]}
