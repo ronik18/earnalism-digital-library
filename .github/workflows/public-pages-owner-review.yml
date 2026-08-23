@@ -93,7 +93,7 @@ jobs:
           UAT_BASE_URL=http://127.0.0.1:13007 OWNER_REVIEW_CAPTURE_STRICT=false node scripts/capture_public_pages_owner_review.mjs
           mkdir -p uat/evidence/actual-redesign/convergence-v2/current
           cp uat/evidence/actual-redesign/after/*.png uat/evidence/actual-redesign/convergence-v2/current/
-          node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('uat/evidence/actual-redesign/after/capture.json','utf8')); const items=data.states.map(s=>({id:s.id,route:s.route,width:s.viewport.width,height:s.viewport.height,status:s.status,errors:s.errors,scrollWidth:s.metrics.document.scrollWidth,clientWidth:s.metrics.document.width,deviceScaleFactor:1,fonts:'loaded'})); fs.writeFileSync('uat/evidence/actual-redesign/convergence-v2/current/capture.json',JSON.stringify(items,null,2)+'\\n');"
+          node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('uat/evidence/actual-redesign/after/capture.json','utf8')); const items=Array.isArray(data) ? data : data.states; if (!Array.isArray(items)) throw new Error('owner-review capture must contain an array of states'); fs.writeFileSync('uat/evidence/actual-redesign/convergence-v2/current/capture.json',JSON.stringify(items,null,2)+'\\n');"
 
       - name: Generate labeled review package
         run: |
