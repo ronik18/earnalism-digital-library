@@ -15,9 +15,9 @@ fs.mkdirSync(path.dirname(output), { recursive: true });
 const summary = { tested: 0, passed: 0, failed: 0, missing: 0, na: 0, findings: [] };
 
 const required = [
-  { route: '/', selector: '[data-testid="home-cta-bengali-classics"]', kind: 'text' },
-  { route: '/pricing', selector: '[data-testid="pricing-page"] h1', kind: 'text' },
-  { route: '/pricing', selector: '[data-testid="pricing-wallet-explainer"]', kind: 'text' },
+  { route: '/', selector: '[data-testid="home-reference-primary-cta"]', kind: 'text' },
+  { route: '/pricing', selector: '[data-testid="pricing-reference-surface"] h1', kind: 'text' },
+  { route: '/pricing', selector: '[data-testid="pricing-reference-wallet-explainer"]', kind: 'text' },
   { route: '/reader/dracula', selector: '.reader-topbar', kind: 'boundary' },
   { route: '/reader/dracula', selector: '.reader-topbar__center strong', kind: 'text' },
   { route: '/reader/dracula', selector: '.reader-topbar__center span', kind: 'text' },
@@ -35,11 +35,13 @@ try {
     const checkedRoutes = new Set();
     for (const item of required) {
       if (!checkedRoutes.has(item.route)) {
-        const response = await page.goto(`${baseUrl}${item.route}`, { waitUntil: 'networkidle' });
+        const response = await page.goto(`${baseUrl}${item.route}`, { waitUntil: 'domcontentloaded', timeout: 15_000 });
+        await page.waitForTimeout(500);
         if (response?.status() !== 200) add('failed', { width, route: item.route, check: 'route-status', actual: response?.status() });
         checkedRoutes.add(item.route);
       }
       const locator = page.locator(item.selector);
+      await locator.first().waitFor({ state: 'attached', timeout: 3_000 }).catch(() => {});
       if (await locator.count() !== 1) {
         add('missing', { width, route: item.route, selector: item.selector, check: 'required-element' });
         continue;
@@ -107,7 +109,8 @@ try {
     }
     // Disabled Dracula audio deliberately has no listening control.  It is a
     // conditional N/A, never a required control or a pass credit.
-    await page.goto(`${baseUrl}/reader/dracula`, { waitUntil: 'networkidle' });
+    await page.goto(`${baseUrl}/reader/dracula`, { waitUntil: 'domcontentloaded', timeout: 15_000 });
+    await page.waitForTimeout(500);
     if (await page.getByTestId('generated-audiobook').count() === 0) add('na', { width, route: '/reader/dracula', selector: '[data-testid="generated-audiobook"]', reason: 'controlled audio disabled' });
     else add('failed', { width, route: '/reader/dracula', selector: '[data-testid="generated-audiobook"]', check: 'disabled-audio-control-present' });
     await page.close();

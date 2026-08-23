@@ -861,13 +861,16 @@ async function installSmokeApiMocks(context) {
       await route.fulfill(json({ book, chapters: [chapter, book.chapters[1]], audio: { enabled: false } }));
       return;
     }
-    if (pathname === "/payments/packs") {
-      await route.fulfill(json([
+    if (pathname === "/payments/packs" || pathname === "/payments/offers") {
+      const packs = [
         { id: "30m", label: "The First Chapter", minutes: 30, price_inr: 49, amount_paise: 4900 },
         { id: "1h", label: "The Quiet Hour", minutes: 60, price_inr: 89, amount_paise: 8900 },
         { id: "3h", label: "The Deep Reading Pass", minutes: 180, price_inr: 239, amount_paise: 23900 },
         { id: "10h", label: "The Reader’s Reserve", minutes: 600, price_inr: 499, amount_paise: 49900 },
-      ]));
+      ];
+      await route.fulfill(json(pathname === "/payments/offers"
+        ? { packs, config: { configured: false, mode: "test", key_id: "" } }
+        : packs));
       return;
     }
     if (pathname === "/payments/config") {

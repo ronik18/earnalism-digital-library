@@ -21,7 +21,7 @@
 
 .reference-home, .reference-commerce { font-family: var(--reference-ui); color: #fff9ea; background: var(--reference-ink); }
 .reference-home { padding-bottom: 0; }
-.reference-home__hero, .reference-commerce__hero { position: relative; isolation: isolate; overflow: hidden; min-height: 31rem; padding: clamp(3.25rem, 6vw, 5.6rem) max(2rem, calc((100vw - 1340px)/2 + 2rem)); background: radial-gradient(circle at 71% 50%, rgba(207,151,45,.22), transparent 24rem), linear-gradient(94deg, #07110f 0%, #07110f 43%, rgba(7,17,15,.56) 65%, rgba(7,17,15,.15) 100%); }
+.reference-home__hero, .reference-commerce__hero { position: relative; isolation: isolate; overflow: hidden; min-height: 31rem; padding: clamp(3.25rem, 6vw, 5.6rem) max(2rem, calc((100vw - 1340px)/2 + 2rem)); background: radial-gradient(circle at 71% 50%, rgba(207,151,45,.22), transparent 24rem), linear-gradient(94deg, #07110f 0%, #07110f 43%, rgba(7,17,15,.56) 65%, rgba(7,17,15,.15) 100%); background-color:#07110f; }
 .reference-home__hero::after, .reference-commerce__hero::after { content:""; position:absolute; inset:0; z-index:-1; background: linear-gradient(90deg, rgba(2,8,7,.78) 0%, rgba(2,8,7,.45) 48%, rgba(2,8,7,.1)); pointer-events:none; }
 .reference-home__hero-copy, .reference-commerce__hero > div { position:relative; z-index:1; width:min(38rem, 48%); }
 .reference-kicker { margin:0 0 .65rem; color: var(--reference-gold-soft); font: 700 .66rem/1.2 var(--reference-ui); letter-spacing:.23em; text-transform:uppercase; }
@@ -31,7 +31,7 @@
 .reference-home__cta-row { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.75rem; }
 .reference-button { display:inline-flex; min-height:2.75rem; align-items:center; justify-content:center; border:1px solid transparent; border-radius:.35rem; padding:.65rem 1.05rem; font:700 .7rem/1 var(--reference-ui); letter-spacing:.08em; text-transform:uppercase; transition:transform 160ms ease, background 160ms ease; }
 .reference-button:hover { transform:translateY(-1px); }
-.reference-button--gold { background:linear-gradient(135deg,#f0ca76,#c79435); color:#192017; border-color:#e4bd67; }
+.reference-button--gold { background:linear-gradient(135deg,#f0ca76,#c79435); background-color:#c79435; color:#192017; border-color:#e4bd67; }
 .reference-button--outline { border-color:rgba(239,211,142,.72); color:#fff7e7; background:rgba(2,12,10,.38); }
 .reference-home__policy { display:flex; flex-wrap:wrap; align-items:center; gap:.45rem; margin:1.25rem 0 0; color:rgba(255,248,233,.8); font-size:.7rem; }
 .reference-home__policy svg { width:14px; color:var(--reference-gold); }.reference-home__policy span { width:1px; height:1rem; margin-inline:.15rem; background:rgba(255,248,233,.3); }.reference-clock-mark { color:var(--reference-gold); font-size:1rem; }
