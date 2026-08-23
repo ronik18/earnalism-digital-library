@@ -19,6 +19,26 @@
       "sha256": "c19d324c74e0ac4ea5f474f3353cbfe00aad14509a4166a61bf4a581ca13d4e6",
       "size_bytes": 2761885,
       "width": 1536
+    },
+    "reader-listener-ecosystem.png": {
+      "height": 1024,
+      "implementation_coverage": [
+        "reader-desktop",
+        "listener-desktop",
+        "reader-mobile",
+        "listener-mobile",
+        "about-mobile"
+      ],
+      "context_only_panels": [
+        "book-detail",
+        "library-filters",
+        "reading-pass",
+        "my-library",
+        "profile"
+      ],
+      "sha256": "0e27e754365b7fa4f09f18f30b875dc4c764a345f14474f35f5db1a8f631fcd0",
+      "size_bytes": 1821746,
+      "width": 1536
     }
   }
 }
