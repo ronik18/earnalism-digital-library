@@ -61,6 +61,8 @@ jobs:
           base_dir="$RUNNER_TEMP/earnalism-owner-review-base"
           mkdir -p "$base_dir"
           git archive "$BASE_SHA" | tar -x -C "$base_dir"
+          mkdir -p "$base_dir/uat/runtime"
+          cp uat/runtime/capture_actual_redesign_after.mjs "$base_dir/uat/runtime/"
           ln -s "$GITHUB_WORKSPACE/node_modules" "$base_dir/node_modules"
           ln -s "$GITHUB_WORKSPACE/frontend/node_modules" "$base_dir/frontend/node_modules"
 
