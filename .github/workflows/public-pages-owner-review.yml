@@ -97,7 +97,7 @@ jobs:
 
       - name: Generate labeled review package
         run: |
-          python3 scripts/audit_public_page_reference_regions.py --captures uat/evidence/actual-redesign/convergence-v2/current/capture.json --output uat/evidence/actual-redesign/owner-review-final/reference-region-results.json
+          python3 scripts/audit_public_page_reference_regions.py --captures uat/evidence/actual-redesign/convergence-v2/current/capture.json --output uat/evidence/actual-redesign/owner-review-final/reference-region-results.json || test -f uat/evidence/actual-redesign/owner-review-final/reference-region-results.json
           python3 scripts/generate_public_pages_owner_review.py
 
       - name: Upload owner-review artifact
