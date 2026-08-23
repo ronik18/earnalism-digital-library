@@ -416,7 +416,8 @@ test.describe("Earnalism real-user UX video audit", () => {
     expectTextContains(text, "₹49");
     expectTextContains(text, "The Quiet Hour");
     expectTextContains(text, "₹89");
-    expectTextContains(text, "Best first choice");
+    expectTextContains(text, "First 3 canonical pages are free");
+    expect(text.toLowerCase()).not.toContain("best first choice");
     expectTextContains(text, "The Deep Reading Pass");
     expectTextContains(text, "₹239");
     expectTextContains(text, "The Reader’s Reserve");

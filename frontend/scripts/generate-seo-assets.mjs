@@ -70,10 +70,12 @@ function resolveApiBase() {
     process.env.REACT_APP_BACKEND_URL ||
     process.env.REACT_APP_API_URL ||
     process.env.SEO_API_BASE_URL ||
-    "https://api.theearnalism.com"
+    ""
   ).replace(/\/+$/, "");
 
-  if (!raw || raw.startsWith("/")) return "https://api.theearnalism.com/api";
+  // A build without an explicitly configured API uses only checked-in
+  // controlled-publication records. Local builds must never reach production.
+  if (!raw || raw.startsWith("/")) return "";
   return raw.endsWith("/api") ? raw : `${raw}/api`;
 }
 
@@ -121,6 +123,7 @@ function isBlockedPublicRoute(pagePath = "") {
 }
 
 async function fetchJson(endpoint) {
+  if (!apiBase) return [];
   const url = `${apiBase}${endpoint}`;
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
