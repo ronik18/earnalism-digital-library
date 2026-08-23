@@ -157,7 +157,7 @@ export function ReferenceHomeSurface() {
             <li>Reading time is used only while you read</li>
             <li>No subscription or autorenewal</li>
           </ul>
-          <Link className="reference-button reference-button--gold" to="/pricing">Explore passes</Link>
+          <Link className="reference-button reference-button--gold" to="/pricing">View Reading Passes</Link>
         </div>
         <div className="reference-home__pass-cards" aria-label="Reading Pass options">
           {["Add time when you want to continue", "One wallet across eligible titles", "Your reading stays private"].map((copy, index) => (
