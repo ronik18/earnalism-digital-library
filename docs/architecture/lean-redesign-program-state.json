@@ -1,7 +1,7 @@
 {
   "schema_version": "lean-redesign-program-v1",
-  "phase": "PR1_cleanup_policy_checkpoint",
-  "status": "phase1_cleanup_decision_pending_review",
+  "phase": "PR2_home_library_commerce",
+  "status": "phase2_validation_complete_pending_pr",
   "completed_prs": [
     {
       "phase": "PR1",
@@ -46,5 +46,20 @@
     "deletion_allowed": false,
     "mode": "dry-run"
   },
-  "next_gate": "PR 2 visual implementation may begin after this Phase 1 checkpoint is merged. Destructive cleanup remains deferred until the earliest review date and explicit candidate-by-candidate approval."
+  "phase1_cleanup_policy_checkpoint": {
+    "pull_request": 317,
+    "merge_commit": "10cdefee46ebeee10be5a528eed8c1509838afbc",
+    "result": "merged_without_destructive_cleanup"
+  },
+  "phase2_validation": {
+    "validated_at_utc": "2026-08-23T03:45:29Z",
+    "evidence_directory": "uat/evidence/lean-redesign/final",
+    "release_truth_tests": "47 passed",
+    "contrast": "36 tested, 36 passed, 0 failed, 0 missing",
+    "visual_contract": "30 Chromium checks passed",
+    "responsive_contract": "Home, Library, and Commerce at 9 required viewports passed",
+    "chromium_user_journey": "12 passed",
+    "regression_ci": "14 suites passed, 124 tests passed"
+  },
+  "next_gate": "Open the focused Phase 2 redesign pull request for review. Destructive cleanup remains deferred until the earliest review date and explicit candidate-by-candidate approval."
 }

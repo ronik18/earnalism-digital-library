@@ -19,6 +19,12 @@ describe("Home curated shelf integration", () => {
     expect(source).not.toContain("homeCurationLoading");
   });
 
+  test("removes the unreachable legacy hero instead of keeping a second visual architecture", () => {
+    expect(source).not.toContain("{false && (");
+    expect(source).not.toContain("reference-editorial-index");
+    expect(source).not.toContain("home_hero_start_reading");
+  });
+
   test("places three accurate discovery paths before monetization", () => {
     expect(source).toContain("home-quick-paths");
     expect(source).toContain("Enter the Bengali collection");
