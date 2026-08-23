@@ -206,7 +206,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
 
   test("homepage, library, and pricing snapshots preserve the canonical preview and release-truth contract", () => {
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("The first 3 canonical pages are free.");
+    expect(homeHtml).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(homeHtml).toContain("No subscription or autorenewal.");
     expect(homeHtml).toContain("href=\"/library?category=live\"");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);

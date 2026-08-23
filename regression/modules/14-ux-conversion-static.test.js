@@ -1647,8 +1647,13 @@ describe("UX conversion static signals", () => {
       "Return to reading",
     ].forEach((requiredOverlay) => {
       expect(brandSiteTour).toContain(requiredOverlay);
-      expect(siteTourIndex).toContain(requiredOverlay);
     });
+
+    // The index is immutable historical evidence. It records the copy that was
+    // present when that artifact was generated, not the current product copy.
+    expect(siteTourIndex).toContain("Generated at:");
+    expect(siteTourIndex).toContain("Git SHA:");
+    expect(siteTourIndex).toContain("Overlay status: `PASS`");
 
     expect(siteTourVoiceover).toContain("Status: SCRIPT_ONLY");
     expect(siteTourVoiceover).toContain("No AI voice, TTS, audiobook generation");
@@ -1730,7 +1735,7 @@ describe("UX conversion static signals", () => {
     }
 
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("Reader-ready classics stay visible; audiobooks appear only after quality gates pass.");
+    expect(homeHtml).toContain("Reader-ready classics stay visible; approved audiobooks require an active Reading Pass.");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
