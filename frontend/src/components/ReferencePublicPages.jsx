@@ -127,7 +127,10 @@ export function ReferenceHomeSurface() {
           </div>
           <p className="reference-home__policy"><Check aria-hidden="true" /> First 3 pages free to preview <span /> <ClockMark aria-hidden="true" /> Reading time is used only while you read</p>
         </div>
-        <img className="reference-home__hero-art" src="/assets/hero/premium-library-reference-exact-1440.webp" alt="" fetchPriority="high" decoding="async" />
+        <picture className="reference-home__hero-art">
+          <source media="(max-width: 640px)" srcSet="/assets/hero/premium-library-mobile-cinematic-v2.webp" />
+          <img src="/assets/hero/golden-hour-library-hero.webp" alt="" fetchPriority="high" decoding="async" />
+        </picture>
       </section>
 
       <section className="reference-feature-strip" aria-label="Earnalism reading room features">
@@ -252,7 +255,10 @@ export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId
     <div className="reference-commerce" data-testid="pricing-reference-surface">
       <section className="reference-commerce__hero" aria-labelledby="reference-commerce-title">
         <div><p className="reference-kicker">READING PASSES</p><h1 id="reference-commerce-title">Read more.<br />Live the stories.</h1><p>Unlock unhurried reading time and immerse yourself in timeless Bengali and English classics.</p><ul><li>First 3 pages free on eligible books</li><li>Reading time is used only while you read</li><li>No subscription or autorenewal</li></ul></div>
-        <img src="/assets/hero/premium-library-reference-exact-1440.webp" alt="" decoding="async" />
+        <picture className="reference-commerce__hero-art">
+          <source media="(max-width: 640px)" srcSet="/assets/hero/premium-library-mobile-cinematic-v2.webp" />
+          <img src="/assets/hero/golden-hour-library-hero.webp" alt="" fetchPriority="high" decoding="async" />
+        </picture>
       </section>
       <main className="reference-commerce__main">
         <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>First 3 pages always free</li></ul><button type="button" disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>

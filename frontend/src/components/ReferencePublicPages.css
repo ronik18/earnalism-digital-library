@@ -49,3 +49,34 @@
 
 @media (max-width: 1023px) { .premium-site-header--reference-public .premium-header-nav, .premium-site-header--reference-public .premium-reference-home-cta-wrap { display:none; }.reference-home__hero, .reference-commerce__hero { min-height:30rem; padding:3.5rem 1.5rem; }.reference-home__hero-copy, .reference-commerce__hero > div { width:min(31rem, 67%); }.reference-feature-strip, .reference-home__journey, .reference-home__listening, .reference-home__pass, .reference-commerce__main { width:min(100% - 2.5rem, 56rem); }.reference-feature-strip { grid-template-columns:repeat(2,1fr); }.reference-book-shelf { grid-template-columns:repeat(4,minmax(0,1fr)); }.reference-home__trust > div { grid-template-columns:repeat(2,1fr); }.reference-library__content { grid-template-columns:1fr; }.reference-library__sidebar { display:none; }.reference-library__titlebar { align-items:start; }.reference-filter-trigger { display:inline-flex; min-height:2.4rem; align-items:center; gap:.4rem; border:1px solid rgba(64,53,36,.22); border-radius:.35rem; padding:0 .7rem; background:#fffdf8; color:#383d35; font:700 .62rem var(--reference-ui); }.reference-filter-trigger svg { width:1rem; }.reference-library-drawer { position:fixed; z-index:100; inset:0; display:grid; align-items:end; background:rgba(3,11,9,.58); }.reference-library-drawer > div { max-height:82svh; overflow:auto; padding:1.25rem; border-radius:1rem 1rem 0 0; background:#fffaf1; }.reference-library-drawer header { display:flex; align-items:center; justify-content:space-between; }.reference-library-drawer header button { border:0; background:transparent; }.reference-library-drawer .reference-button { width:100%; margin-top:1rem; }.reference-library-grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 @media (max-width: 640px) { .reference-home__hero, .reference-commerce__hero { min-height:31rem; padding:2.5rem 1.1rem 1.4rem; }.reference-home__hero-copy, .reference-commerce__hero > div { width:100%; }.reference-home__hero-art, .reference-commerce__hero img { width:100%; opacity:.48; object-position:70% center; }.reference-home h1, .reference-commerce h1 { font-size:clamp(3rem,14vw,4.25rem); }.reference-home__lede, .reference-commerce__hero p { max-width:20rem; font-size:.82rem; }.reference-home__cta-row { display:grid; grid-template-columns:1fr 1fr; }.reference-button { min-height:2.6rem; padding:.5rem .55rem; font-size:.6rem; text-align:center; }.reference-home__policy { max-width:19rem; font-size:.58rem; }.reference-feature-strip { width:100%; margin:0; border-radius:0; grid-template-columns:repeat(4,1fr); }.reference-feature-strip article { display:grid; justify-items:center; min-height:5rem; padding:.55rem .3rem; text-align:center; }.reference-feature-strip svg { width:1.1rem; }.reference-feature-strip strong { font-size:.7rem; }.reference-feature-strip span { display:none; }.reference-home__journey, .reference-home__listening, .reference-home__pass, .reference-commerce__main { width:calc(100% - 2rem); }.reference-home__journey, .reference-home__listening { padding:2.35rem 0; }.reference-section-heading { display:block; }.reference-section-heading h2 { font-size:2rem; }.reference-text-link { margin-top:.7rem; }.reference-book-shelf { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(8.4rem, 38vw); grid-template-columns:none; overflow-x:auto; padding-bottom:.45rem; scroll-snap-type:x proximity; }.reference-book-tile { scroll-snap-align:start; }.reference-home__pass { display:block; padding:1.2rem; }.reference-home__pass-cards { margin-top:1rem; }.reference-home__pass-cards article { min-height:9rem; padding:.7rem; }.reference-home__pass-cards p { font-size:1rem; }.reference-home__trust { padding:2rem 1rem; }.reference-home__trust > div { gap:1.1rem .55rem; }.reference-home__trust strong { font-size:.85rem; }.reference-home__trust p { font-size:.61rem; }.reference-library { padding:1.25rem 1rem 2rem; }.reference-library__titlebar { display:block; }.reference-library__titlebar h1 { font-size:2.6rem; }.reference-library__controls { display:grid; grid-template-columns:1fr auto; margin-top:1rem; }.reference-search { grid-column:1/-1; width:auto; }.reference-sort { grid-template-columns:auto 1fr; align-items:center; }.reference-library-grid { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(8.4rem, 39vw); grid-template-columns:none; overflow-x:auto; padding-bottom:.4rem; }.reference-library .reference-section-heading h2 { font-size:1.6rem; }.reference-commerce__packs { grid-template-columns:1fr; }.reference-offer { min-height:0; }.reference-commerce__pathways, .reference-commerce__trust { grid-template-columns:1fr; }.reference-commerce__pathways article { min-height:0; }.reference-commerce__trust div { min-height:2.8rem; }.reference-commerce__final { margin-top:2.3rem; }.reference-commerce__final h2 { font-size:2.1rem; } }
+
+/* Reference-convergence refinements: clean room artwork, compact commerce
+   hierarchy, and a three-card first row without hiding real configured packs. */
+.reference-home__hero-art,
+.reference-commerce__hero-art { position:absolute; z-index:-2; inset:0 0 0 auto; width:62%; height:100%; overflow:hidden; opacity:.94; }
+.reference-home__hero-art img,
+.reference-commerce__hero-art img { width:100%; height:100%; object-fit:cover; object-position:right center; }
+.reference-commerce__hero { min-height:22rem; padding-block:clamp(2.35rem,4vw,3.65rem); }
+.reference-commerce__hero > div { width:min(35rem,46%); }
+.reference-commerce__hero-art { width:58%; }
+.reference-commerce__main { padding-top:2rem; }
+.reference-commerce__offers > .reference-section-heading { margin-bottom:1.1rem; }
+.reference-commerce__packs { grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.reference-offer { min-height:19.5rem; padding:1.25rem; }
+.reference-offer > strong { margin-top:.75rem; font-size:2.25rem; }
+.reference-offer ul { gap:.42rem; margin:1.1rem 0; }
+.reference-commerce__pathways { margin-top:1rem; }
+.reference-commerce__trust { margin-top:1rem; }
+
+@media (max-width: 640px) {
+  .reference-home__hero-art,
+  .reference-commerce__hero-art { width:100%; opacity:.5; }
+  .reference-home__hero-art img,
+  .reference-commerce__hero-art img { object-position:66% center; }
+  .reference-commerce__hero { min-height:29rem; padding-top:2.2rem; }
+  .reference-commerce__hero > div { width:100%; }
+  .reference-commerce__main { padding-top:1.75rem; }
+  .reference-commerce__packs { grid-template-columns:1fr; gap:.8rem; }
+  .reference-offer { min-height:0; padding:1.2rem; }
+  .reference-offer ul { margin:.95rem 0; }
+}
