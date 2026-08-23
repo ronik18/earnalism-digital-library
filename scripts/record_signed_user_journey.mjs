@@ -47,7 +47,7 @@ const FORBIDDEN_PUBLIC_PATTERNS = [
 const JOURNEY_ROUTES = [
   { id: "home_signed_in", path: "/", objective: "Initial signed-in homepage and Golden Hour hero" },
   { id: "home_forced_tour", path: "/?tour=1", objective: "First-time site tour forced by query" },
-  { id: "dracula_reader_free_chapter", path: "/reader/dracula", objective: "Read Chapter 1 free and reader comfort" },
+  { id: "dracula_reader_public_pages", path: "/reader/dracula", objective: "Read the first 3 pages free and reader comfort" },
   { id: "dracula_book_detail", path: "/book/dracula", objective: "Dracula book page, covers, chapters, CTAs" },
   { id: "pricing", path: "/pricing", objective: "Reading-time pass path without live payment execution" },
   { id: "library", path: "/library", objective: "Approved Dracula release and pipeline-only books" },
@@ -62,9 +62,9 @@ const CTA_CHECKS = [
   { id: "browse_bengali_click", sourcePath: "/", label: "Browse Bengali classics", expectedPath: "/library", expectedSearch: "language=bn&availability=reader-ready" },
   { id: "browse_english_click", sourcePath: "/", label: "Browse English classics", expectedPath: "/library", expectedSearch: "language=en" },
   { id: "approved_audiobooks_click", sourcePath: "/", label: "Explore approved audiobooks", expectedPath: "/library", expectedSearch: "availability=approved-audiobook" },
-  { id: "book_free_chapter_click", sourcePath: "/book/dracula", label: "Read Chapter 1 Free", expectedPath: "/reader/dracula" },
+  { id: "book_public_pages_click", sourcePath: "/book/dracula", label: "Read the first 3 pages free", expectedPath: "/reader/dracula" },
   { id: "book_reading_passes_click", sourcePath: "/book/dracula", label: "View Reading Passes", expectedPath: "/pricing" },
-  { id: "pricing_free_chapter_click", sourcePath: "/pricing", label: "Read Chapter 1 Free", expectedPath: "/reader/dracula" },
+  { id: "pricing_public_pages_click", sourcePath: "/pricing", label: "Read the first 3 pages free", expectedPath: "/reader/dracula" },
 ];
 
 const results = {

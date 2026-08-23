@@ -470,7 +470,10 @@ def verify_live_detail_payload(
         "public_route": f"/book/{normalized}",
         "reader_url": f"/reader/{normalized}",
         "preview_url": f"/reader/{normalized}" if preview_enabled else "",
-        "audio_url": f"/api/reader/book/{normalized}/audiobook" if audio_allowed else "",
+        # A public projection may advertise an approved audiobook, but it must
+        # never expose a playable route. Playback is resolved after lease
+        # authorization on the protected reader endpoint.
+        "audio_url": "",
         "public_json_ld_enabled": True,
     }
     for key, expected in expected_values.items():

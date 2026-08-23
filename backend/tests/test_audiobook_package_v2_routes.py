@@ -17,6 +17,10 @@ if str(BACKEND_DIR) not in sys.path:
 def _server(monkeypatch):
     monkeypatch.setenv("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
     monkeypatch.setenv("JWT_SECRET", "test-secret")
+    try:
+        asyncio.get_event_loop()
+    except RuntimeError:
+        asyncio.set_event_loop(asyncio.new_event_loop())
     return importlib.import_module("server")
 
 
@@ -100,15 +104,15 @@ def test_reader_book_audiobook_package_manifest_uses_controlled_artifact_fallbac
     assert manifest["packageVersion"] == server._reader_book_audiobook_package_descriptor(doc, "book-2b9853ec52")["package_version"]
 
 
-def test_reader_manifest_audio_includes_package_manifest_endpoint(monkeypatch):
+def test_reader_manifest_audio_hides_playable_package_routes(monkeypatch):
     server = _server(monkeypatch)
     monkeypatch.setattr(server, "can_expose_audio", lambda book: True)
     doc = _approved_slug_doc()
 
     manifest_audio = server._reader_manifest_audio(doc, "dracula")
     assert manifest_audio["enabled"] is True
-    assert manifest_audio["package_manifest"] == "/api/reader/book/dracula/audiobook/manifest"
-    assert manifest_audio["assets"]["mp3"] == "/api/reader/book/dracula/audiobook"
+    assert manifest_audio["assets"] == {}
+    assert manifest_audio["url"] == ""
 
 
 def test_package_descriptor_falls_back_to_base_assets_without_segments(monkeypatch):

@@ -6,22 +6,28 @@ const frontendDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const buildDir = path.join(frontendDir, "build");
 const snapshots = [
   {
+    route: "/",
+    file: path.join(buildDir, "index.html"),
+    required: ["Read the first 3 pages free. Listening requires an active Reading Pass."],
+    forbidden: ["Chapter 1 is free", "Read Chapter 1", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
+  },
+  {
     route: "/book/dracula",
     file: path.join(buildDir, "book", "dracula", "index.html"),
-    required: ["first 3 canonical pages", "View Reading Passes"],
-    forbidden: ["Chapter 1 is free", "Read Chapter 1", "7-Day", "7-day"],
+    required: ["first 3 canonical pages", "View Reading Passes", "Listening requires an active Reading Pass"],
+    forbidden: ["Chapter 1 is free", "Read Chapter 1", "7-Day", "7-day", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
   },
   {
     route: "/pricing",
     file: path.join(buildDir, "pricing", "index.html"),
     required: ["first 3 canonical pages", "Reading Pass", "No subscription"],
-    forbidden: ["The First Chapter", "Start with Chapter 1", "7-Day", "7-day"],
+    forbidden: ["The First Chapter", "Start with Chapter 1", "7-Day", "7-day", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
   },
   {
     route: "/reader/dracula",
     file: path.join(buildDir, "reader", "dracula", "index.html"),
     required: ["first 3 canonical pages"],
-    forbidden: ["Read Dracula Chapter 1", "Preview chapter unlocked", "Get 7-Day Reading Pass"],
+    forbidden: ["Read Dracula Chapter 1", "Preview chapter unlocked", "Get 7-Day Reading Pass", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
   },
 ];
 

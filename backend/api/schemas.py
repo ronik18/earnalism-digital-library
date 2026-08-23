@@ -502,7 +502,7 @@ class ReadingPassSegmentMigrationIn(BaseModel):
 class ReadingPassPreviewActivationIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     version: str = Field(min_length=3, max_length=120)
-    duration_seconds: float = Field(gt=0, le=180)
+    duration_seconds: float = Field(ge=0, le=0)
     sha256: str = Field(pattern=r"^[a-f0-9]{64}$")
     source_sha256: str = Field(pattern=r"^[a-f0-9]{64}$")
     bytes: int = Field(gt=0, le=100_000_000)

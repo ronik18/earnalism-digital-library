@@ -88,19 +88,14 @@ export async function startReadingPassSession({ bookSlug, pageIndex, transfer = 
 }
 
 export async function getReadingPassAudioPreview(bookSlug) {
-  const response = await axios.get(
-    `${API}/reading-pass/audiobooks/${encodeURIComponent(bookSlug)}/preview/manifest`,
-    { withCredentials: true },
-  );
   return {
-    ...response.data,
-    audio_url: response.data?.audio_url
-      ? `${API}${response.data.audio_url.replace(/^\/api/, '')}`
-      : '',
+    book_slug: bookSlug,
+    duration_seconds: 0,
+    audio_url: '',
   };
 }
 
-export async function startReadingPassAudioSession({ bookSlug, positionSeconds = 180, transfer = false }) {
+export async function startReadingPassAudioSession({ bookSlug, positionSeconds = 0, transfer = false }) {
   const response = await axios.post(
     `${API}/reading-pass/sessions/${transfer ? 'transfer' : 'start'}`,
     {
@@ -108,7 +103,7 @@ export async function startReadingPassAudioSession({ bookSlug, positionSeconds =
       device_label: `${navigator.platform || 'Web'} · ${navigator.userAgent.includes('Mobile') ? 'Mobile' : 'Browser'}`,
       content_type: 'audio',
       content_id: bookSlug,
-      media_position_seconds: Math.max(180, Number(positionSeconds) || 180),
+      media_position_seconds: Math.max(0, Number(positionSeconds) || 0),
     },
     { headers: authHeaders(), withCredentials: true },
   );

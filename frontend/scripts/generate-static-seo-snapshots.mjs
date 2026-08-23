@@ -280,7 +280,7 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 
 function buildPages({ book, manifest }) {
   const homeDescription = "A calm digital reading room for timeless Bengali and English literature. Explore a calm digital reading room with reader-ready classics and release-gated audiobooks.";
-  const bookDescription = "Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. The first 3 canonical pages are free. Continue with Reading Pass time. Audio is available only for separately approved editions.";
+  const bookDescription = "Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. Read the first 3 pages free. Listening requires an active Reading Pass. Audio remains unavailable for this controlled release unless separately approved.";
   const libraryDescription = "Browse Earnalism's Bengali and English classics. Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.";
   const pricingDescription = "The first 3 canonical pages are free. Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading, works across eligible titles, and never renews automatically.";
   const journalDescription = "Launch notes from The Earnalism's Bengali and English digital reading room and rights-safe publication pipeline.";
@@ -301,8 +301,8 @@ function buildPages({ book, manifest }) {
       staticBody: pageShell({
         eyebrow: "The Earnalism Digital Library",
         title: "A premium reading and listening sanctuary for timeless Bengali and English classics.",
-        body: "A calm digital reading room for timeless Bengali and English literature. The first 3 canonical pages are free before Reading Pass time begins.",
-        facts: ["The first 3 canonical pages are free.", "Reader-ready classics stay visible; audiobooks appear only after quality gates pass.", "No subscription or autorenewal."],
+        body: "A calm digital reading room for timeless Bengali and English literature. Read the first 3 pages free. Listening requires an active Reading Pass.",
+        facts: ["Read the first 3 pages free. Listening requires an active Reading Pass.", "Reader-ready classics stay visible; approved audiobooks require an active Reading Pass.", "No subscription or autorenewal."],
         links: [
           { href: "/library", label: "Start Reading" },
           { href: "/library?category=live", label: "Reader-ready classics" },

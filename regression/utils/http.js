@@ -351,7 +351,7 @@ function publicDraculaBook() {
   projected.audio_url = "";
   projected.audio_status = "NOT_AVAILABLE";
   projected.cta_label = "Start Dracula";
-  projected.secondary_cta_label = "Read Chapter 1 Free";
+  projected.secondary_cta_label = "Read the first 3 pages free";
   projected.public_json_ld_enabled = true;
   projected.source_note = "Source verified for the controlled Dracula reading launch.";
   projected.rights_note = "Approved Tier A core reading candidate.";

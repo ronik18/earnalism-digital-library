@@ -48,11 +48,12 @@ def diagnostic_heatmap(panel: Image.Image, current: Image.Image) -> Image.Image:
 
 def build_html(records: list[dict]) -> str:
     buttons = "".join(f'<button data-state="{item["state"]}">{item["state"]}</button>' for item in records)
+    product_truth = """<section class=\"product-truth\"><h2>OWNER PRODUCT-TRUTH AMENDMENT</h2><p><b>TEXT:</b> exactly the first 3 immutable server-defined canonical pages are public; page 4 and later require a signed-in paid Reading Pass entitlement.</p><p><b>AUDIO:</b> public preview duration is exactly 0 seconds. Catalog and reader manifests may show locked metadata, but expose no playable URL or public audio bytes. Playback requires an approved audiobook and an active paid Reading Pass from the first byte, including range requests.</p><p><b>APPROVED COPY:</b> Read the first 3 pages free. Listening requires an active Reading Pass.</p></section>"""
     panels = "".join(
         f'''<section id="{item["state"]}" class="panel"><h2>{item["state"]}</h2><p><b>REFERENCED REGION</b> uses the native composite panel. <b>RESPONSIVE EXTRAPOLATION</b> applies outside it. <b>DYNAMIC DATA</b> includes covers, text, prices, and release labels. <b>NOT PIXEL-CERTIFIABLE FROM CURRENT REFERENCE</b> applies to the full mobile viewport.</p><div class="grid"><figure><img src="{item["reference"]}"><figcaption>Approved composite reference</figcaption></figure><figure><img src="{item["before"]}"><figcaption>Original-main capture</figcaption></figure><figure><img src="{item["current"]}"><figcaption>Current PR capture</figcaption></figure><figure><img src="{item["heatmap"]}"><figcaption>Diagnostic heatmap, not full-viewport certification</figcaption></figure></div></section>'''
         for item in records
     )
-    return f'''<!doctype html><html><head><meta charset="utf-8"><title>Earnalism public pages owner review</title><style>body{{margin:0;background:#f6f1e8;color:#15201a;font:16px system-ui,sans-serif}}header{{position:sticky;top:0;padding:12px 20px;background:#07100f;color:#fff8e9;z-index:2}}button{{margin:3px;padding:7px 10px;border:1px solid #d6ad55;background:#10251f;color:#fff8e9}}main{{padding:24px;max-width:1600px;margin:auto}}.panel{{margin:0 0 48px}}.grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}figure{{margin:0;border:1px solid #d7c69f;background:#fffdf8;padding:8px}}img{{width:100%;height:auto;display:block}}figcaption{{margin-top:8px;font-size:12px}}@media(max-width:900px){{.grid{{grid-template-columns:repeat(2,minmax(0,1fr))}}}}</style></head><body><header><strong>Earnalism public pages owner review</strong><div>{buttons}</div></header><main>{panels}</main><script>document.querySelectorAll('button').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.state).scrollIntoView({{behavior:'smooth'}}));</script></body></html>'''
+    return f'''<!doctype html><html><head><meta charset="utf-8"><title>Earnalism public pages owner review</title><style>body{{margin:0;background:#f6f1e8;color:#15201a;font:16px system-ui,sans-serif}}header{{position:sticky;top:0;padding:12px 20px;background:#07100f;color:#fff8e9;z-index:2}}button{{margin:3px;padding:7px 10px;border:1px solid #d6ad55;background:#10251f;color:#fff8e9}}main{{padding:24px;max-width:1600px;margin:auto}}.product-truth{{margin:0 0 32px;padding:20px;border:1px solid #d6ad55;background:#fffdf8}}.product-truth h2{{margin-top:0}}.panel{{margin:0 0 48px}}.grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}figure{{margin:0;border:1px solid #d7c69f;background:#fffdf8;padding:8px}}img{{width:100%;height:auto;display:block}}figcaption{{margin-top:8px;font-size:12px}}@media(max-width:900px){{.grid{{grid-template-columns:repeat(2,minmax(0,1fr))}}}}</style></head><body><header><strong>Earnalism public pages owner review</strong><div>{buttons}</div></header><main>{product_truth}{panels}</main><script>document.querySelectorAll('button').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.state).scrollIntoView({{behavior:'smooth'}}));</script></body></html>'''
 
 
 def main() -> int:
@@ -89,11 +90,21 @@ def main() -> int:
         })
         page = Image.new("RGB", (1600, 1120), "#f6f1e8")
         draw = ImageDraw.Draw(page); draw.text((40, 30), f"{state} - REFERENCED REGION / OWNER REVIEW", fill="#15201a", font=ImageFont.load_default())
+        draw.text((40, 50), "Product truth: 3 public canonical pages; 0 public audio seconds; active Reading Pass required to listen.", fill="#15201a", font=ImageFont.load_default())
         thumbnail = panel.copy(); thumbnail.thumbnail((700, 950)); page.paste(thumbnail, (40, 90))
         if current.exists():
             actual = Image.open(current).convert("RGB"); actual.thumbnail((700, 950)); page.paste(actual, (840, 90))
         pdf_pages.append(page)
-    manifest = {"schema_version": "earnalism-public-pages-owner-review-v1", "records": records, "status": "OWNER_VISUAL_APPROVAL_REQUIRED"}
+    manifest = {
+        "schema_version": "earnalism-public-pages-owner-review-v1",
+        "product_truth_amendment": {
+            "text_public_page_limit": 3,
+            "audio_public_preview_seconds": 0,
+            "approved_copy": "Read the first 3 pages free. Listening requires an active Reading Pass.",
+        },
+        "records": records,
+        "status": "OWNER_VISUAL_APPROVAL_REQUIRED",
+    }
     (output / "public-pages-owner-review.json").write_text(json.dumps(manifest, indent=2) + "\n")
     (output / "public-pages-owner-review.html").write_text(build_html(records))
     pdf_pages[0].save(output / "public-pages-owner-review.pdf", save_all=True, append_images=pdf_pages[1:])

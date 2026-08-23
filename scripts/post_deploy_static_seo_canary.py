@@ -18,8 +18,8 @@ OUTPUT_DIR = ROOT / "output" / "launch"
 DEFAULT_BASE_URL = "https://theearnalism.com"
 ROUTES = {
     "/book/dracula": {
-        "required": ("first 3 canonical pages", "View Reading Passes"),
-        "forbidden": ("Chapter 1 is free", "Read Chapter 1", "7-day", "The First Chapter"),
+        "required": ("first 3 canonical pages", "View Reading Passes", "Listening requires an active Reading Pass"),
+        "forbidden": ("Chapter 1 is free", "Read Chapter 1", "7-day", "The First Chapter", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"),
         "reader": False,
     },
     "/pricing?book=dracula": {

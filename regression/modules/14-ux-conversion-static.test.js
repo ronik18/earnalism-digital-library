@@ -437,7 +437,7 @@ describe("UX conversion static signals", () => {
   test("reading-only revenue launch decision keeps Dracula live and audiobook blocked", () => {
     expect(launchNowReadingOnlyDecision).toContain("GO_READING_ONLY_PRODUCTION_DEPLOY_READY");
     expect(launchNowReadingOnlyDecision).toContain("Dracula core reading product only");
-    expect(launchNowReadingOnlyDecision).toContain("Chapter 1 free preview");
+    expect(launchNowReadingOnlyDecision).toContain("first 3 canonical pages preview");
     expect(launchNowReadingOnlyDecision).toContain("reading-time wallet/pass model");
     expect(launchNowReadingOnlyDecision).toContain("GO_DRACULA_CORE_READING_ONLY");
     expect(launchNowReadingOnlyDecision).toContain("PAYMENT_REVENUE_10X_CONFIDENCE_REPORT.md");
@@ -1459,7 +1459,7 @@ describe("UX conversion static signals", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
     expect(login).toContain("Sign in after choosing a reading pass to return to the reading-time page");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("Chapter 1 is free. Reading time is added only when you choose a pass");
+    expect(signup).toContain("Read the first 3 pages free. Listening requires an active Reading Pass. Reading time is added only when you choose a pass");
     expect(account).toContain('data-testid="account-wallet-explainer"');
     expect(account).toContain("Use this wallet to continue Dracula after the free preview.");
     expect(account).toContain("Continue Dracula");
@@ -1639,7 +1639,7 @@ describe("UX conversion static signals", () => {
     [
       "The Earnalism Digital Library",
       "Step into the classics",
-      "Chapter 1 is free",
+      "Read the first 3 pages free. Listening requires an active Reading Pass.",
       "27 chapters prepared for focused reading",
       "Audio is intentionally disabled until QA passes",
       "Bengali Gothic is moving through the rights-safe pipeline",

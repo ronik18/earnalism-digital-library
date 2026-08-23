@@ -6,8 +6,8 @@ Status: **implemented behind `READING_PASS_V2_ENABLED=false`; data and preview-a
 
 - Canonical server pages 1–3 are public and never consume balance.
 - Canonical page 4 onward requires authentication, positive balance, and a current short lease.
-- Audiobook media from `00:00` through `02:59.999` is public only through a separate 180-second preview asset.
-- Full audiobook manifests, segments, sidecars, and monolithic audio routes require an authenticated audio lease when v2 is enabled.
+- Audiobooks have no public preview: the public audio boundary is exactly `0` seconds.
+- Every audiobook manifest, segment, sidecar, and monolithic audio route requires authentication and an active paid Reading Pass lease from the first playable byte.
 - Purchased seconds are shared by every eligible book and audiobook.
 - One member account may be authenticated on many devices, but only one paid session may consume time.
 - Seconds, access, session ownership, and payment status are server-authoritative.
@@ -38,7 +38,7 @@ Public page responses may be cached. Protected page responses contain one segmen
 - reconnect grace: 15 seconds;
 - text inactivity: 120 seconds.
 
-The values are server-configurable, while the public boundaries remain fixed at three pages and 180 seconds.
+The values are server-configurable, while the public boundaries remain fixed at three canonical pages and zero public audio seconds.
 
 Lease tokens are random opaque values. Only an HMAC-SHA256 fingerprint is stored. Every lease binds account, authentication session, device, metering session, content type, content ID, scope, version, sequence, issue time, and expiry.
 
@@ -67,35 +67,17 @@ No browser-submitted amount, currency, duration, or success state is trusted.
 
 ### Audio delivery
 
-Public preview assets are separate MP3 files capped at 180 seconds. Generate a local, hash-bound candidate with:
+Public audiobook preview duration is exactly `0` seconds. Do not generate,
+upload, activate, or publish public preview derivatives. The retired
+`scripts/generate_audiobook_preview.py` command exits with
+`AUDIO_PREVIEW_DISABLED` and cannot write audio files.
 
-```bash
-python3 scripts/generate_audiobook_preview.py \
-  --slug <slug> \
-  --source <approved-local-master-or-delivery-file> \
-  --master-packet <checksum-bound-approved-master-packet.json> \
-  --output-dir <private-candidate-directory>
-```
+Public catalog and reader-manifest responses may show locked audiobook metadata,
+but never an audio URL, package-manifest URL, provider/storage URL, waveform, or
+playable media. Every audiobook byte, including a `Range` request, requires an
+approved release, a signed-in user, and an active paid Reading Pass lease.
 
-Generation does not upload or activate anything. Activation requires an `audiobook_previews` record whose duration is no greater than 180 seconds and whose storage URL points to the preview object, not the full audiobook.
-
-After uploading that candidate to a configured private audiobook store with custom object metadata `sha256=<preview_sha256>`, validate it without activation:
-
-```bash
-python3 scripts/register_audiobook_preview.py \
-  --api-base https://staging-api.example/api \
-  --admin-token "$EARNALISM_ADMIN_TOKEN" \
-  --manifest <private-candidate-directory>/<slug>.preview-180s.json \
-  --master-packet <checksum-bound-approved-master-packet.json> \
-  --store private_audio --bucket <bucket> \
-  --key previews/<slug>/<preview_sha256>/<slug>.preview-180s.mp3 \
-  --version-id <immutable-object-version>
-```
-
-Both commands fail closed unless the packet binds the exact master checksum to
-source and derivative rights, provider/voice entitlement, canonical alignment,
-full-book human and accessibility listening QA, and an explicit staging-scoped
-owner approval. Validate a packet independently with:
+Validate an approved private master packet independently with:
 
 ```bash
 python3 scripts/audiobook_master_gate.py \
@@ -230,7 +212,7 @@ Operational monitors must alert on:
 2. Run index/startup migration and verify no uniqueness conflict.
 3. Dry-run canonical segments for every live reader title.
 4. Apply and activate segment manifests in staging.
-5. Generate, upload privately, and register a separate 180-second preview for every approved audiobook.
+5. Do not generate or register public audiobook previews; protected playback begins only after an active paid Reading Pass lease.
 6. Verify old full-file public URLs are unavailable.
 7. Run payment, lease, content, service-worker, responsive, and concurrency suites.
 8. Enable the server flag only in staging.
@@ -254,6 +236,6 @@ The additive indexes and collections may remain; dropping them is not required f
 
 - Web software cannot prevent screenshots, screen recording, speakers-to-microphone recording, or manual transcription of legitimately displayed content.
 - A delivered short text segment cannot be made unreadable against a fully hostile browser after delivery; short leases, segment-only responses, no-store, and DOM clearing bound exposure.
-- Production cannot enable v2 until every live reader has an active canonical segment manifest and every approved audiobook has a verified separate preview object.
+- Production cannot enable v2 until every live reader has an active canonical segment manifest and every approved audiobook is protected by the active-pass media authorization path.
 - Physical-device background/locked-screen playback must be validated with the final protected-media player before production enablement.
 - MongoDB transactions require a replica set/sharded deployment; startup and staging preflight must fail closed if transaction support is absent.

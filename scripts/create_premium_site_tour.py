@@ -66,7 +66,7 @@ SOCIAL_ENV_KEYS = (
 REQUIRED_OVERLAYS = (
     "The Earnalism Digital Library",
     "Step into the classics",
-    "Chapter 1 is free",
+    "Read the first 3 pages free",
     "27 chapters prepared for focused reading",
     "Audio is intentionally disabled until QA passes",
     "Bengali Gothic is moving through the rights-safe pipeline",
@@ -85,7 +85,7 @@ VOICEOVER_SCRIPT = [
     ),
     (
         "Free Preview",
-        "Start with Chapter 1 free, then continue when the book calls you back.",
+        "Read the first 3 pages free, then continue with an active Reading Pass.",
     ),
     (
         "Reader",
@@ -174,7 +174,7 @@ SHOT_SEQUENCE = (
         "Dracula book page",
         ("dracula book page", "reading pass ctas"),
         ("reading-pass-CTAs",),
-        "Chapter 1 is free",
+        "Read the first 3 pages free",
         "Rights, source, preview, and reading pass CTAs stay visible.",
         8,
     ),
@@ -1118,7 +1118,7 @@ def write_root_reports(
         "",
         "- Dracula-first homepage opening: included",
         "- Visible feature overlays: " + str(video_status.get("overlay_status")),
-        "- Chapter 1 free preview positioning: included",
+        "- First 3 canonical pages preview positioning: included",
         "- 27-chapter focused reading note: included",
         "- Dracula audio disabled until QA note: included",
         "- Calm Dracula reader journey: included",

@@ -2903,7 +2903,7 @@ export default function Reader() {
       setReadingPassStatus('Preview ended');
       setReadingPassPaywall({
         code: 'AUDIO_PREVIEW_ENDED',
-        message: 'The separate 3-minute audiobook preview has ended. Sign in and use Reading Pass time to continue securely.',
+        message: 'Listening requires an active Reading Pass.',
       });
       return;
     }
@@ -3130,7 +3130,7 @@ export default function Reader() {
     if (!getUserToken()) {
       setReadingPassPaywall({
         code: 'AUTH_REQUIRED',
-        message: 'Sign in to continue after the free audiobook preview.',
+        message: 'Sign in and start an active Reading Pass to listen.',
       });
       return;
     }

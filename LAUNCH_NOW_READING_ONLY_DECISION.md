@@ -12,8 +12,8 @@ This decision does not deploy, publish new books, switch live payment keys, expo
 
 - Product scope: Dracula core reading product only.
 - Public work: `Dracula` by Bram Stoker.
-- Free entry point: Chapter 1 free preview.
-- Paid path: reading-time wallet/pass model for continuing Dracula after the free preview.
+- Free entry point: first 3 canonical pages preview.
+- Paid path: reading-time wallet/pass model for continuing after the three public canonical pages.
 - Publication approval: `GO_DRACULA_CORE_READING_ONLY`.
 - Production deploy readiness: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`.
 - Revenue objective: validate paid reading-time conversion without waiting for audiobook readiness.
@@ -23,7 +23,7 @@ This decision does not deploy, publish new books, switch live payment keys, expo
 | Surface | Reading-only launch status | Notes |
 | --- | --- | --- |
 | Home | Ready for Dracula-first reading launch | Public copy says The Earnalism begins with Dracula. |
-| Dracula book page | Ready | Chapter 1 free and reading-time continuation are the public path. |
+| Dracula book page | Ready | The first 3 canonical pages are free; Reading Pass continuation is the public path. |
 | Reader preview | Ready | Dracula Chapter 1 is the free preview path. |
 | Pricing | Ready for reading-time packs | Copy explains wallet time, not ownership or subscription. |
 | Login/signup | Ready for continuation flow | Sign-in supports returning to reading-time purchase/account flow. |
@@ -48,7 +48,7 @@ This decision does not deploy, publish new books, switch live payment keys, expo
 ## Revenue Path
 
 1. Visitor lands on Home or Dracula book page.
-2. Visitor reads Dracula Chapter 1 free.
+2. Visitor reads Dracula's first 3 canonical pages free.
 3. Visitor chooses to continue with reading time.
 4. Visitor signs in or signs up.
 5. Visitor purchases a reading-time pack through the configured Razorpay flow.
@@ -91,7 +91,7 @@ Audiobook revenue remains blocked until player QA, sync QA, accessibility QA, le
 ## Public Copy Confirmation
 
 - Dracula only: confirmed.
-- Chapter 1 free: confirmed.
+- First 3 canonical pages free: confirmed.
 - Reading-time/pass model clear: confirmed.
 - No audiobook live claim: confirmed.
 - No Kshudhita public claim: confirmed.

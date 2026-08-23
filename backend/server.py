@@ -1624,7 +1624,7 @@ def _public_projection_is_live(projected: Optional[dict]) -> bool:
     audio_contract_is_consistent = bool(
         isinstance(audio_enabled, bool)
         and projected.get("audiobook_enabled") is audio_enabled
-        and bool(audio_url) is audio_enabled
+        and not audio_url
         and audio_status == ("AVAILABLE" if audio_enabled else "NOT_AVAILABLE")
         and (
             (
@@ -2860,8 +2860,10 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "asset_slug": audio_slug,
         "provider": provider,
         "voice": voice,
-        "assets": assets,
-        "url": _reader_audio_asset_url(book, slug, "mp3", _book_audiobook_url(book)),
+        # Reader manifests are public metadata. Playback resolves the protected
+        # endpoint only after the server has accepted an active audio lease.
+        "assets": {},
+        "url": "",
         "size": int(nested.get("size", 0) or 0),
         "duration_ms": int(nested.get("duration_ms", nested.get("duration", 0)) or 0),
         "release_gate": release_gate,
@@ -8693,8 +8695,7 @@ async def reader_book_audiobook(
     # A disabled title is not protected media and must remain indistinguishable
     # from any other absent audiobook endpoint (404, never an auth challenge).
     await _reader_audio_book_for_slug(slug)
-    if READING_PASS_V2_ENABLED:
-        await _authorize_reading_pass_audio(request, principal, slug)
+    await _authorize_reading_pass_audio(request, principal, slug)
     result = await _reader_book_audiobook_asset(slug, "mp3", request)
     return _reading_pass_protected_response(result)
 
@@ -8831,8 +8832,7 @@ async def reader_book_audiobook_package_manifest(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    if READING_PASS_V2_ENABLED:
-        await _authorize_reading_pass_audio(request, principal, slug)
+    await _authorize_reading_pass_audio(request, principal, slug)
     result = await _reader_book_audiobook_package_manifest_response(slug, request)
     return _reading_pass_protected_response(result)
 
@@ -8848,8 +8848,7 @@ async def reader_book_audiobook_package_segment(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    if READING_PASS_V2_ENABLED:
-        await _authorize_reading_pass_audio(request, principal, slug)
+    await _authorize_reading_pass_audio(request, principal, slug)
     result = await _reader_book_audiobook_package_segment(
         slug,
         package_version,
@@ -8871,8 +8870,7 @@ async def reader_book_audiobook_package_segment_timestamps(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    if READING_PASS_V2_ENABLED:
-        await _authorize_reading_pass_audio(request, principal, slug)
+    await _authorize_reading_pass_audio(request, principal, slug)
     result = await _reader_book_audiobook_package_segment(
         slug,
         package_version,
@@ -8894,8 +8892,7 @@ async def reader_book_audiobook_package_segment_vtt(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    if READING_PASS_V2_ENABLED:
-        await _authorize_reading_pass_audio(request, principal, slug)
+    await _authorize_reading_pass_audio(request, principal, slug)
     result = await _reader_book_audiobook_package_segment(
         slug,
         package_version,
@@ -8917,8 +8914,7 @@ async def reader_book_audiobook_package_segment_metadata(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    if READING_PASS_V2_ENABLED:
-        await _authorize_reading_pass_audio(request, principal, slug)
+    await _authorize_reading_pass_audio(request, principal, slug)
     result = await _reader_book_audiobook_package_segment(
         slug,
         package_version,
@@ -8936,8 +8932,7 @@ async def reader_book_audiobook_sidecar(
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    if READING_PASS_V2_ENABLED:
-        await _authorize_reading_pass_audio(request, principal, slug)
+    await _authorize_reading_pass_audio(request, principal, slug)
     result = await _reader_book_audiobook_asset(slug, asset_key, request)
     return _reading_pass_protected_response(result)
 
@@ -9127,132 +9122,12 @@ async def admin_register_reading_pass_preview(
     payload: ReadingPassPreviewActivationIn,
     admin=Depends(require_admin),
 ):
-    """Validate and optionally activate one distinct public preview object."""
+    """Audiobook public previews are disabled for the controlled release."""
 
-    key = str(payload.key or "").strip()
-    if (
-        not key.lower().endswith(".mp3")
-        or "preview" not in key.lower()
-        or payload.sha256 not in key.lower()
-        or key.startswith("/")
-        or ".." in key
-        or "\\" in key
-    ):
-        raise HTTPException(
-            status_code=400,
-            detail={"code": "PREVIEW_NOT_READY", "message": "Preview storage key must identify a dedicated preview MP3."},
-        )
-    if payload.version != f"sha256-{payload.sha256}":
-        raise HTTPException(
-            status_code=400,
-            detail={"code": "PREVIEW_NOT_READY", "message": "Preview version must equal its SHA-256 content identity."},
-        )
-    storage = {
-        "store": payload.store,
-        "bucket": payload.bucket,
-        "key": key,
-        "version_id": payload.version_id,
-    }
-    preview_url = _audio_package_storage_url(storage)
-    if not preview_url:
-        raise HTTPException(
-            status_code=400,
-            detail={"code": "PREVIEW_NOT_READY", "message": "Preview storage must resolve through a configured private audiobook store."},
-        )
-    book = await _reader_audio_package_book_for_slug(slug)
-    if not book:
-        raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Approved audiobook not found."})
-    full_asset_urls = {
-        _book_audiobook_asset_url(book, key_name)
-        for key_name in ALLOWED_AUDIO_ASSET_KEYS
-        if _book_audiobook_asset_url(book, key_name)
-    }
-    if preview_url in full_asset_urls:
-        raise HTTPException(
-            status_code=409,
-            detail={"code": "PREVIEW_NOT_READY", "message": "The preview object must be distinct from every full audiobook asset."},
-        )
-    storage_config = _b2_storage_for_url(preview_url)
-    if not storage_config:
-        raise HTTPException(status_code=400, detail={"code": "PREVIEW_NOT_READY", "message": "Preview storage is not authorized."})
-    try:
-        head = await _b2_head_object(
-            _b2_client(storage_config),
-            bucket=payload.bucket,
-            key=key,
-            version_id=payload.version_id,
-        )
-    except Exception as exc:
-        logger.warning("Reading Pass preview preflight failed for %s: %s", slug, exc)
-        raise HTTPException(
-            status_code=409,
-            detail={"code": "PREVIEW_NOT_READY", "message": "Preview object could not be verified."},
-        ) from exc
-    metadata = {str(k).lower(): str(v).lower() for k, v in dict(head.get("Metadata") or {}).items()}
-    if int(head.get("ContentLength") or 0) != int(payload.bytes) or metadata.get("sha256") != payload.sha256:
-        raise HTTPException(
-            status_code=409,
-            detail={"code": "PREVIEW_NOT_READY", "message": "Preview size or SHA-256 metadata does not match the activation evidence."},
-        )
-    candidate = {
-        "book_slug": slug,
-        "version": payload.version,
-        "duration_seconds": float(payload.duration_seconds),
-        "sha256": payload.sha256,
-        "source_sha256": payload.source_sha256,
-        "bytes": int(payload.bytes),
-        "storage": storage,
-    }
-    result = {**candidate, "storage": {**storage, "url": preview_url}, "activated": False}
-    if not payload.activate:
-        return result
-
-    mongo_session = await client.start_session()
-    async with mongo_session:
-        async with mongo_session.start_transaction():
-            existing = await db.audiobook_previews.find_one(
-                {"book_slug": slug, "version": payload.version}, {"_id": 0}, session=mongo_session
-            )
-            comparable = {key_name: (existing or {}).get(key_name) for key_name in candidate}
-            if existing and comparable != candidate:
-                raise HTTPException(
-                    status_code=409,
-                    detail={"code": "IMMUTABLE_PREVIEW_CONFLICT", "message": "This preview version is already bound to different evidence."},
-                )
-            now = datetime.now(timezone.utc)
-            await db.audiobook_previews.update_many(
-                {"book_slug": slug, "status": "active"},
-                {"$set": {"status": "archived", "archived_at": now}},
-                session=mongo_session,
-            )
-            await db.audiobook_previews.update_one(
-                {"book_slug": slug, "version": payload.version},
-                {
-                    "$set": {
-                        **candidate,
-                        "status": "active",
-                        "activated_at": now,
-                        "activated_by": f"admin:{admin.get('email', '')}",
-                    },
-                    "$setOnInsert": {"id": str(uuid.uuid4()), "created_at": now},
-                },
-                upsert=True,
-                session=mongo_session,
-            )
-            await db.reading_pass_audit.insert_one(
-                {
-                    "id": str(uuid.uuid4()),
-                    "event": "audiobook_preview_activated",
-                    "book_slug": slug,
-                    "version": payload.version,
-                    "sha256": payload.sha256,
-                    "actor": f"admin:{admin.get('email', '')}",
-                    "created_at": now,
-                },
-                session=mongo_session,
-            )
-    result["activated"] = True
-    return result
+    raise HTTPException(
+        status_code=404,
+        detail={"code": "AUDIO_PREVIEW_DISABLED", "message": "Audiobook previews are unavailable."},
+    )
 
 
 @api.get("/reading-pass/config")
@@ -9716,38 +9591,12 @@ def _reading_pass_preview_record_valid(preview: Optional[Mapping[str, Any]]) -> 
 
 @api.get("/reading-pass/audiobooks/{slug}/preview/manifest")
 async def reading_pass_audiobook_preview_manifest(slug: str, response: Response):
-    _reading_pass_enabled_or_404()
-    preview = await db.audiobook_previews.find_one({"book_slug": slug, "status": "active"}, {"_id": 0})
-    if not _reading_pass_preview_record_valid(preview):
-        raise HTTPException(status_code=404, detail={"code": "PREVIEW_NOT_READY", "message": "Audiobook preview is not ready."})
-    response.headers["Cache-Control"] = "public, max-age=60, must-revalidate"
-    return {
-        "book_slug": slug,
-        "duration_seconds": min(float(preview["duration_seconds"]), float(PUBLIC_AUDIO_PREVIEW_SECONDS)),
-        "sha256": preview.get("sha256", ""),
-        "version": preview.get("version", ""),
-        "audio_url": f"/api/reading-pass/audiobooks/{slug}/preview/audio",
-    }
+    raise HTTPException(status_code=404, detail={"code": "AUDIO_PREVIEW_DISABLED", "message": "Audiobook previews are unavailable."})
 
 
 @api.api_route("/reading-pass/audiobooks/{slug}/preview/audio", methods=["GET", "HEAD"])
 async def reading_pass_audiobook_preview_audio(slug: str, request: Request):
-    _reading_pass_enabled_or_404()
-    preview = await db.audiobook_previews.find_one({"book_slug": slug, "status": "active"}, {"_id": 0})
-    if not _reading_pass_preview_record_valid(preview):
-        raise HTTPException(status_code=404, detail={"code": "PREVIEW_NOT_READY", "message": "Audiobook preview is not ready."})
-    storage = preview.get("storage") or {}
-    asset_url = _audio_package_storage_url(storage)
-    if not asset_url:
-        raise HTTPException(status_code=503, detail={"code": "PREVIEW_NOT_READY", "message": "Audiobook preview storage is unavailable."})
-    return await _stream_audiobook_asset_url(
-        slug,
-        "mp3",
-        asset_url,
-        request,
-        extra_headers={"Cache-Control": "public, max-age=60, must-revalidate", "X-Audiobook-Preview-Seconds": str(PUBLIC_AUDIO_PREVIEW_SECONDS)},
-        version_id=str(storage.get("version_id") or ""),
-    )
+    raise HTTPException(status_code=404, detail={"code": "AUDIO_PREVIEW_DISABLED", "message": "Audiobook previews are unavailable."})
 
 
 @api.post("/reader/metrics")

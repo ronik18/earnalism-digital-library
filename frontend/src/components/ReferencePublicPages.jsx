@@ -74,7 +74,7 @@ function BookTile({ book, compact = false, priority = false, showListen = false 
         <span className="reference-book-tile__author" data-visual-mask="book-author">{book.author || "Earnalism edition"}</span>
         <div className="reference-book-tile__actions">
           {canShowPreview(book) ? <Link to={`/reader/${book.slug}`}>Read</Link> : <Link to={href}>Notify me</Link>}
-          {showListen && audio.canShowControls ? <Link to={`/reader/${book.slug}?listen=1`}>Listen now</Link> : null}
+          {showListen && audio.canShowControls ? <span className="reference-book-tile__locked-audio">Reading Pass required</span> : null}
         </div>
       </div>
     </article>
@@ -125,7 +125,7 @@ export function ReferenceHomeSurface() {
             <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Enter the Library</Link>
             <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline">Enter the Listening Room</Link>
           </div>
-          <p className="reference-home__policy"><Check aria-hidden="true" /> First 3 pages free to preview <span /> <ClockMark aria-hidden="true" /> Reading time is used only while you read</p>
+          <p className="reference-home__policy"><Check aria-hidden="true" /> Read the first 3 pages free. Listening requires an active Reading Pass. <span /> <ClockMark aria-hidden="true" /> Reading time is used only while you read</p>
         </div>
         <picture className="reference-home__hero-art">
           <source media="(max-width: 640px)" srcSet="/assets/hero/premium-library-mobile-cinematic-v2.webp" />
@@ -175,7 +175,7 @@ export function ReferenceHomeSurface() {
           title="Stories in voice, released with care."
           action={<Link to="/library?availability=approved-audiobook" className="reference-text-link">Explore approved audiobooks <ArrowRight aria-hidden="true" /></Link>}
         >
-          <p>Approved audiobooks offer their first 3 minutes for preview. Titles without approval show no listening action.</p>
+          <p>Approved audiobooks require an active Reading Pass. Titles without approval show no listening action.</p>
         </SectionHeading>
         {listeningBooks.length ? <div className="reference-book-shelf">{listeningBooks.map((book) => <BookTile key={book.slug} book={book} showListen />)}</div> : <p className="reference-empty-listening">Listening rooms appear here only when an edition is approved for audio.</p>}
       </section>
