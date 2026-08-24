@@ -40,6 +40,10 @@ def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def test_root_and_backend_controlled_launch_truth_are_identical():
+    assert load_json(ROOT_CONTROLLED_LAUNCH) == load_json(BACKEND_CONTROLLED_LAUNCH)
+
+
 def test_owner_excluded_title_is_absent_from_both_launch_trees():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
