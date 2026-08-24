@@ -45,10 +45,10 @@ class SystemUatProvenanceTests(unittest.TestCase):
         }
         markers = {
             "backend-compile": "compileall complete",
-            "backend-core": "47 passed",
+            "backend-core": "49 passed",
             "backend-policy": "8 passed",
-            "frontend-full": "258 passed",
-            "frontend-build": "Wrote 7 static snapshots",
+            "frontend-full": "275 passed",
+            "frontend-build": "Wrote 5 static snapshots",
             "contracts": "local-contracts=PASS\nproduction-network-requests=0",
             "hydration": "7 passed",
             "responsive": "8 passed",

@@ -5,7 +5,7 @@ export const APPROVED_AUDIO_FIXTURE = Object.freeze({
   author: "Bram Stoker",
   chapterLabel: "Chapter 3 of 27",
   durationSeconds: 1145,
-  previewSeconds: 180,
+  publicPreviewSeconds: 0,
   fixture: true,
 });
 
@@ -26,6 +26,6 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     author: book.author || book.author_name || "",
     chapterLabel: book.chapter_label || "Approved narration",
     durationSeconds: Number(book.preview_duration_seconds) || 0,
-    previewSeconds: 0,
+    publicPreviewSeconds: 0,
   };
 }

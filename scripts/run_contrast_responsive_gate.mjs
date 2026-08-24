@@ -18,9 +18,9 @@ const required = [
   { route: '/', selector: '[data-testid="home-reference-primary-cta"]', kind: 'text' },
   { route: '/pricing', selector: '[data-testid="pricing-reference-surface"] h1', kind: 'text' },
   { route: '/pricing', selector: '[data-testid="pricing-reference-wallet-explainer"]', kind: 'text' },
-  { route: '/reader/dracula', selector: '.reader-topbar', kind: 'boundary' },
-  { route: '/reader/dracula', selector: '.reader-topbar__center strong', kind: 'text' },
-  { route: '/reader/dracula', selector: '.reader-topbar__center span', kind: 'text' },
+  { route: '/reader/dracula', selector: '.reader-v2__canvas', kind: 'boundary' },
+  { route: '/reader/dracula', selector: '.reader-v2__chapter h1', kind: 'text' },
+  { route: '/reader/dracula', selector: '.reader-v2__body', kind: 'text' },
 ];
 
 function add(status, finding) {
