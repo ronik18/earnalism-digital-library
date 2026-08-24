@@ -13,6 +13,9 @@ import os
 import sys
 import urllib.error
 import urllib.request
+from pathlib import Path
+
+from audit_reading_pass_v2_rollout import build_parity_report, fetch_public_books, write_report
 
 
 def _json_request(url: str, *, token: str = "", method: str = "GET", body: dict | None = None):
@@ -37,12 +40,16 @@ def main() -> int:
     parser.add_argument("--target-characters", type=int, default=3200)
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--activate", action="store_true")
+    parser.add_argument("--preflight-parity", action="store_true")
+    parser.add_argument("--parity-evidence-dir", type=Path)
     args = parser.parse_args()
 
     if (args.apply or args.activate) and not args.admin_token:
         parser.error("--admin-token or EARNALISM_ADMIN_TOKEN is required for writes")
     if args.activate and not args.apply:
         parser.error("--activate requires --apply")
+    if (args.apply or args.activate) and not args.preflight_parity:
+        parser.error("--apply and --activate require --preflight-parity")
 
     slugs = list(dict.fromkeys(args.slug))
     if args.all:
@@ -51,6 +58,14 @@ def main() -> int:
         slugs = list(dict.fromkeys(slugs))
     if not slugs:
         parser.error("provide --slug or --all")
+
+    if args.preflight_parity:
+        report, rows = build_parity_report(fetch_public_books(args.api_base))
+        if args.parity_evidence_dir:
+            write_report(args.parity_evidence_dir, report, rows)
+        if report["result"] != "PASS":
+            print(json.dumps({"parity": report, "failures": report["public_reader_only"] + report["controlled_reader_only"]}, indent=2))
+            return 1
 
     failures = []
     results = []

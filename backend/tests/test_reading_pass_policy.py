@@ -29,6 +29,20 @@ def test_preview_boundaries_are_canonical_and_fixed():
     assert not public_audio_position(999)
 
 
+def test_legacy_chapter_preview_metadata_never_changes_canonical_page_access():
+    # Old chapter-level preview markers remain metadata only.  They cannot make
+    # page four public when a chapter happens to span multiple canonical pages.
+    chapters = [{"id": "chapter-001", "is_preview": True}]
+    assert chapters[0]["is_preview"] is True
+    assert [public_text_page(index) for index in (1, 2, 3, 4, 999)] == [
+        True,
+        True,
+        True,
+        False,
+        False,
+    ]
+
+
 def test_canonical_pages_do_not_depend_on_viewport_or_font_settings():
     chapters = [
         {

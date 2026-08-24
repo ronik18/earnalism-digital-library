@@ -143,11 +143,26 @@ def test_checked_in_manifest_flags_fail_closed_when_release_evidence_is_revoked(
     assert "reader_manifest.json audio flags do not match controlled release approval." in issues
 
 
+def test_reader_truth_remains_valid_when_only_audio_truth_is_stale(tmp_path):
+    slug = "bn-066"
+    artifact_dir = tmp_path / slug
+    shutil.copytree(ROOT / "backend/data/controlled_publications" / slug, artifact_dir)
+    public_path = artifact_dir / "public_book.json"
+    public_book = json.loads(public_path.read_text(encoding="utf-8"))
+    public_book["audio_enabled"] = True
+    public_book["audiobook_enabled"] = True
+    public_path.write_text(json.dumps(public_book, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    assert catalog_truth.controlled_reader_validation_issues(slug, str(artifact_dir)) == ()
+    assert "public_book.json audio flags do not match controlled release approval." in catalog_truth.controlled_audio_validation_issues(slug, str(artifact_dir))
+    assert catalog_truth.load_controlled_artifact_book(slug, artifact_dir=artifact_dir) is not None
+
+
 def test_server_accepts_approved_and_hidden_public_audio_contracts():
     from backend import server
 
     approved = catalog_truth.public_book_projection(
-        catalog_truth.load_controlled_artifact_book("book-2b9853ec52")
+        catalog_truth.load_controlled_artifact_book("a-ghost-story")
     )
     hidden = catalog_truth.public_book_projection(
         catalog_truth.load_controlled_artifact_book("bn-066")
@@ -166,7 +181,7 @@ def test_server_accepts_approved_and_hidden_public_audio_contracts():
     assert server._public_projection_is_live(missing_approval) is False
 
 
-def test_book_detail_and_reader_manifest_agree_for_live_bengali_audio(monkeypatch):
+def test_book_detail_and_reader_manifest_agree_for_live_approved_audio(monkeypatch):
     from backend import server
 
     monkeypatch.setattr(server, "db", SimpleNamespace(books=EmptyBooks()))
@@ -175,8 +190,8 @@ def test_book_detail_and_reader_manifest_agree_for_live_bengali_audio(monkeypatc
     monkeypatch.setattr(server, "_redis_cache_get", no_cache)
     monkeypatch.setattr(server, "_redis_cache_set", no_cache)
 
-    detail = asyncio.run(server.get_book("book-2b9853ec52"))
-    manifest = asyncio.run(server._reader_book_manifest_doc("book-2b9853ec52"))
+    detail = asyncio.run(server.get_book("a-ghost-story"))
+    manifest = asyncio.run(server._reader_book_manifest_doc("a-ghost-story"))
 
     assert detail["audio_enabled"] is True
     assert detail["audiobook_enabled"] is True

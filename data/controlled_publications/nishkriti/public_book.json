@@ -192,34 +192,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "historical_mapped_assets",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
   "audiobook_voice": "",
-  "audio_asset_slug": "nishkriti",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780577217/earnalism/audiobooks/ben/nishkriti/nishkriti.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577220/earnalism/audiobooks/ben/nishkriti/nishkriti_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577221/earnalism/audiobooks/ben/nishkriti/nishkriti_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577222/earnalism/audiobooks/ben/nishkriti/nishkriti_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577222/earnalism/audiobooks/ben/nishkriti/nishkriti_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780577217/earnalism/audiobooks/ben/nishkriti/nishkriti.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780577217/earnalism/audiobooks/ben/nishkriti/nishkriti.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577220/earnalism/audiobooks/ben/nishkriti/nishkriti_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577221/earnalism/audiobooks/ben/nishkriti/nishkriti_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577222/earnalism/audiobooks/ben/nishkriti/nishkriti_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780577222/earnalism/audiobooks/ben/nishkriti/nishkriti_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:47Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "audio_asset_slug": "",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:47Z",
   "updated_at": "2026-07-03T20:07:47Z",
   "cover_dimensions": {
@@ -236,6 +217,11 @@
   "source_url": "https://bn.wikisource.org/wiki/%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%95%E0%A7%83%E0%A6%A4%E0%A6%BF_(%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0_%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC,_%E0%A7%A7%E0%A7%AF%E0%A7%AB%E0%A7%A8)",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "audiobook_release_gate": "APPROVED",
-  "audio_qa_status": "QA_PASSED"
+  "audiobook_release_gate": "",
+  "audio_qa_status": "",
+  "audiobook_package": {},
+  "audio_url": "",
+  "audiobook_release_mode": "",
+  "audiobook_manuscript_sha256": "",
+  "audiobook_release_conveyor": {}
 }

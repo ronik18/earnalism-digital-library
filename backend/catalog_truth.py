@@ -742,18 +742,67 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
     return tuple(issues)
 
 
+def controlled_reader_validation_issues(slug: str, artifact_dir: str = "") -> tuple[str, ...]:
+    """Return only the publication facts required to expose Reader content.
+
+    Reader eligibility is deliberately independent from audiobook approval.
+    A title with an audio hold must remain usable by the canonical Reader as
+    long as its publication, source, and chapter truth are complete.
+    """
+
+    audio_markers = (
+        "audio flags",
+        "audiobook assets",
+        "synchronized audio",
+        "server-owned audiobook",
+        "audiobook approval endpoint",
+        "audiobook checksum",
+        "audiobook fingerprint",
+        "raw storage url",
+    )
+    return tuple(
+        issue
+        for issue in controlled_artifact_validation_issues(slug, artifact_dir)
+        if not any(marker in issue.lower() for marker in audio_markers)
+    )
+
+
+def controlled_audio_validation_issues(slug: str, artifact_dir: str = "") -> tuple[str, ...]:
+    """Return the strict audiobook-release subset of controlled validation."""
+
+    audio_markers = (
+        "audio flags",
+        "audiobook assets",
+        "synchronized audio",
+        "server-owned audiobook",
+        "audiobook approval endpoint",
+        "audiobook checksum",
+        "audiobook fingerprint",
+        "raw storage url",
+    )
+    return tuple(
+        issue
+        for issue in controlled_artifact_validation_issues(slug, artifact_dir)
+        if any(marker in issue.lower() for marker in audio_markers)
+    )
+
+
 def controlled_artifact_status(slug: str, *, artifact_dir: str | Path | None = None) -> dict[str, Any]:
     normalized = normalize_slug(slug)
     base = Path(artifact_dir) if artifact_dir else controlled_artifact_dir(normalized)
     issues = list(controlled_artifact_validation_issues(normalized, str(base)))
+    reader_issues = list(controlled_reader_validation_issues(normalized, str(base)))
+    audio_issues = list(controlled_audio_validation_issues(normalized, str(base)))
     public_book = read_json_file(base / "public_book.json")
     reader_manifest = read_json_file(base / "reader_manifest.json")
-    artifact_book = load_controlled_artifact_book(normalized, include_content=False, artifact_dir=base) if not issues else None
+    artifact_book = load_controlled_artifact_book(normalized, include_content=False, artifact_dir=base) if not reader_issues else None
     self_contained_for_truth_gate = bool(artifact_book and is_live_approved_book(artifact_book))
     return {
         "available": not issues,
         "artifact_dir": str(base),
         "issues": issues,
+        "reader_issues": reader_issues,
+        "audio_issues": audio_issues,
         "slug": normalize_slug(public_book.get("slug")),
         "title": normalize_text(public_book.get("title")),
         "chapter_count": int(reader_manifest.get("chapter_count") or 0),
@@ -774,7 +823,7 @@ def load_controlled_artifact_book(
     if normalized == "dracula":
         return load_dracula_artifact_book(include_content=include_content, artifact_dir=artifact_dir)
     base = Path(artifact_dir) if artifact_dir else controlled_artifact_dir(normalized)
-    if controlled_artifact_validation_issues(normalized, str(base)):
+    if controlled_reader_validation_issues(normalized, str(base)):
         return None
     public_book = read_json_file(base / "public_book.json")
     approval_evidence = read_json_file(base / "approval_evidence.json")
