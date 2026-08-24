@@ -19,5 +19,7 @@ assert(!/download=|autoplay|background.play/i.test(listener), "Listener v2 must 
 assert(!/fetch\(|axios/.test(about), "About v2 must make zero data API calls.");
 assert(shared.includes("prefers-reduced-motion") && shared.includes("max-width: 767px"), "Scoped CSS must include reduced-motion and mobile rules.");
 assert(readerRoute.includes("canonicalPage > 3 && !lease"), "Reader route must not request protected pages before a lease exists.");
-assert(listenerRoute.includes("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 180 })"), "Listener must authorize protected continuation explicitly.");
+assert(listener.includes("!presentation.fixture && access.authorized && presentation.mediaUrl && <audio"), "Listener must create media only after entitlement is active.");
+assert(listenerRoute.includes("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 0 })"), "Listener authorization must begin at second zero.");
+assert(!listenerRoute.includes("positionSeconds: 180"), "Listener must not retain a public-audio boundary.");
 console.log("RLA_V2_STATIC_CONTRACT=passed");

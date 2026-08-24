@@ -23,18 +23,12 @@ const covers = fs.readFileSync(
 );
 
 describe("PremiumListeningRail Home contract", () => {
-  test("mounts in Hero to Listening Room to Collage order", () => {
-    expect(home.indexOf("<PremiumHero")).toBeGreaterThan(-1);
-    expect(home.indexOf("<HomeListeningRoom")).toBeGreaterThan(
-      home.indexOf("<PremiumHero"),
+  test("keeps the retired listening rail out of the approved public home surface", () => {
+    expect(home).toContain("<ReferenceHomeSurface");
+    expect(home).not.toContain("<PremiumHero");
+    expect(home.indexOf("<ReferenceHomeSurface")).toBeLessThan(
+      home.indexOf("reference-home__legacy-content"),
     );
-    expect(home.indexOf("<HomeShelfArchitecture")).toBeGreaterThan(
-      home.indexOf("<HomeListeningRoom"),
-    );
-    expect(homeListeningRoom).toContain("<PremiumListeningRail");
-    expect(homeListeningRoom).toContain("fetchHomeListening(controller.signal, 3)");
-    expect(homeListeningRoom).toContain("loading={loading}");
-    expect(homeListeningRoom).not.toContain("getHomeListeningCache");
   });
 
   test("derives audiobook links from the card slug instead of trusting a stale CTA URL", () => {

@@ -12,8 +12,8 @@ describe("Reference public page surfaces", () => {
   });
 
   test("uses the approved canonical preview and non-recurring pass language", () => {
-    expect(source).toContain("The first 3 canonical pages are free.");
-    expect(source).toContain("First 3 pages free on eligible books");
+    expect(source).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
+    expect(source).toContain("First 3 pages are free on eligible titles");
     expect(source).toContain("No subscription or autorenewal");
     expect(source).not.toContain("Chapter 1 free");
     expect(source).not.toContain("Most Popular");

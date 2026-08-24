@@ -137,6 +137,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
   const sitemap = read("frontend/public/sitemap.xml");
   const robots = read("frontend/public/robots.txt");
   const staticSnapshotGenerator = read("frontend/scripts/generate-static-seo-snapshots.mjs");
+  const staticSeoPublicContract = read("frontend/static-seo/controlled-publication-public.json");
 
   test("/book/dracula has crawler-visible Dracula-specific metadata", () => {
     expect(bookHtml).toContain("earnalism-static-seo:start");
@@ -212,7 +213,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(libraryHtml).toContain("Reader-ready classics, release-gated audio.");
     expect(libraryHtml).toContain("Reader-only releases do not offer listening CTAs.");
-    expect(pricingHtml).toContain("The first 3 canonical pages are free.");
+    expect(pricingHtml).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(pricingHtml).toContain("Reading Pass");
     expect(pricingHtml).toMatch(/No subscription|no subscription/);
     for (const html of [homeHtml, libraryHtml, pricingHtml]) {
@@ -259,8 +260,25 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(staticSnapshotGenerator).toContain('path: "/book/dracula"');
     expect(staticSnapshotGenerator).toContain('path: "/reader/dracula"');
     expect(staticSnapshotGenerator).toContain('robots: "noindex,follow"');
-    expect(staticSnapshotGenerator).toContain("Dracula controlled-publication artifacts are not approved");
+    expect(staticSnapshotGenerator).toContain("Static SEO public contract is missing or unreadable");
     expect(staticSnapshotGenerator).not.toContain("AudioObject");
     expect(staticSnapshotGenerator).not.toContain("sameAs: source.source_url");
+  });
+
+  test("the frontend-local public SEO contract is fresh, bounded, and contains no protected publication data", () => {
+    expect(() => execFileSync(process.execPath, ["scripts/generate_static_seo_public_contract.mjs", "--check"], {
+      cwd: ROOT,
+      stdio: "pipe",
+    })).not.toThrow();
+    const contract = JSON.parse(staticSeoPublicContract);
+    expect(contract.schema_version).toBe("earnalism.static-seo-public.v1");
+    expect(contract.publications).toHaveLength(1);
+    expect(contract.publications[0]).toMatchObject({
+      slug: "dracula",
+      text_preview_limit_canonical_pages: 3,
+      audio_public_preview_seconds: 0,
+      audio_availability_state: "disabled",
+    });
+    expect(staticSeoPublicContract).not.toMatch(/source_url|source_hash|content_hash|provenance_hash|audio_url|storage|credential/i);
   });
 });

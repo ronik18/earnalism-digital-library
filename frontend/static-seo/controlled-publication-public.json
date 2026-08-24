@@ -1,0 +1,27 @@
+{
+  "schema_version": "earnalism.static-seo-public.v1",
+  "generated_from": {
+    "data/controlled_publications/dracula/public_book.json": "5bb9efccca471ae53f670e3cf76857fe40bbc7a7ae67b7a90f7c0a5a1276bd00",
+    "data/controlled_publications/dracula/reader_manifest.json": "558472f4cf77b844e221827eb59f2dd84847ca3dba6d5708e5b42952588ec819",
+    "data/controlled_publications/dracula/source_evidence.json": "674f589e79b0e990e3e511d3875602be3c4f24b5cff1860ea0f2939dc2cc78ac",
+    "data/controlled_publications/dracula/approval_evidence.json": "edd40ccba60553473d19febe988b7f8d05ecd51cb0c1cec055c493587a471fa7"
+  },
+  "publications": [
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "author": "Bram Stoker",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+      "chapter_count": 27,
+      "source_display_name": "Project Gutenberg eBook #345",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/dracula",
+        "reader": "/reader/dracula"
+      }
+    }
+  ]
+}

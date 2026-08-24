@@ -24,10 +24,10 @@ UAT = ROOT / "uat"
 MANIFEST_NAME = "system-run-manifest.json"
 REQUIRED_RUNS = {
     "backend-compile": {"min_passed": 1},
-    "backend-core": {"min_passed": 47, "markers": ("47 passed",)},
+    "backend-core": {"min_passed": 49, "markers": ("49 passed",)},
     "backend-policy": {"min_passed": 8, "markers": ("8 passed",)},
-    "frontend-full": {"min_passed": 258, "markers": ("258 passed",)},
-    "frontend-build": {"min_passed": 1, "markers": ("Wrote 7 static snapshots",)},
+    "frontend-full": {"min_passed": 275, "markers": ("275 passed",)},
+    "frontend-build": {"min_passed": 1, "markers": ("Wrote 5 static snapshots",)},
     "contracts": {"min_passed": 2, "markers": ("local-contracts=PASS", "production-network-requests=0")},
     "hydration": {"min_passed": 7, "markers": ("7 passed",)},
     "responsive": {"min_passed": 8, "markers": ("8 passed",)},

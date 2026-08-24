@@ -104,6 +104,7 @@ describe("UX conversion static signals", () => {
   const gitignore = read(".gitignore");
   const frontendPackageJson = read("frontend/package.json");
   const staticSnapshotGenerator = read("frontend/scripts/generate-static-seo-snapshots.mjs");
+  const staticSeoContractGenerator = read("scripts/generate_static_seo_public_contract.mjs");
   const socialPreviewAudit = read("scripts/social_preview_audit.py");
   const postProductionCanary = read("scripts/post_production_canary.py");
   const brandSiteTour = read("scripts/create_premium_site_tour.py");
@@ -369,24 +370,29 @@ describe("UX conversion static signals", () => {
     expect(premiumLandingSources).not.toMatch(/\b(fashion|clothing|apparel|self-publishing|WooCommerce|Add to cart|Shop now)\b/i);
   });
 
-  test("pull-request regression runs against the isolated local smoke target", () => {
-    const localPrStep = extractBetween(
+  test("PR and main pre-deploy regression run the same isolated current-commit target", () => {
+    const localPreDeployStep = extractBetween(
       regressionWorkflow,
-      "- name: Run isolated local PR regression",
-      "- name: Run main pre-deploy regression",
+      "- name: Run isolated current-commit pre-deploy regression",
+      "- name: Stop isolated MongoDB replica set",
     );
     expect(regressionWorkflow).toContain("mongo:7.0.14");
     expect(regressionWorkflow).toContain("--replSet earnalism-uat-rs0");
-    expect(localPrStep).toContain("UAT_EXTERNAL_MONGODB: true");
-    expect(localPrStep).toContain("NODE_ENV: production");
-    expect(localPrStep).toContain("bash scripts/run_pr_regression.sh");
+    expect(localPreDeployStep).toContain("UAT_EXTERNAL_MONGODB: true");
+    expect(localPreDeployStep).toContain("NODE_ENV: production");
+    expect(localPreDeployStep).toContain("bash scripts/run_pr_regression.sh");
     expect(prRegressionRunner).toContain('UAT_COMMAND_FILE="$ROOT/scripts/run_pr_regression_gates.sh"');
     expect(prRegressionRunner).toContain("bash scripts/start_local_uat.sh");
     expect(prRegressionGates).toContain('EARNALISM_BASE_URL="$UAT_BASE_URL"');
     expect(prRegressionGates).toContain('REGRESSION_FRONTEND_URL="$UAT_BASE_URL"');
     expect(prRegressionGates).toContain('REGRESSION_API_URL="${UAT_API_BASE_URL%/api}"');
+    expect(prRegressionGates).toContain("production fallback is rejected");
     expect(prRegressionGates).toContain("npm run regression:ci");
-    expect(localPrStep).not.toMatch(/theearnalism\.com|continue-on-error/);
+    expect(localPreDeployStep).not.toMatch(/theearnalism\.com|continue-on-error/);
+    expect(regressionWorkflow).not.toContain("STAGING_FRONTEND_URL");
+    expect(regressionWorkflow).not.toContain("STAGING_API_URL");
+    expect(regressionWorkflow).not.toContain("Run main pre-deploy regression");
+    expect(regressionWorkflow).toContain("REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}");
     expect(regressionWorkflow).not.toContain("Report production parity without blocking PR deploy fix");
   });
 
@@ -1592,6 +1598,8 @@ describe("UX conversion static signals", () => {
     expect(staticSnapshotGenerator).toContain("BreadcrumbList");
     expect(staticSnapshotGenerator).toContain("noindex,follow");
     expect(staticSnapshotGenerator).toContain("/reader/dracula");
+    expect(staticSnapshotGenerator).toContain("controlled-publication-public.json");
+    expect(staticSeoContractGenerator).toContain("audio_public_preview_seconds: 0");
     expect(packageJson).toContain("launch:social-preview-audit");
     expect(packageJson).toContain("launch:social-preview-audit:prod");
     expect(packageJson).toContain("release:post-production-canary");
@@ -1730,7 +1738,7 @@ describe("UX conversion static signals", () => {
     const readerHtml = readOptional("frontend/build/reader/dracula/index.html");
     if (!homeHtml || !readerHtml) {
       expect(staticSnapshotGenerator).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
-      expect(staticSnapshotGenerator).toContain("The first 3 canonical pages are free.");
+      expect(staticSnapshotGenerator).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
       return;
     }
 

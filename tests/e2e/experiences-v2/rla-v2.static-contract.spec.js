@@ -23,6 +23,9 @@ describe("RLA v2 isolated implementation contracts", () => {
     expect(listener).toContain('preload="metadata"');
     expect((listener.match(/<audio/g) || []).length).toBe(1);
     expect(listener).not.toMatch(/download=|background.play|autoplay/i);
+    expect(listener).toContain("!presentation.fixture && access.authorized && presentation.mediaUrl && <audio");
+    expect(listener).toContain('aria-label="Seek within approved audiobook"');
+    expect(listener).not.toContain("audiobook preview");
   });
 
   test("scoped CSS carries responsive and reduced-motion guardrails", () => {

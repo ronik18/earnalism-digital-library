@@ -4,15 +4,11 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const frontendDir = path.resolve(__dirname, "..");
-const repoRoot = path.resolve(frontendDir, "..");
 const buildDir = path.join(frontendDir, "build");
 const indexPath = path.join(buildDir, "index.html");
 const publicIndexPath = path.join(frontendDir, "public", "index.html");
+const publicContractPath = path.join(frontendDir, "static-seo", "controlled-publication-public.json");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
-const draculaBookPath = path.join(repoRoot, "data", "controlled_publications", "dracula", "public_book.json");
-const draculaManifestPath = path.join(repoRoot, "data", "controlled_publications", "dracula", "reader_manifest.json");
-const draculaSourcePath = path.join(repoRoot, "data", "controlled_publications", "dracula", "source_evidence.json");
-const draculaApprovalPath = path.join(repoRoot, "data", "controlled_publications", "dracula", "approval_evidence.json");
 
 const MANAGED_HEAD_START = "<!-- earnalism-static-seo:start -->";
 const MANAGED_HEAD_END = "<!-- earnalism-static-seo:end -->";
@@ -53,27 +49,35 @@ async function readSnapshotTemplate() {
   }
 }
 
-async function loadDraculaArtifacts() {
-  const [book, manifest, source, approval] = await Promise.all([
-    readJson(draculaBookPath),
-    readJson(draculaManifestPath),
-    readJson(draculaSourcePath),
-    readJson(draculaApprovalPath),
-  ]);
-
-  const sourceName = String(source.source_name || "").trim();
-  const approved = approval.approved_to_publish === true
-    && approval.rights_tier === "A"
-    && approval.verification_status === "approved"
-    && approval.qa_status === "QA_PASSED"
-    && source.source_url === "https://www.gutenberg.org/ebooks/345"
-    && /^Project Gutenberg(?: eBook #345)?$/i.test(sourceName);
-
-  if (!approved) {
-    throw new Error("Dracula controlled-publication artifacts are not approved for static SEO snapshots.");
+async function loadPublicContract() {
+  let contract;
+  try {
+    contract = await readJson(publicContractPath);
+  } catch (error) {
+    throw new Error(`Static SEO public contract is missing or unreadable: ${error.code || error.message}. Run node scripts/generate_static_seo_public_contract.mjs before the frontend build.`);
   }
-
-  return { book, manifest, source, approval };
+  const publication = Array.isArray(contract.publications)
+    ? contract.publications.find((entry) => entry?.slug === "dracula")
+    : null;
+  const sourceHashes = contract.generated_from || {};
+  const valid = contract.schema_version === "earnalism.static-seo-public.v1"
+    && publication?.title === "Dracula"
+    && publication?.author === "Bram Stoker"
+    && /^https:\/\//.test(String(publication?.cover_url || ""))
+    && Number(publication?.chapter_count) === 27
+    && publication?.source_display_name === "Project Gutenberg eBook #345"
+    && publication?.approved_rights_display_state === "approved_tier_a"
+    && Number(publication?.text_preview_limit_canonical_pages) === 3
+    && Number(publication?.audio_public_preview_seconds) === 0
+    && publication?.audio_availability_state === "disabled"
+    && publication?.canonical_routes?.book === "/book/dracula"
+    && publication?.canonical_routes?.reader === "/reader/dracula"
+    && Object.values(sourceHashes).length === 4
+    && Object.values(sourceHashes).every((value) => /^[a-f0-9]{64}$/.test(String(value)));
+  if (!valid) {
+    throw new Error("Static SEO public contract is stale or invalid. Regenerate it with node scripts/generate_static_seo_public_contract.mjs before the frontend build.");
+  }
+  return publication;
 }
 
 function stripManagedHead(html) {
@@ -278,14 +282,12 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
   ].filter(Boolean).join("\n");
 }
 
-function buildPages({ book, manifest }) {
+function buildPages(publication) {
   const publicAccessCopy = "Read the first 3 pages free. Listening requires an active Reading Pass.";
   const homeDescription = "A calm digital reading room for timeless Bengali and English literature. Explore a calm digital reading room with reader-ready classics and release-gated audiobooks.";
   const bookDescription = `Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. ${publicAccessCopy} Audio remains unavailable for this controlled release unless separately approved.`;
   const libraryDescription = `Browse Earnalism's Bengali and English classics. ${publicAccessCopy} Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.`;
   const pricingDescription = `${publicAccessCopy} Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading, works across eligible titles, and never renews automatically.`;
-  const journalDescription = "Launch notes from The Earnalism's Bengali and English digital reading room and rights-safe publication pipeline.";
-  const contactDescription = "Contact The Earnalism about Dracula reading-time access, support, refunds, school interest, and rights-safe publication questions.";
   const readerDescription = "Read the Dracula preview. The first 3 canonical pages are available in the public preview. Audio controls are unavailable for this release. Search engines should use the public Dracula book page instead.";
 
   return [
@@ -322,7 +324,7 @@ function buildPages({ book, manifest }) {
       ogDescription: bookDescription,
       twitterTitle: "Dracula by Bram Stoker | The Earnalism",
       twitterDescription: bookDescription,
-      image: book.cover_image_url || DRACULA_IMAGE,
+      image: publication.cover_url || DRACULA_IMAGE,
       imageAlt: "Dracula by Bram Stoker on The Earnalism",
       bookOgTags: [
         metaTag("property", "book:author", "Bram Stoker"),
@@ -343,10 +345,10 @@ function buildPages({ book, manifest }) {
         title: "Dracula by Bram Stoker",
         body: bookDescription,
         facts: [
-          `${manifest.chapter_count} chapters.`,
-          "The first 3 canonical pages are free.",
-          "Source: Project Gutenberg eBook #345.",
-          "Rights status: approved Tier A controlled core reading release.",
+          `${publication.chapter_count} chapters.`,
+          publicAccessCopy,
+          `Source: ${publication.source_display_name}.`,
+          "Rights status: approved for public display.",
           "Audio is unavailable in the current controlled release unless separately approved.",
         ],
         links: [
@@ -403,45 +405,6 @@ function buildPages({ book, manifest }) {
       }),
     },
     {
-      path: "/journal",
-      title: "Journal | The Earnalism Launch Notes",
-      description: journalDescription,
-      canonicalPath: "/journal",
-      ogTitle: "Journal | The Earnalism",
-      ogDescription: "Notes from the Bengali and English reading room and rights-safe release pipeline.",
-      imageAlt: "Earnalism journal",
-      jsonLd: [webpageJsonLd({ title: "Journal | The Earnalism", description: journalDescription, path: "/journal" })],
-      staticBody: pageShell({
-        eyebrow: "Journal",
-        title: "Notes from a Bengali and English reading room.",
-        body: journalDescription,
-        links: [
-          { href: "/book/dracula", label: "Open Dracula" },
-          { href: "/library", label: "Library" },
-        ],
-      }),
-    },
-    {
-      path: "/contact",
-      title: "Contact The Earnalism | Dracula Reading Support",
-      description: contactDescription,
-      canonicalPath: "/contact",
-      ogTitle: "Contact The Earnalism",
-      ogDescription: "Contact The Earnalism for Dracula reading-time support, refunds, school interest, and rights questions.",
-      imageAlt: "Contact The Earnalism",
-      jsonLd: [organizationJsonLd(), webpageJsonLd({ title: "Contact The Earnalism", description: contactDescription, path: "/contact" })],
-      staticBody: pageShell({
-        eyebrow: "Contact",
-        title: "Contact The Earnalism.",
-        body: contactDescription,
-        facts: ["Support and refund questions: sales@reoenterprise.org."],
-        links: [
-          { href: "mailto:sales@reoenterprise.org", label: "Email support" },
-          { href: "/book/dracula", label: "Open Dracula" },
-        ],
-      }),
-    },
-    {
       path: "/reader/dracula",
       title: "Read the Dracula Preview | The Earnalism Reader",
       description: readerDescription,
@@ -455,7 +418,7 @@ function buildPages({ book, manifest }) {
         eyebrow: "Reader Interface",
         title: "Read the Dracula preview.",
         body: `${publicAccessCopy} This reader page is noindex and canonicalized to the public Dracula book page.`,
-        facts: [`${manifest.chapter_count} chapters in the manifest.`, "Audio controls are unavailable for this release."],
+        facts: [`${publication.chapter_count} chapters in the manifest.`, "Audio controls are unavailable for this release."],
         links: [
           { href: "/book/dracula", label: "Public Dracula Page" },
           { href: "/pricing?book=dracula", label: "View Reading Passes" },
@@ -476,17 +439,8 @@ async function writeSnapshot(page, template) {
 
 async function main() {
   const template = await readSnapshotTemplate();
-  let artifacts;
-  try {
-    artifacts = await loadDraculaArtifacts();
-  } catch (error) {
-    if (error?.code === "ENOENT") {
-      console.warn("[static-seo] Controlled-publication artifacts are unavailable; skipping static SEO snapshots.");
-      return;
-    }
-    throw error;
-  }
-  const pages = buildPages(artifacts);
+  const publication = await loadPublicContract();
+  const pages = buildPages(publication);
   const written = [];
 
   for (const page of pages) {

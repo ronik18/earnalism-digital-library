@@ -51,9 +51,9 @@ export default function ListenerExperienceV2Route() {
       return;
     }
     try {
-      // Audio preview is not a public capability. The current server marks
-      // 180 seconds as the protected continuation boundary.
-      const started = await startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 180 });
+      // Audio has no public preview. A paid Reading Pass authorizes playback
+      // from its first byte, including every Range request.
+      const started = await startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 0 });
       setLeaseState({ sessionId: started.session_id, token: started.lease_token, version: Number(started.lease_version || 1), sequence: 0 });
       setError("");
     } catch (requestError) {
