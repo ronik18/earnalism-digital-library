@@ -18,18 +18,23 @@ OUTPUT_DIR = ROOT / "output" / "launch"
 DEFAULT_BASE_URL = "https://theearnalism.com"
 ROUTES = {
     "/book/dracula": {
-        "required": ("first 3 canonical pages", "View Reading Passes", "Listening requires an active Reading Pass"),
+        "required": ("first 3 canonical pages", "View Reading Passes", "Read the first 3 pages free. Listening requires an active Reading Pass."),
         "forbidden": ("Chapter 1 is free", "Read Chapter 1", "7-day", "The First Chapter", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"),
         "reader": False,
     },
+    "/library": {
+        "required": ("Read the first 3 pages free. Listening requires an active Reading Pass.",),
+        "forbidden": ("Chapter 1 is free", "Read Chapter 1", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"),
+        "reader": False,
+    },
     "/pricing?book=dracula": {
-        "required": ("first 3 canonical pages", "Reading Pass", "No subscription"),
-        "forbidden": ("The First Chapter", "Start with Chapter 1", "7-day"),
+        "required": ("Reading Pass", "No subscription", "Read the first 3 pages free. Listening requires an active Reading Pass."),
+        "forbidden": ("The First Chapter", "Start with Chapter 1", "7-day", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"),
         "reader": False,
     },
     "/reader/dracula": {
-        "required": ("first 3 canonical pages",),
-        "forbidden": ("Read Dracula Chapter 1", "Preview chapter unlocked", "Get 7-Day Reading Pass", "7-day"),
+        "required": ("Read the first 3 pages free. Listening requires an active Reading Pass.",),
+        "forbidden": ("Read Dracula Chapter 1", "Preview chapter unlocked", "Get 7-Day Reading Pass", "7-day", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"),
         "reader": True,
     },
 }

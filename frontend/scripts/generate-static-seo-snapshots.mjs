@@ -279,10 +279,11 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 }
 
 function buildPages({ book, manifest }) {
+  const publicAccessCopy = "Read the first 3 pages free. Listening requires an active Reading Pass.";
   const homeDescription = "A calm digital reading room for timeless Bengali and English literature. Explore a calm digital reading room with reader-ready classics and release-gated audiobooks.";
-  const bookDescription = "Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. Read the first 3 pages free. Listening requires an active Reading Pass. Audio remains unavailable for this controlled release unless separately approved.";
-  const libraryDescription = "Browse Earnalism's Bengali and English classics. Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.";
-  const pricingDescription = "The first 3 canonical pages are free. Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading, works across eligible titles, and never renews automatically.";
+  const bookDescription = `Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. ${publicAccessCopy} Audio remains unavailable for this controlled release unless separately approved.`;
+  const libraryDescription = `Browse Earnalism's Bengali and English classics. ${publicAccessCopy} Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.`;
+  const pricingDescription = `${publicAccessCopy} Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading, works across eligible titles, and never renews automatically.`;
   const journalDescription = "Launch notes from The Earnalism's Bengali and English digital reading room and rights-safe publication pipeline.";
   const contactDescription = "Contact The Earnalism about Dracula reading-time access, support, refunds, school interest, and rights-safe publication questions.";
   const readerDescription = "Read the Dracula preview. The first 3 canonical pages are available in the public preview. Audio controls are unavailable for this release. Search engines should use the public Dracula book page instead.";
@@ -373,8 +374,8 @@ function buildPages({ book, manifest }) {
       staticBody: pageShell({
         eyebrow: "Library",
         title: "Reader-ready classics, release-gated audio.",
-        body: "Browse Bengali and English classics without audio overclaim. Reader-only releases stay intentional and premium.",
-        facts: ["Dracula remains the featured release.", "Validated public-domain classics open as reader-only releases.", "Unapproved audiobooks stay hidden.", "Reader-only releases do not offer listening CTAs."],
+        body: `Browse Bengali and English classics without audio overclaim. ${publicAccessCopy}`,
+        facts: ["The first 3 canonical pages are server-defined.", "Validated public-domain classics open as reader-only releases.", "Unapproved audiobooks stay hidden.", "Reader-only releases do not offer listening CTAs."],
         links: [
           { href: "/library?category=live", label: "Bengali Classics" },
           { href: "/book/dracula", label: "Open Dracula" },
@@ -393,7 +394,7 @@ function buildPages({ book, manifest }) {
       staticBody: pageShell({
         eyebrow: "Reading Time",
         title: "Choose your reading time. Return whenever the book calls.",
-        body: "The first 3 canonical pages are free. Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading.",
+        body: `${publicAccessCopy} Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading.`,
         facts: [
           "Reading Pass time works across eligible titles.",
           "Secure payment by Razorpay. No subscription or autorenewal.",
@@ -453,7 +454,7 @@ function buildPages({ book, manifest }) {
       staticBody: pageShell({
         eyebrow: "Reader Interface",
         title: "Read the Dracula preview.",
-        body: "The first 3 canonical pages are available in the public preview. This reader page is noindex and canonicalized to the public Dracula book page.",
+        body: `${publicAccessCopy} This reader page is noindex and canonicalized to the public Dracula book page.`,
         facts: [`${manifest.chapter_count} chapters in the manifest.`, "Audio controls are unavailable for this release."],
         links: [
           { href: "/book/dracula", label: "Public Dracula Page" },
