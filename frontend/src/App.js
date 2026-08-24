@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { SettingsProvider } from "./context/SettingsContext";
 import Layout from "./components/Layout";
@@ -11,13 +11,16 @@ const pageImports = {
   BookDetail: () => import("./pages/BookDetail"),
   Journal: () => import("./pages/Journal"),
   JournalArticle: () => import("./pages/JournalArticle"),
-  About: () => import("./pages/About"),
+  AboutLegacy: () => import("./pages/About"),
   Contact: () => import("./pages/Contact"),
   Login: () => import("./pages/Login"),
   Signup: () => import("./pages/Signup"),
   Account: () => import("./pages/Account"),
   Pricing: () => import("./pages/Pricing"),
-  Reader: () => import("./pages/Reader"),
+  ReaderLegacy: () => import("./pages/Reader"),
+  ReaderV2: () => import("./experiences-v2/reader/ReaderExperienceV2Route"),
+  ListenerV2: () => import("./experiences-v2/listener/ListenerExperienceV2Route"),
+  AboutV2: () => import("./experiences-v2/about/AboutExperienceV2Route"),
   MicroStoryLanding: () => import("./pages/MicroStoryLanding"),
   SecureReaderHarness: () => import("./pages/SecureReaderHarness"),
   AdminLogin: () => import("./pages/AdminLogin"),
@@ -30,13 +33,16 @@ const Library = lazy(pageImports.Library);
 const BookDetail = lazy(pageImports.BookDetail);
 const Journal = lazy(pageImports.Journal);
 const JournalArticle = lazy(pageImports.JournalArticle);
-const About = lazy(pageImports.About);
+const AboutLegacy = lazy(pageImports.AboutLegacy);
 const Contact = lazy(pageImports.Contact);
 const Login = lazy(pageImports.Login);
 const Signup = lazy(pageImports.Signup);
 const Account = lazy(pageImports.Account);
 const Pricing = lazy(pageImports.Pricing);
-const Reader = lazy(pageImports.Reader);
+const ReaderLegacy = lazy(pageImports.ReaderLegacy);
+const ReaderV2 = lazy(pageImports.ReaderV2);
+const ListenerV2 = lazy(pageImports.ListenerV2);
+const AboutV2 = lazy(pageImports.AboutV2);
 const MicroStoryLanding = lazy(pageImports.MicroStoryLanding);
 const SecureReaderHarness = lazy(pageImports.SecureReaderHarness);
 const AdminLogin = lazy(pageImports.AdminLogin);
@@ -75,13 +81,18 @@ function PageFallback() {
   );
 }
 
+function LegacyListenerRedirect() {
+  const { slug = "" } = useParams();
+  return <Navigate to={`/reader-legacy/${encodeURIComponent(slug)}?listen=1`} replace />;
+}
+
 function useHighIntentRoutePrefetch() {
   useEffect(() => {
     const prefetch = () => {
       [
         pageImports.Library,
         pageImports.BookDetail,
-        pageImports.Reader,
+        pageImports.ReaderV2,
         pageImports.Pricing,
         pageImports.Login,
       ].forEach((load) => load().catch(() => {}));
@@ -114,7 +125,7 @@ export function AppRouterContent() {
             <Route path="/book/:slug" element={<BookDetail />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:slug" element={<JournalArticle />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about-legacy" element={<AboutLegacy />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/micro-story" element={<MicroStoryLanding />} />
@@ -129,7 +140,11 @@ export function AppRouterContent() {
             <Route path="*" element={<NotFound />} />
           </Route>
           {/* Standalone full-screen routes (no public header/footer) */}
-          <Route path="/reader/:slug" element={<Reader />} />
+          <Route path="/about" element={<AboutV2 />} />
+          <Route path="/reader/:slug" element={<ReaderV2 />} />
+          <Route path="/reader-legacy/:slug" element={<ReaderLegacy />} />
+          <Route path="/listener/:slug" element={<ListenerV2 />} />
+          <Route path="/listener-legacy/:slug" element={<LegacyListenerRedirect />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/launch-monitor" element={<Admin initialTab="launch-monitor" />} />
