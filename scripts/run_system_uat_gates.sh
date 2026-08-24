@@ -22,7 +22,7 @@ run_gate() {
 run_gate backend-compile 1 .venv-uat/bin/python -m compileall -q backend
 run_gate backend-core 49 env -u READING_PASS_V2_ENABLED .venv-uat/bin/python -m pytest -q backend/tests/test_reading_pass_policy.py backend/tests/test_reading_time_invariants.py backend/tests/test_payments_razorpay.py backend/tests/test_reading_pass_service_concurrency.py backend/tests/test_reading_pass_security_static.py
 run_gate backend-policy 8 .venv-uat/bin/python -m pytest -q backend/tests/test_controlled_launch_parity.py
-run_gate frontend-full 275 env -u REACT_APP_BACKEND_URL -u REACT_APP_API_URL -u REACT_APP_UAT_LOCAL npm --prefix frontend test -- --watchAll=false --runInBand
+run_gate frontend-full 276 env -u REACT_APP_BACKEND_URL -u REACT_APP_API_URL -u REACT_APP_UAT_LOCAL npm --prefix frontend test -- --watchAll=false --runInBand
 run_gate frontend-build 1 npm --prefix frontend run build
 run_gate contracts 2 .venv-uat/bin/python scripts/verify_local_uat_contracts.py
 run_gate hydration 7 npx playwright test tests/e2e/hydration-routes.spec.js --project=chromium
