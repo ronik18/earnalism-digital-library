@@ -37,6 +37,8 @@ const TRUST_FACTS = [
   [Sparkles, "Beautiful editions", "Made for a slower kind of reading."],
 ];
 
+const PUBLIC_ACCESS_COPY = "Read the first 3 pages free. Listening requires an active Reading Pass.";
+
 function titleFor(book) {
   return book?.title_en || book?.title || "Untitled edition";
 }
@@ -125,7 +127,7 @@ export function ReferenceHomeSurface() {
             <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Enter the Library</Link>
             <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline">Enter the Listening Room</Link>
           </div>
-          <p className="reference-home__policy"><Check aria-hidden="true" /> Read the first 3 pages free. Listening requires an active Reading Pass. <span /> <ClockMark aria-hidden="true" /> Reading time is used only while you read</p>
+          <p className="reference-home__policy"><Check aria-hidden="true" /> {PUBLIC_ACCESS_COPY} <span /> <ClockMark aria-hidden="true" /> Reading time is used only while you read</p>
         </div>
         <picture className="reference-home__hero-art">
           <source media="(max-width: 640px)" srcSet="/assets/hero/premium-library-mobile-cinematic-v2.webp" />
@@ -235,7 +237,7 @@ export function ReferenceLibrarySurface({
         </div>
       </header>
       <main className="reference-library__content">
-        <aside className="reference-library__sidebar" aria-label="Library filters"><p>Explore</p><CompactFilters language={language} reading={reading} listening={listening} onChange={update} /><div className="reference-library__pass"><strong>Reading Pass</strong><p>Add time only when a story asks you to stay.</p><Link to="/pricing">View passes</Link></div></aside>
+        <aside className="reference-library__sidebar" aria-label="Library filters"><p>Explore</p><CompactFilters language={language} reading={reading} listening={listening} onChange={update} /><div className="reference-library__pass"><strong>Reading Pass</strong><p>{PUBLIC_ACCESS_COPY}</p><Link to="/pricing">View passes</Link></div></aside>
         <section className="reference-library__shelves" aria-live="polite">
           {loading ? <p className="reference-loading">Opening the collection...</p> : shelves.map(([title, copy, books]) => <section key={title} className="reference-library-shelf" aria-labelledby={`shelf-${title}`}><SectionHeading eyebrow={title === "Live now" ? "LIVE NOW" : title.toUpperCase()} title={title} action={<span className="reference-shelf-count">{books.length} editions</span>}><p>{copy}</p></SectionHeading>{books.length ? <div className="reference-library-grid">{books.slice(0, 10).map((book, index) => <BookTile key={book.slug} book={book} compact priority={index < 2} showListen={title === "Audiobooks"} />)}</div> : <p className="reference-empty-listening">No titles currently match this release state.</p>}</section>)}
         </section>
@@ -254,14 +256,14 @@ export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId
   return (
     <div className="reference-commerce" data-testid="pricing-reference-surface">
       <section className="reference-commerce__hero" aria-labelledby="reference-commerce-title">
-        <div><p className="reference-kicker">READING PASSES</p><h1 id="reference-commerce-title">Read more.<br />Live the stories.</h1><p>Unlock unhurried reading time and immerse yourself in timeless Bengali and English classics.</p><ul><li>First 3 pages free on eligible books</li><li>Reading time is used only while you read</li><li>No subscription or autorenewal</li></ul></div>
+        <div><p className="reference-kicker">READING PASSES</p><h1 id="reference-commerce-title">Read more.<br />Live the stories.</h1><p>Unlock unhurried reading time and immerse yourself in timeless Bengali and English classics.</p><ul><li>{PUBLIC_ACCESS_COPY}</li><li>Reading time is used only while you read</li><li>No subscription or autorenewal</li></ul></div>
         <picture className="reference-commerce__hero-art">
           <source media="(max-width: 640px)" srcSet="/assets/hero/premium-library-mobile-cinematic-v2.webp" />
           <img src="/assets/hero/golden-hour-library-hero.webp" alt="" fetchPriority="high" decoding="async" />
         </picture>
       </section>
       <main className="reference-commerce__main">
-        <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>First 3 pages always free</li></ul><button type="button" disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>
+        <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>{PUBLIC_ACCESS_COPY}</li></ul><button type="button" disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>
         <section className="reference-commerce__pathways"><article><Landmark aria-hidden="true" /><h2>For institutions</h2><p>School, college, and library access begins with a conversation.</p><Link to="/contact">Request a pilot</Link></article><article><Building2 aria-hidden="true" /><h2>For publishers</h2><p>Rights holders and authors can explore a careful digital edition pathway.</p><Link to="/contact">Partner with us</Link></article>{giftEnabled ? <article><Sparkles aria-hidden="true" /><h2>Gift a pass</h2><p>Share reading time when a configured gift product is available.</p><Link to="/pricing">View gift options</Link></article> : null}</section>
         <section className="reference-commerce__trust" data-testid="pricing-reference-wallet-explainer"><div><Lock aria-hidden="true" /><strong>Secure payment</strong><span>{config?.configured ? "Configured checkout" : "Checkout availability is confirmed at purchase"}</span></div><div><Check aria-hidden="true" /><strong>Privacy first</strong><span>Your account and reading stay private.</span></div><div><BookOpen aria-hidden="true" /><strong>Reading time</strong><span>Used only while you read.</span></div></section>
         <section className="reference-commerce__final"><p className="reference-kicker">START WITH THE PREVIEW</p><h2>Meet a story before you add time.</h2><p>The first 3 canonical pages are free. Continue with a Reading Pass when you are ready.</p><Link to="/library" className="reference-button reference-button--gold">Browse the library</Link></section>

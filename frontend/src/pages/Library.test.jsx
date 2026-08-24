@@ -2,10 +2,13 @@ import fs from "fs";
 import path from "path";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Library.jsx"), "utf8");
+const referenceSource = fs.readFileSync(path.join(process.cwd(), "src/components/ReferencePublicPages.jsx"), "utf8");
 
 describe("Library experience", () => {
   test("uses the single editorial collection architecture and approved copy", () => {
     expect(source).toContain("ReferenceLibrarySurface");
+    expect(referenceSource).toContain('const PUBLIC_ACCESS_COPY = "Read the first 3 pages free. Listening requires an active Reading Pass."');
+    expect(referenceSource).toContain('<p>{PUBLIC_ACCESS_COPY}</p><Link to="/pricing">View passes</Link>');
     expect(source).toContain("Explore the collection.");
     expect(source).toContain("Search the Library");
     expect(source).toContain("Search by title or author");
