@@ -9,16 +9,31 @@ export const APPROVED_AUDIO_FIXTURE = Object.freeze({
   fixture: true,
 });
 
+function hasCanonicalProtectedAudioApproval(book = {}) {
+  const audio = book?._readerManifest?.audio || {};
+  const gate = String(audio.release_gate || "").trim().toUpperCase();
+  const qa = String(audio.qa_status || "").trim().toUpperCase();
+  // Public reader manifests intentionally omit asset URLs.  The protected,
+  // same-origin endpoint is derived only after these canonical gates pass.
+  return audio.enabled === true
+    && Boolean(String(audio.asset_slug || book.slug || "").trim())
+    && Boolean(String(audio.provider || "").trim())
+    && Boolean(String(audio.version || "").trim())
+    && gate === "APPROVED"
+    && ["QA_PASSED", "APPROVED", "PASS"].includes(qa);
+}
+
 export function listenerReleasePresentation(book = {}, { fixture = false } = {}) {
   if (fixture) return { canRender: true, fixture: true, mediaUrl: "", release: { status: "approved" }, ...APPROVED_AUDIO_FIXTURE };
   const release = audiobookReleaseState(book);
-  if (!release.canShowControls) return { canRender: false, fixture: false, release, mediaUrl: "" };
+  const canonicalApproval = hasCanonicalProtectedAudioApproval(book);
+  if (!release.canShowControls && !canonicalApproval) return { canRender: false, fixture: false, release, mediaUrl: "" };
   const slug = String(book.slug || book.id || "").trim();
   if (!slug) return { canRender: false, fixture: false, release, mediaUrl: "" };
   return {
     canRender: true,
     fixture: false,
-    release,
+    release: canonicalApproval ? { ...release, status: "approved", canShowControls: true } : release,
     // The server proxies protected media after it authorizes a Reading Pass
     // lease. Never surface a provider URL from release metadata.
     mediaUrl: `/api/reader/book/${encodeURIComponent(slug)}/audiobook`,

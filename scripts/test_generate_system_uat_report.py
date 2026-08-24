@@ -47,7 +47,7 @@ class SystemUatProvenanceTests(unittest.TestCase):
             "backend-compile": "compileall complete",
             "backend-core": "49 passed",
             "backend-policy": "8 passed",
-            "frontend-full": "275 passed",
+            "frontend-full": "276 passed",
             "frontend-build": "Wrote 5 static snapshots",
             "contracts": "local-contracts=PASS\nproduction-network-requests=0",
             "hydration": "7 passed",
