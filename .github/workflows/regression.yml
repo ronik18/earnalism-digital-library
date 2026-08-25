@@ -145,7 +145,7 @@ jobs:
 
       - name: Deploy backend
         if: steps.deploy-check.outputs.enabled == 'true'
-        run: railway up . --service "${RAILWAY_SERVICE_ID}" --environment "${RAILWAY_ENVIRONMENT}"
+        run: railway up --service "${RAILWAY_SERVICE_ID}" --environment "${RAILWAY_ENVIRONMENT}"
 
   deploy_frontend:
     name: Vercel frontend deploy after pre-deploy pass
