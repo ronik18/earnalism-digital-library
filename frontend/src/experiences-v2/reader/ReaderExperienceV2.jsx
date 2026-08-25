@@ -37,8 +37,10 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const [fontScale, setFontScale] = useState(100);
   const currentAccess = useMemo(() => readerPageAccess({ canonicalPage: model.canonicalPage, ...access }), [model.canonicalPage, access]);
   const requestPage = (page) => {
-    const nextAccess = readerPageAccess({ canonicalPage: page, ...access });
-    if (nextAccess.canRequest) onRequestPage?.(page);
+    // The current public page may request the following protected page. The
+    // route starts its server-authorized lease before requesting that page;
+    // client presentation must not pre-empt that authorization boundary.
+    if (currentAccess.canRequest) onRequestPage?.(page);
   };
 
   return (
