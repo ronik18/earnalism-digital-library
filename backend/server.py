@@ -11005,6 +11005,12 @@ app.add_middleware(
         "X-Requested-With",
         "X-Razorpay-Event-Id",
         "X-Razorpay-Signature",
+        # Protected canonical pages carry this opaque, short-lived lease
+        # pair.  Keep the CORS allowlist explicit: without these headers a
+        # browser-origin request is preflight-blocked before the server can
+        # authorize the active Reading Pass session.
+        "X-Reading-Pass-Session",
+        "X-Reading-Pass-Lease",
     ],
     expose_headers=[
         "X-Request-ID",
