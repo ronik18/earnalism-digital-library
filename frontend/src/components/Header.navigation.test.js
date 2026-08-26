@@ -17,9 +17,17 @@ describe("premium header navigation", () => {
     expect(source).not.toMatch(/href=["']#|to=["']#|javascript:/i);
   });
 
-  test("uses a working library CTA on desktop and mobile", () => {
-    expect(source).toContain('data-testid="header-cta-library">Enter the Library');
+  test("uses Search plus Sign In or Account on desktop and retains the Library CTA in the mobile menu", () => {
+    expect(source).toContain('data-testid="nav-search"');
+    expect(source).toContain('const accountHref = isAuthed ? "/account" : "/login"');
+    expect(source).toContain('data-testid={isAuthed ? "nav-account" : "nav-sign-in"}');
+    expect(source).not.toContain('data-testid="header-cta-library"');
+    expect(source.match(/data-testid="header-cta-library"/g) || []).toHaveLength(0);
+    expect(source).toContain('data-testid="mobile-header-search"');
+    expect(source).toContain('data-testid="mobile-menu-toggle"');
     expect(source).toContain('data-testid="mobile-cta-library">Enter the Library');
+    expect(source).toContain('<Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">');
+    expect(source).toContain('data-testid={isAuthed ? "mobile-nav-account" : "mobile-nav-sign-in"}');
   });
 
   test("keeps the reference header readable and geometrically stable", () => {
