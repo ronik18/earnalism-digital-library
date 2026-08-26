@@ -12,6 +12,9 @@ from typing import Any
 RAILWAY_CONFIRMED = "RAILWAY_CONFIRMED"
 NON_RAILWAY_DEPLOYMENT = "NON_RAILWAY_DEPLOYMENT"
 PROVIDER_UNCONFIRMED = "PROVIDER_UNCONFIRMED"
+# Verified from Railway deployment 43630a5c and GitHub deployment 6104421176
+# on 2026-08-26. This is intentionally a documented event marker, not a guess.
+RAILWAY_APP_MARKER = "railway-app[bot]"
 
 
 def _normalise(value: object) -> str:
@@ -27,11 +30,19 @@ def classify_provider(event: dict[str, Any], railway_provider_marker: str = "") 
     marker = _normalise(railway_provider_marker)
     if marker and marker in fields:
         return RAILWAY_CONFIRMED
+    if RAILWAY_APP_MARKER in fields:
+        return RAILWAY_CONFIRMED
     # Historical production events use Vercel bot and Vercel deployment URLs. This is
     # intentionally a provider exclusion rather than a Railway bot-name assumption.
     if "vercel" in fields:
         return NON_RAILWAY_DEPLOYMENT
     return PROVIDER_UNCONFIRMED
+
+
+def is_production_environment(value: object) -> bool:
+    """Accept GitHub's plain and Railway-scoped production environment names."""
+    normalized = _normalise(value)
+    return normalized == "production" or normalized.endswith("/ production")
 
 
 def evaluate_event(event: dict[str, Any], railway_provider_marker: str = "") -> dict[str, Any]:
@@ -42,7 +53,7 @@ def evaluate_event(event: dict[str, Any], railway_provider_marker: str = "") -> 
     sha_matches_checkout = bool(deployment_sha) and deployment_sha == checked_out_sha
     reachable_from_main = bool(event.get("reachable_from_main"))
     provider_classification = classify_provider(event, railway_provider_marker)
-    eligible = environment == "production" and state == "success" and sha_matches_checkout and reachable_from_main
+    eligible = is_production_environment(environment) and state == "success" and sha_matches_checkout and reachable_from_main
     return {
         "provider_classification": provider_classification,
         "event_eligibility": "ELIGIBLE" if eligible else "INELIGIBLE",

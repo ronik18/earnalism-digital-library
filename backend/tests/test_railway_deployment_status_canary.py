@@ -104,6 +104,22 @@ def test_railway_branch_ref_event_is_confirmed_with_a_reviewed_marker():
     assert result["railway_deployment_proof"] is True
 
 
+def test_verified_native_railway_event_marker_and_scoped_production_environment_are_confirmed():
+    result = event_gate.evaluate_event(
+        _event(
+            environment="earnalism / production",
+            sender="railway-app[bot]",
+            creator="railway-app[bot]",
+            target_url="https://railway.com/project/example",
+            log_url="https://railway.com/project/example",
+        )
+    )
+    assert result["provider_classification"] == event_gate.RAILWAY_CONFIRMED
+    assert result["event_eligibility"] == "ELIGIBLE"
+    assert result["run_backend_canary"] is True
+    assert result["railway_deployment_proof"] is True
+
+
 def test_railway_sha_event_with_empty_ref_is_accepted():
     result = event_gate.evaluate_event(_event(deployment_ref=""), railway_provider_marker="railway")
     assert result["provider_classification"] == event_gate.RAILWAY_CONFIRMED
