@@ -1,0 +1,130 @@
+.auth-account-shell {
+  background:
+    radial-gradient(circle at 12% 3%, rgba(214, 168, 67, 0.2), transparent 24rem),
+    radial-gradient(circle at 92% 94%, rgba(90, 31, 43, 0.12), transparent 28rem),
+    linear-gradient(145deg, #fffaf1 0%, #f5eadb 48%, #efe1cf 100%);
+}
+
+.auth-account-auth-card {
+  border: 1px solid rgba(90, 31, 43, 0.2);
+  border-radius: 1.75rem;
+  background: rgba(255, 250, 241, 0.95);
+  box-shadow: 0 1.8rem 5rem -3.4rem rgba(53, 16, 24, 0.72);
+}
+
+.auth-account-auth-aside {
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 245, 228, 0.15);
+  background:
+    linear-gradient(160deg, rgba(88, 25, 34, 0.98), rgba(36, 26, 24, 0.99)),
+    #241a18;
+}
+
+.auth-account-auth-aside::after {
+  position: absolute;
+  right: -8rem;
+  bottom: -9rem;
+  width: 22rem;
+  height: 22rem;
+  border: 1px solid rgba(232, 201, 122, 0.28);
+  border-radius: 50%;
+  content: "";
+}
+
+.auth-account-brand-panel {
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(232, 201, 122, 0.35);
+  border-radius: 1rem;
+  background: rgba(255, 247, 233, 0.98);
+  padding: 1rem;
+}
+
+.auth-account-aside-title {
+  position: relative;
+  z-index: 1;
+  max-width: 12ch;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.65rem);
+  line-height: 1.03;
+}
+
+.auth-account-aside-points {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 2.4rem;
+  color: rgba(255, 245, 228, 0.78);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.auth-account-aside-points span { display: flex; gap: 0.65rem; align-items: flex-start; }
+.auth-account-aside-points span::before { color: #e8c97a; content: "•"; }
+
+.auth-account-aside-note {
+  position: relative;
+  z-index: 1;
+  max-width: 29ch;
+  color: rgba(247, 230, 207, 0.78);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.auth-account-auth-content { background: linear-gradient(180deg, rgba(255, 253, 247, 0.88), rgba(255, 248, 236, 0.95)); }
+.auth-account-kicker { color: var(--brand-gold-deep); }
+.auth-account-title { letter-spacing: -0.025em; text-wrap: balance; }
+.auth-account-introduction { max-width: 54ch; }
+
+.auth-account-form input,
+.auth-account-form button { min-height: 3.1rem; }
+
+.auth-account-note {
+  border-color: rgba(181, 138, 69, 0.38);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(247, 240, 227, 0.8));
+}
+
+.account-page-modern {
+  background:
+    radial-gradient(circle at 9% 7%, rgba(214, 168, 67, 0.12), transparent 22rem),
+    linear-gradient(180deg, rgba(255, 251, 242, 0.58), rgba(245, 234, 219, 0.3));
+}
+
+.account-page-modern .account-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: end;
+  border-bottom: 1px solid rgba(90, 31, 43, 0.16);
+  padding-bottom: 2rem;
+}
+
+.account-page-modern .account-hero-summary { max-width: 43rem; }
+.account-page-modern .account-hero-email { overflow-wrap: anywhere; }
+
+.account-page-modern .account-panel {
+  border: 1px solid rgba(90, 31, 43, 0.16);
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(255, 253, 247, 0.9), rgba(250, 243, 232, 0.88));
+  box-shadow: 0 1.25rem 2.8rem -2.75rem rgba(53, 16, 24, 0.58);
+}
+
+.account-page-modern .account-balance-panel { background: linear-gradient(150deg, rgba(255, 252, 246, 0.94), rgba(246, 233, 211, 0.9)); }
+.account-page-modern .account-balance-value { letter-spacing: -0.055em; }
+.account-page-modern .account-continue-panel { background: linear-gradient(145deg, #5a1f2b, #351018); color: #fff8ea; }
+.account-page-modern .account-continue-panel .italic-eyebrow,
+.account-page-modern .account-continue-panel .font-serif-display { color: #fff8ea; }
+.account-page-modern .account-continue-panel .btn-primary { border-color: rgba(232, 201, 122, 0.8); background: #fff8ea; color: #5a1f2b; }
+.account-page-modern .account-device-row { border-color: rgba(90, 31, 43, 0.15); background: rgba(255, 255, 255, 0.45); }
+.account-page-modern .account-activity-table th { font-size: 0.67rem; letter-spacing: 0.14em; }
+
+@media (max-width: 639px) {
+  .auth-account-shell { padding-right: 1rem; padding-left: 1rem; }
+  .auth-account-auth-card { border-radius: 1.2rem; }
+  .auth-account-mobile-brand { max-width: 13.5rem; }
+  .account-page-modern .account-hero { grid-template-columns: 1fr; align-items: start; padding-bottom: 1.5rem; }
+  .account-page-modern .account-hero .btn-secondary { width: 100%; justify-content: center; }
+  .account-page-modern .account-activity-table { min-width: 38rem; }
+}

@@ -28,7 +28,7 @@ describe("public product-truth copy", () => {
       .join("\n")
       .toLowerCase();
 
-    expect(source).toContain("first 3 pages free preview");
+    expect(source).toContain("read the first 3 pages free.");
     expect(source).toContain("listening requires an active reading pass.");
     forbiddenCopy.forEach((phrase) => expect(source).not.toContain(phrase));
   });

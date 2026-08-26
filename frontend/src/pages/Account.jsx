@@ -7,6 +7,7 @@ import { LogOut, BookOpen, Clock, ArrowUpRight, MonitorSmartphone, ShieldCheck, 
 import useSEO from "../hooks/useSEO";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { getReadingPassConfig, getReadingPassDevices, revokeReadingPassDevice } from "../lib/readingPassApi";
+import "../styles/auth-account.css";
 
 const FALLBACK_SESSION_GAP_MS = 15 * 60 * 1000;
 
@@ -191,15 +192,15 @@ export default function Account() {
   };
 
   return (
-    <div className="min-h-[70vh] px-5 sm:px-8 lg:px-12 py-14 sm:py-20" data-testid="account-page">
+    <div className="account-page-modern min-h-[70vh] px-5 sm:px-8 lg:px-12 py-12 sm:py-16" data-testid="account-page">
       <div className="max-w-4xl mx-auto">
-        <div className="flex items-start justify-between flex-wrap gap-4 mb-10">
-          <div>
+        <div className="account-hero mb-8 sm:mb-10">
+          <div className="account-hero-summary">
             <div className="italic-eyebrow">Your account</div>
             <h1 className="font-serif-light text-4xl sm:text-5xl text-burgundy leading-tight mt-2">
               Welcome, <span className="italic-accent">{user.name?.split(" ")[0] || "Reader"}</span>.
             </h1>
-            <p className="text-sm text-charcoal-soft mt-1 font-light">{user.email}</p>
+            <p className="account-hero-email text-sm text-charcoal-soft mt-2 font-light">{user.email}</p>
           </div>
           <button onClick={onLogout} className="btn-secondary" data-testid="account-logout">
             <LogOut size={14} className="mr-2" /> Sign out
@@ -207,11 +208,11 @@ export default function Account() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-          <div className="card-elegant p-7 sm:p-8" data-testid="account-balance-card" role="region" aria-labelledby="account-balance-heading">
+          <div className="account-panel account-balance-panel p-7 sm:p-8" data-testid="account-balance-card" role="region" aria-labelledby="account-balance-heading">
             <div className="flex items-center gap-2 italic-eyebrow opacity-80">
               <Clock size={13} strokeWidth={1.5} /> Reading time
             </div>
-            <h2 id="account-balance-heading" className="font-serif-display text-5xl sm:text-6xl text-burgundy mt-4 leading-none" data-testid="account-balance">
+            <h2 id="account-balance-heading" className="account-balance-value font-serif-display text-5xl sm:text-6xl text-burgundy mt-4 leading-none" data-testid="account-balance">
               {formatMinutes(balance)}
             </h2>
             <div className="gold-rule-thin mt-4" />
@@ -236,7 +237,7 @@ export default function Account() {
             </Link>
           </div>
 
-          <div className="card-elegant p-7 sm:p-8 flex flex-col">
+          <div className="account-panel account-continue-panel p-7 sm:p-8 flex flex-col">
             <div className="flex items-center gap-2 italic-eyebrow opacity-80">
               <BookOpen size={13} strokeWidth={1.5} /> Continue reading
             </div>
@@ -260,7 +261,7 @@ export default function Account() {
         </div>
 
         {readingPassEnabled && (
-          <section className="card-elegant p-6 sm:p-8 mb-12" aria-labelledby="reading-pass-devices-heading" data-testid="reading-pass-devices">
+          <section className="account-panel p-6 sm:p-8 mb-12" aria-labelledby="reading-pass-devices-heading" data-testid="reading-pass-devices">
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div>
                 <div className="flex items-center gap-2 italic-eyebrow opacity-80">
@@ -281,7 +282,7 @@ export default function Account() {
                 {devices.map((device) => {
                   const revoked = device.status !== "active";
                   return (
-                    <li key={device.session_id || device.device_id} className="flex items-center justify-between gap-4 rounded-xl border border-brand/60 px-4 py-3">
+                    <li key={device.session_id || device.device_id} className="account-device-row flex items-center justify-between gap-4 rounded-xl border px-4 py-3">
                       <div className="min-w-0">
                         <strong className="block text-sm text-charcoal truncate">{device.device_label || "Browser"}{device.current ? " · This device" : ""}</strong>
                         <span className="block text-xs text-charcoal-soft mt-1">{revoked ? "Revoked" : "Active"}{device.last_seen_at ? ` · Last seen ${new Date(device.last_seen_at).toLocaleString()}` : ""}</span>
@@ -299,7 +300,7 @@ export default function Account() {
           </section>
         )}
 
-        <div className="card-elegant p-6 sm:p-8 overflow-x-auto" data-testid="account-transactions">
+        <div className="account-panel p-6 sm:p-8 overflow-x-auto" data-testid="account-transactions">
           <h2 className="font-serif-display text-2xl text-burgundy">Recent activity</h2>
           <div className="gold-rule-thin mt-3 mb-5" />
           {loading ? (
@@ -307,7 +308,7 @@ export default function Account() {
           ) : activityRows.length === 0 ? (
             <p className="text-charcoal-soft text-sm font-light" role="status">No reading activity yet. Open Dracula from the library to begin.</p>
           ) : (
-            <table className="w-full text-sm">
+            <table className="account-activity-table w-full text-sm">
               <thead>
                 <tr className="text-left text-xs uppercase tracking-wider text-charcoal-soft border-b border-brand">
                   <th className="py-3 pr-4">When</th>
