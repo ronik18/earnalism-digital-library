@@ -285,7 +285,7 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 function buildPages(publication) {
   const publicAccessCopy = "Read the first 3 pages free. Listening requires an active Reading Pass.";
   const homeDescription = "A calm digital reading room for timeless Bengali and English literature. Explore a calm digital reading room with reader-ready classics and release-gated audiobooks.";
-  const bookDescription = `Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. ${publicAccessCopy} Audio remains unavailable for this controlled release unless separately approved.`;
+  const bookDescription = `Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. The first 3 canonical pages are public. ${publicAccessCopy} Audio remains unavailable for this controlled release unless separately approved.`;
   const libraryDescription = `Browse Earnalism's Bengali and English classics. ${publicAccessCopy} Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.`;
   const pricingDescription = `${publicAccessCopy} Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading, works across eligible titles, and never renews automatically.`;
   const readerDescription = "Read the Dracula preview. Read the first 3 pages free. Audio controls are unavailable for this release. Search engines should use the public Dracula book page instead.";
