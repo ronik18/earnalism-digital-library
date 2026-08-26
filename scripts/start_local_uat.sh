@@ -70,8 +70,16 @@ export ENABLE_BOOK_RENDERING_JOBS=false ENABLE_COVER_GENERATION=false ENABLE_SCH
 export RAZORPAY_KEY_ID= RAZORPAY_KEY_SECRET= RAZORPAY_WEBHOOK_SECRET= STRIPE_SECRET_KEY= STRIPE_PUBLIC_KEY= STRIPE_WEBHOOK_SECRET=
 export npm_config_cache="$ROOT_DIR/.npm-cache" PLAYWRIGHT_BROWSERS_PATH="$ROOT_DIR/.playwright-browsers"
 
+UAT_PYTHON="${UAT_PYTHON:-$(command -v python3.11 || true)}"
+[[ -n "$UAT_PYTHON" && -x "$UAT_PYTHON" ]] || { echo "System UAT requires an approved Python 3.11 interpreter" >&2; exit 64; }
+"$UAT_PYTHON" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 10) else 1)' || { echo "System UAT requires Python >= 3.10" >&2; exit 64; }
+
 VENV_PYTHON="$ROOT_DIR/.venv-uat/bin/python"
-[[ -x "$VENV_PYTHON" ]] || python3 -m venv "$ROOT_DIR/.venv-uat"
+if [[ -x "$VENV_PYTHON" ]]; then
+  "$VENV_PYTHON" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 10) else 1)' || { echo "Existing .venv-uat uses Python < 3.10; recreate only that disposable environment" >&2; exit 64; }
+else
+  "$UAT_PYTHON" -m venv "$ROOT_DIR/.venv-uat"
+fi
 requirements_hash="$(shasum -a 256 backend/requirements.txt | awk '{print $1}')"
 if [[ ! -f "$RUNTIME_ROOT/.requirements.sha256" || "$(<"$RUNTIME_ROOT/.requirements.sha256")" != "$requirements_hash" ]]; then
   PIP_CACHE_DIR="$ROOT_DIR/.pip-cache" "$VENV_PYTHON" -m pip install --disable-pip-version-check -r backend/requirements.txt
@@ -134,7 +142,7 @@ write_pid "$FRONTEND_PID" frontend "$UAT_FRONTEND_PORT"
 for _ in $(seq 1 90); do kill -0 "$FRONTEND_PID" 2>/dev/null || { tail -80 "$RUNTIME_DIR/frontend.log" >&2; exit 1; }; [[ "$(port_pid "$UAT_FRONTEND_PORT")" == "$FRONTEND_PID" ]] && curl -fsS "$UAT_BASE_URL/" >/dev/null 2>&1 && break; sleep 1; done
 [[ "$(port_pid "$UAT_FRONTEND_PORT")" == "$FRONTEND_PID" ]] || { tail -80 "$RUNTIME_DIR/frontend.log" >&2; exit 1; }
 curl -fsS "$UAT_BASE_URL/" >/dev/null
-printf 'export UAT_BASE_URL=%q\nexport UAT_API_BASE_URL=%q\nexport UAT_FRONTEND_PORT=%q\nexport UAT_BACKEND_PORT=%q\nexport UAT_MONGODB_PORT=%q\nexport UAT_MONGODB_URI=%q\nexport UAT_RUNTIME_DIR=%q\n' "$UAT_BASE_URL" "$UAT_API_BASE_URL" "$UAT_FRONTEND_PORT" "$UAT_BACKEND_PORT" "$UAT_MONGODB_PORT" "$UAT_MONGODB_URI" "$RUNTIME_DIR" > "$RUNTIME_ROOT/environment.sh"
+printf 'export UAT_FRONTEND_HOST=%q\nexport UAT_BACKEND_HOST=%q\nexport UAT_BASE_URL=%q\nexport UAT_API_BASE_URL=%q\nexport UAT_FRONTEND_PORT=%q\nexport UAT_BACKEND_PORT=%q\nexport UAT_MONGODB_PORT=%q\nexport UAT_MONGODB_URI=%q\nexport UAT_RUNTIME_DIR=%q\n' "$UAT_FRONTEND_HOST" "$UAT_BACKEND_HOST" "$UAT_BASE_URL" "$UAT_API_BASE_URL" "$UAT_FRONTEND_PORT" "$UAT_BACKEND_PORT" "$UAT_MONGODB_PORT" "$UAT_MONGODB_URI" "$RUNTIME_DIR" > "$RUNTIME_ROOT/environment.sh"
 printf 'UAT_RUNTIME_DIR=%s\nUAT_BASE_URL=%s\nUAT_API_BASE_URL=%s\nUAT_MONGODB_PORT=%s\n' "$RUNTIME_DIR" "$UAT_BASE_URL" "$UAT_API_BASE_URL" "$UAT_MONGODB_PORT"
 if [[ -n "${UAT_COMMAND_FILE:-}" ]]; then
   [[ "$UAT_COMMAND_FILE" == "$ROOT_DIR"/* && -f "$UAT_COMMAND_FILE" ]] || { echo "UAT_COMMAND_FILE must be an existing file in this worktree" >&2; exit 64; }
