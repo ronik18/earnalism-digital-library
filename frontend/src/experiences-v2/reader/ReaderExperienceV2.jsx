@@ -6,6 +6,7 @@ import ExperienceIconButton from "../shared/ExperienceIconButton";
 import ExperiencePanel from "../shared/ExperiencePanel";
 import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
+import { PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
 
 export const READER_V2_FIXTURE = Object.freeze({
   title: "Dracula",
@@ -59,7 +60,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           <header className="reader-v2__chapter"><span>{model.chapterEyebrow}</span><div className="reader-v2__toolbar"><ExperienceIconButton label="Decrease text size" onClick={() => setFontScale((value) => Math.max(90, value - 5))}><Minus size={16} /></ExperienceIconButton><output aria-label="Text size">Aa · {fontScale}%</output><ExperienceIconButton label="Increase text size" onClick={() => setFontScale((value) => Math.min(120, value + 5))}><Plus size={16} /></ExperienceIconButton><ExperienceIconButton label="Reader settings" onClick={() => onNavigate?.("settings")}><Settings2 size={16} /></ExperienceIconButton></div><h1 id="reader-v2-title">{model.chapterTitle}</h1></header>
           {model.illustration && <img className="reader-v2__illustration" src={model.illustration.src} alt={model.illustration.alt || ""} decoding="async" />}
           <div className="reader-v2__body" style={{ fontSize: `${fontScale / 100}rem` }}>{model.paragraphs.map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}</div>
-          <footer className="reader-v2__continuation"><span>First 3 pages are free to preview.</span>{currentAccess.canRequest ? <button type="button" onClick={() => requestPage(model.canonicalPage + 1)}>Use Reading Time to Continue <ChevronRight size={16} /></button> : <button type="button" onClick={() => onNavigate?.("signin")}>Sign in to continue <ChevronRight size={16} /></button>}</footer>
+          <footer className="reader-v2__continuation"><span>{PUBLIC_PREVIEW_COPY}</span>{currentAccess.canRequest ? <button type="button" onClick={() => requestPage(model.canonicalPage + 1)}>Use Reading Time to Continue <ChevronRight size={16} /></button> : <button type="button" onClick={() => onNavigate?.("signin")}>Sign in to continue <ChevronRight size={16} /></button>}</footer>
         </article>
 
         <aside className="reader-v2__context" aria-label="About this book"><ExperiencePanel eyebrow="About this book"><dl><div><dt>Author</dt><dd>{model.author}</dd></div><div><dt>Language</dt><dd>{model.metadata.language}</dd></div><div><dt>Genre</dt><dd>{model.metadata.genre}</dd></div><div><dt>First published</dt><dd>{model.metadata.year}</dd></div><div><dt>Source & rights</dt><dd>{model.metadata.source}</dd></div></dl><p>Preview pages 1–3 are free. Reading time remains server-authoritative.</p></ExperiencePanel></aside>

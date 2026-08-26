@@ -6,6 +6,7 @@ import { useSettings } from "../context/SettingsContext";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import useSEO from "../hooks/useSEO";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
+import PublicPageFrame from "../components/PublicPageFrame";
 
 const SOCIAL_ICONS = {
   email: Mail,
@@ -49,7 +50,7 @@ export default function Contact() {
   };
 
   return (
-    <div data-testid="contact-page">
+    <PublicPageFrame tone="quiet" testId="contact-page">
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-32 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <div className="lg:col-span-5">
           <div className="italic-eyebrow mb-4">Reach The Earnalism</div>
@@ -106,6 +107,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </div>
+    </PublicPageFrame>
   );
 }

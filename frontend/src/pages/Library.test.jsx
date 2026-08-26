@@ -7,7 +7,7 @@ const referenceSource = fs.readFileSync(path.join(process.cwd(), "src/components
 describe("Library experience", () => {
   test("uses the single editorial collection architecture and approved copy", () => {
     expect(source).toContain("ReferenceLibrarySurface");
-    expect(referenceSource).toContain('const PUBLIC_ACCESS_COPY = "Read the first 3 pages free. Listening requires an active Reading Pass."');
+    expect(referenceSource).toContain('import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy"');
     expect(referenceSource).toContain('<p>{PUBLIC_ACCESS_COPY}</p><Link to="/pricing">View passes</Link>');
     expect(source).toContain("Explore the collection.");
     expect(source).toContain("Search the Library");

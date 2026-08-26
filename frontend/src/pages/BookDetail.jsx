@@ -21,6 +21,7 @@ import useSEO from "../hooks/useSEO";
 import { bookDetailPresentationForBook } from "../lib/bookDetailPresentation";
 import { readerManifestPath } from "../lib/audioReleaseSafety";
 import { readerManifestAudioIsAuthorized } from "../lib/readerManifestAccess";
+import { PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 const SITE_URL = "https://theearnalism.com";
@@ -86,12 +87,12 @@ export default function BookDetail() {
     title: bookNotFound
       ? "Book not found — The Earnalism Digital Library"
       : publicBook?.slug === LIVE_APPROVED_SLUG
-        ? "Dracula by Bram Stoker | Read the first 3 pages free on Earnalism"
+        ? "Dracula by Bram Stoker | First 3 pages free preview on Earnalism"
         : publicBook ? `${publicBook.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
     description: bookNotFound
       ? "This Earnalism book is no longer available."
       : publicBook?.slug === LIVE_APPROVED_SLUG
-        ? "Preview Dracula by Bram Stoker on Earnalism. Read the first 3 canonical pages free and continue with flexible reading-time access."
+        ? "Preview Dracula by Bram Stoker on Earnalism. First 3 pages free preview; continue with Reading Pass access."
         : publicBook?.short_description || publicBook?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
     image: publicBook?.cover_image_url,
     imageAlt: publicBook?.slug === LIVE_APPROVED_SLUG ? "Custom Earnalism Dracula cover artwork" : publicBook?.title,
@@ -311,7 +312,7 @@ export default function BookDetail() {
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center" data-testid="book-actions">
             {isDracula && hasFreePreview && (
-                  <Link to={readerHref} className="btn-primary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>Read the first 3 pages free</Link>
+                  <Link to={readerHref} className="btn-primary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>{PUBLIC_PREVIEW_COPY}</Link>
             )}
             {!isDracula && (
               <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: "book_detail_reader" })}>
@@ -340,7 +341,7 @@ export default function BookDetail() {
               <BookOpen size={18} strokeWidth={1.55} aria-hidden="true" />
               <div>
                 <strong>{isDracula ? "Preview opens first" : "Reader edition ready"}</strong>
-                <p>{isDracula ? "The first 3 canonical pages open free so you can feel the room before adding reading time." : detailPresentation.readerBody}</p>
+                <p>{isDracula ? "First 3 pages free preview. Continue with Reading Pass access when the story calls you onward." : detailPresentation.readerBody}</p>
               </div>
             </div>
             <div className="book-experience-panel__item">
@@ -442,7 +443,7 @@ export default function BookDetail() {
           </div>
             <div className="preview-payment-shell__copy">
               <div className="italic-eyebrow">Preview, then continue</div>
-            <h2>Read the first 3 canonical pages free. Add reading time only when this book has earned your next hour.</h2>
+            <h2>{PUBLIC_PREVIEW_COPY}. Add reading time only when this book has earned your next hour.</h2>
             <p>
               This controlled launch includes the core reader only. Reading time is credited to your wallet after payment confirmation and is spent only while you read. Audio is available only for separately approved editions. Study guide, visual edition, ads, email, and social campaigns are not live in this release.
             </p>
@@ -453,7 +454,7 @@ export default function BookDetail() {
           </div>
           <div className="preview-payment-shell__actions">
             <Link to={`/reader/${publicBook.slug}`} className="btn-secondary w-full justify-center" data-testid="bottom-read-preview">
-              <BookOpen size={15} strokeWidth={1.6} /> Read the first 3 pages free
+              <BookOpen size={15} strokeWidth={1.6} /> {PUBLIC_PREVIEW_COPY}
             </Link>
             <Link to={readingPassUrl("book_preview")} className="btn-primary w-full justify-center" data-testid="bottom-buy-reading-time">
               <CreditCard size={15} strokeWidth={1.6} /> View Reading Passes

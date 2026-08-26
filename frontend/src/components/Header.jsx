@@ -28,17 +28,6 @@ const NAV = [
   { to: "/about", label: "About" },
 ];
 
-const REFERENCE_HOME_NAV = [
-  { key: "home", to: "/", label: "Home" },
-  { key: "library", to: "/library", label: "Library" },
-  { key: "bengali", to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
-  { key: "english", to: "/library?language=en", label: "English Classics" },
-  { key: "audiobooks", to: "/library?availability=approved-audiobook", label: "Audiobooks" },
-  { key: "reading-passes", to: "/pricing", label: "Reading Passes" },
-  { key: "about", to: "/about", label: "About" },
-  { key: "search", to: "/library", label: "Search the library" },
-];
-
 const SOCIAL_ICONS = {
   email: Mail,
   facebook: Facebook,
@@ -71,13 +60,9 @@ export default function Header() {
   const isAuthed = !!user && typeof user === "object";
   const accountHref = isAuthed ? "/account" : "/login";
   const accountLabel = isAuthed ? "Account" : "Sign In";
-  const isReferenceHome = loc.pathname === "/";
-  const isReferencePublicPage = ["/", "/library", "/pricing"].includes(loc.pathname);
-  const referencePageClass = loc.pathname === "/library" ? " premium-site-header--reference-library" : "";
-
   return (
     <header
-      className={`sticky top-0 z-50 glass-header premium-site-header${isReferenceHome ? " premium-site-header--reference-home" : ""}${isReferencePublicPage ? " premium-site-header--reference-public" : ""}${referencePageClass}`}
+      className="sticky top-0 z-50 glass-header premium-site-header"
       data-testid="site-header"
     >
       <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-[var(--site-header-height)] flex items-center justify-between gap-4">
@@ -88,10 +73,10 @@ export default function Header() {
         </div>
 
         <nav
-          className={`premium-header-nav hidden xl:flex items-center gap-5 2xl:gap-7${isReferenceHome ? " premium-header-nav--reference-home" : ""}`}
+          className="premium-header-nav hidden xl:flex items-center gap-4 2xl:gap-6"
           aria-label="Primary navigation"
         >
-          {(isReferenceHome ? REFERENCE_HOME_NAV.filter((item) => item.key !== "search") : NAV).map((n) => (
+          {NAV.map((n) => (
             <Link
               key={n.to || n.key}
               to={n.to}
@@ -102,46 +87,20 @@ export default function Header() {
               {n.label}
             </Link>
           ))}
-          {isReferenceHome ? (
-            <>
-              <Link
-                to="/library"
-                className="reference-home-header-icon"
-                aria-label="Open library search"
-                data-testid="nav-search"
-              >
-                <Search size={22} strokeWidth={1.55} aria-hidden="true" />
-              </Link>
-              <Link
-                to={accountHref}
-                className="reference-home-header-icon"
-                aria-label={accountLabel}
-                data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
-              >
-                <UserRound size={22} strokeWidth={1.55} aria-hidden="true" />
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link to="/library" className="reference-home-header-icon" aria-label="Search the library" data-testid="nav-search">
-                <Search size={20} strokeWidth={1.55} aria-hidden="true" />
-              </Link>
-              <NavLink
-                to={accountHref}
-                data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
-                className={({ isActive }) =>
-                  `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
-                }
-              >
-                {accountLabel}
-              </NavLink>
-            </>
-          )}
+          <Link to="/library" className="reference-home-header-icon" aria-label="Search the library" data-testid="nav-search">
+            <Search size={20} strokeWidth={1.55} aria-hidden="true" />
+          </Link>
+          <NavLink
+            to={accountHref}
+            data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
+            className={({ isActive }) =>
+              `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+            }
+          >
+            <UserRound size={17} strokeWidth={1.55} aria-hidden="true" />
+            <span>{accountLabel}</span>
+          </NavLink>
         </nav>
-
-        <div className="hidden xl:block premium-reference-home-cta-wrap">
-          <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Enter the Library</Link>
-        </div>
 
         <Link
           to="/library"

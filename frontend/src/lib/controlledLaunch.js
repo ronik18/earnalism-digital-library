@@ -44,7 +44,7 @@ export const DRACULA_FALLBACK_BOOK = {
   author: "Bram Stoker",
   category_slug: "gothic-fiction",
   short_description:
-    "Begin Bram Stoker's gothic classic in a quiet digital reading room. Read the first 3 pages free. Listening requires an active Reading Pass.",
+    "Begin Bram Stoker's gothic classic in a quiet digital reading room. First 3 pages free preview. Listening requires an active Reading Pass.",
   description:
     "Dracula is an approved classic reading release with 27 chapters and a rights-safe source trail. Audio availability remains evidence-gated and hidden unless release approval is proven.",
   estimated_reading_time: "14 min",

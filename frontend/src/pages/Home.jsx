@@ -30,6 +30,7 @@ import {
   getHomeHeroSnapshot,
 } from "../lib/homeSurfaces";
 import useSEO from "../hooks/useSEO";
+import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
 import { ReferenceHomeSurface } from "../components/ReferencePublicPages";
 
 const HomeListeningRoom = lazy(() => import("../components/HomeListeningRoom"));
@@ -225,7 +226,7 @@ export default function Home() {
               Stay with the story for as long as it holds you.
             </h2>
             <p>
-              The first 3 canonical pages are free. When you are ready for more, add reading time once—without a subscription or autorenewal.
+              {PUBLIC_ACCESS_COPY} When you are ready for more, add reading time once—without a subscription or autorenewal.
             </p>
             <Link
               to="/pricing"
@@ -240,7 +241,7 @@ export default function Home() {
             <article className="reference-reading-step">
               <BookOpen size={18} strokeWidth={1.6} aria-hidden="true" />
               <h3>Meet the story</h3>
-              <p>The first 3 canonical pages are yours to explore before you add reading time.</p>
+              <p>{PUBLIC_PREVIEW_COPY} before you add reading time.</p>
             </article>
             <article className="reference-reading-step">
               <CreditCard size={18} strokeWidth={1.6} aria-hidden="true" />

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { api } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
+import PublicPageFrame from "../components/PublicPageFrame";
 
 const JOURNAL_OG = "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
 const BLOCKED_JOURNAL_SLUGS = new Set(["the-quiet-power-of-a-premium-bookstore-brand"]);
@@ -25,7 +26,7 @@ export default function Journal() {
 
   useEffect(() => {
     const controller = new AbortController();
-    api.get("/blog", { signal: controller.signal }).then((r) => setPosts(r.data)).catch(() => {});
+    api.get("/blog", { signal: controller.signal }).then((r) => setPosts(Array.isArray(r.data) ? r.data : [])).catch(() => setPosts([]));
     return () => controller.abort();
   }, []);
 
@@ -38,7 +39,7 @@ export default function Journal() {
   const [feature, ...rest] = filtered;
 
   return (
-    <div data-testid="journal-page">
+    <PublicPageFrame tone="editorial" testId="journal-page">
       {/* Masthead */}
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-12 sm:pb-16 text-center">
         <div className="issue-marker mb-6">Issue 01 &middot; Volume I</div>
@@ -105,6 +106,6 @@ export default function Journal() {
           </div>
         )}
       </section>
-    </div>
+    </PublicPageFrame>
   );
 }

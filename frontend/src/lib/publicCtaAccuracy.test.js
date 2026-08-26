@@ -23,7 +23,8 @@ describe("public CTA accuracy contract", () => {
   const globalStyles = source("src/index.css");
 
   test("catalog destinations use browsing language instead of claiming that reading has started", () => {
-    expect(header).toContain('to="/library" className="premium-header-cta" data-testid="header-cta-library">Enter the Library');
+    expect(header).toContain('to="/library" className="reference-home-header-icon" aria-label="Search the library" data-testid="nav-search"');
+    expect(header).toContain('data-testid={isAuthed ? "nav-account" : "nav-sign-in"}');
     expect(header).toContain('data-testid="mobile-cta-library">Enter the Library');
     expect(hero).toContain('? "Enter the Library"');
     expect(hero).toContain('audiobooksDestination.includes("availability=approved-audiobook")');
@@ -43,7 +44,7 @@ describe("public CTA accuracy contract", () => {
 
   test("book detail has one truthful three-page CTA and minute-based pass language", () => {
     expect(bookDetail).toContain('data-testid="read-preview"');
-    expect(bookDetail).toContain('>Read the first 3 pages free</Link>');
+    expect(bookDetail).toContain('>{PUBLIC_PREVIEW_COPY}</Link>');
     expect(bookDetail).toContain('>View Reading Passes</Link>');
     expect(bookDetail).not.toContain("Get 7-Day Reading Pass");
     expect(bookDetail).not.toContain('isDracula ? "Continue Dracula"');
@@ -52,7 +53,7 @@ describe("public CTA accuracy contract", () => {
 
   test("pricing preview and account continuation lead directly to the reader", () => {
     expect(pricing).toContain('to="/reader/dracula"');
-    expect(pricing).toContain("Read the first 3 pages free");
+    expect(pricing).toContain("PUBLIC_PREVIEW_COPY");
     expect(account).toContain('to="/reader/dracula"');
     expect(account).toContain("Continue Dracula");
   });

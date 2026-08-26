@@ -6,8 +6,9 @@
 .experience-header--compact { min-height: 56px; padding-inline: 16px; }
 .experience-header__actions { display: flex; align-items: center; gap: 11px; }
 .experience-header__label { color: var(--ev2-gold); font-size: 12px; }
-.experience-header .brand-header-logo { display: inline-flex; max-width: min(170px, 58vw); }
-.experience-header .brand-header-logo__wordmark-image, .experience-header .brand-header-logo__custom { display: block; width: 100%; height: auto; }
+.experience-header .earnalism-brand-lockup { width: min(13rem, 58vw); padding: 4px 7px; border: 1px solid color-mix(in srgb, var(--ev2-gold) 44%, transparent); border-radius: 6px; background: var(--ev2-ivory); }
+.experience-header .earnalism-brand-lockup img { display: block; width: 100%; height: auto; }
+@media (max-width: 767px) { .experience-header { min-height: 58px; padding: 7px 16px; }.experience-header .earnalism-brand-lockup { width: min(10.4rem, 54vw); padding: 3px 5px; } }
 .experience-icon-button { width: 44px; height: 44px; display: inline-grid; place-items: center; border: 1px solid var(--ev2-line); border-radius: 8px; background: transparent; color: var(--ev2-ivory); cursor: pointer; }
 .experience-icon-button:hover:not(:disabled) { background: color-mix(in srgb, var(--ev2-gold) 12%, transparent); }
 .experience-icon-button:disabled { opacity: .45; cursor: not-allowed; }

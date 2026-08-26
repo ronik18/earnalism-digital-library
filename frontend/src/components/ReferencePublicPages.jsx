@@ -14,6 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { api } from "../lib/api";
+import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 import {
   bookLaunchStatus,
@@ -32,12 +33,10 @@ const HOME_FEATURES = [
 
 const TRUST_FACTS = [
   [Lock, "Private by design", "Your account and reading remain yours."],
-  [BookOpen, "Preview first", "The first 3 canonical pages are free."],
+  [BookOpen, "Preview first", PUBLIC_PREVIEW_COPY],
   [Check, "Release truth", "Listening appears only when approved."],
   [Sparkles, "Beautiful editions", "Made for a slower kind of reading."],
 ];
-
-const PUBLIC_ACCESS_COPY = "Read the first 3 pages free. Listening requires an active Reading Pass.";
 
 function titleFor(book) {
   return book?.title_en || book?.title || "Untitled edition";
@@ -127,7 +126,7 @@ export function ReferenceHomeSurface() {
             <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Enter the Library</Link>
             <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline">Enter the Listening Room</Link>
           </div>
-          <p className="reference-home__policy"><Check aria-hidden="true" /> {PUBLIC_ACCESS_COPY} <span /> <ClockMark aria-hidden="true" /> Reading time is used only while you read</p>
+          <p className="reference-home__policy"><Check aria-hidden="true" /> {PUBLIC_ACCESS_COPY} <span /> <ClockMark aria-hidden="true" /> {READING_TIME_COPY}</p>
         </div>
         <picture className="reference-home__hero-art">
           <source media="(max-width: 640px)" srcSet="/assets/hero/premium-library-mobile-cinematic-v2.webp" />
@@ -158,8 +157,8 @@ export function ReferenceHomeSurface() {
           <h2 id="reference-pass-title">Stay with a story for as long as it holds you.</h2>
           <ul>
             <li>Read in Bengali and English</li>
-            <li>First 3 pages are free on eligible titles</li>
-            <li>Reading time is used only while you read</li>
+            <li>{PUBLIC_PREVIEW_COPY}</li>
+            <li>{READING_TIME_COPY}</li>
             <li>No subscription or autorenewal</li>
           </ul>
           <Link className="reference-button reference-button--gold" to="/pricing">View Reading Passes</Link>
@@ -256,7 +255,7 @@ export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId
   return (
     <div className="reference-commerce" data-testid="pricing-reference-surface">
       <section className="reference-commerce__hero" aria-labelledby="reference-commerce-title">
-        <div><p className="reference-kicker">READING PASSES</p><h1 id="reference-commerce-title">Read more.<br />Live the stories.</h1><p>Unlock unhurried reading time and immerse yourself in timeless Bengali and English classics.</p><ul><li>{PUBLIC_ACCESS_COPY}</li><li>Reading time is used only while you read</li><li>No subscription or autorenewal</li></ul></div>
+        <div><p className="reference-kicker">READING PASSES</p><h1 id="reference-commerce-title">Read more.<br />Live the stories.</h1><p>Unlock unhurried reading time and immerse yourself in timeless Bengali and English classics.</p><ul><li>{PUBLIC_ACCESS_COPY}</li><li>{READING_TIME_COPY}</li><li>No subscription or autorenewal</li></ul></div>
         <picture className="reference-commerce__hero-art">
           <source media="(max-width: 640px)" srcSet="/assets/hero/premium-library-mobile-cinematic-v2.webp" />
           <img src="/assets/hero/golden-hour-library-hero.webp" alt="" fetchPriority="high" decoding="async" />
@@ -266,7 +265,7 @@ export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId
         <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>{PUBLIC_ACCESS_COPY}</li></ul><button type="button" disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>
         <section className="reference-commerce__pathways"><article><Landmark aria-hidden="true" /><h2>For institutions</h2><p>School, college, and library access begins with a conversation.</p><Link to="/contact">Request a pilot</Link></article><article><Building2 aria-hidden="true" /><h2>For publishers</h2><p>Rights holders and authors can explore a careful digital edition pathway.</p><Link to="/contact">Partner with us</Link></article>{giftEnabled ? <article><Sparkles aria-hidden="true" /><h2>Gift a pass</h2><p>Share reading time when a configured gift product is available.</p><Link to="/pricing">View gift options</Link></article> : null}</section>
         <section className="reference-commerce__trust" data-testid="pricing-reference-wallet-explainer"><div><Lock aria-hidden="true" /><strong>Secure payment</strong><span>{config?.configured ? "Configured checkout" : "Checkout availability is confirmed at purchase"}</span></div><div><Check aria-hidden="true" /><strong>Privacy first</strong><span>Your account and reading stay private.</span></div><div><BookOpen aria-hidden="true" /><strong>Reading time</strong><span>Used only while you read.</span></div></section>
-        <section className="reference-commerce__final"><p className="reference-kicker">START WITH THE PREVIEW</p><h2>Meet a story before you add time.</h2><p>The first 3 canonical pages are free. Continue with a Reading Pass when you are ready.</p><Link to="/library" className="reference-button reference-button--gold">Browse the library</Link></section>
+        <section className="reference-commerce__final"><p className="reference-kicker">START WITH THE PREVIEW</p><h2>Meet a story before you add time.</h2><p>{PUBLIC_ACCESS_COPY}</p><Link to="/library" className="reference-button reference-button--gold">Browse the library</Link></section>
       </main>
     </div>
   );
