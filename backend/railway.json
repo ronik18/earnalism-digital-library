@@ -1,8 +1,7 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
-    "builder": "NIXPACKS",
-    "buildCommand": "pip install -r requirements-runtime.txt",
+    "builder": "DOCKERFILE",
     "watchPatterns": [
       "/backend/**"
     ]

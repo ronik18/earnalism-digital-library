@@ -1,0 +1,36 @@
+name: Railway native deployment canary
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  production_backend_canary:
+    name: production backend canary
+    if: >-
+      github.repository == 'ronik18/earnalism-digital-library' &&
+      github.event.deployment.environment == 'production' &&
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.ref == 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PRODUCTION_API_BASE_URL: https://api.theearnalism.com
+      RAILWAY_DEPLOYMENT_SHA: ${{ github.event.deployment.sha }}
+    steps:
+      - name: Checkout deployed main ref
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Run read-only production API canary
+        run: python3 scripts/railway_deployment_status_canary.py --output-dir railway-deployment-canary
+
+      - name: Upload canary evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: railway-deployment-canary
+          path: railway-deployment-canary/**
