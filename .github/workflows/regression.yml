@@ -102,61 +102,13 @@ jobs:
               body,
             });
 
-  deploy:
-    name: Railway deploy after pre-deploy pass
-    needs: regression
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    outputs:
-      deployed: ${{ steps.deploy-check.outputs.enabled }}
-    env:
-      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
-      RAILWAY_ENVIRONMENT: ${{ vars.RAILWAY_ENVIRONMENT || 'production' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Check Railway deploy scope and secrets
-        id: deploy-check
-        shell: bash
-        run: |
-          before_sha="${{ github.event.before }}"
-          if [[ ! "${before_sha}" =~ ^[0-9a-f]{40}$ ]] || [[ "${before_sha}" =~ ^0+$ ]] || ! git cat-file -e "${before_sha}^{commit}"; then
-            before_sha="$(git rev-list --max-parents=0 "${GITHUB_SHA}" | tail -1)"
-          fi
-          echo "scope_base=${before_sha}"
-          echo "scope_head=${GITHUB_SHA}"
-          if git diff --quiet "${before_sha}" "${GITHUB_SHA}" -- backend; then
-            echo "enabled=false" >> "${GITHUB_OUTPUT}"
-            echo "Railway deploy skipped: no backend files changed."
-          elif [[ -n "${RAILWAY_TOKEN}" && -n "${RAILWAY_SERVICE_ID}" ]]; then
-            echo "enabled=true" >> "${GITHUB_OUTPUT}"
-          else
-            echo "enabled=false" >> "${GITHUB_OUTPUT}"
-            echo "Railway deploy skipped: RAILWAY_TOKEN or RAILWAY_SERVICE_ID is missing."
-          fi
-
-      - name: Install Railway CLI
-        if: steps.deploy-check.outputs.enabled == 'true'
-        run: npm install -g @railway/cli
-
-      - name: Deploy backend
-        if: steps.deploy-check.outputs.enabled == 'true'
-        run: railway up --service "${RAILWAY_SERVICE_ID}" --environment "${RAILWAY_ENVIRONMENT}"
-
   deploy_frontend:
     name: Vercel frontend deploy after pre-deploy pass
-    needs:
-      - regression
-      - deploy
+    needs: regression
     if: >-
       github.event_name == 'push' &&
       github.ref == 'refs/heads/main' &&
-      needs.regression.result == 'success' &&
-      needs.deploy.result == 'success'
+      needs.regression.result == 'success'
     runs-on: ubuntu-latest
     outputs:
       deployed: ${{ steps.vercel-check.outputs.enabled }}
@@ -249,49 +201,54 @@ jobs:
           fi
           vercel "${args[@]}"
 
-  canary:
-    name: production canary
+  frontend_production_canary:
+    name: Vercel frontend production canary
     needs:
       - regression
-      - deploy
       - deploy_frontend
     if: >-
-      always() &&
       github.event_name == 'push' &&
       github.ref == 'refs/heads/main' &&
       needs.regression.result == 'success' &&
-      needs.deploy.result == 'success' &&
-      needs.deploy_frontend.result == 'success'
+      needs.deploy_frontend.result == 'success' &&
+      needs.deploy_frontend.outputs.deployed == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-    env:
-      REGRESSION_MODE: canary
-      REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}
-      REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
+    timeout-minutes: 15
     steps:
-      - name: Checkout
+      - name: Checkout deployed frontend commit
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+
       - name: Set up Node
         uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: npm
-      - name: Install root dependencies
+          cache-dependency-path: package-lock.json
+
+      - name: Install canary dependencies
         run: npm ci
-      - name: Run removed-route post-deploy canary
-        run: npm run launch:post-deploy-route-canary
+
+      - name: Run removed-route production canary
+        run: python3 scripts/post_deploy_route_canary.py --base-url https://theearnalism.com
+
       - name: Run static SEO raw-HTML canary
-        run: npm run launch:post-deploy-static-seo-canary
-      - name: Run canary
-        run: npm run regression:canary
-      - name: Upload canary artifacts
+        run: python3 scripts/post_deploy_static_seo_canary.py --base-url https://theearnalism.com
+
+      - name: Run frontend production regression canary
+        env:
+          REGRESSION_MODE: canary
+          REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}
+          REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
+        run: node regression/scripts/post-deploy-canary.js
+
+      - name: Upload frontend canary evidence
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: canary-regression-artifacts
+          name: frontend-production-canary-${{ github.sha }}
           path: |
+            output/launch/post_deploy_route_canary.*
+            output/launch/post_deploy_static_seo_canary.*
             regression/results.json
-            output/launch/post_deploy_route_canary.json
-            output/launch/post_deploy_route_canary.md
-            output/launch/post_deploy_static_seo_canary.json
-            output/launch/post_deploy_static_seo_canary.md

@@ -37,11 +37,15 @@ WORKDIR /app
 COPY --from=builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
 
-COPY . .
+RUN groupadd --system app && useradd --system --gid app --create-home app
 
-EXPOSE 8000
+COPY --chown=app:app . .
+
+USER app
+
+EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
-  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=5).read()"
+  CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:%s/healthz' % os.environ.get('PORT', '8080'), timeout=5).read()"
 
 CMD ["sh", "./start_prod.sh"]

@@ -1,0 +1,88 @@
+name: Backend container contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - backend/Dockerfile
+      - backend/railway.json
+      - backend/start_prod.sh
+      - backend/requirements-runtime.txt
+      - .github/workflows/regression.yml
+      - .github/workflows/railway-deployment-canary.yml
+      - .github/workflows/backend-container-contract.yml
+  push:
+    branches: [main]
+    paths:
+      - backend/Dockerfile
+      - backend/railway.json
+      - backend/start_prod.sh
+      - backend/requirements-runtime.txt
+      - .github/workflows/regression.yml
+      - .github/workflows/railway-deployment-canary.yml
+      - .github/workflows/backend-container-contract.yml
+
+permissions:
+  contents: read
+
+jobs:
+  backend_container_contract:
+    name: Docker build and health contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Start isolated MongoDB replica set
+        run: |
+          docker network create earnalism-container-ci
+          docker run --detach --name earnalism-container-mongodb --network earnalism-container-ci mongo:7.0.14 mongod --bind_ip_all --replSet earnalism-container-rs0
+          for _ in $(seq 1 30); do
+            docker exec earnalism-container-mongodb mongosh --quiet --eval 'db.adminCommand({ ping: 1 })' && break
+            sleep 1
+          done
+          docker exec earnalism-container-mongodb mongosh --quiet --eval 'rs.initiate({_id: "earnalism-container-rs0", members: [{_id: 0, host: "earnalism-container-mongodb:27017"}]})'
+
+      - name: Build the Railway root-directory context
+        run: docker build --file backend/Dockerfile --tag earnalism-backend-ci backend
+
+      - name: Validate image user, port, startup, and health
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p backend-container-contract
+          docker image inspect earnalism-backend-ci > backend-container-contract/image-inspect.json
+          test "$(docker image inspect --format '{{.Config.User}}' earnalism-backend-ci)" = "app"
+          docker run --detach --name earnalism-backend-ci --network earnalism-container-ci --publish 18080:8080 \
+            --env PORT=8080 \
+            --env ENVIRONMENT=uat \
+            --env MONGODB_URL='mongodb://earnalism-container-mongodb:27017/earnalism_container_ci?replicaSet=earnalism-container-rs0' \
+            --env JWT_SECRET='synthetic-container-contract-only' \
+            --env ADMIN_EMAIL='container-contract@example.invalid' \
+            --env ENABLE_STARTUP_DB_MAINTENANCE=false \
+            earnalism-backend-ci
+          for _ in $(seq 1 45); do
+            if curl --fail --silent --show-error http://127.0.0.1:18080/healthz > backend-container-contract/healthz.json; then
+              break
+            fi
+            sleep 2
+          done
+          curl --fail --silent --show-error http://127.0.0.1:18080/healthz > backend-container-contract/healthz.json
+          docker exec earnalism-backend-ci sh -c 'test "$(id -u)" -ne 0 && test "${PORT}" = 8080 && python -c "import server"'
+          ! docker image inspect earnalism-backend-ci | grep -q '127.0.0.1:8000\|:8000/healthz'
+          docker logs earnalism-backend-ci > backend-container-contract/container.log 2>&1
+
+      - name: Collect container evidence
+        if: always()
+        run: |
+          docker ps -a > backend-container-contract/docker-ps.txt || true
+          docker logs earnalism-backend-ci > backend-container-contract/container.log 2>&1 || true
+          docker rm --force earnalism-backend-ci earnalism-container-mongodb || true
+          docker network rm earnalism-container-ci || true
+
+      - name: Upload compact container evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: backend-container-contract-${{ github.sha }}
+          path: backend-container-contract/**

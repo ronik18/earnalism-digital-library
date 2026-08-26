@@ -31,7 +31,7 @@ export ADMIN_MEDIA_UPLOAD_MAX_BYTES="${ADMIN_MEDIA_UPLOAD_MAX_BYTES:-4194304}"
 
 exec uvicorn server:app \
   --host 0.0.0.0 \
-  --port "${PORT:-8000}" \
+  --port "${PORT:-8080}" \
   --workers "${WEB_CONCURRENCY:-1}" \
   --proxy-headers \
   --forwarded-allow-ips '*' \
