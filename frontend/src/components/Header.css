@@ -331,3 +331,64 @@
   .premium-site-header .brand-header-logo__badge { width: 2rem; height: 2rem; }
   .premium-site-header .brand-header-logo__india-flag { width: 1.08rem; height: 0.73rem; }
 }
+
+/* One stable header geometry for every public shell. Route-specific absolute
+   positioning made the canonical lockup vulnerable to clipping at 1280px. */
+.premium-site-header .earnalism-brand-lockup {
+  width: clamp(12.25rem, 16vw, 16.5rem);
+  padding: 0.32rem 0.55rem;
+  border: 1px solid rgba(141, 93, 34, 0.22);
+  border-radius: 0.55rem;
+  background: #fff8ea;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.88);
+}
+
+.premium-site-header .reference-home-header-icon,
+.premium-header-nav a[data-testid="nav-account"] {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border-radius: 0.45rem;
+}
+
+.premium-header-nav a[data-testid="nav-account"],
+.premium-header-nav a[data-testid="nav-sign-in"] { padding-inline: 0.25rem; }
+
+@media (max-width: 1279px) {
+  .premium-site-header .earnalism-brand-lockup {
+    width: min(12.25rem, calc(100vw - 9rem));
+  }
+}
+
+@media (max-width: 640px) {
+  .premium-site-header .earnalism-brand-lockup {
+    width: min(10.75rem, calc(100vw - 8.75rem));
+    padding: 0.24rem 0.38rem;
+  }
+}
+
+/* The approved boards deliberately use dark experiential headers on Home,
+   Commerce, and Book Detail, and a warm catalog header on Library. */
+.premium-site-header.premium-site-header--reference-public {
+  background: #07110f;
+  border-bottom-color: rgba(214, 173, 85, .24);
+  box-shadow: none;
+}
+
+.premium-site-header.premium-site-header--reference-public .premium-header-nav a,
+.premium-site-header.premium-site-header--reference-public .premium-header-inner > button {
+  color: rgba(255, 248, 233, .84);
+}
+
+.premium-site-header.premium-site-header--reference-public .premium-header-nav a[aria-current="page"],
+.premium-site-header.premium-site-header--reference-public .reference-home-header-icon {
+  color: #f2d188;
+}
+
+.premium-site-header.premium-site-header--reference-library {
+  background: #fffdf8;
+  border-bottom-color: rgba(33, 40, 33, .12);
+  box-shadow: none;
+}

@@ -27,6 +27,7 @@ import {
   wrapCarouselIndex,
 } from "../lib/heroCarousel";
 import "./PremiumHero.css";
+import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
 const HERO_ASSET_VERSION = "20260815-mobile-luxe1";
@@ -759,7 +760,7 @@ export default function PremiumHero({
           ) : null}
         </h1>
         <p>{subheadline}</p>
-        <p className="sr-only">Reading time is used only while you read. The first 3 canonical pages are free to preview.</p>
+        <p className="sr-only">{READING_TIME_COPY} {PUBLIC_ACCESS_COPY}</p>
       </div>
 
       <div className="premium-hero-actions" data-testid="hero-ctas">
@@ -810,7 +811,7 @@ export default function PremiumHero({
           <span>Reading Pass</span>
         </div>
         <h2>Begin with three pages. Stay for the journey.</h2>
-        <p>The first 3 canonical pages are free. Add reading time only when you want the story to continue.</p>
+        <p>{PUBLIC_PREVIEW_COPY}. Add reading time only when you want the story to continue.</p>
         <Link
           to="/pricing"
           className="premium-hero-offer__cta"
@@ -820,7 +821,7 @@ export default function PremiumHero({
           <span>View Reading Passes</span>
           <ArrowRight size={15} strokeWidth={1.7} aria-hidden="true" />
         </Link>
-        <small>Reading time runs only while you read.</small>
+        <small>{READING_TIME_COPY}</small>
       </aside>
 
       <div className="premium-hero-rail" aria-label="Earnalism library benefits">

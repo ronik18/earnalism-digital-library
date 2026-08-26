@@ -1,73 +1,69 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Clock, ShieldCheck } from "lucide-react";
 import useSEO from "../hooks/useSEO";
-import { trackFunnelEvent } from "../lib/funnelAnalytics";
+import PublicPageFrame from "../components/PublicPageFrame";
+import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
 
-const STORIES = [
+const READING_PATHS = [
   {
-    title: "The Thirty-Minute Shelf",
-    tag: "Workday pause",
-    body: "A reader closes a noisy tab, opens a single chapter, and discovers the day still has one quiet corner left.",
+    title: "Find a reader-ready edition",
+    tag: "Discover",
+    body: "Browse Bengali and English classics that are available for the current release.",
   },
   {
-    title: "One More Page",
-    tag: "Evening reset",
-    body: "The lamp is low, the phone is face down, and a short read turns the end of the day into something deliberate.",
+    title: "Begin with the preview",
+    tag: "Read",
+    body: `${PUBLIC_PREVIEW_COPY}. The page boundary is defined by the edition, never by a chapter marker.`,
   },
   {
-    title: "The Borrowed Margin",
-    tag: "Weekend note",
-    body: "A sentence catches, a note is made, and ten spare minutes become the beginning of a better question.",
+    title: "Continue when it matters",
+    tag: "Return",
+    body: `${READING_TIME_COPY} Choose a Reading Pass only when you want to continue.`,
   },
 ];
 
 export default function MicroStoryLanding() {
   useSEO({
-    title: "3-Minute Stories — Earnalism",
-    description: "Try a quiet 3-minute Earnalism preview, then add flexible reading time when you want to continue.",
+    title: "A Quiet Reading Invitation — Earnalism",
+    description: "Find a reader-ready Earnalism edition, begin with the canonical preview, and continue with a Reading Pass when you choose.",
   });
 
   return (
-    <div className="micro-story-page">
+    <PublicPageFrame tone="quiet" className="micro-story-page">
       <section className="micro-story-hero">
         <div className="micro-story-hero__copy">
-          <p className="italic-eyebrow">Three minutes, no subscription</p>
-          <h1>Start with a small read before you choose a longer stay.</h1>
-          <p>
-            Built for Instagram and YouTube visitors who want a low-risk first step:
-            sample the tone, then add flexible reading time when you want to continue.
-          </p>
+          <p className="italic-eyebrow">A quiet way into the library</p>
+          <h1>Begin with a story, then stay as long as it holds you.</h1>
+          <p>{PUBLIC_ACCESS_COPY} Explore reader-ready editions before deciding whether to add time.</p>
           <Link
-            to="/pricing?pack=30m&source=micro_story"
+            to="/library?source=reading_invitation"
             className="btn-primary micro-story-hero__cta"
-            onClick={() => trackFunnelEvent("micro_story_hero_cta_click", { pack_id: "30m", price_inr: 49 })}
           >
-            Start with ₹49 <ArrowRight size={15} />
+            Explore the Library <ArrowRight size={15} />
           </Link>
         </div>
         <div className="micro-story-hero__panel" aria-label="Why start with a short preview">
-          <div><Clock size={18} /> 30 reading minutes</div>
-          <div><BookOpen size={18} /> Enough for a first chapter</div>
+          <div><Clock size={18} /> {READING_TIME_COPY}</div>
+          <div><BookOpen size={18} /> {PUBLIC_PREVIEW_COPY}</div>
           <div><ShieldCheck size={18} /> No autorenewal</div>
         </div>
       </section>
 
-      <section className="micro-story-grid" aria-label="Three-minute story previews">
-        {STORIES.map((story, index) => (
+      <section className="micro-story-grid" aria-label="Reading paths">
+        {READING_PATHS.map((story, index) => (
           <article key={story.title} className="micro-story-card">
             <span>0{index + 1} · {story.tag}</span>
             <h2>{story.title}</h2>
             <p>{story.body}</p>
             <Link
-              to="/pricing?pack=30m&source=micro_story_card"
+              to={index === 2 ? "/pricing" : "/library"}
               className="micro-story-card__cta"
-              onClick={() => trackFunnelEvent("micro_story_card_cta_click", { pack_id: "30m", story: story.title, price_inr: 49 })}
             >
-              Continue with reading time <ArrowRight size={14} />
+              {index === 2 ? "View Reading Passes" : "Browse reader-ready editions"} <ArrowRight size={14} />
             </Link>
           </article>
         ))}
       </section>
-    </div>
+    </PublicPageFrame>
   );
 }

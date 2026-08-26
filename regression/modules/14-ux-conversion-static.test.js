@@ -104,6 +104,7 @@ describe("UX conversion static signals", () => {
   const gitignore = read(".gitignore");
   const frontendPackageJson = read("frontend/package.json");
   const staticSnapshotGenerator = read("frontend/scripts/generate-static-seo-snapshots.mjs");
+  const publicAccessCopy = read("frontend/src/lib/publicAccessCopy.js");
   const staticSeoContractGenerator = read("scripts/generate_static_seo_public_contract.mjs");
   const socialPreviewAudit = read("scripts/social_preview_audit.py");
   const postProductionCanary = read("scripts/post_production_canary.py");
@@ -203,6 +204,7 @@ describe("UX conversion static signals", () => {
     firstVisitSiteTour,
     footer,
     controlledLaunch,
+    publicAccessCopy,
     staticSnapshotGenerator,
   ].join("\n");
   const livePaymentEvidenceDocs = [
@@ -310,7 +312,7 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain("mergeDraculaBook(book)");
     expect(useSeo).toContain("assets/books/dracula/dracula-front-cover.webp");
     expect(useSeo).not.toContain("images.unsplash.com/photo-1507842217343-583bb7270b66");
-    expect(publicIndex).toContain("https://theearnalism.com/assets/brand/earnalism-logo.png");
+    expect(publicIndex).toContain("https://theearnalism.com/assets/brand/earnalism-brand-lockup.png");
     expect(publicIndex).toContain("The Earnalism brand mark");
     expect(publicIndex).not.toContain("images.unsplash.com/photo-1507842217343-583bb7270b66");
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-front-cover.webp"))).toBe(true);
@@ -413,7 +415,7 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain('data-testid="book-reading-pass"');
     expect(bookDetail).toContain("{isDracula && (");
     expect(bookDetail).toContain('data-testid="book-experience-truth"');
-    expect(bookDetail).toContain("The first 3 canonical pages open free so you can feel the room before adding reading time.");
+    expect(bookDetail).toContain("Read the first 3 pages free. Continue with Reading Pass access when the story calls you onward.");
     expect(bookDetail).toContain("View Reading Passes");
     expect(bookDetail).not.toContain("Get 7-Day Reading Pass");
     expect(bookDetailPresentation).toContain("No public audio controls are shown until narration, sync, metadata, endpoint, and browser gates pass.");
@@ -431,7 +433,7 @@ describe("UX conversion static signals", () => {
     expect(launchAudit).toContain('"stale_intent_expiry_detected"');
     expect(launchAudit).toContain('"no_public_audiobook_sale_detected"');
     expect(alwaysVisibleLaunchCopy).toContain("Reading time is used only while you read.");
-    expect(alwaysVisibleLaunchCopy).toContain("The first 3 canonical pages are free to preview");
+    expect(alwaysVisibleLaunchCopy).toContain("Read the first 3 pages free");
     expect(renderedPricingSources).toContain("No subscription or autorenewal");
     expect(renderedPricingSources).not.toMatch(/own forever|ownership forever|permanent ownership|autorenewing plan|recurring subscription/i);
     expect(renderedPricingSources).not.toMatch(/buy audiobook|audiobook pass|Listen Now/i);
@@ -1432,8 +1434,8 @@ describe("UX conversion static signals", () => {
     }
     expect(renderedPricingSources).not.toContain("₹49 The First Chapter");
     expect(renderedPricingSources).not.toContain("unlock the ₹49");
-    expect(microStory).toContain("Start with ₹49");
-    expect(microStory).toContain("Continue with reading time");
+    expect(microStory).toContain("Explore the Library");
+    expect(microStory).toContain("View Reading Passes");
     expect(readerUpsell).toContain("The Quiet Hour");
     expect(readerUpsell).not.toContain("An Evening In");
   });
@@ -1450,7 +1452,7 @@ describe("UX conversion static signals", () => {
   test("pricing page frames Dracula continuation and reading-time value", () => {
     expect(pricing).toContain("Choose your reading time.");
     expect(pricing).toContain("Return whenever");
-    expect(pricing).toContain("Start with a free preview");
+    expect(pricing).toContain("PUBLIC_ACCESS_COPY");
     expect(pricing).toContain("When you are ready to continue a reader-ready classic, add reading time to your wallet");
     expect(pricing).toContain("Earnalism is a digital reading room");
     expect(pricing).toContain("You buy quiet reading time, not a noisy subscription");
@@ -1463,11 +1465,11 @@ describe("UX conversion static signals", () => {
 
   test("login signup account and default SEO use the approved access contract without overclaiming", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
-    expect(login).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
+    expect(login).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
+    expect(signup).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
-    expect(account).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
+    expect(account).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(account).toContain("Continue Dracula");
     expect(account).not.toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');

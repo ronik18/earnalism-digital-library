@@ -1,0 +1,25 @@
+.public-page-frame {
+  min-height: 70vh;
+  color: var(--eds-ink, #2c1810);
+  background: var(--eds-paper, #fffaf1);
+}
+
+.public-page-frame--editorial {
+  background:
+    linear-gradient(180deg, rgba(250, 242, 228, 0.68), rgba(255, 252, 246, 0) 24rem),
+    var(--eds-paper, #fffaf1);
+}
+
+.public-page-frame--quiet {
+  background:
+    radial-gradient(circle at 88% 0%, rgba(187, 138, 60, 0.12), transparent 25rem),
+    linear-gradient(180deg, #fffaf2, #f5ecdf 70%, #fffaf2);
+}
+
+.public-page-frame a:focus-visible,
+.public-page-frame button:focus-visible,
+.public-page-frame input:focus-visible,
+.public-page-frame textarea:focus-visible {
+  outline: 2px solid var(--eds-gold, #b97924);
+  outline-offset: 3px;
+}

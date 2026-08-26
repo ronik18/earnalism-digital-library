@@ -19,7 +19,6 @@ permissions:
 
 jobs:
   owner-review:
-    if: github.event.pull_request.number == 322
     name: Owner-review artifact
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -103,6 +102,6 @@ jobs:
       - name: Upload owner-review artifact
         uses: actions/upload-artifact@v7
         with:
-          name: pr-322-owner-review-${{ github.event.pull_request.head.sha }}
+          name: public-pages-owner-review-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
           path: uat/evidence/actual-redesign/owner-review-final/**
           if-no-files-found: error

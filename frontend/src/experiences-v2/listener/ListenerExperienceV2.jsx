@@ -6,6 +6,7 @@ import ExperienceIconButton from "../shared/ExperienceIconButton";
 import ExperiencePanel from "../shared/ExperiencePanel";
 import ExperienceShell from "../shared/ExperienceShell";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
+import { LISTENING_ACCESS_COPY, READING_TIME_COPY } from "../../lib/publicAccessCopy";
 import "./listener-v2.css";
 
 const clock = (seconds = 0) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
@@ -61,7 +62,11 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
           <div className="listener-v2__utilities"><label>Speed<select value={speed} onChange={(event) => { const next = Number(event.target.value); setSpeed(next); if (audioRef.current) audioRef.current.playbackRate = next; }} disabled={presentation.fixture}><option value="1">1.0×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label><button type="button" onClick={() => onNavigate?.("timer")}><TimerReset size={16} /> Sleep</button>{readAlongSupported && <button type="button" onClick={onReadAlong}>Read Along</button>}<button type="button" onClick={() => onNavigate?.("more")}><Ellipsis size={18} /> More</button></div>
           <div className="listener-v2__mobile-top"><button type="button" onClick={() => onNavigate?.("back")} aria-label="Back"><ChevronLeft size={18} /></button><button type="button" onClick={() => onNavigate?.("more")} aria-label="More options"><Ellipsis size={20} /></button></div>
         </div>
-        <aside className="listener-v2__side"><ExperiencePanel eyebrow="Up next"><ol><li><span>Chapter 4</span><b>The Visitors</b><small>22:18</small></li><li><span>Chapter 5</span><b>Jonathan’s Diary</b><small>18:05</small></li><li><span>Chapter 6</span><b>Lucy’s Diary</b><small>10:40</small></li></ol><button type="button" onClick={() => onNavigate?.("chapters")}>View all chapters <ChevronRight size={14} /></button></ExperiencePanel><ExperiencePanel eyebrow="Listening mode"><p>Playback stays available only while release truth and authorization remain valid.</p><button type="button" onClick={onAddToLibrary}>Add to Library</button></ExperiencePanel><ExperiencePanel eyebrow="Reading Pass"><p><Clock3 size={15} /> Reading time is used only while you read or listen.</p><button type="button" onClick={() => onNavigate?.("passes")}>Explore Reading Passes</button></ExperiencePanel></aside>
+        <aside className="listener-v2__side">
+          {presentation.fixture ? <ExperiencePanel eyebrow="Up next"><ol><li><span>Chapter 4</span><b>The Visitors</b><small>22:18</small></li><li><span>Chapter 5</span><b>Jonathan’s Diary</b><small>18:05</small></li><li><span>Chapter 6</span><b>Lucy’s Diary</b><small>10:40</small></li></ol><button type="button" onClick={() => onNavigate?.("chapters")}>View all chapters <ChevronRight size={14} /></button></ExperiencePanel> : null}
+          <ExperiencePanel eyebrow="Listening access"><p>{LISTENING_ACCESS_COPY} Playback starts only after server authorization from second 0.</p>{onAddToLibrary ? <button type="button" onClick={onAddToLibrary}>Add to Library</button> : null}</ExperiencePanel>
+          <ExperiencePanel eyebrow="Reading Pass"><p><Clock3 size={15} /> {READING_TIME_COPY}</p><button type="button" onClick={() => onNavigate?.("passes")}>Explore Reading Passes</button></ExperiencePanel>
+        </aside>
       </section>
       <ExperienceBottomNavigation active="library" onNavigate={onNavigate} />
     </ExperienceShell>

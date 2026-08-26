@@ -378,7 +378,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     expectTextContains(text, "Project Gutenberg eBook #345");
     expectTextContains(text, "Preview opens first");
     expectTextContains(text, "Audio waits for release gates");
-    await expect(page.getByTestId("read-preview")).toHaveAccessibleName("Read the first 3 pages free");
+    await expect(page.getByTestId("read-preview")).toHaveAccessibleName("Read the first 3 pages free.");
     expectTextContains(text, "View Reading Passes");
     await expect(page.getByTestId("read-preview")).toHaveAttribute("href", "/reader/dracula");
     await expect(page.getByTestId("start-reading")).toHaveCount(0);

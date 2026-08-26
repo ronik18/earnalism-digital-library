@@ -6,6 +6,7 @@ import { optimizedImageUrl } from "../lib/images";
 import ShareButtons from "../components/ShareButtons";
 import JsonLd from "../components/JsonLd";
 import useSEO from "../hooks/useSEO";
+import PublicPageFrame from "../components/PublicPageFrame";
 
 export default function JournalArticle() {
   const { slug } = useParams();
@@ -43,7 +44,7 @@ export default function JournalArticle() {
       "name": "The Earnalism",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://theearnalism.com/assets/brand/earnalism-logo.png",
+        "url": "https://theearnalism.com/assets/brand/earnalism-brand-lockup.png",
       },
     },
     "mainEntityOfPage": {
@@ -64,21 +65,21 @@ export default function JournalArticle() {
         if (!controller.signal.aborted) setLoading(false);
       });
     api.get("/blog", { signal: controller.signal })
-      .then((r) => setRelated(r.data.filter((p) => p.slug !== slug).slice(0, 3)))
+      .then((r) => setRelated((Array.isArray(r.data) ? r.data : []).filter((p) => p.slug !== slug).slice(0, 3)))
       .catch(() => {});
     return () => controller.abort();
   }, [slug]);
 
-  if (loading) return <div className="py-32 text-center text-charcoal-soft">Loading…</div>;
+  if (loading) return <PublicPageFrame tone="editorial"><div className="py-32 text-center text-charcoal-soft" role="status">Opening this journal note…</div></PublicPageFrame>;
   if (!post) return (
-    <div className="max-w-3xl mx-auto px-6 py-32 text-center">
+    <PublicPageFrame tone="editorial"><div className="max-w-3xl mx-auto px-6 py-32 text-center">
       <h1 className="font-serif-display text-4xl text-burgundy">Article not found</h1>
       <Link to="/journal" className="btn-secondary mt-6">Back to Journal</Link>
-    </div>
+    </div></PublicPageFrame>
   );
 
   return (
-    <article data-testid="journal-article">
+    <PublicPageFrame tone="editorial" testId="journal-article"><article>
       {articleSchema && <JsonLd id="article" data={articleSchema} />}
       <div className="max-w-3xl mx-auto px-5 sm:px-8 pt-12">
         <Link to="/journal" className="inline-flex items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-journal">
@@ -133,6 +134,6 @@ export default function JournalArticle() {
           </div>
         </section>
       )}
-    </article>
+    </article></PublicPageFrame>
   );
 }

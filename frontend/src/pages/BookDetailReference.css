@@ -1,0 +1,50 @@
+.book-detail-page--reference {
+  --book-reference-ink: #07110f;
+  --book-reference-surface: #0c1916;
+  --book-reference-ivory: #fff8e9;
+  --book-reference-gold: #e2b957;
+  --book-reference-line: rgba(226, 185, 87, .23);
+  background:
+    radial-gradient(circle at 78% 9%, rgba(192, 132, 36, .16), transparent 25rem),
+    linear-gradient(180deg, #07110f 0%, #081612 63%, #0d1b17 100%);
+  color: var(--book-reference-ivory);
+}
+
+.book-detail-page--reference .book-detail-reference__return a { color: rgba(255, 248, 233, .7) !important; }
+.book-detail-page--reference .book-detail-reference__return a:hover { color: var(--book-reference-gold) !important; }
+.book-detail-page--reference .book-detail-cover-frame { border-color: var(--book-reference-line); background: #10201b; box-shadow: 0 38px 90px -42px rgba(0, 0, 0, .85); }
+.book-detail-page--reference .book-detail-reference__hero > div:last-child > .overline,
+.book-detail-page--reference .italic-eyebrow,
+.book-detail-page--reference .overline { color: var(--book-reference-gold) !important; }
+.book-detail-page--reference .book-detail-title,
+.book-detail-page--reference .font-serif-light,
+.book-detail-page--reference .font-serif-display { color: var(--book-reference-ivory) !important; }
+.book-detail-page--reference .text-charcoal,
+.book-detail-page--reference .text-charcoal-soft { color: rgba(255, 248, 233, .76) !important; }
+.book-detail-page--reference .text-burgundy,
+.book-detail-page--reference .text-burgundy-soft,
+.book-detail-page--reference .text-gold-deep { color: var(--book-reference-gold) !important; }
+.book-detail-page--reference .book-detail-status-row span { border-color: var(--book-reference-line); background: rgba(12, 25, 22, .86); color: rgba(255, 248, 233, .86); }
+.book-detail-page--reference #rights-note,
+.book-detail-page--reference .book-experience-panel,
+.book-detail-page--reference .card-elegant { border-color: var(--book-reference-line) !important; background: linear-gradient(145deg, rgba(16, 33, 28, .94), rgba(9, 20, 17, .96)) !important; box-shadow: none; }
+.book-detail-page--reference .book-experience-panel__item { background: rgba(255, 248, 233, .035); color: rgba(255, 248, 233, .76); }
+.book-detail-page--reference .book-experience-panel__item svg,
+.book-detail-page--reference .book-experience-panel__item strong,
+.book-detail-page--reference .book-experience-panel__sync { color: var(--book-reference-gold) !important; }
+.book-detail-page--reference .book-experience-panel__item p { color: rgba(255, 248, 233, .74); }
+.book-detail-page--reference .btn-primary { border-color: #e5be63; background: linear-gradient(135deg, #f3d07a, #c99737); color: #182019; }
+.book-detail-page--reference .btn-secondary,
+.book-detail-page--reference .btn-link { border-color: var(--book-reference-line); background: rgba(255, 248, 233, .035); color: var(--book-reference-ivory); }
+.book-detail-page--reference li > a { color: rgba(255, 248, 233, .9) !important; }
+.book-detail-page--reference li > a:hover { color: var(--book-reference-gold) !important; }
+.book-detail-page--reference .preview-payment-shell { border-color: var(--book-reference-line); background: linear-gradient(110deg, #10231d, #271410 68%, #101b17); }
+.book-detail-page--reference .preview-payment-shell__copy h2,
+.book-detail-page--reference .preview-payment-shell__copy p,
+.book-detail-page--reference .preview-payment-shell__proof { color: var(--book-reference-ivory); }
+
+@media (max-width: 767px) {
+  .book-detail-page--reference .book-detail-reference__hero { padding-top: 2.2rem; }
+  .book-detail-page--reference .book-detail-cover-frame { max-width: 15rem; }
+  .book-detail-page--reference .book-detail-status-row span { min-height: 2.75rem; }
+}

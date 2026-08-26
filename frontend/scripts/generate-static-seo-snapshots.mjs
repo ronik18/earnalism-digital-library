@@ -15,7 +15,7 @@ const MANAGED_HEAD_END = "<!-- earnalism-static-seo:end -->";
 const BRAND = "The Earnalism";
 const SITE_NAME = "The Earnalism";
 const DRACULA_IMAGE = `${siteUrl}/assets/books/dracula/dracula-front-cover.webp`;
-const HOME_IMAGE = `${siteUrl}/assets/brand/earnalism-logo.png`;
+const HOME_IMAGE = `${siteUrl}/assets/brand/earnalism-brand-lockup.png`;
 
 function escapeHtml(value = "") {
   return String(value)
@@ -190,7 +190,7 @@ function organizationJsonLd() {
     alternateName: "Earnalism",
     url: siteUrl,
     email: "sales@reoenterprise.org",
-    logo: `${siteUrl}/assets/brand/earnalism-logo.png`,
+    logo: `${siteUrl}/assets/brand/earnalism-brand-lockup.png`,
   };
 }
 
@@ -258,7 +258,7 @@ function draculaBookJsonLd() {
     hasPart: [
       {
         "@type": "Chapter",
-        name: "First 3 canonical pages preview",
+        name: "Read the first 3 pages free",
         isAccessibleForFree: true,
         url: absoluteUrl("/reader/dracula"),
       },
@@ -288,7 +288,7 @@ function buildPages(publication) {
   const bookDescription = `Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. ${publicAccessCopy} Audio remains unavailable for this controlled release unless separately approved.`;
   const libraryDescription = `Browse Earnalism's Bengali and English classics. ${publicAccessCopy} Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.`;
   const pricingDescription = `${publicAccessCopy} Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading, works across eligible titles, and never renews automatically.`;
-  const readerDescription = "Read the Dracula preview. The first 3 canonical pages are available in the public preview. Audio controls are unavailable for this release. Search engines should use the public Dracula book page instead.";
+  const readerDescription = "Read the Dracula preview. Read the first 3 pages free. Audio controls are unavailable for this release. Search engines should use the public Dracula book page instead.";
 
   return [
     {
@@ -305,7 +305,7 @@ function buildPages(publication) {
         eyebrow: "The Earnalism Digital Library",
         title: "A premium reading and listening sanctuary for timeless Bengali and English classics.",
         body: "A calm digital reading room for timeless Bengali and English literature. Read the first 3 pages free. Listening requires an active Reading Pass.",
-        facts: ["Read the first 3 pages free. Listening requires an active Reading Pass.", "Reader-ready classics stay visible; approved audiobooks require an active Reading Pass.", "No subscription or autorenewal."],
+        facts: [publicAccessCopy, "Reader-ready classics stay visible; approved audiobooks require an active Reading Pass.", "No subscription or autorenewal."],
         links: [
           { href: "/library", label: "Start Reading" },
           { href: "/library?category=live", label: "Reader-ready classics" },
@@ -377,7 +377,7 @@ function buildPages(publication) {
         eyebrow: "Library",
         title: "Reader-ready classics, release-gated audio.",
         body: `Browse Bengali and English classics without audio overclaim. ${publicAccessCopy}`,
-        facts: ["The first 3 canonical pages are server-defined.", "Validated public-domain classics open as reader-only releases.", "Unapproved audiobooks stay hidden.", "Reader-only releases do not offer listening CTAs."],
+        facts: [publicAccessCopy, "Validated public-domain classics open as reader-only releases.", "Unapproved audiobooks stay hidden.", "Reader-only releases do not offer listening CTAs."],
         links: [
           { href: "/library?category=live", label: "Bengali Classics" },
           { href: "/book/dracula", label: "Open Dracula" },

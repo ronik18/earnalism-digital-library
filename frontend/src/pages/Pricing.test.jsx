@@ -14,7 +14,7 @@ describe("Commerce design contract", () => {
     expect(source).not.toContain("7-Day");
   });
   test("keeps canonical preview and non-recurring product truth", () => {
-    expect(source).toContain("Read the first 3 pages free");
+    expect(source).toContain("PUBLIC_PREVIEW_COPY");
     expect(source).toContain("No subscription or autorenewal");
     expect(referenceSource).toContain('<li>{PUBLIC_ACCESS_COPY}</li>');
   });

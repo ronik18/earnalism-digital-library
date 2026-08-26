@@ -14,7 +14,7 @@ const snapshots = [
   {
     route: "/book/dracula",
     file: path.join(buildDir, "book", "dracula", "index.html"),
-    required: ["first 3 canonical pages", "View Reading Passes", "Read the first 3 pages free. Listening requires an active Reading Pass."],
+    required: ["Read the first 3 pages free", "View Reading Passes", "Listening requires an active Reading Pass."],
     forbidden: ["Chapter 1 is free", "Read Chapter 1", "7-Day", "7-day", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
   },
   {

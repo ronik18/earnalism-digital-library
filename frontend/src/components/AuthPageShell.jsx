@@ -10,7 +10,7 @@ export default function AuthPageShell({ eyebrow, title, introduction, children, 
             <div className="rounded-xl bg-[#fff7e9] p-4"><EarnalismBrandLockup variant="auth" /></div>
             <p className="mt-10 font-serif-display text-3xl leading-tight">A library designed for attention, not interruption.</p>
           </div>
-          <p className="text-sm leading-6 text-[#f7e6cf]/75">First 3 pages free preview. Listening requires an active Reading Pass.</p>
+          <p className="text-sm leading-6 text-[#f7e6cf]/75">Read the first 3 pages free. Listening requires an active Reading Pass.</p>
         </aside>
         <div className="p-7 sm:p-10 lg:p-12">
           <Link to="/" className="inline-flex rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-burgundy lg:hidden" aria-label="The Earnalism home">

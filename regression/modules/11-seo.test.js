@@ -169,7 +169,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(bookSchema.hasPart).toEqual([
       {
         "@type": "Chapter",
-        name: "First 3 canonical pages preview",
+        name: "Read the first 3 pages free",
         isAccessibleForFree: true,
         url: `${SITE_URL}/reader/dracula`,
       },

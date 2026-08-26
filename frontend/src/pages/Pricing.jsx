@@ -7,6 +7,7 @@ import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { ReferenceCommerceSurface } from "../components/ReferencePublicPages";
+import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
 
 const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
 
@@ -251,7 +252,7 @@ export default function Pricing() {
           </h1>
           <div className="gold-rule-thin mx-auto mt-7" />
           <p className="text-charcoal-soft text-base sm:text-lg font-light leading-[1.9] mt-7 max-w-2xl mx-auto">
-            Start with a free preview. When you are ready to continue a reader-ready classic, add reading time to your wallet. Your time is used only while you read.
+            {PUBLIC_ACCESS_COPY} When you are ready to continue a reader-ready classic, add reading time to your wallet. {READING_TIME_COPY}
           </p>
           <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -260,9 +261,9 @@ export default function Pricing() {
               className="btn-secondary"
               data-testid="dracula-continue-from-pricing"
             >
-              Read the first 3 pages free
+              {PUBLIC_PREVIEW_COPY}
             </Link>
-            <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">The first 3 canonical pages are free to preview</span>
+            <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">{PUBLIC_PREVIEW_COPY}</span>
           </div>
           {showSimulator && (
             <div className="mt-7 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--brand-gold)]/40 text-[0.7rem] tracking-[0.22em] uppercase text-gold-deep" data-testid="pricing-test-mode-banner">
@@ -309,7 +310,7 @@ export default function Pricing() {
         <section className="commerce-trust-grid" aria-label="Reading time wallet explanation" data-testid="pricing-wallet-explainer">
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <BookOpen size={18} strokeWidth={1.55} className="text-gold" />
-            <h2 className="mt-4 font-serif-display text-xl text-burgundy">First 3 canonical pages are free</h2>
+            <h2 className="mt-4 font-serif-display text-xl text-burgundy">{PUBLIC_PREVIEW_COPY}</h2>
             <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">Use the server-defined preview to decide whether the book has earned your next hour.</p>
           </div>
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
