@@ -239,8 +239,8 @@ jobs:
       - name: Run frontend production regression canary
         env:
           REGRESSION_MODE: canary
-          REGRESSION_FRONTEND_URL: https://theearnalism.com
-          REGRESSION_API_URL: https://api.theearnalism.com
+          REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}
+          REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
         run: node regression/scripts/post-deploy-canary.js
 
       - name: Upload frontend canary evidence
