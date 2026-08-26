@@ -22,6 +22,7 @@ import { bookDetailPresentationForBook } from "../lib/bookDetailPresentation";
 import { readerManifestPath } from "../lib/audioReleaseSafety";
 import { readerManifestAudioIsAuthorized } from "../lib/readerManifestAccess";
 import { PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
+import "./BookDetailReference.css";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 const SITE_URL = "https://theearnalism.com";
@@ -87,12 +88,12 @@ export default function BookDetail() {
     title: bookNotFound
       ? "Book not found — The Earnalism Digital Library"
       : publicBook?.slug === LIVE_APPROVED_SLUG
-        ? "Dracula by Bram Stoker | First 3 pages free preview on Earnalism"
+        ? "Dracula by Bram Stoker | Read the first 3 pages free on Earnalism"
         : publicBook ? `${publicBook.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
     description: bookNotFound
       ? "This Earnalism book is no longer available."
       : publicBook?.slug === LIVE_APPROVED_SLUG
-        ? "Preview Dracula by Bram Stoker on Earnalism. First 3 pages free preview; continue with Reading Pass access."
+        ? "Preview Dracula by Bram Stoker on Earnalism. Read the first 3 pages free. Continue with Reading Pass access."
         : publicBook?.short_description || publicBook?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
     image: publicBook?.cover_image_url,
     imageAlt: publicBook?.slug === LIVE_APPROVED_SLUG ? "Custom Earnalism Dracula cover artwork" : publicBook?.title,
@@ -231,15 +232,15 @@ export default function BookDetail() {
   const detailPresentation = bookDetailPresentationForBook(publicBook);
 
   return (
-    <div className="book-detail-page" data-testid="book-page">
+    <div className="book-detail-page book-detail-page--reference" data-testid="book-page">
       {bookSchemaAllowed && bookSchema && <JsonLd id="book" data={bookSchema} />}
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-10">
+      <div className="book-detail-reference__return max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-10">
         <Link to="/library" className="inline-flex min-h-11 items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-to-library">
           <ChevronLeft size={14} /> Back to Library
         </Link>
       </div>
 
-      <section className="book-detail-hero max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <section className="book-detail-hero book-detail-reference__hero max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         <div className="lg:col-span-5 lg:sticky lg:top-28">
           <div className="book-detail-cover-frame aspect-[3/4] overflow-hidden max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
             <BookCoverImage
@@ -336,12 +337,12 @@ export default function BookDetail() {
             )}
           </div>
 
-          <div className="book-experience-panel mt-8" data-testid="book-experience-truth">
+          <div className="book-experience-panel book-detail-reference__truth mt-8" data-testid="book-experience-truth">
             <div className="book-experience-panel__item">
               <BookOpen size={18} strokeWidth={1.55} aria-hidden="true" />
               <div>
                 <strong>{isDracula ? "Preview opens first" : "Reader edition ready"}</strong>
-                <p>{isDracula ? "First 3 pages free preview. Continue with Reading Pass access when the story calls you onward." : detailPresentation.readerBody}</p>
+                <p>{isDracula ? "Read the first 3 pages free. Continue with Reading Pass access when the story calls you onward." : detailPresentation.readerBody}</p>
               </div>
             </div>
             <div className="book-experience-panel__item">

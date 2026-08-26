@@ -20,6 +20,7 @@
 .earnalism-brand-lockup--auth { width: min(15.5rem, 100%); }
 .earnalism-brand-lockup--account { width: min(12.5rem, 100%); }
 .earnalism-brand-lockup--editorial { width: min(13.5rem, 100%); }
+.earnalism-brand-lockup--standalone-experience { width: min(13rem, 100%); }
 
 @media (max-width: 640px) {
   .earnalism-brand-lockup--desktop-header { width: min(11.75rem, calc(100vw - 9rem)); }

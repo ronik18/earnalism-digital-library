@@ -8,31 +8,31 @@ const snapshots = [
   {
     route: "/",
     file: path.join(buildDir, "index.html"),
-    required: ["First 3 pages free preview. Listening requires an active Reading Pass."],
+    required: ["Read the first 3 pages free. Listening requires an active Reading Pass."],
     forbidden: ["Chapter 1 is free", "Read Chapter 1", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
   },
   {
     route: "/book/dracula",
     file: path.join(buildDir, "book", "dracula", "index.html"),
-    required: ["First 3 pages free preview", "View Reading Passes", "Listening requires an active Reading Pass."],
+    required: ["Read the first 3 pages free", "View Reading Passes", "Listening requires an active Reading Pass."],
     forbidden: ["Chapter 1 is free", "Read Chapter 1", "7-Day", "7-day", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
   },
   {
     route: "/library",
     file: path.join(buildDir, "library", "index.html"),
-    required: ["First 3 pages free preview. Listening requires an active Reading Pass."],
+    required: ["Read the first 3 pages free. Listening requires an active Reading Pass."],
     forbidden: ["Chapter 1 is free", "Read Chapter 1", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
   },
   {
     route: "/pricing",
     file: path.join(buildDir, "pricing", "index.html"),
-    required: ["Reading Pass", "No subscription", "First 3 pages free preview. Listening requires an active Reading Pass."],
+    required: ["Reading Pass", "No subscription", "Read the first 3 pages free. Listening requires an active Reading Pass."],
     forbidden: ["The First Chapter", "Start with Chapter 1", "7-Day", "7-day", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
   },
   {
     route: "/reader/dracula",
     file: path.join(buildDir, "reader", "dracula", "index.html"),
-    required: ["First 3 pages free preview. Listening requires an active Reading Pass."],
+    required: ["Read the first 3 pages free. Listening requires an active Reading Pass."],
     forbidden: ["Read Dracula Chapter 1", "Preview chapter unlocked", "Get 7-Day Reading Pass", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample"],
   },
 ];

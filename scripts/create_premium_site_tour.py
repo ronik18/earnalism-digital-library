@@ -66,7 +66,7 @@ SOCIAL_ENV_KEYS = (
 REQUIRED_OVERLAYS = (
     "The Earnalism Digital Library",
     "Step into the classics",
-    "First 3 pages free preview. Listening requires an active Reading Pass.",
+    "Read the first 3 pages free. Listening requires an active Reading Pass.",
     "27 chapters prepared for focused reading",
     "Audio is intentionally disabled until QA passes",
     "Bengali Gothic is moving through the rights-safe pipeline",
@@ -85,7 +85,7 @@ VOICEOVER_SCRIPT = [
     ),
     (
         "Free Preview",
-        "First 3 pages free preview. Listening requires an active Reading Pass.",
+        "Read the first 3 pages free. Listening requires an active Reading Pass.",
     ),
     (
         "Reader",
@@ -174,7 +174,7 @@ SHOT_SEQUENCE = (
         "Dracula book page",
         ("dracula book page", "reading pass ctas"),
         ("reading-pass-CTAs",),
-        "First 3 pages free preview. Listening requires an active Reading Pass.",
+        "Read the first 3 pages free. Listening requires an active Reading Pass.",
         "Rights, source, preview, and reading pass CTAs stay visible.",
         8,
     ),

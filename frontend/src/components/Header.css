@@ -368,3 +368,27 @@
     padding: 0.24rem 0.38rem;
   }
 }
+
+/* The approved boards deliberately use dark experiential headers on Home,
+   Commerce, and Book Detail, and a warm catalog header on Library. */
+.premium-site-header.premium-site-header--reference-public {
+  background: #07110f;
+  border-bottom-color: rgba(214, 173, 85, .24);
+  box-shadow: none;
+}
+
+.premium-site-header.premium-site-header--reference-public .premium-header-nav a,
+.premium-site-header.premium-site-header--reference-public .premium-header-inner > button {
+  color: rgba(255, 248, 233, .84);
+}
+
+.premium-site-header.premium-site-header--reference-public .premium-header-nav a[aria-current="page"],
+.premium-site-header.premium-site-header--reference-public .reference-home-header-icon {
+  color: #f2d188;
+}
+
+.premium-site-header.premium-site-header--reference-library {
+  background: #fffdf8;
+  border-bottom-color: rgba(33, 40, 33, .12);
+  box-shadow: none;
+}

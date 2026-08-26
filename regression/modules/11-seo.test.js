@@ -169,7 +169,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(bookSchema.hasPart).toEqual([
       {
         "@type": "Chapter",
-        name: "First 3 pages free preview",
+        name: "Read the first 3 pages free",
         isAccessibleForFree: true,
         url: `${SITE_URL}/reader/dracula`,
       },
@@ -207,13 +207,13 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
 
   test("homepage, library, and pricing snapshots preserve the canonical preview and release-truth contract", () => {
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
+    expect(homeHtml).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(homeHtml).toContain("No subscription or autorenewal.");
     expect(homeHtml).toContain("href=\"/library?category=live\"");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(libraryHtml).toContain("Reader-ready classics, release-gated audio.");
     expect(libraryHtml).toContain("Reader-only releases do not offer listening CTAs.");
-    expect(pricingHtml).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
+    expect(pricingHtml).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(pricingHtml).toContain("Reading Pass");
     expect(pricingHtml).toMatch(/No subscription|no subscription/);
     for (const html of [homeHtml, libraryHtml, pricingHtml]) {

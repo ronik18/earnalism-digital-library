@@ -1,0 +1,15 @@
+{
+  "schema_version": "earnalism-primary-experience-reference-manifest-v1",
+  "immutable": true,
+  "owner_approved": true,
+  "references": {
+    "home-library-commerce-desktop.png": { "status": "OWNER_APPROVED_CANONICAL", "implementation_authority": true, "visual_gate_authority": true, "source_filename": "Home-Library-Commerce-Desktop.png", "png_valid": true, "width": 1536, "height": 1024, "size_bytes": 1970271, "sha256": "d9050673fcf487c0ba4394ff389f565f46576b8f66c8ea57a07b72a31cdf9f93", "coverage": ["home-desktop", "library-desktop"] },
+    "reading-pass-commerce.png": { "status": "OWNER_APPROVED_CANONICAL", "implementation_authority": true, "visual_gate_authority": true, "source_filename": "Reading Pass.png", "png_valid": true, "width": 1536, "height": 1024, "size_bytes": 1792456, "sha256": "b8586069938c891a242c945194e9a2c0a053fd256556696ace7bd9e4da1b0db2", "coverage": ["commerce-desktop"] },
+    "reader-listener-bookdetail-desktop.png": { "status": "OWNER_APPROVED_CANONICAL", "implementation_authority": true, "visual_gate_authority": true, "source_filename": "Reader-Listener-BookDetails-Desktop.png", "png_valid": true, "width": 1536, "height": 1024, "size_bytes": 1855647, "sha256": "14853c0069a431e3cd01da45ac35aae62e6ee875edfb41abd00823f2bf2d8817", "coverage": ["reader-desktop", "listener-desktop", "book-detail-desktop"] },
+    "reader-listener-ecosystem.png": { "status": "OWNER_APPROVED_CANONICAL", "implementation_authority": true, "visual_gate_authority": true, "source_filename": "reader_listener_ecosystem.png", "png_valid": true, "width": 1536, "height": 1024, "size_bytes": 1821746, "sha256": "0e27e754365b7fa4f09f18f30b875dc4c764a345f14474f35f5db1a8f631fcd0", "coverage": ["reader-mobile", "listener-mobile", "about-mobile"] },
+    "responsive-reference-board.png": { "status": "OWNER_APPROVED_CANONICAL", "implementation_authority": true, "visual_gate_authority": true, "source_filename": "responsive-reference-board.png", "png_valid": true, "width": 1536, "height": 1024, "size_bytes": 2761885, "sha256": "c19d324c74e0ac4ea5f474f3353cbfe00aad14509a4166a61bf4a581ca13d4e6", "coverage": ["home-mobile", "library-mobile", "commerce-mobile", "mobile-navigation", "library-mobile-filters"] },
+    "brand/earnalism-logo-lockup.png": { "status": "OWNER_APPROVED_CANONICAL", "implementation_authority": true, "visual_gate_authority": true, "source_filename": "earnalism-brand-lockup.png", "png_valid": true, "width": 2400, "height": 720, "size_bytes": 650122, "sha256": "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919", "coverage": ["all-public-shells", "all-standalone-experiences"] },
+    "home-library-desktop.png": { "status": "SUPERSEDED_CONTEXT_ONLY", "implementation_authority": false, "visual_gate_authority": false, "sha256": "5f0d3506e8510eec38ac22402fe2a6c8f3ba20234553c2a9dad6ed32b1cb4efb" },
+    "commerce-desktop.png": { "status": "SUPERSEDED_CONTEXT_ONLY", "implementation_authority": false, "visual_gate_authority": false, "sha256": "095d0c30b4952cc93273fcfd853ab094595acc597c9154c73144295fb0af748d" }
+  }
+}

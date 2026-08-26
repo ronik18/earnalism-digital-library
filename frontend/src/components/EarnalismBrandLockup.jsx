@@ -12,6 +12,7 @@ const VARIANTS = new Set([
   "auth",
   "account",
   "editorial",
+  "standalone-experience",
 ]);
 
 /** The sole visible lockup for public customer-shell surfaces. */

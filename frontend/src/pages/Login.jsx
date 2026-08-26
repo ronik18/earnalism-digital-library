@@ -113,7 +113,7 @@ export default function Login() {
       footer={<p className="mt-8 text-center text-sm font-light text-charcoal-soft">New to The Earnalism? <Link to="/signup" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-signup">Create an account</Link></p>}
     >
         <div className="mt-5 rounded-md border border-brand-soft bg-white/55 px-4 py-3 text-xs leading-relaxed text-charcoal-soft" data-testid="login-continuation-note">
-          First 3 pages free preview. Listening requires an active Reading Pass.
+          Read the first 3 pages free. Listening requires an active Reading Pass.
         </div>
 
         {GOOGLE_CLIENT_ID && <GoogleSignInButton onComplete={completeGoogle} />}

@@ -6,7 +6,7 @@ import ExperienceIconButton from "../shared/ExperienceIconButton";
 import ExperiencePanel from "../shared/ExperiencePanel";
 import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
-import { PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
+import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
 
 export const READER_V2_FIXTURE = Object.freeze({
   title: "Dracula",
@@ -63,7 +63,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           <footer className="reader-v2__continuation"><span>{PUBLIC_PREVIEW_COPY}</span>{currentAccess.canRequest ? <button type="button" onClick={() => requestPage(model.canonicalPage + 1)}>Use Reading Time to Continue <ChevronRight size={16} /></button> : <button type="button" onClick={() => onNavigate?.("signin")}>Sign in to continue <ChevronRight size={16} /></button>}</footer>
         </article>
 
-        <aside className="reader-v2__context" aria-label="About this book"><ExperiencePanel eyebrow="About this book"><dl><div><dt>Author</dt><dd>{model.author}</dd></div><div><dt>Language</dt><dd>{model.metadata.language}</dd></div><div><dt>Genre</dt><dd>{model.metadata.genre}</dd></div><div><dt>First published</dt><dd>{model.metadata.year}</dd></div><div><dt>Source & rights</dt><dd>{model.metadata.source}</dd></div></dl><p>Preview pages 1–3 are free. Reading time remains server-authoritative.</p></ExperiencePanel></aside>
+        <aside className="reader-v2__context" aria-label="About this book"><ExperiencePanel eyebrow="About this book"><dl><div><dt>Author</dt><dd>{model.author}</dd></div><div><dt>Language</dt><dd>{model.metadata.language}</dd></div><div><dt>Genre</dt><dd>{model.metadata.genre}</dd></div><div><dt>First published</dt><dd>{model.metadata.year}</dd></div><div><dt>Source & rights</dt><dd>{model.metadata.source}</dd></div></dl><p>{PUBLIC_ACCESS_COPY} Reading time remains server-authoritative.</p></ExperiencePanel></aside>
       </div>
       <div className="reader-v2__mobile-actions"><button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button><span><Clock3 size={14} /> {model.readingPass}</span><button type="button" onClick={() => onNavigate?.("bookmark")} aria-label="Bookmark current page"><Bookmark size={18} /></button></div>
       <ExperienceBottomNavigation active="library" onNavigate={onNavigate} />

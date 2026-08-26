@@ -415,7 +415,7 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain('data-testid="book-reading-pass"');
     expect(bookDetail).toContain("{isDracula && (");
     expect(bookDetail).toContain('data-testid="book-experience-truth"');
-    expect(bookDetail).toContain("First 3 pages free preview. Continue with Reading Pass access when the story calls you onward.");
+    expect(bookDetail).toContain("Read the first 3 pages free. Continue with Reading Pass access when the story calls you onward.");
     expect(bookDetail).toContain("View Reading Passes");
     expect(bookDetail).not.toContain("Get 7-Day Reading Pass");
     expect(bookDetailPresentation).toContain("No public audio controls are shown until narration, sync, metadata, endpoint, and browser gates pass.");
@@ -433,7 +433,7 @@ describe("UX conversion static signals", () => {
     expect(launchAudit).toContain('"stale_intent_expiry_detected"');
     expect(launchAudit).toContain('"no_public_audiobook_sale_detected"');
     expect(alwaysVisibleLaunchCopy).toContain("Reading time is used only while you read.");
-    expect(alwaysVisibleLaunchCopy).toContain("First 3 pages free preview");
+    expect(alwaysVisibleLaunchCopy).toContain("Read the first 3 pages free");
     expect(renderedPricingSources).toContain("No subscription or autorenewal");
     expect(renderedPricingSources).not.toMatch(/own forever|ownership forever|permanent ownership|autorenewing plan|recurring subscription/i);
     expect(renderedPricingSources).not.toMatch(/buy audiobook|audiobook pass|Listen Now/i);
@@ -1465,11 +1465,11 @@ describe("UX conversion static signals", () => {
 
   test("login signup account and default SEO use the approved access contract without overclaiming", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
-    expect(login).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
+    expect(login).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
+    expect(signup).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
-    expect(account).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
+    expect(account).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(account).toContain("Continue Dracula");
     expect(account).not.toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');
@@ -1650,7 +1650,7 @@ describe("UX conversion static signals", () => {
     [
       "The Earnalism Digital Library",
       "Step into the classics",
-      "First 3 pages free preview. Listening requires an active Reading Pass.",
+      "Read the first 3 pages free. Listening requires an active Reading Pass.",
       "27 chapters prepared for focused reading",
       "Audio is intentionally disabled until QA passes",
       "Bengali Gothic is moving through the rights-safe pipeline",
@@ -1741,7 +1741,7 @@ describe("UX conversion static signals", () => {
     const readerHtml = readOptional("frontend/build/reader/dracula/index.html");
     if (!homeHtml || !readerHtml) {
       expect(staticSnapshotGenerator).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
-      expect(staticSnapshotGenerator).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
+      expect(staticSnapshotGenerator).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
       return;
     }
 

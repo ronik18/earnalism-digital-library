@@ -48,7 +48,7 @@ export default function Signup() {
       footer={<p className="mt-8 text-center text-sm font-light text-charcoal-soft">Already a reader? <Link to="/login" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-login">Sign in</Link></p>}
     >
         <div className="mt-5 rounded-md border border-brand-soft bg-white/55 px-4 py-3 text-xs leading-relaxed text-charcoal-soft" data-testid="signup-wallet-note">
-          First 3 pages free preview. Listening requires an active Reading Pass.
+          Read the first 3 pages free. Listening requires an active Reading Pass.
         </div>
 
         <form onSubmit={submit} className="mt-8 space-y-4" data-testid="user-signup-form" aria-describedby="signup-wallet-help">

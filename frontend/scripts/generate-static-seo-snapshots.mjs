@@ -258,7 +258,7 @@ function draculaBookJsonLd() {
     hasPart: [
       {
         "@type": "Chapter",
-        name: "First 3 pages free preview",
+        name: "Read the first 3 pages free",
         isAccessibleForFree: true,
         url: absoluteUrl("/reader/dracula"),
       },
@@ -283,12 +283,12 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 }
 
 function buildPages(publication) {
-  const publicAccessCopy = "First 3 pages free preview. Listening requires an active Reading Pass.";
+  const publicAccessCopy = "Read the first 3 pages free. Listening requires an active Reading Pass.";
   const homeDescription = "A calm digital reading room for timeless Bengali and English literature. Explore a calm digital reading room with reader-ready classics and release-gated audiobooks.";
   const bookDescription = `Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. ${publicAccessCopy} Audio remains unavailable for this controlled release unless separately approved.`;
   const libraryDescription = `Browse Earnalism's Bengali and English classics. ${publicAccessCopy} Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.`;
   const pricingDescription = `${publicAccessCopy} Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading, works across eligible titles, and never renews automatically.`;
-  const readerDescription = "Read the Dracula preview. First 3 pages free preview. Audio controls are unavailable for this release. Search engines should use the public Dracula book page instead.";
+  const readerDescription = "Read the Dracula preview. Read the first 3 pages free. Audio controls are unavailable for this release. Search engines should use the public Dracula book page instead.";
 
   return [
     {
@@ -304,7 +304,7 @@ function buildPages(publication) {
       staticBody: pageShell({
         eyebrow: "The Earnalism Digital Library",
         title: "A premium reading and listening sanctuary for timeless Bengali and English classics.",
-        body: "A calm digital reading room for timeless Bengali and English literature. First 3 pages free preview. Listening requires an active Reading Pass.",
+        body: "A calm digital reading room for timeless Bengali and English literature. Read the first 3 pages free. Listening requires an active Reading Pass.",
         facts: [publicAccessCopy, "Reader-ready classics stay visible; approved audiobooks require an active Reading Pass.", "No subscription or autorenewal."],
         links: [
           { href: "/library", label: "Start Reading" },
@@ -352,7 +352,7 @@ function buildPages(publication) {
           "Audio is unavailable in the current controlled release unless separately approved.",
         ],
         links: [
-          { href: "/reader/dracula", label: "First 3 pages free preview" },
+          { href: "/reader/dracula", label: "Read the first 3 pages free" },
           { href: "/pricing?book=dracula", label: "View Reading Passes" },
           { href: "/library", label: "Back to Library" },
         ],

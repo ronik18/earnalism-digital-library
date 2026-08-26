@@ -1,0 +1,26 @@
+{
+  "schema_version": "earnalism-primary-experience-reference-capability-v1",
+  "global_contract": {
+    "design_contract": "Fixed-environment structural comparison only; composite boards are not stretched into full-viewport goldens.",
+    "geometry_tolerance_px": 2,
+    "typography_tolerance_px": 1,
+    "spacing_tolerance_px": 2,
+    "max_dynamic_mask_coverage": 0.15,
+    "permitted_dynamic_masks": ["live cover artwork", "title and author", "configured price", "release label", "balance", "progress", "duration"],
+    "prohibited_masks": ["logo", "navigation", "hero", "buttons", "cards", "filters", "offer geometry", "reader rails", "playback controls", "typography", "spacing"]
+  },
+  "states": {
+    "home-desktop": { "source_file": "home-library-commerce-desktop.png", "complete_viewport_reference": false, "comparable_regions": ["header", "hero", "two CTAs", "feature strip", "journey shelf", "Reading Pass block", "trust transition"] },
+    "library-desktop": { "source_file": "home-library-commerce-desktop.png", "complete_viewport_reference": false, "comparable_regions": ["light header", "catalog title", "search", "sort", "filter rail", "shelves", "pass support card"] },
+    "commerce-desktop": { "source_file": "reading-pass-commerce.png", "complete_viewport_reference": false, "comparable_regions": ["header", "dark hero", "offer grid", "institution", "publisher", "trust band", "final CTA"] },
+    "home-mobile": { "source_file": "responsive-reference-board.png", "complete_viewport_reference": false, "responsive_extrapolation_required": true, "comparable_regions": ["compact header", "hero", "two CTAs", "feature strip"] },
+    "library-mobile": { "source_file": "responsive-reference-board.png", "complete_viewport_reference": false, "responsive_extrapolation_required": true, "comparable_regions": ["compact header", "title", "search", "sort", "filter access"] },
+    "commerce-mobile": { "source_file": "responsive-reference-board.png", "complete_viewport_reference": false, "responsive_extrapolation_required": true, "comparable_regions": ["compact header", "hero", "offer heading", "first offer"] },
+    "reader-desktop": { "source_file": "reader-listener-bookdetail-desktop.png", "complete_viewport_reference": false, "comparable_regions": ["experience header", "contents rail", "reading canvas", "toolbar", "metadata panel", "continuation"] },
+    "listener-desktop": { "source_file": "reader-listener-bookdetail-desktop.png", "complete_viewport_reference": false, "comparable_regions": ["experience header", "art", "timeline", "controls", "up-next", "pass state"] },
+    "book-detail-desktop": { "source_file": "reader-listener-bookdetail-desktop.png", "complete_viewport_reference": false, "comparable_regions": ["dark composition", "cover", "title", "truthful actions", "tabs", "rights panel", "similar titles"] },
+    "reader-mobile": { "source_file": "reader-listener-ecosystem.png", "complete_viewport_reference": false, "comparable_regions": ["compact header", "chapter", "reading surface", "continuation"] },
+    "listener-mobile": { "source_file": "reader-listener-ecosystem.png", "complete_viewport_reference": false, "comparable_regions": ["compact header", "art", "timeline", "locked state"] },
+    "about-mobile": { "source_file": "reader-listener-ecosystem.png", "complete_viewport_reference": false, "comparable_regions": ["compact header", "introduction", "four trust cards", "bottom navigation"] }
+  }
+}

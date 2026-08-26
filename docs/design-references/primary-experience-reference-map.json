@@ -1,0 +1,26 @@
+{
+  "schema_version": "earnalism-primary-experience-reference-map-v1",
+  "owner_arbitration": "2026-08-26",
+  "rule": "A page and viewport uses exactly one named canonical visual source. Mockup content remains subordinate to server-authoritative product, rights, payment, and release truth.",
+  "assignments": [
+    { "state": "home-desktop", "source_file": "home-library-commerce-desktop.png", "coverage": "Home desktop panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "library-desktop", "source_file": "home-library-commerce-desktop.png", "coverage": "Library desktop panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "commerce-desktop", "source_file": "reading-pass-commerce.png", "coverage": "Commerce and Reading Pass desktop panels", "reference_class": "REGION_REFERENCE" },
+    { "state": "home-mobile", "source_file": "responsive-reference-board.png", "coverage": "Home mobile panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "library-mobile", "source_file": "responsive-reference-board.png", "coverage": "Library mobile panel, filter drawer", "reference_class": "REGION_REFERENCE" },
+    { "state": "commerce-mobile", "source_file": "responsive-reference-board.png", "coverage": "Commerce mobile panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "mobile-navigation", "source_file": "responsive-reference-board.png", "coverage": "Hamburger navigation panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "reader-desktop", "source_file": "reader-listener-bookdetail-desktop.png", "coverage": "Reader desktop panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "listener-desktop", "source_file": "reader-listener-bookdetail-desktop.png", "coverage": "Listener desktop panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "book-detail-desktop", "source_file": "reader-listener-bookdetail-desktop.png", "coverage": "Book Detail desktop panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "reader-mobile", "source_file": "reader-listener-ecosystem.png", "coverage": "Reader mobile panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "listener-mobile", "source_file": "reader-listener-ecosystem.png", "coverage": "Listener mobile panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "about-mobile", "source_file": "reader-listener-ecosystem.png", "coverage": "About mobile panel", "reference_class": "REGION_REFERENCE" },
+    { "state": "brand-lockup", "source_file": "brand/earnalism-logo-lockup.png", "coverage": "All public and standalone experience shells", "reference_class": "FULL_REFERENCE" }
+  ],
+  "product_truth_overrides": [
+    "Use the approved three-page text access policy, not any chapter-based mockup language.",
+    "Render audio only when canonical release truth permits it; Dracula remains audio-disabled.",
+    "Render only configured commercial facts, prices, ratings, testimonials, and claims."
+  ]
+}
