@@ -1,0 +1,21 @@
+{
+  "slug": "a-ghost-story",
+  "source": "frontend/src/data/homeCuratedSprint1.json#shelves.approved_audiobooks",
+  "repository_contract": {
+    "reader_enabled": true,
+    "audiobook_enabled": true,
+    "audiobook_release_gate": "PUBLIC_AUDIO_RELEASE_APPROVED",
+    "audio_qa_status": "QA_PASSED"
+  },
+  "public_contract": {
+    "audio_enabled": true,
+    "audiobook_enabled": true,
+    "audiobook_release_gates": [
+      "APPROVED",
+      "PUBLIC_AUDIO_RELEASE_APPROVED"
+    ],
+    "audio_qa_status": "QA_PASSED",
+    "raw_audio_url": "absent",
+    "anonymous_range_statuses": [401, 403]
+  }
+}

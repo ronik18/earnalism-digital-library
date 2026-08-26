@@ -200,3 +200,55 @@ jobs:
             args+=(--scope "${VERCEL_SCOPE}")
           fi
           vercel "${args[@]}"
+
+  frontend_production_canary:
+    name: Vercel frontend production canary
+    needs:
+      - regression
+      - deploy_frontend
+    if: >-
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      needs.regression.result == 'success' &&
+      needs.deploy_frontend.result == 'success' &&
+      needs.deploy_frontend.outputs.deployed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout deployed frontend commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install canary dependencies
+        run: npm ci
+
+      - name: Run removed-route production canary
+        run: python3 scripts/post_deploy_route_canary.py --base-url https://theearnalism.com
+
+      - name: Run static SEO raw-HTML canary
+        run: python3 scripts/post_deploy_static_seo_canary.py --base-url https://theearnalism.com
+
+      - name: Run frontend production regression canary
+        env:
+          REGRESSION_MODE: canary
+          REGRESSION_FRONTEND_URL: https://theearnalism.com
+          REGRESSION_API_URL: https://api.theearnalism.com
+        run: node regression/scripts/post-deploy-canary.js
+
+      - name: Upload frontend canary evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: frontend-production-canary-${{ github.sha }}
+          path: |
+            output/launch/post_deploy_route_canary.*
+            output/launch/post_deploy_static_seo_canary.*
+            regression/results.json

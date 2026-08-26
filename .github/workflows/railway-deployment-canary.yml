@@ -11,26 +11,99 @@ jobs:
     name: production backend canary
     if: >-
       github.repository == 'ronik18/earnalism-digital-library' &&
-      github.event.deployment.environment == 'production' &&
-      github.event.deployment_status.state == 'success' &&
-      github.event.deployment.ref == 'main'
+      github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
       PRODUCTION_API_BASE_URL: https://api.theearnalism.com
       RAILWAY_DEPLOYMENT_SHA: ${{ github.event.deployment.sha }}
+      RAILWAY_PROVIDER_MARKER: ${{ vars.RAILWAY_DEPLOYMENT_PROVIDER_MARKER || '' }}
     steps:
-      - name: Checkout deployed main ref
+      - name: Check out the exact deployment SHA
         uses: actions/checkout@v6
         with:
-          ref: main
+          ref: ${{ github.event.deployment.sha }}
+          fetch-depth: 0
 
-      - name: Run read-only production API canary
-        run: python3 scripts/railway_deployment_status_canary.py --output-dir railway-deployment-canary
+      - name: Verify event SHA and collect non-secret provenance
+        id: deployment-event
+        env:
+          DEPLOYMENT_ID: ${{ github.event.deployment.id }}
+          DEPLOYMENT_SHA: ${{ github.event.deployment.sha }}
+          DEPLOYMENT_REF: ${{ github.event.deployment.ref }}
+          DEPLOYMENT_ENVIRONMENT: ${{ github.event.deployment.environment }}
+          DEPLOYMENT_TASK: ${{ github.event.deployment.task }}
+          DEPLOYMENT_CREATOR: ${{ github.event.deployment.creator.login }}
+          DEPLOYMENT_STATUS_ID: ${{ github.event.deployment_status.id }}
+          DEPLOYMENT_STATUS_STATE: ${{ github.event.deployment_status.state }}
+          DEPLOYMENT_STATUS_TARGET_URL: ${{ github.event.deployment_status.target_url }}
+          DEPLOYMENT_STATUS_LOG_URL: ${{ github.event.deployment_status.log_url }}
+          DEPLOYMENT_STATUS_ENVIRONMENT_URL: ${{ github.event.deployment_status.environment_url }}
+          DEPLOYMENT_STATUS_DESCRIPTION: ${{ github.event.deployment_status.description }}
+          EVENT_SENDER: ${{ github.event.sender.login }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p railway-deployment-canary
+          test -n "${DEPLOYMENT_SHA}"
+          checked_out_sha="$(git rev-parse HEAD)"
+          test "${checked_out_sha}" = "${DEPLOYMENT_SHA}"
+          git fetch --no-tags origin +refs/heads/main:refs/remotes/origin/main
+          if git merge-base --is-ancestor "${DEPLOYMENT_SHA}" origin/main; then
+            reachable_from_main=true
+          else
+            reachable_from_main=false
+          fi
+          export CHECKED_OUT_SHA="${checked_out_sha}"
+          export REACHABLE_FROM_MAIN="${reachable_from_main}"
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          fields = {
+              "deployment_id": "DEPLOYMENT_ID",
+              "deployment_sha": "DEPLOYMENT_SHA",
+              "deployment_ref": "DEPLOYMENT_REF",
+              "environment": "DEPLOYMENT_ENVIRONMENT",
+              "task": "DEPLOYMENT_TASK",
+              "creator": "DEPLOYMENT_CREATOR",
+              "status_id": "DEPLOYMENT_STATUS_ID",
+              "state": "DEPLOYMENT_STATUS_STATE",
+              "target_url": "DEPLOYMENT_STATUS_TARGET_URL",
+              "log_url": "DEPLOYMENT_STATUS_LOG_URL",
+              "environment_url": "DEPLOYMENT_STATUS_ENVIRONMENT_URL",
+              "description": "DEPLOYMENT_STATUS_DESCRIPTION",
+              "sender": "EVENT_SENDER",
+              "checked_out_sha": "CHECKED_OUT_SHA",
+              "reachable_from_main": "REACHABLE_FROM_MAIN",
+          }
+          event = {key: os.environ.get(env_name, "") for key, env_name in fields.items()}
+          event["reachable_from_main"] = event["reachable_from_main"] == "true"
+          Path("railway-deployment-canary/event.json").write_text(json.dumps(event, indent=2) + "\n", encoding="utf-8")
+          PY
+          python3 scripts/railway_deployment_event_gate.py \
+            --event-json railway-deployment-canary/event.json \
+            --output railway-deployment-canary/provenance.json \
+            --github-output "${GITHUB_OUTPUT}" \
+            --railway-provider-marker "${RAILWAY_PROVIDER_MARKER}"
+
+      - name: Record explicit non-Railway skip
+        if: steps.deployment-event.outputs.run_backend_canary != 'true'
+        run: |
+          echo "Backend canary skipped: provider=${{ steps.deployment-event.outputs.provider_classification }}."
+
+      - name: Run GET/HEAD-only production API canary
+        if: steps.deployment-event.outputs.run_backend_canary == 'true'
+        run: |
+          python3 scripts/railway_deployment_status_canary.py \
+            --approved-audio-fixture backend/fixtures/railway_approved_audio_fixture.json \
+            --provenance railway-deployment-canary/provenance.json \
+            --output-dir railway-deployment-canary
 
       - name: Upload canary evidence
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: railway-deployment-canary
+          name: railway-deployment-canary-${{ github.event.deployment.id }}
           path: railway-deployment-canary/**

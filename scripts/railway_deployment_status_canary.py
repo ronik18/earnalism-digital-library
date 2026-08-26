@@ -7,7 +7,6 @@ import argparse
 import json
 import os
 import re
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -52,7 +51,16 @@ def check(name: str, passed: bool, detail: str) -> dict[str, Any]:
     return {"name": name, "passed": passed, "detail": detail}
 
 
-def run(base_url: str, approved_audio_slug: str) -> dict[str, Any]:
+def load_approved_audio_fixture(path: Path) -> dict[str, Any]:
+    fixture = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(fixture, dict) or not isinstance(fixture.get("slug"), str):
+        raise ValueError(f"invalid approved-audio fixture: {path}")
+    return fixture
+
+
+def run(base_url: str, approved_audio_fixture: dict[str, Any], provenance: dict[str, Any] | None = None) -> dict[str, Any]:
+    approved_audio_slug = str(approved_audio_fixture["slug"])
+    public_contract = approved_audio_fixture.get("public_contract", {})
     health = request(base_url, "/healthz")
     config = request(base_url, "/api/reading-pass/config", headers={"Origin": CANARY_ORIGIN})
     catalog = request(base_url, "/api/books?q=dracula")
@@ -89,14 +97,16 @@ def run(base_url: str, approved_audio_slug: str) -> dict[str, Any]:
         check("dracula_audio_disabled", dracula.get("audio_enabled") is False and dracula.get("audiobook_enabled") is False and not dracula.get("audio_url"), json.dumps({key: dracula.get(key) for key in ("audio_enabled", "audiobook_enabled", "audio_url")})),
         check("controlled_manifest", manifest["status"] == 200 and manifest_body.get("audio", {}).get("enabled") is False and manifest_body.get("audio", {}).get("assets") == {}, f"status={manifest['status']}"),
         check("dracula_audio_range_denied", dracula_audio["status"] == 404 and not dracula_audio["body"].startswith("ID3"), f"status={dracula_audio['status']}; bytes={len(dracula_audio['body'])}"),
-        check("approved_audio_locked_metadata", approved_catalog["status"] == 200 and approved_audio_book.get("audio_enabled") is True and approved_audio_book.get("audiobook_enabled") is True and not approved_audio_book.get("audio_url"), json.dumps({key: approved_audio_book.get(key) for key in ("audio_enabled", "audiobook_enabled", "audio_url")})),
-        check("approved_audio_range_denied", approved_audio["status"] in {401, 403} and not approved_audio["body"].startswith("ID3"), f"status={approved_audio['status']}; bytes={len(approved_audio['body'])}"),
+        check("approved_audio_locked_metadata", approved_catalog["status"] == 200 and approved_audio_book.get("reader_enabled") is True and approved_audio_book.get("audio_enabled") is True and approved_audio_book.get("audiobook_enabled") is True and approved_audio_book.get("audiobook_release_gate") in public_contract.get("audiobook_release_gates", []) and approved_audio_book.get("audio_qa_status") == public_contract.get("audio_qa_status") and not approved_audio_book.get("audio_url"), json.dumps({key: approved_audio_book.get(key) for key in ("reader_enabled", "audio_enabled", "audiobook_enabled", "audiobook_release_gate", "audio_qa_status", "audio_url")})),
+        check("approved_audio_range_denied", approved_audio["status"] in set(public_contract.get("anonymous_range_statuses", [])) and not approved_audio["body"].startswith("ID3"), f"status={approved_audio['status']}; bytes={len(approved_audio['body'])}"),
     ]
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "base_url": base_url,
         "methods_used": ["GET"],
         "deployment_sha": os.environ.get("RAILWAY_DEPLOYMENT_SHA", ""),
+        "approved_audio_fixture": approved_audio_fixture,
+        "deployment_provenance": provenance or {},
         "response_edge": header(health, "X-Railway-Edge"),
         "response_region_debug": header(health, "X-Hikari-Trace"),
         "checks": checks,
@@ -108,10 +118,13 @@ def run(base_url: str, approved_audio_slug: str) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default=os.environ.get("PRODUCTION_API_BASE_URL", DEFAULT_BASE_URL))
-    parser.add_argument("--approved-audio-slug", default=os.environ.get("RAILWAY_CANARY_APPROVED_AUDIO_SLUG", "the-art-of-money-getting"))
+    parser.add_argument("--approved-audio-fixture", type=Path, default=Path("backend/fixtures/railway_approved_audio_fixture.json"))
+    parser.add_argument("--provenance", type=Path)
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
-    report = run(args.base_url, args.approved_audio_slug)
+    fixture = load_approved_audio_fixture(args.approved_audio_fixture)
+    provenance = json.loads(args.provenance.read_text(encoding="utf-8")) if args.provenance else None
+    report = run(args.base_url, fixture, provenance)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     (args.output_dir / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"status": report["status"], "checks": report["checks"]}, indent=2))
