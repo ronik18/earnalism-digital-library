@@ -25,6 +25,10 @@
 }
 
 .premium-site-header .brand-header-logo::after { display: none; }
+.premium-site-header .earnalism-brand-lockup {
+  width: clamp(11rem, 15vw, 14.75rem);
+  max-width: min(14.75rem, 27vw);
+}
 .premium-site-header .brand-header-logo__icon { width: 3.35rem; height: 3.35rem; }
 .premium-site-header .brand-header-logo--custom {
   display: inline-flex;
@@ -303,6 +307,10 @@
     max-width: calc(100vw - 4.2rem);
     overflow: hidden;
     gap: 0.45rem;
+  }
+  .premium-site-header .earnalism-brand-lockup {
+    width: min(11.75rem, calc(100vw - 9rem));
+    max-width: min(11.75rem, calc(100vw - 9rem));
   }
   .premium-site-header .brand-header-logo__icon { width: 2.45rem; height: 2.45rem; }
   .premium-site-header .brand-header-logo--custom { width: min(21rem, calc(100vw - 4.8rem)); height: min(4.05rem, calc(var(--site-header-height) - 0.45rem)); }
