@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 import { useAuth } from "../context/AuthContext";
-import BrandHeaderLogo from "./BrandHeaderLogo";
+import EarnalismBrandLockup from "./EarnalismBrandLockup";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import "./Header.css";
 
@@ -83,7 +83,7 @@ export default function Header() {
       <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-[var(--site-header-height)] flex items-center justify-between gap-4">
         <div className="header-brand-cluster">
           <Link to="/" className="flex items-center min-w-0" data-testid="brand-logo">
-            <BrandHeaderLogo badgeVariant="none" />
+            <EarnalismBrandLockup variant="desktop-header" />
           </Link>
         </div>
 
@@ -122,15 +122,20 @@ export default function Header() {
               </Link>
             </>
           ) : (
-            <NavLink
-              to={accountHref}
-              data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
-              className={({ isActive }) =>
-                `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
-              }
-            >
-              {accountLabel}
-            </NavLink>
+            <>
+              <Link to="/library" className="reference-home-header-icon" aria-label="Search the library" data-testid="nav-search">
+                <Search size={20} strokeWidth={1.55} aria-hidden="true" />
+              </Link>
+              <NavLink
+                to={accountHref}
+                data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
+                className={({ isActive }) =>
+                  `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+                }
+              >
+                {accountLabel}
+              </NavLink>
+            </>
           )}
         </nav>
 
@@ -138,6 +143,14 @@ export default function Header() {
           <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Enter the Library</Link>
         </div>
 
+        <Link
+          to="/library"
+          className="xl:hidden inline-flex min-h-11 min-w-11 items-center justify-center p-2 text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burgundy"
+          aria-label="Search the library"
+          data-testid="mobile-header-search"
+        >
+          <Search size={20} strokeWidth={1.65} aria-hidden="true" />
+        </Link>
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}

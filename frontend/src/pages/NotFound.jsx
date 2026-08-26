@@ -11,7 +11,7 @@ export default function NotFound() {
 
   return (
     <section className="mx-auto flex min-h-[62vh] max-w-4xl flex-col items-center justify-center px-5 py-24 text-center" data-testid="not-found-page">
-      <div className="italic-eyebrow mb-4">Page unavailable</div>
+      <div className="italic-eyebrow mb-4">404 · Page unavailable</div>
       <h1 className="font-serif-light text-4xl leading-tight text-burgundy sm:text-5xl">
         This page is no longer on the shelf.
       </h1>

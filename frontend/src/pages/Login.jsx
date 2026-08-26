@@ -7,7 +7,7 @@ import { API, USER_TOKEN_KEY, SESSION_EXPIRED_MESSAGE, formatError } from "../li
 import { toast } from "sonner";
 import { Mail, Lock } from "lucide-react";
 import useSEO from "../hooks/useSEO";
-import BrandMark from "../components/BrandMark";
+import AuthPageShell from "../components/AuthPageShell";
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
 // DISABLED: Mobile/OTP login is temporarily disabled until MSG91/DLT approval is ready.
@@ -105,17 +105,15 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-5 py-16" data-testid="user-login-page">
-      <div className="card-elegant p-8 sm:p-12 w-full max-w-md">
-        <Link to="/" className="block mb-6 leading-none" aria-label="The Earnalism Digital Library — Home"><BrandMark variant="auth" /></Link>
-        <div className="italic-eyebrow mb-3">A quiet reading room</div>
-        <h1 className="font-serif-light text-3xl sm:text-[2.4rem] text-burgundy leading-tight">Sign in to your <span className="italic-accent">library</span>.</h1>
-        <div className="gold-rule-thin mt-5" />
-        <p className="text-charcoal-soft mt-6 text-sm font-light leading-relaxed">
-          Pick up Dracula where you left off. Your reading-time wallet and shelf travel with you.
-        </p>
+    <AuthPageShell
+      eyebrow="A quiet reading room"
+      title={<>Sign in to your <span className="italic-accent">library</span>.</>}
+      introduction="Return to your reading account, current balance, and place in the library."
+      testId="user-login-page"
+      footer={<p className="mt-8 text-center text-sm font-light text-charcoal-soft">New to The Earnalism? <Link to="/signup" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-signup">Create an account</Link></p>}
+    >
         <div className="mt-5 rounded-md border border-brand-soft bg-white/55 px-4 py-3 text-xs leading-relaxed text-charcoal-soft" data-testid="login-continuation-note">
-          Sign in after choosing a reading pass to return to the reading-time page, or sign in from the reader to continue once Chapter 1 has done its work.
+          First 3 pages free preview. Listening requires an active Reading Pass.
         </div>
 
         {GOOGLE_CLIENT_ID && <GoogleSignInButton onComplete={completeGoogle} />}
@@ -248,7 +246,7 @@ export default function Login() {
 
         <form onSubmit={submit} className="mt-6 space-y-4" data-testid="user-login-form" aria-describedby="login-continuation-help">
           <p id="login-continuation-help" className="sr-only">
-            Sign in to continue Dracula, return to the reading-time page, or review your wallet.
+            Sign in to manage your reading account and protected reading access.
           </p>
           <label className="block">
             <span className="overline block mb-2">Email</span>
@@ -269,11 +267,7 @@ export default function Login() {
           </button>
         </form>
 
-        <p className="mt-8 text-sm text-charcoal-soft text-center font-light">
-          New to The Earnalism? <Link to="/signup" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-signup">Create an account</Link>
-        </p>
-      </div>
-    </div>
+    </AuthPageShell>
   );
 }
 

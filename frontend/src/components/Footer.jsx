@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail } from "lucide-react";
-import BrandMark from "./BrandMark";
+import EarnalismBrandLockup from "./EarnalismBrandLockup";
 import { useAuth } from "../context/AuthContext";
 
 const CONTACT_EMAIL = "sales@reoenterprise.org";
@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-4 sm:py-8">
         <div className="grid gap-4 md:grid-cols-2 md:gap-7 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.9fr)_minmax(17rem,0.8fr)] lg:items-start lg:gap-10">
           <div data-testid="footer-brand">
-            <BrandMark variant="footer" className="w-44 max-w-full sm:w-56" />
+            <EarnalismBrandLockup variant="footer" />
             <p id="footer-brand-statement" className="mt-2 max-w-xl font-serif-display text-lg leading-snug text-burgundy sm:mt-3">
               Timeless Bengali and English literature, made beautiful for every way you read and listen.
             </p>

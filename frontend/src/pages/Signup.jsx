@@ -5,7 +5,7 @@ import { formatError } from "../lib/api";
 import { toast } from "sonner";
 import { User, Mail, Lock } from "lucide-react";
 import useSEO from "../hooks/useSEO";
-import BrandMark from "../components/BrandMark";
+import AuthPageShell from "../components/AuthPageShell";
 
 export default function Signup() {
   useSEO({
@@ -40,17 +40,15 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-5 py-16" data-testid="user-signup-page">
-      <div className="card-elegant p-8 sm:p-12 w-full max-w-md">
-        <Link to="/" className="block mb-6 leading-none" aria-label="The Earnalism Digital Library — Home"><BrandMark variant="auth" /></Link>
-        <div className="italic-eyebrow mb-3">Open a reading account</div>
-        <h1 className="font-serif-light text-3xl sm:text-[2.4rem] text-burgundy leading-tight">A library that <span className="italic-accent">remembers</span> you.</h1>
-        <div className="gold-rule-thin mt-5" />
-        <p className="text-charcoal-soft mt-6 text-sm font-light leading-relaxed">
-          Create a quiet account for Dracula, your reading-time wallet, and future classics that pass the rights-safe pipeline.
-        </p>
+    <AuthPageShell
+      eyebrow="Open a reading account"
+      title={<>A library that <span className="italic-accent">remembers</span> you.</>}
+      introduction="Keep your reading balance, activity, and approved library access in one calm place."
+      testId="user-signup-page"
+      footer={<p className="mt-8 text-center text-sm font-light text-charcoal-soft">Already a reader? <Link to="/login" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-login">Sign in</Link></p>}
+    >
         <div className="mt-5 rounded-md border border-brand-soft bg-white/55 px-4 py-3 text-xs leading-relaxed text-charcoal-soft" data-testid="signup-wallet-note">
-          Read the first 3 pages free. Listening requires an active Reading Pass. Reading time is added only when you choose a pass, and there is no subscription or autorenewal.
+          First 3 pages free preview. Listening requires an active Reading Pass.
         </div>
 
         <form onSubmit={submit} className="mt-8 space-y-4" data-testid="user-signup-form" aria-describedby="signup-wallet-help">
@@ -83,10 +81,6 @@ export default function Signup() {
           </button>
         </form>
 
-        <p className="mt-8 text-sm text-charcoal-soft text-center font-light">
-          Already a reader? <Link to="/login" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-login">Sign in</Link>
-        </p>
-      </div>
-    </div>
+    </AuthPageShell>
   );
 }

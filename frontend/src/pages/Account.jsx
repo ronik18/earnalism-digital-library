@@ -221,7 +221,7 @@ export default function Account() {
                 : "Reading is billed in 30-second pulses only while a chapter is open, visible, and active. Hidden tabs, sleeping devices, and long idle gaps are not charged."}
             </p>
             <p className="mt-3 text-xs leading-relaxed text-charcoal-soft/80" data-testid="account-wallet-explainer">
-              Use this wallet to continue Dracula after the free preview. Future titles remain locked until their own approval gates pass.
+              First 3 pages free preview. Listening requires an active Reading Pass.
             </p>
             <Link
               to="/pricing"

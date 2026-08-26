@@ -1461,13 +1461,13 @@ describe("UX conversion static signals", () => {
     expect(pricing).toContain('data-testid="pricing-trust-copy"');
   });
 
-  test("login signup account and default SEO explain continuation without overclaiming", () => {
+  test("login signup account and default SEO use the approved access contract without overclaiming", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
-    expect(login).toContain("Sign in after choosing a reading pass to return to the reading-time page");
+    expect(login).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("Read the first 3 pages free. Listening requires an active Reading Pass. Reading time is added only when you choose a pass");
+    expect(signup).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
-    expect(account).toContain("Use this wallet to continue Dracula after the free preview.");
+    expect(account).toContain("First 3 pages free preview. Listening requires an active Reading Pass.");
     expect(account).toContain("Continue Dracula");
     expect(account).not.toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');
@@ -1500,11 +1500,14 @@ describe("UX conversion static signals", () => {
   });
 
   test("premium brand lockup and mobile navigation keep a visible library CTA", () => {
-    expect(header).toContain('import BrandHeaderLogo from "./BrandHeaderLogo";');
+    expect(header).toContain('import EarnalismBrandLockup from "./EarnalismBrandLockup";');
     expect(header).toContain('className="header-brand-cluster"');
-    expect(header).toContain('<BrandHeaderLogo badgeVariant="none" />');
+    expect(header).toContain('<EarnalismBrandLockup variant="desktop-header" />');
+    expect(header).not.toContain('import BrandHeaderLogo from "./BrandHeaderLogo";');
     expect(header).not.toContain("IndiaCraftBadge");
     expect(header).toContain('data-testid="brand-logo"');
+    expect(header).toContain('data-testid="nav-search"');
+    expect(header).toContain('data-testid="mobile-header-search"');
     expect(header).toContain('data-testid="mobile-cta-library"');
     expect(header).toContain("Enter the Library");
     expect(header).not.toContain(">Start Reading</Link>");
@@ -1517,8 +1520,6 @@ describe("UX conversion static signals", () => {
     expect(styles).toContain(".glass-header");
     expect(styles).toContain("rgba(255, 252, 244, 0.98)");
     expect(styles).toContain("rgba(249, 244, 234, 0.94)");
-    expect(styles).toContain(".brand-header-logo");
-    expect(styles).toContain(".brand-header-logo__badge--tricolor");
     expect(styles).toContain("@media (max-width: 1279px)");
   });
 
