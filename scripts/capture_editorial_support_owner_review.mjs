@@ -7,6 +7,7 @@ import { chromium } from "playwright";
 const require = createRequire(import.meta.url);
 const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
 const output = path.resolve(process.env.OWNER_REVIEW_CAPTURE_OUTPUT || "uat/evidence/editorial-support-owner-review/current");
+const strict = process.env.OWNER_REVIEW_STRICT === "true";
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("UAT_BASE_URL must be a loopback URL.");
 
 const posts = [
@@ -78,7 +79,7 @@ try {
   captures.push(await captureRemoved(browser, "removed-desktop", 1440, 1000));
   captures.push(await captureRemoved(browser, "removed-mobile", 390, 844));
   fs.writeFileSync(path.join(output, "capture.json"), JSON.stringify(captures, null, 2) + "\n");
-  const failures = captures.filter((item) => item.errors.length || item.overflow || !item.required || !item.focus || !item.logo || item.status < 200 || item.status >= 500);
+  const failures = captures.filter((item) => item.errors.length || item.overflow || (strict && (!item.required || !item.focus || !item.logo)) || item.status < 200 || item.status >= 500);
   console.log(JSON.stringify({ captured: captures.length, failed: failures.length, output }));
   if (failures.length) process.exitCode = 1;
 } finally { await browser.close(); }

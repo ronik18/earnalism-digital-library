@@ -83,7 +83,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
           for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13130/ >/dev/null && break; sleep 1; done
-          UAT_BASE_URL=http://127.0.0.1:13130 OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/editorial-support-owner-review/after node scripts/capture_editorial_support_owner_review.mjs
+          UAT_BASE_URL=http://127.0.0.1:13130 OWNER_REVIEW_STRICT=true OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/editorial-support-owner-review/after node scripts/capture_editorial_support_owner_review.mjs
       - name: Generate owner-review package
         run: python3 scripts/generate_editorial_support_owner_review.py
       - uses: actions/upload-artifact@v7
