@@ -55,7 +55,7 @@ describe("public CTA accuracy contract", () => {
     expect(pricing).toContain('to="/reader/dracula"');
     expect(pricing).toContain("PUBLIC_PREVIEW_COPY");
     expect(account).toContain('to="/reader/dracula"');
-    expect(account).toContain("Continue Dracula");
+    expect(account).toContain("Continue reading");
   });
 
   test("reader upsell makes no unsupported discount, coupon, or urgency claim", () => {
