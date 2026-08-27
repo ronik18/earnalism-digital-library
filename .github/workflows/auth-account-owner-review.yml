@@ -1,0 +1,101 @@
+name: Auth and account owner review
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - frontend/src/components/AuthPageShell.*
+      - frontend/src/pages/Login.*
+      - frontend/src/pages/Signup.*
+      - frontend/src/pages/Account.*
+      - frontend/src/styles/auth-account.css
+      - frontend/src/components/EarnalismBrandLockup.*
+      - scripts/capture_auth_account_owner_review.mjs
+      - scripts/generate_auth_account_owner_review.py
+      - .github/workflows/auth-account-owner-review.yml
+
+permissions:
+  contents: read
+
+jobs:
+  owner-review:
+    name: Auth/account owner-review artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      npm_config_cache: ${{ github.workspace }}/.npm-cache
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+      REACT_APP_BACKEND_URL: http://127.0.0.1:18007/api
+      REACT_APP_UAT_LOCAL: "true"
+    steps:
+      - name: Checkout pull request head
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned dependencies
+        run: |
+          npm ci
+          npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check -r requirements.txt
+          npx playwright install --with-deps chromium
+
+      - name: Materialize base source without changing the pull request checkout
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          base_dir="$RUNNER_TEMP/earnalism-auth-account-review-base"
+          mkdir -p "$base_dir"
+          git archive "$BASE_SHA" | tar -x -C "$base_dir"
+          mkdir -p "$base_dir/scripts"
+          cp scripts/capture_auth_account_owner_review.mjs "$base_dir/scripts/"
+          ln -s "$GITHUB_WORKSPACE/node_modules" "$base_dir/node_modules"
+          ln -s "$GITHUB_WORKSPACE/frontend/node_modules" "$base_dir/frontend/node_modules"
+
+      - name: Capture base and pull-request auth/account states
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          base_dir="$RUNNER_TEMP/earnalism-auth-account-review-base"
+          (
+            cd "$base_dir"
+            npm --prefix frontend run build
+            python3 -m http.server 13109 --directory frontend/build >"$RUNNER_TEMP/auth-account-base-server.log" 2>&1 &
+            server_pid=$!
+            trap 'kill "$server_pid"' EXIT
+            for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13109/ >/dev/null && break; sleep 1; done
+            UAT_BASE_URL=http://127.0.0.1:13109 OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/auth-account-owner-review/before node scripts/capture_auth_account_owner_review.mjs
+          )
+          mkdir -p uat/evidence/auth-account-owner-review/before
+          cp "$base_dir"/uat/evidence/auth-account-owner-review/before/* uat/evidence/auth-account-owner-review/before/
+          npm --prefix frontend run build
+          python3 -m http.server 13110 --directory frontend/build >"$RUNNER_TEMP/auth-account-head-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13110/ >/dev/null && break; sleep 1; done
+          UAT_BASE_URL=http://127.0.0.1:13110 OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/auth-account-owner-review/after node scripts/capture_auth_account_owner_review.mjs
+
+      - name: Generate sanitized owner-review package
+        run: python3 scripts/generate_auth_account_owner_review.py
+
+      - name: Upload owner-review artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: auth-account-owner-review-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+          path: uat/evidence/auth-account-owner-review/final/**
+          if-no-files-found: error
