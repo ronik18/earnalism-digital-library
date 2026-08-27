@@ -242,7 +242,7 @@ export default function Account() {
               <BookOpen size={13} strokeWidth={1.5} /> Continue reading
             </div>
             <p className="font-serif-display text-xl text-charcoal mt-4 leading-snug">
-              Continue Dracula from the live shelf. Your time begins only when the words do.
+              Return to a book from the live shelf. Your time begins only when the words do.
             </p>
             <div className="mt-auto pt-6">
               <Link
@@ -254,7 +254,7 @@ export default function Account() {
                   book_slug: "dracula",
                 })}
               >
-                Continue Dracula
+                Continue reading
               </Link>
             </div>
           </div>
@@ -306,7 +306,7 @@ export default function Account() {
           {loading ? (
             <p className="text-charcoal-soft text-sm" role="status" aria-live="polite">Loading recent reading activity…</p>
           ) : activityRows.length === 0 ? (
-            <p className="text-charcoal-soft text-sm font-light" role="status">No reading activity yet. Open Dracula from the library to begin.</p>
+            <p className="text-charcoal-soft text-sm font-light" role="status">No reading activity yet. Open a book from the library to begin.</p>
           ) : (
             <table className="account-activity-table w-full text-sm">
               <thead>

@@ -52,6 +52,21 @@ def main() -> int:
     output.mkdir(parents=True, exist_ok=True)
     before_results = {row["id"]: row for row in load(before_dir / "capture.json")}
     after_results = {row["id"]: row for row in load(after_dir / "capture.json")}
+    sources = {
+        "login": (root / "frontend/src/pages/Login.jsx").read_text(),
+        "signup": (root / "frontend/src/pages/Signup.jsx").read_text(),
+        "account": (root / "frontend/src/pages/Account.jsx").read_text(),
+    }
+    locked_sentence = "Read the first 3 pages free. Listening requires an active Reading Pass."
+    copy_contract = {
+        "locked_product_sentence": all(locked_sentence in source for source in sources.values()),
+        "signup_accessibility_copy_library_wide": "Create an account to manage your Reading Pass and return to your place across eligible books." in sources["signup"],
+        "account_empty_copy_library_wide": "No reading activity yet. Open a book from the library to begin." in sources["account"],
+        "user_visible_dracula_continue_copy_absent": "Continue Dracula" not in sources["account"],
+        "dracula_specific_signup_accessibility_copy_absent": "Dracula reading time" not in sources["signup"],
+    }
+    if not all(copy_contract.values()):
+        raise RuntimeError(f"auth/account copy contract failed: {copy_contract}")
     records = []
     pages = []
     for state in STATES:
@@ -74,6 +89,7 @@ def main() -> int:
         "schema_version": "earnalism-auth-account-owner-review-v1",
         "status": "OWNER_AUTH_ACCOUNT_APPROVAL_REQUIRED",
         "sanitized_deterministic_fixture": True,
+        "copy_contract": copy_contract,
         "accessibility_and_overflow": {
             "status_200": all(record["result"]["status"] == 200 for record in records),
             "required_components": all(all(record["result"]["required"]) for record in records),

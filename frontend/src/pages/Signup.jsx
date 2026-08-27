@@ -53,7 +53,7 @@ export default function Signup() {
 
         <form onSubmit={submit} className="auth-account-form mt-8 space-y-4" data-testid="user-signup-form" aria-describedby="signup-wallet-help">
           <p id="signup-wallet-help" className="sr-only">
-            Create an account to manage Dracula reading time and return to your place later.
+            Create an account to manage your Reading Pass and return to your place across eligible books.
           </p>
           <label className="block">
             <span className="overline block mb-2">Your name</span>

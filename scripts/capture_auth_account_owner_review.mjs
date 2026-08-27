@@ -19,7 +19,7 @@ const fixtureUser = {
 };
 
 const fixtureTransactions = [
-  { id: "review-activity-1", type: "consume", reason: "Reading Dracula", seconds: 150, created_at: "2026-08-23T10:00:00.000Z", session_id: "review-session-1" },
+  { id: "review-activity-1", type: "consume", reason: "Reading a library book", seconds: 150, created_at: "2026-08-23T10:00:00.000Z", session_id: "review-session-1" },
   { id: "review-activity-2", type: "credit", reason: "Reading Pass", seconds: 18_000, created_at: "2026-08-22T10:00:00.000Z" },
 ];
 
