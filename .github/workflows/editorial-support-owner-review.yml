@@ -54,7 +54,8 @@ jobs:
           python3 -m pip install --disable-pip-version-check -r requirements.txt
           npx playwright install --with-deps chromium
       - name: Materialize base source
-        env: { BASE_SHA: ${{ github.event.pull_request.base.sha }} }
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           base_dir="$RUNNER_TEMP/editorial-support-base"
           mkdir -p "$base_dir"
