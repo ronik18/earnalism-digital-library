@@ -1470,7 +1470,7 @@ describe("UX conversion static signals", () => {
     expect(signup).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
     expect(account).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
-    expect(account).toContain("Continue Dracula");
+    expect(account).toContain("Continue reading");
     expect(account).not.toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');
     expect(reader).toContain("Other chapters require sign-in and reading time from your wallet.");

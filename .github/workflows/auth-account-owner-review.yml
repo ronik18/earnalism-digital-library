@@ -10,6 +10,9 @@ on:
       - frontend/src/pages/Signup.*
       - frontend/src/pages/Account.*
       - frontend/src/styles/auth-account.css
+      - frontend/src/authAccountTextRules.test.js
+      - frontend/src/lib/publicCtaAccuracy.test.js
+      - regression/modules/14-ux-conversion-static.test.js
       - frontend/src/components/EarnalismBrandLockup.*
       - scripts/capture_auth_account_owner_review.mjs
       - scripts/generate_auth_account_owner_review.py
