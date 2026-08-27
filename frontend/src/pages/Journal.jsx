@@ -1,110 +1,103 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import { api } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 import PublicPageFrame from "../components/PublicPageFrame";
+import "../styles/editorial-support.css";
 
-const JOURNAL_OG = "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
+const JOURNAL_OG = "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMGRlc2t8ZW58MHx8fHwxNzc3NjE3MTc3fDA&ixlib=rb-4.1.0&q=85";
 const BLOCKED_JOURNAL_SLUGS = new Set(["the-quiet-power-of-a-premium-bookstore-brand"]);
-
-const readMinutes = (text = "") => Math.max(2, Math.round((text || "").split(/\s+/).filter(Boolean).length / 200));
+const readMinutes = (text = "") => Math.max(2, Math.round(String(text).split(/\s+/).filter(Boolean).length / 200));
 const fmtDate = (iso) => {
   try { return new Date(iso).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" }); }
   catch { return ""; }
 };
 
+function ArticleCard({ post }) {
+  return (
+    <Link to={"/journal/" + post.slug} className="editorial-article-card group" data-testid={"journal-card-" + post.slug}>
+      <div className="editorial-article-card__image">
+        {post.cover_image_url ? <img src={optimizedImageUrl(post.cover_image_url, { width: 720 })} width="720" height="540" alt="" loading="lazy" decoding="async" /> : null}
+      </div>
+      <div className="editorial-article-card__content">
+        <div className="editorial-kicker">{post.category || "Journal"}</div>
+        <h2 className="mt-4 font-serif-light text-[1.65rem] leading-[1.12] tracking-tight text-burgundy">{post.title}</h2>
+        {post.excerpt ? <p className="mt-4 font-serif-display text-base italic leading-snug text-charcoal-soft line-clamp-3">{post.excerpt}</p> : null}
+        <div className="mt-5 text-[0.66rem] uppercase tracking-[0.2em] text-charcoal-soft">{fmtDate(post.created_at)} · {readMinutes(post.content)} min read</div>
+        <span className="btn-link inline-flex min-h-11 items-center gap-1">Read article <ArrowUpRight size={15} aria-hidden="true" /></span>
+      </div>
+    </Link>
+  );
+}
+
 export default function Journal() {
   const [posts, setPosts] = useState([]);
   const [active, setActive] = useState("all");
+  const [loading, setLoading] = useState(true);
 
   useSEO({
-    title: "The Journal — Notes from The Earnalism Reading Room",
-    description: "Notes from The Earnalism on Bengali and English literature, rights-safe publication, literary attention, and the quiet craft of reading well.",
+    title: "The Journal — The Earnalism",
+    description: "Notes from The Earnalism on literature, work, and the quiet craft of reading well.",
     image: JOURNAL_OG,
+    canonicalPath: "/journal",
   });
 
   useEffect(() => {
     const controller = new AbortController();
-    api.get("/blog", { signal: controller.signal }).then((r) => setPosts(Array.isArray(r.data) ? r.data : [])).catch(() => setPosts([]));
+    setLoading(true);
+    api.get("/blog", { signal: controller.signal })
+      .then((response) => setPosts(Array.isArray(response.data) ? response.data : []))
+      .catch(() => setPosts([]))
+      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => controller.abort();
   }, []);
 
-  const visiblePosts = useMemo(
-    () => posts.filter((post) => !BLOCKED_JOURNAL_SLUGS.has(String(post.slug || "").toLowerCase())),
-    [posts],
-  );
-  const cats = useMemo(() => ["all", ...Array.from(new Set(visiblePosts.map((p) => p.category)))], [visiblePosts]);
-  const filtered = active === "all" ? visiblePosts : visiblePosts.filter((p) => p.category === active);
-  const [feature, ...rest] = filtered;
+  const visiblePosts = useMemo(() => posts.filter((post) => !BLOCKED_JOURNAL_SLUGS.has(String(post.slug || "").toLowerCase())), [posts]);
+  const categories = useMemo(() => ["all", ...Array.from(new Set(visiblePosts.map((post) => post.category).filter(Boolean)))], [visiblePosts]);
+  const filtered = active === "all" ? visiblePosts : visiblePosts.filter((post) => post.category === active);
+  const [featured, ...remaining] = filtered;
 
   return (
     <PublicPageFrame tone="editorial" testId="journal-page">
-      {/* Masthead */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-12 sm:pb-16 text-center">
-        <div className="issue-marker mb-6">Issue 01 &middot; Volume I</div>
-        <h1 className="font-serif-light text-4xl sm:text-6xl lg:text-[4.5rem] text-burgundy tracking-tight max-w-4xl mx-auto leading-[1.02] text-balance">
-          The <span className="italic-accent">Journal</span> — notes from a reading room that moves carefully.
-        </h1>
-        <p className="font-serif-display italic text-lg sm:text-xl text-charcoal-soft mt-7 max-w-2xl mx-auto leading-snug">Essays on literature, business, technology, and the quiet craft of reading well.</p>
-        <div className="gold-rule mx-auto mt-10" />
+      <section className="editorial-support-hero">
+        <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-20 sm:px-8 sm:pb-20 sm:pt-28 lg:px-12">
+          <p className="editorial-kicker">The Earnalism Journal</p>
+          <h1 className="mt-5 max-w-4xl font-serif-light text-4xl leading-[1.02] tracking-tight text-burgundy sm:text-6xl lg:text-[4.5rem]">The Journal — notes for a more attentive reading life.</h1>
+          <p className="mt-7 max-w-2xl font-serif-display text-lg italic leading-snug text-charcoal-soft sm:text-xl">Essays on literature, work, and the quiet craft of returning to a page with care.</p>
+        </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-6">
-        <div className="flex flex-wrap gap-2 border-y border-brand-soft py-6 justify-center" data-testid="journal-filters">
-          {cats.map((c) => (
-            <button
-              key={c}
-              onClick={() => setActive(c)}
-              data-testid={`journal-filter-${c.toLowerCase()}`}
-              className={`min-h-11 px-4 py-2 rounded-full text-[0.68rem] tracking-[0.24em] uppercase transition-colors ${active === c ? "bg-burgundy text-[var(--brand-ivory)]" : "text-charcoal-soft hover:text-burgundy border border-transparent hover:border-[var(--brand-gold)]/40"}`}
-            >
-              {c === "all" ? "All Notes" : c}
+      <section className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-12">
+        <div className="flex flex-wrap gap-2" aria-label="Journal categories" data-testid="journal-filters">
+          {categories.map((category) => (
+            <button key={category} type="button" onClick={() => setActive(category)} data-testid={"journal-filter-" + category.toLowerCase()}
+              className={active === category ? "min-h-11 rounded-full border border-burgundy bg-burgundy px-4 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-[var(--brand-ivory)]" : "min-h-11 rounded-full border border-brand-soft px-4 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-charcoal-soft transition-colors hover:border-gold hover:text-burgundy"}>
+              {category === "all" ? "All notes" : category}
             </button>
           ))}
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-28 space-y-16">
-        {feature && (
-          <Link to={`/journal/${feature.slug}`} className="grid grid-cols-1 lg:grid-cols-12 gap-10 group" data-testid="journal-feature">
-            <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[460px] overflow-hidden rounded-xl border border-brand-soft">
-              {feature.cover_image_url && <img src={optimizedImageUrl(feature.cover_image_url, { width: 1200 })} alt={feature.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" />}
+      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8 lg:px-12">
+        {loading ? <div className="editorial-surface px-6 py-16 text-center text-charcoal-soft" role="status" data-testid="journal-loading">Opening the journal…</div> : null}
+        {!loading && featured ? (
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_.9fr]" data-testid="journal-feature">
+            <Link to={"/journal/" + featured.slug} className="group overflow-hidden rounded-[1.35rem] border border-brand-soft bg-[#f1e4cf]">
+              {featured.cover_image_url ? <img src={optimizedImageUrl(featured.cover_image_url, { width: 1200 })} width="1200" height="750" alt="" loading="eager" decoding="async" className="aspect-[16/10] h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" /> : null}
+            </Link>
+            <div className="editorial-surface flex flex-col justify-center p-7 sm:p-10">
+              <p className="editorial-kicker">Featured {featured.category ? "· " + featured.category : ""}</p>
+              <h2 className="mt-5 font-serif-light text-3xl leading-[1.08] tracking-tight text-burgundy sm:text-5xl">{featured.title}</h2>
+              {featured.excerpt ? <p className="mt-6 font-serif-display text-lg italic leading-snug text-charcoal-soft">{featured.excerpt}</p> : null}
+              <p className="mt-7 text-[0.67rem] uppercase tracking-[0.18em] text-charcoal-soft">By {featured.author || "The Earnalism"} · {fmtDate(featured.created_at)} · {readMinutes(featured.content)} min read</p>
+              <Link to={"/journal/" + featured.slug} className="btn-primary mt-8 inline-flex min-h-11 w-fit items-center gap-2">Read article <ArrowUpRight size={16} aria-hidden="true" /></Link>
             </div>
-            <div className="lg:col-span-5 flex flex-col justify-center">
-              <div className="overline mb-4">Featured · {feature.category}</div>
-              <h2 className="font-serif-light text-3xl sm:text-4xl lg:text-5xl text-burgundy leading-[1.08] tracking-tight">{feature.title}</h2>
-              <div className="gold-rule-thin mt-6" />
-              <p className="font-serif-display italic text-lg text-charcoal-soft mt-6 leading-snug">{feature.excerpt}</p>
-              <div className="text-[0.7rem] tracking-[0.22em] uppercase text-charcoal-soft mt-7">By {feature.author || "The Earnalism"} &middot; {fmtDate(feature.created_at)} &middot; {readMinutes(feature.content)} min read</div>
-              <span className="btn-link mt-7 self-start">Read the article</span>
-            </div>
-          </Link>
-        )}
-
-        {rest.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 pt-10 border-t border-brand-soft">
-            {rest.map((p) => (
-              <Link key={p.slug} to={`/journal/${p.slug}`} className="group flex flex-col gap-5" data-testid={`journal-card-${p.slug}`}>
-                <div className="aspect-[4/3] overflow-hidden rounded-xl border border-brand-soft">
-                  {p.cover_image_url && <img src={optimizedImageUrl(p.cover_image_url, { width: 720 })} alt={p.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]" />}
-                </div>
-                <div>
-                  <div className="overline mb-3">{p.category}</div>
-                  <h3 className="font-serif-light text-[1.55rem] text-burgundy leading-[1.15] tracking-tight">{p.title}</h3>
-                  <p className="font-serif-display italic text-charcoal-soft mt-3 line-clamp-3 text-base leading-snug">{p.excerpt}</p>
-                  <div className="text-[0.68rem] tracking-[0.22em] uppercase text-charcoal-soft mt-4">{fmtDate(p.created_at)} &middot; {readMinutes(p.content)} min read</div>
-                </div>
-              </Link>
-            ))}
           </div>
-        )}
-
-        {filtered.length === 0 && (
-          <div className="card-elegant p-16 text-center" data-testid="journal-empty">
-            <h3 className="font-serif-light text-3xl text-burgundy">No notes yet on this shelf.</h3>
-          </div>
-        )}
+        ) : null}
+        {!loading && remaining.length > 0 ? <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{remaining.map((post) => <ArticleCard key={post.slug} post={post} />)}</div> : null}
+        {!loading && filtered.length === 0 ? <div className="editorial-surface px-6 py-16 text-center" data-testid="journal-empty"><h2 className="font-serif-light text-3xl text-burgundy">No notes on this shelf yet.</h2><p className="mt-3 text-charcoal-soft">Choose another subject or return to the full journal.</p></div> : null}
       </section>
     </PublicPageFrame>
   );

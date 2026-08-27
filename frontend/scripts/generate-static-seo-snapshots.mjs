@@ -2,455 +2,180 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const frontendDir = path.resolve(__dirname, "..");
+const frontendDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const rootDir = path.resolve(frontendDir, "..");
 const buildDir = path.join(frontendDir, "build");
-const indexPath = path.join(buildDir, "index.html");
-const publicIndexPath = path.join(frontendDir, "public", "index.html");
-const publicContractPath = path.join(frontendDir, "static-seo", "controlled-publication-public.json");
+const publicationContractPath = path.join(frontendDir, "static-seo", "controlled-publication-public.json");
+const editorialContractPath = path.join(frontendDir, "static-seo", "editorial-public.json");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
+const brandImage = siteUrl + "/assets/brand/earnalism-brand-lockup.png";
+const accessCopy = "Read the first 3 pages free. Listening requires an active Reading Pass.";
+const forbiddenCopy = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
+const headStart = "<!-- earnalism-static-seo:start -->";
+const headEnd = "<!-- earnalism-static-seo:end -->";
 
-const MANAGED_HEAD_START = "<!-- earnalism-static-seo:start -->";
-const MANAGED_HEAD_END = "<!-- earnalism-static-seo:end -->";
-const BRAND = "The Earnalism";
-const SITE_NAME = "The Earnalism";
-const DRACULA_IMAGE = `${siteUrl}/assets/books/dracula/dracula-front-cover.webp`;
-const HOME_IMAGE = `${siteUrl}/assets/brand/earnalism-brand-lockup.png`;
+const html = (value = "") => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+const absolute = (route = "/") => new URL(route, siteUrl + "/").href;
+const isSha = (value) => /^[a-f0-9]{64}$/i.test(String(value || ""));
 
-function escapeHtml(value = "") {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+async function json(file) {
+  return JSON.parse(await readFile(file, "utf8"));
 }
 
-function absoluteUrl(route) {
-  const url = new URL(route || "/", `${siteUrl}/`);
-  if (url.pathname !== "/" && url.pathname.endsWith("/")) {
-    url.pathname = url.pathname.replace(/\/+$/, "");
-  }
-  return url.href;
-}
-
-async function readJson(filePath) {
-  return JSON.parse(await readFile(filePath, "utf8"));
-}
-
-async function readSnapshotTemplate() {
-  try {
-    return await readFile(indexPath, "utf8");
-  } catch (error) {
-    if (error?.code === "ENOENT") {
-      return readFile(publicIndexPath, "utf8");
-    }
+async function template() {
+  try { return await readFile(path.join(buildDir, "index.html"), "utf8"); }
+  catch (error) {
+    if (error && error.code === "ENOENT") return readFile(path.join(frontendDir, "public", "index.html"), "utf8");
     throw error;
   }
 }
 
-async function loadPublicContract() {
-  let contract;
-  try {
-    contract = await readJson(publicContractPath);
-  } catch (error) {
-    throw new Error(`Static SEO public contract is missing or unreadable: ${error.code || error.message}. Run node scripts/generate_static_seo_public_contract.mjs before the frontend build.`);
-  }
-  const publication = Array.isArray(contract.publications)
-    ? contract.publications.find((entry) => entry?.slug === "dracula")
-    : null;
-  const sourceHashes = contract.generated_from || {};
-  const valid = contract.schema_version === "earnalism.static-seo-public.v1"
-    && publication?.title === "Dracula"
-    && publication?.author === "Bram Stoker"
-    && /^https:\/\//.test(String(publication?.cover_url || ""))
-    && Number(publication?.chapter_count) === 27
-    && publication?.source_display_name === "Project Gutenberg eBook #345"
-    && publication?.approved_rights_display_state === "approved_tier_a"
-    && Number(publication?.text_preview_limit_canonical_pages) === 3
-    && Number(publication?.audio_public_preview_seconds) === 0
-    && publication?.audio_availability_state === "disabled"
-    && publication?.canonical_routes?.book === "/book/dracula"
-    && publication?.canonical_routes?.reader === "/reader/dracula"
-    && Object.values(sourceHashes).length === 4
-    && Object.values(sourceHashes).every((value) => /^[a-f0-9]{64}$/.test(String(value)));
-  if (!valid) {
-    throw new Error("Static SEO public contract is stale or invalid. Regenerate it with node scripts/generate_static_seo_public_contract.mjs before the frontend build.");
-  }
-  return publication;
+async function contracts() {
+  const result = await Promise.all([json(publicationContractPath), json(editorialContractPath)]);
+  const publication = result[0];
+  const editorial = result[1];
+  const books = Array.isArray(publication.publications) ? publication.publications : [];
+  const articles = Array.isArray(editorial.articles) ? editorial.articles : [];
+  const validBooks = publication.schema_version === "earnalism.static-seo-public.v2"
+    && books.length > 0
+    && Object.values(publication.generated_from || {}).every(isSha)
+    && books.every((book) => book.slug && book.title && book.author && Number(book.text_preview_limit_canonical_pages) === 3 && Number(book.audio_public_preview_seconds) === 0 && book.canonical_routes && book.canonical_routes.book === "/book/" + book.slug);
+  const validEditorial = editorial.schema_version === "earnalism.static-seo-editorial.v1"
+    && isSha(editorial.generated_from && editorial.generated_from["https://api.theearnalism.com/api/blog"])
+    && editorial.journal && editorial.journal.canonical_route === "/journal"
+    && articles.every((article) => article.slug && article.title && article.excerpt && article.author);
+  if (!validBooks || !validEditorial) throw new Error("Static SEO contract is stale or invalid. Refresh the checked-in public-safe contracts before building.");
+  return { books, editorial: { ...editorial, articles } };
 }
 
-function stripManagedHead(html) {
-  const managedNames = [
-    "description",
-    "robots",
-    "twitter:card",
-    "twitter:title",
-    "twitter:description",
-    "twitter:image",
-    "twitter:image:alt",
-  ];
-  const managedProperties = [
-    "og:locale",
-    "og:site_name",
-    "og:type",
-    "og:title",
-    "og:description",
-    "og:url",
-    "og:image",
-    "og:image:alt",
-    "book:author",
-    "book:release_date",
-    "book:tag",
-  ];
-
-  let next = html
-    .replace(new RegExp(`${MANAGED_HEAD_START}[\\s\\S]*?${MANAGED_HEAD_END}\\s*`, "g"), "")
+function removeManagedHead(source) {
+  return source
+    .replace(new RegExp(headStart + "[\\s\\S]*?" + headEnd + "\\s*", "g"), "")
     .replace(/<title>[\s\S]*?<\/title>\s*/gi, "")
     .replace(/<link\s+[^>]*rel=["']canonical["'][^>]*>\s*/gi, "")
-    .replace(/<script\s+[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>\s*/gi, "");
-
-  for (const name of managedNames) {
-    next = next.replace(new RegExp(`<meta\\s+[^>]*name=["']${escapeRegExp(name)}["'][^>]*>\\s*`, "gi"), "");
-  }
-  for (const property of managedProperties) {
-    next = next.replace(new RegExp(`<meta\\s+[^>]*property=["']${escapeRegExp(property)}["'][^>]*>\\s*`, "gi"), "");
-  }
-
-  return next;
+    .replace(/<script\s+[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>\s*/gi, "")
+    .replace(/<meta\s+[^>]*(?:name|property)=["'](?:description|robots|twitter:[^"']+|og:[^"']+)["'][^>]*>\s*/gi, "");
 }
 
-function escapeRegExp(value) {
-  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+function tag(kind, name, value) {
+  return value ? '<meta ' + kind + '="' + html(name) + '" content="' + html(value) + '" />' : "";
 }
 
-function metaTag(attr, name, content) {
-  if (!content) return "";
-  return `<meta ${attr}="${escapeHtml(name)}" content="${escapeHtml(content)}" />`;
+function schema(data) {
+  return '<script type="application/ld+json">' + JSON.stringify(data).replace(/</g, "\\u003c") + "</script>";
 }
 
-function jsonLdScript(data) {
-  return `<script type="application/ld+json">${JSON.stringify(data, null, 2).replace(/</g, "\\u003c")}</script>`;
-}
-
-function managedHead(page) {
-  const canonical = absoluteUrl(page.canonicalPath || page.path);
-  const image = page.image || DRACULA_IMAGE;
-  const robots = page.robots || "index,follow";
-  const jsonLd = page.jsonLd || [];
-  const ogType = page.ogType || "website";
-
+function pageHead(page) {
+  const canonical = absolute(page.canonicalPath || page.path);
+  const image = page.image || brandImage;
   return [
-    MANAGED_HEAD_START,
-    `<title>${escapeHtml(page.title)}</title>`,
-    metaTag("name", "description", page.description),
-    metaTag("name", "robots", robots),
-    `<link rel="canonical" href="${escapeHtml(canonical)}" />`,
-    metaTag("property", "og:locale", "en_US"),
-    metaTag("property", "og:site_name", SITE_NAME),
-    metaTag("property", "og:type", ogType),
-    metaTag("property", "og:title", page.ogTitle || page.title),
-    metaTag("property", "og:description", page.ogDescription || page.description),
-    metaTag("property", "og:url", canonical),
-    metaTag("property", "og:image", image),
-    metaTag("property", "og:image:alt", page.imageAlt || page.title),
-    ...(page.bookOgTags || []),
-    metaTag("name", "twitter:card", "summary_large_image"),
-    metaTag("name", "twitter:title", page.twitterTitle || page.ogTitle || page.title),
-    metaTag("name", "twitter:description", page.twitterDescription || page.ogDescription || page.description),
-    metaTag("name", "twitter:image", image),
-    metaTag("name", "twitter:image:alt", page.imageAlt || page.title),
-    ...jsonLd.map(jsonLdScript),
-    MANAGED_HEAD_END,
-  ].filter(Boolean).join("\n");
-}
-
-function withStaticFallback(html, page) {
-  const headManaged = managedHead(page);
-  const withHead = stripManagedHead(html).replace("</head>", `${headManaged}\n</head>`);
-  const noscript = [
-    "<noscript>",
-    page.staticBody,
-    "</noscript>",
+    headStart,
+    "<title>" + html(page.title) + "</title>",
+    tag("name", "description", page.description),
+    tag("name", "robots", page.robots || "index,follow"),
+    '<link rel="canonical" href="' + html(canonical) + '" />',
+    tag("property", "og:locale", "en_US"),
+    tag("property", "og:site_name", "The Earnalism Digital Library"),
+    tag("property", "og:type", page.ogType || "website"),
+    tag("property", "og:title", page.title),
+    tag("property", "og:description", page.description),
+    tag("property", "og:url", canonical),
+    tag("property", "og:image", image),
+    tag("property", "og:image:alt", page.title),
+    tag("name", "twitter:card", "summary_large_image"),
+    tag("name", "twitter:title", page.title),
+    tag("name", "twitter:description", page.description),
+    tag("name", "twitter:image", image),
+    tag("name", "twitter:image:alt", page.title),
+    ...(page.jsonLd || []).map(schema),
+    headEnd,
   ].join("\n");
-
-  const rootAttributes = ' id="root"';
-  const rootBody = page.staticBody;
-
-  return withHead
-    .replace(/<noscript>[\s\S]*?<\/noscript>/i, noscript)
-    .replace(/<div id="root"><\/div>/i, `<div${rootAttributes}>\n${rootBody}\n</div>`);
 }
 
-function organizationJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "The Earnalism",
-    alternateName: "Earnalism",
-    url: siteUrl,
-    email: "sales@reoenterprise.org",
-    logo: `${siteUrl}/assets/brand/earnalism-brand-lockup.png`,
+function shell(eyebrow, title, body, links = [], facts = []) {
+  const nav = links.length ? '<nav aria-label="Page links">' + links.map((link) => '<a href="' + html(link.href) + '">' + html(link.label) + "</a>").join(" · ") + "</nav>" : "";
+  const list = facts.length ? "<ul>" + facts.map((fact) => "<li>" + html(fact) + "</li>").join("") + "</ul>" : "";
+  return '<main class="static-seo-snapshot" data-static-seo-snapshot="true" style="font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810">' +
+    '<img src="' + html(brandImage) + '" width="640" height="192" alt="The Earnalism" style="display:block;width:220px;height:auto;margin:0 0 2rem">' +
+    '<p style="text-transform:uppercase;letter-spacing:.18em;color:#9a7440;font-size:.72rem">' + html(eyebrow) + "</p>" +
+    '<h1 style="font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;color:#4a1c27;margin:.2em 0">' + html(title) + "</h1>" +
+    '<p style="font-size:1.12rem;color:#5f5350">' + html(body) + "</p>" + list + nav + "</main>";
+}
+
+function webPage(title, description, route) {
+  return { "@context": "https://schema.org", "@type": "WebPage", name: title, description, url: absolute(route), isPartOf: { "@type": "WebSite", name: "The Earnalism Digital Library", url: siteUrl } };
+}
+
+function standardPages(editorial) {
+  const pages = [
+    ["/", "Earnalism | Bengali and English Classics", "A calm digital reading room for timeless Bengali and English literature. " + accessCopy, "The Earnalism Digital Library", "A calmer place for timeless reading.", "/library", "Explore the Library"],
+    ["/library", "Library | The Earnalism Digital Library", "Browse verified Bengali and English editions. " + accessCopy, "Library", "Bengali and English classics.", "/pricing", "View Reading Passes"],
+    ["/pricing", "Reading Passes | The Earnalism", accessCopy + " Reading time is used only while you read.", "Reading Passes", "Choose time for deeper reading.", "/library", "Explore the Library"],
+    ["/about", "About Earnalism | The Earnalism Digital Library", "Earnalism is a digital library for Bengali and English classics, designed for thoughtful reading and release-aware listening.", "About Earnalism", "A library made for attention.", "/library", "Explore the Library"],
+    ["/contact", "Contact | The Earnalism", "Contact The Earnalism for reader support, rights and title inquiries, or institutional access.", "Library desk", "Write to The Earnalism.", "mailto:sales@reoenterprise.org", "Email the library desk"],
+    ["/micro-story", "A Quiet Reading Invitation | The Earnalism", "Find a reader-ready Earnalism edition and begin with the canonical preview. " + accessCopy, "A quiet way into the library", "Begin with a story.", "/library?source=reading_invitation", "Explore the Library"],
+  ].map((row) => ({
+    path: row[0], title: row[1], description: row[2], jsonLd: [webPage(row[1], row[2], row[0])],
+    staticBody: shell(row[3], row[4], row[2], [{ href: row[5], label: row[6] }]),
+  }));
+  const journal = {
+    path: "/journal", title: editorial.journal.title, description: editorial.journal.description,
+    jsonLd: [webPage(editorial.journal.title, editorial.journal.description, "/journal")],
+    staticBody: shell("The Earnalism Journal", "Notes from the reading room.", editorial.journal.description, editorial.articles.map((article) => ({ href: "/journal/" + article.slug, label: article.title }))),
   };
-}
-
-function websiteJsonLd(description) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "The Earnalism Digital Library",
-    url: siteUrl,
-    description,
-    inLanguage: "en",
-  };
-}
-
-function webpageJsonLd({ title, description, path: pagePath }) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: title,
-    description,
-    url: absoluteUrl(pagePath),
-    isPartOf: {
-      "@type": "WebSite",
-      name: "The Earnalism Digital Library",
-      url: siteUrl,
-    },
-  };
-}
-
-function breadcrumbsJsonLd(items) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: absoluteUrl(item.path),
-    })),
-  };
-}
-
-function draculaBookJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    name: "Dracula",
-    description: "Bram Stoker's 1897 Gothic novel, available on The Earnalism as a controlled, rights-approved core reading release.",
-    url: absoluteUrl("/book/dracula"),
-    image: DRACULA_IMAGE,
-    author: {
-      "@type": "Person",
-      name: "Bram Stoker",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "The Earnalism",
-      url: siteUrl,
-    },
-    inLanguage: "en",
-    genre: "Gothic fiction",
-    bookFormat: "https://schema.org/EBook",
-    copyrightYear: 1897,
-    isAccessibleForFree: false,
-    hasPart: [
-      {
-        "@type": "Chapter",
-        name: "Read the first 3 pages free",
-        isAccessibleForFree: true,
-        url: absoluteUrl("/reader/dracula"),
-      },
+  const articles = editorial.articles.map((article) => ({
+    path: "/journal/" + article.slug, title: article.title + " | The Earnalism Journal", description: article.excerpt, image: article.cover_url || brandImage, ogType: "article",
+    jsonLd: [
+      webPage(article.title, article.excerpt, "/journal/" + article.slug),
+      { "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.excerpt, datePublished: article.published_at, articleSection: article.category, author: { "@type": "Organization", name: article.author }, publisher: { "@type": "Organization", name: "The Earnalism", logo: { "@type": "ImageObject", url: brandImage } }, mainEntityOfPage: absolute("/journal/" + article.slug) },
     ],
-  };
+    staticBody: shell(article.category, article.title, article.excerpt, [{ href: "/journal", label: "Back to Journal" }], ["By " + article.author]),
+  }));
+  const privatePages = [
+    ["/login", "Sign in | The Earnalism", "Sign in to return to your library."],
+    ["/signup", "Create an account | The Earnalism", "Create an account for your Earnalism library."],
+    ["/account", "Your account | The Earnalism", "Your Earnalism account is private."],
+  ].map((row) => ({ path: row[0], title: row[1], description: row[2], robots: "noindex,nofollow", staticBody: shell("The Earnalism", row[1], row[2], [{ href: "/library", label: "Explore the Library" }]) }));
+  return [...pages, journal, ...articles, ...privatePages];
 }
 
-function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
-  return [
-    '<main class="static-seo-snapshot" data-static-seo-snapshot="true" style="font-family: Georgia, serif; max-width: 820px; margin: 56px auto; padding: 0 22px; line-height: 1.75; color: #2C1810;">',
-    `<p style="text-transform: uppercase; letter-spacing: .18em; color: #9a7440; font-size: .72rem;">${escapeHtml(eyebrow)}</p>`,
-    `<h1 style="font-size: clamp(2.4rem, 6vw, 4.5rem); line-height: 1.05; color: #4A1C27; margin: .2em 0;">${escapeHtml(title)}</h1>`,
-    `<p style="font-size: 1.12rem; color: #5f5350;">${escapeHtml(body)}</p>`,
-    facts.length
-      ? `<ul>${facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul>`
-      : "",
-    links.length
-      ? `<nav aria-label="Static page links">${links.map((link) => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`).join(" | ")}</nav>`
-      : "",
-    "</main>",
-  ].filter(Boolean).join("\n");
+function publicationPages(books) {
+  return books.flatMap((book) => {
+    const bookRoute = "/book/" + book.slug;
+    const readerRoute = "/reader/" + book.slug;
+    const listenerRoute = "/listener/" + book.slug;
+    const bookDescription = book.title + " by " + book.author + " is available as a reader-ready edition on The Earnalism. " + accessCopy;
+    const listening = book.audio_availability_state === "approved"
+      ? "Listening to " + book.title + " requires an active Reading Pass from the first second."
+      : "Listening is not available for " + book.title + " in the current release.";
+    return [
+      { path: bookRoute, title: book.title + " by " + book.author + " | The Earnalism", description: bookDescription, image: book.cover_url || brandImage, ogType: "book", jsonLd: [webPage(book.title, bookDescription, bookRoute), { "@context": "https://schema.org", "@type": "Book", name: book.title, author: { "@type": "Person", name: book.author }, url: absolute(bookRoute), image: book.cover_url || brandImage, isAccessibleForFree: false }], staticBody: shell("Reader-ready edition", book.title + " by " + book.author, bookDescription, [{ href: readerRoute, label: "Read the first 3 pages free" }, { href: "/pricing", label: "View Reading Passes" }], [accessCopy]) },
+      { path: readerRoute, title: "Read " + book.title + " | The Earnalism Reader", description: accessCopy + " This reader route is noindex.", canonicalPath: bookRoute, robots: "noindex,follow", staticBody: shell("Reader", "Read " + book.title + ".", accessCopy, [{ href: bookRoute, label: "Book details" }]) },
+      { path: listenerRoute, title: "Listen to " + book.title + " | The Earnalism", description: listening, canonicalPath: bookRoute, robots: "noindex,follow", staticBody: shell("Listening", book.title, listening, [{ href: bookRoute, label: "Book details" }], ["Public audio preview: 0 seconds.", accessCopy]) },
+    ];
+  });
 }
 
-function buildPages(publication) {
-  const publicAccessCopy = "Read the first 3 pages free. Listening requires an active Reading Pass.";
-  const homeDescription = "A calm digital reading room for timeless Bengali and English literature. Explore a calm digital reading room with reader-ready classics and release-gated audiobooks.";
-  const bookDescription = `Read Dracula by Bram Stoker in The Earnalism's controlled digital reading room. The first 3 canonical pages are public. ${publicAccessCopy} Audio remains unavailable for this controlled release unless separately approved.`;
-  const libraryDescription = `Browse Earnalism's Bengali and English classics. ${publicAccessCopy} Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.`;
-  const pricingDescription = `${publicAccessCopy} Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading, works across eligible titles, and never renews automatically.`;
-  const readerDescription = "Read the Dracula preview. Read the first 3 pages free. Audio controls are unavailable for this release. Search engines should use the public Dracula book page instead.";
-
-  return [
-    {
-      path: "/",
-      title: "Earnalism | Bengali and English Classics",
-      description: homeDescription,
-      canonicalPath: "/",
-      ogTitle: "Earnalism | Bengali and English Classics",
-      ogDescription: "Read timeless Bengali and English literature in a quieter, richer digital library.",
-      image: HOME_IMAGE,
-      imageAlt: "The Earnalism brand mark",
-      jsonLd: [organizationJsonLd(), websiteJsonLd(homeDescription), webpageJsonLd({ title: "A premium reading and listening sanctuary for timeless Bengali and English classics.", description: homeDescription, path: "/" })],
-      staticBody: pageShell({
-        eyebrow: "The Earnalism Digital Library",
-        title: "A premium reading and listening sanctuary for timeless Bengali and English classics.",
-        body: "A calm digital reading room for timeless Bengali and English literature. Read the first 3 pages free. Listening requires an active Reading Pass.",
-        facts: [publicAccessCopy, "Reader-ready classics stay visible; approved audiobooks require an active Reading Pass.", "No subscription or autorenewal."],
-        links: [
-          { href: "/library", label: "Start Reading" },
-          { href: "/library?category=live", label: "Reader-ready classics" },
-          { href: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
-          { href: "/library?availability=approved-audiobook", label: "Explore Audiobooks" },
-        ],
-      }),
-    },
-    {
-      path: "/book/dracula",
-      title: "Dracula by Bram Stoker | The Earnalism Digital Library",
-      description: bookDescription,
-      canonicalPath: "/book/dracula",
-      ogType: "book",
-      ogTitle: "Dracula by Bram Stoker | The Earnalism",
-      ogDescription: bookDescription,
-      twitterTitle: "Dracula by Bram Stoker | The Earnalism",
-      twitterDescription: bookDescription,
-      image: publication.cover_url || DRACULA_IMAGE,
-      imageAlt: "Dracula by Bram Stoker on The Earnalism",
-      bookOgTags: [
-        metaTag("property", "book:author", "Bram Stoker"),
-        metaTag("property", "book:release_date", "1897"),
-        metaTag("property", "book:tag", "Gothic fiction"),
-      ],
-      jsonLd: [
-        webpageJsonLd({ title: "Dracula by Bram Stoker", description: bookDescription, path: "/book/dracula" }),
-        draculaBookJsonLd(),
-        breadcrumbsJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Library", path: "/library" },
-          { name: "Dracula", path: "/book/dracula" },
-        ]),
-      ],
-      staticBody: pageShell({
-        eyebrow: "Live Controlled Release",
-        title: "Dracula by Bram Stoker",
-        body: bookDescription,
-        facts: [
-          `${publication.chapter_count} chapters.`,
-          publicAccessCopy,
-          `Source: ${publication.source_display_name}.`,
-          "Rights status: approved for public display.",
-          "Audio is unavailable in the current controlled release unless separately approved.",
-        ],
-        links: [
-          { href: "/reader/dracula", label: "Read the first 3 pages free" },
-          { href: "/pricing?book=dracula", label: "View Reading Passes" },
-          { href: "/library", label: "Back to Library" },
-        ],
-      }),
-    },
-    {
-      path: "/library",
-      title: "Library | Controlled Reader Releases on The Earnalism",
-      description: libraryDescription,
-      canonicalPath: "/library",
-      ogTitle: "Library | Bengali and English Classics on The Earnalism",
-      ogDescription: "Reader-ready Bengali and English classics with release-gated audiobook availability.",
-      imageAlt: "The Earnalism controlled library",
-      jsonLd: [
-        webpageJsonLd({ title: "Library | Controlled Reader Releases", description: libraryDescription, path: "/library" }),
-        breadcrumbsJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Library", path: "/library" },
-        ]),
-      ],
-      staticBody: pageShell({
-        eyebrow: "Library",
-        title: "Reader-ready classics, release-gated audio.",
-        body: `Browse Bengali and English classics without audio overclaim. ${publicAccessCopy}`,
-        facts: [publicAccessCopy, "Validated public-domain classics open as reader-only releases.", "Unapproved audiobooks stay hidden.", "Reader-only releases do not offer listening CTAs."],
-        links: [
-          { href: "/library?category=live", label: "Bengali Classics" },
-          { href: "/book/dracula", label: "Open Dracula" },
-        ],
-      }),
-    },
-    {
-      path: "/pricing",
-      title: "Choose Your Reading Time | The Earnalism",
-      description: pricingDescription,
-      canonicalPath: "/pricing",
-      ogTitle: "Choose Your Reading Time | The Earnalism",
-      ogDescription: pricingDescription,
-      imageAlt: "Earnalism Dracula reading-time pricing",
-      jsonLd: [webpageJsonLd({ title: "Choose Your Reading Time", description: pricingDescription, path: "/pricing" })],
-      staticBody: pageShell({
-        eyebrow: "Reading Time",
-        title: "Choose your reading time. Return whenever the book calls.",
-        body: `${publicAccessCopy} Add Reading Pass time to your wallet when you want to continue. Reading time is used only while reading.`,
-        facts: [
-          "Reading Pass time works across eligible titles.",
-          "Secure payment by Razorpay. No subscription or autorenewal.",
-        ],
-        links: [{ href: "/pricing", label: "View Reading Passes" }],
-      }),
-    },
-    {
-      path: "/reader/dracula",
-      title: "Read the Dracula Preview | The Earnalism Reader",
-      description: readerDescription,
-      canonicalPath: "/book/dracula",
-      robots: "noindex,follow",
-      ogTitle: "Read the Dracula Preview | The Earnalism",
-      ogDescription: readerDescription,
-      imageAlt: "The Earnalism Dracula reader",
-      jsonLd: [webpageJsonLd({ title: "Read the Dracula preview", description: readerDescription, path: "/reader/dracula" })],
-      staticBody: pageShell({
-        eyebrow: "Reader Interface",
-        title: "Read the Dracula preview.",
-        body: `${publicAccessCopy} This reader page is noindex and canonicalized to the public Dracula book page.`,
-        facts: [`${publication.chapter_count} chapters in the manifest.`, "Audio controls are unavailable for this release."],
-        links: [
-          { href: "/book/dracula", label: "Public Dracula Page" },
-          { href: "/pricing?book=dracula", label: "View Reading Passes" },
-        ],
-      }),
-    },
-  ];
-}
-
-async function writeSnapshot(page, template) {
-  const targetPath = page.path === "/"
-    ? path.join(buildDir, "index.html")
-    : path.join(buildDir, page.path.replace(/^\/+/, ""), "index.html");
-  await mkdir(path.dirname(targetPath), { recursive: true });
-  await writeFile(targetPath, withStaticFallback(template, page), "utf8");
-  return path.relative(buildDir, targetPath);
+function render(source, page) {
+  const head = removeManagedHead(source).replace("</head>", pageHead(page) + "\n</head>");
+  return head.replace(/<noscript>[\s\S]*?<\/noscript>/i, "<noscript>" + page.staticBody + "</noscript>").replace(/<div id="root"><\/div>/i, '<div id="root">' + page.staticBody + "</div>");
 }
 
 async function main() {
-  const template = await readSnapshotTemplate();
-  const publication = await loadPublicContract();
-  const pages = buildPages(publication);
-  const written = [];
-
+  const source = await template();
+  const safe = await contracts();
+  const pages = [...standardPages(safe.editorial), ...publicationPages(safe.books)];
+  const paths = new Set();
   for (const page of pages) {
-    written.push(await writeSnapshot(page, template));
+    if (paths.has(page.path)) throw new Error("Duplicate static SEO route: " + page.path);
+    paths.add(page.path);
+    const target = page.path === "/" ? path.join(buildDir, "index.html") : path.join(buildDir, page.path.replace(/^\/+/, ""), "index.html");
+    await mkdir(path.dirname(target), { recursive: true });
+    await writeFile(target, render(source, page), "utf8");
   }
-
-  console.log(`[static-seo] Wrote ${written.length} static snapshots: ${written.join(", ")}`);
+  const manifest = { schema_version: "earnalism.static-seo-snapshots.v2", source_contracts: { publication: path.relative(rootDir, publicationContractPath).replace(/\\/g, "/"), editorial: path.relative(rootDir, editorialContractPath).replace(/\\/g, "/") }, forbidden_copy: forbiddenCopy, routes: pages.map((page) => ({ route: page.path, robots: page.robots || "index,follow" })) };
+  await writeFile(path.join(buildDir, "static-seo-snapshot-manifest.json"), JSON.stringify(manifest, null, 2) + "\n", "utf8");
+  console.log("[static-seo] Wrote " + pages.length + " static snapshots and a deterministic route manifest.");
 }
 
-main().catch((error) => {
-  console.error(`[static-seo] ${error.stack || error.message}`);
-  process.exitCode = 1;
-});
+main().catch((error) => { console.error("[static-seo] " + (error.stack || error.message)); process.exitCode = 1; });

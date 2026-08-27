@@ -1,0 +1,92 @@
+name: Editorial and support owner review
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - frontend/src/pages/Journal.*
+      - frontend/src/pages/JournalArticle.*
+      - frontend/src/pages/Contact.*
+      - frontend/src/pages/MicroStoryLanding.*
+      - frontend/src/pages/NotFound.*
+      - frontend/src/styles/editorial-support.css
+      - frontend/api/not-found.js
+      - frontend/api/removed-content.js
+      - frontend/vercel.json
+      - frontend/scripts/generate-seo-assets.mjs
+      - frontend/scripts/generate-static-seo-snapshots.mjs
+      - frontend/scripts/verify-static-seo-snapshots.mjs
+      - frontend/static-seo/editorial-public.json
+      - frontend/static-seo/controlled-publication-public.json
+      - scripts/capture_editorial_support_owner_review.mjs
+      - scripts/generate_editorial_support_owner_review.py
+      - .github/workflows/editorial-support-owner-review.yml
+
+permissions:
+  contents: read
+
+jobs:
+  owner-review:
+    name: Editorial/support owner-review artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      npm_config_cache: ${{ github.workspace }}/.npm-cache
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+      REACT_APP_BACKEND_URL: http://127.0.0.1:18007/api
+      REACT_APP_UAT_LOCAL: "true"
+    steps:
+      - uses: actions/checkout@v6
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.11" }
+      - name: Install review dependencies
+        run: |
+          npm ci
+          npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check -r requirements.txt
+          npx playwright install --with-deps chromium
+      - name: Materialize base source
+        env: { BASE_SHA: ${{ github.event.pull_request.base.sha }} }
+        run: |
+          base_dir="$RUNNER_TEMP/editorial-support-base"
+          mkdir -p "$base_dir"
+          git archive "$BASE_SHA" | tar -x -C "$base_dir"
+          mkdir -p "$base_dir/scripts"
+          cp scripts/capture_editorial_support_owner_review.mjs "$base_dir/scripts/"
+          ln -s "$GITHUB_WORKSPACE/node_modules" "$base_dir/node_modules"
+          ln -s "$GITHUB_WORKSPACE/frontend/node_modules" "$base_dir/frontend/node_modules"
+      - name: Capture base and proposed route states
+        run: |
+          base_dir="$RUNNER_TEMP/editorial-support-base"
+          (
+            cd "$base_dir"
+            npm --prefix frontend run build
+            python3 -m http.server 13129 --directory frontend/build >"$RUNNER_TEMP/editorial-base.log" 2>&1 &
+            server_pid=$!
+            trap 'kill "$server_pid"' EXIT
+            for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13129/ >/dev/null && break; sleep 1; done
+            UAT_BASE_URL=http://127.0.0.1:13129 OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/editorial-support-owner-review/before node scripts/capture_editorial_support_owner_review.mjs
+          )
+          mkdir -p uat/evidence/editorial-support-owner-review/before
+          cp "$base_dir"/uat/evidence/editorial-support-owner-review/before/* uat/evidence/editorial-support-owner-review/before/
+          npm --prefix frontend run build
+          python3 -m http.server 13130 --directory frontend/build >"$RUNNER_TEMP/editorial-head.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13130/ >/dev/null && break; sleep 1; done
+          UAT_BASE_URL=http://127.0.0.1:13130 OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/editorial-support-owner-review/after node scripts/capture_editorial_support_owner_review.mjs
+      - name: Generate owner-review package
+        run: python3 scripts/generate_editorial_support_owner_review.py
+      - uses: actions/upload-artifact@v7
+        with:
+          name: editorial-support-owner-review-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+          path: uat/evidence/editorial-support-owner-review/final/**
+          if-no-files-found: error

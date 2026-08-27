@@ -177,6 +177,24 @@ async function loadLocalControlledBooks() {
   return books;
 }
 
+async function loadPublicEditorialPosts() {
+  try {
+    const contract = JSON.parse(await readFile(path.join(rootDir, "frontend", "static-seo", "editorial-public.json"), "utf8"));
+    if (contract.schema_version !== "earnalism.static-seo-editorial.v1" || !Array.isArray(contract.articles)) return [];
+    return contract.articles.map((article) => ({
+      slug: article.slug,
+      title: article.title,
+      excerpt: article.excerpt,
+      created_at: article.published_at,
+      updated_at: article.updated_at || article.published_at,
+      is_published: true,
+    })).filter((article) => article.slug && article.title && article.excerpt);
+  } catch (error) {
+    console.warn(`[seo] Could not load public editorial contract: ${error.message}`);
+    return [];
+  }
+}
+
 function sitemapEntry({ path: pagePath, changefreq, priority, lastmod = today }) {
   return [
     "  <url>",
@@ -189,11 +207,13 @@ function sitemapEntry({ path: pagePath, changefreq, priority, lastmod = today })
 }
 
 async function main() {
-  const [remoteBooks, posts, localControlledBooks] = await Promise.all([
+  const [remoteBooks, remotePosts, localControlledBooks, localEditorialPosts] = await Promise.all([
     fetchJson("/books"),
     fetchJson("/blog"),
     loadLocalControlledBooks(),
+    loadPublicEditorialPosts(),
   ]);
+  const posts = remotePosts.length > 0 ? remotePosts : localEditorialPosts;
   const booksBySlug = new Map();
   for (const book of [...remoteBooks, ...localControlledBooks]) {
     if (book?.slug) booksBySlug.set(book.slug, book);

@@ -14,7 +14,7 @@ describe("Home performance sprint contract", () => {
     expect(entry).toContain("ReactDOM.createRoot(rootElement).render(");
     expect(entry).not.toContain("hydrateRoot");
     expect(entry).toContain('throw new Error("Earnalism requires an empty #root mount element.")');
-    expect(snapshots).toContain("buildPages");
+    expect(snapshots).toContain("publicationPages");
     expect(snapshots).toContain('data-static-seo-snapshot="true"');
   });
 

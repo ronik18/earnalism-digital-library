@@ -3,6 +3,7 @@ import { ChevronLeft } from "lucide-react";
 import useSEO from "../hooks/useSEO";
 import EarnalismBrandLockup from "../components/EarnalismBrandLockup";
 import PublicPageFrame from "../components/PublicPageFrame";
+import "../styles/editorial-support.css";
 
 export default function NotFound() {
   useSEO({
@@ -13,7 +14,7 @@ export default function NotFound() {
 
   return (
     <PublicPageFrame tone="quiet" testId="not-found-page">
-      <section className="mx-auto flex min-h-[62vh] max-w-4xl flex-col items-center justify-center px-5 py-24 text-center">
+      <section className="error-route-panel mx-auto flex min-h-[62vh] max-w-4xl flex-col items-center justify-center px-5 py-24 text-center">
         <EarnalismBrandLockup variant="editorial" />
         <div className="italic-eyebrow mb-4 mt-8">404 · Page unavailable</div>
         <h1 className="font-serif-light text-4xl leading-tight text-burgundy sm:text-5xl">This page is no longer on the shelf.</h1>

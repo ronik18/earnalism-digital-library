@@ -1,0 +1,32 @@
+{
+  "schema_version": "earnalism.static-seo-editorial.v1",
+  "generated_from": {
+    "https://api.theearnalism.com/api/blog": "412ba2a9b140b693044493df9e0cf0d1825b67a33fc01da9ede479c3aa0dacc3"
+  },
+  "observed_at": "2026-08-27T00:00:00Z",
+  "journal": {
+    "title": "The Journal — The Earnalism",
+    "description": "Notes from The Earnalism on literature, work, and the quiet craft of reading well.",
+    "canonical_route": "/journal"
+  },
+  "articles": [
+    {
+      "slug": "how-reading-shapes-better-founders",
+      "title": "How Reading Shapes Better Founders",
+      "excerpt": "The founders who endure are not always the loudest readers — they are the most patient ones.",
+      "author": "The Earnalism",
+      "category": "Self-Growth",
+      "published_at": "2026-05-10T21:06:05.246455+00:00",
+      "cover_url": "https://images.unsplash.com/photo-1761237771835-1d2914546cea?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHwzfHxjYWxtJTIwbWluaW1hbCUyMGFic3RyYWN0JTIwd2FybSUyMHRleHR1cmV8ZW58MHx8fHwxNzc3NjE3MTc3fDA&ixlib=rb-4.1.0&q=85"
+    },
+    {
+      "slug": "why-every-small-business-needs-a-story-before-a-strategy",
+      "title": "Why Every Small Business Needs a Story Before a Strategy",
+      "excerpt": "Strategy without story is choreography without music. Here's how to find the line that holds your business together.",
+      "author": "The Earnalism",
+      "category": "Business",
+      "published_at": "2026-05-10T21:06:04.182220+00:00",
+      "cover_url": "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMGRlc2t8ZW58MHx8fHwxNzc3NjE3MTc3fDA&ixlib=rb-4.1.0&q=85"
+    }
+  ]
+}
