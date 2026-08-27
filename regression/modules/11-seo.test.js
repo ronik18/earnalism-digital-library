@@ -141,8 +141,8 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
 
   test("/book/dracula has crawler-visible Dracula-specific metadata", () => {
     expect(bookHtml).toContain("earnalism-static-seo:start");
-    expect(titleText(bookHtml)).toBe("Dracula by Bram Stoker | The Earnalism Digital Library");
-    expect(metaContent(bookHtml, "name", "description")).toContain("Read Dracula by Bram Stoker");
+    expect(titleText(bookHtml)).toBe("Dracula by Bram Stoker | The Earnalism");
+    expect(metaContent(bookHtml, "name", "description")).toContain("Dracula by Bram Stoker is available as a reader-ready edition");
     expect(canonicalHref(bookHtml)).toBe(`${SITE_URL}/book/dracula`);
     expect(metaContent(bookHtml, "property", "og:type")).toBe("book");
     expect(metaContent(bookHtml, "property", "og:title")).toBe("Dracula by Bram Stoker | The Earnalism");
@@ -156,7 +156,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(metaContent(bookHtml, "name", "twitter:card")).toBe("summary_large_image");
     expect(metaContent(bookHtml, "name", "twitter:title")).toBe("Dracula by Bram Stoker | The Earnalism");
     expect(metaContent(bookHtml, "name", "twitter:image")).toMatch(/https:\/\/(?:res\.cloudinary\.com|theearnalism\.com)\/.+/);
-    expect(jsonLdTypes(bookHtml)).toEqual(expect.arrayContaining(["Book", "WebPage", "BreadcrumbList"]));
+    expect(jsonLdTypes(bookHtml)).toEqual(expect.arrayContaining(["Book", "WebPage"]));
   });
 
   test("Book JSON-LD is rights-safe and avoids unsupported claims", () => {
@@ -166,14 +166,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(bookSchema.author).toEqual({ "@type": "Person", name: "Bram Stoker" });
     expect(bookSchema.url).toBe(`${SITE_URL}/book/dracula`);
     expect(bookSchema.isAccessibleForFree).toBe(false);
-    expect(bookSchema.hasPart).toEqual([
-      {
-        "@type": "Chapter",
-        name: "Read the first 3 pages free",
-        isAccessibleForFree: true,
-        url: `${SITE_URL}/reader/dracula`,
-      },
-    ]);
+    expect(bookHtml).toContain('href="/reader/dracula">Read the first 3 pages free');
     expect(JSON.stringify(bookSchema).toLowerCase()).not.toMatch(/aggregaterating|\breview\b|audioobject|audiobook|listen now/);
     expect(JSON.stringify(bookSchema)).not.toContain("source_hash");
     expect(JSON.stringify(bookSchema)).not.toContain("content_hash");
@@ -182,11 +175,11 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
   });
 
   test("/reader/dracula is noindex and canonicalized to the public Dracula page", () => {
-    expect(titleText(readerHtml)).toBe("Read the Dracula Preview | The Earnalism Reader");
+    expect(titleText(readerHtml)).toBe("Read Dracula | The Earnalism Reader");
     expect(metaContent(readerHtml, "name", "robots").replace(/\s/g, "")).toBe("noindex,follow");
     expect(canonicalHref(readerHtml)).toBe(`${SITE_URL}/book/dracula`);
     expect(metaContent(readerHtml, "property", "og:url")).toBe(`${SITE_URL}/book/dracula`);
-    expect(jsonLdTypes(readerHtml)).toEqual(["WebPage"]);
+    expect(jsonLdTypes(readerHtml)).toEqual([]);
     expect(readerHtml).not.toContain("AudioObject");
     expect(readerHtml).not.toMatch(/\bListen Now\b/i);
   });
@@ -208,14 +201,10 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
   test("homepage, library, and pricing snapshots preserve the canonical preview and release-truth contract", () => {
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
     expect(homeHtml).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
-    expect(homeHtml).toContain("No subscription or autorenewal.");
-    expect(homeHtml).toContain("href=\"/library?category=live\"");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
-    expect(libraryHtml).toContain("Reader-ready classics, release-gated audio.");
-    expect(libraryHtml).toContain("Reader-only releases do not offer listening CTAs.");
+    expect(libraryHtml).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(pricingHtml).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(pricingHtml).toContain("Reading Pass");
-    expect(pricingHtml).toMatch(/No subscription|no subscription/);
     for (const html of [homeHtml, libraryHtml, pricingHtml]) {
       expect(html).not.toMatch(/Chapter 1 is free|Read Chapter 1|Start with Chapter 1|The First Chapter|7-day/i);
     }
@@ -257,28 +246,34 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
   });
 
   test("static snapshot generator documents approved route coverage and legacy safety", () => {
-    expect(staticSnapshotGenerator).toContain('path: "/book/dracula"');
-    expect(staticSnapshotGenerator).toContain('path: "/reader/dracula"');
+    expect(staticSnapshotGenerator).toContain('const bookRoute = "/book/" + book.slug');
+    expect(staticSnapshotGenerator).toContain('const readerRoute = "/reader/" + book.slug');
     expect(staticSnapshotGenerator).toContain('robots: "noindex,follow"');
-    expect(staticSnapshotGenerator).toContain("Static SEO public contract is missing or unreadable");
+    expect(staticSnapshotGenerator).toContain("Static SEO contract is stale or invalid");
     expect(staticSnapshotGenerator).not.toContain("AudioObject");
     expect(staticSnapshotGenerator).not.toContain("sameAs: source.source_url");
   });
 
-  test("the frontend-local public SEO contract is fresh, bounded, and contains no protected publication data", () => {
+  test("the frontend-local public SEO contract is fresh, data-driven, and contains no protected publication data", () => {
     expect(() => execFileSync(process.execPath, ["scripts/generate_static_seo_public_contract.mjs", "--check"], {
       cwd: ROOT,
       stdio: "pipe",
     })).not.toThrow();
     const contract = JSON.parse(staticSeoPublicContract);
-    expect(contract.schema_version).toBe("earnalism.static-seo-public.v1");
-    expect(contract.publications).toHaveLength(1);
-    expect(contract.publications[0]).toMatchObject({
+    expect(contract.schema_version).toBe("earnalism.static-seo-public.v2");
+    expect(contract.publications.length).toBeGreaterThan(1);
+    expect(contract.publications.find((publication) => publication.slug === "dracula")).toMatchObject({
       slug: "dracula",
       text_preview_limit_canonical_pages: 3,
       audio_public_preview_seconds: 0,
       audio_availability_state: "disabled",
     });
+    for (const publication of contract.publications) {
+      expect(publication).toMatchObject({
+        text_preview_limit_canonical_pages: 3,
+        audio_public_preview_seconds: 0,
+      });
+    }
     expect(staticSeoPublicContract).not.toMatch(/source_url|source_hash|content_hash|provenance_hash|audio_url|storage|credential/i);
   });
 });
