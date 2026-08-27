@@ -307,7 +307,7 @@ describe("UX conversion static signals", () => {
     expect(controlledLaunch).toContain("back_cover_image_url: DRACULA_BACK_COVER_IMAGE");
     expect(controlledLaunch).toContain("back_cover_url: DRACULA_BACK_COVER_IMAGE");
     expect(controlledLaunch).toContain("back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE");
-    expect(staticSnapshotGenerator).toContain("assets/books/dracula/dracula-front-cover.webp");
+    expect(staticSnapshotGenerator).toContain("book.cover_url || brandImage");
     expect(bookDetail).toContain("publicBook?.cover_image_url");
     expect(bookDetail).toContain("mergeDraculaBook(book)");
     expect(useSeo).toContain("assets/books/dracula/dracula-front-cover.webp");
@@ -1127,7 +1127,7 @@ describe("UX conversion static signals", () => {
       expect(source).not.toMatch(/learn about the bookstore/i);
     }
     expect(about).toContain("reading room");
-    expect(journal).toContain("notes from a reading room");
+    expect(journal).toContain("notes for a more attentive reading life");
     expect(publicIndex).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
     expect(publicIndex).not.toMatch(/beginning with Dracula by Bram Stoker|Dracula-first/i);
   });
@@ -1547,9 +1547,9 @@ describe("UX conversion static signals", () => {
     expect(library).toContain('placeholder="Search by title or author"');
     expect(login).toContain('aria-describedby="login-continuation-help"');
     expect(signup).toContain('aria-describedby="signup-wallet-help"');
-    expect(contact).toContain("<span className=\"overline block mb-2\">Your name</span>");
-    expect(contact).toContain("<span className=\"overline block mb-2\">Your email</span>");
-    expect(contact).toContain("<span className=\"overline block mb-2\">Your message</span>");
+    expect(contact).toContain("<span className=\"editorial-kicker mb-2 block\">Your name</span>");
+    expect(contact).toContain("<span className=\"editorial-kicker mb-2 block\">Your email</span>");
+    expect(contact).toContain("<span className=\"editorial-kicker mb-2 block\">Your message</span>");
   });
 
   test("reader locked and wallet states are announced without enabling public audio", () => {
@@ -1596,11 +1596,10 @@ describe("UX conversion static signals", () => {
   test("static SEO snapshot generator is wired into the CRA build", () => {
     expect(frontendPackageJson).toContain('"postbuild": "node scripts/generate-static-seo-snapshots.mjs && node scripts/verify-static-seo-snapshots.mjs"');
     expect(fs.existsSync(path.join(ROOT, "frontend/scripts/verify-static-seo-snapshots.mjs"))).toBe(true);
-    expect(staticSnapshotGenerator).toContain("Dracula by Bram Stoker | The Earnalism Digital Library");
+    expect(staticSnapshotGenerator).toContain('book.title + " by " + book.author + " | The Earnalism"');
     expect(staticSnapshotGenerator).toContain("Book");
-    expect(staticSnapshotGenerator).toContain("BreadcrumbList");
     expect(staticSnapshotGenerator).toContain("noindex,follow");
-    expect(staticSnapshotGenerator).toContain("/reader/dracula");
+    expect(staticSnapshotGenerator).toContain('const readerRoute = "/reader/" + book.slug');
     expect(staticSnapshotGenerator).toContain("controlled-publication-public.json");
     expect(staticSeoContractGenerator).toContain("audio_public_preview_seconds: 0");
     expect(packageJson).toContain("launch:social-preview-audit");
@@ -1722,15 +1721,15 @@ describe("UX conversion static signals", () => {
       return;
     }
 
-    expect(bookHtml).toContain("<title>Dracula by Bram Stoker | The Earnalism Digital Library</title>");
-    expect(metaContent(bookHtml, "name", "description")).toContain("Read Dracula by Bram Stoker");
+    expect(bookHtml).toContain("<title>Dracula by Bram Stoker | The Earnalism</title>");
+    expect(metaContent(bookHtml, "name", "description")).toContain("Dracula by Bram Stoker is available as a reader-ready edition");
     expect(canonicalHref(bookHtml)).toBe("https://theearnalism.com/book/dracula");
     expect(metaContent(bookHtml, "property", "og:type")).toBe("book");
     expect(metaContent(bookHtml, "property", "og:title")).toContain("Dracula by Bram Stoker");
     expect(metaContent(bookHtml, "name", "twitter:card")).toBe("summary_large_image");
-    expect(bookHtml).toContain('"@type": "Book"');
-    expect(bookHtml).toContain('"@type": "BreadcrumbList"');
-    expect(bookHtml).toContain("Project Gutenberg eBook #345");
+    expect(bookHtml).toContain('"@type":"Book"');
+    expect(bookHtml).toContain('"@type":"WebPage"');
+    expect(bookHtml).not.toContain("Project Gutenberg eBook #345");
     expect(bookHtml).not.toMatch(/aggregateRating|"review"\s*:/i);
     expect(bookHtml).not.toMatch(/Listen Now|audiobook available/i);
     expect(bookHtml).not.toContain("Preview every book before you pay");
@@ -1740,13 +1739,13 @@ describe("UX conversion static signals", () => {
     const homeHtml = readOptional("frontend/build/index.html");
     const readerHtml = readOptional("frontend/build/reader/dracula/index.html");
     if (!homeHtml || !readerHtml) {
-      expect(staticSnapshotGenerator).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
+      expect(staticSnapshotGenerator).toContain("A calm digital reading room for timeless Bengali and English literature.");
       expect(staticSnapshotGenerator).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
       return;
     }
 
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("Reader-ready classics stay visible; approved audiobooks require an active Reading Pass.");
+    expect(homeHtml).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
@@ -1839,7 +1838,7 @@ describe("UX conversion static signals", () => {
     expect(home).not.toContain('href="#"');
     expect(home).not.toContain('href=""');
     expect(contact).toContain("getEnabledSocialLinks(social)");
-    expect(contact).toContain('data-testid={`contact-social-${id}`}');
+    expect(contact).toContain('data-testid={"contact-social-" + id}');
     expect(contact).toContain("sales@reoenterprise.org");
     expect(contact).not.toContain("sales@reoenterprise.in");
     expect(header).toContain("getEnabledSocialLinks(social)");

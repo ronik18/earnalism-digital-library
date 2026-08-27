@@ -283,8 +283,92 @@
       "destination": "https://api.theearnalism.com/api/$1"
     },
     {
-      "source": "/((?!static/|assets/|audio/|asset-manifest.json|favicon.ico|favicon.png|apple-touch-icon.png|manifest.json|site.webmanifest|robots.txt|sitemap.xml).*)",
+      "source": "/",
       "destination": "/index.html"
+    },
+    {
+      "source": "/library",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/about-legacy",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/micro-story",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/signup",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/signin",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/account",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/publishing/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/book/:slug",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/journal/:slug",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/reader/:slug",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/reader-legacy/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/listener/:slug",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/listener-legacy/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/secure-reader-test",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/((?!static/|assets/|audio/|asset-manifest.json|favicon.ico|favicon.png|apple-touch-icon.png|manifest.json|site.webmanifest|robots.txt|sitemap.xml).*)",
+      "destination": "/api/not-found"
     }
   ],
   "headers": [

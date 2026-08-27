@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import { Mail, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-react";
 import { api, formatError } from "../lib/api";
@@ -7,104 +8,101 @@ import { getEnabledSocialLinks } from "../config/socialLinks";
 import useSEO from "../hooks/useSEO";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import PublicPageFrame from "../components/PublicPageFrame";
+import "../styles/editorial-support.css";
 
-const SOCIAL_ICONS = {
-  email: Mail,
-  facebook: Facebook,
-  instagram: Instagram,
-  linkedin: Linkedin,
-  x: Twitter,
-  youtube: Youtube,
+const SOCIAL_ICONS = { email: Mail, facebook: Facebook, instagram: Instagram, linkedin: Linkedin, x: Twitter, youtube: Youtube };
+const CONTACT_EMAIL = "sales@reoenterprise.org";
+const INTENTS = {
+  reader: { label: "Reader support", copy: "Tell us what you need help with." },
+  rights: { label: "Rights or title inquiry", copy: "Tell us which edition or rights question you are writing about." },
+  institution: { label: "Institutional access", copy: "Share a little about your institution and reading needs." },
+  publisher: { label: "Publisher or licensing inquiry", copy: "Share the title, rights, or licensing context." },
+  partnership: { label: "Partnership inquiry", copy: "Tell us about the proposed collaboration." },
 };
 
-const CONTACT_EMAIL = "sales@reoenterprise.org";
+function contactIntent(search) {
+  const params = new URLSearchParams(search);
+  const kind = String(params.get("intent") || "").trim().toLowerCase();
+  if (INTENTS[kind]) return { ...INTENTS[kind], subject: INTENTS[kind].label };
+  const interest = String(params.get("interest") || "").trim().replace(/[^a-z0-9 -]/gi, "").slice(0, 80);
+  return interest ? { label: "Title inquiry", copy: "Tell us what you would like to know about this title.", subject: "Title inquiry: " + interest } : null;
+}
 
 export default function Contact() {
+  const location = useLocation();
+  const intent = useMemo(() => contactIntent(location.search), [location.search]);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState("");
+  const [error, setError] = useState("");
   const { social } = useSettings();
-  const activeSocials = getEnabledSocialLinks(social)
-    .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
-    .filter((item) => item.Icon);
+  const activeSocials = getEnabledSocialLinks(social).map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] })).filter((item) => item.Icon);
 
   useSEO({
-    title: "Contact — The Earnalism",
-    description: `Write to The Earnalism — for book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader. Email ${CONTACT_EMAIL}.`,
+    title: "Contact | The Earnalism",
+    description: "Contact The Earnalism for reader support, rights and title inquiries, institutional access, and publisher or licensing questions.",
+    canonicalPath: "/contact",
   });
 
-  const submit = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (intent?.subject) setForm((current) => current.subject ? current : { ...current, subject: intent.subject });
+  }, [intent?.subject]);
+
+  const submit = async (event) => {
+    event.preventDefault();
     setSubmitting(true);
+    setError("");
+    setStatus("");
     try {
       await api.post("/contact", form);
-      trackFunnelEvent("support_complaint_created", {
-        source: "contact_form",
-        has_subject: Boolean(form.subject),
-        message_type: "reader_support",
-      });
-      toast.success("Thank you. We'll respond with care.");
-      setForm({ name: "", email: "", subject: "", message: "" });
-    } catch (err) {
-      toast.error(formatError(err.response?.data?.detail));
-    } finally { setSubmitting(false); }
+      trackFunnelEvent("support_complaint_created", { source: "contact_form", has_subject: Boolean(form.subject), message_type: "reader_support" });
+      setStatus("Thank you. Your message has been received.");
+      toast.success("Thank you. Your message has been received.");
+      setForm((current) => ({ name: "", email: "", subject: current.subject, message: "" }));
+    } catch (requestError) {
+      const message = formatError(requestError.response?.data?.detail);
+      setError(message);
+      toast.error(message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <PublicPageFrame tone="quiet" testId="contact-page">
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-32 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-        <div className="lg:col-span-5">
-          <div className="italic-eyebrow mb-4">Reach The Earnalism</div>
-          <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.75rem] text-burgundy leading-[1.02] tracking-tight">Write to us — we read every <span className="italic-accent">letter.</span></h1>
-          <div className="gold-rule-thin mt-7" />
-          <p className="text-charcoal-soft mt-7 leading-[1.8] font-light">For book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader.</p>
-
-          <div className="mt-10 space-y-5">
-            <a href={`mailto:${CONTACT_EMAIL}`} className="flex min-h-11 items-center gap-3 text-charcoal hover:text-burgundy" data-testid="contact-email-link">
-              <Mail size={16} className="text-gold" strokeWidth={1.5} /> <span className="font-serif-display italic text-lg">{CONTACT_EMAIL}</span>
-            </a>
-            {activeSocials.length > 0 && (
-              <nav className="flex items-center gap-3 text-charcoal-soft" aria-label="Earnalism social links" data-testid="contact-socials">
-                {activeSocials.map(({ id, ariaLabel, external, Icon, url }) => (
-                  <a
-                    key={id}
-                    href={url}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    aria-label={ariaLabel}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-soft text-charcoal-soft transition-colors duration-300 hover:border-gold hover:text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
-                    data-testid={`contact-social-${id}`}
-                  >
-                    <Icon size={17} strokeWidth={1.5} aria-hidden="true" />
-                  </a>
-                ))}
-              </nav>
-            )}
-          </div>
+      <section className="editorial-support-hero">
+        <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-20 sm:px-8 sm:pb-20 sm:pt-28 lg:px-12">
+          <p className="editorial-kicker">The library desk</p>
+          <h1 className="mt-5 max-w-3xl font-serif-light text-4xl leading-[1.02] tracking-tight text-burgundy sm:text-6xl">Write to us with a question, a title, or a thought.</h1>
+          <p className="mt-7 max-w-2xl text-lg leading-[1.8] text-charcoal-soft">For reader support, rights and title inquiries, institutional access, and publisher or licensing questions.</p>
         </div>
+      </section>
 
-        <div className="lg:col-span-7">
-          <div className="card-elegant p-8 sm:p-12">
-            <div className="italic-eyebrow mb-5">A short letter</div>
-            <form onSubmit={submit} className="grid grid-cols-1 sm:grid-cols-2 gap-6" data-testid="contact-form">
-              <label className="block">
-                <span className="overline block mb-2">Your name</span>
-                <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" className="input-elegant" data-testid="contact-name" />
-              </label>
-              <label className="block">
-                <span className="overline block mb-2">Your email</span>
-                <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="Your email" className="input-elegant" data-testid="contact-email-input" />
-              </label>
-              <label className="block sm:col-span-2">
-                <span className="overline block mb-2">Subject</span>
-                <input value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder="Subject" className="input-elegant" data-testid="contact-subject" />
-              </label>
-              <label className="block sm:col-span-2">
-                <span className="overline block mb-2">Your message</span>
-                <textarea required rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Your message" className="input-elegant" data-testid="contact-message" />
-              </label>
-              <div className="sm:col-span-2 mt-2"><button disabled={submitting} className="btn-primary disabled:opacity-60" data-testid="contact-submit">{submitting ? "Sending…" : "Send Message"}</button></div>
-            </form>
-          </div>
+      <section className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[.82fr_1.18fr] lg:px-12 lg:py-20">
+        <aside className="editorial-surface h-fit p-7 sm:p-9">
+          <p className="editorial-kicker">Direct contact</p>
+          <a href={"mailto:" + CONTACT_EMAIL} className="mt-5 flex min-h-11 items-center gap-3 font-serif-display text-lg italic text-burgundy hover:text-gold" data-testid="contact-email-link">
+            <Mail size={17} aria-hidden="true" /> {CONTACT_EMAIL}
+          </a>
+          <p className="mt-6 leading-[1.75] text-charcoal-soft">Use the form for a fuller note. Share only the details needed for us to understand the question.</p>
+          {activeSocials.length ? <nav className="mt-8 flex flex-wrap gap-3" aria-label="Earnalism social links" data-testid="contact-socials">
+            {activeSocials.map(({ id, ariaLabel, external, Icon, url }) => <a key={id} href={url} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} aria-label={ariaLabel} className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-soft text-charcoal-soft transition-colors hover:border-gold hover:text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold" data-testid={"contact-social-" + id}><Icon size={17} strokeWidth={1.5} aria-hidden="true" /></a>)}
+          </nav> : null}
+        </aside>
+
+        <div className="editorial-surface p-6 sm:p-10">
+          <p className="editorial-kicker">A short letter</p>
+          {intent ? <div className="contact-intent-note mt-5 px-4 py-3 text-sm" data-testid="contact-intent"><strong>{intent.label}.</strong> {intent.copy}</div> : null}
+          <form onSubmit={submit} className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2" data-testid="contact-form" aria-describedby={error ? "contact-form-error" : status ? "contact-form-status" : undefined}>
+            <label className="block"><span className="editorial-kicker mb-2 block">Your name</span><input required value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} autoComplete="name" className="input-elegant" data-testid="contact-name" /></label>
+            <label className="block"><span className="editorial-kicker mb-2 block">Your email</span><input required type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} autoComplete="email" className="input-elegant" data-testid="contact-email-input" /></label>
+            <label className="block sm:col-span-2"><span className="editorial-kicker mb-2 block">Subject</span><input value={form.subject} onChange={(event) => setForm({ ...form, subject: event.target.value })} className="input-elegant" data-testid="contact-subject" /></label>
+            <label className="block sm:col-span-2"><span className="editorial-kicker mb-2 block">Your message</span><textarea required rows={7} value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} className="input-elegant" data-testid="contact-message" /></label>
+            <div className="sm:col-span-2">
+              {error ? <p id="contact-form-error" className="contact-form-status" role="alert">{error}</p> : <p id="contact-form-status" className="contact-form-status" role="status">{status}</p>}
+              <button disabled={submitting} className="btn-primary mt-2 min-h-11 disabled:opacity-60" data-testid="contact-submit">{submitting ? "Sending…" : "Send message"}</button>
+            </div>
+          </form>
         </div>
       </section>
     </PublicPageFrame>

@@ -72,7 +72,7 @@ describe("public CTA accuracy contract", () => {
     expect(header).toContain("min-h-11 min-w-11");
     expect(bookDetail).toContain('className="btn-link inline-flex min-h-11');
     expect(contact).toContain('className="inline-flex h-11 w-11');
-    expect(journal).toContain("min-h-11 px-4 py-2");
+    expect(journal).toContain("min-h-11 rounded-full");
     expect(login).toContain("inline-flex min-h-11 items-center");
     expect(signup).toContain("inline-flex min-h-11 items-center");
     expect(shareButtons).toContain('const btn = "w-11 h-11');

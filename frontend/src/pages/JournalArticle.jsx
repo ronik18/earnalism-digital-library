@@ -7,6 +7,9 @@ import ShareButtons from "../components/ShareButtons";
 import JsonLd from "../components/JsonLd";
 import useSEO from "../hooks/useSEO";
 import PublicPageFrame from "../components/PublicPageFrame";
+import "../styles/editorial-support.css";
+
+const articleReadMinutes = (content = "") => Math.max(2, Math.round(String(content).split(/\s+/).filter(Boolean).length / 200));
 
 export default function JournalArticle() {
   const { slug } = useParams();
@@ -26,6 +29,7 @@ export default function JournalArticle() {
     imageAlt: post?.title,
     type: "article",
     robots: postNotFound ? "noindex, nofollow" : "index, follow",
+    canonicalPath: post ? "/journal/" + post.slug : undefined,
   });
 
   const articleSchema = post ? {
@@ -70,9 +74,9 @@ export default function JournalArticle() {
     return () => controller.abort();
   }, [slug]);
 
-  if (loading) return <PublicPageFrame tone="editorial"><div className="py-32 text-center text-charcoal-soft" role="status">Opening this journal note…</div></PublicPageFrame>;
+  if (loading) return <PublicPageFrame tone="editorial"><div className="editorial-surface mx-auto my-20 max-w-3xl px-6 py-16 text-center text-charcoal-soft" role="status" data-testid="journal-article-loading">Opening this journal note…</div></PublicPageFrame>;
   if (!post) return (
-    <PublicPageFrame tone="editorial"><div className="max-w-3xl mx-auto px-6 py-32 text-center">
+    <PublicPageFrame tone="editorial"><div className="error-route-panel mx-auto my-20 max-w-3xl px-6 py-20 text-center" data-testid="journal-article-not-found">
       <h1 className="font-serif-display text-4xl text-burgundy">Article not found</h1>
       <Link to="/journal" className="btn-secondary mt-6">Back to Journal</Link>
     </div></PublicPageFrame>
@@ -87,27 +91,29 @@ export default function JournalArticle() {
         </Link>
       </div>
 
-      <header className="max-w-3xl mx-auto px-5 sm:px-8 pt-8 pb-12 text-center">
-        <div className="overline mb-5">{post.category}</div>
+      <header className="editorial-support-hero">
+      <div className="max-w-3xl mx-auto px-5 sm:px-8 pt-8 pb-12 text-center">
+        <div className="editorial-kicker mb-5">{post.category || "Journal"}</div>
         <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[4rem] text-burgundy leading-[1.02] tracking-tight text-balance">{post.title}</h1>
-        <div className="mt-8 flex items-center justify-center gap-3 text-[0.7rem] tracking-[0.24em] uppercase text-charcoal-soft">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-[0.7rem] tracking-[0.18em] uppercase text-charcoal-soft">
           <span>By {post.author}</span><span>·</span>
-          <span>{new Date(post.created_at).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}</span>
+          <span>{new Date(post.created_at).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}</span><span>·</span>
+          <span>{articleReadMinutes(post.content)} min read</span>
         </div>
         <div className="gold-rule mx-auto mt-10" />
-      </header>
+      </div></header>
 
       {post.cover_image_url && (
         <div className="max-w-5xl mx-auto px-5 sm:px-8">
           <div className="aspect-[16/9] overflow-hidden rounded-2xl border border-brand">
-            <img src={optimizedImageUrl(post.cover_image_url, { width: 1200 })} alt={post.title} decoding="async" fetchPriority="high" className="w-full h-full object-cover" />
+            <img src={optimizedImageUrl(post.cover_image_url, { width: 1200 })} width="1200" height="675" alt={post.title} decoding="async" fetchPriority="high" className="w-full h-full object-cover" />
           </div>
         </div>
       )}
 
       <div className="max-w-2xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
-        <div className="reader-canvas reader-content font-serif-display text-[1.18rem] sm:text-[1.28rem] leading-[1.85] text-charcoal drop-cap">
-          {post.content.split("\n\n").map((para, i) => (
+        <div className="editorial-prose reader-content drop-cap">
+          {String(post.content || "").split("\n\n").filter(Boolean).map((para, i) => (
             <p key={`${post.slug}-p-${i}`} className={i === 0 ? "" : "mt-7"}>{para}</p>
           ))}
         </div>

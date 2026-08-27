@@ -10,8 +10,8 @@ const host = process.argv.includes("--host") ? process.argv[process.argv.indexOf
 const port = Number(process.argv.includes("--port") ? process.argv[process.argv.indexOf("--port") + 1] : 3000);
 if (host !== "127.0.0.1" || !Number.isInteger(port) || port < 1024 || port > 65535) throw new Error("Local UAT server requires an unprivileged 127.0.0.1 port.");
 const mime = { ".css": "text/css", ".html": "text/html", ".js": "text/javascript", ".json": "application/json", ".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png", ".xml": "application/xml" };
-const exactRoutes = new Set(["/", "/library", "/journal", "/about", "/contact", "/pricing", "/micro-story", "/secure-reader-test", "/login", "/signup", "/account", "/admin", "/admin/login", "/admin/launch-monitor"]);
-const routePrefixes = ["/book/", "/journal/", "/reader/", "/signin/", "/publishing/"];
+const exactRoutes = new Set(["/", "/library", "/journal", "/about", "/about-legacy", "/contact", "/pricing", "/micro-story", "/login", "/signup", "/signin", "/account", "/publishing", "/admin", "/admin/login", "/admin/launch-monitor"]);
+const routePrefixes = ["/book/", "/journal/", "/reader/", "/reader-legacy/", "/listener/", "/listener-legacy/", "/publishing/", "/admin/"];
 const removedRoutes = new Set(["/product/patterned-wrap-dress"]);
 const securityHeaders = {
   "X-Content-Type-Options": "nosniff",
@@ -33,7 +33,9 @@ http.createServer((request, response) => {
   const pathname = decodeURIComponent(new URL(request.url, `http://${host}`).pathname);
   const candidate = path.resolve(root, `.${pathname}`);
   const safe = candidate === root || candidate.startsWith(`${root}${path.sep}`);
-  const staticFile = safe && fs.statSync(candidate, { throwIfNoEntry: false })?.isFile() ? candidate : null;
+  const candidateStat = safe ? fs.statSync(candidate, { throwIfNoEntry: false }) : null;
+  const directoryIndex = candidateStat?.isDirectory() ? path.join(candidate, "index.html") : null;
+  const staticFile = candidateStat?.isFile() ? candidate : (directoryIndex && fs.statSync(directoryIndex, { throwIfNoEntry: false })?.isFile() ? directoryIndex : null);
   if (!safe) {
     response.writeHead(400, noIndexHeaders).end("Invalid path");
     return;

@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, Clock, ShieldCheck } from "lucide-react";
 import useSEO from "../hooks/useSEO";
 import PublicPageFrame from "../components/PublicPageFrame";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
+import "../styles/editorial-support.css";
 
 const READING_PATHS = [
   {
@@ -26,15 +27,16 @@ export default function MicroStoryLanding() {
   useSEO({
     title: "A Quiet Reading Invitation — Earnalism",
     description: "Find a reader-ready Earnalism edition, begin with the canonical preview, and continue with a Reading Pass when you choose.",
+    canonicalPath: "/micro-story",
   });
 
   return (
     <PublicPageFrame tone="quiet" className="micro-story-page">
-      <section className="micro-story-hero">
+      <section className="micro-story-hero editorial-support-hero">
         <div className="micro-story-hero__copy">
           <p className="italic-eyebrow">A quiet way into the library</p>
           <h1>Begin with a story, then stay as long as it holds you.</h1>
-          <p>{PUBLIC_ACCESS_COPY} Explore reader-ready editions before deciding whether to add time.</p>
+          <p>{PUBLIC_ACCESS_COPY} Explore reader-ready editions before deciding whether to add Reading Pass time.</p>
           <Link
             to="/library?source=reading_invitation"
             className="btn-primary micro-story-hero__cta"
@@ -45,7 +47,7 @@ export default function MicroStoryLanding() {
         <div className="micro-story-hero__panel" aria-label="Why start with a short preview">
           <div><Clock size={18} /> {READING_TIME_COPY}</div>
           <div><BookOpen size={18} /> {PUBLIC_PREVIEW_COPY}</div>
-          <div><ShieldCheck size={18} /> No autorenewal</div>
+          <div><ShieldCheck size={18} /> No auto-renewal</div>
         </div>
       </section>
 
