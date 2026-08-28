@@ -57,3 +57,13 @@ The selected board uses a much taller editorial region than the normalized
 live viewport and different live covers. Structural conformance is
 `100.000000` (9/9), truth-safe content conformance is `100.000000`, and masks
 remain `0%`.
+
+## Book Detail desktop convergence
+
+The desktop Book Detail shell now starts directly in the dark book room, using
+the persistent Library navigation rather than a second desktop return row. The
+compact vertical composition preserves the cover, controlled release/status
+panel, Read action, secondary actions, and the fail-closed absence of a Dracula
+Listen action. The literal local pixel score is `56.398820` against the
+`56.194477` baseline; structural conformance is `100.000000` (10/10),
+truth-safe content conformance is `100.000000`, and masks remain `0%`.

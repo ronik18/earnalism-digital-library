@@ -71,6 +71,21 @@ const stateConfig = {
       ["Reading Pass support card is present", ".reference-library__pass", 1],
     ],
   },
+  "book-detail-desktop": {
+    path: "/book/dracula",
+    viewport: { width: 1440, height: 1000 },
+    action: null,
+    checks: [
+      ["canonical dark header and logo are visible", "[data-testid=site-header] [data-testid=brand-logo]", 1],
+      ["compact dark Book Detail surface is present", "[data-testid=book-page]", 1],
+      ["cover, title and controlled status row are present", ".book-detail-cover-frame", 1],
+      ["controlled reader, audio and language status chips are present", "[data-testid=book-detail-status] span", 3],
+      ["Read action is present", "[data-testid=start-reading], [data-testid=read-preview]", 1],
+      ["Dracula does not expose an approved Listen action", "[data-testid=book-listen-approved]", 0],
+      ["release and access truth panel is present", "[data-testid=book-experience-truth]", 1],
+      ["secondary actions remain available", "[data-testid=book-share]", 1],
+    ],
+  },
   "library-filter-mobile": {
     path: "/library",
     viewport: { width: 390, height: 844 },
@@ -173,7 +188,13 @@ const result = await page.evaluate(({ state, checks }) => {
   };
   const assertions = checks.map(([label, selector, minimum]) => {
     const elements = [...document.querySelectorAll(selector)].filter(visible);
-    return { label, selector, expectedMinimum: minimum, actual: elements.length, pass: elements.length >= minimum };
+    return {
+      label,
+      selector,
+      ...(minimum === 0 ? { expectedExact: 0 } : { expectedMinimum: minimum }),
+      actual: elements.length,
+      pass: minimum === 0 ? elements.length === 0 : elements.length >= minimum,
+    };
   });
   const overflow = document.documentElement.scrollWidth - document.documentElement.clientWidth;
   assertions.push({ label: "horizontal overflow is zero", expected: 0, actual: overflow, pass: overflow === 0 });

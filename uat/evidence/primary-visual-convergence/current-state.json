@@ -35,7 +35,7 @@
     {
       "state": "library-desktop",
       "starting_sha": "526b178910a6439fa2952e8fe060c6e840c00742",
-      "ending_sha": "PENDING_LIBRARY_CHECKPOINT",
+      "ending_sha": "d27e9c7d8e8b9417dd5f4f726cc7952740d8e6de",
       "files_changed": ["frontend/src/lib/libraryFallbackBooks.js", "frontend/src/components/ReferencePublicPages.test.jsx"],
       "baseline_raw_score": 63.021455,
       "current_raw_score": 38.823505,
@@ -44,6 +44,19 @@
       "irreducible_regions": ["dynamic production cover artwork", "reference region extends beyond normalized viewport"],
       "tests": "PASS: Reference public page focused suite; Library structural 9/9",
       "next_state": "book-detail-desktop"
+    },
+    {
+      "state": "book-detail-desktop",
+      "starting_sha": "d27e9c7d8e8b9417dd5f4f726cc7952740d8e6de",
+      "ending_sha": "PENDING_BOOK_DETAIL_CHECKPOINT",
+      "files_changed": ["frontend/src/pages/BookDetailReference.css", "scripts/measure_primary_visual_structure.mjs"],
+      "baseline_raw_score": 56.194477,
+      "current_raw_score": 56.39882,
+      "structural_score": 100.0,
+      "truth_safe_content_score": 100.0,
+      "irreducible_regions": ["dynamic cover artwork", "reference panel does not represent all safe production metadata"],
+      "tests": "PASS: Book Detail presentation suite; Book Detail structural 10/10",
+      "next_state": "library-filter-mobile"
     }
   ]
 }

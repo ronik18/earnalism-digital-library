@@ -43,6 +43,14 @@
 .book-detail-page--reference .preview-payment-shell__copy p,
 .book-detail-page--reference .preview-payment-shell__proof { color: var(--book-reference-ivory); }
 
+/* The desktop reference starts directly in the book room. The return link is
+   redundant beside the persistent Library navigation, so retain it on compact
+   layouts and remove its desktop whitespace from the composition. */
+@media (min-width: 1024px) {
+  .book-detail-page--reference .book-detail-reference__return { display: none; }
+  .book-detail-page--reference .book-detail-reference__hero { padding-top: 1.8rem !important; }
+}
+
 @media (max-width: 767px) {
   .book-detail-page--reference .book-detail-reference__hero { padding-top: 2.2rem; }
   .book-detail-page--reference .book-detail-cover-frame { max-width: 15rem; }
