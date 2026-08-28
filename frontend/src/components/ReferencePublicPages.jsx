@@ -199,13 +199,21 @@ function ClockMark(props) {
   return <span {...props} className="reference-clock-mark">◷</span>;
 }
 
-function CompactFilters({ language, reading, listening, genre, genres, sort, hideAll = false, onChange }) {
+function CompactFilters({ language, reading, listening, genre, genres, sort, hideAll = false, drawer = false, onChange }) {
   const groups = [
     ["Language", language, [["all", "All books"], ["bn", "Bengali"], ["en", "English"]], "language"],
     ["Format", reading, [["all", "All forms"], ["novel", "Reader"], ["short-story", "Short stories"], ["poetry", "Poetry & essays"]], "reading"],
     ["Status", listening, [["all", "All releases"], ["available", "Audiobooks"], ["hidden", "Reader only"]], "listening"],
     ["Genre", genre, [["all", "All genres"], ...genres.map((value) => [value, value.replace(/-/g, " ")])], "genre"],
   ];
+  const drawerGroups = [groups[0], groups[1], groups[2]];
+  if (drawer) {
+    return <>
+      <label className="reference-filter-sort">Sort by<select value={sort} onChange={(event) => onChange("sort", event.target.value)}><option value="recently-approved">Featured</option><option value="title">Title</option><option value="author">Author</option><option value="short-reads">Short reads</option></select></label>
+      {drawerGroups.map(([label, value, options, key]) => <fieldset className="reference-filter-group" data-filter-group={key} key={label}><legend>{label}</legend>{options.filter(([slug]) => !(hideAll && slug === "all")).map(([slug, name]) => <button type="button" key={slug} aria-pressed={value === slug} onClick={() => onChange(key, slug)}>{name}</button>)}</fieldset>)}
+      <fieldset className="reference-filter-group" data-filter-group="genre"><legend>Genre</legend><label className="reference-filter-select"><span className="sr-only">Genre</span><select value={genre} onChange={(event) => onChange("genre", event.target.value)}>{groups[3][2].map(([slug, name]) => <option value={slug} key={slug}>{name}</option>)}</select></label></fieldset>
+    </>;
+  }
   return <>{groups.map(([label, value, options, key]) => <fieldset className="reference-filter-group" key={label}><legend>{label}</legend>{options.filter(([slug]) => !(hideAll && slug === "all")).map(([slug, name]) => <button type="button" key={slug} aria-pressed={value === slug} onClick={() => onChange(key, slug)}>{name}</button>)}</fieldset>)}{sort !== undefined ? <label className="reference-filter-sort">Sort by<select value={sort} onChange={(event) => onChange("sort", event.target.value)}><option value="recently-approved">Featured</option><option value="title">Title</option><option value="author">Author</option><option value="short-reads">Short reads</option></select></label> : null}</>;
 }
 
@@ -251,7 +259,7 @@ export function ReferenceLibrarySurface({
           {loading ? <p className="reference-loading">Opening the collection...</p> : shelves.map(([title, copy, books]) => <section key={title} className="reference-library-shelf" aria-labelledby={`shelf-${title}`}><SectionHeading eyebrow={title === "Live now" ? "LIVE NOW" : title.toUpperCase()} title={title} action={<span className="reference-shelf-count">{books.length} editions</span>}><p>{copy}</p></SectionHeading>{books.length ? <div className="reference-library-grid">{books.slice(0, 10).map((book, index) => <BookTile key={book.slug} book={book} compact priority={index < 2} showListen={title === "Audiobooks"} />)}</div> : <p className="reference-empty-listening">No titles currently match this release state.</p>}</section>)}
         </section>
       </main>
-      {filtersOpen ? <div className="reference-library-drawer" role="dialog" aria-modal="true" aria-label="Library filters"><div><header><strong>Filters</strong><div><button type="button" className="reference-filter-reset" onClick={onResetFilters}>Reset</button><button type="button" onClick={() => setFiltersOpen(false)} aria-label="Close filters"><X aria-hidden="true" /></button></div></header><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} hideAll onChange={update} /><button type="button" className="reference-button reference-button--gold" onClick={() => setFiltersOpen(false)}>Apply filters</button></div></div> : null}
+      {filtersOpen ? <div className="reference-library-drawer" role="dialog" aria-modal="true" aria-label="Library filters"><div><header><strong>Filters</strong><div><button type="button" className="reference-filter-reset" onClick={onResetFilters}>Reset</button><button type="button" onClick={() => setFiltersOpen(false)} aria-label="Close filters"><X aria-hidden="true" /></button></div></header><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} hideAll drawer onChange={update} /><button type="button" className="reference-button reference-button--gold" onClick={() => setFiltersOpen(false)}>Apply filters</button></div></div> : null}
     </div>
   );
 }

@@ -102,6 +102,8 @@ jobs:
       - name: Upload owner-review artifact
         uses: actions/upload-artifact@v7
         with:
-          name: public-pages-owner-review-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
-          path: uat/evidence/actual-redesign/owner-review-final/**
+          name: primary-visual-convergence-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+          path: |
+            uat/evidence/actual-redesign/owner-review-final/**
+            uat/evidence/primary-visual-convergence/**
           if-no-files-found: error

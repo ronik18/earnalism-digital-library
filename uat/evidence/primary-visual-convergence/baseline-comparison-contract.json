@@ -1,0 +1,43 @@
+{
+  "schema": "earnalism-pr341-identical-comparable-pixel-contract-v1",
+  "historical_production_baseline": {
+    "source": "e8eb187e81c33d36f846765195b51011293e69a0",
+    "raw_score": 49.340302,
+    "comparable_pixels": 2954684,
+    "mismatched_pixels": 1496834,
+    "fixture_identity": "live production catalogue; preserved, not directly comparable after catalogue change"
+  },
+  "controlled_direct_baseline": {
+    "source": "fb77f75b3799a5cb5257429f812d17ca781bde2d",
+    "current_starting_head": "d7332b2ff634cda8bd99c8cac10234b080cfdb52",
+    "fixture_hashes": {
+      "books": "515f13a4a785eafd9857313b062a8157a7dc7a2e96ba090d30f3240ca471db89",
+      "offers": "a6bfd694bfb77b4d610c013f6f7d75af28dcc58eccbceb92f7884d1a27ea1c28",
+      "reading_pass_config": "21c9da02f75c6efd3ab12b41cc18411ff7fd965f1b0c5536ea3dd5840d1921a6"
+    }
+  },
+  "rendering": {
+    "playwright": "1.60.0",
+    "chromium": "148.0.7778.96",
+    "pixelmatch": "7.2.0",
+    "threshold": 0.2,
+    "device_scale_factor": 1,
+    "locale": "en-IN",
+    "timezone": "Asia/Kolkata",
+    "normalization": "original crop map; uniform scale to reference width; common canvas; uncovered padding is mismatch",
+    "mask_coverage_percent": 0,
+    "capture_stability": "two consecutive screenshots, identical SHA-256, three bounded retries"
+  },
+  "states": [
+    {"state":"home-desktop","reference":"home-library-commerce-desktop.png","crop":[10,18,540,747],"comparable_pixels":403380},
+    {"state":"library-desktop","reference":"home-library-commerce-desktop.png","crop":[560,18,518,747],"comparable_pixels":386946},
+    {"state":"commerce-desktop","reference":"reading-pass-commerce.png","crop":[0,0,1536,1024],"comparable_pixels":1638912},
+    {"state":"book-detail-desktop","reference":"reader-listener-bookdetail-desktop.png","crop":[1081,22,443,496],"comparable_pixels":219728},
+    {"state":"library-filter-mobile","reference":"responsive-reference-board.png","crop":[1287,792,226,232],"comparable_pixels":52432},
+    {"state":"home-mobile","reference":"responsive-reference-board.png","crop":[24,792,198,232],"comparable_pixels":45936},
+    {"state":"library-mobile","reference":"responsive-reference-board.png","crop":[265,792,222,232],"comparable_pixels":51504},
+    {"state":"commerce-mobile","reference":"responsive-reference-board.png","crop":[793,792,193,232],"comparable_pixels":44776},
+    {"state":"mobile-navigation","reference":"responsive-reference-board.png","crop":[1040,792,196,232],"comparable_pixels":45472},
+    {"state":"about-mobile","reference":"reader-listener-ecosystem.png","crop":[1350,570,174,355],"comparable_pixels":65598}
+  ]
+}

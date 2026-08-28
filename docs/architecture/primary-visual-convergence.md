@@ -93,3 +93,31 @@ panel, Read action, secondary actions, and the fail-closed absence of a Dracula
 Listen action. The literal local pixel score is `56.398820` against the
 `56.194477` baseline; structural conformance is `100.000000` (10/10),
 truth-safe content conformance is `100.000000`, and masks remain `0%`.
+
+## PR #341 final comparable measurement
+
+The historical production baseline remains immutable: `49.340302` raw,
+`2,954,684` comparable pixels and `1,496,834` mismatched pixels. It used the
+then-live production catalogue. That catalogue cannot be used to make a valid
+per-state non-regression claim after release data changes, so this final pass
+also preserves a controlled, release-safe source baseline at
+`fb77f75b3799a5cb5257429f812d17ca781bde2d`. Both baseline and current sources
+were rendered with the exact same fixture hashes, crop coordinates, pinned
+browser, normalization, zero masks and two-identical-capture stability gate.
+The comparison contract is checked in beside the run record.
+
+The direct comparison reports `62.151486` raw current fidelity, `1,118,304`
+mismatched pixels, and a reduction of `392,764` pixels from the controlled
+baseline. The historical aggregate is retained for audit, not overwritten.
+Home desktop is `55.137587 → 55.140810`; Library desktop is
+`61.922335 → 62.434810`; Commerce desktop is `40.642512 → 62.477180`; Book
+Detail is unchanged at `56.091167`; and the Library filter is
+`17.683857 → 80.546231`. The small Commerce-mobile difference of `-0.096034`
+is within the permitted `0.100000` stable-rasterization tolerance.
+
+The structural contract was expanded from coarse presence checks to 347
+region-level assertions covering component order, boxes, content widths,
+grid/card geometry, type, colour, borders, radii, actions, clipping and
+overflow. Every state passed: `347/347` (`100.000000`). This does not relabel
+the literal raw score as a 95% pixel pass. Truth-safe content and product
+truth remain `100.000000`; masks remain `0%`.

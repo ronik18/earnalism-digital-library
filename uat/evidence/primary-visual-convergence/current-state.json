@@ -136,5 +136,29 @@
       "tests": "PASS: About mobile structural 3/3",
       "next_state": "final-measurement"
     }
-  ]
+  ],
+  "final_measurement": {
+    "status": "DIRECTLY_COMPARABLE_CONTROLLED_FIXTURE",
+    "historical_baseline_preserved": {
+      "raw_aggregate_score": 49.340302,
+      "comparable_pixels": 2954684,
+      "mismatched_pixels": 1496834,
+      "classification": "FIXTURE_CHANGED_NOT_NUMERICALLY_COMPARED"
+    },
+    "controlled_result": {
+      "comparable_pixels": 2954684,
+      "baseline_mismatched_pixels": 1511068,
+      "current_mismatched_pixels": 1118304,
+      "baseline_raw_score": 48.858558,
+      "current_raw_score": 62.151486,
+      "mismatch_pixel_reduction": 392764,
+      "mask_coverage_percent": 0,
+      "structural_assertions": { "passed": 347, "total": 347, "score": 100.0 },
+      "truth_safe_content_score": 100.0,
+      "product_truth_score": 100.0
+    },
+    "reader_product_state": "PRODUCT_STATE_BLOCKED_READING_PASS_V2_DISABLED",
+    "listener_product_state": "PRODUCT_STATE_INCOMPATIBLE_NOT_AGGREGATED",
+    "next_state": "owner-review-artifact"
+  }
 }
