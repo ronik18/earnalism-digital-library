@@ -1,0 +1,23 @@
+{
+  "program": "primary-visual-convergence",
+  "baseline": {
+    "artifact": "/tmp/earnalism-live-mock-score-20260828T070033Z/",
+    "raw_aggregate_score": 49.340302,
+    "mismatched_pixels": 1496834
+  },
+  "checkpoints": [
+    {
+      "state": "commerce-desktop",
+      "starting_sha": "fb77f75b3799a5cb5257429f812d17ca781bde2d",
+      "ending_sha": "f89cd71ec0eb6b93f7f17845283655f5682d18cd",
+      "files_changed": ["frontend/src/components/ReferencePublicPages.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/components/Header.jsx", "frontend/src/components/Header.css"],
+      "baseline_raw_score": 40.84118,
+      "current_raw_score": 64.246647,
+      "structural_score": 100.0,
+      "truth_safe_content_score": 100.0,
+      "irreducible_regions": ["mock-only hero art", "research statistics", "ratings", "testimonials", "fixed offer claims"],
+      "tests": "PASS: 12 focused assertions",
+      "next_state": "home-desktop"
+    }
+  ]
+}

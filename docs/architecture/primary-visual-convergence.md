@@ -14,6 +14,17 @@ The production Commerce route now implements the dedicated Reading Pass composit
 
 The local deterministic comparison, using the pinned Chromium executable and the live public offer fixture, reduced the commerce mismatch from `969,561` to `585,966` comparable pixels (`40.841180` to `64.246647`). No visual masks were used.
 
+### Commerce structural contract
+
+The literal pixel score remains `64.246647`; it is not a 95% pixel pass. A
+pinned Chromium DOM-geometry contract against the dedicated Commerce reference
+role passed `14/14` assertions (`100.000000` structural conformance). It
+measures the 63/37 desktop split, compact hero/proof hierarchy, aligned
+four-card configured-offer row, pathway/trust rows, warm information rail,
+canonical logo, and overflow. The truthful-content contract is also
+`100.000000`: configured offers are rendered, unsupported mock claims are
+absent, and the locked text/audio policy is retained.
+
 ## Documented reference limitation
 
 The dedicated `Reading Pass.png` reference is a conceptual, `REGION_REFERENCE` board. Its most visually dominant regions contain a non-bundled chair-and-lamp hero photograph plus illustrative research statistics, reader counts, satisfaction ratings, testimonials, and fixed offer claims. Those elements cannot be reproduced by the production route: the product contract forbids fabricated statistics, testimonials, popularity, ratings, and unsupported prices, and no separately approved source asset exists for the reference hero photograph.
