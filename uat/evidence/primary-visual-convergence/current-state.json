@@ -61,7 +61,7 @@
     {
       "state": "library-filter-mobile",
       "starting_sha": "3e7c81222efa757ef63bf8fc13901db03fdde488",
-      "ending_sha": "PENDING_LIBRARY_FILTER_CHECKPOINT",
+      "ending_sha": "7cc05397ea9e2f8631019a4cfd39b56f1dc3d86c",
       "files_changed": ["frontend/src/components/ReferencePublicPages.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/pages/Library.jsx", "scripts/measure_primary_visual_structure.mjs"],
       "baseline_raw_score": 17.596125,
       "current_raw_score": 76.968264,
@@ -70,6 +70,71 @@
       "irreducible_regions": ["reference crop excludes required genre and sort controls", "dynamic genre population"],
       "tests": "PASS: Reference public page focused suite; Library filter structural 7/7",
       "next_state": "home-mobile"
+    },
+    {
+      "state": "home-mobile",
+      "starting_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "ending_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "files_changed": [],
+      "baseline_raw_score": 63.224922,
+      "current_raw_score": 63.375131,
+      "structural_score": 100.0,
+      "truth_safe_content_score": 100.0,
+      "irreducible_regions": ["owner-provided library-room hero asset required"],
+      "tests": "PASS: Home mobile structural 5/5",
+      "next_state": "library-mobile"
+    },
+    {
+      "state": "library-mobile",
+      "starting_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "ending_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "files_changed": [],
+      "baseline_raw_score": 63.288288,
+      "current_raw_score": 63.268872,
+      "structural_score": 100.0,
+      "truth_safe_content_score": 100.0,
+      "irreducible_regions": ["dynamic live cover artwork"],
+      "tests": "PASS: Library mobile structural 5/5",
+      "next_state": "commerce-mobile"
+    },
+    {
+      "state": "commerce-mobile",
+      "starting_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "ending_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "files_changed": [],
+      "baseline_raw_score": 78.180275,
+      "current_raw_score": 78.113275,
+      "structural_score": 100.0,
+      "truth_safe_content_score": 100.0,
+      "irreducible_regions": ["configured offer values", "owner-provided Commerce hero asset required"],
+      "tests": "PASS: Commerce mobile structural 5/5",
+      "next_state": "mobile-navigation"
+    },
+    {
+      "state": "mobile-navigation",
+      "starting_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "ending_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "files_changed": [],
+      "baseline_raw_score": 79.541256,
+      "current_raw_score": 79.475281,
+      "structural_score": 100.0,
+      "truth_safe_content_score": 100.0,
+      "irreducible_regions": ["reference panel uses illustrative visual density only"],
+      "tests": "PASS: Mobile navigation structural 5/5",
+      "next_state": "about-mobile"
+    },
+    {
+      "state": "about-mobile",
+      "starting_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "ending_sha": "77204246ee8d81b6157e481a9f3f2d261a56ed39",
+      "files_changed": [],
+      "baseline_raw_score": 80.266167,
+      "current_raw_score": 80.221958,
+      "structural_score": 100.0,
+      "truth_safe_content_score": 100.0,
+      "irreducible_regions": ["reference uses illustrative copy and iconography"],
+      "tests": "PASS: About mobile structural 3/3",
+      "next_state": "final-measurement"
     }
   ]
 }

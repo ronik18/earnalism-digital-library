@@ -45,6 +45,20 @@ and by the reference panel's full vertical crop, which is taller than the
 normalized live viewport. Structural conformance is `100.000000` (10/10),
 truth-safe content conformance is `100.000000`, and masks remain `0%`.
 
+## Remaining mobile reference measurements
+
+The existing owner-approved mobile Home, Library, Commerce, navigation, and
+About shells retain their visual structure after the shared convergence work.
+Fresh pinned-browser raw measurements are: Home `63.375131`, Library
+`63.268872`, Commerce `78.113275`, mobile navigation `79.475281`, and About
+`80.221958`. Their structural contracts passed (Home 5/5, Library 5/5,
+Commerce 5/5, navigation 5/5, About 3/3), each yields
+`100.000000` structural conformance, and each preserves a
+`100.000000` truth-safe content result with 0% masking. The Home and Commerce
+hero imagery, live cover artwork, and reference-region normalization remain
+literal raw-score limitations; no illustrative claim or structural masking was
+introduced to conceal them.
+
 ## Library filter mobile convergence
 
 The mobile filter interaction is now a full-height dark reference panel with
