@@ -143,7 +143,7 @@ const stateConfig = {
     viewport: { width: 390, height: 844 },
     action: null,
     checks: [
-      ["mobile logo is visible", "[data-testid=brand-logo]", 1],
+      ["standalone mobile canonical logo is visible", ".experience-header .earnalism-brand-lockup", 1],
       ["About route has a primary heading", "h1", 1],
     ],
   },
