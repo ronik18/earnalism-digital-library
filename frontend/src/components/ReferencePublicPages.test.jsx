@@ -25,4 +25,12 @@ describe("Reference public page surfaces", () => {
     expect(source).toContain("pack.recommended === true || pack.is_recommended === true");
     expect(source).toContain("pack.gift_enabled === true || pack.kind === \"gift\"");
   });
+
+  test("keeps the dedicated commerce insight rail truthful", () => {
+    expect(source).toContain('reference-commerce__insight-rail');
+    expect(source).toContain('reference-commerce__hero-proof');
+    expect(source).toContain("Listening requires an active Reading Pass.");
+    expect(source).not.toContain("Use study across 2,400+ readers");
+    expect(source).not.toContain("Reader satisfaction");
+  });
 });

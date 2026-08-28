@@ -392,3 +392,16 @@
   border-bottom-color: rgba(33, 40, 33, .12);
   box-shadow: none;
 }
+
+@media (min-width: 1024px) {
+  .premium-site-header.premium-site-header--reference-commerce {
+    --site-header-height: 4rem;
+    background: linear-gradient(90deg, #07110f 0 63.54%, #fdf9f2 63.54% 100%);
+    border-bottom-color: transparent;
+  }
+  .premium-site-header--reference-commerce .earnalism-brand-lockup {
+    width:clamp(11.5rem,13vw,13.75rem);
+    padding:.18rem .38rem;
+  }
+  .premium-site-header--reference-commerce .premium-header-nav a { font-size:.78rem !important; }
+}

@@ -80,3 +80,88 @@
   .reference-offer { min-height:0; padding:1.2rem; }
   .reference-offer ul { margin:.95rem 0; }
 }
+
+/* Dedicated Reading Pass reference: a dark conversion column is paired with a
+   warm editorial rail on wide displays. The rail carries only present-tense
+   product facts, never the illustrative statistics or testimonials in the
+   conceptual board. */
+.reference-commerce { display:block; }
+.reference-commerce__primary-column { min-width:0; }
+.reference-commerce__insight-rail { display:none; }
+
+@media (min-width: 1024px) {
+  .reference-commerce { display:grid; grid-template-columns:63.54% 36.46%; min-height:100svh; background:#fbf7ef; }
+  .reference-commerce__primary-column { background:#fbf7ef; }
+  .reference-commerce__hero { min-height:15rem; padding:1.55rem clamp(2rem,4.2vw,4.25rem) 1.2rem; }
+  .reference-commerce__hero > div { width:min(24.5rem,48%); }
+  .reference-commerce__hero h1 { max-width:12ch; font-size:clamp(2.9rem,3.35vw,3.7rem); }
+  .reference-commerce__hero p { max-width:17rem; margin-top:.65rem; font-size:.67rem; }
+  .reference-commerce__hero ul { gap:.38rem; margin-top:1rem; font-size:.65rem; }
+  .reference-commerce__hero-art { width:61%; opacity:.87; }
+  .reference-commerce__hero-proof { position:absolute; z-index:1; top:1rem; right:1.1rem; width:min(20rem,41%); padding:.85rem .7rem; border:1px solid rgba(214,173,85,.22); border-radius:.5rem; background:rgba(5,18,15,.81); box-shadow:0 1rem 2rem rgba(0,0,0,.16); }
+  .reference-commerce__hero-proof h2 { margin:0 0 .65rem; color:#fff4df; font:600 .9rem/1.05 var(--reference-display); text-align:center; }
+  .reference-commerce__hero-proof > div { display:grid; grid-template-columns:repeat(3,1fr); width:100%; }
+  .reference-commerce__hero-proof article { display:grid; justify-items:center; gap:.25rem; min-width:0; padding:0 .35rem; text-align:center; }
+  .reference-commerce__hero-proof article + article { border-left:1px solid rgba(214,173,85,.18); }
+  .reference-commerce__hero-proof svg { width:1rem; color:#e4bd66; }
+  .reference-commerce__hero-proof strong { min-height:1.8rem; color:#fff7e8; font:600 .6rem/1.05 var(--reference-display); }
+  .reference-commerce__hero-proof span { color:rgba(255,248,233,.65); font-size:.44rem; line-height:1.25; }
+  .reference-commerce__main { width:calc(100% - clamp(2.75rem,5vw,5.75rem)); margin:0 auto; padding:1.15rem 0 2.25rem; }
+  .reference-commerce .reference-section-heading { margin-bottom:.75rem; }
+  .reference-commerce .reference-section-heading h2 { font-size:1.55rem; }
+  .reference-commerce__packs { grid-template-columns:repeat(4,minmax(0,1fr)); gap:.65rem; }
+  .reference-offer { min-height:16.25rem; padding:.8rem .62rem; border-radius:.4rem; }
+  .reference-offer__minutes { font-size:.9rem; }
+  .reference-offer > span { min-height:1.4rem; margin-top:.2rem; font-size:.55rem; }
+  .reference-offer > strong { margin:.55rem 0 .1rem; font-size:1.65rem; }
+  .reference-offer small { font-size:.52rem; }
+  .reference-offer ul { gap:.3rem; margin:.7rem 0; font-size:.53rem; }
+  .reference-offer button { min-height:2rem; font-size:.52rem; }
+  .reference-commerce__pathways { gap:.65rem; margin-top:.8rem; }
+  .reference-commerce__pathways article { min-height:9.25rem; padding:.85rem; }
+  .reference-commerce__pathways h2 { margin:.4rem 0 .2rem; font-size:1.05rem; }
+  .reference-commerce__pathways p { min-height:2.2rem; margin:.35rem 0; font-size:.57rem; }
+  .reference-commerce__pathways a { min-height:1.9rem; font-size:.5rem; }
+  .reference-commerce__trust { gap:.55rem; margin-top:.75rem; padding:.75rem; }
+  .reference-commerce__trust strong { font-size:.76rem; }
+  .reference-commerce__trust span { font-size:.5rem; }
+  .reference-commerce__trust svg { width:1rem; }
+  .reference-commerce__final { display:none; }
+
+  .reference-commerce__insight-rail { display:block; min-width:0; padding:1.35rem 1.2rem 1.5rem; background:linear-gradient(180deg,#fdf9f2,#f6eddf); color:#28231b; font-family:var(--reference-ui); }
+  .reference-commerce__insight-rail .reference-kicker { color:#9a7028; font-size:.51rem; }
+  .reference-commerce__insight-rail h2 { margin:0; color:#271f15; font:500 clamp(1.55rem,2vw,2.2rem)/.97 var(--reference-display); letter-spacing:-.035em; text-align:center; }
+  .reference-commerce__insight-intro { padding:.35rem .45rem 1.2rem; border-bottom:1px solid rgba(91,68,35,.16); }
+  .reference-commerce__insight-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:.3rem; margin-top:1.35rem; }
+  .reference-commerce__insight-facts article { display:grid; justify-items:center; align-content:start; gap:.35rem; min-width:0; padding:0 .25rem; text-align:center; }
+  .reference-commerce__insight-facts article + article { border-left:1px solid rgba(91,68,35,.16); }
+  .reference-commerce__insight-facts svg { width:1.55rem; height:1.55rem; color:#b77b25; stroke-width:1.35; }
+  .reference-commerce__insight-facts strong { min-height:1.9rem; font:600 .93rem/1.05 var(--reference-display); }
+  .reference-commerce__insight-facts p { margin:0; color:#5f584c; font-size:.53rem; line-height:1.35; }
+  .reference-commerce__insight-uses { margin-top:1.15rem; padding:1.05rem .55rem .9rem; border-radius:.45rem; background:rgba(255,253,248,.64); box-shadow:0 .65rem 1.5rem rgba(72,51,23,.035); }
+  .reference-commerce__insight-uses h2 { font-size:1.26rem; }
+  .reference-commerce__insight-uses > div { display:grid; grid-template-columns:repeat(4,1fr); margin-top:1rem; }
+  .reference-commerce__insight-uses article { display:grid; justify-items:center; gap:.3rem; min-width:0; padding:0 .22rem; text-align:center; }
+  .reference-commerce__insight-uses article + article { border-left:1px solid rgba(91,68,35,.16); }
+  .reference-commerce__insight-uses svg { width:1.45rem; color:#b77b25; stroke-width:1.35; }
+  .reference-commerce__insight-uses strong { font:600 .76rem/1 var(--reference-display); }
+  .reference-commerce__insight-uses span { color:#655f54; font-size:.48rem; line-height:1.25; }
+  .reference-commerce__insight-modes { margin-top:1.05rem; padding:.85rem .5rem .75rem; border-radius:.45rem; background:rgba(255,253,248,.56); }
+  .reference-commerce__insight-modes h2 { font-size:1.15rem; }
+  .reference-commerce__insight-modes > div { display:grid; grid-template-columns:repeat(4,1fr); gap:.35rem; margin-top:.8rem; }
+  .reference-commerce__insight-modes article { overflow:hidden; min-width:0; border:1px solid rgba(91,68,35,.14); border-radius:.28rem; background:#fffdf8; text-align:center; }
+  .reference-commerce__insight-modes svg { width:1rem; margin:.55rem auto .2rem; color:#b77b25; stroke-width:1.35; }
+  .reference-commerce__insight-modes strong, .reference-commerce__insight-modes span { display:block; padding:0 .25rem; }
+  .reference-commerce__insight-modes strong { min-height:1.55rem; font:600 .61rem/1.04 var(--reference-display); }
+  .reference-commerce__insight-modes span { min-height:2.4rem; padding-bottom:.5rem; color:#655f54; font-size:.44rem; line-height:1.22; }
+  .reference-commerce__insight-assurances { display:grid; grid-template-columns:repeat(3,1fr); gap:.3rem; margin-top:.9rem; padding:.7rem .35rem; border-radius:.4rem; background:#0a1c18; color:#fff7e7; }
+  .reference-commerce__insight-assurances article { display:grid; grid-template-columns:auto 1fr; column-gap:.35rem; align-items:start; min-width:0; padding:0 .22rem; }
+  .reference-commerce__insight-assurances svg { grid-row:span 2; width:.9rem; color:#e4bd66; }
+  .reference-commerce__insight-assurances strong { font:600 .62rem/1 var(--reference-display); }
+  .reference-commerce__insight-assurances span { margin-top:.15rem; color:rgba(255,248,233,.64); font-size:.4rem; line-height:1.2; }
+  .reference-commerce__insight-close { margin-top:.95rem; padding:1.05rem; border-radius:.45rem; color:#fff6e6; background:linear-gradient(120deg,#33140f,#6f2b1b 58%,#1b251e); }
+  .reference-commerce__insight-close .reference-kicker { color:#f0c96e; }
+  .reference-commerce__insight-close h2 { color:#fff5e2; max-width:13rem; font-size:1.5rem; text-align:left; }
+  .reference-commerce__insight-close p:not(.reference-kicker) { max-width:15rem; margin:.6rem 0 .9rem; color:rgba(255,246,230,.76); font-size:.61rem; line-height:1.4; }
+  .reference-commerce__insight-close .reference-button { min-height:2.15rem; font-size:.53rem; }
+}
