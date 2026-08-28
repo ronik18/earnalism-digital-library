@@ -48,4 +48,12 @@ describe("Reference public page surfaces", () => {
     expect(libraryFallback).toContain('audiobook_enabled: false');
     expect(libraryFallback).not.toContain('audio_url');
   });
+
+  test("keeps the mobile Library filter panel route-driven and release-safe", () => {
+    expect(source).toContain('reference-library-drawer');
+    expect(source).toContain('reference-filter-reset');
+    expect(source).toContain('hideAll');
+    expect(source).toContain('"Genre"');
+    expect(source).not.toContain('Free audiobook preview');
+  });
 });

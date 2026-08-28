@@ -45,6 +45,18 @@ and by the reference panel's full vertical crop, which is taller than the
 normalized live viewport. Structural conformance is `100.000000` (10/10),
 truth-safe content conformance is `100.000000`, and masks remain `0%`.
 
+## Library filter mobile convergence
+
+The mobile filter interaction is now a full-height dark reference panel with
+the title/reset row, close action, Language, Format, Status, and route-driven
+Genre groups, a sort field, internal scrolling, 44px-capable controls, and an
+Apply filters action. It moved from the light bottom sheet to the reference
+panel role without altering catalogue APIs or audio release truth. Its literal
+raw score improved from `17.596125` to `76.968264`; the remaining literal
+difference is the required Genre/sort content and the reference's smaller
+illustrative panel crop. Structural conformance is `100.000000` (7/7),
+truth-safe content conformance is `100.000000`, and masks remain `0%`.
+
 ## Library desktop convergence
 
 The safe local fallback catalogue now carries the existing controlled

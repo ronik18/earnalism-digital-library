@@ -48,7 +48,7 @@
     {
       "state": "book-detail-desktop",
       "starting_sha": "d27e9c7d8e8b9417dd5f4f726cc7952740d8e6de",
-      "ending_sha": "PENDING_BOOK_DETAIL_CHECKPOINT",
+      "ending_sha": "3e7c81222efa757ef63bf8fc13901db03fdde488",
       "files_changed": ["frontend/src/pages/BookDetailReference.css", "scripts/measure_primary_visual_structure.mjs"],
       "baseline_raw_score": 56.194477,
       "current_raw_score": 56.39882,
@@ -57,6 +57,19 @@
       "irreducible_regions": ["dynamic cover artwork", "reference panel does not represent all safe production metadata"],
       "tests": "PASS: Book Detail presentation suite; Book Detail structural 10/10",
       "next_state": "library-filter-mobile"
+    },
+    {
+      "state": "library-filter-mobile",
+      "starting_sha": "3e7c81222efa757ef63bf8fc13901db03fdde488",
+      "ending_sha": "PENDING_LIBRARY_FILTER_CHECKPOINT",
+      "files_changed": ["frontend/src/components/ReferencePublicPages.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/pages/Library.jsx", "scripts/measure_primary_visual_structure.mjs"],
+      "baseline_raw_score": 17.596125,
+      "current_raw_score": 76.968264,
+      "structural_score": 100.0,
+      "truth_safe_content_score": 100.0,
+      "irreducible_regions": ["reference crop excludes required genre and sort controls", "dynamic genre population"],
+      "tests": "PASS: Reference public page focused suite; Library filter structural 7/7",
+      "next_state": "home-mobile"
     }
   ]
 }

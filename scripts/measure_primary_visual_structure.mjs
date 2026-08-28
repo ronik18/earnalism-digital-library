@@ -93,7 +93,8 @@ const stateConfig = {
     checks: [
       ["full mobile filter dialog is present", ".reference-library-drawer", 1],
       ["filter title and close control are present", ".reference-library-drawer header", 1],
-      ["three filter fieldsets are present", ".reference-library-drawer fieldset", 3],
+      ["language, format, status and genre fieldsets are present", ".reference-library-drawer fieldset", 4],
+      ["sort field is present", ".reference-library-drawer .reference-filter-sort select", 1],
       ["apply filters action is present", ".reference-library-drawer .reference-button", 1],
     ],
   },
