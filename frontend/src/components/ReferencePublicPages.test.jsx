@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/components/ReferencePublicPages.jsx"), "utf8");
+const libraryFallback = fs.readFileSync(path.join(process.cwd(), "src/lib/libraryFallbackBooks.js"), "utf8");
 
 describe("Reference public page surfaces", () => {
   test("keeps listening controls behind release truth", () => {
@@ -39,5 +40,12 @@ describe("Reference public page surfaces", () => {
     expect(source).toContain("curation?.hero?.featured_books");
     expect(source).toContain("books.length ? books : curatedBooks");
     expect(source).toContain("canShowPreview(book)");
+  });
+
+  test("keeps the controlled Library fallback reader-ready and audio-hidden", () => {
+    expect(libraryFallback).toContain('reader_enabled: true');
+    expect(libraryFallback).toContain('preview_enabled: true');
+    expect(libraryFallback).toContain('audiobook_enabled: false');
+    expect(libraryFallback).not.toContain('audio_url');
   });
 });

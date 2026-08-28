@@ -44,3 +44,16 @@ as a pass. The difference is dominated by the unbundled library-room hero art
 and by the reference panel's full vertical crop, which is taller than the
 normalized live viewport. Structural conformance is `100.000000` (10/10),
 truth-safe content conformance is `100.000000`, and masks remain `0%`.
+
+## Library desktop convergence
+
+The safe local fallback catalogue now carries the existing controlled
+reader-ready fields for the three approved fallback titles while keeping audio
+explicitly disabled. A transient catalogue failure therefore retains a
+truthful Live now shelf instead of rendering all fallback books as Coming
+soon. The local literal score is `38.823505` against the immutable selected
+region (`63.021455` production baseline); this is recorded without adjustment.
+The selected board uses a much taller editorial region than the normalized
+live viewport and different live covers. Structural conformance is
+`100.000000` (9/9), truth-safe content conformance is `100.000000`, and masks
+remain `0%`.
