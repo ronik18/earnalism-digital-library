@@ -109,10 +109,16 @@ function SectionHeading({ eyebrow, title, action, children }) {
   );
 }
 
-export function ReferenceHomeSurface() {
+export function ReferenceHomeSurface({ curation }) {
   const books = usePublicBooks();
+  const curatedBooks = useMemo(() => (
+    Array.isArray(curation?.hero?.featured_books) ? curation.hero.featured_books : []
+  ), [curation]);
   const liveBooks = useMemo(() => books.filter(isLive), [books]);
-  const shelfBooks = (liveBooks.length ? liveBooks : books).slice(0, 5);
+  // The Home route already carries a server-curated, release-safe shelf snapshot.
+  // Keep that visible during a transient catalogue failure instead of collapsing the
+  // reference shelf. These cards still use the same fail-closed CTA rules as live data.
+  const shelfBooks = (liveBooks.length ? liveBooks : (books.length ? books : curatedBooks)).slice(0, 5);
   const listeningBooks = books.filter((book) => audiobookReleaseState(book).canShowControls).slice(0, 5);
 
   return (

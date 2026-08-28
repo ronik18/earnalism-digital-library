@@ -18,6 +18,19 @@
       "irreducible_regions": ["mock-only hero art", "research statistics", "ratings", "testimonials", "fixed offer claims"],
       "tests": "PASS: 12 focused assertions",
       "next_state": "home-desktop"
+    },
+    {
+      "state": "home-desktop",
+      "starting_sha": "22a775698a9fc427e96c3e7eb5f640c899db0b09",
+      "ending_sha": "PENDING_HOME_CHECKPOINT",
+      "files_changed": ["frontend/src/components/ReferencePublicPages.jsx", "frontend/src/components/ReferencePublicPages.test.jsx"],
+      "baseline_raw_score": 56.143587,
+      "current_raw_score": 44.509396,
+      "structural_score": 100.0,
+      "truth_safe_content_score": 100.0,
+      "irreducible_regions": ["owner-provided library-room hero asset required", "reference region extends beyond normalized viewport"],
+      "tests": "PASS: Reference public page focused suite; Home structural 10/10",
+      "next_state": "library-desktop"
     }
   ]
 }

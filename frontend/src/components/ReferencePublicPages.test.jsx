@@ -33,4 +33,11 @@ describe("Reference public page surfaces", () => {
     expect(source).not.toContain("Use study across 2,400+ readers");
     expect(source).not.toContain("Reader satisfaction");
   });
+
+  test("uses the release-safe Home curation snapshot when the catalogue is temporarily unavailable", () => {
+    expect(source).toContain("ReferenceHomeSurface({ curation })");
+    expect(source).toContain("curation?.hero?.featured_books");
+    expect(source).toContain("books.length ? books : curatedBooks");
+    expect(source).toContain("canShowPreview(book)");
+  });
 });

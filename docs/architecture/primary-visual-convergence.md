@@ -32,3 +32,15 @@ The dedicated `Reading Pass.png` reference is a conceptual, `REGION_REFERENCE` b
 The implementation preserves that geometry with verified Reading Pass facts and the existing approved library artwork. Because structural visual masking is prohibited and dynamic masking may not cover backgrounds, cards, or typography blocks, this state cannot truthfully meet the `95.000000` pixel score until the owner supplies equivalent approved production assets and verified replacement content for those mock-only regions.
 
 This is a limitation of the immutable conceptual reference, not a change to its crop, hash, threshold, mask policy, or authority.
+
+## Home desktop convergence
+
+The Home surface now consumes the already-present curated, release-safe Home
+snapshot when the catalogue call is unavailable. This keeps the five-card
+journey shelf visible without opening an unsafe reader or listener action. The
+fresh local pixel result is `44.509396` against the immutable selected region
+(`56.143587` production baseline); it is reported literally and is not treated
+as a pass. The difference is dominated by the unbundled library-room hero art
+and by the reference panel's full vertical crop, which is taller than the
+normalized live viewport. Structural conformance is `100.000000` (10/10),
+truth-safe content conformance is `100.000000`, and masks remain `0%`.
