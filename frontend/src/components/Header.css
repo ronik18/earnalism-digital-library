@@ -520,13 +520,15 @@
 @media (max-width: 640px) {
   .premium-site-header--reference-public,
   .premium-site-header--reference-library,
-  .premium-site-header--reference-commerce {
+  .premium-site-header--reference-commerce,
+  .premium-site-header--reference-profile {
     --site-header-height: 3.45rem;
   }
 
   .premium-site-header--reference-public .earnalism-brand-lockup,
   .premium-site-header--reference-library .earnalism-brand-lockup,
-  .premium-site-header--reference-commerce .earnalism-brand-lockup {
+  .premium-site-header--reference-commerce .earnalism-brand-lockup,
+  .premium-site-header--reference-profile .earnalism-brand-lockup {
     width: min(8.7rem, calc(100vw - 8.5rem));
     padding: 0;
     border: 0;
@@ -534,4 +536,13 @@
     background: transparent;
     box-shadow: none;
   }
+
+  .premium-site-header.premium-site-header--reference-profile {
+    background:#07110f;
+    border-bottom-color:rgba(214,173,85,.24);
+  }
+  .premium-site-header--reference-profile .premium-header-inner > button,
+  .premium-site-header--reference-profile .reference-home-header-icon { color:#fff7e7; }
+  .premium-site-header--reference-profile #mobile-menu { border-color:rgba(214,173,85,.22); background:#07110f; }
+  .premium-site-header--reference-profile #mobile-menu a { color:#fff7e7; border-bottom-color:rgba(214,173,85,.18); }
 }

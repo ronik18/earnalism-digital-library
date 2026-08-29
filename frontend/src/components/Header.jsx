@@ -63,9 +63,10 @@ export default function Header() {
   const usesDarkReferenceShell = loc.pathname === "/" || loc.pathname === "/pricing" || loc.pathname.startsWith("/book/");
   const usesLibraryReferenceShell = loc.pathname === "/library";
   const usesCommerceReferenceShell = loc.pathname === "/pricing";
+  const usesProfileMobileShell = loc.pathname === "/account";
   return (
     <header
-      className={`sticky top-0 z-50 glass-header premium-site-header${usesDarkReferenceShell ? " premium-site-header--reference-public" : ""}${usesLibraryReferenceShell ? " premium-site-header--reference-library" : ""}${usesCommerceReferenceShell ? " premium-site-header--reference-commerce" : ""}`}
+      className={`sticky top-0 z-50 glass-header premium-site-header${usesDarkReferenceShell ? " premium-site-header--reference-public" : ""}${usesLibraryReferenceShell ? " premium-site-header--reference-library" : ""}${usesCommerceReferenceShell ? " premium-site-header--reference-commerce" : ""}${usesProfileMobileShell ? " premium-site-header--reference-profile" : ""}`}
       data-testid="site-header"
     >
       <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-[var(--site-header-height)] flex items-center justify-between gap-4">

@@ -7,6 +7,7 @@ import { LogOut, BookOpen, Clock, ArrowUpRight, MonitorSmartphone, ShieldCheck, 
 import useSEO from "../hooks/useSEO";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { getReadingPassConfig, getReadingPassDevices, revokeReadingPassDevice } from "../lib/readingPassApi";
+import ExperienceBottomNavigation from "../experiences-v2/shared/ExperienceBottomNavigation";
 import "../styles/auth-account.css";
 
 const FALLBACK_SESSION_GAP_MS = 15 * 60 * 1000;
@@ -113,6 +114,28 @@ function formatActivityWhen(row) {
   return `${start.toLocaleString()} - ${end.toLocaleString()}`;
 }
 
+function AccountProfileMobile({ user, balance, activityCount, readingPassEnabled, onLogout, onNavigate }) {
+  const initial = String(user.name || "Reader").trim().slice(0, 1).toUpperCase() || "R";
+  return (
+    <section className="account-profile-mobile" aria-labelledby="account-profile-mobile-title" data-testid="account-profile-mobile">
+      <div className="account-profile-mobile__identity">
+        <div className="account-profile-mobile__avatar" aria-hidden="true">{initial}</div>
+        <h1 id="account-profile-mobile-title">My Profile</h1>
+        <strong>{user.name || "Reader"}</strong>
+        <span>{user.email}</span>
+      </div>
+      <nav className="account-profile-mobile__actions" aria-label="Account options">
+        <Link to="/pricing" className="account-profile-mobile__row" data-testid="account-profile-mobile-pass"><Clock aria-hidden="true" /><span><b>Reading Pass</b><small>{formatMinutes(balance)} available</small></span><ArrowUpRight aria-hidden="true" /></Link>
+        <a href="#account-transactions" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>Recent activity</b><small>{activityCount ? `${activityCount} recorded activities` : "Your reading will appear here"}</small></span><ArrowUpRight aria-hidden="true" /></a>
+        {readingPassEnabled ? <a href="#reading-pass-devices" className="account-profile-mobile__row"><MonitorSmartphone aria-hidden="true" /><span><b>Signed-in devices</b><small>Manage active Reading Pass sessions</small></span><ArrowUpRight aria-hidden="true" /></a> : null}
+        <Link to="/library" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>My Library</b><small>Open your current available editions</small></span><ArrowUpRight aria-hidden="true" /></Link>
+        <button type="button" className="account-profile-mobile__row account-profile-mobile__signout" onClick={onLogout} data-testid="account-profile-mobile-logout"><LogOut aria-hidden="true" /><span><b>Sign out</b><small>End this signed-in session</small></span></button>
+      </nav>
+      <ExperienceBottomNavigation active="profile" onNavigate={onNavigate} />
+    </section>
+  );
+}
+
 export default function Account() {
   useSEO({
     title: "Your Account — The Earnalism Digital Library",
@@ -171,6 +194,10 @@ export default function Account() {
     toast.success("Signed out.");
     nav("/", { replace: true });
   };
+  const onProfileNavigate = (target) => {
+    const destinations = { home: "/", library: "/library", passes: "/pricing", profile: "/account" };
+    nav(destinations[target] || "/account");
+  };
   const revokeDevice = async (device) => {
     const target = device.session_id || device.device_id;
     if (!target || !window.confirm(`Revoke ${device.device_label || "this device"}? Any active Reading Pass lease there will stop.`)) return;
@@ -193,6 +220,7 @@ export default function Account() {
 
   return (
     <div className="account-page-modern min-h-[70vh] px-5 sm:px-8 lg:px-12 py-12 sm:py-16" data-testid="account-page">
+      <AccountProfileMobile user={user} balance={balance} activityCount={activityRows.length} readingPassEnabled={readingPassEnabled} onLogout={onLogout} onNavigate={onProfileNavigate} />
       <div className="max-w-4xl mx-auto">
         <div className="account-hero mb-8 sm:mb-10">
           <div className="account-hero-summary">
