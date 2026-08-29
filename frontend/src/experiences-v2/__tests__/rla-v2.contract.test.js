@@ -32,6 +32,17 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(experience).not.toContain("const nextAccess = readerPageAccess");
   });
 
+  test("Reader fixture keeps the compact mobile reader shell separate from public access state", () => {
+    const experience = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2.jsx"), "utf8");
+    const stylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.css"), "utf8");
+    expect(experience).toContain('className="reader-v2__mobile-topbar"');
+    expect(experience).toContain("Canonical page");
+    expect(stylesheet).toContain(".reader-v2 .experience-header { display: none; }");
+    expect(stylesheet).toContain(".reader-v2__continuation { position: sticky;");
+    expect(stylesheet).toContain(".reader-v2__reader-navigation { display: none; }");
+    expect(experience).toContain("PUBLIC_PREVIEW_COPY");
+  });
+
   test("Listener starts authorization at second zero and exposes only the server-protected media path", () => {
     const adapter = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/ReleaseTruthAdapter.js"), "utf8");
     const route = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2Route.jsx"), "utf8");

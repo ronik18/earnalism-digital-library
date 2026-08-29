@@ -51,6 +51,14 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   return (
     <ExperienceShell className="reader-v2" labelledBy="reader-v2-title">
       <ExperienceHeader onSearch={() => onNavigate?.("search")} trailingLabel="Library" />
+      <header className="reader-v2__mobile-topbar" aria-label="Reader actions">
+        <button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button>
+        <span><small>Canonical page</small>{model.canonicalPage}</span>
+        <div>
+          <button type="button" onClick={() => setFontScale((value) => Math.max(90, value - 5))} aria-label="Decrease text size">A−</button>
+          <button type="button" onClick={() => onNavigate?.("settings")} aria-label="Reader settings"><Settings2 size={17} /></button>
+        </div>
+      </header>
       <div className="reader-v2__layout">
         <aside className="reader-v2__rail" aria-label="Reader controls">
           <div className="reader-v2__book"><span>{model.author}</span><h2>{model.title}</h2></div>
@@ -70,7 +78,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
         <aside className="reader-v2__context" aria-label="About this book"><ExperiencePanel eyebrow="About this book"><dl><div><dt>Author</dt><dd>{model.author}</dd></div><div><dt>Language</dt><dd>{model.metadata.language}</dd></div><div><dt>Genre</dt><dd>{model.metadata.genre}</dd></div><div><dt>First published</dt><dd>{model.metadata.year}</dd></div><div><dt>Source & rights</dt><dd>{model.metadata.source}</dd></div></dl><p>{PUBLIC_ACCESS_COPY} Reading time remains server-authoritative.</p></ExperiencePanel></aside>
       </div>
       <div className="reader-v2__mobile-actions"><button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button><span><Clock3 size={14} /> {model.readingPass}</span><button type="button" onClick={() => onNavigate?.("bookmark")} aria-label="Bookmark current page"><Bookmark size={18} /></button></div>
-      <ExperienceBottomNavigation active="library" onNavigate={onNavigate} />
+      <div className="reader-v2__reader-navigation"><ExperienceBottomNavigation active="library" onNavigate={onNavigate} /></div>
     </ExperienceShell>
   );
 }
