@@ -107,16 +107,34 @@
   .reference-commerce__hero-art { width:100%; opacity:.5; }
   .reference-home__hero-art img,
   .reference-commerce__hero-art img { object-position:66% center; }
-  .reference-commerce__hero { min-height:29rem; padding-top:2.2rem; }
+  .reference-commerce__hero { min-height:40.5rem; padding-top:2.2rem; }
   .reference-commerce__hero > div { width:100%; }
   .reference-commerce__main { padding-top:1.75rem; }
   .reference-commerce__packs { grid-template-columns:1fr; gap:.8rem; }
-  .reference-offer { min-height:0; padding:1.2rem; }
-  .reference-offer ul { margin:.95rem 0; }
-  /* The three verified policy rows already carry the reference hero's mobile
-     hierarchy. The desktop proof panel is intentionally absent here: allowing
-     it to flow in normal document order obscures those controls. */
-  .reference-commerce__hero-proof { display:none; }
+  .reference-offer { min-height:18rem; padding:.85rem; }
+  .reference-offer > span { min-height:1.35rem; }
+  .reference-offer > strong { margin-top:.55rem; }
+  .reference-offer ul { gap:.28rem; margin:.55rem 0; font-size:.58rem; }
+  .reference-commerce__hero-proof {
+    position:absolute;
+    right:1.1rem;
+    bottom:1.15rem;
+    left:1.1rem;
+    display:block;
+    width:auto;
+    min-height:13.5rem;
+    padding:.85rem .7rem;
+    border:1px solid rgba(214,173,85,.22);
+    border-radius:.5rem;
+    background:rgba(5,18,15,.81);
+  }
+  .reference-commerce__hero-proof h2 { margin:0 0 .65rem; color:#fff4df; font:600 .9rem/1.05 var(--reference-display); text-align:center; }
+  .reference-commerce__hero-proof > div { display:grid; grid-template-columns:repeat(3,1fr); width:100%; }
+  .reference-commerce__hero-proof article { display:grid; justify-items:center; gap:.25rem; min-width:0; padding:0 .35rem; text-align:center; }
+  .reference-commerce__hero-proof article + article { border-left:1px solid rgba(214,173,85,.18); }
+  .reference-commerce__hero-proof svg { width:1rem; color:#e4bd66; }
+  .reference-commerce__hero-proof strong { min-height:1.8rem; color:#fff7e8; font:600 .6rem/1.05 var(--reference-display); }
+  .reference-commerce__hero-proof span { color:rgba(255,248,233,.65); font-size:.44rem; line-height:1.25; }
 }
 
 /* Dedicated Reading Pass reference: a dark conversion column is paired with a
@@ -335,4 +353,66 @@
     width: 10.25rem;
     margin-top: 2rem;
   }
+
+  /* Reading Pass desktop: restore the board's two-column composition with
+     truthful capability content in the rail; it never renders the board's
+     invented research figures, ratings, or testimonials. */
+  .reference-commerce {
+    display: grid;
+    grid-template-columns: 63.54% 36.46%;
+    min-height: 100svh;
+    background: #fbf7ef;
+  }
+
+  .reference-commerce__primary-column { background: #fbf7ef; }
+  .reference-commerce__insight-rail { display: block; }
+  .reference-commerce__hero {
+    min-height: 17rem;
+    padding: 1.55rem clamp(2rem, 4.2vw, 4.25rem) 1.2rem;
+  }
+  .reference-commerce__hero > div { width: min(24.5rem, 48%); }
+  .reference-commerce__hero h1 { max-width: 12ch; font-size: clamp(2.9rem, 3.35vw, 3.7rem); }
+  .reference-commerce__hero p { max-width: 17rem; margin-top: .65rem; font-size: .67rem; }
+  .reference-commerce__hero ul { gap: .38rem; margin-top: 1rem; font-size: .65rem; }
+  .reference-commerce__hero-art { width: 61%; opacity: .87; }
+  .reference-commerce__hero-proof {
+    position: absolute;
+    z-index: 1;
+    top: 1rem;
+    right: 1.1rem;
+    display: block;
+    width: min(20rem, 41%);
+    padding: .85rem .7rem;
+    border: 1px solid rgba(214,173,85,.22);
+    border-radius: .5rem;
+    background: rgba(5,18,15,.81);
+  }
+  .reference-commerce__hero-proof h2 { margin: 0 0 .65rem; color: #fff4df; font: 600 .9rem/1.05 var(--reference-display); text-align: center; }
+  .reference-commerce__hero-proof > div { display: grid; grid-template-columns: repeat(3,1fr); width: 100%; }
+  .reference-commerce__hero-proof article { display: grid; justify-items: center; gap: .25rem; min-width: 0; padding: 0 .35rem; text-align: center; }
+  .reference-commerce__hero-proof article + article { border-left: 1px solid rgba(214,173,85,.18); }
+  .reference-commerce__hero-proof svg { width: 1rem; color: #e4bd66; }
+  .reference-commerce__hero-proof strong { min-height: 1.8rem; color: #fff7e8; font: 600 .6rem/1.05 var(--reference-display); }
+  .reference-commerce__hero-proof span { color: rgba(255,248,233,.65); font-size: .44rem; line-height: 1.25; }
+  .reference-commerce__main { width: calc(100% - clamp(2.75rem, 5vw, 5.75rem)); margin: 0 auto; padding: 1.15rem 0 2.25rem; }
+  .reference-commerce .reference-section-heading { margin-bottom: .75rem; }
+  .reference-commerce .reference-section-heading h2 { font-size: 1.55rem; }
+  .reference-commerce__packs { grid-template-columns: repeat(4,minmax(0,1fr)); gap: .65rem; }
+  .reference-offer { min-height: 16.25rem; padding: .8rem .62rem; border-radius: .4rem; }
+  .reference-offer__minutes { font-size: .9rem; }
+  .reference-offer > span { min-height: 1.4rem; margin-top: .2rem; font-size: .55rem; }
+  .reference-offer > strong { margin: .55rem 0 .1rem; font-size: 1.65rem; }
+  .reference-offer small { font-size: .52rem; }
+  .reference-offer ul { gap: .3rem; margin: .7rem 0; font-size: .53rem; }
+  .reference-offer button { min-height: 2rem; font-size: .52rem; }
+  .reference-commerce__pathways { gap: .65rem; margin-top: .8rem; }
+  .reference-commerce__pathways article { min-height: 9.25rem; padding: .85rem; }
+  .reference-commerce__pathways h2 { margin: .4rem 0 .2rem; font-size: 1.05rem; }
+  .reference-commerce__pathways p { min-height: 2.2rem; margin: .35rem 0; font-size: .57rem; }
+  .reference-commerce__pathways a { min-height: 1.9rem; font-size: .5rem; }
+  .reference-commerce__trust { gap: .55rem; margin-top: .75rem; padding: .75rem; }
+  .reference-commerce__trust strong { font-size: .76rem; }
+  .reference-commerce__trust span { font-size: .5rem; }
+  .reference-commerce__trust svg { width: 1rem; }
+  .reference-commerce__final { display: none; }
 }

@@ -337,18 +337,25 @@
    independently approved account and editorial headers do not move. */
 @media (min-width: 1024px) {
   .premium-site-header--reference-public,
-  .premium-site-header--reference-library {
+  .premium-site-header--reference-library,
+  .premium-site-header--reference-commerce {
     --site-header-height: 5.25rem;
   }
 
   .premium-site-header--reference-public .premium-header-inner,
-  .premium-site-header--reference-library .premium-header-inner {
+  .premium-site-header--reference-library .premium-header-inner,
+  .premium-site-header--reference-commerce .premium-header-inner {
     padding-inline: 3.125rem;
   }
 
   .premium-site-header--reference-public .earnalism-brand-lockup,
-  .premium-site-header--reference-library .earnalism-brand-lockup {
+  .premium-site-header--reference-library .earnalism-brand-lockup,
+  .premium-site-header--reference-commerce .earnalism-brand-lockup {
     width: 13.125rem;
+  }
+
+  .premium-site-header.premium-site-header--reference-commerce {
+    --site-header-height: 5.25rem;
   }
 }
 
@@ -567,21 +574,24 @@
   .premium-site-header--reference-profile #mobile-menu a { color:#fff7e7; border-bottom-color:rgba(214,173,85,.18); }
 }
 
-/* Exact-primary Home and Library desktop masthead — this intentionally comes
+/* Exact-primary Home, Library, and Commerce desktop masthead — this intentionally comes
    after the interim compact rule above so the routed board geometry wins. */
 @media (min-width: 1024px) {
   .premium-site-header--reference-public,
-  .premium-site-header--reference-library {
+  .premium-site-header--reference-library,
+  .premium-site-header.premium-site-header--reference-commerce {
     --site-header-height: 5.25rem;
   }
 
   .premium-site-header--reference-public .premium-header-inner,
-  .premium-site-header--reference-library .premium-header-inner {
+  .premium-site-header--reference-library .premium-header-inner,
+  .premium-site-header--reference-commerce .premium-header-inner {
     padding-inline: 3.125rem;
   }
 
   .premium-site-header--reference-public .earnalism-brand-lockup,
-  .premium-site-header--reference-library .earnalism-brand-lockup {
+  .premium-site-header--reference-library .earnalism-brand-lockup,
+  .premium-site-header--reference-commerce .earnalism-brand-lockup {
     width: 13.125rem;
   }
 }
