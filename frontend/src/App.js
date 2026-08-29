@@ -16,6 +16,7 @@ const pageImports = {
   Login: () => import("./pages/Login"),
   Signup: () => import("./pages/Signup"),
   Account: () => import("./pages/Account"),
+  MyLibrary: () => import("./pages/MyLibrary"),
   Pricing: () => import("./pages/Pricing"),
   ReaderLegacy: () => import("./pages/Reader"),
   ReaderV2: () => import("./experiences-v2/reader/ReaderExperienceV2Route"),
@@ -38,6 +39,7 @@ const Contact = lazy(pageImports.Contact);
 const Login = lazy(pageImports.Login);
 const Signup = lazy(pageImports.Signup);
 const Account = lazy(pageImports.Account);
+const MyLibrary = lazy(pageImports.MyLibrary);
 const Pricing = lazy(pageImports.Pricing);
 const ReaderLegacy = lazy(pageImports.ReaderLegacy);
 const ReaderV2 = lazy(pageImports.ReaderV2);
@@ -133,6 +135,7 @@ export function AppRouterContent() {
             <Route path="/login" element={<GoogleAuthBoundary><Login /></GoogleAuthBoundary>} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/my-library" element={<MyLibrary />} />
             {/* Legacy redirects */}
             <Route path="/signin" element={<Navigate to="/login" replace />} />
             <Route path="/publishing" element={<Navigate to="/library" replace />} />

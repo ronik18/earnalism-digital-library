@@ -1,0 +1,12 @@
+.my-library-v2__content { width:min(100% - 32px, 42rem); min-height:calc(100dvh - 124px); margin:0 auto; padding:36px 0 32px; color:var(--ev2-ivory); text-align:center; }
+.my-library-v2__eyebrow { margin:0; color:var(--ev2-gold); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.my-library-v2 h1 { margin:10px 0 22px; font:600 38px/1 var(--ev2-display); }
+.my-library-v2__tabs { display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--ev2-line); }
+.my-library-v2__tabs button { display:inline-flex; min-height:44px; align-items:center; justify-content:center; gap:7px; border:0; border-bottom:2px solid transparent; background:transparent; color:color-mix(in srgb,var(--ev2-ivory) 62%,transparent); font:600 11px/1 var(--ev2-ui); cursor:pointer; }
+.my-library-v2__tabs button[aria-selected="true"] { border-bottom-color:var(--ev2-gold); color:var(--ev2-gold); }
+.my-library-v2__tabs button:disabled { cursor:default; opacity:.72; }
+.my-library-v2__empty { display:grid; justify-items:center; gap:13px; margin-top:38px; padding:32px 24px; border:1px solid var(--ev2-line); border-radius:9px; background:color-mix(in srgb,var(--ev2-surface) 88%,transparent); }
+.my-library-v2__empty svg { color:var(--ev2-gold); }
+.my-library-v2__empty h2 { margin:0; font:600 25px/1 var(--ev2-display); }
+.my-library-v2__empty p { max-width:31ch; margin:0; color:color-mix(in srgb,var(--ev2-ivory) 70%,transparent); font-size:13px; line-height:1.55; }
+.my-library-v2__empty a { display:inline-flex; min-height:44px; align-items:center; justify-content:center; margin-top:4px; padding:0 16px; border:1px solid var(--ev2-gold); border-radius:6px; color:var(--ev2-gold); font:600 11px/1 var(--ev2-ui); text-decoration:none; }

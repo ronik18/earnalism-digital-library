@@ -128,7 +128,7 @@ function AccountProfileMobile({ user, balance, activityCount, readingPassEnabled
         <Link to="/pricing" className="account-profile-mobile__row" data-testid="account-profile-mobile-pass"><Clock aria-hidden="true" /><span><b>Reading Pass</b><small>{formatMinutes(balance)} available</small></span><ArrowUpRight aria-hidden="true" /></Link>
         <a href="#account-transactions" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>Recent activity</b><small>{activityCount ? `${activityCount} recorded activities` : "Your reading will appear here"}</small></span><ArrowUpRight aria-hidden="true" /></a>
         {readingPassEnabled ? <a href="#reading-pass-devices" className="account-profile-mobile__row"><MonitorSmartphone aria-hidden="true" /><span><b>Signed-in devices</b><small>Manage active Reading Pass sessions</small></span><ArrowUpRight aria-hidden="true" /></a> : null}
-        <Link to="/library" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>My Library</b><small>Open your current available editions</small></span><ArrowUpRight aria-hidden="true" /></Link>
+        <Link to="/my-library" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>My Library</b><small>Open saved editions and reading activity</small></span><ArrowUpRight aria-hidden="true" /></Link>
         <button type="button" className="account-profile-mobile__row account-profile-mobile__signout" onClick={onLogout} data-testid="account-profile-mobile-logout"><LogOut aria-hidden="true" /><span><b>Sign out</b><small>End this signed-in session</small></span></button>
       </nav>
       <ExperienceBottomNavigation active="profile" onNavigate={onNavigate} />
