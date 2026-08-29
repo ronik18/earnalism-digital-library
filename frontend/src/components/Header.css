@@ -498,6 +498,25 @@
   }
 }
 
+/* The compact primary-board navigation is a route-level dialog, not a short
+   inline drawer. Keep the underlying hero inert visually while it is open so
+   keyboard and touch users receive one complete navigation surface. */
+@media (max-width: 640px) {
+  .premium-site-header--reference-public #mobile-menu,
+  .premium-site-header--reference-library #mobile-menu,
+  .premium-site-header--reference-commerce #mobile-menu {
+    position: fixed;
+    z-index: 70;
+    top: var(--site-header-height);
+    right: 0;
+    bottom: auto;
+    left: 0;
+    height: calc(100dvh - var(--site-header-height));
+    min-height: calc(100dvh - var(--site-header-height));
+    overflow-y: auto;
+  }
+}
+
 @media (max-width: 640px) {
   .premium-site-header--reference-public,
   .premium-site-header--reference-library,

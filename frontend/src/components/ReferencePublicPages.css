@@ -113,6 +113,10 @@
   .reference-commerce__packs { grid-template-columns:1fr; gap:.8rem; }
   .reference-offer { min-height:0; padding:1.2rem; }
   .reference-offer ul { margin:.95rem 0; }
+  /* The three verified policy rows already carry the reference hero's mobile
+     hierarchy. The desktop proof panel is intentionally absent here: allowing
+     it to flow in normal document order obscures those controls. */
+  .reference-commerce__hero-proof { display:none; }
 }
 
 /* Dedicated Reading Pass reference: a dark conversion column is paired with a
