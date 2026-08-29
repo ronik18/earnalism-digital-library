@@ -538,8 +538,10 @@
     right: 0;
     bottom: auto;
     left: 0;
-    height: calc(100dvh - var(--site-header-height));
-    min-height: calc(100dvh - var(--site-header-height));
+    /* The approved compact navigation board is a focused, scrollable panel
+       below the masthead—not a full-screen replacement for the routed page. */
+    height: 28rem;
+    min-height: 28rem;
     overflow-y: auto;
   }
 }
