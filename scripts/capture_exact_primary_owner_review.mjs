@@ -78,6 +78,20 @@ async function capture(state, browser) {
     const settle = Promise.all([document.fonts.ready, ...[...document.images].map((image) => image.decode().catch(() => undefined))]);
     await Promise.race([settle, new Promise((resolve) => setTimeout(resolve, 10_000))]);
   });
+  const fontLoad = await page.evaluate(async () => {
+    await Promise.all([
+      document.fonts.load('500 48px "Cormorant Garamond"'),
+      document.fonts.load('400 16px "Outfit"'),
+      document.fonts.load('500 32px "Noto Serif Bengali"', 'বাংলা'),
+      document.fonts.load('400 16px "Noto Sans Bengali"', 'বাংলা'),
+    ]);
+    return {
+      cormorant: document.fonts.check('500 48px "Cormorant Garamond"'),
+      outfit: document.fonts.check('400 16px "Outfit"'),
+      notoSerifBengali: document.fonts.check('500 32px "Noto Serif Bengali"', 'বাংলা'),
+      notoSansBengali: document.fonts.check('400 16px "Noto Sans Bengali"', 'বাংলা'),
+    };
+  });
   if (state.family === "filter") await page.locator(".reference-filter-trigger").click();
   if (state.family === "navigation") await page.locator("button[aria-label*='menu' i], button[aria-label*='navigation' i]").first().click().catch(() => undefined);
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
@@ -94,7 +108,7 @@ async function capture(state, browser) {
     geometry: required.map((selector) => { const node = document.querySelector(selector); if (!node) return { selector, present: false }; const r = node.getBoundingClientRect(); const s = getComputedStyle(node); return { selector, present: true, x: r.x, y: r.y, width: r.width, height: r.height, fontSize: s.fontSize, lineHeight: s.lineHeight }; }),
   }), selectors);
   await page.close();
-  return { ...state, status: response?.status() || 0, errors, ...metrics, stable: sha(first) === sha(second), screenshot_sha256: sha(second), fixture: state.family === "profile" ? "sanitized-owner-review-user" : "server-contract-review-fixture", product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
+  return { ...state, status: response?.status() || 0, errors, fontLoad, ...metrics, stable: sha(first) === sha(second), screenshot_sha256: sha(second), fixture: state.family === "profile" ? "sanitized-owner-review-user" : "server-contract-review-fixture", product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
 }
 
 fs.mkdirSync(output, { recursive: true });
@@ -110,7 +124,7 @@ try {
   const previous = process.env.EXACT_OWNER_REVIEW_APPEND_CAPTURE === "1" && fs.existsSync(capturePath) ? JSON.parse(fs.readFileSync(capturePath, "utf8")).states || [] : [];
   const all = [...previous.filter((item) => !captures.some((capture) => capture.id === item.id)), ...captures];
   fs.writeFileSync(capturePath, JSON.stringify({ schema_version: "earnalism-exact-primary-owner-review-v1", states: all }, null, 2) + "\n");
-  const failed = all.filter((item) => item.status !== 200 || item.errors.length || !item.stable || item.scrollWidth !== item.clientWidth || item.required.includes(false));
+  const failed = all.filter((item) => item.status !== 200 || item.errors.length || !item.stable || item.scrollWidth !== item.clientWidth || item.required.includes(false) || !Object.values(item.fontLoad || {}).every(Boolean));
   console.log(JSON.stringify({ captured: all.length, failed: failed.map((item) => item.id), strict, output }));
   if (strict && failed.length) process.exitCode = 1;
 } finally { await browser.close(); }
