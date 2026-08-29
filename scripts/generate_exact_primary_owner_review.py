@@ -9,7 +9,7 @@ ROOT = Path(".").resolve()
 WORK = Path(os.environ.get("EXACT_OWNER_REVIEW_WORK_DIR", ROOT / "uat/evidence/exact-primary-design")).resolve()
 OUT = WORK / "owner-review-final"
 REFERENCE = ROOT / "docs/design-references"
-BOARD_ONE = REFERENCE / "Home-Library-Commerce-Desktop.png"
+BOARD_ONE = REFERENCE / "home-library-commerce-desktop.png"
 BOARD_TWO = REFERENCE / "reader-listener-bookdetail-desktop.png"
 CROPS = {
  "home-desktop": (10,18,540,747,BOARD_ONE), "library-desktop": (560,18,518,747,BOARD_ONE), "commerce-desktop": (1088,18,438,750,BOARD_ONE),
