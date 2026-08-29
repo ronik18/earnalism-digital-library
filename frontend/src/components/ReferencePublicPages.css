@@ -295,4 +295,44 @@
     top: -1.25rem;
     padding-bottom: 3.3125rem;
   }
+
+  /* Library desktop: restore the board's editorial title rail, fixed filter
+     column, five-card shelf density, and support-card rhythm. */
+  .reference-library {
+    padding-top: 3.125rem;
+  }
+
+  .reference-library__titlebar {
+    padding-bottom: 1.75rem;
+  }
+
+  .reference-library__titlebar h1 {
+    font-size: 3.75rem;
+  }
+
+  .reference-library__controls {
+    position: relative;
+    top: 1px;
+  }
+
+  .reference-library__content {
+    grid-template-columns: 12.5rem minmax(0, 1fr);
+  }
+
+  .reference-library__sidebar {
+    padding: .875rem;
+  }
+
+  .reference-library__shelves {
+    gap: 2.25rem;
+  }
+
+  .reference-library-grid {
+    gap: .75rem;
+  }
+
+  .reference-library__pass {
+    width: 10.25rem;
+    margin-top: 2rem;
+  }
 }

@@ -248,6 +248,8 @@ export function ReferenceLibrarySurface({
   filtersOpen,
   setFiltersOpen,
 }) {
+  const filterTriggerRef = useRef(null);
+  const filterDrawerRef = useRef(null);
   const live = filteredBooks.filter(isLive);
   const comingSoon = filteredBooks.filter((book) => !isLive(book));
   const approvedAudio = filteredBooks.filter((book) => audiobookReleaseState(book).canShowControls);
@@ -257,6 +259,44 @@ export function ReferenceLibrarySurface({
     ["Audiobooks", "Only editions with approved listening access.", approvedAudio],
   ];
   const update = (key, value) => onParam(key, value, key === "sort" ? "recently-approved" : "all");
+  const closeFilters = () => {
+    setFiltersOpen(false);
+    requestAnimationFrame(() => filterTriggerRef.current?.focus());
+  };
+
+  useEffect(() => {
+    if (!filtersOpen) return undefined;
+    const trigger = filterTriggerRef.current;
+    const drawer = filterDrawerRef.current;
+    const close = () => {
+      setFiltersOpen(false);
+      requestAnimationFrame(() => trigger?.focus());
+    };
+    const focusFirstControl = () => drawer?.querySelector("button[aria-label='Close filters']")?.focus();
+    focusFirstControl();
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        close();
+        return;
+      }
+      if (event.key !== "Tab" || !drawer) return;
+      const controls = [...drawer.querySelectorAll("button:not([disabled]), select:not([disabled]), input:not([disabled]), a[href]")]
+        .filter((element) => element.offsetParent !== null);
+      if (!controls.length) return;
+      const first = controls[0];
+      const last = controls.at(-1);
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [filtersOpen, setFiltersOpen]);
 
   return (
     <div className="reference-library" data-testid="library-reference-surface">
@@ -265,7 +305,7 @@ export function ReferenceLibrarySurface({
         <div className="reference-library__controls">
           <label className="reference-search"><Search aria-hidden="true" /><input data-testid="library-search" value={query} onChange={(event) => onSearch(event.target.value)} placeholder="Search by title, author or keyword..." aria-label="Search the Library" /></label>
           <label className="reference-sort">Sort by<select data-testid="library-sort" value={sort} onChange={(event) => onParam("sort", event.target.value, "recently-approved")}><option value="recently-approved">Featured</option><option value="title">Title</option><option value="author">Author</option><option value="short-reads">Short reads</option></select></label>
-          <button className="reference-filter-trigger" type="button" onClick={() => setFiltersOpen(true)}><SlidersHorizontal aria-hidden="true" /> Filters</button>
+          <button ref={filterTriggerRef} className="reference-filter-trigger" type="button" aria-haspopup="dialog" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(true)}><SlidersHorizontal aria-hidden="true" /> Filters</button>
         </div>
       </header>
       <main className="reference-library__content">
@@ -274,7 +314,7 @@ export function ReferenceLibrarySurface({
           {loading ? <p className="reference-loading">Opening the collection...</p> : shelves.map(([title, copy, books]) => <section key={title} className="reference-library-shelf" aria-labelledby={`shelf-${title}`}><SectionHeading eyebrow={title === "Live now" ? "LIVE NOW" : title.toUpperCase()} title={title} action={<span className="reference-shelf-count">{books.length} editions</span>}><p>{copy}</p></SectionHeading>{books.length ? <div className="reference-library-grid">{books.slice(0, 10).map((book, index) => <BookTile key={book.slug} book={book} compact priority={index < 2} showListen={title === "Audiobooks"} />)}</div> : <p className="reference-empty-listening">No titles currently match this release state.</p>}</section>)}
         </section>
       </main>
-      {filtersOpen ? <div className="reference-library-drawer" role="dialog" aria-modal="true" aria-label="Library filters"><div><header><strong>Filters</strong><div><button type="button" className="reference-filter-reset" onClick={onResetFilters}>Reset</button><button type="button" onClick={() => setFiltersOpen(false)} aria-label="Close filters"><X aria-hidden="true" /></button></div></header><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} hideAll drawer onChange={update} /><button type="button" className="reference-button reference-button--gold" onClick={() => setFiltersOpen(false)}>Apply filters</button></div></div> : null}
+      {filtersOpen ? <div ref={filterDrawerRef} className="reference-library-drawer" role="dialog" aria-modal="true" aria-label="Library filters"><div><header><strong>Filters</strong><div><button type="button" className="reference-filter-reset" onClick={onResetFilters}>Reset</button><button type="button" onClick={closeFilters} aria-label="Close filters"><X aria-hidden="true" /></button></div></header><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} hideAll drawer onChange={update} /><button type="button" className="reference-button reference-button--gold" onClick={closeFilters}>Apply filters</button></div></div> : null}
     </div>
   );
 }
