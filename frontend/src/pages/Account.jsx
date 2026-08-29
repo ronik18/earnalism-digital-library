@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { userApi, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
@@ -143,6 +143,8 @@ export default function Account() {
     robots: "noindex, nofollow",
   });
   const { user, userLogout, refreshUser } = useAuth();
+  const location = useLocation();
+  const visualFixture = process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1" && new URLSearchParams(location.search).get("visual-fixture") === "1";
   const [txs, setTxs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [readingPassEnabled, setReadingPassEnabled] = useState(false);
@@ -183,6 +185,10 @@ export default function Account() {
       cancelled = true;
     };
   }, [user]);
+
+  if (visualFixture) {
+    return <div className="account-page-modern account-page-modern--visual-fixture" data-testid="account-visual-fixture"><AccountProfileMobile user={{ name: "Review Reader", email: "review@example.invalid" }} balance={215 * 60} activityCount={3} readingPassEnabled onLogout={() => {}} onNavigate={() => {}} /></div>;
+  }
 
   if (user === null) return <div className="py-32 text-center text-charcoal-soft" role="status" aria-live="polite">Loading your reading account…</div>;
   if (!user) return <Navigate to="/login?next=/account" replace />;

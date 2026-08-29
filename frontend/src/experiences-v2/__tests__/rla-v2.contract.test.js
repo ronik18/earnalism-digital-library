@@ -61,6 +61,15 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(fixture.publicPreviewSeconds).toBe(0);
   });
 
+  test("Listener fixture uses the compact mobile control shell without changing audio access", () => {
+    const stylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/listener-v2.css"), "utf8");
+    const source = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2.jsx"), "utf8");
+    expect(stylesheet).toContain(".listener-v2 .experience-header { display: none; }");
+    expect(stylesheet).toContain(".listener-v2__main { display: flex; flex-direction: column; padding: 62px 28px 24px; }");
+    expect(source).toContain('className="listener-v2__mobile-top"');
+    expect(source).toContain("presentation.fixture || !access.authorized || !effectiveDuration");
+  });
+
   test("playback time is never treated as a public preview allowance", () => {
     expect(clampPlaybackTime(240, 180)).toBe(180);
     expect(clampPlaybackTime(-1, 180)).toBe(0);
@@ -71,5 +80,13 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(ABOUT_TRUST_CARDS.map((card) => card.title)).toEqual(["Curated classics", "Immersive experience", "Thoughtful design", "Trusted & transparent"]);
     const source = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/about/AboutExperienceV2.jsx"), "utf8");
     expect(source).not.toMatch(/fetch\(|axios|\b\d[\d,]*\s+readers\b|\bratings\b|\bawards\b|\bpartners\b/i);
+  });
+
+  test("Profile visual review fixture is compile-time gated and contains only sanitized identity data", () => {
+    const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Account.jsx"), "utf8");
+    expect(source).toContain('process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1"');
+    expect(source).toContain('get("visual-fixture") === "1"');
+    expect(source).toContain('name: "Review Reader", email: "review@example.invalid"');
+    expect(source).not.toContain("localStorage");
   });
 });
