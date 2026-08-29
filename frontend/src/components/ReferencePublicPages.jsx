@@ -1,10 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
   BookOpen,
   Building2,
   Check,
+  ChevronLeft,
+  ChevronRight,
   Headphones,
   Landmark,
   Lock,
@@ -109,6 +111,22 @@ function SectionHeading({ eyebrow, title, action, children }) {
   );
 }
 
+function ReferenceShelf({ books, className = "", label, testId }) {
+  const shelfRef = useRef(null);
+  const scroll = (direction) => shelfRef.current?.scrollBy({ left: direction * Math.max(220, shelfRef.current.clientWidth * 0.64), behavior: "smooth" });
+  return (
+    <div className={`reference-shelf-frame ${className}`.trim()} data-testid={testId}>
+      <div ref={shelfRef} className="reference-book-shelf" aria-label={label}>
+        {books.map((book, index) => <BookTile key={book.slug} book={book} priority={index === 0} />)}
+      </div>
+      <div className="reference-shelf-frame__controls" aria-label={`${label} controls`}>
+        <button type="button" aria-label="Previous titles" onClick={() => scroll(-1)}><ChevronLeft aria-hidden="true" /></button>
+        <button type="button" aria-label="Next titles" onClick={() => scroll(1)}><ChevronRight aria-hidden="true" /></button>
+      </div>
+    </div>
+  );
+}
+
 export function ReferenceHomeSurface({ curation }) {
   const books = usePublicBooks();
   const curatedBooks = useMemo(() => (
@@ -135,8 +153,7 @@ export function ReferenceHomeSurface({ curation }) {
           <p className="reference-home__policy"><Check aria-hidden="true" /> {PUBLIC_ACCESS_COPY} <span /> <ClockMark aria-hidden="true" /> {READING_TIME_COPY}</p>
         </div>
         <picture className="reference-home__hero-art">
-          <source media="(max-width: 640px)" srcSet="/assets/hero/premium-library-mobile-cinematic-v2.webp" />
-          <img src="/assets/hero/golden-hour-library-hero.webp" alt="" fetchPriority="high" decoding="async" />
+          <img src="/assets/reference-derived/home-library-room-board-crop.png" alt="" fetchPriority="high" decoding="async" />
         </picture>
       </section>
 
@@ -152,9 +169,7 @@ export function ReferenceHomeSurface({ curation }) {
           title="Find the language, voice, and story that feels like home."
           action={<Link to="/library" className="reference-text-link">Browse the complete library <ArrowRight aria-hidden="true" /></Link>}
         />
-        <div className="reference-book-shelf" data-testid="home-journey-shelf">
-          {shelfBooks.map((book, index) => <BookTile key={book.slug} book={book} priority={index === 0} />)}
-        </div>
+        <ReferenceShelf books={shelfBooks} label="Featured classics" className="reference-home__journey-shelf" testId="home-journey-shelf" />
       </section>
 
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
@@ -184,7 +199,7 @@ export function ReferenceHomeSurface({ curation }) {
         >
           <p>Approved audiobooks require an active Reading Pass. Titles without approval show no listening action.</p>
         </SectionHeading>
-        {listeningBooks.length ? <div className="reference-book-shelf">{listeningBooks.map((book) => <BookTile key={book.slug} book={book} showListen />)}</div> : <p className="reference-empty-listening">Listening rooms appear here only when an edition is approved for audio.</p>}
+        {listeningBooks.length ? <ReferenceShelf books={listeningBooks} label="Approved audiobooks" /> : <p className="reference-empty-listening">Listening rooms appear here only when an edition is approved for audio.</p>}
       </section>
 
       <section className="reference-home__trust" aria-labelledby="reference-trust-title">
@@ -277,8 +292,7 @@ export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId
           <div><p className="reference-kicker">READING PASSES</p><h1 id="reference-commerce-title">Read more.<br />Live the stories.</h1><p>Unlock unhurried reading time and immerse yourself in timeless Bengali and English classics.</p><ul><li>{PUBLIC_ACCESS_COPY}</li><li>{READING_TIME_COPY}</li><li>No subscription or autorenewal</li></ul></div>
           <section className="reference-commerce__hero-proof" aria-label="Reading Pass principles"><h2>Made for a quieter reading rhythm</h2><div><article><BookOpen aria-hidden="true" /><strong>Preview before you continue</strong><span>{PUBLIC_PREVIEW_COPY}</span></article><article><ClockMark aria-hidden="true" /><strong>Time moves with your reading</strong><span>{READING_TIME_COPY}</span></article><article><Lock aria-hidden="true" /><strong>One account, your own pace</strong><span>No subscription or autorenewal</span></article></div></section>
           <picture className="reference-commerce__hero-art">
-            <source media="(max-width: 640px)" srcSet="/assets/hero/premium-library-mobile-cinematic-v2.webp" />
-            <img src="/assets/hero/golden-hour-library-hero.webp" alt="" fetchPriority="high" decoding="async" />
+            <img src="/assets/reference-derived/commerce-chair-lamp-board-crop.png" alt="" fetchPriority="high" decoding="async" />
           </picture>
         </section>
         <main className="reference-commerce__main">

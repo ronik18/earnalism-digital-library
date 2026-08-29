@@ -332,6 +332,54 @@
   .premium-site-header .brand-header-logo__india-flag { width: 1.08rem; height: 0.73rem; }
 }
 
+/* Mobile navigation is a dark immersive panel on the approved primary
+   surfaces, while the light library shell retains its editorial drawer. */
+.premium-site-header--reference-public #mobile-menu,
+.premium-site-header--reference-commerce #mobile-menu {
+  border-color: rgba(214, 173, 85, .22);
+  background: #07110f;
+}
+
+.premium-site-header--reference-public #mobile-menu a,
+.premium-site-header--reference-commerce #mobile-menu a {
+  border-bottom-color: rgba(214, 173, 85, .18);
+  color: #fff7e7;
+}
+
+.premium-site-header--reference-public #mobile-menu a[aria-current="page"],
+.premium-site-header--reference-commerce #mobile-menu a[aria-current="page"] {
+  color: #f2d188;
+}
+
+.premium-site-header--reference-public #mobile-menu .btn-primary,
+.premium-site-header--reference-commerce #mobile-menu .btn-primary {
+  border-color: #e4bd67;
+  background: linear-gradient(135deg, #f0ca76, #c79435);
+  color: #192017;
+}
+
+@media (max-width: 640px) {
+  .premium-site-header.premium-site-header--reference-library {
+    background: #07110f;
+    border-bottom-color: rgba(214, 173, 85, .24);
+  }
+
+  .premium-site-header--reference-library .premium-header-inner > a,
+  .premium-site-header--reference-library .premium-header-inner > button {
+    color: #fff7e7;
+  }
+
+  .premium-site-header--reference-library #mobile-menu {
+    border-color: rgba(214, 173, 85, .22);
+    background: #07110f;
+  }
+
+  .premium-site-header--reference-library #mobile-menu a {
+    border-bottom-color: rgba(214, 173, 85, .18);
+    color: #fff7e7;
+  }
+}
+
 /* One stable header geometry for every public shell. Route-specific absolute
    positioning made the canonical lockup vulnerable to clipping at 1280px. */
 .premium-site-header .earnalism-brand-lockup {
@@ -404,4 +452,67 @@
     padding:.18rem .38rem;
   }
   .premium-site-header--reference-commerce .premium-header-nav a { font-size:.78rem !important; }
+}
+
+/* The approved primary boards use a deliberately quiet, compact masthead. Keep
+   this scoped to the reference-backed public routes so account and editorial
+   layouts retain their independently approved header geometry. */
+@media (min-width: 1024px) {
+  .premium-site-header--reference-public,
+  .premium-site-header--reference-library {
+    --site-header-height: 2.8rem;
+  }
+
+  .premium-site-header--reference-public .premium-header-inner,
+  .premium-site-header--reference-library .premium-header-inner {
+    padding-inline: clamp(1rem, 1.7vw, 1.65rem);
+  }
+
+  .premium-site-header--reference-public .earnalism-brand-lockup,
+  .premium-site-header--reference-library .earnalism-brand-lockup {
+    width: clamp(7.5rem, 9vw, 9.5rem);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .premium-site-header--reference-public .premium-header-nav,
+  .premium-site-header--reference-library .premium-header-nav {
+    gap: clamp(.6rem, 1.05vw, 1.1rem);
+  }
+
+  .premium-site-header--reference-public .premium-header-nav a,
+  .premium-site-header--reference-library .premium-header-nav a {
+    min-height: 2.35rem;
+    font-size: clamp(.56rem, .58vw, .66rem) !important;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    letter-spacing: .01em !important;
+  }
+
+  .premium-site-header--reference-public .reference-home-header-icon,
+  .premium-site-header--reference-library .reference-home-header-icon {
+    min-height: 2.35rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .premium-site-header--reference-public,
+  .premium-site-header--reference-library,
+  .premium-site-header--reference-commerce {
+    --site-header-height: 3.45rem;
+  }
+
+  .premium-site-header--reference-public .earnalism-brand-lockup,
+  .premium-site-header--reference-library .earnalism-brand-lockup,
+  .premium-site-header--reference-commerce .earnalism-brand-lockup {
+    width: min(8.7rem, calc(100vw - 8.5rem));
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
 }

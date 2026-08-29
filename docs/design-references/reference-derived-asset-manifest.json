@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "purpose": "Artwork-only crops permitted by the owner-approved primary visual boards. These files never contain baked-in UI, text, buttons, badges, navigation, or controls.",
+  "assets": [
+    {
+      "path": "frontend/public/assets/reference-derived/home-library-room-board-crop.png",
+      "source_board": "docs/design-references/Home-Library-Commerce-Desktop.png",
+      "source_sha256": "d9050673fcf487c0ba4394ff389f565f46576b8f66c8ea57a07b72a31cdf9f93",
+      "crop": { "x": 298, "y": 60, "width": 250, "height": 218 },
+      "sha256": "b091cb585fe15b52c2556720c98434df84a144d21513c7d4f46fae3c8d7eedb5",
+      "usage": ["Home desktop", "Home mobile"],
+      "opaque": true
+    },
+    {
+      "path": "frontend/public/assets/reference-derived/commerce-chair-lamp-board-crop.png",
+      "source_board": "docs/design-references/Home-Library-Commerce-Desktop.png",
+      "source_sha256": "d9050673fcf487c0ba4394ff389f565f46576b8f66c8ea57a07b72a31cdf9f93",
+      "crop": { "x": 1318, "y": 60, "width": 205, "height": 210 },
+      "sha256": "26c9b494a3b3966712c418305f6ac297488786b608e586f9c4738280b98ab46c",
+      "usage": ["Commerce desktop", "Commerce mobile"],
+      "opaque": true
+    },
+    {
+      "path": "frontend/public/assets/reference-derived/reader-castle-board-crop.png",
+      "source_board": "docs/design-references/reader-listener-bookdetail-desktop.png",
+      "source_sha256": "14853c0069a431e3cd01da45ac35aae62e6ee875edfb41abd00823f2bf2d8817",
+      "crop": { "x": 171, "y": 128, "width": 193, "height": 132 },
+      "sha256": "b78f5eacc0a86c7d4d0b06fd8086fe2d9438f1ca5be4ac8f68803b71b385989a",
+      "usage": ["Reader desktop", "Reader mobile", "visual-review fixture only"],
+      "opaque": true
+    }
+  ]
+}
