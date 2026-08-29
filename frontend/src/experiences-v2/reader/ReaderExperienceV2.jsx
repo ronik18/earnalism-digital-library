@@ -19,6 +19,10 @@ export const READER_V2_FIXTURE = Object.freeze({
   readingTime: "1h 42m",
   readingPass: "215 minutes left",
   contents: ["Chapter 1 · Jonathan Harker’s Journal", "Chapter 2 · The Carpathians", "Chapter 3 · The Count’s Castle", "Chapter 4 · The Visitor’s Diary"],
+  illustration: {
+    src: "/assets/reference-derived/reader-castle-board-crop.png",
+    alt: "A sepia castle landscape",
+  },
   paragraphs: [
     "3 May. Bistritz.—Left Munich at 8.35 P.M., on 1st May, arriving in Vienna early next morning; should have arrived at 6.46, but train was an hour late.",
     "The impression I had of the papers was that the Count Dracula was a remarkable man. There was something about him which impressed me favourably.",
