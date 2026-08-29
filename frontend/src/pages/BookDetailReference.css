@@ -67,6 +67,55 @@
 .book-detail-page--reference [data-testid="book-share"] { order:7; margin-top:1.1rem; }
 .book-detail-page--reference [data-testid="chapter-list"] { order:8; margin-top:2.3rem; }
 
+/* The canonical Book Detail board uses a twelve-column room even though this
+   route shows only the five-column cover and seven-column detail spans.  The
+   explicit desktop grid keeps the cover, editorial title, and access panel in
+   their board-aligned positions rather than letting the generic max-width
+   utility collapse them into an interim two-column layout. */
+@media (min-width:1024px) {
+  .book-detail-page--reference .book-detail-reference__return {
+    width:80rem;
+    max-width:calc(100% - 10rem);
+    height:5.25rem;
+    padding:0;
+    display:flex;
+    align-items:center;
+  }
+
+  .book-detail-page--reference .book-detail-reference__hero {
+    width:80rem;
+    max-width:calc(100% - 10rem);
+    grid-template-columns:repeat(12,minmax(0,1fr));
+    gap:4rem;
+    padding:5rem 3rem 3.6rem;
+  }
+
+  .book-detail-page--reference .book-detail-reference__cover-column {
+    grid-column:span 5 / span 5 !important;
+  }
+
+  .book-detail-page--reference .book-detail-reference__details {
+    grid-column:span 7 / span 7 !important;
+    padding-top:.8rem;
+  }
+
+  .book-detail-page--reference .book-detail-cover-frame {
+    width:100%;
+    max-width:none;
+    margin:0;
+    border-radius:.875rem;
+  }
+
+  .book-detail-page--reference .book-detail-title {
+    width:325px;
+    max-width:325px;
+    font-size:3.25rem;
+    line-height:3.5rem;
+  }
+
+  .book-detail-page--reference .book-detail-reference__truth { margin-top:3.1rem; }
+}
+
 @media (max-width: 767px) {
   .book-detail-page--reference .book-detail-reference__return { padding-top:1.15rem; }
   .book-detail-page--reference .book-detail-reference__hero { display:grid; grid-template-columns:1fr; gap:1.35rem; padding-top:1.1rem; padding-bottom:2.3rem; }
