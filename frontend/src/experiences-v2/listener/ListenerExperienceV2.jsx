@@ -64,7 +64,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
         </div>
         <aside className="listener-v2__side">
           {presentation.fixture ? <ExperiencePanel eyebrow="Up next"><ol><li><span>Chapter 4</span><b>The Visitors</b><small>22:18</small></li><li><span>Chapter 5</span><b>Jonathan’s Diary</b><small>18:05</small></li><li><span>Chapter 6</span><b>Lucy’s Diary</b><small>10:40</small></li></ol><button type="button" onClick={() => onNavigate?.("chapters")}>View all chapters <ChevronRight size={14} /></button></ExperiencePanel> : null}
-          <ExperiencePanel eyebrow="Listening access"><p>{LISTENING_ACCESS_COPY} Playback starts only after server authorization from second 0.</p>{onAddToLibrary ? <button type="button" onClick={onAddToLibrary}>Add to Library</button> : null}</ExperiencePanel>
+          <ExperiencePanel eyebrow={presentation.fixture ? "Listening mode" : "Listening access"}><p>{presentation.fixture ? "Playback controls are shown for visual review only. Listening requires an active Reading Pass from second 0." : `${LISTENING_ACCESS_COPY} Playback starts only after server authorization from second 0.`}</p>{onAddToLibrary ? <button type="button" onClick={onAddToLibrary}>Add to Library</button> : null}</ExperiencePanel>
           <ExperiencePanel eyebrow="Reading Pass"><p><Clock3 size={15} /> {READING_TIME_COPY}</p><button type="button" onClick={() => onNavigate?.("passes")}>Explore Reading Passes</button></ExperiencePanel>
         </aside>
       </section>
