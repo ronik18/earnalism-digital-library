@@ -332,6 +332,26 @@
   .premium-site-header .brand-header-logo__india-flag { width: 1.08rem; height: 0.73rem; }
 }
 
+/* Owner-approved primary desktop boards use a full editorial masthead rather
+   than the interim compact rail. Keep these measurements route-scoped so the
+   independently approved account and editorial headers do not move. */
+@media (min-width: 1024px) {
+  .premium-site-header--reference-public,
+  .premium-site-header--reference-library {
+    --site-header-height: 5.25rem;
+  }
+
+  .premium-site-header--reference-public .premium-header-inner,
+  .premium-site-header--reference-library .premium-header-inner {
+    padding-inline: 3.125rem;
+  }
+
+  .premium-site-header--reference-public .earnalism-brand-lockup,
+  .premium-site-header--reference-library .earnalism-brand-lockup {
+    width: 13.125rem;
+  }
+}
+
 /* Mobile navigation is a dark immersive panel on the approved primary
    surfaces, while the light library shell retains its editorial drawer. */
 .premium-site-header--reference-public #mobile-menu,
@@ -522,14 +542,14 @@
   .premium-site-header--reference-library,
   .premium-site-header--reference-commerce,
   .premium-site-header--reference-profile {
-    --site-header-height: 3.45rem;
+    --site-header-height: 3.5rem;
   }
 
   .premium-site-header--reference-public .earnalism-brand-lockup,
   .premium-site-header--reference-library .earnalism-brand-lockup,
   .premium-site-header--reference-commerce .earnalism-brand-lockup,
   .premium-site-header--reference-profile .earnalism-brand-lockup {
-    width: min(8.7rem, calc(100vw - 8.5rem));
+    width: min(9.75rem, calc(100vw - 8.5rem));
     padding: 0;
     border: 0;
     border-radius: 0;
@@ -545,4 +565,23 @@
   .premium-site-header--reference-profile .reference-home-header-icon { color:#fff7e7; }
   .premium-site-header--reference-profile #mobile-menu { border-color:rgba(214,173,85,.22); background:#07110f; }
   .premium-site-header--reference-profile #mobile-menu a { color:#fff7e7; border-bottom-color:rgba(214,173,85,.18); }
+}
+
+/* Exact-primary Home and Library desktop masthead — this intentionally comes
+   after the interim compact rule above so the routed board geometry wins. */
+@media (min-width: 1024px) {
+  .premium-site-header--reference-public,
+  .premium-site-header--reference-library {
+    --site-header-height: 5.25rem;
+  }
+
+  .premium-site-header--reference-public .premium-header-inner,
+  .premium-site-header--reference-library .premium-header-inner {
+    padding-inline: 3.125rem;
+  }
+
+  .premium-site-header--reference-public .earnalism-brand-lockup,
+  .premium-site-header--reference-library .earnalism-brand-lockup {
+    width: 13.125rem;
+  }
 }

@@ -50,7 +50,7 @@ const Admin = lazy(pageImports.Admin);
 const NotFound = lazy(pageImports.NotFound);
 const GoogleAuthBoundary = lazy(pageImports.GoogleAuthBoundary);
 const ROUTE_FONT_STYLESHEET_ID = "earnalism-route-fonts";
-const ROUTE_FONT_STYLESHEET = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Crimson+Pro:wght@400;500;600&family=Noto+Serif+Bengali:wght@400;500;600&family=Outfit:wght@400;500;600&display=optional";
+const ROUTE_FONT_STYLESHEET = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&family=Outfit:wght@400;500;600;700&display=swap";
 
 function ScrollToTop() {
   const { pathname } = useLocation();

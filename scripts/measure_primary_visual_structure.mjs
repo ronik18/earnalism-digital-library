@@ -13,8 +13,12 @@ import path from "node:path";
 import { createRequire } from "node:module";
 
 const root = path.resolve(new URL("..", import.meta.url).pathname);
-const requireFromFrontend = createRequire(path.join(root, "frontend", "package.json"));
-const { chromium } = requireFromFrontend("playwright");
+// The visual contract is pinned to the repository Playwright 1.60 runtime.
+// The frontend's package manager can legitimately resolve a newer test runner;
+// using that nested copy would make screenshots and geometry measurements
+// incomparable with the owner-approved capture environment.
+const requireFromRepository = createRequire(path.join(root, "package.json"));
+const { chromium } = requireFromRepository("playwright");
 const args = process.argv.slice(2);
 const option = (name, fallback = "") => {
   const index = args.indexOf(name);

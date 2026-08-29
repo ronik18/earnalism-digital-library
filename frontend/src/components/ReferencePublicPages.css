@@ -254,3 +254,45 @@
   .reference-library__shelves { gap:1.7rem; }
   .reference-library-grid { gap:.62rem; }
 }
+
+/* Home desktop: bind the routed composition to the owner-approved board's
+   full-height reading-room hero, not the compact interim checkpoint. */
+@media (min-width: 1024px) {
+  .reference-home__hero {
+    min-height: 37.5rem;
+    padding-top: 5.0625rem;
+  }
+
+  .reference-home__hero-copy {
+    width: 37.5rem;
+    min-height: 25.9375rem;
+  }
+
+  .reference-home h1 {
+    font-size: 4.6875rem;
+    line-height: .84;
+  }
+
+  .reference-home__cta-row {
+    margin-top: 3rem;
+  }
+
+  .reference-home__policy {
+    margin-top: 1.08rem;
+    max-width: 25rem;
+  }
+
+  .reference-feature-strip {
+    margin-top: -1.8rem;
+  }
+
+  .reference-feature-strip article {
+    min-height: 5.4rem;
+  }
+
+  .reference-home__pass {
+    position: relative;
+    top: -1.25rem;
+    padding-bottom: 3.3125rem;
+  }
+}
