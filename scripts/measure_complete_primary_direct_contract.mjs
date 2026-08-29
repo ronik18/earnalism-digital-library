@@ -21,6 +21,8 @@ const baseUrl = option("--base-url", "http://127.0.0.1:3000").replace(/\/$/, "")
 const output = option("--output");
 const screenshots = option("--screenshots");
 const requested = option("--state", "all").split(",").filter(Boolean);
+const bookDetailFixture = JSON.parse(await fs.readFile(path.join(root, "backend/data/controlled_publications/dracula/public_book.json"), "utf8"));
+const readerManifestFixture = JSON.parse(await fs.readFile(path.join(root, "backend/data/controlled_publications/dracula/reader_manifest.json"), "utf8"));
 
 const range = (label, selector, property, min, max, category = "geometry", index = 0) => ({ label, selector, property, min, max, category, index });
 const equal = (label, selector, property, expected, category = "geometry", index = 0) => ({ label, selector, property, expected, category, index });
@@ -71,6 +73,17 @@ const states = {
       range("mobile utility target height", ".listener-v2__utilities", "height", 43, 45, "spacing"), visible("mobile speed and actions", ".listener-v2__utilities label, .listener-v2__utilities button", "presence", 3), range("listener bottom navigation height", ".listener-v2 .experience-bottom-nav", "height", 67, 69), equal("listener bottom nav has four columns", ".listener-v2 .experience-bottom-nav", "gridColumns", 4),
     ],
   },
+  "book-detail-mobile": {
+    path: "/book/dracula", viewport: { width: 390, height: 844 }, fixture: "CONTROLLED_PUBLIC_BOOK_DETAIL",
+    assertions: [
+      range("book detail mobile header height", "[data-testid=site-header]", "height", 55, 57), range("book detail mobile logo width", "[data-testid=brand-logo] img", "width", 155, 157),
+      range("book detail return band height", ".book-detail-reference__return", "height", 61, 64), range("book detail return padding", ".book-detail-reference__return", "paddingLeft", 19, 21, "spacing"),
+      equal("book detail mobile is a single column", ".book-detail-reference__hero", "gridColumns", 1), range("book detail mobile hero padding", ".book-detail-reference__hero", "paddingLeft", 19, 21, "spacing"), range("book detail mobile cover x", ".book-detail-cover-frame", "x", 107, 110), range("book detail mobile cover width", ".book-detail-cover-frame", "width", 171, 174), range("book detail mobile cover height", ".book-detail-cover-frame", "height", 229, 232), range("book detail mobile cover radius", ".book-detail-cover-frame", "borderRadius", 8, 10, "color-border-radius"),
+      range("book detail mobile title x", ".book-detail-reference__hero h1", "x", 19, 21), font("book detail mobile title face", ".book-detail-reference__hero h1", "Cormorant Garamond", 42, 44), range("book detail mobile title line height", ".book-detail-reference__hero h1", "lineHeight", 39, 42, "typography"),
+      range("book detail mobile status width", "[data-testid=book-detail-status]", "width", 349, 351), range("book detail mobile status height", "[data-testid=book-detail-status]", "height", 43, 45), visible("book detail truthful read action", "[data-testid=read-preview]"),
+      range("book detail mobile tabs width", ".book-detail-reference__tabs", "width", 349, 351), range("book detail mobile tab height", ".book-detail-reference__tabs", "height", 40, 42), range("book detail truth panel width", "[data-testid=book-experience-truth]", "width", 349, 351), range("book detail truth panel radius", "[data-testid=book-experience-truth]", "borderRadius", 23, 25, "color-border-radius"),
+    ],
+  },
   "my-library-mobile": {
     path: "/my-library", viewport: { width: 390, height: 844 }, fixture: "TRUTHFUL_EMPTY_STATE_PRODUCTION_ROUTE",
     assertions: [
@@ -105,6 +118,10 @@ for (const id of activeStates) {
   const pageErrors = [];
   page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
   page.on("pageerror", (error) => pageErrors.push(error.message));
+  if (id === "book-detail-mobile") {
+    await page.route("**/api/books/dracula", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(bookDetailFixture) }));
+    await page.route("**/api/reader/book/dracula/manifest?*", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(readerManifestFixture) }));
+  }
   await page.goto(`${baseUrl}${state.path}`, { waitUntil: "domcontentloaded", timeout: 30_000 });
   await page.addStyleTag({ content: "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}" });
   const fontReport = await page.evaluate(async () => {

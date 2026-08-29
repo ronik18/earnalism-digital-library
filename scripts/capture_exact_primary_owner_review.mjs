@@ -38,7 +38,7 @@ const states = [
   ["book-detail-mobile", "/book/dracula", 390, 844, "book"], ["reader-desktop", "/reader/dracula?visual-fixture=1", 1440, 1000, "reader"],
   ["reader-mobile", "/reader/dracula?visual-fixture=1", 390, 844, "reader"], ["listener-desktop", "/listener/a-ghost-story?visual-fixture=1", 1440, 1000, "listener"],
   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],
-  ["my-library-mobile", "/library", 390, 844, "library"], ["profile-mobile", "/account", 390, 844, "profile"],
+  ["my-library-mobile", "/my-library", 390, 844, "my-library"], ["profile-mobile", "/account?visual-fixture=1", 390, 844, "profile"],
 ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family })).filter((state) => !selectedStates.size || selectedStates.has(state.id));
 
 const sha = (buffer) => crypto.createHash("sha256").update(buffer).digest("hex");
@@ -47,7 +47,7 @@ const requiredFor = (family) => ({
   home: ["[data-testid=home-reference-surface]", "header"], library: ["[data-testid=library-reference-surface]", "header"],
   filter: ["[data-testid=library-reference-surface]", ".reference-filter-trigger"], commerce: ["[data-testid=pricing-reference-surface]", "header"],
   navigation: ["header"], book: [".book-detail-page", "header"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"],
-  about: ["#about-v2-title"], profile: ["[data-testid=account-profile-mobile]"],
+  about: ["#about-v2-title"], "my-library": ["[data-testid=my-library-mobile]", ".my-library-v2__empty"], profile: ["[data-testid=account-profile-mobile]"],
 }[family] || ["main"]);
 
 async function installFixtureRoutes(page) {
