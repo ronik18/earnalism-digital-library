@@ -1,5 +1,16 @@
 # Primary visual convergence record
 
+## Controlled-measurement reconciliation - 2026-08-29
+
+The original live-production score (`49.340302`) is retained as historical evidence, but its live catalogue fixture differs from the controlled fixture and is therefore not a numeric non-regression threshold. A fresh three-way measurement used `fb77f75b`, Commerce checkpoint `f89cd71e`, and current head `189231301`, with the same catalog/offer/release fixture, references, crops, zero-mask contract, Playwright 1.60.0, Chromium 148.0.7778.96, Pixelmatch 7.2.0 at threshold 0.2, 1x scale, `en-IN`, and `Asia/Kolkata`.
+
+- Controlled base/current aggregate: `48.858998` to `62.151249`; 392,744 fewer mismatched pixels across 2,954,684 comparable pixels.
+- Commerce controlled base/checkpoint/current: `40.642512` / `62.477180` / `62.477180`; the current state therefore passes the controlled Commerce non-regression gate exactly, with zero mask coverage.
+- Structural contract: 347/347 assertions passed. The per-state assertion distribution is retained in `uat/evidence/primary-visual-convergence/controlled-reconciliation.json`.
+- Truth-safe content and product truth: `100.000000`. Reader and Listener remain excluded for their product-state reasons and are not aggregated.
+
+The remaining literal differences are classified in [primary-visual-owner-asset-gaps.md](primary-visual-owner-asset-gaps.md). The correct owner decision is either truth-safe structural acceptance or supplying the listed production assets and licensed fonts for a separate ditto-visual continuation; neither path permits fabricated claims or composite reference images in production.
+
 ## Immutable baseline
 
 - Baseline artifact: `/tmp/earnalism-live-mock-score-20260828T070033Z/`

@@ -1,0 +1,15 @@
+{
+  "schema_version": "earnalism.primary-visual-controlled-reconciliation.v1",
+  "historical_production_fixture": {"raw_aggregate_score":49.340302,"comparable_pixels":2954684,"mismatched_pixels":1496834,"classification":"FIXTURE_CHANGED_NOT_A_CONTROLLED_AB_DENOMINATOR"},
+  "snapshots": {"base":"fb77f75b3799a5cb5257429f812d17ca781bde2d","commerce_checkpoint":"f89cd71ec0eb6b93f7f17845283655f5682d18cd","current":"189231301da1227a6d13bde3f1b736839b9b37a1"},
+  "controlled_fixture_sha256":"6a18f6c14fedb297b0f5316fb415cd4532e1bc30aaf127a7b5a9627b89fac990",
+  "environment":{"playwright":"1.60.0","chromium":"148.0.7778.96","pixelmatch":"7.2.0","threshold":0.2,"device_scale_factor":1,"locale":"en-IN","timezone":"Asia/Kolkata","capture_stability":"two identical screenshots, 500 ms apart, up to three attempts"},
+  "commerce_three_way":{"comparable_pixels":1638912,"mask_coverage_percent":0,"base":{"raw_score":40.642512,"mismatched_pixels":972817},"checkpoint":{"raw_score":62.47718,"mismatched_pixels":614966},"current":{"raw_score":62.47718,"mismatched_pixels":614966},"non_regression":"PASS","rule":"current >= checkpoint - 0.100000 and current mismatches <= checkpoint mismatches plus deterministic raster tolerance"},
+  "controlled_base_current":{"comparable_pixels":2954684,"base_raw_aggregate":48.858998,"current_raw_aggregate":62.151249,"base_mismatched_pixels":1511055,"current_mismatched_pixels":1118311,"mismatch_pixel_reduction":392744,"score_gain":13.292251,"truth_adjusted_aggregate":62.151249,"dynamic_mask_coverage_percent":0,"structural_mask_coverage_percent":0,"states":[{"state":"home-desktop","base_raw":55.14081,"current_raw":55.14081,"delta":0},{"state":"library-desktop","base_raw":61.922335,"current_raw":62.433001,"delta":0.510666},{"state":"commerce-desktop","base_raw":40.642512,"current_raw":62.47718,"delta":21.834668},{"state":"book-detail-desktop","base_raw":56.091167,"current_raw":56.091167,"delta":0},{"state":"library-filter-mobile","base_raw":17.683857,"current_raw":80.546231,"delta":62.862374},{"state":"home-mobile","base_raw":63.375131,"current_raw":63.375131,"delta":0},{"state":"library-mobile","base_raw":63.092187,"current_raw":63.092187,"delta":0},{"state":"commerce-mobile","base_raw":72.831428,"current_raw":72.735394,"delta":-0.096034,"classification":"WITHIN_0_100000_RASTER_TOLERANCE"},{"state":"mobile-navigation","base_raw":79.475281,"current_raw":79.475281,"delta":0},{"state":"about-mobile","base_raw":80.221958,"current_raw":80.221958,"delta":0}]},
+  "structural_contract":{"aggregate":{"passed":347,"total":347,"score":100},"per_state_assertion_counts":{"home-desktop":48,"library-desktop":49,"commerce-desktop":57,"book-detail-desktop":42,"library-filter-mobile":27,"home-mobile":25,"library-mobile":25,"commerce-mobile":26,"mobile-navigation":25,"about-mobile":23}},
+  "truth_safe_content_score":100,
+  "product_truth_score":100,
+  "reader_product_state":"PRODUCT_STATE_BLOCKED_READING_PASS_V2_DISABLED",
+  "listener_product_state":"PRODUCT_STATE_INCOMPATIBLE_NOT_AGGREGATED",
+  "final_owner_decision":"OWNER_SOURCE_ASSET_OR_ACCEPTANCE_DECISION_REQUIRED"
+}

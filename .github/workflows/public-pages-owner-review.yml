@@ -10,6 +10,8 @@ on:
       - frontend/src/pages/Library.*
       - frontend/src/pages/Pricing.*
       - docs/design-references/**
+      - docs/architecture/primary-visual-convergence.md
+      - docs/architecture/primary-visual-owner-asset-gaps.*
       - scripts/generate_public_pages_owner_review.py
       - uat/contracts/public-pages-visual-contract-v2.json
       - .github/workflows/public-pages-owner-review.yml
@@ -106,4 +108,7 @@ jobs:
           path: |
             uat/evidence/actual-redesign/owner-review-final/**
             uat/evidence/primary-visual-convergence/**
+            docs/architecture/primary-visual-convergence.md
+            docs/architecture/primary-visual-owner-asset-gaps.json
+            docs/architecture/primary-visual-owner-asset-gaps.md
           if-no-files-found: error
