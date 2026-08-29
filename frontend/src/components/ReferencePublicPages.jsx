@@ -111,11 +111,11 @@ function SectionHeading({ eyebrow, title, action, children }) {
   );
 }
 
-function ReferenceShelf({ books, className = "", label, testId }) {
+function ReferenceShelf({ books, className = "", label, testId, ...regionProps }) {
   const shelfRef = useRef(null);
   const scroll = (direction) => shelfRef.current?.scrollBy({ left: direction * Math.max(220, shelfRef.current.clientWidth * 0.64), behavior: "smooth" });
   return (
-    <div className={`reference-shelf-frame ${className}`.trim()} data-testid={testId}>
+    <div className={`reference-shelf-frame ${className}`.trim()} data-testid={testId} {...regionProps}>
       <div ref={shelfRef} className="reference-book-shelf" aria-label={label}>
         {books.map((book, index) => <BookTile key={book.slug} book={book} priority={index === 0} />)}
       </div>
@@ -169,7 +169,7 @@ export function ReferenceHomeSurface({ curation }) {
           title="Find the language, voice, and story that feels like home."
           action={<Link to="/library" className="reference-text-link">Browse the complete library <ArrowRight aria-hidden="true" /></Link>}
         />
-        <ReferenceShelf books={shelfBooks} label="Featured classics" className="reference-home__journey-shelf" testId="home-journey-shelf" />
+        <ReferenceShelf books={shelfBooks} label="Featured classics" className="reference-home__journey-shelf" data-testid="home-journey-shelf" />
       </section>
 
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
