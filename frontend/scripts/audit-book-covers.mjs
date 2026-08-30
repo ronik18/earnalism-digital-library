@@ -25,7 +25,6 @@ const FALLBACK_DIMENSIONS = { width: 900, height: 1200 };
 // not a frontend filename denylist: the public collage must omit them until
 // canonical artwork is replaced or title linkage is corrected.
 const VISUAL_COVER_EXCLUSIONS = new Map([
-  ["a-ghost-story", { kind: "canonical_cover_mismatch", reason: "Current canonical image is titled Bharat at the Crossroads and cannot represent A Ghost Story." }],
   ["book-2b9853ec52", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
   ["dsires-baby", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
   ["sredni-vashtar", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],

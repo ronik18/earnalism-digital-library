@@ -1,0 +1,11 @@
+{
+  "schema_version": "earnalism.final_cover_rollback.v1",
+  "slug": "a-ghost-story",
+  "code_rollback": "Revert the post-approval assignment commit through the normal GitHub PR revert workflow.",
+  "metadata_rollback": "Use the existing canonical cover rollback mechanism and the exact pre-assignment values in a-ghost-story-cover-rollback.json.",
+  "promotion_events": {
+    "front": "0cb148cc-584f-45d4-b021-a9d546d4a71a",
+    "back": "7909a5b8-de10-4714-b51e-a4e0ce527df6"
+  },
+  "media": "Preserve both approved candidate files and the former Bharat files; delete neither without separate scoped authorization."
+}

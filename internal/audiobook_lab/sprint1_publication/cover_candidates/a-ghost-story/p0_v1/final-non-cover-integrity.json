@@ -1,0 +1,21 @@
+{
+  "schema_version": "earnalism.final_non_cover_integrity.v1",
+  "slug": "a-ghost-story",
+  "base_commit": "2f14b63ccadffa3d06a6ebbb33d4fb4808f9232d",
+  "allowed_cover_fields": ["cover_url", "cover_image_url", "coverImage", "cover_image", "thumbnail_url", "blur_placeholder", "dominant_color", "back_cover_url", "back_cover_image_url", "backCoverImage", "back_cover_thumbnail_url", "back_cover_blur_placeholder", "back_cover_dominant_color", "cover_dimensions", "updated_at"],
+  "non_cover_field_changes": [],
+  "mirror_differences": 0,
+  "active_former_bharat_urls_in_a_ghost_story_cover_fields": 0,
+  "active_approved_candidate_url_references": {
+    "front": 6,
+    "back": 5,
+    "total": 11
+  },
+  "reader_audio_release_truth_unchanged": true,
+  "public_book_sha256": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe",
+  "cover_approval_evidence_sha256": "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd",
+  "checksum_manifest_sha256": "81dda503ba8ca72148740eaa2f1783c2f339e61ff0cb7b285bdf3e4c04f2a3e7",
+  "static_seo_contract_sha256": "e7635485d54e8ab3e1b7f7f8d0df6ff41c49aba22a5acf2d00d00e295039f763",
+  "home_curated_cover_mirror_sha256": "fcf5bab49af139500e9a13357974e45e12b8cb52c2fc15439d040214f9c1ed59",
+  "listener_fixture_cover_mirror_sha256": "c33386da470f0cbfd2fc0bc81ab263362538de2739f13251af47aba148eba9cc"
+}

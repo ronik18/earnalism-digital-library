@@ -286,9 +286,9 @@
   "audiobook_style_profile": "source_preserving_ssml_88_percent",
   "audiobook_voice": "en-GB-Studio-C",
   "author": "Mark Twain",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115363/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115363/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115363/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400.png",
   "benefits": [
     "Read a compact classic comic ghost story in a clean digital edition.",
     "Listen through the approved section-following narration in the reader."
@@ -312,14 +312,14 @@
     }
   ],
   "content_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
   "cover_status": "CLOUDINARY_ASSIGNED",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
   "created_at": "2026-07-08T20:40:04Z",
   "description": "Mark Twain turns a haunted-room setup into a comic encounter with the Cardiff Giant legend. This edition includes a release-gated, section-following narration.",
-  "dominant_color": "#4A1C27",
+  "dominant_color": "#161819",
   "estimated_reading_time": "11 min",
   "formats": [
     "Ebook",
@@ -348,10 +348,25 @@
   "source_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
   "subtitle": "A Mark Twain comic haunting",
   "title": "A Ghost Story",
-  "updated_at": "2026-07-12T15:24:05Z",
+  "updated_at": "2026-08-30T19:26:21Z",
   "verification_status": "approved",
   "who_for": [
     "Classic short-story readers",
     "Fans of comic gothic fiction"
-  ]
+  ],
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+  "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1788115363/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400.png",
+  "back_cover_blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1788115363/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400.png",
+  "back_cover_dominant_color": "#101417"
 }

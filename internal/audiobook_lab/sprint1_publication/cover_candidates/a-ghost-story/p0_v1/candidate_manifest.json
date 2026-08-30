@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.private_cover_candidate.v1",
-  "status": "OWNER_A_GHOST_STORY_ASSIGNMENT_APPROVAL_REQUIRED",
+  "status": "CANONICAL_PROMOTED",
   "generated_at": "2026-08-30T18:55:29Z",
   "slug": "a-ghost-story",
   "title": "A Ghost Story",
@@ -157,9 +157,9 @@
   "review": {
     "board": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/owner-review-board.png",
     "admin_upload_status": "UPLOADED_PENDING_CANONICAL_REVIEW",
-    "canonical_promotion_status": "NOT_PROMOTED",
+    "canonical_promotion_status": "CANONICAL_PROMOTED",
     "owner_editorial_review_required": false,
-    "owner_assignment_review_required": true,
+    "owner_assignment_review_required": false,
     "assignment_plan": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/a-ghost-story-cover-assignment-plan.json",
     "staged_candidate_records": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/staged-candidate-records.json"
   },

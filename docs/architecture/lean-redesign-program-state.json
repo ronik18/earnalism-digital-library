@@ -100,11 +100,11 @@
     "active_lane": "A_GHOST_STORY_COVER",
     "base_sha": "bf7195c9d1e2f342835193b178dc13a99138c3d0",
     "branch": "codex/a-ghost-story-cover-assignment",
-    "pr": null,
+    "pr": 343,
     "deployed_sha": "bf7195c9d1e2f342835193b178dc13a99138c3d0",
-    "rollback": "Current Bharat at the Crossroads pair is preserved in the private assignment rollback manifest; no metadata mutation executed.",
-    "production_mutations": 2,
-    "next_owner_gate": "OWNER_A_GHOST_STORY_ASSIGNMENT_APPROVAL_REQUIRED",
+    "rollback": "The former Bharat at the Crossroads pair is preserved in the exact rollback manifest; the approved A Ghost Story pair is canonical in controlled mirrors pending normal PR merge and deployment.",
+    "production_mutations": 4,
+    "next_owner_gate": "PR_343_CHECKS_MERGE_AND_NORMAL_DEPLOYMENT",
     "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/candidate_manifest.json"
   }
 }

@@ -1,0 +1,95 @@
+{
+  "schema_version": "earnalism.cover_approval_evidence.v1",
+  "slug": "a-ghost-story",
+  "active_approvals": {
+    "front": "0cb148cc-584f-45d4-b021-a9d546d4a71a",
+    "back": "7909a5b8-de10-4714-b51e-a4e0ce527df6"
+  },
+  "rollback_pointers": {
+    "front": {
+      "from_event_id": "0cb148cc-584f-45d4-b021-a9d546d4a71a",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "thumbnail_url": null,
+        "blur_placeholder": null,
+        "dominant_color": "#4A1C27",
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_dimensions": null
+      }
+    },
+    "back": {
+      "from_event_id": "7909a5b8-de10-4714-b51e-a4e0ce527df6",
+      "to_event_id": null,
+      "previous_canonical_cover": {
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "back_cover_thumbnail_url": null,
+        "back_cover_blur_placeholder": null,
+        "back_cover_dominant_color": null,
+        "cover_status": "CLOUDINARY_ASSIGNED",
+        "cover_dimensions": {
+          "front": [
+            1600,
+            2400
+          ]
+        }
+      }
+    }
+  },
+  "history": [
+    {
+      "event_id": "0cb148cc-584f-45d4-b021-a9d546d4a71a",
+      "slug": "a-ghost-story",
+      "kind": "front",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+      "remote_sha256": "d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+        "public_id": "earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+        "version": "1788115329",
+        "version_id": "c3d953c67a162359753acd1e72db665d",
+        "resource_type": "image",
+        "format": "png"
+      },
+      "width": 1600,
+      "height": 2400,
+      "approved_at": "2026-08-30T19:26:21Z",
+      "approved_by": "owner:APPROVE_A_GHOST_STORY_ASSIGNMENT",
+      "approval_note": "Owner APPROVE_A_GHOST_STORY_ASSIGNMENT bound to the exact approved cover SHA-256.",
+      "rights_basis": "Mark Twain died in 1910; the work is public domain in India and the United States.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "f5cdec5ef8c6a8a2369e98e2e5cf30286b6908171a903a9849d0e8b147e280a0"
+    },
+    {
+      "event_id": "7909a5b8-de10-4714-b51e-a4e0ce527df6",
+      "slug": "a-ghost-story",
+      "kind": "back",
+      "decision": "APPROVE_CANONICAL_COVER",
+      "candidate_sha256": "baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+      "remote_sha256": "baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+      "cloudinary": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115363/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400.png",
+        "public_id": "earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+        "version": "1788115363",
+        "version_id": "2060179492b6cbeecbc3b79a43b21398",
+        "resource_type": "image",
+        "format": "png"
+      },
+      "width": 1600,
+      "height": 2400,
+      "approved_at": "2026-08-30T19:26:21Z",
+      "approved_by": "owner:APPROVE_A_GHOST_STORY_ASSIGNMENT",
+      "approval_note": "Owner APPROVE_A_GHOST_STORY_ASSIGNMENT bound to the exact approved cover SHA-256.",
+      "rights_basis": "Mark Twain died in 1910; the work is public domain in India and the United States.",
+      "reader_audio_release_truth_unchanged": true,
+      "event_sha256": "bd2de84d81d68276466ad8da68ad6d4bd3fece43f0de021b7301b76de4f23195"
+    }
+  ],
+  "updated_at": "2026-08-30T19:26:21Z"
+}
