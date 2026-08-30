@@ -125,6 +125,15 @@ try {
   const all = [...previous.filter((item) => !captures.some((capture) => capture.id === item.id)), ...captures];
   fs.writeFileSync(capturePath, JSON.stringify({ schema_version: "earnalism-exact-primary-owner-review-v1", states: all }, null, 2) + "\n");
   const failed = all.filter((item) => item.status !== 200 || item.errors.length || !item.stable || item.scrollWidth !== item.clientWidth || item.required.includes(false) || !Object.values(item.fontLoad || {}).every(Boolean));
-  console.log(JSON.stringify({ captured: all.length, failed: failed.map((item) => item.id), strict, output }));
+  const failureReasons = failed.map((item) => ({
+    id: item.id,
+    status: item.status,
+    overflow: item.scrollWidth !== item.clientWidth ? { scrollWidth: item.scrollWidth, clientWidth: item.clientWidth } : null,
+    missing_required: item.geometry.filter((entry) => !entry.present).map((entry) => entry.selector),
+    errors: item.errors,
+    stable: item.stable,
+    fontLoad: item.fontLoad,
+  }));
+  console.log(JSON.stringify({ captured: all.length, failed: failed.map((item) => item.id), failureReasons, strict, output }));
   if (strict && failed.length) process.exitCode = 1;
 } finally { await browser.close(); }
