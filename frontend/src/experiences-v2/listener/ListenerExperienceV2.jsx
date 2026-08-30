@@ -7,6 +7,7 @@ import ExperiencePanel from "../shared/ExperiencePanel";
 import ExperienceShell from "../shared/ExperienceShell";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
 import { LISTENING_ACCESS_COPY, READING_TIME_COPY } from "../../lib/publicAccessCopy";
+import BookCoverImage from "../../components/BookCoverImage";
 import "./listener-v2.css";
 
 const clock = (seconds = 0) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
@@ -54,8 +55,20 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
       <ExperienceHeader onSearch={() => onNavigate?.("search")} trailingLabel="Library" />
       <section className="listener-v2__layout">
         <div className="listener-v2__main">
-          <div className="listener-v2__art" aria-hidden="true"><span>Earnalism</span><strong>{presentation.title}</strong></div>
-          <div className="listener-v2__copy"><span className="listener-v2__eyebrow">{presentation.fixture ? "Approved-audio visual fixture" : "Audiobook available"}</span><h1 id="listener-v2-title">{presentation.title}</h1><p>{presentation.author}</p><small>{presentation.chapterLabel}</small></div>
+          <div className="listener-v2__art">
+            <BookCoverImage
+              book={book}
+              alt={`${presentation.title} cover`}
+              loading="eager"
+              fetchPriority="high"
+              width={480}
+              widths={[240, 360, 480]}
+              sizes="(min-width: 768px) 230px, 48vw"
+              allowGraphicalFallback={false}
+              fallback=""
+            />
+          </div>
+          <div className="listener-v2__copy"><span className="listener-v2__eyebrow">Listening experience</span><h1 id="listener-v2-title">{presentation.title}</h1><p>{presentation.author}</p><small>{presentation.chapterLabel}</small></div>
           {!presentation.fixture && access.authorized && presentation.mediaUrl && <audio ref={audioRef} src={presentation.mediaUrl} preload="metadata" onLoadedMetadata={(event) => setDuration(Number(event.currentTarget.duration) || 0)} onTimeUpdate={onTimeUpdate} onPlay={() => { setPlaying(true); onPlaybackStateChange?.("playing"); }} onPause={() => { setPlaying(false); onPlaybackStateChange?.("paused"); }} />}
           <div className="listener-v2__timeline"><div><span>{clock(time)}</span><input aria-label="Seek within approved audiobook" type="range" min="0" max={effectiveDuration || 0} step="0.1" value={Math.min(time, effectiveDuration || time)} onChange={(event) => seek(event.target.value)} disabled={presentation.fixture || !access.authorized || !effectiveDuration} /><b style={{ width: `${progress}%` }} aria-hidden="true" /><span>{clock(effectiveDuration)}</span></div><p>{presentation.chapterLabel}</p></div>
           <div className="listener-v2__controls">{access.authorized || presentation.fixture ? <><ExperienceIconButton label="Back 15 seconds" onClick={() => seek(time - 15)} disabled={presentation.fixture}><RotateCcw size={22} /><em>15</em></ExperienceIconButton><button type="button" className="listener-v2__play" onClick={togglePlayback} disabled={presentation.fixture} aria-label={playing ? "Pause approved audiobook" : "Play approved audiobook"}>{playing ? <Pause size={30} /> : <Play size={30} fill="currentColor" />}</button><ExperienceIconButton label="Forward 15 seconds" onClick={() => seek(time + 15)} disabled={presentation.fixture}><RotateCw size={22} /><em>15</em></ExperienceIconButton></> : <button type="button" className="listener-v2__authorize" onClick={onAuthorize}>Authorize Listening</button>}</div>
@@ -64,7 +77,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
         </div>
         <aside className="listener-v2__side">
           {presentation.fixture ? <ExperiencePanel eyebrow="Up next"><ol><li><span>Chapter 4</span><b>The Visitors</b><small>22:18</small></li><li><span>Chapter 5</span><b>Jonathan’s Diary</b><small>18:05</small></li><li><span>Chapter 6</span><b>Lucy’s Diary</b><small>10:40</small></li></ol><button type="button" onClick={() => onNavigate?.("chapters")}>View all chapters <ChevronRight size={14} /></button></ExperiencePanel> : null}
-          <ExperiencePanel eyebrow={presentation.fixture ? "Listening mode" : "Listening access"}><p>{presentation.fixture ? "Playback controls are shown for visual review only. Listening requires an active Reading Pass from second 0." : `${LISTENING_ACCESS_COPY} Playback starts only after server authorization from second 0.`}</p>{onAddToLibrary ? <button type="button" onClick={onAddToLibrary}>Add to Library</button> : null}</ExperiencePanel>
+          <ExperiencePanel eyebrow="Listening access"><p>{presentation.fixture ? "Listening requires an active Reading Pass from second 0." : `${LISTENING_ACCESS_COPY} Playback starts only after server authorization from second 0.`}</p>{onAddToLibrary ? <button type="button" onClick={onAddToLibrary}>Add to Library</button> : null}</ExperiencePanel>
           <ExperiencePanel eyebrow="Reading Pass"><p><Clock3 size={15} /> {READING_TIME_COPY}</p><button type="button" onClick={() => onNavigate?.("passes")}>Explore Reading Passes</button></ExperiencePanel>
         </aside>
       </section>

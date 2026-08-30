@@ -26,8 +26,18 @@ describe("premium header navigation", () => {
     expect(source).toContain('data-testid="mobile-header-search"');
     expect(source).toContain('data-testid="mobile-menu-toggle"');
     expect(source).toContain('data-testid="mobile-cta-library">Enter the Library');
-    expect(source).toContain('<Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">');
+    expect(source).toContain('className="mobile-menu-overlay__cta" data-testid="mobile-cta-library"');
     expect(source).toContain('data-testid={isAuthed ? "mobile-nav-account" : "mobile-nav-sign-in"}');
+  });
+
+  test("opens a full-height mobile dialog that contains focus and suppresses background interaction", () => {
+    expect(source).toContain('role="dialog" aria-modal="true" aria-label="Primary navigation"');
+    expect(source).toContain('element.setAttribute("inert", "")');
+    expect(source).toContain('document.body.style.overflow = "hidden"');
+    expect(source).toContain('event.key === "Escape"');
+    expect(styles).toContain(".premium-site-header .mobile-menu-overlay");
+    expect(styles).toContain("inset: var(--site-header-height) 0 0;");
+    expect(styles).not.toContain("height: 28rem;");
   });
 
   test("keeps the reference header readable and geometrically stable", () => {

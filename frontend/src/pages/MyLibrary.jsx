@@ -2,7 +2,6 @@ import { BookOpen, Headphones, LibraryBig } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import ExperienceBottomNavigation from "../experiences-v2/shared/ExperienceBottomNavigation";
-import ExperienceHeader from "../experiences-v2/shared/ExperienceHeader";
 import ExperienceShell from "../experiences-v2/shared/ExperienceShell";
 import "./MyLibrary.css";
 
@@ -13,7 +12,6 @@ export default function MyLibrary() {
 
   return (
     <ExperienceShell className="my-library-v2" labelledBy="my-library-title">
-      <ExperienceHeader compact onSearch={() => navigate("/library")} />
       <section className="my-library-v2__content" data-testid="my-library-mobile">
         <p className="my-library-v2__eyebrow">{accountName}</p>
         <h1 id="my-library-title">My Library</h1>

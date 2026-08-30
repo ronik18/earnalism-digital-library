@@ -24,7 +24,17 @@ function hasCanonicalProtectedAudioApproval(book = {}) {
 }
 
 export function listenerReleasePresentation(book = {}, { fixture = false } = {}) {
-  if (fixture) return { canRender: true, fixture: true, mediaUrl: "", release: { status: "approved" }, ...APPROVED_AUDIO_FIXTURE };
+  if (fixture) return {
+    canRender: true,
+    fixture: true,
+    mediaUrl: "",
+    release: { status: "approved" },
+    ...APPROVED_AUDIO_FIXTURE,
+    // A local review fixture may safely use the title/author and cover that
+    // belong together; it never changes production audio approval or media.
+    title: book.public_title || book.display_title || book.title || APPROVED_AUDIO_FIXTURE.title,
+    author: book.author || book.author_name || APPROVED_AUDIO_FIXTURE.author,
+  };
   const release = audiobookReleaseState(book);
   const canonicalApproval = hasCanonicalProtectedAudioApproval(book);
   if (!release.canShowControls && !canonicalApproval) return { canRender: false, fixture: false, release, mediaUrl: "" };

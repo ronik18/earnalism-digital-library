@@ -130,3 +130,13 @@
   .book-detail-page--reference .book-detail-reference__rights { padding:1rem; }
   .book-detail-page--reference .book-detail-status-row span { min-height: 2.75rem; }
 }
+
+@media (min-width: 440px) and (max-width: 767px) {
+  .book-detail-page--reference .book-detail-reference__hero {
+    grid-template-columns: minmax(9.5rem, .7fr) minmax(0, 1fr);
+    align-items:start;
+    gap:1.25rem;
+  }
+  .book-detail-page--reference .book-detail-cover-frame { max-width:none; margin:0; }
+  .book-detail-page--reference .book-detail-reference__details { padding-top:.2rem; }
+}

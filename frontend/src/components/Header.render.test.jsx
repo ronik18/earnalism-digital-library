@@ -60,4 +60,24 @@ describe("owner-approved Header composition", () => {
     expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(document.documentElement.clientWidth);
     cleanup();
   });
+
+  test("renders the mobile menu as a modal surface and makes the routed page inert", () => {
+    const main = document.createElement("main");
+    main.id = "main-content";
+    const footer = document.createElement("footer");
+    document.body.append(main, footer);
+    const { container, cleanup } = renderHeader();
+    const toggle = container.querySelector('[data-testid="mobile-menu-toggle"]');
+    act(() => toggle.dispatchEvent(new MouseEvent("click", { bubbles: true })));
+    const menu = container.querySelector('[data-testid="mobile-menu"]');
+    expect(menu?.getAttribute("role")).toBe("dialog");
+    expect(menu?.getAttribute("aria-modal")).toBe("true");
+    expect(main.hasAttribute("inert")).toBe(true);
+    expect(footer.hasAttribute("inert")).toBe(true);
+    expect(document.body.style.overflow).toBe("hidden");
+    act(() => menu.querySelector('[aria-label="Close menu"]').dispatchEvent(new MouseEvent("click", { bubbles: true })));
+    expect(main.hasAttribute("inert")).toBe(false);
+    expect(footer.hasAttribute("inert")).toBe(false);
+    cleanup();
+  });
 });

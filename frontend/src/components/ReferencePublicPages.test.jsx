@@ -27,10 +27,10 @@ describe("Reference public page surfaces", () => {
     expect(source).toContain("pack.gift_enabled === true || pack.kind === \"gift\"");
   });
 
-  test("keeps the dedicated commerce insight rail truthful", () => {
-    expect(source).toContain('reference-commerce__insight-rail');
-    expect(source).toContain('reference-commerce__hero-proof');
-    expect(source).toContain("Listening requires an active Reading Pass.");
+  test("uses one truthful Commerce composition without an obsolete research rail", () => {
+    expect(source).not.toContain('reference-commerce__insight-rail');
+    expect(source).not.toContain('reference-commerce__hero-proof');
+    expect(source).toContain("READING_TIME_COPY");
     expect(source).not.toContain("Use study across 2,400+ readers");
     expect(source).not.toContain("Reader satisfaction");
   });
@@ -54,6 +54,8 @@ describe("Reference public page surfaces", () => {
     expect(source).toContain('reference-filter-reset');
     expect(source).toContain('hideAll');
     expect(source).toContain('"Genre"');
+    expect(source).toContain('element.setAttribute("inert", "")');
+    expect(source).toContain('document.body.style.overflow = "hidden"');
     expect(source).not.toContain('Free audiobook preview');
   });
 });

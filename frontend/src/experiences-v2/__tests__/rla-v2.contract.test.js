@@ -54,20 +54,40 @@ describe("Reader, Listener, and About v2 product truth", () => {
   });
 
   test("only a deterministic fixture can render without a production media URL or public audio access", () => {
-    const fixture = listenerReleasePresentation({}, { fixture: true });
+    const fixture = listenerReleasePresentation({ title: "A Ghost Story", author: "Mark Twain" }, { fixture: true });
     expect(fixture.canRender).toBe(true);
     expect(fixture.fixture).toBe(true);
     expect(fixture.mediaUrl).toBe("");
     expect(fixture.publicPreviewSeconds).toBe(0);
+    expect(fixture.title).toBe("A Ghost Story");
+    expect(fixture.author).toBe("Mark Twain");
   });
 
   test("Listener fixture uses the compact mobile control shell without changing audio access", () => {
     const stylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/listener-v2.css"), "utf8");
     const source = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2.jsx"), "utf8");
-    expect(stylesheet).toContain(".listener-v2 .experience-header { display: none; }");
-    expect(stylesheet).toContain(".listener-v2__main { display: flex; flex-direction: column; padding: 62px 28px 24px; }");
+    const route = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2Route.jsx"), "utf8");
+    expect(stylesheet).toContain(".listener-v2 .experience-header { display:none; }");
+    expect(stylesheet).toContain(".listener-v2__main { display:flex; flex-direction:column; padding:62px 24px 26px; }");
     expect(source).toContain('className="listener-v2__mobile-top"');
+    expect(source).toContain("<BookCoverImage");
+    expect(stylesheet).not.toContain("CSS-rendered Gothic landscape");
+    expect(source).not.toContain("Approved-audio visual fixture");
+    expect(source).not.toContain("visual review only");
+    expect(route).toContain("LISTENER_VISUAL_FIXTURE_BOOK");
+    expect(route).toContain('slug: "a-ghost-story"');
+    expect(route).toContain("cover_image_url:");
     expect(source).toContain("presentation.fixture || !access.authorized || !effectiveDuration");
+  });
+
+  test("Reader text-size controls alter the rendered reading-text style in both responsive layouts", () => {
+    const experience = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2.jsx"), "utf8");
+    const stylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.css"), "utf8");
+    const mobileStylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.mobile.css"), "utf8");
+    expect(experience).toContain('data-testid="reader-reading-text"');
+    expect(experience).toContain('style={{ fontSize: `${fontScale / 100}rem` }}');
+    expect(stylesheet).not.toContain("font-size: 1rem !important");
+    expect(mobileStylesheet).toContain(".reader-v2__toolbar { display: none; }");
   });
 
   test("playback time is never treated as a public preview allowance", () => {

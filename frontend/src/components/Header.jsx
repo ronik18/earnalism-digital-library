@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   Menu,
@@ -48,10 +48,17 @@ function isNavItemActive(item, location) {
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
+  const menuToggleRef = useRef(null);
+  const returnFocusToMenuToggle = useRef(false);
   const loc = useLocation();
   const { social } = useSettings();
   const { user } = useAuth();
   useEffect(() => { setOpen(false); }, [loc.pathname, loc.search]);
+  const closeMenu = useCallback(({ restoreFocus = true } = {}) => {
+    returnFocusToMenuToggle.current = restoreFocus;
+    setOpen(false);
+  }, []);
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
@@ -64,6 +71,55 @@ export default function Header() {
   const usesLibraryReferenceShell = loc.pathname === "/library";
   const usesCommerceReferenceShell = loc.pathname === "/pricing";
   const usesProfileMobileShell = loc.pathname === "/account";
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const main = document.getElementById("main-content");
+    const footer = document.querySelector("footer");
+    const menuToggle = menuToggleRef.current;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    [main, footer].filter(Boolean).forEach((element) => {
+      element.setAttribute("inert", "");
+      element.setAttribute("aria-hidden", "true");
+    });
+    const focusable = () => [...(menuRef.current?.querySelectorAll("a[href], button:not([disabled])") || [])]
+      .filter((element) => element.offsetParent !== null);
+    const first = focusable()[0];
+    first?.focus();
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const controls = focusable();
+      if (!controls.length) return;
+      const firstControl = controls[0];
+      const lastControl = controls.at(-1);
+      if (event.shiftKey && document.activeElement === firstControl) {
+        event.preventDefault();
+        lastControl.focus();
+      } else if (!event.shiftKey && document.activeElement === lastControl) {
+        event.preventDefault();
+        firstControl.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      [main, footer].filter(Boolean).forEach((element) => {
+        element.removeAttribute("inert");
+        element.removeAttribute("aria-hidden");
+      });
+      document.removeEventListener("keydown", onKeyDown);
+      if (returnFocusToMenuToggle.current) {
+        returnFocusToMenuToggle.current = false;
+        requestAnimationFrame(() => menuToggle?.focus());
+      }
+    };
+  }, [open, closeMenu]);
   return (
     <header
       className={`sticky top-0 z-50 glass-header premium-site-header${usesDarkReferenceShell ? " premium-site-header--reference-public" : ""}${usesLibraryReferenceShell ? " premium-site-header--reference-library" : ""}${usesCommerceReferenceShell ? " premium-site-header--reference-commerce" : ""}${usesProfileMobileShell ? " premium-site-header--reference-profile" : ""}`}
@@ -115,11 +171,12 @@ export default function Header() {
           <Search size={20} strokeWidth={1.65} aria-hidden="true" />
         </Link>
         <button
+          ref={menuToggleRef}
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => (open ? closeMenu() : setOpen(true))}
           className="xl:hidden inline-flex min-h-11 min-w-11 items-center justify-center p-2 -mr-2 text-burgundy"
           data-testid="mobile-menu-toggle"
         >
@@ -128,8 +185,9 @@ export default function Header() {
       </div>
 
       {open && (
-        <div id="mobile-menu" className="xl:hidden border-t border-brand bg-ivory/95 backdrop-blur-xl" data-testid="mobile-menu">
-          <div className="px-5 py-5 flex flex-col">
+        <div ref={menuRef} id="mobile-menu" className="mobile-menu-overlay xl:hidden" data-testid="mobile-menu" role="dialog" aria-modal="true" aria-label="Primary navigation">
+          <div className="mobile-menu-overlay__content">
+            <button type="button" className="mobile-menu-overlay__close" onClick={() => closeMenu()} aria-label="Close menu"><X size={22} aria-hidden="true" /></button>
             {NAV.map((n) => (
               <Link
                 key={n.to}
@@ -151,10 +209,10 @@ export default function Header() {
             >
               {accountLabel}
             </NavLink>
-            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Enter the Library</Link>
+            <Link to="/library" className="mobile-menu-overlay__cta" data-testid="mobile-cta-library">Enter the Library</Link>
 
             {activeSocials.length > 0 && (
-              <nav className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-4" aria-label="Earnalism social links" data-testid="mobile-socials">
+              <nav className="mobile-menu-overlay__socials" aria-label="Earnalism social links" data-testid="mobile-socials">
                 {activeSocials.map(({ id, ariaLabel, external, Icon, url }) => (
                   <a
                     key={id}

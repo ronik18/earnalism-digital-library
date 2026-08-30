@@ -165,10 +165,10 @@ export function ReferenceHomeSurface({ curation }) {
 
       <section className="reference-home__journey" aria-labelledby="reference-journey-title">
         <SectionHeading
-          eyebrow="BEGIN YOUR JOURNEY"
-          title="Find the language, voice, and story that feels like home."
+          eyebrow="DISCOVER THE COLLECTION"
+          title="Begin Your Journey"
           action={<Link to="/library" className="reference-text-link">Browse the complete library <ArrowRight aria-hidden="true" /></Link>}
-        />
+        ><p>Find the language, voice, and story that feels like home.</p></SectionHeading>
         <ReferenceShelf books={shelfBooks} label="Featured classics" className="reference-home__journey-shelf" data-testid="home-journey-shelf" />
       </section>
 
@@ -268,6 +268,15 @@ export function ReferenceLibrarySurface({
     if (!filtersOpen) return undefined;
     const trigger = filterTriggerRef.current;
     const drawer = filterDrawerRef.current;
+    const header = document.querySelector("header[data-testid='site-header']");
+    const footer = document.querySelector("footer");
+    const backgroundChildren = drawer ? [...drawer.parentElement.children].filter((element) => element !== drawer) : [];
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    [...backgroundChildren, header, footer].filter(Boolean).forEach((element) => {
+      element.setAttribute("inert", "");
+      element.setAttribute("aria-hidden", "true");
+    });
     const close = () => {
       setFiltersOpen(false);
       requestAnimationFrame(() => trigger?.focus());
@@ -295,7 +304,14 @@ export function ReferenceLibrarySurface({
       }
     };
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      [...backgroundChildren, header, footer].filter(Boolean).forEach((element) => {
+        element.removeAttribute("inert");
+        element.removeAttribute("aria-hidden");
+      });
+      document.removeEventListener("keydown", onKeyDown);
+    };
   }, [filtersOpen, setFiltersOpen]);
 
   return (
@@ -314,7 +330,7 @@ export function ReferenceLibrarySurface({
           {loading ? <p className="reference-loading">Opening the collection...</p> : shelves.map(([title, copy, books]) => <section key={title} className="reference-library-shelf" aria-labelledby={`shelf-${title}`}><SectionHeading eyebrow={title === "Live now" ? "LIVE NOW" : title.toUpperCase()} title={title} action={<span className="reference-shelf-count">{books.length} editions</span>}><p>{copy}</p></SectionHeading>{books.length ? <div className="reference-library-grid">{books.slice(0, 10).map((book, index) => <BookTile key={book.slug} book={book} compact priority={index < 2} showListen={title === "Audiobooks"} />)}</div> : <p className="reference-empty-listening">No titles currently match this release state.</p>}</section>)}
         </section>
       </main>
-      {filtersOpen ? <div ref={filterDrawerRef} className="reference-library-drawer" role="dialog" aria-modal="true" aria-label="Library filters"><div><header><strong>Filters</strong><div><button type="button" className="reference-filter-reset" onClick={onResetFilters}>Reset</button><button type="button" onClick={closeFilters} aria-label="Close filters"><X aria-hidden="true" /></button></div></header><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} hideAll drawer onChange={update} /><button type="button" className="reference-button reference-button--gold" onClick={closeFilters}>Apply filters</button></div></div> : null}
+      {filtersOpen ? <div ref={filterDrawerRef} className="reference-library-drawer" role="dialog" aria-modal="true" aria-label="Library filters" onMouseDown={(event) => { if (event.target === event.currentTarget) closeFilters(); }}><div><header><strong>Filters</strong><div><button type="button" className="reference-filter-reset" onClick={onResetFilters}>Reset</button><button type="button" onClick={closeFilters} aria-label="Close filters"><X aria-hidden="true" /></button></div></header><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} hideAll drawer onChange={update} /><button type="button" className="reference-button reference-button--gold" onClick={closeFilters}>Apply filters</button></div></div> : null}
     </div>
   );
 }
@@ -330,25 +346,17 @@ export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId
       <div className="reference-commerce__primary-column">
         <section className="reference-commerce__hero" aria-labelledby="reference-commerce-title">
           <div><p className="reference-kicker">READING PASSES</p><h1 id="reference-commerce-title">Read more.<br />Live the stories.</h1><p>Unlock unhurried reading time and immerse yourself in timeless Bengali and English classics.</p><ul><li>{PUBLIC_ACCESS_COPY}</li><li>{READING_TIME_COPY}</li><li>No subscription or autorenewal</li></ul></div>
-          <section className="reference-commerce__hero-proof" aria-label="Reading Pass principles"><h2>Made for a quieter reading rhythm</h2><div><article><BookOpen aria-hidden="true" /><strong>Preview before you continue</strong><span>{PUBLIC_PREVIEW_COPY}</span></article><article><ClockMark aria-hidden="true" /><strong>Time moves with your reading</strong><span>{READING_TIME_COPY}</span></article><article><Lock aria-hidden="true" /><strong>One account, your own pace</strong><span>No subscription or autorenewal</span></article></div></section>
           <picture className="reference-commerce__hero-art">
             <img src="/assets/reference-derived/commerce-chair-lamp-board-crop.png" alt="" fetchPriority="high" decoding="async" />
           </picture>
         </section>
         <main className="reference-commerce__main">
-          <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>{PUBLIC_ACCESS_COPY}</li></ul><button type="button" disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>
+          <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading eyebrow="READING PASSES" title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>{PUBLIC_ACCESS_COPY}</li></ul><button type="button" disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>
           <section className="reference-commerce__pathways"><article><Landmark aria-hidden="true" /><h2>For institutions</h2><p>School, college, and library access begins with a conversation.</p><Link to="/contact">Request a pilot</Link></article><article><Building2 aria-hidden="true" /><h2>For publishers</h2><p>Rights holders and authors can explore a careful digital edition pathway.</p><Link to="/contact">Partner with us</Link></article>{giftEnabled ? <article><Sparkles aria-hidden="true" /><h2>Gift a pass</h2><p>Share reading time when a configured gift product is available.</p><Link to="/pricing">View gift options</Link></article> : null}</section>
           <section className="reference-commerce__trust" data-testid="pricing-reference-wallet-explainer"><div><Lock aria-hidden="true" /><strong>Secure payment</strong><span>{config?.configured ? "Configured checkout" : "Checkout availability is confirmed at purchase"}</span></div><div><Check aria-hidden="true" /><strong>Privacy first</strong><span>Your account and reading stay private.</span></div><div><BookOpen aria-hidden="true" /><strong>Reading time</strong><span>Used only while you read.</span></div></section>
           <section className="reference-commerce__final"><p className="reference-kicker">START WITH THE PREVIEW</p><h2>Meet a story before you add time.</h2><p>{PUBLIC_ACCESS_COPY}</p><Link to="/library" className="reference-button reference-button--gold">Browse the library</Link></section>
         </main>
       </div>
-      <aside className="reference-commerce__insight-rail" aria-label="Reading Pass information">
-        <section className="reference-commerce__insight-intro"><p className="reference-kicker">A READING RHYTHM</p><h2>A calmer way to stay with a story.</h2><div className="reference-commerce__insight-facts"><article><BookOpen aria-hidden="true" /><strong>Read at your pace</strong><p>{READING_TIME_COPY}</p></article><article><Headphones aria-hidden="true" /><strong>Listen when approved</strong><p>Listening requires an active Reading Pass.</p></article><article><Lock aria-hidden="true" /><strong>Preview first</strong><p>{PUBLIC_PREVIEW_COPY}</p></article></div></section>
-        <section className="reference-commerce__insight-uses"><h2>What a Reading Pass supports</h2><div><article><BookOpen aria-hidden="true" /><strong>Read</strong><span>Across eligible editions</span></article><article><Headphones aria-hidden="true" /><strong>Listen</strong><span>Only where audio is approved</span></article><article><Check aria-hidden="true" /><strong>Return</strong><span>Continue where you left off</span></article><article><Lock aria-hidden="true" /><strong>Private</strong><span>Your reading stays with you</span></article></div></section>
-        <section className="reference-commerce__insight-modes" aria-label="Ways to use a Reading Pass"><h2>Built for different reading moments</h2><div><article><BookOpen aria-hidden="true" /><strong>Start gently</strong><span>Meet a book before adding time.</span></article><article><ClockMark aria-hidden="true" /><strong>Read daily</strong><span>Keep your place across eligible books.</span></article><article><Sparkles aria-hidden="true" /><strong>Read deeply</strong><span>Choose time when a story holds you.</span></article><article><Headphones aria-hidden="true" /><strong>Listen carefully</strong><span>Only when an edition is approved.</span></article></div></section>
-        <section className="reference-commerce__insight-assurances" aria-label="Reading Pass assurances"><article><Lock aria-hidden="true" /><strong>Private by design</strong><span>Your account and reading stay yours.</span></article><article><ClockMark aria-hidden="true" /><strong>No recurring billing</strong><span>Add time only when you choose.</span></article><article><Check aria-hidden="true" /><strong>Release truth</strong><span>Audio appears only when approved.</span></article></section>
-        <section className="reference-commerce__insight-close"><p className="reference-kicker">START WITH THE LIBRARY</p><h2>Find the story that meets your moment.</h2><p>{PUBLIC_ACCESS_COPY}</p><Link to="/library" className="reference-button reference-button--gold">Explore the library</Link></section>
-      </aside>
     </div>
   );
 }
