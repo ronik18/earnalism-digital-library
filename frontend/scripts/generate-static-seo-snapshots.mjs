@@ -136,6 +136,14 @@ function standardPages(editorial) {
     ["/signup", "Create an account | The Earnalism", "Create an account for your Earnalism library."],
     ["/account", "Your account | The Earnalism", "Your Earnalism account is private."],
   ].map((row) => ({ path: row[0], title: row[1], description: row[2], robots: "noindex,nofollow", staticBody: shell("The Earnalism", row[1], row[2], [{ href: "/library", label: "Explore the Library" }]) }));
+  privatePages.push({
+    path: "/my-library",
+    title: "My Library | The Earnalism",
+    description: "Your Earnalism library is private.",
+    robots: "noindex,nofollow",
+    snapshot_classification: "AUTHENTICATED_PRIVATE",
+    staticBody: shell("The Earnalism", "My Library", "Your Earnalism library is private.", [{ href: "/library", label: "Explore the Library" }]),
+  });
   return [...pages, journal, ...articles, ...privatePages];
 }
 
@@ -173,7 +181,7 @@ async function main() {
     await mkdir(path.dirname(target), { recursive: true });
     await writeFile(target, render(source, page), "utf8");
   }
-  const manifest = { schema_version: "earnalism.static-seo-snapshots.v2", source_contracts: { publication: path.relative(rootDir, publicationContractPath).replace(/\\/g, "/"), editorial: path.relative(rootDir, editorialContractPath).replace(/\\/g, "/") }, forbidden_copy: forbiddenCopy, routes: pages.map((page) => ({ route: page.path, robots: page.robots || "index,follow" })) };
+  const manifest = { schema_version: "earnalism.static-seo-snapshots.v2", source_contracts: { publication: path.relative(rootDir, publicationContractPath).replace(/\\/g, "/"), editorial: path.relative(rootDir, editorialContractPath).replace(/\\/g, "/") }, forbidden_copy: forbiddenCopy, routes: pages.map((page) => ({ route: page.path, robots: page.robots || "index,follow", snapshot_classification: page.snapshot_classification || "PUBLIC_INDEXABLE" })) };
   await writeFile(path.join(buildDir, "static-seo-snapshot-manifest.json"), JSON.stringify(manifest, null, 2) + "\n", "utf8");
   console.log("[static-seo] Wrote " + pages.length + " static snapshots and a deterministic route manifest.");
 }

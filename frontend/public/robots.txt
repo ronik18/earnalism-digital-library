@@ -3,6 +3,7 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /account
+Disallow: /my-library
 Allow: /reader/a-ghost-story
 Allow: /reader/agentic-ai-with-python
 Allow: /reader/alices-adventures-in-wonderland

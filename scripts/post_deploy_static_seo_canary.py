@@ -35,6 +35,7 @@ ROUTES = {
     "/library": {"kind": "library", "canonical": "/library", "robots": "index,follow"},
     "/pricing?book=dracula": {"kind": "pricing", "canonical": "/pricing", "robots": "index,follow"},
     "/reader/dracula": {"kind": "reader", "canonical": "/book/dracula", "robots": "noindex,follow"},
+    "/my-library": {"kind": "private_library", "canonical": "/my-library", "robots": "noindex,nofollow"},
 }
 
 
@@ -145,7 +146,7 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
         failures.append(f"wrong robots directive: expected {policy['robots']}, got {facts.robots or 'missing'}")
     if GENERIC_HOME_MARKER in text:
         failures.append("generic Home fallback is present")
-    if not has_access_contract(text):
+    if policy["kind"] != "private_library" and not has_access_contract(text):
         failures.append("missing approved first-three-pages and active-Reading-Pass contract")
     for phrase in FORBIDDEN_COPY:
         if normalize(phrase) in text:
@@ -171,6 +172,15 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
         failures.append("missing Library route identity")
     elif policy["kind"] == "reader" and "dracula" not in title:
         failures.append("missing Reader route identity")
+    elif policy["kind"] == "private_library":
+        if title != "my library | the earnalism" or "my library" not in h1:
+            failures.append("missing private My Library route identity")
+        if "your earnalism library is private" not in description:
+            failures.append("missing private My Library description")
+        if "private" not in headers.get("Cache-Control", "").lower() or "no-store" not in headers.get("Cache-Control", "").lower():
+            failures.append("missing private, no-store cache policy")
+        if re.search(r"\b(?:balance|transaction|device|saved editions|@[a-z0-9.-]+\.[a-z]{2,})\b", text, re.I):
+            failures.append("private My Library snapshot exposes account data")
 
     return {"route": route, "url": url, "status_code": status, "cache_control": headers.get("Cache-Control", ""), "title": " ".join(facts.title).strip(), "description": facts.description, "canonical": facts.canonical, "robots": facts.robots, "failures": failures, "result": "PASS" if not failures else "FAIL"}
 
