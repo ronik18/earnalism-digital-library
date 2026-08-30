@@ -63,8 +63,10 @@ async function installFixtureRoutes(page) {
   });
 }
 
-async function capture(state, browser) {
-  const page = await browser.newPage({ viewport: state.viewport, deviceScaleFactor: 1, colorScheme: state.family === "library" || state.family === "filter" ? "light" : "dark", reducedMotion: "reduce" });
+async function capture(state, context) {
+  const page = await context.newPage();
+  await page.setViewportSize(state.viewport);
+  await page.emulateMedia({ colorScheme: state.family === "library" || state.family === "filter" ? "light" : "dark", reducedMotion: "reduce" });
   const errors = [];
   page.on("pageerror", (error) => errors.push(`pageerror:${error.message}`));
   page.on("console", (message) => { if (message.type() === "error") errors.push(`console:${message.text()}`); });
@@ -113,10 +115,11 @@ async function capture(state, browser) {
 
 fs.mkdirSync(output, { recursive: true });
 const browser = await chromium.launch({ headless: true });
+const context = await browser.newContext({ deviceScaleFactor: 1, colorScheme: "dark", reducedMotion: "reduce" });
 try {
   const captures = [];
   for (const state of states) {
-    const result = await capture(state, browser);
+    const result = await capture(state, context);
     captures.push(result);
     console.log(JSON.stringify({ state: state.id, status: result.status, stable: result.stable, errors: result.errors.length }));
   }
