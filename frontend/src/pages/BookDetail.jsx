@@ -78,6 +78,7 @@ export default function BookDetail() {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadStatus, setLoadStatus] = useState("idle");
+  const [selectedTab, setSelectedTab] = useState("about");
 
   const bookNotFound = !loading && loadStatus === "not_found";
   const bookLoadError = !loading && loadStatus === "error";
@@ -230,6 +231,15 @@ export default function BookDetail() {
   const readerHref = `/reader/${publicBook.slug}`;
   const passHref = isDracula ? readingPassUrl("book_detail") : "";
   const detailPresentation = bookDetailPresentationForBook(publicBook);
+  const tabs = ["about", "details", ...(chapterCount > 0 ? ["chapters"] : []), "related"];
+  const selectTab = (tab) => setSelectedTab(tab);
+  const onTabKeyDown = (event) => {
+    if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    event.preventDefault();
+    const next = (tabs.indexOf(selectedTab) + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+    selectTab(tabs[next]);
+    document.getElementById(`book-tab-${tabs[next]}`)?.focus();
+  };
 
   return (
     <div className="book-detail-page book-detail-page--reference" data-testid="book-page">
@@ -323,13 +333,11 @@ export default function BookDetail() {
             )}
           </div>
 
-          <nav className="book-detail-reference__tabs" aria-label="Book details">
-            <a href="#book-about">About</a>
-            <a href="#rights-note">Details</a>
-            {chapterCount > 0 ? <a href="#book-chapters">Chapters</a> : null}
+          <nav className="book-detail-reference__tabs" aria-label="Book details" role="tablist" onKeyDown={onTabKeyDown}>
+            {tabs.map((tab) => <button key={tab} id={`book-tab-${tab}`} type="button" role="tab" aria-selected={selectedTab === tab} aria-controls={`book-panel-${tab}`} tabIndex={selectedTab === tab ? 0 : -1} onClick={() => selectTab(tab)}>{tab[0].toUpperCase() + tab.slice(1)}</button>)}
           </nav>
 
-          <div id="book-about" className="book-experience-panel book-detail-reference__truth mt-8" data-testid="book-experience-truth">
+          {selectedTab === "about" && <div id="book-panel-about" role="tabpanel" aria-labelledby="book-tab-about" className="book-experience-panel book-detail-reference__truth mt-8" data-testid="book-experience-truth">
             <div className="book-experience-panel__item">
               <BookOpen size={18} strokeWidth={1.55} aria-hidden="true" />
               <div>
@@ -359,10 +367,12 @@ export default function BookDetail() {
           <div className="mt-8" data-testid="book-share">
             <ShareButtons title={publicBook.title} variant="product" testIdPrefix="book-share" />
           </div>
+          </div>}
 
-          {/* Chapter list */}
-          {chapterCount > 0 && (
-            <div id="book-chapters" className="mt-14" data-testid="chapter-list">
+          {selectedTab === "details" && <div id="book-panel-details" role="tabpanel" aria-labelledby="book-tab-details" className="book-detail-reference__rights mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="book-details-panel"><strong>Release &amp; Access</strong><p className="mt-3 text-sm leading-relaxed text-charcoal-soft">{PUBLIC_PREVIEW_COPY}. {detailPresentation.audioBody}</p>{isDracula && <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">Source: {DRACULA_SOURCE_NOTE} Rights status: {DRACULA_RIGHTS_NOTE}</p>}</div>}
+
+          {selectedTab === "chapters" && chapterCount > 0 && (
+            <div id="book-panel-chapters" role="tabpanel" aria-labelledby="book-tab-chapters" className="mt-8" data-testid="chapter-list">
               <div className="italic-eyebrow mb-3">Table of Contents</div>
             <h3 className="font-serif-light text-[1.48rem] sm:text-[1.68rem] text-burgundy mb-6 leading-snug">Chapters</h3>
               <ol className="space-y-3">
@@ -375,6 +385,8 @@ export default function BookDetail() {
               </ol>
             </div>
           )}
+
+          {selectedTab === "related" && <div id="book-panel-related" role="tabpanel" aria-labelledby="book-tab-related" className="mt-8" data-testid="book-related-panel"><h3 className="font-serif-light text-[1.48rem] text-burgundy">Related titles</h3><p className="mt-3 text-charcoal-soft">Explore more editions in the Library.</p><Link to="/library" className="btn-secondary mt-5 inline-flex">Browse the Library</Link></div>}
 
           {publicBook.benefits?.length > 0 && (
             <div className="mt-14">
@@ -421,7 +433,7 @@ export default function BookDetail() {
         </section>
       )}
 
-      {isDracula && (
+      {false && isDracula && (
       <section id="preview-payment" className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-6 pb-20 sm:pb-28" data-testid="preview-payment-section">
         <div className="preview-payment-shell">
           <div className="preview-payment-shell__cover" aria-hidden="true">
