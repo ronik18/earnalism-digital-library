@@ -104,7 +104,7 @@ async function capture(state, context, sessionFontLoad) {
     await page.locator(".reference-library-drawer[role=dialog]").waitFor({ state: "visible", timeout: 10_000 });
   }
   if (state.family === "navigation") {
-    await page.locator("button[aria-label*='menu' i], button[aria-label*='navigation' i]").first().click();
+    await page.locator("[data-testid=mobile-menu-toggle]").click();
     await page.locator("[data-testid=mobile-menu][role=dialog]").waitFor({ state: "visible", timeout: 10_000 });
   }
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));

@@ -18,6 +18,7 @@ on:
       - docs/architecture/primary-visual-convergence.md
       - docs/architecture/primary-visual-owner-asset-gaps.*
       - scripts/capture_exact_primary_owner_review.mjs
+      - scripts/verify_exact_primary_cross_browser.mjs
       - scripts/generate_exact_primary_owner_review.py
       - uat/contracts/public-pages-visual-contract-v2.json
       - .github/workflows/public-pages-owner-review.yml
@@ -60,7 +61,7 @@ jobs:
           npm ci
           npm ci --prefix frontend --legacy-peer-deps
           python3 -m pip install --disable-pip-version-check -r requirements.txt
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium firefox webkit
 
       - name: Materialize base source without changing the pull request checkout
         env:
@@ -104,6 +105,16 @@ jobs:
           trap 'kill "$server_pid"' EXIT
           for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13007/ >/dev/null && break; sleep 1; done
           UAT_BASE_URL=http://127.0.0.1:13007 OWNER_REVIEW_CAPTURE_STRICT=true EXACT_OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/exact-primary-design/current node scripts/capture_exact_primary_owner_review.mjs
+
+      - name: Verify Firefox and WebKit public-route behavior
+        run: |
+          node scripts/serve_frontend_build.js --port 13007 >"$RUNNER_TEMP/owner-review-browser-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13007/ >/dev/null && break; sleep 1; done
+          for browser in firefox webkit; do
+            UAT_BASE_URL=http://127.0.0.1:13007 EXACT_OWNER_REVIEW_BROWSER="$browser" EXACT_OWNER_REVIEW_BROWSER_OUTPUT="uat/evidence/exact-primary-design/current/browser-${browser}.json" node scripts/verify_exact_primary_cross_browser.mjs
+          done
 
       - name: Generate labeled review package
         run: |
