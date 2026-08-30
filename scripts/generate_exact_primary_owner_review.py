@@ -24,7 +24,8 @@ def crop(state):
  x,y,w,h,board=CROPS[state]; image=Image.open(board).convert("RGB"); return image.crop((x,y,x+w,y+h)), board
 def maybe(path): return path if path.exists() else None
 def diff(reference, current):
- current=current.convert("RGB").resize(reference.size, Image.Resampling.LANCZOS)
+ current=current.convert("RGB")
+ if current.size != reference.size: return None
  return ImageChops.difference(reference, current).point(lambda x:min(255,x*4)), Image.blend(reference, current, .5)
 def load(path): return json.loads(path.read_text()) if path.exists() else {"states":[]}
 def current_head():
@@ -45,7 +46,8 @@ CORRECTIONS = {
 def main():
  OUT.mkdir(parents=True, exist_ok=True)
  current_dir=WORK/"current"; before_dir=WORK/"before"
- current={x["id"]:x for x in load(current_dir/"capture.json").get("states",[])}; before={x["id"]:x for x in load(before_dir/"capture.json").get("states",[])}
+ current_capture=load(current_dir/"capture.json"); before_capture=load(before_dir/"capture.json")
+ current={x["id"]:x for x in current_capture.get("states",[])}; before={x["id"]:x for x in before_capture.get("states",[])}
  records=[]; pages=[]
  for state in CROPS:
   ref, board=crop(state); ref_name=f"{state}-reference.png"; ref.save(OUT/ref_name)
@@ -53,24 +55,35 @@ def main():
   current_name=f"{state}-current.png"; before_name=f"{state}-before.png"
   if current_path: shutil.copy2(current_path, OUT/current_name)
   if before_path: shutil.copy2(before_path, OUT/before_name)
+  full_current=maybe(current_dir/f"{state}-full.png")
+  if full_current: shutil.copy2(full_current, OUT/f"{state}-current-full.png")
   heat_name=f"{state}-heatmap.png"; overlay_name=f"{state}-overlay.png"
   if current_path:
-   heat, overlay=diff(ref,Image.open(current_path)); heat.save(OUT/heat_name); overlay.save(OUT/overlay_name)
-  record={"state":state,"reference_board":board.name,"reference_sha256":sha(board),"reference_crop":{"x":CROPS[state][0],"y":CROPS[state][1],"width":CROPS[state][2],"height":CROPS[state][3]},"current_capture":current.get(state,{}),"before_capture":before.get(state,{}),"labels":["EXACT_REFERENCED_REGION","RESPONSIVE_EXTRAPOLATION","DYNAMIC_REAL_DATA"],"product_truth_override":OVERRIDES.get(state,"None"),"source_asset_limitation":"Listener cover remains supplied by current approved release artwork; no embedded UI is used as an asset." if state.startswith("listener") else "None"}
+   comparison=diff(ref,Image.open(current_path))
+   if comparison:
+    heat, overlay=comparison; heat.save(OUT/heat_name); overlay.save(OUT/overlay_name)
+  record={"state":state,"reference_board":board.name,"reference_sha256":sha(board),"reference_crop":{"x":CROPS[state][0],"y":CROPS[state][1],"width":CROPS[state][2],"height":CROPS[state][3]},"current_capture":current.get(state,{}),"before_capture":before.get(state,{}),"overlay_suitability":"NATIVE_DIMENSIONS_REQUIRED; side-by-side only" if not (OUT/overlay_name).exists() else "ALIGNED_NATIVE_DIMENSIONS","labels":["EXACT_REFERENCED_REGION","RESPONSIVE_EXTRAPOLATION","DYNAMIC_REAL_DATA"],"product_truth_override":OVERRIDES.get(state,"None"),"source_asset_limitation":"Listener title artwork is classified separately; no embedded UI is used as an asset." if state.startswith("listener") else "None"}
   records.append(record)
   page=Image.new("RGB",(1600,1100),"#f6f1e8"); draw=ImageDraw.Draw(page); font=ImageFont.load_default(); draw.text((32,24),f"{state} | EXACT REFERENCED REGION / CURRENT ROUTED UI",fill="#142019",font=font); draw.text((32,46),record["product_truth_override"],fill="#6a5121",font=font)
   left=ref.copy(); left.thumbnail((720,970)); page.paste(left,(32,95))
   if current_path:
    right=Image.open(current_path).convert("RGB"); right.thumbnail((720,970)); page.paste(right,(830,95))
   pages.append(page)
- head=current_head()
+ capture_provenance=current_capture.get("provenance",{})
+ head=capture_provenance.get("actual_checkout_sha") or current_head()
+ if capture_provenance.get("pr_head_sha") and capture_provenance["pr_head_sha"] != head:
+  raise RuntimeError("owner-review capture checkout does not match the pull-request head")
  score_report={"schema_version":"pr341-manual-corrections-v1","head":head,"comparison_contract":"primary-board-panel-map-v2","raw_pixel_score":{"status":"NOT_COMPARABLE","reason":"The approved boards contain composite and partial panels; this package preserves native reference/current/overlay/heatmap evidence but does not relabel resized-board differences as a fidelity percentage."},"truth_adjusted_pixel_score":{"status":"NOT_COMPARABLE","reason":"No structural masking was applied."},"states":[{"id":r["state"],"capture_stable":r["current_capture"].get("stable"),"capture_errors":r["current_capture"].get("errors",[]),"font_load":r["current_capture"].get("fontLoad",{}),"reference":r["reference_board"]} for r in records],"historical_measurements":{"reviewed_head":"a3a4228806a257c9e06f979129e4ba479387bcba","raw_visual_fidelity":62.151486,"label":"HISTORICAL_NON_COMPARABLE"}}
  (OUT/"score-report.json").write_text(json.dumps(score_report,indent=2)+"\n")
- provenance={"schema_version":"pr341-owner-review-provenance-v1","repository":"ronik18/earnalism-digital-library","pr_number":341,"pr_head":head,"capture_tool":{"playwright":"1.60.0","chromium":"148.0.7778.96","device_scale_factor":1},"source_changes_during_packaging":0,"production_mutations":0,"generated_at":datetime.datetime.now(datetime.timezone.utc).isoformat()}
+ browser_results={"browser":"chromium","version":capture_provenance.get("browser_version"),"states":[{"id":r["state"],"stable":r["current_capture"].get("stable"),"errors":r["current_capture"].get("errors",[]),"overflow":r["current_capture"].get("scrollWidth") != r["current_capture"].get("clientWidth")} for r in records]}
+ (OUT/"browser-results.json").write_text(json.dumps(browser_results,indent=2)+"\n")
+ artwork={"schema_version":"pr341-title-artwork-readiness-v1","titles":[{"slug":"a-ghost-story","displayed_title":"A Ghost Story","cover_metadata_field":"cover_image_url","cover_identity":"existing Cloudinary cover referenced by listener fixture","classification":"WRONG_TITLE_ART","exists_in_production_metadata":True},{"slug":"dracula","displayed_title":"Dracula","cover_metadata_field":"cover_image_url","cover_identity":"/assets/books/dracula/dracula-front-cover.webp","classification":"CORRECT_TITLE_ART","exists_in_production_metadata":True}]}
+ (OUT/"title-artwork-readiness.json").write_text(json.dumps(artwork,indent=2)+"\n")
+ provenance={"schema_version":"pr341-owner-review-provenance-v2","repository":"ronik18/earnalism-digital-library","pr_number":341,"pr_head_sha":current_capture.get("provenance",{}).get("pr_head_sha"),"actual_checkout_sha":current_capture.get("provenance",{}).get("actual_checkout_sha"),"checkout_tree_sha":current_capture.get("provenance",{}).get("checkout_tree_sha"),"workflow_event_sha":current_capture.get("provenance",{}).get("workflow_event_sha"),"capture_script_sha256":current_capture.get("provenance",{}).get("capture_script_sha256"),"fixture_sha256":current_capture.get("provenance",{}).get("fixture_sha256"),"browser_version":current_capture.get("provenance",{}).get("browser_version"),"build_configuration":current_capture.get("provenance",{}).get("build_configuration"),"reference_hashes":{board.name:sha(board) for board in {BOARD_ONE,BOARD_TWO}},"source_changes_during_packaging":0,"production_mutations":0,"generated_at":datetime.datetime.now(datetime.timezone.utc).isoformat()}
  (OUT/"provenance.json").write_text(json.dumps(provenance,indent=2)+"\n")
  manifest={"schema_version":"earnalism-exact-primary-owner-review-v2","approved_copy":"Read the first 3 pages free. Listening requires an active Reading Pass.","head":head,"correction_contract_version":"pr341-manual-corrections-v1","corrections":CORRECTIONS,"states":records,"score_report":"score-report.json","status":"OWNER_REVIEWED_CORRECTIONS_APPROVAL_REQUIRED"}
  (OUT/"owner-review.json").write_text(json.dumps(manifest,indent=2)+"\n")
- panels="".join(f'<section><h2>{r["state"]}</h2><p>{r["product_truth_override"]}</p><table><tr><th>Region</th><td>{r["reference_board"]} {r["reference_crop"]}</td></tr><tr><th>Geometry</th><td>{r["current_capture"].get("geometry",[])}</td></tr></table><div><img src="{r["state"]}-reference.png"><img src="{r["state"]}-current.png"><img src="{r["state"]}-overlay.png"><img src="{r["state"]}-heatmap.png"></div></section>' for r in records)
+ panels="".join(f'<section><h2>{r["state"]}</h2><p>{r["product_truth_override"]}</p><table><tr><th>Region</th><td>{r["reference_board"]} {r["reference_crop"]}</td></tr><tr><th>Overlay</th><td>{r["overlay_suitability"]}</td></tr><tr><th>Geometry</th><td>{r["current_capture"].get("geometry",[])}</td></tr></table><div><img src="{r["state"]}-reference.png"><img src="{r["state"]}-current.png"></div></section>' for r in records)
  correction_html="".join("<li><strong>{}</strong> — {}</li>".format(key,value) for key,value in CORRECTIONS.items())
  (OUT/"owner-review.html").write_text(f'<!doctype html><meta charset="utf-8"><title>Earnalism reviewed corrections</title><style>body{{background:#f6f1e8;color:#142019;font:16px system-ui;margin:0}}header,section{{max-width:1600px;margin:auto;padding:20px}}section{{border-top:1px solid #c9a75b}}div{{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}}img{{width:100%;border:1px solid #c9a75b}}table{{font-size:12px;max-width:100%;overflow:auto}}@media(max-width:800px){{div{{grid-template-columns:repeat(2,1fr)}}}}</style><header><h1>Earnalism reviewed primary UI corrections</h1><p>Head: <code>{head}</code>. Review fixtures are local and sanitized; production access remains server-authoritative.</p><p>Raw heatmaps and overlays are visual evidence only. Their panel dimensions are not a comparable Pixelmatch denominator; see <code>score-report.json</code>.</p><ol>{correction_html}</ol></header>{panels}')
  pages[0].save(OUT/"owner-review.pdf",save_all=True,append_images=pages[1:])

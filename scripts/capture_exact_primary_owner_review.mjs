@@ -7,6 +7,7 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { chromium } from "playwright";
 
 const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
@@ -40,6 +41,7 @@ const states = [
   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],
   ["my-library-mobile", "/my-library", 390, 844, "my-library"], ["profile-mobile", "/account?visual-fixture=1", 390, 844, "profile"],
 ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family })).filter((state) => !selectedStates.size || selectedStates.has(state.id));
+const fullPageStates = new Set(["home-desktop", "home-mobile", "library-desktop", "library-mobile", "commerce-desktop", "commerce-mobile", "book-detail-desktop", "book-detail-mobile"]);
 
 const sha = (buffer) => crypto.createHash("sha256").update(buffer).digest("hex");
 const jsonResponse = (route, value) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(value) });
@@ -103,6 +105,11 @@ async function capture(state, context, sessionFontLoad) {
   await page.waitForTimeout(500);
   const second = await page.screenshot({ fullPage: false, animations: "disabled" });
   const screenshot = path.join(output, `${state.id}.png`); fs.writeFileSync(screenshot, second);
+  let fullPageScreenshot = null;
+  if (fullPageStates.has(state.id)) {
+    fullPageScreenshot = path.join(output, `${state.id}-full.png`);
+    await page.screenshot({ path: fullPageScreenshot, fullPage: true, animations: "disabled" });
+  }
   const selectors = requiredFor(state.family);
   const metrics = await page.evaluate((required) => ({
     scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth,
@@ -111,11 +118,14 @@ async function capture(state, context, sessionFontLoad) {
     geometry: required.map((selector) => { const node = document.querySelector(selector); if (!node) return { selector, present: false }; const r = node.getBoundingClientRect(); const s = getComputedStyle(node); return { selector, present: true, x: r.x, y: r.y, width: r.width, height: r.height, fontSize: s.fontSize, lineHeight: s.lineHeight }; }),
   }), selectors);
   await page.close();
-  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, stable: sha(first) === sha(second), screenshot_sha256: sha(second), fixture: state.family === "profile" ? "sanitized-owner-review-user" : "server-contract-review-fixture", product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
+  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture: state.family === "profile" ? "sanitized-owner-review-user" : "server-contract-review-fixture", product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
 }
 
 fs.mkdirSync(output, { recursive: true });
 const browser = await chromium.launch({ headless: true });
+const checkoutSha = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+const checkoutTreeSha = execFileSync("git", ["rev-parse", "HEAD^{tree}"], { encoding: "utf8" }).trim();
+const captureScriptSha = sha(fs.readFileSync(new URL(import.meta.url)));
 const context = await browser.newContext({ deviceScaleFactor: 1, colorScheme: "dark", reducedMotion: "reduce" });
 const sessionFontLoad = { value: null };
 try {
@@ -128,7 +138,7 @@ try {
   const capturePath = path.join(output, "capture.json");
   const previous = process.env.EXACT_OWNER_REVIEW_APPEND_CAPTURE === "1" && fs.existsSync(capturePath) ? JSON.parse(fs.readFileSync(capturePath, "utf8")).states || [] : [];
   const all = [...previous.filter((item) => !captures.some((capture) => capture.id === item.id)), ...captures];
-  fs.writeFileSync(capturePath, JSON.stringify({ schema_version: "earnalism-exact-primary-owner-review-v1", states: all }, null, 2) + "\n");
+  fs.writeFileSync(capturePath, JSON.stringify({ schema_version: "earnalism-exact-primary-owner-review-v2", provenance: { pr_head_sha: process.env.PR_HEAD_SHA || null, actual_checkout_sha: checkoutSha, checkout_tree_sha: checkoutTreeSha, workflow_event_sha: process.env.WORKFLOW_EVENT_SHA || null, capture_script_sha256: captureScriptSha, browser_version: browser.version(), fixture_sha256: sha(Buffer.from(JSON.stringify({ books, packs, user }))), build_configuration: { visual_fixtures: process.env.REACT_APP_ENABLE_VISUAL_FIXTURES || null } }, states: all }, null, 2) + "\n");
   const failed = all.filter((item) => item.status !== 200 || item.errors.length || !item.stable || item.scrollWidth !== item.clientWidth || item.required.includes(false) || !Object.values(item.fontLoad || {}).every(Boolean));
   const failureReasons = failed.map((item) => ({
     id: item.id,

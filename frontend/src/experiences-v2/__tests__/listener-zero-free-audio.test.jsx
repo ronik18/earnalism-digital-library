@@ -64,6 +64,13 @@ describe("Listener v2 zero-free-audio contract", () => {
     expect(html).not.toContain("<audio");
   });
 
+  test("does not present fixture-only Up Next or no-op utility controls as production capability", () => {
+    const fixture = renderToStaticMarkup(<ListenerExperienceV2 fixture access={{ authorized: false }} />);
+    expect(fixture).not.toContain("Up next");
+    expect(fixture).not.toContain("Sleep");
+    expect(fixture).not.toContain(">More<");
+  });
+
   test("disabled audio, including Dracula, renders no Listener surface and playback math grants no preview", () => {
     const disabled = renderToStaticMarkup(<ListenerExperienceV2 book={{ slug: "dracula", audio_enabled: false, audiobook_enabled: false }} />);
     expect(disabled).toBe("");
