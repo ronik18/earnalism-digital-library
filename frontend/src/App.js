@@ -51,8 +51,6 @@ const AdminLogin = lazy(pageImports.AdminLogin);
 const Admin = lazy(pageImports.Admin);
 const NotFound = lazy(pageImports.NotFound);
 const GoogleAuthBoundary = lazy(pageImports.GoogleAuthBoundary);
-const ROUTE_FONT_STYLESHEET_ID = "earnalism-route-fonts";
-const ROUTE_FONT_STYLESHEET = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&family=Outfit:wght@400;500;600;700&display=swap";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -60,20 +58,6 @@ function ScrollToTop() {
   return null;
 }
 
-function RouteFontLoader() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    if (pathname === "/" || document.getElementById(ROUTE_FONT_STYLESHEET_ID)) return;
-    const stylesheet = document.createElement("link");
-    stylesheet.id = ROUTE_FONT_STYLESHEET_ID;
-    stylesheet.rel = "stylesheet";
-    stylesheet.href = ROUTE_FONT_STYLESHEET;
-    document.head.appendChild(stylesheet);
-  }, [pathname]);
-
-  return null;
-}
 
 function PageFallback() {
   return (
@@ -118,7 +102,6 @@ export function AppRouterContent() {
   return (
     <>
       <ScrollToTop />
-      <RouteFontLoader />
       <Suspense fallback={<PageFallback />}>
         <Routes>
           <Route element={<Layout />}>

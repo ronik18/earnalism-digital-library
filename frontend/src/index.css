@@ -1,5 +1,21 @@
 @import "./design-system/index.css";
 
+/* Locked, locally served visual-system faces.  Do not replace these with a
+   network stylesheet: owner-review and production routes must share the same
+   deterministic glyph source. */
+@font-face { font-family:"Cormorant Garamond"; src:url("./assets/fonts/cormorant-garamond-500.ttf") format("truetype"); font-style:normal; font-weight:500; font-display:swap; }
+@font-face { font-family:"Cormorant Garamond"; src:url("./assets/fonts/cormorant-garamond-600.ttf") format("truetype"); font-style:normal; font-weight:600; font-display:swap; }
+@font-face { font-family:"Cormorant Garamond"; src:url("./assets/fonts/cormorant-garamond-700.ttf") format("truetype"); font-style:normal; font-weight:700; font-display:swap; }
+@font-face { font-family:"Outfit"; src:url("./assets/fonts/outfit-400.ttf") format("truetype"); font-style:normal; font-weight:400; font-display:swap; }
+@font-face { font-family:"Outfit"; src:url("./assets/fonts/outfit-500.ttf") format("truetype"); font-style:normal; font-weight:500; font-display:swap; }
+@font-face { font-family:"Outfit"; src:url("./assets/fonts/outfit-600.ttf") format("truetype"); font-style:normal; font-weight:600; font-display:swap; }
+@font-face { font-family:"Outfit"; src:url("./assets/fonts/outfit-700.ttf") format("truetype"); font-style:normal; font-weight:700; font-display:swap; }
+@font-face { font-family:"Noto Serif Bengali"; src:url("./assets/fonts/noto-serif-bengali-500.ttf") format("truetype"); font-style:normal; font-weight:500; font-display:swap; }
+@font-face { font-family:"Noto Serif Bengali"; src:url("./assets/fonts/noto-serif-bengali-600.ttf") format("truetype"); font-style:normal; font-weight:600; font-display:swap; }
+@font-face { font-family:"Noto Sans Bengali"; src:url("./assets/fonts/noto-sans-bengali-400.ttf") format("truetype"); font-style:normal; font-weight:400; font-display:swap; }
+@font-face { font-family:"Noto Sans Bengali"; src:url("./assets/fonts/noto-sans-bengali-500.ttf") format("truetype"); font-style:normal; font-weight:500; font-display:swap; }
+@font-face { font-family:"Noto Sans Bengali"; src:url("./assets/fonts/noto-sans-bengali-600.ttf") format("truetype"); font-style:normal; font-weight:600; font-display:swap; }
+
 :root {
   --font-display: 'Cormorant Garamond', 'Noto Serif Bengali';
   --font-ui: 'Outfit', 'Noto Sans Bengali';
