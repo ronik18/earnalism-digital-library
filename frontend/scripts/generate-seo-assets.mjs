@@ -289,6 +289,7 @@ async function main() {
     "Disallow: /admin",
     "Disallow: /admin/",
     "Disallow: /account",
+    "Disallow: /my-library",
     ...Array.from(controlledLiveSlugs).sort().map((slug) => `Allow: /reader/${slug}`),
     "Disallow: /reader/",
     "Disallow: /secure-reader-test",

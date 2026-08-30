@@ -21,7 +21,7 @@ function requiredRoutes(publication, editorial) {
   const publicRoutes = ["/", "/library", "/pricing", "/about", "/contact", "/micro-story", "/journal"];
   const journalRoutes = editorial.articles.map((article) => "/journal/" + article.slug);
   const books = publication.publications.flatMap((book) => ["/book/" + book.slug, "/reader/" + book.slug, "/listener/" + book.slug]);
-  return [...publicRoutes, ...journalRoutes, ...books, "/login", "/signup", "/account"];
+  return [...publicRoutes, ...journalRoutes, ...books, "/login", "/signup", "/account", "/my-library"];
 }
 
 async function main() {
@@ -76,9 +76,17 @@ async function main() {
       state.assertions += 1;
       if (normalized.includes("a library made for lingering")) fail(route + " contains the generic Home fallback", state);
     }
-    if (["/login", "/signup", "/account"].includes(route)) {
+    if (["/login", "/signup", "/account", "/my-library"].includes(route)) {
       state.assertions += 1;
       if (!normalized.includes('name="robots" content="noindex,nofollow"')) fail(route + " must be noindex", state);
+    }
+    if (route === "/my-library") {
+      state.assertions += 4;
+      if (manifestEntry.snapshot_classification !== "AUTHENTICATED_PRIVATE") fail(route + " must be classified AUTHENTICATED_PRIVATE", state);
+      if (!normalized.includes("<title>my library | the earnalism</title>")) fail(route + " must have the route-specific title", state);
+      if (normalized.includes("a library made for lingering")) fail(route + " contains the generic Home fallback", state);
+      const staticBody = (html.match(/<main[^>]+data-static-seo-snapshot="true"[\s\S]*?<\/main>/i) || [""])[0];
+      if (/\b(?:balance|transaction|device|saved editions|@[^\s<]+)/i.test(staticBody)) fail(route + " contains account-private data", state);
     }
     if (route.startsWith("/reader/") || route.startsWith("/listener/")) {
       state.assertions += 1;
