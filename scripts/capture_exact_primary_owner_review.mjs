@@ -63,7 +63,7 @@ async function installFixtureRoutes(page) {
   });
 }
 
-async function capture(state, context) {
+async function capture(state, context, sessionFontLoad) {
   const page = await context.newPage();
   await page.setViewportSize(state.viewport);
   await page.emulateMedia({ colorScheme: state.family === "library" || state.family === "filter" ? "light" : "dark", reducedMotion: "reduce" });
@@ -80,7 +80,7 @@ async function capture(state, context) {
     const settle = Promise.all([document.fonts.ready, ...[...document.images].map((image) => image.decode().catch(() => undefined))]);
     await Promise.race([settle, new Promise((resolve) => setTimeout(resolve, 10_000))]);
   });
-  const fontLoad = await page.evaluate(async () => {
+  const fontLoad = sessionFontLoad.value || await page.evaluate(async () => {
     await Promise.all([
       document.fonts.load('500 48px "Cormorant Garamond"'),
       document.fonts.load('400 16px "Outfit"'),
@@ -94,6 +94,7 @@ async function capture(state, context) {
       notoSansBengali: document.fonts.check('400 16px "Noto Sans Bengali"', 'বাংলা'),
     };
   });
+  sessionFontLoad.value = fontLoad;
   if (state.family === "filter") await page.locator(".reference-filter-trigger").click();
   if (state.family === "navigation") await page.locator("button[aria-label*='menu' i], button[aria-label*='navigation' i]").first().click().catch(() => undefined);
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
@@ -110,16 +111,17 @@ async function capture(state, context) {
     geometry: required.map((selector) => { const node = document.querySelector(selector); if (!node) return { selector, present: false }; const r = node.getBoundingClientRect(); const s = getComputedStyle(node); return { selector, present: true, x: r.x, y: r.y, width: r.width, height: r.height, fontSize: s.fontSize, lineHeight: s.lineHeight }; }),
   }), selectors);
   await page.close();
-  return { ...state, status: response?.status() || 0, errors, fontLoad, ...metrics, stable: sha(first) === sha(second), screenshot_sha256: sha(second), fixture: state.family === "profile" ? "sanitized-owner-review-user" : "server-contract-review-fixture", product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
+  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, stable: sha(first) === sha(second), screenshot_sha256: sha(second), fixture: state.family === "profile" ? "sanitized-owner-review-user" : "server-contract-review-fixture", product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
 }
 
 fs.mkdirSync(output, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({ deviceScaleFactor: 1, colorScheme: "dark", reducedMotion: "reduce" });
+const sessionFontLoad = { value: null };
 try {
   const captures = [];
   for (const state of states) {
-    const result = await capture(state, context);
+    const result = await capture(state, context, sessionFontLoad);
     captures.push(result);
     console.log(JSON.stringify({ state: state.id, status: result.status, stable: result.stable, errors: result.errors.length }));
   }
