@@ -2170,3 +2170,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 ## Release-truth reconciliation - 2026-08-21
 
 - A reader package marked `reader_approval_required` must be absent from every historical live allowlist and SEO surface; stale promotion records cannot override a current checksum-bound approval blocker.
+
+## A Ghost Story P0 cover correction - 2026-08-30
+
+- Semantic inspection and the authoritative Cloudinary mapping both confirmed that the active A Ghost Story front/back pair belongs to Bharat at the Crossroads; treat it as `WRONG_TITLE_ART`, not as a neutral placeholder.
+- Text-free art plus deterministic typography can be prepared privately and checksum-bound without changing release truth. Private artwork review, candidate upload, and canonical assignment remain separate owner-gated actions.
+- The assignment-review package validated 47 focused backend tests, eight frontend cover-contract tests, the production build, static SEO, and cover audit. `regression:ci` is not green until its browser journey receives a fully completed loopback UAT service; do not misstate the partial runner attempts as a pass.

@@ -1,0 +1,24 @@
+{
+  "schema_version": "earnalism.cover_assignment_rollback.v1",
+  "slug": "a-ghost-story",
+  "reason": "Restore only the pre-assignment cover fields if a later approved canonical promotion must be reverted.",
+  "front": {
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "thumbnail_url": null,
+    "blur_placeholder": null,
+    "dominant_color": "#4A1C27"
+  },
+  "back": {
+    "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "back_cover_thumbnail_url": null,
+    "back_cover_blur_placeholder": null,
+    "back_cover_dominant_color": null
+  },
+  "cover_dimensions": null,
+  "procedure": "Use the existing canonical cover-promotion rollback mechanism; do not delete either staged candidate unless a separate scoped deletion authorization is granted."
+}

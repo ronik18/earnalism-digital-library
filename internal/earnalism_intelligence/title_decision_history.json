@@ -66,7 +66,18 @@
       "package_v2_storage_status": "PRODUCTION_AND_DR_FULL_DOWNLOAD_VERIFIED",
       "package_v2_release_blockers": [],
       "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_a_ghost_story_20260730.json",
-      "audiobook_next_action": "Keep the retained legacy descriptor available for rollback, continue health monitoring, and inspect book-2b9853ec52 as the next already-approved package-v2 migration candidate without changing narration or release gates."
+      "audiobook_next_action": "Keep the retained legacy descriptor available for rollback, continue health monitoring, and inspect book-2b9853ec52 as the next already-approved package-v2 migration candidate without changing narration or release gates.",
+      "p0_cover_candidate": {
+        "status": "OWNER_A_GHOST_STORY_ASSIGNMENT_APPROVAL_REQUIRED",
+        "defect": "WRONG_TITLE_ART",
+        "wrong_pair_assigned_title": "Bharat at the Crossroads",
+        "front_sha256": "d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+        "back_sha256": "baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+        "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/candidate_manifest.json",
+        "production_mutations": 2,
+        "staged_candidate_records": "private production book_cover_candidates: a-ghost-story:front and a-ghost-story:back",
+        "assignment_plan": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/a-ghost-story-cover-assignment-plan.json"
+      }
     },
     "alices-adventures-in-wonderland": {
       "latest_decision": "SOURCE_BOUND_DELIVERY_REQUIRED_AFTER_KOKORO_REPRESENTATIVE_ASR_REPAIR_FAILURE",

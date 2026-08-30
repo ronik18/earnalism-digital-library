@@ -94,5 +94,17 @@
     "database_change_allowed": false,
     "note": "The original Phase 2 validation is historical only. This implementation requires explicit owner visual approval before merge."
   },
-  "next_gate": "Owner visual approval is required for the actual Home, Library, and Commerce implementation before merge. Destructive cleanup remains deferred until the earliest review date and explicit candidate-by-candidate approval."
+  "next_gate": "Owner visual approval is required for the actual Home, Library, and Commerce implementation before merge. Destructive cleanup remains deferred until the earliest review date and explicit candidate-by-candidate approval.",
+  "product_completion_p0_p1": {
+    "primary_ui": "ACCEPTED",
+    "active_lane": "A_GHOST_STORY_COVER",
+    "base_sha": "bf7195c9d1e2f342835193b178dc13a99138c3d0",
+    "branch": "codex/a-ghost-story-cover-assignment",
+    "pr": null,
+    "deployed_sha": "bf7195c9d1e2f342835193b178dc13a99138c3d0",
+    "rollback": "Current Bharat at the Crossroads pair is preserved in the private assignment rollback manifest; no metadata mutation executed.",
+    "production_mutations": 2,
+    "next_owner_gate": "OWNER_A_GHOST_STORY_ASSIGNMENT_APPROVAL_REQUIRED",
+    "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/candidate_manifest.json"
+  }
 }

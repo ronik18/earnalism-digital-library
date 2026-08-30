@@ -1,0 +1,39 @@
+{
+  "schema_version": "earnalism.cover_assignment_plan.v1",
+  "status": "OWNER_A_GHOST_STORY_ASSIGNMENT_APPROVAL_REQUIRED",
+  "slug": "a-ghost-story",
+  "title": "A Ghost Story",
+  "author": "Mark Twain",
+  "approval_binding": {
+    "front_sha256": "d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+    "back_sha256": "baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400"
+  },
+  "staged_media": {
+    "front": {
+      "identifier": "earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+      "immutable_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+      "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+      "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+      "dominant_color": "#161819",
+      "dimensions": [1600, 2400],
+      "format": "PNG",
+      "bytes": 2744771
+    },
+    "back": {
+      "identifier": "earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+      "immutable_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115363/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400.png",
+      "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+      "blur_placeholder": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+      "dominant_color": "#101417",
+      "dimensions": [1600, 2400],
+      "format": "PNG",
+      "bytes": 843222
+    }
+  },
+  "changes": {
+    "front": ["cover_url", "cover_image_url", "coverImage", "cover_image", "thumbnail_url", "blur_placeholder", "dominant_color", "cover_dimensions.front"],
+    "back": ["back_cover_url", "back_cover_image_url", "backCoverImage", "back_cover_thumbnail_url", "back_cover_blur_placeholder", "back_cover_dominant_color", "cover_dimensions.back"]
+  },
+  "promotion_policy": "Do not apply these values until the separate APPROVE_A_GHOST_STORY_ASSIGNMENT decision. The staged assets are private candidates and are not public-title metadata.",
+  "production_mutations_to_date": 2
+}
