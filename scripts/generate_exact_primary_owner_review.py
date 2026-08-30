@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate a visual owner-review package from local, deterministic captures."""
 from __future__ import annotations
-import hashlib, json, os, shutil, zipfile
+import datetime, hashlib, json, mimetypes, os, shutil, subprocess, zipfile
 from pathlib import Path
 from PIL import Image, ImageChops, ImageDraw, ImageFont
 
@@ -27,6 +27,20 @@ def diff(reference, current):
  current=current.convert("RGB").resize(reference.size, Image.Resampling.LANCZOS)
  return ImageChops.difference(reference, current).point(lambda x:min(255,x*4)), Image.blend(reference, current, .5)
 def load(path): return json.loads(path.read_text()) if path.exists() else {"states":[]}
+def current_head():
+ return os.environ.get("GITHUB_SHA") or subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+CORRECTIONS = {
+ "D01":"One canonical responsive shell, readable branding, and font verification.",
+ "D02":"Home hero, journey heading, discovery shelf, and mobile hierarchy.",
+ "D03":"Library title, controls, filter rail, shelves, and mobile density.",
+ "D04":"Full-viewport mobile navigation and filter overlays with inert background.",
+ "D05":"Single-column Commerce desktop composition without research rail.",
+ "D06":"Plan-first mobile Pricing/Reading Pass composition.",
+ "D07":"Compact Book Detail identity and action composition.",
+ "D08":"Reader typography control and non-redundant mobile controls.",
+ "D09":"Listener cover-led layout using metadata cover contract; no CSS-painted cover.",
+ "D10":"About rhythm and truthful one-header My Library/Profile compositions.",
+}
 
 def main():
  OUT.mkdir(parents=True, exist_ok=True)
@@ -49,17 +63,27 @@ def main():
   if current_path:
    right=Image.open(current_path).convert("RGB"); right.thumbnail((720,970)); page.paste(right,(830,95))
   pages.append(page)
- controlled_path = ROOT / "uat/evidence/primary-visual-convergence/controlled-reconciliation.json"
- measurement = load(controlled_path) if controlled_path.exists() else {"status": "measurement-pending"}
- manifest={"schema_version":"earnalism-exact-primary-owner-review-v1","approved_copy":"Read the first 3 pages free. Listening requires an active Reading Pass.","states":records,"measurement":measurement,"status":"OWNER_EXACT_PRIMARY_DESIGN_APPROVAL_REQUIRED"}
+ head=current_head()
+ score_report={"schema_version":"pr341-manual-corrections-v1","head":head,"comparison_contract":"primary-board-panel-map-v2","raw_pixel_score":{"status":"NOT_COMPARABLE","reason":"The approved boards contain composite and partial panels; this package preserves native reference/current/overlay/heatmap evidence but does not relabel resized-board differences as a fidelity percentage."},"truth_adjusted_pixel_score":{"status":"NOT_COMPARABLE","reason":"No structural masking was applied."},"states":[{"id":r["state"],"capture_stable":r["current_capture"].get("stable"),"capture_errors":r["current_capture"].get("errors",[]),"font_load":r["current_capture"].get("fontLoad",{}),"reference":r["reference_board"]} for r in records],"historical_measurements":{"reviewed_head":"a3a4228806a257c9e06f979129e4ba479387bcba","raw_visual_fidelity":62.151486,"label":"HISTORICAL_NON_COMPARABLE"}}
+ (OUT/"score-report.json").write_text(json.dumps(score_report,indent=2)+"\n")
+ provenance={"schema_version":"pr341-owner-review-provenance-v1","repository":"ronik18/earnalism-digital-library","pr_number":341,"pr_head":head,"capture_tool":{"playwright":"1.60.0","chromium":"148.0.7778.96","device_scale_factor":1},"source_changes_during_packaging":0,"production_mutations":0,"generated_at":datetime.datetime.now(datetime.UTC).isoformat()}
+ (OUT/"provenance.json").write_text(json.dumps(provenance,indent=2)+"\n")
+ manifest={"schema_version":"earnalism-exact-primary-owner-review-v2","approved_copy":"Read the first 3 pages free. Listening requires an active Reading Pass.","head":head,"correction_contract_version":"pr341-manual-corrections-v1","corrections":CORRECTIONS,"states":records,"score_report":"score-report.json","status":"OWNER_REVIEWED_CORRECTIONS_APPROVAL_REQUIRED"}
  (OUT/"owner-review.json").write_text(json.dumps(manifest,indent=2)+"\n")
  panels="".join(f'<section><h2>{r["state"]}</h2><p>{r["product_truth_override"]}</p><table><tr><th>Region</th><td>{r["reference_board"]} {r["reference_crop"]}</td></tr><tr><th>Geometry</th><td>{r["current_capture"].get("geometry",[])}</td></tr></table><div><img src="{r["state"]}-reference.png"><img src="{r["state"]}-current.png"><img src="{r["state"]}-overlay.png"><img src="{r["state"]}-heatmap.png"></div></section>' for r in records)
- (OUT/"owner-review.html").write_text(f'<!doctype html><meta charset="utf-8"><title>Earnalism exact primary owner review</title><style>body{{background:#f6f1e8;color:#142019;font:16px system-ui;margin:0}}header,section{{max-width:1600px;margin:auto;padding:20px}}section{{border-top:1px solid #c9a75b}}div{{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}}img{{width:100%;border:1px solid #c9a75b}}table{{font-size:12px;max-width:100%;overflow:auto}}@media(max-width:800px){{div{{grid-template-columns:repeat(2,1fr)}}}}</style><header><h1>Earnalism exact primary design owner review</h1><p>Review fixtures are local and sanitized. Production access remains server-authoritative.</p><p>Measurement source: <code>controlled-reconciliation.json</code>; raw score, truth-adjusted score, structural result, and truth-safe content are reported separately and are not converted into an approval claim.</p></header>{panels}')
+ correction_html="".join("<li><strong>{}</strong> — {}</li>".format(key,value) for key,value in CORRECTIONS.items())
+ (OUT/"owner-review.html").write_text(f'<!doctype html><meta charset="utf-8"><title>Earnalism reviewed corrections</title><style>body{{background:#f6f1e8;color:#142019;font:16px system-ui;margin:0}}header,section{{max-width:1600px;margin:auto;padding:20px}}section{{border-top:1px solid #c9a75b}}div{{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}}img{{width:100%;border:1px solid #c9a75b}}table{{font-size:12px;max-width:100%;overflow:auto}}@media(max-width:800px){{div{{grid-template-columns:repeat(2,1fr)}}}}</style><header><h1>Earnalism reviewed primary UI corrections</h1><p>Head: <code>{head}</code>. Review fixtures are local and sanitized; production access remains server-authoritative.</p><p>Raw heatmaps and overlays are visual evidence only. Their panel dimensions are not a comparable Pixelmatch denominator; see <code>score-report.json</code>.</p><ol>{correction_html}</ol></header>{panels}')
  pages[0].save(OUT/"owner-review.pdf",save_all=True,append_images=pages[1:])
  contact=Image.new("RGB",(1600,((len(records)+3)//4)*270),"#f6f1e8")
  for i,r in enumerate(records):
   image=Image.open(OUT/f'{r["state"]}-current.png').convert("RGB"); image.thumbnail((380,230)); x=(i%4)*400+10;y=(i//4)*270+25;contact.paste(image,(x,y));ImageDraw.Draw(contact).text((x,y-15),r["state"],fill="#142019",font=ImageFont.load_default())
- contact.save(OUT/"contact-sheet.png")
+ contact.save(OUT/"complete-contact-sheet.png")
+ files=[]
+ for file in sorted(OUT.iterdir()):
+  if file.name in {"artifact.zip","manifest.json","manifest.sha256"}: continue
+  files.append({"relative_path":file.name,"bytes":file.stat().st_size,"sha256":sha(file),"mime":mimetypes.guess_type(file.name)[0] or "application/octet-stream","source":"GENERATED_FROM_CURRENT_CAPTURE" if "current" in file.name or file.name in {"owner-review.html","owner-review.pdf","complete-contact-sheet.png","score-report.json","provenance.json"} else "ORIGINAL_ARTIFACT"})
+ (OUT/"manifest.json").write_text(json.dumps({"head":head,"files":files},indent=2)+"\n")
+ (OUT/"manifest.sha256").write_text(sha(OUT/"manifest.json")+"  manifest.json\n")
  with zipfile.ZipFile(OUT/"artifact.zip","w",zipfile.ZIP_DEFLATED) as archive:
   for file in OUT.iterdir():
    if file.name != "artifact.zip": archive.write(file,file.name)
