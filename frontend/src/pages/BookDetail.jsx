@@ -362,8 +362,6 @@ export default function BookDetail() {
                 <p>Reader, cover, rights, and audio states follow production metadata instead of marketing claims.</p>
               </div>
             </div>
-          </div>
-
           <div className="mt-8" data-testid="book-share">
             <ShareButtons title={publicBook.title} variant="product" testIdPrefix="book-share" />
           </div>
