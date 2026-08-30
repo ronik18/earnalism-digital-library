@@ -72,10 +72,12 @@ async function capture(state, context, sessionFontLoad) {
   const errors = [];
   page.on("pageerror", (error) => errors.push(`pageerror:${error.message}`));
   page.on("console", (message) => { if (message.type() === "error") errors.push(`console:${message.text()}`); });
-  await page.addInitScript(() => {
-    localStorage.setItem("earnalism_user_token", "owner-review-fixture-token");
+  const usesSanitizedIdentity = ["reader", "listener", "profile"].includes(state.family);
+  await page.addInitScript(({ usesSanitizedIdentity: needsIdentity }) => {
+    if (needsIdentity) localStorage.setItem("earnalism_user_token", "owner-review-fixture-token");
+    else localStorage.removeItem("earnalism_user_token");
     const fixedNow = new Date("2026-08-29T00:00:00.000Z").valueOf(); Date.now = () => fixedNow;
-  });
+  }, { usesSanitizedIdentity });
   await installFixtureRoutes(page);
   const response = await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
   await page.evaluate(async () => {
@@ -97,8 +99,14 @@ async function capture(state, context, sessionFontLoad) {
     };
   });
   sessionFontLoad.value = fontLoad;
-  if (state.family === "filter") await page.locator(".reference-filter-trigger").click();
-  if (state.family === "navigation") await page.locator("button[aria-label*='menu' i], button[aria-label*='navigation' i]").first().click().catch(() => undefined);
+  if (state.family === "filter") {
+    await page.locator(".reference-filter-trigger").click();
+    await page.locator(".reference-library-drawer[role=dialog]").waitFor({ state: "visible", timeout: 10_000 });
+  }
+  if (state.family === "navigation") {
+    await page.locator("button[aria-label*='menu' i], button[aria-label*='navigation' i]").first().click();
+    await page.locator("[data-testid=mobile-menu][role=dialog]").waitFor({ state: "visible", timeout: 10_000 });
+  }
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   await page.waitForTimeout(500);
   const first = await page.screenshot({ fullPage: false, animations: "disabled" });
@@ -118,7 +126,12 @@ async function capture(state, context, sessionFontLoad) {
     geometry: required.map((selector) => { const node = document.querySelector(selector); if (!node) return { selector, present: false }; const r = node.getBoundingClientRect(); const s = getComputedStyle(node); return { selector, present: true, x: r.x, y: r.y, width: r.width, height: r.height, fontSize: s.fontSize, lineHeight: s.lineHeight }; }),
   }), selectors);
   await page.close();
-  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture: state.family === "profile" ? "sanitized-owner-review-user" : "server-contract-review-fixture", product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
+  const fixture = state.family === "profile"
+    ? "sanitized-owner-review-user"
+    : ["reader", "listener"].includes(state.family)
+      ? "server-contract-review-fixture"
+      : "anonymous-public-shell";
+  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
 }
 
 fs.mkdirSync(output, { recursive: true });

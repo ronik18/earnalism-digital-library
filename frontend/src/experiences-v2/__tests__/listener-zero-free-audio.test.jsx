@@ -69,6 +69,7 @@ describe("Listener v2 zero-free-audio contract", () => {
     expect(fixture).not.toContain("Up next");
     expect(fixture).not.toContain("Sleep");
     expect(fixture).not.toContain(">More<");
+    expect(fixture).not.toContain('aria-label="More options"');
   });
 
   test("disabled audio, including Dracula, renders no Listener surface and playback math grants no preview", () => {
