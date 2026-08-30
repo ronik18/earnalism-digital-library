@@ -116,7 +116,8 @@ async function capture(state, context, sessionFontLoad) {
   // Decode that post-render image set before comparing review screenshots so
   // an immutable remote cover cannot create a false visual-stability failure.
   await page.evaluate(async () => {
-    await Promise.all([...document.images].map((image) => image.decode().catch(() => undefined)));
+    const settle = Promise.all([...document.images].map((image) => image.decode().catch(() => undefined)));
+    await Promise.race([settle, new Promise((resolve) => setTimeout(resolve, 10_000))]);
   });
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   await page.waitForTimeout(500);
