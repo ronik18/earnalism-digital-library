@@ -5,8 +5,16 @@
       "sha256": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba"
     },
     {
+      "file": "chapters/chapter-001.json",
+      "sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1"
+    },
+    {
+      "file": "cover_approval_evidence.json",
+      "sha256": "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "f7097de626e7a1a46caec39bd5ab175fed01d9225adf9000ec735b6184234af8"
+      "sha256": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe"
     },
     {
       "file": "reader_manifest.json",
@@ -15,12 +23,8 @@
     {
       "file": "source_evidence.json",
       "sha256": "dd5c833640460ae700d954e30453b99e973d85c2c77aa409f6786721a56ae2a9"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1"
     }
   ],
-  "generated_at": "2026-07-30T12:14:03Z",
+  "generated_at": "2026-08-30T19:26:21Z",
   "slug": "a-ghost-story"
 }

@@ -1,0 +1,172 @@
+{
+  "schema_version": "earnalism.private_cover_candidate.v1",
+  "status": "CANONICAL_PROMOTED",
+  "generated_at": "2026-08-30T18:55:29Z",
+  "slug": "a-ghost-story",
+  "title": "A Ghost Story",
+  "author": "Mark Twain",
+  "language": "en",
+  "rights": {
+    "tier": "A",
+    "basis": "Mark Twain died 1910; first published 1875. Public domain in India and the U.S.",
+    "source_evidence": "data/controlled_publications/a-ghost-story/source_evidence.json"
+  },
+  "generation_mode": "text_free_ai_art_plus_existing_deterministic_pillow_typography",
+  "source_art": {
+    "front": {
+      "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/source_art/a-ghost-story-front-art-base-v1.png",
+      "sha256": "01d04ef967f47bd15bad3c665943342177e6be6fadf1bf4f912e2ed5f6032d0b"
+    },
+    "back": {
+      "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/source_art/a-ghost-story-back-art-base-v1.png",
+      "sha256": "150520f908540299c75fbd9d7e8cc35374db03f1890d7efae5d2b9636d13ebaa"
+    }
+  },
+  "front": {
+    "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/a-ghost-story_front_1600x2400_v1.png",
+    "sha256": "d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+    "width": 1600,
+    "height": 2400,
+    "format": "PNG",
+    "bytes": 2744771,
+    "aspect_ratio": 0.6667
+  },
+  "back": {
+    "path": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/a-ghost-story_back_1600x2400_v1.png",
+    "sha256": "baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+    "width": 1600,
+    "height": 2400,
+    "format": "PNG",
+    "bytes": 843222,
+    "aspect_ratio": 0.6667
+  },
+  "catalog_hashes": {
+    "data/controlled_publications/a-ghost-story/public_book.json": "f7097de626e7a1a46caec39bd5ab175fed01d9225adf9000ec735b6184234af8",
+    "backend/data/controlled_publications/a-ghost-story/public_book.json": "f7097de626e7a1a46caec39bd5ab175fed01d9225adf9000ec735b6184234af8"
+  },
+  "current_defect": {
+    "classification": "WRONG_TITLE_ART",
+    "assigned_title": "Bharat at the Crossroads",
+    "front": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "back": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "front_sha256": "2a517ab7b0f1c4d05b44c037fcb6063903b59f03632e2829699dee57dfacfcb0",
+    "back_sha256": "ffd089b16f31ad5145ae98e5c712667b921d71d00901a4a168fb8c2811acf3c7"
+  },
+  "rollback": {
+    "front": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "back": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "front_sha256": "2a517ab7b0f1c4d05b44c037fcb6063903b59f03632e2829699dee57dfacfcb0",
+    "back_sha256": "ffd089b16f31ad5145ae98e5c712667b921d71d00901a4a168fb8c2811acf3c7"
+  },
+  "composition": {
+    "front": {
+      "title": {
+        "text": "A Ghost Story",
+        "font_size": 150,
+        "boxes": [
+          [
+            266,
+            220,
+            1334,
+            366
+          ]
+        ]
+      },
+      "author": {
+        "text": "Mark Twain",
+        "font_size": 66,
+        "boxes": [
+          [
+            623,
+            540,
+            976,
+            591
+          ]
+        ]
+      }
+    },
+    "back": {
+      "title": {
+        "text": "A Ghost Story",
+        "font_size": 112,
+        "boxes": [
+          [
+            402,
+            340,
+            1198,
+            449
+          ]
+        ]
+      },
+      "author": {
+        "text": "Mark Twain",
+        "font_size": 58,
+        "boxes": [
+          [
+            644,
+            650,
+            955,
+            695
+          ]
+        ]
+      },
+      "description": {
+        "text": "A new tenant meets a midnight visitor who turns out to be less terrifying than embarrassed.",
+        "font_size": 51,
+        "boxes": [
+          [
+            315,
+            1080,
+            1284,
+            1130
+          ],
+          [
+            416,
+            1142,
+            1184,
+            1192
+          ],
+          [
+            647,
+            1204,
+            952,
+            1245
+          ]
+        ]
+      },
+      "rights": {
+        "text": "Public-domain text. Earnalism digital edition.",
+        "font_size": 31,
+        "boxes": [
+          [
+            487,
+            1820,
+            1113,
+            1850
+          ]
+        ]
+      },
+      "barcode_zone": [
+        1120,
+        2030,
+        1395,
+        2155
+      ]
+    }
+  },
+  "review": {
+    "board": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/owner-review-board.png",
+    "admin_upload_status": "UPLOADED_PENDING_CANONICAL_REVIEW",
+    "canonical_promotion_status": "CANONICAL_PROMOTED",
+    "owner_editorial_review_required": false,
+    "owner_assignment_review_required": false,
+    "assignment_plan": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/a-ghost-story-cover-assignment-plan.json",
+    "staged_candidate_records": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/staged-candidate-records.json"
+  },
+  "constraints": {
+    "private_only": true,
+    "public_catalog_mutated": false,
+    "reader_state_mutated": false,
+    "audiobook_release_state_mutated": false
+  }
+}

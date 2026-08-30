@@ -2,7 +2,7 @@
   "schema_version": "earnalism.static-seo-public.v2",
   "generated_from": {
     "data/controlled_launch.json": "72e340433f5ff36f36e41ba94ba44393dfb4e1ad029fedb42c48df34ceef63da",
-    "data/controlled_publications/a-ghost-story/public_book.json": "f7097de626e7a1a46caec39bd5ab175fed01d9225adf9000ec735b6184234af8",
+    "data/controlled_publications/a-ghost-story/public_book.json": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe",
     "data/controlled_publications/a-ghost-story/reader_manifest.json": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "dd5c833640460ae700d954e30453b99e973d85c2c77aa409f6786721a56ae2a9",
     "data/controlled_publications/a-ghost-story/approval_evidence.json": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
@@ -180,7 +180,7 @@
       "slug": "a-ghost-story",
       "title": "A Ghost Story",
       "author": "Mark Twain",
-      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
       "chapter_count": 1,
       "source_display_name": "Project Gutenberg",
       "approved_rights_display_state": "approved_tier_a",

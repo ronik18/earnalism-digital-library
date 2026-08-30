@@ -519,12 +519,6 @@ function readerCoverUrl(book = {}, kind = 'front') {
 
 function readerListeningCoverUrl(book = {}) {
   const coverUrl = readerCoverUrl(book, 'front');
-  const slug = String(book?.slug || '').trim().toLowerCase();
-  // Controlled cover audit: this exact object is titled Bharat at the
-  // Crossroads, so it must never be presented as A Ghost Story artwork.
-  if (slug === 'a-ghost-story' && coverUrl.includes('cover_446c5658-2bdd-4bd6-afbe-f5233f280508')) {
-    return '';
-  }
   return coverUrl;
 }
 

@@ -30,10 +30,9 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/book\.audiobook = \{\}/);
   });
 
-  test("fails closed for the known cross-title A Ghost Story cover binding", () => {
+  test("uses the shared cover resolver without retaining the former cross-title binding", () => {
     expect(readerSource).toMatch(/function readerListeningCoverUrl/);
-    expect(readerSource).toMatch(/slug === 'a-ghost-story'/);
-    expect(readerSource).toMatch(/cover_446c5658-2bdd-4bd6-afbe-f5233f280508/);
+    expect(readerSource).not.toMatch(/cover_446c5658-2bdd-4bd6-afbe-f5233f280508/);
     expect(readerSource).toMatch(/const listeningCoverUrl = readerListeningCoverUrl\(book\)/);
   });
 

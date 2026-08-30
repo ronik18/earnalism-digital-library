@@ -112,6 +112,13 @@ async function capture(state, context, sessionFontLoad) {
       errors.push(`navigation-overlay:${error.message}`);
     }
   }
+  // React can insert a fixture cover after the initial document-image pass.
+  // Decode that post-render image set before comparing review screenshots so
+  // an immutable remote cover cannot create a false visual-stability failure.
+  await page.evaluate(async () => {
+    const settle = Promise.all([...document.images].map((image) => image.decode().catch(() => undefined)));
+    await Promise.race([settle, new Promise((resolve) => setTimeout(resolve, 10_000))]);
+  });
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   await page.waitForTimeout(500);
   const first = await page.screenshot({ fullPage: false, animations: "disabled" });

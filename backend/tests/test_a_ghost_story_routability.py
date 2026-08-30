@@ -44,7 +44,7 @@ def test_a_ghost_story_controlled_artifact_has_release_gated_audio():
     assert artifact["chapters"][0]["content"].startswith("I took a large room")
 
 
-def test_a_ghost_story_public_detail_falls_back_without_leaking_storage_assets(monkeypatch):
+def test_a_ghost_story_public_detail_falls_back_without_exposing_audio_before_a_lease(monkeypatch):
     monkeypatch.setattr(server, "db", SimpleNamespace(books=EmptyBooks()))
     monkeypatch.setattr(server, "_public_cache_get", noop_cache_get)
     monkeypatch.setattr(server, "_public_cache_set", noop_cache_set)
@@ -58,7 +58,7 @@ def test_a_ghost_story_public_detail_falls_back_without_leaking_storage_assets(m
     assert dumped["reader_url"] == "/reader/a-ghost-story"
     assert dumped["audio_enabled"] is True
     assert dumped["audiobook_enabled"] is True
-    assert dumped["audio_url"] == "/api/reader/book/a-ghost-story/audiobook"
+    assert dumped["audio_url"] == ""
     assert dumped["audio_status"] == "AVAILABLE"
     assert dumped["audiobook_release_gate"] == "APPROVED"
     assert dumped["audio_qa_status"] == "QA_PASSED"
@@ -68,7 +68,7 @@ def test_a_ghost_story_public_detail_falls_back_without_leaking_storage_assets(m
     assert "content" not in dumped["chapters"][0]
 
 
-def test_a_ghost_story_reader_manifest_has_content_and_approved_audio(monkeypatch):
+def test_a_ghost_story_reader_manifest_has_content_and_no_anonymous_audio_url(monkeypatch):
     monkeypatch.setattr(server, "db", SimpleNamespace(books=EmptyBooks()))
 
     manifest = asyncio.run(server._reader_book_manifest_doc("a-ghost-story"))
@@ -83,8 +83,8 @@ def test_a_ghost_story_reader_manifest_has_content_and_approved_audio(monkeypatc
     assert manifest["audio"]["voice"] == "en-GB-Studio-C"
     assert manifest["audio"]["release_gate"] == "APPROVED"
     assert manifest["audio"]["qa_status"] == "QA_PASSED"
-    assert manifest["audio"]["url"] == "/api/reader/book/a-ghost-story/audiobook"
-    assert manifest["audio"]["assets"]["mp3"] == "/api/reader/book/a-ghost-story/audiobook"
+    assert manifest["audio"]["url"] == ""
+    assert manifest["audio"]["assets"] == {}
     assert manifest["audio"]["sync_mode"] == "section_following"
     assert len(manifest["chapters"]) == 1
     chapter = manifest["chapters"][0]
