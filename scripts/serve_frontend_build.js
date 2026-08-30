@@ -9,8 +9,8 @@ const root = path.resolve(__dirname, "..", "frontend", "build");
 const host = process.argv.includes("--host") ? process.argv[process.argv.indexOf("--host") + 1] : "127.0.0.1";
 const port = Number(process.argv.includes("--port") ? process.argv[process.argv.indexOf("--port") + 1] : 3000);
 if (host !== "127.0.0.1" || !Number.isInteger(port) || port < 1024 || port > 65535) throw new Error("Local UAT server requires an unprivileged 127.0.0.1 port.");
-const mime = { ".css": "text/css", ".html": "text/html", ".js": "text/javascript", ".json": "application/json", ".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png", ".xml": "application/xml" };
-const exactRoutes = new Set(["/", "/library", "/journal", "/about", "/about-legacy", "/contact", "/pricing", "/micro-story", "/login", "/signup", "/signin", "/account", "/publishing", "/admin", "/admin/login", "/admin/launch-monitor"]);
+const mime = { ".css": "text/css", ".html": "text/html", ".js": "text/javascript", ".json": "application/json", ".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png", ".xml": "application/xml", ".woff2": "font/woff2", ".woff": "font/woff", ".ttf": "font/ttf", ".otf": "font/otf" };
+const exactRoutes = new Set(["/", "/library", "/journal", "/about", "/about-legacy", "/contact", "/pricing", "/micro-story", "/login", "/signup", "/signin", "/account", "/my-library", "/publishing", "/admin", "/admin/login", "/admin/launch-monitor"]);
 const routePrefixes = ["/book/", "/journal/", "/reader/", "/reader-legacy/", "/listener/", "/listener-legacy/", "/publishing/", "/admin/"];
 const removedRoutes = new Set(["/product/patterned-wrap-dress"]);
 const securityHeaders = {
@@ -49,6 +49,6 @@ http.createServer((request, response) => {
     return;
   }
   const file = staticFile || path.join(root, "index.html");
-  response.writeHead(200, { ...securityHeaders, "Content-Type": mime[path.extname(file)] || "application/octet-stream", "Cache-Control": file.endsWith("index.html") ? "no-store" : "public, max-age=300" });
+  response.writeHead(200, { ...securityHeaders, "Content-Type": mime[path.extname(file)] || "application/octet-stream", "Content-Length": fs.statSync(file).size, "Cache-Control": file.endsWith("index.html") ? "no-store" : "public, max-age=300" });
   fs.createReadStream(file).pipe(response);
 }).listen(port, host, () => console.log(`Earnalism local UAT frontend: http://${host}:${port}`));

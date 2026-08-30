@@ -1,0 +1,129 @@
+name: Book and Commerce focused owner review
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - frontend/src/pages/BookDetail.jsx
+      - frontend/src/pages/Pricing.jsx
+      - frontend/src/components/ReferencePublicPages.*
+      - scripts/capture_book_commerce_final_review.mjs
+      - scripts/generate_book_commerce_final_review.py
+      - scripts/test_capture_book_commerce_final_review.mjs
+      - scripts/validate_book_commerce_final_review.py
+      - scripts/serve_frontend_build.js
+      - .github/workflows/book-commerce-final-review.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-owner-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+      REACT_APP_BACKEND_URL: http://127.0.0.1:18007/api
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install pinned review dependencies
+        run: |
+          npm ci
+          npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check pillow
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Verify harness contract
+        run: node scripts/test_capture_book_commerce_final_review.mjs
+      - name: Materialize reviewed baseline
+        run: |
+          base_dir="$RUNNER_TEMP/pr341-book-commerce-base"
+          mkdir -p "$base_dir/scripts"
+          git archive 706dfe228cdd554c8aa358b2b112912f457823be | tar -x -C "$base_dir"
+          cp scripts/capture_book_commerce_final_review.mjs "$base_dir/scripts/"
+          ln -s "$GITHUB_WORKSPACE/node_modules" "$base_dir/node_modules"
+          ln -s "$GITHUB_WORKSPACE/frontend/node_modules" "$base_dir/frontend/node_modules"
+      - name: Capture reviewed baseline
+        run: |
+          base_dir="$RUNNER_TEMP/pr341-book-commerce-base"
+          (
+            cd "$base_dir"
+            REACT_APP_ENABLE_VISUAL_FIXTURES=1 npm --prefix frontend run build
+            node scripts/serve_frontend_build.js --port 13108 >"$RUNNER_TEMP/book-commerce-base.log" 2>&1 & pid=$!
+            trap 'kill "$pid"' EXIT
+            for i in $(seq 1 30); do curl -fsS http://127.0.0.1:13108/ >/dev/null && break; sleep 1; done
+            PR_HEAD_SHA=706dfe228cdd554c8aa358b2b112912f457823be ACTUAL_CHECKOUT_SHA=706dfe228cdd554c8aa358b2b112912f457823be CHECKOUT_TREE_SHA="$(git -C "$GITHUB_WORKSPACE" rev-parse 706dfe228cdd554c8aa358b2b112912f457823be^{tree})" UAT_BASE_URL=http://127.0.0.1:13108 BOOK_COMMERCE_BASELINE=1 BOOK_COMMERCE_CAPTURE_OUTPUT=uat/evidence/book-commerce-final-review/before node scripts/capture_book_commerce_final_review.mjs
+          )
+          mkdir -p uat/evidence/book-commerce-final-review/before
+          cp -R "$base_dir/uat/evidence/book-commerce-final-review/before/." uat/evidence/book-commerce-final-review/before/
+      - name: Build and start exact PR head
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          WORKFLOW_EVENT_SHA: ${{ github.sha }}
+        run: |
+          actual="$(git rev-parse HEAD)"; test "$actual" = "$PR_HEAD_SHA"
+          REACT_APP_ENABLE_VISUAL_FIXTURES=1 npm --prefix frontend run build
+          node scripts/serve_frontend_build.js --port 13107 >"$RUNNER_TEMP/book-commerce-current.log" 2>&1 & echo $! > "$RUNNER_TEMP/book-commerce-server.pid"
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:13107/ >/dev/null && break; sleep 1; done
+      - name: Capture exact PR head and browser matrix
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          WORKFLOW_EVENT_SHA: ${{ github.sha }}
+        run: |
+          for browser in chromium firefox webkit; do
+            UAT_BASE_URL=http://127.0.0.1:13107 BOOK_COMMERCE_BROWSER="$browser" BOOK_COMMERCE_CAPTURE_OUTPUT="uat/evidence/book-commerce-final-review/browsers/$browser" node scripts/capture_book_commerce_final_review.mjs
+          done
+          mkdir -p uat/evidence/book-commerce-final-review/current
+          cp -R uat/evidence/book-commerce-final-review/browsers/chromium/. uat/evidence/book-commerce-final-review/current/
+          python3 - <<'PY'
+          import json, pathlib
+          root=pathlib.Path('uat/evidence/book-commerce-final-review/browsers')
+          browser_results={}
+          all_captures={}
+          font_results={}
+          stability_results={}
+          for browser in ('chromium','firefox','webkit'):
+            report=json.loads((root/browser/'capture-results.json').read_text())
+            all_captures[browser]=report
+            failed=[s['id'] for s in report['states'] if s['http_status'] != 200 or s['scroll_width'] != s['client_width'] or s['console_and_page_errors'] or s['failed_required_requests'] or not s['stable']]
+            browser_results[browser]={'status':'PASS' if not failed else 'FAIL','version':report['provenance']['browser_version'],'failed_states':failed}
+            fonts=json.loads((root/browser/'browser-font-results.json').read_text())
+            font_results[browser]={'status':'PASS' if all(face['status']=='PASS' for face in fonts['faces'].values()) else 'FAIL','version':fonts['version'],'faces':fonts['faces']}
+            stability=json.loads((root/browser/'capture-stability-results.json').read_text())
+            stability_results[browser]={'status':stability['status'],'states':stability['states']}
+          current=pathlib.Path('uat/evidence/book-commerce-final-review/current')
+          (current/'all-browser-capture-results.json').write_text(json.dumps(all_captures,indent=2)+'\n')
+          (current/'book-commerce-browser-results.json').write_text(json.dumps(browser_results,indent=2)+'\n')
+          (current/'browser-font-results.json').write_text(json.dumps(font_results,indent=2)+'\n')
+          (current/'capture-stability-results.json').write_text(json.dumps(stability_results,indent=2)+'\n')
+          (current/'webkit-network-diagnostics.json').write_text((root/'webkit'/'webkit-network-diagnostics.json').read_text())
+          (pathlib.Path('uat/evidence/book-commerce-final-review/current/live-offer-results.json')).write_text(json.dumps({'status':'BLOCKED_WITH_EXACT_EXTERNAL_REASON: PUBLIC_OFFER_ENDPOINT_NOT_ACCESSIBLE_WITHOUT_AUTH','endpoint':None,'method':'GET only','production_mutations':0},indent=2)+'\n')
+          PY
+      - name: Generate focused owner package
+        run: |
+          python3 scripts/generate_book_commerce_final_review.py
+          node scripts/test_capture_book_commerce_final_review.mjs
+      - name: Validate focused owner evidence
+        run: python3 scripts/validate_book_commerce_final_review.py
+      - name: Stop local server
+        if: always()
+        run: test ! -f "$RUNNER_TEMP/book-commerce-server.pid" || kill "$(cat "$RUNNER_TEMP/book-commerce-server.pid")" || true
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: pr341-book-commerce-final-review-${{ github.event.pull_request.head.sha || github.sha }}
+          path: uat/evidence/book-commerce-final-review/**
+          if-no-files-found: error

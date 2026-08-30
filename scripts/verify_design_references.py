@@ -11,11 +11,14 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "docs/design-references/reference-manifest.json"
+MANIFEST = ROOT / "docs/design-references/primary-experience-reference-manifest.json"
 REQUIRED = {
-    "home-library-desktop.png",
-    "commerce-desktop.png",
+    "home-library-commerce-desktop.png",
+    "reading-pass-commerce.png",
+    "reader-listener-bookdetail-desktop.png",
+    "reader-listener-ecosystem.png",
     "responsive-reference-board.png",
+    "brand/earnalism-logo-lockup.png",
 }
 
 
@@ -38,10 +41,17 @@ def png_size(path: Path) -> tuple[int, int]:
 def main() -> int:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     references = manifest.get("references", {})
-    if set(references) != REQUIRED:
-        raise ValueError("reference manifest must contain exactly the required immutable references")
+    canonical = {
+        name: record
+        for name, record in references.items()
+        if record.get("status") == "OWNER_APPROVED_CANONICAL"
+    }
+    if set(canonical) != REQUIRED:
+        raise ValueError("primary manifest must contain exactly the required owner-approved canonical references")
     for name in sorted(REQUIRED):
-        record = references[name]
+        record = canonical[name]
+        if record.get("implementation_authority") is not True or record.get("visual_gate_authority") is not True:
+            raise ValueError(f"canonical reference lacks implementation and visual-gate authority: {name}")
         path = ROOT / "docs/design-references" / name
         if not path.is_file():
             raise FileNotFoundError(path)

@@ -16,6 +16,7 @@ const pageImports = {
   Login: () => import("./pages/Login"),
   Signup: () => import("./pages/Signup"),
   Account: () => import("./pages/Account"),
+  MyLibrary: () => import("./pages/MyLibrary"),
   Pricing: () => import("./pages/Pricing"),
   ReaderLegacy: () => import("./pages/Reader"),
   ReaderV2: () => import("./experiences-v2/reader/ReaderExperienceV2Route"),
@@ -38,6 +39,7 @@ const Contact = lazy(pageImports.Contact);
 const Login = lazy(pageImports.Login);
 const Signup = lazy(pageImports.Signup);
 const Account = lazy(pageImports.Account);
+const MyLibrary = lazy(pageImports.MyLibrary);
 const Pricing = lazy(pageImports.Pricing);
 const ReaderLegacy = lazy(pageImports.ReaderLegacy);
 const ReaderV2 = lazy(pageImports.ReaderV2);
@@ -49,8 +51,6 @@ const AdminLogin = lazy(pageImports.AdminLogin);
 const Admin = lazy(pageImports.Admin);
 const NotFound = lazy(pageImports.NotFound);
 const GoogleAuthBoundary = lazy(pageImports.GoogleAuthBoundary);
-const ROUTE_FONT_STYLESHEET_ID = "earnalism-route-fonts";
-const ROUTE_FONT_STYLESHEET = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Crimson+Pro:wght@400;500;600&family=Noto+Serif+Bengali:wght@400;500;600&family=Outfit:wght@400;500;600&display=optional";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -58,20 +58,6 @@ function ScrollToTop() {
   return null;
 }
 
-function RouteFontLoader() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    if (pathname === "/" || document.getElementById(ROUTE_FONT_STYLESHEET_ID)) return;
-    const stylesheet = document.createElement("link");
-    stylesheet.id = ROUTE_FONT_STYLESHEET_ID;
-    stylesheet.rel = "stylesheet";
-    stylesheet.href = ROUTE_FONT_STYLESHEET;
-    document.head.appendChild(stylesheet);
-  }, [pathname]);
-
-  return null;
-}
 
 function PageFallback() {
   return (
@@ -116,7 +102,6 @@ export function AppRouterContent() {
   return (
     <>
       <ScrollToTop />
-      <RouteFontLoader />
       <Suspense fallback={<PageFallback />}>
         <Routes>
           <Route element={<Layout />}>
@@ -133,6 +118,7 @@ export function AppRouterContent() {
             <Route path="/login" element={<GoogleAuthBoundary><Login /></GoogleAuthBoundary>} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/my-library" element={<MyLibrary />} />
             {/* Legacy redirects */}
             <Route path="/signin" element={<Navigate to="/login" replace />} />
             <Route path="/publishing" element={<Navigate to="/library" replace />} />

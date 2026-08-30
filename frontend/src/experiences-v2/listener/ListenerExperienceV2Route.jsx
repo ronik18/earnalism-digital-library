@@ -6,6 +6,13 @@ import { readerManifestPath } from "../../lib/audioReleaseSafety";
 import { endReadingPassSession, renewReadingPassLease, startReadingPassAudioSession } from "../../lib/readingPassApi";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
 import ListenerExperienceV2 from "./ListenerExperienceV2";
+const LISTENER_VISUAL_FIXTURE_BOOK = Object.freeze({
+  slug: "a-ghost-story",
+  title: "A Ghost Story",
+  author: "Mark Twain",
+  cover_image_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  thumbnail_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+});
 
 function routeState(title, message) {
   return <main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p>{message}</p></section></main>;
@@ -15,6 +22,9 @@ export default function ListenerExperienceV2Route() {
   const { slug = "" } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const visualFixture = process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1"
+    && typeof window !== "undefined"
+    && new URLSearchParams(window.location.search).get("visual-fixture") === "1";
   const [book, setBook] = useState(null);
   const [lease, setLease] = useState(null);
   const [playbackState, setPlaybackState] = useState("paused");
@@ -24,6 +34,7 @@ export default function ListenerExperienceV2Route() {
   const setLeaseState = useCallback((value) => { leaseRef.current = value; setLease(value); }, []);
 
   useEffect(() => {
+    if (visualFixture) return undefined;
     let cancelled = false;
     userApi.get(readerManifestPath(slug)).then((response) => {
       if (cancelled) return;
@@ -31,7 +42,7 @@ export default function ListenerExperienceV2Route() {
       setBook({ ...(value.book || {}), _readerManifest: { audio: value.audio || {}, access: value.access || {} } });
     }).catch(() => { if (!cancelled) setBook({}); });
     return () => { cancelled = true; };
-  }, [slug]);
+  }, [slug, visualFixture]);
 
   useEffect(() => {
     if (!lease) return undefined;
@@ -61,6 +72,11 @@ export default function ListenerExperienceV2Route() {
     }
   }, [navigate, setLeaseState, slug, user]);
 
+  if (visualFixture) return <ListenerExperienceV2 book={LISTENER_VISUAL_FIXTURE_BOOK} fixture access={{ authorized: false }} onNavigate={(target) => {
+    if (target === "back") navigate(`/book/${slug || "a-ghost-story"}`);
+    if (target === "library" || target === "search") navigate("/library");
+    if (target === "passes") navigate("/pricing");
+  }} />;
   if (book === null) return routeState("Opening listener", "Checking approved listening access.");
   if (!listenerReleasePresentation(book).canRender) return <Navigate to={`/book/${slug}`} replace />;
   return <><ListenerExperienceV2 book={book} access={{ authorized: Boolean(lease) }} onAuthorize={authorize} onPlaybackStateChange={setPlaybackState} onNavigate={(target) => {

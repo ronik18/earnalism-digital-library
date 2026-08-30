@@ -1,0 +1,4 @@
+/* One compact mobile control cluster keeps reading text ahead of chrome. */
+@media (max-width: 767px) {
+  .reader-v2__toolbar { display: none; }
+}

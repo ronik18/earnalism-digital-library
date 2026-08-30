@@ -1,0 +1,42 @@
+{
+  "historical_baseline_status": "FIXTURE_CHANGED",
+  "historical_baseline_reason": "The immutable original production capture used a live catalogue. It remains an audit baseline but cannot support a direct current-source per-state regression claim after the catalogue changed.",
+  "controlled_comparison_status": "DIRECTLY_COMPARABLE",
+  "input_equality": {
+    "reference_source": true,
+    "reference_sha": true,
+    "crop_coordinates": true,
+    "region_list": true,
+    "normalization": true,
+    "target_canvas": true,
+    "comparable_pixel_denominator": true,
+    "mask_coordinates": true,
+    "mask_coverage_percent": 0,
+    "browser_revision": true,
+    "viewport": true,
+    "device_scale_factor": true,
+    "fixture_hashes": true,
+    "font_loading": true,
+    "screenshot_stability": true
+  },
+  "aggregate": {
+    "comparable_pixels": 2954684,
+    "baseline_mismatched_pixels": 1511068,
+    "current_mismatched_pixels": 1118304,
+    "baseline_raw_score": 48.858558,
+    "current_raw_score": 62.151486,
+    "mismatch_pixel_reduction": 392764
+  },
+  "states": [
+    {"state":"home-desktop","baseline":55.137587,"current":55.140810,"delta":0.003223,"status":"DIRECTLY_COMPARABLE"},
+    {"state":"library-desktop","baseline":61.922335,"current":62.434810,"delta":0.512475,"status":"DIRECTLY_COMPARABLE"},
+    {"state":"commerce-desktop","baseline":40.642512,"current":62.477180,"delta":21.834668,"status":"DIRECTLY_COMPARABLE"},
+    {"state":"book-detail-desktop","baseline":56.091167,"current":56.091167,"delta":0,"status":"DIRECTLY_COMPARABLE"},
+    {"state":"library-filter-mobile","baseline":17.683857,"current":80.546231,"delta":62.862374,"status":"DIRECTLY_COMPARABLE"},
+    {"state":"home-mobile","baseline":63.375131,"current":63.375131,"delta":0,"status":"DIRECTLY_COMPARABLE"},
+    {"state":"library-mobile","baseline":63.092187,"current":63.092187,"delta":0,"status":"DIRECTLY_COMPARABLE"},
+    {"state":"commerce-mobile","baseline":72.831428,"current":72.735394,"delta":-0.096034,"status":"DIRECTLY_COMPARABLE_WITHIN_STABLE_RASTER_TOLERANCE"},
+    {"state":"mobile-navigation","baseline":79.475281,"current":79.475281,"delta":0,"status":"DIRECTLY_COMPARABLE"},
+    {"state":"about-mobile","baseline":80.221958,"current":80.221958,"delta":0,"status":"DIRECTLY_COMPARABLE"}
+  ]
+}

@@ -332,6 +332,151 @@
   .premium-site-header .brand-header-logo__india-flag { width: 1.08rem; height: 0.73rem; }
 }
 
+/* A mobile route chooser is a real modal surface, never a short floating
+   sheet. Its scope stays inside the shared public header so account and
+   editorial routes retain their own approved desktop treatments. */
+@media (max-width: 1279px) {
+  .premium-site-header .mobile-menu-overlay {
+    position: fixed;
+    z-index: 80;
+    inset: var(--site-header-height) 0 0;
+    display: block;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    background: rgba(4, 15, 12, .985);
+    color: #fff8e9;
+  }
+
+  .premium-site-header .mobile-menu-overlay__content {
+    position: relative;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    padding: 5.5rem 1.5rem max(2rem, env(safe-area-inset-bottom));
+  }
+
+  .premium-site-header .mobile-menu-overlay__close {
+    position: absolute;
+    top: .85rem;
+    right: 1rem;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid rgba(235, 205, 132, .3);
+    border-radius: .5rem;
+    background: rgba(255, 248, 233, .05);
+    color: #fff8e9;
+  }
+
+  .premium-site-header .mobile-menu-overlay__content > a,
+  .premium-site-header .mobile-menu-overlay__content .mobile-menu-overlay__cta {
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    border-bottom: 1px solid rgba(235, 205, 132, .2);
+    color: #fff8e9;
+    font: 500 1.05rem/1.2 var(--font-body, Outfit, sans-serif);
+    letter-spacing: .01em !important;
+    text-decoration: none;
+  }
+
+  .premium-site-header .mobile-menu-overlay__content .mobile-menu-overlay__cta {
+    justify-content: center;
+    margin-top: 2rem;
+    border: 1px solid #e5bd64;
+    border-radius: .45rem;
+    background: #e5bd64;
+    color: #122019;
+    font-weight: 700;
+  }
+
+  .premium-site-header .mobile-menu-overlay__socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    margin-top: auto;
+    padding-top: 2rem;
+  }
+}
+
+/* Owner-approved primary desktop boards use a full editorial masthead rather
+   than the interim compact rail. Keep these measurements route-scoped so the
+   independently approved account and editorial headers do not move. */
+@media (min-width: 1024px) {
+  .premium-site-header--reference-public,
+  .premium-site-header--reference-library,
+  .premium-site-header--reference-commerce {
+    --site-header-height: 5.25rem;
+  }
+
+  .premium-site-header--reference-public .premium-header-inner,
+  .premium-site-header--reference-library .premium-header-inner,
+  .premium-site-header--reference-commerce .premium-header-inner {
+    padding-inline: 3.125rem;
+  }
+
+  .premium-site-header--reference-public .earnalism-brand-lockup,
+  .premium-site-header--reference-library .earnalism-brand-lockup,
+  .premium-site-header--reference-commerce .earnalism-brand-lockup {
+    width: 13.125rem;
+  }
+
+  .premium-site-header.premium-site-header--reference-commerce {
+    --site-header-height: 5.25rem;
+  }
+}
+
+/* Mobile navigation is a dark immersive panel on the approved primary
+   surfaces, while the light library shell retains its editorial drawer. */
+.premium-site-header--reference-public #mobile-menu,
+.premium-site-header--reference-commerce #mobile-menu {
+  border-color: rgba(214, 173, 85, .22);
+  background: #07110f;
+}
+
+.premium-site-header--reference-public #mobile-menu a,
+.premium-site-header--reference-commerce #mobile-menu a {
+  border-bottom-color: rgba(214, 173, 85, .18);
+  color: #fff7e7;
+}
+
+.premium-site-header--reference-public #mobile-menu a[aria-current="page"],
+.premium-site-header--reference-commerce #mobile-menu a[aria-current="page"] {
+  color: #f2d188;
+}
+
+.premium-site-header--reference-public #mobile-menu .btn-primary,
+.premium-site-header--reference-commerce #mobile-menu .btn-primary {
+  border-color: #e4bd67;
+  background: linear-gradient(135deg, #f0ca76, #c79435);
+  color: #192017;
+}
+
+@media (max-width: 640px) {
+  .premium-site-header.premium-site-header--reference-library {
+    background: #07110f;
+    border-bottom-color: rgba(214, 173, 85, .24);
+  }
+
+  .premium-site-header--reference-library .premium-header-inner > a,
+  .premium-site-header--reference-library .premium-header-inner > button {
+    color: #fff7e7;
+  }
+
+  .premium-site-header--reference-library #mobile-menu {
+    border-color: rgba(214, 173, 85, .22);
+    background: #07110f;
+  }
+
+  .premium-site-header--reference-library #mobile-menu a {
+    border-bottom-color: rgba(214, 173, 85, .18);
+    color: #fff7e7;
+  }
+}
+
 /* One stable header geometry for every public shell. Route-specific absolute
    positioning made the canonical lockup vulnerable to clipping at 1280px. */
 .premium-site-header .earnalism-brand-lockup {
@@ -391,4 +536,136 @@
   background: #fffdf8;
   border-bottom-color: rgba(33, 40, 33, .12);
   box-shadow: none;
+}
+
+@media (min-width: 1024px) {
+  .premium-site-header.premium-site-header--reference-commerce {
+    --site-header-height: 4rem;
+    background: #07110f;
+    border-bottom-color: rgba(214, 173, 85, .24);
+  }
+  .premium-site-header--reference-commerce .earnalism-brand-lockup {
+    width:clamp(11.5rem,13vw,13.75rem);
+    padding:.18rem .38rem;
+  }
+  .premium-site-header--reference-commerce .premium-header-nav a {
+    color: rgba(255, 248, 233, .84);
+    font-size:.78rem !important;
+  }
+  .premium-site-header--reference-commerce .premium-header-nav a[aria-current="page"],
+  .premium-site-header--reference-commerce .reference-home-header-icon,
+  .premium-site-header--reference-commerce .premium-header-inner > button { color:#f2d188; }
+}
+
+/* The approved primary boards use a deliberately quiet, compact masthead. Keep
+   this scoped to the reference-backed public routes so account and editorial
+   layouts retain their independently approved header geometry. */
+@media (min-width: 1024px) {
+  .premium-site-header--reference-public,
+  .premium-site-header--reference-library {
+    --site-header-height: 2.8rem;
+  }
+
+  .premium-site-header--reference-public .premium-header-inner,
+  .premium-site-header--reference-library .premium-header-inner {
+    padding-inline: clamp(1rem, 1.7vw, 1.65rem);
+  }
+
+  .premium-site-header--reference-public .earnalism-brand-lockup,
+  .premium-site-header--reference-library .earnalism-brand-lockup {
+    width: clamp(7.5rem, 9vw, 9.5rem);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .premium-site-header--reference-public .premium-header-nav,
+  .premium-site-header--reference-library .premium-header-nav {
+    gap: clamp(.6rem, 1.05vw, 1.1rem);
+  }
+
+  .premium-site-header--reference-public .premium-header-nav a,
+  .premium-site-header--reference-library .premium-header-nav a {
+    min-height: 2.35rem;
+    font-size: clamp(.56rem, .58vw, .66rem) !important;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    letter-spacing: .01em !important;
+  }
+
+  .premium-site-header--reference-public .reference-home-header-icon,
+  .premium-site-header--reference-library .reference-home-header-icon {
+    min-height: 2.35rem;
+  }
+}
+
+/* Reference routes use the shared complete viewport navigation dialog. */
+@media (max-width: 640px) {
+  .premium-site-header--reference-public #mobile-menu,
+  .premium-site-header--reference-library #mobile-menu,
+  .premium-site-header--reference-commerce #mobile-menu {
+    position: fixed;
+    z-index: 70;
+    top: var(--site-header-height);
+    right: 0;
+    bottom: auto;
+    left: 0;
+    height: calc(100dvh - var(--site-header-height));
+    min-height: calc(100dvh - var(--site-header-height));
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .premium-site-header--reference-public,
+  .premium-site-header--reference-library,
+  .premium-site-header--reference-commerce,
+  .premium-site-header--reference-profile {
+    --site-header-height: 3.5rem;
+  }
+
+  .premium-site-header--reference-public .earnalism-brand-lockup,
+  .premium-site-header--reference-library .earnalism-brand-lockup,
+  .premium-site-header--reference-commerce .earnalism-brand-lockup,
+  .premium-site-header--reference-profile .earnalism-brand-lockup {
+    width: min(9.75rem, calc(100vw - 8.5rem));
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .premium-site-header.premium-site-header--reference-profile {
+    background:#07110f;
+    border-bottom-color:rgba(214,173,85,.24);
+  }
+  .premium-site-header--reference-profile .premium-header-inner > button,
+  .premium-site-header--reference-profile .reference-home-header-icon { color:#fff7e7; }
+  .premium-site-header--reference-profile #mobile-menu { border-color:rgba(214,173,85,.22); background:#07110f; }
+  .premium-site-header--reference-profile #mobile-menu a { color:#fff7e7; border-bottom-color:rgba(214,173,85,.18); }
+}
+
+/* Exact-primary Home, Library, and Commerce desktop masthead — this intentionally comes
+   after the interim compact rule above so the routed board geometry wins. */
+@media (min-width: 1024px) {
+  .premium-site-header--reference-public,
+  .premium-site-header--reference-library,
+  .premium-site-header.premium-site-header--reference-commerce {
+    --site-header-height: 5.25rem;
+  }
+
+  .premium-site-header--reference-public .premium-header-inner,
+  .premium-site-header--reference-library .premium-header-inner,
+  .premium-site-header--reference-commerce .premium-header-inner {
+    padding-inline: 3.125rem;
+  }
+
+  .premium-site-header--reference-public .earnalism-brand-lockup,
+  .premium-site-header--reference-library .earnalism-brand-lockup,
+  .premium-site-header--reference-commerce .earnalism-brand-lockup {
+    width: 13.125rem;
+  }
 }

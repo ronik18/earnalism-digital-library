@@ -35,6 +35,9 @@ export default function ReaderExperienceV2Route() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const canonicalPage = pageFromSearch(search);
+  // This is compiled only into the private visual-review build. It has no
+  // reader API, protected text, lease, audio source, or production toggle.
+  const visualFixture = process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1" && search.get("visual-fixture") === "1";
   const [manifest, setManifest] = useState(null);
   const [page, setPage] = useState(null);
   const [lease, setLease] = useState(null);
@@ -48,6 +51,7 @@ export default function ReaderExperienceV2Route() {
   }, []);
 
   useEffect(() => {
+    if (visualFixture) return undefined;
     let cancelled = false;
     setLoading(true);
     setError("");
@@ -56,9 +60,10 @@ export default function ReaderExperienceV2Route() {
       .catch(() => { if (!cancelled) setError("This reader edition is not available."); })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
-  }, [slug]);
+  }, [slug, visualFixture]);
 
   useEffect(() => {
+    if (visualFixture) return undefined;
     let cancelled = false;
     setPage(null);
     if (!manifest || canonicalPage > 3 && !lease) return undefined;
@@ -72,7 +77,7 @@ export default function ReaderExperienceV2Route() {
       })
       .catch((requestError) => { if (!cancelled) setError(requestError?.response?.data?.detail?.message || "Reading access could not be verified."); });
     return () => { cancelled = true; };
-  }, [canonicalPage, lease, manifest, slug]);
+  }, [canonicalPage, lease, manifest, slug, visualFixture]);
 
   useEffect(() => {
     if (!lease) return undefined;
@@ -135,6 +140,11 @@ export default function ReaderExperienceV2Route() {
     };
   }, [canonicalPage, manifest, page]);
 
+  if (visualFixture) return <ReaderExperienceV2 model={READER_V2_FIXTURE} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target) => {
+    if (target === "back") navigate(`/book/${slug || "dracula"}`);
+    if (target === "library" || target === "search") navigate("/library");
+    if (target === "passes") navigate("/pricing");
+  }} />;
   if (loading) return routeState("Opening reader", "Loading this canonical edition.");
   if (error && !manifest) return routeState("Reader unavailable", error, <Link to={`/book/${slug}`}>Return to book details</Link>);
 

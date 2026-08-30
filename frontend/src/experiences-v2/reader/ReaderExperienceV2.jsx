@@ -6,6 +6,7 @@ import ExperienceIconButton from "../shared/ExperienceIconButton";
 import ExperiencePanel from "../shared/ExperiencePanel";
 import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
+import "./reader-v2.mobile.css";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
 
 export const READER_V2_FIXTURE = Object.freeze({
@@ -19,6 +20,10 @@ export const READER_V2_FIXTURE = Object.freeze({
   readingTime: "1h 42m",
   readingPass: "215 minutes left",
   contents: ["Chapter 1 · Jonathan Harker’s Journal", "Chapter 2 · The Carpathians", "Chapter 3 · The Count’s Castle", "Chapter 4 · The Visitor’s Diary"],
+  illustration: {
+    src: "/assets/reference-derived/reader-castle-board-crop.png",
+    alt: "A sepia castle landscape",
+  },
   paragraphs: [
     "3 May. Bistritz.—Left Munich at 8.35 P.M., on 1st May, arriving in Vienna early next morning; should have arrived at 6.46, but train was an hour late.",
     "The impression I had of the papers was that the Count Dracula was a remarkable man. There was something about him which impressed me favourably.",
@@ -47,6 +52,15 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   return (
     <ExperienceShell className="reader-v2" labelledBy="reader-v2-title">
       <ExperienceHeader onSearch={() => onNavigate?.("search")} trailingLabel="Library" />
+      <header className="reader-v2__mobile-topbar" aria-label="Reader actions">
+        <button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button>
+        <span><small>Canonical page</small>{model.canonicalPage}</span>
+          <div>
+            <button type="button" onClick={() => setFontScale((value) => Math.max(90, value - 5))} aria-label="Decrease text size">A−</button>
+            <button type="button" onClick={() => setFontScale((value) => Math.min(120, value + 5))} aria-label="Increase text size">A+</button>
+            <button type="button" onClick={() => onNavigate?.("settings")} aria-label="Reader settings"><Settings2 size={17} /></button>
+        </div>
+      </header>
       <div className="reader-v2__layout">
         <aside className="reader-v2__rail" aria-label="Reader controls">
           <div className="reader-v2__book"><span>{model.author}</span><h2>{model.title}</h2></div>
@@ -59,14 +73,14 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
         <article className="reader-v2__canvas">
           <header className="reader-v2__chapter"><span>{model.chapterEyebrow}</span><div className="reader-v2__toolbar"><ExperienceIconButton label="Decrease text size" onClick={() => setFontScale((value) => Math.max(90, value - 5))}><Minus size={16} /></ExperienceIconButton><output aria-label="Text size">Aa · {fontScale}%</output><ExperienceIconButton label="Increase text size" onClick={() => setFontScale((value) => Math.min(120, value + 5))}><Plus size={16} /></ExperienceIconButton><ExperienceIconButton label="Reader settings" onClick={() => onNavigate?.("settings")}><Settings2 size={16} /></ExperienceIconButton></div><h1 id="reader-v2-title">{model.chapterTitle}</h1></header>
           {model.illustration && <img className="reader-v2__illustration" src={model.illustration.src} alt={model.illustration.alt || ""} decoding="async" />}
-          <div className="reader-v2__body" style={{ fontSize: `${fontScale / 100}rem` }}>{model.paragraphs.map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}</div>
+          <div className="reader-v2__body" data-testid="reader-reading-text" style={{ fontSize: `${fontScale / 100}rem` }}>{model.paragraphs.map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}</div>
           <footer className="reader-v2__continuation"><span>{PUBLIC_PREVIEW_COPY}</span>{currentAccess.canRequest ? <button type="button" onClick={() => requestPage(model.canonicalPage + 1)}>Use Reading Time to Continue <ChevronRight size={16} /></button> : <button type="button" onClick={() => onNavigate?.("signin")}>Sign in to continue <ChevronRight size={16} /></button>}</footer>
         </article>
 
         <aside className="reader-v2__context" aria-label="About this book"><ExperiencePanel eyebrow="About this book"><dl><div><dt>Author</dt><dd>{model.author}</dd></div><div><dt>Language</dt><dd>{model.metadata.language}</dd></div><div><dt>Genre</dt><dd>{model.metadata.genre}</dd></div><div><dt>First published</dt><dd>{model.metadata.year}</dd></div><div><dt>Source & rights</dt><dd>{model.metadata.source}</dd></div></dl><p>{PUBLIC_ACCESS_COPY} Reading time remains server-authoritative.</p></ExperiencePanel></aside>
       </div>
       <div className="reader-v2__mobile-actions"><button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button><span><Clock3 size={14} /> {model.readingPass}</span><button type="button" onClick={() => onNavigate?.("bookmark")} aria-label="Bookmark current page"><Bookmark size={18} /></button></div>
-      <ExperienceBottomNavigation active="library" onNavigate={onNavigate} />
+      <div className="reader-v2__reader-navigation"><ExperienceBottomNavigation active="library" onNavigate={onNavigate} /></div>
     </ExperienceShell>
   );
 }

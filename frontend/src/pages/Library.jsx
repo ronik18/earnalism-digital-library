@@ -87,6 +87,7 @@ export default function Library() {
   const language = params.get("language") || "all";
   const reading = params.get("reading") || (params.get("category") && !["all", "live", "pipeline"].includes(params.get("category")) ? params.get("category") : "all");
   const listening = params.get("listening") || (params.get("availability") === "approved-audiobook" ? "available" : "all");
+  const genre = params.get("genre") || "all";
   const sort = params.get("sort") || "recently-approved";
 
   useSEO({
@@ -124,6 +125,11 @@ export default function Library() {
     setParams(next);
   };
 
+  const resetReferenceFilters = () => {
+    setQuery("");
+    setParams(new URLSearchParams());
+  };
+
   const allBooks = useMemo(() => {
     const bySlug = new Map();
     liveBooks.forEach((book) => book?.slug && bySlug.set(book.slug, book.slug === LIVE_APPROVED_SLUG ? mergeDraculaBook(book) : book));
@@ -142,9 +148,12 @@ export default function Library() {
         && matchesLibraryFacets(book, language, listening === "available" ? "approved-audiobook" : "all")
         && (listening !== "hidden" || matchesLibraryFacets(book, language, "audio-hidden"))
         && readingMatches(book, reading)
-        && listeningMatches(book, listening);
+        && listeningMatches(book, listening)
+        && (genre === "all" || book.category_slug === genre);
     }), sort);
-  }, [allBooks, language, listening, query, reading, sort]);
+  }, [allBooks, genre, language, listening, query, reading, sort]);
+
+  const genres = useMemo(() => Array.from(new Set(allBooks.map((book) => book.category_slug).filter(Boolean))).sort(), [allBooks]);
 
   const handleSearch = (value) => {
     setQuery(value);
@@ -163,9 +172,12 @@ export default function Library() {
         language={language}
         reading={reading}
         listening={listening}
+        genre={genre}
+        genres={genres}
         sort={sort}
         onSearch={handleSearch}
         onParam={updateParam}
+        onResetFilters={resetReferenceFilters}
         filtersOpen={filtersOpen}
         setFiltersOpen={setFiltersOpen}
       />
