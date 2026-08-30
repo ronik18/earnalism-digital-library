@@ -63,7 +63,7 @@ jobs:
             node scripts/serve_frontend_build.js --port 13108 >"$RUNNER_TEMP/book-commerce-base.log" 2>&1 & pid=$!
             trap 'kill "$pid"' EXIT
             for i in $(seq 1 30); do curl -fsS http://127.0.0.1:13108/ >/dev/null && break; sleep 1; done
-            PR_HEAD_SHA=706dfe228cdd554c8aa358b2b112912f457823be ACTUAL_CHECKOUT_SHA=706dfe228cdd554c8aa358b2b112912f457823be UAT_BASE_URL=http://127.0.0.1:13108 BOOK_COMMERCE_CAPTURE_OUTPUT=uat/evidence/book-commerce-final-review/before node scripts/capture_book_commerce_final_review.mjs
+            PR_HEAD_SHA=706dfe228cdd554c8aa358b2b112912f457823be ACTUAL_CHECKOUT_SHA=706dfe228cdd554c8aa358b2b112912f457823be UAT_BASE_URL=http://127.0.0.1:13108 BOOK_COMMERCE_BASELINE=1 BOOK_COMMERCE_CAPTURE_OUTPUT=uat/evidence/book-commerce-final-review/before node scripts/capture_book_commerce_final_review.mjs
           )
           mkdir -p uat/evidence/book-commerce-final-review/before
           cp -R "$base_dir/uat/evidence/book-commerce-final-review/before/." uat/evidence/book-commerce-final-review/before/
