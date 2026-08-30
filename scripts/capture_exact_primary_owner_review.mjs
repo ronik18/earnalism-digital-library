@@ -123,8 +123,8 @@ async function capture(state, context, sessionFontLoad) {
 
 fs.mkdirSync(output, { recursive: true });
 const browser = await chromium.launch({ headless: true });
-const checkoutSha = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-const checkoutTreeSha = execFileSync("git", ["rev-parse", "HEAD^{tree}"], { encoding: "utf8" }).trim();
+const checkoutSha = process.env.ACTUAL_CHECKOUT_SHA || execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+const checkoutTreeSha = process.env.CHECKOUT_TREE_SHA || execFileSync("git", ["rev-parse", "HEAD^{tree}"], { encoding: "utf8" }).trim();
 const captureScriptSha = sha(fs.readFileSync(new URL(import.meta.url)));
 const context = await browser.newContext({ deviceScaleFactor: 1, colorScheme: "dark", reducedMotion: "reduce" });
 const sessionFontLoad = { value: null };
