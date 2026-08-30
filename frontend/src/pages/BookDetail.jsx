@@ -105,6 +105,7 @@ export default function BookDetail() {
 
   useEffect(() => {
     const controller = new AbortController();
+    setSelectedTab("about");
     setLoading(true);
     setLoadStatus("loading");
     api.get(`/books/${slug}`, { signal: controller.signal }).then(async (r) => {
