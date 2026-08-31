@@ -7,3 +7,7 @@ The previous ivory full-page Library, full-width ivory lower Home section, and d
 Historical reference images remain preserved and continue to guide component hierarchy, content order, hero composition, navigation, card arrangement, and section structure. They are not authority for a current full-page light background.
 
 The implementation uses shared dark tokens, constrained shared 2:3 book tiles, truthful configured offers, and a static operational-facts evidence fallback. It does not alter Reader access, audio, covers, database state, payments, or infrastructure.
+
+## Gilded Burgundy colour authority
+
+`EARNALISM_GILDED_BURGUNDY_V1` supersedes `DARK_PREMIUM_PUBLIC_SYSTEM_V1` for colour authority only. Its theme ID is `earnalism-gilded-burgundy-v1`; every green public-surface value is `SUPERSEDED_BY_OWNER_GILDED_BURGUNDY_DECISION`. The established hierarchy, continuous dark surfaces, card density, operational-facts fallback, CTA contract, P0 header geometry, and product truth remain authoritative.

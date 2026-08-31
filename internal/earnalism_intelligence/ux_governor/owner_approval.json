@@ -69,5 +69,16 @@
     "limits": "No Reader activation, audio publication, cover assignment, database, payment, or infrastructure mutation.",
     "approval_required_before_merge": "OWNER_P1_DARK_PUBLIC_SURFACES_APPROVAL_REQUIRED"
   },
+  "earnalism_gilded_burgundy_v1": {
+    "theme_id": "earnalism-gilded-burgundy-v1",
+    "owner_decision": "EARNALISM_GILDED_BURGUNDY_V1",
+    "status": "IMPLEMENTATION_AND_OWNER_REVIEW_AUTHORIZED",
+    "scope": "Colour authority for Home, Library, Commerce / Reading Pass, public header, and footer only",
+    "supersedes": {"decision": "DARK_PREMIUM_PUBLIC_SYSTEM_V1", "authority": "COLOUR_ONLY"},
+    "green_theme_status": "SUPERSEDED_BY_OWNER_GILDED_BURGUNDY_DECISION",
+    "preserved_foundations": ["P0 header geometry", "P1 hierarchy", "public-surface continuity", "book-card density", "analytics fallback", "CTA contract", "product truth"],
+    "limits": "No Reader activation, audio publication, cover assignment, database, payment, infrastructure, or deployment mutation.",
+    "approval_required_before_merge": "OWNER_GILDED_BURGUNDY_PRIMARY_APPROVAL_REQUIRED"
+  },
   "updated_at": "2026-07-08T12:55:46Z"
 }

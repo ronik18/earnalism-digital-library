@@ -51,7 +51,7 @@ describe("premium header navigation", () => {
     expect(styles).toContain("@media (min-width: 1280px)");
     expect(styles).toContain("--site-header-height: 5rem;");
     expect(styles).toContain("width: clamp(14rem, 18vw, 15.5rem);");
-    expect(styles).toContain("background: #fff8ea;");
+    expect(styles).toContain("background: #fff9ee;");
     expect(styles).toContain("font: 600 1rem/1.35 var(--font-ui, Outfit, sans-serif);");
     expect(styles).toContain("min-height: 52px;");
     expect(styles).not.toContain("font-size: clamp(.56rem, .58vw, .66rem) !important;");

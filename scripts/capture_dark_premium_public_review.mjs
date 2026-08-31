@@ -6,7 +6,7 @@ import path from "node:path";
 import { chromium, firefox, webkit } from "playwright";
 
 const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
-const output = path.resolve(process.env.DARK_PREMIUM_CAPTURE_OUTPUT || "uat/evidence/dark-premium-public-v1/current");
+const output = path.resolve(process.env.DARK_PREMIUM_CAPTURE_OUTPUT || "uat/evidence/gilded-burgundy-primary-344/current");
 const engine = process.env.DARK_PREMIUM_BROWSER || "chromium";
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("UAT_BASE_URL must be an explicit loopback URL.");
 if (!({ chromium, firefox, webkit })[engine]) throw new Error(`Unsupported browser: ${engine}`);
@@ -26,7 +26,7 @@ const packs = [
 const routes = [
   ["home", "/"], ["library", "/library"], ["commerce", "/pricing"]
 ];
-const viewports = [[1920,1080],[1440,1000],[1024,768],[768,1024],[430,932],[390,844],[320,568]];
+const viewports = [[1920,1080],[1440,1000],[1280,800],[1024,768],[768,1024],[430,932],[390,844],[320,568]];
 const hash = (value) => crypto.createHash("sha256").update(value).digest("hex");
 const respond = (route, body) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 
@@ -81,17 +81,24 @@ async function run() {
         const commerceCards = [...document.querySelectorAll(".reference-commerce__packs .reference-offer")];
         const surface = document.querySelector(id === "home" ? ".reference-home" : id === "library" ? ".reference-library" : ".reference-commerce");
         const navStyle = style(nav); const surfaceStyle = style(surface); const headerStyle = style(header);
-        return { header: rect(header), brand: rect(brand), headerBackground: headerStyle?.backgroundColor || "rgb(7, 17, 15)", nav: nav ? { fontSize: navStyle.fontSize, lineHeight: navStyle.lineHeight, color: navStyle.color } : null, surface: surfaceStyle?.backgroundColor || "", grid: rect(grid), cards: cards.map(rect), commerceCards: commerceCards.map(rect), filterOpen, evidence: Boolean(document.querySelector("[data-testid=commerce-evidence-fallback]")), overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth, imageComplete: [...document.images].every((image) => image.complete), headerCount: document.querySelectorAll("[data-testid=site-header]").length };
+        return { header: rect(header), brand: rect(brand), headerBackground: headerStyle?.backgroundColor || "rgb(23, 9, 14)", nav: nav ? { fontSize: navStyle.fontSize, lineHeight: navStyle.lineHeight, color: navStyle.color } : null, surface: surfaceStyle?.backgroundColor || "", grid: rect(grid), cards: cards.map(rect), commerceCards: commerceCards.map(rect), filterOpen, evidence: Boolean(document.querySelector("[data-testid=commerce-evidence-fallback]")), overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth, imageComplete: [...document.images].every((image) => image.complete), headerCount: document.querySelectorAll("[data-testid=site-header]").length, footerCount: document.querySelectorAll("[data-testid=site-footer]").length };
       }, { id, filterOpen });
       const filename = `${id}-${width}x${height}${filterOpen ? "-filters" : ""}-${engine}.png`;
-      const screenshot = path.join(output, filename); await page.screenshot({ path: screenshot, fullPage: true, animations: "disabled" });
-      records.push({ id, route, width, height, engine, status: response?.status() || 0, errors, screenshot: filename, ...metrics, navContrast: metrics.nav ? ratio(metrics.nav.color, metrics.headerBackground) : null });
+      const screenshot = path.join(output, filename);
+      const firstScreenshot = path.join(output, filename.replace(".png", "-first.png"));
+      const headerScreenshot = path.join(output, filename.replace(".png", "-header.png"));
+      const footerScreenshot = path.join(output, filename.replace(".png", "-footer.png"));
+      await page.screenshot({ path: screenshot, fullPage: true, animations: "disabled" });
+      await page.screenshot({ path: firstScreenshot, fullPage: false, animations: "disabled" });
+      await page.locator("[data-testid=site-header]").screenshot({ path: headerScreenshot, animations: "disabled" });
+      await page.locator("[data-testid=site-footer]").screenshot({ path: footerScreenshot, animations: "disabled" });
+      records.push({ id, route, width, height, engine, status: response?.status() || 0, errors, screenshot: filename, firstScreenshot: path.basename(firstScreenshot), headerScreenshot: path.basename(headerScreenshot), footerScreenshot: path.basename(footerScreenshot), ...metrics, navContrast: metrics.nav ? ratio(metrics.nav.color, metrics.headerBackground) : null });
       await page.close();
     }
   } finally { await browser.close(); }
   const report = { schema_version: "earnalism.dark-premium-public.capture.v1", engine, fixtures: { books: books.length, packs: packs.length, payment_mutations: 0 }, records };
   fs.writeFileSync(path.join(output, `capture-${engine}.json`), JSON.stringify(report, null, 2) + "\n");
-  const failed = records.filter((record) => record.status !== 200 || record.errors.length || record.overflow || record.headerCount !== 1 || (record.nav && record.navContrast < 4.5));
+  const failed = records.filter((record) => record.status !== 200 || record.errors.length || record.overflow || record.headerCount !== 1 || record.footerCount !== 1 || !record.imageComplete || (record.nav && record.navContrast < 4.5));
   console.log(JSON.stringify({ engine, output, records: records.length, failed: failed.map((record) => `${record.id}-${record.width}`) }));
   if (failed.length) process.exitCode = 1;
 }

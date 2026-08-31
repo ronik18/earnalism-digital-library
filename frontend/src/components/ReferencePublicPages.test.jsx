@@ -49,7 +49,7 @@ describe("Reference public page surfaces", () => {
   });
 
   test("uses one dark, constrained shared public surface and book-tile contract", () => {
-    expect(styles).toContain("DARK_PREMIUM_PUBLIC_SYSTEM_V1");
+    expect(styles).toContain("EARNALISM_GILDED_BURGUNDY_V1");
     expect(styles).toContain("var(--book-card-width-desktop)");
     expect(styles).toContain("grid-auto-columns:var(--book-card-width-desktop)");
     expect(styles).toContain("grid-template-columns:repeat(auto-fill,var(--book-card-width-desktop))");

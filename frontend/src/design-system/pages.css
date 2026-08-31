@@ -2,14 +2,14 @@
 .library-page,
 .commerce-page { min-height: 100svh; background: var(--public-page); }
 .commerce-main { width: var(--eds-page); margin-inline: auto; padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
-.commerce-hero { position: relative; overflow: hidden; margin-bottom: clamp(2.5rem, 5vw, 4rem); padding: clamp(3rem, 7vw, 6rem); border-radius: 0.9rem; color: #fff8e8; background-color: #10221e; background-image: radial-gradient(circle at 78% 35%, rgba(213,173,86,.25), transparent 17rem), radial-gradient(circle at 60% 80%, rgba(55,96,66,.2), transparent 21rem), linear-gradient(115deg,#07100f,#10251f); }
+.commerce-hero { position: relative; overflow: hidden; margin-bottom: clamp(2.5rem, 5vw, 4rem); padding: clamp(3rem, 7vw, 6rem); border-radius: 0.9rem; color: var(--beige-50); background-color: var(--public-surface); background-image: radial-gradient(circle at 78% 35%, rgba(223,184,90,.25), transparent 17rem), radial-gradient(circle at 60% 80%, rgba(113,42,61,.2), transparent 21rem), linear-gradient(115deg,var(--public-page),var(--public-surface-elevated)); }
 .commerce-hero .italic-eyebrow, .commerce-hero h1, .commerce-hero p, .commerce-hero span { color: inherit; }
 .commerce-hero h1 { max-width: 14ch; margin-inline: auto; font: 500 clamp(2.5rem,5.5vw,4.9rem)/.95 var(--eds-display); letter-spacing: -.045em; }
 .commerce-hero p { margin-inline: auto; }
 .commerce-hero .btn-secondary { border-color: var(--eds-gold); color: #fff8e8; }
 .commerce-packs { display: grid; grid-template-columns: repeat(auto-fit,minmax(14rem,1fr)); gap: 1rem; }
 .commerce-pack { min-height: 23rem; border: 1px solid var(--eds-line); border-radius: .75rem; background: rgba(255,255,255,.68); box-shadow: 0 1.25rem 3rem -2.4rem rgba(8,16,15,.58); }
-.commerce-pack.pricing-card--selected { border-color: var(--eds-gold); color: #fff8e8; background: linear-gradient(180deg,#10221e,#091411); transform: translateY(-.3rem); }
+.commerce-pack.pricing-card--selected { border-color: var(--eds-gold); color: var(--beige-50); background: linear-gradient(180deg,var(--public-surface),var(--public-page)); transform: translateY(-.3rem); }
 .commerce-pack.pricing-card--selected h3, .commerce-pack.pricing-card--selected .text-charcoal, .commerce-pack.pricing-card--selected .text-charcoal-soft { color: #fff8e8; }
 .commerce-trust-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; margin-top: 2.75rem; }
 .commerce-trust-grid > div, .commerce-footer { border: 1px solid var(--eds-line); border-radius: .7rem; padding: 1.25rem; background: rgba(255,255,255,.55); }
