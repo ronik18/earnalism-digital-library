@@ -105,8 +105,8 @@ async function capture(state, context, sessionFontLoad) {
   }
   if (state.family === "navigation") {
     try {
-      await page.locator("[data-testid=mobile-menu-toggle]").click();
-      await page.locator("[data-testid=mobile-menu][role=dialog]").waitFor({ state: "visible", timeout: 10_000 });
+      await page.locator("[data-testid=mobile-menu-toggle]:visible").click();
+      await page.locator("[data-testid=mobile-menu][role=dialog]:visible").waitFor({ state: "visible", timeout: 10_000 });
     } catch (error) {
       if (strict) throw error;
       errors.push(`navigation-overlay:${error.message}`);
