@@ -509,6 +509,32 @@
   color: #f6ead7;
 }
 
+/* The public premium header is opaque. Below the desktop breakpoint its
+   historical glass blur creates a fixed-position containing block, which
+   collapses the mobile dialog against the header instead of the viewport. */
+@media (max-width: 1279px) {
+  .premium-site-header.glass-header {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .premium-site-header #mobile-menu {
+    top: var(--site-header-height);
+    right: 0;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--site-header-height));
+    height: calc(100dvh - var(--site-header-height));
+    min-height: calc(100vh - var(--site-header-height));
+    min-height: calc(100dvh - var(--site-header-height));
+    max-height: calc(100vh - var(--site-header-height));
+    max-height: calc(100dvh - var(--site-header-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
 .premium-site-header .mobile-menu-overlay__content { padding-top: 4.75rem; }
 
 .premium-site-header .mobile-menu-overlay__content > a,

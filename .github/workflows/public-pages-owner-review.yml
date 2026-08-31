@@ -18,6 +18,7 @@ on:
       - docs/architecture/primary-visual-convergence.md
       - docs/architecture/primary-visual-owner-asset-gaps.*
       - scripts/capture_exact_primary_owner_review.mjs
+      - scripts/test_capture_exact_primary_owner_review_mobile_menu.mjs
       - scripts/verify_exact_primary_cross_browser.mjs
       - scripts/generate_exact_primary_owner_review.py
       - uat/contracts/public-pages-visual-contract-v2.json
@@ -62,6 +63,15 @@ jobs:
           npm ci --prefix frontend --legacy-peer-deps
           python3 -m pip install --disable-pip-version-check -r requirements.txt
           npx playwright install --with-deps chromium firefox webkit
+
+      - name: Verify owner-scoped mobile-menu geometry
+        run: |
+          REACT_APP_ENABLE_VISUAL_FIXTURES=1 npm --prefix frontend run build
+          node scripts/serve_frontend_build.js --port 13006 >"$RUNNER_TEMP/owner-review-mobile-menu-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13006/ >/dev/null && break; sleep 1; done
+          UAT_BASE_URL=http://127.0.0.1:13006 node scripts/test_capture_exact_primary_owner_review_mobile_menu.mjs
 
       - name: Materialize base source without changing the pull request checkout
         env:

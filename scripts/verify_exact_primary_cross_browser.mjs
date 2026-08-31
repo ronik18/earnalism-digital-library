@@ -6,6 +6,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
+import { openActualMobileMenu, assertMobileMenuGeometry, closeActualMobileMenu } from "./capture_exact_primary_owner_review.mjs";
 
 const require = createRequire(import.meta.url);
 let playwright;
@@ -36,7 +37,7 @@ const states = [
   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],
   ["my-library-mobile", "/my-library", 390, 844, "my-library"], ["profile-mobile", "/account?visual-fixture=1", 390, 844, "profile"],
 ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family }));
-const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: ["[data-testid=pricing-reference-surface]"], navigation: ["[data-testid=mobile-menu][role=dialog]"], book: [".book-detail-page"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-v2-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-profile-mobile]"], }[family] || ["main"]);
+const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: ["[data-testid=pricing-reference-surface]"], navigation: ["header"], book: [".book-detail-page"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-v2-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-profile-mobile]"], }[family] || ["main"]);
 const sha = (value) => crypto.createHash("sha256").update(value).digest("hex");
 const json = (route, body) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 
@@ -44,6 +45,7 @@ async function installLocalResponses(page) {
   await page.route("**/api/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
     if (pathname.endsWith("/books")) return json(route, books);
+    if (pathname.includes("/books/")) return json(route, books.find((book) => pathname.endsWith(`/${book.slug}`)) || {});
     if (pathname.includes("payments/") && (pathname.endsWith("/offers") || pathname.endsWith("/packs"))) return json(route, { packs, config: { mode: "owner-review-fixture", recurring_enabled: false } });
     if (pathname.endsWith("/auth/me") || pathname.endsWith("/users/me")) return json(route, user);
     if (pathname.includes("transactions") || pathname.includes("devices")) return json(route, []);
@@ -81,7 +83,9 @@ async function verify(state, context) {
     await page.locator(selector).first().waitFor({ state: "attached", timeout: 10_000 });
   }
   if (state.family === "filter") { await page.locator(".reference-filter-trigger").click(); await page.locator(".reference-library-drawer[role=dialog]").waitFor({ state: "visible", timeout: 10_000 }); }
-  if (state.family === "navigation") { await page.locator("[data-testid=mobile-menu-toggle]").click(); await page.locator("[data-testid=mobile-menu][role=dialog]").waitFor({ state: "visible", timeout: 10_000 }); }
+  let navigation = null;
+  let navigationClose = null;
+  if (state.family === "navigation") { navigation = await openActualMobileMenu(page); assertMobileMenuGeometry(navigation); navigationClose = await closeActualMobileMenu(page); }
   const result = await page.evaluate((required) => ({
     scrollWidth: document.documentElement.scrollWidth,
     clientWidth: document.documentElement.clientWidth,
@@ -94,7 +98,7 @@ async function verify(state, context) {
     },
   }), requiredFor(state.family));
   await page.close();
-  return { ...state, status: response?.status() || 0, errors, ...result, pass: response?.status() === 200 && !errors.length && result.scrollWidth === result.clientWidth && result.required.every(Boolean) && Object.values(result.fonts).every(Boolean), fixture: usesSanitizedIdentity ? "sanitized-fixture" : "anonymous-public-shell" };
+  return { ...state, status: response?.status() || 0, errors, navigation, navigationClose, ...result, pass: response?.status() === 200 && !errors.length && result.scrollWidth === result.clientWidth && result.required.every(Boolean) && Object.values(result.fonts).every(Boolean), fixture: usesSanitizedIdentity ? "sanitized-fixture" : "anonymous-public-shell" };
 }
 
 const browser = await { firefox, webkit }[browserName].launch({ headless: true });
