@@ -1,0 +1,30 @@
+{
+  "schema_version": "earnalism.seamless-brand-route-inventory.v1",
+  "authority": [
+    "frontend/src/App.js",
+    "docs/architecture/public-route-inventory.md",
+    "docs/architecture/editorial-support-route-map.md",
+    "frontend/api/removed-content.js"
+  ],
+  "routes": [
+    {"id":"home","path":"/","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"library","path":"/library","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"pricing","path":"/pricing","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"book-dracula","path":"/book/dracula","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"book-devdas","path":"/book/devdas","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"about","path":"/about","classification":"PUBLIC_INDEXABLE","expected_shell":"standalone-about","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"journal","path":"/journal","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"journal-article","path":"/journal/how-reading-shapes-better-founders","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"contact","path":"/contact","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"micro-story","path":"/micro-story","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"login","path":"/login","classification":"PUBLIC_NOINDEX","expected_shell":"auth-shell","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"signup","path":"/signup","classification":"PUBLIC_NOINDEX","expected_shell":"auth-shell","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"account","path":"/account","classification":"AUTHENTICATED_PRIVATE","expected_shell":"account-shell","review":{"desktop":true,"mobile":true},"fixture":"sanitized-account"},
+    {"id":"my-library","path":"/my-library","classification":"AUTHENTICATED_PRIVATE","expected_shell":"account-shell","review":{"desktop":true,"mobile":true},"fixture":"sanitized-account"},
+    {"id":"reader-dracula","path":"/reader/dracula","classification":"AUTHENTICATED_PRIVATE","expected_shell":"reader-experience","review":{"desktop":true,"mobile":true},"fixture":"reader-visual-safe"},
+    {"id":"listener-a-ghost-story","path":"/listener/a-ghost-story","classification":"AUTHENTICATED_PRIVATE","expected_shell":"listener-experience","review":{"desktop":true,"mobile":true},"fixture":"listener-non-playable"},
+    {"id":"listener-dracula","path":"/listener/dracula","classification":"AUTHENTICATED_PRIVATE","expected_shell":"listener-experience","review":{"desktop":true,"mobile":true},"fixture":"listener-non-playable"},
+    {"id":"not-found","path":"UNKNOWN_URL","classification":"NOT_FOUND","expected_shell":"not-found-shell","review":{"desktop":true,"mobile":true},"fixture":"public-safe","indexable":false},
+    {"id":"tombstoned-product","path":"/product/patterned-wrap-dress","classification":"TOMBSTONED","expected_shell":"tombstone-410","review":{"desktop":true,"mobile":true},"fixture":"public-safe","indexable":false}
+  ]
+}
