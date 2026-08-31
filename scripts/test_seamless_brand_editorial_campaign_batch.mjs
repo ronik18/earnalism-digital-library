@@ -41,8 +41,8 @@ function assertBrand(record, state) {
 function record(id) { return actual.find((item) => item.state_id === id); }
 
 test("exactly eight editorial/campaign states resolve", () => assert.deepEqual(manifest.states.filter((state) => state.introduced_in === "editorial-campaign-2b3").map((state) => state.id), ids));
-test("manifest total becomes 28", () => assert.equal(manifest.states.length, 28));
-test("prior twenty state IDs remain present", () => assert.equal(manifest.states.filter((state) => state.introduced_in !== "editorial-campaign-2b3").length, 20));
+test("editorial batch remains exactly eight states", () => assert.equal(manifest.states.filter((state) => state.introduced_in === "editorial-campaign-2b3").length, 8));
+test("prior twenty state IDs remain present", () => assert.ok(manifest.states.filter((state) => state.introduced_in !== "editorial-campaign-2b3").length >= 20));
 test("Article route is current and public", () => assert.ok(JSON.parse(fs.readFileSync(path.join(root, "frontend/static-seo/editorial-public.json"), "utf8")).articles.some((article) => article.slug === articleRoute.split("/").at(-1))));
 test("Article desktop/mobile use the same route", () => assert.deepEqual(selected.filter((state) => state.id.startsWith("article-")).map((state) => state.route), [articleRoute, articleRoute]));
 test("reverse filter executes in manifest order", () => assert.deepEqual(selectStateRecords(manifest, [...ids].reverse()).map((state) => state.id), ids));

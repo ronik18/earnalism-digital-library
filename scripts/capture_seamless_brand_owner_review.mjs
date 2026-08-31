@@ -282,6 +282,156 @@ function routeFixture(route) {
   return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 }
 
+async function waitFor(page, predicate, arg, message) {
+  await page.waitForFunction(predicate, arg, { timeout: 5000 });
+  if (!await page.evaluate(predicate, arg)) throw new Error(message);
+}
+
+async function ownerScopedMobileMenu(page, state) {
+  const header = page.locator('[data-testid="site-header"]:visible');
+  const toggle = header.locator('[data-testid="mobile-menu-toggle"]:visible');
+  const result = {
+    kind: "mobile-menu",
+    visible_toggle_count: await toggle.count(),
+    owner_header_count: await header.count(),
+    hidden_fixture_dialog_count: 0,
+    aria_expanded_before: null,
+    aria_expanded_after: null,
+    active_dialog_count: 0,
+    focus_trap: false,
+    escape_close: false,
+    focus_restoration: false,
+    body_scroll_lock: false,
+    background_inert: false,
+    body_scroll_restored: false,
+    background_inert_restored: false,
+    route_action_result: "FAIL",
+    route_action_destination: null,
+    route_action_navigated: false,
+    route_action_returned: false,
+    route_action_urls: [],
+    failures: [],
+  };
+  if (result.owner_header_count !== 1 || result.visible_toggle_count !== 1) {
+    result.failures.push("owner-scoped-mobile-toggle");
+    return { result, surface: undefined, finalize: async () => result };
+  }
+  result.aria_expanded_before = await toggle.getAttribute("aria-expanded");
+  const controls = await toggle.getAttribute("aria-controls");
+  if (result.aria_expanded_before !== "false" || !controls) result.failures.push("menu-initial-aria-contract");
+  await toggle.click();
+  await waitFor(page, (id) => { const visible = (node) => { const style = node && getComputedStyle(node); const rect = node?.getBoundingClientRect(); return Boolean(style && rect && style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0); }; return [...document.querySelectorAll('[data-testid="mobile-menu-toggle"]')].some((node) => visible(node) && node.getAttribute("aria-expanded") === "true") && [...document.querySelectorAll('[data-testid="mobile-menu"]')].some((node) => node.id === id && visible(node)); }, controls, `State ${state.id}: menu did not open.`);
+  const dialog = header.locator(`[data-testid="mobile-menu"]#${controls}[role="dialog"][aria-modal="true"]:visible`);
+  result.aria_expanded_after = await toggle.getAttribute("aria-expanded");
+  result.active_dialog_count = await dialog.count();
+  result.hidden_fixture_dialog_count = await page.locator('[data-testid="mobile-menu"][role="dialog"]').count() - result.active_dialog_count;
+  if (result.active_dialog_count !== 1) result.failures.push("owner-scoped-active-dialog");
+  if (result.aria_expanded_after !== "true") result.failures.push("menu-open-aria-contract");
+  if (result.active_dialog_count !== 1) return { result, surface: dialog, finalize: async () => result };
+  result.geometry = await page.evaluate((id) => {
+    const box = (node) => { const rect = node?.getBoundingClientRect(); return rect ? { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height } : null; };
+    const visible = (node) => { const style = node && getComputedStyle(node); const rect = node?.getBoundingClientRect(); return Boolean(style && rect && style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0); };
+    const header = [...document.querySelectorAll('[data-testid="site-header"]')].find(visible);
+    const toggle = [...(header?.querySelectorAll('[data-testid="mobile-menu-toggle"]') || [])].find(visible);
+    const dialog = [...document.querySelectorAll('[data-testid="mobile-menu"]')].find((node) => node.id === id && visible(node));
+    const view = window.visualViewport;
+    const style = dialog && getComputedStyle(dialog);
+    return { viewport: { width: innerWidth, height: innerHeight }, visual_viewport: { width: view?.width ?? innerWidth, height: view?.height ?? innerHeight }, header: box(header), toggle: box(toggle), dialog: box(dialog), dialog_client_height: dialog?.clientHeight ?? 0, dialog_scroll_height: dialog?.scrollHeight ?? 0, computed_position: style?.position ?? "", top: style?.top ?? "", bottom: style?.bottom ?? "", width: style?.width ?? "", height: style?.height ?? "", max_height: style?.maxHeight ?? "", overflow: style?.overflowY ?? "", z_index: style?.zIndex ?? "", body_overflow: document.body.style.overflow, main_inert: document.getElementById("main-content")?.hasAttribute("inert") ?? false, footer_inert: document.querySelector("footer")?.hasAttribute("inert") ?? false, horizontal_overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth };
+  }, controls);
+  const geometry = result.geometry;
+  const available = geometry.visual_viewport.height - geometry.header.height;
+  if (!(geometry.dialog_client_height > 0 && Math.abs(geometry.dialog.top - geometry.header.bottom) <= 2 && Math.abs(geometry.dialog.width - geometry.visual_viewport.width) <= 2 && Math.abs(geometry.dialog.bottom - geometry.visual_viewport.height) <= 3 && geometry.dialog.height >= available * .95 && !geometry.horizontal_overflow)) result.failures.push("menu-geometry");
+  result.body_scroll_lock = geometry.body_overflow === "hidden";
+  result.background_inert = geometry.main_inert && geometry.footer_inert;
+  if (!result.body_scroll_lock) result.failures.push("menu-body-scroll-lock");
+  if (!result.background_inert) result.failures.push("menu-background-inert");
+  const close = dialog.getByRole("button", { name: "Close menu" });
+  await close.focus();
+  await page.keyboard.press("Shift+Tab");
+  const shiftInside = await page.evaluate((id) => { const dialog = document.getElementById(id); return Boolean(dialog?.contains(document.activeElement)); }, controls);
+  await page.keyboard.press("Tab");
+  const tabInside = await page.evaluate((id) => { const dialog = document.getElementById(id); return Boolean(dialog?.contains(document.activeElement)); }, controls);
+  result.focus_trap = shiftInside && tabInside;
+  if (!result.focus_trap) result.failures.push("menu-focus-trap");
+  return {
+    result,
+    surface: dialog,
+    finalize: async () => {
+      await page.keyboard.press("Escape");
+      await page.waitForTimeout(50);
+      result.escape_close = await toggle.getAttribute("aria-expanded") === "false" && await header.locator('[data-testid="mobile-menu"]:visible').count() === 0;
+      result.focus_restoration = await page.evaluate(() => document.activeElement?.getAttribute("data-testid") === "mobile-menu-toggle");
+      const restored = await page.evaluate(() => ({ body_overflow: document.body.style.overflow, main_inert: document.getElementById("main-content")?.hasAttribute("inert") ?? false, footer_inert: document.querySelector("footer")?.hasAttribute("inert") ?? false }));
+      result.body_scroll_restored = restored.body_overflow === "";
+      result.background_inert_restored = !restored.main_inert && !restored.footer_inert;
+      if (!result.escape_close) result.failures.push("menu-escape-close");
+      if (!result.focus_restoration) result.failures.push("menu-focus-restoration");
+      if (!result.body_scroll_restored) result.failures.push("menu-body-scroll-restore");
+      if (!result.background_inert_restored) result.failures.push("menu-background-inert-restore");
+      await toggle.click();
+      await page.waitForFunction((id) => document.getElementById(id)?.getAttribute("aria-modal") === "true", controls, { timeout: 5000 });
+      const destination = state.route === "/library" ? "/pricing" : "/library";
+      const routeActionTestId = destination === "/pricing" ? "mobile-nav-reading-passes" : "mobile-nav-library";
+      const routeAction = header.locator(`[data-testid="mobile-menu"] [data-testid="${routeActionTestId}"]:visible`);
+      result.route_action_destination = destination;
+      if (await routeAction.count() !== 1) {
+        result.failures.push("menu-route-action");
+        return result;
+      }
+      await routeAction.focus();
+      await page.keyboard.press("Enter");
+      await page.waitForURL((url) => url.pathname === destination, { timeout: 5000 }).catch(() => {});
+      await page.waitForFunction(() => [...document.querySelectorAll('[data-testid="mobile-menu"]')].every((node) => { const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display === "none" || rect.width === 0 || rect.height === 0; }), undefined, { timeout: 5000 }).catch(() => {});
+      const navigated = new URL(page.url()).pathname === destination && await page.locator('[data-testid="mobile-menu"]:visible').count() === 0;
+      result.route_action_urls.push(page.url());
+      await page.goBack({ waitUntil: "domcontentloaded" }).catch(() => {});
+      await page.waitForURL((url) => url.pathname === state.route, { timeout: 5000 }).catch(() => {});
+      await page.waitForFunction(() => [...document.querySelectorAll('[data-testid="mobile-menu"]')].every((node) => { const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display === "none" || rect.width === 0 || rect.height === 0; }), undefined, { timeout: 5000 }).catch(() => {});
+      const returned = new URL(page.url()).pathname === state.route && await page.locator('[data-testid="mobile-menu"]:visible').count() === 0;
+      result.route_action_urls.push(page.url());
+      result.route_action_navigated = navigated;
+      result.route_action_returned = returned;
+      result.route_action_result = navigated && returned ? "PASS" : "FAIL";
+      if (result.route_action_result !== "PASS") result.failures.push("menu-route-action");
+      return result;
+    },
+  };
+}
+
+async function libraryFilterInteraction(page, state) {
+  const trigger = page.locator('button.reference-filter-trigger:visible');
+  const result = { kind: "library-filters", trigger_count: await trigger.count(), panel_count: 0, aria_expanded_before: null, aria_expanded_after: null, focus_trap: false, close_result: false, focus_restoration: false, body_scroll_lock: false, background_inert: false, body_scroll_restored: false, background_inert_restored: false, apply_filters_reachable: false, url_mutation_count: 0, failures: [] };
+  if (result.trigger_count !== 1) { result.failures.push("filters-trigger"); return { result, surface: undefined, finalize: async () => result }; }
+  result.aria_expanded_before = await trigger.getAttribute("aria-expanded");
+  const initialUrl = page.url();
+  await trigger.click();
+  const panel = page.locator('.reference-library-drawer[role="dialog"][aria-modal="true"]:visible');
+  await panel.waitFor({ state: "visible", timeout: 5000 });
+  result.panel_count = await panel.count(); result.aria_expanded_after = await trigger.getAttribute("aria-expanded");
+  if (result.panel_count !== 1) result.failures.push("filters-panel-count");
+  if (result.aria_expanded_before !== "false" || result.aria_expanded_after !== "true") result.failures.push("filters-aria-contract");
+  if (result.panel_count !== 1) return { result, surface: panel, finalize: async () => result };
+  result.geometry = await page.evaluate(() => {
+    const box = (node) => { const rect = node?.getBoundingClientRect(); return rect ? { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height } : null; };
+    const visible = (node) => { const style = node && getComputedStyle(node); const rect = node?.getBoundingClientRect(); return Boolean(style && rect && style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0); };
+    const trigger = [...document.querySelectorAll('button.reference-filter-trigger')].find(visible); const panel = [...document.querySelectorAll('.reference-library-drawer[role="dialog"][aria-modal="true"]')].find(visible); const content = panel?.firstElementChild; const apply = [...panel?.querySelectorAll("button") || []].find((node) => /apply filters/i.test(node.textContent || "")); const close = panel?.querySelector('button[aria-label="Close filters"]'); const style = panel && getComputedStyle(panel);
+    return { viewport: { width: innerWidth, height: innerHeight }, trigger: box(trigger), panel: box(panel), panel_content: box(content), panel_client_height: panel?.clientHeight ?? 0, panel_scroll_height: panel?.scrollHeight ?? 0, content_client_height: content?.clientHeight ?? 0, content_scroll_height: content?.scrollHeight ?? 0, computed_position: style?.position ?? "", width: style?.width ?? "", height: style?.height ?? "", overflow: style?.overflowY ?? "", body_overflow: document.body.style.overflow, header_inert: document.querySelector('[data-testid="site-header"]')?.hasAttribute("inert") ?? false, footer_inert: document.querySelector("footer")?.hasAttribute("inert") ?? false, apply_filters: box(apply), close_action: box(close), horizontal_overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth };
+  });
+  const geometry = result.geometry;
+  result.apply_filters_reachable = Boolean(geometry.apply_filters && geometry.apply_filters.width > 0 && geometry.apply_filters.bottom <= geometry.viewport.height && geometry.close_action && geometry.close_action.bottom <= geometry.viewport.height);
+  if (!(geometry.panel && geometry.panel.width >= geometry.viewport.width - 2 && geometry.panel.height >= geometry.viewport.height - 2 && geometry.panel_client_height > 0 && !geometry.horizontal_overflow)) result.failures.push("filters-geometry");
+  result.body_scroll_lock = geometry.body_overflow === "hidden"; result.background_inert = geometry.header_inert && geometry.footer_inert;
+  if (!result.body_scroll_lock) result.failures.push("filters-body-scroll-lock"); if (!result.background_inert) result.failures.push("filters-background-inert");
+  const close = panel.getByRole("button", { name: "Close filters" }); await close.focus(); await page.keyboard.press("Shift+Tab"); const shiftInside = await page.evaluate(() => Boolean(document.querySelector('.reference-library-drawer')?.contains(document.activeElement))); await page.keyboard.press("Tab"); const tabInside = await page.evaluate(() => Boolean(document.querySelector('.reference-library-drawer')?.contains(document.activeElement))); result.focus_trap = shiftInside && tabInside; if (!result.focus_trap) result.failures.push("filters-focus-trap");
+  return { result, surface: panel, finalize: async () => { await panel.locator(":scope > div").evaluate((node) => { node.scrollTop = node.scrollHeight; }); await page.waitForTimeout(50); result.apply_filters_reachable = await page.evaluate(() => { const panel = document.querySelector('.reference-library-drawer'); const apply = [...panel?.querySelectorAll("button") || []].find((node) => /apply filters/i.test(node.textContent || "")); const close = panel?.querySelector('button[aria-label="Close filters"]'); const applyRect = apply?.getBoundingClientRect(); const closeRect = close?.getBoundingClientRect(); return Boolean(applyRect && closeRect && applyRect.width > 0 && applyRect.bottom <= innerHeight && closeRect.bottom <= innerHeight); }); if (!result.apply_filters_reachable) result.failures.push("filters-actions-reachable"); await page.keyboard.press("Escape"); await page.waitForTimeout(50); result.close_result = await panel.count() === 0; result.focus_restoration = await page.evaluate(() => document.activeElement?.classList.contains("reference-filter-trigger")); const restored = await page.evaluate(() => ({ body_overflow: document.body.style.overflow, header_inert: document.querySelector('[data-testid="site-header"]')?.hasAttribute("inert") ?? false, footer_inert: document.querySelector("footer")?.hasAttribute("inert") ?? false })); result.body_scroll_restored = restored.body_overflow === ""; result.background_inert_restored = !restored.header_inert && !restored.footer_inert; result.url_mutation_count = page.url() === initialUrl ? 0 : 1; if (!result.close_result) result.failures.push("filters-close"); if (!result.focus_restoration) result.failures.push("filters-focus-restoration"); if (!result.body_scroll_restored) result.failures.push("filters-body-scroll-restore"); if (!result.background_inert_restored) result.failures.push("filters-background-inert-restore"); if (result.url_mutation_count !== 0) result.failures.push("filters-url-mutation"); return result; } };
+}
+
+async function beginInteraction(page, state) {
+  if (state.interaction === "open-mobile-menu") return ownerScopedMobileMenu(page, state);
+  if (state.interaction === "open-library-filters") return libraryFilterInteraction(page, state);
+  return { result: undefined, surface: undefined, finalize: async () => undefined };
+}
+
 async function captureManifestState(browser, state, baseUrl, outputDirectory, contextIndex) {
   const stateDirectory = stateOutputDirectory(outputDirectory, state.id);
   const requiredScreenshots = requestedScreenshotNames(state.capture);
@@ -317,6 +467,7 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
   const lockup = header.locator(statusFixture ? 'img[src*="earnalism-brand-lockup"]:visible' : '[data-testid="earnalism-brand-lockup"]:visible');
   const lockupCount = await lockup.count();
   if (lockupCount !== 1) throw new Error(`State ${state.id}: expected exactly one visible canonical lockup; received ${lockupCount}.`);
+  const interactionSession = await beginInteraction(page, state);
   let stable = false; const stabilityAttempts = []; let finalFiles = {};
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     const first = await captureRequestedScreenshots(page, stateDirectory, state.capture, `attempt-${attempt}-first`, header, lockup);
@@ -326,6 +477,7 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
     stabilityAttempts.push({ attempt, stable: matches, first: Object.fromEntries(Object.entries(first).map(([name, file]) => [name, file.sha256])), second: Object.fromEntries(Object.entries(second).map(([name, file]) => [name, file.sha256])) });
     if (matches) { stable = true; for (const [name, file] of Object.entries(second)) { const target = path.join(stateDirectory, name); fs.copyFileSync(file.path, target); finalFiles[name] = { path: name, sha256: digest(target) }; } break; }
   }
+  const interactionResult = await interactionSession.finalize();
   const data = await page.evaluate((statusFixture) => {
     const visible = (node) => { if (!node) return false; const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
     const headers = statusFixture ? [...document.querySelectorAll('header[data-testid="status-brand-masthead"]')].filter(visible) : [...document.querySelectorAll('header[data-testid="site-header"],header.experience-header')].filter(visible); const header = headers[0];
@@ -394,8 +546,10 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
   if (state.id.startsWith("article-") && !data.editorial.article_title_present) defects.push("article-fixture-contract");
   if (state.id.startsWith("contact-") && (!data.editorial.contact_form_labels_present || !data.editorial.contact_submit_visible || mutationCount !== 0)) defects.push("contact-contract");
   if (state.id.startsWith("micro-story-") && (data.editorial.micro_story_campaign_state !== "ACTIVE_CAMPAIGN" || !data.editorial.micro_story_primary_cta_present || data.editorial.micro_story_product_truth_result !== "PASS" || mutationCount !== 0)) defects.push("micro-story-contract");
-  const metadata = { state_id: state.id, route: state.route, final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: "chromium", browser_version: browser.version(), context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, ...data, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, production_mutation_count: mutationCount, production_api_call_count: 0, intercepted_api_request_count: apiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
+  if (interactionResult?.failures?.length) defects.push(...interactionResult.failures);
+  const metadata = { state_id: state.id, route: state.route, initial_url: fixtureUrl(baseUrl, state), final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: "chromium", browser_version: browser.version(), context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, ...data, interaction_result: interactionResult, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, production_mutation_count: mutationCount, production_api_call_count: 0, intercepted_api_request_count: apiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
   fs.writeFileSync(path.join(stateDirectory, "metadata.json"), JSON.stringify(metadata, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "console-errors.json"), JSON.stringify(consoleErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "page-errors.json"), JSON.stringify(pageErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "failed-requests.json"), JSON.stringify(failedRequests, null, 2) + "\n");
+  if (interactionResult) { fs.writeFileSync(path.join(stateDirectory, "interaction-results.json"), JSON.stringify(interactionResult, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "geometry-results.json"), JSON.stringify(interactionResult.geometry || {}, null, 2) + "\n"); }
   await context.close();
   if (!stable) throw new Error(`State ${state.id} is unstable after three bounded capture attempts.`);
   return { metadata, screenshotCount: Object.keys(finalFiles).length };
@@ -413,7 +567,8 @@ async function runManifestCapture(options) {
   const reusedStateIds = selection.selected.filter((state) => Array.isArray(state.reuse_in) && state.reuse_in.length > 0).map((state) => state.id);
   const newlyAddedStateIds = selection.selected.filter((state) => typeof state.introduced_in === "string" && state.introduced_in.length > 0).map((state) => state.id);
   const sensitiveDataDefectStates = captured.filter((record) => record.metadata.private_fixture?.sensitive_fixture_values_present).map((record) => record.metadata.state_id);
-  const summary = { manifest_path: selection.manifestPath, manifest_sha256: digest(selection.manifestPath), route_inventory_path: selection.routeInventoryPath, route_inventory_sha256: digest(selection.routeInventoryPath), production_surface_sha256: productionSurfaceHash(), canonical_logo_sha256: digest("frontend/public/assets/brand/earnalism-brand-lockup.png"), article_route: "/journal/how-reading-shapes-better-founders", article_fixture_source: EDITORIAL_FIXTURE_PATH, article_fixture_sha256: editorialFixture().sha256, requested_state_ids: selection.selected.map((state) => state.id), reused_state_ids: reusedStateIds, newly_added_state_ids: newlyAddedStateIds, captured_state_ids: captured.map((record) => record.metadata.state_id), manifest_order_execution_list: selection.selected.map((state) => state.id), missing_state_ids: [], unexpected_state_ids: [], duplicate_state_ids: [], expected_state_count: selection.selected.length, captured_state_count: captured.length, generated_screenshot_count: captured.reduce((sum, record) => sum + record.screenshotCount, 0), stable_state_count: stableCount, unstable_state_count: captured.length - stableCount, sanitized_fixture_count: captured.filter((record) => record.metadata.private_fixture).length, sensitive_data_defect_states: sensitiveDataDefectStates, static_parity_defect_states: captured.filter((record) => record.metadata.static_snapshot && (!record.metadata.static_snapshot.snapshot_exists || record.metadata.static_snapshot.static_logo_url !== "https://theearnalism.com/assets/brand/earnalism-brand-lockup.png")).map((record) => record.metadata.state_id), production_mutation_count: captured.reduce((sum, record) => sum + record.metadata.production_mutation_count, 0), browser_version: captured[0]?.metadata.browser_version, fixture_classifications: captured.map((record) => record.metadata.fixture), rendered_ui_defect_states: captured.filter((record) => record.metadata.rendered_ui_result !== "PASS").map((record) => record.metadata.state_id), output_directory: outputDirectory, generated_timestamp: new Date().toISOString() };
+  const interactionRecords = captured.filter((record) => record.metadata.interaction_result);
+  const summary = { manifest_path: selection.manifestPath, manifest_sha256: digest(selection.manifestPath), route_inventory_path: selection.routeInventoryPath, route_inventory_sha256: digest(selection.routeInventoryPath), production_surface_sha256: productionSurfaceHash(), canonical_logo_sha256: digest("frontend/public/assets/brand/earnalism-brand-lockup.png"), article_route: "/journal/how-reading-shapes-better-founders", article_fixture_source: EDITORIAL_FIXTURE_PATH, article_fixture_sha256: editorialFixture().sha256, requested_state_ids: selection.selected.map((state) => state.id), reused_state_ids: reusedStateIds, newly_added_state_ids: newlyAddedStateIds, captured_state_ids: captured.map((record) => record.metadata.state_id), manifest_order_execution_list: selection.selected.map((state) => state.id), missing_state_ids: [], unexpected_state_ids: [], duplicate_state_ids: [], expected_state_count: selection.selected.length, captured_state_count: captured.length, generated_screenshot_count: captured.reduce((sum, record) => sum + record.screenshotCount, 0), stable_state_count: stableCount, unstable_state_count: captured.length - stableCount, menu_state_count: interactionRecords.filter((record) => record.metadata.interaction_result.kind === "mobile-menu").length, filter_state_count: interactionRecords.filter((record) => record.metadata.interaction_result.kind === "library-filters").length, interaction_pass_count: interactionRecords.filter((record) => record.metadata.interaction_result.failures.length === 0).length, interaction_failure_states: interactionRecords.filter((record) => record.metadata.interaction_result.failures.length).map((record) => record.metadata.state_id), sanitized_fixture_count: captured.filter((record) => record.metadata.private_fixture).length, sensitive_data_defect_states: sensitiveDataDefectStates, static_parity_defect_states: captured.filter((record) => record.metadata.static_snapshot && (!record.metadata.static_snapshot.snapshot_exists || record.metadata.static_snapshot.static_logo_url !== "https://theearnalism.com/assets/brand/earnalism-brand-lockup.png")).map((record) => record.metadata.state_id), production_mutation_count: captured.reduce((sum, record) => sum + record.metadata.production_mutation_count, 0), browser_version: captured[0]?.metadata.browser_version, fixture_classifications: captured.map((record) => record.metadata.fixture), rendered_ui_defect_states: captured.filter((record) => record.metadata.rendered_ui_result !== "PASS").map((record) => record.metadata.state_id), output_directory: outputDirectory, generated_timestamp: new Date().toISOString() };
   fs.writeFileSync(path.join(outputDirectory, "capture-summary.json"), JSON.stringify(summary, null, 2) + "\n"); console.log(JSON.stringify({ captured: summary.captured_state_ids, output: outputDirectory, stable: stableCount === captured.length, summary: path.join(outputDirectory, "capture-summary.json") }));
 }
 

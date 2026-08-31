@@ -1,7 +1,7 @@
 {
   "schema_version": "earnalism.seamless-brand-state-manifest.v1",
   "supported_fixtures": ["public-safe", "reader-visual-safe", "listener-non-playable", "listener-approved-non-playable", "listener-disabled-safe", "sanitized-account", "error-404-contract", "tombstone-410-contract"],
-  "supported_interactions": ["none", "sanitize-account-fixture"],
+  "supported_interactions": ["none", "sanitize-account-fixture", "open-mobile-menu", "open-library-filters"],
   "states": [
     {"id":"home-desktop","route":"/","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true}},
     {"id":"home-mobile-zoom-200","route":"/","viewport":{"width":390,"height":844},"zoom":200,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true}},
@@ -39,6 +39,12 @@
     {"id":"secondary-book-mobile","route":"/book/devdas","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
     {"id":"reader-desktop","route":"/reader/dracula","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"reader-visual-safe","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
     {"id":"approved-listener-desktop","route":"/listener/the-art-of-money-getting","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"listener-approved-non-playable","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
-    {"id":"disabled-listener-dracula-desktop","route":"/listener/dracula","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"listener-disabled-safe","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}}
+    {"id":"disabled-listener-dracula-desktop","route":"/listener/dracula","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"listener-disabled-safe","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"home-menu-open-390","route":"/","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"open-mobile-menu","introduced_in":"interaction-2c1","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"home-menu-open-320","route":"/","viewport":{"width":320,"height":568},"zoom":100,"fixture":"public-safe","interaction":"open-mobile-menu","introduced_in":"interaction-2c1","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"library-menu-open-390","route":"/library","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"open-mobile-menu","introduced_in":"interaction-2c1","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"commerce-menu-open-390","route":"/pricing","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"open-mobile-menu","introduced_in":"interaction-2c1","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"library-filters-open-390","route":"/library","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"open-library-filters","introduced_in":"interaction-2c1","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"library-filters-open-320","route":"/library","viewport":{"width":320,"height":568},"zoom":100,"fixture":"public-safe","interaction":"open-library-filters","introduced_in":"interaction-2c1","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}}
   ]
 }
