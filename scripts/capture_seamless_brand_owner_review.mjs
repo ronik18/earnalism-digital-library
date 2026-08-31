@@ -2,7 +2,84 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
-import { chromium } from "playwright";
+import {
+  listStateRecords,
+  loadStateManifest,
+  selectStateRecords,
+  validateStateManifest,
+} from "./lib/seamless_brand_state_manifest.mjs";
+
+const DEFAULT_MANIFEST = "docs/design-system/seamless-brand-state-manifest.json";
+const DEFAULT_ROUTE_INVENTORY = "docs/design-system/seamless-brand-route-inventory.json";
+
+function parseCliArgs(argv) {
+  const options = { manifest: DEFAULT_MANIFEST, routeInventory: DEFAULT_ROUTE_INVENTORY, listStates: false, dryRun: false, stateFilter: undefined };
+  for (let index = 0; index < argv.length; index += 1) {
+    const arg = argv[index];
+    if (arg === "--manifest" || arg === "--route-inventory" || arg === "--state-filter") {
+      const value = argv[index + 1];
+      if (!value || value.startsWith("--")) throw new Error(`${arg} requires a value.`);
+      if (arg === "--manifest") options.manifest = value;
+      if (arg === "--route-inventory") options.routeInventory = value;
+      if (arg === "--state-filter") options.stateFilter = value.split(",").map((item) => item.trim());
+      index += 1;
+    } else if (arg === "--list-states") {
+      options.listStates = true;
+    } else if (arg === "--dry-run") {
+      options.dryRun = true;
+    } else {
+      throw new Error(`Unknown argument: ${arg}`);
+    }
+  }
+  if (options.listStates && options.dryRun) throw new Error("Use either --list-states or --dry-run, not both.");
+  if (options.stateFilter && !options.listStates && !options.dryRun) throw new Error("--state-filter requires --list-states or --dry-run.");
+  return options;
+}
+
+function digest(file) {
+  return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
+}
+
+function runManifestCli(options) {
+  const manifestPath = path.resolve(options.manifest);
+  const routeInventoryPath = path.resolve(options.routeInventory);
+  const manifest = loadStateManifest(manifestPath);
+  const routeInventory = JSON.parse(fs.readFileSync(routeInventoryPath, "utf8"));
+  validateStateManifest(manifest, routeInventory);
+  if (routeInventory.routes.length !== 19) throw new Error(`Route inventory: invalid route count; received ${routeInventory.routes.length}; expected 19.`);
+  if (manifest.states.length !== 5) throw new Error(`State manifest: invalid representative state count; received ${manifest.states.length}; expected 5.`);
+  const requestedIds = options.stateFilter === undefined ? undefined : options.stateFilter;
+  const selected = requestedIds === undefined ? listStateRecords(manifest) : selectStateRecords(manifest, requestedIds);
+  if (options.listStates) {
+    for (const state of selected) {
+      console.log(JSON.stringify({ id: state.id, route: state.route, viewport: state.viewport, zoom: state.zoom, fixture: state.fixture, interaction: state.interaction, capture: state.capture }));
+    }
+    return;
+  }
+  const captureTypeCounts = {};
+  for (const state of selected) {
+    for (const [captureType, enabled] of Object.entries(state.capture)) {
+      if (enabled) captureTypeCounts[captureType] = (captureTypeCounts[captureType] || 0) + 1;
+    }
+  }
+  console.log(JSON.stringify({
+    schema_version: manifest.schema_version,
+    total_states: manifest.states.length,
+    selected_states: selected.map((state) => state.id),
+    unique_routes: [...new Set(selected.map((state) => state.route))],
+    fixtures: [...new Set(selected.map((state) => state.fixture))],
+    interactions: [...new Set(selected.map((state) => state.interaction))],
+    capture_type_counts: captureTypeCounts,
+    manifest_sha256: digest(manifestPath),
+    route_inventory_sha256: digest(routeInventoryPath),
+  }));
+}
+
+const cli = parseCliArgs(process.argv.slice(2));
+if (cli.listStates || cli.dryRun) {
+  runManifestCli(cli);
+  process.exit(0);
+}
 
 const base = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
 const out = path.resolve(process.env.SEAMLESS_BRAND_CAPTURE_OUTPUT || "uat/evidence/seamless-brand-pilot/current");
@@ -14,8 +91,9 @@ const states = [
   ["listener-mobile-390", "/listener/a-ghost-story?visual-fixture=1", 390, 844, 100], ["listener-mobile-320", "/listener/a-ghost-story?visual-fixture=1", 320, 568, 100],
   ["account-mobile", "/account?visual-fixture=1", 390, 844, 100], ["library-footer-mobile", "/library", 390, 844, 100],
 ];
-const digest = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const books = [{slug:"dracula",title:"Dracula",author:"Bram Stoker",publication_status:"LIVE_APPROVED",reader_enabled:true,preview_enabled:true,chapters:[{id:"p1",is_preview:true}]},{slug:"a-ghost-story",title:"A Ghost Story",author:"Mark Twain",publication_status:"LIVE_APPROVED",reader_enabled:true,audiobook_enabled:false,preview_enabled:true,chapters:[{id:"p1",is_preview:true}]}];
+if (process.env.SEAMLESS_BRAND_BROWSER_IMPORT_SENTINEL === "1") throw new Error("Browser import sentinel reached outside the manifest CLI.");
+const { chromium } = await import("playwright");
 const browser = await chromium.launch({ headless: true }); const version = browser.version(); const results=[];
 for (const [id, route, width, height, zoom] of states) {
   const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 }); const errors=[];
