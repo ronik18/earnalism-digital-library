@@ -402,270 +402,132 @@
   }
 }
 
-/* Owner-approved primary desktop boards use a full editorial masthead rather
-   than the interim compact rail. Keep these measurements route-scoped so the
-   independently approved account and editorial headers do not move. */
-@media (min-width: 1024px) {
-  .premium-site-header--reference-public,
-  .premium-site-header--reference-library,
-  .premium-site-header--reference-commerce {
-    --site-header-height: 5.25rem;
-  }
-
-  .premium-site-header--reference-public .premium-header-inner,
-  .premium-site-header--reference-library .premium-header-inner,
-  .premium-site-header--reference-commerce .premium-header-inner {
-    padding-inline: 3.125rem;
-  }
-
-  .premium-site-header--reference-public .earnalism-brand-lockup,
-  .premium-site-header--reference-library .earnalism-brand-lockup,
-  .premium-site-header--reference-commerce .earnalism-brand-lockup {
-    width: 13.125rem;
-  }
-
-  .premium-site-header.premium-site-header--reference-commerce {
-    --site-header-height: 5.25rem;
-  }
+/* One route-neutral public-header contract. Route classes select only the
+   surface; they never shrink the logo, navigation, or interactive targets. */
+.premium-site-header {
+  --site-header-height: 4rem;
+  --public-header-ink: #3b201b;
+  --public-header-active: #874c14;
+  border-bottom: 1px solid rgba(84, 51, 27, 0.18);
+  background: #fffdf8;
+  box-shadow: 0 8px 22px -20px rgba(36, 23, 19, 0.72);
 }
 
-/* Mobile navigation is a dark immersive panel on the approved primary
-   surfaces, while the light library shell retains its editorial drawer. */
-.premium-site-header--reference-public #mobile-menu,
-.premium-site-header--reference-commerce #mobile-menu {
-  border-color: rgba(214, 173, 85, .22);
+.premium-site-header--reference-public,
+.premium-site-header--reference-commerce,
+.premium-site-header--reference-profile {
+  --public-header-ink: #fff8e9;
+  --public-header-active: #f2d188;
+  border-bottom-color: rgba(214, 173, 85, 0.3);
   background: #07110f;
 }
 
-.premium-site-header--reference-public #mobile-menu a,
-.premium-site-header--reference-commerce #mobile-menu a {
-  border-bottom-color: rgba(214, 173, 85, .18);
-  color: #fff7e7;
+.premium-header-inner {
+  box-sizing: border-box;
+  min-height: var(--site-header-height) !important;
+  height: var(--site-header-height) !important;
+  gap: 0.5rem !important;
 }
 
-.premium-site-header--reference-public #mobile-menu a[aria-current="page"],
-.premium-site-header--reference-commerce #mobile-menu a[aria-current="page"] {
-  color: #f2d188;
-}
-
-.premium-site-header--reference-public #mobile-menu .btn-primary,
-.premium-site-header--reference-commerce #mobile-menu .btn-primary {
-  border-color: #e4bd67;
-  background: linear-gradient(135deg, #f0ca76, #c79435);
-  color: #192017;
-}
-
-@media (max-width: 640px) {
-  .premium-site-header.premium-site-header--reference-library {
-    background: #07110f;
-    border-bottom-color: rgba(214, 173, 85, .24);
-  }
-
-  .premium-site-header--reference-library .premium-header-inner > a,
-  .premium-site-header--reference-library .premium-header-inner > button {
-    color: #fff7e7;
-  }
-
-  .premium-site-header--reference-library #mobile-menu {
-    border-color: rgba(214, 173, 85, .22);
-    background: #07110f;
-  }
-
-  .premium-site-header--reference-library #mobile-menu a {
-    border-bottom-color: rgba(214, 173, 85, .18);
-    color: #fff7e7;
-  }
-}
-
-/* One stable header geometry for every public shell. Route-specific absolute
-   positioning made the canonical lockup vulnerable to clipping at 1280px. */
 .premium-site-header .earnalism-brand-lockup {
-  width: clamp(12.25rem, 16vw, 16.5rem);
-  padding: 0.32rem 0.55rem;
-  border: 1px solid rgba(141, 93, 34, 0.22);
-  border-radius: 0.55rem;
+  box-sizing: border-box;
+  width: min(12rem, max(10.5rem, calc(100vw - 8.5rem)));
+  padding: 0.2rem 0.45rem;
+  border: 1px solid rgba(148, 101, 43, 0.32);
+  border-radius: 0.5rem;
   background: #fff8ea;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.88);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.9);
 }
 
-.premium-site-header .reference-home-header-icon,
-.premium-header-nav a[data-testid="nav-account"] {
+.premium-site-header .earnalism-brand-lockup img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+}
+
+.premium-header-nav { gap: clamp(0.6rem, 1vw, 1rem) !important; }
+
+.premium-header-nav a,
+.premium-site-header .reference-home-header-icon {
+  position: relative;
   display: inline-flex;
   min-height: 2.75rem;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
-  border-radius: 0.45rem;
+  border-radius: 0.375rem;
+  color: var(--public-header-ink);
+  font-family: var(--font-ui, Outfit, sans-serif);
+  font-size: 0.9375rem !important;
+  font-weight: 600;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35;
+  text-decoration: none;
 }
 
 .premium-header-nav a[data-testid="nav-account"],
-.premium-header-nav a[data-testid="nav-sign-in"] { padding-inline: 0.25rem; }
-
-@media (max-width: 1279px) {
-  .premium-site-header .earnalism-brand-lockup {
-    width: min(12.25rem, calc(100vw - 9rem));
-  }
+.premium-header-nav a[data-testid="nav-sign-in"],
+.premium-site-header .reference-home-header-icon {
+  min-width: 2.75rem;
+  gap: 0.35rem;
+  padding-inline: 0.5rem;
 }
 
-@media (max-width: 640px) {
-  .premium-site-header .earnalism-brand-lockup {
-    width: min(10.75rem, calc(100vw - 8.75rem));
-    padding: 0.24rem 0.38rem;
-  }
+.premium-header-nav a:hover,
+.premium-header-nav a:focus-visible,
+.premium-header-nav a[aria-current="page"],
+.premium-site-header .reference-home-header-icon:hover,
+.premium-site-header .reference-home-header-icon:focus-visible { color: var(--public-header-active); }
+
+.premium-header-nav a::after {
+  right: 0.2rem;
+  bottom: 0.25rem;
+  left: 0.2rem;
+  height: 3px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.35);
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
-/* The approved boards deliberately use dark experiential headers on Home,
-   Commerce, and Book Detail, and a warm catalog header on Library. */
-.premium-site-header.premium-site-header--reference-public {
+.premium-header-nav a:hover::after,
+.premium-header-nav a:focus-visible::after,
+.premium-header-nav a[aria-current="page"]::after { opacity: 1; transform: scaleX(1); }
+
+.premium-site-header a:focus-visible,
+.premium-site-header button:focus-visible { outline: 3px solid #e4bd67; outline-offset: 3px; }
+
+.premium-site-header #mobile-menu {
+  position: fixed;
+  z-index: 80;
+  inset: var(--site-header-height) 0 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: #07110f;
-  border-bottom-color: rgba(214, 173, 85, .24);
-  box-shadow: none;
+  color: #fff8e9;
 }
 
-.premium-site-header.premium-site-header--reference-public .premium-header-nav a,
-.premium-site-header.premium-site-header--reference-public .premium-header-inner > button {
-  color: rgba(255, 248, 233, .84);
+.premium-site-header .mobile-menu-overlay__content { padding-top: 4.75rem; }
+
+.premium-site-header .mobile-menu-overlay__content > a,
+.premium-site-header .mobile-menu-overlay__content .mobile-menu-overlay__cta {
+  min-height: 52px;
+  color: #fff8e9;
+  font: 600 1rem/1.35 var(--font-ui, Outfit, sans-serif);
 }
 
-.premium-site-header.premium-site-header--reference-public .premium-header-nav a[aria-current="page"],
-.premium-site-header.premium-site-header--reference-public .reference-home-header-icon {
-  color: #f2d188;
+.premium-site-header .mobile-menu-overlay__content > a[aria-current="page"] { color: #f2d188; }
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .premium-header-inner { padding-inline: 1.5rem !important; }
+  .premium-site-header .earnalism-brand-lockup { width: clamp(11.875rem, 21vw, 14rem); }
 }
 
-.premium-site-header.premium-site-header--reference-library {
-  background: #fffdf8;
-  border-bottom-color: rgba(33, 40, 33, .12);
-  box-shadow: none;
-}
-
-@media (min-width: 1024px) {
-  .premium-site-header.premium-site-header--reference-commerce {
-    --site-header-height: 4rem;
-    background: #07110f;
-    border-bottom-color: rgba(214, 173, 85, .24);
-  }
-  .premium-site-header--reference-commerce .earnalism-brand-lockup {
-    width:clamp(11.5rem,13vw,13.75rem);
-    padding:.18rem .38rem;
-  }
-  .premium-site-header--reference-commerce .premium-header-nav a {
-    color: rgba(255, 248, 233, .84);
-    font-size:.78rem !important;
-  }
-  .premium-site-header--reference-commerce .premium-header-nav a[aria-current="page"],
-  .premium-site-header--reference-commerce .reference-home-header-icon,
-  .premium-site-header--reference-commerce .premium-header-inner > button { color:#f2d188; }
-}
-
-/* The approved primary boards use a deliberately quiet, compact masthead. Keep
-   this scoped to the reference-backed public routes so account and editorial
-   layouts retain their independently approved header geometry. */
-@media (min-width: 1024px) {
-  .premium-site-header--reference-public,
-  .premium-site-header--reference-library {
-    --site-header-height: 2.8rem;
-  }
-
-  .premium-site-header--reference-public .premium-header-inner,
-  .premium-site-header--reference-library .premium-header-inner {
-    padding-inline: clamp(1rem, 1.7vw, 1.65rem);
-  }
-
-  .premium-site-header--reference-public .earnalism-brand-lockup,
-  .premium-site-header--reference-library .earnalism-brand-lockup {
-    width: clamp(7.5rem, 9vw, 9.5rem);
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  .premium-site-header--reference-public .premium-header-nav,
-  .premium-site-header--reference-library .premium-header-nav {
-    gap: clamp(.6rem, 1.05vw, 1.1rem);
-  }
-
-  .premium-site-header--reference-public .premium-header-nav a,
-  .premium-site-header--reference-library .premium-header-nav a {
-    min-height: 2.35rem;
-    font-size: clamp(.56rem, .58vw, .66rem) !important;
-    font-family: var(--font-ui);
-    font-weight: 600;
-    letter-spacing: .01em !important;
-  }
-
-  .premium-site-header--reference-public .reference-home-header-icon,
-  .premium-site-header--reference-library .reference-home-header-icon {
-    min-height: 2.35rem;
-  }
-}
-
-/* Reference routes use the shared complete viewport navigation dialog. */
-@media (max-width: 640px) {
-  .premium-site-header--reference-public #mobile-menu,
-  .premium-site-header--reference-library #mobile-menu,
-  .premium-site-header--reference-commerce #mobile-menu {
-    position: fixed;
-    z-index: 70;
-    top: var(--site-header-height);
-    right: 0;
-    bottom: auto;
-    left: 0;
-    height: calc(100dvh - var(--site-header-height));
-    min-height: calc(100dvh - var(--site-header-height));
-    overflow-y: auto;
-  }
-}
-
-@media (max-width: 640px) {
-  .premium-site-header--reference-public,
-  .premium-site-header--reference-library,
-  .premium-site-header--reference-commerce,
-  .premium-site-header--reference-profile {
-    --site-header-height: 3.5rem;
-  }
-
-  .premium-site-header--reference-public .earnalism-brand-lockup,
-  .premium-site-header--reference-library .earnalism-brand-lockup,
-  .premium-site-header--reference-commerce .earnalism-brand-lockup,
-  .premium-site-header--reference-profile .earnalism-brand-lockup {
-    width: min(9.75rem, calc(100vw - 8.5rem));
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  .premium-site-header.premium-site-header--reference-profile {
-    background:#07110f;
-    border-bottom-color:rgba(214,173,85,.24);
-  }
-  .premium-site-header--reference-profile .premium-header-inner > button,
-  .premium-site-header--reference-profile .reference-home-header-icon { color:#fff7e7; }
-  .premium-site-header--reference-profile #mobile-menu { border-color:rgba(214,173,85,.22); background:#07110f; }
-  .premium-site-header--reference-profile #mobile-menu a { color:#fff7e7; border-bottom-color:rgba(214,173,85,.18); }
-}
-
-/* Exact-primary Home, Library, and Commerce desktop masthead — this intentionally comes
-   after the interim compact rule above so the routed board geometry wins. */
-@media (min-width: 1024px) {
-  .premium-site-header--reference-public,
-  .premium-site-header--reference-library,
-  .premium-site-header.premium-site-header--reference-commerce {
-    --site-header-height: 5.25rem;
-  }
-
-  .premium-site-header--reference-public .premium-header-inner,
-  .premium-site-header--reference-library .premium-header-inner,
-  .premium-site-header--reference-commerce .premium-header-inner {
-    padding-inline: 3.125rem;
-  }
-
-  .premium-site-header--reference-public .earnalism-brand-lockup,
-  .premium-site-header--reference-library .earnalism-brand-lockup,
-  .premium-site-header--reference-commerce .earnalism-brand-lockup {
-    width: 13.125rem;
-  }
+@media (min-width: 1280px) {
+  .premium-site-header { --site-header-height: 5rem; }
+  .premium-header-inner { padding-inline: clamp(1.5rem, 3.25vw, 3.5rem) !important; gap: 1.5rem !important; }
+  .premium-site-header .earnalism-brand-lockup { width: clamp(14rem, 18vw, 15.5rem); }
+  .premium-header-nav { display: flex !important; flex: 1 1 auto; justify-content: flex-end; }
 }

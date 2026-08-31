@@ -35,30 +35,28 @@ describe("premium header navigation", () => {
     expect(source).toContain('element.setAttribute("inert", "")');
     expect(source).toContain('document.body.style.overflow = "hidden"');
     expect(source).toContain('event.key === "Escape"');
+    expect(source).toContain('requestAnimationFrame(() => menuToggle?.focus());');
     expect(styles).toContain(".premium-site-header .mobile-menu-overlay");
     expect(styles).toContain("inset: var(--site-header-height) 0 0;");
     expect(styles).not.toContain("height: 28rem;");
   });
 
-  test("keeps the reference header readable and geometrically stable", () => {
-    expect(styles).toContain("--premium-header-menu-size: calc((0.92rem + 2px) * 1.02);");
-    expect(styles).toContain("--premium-header-cta-size: calc((0.98rem + 2px) * 1.02);");
-    expect(styles).toContain("font-size: var(--premium-header-menu-size) !important;");
-    expect(styles).toContain("font-size: var(--premium-header-cta-size);");
-    expect(styles).toContain("calc((0.95vw + 2px) * 1.02)");
-    expect(globalStyles).toContain("The wordmark may scale inside this rail; it must never resize the rail.");
-    expect(globalStyles).toContain("--site-header-height: clamp(4.05rem, 5.85vw, 5.4rem);");
-    expect(globalStyles).toContain("--site-header-height: 3.6rem;");
-    expect(styles).toContain("max-width: min(34rem, 34vw);");
-    expect(styles).toContain("transform: scale(1.3);");
-    expect(styles).toContain("left: 35.5%;");
-    expect(styles).toContain(".premium-site-header #mobile-menu a");
-    expect(styles).toContain("font-synthesis: none;");
-    expect(styles).toContain("justify-content: flex-end;");
+  test("uses one readable public-header contract instead of the obsolete tiny route cascade", () => {
+    expect(styles).toContain("One route-neutral public-header contract");
+    expect(styles).toContain("font-size: 0.9375rem !important;");
+    expect(styles).toContain("line-height: 1.35;");
     expect(styles).toContain("min-height: 2.75rem;");
-    expect(styles).toContain("min-width: 7.25rem;");
-    expect(styles).toContain("flex: 0 0 2.75rem;");
+    expect(styles).toContain("min-width: 2.75rem;");
+    expect(styles).toContain("height: 3px;");
     expect(styles).toContain("@media (min-width: 1280px)");
-    expect(styles).not.toContain("@media (min-width: 1024px) and (max-width: 1279px)");
+    expect(styles).toContain("--site-header-height: 5rem;");
+    expect(styles).toContain("width: clamp(14rem, 18vw, 15.5rem);");
+    expect(styles).toContain("background: #fff8ea;");
+    expect(styles).toContain("font: 600 1rem/1.35 var(--font-ui, Outfit, sans-serif);");
+    expect(styles).toContain("min-height: 52px;");
+    expect(styles).not.toContain("font-size: clamp(.56rem, .58vw, .66rem) !important;");
+    expect(styles).not.toContain("font-size:.78rem !important;");
+    expect(styles).not.toContain("--site-header-height: 2.8rem;");
+    expect(globalStyles).toContain("--site-header-height: 3.6rem;");
   });
 });
