@@ -434,6 +434,7 @@
 .premium-site-header .earnalism-brand-lockup {
   box-sizing: border-box;
   width: clamp(18rem, 20vw, 20rem);
+  max-width: none;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -480,7 +481,7 @@
 .premium-header-nav a:focus-visible,
 .premium-header-nav a[aria-current="page"],
 .premium-site-header .reference-home-header-icon:hover,
-.premium-site-header .reference-home-header-icon:focus-visible { color: var(--public-header-active); }
+.premium-site-header .reference-home-header-icon:focus-visible { color: var(--public-header-ink); }
 
 .premium-header-nav a::after {
   right: 0.2rem;
@@ -488,7 +489,7 @@
   left: 0.2rem;
   height: 3px;
   border-radius: 999px;
-  background: currentColor;
+  background: var(--public-header-active);
   opacity: 0;
   transform: scaleX(0.35);
   transition: opacity 160ms ease, transform 160ms ease;
