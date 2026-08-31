@@ -1,4 +1,24 @@
 :root {
+  /* DARK_PREMIUM_PUBLIC_SYSTEM_V1: the public Home, Library and Commerce
+     surfaces share these semantic roles.  Warm ivory remains a contained
+     contrast surface, never a full-page band. */
+  --public-page: #07110f;
+  --public-surface: #0d1f19;
+  --public-surface-elevated: #13271f;
+  --public-surface-quiet: #172e25;
+  --public-text: #fff8e9;
+  --public-text-muted: #c8c0b1;
+  --public-gold: #d6ad55;
+  --public-gold-soft: #f2d188;
+  --public-burgundy: #641f27;
+  --public-border: rgba(214, 173, 85, 0.24);
+  --public-page-width: min(100% - 2rem, 84rem);
+  --public-section-space: clamp(3rem, 6vw, 5.5rem);
+  --public-card-radius: 0.75rem;
+  --public-focus: #f2d188;
+  --book-card-width-desktop: 10rem;
+  --book-card-width-tablet: 9.25rem;
+  --book-card-width-mobile: 8.25rem;
   --eds-ink: #091310;
   --eds-paper: #fbf7ef;
   --eds-gold: #d5ad56;

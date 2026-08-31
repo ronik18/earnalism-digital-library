@@ -55,5 +55,19 @@
     "paid_tts_lock_status": "ACTIVE_LEGITIMATE_NO_PAID_AUDIO_ALLOWED",
     "updated_at": "2026-07-08T10:36:13Z"
   },
+  "dark_premium_public_system_v1": {
+    "owner_decision": "DARK_PREMIUM_PUBLIC_SYSTEM_V1",
+    "status": "IMPLEMENTATION_AND_OWNER_REVIEW_AUTHORIZED",
+    "scope": "Home, Library, Commerce / Reading Pass public surfaces only",
+    "supersedes": [
+      "ivory full-page Library",
+      "full-width ivory lower Home section",
+      "disconnected light and dark public page families"
+    ],
+    "reference_light_surface_status": "SUPERSEDED_BY_OWNER_THEME_OVERRIDE",
+    "preserved_reference_uses": ["component hierarchy", "content order", "hero composition", "navigation", "card arrangement", "section structure"],
+    "limits": "No Reader activation, audio publication, cover assignment, database, payment, or infrastructure mutation.",
+    "approval_required_before_merge": "OWNER_P1_DARK_PUBLIC_SURFACES_APPROVAL_REQUIRED"
+  },
   "updated_at": "2026-07-08T12:55:46Z"
 }

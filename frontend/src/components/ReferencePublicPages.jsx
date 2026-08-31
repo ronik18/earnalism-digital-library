@@ -24,6 +24,7 @@ import {
   notifyUrl,
 } from "../lib/controlledLaunch";
 import BookCoverImage from "./BookCoverImage";
+import publicEvidenceSnapshot from "../data/publicEvidenceSnapshot.json";
 import "./ReferencePublicPages.css";
 
 const HOME_FEATURES = [
@@ -341,6 +342,7 @@ function packTitle(pack) {
 
 export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId, onBuy }) {
   const giftEnabled = packs.some((pack) => pack.gift_enabled === true || pack.kind === "gift");
+  const evidenceFacts = Array.isArray(publicEvidenceSnapshot.fallback_facts) ? publicEvidenceSnapshot.fallback_facts : [];
   return (
     <div className="reference-commerce" data-testid="pricing-reference-surface">
       <div className="reference-commerce__primary-column">
@@ -351,7 +353,19 @@ export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId
           </picture>
         </section>
         <main className="reference-commerce__main">
-          <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading eyebrow="READING PASSES" title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>{PUBLIC_ACCESS_COPY}</li></ul><button type="button" disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>
+          <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading eyebrow="READING PASSES" title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>{PUBLIC_ACCESS_COPY}</li></ul><button type="button" data-testid={`pricing-pack-${pack.id}`} disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>
+          <section className="reference-commerce__evidence" data-testid="commerce-evidence-fallback" aria-labelledby="commerce-evidence-title">
+            <div>
+              <p className="reference-kicker">VERIFIED PRODUCT METHOD</p>
+              <h2 id="commerce-evidence-title">A Reading Pass is built around the reading itself.</h2>
+              <p>{publicEvidenceSnapshot.audit.finding}</p>
+              <ul>{evidenceFacts.map((fact) => <li key={fact.id}><strong>{fact.label}</strong>{fact.definition}</li>)}</ul>
+            </div>
+            <aside className="reference-evidence-note">
+              {publicEvidenceSnapshot.fallback_notice}
+              <small>Metrics remain unpublished until an approved, privacy-safe snapshot includes a defined cohort, sample size, period, calculation version, exclusions, and reviewer approval.</small>
+            </aside>
+          </section>
           <section className="reference-commerce__pathways"><article><Landmark aria-hidden="true" /><h2>For institutions</h2><p>School, college, and library access begins with a conversation.</p><Link to="/contact">Request a pilot</Link></article><article><Building2 aria-hidden="true" /><h2>For publishers</h2><p>Rights holders and authors can explore a careful digital edition pathway.</p><Link to="/contact">Partner with us</Link></article>{giftEnabled ? <article><Sparkles aria-hidden="true" /><h2>Gift a pass</h2><p>Share reading time when a configured gift product is available.</p><Link to="/pricing">View gift options</Link></article> : null}</section>
           <section className="reference-commerce__trust" data-testid="pricing-reference-wallet-explainer"><div><Lock aria-hidden="true" /><strong>Secure payment</strong><span>{config?.configured ? "Configured checkout" : "Checkout availability is confirmed at purchase"}</span></div><div><Check aria-hidden="true" /><strong>Privacy first</strong><span>Your account and reading stay private.</span></div><div><BookOpen aria-hidden="true" /><strong>Reading time</strong><span>Used only while you read.</span></div></section>
           <section className="reference-commerce__final"><p className="reference-kicker">START WITH THE PREVIEW</p><h2>Meet a story before you add time.</h2><p>{PUBLIC_ACCESS_COPY}</p><Link to="/library" className="reference-button reference-button--gold">Browse the library</Link></section>
