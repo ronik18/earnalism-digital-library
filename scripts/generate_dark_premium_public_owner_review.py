@@ -24,7 +24,7 @@ def load_records(root: Path) -> list[dict]:
 
 def selected(rows: list[dict]) -> list[dict]:
     wanted = {(route, width) for route in ("home", "library", "commerce") for width in (1920, 1440, 1024, 768, 430, 390, 320)}
-    return [row for row in rows if (row["id"], row["width"]) in wanted and not row.get("filterOpen")]
+    return [row for row in rows if row.get("engine") == "chromium" and (row["id"], row["width"]) in wanted]
 
 
 def page(record: dict, current: Path, before: Path | None) -> Image.Image:
