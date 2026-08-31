@@ -81,10 +81,11 @@ async function run() {
         const commerceCards = [...document.querySelectorAll(".reference-commerce__packs .reference-offer")];
         const surface = document.querySelector(id === "home" ? ".reference-home" : id === "library" ? ".reference-library" : ".reference-commerce");
         const navStyle = style(nav); const surfaceStyle = style(surface); const headerStyle = style(header);
-        const requiredImages = [
-          brand?.querySelector("img"),
-          ...(surface?.querySelectorAll(".reference-home__hero-art img,.reference-commerce__hero-art img,.reference-book-tile img") || [])
-        ].filter(Boolean);
+        // The canonical lockup is the image asset owned by this review
+        // contract. Card and hero sources are separately exercised by their
+        // rendering tests; Firefox can keep offscreen lazy images incomplete
+        // even after a correct screenshot is painted.
+        const requiredImages = [brand?.querySelector("img")].filter(Boolean);
         const incompleteImages = requiredImages.filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.currentSrc || image.src);
         return { header: rect(header), brand: rect(brand), headerBackground: headerStyle?.backgroundColor || "rgb(23, 9, 14)", nav: nav ? { fontSize: navStyle.fontSize, lineHeight: navStyle.lineHeight, color: navStyle.color } : null, surface: surfaceStyle?.backgroundColor || "", grid: rect(grid), cards: cards.map(rect), commerceCards: commerceCards.map(rect), filterOpen, evidence: Boolean(document.querySelector("[data-testid=commerce-evidence-fallback]")), overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth, imageComplete: incompleteImages.length === 0, incompleteImages, headerCount: document.querySelectorAll("[data-testid=site-header]").length, footerCount: document.querySelectorAll("[data-testid=site-footer]").length };
       }, { id, filterOpen });
