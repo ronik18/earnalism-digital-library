@@ -39,11 +39,23 @@ jobs:
           npm ci --prefix frontend --legacy-peer-deps
           npx playwright install --with-deps chromium firefox webkit
       - name: Audit canonical lockup placements
-        run: node scripts/audit_seamless_brand_placements.mjs
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          npm --prefix frontend run build
+          node scripts/serve_frontend_build.js --port 13019 > "$RUNNER_TEMP/server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13019/ >/dev/null && break; sleep 1; done
+          UAT_BASE_URL=http://127.0.0.1:13019 SEAMLESS_BRAND_CAPTURE_OUTPUT=uat/evidence/seamless-brand-pilot/current node scripts/capture_seamless_brand_owner_review.mjs
+          python3 scripts/generate_seamless_brand_owner_review.py uat/evidence/seamless-brand-pilot/current
+          python3 scripts/validate_seamless_brand_owner_review.py uat/evidence/seamless-brand-pilot/current
       - name: Upload diagnostics
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: pr344-seamless-brand-final-review-${{ github.event.pull_request.head.sha }}
-          path: uat/evidence/seamless-brand-final/**
+          path: |
+            uat/evidence/seamless-brand-pilot/**
+            ${{ runner.temp }}/server.log
           if-no-files-found: error
