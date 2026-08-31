@@ -11,6 +11,7 @@ import {
 import {
   requestedScreenshotNames,
   stateOutputDirectory,
+  validateUniqueOutputDirectories,
 } from "./lib/seamless_brand_one_state_capture.mjs";
 
 const DEFAULT_MANIFEST = "docs/design-system/seamless-brand-state-manifest.json";
@@ -228,13 +229,110 @@ async function runOneStateCapture(options) {
   console.log(JSON.stringify({ captured: state.id, output: outputDirectory, stable, summary: path.join(outputDirectory, "capture-summary.json") }));
 }
 
+function fixtureUrl(baseUrl, state) {
+  const target = new URL(state.route, `${baseUrl}/`);
+  if (state.fixture !== "public-safe") target.searchParams.set("visual-fixture", "1");
+  return target.toString();
+}
+
+function routeFixture(route) {
+  const requestUrl = new URL(route.request().url());
+  const books = [{ slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }, { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, audiobook_enabled: false, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }];
+  const body = requestUrl.pathname.endsWith("/books") ? books : requestUrl.pathname.includes("auth") ? { id: "fixture", email: "fixture@invalid.example" } : [];
+  return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+}
+
+async function captureManifestState(browser, state, baseUrl, outputDirectory, contextIndex) {
+  const stateDirectory = stateOutputDirectory(outputDirectory, state.id);
+  const requiredScreenshots = requestedScreenshotNames(state.capture);
+  if (!requiredScreenshots.includes("viewport.png")) throw new Error(`State ${state.id} capture declaration must include viewport.`);
+  fs.mkdirSync(stateDirectory, { recursive: true });
+  const context = await browser.newContext({ viewport: state.viewport, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", colorScheme: "dark", serviceWorkers: "block" });
+  const initialStorage = await context.storageState();
+  const page = await context.newPage();
+  const consoleErrors = []; const pageErrors = []; const failedRequests = []; const apiRequests = [];
+  page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
+  page.on("pageerror", (error) => pageErrors.push(error.message));
+  page.on("requestfailed", (request) => failedRequests.push({ url: request.url(), failure: request.failure()?.errorText || "unknown" }));
+  page.on("request", (request) => { if (new URL(request.url()).pathname.includes("/api/")) apiRequests.push(request.url()); });
+  await page.route("**/api/**", routeFixture);
+  await page.goto(fixtureUrl(baseUrl, state), { waitUntil: "domcontentloaded" });
+  await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
+  await page.evaluate(async (zoom) => {
+    await document.fonts.ready;
+    await Promise.all(["16px Inter", "16px 'Noto Sans Bengali'", "16px 'Noto Serif Bengali'"].map((font) => document.fonts.load(font, "অA").catch(() => [])));
+    await Promise.all([...document.images].filter((image) => { const style = getComputedStyle(image); const rect = image.getBoundingClientRect(); return style.display !== "none" && rect.width > 0 && rect.height > 0; }).map((image) => image.decode().catch(() => undefined)));
+    const style = document.createElement("style"); style.textContent = "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}"; document.head.append(style);
+    document.documentElement.style.zoom = `${zoom}%`;
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  }, state.zoom);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const header = page.locator('header[data-testid="site-header"]:visible, header.experience-header:visible');
+  const headerCount = await header.count();
+  if (headerCount !== 1) throw new Error(`State ${state.id}: expected exactly one visible header; received ${headerCount}.`);
+  const lockup = header.locator('[data-testid="earnalism-brand-lockup"]:visible');
+  const lockupCount = await lockup.count();
+  if (lockupCount !== 1) throw new Error(`State ${state.id}: expected exactly one visible canonical lockup; received ${lockupCount}.`);
+  let stable = false; const stabilityAttempts = []; let finalFiles = {};
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    const first = await captureRequestedScreenshots(page, stateDirectory, state.capture, `attempt-${attempt}-first`, header, lockup);
+    await page.waitForTimeout(500);
+    const second = await captureRequestedScreenshots(page, stateDirectory, state.capture, `attempt-${attempt}-second`, header, lockup);
+    const matches = stableHashSet(first, second);
+    stabilityAttempts.push({ attempt, stable: matches, first: Object.fromEntries(Object.entries(first).map(([name, file]) => [name, file.sha256])), second: Object.fromEntries(Object.entries(second).map(([name, file]) => [name, file.sha256])) });
+    if (matches) { stable = true; for (const [name, file] of Object.entries(second)) { const target = path.join(stateDirectory, name); fs.copyFileSync(file.path, target); finalFiles[name] = { path: name, sha256: digest(target) }; } break; }
+  }
+  const data = await page.evaluate(() => {
+    const visible = (node) => { const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
+    const headers = [...document.querySelectorAll('header[data-testid="site-header"],header.experience-header')].filter(visible); const header = headers[0];
+    const lockups = header ? [...header.querySelectorAll('[data-testid="earnalism-brand-lockup"]')].filter(visible) : []; const lockup = lockups[0]; const image = lockup?.querySelector("img"); const rect = lockup?.getBoundingClientRect(); const wrapper = lockup && getComputedStyle(lockup); const parent = header && getComputedStyle(header);
+    const intersects = (a, b) => Math.max(a.left, b.left) < Math.min(a.right, b.right) && Math.max(a.top, b.top) < Math.min(a.bottom, b.bottom);
+    const overlap = Boolean(lockup && [...header.querySelectorAll("a,button")].filter((node) => node !== lockup && !lockup.contains(node) && !node.contains(lockup) && visible(node)).some((node) => intersects(rect, node.getBoundingClientRect())));
+    const media = [...document.querySelectorAll("audio,source")].map((node) => ({ src: node.getAttribute("src"), autoplay: node.hasAttribute("autoplay"), preload: node.getAttribute("preload") }));
+    const requestEntries = performance.getEntriesByType("resource").map((entry) => entry.name);
+    const protectedRequest = requestEntries.some((url) => /\/api\/reader\/(book\/.*\/pages|chapter\/.*(4|5|6|7|8|9))/.test(url));
+    const balanceRequestCount = requestEntries.filter((url) => /reading-pass|wallet|lease|session/i.test(url)).length;
+    const accountFixture = document.querySelector('[data-testid="account-visual-fixture"]');
+    const accountText = accountFixture?.textContent || "";
+    const accountHasSanitizedEmail = accountText.includes("review@example.invalid");
+    const accountAtSignCount = (accountText.match(/@/g) || []).length;
+    const menuReachable = [...document.querySelectorAll('[data-testid="mobile-menu-toggle"],button[aria-label*="menu" i]')].some(visible);
+    const searchReachable = [...document.querySelectorAll('[data-testid="nav-search"],button[aria-label*="search" i],a[aria-label*="search" i]')].some(visible);
+    const actionRow = document.querySelector(".reader-v2__mobile-topbar,.listener-v2__mobile-top"); const actionRect = actionRow?.getBoundingClientRect(); const headerRect = header?.getBoundingClientRect();
+    return { document_height: document.documentElement.scrollHeight, scroll_width: document.documentElement.scrollWidth, client_width: document.documentElement.clientWidth, visible_header_count: headers.length, visible_canonical_lockup_count: lockups.length, logo: lockup ? { natural_width: image.naturalWidth, natural_height: image.naturalHeight, rendered_width: rect.width, rendered_height: rect.height, aspect_ratio: rect.width / rect.height, transform: getComputedStyle(image).transform, wrapper_background: wrapper.backgroundColor, wrapper_border_width: wrapper.borderWidth, wrapper_border_radius: wrapper.borderRadius, wrapper_box_shadow: wrapper.boxShadow, wrapper_padding: wrapper.padding, parent_background: parent.backgroundColor, clipped: rect.left < 0 || rect.top < 0 || rect.right > innerWidth || rect.bottom > innerHeight } : null, overlap, horizontal_overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, menu_reachable: menuReachable, search_reachable: searchReachable, reader: { protected_content_exposed: Boolean(document.querySelector('[data-testid="reader-protected-content"],[data-testid="protected-reader-content"]')) || protectedRequest, protected_prefetch: protectedRequest, balance_consumption: balanceRequestCount }, listener: { raw_media_url: media.some((item) => item.src) ? "present" : "absent", playable_source: media.some((item) => item.src) ? "present" : "absent", autoplay: media.some((item) => item.autoplay), preload: media.some((item) => item.preload) ? "present" : "absent", balance_consumption: balanceRequestCount, cover_visible: [...document.querySelectorAll(".listener-v2 img")].some(visible) }, account: { visual_fixture_present: Boolean(accountFixture), sensitive_fixture_values_present: !accountFixture || !accountHasSanitizedEmail || accountAtSignCount !== 1 }, action_row_below_brand: !actionRect || !headerRect || actionRect.top >= headerRect.bottom };
+  });
+  const defects = [];
+  if (data.visible_header_count !== 1 || data.visible_canonical_lockup_count !== 1 || data.logo?.clipped || data.overlap || data.horizontal_overflow || consoleErrors.length || pageErrors.length || failedRequests.length) defects.push("brand-shell-contract");
+  if (state.fixture === "public-safe" && state.zoom === 200 && (!data.menu_reachable || !data.search_reachable)) defects.push("home-mobile-controls");
+  if (state.fixture === "reader-visual-safe" && (!data.action_row_below_brand || data.reader.protected_content_exposed || data.reader.protected_prefetch || data.reader.balance_consumption !== 0)) defects.push("reader-fixture-contract");
+  if (state.fixture === "listener-non-playable" && (!data.action_row_below_brand || !data.listener.cover_visible || data.listener.raw_media_url !== "absent" || data.listener.playable_source !== "absent" || data.listener.autoplay || data.listener.preload !== "absent" || data.listener.balance_consumption !== 0)) defects.push("listener-fixture-contract");
+  if (state.fixture === "sanitized-account" && data.account.sensitive_fixture_values_present) defects.push("account-sanitization");
+  const metadata = { state_id: state.id, route: state.route, final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: "chromium", browser_version: browser.version(), context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects, ...data, production_api_call_count: 0, intercepted_api_request_count: apiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length };
+  fs.writeFileSync(path.join(stateDirectory, "metadata.json"), JSON.stringify(metadata, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "console-errors.json"), JSON.stringify(consoleErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "page-errors.json"), JSON.stringify(pageErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "failed-requests.json"), JSON.stringify(failedRequests, null, 2) + "\n");
+  await context.close();
+  if (!stable) throw new Error(`State ${state.id} is unstable after three bounded capture attempts.`);
+  return { metadata, screenshotCount: Object.keys(finalFiles).length };
+}
+
+async function runManifestCapture(options) {
+  if (!options.output) throw new Error("--capture requires --output."); if (!options.baseUrl) throw new Error("--capture requires --base-url."); if (!options.browser) throw new Error("--capture requires --browser chromium."); if (options.browser !== "chromium") throw new Error(`Unsupported browser ${JSON.stringify(options.browser)}; expected chromium.`);
+  const baseUrl = String(options.baseUrl).replace(/\/$/, ""); if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("--base-url must be a loopback http://127.0.0.1:<port> URL.");
+  const selection = loadManifestSelection(options); if (!selection.selected.length) throw new Error("--capture requires at least one selected state.");
+  const outputDirectory = path.resolve(options.output); validateUniqueOutputDirectories(outputDirectory, selection.selected); fs.mkdirSync(outputDirectory, { recursive: true });
+  if (process.env.SEAMLESS_BRAND_BROWSER_IMPORT_SENTINEL === "1") throw new Error("Browser import sentinel reached during --capture.");
+  const { chromium } = await import("playwright"); const browser = await chromium.launch({ headless: true }); const captured = [];
+  try { for (let index = 0; index < selection.selected.length; index += 1) captured.push(await captureManifestState(browser, selection.selected[index], baseUrl, outputDirectory, index + 1)); } finally { await browser.close(); }
+  const stableCount = captured.filter((record) => record.metadata.stable).length; const summary = { manifest_path: selection.manifestPath, manifest_sha256: digest(selection.manifestPath), route_inventory_path: selection.routeInventoryPath, route_inventory_sha256: digest(selection.routeInventoryPath), production_surface_sha256: productionSurfaceHash(), canonical_logo_sha256: digest("frontend/public/assets/brand/earnalism-brand-lockup.png"), requested_state_ids: selection.selected.map((state) => state.id), captured_state_ids: captured.map((record) => record.metadata.state_id), manifest_order_execution_list: selection.selected.map((state) => state.id), missing_state_ids: [], unexpected_state_ids: [], duplicate_state_ids: [], expected_state_count: selection.selected.length, captured_state_count: captured.length, generated_screenshot_count: captured.reduce((sum, record) => sum + record.screenshotCount, 0), stable_state_count: stableCount, unstable_state_count: captured.length - stableCount, browser_version: captured[0]?.metadata.browser_version, fixture_classifications: captured.map((record) => record.metadata.fixture), rendered_ui_defect_states: captured.filter((record) => record.metadata.rendered_ui_result !== "PASS").map((record) => record.metadata.state_id), output_directory: outputDirectory, generated_timestamp: new Date().toISOString() };
+  fs.writeFileSync(path.join(outputDirectory, "capture-summary.json"), JSON.stringify(summary, null, 2) + "\n"); console.log(JSON.stringify({ captured: summary.captured_state_ids, output: outputDirectory, stable: stableCount === captured.length, summary: path.join(outputDirectory, "capture-summary.json") }));
+}
+
 const cli = parseCliArgs(process.argv.slice(2));
 if (cli.listStates || cli.dryRun) {
   runManifestCli(cli);
   process.exit(0);
 }
 if (cli.capture) {
-  await runOneStateCapture(cli);
+  await runManifestCapture(cli);
   process.exit(0);
 }
 
