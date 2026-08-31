@@ -51,7 +51,7 @@ function runCli(args) {
 
 test("checked-in manifest passes", () => assert.equal(validateStateManifest(manifest, inventory), manifest));
 test("route count is 19", () => assert.equal(inventory.routes.length, 19));
-test("manifest contains the prior thirty-seven states plus six interaction states", () => assert.equal(manifest.states.length, 43));
+test("manifest contains the prior forty-three states plus nine core zoom states", () => assert.equal(manifest.states.length, 52));
 test("duplicate state ID fails", () => expectInvalid(invalidManifest((copy) => { copy.states[1].id = copy.states[0].id; }), /State index 1.*id/));
 test("unknown route fails", () => expectInvalid(invalidManifest((copy) => { copy.states[0].route = "/unknown-route"; }), /State index 0.*route/));
 test("invalid viewport fails", () => expectInvalid(invalidManifest((copy) => { copy.states[0].viewport.width = 0; }), /State index 0.*viewport\.width/));
@@ -65,12 +65,12 @@ test("unknown filtered state fails", () => assert.throws(() => selectStateRecord
 test("duplicate filtered state fails", () => assert.throws(() => selectStateRecords(manifest, [manifest.states[0].id, manifest.states[0].id]), /duplicate/));
 test("list-states launches no browser", () => {
   const lines = runCli(["--manifest", manifestPath, "--route-inventory", inventoryPath, "--list-states"]).split("\n");
-  assert.equal(lines.length, 43);
+  assert.equal(lines.length, 52);
   assert.deepEqual(lines.map((line) => JSON.parse(line).id), manifest.states.map((state) => state.id));
 });
 test("dry-run launches no browser", () => {
   const result = JSON.parse(runCli(["--manifest", manifestPath, "--route-inventory", inventoryPath, "--dry-run"]));
-  assert.equal(result.total_states, 43);
+  assert.equal(result.total_states, 52);
   assert.deepEqual(result.selected_states, manifest.states.map((state) => state.id));
 });
 test("manifest and inventory SHA values are reported", () => {

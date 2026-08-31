@@ -64,7 +64,7 @@ function writeSynthetic(target, stable = true) {
 }
 
 test("exactly six selected interaction states resolve", () => assert.deepEqual(selected.map((state) => state.id), ids));
-test("manifest state total is correct", () => assert.equal(manifest.states.length, 43));
+test("interaction states remain in the expanded manifest", () => assert.ok(manifest.states.length >= 43));
 test("reverse filter executes in manifest order", () => assert.deepEqual(selectStateRecords(manifest, [...ids].reverse()).map((state) => state.id), ids));
 if (!baseUrl) throw new Error("SEAMLESS_BRAND_TEST_BASE_URL is required for the local production-build interaction capture.");
 run(["--manifest", manifestPath, "--route-inventory", inventoryPath, "--state-filter", [...ids].reverse().join(","), "--capture", "--browser", "chromium", "--base-url", baseUrl, "--output", output]);
