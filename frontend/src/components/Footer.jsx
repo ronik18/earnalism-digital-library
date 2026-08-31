@@ -15,10 +15,14 @@ export default function Footer() {
     <footer className="border-t border-[#dfb85a]/30 bg-[#240c14] text-[#f6ead7]" data-testid="site-footer">
       <div className="h-px bg-gradient-to-r from-transparent via-gold-500/70 to-transparent" aria-hidden="true" />
 
+      <div className="bg-[#fff9ee] border-b border-[#dfb85a]/50">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-4" data-testid="footer-brand-paper-row">
+          <EarnalismBrandLockup variant="footer" />
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-4 sm:py-8">
         <div className="grid gap-4 md:grid-cols-2 md:gap-7 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.9fr)_minmax(17rem,0.8fr)] lg:items-start lg:gap-10">
           <div data-testid="footer-brand">
-            <EarnalismBrandLockup variant="footer" />
             <p id="footer-brand-statement" className="mt-2 max-w-xl font-serif-display text-lg leading-snug text-[#f6ead7] sm:mt-3">
               Timeless Bengali and English literature, made beautiful for every way you read and listen.
             </p>

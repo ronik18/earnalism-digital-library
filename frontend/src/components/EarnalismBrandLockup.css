@@ -3,6 +3,12 @@
   min-width: 0;
   flex: 0 1 auto;
   align-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
 }
 
 .earnalism-brand-lockup img {
@@ -14,14 +20,14 @@
   object-fit: contain;
 }
 
-.earnalism-brand-lockup--desktop-header { width: clamp(11rem, 15vw, 14.75rem); }
-.earnalism-brand-lockup--mobile-header { width: min(11.75rem, calc(100vw - 9rem)); }
-.earnalism-brand-lockup--footer { width: min(15.5rem, 100%); }
+.earnalism-brand-lockup--desktop-header { width: clamp(18rem, 20vw, 20rem); }
+.earnalism-brand-lockup--mobile-header { width: min(15rem, calc(100vw - 8rem)); }
+.earnalism-brand-lockup--footer { width: min(20rem, 100%); }
 .earnalism-brand-lockup--auth { width: min(15.5rem, 100%); }
 .earnalism-brand-lockup--account { width: min(12.5rem, 100%); }
 .earnalism-brand-lockup--editorial { width: min(13.5rem, 100%); }
 .earnalism-brand-lockup--standalone-experience { width: min(13rem, 100%); }
 
 @media (max-width: 640px) {
-  .earnalism-brand-lockup--desktop-header { width: min(11.75rem, calc(100vw - 9rem)); }
+  .earnalism-brand-lockup--desktop-header { width: min(13rem, calc(100vw - 7rem)); }
 }
