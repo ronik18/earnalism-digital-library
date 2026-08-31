@@ -311,7 +311,7 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   }, state.zoom);
   await page.emulateMedia({ reducedMotion: "reduce" });
-  const header = page.locator(statusFixture ? "body:visible" : 'header[data-testid="site-header"]:visible, header.experience-header:visible');
+  const header = page.locator(statusFixture ? 'header[data-testid="status-brand-masthead"]:visible' : 'header[data-testid="site-header"]:visible, header.experience-header:visible');
   const headerCount = await header.count();
   if (headerCount !== 1) throw new Error(`State ${state.id}: expected exactly one visible header; received ${headerCount}.`);
   const lockup = header.locator(statusFixture ? 'img[src*="earnalism-brand-lockup"]:visible' : '[data-testid="earnalism-brand-lockup"]:visible');
@@ -328,7 +328,7 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
   }
   const data = await page.evaluate((statusFixture) => {
     const visible = (node) => { if (!node) return false; const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
-    const headers = statusFixture ? [document.body] : [...document.querySelectorAll('header[data-testid="site-header"],header.experience-header')].filter(visible); const header = headers[0];
+    const headers = statusFixture ? [...document.querySelectorAll('header[data-testid="status-brand-masthead"]')].filter(visible) : [...document.querySelectorAll('header[data-testid="site-header"],header.experience-header')].filter(visible); const header = headers[0];
     const lockups = statusFixture ? [...document.querySelectorAll('img[src*="earnalism-brand-lockup"]')].filter(visible) : (header ? [...header.querySelectorAll('[data-testid="earnalism-brand-lockup"]')].filter(visible) : []); const lockup = lockups[0]; const image = lockup?.matches("img") ? lockup : lockup?.querySelector("img"); const rect = lockup?.getBoundingClientRect(); const wrapper = lockup && getComputedStyle(lockup); const parent = header && getComputedStyle(header);
     const intersects = (a, b) => Math.max(a.left, b.left) < Math.min(a.right, b.right) && Math.max(a.top, b.top) < Math.min(a.bottom, b.bottom);
     const overlap = Boolean(lockup && [...header.querySelectorAll("a,button")].filter((node) => node !== lockup && !lockup.contains(node) && !node.contains(lockup) && visible(node)).some((node) => intersects(rect, node.getBoundingClientRect())));
@@ -357,7 +357,20 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
     return { document_height: document.documentElement.scrollHeight, scroll_width: document.documentElement.scrollWidth, client_width: document.documentElement.clientWidth, visible_header_count: headers.length, visible_canonical_lockup_count: lockups.length, logo: lockup ? { natural_width: image.naturalWidth, natural_height: image.naturalHeight, rendered_width: rect.width, rendered_height: rect.height, aspect_ratio: rect.width / rect.height, transform: getComputedStyle(image).transform, wrapper_background: wrapper.backgroundColor, wrapper_border_width: wrapper.borderWidth, wrapper_border_radius: wrapper.borderRadius, wrapper_box_shadow: wrapper.boxShadow, wrapper_padding: wrapper.padding, parent_background: parent.backgroundColor, clipped: rect.left < 0 || rect.top < 0 || rect.right > innerWidth || rect.bottom > innerHeight } : null, overlap, horizontal_overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, menu_reachable: menuReachable, search_reachable: searchReachable, reader: { protected_content_exposed: Boolean(document.querySelector('[data-testid="reader-protected-content"],[data-testid="protected-reader-content"]')) || protectedRequest, protected_prefetch: protectedRequest, balance_consumption: balanceRequestCount }, listener: { raw_media_url: media.some((item) => item.src) ? "present" : "absent", playable_source: media.some((item) => item.src) ? "present" : "absent", autoplay: media.some((item) => item.autoplay), preload: media.some((item) => item.preload) ? "present" : "absent", balance_consumption: balanceRequestCount, cover_visible: [...document.querySelectorAll(".listener-v2 img")].some(visible) }, account: { visual_fixture_present: Boolean(accountFixture), sensitive_fixture_values_present: Boolean(accountFixture && sensitivePrivateFixtureValues) }, private_fixture: { fixture_visible: privateFixtureVisible, sensitive_fixture_values_present: sensitivePrivateFixtureValues, my_library_empty_state_visible: myLibraryEmptyStateVisible }, action_row_below_brand: !actionRect || !headerRect || actionRect.top >= headerRect.bottom, editorial: { hydrated_title: document.title, hydrated_canonical_logo_source: image?.getAttribute("src") || "", journal_article_link_count: journalCards.length, selected_article_route_present: journalCards.some((node) => node.getAttribute("href") === "/journal/how-reading-shapes-better-founders"), article_title_present: Boolean(document.querySelector('[data-testid="journal-article"] h1')) && !text.includes("Article not found"), generic_home_fallback_absent: !text.includes("Welcome to The Earnalism"), contact_form_labels_present: document.querySelectorAll('[data-testid="contact-form"] label').length >= 4, contact_submit_visible: visible(document.querySelector('[data-testid="contact-submit"]')), micro_story_campaign_state: visible(document.querySelector(".micro-story-hero")) && visible(document.querySelector(".micro-story-hero__cta")) ? "ACTIVE_CAMPAIGN" : "INACTIVE", micro_story_primary_cta_present: visible(document.querySelector(".micro-story-hero__cta")), micro_story_product_truth_result: text.includes("No auto-renewal") && text.includes("Reading Pass") ? "PASS" : "FAIL" } };
   }, statusFixture);
   const balanceMutationCount = apiRequests.filter(({ url, method }) => !["GET", "HEAD", "OPTIONS"].includes(method) && /reading-pass|wallet|lease|session/i.test(url)).length;
-  const statusLogoCard = statusFixture && await page.evaluate(() => { let node = document.querySelector('img[src*="earnalism-brand-lockup"]')?.parentElement; while (node && node !== document.body) { const style = getComputedStyle(node); if (style.borderTopWidth !== "0px" || style.borderRadius !== "0px" || style.boxShadow !== "none") return true; node = node.parentElement; } return false; });
+  const statusLogoCard = statusFixture && await page.evaluate(() => {
+    const logo = document.querySelector('img[src*="earnalism-brand-lockup"]');
+    let node = logo?.parentElement;
+    while (node && node !== document.body) {
+      const style = getComputedStyle(node);
+      const rect = node.getBoundingClientRect();
+      const logoRect = logo.getBoundingClientRect();
+      const tightlyWrapsLogo = rect.width < innerWidth * 0.95 && rect.width <= logoRect.width + 160;
+      const hasCardTreatment = style.borderTopWidth !== "0px" || style.borderRadius !== "0px" || style.boxShadow !== "none";
+      if (tightlyWrapsLogo && hasCardTreatment) return true;
+      node = node.parentElement;
+    }
+    return false;
+  });
   const contactApiCallCount = apiRequests.filter(({ url }) => /\/api\/contact(?:[/?]|$)/.test(new URL(url).pathname)).length;
   data.reader.balance_consumption = balanceMutationCount;
   data.listener.balance_consumption = balanceMutationCount;
