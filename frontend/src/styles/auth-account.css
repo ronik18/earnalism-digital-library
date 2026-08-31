@@ -35,10 +35,12 @@
 .auth-account-brand-panel {
   position: relative;
   z-index: 1;
-  border: 1px solid rgba(232, 201, 122, 0.35);
-  border-radius: 1rem;
-  background: rgba(255, 247, 233, 0.98);
-  padding: 1rem;
+  margin-inline: -2.5rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--brand-lockup-paper, #fff9ee);
+  box-shadow: none;
+  padding: 1rem 2.5rem;
 }
 
 .auth-account-aside-title {

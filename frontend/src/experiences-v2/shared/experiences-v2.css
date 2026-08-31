@@ -2,14 +2,14 @@
 .experience-v2 *, .experience-v2 *::before, .experience-v2 *::after { box-sizing: border-box; }
 .experience-v2 button, .experience-v2 a { font: inherit; }
 .experience-v2 button:focus-visible, .experience-v2 a:focus-visible, .experience-v2 input:focus-visible { outline: 2px solid var(--ev2-gold); outline-offset: 3px; }
-.experience-header { min-height: 42px; padding: 5px 22px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ev2-line); background: color-mix(in srgb, var(--ev2-ink) 94%, transparent); }
+.experience-header { min-height: 68px; padding: 6px 22px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ev2-gold); background: var(--brand-lockup-paper, #fff9ee); }
 .experience-header--compact { min-height: 42px; padding-inline: 16px; }
 .experience-header__actions { display: flex; align-items: center; gap: 11px; }
-.experience-header__label { color: var(--ev2-gold); font-size: 12px; }
-.experience-header .earnalism-brand-lockup { width: min(7.4rem, 40vw); padding: 0; border: 0; border-radius: 0; background: transparent; }
+.experience-header__label { color: #641f27; font-size: 12px; }
+.experience-header .earnalism-brand-lockup { width: min(15rem, 48vw); padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow:none; }
 .experience-header .earnalism-brand-lockup img { display: block; width: 100%; height: auto; }
-@media (max-width: 767px) { .experience-header { min-height: 48px; padding: 5px 16px; }.experience-header .earnalism-brand-lockup { width: min(6.7rem, 38vw); padding:0; } }
-.experience-icon-button { width: 44px; height: 44px; display: inline-grid; place-items: center; border: 1px solid var(--ev2-line); border-radius: 8px; background: transparent; color: var(--ev2-ivory); cursor: pointer; }
+@media (max-width: 767px) { .experience-header { min-height: 68px; padding: 6px 16px; }.experience-header .earnalism-brand-lockup { width: min(13rem, 58vw); padding:0; } }
+.experience-icon-button { width: 44px; height: 44px; display: inline-grid; place-items: center; border: 1px solid rgba(100,31,39,.28); border-radius: 8px; background: transparent; color: #641f27; cursor: pointer; }
 .experience-icon-button:hover:not(:disabled) { background: color-mix(in srgb, var(--ev2-gold) 12%, transparent); }
 .experience-icon-button:disabled { opacity: .45; cursor: not-allowed; }
 .experience-panel { border: 1px solid var(--ev2-line); border-radius: 9px; background: color-mix(in srgb, var(--ev2-surface) 92%, transparent); padding: 16px; }

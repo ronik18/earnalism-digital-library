@@ -164,7 +164,8 @@
     height: var(--site-header-height);
     min-height: 0;
     border: 0;
-    background: #240c14;
+    /* The lockup is printed directly on the full-width paper masthead. */
+    background: var(--brand-lockup-paper, #fff9ee);
     border-bottom: 1px solid rgba(174, 111, 33, 0.48);
     box-shadow: 0 14px 36px -30px rgba(70, 24, 10, 0.72), inset 0 1px rgba(255, 255, 255, 0.92);
     -webkit-backdrop-filter: none !important;
@@ -406,7 +407,7 @@
 /* One route-neutral public-header contract. Route classes select only the
    surface; they never shrink the logo, navigation, or interactive targets. */
 .premium-site-header {
-  --site-header-height: 4rem;
+  --site-header-height: 4.5rem;
   --public-header-ink: #641f27;
   --public-header-active: #a46e16;
   border-bottom: 1px solid rgba(100, 31, 39, 0.35);
@@ -552,7 +553,7 @@
 
 @media (min-width: 768px) and (max-width: 1279px) {
   .premium-header-inner { padding-inline: 1.5rem !important; }
-  .premium-site-header .earnalism-brand-lockup { width: clamp(11.875rem, 21vw, 14rem); }
+  .premium-site-header .earnalism-brand-lockup { width: clamp(14.5rem, 21vw, 16.5rem); }
 }
 
 @media (min-width: 1280px) {
