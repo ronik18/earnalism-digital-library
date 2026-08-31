@@ -38,6 +38,7 @@ jobs:
           test "$(git rev-parse HEAD)" = "$PR_HEAD_SHA"
           npm ci
           npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check Pillow==11.3.0
           npx playwright install --with-deps chromium firefox webkit
       - name: Audit canonical lockup placements
         env:
