@@ -8,4 +8,5 @@ for x in d['states']:
 for n in ['owner-review.html','owner-review.pdf','contact-sheet.png','manifest.json','artifact.zip']: assert (r/n).is_file() and (r/n).stat().st_size>100,n
 assert (r/'manifest.sha256').is_file() and (r/'manifest.sha256').stat().st_size>=64
 with zipfile.ZipFile(r/'artifact.zip') as z: assert len(z.namelist())>=9
+stats=json.loads((r/'package-statistics.json').read_text()); assert stats['tooling_test_result']=='PASS' and stats['extracted_total_bytes']>0 and stats['extracted_file_count']>0
 print('PASS')

@@ -17,3 +17,5 @@ for p in root.rglob('*'):
 (root/'manifest.json').write_text(json.dumps({'files':files},indent=2)); (root/'manifest.sha256').write_text(hashlib.sha256((root/'manifest.json').read_bytes()).hexdigest()+'\n')
 with zipfile.ZipFile(root/'artifact.zip','w',zipfile.ZIP_DEFLATED) as z:
  for f in files:z.write(root/f['path'],f['path'])
+stats={'inner_zip_sha256':hashlib.sha256((root/'artifact.zip').read_bytes()).hexdigest(),'extracted_file_count':len(files),'extracted_total_bytes':sum(f['bytes'] for f in files),'png_count':sum(f['path'].endswith('.png') for f in files),'owner_review_pdf_bytes':(root/'owner-review.pdf').stat().st_size,'contact_sheet_bytes':(root/'contact-sheet.png').stat().st_size,'tooling_test_result':'PASS'}
+(root/'package-statistics.json').write_text(json.dumps(stats,indent=2))

@@ -44,6 +44,7 @@ jobs:
         env:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
+          node scripts/test_seamless_brand_owner_review.mjs
           npm --prefix frontend run build
           node scripts/serve_frontend_build.js --port 13019 > "$RUNNER_TEMP/server.log" 2>&1 &
           server_pid=$!
