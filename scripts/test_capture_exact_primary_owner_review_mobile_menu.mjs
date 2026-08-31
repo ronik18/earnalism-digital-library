@@ -55,7 +55,7 @@ try {
   result.duplicateOwnerDialogRejected = true;
   await duplicate.close();
 
-  for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }, { width: 430, height: 932 }, { width: 768, height: 1024 }, { width: 1024, height: 768 }, { width: 1279, height: 800 }]) {
+  for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }, { width: 430, height: 932 }, { width: 768, height: 1024 }, { width: 844, height: 390 }, { width: 1024, height: 768 }, { width: 1279, height: 800 }]) {
     const page = await browser.newPage({ viewport });
     await installPublicFixture(page);
     await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });

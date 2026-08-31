@@ -34,7 +34,7 @@ def current_head():
 def write_mobile_menu_viewport_package(current_capture, before_capture, generic_provenance, head, browser_results):
  """Package the exact viewport-fix evidence without treating an old header review as current."""
  pr_number=os.environ.get("PR_NUMBER", "344")
- package=WORK/f"pr{pr_number}-mobile-menu-viewport-fix-{head}"
+ package=WORK/f"pr{pr_number}-fresh-mobile-header-menu-review-{head}"
  package.mkdir(parents=True,exist_ok=True)
  current={state["id"]:state for state in current_capture.get("states",[])}
  before={state["id"]:state for state in before_capture.get("states",[])}
@@ -54,7 +54,8 @@ def write_mobile_menu_viewport_package(current_capture, before_capture, generic_
  current_hashes=load(WORK/"current"/"surface-hashes.json")
  carry={"schema_version":"earnalism-owner-visual-approval-carry-forward-v1","prior_pr_head":before_capture.get("provenance",{}).get("actual_checkout_sha"),"new_pr_head":head,"public_body_sha256_before":before_hashes.get("public_body_sha256"),"public_body_sha256_after":current_hashes.get("public_body_sha256"),"public_body_hash_unchanged":before_hashes.get("public_body_sha256")==current_hashes.get("public_body_sha256"),"header_surface_sha256_before":before_hashes.get("header_surface_sha256"),"header_surface_sha256_after":current_hashes.get("header_surface_sha256"),"header_surface_changed":before_hashes.get("header_surface_sha256")!=current_hashes.get("header_surface_sha256"),"body_visual_approval_carried_forward":before_hashes.get("public_body_sha256")==current_hashes.get("public_body_sha256"),"header_menu_visual_approval_requires_fresh_captures":True,"reason":"mobile fixed-position containing-block defect corrected"}
  special_provenance={**generic_provenance,"artifact_kind":"pr344-mobile-menu-viewport-fix","production_mutations":1,"production_changed_files":["frontend/src/components/Header.css"],"evidence_files":["scripts/capture_exact_primary_owner_review.mjs","scripts/test_capture_exact_primary_owner_review_mobile_menu.mjs","scripts/verify_exact_primary_cross_browser.mjs","scripts/generate_exact_primary_owner_review.py",".github/workflows/public-pages-owner-review.yml"]}
- for name,payload in {"geometry-results.json":geometry,"containing-block-diagnostics.json":diagnostics,"interaction-results.json":interactions,"browser-results.json":browser_results,"approval-carry-forward.json":carry,"provenance.json":special_provenance}.items(): (package/name).write_text(json.dumps(payload,indent=2)+"\n")
+ accessibility={"status":"PASS" if interactions["status"]=="PASS" else "FAIL","menu_text_minimum_px":16,"row_minimum_px":52,"control_minimum_px":44,"focus_restore":all(state.get("navigationClose",{}).get("focusRestored") for state in nav_states),"background_inert":all(state.get("navigation",{}).get("backgroundInert") for state in nav_states)}
+ for name,payload in {"geometry-results.json":geometry,"containing-block-diagnostics.json":diagnostics,"containing-block-before.json":diagnostics["before"],"containing-block-after.json":diagnostics["after"],"interaction-results.json":interactions,"accessibility-results.json":accessibility,"browser-results.json":browser_results,"approval-carry-forward.json":carry,"provenance.json":special_provenance}.items(): (package/name).write_text(json.dumps(payload,indent=2)+"\n")
  for state_id in sorted(set(["mobile-navigation","mobile-navigation-320",*nav_ids])):
   for prefix,source in [("before",WORK/"before"),("after",WORK/"current")]:
    image=source/f"{state_id}.png"
@@ -67,6 +68,9 @@ def write_mobile_menu_viewport_package(current_capture, before_capture, generic_
   if file.name=="manifest.json": continue
   files.append({"relative_path":file.name,"bytes":file.stat().st_size,"sha256":sha(file),"mime":mimetypes.guess_type(file.name)[0] or "application/octet-stream"})
  (package/"manifest.json").write_text(json.dumps({"artifact":package.name,"head":head,"status":"PASS" if geometry["status"]=="PASS" and interactions["status"]=="PASS" and carry["public_body_hash_unchanged"] else "FAIL","files":files},indent=2)+"\n")
+ with zipfile.ZipFile(package/"artifact.zip","w",zipfile.ZIP_DEFLATED) as archive:
+  for file in package.iterdir():
+   if file.name != "artifact.zip": archive.write(file,file.name)
 CORRECTIONS = {
  "D01":"One canonical responsive shell, readable branding, and font verification.",
  "D02":"Home hero, journey heading, discovery shelf, and mobile hierarchy.",
