@@ -73,25 +73,26 @@ jobs:
           for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13006/ >/dev/null && break; sleep 1; done
           UAT_BASE_URL=http://127.0.0.1:13006 MOBILE_MENU_GEOMETRY_RESULTS_OUTPUT=uat/evidence/exact-primary-design/current/focused-mobile-menu-results.json node scripts/test_capture_exact_primary_owner_review_mobile_menu.mjs
 
-      - name: Materialize base source without changing the pull request checkout
+      - name: Materialize approved prior PR source without changing the pull request checkout
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PRIOR_REVIEWED_SHA: 230f04a2e33a5d8c01d84d5ad7694dfcf8dd7d2a
         run: |
           base_dir="$RUNNER_TEMP/earnalism-owner-review-base"
           mkdir -p "$base_dir"
-          git archive "$BASE_SHA" | tar -x -C "$base_dir"
+          git cat-file -e "$PRIOR_REVIEWED_SHA^{commit}"
+          git archive "$PRIOR_REVIEWED_SHA" | tar -x -C "$base_dir"
           mkdir -p "$base_dir/scripts"
           cp scripts/capture_exact_primary_owner_review.mjs "$base_dir/scripts/"
           cp scripts/serve_frontend_build.js "$base_dir/scripts/"
           ln -s "$GITHUB_WORKSPACE/node_modules" "$base_dir/node_modules"
           ln -s "$GITHUB_WORKSPACE/frontend/node_modules" "$base_dir/frontend/node_modules"
 
-      - name: Capture original-main public pages
+      - name: Capture approved prior PR public pages
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PRIOR_REVIEWED_SHA: 230f04a2e33a5d8c01d84d5ad7694dfcf8dd7d2a
         run: |
           base_dir="$RUNNER_TEMP/earnalism-owner-review-base"
-          base_tree_sha="$(git rev-parse "$BASE_SHA^{tree}")"
+          base_tree_sha="$(git rev-parse "$PRIOR_REVIEWED_SHA^{tree}")"
           (
             cd "$base_dir"
             REACT_APP_BACKEND_URL="$REACT_APP_BACKEND_URL" REACT_APP_ENABLE_VISUAL_FIXTURES=1 npm --prefix frontend run build
@@ -99,8 +100,8 @@ jobs:
             server_pid=$!
             trap 'kill "$server_pid"' EXIT
             for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13008/ >/dev/null && break; sleep 1; done
-            PR_HEAD_SHA="$BASE_SHA" ACTUAL_CHECKOUT_SHA="$BASE_SHA" CHECKOUT_TREE_SHA="$base_tree_sha" UAT_BASE_URL=http://127.0.0.1:13008 OWNER_REVIEW_CAPTURE_STRICT=false EXACT_OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/exact-primary-design/before node scripts/capture_exact_primary_owner_review.mjs
-            body_sha="$({ rg --files frontend/src | rg '(^frontend/src/pages/(Home|Library|Pricing)\\.jsx$|^frontend/src/components/Footer(\\.jsx|SocialLinks\\.jsx)$|^frontend/src/components/ReferencePublicPages\\.(jsx|css)$|^frontend/src/design-system/.*\\.css$)'; printf '%s\n' docs/product/public-cta-contract.json; } | sort | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
+            PR_HEAD_SHA="$PRIOR_REVIEWED_SHA" ACTUAL_CHECKOUT_SHA="$PRIOR_REVIEWED_SHA" CHECKOUT_TREE_SHA="$base_tree_sha" UAT_BASE_URL=http://127.0.0.1:13008 OWNER_REVIEW_CAPTURE_STRICT=false EXACT_OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/exact-primary-design/before node scripts/capture_exact_primary_owner_review.mjs
+            body_sha="$({ rg --files frontend/src | rg '(^frontend/src/pages/(Home|Library|Pricing)\.jsx$|^frontend/src/components/Footer(\.jsx|SocialLinks\.jsx)$|^frontend/src/components/ReferencePublicPages\.(jsx|css)$|^frontend/src/design-system/.*\.css$)'; printf '%s\n' docs/product/public-cta-contract.json; } | sort | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
             header_sha="$(printf '%s\n' frontend/src/components/Header.jsx frontend/src/components/Header.css frontend/src/components/EarnalismBrandLockup.jsx frontend/src/components/EarnalismBrandLockup.css frontend/public/assets/brand/earnalism-brand-lockup.png | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
             printf '{"public_body_sha256":"%s","header_surface_sha256":"%s"}\n' "$body_sha" "$header_sha" > uat/evidence/exact-primary-design/before/surface-hashes.json
           )
@@ -118,7 +119,7 @@ jobs:
           trap 'kill "$server_pid"' EXIT
           for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13007/ >/dev/null && break; sleep 1; done
           UAT_BASE_URL=http://127.0.0.1:13007 OWNER_REVIEW_CAPTURE_STRICT=true EXACT_OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/exact-primary-design/current node scripts/capture_exact_primary_owner_review.mjs
-          body_sha="$({ rg --files frontend/src | rg '(^frontend/src/pages/(Home|Library|Pricing)\\.jsx$|^frontend/src/components/Footer(\\.jsx|SocialLinks\\.jsx)$|^frontend/src/components/ReferencePublicPages\\.(jsx|css)$|^frontend/src/design-system/.*\\.css$)'; printf '%s\n' docs/product/public-cta-contract.json; } | sort | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
+          body_sha="$({ rg --files frontend/src | rg '(^frontend/src/pages/(Home|Library|Pricing)\.jsx$|^frontend/src/components/Footer(\.jsx|SocialLinks\.jsx)$|^frontend/src/components/ReferencePublicPages\.(jsx|css)$|^frontend/src/design-system/.*\.css$)'; printf '%s\n' docs/product/public-cta-contract.json; } | sort | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
           header_sha="$(printf '%s\n' frontend/src/components/Header.jsx frontend/src/components/Header.css frontend/src/components/EarnalismBrandLockup.jsx frontend/src/components/EarnalismBrandLockup.css frontend/public/assets/brand/earnalism-brand-lockup.png | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
           printf '{"public_body_sha256":"%s","header_surface_sha256":"%s"}\n' "$body_sha" "$header_sha" > uat/evidence/exact-primary-design/current/surface-hashes.json
 
