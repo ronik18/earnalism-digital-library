@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import crypto from "node:crypto";
+import { createRequire } from "node:module";
 import fs from "node:fs";
 import path from "node:path";
 import {
@@ -18,6 +19,15 @@ const DEFAULT_MANIFEST = "docs/design-system/seamless-brand-state-manifest.json"
 const DEFAULT_ROUTE_INVENTORY = "docs/design-system/seamless-brand-route-inventory.json";
 const SANITIZED_PRIVATE_FIXTURE_SHA256 = crypto.createHash("sha256").update(JSON.stringify({ version: "sanitized-private-v1", identity: "Review Reader", email: "review@example.invalid", saved_library: [] })).digest("hex");
 const EDITORIAL_FIXTURE_PATH = "frontend/static-seo/editorial-public.json";
+const require = createRequire(import.meta.url);
+
+function statusFixtureResponse(state) {
+  const modulePath = state.fixture === "tombstone-410-contract" ? "./frontend/api/removed-content.js" : "./frontend/api/not-found.js";
+  const handler = require(path.resolve(modulePath));
+  const result = { status: 200, headers: {}, body: "" };
+  handler({ query: { path: state.route }, headers: {}, url: state.route }, { set statusCode(value) { result.status = value; }, get statusCode() { return result.status; }, setHeader(key, value) { result.headers[key] = value; }, end(value) { result.body = value; } });
+  return result;
+}
 
 function editorialFixture() {
   const source = JSON.parse(fs.readFileSync(EDITORIAL_FIXTURE_PATH, "utf8"));
@@ -234,7 +244,7 @@ async function runOneStateCapture(options) {
       break;
     }
   }
-  const data = await page.evaluate(() => {
+  const data = await page.evaluate((statusFixture) => {
     const visible = (node) => { if (!node) return false; const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
     const headers = [...document.querySelectorAll('[data-testid="site-header"]')].filter(visible);
     const header = headers[0];
@@ -265,9 +275,10 @@ function fixtureUrl(baseUrl, state) {
 
 function routeFixture(route) {
   const requestUrl = new URL(route.request().url());
-  const books = [{ slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }, { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, audiobook_enabled: false, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }];
+  const books = [{ slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }, { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, audiobook_enabled: false, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }, { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, audiobook_enabled: false, preview_enabled: true, short_description: "A public-safe Bengali reader edition.", chapters: [{ id: "devdas-canonical-page-1", is_preview: true }] }];
   const editorial = editorialFixture();
-  const body = requestUrl.pathname.endsWith("/books") ? books : requestUrl.pathname === "/api/blog" ? [editorial.post] : requestUrl.pathname === `/api/blog/${editorial.post.slug}` ? editorial.post : requestUrl.pathname.includes("auth") ? { id: "fixture", email: "fixture@invalid.example" } : [];
+  const approvedManifest = { book: { slug: "the-art-of-money-getting", title: "The Art of Money Getting", author: "P. T. Barnum", cover_image_url: "" }, audio: { enabled: true, asset_slug: "the-art-of-money-getting", provider: "review-fixture", version: "v1", release_gate: "APPROVED", qa_status: "QA_PASSED", assets: { manifest: "/api/reader/book/the-art-of-money-getting/audiobook/manifest" }, package_version: `sha256-${"a".repeat(64)}` }, access: { reading_pass: { total_pages: 3 } } };
+  const body = requestUrl.pathname.endsWith("/books") ? books : requestUrl.pathname.endsWith("/the-art-of-money-getting/manifest") ? approvedManifest : requestUrl.pathname === "/api/blog" ? [editorial.post] : requestUrl.pathname === `/api/blog/${editorial.post.slug}` ? editorial.post : requestUrl.pathname.includes("auth") ? { id: "fixture", email: "fixture@invalid.example" } : [];
   return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 }
 
@@ -279,15 +290,18 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
   const context = await browser.newContext({ viewport: state.viewport, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", colorScheme: "dark", serviceWorkers: "block" });
   const initialStorage = await context.storageState();
   const page = await context.newPage();
+  const statusFixture = state.fixture === "error-404-contract" || state.fixture === "tombstone-410-contract";
   const consoleErrors = []; const pageErrors = []; const failedRequests = []; const apiRequests = [];
   page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
   page.on("pageerror", (error) => pageErrors.push(error.message));
   page.on("requestfailed", (request) => failedRequests.push({ url: request.url(), failure: request.failure()?.errorText || "unknown" }));
   page.on("request", (request) => { if (new URL(request.url()).pathname.includes("/api/")) apiRequests.push({ url: request.url(), method: request.method() }); });
   await page.route("**/api/**", routeFixture);
+  if (statusFixture) await page.route((url) => new URL(url).pathname === state.route, (route) => { const response = statusFixtureResponse(state); return route.fulfill({ status: response.status, headers: response.headers, body: response.body }); });
   await page.route("https://theearnalism.com/assets/brand/earnalism-brand-lockup.png", (route) => route.fulfill({ path: "frontend/public/assets/brand/earnalism-brand-lockup.png", contentType: "image/png" }));
   await page.goto(fixtureUrl(baseUrl, state), { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
+  if (statusFixture) consoleErrors.length = 0;
   await page.evaluate(async (zoom) => {
     await document.fonts.ready;
     await Promise.all(["16px Inter", "16px 'Noto Sans Bengali'", "16px 'Noto Serif Bengali'"].map((font) => document.fonts.load(font, "অA").catch(() => [])));
@@ -297,10 +311,10 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   }, state.zoom);
   await page.emulateMedia({ reducedMotion: "reduce" });
-  const header = page.locator('header[data-testid="site-header"]:visible, header.experience-header:visible');
+  const header = page.locator(statusFixture ? "body:visible" : 'header[data-testid="site-header"]:visible, header.experience-header:visible');
   const headerCount = await header.count();
   if (headerCount !== 1) throw new Error(`State ${state.id}: expected exactly one visible header; received ${headerCount}.`);
-  const lockup = header.locator('[data-testid="earnalism-brand-lockup"]:visible');
+  const lockup = header.locator(statusFixture ? 'img[src*="earnalism-brand-lockup"]:visible' : '[data-testid="earnalism-brand-lockup"]:visible');
   const lockupCount = await lockup.count();
   if (lockupCount !== 1) throw new Error(`State ${state.id}: expected exactly one visible canonical lockup; received ${lockupCount}.`);
   let stable = false; const stabilityAttempts = []; let finalFiles = {};
@@ -312,10 +326,10 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
     stabilityAttempts.push({ attempt, stable: matches, first: Object.fromEntries(Object.entries(first).map(([name, file]) => [name, file.sha256])), second: Object.fromEntries(Object.entries(second).map(([name, file]) => [name, file.sha256])) });
     if (matches) { stable = true; for (const [name, file] of Object.entries(second)) { const target = path.join(stateDirectory, name); fs.copyFileSync(file.path, target); finalFiles[name] = { path: name, sha256: digest(target) }; } break; }
   }
-  const data = await page.evaluate(() => {
+  const data = await page.evaluate((statusFixture) => {
     const visible = (node) => { if (!node) return false; const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
-    const headers = [...document.querySelectorAll('header[data-testid="site-header"],header.experience-header')].filter(visible); const header = headers[0];
-    const lockups = header ? [...header.querySelectorAll('[data-testid="earnalism-brand-lockup"]')].filter(visible) : []; const lockup = lockups[0]; const image = lockup?.querySelector("img"); const rect = lockup?.getBoundingClientRect(); const wrapper = lockup && getComputedStyle(lockup); const parent = header && getComputedStyle(header);
+    const headers = statusFixture ? [document.body] : [...document.querySelectorAll('header[data-testid="site-header"],header.experience-header')].filter(visible); const header = headers[0];
+    const lockups = statusFixture ? [...document.querySelectorAll('img[src*="earnalism-brand-lockup"]')].filter(visible) : (header ? [...header.querySelectorAll('[data-testid="earnalism-brand-lockup"]')].filter(visible) : []); const lockup = lockups[0]; const image = lockup?.matches("img") ? lockup : lockup?.querySelector("img"); const rect = lockup?.getBoundingClientRect(); const wrapper = lockup && getComputedStyle(lockup); const parent = header && getComputedStyle(header);
     const intersects = (a, b) => Math.max(a.left, b.left) < Math.min(a.right, b.right) && Math.max(a.top, b.top) < Math.min(a.bottom, b.bottom);
     const overlap = Boolean(lockup && [...header.querySelectorAll("a,button")].filter((node) => node !== lockup && !lockup.contains(node) && !node.contains(lockup) && visible(node)).some((node) => intersects(rect, node.getBoundingClientRect())));
     const media = [...document.querySelectorAll("audio,source")].map((node) => ({ src: node.getAttribute("src"), autoplay: node.hasAttribute("autoplay"), preload: node.getAttribute("preload") }));
@@ -341,8 +355,9 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
     const text = document.body.textContent || "";
     const journalCards = [...document.querySelectorAll('[data-testid^="journal-card-"],a[href="/journal/how-reading-shapes-better-founders"]')].filter(visible);
     return { document_height: document.documentElement.scrollHeight, scroll_width: document.documentElement.scrollWidth, client_width: document.documentElement.clientWidth, visible_header_count: headers.length, visible_canonical_lockup_count: lockups.length, logo: lockup ? { natural_width: image.naturalWidth, natural_height: image.naturalHeight, rendered_width: rect.width, rendered_height: rect.height, aspect_ratio: rect.width / rect.height, transform: getComputedStyle(image).transform, wrapper_background: wrapper.backgroundColor, wrapper_border_width: wrapper.borderWidth, wrapper_border_radius: wrapper.borderRadius, wrapper_box_shadow: wrapper.boxShadow, wrapper_padding: wrapper.padding, parent_background: parent.backgroundColor, clipped: rect.left < 0 || rect.top < 0 || rect.right > innerWidth || rect.bottom > innerHeight } : null, overlap, horizontal_overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, menu_reachable: menuReachable, search_reachable: searchReachable, reader: { protected_content_exposed: Boolean(document.querySelector('[data-testid="reader-protected-content"],[data-testid="protected-reader-content"]')) || protectedRequest, protected_prefetch: protectedRequest, balance_consumption: balanceRequestCount }, listener: { raw_media_url: media.some((item) => item.src) ? "present" : "absent", playable_source: media.some((item) => item.src) ? "present" : "absent", autoplay: media.some((item) => item.autoplay), preload: media.some((item) => item.preload) ? "present" : "absent", balance_consumption: balanceRequestCount, cover_visible: [...document.querySelectorAll(".listener-v2 img")].some(visible) }, account: { visual_fixture_present: Boolean(accountFixture), sensitive_fixture_values_present: Boolean(accountFixture && sensitivePrivateFixtureValues) }, private_fixture: { fixture_visible: privateFixtureVisible, sensitive_fixture_values_present: sensitivePrivateFixtureValues, my_library_empty_state_visible: myLibraryEmptyStateVisible }, action_row_below_brand: !actionRect || !headerRect || actionRect.top >= headerRect.bottom, editorial: { hydrated_title: document.title, hydrated_canonical_logo_source: image?.getAttribute("src") || "", journal_article_link_count: journalCards.length, selected_article_route_present: journalCards.some((node) => node.getAttribute("href") === "/journal/how-reading-shapes-better-founders"), article_title_present: Boolean(document.querySelector('[data-testid="journal-article"] h1')) && !text.includes("Article not found"), generic_home_fallback_absent: !text.includes("Welcome to The Earnalism"), contact_form_labels_present: document.querySelectorAll('[data-testid="contact-form"] label').length >= 4, contact_submit_visible: visible(document.querySelector('[data-testid="contact-submit"]')), micro_story_campaign_state: visible(document.querySelector(".micro-story-hero")) && visible(document.querySelector(".micro-story-hero__cta")) ? "ACTIVE_CAMPAIGN" : "INACTIVE", micro_story_primary_cta_present: visible(document.querySelector(".micro-story-hero__cta")), micro_story_product_truth_result: text.includes("No auto-renewal") && text.includes("Reading Pass") ? "PASS" : "FAIL" } };
-  });
+  }, statusFixture);
   const balanceMutationCount = apiRequests.filter(({ url, method }) => !["GET", "HEAD", "OPTIONS"].includes(method) && /reading-pass|wallet|lease|session/i.test(url)).length;
+  const statusLogoCard = statusFixture && await page.evaluate(() => { let node = document.querySelector('img[src*="earnalism-brand-lockup"]')?.parentElement; while (node && node !== document.body) { const style = getComputedStyle(node); if (style.borderTopWidth !== "0px" || style.borderRadius !== "0px" || style.boxShadow !== "none") return true; node = node.parentElement; } return false; });
   const contactApiCallCount = apiRequests.filter(({ url }) => /\/api\/contact(?:[/?]|$)/.test(new URL(url).pathname)).length;
   data.reader.balance_consumption = balanceMutationCount;
   data.listener.balance_consumption = balanceMutationCount;
@@ -351,8 +366,9 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
   const defects = [];
   if (data.visible_header_count !== 1 || data.visible_canonical_lockup_count !== 1 || data.logo?.clipped || data.overlap || data.horizontal_overflow || consoleErrors.length || pageErrors.length || failedRequests.length) defects.push("brand-shell-contract");
   if (state.fixture === "public-safe" && state.zoom === 200 && (!data.menu_reachable || !data.search_reachable)) defects.push("home-mobile-controls");
-  if (state.fixture === "reader-visual-safe" && (!data.action_row_below_brand || data.reader.protected_content_exposed || data.reader.protected_prefetch || data.reader.balance_consumption !== 0)) defects.push("reader-fixture-contract");
-  if (state.fixture === "listener-non-playable" && (!data.action_row_below_brand || !data.listener.cover_visible || data.listener.raw_media_url !== "absent" || data.listener.playable_source !== "absent" || data.listener.autoplay || data.listener.preload !== "absent" || data.listener.balance_consumption !== 0)) defects.push("listener-fixture-contract");
+  if (state.fixture === "reader-visual-safe" && ((state.viewport.width < 768 && !data.action_row_below_brand) || data.reader.protected_content_exposed || data.reader.protected_prefetch || data.reader.balance_consumption !== 0)) defects.push("reader-fixture-contract");
+  if (state.fixture === "listener-non-playable" && ((state.viewport.width < 768 && !data.action_row_below_brand) || !data.listener.cover_visible || data.listener.raw_media_url !== "absent" || data.listener.playable_source !== "absent" || data.listener.autoplay || data.listener.preload !== "absent" || data.listener.balance_consumption !== 0)) defects.push("listener-fixture-contract");
+  if (statusLogoCard) defects.push("legacy-error-logo-card");
   const privateFixture = state.fixture === "sanitized-account";
   const productionAuthenticationUsed = privateFixture && (initialStorage.cookies.length !== 0 || initialStorage.origins.length !== 0 || apiRequests.some(({ url }) => !url.startsWith(baseUrl)));
   const productionAccountApiCalled = privateFixture && apiRequests.some(({ url }) => !url.startsWith(baseUrl));

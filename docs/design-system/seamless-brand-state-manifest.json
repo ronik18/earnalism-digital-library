@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.seamless-brand-state-manifest.v1",
-  "supported_fixtures": ["public-safe", "reader-visual-safe", "listener-non-playable", "sanitized-account"],
+  "supported_fixtures": ["public-safe", "reader-visual-safe", "listener-non-playable", "listener-approved-non-playable", "listener-disabled-safe", "sanitized-account", "error-404-contract", "tombstone-410-contract"],
   "supported_interactions": ["none", "sanitize-account-fixture"],
   "states": [
     {"id":"home-desktop","route":"/","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true}},
@@ -30,6 +30,15 @@
     {"id":"contact-desktop","route":"/contact","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","introduced_in":"editorial-campaign-2b3","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
     {"id":"contact-mobile","route":"/contact","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"none","introduced_in":"editorial-campaign-2b3","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
     {"id":"micro-story-desktop","route":"/micro-story","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","introduced_in":"editorial-campaign-2b3","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
-    {"id":"micro-story-mobile","route":"/micro-story","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"none","introduced_in":"editorial-campaign-2b3","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}}
+    {"id":"micro-story-mobile","route":"/micro-story","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"none","introduced_in":"editorial-campaign-2b3","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"error-404-desktop","route":"/__seamless-brand-review-not-found-344__","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"error-404-contract","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"error-404-mobile","route":"/__seamless-brand-review-not-found-344__","viewport":{"width":390,"height":844},"zoom":100,"fixture":"error-404-contract","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"tombstone-410-desktop","route":"/product/patterned-wrap-dress","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"tombstone-410-contract","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"tombstone-410-mobile","route":"/product/patterned-wrap-dress","viewport":{"width":390,"height":844},"zoom":100,"fixture":"tombstone-410-contract","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"secondary-book-desktop","route":"/book/devdas","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"secondary-book-mobile","route":"/book/devdas","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"reader-desktop","route":"/reader/dracula","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"reader-visual-safe","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"approved-listener-desktop","route":"/listener/the-art-of-money-getting","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"listener-approved-non-playable","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"disabled-listener-dracula-desktop","route":"/listener/dracula","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"listener-disabled-safe","interaction":"none","introduced_in":"error-experience-2b4","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}}
   ]
 }
