@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 import { chromium } from "playwright";
 
 const baseUrl = String(process.env.UAT_BASE_URL || "http://127.0.0.1:13007").replace(/\/$/, "");
@@ -53,7 +55,7 @@ try {
   result.duplicateOwnerDialogRejected = true;
   await duplicate.close();
 
-  for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }, { width: 768, height: 1024 }, { width: 1024, height: 768 }, { width: 1279, height: 800 }]) {
+  for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }, { width: 430, height: 932 }, { width: 768, height: 1024 }, { width: 1024, height: 768 }, { width: 1279, height: 800 }]) {
     const page = await browser.newPage({ viewport });
     await installPublicFixture(page);
     await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
@@ -87,5 +89,11 @@ try {
     result.desktop.push({ width, ...desktop });
     await page.close();
   }
-  console.log(JSON.stringify({ result, pass: true }));
+  const report = { schema_version: "earnalism-mobile-menu-viewport-geometry-v1", result, pass: true };
+  if (process.env.MOBILE_MENU_GEOMETRY_RESULTS_OUTPUT) {
+    const reportPath = path.resolve(process.env.MOBILE_MENU_GEOMETRY_RESULTS_OUTPUT);
+    fs.mkdirSync(path.dirname(reportPath), { recursive: true });
+    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2) + "\n");
+  }
+  console.log(JSON.stringify(report));
 } finally { await browser.close(); }
