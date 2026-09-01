@@ -216,15 +216,21 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
   const files = {};
   const attemptDirectory = path.join(stateDirectory, "attempts", label);
   fs.mkdirSync(attemptDirectory, { recursive: true });
+  const scrollPosition = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY }));
   const write = async (name, action) => {
     const target = path.join(attemptDirectory, name);
     await action(target);
     files[name] = { path: target, sha256: digest(target) };
   };
-  if (capture.viewport) await write("viewport.png", (target) => page.screenshot({ path: target, fullPage: false, animations: "disabled", caret: "hide", scale: "css" }));
-  if (capture.full_page) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
-  if (capture.brand_close_up) await write("brand-close-up.png", (target) => lockup.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
-  if (capture.parent_surface_close_up) await write("parent-surface-close-up.png", (target) => header.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
+  try {
+    if (capture.viewport) await write("viewport.png", (target) => page.screenshot({ path: target, fullPage: false, animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.full_page) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.brand_close_up) await write("brand-close-up.png", (target) => lockup.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.parent_surface_close_up) await write("parent-surface-close-up.png", (target) => header.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
+  } finally {
+    await page.evaluate(({ x, y }) => window.scrollTo(x, y), scrollPosition);
+    await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  }
   return files;
 }
 
