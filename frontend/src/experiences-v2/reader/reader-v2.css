@@ -19,4 +19,49 @@
    masthead must remain visible so its canonical lockup is never omitted. */
 @media (max-width: 767px) {
   .reader-v2 .experience-header { display: flex !important; }
+
+  /* The action cluster stays intact, but becomes its own normal-flow row when
+     the available inline size cannot hold the canonical-page status beside it. */
+  .reader-v2__mobile-topbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px 8px;
+    min-block-size: 48px;
+    block-size: auto;
+    min-inline-size: 0;
+    padding: 2px 10px;
+    overflow: visible;
+  }
+
+  .reader-v2__mobile-topbar > button {
+    flex: 0 0 44px;
+    inline-size: 44px;
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+
+  .reader-v2__mobile-topbar > span {
+    flex: 1 1 72px;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .reader-v2__mobile-topbar > div {
+    flex: 0 0 132px;
+    display: grid;
+    grid-template-columns: repeat(3, 44px);
+    inline-size: 132px;
+    max-inline-size: 100%;
+    margin-inline-start: auto;
+  }
+
+  .reader-v2__mobile-topbar > div > button {
+    flex: none;
+    inline-size: 44px;
+    min-inline-size: 44px;
+    block-size: 44px;
+    min-block-size: 44px;
+  }
 }

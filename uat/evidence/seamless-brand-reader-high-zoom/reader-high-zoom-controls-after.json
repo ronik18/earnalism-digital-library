@@ -1,0 +1,19 @@
+{
+  "capture_source": "/tmp/pr344-reader-high-zoom-after",
+  "result": "PASS",
+  "root_cause_correction": "flex-wrap with a fixed logical 132px three-control grid in normal document flow",
+  "states": [
+    {"state_id":"reader-mobile-390-zoom-200","viewport":{"width":390,"height":844},"zoom":200,"topbar":{"flex_wrap":"wrap","client_width":195,"scroll_width":195,"height":194},"control_cluster":{"left":106,"right":370,"top":236,"bottom":324,"width":264,"height":88},"clipped_controls":0,"content_begins_below_topbar":true,"action_row_content_overlap_area":0},
+    {"state_id":"reader-mobile-320-zoom-150","viewport":{"width":320,"height":568},"zoom":150,"topbar":{"flex_wrap":"wrap","client_width":213,"scroll_width":213,"height":145},"control_cluster":{"left":107,"right":305,"top":177,"bottom":243,"width":198,"height":66},"clipped_controls":0,"content_begins_below_topbar":true,"action_row_content_overlap_area":0},
+    {"state_id":"reader-mobile-320-zoom-200","viewport":{"width":320,"height":568},"zoom":200,"topbar":{"flex_wrap":"wrap","client_width":160,"scroll_width":160,"height":194},"control_cluster":{"left":36,"right":300,"top":236,"bottom":324,"width":264,"height":88},"clipped_controls":0,"content_begins_below_topbar":true,"action_row_content_overlap_area":0}
+  ],
+  "reader_safety": {"protected_content_exposed":false,"protected_page_prefetch":false,"production_reader_api_called":false,"reading_pass_balance_consumption":0},
+  "screenshots": [
+    "screenshots/reader-mobile-390-zoom-200-before.png",
+    "screenshots/reader-mobile-390-zoom-200-after.png",
+    "screenshots/reader-mobile-320-zoom-150-before.png",
+    "screenshots/reader-mobile-320-zoom-150-after.png",
+    "screenshots/reader-mobile-320-zoom-200-before.png",
+    "screenshots/reader-mobile-320-zoom-200-after.png"
+  ]
+}
