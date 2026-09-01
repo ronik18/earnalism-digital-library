@@ -261,7 +261,7 @@ async function runOneStateCapture(options) {
   });
   await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
-  await page.evaluate(async (zoom, fontSpecs) => {
+  await page.evaluate(async ({ zoom, fontSpecs }) => {
     await document.fonts.ready;
     await Promise.all(Object.values(fontSpecs).map((font) => document.fonts.load(font, "অA").catch(() => [])));
     await Promise.all([...document.images].filter((image) => {
@@ -273,7 +273,7 @@ async function runOneStateCapture(options) {
     document.head.append(style);
     document.documentElement.style.zoom = `${zoom}%`;
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-  }, state.zoom, REQUIRED_FONT_SPECS);
+  }, { zoom: state.zoom, fontSpecs: REQUIRED_FONT_SPECS });
   await page.emulateMedia({ reducedMotion: "reduce" });
   const header = page.locator('[data-testid="site-header"]:visible');
   if (await header.count() !== 1) throw new Error(`State ${state.id}: expected exactly one visible public header; received ${await header.count()}.`);
@@ -538,14 +538,14 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   await page.goto(fixtureUrl(baseUrl, state), { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
   if (statusFixture) consoleErrors.length = 0;
-  await page.evaluate(async (zoom, fontSpecs) => {
+  await page.evaluate(async ({ zoom, fontSpecs }) => {
     await document.fonts.ready;
     await Promise.all(Object.values(fontSpecs).map((font) => document.fonts.load(font, "অA").catch(() => [])));
     await Promise.all([...document.images].filter((image) => { const style = getComputedStyle(image); const rect = image.getBoundingClientRect(); return style.display !== "none" && rect.width > 0 && rect.height > 0; }).map((image) => image.decode().catch(() => undefined)));
     const style = document.createElement("style"); style.textContent = "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}"; document.head.append(style);
     document.documentElement.style.zoom = `${zoom}%`;
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-  }, state.zoom, REQUIRED_FONT_SPECS);
+  }, { zoom: state.zoom, fontSpecs: REQUIRED_FONT_SPECS });
   await page.emulateMedia({ reducedMotion: "reduce" });
   const header = page.locator(statusFixture ? 'header[data-testid="status-brand-masthead"]:visible' : 'header[data-testid="site-header"]:visible, header.experience-header:visible');
   const headerCount = await header.count();
