@@ -453,9 +453,10 @@ def test_reader_manifest_truth_gate_invalidates_pre_package_v2_cache(monkeypatch
         server._reader_book_manifest_doc("the-open-window")
     )
 
-    assert result["audio"]["assets"]["manifest"] == (
-        "/api/reader/book/the-open-window/audiobook/manifest"
-    )
+    # Reader manifests are intentionally public metadata only.  The protected
+    # package endpoint is selected after a valid Reading Pass lease.
+    assert result["audio"]["assets"] == {}
+    assert result["audio"]["url"] == ""
     assert get_calls == [(
         "reader-manifest",
         current_key,
@@ -1200,8 +1201,8 @@ def test_private_audio_store_is_proxied_without_changing_primary_b2(monkeypatch)
     assert server._b2_key_from_url(private_url, storage) == (
         "earnalism/audiobooks/the-open-window/the-open-window.mp3"
     )
-    assert audio["assets"]["mp3"] == "/api/reader/book/the-open-window/audiobook"
-    assert audio["url"] == "/api/reader/book/the-open-window/audiobook"
+    assert audio["assets"] == {}
+    assert audio["url"] == ""
     assert audio["narration_disclosure"] == "Narration: AI voice"
 
 
@@ -1565,7 +1566,7 @@ def test_malformed_range_returns_416_without_fetching_object_body(monkeypatch):
     assert fake_s3.get_called is False
 
 
-def test_open_window_controlled_release_exposes_only_proxy_assets_with_disclosure(monkeypatch):
+def test_open_window_controlled_release_exposes_only_non_playable_public_metadata(monkeypatch):
     server = _server(monkeypatch)
     artifact = server.load_controlled_artifact_book("the-open-window")
 
@@ -1583,14 +1584,8 @@ def test_open_window_controlled_release_exposes_only_proxy_assets_with_disclosur
     assert audio["narration_disclosure"] == "Narration: AI voice"
     assert audio["size"] == 6283053
     assert audio["duration_ms"] == 392600
-    assert audio["assets"] == {
-        "mp3": "/api/reader/book/the-open-window/audiobook",
-        "timestamps": "/api/reader/book/the-open-window/audiobook/timestamps",
-        "vtt": "/api/reader/book/the-open-window/audiobook/vtt",
-        "chapters": "/api/reader/book/the-open-window/audiobook/chapters",
-        "meta": "/api/reader/book/the-open-window/audiobook/meta",
-        "manifest": "/api/reader/book/the-open-window/audiobook/manifest",
-    }
+    assert audio["assets"] == {}
+    assert audio["url"] == ""
 
 
 def test_admin_audiobook_asset_sanitizer_rejects_static_audio_fallbacks(monkeypatch):
