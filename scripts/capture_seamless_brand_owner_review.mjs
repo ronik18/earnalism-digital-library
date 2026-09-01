@@ -312,12 +312,13 @@ async function runOneStateCapture(options) {
   await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
   await page.evaluate(async ({ zoom, fontSpecs }) => {
-    await document.fonts.ready;
-    await Promise.all(Object.values(fontSpecs).map((font) => document.fonts.load(font, "অA").catch(() => [])));
+    const bounded = (promise) => Promise.race([promise, new Promise((resolve) => setTimeout(resolve, 5000))]);
+    await bounded(document.fonts.ready);
+    await Promise.all(Object.values(fontSpecs).map((font) => bounded(document.fonts.load(font, "অA").catch(() => []))));
     await Promise.all([...document.images].filter((image) => {
       const style = getComputedStyle(image); const rect = image.getBoundingClientRect();
       return style.display !== "none" && rect.width > 0 && rect.height > 0;
-    }).map((image) => image.decode().catch(() => undefined)));
+    }).map((image) => bounded(image.decode().catch(() => undefined))));
     const style = document.createElement("style");
     style.textContent = "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}";
     document.head.append(style);
@@ -571,9 +572,10 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
   if (statusFixture) consoleErrors.length = 0;
   await page.evaluate(async ({ zoom, fontSpecs }) => {
-    await document.fonts.ready;
-    await Promise.all(Object.values(fontSpecs).map((font) => document.fonts.load(font, "অA").catch(() => [])));
-    await Promise.all([...document.images].filter((image) => { const style = getComputedStyle(image); const rect = image.getBoundingClientRect(); return style.display !== "none" && rect.width > 0 && rect.height > 0; }).map((image) => image.decode().catch(() => undefined)));
+    const bounded = (promise) => Promise.race([promise, new Promise((resolve) => setTimeout(resolve, 5000))]);
+    await bounded(document.fonts.ready);
+    await Promise.all(Object.values(fontSpecs).map((font) => bounded(document.fonts.load(font, "অA").catch(() => []))));
+    await Promise.all([...document.images].filter((image) => { const style = getComputedStyle(image); const rect = image.getBoundingClientRect(); return style.display !== "none" && rect.width > 0 && rect.height > 0; }).map((image) => bounded(image.decode().catch(() => undefined))));
     const style = document.createElement("style"); style.textContent = "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}"; document.head.append(style);
     document.documentElement.style.zoom = `${zoom}%`;
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
@@ -591,9 +593,10 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, captureSurface, captureLockup, browserName);
   const interactionResult = await interactionSession.finalize();
   const fontResults = await page.evaluate(async (fontSpecs) => {
-    await document.fonts.ready;
+    const bounded = (promise) => Promise.race([promise, new Promise((resolve) => setTimeout(resolve, 5000))]);
+    await bounded(document.fonts.ready);
     return Object.fromEntries(await Promise.all(Object.entries(fontSpecs).map(async ([name, spec]) => {
-      await document.fonts.load(spec, "অA").catch(() => []);
+      await bounded(document.fonts.load(spec, "অA").catch(() => []));
       return [name, document.fonts.check(spec, "অA")];
     })));
   }, REQUIRED_FONT_SPECS);
