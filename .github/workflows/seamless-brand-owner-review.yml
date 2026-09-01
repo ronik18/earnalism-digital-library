@@ -128,17 +128,6 @@ jobs:
         run: |
           set -euo pipefail
           node scripts/test_seamless_brand_manifest_cli.mjs
-          node scripts/test_seamless_brand_one_state_capture.mjs
-          node scripts/test_seamless_brand_representative_capture.mjs
-          node scripts/test_seamless_brand_public_shell_batch.mjs
-          node scripts/test_seamless_brand_auth_private_batch.mjs
-          node scripts/test_seamless_brand_editorial_campaign_batch.mjs
-          node scripts/test_seamless_brand_error_experience_batch.mjs
-          node scripts/test_seamless_brand_interaction_batch.mjs
-          node scripts/test_library_filter_focus_trap_cross_browser.mjs
-          node scripts/test_reader_mobile_high_zoom_reflow.mjs
-          node scripts/test_seamless_brand_core_zoom_batch.mjs
-          node scripts/test_seamless_brand_experience_footer_zoom_batch.mjs
           node scripts/test_seamless_brand_full_chromium_matrix.mjs
           node scripts/test_seamless_brand_cross_browser_shell_matrix.mjs
           node scripts/test_seamless_brand_final_evidence_inputs.mjs
@@ -153,6 +142,29 @@ jobs:
           test "$(sha256sum frontend/build/assets/brand/earnalism-brand-lockup.png | awk '{print $1}')" = "$CANONICAL_LOGO_SHA"
           git diff --exit-code
           sha256sum "$RUNNER_TEMP/frontend-build.log" > "$RUNNER_TEMP/frontend-build.log.sha256"
+
+      - name: Run browser tooling gates
+        run: |
+          set -euo pipefail
+          node scripts/serve_frontend_build.js --port 13018 > "$RUNNER_TEMP/tooling-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for _ in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:13018/ >/dev/null; then break; fi
+            sleep 1
+          done
+          export SEAMLESS_BRAND_TEST_BASE_URL=http://127.0.0.1:13018
+          node scripts/test_seamless_brand_one_state_capture.mjs
+          node scripts/test_seamless_brand_representative_capture.mjs
+          node scripts/test_seamless_brand_public_shell_batch.mjs
+          node scripts/test_seamless_brand_auth_private_batch.mjs
+          node scripts/test_seamless_brand_editorial_campaign_batch.mjs
+          node scripts/test_seamless_brand_error_experience_batch.mjs
+          node scripts/test_seamless_brand_interaction_batch.mjs
+          node scripts/test_library_filter_focus_trap_cross_browser.mjs
+          node scripts/test_reader_mobile_high_zoom_reflow.mjs
+          node scripts/test_seamless_brand_core_zoom_batch.mjs
+          node scripts/test_seamless_brand_experience_footer_zoom_batch.mjs
 
       - name: Capture the exact head in all browsers
         run: |

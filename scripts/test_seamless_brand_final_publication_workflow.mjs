@@ -15,7 +15,7 @@ pass("checks out the resolved PR head", /ref: \$\{\{ needs\.resolve-pr-head\.out
 pass("records event and checkout provenance", /WORKFLOW_EVENT_SHA/.test(workflow) && /CHECKOUT_TREE_SHA/.test(workflow));
 pass("uses a head-scoped concurrency group", /concurrency:[\s\S]*pr344-seamless-brand-owner-review/.test(workflow) && /cancel-in-progress: true/.test(workflow));
 pass("runs all three pinned Playwright browsers", /playwright install --with-deps chromium firefox webkit/.test(workflow) && /for browser in firefox webkit/.test(workflow));
-pass("runs tooling gates before capture", before("Run deterministic tooling gates", "Capture the exact head in all browsers"));
+pass("runs browser tooling gates before capture", before("Run browser tooling gates", "Capture the exact head in all browsers"));
 pass("runs final evidence and package validators", /validate_seamless_brand_final_evidence_inputs\.py/.test(workflow) && /validate_seamless_brand_final_owner_review\.py/.test(workflow));
 pass("generates the exact-head package", /generate_seamless_brand_final_owner_review\.py/.test(workflow) && /--pr-head \"\$PR_HEAD_SHA\"/.test(workflow));
 pass("gates final upload on successful validation", before("Validate final package", "Upload final owner-review envelope") && !/continue-on-error:\s*true/.test(workflow));
