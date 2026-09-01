@@ -1,0 +1,420 @@
+{
+  "baseline_owned_roots": [
+    "docs/architecture/cache-media/",
+    "backend/tests/cache_media/",
+    "scripts/cache_media/"
+  ],
+  "changed_path_count": 100,
+  "overlap_result": "NO_BASELINE_EDIT_OVERLAP",
+  "paths": [
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": ".github/workflows/dark-premium-public-owner-review.yml"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": ".github/workflows/public-pages-owner-review.yml"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": ".github/workflows/seamless-brand-owner-review.yml"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/architecture/dark-premium-public-system-v1.md"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/architecture/primary-visual-owner-asset-gaps.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/brand-lockup-placement-inventory.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/brand-lockup-placement-inventory.md"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/final-ci-sanitized-fixture-root-cause.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/final-ci-sanitized-fixture-root-cause.md"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/full-chromium-production-hash-authority-before.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/full-chromium-production-hash-authority-before.md"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/full-chromium-production-hash-call-site-audit.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/library-filter-focus-hash-change.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/seamless-brand-cross-browser-shell-matrix.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/seamless-brand-route-inventory.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/seamless-brand-route-inventory.md"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/seamless-brand-state-manifest.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/visual-fixture-deployment-isolation.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/webkit-article-mobile-capture-type-diffs.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/webkit-article-mobile-diagnostic-inventory.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/webkit-article-mobile-hydration-timeline.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/webkit-article-mobile-layout-font-timeline.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/webkit-article-mobile-root-cause.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/webkit-article-mobile-root-cause.md"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/webkit-article-mobile-scroll-capture-trace.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/design-system/webkit-article-mobile-stability-carry-forward.json"
+    },
+    {
+      "classification": "DOCUMENTATION_ONLY_NON_OVERLAPPING_PATH_REQUIRED",
+      "path": "docs/product/public-cta-contract.json"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/api/_lib/render-branded-status-page.js"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/api/not-found.js"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/api/removed-content.js"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/components/EarnalismBrandLockup.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/components/Footer.jsx"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/components/Header.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/components/Header.navigation.test.js"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/components/ReferencePublicPages.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/components/ReferencePublicPages.jsx"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/components/ReferencePublicPages.test.jsx"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/data/publicEvidenceSnapshot.json"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/design-system/pages.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/design-system/tokens.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/editorialSupportRouteContract.test.js"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/experiences-v2/listener/listener-v2.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/experiences-v2/reader/reader-v2.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/experiences-v2/shared/experiences-v2.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/lib/darkPremiumPublicSystem.test.js"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/pages/NotFound.jsx"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/statusPageHandlers.test.js"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/styles/auth-account.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UI_OR_WORKFLOW_SURFACE",
+      "path": "frontend/src/styles/editorial-support.css"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_OWNER_POLICY_SURFACE",
+      "path": "internal/earnalism_intelligence/sprint_learnings.md"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_OWNER_POLICY_SURFACE",
+      "path": "internal/earnalism_intelligence/ux_governor/owner_approval.json"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_OWNER_POLICY_SURFACE",
+      "path": "internal/earnalism_intelligence/ux_governor/ux_decision_ledger.jsonl"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/audit_seamless_brand_placements.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/capture_dark_premium_public_review.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/capture_exact_primary_owner_review.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/capture_p0_header_readability.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/capture_seamless_brand_owner_review.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/generate_dark_premium_public_owner_review.py"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/generate_exact_primary_owner_review.py"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/generate_p0_header_owner_review.py"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/generate_seamless_brand_cross_browser_shell_summary.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/generate_seamless_brand_final_evidence_inputs.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/generate_seamless_brand_final_owner_review.py"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/generate_seamless_brand_owner_review.py"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/lib/seamless_brand_one_state_capture.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/lib/seamless_brand_state_manifest.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/run_seamless_brand_article_stability_gate.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/serve_frontend_build.js"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_capture_exact_primary_owner_review_mobile_menu.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_library_filter_focus_trap_cross_browser.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_reader_mobile_high_zoom_reflow.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_article_stability_gate.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_auth_private_batch.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_core_zoom_batch.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_cross_browser_shell_matrix.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_editorial_campaign_batch.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_error_experience_batch.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_experience_footer_zoom_batch.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_final_evidence_inputs.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_final_owner_review.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_final_publication_workflow.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_full_chromium_matrix.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_interaction_batch.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_manifest_cli.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_one_state_capture.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_owner_review.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_public_shell_batch.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_seamless_brand_representative_capture.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/test_webkit_article_mobile_stability.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/validate_seamless_brand_final_evidence_inputs.py"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/validate_seamless_brand_final_owner_review.py"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/validate_seamless_brand_owner_review.py"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/verify_exact_primary_cross_browser.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/verify_seamless_brand_review_fixture_build.mjs"
+    },
+    {
+      "classification": "PROHIBITED_SHARED_SCRIPT_SURFACE",
+      "path": "scripts/verify_status_page_cross_browser.mjs"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UAT_SURFACE",
+      "path": "uat/evidence/seamless-brand-reader-high-zoom/contrast-overflow.log"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UAT_SURFACE",
+      "path": "uat/evidence/seamless-brand-reader-high-zoom/reader-high-zoom-controls-after.json"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UAT_SURFACE",
+      "path": "uat/evidence/seamless-brand-reader-high-zoom/reader-high-zoom-controls-after.md"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UAT_SURFACE",
+      "path": "uat/evidence/seamless-brand-reader-high-zoom/reader-high-zoom-controls-before.json"
+    },
+    {
+      "classification": "PROHIBITED_ACTIVE_UAT_SURFACE",
+      "path": "uat/evidence/seamless-brand-reader-high-zoom/reader-high-zoom-controls-before.md"
+    }
+  ],
+  "pr": {
+    "base_ref": "main",
+    "head_ref": "codex/main-approved-integration",
+    "head_sha": "710ef79787b7925f0e100e667f45fdf960295e88",
+    "is_draft": false,
+    "number": 344,
+    "state": "OPEN"
+  },
+  "schema_version": "cache-media-pr-overlap-map.v1"
+}

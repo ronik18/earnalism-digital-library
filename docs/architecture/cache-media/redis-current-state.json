@@ -1,0 +1,98 @@
+{
+  "findings": {
+    "binary_rejection": "bytes, streams, response objects, upload files, and media data URIs are rejected",
+    "corrupt_value": "decode errors miss/fall back but do not delete corrupt entry",
+    "duplicate_pools": "NOT_FOUND_IN_REPOSITORY_SOURCE",
+    "invalidation": "generation and targeted delete exist; completeness needs mutation-by-mutation implementation audit",
+    "max_value_guard": "ABSENT",
+    "required_for_correctness": "PARTIAL: multi-replica or fail-fast mode aborts startup without Redis; otherwise cache/rate-limit fallbacks continue",
+    "stampede": "POSSIBLE: no cache singleflight lock",
+    "tenant_collision": "LOWERED_BY_USER_ID_AND_DIGESTS_BUT_NO_UNIFORM_KEY_VERSION_SCHEMA",
+    "unsafe_codec": "PICKLE_PRESENT"
+  },
+  "schema_version": "cache-media-redis-current-state.v1",
+  "shared_client": {
+    "construction": "initialize_replica_state_backends uses redis.asyncio.from_url and module-global _redis_client",
+    "evidence": "backend/server.py:1367-1406",
+    "result": "ONE_PROCESS_SHARED_ASYNC_CLIENT",
+    "retry_on_timeout": true,
+    "timeouts_seconds": {
+      "connect": 2,
+      "socket": 2
+    }
+  },
+  "use_cases": [
+    {
+      "codec": "pickle, zlib above 4096 bytes",
+      "concern": "unsafe pickle and no max serialized-value guard",
+      "evidence": "backend/server.py:1508-1969",
+      "fallback": "per-process OrderedDict",
+      "identity": "public",
+      "invalidation": "generation increment",
+      "key": "<prefix>:public-cache:<generation>:<sha256>",
+      "name": "public catalog",
+      "ttl_seconds": 300,
+      "value": "Python object"
+    },
+    {
+      "codec": "pickle/zlib",
+      "concern": "no singleflight",
+      "evidence": "backend/server.py:2127-2185, 2880-2971",
+      "fallback": "database/controlled artifact",
+      "identity": "public versus admin embedded in logical key",
+      "invalidation": "reader-content generation",
+      "key": "digest of versioned logical key",
+      "name": "reader access/chapter/manifest",
+      "ttl_seconds": "900/3600/1800",
+      "value": "metadata or rendered chapter HTML"
+    },
+    {
+      "codec": "pickle/zlib for dicts; integer for wallet",
+      "concern": "keys rely on opaque ids and no explicit key schema version",
+      "evidence": "backend/server.py:1999-2124",
+      "fallback": "MongoDB",
+      "identity": "user and session id",
+      "invalidation": "_invalidate_user_cache",
+      "key": "<prefix>:user*:<id>",
+      "name": "user, session, wallet",
+      "ttl_seconds": "20/20/8",
+      "value": "user/session dict or integer"
+    },
+    {
+      "codec": "pickle/zlib",
+      "concern": "stale financial metadata if a mutation path misses invalidation",
+      "evidence": "backend/server.py:7888-7892, 10728-10732",
+      "fallback": "MongoDB",
+      "identity": "user id",
+      "invalidation": "wallet/payment mutation calls",
+      "key": "digest user-private logical key",
+      "name": "payments and transactions",
+      "ttl_seconds": "15/20",
+      "value": "list"
+    },
+    {
+      "codec": "Redis native",
+      "concern": "fallback is per-replica",
+      "evidence": "backend/server.py:4896-4996",
+      "fallback": "per-process buckets",
+      "identity": "request identity and path scope",
+      "invalidation": "expiry",
+      "key": "<prefix>:rate-limit:*",
+      "name": "rate limits",
+      "ttl_seconds": 120,
+      "value": "sorted-set timestamps"
+    },
+    {
+      "codec": "Redis native",
+      "concern": "cross-replica coordination unavailable without Redis",
+      "evidence": "backend/server.py:4109-4355",
+      "fallback": "local behavior when Redis unavailable",
+      "identity": "process coordination",
+      "invalidation": "compare-and-delete release",
+      "key": "<prefix>:startup-maintenance:*",
+      "name": "startup lock",
+      "ttl_seconds": 180,
+      "value": "token"
+    }
+  ]
+}

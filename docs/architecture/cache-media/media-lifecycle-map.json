@@ -1,0 +1,42 @@
+{
+  "audio": {
+    "authorization": "reader audio endpoints authorize an active Reading Pass lease before asset lookup",
+    "browser_route": "/api/reader/book/{slug}/audiobook or package segment route",
+    "cancellation": "iterator finally closes B2 body; direct client disconnect handling is not explicit",
+    "classification": "PROTECTED_B2_PROXY_STREAM_WITH_FAIL_CLOSED_RELEASE_GATE",
+    "conditional": "ETag and 304 supported; Last-Modified not set",
+    "delivery": "B2 object HEAD/GET through StreamingResponse; 1 MiB generator reads; raw B2 URL fails closed when store config is unmatched",
+    "evidence": [
+      "backend/server.py:8217-8675",
+      "backend/server.py:8688-8939",
+      "backend/tests/test_zero_public_audio_contract.py"
+    ],
+    "headers": {
+      "accept_ranges": "bytes",
+      "cache_control": "private max-age 600 for mp3; 3600 for sidecars",
+      "content_disposition": "not set"
+    },
+    "memory": "not complete-file buffered in application code; synchronous boto3 read may block event loop",
+    "metadata": "controlled publication artifact and MongoDB; reader manifest deliberately contains no playable URL",
+    "range": "GET and HEAD; single range including suffix; 206 and 416 supported",
+    "storage": "configured B2 S3-compatible stores; Cloudinary remains relevant to cover images"
+  },
+  "images": {
+    "classification": "CLOUDINARY_CDN_DIRECT_IMAGE_URLS",
+    "evidence": [
+      "backend/config/cloudinary.py",
+      "backend/server.py:6786-7587"
+    ],
+    "scope": "covers only; no change proposed"
+  },
+  "pdf": {
+    "classification": "EXISTING_INTERNAL_OR_REPORT_PDF_ONLY",
+    "evidence": [
+      "backend/source_ingestion.py:333-334",
+      "scripts/bulk_publishing_pipeline.py:171-198",
+      "scripts/prepare_technical_book.py"
+    ],
+    "finding": "No customer PDF route, object-storage delivery endpoint, or frontend viewer was found. PDFs are generated reports/export tooling and a scanned-PDF ingestion placeholder."
+  },
+  "schema_version": "cache-media-media-lifecycle.v1"
+}

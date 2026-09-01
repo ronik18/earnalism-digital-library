@@ -1,0 +1,53 @@
+{
+  "events": [
+    {
+      "authority": "admin book mutation routes",
+      "current": "_public_cache_clear generation increment on observed catalog mutations",
+      "event": "book create/update/delete/publication/rights/cover/audio release",
+      "evidence": "backend/server.py:5880-6262, 6903, 7600",
+      "future": "resource-version key plus precise catalog/manifest invalidation",
+      "gap": "route-by-route proof and audio-object replacement invalidation needs extraction"
+    },
+    {
+      "authority": "admin chapter mutation routes",
+      "current": "public generation invalidation present around admin mutations; reader-content generation exists",
+      "event": "chapter create/update/delete/reorder",
+      "evidence": "backend/server.py:6703-6766, 1963-1969",
+      "future": "versioned chapter and manifest keys",
+      "gap": "precise per-slug/chapter invalidation not uniformly demonstrated"
+    },
+    {
+      "authority": "login/refresh/logout/admin status",
+      "current": "_invalidate_user_cache deletes user, wallet, session, transaction, and payment keys",
+      "event": "session revocation/account permission",
+      "evidence": "backend/server.py:944-1122, 2115-2124, 10308-10327",
+      "future": "event-linked session key delete",
+      "gap": "multi-device path needs regression coverage"
+    },
+    {
+      "authority": "payments and wallet routes",
+      "current": "_invalidate_user_cache after observed writes",
+      "event": "wallet/payment transaction",
+      "evidence": "backend/server.py:10439-10674",
+      "future": "user-scoped cache version or deletes",
+      "gap": "webhook/reconcile coverage should be enumerated before cache extraction"
+    },
+    {
+      "authority": "reading-pass admin/session routes",
+      "current": "user invalidation on session changes; no dedicated entitlement cache discovered",
+      "event": "Reading Pass configuration",
+      "evidence": "backend/server.py:9419-9563",
+      "future": "entitlement versioning",
+      "gap": "policy configuration cache semantics undocumented"
+    },
+    {
+      "authority": "no active customer route",
+      "current": "not applicable",
+      "event": "PDF replacement",
+      "evidence": "media-lifecycle-map.json",
+      "future": "define only if PDF product is approved",
+      "gap": "no product contract"
+    }
+  ],
+  "schema_version": "cache-media-invalidation-event-map.v1"
+}

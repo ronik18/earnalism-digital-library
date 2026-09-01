@@ -1,0 +1,61 @@
+{
+  "backend": {
+    "async_sync_boundaries": "FastAPI async handlers call synchronous boto3 body reads through a generator",
+    "command": "backend/start_prod.sh via backend/Dockerfile and backend/Procfile",
+    "entrypoint": "backend/server.py:api",
+    "evidence": [
+      "backend/Dockerfile",
+      "backend/Procfile",
+      "backend/server.py:4356"
+    ],
+    "framework": "FastAPI 0.110.1",
+    "health": "/healthz",
+    "process_model": "Uvicorn process configured by start_prod.sh; worker count requires runtime evidence",
+    "python": "3.11",
+    "requirements_authorities": [
+      "backend/requirements-runtime.txt",
+      "backend/requirements.txt"
+    ],
+    "shutdown": "lifespan plus SIGTERM drain marker"
+  },
+  "ci_cd": {
+    "backend_canary": ".github/workflows/railway-deployment-canary.yml",
+    "backend_contract": ".github/workflows/backend-container-contract.yml",
+    "branch_protection": "not discoverable from repository files",
+    "post_deploy_load_workflow": ".github/workflows/post-deploy-k6.yml",
+    "preview": "frontend Vercel deployment is conditional on credentials and changed frontend files",
+    "regression_and_frontend_deploy": ".github/workflows/regression.yml"
+  },
+  "frontend": {
+    "build": "npm run build",
+    "deployment": "frontend/vercel.json and .github/workflows/regression.yml",
+    "evidence": [
+      "frontend/package.json",
+      "frontend/vercel.json",
+      ".github/workflows/regression.yml"
+    ],
+    "framework": "React ^19.0.0 with CRACO ^7.1.0 / react-scripts 5.0.1",
+    "package_manager": "npm lockfile"
+  },
+  "origin_main_sha": "090afdd4b84eecc5ca40b7576ce54000305df837",
+  "railway": {
+    "autoscaling": "README describes Railway Pro + Redis + Judoscale, but active runtime authority is unavailable",
+    "builder": "DOCKERFILE",
+    "checked_in_authority": "backend/railway.json",
+    "checked_in_region": "sfo with one replica",
+    "evidence": [
+      "backend/railway.json",
+      "backend/Dockerfile",
+      "README.md",
+      "railway status (read-only)"
+    ],
+    "healthcheck": "/healthz",
+    "production_state": "READ_ONLY_PRODUCTION_METRICS_UNAVAILABLE: Railway CLI has no linked project",
+    "rollback": "provider deployment history not accessible from this checkout",
+    "start_command": "sh ./start_prod.sh",
+    "watch_patterns": [
+      "/backend/**"
+    ]
+  },
+  "schema_version": "cache-media-repository-discovery.v1"
+}

@@ -1,0 +1,80 @@
+{
+  "leakage_risks": [
+    "No uniform cache-key schema version could make future migrations ambiguous.",
+    "Raw non-B2 asset URL redirects exist; controlled B2 assets fail closed but future provider allowlisting should be explicit.",
+    "Stale authorization/cache metadata is constrained by short user TTLs but requires event coverage proof before expansion."
+  ],
+  "routes": [
+    {
+      "authority": "controlled artifacts/Mongo",
+      "class": "public",
+      "evidence": "backend/server.py:5275-5879",
+      "method": "GET",
+      "mutation": false,
+      "range": "none",
+      "redis": "public cache",
+      "route": "/api/home, /api/books, /api/books/{slug}",
+      "storage": "cover URLs only"
+    },
+    {
+      "authority": "controlled artifacts/Mongo",
+      "class": "public reader metadata/content",
+      "evidence": "backend/server.py:2127-2185, 2880-2971, 5700-5799",
+      "method": "GET",
+      "mutation": false,
+      "range": "none",
+      "redis": "reader manifest/content cache",
+      "route": "/api/reader/book/{slug}/manifest and chapters",
+      "storage": "none"
+    },
+    {
+      "authority": "approved audiobook evidence + B2",
+      "class": "protected",
+      "evidence": "backend/server.py:8431-8939; backend/tests/test_zero_public_audio_contract.py",
+      "identity": "Reading Pass principal/lease",
+      "method": "GET, HEAD",
+      "mutation": false,
+      "range": "single bytes range",
+      "redis": "manifest metadata cache",
+      "route": "/api/reader/book/{slug}/audiobook and package segments",
+      "storage": "B2 object metadata/body"
+    },
+    {
+      "authority": "Mongo ledger/session",
+      "class": "protected",
+      "evidence": "backend/server.py:9391-9600",
+      "identity": "session/device/user",
+      "method": "GET, POST, PUT, DELETE",
+      "mutation": true,
+      "range": "audio authorization only",
+      "redis": "user/session/wallet cache",
+      "route": "/api/reading-pass/*",
+      "storage": "none"
+    },
+    {
+      "authority": "Mongo and controlled artifacts",
+      "class": "admin",
+      "evidence": "backend/server.py:5880-7600",
+      "identity": "admin JWT/session",
+      "method": "POST, PUT, PATCH, DELETE",
+      "mutation": true,
+      "range": "none",
+      "redis": "public generation invalidation",
+      "route": "/api/admin/books/*",
+      "storage": "Cloudinary/B2 admin upload paths"
+    },
+    {
+      "authority": "Mongo ledger",
+      "class": "protected/admin/webhook",
+      "evidence": "backend/server.py:10145-10791",
+      "identity": "user/admin/provider signature",
+      "method": "GET, POST",
+      "mutation": true,
+      "range": "none",
+      "redis": "wallet/payment state cache",
+      "route": "/api/payments/* and wallet admin",
+      "storage": "none"
+    }
+  ],
+  "schema_version": "cache-media-request-authorization-map.v1"
+}

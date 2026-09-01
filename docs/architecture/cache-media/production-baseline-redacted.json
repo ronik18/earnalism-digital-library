@@ -1,0 +1,35 @@
+{
+  "available": [
+    {
+      "live": false,
+      "metric": "checked-in Railway contract",
+      "source": "backend/railway.json",
+      "value": "Dockerfile builder; sfo/1 replica in config"
+    }
+  ],
+  "classification": "READ_ONLY_PRODUCTION_METRICS_UNAVAILABLE",
+  "schema_version": "cache-media-production-baseline-redacted.v1",
+  "unavailable": [
+    {
+      "implementation_dependency": false,
+      "metric": "deployed backend SHA, service health, region, replicas, CPU/RSS, latency, 5xx",
+      "owner_login_required": true,
+      "read_only_action": "authorized Railway project service/deployment/metrics view",
+      "reason": "Railway CLI returned no linked project"
+    },
+    {
+      "implementation_dependency": true,
+      "metric": "Redis INFO, DBSIZE, config, hit/miss, evictions",
+      "owner_login_required": true,
+      "read_only_action": "authorized PING/INFO/DBSIZE/CONFIG GET through approved layer",
+      "reason": "no repository-sanctioned live Redis connection was available"
+    },
+    {
+      "implementation_dependency": true,
+      "metric": "object count/size/MIME/ETag distribution",
+      "owner_login_required": true,
+      "read_only_action": "authorized bounded HEAD/listing metadata report",
+      "reason": "no safe object-store metadata authorization available"
+    }
+  ]
+}
