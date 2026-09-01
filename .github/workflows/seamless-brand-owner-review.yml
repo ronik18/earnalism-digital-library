@@ -137,9 +137,12 @@ jobs:
       - name: Build exact workflow head and verify static SEO
         run: |
           set -euo pipefail
+          cp frontend/public/sitemap.xml "$RUNNER_TEMP/source-sitemap.xml"
           npm --prefix frontend run build | tee "$RUNNER_TEMP/frontend-build.log"
           test "$(sha256sum frontend/public/assets/brand/earnalism-brand-lockup.png | awk '{print $1}')" = "$CANONICAL_LOGO_SHA"
           test "$(sha256sum frontend/build/assets/brand/earnalism-brand-lockup.png | awk '{print $1}')" = "$CANONICAL_LOGO_SHA"
+          # The static generator refreshes this checked-in sitemap's calendar date; retain the built output and restore only the exact source byte stream.
+          cp "$RUNNER_TEMP/source-sitemap.xml" frontend/public/sitemap.xml
           git diff --exit-code
           sha256sum "$RUNNER_TEMP/frontend-build.log" > "$RUNNER_TEMP/frontend-build.log.sha256"
 

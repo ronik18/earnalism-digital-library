@@ -17,6 +17,7 @@ pass("uses a head-scoped concurrency group", /concurrency:[\s\S]*pr344-seamless-
 pass("runs all three pinned Playwright browsers", /playwright install --with-deps chromium firefox webkit/.test(workflow) && /for browser in firefox webkit/.test(workflow));
 pass("runs browser tooling gates before capture", before("Run browser tooling gates", "Capture the exact head in all browsers"));
 pass("runs final evidence and package validators", /validate_seamless_brand_final_evidence_inputs\.py/.test(workflow) && /validate_seamless_brand_final_owner_review\.py/.test(workflow));
+pass("restores the known generated sitemap before the clean-tree assertion", /source-sitemap\.xml/.test(workflow) && before("cp \"$RUNNER_TEMP/source-sitemap.xml\" frontend/public/sitemap.xml", "git diff --exit-code"));
 pass("generates the exact-head package", /generate_seamless_brand_final_owner_review\.py/.test(workflow) && /--pr-head \"\$PR_HEAD_SHA\"/.test(workflow));
 pass("gates final upload on successful validation", before("Validate final package", "Upload final owner-review envelope") && !/continue-on-error:\s*true/.test(workflow));
 pass("uses full-head final artifact naming", /pr344-seamless-brand-final-review-\$\{PR_HEAD_SHA\}/.test(workflow));
