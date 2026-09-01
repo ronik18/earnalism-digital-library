@@ -212,7 +212,7 @@ function canonicalPathname(url) {
   return pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
 }
 
-async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup, requestedTypes = undefined) {
+async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup, requestedTypes = undefined, browserName = "chromium") {
   const files = {};
   const attemptDirectory = path.join(stateDirectory, "attempts", label);
   fs.mkdirSync(attemptDirectory, { recursive: true });
@@ -225,7 +225,9 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
   try {
     if (capture.viewport && (!requestedTypes || requestedTypes.has("viewport"))) await write("viewport.png", async (target) => {
       const clip = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }));
-      await page.screenshot({ path: target, clip, animations: "disabled", caret: "hide", scale: "css" });
+      const stabilization = browserName === "webkit" ? await page.addStyleTag({ content: '[data-testid="site-header"], header.experience-header, header[data-testid="status-brand-masthead"] { position: static !important; }' }) : undefined;
+      try { await page.screenshot({ path: target, clip, animations: "disabled", caret: "hide", scale: "css" }); }
+      finally { await stabilization?.evaluate((node) => node.remove()).catch(() => {}); }
     });
     if (capture.full_page && (!requestedTypes || requestedTypes.has("full_page"))) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
     if (capture.brand_close_up && (!requestedTypes || requestedTypes.has("brand_close_up"))) await write("brand-close-up.png", (target) => lockup.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
@@ -250,15 +252,15 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
   return files;
 }
 
-async function captureStableScreenshots(page, stateDirectory, capture, header, lockup) {
+async function captureStableScreenshots(page, stateDirectory, capture, header, lockup, browserName) {
   const types = ["viewport", "full_page", "brand_close_up", "parent_surface_close_up"].filter((type) => capture[type]);
   let stable = false; const stabilityAttempts = []; let finalFiles = {};
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     const first = {}; const second = {};
     for (const type of types) {
-      Object.assign(first, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-first`, header, lockup, new Set([type])));
+      Object.assign(first, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-first`, header, lockup, new Set([type]), browserName));
       await page.waitForTimeout(500);
-      Object.assign(second, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-second`, header, lockup, new Set([type])));
+      Object.assign(second, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-second`, header, lockup, new Set([type]), browserName));
     }
     const matches = stableHashSet(first, second);
     stabilityAttempts.push({ attempt, stable: matches, first: Object.fromEntries(Object.entries(first).map(([name, file]) => [name, file.sha256])), second: Object.fromEntries(Object.entries(second).map(([name, file]) => [name, file.sha256])) });
@@ -326,7 +328,7 @@ async function runOneStateCapture(options) {
   if (await header.count() !== 1) throw new Error(`State ${state.id}: expected exactly one visible public header; received ${await header.count()}.`);
   const lockup = header.locator('[data-testid="earnalism-brand-lockup"]:visible');
   if (await lockup.count() !== 1) throw new Error(`State ${state.id}: expected exactly one visible canonical lockup; received ${await lockup.count()}.`);
-  const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, header, lockup);
+  const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, header, lockup, options.browser);
   const data = await page.evaluate((statusFixture) => {
     const visible = (node) => { if (!node) return false; const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
     const headers = [...document.querySelectorAll('[data-testid="site-header"]')].filter(visible);
@@ -585,7 +587,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   const interactionSession = await beginInteraction(page, state);
   const captureSurface = interactionSession.capture_surface || header;
   const captureLockup = interactionSession.capture_lockup || lockup;
-  const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, captureSurface, captureLockup);
+  const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, captureSurface, captureLockup, browserName);
   const interactionResult = await interactionSession.finalize();
   const fontResults = await page.evaluate(async (fontSpecs) => {
     await document.fonts.ready;
@@ -734,7 +736,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   if (state.introduced_in === "experience-footer-zoom-2c2b" && (Math.abs(zoomResults.requested_zoom_percent - zoomResults.effective_zoom_percent) > 0.01 || zoomResults.logo_control_overlap_area !== 0 || zoomResults.clipped_control_count !== 0)) defects.push("experience-footer-zoom-geometry-contract");
   if (interactionResult?.failures?.length) defects.push(...interactionResult.failures);
   const safetyResults = { reader: { ...data.reader, production_reader_api_called: false }, listener: { ...data.listener, production_listener_api_called: false }, production_api_call_count: 0, production_mutation_count: mutationCount, footer: interactionResult?.kind === "scroll-to-footer" ? interactionResult.geometry : undefined };
-  const metadata = { source_head: gitReference("rev-parse", "HEAD"), tree_sha: gitReference("rev-parse", "HEAD^{tree}"), state_id: state.id, route: state.route, route_classification: routeRecord?.classification || "CONTROLLED_APPROVED_LISTENER", initial_url: fixtureUrl(baseUrl, state), final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: browserName, browser_version: browser.version(), context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, ...data, font_results: fontResults, http_error_responses: httpErrorResponses, unclassified_http_error_responses: unclassifiedHttpErrors, zoom_results: zoomResults, interaction_result: interactionResult, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, status_contract: statusContract, production_mutation_count: mutationCount, production_api_call_count: 0, intercepted_api_request_count: apiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
+  const metadata = { source_head: gitReference("rev-parse", "HEAD"), tree_sha: gitReference("rev-parse", "HEAD^{tree}"), state_id: state.id, route: state.route, route_classification: routeRecord?.classification || "CONTROLLED_APPROVED_LISTENER", initial_url: fixtureUrl(baseUrl, state), final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: browserName, browser_version: browser.version(), screenshot_stabilization: browserName === "webkit" ? "temporary-static-header-during-viewport-rasterization" : "none", context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, ...data, font_results: fontResults, http_error_responses: httpErrorResponses, unclassified_http_error_responses: unclassifiedHttpErrors, zoom_results: zoomResults, interaction_result: interactionResult, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, status_contract: statusContract, production_mutation_count: mutationCount, production_api_call_count: 0, intercepted_api_request_count: apiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
   fs.writeFileSync(path.join(stateDirectory, "metadata.json"), JSON.stringify(metadata, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "console-errors.json"), JSON.stringify(consoleErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "page-errors.json"), JSON.stringify(pageErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "failed-requests.json"), JSON.stringify(failedRequests, null, 2) + "\n");
   if (interactionResult) { fs.writeFileSync(path.join(stateDirectory, "interaction-results.json"), JSON.stringify(interactionResult, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "geometry-results.json"), JSON.stringify(interactionResult.geometry || {}, null, 2) + "\n"); }
   fs.writeFileSync(path.join(stateDirectory, "zoom-results.json"), JSON.stringify(zoomResults, null, 2) + "\n");
