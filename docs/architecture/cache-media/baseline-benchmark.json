@@ -1,0 +1,451 @@
+{
+  "audio_cases": [
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 1,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.007958,
+        "p50": 0.007958,
+        "p95": 0.007958
+      },
+      "request": "full",
+      "response_bytes": 4096,
+      "status_codes": [
+        200
+      ],
+      "upstream_bytes_read": 4096
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 5,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.004792,
+        "p50": 0.002833,
+        "p95": 0.004792
+      },
+      "request": "full",
+      "response_bytes": 4096,
+      "status_codes": [
+        200
+      ],
+      "upstream_bytes_read": 4096
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 20,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.002542,
+        "p50": 0.001458,
+        "p95": 0.002375
+      },
+      "request": "full",
+      "response_bytes": 4096,
+      "status_codes": [
+        200
+      ],
+      "upstream_bytes_read": 4096
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 1,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.08325,
+        "p50": 0.08325,
+        "p95": 0.08325
+      },
+      "request": "bytes=0-1023",
+      "response_bytes": 1024,
+      "status_codes": [
+        206
+      ],
+      "upstream_bytes_read": 1024
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 5,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.012875,
+        "p50": 0.005625,
+        "p95": 0.012875
+      },
+      "request": "bytes=0-1023",
+      "response_bytes": 1024,
+      "status_codes": [
+        206
+      ],
+      "upstream_bytes_read": 1024
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 20,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.0145,
+        "p50": 0.003917,
+        "p95": 0.008333
+      },
+      "request": "bytes=0-1023",
+      "response_bytes": 1024,
+      "status_codes": [
+        206
+      ],
+      "upstream_bytes_read": 1024
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 1,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.003458,
+        "p50": 0.003458,
+        "p95": 0.003458
+      },
+      "request": "bytes=4194304-4195327",
+      "response_bytes": 0,
+      "status_codes": [
+        416
+      ],
+      "upstream_bytes_read": 0
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 5,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.004292,
+        "p50": 0.002042,
+        "p95": 0.004292
+      },
+      "request": "bytes=4194304-4195327",
+      "response_bytes": 0,
+      "status_codes": [
+        416
+      ],
+      "upstream_bytes_read": 0
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 20,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.00425,
+        "p50": 0.001625,
+        "p95": 0.0035
+      },
+      "request": "bytes=4194304-4195327",
+      "response_bytes": 0,
+      "status_codes": [
+        416
+      ],
+      "upstream_bytes_read": 0
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 1,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.002333,
+        "p50": 0.002333,
+        "p95": 0.002333
+      },
+      "request": "bytes=999999999-",
+      "response_bytes": 0,
+      "status_codes": [
+        416
+      ],
+      "upstream_bytes_read": 0
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 5,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.00425,
+        "p50": 0.001833,
+        "p95": 0.00425
+      },
+      "request": "bytes=999999999-",
+      "response_bytes": 0,
+      "status_codes": [
+        416
+      ],
+      "upstream_bytes_read": 0
+    },
+    {
+      "application_bytes_buffered": 4096,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 20,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 4096,
+      "latency_ms": {
+        "max": 0.003542,
+        "p50": 0.001416,
+        "p95": 0.002209
+      },
+      "request": "bytes=999999999-",
+      "response_bytes": 0,
+      "status_codes": [
+        416
+      ],
+      "upstream_bytes_read": 0
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 1,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.431292,
+        "p50": 0.431292,
+        "p95": 0.431292
+      },
+      "request": "full",
+      "response_bytes": 8388608,
+      "status_codes": [
+        200
+      ],
+      "upstream_bytes_read": 8388608
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 5,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.2185,
+        "p50": 0.210958,
+        "p95": 0.2185
+      },
+      "request": "full",
+      "response_bytes": 8388608,
+      "status_codes": [
+        200
+      ],
+      "upstream_bytes_read": 8388608
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 20,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.222292,
+        "p50": 0.217458,
+        "p95": 0.219416
+      },
+      "request": "full",
+      "response_bytes": 8388608,
+      "status_codes": [
+        200
+      ],
+      "upstream_bytes_read": 8388608
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 1,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.008417,
+        "p50": 0.008417,
+        "p95": 0.008417
+      },
+      "request": "bytes=0-1023",
+      "response_bytes": 1024,
+      "status_codes": [
+        206
+      ],
+      "upstream_bytes_read": 1024
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 5,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.008875,
+        "p50": 0.005125,
+        "p95": 0.008875
+      },
+      "request": "bytes=0-1023",
+      "response_bytes": 1024,
+      "status_codes": [
+        206
+      ],
+      "upstream_bytes_read": 1024
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 20,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.00825,
+        "p50": 0.00375,
+        "p95": 0.005625
+      },
+      "request": "bytes=0-1023",
+      "response_bytes": 1024,
+      "status_codes": [
+        206
+      ],
+      "upstream_bytes_read": 1024
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 1,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.00575,
+        "p50": 0.00575,
+        "p95": 0.00575
+      },
+      "request": "bytes=4194304-4195327",
+      "response_bytes": 1024,
+      "status_codes": [
+        206
+      ],
+      "upstream_bytes_read": 1024
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 5,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.007625,
+        "p50": 0.004916,
+        "p95": 0.007625
+      },
+      "request": "bytes=4194304-4195327",
+      "response_bytes": 1024,
+      "status_codes": [
+        206
+      ],
+      "upstream_bytes_read": 1024
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 20,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.008208,
+        "p50": 0.004125,
+        "p95": 0.006
+      },
+      "request": "bytes=4194304-4195327",
+      "response_bytes": 1024,
+      "status_codes": [
+        206
+      ],
+      "upstream_bytes_read": 1024
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 1,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.0025,
+        "p50": 0.0025,
+        "p95": 0.0025
+      },
+      "request": "bytes=999999999-",
+      "response_bytes": 0,
+      "status_codes": [
+        416
+      ],
+      "upstream_bytes_read": 0
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 5,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.00325,
+        "p50": 0.00175,
+        "p95": 0.00325
+      },
+      "request": "bytes=999999999-",
+      "response_bytes": 0,
+      "status_codes": [
+        416
+      ],
+      "upstream_bytes_read": 0
+    },
+    {
+      "application_bytes_buffered": 1048576,
+      "cancellation_behavior": "NOT_EXERCISED_BY_SYNTHETIC_ITERATOR",
+      "concurrency": 20,
+      "event_loop_indicator": "NOT_MEASURED: helper is synchronous generator used by StreamingResponse",
+      "fixture_bytes": 8388608,
+      "latency_ms": {
+        "max": 0.003209,
+        "p50": 0.001458,
+        "p95": 0.002125
+      },
+      "request": "bytes=999999999-",
+      "response_bytes": 0,
+      "status_codes": [
+        416
+      ],
+      "upstream_bytes_read": 0
+    }
+  ],
+  "classification": "LOCAL_SYNTHETIC_BASELINE_ONLY",
+  "pdf": {
+    "reason": "No active customer PDF delivery route discovered.",
+    "status": "NOT_APPLICABLE"
+  },
+  "redis_cache": {
+    "reason": "No local Redis service or production Redis access was used.",
+    "status": "NOT_BENCHMARKED"
+  },
+  "rss_bytes": {
+    "before": 68648960,
+    "note": "platform high-water mark when available",
+    "peak_or_after": 79462400
+  },
+  "schema_version": "cache-media-local-baseline.v1"
+}
