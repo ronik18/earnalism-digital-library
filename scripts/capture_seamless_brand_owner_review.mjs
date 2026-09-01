@@ -224,8 +224,9 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
   };
   try {
     if (capture.viewport && (!requestedTypes || requestedTypes.has("viewport"))) await write("viewport.png", async (target) => {
-      const webkitCapture = browserName === "webkit";
-      const clip = webkitCapture ? await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight })) : undefined;
+      const initialClip = browserName === "webkit" ? await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight })) : undefined;
+      const webkitCapture = Boolean(initialClip && Math.abs(initialClip.y) <= 1);
+      const clip = webkitCapture ? initialClip : undefined;
       const stabilization = webkitCapture ? await page.addStyleTag({ content: '[data-testid="site-header"], header.experience-header, header[data-testid="status-brand-masthead"] { position: static !important; }' }) : undefined;
       try { await page.screenshot({ path: target, ...(clip ? { clip } : { fullPage: false }), animations: "disabled", caret: "hide", scale: "css" }); }
       finally { await stabilization?.evaluate((node) => node.remove()).catch(() => {}); }
