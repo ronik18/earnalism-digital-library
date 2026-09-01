@@ -212,33 +212,133 @@ function canonicalPathname(url) {
   return pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
 }
 
-async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup, requestedTypes = undefined, browserName = "chromium") {
+const STABILITY_STYLE_ID = "seamless-brand-evidence-stabilization";
+
+function hashValue(value) {
+  return crypto.createHash("sha256").update(JSON.stringify(value)).digest("hex");
+}
+
+async function visualFingerprint(page) {
+  return page.evaluate((styleId) => {
+    const box = (node) => {
+      const rect = node?.getBoundingClientRect();
+      return rect ? [rect.left, rect.top, rect.right, rect.bottom, rect.width, rect.height].map((value) => Math.round(value * 100) / 100) : null;
+    };
+    const textHash = (value) => {
+      let hash = 0; for (const char of value) hash = ((hash << 5) - hash) + char.charCodeAt(0) | 0;
+      return `${value.length}:${hash >>> 0}`;
+    };
+    const article = document.querySelector('[data-testid="journal-article"]');
+    const header = document.querySelector('[data-testid="site-header"], header.experience-header, header[data-testid="status-brand-masthead"]');
+    const root = article || document.body;
+    const fonts = [...root.querySelectorAll("h1,p,a,span")].slice(0, 32).map((node) => {
+      const style = getComputedStyle(node);
+      return [node.tagName, style.fontStyle, style.fontWeight, style.fontSize, style.lineHeight, style.fontFamily, style.letterSpacing, node.textContent?.length || 0];
+    });
+    return {
+      dom: textHash(root.textContent || ""),
+      geometry: [box(document.documentElement), box(header), box(article), document.documentElement.scrollWidth, document.documentElement.scrollHeight],
+      fonts,
+      scroll: [window.scrollX, window.scrollY, window.visualViewport?.offsetLeft || 0, window.visualViewport?.offsetTop || 0],
+      style_count: document.querySelectorAll(`style#${styleId}`).length,
+    };
+  }, STABILITY_STYLE_ID);
+}
+
+async function installVisualCaptureStabilization(page, browserName) {
+  const atTop = await page.evaluate(() => Math.abs(window.scrollY) <= 1);
+  if (browserName !== "webkit" || !atTop) return undefined;
+  return page.addStyleTag({
+    content: `#${STABILITY_STYLE_ID}{display:block!important}*{-webkit-font-smoothing:antialiased!important}[data-testid="site-header"],header.experience-header,header[data-testid="status-brand-masthead"]{position:static!important}`,
+  });
+}
+
+async function requestedCaptureClip(page, locator, padding = 4) {
+  const rect = await locator.boundingBox();
+  if (!rect) throw new Error("capture target is not visible");
+  const metrics = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: document.documentElement.scrollWidth, height: document.documentElement.scrollHeight }));
+  const x = Math.max(0, rect.x + metrics.x - padding);
+  const y = Math.max(0, rect.y + metrics.y - padding);
+  return { x, y, width: Math.max(1, Math.min(metrics.width - x, rect.width + padding * 2)), height: Math.max(1, Math.min(metrics.height - y, rect.height + padding * 2)) };
+}
+
+async function waitForVisualQuiescence(page, state, fixtureRequests) {
+  if (!state.id.startsWith("article-")) return { result: "PASS", applicable: false };
+  const expectedTitle = editorialFixture().post.title;
+  const expectedRequests = [`/api/blog/${editorialFixture().post.slug}`, "/api/blog"];
+  const deadline = Date.now() + 10000;
+  while (expectedRequests.some((entry) => !fixtureRequests.has(entry))) {
+    if (Date.now() > deadline) throw new Error(`State ${state.id}: editorial fixture requests did not complete: ${expectedRequests.filter((entry) => !fixtureRequests.has(entry)).join(", ")}.`);
+    await page.waitForTimeout(25);
+  }
+  const result = await page.evaluate(async ({ expectedTitle, quietMs }) => {
+    const visible = (node) => { const style = node && getComputedStyle(node); const rect = node?.getBoundingClientRect(); return Boolean(style && rect && style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0); };
+    const root = document.querySelector('[data-testid="journal-article"]');
+    const heading = root?.querySelector("h1");
+    if (document.querySelector('[data-testid="journal-article-loading"]') || !visible(root) || !visible(heading) || heading.textContent?.trim() !== expectedTitle) throw new Error("article hydration preconditions are not satisfied");
+    const imageNodes = [...root.querySelectorAll("img")].filter(visible);
+    await Promise.all(imageNodes.map((image) => image.decode().catch(() => undefined)));
+    const textNodes = [heading, root.querySelector('[data-testid="back-journal"]'), ...root.querySelectorAll("p,span,a")].filter(visible);
+    const fontSpecifications = [...new Set(textNodes.map((node) => { const style = getComputedStyle(node); return `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`; }))];
+    await document.fonts.ready;
+    for (const spec of fontSpecifications) { await document.fonts.load(spec, "Aa"); if (!document.fonts.check(spec, "Aa")) throw new Error(`font is not ready: ${spec}`); }
+    const geometry = () => [document.documentElement.scrollWidth, document.documentElement.scrollHeight, ...[root, heading, root.querySelector('[data-testid="back-journal"]'), root.querySelector("header"), root.querySelector(".editorial-prose"), root.querySelector('[data-testid="article-share"]')].map((node) => { const r = node?.getBoundingClientRect(); return r ? [r.left, r.top, r.right, r.bottom, r.width, r.height].map((v) => Math.round(v * 100) / 100) : null; }), window.scrollX, window.scrollY, window.visualViewport?.offsetLeft || 0, window.visualViewport?.offsetTop || 0];
+    let lastMutation = performance.now(); const mutations = [];
+    const observer = new MutationObserver((records) => { lastMutation = performance.now(); mutations.push(...records.map((record) => ({ type: record.type, attribute: record.attributeName || null, added: record.addedNodes.length, removed: record.removedNodes.length }))); });
+    observer.observe(root, { childList: true, subtree: true, characterData: true, attributes: true });
+    const samples = [];
+    try {
+      while (samples.length < 4 || performance.now() - lastMutation < quietMs) {
+        await new Promise((resolve) => setTimeout(resolve, 150));
+        samples.push(geometry()); if (samples.length > 4) samples.shift();
+        if (samples.length === 4 && new Set(samples.map((sample) => JSON.stringify(sample))).size === 1 && performance.now() - lastMutation >= quietMs) break;
+      }
+      if (new Set(samples.map((sample) => JSON.stringify(sample))).size !== 1) throw new Error("article geometry did not settle");
+      await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      return { result: "PASS", applicable: true, expected_title: expectedTitle, related_section: root.querySelector("section") ? "VISIBLE" : "ABSENT_BY_FIXTURE", font_specifications: fontSpecifications, mutation_count_during_quiescence: mutations.length, quiet_window_ms: quietMs, geometry_samples: samples, layout_fingerprint: JSON.stringify(samples.at(-1)), font_fingerprint: JSON.stringify(fontSpecifications), scroll_fingerprint: JSON.stringify(samples.at(-1).slice(-4)) };
+    } finally { observer.disconnect(); }
+  }, { expectedTitle, quietMs: 750 });
+  return result;
+}
+
+async function primeWebKitArticleRaster(page, state, browserName) {
+  if (browserName !== "webkit" || !state.id.startsWith("article-")) return { result: "PASS", applicable: false };
+  const before = await visualFingerprint(page);
+  const clip = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }));
+  const buffer = await page.screenshot({ clip, animations: "disabled", caret: "hide", scale: "css" });
+  const after = await visualFingerprint(page);
+  if (hashValue(before) !== hashValue(after)) throw new Error("WebKit Article raster priming changed DOM, layout, font, or scroll state.");
+  return { result: "PASS", applicable: true, screenshot_sha256: crypto.createHash("sha256").update(buffer).digest("hex"), before, after };
+}
+
+async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup, requestedTypes = undefined, browserName = "chromium", trace = []) {
   const files = {};
   const attemptDirectory = path.join(stateDirectory, "attempts", label);
   fs.mkdirSync(attemptDirectory, { recursive: true });
   const scrollPosition = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY }));
   const write = async (name, action) => {
     const target = path.join(attemptDirectory, name);
+    const before = await visualFingerprint(page);
     await action(target);
     files[name] = { path: target, sha256: digest(target) };
+    const after = await visualFingerprint(page);
+    const unchanged = hashValue(before) === hashValue(after);
+    trace.push({ label, name, before, after, unchanged });
+    if (!unchanged) throw new Error(`Screenshot capture changed visual state for ${name}.`);
   };
   try {
     if (capture.viewport && (!requestedTypes || requestedTypes.has("viewport"))) await write("viewport.png", async (target) => {
-      const initialClip = browserName === "webkit" ? await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight })) : undefined;
-      const webkitCapture = Boolean(initialClip && Math.abs(initialClip.y) <= 1);
-      const clip = webkitCapture ? initialClip : undefined;
-      const stabilization = webkitCapture ? await page.addStyleTag({ content: '[data-testid="site-header"], header.experience-header, header[data-testid="status-brand-masthead"] { position: static !important; }' }) : undefined;
-      try { await page.screenshot({ path: target, ...(clip ? { clip } : { fullPage: false }), animations: "disabled", caret: "hide", scale: "css" }); }
-      finally { await stabilization?.evaluate((node) => node.remove()).catch(() => {}); }
+      const clip = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }));
+      await page.screenshot({ path: target, clip, animations: "disabled", caret: "hide", scale: "css" });
     });
     if (capture.full_page && (!requestedTypes || requestedTypes.has("full_page"))) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
-    if (capture.brand_close_up && (!requestedTypes || requestedTypes.has("brand_close_up"))) await write("brand-close-up.png", (target) => lockup.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
-    if (capture.parent_surface_close_up && (!requestedTypes || requestedTypes.has("parent_surface_close_up"))) await write("parent-surface-close-up.png", (target) => header.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.brand_close_up && (!requestedTypes || requestedTypes.has("brand_close_up"))) await write("brand-close-up.png", async (target) => page.screenshot({ path: target, clip: await requestedCaptureClip(page, lockup), animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.parent_surface_close_up && (!requestedTypes || requestedTypes.has("parent_surface_close_up"))) await write("parent-surface-close-up.png", async (target) => page.screenshot({ path: target, clip: await requestedCaptureClip(page, header), animations: "disabled", caret: "hide", scale: "css" }));
   } finally {
-    // WebKit completes a locator-screenshot scroll adjustment on the next turn.
-    // Restore only the state that the declared interaction established, then
-    // prove the next screenshot begins at that exact document coordinate.
-    await page.waitForTimeout(50);
+    // Clip-based screenshots must not move the document. Avoid a no-op
+    // scrollTo(), because WebKit re-rasterizes article text after that call.
+    const current = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY }));
+    if (Math.abs(current.x - scrollPosition.x) <= 1 && Math.abs(current.y - scrollPosition.y) <= 1) return files;
     const restored = await page.evaluate(async ({ x, y }) => {
       const set = () => {
         window.scrollTo({ left: x, top: y, behavior: "instant" });
@@ -254,15 +354,15 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
   return files;
 }
 
-async function captureStableScreenshots(page, stateDirectory, capture, header, lockup, browserName) {
+async function captureStableScreenshots(page, stateDirectory, capture, header, lockup, browserName, trace = []) {
   const types = ["viewport", "full_page", "brand_close_up", "parent_surface_close_up"].filter((type) => capture[type]);
   let stable = false; const stabilityAttempts = []; let finalFiles = {};
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     const first = {}; const second = {};
     for (const type of types) {
-      Object.assign(first, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-first`, header, lockup, new Set([type]), browserName));
+      Object.assign(first, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-first`, header, lockup, new Set([type]), browserName, trace));
       await page.waitForTimeout(500);
-      Object.assign(second, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-second`, header, lockup, new Set([type]), browserName));
+      Object.assign(second, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-second`, header, lockup, new Set([type]), browserName, trace));
     }
     const matches = stableHashSet(first, second);
     stabilityAttempts.push({ attempt, stable: matches, first: Object.fromEntries(Object.entries(first).map(([name, file]) => [name, file.sha256])), second: Object.fromEntries(Object.entries(second).map(([name, file]) => [name, file.sha256])) });
@@ -633,12 +733,20 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   const statusResponse = statusFixture ? statusFixtureResponse(state) : null;
   const routeRecord = routeInventory.routes.find((route) => route.path === state.route)
     || routeInventory.routes.find((route) => route.path === "UNKNOWN_URL" && state.fixture === "error-404-contract");
-  const consoleErrors = []; const pageErrors = []; const failedRequests = []; const apiRequests = []; const httpErrorResponses = [];
+  const consoleErrors = []; const pageErrors = []; const failedRequests = []; const apiRequests = []; const httpErrorResponses = []; const editorialFixtureRequests = new Set(); const editorialRequestTimeline = []; const navigationStartedAt = Date.now();
   page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
   page.on("pageerror", (error) => pageErrors.push(error.message));
   page.on("requestfailed", (request) => failedRequests.push({ url: request.url(), failure: request.failure()?.errorText || "unknown" }));
-  page.on("request", (request) => { if (new URL(request.url()).pathname.includes("/api/")) apiRequests.push({ url: request.url(), method: request.method() }); });
-  page.on("response", (response) => { if (response.status() >= 400) httpErrorResponses.push({ url: response.url(), status: response.status() }); });
+  page.on("request", (request) => {
+    const pathname = new URL(request.url()).pathname;
+    if (pathname.includes("/api/")) apiRequests.push({ url: request.url(), method: request.method() });
+    if (pathname === "/api/blog" || pathname === `/api/blog/${editorialFixture().post.slug}`) editorialRequestTimeline.push({ event: "start", pathname, milliseconds_since_navigation: Date.now() - navigationStartedAt });
+  });
+  page.on("response", (response) => {
+    const pathname = new URL(response.url()).pathname;
+    if (response.status() >= 400) httpErrorResponses.push({ url: response.url(), status: response.status() });
+    if ((pathname === "/api/blog" || pathname === `/api/blog/${editorialFixture().post.slug}`) && response.status() < 400) { editorialFixtureRequests.add(pathname); editorialRequestTimeline.push({ event: "end", pathname, status: response.status(), milliseconds_since_navigation: Date.now() - navigationStartedAt }); }
+  });
   await page.route("**/api/**", routeFixture);
   if (statusFixture) await page.route((url) => new URL(url).pathname === state.route, (route) => route.fulfill({ status: statusResponse.status, headers: statusResponse.headers, body: statusResponse.body }));
   await page.route("https://theearnalism.com/assets/brand/earnalism-brand-lockup.png", (route) => route.fulfill({ path: "frontend/public/assets/brand/earnalism-brand-lockup.png", contentType: "image/png" }));
@@ -664,7 +772,15 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   const interactionSession = await beginInteraction(page, state);
   const captureSurface = interactionSession.capture_surface || header;
   const captureLockup = interactionSession.capture_lockup || lockup;
-  const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, captureSurface, captureLockup, browserName);
+  const captureStabilization = await installVisualCaptureStabilization(page, browserName);
+  let stable; let stabilityAttempts; let finalFiles; let visualQuiescence; let rasterPriming; const screenshotCaptureTrace = [];
+  try {
+    visualQuiescence = await waitForVisualQuiescence(page, state, editorialFixtureRequests);
+    rasterPriming = await primeWebKitArticleRaster(page, state, browserName);
+    ({ stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, captureSurface, captureLockup, browserName, screenshotCaptureTrace));
+  } finally {
+    await captureStabilization?.evaluate((node) => node.remove()).catch(() => {});
+  }
   const interactionResult = await interactionSession.finalize();
   const fontResults = await page.evaluate(async (fontSpecs) => {
     const bounded = (promise) => Promise.race([promise, new Promise((resolve) => setTimeout(resolve, 5000))]);
@@ -814,7 +930,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   if (state.introduced_in === "experience-footer-zoom-2c2b" && (Math.abs(zoomResults.requested_zoom_percent - zoomResults.effective_zoom_percent) > 0.01 || zoomResults.logo_control_overlap_area !== 0 || zoomResults.clipped_control_count !== 0)) defects.push("experience-footer-zoom-geometry-contract");
   if (interactionResult?.failures?.length) defects.push(...interactionResult.failures);
   const safetyResults = { reader: { ...data.reader, production_reader_api_called: false }, listener: { ...data.listener, production_listener_api_called: false }, production_api_call_count: 0, production_mutation_count: mutationCount, footer: interactionResult?.kind === "scroll-to-footer" ? interactionResult.geometry : undefined };
-  const metadata = { source_head: gitReference("rev-parse", "HEAD"), tree_sha: gitReference("rev-parse", "HEAD^{tree}"), state_id: state.id, route: state.route, route_classification: routeRecord?.classification || "CONTROLLED_APPROVED_LISTENER", initial_url: fixtureUrl(baseUrl, state), final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: browserName, browser_version: browser.version(), screenshot_stabilization: browserName === "webkit" ? "temporary-static-header-during-viewport-rasterization" : "none", context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, ...data, font_results: fontResults, http_error_responses: httpErrorResponses, unclassified_http_error_responses: unclassifiedHttpErrors, zoom_results: zoomResults, interaction_result: interactionResult, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, status_contract: statusContract, production_mutation_count: mutationCount, production_api_call_count: 0, intercepted_api_request_count: apiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
+  const metadata = { source_head: gitReference("rev-parse", "HEAD"), tree_sha: gitReference("rev-parse", "HEAD^{tree}"), state_id: state.id, route: state.route, route_classification: routeRecord?.classification || "CONTROLLED_APPROVED_LISTENER", initial_url: fixtureUrl(baseUrl, state), final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: browserName, browser_version: browser.version(), screenshot_stabilization: captureStabilization ? "fixed-webkit-header-stabilization-through-comparison-pair" : "none", context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, visual_quiescence: visualQuiescence, webkit_article_raster_priming: rasterPriming, screenshot_capture_trace: screenshotCaptureTrace, editorial_request_timeline: state.id.startsWith("article-") ? editorialRequestTimeline : undefined, ...data, font_results: fontResults, http_error_responses: httpErrorResponses, unclassified_http_error_responses: unclassifiedHttpErrors, zoom_results: zoomResults, interaction_result: interactionResult, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, status_contract: statusContract, production_mutation_count: mutationCount, production_api_call_count: 0, intercepted_api_request_count: apiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
   fs.writeFileSync(path.join(stateDirectory, "metadata.json"), JSON.stringify(metadata, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "console-errors.json"), JSON.stringify(consoleErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "page-errors.json"), JSON.stringify(pageErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "failed-requests.json"), JSON.stringify(failedRequests, null, 2) + "\n");
   if (interactionResult) { fs.writeFileSync(path.join(stateDirectory, "interaction-results.json"), JSON.stringify(interactionResult, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "geometry-results.json"), JSON.stringify(interactionResult.geometry || {}, null, 2) + "\n"); }
   fs.writeFileSync(path.join(stateDirectory, "zoom-results.json"), JSON.stringify(zoomResults, null, 2) + "\n");

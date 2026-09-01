@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "workflow_run_id": 33498398888,
+  "artifact_id": 9797095563,
+  "artifact_name": "pr344-seamless-brand-final-diagnostic-8a265d87c23346c9eff49cee96896d626b3e9818",
+  "github_artifact_digest": "sha256:484961d352fee156081ec9c0303e8cd9942d9b7db2e59826e3943c085d0effe2",
+  "downloaded_archive_digest_result": "PASS",
+  "extracted_file_count": 5,
+  "extracted_total_bytes": 9233,
+  "manifest_result": "ABSENT_FROM_DIAGNOSTIC_ENVELOPE",
+  "available_article_mobile_attempt_files": 0,
+  "server_log_present": true,
+  "capture_log_present": false,
+  "request_diagnostics_present": false,
+  "failure_stack": "State article-mobile is unstable after three bounded capture attempts.",
+  "local_reproduction_result": "PASS"
+}
