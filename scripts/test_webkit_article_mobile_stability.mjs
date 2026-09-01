@@ -45,7 +45,7 @@ test("the reusable Article quiescence helper is present", () => assert.match(sou
 test("the Article quiet window is 750ms with four 150ms geometry samples", () => { assert.match(source, /quietMs:\s*750/); assert.match(source, /samples\.length < 4/); assert.match(source, /setTimeout\(resolve, 150\)/); });
 test("exact visible font specifications are checked", () => assert.match(source, /document\.fonts\.check\(spec, "Aa"\)/));
 test("one stabilization stylesheet is held through the comparison pair", () => assert.match(source, /fixed-webkit-header-stabilization-through-comparison-pair/));
-test("WebKit Article compositing is boundedly primed without changing page fingerprints", () => { assert.match(source, /async function primeWebKitArticleRaster/); assert.match(source, /for \(let attempt = 1; attempt <= 3; attempt \+= 1\)/); assert.match(source, /raster priming changed DOM, layout, font, or scroll state/); assert.match(source, /await page\.waitForTimeout\(500\)/); });
+test("WebKit top-of-document compositing primes each requested capture surface without changing page fingerprints", () => { assert.match(source, /async function primeWebKitTopOfDocumentRaster/); assert.match(source, /const atTop = await page\.evaluate\(\(\) => Math\.abs\(window\.scrollY\) <= 1\)/); assert.match(source, /captures\.push\(\["brand-close-up"/); assert.match(source, /captures\.push\(\["parent-surface-close-up"/); assert.match(source, /for \(const \[type, takeScreenshot\] of captures\)/); assert.match(source, /const webkitTopOfDocument = browserName === "webkit"/); assert.match(source, /\$\{type\}-warmup/); assert.match(source, /for \(let attempt = 1; attempt <= 3; attempt \+= 1\)/); assert.match(source, /top-of-document raster priming changed DOM, layout, font, or scroll state/); assert.match(source, /await page\.waitForTimeout\(500\)/); });
 test("WebKit close-up capture uses page clips, not locator auto-scroll", () => { assert.doesNotMatch(source, /\.screenshot\(\{ path: target, animations/); assert.match(source, /requestedCaptureClip\(page, lockup\)/); });
 test("comparison screenshots preserve their starting scroll fingerprint", () => assert.match(source, /Screenshot capture changed scroll position/));
 test("viewport screenshot mismatch fails", () => assert.equal(false, "a" === "b"));
@@ -54,13 +54,15 @@ test("parent surface screenshot mismatch fails", () => assert.equal(false, "a" =
 test("three unsuccessful attempts remain a hard failure", () => assert.match(source, /unstable after three bounded capture attempts/));
 test("pure raster differences are not silently tolerated", () => assert.match(source, /stableHashSet\(first, second\)/));
 test("production surface remains outside the evidence harness", () => assert.ok(!fs.existsSync(path.join(root, "frontend", "src", "pages", "JournalArticle.jsx.bak"))));
-test("real review-fixture Article capture is exactly stable when a local base URL is supplied", () => {
+test("real review-fixture Article and Contact captures are exactly stable when a local base URL is supplied", () => {
   if (!baseUrl) return;
-  const output = path.join(temp, "actual");
-  const result = spawnSync(process.execPath, [capture, "--manifest", "docs/design-system/seamless-brand-state-manifest.json", "--route-inventory", "docs/design-system/seamless-brand-route-inventory.json", "--state-filter", "article-mobile", "--capture", "--browser", "webkit", "--base-url", baseUrl, "--output", output], { cwd: root, encoding: "utf8", maxBuffer: 20 * 1024 * 1024 });
-  assert.equal(result.status, 0, result.stderr);
-  const summary = JSON.parse(fs.readFileSync(path.join(output, "capture-summary.json"), "utf8"));
-  assert.deepEqual([summary.expected_state_count, summary.captured_state_count, summary.stable_state_count], [1, 1, 1]);
+  for (const stateId of ["article-mobile", "contact-mobile"]) {
+    const output = path.join(temp, stateId);
+    const result = spawnSync(process.execPath, [capture, "--manifest", "docs/design-system/seamless-brand-state-manifest.json", "--route-inventory", "docs/design-system/seamless-brand-route-inventory.json", "--state-filter", stateId, "--capture", "--browser", "webkit", "--base-url", baseUrl, "--output", output], { cwd: root, encoding: "utf8", maxBuffer: 20 * 1024 * 1024 });
+    assert.equal(result.status, 0, result.stderr);
+    const summary = JSON.parse(fs.readFileSync(path.join(output, "capture-summary.json"), "utf8"));
+    assert.deepEqual([summary.expected_state_count, summary.captured_state_count, summary.stable_state_count], [1, 1, 1]);
+  }
 });
 
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases, temp }));
