@@ -212,7 +212,7 @@ function canonicalPathname(url) {
   return pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
 }
 
-async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup) {
+async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup, requestedTypes = undefined) {
   const files = {};
   const attemptDirectory = path.join(stateDirectory, "attempts", label);
   fs.mkdirSync(attemptDirectory, { recursive: true });
@@ -223,13 +223,13 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
     files[name] = { path: target, sha256: digest(target) };
   };
   try {
-    if (capture.viewport) await write("viewport.png", async (target) => {
+    if (capture.viewport && (!requestedTypes || requestedTypes.has("viewport"))) await write("viewport.png", async (target) => {
       const clip = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }));
       await page.screenshot({ path: target, clip, animations: "disabled", caret: "hide", scale: "css" });
     });
-    if (capture.full_page) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
-    if (capture.brand_close_up) await write("brand-close-up.png", (target) => lockup.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
-    if (capture.parent_surface_close_up) await write("parent-surface-close-up.png", (target) => header.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.full_page && (!requestedTypes || requestedTypes.has("full_page"))) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.brand_close_up && (!requestedTypes || requestedTypes.has("brand_close_up"))) await write("brand-close-up.png", (target) => lockup.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.parent_surface_close_up && (!requestedTypes || requestedTypes.has("parent_surface_close_up"))) await write("parent-surface-close-up.png", (target) => header.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
   } finally {
     // WebKit completes a locator-screenshot scroll adjustment on the next turn.
     // Restore only the state that the declared interaction established, then
@@ -248,6 +248,31 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
     if (Math.abs(restored.x - scrollPosition.x) > 1 || Math.abs(restored.y - scrollPosition.y) > 1) throw new Error(`Screenshot capture changed scroll position from ${JSON.stringify(scrollPosition)} to ${JSON.stringify(restored)}.`);
   }
   return files;
+}
+
+async function captureStableScreenshots(page, stateDirectory, capture, header, lockup) {
+  const types = ["viewport", "full_page", "brand_close_up", "parent_surface_close_up"].filter((type) => capture[type]);
+  let stable = false; const stabilityAttempts = []; let finalFiles = {};
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    const first = {}; const second = {};
+    for (const type of types) {
+      Object.assign(first, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-first`, header, lockup, new Set([type])));
+      await page.waitForTimeout(500);
+      Object.assign(second, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-second`, header, lockup, new Set([type])));
+    }
+    const matches = stableHashSet(first, second);
+    stabilityAttempts.push({ attempt, stable: matches, first: Object.fromEntries(Object.entries(first).map(([name, file]) => [name, file.sha256])), second: Object.fromEntries(Object.entries(second).map(([name, file]) => [name, file.sha256])) });
+    if (matches) {
+      stable = true;
+      for (const [name, file] of Object.entries(second)) {
+        const target = path.join(stateDirectory, name);
+        fs.copyFileSync(file.path, target);
+        finalFiles[name] = { path: name, sha256: digest(target) };
+      }
+      break;
+    }
+  }
+  return { stable, stabilityAttempts, finalFiles };
 }
 
 async function runOneStateCapture(options) {
@@ -301,25 +326,7 @@ async function runOneStateCapture(options) {
   if (await header.count() !== 1) throw new Error(`State ${state.id}: expected exactly one visible public header; received ${await header.count()}.`);
   const lockup = header.locator('[data-testid="earnalism-brand-lockup"]:visible');
   if (await lockup.count() !== 1) throw new Error(`State ${state.id}: expected exactly one visible canonical lockup; received ${await lockup.count()}.`);
-  let stable = false;
-  const stabilityAttempts = [];
-  let finalFiles = {};
-  for (let attempt = 1; attempt <= 3; attempt += 1) {
-    const first = await captureRequestedScreenshots(page, stateDirectory, state.capture, `attempt-${attempt}-first`, header, lockup);
-    await page.waitForTimeout(500);
-    const second = await captureRequestedScreenshots(page, stateDirectory, state.capture, `attempt-${attempt}-second`, header, lockup);
-    const matches = stableHashSet(first, second);
-    stabilityAttempts.push({ attempt, stable: matches, first: Object.fromEntries(Object.entries(first).map(([name, file]) => [name, file.sha256])), second: Object.fromEntries(Object.entries(second).map(([name, file]) => [name, file.sha256])) });
-    if (matches) {
-      stable = true;
-      for (const [name, file] of Object.entries(second)) {
-        const target = path.join(stateDirectory, name);
-        fs.copyFileSync(file.path, target);
-        finalFiles[name] = { path: name, sha256: digest(target) };
-      }
-      break;
-    }
-  }
+  const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, header, lockup);
   const data = await page.evaluate((statusFixture) => {
     const visible = (node) => { if (!node) return false; const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
     const headers = [...document.querySelectorAll('[data-testid="site-header"]')].filter(visible);
@@ -578,15 +585,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   const interactionSession = await beginInteraction(page, state);
   const captureSurface = interactionSession.capture_surface || header;
   const captureLockup = interactionSession.capture_lockup || lockup;
-  let stable = false; const stabilityAttempts = []; let finalFiles = {};
-  for (let attempt = 1; attempt <= 3; attempt += 1) {
-    const first = await captureRequestedScreenshots(page, stateDirectory, state.capture, `attempt-${attempt}-first`, captureSurface, captureLockup);
-    await page.waitForTimeout(500);
-    const second = await captureRequestedScreenshots(page, stateDirectory, state.capture, `attempt-${attempt}-second`, captureSurface, captureLockup);
-    const matches = stableHashSet(first, second);
-    stabilityAttempts.push({ attempt, stable: matches, first: Object.fromEntries(Object.entries(first).map(([name, file]) => [name, file.sha256])), second: Object.fromEntries(Object.entries(second).map(([name, file]) => [name, file.sha256])) });
-    if (matches) { stable = true; for (const [name, file] of Object.entries(second)) { const target = path.join(stateDirectory, name); fs.copyFileSync(file.path, target); finalFiles[name] = { path: name, sha256: digest(target) }; } break; }
-  }
+  const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, captureSurface, captureLockup);
   const interactionResult = await interactionSession.finalize();
   const fontResults = await page.evaluate(async (fontSpecs) => {
     await document.fonts.ready;
