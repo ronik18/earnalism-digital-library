@@ -56,6 +56,12 @@ def main():
         item = article.get(browser, {}); require((item.get("expected"), item.get("captured"), item.get("stable")) == (expected, expected, expected), f"{browser} Article stability result fails", failures)
     static = data.get("static_snapshot", {}); require(static.get("expected") == static.get("inspected") == static.get("passing") and static.get("result") == "PASS", "static snapshot result fails", failures)
     require(data.get("route_hashes", {}).get("result") == "PASS" and data.get("approval_carry_forward", {}).get("result") == "PASS", "route-family hash result fails", failures)
+    route_hash_path = data.get("route_hashes", {}).get("path")
+    if route_hash_path and Path(route_hash_path).exists():
+        route_hash_data = json.loads(Path(route_hash_path).read_text())
+        route_hashes = route_hash_data.get("route_family_hashes", {})
+        require(route_hash_data.get("result") == "PASS" and bool(route_hashes), "route-family hash evidence fails", failures)
+        require(all(item.get("result") == "PASS" for item in route_hashes.values()), "route-family hash entry fails", failures)
     for key in ["reader_safety_result", "listener_safety_result", "interaction_result", "zoom_result", "error_status_result"]: require(data.get(key) == "PASS", f"{key} fails", failures)
     require(data.get("rendered_ui_defect_count") == 0, "rendered UI defects recorded", failures)
     require(data.get("production_mutation_count") == 0, "production mutations recorded", failures)

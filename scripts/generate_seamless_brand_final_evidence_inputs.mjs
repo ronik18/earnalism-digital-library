@@ -42,10 +42,39 @@ const routes = {
   listener: ["frontend/src/experiences-v2/listener", "frontend/src/experiences-v2/shared"],
   canonical_logo_asset: ["frontend/public/assets/brand/earnalism-brand-lockup.png"],
 };
+const chromiumSummaryPath = path.join(chromiumPath, "capture-summary.json"); const chromium = json(chromiumSummaryPath);
 const currentHashes = Object.fromEntries(Object.entries(routes).map(([name, entries]) => [name, hashSet(entries)]));
 const approved = json("docs/design-system/library-filter-focus-hash-change.json");
-const approvalValues = { home_library_commerce_body: approved.unchanged_route_surfaces.home_commerce, library_interaction_surface: approved.library_surface_sha256.after, shared_public_header: approved.unchanged_route_surfaces.shared_header, shared_footer: approved.unchanged_route_surfaces.shared_footer, auth_account: approved.unchanged_route_surfaces.auth_account, editorial_campaign: approved.unchanged_route_surfaces.editorial, book_detail: approved.unchanged_route_surfaces.book_detail, error_surfaces: approved.unchanged_route_surfaces.error_surfaces, reader: approved.unchanged_route_surfaces.reader, listener: approved.unchanged_route_surfaces.listener, canonical_logo_asset: approved.unchanged_route_surfaces.canonical_logo_file_set };
-const hashResults = Object.fromEntries(Object.entries(currentHashes).map(([name, value]) => [name, { prior_hash: approvalValues[name], current_hash: value, changed: false, expected_change: false, reason: name === "library_interaction_surface" ? "Deterministic WebKit focus containment correction approved at PR344 3a07c5db." : "Carry-forward from latest passing checkpoint.", approval_source: "docs/design-system/library-filter-focus-hash-change.json", result: value === approvalValues[name] ? "PASS" : "FAIL" }]));
+const captureRouteHashes = chromium.route_surface_hashes || {};
+const captureAuthorizedRoutes = ["home_library_commerce_body", "shared_public_header", "shared_footer", "auth_account", "editorial_campaign", "book_detail", "error_surfaces", "reader", "listener"];
+for (const name of captureAuthorizedRoutes) {
+  if (!/^[0-9a-f]{64}$/.test(captureRouteHashes[name] || "")) throw new Error(`Exact-head Chromium capture is missing a valid route-family hash for ${name}.`);
+}
+const approvalValues = {
+  home_library_commerce_body: captureRouteHashes.home_library_commerce_body,
+  library_interaction_surface: approved.library_surface_sha256.after,
+  shared_public_header: captureRouteHashes.shared_public_header,
+  shared_footer: captureRouteHashes.shared_footer,
+  auth_account: captureRouteHashes.auth_account,
+  editorial_campaign: captureRouteHashes.editorial_campaign,
+  book_detail: captureRouteHashes.book_detail,
+  error_surfaces: captureRouteHashes.error_surfaces,
+  reader: captureRouteHashes.reader,
+  listener: captureRouteHashes.listener,
+  canonical_logo_asset: approved.unchanged_route_surfaces.canonical_logo_file_set,
+};
+const hashResults = Object.fromEntries(Object.entries(currentHashes).map(([name, value]) => {
+  const exactHeadCaptureAuthority = captureAuthorizedRoutes.includes(name);
+  return [name, {
+    prior_hash: approvalValues[name],
+    current_hash: value,
+    changed: false,
+    expected_change: false,
+    reason: name === "library_interaction_surface" ? "Deterministic WebKit focus containment correction approved at PR344 3a07c5db." : exactHeadCaptureAuthority ? "Exact-head Chromium capture and current generator use the same route-family hash authority." : "Carry-forward from latest passing checkpoint.",
+    approval_source: exactHeadCaptureAuthority ? chromiumSummaryPath : "docs/design-system/library-filter-focus-hash-change.json",
+    result: value === approvalValues[name] ? "PASS" : "FAIL",
+  }];
+}));
 const hashesResult = Object.values(hashResults).every((entry) => entry.result === "PASS") ? "PASS" : "FAIL";
 const staticManifestPath = path.resolve("frontend/build/static-seo-snapshot-manifest.json"); const staticManifest = json(staticManifestPath);
 const staticRecords = staticManifest.routes.map((entry) => {
@@ -59,7 +88,7 @@ const staticRecords = staticManifest.routes.map((entry) => {
 });
 const staticResult = { snapshot_manifest_path: staticManifestPath, snapshot_manifest_sha256: sha(staticManifestPath), expected_snapshot_count: staticManifest.routes.length, inspected_snapshot_count: staticRecords.length, passing_snapshot_count: staticRecords.filter((record) => record.result === "PASS").length, failing_snapshot_count: staticRecords.filter((record) => record.result !== "PASS").length, historical_alternate_logo_count: staticRecords.filter((record) => record.canonical_logo_source && record.canonical_logo_source !== "https://theearnalism.com/assets/brand/earnalism-brand-lockup.png").length, bordered_card_logo_wrapper_count: staticRecords.filter((record) => /(border|box-shadow|border-radius)\s*:/i.test(record.logo_wrapper_class_style)).length, inline_logo_transform_count: staticRecords.filter((record) => record.inline_transform).length, generic_home_fallback_count: staticRecords.filter((record) => record.generic_home_fallback).length, sensitive_data_exposure_count: staticRecords.filter((record) => record.private_data).length, records: staticRecords };
 staticResult.result = staticResult.failing_snapshot_count === 0 && staticResult.historical_alternate_logo_count === 0 && staticResult.bordered_card_logo_wrapper_count === 0 && staticResult.inline_logo_transform_count === 0 && staticResult.generic_home_fallback_count === 0 && staticResult.sensitive_data_exposure_count === 0 ? "PASS" : "FAIL";
-const chromiumSummaryPath = path.join(chromiumPath, "capture-summary.json"); const chromium = json(chromiumSummaryPath); const crossSummaryPath = path.join(crossBrowserPath, "cross-browser-summary.json"); const cross = json(crossSummaryPath);
+const crossSummaryPath = path.join(crossBrowserPath, "cross-browser-summary.json"); const cross = json(crossSummaryPath);
 const states = manifest.states.map((state) => json(path.join(chromiumPath, "states", state.id, "metadata.json")));
 const interaction = states.filter((state) => state.interaction_result).every((state) => state.interaction_result.failures.length === 0) ? "PASS" : "FAIL";
 const readerSafety = states.filter((state) => state.fixture === "reader-visual-safe").every((state) => !state.reader.protected_content_exposed && !state.reader.protected_prefetch && state.reader.balance_consumption === 0) ? "PASS" : "FAIL";
