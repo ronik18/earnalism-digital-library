@@ -192,6 +192,11 @@ function stableHashSet(first, second) {
     && Object.keys(first).every((key) => first[key].sha256 === second[key].sha256);
 }
 
+function canonicalPathname(url) {
+  const pathname = new URL(url).pathname;
+  return pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
+}
+
 async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup) {
   const files = {};
   const attemptDirectory = path.join(stateDirectory, "attempts", label);
@@ -415,14 +420,14 @@ async function ownerScopedMobileMenu(page, state) {
       }
       await routeAction.focus();
       await page.keyboard.press("Enter");
-      await page.waitForURL((url) => url.pathname === destination, { timeout: 5000 }).catch(() => {});
+      await page.waitForURL((url) => canonicalPathname(url) === destination, { timeout: 5000 }).catch(() => {});
       await page.waitForFunction(() => [...document.querySelectorAll('[data-testid="mobile-menu"]')].every((node) => { const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display === "none" || rect.width === 0 || rect.height === 0; }), undefined, { timeout: 5000 }).catch(() => {});
-      const navigated = new URL(page.url()).pathname === destination && await page.locator('[data-testid="mobile-menu"]:visible').count() === 0;
+      const navigated = canonicalPathname(page.url()) === destination && await page.locator('[data-testid="mobile-menu"]:visible').count() === 0;
       result.route_action_urls.push(page.url());
       await page.goBack({ waitUntil: "domcontentloaded" }).catch(() => {});
-      await page.waitForURL((url) => url.pathname === state.route, { timeout: 5000 }).catch(() => {});
+      await page.waitForURL((url) => canonicalPathname(url) === state.route, { timeout: 5000 }).catch(() => {});
       await page.waitForFunction(() => [...document.querySelectorAll('[data-testid="mobile-menu"]')].every((node) => { const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display === "none" || rect.width === 0 || rect.height === 0; }), undefined, { timeout: 5000 }).catch(() => {});
-      const returned = new URL(page.url()).pathname === state.route && await page.locator('[data-testid="mobile-menu"]:visible').count() === 0;
+      const returned = canonicalPathname(page.url()) === state.route && await page.locator('[data-testid="mobile-menu"]:visible').count() === 0;
       result.route_action_urls.push(page.url());
       result.route_action_navigated = navigated;
       result.route_action_returned = returned;
