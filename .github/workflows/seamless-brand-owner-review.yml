@@ -334,7 +334,50 @@ jobs:
           sheet=Image.open(sys.argv[2]); assert sheet.width > 0 and sheet.height > 0 and sheet.getbbox() is not None
           PY
           pdftotext "$EVIDENCE_ROOT/package/owner-review.pdf" "$RUNNER_TEMP/owner-review.txt"
-          for heading in 'Cover and provenance' 'Brand decision and palette' 'Header desktop/mobile' 'Owner decision checklist'; do grep -Fq "$heading" "$RUNNER_TEMP/owner-review.txt"; done
+          for heading in 'Cover and provenance' 'Brand decision and palette' 'Header desktop/mobile' 'Mobile menu open/closed' 'Home desktop/mobile/200%' 'Library desktop/mobile/filters' 'Commerce desktop/mobile' 'Book Detail Dracula and Devdas' 'Reader desktop/mobile/high zoom' 'Listener desktop/mobile/high zoom' 'Login/Signup' 'Account/My Library' 'Journal/Article' 'Contact/Micro-story' '404/410' 'Footer 100%/200%' 'Firefox/WebKit comparison' 'Static-snapshot parity' 'Interaction and accessibility summary' 'Route-hash carry-forward' 'Known product limitations' 'Owner decision checklist'; do grep -Fq "$heading" "$RUNNER_TEMP/owner-review.txt"; done
+          find "$EVIDENCE_ROOT/package" -maxdepth 2 -type f -printf '%P\n' | sort > "$RUNNER_TEMP/package-top-level-inventory.txt"
+          "$PYTHON_BIN" - "$RUNNER_TEMP/final-package-qa-results.json" "$EVIDENCE_ROOT/package" "$RUNNER_TEMP/final-package-test-report.json" "$RUNNER_TEMP/owner-review.txt" "$RUNNER_TEMP/pdf-pages" "$RUNNER_TEMP/package-server.log" <<'PY'
+          import json, sys
+          from pathlib import Path
+          from PIL import Image
+
+          result_path, package_path, report_path, text_path, pages_path, server_log_path = map(Path, sys.argv[1:])
+          package = package_path
+          report = json.loads(report_path.read_text())
+          text = text_path.read_text(errors='replace')
+          required_headings = ['Cover and provenance', 'Brand decision and palette', 'Header desktop/mobile', 'Mobile menu open/closed', 'Home desktop/mobile/200%', 'Library desktop/mobile/filters', 'Commerce desktop/mobile', 'Book Detail Dracula and Devdas', 'Reader desktop/mobile/high zoom', 'Listener desktop/mobile/high zoom', 'Login/Signup', 'Account/My Library', 'Journal/Article', 'Contact/Micro-story', '404/410', 'Footer 100%/200%', 'Firefox/WebKit comparison', 'Static-snapshot parity', 'Interaction and accessibility summary', 'Route-hash carry-forward', 'Known product limitations', 'Owner decision checklist']
+          gates = {}
+          def record(name, passed, command, observed, expected, diagnostic):
+              gates[name] = {'result': 'PASS' if passed else 'FAIL', 'command_or_validator': command, 'observed_value': observed, 'expected_value': expected, 'diagnostic_file_path': diagnostic}
+          required_package = ['owner-review.html', 'owner-review.pdf', 'contact-sheet.png', 'artifact.zip', 'manifest.json', 'manifest.sha256']
+          record('generator', all((package / item).is_file() and (package / item).stat().st_size > 0 for item in required_package), 'generate_seamless_brand_final_owner_review.py', required_package, 'all generated package files non-empty', str(package))
+          record('package_tests', report.get('result') == 'PASS' and report.get('real_package_validation_executed') is True and report.get('real_package_validation_result') == 'PASS' and not report.get('missing_required_case_names') and not report.get('duplicate_case_names'), 'test_seamless_brand_final_owner_review.mjs --report-json', report.get('test_case_count'), 'PASS real-package named test report', str(report_path))
+          record('HTML_server', server_log_path.is_file(), 'python -m http.server', 'package server log present', 'reachable local package server', str(server_log_path))
+          html = (package / 'owner-review.html').read_text()
+          import re
+          references = re.findall(r'<img[^>]+src="([^"]+)"', html)
+          record('HTML_image_references', bool(references) and all((package / reference).is_file() for reference in references), 'owner-review.html image-reference validation', len(references), 'all image references resolve inside package', str(package / 'owner-review.html'))
+          record('HTML_private_path_scan', all(token not in html for token in ('/tmp/', '/private/', '/Users/')), 'owner-review.html private-path scan', 'no private path tokens', 'no private paths', str(package / 'owner-review.html'))
+          pdf = package / 'owner-review.pdf'
+          record('PDF_signature', pdf.read_bytes().startswith(b'%PDF-'), 'PDF signature', pdf.read_bytes()[:5].decode(errors='replace'), '%PDF-', str(pdf))
+          page_images = sorted(pages_path.glob('*.png'))
+          record('PDF_page_count', len(page_images) >= 22, 'pdfinfo/pdftoppm', len(page_images), '>= 22 pages', str(pages_path))
+          record('PDF_page_render', len(page_images) >= 22 and all(Image.open(item).width > 0 and Image.open(item).height > 0 for item in page_images), 'pdftoppm', len(page_images), 'all pages render', str(pages_path))
+          record('PDF_nonblank_pages', bool(page_images) and all(Image.open(item).getbbox() is not None for item in page_images), 'Pillow image getbbox', len(page_images), 'all rendered pages nonblank', str(pages_path))
+          missing_headings = [heading for heading in required_headings if heading not in text]
+          record('PDF_required_headings', not missing_headings, 'pdftotext file extraction', {'present': len(required_headings) - len(missing_headings), 'missing': missing_headings}, f'{len(required_headings)} required headings', str(text_path))
+          contact = package / 'contact-sheet.png'
+          contact_image = Image.open(contact)
+          record('contact_sheet_signature', contact.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'), 'PNG signature', contact.read_bytes()[:8].hex(), '89504e470d0a1a0a', str(contact))
+          record('contact_sheet_dimensions', contact_image.width > 0 and contact_image.height > 0, 'Pillow dimensions', [contact_image.width, contact_image.height], 'positive dimensions', str(contact))
+          record('contact_sheet_nonblank', contact_image.getbbox() is not None, 'Pillow image getbbox', contact_image.getbbox() is not None, 'nonblank image', str(contact))
+          all_pass = all(gate['result'] == 'PASS' for gate in gates.values())
+          payload = {'schema_version': 1, 'result': 'PASS' if all_pass else 'FAIL', 'subgates': gates, 'final_result': 'PASS' if all_pass else 'FAIL'}
+          result_path.write_text(json.dumps(payload, indent=2) + '\n')
+          if not all_pass:
+              failed = ', '.join(name for name, gate in gates.items() if gate['result'] != 'PASS')
+              raise SystemExit(f'final package QA failed: {failed}')
+          PY
           echo "PACKAGE_DIR=$EVIDENCE_ROOT/package" >> "$GITHUB_ENV"
 
       - name: Validate final package
@@ -351,6 +394,9 @@ jobs:
           ENVELOPE="$RUNNER_TEMP/$ARTIFACT_NAME"
           mkdir -p "$ENVELOPE"
           for item in owner-review.html owner-review.pdf contact-sheet.png executive-summary.json visual-decision-checklist.json final-evidence-inputs.json provenance.json manifest.json manifest.sha256 package-statistics.json artifact.zip; do cp "$PACKAGE_DIR/$item" "$ENVELOPE/$item"; done
+          cp "$RUNNER_TEMP/final-package-test-report.json" "$ENVELOPE/final-package-test-report.json"
+          cp "$RUNNER_TEMP/final-package-qa-results.json" "$ENVELOPE/final-package-qa-results.json"
+          cp "$RUNNER_TEMP/pdf-tooling-preflight.json" "$ENVELOPE/pdf-tooling-preflight.json"
           node - "$PACKAGE_DIR" "$ENVELOPE" <<'JS'
           const fs=require('fs'), path=require('path'); const [source,target]=process.argv.slice(2);
           const html=fs.readFileSync(path.join(source,'owner-review.html'),'utf8');
@@ -410,6 +456,13 @@ jobs:
             ${{ runner.temp }}/final-ci-sanitized-fixture-root-cause.json
             ${{ runner.temp }}/visual-fixture-deployment-isolation.json
             ${{ runner.temp }}/final-package-tests.log
+            ${{ runner.temp }}/final-package-test-report.json
+            ${{ runner.temp }}/final-package-qa-results.json
+            ${{ runner.temp }}/pdf-tooling-preflight.json
+            ${{ runner.temp }}/pdfinfo.txt
+            ${{ runner.temp }}/owner-review.txt
+            ${{ runner.temp }}/package-top-level-inventory.txt
+            ${{ runner.temp }}/package-server.log
           if-no-files-found: warn
           retention-days: 7
 
@@ -454,7 +507,7 @@ jobs:
           set -euo pipefail
           ENVELOPE="$RUNNER_TEMP/downloaded-owner-review"
           test -d "$ENVELOPE"
-          for item in README.md owner-review.html owner-review.pdf contact-sheet.png executive-summary.json visual-decision-checklist.json final-evidence-inputs.json provenance.json manifest.json manifest.sha256 package-statistics.json publication-summary.json artifact.zip; do test -s "$ENVELOPE/$item"; done
+          for item in README.md owner-review.html owner-review.pdf contact-sheet.png executive-summary.json visual-decision-checklist.json final-evidence-inputs.json provenance.json manifest.json manifest.sha256 package-statistics.json publication-summary.json artifact.zip final-package-test-report.json final-package-qa-results.json pdf-tooling-preflight.json; do test -s "$ENVELOPE/$item"; done
           test -z "$(find "$ENVELOPE" -type l -print -quit)"
           python3 - "$ENVELOPE" <<'PY'
           import re, sys
@@ -464,6 +517,9 @@ jobs:
           PY
           test "$ARTIFACT_NAME" = "pr344-seamless-brand-final-review-${PR_HEAD_SHA}"
           test -n "$ARTIFACT_ID"; test -n "$GITHUB_ARTIFACT_URL"; test -n "$GITHUB_ARTIFACT_DIGEST"
+          jq -e '.result == "PASS" and .test_case_count == (.executed_case_names|length) and (.test_case_count >= 31) and (.missing_required_case_names|length == 0) and (.duplicate_case_names|length == 0) and .real_package_validation_executed and .real_package_validation_result == "PASS"' "$ENVELOPE/final-package-test-report.json"
+          jq -e '.result == "PASS" and .final_result == "PASS" and ([.subgates[] | select(.result != "PASS")] | length == 0)' "$ENVELOPE/final-package-qa-results.json"
+          jq -e '.result == "PASS" and (.tools.pdfinfo.path | length > 0) and (.tools.pdftoppm.path | length > 0) and (.tools.pdftotext.path | length > 0)' "$ENVELOPE/pdf-tooling-preflight.json"
           gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/${ARTIFACT_ID}/zip" > "$RUNNER_TEMP/downloaded-owner-review-envelope.zip"
           DOWNLOADED_ARTIFACT_ARCHIVE_SHA256="$(sha256sum "$RUNNER_TEMP/downloaded-owner-review-envelope.zip" | awk '{print $1}')"
           INNER_ARTIFACT_ZIP_SHA256="$(sha256sum "$ENVELOPE/artifact.zip" | awk '{print $1}')"
