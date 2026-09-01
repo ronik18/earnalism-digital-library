@@ -223,7 +223,10 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
     files[name] = { path: target, sha256: digest(target) };
   };
   try {
-    if (capture.viewport) await write("viewport.png", (target) => page.screenshot({ path: target, fullPage: false, animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.viewport) await write("viewport.png", async (target) => {
+      const clip = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }));
+      await page.screenshot({ path: target, clip, animations: "disabled", caret: "hide", scale: "css" });
+    });
     if (capture.full_page) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
     if (capture.brand_close_up) await write("brand-close-up.png", (target) => lockup.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
     if (capture.parent_surface_close_up) await write("parent-surface-close-up.png", (target) => header.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
