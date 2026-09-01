@@ -486,6 +486,77 @@ async function ownerScopedMobileMenu(page, state) {
   };
 }
 
+async function waitForFocusSettlement(page) {
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+}
+
+async function libraryFilterFocusableCandidates(page) {
+  return page.evaluate(() => {
+    const drawer = document.querySelector('.reference-library-drawer[role="dialog"][aria-modal="true"]');
+    const selector = "a[href], button:not([disabled]), input:not([disabled]):not([type='hidden']), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])";
+    const currentSelector = "button:not([disabled]), select:not([disabled]), input:not([disabled]), a[href]";
+    const name = (node) => node?.getAttribute("aria-label") || node?.labels?.[0]?.innerText?.trim().replace(/\s+/g, " ") || node?.innerText?.trim().replace(/\s+/g, " ") || node?.textContent?.trim().replace(/\s+/g, " ") || "";
+    const box = (node) => { const rect = node.getBoundingClientRect(); return { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height }; };
+    const hasExcludedAncestor = (node) => { for (let current = node; current; current = current.parentElement) { if (current.hasAttribute("inert") || current.getAttribute("aria-hidden") === "true") return true; } return false; };
+    const rendered = (node) => { const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && style.visibility !== "collapse" && node.getClientRects().length > 0 && rect.width > 0 && rect.height > 0; };
+    const record = (node, index) => { const style = getComputedStyle(node); return { index, tag: node.tagName, id: node.id, class: node.className, accessible_name: name(node), role: node.getAttribute("role") || "", disabled: Boolean(node.disabled), tabIndex_property: node.tabIndex, tabindex_attribute: node.getAttribute("tabindex"), aria_hidden: node.getAttribute("aria-hidden"), closest_inert_ancestor: hasExcludedAncestor(node), computed_display: style.display, computed_visibility: style.visibility, computed_pointer_events: style.pointerEvents, offset_parent: node.offsetParent !== null, client_rects: node.getClientRects().length, bounding_box: box(node), current_query_match: node.matches(currentSelector), robust_query_match: node.matches(selector) }; };
+    const all = drawer ? [...drawer.querySelectorAll(selector)] : [];
+    return {
+      current: all.filter((node) => node.matches(currentSelector) && node.offsetParent !== null).map(record),
+      robust: all.filter((node) => !hasExcludedAncestor(node) && rendered(node)).map(record),
+    };
+  });
+}
+
+async function focusLibraryFilterControl(page, index) {
+  await page.evaluate((targetIndex) => {
+    const drawer = document.querySelector('.reference-library-drawer[role="dialog"][aria-modal="true"]');
+    const selector = "a[href], button:not([disabled]), input:not([disabled]):not([type='hidden']), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])";
+    const excluded = (node) => { for (let current = node; current; current = current.parentElement) { if (current.hasAttribute("inert") || current.getAttribute("aria-hidden") === "true") return true; } return false; };
+    const rendered = (node) => { const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && style.visibility !== "collapse" && node.getClientRects().length > 0 && rect.width > 0 && rect.height > 0; };
+    [...drawer.querySelectorAll(selector)].filter((node) => !excluded(node) && rendered(node))[targetIndex]?.focus();
+  }, index);
+  await waitForFocusSettlement(page);
+}
+
+async function recordLibraryFilterActiveElement(page, label) {
+  await waitForFocusSettlement(page);
+  return page.evaluate((traceLabel) => {
+    const drawer = document.querySelector('.reference-library-drawer[role="dialog"][aria-modal="true"]');
+    const node = document.activeElement;
+    const name = node?.getAttribute("aria-label") || node?.labels?.[0]?.innerText?.trim().replace(/\s+/g, " ") || node?.innerText?.trim().replace(/\s+/g, " ") || node?.textContent?.trim().replace(/\s+/g, " ") || "";
+    return { label: traceLabel, timestamp: performance.now(), active: { tag: node?.tagName || "", id: node?.id || "", class: node?.className || "", accessible_name: name, inside_drawer: Boolean(drawer?.contains(node)), is_body: node === document.body }, one_animation_frame_settled: true, two_animation_frame_settled: true };
+  }, label);
+}
+
+async function libraryFilterFocusTrace(page) {
+  const candidates = await libraryFilterFocusableCandidates(page);
+  const robust = candidates.robust;
+  const trace = [await recordLibraryFilterActiveElement(page, "initial")];
+  if (!robust.length) return { candidates, trace, initial_focus: false, backward_boundary_wrap: false, forward_boundary_wrap: false, complete_forward_cycle: false, complete_reverse_cycle: false, required_controls_present: false, focus_trap: false };
+  const first = robust[0]; const last = robust.at(-1);
+  await focusLibraryFilterControl(page, 0); trace.push(await recordLibraryFilterActiveElement(page, "backward-first"));
+  await page.keyboard.press("Shift+Tab"); trace.push(await recordLibraryFilterActiveElement(page, "backward-wrap"));
+  const backward = trace.at(-1).active.accessible_name === last.accessible_name && trace.at(-1).active.inside_drawer;
+  await focusLibraryFilterControl(page, robust.length - 1); trace.push(await recordLibraryFilterActiveElement(page, "forward-last"));
+  await page.keyboard.press("Tab"); trace.push(await recordLibraryFilterActiveElement(page, "forward-wrap"));
+  const forward = trace.at(-1).active.accessible_name === first.accessible_name && trace.at(-1).active.inside_drawer;
+  await focusLibraryFilterControl(page, 0);
+  const forwardTrace = [];
+  for (let index = 0; index < robust.length + 2; index += 1) { await page.keyboard.press("Tab"); forwardTrace.push(await recordLibraryFilterActiveElement(page, `forward-${index + 1}`)); }
+  await focusLibraryFilterControl(page, robust.length - 1);
+  const reverseTrace = [];
+  for (let index = 0; index < robust.length + 2; index += 1) { await page.keyboard.press("Shift+Tab"); reverseTrace.push(await recordLibraryFilterActiveElement(page, `reverse-${index + 1}`)); }
+  const requiredNames = ["Reset", "Close filters", "Apply filters"];
+  const names = robust.map((control) => control.accessible_name);
+  const requiredControlsPresent = requiredNames.every((required) => names.some((value) => value === required || value.includes(required)))
+    && robust.filter((control) => control.tag === "SELECT").length >= 2
+    && robust.filter((control) => control.tag === "BUTTON").length >= 10;
+  const completeForward = forwardTrace.every((entry) => entry.active.inside_drawer && !entry.active.is_body) && forwardTrace.every((entry, index) => index === 0 || entry.active.accessible_name !== forwardTrace[index - 1].active.accessible_name);
+  const completeReverse = reverseTrace.every((entry) => entry.active.inside_drawer && !entry.active.is_body) && reverseTrace.every((entry, index) => index === 0 || entry.active.accessible_name !== reverseTrace[index - 1].active.accessible_name);
+  return { candidates, trace: [...trace, ...forwardTrace, ...reverseTrace], initial_focus: trace[0].active.inside_drawer, first_control: first, last_control: last, backward_boundary_wrap: backward, forward_boundary_wrap: forward, complete_forward_cycle: completeForward, complete_reverse_cycle: completeReverse, required_controls_present: requiredControlsPresent, focus_trap: trace[0].active.inside_drawer && backward && forward && completeForward && completeReverse && requiredControlsPresent };
+}
+
 async function libraryFilterInteraction(page, state) {
   const trigger = page.locator('button.reference-filter-trigger:visible');
   const result = { kind: "library-filters", trigger_count: await trigger.count(), panel_count: 0, aria_expanded_before: null, aria_expanded_after: null, focus_trap: false, close_result: false, focus_restoration: false, body_scroll_lock: false, background_inert: false, body_scroll_restored: false, background_inert_restored: false, apply_filters_reachable: false, url_mutation_count: 0, failures: [] };
@@ -510,7 +581,9 @@ async function libraryFilterInteraction(page, state) {
   if (!(geometry.panel && geometry.panel.width >= geometry.viewport.width - 2 && geometry.panel.height >= geometry.viewport.height - 2 && geometry.panel_client_height > 0 && !geometry.horizontal_overflow)) result.failures.push("filters-geometry");
   result.body_scroll_lock = geometry.body_overflow === "hidden"; result.background_inert = geometry.header_inert && geometry.footer_inert;
   if (!result.body_scroll_lock) result.failures.push("filters-body-scroll-lock"); if (!result.background_inert) result.failures.push("filters-background-inert");
-  const close = panel.getByRole("button", { name: "Close filters" }); await close.focus(); await page.keyboard.press("Shift+Tab"); const shiftInside = await page.evaluate(() => Boolean(document.querySelector('.reference-library-drawer')?.contains(document.activeElement))); await page.keyboard.press("Tab"); const tabInside = await page.evaluate(() => Boolean(document.querySelector('.reference-library-drawer')?.contains(document.activeElement))); result.focus_trap = shiftInside && tabInside; if (!result.focus_trap) result.failures.push("filters-focus-trap");
+  result.focus_evidence = await libraryFilterFocusTrace(page);
+  result.focus_trap = result.focus_evidence.focus_trap;
+  if (!result.focus_trap) result.failures.push("filters-focus-trap");
   return { result, surface: panel, finalize: async () => { await panel.locator(":scope > div").evaluate((node) => { node.scrollTop = node.scrollHeight; }); await page.waitForTimeout(50); result.apply_filters_reachable = await page.evaluate(() => { const panel = document.querySelector('.reference-library-drawer'); const apply = [...panel?.querySelectorAll("button") || []].find((node) => /apply filters/i.test(node.textContent || "")); const close = panel?.querySelector('button[aria-label="Close filters"]'); const applyRect = apply?.getBoundingClientRect(); const closeRect = close?.getBoundingClientRect(); return Boolean(applyRect && closeRect && applyRect.width > 0 && applyRect.bottom <= innerHeight && closeRect.bottom <= innerHeight); }); if (!result.apply_filters_reachable) result.failures.push("filters-actions-reachable"); await page.keyboard.press("Escape"); await page.waitForTimeout(50); result.close_result = await panel.count() === 0; result.focus_restoration = await page.evaluate(() => document.activeElement?.classList.contains("reference-filter-trigger")); const restored = await page.evaluate(() => ({ body_overflow: document.body.style.overflow, header_inert: document.querySelector('[data-testid="site-header"]')?.hasAttribute("inert") ?? false, footer_inert: document.querySelector("footer")?.hasAttribute("inert") ?? false })); result.body_scroll_restored = restored.body_overflow === ""; result.background_inert_restored = !restored.header_inert && !restored.footer_inert; result.url_mutation_count = page.url() === initialUrl ? 0 : 1; if (!result.close_result) result.failures.push("filters-close"); if (!result.focus_restoration) result.failures.push("filters-focus-restoration"); if (!result.body_scroll_restored) result.failures.push("filters-body-scroll-restore"); if (!result.background_inert_restored) result.failures.push("filters-background-inert-restore"); if (result.url_mutation_count !== 0) result.failures.push("filters-url-mutation"); return result; } };
 }
 
