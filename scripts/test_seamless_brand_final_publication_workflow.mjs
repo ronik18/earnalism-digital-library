@@ -1,13 +1,30 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
+import { createRequire } from "node:module";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 
 const workflowPath = path.join(process.cwd(), ".github/workflows/seamless-brand-owner-review.yml");
 const workflow = fs.readFileSync(workflowPath, "utf8");
+const require = createRequire(import.meta.url);
+const yaml = require("js-yaml");
+const workflowDocument = yaml.load(workflow);
 let cases = 0;
 const pass = (name, check) => { assert.ok(check, name); cases += 1; console.log(`PASS ${cases}: ${name}`); };
 const before = (first, second) => workflow.indexOf(first) >= 0 && workflow.indexOf(second) >= 0 && workflow.indexOf(first) < workflow.indexOf(second);
+
+const runSteps = Object.entries(workflowDocument.jobs || {}).flatMap(([jobId, job]) => (job.steps || []).filter((step) => typeof step.run === "string").map((step) => ({ jobId, name: step.name || "unnamed", shell: step.shell || "bash", run: step.run })));
+const bashCompatible = (shell) => !shell || /(?:^|\s)(?:bash|sh)(?:\s|$)/.test(shell);
+const shellSource = (run) => run.replace(/\$\{\{[\s\S]*?\}\}/g, "__GITHUB_EXPRESSION__");
+const shellAudit = runSteps.filter((step) => bashCompatible(step.shell)).map((step) => {
+  const parsed = spawnSync("bash", ["-n"], { input: shellSource(step.run), encoding: "utf8" });
+  const heredocs = [...step.run.matchAll(/<<-?\s*['\"]?([A-Za-z_][A-Za-z0-9_]*)['\"]?/g)].map((match) => ({ delimiter: match[1], nested: /(?:for|while|until|if|case)\b[\s\S]*$/.test(step.run.slice(0, match.index)), effective_leading_whitespace: [...step.run.matchAll(new RegExp(`^([ \\t]*)${match[1]}$`, "gm"))].map((item) => item[1].length) }));
+  return { job_id: step.jobId, step_name: step.name, shell: step.shell, bash_syntax_result: parsed.status === 0 ? "PASS" : "FAIL", stderr: parsed.stderr.trim(), heredocs };
+});
+const shellAuditPath = path.join(os.tmpdir(), "pr344-final-publication-heredoc-audit.json");
+fs.writeFileSync(shellAuditPath, `${JSON.stringify({ result: shellAudit.every((entry) => entry.bash_syntax_result === "PASS") ? "PASS" : "FAIL", runs: shellAudit }, null, 2)}\n`);
 
 pass("keeps the dedicated workflow identity", /name: Seamless brand owner review/.test(workflow) && /seamless-brand-review:/.test(workflow));
 pass("supports pull-request and manual exact-head resolution", /pull_request:/.test(workflow) && /workflow_dispatch:/.test(workflow) && /github\.event\.pull_request\.head\.sha/.test(workflow) && /\/pulls\/\$\{PR_NUMBER\}/.test(workflow));
@@ -23,7 +40,11 @@ pass("probes production absence and review fixture query gating", /verify_seamle
 pass("keeps the auth private fixture assertion mandatory", /assert\.equal\(record\.private_fixture\.fixture_visible, true\)/.test(fs.readFileSync(path.join(process.cwd(), "scripts/test_seamless_brand_auth_private_batch.mjs"), "utf8")));
 pass("audits deployment isolation and labels the review build as non-deployed", /visual-fixture-deployment-isolation\.json/.test(workflow) && /DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED/.test(workflow));
 pass("makes final publication depend on fixture build probes", before("Verify production and review fixture build modes", "Run browser tooling gates") && before("Verify production and review fixture build modes", "Capture the exact head in all browsers"));
-pass("runs the focused WebKit Article stability preflight before browser populations", before("Run focused Article stability gate", "Run browser tooling gates") && before("Run focused Article stability gate", "Capture the exact head in all browsers") && /node scripts\/test_webkit_article_mobile_stability\.mjs/.test(workflow) && /for browser in webkit chromium firefox/.test(workflow) && /webkit\) runs=10/.test(workflow));
+pass("runs the focused WebKit Article stability preflight before browser populations", before("Run focused Article stability gate", "Run browser tooling gates") && before("Run focused Article stability gate", "Capture the exact head in all browsers") && /node scripts\/test_webkit_article_mobile_stability\.mjs/.test(workflow) && /node scripts\/run_seamless_brand_article_stability_gate\.mjs/.test(workflow) && /--webkit-runs 10/.test(workflow) && /--chromium-runs 5/.test(workflow) && /--firefox-runs 5/.test(workflow));
+pass("uses the checked-in Article stability runner with explicit Bash", (() => { const step = runSteps.find((item) => item.name === "Run focused Article stability gate"); return step?.shell === "bash" && !/<<'JS'/.test(step.run) && /run_seamless_brand_article_stability_gate\.mjs/.test(step.run); })());
+pass("includes the Article stability runner and its test in workflow path filters", /scripts\/run_seamless_brand_article_stability_gate\.mjs/.test(workflow) && /scripts\/test_seamless_brand_article_stability_gate\.mjs/.test(workflow));
+pass("shell-parses every Bash-compatible workflow run block", shellAudit.every((entry) => entry.bash_syntax_result === "PASS"));
+pass("records a heredoc audit without invalid indented delimiters", shellAudit.every((entry) => entry.heredocs.every((heredoc) => heredoc.effective_leading_whitespace.every((count) => count === 0))));
 pass("records the complete Article stability result in exact-head evidence inputs", /ARTICLE_STABILITY_RESULTS/.test(workflow) && /inputs\.article_stability=articleStability/.test(workflow) && /\[10,10,10\]/.test(workflow));
 pass("runs final evidence and package validators", /validate_seamless_brand_final_evidence_inputs\.py/.test(workflow) && /validate_seamless_brand_final_owner_review\.py/.test(workflow));
 pass("restores the known generated sitemap before the clean-tree assertion", /source-sitemap\.xml/.test(workflow) && before("cp \"$RUNNER_TEMP/source-sitemap.xml\" frontend/public/sitemap.xml", "git diff --exit-code"));
@@ -34,4 +55,4 @@ pass("uses a fresh verification job and artifact download", /verify-published-ow
 pass("records distinct artifact digests", /GITHUB_ARTIFACT_DIGEST/.test(workflow) && /DOWNLOADED_ARTIFACT_ARCHIVE_SHA256/.test(workflow) && /INNER_ARTIFACT_ZIP_SHA256/.test(workflow));
 pass("keeps deployment and merge absent", !/git merge|gh pr merge/.test(workflow) && !/\bvercel\s+deploy\b|\brailway\s+deploy\b/i.test(workflow));
 pass("keeps diagnostic artifact name distinct", /pr344-seamless-brand-final-diagnostic-\$\{\{ needs\.resolve-pr-head\.outputs\.pr_head \}\}/.test(workflow));
-console.log(JSON.stringify({ result: "PASS", testCaseCount: cases, workflowPath }));
+console.log(JSON.stringify({ result: "PASS", testCaseCount: cases, workflowPath, shellAuditPath }));

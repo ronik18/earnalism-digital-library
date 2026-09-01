@@ -6,6 +6,8 @@ on:
     paths:
       - .github/workflows/seamless-brand-owner-review.yml
       - scripts/capture_seamless_brand_owner_review.mjs
+      - scripts/run_seamless_brand_article_stability_gate.mjs
+      - scripts/test_seamless_brand_article_stability_gate.mjs
       - scripts/generate_seamless_brand_cross_browser_shell_summary.mjs
       - scripts/generate_seamless_brand_final_evidence_inputs.mjs
       - scripts/validate_seamless_brand_final_evidence_inputs.py
@@ -192,6 +194,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Run focused Article stability gate
+        shell: bash
         run: |
           set -euo pipefail
           ARTICLE_STABILITY_ROOT="$RUNNER_TEMP/pr344-article-stability-${PR_HEAD_SHA}"
@@ -205,25 +208,17 @@ jobs:
           done
           export SEAMLESS_BRAND_TEST_BASE_URL=http://127.0.0.1:13017
           node scripts/test_webkit_article_mobile_stability.mjs | tee "$RUNNER_TEMP/webkit-article-stability-tests.log"
-          for browser in webkit chromium firefox; do
-            case "$browser" in webkit) runs=10 ;; chromium|firefox) runs=5 ;; esac
-            for run in $(seq 1 "$runs"); do
-              output="$ARTICLE_STABILITY_ROOT/$browser/run-$run"
-              node scripts/capture_seamless_brand_owner_review.mjs --manifest docs/design-system/seamless-brand-state-manifest.json --route-inventory docs/design-system/seamless-brand-route-inventory.json --state-filter article-mobile --capture --browser "$browser" --base-url "$SEAMLESS_BRAND_TEST_BASE_URL" --output "$output"
-              node - "$output/capture-summary.json" "$output/states/article-mobile/metadata.json" <<'JS'
-              const fs=require('fs'); const [summaryPath,metadataPath]=process.argv.slice(2);
-              const summary=JSON.parse(fs.readFileSync(summaryPath,'utf8')); const metadata=JSON.parse(fs.readFileSync(metadataPath,'utf8'));
-              if (JSON.stringify([summary.expected_state_count,summary.captured_state_count,summary.stable_state_count]) !== JSON.stringify([1,1,1])) throw new Error('Article stability capture count failed');
-              if (metadata.visual_quiescence?.result !== 'PASS' || metadata.console_error_count || metadata.page_error_count || metadata.failed_required_request_count) throw new Error('Article stability metadata gate failed');
-              if (!metadata.stability_attempts?.every((attempt)=>attempt.stable)) throw new Error('Article paired screenshot hashes were not stable');
-              JS
-            done
-          done
-          node - "$ARTICLE_STABILITY_ROOT" "$ARTICLE_STABILITY_ROOT/article-stability-results.json" <<'JS'
-          const fs=require('fs'),path=require('path'); const [root,target]=process.argv.slice(2); const expected={webkit:10,chromium:5,firefox:5}; const results={};
-          for (const [browser,count] of Object.entries(expected)) { const runs=[]; for (let index=1;index<=count;index+=1) { const output=path.join(root,browser,`run-${index}`); const summary=JSON.parse(fs.readFileSync(path.join(output,'capture-summary.json'),'utf8')); const metadata=JSON.parse(fs.readFileSync(path.join(output,'states','article-mobile','metadata.json'),'utf8')); runs.push({run:index,expected:summary.expected_state_count,captured:summary.captured_state_count,stable:summary.stable_state_count,visual_quiescence:metadata.visual_quiescence?.result,paired_screenshot_hashes:metadata.stability_attempts?.every((attempt)=>attempt.stable)}); } if (runs.some((run)=>run.expected!==1||run.captured!==1||run.stable!==1||run.visual_quiescence!=='PASS'||!run.paired_screenshot_hashes)) throw new Error(`${browser} Article stability aggregation failed`); results[browser]={expected:count,captured:runs.length,stable:runs.filter((run)=>run.stable===1).length,runs}; }
-          fs.writeFileSync(target,`${JSON.stringify({result:'PASS',article_mobile:results},null,2)}\n`);
-          JS
+          node scripts/run_seamless_brand_article_stability_gate.mjs \
+            --base-url "$SEAMLESS_BRAND_TEST_BASE_URL" \
+            --output "$ARTICLE_STABILITY_ROOT" \
+            --manifest docs/design-system/seamless-brand-state-manifest.json \
+            --route-inventory docs/design-system/seamless-brand-route-inventory.json \
+            --capture-script scripts/capture_seamless_brand_owner_review.mjs \
+            --state-id article-mobile \
+            --webkit-runs 10 \
+            --chromium-runs 5 \
+            --firefox-runs 5
+          test -s "$ARTICLE_STABILITY_ROOT/article-stability-results.json"
           echo "ARTICLE_STABILITY_RESULTS=$ARTICLE_STABILITY_ROOT/article-stability-results.json" >> "$GITHUB_ENV"
 
       - name: Run browser tooling gates
