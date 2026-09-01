@@ -191,6 +191,41 @@ jobs:
             echo "FIXTURE_DEPLOYMENT_ISOLATION=$RUNNER_TEMP/visual-fixture-deployment-isolation.json"
           } >> "$GITHUB_ENV"
 
+      - name: Run focused Article stability gate
+        run: |
+          set -euo pipefail
+          ARTICLE_STABILITY_ROOT="$RUNNER_TEMP/pr344-article-stability-${PR_HEAD_SHA}"
+          mkdir -p "$ARTICLE_STABILITY_ROOT"
+          node scripts/serve_frontend_build.js --directory "$REVIEW_FIXTURE_BUILD_DIR" --port 13017 > "$RUNNER_TEMP/article-stability-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for _ in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:13017/ >/dev/null; then break; fi
+            sleep 1
+          done
+          export SEAMLESS_BRAND_TEST_BASE_URL=http://127.0.0.1:13017
+          node scripts/test_webkit_article_mobile_stability.mjs | tee "$RUNNER_TEMP/webkit-article-stability-tests.log"
+          for browser in webkit chromium firefox; do
+            case "$browser" in webkit) runs=10 ;; chromium|firefox) runs=5 ;; esac
+            for run in $(seq 1 "$runs"); do
+              output="$ARTICLE_STABILITY_ROOT/$browser/run-$run"
+              node scripts/capture_seamless_brand_owner_review.mjs --manifest docs/design-system/seamless-brand-state-manifest.json --route-inventory docs/design-system/seamless-brand-route-inventory.json --state-filter article-mobile --capture --browser "$browser" --base-url "$SEAMLESS_BRAND_TEST_BASE_URL" --output "$output"
+              node - "$output/capture-summary.json" "$output/states/article-mobile/metadata.json" <<'JS'
+              const fs=require('fs'); const [summaryPath,metadataPath]=process.argv.slice(2);
+              const summary=JSON.parse(fs.readFileSync(summaryPath,'utf8')); const metadata=JSON.parse(fs.readFileSync(metadataPath,'utf8'));
+              if (JSON.stringify([summary.expected_state_count,summary.captured_state_count,summary.stable_state_count]) !== JSON.stringify([1,1,1])) throw new Error('Article stability capture count failed');
+              if (metadata.visual_quiescence?.result !== 'PASS' || metadata.console_error_count || metadata.page_error_count || metadata.failed_required_request_count) throw new Error('Article stability metadata gate failed');
+              if (!metadata.stability_attempts?.every((attempt)=>attempt.stable)) throw new Error('Article paired screenshot hashes were not stable');
+              JS
+            done
+          done
+          node - "$ARTICLE_STABILITY_ROOT" "$ARTICLE_STABILITY_ROOT/article-stability-results.json" <<'JS'
+          const fs=require('fs'),path=require('path'); const [root,target]=process.argv.slice(2); const expected={webkit:10,chromium:5,firefox:5}; const results={};
+          for (const [browser,count] of Object.entries(expected)) { const runs=[]; for (let index=1;index<=count;index+=1) { const output=path.join(root,browser,`run-${index}`); const summary=JSON.parse(fs.readFileSync(path.join(output,'capture-summary.json'),'utf8')); const metadata=JSON.parse(fs.readFileSync(path.join(output,'states','article-mobile','metadata.json'),'utf8')); runs.push({run:index,expected:summary.expected_state_count,captured:summary.captured_state_count,stable:summary.stable_state_count,visual_quiescence:metadata.visual_quiescence?.result,paired_screenshot_hashes:metadata.stability_attempts?.every((attempt)=>attempt.stable)}); } if (runs.some((run)=>run.expected!==1||run.captured!==1||run.stable!==1||run.visual_quiescence!=='PASS'||!run.paired_screenshot_hashes)) throw new Error(`${browser} Article stability aggregation failed`); results[browser]={expected:count,captured:runs.length,stable:runs.filter((run)=>run.stable===1).length,runs}; }
+          fs.writeFileSync(target,`${JSON.stringify({result:'PASS',article_mobile:results},null,2)}\n`);
+          JS
+          echo "ARTICLE_STABILITY_RESULTS=$ARTICLE_STABILITY_ROOT/article-stability-results.json" >> "$GITHUB_ENV"
+
       - name: Run browser tooling gates
         run: |
           set -euo pipefail
@@ -242,18 +277,21 @@ jobs:
         run: |
           set -euo pipefail
           node scripts/generate_seamless_brand_final_evidence_inputs.mjs --output "$EVIDENCE_ROOT/final-inputs" --chromium "$EVIDENCE_ROOT/chromium" --cross-browser "$EVIDENCE_ROOT/cross-browser"
-          node - "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json" "$FIXTURE_BUILD_PROBE" "$FIXTURE_DEPLOYMENT_ISOLATION" <<'JS'
-          const fs=require('fs'); const [inputsPath,probePath,isolationPath]=process.argv.slice(2);
+          node - "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json" "$FIXTURE_BUILD_PROBE" "$FIXTURE_DEPLOYMENT_ISOLATION" "$ARTICLE_STABILITY_RESULTS" <<'JS'
+          const fs=require('fs'); const [inputsPath,probePath,isolationPath,articleStabilityPath]=process.argv.slice(2);
           const inputs=JSON.parse(fs.readFileSync(inputsPath,'utf8'));
           const probe=JSON.parse(fs.readFileSync(probePath,'utf8'));
           const isolation=JSON.parse(fs.readFileSync(isolationPath,'utf8'));
-          if (probe.result !== 'PASS' || isolation.result !== 'PASS') throw new Error('fixture build proof is not passing');
+          const articleStability=JSON.parse(fs.readFileSync(articleStabilityPath,'utf8'));
+          if (probe.result !== 'PASS' || isolation.result !== 'PASS' || articleStability.result !== 'PASS') throw new Error('fixture build or Article stability proof is not passing');
+          if (JSON.stringify([articleStability.article_mobile.webkit.expected,articleStability.article_mobile.webkit.captured,articleStability.article_mobile.webkit.stable]) !== JSON.stringify([10,10,10])) throw new Error('WebKit Article stability result is incomplete');
           inputs.build_modes={
             production_contract:{label:process.env.PRODUCTION_CONTRACT_BUILD_LABEL,sha256:process.env.PRODUCTION_CONTRACT_BUILD_SHA256,fixture_enabled:false},
             review_fixture:{label:process.env.REVIEW_FIXTURE_BUILD_LABEL,sha256:process.env.REVIEW_FIXTURE_BUILD_SHA256,fixture_enabled:true,not_deployed:true},
             probe_result:probe.result,
             deployment_isolation_result:isolation.result
           };
+          inputs.article_stability=articleStability;
           fs.writeFileSync(inputsPath, `${JSON.stringify(inputs,null,2)}\n`);
           JS
           python3 scripts/validate_seamless_brand_final_evidence_inputs.py --inputs "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json"

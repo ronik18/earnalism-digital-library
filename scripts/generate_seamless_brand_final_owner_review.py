@@ -423,6 +423,10 @@ def validate_input_authority(inputs, current_head, package_head, production_sha,
         raise ValueError("Chromium input count differs")
     if inputs["firefox"].get("result") != "PASS" or inputs["webkit"].get("result") != "PASS":
         raise ValueError("Cross-browser input result differs")
+    for browser, expected in [("webkit", 10), ("chromium", 5), ("firefox", 5)]:
+        result = inputs.get("article_stability", {}).get("article_mobile", {}).get(browser, {})
+        if (result.get("expected"), result.get("captured"), result.get("stable")) != (expected, expected, expected):
+            raise ValueError(f"{browser} Article stability input differs")
     if inputs.get("rendered_ui_defect_count") != 0 or inputs.get("production_mutation_count") != 0:
         raise ValueError("Input defects or mutations are nonzero")
     return "PASS" if inputs["current_pr_head"] == current_head == package_head else "PASS_CARRIED_FORWARD_EVIDENCE_ONLY"
@@ -458,6 +462,7 @@ def main():
     chromium_states = state_records(chromium_source)
     copy_state_categories(package, chromium_source, chromium_states)
     for source, destination in [(ROOT / "docs/design-system/seamless-brand-route-inventory.json", package / "route-inventory.json"), (ROOT / "docs/design-system/seamless-brand-state-manifest.json", package / "state-manifest.json"), (ROOT / "docs/design-system/seamless-brand-cross-browser-shell-matrix.json", package / "cross-browser-selection-contract.json"), (manifest_path, package / "final-evidence-inputs.json"), (chromium_source / "capture-summary.json", package / "chromium-summary.json"), (firefox_source / "capture-summary.json", package / "firefox-summary.json"), (webkit_source / "capture-summary.json", package / "webkit-summary.json"), (inputs_dir / "static-snapshot-brand-results.json", package / "static-snapshot-brand-results.json"), (inputs_dir / "route-surface-hashes.json", package / "route-surface-hashes.json"), (inputs_dir / "approval-carry-forward.json", package / "approval-carry-forward.json")]: copy_json(source, destination)
+    json_write(package / "article-stability-results.json", inputs["article_stability"])
     copy_json(inputs_dir / "static-snapshot-brand-results.json", package / "static/static-snapshot-brand-results.json")
     interactions, zoom, safety = results_from_states(chromium_states)
     optical = optical_results(chromium_states)

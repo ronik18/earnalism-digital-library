@@ -28,7 +28,7 @@ function createSynthetic() {
   const files = {
     "executive-summary.json": { production_surface_sha256: production, canonical_logo_sha256: logo, rendered_ui_defects: 0, production_mutations: 0 },
     "visual-decision-checklist.json": { owner_review_status: "OWNER_REVIEW_REQUIRED" }, "route-inventory.json": {}, "state-manifest.json": {}, "cross-browser-selection-contract.json": {},
-    "final-evidence-inputs.json": { production_surface_sha256: production, canonical_logo_sha256: logo }, "chromium-summary.json": summary, "firefox-summary.json": summary, "webkit-summary.json": summary,
+    "final-evidence-inputs.json": { production_surface_sha256: production, canonical_logo_sha256: logo, article_stability: { article_mobile: { webkit: { expected: 10, captured: 10, stable: 10 }, chromium: { expected: 5, captured: 5, stable: 5 }, firefox: { expected: 5, captured: 5, stable: 5 } } } }, "article-stability-results.json": { article_mobile: { webkit: { expected: 10, captured: 10, stable: 10 }, chromium: { expected: 5, captured: 5, stable: 5 }, firefox: { expected: 5, captured: 5, stable: 5 } } }, "chromium-summary.json": summary, "firefox-summary.json": summary, "webkit-summary.json": summary,
     "browser-results.json": common, "interaction-results.json": common, "zoom-results.json": common, "optical-readability-results.json": common, "logo-integrity-results.json": common, "brand-placement-results.json": common,
     "static-snapshot-brand-results.json": common, "route-surface-hashes.json": common, "approval-carry-forward.json": common, "accessibility-results.json": common, "safety-results.json": common,
     "package-statistics.json": { zero_byte_required_file_count: 0, sensitive_data_finding_count: 0, pdf_count: 1, contact_sheet_bytes: tinyPng.length },
@@ -77,5 +77,6 @@ fails("missing package statistics fails", dir => fs.rmSync(path.join(dir, "packa
 fails("zero-byte required file fails", dir => { const p = path.join(dir, "package-statistics.json"); const v = JSON.parse(fs.readFileSync(p)); v.zero_byte_required_file_count = 1; write(p, v); });
 fails("wrong package head fails", dir => { const p = path.join(dir, "provenance.json"); const v = JSON.parse(fs.readFileSync(p)); v.package_generation_head = "0".repeat(40); write(p, v); });
 fails("wrong production-surface SHA fails", dir => { const p = path.join(dir, "executive-summary.json"); const v = JSON.parse(fs.readFileSync(p)); v.production_surface_sha256 = "0".repeat(64); write(p, v); });
+fails("incomplete Article stability evidence fails", dir => { const p = path.join(dir, "final-evidence-inputs.json"); const v = JSON.parse(fs.readFileSync(p)); v.article_stability.article_mobile.webkit.stable = 9; write(p, v); });
 if (realPackage) pass("complete real local package passes", () => assert.equal(validate(realPackage, false).status, 0));
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases, realPackage }));

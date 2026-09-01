@@ -51,6 +51,9 @@ def main():
     require((chromium.get("expected"), chromium.get("captured"), chromium.get("stable")) == (65, 65, 65), "Chromium counts differ from 65/65/65", failures)
     for key in ["firefox", "webkit"]:
         item = data.get(key, {}); require((item.get("expected"), item.get("captured"), item.get("stable")) == (20, 20, 20) and item.get("result") == "PASS", f"{key} result fails", failures)
+    article = data.get("article_stability", {}).get("article_mobile", {})
+    for browser, expected in [("webkit", 10), ("chromium", 5), ("firefox", 5)]:
+        item = article.get(browser, {}); require((item.get("expected"), item.get("captured"), item.get("stable")) == (expected, expected, expected), f"{browser} Article stability result fails", failures)
     static = data.get("static_snapshot", {}); require(static.get("expected") == static.get("inspected") == static.get("passing") and static.get("result") == "PASS", "static snapshot result fails", failures)
     require(data.get("route_hashes", {}).get("result") == "PASS" and data.get("approval_carry_forward", {}).get("result") == "PASS", "route-family hash result fails", failures)
     for key in ["reader_safety_result", "listener_safety_result", "interaction_result", "zoom_result", "error_status_result"]: require(data.get(key) == "PASS", f"{key} fails", failures)

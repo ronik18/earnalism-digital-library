@@ -256,9 +256,12 @@ async function installVisualCaptureStabilization(page, browserName) {
 async function requestedCaptureClip(page, locator, padding = 4) {
   const rect = await locator.boundingBox();
   if (!rect) throw new Error("capture target is not visible");
-  const metrics = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: document.documentElement.scrollWidth, height: document.documentElement.scrollHeight }));
-  const x = Math.max(0, rect.x + metrics.x - padding);
-  const y = Math.max(0, rect.y + metrics.y - padding);
+  // Playwright page screenshot clips are relative to the current viewport,
+  // as is Locator.boundingBox(). Do not add document scroll offsets: that
+  // would turn an intentional footer close-up into an out-of-bounds clip.
+  const metrics = await page.evaluate(() => ({ width: window.innerWidth, height: window.innerHeight }));
+  const x = Math.max(0, rect.x - padding);
+  const y = Math.max(0, rect.y - padding);
   return { x, y, width: Math.max(1, Math.min(metrics.width - x, rect.width + padding * 2)), height: Math.max(1, Math.min(metrics.height - y, rect.height + padding * 2)) };
 }
 
@@ -328,8 +331,14 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
   };
   try {
     if (capture.viewport && (!requestedTypes || requestedTypes.has("viewport"))) await write("viewport.png", async (target) => {
-      const clip = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }));
-      await page.screenshot({ path: target, clip, animations: "disabled", caret: "hide", scale: "css" });
+      // A viewport screenshot at a scrolled interaction surface must use the
+      // browser viewport. A page-coordinate clip can extend below the document
+      // boundary and fail. WebKit Article capture remains top-of-document and
+      // uses an explicit clip to preserve its compositor-stable raster path.
+      const clip = browserName === "webkit" && Math.abs(scrollPosition.y) <= 1
+        ? await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }))
+        : undefined;
+      await page.screenshot({ path: target, ...(clip ? { clip } : { fullPage: false }), animations: "disabled", caret: "hide", scale: "css" });
     });
     if (capture.full_page && (!requestedTypes || requestedTypes.has("full_page"))) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
     if (capture.brand_close_up && (!requestedTypes || requestedTypes.has("brand_close_up"))) await write("brand-close-up.png", async (target) => page.screenshot({ path: target, clip: await requestedCaptureClip(page, lockup), animations: "disabled", caret: "hide", scale: "css" }));
@@ -338,18 +347,19 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
     // Clip-based screenshots must not move the document. Avoid a no-op
     // scrollTo(), because WebKit re-rasterizes article text after that call.
     const current = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY }));
-    if (Math.abs(current.x - scrollPosition.x) <= 1 && Math.abs(current.y - scrollPosition.y) <= 1) return files;
-    const restored = await page.evaluate(async ({ x, y }) => {
-      const set = () => {
-        window.scrollTo({ left: x, top: y, behavior: "instant" });
-        document.documentElement.scrollLeft = x; document.documentElement.scrollTop = y;
-        document.body.scrollLeft = x; document.body.scrollTop = y;
-        if (document.scrollingElement) { document.scrollingElement.scrollLeft = x; document.scrollingElement.scrollTop = y; }
-      };
-      set(); await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))); set();
-      return { x: window.scrollX, y: window.scrollY };
-    }, scrollPosition);
-    if (Math.abs(restored.x - scrollPosition.x) > 1 || Math.abs(restored.y - scrollPosition.y) > 1) throw new Error(`Screenshot capture changed scroll position from ${JSON.stringify(scrollPosition)} to ${JSON.stringify(restored)}.`);
+    if (Math.abs(current.x - scrollPosition.x) > 1 || Math.abs(current.y - scrollPosition.y) > 1) {
+      const restored = await page.evaluate(async ({ x, y }) => {
+        const set = () => {
+          window.scrollTo({ left: x, top: y, behavior: "instant" });
+          document.documentElement.scrollLeft = x; document.documentElement.scrollTop = y;
+          document.body.scrollLeft = x; document.body.scrollTop = y;
+          if (document.scrollingElement) { document.scrollingElement.scrollLeft = x; document.scrollingElement.scrollTop = y; }
+        };
+        set(); await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))); set();
+        return { x: window.scrollX, y: window.scrollY };
+      }, scrollPosition);
+      if (Math.abs(restored.x - scrollPosition.x) > 1 || Math.abs(restored.y - scrollPosition.y) > 1) throw new Error(`Screenshot capture changed scroll position from ${JSON.stringify(scrollPosition)} to ${JSON.stringify(restored)}.`);
+    }
   }
   return files;
 }

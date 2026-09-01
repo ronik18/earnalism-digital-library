@@ -34,7 +34,7 @@ def scan(package):
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('--package',required=True); parser.add_argument('--allow-synthetic',action='store_true'); args=parser.parse_args()
     package=Path(args.package).resolve(); failures=[]
-    required=['owner-review.html','owner-review.pdf','contact-sheet.png','executive-summary.json','visual-decision-checklist.json','route-inventory.json','state-manifest.json','cross-browser-selection-contract.json','final-evidence-inputs.json','chromium-summary.json','firefox-summary.json','webkit-summary.json','browser-results.json','interaction-results.json','zoom-results.json','optical-readability-results.json','logo-integrity-results.json','brand-placement-results.json','static-snapshot-brand-results.json','route-surface-hashes.json','approval-carry-forward.json','accessibility-results.json','safety-results.json','package-statistics.json','provenance.json','manifest.json','manifest.sha256','artifact.zip']
+    required=['owner-review.html','owner-review.pdf','contact-sheet.png','executive-summary.json','visual-decision-checklist.json','route-inventory.json','state-manifest.json','cross-browser-selection-contract.json','final-evidence-inputs.json','article-stability-results.json','chromium-summary.json','firefox-summary.json','webkit-summary.json','browser-results.json','interaction-results.json','zoom-results.json','optical-readability-results.json','logo-integrity-results.json','brand-placement-results.json','static-snapshot-brand-results.json','route-surface-hashes.json','approval-carry-forward.json','accessibility-results.json','safety-results.json','package-statistics.json','provenance.json','manifest.json','manifest.sha256','artifact.zip']
     for name in required: need((package/name).is_file() and (package/name).stat().st_size>0, f'missing or empty {name}', failures)
     if failures: print(json.dumps({'FINAL_PACKAGE_VALIDATOR_RESULT':'FAIL','failures':failures})); raise SystemExit(1)
     executive, provenance, inputs, stats = [load(package/name) for name in ['executive-summary.json','provenance.json','final-evidence-inputs.json','package-statistics.json']]
@@ -42,6 +42,11 @@ def main():
     need(provenance.get('package_generation_head')==current,'package head differs from checkout',failures); need(provenance.get('production_implementation_head'),'production implementation head missing',failures)
     need(executive.get('production_surface_sha256')==production_hash(),'production surface differs',failures); need(executive.get('canonical_logo_sha256')==sha(ROOT/'frontend/public/assets/brand/earnalism-brand-lockup.png'),'canonical logo differs',failures)
     need(inputs.get('production_surface_sha256')==executive.get('production_surface_sha256'),'input production hash differs',failures); need(inputs.get('canonical_logo_sha256')==executive.get('canonical_logo_sha256'),'input logo hash differs',failures)
+    article=inputs.get('article_stability',{}).get('article_mobile',{})
+    for browser, expected_count in [('webkit',10),('chromium',5),('firefox',5)]:
+        item=article.get(browser,{})
+        need((item.get('expected'),item.get('captured'),item.get('stable'))==(expected_count,expected_count,expected_count),f'{browser} Article stability evidence incomplete',failures)
+    need(load(package/'article-stability-results.json')==inputs.get('article_stability'),'packaged Article stability evidence differs',failures)
     need(all(provenance.get('browsers',{}).get(name) for name in ['chromium','firefox','webkit']),'browser version missing',failures); need(all(provenance.get(key) for key in ['capture_tool_sha256','generator_sha256','validator_sha256']),'tool SHA missing',failures)
     expected=1 if args.allow_synthetic else 65
     chromium=load(package/'chromium-summary.json'); firefox=load(package/'firefox-summary.json'); webkit=load(package/'webkit-summary.json')
