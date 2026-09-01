@@ -664,7 +664,7 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
   if (state.fixture === "reader-visual-safe" && ((state.viewport.width < 768 && !data.action_row_below_brand) || data.reader.protected_content_exposed || data.reader.protected_prefetch || data.reader.balance_consumption !== 0)) defects.push("reader-fixture-contract");
   if (state.fixture === "listener-non-playable" && ((state.viewport.width < 768 && !data.action_row_below_brand) || !data.listener.cover_visible || data.listener.raw_media_url !== "absent" || data.listener.playable_source !== "absent" || data.listener.autoplay || data.listener.preload !== "absent" || data.listener.balance_consumption !== 0)) defects.push("listener-fixture-contract");
   if (statusLogoCard) defects.push("legacy-error-logo-card");
-  if (statusContract?.result !== "PASS") defects.push("status-contract");
+  if (statusContract && statusContract.result !== "PASS") defects.push("status-contract");
   const privateFixture = state.fixture === "sanitized-account";
   const productionAuthenticationUsed = privateFixture && (initialStorage.cookies.length !== 0 || initialStorage.origins.length !== 0 || apiRequests.some(({ url }) => !url.startsWith(baseUrl)));
   const productionAccountApiCalled = privateFixture && apiRequests.some(({ url }) => !url.startsWith(baseUrl));
