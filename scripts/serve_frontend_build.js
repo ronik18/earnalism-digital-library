@@ -5,7 +5,10 @@ const fs = require("node:fs");
 const http = require("node:http");
 const path = require("node:path");
 
-const root = path.resolve(__dirname, "..", "frontend", "build");
+const defaultRoot = path.resolve(__dirname, "..", "frontend", "build");
+const directoryIndex = process.argv.indexOf("--directory");
+if (directoryIndex !== -1 && (!process.argv[directoryIndex + 1] || process.argv[directoryIndex + 1].startsWith("--"))) throw new Error("--directory requires a build directory.");
+const root = path.resolve(directoryIndex === -1 ? defaultRoot : process.argv[directoryIndex + 1]);
 const host = process.argv.includes("--host") ? process.argv[process.argv.indexOf("--host") + 1] : "127.0.0.1";
 const port = Number(process.argv.includes("--port") ? process.argv[process.argv.indexOf("--port") + 1] : 3000);
 if (host !== "127.0.0.1" || !Number.isInteger(port) || port < 1024 || port > 65535) throw new Error("Local UAT server requires an unprivileged 127.0.0.1 port.");
@@ -26,7 +29,7 @@ function isSpaRoute(pathname) {
 }
 
 if (!fs.statSync(root, { throwIfNoEntry: false })?.isDirectory()) {
-  throw new Error("frontend/build is required; run npm --prefix frontend run build first.");
+  throw new Error("A generated frontend build directory is required; run npm --prefix frontend run build first.");
 }
 
 http.createServer((request, response) => {

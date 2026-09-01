@@ -80,8 +80,6 @@ jobs:
       pr_head: ${{ needs.resolve-pr-head.outputs.pr_head }}
     env:
       PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
-      REACT_APP_BACKEND_URL: http://127.0.0.1:18007/api
-      REACT_APP_UAT_LOCAL: "true"
       PR_HEAD_SHA: ${{ needs.resolve-pr-head.outputs.pr_head }}
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
@@ -134,22 +132,69 @@ jobs:
           node scripts/test_seamless_brand_final_owner_review.mjs
           node scripts/test_seamless_brand_final_publication_workflow.mjs
 
-      - name: Build exact workflow head and verify static SEO
+      - name: Build production-contract frontend and verify static SEO
         run: |
           set -euo pipefail
           cp frontend/public/sitemap.xml "$RUNNER_TEMP/source-sitemap.xml"
-          npm --prefix frontend run build | tee "$RUNNER_TEMP/frontend-build.log"
+          REACT_APP_ENABLE_VISUAL_FIXTURES=0 REACT_APP_UAT_LOCAL=false REACT_APP_BACKEND_URL=http://127.0.0.1:18007/api npm --prefix frontend run build | tee "$RUNNER_TEMP/frontend-production-contract-build.log"
           test "$(sha256sum frontend/public/assets/brand/earnalism-brand-lockup.png | awk '{print $1}')" = "$CANONICAL_LOGO_SHA"
           test "$(sha256sum frontend/build/assets/brand/earnalism-brand-lockup.png | awk '{print $1}')" = "$CANONICAL_LOGO_SHA"
-          # The static generator refreshes this checked-in sitemap's calendar date; retain the built output and restore only the exact source byte stream.
+          PRODUCTION_CONTRACT_BUILD_DIR="$RUNNER_TEMP/pr344-production-contract-build"
+          mkdir -p "$PRODUCTION_CONTRACT_BUILD_DIR"
+          cp -a frontend/build/. "$PRODUCTION_CONTRACT_BUILD_DIR/"
+          PRODUCTION_CONTRACT_BUILD_SHA256="$(cd "$PRODUCTION_CONTRACT_BUILD_DIR" && find . -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | awk '{print $1}')"
           cp "$RUNNER_TEMP/source-sitemap.xml" frontend/public/sitemap.xml
           git diff --exit-code
-          sha256sum "$RUNNER_TEMP/frontend-build.log" > "$RUNNER_TEMP/frontend-build.log.sha256"
+          {
+            echo "PRODUCTION_CONTRACT_BUILD_DIR=$PRODUCTION_CONTRACT_BUILD_DIR"
+            echo "PRODUCTION_CONTRACT_BUILD_SHA256=$PRODUCTION_CONTRACT_BUILD_SHA256"
+            echo "PRODUCTION_CONTRACT_BUILD_LABEL=PRODUCTION_CONTRACT_BUILD_FIXTURES_DISABLED"
+          } >> "$GITHUB_ENV"
+
+      - name: Build deterministic owner-review fixture frontend
+        run: |
+          set -euo pipefail
+          rm -rf frontend/build
+          REACT_APP_ENABLE_VISUAL_FIXTURES=1 REACT_APP_UAT_LOCAL=true REACT_APP_BACKEND_URL=http://127.0.0.1:18007/api npm --prefix frontend run build | tee "$RUNNER_TEMP/frontend-review-fixture-build.log"
+          REVIEW_FIXTURE_BUILD_DIR="$RUNNER_TEMP/pr344-owner-review-fixture-build"
+          mkdir -p "$REVIEW_FIXTURE_BUILD_DIR"
+          cp -a frontend/build/. "$REVIEW_FIXTURE_BUILD_DIR/"
+          REVIEW_FIXTURE_BUILD_SHA256="$(cd "$REVIEW_FIXTURE_BUILD_DIR" && find . -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | awk '{print $1}')"
+          cp "$RUNNER_TEMP/source-sitemap.xml" frontend/public/sitemap.xml
+          git diff --exit-code
+          {
+            echo "REVIEW_FIXTURE_BUILD_DIR=$REVIEW_FIXTURE_BUILD_DIR"
+            echo "REVIEW_FIXTURE_BUILD_SHA256=$REVIEW_FIXTURE_BUILD_SHA256"
+            echo "REVIEW_FIXTURE_BUILD_LABEL=DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED"
+          } >> "$GITHUB_ENV"
+
+      - name: Verify production and review fixture build modes
+        run: |
+          set -euo pipefail
+          FIXTURE_BUILD_PROBE="$RUNNER_TEMP/final-ci-sanitized-fixture-root-cause.json"
+          node scripts/verify_seamless_brand_review_fixture_build.mjs --production-build "$PRODUCTION_CONTRACT_BUILD_DIR" --review-build "$REVIEW_FIXTURE_BUILD_DIR" --output "$FIXTURE_BUILD_PROBE"
+          node - "$FIXTURE_BUILD_PROBE" "$RUNNER_TEMP/visual-fixture-deployment-isolation.json" <<'JS'
+          const fs=require('fs'); const [probePath,isolationPath]=process.argv.slice(2);
+          const workflow=fs.readFileSync('.github/workflows/seamless-brand-owner-review.yml','utf8');
+          const probe=JSON.parse(fs.readFileSync(probePath,'utf8'));
+          if (probe.result !== 'PASS') throw new Error('review fixture build probe failed');
+          const fixtureBuildCommands=workflow.split('\n').filter(line=>/^\s{10}REACT_APP_ENABLE_VISUAL_FIXTURES=1 .*npm --prefix frontend run build/.test(line));
+          if (fixtureBuildCommands.length !== 1) throw new Error('review fixture flag must appear in exactly one scoped build command');
+          if (/^\s*REACT_APP_ENABLE_VISUAL_FIXTURES:\s*["']?1/m.test(workflow)) throw new Error('review fixture flag may not be job-global');
+          const deploymentWorkflows=['regression.yml','railway-deployment-canary.yml','post-deploy-k6.yml'];
+          const enabled=deploymentWorkflows.filter(name=>/REACT_APP_ENABLE_VISUAL_FIXTURES\s*[:=]\s*["']?1/.test(fs.readFileSync(`.github/workflows/${name}`,'utf8')));
+          if (enabled.length) throw new Error(`deployment workflow enables visual fixtures: ${enabled.join(',')}`);
+          fs.writeFileSync(isolationPath, `${JSON.stringify({result:'PASS',deployable_fixture_enabled_build_paths:0,final_review_fixture_enabled_build_paths:1,final_review_label:'DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED',repository_controlled_deployment_workflows_enable_fixture:false,repository_production_environment_enables_fixture:false},null,2)}\n`);
+          JS
+          {
+            echo "FIXTURE_BUILD_PROBE=$FIXTURE_BUILD_PROBE"
+            echo "FIXTURE_DEPLOYMENT_ISOLATION=$RUNNER_TEMP/visual-fixture-deployment-isolation.json"
+          } >> "$GITHUB_ENV"
 
       - name: Run browser tooling gates
         run: |
           set -euo pipefail
-          node scripts/serve_frontend_build.js --port 13018 > "$RUNNER_TEMP/tooling-server.log" 2>&1 &
+          node scripts/serve_frontend_build.js --directory "$REVIEW_FIXTURE_BUILD_DIR" --port 13018 > "$RUNNER_TEMP/tooling-server.log" 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for _ in $(seq 1 60); do
@@ -174,7 +219,7 @@ jobs:
           set -euo pipefail
           EVIDENCE_ROOT="$RUNNER_TEMP/pr344-seamless-brand-final-${PR_HEAD_SHA}"
           mkdir -p "$EVIDENCE_ROOT"
-          node scripts/serve_frontend_build.js --port 13019 > "$RUNNER_TEMP/server.log" 2>&1 &
+          node scripts/serve_frontend_build.js --directory "$REVIEW_FIXTURE_BUILD_DIR" --port 13019 > "$RUNNER_TEMP/server.log" 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for _ in $(seq 1 60); do
@@ -197,6 +242,20 @@ jobs:
         run: |
           set -euo pipefail
           node scripts/generate_seamless_brand_final_evidence_inputs.mjs --output "$EVIDENCE_ROOT/final-inputs" --chromium "$EVIDENCE_ROOT/chromium" --cross-browser "$EVIDENCE_ROOT/cross-browser"
+          node - "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json" "$FIXTURE_BUILD_PROBE" "$FIXTURE_DEPLOYMENT_ISOLATION" <<'JS'
+          const fs=require('fs'); const [inputsPath,probePath,isolationPath]=process.argv.slice(2);
+          const inputs=JSON.parse(fs.readFileSync(inputsPath,'utf8'));
+          const probe=JSON.parse(fs.readFileSync(probePath,'utf8'));
+          const isolation=JSON.parse(fs.readFileSync(isolationPath,'utf8'));
+          if (probe.result !== 'PASS' || isolation.result !== 'PASS') throw new Error('fixture build proof is not passing');
+          inputs.build_modes={
+            production_contract:{label:process.env.PRODUCTION_CONTRACT_BUILD_LABEL,sha256:process.env.PRODUCTION_CONTRACT_BUILD_SHA256,fixture_enabled:false},
+            review_fixture:{label:process.env.REVIEW_FIXTURE_BUILD_LABEL,sha256:process.env.REVIEW_FIXTURE_BUILD_SHA256,fixture_enabled:true,not_deployed:true},
+            probe_result:probe.result,
+            deployment_isolation_result:isolation.result
+          };
+          fs.writeFileSync(inputsPath, `${JSON.stringify(inputs,null,2)}\n`);
+          JS
           python3 scripts/validate_seamless_brand_final_evidence_inputs.py --inputs "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json"
           test "$(jq -r .production_surface_sha256 "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json")" = "$PRODUCTION_SURFACE_SHA"
           test "$(jq -r .canonical_logo_sha256 "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json")" = "$CANONICAL_LOGO_SHA"
@@ -261,6 +320,7 @@ jobs:
           Exact PR head: ${PR_HEAD_SHA}
           Production evidence head: dc2fababbe531f51b90fc9dcb6c584ece86838c2
           This is an owner-review candidate. Deterministic Reader and Listener fixtures do not activate Reading Pass v2 or audio.
+          Review build: DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED. Production-contract and review-fixture build hashes are recorded in final-evidence-inputs.json.
           The complete manifest-governed evidence population is contained in artifact.zip.
           EOF
           cat > "$ENVELOPE/publication-summary.json" <<EOF
@@ -303,7 +363,10 @@ jobs:
           path: |
             ${{ runner.temp }}/server.log
             ${{ runner.temp }}/package-server.log
-            ${{ runner.temp }}/frontend-build.log
+            ${{ runner.temp }}/frontend-production-contract-build.log
+            ${{ runner.temp }}/frontend-review-fixture-build.log
+            ${{ runner.temp }}/final-ci-sanitized-fixture-root-cause.json
+            ${{ runner.temp }}/visual-fixture-deployment-isolation.json
             ${{ runner.temp }}/final-package-tests.log
           if-no-files-found: warn
           retention-days: 7
@@ -372,6 +435,13 @@ jobs:
           assert provenance['package_generation_head'] == os.environ['PR_HEAD_SHA']
           assert inputs['production_surface_sha256'] == os.environ['PRODUCTION_SURFACE_SHA']
           assert inputs['canonical_logo_sha256'] == os.environ['CANONICAL_LOGO_SHA']
+          modes=inputs['build_modes']
+          assert modes['production_contract']['label'] == 'PRODUCTION_CONTRACT_BUILD_FIXTURES_DISABLED'
+          assert modes['production_contract']['fixture_enabled'] is False
+          assert modes['review_fixture']['label'] == 'DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED'
+          assert modes['review_fixture']['fixture_enabled'] is True and modes['review_fixture']['not_deployed'] is True
+          assert all(len(modes[key]['sha256']) == 64 for key in ['production_contract','review_fixture'])
+          assert modes['probe_result'] == modes['deployment_isolation_result'] == 'PASS'
           chromium=json.loads((package/'chromium-summary.json').read_text()); assert (chromium['expected_state_count'],chromium['captured_state_count'],chromium['stable_state_count']) == (65,65,65)
           for name in ['firefox-summary.json','webkit-summary.json']:
               data=json.loads((package/name).read_text()); assert (data['expected_state_count'],data['captured_state_count'],data['stable_state_count']) == (20,20,20)
