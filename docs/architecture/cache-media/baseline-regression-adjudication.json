@@ -1,0 +1,51 @@
+{
+  "schema_version": "cache-media-baseline-regression-adjudication.v1",
+  "base_vs_untouched_pr": {
+    "audio_cleanup_failure_fingerprint": "identical: 3 failures",
+    "legacy_audio_failure_fingerprint": "identical: 13 failures",
+    "pr_345_introduced_production_regression": false
+  },
+  "cleanup_titles": {
+    "book-2b9853ec52": {
+      "classification": "OBSOLETE_CONTROLLED_FIXTURE",
+      "customer_impact": "no customer impact; unavailable through the controlled runtime gate",
+      "authorization_impact": "fail-closed",
+      "release_impact": "not a live release artifact",
+      "a1_impact": "not a blocker",
+      "owner_approval_required": false,
+      "correction_lane": "test authority update"
+    },
+    "nishkriti": {
+      "classification": "TEST_ENVIRONMENT_PATH_DEFECT",
+      "customer_impact": "no customer impact; selected runtime artifact is valid and audio-disabled",
+      "authorization_impact": "no change",
+      "release_impact": "duplicate packaged historical checksum is not runtime truth",
+      "a1_impact": "not a blocker",
+      "owner_approval_required": false,
+      "correction_lane": "test authority update"
+    }
+  },
+  "legacy_root_causes": {
+    "REMOVED_PACKAGE_DESCRIPTOR_HELPER": 4,
+    "OBSOLETE_PUBLIC_ASSET_EXPOSURE_EXPECTATION": 3,
+    "OBSOLETE_REQUEST_SIGNATURE": 6
+  },
+  "authority_decision": {
+    "stale_test_to_update": 6,
+    "stale_test_to_remove": 7,
+    "duplicate_of_current_authoritative_test": 3,
+    "real_implementation_defect": 0,
+    "real_data_or_fixture_defect": 0
+  },
+  "authorized_changes": [
+    "test-only cleanup authority reconciliation",
+    "test-only protected package route reconciliation",
+    "documentation and fingerprint tooling"
+  ],
+  "forbidden_changes_observed": {
+    "production_application_source": 0,
+    "controlled_publication_data": 0,
+    "redis_behavior": 0,
+    "audio_delivery_behavior": 0
+  }
+}

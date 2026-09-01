@@ -1,5 +1,7 @@
 # Requirements coverage score
 
+Current score: **58/100**. The A0.1 regression adjudication leaves the score unchanged: it reconciles test authority and adds no new implementation, production-metric, staging, or release evidence.
+
 58/100 is a current requirements-coverage score. It is not latency improvement, cost reduction, performance gain, or production-ready percentage.
 
 ## Evidence

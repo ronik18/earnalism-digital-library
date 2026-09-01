@@ -1,0 +1,33 @@
+{
+  "schema_version": "cache-media-baseline-regression-command-map.v1",
+  "reproduction_authority": {
+    "base_sha": "090afdd4b84eecc5ca40b7576ce54000305df837",
+    "pr_sha_before_correction": "d13a01e440da7c695af1a9b89378c390d583cd4c",
+    "environment": {
+      "MONGODB_URL": "mongodb://localhost:27017/earnalism_cache_media_repro",
+      "JWT_SECRET": "synthetic test-only value",
+      "production_credentials": false
+    }
+  },
+  "commands": {
+    "audio_cleanup": "python3 -m pytest -q backend/tests/test_sprint1_audio_source_cleanup.py --junitxml=<report.xml>",
+    "legacy_audio": "python3 -m pytest -q backend/tests/test_b2_audiobook_routing.py backend/tests/test_audiobook_package_v2_routes.py backend/tests/test_zero_public_audio_contract.py --junitxml=<report.xml>",
+    "current_contract": "python3 -m pytest -q backend/tests/test_b2_audiobook_routing.py backend/tests/test_audiobook_package_v2_routes.py backend/tests/test_zero_public_audio_contract.py",
+    "characterization": "python3 -m pytest -q backend/tests/cache_media backend/tests/test_redis_cache_policy.py",
+    "fingerprint": "python3 scripts/cache_media/verify_baseline_regressions.py --ledger docs/architecture/cache-media/baseline-regression-ledger.json --base-cleanup <base-cleanup.xml> --pr-cleanup <pr-cleanup.xml> --final-cleanup <final-cleanup.xml> --base-legacy <base-legacy.xml> --pr-legacy <pr-legacy.xml> --final-legacy <final-legacy.xml>"
+  },
+  "baseline_results": {
+    "audio_cleanup": {"base": {"collected": 15, "failed": 3}, "untouched_pr": {"collected": 15, "failed": 3}},
+    "legacy_audio": {"base": {"collected": 54, "failed": 13}, "untouched_pr": {"collected": 54, "failed": 13}}
+  },
+  "artifact_authority": {
+    "runtime_catalog_root": "data/controlled_publications",
+    "book_2b9853ec52": {"runtime_state": "excluded and fail-closed", "historical_packet_state": "present but not a live artifact"},
+    "nishkriti": {"runtime_state": "available, audio disabled", "duplicate_packaged_manifest": "checksum mismatch outside runtime source-of-truth"}
+  },
+  "workflow_authority": {
+    "normal_regression_script": "scripts/run_regression_suite.sh",
+    "pr_regression_script": "scripts/run_pr_regression.sh",
+    "historic_suites_collected_by_normal_regression": false
+  }
+}

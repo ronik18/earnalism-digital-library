@@ -62,6 +62,15 @@
       "release_blocker": true,
       "risk": "Range/signed URL/object outage/PDF uncertainty/workflow conflict/metrics gap",
       "severity": "MEDIUM"
+    },
+    {
+      "current_control": "A0.1 ledger, final-green fingerprint tool, selected runtime catalog authority",
+      "likelihood": "LOW",
+      "owner_approval_required": false,
+      "planned_mitigation": "retain per-node replacement coverage and rerun the fingerprint before A1",
+      "release_blocker": false,
+      "risk": "historical duplicate packet or stale test contract obscures current media truth",
+      "severity": "MEDIUM"
     }
   ],
   "schema_version": "cache-media-risk-register.v1"

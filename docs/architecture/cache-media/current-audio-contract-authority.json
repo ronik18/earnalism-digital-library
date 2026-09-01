@@ -1,0 +1,36 @@
+{
+  "schema_version": "cache-media-current-audio-contract-authority.v1",
+  "implementation": {
+    "public_manifest": "backend/server.py::_reader_manifest_audio",
+    "authorization": "backend/server.py::_authorize_reading_pass_audio",
+    "protected_routes": [
+      "backend/server.py::reader_book_audiobook",
+      "backend/server.py::reader_book_audiobook_package_manifest",
+      "backend/server.py::reader_book_audiobook_package_segment",
+      "backend/server.py::reader_book_audiobook_package_segment_timestamps",
+      "backend/server.py::reader_book_audiobook_package_segment_vtt",
+      "backend/server.py::reader_book_audiobook_package_segment_metadata"
+    ]
+  },
+  "contract": {
+    "authorization_before_object_read": true,
+    "anonymous_protected_bytes": "denied",
+    "public_manifest_assets": {},
+    "public_manifest_url": "",
+    "raw_provider_urls_exposed": false,
+    "request_signature": "Request, principal dependency, active Reading Pass lease",
+    "range": "valid 206; malformed and unsatisfiable 416",
+    "head_etag": "package manifest supports HEAD and ETag/304",
+    "disabled_audio": "404 before authorization challenge",
+    "reader_listener_truth": "controlled allowlist remains source of truth"
+  },
+  "passing_tests": [
+    "backend/tests/test_zero_public_audio_contract.py::test_every_playable_audio_route_authorizes_before_streaming",
+    "backend/tests/test_zero_public_audio_contract.py::test_range_audio_requests_cannot_bypass_the_authorization_boundary",
+    "backend/tests/test_zero_public_audio_contract.py::test_only_an_approved_audiobook_with_a_valid_lease_reaches_audio_bytes",
+    "backend/tests/test_b2_audiobook_routing.py::test_package_manifest_endpoint_caches_only_projected_metadata_and_head_is_empty",
+    "backend/tests/test_b2_audiobook_routing.py::test_invalid_range_returns_416_without_fetching_object_body",
+    "backend/tests/test_b2_audiobook_routing.py::test_malformed_range_returns_416_without_fetching_object_body",
+    "backend/tests/test_audiobook_package_v2_routes.py::test_package_manifest_uses_current_request_and_lease_signature"
+  ]
+}

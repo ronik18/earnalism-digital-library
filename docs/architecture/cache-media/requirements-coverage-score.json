@@ -84,6 +84,11 @@
   "maximum": 100,
   "schema_version": "cache-media-requirements-coverage.v1",
   "score_type": "REQUIREMENTS_COVERAGE_NOT_PERFORMANCE",
+  "baseline_regression_adjudication": {
+    "score_before": 58,
+    "score_after": 58,
+    "reason": "Test-contract reconciliation adds no new product requirement evidence."
+  },
   "subscores": {
     "audio_delivery": "12/15",
     "observability_economics": "4/10",
