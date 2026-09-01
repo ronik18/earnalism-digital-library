@@ -18,6 +18,13 @@ import {
 
 const DEFAULT_MANIFEST = "docs/design-system/seamless-brand-state-manifest.json";
 const DEFAULT_ROUTE_INVENTORY = "docs/design-system/seamless-brand-route-inventory.json";
+const SUPPORTED_BROWSERS = new Set(["chromium", "firefox", "webkit"]);
+const REQUIRED_FONT_SPECS = {
+  cormorant_garamond: "16px 'Cormorant Garamond'",
+  outfit: "16px Outfit",
+  noto_serif_bengali: "16px 'Noto Serif Bengali'",
+  noto_sans_bengali: "16px 'Noto Sans Bengali'",
+};
 const SANITIZED_PRIVATE_FIXTURE_SHA256 = crypto.createHash("sha256").update(JSON.stringify({ version: "sanitized-private-v1", identity: "Review Reader", email: "review@example.invalid", saved_library: [] })).digest("hex");
 const EDITORIAL_FIXTURE_PATH = "frontend/static-seo/editorial-public.json";
 const require = createRequire(import.meta.url);
@@ -88,6 +95,14 @@ function parseCliArgs(argv) {
 
 function digest(file) {
   return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
+}
+
+async function launchRequestedBrowser(name) {
+  if (!SUPPORTED_BROWSERS.has(name)) {
+    throw new Error(`Unsupported browser ${JSON.stringify(name)}; expected chromium, firefox, or webkit.`);
+  }
+  const playwright = await import("playwright");
+  return playwright[name].launch({ headless: true });
 }
 
 function gitReference(...args) {
@@ -216,8 +231,8 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
 async function runOneStateCapture(options) {
   if (!options.output) throw new Error("--capture requires --output.");
   if (!options.baseUrl) throw new Error("--capture requires --base-url.");
-  if (!options.browser) throw new Error("--capture requires --browser chromium.");
-  if (options.browser !== "chromium") throw new Error(`Unsupported browser ${JSON.stringify(options.browser)}; expected chromium.`);
+  if (!options.browser) throw new Error("--capture requires --browser chromium, firefox, or webkit.");
+  if (!SUPPORTED_BROWSERS.has(options.browser)) throw new Error(`Unsupported browser ${JSON.stringify(options.browser)}; expected chromium, firefox, or webkit.`);
   const baseUrl = String(options.baseUrl).replace(/\/$/, "");
   if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("--base-url must be a loopback http://127.0.0.1:<port> URL.");
   const selection = loadManifestSelection(options);
@@ -229,8 +244,7 @@ async function runOneStateCapture(options) {
   if (!requiredScreenshots.includes("viewport.png")) throw new Error(`State ${state.id} capture declaration must include viewport.`);
   fs.mkdirSync(stateDirectory, { recursive: true });
   if (process.env.SEAMLESS_BRAND_BROWSER_IMPORT_SENTINEL === "1") throw new Error("Browser import sentinel reached during --capture.");
-  const { chromium } = await import("playwright");
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launchRequestedBrowser(options.browser);
   const context = await browser.newContext({ viewport: state.viewport, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", colorScheme: "dark", serviceWorkers: "block" });
   const page = await context.newPage();
   const consoleErrors = [];
@@ -247,9 +261,9 @@ async function runOneStateCapture(options) {
   });
   await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
-  await page.evaluate(async (zoom) => {
+  await page.evaluate(async (zoom, fontSpecs) => {
     await document.fonts.ready;
-    await Promise.all(["16px Inter", "16px 'Noto Sans Bengali'", "16px 'Noto Serif Bengali'"].map((font) => document.fonts.load(font, "অA").catch(() => [])));
+    await Promise.all(Object.values(fontSpecs).map((font) => document.fonts.load(font, "অA").catch(() => [])));
     await Promise.all([...document.images].filter((image) => {
       const style = getComputedStyle(image); const rect = image.getBoundingClientRect();
       return style.display !== "none" && rect.width > 0 && rect.height > 0;
@@ -259,7 +273,7 @@ async function runOneStateCapture(options) {
     document.head.append(style);
     document.documentElement.style.zoom = `${zoom}%`;
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-  }, state.zoom);
+  }, state.zoom, REQUIRED_FONT_SPECS);
   await page.emulateMedia({ reducedMotion: "reduce" });
   const header = page.locator('[data-testid="site-header"]:visible');
   if (await header.count() !== 1) throw new Error(`State ${state.id}: expected exactly one visible public header; received ${await header.count()}.`);
@@ -294,7 +308,7 @@ async function runOneStateCapture(options) {
     const overlap = Boolean(lockup && [...header.querySelectorAll("a,button")].filter((node) => node !== lockup && !lockup.contains(node) && !node.contains(lockup) && visible(node)).some((node) => intersects(rect, node.getBoundingClientRect())));
     return { document_height: document.documentElement.scrollHeight, scroll_width: document.documentElement.scrollWidth, client_width: document.documentElement.clientWidth, visible_header_count: headers.length, visible_canonical_lockup_count: lockups.length, logo: lockup ? { natural_width: image.naturalWidth, natural_height: image.naturalHeight, rendered_width: rect.width, rendered_height: rect.height, aspect_ratio: rect.width / rect.height, transform: getComputedStyle(image).transform, wrapper_background: wrapper.backgroundColor, wrapper_border_width: wrapper.borderWidth, wrapper_border_radius: wrapper.borderRadius, wrapper_box_shadow: wrapper.boxShadow, wrapper_padding: wrapper.padding, parent_background: parent.backgroundColor, clipped: rect.left < 0 || rect.top < 0 || rect.right > innerWidth || rect.bottom > innerHeight } : null, overlap, horizontal_overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth };
   });
-  const metadata = { state_id: state.id, route: state.route, final_url: page.url(), viewport: state.viewport, zoom: state.zoom, fixture: state.fixture, interaction: state.interaction, browser: "chromium", browser_version: browser.version(), screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, ...data, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length };
+  const metadata = { state_id: state.id, route: state.route, final_url: page.url(), viewport: state.viewport, zoom: state.zoom, fixture: state.fixture, interaction: state.interaction, browser: options.browser, browser_version: browser.version(), screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, ...data, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length };
   fs.writeFileSync(path.join(stateDirectory, "metadata.json"), JSON.stringify(metadata, null, 2) + "\n");
   fs.writeFileSync(path.join(stateDirectory, "console-errors.json"), JSON.stringify(consoleErrors, null, 2) + "\n");
   fs.writeFileSync(path.join(stateDirectory, "page-errors.json"), JSON.stringify(pageErrors, null, 2) + "\n");
@@ -500,7 +514,7 @@ async function footerScrollInteraction(page, state) {
   return { result, capture_surface: brandRow, capture_lockup: lockup, finalize: async () => { await page.evaluate(() => window.scrollTo(0, 0)); return result; } };
 }
 
-async function captureManifestState(browser, state, baseUrl, outputDirectory, contextIndex, routeInventory) {
+async function captureManifestState(browser, browserName, state, baseUrl, outputDirectory, contextIndex, routeInventory) {
   const stateDirectory = stateOutputDirectory(outputDirectory, state.id);
   const requiredScreenshots = requestedScreenshotNames(state.capture);
   if (!requiredScreenshots.includes("viewport.png")) throw new Error(`State ${state.id} capture declaration must include viewport.`);
@@ -512,25 +526,26 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
   const statusResponse = statusFixture ? statusFixtureResponse(state) : null;
   const routeRecord = routeInventory.routes.find((route) => route.path === state.route)
     || routeInventory.routes.find((route) => route.path === "UNKNOWN_URL" && state.fixture === "error-404-contract");
-  const consoleErrors = []; const pageErrors = []; const failedRequests = []; const apiRequests = [];
+  const consoleErrors = []; const pageErrors = []; const failedRequests = []; const apiRequests = []; const httpErrorResponses = [];
   page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
   page.on("pageerror", (error) => pageErrors.push(error.message));
   page.on("requestfailed", (request) => failedRequests.push({ url: request.url(), failure: request.failure()?.errorText || "unknown" }));
   page.on("request", (request) => { if (new URL(request.url()).pathname.includes("/api/")) apiRequests.push({ url: request.url(), method: request.method() }); });
+  page.on("response", (response) => { if (response.status() >= 400) httpErrorResponses.push({ url: response.url(), status: response.status() }); });
   await page.route("**/api/**", routeFixture);
   if (statusFixture) await page.route((url) => new URL(url).pathname === state.route, (route) => route.fulfill({ status: statusResponse.status, headers: statusResponse.headers, body: statusResponse.body }));
   await page.route("https://theearnalism.com/assets/brand/earnalism-brand-lockup.png", (route) => route.fulfill({ path: "frontend/public/assets/brand/earnalism-brand-lockup.png", contentType: "image/png" }));
   await page.goto(fixtureUrl(baseUrl, state), { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
   if (statusFixture) consoleErrors.length = 0;
-  await page.evaluate(async (zoom) => {
+  await page.evaluate(async (zoom, fontSpecs) => {
     await document.fonts.ready;
-    await Promise.all(["16px Inter", "16px 'Noto Sans Bengali'", "16px 'Noto Serif Bengali'"].map((font) => document.fonts.load(font, "অA").catch(() => [])));
+    await Promise.all(Object.values(fontSpecs).map((font) => document.fonts.load(font, "অA").catch(() => [])));
     await Promise.all([...document.images].filter((image) => { const style = getComputedStyle(image); const rect = image.getBoundingClientRect(); return style.display !== "none" && rect.width > 0 && rect.height > 0; }).map((image) => image.decode().catch(() => undefined)));
     const style = document.createElement("style"); style.textContent = "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}"; document.head.append(style);
     document.documentElement.style.zoom = `${zoom}%`;
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-  }, state.zoom);
+  }, state.zoom, REQUIRED_FONT_SPECS);
   await page.emulateMedia({ reducedMotion: "reduce" });
   const header = page.locator(statusFixture ? 'header[data-testid="status-brand-masthead"]:visible' : 'header[data-testid="site-header"]:visible, header.experience-header:visible');
   const headerCount = await header.count();
@@ -551,6 +566,13 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
     if (matches) { stable = true; for (const [name, file] of Object.entries(second)) { const target = path.join(stateDirectory, name); fs.copyFileSync(file.path, target); finalFiles[name] = { path: name, sha256: digest(target) }; } break; }
   }
   const interactionResult = await interactionSession.finalize();
+  const fontResults = await page.evaluate(async (fontSpecs) => {
+    await document.fonts.ready;
+    return Object.fromEntries(await Promise.all(Object.entries(fontSpecs).map(async ([name, spec]) => {
+      await document.fonts.load(spec, "অA").catch(() => []);
+      return [name, document.fonts.check(spec, "অA")];
+    })));
+  }, REQUIRED_FONT_SPECS);
   const data = await page.evaluate((statusFixture) => {
     const visible = (node) => { if (!node) return false; const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
     const headers = statusFixture ? [...document.querySelectorAll('header[data-testid="status-brand-masthead"]')].filter(visible) : [...document.querySelectorAll('header[data-testid="site-header"],header.experience-header')].filter(visible); const header = headers[0];
@@ -646,6 +668,8 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
     return false;
   });
   const contactApiCallCount = apiRequests.filter(({ url }) => /\/api\/contact(?:[/?]|$)/.test(new URL(url).pathname)).length;
+  const classifiedHttpErrors = httpErrorResponses.filter(({ url, status }) => statusFixture && canonicalPathname(url) === state.route && status === statusResponse.status);
+  const unclassifiedHttpErrors = httpErrorResponses.filter((entry) => !classifiedHttpErrors.includes(entry));
   data.reader.balance_consumption = balanceMutationCount;
   data.listener.balance_consumption = balanceMutationCount;
   data.editorial.contact_submission_count = contactApiCallCount;
@@ -670,6 +694,8 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
   if (state.fixture === "listener-non-playable" && ((state.viewport.width < 768 && !data.action_row_below_brand) || !data.listener.cover_visible || data.listener.raw_media_url !== "absent" || data.listener.playable_source !== "absent" || data.listener.autoplay || data.listener.preload !== "absent" || data.listener.balance_consumption !== 0)) defects.push("listener-fixture-contract");
   if (statusLogoCard) defects.push("legacy-error-logo-card");
   if (statusContract && statusContract.result !== "PASS") defects.push("status-contract");
+  if (!Object.values(fontResults).every(Boolean)) defects.push("required-font-load");
+  if (unclassifiedHttpErrors.length) defects.push("unclassified-http-error");
   const privateFixture = state.fixture === "sanitized-account";
   const productionAuthenticationUsed = privateFixture && (initialStorage.cookies.length !== 0 || initialStorage.origins.length !== 0 || apiRequests.some(({ url }) => !url.startsWith(baseUrl)));
   const productionAccountApiCalled = privateFixture && apiRequests.some(({ url }) => !url.startsWith(baseUrl));
@@ -687,7 +713,7 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
   if (state.introduced_in === "experience-footer-zoom-2c2b" && (Math.abs(zoomResults.requested_zoom_percent - zoomResults.effective_zoom_percent) > 0.01 || zoomResults.logo_control_overlap_area !== 0 || zoomResults.clipped_control_count !== 0)) defects.push("experience-footer-zoom-geometry-contract");
   if (interactionResult?.failures?.length) defects.push(...interactionResult.failures);
   const safetyResults = { reader: { ...data.reader, production_reader_api_called: false }, listener: { ...data.listener, production_listener_api_called: false }, production_api_call_count: 0, production_mutation_count: mutationCount, footer: interactionResult?.kind === "scroll-to-footer" ? interactionResult.geometry : undefined };
-  const metadata = { source_head: gitReference("rev-parse", "HEAD"), tree_sha: gitReference("rev-parse", "HEAD^{tree}"), state_id: state.id, route: state.route, route_classification: routeRecord?.classification || "CONTROLLED_APPROVED_LISTENER", initial_url: fixtureUrl(baseUrl, state), final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: "chromium", browser_version: browser.version(), context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, ...data, zoom_results: zoomResults, interaction_result: interactionResult, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, status_contract: statusContract, production_mutation_count: mutationCount, production_api_call_count: 0, intercepted_api_request_count: apiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
+  const metadata = { source_head: gitReference("rev-parse", "HEAD"), tree_sha: gitReference("rev-parse", "HEAD^{tree}"), state_id: state.id, route: state.route, route_classification: routeRecord?.classification || "CONTROLLED_APPROVED_LISTENER", initial_url: fixtureUrl(baseUrl, state), final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: browserName, browser_version: browser.version(), context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, ...data, font_results: fontResults, http_error_responses: httpErrorResponses, unclassified_http_error_responses: unclassifiedHttpErrors, zoom_results: zoomResults, interaction_result: interactionResult, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, status_contract: statusContract, production_mutation_count: mutationCount, production_api_call_count: 0, intercepted_api_request_count: apiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
   fs.writeFileSync(path.join(stateDirectory, "metadata.json"), JSON.stringify(metadata, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "console-errors.json"), JSON.stringify(consoleErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "page-errors.json"), JSON.stringify(pageErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "failed-requests.json"), JSON.stringify(failedRequests, null, 2) + "\n");
   if (interactionResult) { fs.writeFileSync(path.join(stateDirectory, "interaction-results.json"), JSON.stringify(interactionResult, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "geometry-results.json"), JSON.stringify(interactionResult.geometry || {}, null, 2) + "\n"); }
   fs.writeFileSync(path.join(stateDirectory, "zoom-results.json"), JSON.stringify(zoomResults, null, 2) + "\n");
@@ -699,13 +725,13 @@ async function captureManifestState(browser, state, baseUrl, outputDirectory, co
 }
 
 async function runManifestCapture(options) {
-  if (!options.output) throw new Error("--capture requires --output."); if (!options.baseUrl) throw new Error("--capture requires --base-url."); if (!options.browser) throw new Error("--capture requires --browser chromium."); if (options.browser !== "chromium") throw new Error(`Unsupported browser ${JSON.stringify(options.browser)}; expected chromium.`);
+  if (!options.output) throw new Error("--capture requires --output."); if (!options.baseUrl) throw new Error("--capture requires --base-url."); if (!options.browser) throw new Error("--capture requires --browser chromium, firefox, or webkit."); if (!SUPPORTED_BROWSERS.has(options.browser)) throw new Error(`Unsupported browser ${JSON.stringify(options.browser)}; expected chromium, firefox, or webkit.`);
   const baseUrl = String(options.baseUrl).replace(/\/$/, ""); if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("--base-url must be a loopback http://127.0.0.1:<port> URL.");
   const selection = loadManifestSelection(options); if (!selection.selected.length) throw new Error("--capture requires at least one selected state.");
   const outputDirectory = path.resolve(options.output); validateUniqueOutputDirectories(outputDirectory, selection.selected); fs.mkdirSync(outputDirectory, { recursive: true });
   if (process.env.SEAMLESS_BRAND_BROWSER_IMPORT_SENTINEL === "1") throw new Error("Browser import sentinel reached during --capture.");
-  const { chromium } = await import("playwright"); const browser = await chromium.launch({ headless: true }); const captured = [];
-  try { for (let index = 0; index < selection.selected.length; index += 1) captured.push(await captureManifestState(browser, selection.selected[index], baseUrl, outputDirectory, index + 1, selection.routeInventory)); } finally { await browser.close(); }
+  const browser = await launchRequestedBrowser(options.browser); const captured = [];
+  try { for (let index = 0; index < selection.selected.length; index += 1) captured.push(await captureManifestState(browser, options.browser, selection.selected[index], baseUrl, outputDirectory, index + 1, selection.routeInventory)); } finally { await browser.close(); }
   const stableCount = captured.filter((record) => record.metadata.stable).length;
   const coreZoomRun = selection.selected.some((state) => state.introduced_in === "core-zoom-2c2a");
   const reusedStateIds = coreZoomRun ? selection.selected.filter((state) => state.introduced_in !== "core-zoom-2c2a").map((state) => state.id) : selection.selected.filter((state) => Array.isArray(state.reuse_in) && state.reuse_in.length > 0).map((state) => state.id);

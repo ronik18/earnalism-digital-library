@@ -41,7 +41,7 @@ function writeSynthetic(output, stable = true, includeViewport = true) {
 
 test("capture mode rejects missing --output", () => run(["--capture", "--base-url", "http://127.0.0.1:19999", "--browser", "chromium", "--state-filter", home.id], 1));
 test("capture mode rejects missing --base-url", () => run(["--capture", "--output", path.join(temp, "missing-base"), "--browser", "chromium", "--state-filter", home.id], 1));
-test("unsupported browser fails", () => run(["--capture", "--output", path.join(temp, "unsupported-browser"), "--base-url", "http://127.0.0.1:19999", "--browser", "firefox", "--state-filter", home.id], 1));
+test("unsupported browser fails", () => run(["--capture", "--output", path.join(temp, "unsupported-browser"), "--base-url", "http://127.0.0.1:19999", "--browser", "gecko", "--state-filter", home.id], 1));
 test("unknown state ID fails", () => run(["--capture", "--output", path.join(temp, "unknown-state"), "--base-url", "http://127.0.0.1:19999", "--browser", "chromium", "--state-filter", "missing-state"], 1));
 test("Home state resolves from manifest", () => assert.deepEqual({ id: home.id, route: home.route, viewport: home.viewport, zoom: home.zoom }, { id: "home-desktop", route: "/", viewport: { width: 1440, height: 1000 }, zoom: 100 }));
 test("output paths are deterministic", () => assert.equal(stateOutputDirectory(path.join(temp, "deterministic"), home.id), path.join(path.resolve(temp, "deterministic"), "states", "home-desktop")));
