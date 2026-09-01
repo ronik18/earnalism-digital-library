@@ -63,7 +63,7 @@ jobs:
           else
             PR_NUMBER="$INPUT_PR_NUMBER"
             state="$(gh api "/repos/$GITHUB_REPOSITORY/pulls/${PR_NUMBER}" --jq .state)"
-            test "$state" = OPEN
+            test "$state" = open
             PR_HEAD_SHA="$(gh api "/repos/$GITHUB_REPOSITORY/pulls/${PR_NUMBER}" --jq .head.sha)"
           fi
           test -n "$PR_HEAD_SHA"

@@ -28,6 +28,7 @@ fs.writeFileSync(shellAuditPath, `${JSON.stringify({ result: shellAudit.every((e
 
 pass("keeps the dedicated workflow identity", /name: Seamless brand owner review/.test(workflow) && /seamless-brand-review:/.test(workflow));
 pass("supports pull-request and manual exact-head resolution", /pull_request:/.test(workflow) && /workflow_dispatch:/.test(workflow) && /github\.event\.pull_request\.head\.sha/.test(workflow) && /\/pulls\/\$\{PR_NUMBER\}/.test(workflow));
+pass("requires GitHub's canonical lowercase open state for manual PR resolution", /test "\$state" = open/.test(workflow));
 pass("checks out the resolved PR head", /ref: \$\{\{ needs\.resolve-pr-head\.outputs\.pr_head \}\}/.test(workflow) && /git rev-parse HEAD/.test(workflow));
 pass("records event and checkout provenance", /WORKFLOW_EVENT_SHA/.test(workflow) && /CHECKOUT_TREE_SHA/.test(workflow));
 pass("uses a head-scoped concurrency group", /concurrency:[\s\S]*pr344-seamless-brand-owner-review/.test(workflow) && /cancel-in-progress: true/.test(workflow));
