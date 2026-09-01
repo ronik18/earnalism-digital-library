@@ -306,12 +306,18 @@ async function waitForVisualQuiescence(page, state, fixtureRequests) {
 
 async function primeWebKitArticleRaster(page, state, browserName) {
   if (browserName !== "webkit" || !state.id.startsWith("article-")) return { result: "PASS", applicable: false };
-  const before = await visualFingerprint(page);
   const clip = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }));
-  const buffer = await page.screenshot({ clip, animations: "disabled", caret: "hide", scale: "css" });
-  const after = await visualFingerprint(page);
-  if (hashValue(before) !== hashValue(after)) throw new Error("WebKit Article raster priming changed DOM, layout, font, or scroll state.");
-  return { result: "PASS", applicable: true, screenshot_sha256: crypto.createHash("sha256").update(buffer).digest("hex"), before, after };
+  const attempts = [];
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    const before = await visualFingerprint(page);
+    const buffer = await page.screenshot({ clip, animations: "disabled", caret: "hide", scale: "css" });
+    const after = await visualFingerprint(page);
+    if (hashValue(before) !== hashValue(after)) throw new Error("WebKit Article raster priming changed DOM, layout, font, or scroll state.");
+    attempts.push({ attempt, screenshot_sha256: crypto.createHash("sha256").update(buffer).digest("hex"), before, after });
+    await page.waitForTimeout(100);
+  }
+  await page.waitForTimeout(500);
+  return { result: "PASS", applicable: true, attempts };
 }
 
 async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup, requestedTypes = undefined, browserName = "chromium", trace = []) {

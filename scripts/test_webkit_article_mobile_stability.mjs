@@ -45,7 +45,7 @@ test("the reusable Article quiescence helper is present", () => assert.match(sou
 test("the Article quiet window is 750ms with four 150ms geometry samples", () => { assert.match(source, /quietMs:\s*750/); assert.match(source, /samples\.length < 4/); assert.match(source, /setTimeout\(resolve, 150\)/); });
 test("exact visible font specifications are checked", () => assert.match(source, /document\.fonts\.check\(spec, "Aa"\)/));
 test("one stabilization stylesheet is held through the comparison pair", () => assert.match(source, /fixed-webkit-header-stabilization-through-comparison-pair/));
-test("WebKit Article compositing is primed without changing page fingerprints", () => { assert.match(source, /async function primeWebKitArticleRaster/); assert.match(source, /raster priming changed DOM, layout, font, or scroll state/); });
+test("WebKit Article compositing is boundedly primed without changing page fingerprints", () => { assert.match(source, /async function primeWebKitArticleRaster/); assert.match(source, /for \(let attempt = 1; attempt <= 3; attempt \+= 1\)/); assert.match(source, /raster priming changed DOM, layout, font, or scroll state/); assert.match(source, /await page\.waitForTimeout\(500\)/); });
 test("WebKit close-up capture uses page clips, not locator auto-scroll", () => { assert.doesNotMatch(source, /\.screenshot\(\{ path: target, animations/); assert.match(source, /requestedCaptureClip\(page, lockup\)/); });
 test("comparison screenshots preserve their starting scroll fingerprint", () => assert.match(source, /Screenshot capture changed scroll position/));
 test("viewport screenshot mismatch fails", () => assert.equal(false, "a" === "b"));
