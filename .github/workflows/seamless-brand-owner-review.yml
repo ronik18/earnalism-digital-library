@@ -528,10 +528,11 @@ jobs:
           gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/${ARTIFACT_ID}/zip" > "$RUNNER_TEMP/downloaded-owner-review-envelope.zip"
           DOWNLOADED_ARTIFACT_ARCHIVE_SHA256="$(sha256sum "$RUNNER_TEMP/downloaded-owner-review-envelope.zip" | awk '{print $1}')"
           INNER_ARTIFACT_ZIP_SHA256="$(sha256sum "$ENVELOPE/artifact.zip" | awk '{print $1}')"
-          python3 scripts/validate_seamless_brand_final_owner_review.py --package "$ENVELOPE"
           mkdir -p "$RUNNER_TEMP/extracted-owner-review"
           unzip -q "$ENVELOPE/artifact.zip" -d "$RUNNER_TEMP/extracted-owner-review"
           test "$(sha256sum "$RUNNER_TEMP/extracted-owner-review/manifest.json" | awk '{print $1}')" = "$(tr -d '[:space:]' < "$RUNNER_TEMP/extracted-owner-review/manifest.sha256")"
+          cp "$ENVELOPE/artifact.zip" "$RUNNER_TEMP/extracted-owner-review/artifact.zip"
+          python3 scripts/validate_seamless_brand_final_owner_review.py --package "$RUNNER_TEMP/extracted-owner-review"
           python3 - "$RUNNER_TEMP/extracted-owner-review" <<'PY'
           import json, os, sys
           from pathlib import Path
