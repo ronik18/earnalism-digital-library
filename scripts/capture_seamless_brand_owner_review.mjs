@@ -224,9 +224,10 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
   };
   try {
     if (capture.viewport && (!requestedTypes || requestedTypes.has("viewport"))) await write("viewport.png", async (target) => {
-      const clip = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }));
-      const stabilization = browserName === "webkit" ? await page.addStyleTag({ content: '[data-testid="site-header"], header.experience-header, header[data-testid="status-brand-masthead"] { position: static !important; }' }) : undefined;
-      try { await page.screenshot({ path: target, clip, animations: "disabled", caret: "hide", scale: "css" }); }
+      const webkitCapture = browserName === "webkit";
+      const clip = webkitCapture ? await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight })) : undefined;
+      const stabilization = webkitCapture ? await page.addStyleTag({ content: '[data-testid="site-header"], header.experience-header, header[data-testid="status-brand-masthead"] { position: static !important; }' }) : undefined;
+      try { await page.screenshot({ path: target, ...(clip ? { clip } : { fullPage: false }), animations: "disabled", caret: "hide", scale: "css" }); }
       finally { await stabilization?.evaluate((node) => node.remove()).catch(() => {}); }
     });
     if (capture.full_page && (!requestedTypes || requestedTypes.has("full_page"))) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
