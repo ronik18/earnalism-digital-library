@@ -116,8 +116,6 @@ jobs:
           npm ci
           npm ci --prefix frontend --legacy-peer-deps
           python3 -m pip install --disable-pip-version-check -r requirements.txt reportlab==4.2.5
-          sudo mkdir -p /Users/ronikbasak/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin
-          sudo ln -sf "$(command -v python3)" /Users/ronikbasak/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3
           npx playwright install --with-deps chromium firefox webkit
           node --version | tee "$RUNNER_TEMP/node-version.txt"
           python3 --version | tee "$RUNNER_TEMP/python-version.txt"
@@ -299,14 +297,21 @@ jobs:
       - name: Build package and perform PDF and HTML QA
         run: |
           set -euo pipefail
-          python3 scripts/generate_seamless_brand_final_owner_review.py --inputs "$EVIDENCE_ROOT/final-inputs" --output "$EVIDENCE_ROOT/package" --pr-number "$PR_NUMBER" --pr-head "$PR_HEAD_SHA" --production-surface-sha "$PRODUCTION_SURFACE_SHA" --canonical-logo-sha "$CANONICAL_LOGO_SHA"
-          node scripts/test_seamless_brand_final_owner_review.mjs --package "$EVIDENCE_ROOT/package" | tee "$RUNNER_TEMP/final-package-tests.log"
-          grep -q '"testCaseCount":30' "$RUNNER_TEMP/final-package-tests.log"
-          python3 -m http.server 13020 --directory "$EVIDENCE_ROOT/package" > "$RUNNER_TEMP/package-server.log" 2>&1 &
+          PYTHON_BIN="$(command -v python3)"; test -n "$PYTHON_BIN"; test -x "$PYTHON_BIN"; "$PYTHON_BIN" --version
+          for tool in pdfinfo pdftoppm pdftotext; do command -v "$tool" >/dev/null || { sudo apt-get update; sudo apt-get install -y --no-install-recommends poppler-utils; break; }; done
+          "$PYTHON_BIN" - "$RUNNER_TEMP/pdf-tooling-preflight.json" <<'PY'
+          import json,platform,shutil,subprocess,sys
+          tools={name:shutil.which(name) for name in ('pdfinfo','pdftoppm','pdftotext')}; assert all(tools.values())
+          json.dump({'result':'PASS','os':platform.platform(),'tools':{name:{'path':value,'version':subprocess.check_output([value,'-v'],text=True,stderr=subprocess.STDOUT).strip()} for name,value in tools.items()}},open(sys.argv[1],'w'),indent=2)
+          PY
+          "$PYTHON_BIN" scripts/generate_seamless_brand_final_owner_review.py --inputs "$EVIDENCE_ROOT/final-inputs" --output "$EVIDENCE_ROOT/package" --pr-number "$PR_NUMBER" --pr-head "$PR_HEAD_SHA" --production-surface-sha "$PRODUCTION_SURFACE_SHA" --canonical-logo-sha "$CANONICAL_LOGO_SHA"
+          node scripts/test_seamless_brand_final_owner_review.mjs --package "$EVIDENCE_ROOT/package" --python "$PYTHON_BIN" --report-json "$RUNNER_TEMP/final-package-test-report.json" | tee "$RUNNER_TEMP/final-package-tests.log"
+          jq -e --arg package "$EVIDENCE_ROOT/package" '.result == "PASS" and .test_case_count == (.executed_case_names|length) and (.test_case_count >= 31) and (.missing_required_case_names|length == 0) and (.duplicate_case_names|length == 0) and .real_package_validation_executed and .real_package_validation_result == "PASS" and .real_package_path == $package' "$RUNNER_TEMP/final-package-test-report.json"
+          "$PYTHON_BIN" -m http.server 13020 --directory "$EVIDENCE_ROOT/package" > "$RUNNER_TEMP/package-server.log" 2>&1 &
           package_server_pid=$!
           trap 'kill "$package_server_pid" 2>/dev/null || true' EXIT
           for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13020/owner-review.html >/dev/null && break; sleep 1; done
-          python3 - "$EVIDENCE_ROOT/package" <<'PY'
+          "$PYTHON_BIN" - "$EVIDENCE_ROOT/package" <<'PY'
           import re, sys
           from pathlib import Path
           package=Path(sys.argv[1]); html=(package/'owner-review.html').read_text()
@@ -319,7 +324,7 @@ jobs:
           test "$pages" -ge 22
           mkdir -p "$RUNNER_TEMP/pdf-pages"
           pdftoppm -png -r 100 "$EVIDENCE_ROOT/package/owner-review.pdf" "$RUNNER_TEMP/pdf-pages/page"
-          python3 - "$RUNNER_TEMP/pdf-pages" "$EVIDENCE_ROOT/package/contact-sheet.png" <<'PY'
+          "$PYTHON_BIN" - "$RUNNER_TEMP/pdf-pages" "$EVIDENCE_ROOT/package/contact-sheet.png" <<'PY'
           import sys
           from pathlib import Path
           from PIL import Image
@@ -328,7 +333,8 @@ jobs:
               image=Image.open(item); assert image.width > 0 and image.height > 0 and image.getbbox() is not None
           sheet=Image.open(sys.argv[2]); assert sheet.width > 0 and sheet.height > 0 and sheet.getbbox() is not None
           PY
-          pdftotext "$EVIDENCE_ROOT/package/owner-review.pdf" - | grep -q 'Owner decision checklist'
+          pdftotext "$EVIDENCE_ROOT/package/owner-review.pdf" "$RUNNER_TEMP/owner-review.txt"
+          for heading in 'Cover and provenance' 'Brand decision and palette' 'Header desktop/mobile' 'Owner decision checklist'; do grep -Fq "$heading" "$RUNNER_TEMP/owner-review.txt"; done
           echo "PACKAGE_DIR=$EVIDENCE_ROOT/package" >> "$GITHUB_ENV"
 
       - name: Validate final package

@@ -56,6 +56,10 @@ pass("records the complete Article stability result in exact-head evidence input
 pass("runs final evidence and package validators", /validate_seamless_brand_final_evidence_inputs\.py/.test(workflow) && /validate_seamless_brand_final_owner_review\.py/.test(workflow));
 pass("restores the known generated sitemap before the clean-tree assertion", /source-sitemap\.xml/.test(workflow) && before("cp \"$RUNNER_TEMP/source-sitemap.xml\" frontend/public/sitemap.xml", "git diff --exit-code"));
 pass("generates the exact-head package", /generate_seamless_brand_final_owner_review\.py/.test(workflow) && /--pr-head \"\$PR_HEAD_SHA\"/.test(workflow));
+const packageStep = runSteps.find((item) => item.name === "Build package and perform PDF and HTML QA");
+pass("uses a named machine-readable package-test report", /--report-json "\$RUNNER_TEMP\/final-package-test-report\.json"/.test(packageStep?.run || "") && /real_package_validation_result == "PASS"/.test(packageStep?.run || "") && !/testCaseCount":30/.test(packageStep?.run || ""));
+pass("uses a portable Python executable for package QA", /PYTHON_BIN="\$\(command -v python3\)"/.test(packageStep?.run || "") && !/\/Users\/ronikbasak/.test(workflow));
+pass("preflights Poppler and uses file-based PDF text extraction", /pdf-tooling-preflight\.json/.test(packageStep?.run || "") && /pdftotext "\$EVIDENCE_ROOT\/package\/owner-review\.pdf" "\$RUNNER_TEMP\/owner-review\.txt"/.test(packageStep?.run || "") && !/pdftotext[^\n]*\|\s*grep/.test(packageStep?.run || ""));
 pass("gates final upload on successful validation", before("Validate final package", "Upload final owner-review envelope") && !/continue-on-error:\s*true/.test(workflow));
 pass("uses full-head final artifact naming", /pr344-seamless-brand-final-review-\$\{PR_HEAD_SHA\}/.test(workflow));
 pass("uses a fresh verification job and artifact download", /verify-published-owner-review:/.test(workflow) && /needs: seamless-brand-review/.test(workflow) && /actions\/download-artifact@v7/.test(workflow));

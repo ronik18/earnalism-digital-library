@@ -7,10 +7,11 @@ import os from "node:os";
 import path from "node:path";
 
 const root = process.cwd();
-const bundledPython = "/Users/ronikbasak/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3";
 const validator = path.join(root, "scripts/validate_seamless_brand_final_owner_review.py");
-const packageIndex = process.argv.indexOf("--package");
-const realPackage = packageIndex >= 0 ? path.resolve(process.argv[packageIndex + 1]) : null;
+const argument = (name) => { const index = process.argv.indexOf(name); return index >= 0 ? process.argv[index + 1] : undefined; };
+const packageValue = argument("--package"); const realPackage = packageValue ? path.resolve(packageValue) : null;
+const reportValue = argument("--report-json"); const reportPath = reportValue ? path.resolve(reportValue) : null;
+const python = argument("--python") || process.env.PYTHON_BIN || "python3";
 const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const write = (file, value) => { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, typeof value === "string" || Buffer.isBuffer(value) ? value : `${JSON.stringify(value, null, 2)}\n`); };
@@ -46,11 +47,15 @@ function createSynthetic() {
 }
 
 function validate(dir, allowSynthetic = true) {
-  return spawnSync(bundledPython, [validator, "--package", dir, ...(allowSynthetic ? ["--allow-synthetic"] : [])], { cwd: root, encoding: "utf8" });
+  const result = spawnSync(python, [validator, "--package", dir, ...(allowSynthetic ? ["--allow-synthetic"] : [])], { cwd: root, encoding: "utf8" });
+  if (result.error) throw new Error(`Python validator could not start with ${python}: ${result.error.message}`);
+  return result;
 }
-let cases = 0;
-function pass(name, fn) { fn(); cases += 1; console.log(`PASS ${cases}: ${name}`); }
-function fails(name, mutate) { const dir = createSynthetic(); mutate(dir); const result = validate(dir); assert.notEqual(result.status, 0, `${name} should fail`); cases += 1; console.log(`PASS ${cases}: ${name}`); }
+const interpreter = spawnSync(python, ["--version"], { encoding: "utf8" });
+if (interpreter.error || interpreter.status !== 0) throw new Error(`Python interpreter is unavailable (${python}): ${interpreter.error?.message || interpreter.stderr || interpreter.stdout}`);
+const executedCaseNames = []; const requiredCaseNames = [];
+function pass(name, fn, required = true) { if (required) requiredCaseNames.push(name); assert(!executedCaseNames.includes(name), `duplicate test name: ${name}`); fn(); executedCaseNames.push(name); console.log(`PASS ${executedCaseNames.length}: ${name}`); }
+function fails(name, mutate) { const dir = createSynthetic(); mutate(dir); const result = validate(dir); assert.notEqual(result.status, 0, `${name} should fail`); executedCaseNames.push(name); requiredCaseNames.push(name); console.log(`PASS ${executedCaseNames.length}: ${name}`); }
 
 pass("valid synthetic package passes", () => assert.equal(validate(createSynthetic()).status, 0));
 fails("missing HTML fails", dir => fs.rmSync(path.join(dir, "owner-review.html")));
@@ -71,12 +76,16 @@ fails("production mutation count fails", dir => { const p = path.join(dir, "exec
 fails("bad manifest fails", dir => fs.writeFileSync(path.join(dir, "manifest.json"), "{}"));
 fails("bad manifest SHA fails", dir => fs.writeFileSync(path.join(dir, "manifest.sha256"), "0".repeat(64)));
 fails("missing ZIP fails", dir => fs.rmSync(path.join(dir, "artifact.zip")));
-fails("ZIP traversal fails", dir => execFileSync(bundledPython, ["-c", "import zipfile,sys; z=zipfile.ZipFile(sys.argv[1],'w'); z.writestr('../escape.txt','x'); z.close()", path.join(dir, "artifact.zip")]));
-fails("bad extracted hash fails", dir => { const p = path.join(dir, "artifact.zip"); execFileSync(bundledPython, ["-c", "import zipfile,sys; z=zipfile.ZipFile(sys.argv[1],'a'); z.writestr('screenshots/chromium/states/synthetic/viewport.png','bad'); z.close()", p]); });
+fails("ZIP traversal fails", dir => execFileSync(python, ["-c", "import zipfile,sys; z=zipfile.ZipFile(sys.argv[1],'w'); z.writestr('../escape.txt','x'); z.close()", path.join(dir, "artifact.zip")]));
+fails("bad extracted hash fails", dir => { const p = path.join(dir, "artifact.zip"); execFileSync(python, ["-c", "import zipfile,sys; z=zipfile.ZipFile(sys.argv[1],'a'); z.writestr('screenshots/chromium/states/synthetic/viewport.png','bad'); z.close()", p]); });
 fails("missing package statistics fails", dir => fs.rmSync(path.join(dir, "package-statistics.json")));
 fails("zero-byte required file fails", dir => { const p = path.join(dir, "package-statistics.json"); const v = JSON.parse(fs.readFileSync(p)); v.zero_byte_required_file_count = 1; write(p, v); });
 fails("wrong package head fails", dir => { const p = path.join(dir, "provenance.json"); const v = JSON.parse(fs.readFileSync(p)); v.package_generation_head = "0".repeat(40); write(p, v); });
 fails("wrong production-surface SHA fails", dir => { const p = path.join(dir, "executive-summary.json"); const v = JSON.parse(fs.readFileSync(p)); v.production_surface_sha256 = "0".repeat(64); write(p, v); });
 fails("incomplete Article stability evidence fails", dir => { const p = path.join(dir, "final-evidence-inputs.json"); const v = JSON.parse(fs.readFileSync(p)); v.article_stability.article_mobile.webkit.stable = 9; write(p, v); });
-if (realPackage) pass("complete real local package passes", () => assert.equal(validate(realPackage, false).status, 0));
-console.log(JSON.stringify({ result: "PASS", testCaseCount: cases, realPackage }));
+let realPackageValidationResult = "NOT_APPLICABLE";
+if (realPackage) { pass("complete real local package passes", () => assert.equal(validate(realPackage, false).status, 0)); realPackageValidationResult = "PASS"; }
+const report = { schema_version: 1, result: "PASS", test_case_count: executedCaseNames.length, executed_case_names: executedCaseNames, required_case_names: requiredCaseNames, missing_required_case_names: requiredCaseNames.filter(name => !executedCaseNames.includes(name)), duplicate_case_names: executedCaseNames.filter((name, index) => executedCaseNames.indexOf(name) !== index), real_package_path: realPackage, real_package_validation_executed: Boolean(realPackage), real_package_validation_result: realPackageValidationResult, validator_path: validator, python_executable: python, python_version: `${interpreter.stdout}${interpreter.stderr}`.trim(), generated_timestamp: new Date().toISOString() };
+if (report.missing_required_case_names.length || report.duplicate_case_names.length || report.test_case_count !== report.executed_case_names.length) throw new Error("package test report contract failed");
+if (reportPath) write(reportPath, report);
+console.log(JSON.stringify({ result: "PASS", testCaseCount: report.test_case_count, realPackage, reportPath }));
