@@ -231,8 +231,21 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
     if (capture.brand_close_up) await write("brand-close-up.png", (target) => lockup.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
     if (capture.parent_surface_close_up) await write("parent-surface-close-up.png", (target) => header.screenshot({ path: target, animations: "disabled", caret: "hide", scale: "css" }));
   } finally {
-    await page.evaluate(({ x, y }) => window.scrollTo(x, y), scrollPosition);
-    await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    // WebKit completes a locator-screenshot scroll adjustment on the next turn.
+    // Restore only the state that the declared interaction established, then
+    // prove the next screenshot begins at that exact document coordinate.
+    await page.waitForTimeout(50);
+    const restored = await page.evaluate(async ({ x, y }) => {
+      const set = () => {
+        window.scrollTo({ left: x, top: y, behavior: "instant" });
+        document.documentElement.scrollLeft = x; document.documentElement.scrollTop = y;
+        document.body.scrollLeft = x; document.body.scrollTop = y;
+        if (document.scrollingElement) { document.scrollingElement.scrollLeft = x; document.scrollingElement.scrollTop = y; }
+      };
+      set(); await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))); set();
+      return { x: window.scrollX, y: window.scrollY };
+    }, scrollPosition);
+    if (Math.abs(restored.x - scrollPosition.x) > 1 || Math.abs(restored.y - scrollPosition.y) > 1) throw new Error(`Screenshot capture changed scroll position from ${JSON.stringify(scrollPosition)} to ${JSON.stringify(restored)}.`);
   }
   return files;
 }
