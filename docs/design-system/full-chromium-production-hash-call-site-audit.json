@@ -1,0 +1,22 @@
+{
+  "result": "PASS",
+  "authority": "199ff2d18bc0df16f5e4e2bdc9bcf8ceba24d26c3ee92360802db80c1dbc31b1",
+  "call_sites": [
+    {
+      "path": "scripts/test_seamless_brand_full_chromium_matrix.mjs",
+      "classification": "SYNTHETIC_UNIT_TEST",
+      "constraint": "synthetic sentinel is isolated to fixture construction when no --output is provided"
+    },
+    {
+      "path": "scripts/test_seamless_brand_full_chromium_matrix.mjs",
+      "classification": "REAL_CAPTURE_VALIDATION",
+      "constraint": "--output requires --expected-production-surface-sha containing lowercase hexadecimal SHA-256"
+    },
+    {
+      "path": ".github/workflows/seamless-brand-owner-review.yml",
+      "classification": "REAL_CAPTURE_VALIDATION",
+      "constraint": "uses $PRODUCTION_SURFACE_SHA explicitly and compares it against capture-summary.json before validation"
+    }
+  ],
+  "stale_unused": []
+}

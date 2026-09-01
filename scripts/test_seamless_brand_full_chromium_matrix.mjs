@@ -14,11 +14,28 @@ const manifest = loadStateManifest(manifestPath);
 const expectedIds = manifest.states.map((state) => state.id);
 const png = Buffer.from("89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4890000000049454e44ae426082", "hex");
 const logoHash = "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919";
+const syntheticProductionSurface = "synthetic-production-surface";
 
 function git(...args) { return execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim(); }
 function sha(value) { return crypto.createHash("sha256").update(value).digest("hex"); }
 function assertEmpty(value, label) { assert.deepEqual(value || [], [], `${label} must be empty`); }
 function assertPng(file) { const bytes = fs.readFileSync(file); assert.ok(bytes.length > 24, `${file} is empty`); assert.ok(bytes.subarray(0, 8).equals(png.subarray(0, 8)), `${file} has an invalid PNG signature`); }
+
+export function parseRealValidationArguments(argv) {
+  const outputIndex = argv.indexOf("--output");
+  const expectedHashIndex = argv.indexOf("--expected-production-surface-sha");
+  if (outputIndex < 0) {
+    assert.equal(expectedHashIndex, -1, "--expected-production-surface-sha requires --output");
+    return null;
+  }
+  const output = argv[outputIndex + 1];
+  const expectedProductionSurface = argv[expectedHashIndex + 1];
+  assert.ok(output && !output.startsWith("--"), "--output requires a directory");
+  assert.ok(expectedHashIndex >= 0, "real --output validation requires --expected-production-surface-sha");
+  assert.ok(expectedProductionSurface, "--expected-production-surface-sha requires a value");
+  assert.match(expectedProductionSurface, /^[0-9a-f]{64}$/, "--expected-production-surface-sha must be a lowercase 64-character hexadecimal SHA-256");
+  return { output: path.resolve(output), expectedProductionSurface };
+}
 
 export function validateFullChromiumMatrix(output, expectedProductionSurface) {
   const summaryPath = path.join(output, "capture-summary.json");
@@ -34,7 +51,8 @@ export function validateFullChromiumMatrix(output, expectedProductionSurface) {
   assertEmpty(summary.missing_state_ids, "missing state IDs"); assertEmpty(summary.unexpected_state_ids, "unexpected state IDs"); assertEmpty(summary.duplicate_state_ids, "duplicate state IDs");
   assert.equal(summary.source_head, git("rev-parse", "HEAD"), "capture source head must match local HEAD");
   assert.equal(summary.tree_sha, git("rev-parse", "HEAD^{tree}"), "capture tree SHA must match local tree");
-  assert.equal(summary.production_surface_sha256, expectedProductionSurface, "production surface hash differs from pre-run value");
+  if (expectedProductionSurface !== syntheticProductionSurface) assert.match(summary.production_surface_sha256 || "", /^[0-9a-f]{64}$/, "captured production surface hash must be a lowercase 64-character hexadecimal SHA-256");
+  assert.equal(summary.production_surface_sha256, expectedProductionSurface, `production surface hash differs: expected ${expectedProductionSurface}, observed ${summary.production_surface_sha256}`);
   assert.equal(summary.canonical_logo_sha256, logoHash, "canonical logo hash differs");
   for (const key of ["raw_duplicate_logo_states", "transform_logo_states", "logo_card_states", "clipped_logo_states", "clipped_control_states", "logo_control_overlap_states", "multiple_header_states", "horizontal_overflow_states", "interaction_failure_states", "reader_safety_defect_states", "listener_safety_defect_states", "status_contract_defect_states", "static_parity_defect_states", "runtime_failure_states", "rendered_ui_defect_states"]) assertEmpty(summary[key], key);
   assert.equal(summary.production_mutation_count, 0, "production mutation count must be zero");
@@ -95,29 +113,43 @@ function createSynthetic(output, productionSurface) {
   fs.writeFileSync(path.join(output, "capture-summary.json"), JSON.stringify(summary)); fs.writeFileSync(path.join(output, "route-surface-hashes.json"), "{}"); return summary;
 }
 
-const expectedProduction = process.env.SEAMLESS_BRAND_EXPECTED_PRODUCTION_SURFACE || "synthetic-production-surface";
-const synthetic = fs.mkdtempSync(path.join(os.tmpdir(), "seamless-brand-full-chromium-")); createSynthetic(synthetic, expectedProduction);
+const synthetic = fs.mkdtempSync(path.join(os.tmpdir(), "seamless-brand-full-chromium-")); createSynthetic(synthetic, syntheticProductionSurface);
 let cases = 0; const test = (name, fn) => { fn(); cases += 1; console.log(`PASS ${cases}: ${name}`); };
 const load = () => JSON.parse(fs.readFileSync(path.join(synthetic, "capture-summary.json"), "utf8")); const save = (summary) => fs.writeFileSync(path.join(synthetic, "capture-summary.json"), JSON.stringify(summary));
 test("final manifest contains sixty-five states", () => assert.equal(expectedIds.length, 65));
 test("expected IDs derive from manifest order", () => assert.deepEqual(load().requested_state_ids, expectedIds));
-test("all sixty-five states are required", () => validateFullChromiumMatrix(synthetic, expectedProduction));
-test("missing state fails", () => { const s = load(); s.missing_state_ids = [expectedIds[0]]; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("duplicate state fails", () => { const s = load(); s.duplicate_state_ids = [expectedIds[0]]; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("unstable state fails", () => { const s = load(); s.stable_state_count = 64; s.unstable_state_count = 1; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("interaction failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-menu-open-390"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.interaction_result.failures = ["focus-trap"]; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("zoom failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "reader-mobile-390-zoom-200"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.zoom_results.clipped_control_count = 1; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("Reader safety failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "reader-mobile-390"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.reader.protected_prefetch = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("Listener safety failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "listener-mobile-390"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.listener.raw_media_url = "present"; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("status contract failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "error-404-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.status_contract.result = "FAIL"; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("logo card use fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.logo.wrapper_border_radius = "20px"; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("clipping fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.logo.clipped = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("control overlap fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.overlap = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("overflow fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.horizontal_overflow = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("runtime error fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.console_error_count = 1; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("production mutation fails", () => { const s = load(); s.production_mutation_count = 1; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, expectedProduction)); createSynthetic(synthetic, expectedProduction); });
-test("valid synthetic sixty-five-state summary passes", () => validateFullChromiumMatrix(synthetic, expectedProduction));
+test("all sixty-five states are required", () => validateFullChromiumMatrix(synthetic, syntheticProductionSurface));
+test("missing state fails", () => { const s = load(); s.missing_state_ids = [expectedIds[0]]; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("duplicate state fails", () => { const s = load(); s.duplicate_state_ids = [expectedIds[0]]; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("unstable state fails", () => { const s = load(); s.stable_state_count = 64; s.unstable_state_count = 1; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("interaction failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-menu-open-390"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.interaction_result.failures = ["focus-trap"]; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("zoom failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "reader-mobile-390-zoom-200"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.zoom_results.clipped_control_count = 1; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("Reader safety failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "reader-mobile-390"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.reader.protected_prefetch = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("Listener safety failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "listener-mobile-390"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.listener.raw_media_url = "present"; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("status contract failure fails", () => { const p = path.join(stateOutputDirectory(synthetic, "error-404-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.status_contract.result = "FAIL"; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("logo card use fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.logo.wrapper_border_radius = "20px"; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("clipping fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.logo.clipped = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("control overlap fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.overlap = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("overflow fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.horizontal_overflow = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("runtime error fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.console_error_count = 1; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("production mutation fails", () => { const s = load(); s.production_mutation_count = 1; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
+test("valid synthetic sixty-five-state summary passes", () => validateFullChromiumMatrix(synthetic, syntheticProductionSurface));
 
-const outputIndex = process.argv.indexOf("--output");
-if (outputIndex >= 0) { const output = process.argv[outputIndex + 1]; if (!output) throw new Error("--output requires a directory"); validateFullChromiumMatrix(path.resolve(output), expectedProduction); }
-console.log(JSON.stringify({ result: "PASS", testCaseCount: cases, output: outputIndex >= 0 ? path.resolve(process.argv[outputIndex + 1]) : null }));
+const realFixture = fs.mkdtempSync(path.join(os.tmpdir(), "seamless-brand-full-chromium-real-"));
+const realProductionSurface = "199ff2d18bc0df16f5e4e2bdc9bcf8ceba24d26c3ee92360802db80c1dbc31b1";
+createSynthetic(realFixture, realProductionSurface);
+test("synthetic unit-test mode does not require a real authority", () => assert.equal(parseRealValidationArguments([]), null));
+test("real mode missing expected hash fails", () => assert.throws(() => parseRealValidationArguments(["--output", realFixture])));
+test("real mode empty expected hash fails", () => assert.throws(() => parseRealValidationArguments(["--output", realFixture, "--expected-production-surface-sha", ""])));
+test("real mode non-hex expected hash fails", () => assert.throws(() => parseRealValidationArguments(["--output", realFixture, "--expected-production-surface-sha", "not-a-hash"])));
+test("real mode rejects the synthetic sentinel", () => assert.throws(() => parseRealValidationArguments(["--output", realFixture, "--expected-production-surface-sha", syntheticProductionSurface])));
+test("real mode rejects 63-character, 65-character, and uppercase hashes", () => { for (const value of ["a".repeat(63), "a".repeat(65), "A".repeat(64)]) assert.throws(() => parseRealValidationArguments(["--output", realFixture, "--expected-production-surface-sha", value])); });
+test("real mode wrong valid hash fails", () => assert.throws(() => validateFullChromiumMatrix(realFixture, "a".repeat(64))));
+test("real mode correct explicit hash passes", () => { const real = parseRealValidationArguments(["--output", realFixture, "--expected-production-surface-sha", realProductionSurface]); validateFullChromiumMatrix(real.output, real.expectedProductionSurface); });
+test("real mode missing observed capture hash fails", () => { const summary = JSON.parse(fs.readFileSync(path.join(realFixture, "capture-summary.json"), "utf8")); delete summary.production_surface_sha256; fs.writeFileSync(path.join(realFixture, "capture-summary.json"), JSON.stringify(summary)); assert.throws(() => validateFullChromiumMatrix(realFixture, realProductionSurface)); createSynthetic(realFixture, realProductionSurface); });
+test("real mode malformed observed capture hash fails", () => { const summary = JSON.parse(fs.readFileSync(path.join(realFixture, "capture-summary.json"), "utf8")); summary.production_surface_sha256 = "malformed"; fs.writeFileSync(path.join(realFixture, "capture-summary.json"), JSON.stringify(summary)); assert.throws(() => validateFullChromiumMatrix(realFixture, realProductionSurface)); createSynthetic(realFixture, realProductionSurface); });
+test("real mode does not consult a synthetic fallback", () => { const prior = process.env.SEAMLESS_BRAND_EXPECTED_PRODUCTION_SURFACE; try { process.env.SEAMLESS_BRAND_EXPECTED_PRODUCTION_SURFACE = "a".repeat(64); const real = parseRealValidationArguments(["--output", realFixture, "--expected-production-surface-sha", realProductionSurface]); assert.equal(real.expectedProductionSurface, realProductionSurface); } finally { if (prior === undefined) delete process.env.SEAMLESS_BRAND_EXPECTED_PRODUCTION_SURFACE; else process.env.SEAMLESS_BRAND_EXPECTED_PRODUCTION_SURFACE = prior; } });
+
+const realValidation = parseRealValidationArguments(process.argv.slice(2));
+if (realValidation) validateFullChromiumMatrix(realValidation.output, realValidation.expectedProductionSurface);
+console.log(JSON.stringify({ result: "PASS", testCaseCount: cases, output: realValidation?.output || null }));

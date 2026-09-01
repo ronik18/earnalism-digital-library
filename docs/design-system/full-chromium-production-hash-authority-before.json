@@ -1,0 +1,18 @@
+{
+  "result": "FAIL",
+  "root_cause_classification": "SYNTHETIC_PRODUCTION_SURFACE_EXPECTATION_USED_FOR_REAL_CAPTURE",
+  "workflow_run_id": "33534427000",
+  "workflow_step": "Capture the exact head in all browsers",
+  "validator": "scripts/test_seamless_brand_full_chromium_matrix.mjs",
+  "real_output_mode": {
+    "invocation": "node scripts/test_seamless_brand_full_chromium_matrix.mjs --output <real-capture-output>",
+    "expected_authority_before": "synthetic-production-surface",
+    "observed_capture_hash": "199ff2d18bc0df16f5e4e2bdc9bcf8ceba24d26c3ee92360802db80c1dbc31b1",
+    "failure": "production surface hash differs from pre-run value"
+  },
+  "ci_capture_counts": {
+    "chromium": [65, 65, 65],
+    "firefox": [20, 20, 20],
+    "webkit": [20, 20, 20]
+  }
+}

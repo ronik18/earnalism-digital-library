@@ -264,7 +264,10 @@ jobs:
             node scripts/capture_seamless_brand_owner_review.mjs --manifest docs/design-system/seamless-brand-state-manifest.json --route-inventory docs/design-system/seamless-brand-route-inventory.json --state-filter "$STATE_FILTER" --capture --browser "$browser" --base-url http://127.0.0.1:13019 --output "$EVIDENCE_ROOT/cross-browser/$browser"
           done
           node scripts/generate_seamless_brand_cross_browser_shell_summary.mjs --output "$EVIDENCE_ROOT/cross-browser" --selection docs/design-system/seamless-brand-cross-browser-shell-matrix.json --manifest docs/design-system/seamless-brand-state-manifest.json --route-inventory docs/design-system/seamless-brand-route-inventory.json
-          node scripts/test_seamless_brand_full_chromium_matrix.mjs --output "$EVIDENCE_ROOT/chromium"
+          [[ "$PRODUCTION_SURFACE_SHA" =~ ^[0-9a-f]{64}$ ]]
+          CAPTURED_PRODUCTION_SURFACE_SHA="$(jq -r .production_surface_sha256 "$EVIDENCE_ROOT/chromium/capture-summary.json")"
+          test "$CAPTURED_PRODUCTION_SURFACE_SHA" = "$PRODUCTION_SURFACE_SHA"
+          node scripts/test_seamless_brand_full_chromium_matrix.mjs --output "$EVIDENCE_ROOT/chromium" --expected-production-surface-sha "$PRODUCTION_SURFACE_SHA"
           node scripts/test_seamless_brand_cross_browser_shell_matrix.mjs --output "$EVIDENCE_ROOT/cross-browser"
           echo "EVIDENCE_ROOT=$EVIDENCE_ROOT" >> "$GITHUB_ENV"
 
