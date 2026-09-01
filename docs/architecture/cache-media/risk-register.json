@@ -1,0 +1,68 @@
+{
+  "risks": [
+    {
+      "current_control": "only internally written entries; decode errors fall back",
+      "likelihood": "MEDIUM",
+      "owner_approval_required": false,
+      "planned_mitigation": "safe codec/key-version migration",
+      "release_blocker": true,
+      "risk": "unsafe pickle deserialization",
+      "severity": "HIGH"
+    },
+    {
+      "current_control": "lease authorization before stream; short user TTLs",
+      "likelihood": "MEDIUM",
+      "owner_approval_required": false,
+      "planned_mitigation": "precise entitlement invalidation",
+      "release_blocker": true,
+      "risk": "stale authorization",
+      "severity": "HIGH"
+    },
+    {
+      "current_control": "TTL jitter only",
+      "likelihood": "MEDIUM",
+      "owner_approval_required": false,
+      "planned_mitigation": "selected cross-replica singleflight",
+      "release_blocker": true,
+      "risk": "cache stampede",
+      "severity": "HIGH"
+    },
+    {
+      "current_control": "1 MiB iterator",
+      "likelihood": "MEDIUM",
+      "owner_approval_required": false,
+      "planned_mitigation": "measure and ensure upstream async/cancellation behavior",
+      "release_blocker": true,
+      "risk": "large-file memory/event-loop pressure",
+      "severity": "HIGH"
+    },
+    {
+      "current_control": "finite TTL/jitter; checked-in volatile-lfu target",
+      "likelihood": "MEDIUM",
+      "owner_approval_required": true,
+      "planned_mitigation": "live capacity baseline",
+      "release_blocker": true,
+      "risk": "Redis memory/eviction mismatch",
+      "severity": "HIGH"
+    },
+    {
+      "current_control": "user/session ids and hashes",
+      "likelihood": "LOW",
+      "owner_approval_required": false,
+      "planned_mitigation": "uniform schema version and identity contract",
+      "release_blocker": false,
+      "risk": "cross-tenant key collision",
+      "severity": "MEDIUM"
+    },
+    {
+      "current_control": "current range validation, fail-closed B2 configuration, no PDF product, PR overlap exclusion",
+      "likelihood": "MEDIUM",
+      "owner_approval_required": "provider/topology changes only",
+      "planned_mitigation": "characterization tests and serial release",
+      "release_blocker": true,
+      "risk": "Range/signed URL/object outage/PDF uncertainty/workflow conflict/metrics gap",
+      "severity": "MEDIUM"
+    }
+  ],
+  "schema_version": "cache-media-risk-register.v1"
+}

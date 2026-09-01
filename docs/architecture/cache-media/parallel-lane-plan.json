@@ -1,0 +1,95 @@
+{
+  "foundation": {
+    "branch": "codex/cache-media-foundation-extraction",
+    "move_after_characterization": [
+      "_cache_payload_*",
+      "_redis_cache_*",
+      "_public_cache_*",
+      "_streaming_body_iterator",
+      "_parse_byte_range",
+      "_stream_audiobook_asset_url"
+    ],
+    "owned_files": [
+      "backend/cache/**",
+      "backend/media/**",
+      "backend/services/**",
+      "backend/tests/cache_media/**"
+    ],
+    "prohibited": [
+      "backend/server.py concurrent edits by more than one lane",
+      "frontend UI until PR #344 merges"
+    ],
+    "rollback": "single behavior-preserving extraction PR"
+  },
+  "lanes": [
+    {
+      "branch": "codex/cache-media-redis-codec",
+      "depends_on": "foundation",
+      "expected_pr": "safe codec and guard",
+      "name": "A Redis abstraction",
+      "owns": [
+        "backend/cache/**"
+      ],
+      "rollback": "feature flag/key version",
+      "tests": "cache_media codec/lifecycle"
+    },
+    {
+      "branch": "codex/cache-media-audio-streaming",
+      "depends_on": "foundation",
+      "expected_pr": "audio delivery contract",
+      "name": "B Audio hardening",
+      "owns": [
+        "backend/media/**"
+      ],
+      "rollback": "old proxy path",
+      "tests": "range/auth/stream tests"
+    },
+    {
+      "branch": "codex/cache-media-pdf-discovery",
+      "depends_on": "explicit product approval",
+      "expected_pr": "only if customer path exists",
+      "name": "C PDF",
+      "owns": [
+        "docs/architecture/cache-media/pdf/**"
+      ],
+      "rollback": "no runtime change",
+      "tests": "discovery only unless active route"
+    },
+    {
+      "branch": "codex/cache-media-metrics",
+      "depends_on": "foundation interfaces",
+      "expected_pr": "metrics/capacity",
+      "name": "D Metrics",
+      "owns": [
+        "backend/cache/**",
+        "scripts/cache_media/**"
+      ],
+      "rollback": "instrumentation removal",
+      "tests": "local benchmark"
+    },
+    {
+      "branch": "codex/cache-media-frontend-lifecycle",
+      "depends_on": "PR #344 merged and audio contract",
+      "expected_pr": "post-344 frontend",
+      "name": "E Frontend lifecycle",
+      "owns": [
+        "frontend/src/experiences-v2/**",
+        "frontend/src/components/**"
+      ],
+      "rollback": "previous UI source handling",
+      "tests": "frontend media lifecycle"
+    },
+    {
+      "branch": "codex/cache-media-ci-release",
+      "depends_on": "A/B/D merged",
+      "expected_pr": "serial integration",
+      "name": "F CI/release",
+      "owns": [
+        ".github/workflows/**"
+      ],
+      "rollback": "workflow revert",
+      "tests": "CI canary"
+    }
+  ],
+  "schema_version": "cache-media-parallel-lanes.v1"
+}

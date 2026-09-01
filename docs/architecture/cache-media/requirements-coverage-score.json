@@ -1,0 +1,95 @@
+{
+  "categories": [
+    {
+      "awarded": 9,
+      "category": "repository/infrastructure discovery",
+      "confidence": "HIGH",
+      "evidence": "checked-in config and workflows",
+      "maximum": 10,
+      "missing": "live service authority"
+    },
+    {
+      "awarded": 8,
+      "category": "durable media-storage topology",
+      "confidence": "MEDIUM",
+      "evidence": "B2 streaming/config paths",
+      "maximum": 10,
+      "missing": "live object metadata"
+    },
+    {
+      "awarded": 12,
+      "category": "large-audio delivery",
+      "confidence": "MEDIUM",
+      "evidence": "range/ETag/protected streaming code",
+      "maximum": 15,
+      "missing": "production HTTP proof and cancellation measurement"
+    },
+    {
+      "awarded": 1,
+      "category": "large-PDF delivery",
+      "confidence": "HIGH",
+      "evidence": "no active customer path",
+      "maximum": 10,
+      "missing": "product requirement"
+    },
+    {
+      "awarded": 7,
+      "category": "Redis cache foundation",
+      "confidence": "HIGH",
+      "evidence": "shared client/TTLs/fallback",
+      "maximum": 15,
+      "missing": "safe codec and size guard"
+    },
+    {
+      "awarded": 6,
+      "category": "invalidation/isolation/resilience/stampede",
+      "confidence": "MEDIUM",
+      "evidence": "generations and targeted user invalidation",
+      "maximum": 10,
+      "missing": "singleflight and complete event coverage"
+    },
+    {
+      "awarded": 4,
+      "category": "observability/capacity/cache economics",
+      "confidence": "LOW",
+      "evidence": "admin status and local policy",
+      "maximum": 10,
+      "missing": "live metrics and measured economics"
+    },
+    {
+      "awarded": 4,
+      "category": "frontend media lifecycle",
+      "confidence": "MEDIUM",
+      "evidence": "same-origin audio preload metadata/none; AbortController for data fetches",
+      "maximum": 5,
+      "missing": "explicit media cancellation instrumentation"
+    },
+    {
+      "awarded": 7,
+      "category": "tests and before/after benchmarks",
+      "confidence": "MEDIUM",
+      "evidence": "existing range/auth tests and new local baseline",
+      "maximum": 10,
+      "missing": "after implementation result"
+    },
+    {
+      "awarded": 0,
+      "category": "task-specific PR/staging/release/post-release proof",
+      "confidence": "HIGH",
+      "evidence": "checkpoint intentionally stops before release",
+      "maximum": 5,
+      "missing": "all release proof"
+    }
+  ],
+  "maximum": 100,
+  "schema_version": "cache-media-requirements-coverage.v1",
+  "score_type": "REQUIREMENTS_COVERAGE_NOT_PERFORMANCE",
+  "subscores": {
+    "audio_delivery": "12/15",
+    "observability_economics": "4/10",
+    "pdf_delivery": "1/10",
+    "redis_foundation": "7/15",
+    "release_completion": "0/5"
+  },
+  "total": 58
+}
