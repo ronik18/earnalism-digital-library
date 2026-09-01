@@ -310,7 +310,12 @@ jobs:
           "$PYTHON_BIN" -m http.server 13020 --directory "$EVIDENCE_ROOT/package" > "$RUNNER_TEMP/package-server.log" 2>&1 &
           package_server_pid=$!
           trap 'kill "$package_server_pid" 2>/dev/null || true' EXIT
-          for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13020/owner-review.html >/dev/null && break; sleep 1; done
+          package_server_ready=false
+          for _ in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:13020/owner-review.html >/dev/null; then package_server_ready=true; break; fi
+            sleep 1
+          done
+          test "$package_server_ready" = true
           "$PYTHON_BIN" - "$EVIDENCE_ROOT/package" <<'PY'
           import re, sys
           from pathlib import Path
