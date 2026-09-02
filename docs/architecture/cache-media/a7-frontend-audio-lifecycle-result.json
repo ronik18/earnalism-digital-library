@@ -1,0 +1,41 @@
+{
+  "schema_version": "cache-media-a7-frontend-audio-lifecycle-result.v1",
+  "result": "PASS",
+  "classification": "MANIFEST_FETCH_NOT_CANCELLED",
+  "production_change_required": true,
+  "changed_runtime_files": [
+    "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx",
+    "frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx",
+    "frontend/src/lib/readingPassApi.js",
+    "frontend/src/lib/requestCancellation.js"
+  ],
+  "behavior": {
+    "raw_provider_url": "PASS_ZERO",
+    "source_before_entitlement": "PASS_ZERO",
+    "public_audio": "PASS_ZERO",
+    "autoplay": "PASS_ZERO",
+    "preload": "metadata_only_when_authorized",
+    "manifest_cancellation": "PASS",
+    "stale_response_suppression": "PASS",
+    "timer_cleanup": "PASS_EXISTING_INTERVAL_CLEANUP",
+    "object_url_creation_count": 0,
+    "retry_bound": "PASS_NO_NEW_RETRY",
+    "accessible_error_state": "PASS_EXISTING_ROLE_ALERT",
+    "reading_pass_consumption": "PASS_ZERO_DURING_TESTS",
+    "fixture_playable_source_count": 0
+  },
+  "frontend_tests": { "suites_passed": 59, "tests_passed": 317 },
+  "browser": {
+    "chromium": "PASS_8_CASES",
+    "firefox": "PASS_8_CASES_WITH_1_LOCAL_STATIC_FONT_WARNING",
+    "webkit": "PASS_8_CASES",
+    "application_console_or_page_errors": 0
+  },
+  "production_mutations": 0
+  ,"rollback_simulation": {
+    "result": "PASS",
+    "commands": ["git revert --no-commit d432d34c5 0ff97c010", "pytest -q backend/tests/cache_media ...", "npm run build"],
+    "selected_backend_tests_passed": 184,
+    "static_seo_assertions": 2502
+  }
+}

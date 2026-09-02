@@ -1,0 +1,16 @@
+{
+  "schema_version": "cache-media-a7-main-integration-parity.v1",
+  "result": "PASS",
+  "starting_pr_head": "ba05a8cc60cbb5ecdad821e304347b15615660f5",
+  "origin_main": "1a23ad2f2a04176faa0afb753f7144af2f437d0d",
+  "main_integration_commit": "b277cc3129a4b9f87f4af93f56352b2af208ac02",
+  "released_pr344_merge_present": true,
+  "merge_conflicts": 0,
+  "main_changed_path_count": 114,
+  "pr345_changed_path_count": 146,
+  "overlap_path_count": 0,
+  "post_base_cache_media_main_changes": 0,
+  "checkpoint": { "result": "PASS", "hash_mismatches": 0, "missing_files": 0, "worktree_contamination": 0 },
+  "postmerge_selected_regression": { "passed": 186, "failed": 0 },
+  "baseline_failures_preserved": ["test_unapproved_public_audio_asset_safety.py: 2 controlled-publication-data failures"]
+}

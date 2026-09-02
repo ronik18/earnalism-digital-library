@@ -1,0 +1,65 @@
+{
+  "schema_version": "cache-media-a7-frontend-audio-lifecycle.v1",
+  "result": "PASS",
+  "integration": {
+    "pr_number": 345,
+    "branch": "codex/cache-media-architecture-baseline",
+    "starting_head": "ba05a8cc60cbb5ecdad821e304347b15615660f5",
+    "merged_origin_main": "1a23ad2f2a04176faa0afb753f7144af2f437d0d",
+    "normal_merge_commit": "b277cc3129a4b9f87f4af93f56352b2af208ac02",
+    "merge_conflicts": 0,
+    "cache_media_overlap": "ZERO"
+  },
+  "premerge_checkpoint": {
+    "result": "PASS",
+    "hash_mismatches": 0,
+    "missing": [],
+    "missing_checkpoint_files": 0,
+    "worktree_contamination": 0
+  },
+  "classification": "MANIFEST_FETCH_NOT_CANCELLED",
+  "intentional_frontend_changes": [
+    "Abort route-owned Reader and Listener manifest requests during cleanup.",
+    "Abort the Reader canonical-page request during cleanup.",
+    "Pass optional request cancellation options through getReadingPassPage.",
+    "Ignore only recognized cancellation errors while preserving existing failure messages."
+  ],
+  "unchanged_contracts": [
+    "same-origin protected audio URL construction",
+    "Reading Pass authorization and lifecycle",
+    "release-truth gating and zero-public-audio policy",
+    "range, conditional, and cache behavior",
+    "media storage and binary-cache policy"
+  ],
+  "validation": {
+    "backend_selected_cache_media_audio": { "passed": 186, "failed": 0 },
+    "baseline_public_audio_safety": {
+      "passed": 0,
+      "failed": 2,
+      "classification": "PREEXISTING_CONTROLLED_PUBLICATION_DATA_STATE",
+      "evidence": "test and controlled-publication paths unchanged across ba05a8cc..origin/main"
+    },
+    "frontend_contract_suites": { "passed": 4, "tests_passed": 22, "failed": 0 },
+    "fixture_build": {
+      "result": "PASS",
+      "static_snapshot_assertions": 2502,
+      "api_source_mode": "EXISTING_LOCAL_FALLBACK_AFTER_UNAVAILABLE_LOOPBACK_SOURCE"
+    },
+    "browser_lifecycle": {
+      "result": "PASS",
+      "engines": ["chromium", "firefox", "webkit"],
+      "cases_per_engine": ["listener_manifest", "reader_manifest", "listener_desktop", "listener_390", "listener_320_at_200", "reader_desktop", "reader_390", "reader_320_at_200"],
+      "firefox_local_fixture_font_warnings": 1,
+      "network_scope": "LOOPBACK_FIXTURE_ONLY"
+    }
+  },
+  "excluded": [
+    "real-audio playback",
+    "production storage",
+    "production API",
+    "Reading Pass consumption",
+    "deployment",
+    "release or PR merge",
+    "A8 work"
+  ]
+}
