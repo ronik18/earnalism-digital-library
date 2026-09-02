@@ -57,12 +57,12 @@
       "missing": "cluster metrics and measured economics"
     },
     {
-      "awarded": 4,
+      "awarded": 5,
       "category": "frontend media lifecycle",
       "confidence": "MEDIUM",
-      "evidence": "same-origin audio preload metadata/none; AbortController for data fetches",
+      "evidence": "A7 reproduced and corrected route-owned cancellation; Chromium/Firefox/WebKit lifecycle matrix",
       "maximum": 5,
-      "missing": "explicit media cancellation instrumentation"
+      "missing": "production browser telemetry remains release-gated"
     },
     {
       "awarded": 9,
@@ -86,8 +86,8 @@
   "score_type": "REQUIREMENTS_COVERAGE_NOT_PERFORMANCE",
   "baseline_regression_adjudication": {
     "score_before": 58,
-    "score_after": 75,
-    "reason": "A1 through A6 implementation and scope-closure evidence are recorded; A6.1 adds central write/read data-URI exclusion. No production release evidence is implied."
+    "score_after": 76,
+    "reason": "A1 through A6 evidence remains intact; A7 adds reproduced-and-corrected route-owned lifecycle coverage with three-engine local evidence. No production release evidence is implied."
   },
   "subscores": {
     "audio_delivery": "14/15",
@@ -96,14 +96,14 @@
     "redis_foundation": "14/15",
     "release_completion": "0/5"
   },
-  "total": 75,
+  "total": 76,
   "applicable_scope": {
     "excluded_category": "large-PDF delivery",
     "excluded_maximum": 10,
-    "awarded_without_excluded_category": 74,
+    "awarded_without_excluded_category": 75,
     "denominator": 90,
-    "score": 82.2,
-    "formula": "74 / 90 * 100; this is not the fixed-rubric score"
+    "score": 83.3,
+    "formula": "75 / 90 * 100; this is not the fixed-rubric score"
   },
   "pdf_scope_closure": {
     "score": "5/5",

@@ -1,0 +1,10 @@
+{
+  "schema_version": "cache-media-a7-main-integration-overlap.v1",
+  "merge_base": "090afdd4b84eecc5ca40b7576ce54000305df837",
+  "main_changed_path_count": 114,
+  "pr345_changed_path_count": 146,
+  "overlap_path_count": 0,
+  "classification": "NO_OVERLAP",
+  "overlaps": [],
+  "result": "PASS"
+}

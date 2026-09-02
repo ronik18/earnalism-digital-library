@@ -99,6 +99,16 @@
       "resolution": "RESOLVED_BEFORE_A6_CLOSURE",
       "risk": "embedded PDF or other data URI reaches the application cache",
       "severity": "HIGH"
+    },
+    {
+      "current_control": "A7 route-owned AbortControllers plus stale-result guards and deterministic Chromium/Firefox/WebKit evidence",
+      "likelihood": "LOW",
+      "owner_approval_required": false,
+      "planned_mitigation": "retain lifecycle tests; production telemetry remains release-gated",
+      "release_blocker": false,
+      "resolution": "RESOLVED_IN_A7_DRAFT",
+      "risk": "route-owned Reader/Listener manifest or page request survives navigation",
+      "severity": "MEDIUM"
     }
   ],
   "schema_version": "cache-media-risk-register.v1"

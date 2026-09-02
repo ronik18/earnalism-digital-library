@@ -18,3 +18,8 @@ Redis plan, eviction policy, replica count, region, Railway topology, storage pr
 | embedded PDF or other data URI reaches the application cache | HIGH; resolved before A6 closure by recursive scheme validation and exact-key cleanup | risk-register.json |
 
 The A0.1 audit found historic duplicate publication-packet checksum assertions and obsolete public-asset test expectations. They are governed by the baseline regression ledger; neither changes controlled-publication truth, authorization, nor the production release gate.
+
+The A7 route-owned manifest/page cancellation risk is resolved in the draft PR:
+component cleanup now aborts those requests and deterministic three-engine
+evidence confirms the expected cancellation behavior. Production telemetry and
+release authorization remain separate release-gated concerns.

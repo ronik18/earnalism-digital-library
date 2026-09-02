@@ -1,0 +1,10 @@
+{
+  "schema_version": "cache-media-a7-main-merge-resolution.v1",
+  "main_integration_commit": "b277cc3129a4b9f87f4af93f56352b2af208ac02",
+  "strategy": "normal_no_ff_merge",
+  "conflicts": [],
+  "unresolved_conflict_count": 0,
+  "lost_pr344_production_files": 0,
+  "lost_pr345_cache_media_files": 0,
+  "result": "PASS"
+}

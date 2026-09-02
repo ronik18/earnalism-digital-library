@@ -1,0 +1,15 @@
+{
+  "schema_version": "cache-media-a7-frontend-audio-lifecycle-map.v1",
+  "classification": "MANIFEST_FETCH_NOT_CANCELLED",
+  "reproduced_defect_count": 1,
+  "operations": [
+    {"operation":"Listener manifest","source":"frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx","owner":"route effect","cleanup":"AbortController.abort","stale_protection":"cancelled guard","retry":"none","url_class":"same-origin manifest","authorization_dependency":"no playable source","defect":true,"correction_required":true},
+    {"operation":"Reader manifest","source":"frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx","owner":"route effect","cleanup":"AbortController.abort","stale_protection":"cancelled guard","retry":"none","url_class":"same-origin manifest","authorization_dependency":"no playable source","defect":true,"correction_required":true},
+    {"operation":"Reader canonical page","source":"frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx","owner":"route effect","cleanup":"AbortController.abort","stale_protection":"cancelled guard","retry":"none","url_class":"same-origin protected page","authorization_dependency":"Reading Pass lease","defect":true,"correction_required":true},
+    {"operation":"Listener audio element","source":"frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx","owner":"React element","cleanup":"pause on unmount; React handler removal","stale_protection":"authorized conditional render","retry":"none","url_class":"same-origin protected audio","authorization_dependency":"active lease","defect":false,"correction_required":false},
+    {"operation":"Lease renewal","source":"ReaderExperienceV2Route.jsx; ListenerExperienceV2Route.jsx","owner":"route effect","cleanup":"clearInterval","stale_protection":"current lease state","retry":"none","url_class":"same-origin API","authorization_dependency":"active lease","defect":false,"correction_required":false},
+    {"operation":"Object URLs","source":"frontend/src/experiences-v2","owner":"none","cleanup":"not applicable","stale_protection":"not applicable","retry":"none","url_class":"none","authorization_dependency":"none","defect":false,"correction_required":false}
+  ],
+  "evidence": ["frontend/src/lib/requestCancellation.test.js", "scripts/cache_media/verify_frontend_audio_lifecycle.mjs", "A7 Chromium/Firefox/WebKit loopback report"],
+  "result": "PASS"
+}
