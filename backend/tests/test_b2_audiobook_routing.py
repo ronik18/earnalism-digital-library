@@ -6,6 +6,8 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 
+import pytest
+
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
@@ -1573,6 +1575,39 @@ def test_invalid_range_returns_416_without_fetching_object_body(monkeypatch):
     assert response.status_code == 416
     assert response.headers["content-range"] == "bytes */1000"
     assert fake_s3.get_called is True
+
+
+def test_audio_delivery_logs_redact_storage_sentinels(monkeypatch, caplog):
+    server = _server(monkeypatch)
+    storage = {
+        "name": "audiobook_prod",
+        "endpoint": "https://s3.us-west-004.backblazeb2.com",
+        "region": "us-west-004",
+        "bucket": "private-prod",
+        "access_key_id": "key",
+        "secret_access_key": "secret",
+    }
+    sentinel = "https://provider.invalid/private-bucket/secret-object?token=sentinel"
+
+    class FakeS3:
+        def head_object(self, **_kwargs):
+            raise RuntimeError(sentinel)
+
+    monkeypatch.setattr(server, "_b2_storage_for_url", lambda _url: storage)
+    monkeypatch.setattr(server, "_b2_key_from_url", lambda _url, _storage: "private/sentinel.mp3")
+    monkeypatch.setattr(server, "_b2_client", lambda _storage=None: FakeS3())
+    request = SimpleNamespace(headers={"range": "bytes=not-a-range"}, method="GET")
+
+    with pytest.raises(server.HTTPException) as exc_info:
+        asyncio.run(
+            server._stream_audiobook_asset_url(
+                "the-open-window", "mp3", sentinel, request
+            )
+        )
+
+    assert exc_info.value.status_code == 502
+    assert sentinel not in caplog.text
+    assert "private/sentinel.mp3" not in caplog.text
 
 
 def test_malformed_range_returns_416_without_fetching_object_body(monkeypatch):
