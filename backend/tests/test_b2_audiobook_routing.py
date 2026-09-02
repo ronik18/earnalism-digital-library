@@ -361,17 +361,18 @@ def test_package_manifest_endpoint_caches_only_projected_metadata_and_head_is_em
     async def fake_book(_slug):
         return book
 
-    async def fake_cache_get(namespace, key):
+    async def fake_cache_aside(namespace, key, ttl_seconds, loader, **_kwargs):
         calls.append(("get", namespace, key))
-        return copy.deepcopy(cache.get((namespace, key)))
-
-    async def fake_cache_set(namespace, key, value, ttl_seconds):
+        cached = cache.get((namespace, key))
+        if cached is not None:
+            return copy.deepcopy(cached)
+        value = await loader()
         calls.append(("set", namespace, key, ttl_seconds))
         cache[(namespace, key)] = copy.deepcopy(value)
+        return value
 
     monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
-    monkeypatch.setattr(server, "_redis_cache_get", fake_cache_get)
-    monkeypatch.setattr(server, "_redis_cache_set", fake_cache_set)
+    monkeypatch.setattr(server, "_redis_cache_aside", fake_cache_aside)
     get_request = SimpleNamespace(headers={}, method="GET", cookies={})
     get_response = asyncio.run(
         server._reader_book_audiobook_package_manifest_response(
@@ -433,21 +434,22 @@ def test_reader_manifest_truth_gate_invalidates_pre_package_v2_cache(monkeypatch
     async def fake_generation():
         return 17
 
-    async def fake_cache_get(namespace, key):
+    async def fake_cache_aside(namespace, key, ttl_seconds, loader, **_kwargs):
         get_calls.append((namespace, key))
-        return copy.deepcopy(cache.get((namespace, key)))
-
-    async def fake_cache_set(namespace, key, value, ttl_seconds):
+        cached = cache.get((namespace, key))
+        if cached is not None:
+            return copy.deepcopy(cached)
+        value = await loader()
         set_calls.append((namespace, key, ttl_seconds))
         cache[(namespace, key)] = copy.deepcopy(value)
+        return value
 
     monkeypatch.setattr(
         server,
         "_reader_content_cache_generation_value",
         fake_generation,
     )
-    monkeypatch.setattr(server, "_redis_cache_get", fake_cache_get)
-    monkeypatch.setattr(server, "_redis_cache_set", fake_cache_set)
+    monkeypatch.setattr(server, "_redis_cache_aside", fake_cache_aside)
 
     result = asyncio.run(
         server._reader_book_manifest_doc("the-open-window")
@@ -480,11 +482,11 @@ def test_package_manifest_endpoint_never_reads_cache_before_release_selection(
     async def fake_book(_slug):
         return book
 
-    async def forbidden_cache_get(*_args, **_kwargs):
+    async def forbidden_cache_aside(*_args, **_kwargs):
         raise AssertionError("invalid release selection must not read Redis")
 
     monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
-    monkeypatch.setattr(server, "_redis_cache_get", forbidden_cache_get)
+    monkeypatch.setattr(server, "_redis_cache_aside", forbidden_cache_aside)
     request = SimpleNamespace(headers={}, method="GET", cookies={})
     response = asyncio.run(
         server._reader_book_audiobook_package_manifest_response(
@@ -1000,8 +1002,7 @@ def test_new_title_canary_manifest_is_private_and_hidden_cohort_is_404(
     async def forbidden_cache(*_args, **_kwargs):
         raise AssertionError("transport canary must not use Redis manifest cache")
 
-    monkeypatch.setattr(server, "_redis_cache_get", forbidden_cache)
-    monkeypatch.setattr(server, "_redis_cache_set", forbidden_cache)
+    monkeypatch.setattr(server, "_redis_cache_aside", forbidden_cache)
     candidate_response = asyncio.run(
         server._reader_book_audiobook_package_manifest_response(
             "the-open-window",

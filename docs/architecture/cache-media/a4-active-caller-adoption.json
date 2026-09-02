@@ -1,0 +1,15 @@
+{
+  "schema_version": "1",
+  "central_adapter": "backend.server._redis_cache_aside",
+  "failed_count": 0,
+  "adopted_count": 6,
+  "families": [
+    {"policy_id": "public-cache-v2", "status": "ADOPTED", "entrypoint": "_public_cache_aside"},
+    {"policy_id": "reader-content-v2", "status": "ADOPTED", "entrypoint": "_reader_book_access_doc/_reader_chapter_content"},
+    {"policy_id": "reader-manifest-v2", "status": "ADOPTED", "entrypoint": "_reader_book_manifest_doc"},
+    {"policy_id": "user-private-v2", "status": "ADOPTED", "entrypoint": "user_my_transactions/payments_my_intents"},
+    {"policy_id": "user-doc-v2", "status": "ADOPTED", "entrypoint": "_cached_user_doc"},
+    {"policy_id": "user-session-v2", "status": "ADOPTED", "entrypoint": "_cached_user_session"}
+  ],
+  "test": "backend/tests/cache_media/test_active_cache_aside_callers.py"
+}
