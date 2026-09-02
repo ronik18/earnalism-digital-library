@@ -244,12 +244,20 @@ try:
     from backend.cache import keys as cache_keys
     from backend.cache import metrics as cache_metrics
     from backend.cache import policy as cache_policy
+    from backend.media import policy as media_policy
+    from backend.media import ranges as media_ranges
+    from backend.media import storage as media_storage
+    from backend.media import streaming as media_streaming
 except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from cache import client as cache_client
     from cache import codec as cache_codec
     from cache import keys as cache_keys
     from cache import metrics as cache_metrics
     from cache import policy as cache_policy
+    from media import policy as media_policy
+    from media import ranges as media_ranges
+    from media import storage as media_storage
+    from media import streaming as media_streaming
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
 from fastapi.exceptions import RequestValidationError
@@ -8081,32 +8089,11 @@ def _b2_storage_configs() -> list[dict[str, str]]:
 
 
 def _b2_storage_for_url(url: str) -> Optional[dict[str, str]]:
-    parsed = urlparse(url or "")
-    if parsed.scheme not in {"http", "https"}:
-        return None
-    path_parts = [unquote(part) for part in parsed.path.split("/") if part]
-    for store in _b2_storage_configs():
-        endpoint_host = urlparse(store["endpoint"]).netloc
-        path_style = bool(
-            endpoint_host
-            and parsed.netloc == endpoint_host
-            and path_parts
-            and path_parts[0] == store["bucket"]
-        )
-        virtual_hosted = bool(
-            endpoint_host
-            and parsed.netloc == f"{store['bucket']}.{endpoint_host}"
-            and path_parts
-        )
-        if path_style or virtual_hosted:
-            return store
-    return None
+    return media_storage.storage_for_url(url, _b2_storage_configs())
 
 
 def _b2_is_configured(storage: Optional[dict[str, str]] = None) -> bool:
-    if storage is not None:
-        return all(storage.get(field) for field in ("endpoint", "region", "bucket", "access_key_id", "secret_access_key"))
-    return any(store.get("name") == "primary" for store in _b2_storage_configs())
+    return media_storage.is_configured(storage, _b2_storage_configs())
 
 
 def _b2_client(storage: Optional[dict[str, str]] = None):
@@ -8133,78 +8120,32 @@ def _b2_client(storage: Optional[dict[str, str]] = None):
 
 
 def _b2_key_from_url(url: str, storage: Optional[dict[str, str]] = None) -> str:
-    parsed = urlparse(url or "")
-    path_parts = [unquote(part) for part in parsed.path.split("/") if part]
-    if not path_parts:
-        return ""
-    selected = storage or _b2_storage_for_url(url)
-    bucket = str((selected or {}).get("bucket") or B2_BUCKET)
-    endpoint_host = urlparse(str((selected or {}).get("endpoint") or B2_S3_ENDPOINT)).netloc
-    if endpoint_host and parsed.netloc == f"{bucket}.{endpoint_host}":
-        return "/".join(path_parts)
-    if bucket and path_parts[0] == bucket:
-        return "/".join(path_parts[1:])
-    return ""
+    return media_storage.key_from_url(
+        url,
+        storage or _b2_storage_for_url(url),
+        fallback_bucket=B2_BUCKET,
+        fallback_endpoint=B2_S3_ENDPOINT,
+    )
 
 
 def _parse_byte_range(range_header: str, total_size: int) -> Tuple[Optional[str], int]:
-    value = (range_header or "").strip()
-    if not value:
-        return None, 200
-    match = re.match(r"^bytes=(\d*)-(\d*)$", value)
-    if not match:
-        return None, 416
-    start_raw, end_raw = match.groups()
-    if not start_raw and not end_raw:
-        return None, 416
-    if start_raw:
-        start = int(start_raw)
-        end = int(end_raw) if end_raw else total_size - 1
-    else:
-        suffix = int(end_raw)
-        if suffix <= 0:
-            return None, 416
-        start = max(0, total_size - suffix)
-        end = total_size - 1
-    if start < 0 or end < start or start >= total_size:
-        return None, 416
-    end = min(end, total_size - 1)
-    return f"bytes={start}-{end}", 206
+    return media_ranges.parse_byte_range(range_header, total_size)
 
 
 def _content_range_header(byte_range: str, total_size: int) -> str:
-    match = re.match(r"^bytes=(\d+)-(\d+)$", byte_range or "")
-    if not match:
-        return f"bytes */{total_size}"
-    return f"bytes {match.group(1)}-{match.group(2)}/{total_size}"
+    return media_ranges.content_range_header(byte_range, total_size)
 
 
 def _range_content_length(byte_range: str, total_size: int) -> int:
-    match = re.match(r"^bytes=(\d+)-(\d+)$", byte_range or "")
-    if not match:
-        return total_size
-    return max(0, int(match.group(2)) - int(match.group(1)) + 1)
+    return media_ranges.range_content_length(byte_range, total_size)
 
 
 def _single_range_header_is_well_formed(range_header: str) -> bool:
-    match = re.fullmatch(r"bytes=(\d*)-(\d*)", (range_header or "").strip())
-    if not match:
-        return False
-    start_raw, end_raw = match.groups()
-    if not start_raw and not end_raw:
-        return False
-    return not (not start_raw and int(end_raw) <= 0)
+    return media_ranges.single_range_header_is_well_formed(range_header)
 
 
 def _storage_error_http_status(exc: BaseException) -> int:
-    response = getattr(exc, "response", None)
-    if not isinstance(response, dict):
-        return 0
-    metadata = response.get("ResponseMetadata")
-    try:
-        return int((metadata or {}).get("HTTPStatusCode") or 0)
-    except (TypeError, ValueError):
-        return 0
+    return media_storage.storage_error_http_status(exc)
 
 
 def _range_response_matches_request(
@@ -8212,69 +8153,25 @@ def _range_response_matches_request(
     content_range: str,
     content_length: int,
 ) -> bool:
-    requested = re.fullmatch(r"bytes=(\d*)-(\d*)", (range_header or "").strip())
-    received = re.fullmatch(r"bytes (\d+)-(\d+)/(\d+)", (content_range or "").strip())
-    if not requested or not received:
-        return False
-    start_raw, end_raw = requested.groups()
-    start, end, total = (int(value) for value in received.groups())
-    if total <= 0 or start < 0 or end < start or end >= total:
-        return False
-    if content_length != end - start + 1:
-        return False
-    if start_raw:
-        requested_start = int(start_raw)
-        if start != requested_start:
-            return False
-        requested_end = int(end_raw) if end_raw else total - 1
-        return end == min(requested_end, total - 1)
-    suffix = int(end_raw)
-    return start == max(0, total - suffix) and end == total - 1
+    return media_ranges.range_response_matches_request(range_header, content_range, content_length)
 
 
 def _content_range_total_size(content_range: str) -> int:
-    match = re.search(r"/(\d+)$", content_range or "")
-    if not match:
-        return 0
-    try:
-        return int(match.group(1))
-    except ValueError:
-        return 0
+    return media_ranges.content_range_total_size(content_range)
 
 
 def _streaming_body_iterator(body):
-    try:
-        while True:
-            chunk = body.read(1024 * 1024)
-            if not chunk:
-                break
-            yield chunk
-    finally:
-        close = getattr(body, "close", None)
-        if callable(close):
-            close()
+    yield from media_streaming.streaming_body_iterator(body)
 
 
 def _audio_asset_content_type(asset_key: str, fallback: str = "") -> str:
-    if fallback and fallback != "application/octet-stream":
-        return fallback
-    return {
-        "mp3": "audio/mpeg",
-        "timestamps": "application/json",
-        "vtt": "text/vtt",
-        "chapters": "application/json",
-        "meta": "application/json",
-        "metadata": "application/json",
-        "manifest": "application/json",
-    }.get(asset_key, "application/octet-stream")
+    return media_policy.audio_asset_content_type(asset_key, fallback)
 
 
 def _audio_asset_cache_control(asset_key: str) -> str:
     # Browser-private because public audio remains separately gated; long enough
     # to keep playback and sidecar navigation warm during a reading session.
-    if asset_key == "mp3":
-        return "private, max-age=600, stale-while-revalidate=3600"
-    return "private, max-age=3600, stale-while-revalidate=86400"
+    return media_policy.audio_asset_cache_control(asset_key)
 
 
 async def _b2_head_object(
@@ -8284,10 +8181,7 @@ async def _b2_head_object(
     key: str,
     version_id: str = "",
 ) -> dict:
-    kwargs = {"Bucket": bucket, "Key": key}
-    if version_id:
-        kwargs["VersionId"] = version_id
-    return await asyncio.to_thread(s3.head_object, **kwargs)
+    return await media_storage.head_object(s3, bucket=bucket, key=key, version_id=version_id)
 
 
 async def _b2_get_object(
@@ -8298,12 +8192,13 @@ async def _b2_get_object(
     byte_range: Optional[str],
     version_id: str = "",
 ) -> dict:
-    kwargs = {"Bucket": bucket, "Key": key}
-    if byte_range:
-        kwargs["Range"] = byte_range
-    if version_id:
-        kwargs["VersionId"] = version_id
-    return await asyncio.to_thread(s3.get_object, **kwargs)
+    return await media_storage.get_object(
+        s3,
+        bucket=bucket,
+        key=key,
+        byte_range=byte_range,
+        version_id=version_id,
+    )
 
 
 _READER_AUDIO_BOOK_PROJECTION = {

@@ -1,0 +1,16 @@
+{
+  "schema_version": "cache-media-a1-media-behavior-parity.v1",
+  "before_head": "16918c67576f6fe35b33c21058964154e15efec3",
+  "source_hash_change": {"backend_server_py": "expected transport-facade extraction", "backend_media": "new extracted authority", "backend_cache": "unchanged"},
+  "behavior_surfaces": {
+    "route_inventory": {"count": 137, "before": "e3f2c7122d031d3e156e3898a24e3bf50559c4b94fb2e3a704c774293bf71367", "after": "e3f2c7122d031d3e156e3898a24e3bf50559c4b94fb2e3a704c774293bf71367", "result": "PASS"},
+    "openapi_paths_methods_schema": {"path_count": 129, "before": "cf3027c1ae46f8a152c95180f30870be3adcc61ff550d7bf9cea51edd27f536e", "after": "cf3027c1ae46f8a152c95180f30870be3adcc61ff550d7bf9cea51edd27f536e", "result": "PASS", "normalization": "operationId excluded because FastAPI GET/HEAD operation selection is process-order dependent"},
+    "audio_route_signatures": {"count": 8, "before": "6393771a1aaa7dba0fda367d2b1ae9690904c4fb532aaf5fdcf1142d079ccf3b", "after": "6393771a1aaa7dba0fda367d2b1ae9690904c4fb532aaf5fdcf1142d079ccf3b", "result": "PASS"},
+    "media_parity_vectors": {"sha256": "fecc833725acfd0eb857d9c7a55d68792732d69e67a129a610edf099ea19e43e", "result": "PASS"},
+    "authorization_call_order": {"metadata_before_bytes": true, "result": "PASS"},
+    "controlled_publication_data": {"sha256": "081ffb2f28737668bd44808dd7c0e283a81b64707dbbbbd3cd604dc1cedd4871", "git_changed_files": 0, "result": "PASS"},
+    "redis_cache": {"git_changed_files": 0, "result": "PASS"},
+    "frontend_production": {"sha256": "e06bdbb7a25c2a1cceb17c5902d48e36934121fa1c4c408d0d782dff9c61567d", "git_changed_files": 0, "result": "PASS"},
+    "pr_344_overlap": {"git_changed_files": 0, "result": "PASS"}
+  }
+}
