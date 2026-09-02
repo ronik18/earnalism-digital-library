@@ -1,0 +1,18 @@
+{
+  "schema_version": "cache-media-a1-cache-behavior-parity.v1",
+  "before_head": "83099ecb5392ce0f45c74f271022414ebc6893bc",
+  "source_hash_change": {"server_py": "expected extraction-only change", "cache_modules": "new extracted authority"},
+  "behavior_surfaces": {
+    "route_inventory": {"count":137,"before":"e3f2c7122d031d3e156e3898a24e3bf50559c4b94fb2e3a704c774293bf71367","after":"e3f2c7122d031d3e156e3898a24e3bf50559c4b94fb2e3a704c774293bf71367","result":"PASS"},
+    "openapi_paths": {"count":129,"before":"7b8307b1e03191cc0a27592c426402497e100c89c7ffa256c26d9d8accd8c412","after":"7b8307b1e03191cc0a27592c426402497e100c89c7ffa256c26d9d8accd8c412","result":"PASS"},
+    "redis_environment_inventory": {"before":"aa1e2db0467d0a9ece358439452fd763fd1a40bd1a32326947c5ff0e1575ca86","after":"aa1e2db0467d0a9ece358439452fd763fd1a40bd1a32326947c5ff0e1575ca86","result":"PASS"},
+    "key_vectors": {"source":"a1-cache-parity-vectors.json","result":"PASS"},
+    "codec_vectors": {"source":"a1-cache-parity-vectors.json","result":"PASS","note":"CURRENT_PICKLE_BEHAVIOR_PRESERVED_TEMPORARILY_FOR_A1_PARITY; A2_MIGRATION_REQUIRED"},
+    "ttl_vectors": {"source":"a1-cache-parity-vectors.json","result":"PASS"},
+    "cache_status_schema": {"hash":"9ea515f18c6f1f41caabf6e1dec7230135098915b7b5b8a1be830512edc0b03b","result":"PASS"},
+    "audio_delivery": {"function_count":51,"before":"c642fb42df101f0a21e5ee8409d30b819845b843c883065a2c09c2cd04752a6d","after":"c642fb42df101f0a21e5ee8409d30b819845b843c883065a2c09c2cd04752a6d","result":"PASS"},
+    "controlled_publication_data": {"git_changed_files":0,"hash":"e90e1ac4cbb290c712943b213a93c047ece80e528ec768a023b12592978aa0ee","result":"PASS"},
+    "frontend_production": {"git_changed_files":0,"hash":"e06bdbb7a25c2a1cceb17c5902d48e36934121fa1c4c408d0d782dff9c61567d","result":"PASS"},
+    "pr_344_overlap": {"changed_files":0,"result":"PASS"}
+  }
+}

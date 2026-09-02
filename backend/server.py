@@ -216,10 +216,8 @@ load_dotenv(ROOT_DIR / '.env')
 
 import asyncio
 import os
-import pickle
 import re
 import signal
-import zlib
 import hmac
 import hashlib
 import html as _html
@@ -239,6 +237,19 @@ from datetime import datetime, timezone, timedelta
 from typing import Any, Deque, Dict, List, Mapping, Optional, Tuple
 from urllib.parse import quote, unquote, urlencode, urlparse
 from urllib.request import Request as UrlRequest, urlopen
+
+try:
+    from backend.cache import client as cache_client
+    from backend.cache import codec as cache_codec
+    from backend.cache import keys as cache_keys
+    from backend.cache import metrics as cache_metrics
+    from backend.cache import policy as cache_policy
+except ImportError:  # pragma: no cover - supports uvicorn from backend/
+    from cache import client as cache_client
+    from cache import codec as cache_codec
+    from cache import keys as cache_keys
+    from cache import metrics as cache_metrics
+    from cache import policy as cache_policy
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
 from fastapi.exceptions import RequestValidationError
@@ -544,26 +555,26 @@ COOKIE_SAMESITE = os.environ.get("COOKIE_SAMESITE", "lax")
 # Trial-safe horizontal-scaling switch. Keep false on Railway Trial. When Pro is
 # active, set MULTI_REPLICA_ENABLED=true with REDIS_URL so shared request state
 # moves out of each process.
-MULTI_REPLICA_ENABLED = _env_bool("MULTI_REPLICA_ENABLED", False)
-REDIS_URL = os.environ.get("REDIS_URL", "").strip()
-REDIS_KEY_PREFIX = os.environ.get("REDIS_KEY_PREFIX", "earnalism").strip() or "earnalism"
-REDIS_CACHE_ENABLED = _env_bool("REDIS_CACHE_ENABLED", bool(REDIS_URL) or MULTI_REPLICA_ENABLED)
-REDIS_CACHE_FAIL_FAST = _env_bool("REDIS_CACHE_FAIL_FAST", MULTI_REPLICA_ENABLED)
-REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS = _env_float("REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS", 2.0)
-REDIS_SOCKET_TIMEOUT_SECONDS = _env_float("REDIS_SOCKET_TIMEOUT_SECONDS", 2.0)
-REDIS_CACHE_COMPRESS_MIN_BYTES = _env_int("REDIS_CACHE_COMPRESS_MIN_BYTES", 4096)
-REDIS_CACHE_TTL_JITTER_SECONDS = _env_int("REDIS_CACHE_TTL_JITTER_SECONDS", 30, minimum=0)
-REDIS_CONFIGURE_ON_STARTUP = _env_bool("REDIS_CONFIGURE_ON_STARTUP", False)
-REDIS_MAXMEMORY = os.environ.get("REDIS_MAXMEMORY", "").strip()
-REDIS_MAXMEMORY_POLICY = os.environ.get("REDIS_MAXMEMORY_POLICY", "volatile-lfu").strip()
-USER_AUTH_CACHE_TTL_SECONDS = _env_int("USER_AUTH_CACHE_TTL_SECONDS", 20)
-USER_SESSION_CACHE_TTL_SECONDS = _env_int("USER_SESSION_CACHE_TTL_SECONDS", 20)
-USER_WALLET_CACHE_TTL_SECONDS = _env_int("USER_WALLET_CACHE_TTL_SECONDS", 8)
-USER_TRANSACTIONS_CACHE_TTL_SECONDS = _env_int("USER_TRANSACTIONS_CACHE_TTL_SECONDS", 20)
-USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS = _env_int("USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS", 15)
-READER_MANIFEST_CACHE_TTL_SECONDS = _env_int("READER_MANIFEST_CACHE_TTL_SECONDS", 1800)
-READER_BOOK_CACHE_TTL_SECONDS = _env_int("READER_BOOK_CACHE_TTL_SECONDS", 900)
-READER_CHAPTER_CACHE_TTL_SECONDS = _env_int("READER_CHAPTER_CACHE_TTL_SECONDS", 3600)
+MULTI_REPLICA_ENABLED = cache_policy.MULTI_REPLICA_ENABLED
+REDIS_URL = cache_policy.REDIS_URL
+REDIS_KEY_PREFIX = cache_policy.REDIS_KEY_PREFIX
+REDIS_CACHE_ENABLED = cache_policy.REDIS_CACHE_ENABLED
+REDIS_CACHE_FAIL_FAST = cache_policy.REDIS_CACHE_FAIL_FAST
+REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS = cache_policy.REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS
+REDIS_SOCKET_TIMEOUT_SECONDS = cache_policy.REDIS_SOCKET_TIMEOUT_SECONDS
+REDIS_CACHE_COMPRESS_MIN_BYTES = cache_policy.REDIS_CACHE_COMPRESS_MIN_BYTES
+REDIS_CACHE_TTL_JITTER_SECONDS = cache_policy.REDIS_CACHE_TTL_JITTER_SECONDS
+REDIS_CONFIGURE_ON_STARTUP = cache_policy.REDIS_CONFIGURE_ON_STARTUP
+REDIS_MAXMEMORY = cache_policy.REDIS_MAXMEMORY
+REDIS_MAXMEMORY_POLICY = cache_policy.REDIS_MAXMEMORY_POLICY
+USER_AUTH_CACHE_TTL_SECONDS = cache_policy.USER_AUTH_CACHE_TTL_SECONDS
+USER_SESSION_CACHE_TTL_SECONDS = cache_policy.USER_SESSION_CACHE_TTL_SECONDS
+USER_WALLET_CACHE_TTL_SECONDS = cache_policy.USER_WALLET_CACHE_TTL_SECONDS
+USER_TRANSACTIONS_CACHE_TTL_SECONDS = cache_policy.USER_TRANSACTIONS_CACHE_TTL_SECONDS
+USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS = cache_policy.USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS
+READER_MANIFEST_CACHE_TTL_SECONDS = cache_policy.READER_MANIFEST_CACHE_TTL_SECONDS
+READER_BOOK_CACHE_TTL_SECONDS = cache_policy.READER_BOOK_CACHE_TTL_SECONDS
+READER_CHAPTER_CACHE_TTL_SECONDS = cache_policy.READER_CHAPTER_CACHE_TTL_SECONDS
 READER_RUM_ENABLED = _env_bool("READER_RUM_ENABLED", True)
 READER_RUM_SAMPLE_RATE = min(1.0, _env_float("READER_RUM_SAMPLE_RATE", 0.15, minimum=0.0))
 READER_RUM_SLOW_MS = _env_int("READER_RUM_SLOW_MS", 1800)
@@ -573,10 +584,10 @@ STARTUP_MAINTENANCE_LOCK_SECONDS = _env_int("STARTUP_MAINTENANCE_LOCK_SECONDS", 
 STARTUP_MAINTENANCE_WAIT_SECONDS = _env_int("STARTUP_MAINTENANCE_WAIT_SECONDS", 45)
 STARTUP_MAINTENANCE_DONE_TTL_SECONDS = _env_int("STARTUP_MAINTENANCE_DONE_TTL_SECONDS", 600)
 STARTUP_DB_MAINTENANCE_ATTEMPTS = _env_int("STARTUP_DB_MAINTENANCE_ATTEMPTS", 5)
-_redis_client: Any = None
-_redis_available = False
-_cache_stats: Dict[str, int] = defaultdict(int)
-_redis_config_status: Dict[str, Any] = {}
+_redis_client: Any = cache_client.active_client()
+_redis_available = cache_client.is_available()
+_cache_stats: Dict[str, int] = cache_metrics.cache_stats
+_redis_config_status: Dict[str, Any] = cache_client.runtime.config_status
 
 
 # ---------- Razorpay test-mode config ----------
@@ -1366,57 +1377,49 @@ PUBLIC_CACHE_PREFIXES = (
 
 async def initialize_replica_state_backends() -> None:
     global _redis_client, _redis_available
-    if not REDIS_CACHE_ENABLED and not MULTI_REPLICA_ENABLED:
-        logger.info("Redis cache/state disabled; using per-process local cache and rate-limit state.")
-        return
-    if not REDIS_URL:
-        message = "REDIS_URL is required for shared Redis cache/state."
-        if REDIS_CACHE_FAIL_FAST or MULTI_REPLICA_ENABLED:
-            raise RuntimeError(message)
-        logger.warning("%s Continuing without Redis.", message)
-        return
     try:
-        import redis.asyncio as redis  # type: ignore
-    except Exception as exc:
-        message = "Redis cache/state requires the redis Python package."
-        if REDIS_CACHE_FAIL_FAST or MULTI_REPLICA_ENABLED:
-            raise RuntimeError(message) from exc
-        logger.warning("%s Continuing without Redis.", message)
-        return
-    _redis_client = redis.from_url(
-        REDIS_URL,
-        socket_connect_timeout=REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS,
-        socket_timeout=REDIS_SOCKET_TIMEOUT_SECONDS,
-        retry_on_timeout=True,
-    )
-    try:
-        await _redis_client.ping()
-    except Exception as exc:
-        _redis_client = None
-        message = f"Redis cache/state ping failed: {exc}"
-        if REDIS_CACHE_FAIL_FAST or MULTI_REPLICA_ENABLED:
-            raise RuntimeError(message) from exc
-        logger.warning("%s Continuing without Redis.", message)
-        return
-    _redis_available = True
-    await _configure_redis_cache_policy()
-    logger.info("Redis-backed cache/state is enabled.")
+        await cache_client.initialize(
+            enabled=REDIS_CACHE_ENABLED,
+            multi_replica_enabled=MULTI_REPLICA_ENABLED,
+            redis_url=REDIS_URL,
+            fail_fast=REDIS_CACHE_FAIL_FAST,
+            connect_timeout=REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS,
+            socket_timeout=REDIS_SOCKET_TIMEOUT_SECONDS,
+            configure_on_startup=REDIS_CONFIGURE_ON_STARTUP,
+            maxmemory=REDIS_MAXMEMORY,
+            maxmemory_policy=REDIS_MAXMEMORY_POLICY,
+            logger=logger,
+        )
+    finally:
+        # Existing callers and tests retain these server-level compatibility
+        # symbols while the cache module remains the sole construction owner.
+        _redis_client = cache_client.active_client()
+        _redis_available = cache_client.is_available()
 
 
 async def close_replica_state_backends() -> None:
-    global _redis_available
-    if _redis_client is not None:
-        await _redis_client.aclose()
-    _redis_available = False
+    global _redis_client, _redis_available
+    try:
+        await cache_client.close()
+    finally:
+        _redis_client = cache_client.active_client()
+        _redis_available = cache_client.is_available()
 
 
 def _redis_key(*parts: str) -> str:
-    cleaned = [re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(part)) for part in parts if str(part)]
-    return ":".join([REDIS_KEY_PREFIX, *cleaned])
+    return cache_keys.redis_key(REDIS_KEY_PREFIX, *parts)
 
 
 def _redis_state_enabled() -> bool:
     return bool(_redis_available and _redis_client is not None)
+
+
+def _sync_cache_runtime_from_compat() -> None:
+    """Keep legacy server monkeypatch points bound to the active cache runtime."""
+    if cache_client.active_client() is not _redis_client:
+        cache_client.runtime.client = _redis_client
+    if cache_client.is_available() != bool(_redis_available):
+        cache_client.runtime.available = bool(_redis_available)
 
 
 def _redis_text(value: Any) -> str:
@@ -1426,90 +1429,33 @@ def _redis_text(value: Any) -> str:
 
 
 async def _configure_redis_cache_policy() -> None:
-    global _redis_config_status
-    _redis_config_status = {"attempted": False, "applied": {}, "errors": {}}
-    if not REDIS_CONFIGURE_ON_STARTUP or _redis_client is None:
-        return
-    _redis_config_status["attempted"] = True
-    config_pairs: Dict[str, str] = {}
-    if REDIS_MAXMEMORY:
-        config_pairs["maxmemory"] = REDIS_MAXMEMORY
-    if REDIS_MAXMEMORY_POLICY:
-        config_pairs["maxmemory-policy"] = REDIS_MAXMEMORY_POLICY
-    for name, value in config_pairs.items():
-        try:
-            await _redis_client.config_set(name, value)
-            _redis_config_status["applied"][name] = value
-        except Exception as exc:
-            _redis_config_status["errors"][name] = str(exc)[:240]
-            logger.warning("Redis CONFIG SET %s failed; continuing with provider defaults.", name, exc_info=True)
+    await cache_client.configure_cache_policy(
+        configure_on_startup=REDIS_CONFIGURE_ON_STARTUP,
+        maxmemory=REDIS_MAXMEMORY,
+        maxmemory_policy=REDIS_MAXMEMORY_POLICY,
+        logger=logger,
+    )
 
 
 def _ttl_with_jitter(ttl_seconds: int) -> int:
-    ttl = int(ttl_seconds or 0)
-    if ttl <= 0:
-        return ttl
-    jitter = min(max(0, REDIS_CACHE_TTL_JITTER_SECONDS), max(0, ttl // 5))
-    if jitter <= 0:
-        return ttl
-    return ttl + secrets.randbelow(jitter + 1)
+    return cache_policy.ttl_with_jitter(ttl_seconds, jitter_seconds=REDIS_CACHE_TTL_JITTER_SECONDS)
 
 
-REDIS_CACHE_ALLOWED_PAYLOADS = (
-    "metadata",
-    "reader_manifests",
-    "chapter_text",
-    "short_lived_user_state",
-    "session_state",
-    "payment_state",
-    "rate_limit_state",
-    "reader_rum_aggregates",
-)
-REDIS_CACHE_EXCLUDED_PAYLOADS = (
-    "book_cover_image_binaries",
-    "audiobook_binaries",
-    "video_binaries",
-    "file_upload_streams",
-    "response_objects",
-    "inline_media_data_uris",
-)
-MEDIA_DATA_URI_RE = re.compile(
-    r"data:(?:image|audio|video|application/octet-stream|application/pdf)/",
-    re.IGNORECASE,
-)
+REDIS_CACHE_ALLOWED_PAYLOADS = cache_policy.REDIS_CACHE_ALLOWED_PAYLOADS
+REDIS_CACHE_EXCLUDED_PAYLOADS = cache_policy.REDIS_CACHE_EXCLUDED_PAYLOADS
+MEDIA_DATA_URI_RE = cache_codec.MEDIA_DATA_URI_RE
 
 
 def _redis_cache_payload_is_media(value: Any, *, _seen: int = 0) -> bool:
-    if _seen > 800:
-        return False
-    if isinstance(value, (bytes, bytearray, memoryview, io.IOBase, Response, UploadFile)):
-        return True
-    if isinstance(value, str):
-        return bool(MEDIA_DATA_URI_RE.search(value))
-    if isinstance(value, dict):
-        for key, nested in value.items():
-            key_text = str(key).lower()
-            if isinstance(nested, (bytes, bytearray, memoryview, io.IOBase)):
-                return True
-            if (
-                isinstance(nested, str)
-                and key_text in {"body", "blob", "bytes", "binary", "file", "stream", "content"}
-                and MEDIA_DATA_URI_RE.search(nested)
-            ):
-                return True
-            if _redis_cache_payload_is_media(nested, _seen=_seen + 1):
-                return True
-        return False
-    if isinstance(value, (list, tuple, set)):
-        return any(_redis_cache_payload_is_media(item, _seen=_seen + 1) for item in value)
-    return False
+    return cache_codec.redis_cache_payload_is_media(
+        value,
+        response_types=(Response, UploadFile),
+        _seen=_seen,
+    )
 
 
 def _cache_payload_encode(value: Any) -> bytes:
-    blob = pickle.dumps(value, protocol=pickle.HIGHEST_PROTOCOL)
-    if len(blob) >= REDIS_CACHE_COMPRESS_MIN_BYTES:
-        return b"z:" + zlib.compress(blob, level=6)
-    return b"p:" + blob
+    return cache_codec.encode(value, compress_min_bytes=REDIS_CACHE_COMPRESS_MIN_BYTES)
 
 
 def _cache_payload_encode_for_redis(namespace: str, value: Any) -> Optional[bytes]:
@@ -1521,89 +1467,76 @@ def _cache_payload_encode_for_redis(namespace: str, value: Any) -> Optional[byte
 
 
 def _cache_payload_decode(blob: bytes) -> Any:
-    if blob.startswith(b"z:"):
-        return pickle.loads(zlib.decompress(blob[2:]))
-    if blob.startswith(b"p:"):
-        return pickle.loads(blob[2:])
-    # Backward-compatible reader for entries written before payload markers.
-    return pickle.loads(blob)
+    return cache_codec.decode(blob)
 
 
 def _cache_digest_key(namespace: str, key: str) -> str:
-    digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
-    return _redis_key("cache", namespace, digest)
+    return cache_keys.cache_digest_key(REDIS_KEY_PREFIX, namespace, key)
 
 
 async def _redis_cache_get(namespace: str, key: str) -> Any:
-    if not _redis_state_enabled():
-        _cache_stats[f"{namespace}_miss"] += 1
-        return None
-    redis_key = _cache_digest_key(namespace, key)
-    try:
-        blob = await _redis_client.get(redis_key)
-    except Exception:
-        logger.warning("Redis cache get failed for namespace=%s", namespace, exc_info=True)
-        _cache_stats[f"{namespace}_error"] += 1
-        return None
-    if not blob:
-        _cache_stats[f"{namespace}_miss"] += 1
-        return None
-    try:
-        value = _cache_payload_decode(blob)
-    except Exception:
-        logger.warning("Failed to decode Redis cache entry namespace=%s key=%s", namespace, key)
-        _cache_stats[f"{namespace}_error"] += 1
-        return None
-    _cache_stats[f"{namespace}_hit"] += 1
-    return value
+    _sync_cache_runtime_from_compat()
+    return await cache_client.cache_get(
+        namespace=namespace,
+        logical_key=key,
+        redis_key=_cache_digest_key(namespace, key),
+        decoder=_cache_payload_decode,
+        stats=_cache_stats,
+        logger=logger,
+    )
 
 
 async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: int) -> None:
     if ttl_seconds <= 0 or not _redis_state_enabled():
         return
-    redis_key = _cache_digest_key(namespace, key)
     try:
         payload = _cache_payload_encode_for_redis(namespace, value)
-        if payload is None:
-            return
-        await _redis_client.setex(redis_key, _ttl_with_jitter(ttl_seconds), payload)
     except Exception:
         logger.warning("Redis cache set failed for namespace=%s", namespace, exc_info=True)
         _cache_stats[f"{namespace}_error"] += 1
+        return
+    _sync_cache_runtime_from_compat()
+    await cache_client.cache_set(
+        namespace=namespace,
+        redis_key=_cache_digest_key(namespace, key),
+        payload=payload,
+        ttl_seconds=_ttl_with_jitter(ttl_seconds),
+        stats=_cache_stats,
+        logger=logger,
+    )
 
 
 async def _redis_cache_delete(namespace: str, key: str) -> None:
-    if not _redis_state_enabled():
-        return
-    try:
-        await _redis_client.delete(_cache_digest_key(namespace, key))
-    except Exception:
-        logger.warning("Redis cache delete failed for namespace=%s", namespace, exc_info=True)
-        _cache_stats[f"{namespace}_error"] += 1
+    _sync_cache_runtime_from_compat()
+    await cache_client.cache_delete(
+        namespace=namespace,
+        redis_keys=(_cache_digest_key(namespace, key),),
+        stats=_cache_stats,
+        logger=logger,
+    )
 
 
 async def _redis_cache_delete_keys(*keys: str) -> None:
-    if not keys or not _redis_state_enabled():
-        return
-    try:
-        await _redis_client.delete(*keys)
-    except Exception:
-        logger.warning("Redis cache key delete failed", exc_info=True)
-        _cache_stats["redis_delete_error"] += 1
+    _sync_cache_runtime_from_compat()
+    await cache_client.cache_delete(
+        namespace="redis_delete",
+        redis_keys=tuple(keys),
+        stats=_cache_stats,
+        logger=logger,
+    )
 
 
 def _public_cache_storage_key(generation: int, key: str) -> str:
-    digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
-    return _redis_key("public-cache", str(generation), digest)
+    return cache_keys.public_cache_storage_key(REDIS_KEY_PREFIX, generation, key)
 
 
 def _public_cache_key(scope: str, **params) -> str:
-    payload = {
-        "truth_gate": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
-        "catalog_truth": PUBLIC_CATALOG_TRUTH_CACHE_VERSION,
+    return cache_keys.public_cache_key(
+        scope,
+        truth_gate=CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
+        catalog_truth=PUBLIC_CATALOG_TRUTH_CACHE_VERSION,
         **params,
-    }
-    return f"{scope}:{_json.dumps(payload, sort_keys=True, ensure_ascii=True, default=str)}"
+    )
 
 
 def _controlled_public_book_query(extra: Optional[dict] = None) -> dict:
