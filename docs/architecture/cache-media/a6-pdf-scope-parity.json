@@ -1,0 +1,29 @@
+{
+  "schema_version": "a6-pdf-scope-parity-v1",
+  "comparison_base": "4dfdff0df66f1d3ce7dc0fc38cb0db3de5bc9699",
+  "comparison_head_before_evidence_commit": "da3876f8f1b9e7caf3735792fffac4bdcbd83e65",
+  "result": "PASS",
+  "intentional_changes": [
+    "central recursive data-URI validation in backend/cache/codec.py",
+    "policy-invalid v2 read classification and exact-key cleanup in backend/cache/store.py",
+    "A6 regression and scope-closure evidence"
+  ],
+  "hashes": {
+    "public_openapi_sha256": {"before": "2b4b9a4c304741c867f48377bd79bf445d2818a5a4dc838bf97bba53c07a95fd", "after": "2b4b9a4c304741c867f48377bd79bf445d2818a5a4dc838bf97bba53c07a95fd", "result": "UNCHANGED"},
+    "customer_route_inventory_sha256": {"before": "ea1569ed7cb5a3db37ca751313699d76a466b8634e51524d655b7ed4309d2def", "after": "ea1569ed7cb5a3db37ca751313699d76a466b8634e51524d655b7ed4309d2def", "result": "UNCHANGED"},
+    "active_policy_registry_git_object": {"before": "38aa721fe08e2f4c6161bef2691bfb9a15662754", "after": "38aa721fe08e2f4c6161bef2691bfb9a15662754", "result": "UNCHANGED"},
+    "v2_key_schema_git_object": {"before": "09a20047b88c90d9f41118cdfd357fb93f985ed0", "after": "09a20047b88c90d9f41118cdfd357fb93f985ed0", "result": "UNCHANGED"},
+    "v2_envelope_codec_git_object": {"before": "d9acc140498d5ee284a5f903c99ba4d87532e514", "after": "a7cfbaea59f776f6b1f2a28af1e418a0a7800691", "result": "INTENTIONAL_DATA_URI_CLASSIFIER_CHANGE"},
+    "value_limit_authority_git_object": {"before": "38aa721fe08e2f4c6161bef2691bfb9a15662754", "after": "38aa721fe08e2f4c6161bef2691bfb9a15662754", "result": "UNCHANGED"},
+    "ttl_jitter_authority_git_object": {"before": "38aa721fe08e2f4c6161bef2691bfb9a15662754", "after": "38aa721fe08e2f4c6161bef2691bfb9a15662754", "result": "UNCHANGED"},
+    "invalidation_coherence_git_object": {"before": "4e5243be8eb9ae4cc2ca6a9b5ea6f3253e8e98ac", "after": "4e5243be8eb9ae4cc2ca6a9b5ea6f3253e8e98ac", "result": "UNCHANGED"},
+    "audio_media_behavior_git_tree": {"before": "1d605dc9e059180e3690e7e62b83145f30b8a972", "after": "1d605dc9e059180e3690e7e62b83145f30b8a972", "result": "UNCHANGED"},
+    "controlled_publication_data_git_tree": {"before": "ff5bd195a013550f7ada175b4ee5e7abf514518e", "after": "ff5bd195a013550f7ada175b4ee5e7abf514518e", "result": "UNCHANGED"},
+    "frontend_production_git_tree": {"before": "09473d8fe1f298932c4949b810a2b4379aa02fcd", "after": "09473d8fe1f298932c4949b810a2b4379aa02fcd", "result": "UNCHANGED"},
+    "pr344_overlap_sha256": {"before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "result": "ZERO_OVERLAP"}
+  },
+  "active_policy_count": {"before": 6, "after": 6},
+  "active_pdf_policy_count": {"before": 0, "after": 0},
+  "source_response_parity": "PASS: cache bypass/invalid-entry cleanup falls back to the existing source loader",
+  "customer_pdf_response": "NOT_APPLICABLE_WITH_EXACT_REASON: no customer PDF route exists"
+}
