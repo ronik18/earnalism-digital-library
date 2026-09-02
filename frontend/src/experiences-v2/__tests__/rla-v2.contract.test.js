@@ -24,7 +24,7 @@ describe("Reader, Listener, and About v2 product truth", () => {
     const source = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2Route.jsx"), "utf8");
     const experience = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2.jsx"), "utf8");
     expect(source).toContain("canonicalPage > 3 && !lease");
-    expect(source).toContain("getReadingPassPage(slug, canonicalPage, lease)");
+    expect(source).toContain("getReadingPassPage(slug, canonicalPage, lease, { signal: controller.signal })");
     expect(source).toContain("startReadingPassSession({ bookSlug: slug, pageIndex: nextPage })");
     expect(source).toContain("saveReadingPassPosition");
     expect(source).not.toMatch(/localStorage|prefetch/i);
@@ -51,6 +51,19 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(route).toContain("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 0 })");
     expect(route).not.toContain("positionSeconds: 180");
     expect(route).toContain("renewReadingPassLease");
+  });
+
+  test("Reader and Listener cancel route-owned manifest and page requests on navigation", () => {
+    const reader = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2Route.jsx"), "utf8");
+    const listener = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2Route.jsx"), "utf8");
+    const readingPassApi = fs.readFileSync(path.join(process.cwd(), "src/lib/readingPassApi.js"), "utf8");
+    expect(reader).toContain("userApi.get(readerManifestPath(slug), { signal: controller.signal })");
+    expect(reader).toContain("getReadingPassPage(slug, canonicalPage, lease, { signal: controller.signal })");
+    expect(listener).toContain("userApi.get(readerManifestPath(slug), { signal: controller.signal })");
+    expect(reader.match(/controller\.abort\(\)/g)).toHaveLength(2);
+    expect(listener.match(/controller\.abort\(\)/g)).toHaveLength(1);
+    expect(readingPassApi).toContain("requestOptions = {}");
+    expect(readingPassApi).toContain("{ ...requestOptions, headers: { ...headers, ...(requestOptions.headers || {}) } }");
   });
 
   test("only a deterministic fixture can render without a production media URL or public audio access", () => {
