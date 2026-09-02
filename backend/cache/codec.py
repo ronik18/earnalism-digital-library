@@ -117,8 +117,26 @@ def _restore(value: Any, depth: int = 0) -> Any:
 def encode_v2(value: Any, *, compress_min_bytes: int) -> bytes:
     if redis_cache_payload_is_media(value):
         raise CacheCodecError("binary or media value is not cacheable")
+    raw = canonical_json_bytes(value)
+    return encode_v2_canonical(raw, compress_min_bytes=compress_min_bytes)
+
+
+def canonical_json_bytes(value: Any) -> bytes:
+    """Encode a validated logical cache value without an envelope."""
+    if redis_cache_payload_is_media(value):
+        raise CacheCodecError("binary or media value is not cacheable")
     normalized = _normalize(value)
-    raw = json.dumps(normalized, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode("utf-8")
+    return json.dumps(normalized, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode("utf-8")
+
+
+def encode_v2_canonical(raw: bytes, *, compress_min_bytes: int) -> bytes:
+    """Envelope already canonical JSON bytes after policy measurement."""
+    try:
+        parsed = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise CacheCodecError("invalid canonical JSON cache payload") from exc
+    if not isinstance(parsed, (dict, list, str, int, float, bool)) and parsed is not None:
+        raise CacheCodecError("unexpected cache top-level type")
     if len(raw) >= compress_min_bytes:
         return ZLIB_JSON_V2_PREFIX + zlib.compress(raw, level=6)
     return JSON_V2_PREFIX + raw
@@ -154,6 +172,12 @@ def decode_v2(blob: bytes) -> Any:
     if not isinstance(parsed, (dict, list, str, int, float, bool)) and parsed is not None:
         raise CacheCodecError("unexpected cache top-level type")
     return _restore(parsed)
+
+
+def decoded_canonical_json_bytes(blob: bytes) -> tuple[Any, bytes]:
+    """Return decoded value and its canonical bytes for A3 read enforcement."""
+    value = decode_v2(blob)
+    return value, canonical_json_bytes(value)
 
 
 def encode_for_redis(namespace: str, value: Any, *, compress_min_bytes: int, response_types: Iterable[type] = ()) -> Optional[bytes]:

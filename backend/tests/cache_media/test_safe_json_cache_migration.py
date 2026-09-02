@@ -52,13 +52,16 @@ class FakeRedis:
 
 def _with_fake_redis():
     fake = FakeRedis()
-    prior = server._redis_client, server._redis_available
+    prior = (
+        server._redis_client, server._redis_available,
+        server.cache_client.runtime.client, server.cache_client.runtime.available,
+    )
     server._redis_client, server._redis_available = fake, True
     return fake, prior
 
 
 def _restore_redis(prior):
-    server._redis_client, server._redis_available = prior
+    server._redis_client, server._redis_available, server.cache_client.runtime.client, server.cache_client.runtime.available = prior
     asyncio.set_event_loop(asyncio.new_event_loop())
 
 
@@ -113,15 +116,15 @@ def test_v2_codec_rejects_decompression_bomb_excessive_nesting_and_binary():
 def test_v2_miss_ignores_legacy_pickle_and_writes_only_v2_key():
     fake, prior = _with_fake_redis()
     try:
-        legacy_key = cache_keys.cache_digest_key(server.REDIS_KEY_PREFIX, "synthetic", "resource")
+        legacy_key = cache_keys.cache_digest_key(server.REDIS_KEY_PREFIX, "reader-content", "resource")
         legacy_blob = legacy_pickle.encode({"legacy": True}, compress_min_bytes=server.REDIS_CACHE_COMPRESS_MIN_BYTES)
         fake.entries[legacy_key] = (20, legacy_blob)
-        assert asyncio.run(server._redis_cache_get("synthetic", "resource")) is None
-        asyncio.run(server._redis_cache_set("synthetic", "resource", {"fresh": True}, 20))
-        v2_key = server._v2_cache_key("synthetic", "resource")
+        assert asyncio.run(server._redis_cache_get("reader-content", "resource")) is None
+        asyncio.run(server._redis_cache_set("reader-content", "resource", {"fresh": True}, 20))
+        v2_key = server._v2_cache_key("reader-content", "resource")
         assert legacy_key in fake.entries and fake.entries[legacy_key][1] == legacy_blob
         assert v2_key in fake.entries and fake.entries[v2_key][1].startswith(codec.JSON_V2_PREFIX)
-        assert asyncio.run(server._redis_cache_get("synthetic", "resource")) == {"fresh": True}
+        assert asyncio.run(server._redis_cache_get("reader-content", "resource")) == {"fresh": True}
     finally:
         _restore_redis(prior)
 
@@ -164,13 +167,13 @@ def test_store_outage_disabled_and_media_are_nonfatal():
     fake, prior = _with_fake_redis()
     try:
         fake.fail = True
-        assert asyncio.run(server._redis_cache_get("synthetic", "outage")) is None
-        asyncio.run(server._redis_cache_set("synthetic", "outage", {"source": True}, 20))
+        assert asyncio.run(server._redis_cache_get("reader-content", "outage")) is None
+        asyncio.run(server._redis_cache_set("reader-content", "outage", {"source": True}, 20))
         fake.fail = False
-        asyncio.run(server._redis_cache_set("synthetic", "audio", {"audio": b"ID3"}, 20))
-        assert server._v2_cache_key("synthetic", "audio") not in fake.entries
+        asyncio.run(server._redis_cache_set("reader-content", "audio", {"audio": b"ID3"}, 20))
+        assert server._v2_cache_key("reader-content", "audio") not in fake.entries
         server._redis_available = False
-        assert asyncio.run(server._redis_cache_get("synthetic", "disabled")) is None
+        assert asyncio.run(server._redis_cache_get("reader-content", "disabled")) is None
     finally:
         _restore_redis(prior)
 

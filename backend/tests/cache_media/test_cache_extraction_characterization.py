@@ -197,17 +197,17 @@ def test_redis_cache_facade_preserves_shared_client_and_outage_fallback():
     try:
         server._redis_client = fake
         server._redis_available = True
-        asyncio.run(server._redis_cache_set("synthetic", "key", {"value": "x"}, 20))
+        asyncio.run(server._redis_cache_set("reader-content", "key", {"value": "x"}, 20))
         if cache_client is not None:
             assert cache_client.active_client() is fake
-        assert fake.entries[server._v2_cache_key("synthetic", "key")][0] in range(20, 25)
-        assert asyncio.run(server._redis_cache_get("synthetic", "key")) == {"value": "x"}
-        fake.entries[server._v2_cache_key("synthetic", "malformed")] = (20, b"malformed")
-        assert asyncio.run(server._redis_cache_get("synthetic", "malformed")) is None
+        assert fake.entries[server._v2_cache_key("reader-content", "key")][0] in range(20, 25)
+        assert asyncio.run(server._redis_cache_get("reader-content", "key")) == {"value": "x"}
+        fake.entries[server._v2_cache_key("reader-content", "malformed")] = (20, b"malformed")
+        assert asyncio.run(server._redis_cache_get("reader-content", "malformed")) is None
         fake.fail = True
-        assert asyncio.run(server._redis_cache_get("synthetic", "key")) is None
+        assert asyncio.run(server._redis_cache_get("reader-content", "key")) is None
         server._redis_available = False
-        assert asyncio.run(server._redis_cache_get("synthetic", "missing")) is None
+        assert asyncio.run(server._redis_cache_get("reader-content", "missing")) is None
     finally:
         server._redis_client = previous_client
         server._redis_available = previous_available

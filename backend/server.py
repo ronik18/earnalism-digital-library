@@ -1497,16 +1497,22 @@ def _v2_cache_store() -> cache_store.RedisCacheStore:
             identity=identity.identity,
             version=identity.version,
         ),
-        encoder=lambda value: cache_codec.encode_v2(value, compress_min_bytes=REDIS_CACHE_COMPRESS_MIN_BYTES),
+        encoder=lambda canonical: cache_codec.encode_v2_canonical(canonical, compress_min_bytes=REDIS_CACHE_COMPRESS_MIN_BYTES),
         decoder=cache_codec.decode_v2,
         stats=_cache_stats,
         logger=logger,
+        canonical_encoder=cache_codec.canonical_json_bytes,
+        canonical_decoder=cache_codec.decoded_canonical_json_bytes,
     )
 
 
 async def _redis_cache_get(namespace: str, key: str, *, scope: str = "", identity: str = "", version: str = "", metrics_namespace: Optional[str] = None) -> Any:
     _sync_cache_runtime_from_compat()
-    policy = cache_store.CachePolicy(namespace, scope or _v2_cache_scope(namespace), 1, metrics_namespace)
+    registered = cache_policy.resolve_active_policy(namespace)
+    resolved_scope = scope or registered.scope
+    if resolved_scope != registered.scope:
+        raise ValueError("cache scope does not match registered policy")
+    policy = cache_store.CachePolicy(namespace, resolved_scope, 1, metrics_namespace or registered.metric_namespace, registered)
     return await _v2_cache_store().get(
         policy,
         cache_store.CacheIdentity(identity or key, key, version),
@@ -1514,14 +1520,14 @@ async def _redis_cache_get(namespace: str, key: str, *, scope: str = "", identit
 
 
 async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: int, *, scope: str = "", identity: str = "", version: str = "", metrics_namespace: Optional[str] = None) -> None:
-    if ttl_seconds <= 0 or not _redis_state_enabled():
-        return
-    if _redis_cache_payload_is_media(value):
-        _cache_stats[f"{namespace if metrics_namespace is None else metrics_namespace}_media_skip"] += 1
-        logger.info("Redis cache skipped media/binary payload for namespace=%s", namespace)
+    if ttl_seconds <= 0:
         return
     _sync_cache_runtime_from_compat()
-    policy = cache_store.CachePolicy(namespace, scope or _v2_cache_scope(namespace), _ttl_with_jitter(ttl_seconds), metrics_namespace)
+    registered = cache_policy.resolve_active_policy(namespace)
+    resolved_scope = scope or registered.scope
+    if resolved_scope != registered.scope:
+        raise ValueError("cache scope does not match registered policy")
+    policy = cache_store.CachePolicy(namespace, resolved_scope, _ttl_with_jitter(ttl_seconds), metrics_namespace or registered.metric_namespace, registered)
     await _v2_cache_store().set(
         policy,
         cache_store.CacheIdentity(identity or key, key, version),
@@ -1531,8 +1537,12 @@ async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: in
 
 async def _redis_cache_delete(namespace: str, key: str, *, scope: str = "", identity: str = "", version: str = "", metrics_namespace: Optional[str] = None) -> None:
     _sync_cache_runtime_from_compat()
+    registered = cache_policy.resolve_active_policy(namespace)
+    resolved_scope = scope or registered.scope
+    if resolved_scope != registered.scope:
+        raise ValueError("cache scope does not match registered policy")
     await _v2_cache_store().delete(
-        cache_store.CachePolicy(namespace, scope or _v2_cache_scope(namespace), 1, metrics_namespace),
+        cache_store.CachePolicy(namespace, resolved_scope, 1, metrics_namespace or registered.metric_namespace, registered),
         cache_store.CacheIdentity(identity or key, key, version),
     )
 
@@ -1925,9 +1935,12 @@ async def _public_cache_clear() -> None:
     if _redis_state_enabled():
         await _redis_client.incr(_redis_key("public-cache", "generation"))
         await _redis_client.incr(_redis_key("reader-content-cache", "generation"))
+        cache_metrics.record("public-cache-v2", "invalidation", "generation_bump")
+        cache_metrics.record("reader-content-v2", "invalidation", "generation_bump")
         return
     _public_cache_generation += 1
     _public_cache.clear()
+    cache_metrics.record("public-cache-v2", "invalidation", "local_generation_bump")
 
 
 def _client_etag_matches(request: Request, etag: str) -> bool:
@@ -2092,9 +2105,12 @@ async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str
     if not user_id or not _redis_state_enabled():
         return
     keys = [_user_wallet_cache_key(user_id)]
+    cache_metrics.record("user-doc-v2", "invalidation", "targeted")
+    cache_metrics.record("user-private-v2", "invalidation", "targeted")
     await _redis_cache_delete("user-doc", user_id, scope="user", identity=user_id, metrics_namespace="user_doc")
     for session_id in session_ids or []:
         if session_id:
+            cache_metrics.record("user-session-v2", "invalidation", "targeted")
             await _redis_cache_delete("user-session", session_id, scope="session", identity=session_id, metrics_namespace="user_session")
     await _redis_cache_delete("user-private", _user_transactions_cache_id(user_id))
     await _redis_cache_delete("user-private", _user_payment_intents_cache_id(user_id))
@@ -10794,6 +10810,10 @@ async def admin_cache_status(_=Depends(require_admin)):
             "aggregate_ttl_seconds": READER_RUM_AGGREGATE_TTL_SECONDS,
         },
         "stats": dict(_cache_stats),
+        "cache_v2": {
+            **cache_policy.active_policy_status(),
+            "metrics": cache_metrics.snapshot_v2(),
+        },
         "policy": {
             "allowed_payloads": REDIS_CACHE_ALLOWED_PAYLOADS,
             "excluded_payloads": REDIS_CACHE_EXCLUDED_PAYLOADS,
