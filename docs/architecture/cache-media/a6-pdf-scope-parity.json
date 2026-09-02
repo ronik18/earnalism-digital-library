@@ -1,7 +1,7 @@
 {
   "schema_version": "a6-pdf-scope-parity-v1",
   "comparison_base": "4dfdff0df66f1d3ce7dc0fc38cb0db3de5bc9699",
-  "comparison_head_before_evidence_commit": "da3876f8f1b9e7caf3735792fffac4bdcbd83e65",
+  "comparison_head_before_evidence_commit": "dce77914653f52e507fba8d927fac9c20410b310",
   "result": "PASS",
   "intentional_changes": [
     "central recursive data-URI validation in backend/cache/codec.py",
