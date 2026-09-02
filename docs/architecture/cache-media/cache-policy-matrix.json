@@ -1,4 +1,13 @@
 {
+  "a3_active_policy_registry": {
+    "path": "backend/cache/policy.py",
+    "active_namespace_count": 6,
+    "active_namespaces": ["public-cache", "reader-content", "reader-manifest", "user-private", "user-doc", "user-session"],
+    "candidate_changes": 0,
+    "ttl_changes": 0,
+    "negative_cache_changes": 0,
+    "result": "PASS"
+  },
   "assumption": "memory = cardinality * (key bytes + bounded value bytes + 128-byte object overhead) * 1.5 replication/persistence multiplier; estimates are not observed Redis measurements",
   "rows": [
     {

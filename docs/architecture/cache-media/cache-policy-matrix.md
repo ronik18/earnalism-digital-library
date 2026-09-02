@@ -25,3 +25,6 @@ Default direction: durable object storage/CDN for large bytes; Redis only for bo
 | complete PDF binary | DO_NOT_CACHE; max 0 bytes | No active PDF route; Redis unsuitable for large bytes |
 | complete audio binary | DO_NOT_CACHE; max 0 bytes | Repository policy rejects audiobook binaries |
 | arbitrary Range fragments | DO_NOT_CACHE; max 0 bytes | B2 range streaming is durable-storage concern |
+# A3 active-policy note
+
+The authoritative active registry is `backend/cache/policy.py`. A3 reconciles exactly six active v2 namespaces; all other historical matrix candidates remain inactive. Bounded limits, capacity assumptions, and the production-cardinality limitation are recorded in the A3 policy reconciliation and capacity model.
