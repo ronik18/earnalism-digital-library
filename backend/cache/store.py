@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
 from time import monotonic
 from typing import Any, Awaitable, Callable, Optional
 
 from . import metrics as cache_metrics
+from .singleflight import DEFAULT_SINGLEFLIGHT, SingleFlight
 
 
 @dataclass(frozen=True)
@@ -26,12 +28,13 @@ class CacheIdentity:
 
 
 class RedisCacheStore:
-    def __init__(self, *, client_provider: Callable[[], Any], enabled_provider: Callable[[], bool], key_builder: Callable[[CachePolicy, CacheIdentity], str], encoder: Callable[[Any], bytes], decoder: Callable[[bytes], Any], stats: dict[str, int], logger: Any, canonical_encoder: Optional[Callable[[Any], bytes]] = None, canonical_decoder: Optional[Callable[[bytes], tuple[Any, bytes]]] = None):
+    def __init__(self, *, client_provider: Callable[[], Any], enabled_provider: Callable[[], bool], key_builder: Callable[[CachePolicy, CacheIdentity], str], encoder: Callable[[Any], bytes], decoder: Callable[[bytes], Any], stats: dict[str, int], logger: Any, canonical_encoder: Optional[Callable[[Any], bytes]] = None, canonical_decoder: Optional[Callable[[bytes], tuple[Any, bytes]]] = None, singleflight: SingleFlight = DEFAULT_SINGLEFLIGHT):
         self._client_provider, self._enabled_provider = client_provider, enabled_provider
         self._key_builder, self._encoder, self._decoder = key_builder, encoder, decoder
         self._stats, self._logger = stats, logger
         self._canonical_encoder = canonical_encoder
         self._canonical_decoder = canonical_decoder
+        self._singleflight = singleflight
 
     def _increment(self, policy: CachePolicy, suffix: str) -> None:
         namespace = policy.namespace if policy.metrics_namespace is None else policy.metrics_namespace
@@ -151,18 +154,33 @@ class RedisCacheStore:
             self._event(policy, "delete", "error", legacy_suffix="error")
             self._log("warning", policy, "delete", "error", exc=exc)
 
-    async def cache_aside(self, policy: CachePolicy, identity: CacheIdentity, loader: Callable[[], Awaitable[Any]]) -> Any:
+    async def cache_aside(self, policy: CachePolicy, identity: CacheIdentity, loader: Callable[[], Awaitable[Any]], *, version_resolver: Optional[Callable[[], Awaitable[str]]] = None) -> Any:
         started = monotonic()
         cached = await self.get(policy, identity)
         if cached is not None:
             self._event(policy, "cache_aside", "hit", started=started)
             return cached
-        try:
-            value = await loader()
-        except Exception:
-            self._event(policy, "cache_aside", "source_loader_error", started=started)
-            raise
-        self._event(policy, "cache_aside", "source_loader", started=started)
-        await self.set(policy, identity, value)
+
+        async def coherent_loader() -> Any:
+            before = await version_resolver() if version_resolver is not None else identity.version
+            try:
+                value = await loader()
+            except Exception:
+                self._event(policy, "cache_aside", "source_loader_error", started=started)
+                raise
+            after = await version_resolver() if version_resolver is not None else before
+            self._event(policy, "cache_aside", "source_loader", started=started)
+            if before != after:
+                self._event(policy, "cache_aside", "stale_fill_suppressed", started=started)
+                self._log("warning", policy, "cache_aside", "stale_fill_suppressed")
+                return value
+            await self.set(policy, identity, value)
+            return value
+
+        internal = hashlib.sha256(
+            f"{getattr(policy.registered, 'policy_id', policy.namespace)}:{self._key_builder(policy, identity)}:{identity.version}".encode("utf-8")
+        ).hexdigest()
+        value, role = await self._singleflight.run(internal, coherent_loader)
+        self._event(policy, "coalescing", role, started=started)
         self._event(policy, "cache_aside", "miss", started=started)
         return value
