@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "checkpoint_path": "/tmp/pr345-a6-data-uri-recovery-20260902T090200Z",
+  "dirty_paths_found": 19,
+  "dirty_path_inventory_count": 19,
+  "dirty_paths_preserved": 19,
+  "checkpoint_verification": "PASS",
+  "classification_counts": {
+    "VALID_A6_INVENTORY_EVIDENCE": 4,
+    "VALID_A6_TEST_EVIDENCE": 1,
+    "VALID_A6_DOCUMENTATION_DRAFT": 14,
+    "INVALID_PREMATURE_POLICY_CHANGE": 0,
+    "INVALID_PRODUCTION_IMPLEMENTATION": 0,
+    "UNRELATED_WORK": 0
+  },
+  "result": "PASS"
+}

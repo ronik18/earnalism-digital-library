@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "result": "REPRODUCED",
+  "test_command": "UV_CACHE_DIR=/tmp/uv-cache-a6 MONGODB_URL=mongodb://localhost:27017 JWT_SECRET=test uv run pytest -q backend/tests/cache_media/test_pdf_scope_closure.py",
+  "failing_node": "backend/tests/cache_media/test_pdf_scope_closure.py::test_pdf_binary_and_stream_like_values_bypass_redis_without_leaking",
+  "active_policy": "reader-content-v2",
+  "logical_cache_value": "synthetic PDF data URI",
+  "sanitized_data_uri_prefix": "data:application/pdf;base64,",
+  "cache_store_method": "RedisCacheStore.set",
+  "policy_validator": "backend.cache.codec.canonical_json_bytes",
+  "codec_method": "backend.cache.codec.redis_cache_payload_is_media",
+  "redis_set_call_count": 1,
+  "redis_set_key_count": 1,
+  "bypass_result": false,
+  "bypass_metric": "not emitted",
+  "log_result": "no payload emitted by the reproduction",
+  "root_cause_classification": "DATA_URI_MEDIA_TYPE_MATCHER_OMITTED_APPLICATION_PDF",
+  "root_cause_evidence": "MEDIA_DATA_URI_RE required a slash after application/pdf, so a standard semicolon/comma data URI did not match.",
+  "validation_path": [
+    "reader-content-v2 caller",
+    "active policy registry",
+    "RedisCacheStore.set",
+    "canonical_json_bytes",
+    "redis_cache_payload_is_media",
+    "typed JSON normalization",
+    "v2 envelope",
+    "Redis SET"
+  ]
+}
