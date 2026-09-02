@@ -78,8 +78,11 @@ def build(args: argparse.Namespace) -> None:
     result_path = args.artifact / "a8-results.json"
     fixture_path = args.artifact / "a8-fixture-manifest.json"
     result = json.loads(result_path.read_text())
-    if result["target_sha"] != args.target_sha:
+    if result["target_sha"] != args.artifact_target_sha:
         raise SystemExit("artifact target SHA mismatch")
+    current = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    if current != args.target_sha:
+        raise SystemExit("package target SHA does not match current checkout")
     evidence.mkdir(parents=True)
     (evidence / "raw").mkdir()
     shutil.copy2(result_path, evidence / "raw" / "a8-results.json")
@@ -102,7 +105,7 @@ def build(args: argparse.Namespace) -> None:
     write_json(evidence / "measurement-integrity.json", integrity)
     write_json(evidence / "environment.json", result["environment_fingerprint"] | {"redis_configuration": result["redis_configuration"]})
     write_json(evidence / "test-results.json", {"benchmark_harness": "PASS", "redis_artifact_validator": "PASS", "package_generator_validator": "PASS", "full_regression": args.regression_result})
-    provenance = {"target_sha": args.target_sha, "artifact": {"workflow_run_id": args.run_id, "artifact_id": args.artifact_id, "github_digest": args.github_digest, "outer_archive_sha256": args.outer_sha256}, "authority_hashes": authority_hashes(), "carry_forward_contract": "PASS_BY_IDENTICAL_BENCHMARK_AUTHORITY_HASHES"}
+    provenance = {"target_sha": args.target_sha, "artifact": {"target_sha": args.artifact_target_sha, "workflow_run_id": args.run_id, "artifact_id": args.artifact_id, "github_digest": args.github_digest, "outer_archive_sha256": args.outer_sha256}, "authority_hashes": authority_hashes(), "carry_forward_contract": "PASS_BY_IDENTICAL_BENCHMARK_AUTHORITY_HASHES"}
     write_json(evidence / "provenance.json", provenance)
     benchmark = {"cache": cache_summary, "concurrency": result["concurrency"], "audio": audio_summary, "frontend": frontend_summary, "comparability": result["comparability_result"]}
     write_json(evidence / "benchmark-summary.json", benchmark)
@@ -154,7 +157,7 @@ def validate(args: argparse.Namespace) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(); sub = parser.add_subparsers(dest="command", required=True)
     build_p = sub.add_parser("build")
-    build_p.add_argument("--artifact", type=Path, required=True); build_p.add_argument("--output", type=Path, required=True); build_p.add_argument("--target-sha", required=True)
+    build_p.add_argument("--artifact", type=Path, required=True); build_p.add_argument("--output", type=Path, required=True); build_p.add_argument("--target-sha", required=True); build_p.add_argument("--artifact-target-sha", required=True)
     build_p.add_argument("--run-id", required=True); build_p.add_argument("--artifact-id", required=True); build_p.add_argument("--github-digest", required=True); build_p.add_argument("--outer-sha256", required=True); build_p.add_argument("--regression-result", required=True)
     validate_p = sub.add_parser("validate"); validate_p.add_argument("--package", type=Path, required=True); validate_p.add_argument("--target-sha", required=True)
     args = parser.parse_args(); build(args) if args.command == "build" else validate(args)
