@@ -528,12 +528,14 @@ jobs:
           gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/${ARTIFACT_ID}/zip" > "$RUNNER_TEMP/downloaded-owner-review-envelope.zip"
           DOWNLOADED_ARTIFACT_ARCHIVE_SHA256="$(sha256sum "$RUNNER_TEMP/downloaded-owner-review-envelope.zip" | awk '{print $1}')"
           INNER_ARTIFACT_ZIP_SHA256="$(sha256sum "$ENVELOPE/artifact.zip" | awk '{print $1}')"
-          mkdir -p "$RUNNER_TEMP/extracted-owner-review"
-          unzip -q "$ENVELOPE/artifact.zip" -d "$RUNNER_TEMP/extracted-owner-review"
-          test "$(sha256sum "$RUNNER_TEMP/extracted-owner-review/manifest.json" | awk '{print $1}')" = "$(tr -d '[:space:]' < "$RUNNER_TEMP/extracted-owner-review/manifest.sha256")"
-          cp "$ENVELOPE/artifact.zip" "$RUNNER_TEMP/extracted-owner-review/artifact.zip"
-          python3 scripts/validate_seamless_brand_final_owner_review.py --package "$RUNNER_TEMP/extracted-owner-review"
-          python3 - "$RUNNER_TEMP/extracted-owner-review" <<'PY'
+          CLEAN_EXTRACT="$RUNNER_TEMP/extracted-owner-review-clean"
+          VALIDATOR_PACKAGE="$RUNNER_TEMP/extracted-owner-review-validator"
+          mkdir -p "$CLEAN_EXTRACT" "$VALIDATOR_PACKAGE"
+          unzip -q "$ENVELOPE/artifact.zip" -d "$CLEAN_EXTRACT"
+          test ! -e "$CLEAN_EXTRACT/artifact.zip"
+          python3 scripts/verify_seamless_brand_clean_extraction.py --package "$CLEAN_EXTRACT" --report-json "$RUNNER_TEMP/clean-extraction-verification.json"
+          CLEAN_TREE_SHA256_BEFORE="$(find "$CLEAN_EXTRACT" -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | awk '{print $1}')"
+          python3 - "$CLEAN_EXTRACT" <<'PY'
           import json, os, sys
           from pathlib import Path
           package=Path(sys.argv[1]); provenance=json.loads((package/'provenance.json').read_text()); inputs=json.loads((package/'final-evidence-inputs.json').read_text())
@@ -558,6 +560,12 @@ jobs:
           for state in representatives:
               image=Image.open(package/'screenshots'/'chromium'/'states'/state/'viewport.png'); assert image.width > 0 and image.height > 0 and image.getbbox() is not None
           PY
+          test ! -e "$CLEAN_EXTRACT/artifact.zip"
+          cp -a "$CLEAN_EXTRACT"/. "$VALIDATOR_PACKAGE"/
+          cp "$ENVELOPE/artifact.zip" "$VALIDATOR_PACKAGE/artifact.zip"
+          python3 scripts/validate_seamless_brand_final_owner_review.py --package "$VALIDATOR_PACKAGE"
+          CLEAN_TREE_SHA256_AFTER="$(find "$CLEAN_EXTRACT" -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | awk '{print $1}')"
+          test "$CLEAN_TREE_SHA256_BEFORE" = "$CLEAN_TREE_SHA256_AFTER"
           mkdir -p "$RUNNER_TEMP/verify-pdf-pages"
           pdftoppm -png -r 100 "$ENVELOPE/owner-review.pdf" "$RUNNER_TEMP/verify-pdf-pages/page"
           python3 - "$RUNNER_TEMP/verify-pdf-pages" "$ENVELOPE/contact-sheet.png" <<'PY'
@@ -568,7 +576,7 @@ jobs:
           assert all(Image.open(page).getbbox() is not None for page in pages)
           assert Image.open(sys.argv[2]).getbbox() is not None
           PY
-          python3 - "$RUNNER_TEMP/extracted-owner-review" <<'PY'
+          python3 - "$CLEAN_EXTRACT" <<'PY'
           import re, sys
           from pathlib import Path
           root=Path(sys.argv[1]); text='\n'.join(file.read_text(errors='ignore') for file in root.rglob('*') if file.is_file() and file.suffix in {'.json','.html','.txt','.sha256'})
