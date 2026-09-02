@@ -10,4 +10,7 @@ export REACT_APP_BACKEND_URL="${UAT_API_BASE_URL%/api}"
 # (chapter access without Reading Pass leases).  The loopback checks included
 # in cache_media exercise the current canonical-page authorization surface.
 pytest -q backend/tests/cache_media
-CI=true npm test --prefix frontend -- --watchAll=false --runInBand
+# The built UAT bundle needs the loopback API origin, whereas frontend unit
+# tests deliberately verify production's same-origin fallback.  Keep those
+# environments distinct without altering application behavior.
+env -u REACT_APP_BACKEND_URL -u REACT_APP_API_URL CI=true npm test --prefix frontend -- --watchAll=false --runInBand
