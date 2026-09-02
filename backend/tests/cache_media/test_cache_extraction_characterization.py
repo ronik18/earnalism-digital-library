@@ -19,8 +19,14 @@ if str(ROOT) not in sys.path:
 os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_cache_media_a11")
 os.environ.setdefault("JWT_SECRET", "cache-media-a11-synthetic")
 server = importlib.import_module("backend.server")
-cache_client = importlib.import_module("backend.cache.client")
-cache_metrics = importlib.import_module("backend.cache.metrics")
+try:
+    cache_client = importlib.import_module("backend.cache.client")
+    cache_metrics = importlib.import_module("backend.cache.metrics")
+except ModuleNotFoundError:
+    # The same vectors deliberately run against the server-only baseline after
+    # `git revert <A1_1_EXTRACTION_COMMIT>`.
+    cache_client = None
+    cache_metrics = None
 
 
 def test_key_vectors_remain_exact():
@@ -75,6 +81,8 @@ def test_codec_and_media_rejection_vectors_are_fail_closed():
 
 
 def test_client_construction_lifecycle_and_server_identity(monkeypatch):
+    if cache_client is None:
+        pytest.skip("A1.1 extracted client is absent in the rollback baseline")
     class FakeRedis:
         def __init__(self):
             self.pings = 0
@@ -139,14 +147,19 @@ def test_client_construction_lifecycle_and_server_identity(monkeypatch):
 
 
 def test_cache_modules_have_no_import_time_redis_connection():
+    if cache_client is None:
+        pytest.skip("A1.1 extracted client is absent in the rollback baseline")
     reloaded = importlib.reload(cache_client)
     assert reloaded.active_client() is None
     assert reloaded.is_available() is False
 
 
 def test_metrics_and_admin_status_schema_remain_compatible():
-    assert server._cache_stats is cache_metrics.cache_stats
-    cache_metrics.cache_stats["synthetic_hit"] += 1
+    if cache_metrics is not None:
+        assert server._cache_stats is cache_metrics.cache_stats
+        cache_metrics.cache_stats["synthetic_hit"] += 1
+    else:
+        server._cache_stats["synthetic_hit"] += 1
     response = asyncio.run(server.admin_cache_status())
     assert {"enabled", "available", "key_prefix", "timeouts_seconds", "ttl_seconds", "compression", "stats", "policy", "redis"} <= set(response)
     assert response["stats"]["synthetic_hit"] >= 1
@@ -177,7 +190,8 @@ def test_redis_cache_facade_preserves_shared_client_and_outage_fallback():
         server._redis_client = fake
         server._redis_available = True
         asyncio.run(server._redis_cache_set("synthetic", "key", {"value": "x"}, 20))
-        assert cache_client.active_client() is fake
+        if cache_client is not None:
+            assert cache_client.active_client() is fake
         assert fake.entries[server._cache_digest_key("synthetic", "key")][0] in range(20, 25)
         assert asyncio.run(server._redis_cache_get("synthetic", "key")) == {"value": "x"}
         fake.entries[server._cache_digest_key("synthetic", "malformed")] = (20, b"malformed")
@@ -189,12 +203,15 @@ def test_redis_cache_facade_preserves_shared_client_and_outage_fallback():
     finally:
         server._redis_client = previous_client
         server._redis_available = previous_available
-        cache_client.runtime.client = previous_client
-        cache_client.runtime.available = previous_available
+        if cache_client is not None:
+            cache_client.runtime.client = previous_client
+            cache_client.runtime.available = previous_available
         asyncio.set_event_loop(asyncio.new_event_loop())
 
 
 def test_multi_replica_without_redis_url_still_fails_fast():
+    if cache_client is None:
+        pytest.skip("A1.1 extracted client is absent in the rollback baseline")
     with pytest.raises(RuntimeError, match="REDIS_URL is required"):
         asyncio.run(cache_client.initialize(
             enabled=True, multi_replica_enabled=True, redis_url="", fail_fast=True,
