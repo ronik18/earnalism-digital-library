@@ -1,0 +1,25 @@
+{
+  "schema_version": "cache-media-a8-artifact-inspection.v1",
+  "result": "PASS",
+  "workflow_name": "Cache media A8 benchmark",
+  "workflow_event": "workflow_dispatch",
+  "workflow_run_id": 33667974115,
+  "workflow_job_conclusion": "success",
+  "artifact": {
+    "name": "cache-media-a8-benchmark",
+    "id": 9861359553,
+    "url": "https://api.github.com/repos/ronik18/earnalism-digital-library/actions/artifacts/9861359553",
+    "github_digest": "sha256:e75dafd7bfd2390a77c8508359462915d812d13326a60c159d9e6b7914c45fe7",
+    "outer_archive_sha256": "e75dafd7bfd2390a77c8508359462915d812d13326a60c159d9e6b7914c45fe7",
+    "extracted_regular_file_count": 2,
+    "extracted_total_bytes": 7063183,
+    "zero_byte_required_file_count": 0,
+    "unsafe_path_count": 0,
+    "symlink_count": 0
+  },
+  "exact_benchmark_head": "216f0c3d793567447cec1f797e3f277ed44094b1",
+  "external_inspection_manifest": "/tmp/a8-ci-artifact-216f0c3d7/external-inspection-manifest.json",
+  "provenance_result": "PASS",
+  "carry_forward_result": "PASS_BY_IDENTICAL_BENCHMARK_AUTHORITY_HASHES",
+  "warning": "LOCAL_AND_EPHEMERAL_BENCHMARKS_ARE_NOT_PRODUCTION_PERFORMANCE_PROOF"
+}
