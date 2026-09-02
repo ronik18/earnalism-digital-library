@@ -22,17 +22,26 @@ jobs:
       # The checked-in frontend lockfile predates declared React 19 type packages;
       # use the repository-supported install path inside this disposable runner.
       - run: npm install --prefix frontend --legacy-peer-deps
+      - name: Start disposable Redis
+        run: |
+          docker run --detach --name cache-media-a8-redis --publish 6379:6379 redis:7.4.11-alpine redis-server --save '' --appendonly no
+          for _ in $(seq 1 30); do docker exec cache-media-a8-redis redis-cli ping | grep -qx PONG && break; sleep 1; done
+          test "$(docker exec cache-media-a8-redis redis-cli -n 15 dbsize)" = 0
       - name: Start and initialize disposable MongoDB replica set
         run: |
           docker run --detach --name cache-media-a8-mongo --publish 27017:27017 mongo:7 mongod --bind_ip_all --replSet earnalism-uat-rs0
           for _ in $(seq 1 30); do docker exec cache-media-a8-mongo mongosh --quiet --eval 'db.adminCommand({ping:1})' && break; sleep 1; done
-          docker exec cache-media-a8-mongo mongosh --quiet --eval 'rs.initiate({_id:"earnalism-uat-rs0",members:[{_id:0,host:"localhost:27017"}]})'
-          for _ in $(seq 1 30); do docker exec cache-media-a8-mongo mongosh --quiet --eval 'rs.status().ok' && break; sleep 1; done
+          docker exec cache-media-a8-mongo mongosh --quiet --eval 'if (!db.hello().setName) { rs.initiate({_id:"earnalism-uat-rs0",members:[{_id:0,host:"localhost:27017"}]}) }'
+          for _ in $(seq 1 30); do docker exec cache-media-a8-mongo mongosh --quiet --eval 'if (!db.hello().isWritablePrimary) quit(1)' && break; sleep 1; done
+          docker exec cache-media-a8-mongo mongosh --quiet --eval 'const s=db.getMongo().startSession(); try { s.withTransaction(() => db.getSiblingDB("earnalism_uat").a8_ci_transaction_capability.insertOne({scope:"ephemeral"})); db.getSiblingDB("earnalism_uat").a8_ci_transaction_capability.deleteMany({scope:"ephemeral"}); } finally { s.endSession(); }'
       - name: Run loopback backend integration regression
-        run: UAT_EXTERNAL_MONGODB=true UAT_MONGODB_PORT=27017 UAT_COMMAND_FILE="$GITHUB_WORKSPACE/scripts/cache_media/a8_ci_backend_regression.sh" bash scripts/start_local_uat.sh
+        run: REDIS_URL=redis://127.0.0.1:6379/15 REDIS_KEY_PREFIX=cache-media-a8-ci: UAT_EXTERNAL_MONGODB=true UAT_MONGODB_PORT=27017 UAT_COMMAND_FILE="$GITHUB_WORKSPACE/scripts/cache_media/a8_ci_backend_regression.sh" bash scripts/start_local_uat.sh
       - uses: actions/upload-artifact@v4
         if: always()
         with: {name: cache-media-a8-backend-integration, path: uat/evidence/system-final/runtime-final}
       - name: Remove disposable MongoDB
         if: always()
         run: docker rm --force cache-media-a8-mongo || true
+      - name: Remove disposable Redis
+        if: always()
+        run: docker rm --force cache-media-a8-redis || true
