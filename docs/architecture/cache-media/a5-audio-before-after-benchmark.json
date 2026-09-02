@@ -1,0 +1,12 @@
+{
+  "schema_version":"a5-audio-local-benchmark-v1",
+  "result":"PASS",
+  "scope":"deterministic local synthetic body only; no production storage, audio playback, Reading Pass consumption, or production latency claim",
+  "concurrency":[1,5,20],
+  "chunk_bytes":1048576,
+  "fixtures":{"small_bytes":1048576,"large_bytes":3145745},
+  "results":{"small":{"1":{"p50_ms":3.18,"max_ms":3.18},"5":{"p50_ms":1.116,"max_ms":1.318},"20":{"p50_ms":3.397,"max_ms":3.809}},"large":{"1":{"p50_ms":0.586,"max_ms":0.586},"5":{"p50_ms":1.428,"max_ms":1.44},"20":{"p50_ms":6.757,"max_ms":6.804}}},
+  "assertions":{"complete_buffering":false,"max_read_bytes":1048576,"all_bodies_closed":true,"disconnect_stops_future_reads":true,"event_loop_heartbeat_under_20ms":true,"metadata_cache_activated":false},
+  "latency_interpretation":"INCONCLUSIVE_LOCAL_NOISE",
+  "production_cost_result":"UNAVAILABLE_NO_PRODUCTION_METRICS"
+}

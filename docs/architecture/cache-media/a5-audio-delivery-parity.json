@@ -1,0 +1,8 @@
+{
+  "schema_version":"a5-audio-delivery-parity-v1",
+  "result":"PASS",
+  "audio_metadata_candidate":{"count":1,"preapproved":false,"decision":"AUDIO_METADATA_CACHE_NOT_ACTIVATED_INSUFFICIENT_EVIDENCE","policy_id":"NOT_APPLICABLE_WITH_EXACT_REASON: conditional media-meta candidate lacks production measurements","activated":false,"value_fields":[],"ttl_seconds":0,"negative_cache_count":0},
+  "intentional_changes":["bounded B2 client settings","pre-byte complete-object replacement consistency retry","cancellation-safe async body close","inline Content-Disposition","admin-only aggregate audio_delivery diagnostics"],
+  "unchanged":{"public_route_set":true,"entitlement_behavior":true,"release_gating":true,"enabled_disabled_audio_set":true,"range_semantics":true,"cache_policy_count":6,"audio_metadata_cache_activated":false,"controlled_publication_data":true,"frontend_production":true,"pr344_overlap":true},
+  "conditional_findings":{"if_range":"NOT_APPLICABLE_WITH_EXACT_REASON: ETag semantics meet the current client contract; no compatibility evidence requires If-Range","last_modified":"LAST_MODIFIED_NOT_ADDED_ETAG_IS_AUTHORITATIVE"}
+}
