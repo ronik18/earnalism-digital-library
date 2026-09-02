@@ -151,7 +151,11 @@ def validate(args: argparse.Namespace) -> None:
     with zipfile.ZipFile(package / "artifact.zip") as inner:
         if any(item.is_dir() or item.filename.startswith("/") or ".." in Path(item.filename).parts for item in inner.infolist()):
             raise SystemExit("unsafe inner zip")
-    print(json.dumps({"result": "PASS", "package": package.name, "manifest_sha256": expected_manifest, "inner_zip_sha256": digest(package / "artifact.zip"), "outer_package_sha256": digest(package.with_suffix(".zip"))}))
+    report = {"result": "PASS", "package": package.name, "manifest_sha256": expected_manifest, "inner_zip_sha256": digest(package / "artifact.zip")}
+    outer = package.with_suffix(".zip")
+    if outer.is_file():
+        report["outer_package_sha256"] = digest(outer)
+    print(json.dumps(report))
 
 
 def main() -> None:
