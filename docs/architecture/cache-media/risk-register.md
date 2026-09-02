@@ -13,5 +13,8 @@ Redis plan, eviction policy, replica count, region, Railway topology, storage pr
 | Redis memory/eviction mismatch | HIGH; mitigation: live capacity baseline | risk-register.json |
 | cross-tenant key collision | MEDIUM; mitigation: uniform schema version and identity contract | risk-register.json |
 | Range/signed URL/object outage/PDF uncertainty/workflow conflict/metrics gap | MEDIUM; mitigation: characterization tests and serial release | risk-register.json |
+| future customer PDF scope expansion | MEDIUM; mitigation: owner-approved future delivery contract | risk-register.json |
+| report artifact misclassification | MEDIUM; mitigation: A6 inventory and PR #344 lane boundary | risk-register.json |
+| embedded PDF or other data URI reaches the application cache | HIGH; resolved before A6 closure by recursive scheme validation and exact-key cleanup | risk-register.json |
 
 The A0.1 audit found historic duplicate publication-packet checksum assertions and obsolete public-asset test expectations. They are governed by the baseline regression ledger; neither changes controlled-publication truth, authorization, nor the production release gate.

@@ -71,6 +71,34 @@
       "release_blocker": false,
       "risk": "historical duplicate packet or stale test contract obscures current media truth",
       "severity": "MEDIUM"
+    },
+    {
+      "current_control": "A6 inventory confirms no customer PDF route/viewer/model/storage object and binary cache bypass tests pass",
+      "likelihood": "LOW",
+      "owner_approval_required": true,
+      "planned_mitigation": "future product requires explicit delivery contract approval before implementation",
+      "release_blocker": false,
+      "risk": "future customer PDF scope expansion without authorization or binary boundary",
+      "severity": "MEDIUM"
+    },
+    {
+      "current_control": "owner-review and report generators are classified as local or CI artifacts; PR #344 remains isolated",
+      "likelihood": "LOW",
+      "owner_approval_required": false,
+      "planned_mitigation": "keep artifact tooling out of customer-route and Redis decisions",
+      "release_blocker": false,
+      "risk": "report artifact misclassified as customer PDF media",
+      "severity": "MEDIUM"
+    },
+    {
+      "current_control": "central codec recursively rejects all data-URI schemes before Redis SET and after v2 decode",
+      "likelihood": "LOW",
+      "owner_approval_required": false,
+      "planned_mitigation": "focused write/read regression coverage and exact-key cleanup",
+      "release_blocker": false,
+      "resolution": "RESOLVED_BEFORE_A6_CLOSURE",
+      "risk": "embedded PDF or other data URI reaches the application cache",
+      "severity": "HIGH"
     }
   ],
   "schema_version": "cache-media-risk-register.v1"

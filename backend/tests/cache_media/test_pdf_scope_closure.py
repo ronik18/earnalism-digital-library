@@ -213,7 +213,7 @@ def test_pdf_policy_rows_are_documented_but_no_pdf_policy_is_active():
     for use_case in ("complete customer PDF binary", "PDF Range fragment", "rendered/generated report PDF"):
         assert rows[use_case]["decision"] == "DO_NOT_CACHE"
         assert rows[use_case]["maximum_serialized_bytes"] == 0
-    assert rows["future PDF metadata"]["decision"] == "CONDITIONAL"
+    assert rows["future PDF metadata"]["decision"] == "CONDITIONAL_FUTURE_ONLY"
     assert "pdf" not in " ".join(policy.ACTIVE_CACHE_POLICIES)
     assert len(policy.ACTIVE_CACHE_POLICIES) == 6
 

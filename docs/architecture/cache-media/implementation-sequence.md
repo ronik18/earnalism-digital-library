@@ -9,7 +9,7 @@ All checkpoints require a clean worktree, regression relevant to their owned pat
 | A3 limits/metrics | cache and benchmark files | size guard/metrics | capacity threshold approval | no capacity evidence |
 | A4 invalidation/singleflight | cache/services files | mutation and concurrent-miss tests | authorization semantics review | stale authorization risk |
 | A5 audio hardening | `backend/media/**` | Range/HEAD/ETag/auth tests | protected delivery contract | memory/stream regression |
-| A6 PDF | only after product exists | customer route tests | product approval | no active PDF product |
+| A6 PDF scope closure | docs/tests only when no product exists | inventory and binary-exclusion tests | none | PDF_CUSTOMER_DELIVERY_NOT_APPLICABLE |
 | A7 frontend | frontend after PR #344 | lifecycle/browser tests | PR #344 integrated | overlap/contract mismatch |
 | A8 local benchmark | scripts/docs | repeatable local baseline | none | harness failure |
 | A9 preview/staging | deployment config only after lanes converge | smoke/canary | deployment approval | staging unavailable |

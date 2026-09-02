@@ -23,6 +23,10 @@ Default direction: durable object storage/CDN for large bytes; Redis only for bo
 | request coalescing locks | CONDITIONAL; max 256 bytes | No cache-fill singleflight currently |
 | idempotency state | CONDITIONAL; max 16384 bytes | Route-specific design needed |
 | complete PDF binary | DO_NOT_CACHE; max 0 bytes | No active PDF route; Redis unsuitable for large bytes |
+| complete customer PDF binary | DO_NOT_CACHE; max 0 bytes | A6 confirms no customer PDF path; future durable storage must be authoritative |
+| PDF Range fragment | DO_NOT_CACHE; max 0 bytes | Fragments remain a durable-storage streaming concern |
+| rendered/generated report PDF | DO_NOT_CACHE; max 0 bytes | Local/CI owner-review artifact, never Redis |
+| future PDF metadata | CONDITIONAL_FUTURE_ONLY; max 8192 bytes | Future-only bounded metadata; no active policy |
 | complete audio binary | DO_NOT_CACHE; max 0 bytes | Repository policy rejects audiobook binaries |
 | arbitrary Range fragments | DO_NOT_CACHE; max 0 bytes | B2 range streaming is durable-storage concern |
 # A3 active-policy note

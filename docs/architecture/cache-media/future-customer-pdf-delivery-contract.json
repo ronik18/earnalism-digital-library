@@ -1,0 +1,7 @@
+{
+  "schema_version":"future-customer-pdf-delivery-contract-v1",
+  "implementation_status":"DESIGN_BOUNDARY_ONLY",
+  "pdf_metadata_cache_activated":false,
+  "required_before_future_implementation":["product requirement and owner rollout approval","durable object storage selected by approved design","authorization before metadata and bytes","same-origin protected proxy or separately approved signed delivery","streaming without complete buffering","Content-Type Content-Length safe Content-Disposition and ETag or authoritative Last-Modified","conditional requests and browser cancellation/cleanup","tenant user and resource isolation","no PDF bytes in Redis","measured bounded metadata cache only with replacement invalidation","security load memory and production rollout tests"],
+  "prohibited_in_a6":["route","model","upload","viewer","storage bucket","signed URL","CDN","Range handling","metadata cache","infrastructure selection"]
+}

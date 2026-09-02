@@ -1,0 +1,11 @@
+{
+  "schema_version":"a6-pdf-product-classification-v1",
+  "classification":"EXISTING_INTERNAL_OR_REPORT_PDF_ONLY",
+  "result":"PASS",
+  "active_customer_pdf_route_count":0,
+  "active_customer_pdf_upload_route_count":0,
+  "active_customer_pdf_viewer_count":0,
+  "active_customer_pdf_model_field_count":0,
+  "customer_pdf_storage_object_count":0,
+  "proof":["FastAPI OpenAPI has no PDF path","frontend has no PDF viewer/import/link surface","no upload/download/stream route exists","tracked PDF binary inventory is empty","observed PDF references are report, tooling, provenance, test, or documentation items"]
+}
