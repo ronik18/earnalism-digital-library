@@ -234,7 +234,7 @@ import jwt
 import unicodedata
 from collections import Counter, OrderedDict, defaultdict, deque
 from datetime import datetime, timezone, timedelta
-from typing import Any, Deque, Dict, List, Mapping, Optional, Tuple
+from typing import Any, Awaitable, Callable, Deque, Dict, List, Mapping, Optional, Tuple
 from urllib.parse import quote, unquote, urlencode, urlparse
 from urllib.request import Request as UrlRequest, urlopen
 
@@ -1535,6 +1535,46 @@ async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: in
     )
 
 
+async def _redis_cache_aside(
+    namespace: str,
+    key: str,
+    ttl_seconds: int,
+    loader: Callable[[], Awaitable[Any]],
+    *,
+    scope: str = "",
+    identity: str = "",
+    version: str = "",
+    metrics_namespace: Optional[str] = None,
+    version_resolver: Optional[Callable[[], Awaitable[str]]] = None,
+) -> Any:
+    """Run one active v2 caller through the common cache-aside authority."""
+    if ttl_seconds <= 0 or not _redis_state_enabled():
+        return await loader()
+    _sync_cache_runtime_from_compat()
+    registered = cache_policy.resolve_active_policy(namespace)
+    resolved_scope = scope or registered.scope
+    if resolved_scope != registered.scope:
+        raise ValueError("cache scope does not match registered policy")
+    policy = cache_store.CachePolicy(
+        namespace,
+        resolved_scope,
+        _ttl_with_jitter(ttl_seconds),
+        metrics_namespace or registered.metric_namespace,
+        registered,
+    )
+    return await _v2_cache_store().cache_aside(
+        policy,
+        cache_store.CacheIdentity(identity or key, key, version),
+        loader,
+        version_resolver=version_resolver,
+    )
+
+
+async def _return_cache_value(value: Any) -> Any:
+    """Adapt an already-materialized safe value to the async cache loader API."""
+    return value
+
+
 async def _redis_cache_delete(namespace: str, key: str, *, scope: str = "", identity: str = "", version: str = "", metrics_namespace: Optional[str] = None) -> None:
     _sync_cache_runtime_from_compat()
     registered = cache_policy.resolve_active_policy(namespace)
@@ -1930,6 +1970,31 @@ async def _public_cache_set(key: str, value) -> None:
         _public_cache.popitem(last=False)
 
 
+async def _public_cache_aside(key: str, loader: Callable[[], Awaitable[Any]]) -> Any:
+    """Public-cache adapter that preserves the pre-existing local fallback."""
+    if not PUBLIC_CACHE_ENABLED:
+        return await loader()
+    if _redis_state_enabled():
+        generation = await _public_cache_generation_value()
+        return await _redis_cache_aside(
+            "public-cache",
+            key,
+            PUBLIC_CACHE_TTL_SECONDS,
+            loader,
+            scope="public",
+            identity="public-catalog",
+            version=str(generation),
+            metrics_namespace="",
+            version_resolver=lambda: _public_cache_generation_value(),
+        )
+    cached = await _public_cache_get(key)
+    if cached is not None:
+        return cached
+    value = await loader()
+    await _public_cache_set(key, value)
+    return value
+
+
 async def _public_cache_clear() -> None:
     global _public_cache_generation
     if _redis_state_enabled():
@@ -2011,23 +2076,18 @@ async def _cache_user_doc(user: Optional[dict]) -> None:
 async def _cached_user_doc(user_id: str) -> Optional[dict]:
     if not user_id:
         return None
-    if _redis_state_enabled():
-        try:
-            cached = await _redis_cache_get(
-                "user-doc",
-                user_id,
-                scope="user",
-                identity=user_id,
-                metrics_namespace="user_doc",
-            )
-            if cached is not None:
-                return cached
-        except Exception:
-            logger.warning("Redis user cache get failed", exc_info=True)
-            _cache_stats["user_doc_error"] += 1
-    user = await db.users.find_one({"id": user_id}, {"_id": 0, "password_hash": 0})
-    await _cache_user_doc(user)
-    return user
+    async def load_user() -> Optional[dict]:
+        return await db.users.find_one({"id": user_id}, {"_id": 0, "password_hash": 0})
+
+    try:
+        return await _redis_cache_aside(
+            "user-doc", user_id, USER_AUTH_CACHE_TTL_SECONDS, load_user,
+            scope="user", identity=user_id, metrics_namespace="user_doc",
+        )
+    except Exception:
+        logger.warning("Redis user cache read failed", exc_info=True)
+        _cache_stats["user_doc_error"] += 1
+        return await load_user()
 
 
 async def _cache_user_session(session: Optional[dict]) -> None:
@@ -2052,26 +2112,22 @@ async def _cache_user_session(session: Optional[dict]) -> None:
 async def _cached_user_session(session_id: str, user_id: Optional[str] = None) -> Optional[dict]:
     if not session_id:
         return None
-    if _redis_state_enabled():
-        try:
-            cached = await _redis_cache_get(
-                "user-session",
-                session_id,
-                scope="session",
-                identity=session_id,
-                metrics_namespace="user_session",
-            )
-            if cached is not None and (not user_id or cached.get("user_id") == user_id):
-                return cached
-        except Exception:
-            logger.warning("Redis user session cache get failed", exc_info=True)
-            _cache_stats["user_session_error"] += 1
     query = {"id": session_id}
     if user_id:
         query["user_id"] = user_id
-    session = await db.user_sessions.find_one(query, {"_id": 0})
-    await _cache_user_session(session)
-    return session
+    async def load_session() -> Optional[dict]:
+        return await db.user_sessions.find_one(query, {"_id": 0})
+
+    try:
+        session = await _redis_cache_aside(
+            "user-session", session_id, USER_SESSION_CACHE_TTL_SECONDS, load_session,
+            scope="session", identity=session_id, metrics_namespace="user_session",
+        )
+    except Exception:
+        logger.warning("Redis user session cache read failed", exc_info=True)
+        _cache_stats["user_session_error"] += 1
+        session = await load_session()
+    return session if session is None or not user_id or session.get("user_id") == user_id else None
 
 
 async def _set_user_wallet_cache(user_id: str, wallet_seconds: int) -> None:
@@ -2112,8 +2168,14 @@ async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str
         if session_id:
             cache_metrics.record("user-session-v2", "invalidation", "targeted")
             await _redis_cache_delete("user-session", session_id, scope="session", identity=session_id, metrics_namespace="user_session")
-    await _redis_cache_delete("user-private", _user_transactions_cache_id(user_id))
-    await _redis_cache_delete("user-private", _user_payment_intents_cache_id(user_id))
+    await _redis_cache_delete(
+        "user-private", _user_transactions_cache_id(user_id),
+        scope="user", identity=user_id,
+    )
+    await _redis_cache_delete(
+        "user-private", _user_payment_intents_cache_id(user_id),
+        scope="user", identity=user_id,
+    )
     await _redis_cache_delete_keys(*keys)
 
 
@@ -2122,12 +2184,9 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
         return None
     generation = await _reader_content_cache_generation_value()
     cache_key = f"book-access:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
-    cached = await _redis_cache_get("reader-content", cache_key)
-    if cached is not None:
-        return cached
-    if admin_preview:
-        doc = await db.books.find_one({"slug": slug}, READER_ACCESS_PROJECTION)
-    else:
+    async def load_book_access() -> Optional[dict]:
+        if admin_preview:
+            return await db.books.find_one({"slug": slug}, READER_ACCESS_PROJECTION)
         # Controlled publication packets are the public catalog truth. Prefer
         # them over a stale runtime database copy so chapter metadata and the
         # chapter body are always derived from the same approved source.
@@ -2139,9 +2198,12 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
             )
             if doc and not can_expose_reader(doc):
                 doc = None
-    if doc:
-        await _redis_cache_set("reader-content", cache_key, doc, READER_BOOK_CACHE_TTL_SECONDS)
-    return doc
+        return doc
+
+    return await _redis_cache_aside(
+        "reader-content", cache_key, READER_BOOK_CACHE_TTL_SECONDS, load_book_access,
+        version=str(generation), version_resolver=_reader_content_cache_generation_value,
+    )
 
 
 async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: bool = False) -> str:
@@ -2149,34 +2211,36 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
         return ""
     generation = await _reader_content_cache_generation_value()
     cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{READER_CONTENT_RENDER_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
-    cached = await _redis_cache_get("reader-content", cache_key)
-    if cached is not None:
-        return str(cached or "")
-    if not admin_preview:
-        book = await _reader_book_access_doc(slug)
-        if not book:
-            return ""
-    if admin_preview:
-        content_doc = await db.books.find_one(
-            {"slug": slug, "chapters.id": chapter_id},
-            {"_id": 0, "chapters.$": 1},
-        )
-        target = ((content_doc or {}).get("chapters") or [{}])[0]
-        content = target.get("content", "")
-    else:
-        artifact = _controlled_artifact_doc(slug, include_content=True) or {}
-        target = next((chapter for chapter in artifact.get("chapters") or [] if chapter.get("id") == chapter_id), {})
-        content = target.get("content", "")
-        if not content:
+    async def load_chapter_content() -> str:
+        if not admin_preview:
+            book = await _reader_book_access_doc(slug)
+            if not book:
+                return ""
+        if admin_preview:
             content_doc = await db.books.find_one(
-                {**_controlled_public_book_query({"slug": slug}), "chapters.id": chapter_id},
+                {"slug": slug, "chapters.id": chapter_id},
                 {"_id": 0, "chapters.$": 1},
             )
             target = ((content_doc or {}).get("chapters") or [{}])[0]
             content = target.get("content", "")
-    rendered_content, _ = _manual_content_to_render_html(content)
-    await _redis_cache_set("reader-content", cache_key, rendered_content, READER_CHAPTER_CACHE_TTL_SECONDS)
-    return rendered_content
+        else:
+            artifact = _controlled_artifact_doc(slug, include_content=True) or {}
+            target = next((chapter for chapter in artifact.get("chapters") or [] if chapter.get("id") == chapter_id), {})
+            content = target.get("content", "")
+            if not content:
+                content_doc = await db.books.find_one(
+                    {**_controlled_public_book_query({"slug": slug}), "chapters.id": chapter_id},
+                    {"_id": 0, "chapters.$": 1},
+                )
+                target = ((content_doc or {}).get("chapters") or [{}])[0]
+                content = target.get("content", "")
+        rendered_content, _ = _manual_content_to_render_html(content)
+        return rendered_content
+
+    return str(await _redis_cache_aside(
+        "reader-content", cache_key, READER_CHAPTER_CACHE_TTL_SECONDS, load_chapter_content,
+        version=str(generation), version_resolver=_reader_content_cache_generation_value,
+    ) or "")
 
 
 def _stable_digest(value: Any, length: int = 16) -> str:
@@ -2875,10 +2939,14 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
         return None
     generation = await _reader_content_cache_generation_value()
     cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{CHAPTER_INDEX_CONTRACT_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
-    cached = await _redis_cache_get("reader-manifest", cache_key)
-    if cached is not None:
-        return cached
+    return await _redis_cache_aside(
+        "reader-manifest", cache_key, READER_MANIFEST_CACHE_TTL_SECONDS,
+        lambda: _reader_book_manifest_source_doc(slug, admin_preview=admin_preview, generation=generation),
+        version=str(generation), version_resolver=_reader_content_cache_generation_value,
+    )
 
+
+async def _reader_book_manifest_source_doc(slug: str, *, admin_preview: bool, generation: int) -> Optional[dict]:
     if admin_preview:
         doc = await db.books.find_one({"slug": slug}, {"_id": 0, "rights_metadata": 0})
     else:
@@ -2961,7 +3029,6 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
         "content_generation": generation,
         "generated_at": now_iso(),
     }
-    await _redis_cache_set("reader-manifest", cache_key, result, READER_MANIFEST_CACHE_TTL_SECONDS)
     return result
 
 
@@ -5276,33 +5343,23 @@ async def get_home_payload(books_limit: Optional[int] = None, books_offset: int 
     normalized_limit = _home_book_page_limit(books_limit, default=HOME_BOOK_LIMIT, maximum=HOME_BOOK_LIMIT)
     normalized_offset = max(0, int(books_offset or 0))
     cache_key = _public_cache_key("home_payload", books_limit=normalized_limit, books_offset=normalized_offset)
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-
-    categories = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
-    books_page = await _home_books_page(normalized_limit, normalized_offset, maximum=HOME_BOOK_LIMIT)
-
-    featured_book = None
-    setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
-    featured_slug = (setting or {}).get("book_slug")
-    featured_candidate = featured_slug if featured_slug in CONTROLLED_LIVE_BOOK_SLUGS else CONTROLLED_LIVE_BOOK_SLUGS[0]
-    doc = await db.books.find_one(
-        _controlled_public_book_query({"slug": featured_candidate}),
-        BOOK_METADATA_PROJECTION,
-    )
-    featured_book = _safe_live_public_projection(doc)
-    if not featured_book:
-        featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
-
-    result = {
-        "categories": categories,
-        "books": books_page["books"],
-        "books_page": books_page["pagination"],
-        "featured": {"book": featured_book},
-    }
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_home_payload() -> dict:
+        categories = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
+        books_page = await _home_books_page(normalized_limit, normalized_offset, maximum=HOME_BOOK_LIMIT)
+        setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
+        featured_slug = (setting or {}).get("book_slug")
+        featured_candidate = featured_slug if featured_slug in CONTROLLED_LIVE_BOOK_SLUGS else CONTROLLED_LIVE_BOOK_SLUGS[0]
+        doc = await db.books.find_one(
+            _controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION,
+        )
+        featured_book = _safe_live_public_projection(doc)
+        if not featured_book:
+            featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
+        return {
+            "categories": categories, "books": books_page["books"],
+            "books_page": books_page["pagination"], "featured": {"book": featured_book},
+        }
+    return await _public_cache_aside(cache_key, load_home_payload)
 
 
 def _home_book_page_limit(value: Optional[int], *, default: int, maximum: int = HOME_BOOK_PAGE_MAX_LIMIT) -> int:
@@ -5317,41 +5374,21 @@ async def _home_books_page(limit: int, offset: int = 0, *, maximum: int = HOME_B
     normalized_limit = _home_book_page_limit(limit, default=HOME_BOOK_PAGE_DEFAULT_LIMIT, maximum=maximum)
     normalized_offset = max(0, int(offset or 0))
     cache_key = _public_cache_key("home_books_page", limit=normalized_limit, offset=normalized_offset)
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-
-    query = _controlled_public_book_query()
-    cursor = (
-        db.books.find(query, BOOK_SUMMARY_PROJECTION)
-        .sort("created_at", -1)
-        .skip(normalized_offset)
-        .limit(normalized_limit)
-    )
-    docs = await cursor.to_list(normalized_limit)
-    total = await db.books.count_documents(query)
-    books = []
-    for doc in docs:
-        projected = _safe_live_public_projection(doc)
-        if projected:
-            books.append(projected)
-    if normalized_offset == 0:
-        books = _append_controlled_artifact_projections(books)
-    total = max(total, len(books))
-    next_offset = normalized_offset + len(books)
-    result = {
-        "books": books,
-        "pagination": {
-            "offset": normalized_offset,
-            "limit": normalized_limit,
-            "count": len(books),
-            "total": total,
-            "next_offset": next_offset if next_offset < total else None,
-            "has_more": next_offset < total,
-        },
-    }
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_home_books_page() -> dict:
+        query = _controlled_public_book_query()
+        cursor = db.books.find(query, BOOK_SUMMARY_PROJECTION).sort("created_at", -1).skip(normalized_offset).limit(normalized_limit)
+        docs = await cursor.to_list(normalized_limit)
+        total = await db.books.count_documents(query)
+        books = [projected for doc in docs if (projected := _safe_live_public_projection(doc))]
+        if normalized_offset == 0:
+            books = _append_controlled_artifact_projections(books)
+        total = max(total, len(books))
+        next_offset = normalized_offset + len(books)
+        return {"books": books, "pagination": {
+            "offset": normalized_offset, "limit": normalized_limit, "count": len(books), "total": total,
+            "next_offset": next_offset if next_offset < total else None, "has_more": next_offset < total,
+        }}
+    return await _public_cache_aside(cache_key, load_home_books_page)
 
 
 @api.get("/home/books")
@@ -5413,24 +5450,16 @@ async def record_secure_reader_event(
 @api.get("/categories")
 async def list_categories():
     cache_key = _public_cache_key("categories")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    docs = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
-    await _public_cache_set(cache_key, docs)
-    return docs
+    return await _public_cache_aside(
+        cache_key, lambda: db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200),
+    )
 
 
 @api.get("/home/curated")
 async def get_home_curated(compact: bool = False):
     """Return one canonical, release-safe Home curation contract."""
     cache_key = _public_cache_key("home_curated_v4_controlled_truth_v3")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return compact_home_curated_payload(cached) if compact else cached
-
-    payload = await _build_home_curated_source_payload()
-    await _public_cache_set(cache_key, payload)
+    payload = await _public_cache_aside(cache_key, _build_home_curated_source_payload)
     return compact_home_curated_payload(payload) if compact else payload
 
 
@@ -5450,21 +5479,13 @@ def _home_surface_lock(name: str) -> asyncio.Lock:
 
 async def _home_catalog_docs() -> list[dict]:
     cache_key = _public_cache_key("home_surface_catalog_docs_v1")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-
-    async with _home_surface_lock("catalog"):
-        cached = await _public_cache_get(cache_key)
-        if cached is not None:
-            return cached
+    async def load_catalog_docs() -> list[dict]:
         docs = await db.books.find(
             _controlled_public_book_query(),
             BOOK_SUMMARY_PROJECTION,
         ).sort("created_at", -1).to_list(500)
-        resolved = _home_curation_controlled_truth_docs(docs)
-        await _public_cache_set(cache_key, resolved)
-        return resolved
+        return _home_curation_controlled_truth_docs(docs)
+    return await _public_cache_aside(cache_key, load_catalog_docs)
 
 
 async def _home_audio_contract(slug: str) -> tuple[str, dict[str, Any]]:
@@ -5497,23 +5518,15 @@ async def _home_audio_contract(slug: str) -> tuple[str, dict[str, Any]]:
 
 async def _home_audio_contracts(docs: list[dict]) -> dict[str, dict[str, Any]]:
     cache_key = _public_cache_key("home_surface_audio_contracts_v1")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-
-    async with _home_surface_lock("audio-contracts"):
-        cached = await _public_cache_get(cache_key)
-        if cached is not None:
-            return cached
+    async def load_audio_contracts() -> dict[str, dict[str, Any]]:
         slugs = [
             str(doc.get("slug") or "").strip().lower()
             for doc in docs
             if doc.get("slug") and can_expose_audio(doc)
         ]
         rows = await asyncio.gather(*(_home_audio_contract(slug) for slug in slugs))
-        contracts = dict(rows)
-        await _public_cache_set(cache_key, contracts)
-        return contracts
+        return dict(rows)
+    return await _public_cache_aside(cache_key, load_audio_contracts)
 
 
 async def _build_home_curated_source_payload(*, include_audio_manifests: bool = True) -> dict:
@@ -5543,11 +5556,10 @@ def _home_surface_response(request: Request, payload: dict, *, browser_cache: st
 @api.get("/home/hero")
 async def get_home_hero(request: Request):
     cache_key = _public_cache_key("home_hero_contract_v1")
-    payload = await _public_cache_get(cache_key)
-    if payload is None:
+    async def load_home_hero() -> dict:
         source = await _build_home_curated_source_payload(include_audio_manifests=False)
-        payload = build_home_hero_contract(source)
-        await _public_cache_set(cache_key, payload)
+        return build_home_hero_contract(source)
+    payload = await _public_cache_aside(cache_key, load_home_hero)
     return _home_surface_response(
         request,
         payload,
@@ -5560,19 +5572,17 @@ async def get_home_hero(request: Request):
 async def get_home_listening(request: Request, limit: int = 3):
     bounded_limit = min(6, max(1, int(limit)))
     cache_key = _public_cache_key("home_listening_contract_v1", limit=bounded_limit)
-    payload = await _public_cache_get(cache_key)
-    if payload is None:
+    async def load_home_listening() -> dict:
         try:
             source = await _build_home_curated_source_payload(include_audio_manifests=True)
-            payload = build_home_listening_contract(source, limit=bounded_limit)
-            await _public_cache_set(cache_key, payload)
+            return build_home_listening_contract(source, limit=bounded_limit)
         except Exception:
             # This rail is deferred and non-critical. If a cold cache, catalog
             # read, or manifest build is temporarily unavailable, keep the
             # public contract healthy and fail closed instead of returning a
             # gateway error or exposing unverified audio metadata.
             logger.exception("Home listening contract unavailable; returning an empty safe contract")
-            payload = build_home_listening_contract(
+            return build_home_listening_contract(
                 {
                     "source": {
                         "truth_source": "canonical_public_catalog_fail_closed",
@@ -5582,6 +5592,7 @@ async def get_home_listening(request: Request, limit: int = 3):
                 },
                 limit=bounded_limit,
             )
+    payload = await _public_cache_aside(cache_key, load_home_listening)
     return _home_surface_response(
         request,
         payload,
@@ -5628,126 +5639,80 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     if category and category != "all":
         category_filter = normalize_category_slug(category) or category
     cache_key = _public_cache_key("books", category=category_filter or "all", q=normalize_text(q).strip() if q else "")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    extra_query: dict = {}
-    if category_filter:
-        extra_query["category_slug"] = category_filter
-    q_norm = normalize_text(q).strip() if q else ""
-    if q_norm:
-        pattern = re.escape(q_norm)
-        extra_query["$or"] = [
-            {"title": {"$regex": pattern, "$options": "i"}},
-            {"subtitle": {"$regex": pattern, "$options": "i"}},
-            {"author": {"$regex": pattern, "$options": "i"}},
-            {"short_description": {"$regex": pattern, "$options": "i"}},
-            {"description": {"$regex": pattern, "$options": "i"}},
-            {"category_slug": {"$regex": pattern, "$options": "i"}},
-            {"chapters.title": {"$regex": pattern, "$options": "i"}},
-        ]
-    query = _controlled_public_book_query(extra_query)
-    docs = await db.books.find(query, BOOK_SUMMARY_PROJECTION).sort("created_at", -1).to_list(500)
-    # Public list is shelf metadata-only so library browsing never ships chapter bodies.
-    result = []
-    for doc in docs:
-        projected = _safe_live_public_projection(doc)
-        if projected:
-            result.append(projected)
-    result = _append_controlled_artifact_projections(result, category_filter=category_filter, q=q_norm)
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_books() -> list[dict]:
+        extra_query: dict = {}
+        if category_filter:
+            extra_query["category_slug"] = category_filter
+        q_norm = normalize_text(q).strip() if q else ""
+        if q_norm:
+            pattern = re.escape(q_norm)
+            extra_query["$or"] = [{field: {"$regex": pattern, "$options": "i"}} for field in (
+                "title", "subtitle", "author", "short_description", "description", "category_slug", "chapters.title",
+            )]
+        docs = await db.books.find(_controlled_public_book_query(extra_query), BOOK_SUMMARY_PROJECTION).sort("created_at", -1).to_list(500)
+        result = [projected for doc in docs if (projected := _safe_live_public_projection(doc))]
+        return _append_controlled_artifact_projections(result, category_filter=category_filter, q=q_norm)
+    return await _public_cache_aside(cache_key, load_books)
 
 @api.get("/books/{slug}", response_model=PublicBookOut)
 async def get_book(slug: str):
     cache_key = _public_cache_key("book_detail", slug=slug)
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    doc, _source = await _find_public_book_candidate(slug, BOOK_METADATA_PROJECTION, include_artifact_content=False)
-    if not doc:
-        raise HTTPException(status_code=404, detail="Book not found")
-    # Public detail returns metadata + ToC only. Reader content is fetched through
-    # the gated chapter endpoint so detail pages stay light for large books.
-    result = _safe_live_public_projection(doc)
-    if not result:
-        raise HTTPException(status_code=404, detail="Book not found")
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_book() -> dict:
+        doc, _source = await _find_public_book_candidate(slug, BOOK_METADATA_PROJECTION, include_artifact_content=False)
+        result = _safe_live_public_projection(doc)
+        if not result:
+            raise HTTPException(status_code=404, detail="Book not found")
+        return result
+    return await _public_cache_aside(cache_key, load_book)
 
 
 @api.get("/books/{slug}/chapters")
 async def get_book_chapters(slug: str):
     cache_key = _public_cache_key("book_chapters", slug=slug, index_contract=CHAPTER_INDEX_CONTRACT_VERSION)
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    doc, _source = await _find_public_book_candidate(slug, BOOK_METADATA_PROJECTION, include_artifact_content=False)
-    if not doc:
-        raise HTTPException(status_code=404, detail="Book not found")
-    if not can_expose_reader(doc):
-        raise HTTPException(status_code=404, detail="Book not found")
-    chapters = _strip_all_chapter_content(doc).get("chapters") or []
-    if not chapters:
-        return []
-    result = build_chapter_index_entries(chapters)
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_book_chapters() -> list[dict]:
+        doc, _source = await _find_public_book_candidate(slug, BOOK_METADATA_PROJECTION, include_artifact_content=False)
+        if not doc or not can_expose_reader(doc):
+            raise HTTPException(status_code=404, detail="Book not found")
+        chapters = _strip_all_chapter_content(doc).get("chapters") or []
+        return build_chapter_index_entries(chapters) if chapters else []
+    return await _public_cache_aside(cache_key, load_book_chapters)
 
 
 @api.get("/books/{slug}/chapters/{chapter_id}")
 async def get_book_chapter(slug: str, chapter_id: str):
     cache_key = _public_cache_key("book_chapter", slug=slug, chapter_id=chapter_id)
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    if not _is_controlled_public_slug(slug):
-        raise HTTPException(status_code=404, detail="Book not found")
-    book_meta, _source = await _find_public_book_candidate(slug, READER_ACCESS_PROJECTION, include_artifact_content=False)
-    if not book_meta:
-        raise HTTPException(status_code=404, detail="Book not found")
-    if not can_expose_reader(book_meta):
-        raise HTTPException(status_code=404, detail="Book not found")
-    chapters = sorted((book_meta.get("chapters") or []), key=lambda c: c.get("order", 0))
-    target_meta = next((c for c in chapters if c.get("id") == chapter_id), None)
-    if not target_meta:
-        raise HTTPException(status_code=404, detail="Chapter not found")
-
-    chapter = dict(target_meta)
-    chapter["content"] = ""
-    if _is_free_preview_chapter(book_meta, chapter_id):
-        content_doc = await db.books.find_one(
-            {**_controlled_public_book_query({"slug": slug}), "chapters.id": chapter_id},
-            CHAPTER_CONTENT_PROJECTION,
-        )
-        target = ((content_doc or {}).get("chapters") or [{}])[0]
-        chapter["content"] = target.get("content", "")
-        if not chapter["content"]:
-            artifact = _controlled_artifact_doc(slug, include_content=True) or {}
-            target = next((c for c in artifact.get("chapters") or [] if c.get("id") == chapter_id), {})
-            chapter["content"] = target.get("content", "")
-    if not chapter:
-        raise HTTPException(status_code=404, detail="Chapter not found")
-    await _public_cache_set(cache_key, chapter)
-    return chapter
+    async def load_book_chapter() -> dict:
+        if not _is_controlled_public_slug(slug):
+            raise HTTPException(status_code=404, detail="Book not found")
+        book_meta, _source = await _find_public_book_candidate(slug, READER_ACCESS_PROJECTION, include_artifact_content=False)
+        if not book_meta or not can_expose_reader(book_meta):
+            raise HTTPException(status_code=404, detail="Book not found")
+        target_meta = next((c for c in sorted(book_meta.get("chapters") or [], key=lambda c: c.get("order", 0)) if c.get("id") == chapter_id), None)
+        if not target_meta:
+            raise HTTPException(status_code=404, detail="Chapter not found")
+        chapter = {**target_meta, "content": ""}
+        if _is_free_preview_chapter(book_meta, chapter_id):
+            content_doc = await db.books.find_one(
+                {**_controlled_public_book_query({"slug": slug}), "chapters.id": chapter_id}, CHAPTER_CONTENT_PROJECTION,
+            )
+            chapter["content"] = ((content_doc or {}).get("chapters") or [{}])[0].get("content", "")
+            if not chapter["content"]:
+                artifact = _controlled_artifact_doc(slug, include_content=True) or {}
+                chapter["content"] = next((c for c in artifact.get("chapters") or [] if c.get("id") == chapter_id), {}).get("content", "")
+        return chapter
+    return await _public_cache_aside(cache_key, load_book_chapter)
 
 
 # ---------- Public: Blog ----------
 @api.get("/blog", response_model=List[BlogPost])
 async def list_blog(category: Optional[str] = None):
     cache_key = _public_cache_key("blog", category=category or "all")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    query: dict = {
-        "is_published": True,
-        "slug": {"$nin": sorted(RETIRED_PUBLIC_BLOG_SLUGS)},
-    }
-    if category and category != "all":
-        query["category"] = category
-    docs = await db.blog_posts.find(query, {"_id": 0}).sort("created_at", -1).to_list(200)
-    await _public_cache_set(cache_key, docs)
-    return docs
+    async def load_blog() -> list[dict]:
+        query: dict = {"is_published": True, "slug": {"$nin": sorted(RETIRED_PUBLIC_BLOG_SLUGS)}}
+        if category and category != "all":
+            query["category"] = category
+        return await db.blog_posts.find(query, {"_id": 0}).sort("created_at", -1).to_list(200)
+    return await _public_cache_aside(cache_key, load_blog)
 
 @api.get("/blog/{slug}", response_model=BlogPost)
 async def get_blog(slug: str):
@@ -5758,36 +5723,24 @@ async def get_blog(slug: str):
             headers={"X-Robots-Tag": "noindex, nofollow, noarchive"},
         )
     cache_key = _public_cache_key("blog_detail", slug=slug)
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    doc = await db.blog_posts.find_one({"slug": slug, "is_published": True}, {"_id": 0})
-    if not doc:
-        raise HTTPException(status_code=404, detail="Article not found")
-    await _public_cache_set(cache_key, doc)
-    return doc
+    async def load_blog_detail() -> dict:
+        doc = await db.blog_posts.find_one({"slug": slug, "is_published": True}, {"_id": 0})
+        if not doc:
+            raise HTTPException(status_code=404, detail="Article not found")
+        return doc
+    return await _public_cache_aside(cache_key, load_blog_detail)
 
 
 # ---------- Public: Featured ----------
 @api.get("/featured")
 async def get_featured():
     cache_key = _public_cache_key("featured")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    s = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
-    featured_candidate = (
-        s.get("book_slug")
-        if s and s.get("book_slug") in CONTROLLED_LIVE_BOOK_SLUGS
-        else CONTROLLED_LIVE_BOOK_SLUGS[0]
-    )
-    book = await db.books.find_one(_controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION)
-    featured_book = _safe_live_public_projection(book)
-    if not featured_book:
-        featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
-    result = {"book": featured_book}
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_featured() -> dict:
+        setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
+        candidate = setting.get("book_slug") if setting and setting.get("book_slug") in CONTROLLED_LIVE_BOOK_SLUGS else CONTROLLED_LIVE_BOOK_SLUGS[0]
+        book = await db.books.find_one(_controlled_public_book_query({"slug": candidate}), BOOK_METADATA_PROJECTION)
+        return {"book": _safe_live_public_projection(book) or _safe_live_public_projection(_controlled_artifact_doc(candidate, include_content=False))}
+    return await _public_cache_aside(cache_key, load_featured)
 
 
 # ---------- Public: Submissions ----------
@@ -5822,19 +5775,10 @@ async def contact(payload: ContactIn):
 @api.get("/settings/social")
 async def get_social():
     cache_key = _public_cache_key("settings_social")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    doc = await db.settings.find_one({"key": "social"}, {"_id": 0}) or {}
-    result = {
-        "instagram": doc.get("instagram", ""),
-        "facebook": doc.get("facebook", ""),
-        "youtube": doc.get("youtube", ""),
-        "linkedin": doc.get("linkedin", ""),
-        "twitter": doc.get("twitter", ""),
-    }
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_social() -> dict:
+        doc = await db.settings.find_one({"key": "social"}, {"_id": 0}) or {}
+        return {key: doc.get(key, "") for key in ("instagram", "facebook", "youtube", "linkedin", "twitter")}
+    return await _public_cache_aside(cache_key, load_social)
 
 
 @api.get("/settings/brand")
@@ -5843,30 +5787,18 @@ async def get_brand():
     Empty strings are returned if not configured so the frontend can fall back
     to the existing premium text logo and hero image."""
     cache_key = _public_cache_key("settings_brand")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    doc = await db.settings.find_one({"key": "brand"}, {"_id": 0}) or {}
-    result = {
-        "logo_url": doc.get("logo_url", ""),
-        "og_image_url": doc.get("og_image_url", ""),
-    }
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_brand() -> dict:
+        doc = await db.settings.find_one({"key": "brand"}, {"_id": 0}) or {}
+        return {"logo_url": doc.get("logo_url", ""), "og_image_url": doc.get("og_image_url", "")}
+    return await _public_cache_aside(cache_key, load_brand)
 
 
 @api.get("/settings/public")
 async def get_public_settings():
     cache_key = _public_cache_key("settings_public")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    result = {
-        "social": await get_social(),
-        "brand": await get_brand(),
-    }
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_public_settings() -> dict:
+        return {"social": await get_social(), "brand": await get_brand()}
+    return await _public_cache_aside(cache_key, load_public_settings)
 
 
 # ---------- Admin: Books ----------
@@ -7878,12 +7810,13 @@ async def user_wallet(user=Depends(require_user)):
 @api.get("/users/me/transactions", response_model=List[WalletTransactionOut])
 async def user_my_transactions(user=Depends(require_user)):
     cache_key = _user_transactions_cache_id(user["id"])
-    cached = await _redis_cache_get("user-private", cache_key)
-    if cached is not None:
-        return cached
-    rows = await db.wallet_transactions.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
-    await _redis_cache_set("user-private", cache_key, rows, USER_TRANSACTIONS_CACHE_TTL_SECONDS)
-    return rows
+    async def load_transactions() -> list[dict]:
+        return await db.wallet_transactions.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
+
+    return await _redis_cache_aside(
+        "user-private", cache_key, USER_TRANSACTIONS_CACHE_TTL_SECONDS, load_transactions,
+        scope="user", identity=user["id"],
+    )
 
 
 @api.get("/users/me/rewards")
@@ -8612,11 +8545,10 @@ async def _reader_book_audiobook_package_manifest_response(slug: str, request: R
         return response
     if not package_canary:
         cache_key = f"audiobook-package:{manifest['package_version']}"
-        cached_manifest = await _redis_cache_get("reader-manifest", cache_key)
-        if isinstance(cached_manifest, dict):
-            manifest = cached_manifest
-        else:
-            await _redis_cache_set("reader-manifest", cache_key, manifest, 3600)
+        manifest = await _redis_cache_aside(
+            "reader-manifest", cache_key, 3600, lambda: _return_cache_value(manifest),
+            version=str(manifest["package_version"]),
+        )
     etag = f'"{manifest["package_version"]}"'
     cache_control = (
         "private, no-store"
@@ -9875,15 +9807,9 @@ async def reading_pulse(payload: ReadingPulseIn, principal: Optional[dict] = Dep
 @api.get("/reading/packs")
 async def reading_packs():
     cache_key = _public_cache_key("reading_packs")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    result = [
-        {"id": p["id"], "minutes": p["minutes"], "price": p["price_inr"], "label": p["label"]}
-        for p in PACKS
-    ]
-    await _public_cache_set(cache_key, result)
-    return result
+    async def load_reading_packs() -> list[dict]:
+        return [{"id": p["id"], "minutes": p["minutes"], "price": p["price_inr"], "label": p["label"]} for p in PACKS]
+    return await _public_cache_aside(cache_key, load_reading_packs)
 
 
 # ---------- Reader: Gated chapter content ----------
@@ -9966,12 +9892,7 @@ async def reader_get_chapter(
             chapter_id=chapter_id,
             content_version=content_version,
         )
-        cached = await _public_cache_get(cache_key)
-        if cached is not None:
-            return cached
-        result = await unlocked_chapter_response(True)
-        await _public_cache_set(cache_key, result)
-        return result
+        return await _public_cache_aside(cache_key, lambda: unlocked_chapter_response(True))
 
     # Admin always has full access (admin reader preview).
     if is_admin_preview:
@@ -10204,28 +10125,17 @@ async def admin_user_status(uid: str, payload: UserStatusIn, _=Depends(require_a
 @api.get("/payments/packs", response_model=List[PackOut])
 async def payments_list_packs():
     cache_key = _public_cache_key("payment_packs")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    result = [PackOut(**p).model_dump() for p in PACKS]
-    await _public_cache_set(cache_key, result)
-    return result
+    return await _public_cache_aside(cache_key, lambda: _return_cache_value([PackOut(**p).model_dump() for p in PACKS]))
 
 
 @api.get("/payments/config")
 async def payments_config():
     """Lightweight config shim used by frontend to know if Razorpay is wired."""
     cache_key = _public_cache_key("payment_config")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    result = {
-        "configured": razorpay_keys_configured(),
-        "mode": RAZORPAY_MODE,
+    return await _public_cache_aside(cache_key, lambda: _return_cache_value({
+        "configured": razorpay_keys_configured(), "mode": RAZORPAY_MODE,
         "key_id": RAZORPAY_KEY_ID if razorpay_keys_configured() else "",
-    }
-    await _public_cache_set(cache_key, result)
-    return result
+    }))
 
 
 @api.get("/payments/offers")
@@ -10237,19 +10147,13 @@ async def payments_public_offers():
     additional payment or account state.
     """
     cache_key = _public_cache_key("payment_offers")
-    cached = await _public_cache_get(cache_key)
-    if cached is not None:
-        return cached
-    result = {
-        "packs": [PackOut(**pack).model_dump() for pack in PACKS],
-        "config": {
+    async def load_payment_offers() -> dict:
+        return {"packs": [PackOut(**pack).model_dump() for pack in PACKS], "config": {
             "configured": razorpay_keys_configured(),
             "mode": RAZORPAY_MODE,
             "key_id": RAZORPAY_KEY_ID if razorpay_keys_configured() else "",
-        },
-    }
-    await _public_cache_set(cache_key, result)
-    return result
+        }}
+    return await _public_cache_aside(cache_key, load_payment_offers)
 
 
 # ---------- Wallet credit helper (idempotent) ----------
@@ -10605,12 +10509,13 @@ async def payments_simulate_webhook(
 @api.get("/payments/me/intents")
 async def payments_my_intents(user=Depends(require_user)):
     cache_key = _user_payment_intents_cache_id(user["id"])
-    cached = await _redis_cache_get("user-private", cache_key)
-    if cached is not None:
-        return cached
-    rows = await db.topup_intents.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
-    await _redis_cache_set("user-private", cache_key, rows, USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS)
-    return rows
+    async def load_payment_intents() -> list[dict]:
+        return await db.topup_intents.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
+
+    return await _redis_cache_aside(
+        "user-private", cache_key, USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS, load_payment_intents,
+        scope="user", identity=user["id"],
+    )
 
 
 # ---------- Admin: payments dashboard ----------

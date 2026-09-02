@@ -1,0 +1,13 @@
+{
+  "schema_version": "1",
+  "active_policy_count": 6,
+  "active_caller_family_count": 6,
+  "families": [
+    {"policy_id": "public-cache-v2", "callers": ["_public_cache_aside and public catalog/home/blog/settings/commerce routes"], "identity": "public-catalog plus public generation", "source_shape": "plain JSON-safe list or dict", "version_strategy": "MUTABLE_GENERATION"},
+    {"policy_id": "reader-content-v2", "callers": ["_reader_book_access_doc", "_reader_chapter_content"], "identity": "resource cache key plus reader-content generation", "source_shape": "dict or string", "version_strategy": "MUTABLE_GENERATION"},
+    {"policy_id": "reader-manifest-v2", "callers": ["_reader_book_manifest_doc", "audiobook package manifest cache"], "identity": "resource cache key plus generation or package version", "source_shape": "dict", "version_strategy": "MUTABLE_GENERATION_OR_IMMUTABLE_VERSION_IDENTITY"},
+    {"policy_id": "user-private-v2", "callers": ["user_my_transactions", "payments_my_intents"], "identity": "authenticated user id plus resource", "source_shape": "list[dict]", "version_strategy": "EXACT_DELETE_AFTER_AUTHORIZED_MUTATION"},
+    {"policy_id": "user-doc-v2", "callers": ["_cached_user_doc"], "identity": "authenticated user id", "source_shape": "dict or None", "version_strategy": "EXACT_DELETE_AFTER_AUTHORIZED_MUTATION"},
+    {"policy_id": "user-session-v2", "callers": ["_cached_user_session"], "identity": "current session id", "source_shape": "dict or None", "version_strategy": "EXACT_DELETE_AFTER_AUTHORIZED_MUTATION"}
+  ]
+}

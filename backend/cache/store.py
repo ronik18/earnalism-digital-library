@@ -174,6 +174,12 @@ class RedisCacheStore:
                 self._event(policy, "cache_aside", "stale_fill_suppressed", started=started)
                 self._log("warning", policy, "cache_aside", "stale_fill_suppressed")
                 return value
+            # Existing callers use ``None`` as a not-found sentinel and do not
+            # cache it.  Keeping that distinction here prevents this central
+            # adapter from introducing negative caching while it adopts them.
+            if value is None:
+                self._event(policy, "cache_aside", "not_cached_none", started=started)
+                return value
             await self.set(policy, identity, value)
             return value
 

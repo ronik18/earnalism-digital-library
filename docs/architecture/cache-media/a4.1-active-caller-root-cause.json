@@ -1,0 +1,14 @@
+{
+  "schema_version": "1",
+  "failure_command": "rg -n 'cache_aside\\(' backend/server.py backend/cache",
+  "failure_result": "Only backend/cache/store.py defined cache_aside before A4.1; backend/server.py had no active caller adoption.",
+  "classification": "MULTIPLE_COMBINED_ACTIVE_CALLER_NOT_ROUTED_THROUGH_CENTRAL_CACHE_ASIDE",
+  "failures": [
+    {"policy_id": "public-cache-v2", "classification": "ACTIVE_CALLER_NOT_ROUTED_THROUGH_CENTRAL_CACHE_ASIDE"},
+    {"policy_id": "reader-content-v2", "classification": "ACTIVE_CALLER_NOT_ROUTED_THROUGH_CENTRAL_CACHE_ASIDE"},
+    {"policy_id": "reader-manifest-v2", "classification": "ACTIVE_CALLER_NOT_ROUTED_THROUGH_CENTRAL_CACHE_ASIDE"},
+    {"policy_id": "user-private-v2", "classification": "ACTIVE_CALLER_NOT_ROUTED_THROUGH_CENTRAL_CACHE_ASIDE"},
+    {"policy_id": "user-doc-v2", "classification": "ACTIVE_CALLER_NOT_ROUTED_THROUGH_CENTRAL_CACHE_ASIDE"},
+    {"policy_id": "user-session-v2", "classification": "ACTIVE_CALLER_NOT_ROUTED_THROUGH_CENTRAL_CACHE_ASIDE"}
+  ]
+}
