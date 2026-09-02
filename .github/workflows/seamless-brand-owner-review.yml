@@ -498,6 +498,8 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$PR_HEAD_SHA"
           python3 -m pip install --disable-pip-version-check Pillow==10.3.0
+          for tool in pdfinfo pdftoppm pdftotext; do command -v "$tool" >/dev/null || { sudo apt-get update; sudo apt-get install -y --no-install-recommends poppler-utils; break; }; done
+          command -v pdfinfo; command -v pdftoppm; command -v pdftotext
 
       - name: Download exact published owner-review artifact
         uses: actions/download-artifact@v7
