@@ -173,7 +173,7 @@ def representative_states(states):
     wanted = [
         "home-desktop", "home-mobile", "home-mobile-zoom-200", "home-menu-open-390",
         "library-desktop", "library-mobile", "library-filters-open-390", "commerce-desktop", "commerce-mobile",
-        "book-detail-desktop", "secondary-book-detail-desktop", "reader-desktop", "reader-mobile-390-zoom-200",
+        "book-detail-desktop", "secondary-book-desktop", "reader-desktop", "reader-mobile-390-zoom-200",
         "listener-desktop", "listener-mobile-390-zoom-200", "login-desktop", "signup-mobile", "account-desktop",
         "my-library-mobile", "journal-desktop", "article-mobile", "contact-desktop", "micro-story-mobile",
         "error-404-desktop", "tombstone-410-mobile", "library-footer-mobile-zoom-200",
@@ -237,7 +237,8 @@ def render_pdf(package, summary, states):
         ("Cover and provenance", ["home-desktop"]), ("Brand decision and palette", ["home-mobile"]),
         ("Header desktop/mobile", ["home-desktop", "home-mobile"]), ("Mobile menu open/closed", ["home-menu-open-390"]),
         ("Home desktop/mobile/200%", ["home-desktop", "home-mobile-zoom-200"]), ("Library desktop/mobile/filters", ["library-desktop", "library-filters-open-390"]),
-        ("Commerce desktop/mobile", ["commerce-desktop", "commerce-mobile"]), ("Book Detail Dracula and Devdas", ["book-detail-desktop", "secondary-book-detail-desktop"]),
+        ("Commerce desktop/mobile", ["commerce-desktop", "commerce-mobile"]), ("Book Detail — Dracula", ["book-detail-desktop"]),
+        ("Book Detail — Devdas (Bengali)", ["secondary-book-desktop"]),
         ("Reader desktop/mobile/high zoom", ["reader-desktop", "reader-mobile-390-zoom-200"]), ("Listener desktop/mobile/high zoom", ["listener-desktop", "listener-mobile-390-zoom-200"]),
         ("Login/Signup", ["login-desktop", "signup-mobile"]), ("Account/My Library", ["account-desktop", "my-library-mobile"]),
         ("Journal/Article", ["journal-desktop", "article-mobile"]), ("Contact/Micro-story", ["contact-desktop", "micro-story-mobile"]),

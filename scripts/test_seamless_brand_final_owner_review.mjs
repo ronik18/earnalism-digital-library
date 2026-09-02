@@ -16,7 +16,18 @@ const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8"
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const write = (file, value) => { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, typeof value === "string" || Buffer.isBuffer(value) ? value : `${JSON.stringify(value, null, 2)}\n`); };
 const tinyPng = Buffer.from("89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4890000000d49444154789c6360f8cfc0000003010100c9fe92ef0000000049454e44ae426082", "hex");
-const production = "199ff2d18bc0df16f5e4e2bdc9bcf8ceba24d26c3ee92360802db80c1dbc31b1";
+const production = (() => {
+  const files = [];
+  const walk = (directory) => fs.readdirSync(directory, { withFileTypes: true }).forEach((entry) => {
+    const file = path.join(directory, entry.name);
+    if (entry.isDirectory()) walk(file);
+    else if (!file.includes("__tests__") && !/\.(test|spec)\./.test(file)) files.push(file);
+  });
+  walk(path.join(root, "frontend/src"));
+  walk(path.join(root, "frontend/public"));
+  files.push(...["frontend/package.json", "frontend/package-lock.json", "frontend/vercel.json"].map((file) => path.join(root, file)));
+  return crypto.createHash("sha256").update(files.sort().map((file) => `${sha(file)}  ${path.relative(root, file)}\n`).join("")).digest("hex");
+})();
 const logo = "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919";
 
 function createSynthetic() {

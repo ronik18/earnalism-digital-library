@@ -4,5 +4,9 @@
    existing mobile back-action row. */
 @media (max-width: 767px) {
   .listener-v2 .experience-header { display: flex !important; }
+  .listener-v2__main { padding: 12px 24px 26px; }
   .listener-v2__mobile-top { position: static; min-height: 44px; padding: 0 12px; }
 }
+
+/* The cover fallback is part of the experience surface, not book artwork. */
+.listener-v2__art { background: var(--ev2-surface); }
