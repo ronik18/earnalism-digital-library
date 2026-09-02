@@ -36,7 +36,7 @@ jobs:
           docker exec cache-media-a8-mongo mongosh --quiet --eval 'const s=db.getMongo().startSession(); try { s.withTransaction(() => db.getSiblingDB("earnalism_uat").a8_ci_transaction_capability.insertOne({scope:"ephemeral"})); db.getSiblingDB("earnalism_uat").a8_ci_transaction_capability.deleteMany({scope:"ephemeral"}); } finally { s.endSession(); }'
       - name: Run loopback backend integration regression
         run: >-
-          REDIS_URL=redis://127.0.0.1:6379/15 REDIS_KEY_PREFIX=cache-media-a8-ci:
+          REDIS_URL=redis://127.0.0.1:6379/15
           UAT_EXTERNAL_MONGODB=true UAT_MONGODB_PORT=27017
           UAT_COMMAND_FILE="$GITHUB_WORKSPACE/scripts/cache_media/a8_ci_backend_regression.sh"
           bash scripts/start_local_uat.sh
