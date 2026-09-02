@@ -107,8 +107,10 @@ class RedisCacheStore:
                 await self._delete_exact(policy, identity)
                 return None
         except Exception as exc:
-            self._event(policy, "read", "decode_error", started=started, legacy_suffix="error")
-            self._log("warning", policy, "read", "decode_error", exc=exc)
+            message = str(exc).lower()
+            result = "policy_invalid" if "binary or media" in message else "decode_error"
+            self._event(policy, "read", result, started=started, legacy_suffix="error")
+            self._log("warning", policy, "read", result, exc=exc)
             await self._delete_exact(policy, identity)
             return None
         self._event(policy, "read", "hit", started=started, size_bytes=len(blob), legacy_suffix="hit")

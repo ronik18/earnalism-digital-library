@@ -9,15 +9,17 @@ import math
 import re
 import uuid
 import zlib
+from collections.abc import Mapping
 from decimal import Decimal
 from enum import Enum
 from typing import Any, Iterable, Optional
 
 
-MEDIA_DATA_URI_RE = re.compile(
-    r"data:(?:image|audio|video|application/octet-stream|application/pdf)/",
-    re.IGNORECASE,
-)
+# Active application-cache policies exclude inline media data URIs.  Treat the
+# URI scheme itself as the fixed-size classifier: it accepts leading ASCII
+# whitespace and case variants, does not capture the payload, and does not
+# mistake ordinary prose containing ``data:`` for a URI.
+MEDIA_DATA_URI_RE = re.compile(r"^[ \t\r\n\f\v]*data:", re.IGNORECASE)
 JSON_V2_PREFIX = b"json-v2:"
 ZLIB_JSON_V2_PREFIX = b"zlib-json-v2:"
 A2_CODEC_ABSOLUTE_DECODE_LIMIT_BYTES = 1048576
@@ -28,25 +30,59 @@ class CacheCodecError(ValueError):
     pass
 
 
-def redis_cache_payload_is_media(value: Any, *, response_types: Iterable[type] = (), _seen: int = 0) -> bool:
-    if _seen > 800:
-        return False
+def redis_cache_payload_is_media(
+    value: Any,
+    *,
+    response_types: Iterable[type] = (),
+    _seen: int = 0,
+    _active: Optional[set[int]] = None,
+) -> bool:
+    """Return whether a logical cache value contains excluded binary/media.
+
+    This is the central pre-serialization and post-decode classifier.  It
+    deliberately recognizes every data URI, because none is an approved
+    active-cache payload and recognizing its scheme requires neither decoding
+    nor retaining its embedded content.
+    """
+    if _seen > A2_CODEC_MAX_NESTING:
+        raise CacheCodecError("cache value nesting exceeds the A2 safety ceiling")
     if isinstance(value, (bytes, bytearray, memoryview, io.IOBase, *tuple(response_types))):
         return True
     if isinstance(value, str):
-        return bool(MEDIA_DATA_URI_RE.search(value))
-    if isinstance(value, dict):
-        for key, nested in value.items():
-            key_text = str(key).lower()
-            if isinstance(nested, (bytes, bytearray, memoryview, io.IOBase)):
-                return True
-            if isinstance(nested, str) and key_text in {"body", "blob", "bytes", "binary", "file", "stream", "content"} and MEDIA_DATA_URI_RE.search(nested):
-                return True
-            if redis_cache_payload_is_media(nested, response_types=response_types, _seen=_seen + 1):
-                return True
+        return bool(MEDIA_DATA_URI_RE.match(value))
+
+    active = _active if _active is not None else set()
+    is_container = isinstance(value, (Mapping, list, tuple, set)) or hasattr(value, "model_dump") or (
+        hasattr(value, "dict") and value.__class__.__module__.startswith("pydantic")
+    )
+    if not is_container:
         return False
-    if isinstance(value, (list, tuple, set)):
-        return any(redis_cache_payload_is_media(item, response_types=response_types, _seen=_seen + 1) for item in value)
+    value_id = id(value)
+    if value_id in active:
+        raise CacheCodecError("cache value contains a cycle")
+    active.add(value_id)
+    try:
+        if hasattr(value, "model_dump"):
+            return redis_cache_payload_is_media(
+                value.model_dump(mode="json"), response_types=response_types, _seen=_seen + 1, _active=active
+            )
+        if hasattr(value, "dict") and value.__class__.__module__.startswith("pydantic"):
+            return redis_cache_payload_is_media(
+                value.dict(), response_types=response_types, _seen=_seen + 1, _active=active
+            )
+        if isinstance(value, Mapping):
+            return any(
+                redis_cache_payload_is_media(key, response_types=response_types, _seen=_seen + 1, _active=active)
+                or redis_cache_payload_is_media(nested, response_types=response_types, _seen=_seen + 1, _active=active)
+                for key, nested in value.items()
+            )
+        if isinstance(value, (list, tuple, set)):
+            return any(
+                redis_cache_payload_is_media(item, response_types=response_types, _seen=_seen + 1, _active=active)
+                for item in value
+            )
+    finally:
+        active.remove(value_id)
     return False
 
 
