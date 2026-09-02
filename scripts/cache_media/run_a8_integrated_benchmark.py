@@ -16,12 +16,17 @@ import re
 import resource
 import statistics
 import subprocess
+import sys
 import time
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
 import redis.asyncio as redis
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from backend.cache import codec
 from backend.cache.policy import ACTIVE_CACHE_POLICIES, resolve_active_policy
