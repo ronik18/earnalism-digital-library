@@ -1,0 +1,33 @@
+name: Cache media A8 finalize
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - scripts/cache_media/**
+      - backend/tests/cache_media/**
+      - docs/architecture/cache-media/**
+      - .github/workflows/cache-media-a8-finalize.yml
+jobs:
+  backend-integration:
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:7
+        ports: [27017:27017]
+        options: >-
+          --health-cmd "mongosh --quiet --eval 'db.adminCommand({ping:1})'" --health-interval 5s --health-timeout 5s --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: ${{ github.event.pull_request.head.sha || github.sha }}}
+      - name: Assert exact checkout
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install -r backend/requirements.txt
+      - name: Initialize disposable MongoDB replica set
+        run: docker exec ${{ job.services.mongo.id }} mongosh --quiet --eval 'try { rs.status() } catch (e) { rs.initiate({_id:"earnalism-uat-rs0",members:[{_id:0,host:"localhost:27017"}]}) }'
+      - name: Run loopback backend integration regression
+        run: UAT_EXTERNAL_MONGODB=true UAT_MONGODB_PORT=27017 UAT_COMMAND_FILE="$GITHUB_WORKSPACE/scripts/cache_media/a8_ci_backend_regression.sh" bash scripts/start_local_uat.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: cache-media-a8-backend-integration, path: uat/evidence/system-final/runtime-final}

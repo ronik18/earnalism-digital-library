@@ -1,0 +1,12 @@
+{
+  "schema_version": "cache-media-a8-backend-integration-root-cause.v1",
+  "reported_command": "pytest -q backend/tests",
+  "root_cause": "BACKEND_SERVER_HARNESS_NOT_STARTED",
+  "expected_backend_url": "http://127.0.0.1:8000",
+  "health_route": "/healthz",
+  "observed_error": "connection refused or sandbox-denied connection to loopback port 8000",
+  "existing_harness": "scripts/start_local_uat.sh",
+  "services": ["ephemeral MongoDB replica set", "loopback FastAPI backend", "synthetic UAT data"],
+  "production_configuration_used": false,
+  "ci_fallback": ".github/workflows/cache-media-a8-finalize.yml"
+}
