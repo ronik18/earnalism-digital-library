@@ -14,9 +14,11 @@ jobs:
           --health-cmd "redis-cli ping" --health-interval 5s --health-timeout 3s --health-retries 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
       - run: pip install redis==5.0.8
-      - run: A8_REDIS_URL=redis://127.0.0.1:6379/0 python scripts/cache_media/run_a8_integrated_benchmark.py --profile scripts/cache_media/a8-benchmark-profile.json --target-sha "$GITHUB_SHA" --output a8-results.json
+      - run: A8_REDIS_URL=redis://127.0.0.1:6379/0 python scripts/cache_media/run_a8_integrated_benchmark.py --profile scripts/cache_media/a8-benchmark-profile.json --target-sha "${{ github.event.pull_request.head.sha || github.sha }}" --output a8-results.json
       - uses: actions/upload-artifact@v4
         with: {name: cache-media-a8-benchmark, path: a8-results.json}
