@@ -10,12 +10,6 @@ on:
 jobs:
   backend-integration:
     runs-on: ubuntu-latest
-    services:
-      mongo:
-        image: mongo:7
-        ports: [27017:27017]
-        options: >-
-          --health-cmd "mongosh --quiet --eval 'db.adminCommand({ping:1})'" --health-interval 5s --health-timeout 5s --health-retries 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,10 +19,17 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
       - run: pip install -r backend/requirements.txt
-      - name: Initialize disposable MongoDB replica set
-        run: docker exec ${{ job.services.mongo.id }} mongosh --quiet --eval 'try { rs.status() } catch (e) { rs.initiate({_id:"earnalism-uat-rs0",members:[{_id:0,host:"localhost:27017"}]}) }'
+      - name: Start and initialize disposable MongoDB replica set
+        run: |
+          docker run --detach --name cache-media-a8-mongo --publish 27017:27017 mongo:7 mongod --bind_ip_all --replSet earnalism-uat-rs0
+          for _ in $(seq 1 30); do docker exec cache-media-a8-mongo mongosh --quiet --eval 'db.adminCommand({ping:1})' && break; sleep 1; done
+          docker exec cache-media-a8-mongo mongosh --quiet --eval 'rs.initiate({_id:"earnalism-uat-rs0",members:[{_id:0,host:"localhost:27017"}]})'
+          for _ in $(seq 1 30); do docker exec cache-media-a8-mongo mongosh --quiet --eval 'rs.status().ok' && break; sleep 1; done
       - name: Run loopback backend integration regression
         run: UAT_EXTERNAL_MONGODB=true UAT_MONGODB_PORT=27017 UAT_COMMAND_FILE="$GITHUB_WORKSPACE/scripts/cache_media/a8_ci_backend_regression.sh" bash scripts/start_local_uat.sh
       - uses: actions/upload-artifact@v4
         if: always()
         with: {name: cache-media-a8-backend-integration, path: uat/evidence/system-final/runtime-final}
+      - name: Remove disposable MongoDB
+        if: always()
+        run: docker rm --force cache-media-a8-mongo || true
