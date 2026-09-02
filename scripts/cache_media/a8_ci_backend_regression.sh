@@ -13,4 +13,4 @@ pytest -q backend/tests/cache_media
 # The built UAT bundle needs the loopback API origin, whereas frontend unit
 # tests deliberately verify production's same-origin fallback.  Keep those
 # environments distinct without altering application behavior.
-env -u REACT_APP_BACKEND_URL -u REACT_APP_API_URL CI=true npm test --prefix frontend -- --watchAll=false --runInBand
+env -u REACT_APP_BACKEND_URL -u REACT_APP_API_URL -u REACT_APP_UAT_LOCAL CI=true npm test --prefix frontend -- --watchAll=false --runInBand
