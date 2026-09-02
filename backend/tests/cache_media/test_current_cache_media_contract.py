@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
 os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_cache_media_test")
 os.environ.setdefault("JWT_SECRET", "cache-media-characterization-only")
 server = importlib.import_module("backend.server")
+legacy_pickle = importlib.import_module("backend.cache.legacy_pickle")
 
 
 @pytest.mark.parametrize(
@@ -47,11 +48,11 @@ def test_current_stream_iterator_reads_in_bounded_chunks_and_closes_body():
     assert body.closed_by_iterator is True
 
 
-def test_current_redis_codec_is_pickle_with_optional_zlib_and_no_size_guard():
-    encoded = server._cache_payload_encode({"value": "x"})
+def test_historical_a1_legacy_codec_fixture_isolated_from_active_runtime():
+    encoded = legacy_pickle.encode({"value": "x"}, compress_min_bytes=server.REDIS_CACHE_COMPRESS_MIN_BYTES)
     assert encoded.startswith((b"p:", b"z:"))
-    assert server._cache_payload_decode(encoded) == {"value": "x"}
-    assert "MAX" not in server._cache_payload_encode_for_redis.__code__.co_names
+    assert legacy_pickle.decode(encoded) == {"value": "x"}
+    assert "legacy_pickle" not in server.__dict__
 
 
 def test_current_redis_media_rejection_keeps_urls_but_rejects_binary():

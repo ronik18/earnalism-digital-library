@@ -1,0 +1,7 @@
+{
+  "schema_version":"a2-safe-cache-migration-parity-v1",
+  "result":"PASS",
+  "intentional_changes":{"application_cache_key_vectors":"v2 digest schema","application_cache_payload_vectors":"deterministic safe JSON envelope","cache_source":"backend/cache/codec.py, backend/cache/store.py, backend/cache/keys.py, backend/server.py"},
+  "unchanged_surfaces":{"openapi_paths":{"count":129,"result":"PASS"},"client_response_vectors":{"result":"PASS","evidence":"focused cold/warm/corrupt/outage/disabled cache tests preserve source result"},"ttl_and_jitter":{"result":"PASS","evidence":"existing cache_policy.ttl_with_jitter authority reused"},"non_cache_redis_operational_keys":{"result":"PASS","evidence":"generation, wallet, lock, rate-limit and status use inventory classified unchanged"},"audio_media":{"result":"PASS","evidence":"no backend/media path changed; A1.2 characterization rerun"},"controlled_publication":{"result":"PASS","evidence":"no controlled-publication path changed"},"frontend":{"result":"PASS","evidence":"no frontend production path changed"},"pr344_overlap":{"result":"PASS","evidence":"changed-path overlap is zero"}},
+  "legacy_contract":{"read":"NOT_READ_BY_V2_PATH","write":"NO_NEW_LEGACY_WRITES","deletion":"NONE","expiry":"NATURAL_TTL_EXPIRY","cold_cache_release_consideration":"v2 starts cold and temporarily increases source loads; rollback remains cache-independent"}
+}

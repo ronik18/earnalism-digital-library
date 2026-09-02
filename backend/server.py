@@ -244,6 +244,7 @@ try:
     from backend.cache import keys as cache_keys
     from backend.cache import metrics as cache_metrics
     from backend.cache import policy as cache_policy
+    from backend.cache import store as cache_store
     from backend.media import policy as media_policy
     from backend.media import ranges as media_ranges
     from backend.media import storage as media_storage
@@ -254,6 +255,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from cache import keys as cache_keys
     from cache import metrics as cache_metrics
     from cache import policy as cache_policy
+    from cache import store as cache_store
     from media import policy as media_policy
     from media import ranges as media_ranges
     from media import storage as media_storage
@@ -1462,65 +1464,76 @@ def _redis_cache_payload_is_media(value: Any, *, _seen: int = 0) -> bool:
     )
 
 
-def _cache_payload_encode(value: Any) -> bytes:
-    return cache_codec.encode(value, compress_min_bytes=REDIS_CACHE_COMPRESS_MIN_BYTES)
+def _v2_cache_scope(namespace: str) -> str:
+    if namespace in {"user-private", "user-doc"}:
+        return "user"
+    if namespace == "user-session":
+        return "session"
+    if namespace == "public-cache":
+        return "public"
+    return "resource"
 
 
-def _cache_payload_encode_for_redis(namespace: str, value: Any) -> Optional[bytes]:
-    if _redis_cache_payload_is_media(value):
-        _cache_stats[f"{namespace}_media_skip"] += 1
-        logger.info("Redis cache skipped media/binary payload for namespace=%s", namespace)
-        return None
-    return _cache_payload_encode(value)
+def _v2_cache_key(namespace: str, key: str, *, scope: str = "", identity: str = "", version: str = "") -> str:
+    resolved_scope = scope or _v2_cache_scope(namespace)
+    return cache_keys.v2_cache_key(
+        REDIS_KEY_PREFIX,
+        namespace,
+        resolved_scope,
+        identity or key,
+        key,
+        version,
+    )
 
 
-def _cache_payload_decode(blob: bytes) -> Any:
-    return cache_codec.decode(blob)
-
-
-def _cache_digest_key(namespace: str, key: str) -> str:
-    return cache_keys.cache_digest_key(REDIS_KEY_PREFIX, namespace, key)
-
-
-async def _redis_cache_get(namespace: str, key: str) -> Any:
-    _sync_cache_runtime_from_compat()
-    return await cache_client.cache_get(
-        namespace=namespace,
-        logical_key=key,
-        redis_key=_cache_digest_key(namespace, key),
-        decoder=_cache_payload_decode,
+def _v2_cache_store() -> cache_store.RedisCacheStore:
+    return cache_store.RedisCacheStore(
+        client_provider=cache_client.active_client,
+        enabled_provider=_redis_state_enabled,
+        key_builder=lambda policy, identity: _v2_cache_key(
+            policy.namespace,
+            identity.resource,
+            scope=policy.scope,
+            identity=identity.identity,
+            version=identity.version,
+        ),
+        encoder=lambda value: cache_codec.encode_v2(value, compress_min_bytes=REDIS_CACHE_COMPRESS_MIN_BYTES),
+        decoder=cache_codec.decode_v2,
         stats=_cache_stats,
         logger=logger,
     )
 
 
-async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: int) -> None:
+async def _redis_cache_get(namespace: str, key: str, *, scope: str = "", identity: str = "", version: str = "", metrics_namespace: Optional[str] = None) -> Any:
+    _sync_cache_runtime_from_compat()
+    policy = cache_store.CachePolicy(namespace, scope or _v2_cache_scope(namespace), 1, metrics_namespace)
+    return await _v2_cache_store().get(
+        policy,
+        cache_store.CacheIdentity(identity or key, key, version),
+    )
+
+
+async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: int, *, scope: str = "", identity: str = "", version: str = "", metrics_namespace: Optional[str] = None) -> None:
     if ttl_seconds <= 0 or not _redis_state_enabled():
         return
-    try:
-        payload = _cache_payload_encode_for_redis(namespace, value)
-    except Exception:
-        logger.warning("Redis cache set failed for namespace=%s", namespace, exc_info=True)
-        _cache_stats[f"{namespace}_error"] += 1
+    if _redis_cache_payload_is_media(value):
+        _cache_stats[f"{namespace if metrics_namespace is None else metrics_namespace}_media_skip"] += 1
+        logger.info("Redis cache skipped media/binary payload for namespace=%s", namespace)
         return
     _sync_cache_runtime_from_compat()
-    await cache_client.cache_set(
-        namespace=namespace,
-        redis_key=_cache_digest_key(namespace, key),
-        payload=payload,
-        ttl_seconds=_ttl_with_jitter(ttl_seconds),
-        stats=_cache_stats,
-        logger=logger,
+    policy = cache_store.CachePolicy(namespace, scope or _v2_cache_scope(namespace), _ttl_with_jitter(ttl_seconds), metrics_namespace)
+    await _v2_cache_store().set(
+        policy,
+        cache_store.CacheIdentity(identity or key, key, version),
+        value,
     )
 
 
-async def _redis_cache_delete(namespace: str, key: str) -> None:
+async def _redis_cache_delete(namespace: str, key: str, *, scope: str = "", identity: str = "", version: str = "", metrics_namespace: Optional[str] = None) -> None:
     _sync_cache_runtime_from_compat()
-    await cache_client.cache_delete(
-        namespace=namespace,
-        redis_keys=(_cache_digest_key(namespace, key),),
-        stats=_cache_stats,
-        logger=logger,
+    await _v2_cache_store().delete(
+        cache_store.CachePolicy(namespace, scope or _v2_cache_scope(namespace), 1, metrics_namespace),
+        cache_store.CacheIdentity(identity or key, key, version),
     )
 
 
@@ -1862,15 +1875,15 @@ async def _public_cache_get(key: str):
     if not PUBLIC_CACHE_ENABLED:
         return None
     if _redis_state_enabled():
-        redis_key = _public_cache_storage_key(await _public_cache_generation_value(), key)
-        blob = await _redis_client.get(redis_key)
-        if not blob:
-            return None
-        try:
-            return _cache_payload_decode(blob)
-        except Exception:
-            logger.warning("Failed to decode Redis public cache entry: %s", key)
-            return None
+        generation = await _public_cache_generation_value()
+        return await _redis_cache_get(
+            "public-cache",
+            key,
+            scope="public",
+            identity="public-catalog",
+            version=str(generation),
+            metrics_namespace="",
+        )
     item = _public_cache.get(key)
     if not item:
         return None
@@ -1886,11 +1899,17 @@ async def _public_cache_set(key: str, value) -> None:
     if not PUBLIC_CACHE_ENABLED:
         return
     if _redis_state_enabled():
-        redis_key = _public_cache_storage_key(await _public_cache_generation_value(), key)
-        payload = _cache_payload_encode_for_redis("public-cache", value)
-        if payload is None:
-            return
-        await _redis_client.setex(redis_key, _ttl_with_jitter(PUBLIC_CACHE_TTL_SECONDS), payload)
+        generation = await _public_cache_generation_value()
+        await _redis_cache_set(
+            "public-cache",
+            key,
+            value,
+            PUBLIC_CACHE_TTL_SECONDS,
+            scope="public",
+            identity="public-catalog",
+            version=str(generation),
+            metrics_namespace="",
+        )
         return
     if _redis_cache_payload_is_media(value):
         _cache_stats["public-cache_media_skip"] += 1
@@ -1938,7 +1957,7 @@ async def _reader_content_cache_generation_value() -> int:
 
 
 def _user_cache_key(user_id: str) -> str:
-    return _redis_key("user", user_id)
+    return _v2_cache_key("user-doc", user_id, scope="user", identity=user_id)
 
 
 def _user_wallet_cache_key(user_id: str) -> str:
@@ -1946,7 +1965,7 @@ def _user_wallet_cache_key(user_id: str) -> str:
 
 
 def _user_session_cache_key(session_id: str) -> str:
-    return _redis_key("user-session", session_id)
+    return _v2_cache_key("user-session", session_id, scope="session", identity=session_id)
 
 
 def _user_transactions_cache_id(user_id: str) -> str:
@@ -1962,10 +1981,15 @@ async def _cache_user_doc(user: Optional[dict]) -> None:
         return
     doc = {k: v for k, v in dict(user).items() if k not in {"_id", "password_hash"}}
     try:
-        payload = _cache_payload_encode_for_redis("user_doc", doc)
-        if payload is None:
-            return
-        await _redis_client.setex(_user_cache_key(doc["id"]), _ttl_with_jitter(USER_AUTH_CACHE_TTL_SECONDS), payload)
+        await _redis_cache_set(
+            "user-doc",
+            doc["id"],
+            doc,
+            USER_AUTH_CACHE_TTL_SECONDS,
+            scope="user",
+            identity=doc["id"],
+            metrics_namespace="user_doc",
+        )
     except Exception:
         logger.warning("Redis user cache set failed", exc_info=True)
         _cache_stats["user_doc_error"] += 1
@@ -1976,14 +2000,18 @@ async def _cached_user_doc(user_id: str) -> Optional[dict]:
         return None
     if _redis_state_enabled():
         try:
-            blob = await _redis_client.get(_user_cache_key(user_id))
-            if blob:
-                _cache_stats["user_doc_hit"] += 1
-                return _cache_payload_decode(blob)
+            cached = await _redis_cache_get(
+                "user-doc",
+                user_id,
+                scope="user",
+                identity=user_id,
+                metrics_namespace="user_doc",
+            )
+            if cached is not None:
+                return cached
         except Exception:
             logger.warning("Redis user cache get failed", exc_info=True)
             _cache_stats["user_doc_error"] += 1
-    _cache_stats["user_doc_miss"] += 1
     user = await db.users.find_one({"id": user_id}, {"_id": 0, "password_hash": 0})
     await _cache_user_doc(user)
     return user
@@ -1994,10 +2022,15 @@ async def _cache_user_session(session: Optional[dict]) -> None:
         return
     doc = {k: v for k, v in dict(session).items() if k != "_id"}
     try:
-        payload = _cache_payload_encode_for_redis("user_session", doc)
-        if payload is None:
-            return
-        await _redis_client.setex(_user_session_cache_key(doc["id"]), _ttl_with_jitter(USER_SESSION_CACHE_TTL_SECONDS), payload)
+        await _redis_cache_set(
+            "user-session",
+            doc["id"],
+            doc,
+            USER_SESSION_CACHE_TTL_SECONDS,
+            scope="session",
+            identity=doc["id"],
+            metrics_namespace="user_session",
+        )
     except Exception:
         logger.warning("Redis user session cache set failed", exc_info=True)
         _cache_stats["user_session_error"] += 1
@@ -2008,16 +2041,18 @@ async def _cached_user_session(session_id: str, user_id: Optional[str] = None) -
         return None
     if _redis_state_enabled():
         try:
-            blob = await _redis_client.get(_user_session_cache_key(session_id))
-            if blob:
-                session = _cache_payload_decode(blob)
-                if not user_id or session.get("user_id") == user_id:
-                    _cache_stats["user_session_hit"] += 1
-                    return session
+            cached = await _redis_cache_get(
+                "user-session",
+                session_id,
+                scope="session",
+                identity=session_id,
+                metrics_namespace="user_session",
+            )
+            if cached is not None and (not user_id or cached.get("user_id") == user_id):
+                return cached
         except Exception:
             logger.warning("Redis user session cache get failed", exc_info=True)
             _cache_stats["user_session_error"] += 1
-    _cache_stats["user_session_miss"] += 1
     query = {"id": session_id}
     if user_id:
         query["user_id"] = user_id
@@ -2056,10 +2091,11 @@ async def _cached_user_wallet_seconds(user_id: str) -> int:
 async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str]] = None) -> None:
     if not user_id or not _redis_state_enabled():
         return
-    keys = [_user_cache_key(user_id), _user_wallet_cache_key(user_id)]
+    keys = [_user_wallet_cache_key(user_id)]
+    await _redis_cache_delete("user-doc", user_id, scope="user", identity=user_id, metrics_namespace="user_doc")
     for session_id in session_ids or []:
         if session_id:
-            keys.append(_user_session_cache_key(session_id))
+            await _redis_cache_delete("user-session", session_id, scope="session", identity=session_id, metrics_namespace="user_session")
     await _redis_cache_delete("user-private", _user_transactions_cache_id(user_id))
     await _redis_cache_delete("user-private", _user_payment_intents_cache_id(user_id))
     await _redis_cache_delete_keys(*keys)

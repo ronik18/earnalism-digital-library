@@ -2,6 +2,8 @@ import importlib
 import sys
 from pathlib import Path
 
+import pytest
+
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
@@ -30,7 +32,7 @@ def test_redis_cache_allows_cover_and_audio_urls_as_metadata(monkeypatch):
     }
 
     assert server._redis_cache_payload_is_media(payload) is False
-    assert server._cache_payload_encode_for_redis("test-policy", payload) is not None
+    assert server.cache_codec.encode_v2(payload, compress_min_bytes=server.REDIS_CACHE_COMPRESS_MIN_BYTES) is not None
 
 
 def test_redis_cache_rejects_media_binaries_and_data_uris(monkeypatch):
@@ -40,7 +42,8 @@ def test_redis_cache_rejects_media_binaries_and_data_uris(monkeypatch):
     assert server._redis_cache_payload_is_media({"audio": bytearray(b"ID3")}) is True
     assert server._redis_cache_payload_is_media({"cover_image": "data:image/png;base64,AAAA"}) is True
     assert server._redis_cache_payload_is_media({"audio": {"mp3": "data:audio/mpeg;base64,AAAA"}}) is True
-    assert server._cache_payload_encode_for_redis("test-policy", {"audio": b"ID3"}) is None
+    with pytest.raises(server.cache_codec.CacheCodecError):
+        server.cache_codec.encode_v2({"audio": b"ID3"}, compress_min_bytes=server.REDIS_CACHE_COMPRESS_MIN_BYTES)
 
 
 def test_client_etag_matching_supports_weak_validators(monkeypatch):

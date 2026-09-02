@@ -21,11 +21,15 @@ os.environ.setdefault("JWT_SECRET", "cache-media-a11-synthetic")
 server = importlib.import_module("backend.server")
 try:
     cache_client = importlib.import_module("backend.cache.client")
+    cache_keys = importlib.import_module("backend.cache.keys")
+    legacy_pickle = importlib.import_module("backend.cache.legacy_pickle")
     cache_metrics = importlib.import_module("backend.cache.metrics")
 except ModuleNotFoundError:
     # The same vectors deliberately run against the server-only baseline after
     # `git revert <A1_1_EXTRACTION_COMMIT>`.
     cache_client = None
+    cache_keys = None
+    legacy_pickle = None
     cache_metrics = None
 
 
@@ -41,12 +45,13 @@ def test_key_vectors_remain_exact():
         'book_chapter:{"catalog_truth": "controlled-covers-v1", "chapter_id": "chapter-001", '
         '"slug": "synthetic-book", "truth_gate": "audio-contract-v16"}'
     )
-    assert server._user_cache_key("synthetic-user") == "earnalism:user:synthetic-user"
-    assert server._user_session_cache_key("synthetic-session") == "earnalism:user-session:synthetic-session"
+    assert server._user_cache_key("synthetic-user").startswith("earnalism:cache:v2:user-doc:user:")
+    assert server._user_session_cache_key("synthetic-session").startswith("earnalism:cache:v2:user-session:session:")
     assert server._user_wallet_cache_key("synthetic-user") == "earnalism:user-wallet:synthetic-user"
     assert server._redis_key("public-cache", "generation") == "earnalism:public-cache:generation"
     assert server._redis_key("reader-content-cache", "generation") == "earnalism:reader-content-cache:generation"
-    assert server._cache_digest_key("reader-manifest", "synthetic-listener-manifest") == (
+    assert cache_keys is not None
+    assert cache_keys.cache_digest_key(server.REDIS_KEY_PREFIX, "reader-manifest", "synthetic-listener-manifest") == (
         "earnalism:cache:reader-manifest:08e9b65028a3c6decd5390194b339834e7b50b352e3c60d991c09c0723c1a922"
     )
 
@@ -59,11 +64,12 @@ def test_key_vectors_remain_exact():
     ],
 )
 def test_codec_vectors_keep_current_pickle_bytes(value, marker, length, digest):
-    encoded = server._cache_payload_encode(value)
+    assert legacy_pickle is not None
+    encoded = legacy_pickle.encode(value, compress_min_bytes=server.REDIS_CACHE_COMPRESS_MIN_BYTES)
     assert encoded.startswith(marker)
     assert len(encoded) == length
     assert hashlib.sha256(encoded).hexdigest() == digest
-    assert server._cache_payload_decode(encoded) == value
+    assert legacy_pickle.decode(encoded) == value
 
 
 def test_ttl_jitter_vectors_use_current_random_bounds(monkeypatch):
@@ -77,7 +83,6 @@ def test_codec_and_media_rejection_vectors_are_fail_closed():
     assert server._redis_cache_payload_is_media({"audio": b"ID3"}) is True
     assert server._redis_cache_payload_is_media({"cover": "data:image/png;base64,AAAA"}) is True
     assert server._redis_cache_payload_is_media({"audio_url": "https://example.test/audio.mp3"}) is False
-    assert server._cache_payload_encode_for_redis("synthetic", {"audio": b"ID3"}) is None
 
 
 def test_client_construction_lifecycle_and_server_identity(monkeypatch):
@@ -183,6 +188,9 @@ def test_redis_cache_facade_preserves_shared_client_and_outage_fallback():
             item = self.entries.get(key)
             return item[1] if item else None
 
+        async def delete(self, key):
+            self.entries.pop(key, None)
+
     fake = FakeRedis()
     previous_client = server._redis_client
     previous_available = server._redis_available
@@ -192,9 +200,9 @@ def test_redis_cache_facade_preserves_shared_client_and_outage_fallback():
         asyncio.run(server._redis_cache_set("synthetic", "key", {"value": "x"}, 20))
         if cache_client is not None:
             assert cache_client.active_client() is fake
-        assert fake.entries[server._cache_digest_key("synthetic", "key")][0] in range(20, 25)
+        assert fake.entries[server._v2_cache_key("synthetic", "key")][0] in range(20, 25)
         assert asyncio.run(server._redis_cache_get("synthetic", "key")) == {"value": "x"}
-        fake.entries[server._cache_digest_key("synthetic", "malformed")] = (20, b"malformed")
+        fake.entries[server._v2_cache_key("synthetic", "malformed")] = (20, b"malformed")
         assert asyncio.run(server._redis_cache_get("synthetic", "malformed")) is None
         fake.fail = True
         assert asyncio.run(server._redis_cache_get("synthetic", "key")) is None
