@@ -1,0 +1,1 @@
+{"schema_version":"a3-observability-overhead-v1","result":"PASS","method":"synthetic in-process fixed-bucket counters; correctness tests with metrics enabled","sample_count":100,"metric_snapshot_bound":"6 policy IDs x fixed operations/results/buckets","conclusion":"No correctness change observed; process-local metrics use bounded labels. No production latency claim."}

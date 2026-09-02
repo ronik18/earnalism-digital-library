@@ -1,0 +1,1 @@
+{"schema_version":"a3-local-redis-memory-overhead-v1","result":"LOCAL_REDIS_MEMORY_USAGE_UNAVAILABLE","reason":"repository host has no redis-server binary; no production Redis was contacted","structural_estimate":{"key_bytes":190,"redis_object_overhead_bytes":128,"method":"key bytes + stored envelope bytes + 128-byte fixed object estimate"}}
