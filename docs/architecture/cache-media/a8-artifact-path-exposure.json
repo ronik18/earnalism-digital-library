@@ -1,0 +1,8 @@
+{
+  "schema_version": "a8-artifact-path-exposure.v1",
+  "prior_artifact_authority": "WITHHELD_UNSANITIZED_RUNNER_PATHS",
+  "finding_count_before": 1,
+  "artifact_file_count_before": 5,
+  "path_classes": ["LINUX_GITHUB_RUNNER_WORKSPACE"],
+  "reporting_policy": "No host-specific path is reproduced in this evidence file."
+}

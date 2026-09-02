@@ -1,0 +1,7 @@
+{
+  "schema_version": "a8-artifact-sanitization-root-cause.v1",
+  "result": "PASS",
+  "classification": "RAW_BACKEND_LOG_COPIED_WITHOUT_SANITIZATION",
+  "production_runtime_change": false,
+  "remediation": "Raw CI diagnostics remain ephemeral; the uploaded envelope contains deterministic sanitized copies only."
+}

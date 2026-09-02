@@ -40,9 +40,19 @@ jobs:
           UAT_EXTERNAL_MONGODB=true UAT_MONGODB_PORT=27017
           UAT_COMMAND_FILE="$GITHUB_WORKSPACE/scripts/cache_media/a8_ci_backend_regression.sh"
           bash scripts/start_local_uat.sh
+      - name: Prepare sanitized diagnostic artifact
+        if: always()
+        run: |
+          mkdir -p a8-artifact-public
+          find uat/evidence/system-final/runtime-final -type f -name '*.log' -print0 | while IFS= read -r -d '' log; do
+            relative="${log#uat/evidence/system-final/runtime-final/}"
+            output="a8-artifact-public/${relative}"
+            mkdir -p "$(dirname "$output")"
+            python scripts/cache_media/sanitize_a8_artifact_logs.py --input "$log" --output "$output" --report "${output}.sanitization.json"
+          done
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: cache-media-a8-backend-integration, path: uat/evidence/system-final/runtime-final}
+        with: {name: cache-media-a8-backend-integration, path: a8-artifact-public}
       - name: Remove disposable MongoDB
         if: always()
         run: docker rm --force cache-media-a8-mongo || true
