@@ -1,0 +1,17 @@
+{
+  "schema_version": "cache-media-a8-cost-resource-model.v1",
+  "result": "PASS",
+  "currency_savings": "NOT_APPLICABLE_WITH_EXACT_REASON_NO_PRODUCTION_TRAFFIC_AND_PRICING_METRICS",
+  "measured_production_cost_result": "UNAVAILABLE_NO_PRODUCTION_TRAFFIC_AND_COST_METRICS",
+  "measured_production_latency_result": "UNAVAILABLE_NO_PRODUCTION_PERFORMANCE_METRICS",
+  "resource_formulas": {
+    "steady_cache_memory": "sum(policy_observed_memory_bytes × policy_cardinality × replication_persistence_multiplier)",
+    "transient_lock_memory": "in_flight_lock_count × lock_entry_bytes",
+    "process_local_singleflight_memory": "in_flight_entries × local_entry_bytes",
+    "metric_state_memory": "metric_label_cardinality × metric_entry_bytes"
+  },
+  "measured_lab_memory_bytes": 1408,
+  "expected_scenario_memory_bytes": 2600000,
+  "all_at_limit_memory_bytes": 26000000,
+  "missing_inputs": ["production requests per second","hit ratios","provider cost","Redis plan price","replica count","eviction rate"]
+}
