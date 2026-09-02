@@ -1475,6 +1475,59 @@ def test_direct_range_request_fails_closed_when_storage_ignores_range(monkeypatc
     assert body.closed is True
 
 
+def test_complete_audio_get_retries_once_when_object_replaces_after_head(monkeypatch):
+    server = _server(monkeypatch)
+    storage = {
+        "name": "audiobook_prod",
+        "endpoint": "https://s3.us-west-004.backblazeb2.com",
+        "region": "us-west-004",
+        "bucket": "private-prod",
+        "access_key_id": "key",
+        "secret_access_key": "secret",
+    }
+
+    class FakeBody:
+        def __init__(self): self.closed = False
+        def read(self, _size): return b""
+        def close(self): self.closed = True
+
+    stale_body = FakeBody()
+    current_body = FakeBody()
+
+    class FakeS3:
+        def __init__(self): self.head_calls, self.get_calls = 0, 0
+        def head_object(self, **_kwargs):
+            self.head_calls += 1
+            return {"ContentLength": 4, "ContentType": "audio/mpeg", "ETag": '"v1"' if self.head_calls == 1 else '"v2"'}
+        def get_object(self, **_kwargs):
+            self.get_calls += 1
+            if self.get_calls == 1:
+                return {"ContentLength": 3, "ContentType": "audio/mpeg", "ETag": '"v1"', "Body": stale_body}
+            return {"ContentLength": 4, "ContentType": "audio/mpeg", "ETag": '"v2"', "Body": current_body}
+
+    fake_s3 = FakeS3()
+    monkeypatch.setattr(server, "_b2_storage_for_url", lambda _url: storage)
+    monkeypatch.setattr(server, "_b2_key_from_url", lambda _url, _storage: "v1/prod/book.mp3")
+    monkeypatch.setattr(server, "_b2_client", lambda _storage=None: fake_s3)
+    request = SimpleNamespace(headers={}, method="GET")
+
+    response = asyncio.run(
+        server._stream_audiobook_asset_url(
+            "the-open-window",
+            "mp3",
+            "https://s3.us-west-004.backblazeb2.com/private-prod/v1/prod/book.mp3",
+            request,
+        )
+    )
+
+    assert response.status_code == 200
+    assert response.headers["content-length"] == "4"
+    assert response.headers["etag"] == '"v2"'
+    assert response.headers["content-disposition"] == "inline"
+    assert stale_body.closed is True
+    assert fake_s3.head_calls == 2 and fake_s3.get_calls == 2
+
+
 def test_invalid_range_returns_416_without_fetching_object_body(monkeypatch):
     server = _server(monkeypatch)
     storage = {

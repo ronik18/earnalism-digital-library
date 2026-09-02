@@ -7,6 +7,7 @@ import importlib
 import os
 import sys
 import threading
+import time
 import types
 from pathlib import Path
 
@@ -114,7 +115,15 @@ def test_b2_client_registry_is_lazy_one_per_store_and_reused(monkeypatch):
     second = server._b2_client(stores[1])
     assert first is not second and set(server._b2_s3_clients) == {"first", "second"}
     assert [kwargs["endpoint_url"] for _args, kwargs in calls] == [stores[0]["endpoint"], stores[1]["endpoint"]]
-    assert all(kwargs["config"] == {"s3": {"addressing_style": "path"}} for _args, kwargs in calls)
+    for _args, kwargs in calls:
+        assert kwargs["config"] == {
+            "connect_timeout": 3,
+            "read_timeout": 30,
+            "max_pool_connections": 20,
+            "retries": {"mode": "standard", "max_attempts": 3},
+            "tcp_keepalive": True,
+            "s3": {"addressing_style": "path"},
+        }
 
 
 def test_storage_wrappers_keep_kwargs_and_thread_boundary():
@@ -158,6 +167,60 @@ def test_streaming_vectors_are_bounded_and_close_on_normal_exception_and_early_c
     assert next(iterator) == b"first"
     iterator.close()
     assert early.closes == 1
+
+
+def test_audio_async_streaming_is_off_loop_and_closes_on_early_disconnect():
+    main_thread = threading.get_ident()
+
+    class Body:
+        def __init__(self): self.read_threads, self.closes, self.remaining = [], 0, [b"audio", b""]
+        def read(self, _size):
+            self.read_threads.append(threading.get_ident())
+            return self.remaining.pop(0)
+        def close(self): self.closes += 1
+
+    body = Body()
+
+    async def consume_then_disconnect():
+        iterator = server._audio_streaming_body_iterator(body)
+        assert await anext(iterator) == b"audio"
+        await iterator.aclose()
+
+    before = server.media_streaming.streaming_metrics_snapshot()
+    asyncio.run(consume_then_disconnect())
+    after = server.media_streaming.streaming_metrics_snapshot()
+    assert body.read_threads == [thread_id for thread_id in body.read_threads if thread_id != main_thread]
+    assert body.closes == 1
+    assert after["opened"] == before["opened"] + 1
+    assert after["closed"] == before["closed"] + 1
+    assert after["cancelled"] == before["cancelled"] + 1
+
+
+def test_audio_async_streaming_closes_before_first_byte_without_blocking_heartbeat():
+    class SlowBody:
+        def __init__(self): self.closes = 0
+        def read(self, _size):
+            time.sleep(0.03)
+            return b"audio"
+        def close(self): self.closes += 1
+
+    body = SlowBody()
+
+    async def verify():
+        iterator = server._audio_streaming_body_iterator(body)
+        await iterator.aclose()
+        assert body.closes == 1
+
+        delayed = server._audio_streaming_body_iterator(SlowBody())
+        read_task = asyncio.create_task(anext(delayed))
+        started = time.perf_counter()
+        await asyncio.sleep(0.002)
+        heartbeat_delay = time.perf_counter() - started
+        await read_task
+        await delayed.aclose()
+        return heartbeat_delay
+
+    assert asyncio.run(verify()) < 0.02
 
 
 def test_media_policy_and_storage_error_vectors_remain_exact():

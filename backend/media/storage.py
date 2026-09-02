@@ -3,11 +3,44 @@
 from __future__ import annotations
 
 import asyncio
+import os
 from typing import Any, Iterable, Mapping, Optional
 from urllib.parse import unquote, urlparse
 
 
 REQUIRED_STORE_FIELDS = ("endpoint", "region", "bucket", "access_key_id", "secret_access_key")
+
+
+def bounded_environment_int(name: str, default: int, *, minimum: int, maximum: int) -> int:
+    """Read a non-secret transport setting without allowing unbounded values."""
+    try:
+        value = int(os.environ.get(name, str(default)))
+    except (TypeError, ValueError):
+        return default
+    return min(max(value, minimum), maximum)
+
+
+def boto3_transport_config(config_type: Any) -> Any:
+    """Build the bounded, reusable-client configuration for B2 S3 calls."""
+    return config_type(
+        connect_timeout=bounded_environment_int(
+            "B2_AUDIO_CONNECT_TIMEOUT_SECONDS", 3, minimum=1, maximum=10
+        ),
+        read_timeout=bounded_environment_int(
+            "B2_AUDIO_READ_TIMEOUT_SECONDS", 30, minimum=5, maximum=120
+        ),
+        max_pool_connections=bounded_environment_int(
+            "B2_AUDIO_MAX_POOL_CONNECTIONS", 20, minimum=1, maximum=100
+        ),
+        retries={
+            "mode": "standard",
+            "max_attempts": bounded_environment_int(
+                "B2_AUDIO_MAX_ATTEMPTS", 3, minimum=1, maximum=5
+            ),
+        },
+        tcp_keepalive=True,
+        s3={"addressing_style": "path"},
+    )
 
 
 def storage_for_url(url: str, stores: Iterable[Mapping[str, str]]) -> Optional[Mapping[str, str]]:

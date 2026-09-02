@@ -96,10 +96,12 @@ def test_admin_status_is_additive_and_redacts_cache_identity_and_values():
     try:
         server._redis_available = False
         status = asyncio.run(server.admin_cache_status())
-        assert "cache_v2" in status and "stats" in status and "redis" in status
+        assert "cache_v2" in status and "audio_delivery" in status and "stats" in status and "redis" in status
         rendered = repr(status)
         assert "untrusted-request-namespace" not in rendered
         assert "redis://" not in rendered
         assert status["cache_v2"]["active_policy_count"] == 6
+        assert status["audio_delivery"]["process_local"] is True
+        assert status["audio_delivery"]["metadata_cache"]["activated"] is False
     finally:
         server._redis_available, server._redis_client = previous_available, previous_client

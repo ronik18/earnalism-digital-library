@@ -265,6 +265,7 @@ from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Respons
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from starlette.background import BackgroundTask
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
 from contextlib import asynccontextmanager
@@ -8099,7 +8100,7 @@ def _b2_client(storage: Optional[dict[str, str]] = None):
         region_name=selected["region"],
         aws_access_key_id=selected["access_key_id"],
         aws_secret_access_key=selected["secret_access_key"],
-        config=Config(s3={"addressing_style": "path"}),
+        config=media_storage.boto3_transport_config(Config),
     )
     return _b2_s3_clients[cache_key]
 
@@ -8149,6 +8150,70 @@ def _streaming_body_iterator(body):
     yield from media_streaming.streaming_body_iterator(body)
 
 
+def _audio_streaming_body_iterator(body):
+    return media_streaming.async_streaming_body_iterator(body)
+
+
+def _close_audio_response_body(body: Any) -> None:
+    close = getattr(body, "close", None)
+    if callable(close):
+        try:
+            close()
+        except Exception:
+            logger.warning("audio_delivery_body_close_failed")
+
+
+def _audio_object_consistency_mismatch(head: dict, obj: dict) -> str:
+    expected_length = int(head.get("ContentLength") or 0)
+    actual_length = int(obj.get("ContentLength") or 0)
+    if actual_length != expected_length:
+        return "content_length"
+    expected_etag = str(head.get("ETag") or "").strip()
+    actual_etag = str(obj.get("ETag") or "").strip()
+    if expected_etag and actual_etag and expected_etag != actual_etag:
+        return "etag"
+    return ""
+
+
+async def _b2_get_consistent_audiobook_object(
+    s3,
+    *,
+    bucket: str,
+    key: str,
+    head: dict,
+    version_id: str = "",
+) -> tuple[dict, dict]:
+    """Get a complete object, retrying once if it changed after its HEAD."""
+    current_head = head
+    for attempt in range(2):
+        obj = await _b2_get_object(
+            s3,
+            bucket=bucket,
+            key=key,
+            byte_range=None,
+            version_id=version_id,
+        )
+        mismatch = _audio_object_consistency_mismatch(current_head, obj)
+        if not mismatch:
+            return current_head, obj
+        _close_audio_response_body(obj.get("Body"))
+        if attempt == 0:
+            media_streaming.record_consistency("retry")
+            logger.warning("audio_delivery_consistency_retry mismatch=%s", mismatch)
+            try:
+                current_head = await _b2_head_object(
+                    s3, bucket=bucket, key=key, version_id=version_id
+                )
+            except Exception:
+                logger.warning("audio_delivery_consistency_retry_head_failed")
+                raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
+            continue
+        logger.error("audio_delivery_consistency_mismatch mismatch=%s", mismatch)
+        media_streaming.record_consistency("failure")
+        raise HTTPException(status_code=502, detail="Audiobook asset changed during delivery")
+    raise AssertionError("unreachable")
+
+
 def _audio_asset_content_type(asset_key: str, fallback: str = "") -> str:
     return media_policy.audio_asset_content_type(asset_key, fallback)
 
@@ -8159,6 +8224,27 @@ def _audio_asset_cache_control(asset_key: str) -> str:
     return media_policy.audio_asset_cache_control(asset_key)
 
 
+def _audio_request_range_class(request: Request) -> str:
+    range_header = str(request.headers.get("range") or "").strip()
+    if not range_header:
+        return "conditional" if request.headers.get("if-none-match") else "full"
+    if not _single_range_header_is_well_formed(range_header):
+        return "invalid"
+    value = range_header.removeprefix("bytes=")
+    if value.startswith("-"):
+        return "suffix"
+    if value.endswith("-"):
+        return "open_ended"
+    return "fixed"
+
+
+def _record_audio_delivery_response(request: Request, response):
+    media_streaming.record_request(
+        request.method, _audio_request_range_class(request), response.status_code
+    )
+    return response
+
+
 async def _b2_head_object(
     s3,
     *,
@@ -8166,7 +8252,13 @@ async def _b2_head_object(
     key: str,
     version_id: str = "",
 ) -> dict:
-    return await media_storage.head_object(s3, bucket=bucket, key=key, version_id=version_id)
+    try:
+        result = await media_storage.head_object(s3, bucket=bucket, key=key, version_id=version_id)
+    except Exception:
+        media_streaming.record_storage("head", "error")
+        raise
+    media_streaming.record_storage("head", "ok")
+    return result
 
 
 async def _b2_get_object(
@@ -8177,13 +8269,19 @@ async def _b2_get_object(
     byte_range: Optional[str],
     version_id: str = "",
 ) -> dict:
-    return await media_storage.get_object(
-        s3,
-        bucket=bucket,
-        key=key,
-        byte_range=byte_range,
-        version_id=version_id,
-    )
+    try:
+        result = await media_storage.get_object(
+            s3,
+            bucket=bucket,
+            key=key,
+            byte_range=byte_range,
+            version_id=version_id,
+        )
+    except Exception:
+        media_streaming.record_storage("get", "error")
+        raise
+    media_streaming.record_storage("get", "ok")
+    return result
 
 
 _READER_AUDIO_BOOK_PROJECTION = {
@@ -8278,25 +8376,20 @@ async def _stream_audiobook_asset_url(
                     key=key,
                     version_id=version_id,
                 )
-            except Exception as exc:
-                logger.warning(
-                    "B2 audiobook asset head failed for invalid range %s/%s/%s: %s",
-                    slug,
-                    normalized_key,
-                    key,
-                    exc,
-                )
+            except Exception:
+                logger.warning("audio_delivery_invalid_range_head_failed")
                 raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
             total_size = int(head.get("ContentLength") or 0)
-            return Response(
+            return _record_audio_delivery_response(request, Response(
                 status_code=416,
                 headers={
                     "Accept-Ranges": "bytes",
                     "Content-Range": f"bytes */{total_size}",
                     "Cache-Control": _audio_asset_cache_control(normalized_key),
+                    "Content-Disposition": "inline",
                     **response_headers,
                 },
-            )
+            ))
         try:
             obj = await _b2_get_object(
                 s3,
@@ -8314,35 +8407,24 @@ async def _stream_audiobook_asset_url(
                         key=key,
                         version_id=version_id,
                     )
-                except Exception as head_exc:
-                    logger.warning(
-                        "B2 audiobook asset head failed after invalid range %s/%s/%s: %s",
-                        slug,
-                        normalized_key,
-                        key,
-                        head_exc,
-                    )
+                except Exception:
+                    logger.warning("audio_delivery_invalid_range_recovery_head_failed")
                     raise HTTPException(
                         status_code=502,
                         detail="Audiobook asset storage unavailable",
                     )
                 total_size = int(head.get("ContentLength") or 0)
-                return Response(
+                return _record_audio_delivery_response(request, Response(
                     status_code=416,
                     headers={
                         "Accept-Ranges": "bytes",
                         "Content-Range": f"bytes */{total_size}",
                         "Cache-Control": _audio_asset_cache_control(normalized_key),
+                        "Content-Disposition": "inline",
                         **response_headers,
                     },
-                )
-            logger.warning(
-                "B2 audiobook asset ranged get failed for %s/%s/%s: %s",
-                slug,
-                normalized_key,
-                key,
-                exc,
-            )
+                ))
+            logger.warning("audio_delivery_range_get_failed")
             raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
         content_range = str(obj.get("ContentRange") or "").strip()
         content_length = int(obj.get("ContentLength") or 0)
@@ -8351,18 +8433,8 @@ async def _stream_audiobook_asset_url(
             content_range,
             content_length,
         ):
-            body = obj.get("Body")
-            close = getattr(body, "close", None)
-            if callable(close):
-                close()
-            logger.error(
-                "B2 ignored or malformed audiobook Range for %s/%s/%s: requested %r, received %r",
-                slug,
-                normalized_key,
-                key,
-                range_header,
-                content_range,
-            )
+            _close_audio_response_body(obj.get("Body"))
+            logger.error("audio_delivery_range_response_mismatch")
             raise HTTPException(
                 status_code=502,
                 detail="Audiobook storage did not honor the byte range",
@@ -8377,22 +8449,25 @@ async def _stream_audiobook_asset_url(
             "Cache-Control": _audio_asset_cache_control(normalized_key),
             "Content-Length": str(content_length),
             "Content-Range": content_range,
+            "Content-Disposition": "inline",
             **response_headers,
         }
         etag = str(obj.get("ETag") or "").strip()
         if etag:
             headers["ETag"] = etag
-        return StreamingResponse(
-            _streaming_body_iterator(obj["Body"]),
+        body_iterator = _audio_streaming_body_iterator(obj["Body"])
+        return _record_audio_delivery_response(request, StreamingResponse(
+            body_iterator,
+            background=BackgroundTask(body_iterator.aclose),
             status_code=206,
             media_type=content_type,
             headers=headers,
-        )
+        ))
 
     try:
         head = await _b2_head_object(s3, bucket=bucket, key=key, version_id=version_id)
-    except Exception as exc:
-        logger.warning("B2 audiobook asset head failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
+    except Exception:
+        logger.warning("audio_delivery_head_failed")
         raise HTTPException(status_code=404, detail="Audiobook asset object not found")
 
     total_size = int(head.get("ContentLength") or 0)
@@ -8403,14 +8478,15 @@ async def _stream_audiobook_asset_url(
         "Accept-Ranges": "bytes",
         "Content-Type": content_type,
         "Cache-Control": _audio_asset_cache_control(normalized_key),
+        "Content-Disposition": "inline",
         **response_headers,
     }
     if etag:
         base_headers["ETag"] = etag
     if status_code == 416:
-        return Response(status_code=416, headers={**base_headers, "Content-Range": f"bytes */{total_size}"})
+        return _record_audio_delivery_response(request, Response(status_code=416, headers={**base_headers, "Content-Range": f"bytes */{total_size}"}))
     if not byte_range and _client_etag_matches(request, etag):
-        return Response(status_code=304, headers=base_headers)
+        return _record_audio_delivery_response(request, Response(status_code=304, headers=base_headers))
 
     if request.method == "HEAD":
         headers = {
@@ -8419,18 +8495,39 @@ async def _stream_audiobook_asset_url(
         }
         if status_code == 206 and byte_range:
             headers["Content-Range"] = _content_range_header(byte_range, total_size)
-        return Response(status_code=status_code, headers=headers)
+        return _record_audio_delivery_response(request, Response(status_code=status_code, headers=headers))
 
     try:
-        obj = await _b2_get_object(
-            s3,
-            bucket=bucket,
-            key=key,
-            byte_range=byte_range,
-            version_id=version_id,
-        )
-    except Exception as exc:
-        logger.warning("B2 audiobook asset get failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
+        if byte_range:
+            obj = await _b2_get_object(
+                s3,
+                bucket=bucket,
+                key=key,
+                byte_range=byte_range,
+                version_id=version_id,
+            )
+        else:
+            head, obj = await _b2_get_consistent_audiobook_object(
+                s3,
+                bucket=bucket,
+                key=key,
+                head=head,
+                version_id=version_id,
+            )
+            total_size = int(head.get("ContentLength") or 0)
+            content_type = _audio_asset_content_type(
+                normalized_key, head.get("ContentType") or ""
+            )
+            base_headers["Content-Type"] = content_type
+            refreshed_etag = str(head.get("ETag") or "").strip()
+            if refreshed_etag:
+                base_headers["ETag"] = refreshed_etag
+            else:
+                base_headers.pop("ETag", None)
+    except HTTPException:
+        raise
+    except Exception:
+        logger.warning("audio_delivery_get_failed")
         raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
 
     content_length = int(obj.get("ContentLength") or total_size)
@@ -8442,47 +8539,29 @@ async def _stream_audiobook_asset_url(
         expected_content_range = _content_range_header(byte_range, total_size)
         content_range = str(obj.get("ContentRange") or "").strip()
         if content_range != expected_content_range:
-            body = obj.get("Body")
-            close = getattr(body, "close", None)
-            if callable(close):
-                close()
-            logger.error(
-                "B2 ignored or malformed audiobook Range for %s/%s/%s: expected %r, received %r",
-                slug,
-                normalized_key,
-                key,
-                expected_content_range,
-                content_range,
-            )
+            _close_audio_response_body(obj.get("Body"))
+            logger.error("audio_delivery_range_response_mismatch")
             raise HTTPException(
                 status_code=502,
                 detail="Audiobook storage did not honor the byte range",
             )
         expected_length = _range_content_length(byte_range, total_size)
         if content_length != expected_length:
-            body = obj.get("Body")
-            close = getattr(body, "close", None)
-            if callable(close):
-                close()
-            logger.error(
-                "B2 returned the wrong audiobook Range length for %s/%s/%s: expected %s, received %s",
-                slug,
-                normalized_key,
-                key,
-                expected_length,
-                content_length,
-            )
+            _close_audio_response_body(obj.get("Body"))
+            logger.error("audio_delivery_range_length_mismatch")
             raise HTTPException(
                 status_code=502,
                 detail="Audiobook storage returned an invalid byte range",
             )
         headers["Content-Range"] = content_range
-    return StreamingResponse(
-        _streaming_body_iterator(obj["Body"]),
+    body_iterator = _audio_streaming_body_iterator(obj["Body"])
+    return _record_audio_delivery_response(request, StreamingResponse(
+        body_iterator,
+        background=BackgroundTask(body_iterator.aclose),
         status_code=status_code,
         media_type=content_type,
         headers=headers,
-    )
+    ))
 
 
 async def _reader_book_audiobook_asset(
@@ -10718,6 +10797,14 @@ async def admin_cache_status(_=Depends(require_admin)):
         "cache_v2": {
             **cache_policy.active_policy_status(),
             "metrics": cache_metrics.snapshot_v2(),
+        },
+        "audio_delivery": {
+            "process_local": True,
+            "metadata_cache": {
+                "activated": False,
+                "decision": "AUDIO_METADATA_CACHE_NOT_ACTIVATED_INSUFFICIENT_EVIDENCE",
+            },
+            "streaming": media_streaming.streaming_metrics_snapshot(),
         },
         "policy": {
             "allowed_payloads": REDIS_CACHE_ALLOWED_PAYLOADS,
