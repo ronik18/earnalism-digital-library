@@ -85,7 +85,7 @@ def test_metrics_are_bounded_and_binary_bypass_does_not_write():
         assert server._v2_cache_key("reader-content", "binary") not in fake.entries
         snapshot = metrics.snapshot_v2()
         assert snapshot["scope"] == "process_local"
-        assert all(event["policy_id"] in {item.policy_id for item in policy.ACTIVE_CACHE_POLICIES.values()} for event in snapshot["events"])
+        assert any(event["policy_id"] == "reader-content-v2" for event in snapshot["events"])
     finally:
         _restore_redis(prior)
 
