@@ -1,0 +1,13 @@
+{
+  "schema_version":"a5-delivery-topology-decision-v1",
+  "decision":"PROTECTED_SAME_ORIGIN_PROXY_RETAINED",
+  "result":"PASS",
+  "options":[
+    {"name":"authorized_same_origin_proxy","decision":"RETAINED","authorization_from_byte_zero":true,"revocation":"current lease check","raw_url_exposure":false,"range":true,"infrastructure":"existing"},
+    {"name":"direct_signed_object_storage_url","decision":"NOT_IMPLEMENTED","reason":"OWNER_INFRASTRUCTURE_DECISION_REQUIRED_BEFORE_FUTURE_TOPOLOGY_CHANGE"},
+    {"name":"cdn_signed_delivery","decision":"NOT_IMPLEMENTED","reason":"OWNER_INFRASTRUCTURE_DECISION_REQUIRED_BEFORE_FUTURE_TOPOLOGY_CHANGE"},
+    {"name":"hybrid_public_protected","decision":"NOT_IMPLEMENTED","reason":"zero-public-audio policy has no approved public-media class"}
+  ],
+  "cost_confidence":"LIMITED",
+  "production_measurement":"UNAVAILABLE_NO_PRODUCTION_METRICS"
+}

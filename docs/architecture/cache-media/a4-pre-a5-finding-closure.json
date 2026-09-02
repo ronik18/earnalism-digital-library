@@ -1,0 +1,13 @@
+{
+  "schema_version": "a4-pre-a5-finding-closure-v1",
+  "a4_required_before_a5_count_before": 0,
+  "a4_required_before_a5_count_after": 0,
+  "findings": [
+    {"id": "A4-STALE-FILL", "severity": "BLOCKER", "closure": "Suppressed before SET", "owner_approval_status": "COMPLETE", "audio_correctness_dependency": true},
+    {"id": "A4-BROAD-INVALIDATION", "severity": "BLOCKER", "closure": "Exact v2 delete or generation bump only", "owner_approval_status": "COMPLETE", "audio_correctness_dependency": true},
+    {"id": "A4-SINGLEFLIGHT", "severity": "BLOCKER", "closure": "Shielded waiters and cleanup characterization pass", "owner_approval_status": "COMPLETE", "audio_correctness_dependency": true},
+    {"id": "A4-CROSS-IDENTITY", "severity": "BLOCKER", "closure": "Policy/key/version digest identity", "owner_approval_status": "COMPLETE", "audio_correctness_dependency": true},
+    {"id": "A4-REDIS-OPTIONAL", "severity": "BLOCKER", "closure": "Source fallback is correct", "owner_approval_status": "COMPLETE", "audio_correctness_dependency": true},
+    {"id": "A4-DISTRIBUTED-COALESCING", "severity": "REQUIRED_BEFORE_RELEASE", "closure": "Not implemented; no production Redis traffic evidence", "owner_approval_status": "DEFERRED", "audio_correctness_dependency": false}
+  ]
+}

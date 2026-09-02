@@ -1,0 +1,21 @@
+{
+  "schema_version": "a5-audio-request-path-v1",
+  "result": "PASS",
+  "invariants": {
+    "authorization_before_metadata": true,
+    "authorization_before_bytes": true,
+    "raw_provider_urls_exposed": false,
+    "public_playable_assets": false
+  },
+  "paths": [
+    {"case":"listener_manifest","route":"/api/reader/book/{slug}/audiobook/packages/{packageVersion}","authorization":"Reading Pass before manifest","cache":"reader-manifest metadata only","storage":"no byte body","response":"JSON/HEAD/304"},
+    {"case":"protected_head","route":"/api/reader/book/{slug}/audiobook","authorization":"release truth then Reading Pass","storage":"HEAD only","range":"header validation","body":"none"},
+    {"case":"protected_full_get","route":"same-origin protected proxy","authorization":"before B2 HEAD/GET","storage":"HEAD then GET; one pre-byte consistency refresh","cache":"no audio metadata cache","body":"1 MiB async off-loop iterator with idempotent close"},
+    {"case":"protected_range_get","route":"same-origin protected proxy","authorization":"before B2 GET","storage":"single ranged GET","range":"one fixed/suffix/open-ended range; exact response validation","body":"1 MiB async off-loop iterator"},
+    {"case":"conditional","route":"same-origin protected proxy","authorization":"before ETag/304","storage":"HEAD only when 304","response":"304 with private headers"},
+    {"case":"invalid_range","route":"same-origin protected proxy","authorization":"before authoritative size","storage":"HEAD or storage 416","response":"416; no byte body"},
+    {"case":"disabled_or_unauthorized","route":"all protected audio routes","authorization":"release truth and Reading Pass","storage":"not reached","response":"404 for disabled; authorization failure for protected request"},
+    {"case":"missing_or_transient_storage","route":"same-origin protected proxy","authorization":"already passed","storage":"redacted failure event","response":"safe 404/502/503; no provider redirect"}
+  ],
+  "observability":"admin-only process-local audio_delivery counters contain no URL, key, user, ETag, or secret labels"
+}
