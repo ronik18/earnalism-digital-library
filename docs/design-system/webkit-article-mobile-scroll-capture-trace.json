@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "capture_method": "page.screenshot clip",
+  "locator_auto_scroll_used": false,
+  "temporary_header_style_per_screenshot": false,
+  "fixed_stabilization_style_through_pair": true,
+  "scroll_fingerprint_result": "PASS",
+  "visual_viewport_offset_result": "PASS",
+  "dom_layout_font_fingerprints_unchanged_after_each_final_screenshot": true,
+  "no_op_scroll_restoration_removed": true
+}

@@ -1,0 +1,13 @@
+{
+  "decision_id": "EARNALISM_SEAMLESS_PAPER_MASTHEAD_V1",
+  "canonical_asset": "frontend/public/assets/brand/earnalism-brand-lockup.png",
+  "placements": [
+    {"component":"Header.jsx","classification":"PUBLIC_HEADER_DESKTOP"},
+    {"component":"Header.jsx","classification":"PUBLIC_HEADER_MOBILE"},
+    {"component":"Footer.jsx","classification":"FOOTER"},
+    {"component":"AuthPageShell.jsx","classification":"AUTH"},
+    {"component":"ExperienceHeader.jsx","classification":"STANDALONE_EXPERIENCE"},
+    {"component":"NotFound.jsx","classification":"ERROR_404"}
+  ],
+  "raw_duplicate_customer_logo_implementations": 0
+}

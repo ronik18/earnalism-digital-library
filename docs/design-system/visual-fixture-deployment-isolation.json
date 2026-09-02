@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "deployable_fixture_enabled_build_paths": 0,
+  "final_review_fixture_enabled_build_paths": 1,
+  "final_review_label": "DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED",
+  "repository_controlled_deployment_workflows_enable_fixture": false,
+  "repository_production_environment_enables_fixture": false
+}

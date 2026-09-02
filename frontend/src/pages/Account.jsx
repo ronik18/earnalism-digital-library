@@ -136,6 +136,48 @@ function AccountProfileMobile({ user, balance, activityCount, readingPassEnabled
   );
 }
 
+function AccountVisualFixture() {
+  const user = { name: "Review Reader", email: "review@example.invalid" };
+  const balance = 215 * 60;
+  return (
+    <div className="account-page-modern account-page-modern--visual-fixture" data-testid="account-visual-fixture">
+      <section className="account-visual-fixture__desktop" aria-labelledby="account-visual-fixture-title">
+        <div className="account-hero">
+          <div className="account-hero-summary">
+            <div className="italic-eyebrow">Your account</div>
+            <h1 id="account-visual-fixture-title" className="font-serif-light text-4xl sm:text-5xl text-burgundy leading-tight mt-2">
+              Welcome, <span className="italic-accent">Review</span>.
+            </h1>
+            <p className="account-hero-email text-sm text-charcoal-soft mt-2 font-light">Sanitized visual profile</p>
+          </div>
+          <button type="button" className="btn-secondary" data-testid="account-visual-fixture-signout"><LogOut size={14} className="mr-2" /> Sign out</button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+          <section className="account-panel account-balance-panel p-7 sm:p-8" aria-labelledby="account-visual-fixture-balance">
+            <div className="flex items-center gap-2 italic-eyebrow opacity-80"><Clock size={13} strokeWidth={1.5} /> Reading Pass</div>
+            <h2 id="account-visual-fixture-balance" className="account-balance-value font-serif-display text-5xl sm:text-6xl text-burgundy mt-4 leading-none">{formatMinutes(balance)}</h2>
+            <div className="gold-rule-thin mt-4" />
+            <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">Synthetic Reading Pass balance for visual review only. No account, lease, or payment activity is connected.</p>
+            <Link to="/pricing" className="inline-flex items-center gap-2 text-[0.72rem] tracking-[0.22em] uppercase text-burgundy mt-6">View Reading Pass <ArrowUpRight size={13} strokeWidth={1.5} /></Link>
+          </section>
+          <section className="account-panel account-continue-panel p-7 sm:p-8 flex flex-col" aria-labelledby="account-visual-fixture-library">
+            <div className="flex items-center gap-2 italic-eyebrow opacity-80"><BookOpen size={13} strokeWidth={1.5} /> My Library</div>
+            <h2 id="account-visual-fixture-library" className="font-serif-display text-xl text-charcoal mt-4 leading-snug">Your saved library is currently empty.</h2>
+            <p className="text-sm mt-3">Explore the public catalog to begin a reading list.</p>
+            <div className="mt-auto pt-6"><Link to="/library" className="btn-primary w-full sm:w-auto">Browse Library</Link></div>
+          </section>
+        </div>
+        <section className="account-panel p-6 sm:p-8" aria-labelledby="account-visual-fixture-activity">
+          <h2 id="account-visual-fixture-activity" className="font-serif-display text-2xl text-burgundy">Recent activity</h2>
+          <div className="gold-rule-thin mt-3 mb-5" />
+          <p className="text-charcoal-soft text-sm font-light">No reading activity is recorded in this sanitized visual fixture.</p>
+        </section>
+      </section>
+      <AccountProfileMobile user={user} balance={balance} activityCount={0} readingPassEnabled onLogout={() => {}} onNavigate={() => {}} />
+    </div>
+  );
+}
+
 export default function Account() {
   useSEO({
     title: "Your Account — The Earnalism Digital Library",
@@ -187,7 +229,7 @@ export default function Account() {
   }, [user]);
 
   if (visualFixture) {
-    return <div className="account-page-modern account-page-modern--visual-fixture" data-testid="account-visual-fixture"><AccountProfileMobile user={{ name: "Review Reader", email: "review@example.invalid" }} balance={215 * 60} activityCount={3} readingPassEnabled onLogout={() => {}} onNavigate={() => {}} /></div>;
+    return <AccountVisualFixture />;
   }
 
   if (user === null) return <div className="py-32 text-center text-charcoal-soft" role="status" aria-live="polite">Loading your reading account…</div>;

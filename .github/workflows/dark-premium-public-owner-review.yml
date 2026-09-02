@@ -1,0 +1,84 @@
+name: Dark premium public owner review
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - frontend/src/components/ReferencePublicPages.*
+      - frontend/src/components/Footer.jsx
+      - frontend/src/design-system/**
+      - frontend/src/data/publicEvidenceSnapshot.json
+      - frontend/src/lib/darkPremiumPublicSystem.test.js
+      - docs/product/public-cta-contract.json
+      - scripts/capture_dark_premium_public_review.mjs
+      - scripts/generate_dark_premium_public_owner_review.py
+      - .github/workflows/dark-premium-public-owner-review.yml
+      - frontend/src/components/Header.css
+
+permissions:
+  contents: read
+
+jobs:
+  owner-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      REACT_APP_BACKEND_URL: http://127.0.0.1:18007/api
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: |
+          npm ci
+          npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check pillow
+          npx playwright install --with-deps chromium firefox webkit
+      - run: npm --prefix frontend run build
+      - name: Capture exact-head owner review
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          node scripts/serve_frontend_build.js --port 13007 > "$RUNNER_TEMP/server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          server_ready=false
+          for _ in $(seq 1 45); do
+            if ! kill -0 "$server_pid" 2>/dev/null; then
+              cat "$RUNNER_TEMP/server.log"
+              exit 1
+            fi
+            if curl -fsS http://127.0.0.1:13007/ >/dev/null; then
+              server_ready=true
+              break
+            fi
+            sleep 1
+          done
+          if [ "$server_ready" != true ]; then
+            cat "$RUNNER_TEMP/server.log"
+            exit 1
+          fi
+          for browser in chromium firefox webkit; do
+            UAT_BASE_URL=http://127.0.0.1:13007 DARK_PREMIUM_CAPTURE_OUTPUT=uat/evidence/gilded-burgundy-primary-344/current DARK_PREMIUM_BROWSER=$browser node scripts/capture_dark_premium_public_review.mjs
+          done
+          python3 scripts/generate_dark_premium_public_owner_review.py --current uat/evidence/gilded-burgundy-primary-344/current --output uat/evidence/gilded-burgundy-primary-344-${PR_HEAD_SHA} --expected-head "$PR_HEAD_SHA"
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: gilded-burgundy-primary-344-${{ github.event.pull_request.head.sha }}
+          path: |
+            uat/evidence/gilded-burgundy-primary-344-*/**
+            uat/evidence/gilded-burgundy-primary-344/current/**
+            ${{ runner.temp }}/server.log
+          if-no-files-found: warn

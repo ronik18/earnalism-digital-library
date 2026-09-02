@@ -1,0 +1,30 @@
+{
+  "checkpoint": "PR344 WebKit Library filter focus containment",
+  "source_head_before": "1be23e89ded77be7be1fb9eba99d50fef5d0085e",
+  "production_surface_sha256": {
+    "before": "7517b379a8d268d202b6de30c5d1e6bc734012bae61646a765224b7f467c8a77",
+    "after": "199ff2d18bc0df16f5e4e2bdc9bcf8ceba24d26c3ee92360802db80c1dbc31b1"
+  },
+  "library_surface_sha256": {
+    "before": "ec5332ab672e9495c1c4c9733af9dafaa3c17c27829f93c9e429fdb7f9ca8aa5",
+    "after": "696a0c8d760d349439280e63e19b8656d6fd1beff19696d6f1a369dc15cb144a"
+  },
+  "unchanged_route_surfaces": {
+    "home_commerce": "67f36cc4fe84f298c9b6ff4140847921e2ccd334bb386c4f703c2037529325d3",
+    "shared_header": "ce22ca97e9f391c3a26c51f0307e28f94879ba5c9dca583f2e3613b15f552114",
+    "shared_footer": "8b00fe9b6d813565c1b11f8a9b4fee7bbe9c1e4baa18d12f518f5f331a8a941c",
+    "auth_account": "f4aa77a7d1d9ff44173aed4dd91fc1bfee44ff5deea9aad097a757099059ab28",
+    "editorial": "00079822bdc6e3a79110735efaa08fc6442ca40f2008aac0f2d9ffa2550871bc",
+    "book_detail": "805e46033aaa3a01b883b959ed7789d4ba1b8f88e05ebd939e4bb6357ad68e06",
+    "reader": "570faf6ec8de2665c2b26d428345c0cd059c9608945ccfc684f0ca7f6149942c",
+    "listener": "78a00cef0840f0774062038cf97d60ac88f5c6de5971ab93eafa4069d5e09cdb",
+    "error_surfaces": "0f01e17ff9e42b348413b8bdb278e1a6f11fe3ae6571e79cf806c5e1f85a078d",
+    "canonical_logo_file_set": "64600da183ea0c7f11d559a0e98592157538fa7a7bf04c9d7f5280ac5749e4a0"
+  },
+  "canonical_logo_sha256": "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919",
+  "cross_browser_contract_sha256": "3e25c683c9e2ef0b92bd818db7e0320f5b64d9f5e79ad9e2219dbec5994b135a",
+  "allowed_changed_production_surface": [
+    "frontend/src/components/ReferencePublicPages.jsx"
+  ],
+  "result": "PASS"
+}

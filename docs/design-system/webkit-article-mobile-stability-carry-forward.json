@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "prior_production_evidence_head": "8a265d87c23346c9eff49cee96896d626b3e9818",
+  "production_surface_sha256": "199ff2d18bc0df16f5e4e2bdc9bcf8ceba24d26c3ee92360802db80c1dbc31b1",
+  "article_surface_sha256": "4211ecc16162158be338be73048509fc42f0505f9b831fe91b4d1d61b4828a55",
+  "production_surface_unchanged": true,
+  "article_surface_unchanged": true,
+  "state_manifest_sha256": "6131e472bd0ef8438493844ae7550d17299c71b8e8a68b25d6820c9861c681d0",
+  "cross_browser_contract_sha256": "3e25c683c9e2ef0b92bd818db7e0320f5b64d9f5e79ad9e2219dbec5994b135a",
+  "canonical_logo_sha256": "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919",
+  "prior_visual_evidence_applicable": true,
+  "article_webkit_evidence_regenerated": true
+}

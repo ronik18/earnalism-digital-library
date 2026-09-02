@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "root_cause_classification": "FINAL_CI_REVIEW_BUILD_MISSING_COMPILE_TIME_VISUAL_FIXTURE_FLAG",
+  "production_contract_build": {
+    "REACT_APP_ENABLE_VISUAL_FIXTURES": "0",
+    "route": "/account?visual-fixture=1",
+    "final_route": "/login?next=/account",
+    "account_visual_fixture_marker": false
+  },
+  "review_fixture_build": {
+    "REACT_APP_ENABLE_VISUAL_FIXTURES": "1",
+    "REACT_APP_UAT_LOCAL": "true",
+    "route": "/account?visual-fixture=1",
+    "account_visual_fixture_marker": true,
+    "sanitized_identity": "review@example.invalid",
+    "production_authentication_used": false,
+    "production_account_api_called": false,
+    "mutation_count": 0
+  },
+  "assertion_preserved": "private_fixture.fixture_visible === true"
+}

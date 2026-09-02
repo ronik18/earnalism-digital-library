@@ -35,10 +35,12 @@
 .auth-account-brand-panel {
   position: relative;
   z-index: 1;
-  border: 1px solid rgba(232, 201, 122, 0.35);
-  border-radius: 1rem;
-  background: rgba(255, 247, 233, 0.98);
-  padding: 1rem;
+  margin-inline: -2.5rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--brand-lockup-paper, #fff9ee);
+  box-shadow: none;
+  padding: 1rem 2.5rem;
 }
 
 .auth-account-aside-title {
@@ -111,6 +113,12 @@
   box-shadow: 0 1.25rem 2.8rem -2.75rem rgba(53, 16, 24, 0.58);
 }
 
+.account-visual-fixture__desktop {
+  width: min(100% - 3rem, 64rem);
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
 .account-page-modern .account-balance-panel { background: linear-gradient(150deg, rgba(255, 252, 246, 0.94), rgba(246, 233, 211, 0.9)); }
 .account-page-modern .account-balance-value { letter-spacing: -0.055em; }
 .account-page-modern .account-continue-panel { background: linear-gradient(145deg, #5a1f2b, #351018); color: #fff8ea; }
@@ -131,6 +139,7 @@
 
   .account-page-modern { min-height:calc(100dvh - var(--site-header-height)); padding:0; background:#07110f; color:#fff7e7; }
   .account-page-modern > .max-w-4xl { display:none; }
+  .account-visual-fixture__desktop { display:none; }
   .account-profile-mobile { display:flex; min-height:calc(100dvh - var(--site-header-height)); flex-direction:column; background:linear-gradient(180deg,#07110f,#0a1714); font-family:var(--font-ui); }
   .account-profile-mobile__identity { display:grid; justify-items:center; padding:2rem 1rem 1.5rem; text-align:center; }
   .account-profile-mobile__avatar { display:grid; width:4.25rem; height:4.25rem; place-items:center; border:1px solid rgba(235,203,120,.62); border-radius:50%; background:radial-gradient(circle at 35% 28%,#f0d684,#9d732a); color:#182018; font:600 2rem/1 var(--font-display); }

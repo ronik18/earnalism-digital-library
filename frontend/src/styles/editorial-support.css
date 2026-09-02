@@ -95,12 +95,29 @@
 .contact-form-status[role="alert"] { color: #8b1e2d; }
 
 .error-route-panel {
-  border: 1px solid rgba(110, 68, 34, 0.2);
-  border-radius: 1.5rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.error-route-page {
+  color: var(--public-text, #fff8e9);
   background:
-    radial-gradient(circle at 100% 0%, rgba(184, 132, 45, 0.14), transparent 18rem),
-    rgba(255, 253, 248, 0.82);
-  box-shadow: 0 28px 64px -52px rgba(66, 33, 16, 0.88);
+    radial-gradient(circle at 100% 0%, rgba(214, 173, 85, 0.12), transparent 24rem),
+    var(--public-page, #641f27);
+}
+
+.error-route-page .error-route-panel .italic-eyebrow {
+  color: var(--public-gold-soft, #f2d188);
+}
+
+.error-route-page .error-route-panel h1 {
+  color: var(--public-text, #fff8e9);
+}
+
+.error-route-page .error-route-panel p {
+  color: var(--public-text-muted, #e5d7c1);
 }
 
 @media (prefers-reduced-motion: reduce) {

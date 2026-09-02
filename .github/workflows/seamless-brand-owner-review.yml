@@ -1,0 +1,604 @@
+name: Seamless brand owner review
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/seamless-brand-owner-review.yml
+      - scripts/capture_seamless_brand_owner_review.mjs
+      - scripts/run_seamless_brand_article_stability_gate.mjs
+      - scripts/test_seamless_brand_article_stability_gate.mjs
+      - scripts/generate_seamless_brand_cross_browser_shell_summary.mjs
+      - scripts/generate_seamless_brand_final_evidence_inputs.mjs
+      - scripts/validate_seamless_brand_final_evidence_inputs.py
+      - scripts/generate_seamless_brand_final_owner_review.py
+      - scripts/validate_seamless_brand_final_owner_review.py
+      - scripts/test_seamless_brand_*.mjs
+      - scripts/test_library_filter_focus_trap_cross_browser.mjs
+      - docs/design-system/seamless-brand-*.json
+      - frontend/src/**
+      - frontend/public/**
+      - frontend/package.json
+      - frontend/package-lock.json
+      - frontend/vercel.json
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Open PR number to publish
+        required: true
+        default: "344"
+        type: string
+
+permissions:
+  actions: read
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: pr344-seamless-brand-owner-review-${{ github.event.pull_request.number || inputs.pr_number || '344' }}
+  cancel-in-progress: true
+
+jobs:
+  resolve-pr-head:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      pr_head: ${{ steps.resolve.outputs.pr_head }}
+      pr_number: ${{ steps.resolve.outputs.pr_number }}
+      workflow_event_sha: ${{ steps.resolve.outputs.workflow_event_sha }}
+    steps:
+      - id: resolve
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_PR_NUMBER: ${{ github.event.pull_request.number }}
+          EVENT_PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          INPUT_PR_NUMBER: ${{ inputs.pr_number }}
+          WORKFLOW_EVENT_SHA: ${{ github.sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            PR_NUMBER="$EVENT_PR_NUMBER"
+            PR_HEAD_SHA="$EVENT_PR_HEAD"
+          else
+            PR_NUMBER="$INPUT_PR_NUMBER"
+            state="$(gh api "/repos/$GITHUB_REPOSITORY/pulls/${PR_NUMBER}" --jq .state)"
+            test "$state" = open
+            PR_HEAD_SHA="$(gh api "/repos/$GITHUB_REPOSITORY/pulls/${PR_NUMBER}" --jq .head.sha)"
+          fi
+          test -n "$PR_HEAD_SHA"
+          printf 'pr_head=%s\npr_number=%s\nworkflow_event_sha=%s\n' "$PR_HEAD_SHA" "$PR_NUMBER" "$WORKFLOW_EVENT_SHA" >> "$GITHUB_OUTPUT"
+
+  # Keep this established job id so existing branch-protection check identity remains stable.
+  seamless-brand-review:
+    needs: resolve-pr-head
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    outputs:
+      artifact_name: ${{ steps.package-metadata.outputs.artifact_name }}
+      artifact_id: ${{ steps.upload-final.outputs.artifact-id }}
+      artifact_url: ${{ steps.upload-final.outputs.artifact-url }}
+      artifact_digest: ${{ steps.upload-final.outputs.artifact-digest }}
+      pr_head: ${{ needs.resolve-pr-head.outputs.pr_head }}
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+      PR_HEAD_SHA: ${{ needs.resolve-pr-head.outputs.pr_head }}
+      PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
+      WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
+      PRODUCTION_SURFACE_SHA: dfb718d6fdcb76d34cb55bbf1c752814fae77ec224a24e7fe746ce741c09cea3
+      CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
+    steps:
+      - name: Checkout exact pull-request head
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.resolve-pr-head.outputs.pr_head }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact checkout and install pinned dependencies
+        run: |
+          set -euo pipefail
+          ACTUAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          CHECKOUT_TREE_SHA="$(git rev-parse HEAD^{tree})"
+          test "$ACTUAL_CHECKOUT_SHA" = "$PR_HEAD_SHA"
+          printf 'ACTUAL_CHECKOUT_SHA=%s\nCHECKOUT_TREE_SHA=%s\nWORKFLOW_EVENT_SHA=%s\n' "$ACTUAL_CHECKOUT_SHA" "$CHECKOUT_TREE_SHA" "$WORKFLOW_EVENT_SHA" | tee "$RUNNER_TEMP/exact-checkout.env"
+          npm ci
+          npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check -r requirements.txt reportlab==4.2.5
+          npx playwright install --with-deps chromium firefox webkit
+          node --version | tee "$RUNNER_TEMP/node-version.txt"
+          python3 --version | tee "$RUNNER_TEMP/python-version.txt"
+          node -p "require('playwright/package.json').version" | tee "$RUNNER_TEMP/playwright-version.txt"
+          uname -a | tee "$RUNNER_TEMP/runner-platform.txt"
+
+      - name: Run deterministic tooling gates
+        run: |
+          set -euo pipefail
+          node scripts/test_seamless_brand_manifest_cli.mjs
+          node scripts/test_seamless_brand_full_chromium_matrix.mjs
+          node scripts/test_seamless_brand_cross_browser_shell_matrix.mjs
+          node scripts/test_seamless_brand_final_evidence_inputs.mjs
+          node scripts/test_seamless_brand_final_owner_review.mjs
+          node scripts/test_seamless_brand_final_publication_workflow.mjs
+
+      - name: Build production-contract frontend and verify static SEO
+        run: |
+          set -euo pipefail
+          cp frontend/public/sitemap.xml "$RUNNER_TEMP/source-sitemap.xml"
+          REACT_APP_ENABLE_VISUAL_FIXTURES=0 REACT_APP_UAT_LOCAL=false REACT_APP_BACKEND_URL=http://127.0.0.1:18007/api npm --prefix frontend run build | tee "$RUNNER_TEMP/frontend-production-contract-build.log"
+          test "$(sha256sum frontend/public/assets/brand/earnalism-brand-lockup.png | awk '{print $1}')" = "$CANONICAL_LOGO_SHA"
+          test "$(sha256sum frontend/build/assets/brand/earnalism-brand-lockup.png | awk '{print $1}')" = "$CANONICAL_LOGO_SHA"
+          PRODUCTION_CONTRACT_BUILD_DIR="$RUNNER_TEMP/pr344-production-contract-build"
+          mkdir -p "$PRODUCTION_CONTRACT_BUILD_DIR"
+          cp -a frontend/build/. "$PRODUCTION_CONTRACT_BUILD_DIR/"
+          PRODUCTION_CONTRACT_BUILD_SHA256="$(cd "$PRODUCTION_CONTRACT_BUILD_DIR" && find . -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | awk '{print $1}')"
+          cp "$RUNNER_TEMP/source-sitemap.xml" frontend/public/sitemap.xml
+          git diff --exit-code
+          {
+            echo "PRODUCTION_CONTRACT_BUILD_DIR=$PRODUCTION_CONTRACT_BUILD_DIR"
+            echo "PRODUCTION_CONTRACT_BUILD_SHA256=$PRODUCTION_CONTRACT_BUILD_SHA256"
+            echo "PRODUCTION_CONTRACT_BUILD_LABEL=PRODUCTION_CONTRACT_BUILD_FIXTURES_DISABLED"
+          } >> "$GITHUB_ENV"
+
+      - name: Build deterministic owner-review fixture frontend
+        run: |
+          set -euo pipefail
+          rm -rf frontend/build
+          REACT_APP_ENABLE_VISUAL_FIXTURES=1 REACT_APP_UAT_LOCAL=true REACT_APP_BACKEND_URL=http://127.0.0.1:18007/api npm --prefix frontend run build | tee "$RUNNER_TEMP/frontend-review-fixture-build.log"
+          REVIEW_FIXTURE_BUILD_DIR="$RUNNER_TEMP/pr344-owner-review-fixture-build"
+          mkdir -p "$REVIEW_FIXTURE_BUILD_DIR"
+          cp -a frontend/build/. "$REVIEW_FIXTURE_BUILD_DIR/"
+          REVIEW_FIXTURE_BUILD_SHA256="$(cd "$REVIEW_FIXTURE_BUILD_DIR" && find . -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | awk '{print $1}')"
+          cp "$RUNNER_TEMP/source-sitemap.xml" frontend/public/sitemap.xml
+          git diff --exit-code
+          {
+            echo "REVIEW_FIXTURE_BUILD_DIR=$REVIEW_FIXTURE_BUILD_DIR"
+            echo "REVIEW_FIXTURE_BUILD_SHA256=$REVIEW_FIXTURE_BUILD_SHA256"
+            echo "REVIEW_FIXTURE_BUILD_LABEL=DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED"
+          } >> "$GITHUB_ENV"
+
+      - name: Verify production and review fixture build modes
+        run: |
+          set -euo pipefail
+          FIXTURE_BUILD_PROBE="$RUNNER_TEMP/final-ci-sanitized-fixture-root-cause.json"
+          node scripts/verify_seamless_brand_review_fixture_build.mjs --production-build "$PRODUCTION_CONTRACT_BUILD_DIR" --review-build "$REVIEW_FIXTURE_BUILD_DIR" --output "$FIXTURE_BUILD_PROBE"
+          node - "$FIXTURE_BUILD_PROBE" "$RUNNER_TEMP/visual-fixture-deployment-isolation.json" <<'JS'
+          const fs=require('fs'); const [probePath,isolationPath]=process.argv.slice(2);
+          const workflow=fs.readFileSync('.github/workflows/seamless-brand-owner-review.yml','utf8');
+          const probe=JSON.parse(fs.readFileSync(probePath,'utf8'));
+          if (probe.result !== 'PASS') throw new Error('review fixture build probe failed');
+          const fixtureBuildCommands=workflow.split('\n').filter(line=>/^\s{10}REACT_APP_ENABLE_VISUAL_FIXTURES=1 .*npm --prefix frontend run build/.test(line));
+          if (fixtureBuildCommands.length !== 1) throw new Error('review fixture flag must appear in exactly one scoped build command');
+          if (/^\s*REACT_APP_ENABLE_VISUAL_FIXTURES:\s*["']?1/m.test(workflow)) throw new Error('review fixture flag may not be job-global');
+          const deploymentWorkflows=['regression.yml','railway-deployment-canary.yml','post-deploy-k6.yml'];
+          const enabled=deploymentWorkflows.filter(name=>/REACT_APP_ENABLE_VISUAL_FIXTURES\s*[:=]\s*["']?1/.test(fs.readFileSync(`.github/workflows/${name}`,'utf8')));
+          if (enabled.length) throw new Error(`deployment workflow enables visual fixtures: ${enabled.join(',')}`);
+          fs.writeFileSync(isolationPath, `${JSON.stringify({result:'PASS',deployable_fixture_enabled_build_paths:0,final_review_fixture_enabled_build_paths:1,final_review_label:'DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED',repository_controlled_deployment_workflows_enable_fixture:false,repository_production_environment_enables_fixture:false},null,2)}\n`);
+          JS
+          {
+            echo "FIXTURE_BUILD_PROBE=$FIXTURE_BUILD_PROBE"
+            echo "FIXTURE_DEPLOYMENT_ISOLATION=$RUNNER_TEMP/visual-fixture-deployment-isolation.json"
+          } >> "$GITHUB_ENV"
+
+      - name: Run focused Article stability gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARTICLE_STABILITY_ROOT="$RUNNER_TEMP/pr344-article-stability-${PR_HEAD_SHA}"
+          mkdir -p "$ARTICLE_STABILITY_ROOT"
+          node scripts/serve_frontend_build.js --directory "$REVIEW_FIXTURE_BUILD_DIR" --port 13017 > "$RUNNER_TEMP/article-stability-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for _ in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:13017/ >/dev/null; then break; fi
+            sleep 1
+          done
+          export SEAMLESS_BRAND_TEST_BASE_URL=http://127.0.0.1:13017
+          node scripts/test_webkit_article_mobile_stability.mjs | tee "$RUNNER_TEMP/webkit-article-stability-tests.log"
+          node scripts/run_seamless_brand_article_stability_gate.mjs \
+            --base-url "$SEAMLESS_BRAND_TEST_BASE_URL" \
+            --output "$ARTICLE_STABILITY_ROOT" \
+            --manifest docs/design-system/seamless-brand-state-manifest.json \
+            --route-inventory docs/design-system/seamless-brand-route-inventory.json \
+            --capture-script scripts/capture_seamless_brand_owner_review.mjs \
+            --state-id article-mobile \
+            --webkit-runs 10 \
+            --chromium-runs 5 \
+            --firefox-runs 5
+          test -s "$ARTICLE_STABILITY_ROOT/article-stability-results.json"
+          echo "ARTICLE_STABILITY_RESULTS=$ARTICLE_STABILITY_ROOT/article-stability-results.json" >> "$GITHUB_ENV"
+
+      - name: Run browser tooling gates
+        run: |
+          set -euo pipefail
+          node scripts/serve_frontend_build.js --directory "$REVIEW_FIXTURE_BUILD_DIR" --port 13018 > "$RUNNER_TEMP/tooling-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for _ in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:13018/ >/dev/null; then break; fi
+            sleep 1
+          done
+          export SEAMLESS_BRAND_TEST_BASE_URL=http://127.0.0.1:13018
+          node scripts/test_seamless_brand_one_state_capture.mjs
+          node scripts/test_seamless_brand_representative_capture.mjs
+          node scripts/test_seamless_brand_public_shell_batch.mjs
+          node scripts/test_seamless_brand_auth_private_batch.mjs
+          node scripts/test_seamless_brand_editorial_campaign_batch.mjs
+          node scripts/test_seamless_brand_error_experience_batch.mjs
+          node scripts/test_seamless_brand_interaction_batch.mjs
+          node scripts/test_library_filter_focus_trap_cross_browser.mjs
+          node scripts/test_reader_mobile_high_zoom_reflow.mjs
+          node scripts/test_seamless_brand_core_zoom_batch.mjs
+          node scripts/test_seamless_brand_experience_footer_zoom_batch.mjs
+
+      - name: Capture the exact head in all browsers
+        run: |
+          set -euo pipefail
+          EVIDENCE_ROOT="$RUNNER_TEMP/pr344-seamless-brand-final-${PR_HEAD_SHA}"
+          mkdir -p "$EVIDENCE_ROOT"
+          node scripts/serve_frontend_build.js --directory "$REVIEW_FIXTURE_BUILD_DIR" --port 13019 > "$RUNNER_TEMP/server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for _ in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:13019/ >/dev/null; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:13019/library >/dev/null
+          curl -fsS http://127.0.0.1:13019/pricing >/dev/null
+          node scripts/capture_seamless_brand_owner_review.mjs --manifest docs/design-system/seamless-brand-state-manifest.json --route-inventory docs/design-system/seamless-brand-route-inventory.json --capture --browser chromium --base-url http://127.0.0.1:13019 --output "$EVIDENCE_ROOT/chromium"
+          STATE_FILTER="$(node -e "const x=require('./docs/design-system/seamless-brand-cross-browser-shell-matrix.json'); process.stdout.write(x.families.map(v=>v.selected_state_id).join(','))")"
+          for browser in firefox webkit; do
+            node scripts/capture_seamless_brand_owner_review.mjs --manifest docs/design-system/seamless-brand-state-manifest.json --route-inventory docs/design-system/seamless-brand-route-inventory.json --state-filter "$STATE_FILTER" --capture --browser "$browser" --base-url http://127.0.0.1:13019 --output "$EVIDENCE_ROOT/cross-browser/$browser"
+          done
+          node scripts/generate_seamless_brand_cross_browser_shell_summary.mjs --output "$EVIDENCE_ROOT/cross-browser" --selection docs/design-system/seamless-brand-cross-browser-shell-matrix.json --manifest docs/design-system/seamless-brand-state-manifest.json --route-inventory docs/design-system/seamless-brand-route-inventory.json
+          [[ "$PRODUCTION_SURFACE_SHA" =~ ^[0-9a-f]{64}$ ]]
+          CAPTURED_PRODUCTION_SURFACE_SHA="$(jq -r .production_surface_sha256 "$EVIDENCE_ROOT/chromium/capture-summary.json")"
+          test "$CAPTURED_PRODUCTION_SURFACE_SHA" = "$PRODUCTION_SURFACE_SHA"
+          node scripts/test_seamless_brand_full_chromium_matrix.mjs --output "$EVIDENCE_ROOT/chromium" --expected-production-surface-sha "$PRODUCTION_SURFACE_SHA"
+          node scripts/test_seamless_brand_cross_browser_shell_matrix.mjs --output "$EVIDENCE_ROOT/cross-browser"
+          echo "EVIDENCE_ROOT=$EVIDENCE_ROOT" >> "$GITHUB_ENV"
+
+      - name: Generate and validate final evidence inputs
+        run: |
+          set -euo pipefail
+          node scripts/generate_seamless_brand_final_evidence_inputs.mjs --output "$EVIDENCE_ROOT/final-inputs" --chromium "$EVIDENCE_ROOT/chromium" --cross-browser "$EVIDENCE_ROOT/cross-browser"
+          node - "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json" "$FIXTURE_BUILD_PROBE" "$FIXTURE_DEPLOYMENT_ISOLATION" "$ARTICLE_STABILITY_RESULTS" <<'JS'
+          const fs=require('fs'); const [inputsPath,probePath,isolationPath,articleStabilityPath]=process.argv.slice(2);
+          const inputs=JSON.parse(fs.readFileSync(inputsPath,'utf8'));
+          const probe=JSON.parse(fs.readFileSync(probePath,'utf8'));
+          const isolation=JSON.parse(fs.readFileSync(isolationPath,'utf8'));
+          const articleStability=JSON.parse(fs.readFileSync(articleStabilityPath,'utf8'));
+          if (probe.result !== 'PASS' || isolation.result !== 'PASS' || articleStability.result !== 'PASS') throw new Error('fixture build or Article stability proof is not passing');
+          if (JSON.stringify([articleStability.article_mobile.webkit.expected,articleStability.article_mobile.webkit.captured,articleStability.article_mobile.webkit.stable]) !== JSON.stringify([10,10,10])) throw new Error('WebKit Article stability result is incomplete');
+          inputs.build_modes={
+            production_contract:{label:process.env.PRODUCTION_CONTRACT_BUILD_LABEL,sha256:process.env.PRODUCTION_CONTRACT_BUILD_SHA256,fixture_enabled:false},
+            review_fixture:{label:process.env.REVIEW_FIXTURE_BUILD_LABEL,sha256:process.env.REVIEW_FIXTURE_BUILD_SHA256,fixture_enabled:true,not_deployed:true},
+            probe_result:probe.result,
+            deployment_isolation_result:isolation.result
+          };
+          inputs.article_stability=articleStability;
+          fs.writeFileSync(inputsPath, `${JSON.stringify(inputs,null,2)}\n`);
+          JS
+          python3 scripts/validate_seamless_brand_final_evidence_inputs.py --inputs "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json"
+          test "$(jq -r .production_surface_sha256 "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json")" = "$PRODUCTION_SURFACE_SHA"
+          test "$(jq -r .canonical_logo_sha256 "$EVIDENCE_ROOT/final-inputs/final-evidence-inputs.json")" = "$CANONICAL_LOGO_SHA"
+
+      - name: Build package and perform PDF and HTML QA
+        run: |
+          set -euo pipefail
+          PYTHON_BIN="$(command -v python3)"; test -n "$PYTHON_BIN"; test -x "$PYTHON_BIN"; "$PYTHON_BIN" --version
+          for tool in pdfinfo pdftoppm pdftotext; do command -v "$tool" >/dev/null || { sudo apt-get update; sudo apt-get install -y --no-install-recommends poppler-utils; break; }; done
+          "$PYTHON_BIN" - "$RUNNER_TEMP/pdf-tooling-preflight.json" <<'PY'
+          import json,platform,shutil,subprocess,sys
+          tools={name:shutil.which(name) for name in ('pdfinfo','pdftoppm','pdftotext')}; assert all(tools.values())
+          json.dump({'result':'PASS','os':platform.platform(),'tools':{name:{'path':value,'version':subprocess.check_output([value,'-v'],text=True,stderr=subprocess.STDOUT).strip()} for name,value in tools.items()}},open(sys.argv[1],'w'),indent=2)
+          PY
+          "$PYTHON_BIN" scripts/generate_seamless_brand_final_owner_review.py --inputs "$EVIDENCE_ROOT/final-inputs" --output "$EVIDENCE_ROOT/package" --pr-number "$PR_NUMBER" --pr-head "$PR_HEAD_SHA" --production-surface-sha "$PRODUCTION_SURFACE_SHA" --canonical-logo-sha "$CANONICAL_LOGO_SHA"
+          node scripts/test_seamless_brand_final_owner_review.mjs --package "$EVIDENCE_ROOT/package" --python "$PYTHON_BIN" --report-json "$RUNNER_TEMP/final-package-test-report.json" | tee "$RUNNER_TEMP/final-package-tests.log"
+          jq -e --arg package "$EVIDENCE_ROOT/package" '.result == "PASS" and .test_case_count == (.executed_case_names|length) and (.test_case_count >= 31) and (.missing_required_case_names|length == 0) and (.duplicate_case_names|length == 0) and .real_package_validation_executed and .real_package_validation_result == "PASS" and .real_package_path == $package' "$RUNNER_TEMP/final-package-test-report.json"
+          "$PYTHON_BIN" -m http.server 13020 --directory "$EVIDENCE_ROOT/package" > "$RUNNER_TEMP/package-server.log" 2>&1 &
+          package_server_pid=$!
+          trap 'kill "$package_server_pid" 2>/dev/null || true' EXIT
+          package_server_ready=false
+          for _ in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:13020/owner-review.html >/dev/null; then package_server_ready=true; break; fi
+            sleep 1
+          done
+          test "$package_server_ready" = true
+          "$PYTHON_BIN" - "$EVIDENCE_ROOT/package" <<'PY'
+          import re, sys
+          from pathlib import Path
+          package=Path(sys.argv[1]); html=(package/'owner-review.html').read_text()
+          refs=re.findall(r'<img[^>]+src="([^"]+)"', html)
+          assert refs and all((package/ref).is_file() for ref in refs)
+          assert '/tmp/' not in html and '/private/' not in html and '/Users/' not in html
+          PY
+          pdfinfo "$EVIDENCE_ROOT/package/owner-review.pdf" | tee "$RUNNER_TEMP/pdfinfo.txt"
+          pages="$(pdfinfo "$EVIDENCE_ROOT/package/owner-review.pdf" | awk '/^Pages:/ {print $2}')"
+          test "$pages" -ge 22
+          mkdir -p "$RUNNER_TEMP/pdf-pages"
+          pdftoppm -png -r 100 "$EVIDENCE_ROOT/package/owner-review.pdf" "$RUNNER_TEMP/pdf-pages/page"
+          "$PYTHON_BIN" - "$RUNNER_TEMP/pdf-pages" "$EVIDENCE_ROOT/package/contact-sheet.png" <<'PY'
+          import sys
+          from pathlib import Path
+          from PIL import Image
+          pages=sorted(Path(sys.argv[1]).glob('*.png')); assert len(pages) >= 22
+          for item in pages:
+              image=Image.open(item); assert image.width > 0 and image.height > 0 and image.getbbox() is not None
+          sheet=Image.open(sys.argv[2]); assert sheet.width > 0 and sheet.height > 0 and sheet.getbbox() is not None
+          PY
+          pdftotext "$EVIDENCE_ROOT/package/owner-review.pdf" "$RUNNER_TEMP/owner-review.txt"
+          for heading in 'Cover and provenance' 'Brand decision and palette' 'Header desktop/mobile' 'Mobile menu open/closed' 'Home desktop/mobile/200%' 'Library desktop/mobile/filters' 'Commerce desktop/mobile' 'Book Detail — Dracula' 'Book Detail — Devdas (Bengali)' 'Reader desktop/mobile/high zoom' 'Listener desktop/mobile/high zoom' 'Login/Signup' 'Account/My Library' 'Journal/Article' 'Contact/Micro-story' '404/410' 'Footer 100%/200%' 'Firefox/WebKit comparison' 'Static-snapshot parity' 'Interaction and accessibility summary' 'Route-hash carry-forward' 'Known product limitations' 'Owner decision checklist'; do grep -Fq "$heading" "$RUNNER_TEMP/owner-review.txt"; done
+          find "$EVIDENCE_ROOT/package" -maxdepth 2 -type f -printf '%P\n' | sort > "$RUNNER_TEMP/package-top-level-inventory.txt"
+          "$PYTHON_BIN" - "$RUNNER_TEMP/final-package-qa-results.json" "$EVIDENCE_ROOT/package" "$RUNNER_TEMP/final-package-test-report.json" "$RUNNER_TEMP/owner-review.txt" "$RUNNER_TEMP/pdf-pages" "$RUNNER_TEMP/package-server.log" <<'PY'
+          import json, sys
+          from pathlib import Path
+          from PIL import Image
+
+          result_path, package_path, report_path, text_path, pages_path, server_log_path = map(Path, sys.argv[1:])
+          package = package_path
+          report = json.loads(report_path.read_text())
+          text = text_path.read_text(errors='replace')
+          required_headings = ['Cover and provenance', 'Brand decision and palette', 'Header desktop/mobile', 'Mobile menu open/closed', 'Home desktop/mobile/200%', 'Library desktop/mobile/filters', 'Commerce desktop/mobile', 'Book Detail — Dracula', 'Book Detail — Devdas (Bengali)', 'Reader desktop/mobile/high zoom', 'Listener desktop/mobile/high zoom', 'Login/Signup', 'Account/My Library', 'Journal/Article', 'Contact/Micro-story', '404/410', 'Footer 100%/200%', 'Firefox/WebKit comparison', 'Static-snapshot parity', 'Interaction and accessibility summary', 'Route-hash carry-forward', 'Known product limitations', 'Owner decision checklist']
+          gates = {}
+          def record(name, passed, command, observed, expected, diagnostic):
+              gates[name] = {'result': 'PASS' if passed else 'FAIL', 'command_or_validator': command, 'observed_value': observed, 'expected_value': expected, 'diagnostic_file_path': diagnostic}
+          required_package = ['owner-review.html', 'owner-review.pdf', 'contact-sheet.png', 'artifact.zip', 'manifest.json', 'manifest.sha256']
+          record('generator', all((package / item).is_file() and (package / item).stat().st_size > 0 for item in required_package), 'generate_seamless_brand_final_owner_review.py', required_package, 'all generated package files non-empty', str(package))
+          record('package_tests', report.get('result') == 'PASS' and report.get('real_package_validation_executed') is True and report.get('real_package_validation_result') == 'PASS' and not report.get('missing_required_case_names') and not report.get('duplicate_case_names'), 'test_seamless_brand_final_owner_review.mjs --report-json', report.get('test_case_count'), 'PASS real-package named test report', str(report_path))
+          record('HTML_server', server_log_path.is_file(), 'python -m http.server', 'package server log present', 'reachable local package server', str(server_log_path))
+          html = (package / 'owner-review.html').read_text()
+          import re
+          references = re.findall(r'<img[^>]+src="([^"]+)"', html)
+          record('HTML_image_references', bool(references) and all((package / reference).is_file() for reference in references), 'owner-review.html image-reference validation', len(references), 'all image references resolve inside package', str(package / 'owner-review.html'))
+          record('HTML_private_path_scan', all(token not in html for token in ('/tmp/', '/private/', '/Users/')), 'owner-review.html private-path scan', 'no private path tokens', 'no private paths', str(package / 'owner-review.html'))
+          pdf = package / 'owner-review.pdf'
+          record('PDF_signature', pdf.read_bytes().startswith(b'%PDF-'), 'PDF signature', pdf.read_bytes()[:5].decode(errors='replace'), '%PDF-', str(pdf))
+          page_images = sorted(pages_path.glob('*.png'))
+          record('PDF_page_count', len(page_images) >= 22, 'pdfinfo/pdftoppm', len(page_images), '>= 22 pages', str(pages_path))
+          record('PDF_page_render', len(page_images) >= 22 and all(Image.open(item).width > 0 and Image.open(item).height > 0 for item in page_images), 'pdftoppm', len(page_images), 'all pages render', str(pages_path))
+          record('PDF_nonblank_pages', bool(page_images) and all(Image.open(item).getbbox() is not None for item in page_images), 'Pillow image getbbox', len(page_images), 'all rendered pages nonblank', str(pages_path))
+          missing_headings = [heading for heading in required_headings if heading not in text]
+          record('PDF_required_headings', not missing_headings, 'pdftotext file extraction', {'present': len(required_headings) - len(missing_headings), 'missing': missing_headings}, f'{len(required_headings)} required headings', str(text_path))
+          contact = package / 'contact-sheet.png'
+          contact_image = Image.open(contact)
+          record('contact_sheet_signature', contact.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'), 'PNG signature', contact.read_bytes()[:8].hex(), '89504e470d0a1a0a', str(contact))
+          record('contact_sheet_dimensions', contact_image.width > 0 and contact_image.height > 0, 'Pillow dimensions', [contact_image.width, contact_image.height], 'positive dimensions', str(contact))
+          record('contact_sheet_nonblank', contact_image.getbbox() is not None, 'Pillow image getbbox', contact_image.getbbox() is not None, 'nonblank image', str(contact))
+          all_pass = all(gate['result'] == 'PASS' for gate in gates.values())
+          payload = {'schema_version': 1, 'result': 'PASS' if all_pass else 'FAIL', 'subgates': gates, 'final_result': 'PASS' if all_pass else 'FAIL'}
+          result_path.write_text(json.dumps(payload, indent=2) + '\n')
+          if not all_pass:
+              failed = ', '.join(name for name, gate in gates.items() if gate['result'] != 'PASS')
+              raise SystemExit(f'final package QA failed: {failed}')
+          PY
+          echo "PACKAGE_DIR=$EVIDENCE_ROOT/package" >> "$GITHUB_ENV"
+
+      - name: Validate final package
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_seamless_brand_final_owner_review.py --package "$PACKAGE_DIR"
+          unzip -t "$PACKAGE_DIR/artifact.zip"
+
+      - id: package-metadata
+        name: Prepare compact upload envelope
+        run: |
+          set -euo pipefail
+          ARTIFACT_NAME="pr344-seamless-brand-final-review-${PR_HEAD_SHA}"
+          ENVELOPE="$RUNNER_TEMP/$ARTIFACT_NAME"
+          mkdir -p "$ENVELOPE"
+          for item in owner-review.html owner-review.pdf contact-sheet.png executive-summary.json visual-decision-checklist.json final-evidence-inputs.json provenance.json manifest.json manifest.sha256 package-statistics.json artifact.zip; do cp "$PACKAGE_DIR/$item" "$ENVELOPE/$item"; done
+          cp "$RUNNER_TEMP/final-package-test-report.json" "$ENVELOPE/final-package-test-report.json"
+          cp "$RUNNER_TEMP/final-package-qa-results.json" "$ENVELOPE/final-package-qa-results.json"
+          cp "$RUNNER_TEMP/pdf-tooling-preflight.json" "$ENVELOPE/pdf-tooling-preflight.json"
+          node - "$PACKAGE_DIR" "$ENVELOPE" <<'JS'
+          const fs=require('fs'), path=require('path'); const [source,target]=process.argv.slice(2);
+          const html=fs.readFileSync(path.join(source,'owner-review.html'),'utf8');
+          for (const match of html.matchAll(/<img[^>]+src="([^"]+)"/g)) { const rel=match[1]; const from=path.join(source,rel), to=path.join(target,rel); fs.mkdirSync(path.dirname(to),{recursive:true}); fs.copyFileSync(from,to); }
+          JS
+          cat > "$ENVELOPE/README.md" <<EOF
+          # PR #${PR_NUMBER} seamless-brand owner review
+
+          Exact PR head: ${PR_HEAD_SHA}
+          Production evidence head: dc2fababbe531f51b90fc9dcb6c584ece86838c2
+          This is an owner-review candidate. Deterministic Reader and Listener fixtures do not activate Reading Pass v2 or audio.
+          Review build: DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED. Production-contract and review-fixture build hashes are recorded in final-evidence-inputs.json.
+          The complete manifest-governed evidence population is contained in artifact.zip.
+          EOF
+          cat > "$ENVELOPE/publication-summary.json" <<EOF
+          {"artifact_name":"${ARTIFACT_NAME}","workflow_run_id":"${GITHUB_RUN_ID}","pr_head":"${PR_HEAD_SHA}","retention_days":30,"package_generation_result":"PASS","uploader_outputs":"recorded in the workflow summary and independent verifier"}
+          EOF
+          printf 'artifact_name=%s\nenvelope=%s\n' "$ARTIFACT_NAME" "$ENVELOPE" >> "$GITHUB_OUTPUT"
+          echo "ENVELOPE=$ENVELOPE" >> "$GITHUB_ENV"
+
+      - id: upload-final
+        name: Upload final owner-review envelope
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.package-metadata.outputs.artifact_name }}
+          path: ${{ steps.package-metadata.outputs.envelope }}
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Record publication outputs
+        env:
+          ARTIFACT_NAME: ${{ steps.package-metadata.outputs.artifact_name }}
+          GITHUB_ARTIFACT_ID: ${{ steps.upload-final.outputs.artifact-id }}
+          GITHUB_ARTIFACT_URL: ${{ steps.upload-final.outputs.artifact-url }}
+          GITHUB_ARTIFACT_DIGEST: ${{ steps.upload-final.outputs.artifact-digest }}
+        run: |
+          set -euo pipefail
+          test -n "$GITHUB_ARTIFACT_ID"; test -n "$GITHUB_ARTIFACT_URL"; test -n "$GITHUB_ARTIFACT_DIGEST"
+          {
+            echo "## Final seamless-brand owner-review artifact"
+            echo "- Name: $ARTIFACT_NAME"
+            echo "- ID: $GITHUB_ARTIFACT_ID"
+            echo "- URL: $GITHUB_ARTIFACT_URL"
+            echo "- GITHUB_ARTIFACT_DIGEST: $GITHUB_ARTIFACT_DIGEST"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload failed-run diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr344-seamless-brand-final-diagnostic-${{ needs.resolve-pr-head.outputs.pr_head }}
+          path: |
+            ${{ runner.temp }}/server.log
+            ${{ runner.temp }}/package-server.log
+            ${{ runner.temp }}/frontend-production-contract-build.log
+            ${{ runner.temp }}/frontend-review-fixture-build.log
+            ${{ runner.temp }}/final-ci-sanitized-fixture-root-cause.json
+            ${{ runner.temp }}/visual-fixture-deployment-isolation.json
+            ${{ runner.temp }}/final-package-tests.log
+            ${{ runner.temp }}/final-package-test-report.json
+            ${{ runner.temp }}/final-package-qa-results.json
+            ${{ runner.temp }}/pdf-tooling-preflight.json
+            ${{ runner.temp }}/pdfinfo.txt
+            ${{ runner.temp }}/owner-review.txt
+            ${{ runner.temp }}/package-top-level-inventory.txt
+            ${{ runner.temp }}/package-server.log
+          if-no-files-found: warn
+          retention-days: 7
+
+  verify-published-owner-review:
+    needs: seamless-brand-review
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PR_HEAD_SHA: ${{ needs.seamless-brand-review.outputs.pr_head }}
+      ARTIFACT_NAME: ${{ needs.seamless-brand-review.outputs.artifact_name }}
+      ARTIFACT_ID: ${{ needs.seamless-brand-review.outputs.artifact_id }}
+      GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
+      GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
+      PRODUCTION_SURFACE_SHA: dfb718d6fdcb76d34cb55bbf1c752814fae77ec224a24e7fe746ce741c09cea3
+      CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.seamless-brand-review.outputs.pr_head }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install verifier dependencies and confirm exact checkout
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$PR_HEAD_SHA"
+          python3 -m pip install --disable-pip-version-check Pillow==10.3.0
+          for tool in pdfinfo pdftoppm pdftotext; do command -v "$tool" >/dev/null || { sudo apt-get update; sudo apt-get install -y --no-install-recommends poppler-utils; break; }; done
+          command -v pdfinfo; command -v pdftoppm; command -v pdftotext
+
+      - name: Download exact published owner-review artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: ${{ needs.seamless-brand-review.outputs.artifact_name }}
+          path: ${{ runner.temp }}/downloaded-owner-review
+
+      - name: Independently verify downloaded envelope and inner package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          ENVELOPE="$RUNNER_TEMP/downloaded-owner-review"
+          test -d "$ENVELOPE"
+          for item in README.md owner-review.html owner-review.pdf contact-sheet.png executive-summary.json visual-decision-checklist.json final-evidence-inputs.json provenance.json manifest.json manifest.sha256 package-statistics.json publication-summary.json artifact.zip final-package-test-report.json final-package-qa-results.json pdf-tooling-preflight.json; do test -s "$ENVELOPE/$item"; done
+          test -z "$(find "$ENVELOPE" -type l -print -quit)"
+          python3 - "$ENVELOPE" <<'PY'
+          import re, sys
+          from pathlib import Path
+          root=Path(sys.argv[1]); html=(root/'owner-review.html').read_text(); refs=re.findall(r'<img[^>]+src="([^"]+)"', html)
+          assert refs and all((root/ref).is_file() for ref in refs)
+          PY
+          test "$ARTIFACT_NAME" = "pr344-seamless-brand-final-review-${PR_HEAD_SHA}"
+          test -n "$ARTIFACT_ID"; test -n "$GITHUB_ARTIFACT_URL"; test -n "$GITHUB_ARTIFACT_DIGEST"
+          jq -e '.result == "PASS" and .test_case_count == (.executed_case_names|length) and (.test_case_count >= 31) and (.missing_required_case_names|length == 0) and (.duplicate_case_names|length == 0) and .real_package_validation_executed and .real_package_validation_result == "PASS"' "$ENVELOPE/final-package-test-report.json"
+          jq -e '.result == "PASS" and .final_result == "PASS" and ([.subgates[] | select(.result != "PASS")] | length == 0)' "$ENVELOPE/final-package-qa-results.json"
+          jq -e '.result == "PASS" and (.tools.pdfinfo.path | length > 0) and (.tools.pdftoppm.path | length > 0) and (.tools.pdftotext.path | length > 0)' "$ENVELOPE/pdf-tooling-preflight.json"
+          gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/${ARTIFACT_ID}/zip" > "$RUNNER_TEMP/downloaded-owner-review-envelope.zip"
+          DOWNLOADED_ARTIFACT_ARCHIVE_SHA256="$(sha256sum "$RUNNER_TEMP/downloaded-owner-review-envelope.zip" | awk '{print $1}')"
+          INNER_ARTIFACT_ZIP_SHA256="$(sha256sum "$ENVELOPE/artifact.zip" | awk '{print $1}')"
+          CLEAN_EXTRACT="$RUNNER_TEMP/extracted-owner-review-clean"
+          VALIDATOR_PACKAGE="$RUNNER_TEMP/extracted-owner-review-validator"
+          mkdir -p "$CLEAN_EXTRACT" "$VALIDATOR_PACKAGE"
+          unzip -q "$ENVELOPE/artifact.zip" -d "$CLEAN_EXTRACT"
+          test ! -e "$CLEAN_EXTRACT/artifact.zip"
+          python3 scripts/verify_seamless_brand_clean_extraction.py --package "$CLEAN_EXTRACT" --report-json "$RUNNER_TEMP/clean-extraction-verification.json"
+          CLEAN_TREE_SHA256_BEFORE="$(find "$CLEAN_EXTRACT" -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | awk '{print $1}')"
+          python3 - "$CLEAN_EXTRACT" <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          package=Path(sys.argv[1]); provenance=json.loads((package/'provenance.json').read_text()); inputs=json.loads((package/'final-evidence-inputs.json').read_text())
+          assert provenance['package_generation_head'] == os.environ['PR_HEAD_SHA']
+          assert inputs['production_surface_sha256'] == os.environ['PRODUCTION_SURFACE_SHA']
+          assert inputs['canonical_logo_sha256'] == os.environ['CANONICAL_LOGO_SHA']
+          modes=inputs['build_modes']
+          assert modes['production_contract']['label'] == 'PRODUCTION_CONTRACT_BUILD_FIXTURES_DISABLED'
+          assert modes['production_contract']['fixture_enabled'] is False
+          assert modes['review_fixture']['label'] == 'DETERMINISTIC_VISUAL_FIXTURE_BUILD_NOT_DEPLOYED'
+          assert modes['review_fixture']['fixture_enabled'] is True and modes['review_fixture']['not_deployed'] is True
+          assert all(len(modes[key]['sha256']) == 64 for key in ['production_contract','review_fixture'])
+          assert modes['probe_result'] == modes['deployment_isolation_result'] == 'PASS'
+          chromium=json.loads((package/'chromium-summary.json').read_text()); assert (chromium['expected_state_count'],chromium['captured_state_count'],chromium['stable_state_count']) == (65,65,65)
+          for name in ['firefox-summary.json','webkit-summary.json']:
+              data=json.loads((package/name).read_text()); assert (data['expected_state_count'],data['captured_state_count'],data['stable_state_count']) == (20,20,20)
+          assert json.loads((package/'static-snapshot-brand-results.json').read_text())['result'] == 'PASS'
+          stats=json.loads((package/'package-statistics.json').read_text())
+          assert sum(1 for item in package.rglob('*') if item.is_file()) == stats['extracted_verification_file_count']
+          representatives=['home-desktop','home-mobile-zoom-200','library-desktop','library-filters-open-390','commerce-desktop','commerce-mobile','book-detail-desktop','secondary-book-desktop','reader-desktop','reader-mobile-320-zoom-200','approved-listener-desktop','listener-mobile-320-zoom-200','login-desktop','signup-desktop','account-desktop','my-library-desktop','journal-desktop','article-desktop','contact-desktop','micro-story-desktop','error-404-desktop','tombstone-410-desktop','library-footer-mobile-zoom-100','library-footer-mobile-zoom-200']
+          from PIL import Image
+          for state in representatives:
+              image=Image.open(package/'screenshots'/'chromium'/'states'/state/'viewport.png'); assert image.width > 0 and image.height > 0 and image.getbbox() is not None
+          PY
+          test ! -e "$CLEAN_EXTRACT/artifact.zip"
+          cp -a "$CLEAN_EXTRACT"/. "$VALIDATOR_PACKAGE"/
+          cp "$ENVELOPE/artifact.zip" "$VALIDATOR_PACKAGE/artifact.zip"
+          python3 scripts/validate_seamless_brand_final_owner_review.py --package "$VALIDATOR_PACKAGE"
+          CLEAN_TREE_SHA256_AFTER="$(find "$CLEAN_EXTRACT" -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | awk '{print $1}')"
+          test "$CLEAN_TREE_SHA256_BEFORE" = "$CLEAN_TREE_SHA256_AFTER"
+          mkdir -p "$RUNNER_TEMP/verify-pdf-pages"
+          pdftoppm -png -r 100 "$ENVELOPE/owner-review.pdf" "$RUNNER_TEMP/verify-pdf-pages/page"
+          python3 - "$RUNNER_TEMP/verify-pdf-pages" "$ENVELOPE/contact-sheet.png" <<'PY'
+          import sys
+          from pathlib import Path
+          from PIL import Image
+          pages=sorted(Path(sys.argv[1]).glob('*.png')); assert len(pages) >= 22
+          assert all(Image.open(page).getbbox() is not None for page in pages)
+          assert Image.open(sys.argv[2]).getbbox() is not None
+          PY
+          python3 - "$CLEAN_EXTRACT" <<'PY'
+          import re, sys
+          from pathlib import Path
+          root=Path(sys.argv[1]); text='\n'.join(file.read_text(errors='ignore') for file in root.rglob('*') if file.is_file() and file.suffix in {'.json','.html','.txt','.sha256'})
+          assert not re.search(r'(?:^|["\'\s])/(?:tmp|private(?:/tmp)?|Users)/', text)
+          assert not re.search(r'review@example\.invalid|access[_ -]?token|refresh[_ -]?token|owner@', text, re.I)
+          assert not re.search(r'https?://[^\s"\']*(?:audio|media|stream)[^\s"\']*', text, re.I)
+          assert 'PROTECTED_READER_TEXT' not in text
+          PY
+          cat > "$RUNNER_TEMP/publication-verification-summary.json" <<EOF
+          {"result":"PASS","artifact_name":"${ARTIFACT_NAME}","artifact_id":"${ARTIFACT_ID}","artifact_url":"${GITHUB_ARTIFACT_URL}","github_artifact_digest":"${GITHUB_ARTIFACT_DIGEST}","downloaded_artifact_archive_sha256":"${DOWNLOADED_ARTIFACT_ARCHIVE_SHA256}","inner_artifact_zip_sha256":"${INNER_ARTIFACT_ZIP_SHA256}"}
+          EOF
+          cat "$RUNNER_TEMP/publication-verification-summary.json" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload verifier diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr344-seamless-brand-final-diagnostic-${{ needs.seamless-brand-review.outputs.pr_head }}-verify
+          path: |
+            ${{ runner.temp }}/downloaded-owner-review
+            ${{ runner.temp }}/publication-verification-summary.json
+          if-no-files-found: warn
+          retention-days: 7

@@ -1,0 +1,24 @@
+{
+  "result": "PASS",
+  "primary_classification": "WEBKIT_TEXT_RASTER_ONLY_NONDETERMINISM",
+  "contributing_classifications": ["WEBKIT_HEADER_STABILIZATION_STYLE_CHURN"],
+  "production_ui_defect": false,
+  "evidence": {
+    "dom_fingerprint": "unchanged",
+    "layout_fingerprint": "unchanged",
+    "font_fingerprint": "unchanged",
+    "scroll_fingerprint": "unchanged",
+    "capture_type": "VIEWPORT_ONLY",
+    "pixel_difference_bounding_box": [0, 145, 390, 454],
+    "maximum_per_channel_difference": 2,
+    "brand_close_up_exact": true,
+    "parent_surface_exact": true
+  },
+  "harness_correction": [
+    "wait for Article visual quiescence",
+    "hold one WebKit stabilization stylesheet through each comparison pair",
+    "use clip-based page screenshots for close-ups",
+    "avoid no-op scroll restoration and post-screenshot frame churn",
+    "prime WebKit Article rasterization without accepting a mismatched final pair"
+  ]
+}
