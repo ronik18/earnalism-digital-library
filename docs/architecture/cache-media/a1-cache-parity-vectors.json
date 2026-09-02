@@ -1,0 +1,18 @@
+{
+  "schema_version": "cache-media-a1-parity-vectors.v1",
+  "fixture_policy": "synthetic identifiers and values only; no Redis URL or credential",
+  "keys": {
+    "public_catalog": "books:{\"catalog_truth\": \"controlled-covers-v1\", \"category\": \"all\", \"q\": \"\", \"truth_gate\": \"audio-contract-v16\"}",
+    "home": "home_payload:{\"books_limit\": 8, \"books_offset\": 0, \"catalog_truth\": \"controlled-covers-v1\", \"truth_gate\": \"audio-contract-v16\"}",
+    "book_metadata": "book_detail:{\"catalog_truth\": \"controlled-covers-v1\", \"slug\": \"synthetic-book\", \"truth_gate\": \"audio-contract-v16\"}",
+    "chapter_metadata": "book_chapter:{\"catalog_truth\": \"controlled-covers-v1\", \"chapter_id\": \"chapter-001\", \"slug\": \"synthetic-book\", \"truth_gate\": \"audio-contract-v16\"}",
+    "user": "earnalism:user:synthetic-user", "session": "earnalism:user-session:synthetic-session", "wallet": "earnalism:user-wallet:synthetic-user", "listener_manifest": "earnalism:cache:reader-manifest:08e9b65028a3c6decd5390194b339834e7b50b352e3c60d991c09c0723c1a922", "public_generation": "earnalism:public-cache:generation", "reader_generation": "earnalism:reader-content-cache:generation"
+  },
+  "codec": [
+    {"name":"small","marker":"p:","length":29,"sha256":"edf72472ef5381207fca0b7f3b4f473e2429ff4690613d48d6d8ee18cd722c1d","ttl":20},
+    {"name":"large","marker":"z:","length":65,"sha256":"561d1ca531e2ec0cf11313700cf6d92a141f569dd7cb9135d6a60c2e362f6302","ttl":300}
+  ],
+  "ttl_max_jitter": {"0":0,"1":1,"8":9,"20":24,"300":330,"1800":1830},
+  "client": {"connect_timeout":2.0,"socket_timeout":2.0,"retry_on_timeout":true,"decode_responses":false},
+  "required_notes": ["CURRENT_PICKLE_BEHAVIOR_PRESERVED_TEMPORARILY_FOR_A1_PARITY","A2_MIGRATION_REQUIRED"]
+}
