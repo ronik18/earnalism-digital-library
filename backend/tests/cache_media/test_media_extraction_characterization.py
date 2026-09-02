@@ -194,6 +194,9 @@ def test_audio_async_streaming_is_off_loop_and_closes_on_early_disconnect():
     assert after["opened"] == before["opened"] + 1
     assert after["closed"] == before["closed"] + 1
     assert after["cancelled"] == before["cancelled"] + 1
+    assert after["chunks_emitted"] == before["chunks_emitted"] + 1
+    assert after["bytes_emitted"] == before["bytes_emitted"] + len(b"audio")
+    assert after["byte_buckets"]["le_64k"] >= before["byte_buckets"].get("le_64k", 0) + 1
 
 
 def test_audio_async_streaming_closes_before_first_byte_without_blocking_heartbeat():

@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import asyncio
+import logging
 from collections import Counter
 from threading import Lock
 from typing import Any, AsyncIterator
 
 CHUNK_SIZE = 1024 * 1024
+logger = logging.getLogger(__name__)
 
 
 class _StreamDiagnostics:
@@ -18,6 +20,11 @@ class _StreamDiagnostics:
     def record(self, name: str) -> None:
         with self._lock:
             self._counters[name] += 1
+            if name == "opened":
+                self._counters["active_peak"] = max(
+                    self._counters["active_peak"],
+                    self._counters["opened"] - self._counters["closed"],
+                )
 
     def snapshot(self) -> dict[str, Any]:
         with self._lock:
@@ -25,11 +32,19 @@ class _StreamDiagnostics:
             closed = self._counters["closed"]
             return {
                 "active_streams": max(opened - closed, 0),
+                "active_streams_peak": self._counters["active_peak"],
                 "opened": opened,
                 "closed": closed,
                 "cancelled": self._counters["cancelled"],
                 "read_errors": self._counters["read_errors"],
                 "close_errors": self._counters["close_errors"],
+                "chunks_emitted": self._counters["chunks_emitted"],
+                "bytes_emitted": self._counters["bytes_emitted"],
+                "byte_buckets": {
+                    key.removeprefix("byte_bucket:"): value
+                    for key, value in sorted(self._counters.items())
+                    if key.startswith("byte_bucket:")
+                },
                 "request_results": {
                     key.removeprefix("request:"): value
                     for key, value in sorted(self._counters.items())
@@ -78,6 +93,15 @@ def record_consistency(result: str) -> None:
     _diagnostics.record(f"consistency:{safe_result}")
 
 
+def record_stream_chunk(size: int) -> None:
+    _diagnostics.record("chunks_emitted")
+    _diagnostics.record("bytes_emitted")
+    with _diagnostics._lock:
+        _diagnostics._counters["bytes_emitted"] += max(size - 1, 0)
+        bucket = "le_64k" if size <= 64 * 1024 else "le_1m" if size <= CHUNK_SIZE else "gt_1m"
+        _diagnostics._counters[f"byte_bucket:{bucket}"] += 1
+
+
 def streaming_body_iterator(body):
     try:
         while True:
@@ -110,20 +134,24 @@ class AsyncStreamingBody(AsyncIterator[bytes]):
             chunk = await asyncio.to_thread(self._body.read, CHUNK_SIZE)
         except asyncio.CancelledError:
             _diagnostics.record("cancelled")
+            logger.info("audio_delivery_stream_cancelled")
             await self._close()
             raise
         except BaseException:
             _diagnostics.record("read_errors")
+            logger.warning("audio_delivery_stream_read_error")
             await self._close()
             raise
         if not chunk:
             await self._close()
             raise StopAsyncIteration
+        record_stream_chunk(len(chunk))
         return chunk
 
     async def aclose(self) -> None:
         if not self._closed:
             _diagnostics.record("cancelled")
+            logger.info("audio_delivery_stream_cancelled")
         await self._close()
 
     async def _close(self) -> None:
@@ -137,6 +165,7 @@ class AsyncStreamingBody(AsyncIterator[bytes]):
                     await asyncio.to_thread(close)
             except BaseException:
                 _diagnostics.record("close_errors")
+                logger.warning("audio_delivery_stream_close_error")
             finally:
                 _diagnostics.record("closed")
 
