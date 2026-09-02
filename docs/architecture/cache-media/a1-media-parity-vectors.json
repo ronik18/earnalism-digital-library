@@ -1,0 +1,18 @@
+{
+  "schema_version": "cache-media-a1-media-parity-vectors.v1",
+  "fixture_policy": "synthetic stores, object keys, bodies, and validators only; no credential or private URL values",
+  "range": {
+    "count": 21,
+    "valid_and_clipped": ["bytes=0-0", "bytes=0-1023", "bytes=1024-", "bytes=-1", "bytes=-1024", "bytes=-4096", "bytes=0-4096"],
+    "unsatisfiable": ["bytes=2048-", "bytes=2049-", "bytes=1024-1023", "bytes=-0", "bytes="],
+    "malformed": ["items=0-1", "bytes0-1", "bytes=a-b", "bytes=0-0,2-3", "bytes= 0-0"],
+    "whitespace_accepted": " bytes=0-0 ",
+    "edge_sizes": {"0": "416", "1": "bytes=0-0"}
+  },
+  "upstream_range_response": {"count": 9, "exact": true, "clipped_end": true, "suffix": true, "wrong_start": false, "wrong_end": false, "total_mismatch_currently_accepted": true, "wrong_content_length": false, "malformed_or_absent": false},
+  "etag": {"count": 7, "absent_etag": false, "absent_if_none_match": false, "exact_quoted": true, "comma_separated": true, "wildcard": true, "weak_current_behavior": true, "whitespace": true},
+  "storage_url": {"count": 10, "path_style": true, "virtual_hosted": true, "matching_bucket": true, "wrong_bucket": false, "matching_host": true, "wrong_host": false, "encoded_key": true, "empty_path": false, "non_http": false, "unknown_backblaze": false},
+  "client": {"stores": "one client per configured store name", "reuse": true, "addressing_style": "path", "import_time_creation": false, "missing_configuration_status": 503},
+  "streaming": {"chunk_size": 1048576, "normal_close": 1, "exception_close": 1, "early_close": 1, "empty_yields": 0, "read_all": false},
+  "policy": {"mp3": "audio/mpeg", "timestamps": "application/json", "vtt": "text/vtt", "unknown": "application/octet-stream", "mp3_cache_control": "private, max-age=600, stale-while-revalidate=3600", "sidecar_cache_control": "private, max-age=3600, stale-while-revalidate=86400"}
+}
