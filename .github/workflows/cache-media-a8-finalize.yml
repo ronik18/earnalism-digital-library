@@ -19,7 +19,9 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
       - run: pip install -r backend/requirements.txt
-      - run: npm ci --prefix frontend
+      # The checked-in frontend lockfile predates declared React 19 type packages;
+      # use the repository-supported install path inside this disposable runner.
+      - run: npm install --prefix frontend --legacy-peer-deps
       - name: Start and initialize disposable MongoDB replica set
         run: |
           docker run --detach --name cache-media-a8-mongo --publish 27017:27017 mongo:7 mongod --bind_ip_all --replSet earnalism-uat-rs0
