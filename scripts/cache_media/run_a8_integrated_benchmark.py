@@ -86,6 +86,7 @@ class CountingRedis:
     async def ping(self) -> Any: return await self._call("ping")
     async def info(self, *args: Any, **kwargs: Any) -> Any: return await self._call("info", *args, **kwargs)
     async def config_get(self, *args: Any, **kwargs: Any) -> Any: return await self._call("config_get", *args, **kwargs)
+    async def config_set(self, *args: Any, **kwargs: Any) -> Any: return await self._call("config_set", *args, **kwargs)
 
 
 class UnavailableRedis:
@@ -307,6 +308,10 @@ async def main_async(args: argparse.Namespace) -> None:
     counter = CountingRedis(client); known_keys: set[str] = set()
     try:
         await counter.ping()
+        # The GitHub service image's defaults include snapshot rules.  Disable
+        # them on this disposable service before any benchmark key is created.
+        await counter.config_set("save", "")
+        await counter.config_set("appendonly", "no")
         config = await counter.config_get("appendonly", "save")
         appendonly = (config.get("appendonly") or b"").decode() if isinstance(config.get("appendonly"), bytes) else str(config.get("appendonly", ""))
         save = (config.get("save") or b"").decode() if isinstance(config.get("save"), bytes) else str(config.get("save", ""))
@@ -320,7 +325,7 @@ async def main_async(args: argparse.Namespace) -> None:
         fixtures = {policy: {"sha256": details["fixture_sha256"], "canonical_json_bytes": details["canonical_json_bytes"]} for policy, details in cache["per_policy"].items()}
         out = {"schema_version": "cache-media-a8-integrated-benchmark.v2", "target_sha": args.target_sha,
                "environment_fingerprint": {"redis_version": (await counter.info("server"))["redis_version"], "rss_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, "python": "3.11", "ci_ephemeral": True},
-               "redis_configuration": {"result": "PASS", "url_bind_loopback": True, "appendonly": appendonly, "save": save, "persistence_disabled": True},
+               "redis_configuration": {"result": "PASS", "url_bind_loopback": True, "appendonly": appendonly, "save": save, "persistence_disabled": True, "configured_before_fixture_write": True},
                "policy_contract": {"active_policy_count": len(ACTIVE_CACHE_POLICIES), "cache_policy_decision_changes": 0, "active_pickle_read_count": 0, "active_pickle_write_count": 0, "audio_redis_write_count": 0, "pdf_redis_write_count": 0, "data_uri_redis_write_count": 0},
                "fixture_manifest": fixtures, "cache": cache, "concurrency": concurrency, "audio": audio, "frontend_lifecycle": frontend,
                "cleanup": {"known_synthetic_key_count": len(known_keys), "residual_before_cleanup": residual, "residual_after_cleanup": residual_after, "result": "PASS" if residual_after == 0 else "FAIL"},
