@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "sample_count": 4,
+  "sample_interval_ms": 150,
+  "geometry_fingerprint_result": "PASS",
+  "font_fingerprint_result": "PASS",
+  "document_fonts_status": "loaded",
+  "visible_font_specifications": [
+    "normal 300 36px Cormorant Garamond",
+    "normal 400 12px Outfit",
+    "normal 400 17.280001px Georgia"
+  ],
+  "exact_font_load_result": "PASS"
+}

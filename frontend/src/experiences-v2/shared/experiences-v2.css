@@ -1,15 +1,15 @@
-.experience-v2 { --ev2-ink: var(--eds-ink, #091310); --ev2-surface: color-mix(in srgb, var(--eds-ink, #091310) 92%, var(--eds-paper, #fbf7ef)); --ev2-ivory: var(--eds-paper, #fbf7ef); --ev2-gold: var(--eds-gold, #d5ad56); --ev2-line: var(--eds-line, rgba(213, 173, 86, .24)); --ev2-ui: var(--eds-ui, Outfit, "Noto Sans Bengali"); --ev2-display: var(--eds-display, "Cormorant Garamond", "Noto Serif Bengali"); min-height: 100dvh; background: var(--ev2-ink); color: var(--ev2-ivory); font-family: var(--ev2-ui); }
+.experience-v2 { --ev2-ink: var(--eds-ink, #17090e); --ev2-surface: color-mix(in srgb, var(--eds-ink, #17090e) 92%, var(--eds-paper, #fff9ee)); --ev2-ivory: var(--eds-paper, #fff9ee); --ev2-gold: var(--eds-gold, #dfb85a); --ev2-line: var(--eds-line, rgba(223, 184, 90, .28)); --ev2-ui: var(--eds-ui, Outfit, "Noto Sans Bengali"); --ev2-display: var(--eds-display, "Cormorant Garamond", "Noto Serif Bengali"); min-height: 100dvh; background: var(--ev2-ink); color: var(--ev2-ivory); font-family: var(--ev2-ui); }
 .experience-v2 *, .experience-v2 *::before, .experience-v2 *::after { box-sizing: border-box; }
 .experience-v2 button, .experience-v2 a { font: inherit; }
 .experience-v2 button:focus-visible, .experience-v2 a:focus-visible, .experience-v2 input:focus-visible { outline: 2px solid var(--ev2-gold); outline-offset: 3px; }
-.experience-header { min-height: 42px; padding: 5px 22px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ev2-line); background: color-mix(in srgb, var(--ev2-ink) 94%, transparent); }
+.experience-header { min-height: 68px; padding: 6px 22px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ev2-gold); background: var(--brand-lockup-paper, #fff9ee); }
 .experience-header--compact { min-height: 42px; padding-inline: 16px; }
 .experience-header__actions { display: flex; align-items: center; gap: 11px; }
-.experience-header__label { color: var(--ev2-gold); font-size: 12px; }
-.experience-header .earnalism-brand-lockup { width: min(7.4rem, 40vw); padding: 0; border: 0; border-radius: 0; background: transparent; }
+.experience-header__label { color: #641f27; font-size: 12px; }
+.experience-header .earnalism-brand-lockup { width: min(15rem, 48vw); padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow:none; }
 .experience-header .earnalism-brand-lockup img { display: block; width: 100%; height: auto; }
-@media (max-width: 767px) { .experience-header { min-height: 48px; padding: 5px 16px; }.experience-header .earnalism-brand-lockup { width: min(6.7rem, 38vw); padding:0; } }
-.experience-icon-button { width: 44px; height: 44px; display: inline-grid; place-items: center; border: 1px solid var(--ev2-line); border-radius: 8px; background: transparent; color: var(--ev2-ivory); cursor: pointer; }
+@media (max-width: 767px) { .experience-header { min-height: 68px; padding: 6px 16px; }.experience-header .earnalism-brand-lockup { width: min(13rem, 58vw); padding:0; } }
+.experience-icon-button { width: 44px; height: 44px; display: inline-grid; place-items: center; border: 1px solid rgba(100,31,39,.28); border-radius: 8px; background: transparent; color: #641f27; cursor: pointer; }
 .experience-icon-button:hover:not(:disabled) { background: color-mix(in srgb, var(--ev2-gold) 12%, transparent); }
 .experience-icon-button:disabled { opacity: .45; cursor: not-allowed; }
 .experience-panel { border: 1px solid var(--ev2-line); border-radius: 9px; background: color-mix(in srgb, var(--ev2-surface) 92%, transparent); padding: 16px; }
@@ -19,8 +19,8 @@
 .experience-bottom-nav { display: none; }
 @media (max-width: 767px) { .experience-bottom-nav { position: sticky; bottom: 0; z-index: 3; display: grid; grid-template-columns: repeat(4, 1fr); min-height: 68px; border-top: 1px solid var(--ev2-line); background: var(--ev2-ink); } .experience-bottom-nav button { display: grid; place-items: center; gap: 3px; border: 0; background: none; color: color-mix(in srgb, var(--ev2-ivory) 62%, transparent); font-size: 10px; cursor: pointer; } .experience-bottom-nav button[aria-current="page"] { color: var(--ev2-gold); } }
 @media (prefers-reduced-motion: reduce) { .experience-v2 *, .experience-v2 *::before, .experience-v2 *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
-.experience-v2-route-state { min-height: 100dvh; display: grid; place-items: center; padding: 24px; background: var(--eds-ink, #091310); color: var(--eds-paper, #fbf7ef); font-family: var(--eds-ui, "Outfit", "Noto Sans Bengali"); text-align: center; }
-.experience-v2-route-state__card { max-width: 34rem; padding: 28px; border: 1px solid var(--eds-line, rgba(213, 173, 86, .24)); border-radius: 10px; background: color-mix(in srgb, var(--eds-ink, #091310) 92%, var(--eds-paper, #fbf7ef)); }
+.experience-v2-route-state { min-height: 100dvh; display: grid; place-items: center; padding: 24px; background: var(--eds-ink, #17090e); color: var(--eds-paper, #fff9ee); font-family: var(--eds-ui, "Outfit", "Noto Sans Bengali"); text-align: center; }
+.experience-v2-route-state__card { max-width: 34rem; padding: 28px; border: 1px solid var(--eds-line, rgba(223, 184, 90, .28)); border-radius: 10px; background: color-mix(in srgb, var(--eds-ink, #17090e) 92%, var(--eds-paper, #fff9ee)); }
 .experience-v2-route-state__card h1 { margin: 0 0 10px; font: 600 32px/1.05 var(--eds-display, "Cormorant Garamond", "Noto Serif Bengali"); }
-.experience-v2-route-state__card p { margin: 0; line-height: 1.55; color: color-mix(in srgb, var(--eds-paper, #fbf7ef) 75%, transparent); }
-.experience-v2-route-state__card a, .experience-v2-route-state__card button { display: inline-flex; justify-content: center; min-height: 44px; margin-top: 18px; padding: 10px 16px; border: 1px solid var(--eds-gold, #d5ad56); border-radius: 6px; background: transparent; color: var(--eds-gold, #d5ad56); font: inherit; text-decoration: none; cursor: pointer; }
+.experience-v2-route-state__card p { margin: 0; line-height: 1.55; color: color-mix(in srgb, var(--eds-paper, #fff9ee) 75%, transparent); }
+.experience-v2-route-state__card a, .experience-v2-route-state__card button { display: inline-flex; justify-content: center; min-height: 44px; margin-top: 18px; padding: 10px 16px; border: 1px solid var(--eds-gold, #dfb85a); border-radius: 6px; background: transparent; color: var(--eds-gold, #dfb85a); font: inherit; text-decoration: none; cursor: pointer; }

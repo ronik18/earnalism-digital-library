@@ -1,0 +1,40 @@
+{
+  "schema_version": "earnalism.public-cta-contract.v1",
+  "review_status": "OWNER_REVIEW_PENDING",
+  "rules": [
+    "Direct routes, client navigation, and keyboard activation must work.",
+    "No CTA may be a no-op or a dead link.",
+    "Disabled controls must explain their state.",
+    "Signed-out commerce purchase preserves the existing sign-in return flow.",
+    "Owner-review checkout uses deterministic interception only and never mutates payments."
+  ],
+  "ctas": [
+    {"id":"header-home","surface":"header","label":"Home","destination":"/","kind":"route"},
+    {"id":"header-library","surface":"header","label":"Library","destination":"/library","kind":"route"},
+    {"id":"header-bengali","surface":"header","label":"Bengali Classics","destination":"/library?language=bn","kind":"route"},
+    {"id":"header-english","surface":"header","label":"English Classics","destination":"/library?language=en","kind":"route"},
+    {"id":"header-audiobooks","surface":"header","label":"Audiobooks","destination":"/library?availability=approved-audiobook","kind":"route"},
+    {"id":"header-passes","surface":"header","label":"Reading Passes","destination":"/pricing","kind":"route"},
+    {"id":"header-about","surface":"header","label":"About","destination":"/about","kind":"route"},
+    {"id":"header-search","surface":"header","label":"Search","destination":"/library","kind":"route"},
+    {"id":"header-account","surface":"header","label":"Sign In / Account","destination":"/login or /account","kind":"auth-route"},
+    {"id":"home-library","surface":"home","label":"Enter the Library","destination":"/library","kind":"route"},
+    {"id":"home-listening","surface":"home","label":"Enter the Listening Room","destination":"/library?availability=approved-audiobook","kind":"route"},
+    {"id":"home-browse","surface":"home","label":"Browse the complete library","destination":"/library","kind":"route"},
+    {"id":"home-passes","surface":"home","label":"View Reading Passes","destination":"/pricing","kind":"route"},
+    {"id":"home-book-read","surface":"home","label":"Book Read","destination":"/reader/:slug","kind":"release-gated-route"},
+    {"id":"home-approved-audio","surface":"home","label":"Approved audiobook","destination":"/reader/:slug?listen=1","kind":"release-gated-route"},
+    {"id":"library-search","surface":"library","label":"Search","destination":"URL query state","kind":"control"},
+    {"id":"library-sort","surface":"library","label":"Sort","destination":"URL query state","kind":"control"},
+    {"id":"library-filters","surface":"library","label":"Filters / Apply Filters / Reset","destination":"URL query state","kind":"dialog-control"},
+    {"id":"library-book-read","surface":"library","label":"Book Read","destination":"/reader/:slug","kind":"release-gated-route"},
+    {"id":"library-notify","surface":"library","label":"Notify Me","destination":"/contact?subject=library-release","kind":"route"},
+    {"id":"library-audio","surface":"library","label":"Approved audio state","destination":"/reader/:slug?listen=1","kind":"release-gated-route"},
+    {"id":"library-passes","surface":"library","label":"Reading Pass","destination":"/pricing","kind":"route"},
+    {"id":"commerce-offer","surface":"commerce","label":"Every configured offer purchase","destination":"existing onBuy(pack)","kind":"checkout"},
+    {"id":"commerce-institution","surface":"commerce","label":"Institution pilot","destination":"/contact","kind":"route"},
+    {"id":"commerce-publisher","surface":"commerce","label":"Publisher partnership","destination":"/contact","kind":"route"},
+    {"id":"commerce-gift","surface":"commerce","label":"Gift when configured","destination":"/pricing","kind":"conditional-route"},
+    {"id":"commerce-library","surface":"commerce","label":"Browse Library","destination":"/library","kind":"route"}
+  ]
+}

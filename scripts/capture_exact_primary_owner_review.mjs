@@ -8,6 +8,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 
 const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
@@ -35,7 +36,9 @@ const states = [
   ["library-desktop", "/library", 1440, 1000, "library"], ["library-mobile", "/library", 390, 844, "library"],
   ["library-filter-mobile", "/library", 390, 844, "filter"], ["commerce-desktop", "/pricing", 1440, 1000, "commerce"],
   ["commerce-mobile", "/pricing", 390, 844, "commerce"], ["reading-pass-mobile", "/pricing", 390, 844, "commerce"],
-  ["mobile-navigation", "/", 390, 844, "navigation"], ["book-detail-desktop", "/book/dracula", 1440, 1000, "book"],
+  ["mobile-navigation", "/", 390, 844, "navigation"], ["mobile-navigation-320", "/", 320, 568, "navigation"], ["mobile-navigation-430", "/", 430, 932, "navigation"],
+  ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["mobile-navigation-1024", "/", 1024, 768, "navigation"], ["mobile-navigation-1279", "/", 1279, 800, "navigation"],
+  ["book-detail-desktop", "/book/dracula", 1440, 1000, "book"],
   ["book-detail-mobile", "/book/dracula", 390, 844, "book"], ["reader-desktop", "/reader/dracula?visual-fixture=1", 1440, 1000, "reader"],
   ["reader-mobile", "/reader/dracula?visual-fixture=1", 390, 844, "reader"], ["listener-desktop", "/listener/a-ghost-story?visual-fixture=1", 1440, 1000, "listener"],
   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],
@@ -63,6 +66,108 @@ async function installFixtureRoutes(page) {
     if (url.pathname.includes("reading-pass")) return jsonResponse(route, { enabled: true, balance_seconds: user.reading_pass_seconds });
     return jsonResponse(route, {});
   });
+}
+
+const mobileMenuDiagnostics = () => {
+  const visible = (node) => { const style = getComputedStyle(node); return style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || "1") > 0; };
+  const toggle = window.__earnalismOwnerReviewToggle;
+  const dialog = window.__earnalismOwnerReviewDialog;
+  const header = toggle?.closest('header[data-testid="site-header"]');
+  const box = (node) => {
+    const rect = node?.getBoundingClientRect();
+    return rect ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height, top: rect.top, right: rect.right, bottom: rect.bottom, left: rect.left } : null;
+  };
+  const styleSummary = (node) => {
+    if (!node) return null;
+    const style = getComputedStyle(node);
+    return {
+      tag: node.tagName.toLowerCase(), class: node.className || "", box: box(node), position: style.position, top: style.top, right: style.right, bottom: style.bottom, left: style.left,
+      insetBlock: style.insetBlock, insetInline: style.insetInline, width: style.width, height: style.height, minHeight: style.minHeight, maxHeight: style.maxHeight,
+      display: style.display, visibility: style.visibility, overflow: style.overflow, overflowY: style.overflowY, zIndex: style.zIndex,
+      transform: style.transform, translate: style.translate, scale: style.scale, rotate: style.rotate, filter: style.filter, backdropFilter: style.backdropFilter,
+      perspective: style.perspective, contain: style.contain, containerType: style.containerType, contentVisibility: style.contentVisibility,
+      willChange: style.willChange, clipPath: style.clipPath, isolation: style.isolation,
+      offsetParent: node.offsetParent ? { tag: node.offsetParent.tagName.toLowerCase(), class: node.offsetParent.className || "" } : null,
+      clientHeight: node.clientHeight, scrollHeight: node.scrollHeight,
+    };
+  };
+  const ancestors = [];
+  for (let node = dialog?.parentElement; node; node = node.parentElement) ancestors.push(styleSummary(node));
+  const visibleDialogCount = header ? [...header.children].filter((node) => node.matches?.('[data-testid="mobile-menu"][role="dialog"]') && visible(node)).length : 0;
+  return {
+    schema_version: "earnalism-mobile-menu-containing-block-v1",
+    viewport: { innerHeight: window.innerHeight, innerWidth: window.innerWidth, documentClientHeight: document.documentElement.clientHeight, visualViewportHeight: window.visualViewport?.height || null },
+    siteHeaderHeight: header ? getComputedStyle(header).getPropertyValue("--site-header-height").trim() : null,
+    header: styleSummary(header), dialog: styleSummary(dialog), ancestors, visibleToggleCount: toggle ? 1 : 0, activeVisibleOwnerDialogCount: visibleDialogCount,
+    toggleExpanded: toggle?.getAttribute("aria-expanded") || null, ariaControls: toggle?.getAttribute("aria-controls") || null,
+    ariaModal: dialog?.getAttribute("aria-modal") || null, closeVisible: Boolean(dialog?.querySelector('button[aria-label="Close menu"]') && visible(dialog.querySelector('button[aria-label="Close menu"]'))),
+    requiredRowsVisible: ["mobile-nav-home", "mobile-nav-library", "mobile-nav-reading-passes"].every((id) => { const row = dialog?.querySelector(`[data-testid="${id}"]`); return Boolean(row && visible(row)); }),
+    bodyScrollLocked: document.body.style.overflow === "hidden",
+    backgroundInert: [document.getElementById("main-content"), document.querySelector("footer")].filter(Boolean).every((node) => node.hasAttribute("inert") && node.getAttribute("aria-hidden") === "true"),
+  };
+};
+
+/** Capture exactly one real mobile menu, never a page-wide fixture dialog. */
+export async function openActualMobileMenu(page) {
+  const selected = await page.evaluate(() => {
+    const visible = (node) => { const style = getComputedStyle(node); return style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || "1") > 0; };
+    const toggles = [...document.querySelectorAll('header[data-testid="site-header"] [data-testid="mobile-menu-toggle"]')]
+      .filter((node) => visible(node) && node.getBoundingClientRect().width > 0 && node.getBoundingClientRect().height > 0);
+    if (toggles.length !== 1) return { visibleToggleCount: toggles.length };
+    const toggle = toggles[0];
+    window.__earnalismOwnerReviewToggle = toggle;
+    return { visibleToggleCount: 1, ariaExpandedBefore: toggle.getAttribute("aria-expanded"), ariaControls: toggle.getAttribute("aria-controls"), ownerHeaderFound: Boolean(toggle.closest('header[data-testid="site-header"]')) };
+  });
+  if (selected.visibleToggleCount !== 1) throw new Error(`Expected exactly one visible mobile-menu toggle; found ${selected.visibleToggleCount}.`);
+  if (!selected.ownerHeaderFound || selected.ariaExpandedBefore !== "false" || !selected.ariaControls) throw new Error(`Invalid mobile-menu toggle contract: ${JSON.stringify(selected)}.`);
+  const toggleHandle = await page.evaluateHandle(() => window.__earnalismOwnerReviewToggle);
+  await toggleHandle.asElement().click();
+  await page.waitForFunction(() => window.__earnalismOwnerReviewToggle?.getAttribute("aria-expanded") === "true");
+  try {
+    await page.waitForFunction(({ controls }) => {
+      const visible = (node) => { const style = getComputedStyle(node); return style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || "1") > 0; };
+      const toggle = window.__earnalismOwnerReviewToggle;
+      const header = toggle?.closest('header[data-testid="site-header"]');
+      if (!header) return false;
+      const dialogs = [...header.children].filter((node) => node.matches?.('[data-testid="mobile-menu"][role="dialog"]') && node.id === controls && visible(node));
+      if (dialogs.length !== 1) return false;
+      window.__earnalismOwnerReviewDialog = dialogs[0];
+      return true;
+    }, { controls: selected.ariaControls }, { timeout: 10_000 });
+  } catch (error) {
+    const diagnostics = await page.evaluate(mobileMenuDiagnostics);
+    throw new Error(`Owner-scoped active mobile-menu dialog selection failed: ${JSON.stringify(diagnostics)}. ${error.message}`);
+  }
+  return page.evaluate(mobileMenuDiagnostics);
+}
+
+export function assertMobileMenuGeometry(diagnostics) {
+  const dialog = diagnostics.dialog?.box;
+  const header = diagnostics.header?.box;
+  const availableHeight = (diagnostics.viewport.visualViewportHeight || diagnostics.viewport.innerHeight) - header.bottom;
+  const failures = [];
+  if (diagnostics.visibleToggleCount !== 1 || diagnostics.activeVisibleOwnerDialogCount !== 1) failures.push("owner scope count");
+  if (!dialog || !header || dialog.height <= 0) failures.push("non-zero dialog height");
+  if (dialog && Math.abs(dialog.top - header.bottom) > 2) failures.push("dialog top");
+  if (dialog && Math.abs(dialog.left) > 2) failures.push("dialog left");
+  if (dialog && Math.abs(dialog.width - diagnostics.viewport.innerWidth) > 2) failures.push("dialog width");
+  if (dialog && Math.abs(dialog.height - availableHeight) > 3) failures.push("dialog height");
+  if (dialog && dialog.height < availableHeight * 0.95) failures.push("dialog coverage");
+  if (diagnostics.ariaModal !== "true" || !diagnostics.closeVisible || !diagnostics.requiredRowsVisible || !diagnostics.bodyScrollLocked || !diagnostics.backgroundInert) failures.push("modal interaction contract");
+  if (failures.length) throw new Error(`Mobile-menu geometry contract failed: ${failures.join(", ")}. ${JSON.stringify({ dialog, header, availableHeight, viewport: diagnostics.viewport })}`);
+  return { availableHeight, pass: true };
+}
+
+export async function closeActualMobileMenu(page) {
+  await page.keyboard.press("Escape");
+  await page.waitForFunction(() => {
+    const visible = (node) => { const style = getComputedStyle(node); return style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || "1") > 0; };
+    const toggle = window.__earnalismOwnerReviewToggle;
+    const dialog = window.__earnalismOwnerReviewDialog;
+    const active = dialog && document.contains(dialog) && visible(dialog) ? 1 : 0;
+    return toggle?.getAttribute("aria-expanded") === "false" && active === 0 && document.activeElement === toggle && document.body.style.overflow !== "hidden" && [document.getElementById("main-content"), document.querySelector("footer")].filter(Boolean).every((node) => !node.hasAttribute("inert") && node.getAttribute("aria-hidden") !== "true");
+  }, undefined, { timeout: 10_000 });
+  return page.evaluate(() => { const visible = (node) => { const style = getComputedStyle(node); return style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || "1") > 0; }; return { escapeClose: window.__earnalismOwnerReviewToggle?.getAttribute("aria-expanded") === "false", focusRestored: document.activeElement === window.__earnalismOwnerReviewToggle, activeVisibleDialogCount: window.__earnalismOwnerReviewDialog && document.contains(window.__earnalismOwnerReviewDialog) && visible(window.__earnalismOwnerReviewDialog) ? 1 : 0, bodyScrollRestored: document.body.style.overflow !== "hidden", backgroundRestored: [document.getElementById("main-content"), document.querySelector("footer")].filter(Boolean).every((node) => !node.hasAttribute("inert") && node.getAttribute("aria-hidden") !== "true") }; });
 }
 
 async function capture(state, context, sessionFontLoad) {
@@ -103,10 +208,12 @@ async function capture(state, context, sessionFontLoad) {
     await page.locator(".reference-filter-trigger").click();
     await page.locator(".reference-library-drawer[role=dialog]").waitFor({ state: "visible", timeout: 10_000 });
   }
+  let navigation = null;
+  let navigationClose = null;
   if (state.family === "navigation") {
     try {
-      await page.locator("[data-testid=mobile-menu-toggle]").click();
-      await page.locator("[data-testid=mobile-menu][role=dialog]").waitFor({ state: "visible", timeout: 10_000 });
+      navigation = await openActualMobileMenu(page);
+      assertMobileMenuGeometry(navigation);
     } catch (error) {
       if (strict) throw error;
       errors.push(`navigation-overlay:${error.message}`);
@@ -137,23 +244,25 @@ async function capture(state, context, sessionFontLoad) {
     h1: document.querySelector("h1")?.textContent?.trim() || "",
     geometry: required.map((selector) => { const node = document.querySelector(selector); if (!node) return { selector, present: false }; const r = node.getBoundingClientRect(); const s = getComputedStyle(node); return { selector, present: true, x: r.x, y: r.y, width: r.width, height: r.height, fontSize: s.fontSize, lineHeight: s.lineHeight }; }),
   }), selectors);
+  if (navigation) navigationClose = await closeActualMobileMenu(page);
   await page.close();
   const fixture = state.family === "profile"
     ? "sanitized-owner-review-user"
     : ["reader", "listener"].includes(state.family)
       ? "server-contract-review-fixture"
       : "anonymous-public-shell";
-  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
+  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, navigation, navigationClose, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
 }
 
-fs.mkdirSync(output, { recursive: true });
-const browser = await chromium.launch({ headless: true });
-const checkoutSha = process.env.ACTUAL_CHECKOUT_SHA || execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-const checkoutTreeSha = process.env.CHECKOUT_TREE_SHA || execFileSync("git", ["rev-parse", "HEAD^{tree}"], { encoding: "utf8" }).trim();
-const captureScriptSha = sha(fs.readFileSync(new URL(import.meta.url)));
-const context = await browser.newContext({ deviceScaleFactor: 1, colorScheme: "dark", reducedMotion: "reduce" });
-const sessionFontLoad = { value: null };
-try {
+export async function runCapture() {
+  fs.mkdirSync(output, { recursive: true });
+  const browser = await chromium.launch({ headless: true });
+  const checkoutSha = process.env.ACTUAL_CHECKOUT_SHA || execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+  const checkoutTreeSha = process.env.CHECKOUT_TREE_SHA || execFileSync("git", ["rev-parse", "HEAD^{tree}"], { encoding: "utf8" }).trim();
+  const captureScriptSha = sha(fs.readFileSync(new URL(import.meta.url)));
+  const context = await browser.newContext({ deviceScaleFactor: 1, colorScheme: "dark", reducedMotion: "reduce" });
+  const sessionFontLoad = { value: null };
+  try {
   const captures = [];
   for (const state of states) {
     const result = await capture(state, context, sessionFontLoad);
@@ -176,4 +285,7 @@ try {
   }));
   console.log(JSON.stringify({ captured: all.length, failed: failed.map((item) => item.id), failureReasons, strict, output }));
   if (strict && failed.length) process.exitCode = 1;
-} finally { await browser.close(); }
+  } finally { await browser.close(); }
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await runCapture();

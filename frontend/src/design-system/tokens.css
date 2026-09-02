@@ -1,8 +1,42 @@
 :root {
-  --eds-ink: #091310;
-  --eds-paper: #fbf7ef;
-  --eds-gold: #d5ad56;
-  --eds-line: rgba(73, 51, 28, 0.16);
+  /* EARNALISM_GILDED_BURGUNDY_V1 supersedes the former green colour
+     authority while retaining its layout, truthful-content, and CTA rules. */
+  --burgundy-950: #17090E;
+  --burgundy-900: #240C14;
+  --burgundy-800: #35111D;
+  --burgundy-700: #511B2A;
+  --burgundy-600: #712A3D;
+  --beige-50: #FFF9EE;
+  --beige-100: #F6EAD7;
+  --beige-200: #E7D3B4;
+  --beige-300: #CFB78F;
+  --gold-300: #F0D78E;
+  --gold-400: #DFB85A;
+  --gold-500: #C79531;
+  --gold-700: #805A19;
+  --public-page: var(--burgundy-950);
+  --public-surface: var(--burgundy-900);
+  --public-surface-elevated: var(--burgundy-800);
+  --public-surface-quiet: var(--burgundy-700);
+  --public-text: var(--beige-100);
+  --public-text-muted: var(--beige-300);
+  --public-gold: var(--gold-400);
+  --public-gold-soft: var(--gold-300);
+  --public-burgundy: var(--burgundy-600);
+  --public-paper: var(--beige-50);
+  --public-paper-muted: var(--beige-100);
+  --public-border: rgba(223, 184, 90, 0.28);
+  --public-page-width: min(100% - 2rem, 84rem);
+  --public-section-space: clamp(3rem, 6vw, 5.5rem);
+  --public-card-radius: 0.75rem;
+  --public-focus: var(--gold-300);
+  --book-card-width-desktop: 10rem;
+  --book-card-width-tablet: 9.25rem;
+  --book-card-width-mobile: 8.25rem;
+  --eds-ink: var(--burgundy-950);
+  --eds-paper: var(--beige-50);
+  --eds-gold: var(--gold-400);
+  --eds-line: var(--public-border);
   --eds-page: min(100% - 2rem, 84rem);
   --eds-ui: "Outfit", "Noto Sans Bengali";
   --eds-display: "Cormorant Garamond", "Noto Serif Bengali";

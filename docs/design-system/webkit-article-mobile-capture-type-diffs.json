@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "state_id": "article-mobile",
+  "browser": "webkit",
+  "capture_declaration": ["viewport", "brand_close_up", "parent_surface_close_up"],
+  "unstable_capture_type": "VIEWPORT_ONLY",
+  "attempt_image_count": 18,
+  "viewport_difference": {
+    "first_sha256": "2005b8376beaec1ff3838184eeb09e458394edb0bb3a86a000d51cefab0caebb",
+    "second_sha256": "7dd868550eadd5941bef35a9ee996f0c17452c0f901c9f4e1e1dccde90cd0dc1",
+    "mismatched_pixels": 74028,
+    "mismatched_pixel_percentage": 22.489974480495807,
+    "difference_bounding_box": [0, 145, 390, 454],
+    "maximum_per_channel_difference": 2,
+    "mean_per_channel_difference": [0.12911350103293232, 0.11865658038643821, 0.12280349981771782],
+    "classification": "GLYPH_EDGE_RASTERIZATION_ONLY"
+  },
+  "brand_close_up": { "exact_hash_equality": true },
+  "parent_surface_close_up": { "exact_hash_equality": true },
+  "difference_artifacts": { "heatmap": "/tmp/pr344-webkit-diff.png", "contact_sheet": "/tmp/pr344-webkit-article-mobile-diff-contact-sheet.png" }
+}

@@ -42,7 +42,8 @@ describe("editorial and support route contract", () => {
     expect(notFoundHandler).toContain("res.statusCode = 404");
     expect(notFoundHandler).toContain("X-Robots-Tag");
     expect(goneHandler).toContain("res.statusCode = statusCode");
-    expect(goneHandler).toContain("earnalism-brand-lockup.png");
+    expect(goneHandler).toContain("renderBrandedStatusPage");
+    expect(notFound).not.toContain("EarnalismBrandLockup");
     expect(vercel).toContain('"source": "/secure-reader-test"');
     expect(vercel).toContain('"destination": "/api/not-found"');
   });

@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "state_id": "article-mobile",
+  "required_requests": ["/api/blog/how-reading-shapes-better-founders", "/api/blog"],
+  "request_completion_result": "PASS",
+  "loading_marker_absent": true,
+  "article_root_visible": true,
+  "article_title_visible": true,
+  "related_section": "ABSENT_BY_FIXTURE",
+  "dom_mutation_quiet_window_ms": 750,
+  "mutation_count_during_quiescence": 0,
+  "article_text_content_exported": false
+}

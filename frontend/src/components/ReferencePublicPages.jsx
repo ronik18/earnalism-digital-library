@@ -24,6 +24,7 @@ import {
   notifyUrl,
 } from "../lib/controlledLaunch";
 import BookCoverImage from "./BookCoverImage";
+import publicEvidenceSnapshot from "../data/publicEvidenceSnapshot.json";
 import "./ReferencePublicPages.css";
 
 const HOME_FEATURES = [
@@ -232,6 +233,28 @@ function CompactFilters({ language, reading, listening, genre, genres, sort, hid
   return <>{groups.map(([label, value, options, key]) => <fieldset className="reference-filter-group" key={label}><legend>{label}</legend>{options.filter(([slug]) => !(hideAll && slug === "all")).map(([slug, name]) => <button type="button" key={slug} aria-pressed={value === slug} onClick={() => onChange(key, slug)}>{name}</button>)}</fieldset>)}{sort !== undefined ? <label className="reference-filter-sort">Sort by<select value={sort} onChange={(event) => onChange("sort", event.target.value)}><option value="recently-approved">Featured</option><option value="title">Title</option><option value="author">Author</option><option value="short-reads">Short reads</option></select></label> : null}</>;
 }
 
+function getRenderedFocusableControls(container) {
+  if (!container) return [];
+  const selector = "a[href], button:not([disabled]), input:not([disabled]):not([type='hidden']), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])";
+  const hasExcludedAncestor = (element) => {
+    for (let node = element; node; node = node.parentElement) {
+      if (node.hasAttribute("inert") || node.getAttribute("aria-hidden") === "true") return true;
+    }
+    return false;
+  };
+  return [...container.querySelectorAll(selector)].filter((element) => {
+    if (hasExcludedAncestor(element)) return false;
+    const style = getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    return style.display !== "none"
+      && style.visibility !== "hidden"
+      && style.visibility !== "collapse"
+      && element.getClientRects().length > 0
+      && rect.width > 0
+      && rect.height > 0;
+  });
+}
+
 export function ReferenceLibrarySurface({
   filteredBooks,
   loading,
@@ -273,7 +296,14 @@ export function ReferenceLibrarySurface({
     const backgroundChildren = drawer ? [...drawer.parentElement.children].filter((element) => element !== drawer) : [];
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    [...backgroundChildren, header, footer].filter(Boolean).forEach((element) => {
+    const backgroundState = [...backgroundChildren, header, footer].filter(Boolean).map((element) => ({
+      element,
+      inert: element.hasAttribute("inert"),
+      inertValue: element.getAttribute("inert"),
+      ariaHidden: element.hasAttribute("aria-hidden"),
+      ariaHiddenValue: element.getAttribute("aria-hidden"),
+    }));
+    backgroundState.forEach(({ element }) => {
       element.setAttribute("inert", "");
       element.setAttribute("aria-hidden", "true");
     });
@@ -290,25 +320,23 @@ export function ReferenceLibrarySurface({
         return;
       }
       if (event.key !== "Tab" || !drawer) return;
-      const controls = [...drawer.querySelectorAll("button:not([disabled]), select:not([disabled]), input:not([disabled]), a[href]")]
-        .filter((element) => element.offsetParent !== null);
+      const controls = getRenderedFocusableControls(drawer);
       if (!controls.length) return;
-      const first = controls[0];
-      const last = controls.at(-1);
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
+      event.preventDefault();
+      const currentIndex = controls.indexOf(document.activeElement);
+      const nextIndex = event.shiftKey
+        ? (currentIndex <= 0 ? controls.length - 1 : currentIndex - 1)
+        : (currentIndex < 0 || currentIndex >= controls.length - 1 ? 0 : currentIndex + 1);
+      controls[nextIndex].focus();
     };
     document.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
-      [...backgroundChildren, header, footer].filter(Boolean).forEach((element) => {
-        element.removeAttribute("inert");
-        element.removeAttribute("aria-hidden");
+      backgroundState.forEach(({ element, inert, inertValue, ariaHidden, ariaHiddenValue }) => {
+        if (inert) element.setAttribute("inert", inertValue ?? "");
+        else element.removeAttribute("inert");
+        if (ariaHidden) element.setAttribute("aria-hidden", ariaHiddenValue ?? "");
+        else element.removeAttribute("aria-hidden");
       });
       document.removeEventListener("keydown", onKeyDown);
     };
@@ -341,6 +369,7 @@ function packTitle(pack) {
 
 export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId, onBuy }) {
   const giftEnabled = packs.some((pack) => pack.gift_enabled === true || pack.kind === "gift");
+  const evidenceFacts = Array.isArray(publicEvidenceSnapshot.fallback_facts) ? publicEvidenceSnapshot.fallback_facts : [];
   return (
     <div className="reference-commerce" data-testid="pricing-reference-surface">
       <div className="reference-commerce__primary-column">
@@ -351,7 +380,19 @@ export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId
           </picture>
         </section>
         <main className="reference-commerce__main">
-          <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading eyebrow="READING PASSES" title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>{PUBLIC_ACCESS_COPY}</li></ul><button type="button" disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>
+          <section className="reference-commerce__offers" aria-labelledby="reference-offers-title"><SectionHeading eyebrow="READING PASSES" title="Choose a Reading Pass that fits your rhythm" /><div className="reference-commerce__packs">{packs.map((pack) => { const recommended = pack.recommended === true || pack.is_recommended === true; const selected = selectedPackId === pack.id; return <article key={pack.id} className={`reference-offer${recommended || selected ? " is-emphasized" : ""}`}><p className="reference-offer__minutes">{packTitle(pack)}</p>{pack.description ? <span>{pack.description}</span> : null}<strong data-visual-mask="live-price">{pack.price_inr ? `₹${pack.price_inr}` : "Available at checkout"}</strong>{pack.minutes ? <small>{pack.minutes} minutes of reading time</small> : null}<ul><li>Read on web and mobile</li><li>Continue across eligible titles</li><li>{PUBLIC_ACCESS_COPY}</li></ul><button type="button" data-testid={`pricing-pack-${pack.id}`} disabled={busyId === pack.id} onClick={() => onBuy(pack)}>{busyId === pack.id ? "Opening checkout..." : `Choose ${packTitle(pack)}`}</button></article>; })}</div></section>
+          <section className="reference-commerce__evidence" data-testid="commerce-evidence-fallback" aria-labelledby="commerce-evidence-title">
+            <div>
+              <p className="reference-kicker">VERIFIED PRODUCT METHOD</p>
+              <h2 id="commerce-evidence-title">A Reading Pass is built around the reading itself.</h2>
+              <p>{publicEvidenceSnapshot.audit.finding}</p>
+              <ul>{evidenceFacts.map((fact) => <li key={fact.id}><strong>{fact.label}</strong>{fact.definition}</li>)}</ul>
+            </div>
+            <aside className="reference-evidence-note">
+              {publicEvidenceSnapshot.fallback_notice}
+              <small>Metrics remain unpublished until an approved, privacy-safe snapshot includes a defined cohort, sample size, period, calculation version, exclusions, and reviewer approval.</small>
+            </aside>
+          </section>
           <section className="reference-commerce__pathways"><article><Landmark aria-hidden="true" /><h2>For institutions</h2><p>School, college, and library access begins with a conversation.</p><Link to="/contact">Request a pilot</Link></article><article><Building2 aria-hidden="true" /><h2>For publishers</h2><p>Rights holders and authors can explore a careful digital edition pathway.</p><Link to="/contact">Partner with us</Link></article>{giftEnabled ? <article><Sparkles aria-hidden="true" /><h2>Gift a pass</h2><p>Share reading time when a configured gift product is available.</p><Link to="/pricing">View gift options</Link></article> : null}</section>
           <section className="reference-commerce__trust" data-testid="pricing-reference-wallet-explainer"><div><Lock aria-hidden="true" /><strong>Secure payment</strong><span>{config?.configured ? "Configured checkout" : "Checkout availability is confirmed at purchase"}</span></div><div><Check aria-hidden="true" /><strong>Privacy first</strong><span>Your account and reading stay private.</span></div><div><BookOpen aria-hidden="true" /><strong>Reading time</strong><span>Used only while you read.</span></div></section>
           <section className="reference-commerce__final"><p className="reference-kicker">START WITH THE PREVIEW</p><h2>Meet a story before you add time.</h2><p>{PUBLIC_ACCESS_COPY}</p><Link to="/library" className="reference-button reference-button--gold">Browse the library</Link></section>

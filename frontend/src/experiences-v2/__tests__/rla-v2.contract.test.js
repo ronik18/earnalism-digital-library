@@ -68,7 +68,7 @@ describe("Reader, Listener, and About v2 product truth", () => {
     const source = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2.jsx"), "utf8");
     const route = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2Route.jsx"), "utf8");
     expect(stylesheet).toContain(".listener-v2 .experience-header { display:none; }");
-    expect(stylesheet).toContain(".listener-v2__main { display:flex; flex-direction:column; padding:62px 24px 26px; }");
+    expect(stylesheet).toContain(".listener-v2__main { padding: 12px 24px 26px; }");
     expect(source).toContain('className="listener-v2__mobile-top"');
     expect(source).toContain("<BookCoverImage");
     expect(stylesheet).not.toContain("CSS-rendered Gothic landscape");
@@ -106,6 +106,9 @@ describe("Reader, Listener, and About v2 product truth", () => {
     const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Account.jsx"), "utf8");
     expect(source).toContain('process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1"');
     expect(source).toContain('get("visual-fixture") === "1"');
+    expect(source).toContain("function AccountVisualFixture()");
+    expect(source).toContain('data-testid="account-visual-fixture"');
+    expect(source).toContain('id="account-visual-fixture-title"');
     expect(source).toContain('name: "Review Reader", email: "review@example.invalid"');
     expect(source).not.toContain("localStorage");
   });

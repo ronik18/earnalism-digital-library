@@ -1,0 +1,45 @@
+{
+  "schema_version": "earnalism.public-evidence-snapshot.v1",
+  "status": "FALLBACK_OPERATIONAL_FACTS_ONLY",
+  "reviewed_at": "2026-08-31",
+  "reviewer_approval": "OWNER_REVIEW_PENDING",
+  "publication_policy": {
+    "minimum_eligible_unique_readers": 100,
+    "minimum_eligible_reading_sessions": 500,
+    "status": "NO_APPROVED_PUBLIC_METRIC_PUBLICATION_POLICY_OR_QUALIFYING_SNAPSHOT"
+  },
+  "audit": {
+    "sources_reviewed": [
+      "frontend/src/lib/funnelAnalytics.js",
+      "frontend/public/index.html",
+      "backend/server.py analytics_events collection",
+      "internal/earnalism_intelligence/sprint_learnings.md"
+    ],
+    "finding": "First-party analytics are opt-in and minimal. No reviewed public-safe aggregate, eligible cohort, sample size, period, calculation version, or owner-approved evidence snapshot exists in this repository.",
+    "excluded": ["internal users", "test traffic", "bots", "PII", "account values"]
+  },
+  "metrics": [],
+  "fallback_facts": [
+    {
+      "id": "preview_three_canonical_pages",
+      "label": "Preview first",
+      "definition": "The public preview is exactly the first 3 canonical pages."
+    },
+    {
+      "id": "reading_time_while_reading",
+      "label": "Reading time is deliberate",
+      "definition": "Reading time is used only while reading."
+    },
+    {
+      "id": "no_subscription_autorenewal",
+      "label": "No subscription",
+      "definition": "Reading Passes do not auto-renew."
+    },
+    {
+      "id": "approved_audio_requires_pass",
+      "label": "Listening is release-safe",
+      "definition": "Approved audio requires an active Reading Pass."
+    }
+  ],
+  "fallback_notice": "Verified behavioral metrics will appear after the publication threshold is met."
+}

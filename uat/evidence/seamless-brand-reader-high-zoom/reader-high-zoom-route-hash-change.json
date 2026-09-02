@@ -1,0 +1,13 @@
+{
+  "before_head": "ed641ce30ad73ff8d62c6c31aa861b8be0772da8",
+  "production_surface": {"before":"0de80f9734f8117acc2d9ab140daa8a39f8afe1f0599d1a7372bb5609aad4e7a","after":"7517b379a8d268d202b6de30c5d1e6bc734012bae61646a765224b7f467c8a77","changed":true},
+  "reader_surface": {"before":"aa11fac40bf69a13dce12883f00b8c421424c6da630b602b98e449cab45d3c17","after":"0fe0f7b4b9f528beda847fd53d4f8a1968d05440541e73258ee90c6fc6a36631","changed":true},
+  "listener_surface": {"before":"ae7a9daf4c03e29084c41ed23e141a4be8fc758006b56589e8de5cedf8417b71","after":"ae7a9daf4c03e29084c41ed23e141a4be8fc758006b56589e8de5cedf8417b71","changed":false},
+  "footer_surface": {"before":"c9e7f4bf0df0c0102fd5611fecda77eb8af815103ab67691d32b73762d0671b3","after":"c9e7f4bf0df0c0102fd5611fecda77eb8af815103ab67691d32b73762d0671b3","changed":false},
+  "home_library_commerce": {"before":"d9542e1d0ad05059b25fc3ee97eb47ec631fc389a588c69d420528d5818f9f2f","after":"d9542e1d0ad05059b25fc3ee97eb47ec631fc389a588c69d420528d5818f9f2f","changed":false},
+  "auth_account": {"before":"2923a0234c27e9ba7719e447c3124b81c2325425618f150013c9bacefe49c33c","after":"2923a0234c27e9ba7719e447c3124b81c2325425618f150013c9bacefe49c33c","changed":false},
+  "editorial_error": {"before":"4e04577024cbb060a40a5931a11007dc150f918740d25a5e8afaaab74303466a","after":"4e04577024cbb060a40a5931a11007dc150f918740d25a5e8afaaab74303466a","changed":false},
+  "canonical_logo_asset": {"before":"951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919","after":"951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919","changed":false},
+  "product_data_changed": false,
+  "access_control_changed": false
+}

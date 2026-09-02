@@ -30,6 +30,47 @@ def diff(reference, current):
 def load(path): return json.loads(path.read_text()) if path.exists() else {"states":[]}
 def current_head():
  return os.environ.get("GITHUB_SHA") or subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+
+def write_mobile_menu_viewport_package(current_capture, before_capture, generic_provenance, head, browser_results):
+ """Package the exact viewport-fix evidence without treating an old header review as current."""
+ pr_number=os.environ.get("PR_NUMBER", "344")
+ package=WORK/f"pr{pr_number}-fresh-mobile-header-menu-review-{head}"
+ package.mkdir(parents=True,exist_ok=True)
+ current={state["id"]:state for state in current_capture.get("states",[])}
+ before={state["id"]:state for state in before_capture.get("states",[])}
+ nav_ids=[state_id for state_id in current if state_id.startswith("mobile-navigation")]
+ nav_states=[current[state_id] for state_id in nav_ids]
+ before_states=[before[state_id] for state_id in before if state_id.startswith("mobile-navigation")]
+ geometry={"schema_version":"earnalism-mobile-menu-geometry-results-v1","status":"PASS","states":[{"id":state["id"],"viewport":state["viewport"],"dialog":state.get("navigation",{}).get("dialog",{}).get("box"),"header":state.get("navigation",{}).get("header",{}).get("box"),"visible_toggle_count":state.get("navigation",{}).get("visibleToggleCount"),"owner_dialog_count":state.get("navigation",{}).get("activeVisibleOwnerDialogCount"),"overflow":{"scroll_width":state.get("scrollWidth"),"client_width":state.get("clientWidth")}} for state in nav_states]}
+ geometry["status"]="PASS" if nav_states and all(state.get("navigation",{}).get("dialog",{}).get("box",{}).get("height",0)>0 and state.get("scrollWidth")==state.get("clientWidth") for state in nav_states) else "FAIL"
+ old_header=(before.get("mobile-navigation",{}).get("navigation",{}).get("header",{}))
+ old_dialog=(before.get("mobile-navigation",{}).get("navigation",{}).get("dialog",{}))
+ new_header=(current.get("mobile-navigation",{}).get("navigation",{}).get("header",{}))
+ new_dialog=(current.get("mobile-navigation",{}).get("navigation",{}).get("dialog",{}))
+ diagnostics={"schema_version":"earnalism-mobile-menu-containing-block-diagnostics-v1","root_cause_classification":["BACKDROP_FILTER_FIXED_CONTAINING_BLOCK","EXPLICIT_INSET_HEIGHT_COLLAPSE"],"before":{"header":old_header,"dialog":old_dialog,"navigation_states":before_states},"after":{"header":new_header,"dialog":new_dialog,"navigation_states":nav_states},"property_delta":{"header_backdrop_filter":{"before":old_header.get("backdropFilter"),"after":new_header.get("backdropFilter")},"dialog_height":{"before":old_dialog.get("height"),"after":new_dialog.get("height")},"dialog_bottom":{"before":old_dialog.get("bottom"),"after":new_dialog.get("bottom")}}}
+ interactions={"schema_version":"earnalism-mobile-menu-interaction-results-v1","status":"PASS","states":[{"id":state["id"],"open":{"aria_expanded":state.get("navigation",{}).get("toggleExpanded"),"aria_modal":state.get("navigation",{}).get("ariaModal"),"body_scroll_locked":state.get("navigation",{}).get("bodyScrollLocked"),"background_inert":state.get("navigation",{}).get("backgroundInert")},"close":state.get("navigationClose")} for state in nav_states],"focused_harness":load(WORK/"current"/"focused-mobile-menu-results.json")}
+ interactions["status"]="PASS" if geometry["status"]=="PASS" and all(state.get("navigationClose",{}).get("escapeClose") and state.get("navigationClose",{}).get("focusRestored") for state in nav_states) else "FAIL"
+ before_hashes=load(WORK/"before"/"surface-hashes.json")
+ current_hashes=load(WORK/"current"/"surface-hashes.json")
+ carry={"schema_version":"earnalism-owner-visual-approval-carry-forward-v1","prior_pr_head":before_capture.get("provenance",{}).get("actual_checkout_sha"),"new_pr_head":head,"public_body_sha256_before":before_hashes.get("public_body_sha256"),"public_body_sha256_after":current_hashes.get("public_body_sha256"),"public_body_hash_unchanged":before_hashes.get("public_body_sha256")==current_hashes.get("public_body_sha256"),"header_surface_sha256_before":before_hashes.get("header_surface_sha256"),"header_surface_sha256_after":current_hashes.get("header_surface_sha256"),"header_surface_changed":before_hashes.get("header_surface_sha256")!=current_hashes.get("header_surface_sha256"),"body_visual_approval_carried_forward":before_hashes.get("public_body_sha256")==current_hashes.get("public_body_sha256"),"header_menu_visual_approval_requires_fresh_captures":True,"reason":"mobile fixed-position containing-block defect corrected"}
+ special_provenance={**generic_provenance,"artifact_kind":"pr344-mobile-menu-viewport-fix","production_mutations":1,"production_changed_files":["frontend/src/components/Header.css"],"evidence_files":["scripts/capture_exact_primary_owner_review.mjs","scripts/test_capture_exact_primary_owner_review_mobile_menu.mjs","scripts/verify_exact_primary_cross_browser.mjs","scripts/generate_exact_primary_owner_review.py",".github/workflows/public-pages-owner-review.yml"]}
+ accessibility={"status":"PASS" if interactions["status"]=="PASS" else "FAIL","menu_text_minimum_px":16,"row_minimum_px":52,"control_minimum_px":44,"focus_restore":all(state.get("navigationClose",{}).get("focusRestored") for state in nav_states),"background_inert":all(state.get("navigation",{}).get("backgroundInert") for state in nav_states)}
+ for name,payload in {"geometry-results.json":geometry,"containing-block-diagnostics.json":diagnostics,"containing-block-before.json":diagnostics["before"],"containing-block-after.json":diagnostics["after"],"interaction-results.json":interactions,"accessibility-results.json":accessibility,"browser-results.json":browser_results,"approval-carry-forward.json":carry,"provenance.json":special_provenance}.items(): (package/name).write_text(json.dumps(payload,indent=2)+"\n")
+ for state_id in sorted(set(["mobile-navigation","mobile-navigation-320",*nav_ids])):
+  for prefix,source in [("before",WORK/"before"),("after",WORK/"current")]:
+   image=source/f"{state_id}.png"
+   if image.exists(): shutil.copy2(image,package/f"{state_id}-{prefix}.png")
+ shutil.copy2(OUT/"owner-review.pdf",package/"owner-review.pdf")
+ shutil.copy2(OUT/"complete-contact-sheet.png",package/"contact-sheet.png")
+ (package/"owner-review.html").write_text(f'<!doctype html><meta charset="utf-8"><title>PR {pr_number} mobile-menu viewport fix</title><style>body{{background:#07110f;color:#fff8e9;font:16px system-ui;margin:0;padding:32px}}main{{max-width:960px;margin:auto}}code{{color:#f2d188}}li{{margin:.5rem 0}}img{{max-width:48%;border:1px solid #d6ad55;margin:.4rem}}</style><main><h1>PR {pr_number}: mobile-menu viewport correction</h1><p>Exact head: <code>{head}</code></p><p>Fresh capture is required because the header surface changed. Public page-body approval carries forward only when the body hash matches.</p><ul><li>Root cause: backdrop-filter fixed containing block plus explicit inset-height collapse.</li><li>Geometry status: {geometry["status"]}</li><li>Interaction status: {interactions["status"]}</li><li>Body hash unchanged: {carry["public_body_hash_unchanged"]}</li></ul><p>See the JSON evidence files for the computed-style chain, geometry, interactions, browser results, and approval scope.</p><img src="mobile-navigation-before.png"><img src="mobile-navigation-after.png"></main>')
+ files=[]
+ for file in sorted(package.iterdir()):
+  if file.name=="manifest.json": continue
+  files.append({"relative_path":file.name,"bytes":file.stat().st_size,"sha256":sha(file),"mime":mimetypes.guess_type(file.name)[0] or "application/octet-stream"})
+ (package/"manifest.json").write_text(json.dumps({"artifact":package.name,"head":head,"status":"PASS" if geometry["status"]=="PASS" and interactions["status"]=="PASS" and carry["public_body_hash_unchanged"] else "FAIL","files":files},indent=2)+"\n")
+ with zipfile.ZipFile(package/"artifact.zip","w",zipfile.ZIP_DEFLATED) as archive:
+  for file in package.iterdir():
+   if file.name != "artifact.zip": archive.write(file,file.name)
 CORRECTIONS = {
  "D01":"One canonical responsive shell, readable branding, and font verification.",
  "D02":"Home hero, journey heading, discovery shelf, and mobile hierarchy.",
@@ -100,5 +141,6 @@ def main():
  with zipfile.ZipFile(OUT/"artifact.zip","w",zipfile.ZIP_DEFLATED) as archive:
   for file in OUT.iterdir():
    if file.name != "artifact.zip": archive.write(file,file.name)
+ write_mobile_menu_viewport_package(current_capture,before_capture,provenance,head,browser_results)
  print(json.dumps({"states":len(records),"output":str(OUT),"artifact_sha256":sha(OUT/"artifact.zip")},indent=2))
 if __name__=="__main__":main()

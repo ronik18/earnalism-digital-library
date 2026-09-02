@@ -1,0 +1,301 @@
+tested=36
+passed=36
+failed=0
+missing=0
+n/a=6
+[
+  {
+    "status": "passed",
+    "width": 320,
+    "route": "/",
+    "selector": "[data-testid=\"home-reference-primary-cta\"]",
+    "ratio": 9.79
+  },
+  {
+    "status": "passed",
+    "width": 320,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-surface\"] h1",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 320,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-wallet-explainer\"]",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 320,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__canvas",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 320,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__chapter h1",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 320,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__body",
+    "ratio": 17.45
+  },
+  {
+    "status": "na",
+    "width": 320,
+    "route": "/reader/dracula",
+    "selector": "[data-testid=\"generated-audiobook\"]",
+    "reason": "controlled audio disabled"
+  },
+  {
+    "status": "passed",
+    "width": 360,
+    "route": "/",
+    "selector": "[data-testid=\"home-reference-primary-cta\"]",
+    "ratio": 9.79
+  },
+  {
+    "status": "passed",
+    "width": 360,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-surface\"] h1",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 360,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-wallet-explainer\"]",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 360,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__canvas",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 360,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__chapter h1",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 360,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__body",
+    "ratio": 17.45
+  },
+  {
+    "status": "na",
+    "width": 360,
+    "route": "/reader/dracula",
+    "selector": "[data-testid=\"generated-audiobook\"]",
+    "reason": "controlled audio disabled"
+  },
+  {
+    "status": "passed",
+    "width": 390,
+    "route": "/",
+    "selector": "[data-testid=\"home-reference-primary-cta\"]",
+    "ratio": 9.79
+  },
+  {
+    "status": "passed",
+    "width": 390,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-surface\"] h1",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 390,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-wallet-explainer\"]",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 390,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__canvas",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 390,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__chapter h1",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 390,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__body",
+    "ratio": 17.45
+  },
+  {
+    "status": "na",
+    "width": 390,
+    "route": "/reader/dracula",
+    "selector": "[data-testid=\"generated-audiobook\"]",
+    "reason": "controlled audio disabled"
+  },
+  {
+    "status": "passed",
+    "width": 430,
+    "route": "/",
+    "selector": "[data-testid=\"home-reference-primary-cta\"]",
+    "ratio": 9.79
+  },
+  {
+    "status": "passed",
+    "width": 430,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-surface\"] h1",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 430,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-wallet-explainer\"]",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 430,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__canvas",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 430,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__chapter h1",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 430,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__body",
+    "ratio": 17.45
+  },
+  {
+    "status": "na",
+    "width": 430,
+    "route": "/reader/dracula",
+    "selector": "[data-testid=\"generated-audiobook\"]",
+    "reason": "controlled audio disabled"
+  },
+  {
+    "status": "passed",
+    "width": 768,
+    "route": "/",
+    "selector": "[data-testid=\"home-reference-primary-cta\"]",
+    "ratio": 9.79
+  },
+  {
+    "status": "passed",
+    "width": 768,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-surface\"] h1",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 768,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-wallet-explainer\"]",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 768,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__canvas",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 768,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__chapter h1",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 768,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__body",
+    "ratio": 17.45
+  },
+  {
+    "status": "na",
+    "width": 768,
+    "route": "/reader/dracula",
+    "selector": "[data-testid=\"generated-audiobook\"]",
+    "reason": "controlled audio disabled"
+  },
+  {
+    "status": "passed",
+    "width": 1024,
+    "route": "/",
+    "selector": "[data-testid=\"home-reference-primary-cta\"]",
+    "ratio": 9.79
+  },
+  {
+    "status": "passed",
+    "width": 1024,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-surface\"] h1",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 1024,
+    "route": "/pricing",
+    "selector": "[data-testid=\"pricing-reference-wallet-explainer\"]",
+    "ratio": 16.33
+  },
+  {
+    "status": "passed",
+    "width": 1024,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__canvas",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 1024,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__chapter h1",
+    "ratio": 17.45
+  },
+  {
+    "status": "passed",
+    "width": 1024,
+    "route": "/reader/dracula",
+    "selector": ".reader-v2__body",
+    "ratio": 17.45
+  },
+  {
+    "status": "na",
+    "width": 1024,
+    "route": "/reader/dracula",
+    "selector": "[data-testid=\"generated-audiobook\"]",
+    "reason": "controlled audio disabled"
+  }
+]

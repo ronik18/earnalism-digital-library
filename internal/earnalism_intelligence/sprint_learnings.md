@@ -127,6 +127,8 @@
 - Reader audiobook UI must say `Section-following narration` or `Paragraph/Stanza Sync` for paragraph/stanza releases; never imply word-level sync unless sidecar evidence supports it.
 - Small muted-gold text on ivory can fail Lighthouse contrast. Use a darker text-safe gold for overlines and brand taglines while keeping muted gold as an accent.
 - PostHog must remain opt-in via `REACT_APP_ENABLE_POSTHOG=true`; first-party funnel events should use the sanitized allowlisted analytics helper.
+- DARK_PREMIUM_PUBLIC_SYSTEM_V1 keeps public surfaces coherent without inferring conversion metrics: absent an approved public-safe aggregate with cohort, sample, period, exclusions, calculation version, and reviewer approval, render only verified operational facts.
+- EARNALISM_GILDED_BURGUNDY_V1 changes colour authority only: replace green public-surface values with the controlled burgundy, beige, and gold roles while preserving layout, CTA, product-truth, and analytics-fallback contracts.
 
 ## 2026-07-07 Parallel Go-Live Acceleration
 
