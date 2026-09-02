@@ -1,11 +1,16 @@
-"""Current pickle/zlib cache codec preserved verbatim for A1.1 parity."""
+"""Deterministic, versioned JSON codec for active application-cache values."""
 
 from __future__ import annotations
 
 import io
-import pickle
+import datetime as dt
+import json
+import math
 import re
+import uuid
 import zlib
+from decimal import Decimal
+from enum import Enum
 from typing import Any, Iterable, Optional
 
 
@@ -13,6 +18,14 @@ MEDIA_DATA_URI_RE = re.compile(
     r"data:(?:image|audio|video|application/octet-stream|application/pdf)/",
     re.IGNORECASE,
 )
+JSON_V2_PREFIX = b"json-v2:"
+ZLIB_JSON_V2_PREFIX = b"zlib-json-v2:"
+A2_CODEC_ABSOLUTE_DECODE_LIMIT_BYTES = 1048576
+A2_CODEC_MAX_NESTING = 64
+
+
+class CacheCodecError(ValueError):
+    pass
 
 
 def redis_cache_payload_is_media(value: Any, *, response_types: Iterable[type] = (), _seen: int = 0) -> bool:
@@ -37,22 +50,113 @@ def redis_cache_payload_is_media(value: Any, *, response_types: Iterable[type] =
     return False
 
 
-def encode(value: Any, *, compress_min_bytes: int) -> bytes:
-    blob = pickle.dumps(value, protocol=pickle.HIGHEST_PROTOCOL)
-    if len(blob) >= compress_min_bytes:
-        return b"z:" + zlib.compress(blob, level=6)
-    return b"p:" + blob
+def _normalize(value: Any, depth: int = 0) -> Any:
+    if depth > A2_CODEC_MAX_NESTING:
+        raise CacheCodecError("cache value nesting exceeds the A2 safety ceiling")
+    if value is None or isinstance(value, (str, bool, int)):
+        return value
+    if isinstance(value, float):
+        if not math.isfinite(value):
+            raise CacheCodecError("cache JSON does not allow non-finite floats")
+        return value
+    if isinstance(value, dt.datetime):
+        return {"$cache_type": "datetime", "value": value.isoformat()}
+    if isinstance(value, dt.date):
+        return {"$cache_type": "date", "value": value.isoformat()}
+    if isinstance(value, uuid.UUID):
+        return {"$cache_type": "uuid", "value": str(value)}
+    if isinstance(value, Decimal):
+        return {"$cache_type": "decimal", "value": str(value)}
+    if value.__class__.__name__ == "ObjectId" and value.__class__.__module__ == "bson.objectid":
+        return {"$cache_type": "objectid", "value": str(value)}
+    if isinstance(value, Enum):
+        raise CacheCodecError("enum cache values require a namespace adapter")
+    if hasattr(value, "model_dump"):
+        return _normalize(value.model_dump(mode="json"), depth + 1)
+    if hasattr(value, "dict") and value.__class__.__module__.startswith("pydantic"):
+        return _normalize(value.dict(), depth + 1)
+    if isinstance(value, dict):
+        if any(not isinstance(key, str) for key in value):
+            raise CacheCodecError("cache dictionaries require string keys")
+        return {key: _normalize(item, depth + 1) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_normalize(item, depth + 1) for item in value]
+    raise CacheCodecError(f"unsupported cache value type: {type(value).__name__}")
 
 
-def decode(blob: bytes) -> Any:
-    if blob.startswith(b"z:"):
-        return pickle.loads(zlib.decompress(blob[2:]))
-    if blob.startswith(b"p:"):
-        return pickle.loads(blob[2:])
-    return pickle.loads(blob)
+def _restore(value: Any, depth: int = 0) -> Any:
+    if depth > A2_CODEC_MAX_NESTING:
+        raise CacheCodecError("cache value nesting exceeds the A2 safety ceiling")
+    if isinstance(value, list):
+        return [_restore(item, depth + 1) for item in value]
+    if not isinstance(value, dict):
+        return value
+    type_tag = value.get("$cache_type")
+    if type_tag is not None:
+        if set(value) != {"$cache_type", "value"} or not isinstance(value["value"], str):
+            raise CacheCodecError("invalid typed cache envelope")
+        raw = value["value"]
+        if type_tag == "datetime":
+            return dt.datetime.fromisoformat(raw)
+        if type_tag == "date":
+            return dt.date.fromisoformat(raw)
+        if type_tag == "uuid":
+            return uuid.UUID(raw)
+        if type_tag == "decimal":
+            return Decimal(raw)
+        if type_tag == "objectid":
+            try:
+                from bson.objectid import ObjectId
+                return ObjectId(raw)
+            except Exception as exc:
+                raise CacheCodecError("invalid ObjectId cache envelope") from exc
+        raise CacheCodecError("unsupported cache type tag")
+    return {key: _restore(item, depth + 1) for key, item in value.items()}
+
+
+def encode_v2(value: Any, *, compress_min_bytes: int) -> bytes:
+    if redis_cache_payload_is_media(value):
+        raise CacheCodecError("binary or media value is not cacheable")
+    normalized = _normalize(value)
+    raw = json.dumps(normalized, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode("utf-8")
+    if len(raw) >= compress_min_bytes:
+        return ZLIB_JSON_V2_PREFIX + zlib.compress(raw, level=6)
+    return JSON_V2_PREFIX + raw
+
+
+def _decompress_limited(payload: bytes) -> bytes:
+    try:
+        decompressor = zlib.decompressobj()
+        raw = decompressor.decompress(payload, A2_CODEC_ABSOLUTE_DECODE_LIMIT_BYTES + 1)
+        if len(raw) > A2_CODEC_ABSOLUTE_DECODE_LIMIT_BYTES or decompressor.unconsumed_tail:
+            raise CacheCodecError("cache payload exceeds the A2 decode safety ceiling")
+        raw += decompressor.flush(A2_CODEC_ABSOLUTE_DECODE_LIMIT_BYTES + 1 - len(raw))
+    except zlib.error as exc:
+        raise CacheCodecError("invalid compressed cache payload") from exc
+    if len(raw) > A2_CODEC_ABSOLUTE_DECODE_LIMIT_BYTES or decompressor.unused_data or not decompressor.eof:
+        raise CacheCodecError("invalid or trailing compressed cache payload")
+    return raw
+
+
+def decode_v2(blob: bytes) -> Any:
+    if blob.startswith(JSON_V2_PREFIX):
+        raw = blob[len(JSON_V2_PREFIX):]
+    elif blob.startswith(ZLIB_JSON_V2_PREFIX):
+        raw = _decompress_limited(blob[len(ZLIB_JSON_V2_PREFIX):])
+    else:
+        raise CacheCodecError("unknown cache envelope")
+    if len(raw) > A2_CODEC_ABSOLUTE_DECODE_LIMIT_BYTES:
+        raise CacheCodecError("cache payload exceeds the A2 decode safety ceiling")
+    try:
+        parsed = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise CacheCodecError("invalid JSON cache payload") from exc
+    if not isinstance(parsed, (dict, list, str, int, float, bool)) and parsed is not None:
+        raise CacheCodecError("unexpected cache top-level type")
+    return _restore(parsed)
 
 
 def encode_for_redis(namespace: str, value: Any, *, compress_min_bytes: int, response_types: Iterable[type] = ()) -> Optional[bytes]:
     if redis_cache_payload_is_media(value, response_types=response_types):
         return None
-    return encode(value, compress_min_bytes=compress_min_bytes)
+    return encode_v2(value, compress_min_bytes=compress_min_bytes)

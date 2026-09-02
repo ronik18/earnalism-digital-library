@@ -1,0 +1,14 @@
+{
+  "schema_version":"a2-v2-key-vectors-v1",
+  "result":"PASS",
+  "schema":"<prefix>:cache:v2:<namespace>:<scope>:sha256(identity):sha256(resource):sha256(version-or-current)[0:24]",
+  "vectors":[
+    {"namespace":"public-cache","scope":"public","identity":"redacted","resource":"redacted","version":"7","key":"earnalism:cache:v2:public-cache:public:83585d72675011386bd7497c42f432f4ab25335b851366d9205373583158cde2:4ea140588150773ce3aace786aeef7f4049ce100fa649c94fbbddb960f1da942:7902699be42c8a8e46fbbb45"},
+    {"namespace":"reader-content","scope":"resource","identity":"redacted","resource":"redacted","version":"3","key":"earnalism:cache:v2:reader-content:resource:4850faba18b9b60f947440f6f01b458f367da8422ea7b63caace1f4126e3cc5b:83e041aa23e29ae50389ebe9edb3a755a1ba20ffe714e6c1ce802e6be34a8dc4:4e07408562bedb8b60ce05c1"},
+    {"namespace":"reader-manifest","scope":"resource","identity":"redacted","resource":"redacted","version":"3","key":"earnalism:cache:v2:reader-manifest:resource:4d5cf28b78a0ddc5c46879a0f58ec5d15be28af281909d8cfbe4a942a6beea6a:eb139ffb90c085f2eb4fcbfbdc4f017c6ff872ddc19853edf9de5cc24e18d94f:4e07408562bedb8b60ce05c1"},
+    {"namespace":"user-private","scope":"user","identity":"redacted","resource":"redacted","version":"current","key":"earnalism:cache:v2:user-private:user:fc95297aa4f56781f0decb7d4bf59b1447f09b3611039b80188b1c6beb03ee6a:81dc075c3d55230215300137991a25f90be4c243a55580fe2af7538774147bd6:97b0560280ed60a5a1eaa1bc"},
+    {"namespace":"user-doc","scope":"user","identity":"redacted","resource":"redacted","version":"current","key":"earnalism:cache:v2:user-doc:user:fc95297aa4f56781f0decb7d4bf59b1447f09b3611039b80188b1c6beb03ee6a:fc95297aa4f56781f0decb7d4bf59b1447f09b3611039b80188b1c6beb03ee6a:97b0560280ed60a5a1eaa1bc"},
+    {"namespace":"user-session","scope":"session","identity":"redacted","resource":"redacted","version":"current","key":"earnalism:cache:v2:user-session:session:fa57a52dbf08190218529730a3e99db6946c6c29220fb6e0551e21598b0b05db:fa57a52dbf08190218529730a3e99db6946c6c29220fb6e0551e21598b0b05db:97b0560280ed60a5a1eaa1bc"}
+  ],
+  "assertions":{"deterministic":true,"namespace_isolation":true,"user_isolation":true,"session_isolation":true,"resource_isolation":true,"generation_isolation":true,"delimiter_collision":false,"raw_sensitive_identity":false,"duplicate_vector":false,"tenant_scope":"NOT_APPLICABLE_SINGLE_TENANT_PRODUCT"}
+}

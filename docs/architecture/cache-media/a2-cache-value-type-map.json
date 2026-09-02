@@ -1,0 +1,17 @@
+{
+  "schema_version":"a2-cache-value-map-v1",
+  "result":"PASS",
+  "largest_characterized_value_bytes":3006,
+  "compatibility_margin":"348x (1,048,576-byte fixed decoder ceiling; characterization is synthetic/local only)",
+  "namespaces":[
+    {"namespace":"public-cache","top_level":"dict/list","nested":"dict/list/string/int/bool/null","string_keys":true,"datetime":false,"date":false,"uuid":false,"objectid":false,"decimal":false,"enum":false,"binary":false,"tuples_sets":false,"pydantic":false,"optional_fields":true,"max_depth":4,"largest_bytes":126,"api_response":"public catalog/Home/book metadata","strategy":"canonical JSON primitives"},
+    {"namespace":"reader-content","top_level":"dict/string","nested":"string/dict","string_keys":true,"datetime":false,"date":false,"uuid":false,"objectid":false,"decimal":false,"enum":false,"binary":false,"tuples_sets":false,"pydantic":false,"optional_fields":false,"max_depth":2,"largest_bytes":3006,"api_response":"reader metadata/content","strategy":"canonical JSON primitives"},
+    {"namespace":"reader-manifest","top_level":"dict","nested":"dict/list/string/int/bool/null","string_keys":true,"datetime":false,"date":false,"uuid":false,"objectid":false,"decimal":false,"enum":false,"binary":false,"tuples_sets":false,"pydantic":false,"optional_fields":true,"max_depth":4,"largest_bytes":73,"api_response":"listener manifest metadata","strategy":"canonical JSON primitives"},
+    {"namespace":"user-private","top_level":"list/dict","nested":"dict/list/string/int/bool/null","string_keys":true,"datetime":true,"date":true,"uuid":true,"objectid":false,"decimal":true,"enum":false,"binary":false,"tuples_sets":false,"pydantic":false,"optional_fields":true,"max_depth":4,"largest_bytes":80,"api_response":"transaction/payment read model","strategy":"explicit datetime/date/UUID/Decimal envelopes"},
+    {"namespace":"user-doc","top_level":"dict","nested":"dict/list/string/int/bool/null","string_keys":true,"datetime":true,"date":false,"uuid":false,"objectid":false,"decimal":false,"enum":false,"binary":false,"tuples_sets":false,"pydantic":false,"optional_fields":true,"max_depth":3,"largest_bytes":93,"api_response":"authenticated user lookup","strategy":"explicit datetime envelope; _id excluded"},
+    {"namespace":"user-session","top_level":"dict","nested":"dict/list/string/int/bool/null","string_keys":true,"datetime":true,"date":false,"uuid":false,"objectid":false,"decimal":false,"enum":false,"binary":false,"tuples_sets":false,"pydantic":false,"optional_fields":true,"max_depth":3,"largest_bytes":70,"api_response":"session-derived lookup","strategy":"explicit datetime envelope; _id excluded"}
+  ],
+  "supported_type_adapters":{"datetime":"ISO-8601 tagged","date":"ISO-8601 tagged","UUID":"canonical string tagged","ObjectId":"canonical BSON ObjectId tagged when encountered","Decimal":"string tagged","Pydantic":"model_dump/dict then validated JSON"},
+  "unsupported_types":"Enum, tuple, set, bytes, file/stream, generator, arbitrary object; fail closed rather than stringify",
+  "unsupported_value_type_count":0
+}
