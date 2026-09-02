@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { userApi } from "../../lib/api";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
+import { isRequestCancellation } from "../../lib/requestCancellation";
 import {
   endReadingPassSession,
   getReadingPassPage,
@@ -53,21 +54,25 @@ export default function ReaderExperienceV2Route() {
   useEffect(() => {
     if (visualFixture) return undefined;
     let cancelled = false;
+    const controller = new AbortController();
     setLoading(true);
     setError("");
-    userApi.get(readerManifestPath(slug))
+    userApi.get(readerManifestPath(slug), { signal: controller.signal })
       .then((response) => { if (!cancelled) setManifest(response.data); })
-      .catch(() => { if (!cancelled) setError("This reader edition is not available."); })
+      .catch((requestError) => {
+        if (!cancelled && !isRequestCancellation(requestError)) setError("This reader edition is not available.");
+      })
       .finally(() => { if (!cancelled) setLoading(false); });
-    return () => { cancelled = true; };
+    return () => { cancelled = true; controller.abort(); };
   }, [slug, visualFixture]);
 
   useEffect(() => {
     if (visualFixture) return undefined;
     let cancelled = false;
+    const controller = new AbortController();
     setPage(null);
     if (!manifest || canonicalPage > 3 && !lease) return undefined;
-    getReadingPassPage(slug, canonicalPage, lease)
+    getReadingPassPage(slug, canonicalPage, lease, { signal: controller.signal })
       .then((value) => {
         if (cancelled) return;
         setPage(value);
@@ -75,8 +80,12 @@ export default function ReaderExperienceV2Route() {
           void saveReadingPassPosition({ bookSlug: slug, pageIndex: value.page_index, chapterId: value.chapter_id });
         }
       })
-      .catch((requestError) => { if (!cancelled) setError(requestError?.response?.data?.detail?.message || "Reading access could not be verified."); });
-    return () => { cancelled = true; };
+      .catch((requestError) => {
+        if (!cancelled && !isRequestCancellation(requestError)) {
+          setError(requestError?.response?.data?.detail?.message || "Reading access could not be verified.");
+        }
+      });
+    return () => { cancelled = true; controller.abort(); };
   }, [canonicalPage, lease, manifest, slug, visualFixture]);
 
   useEffect(() => {

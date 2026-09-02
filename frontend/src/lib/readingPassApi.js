@@ -59,7 +59,7 @@ export async function revokeReadingPassDevice(sessionOrDeviceId) {
   return response.data;
 }
 
-export async function getReadingPassPage(bookSlug, pageIndex, lease = null) {
+export async function getReadingPassPage(bookSlug, pageIndex, lease = null, requestOptions = {}) {
   const headers = { ...authHeaders() };
   if (lease?.sessionId && lease?.token) {
     headers['X-Reading-Pass-Session'] = lease.sessionId;
@@ -67,7 +67,7 @@ export async function getReadingPassPage(bookSlug, pageIndex, lease = null) {
   }
   const response = await axios.get(
     `${API}/reading-pass/books/${encodeURIComponent(bookSlug)}/pages/${Number(pageIndex)}`,
-    { headers },
+    { ...requestOptions, headers: { ...headers, ...(requestOptions.headers || {}) } },
   );
   return response.data;
 }

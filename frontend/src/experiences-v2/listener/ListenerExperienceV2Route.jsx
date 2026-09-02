@@ -3,6 +3,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { userApi } from "../../lib/api";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
+import { isRequestCancellation } from "../../lib/requestCancellation";
 import { endReadingPassSession, renewReadingPassLease, startReadingPassAudioSession } from "../../lib/readingPassApi";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
 import ListenerExperienceV2 from "./ListenerExperienceV2";
@@ -36,12 +37,15 @@ export default function ListenerExperienceV2Route() {
   useEffect(() => {
     if (visualFixture) return undefined;
     let cancelled = false;
-    userApi.get(readerManifestPath(slug)).then((response) => {
+    const controller = new AbortController();
+    userApi.get(readerManifestPath(slug), { signal: controller.signal }).then((response) => {
       if (cancelled) return;
       const value = response.data || {};
       setBook({ ...(value.book || {}), _readerManifest: { audio: value.audio || {}, access: value.access || {} } });
-    }).catch(() => { if (!cancelled) setBook({}); });
-    return () => { cancelled = true; };
+    }).catch((requestError) => {
+      if (!cancelled && !isRequestCancellation(requestError)) setBook({});
+    });
+    return () => { cancelled = true; controller.abort(); };
   }, [slug, visualFixture]);
 
   useEffect(() => {
