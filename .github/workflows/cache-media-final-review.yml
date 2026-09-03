@@ -50,7 +50,7 @@ jobs:
       - name: Frontend, browser, build, and static SEO regression
         run: |
           CI=true npm test --prefix frontend -- --watchAll=false --runInBand
-          npm run build --prefix frontend
+          REACT_APP_ENABLE_VISUAL_FIXTURES=1 npm run build --prefix frontend
           node scripts/serve_frontend_build.js --port 13119 >"$RUNNER_TEMP/a9-frontend.log" 2>&1 & echo $! > "$RUNNER_TEMP/a9-frontend.pid"
           ready=0
           for i in $(seq 1 30); do
