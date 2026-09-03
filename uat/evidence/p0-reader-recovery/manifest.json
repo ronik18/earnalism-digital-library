@@ -1,0 +1,113 @@
+{
+  "incident_id": "P0-READER-RECOVERY-PR346",
+  "pr_number": 346,
+  "branch": "codex/main-approved-integration",
+  "base_sha": "1a23ad2f2a04176faa0afb753f7144af2f437d0d",
+  "tested_head": "b3ad757b",
+  "environment": {
+    "classification": "LOCAL_PRODUCTION_LIKE",
+    "identifier": "loopback-uAT-20260903T085341Z",
+    "frontend": "http://127.0.0.1:3000",
+    "backend": "http://127.0.0.1:8000/api",
+    "mongodb": "isolated earnalism_uat replica set on 127.0.0.1:27018",
+    "redis": "not configured; cache behavior exercised with isolated test doubles",
+    "browser": "Chromium 148.0.7778.96",
+    "runtime": "Node.js 24.15.0; Python 3.9 test environment; Python 3.11 isolated UAT launcher"
+  },
+  "runs": [
+    {
+      "name": "focused_frontend_contracts",
+      "command": "CI=true npm --prefix frontend test -- --watchAll=false --runInBand src/lib/readerNavigation.test.js src/experiences-v2/__tests__/rla-v2.contract.test.js src/pages/Reader.mobileUx.test.js src/lib/bookDetailPresentation.test.js",
+      "started_at": "2026-09-03T08:57:23Z",
+      "finished_at": "2026-09-03T08:57:25Z",
+      "exit_code": 0,
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "total": 31,
+      "cache_state": "cold unit-test fixtures",
+      "log": "/private/tmp/pr346-manifest-frontend.log",
+      "sha256": "c3b6d3704e4a821cf4a55e609697723ed6945f43fa66295cd4e419b5a50adb10"
+    },
+    {
+      "name": "backend_reader_wallet_cache_contracts",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=backend python3 -m pytest -q backend/tests/test_public_catalog_controlled_cover_truth.py backend/tests/test_redis_cache_policy.py backend/tests/test_reading_pass_service_concurrency.py backend/tests/test_reading_time_invariants.py",
+      "started_at": "2026-09-03T08:57:23Z",
+      "finished_at": "2026-09-03T08:57:25Z",
+      "exit_code": 0,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0,
+      "total": 35,
+      "cache_state": "cold isolated test fixtures",
+      "log": "/private/tmp/pr346-manifest-backend.log",
+      "sha256": "b9b1e6d0ea566e58ca68a51035218d30f600ea19093fcfa1ed8f5b195d1c32a1"
+    },
+    {
+      "name": "complete_audiobook_routing_suite",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=backend python3 -m pytest -q backend/tests/test_b2_audiobook_routing.py",
+      "started_at": "2026-09-03T08:57:23Z",
+      "finished_at": "2026-09-03T08:57:25Z",
+      "exit_code": 1,
+      "passed": 30,
+      "failed": 3,
+      "skipped": 0,
+      "total": 33,
+      "cache_state": "cold isolated test fixtures",
+      "log": "/private/tmp/pr346-manifest-audiobook.log",
+      "sha256": "6406b724608868506e465a7f9c6654d050c9847c8d85c183da31e1eef989a21a"
+    },
+    {
+      "name": "frontend_production_build_and_static_seo",
+      "command": "npm --prefix frontend run build",
+      "started_at": "2026-09-03T08:57:37Z",
+      "finished_at": "2026-09-03T08:57:44Z",
+      "exit_code": 0,
+      "passed": 2502,
+      "failed": 0,
+      "skipped": 0,
+      "total": 2502,
+      "cache_state": "build-time static output",
+      "log": "/private/tmp/pr346-manifest-build.log",
+      "sha256": "74c02f5c0ede7fca5f1f69b1a63aa360d588b6bc15588eb306520292c96b34e6"
+    },
+    {
+      "name": "book_detail_browser_review",
+      "command": "UAT_COMMAND_FILE=uat/evidence/p0-reader-recovery/run-book-commerce-review.sh bash scripts/start_local_uat.sh",
+      "started_at": "2026-09-03T08:53:41Z",
+      "finished_at": "2026-09-03T08:54:39Z",
+      "exit_code": 0,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "total": 17,
+      "cache_state": "fresh Chromium contexts; service workers blocked by harness",
+      "artifact": "uat/evidence/p0-reader-recovery/book-commerce-review/capture-results.json",
+      "artifact_sha256": "625f4ddd5c9930804524a5b8b87c5d13b8cd6927d8253ca82ed45e1de94985f5"
+    }
+  ],
+  "audiobook_base_comparison": {
+    "base_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=backend python3 -m pytest -q backend/tests/test_b2_audiobook_routing.py::test_reader_manifest_truth_gate_invalidates_pre_package_v2_cache backend/tests/test_b2_audiobook_routing.py::test_private_audio_store_is_proxied_without_changing_primary_b2 backend/tests/test_b2_audiobook_routing.py::test_open_window_controlled_release_exposes_only_proxy_assets_with_disclosure",
+    "head_command": "same command and environment in the canonical PR worktree",
+    "base_log": "/private/tmp/pr346-base-audiobook-comparison.log",
+    "base_log_sha256": "06ac2360b96c3a5b1fb16c1aab5e117ca5fffa8c9f922b3eca5cd442c9bae074",
+    "head_log": "/private/tmp/pr346-head-audiobook-comparison.log",
+    "head_log_sha256": "2f896264f7eb231d4d531f78a71799e1490d33fd44a7ad3bb51658e0e4185f0f",
+    "classification": "PRE_EXISTING_IDENTICAL",
+    "failures": [
+      "test_reader_manifest_truth_gate_invalidates_pre_package_v2_cache: expected audio.assets.manifest; actual KeyError",
+      "test_private_audio_store_is_proxied_without_changing_primary_b2: expected audio.assets.mp3; actual KeyError",
+      "test_open_window_controlled_release_exposes_only_proxy_assets_with_disclosure: expected six proxy assets; actual empty object"
+    ],
+    "acceptance_required": "Explicit owner acceptance and follow-up issue before this affected-suite failure can be considered non-blocking."
+  },
+  "review": {
+    "result": "P0/P1 code review complete: title identity fails closed, cache identity is title-bound, protected chapter bodies bypass shared Redis, legacy entitlement uses ReadingPassService.wallet_state, and review fixtures now model a valid same-title manifest.",
+    "service_worker": "v4 cache naming and reader/Reading Pass/audiobook API bypass reviewed in PR code; prior-worker upgrade and warm-cache browser validation remain remote-staging work."
+  },
+  "residual_risks": [
+    "Remote PR preview/staging has not been provisioned or verified.",
+    "Warm Redis/browser cache, previous service-worker generation, CDN, TLS, and cross-origin cookie behavior were not covered by local-only validation.",
+    "The three pre-existing audiobook fixture failures require explicit owner acceptance and a tracked follow-up."
+  ]
+}
