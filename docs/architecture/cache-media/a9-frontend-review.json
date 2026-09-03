@@ -1,0 +1,1 @@
+{"review":"staff frontend lifecycle","result":"PASS","findings":[],"unresolved_blockers":0,"unresolved_high":0,"evidence":["Reader/Listener route lifecycle contracts","requestCancellation.js AbortError handling","A7 browser lifecycle evidence"],"no_provider_url":true,"no_autoplay":true,"no_public_audio":true}

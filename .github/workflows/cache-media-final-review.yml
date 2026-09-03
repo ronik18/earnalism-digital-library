@@ -1,0 +1,77 @@
+name: Cache media final review
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - backend/cache/**
+      - backend/media/**
+      - backend/server.py
+      - backend/tests/cache_media/**
+      - frontend/src/experiences-v2/**
+      - frontend/src/lib/requestCancellation.*
+      - scripts/cache_media/**
+      - docs/architecture/cache-media/**
+      - .github/workflows/cache-media-final-review.yml
+permissions: {contents: read}
+jobs:
+  exact-head-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env: {PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers}
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: ${{ github.event.pull_request.head.sha || github.sha }}}
+      - name: Assert exact checkout and nondeployment contract
+        run: |
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+          test -z "${{ secrets.REDIS_URL }}${{ secrets.MONGODB_URI }}${{ secrets.B2_APPLICATION_KEY }}"
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: pip install -r backend/requirements.txt
+      - run: npm install --prefix frontend --legacy-peer-deps
+      - run: npx --prefix frontend playwright install --with-deps chromium firefox webkit
+      - name: Start ephemeral Redis and Mongo replica set
+        run: |
+          docker run -d --name a9-redis -p 6379:6379 redis:7.4.11-alpine redis-server --save '' --appendonly no
+          docker run -d --name a9-mongo -p 27017:27017 mongo:7 mongod --bind_ip_all --replSet a9-rs0
+          for i in $(seq 1 30); do docker exec a9-redis redis-cli ping | grep -qx PONG && docker exec a9-mongo mongosh --quiet --eval 'db.adminCommand({ping:1})' && break; sleep 1; done
+          docker exec a9-mongo mongosh --quiet --eval 'rs.initiate({_id:"a9-rs0",members:[{_id:0,host:"localhost:27017"}]}) || true'
+      - name: Exact-head backend and cache/media regression
+        run: |
+          pytest -q backend/tests/cache_media
+          REDIS_URL=redis://127.0.0.1:6379/15 UAT_EXTERNAL_MONGODB=true UAT_MONGODB_PORT=27017 UAT_COMMAND_FILE="$GITHUB_WORKSPACE/scripts/cache_media/a8_ci_backend_regression.sh" bash scripts/start_local_uat.sh
+      - name: Frontend, browser, build, and static SEO regression
+        run: |
+          CI=true npm test --prefix frontend -- --watchAll=false --runInBand
+          npm run build --prefix frontend
+          node scripts/serve_frontend_build.js --port 13119 >"$RUNNER_TEMP/a9-frontend.log" 2>&1 & echo $! > "$RUNNER_TEMP/a9-frontend.pid"
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:13119/ >/dev/null && break; sleep 1; done
+          UAT_BASE_URL=http://127.0.0.1:13119 A7_REPORT_PATH="$RUNNER_TEMP/a9-browser-lifecycle.json" node scripts/cache_media/verify_frontend_audio_lifecycle.mjs
+      - name: Build and validate exact-head owner package
+        run: |
+          out="$RUNNER_TEMP/pr345-cache-media-final-review-${{ github.event.pull_request.head.sha || github.sha }}"
+          python scripts/cache_media/build_a9_owner_review.py build --output "$out" --head "${{ github.event.pull_request.head.sha || github.sha }}" --tests PASS
+          python scripts/cache_media/build_a9_owner_review.py validate --package "$out" --head "${{ github.event.pull_request.head.sha || github.sha }}"
+          cp "${out}.zip" "$RUNNER_TEMP/owner-review.zip"
+      - uses: actions/upload-artifact@v4
+        with: {name: pr345-cache-media-final-review-${{ github.event.pull_request.head.sha || github.sha }}, path: ${{ runner.temp }}/owner-review.zip}
+      - if: always()
+        run: |
+          test ! -f "$RUNNER_TEMP/a9-frontend.pid" || kill "$(cat "$RUNNER_TEMP/a9-frontend.pid")" || true
+          docker rm -f a9-redis a9-mongo || true
+  independent-verifier:
+    needs: exact-head-review
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: ${{ github.event.pull_request.head.sha || github.sha }} }
+      - uses: actions/download-artifact@v4
+        with: {name: pr345-cache-media-final-review-${{ github.event.pull_request.head.sha || github.sha }}, path: review-download}
+      - name: Independently verify clean extraction
+        run: |
+          mkdir clean && unzip -q review-download/owner-review.zip -d clean
+          package="$(find clean -maxdepth 1 -type d -name 'pr345-cache-media-final-review-*' -print -quit)"
+          test -n "$package"
+          python scripts/cache_media/build_a9_owner_review.py validate --package "$package" --head "${{ github.event.pull_request.head.sha || github.sha }}"

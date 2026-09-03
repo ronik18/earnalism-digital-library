@@ -1,0 +1,1 @@
+{"review":"staff backend/cache","result":"PASS","findings":[],"unresolved_blockers":0,"unresolved_high":0,"evidence":["backend/cache/client.py shared RedisRuntime lifecycle","backend/cache/store.py exact-key invalidation and singleflight","backend/cache/codec.py bounded deterministic JSON v2","backend/tests/cache_media"]}
