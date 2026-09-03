@@ -1,0 +1,34 @@
+{
+  "schema_version": "cache-media-a8-benchmark-authority-change.v1",
+  "prior_benchmark": {
+    "head": "216f0c3d793567447cec1f797e3f277ed44094b1",
+    "workflow_run_id": "33667974115",
+    "classification": "VALID_HISTORICAL_BENCHMARK_NOT_FINAL_CURRENT_AUTHORITY",
+    "benchmark_runner_sha256": "30d570c4768b8859bb1bbdf06edc6c347a89714ed69416e4c1e327d9176fc25d",
+    "authority_hash": "30d570c4768b8859bb1bbdf06edc6c347a89714ed69416e4c1e327d9176fc25d"
+  },
+  "current_benchmark": {
+    "head": "8839a1467ed70e6bfb54a6e5050dc07b554040ff",
+    "benchmark_runner_sha256": "9b60c27e4c30f0aabd1382da1563987ed58cf350440fcdb7b9be763bde253063",
+    "authority_hash": "9b60c27e4c30f0aabd1382da1563987ed58cf350440fcdb7b9be763bde253063"
+  },
+  "changed_authority_paths": [
+    "scripts/cache_media/run_a8_integrated_benchmark.py"
+  ],
+  "unchanged_authority_categories": [
+    "benchmark workflow",
+    "benchmark profile",
+    "cache fixtures",
+    "audio fixtures",
+    "benchmark aggregation and percentile code",
+    "environment definition and Redis service configuration",
+    "Python and Node dependency authority",
+    "backend cache/media runtime",
+    "backend/server.py",
+    "frontend Reader runtime",
+    "frontend Listener runtime"
+  ],
+  "change_classification": "AUDIO_REPEATABILITY_HARNESS_EXPANSION",
+  "rerun_required": true,
+  "reason": "The benchmark runner now executes and labels three otherwise identical audio rounds. The prior successful artifact remains valid historical evidence but cannot be final authority for the expanded measurement contract."
+}
