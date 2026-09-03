@@ -257,19 +257,20 @@ def audio_case(size: int, case: str) -> dict[str, Any]:
 def run_audio() -> dict[str, Any]:
     cases = ("head", "full_small_get", "bytes_0_0", "bytes_0_1023", "middle_range", "suffix_range", "open_ended_range", "malformed_range", "unsatisfiable_range", "etag_304", "disconnect_before_first_byte", "disconnect_after_first_chunk", "upstream_read_failure", "metadata_get_mismatch")
     raw: list[dict[str, Any]] = []
-    for size in (1_048_576, 8_388_608, 33_554_432):
-        for concurrency in (1, 5, 20):
-            for case in cases:
-                started = time.perf_counter_ns(); result = audio_case(size, case)
-                elapsed = (time.perf_counter_ns() - started) / 1_000_000
-                raw.append({"fixture_bytes": size, "concurrency": concurrency, "case": case, "total_ms": round(elapsed, 6),
+    for round_index in range(3):
+        for size in (1_048_576, 8_388_608, 33_554_432):
+            for concurrency in (1, 5, 20):
+                for case in cases:
+                    started = time.perf_counter_ns(); result = audio_case(size, case)
+                    elapsed = (time.perf_counter_ns() - started) / 1_000_000
+                    raw.append({"round": round_index, "fixture_bytes": size, "concurrency": concurrency, "case": case, "total_ms": round(elapsed, 6),
                             "first_byte_ms": round(elapsed if result["response_bytes"] else 0.0, 6), "storage_head_calls": int(case in {"head", "etag_304"}),
                             "storage_get_calls": int(case not in {"head", "etag_304"}), "read_calls": result["chunk_count"],
                             "maximum_read_size": result.get("maximum_read_size", 0), "upstream_bytes": result["response_bytes"],
                             "response_bytes": result["response_bytes"], "chunk_count": result["chunk_count"], "status": result["status"], "body_hash": result["body_hash"],
                             "active_streams_after": 0, "open_upstream_bodies_after": 0, "retry_after_response_bytes": 0,
                             "event_loop_heartbeat_ms": 0.0, "rss_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss})
-    return {"round_count": 1, "sample_count": len(raw), "concurrency_levels": [1, 5, 20], "raw": raw,
+    return {"round_count": 3, "sample_count": len(raw), "concurrency_levels": [1, 5, 20], "raw": raw,
             "maximum_storage_read_size": max(item["maximum_read_size"] for item in raw), "active_body_leak_count": 0,
             "retry_after_response_bytes_count": 0, "response_correctness_result": "PASS", "event_loop_result": "PASS", "redis_audio_write_count": 0}
 
