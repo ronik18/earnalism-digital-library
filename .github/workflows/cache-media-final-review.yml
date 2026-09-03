@@ -34,6 +34,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Verify flat owner-review archive contract
+        run: python scripts/cache_media/test_a9_flat_archive_contract.py
       - run: pip install -r backend/requirements.txt
       - run: npm install --prefix frontend --legacy-peer-deps
       - run: npx --prefix frontend playwright install --with-deps chromium firefox webkit
@@ -113,6 +115,7 @@ jobs:
       - name: Independently verify clean extraction
         run: |
           mkdir clean && unzip -q review-download/owner-review.zip -d clean
-          package="$(find clean -maxdepth 1 -type d -name 'pr345-cache-media-final-review-*' -print -quit)"
-          test -n "$package"
-          python scripts/cache_media/build_a9_owner_review.py validate --package "$package" --head "${{ github.event.pull_request.head.sha || github.sha }}"
+          test -f clean/manifest.json
+          test -f clean/manifest.sha256
+          test -f clean/artifact.zip
+          python scripts/cache_media/build_a9_owner_review.py validate --package clean --head "${{ github.event.pull_request.head.sha || github.sha }}"
