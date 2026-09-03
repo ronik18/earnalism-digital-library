@@ -57,7 +57,20 @@ jobs:
             if curl -fsS http://127.0.0.1:13119/ >/dev/null; then ready=1; break; fi
             sleep 1
           done
-          if [ "$ready" -ne 1 ]; then cat "$RUNNER_TEMP/a9-frontend.log"; exit 1; fi
+          if [ "$ready" -ne 1 ]; then
+            echo "a9_frontend_readiness=FAILED_AFTER_30_SECONDS"
+            if kill -0 "$(cat "$RUNNER_TEMP/a9-frontend.pid")" 2>/dev/null; then
+              echo "a9_frontend_process_state=RUNNING_NOT_READY"
+            else
+              echo "a9_frontend_process_state=EXITED"
+            fi
+            echo "a9_frontend_requested_port=13119"
+            ss -ltn '( sport = :13119 )' || true
+            echo "a9_frontend_launcher_log_begin"
+            cat "$RUNNER_TEMP/a9-frontend.log"
+            echo "a9_frontend_launcher_log_end"
+            exit 1
+          fi
           UAT_BASE_URL=http://127.0.0.1:13119 A7_REPORT_PATH="$RUNNER_TEMP/a9-browser-lifecycle.json" node scripts/cache_media/verify_frontend_audio_lifecycle.mjs
       - name: Build and validate exact-head owner package
         run: |
@@ -69,6 +82,19 @@ jobs:
         with:
           name: pr345-cache-media-final-review-${{ github.event.pull_request.head.sha || github.sha }}
           path: ${{ runner.temp }}/owner-review.zip
+      - name: Prepare sanitized frontend diagnostic
+        if: failure()
+        run: |
+          mkdir -p "$RUNNER_TEMP/a9-diagnostics-public"
+          if test -f "$RUNNER_TEMP/a9-frontend.log"; then
+            python scripts/cache_media/sanitize_a8_artifact_logs.py --input "$RUNNER_TEMP/a9-frontend.log" --output "$RUNNER_TEMP/a9-diagnostics-public/frontend-launcher.log" --report "$RUNNER_TEMP/a9-diagnostics-public/frontend-launcher.log.sanitization.json"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: pr345-cache-media-final-review-diagnostics-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/a9-diagnostics-public
+          if-no-files-found: ignore
       - if: always()
         run: |
           test ! -f "$RUNNER_TEMP/a9-frontend.pid" || kill "$(cat "$RUNNER_TEMP/a9-frontend.pid")" || true
