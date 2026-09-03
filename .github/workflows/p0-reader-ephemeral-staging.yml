@@ -1,0 +1,196 @@
+name: P0 reader ephemeral staging
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - backend/server.py
+      - backend/tests/test_redis_cache_policy.py
+      - backend/tests/test_public_catalog_controlled_cover_truth.py
+      - backend/tests/test_reading_pass_service_concurrency.py
+      - backend/tests/test_reading_time_invariants.py
+      - frontend/public/service-worker.js
+      - frontend/src/**
+      - scripts/capture_exact_primary_owner_review.mjs
+      - scripts/capture_seamless_brand_owner_review.mjs
+      - scripts/p0_ephemeral_ci_guard.py
+      - scripts/seed_p0_ephemeral_fixtures.py
+      - scripts/test_p0_reader_service_worker_upgrade.mjs
+      - uat/evidence/p0-reader-recovery/**
+      - .github/workflows/p0-reader-ephemeral-staging.yml
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: p0-reader-ephemeral-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  ephemeral-staging:
+    if: github.event.pull_request.number == 346 && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      CI: "true"
+      NODE_ENV: production
+      P0_BASE_SHA: 1a23ad2f2a04176faa0afb753f7144af2f437d0d
+      P0_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      P0_FRONTEND_URL: http://127.0.0.1:13080
+      P0_API_URL: http://127.0.0.1:18080/api
+      P0_FRONTEND_PORT: "13080"
+      MONGO_URL: mongodb://127.0.0.1:27018/earnalism_p0?replicaSet=earnalism-p0-rs0
+      MONGODB_URL: mongodb://127.0.0.1:27018/earnalism_p0?replicaSet=earnalism-p0-rs0
+      REDIS_URL: redis://127.0.0.1:6379/15
+      REDIS_CACHE_ENABLED: "true"
+      RAZORPAY_KEY_ID: rzp_test_ephemeral_ci_346
+      RAZORPAY_KEY_SECRET: ephemeral-ci-secret-not-production
+      JWT_SECRET: ephemeral-ci-jwt-not-production
+      READING_PASS_TOKEN_SECRET: ephemeral-ci-reading-pass-not-production
+      RAZORPAY_MODE: test
+      COST_CONTROL_MODE: "true"
+      ENABLE_BACKGROUND_WORKERS: "false"
+      ENABLE_AUDIOBOOK_PIPELINE: "false"
+      ENABLE_BOOK_RENDERING_JOBS: "false"
+      ENABLE_COVER_GENERATION: "false"
+      ENABLE_SCHEDULED_JOBS: "false"
+      ENABLE_QUEUE_CONSUMER: "false"
+      ENABLE_ADMIN_MEDIA_UPLOADS: "false"
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+    services:
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Reject non-ephemeral configuration before any service or test
+        run: python3 scripts/p0_ephemeral_ci_guard.py
+
+      - name: Install isolated test runtimes
+        run: |
+          npm ci
+          npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check -r backend/requirements.txt
+          npx playwright install --with-deps chromium firefox webkit
+
+      - name: Start job-local Mongo replica set
+        run: |
+          docker run --detach --name earnalism-p0-mongodb --network host mongo:7.0.14 mongod --bind_ip 127.0.0.1 --port 27018 --replSet earnalism-p0-rs0
+          for _ in $(seq 1 30); do docker exec earnalism-p0-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'db.adminCommand({ping:1})' && break; sleep 1; done
+          docker exec earnalism-p0-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'rs.initiate({_id:"earnalism-p0-rs0",members:[{_id:0,host:"127.0.0.1:27018"}]})'
+          python3 scripts/init_uat_mongodb.py
+          python3 scripts/seed_p0_ephemeral_fixtures.py
+
+      - name: Build and serve production-mode local application
+        run: |
+          REACT_APP_ENABLE_SERVICE_WORKER=true REACT_APP_BACKEND_URL="$P0_API_URL" npm --prefix frontend run build > frontend-build.log 2>&1
+          python3 -m uvicorn backend.server:app --host 127.0.0.1 --port 18080 > backend.log 2>&1 & echo $! > backend.pid
+          node scripts/serve_frontend_build.js --directory frontend/build --port 13080 > frontend.log 2>&1 & echo $! > frontend.pid
+          for _ in $(seq 1 45); do curl --fail --silent --show-error http://127.0.0.1:18080/healthz && curl --fail --silent --show-error http://127.0.0.1:13080/ && break; sleep 1; done
+
+      - name: Seed and validate rights-safe title, entitlement, cache, and protected-content contracts
+        run: |
+          mkdir -p p0-ephemeral-evidence
+          PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=backend python3 -m pytest -q \
+            backend/tests/test_public_catalog_controlled_cover_truth.py \
+            backend/tests/test_redis_cache_policy.py \
+            backend/tests/test_reading_pass_service_concurrency.py \
+            backend/tests/test_reading_time_invariants.py | tee p0-ephemeral-evidence/backend-contracts.log
+          CI=true npm --prefix frontend test -- --watchAll=false --runInBand \
+            src/lib/readerNavigation.test.js src/experiences-v2/__tests__/rla-v2.contract.test.js \
+            src/pages/Reader.mobileUx.test.js src/lib/bookDetailPresentation.test.js | tee p0-ephemeral-evidence/frontend-contracts.log
+
+      - name: Verify persistent-profile base-to-PR worker upgrade and three-browser title identity
+        run: |
+          node scripts/test_p0_reader_service_worker_upgrade.mjs | tee p0-ephemeral-evidence/service-worker-upgrade.json
+
+      - name: Capture the focused public review fixtures
+        env:
+          UAT_BASE_URL: http://127.0.0.1:13080
+          EXACT_OWNER_REVIEW_CAPTURE_OUTPUT: p0-ephemeral-evidence/owner-review
+        run: node scripts/capture_exact_primary_owner_review.mjs
+
+      - name: Create redacted incident evidence index
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          root = pathlib.Path('p0-ephemeral-evidence')
+          root.mkdir(exist_ok=True)
+          files = []
+          for path in sorted(p for p in root.rglob('*') if p.is_file()):
+              files.append({'path': str(path.relative_to(root)), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
+          payload = {'incident_id': 'P0-READER-RECOVERY-PR346', 'pr_number': 346, 'base_sha': os.environ['P0_BASE_SHA'], 'head_sha': os.environ['P0_HEAD_SHA'], 'run_id': os.environ.get('GITHUB_RUN_ID'), 'run_url': f"{os.environ.get('GITHUB_SERVER_URL')}/{os.environ.get('GITHUB_REPOSITORY')}/actions/runs/{os.environ.get('GITHUB_RUN_ID')}", 'classification': 'EPHEMERAL_JOB_LOCAL_REDACTED', 'resources': ['mongodb-replica-set', 'redis-service', 'test-payment-key'], 'files': files}
+          (root / 'incident-evidence-index.json').write_text(json.dumps(payload, indent=2) + '\n')
+          PY
+
+      - name: Upload redacted ephemeral evidence
+        id: evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: p0-reader-ephemeral-staging-${{ github.event.pull_request.head.sha }}
+          path: |
+            p0-ephemeral-evidence/**
+            backend.log
+            frontend.log
+            frontend-build.log
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Write run and artifact evidence to summary
+        if: always()
+        run: |
+          {
+            echo '## P0 ephemeral staging evidence'
+            echo "- PR head: \`${P0_HEAD_SHA}\`"
+            echo "- Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo "- Artifact ID: ${{ steps.evidence.outputs.artifact-id }}"
+            echo "- Artifact URL: ${{ steps.evidence.outputs.artifact-url }}"
+            echo "- Artifact digest: \`${{ steps.evidence.outputs.artifact-digest }}\`"
+            echo '- Scope: job-local Mongo replica set, Redis service, generated test payment key; no production hostname or secret.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Post ephemeral evidence pointer to the PR
+        if: always()
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const head = context.payload.pull_request.head.sha;
+            const body = [
+              '### P0 ephemeral staging',
+              `- Head: \`${head}\``,
+              `- Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
+              `- Artifact ID: ${{ steps.evidence.outputs.artifact-id }}`,
+              `- Artifact: ${{ steps.evidence.outputs.artifact-url }}`,
+              `- SHA-256: \`${{ steps.evidence.outputs.artifact-digest }}\``,
+              '- Evidence is redacted and was produced only from job-local Mongo, Redis, test payment configuration, and local servers.',
+            ].join('\n');
+            await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, body });
+
+      - name: Stop job-local processes and Mongo
+        if: always()
+        run: |
+          test -f backend.pid && kill "$(cat backend.pid)" || true
+          test -f frontend.pid && kill "$(cat frontend.pid)" || true
+          docker rm --force earnalism-p0-mongodb || true

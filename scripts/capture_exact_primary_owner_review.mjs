@@ -59,6 +59,16 @@ async function installFixtureRoutes(page) {
   await page.route("**/api/**", async (route) => {
     const url = new URL(route.request().url());
     if (url.pathname.endsWith("/books")) return jsonResponse(route, books);
+    const requestedBook = url.pathname.match(/^\/api\/books\/([^/]+)$/)?.[1];
+    if (requestedBook) {
+      const book = books.find((entry) => entry.slug === decodeURIComponent(requestedBook));
+      return route.fulfill({ status: book ? 200 : 404, contentType: "application/json", body: JSON.stringify(book || { detail: "Book not found" }) });
+    }
+    const manifestBook = url.pathname.match(/^\/api\/reader\/book\/([^/]+)\/manifest$/)?.[1];
+    if (manifestBook) {
+      const book = books.find((entry) => entry.slug === decodeURIComponent(manifestBook));
+      return route.fulfill({ status: book ? 200 : 404, contentType: "application/json", body: JSON.stringify(book ? { book, chapters: book.chapters, audio: { enabled: false, assets: {} } } : { detail: "Book not found" }) });
+    }
     if (url.pathname.includes("/payments/") && (url.pathname.endsWith("/offers") || url.pathname.endsWith("/packs"))) return jsonResponse(route, { packs, config: { mode: "owner-review-fixture", recurring_enabled: false } });
     if (url.pathname.endsWith("/auth/me") || url.pathname.endsWith("/users/me")) return jsonResponse(route, user);
     if (url.pathname.includes("transactions")) return jsonResponse(route, []);
