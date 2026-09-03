@@ -2113,12 +2113,12 @@ async def _cached_user_wallet_seconds(user_id: str) -> int:
 
 
 async def _authoritative_user_wallet_seconds(user_id: str) -> int:
-    """Read the authority used to grant legacy protected reader text."""
-    fresh = await db.users.find_one(
-        {"id": user_id},
-        {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1},
-    ) or {}
-    return int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+    """Reuse the Reading Pass balance authority; never grant from Redis."""
+    try:
+        state = await reading_pass_service.wallet_state(user_id)
+    except ReadingPassError:
+        return 0
+    return int(state.get("balance_seconds", 0) or 0)
 
 
 def _reader_cached_payload_matches_slug(value: Any, slug: str, *, book_field: str = "") -> bool:

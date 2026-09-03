@@ -83,12 +83,11 @@ def test_reader_chapter_bodies_never_use_shared_redis(monkeypatch):
 def test_authoritative_wallet_lookup_does_not_read_redis(monkeypatch):
     server = _server(monkeypatch)
 
-    class Users:
-        async def find_one(self, query, projection):
-            assert query == {"id": "reader-1"}
-            assert projection["reading_seconds_balance"] == 1
-            return {"reading_seconds_balance": 120, "wallet_seconds": 0}
+    class ReadingPassService:
+        async def wallet_state(self, user_id):
+            assert user_id == "reader-1"
+            return {"balance_seconds": 120}
 
-    monkeypatch.setattr(server, "db", SimpleNamespace(users=Users()))
+    monkeypatch.setattr(server, "reading_pass_service", ReadingPassService())
 
     assert asyncio.run(server._authoritative_user_wallet_seconds("reader-1")) == 120
