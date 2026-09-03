@@ -40,9 +40,9 @@ jobs:
       - name: Start ephemeral Redis and Mongo replica set
         run: |
           docker run -d --name a9-redis -p 6379:6379 redis:7.4.11-alpine redis-server --save '' --appendonly no
-          docker run -d --name a9-mongo -p 27017:27017 mongo:7 mongod --bind_ip_all --replSet a9-rs0
+          docker run -d --name a9-mongo -p 27017:27017 mongo:7 mongod --bind_ip_all --replSet earnalism-uat-rs0
           for i in $(seq 1 30); do docker exec a9-redis redis-cli ping | grep -qx PONG && docker exec a9-mongo mongosh --quiet --eval 'db.adminCommand({ping:1})' && break; sleep 1; done
-          docker exec a9-mongo mongosh --quiet --eval 'rs.initiate({_id:"a9-rs0",members:[{_id:0,host:"localhost:27017"}]}) || true'
+          docker exec a9-mongo mongosh --quiet --eval 'rs.initiate({_id:"earnalism-uat-rs0",members:[{_id:0,host:"localhost:27017"}]}) || true'
       - name: Exact-head backend and cache/media regression
         run: |
           pytest -q backend/tests/cache_media
