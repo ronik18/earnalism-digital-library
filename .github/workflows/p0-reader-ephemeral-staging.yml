@@ -40,6 +40,7 @@ jobs:
       P0_FRONTEND_URL: http://127.0.0.1:13080
       P0_API_URL: http://127.0.0.1:18080/api
       P0_FRONTEND_PORT: "13080"
+      UAT_MONGODB_PORT: "27018"
       MONGO_URL: mongodb://127.0.0.1:27018/earnalism_p0?replicaSet=earnalism-p0-rs0
       MONGODB_URL: mongodb://127.0.0.1:27018/earnalism_p0?replicaSet=earnalism-p0-rs0
       REDIS_URL: redis://127.0.0.1:6379/15
