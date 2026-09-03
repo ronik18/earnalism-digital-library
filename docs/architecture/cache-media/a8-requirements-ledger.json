@@ -1,0 +1,11 @@
+{
+  "schema_version": "cache-media-a8-requirements-ledger.v1",
+  "target_sha": "2132b6dfd364e42bd5df774ed07da2fd3a593f14",
+  "a1_to_a7_contracts": "PASS_BY_UNCHANGED_RUNTIME_AUTHORITY_AND_ACCEPTED_REGRESSION_EVIDENCE",
+  "a8_backend_integration": "PASS_BY_IDENTICAL_BACKEND_INTEGRATION_AUTHORITY_HASHES",
+  "a8_integrated_redis_benchmark": "PASS",
+  "a8_audio_repeatability": "PASS_NO_MATERIAL_REPEATABLE_REGRESSION",
+  "production_source_files_changed_during_a8": 0,
+  "production_behavior_change": "NONE",
+  "production_mutations": 0
+}

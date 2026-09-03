@@ -1,0 +1,19 @@
+{
+  "accepted_workflow_run_id": "33678559253",
+  "accepted_artifact_id": "9865429518",
+  "accepted_head": "83555d047cc46906f8dfd26f2419001b118ce371",
+  "accepted_result": "PASS",
+  "current_head_at_assessment": "2132b6dfd364e42bd5df774ed07da2fd3a593f14",
+  "changed_since_accepted_artifact": ["scripts/cache_media/run_a8_integrated_benchmark.py", "docs/architecture/cache-media/a8-benchmark-authority-change.json", "docs/architecture/cache-media/a8-benchmark-authority-change.md"],
+  "backend_integration_authority_changed": false,
+  "backend_integration_artifact_carry_forward_result": "PASS_BY_IDENTICAL_BACKEND_INTEGRATION_AUTHORITY_HASHES",
+  "backend_integration_result": "PASS",
+  "mongodb_replica_set_primary_result": "PASS",
+  "backend_server_start_result": "PASS",
+  "backend_health_result": "PASS",
+  "backend_integration_failure_count": 0,
+  "backend_server_shutdown_result": "PASS",
+  "residual_backend_child_process_count": 0,
+  "residual_backend_listening_port_count": 0,
+  "sanitized_artifact_result": "PASS"
+}

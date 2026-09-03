@@ -1,0 +1,16 @@
+{
+  "schema_version": "cache-media-a8-self-review.v1",
+  "prior_benchmark_status": "correctly superseded as final authority while retained as valid history",
+  "new_exact_head_benchmark_inspected": true,
+  "accepted_backend_integration_artifact_untouched": true,
+  "benchmark_and_integration_authorities_not_conflated": true,
+  "three_comparable_audio_rounds_completed": true,
+  "production_runtime_change": "NONE",
+  "production_performance_claim": "NONE",
+  "production_cost_claim": "NONE",
+  "package_contract": "must be generated only after final exact-head freeze and independently validated",
+  "original_owner_worktree_preservation": "PASS",
+  "rollback_contract": "reverse only A8 evidence/tooling changes from commit 9a9411f1930550b0c87c41f81417133dcf874967 onward; preserve A1-A7 runtime",
+  "blocker_count": 0,
+  "required_before_a9_count": 0
+}

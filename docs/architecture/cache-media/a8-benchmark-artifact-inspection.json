@@ -1,0 +1,31 @@
+{
+  "schema_version": "cache-media-a8-artifact-inspection.v1",
+  "workflow_run_id": "33704138466",
+  "workflow_head": "2132b6dfd364e42bd5df774ed07da2fd3a593f14",
+  "workflow_result": "PASS",
+  "artifact": {
+    "name": "cache-media-a8-benchmark",
+    "id": "9874620069",
+    "github_digest": "sha256:dc4a95815e5dd31176b0e665a147709d148256fbed5f04d92e1a2806be126273",
+    "downloaded_archive_sha256": "dc4a95815e5dd31176b0e665a147709d148256fbed5f04d92e1a2806be126273",
+    "file_count": 2,
+    "total_bytes": 7228637,
+    "github_digest_matches_downloaded_archive": true
+  },
+  "provenance_result": "PASS",
+  "environment_fingerprint_present": true,
+  "fixture_hashes_present": true,
+  "raw_samples_present": true,
+  "redis_results_present": true,
+  "cleanup_result": "PASS",
+  "secret_scan_result": "PASS",
+  "private_path_scan_result": "PASS",
+  "provider_url_scan_result": "PASS",
+  "media_payload_scan_result": "PASS",
+  "scan_finding_counts": {
+    "secret": 0,
+    "private_path": 0,
+    "provider_url": 0,
+    "media_payload": 0
+  }
+}

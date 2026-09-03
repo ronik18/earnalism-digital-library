@@ -19,12 +19,15 @@ ROOT = Path(__file__).resolve().parents[2]
 REQUIRED = (
     "executive-summary.json", "executive-summary.md", "benchmark-summary.json", "benchmark-summary.md",
     "cache-results.json", "cache-results.csv", "audio-results.json", "audio-results.csv",
-    "frontend-lifecycle-results.json", "redis-memory-results.json", "capacity-model.json",
+    "audio-repeatability.json", "frontend-lifecycle-results.json", "redis-memory-results.json",
+    "backend-integration-results.json", "requirements-ledger.json", "self-review.json", "capacity-model.json",
     "cost-resource-model.json", "measurement-integrity.json", "environment.json", "test-results.json",
     "provenance.json", "manifest.json", "manifest.sha256", "artifact.zip",
 )
 PRIVATE_PATTERN = re.compile(r"/(?:Users|home|private)/")
 SECRET_PATTERN = re.compile(r"(?i)(token|password|secret)\s*[:=]\s*[^\s]+")
+PROVIDER_URL_PATTERN = re.compile(r"https?://")
+MEDIA_PAYLOAD_PATTERN = re.compile(r"(?i)data:(?:audio|video|application/pdf)/|(?:base64,)[A-Za-z0-9+/]{128,}")
 
 
 def digest(path: Path) -> str:
@@ -95,6 +98,16 @@ def build(args: argparse.Namespace) -> None:
     rows_to_csv(evidence / "cache-results.csv", cache["raw"])
     write_json(evidence / "audio-results.json", audio_summary)
     rows_to_csv(evidence / "audio-results.csv", audio["raw"])
+    repeatability = json.loads((ROOT / "docs/architecture/cache-media/a8-audio-repeatability.json").read_text())
+    backend_integration = json.loads((ROOT / "docs/architecture/cache-media/a8-backend-integration-carry-forward.json").read_text())
+    ledger = json.loads((ROOT / "docs/architecture/cache-media/a8-requirements-ledger.json").read_text())
+    self_review = json.loads((ROOT / "docs/architecture/cache-media/a8-self-review.json").read_text())
+    for value in (repeatability, backend_integration, ledger, self_review):
+        value["package_target_sha"] = args.target_sha
+    write_json(evidence / "audio-repeatability.json", repeatability)
+    write_json(evidence / "backend-integration-results.json", backend_integration)
+    write_json(evidence / "requirements-ledger.json", ledger)
+    write_json(evidence / "self-review.json", self_review)
     write_json(evidence / "frontend-lifecycle-results.json", frontend_summary)
     write_json(evidence / "redis-memory-results.json", cache["per_policy"])
     capacity = json.loads((ROOT / "docs/architecture/cache-media/a8-redis-capacity-model.json").read_text())
@@ -146,7 +159,8 @@ def validate(args: argparse.Namespace) -> None:
         if path.is_file():
             content = path.read_bytes()
             text = content.decode("utf-8", "ignore")
-            if PRIVATE_PATTERN.search(text) or SECRET_PATTERN.search(text) or b"https://" in content or b"http://" in content:
+            if (PRIVATE_PATTERN.search(text) or SECRET_PATTERN.search(text)
+                    or PROVIDER_URL_PATTERN.search(text) or MEDIA_PAYLOAD_PATTERN.search(text)):
                 raise SystemExit(f"sensitive content in {path.name}")
     with zipfile.ZipFile(package / "artifact.zip") as inner:
         if any(item.is_dir() or item.filename.startswith("/") or ".." in Path(item.filename).parts for item in inner.infolist()):

@@ -1,0 +1,24 @@
+{
+  "schema_version": "cache-media-a8-audio-repeatability.v1",
+  "target_sha": "2132b6dfd364e42bd5df774ed07da2fd3a593f14",
+  "round_count": 3,
+  "comparability_result": "PASS",
+  "repeatability_result": "PASS_NO_MATERIAL_REPEATABLE_REGRESSION",
+  "shared_controls": {
+    "environment_fingerprint": "identical ephemeral GitHub runner, Python 3.11, Redis 7.4.11",
+    "fixture_hashes": "identical",
+    "storage_adapter": "deterministic synthetic adapter",
+    "fixture_sizes_bytes": [1048576, 8388608, 33554432],
+    "concurrency_levels": [1, 5, 20],
+    "samples_per_round": 126,
+    "maximum_storage_read_size": 1048576,
+    "instrumentation": "run_a8_integrated_benchmark.py three-round audio harness"
+  },
+  "rounds": [
+    {"round": 0, "samples": 126, "first_byte_median_ms": 0.0, "first_byte_p95_ms": 540.981237, "first_byte_max_ms": 2174.674893, "total_median_ms": 0.014412, "total_p95_ms": 540.981237, "total_max_ms": 2174.674893, "heartbeat_p95_ms": 0.0, "heartbeat_max_ms": 0.0, "rss_before_kib": 45324, "rss_peak_kib": 110720, "rss_after_kib": 110720},
+    {"round": 1, "samples": 126, "first_byte_median_ms": 0.0, "first_byte_p95_ms": 532.432918, "first_byte_max_ms": 2126.927081, "total_median_ms": 0.011336, "total_p95_ms": 532.432918, "total_max_ms": 2126.927081, "heartbeat_p95_ms": 0.0, "heartbeat_max_ms": 0.0, "rss_before_kib": 110720, "rss_peak_kib": 110720, "rss_after_kib": 110720},
+    {"round": 2, "samples": 126, "first_byte_median_ms": 0.0, "first_byte_p95_ms": 529.627807, "first_byte_max_ms": 2107.491419, "total_median_ms": 0.012709, "total_p95_ms": 529.627807, "total_max_ms": 2107.491419, "heartbeat_p95_ms": 0.0, "heartbeat_max_ms": 0.0, "rss_before_kib": 110720, "rss_peak_kib": 110720, "rss_after_kib": 110720}
+  ],
+  "variation": {"first_byte_p95_spread_ms": 11.35343, "total_median_spread_ms": 0.003076, "peak_rss_spread_kib": 0, "heartbeat_p95_spread_ms": 0, "sample_count_parity": true, "fixture_hash_parity": true, "correctness_variation": "none"},
+  "per_round_safety": {"audio_response_correctness_result": "PASS", "status_and_header_result": "PASS", "complete_file_buffering_result": "PASS_ABSENT", "active_body_leak_count": 0, "retry_after_response_bytes_count": 0, "maximum_storage_read_size": 1048576, "cancellation_cleanup_result": "PASS"}
+}
