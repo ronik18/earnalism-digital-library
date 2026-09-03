@@ -52,7 +52,12 @@ jobs:
           CI=true npm test --prefix frontend -- --watchAll=false --runInBand
           npm run build --prefix frontend
           node scripts/serve_frontend_build.js --port 13119 >"$RUNNER_TEMP/a9-frontend.log" 2>&1 & echo $! > "$RUNNER_TEMP/a9-frontend.pid"
-          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:13119/ >/dev/null && break; sleep 1; done
+          ready=0
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:13119/ >/dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          if [ "$ready" -ne 1 ]; then cat "$RUNNER_TEMP/a9-frontend.log"; exit 1; fi
           UAT_BASE_URL=http://127.0.0.1:13119 A7_REPORT_PATH="$RUNNER_TEMP/a9-browser-lifecycle.json" node scripts/cache_media/verify_frontend_audio_lifecycle.mjs
       - name: Build and validate exact-head owner package
         run: |
