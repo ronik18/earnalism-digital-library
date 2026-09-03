@@ -1,6 +1,8 @@
 import importlib
 import sys
+import asyncio
 from pathlib import Path
+from types import SimpleNamespace
 
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
@@ -11,6 +13,10 @@ if str(BACKEND_DIR) not in sys.path:
 def _server(monkeypatch):
     monkeypatch.setenv("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
     monkeypatch.setenv("JWT_SECRET", "test-secret")
+    try:
+        asyncio.get_event_loop()
+    except RuntimeError:
+        asyncio.set_event_loop(asyncio.new_event_loop())
     return importlib.import_module("server")
 
 
@@ -51,3 +57,38 @@ def test_client_etag_matching_supports_weak_validators(monkeypatch):
 
     assert server._client_etag_matches(Request(), 'W/"reader-manifest-a"') is True
     assert server._client_etag_matches(Request(), 'W/"reader-manifest-b"') is False
+
+
+def test_reader_chapter_bodies_never_use_shared_redis(monkeypatch):
+    server = _server(monkeypatch)
+    slug = "the-open-window"
+
+    async def reader_access(_slug, **_kwargs):
+        return {"slug": slug}
+
+    def artifact(_slug, **_kwargs):
+        return {"chapters": [{"id": "chapter-001", "content": "Safe reader text."}]}
+
+    async def redis_called(*_args, **_kwargs):
+        raise AssertionError("chapter body must not be read from or written to shared Redis")
+
+    monkeypatch.setattr(server, "_reader_book_access_doc", reader_access)
+    monkeypatch.setattr(server, "_controlled_artifact_doc", artifact)
+    monkeypatch.setattr(server, "_redis_cache_get", redis_called)
+    monkeypatch.setattr(server, "_redis_cache_set", redis_called)
+
+    assert asyncio.run(server._reader_chapter_content(slug, "chapter-001")) == "<p>Safe reader text.</p>"
+
+
+def test_authoritative_wallet_lookup_does_not_read_redis(monkeypatch):
+    server = _server(monkeypatch)
+
+    class Users:
+        async def find_one(self, query, projection):
+            assert query == {"id": "reader-1"}
+            assert projection["reading_seconds_balance"] == 1
+            return {"reading_seconds_balance": 120, "wallet_seconds": 0}
+
+    monkeypatch.setattr(server, "db", SimpleNamespace(users=Users()))
+
+    assert asyncio.run(server._authoritative_user_wallet_seconds("reader-1")) == 120

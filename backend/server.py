@@ -2112,6 +2112,25 @@ async def _cached_user_wallet_seconds(user_id: str) -> int:
     return wallet
 
 
+async def _authoritative_user_wallet_seconds(user_id: str) -> int:
+    """Read the authority used to grant legacy protected reader text."""
+    fresh = await db.users.find_one(
+        {"id": user_id},
+        {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1},
+    ) or {}
+    return int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+
+
+def _reader_cached_payload_matches_slug(value: Any, slug: str, *, book_field: str = "") -> bool:
+    """Treat absent or cross-title reader cache identity as a cache miss."""
+    candidate = value.get(book_field) if book_field and isinstance(value, dict) else value
+    if not isinstance(candidate, dict):
+        return False
+    expected = str(slug or "").strip().lower()
+    returned = str(candidate.get("slug") or "").strip().lower()
+    return bool(expected and returned and returned == expected)
+
+
 async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str]] = None) -> None:
     if not user_id or not _redis_state_enabled():
         return
@@ -2130,7 +2149,7 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
     generation = await _reader_content_cache_generation_value()
     cache_key = f"book-access:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-content", cache_key)
-    if cached is not None:
+    if _reader_cached_payload_matches_slug(cached, slug):
         return cached
     if admin_preview:
         doc = await db.books.find_one({"slug": slug}, READER_ACCESS_PROJECTION)
@@ -2154,11 +2173,8 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
 async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: bool = False) -> str:
     if not admin_preview and not _is_controlled_public_slug(slug):
         return ""
-    generation = await _reader_content_cache_generation_value()
-    cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{READER_CONTENT_RENDER_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
-    cached = await _redis_cache_get("reader-content", cache_key)
-    if cached is not None:
-        return str(cached or "")
+    # Chapter bodies can be preview text or protected reading content. They
+    # must never enter a shared Redis cache.
     if not admin_preview:
         book = await _reader_book_access_doc(slug)
         if not book:
@@ -2182,7 +2198,6 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
             target = ((content_doc or {}).get("chapters") or [{}])[0]
             content = target.get("content", "")
     rendered_content, _ = _manual_content_to_render_html(content)
-    await _redis_cache_set("reader-content", cache_key, rendered_content, READER_CHAPTER_CACHE_TTL_SECONDS)
     return rendered_content
 
 
@@ -2883,7 +2898,7 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     generation = await _reader_content_cache_generation_value()
     cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{CHAPTER_INDEX_CONTRACT_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-manifest", cache_key)
-    if cached is not None:
+    if _reader_cached_payload_matches_slug(cached, slug, book_field="book"):
         return cached
 
     if admin_preview:
@@ -8731,9 +8746,9 @@ async def _reader_book_audiobook_package_manifest_response(slug: str, request: R
             )
         return response
     if not package_canary:
-        cache_key = f"audiobook-package:{manifest['package_version']}"
+        cache_key = f"audiobook-package:{slug}:{manifest['package_version']}"
         cached_manifest = await _redis_cache_get("reader-manifest", cache_key)
-        if isinstance(cached_manifest, dict):
+        if _reader_cached_payload_matches_slug(cached_manifest, slug):
             manifest = cached_manifest
         else:
             await _redis_cache_set("reader-manifest", cache_key, manifest, 3600)
@@ -10110,8 +10125,10 @@ async def reader_get_chapter(
                 "message": "Account is blocked. Please contact support.",
                 "chapter": meta,
             }
-        if await _cached_user_wallet_seconds(principal["id"]) > 0:
-            response.headers["Cache-Control"] = "private, max-age=45, stale-while-revalidate=180"
+        if await _authoritative_user_wallet_seconds(principal["id"]) > 0:
+            response.headers["Cache-Control"] = "private, no-store"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Vary"] = "Authorization, Cookie"
             not_modified = not_modified_response(response.headers["Cache-Control"])
             if not_modified:
                 return not_modified

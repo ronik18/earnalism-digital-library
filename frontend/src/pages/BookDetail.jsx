@@ -11,7 +11,6 @@ import {
   DRACULA_CTA_EVENTS,
   DRACULA_RIGHTS_NOTE,
   DRACULA_SOURCE_NOTE,
-  DRACULA_FALLBACK_BOOK,
   LIVE_APPROVED_SLUG,
   mergeDraculaBook,
   normalizeChapterDisplayTitle,
@@ -21,14 +20,16 @@ import useSEO from "../hooks/useSEO";
 import { bookDetailPresentationForBook } from "../lib/bookDetailPresentation";
 import { readerManifestPath } from "../lib/audioReleaseSafety";
 import { readerManifestAudioIsAuthorized } from "../lib/readerManifestAccess";
+import { readerBookMatchesRoute } from "../lib/readerNavigation";
 import { PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
 import "./BookDetailReference.css";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 const SITE_URL = "https://theearnalism.com";
 
-function isValidBookPayload(value) {
-  return Boolean(value && typeof value === "object" && !Array.isArray(value) && value.slug);
+function isValidBookPayload(value, requestedSlug) {
+  return Boolean(value && typeof value === "object" && !Array.isArray(value)
+    && readerBookMatchesRoute(value, requestedSlug));
 }
 
 function mergeReaderManifestIntoBook(book, manifest) {
@@ -108,14 +109,20 @@ export default function BookDetail() {
     setSelectedTab("about");
     setLoading(true);
     setLoadStatus("loading");
+    setBook(null);
     api.get(`/books/${slug}`, { signal: controller.signal }).then(async (r) => {
-      if (isValidBookPayload(r.data)) {
+      if (isValidBookPayload(r.data, slug)) {
         let nextBook = r.data;
         try {
           const manifestResponse = await api.get(readerManifestPath(slug), {
             signal: controller.signal,
             skipAuthRedirect: true,
           });
+          if (!readerBookMatchesRoute(manifestResponse.data?.book, slug)) {
+            setBook(null);
+            setLoadStatus("error");
+            return;
+          }
           nextBook = mergeReaderManifestIntoBook(nextBook, manifestResponse.data);
         } catch (manifestErr) {
           if (controller.signal.aborted) return;
@@ -127,23 +134,13 @@ export default function BookDetail() {
         setLoadStatus("ready");
         return;
       }
-      if (slug === LIVE_APPROVED_SLUG) {
-        setBook(DRACULA_FALLBACK_BOOK);
-        setLoadStatus("ready");
-        return;
-      }
       setBook(null);
       setLoadStatus("not_found");
     })
       .catch((err) => {
         if (err.name !== "CanceledError") {
-          if ((err.response?.status === 404 || !err.response) && slug === LIVE_APPROVED_SLUG) {
-            setBook(DRACULA_FALLBACK_BOOK);
-            setLoadStatus("ready");
-          } else {
-            setBook(null);
-            setLoadStatus(err.response?.status === 404 ? "not_found" : "error");
-          }
+          setBook(null);
+          setLoadStatus(err.response?.status === 404 ? "not_found" : "error");
         }
       }).finally(() => {
         if (!controller.signal.aborted) setLoading(false);
