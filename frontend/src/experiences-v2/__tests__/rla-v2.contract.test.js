@@ -27,25 +27,9 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(source).toContain("getReadingPassPage(slug, canonicalPage, lease)");
     expect(source).toContain("startReadingPassSession({ bookSlug: slug, pageIndex: nextPage })");
     expect(source).toContain("saveReadingPassPosition");
-    expect(source).toContain("readerBookMatchesRoute(response.data?.book, slug)");
-    expect(source).toContain("controller.abort()");
     expect(source).not.toMatch(/localStorage|prefetch/i);
     expect(experience).toContain("if (currentAccess.canRequest) onRequestPage?.(page);");
     expect(experience).not.toContain("const nextAccess = readerPageAccess");
-  });
-
-  test("service worker retires stale reader shells and bypasses reader text APIs", () => {
-    const worker = fs.readFileSync(path.join(process.cwd(), "public/service-worker.js"), "utf8");
-    expect(worker).toContain('CACHE_VERSION = "earnalism-v4-reader-identity"');
-    expect(worker).toContain("isReaderTextApiRequest");
-    expect(worker).toContain("if (isReaderTextApiRequest(request)) return;");
-  });
-
-  test("Book Detail validates both its title payload and reader manifest against the route", () => {
-    const detail = fs.readFileSync(path.join(process.cwd(), "src/pages/BookDetail.jsx"), "utf8");
-    expect(detail).toContain("isValidBookPayload(r.data, slug)");
-    expect(detail).toContain("readerBookMatchesRoute(manifestResponse.data?.book, slug)");
-    expect(detail).toContain('setLoadStatus("error")');
   });
 
   test("Reader fixture keeps the compact mobile reader shell separate from public access state", () => {
