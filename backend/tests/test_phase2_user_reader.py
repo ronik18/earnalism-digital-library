@@ -171,114 +171,92 @@ class TestWalletAdjust:
         assert ts == sorted(ts, reverse=True)
 
 
-# --------------------- Reader: sessions + heartbeat ---------------------
+# --------------------- Reader: canonical Reading Pass ---------------------
 class TestReaderFlow:
-    def test_session_start_unauth_401(self, s, book_slug, book_chapters):
+    def test_legacy_session_start_is_unauthenticated_without_a_token(self, s, book_slug, book_chapters):
         r = s.post(f"{API}/reader/session/start", json={
             "book_slug": book_slug, "chapter_id": book_chapters[1]["id"]
         })
         assert r.status_code == 401
 
-    def test_session_start_paid_chapter_zero_balance_402(self, s, fresh_user, book_slug, book_chapters, admin_headers):
-        # Ensure balance is 0
-        uid = fresh_user["user"]["id"]
-        # query me to read balance
-        me = s.get(f"{API}/users/me", headers=fresh_user["headers"]).json()
-        if me["reading_seconds_balance"] > 0:
-            s.post(f"{API}/admin/users/{uid}/wallet/adjust",
-                   json={"minutes": -10000, "reason": "TEST reset to 0"},
-                   headers=admin_headers)
-        paid_chap = book_chapters[1]["id"]
+    def test_legacy_session_start_fails_closed_when_reading_pass_v2_is_active(self, s, fresh_user, book_slug, book_chapters):
         r = s.post(f"{API}/reader/session/start",
-                   json={"book_slug": book_slug, "chapter_id": paid_chap},
+                   json={"book_slug": book_slug, "chapter_id": book_chapters[1]["id"]},
                    headers=fresh_user["headers"])
-        assert r.status_code == 402
+        assert r.status_code == 409
+        assert r.json()["detail"]["code"] == "READING_PASS_REQUIRED"
 
-    def test_session_start_preview_chapter_zero_balance_ok(self, s, fresh_user, book_slug, book_chapters):
-        preview_chap = book_chapters[0]["id"]
-        r = s.post(f"{API}/reader/session/start",
-                   json={"book_slug": book_slug, "chapter_id": preview_chap},
-                   headers=fresh_user["headers"])
-        assert r.status_code == 200, r.text
-        j = r.json()
-        assert j["is_preview"] is True
-        assert j["tick_seconds"] == 30
-        assert "session_id" in j
+    def test_canonical_preview_is_public_and_page_four_requires_authentication(self, s, book_slug):
+        preview = s.get(f"{API}/reading-pass/books/{book_slug}/pages/1")
+        protected = s.get(f"{API}/reading-pass/books/{book_slug}/pages/4")
 
-    def test_heartbeat_preview_never_deducts(self, s, fresh_user, book_slug, book_chapters):
-        preview_chap = book_chapters[0]["id"]
-        start = s.post(f"{API}/reader/session/start",
-                       json={"book_slug": book_slug, "chapter_id": preview_chap},
-                       headers=fresh_user["headers"]).json()
-        sid = start["session_id"]
-        r = s.post(f"{API}/reader/heartbeat",
-                   json={"session_id": sid, "visible": True, "idle": False, "chapter_id": preview_chap},
-                   headers=fresh_user["headers"])
-        assert r.status_code == 200
-        j = r.json()
-        assert j["deducted_seconds"] == 0
-        assert j["status"] == "preview"
-        assert j["is_preview"] is True
+        assert preview.status_code == 200, preview.text
+        assert preview.json()["book_slug"] == book_slug
+        assert preview.json()["page_index"] == 1
+        assert preview.json()["is_preview"] is True
+        assert protected.status_code == 401
+        assert protected.json()["detail"]["code"] == "AUTH_REQUIRED"
 
-    def test_heartbeat_visible_active_deducts_30s(self, s, fresh_user, book_slug, book_chapters, admin_headers):
+    def test_zero_balance_cannot_start_a_canonical_paid_lease(self, s, fresh_user, book_slug, admin_headers):
         uid = fresh_user["user"]["id"]
-        # Top up 2 minutes
         s.post(f"{API}/admin/users/{uid}/wallet/adjust",
-               json={"minutes": 2, "reason": "TEST heartbeat"},
-               headers=admin_headers)
-        paid_chap = book_chapters[1]["id"]
-        start = s.post(f"{API}/reader/session/start",
-                       json={"book_slug": book_slug, "chapter_id": paid_chap},
-                       headers=fresh_user["headers"]).json()
-        sid = start["session_id"]
+               json={"minutes": -10000, "reason": "TEST reset to zero"}, headers=admin_headers)
+        denied = s.post(
+            f"{API}/reading-pass/sessions/start",
+            json={
+                "device_id": f"phase2-reader-{uid[:12]}",
+                "device_label": "Phase 2 local test",
+                "content_type": "text",
+                "content_id": book_slug,
+                "canonical_page_index": 4,
+            },
+            headers=fresh_user["headers"],
+        )
 
-        # Immediate beats do not bill; the server only charges after a real
-        # 30-second reading window so refreshes/retries cannot consume time.
-        r1 = s.post(f"{API}/reader/heartbeat",
-                    json={"session_id": sid, "visible": True, "idle": False, "chapter_id": paid_chap},
-                    headers=fresh_user["headers"]).json()
-        assert r1["deducted_seconds"] == 0
-        assert r1["remaining_seconds"] == 120
-        assert r1["status"] == "active"
+        assert denied.status_code == 403
+        assert denied.json()["detail"]["code"] == "PASS_REQUIRED"
 
-        # visible:false -> 0 deducted, paused
-        r2 = s.post(f"{API}/reader/heartbeat",
-                    json={"session_id": sid, "visible": False, "idle": False, "chapter_id": paid_chap},
-                    headers=fresh_user["headers"]).json()
-        assert r2["deducted_seconds"] == 0
-        assert r2["status"] == "paused"
-        assert r2["remaining_seconds"] == 120
+    def test_positive_balance_lease_authorizes_only_the_requested_canonical_page(self, s, fresh_user, book_slug, admin_headers):
+        uid = fresh_user["user"]["id"]
+        top_up = s.post(
+            f"{API}/admin/users/{uid}/wallet/adjust",
+            json={"minutes": 2, "reason": "TEST canonical Reading Pass lease"},
+            headers=admin_headers,
+        )
+        assert top_up.status_code == 200
+        started = s.post(
+            f"{API}/reading-pass/sessions/start",
+            json={
+                "device_id": f"phase2-reader-{uid[:12]}",
+                "device_label": "Phase 2 local test",
+                "content_type": "text",
+                "content_id": book_slug,
+                "canonical_page_index": 4,
+            },
+            headers=fresh_user["headers"],
+        )
+        assert started.status_code == 200, started.text
+        lease = started.json()
+        page = s.get(
+            f"{API}/reading-pass/books/{book_slug}/pages/4",
+            headers={
+                **fresh_user["headers"],
+                "X-Reading-Pass-Session": lease["session_id"],
+                "X-Reading-Pass-Lease": lease["lease_token"],
+            },
+        )
+        ended = s.post(
+            f"{API}/reading-pass/sessions/end",
+            json={"session_id": lease["session_id"], "reason": "phase2_test_complete"},
+            headers=fresh_user["headers"],
+        )
 
-        # idle:true -> 0 deducted, paused
-        r3 = s.post(f"{API}/reader/heartbeat",
-                    json={"session_id": sid, "visible": True, "idle": True, "chapter_id": paid_chap},
-                    headers=fresh_user["headers"]).json()
-        assert r3["deducted_seconds"] == 0
-        assert r3["status"] == "paused"
-
-        # Wait for one real billing window. One heartbeat can charge at most one pulse.
-        time.sleep(31)
-        r_bill = s.post(f"{API}/reader/heartbeat",
-                        json={"session_id": sid, "visible": True, "idle": False, "chapter_id": paid_chap},
-                        headers=fresh_user["headers"]).json()
-        assert r_bill["deducted_seconds"] == 30
-        assert r_bill["remaining_seconds"] == 90
-        assert r_bill["status"] == "active"
-
-        # Immediate retry after a billed beat must not double-charge.
-        r4 = s.post(f"{API}/reader/heartbeat",
-                    json={"session_id": sid, "visible": True, "idle": False, "chapter_id": paid_chap},
-                    headers=fresh_user["headers"]).json()
-        assert r4["deducted_seconds"] == 0
-        assert r4["status"] == "active"
-        assert r4["remaining_seconds"] == 90
-
-        # End the session
-        end = s.post(f"{API}/reader/session/end",
-                     json={"session_id": sid},
-                     headers=fresh_user["headers"])
-        assert end.status_code == 200
-        assert end.json()["ended"] == 1
+        assert page.status_code == 200, page.text
+        assert page.json()["book_slug"] == book_slug
+        assert page.json()["page_index"] == 4
+        assert page.json()["is_preview"] is False
+        assert page.headers["cache-control"] == "private, no-store"
+        assert ended.status_code == 200
 
 
 # --------------------- Block / Unblock ---------------------
