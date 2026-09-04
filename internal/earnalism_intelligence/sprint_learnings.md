@@ -2183,10 +2183,3 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 
 - The existing checksum-bound promotion mechanism fails closed when controlled-publication file trees differ. Restore byte-identical mirror parity before promotion; do not bypass the mechanism or write MongoDB directly.
 - Explicit owner assignment approval bound to both image SHA-256 values allowed only the plan-defined cover fields and the mechanism-owned audit timestamp to change. Reader, audio, publication, rights, source, and Reading Pass truth stayed unchanged.
-
-## P0 reader backend contract recovery - 2026-09-04
-
-- `Vary: Origin` was insufficient at the observed shared-cache layer: a response for the apex origin was replayed to `www`. Keep the production allowlist exact and prevent every Origin-bearing API response from being shared-cacheable.
-- Cache keys alone are not a reader-safety boundary. A reusable payload must also carry and match the requested canonical title identity and an opaque release version; cached full chapter bodies and cached wallet grants are not permissible authorization sources.
-- Do not open a competing frontend PR or delete legacy Redis keys until the merged backend repair has passed production CORS, two-title identity, and protected-reader boundary checks.
-- A server-dependent contract must follow the active canonical Reading Pass API. Legacy session and heartbeat endpoints correctly fail closed with `READING_PASS_REQUIRED`; treating their former success responses as a current merge gate would contradict the product truth.

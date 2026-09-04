@@ -2112,33 +2112,6 @@ async def _cached_user_wallet_seconds(user_id: str) -> int:
     return wallet
 
 
-async def _authoritative_user_wallet_seconds(user_id: str) -> int:
-    """Return Reading Pass balance authority without accepting a cache grant."""
-    try:
-        state = await reading_pass_service.wallet_state(user_id)
-    except ReadingPassError:
-        return 0
-    return int(state.get("balance_seconds", 0) or 0)
-
-
-def _cached_title_payload_matches(
-    value: Any,
-    slug: str,
-    *,
-    book_field: str = "",
-    require_release_version: bool = False,
-) -> bool:
-    """Fail closed when a cached title payload lacks or contradicts identity."""
-    candidate = value.get(book_field) if book_field and isinstance(value, dict) else value
-    if not isinstance(candidate, dict):
-        return False
-    expected = str(slug or "").strip().lower()
-    returned = str(candidate.get("slug") or "").strip().lower()
-    if not (expected and returned and returned == expected):
-        return False
-    return not require_release_version or bool(str(candidate.get("release_version") or "").strip())
-
-
 async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str]] = None) -> None:
     if not user_id or not _redis_state_enabled():
         return
@@ -2157,7 +2130,7 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
     generation = await _reader_content_cache_generation_value()
     cache_key = f"book-access:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-content", cache_key)
-    if _cached_title_payload_matches(cached, slug):
+    if cached is not None:
         return cached
     if admin_preview:
         doc = await db.books.find_one({"slug": slug}, READER_ACCESS_PROJECTION)
@@ -2181,8 +2154,11 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
 async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: bool = False) -> str:
     if not admin_preview and not _is_controlled_public_slug(slug):
         return ""
-    # A chapter body may be public preview text or protected Reading Pass
-    # content.  It must never enter a shared Redis cache.
+    generation = await _reader_content_cache_generation_value()
+    cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{READER_CONTENT_RENDER_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
+    cached = await _redis_cache_get("reader-content", cache_key)
+    if cached is not None:
+        return str(cached or "")
     if not admin_preview:
         book = await _reader_book_access_doc(slug)
         if not book:
@@ -2206,26 +2182,13 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
             target = ((content_doc or {}).get("chapters") or [{}])[0]
             content = target.get("content", "")
     rendered_content, _ = _manual_content_to_render_html(content)
+    await _redis_cache_set("reader-content", cache_key, rendered_content, READER_CHAPTER_CACHE_TTL_SECONDS)
     return rendered_content
 
 
 def _stable_digest(value: Any, length: int = 16) -> str:
     payload = _json.dumps(value, sort_keys=True, ensure_ascii=True, default=str, separators=(",", ":"))
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:length]
-
-
-def _public_release_version(book: dict) -> str:
-    """Bind public responses to the title's canonical, release-safe state."""
-    return _stable_digest({
-        "id": book.get("id", ""),
-        "slug": book.get("slug", ""),
-        "publication_status": book.get("publication_status", ""),
-        "updated_at": book.get("updated_at", ""),
-        "reader_enabled": book.get("reader_enabled") is True,
-        "preview_enabled": book.get("preview_enabled") is True,
-        "audio_enabled": book.get("audio_enabled") is True,
-        "audiobook_release_gate": book.get("audiobook_release_gate", ""),
-    }, length=20)
 
 
 def _reader_chapter_content_version(chapter: dict) -> str:
@@ -2920,7 +2883,7 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     generation = await _reader_content_cache_generation_value()
     cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{CHAPTER_INDEX_CONTRACT_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-manifest", cache_key)
-    if _cached_title_payload_matches(cached, slug, book_field="book", require_release_version=True):
+    if cached is not None:
         return cached
 
     if admin_preview:
@@ -2972,7 +2935,6 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     book_public = public_book_projection(_strip_all_chapter_content(projection_source)) or {}
     if not admin_preview and not _public_projection_is_live(book_public):
         return None
-    book_public["release_version"] = _public_release_version(book_public)
     book_public["chapters"] = chapters
     manifest_version = _stable_digest({
         "slug": slug,
@@ -2998,16 +2960,11 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
         "audio": audio.get("version", ""),
     }, length=20)
     result = {
-        # Keep the public identity at the envelope level as well as in `book`.
-        # Older consumers read the envelope before hydrating the book projection.
-        "slug": str(book_public.get("slug") or slug),
-        "book_id": str(book_public.get("id") or ""),
         "book": book_public,
         "chapters": chapters,
         "audio": audio,
         "chapter_index_contract": CHAPTER_INDEX_CONTRACT_VERSION,
         "version": manifest_version,
-        "release_version": book_public["release_version"],
         "content_generation": generation,
         "generated_at": now_iso(),
     }
@@ -5151,14 +5108,7 @@ async def production_hardening_middleware(request: Request, call_next):
     duration_ms = round((time.perf_counter() - started) * 1000, 2)
     response.headers["Server-Timing"] = f"app;dur={duration_ms}"
     response.headers["X-Response-Time-ms"] = str(duration_ms)
-    # CORS generates a response header that depends on the caller's Origin.
-    # Railway's shared response cache has returned a valid origin's header to
-    # the other production origin despite Vary: Origin.  Do not let an
-    # Origin-bearing API response enter that cache layer.
-    if request.headers.get("origin"):
-        response.headers["Cache-Control"] = "private, no-store"
-        response.headers["Pragma"] = "no-cache"
-    elif (
+    if (
         request.method == "GET"
         and response.status_code == 200
         and not request.headers.get("authorization")
@@ -5719,7 +5669,7 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
 async def get_book(slug: str):
     cache_key = _public_cache_key("book_detail", slug=slug)
     cached = await _public_cache_get(cache_key)
-    if _cached_title_payload_matches(cached, slug, require_release_version=True):
+    if cached is not None:
         return cached
     doc, _source = await _find_public_book_candidate(slug, BOOK_METADATA_PROJECTION, include_artifact_content=False)
     if not doc:
@@ -5729,7 +5679,6 @@ async def get_book(slug: str):
     result = _safe_live_public_projection(doc)
     if not result:
         raise HTTPException(status_code=404, detail="Book not found")
-    result["release_version"] = _public_release_version(result)
     await _public_cache_set(cache_key, result)
     return result
 
@@ -8781,15 +8730,10 @@ async def _reader_book_audiobook_package_manifest_response(slug: str, request: R
                 path=f"/api/reader/book/{slug}",
             )
         return response
-    # Package metadata is cacheable only when it carries the canonical title
-    # identity.  These additive envelope fields let clients reject a stale or
-    # cross-title payload before they resolve individual audio assets.
-    manifest["book_id"] = str(book.get("id") or "")
-    manifest["release_version"] = manifest["package_version"]
     if not package_canary:
-        cache_key = f"audiobook-package:{slug}:{manifest['package_version']}"
+        cache_key = f"audiobook-package:{manifest['package_version']}"
         cached_manifest = await _redis_cache_get("reader-manifest", cache_key)
-        if _cached_title_payload_matches(cached_manifest, slug, require_release_version=True):
+        if isinstance(cached_manifest, dict):
             manifest = cached_manifest
         else:
             await _redis_cache_set("reader-manifest", cache_key, manifest, 3600)
@@ -10132,15 +10076,22 @@ async def reader_get_chapter(
 
     # Free preview is open to everyone — no auth, no deduction.
     if is_preview and not is_admin_preview:
-        # Legacy chapter previews can contain an entire chapter.  They must
-        # not be placed in public or shared caches while canonical-page
-        # migration is incomplete.
-        response.headers["Cache-Control"] = "private, no-store"
-        response.headers["Pragma"] = "no-cache"
+        response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
         not_modified = not_modified_response(response.headers["Cache-Control"])
         if not_modified:
             return not_modified
-        return await unlocked_chapter_response(True)
+        cache_key = _public_cache_key(
+            "reader_preview_chapter",
+            slug=slug,
+            chapter_id=chapter_id,
+            content_version=content_version,
+        )
+        cached = await _public_cache_get(cache_key)
+        if cached is not None:
+            return cached
+        result = await unlocked_chapter_response(True)
+        await _public_cache_set(cache_key, result)
+        return result
 
     # Admin always has full access (admin reader preview).
     if is_admin_preview:
@@ -10159,10 +10110,8 @@ async def reader_get_chapter(
                 "message": "Account is blocked. Please contact support.",
                 "chapter": meta,
             }
-        if await _authoritative_user_wallet_seconds(principal["id"]) > 0:
-            response.headers["Cache-Control"] = "private, no-store"
-            response.headers["Pragma"] = "no-cache"
-            response.headers["Vary"] = "Authorization, Cookie"
+        if await _cached_user_wallet_seconds(principal["id"]) > 0:
+            response.headers["Cache-Control"] = "private, max-age=45, stale-while-revalidate=180"
             not_modified = not_modified_response(response.headers["Cache-Control"])
             if not_modified:
                 return not_modified
@@ -10986,8 +10935,7 @@ async def admin_cache_status(_=Depends(require_admin)):
             "excluded_payloads": REDIS_CACHE_EXCLUDED_PAYLOADS,
             "media_binary_guard_enabled": True,
             "media_binary_note": (
-                "Redis stores metadata, reader manifests, and short-lived state only; "
-                "full reader chapter bodies are never shared-cache payloads. "
+                "Redis stores metadata, reader manifests, chapter text and short-lived state only. "
                 "Book-cover images and audiobook binaries stay on Cloudinary/CDN/browser caches."
             ),
         },
@@ -11014,36 +10962,6 @@ CANONICAL_PRODUCTION_CORS_ORIGINS = frozenset(
 )
 
 
-def _normalize_cors_origin(value: str) -> str:
-    candidate = str(value or "").strip().rstrip("/")
-    if not candidate:
-        return ""
-    parsed = urlparse(candidate)
-    if (
-        parsed.scheme not in {"http", "https"}
-        or not parsed.netloc
-        or parsed.username
-        or parsed.password
-        or parsed.path not in {"", "/"}
-        or parsed.params
-        or parsed.query
-        or parsed.fragment
-        or "*" in parsed.netloc
-    ):
-        raise ValueError(f"invalid CORS origin: {value!r}")
-    hostname = (parsed.hostname or "").lower()
-    if not hostname:
-        raise ValueError(f"invalid CORS origin: {value!r}")
-    try:
-        port = parsed.port
-    except ValueError as exc:
-        raise ValueError(f"invalid CORS origin: {value!r}") from exc
-    normalized = f"{parsed.scheme.lower()}://{hostname}"
-    if port is not None:
-        normalized = f"{normalized}:{port}"
-    return normalized
-
-
 def resolve_cors_origins(
     environment: str,
     frontend_url: str = "",
@@ -11051,12 +10969,12 @@ def resolve_cors_origins(
 ) -> set[str]:
     """Build a closed CORS allowlist for the configured deployment."""
     origins = {
-        _normalize_cors_origin(origin)
+        origin.strip().rstrip("/")
         for origin in configured_origins.split(",")
         if origin.strip()
     }
     if frontend_url.strip():
-        origins.add(_normalize_cors_origin(frontend_url))
+        origins.add(frontend_url.strip().rstrip("/"))
     if environment == "production":
         # The public web origins are an explicit allowlist, not a wildcard or
         # an environment-dependent deployment assumption.
