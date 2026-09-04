@@ -89,7 +89,8 @@ jobs:
 
       - name: Install isolated test runtimes
         run: |
-          npm ci
+          # Root review/worker harnesses import Playwright from devDependencies.
+          npm ci --include=dev
           # The job builds a production bundle, but CRACO is a frontend devDependency
           # required to execute that build.  Install it explicitly even with the
           # job's production-mode runtime environment.
