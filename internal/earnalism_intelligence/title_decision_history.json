@@ -11,6 +11,15 @@
     "production_audiobook_count": 4,
     "impact_report": "internal/earnalism_intelligence/platform_audiobook_89_cutoff_impact_report.json"
   },
+  "platform_reader_contract_recovery": {
+    "latest_decision": "P0_BACKEND_PR_A_COMMITTED_NOT_DEPLOYED",
+    "decision_reason": "Production reproduced a cross-origin CORS header replay from a shared cache. The backend fix closes the two-origin allowlist, prevents Origin-bearing API responses from entering shared caches, and binds cached reader metadata to canonical title identity and release version.",
+    "updated_at": "2026-09-04T00:00:00Z",
+    "release_status": "BACKEND_PR_READY_NOT_OPENED",
+    "production_mutation": false,
+    "legacy_redis_deletion": "DEFERRED_UNTIL_POST_DEPLOY_EVIDENCE",
+    "next_action": "After the existing unrelated draft PR is resolved, open and merge the single backend PR, then verify both production origins, two-title identity, and protected-reader cache boundaries before any frontend PR or legacy cache deletion."
+  },
   "titles": {
     "the-great-gatsby": {
       "latest_decision": "READER_REPAIRED_COVER_BLOCKED_NO_PREVIEW",
