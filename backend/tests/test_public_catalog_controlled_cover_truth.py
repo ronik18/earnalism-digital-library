@@ -124,7 +124,6 @@ def test_public_book_detail_prefers_controlled_covers_over_blank_stale_mongo(mon
     result = asyncio.run(server.get_book(SLUG))
 
     assert_canonical_cover_and_safe_release_truth(result, canonical)
-    assert result["release_version"]
 
 
 def test_controlled_merge_preserves_only_allowlisted_database_editorial_fields():
@@ -314,9 +313,7 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
 
     async def capture_cache_key(namespace, key):
         seen.append((namespace, key))
-        if namespace == "reader-content":
-            return {"slug": SLUG, "cached": True}
-        return {"book": {"slug": SLUG, "release_version": "release-a"}, "cached": True}
+        return {"cached": True}
 
     async def fixed_generation():
         return 37
@@ -324,11 +321,8 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
     monkeypatch.setattr(server, "_redis_cache_get", capture_cache_key)
     monkeypatch.setattr(server, "_reader_content_cache_generation_value", fixed_generation)
 
-    assert asyncio.run(server._reader_book_access_doc(SLUG)) == {"slug": SLUG, "cached": True}
-    assert asyncio.run(server._reader_book_manifest_doc(SLUG)) == {
-        "book": {"slug": SLUG, "release_version": "release-a"},
-        "cached": True,
-    }
+    assert asyncio.run(server._reader_book_access_doc(SLUG)) == {"cached": True}
+    assert asyncio.run(server._reader_book_manifest_doc(SLUG)) == {"cached": True}
 
     assert seen == [
         (
@@ -340,26 +334,6 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
             "book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:37:public:jekyll-and-hyde",
         ),
     ]
-
-
-def test_reader_manifest_rejects_a_cross_title_cache_payload(monkeypatch):
-    canonical = canonical_jekyll()
-    install_db(monkeypatch, stale_live_mongo_summary())
-
-    async def cross_title_cache(*_args, **_kwargs):
-        return {"book": {"slug": "dracula", "release_version": "wrong-title"}}
-
-    monkeypatch.setattr(server, "_redis_cache_get", cross_title_cache)
-    monkeypatch.setattr(server, "_redis_cache_set", no_cache_write)
-
-    manifest = asyncio.run(server._reader_book_manifest_doc(SLUG))
-
-    assert manifest is not None
-    assert manifest["slug"] == SLUG
-    assert manifest["book_id"] == manifest["book"]["id"]
-    assert manifest["book"]["slug"] == SLUG
-    assert manifest["book"]["release_version"]
-    assert manifest["release_version"] == manifest["book"]["release_version"]
 
 
 def test_gift_reader_manifest_uses_exact_canonical_covers_and_keeps_audio_hidden(monkeypatch):

@@ -177,9 +177,6 @@ class PublicBookOut(BaseModel):
 
     id: str = ""
     slug: str = ""
-    # Stable, opaque identifier for the canonical public-release state.  This
-    # is additive so already-deployed clients can ignore it safely.
-    release_version: str = ""
     title: str = ""
     subtitle: str = ""
     author: str = ""
