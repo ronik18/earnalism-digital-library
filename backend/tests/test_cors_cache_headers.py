@@ -82,3 +82,18 @@ def test_allowed_origin_error_response_is_not_shared_cacheable_and_rejected_orig
     assert "Origin" in allowed.headers["vary"]
     assert "access-control-allow-origin" not in rejected.headers
     assert rejected.headers["cache-control"] == "private, no-store"
+
+
+def test_cors_header_matches_each_production_origin_in_both_request_orders():
+    client = TestClient(server.app)
+    origins = ("https://theearnalism.com", "https://www.theearnalism.com")
+
+    for first, second in (origins, tuple(reversed(origins))):
+        first_response = client.get("/api/not-a-real-route", headers={"Origin": first})
+        second_response = client.get("/api/not-a-real-route", headers={"Origin": second})
+
+        assert first_response.status_code == second_response.status_code == 404
+        assert first_response.headers["access-control-allow-origin"] == first
+        assert second_response.headers["access-control-allow-origin"] == second
+        assert first_response.headers["cache-control"] == "private, no-store"
+        assert second_response.headers["cache-control"] == "private, no-store"
