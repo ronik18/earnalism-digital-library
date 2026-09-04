@@ -34,7 +34,6 @@ jobs:
     timeout-minutes: 45
     env:
       CI: "true"
-      NODE_ENV: production
       P0_BASE_SHA: 1a23ad2f2a04176faa0afb753f7144af2f437d0d
       P0_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
       P0_FRONTEND_URL: http://127.0.0.1:13080
@@ -95,6 +94,10 @@ jobs:
           # required to execute that build.  Install it explicitly even with the
           # job's production-mode runtime environment.
           npm ci --prefix frontend --include=dev --legacy-peer-deps
+          test -x node_modules/.bin/playwright
+          test -x frontend/node_modules/.bin/craco
+          node -e "require.resolve('playwright'); console.log('root Playwright resolved')"
+          node -e "require.resolve('@craco/craco/package.json', { paths: ['frontend'] }); console.log('frontend CRACO resolved')"
           python3 -m pip install --disable-pip-version-check -r backend/requirements.txt
           npx playwright install --with-deps chromium firefox webkit
 
@@ -108,10 +111,21 @@ jobs:
 
       - name: Build and serve production-mode local application
         run: |
-          REACT_APP_ENABLE_SERVICE_WORKER=true REACT_APP_BACKEND_URL="$P0_API_URL" npm --prefix frontend run build > frontend-build.log 2>&1
+          NODE_ENV=production REACT_APP_ENABLE_SERVICE_WORKER=true REACT_APP_BACKEND_URL="$P0_API_URL" npm --prefix frontend run build > frontend-build.log 2>&1
           python3 -m uvicorn backend.server:app --host 127.0.0.1 --port 18080 > backend.log 2>&1 & echo $! > backend.pid
           node scripts/serve_frontend_build.js --directory frontend/build --port 13080 > frontend.log 2>&1 & echo $! > frontend.pid
-          for _ in $(seq 1 45); do curl --fail --silent --show-error http://127.0.0.1:18080/healthz && curl --fail --silent --show-error http://127.0.0.1:13080/ && break; sleep 1; done
+          ready=false
+          for _ in $(seq 1 45); do
+            if curl --fail --silent --show-error http://127.0.0.1:18080/healthz >/dev/null && curl --fail --silent --show-error http://127.0.0.1:13080/ >/dev/null; then ready=true; break; fi
+            sleep 1
+          done
+          if [[ "$ready" != true ]]; then
+            echo "P0 local application readiness did not complete" >&2
+            tail -80 frontend-build.log || true
+            tail -80 backend.log || true
+            tail -80 frontend.log || true
+            exit 1
+          fi
 
       - name: Seed and validate rights-safe title, entitlement, cache, and protected-content contracts
         run: |
