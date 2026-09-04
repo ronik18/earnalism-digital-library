@@ -90,7 +90,10 @@ jobs:
       - name: Install isolated test runtimes
         run: |
           npm ci
-          npm ci --prefix frontend --legacy-peer-deps
+          # The job builds a production bundle, but CRACO is a frontend devDependency
+          # required to execute that build.  Install it explicitly even with the
+          # job's production-mode runtime environment.
+          npm ci --prefix frontend --include=dev --legacy-peer-deps
           python3 -m pip install --disable-pip-version-check -r backend/requirements.txt
           npx playwright install --with-deps chromium firefox webkit
 
