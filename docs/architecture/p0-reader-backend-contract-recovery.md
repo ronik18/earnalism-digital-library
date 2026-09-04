@@ -59,6 +59,43 @@ manifest caching, audiobook routing, and reader frontend code. It remains
 analysis-only for this incident and must realign to the final recovered main
 commit before overlapping work resumes.
 
+## PR #345 preservation record
+
+- Owner-authorized parking timestamp: `2026-09-04T18:12:22Z`.
+- PR #345 was closed without branch deletion. Its preserved PR head and remote
+  branch head both equal `67a3f62343fc10c723790e2a2e5bca2a01105292`.
+- Preserved branch: `codex/cache-media-architecture-baseline`; no registered
+  worktree existed for that branch. The unrelated primary user worktree was
+  dirty and was not modified.
+- Preservation comment: `#issuecomment-5544653441`. It records the reopening
+  conditions and that no commit, branch, worktree, evidence artifact, reset,
+  rebase, force-push, merge, or cherry-pick occurred.
+- The redacted local parking record is
+  `uat/evidence/p0-reader-reremediation-20260904/pr-345-parking-record.json`.
+  It contains no secrets or Redis payloads.
+
+## Exact-head local validation
+
+PR A draft #349 currently has initial backend head
+`330ebd0906b4398facb575533e4bc7086a4135eb` and the current validation head
+`0bae91e7511ead0b75d74d9d3534346a05e3899d`.
+
+- Production-like backend contract suite: 78 passed in 1.41 seconds; JUnit
+  SHA-256 `e809b01c4b81184d8b56221d4338b4da9d47f32ed1ff45841a900a323de76c4a`.
+- Isolated loopback UAT: 20 passed in 2.75 seconds; canonical-page contract
+  checks passed with zero production-network requests. Its test log SHA-256 is
+  `5db556c69601aee0d8a845b083e1438f7e62d8198ca556e0551cf8e1e7e248d3` and
+  JUnit SHA-256 is
+  `9e5e3589f2c0f4a3327a63f4b4290453ae3397cb393f7fa73974ffb52eb85b1b`.
+- Local CORS exercised the allowed selected loopback origin, rejected an
+  unapproved origin, and passed preflight. The production apex/www order
+  remains a deployment gate because the isolated UAT deliberately uses a
+  loopback origin.
+- The prior Phase 2 test used retired legacy session/heartbeat endpoints.
+  It now verifies the active canonical Reading Pass contract: public pages
+  1–3, anonymous page-4 denial, zero-balance lease denial, and a
+  positive-balance page-4 lease whose response is `private, no-store`.
+
 ## Required pre-merge evidence
 
 Run the focused CORS, cache, Reading Pass, protected-content, and audiobook
