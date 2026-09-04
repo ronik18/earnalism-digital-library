@@ -313,7 +313,9 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
 
     async def capture_cache_key(namespace, key):
         seen.append((namespace, key))
-        return {"cached": True}
+        if namespace == "reader-content":
+            return {"slug": SLUG, "cached": True}
+        return {"book": {"slug": SLUG}, "cached": True}
 
     async def fixed_generation():
         return 37
@@ -321,8 +323,8 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
     monkeypatch.setattr(server, "_redis_cache_get", capture_cache_key)
     monkeypatch.setattr(server, "_reader_content_cache_generation_value", fixed_generation)
 
-    assert asyncio.run(server._reader_book_access_doc(SLUG)) == {"cached": True}
-    assert asyncio.run(server._reader_book_manifest_doc(SLUG)) == {"cached": True}
+    assert asyncio.run(server._reader_book_access_doc(SLUG)) == {"slug": SLUG, "cached": True}
+    assert asyncio.run(server._reader_book_manifest_doc(SLUG)) == {"book": {"slug": SLUG}, "cached": True}
 
     assert seen == [
         (
@@ -334,6 +336,14 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
             "book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:37:public:jekyll-and-hyde",
         ),
     ]
+
+
+def test_reader_cache_identity_rejects_missing_and_cross_title_payloads():
+    assert server._reader_cached_payload_matches_slug({"slug": SLUG}, SLUG)
+    assert not server._reader_cached_payload_matches_slug({}, SLUG)
+    assert not server._reader_cached_payload_matches_slug({"slug": "dracula"}, SLUG)
+    assert server._reader_cached_payload_matches_slug({"book": {"slug": SLUG}}, SLUG, book_field="book")
+    assert not server._reader_cached_payload_matches_slug({"book": {"slug": "dracula"}}, SLUG, book_field="book")
 
 
 def test_gift_reader_manifest_uses_exact_canonical_covers_and_keeps_audio_hidden(monkeypatch):

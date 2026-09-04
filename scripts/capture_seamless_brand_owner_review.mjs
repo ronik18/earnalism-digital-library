@@ -439,8 +439,11 @@ async function runOneStateCapture(options) {
   await page.route("**/api/**", (route) => {
     const requestUrl = new URL(route.request().url());
     const books = [{ slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }, { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, audiobook_enabled: false, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }];
-    const body = requestUrl.pathname.endsWith("/books") ? books : requestUrl.pathname.includes("auth") ? { id: "fixture", email: "fixture@invalid.example" } : [];
-    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+    const requestedBook = requestUrl.pathname.match(/^\/api\/books\/([^/]+)$/)?.[1];
+    const manifestBook = requestUrl.pathname.match(/^\/api\/reader\/book\/([^/]+)\/manifest$/)?.[1];
+    const book = (requestedBook || manifestBook) && books.find((entry) => entry.slug === decodeURIComponent(requestedBook || manifestBook));
+    const body = requestedBook ? (book || { detail: "Book not found" }) : manifestBook ? (book ? { book, chapters: book.chapters, audio: { enabled: false, assets: {} } } : { detail: "Book not found" }) : requestUrl.pathname.endsWith("/books") ? books : requestUrl.pathname.includes("auth") ? { id: "fixture", email: "fixture@invalid.example" } : [];
+    return route.fulfill({ status: (requestedBook || manifestBook) && !book ? 404 : 200, contentType: "application/json", body: JSON.stringify(body) });
   });
   await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
@@ -503,7 +506,13 @@ function routeFixture(route) {
     const book = books.find((entry) => entry.slug === decodeURIComponent(requestedBook));
     return route.fulfill({ status: book ? 200 : 404, contentType: "application/json", body: JSON.stringify(book || { detail: "Book not found" }) });
   }
-  const body = requestUrl.pathname.endsWith("/books") ? books : requestUrl.pathname.endsWith("/the-art-of-money-getting/manifest") ? approvedManifest : requestUrl.pathname === "/api/blog" ? [editorial.post] : requestUrl.pathname === `/api/blog/${editorial.post.slug}` ? editorial.post : requestUrl.pathname.includes("auth") ? { id: "fixture", email: "fixture@invalid.example" } : [];
+  const manifestBook = requestUrl.pathname.match(/^\/api\/reader\/book\/([^/]+)\/manifest$/)?.[1];
+  if (manifestBook) {
+    const book = books.find((entry) => entry.slug === decodeURIComponent(manifestBook));
+    const body = book ? { book, chapters: book.chapters, audio: { enabled: false, assets: {} } } : requestUrl.pathname.endsWith("/the-art-of-money-getting/manifest") ? approvedManifest : { detail: "Book not found" };
+    return route.fulfill({ status: book || requestUrl.pathname.endsWith("/the-art-of-money-getting/manifest") ? 200 : 404, contentType: "application/json", body: JSON.stringify(body) });
+  }
+  const body = requestUrl.pathname.endsWith("/books") ? books : requestUrl.pathname === "/api/blog" ? [editorial.post] : requestUrl.pathname === `/api/blog/${editorial.post.slug}` ? editorial.post : requestUrl.pathname.includes("auth") ? { id: "fixture", email: "fixture@invalid.example" } : [];
   return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 }
 

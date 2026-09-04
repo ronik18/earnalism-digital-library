@@ -381,7 +381,7 @@ def test_package_manifest_endpoint_caches_only_projected_metadata_and_head_is_em
     )
 
     package_version = book["audiobook_package"]["package_version"]
-    cache_key = ("reader-manifest", f"audiobook-package:{package_version}")
+    cache_key = ("reader-manifest", f"audiobook-package:the-open-window:{package_version}")
     cached = cache[cache_key]
     serialized = json.dumps(cached)
     assert get_response.status_code == 200

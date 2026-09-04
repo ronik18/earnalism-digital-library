@@ -25,9 +25,8 @@ const draculaChapters = Array.from({ length: 27 }, (_, index) => ({
   title: index === 0 ? "Chapter 1" : `Chapter ${index + 1}`,
   is_preview: index < 3,
 }));
-// The application merges Dracula with its checked-in DRACULA_FALLBACK_BOOK. The
-// fixture below only carries public-safe transport fields; its chapter count is
-// independently checked against that rendered canonical fallback.
+// The fixture carries only public-safe transport fields and a matching reader
+// manifest identity. Its chapter count is checked against the rendered title.
 const books = {
   dracula: { slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/dracula", audiobook_enabled: false, category_slug: "english-classics", cover_image_url: "/assets/books/dracula/dracula-front-cover.webp", source: "Public-domain source verified in controlled publication", rights: "Public-domain edition", chapters: draculaChapters },
   devdas: { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/devdas", audiobook_enabled: false, category_slug: "bengali-classics", cover_image_url: "/assets/books/dracula/dracula-front-cover.webp", chapters: [{ id: "devdas-canonical-page-1", title: "Chapter I", is_preview: true }] },
@@ -55,7 +54,10 @@ async function routes(page) {
     if (p.endsWith("/payments/offers")) return json(route, { packs, config: { mode: "book-commerce-review-fixture", recurring_enabled: false } });
     if (p.endsWith("/payments/packs")) return json(route, packs);
     if (p.endsWith("/payments/config")) return json(route, { mode: "book-commerce-review-fixture", recurring_enabled: false });
-    if (p.includes("/reader/") && p.endsWith("/manifest")) return json(route, { book: {}, audio: { enabled: false, assets: {} } });
+    if (p.includes("/reader/") && p.endsWith("/manifest")) {
+      const found = Object.entries(books).find(([slug]) => p.includes(`/reader/book/${slug}/manifest`));
+      return json(route, { book: found ? found[1] : {}, audio: { enabled: false, assets: {} } });
+    }
     return json(route, {});
   });
   await page.route("https://theearnalism.com/assets/brand/earnalism-brand-lockup.png", async (route) => route.fulfill({ status: 200, contentType: "image/png", body: fs.readFileSync(path.resolve("frontend/public/assets/brand/earnalism-brand-lockup.png")) }));

@@ -1,5 +1,11 @@
 function normalizeSlug(value) {
-  return decodeURIComponent(String(value || '').trim()).toLowerCase();
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  try {
+    return decodeURIComponent(raw).trim().toLowerCase();
+  } catch {
+    return '';
+  }
 }
 
 export function readerRouteForBook(bookSlug, { listen = false } = {}) {
@@ -11,5 +17,5 @@ export function readerRouteForBook(bookSlug, { listen = false } = {}) {
 export function readerBookMatchesRoute(book, requestedSlug) {
   const returnedSlug = normalizeSlug(book?.slug);
   const routeSlug = normalizeSlug(requestedSlug);
-  return Boolean(routeSlug) && (!returnedSlug || returnedSlug === routeSlug);
+  return Boolean(routeSlug) && Boolean(returnedSlug) && returnedSlug === routeSlug;
 }

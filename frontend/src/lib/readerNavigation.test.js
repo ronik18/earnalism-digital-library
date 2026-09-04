@@ -11,8 +11,9 @@ describe('reader navigation identity', () => {
     expect(readerBookMatchesRoute({ slug: 'bharat-at-the-crossroads' }, 'bharat-at-the-crossroads')).toBe(true);
   });
 
-  test('allows legacy manifests that omit slug while preserving the requested route', () => {
-    expect(readerBookMatchesRoute({}, 'bharat-at-the-crossroads')).toBe(true);
+  test('fails closed when a manifest omits or cannot safely decode its slug', () => {
+    expect(readerBookMatchesRoute({}, 'bharat-at-the-crossroads')).toBe(false);
+    expect(readerBookMatchesRoute({ slug: '%E0%A4%A' }, 'bharat-at-the-crossroads')).toBe(false);
     expect(readerRouteForBook('')).toBe('/library');
   });
 });
