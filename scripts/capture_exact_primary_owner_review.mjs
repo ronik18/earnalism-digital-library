@@ -21,7 +21,7 @@ const books = [
   { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/devdas", audiobook_enabled: false, category_slug: "bengali-classics", chapters: [{ id: "devdas-canonical-page-1", is_preview: true }] },
   { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/pather-panchali", audiobook_enabled: false, category_slug: "bengali-classics", chapters: [{ id: "pather-panchali-canonical-page-1", is_preview: true }] },
   { slug: "hungry-stones", title: "Kshudhita Pashan / The Hungry Stones", author: "Rabindranath Tagore", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/hungry-stones", audiobook_enabled: false, category_slug: "bengali-classics", chapters: [{ id: "hungry-stones-canonical-page-1", is_preview: true }] },
-  { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/a-ghost-story", audio_enabled: true, audiobook_enabled: true, audiobook_release_gate: "APPROVED", audio_qa_status: "QA_PASSED", audiobook_assets: { mp3: "/api/reader/book/a-ghost-story/audiobook", manifest: "/api/reader/book/a-ghost-story/audiobook/manifest" }, category_slug: "english-classics", chapters: [{ id: "a-ghost-story-canonical-page-1", is_preview: true }] },
+  { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/a-ghost-story", audiobook_enabled: true, category_slug: "english-classics", chapters: [{ id: "a-ghost-story-canonical-page-1", is_preview: true }] },
 ];
 const packs = [
   { id: "30m", label: "The Opening Hour", minutes: 30, amount_paise: 4900, price_inr: 49, note: "Continue after the free preview, one careful sitting at a time." },
@@ -48,9 +48,6 @@ const fullPageStates = new Set(["home-desktop", "home-mobile", "library-desktop"
 
 const sha = (buffer) => crypto.createHash("sha256").update(buffer).digest("hex");
 const jsonResponse = (route, value) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(value) });
-const manifestAudioFor = (book) => book.audiobook_enabled === true
-  ? { enabled: true, asset_slug: book.slug, assets: book.audiobook_assets }
-  : { enabled: false, assets: {} };
 const requiredFor = (family) => ({
   home: ["[data-testid=home-reference-surface]", "header"], library: ["[data-testid=library-reference-surface]", "header"],
   filter: ["[data-testid=library-reference-surface]", ".reference-filter-trigger"], commerce: ["[data-testid=pricing-reference-surface]", "header"],
@@ -62,16 +59,6 @@ async function installFixtureRoutes(page) {
   await page.route("**/api/**", async (route) => {
     const url = new URL(route.request().url());
     if (url.pathname.endsWith("/books")) return jsonResponse(route, books);
-    const requestedBook = url.pathname.match(/^\/api\/books\/([^/]+)$/)?.[1];
-    if (requestedBook) {
-      const book = books.find((entry) => entry.slug === decodeURIComponent(requestedBook));
-      return route.fulfill({ status: book ? 200 : 404, contentType: "application/json", body: JSON.stringify(book || { detail: "Book not found" }) });
-    }
-    const manifestBook = url.pathname.match(/^\/api\/reader\/book\/([^/]+)\/manifest$/)?.[1];
-    if (manifestBook) {
-      const book = books.find((entry) => entry.slug === decodeURIComponent(manifestBook));
-      return route.fulfill({ status: book ? 200 : 404, contentType: "application/json", body: JSON.stringify(book ? { book, chapters: book.chapters, audio: manifestAudioFor(book) } : { detail: "Book not found" }) });
-    }
     if (url.pathname.includes("/payments/") && (url.pathname.endsWith("/offers") || url.pathname.endsWith("/packs"))) return jsonResponse(route, { packs, config: { mode: "owner-review-fixture", recurring_enabled: false } });
     if (url.pathname.endsWith("/auth/me") || url.pathname.endsWith("/users/me")) return jsonResponse(route, user);
     if (url.pathname.includes("transactions")) return jsonResponse(route, []);

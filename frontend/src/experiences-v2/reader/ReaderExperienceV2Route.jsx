@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { userApi } from "../../lib/api";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
-import { readerBookMatchesRoute } from "../../lib/readerNavigation";
 import {
   endReadingPassSession,
   getReadingPassPage,
@@ -54,25 +53,14 @@ export default function ReaderExperienceV2Route() {
   useEffect(() => {
     if (visualFixture) return undefined;
     let cancelled = false;
-    const controller = new AbortController();
     setLoading(true);
     setError("");
-    setManifest(null);
-    setPage(null);
-    setLeaseState(null);
-    userApi.get(readerManifestPath(slug), { signal: controller.signal })
-      .then((response) => {
-        if (cancelled) return;
-        if (!readerBookMatchesRoute(response.data?.book, slug)) {
-          setError("This reader edition is unavailable because its title identity could not be verified.");
-          return;
-        }
-        setManifest(response.data);
-      })
+    userApi.get(readerManifestPath(slug))
+      .then((response) => { if (!cancelled) setManifest(response.data); })
       .catch(() => { if (!cancelled) setError("This reader edition is not available."); })
       .finally(() => { if (!cancelled) setLoading(false); });
-    return () => { cancelled = true; controller.abort(); };
-  }, [setLeaseState, slug, visualFixture]);
+    return () => { cancelled = true; };
+  }, [slug, visualFixture]);
 
   useEffect(() => {
     if (visualFixture) return undefined;

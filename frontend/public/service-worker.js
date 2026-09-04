@@ -1,4 +1,4 @@
-const CACHE_VERSION = "earnalism-v4-reader-identity";
+const CACHE_VERSION = "earnalism-v3-reading-pass";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const APP_SHELL = ["/", "/index.html", "/favicon.png?v=20260610-transparent", "/apple-touch-icon.png?v=20260610-transparent"];
 
@@ -37,11 +37,6 @@ function isReadingPassApiRequest(request) {
   return url.pathname.startsWith("/api/reading-pass/");
 }
 
-function isReaderTextApiRequest(request) {
-  const url = new URL(request.url);
-  return /^\/api\/reader\/(?:book\/[^/]+\/manifest|chapter\/[^/]+\/[^/]+)(?:\/|$)/.test(url.pathname);
-}
-
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   // Package manifests, sidecars, HEAD probes, and byte-range audio must always
@@ -49,9 +44,6 @@ self.addEventListener("fetch", (event) => {
   // an audiobook response after release truth changes.
   if (isAudiobookApiRequest(request)) return;
   if (isReadingPassApiRequest(request)) return;
-  // Reader metadata and text are title-specific and authorization-sensitive.
-  // They must never be replayed from the app-shell cache across routes.
-  if (isReaderTextApiRequest(request)) return;
   if (request.method !== "GET" || request.headers.has("authorization")) return;
   if (request.headers.has("range")) return;
 

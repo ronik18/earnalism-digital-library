@@ -52,9 +52,6 @@ http.createServer((request, response) => {
     return;
   }
   const file = staticFile || path.join(root, "index.html");
-  // Match the production deployment rule: a browser must revalidate the worker
-  // script on every navigation so a new release can retire an old cache name.
-  const cacheControl = pathname === "/service-worker.js" ? "public, max-age=0, must-revalidate" : file.endsWith("index.html") ? "no-store" : "public, max-age=300";
-  response.writeHead(200, { ...securityHeaders, "Content-Type": mime[path.extname(file)] || "application/octet-stream", "Content-Length": fs.statSync(file).size, "Cache-Control": cacheControl });
+  response.writeHead(200, { ...securityHeaders, "Content-Type": mime[path.extname(file)] || "application/octet-stream", "Content-Length": fs.statSync(file).size, "Cache-Control": file.endsWith("index.html") ? "no-store" : "public, max-age=300" });
   fs.createReadStream(file).pipe(response);
 }).listen(port, host, () => console.log(`Earnalism local UAT frontend: http://${host}:${port}`));

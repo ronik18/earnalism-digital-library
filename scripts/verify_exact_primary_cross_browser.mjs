@@ -47,13 +47,7 @@ async function installLocalResponses(page) {
   await page.route("**/api/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
     if (pathname.endsWith("/books")) return json(route, books);
-    const requestedBook = pathname.match(/^\/api\/books\/([^/]+)$/)?.[1];
-    if (requestedBook) return json(route, books.find((book) => book.slug === decodeURIComponent(requestedBook)) || {});
-    const manifestBook = pathname.match(/^\/api\/reader\/book\/([^/]+)\/manifest$/)?.[1];
-    if (manifestBook) {
-      const book = books.find((entry) => entry.slug === decodeURIComponent(manifestBook));
-      return json(route, book ? { book, chapters: book.chapters, audio: { enabled: false, assets: {} } } : {});
-    }
+    if (pathname.includes("/books/")) return json(route, books.find((book) => pathname.endsWith(`/${book.slug}`)) || {});
     if (pathname.includes("payments/") && (pathname.endsWith("/offers") || pathname.endsWith("/packs"))) return json(route, { packs, config: { mode: "owner-review-fixture", recurring_enabled: false } });
     if (pathname.endsWith("/auth/me") || pathname.endsWith("/users/me")) return json(route, user);
     if (pathname.includes("transactions") || pathname.includes("devices")) return json(route, []);
