@@ -68,6 +68,25 @@ class CustomerReadyAutonomyEnvelopeTests(unittest.TestCase):
             with self.subTest(name=name):
                 self.assert_rejected(mutated)
 
+    def test_rollback_requires_the_exact_flag_false_public_reader_baseline(self) -> None:
+        baseline = self.valid_text()
+        mutations = {
+            "release_state_not_preserved": baseline.replace("      public_reader_release_state_preserved: true", "      public_reader_release_state_preserved: false", 1),
+            "existing_reader_changed": baseline.replace("      existing_reader_behavior_unchanged: true", "      existing_reader_behavior_unchanged: false", 1),
+            "page_four_public": baseline.replace("      page_4_plus_must_not_become_public: true", "      page_4_plus_must_not_become_public: false", 1),
+            "public_audio_nonzero": baseline.replace("      public_audio_preview_seconds: 0", "      public_audio_preview_seconds: 1", 1),
+            "title_fallback_allowed": baseline.replace("    flag_false_baseline_contract:\n      reading_pass_v2_enabled: false\n      public_reader_release_state_preserved: true\n      existing_reader_behavior_unchanged: true\n      book_detail_identity_must_match_release_truth: true\n      public_reader_manifest_identity_must_match_release_truth: true\n      v2_protected_access_must_not_remain_active: true\n      page_4_plus_must_not_become_public: true\n      public_audio_preview_seconds: 0\n      unrelated_title_fallback_allowed: false", "    flag_false_baseline_contract:\n      reading_pass_v2_enabled: false\n      public_reader_release_state_preserved: true\n      existing_reader_behavior_unchanged: true\n      book_detail_identity_must_match_release_truth: true\n      public_reader_manifest_identity_must_match_release_truth: true\n      v2_protected_access_must_not_remain_active: true\n      page_4_plus_must_not_become_public: true\n      public_audio_preview_seconds: 0\n      unrelated_title_fallback_allowed: true", 1),
+            "dracula_fallback_allowed": baseline.replace("    flag_false_baseline_contract:\n      reading_pass_v2_enabled: false\n      public_reader_release_state_preserved: true\n      existing_reader_behavior_unchanged: true\n      book_detail_identity_must_match_release_truth: true\n      public_reader_manifest_identity_must_match_release_truth: true\n      v2_protected_access_must_not_remain_active: true\n      page_4_plus_must_not_become_public: true\n      public_audio_preview_seconds: 0\n      unrelated_title_fallback_allowed: false\n      dracula_fallback_allowed: false", "    flag_false_baseline_contract:\n      reading_pass_v2_enabled: false\n      public_reader_release_state_preserved: true\n      existing_reader_behavior_unchanged: true\n      book_detail_identity_must_match_release_truth: true\n      public_reader_manifest_identity_must_match_release_truth: true\n      v2_protected_access_must_not_remain_active: true\n      page_4_plus_must_not_become_public: true\n      public_audio_preview_seconds: 0\n      unrelated_title_fallback_allowed: false\n      dracula_fallback_allowed: true", 1),
+            "manifest_identity_omitted": baseline.replace("      public_reader_manifest_identity_must_match_release_truth: true\n", "", 1),
+            "flag_false_action_omitted": baseline.replace("      - set_READING_PASS_V2_ENABLED_false\n", "", 1),
+            "stale_unavailable_action": baseline.replace("      - verify_reading_pass_v2_disabled_baseline_restored", "      - verify_controlled_reader_unavailable_state_restored", 1),
+            "rights_mutation": baseline.replace("      - preserve_logs_metrics_and_deployment_ids", "      - mutate_rights_release_state", 1),
+            "redis_mutation": baseline.replace("      - preserve_logs_metrics_and_deployment_ids", "      - mutate_redis_content", 1),
+        }
+        for name, mutated in mutations.items():
+            with self.subTest(name=name):
+                self.assert_rejected(mutated)
+
 
 if __name__ == "__main__":
     unittest.main()
