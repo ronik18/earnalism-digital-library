@@ -1,0 +1,7 @@
+P1 baseline deployment provenance marker.
+
+This file intentionally has no runtime consumer. It is changed only to make
+Railway's backend watch path produce a Git-backed deployment record, allowing
+the Reading Pass v2 rollout gate to bind the live backend to a merged commit.
+The marker does not change Reading Pass configuration, public-audio policy,
+publication state, or application behavior.
