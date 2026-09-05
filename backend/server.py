@@ -2156,9 +2156,13 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
         return ""
     generation = await _reader_content_cache_generation_value()
     cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{READER_CONTENT_RENDER_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
-    cached = await _redis_cache_get("reader-content", cache_key)
-    if cached is not None:
-        return str(cached or "")
+    # A controlled chapter can span both public and protected canonical pages.
+    # When v2 is active, its complete rendered body must not live in shared
+    # Redis; canonical page records are the only reader delivery source.
+    if not READING_PASS_V2_ENABLED:
+        cached = await _redis_cache_get("reader-content", cache_key)
+        if cached is not None:
+            return str(cached or "")
     if not admin_preview:
         book = await _reader_book_access_doc(slug)
         if not book:
@@ -2182,7 +2186,8 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
             target = ((content_doc or {}).get("chapters") or [{}])[0]
             content = target.get("content", "")
     rendered_content, _ = _manual_content_to_render_html(content)
-    await _redis_cache_set("reader-content", cache_key, rendered_content, READER_CHAPTER_CACHE_TTL_SECONDS)
+    if not READING_PASS_V2_ENABLED:
+        await _redis_cache_set("reader-content", cache_key, rendered_content, READER_CHAPTER_CACHE_TTL_SECONDS)
     return rendered_content
 
 
