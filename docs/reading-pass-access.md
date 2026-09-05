@@ -178,7 +178,7 @@ The Reader obtains feature state from the server manifest. When disabled, the ex
 - page 4 starts or transfers a protected lease before requesting content;
 - the timer stays visible, uses `HH:MM:SS`, and reports `Running`, `Paused`, `Preview`, `Connecting`, or `Active on another device`;
 - screen readers receive one announcement when balance crosses 5 minutes, 1 minute, 10 seconds, and exhausted;
-- approved audiobooks play only the separate public preview until the member explicitly continues; protected playback activates billing with a server heartbeat and native media cookies;
+- approved audiobooks have no public preview; protected playback starts only after server authorization and activates billing with a server heartbeat and native media cookies;
 - text and audio positions synchronize through versioned server records, and Account lists/revokes device sessions;
 - protected HTML is cleared when the lease pauses, expires, or exhausts;
 - resume is explicit and obtains a new lease;
