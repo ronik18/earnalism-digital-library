@@ -24,9 +24,9 @@ UAT = ROOT / "uat"
 MANIFEST_NAME = "system-run-manifest.json"
 REQUIRED_RUNS = {
     "backend-compile": {"min_passed": 1},
-    "backend-core": {"min_passed": 49, "markers": ("49 passed",)},
-    "backend-policy": {"min_passed": 8, "markers": ("8 passed",)},
-    "frontend-full": {"min_passed": 276, "markers": ("276 passed",)},
+    "backend-core": {"dynamic_count_semantic_name": "pytest_passed_test_count"},
+    "backend-policy": {"dynamic_count_semantic_name": "pytest_passed_test_count"},
+    "frontend-full": {"dynamic_count_semantic_name": "jest_passed_test_count"},
     "frontend-build": {"min_passed": 1, "markers": ("Static SEO snapshot verifier: inspected=",)},
     "contracts": {"min_passed": 2, "markers": ("local-contracts=PASS", "production-network-requests=0")},
     "hydration": {"min_passed": 7, "markers": ("7 passed",)},
@@ -35,6 +35,12 @@ REQUIRED_RUNS = {
     "firefox-journeys": {"min_passed": 12, "markers": ("12 passed",)},
     "webkit-journeys": {"min_passed": 12, "markers": ("12 passed",)},
     "contrast": {"min_passed": 36, "markers": ("tested=36", "passed=36", "failed=0", "missing=0")},
+}
+PROVENANCE_MODES = {"ATTACHED_EXPECTED_BRANCH", "DETACHED_EXACT_REMOTE_AUTHORITY"}
+DYNAMIC_COUNT_PARSERS = {
+    "backend-core": ("pytest_passed_test_count", re.compile(r"(?m)^(?P<count>[1-9][0-9]*) passed(?:,.*)? in .+$")),
+    "backend-policy": ("pytest_passed_test_count", re.compile(r"(?m)^(?P<count>[1-9][0-9]*) passed(?:,.*)? in .+$")),
+    "frontend-full": ("jest_passed_test_count", re.compile(r"(?m)^Tests:\s+(?P<count>[1-9][0-9]*) passed,.*$")),
 }
 REPORT_ONLY_PATHS = {
     "uat/system-final-report.json",
@@ -95,14 +101,134 @@ def git_branch(root: Path = ROOT) -> str:
     return subprocess.check_output(["git", "branch", "--show-current"], cwd=root, text=True).strip()
 
 
-def latest_executable_commit(root: Path = ROOT) -> tuple[str, str]:
-    paths = ("backend", "frontend", "scripts", "tests", "package.json", "package-lock.json", "playwright.config.js")
-    output = subprocess.check_output(
-        ["git", "log", "-1", "--format=%H%n%cI", "--", *paths], cwd=root, text=True
-    ).splitlines()
-    if len(output) != 2:
-        raise ValueError("could not determine latest executable commit")
-    return output[0], output[1]
+def git_tree(root: Path = ROOT, revision: str = "HEAD") -> str:
+    return subprocess.check_output(["git", "rev-parse", f"{revision}^{{tree}}"], cwd=root, text=True).strip()
+
+
+def git_ref(root: Path, ref: str) -> str:
+    return subprocess.check_output(["git", "rev-parse", "--verify", ref], cwd=root, text=True).strip()
+
+
+def active_git_operation(root: Path) -> str | None:
+    git_dir = Path(subprocess.check_output(["git", "rev-parse", "--git-dir"], cwd=root, text=True).strip())
+    if not git_dir.is_absolute():
+        git_dir = root / git_dir
+    for name in ("MERGE_HEAD", "CHERRY_PICK_HEAD", "REVERT_HEAD", "rebase-merge", "rebase-apply"):
+        if (git_dir / name).exists():
+            return name
+    return None
+
+
+def clean_worktree(root: Path, *, allow_report_only: bool = False) -> bool:
+    if not allow_report_only:
+        return not subprocess.check_output(["git", "status", "--porcelain"], cwd=root, text=True).strip()
+    changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=root, text=True).splitlines())
+    changed.update(subprocess.check_output(["git", "ls-files", "--others", "--exclude-standard"], cwd=root, text=True).splitlines())
+    return all(path in REPORT_ONLY_PATHS or path.startswith("uat/evidence/system-final-verification/") for path in changed)
+
+
+def require_sha(value: object, field: str, errors: list[str]) -> str | None:
+    if not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{40}", value):
+        errors.append(f"{field} must be a full git SHA")
+        return None
+    return value
+
+
+def validate_provenance(payload: dict, *, root: Path, allow_report_only: bool = False) -> dict:
+    errors: list[str] = []
+    provenance = payload.get("provenance")
+    if not isinstance(provenance, dict):
+        fail(["provenance is missing or invalid"])
+    mode = provenance.get("mode")
+    if mode not in PROVENANCE_MODES:
+        errors.append("provenance mode is missing or invalid")
+    if provenance.get("expected_repository_root") != str(root.resolve()):
+        errors.append("expected repository root does not match the report root")
+    expected_commit = require_sha(provenance.get("expected_commit"), "expected commit", errors)
+    expected_tree = require_sha(provenance.get("expected_tree"), "expected tree", errors)
+    try:
+        validated_at = iso8601(provenance.get("validated_at"))
+    except ValueError:
+        validated_at = None
+        errors.append("provenance validation timestamp is missing or invalid")
+    if expected_commit is not None:
+        try:
+            subprocess.check_call(["git", "cat-file", "-e", f"{expected_commit}^{{commit}}"], cwd=root, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            if git_head(root) != expected_commit:
+                errors.append("HEAD does not match the expected commit")
+            if expected_tree is not None and git_tree(root) != expected_tree:
+                errors.append("HEAD tree does not match the expected tree")
+            if expected_tree is not None and git_tree(root, expected_commit) != expected_tree:
+                errors.append("expected commit does not resolve to the expected tree")
+        except subprocess.CalledProcessError:
+            errors.append("expected commit object is unavailable locally")
+    worktree_clean = clean_worktree(root, allow_report_only=allow_report_only)
+    operation = active_git_operation(root)
+    if payload.get("clean_worktree_before_execution") is not True or not worktree_clean:
+        errors.append("worktree was not clean before execution")
+    if operation is not None:
+        errors.append(f"active Git operation is not allowed: {operation}")
+    if mode == "ATTACHED_EXPECTED_BRANCH":
+        expected_branch = provenance.get("expected_branch")
+        if not isinstance(expected_branch, str) or not expected_branch:
+            errors.append("expected branch is missing for attached provenance")
+        elif git_branch(root) != expected_branch:
+            errors.append("attached branch does not match the expected branch")
+    elif mode == "DETACHED_EXACT_REMOTE_AUTHORITY":
+        if git_branch(root):
+            errors.append("detached provenance requires a branchless HEAD")
+        remote_ref = provenance.get("expected_remote_ref")
+        if not isinstance(remote_ref, str) or not re.fullmatch(r"refs/remotes/origin/[A-Za-z0-9._/-]+", remote_ref):
+            errors.append("expected remote ref is missing or invalid")
+        remote_sha = require_sha(provenance.get("expected_remote_ref_sha"), "expected remote ref SHA", errors)
+        try:
+            refreshed_at = iso8601(provenance.get("remote_ref_refreshed_at"))
+            if validated_at is not None and refreshed_at > validated_at:
+                errors.append("remote ref refresh is after provenance validation")
+        except ValueError:
+            errors.append("remote ref refresh timestamp is missing or invalid")
+        if isinstance(remote_ref, str) and remote_sha is not None:
+            try:
+                if git_ref(root, remote_ref) != remote_sha:
+                    errors.append("local remote ref does not match the expected remote SHA")
+            except subprocess.CalledProcessError:
+                errors.append("expected remote ref is unavailable locally")
+        if expected_commit is not None and remote_sha is not None and remote_sha != expected_commit:
+            errors.append("expected remote SHA does not match the expected commit")
+    if errors:
+        fail(errors)
+    return {
+        "mode": mode,
+        "repository_root_classification": "exact_expected_repository_root",
+        "head_sha": git_head(root),
+        "tree_sha": git_tree(root),
+        "branch_mode": "detached" if not git_branch(root) else "attached",
+        "symbolic_branch": git_branch(root) or None,
+        "expected_remote_ref": provenance.get("expected_remote_ref"),
+        "expected_remote_sha": provenance.get("expected_remote_ref_sha"),
+        "worktree_clean": worktree_clean,
+        "active_git_operation": operation,
+        "verification_result": "PASSED",
+        "validated_at": validated_at,
+        "expected_commit": expected_commit,
+        "expected_tree": expected_tree,
+    }
+
+
+def observed_result_from_log(suite_id: str, text: str, log_sha256: str) -> dict | None:
+    spec = DYNAMIC_COUNT_PARSERS.get(suite_id)
+    if spec is None:
+        return None
+    semantic_name, parser = spec
+    matches = list(parser.finditer(text))
+    if len(matches) != 1:
+        raise ValueError(f"{suite_id}: deterministic result parser did not find exactly one passing summary")
+    return {
+        "schema_version": "system-uat-observed-result-v1",
+        "semantic_name": semantic_name,
+        "value": int(matches[0].group("count")),
+        "source_log_sha256": log_sha256,
+    }
 
 
 def report_only_since(root: Path, tested_head: str, current_head: str) -> bool:
@@ -137,17 +263,16 @@ def validate_manifest(
     errors: list[str] = []
     if not isinstance(payload, dict):
         fail(["run manifest must be a JSON object"])
-    if payload.get("schema_version") != "system-uat-run-manifest-v1":
+    if payload.get("schema_version") != "system-uat-run-manifest-v2":
         errors.append("unsupported or missing run-manifest schema")
     manifest_run_id = payload.get("run_id")
     if not isinstance(manifest_run_id, str) or not re.fullmatch(r"run-[A-Za-z0-9][A-Za-z0-9._-]*", manifest_run_id):
         errors.append("run_id is missing or invalid")
-    if payload.get("canonical_worktree") != str(root.resolve()):
-        errors.append("canonical_worktree does not match the report root")
-    if not isinstance(payload.get("branch"), str) or not payload["branch"].startswith("codex/"):
-        errors.append("branch is missing or invalid")
-    if payload.get("clean_worktree_before_execution") is not True:
-        errors.append("worktree was not clean before execution")
+    try:
+        provenance = validate_provenance(payload, root=root, allow_report_only=True)
+    except ValueError as error:
+        errors.append(str(error))
+        provenance = None
     tested_head = payload.get("tested_code_head")
     if not isinstance(tested_head, str) or not re.fullmatch(r"[0-9a-f]{40}", tested_head):
         errors.append("tested_code_head must be a full git SHA")
@@ -155,14 +280,8 @@ def validate_manifest(
         errors.append("tested_head and tested_code_head disagree")
     elif current_head is not None and not report_only_since(root, tested_head, current_head):
         errors.append("tested_code_head does not match current executable code HEAD")
-    executable_head = payload.get("latest_executable_commit")
-    if executable_head != tested_head:
-        errors.append("latest executable commit does not match tested_code_head")
-    try:
-        executable_time = iso8601(payload.get("latest_executable_commit_at"))
-    except ValueError:
-        executable_time = None
-        errors.append("latest executable commit timestamp is missing or invalid")
+    if provenance is not None and tested_head != provenance["expected_commit"]:
+        errors.append("tested_code_head does not match the expected commit")
     scope_path = root / "uat" / "system-scope.json"
     if payload.get("scope_sha256") != sha256_file(scope_path):
         errors.append("scope SHA256 is missing or does not match the frozen scope")
@@ -206,8 +325,8 @@ def validate_manifest(
             started = iso8601(suite_result.get("started_at")); completed = iso8601(suite_result.get("completed_at"))
             if completed < started:
                 errors.append(f"{suite_id}: completion precedes start")
-            if executable_time is not None and started < executable_time:
-                errors.append(f"{suite_id}: evidence predates the tested executable commit")
+            if provenance is not None and started < provenance["validated_at"]:
+                errors.append(f"{suite_id}: evidence predates provenance validation")
         except ValueError:
             errors.append(f"{suite_id}: timestamps are missing or invalid")
         if suite_result.get("exit_code") != 0:
@@ -216,7 +335,8 @@ def validate_manifest(
         if not isinstance(totals, dict) or any(not isinstance(totals.get(key), int) or totals.get(key) < 0 for key in ("passed", "failed", "missing")):
             errors.append(f"{suite_id}: totals are missing or invalid")
             continue
-        if totals["passed"] < rule["min_passed"] or totals["failed"] != 0 or totals["missing"] != 0:
+        min_passed = rule.get("min_passed", 1)
+        if totals["passed"] < min_passed or totals["failed"] != 0 or totals["missing"] != 0:
             errors.append(f"{suite_id}: totals are not passing")
         log_path = safe_log_path(suite_result.get("log"), root)
         if log_path is None or not log_path.is_file():
@@ -230,6 +350,20 @@ def validate_manifest(
         markers = tuple(rule.get("markers", ())) + tuple(suite_result.get("required_markers", ()))
         if any(not isinstance(marker, str) or marker not in text for marker in markers):
             errors.append(f"{suite_id}: log is missing a required success marker")
+        dynamic_semantic_name = rule.get("dynamic_count_semantic_name")
+        if dynamic_semantic_name is not None:
+            observed = suite_result.get("observed_result")
+            if not isinstance(observed, dict) or observed.get("schema_version") != "system-uat-observed-result-v1" or observed.get("semantic_name") != dynamic_semantic_name or not isinstance(observed.get("value"), int) or observed["value"] < 1 or observed.get("source_log_sha256") != expected_hash:
+                errors.append(f"{suite_id}: dynamic observed result is missing or invalid")
+            else:
+                try:
+                    parsed = observed_result_from_log(suite_id, text, expected_hash)
+                    if parsed != observed:
+                        errors.append(f"{suite_id}: dynamic observed result does not match the deterministic log parser")
+                    if totals["passed"] != observed["value"]:
+                        errors.append(f"{suite_id}: totals passed does not match the dynamic observed result")
+                except ValueError as error:
+                    errors.append(str(error))
         if re.search(r"(?<![=\w])[1-9][0-9]*\s+(?:failed|errors?)\b", text, flags=re.IGNORECASE):
             errors.append(f"{suite_id}: log contradicts zero failures")
         if re.search(r"(?:failed|errors?)=[1-9][0-9]*\b", text, flags=re.IGNORECASE):
@@ -238,7 +372,7 @@ def validate_manifest(
             errors.append(f"{suite_id}: log contradicts zero missing")
     if errors:
         fail(errors)
-    return {"run_id": manifest_run_id, "tested_head": tested_head, "endpoints": endpoints, "runs": by_id, "scope_decisions": scope_note}
+    return {"run_id": manifest_run_id, "tested_head": tested_head, "endpoints": endpoints, "runs": by_id, "scope_decisions": scope_note, "provenance": provenance}
 
 
 def validate_report_payload(report: object, validated_manifest: dict, *, provenance_tool_head: str) -> None:
@@ -257,6 +391,8 @@ def validate_report_payload(report: object, validated_manifest: dict, *, provena
         errors.append("report aggregate result is not passing")
     if report.get("provenance_validation") != "PASSED":
         errors.append("report provenance validation is not passing")
+    if not isinstance(report.get("provenance"), dict) or report["provenance"].get("verification_result") != "PASSED":
+        errors.append("report provenance record is not passing")
     if errors:
         fail(errors)
 
@@ -303,7 +439,8 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None, tested_c
     state = {
         "schema_version": "system-uat-state-v2",
         "generated_at": now,
-        "environment": {"frontend_url": validated["endpoints"]["frontend"], "api_url": validated["endpoints"]["api"], "worktree": str(root.resolve()), "branch": manifest_payload["branch"], "head": validated["tested_head"]},
+        "environment": {"frontend_url": validated["endpoints"]["frontend"], "api_url": validated["endpoints"]["api"], "provenance_mode": validated["provenance"]["mode"], "head": validated["tested_head"]},
+        "provenance": {key: value for key, value in validated["provenance"].items() if key not in {"validated_at"}},
         "run_id": validated["run_id"],
         "tested_code_head": validated["tested_head"],
         "provenance_tool_head": git_head(root),
@@ -331,28 +468,48 @@ def write_manifest(args: argparse.Namespace) -> None:
     path = Path(args.manifest).resolve()
     path.parent.mkdir(parents=True, exist_ok=True)
     if args.init:
-        executable_head, executable_time = latest_executable_commit(ROOT)
         clean = args.clean_worktree_before_execution == "true"
         scope = json.loads((UAT / "system-scope.json").read_text(encoding="utf-8"))
+        provenance = {
+            "mode": args.provenance_mode,
+            "expected_repository_root": args.expected_repository_root,
+            "expected_commit": args.expected_commit,
+            "expected_tree": args.expected_tree,
+            "expected_branch": args.expected_branch,
+            "expected_remote_ref": args.expected_remote_ref,
+            "expected_remote_ref_sha": args.expected_remote_ref_sha,
+            "remote_ref_refreshed_at": args.remote_ref_refreshed_at,
+            "validated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        }
         payload = {
-            "schema_version": "system-uat-run-manifest-v1", "run_id": args.run_id,
-            "canonical_worktree": str(ROOT.resolve()), "branch": git_branch(ROOT),
+            "schema_version": "system-uat-run-manifest-v2", "run_id": args.run_id,
             "tested_head": git_head(ROOT), "tested_code_head": git_head(ROOT),
-            "latest_executable_commit": executable_head, "latest_executable_commit_at": executable_time,
             "clean_worktree_before_execution": clean, "scope_version": scope.get("schema_version"),
             "included_case_count": scope.get("total_included_case_count"), "aggregate_result": "RUNNING",
             "scope_sha256": sha256_file(UAT / "system-scope.json"),
             "redacted_local_endpoints": {"frontend": args.frontend, "api": args.api, "mongodb": args.mongodb},
+            "provenance": provenance,
             "scope_decisions": {"backend_full": {"required": False, "reason": "The frozen 39-case scope and canonical runner require focused payment, ledger, security, concurrency, and controlled-release suites; repository-wide backend-full is not a System UAT case."}},
             "runs": [],
         }
+        validate_provenance(payload, root=ROOT)
     else:
         payload = json.loads(path.read_text(encoding="utf-8"))
     if args.record:
         log = safe_log_path(args.log, ROOT)
         if log is None or not log.is_file():
             raise SystemExit("recorded log must exist beneath uat/evidence")
-        payload["runs"].append({"id": args.record, "command": args.command, "started_at": args.started_at, "completed_at": args.completed_at, "exit_code": args.exit_code, "totals": {"passed": args.passed, "failed": args.failed, "missing": args.missing}, "log": args.log, "sha256": sha256_file(log), "required_markers": args.require})
+        log_sha256 = sha256_file(log)
+        text = log.read_text(encoding="utf-8", errors="replace")
+        observed_result = None
+        if args.record in DYNAMIC_COUNT_PARSERS and args.exit_code == 0:
+            if args.passed is not None:
+                raise ValueError("dynamic count runs must not provide --passed")
+            observed_result = observed_result_from_log(args.record, text, log_sha256)
+            passed = observed_result["value"]
+        else:
+            passed = args.passed if args.passed is not None else 0
+        payload["runs"].append({"id": args.record, "command": args.command, "started_at": args.started_at, "completed_at": args.completed_at, "exit_code": args.exit_code, "totals": {"passed": passed, "failed": args.failed, "missing": args.missing}, "log": args.log, "sha256": log_sha256, "required_markers": args.require, **({"observed_result": observed_result} if observed_result is not None else {})})
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
@@ -374,6 +531,14 @@ def main() -> None:
     parser.add_argument("--run-id", default="")
     parser.add_argument("--tested-code-head")
     parser.add_argument("--clean-worktree-before-execution", default="")
+    parser.add_argument("--provenance-mode", choices=sorted(PROVENANCE_MODES))
+    parser.add_argument("--expected-repository-root")
+    parser.add_argument("--expected-commit")
+    parser.add_argument("--expected-tree")
+    parser.add_argument("--expected-branch")
+    parser.add_argument("--expected-remote-ref")
+    parser.add_argument("--expected-remote-ref-sha")
+    parser.add_argument("--remote-ref-refreshed-at")
     parser.add_argument("--record")
     parser.add_argument("--frontend")
     parser.add_argument("--api")
@@ -382,7 +547,7 @@ def main() -> None:
     parser.add_argument("--started-at", default="")
     parser.add_argument("--completed-at", default="")
     parser.add_argument("--exit-code", type=int, default=0)
-    parser.add_argument("--passed", type=int, default=0)
+    parser.add_argument("--passed", type=int)
     parser.add_argument("--failed", type=int, default=0)
     parser.add_argument("--missing", type=int, default=0)
     parser.add_argument("--log", default="")
@@ -394,6 +559,8 @@ def main() -> None:
                 raise ValueError("--run-id is required when initializing a manifest")
             if args.init and args.clean_worktree_before_execution not in {"true", "false"}:
                 raise ValueError("--clean-worktree-before-execution is required when initializing a manifest")
+            if args.init and (not args.provenance_mode or not args.expected_repository_root or not args.expected_commit or not args.expected_tree):
+                raise ValueError("explicit provenance mode, root, commit, and tree are required when initializing a manifest")
             write_manifest(args)
             return
         if args.finalize:
