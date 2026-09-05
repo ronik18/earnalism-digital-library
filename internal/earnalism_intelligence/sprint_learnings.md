@@ -2183,3 +2183,8 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 
 - The existing checksum-bound promotion mechanism fails closed when controlled-publication file trees differ. Restore byte-identical mirror parity before promotion; do not bypass the mechanism or write MongoDB directly.
 - Explicit owner assignment approval bound to both image SHA-256 values allowed only the plan-defined cover fields and the mechanism-owned audit timestamp to change. Reader, audio, publication, rights, source, and Reading Pass truth stayed unchanged.
+
+## Reader fixture identity containment - 2026-09-05
+
+- A visual-review fixture must never provide fallback chapter identity on a production reader route. If the canonical page endpoint fails or its chapter identity does not agree with the manifest, the route must fail closed instead of rendering fixture metadata or text.
+- A reader card marked live while Reading Pass v2 is disabled is a separate availability defect. Contain the identity violation first, then restore or truthfully withdraw reader availability through a distinct evidence-backed change.
