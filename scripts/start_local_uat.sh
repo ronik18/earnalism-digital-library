@@ -6,6 +6,7 @@ cd "$ROOT_DIR"
 RUNTIME_ROOT="$ROOT_DIR/uat/runtime/system-uat"
 RUNTIME_DIR="$ROOT_DIR/uat/evidence/system-final/runtime-final/$(date -u +%Y%m%dT%H%M%SZ)"
 mkdir -p "$RUNTIME_ROOT" "$RUNTIME_DIR"
+export UAT_RUNTIME_DIR="$RUNTIME_DIR"
 
 UAT_FRONTEND_HOST="${UAT_FRONTEND_HOST:-127.0.0.1}"
 UAT_BACKEND_HOST="${UAT_BACKEND_HOST:-127.0.0.1}"
