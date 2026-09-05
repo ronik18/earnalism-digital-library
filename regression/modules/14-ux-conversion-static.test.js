@@ -648,7 +648,8 @@ describe("UX conversion static signals", () => {
     expect(packageJson).toContain('"ux:journey-record:local": "EARNALISM_BASE_URL=http://localhost:3000 node scripts/record_signed_user_journey.mjs"');
     expect(packageJson).toContain('"ux:journey-record:prod": "EARNALISM_BASE_URL=https://theearnalism.com node scripts/record_signed_user_journey.mjs"');
     expect(packageJson).toContain('"ux:journey-regression-report": "EARNALISM_JOURNEY_MODE=regression-report node scripts/record_signed_user_journey.mjs"');
-    expect(packageJson).toContain('"regression:ci": "npm run ux:journey-smoke && CI=true REGRESSION_MODE=pr npm run regression -- --json --outputFile=regression/results.json"');
+    expect(packageJson).toContain('"test:journey-smoke-network": "node --test scripts/test_journey_smoke_network.mjs"');
+    expect(packageJson).toContain('"regression:ci": "npm run test:journey-smoke-network && npm run ux:journey-smoke && CI=true REGRESSION_MODE=pr npm run regression -- --json --outputFile=regression/results.json"');
 
     expect(signedUserJourneyRecorder).toContain("Please sign in manually in the opened browser");
     expect(signedUserJourneyRecorder).toContain("Recording starts only after this confirmation");
