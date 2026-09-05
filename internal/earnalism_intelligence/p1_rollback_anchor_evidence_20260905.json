@@ -1,0 +1,48 @@
+{
+  "schema_version": "earnalism.p1-rollback-anchor-evidence.v1",
+  "recorded_at": "2026-09-05",
+  "status": "P1_ROLLBACK_ANCHOR_VERIFIED",
+  "scope": "neutral Railway D0-D1-D2 rehearsal; Reading Pass v2 remained disabled",
+  "deployments": {
+    "d0": {
+      "id": "817e76ce-a17e-4afc-a688-f7330c918818",
+      "commit": "ef7292a30b9bb75f2274942580b47ac9e457a129",
+      "image_digest": "sha256:7565e49882079a831436c8964bae13a657513c218bb8c7979b568ed7a51dce58"
+    },
+    "d1": {
+      "id": "08dea9e4-95de-4355-8fb7-d79c9dafa82b",
+      "reason": "redeploy",
+      "commit_matches_d0": true,
+      "image_digest_matches_d0": true
+    },
+    "d2": {
+      "id": "94888291-341a-4c81-a470-52473d9c7074",
+      "reason": "rollback",
+      "rollback_target": "817e76ce-a17e-4afc-a688-f7330c918818",
+      "commit_matches_d0": true,
+      "image_digest_matches_d0": true
+    }
+  },
+  "flag_false_baseline": {
+    "reading_pass_v2_enabled": false,
+    "redis_cache_enabled": false,
+    "multi_replica_enabled": false,
+    "public_audio_preview_seconds": 0,
+    "background_or_generation_jobs_enabled": false
+  },
+  "public_identity_and_boundaries": {
+    "health": "ok",
+    "frankenstein_book_detail": "LIVE_APPROVED, reader_enabled true, audio disabled",
+    "frankenstein_manifest": "identity-correct, 28 chapters, no audio URL or assets",
+    "reader_route_http": 200,
+    "v2_page_4_http": 404,
+    "v2_audio_preview_http": 404
+  },
+  "availability_truth": {
+    "hydrated_reader_heading": "Reader unavailable",
+    "reason": "Reading Pass v2 is not enabled.",
+    "classification": "existing P1 reader-availability defect; not a release-state, identity, rollback, or audio-boundary failure"
+  },
+  "production_data_or_flag_mutation": false,
+  "next_action": "Merge the green focused PR #354 through normal branch protection, then deploy merged main and address the remaining P1 canonical-reader availability defect without enabling v2 prematurely."
+}

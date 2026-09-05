@@ -1337,6 +1337,18 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 
 ## 2026-07-30 — D19 has one untried, provider-free Bengali audition packet
 
+## 2026-09-05 — Reading Pass all-title segmentation is adaptive, not approval-changing
+
+- The 45-title local Reading Pass matrix classified 41 titles as
+  `READY_PROTECTED_STANDARD` and four as `READY_PROTECTED_ADAPTIVE`; no source,
+  rights, publication, or reader-approval mutation was warranted.
+- `book-d19e96859f` (`গিন্নি`) has an approved source/content hash and 27
+  semantic blocks. The standard 3200-character target yields three pages, while
+  the largest approved target yielding a protected page is 2000 characters.
+- The same deterministic policy selects 2000 for Muchiram and The Open Window,
+  and 2800 for The Selfish Giant. Production v2 remains disabled pending exact
+  head CI, cache, entitlement, and browser evidence.
+
 - After excluding Muchiram's exhausted synthetic lane, `book-d19e96859f`
   (`গিন্নি`) is the shortest Sprint 1 Bengali title with a canonical
   source-bound manuscript, public-domain literary rights, live reader, and
@@ -2189,3 +2201,13 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A visual-review fixture must never provide fallback chapter identity on a production reader route. If the canonical page endpoint fails or its chapter identity does not agree with the manifest, the route must fail closed instead of rendering fixture metadata or text.
 - A reader card marked live while Reading Pass v2 is disabled is a separate availability defect. Contain the identity violation first, then restore or truthfully withdraw reader availability through a distinct evidence-backed change.
 - A release workflow's production-surface hash is an authority, not a cosmetic constant. Derive and contract-test it against the checked-in reviewed source so a real source change cannot make post-capture evidence fail solely through a stale baseline.
+
+## P1 rollback baseline reconciliation - 2026-09-05
+
+- `READING_PASS_V2_ENABLED=false` disables the v2 canonical-page and entitlement path; it does not revoke a title's independently approved `PUBLIC_READER` release state.
+- Rollback evidence must preserve correct public Book Detail, reader-route, and manifest identity while proving page 4+ remains protected, audio remains exactly zero seconds, and no cross-title fallback can render.
+
+## P1 neutral provider rollback rehearsal - 2026-09-05
+
+- A neutral D0 → D1 redeploy → D2 provider rollback can prove exact code/image restoration and flag-false safety without enabling Reading Pass v2 or changing release, content, rights, payment, Mongo, or Redis state.
+- HTTP 200 for a public reader route does not itself prove reader availability: production currently hydrates `Reader unavailable` because canonical v2 page 1 is feature-disabled. Keep that P1 availability defect distinct from the preserved PUBLIC_READER metadata and the successful protected-content/audio rollback boundaries.

@@ -201,6 +201,44 @@ def validate(document: dict[str, Any]) -> list[str]:
     _require(errors, isinstance(access, dict) and access.get("public_audio_preview_seconds_equals_zero_verified") is True, "CUSTOMER_READY contract omits zero-public-audio verification")
 
     rollback = spec.get("rollback")
+    expected_flag_false_baseline = {
+        "reading_pass_v2_enabled": False,
+        "public_reader_release_state_preserved": True,
+        "existing_reader_behavior_unchanged": True,
+        "book_detail_identity_must_match_release_truth": True,
+        "public_reader_manifest_identity_must_match_release_truth": True,
+        "v2_protected_access_must_not_remain_active": True,
+        "page_4_plus_must_not_become_public": True,
+        "public_audio_preview_seconds": 0,
+        "unrelated_title_fallback_allowed": False,
+        "dracula_fallback_allowed": False,
+    }
+    baseline = rollback.get("flag_false_baseline_contract") if isinstance(rollback, dict) else None
+    _require(errors, baseline == expected_flag_false_baseline, "rollback must preserve the exact flag-false public-reader baseline")
+
+    rollback_actions = rollback.get("actions_in_order") if isinstance(rollback, dict) else None
+    required_rollback_actions = {
+        "set_READING_PASS_V2_ENABLED_false",
+        "trigger_normal_railway_redeployment",
+        "if_configuration_rollback_fails_restore_previous_backend_deployment",
+        "verify_reading_pass_v2_disabled_baseline_restored",
+        "verify_public_reader_release_identity_remains_available",
+        "verify_book_detail_and_manifest_identity_match_release_truth",
+        "verify_v2_protected_access_is_not_active",
+        "verify_page_4_plus_did_not_become_public",
+        "verify_public_audio_seconds_remain_zero",
+        "verify_wrong_title_P0_does_not_return",
+        "preserve_logs_metrics_and_deployment_ids",
+        "continue_autonomous_repair_with_flag_false",
+    }
+    _require(errors, isinstance(rollback_actions, list) and required_rollback_actions <= set(rollback_actions), "rollback omits a required flag-false baseline action")
+    _require(errors, not isinstance(rollback_actions, list) or "verify_controlled_reader_unavailable_state_restored" not in rollback_actions, "rollback contains the stale controlled-unavailable assertion")
+    forbidden_rollback_mutation_terms = ("release_change", "rights", "publication", "wallet", "ledger", "mongo", "redis")
+    if isinstance(rollback_actions, list):
+        for action in rollback_actions:
+            if not isinstance(action, str) or any(term in action.lower() for term in forbidden_rollback_mutation_terms):
+                errors.append("rollback action may not mutate release, rights, payment, Mongo, or Redis state")
+
     triggers = rollback.get("immediate_zero_tolerance_triggers") if isinstance(rollback, dict) else None
     required_triggers = {"any_anonymous_playable_audio_response", "any_nonzero_public_audio_preview", "any_protected_audio_URL_in_public_manifest", "any_protected_audio_payload_in_shared_Redis", "any_service_worker_cached_protected_audio", "any_shared_CDN_cached_protected_audio", "any_audio_access_granted_solely_by_client_or_cached_state", "any_unapproved_title_exposing_an_audio_operation_or_payload"}
     _require(errors, isinstance(triggers, list) and required_triggers <= set(triggers), "rollback omits a zero-public-audio trigger")

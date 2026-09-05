@@ -1,0 +1,27 @@
+{
+  "schema_version": "earnalism.p1-rollback-baseline-reconciliation.v1",
+  "recorded_at": "2026-09-05",
+  "scope": "PR #354 governance correction only",
+  "superseded_assertion": "verify_controlled_reader_unavailable_state_restored",
+  "reason": "The prior containment assumption treated Frankenstein as controlled-unavailable, but current release truth is PUBLIC_READER.",
+  "authoritative_baseline": {
+    "reading_pass_v2_enabled": false,
+    "release_state": "PUBLIC_READER",
+    "existing_reader_behavior": "unchanged while v2 is disabled",
+    "public_book_detail_route_and_manifest": "available only when identity matches release truth",
+    "v2_protected_access": "inactive",
+    "page_4_plus_public": false,
+    "public_audio_preview_seconds": 0,
+    "title_fallback_allowed": false,
+    "dracula_fallback_allowed": false
+  },
+  "production_change": "none",
+  "prohibited_during_reconciliation": [
+    "release_metadata_change",
+    "title_approval_change",
+    "rights_or_publication_change",
+    "feature_flag_change",
+    "Redis_content_mutation",
+    "Mongo_content_mutation"
+  ]
+}

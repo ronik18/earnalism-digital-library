@@ -46,3 +46,13 @@ def test_service_worker_does_not_cache_reading_pass_or_protected_audio():
     source = (ROOT / 'frontend' / 'public' / 'service-worker.js').read_text(encoding='utf-8')
     assert '/api/reading-pass/' in source
     assert r'^\/api\/reader\/book\/' in source
+
+
+def test_v2_never_places_complete_controlled_chapters_in_shared_redis():
+    source = (ROOT / 'backend' / 'server.py').read_text(encoding='utf-8')
+    start = source.index('async def _reader_chapter_content')
+    end = source.index('\n\ndef _stable_digest', start)
+    helper = source[start:end]
+    assert helper.count('if not READING_PASS_V2_ENABLED:') >= 2
+    assert 'cached = await _redis_cache_get("reader-content", cache_key)' in helper
+    assert 'await _redis_cache_set("reader-content", cache_key, rendered_content, READER_CHAPTER_CACHE_TTL_SECONDS)' in helper

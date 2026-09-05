@@ -6,15 +6,19 @@ cd "$ROOT_DIR"
 RUNTIME_ROOT="$ROOT_DIR/uat/runtime/system-uat"
 RUNTIME_DIR="$ROOT_DIR/uat/evidence/system-final/runtime-final/$(date -u +%Y%m%dT%H%M%SZ)"
 mkdir -p "$RUNTIME_ROOT" "$RUNTIME_DIR"
+export UAT_RUNTIME_DIR="$RUNTIME_DIR"
 
 UAT_FRONTEND_HOST="${UAT_FRONTEND_HOST:-127.0.0.1}"
 UAT_BACKEND_HOST="${UAT_BACKEND_HOST:-127.0.0.1}"
 UAT_FRONTEND_PORT="${UAT_FRONTEND_PORT:-3000}"
 UAT_BACKEND_PORT="${UAT_BACKEND_PORT:-8000}"
 UAT_MONGODB_PORT="${UAT_MONGODB_PORT:-27018}"
+UAT_REDIS_PORT="${UAT_REDIS_PORT:-26379}"
 UAT_EXTERNAL_MONGODB="${UAT_EXTERNAL_MONGODB:-false}"
+UAT_EXTERNAL_REDIS="${UAT_EXTERNAL_REDIS:-false}"
 [[ "$UAT_FRONTEND_HOST" == 127.0.0.1 && "$UAT_BACKEND_HOST" == 127.0.0.1 ]] || { echo "UAT hosts must be loopback" >&2; exit 64; }
 [[ "$UAT_EXTERNAL_MONGODB" == true || "$UAT_EXTERNAL_MONGODB" == false ]] || { echo "UAT_EXTERNAL_MONGODB must be true or false" >&2; exit 64; }
+[[ "$UAT_EXTERNAL_REDIS" == true || "$UAT_EXTERNAL_REDIS" == false ]] || { echo "UAT_EXTERNAL_REDIS must be true or false" >&2; exit 64; }
 
 port_pid() { lsof -nP -t -iTCP:"$1" -sTCP:LISTEN 2>/dev/null | head -1 || true; }
 pid_cwd() { lsof -a -p "$1" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p' | head -1; }
@@ -52,7 +56,10 @@ UAT_FRONTEND_PORT="$(select_port "$UAT_FRONTEND_PORT" frontend 13000 13099)"
 if [[ "$UAT_EXTERNAL_MONGODB" == false ]]; then
   UAT_MONGODB_PORT="$(select_port "$UAT_MONGODB_PORT" mongodb 27018 27099)"
 fi
-export UAT_FRONTEND_HOST UAT_BACKEND_HOST UAT_FRONTEND_PORT UAT_BACKEND_PORT UAT_MONGODB_PORT
+if [[ "$UAT_EXTERNAL_REDIS" == false ]]; then
+  UAT_REDIS_PORT="$(select_port "$UAT_REDIS_PORT" redis 26379 26479)"
+fi
+export UAT_FRONTEND_HOST UAT_BACKEND_HOST UAT_FRONTEND_PORT UAT_BACKEND_PORT UAT_MONGODB_PORT UAT_REDIS_PORT
 export UAT_BASE_URL="http://$UAT_FRONTEND_HOST:$UAT_FRONTEND_PORT"
 export UAT_API_BASE_URL="http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT/api"
 export REACT_APP_BACKEND_URL="http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT" REACT_APP_API_URL="$UAT_API_BASE_URL" REACT_APP_UAT_LOCAL=true
@@ -65,7 +72,8 @@ export JWT_SECRET=uat-local-only-jwt-secret-do-not-use-outside-this-worktree-202
 export READING_PASS_V2_ENABLED=true READING_PASS_TOKEN_SECRET=uat-local-reading-pass-token-secret-20260820
 export ADMIN_EMAIL=admin@theearnalism.com ADMIN_PASSWORD=Earnalism@2026
 export UAT_MONGODB_URI="mongodb://127.0.0.1:$UAT_MONGODB_PORT/earnalism_uat?replicaSet=earnalism-uat-rs0"
-export MONGODB_URL="$UAT_MONGODB_URI" COST_CONTROL_MODE=true ENABLE_BACKGROUND_WORKERS=false ENABLE_AUDIOBOOK_PIPELINE=false
+export UAT_REDIS_URL="redis://127.0.0.1:$UAT_REDIS_PORT/0"
+export MONGODB_URL="$UAT_MONGODB_URI" REDIS_URL="$UAT_REDIS_URL" COST_CONTROL_MODE=true ENABLE_BACKGROUND_WORKERS=false ENABLE_AUDIOBOOK_PIPELINE=false
 export ENABLE_BOOK_RENDERING_JOBS=false ENABLE_COVER_GENERATION=false ENABLE_SCHEDULED_JOBS=false ENABLE_QUEUE_CONSUMER=false ENABLE_ADMIN_MEDIA_UPLOADS=false ENABLE_STARTUP_DB_MAINTENANCE=true
 export RAZORPAY_KEY_ID= RAZORPAY_KEY_SECRET= RAZORPAY_WEBHOOK_SECRET= STRIPE_SECRET_KEY= STRIPE_PUBLIC_KEY= STRIPE_WEBHOOK_SECRET=
 export npm_config_cache="$ROOT_DIR/.npm-cache" PLAYWRIGHT_BROWSERS_PATH="$ROOT_DIR/.playwright-browsers"
@@ -86,15 +94,16 @@ if [[ ! -f "$RUNTIME_ROOT/.requirements.sha256" || "$(<"$RUNTIME_ROOT/.requireme
   printf '%s' "$requirements_hash" > "$RUNTIME_ROOT/.requirements.sha256"
 fi
 
-MONGODB_PID=""; BACKEND_PID=""; FRONTEND_PID=""
+MONGODB_PID=""; REDIS_PID=""; BACKEND_PID=""; FRONTEND_PID=""
 write_pid() { printf 'pid=%s\ncategory=%s\nworktree=%s\nport=%s\nlaunched_at=%s\n' "$1" "$2" "$ROOT_DIR" "$3" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$RUNTIME_ROOT/$2.pid"; }
 cleanup() {
   local result=$?
-  for category in frontend backend mongodb; do
+  for category in frontend backend redis mongodb; do
     local pid=""
     case "$category" in
       frontend) pid="$FRONTEND_PID" ;;
       backend) pid="$BACKEND_PID" ;;
+      redis) pid="$REDIS_PID" ;;
       mongodb) pid="$MONGODB_PID" ;;
     esac
     [[ -n "$pid" ]] && kill -0 "$pid" 2>/dev/null && kill -TERM "$pid" 2>/dev/null || true
@@ -124,6 +133,17 @@ else
   [[ "$(port_pid "$UAT_MONGODB_PORT")" == "$MONGODB_PID" ]] || { tail -80 "$RUNTIME_DIR/mongodb.log" >&2; exit 1; }
 fi
 "$VENV_PYTHON" scripts/init_uat_mongodb.py > "$RUNTIME_DIR/mongodb-primary.log" 2>&1 || { cat "$RUNTIME_DIR/mongodb-primary.log" >&2; exit 1; }
+
+if [[ "$UAT_EXTERNAL_REDIS" == false ]]; then
+  REDIS_BIN="${REDIS_BIN:-$(command -v redis-server || true)}"
+  [[ -x "$REDIS_BIN" ]] || { echo "redis-server is required for local Reading Pass UAT" >&2; exit 1; }
+  "$REDIS_BIN" --bind 127.0.0.1 --port "$UAT_REDIS_PORT" --save '' --appendonly no --protected-mode yes > "$RUNTIME_DIR/redis.log" 2>&1 & REDIS_PID=$!
+  write_pid "$REDIS_PID" redis "$UAT_REDIS_PORT"
+fi
+for _ in $(seq 1 45); do "$VENV_PYTHON" -c 'from redis import Redis; Redis.from_url(__import__("os").environ["REDIS_URL"], socket_connect_timeout=1).ping()' >/dev/null 2>&1 && break; sleep 1; done
+"$VENV_PYTHON" -c 'from redis import Redis; Redis.from_url(__import__("os").environ["REDIS_URL"], socket_connect_timeout=1).ping()' || { echo "isolated Redis is not reachable" >&2; exit 1; }
+
+"$VENV_PYTHON" scripts/verify_p1_isolated_preflight.py > "$RUNTIME_DIR/p1-preflight.log" 2>&1 || { cat "$RUNTIME_DIR/p1-preflight.log" >&2; exit 1; }
 
 "$VENV_PYTHON" -m uvicorn backend.server:app --host "$UAT_BACKEND_HOST" --port "$UAT_BACKEND_PORT" > "$RUNTIME_DIR/backend.log" 2>&1 & BACKEND_PID=$!
 write_pid "$BACKEND_PID" backend "$UAT_BACKEND_PORT"
