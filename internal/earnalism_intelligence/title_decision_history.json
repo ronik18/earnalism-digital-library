@@ -2555,9 +2555,9 @@
       "next_action": "Prove exact-slug cover provenance, render a private checksum-bound preview, and obtain fresh reader approval before restoring public allowlists."
     },
     "frankenstein": {
-      "latest_decision": "P0_READER_FIXTURE_IDENTITY_LEAK_CONTAINMENT_PENDING_DEPLOYMENT",
+      "latest_decision": "P0_READER_FIXTURE_IDENTITY_CONTAINMENT_CI_RERUN_PENDING",
       "decision_reason": "Production /reader/frankenstein correctly identifies Mary Wollstonecraft Shelley and Frankenstein in metadata but displayed the Dracula fixture chapter title Jonathan Harker’s Journal when Reading Pass v2 returned FEATURE_DISABLED and no canonical page was available. The focused correction fails the route closed until a returned canonical page agrees with the manifest chapter identity.",
-      "updated_at": "2026-09-05T03:33:58Z",
+      "updated_at": "2026-09-05T04:00:00Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
@@ -2573,7 +2573,7 @@
       "provider_calls_ran": false,
       "evidence": "internal/earnalism_intelligence/sprint1_next_four_release_lanes_after_d19_20260730.json",
       "audiobook_next_action": "Reconcile the canonical/backend source divergence and checksum-promote a reviewed exact-title cover pair. Then admit at most one source-bound Charon representative candidate through objective and listening QA.",
-      "reader_runtime_status": "SOURCE_VALIDATED_FAIL_CLOSED_CONTAINMENT_PENDING_PR",
+      "reader_runtime_status": "SOURCE_VALIDATED_FAIL_CLOSED_CONTAINMENT_CI_RERUN_PENDING",
       "reader_p0_evidence": {
         "production_url": "https://theearnalism.com/reader/frankenstein",
         "observed_book_title": "Frankenstein",
@@ -2581,7 +2581,8 @@
         "observed_wrong_chapter_title": "Jonathan Harker’s Journal",
         "page_api_status": 404,
         "page_api_reason": "Reading Pass v2 is not enabled.",
-        "planned_containment": "render unavailable state when canonical page retrieval or manifest chapter identity verification fails"
+        "planned_containment": "render unavailable state when canonical page retrieval or manifest chapter identity verification fails",
+        "ci_harness_repair": "workflow source-hash authority and its contract test now bind to the reviewed production surface; fresh PR evidence is still required"
       },
       "reader_next_action": "Open the one focused P0 containment PR, require CI, deploy only from merged origin/main, then verify Frankenstein no longer renders the Dracula fixture and record fresh production evidence."
     },

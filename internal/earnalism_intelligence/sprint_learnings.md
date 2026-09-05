@@ -2188,3 +2188,4 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 
 - A visual-review fixture must never provide fallback chapter identity on a production reader route. If the canonical page endpoint fails or its chapter identity does not agree with the manifest, the route must fail closed instead of rendering fixture metadata or text.
 - A reader card marked live while Reading Pass v2 is disabled is a separate availability defect. Contain the identity violation first, then restore or truthfully withdraw reader availability through a distinct evidence-backed change.
+- A release workflow's production-surface hash is an authority, not a cosmetic constant. Derive and contract-test it against the checked-in reviewed source so a real source change cannot make post-capture evidence fail solely through a stale baseline.
