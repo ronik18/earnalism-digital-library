@@ -6,8 +6,15 @@ from __future__ import annotations
 import json
 import os
 import sys
+from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.reading_pass_segment_matrix import build_matrix
 
 
 API = os.environ["UAT_API_BASE_URL"].rstrip("/")
@@ -43,12 +50,17 @@ def main() -> None:
     slugs = sorted(str(book.get("slug") or "") for book in books if isinstance(book, dict) and book.get("reader_enabled") is True)
     if not slugs:
         raise SystemExit("UAT canonical-page seed found no reader-approved local titles")
-    for slug in slugs:
+    matrix = build_matrix(slugs)
+    if matrix["result"] != "PASS":
+        raise SystemExit("UAT canonical-page matrix has unresolved release truth")
+    for row in matrix["rows"]:
+        slug = row["slug"]
+        target = row["selected_target_characters"]
         result = request(
             f"/admin/reading-pass/books/{slug}/segments",
             {
-                "segmentation_version": "canonical-page-preview-v1",
-                "target_characters": 3200,
+                "segmentation_version": row["selected_segmentation_version"],
+                "target_characters": target,
                 "activate": True,
                 "dry_run": False,
             },

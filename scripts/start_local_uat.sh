@@ -14,8 +14,10 @@ UAT_BACKEND_PORT="${UAT_BACKEND_PORT:-8000}"
 UAT_MONGODB_PORT="${UAT_MONGODB_PORT:-27018}"
 UAT_REDIS_PORT="${UAT_REDIS_PORT:-26379}"
 UAT_EXTERNAL_MONGODB="${UAT_EXTERNAL_MONGODB:-false}"
+UAT_EXTERNAL_REDIS="${UAT_EXTERNAL_REDIS:-false}"
 [[ "$UAT_FRONTEND_HOST" == 127.0.0.1 && "$UAT_BACKEND_HOST" == 127.0.0.1 ]] || { echo "UAT hosts must be loopback" >&2; exit 64; }
 [[ "$UAT_EXTERNAL_MONGODB" == true || "$UAT_EXTERNAL_MONGODB" == false ]] || { echo "UAT_EXTERNAL_MONGODB must be true or false" >&2; exit 64; }
+[[ "$UAT_EXTERNAL_REDIS" == true || "$UAT_EXTERNAL_REDIS" == false ]] || { echo "UAT_EXTERNAL_REDIS must be true or false" >&2; exit 64; }
 
 port_pid() { lsof -nP -t -iTCP:"$1" -sTCP:LISTEN 2>/dev/null | head -1 || true; }
 pid_cwd() { lsof -a -p "$1" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p' | head -1; }
@@ -53,7 +55,9 @@ UAT_FRONTEND_PORT="$(select_port "$UAT_FRONTEND_PORT" frontend 13000 13099)"
 if [[ "$UAT_EXTERNAL_MONGODB" == false ]]; then
   UAT_MONGODB_PORT="$(select_port "$UAT_MONGODB_PORT" mongodb 27018 27099)"
 fi
-UAT_REDIS_PORT="$(select_port "$UAT_REDIS_PORT" redis 26379 26479)"
+if [[ "$UAT_EXTERNAL_REDIS" == false ]]; then
+  UAT_REDIS_PORT="$(select_port "$UAT_REDIS_PORT" redis 26379 26479)"
+fi
 export UAT_FRONTEND_HOST UAT_BACKEND_HOST UAT_FRONTEND_PORT UAT_BACKEND_PORT UAT_MONGODB_PORT UAT_REDIS_PORT
 export UAT_BASE_URL="http://$UAT_FRONTEND_HOST:$UAT_FRONTEND_PORT"
 export UAT_API_BASE_URL="http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT/api"
@@ -129,12 +133,14 @@ else
 fi
 "$VENV_PYTHON" scripts/init_uat_mongodb.py > "$RUNTIME_DIR/mongodb-primary.log" 2>&1 || { cat "$RUNTIME_DIR/mongodb-primary.log" >&2; exit 1; }
 
-REDIS_BIN="${REDIS_BIN:-$(command -v redis-server || true)}"
-[[ -x "$REDIS_BIN" ]] || { echo "redis-server is required for Reading Pass UAT" >&2; exit 1; }
-"$REDIS_BIN" --bind 127.0.0.1 --port "$UAT_REDIS_PORT" --save '' --appendonly no --protected-mode yes > "$RUNTIME_DIR/redis.log" 2>&1 & REDIS_PID=$!
-write_pid "$REDIS_PID" redis "$UAT_REDIS_PORT"
-for _ in $(seq 1 45); do kill -0 "$REDIS_PID" 2>/dev/null || { tail -80 "$RUNTIME_DIR/redis.log" >&2; exit 1; }; "${REDIS_BIN%redis-server}redis-cli" -h 127.0.0.1 -p "$UAT_REDIS_PORT" ping 2>/dev/null | grep -qx PONG && break; sleep 1; done
-"${REDIS_BIN%redis-server}redis-cli" -h 127.0.0.1 -p "$UAT_REDIS_PORT" ping | grep -qx PONG || { tail -80 "$RUNTIME_DIR/redis.log" >&2; exit 1; }
+if [[ "$UAT_EXTERNAL_REDIS" == false ]]; then
+  REDIS_BIN="${REDIS_BIN:-$(command -v redis-server || true)}"
+  [[ -x "$REDIS_BIN" ]] || { echo "redis-server is required for local Reading Pass UAT" >&2; exit 1; }
+  "$REDIS_BIN" --bind 127.0.0.1 --port "$UAT_REDIS_PORT" --save '' --appendonly no --protected-mode yes > "$RUNTIME_DIR/redis.log" 2>&1 & REDIS_PID=$!
+  write_pid "$REDIS_PID" redis "$UAT_REDIS_PORT"
+fi
+for _ in $(seq 1 45); do "$VENV_PYTHON" -c 'from redis import Redis; Redis.from_url(__import__("os").environ["REDIS_URL"], socket_connect_timeout=1).ping()' >/dev/null 2>&1 && break; sleep 1; done
+"$VENV_PYTHON" -c 'from redis import Redis; Redis.from_url(__import__("os").environ["REDIS_URL"], socket_connect_timeout=1).ping()' || { echo "isolated Redis is not reachable" >&2; exit 1; }
 
 "$VENV_PYTHON" scripts/verify_p1_isolated_preflight.py > "$RUNTIME_DIR/p1-preflight.log" 2>&1 || { cat "$RUNTIME_DIR/p1-preflight.log" >&2; exit 1; }
 

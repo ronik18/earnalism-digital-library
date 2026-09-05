@@ -63,15 +63,19 @@ jobs:
           done
           docker exec earnalism-uat-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'try { rs.initiate({_id: "earnalism-uat-rs0", members: [{ _id: 0, host: "127.0.0.1:27018" }]}) } catch (error) { if (error.codeName !== "AlreadyInitialized") throw error }'
 
+      - name: Start isolated Redis
+        run: docker run --detach --name earnalism-uat-redis --network host redis:8.2.1 redis-server --bind 127.0.0.1 --port 26379 --save '' --appendonly no
+
       - name: Run isolated current-commit pre-deploy regression
         env:
           UAT_EXTERNAL_MONGODB: true
+          UAT_EXTERNAL_REDIS: true
           NODE_ENV: production
         run: bash scripts/run_pr_regression.sh
 
       - name: Stop isolated MongoDB replica set
         if: always()
-        run: docker rm --force earnalism-uat-mongodb
+        run: docker rm --force earnalism-uat-mongodb earnalism-uat-redis
 
       - name: Upload regression artifacts
         if: always()

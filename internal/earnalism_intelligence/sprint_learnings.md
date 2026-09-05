@@ -1337,6 +1337,18 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 
 ## 2026-07-30 — D19 has one untried, provider-free Bengali audition packet
 
+## 2026-09-05 — Reading Pass all-title segmentation is adaptive, not approval-changing
+
+- The 45-title local Reading Pass matrix classified 41 titles as
+  `READY_PROTECTED_STANDARD` and four as `READY_PROTECTED_ADAPTIVE`; no source,
+  rights, publication, or reader-approval mutation was warranted.
+- `book-d19e96859f` (`গিন্নি`) has an approved source/content hash and 27
+  semantic blocks. The standard 3200-character target yields three pages, while
+  the largest approved target yielding a protected page is 2000 characters.
+- The same deterministic policy selects 2000 for Muchiram and The Open Window,
+  and 2800 for The Selfish Giant. Production v2 remains disabled pending exact
+  head CI, cache, entitlement, and browser evidence.
+
 - After excluding Muchiram's exhausted synthetic lane, `book-d19e96859f`
   (`গিন্নি`) is the shortest Sprint 1 Bengali title with a canonical
   source-bound manuscript, public-domain literary rights, live reader, and
