@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import crypto from "node:crypto";
 import { createRequire } from "node:module";
 import fs from "node:fs";
 import os from "node:os";
@@ -14,6 +15,19 @@ const workflowDocument = yaml.load(workflow);
 let cases = 0;
 const pass = (name, check) => { assert.ok(check, name); cases += 1; console.log(`PASS ${cases}: ${name}`); };
 const before = (first, second) => workflow.indexOf(first) >= 0 && workflow.indexOf(second) >= 0 && workflow.indexOf(first) < workflow.indexOf(second);
+const sha256 = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
+const productionSurfaceHash = () => {
+  const files = [];
+  const walk = (directory) => fs.readdirSync(directory, { withFileTypes: true }).forEach((entry) => {
+    const file = path.join(directory, entry.name);
+    if (entry.isDirectory()) walk(file);
+    else if (!/(^|\/)(__tests__\/|.*\.(test|spec)\.[^/]+$)/.test(file)) files.push(file);
+  });
+  walk(path.join(process.cwd(), "frontend/src"));
+  walk(path.join(process.cwd(), "frontend/public"));
+  ["frontend/package.json", "frontend/package-lock.json", "frontend/vercel.json"].forEach((file) => files.push(path.join(process.cwd(), file)));
+  return crypto.createHash("sha256").update(files.sort().map((file) => `${sha256(file)}  ${path.relative(process.cwd(), file)}\n`).join("")).digest("hex");
+};
 
 const runSteps = Object.entries(workflowDocument.jobs || {}).flatMap(([jobId, job]) => (job.steps || []).filter((step) => typeof step.run === "string").map((step) => ({ jobId, name: step.name || "unnamed", shell: step.shell || "bash", run: step.run })));
 const bashCompatible = (shell) => !shell || /(?:^|\s)(?:bash|sh)(?:\s|$)/.test(shell);
@@ -45,6 +59,7 @@ pass("runs the focused WebKit Article stability preflight before browser populat
 pass("uses the checked-in Article stability runner with explicit Bash", (() => { const step = runSteps.find((item) => item.name === "Run focused Article stability gate"); return step?.shell === "bash" && !/<<'JS'/.test(step.run) && /run_seamless_brand_article_stability_gate\.mjs/.test(step.run); })());
 pass("includes the Article stability runner and its test in workflow path filters", /scripts\/run_seamless_brand_article_stability_gate\.mjs/.test(workflow) && /scripts\/test_seamless_brand_article_stability_gate\.mjs/.test(workflow));
 const captureStep = runSteps.find((item) => item.name === "Capture the exact head in all browsers");
+pass("binds the workflow production-hash authority to checked-in production source", workflowDocument.jobs?.["seamless-brand-review"]?.env?.PRODUCTION_SURFACE_SHA === productionSurfaceHash());
 pass("uses explicit production-hash authority for real full-Chromium validation", /test_seamless_brand_full_chromium_matrix\.mjs --output "\$EVIDENCE_ROOT\/chromium" --expected-production-surface-sha "\$PRODUCTION_SURFACE_SHA"/.test(captureStep?.run || ""));
 pass("checks the captured production hash before real matrix validation", /CAPTURED_PRODUCTION_SURFACE_SHA=.*jq -r \.production_surface_sha256/.test(captureStep?.run || "") && /test "\$CAPTURED_PRODUCTION_SURFACE_SHA" = "\$PRODUCTION_SURFACE_SHA"/.test(captureStep?.run || ""));
 pass("rejects invalid workflow production-hash authority", /\[\[ "\$PRODUCTION_SURFACE_SHA" =~ \^\[0-9a-f\]\{64\}\$ \]\]/.test(captureStep?.run || ""));

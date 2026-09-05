@@ -11,6 +11,7 @@ import {
 } from "../../lib/readingPassApi";
 import { useAuth } from "../../context/AuthContext";
 import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
+import { readerRouteState } from "./readerRouteState";
 
 function pageFromSearch(search) {
   const value = Number(search.get("p") || 1);
@@ -140,13 +141,28 @@ export default function ReaderExperienceV2Route() {
     };
   }, [canonicalPage, manifest, page]);
 
+  const expectedCanonicalPage = (manifest?.canonical_pages?.pages || []).find(
+    (item) => Number(item.page_number || item.page_index) === canonicalPage,
+  );
+  const expectedChapter = (manifest?.chapters || []).find(
+    (item) => item.id === expectedCanonicalPage?.chapter_id,
+  );
+  const renderState = readerRouteState({
+    loading,
+    canonicalPage,
+    page,
+    error,
+    expectedChapterId: expectedCanonicalPage?.chapter_id || "",
+    expectedChapterTitle: expectedChapter?.title || "",
+  });
+
   if (visualFixture) return <ReaderExperienceV2 model={READER_V2_FIXTURE} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target) => {
     if (target === "back") navigate(`/book/${slug || "dracula"}`);
     if (target === "library" || target === "search") navigate("/library");
     if (target === "passes") navigate("/pricing");
   }} />;
-  if (loading) return routeState("Opening reader", "Loading this canonical edition.");
-  if (error && !manifest) return routeState("Reader unavailable", error, <Link to={`/book/${slug}`}>Return to book details</Link>);
+  if (renderState.state === "loading") return routeState("Opening reader", "Loading this canonical edition.");
+  if (renderState.state === "unavailable") return routeState("Reader unavailable", renderState.message, <Link to={`/book/${slug}`}>Return to book details</Link>);
 
   return <><ReaderExperienceV2 model={model} access={{ authorized: Boolean(lease) }} onRequestPage={authorizeAndContinue} onNavigate={(target) => {
     if (target === "back") navigate(`/book/${slug}`);
