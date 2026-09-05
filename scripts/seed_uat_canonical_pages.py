@@ -35,19 +35,28 @@ def main() -> None:
     token = login.get("token", "")
     if not token:
         raise SystemExit("UAT canonical-page seed could not obtain an admin token")
-    result = request(
-        "/admin/reading-pass/books/dracula/segments",
-        {
-            "segmentation_version": "canonical-page-preview-v1",
-            "target_characters": 3200,
-            "activate": True,
-            "dry_run": False,
-        },
-        token,
-    )
-    if not result.get("activated") or int(result.get("total_pages", 0) or 0) < 4:
-        raise SystemExit("UAT canonical-page seed did not activate a protected page boundary")
-    print(f"canonical pages active: {result['total_pages']} pages")
+    try:
+        with urlopen(Request(f"{API}/books"), timeout=30) as response:
+            books = json.loads(response.read().decode("utf-8"))
+    except (HTTPError, json.JSONDecodeError) as error:
+        raise SystemExit("UAT canonical-page seed could not enumerate local books") from error
+    slugs = sorted(str(book.get("slug") or "") for book in books if isinstance(book, dict) and book.get("reader_enabled") is True)
+    if not slugs:
+        raise SystemExit("UAT canonical-page seed found no reader-approved local titles")
+    for slug in slugs:
+        result = request(
+            f"/admin/reading-pass/books/{slug}/segments",
+            {
+                "segmentation_version": "canonical-page-preview-v1",
+                "target_characters": 3200,
+                "activate": True,
+                "dry_run": False,
+            },
+            token,
+        )
+        if not result.get("activated") or int(result.get("total_pages", 0) or 0) < 4:
+            raise SystemExit(f"UAT canonical-page seed did not activate a protected page boundary for {slug}")
+    print(f"canonical pages active for {len(slugs)} reader-approved titles")
 
 
 if __name__ == "__main__":

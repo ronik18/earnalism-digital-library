@@ -20,7 +20,9 @@ run_gate() {
 }
 
 run_gate backend-compile 1 .venv-uat/bin/python -m compileall -q backend
+run_gate p1-isolated-preflight 1 .venv-uat/bin/python scripts/verify_p1_isolated_preflight.py
 run_gate backend-core 49 env -u READING_PASS_V2_ENABLED .venv-uat/bin/python -m pytest -q backend/tests/test_reading_pass_policy.py backend/tests/test_reading_time_invariants.py backend/tests/test_payments_razorpay.py backend/tests/test_reading_pass_service_concurrency.py backend/tests/test_reading_pass_security_static.py
+run_gate p1-v2-contracts 33 .venv-uat/bin/python -m pytest -q backend/tests/test_reading_pass_policy.py backend/tests/test_reading_pass_service_concurrency.py backend/tests/test_reading_pass_security_static.py backend/tests/test_zero_public_audio_contract.py
 run_gate backend-policy 8 .venv-uat/bin/python -m pytest -q backend/tests/test_controlled_launch_parity.py
 run_gate frontend-full 276 env -u REACT_APP_BACKEND_URL -u REACT_APP_API_URL -u REACT_APP_UAT_LOCAL npm --prefix frontend test -- --watchAll=false --runInBand
 run_gate frontend-build 1 npm --prefix frontend run build
