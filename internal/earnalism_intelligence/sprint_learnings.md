@@ -2206,3 +2206,8 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 
 - `READING_PASS_V2_ENABLED=false` disables the v2 canonical-page and entitlement path; it does not revoke a title's independently approved `PUBLIC_READER` release state.
 - Rollback evidence must preserve correct public Book Detail, reader-route, and manifest identity while proving page 4+ remains protected, audio remains exactly zero seconds, and no cross-title fallback can render.
+
+## P1 neutral provider rollback rehearsal - 2026-09-05
+
+- A neutral D0 → D1 redeploy → D2 provider rollback can prove exact code/image restoration and flag-false safety without enabling Reading Pass v2 or changing release, content, rights, payment, Mongo, or Redis state.
+- HTTP 200 for a public reader route does not itself prove reader availability: production currently hydrates `Reader unavailable` because canonical v2 page 1 is feature-disabled. Keep that P1 availability defect distinct from the preserved PUBLIC_READER metadata and the successful protected-content/audio rollback boundaries.
