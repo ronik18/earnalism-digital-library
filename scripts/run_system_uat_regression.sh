@@ -8,7 +8,20 @@ if [[ -n "$(git status --porcelain)" ]]; then
   echo "System UAT requires a clean worktree before execution" >&2
   exit 64
 fi
+git fetch origin main
+EXPECTED_REMOTE_REF="refs/remotes/origin/main"
+EXPECTED_COMMIT="$(git rev-parse "$EXPECTED_REMOTE_REF")"
+EXPECTED_TREE="$(git rev-parse "${EXPECTED_REMOTE_REF}^{tree}")"
+[[ -z "$(git branch --show-current)" ]] || { echo "System UAT exact-main regression requires a detached HEAD" >&2; exit 64; }
+[[ "$(git rev-parse HEAD)" == "$EXPECTED_COMMIT" && "$(git rev-parse 'HEAD^{tree}')" == "$EXPECTED_TREE" ]] || { echo "System UAT exact-main regression must start at refreshed origin/main" >&2; exit 64; }
 export UAT_CLEAN_WORKTREE_BEFORE_EXECUTION=true
+export UAT_PROVENANCE_MODE=DETACHED_EXACT_REMOTE_AUTHORITY
+export UAT_EXPECTED_REPOSITORY_ROOT="$ROOT"
+export UAT_EXPECTED_COMMIT="$EXPECTED_COMMIT"
+export UAT_EXPECTED_TREE="$EXPECTED_TREE"
+export UAT_EXPECTED_REMOTE_REF="$EXPECTED_REMOTE_REF"
+export UAT_EXPECTED_REMOTE_REF_SHA="$EXPECTED_COMMIT"
+export UAT_REMOTE_REF_REFRESHED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 RUN_ID="run-$(date -u +%Y%m%dT%H%M%SZ)-$$"
 EVIDENCE_DIR="uat/evidence/system-final/$RUN_ID"; mkdir -p "$EVIDENCE_DIR"
 ENVIRONMENT_FILE="uat/runtime/system-uat/environment.sh"

@@ -1,0 +1,23 @@
+{
+  "schema_version": "earnalism-p1-uat-tooling-repair-v1",
+  "classification": "tooling_repair",
+  "root_cause_classification": "DETACHED_EXACT_MAIN_PROVENANCE_UNSUPPORTED_AND_STATIC_UAT_COUNT_MARKERS_STALE",
+  "root_cause": {
+    "provenance": "branch-only validation rejected detached exact remote authority",
+    "result_evidence": "historical literal test totals rejected valid current summaries"
+  },
+  "repair_controls": [
+    "explicit attached and detached provenance modes",
+    "expected commit and tree validation",
+    "refreshed remote-ref equality validation",
+    "clean worktree validation",
+    "log-hash-bound semantic dynamic result counts"
+  ],
+  "out_of_scope": [
+    "production runtime configuration",
+    "Reading Pass activation",
+    "deployment configuration",
+    "title data and customer-facing content"
+  ],
+  "customer_ready_status": "NOT_DECLARED"
+}
