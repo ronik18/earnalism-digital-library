@@ -48,7 +48,7 @@ class SystemUatProvenanceTests(unittest.TestCase):
             "backend-core": "49 passed",
             "backend-policy": "8 passed",
             "frontend-full": "276 passed",
-            "frontend-build": "Wrote 5 static snapshots",
+            "frontend-build": "Static SEO snapshot verifier: inspected=142",
             "contracts": "local-contracts=PASS\nproduction-network-requests=0",
             "hydration": "7 passed",
             "responsive": "8 passed",

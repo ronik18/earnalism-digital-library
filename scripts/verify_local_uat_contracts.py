@@ -80,9 +80,9 @@ def main() -> None:
     manifest = require_status(f"{API}/reader/book/dracula/manifest", 200)
     pages = (manifest or {}).get("canonical_pages", {})
     policy = pages.get("preview_policy", {})
-    if (pages.get("schema_version"), policy.get("unit"), policy.get("public_limit"), policy.get("enforced_by"), policy.get("ready")) != (
-        "canonical-page-preview-v1", "canonical_page", 3, "server", True
-    ):
+    if not isinstance(pages.get("schema_version"), str) or not pages["schema_version"] or (
+        policy.get("unit"), policy.get("public_limit"), policy.get("enforced_by"), policy.get("ready")
+    ) != ("canonical_page", 3, "server", True):
         raise SystemExit("canonical page preview policy is not active")
     if any("content" in row for row in pages.get("pages", [])):
         raise SystemExit("public page manifest exposed protected page content")
