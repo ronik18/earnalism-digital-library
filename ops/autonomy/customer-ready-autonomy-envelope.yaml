@@ -1,0 +1,440 @@
+apiVersion: earnalism.dev/v1
+kind: AutonomyEnvelope
+metadata:
+  id: AE-CUSTOMER-READY-2026-09-05
+  name: earnalism-customer-ready-autonomous-execution
+  version: 1
+  status: proposed_until_merged
+  owner_authorization:
+    purpose: Complete the CUSTOMER_READY program within this envelope after normal merge.
+    may_not_be_broadened_by_agent: true
+  effective_when:
+    repository: ronik18/earnalism-digital-library
+    branch: main
+    condition: this_exact_file_is_merged
+  terminates_when:
+    - CUSTOMER_READY
+    - explicit_repository_revocation
+  historical_baseline:
+    minimum_required_ancestor: 075774857c14016a32963f4f00aae7091791a4ab
+    meaning: P0 wrong-title containment deployed and verified
+    must_reconfirm_from_current_main: true
+spec:
+  terminal_objective:
+    state: CUSTOMER_READY
+    downstream_internal_uat_occurs_after_terminal_state: true
+    downstream_internal_uat_blocks_autonomous_customer_ready: false
+  source_precedence:
+    - current_checked_in_AGENTS_and_repository_policy
+    - current_merged_main
+    - current_production_deployments_and_canonical_release_truth
+    - current_checked_in_product_and_architecture_contracts
+    - approved_context_pack
+    - this_envelope
+    - historical_pull_requests_logs_and_conversation
+  autonomy:
+    human_approval_required_during_run: false
+    routine_owner_questions_forbidden: true
+    continue_until_terminal_state: true
+    one_active_defect_cluster: true
+    maximum_open_implementation_PRs: 1
+    maximum_write_enabled_agents: 1
+    read_only_parallel_agents_allowed: 4
+    merge_requires_normal_branch_protection: true
+    administrator_bypass_allowed: false
+    force_push_allowed: false
+    direct_push_to_main_allowed: false
+    deploy_from_merged_main_only: true
+    automatic_rollback_allowed: true
+    automatic_rollback_required_on_threshold: true
+  budget:
+    incremental_infrastructure_spend_usd: 0
+    new_paid_plans_allowed: false
+    use_existing_provider_capacity_only: true
+    github_actions_service_containers_allowed: true
+    local_ephemeral_services_allowed: true
+    dependency_cache_allowed: true
+    application_state_cache_between_runs_allowed: false
+    maximum_transient_retries: 2
+    maximum_repairs_per_unproven_hypothesis: 2
+    prefer_changed_path_tests: true
+    primary_browser_for_exhaustive_checks: chromium
+    secondary_browser_checks:
+      - firefox_representative_critical_journeys
+      - webkit_representative_critical_journeys
+  approved_platform:
+    frontend: existing_react_application
+    backend: existing_fastapi_modular_monolith
+    primary_database: existing_mongodb
+    cache: existing_redis
+    payments: existing_razorpay_wallet_and_ledger
+    frontend_host: existing_vercel_project
+    backend_host: existing_railway_project
+    architecture_rewrite_allowed: false
+  product_truth:
+    public_text_preview:
+      canonical_pages:
+        first: 1
+        last: 3
+      server_defined: true
+      independent_of_viewport_css_font_zoom_and_browser: true
+    protected_text:
+      starts_at_page: 4
+      server_authorization_required: true
+    audio_preview:
+      seconds: 0
+      only_when_audio_release_approved: true
+    reading_pass:
+      authority: server
+      client_or_cache_may_grant_entitlement: false
+    release_state:
+      uncertain_or_unapproved: fail_closed
+    title_identity:
+      unrelated_title_fallback_allowed: false
+      dracula_fallback_allowed: false
+    protected_content:
+      public_html_allowed: false
+      public_manifest_allowed: false
+      frontend_bundle_allowed: false
+      browser_storage_allowed: false
+      service_worker_cache_allowed: false
+      shared_cdn_cache_allowed: false
+      shared_redis_allowed: false
+    commercial_truth:
+      fabricated_prices_allowed: false
+      fabricated_availability_allowed: false
+      fabricated_reviews_or_statistics_allowed: false
+  current_milestone:
+    id: P1-READING-PASS-V2-READER-AVAILABILITY
+    priority: P1
+    objective: Restore canonical pages while preserving identity, entitlement, and fail-closed release truth.
+    known_state:
+      p0_production_commit: 075774857c14016a32963f4f00aae7091791a4ab
+      reading_pass_v2_enabled: false
+      dedicated_token_secret_reported_configured: true
+      baseline_public_reader_titles_reported: 45
+      baseline_active_manifests_reported: 45
+      baseline_segments_reported: 2830
+      baseline_parity_reported: 45_of_45
+      focused_v2_tests_reported_passed: 35
+      counts_are_historical_inputs_not_current_authority: true
+      must_recompute_before_rollout: true
+    completion_state: P1_READER_AVAILABILITY_DEPLOYED_HEALTHY
+  permissions:
+    repository:
+      read_all_current_policy_and_code: true
+      create_policy_branch: true
+      create_focused_implementation_branches: true
+      create_commits: true
+      push_non_main_branches: true
+      create_pull_requests: true
+      create_issues_and_comments: true
+      merge_when_all_machine_gates_pass: true
+      update_modernization_state: true
+      update_customer_ready_state: true
+    continuous_integration:
+      add_or_modify_scoped_test_workflows: true
+      create_job_local_mongodb: true
+      create_job_local_redis: true
+      create_local_fastapi_runtime: true
+      create_local_production_frontend_build: true
+      create_synthetic_accounts_and_titles: true
+      upload_redacted_artifacts: true
+      install_supported_playwright_browsers: true
+    railway:
+      inspect_existing_project_and_deployments: true
+      inspect_environment_variable_names_and_redacted_state: true
+      modify_only_these_runtime_variables:
+        - READING_PASS_V2_ENABLED
+      trigger_normal_production_redeployment: true
+      restore_previous_variable_value: true
+      restore_previous_known_good_deployment: true
+      create_new_paid_service: false
+      create_new_paid_environment: false
+    vercel:
+      inspect_existing_project_and_deployments: true
+      deploy_merged_main_when_frontend_changes: true
+      restore_previous_known_good_deployment: true
+      create_new_paid_project: false
+    production_observability:
+      read_deployment_status: true
+      read_redacted_logs_and_metrics: true
+      execute_public_read_only_http_probes: true
+      execute_browser_smoke_tests: true
+      inspect_response_headers: true
+      inspect_key_names_types_ttls_and_sizes_when_bounded: true
+      inspect_protected_values: false
+    production_data:
+      mongodb_read_only_release_inventory: true
+      redis_read_only_bounded_inventory: true
+      create_or_modify_customer_wallet: false
+      create_real_payment: false
+      mutate_rights_or_publication_truth: false
+      copy_customer_data_to_test: false
+      delete_database_records: false
+  prohibitions:
+    commands:
+      - git_push_force
+      - direct_push_to_main
+      - administrator_merge_bypass
+      - redis_FLUSHALL
+      - redis_FLUSHDB
+      - redis_KEYS_wildcard
+      - production_redis_MONITOR
+      - unmanifested_bulk_deletion
+    architecture:
+      - microservices_migration
+      - frontend_framework_migration
+      - new_database
+      - message_broker
+      - generic_feature_flag_platform
+      - broad_payment_rewrite
+      - wholesale_merge_of_historical_redis_branch
+    production:
+      - real_payment_execution
+      - synthetic_production_wallet_credit
+      - publication_or_rights_elevation
+      - protected_content_logging
+      - unrestricted_origin_CORS
+      - production_database_clone_to_test
+  environment_fallback_order:
+    existing_nonproduction_environment: zero_cost_only
+    ephemeral_ci_production_like: required_when_nonproduction_unavailable
+    reversible_production_only_rollout: requires_ephemeral_CI_exact_rollback_and_no_migration
+  preflight_gates:
+    repository:
+      - current_main_contains_minimum_required_ancestor
+      - canonical_worktree_clean
+      - current_AGENTS_re_read
+      - exactly_one_active_implementation_PR_or_none
+      - no_unreviewed_overlap_with_redis_architecture_branch
+    deployment:
+      - current_backend_deployment_id_recorded
+      - current_frontend_deployment_id_recorded
+      - previous_backend_rollback_available
+      - exact_deployed_commit_known
+      - current_READING_PASS_V2_ENABLED_value_recorded
+      - dedicated_token_secret_presence_verified_without_printing_value
+    release_inventory:
+      - recompute_reader_approved_titles
+      - recompute_active_manifests
+      - recompute_segment_count
+      - verify_public_to_controlled_parity
+      - verify_no_unapproved_public_audio
+      - verify_every_manifest_has_canonical_title_identity
+      - verify_no_wrong_title_content_fingerprint
+    safety:
+      - no_production_endpoint_in_isolated_test_configuration
+      - no_protected_content_in_test_artifacts
+      - rollback_command_precomputed
+      - rollback_health_probe_precomputed
+  isolated_validation:
+    feature_flag_value: "true"
+    environment: ephemeral_ci_production_like
+    required_tests:
+      - exact_title_identity_for_all_canonical_manifests
+      - public_pages_1_2_3_for_every_reader_approved_title
+      - anonymous_page_4_denied_for_every_reader_approved_title
+      - zero_balance_denied
+      - positive_authoritative_balance_allowed
+      - blocked_account_denied
+      - expired_entitlement_denied
+      - revoked_publication_denied
+      - malformed_wallet_state_denied
+      - redis_unavailable_does_not_grant_access
+      - user_A_entitlement_does_not_authorize_user_B
+      - no_protected_page_body_in_shared_redis
+      - no_protected_page_body_in_public_manifest
+      - no_unapproved_audio_exposure
+      - cold_cache
+      - warm_cache
+      - cross_title_cache_isolation
+      - stale_release_version_rejected
+      - missing_cache_identity_rejected
+      - mismatched_cache_identity_rejected
+      - chromium_desktop_reader_journey
+      - chromium_mobile_reader_journey
+      - browser_back_and_forward
+      - hard_refresh
+      - keyboard_critical_journey
+      - no_fatal_console_or_hydration_errors
+      - public_audio_preview_seconds_equals_zero
+      - anonymous_audio_request_returns_no_playable_audio_payload
+      - anonymous_audio_request_returns_no_unrestricted_audio_URL
+      - unapproved_audio_exposure_absent
+      - protected_audio_absent_from_public_manifest
+      - protected_audio_absent_from_shared_Redis
+      - protected_audio_absent_from_service_worker_cache
+      - protected_audio_absent_from_shared_CDN_cache
+      - authenticated_or_Reading_Pass_audio_follows_current_server_authority
+    required_result:
+      new_failures: 0
+      product_truth_violations: 0
+      protected_content_violations: 0
+      cross_title_violations: 0
+      cross_user_violations: 0
+  production_rollout:
+    mode: reversible_configuration_canary
+    deployment_source: merged_main
+    code_change_required_for_flag_activation: false
+    flag:
+      name: READING_PASS_V2_ENABLED
+      expected_before: "false"
+      target: "true"
+      rollback_value: "false"
+    before_activation:
+      - capture_backend_deployment_id
+      - capture_frontend_deployment_id
+      - capture_current_flag_value
+      - capture_backend_error_baseline
+      - capture_reader_endpoint_latency_baseline
+      - capture_redis_error_and_latency_baseline
+      - capture_authorization_allow_deny_baseline
+      - verify_rollback_credential_and_command
+      - verify_isolated_validation_artifact_matches_current_main
+    activation:
+      - set_only_READING_PASS_V2_ENABLED_true
+      - trigger_normal_railway_redeployment
+      - verify_deployed_commit_equals_current_merged_main
+      - verify_no_other_environment_variable_changed
+      - wait_for_provider_success
+      - begin_immediate_synthetic_canary
+    canary_checks:
+      - public_playable_audio_duration_remains_zero
+      - anonymous_audio_has_no_protected_payload
+      - unapproved_audio_remains_absent
+      - approved_audio_uses_server_authoritative_access
+      - protected_audio_absent_from_public_or_shared_cache
+      - reading_pass_activation_does_not_enable_public_audio
+    observation_checkpoints_minutes:
+      - 0
+      - 5
+      - 15
+      - 30
+  rollback:
+    automatic: true
+    additional_owner_approval_required: false
+    immediate_zero_tolerance_triggers:
+      - any_cross_title_content_or_metadata_mismatch
+      - any_non_dracula_title_renders_dracula
+      - any_page_4_plus_access_without_server_authorization
+      - any_unapproved_audio_exposure
+      - any_cross_user_entitlement_reuse
+      - any_wallet_or_ledger_inconsistency
+      - any_protected_content_in_shared_cache
+      - any_approved_origin_CORS_mismatch
+      - deployed_commit_does_not_match_expected_main_commit
+      - flag_change_includes_unapproved_environment_variable_change
+      - any_anonymous_playable_audio_response
+      - any_nonzero_public_audio_preview
+      - any_protected_audio_URL_in_public_manifest
+      - any_protected_audio_payload_in_shared_Redis
+      - any_service_worker_cached_protected_audio
+      - any_shared_CDN_cached_protected_audio
+      - any_audio_access_granted_solely_by_client_or_cached_state
+      - any_unapproved_title_exposing_an_audio_operation_or_payload
+    actions_in_order:
+      - set_READING_PASS_V2_ENABLED_false
+      - trigger_normal_railway_redeployment
+      - if_configuration_rollback_fails_restore_previous_backend_deployment
+      - verify_controlled_reader_unavailable_state_restored
+      - verify_wrong_title_P0_does_not_return
+      - preserve_logs_metrics_and_deployment_ids
+      - continue_autonomous_repair_with_flag_false
+  post_P1_customer_ready_loop:
+    continue_automatically: true
+    priority_order:
+      - P0_integrity_security_money_outage
+      - P1_core_customer_journey
+      - P2_product_truth_and_content_completeness
+      - P3_accessibility_resilience_and_device_compatibility
+      - P4_measured_performance_and_polish
+    repair_cycle:
+      - select_one_root_cause_cluster
+      - create_deterministic_reproduction
+      - trace_complete_data_and_control_path
+      - freeze_acceptance_criteria
+      - implement_smallest_complete_fix
+      - run_cheap_tests_first
+      - run_affected_integration_tests
+      - run_security_and_fail_closed_tests
+      - run_browser_tests
+      - create_exact_head_evidence
+      - open_one_focused_PR
+      - merge_through_normal_machine_gates
+      - deploy_from_merged_main
+      - smoke_test
+      - observe
+      - automatically_rollback_on_threshold
+      - mark_cluster_resolved
+  redis_architecture:
+    start_broad_integration_after:
+      - P1_READER_AVAILABILITY_DEPLOYED_HEALTHY
+      - no_open_P0
+      - protected_content_contract_stable
+      - reading_pass_authority_contract_stable
+    preserved_branch: codex/cache-media-architecture-baseline
+    wholesale_merge_allowed: false
+    mandatory_safety:
+      - no_protected_page_body_in_shared_redis
+      - no_protected_audio_bytes_in_shared_redis
+      - no_unrestricted_protected_audio_urls_in_shared_redis
+      - no_reusable_cross_user_audio_authorization_in_shared_redis
+      - no_public_audio_preview_payload_in_shared_redis
+      - no_wallet_or_ledger_as_cache_authority
+      - no_cross_user_allow_decision
+      - payload_identity_validation
+      - release_version_validation
+      - redis_failure_never_grants_access
+      - exact_manifested_legacy_cleanup_only
+    public_audio_metadata_cache_rule: explicit_current_release_policy_only_and_never_playable
+    performance_rule: retain_only_measured_correctness_latency_or_load_improvements
+  customer_ready_acceptance:
+    open_P0: 0
+    open_P1: 0
+    unaccepted_functional_defects: 0
+    contracts:
+      route_contract_pass_percent: 100
+      CTA_contract_pass_percent: 100
+      reader_approved_title_pass_percent: 100
+      audio_approved_title_pass_percent: 100
+      content_identity_pass_percent: 100
+      metadata_parity_pass_percent: 100
+    access:
+      pages_1_to_3_public_verified: true
+      page_4_plus_server_authorization_verified: true
+      reading_pass_authority_verified: true
+      public_audio_preview_seconds_equals_zero_verified: true
+      unapproved_release_exposures: 0
+    cache:
+      protected_content_violations: 0
+      cross_title_cache_violations: 0
+      cross_user_cache_violations: 0
+      cold_cache_passed: true
+      warm_cache_passed: true
+      redis_outage_behavior_passed: true
+    experience:
+      critical_accessibility_journeys_passed: true
+      critical_responsive_journeys_passed: true
+      browser_history_passed: true
+      service_worker_upgrade_passed: true
+      production_CORS_passed: true
+      checked_in_performance_budgets_passed: true
+    release:
+      tested_SHA_equals_merged_SHA: true
+      merged_SHA_equals_deployed_SHA: true
+      production_smoke_passed: true
+      production_observation_healthy: true
+      rollback_path_verified: true
+      evidence_exact_commit_bound: true
+  evidence:
+    exact_code_identity_required: true
+    historical_logs_may_prove_current_pass: false
+    protected_content_in_evidence_allowed: false
+    secret_values_in_evidence_allowed: false
+    required_state_updates:
+      - docs/architecture/MODERNIZATION_STATE.json
+      - docs/architecture/CUSTOMER_READY_STATE.json
+  legitimate_terminal_states:
+    - CUSTOMER_READY
+    - SAFE_HOLD_IRREDUCIBLE

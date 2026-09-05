@@ -1,0 +1,21 @@
+{
+  "schema_version": "earnalism.modernization-state.v1",
+  "state": "GOVERNANCE_ENVELOPE_PROPOSED",
+  "authority": {
+    "source_precedence": [
+      "AGENTS.md and current checked-in repository policy",
+      "current merged main",
+      "current production deployment truth",
+      "current checked-in product and architecture contracts",
+      "customer-ready autonomy envelope after merge"
+    ],
+    "reading_pass_public_audio_preview_seconds": 0,
+    "reading_pass_contract": "docs/reading-pass-access.md",
+    "missing_product_truth_contract_recorded": "docs/product/PRODUCT_TRUTH_CONTRACT.md"
+  },
+  "customer_ready": {
+    "status": "NOT_READY",
+    "active_priority": "P1-READING-PASS-V2-READER-AVAILABILITY",
+    "operational_authority": "pending merged customer-ready autonomy envelope"
+  }
+}
