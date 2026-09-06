@@ -51,6 +51,17 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Run complete local UAT launcher suite
+        run: |
+          command -v bash node python3 rg shasum
+          bash --version
+          node --version
+          python3 --version
+          rg --version
+          shasum --version
+          env -u REACT_APP_BACKEND_URL -u REACT_APP_API_URL -u SEO_API_BASE_URL \
+            bash scripts/test_local_uat_launcher.sh
+
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
