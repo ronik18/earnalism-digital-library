@@ -19,7 +19,9 @@
 @font-face { font-family:"Noto Sans Bengali"; src:url("./assets/fonts/noto-sans-bengali-600.ttf") format("truetype"); font-style:normal; font-weight:600; font-display:swap; }
 
 :root {
-  --font-display: 'EB Garamond', 'Noto Serif Bengali', serif;
+  /* Shared chrome and immersive experiences retain their approved display
+     face. Quiet Heritage opts into EB Garamond through --qh-display only. */
+  --font-display: 'Cormorant Garamond', 'Noto Serif Bengali';
   --font-ui: 'Outfit', 'Noto Sans Bengali';
   --site-header-height: 3.6rem;
   --beige-canvas: #FAF7F0;
