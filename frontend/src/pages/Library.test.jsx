@@ -23,7 +23,7 @@ describe("Library experience", () => {
     expect(source).toContain("<BookCard");
     expect(source).toContain('params.get("language")');
     expect(source).toContain('params.get("reading")');
-    expect(source).toContain('params.get("listening")');
+    expect(source).toContain("listeningFilterFromSearch(params)");
     expect(source).toContain('params.get("sort")');
     expect(source).toContain('params.get("q")');
     expect(source).toContain("Listening appears only where the release evidence allows it.");

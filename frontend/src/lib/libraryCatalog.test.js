@@ -1,11 +1,18 @@
 import {
   availabilityOfBook,
   languageOfBook,
+  listeningFilterFromSearch,
   libraryPresentationForBook,
   matchesLibraryFacets,
 } from "./libraryCatalog";
 
 describe("libraryCatalog", () => {
+  it("maps the established reader-ready URL to the existing reader-only filter", () => {
+    expect(listeningFilterFromSearch(new URLSearchParams("language=bn&availability=reader-ready"))).toBe("hidden");
+    expect(listeningFilterFromSearch(new URLSearchParams("availability=approved-audiobook"))).toBe("available");
+    expect(listeningFilterFromSearch(new URLSearchParams("availability=reader-ready&listening=all"))).toBe("all");
+  });
+
   it("prefers explicit Bengali language metadata", () => {
     expect(languageOfBook({ language: "ben", title: "Dracula" })).toBe("bn");
   });

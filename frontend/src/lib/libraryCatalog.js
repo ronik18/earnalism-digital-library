@@ -3,6 +3,14 @@ import { BATCH_1_READER_ONLY_SLUGS } from "./controlledLaunch";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 
+export function listeningFilterFromSearch(params) {
+  const explicitListening = params.get("listening");
+  if (explicitListening) return explicitListening;
+  if (params.get("availability") === "approved-audiobook") return "available";
+  if (params.get("availability") === "reader-ready") return "hidden";
+  return "all";
+}
+
 export function languageOfBook(book = {}) {
   const explicit = String(book.language || book.language_code || book.lang || book.locale || "").toLowerCase();
   if (explicit.startsWith("bn") || explicit.startsWith("ben")) return "bn";
