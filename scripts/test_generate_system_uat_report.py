@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import argparse
 import subprocess
 import tempfile
 import unittest
@@ -24,13 +25,16 @@ class SystemUatProvenanceTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
-        (self.root / "uat" / "evidence" / "system-final" / "run").mkdir(parents=True)
+        self.run_id = "run-20260821T000000Z-123"
+        (self.root / "uat" / "evidence" / "system-final" / self.run_id).mkdir(parents=True)
         (self.root / ".gitignore").write_text("uat/evidence/\nuat/system-scope.json\n", encoding="utf-8")
         (self.root / "tracked.txt").write_text("baseline\n", encoding="utf-8")
+        for filename in MODULE.REPORT_FILENAMES:
+            (self.root / "uat" / filename).write_text(f"legacy-{filename}\n", encoding="utf-8")
         self.git("init", "-q")
         self.git("config", "user.email", "uat@example.test")
         self.git("config", "user.name", "System UAT")
-        self.git("add", ".gitignore", "tracked.txt")
+        self.git("add", ".gitignore", "tracked.txt", "uat")
         self.git("commit", "-qm", "fixture")
         self.git("checkout", "-qb", "codex/test")
         self.head = self.git("rev-parse", "HEAD")
@@ -41,7 +45,7 @@ class SystemUatProvenanceTests(unittest.TestCase):
         )
         now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
         self.payload = {
-            "schema_version": "system-uat-run-manifest-v2", "run_id": "run-20260821T000000Z-123",
+            "schema_version": "system-uat-run-manifest-v2", "run_id": self.run_id,
             "tested_head": self.head, "tested_code_head": self.head,
             "clean_worktree_before_execution": True, "scope_version": "system-uat-scope-v1",
             "included_case_count": 39, "aggregate_result": "PASSED",
@@ -75,7 +79,7 @@ class SystemUatProvenanceTests(unittest.TestCase):
             "contrast": "tested=36\npassed=36\nfailed=0\nmissing=0",
         }
         for run_id, rule in MODULE.REQUIRED_RUNS.items():
-            path = self.root / "uat" / "evidence" / "system-final" / "run" / f"{run_id}.log"
+            path = self.root / "uat" / "evidence" / "system-final" / self.run_id / f"{run_id}.log"
             path.write_text(markers[run_id] + "\n", encoding="utf-8")
             log_sha256 = self.digest(path)
             observed = MODULE.observed_result_from_log(run_id, markers[run_id], log_sha256)
@@ -109,6 +113,89 @@ class SystemUatProvenanceTests(unittest.TestCase):
 
     def test_accepts_complete_attached_manifest(self) -> None:
         MODULE.validate_manifest(self.payload, root=self.root, current_head=self.head)
+
+    def test_generates_all_reports_in_the_run_specific_directory(self) -> None:
+        cases = sorted(MODULE.case_evidence({}))
+        (self.root / "uat" / "system-scope.json").write_text(
+            json.dumps({"schema_version": "system-uat-scope-v1", "total_included_case_count": len(cases), "included_system_cases": cases, "excluded_manual_cases": []}) + "\n",
+            encoding="utf-8",
+        )
+        self.payload["scope_sha256"] = self.digest(self.root / "uat" / "system-scope.json")
+        self.payload["included_case_count"] = len(cases)
+        reports = self.root / "uat" / "evidence" / "system-final" / self.payload["run_id"] / "reports"
+        reports.mkdir(parents=True)
+        manifest = reports / "system-run-manifest.json"
+        manifest.write_text(json.dumps(self.payload, indent=2) + "\n", encoding="utf-8")
+        result = MODULE.generate_report(root=self.root, manifest=manifest, tested_code_head=self.head)
+        self.assertEqual(result["result"], "PASSED")
+        self.assertEqual({path.name for path in reports.iterdir()}, set(MODULE.REPORT_FILENAMES))
+        for filename in MODULE.REPORT_FILENAMES:
+            self.assertEqual((self.root / "uat" / filename).read_text(encoding="utf-8"), f"legacy-{filename}\n")
+        self.assertTrue(MODULE.clean_worktree(self.root))
+
+    def test_rejects_cross_run_symlink_and_collision_destinations(self) -> None:
+        reports = self.root / "uat" / "evidence" / "system-final" / self.run_id / "reports"
+        reports.mkdir()
+        manifest = reports / MODULE.MANIFEST_NAME
+        manifest.write_text(json.dumps(self.payload) + "\n", encoding="utf-8")
+        other_run = self.root / "uat" / "evidence" / "system-final" / "run-20260821T000001Z-124"
+        other_run.mkdir()
+        other_log = other_run / "backend-core.log"
+        other_log.write_text("11 passed in 0.1s\n", encoding="utf-8")
+        payload = deepcopy(self.payload)
+        payload["runs"][1]["log"] = str(other_log.relative_to(self.root))
+        self.assert_rejected(payload, "backend-core: log is missing or outside local evidence")
+        manifest.unlink()
+        reports.rmdir()
+        reports.symlink_to(other_run, target_is_directory=True)
+        with self.assertRaisesRegex(ValueError, "must not traverse a symlink"):
+            MODULE.report_dir(manifest, self.root, self.run_id)
+        reports.unlink()
+        reports.mkdir()
+        (reports / "system-final-report.json").write_text("stale\n", encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "already exists"):
+            MODULE.output_path(reports, "system-final-report.json", must_not_exist=True)
+
+    def test_report_generation_refuses_reuse_without_mutating_legacy_snapshots(self) -> None:
+        cases = sorted(MODULE.case_evidence({}))
+        (self.root / "uat" / "system-scope.json").write_text(json.dumps({"schema_version": "system-uat-scope-v1", "total_included_case_count": len(cases), "included_system_cases": cases, "excluded_manual_cases": []}) + "\n", encoding="utf-8")
+        self.payload["scope_sha256"] = self.digest(self.root / "uat" / "system-scope.json")
+        self.payload["included_case_count"] = len(cases)
+        reports = self.root / "uat" / "evidence" / "system-final" / self.run_id / "reports"
+        reports.mkdir()
+        manifest = reports / MODULE.MANIFEST_NAME
+        manifest.write_text(json.dumps(self.payload, indent=2) + "\n", encoding="utf-8")
+        MODULE.generate_report(root=self.root, manifest=manifest, tested_code_head=self.head)
+        snapshots = {filename: (self.root / "uat" / filename).read_bytes() for filename in MODULE.REPORT_FILENAMES}
+        with self.assertRaisesRegex(ValueError, "already exists"):
+            MODULE.generate_report(root=self.root, manifest=manifest, tested_code_head=self.head)
+        self.assertEqual({filename: (self.root / "uat" / filename).read_bytes() for filename in MODULE.REPORT_FILENAMES}, snapshots)
+
+    def test_init_allows_its_new_run_root_but_rejects_existing_reports(self) -> None:
+        run_id = "run-20260821T000002Z-125"
+        run_root = self.root / "uat" / "evidence" / "system-final" / run_id
+        run_root.mkdir()
+        args = argparse.Namespace(
+            manifest=str(run_root / "reports" / MODULE.MANIFEST_NAME), init=True, run_id=run_id,
+            clean_worktree_before_execution="true", provenance_mode="ATTACHED_EXPECTED_BRANCH",
+            expected_repository_root=str(self.root.resolve()), expected_commit=self.head, expected_tree=self.tree,
+            expected_branch="codex/test", expected_remote_ref=None, expected_remote_ref_sha=None,
+            remote_ref_refreshed_at=None, frontend="http://127.0.0.1:13000",
+            api="http://127.0.0.1:18000/api", mongodb="mongodb://127.0.0.1:27018/earnalism_uat?replicaSet=earnalism-uat-rs0",
+            record=None, log="", exit_code=0, passed=None, failed=0, missing=0, command="",
+            started_at="", completed_at="", require=[],
+        )
+        original_root, original_uat = MODULE.ROOT, MODULE.UAT
+        MODULE.ROOT = self.root
+        MODULE.UAT = self.root / "uat"
+        try:
+            MODULE.write_manifest(args)
+            self.assertTrue((run_root / "reports" / MODULE.MANIFEST_NAME).is_file())
+            with self.assertRaisesRegex(ValueError, "already exists"):
+                MODULE.write_manifest(args)
+        finally:
+            MODULE.ROOT = original_root
+            MODULE.UAT = original_uat
 
     def test_accepts_detached_exact_remote_authority(self) -> None:
         self.git("update-ref", "refs/remotes/origin/main", self.head)

@@ -65,6 +65,11 @@ jobs:
           env -u REACT_APP_BACKEND_URL -u REACT_APP_API_URL -u SEO_API_BASE_URL \
             bash scripts/test_local_uat_launcher.sh
 
+      - name: Run UAT report-preservation tests
+        run: |
+          python3 -m unittest scripts/test_generate_system_uat_report.py
+          bash scripts/test_system_uat_failure_propagation.sh
+
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
