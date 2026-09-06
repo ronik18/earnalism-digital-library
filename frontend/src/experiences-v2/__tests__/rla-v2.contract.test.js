@@ -90,6 +90,23 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(mobileStylesheet).toContain(".reader-v2__toolbar { display: none; }");
   });
 
+  test("Quiet Heritage headings use the declared 400 face without claiming a V2 preference bridge", () => {
+    const shared = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/experiences-v2.css"), "utf8");
+    const reader = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.css"), "utf8");
+    const listener = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/listener-v2.css"), "utf8");
+    const about = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/about/about-v2.css"), "utf8");
+    const library = fs.readFileSync(path.join(process.cwd(), "src/pages/MyLibrary.css"), "utf8");
+
+    expect(shared).toContain('--ev2-heading: var(--qh-display, "EB Garamond", "Noto Serif Bengali", serif);');
+    expect(shared).toContain('--ev2-content: var(--eds-display, "Cormorant Garamond", "Noto Serif Bengali", serif);');
+    expect(shared).not.toMatch(/reader-surface-|reader-ui-font|reader-display-font/);
+    expect(reader).toContain('font: 400 1rem/1.72 var(--ev2-content);');
+    [reader, listener, about, library, shared].forEach((stylesheet) => {
+      expect(stylesheet).not.toContain("var(--ev2-display)");
+      expect(stylesheet).not.toMatch(/font:\s*600[^;]*var\(--ev2-heading\)/);
+    });
+  });
+
   test("playback time is never treated as a public preview allowance", () => {
     expect(clampPlaybackTime(240, 180)).toBe(180);
     expect(clampPlaybackTime(-1, 180)).toBe(0);

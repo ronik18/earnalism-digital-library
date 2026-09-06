@@ -2,6 +2,22 @@
 
 **Final result: blocked — foundation batch is visually validated; full site redesign remains incomplete.**
 
+## PR #361 correction checkpoint — unmerged
+
+**Result: locally validated source correction; final exact-head CI and owner-review evidence are pending for the unmerged PR #361 candidate.**
+
+- Affected Quiet Heritage scope is the shared V2 shell plus `/reader/:slug`, `/listener/:slug`, `/about`, and `/my-library`. The preserved public header and the legacy `/reader-legacy/:slug` settings implementation are not changed.
+- The failed PR #361 workflow was diagnosed from run `34052934179`: its deterministic tooling reached the checked-in-source authority assertion after the prior tooling gates passed, but both workflow jobs still hold PR #360's `a6ee675ca810c36fe29253b2584b4c73dfe6f6501f1e3240af5d36fbe6bd6b48` production-surface fingerprint.
+- The correction removes unsupported `--reader-surface-*`, `--reader-ui-font`, and `--reader-display-font` aliases. V2 has no persisted-preference bridge; legacy `Reader.jsx` continues to load and save `earnalism.reader.preferences.v1` unchanged. That pre-existing V2 capability gap is recorded separately, not represented as preference preservation.
+- V2 editorial headings now compute to locally served EB Garamond at weight 400. Reader and About prose retain the pre-existing Cormorant/Noto Serif Bengali content stack, rather than applying the heading token to reader body text. Local computed-style checks confirmed this on Reader, Listener, About, and My Library.
+- Local review-fixture Chromium capture was executed against the finalized source before push: 65/65 stable states and 181 screenshots; no rendered UI defects, horizontal overflow, Reader protected-content exposure/prefetch, Listener raw/playable media, autoplay/preload, or production mutations. This is local fixture evidence only, not post-push CI or production validation.
+- The existing Reader high-zoom control check passed all 23 assertions at 320px and 390px across 100%, 150%, and 200% document zoom, including text-size controls, settings reachability, keyboard order, 44px targets, and no horizontal clipping. The matrix also covers the public-safe Bengali Devdas desktop/mobile states with both Noto Bengali faces loaded.
+- Existing saved legacy Reader preferences are covered by the focused persistence tests. A full browser reload of the legacy Reader requires its authenticated/content data path and was not exercised by the V2 visual fixture; it remains **NOT RUN**, not a V2 preference-preservation claim.
+- The independent Library interaction baseline remains unchanged. The historical worktree-preservation incident remains unresolved: the protected original checkout retains unrelated dirty work and was not altered during this batch.
+- The initial exact-head CI browser-tooling run correctly found that the V2 About shell places its canonical lockup on Quiet Heritage paper (`rgb(246, 237, 220)`), while the preserved public header routes remain `rgb(255, 249, 238)`. The public-shell test now makes that route-specific distinction; no header source, hashing input, or release control changed. Fresh final-candidate CI evidence is still required.
+
+The recomputed full 278-input production-surface SHA-256 is `b340dd6cb26249d9f27c1790b988500c5c6e0dfc7627d90fb8daaa1a63811927`. It is prepared for both existing workflow environment fields only; no workflow authority value has been changed without a new direct owner authorization.
+
 ## Comparison evidence
 
 - Source visual truth: owner-supplied `editorial-house.png` reference board (1672 × 941); it is a three-page art-direction board, not an in-product background.
