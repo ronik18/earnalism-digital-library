@@ -1,14 +1,15 @@
 .experience-v2 {
-  /* Reader-specific overrides remain first so a persisted reader preference
-     can continue to own its text treatment. Quiet Heritage supplies only the
-     default shell when no such preference is present. */
-  --ev2-ink: var(--reader-surface-ink, var(--qh-maroon, #461322));
-  --ev2-surface: var(--reader-surface-paper, color-mix(in srgb, var(--qh-maroon, #461322) 92%, #12060a));
-  --ev2-ivory: var(--reader-surface-text, var(--qh-paper, #F6EDDC));
-  --ev2-gold: var(--reader-surface-accent, var(--qh-gold, #BE9854));
-  --ev2-line: var(--reader-surface-rule, color-mix(in srgb, var(--qh-gold, #BE9854) 34%, transparent));
-  --ev2-ui: var(--reader-ui-font, var(--qh-ui, Outfit, "Noto Sans Bengali", sans-serif));
-  --ev2-display: var(--reader-display-font, var(--qh-display, "EB Garamond", "Noto Serif Bengali", serif));
+  /* V2 does not consume the legacy Reader's persisted-preference contract.
+     These are its own Quiet Heritage shell defaults; Reader.jsx remains
+     responsible for the legacy reader settings path. */
+  --ev2-ink: var(--qh-maroon, #461322);
+  --ev2-surface: color-mix(in srgb, var(--qh-maroon, #461322) 92%, #12060a);
+  --ev2-ivory: var(--qh-paper, #F6EDDC);
+  --ev2-gold: var(--qh-gold, #BE9854);
+  --ev2-line: color-mix(in srgb, var(--qh-gold, #BE9854) 34%, transparent);
+  --ev2-ui: var(--qh-ui, Outfit, "Noto Sans Bengali", sans-serif);
+  --ev2-heading: var(--qh-display, "EB Garamond", "Noto Serif Bengali", serif);
+  --ev2-content: var(--eds-display, "Cormorant Garamond", "Noto Serif Bengali", serif);
   min-height: 100dvh;
   background: var(--ev2-ink);
   color: var(--ev2-ivory);
@@ -30,7 +31,7 @@
 .experience-panel { border: 1px solid var(--ev2-line); border-radius: 4px; background: color-mix(in srgb, var(--ev2-surface) 92%, transparent); padding: 16px; }
 .experience-panel__header { margin-bottom: 12px; }
 .experience-panel__header span { color: var(--ev2-gold); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
-.experience-panel__header h2 { margin: 4px 0 0; color: var(--ev2-ivory); font: 600 18px/1.1 var(--ev2-display); }
+.experience-panel__header h2 { margin: 4px 0 0; color: var(--ev2-ivory); font: 400 18px/1.1 var(--ev2-heading); }
 .experience-bottom-nav { display: none; }
 @media (max-width: 767px) { .experience-bottom-nav { position: sticky; bottom: 0; z-index: 3; display: grid; grid-template-columns: repeat(4, 1fr); min-height: 68px; border-top: 1px solid var(--ev2-line); background: var(--ev2-ink); } .experience-bottom-nav button { display: grid; place-items: center; gap: 3px; border: 0; background: none; color: color-mix(in srgb, var(--ev2-ivory) 62%, transparent); font-size: 10px; cursor: pointer; } .experience-bottom-nav button[aria-current="page"] { color: var(--ev2-gold); } }
 @media (prefers-reduced-motion: reduce) { .experience-v2 *, .experience-v2 *::before, .experience-v2 *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
