@@ -24,7 +24,7 @@ CALL_LOG="$CALL_LOG" PATH="$TEMP_DIR/bin:$PATH" \
   UAT_EXPECTED_REPOSITORY_ROOT="$ROOT" \
   UAT_EXPECTED_COMMIT="$(git -C "$ROOT" rev-parse HEAD)" \
   UAT_EXPECTED_TREE="$(git -C "$ROOT" rev-parse 'HEAD^{tree}')" \
-  UAT_EXPECTED_BRANCH="$(git -C "$ROOT" branch --show-current)" \
+  UAT_EXPECTED_BRANCH="fixture-attached-branch" \
   UAT_BASE_URL="http://127.0.0.1:13000" \
   UAT_API_BASE_URL="http://127.0.0.1:18000/api" \
   UAT_MONGODB_PORT=27018 \
