@@ -4,7 +4,8 @@ set -u -o pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"; cd "$ROOT"
 [[ -n "${UAT_RUN_ID:-}" && -n "${UAT_EVIDENCE_DIR:-}" && -n "${UAT_CLEAN_WORKTREE_BEFORE_EXECUTION:-}" && -n "${UAT_PROVENANCE_MODE:-}" && -n "${UAT_EXPECTED_REPOSITORY_ROOT:-}" && -n "${UAT_EXPECTED_COMMIT:-}" && -n "${UAT_EXPECTED_TREE:-}" ]] || { echo "UAT run identity and explicit provenance are required" >&2; exit 64; }
-MANIFEST="uat/system-run-manifest.json"; overall=0
+REPORT_DIR="$UAT_EVIDENCE_DIR/reports"
+MANIFEST="$REPORT_DIR/system-run-manifest.json"; overall=0
 provenance_args=(--provenance-mode "$UAT_PROVENANCE_MODE" --expected-repository-root "$UAT_EXPECTED_REPOSITORY_ROOT" --expected-commit "$UAT_EXPECTED_COMMIT" --expected-tree "$UAT_EXPECTED_TREE")
 case "$UAT_PROVENANCE_MODE" in
   ATTACHED_EXPECTED_BRANCH)

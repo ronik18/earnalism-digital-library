@@ -110,6 +110,24 @@ class SystemUatProvenanceTests(unittest.TestCase):
     def test_accepts_complete_attached_manifest(self) -> None:
         MODULE.validate_manifest(self.payload, root=self.root, current_head=self.head)
 
+    def test_generates_all_reports_in_the_run_specific_directory(self) -> None:
+        cases = sorted(MODULE.case_evidence({}))
+        (self.root / "uat" / "system-scope.json").write_text(
+            json.dumps({"schema_version": "system-uat-scope-v1", "total_included_case_count": len(cases), "included_system_cases": cases, "excluded_manual_cases": []}) + "\n",
+            encoding="utf-8",
+        )
+        self.payload["scope_sha256"] = self.digest(self.root / "uat" / "system-scope.json")
+        self.payload["included_case_count"] = len(cases)
+        reports = self.root / "uat" / "evidence" / "system-final" / self.payload["run_id"] / "reports"
+        reports.mkdir(parents=True)
+        manifest = reports / "system-run-manifest.json"
+        manifest.write_text(json.dumps(self.payload, indent=2) + "\n", encoding="utf-8")
+        result = MODULE.generate_report(root=self.root, manifest=manifest, tested_code_head=self.head)
+        self.assertEqual(result["result"], "PASSED")
+        self.assertEqual({path.name for path in reports.iterdir()}, set(MODULE.REPORT_FILENAMES))
+        self.assertFalse((self.root / "uat" / "system-final-report.json").exists())
+        self.assertTrue(MODULE.clean_worktree(self.root))
+
     def test_accepts_detached_exact_remote_authority(self) -> None:
         self.git("update-ref", "refs/remotes/origin/main", self.head)
         self.git("checkout", "--detach", "-q", self.head)

@@ -42,13 +42,7 @@ DYNAMIC_COUNT_PARSERS = {
     "backend-policy": ("pytest_passed_test_count", re.compile(r"(?m)^(?P<count>[1-9][0-9]*) passed(?:,.*)? in .+$")),
     "frontend-full": ("jest_passed_test_count", re.compile(r"(?m)^Tests:\s+(?P<count>[1-9][0-9]*) passed,.*$")),
 }
-REPORT_ONLY_PATHS = {
-    "uat/system-final-report.json",
-    "uat/system-matrix.csv",
-    "uat/system-state.json",
-    "uat/system-defects.json",
-    "uat/system-run-manifest.json",
-}
+REPORT_FILENAMES = ("system-run-manifest.json", "system-final-report.json", "system-matrix.csv", "system-state.json", "system-defects.json")
 
 
 def sha256_file(path: Path) -> str:
@@ -119,12 +113,20 @@ def active_git_operation(root: Path) -> str | None:
     return None
 
 
-def clean_worktree(root: Path, *, allow_report_only: bool = False) -> bool:
-    if not allow_report_only:
-        return not subprocess.check_output(["git", "status", "--porcelain"], cwd=root, text=True).strip()
-    changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=root, text=True).splitlines())
-    changed.update(subprocess.check_output(["git", "ls-files", "--others", "--exclude-standard"], cwd=root, text=True).splitlines())
-    return all(path in REPORT_ONLY_PATHS or path.startswith("uat/evidence/system-final-verification/") for path in changed)
+def clean_worktree(root: Path) -> bool:
+    return not subprocess.check_output(["git", "status", "--porcelain"], cwd=root, text=True).strip()
+
+
+def report_dir(manifest: Path, root: Path) -> Path:
+    directory = manifest.parent.resolve()
+    evidence_root = (root / "uat" / "evidence" / "system-final").resolve()
+    try:
+        directory.relative_to(evidence_root)
+    except ValueError as error:
+        raise ValueError("report directory must be beneath run-specific local evidence") from error
+    if directory.name != "reports" or manifest.name != MANIFEST_NAME or directory.is_symlink():
+        raise ValueError("report outputs must use a non-symlinked run reports directory")
+    return directory
 
 
 def require_sha(value: object, field: str, errors: list[str]) -> str | None:
@@ -134,7 +136,7 @@ def require_sha(value: object, field: str, errors: list[str]) -> str | None:
     return value
 
 
-def validate_provenance(payload: dict, *, root: Path, allow_report_only: bool = False) -> dict:
+def validate_provenance(payload: dict, *, root: Path) -> dict:
     errors: list[str] = []
     provenance = payload.get("provenance")
     if not isinstance(provenance, dict):
@@ -162,7 +164,7 @@ def validate_provenance(payload: dict, *, root: Path, allow_report_only: bool = 
                 errors.append("expected commit does not resolve to the expected tree")
         except subprocess.CalledProcessError:
             errors.append("expected commit object is unavailable locally")
-    worktree_clean = clean_worktree(root, allow_report_only=allow_report_only)
+    worktree_clean = clean_worktree(root)
     operation = active_git_operation(root)
     if payload.get("clean_worktree_before_execution") is not True or not worktree_clean:
         errors.append("worktree was not clean before execution")
@@ -232,12 +234,7 @@ def observed_result_from_log(suite_id: str, text: str, log_sha256: str) -> dict 
 
 
 def report_only_since(root: Path, tested_head: str, current_head: str) -> bool:
-    if tested_head == current_head:
-        return True
-    changed = subprocess.check_output(
-        ["git", "diff", "--name-only", f"{tested_head}..{current_head}"], cwd=root, text=True
-    ).splitlines()
-    return bool(changed) and all(path in REPORT_ONLY_PATHS or path.startswith("uat/evidence/system-final-verification/") for path in changed)
+    return tested_head == current_head
 
 
 def fail(errors: list[str]) -> None:
@@ -269,7 +266,7 @@ def validate_manifest(
     if not isinstance(manifest_run_id, str) or not re.fullmatch(r"run-[A-Za-z0-9][A-Za-z0-9._-]*", manifest_run_id):
         errors.append("run_id is missing or invalid")
     try:
-        provenance = validate_provenance(payload, root=root, allow_report_only=True)
+        provenance = validate_provenance(payload, root=root)
     except ValueError as error:
         errors.append(str(error))
         provenance = None
@@ -428,6 +425,7 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None, tested_c
     uat = root / "uat"
     scope = json.loads((uat / "system-scope.json").read_text(encoding="utf-8"))
     manifest = manifest or manifest_path(root)
+    reports = report_dir(manifest, root)
     manifest_payload = json.loads(manifest.read_text(encoding="utf-8"))
     validated = validate_manifest(manifest_payload, root=root, current_head=report_tested_head(manifest_payload, tested_code_head, root=root))
     evidence = case_evidence(validated["runs"])
@@ -455,18 +453,21 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None, tested_c
     defects = [{"id": f"EVIDENCE-{row['case_id']}", "severity": "P1", "status": "UNVERIFIED", "case_id": row["case_id"]} for row in rows if row["status"] != "PASS"]
     report = {**state, "result": "PASSED" if complete else "INCOMPLETE", "final_system_uat_regression": manifest_payload["aggregate_result"], "completion_conditions_met": complete, "blocking_defect_ids": [entry["id"] for entry in defects], "evidence_paths": [run["log"] for run in validated["runs"].values()], "suite_results": manifest_payload["runs"], "provenance_validation": "PASSED"}
     validate_report_payload(report, validated, provenance_tool_head=git_head(root))
-    with (uat / "system-matrix.csv").open("w", newline="", encoding="utf-8") as handle:
+    with (reports / "system-matrix.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=["case_id", "status"])
         writer.writeheader(); writer.writerows(rows)
-    (uat / "system-state.json").write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
-    (uat / "system-defects.json").write_text(json.dumps(defects, indent=2) + "\n", encoding="utf-8")
-    (uat / "system-final-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    (reports / "system-state.json").write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+    (reports / "system-defects.json").write_text(json.dumps(defects, indent=2) + "\n", encoding="utf-8")
+    (reports / "system-final-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     return {"score": state["score"], **totals, "result": report["result"]}
 
 
 def write_manifest(args: argparse.Namespace) -> None:
     path = Path(args.manifest).resolve()
-    path.parent.mkdir(parents=True, exist_ok=True)
+    reports = report_dir(path, ROOT)
+    if args.init and path.exists():
+        raise ValueError("run-specific manifest already exists")
+    reports.mkdir(parents=True, exist_ok=False) if args.init else None
     if args.init:
         clean = args.clean_worktree_before_execution == "true"
         scope = json.loads((UAT / "system-scope.json").read_text(encoding="utf-8"))
@@ -570,7 +571,7 @@ def main() -> None:
             manifest = Path(args.manifest).resolve()
             manifest_payload = json.loads(manifest.read_text(encoding="utf-8"))
             validated = validate_manifest(manifest_payload, root=ROOT, current_head=report_tested_head(manifest_payload, args.tested_code_head, root=ROOT))
-            report = json.loads((UAT / "system-final-report.json").read_text(encoding="utf-8"))
+            report = json.loads((report_dir(manifest, ROOT) / "system-final-report.json").read_text(encoding="utf-8"))
             validate_report_payload(report, validated, provenance_tool_head=git_head(ROOT))
             print("system-uat-provenance=PASSED")
             return
