@@ -152,8 +152,7 @@ for _ in $(seq 1 90); do kill -0 "$BACKEND_PID" 2>/dev/null || { tail -80 "$RUNT
 curl -fsS "http://$UAT_BACKEND_HOST:$UAT_BACKEND_PORT/healthz" >/dev/null
 "$VENV_PYTHON" scripts/seed_uat_canonical_pages.py > "$RUNTIME_DIR/canonical-pages.log" 2>&1 || { cat "$RUNTIME_DIR/canonical-pages.log" >&2; exit 1; }
 
-rm -rf "$ROOT_DIR/frontend/build"
-if ! npm --prefix frontend run build > "$RUNTIME_DIR/frontend.log" 2>&1; then
+if ! bash scripts/build_uat_frontend.sh "$RUNTIME_DIR" > "$RUNTIME_DIR/frontend.log" 2>&1; then
   cat "$RUNTIME_DIR/frontend.log" >&2
   exit 1
 fi

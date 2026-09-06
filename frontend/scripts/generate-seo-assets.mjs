@@ -3,7 +3,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const publicDir = path.resolve(__dirname, "../public");
+// Production keeps publishing these assets from the tracked public directory.
+// Local System UAT supplies an isolated destination so the same generation is
+// exercised without mutating the source tree that provenance must attest.
+const publicDir = path.resolve(process.env.SEO_ASSETS_OUTPUT_DIR || path.resolve(__dirname, "../public"));
 const rootDir = path.resolve(__dirname, "../..");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const apiBase = resolveApiBase();
