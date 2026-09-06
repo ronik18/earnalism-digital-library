@@ -51,11 +51,12 @@ describe("public CTA accuracy contract", () => {
     expect(bookCard).toContain("View Passes");
   });
 
-  test("pricing preview and account continuation lead directly to the reader", () => {
+  test("pricing preview leads directly to the reader while Account avoids inventing a saved title", () => {
     expect(pricing).toContain('to="/reader/dracula"');
     expect(pricing).toContain("PUBLIC_PREVIEW_COPY");
-    expect(account).toContain('to="/reader/dracula"');
-    expect(account).toContain("Continue reading");
+    expect(account).toContain('to="/library"');
+    expect(account).toContain("Browse the Library");
+    expect(account).not.toContain('to="/reader/dracula"');
   });
 
   test("reader upsell makes no unsupported discount, coupon, or urgency claim", () => {

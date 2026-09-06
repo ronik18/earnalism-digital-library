@@ -19,12 +19,13 @@ describe("auth and account customer-copy contract", () => {
     expect(signup).not.toContain("Dracula reading time");
   });
 
-  test("uses library-wide Account empty and continuation copy while retaining existing actions", () => {
+  test("uses library-wide Account empty copy and does not fabricate a saved continuation", () => {
     expect(account).toContain("No reading activity yet. Open a book from the library to begin.");
-    expect(account).toContain("Continue reading");
+    expect(account).toContain("Browse the Library");
     expect(account).not.toContain("Open Dracula from the library");
     expect(account).not.toContain("Continue Dracula from the live shelf");
-    expect(account).toContain('to="/reader/dracula"');
+    expect(account).not.toContain('to="/reader/dracula"');
+    expect(account).toContain('to="/library"');
     expect(account).toContain('data-testid="account-logout"');
   });
 });

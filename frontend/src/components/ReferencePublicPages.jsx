@@ -26,6 +26,7 @@ import {
 import BookCoverImage from "./BookCoverImage";
 import publicEvidenceSnapshot from "../data/publicEvidenceSnapshot.json";
 import "./ReferencePublicPages.css";
+import "../styles/quiet-heritage.css";
 
 const HOME_FEATURES = [
   [BookOpen, "Curated classics", "Bengali and English literature"],
@@ -145,16 +146,16 @@ export function ReferenceHomeSurface({ curation }) {
       <section className="reference-home__hero" aria-labelledby="reference-home-title">
         <div className="reference-home__hero-copy">
           <p className="reference-kicker">THE EARNALISM DIGITAL LIBRARY</p>
-          <h1 id="reference-home-title">A library<br /> made for lingering.</h1>
+          <h1 id="reference-home-title">Read beautifully.<br /> Listen <em>deeply.</em></h1>
           <p className="reference-home__lede">Timeless Bengali and English classics. Beautiful editions. A calm reading room for stories that stay with you.</p>
           <div className="reference-home__cta-row">
             <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Enter the Library</Link>
-            <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline">Enter the Listening Room</Link>
+            <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline">Discover listening</Link>
           </div>
           <p className="reference-home__policy"><Check aria-hidden="true" /> {PUBLIC_ACCESS_COPY} <span /> <ClockMark aria-hidden="true" /> {READING_TIME_COPY}</p>
         </div>
         <picture className="reference-home__hero-art">
-          <img src="/assets/reference-derived/home-library-room-board-crop.png" alt="" fetchPriority="high" decoding="async" />
+          <img src="/assets/hero/quiet-heritage-still-life.png" alt="" fetchPriority="high" decoding="async" />
         </picture>
       </section>
 
@@ -374,9 +375,9 @@ export function ReferenceCommerceSurface({ packs, config, busyId, selectedPackId
     <div className="reference-commerce" data-testid="pricing-reference-surface">
       <div className="reference-commerce__primary-column">
         <section className="reference-commerce__hero" aria-labelledby="reference-commerce-title">
-          <div><p className="reference-kicker">READING PASSES</p><h1 id="reference-commerce-title">Read more.<br /> Live the stories.</h1><p>Unlock unhurried reading time and immerse yourself in timeless Bengali and English classics.</p><ul><li>{PUBLIC_ACCESS_COPY}</li><li>{READING_TIME_COPY}</li><li>No subscription or autorenewal</li></ul></div>
+          <div><p className="reference-kicker">READING PASSES</p><h1 id="reference-commerce-title">Buy time.<br /> Keep the <em>story.</em></h1><p>Uninterrupted reading time for stories that stay with you.</p><ul><li>{PUBLIC_ACCESS_COPY}</li><li>{READING_TIME_COPY}</li><li>No subscription or autorenewal</li></ul></div>
           <picture className="reference-commerce__hero-art">
-            <img src="/assets/reference-derived/commerce-chair-lamp-board-crop.png" alt="" fetchPriority="high" decoding="async" />
+            <img src="/assets/hero/golden-hour-library-hero.webp" alt="" fetchPriority="high" decoding="async" />
           </picture>
         </section>
         <main className="reference-commerce__main">
