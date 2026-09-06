@@ -18,7 +18,10 @@ case "$UAT_PROVENANCE_MODE" in
     ;;
   *) echo "unsupported UAT provenance mode" >&2; exit 64 ;;
 esac
-python3 scripts/generate_system_uat_report.py --init --run-id "$UAT_RUN_ID" --clean-worktree-before-execution "$UAT_CLEAN_WORKTREE_BEFORE_EXECUTION" "${provenance_args[@]}" --manifest "$MANIFEST" --frontend "$UAT_BASE_URL" --api "$UAT_API_BASE_URL" --mongodb "mongodb://127.0.0.1:${UAT_MONGODB_PORT}/earnalism_uat?replicaSet=earnalism-uat-rs0"
+if ! python3 scripts/generate_system_uat_report.py --init --run-id "$UAT_RUN_ID" --clean-worktree-before-execution "$UAT_CLEAN_WORKTREE_BEFORE_EXECUTION" "${provenance_args[@]}" --manifest "$MANIFEST" --frontend "$UAT_BASE_URL" --api "$UAT_API_BASE_URL" --mongodb "mongodb://127.0.0.1:${UAT_MONGODB_PORT}/earnalism_uat?replicaSet=earnalism-uat-rs0"; then
+  echo "system-uat-reporter=INIT_FAILED" >&2
+  exit 1
+fi
 npx playwright install chromium firefox webkit >"$UAT_EVIDENCE_DIR/playwright-install.log" 2>&1 || overall=1
 
 run_gate() {
@@ -32,6 +35,11 @@ run_gate() {
     python3 scripts/generate_system_uat_report.py --manifest "$MANIFEST" --record "$id" --command "$command_text" --started-at "$started" --completed-at "$completed" --exit-code "$exit_code" --failed "$result_failed" --missing 0 --log "uat/evidence/system-final/$UAT_RUN_ID/$id.log"
   else
     python3 scripts/generate_system_uat_report.py --manifest "$MANIFEST" --record "$id" --command "$command_text" --started-at "$started" --completed-at "$completed" --exit-code "$exit_code" --passed "$result_passed" --failed "$result_failed" --missing 0 --log "uat/evidence/system-final/$UAT_RUN_ID/$id.log"
+  fi
+  if [[ "$?" -ne 0 ]]; then
+    echo "system-uat-reporter=RECORD_FAILED:$id" >&2
+    overall=1
+    return 1
   fi
   [[ "$exit_code" -eq 0 ]] || overall=1
 }
@@ -51,6 +59,9 @@ run_gate firefox-journeys 12 npx playwright test tests/e2e/earnalism-real-user-j
 run_gate webkit-journeys 12 npx playwright test tests/e2e/earnalism-real-user-journey.spec.js --project=webkit
 run_gate contrast 36 node scripts/run_contrast_responsive_gate.mjs
 if [[ "$overall" -eq 0 ]]; then
-  python3 scripts/generate_system_uat_report.py --finalize --manifest "$MANIFEST"
+  if ! python3 scripts/generate_system_uat_report.py --finalize --manifest "$MANIFEST"; then
+    echo "system-uat-reporter=FINALIZE_FAILED" >&2
+    overall=1
+  fi
 fi
 exit "$overall"

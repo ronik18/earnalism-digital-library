@@ -66,7 +66,9 @@ jobs:
             bash scripts/test_local_uat_launcher.sh
 
       - name: Run UAT report-preservation tests
-        run: python3 -m unittest scripts/test_generate_system_uat_report.py
+        run: |
+          python3 -m unittest scripts/test_generate_system_uat_report.py
+          bash scripts/test_system_uat_failure_propagation.sh
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium

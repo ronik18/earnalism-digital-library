@@ -32,5 +32,13 @@ export UAT_RUN_ID="$RUN_ID"
 export UAT_EVIDENCE_DIR="$EVIDENCE_DIR"
 export UAT_COMMAND_FILE="$ROOT/scripts/run_system_uat_gates.sh"
 bash scripts/start_local_uat.sh >"$EVIDENCE_DIR/launcher.log" 2>&1
-python3 scripts/generate_system_uat_report.py --manifest "$EVIDENCE_DIR/reports/system-run-manifest.json"
+MANIFEST="$EVIDENCE_DIR/reports/system-run-manifest.json"
+if ! python3 scripts/generate_system_uat_report.py --manifest "$MANIFEST"; then
+  echo "system-uat-regression=REPORT_GENERATION_FAILED" >&2
+  exit 1
+fi
+if ! python3 scripts/generate_system_uat_report.py --validate-report --manifest "$MANIFEST"; then
+  echo "system-uat-regression=REPORT_VALIDATION_FAILED" >&2
+  exit 1
+fi
 echo "system-uat-regression=PASS"

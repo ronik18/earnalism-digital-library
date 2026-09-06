@@ -71,12 +71,39 @@ def local_endpoint(value: object, api: bool = False) -> bool:
     )
 
 
-def safe_log_path(value: object, root: Path) -> Path | None:
+def no_symlink_components(path: Path, root: Path) -> Path:
+    """Return a lexical path beneath root, rejecting symlink traversal."""
+    root = root.absolute()
+    path = path.absolute()
+    try:
+        relative = path.relative_to(root)
+    except ValueError as error:
+        raise ValueError("path is outside the permitted local evidence root") from error
+    current = root
+    if current.is_symlink():
+        raise ValueError("local evidence root must not be a symlink")
+    for part in relative.parts:
+        if part in {".", ".."}:
+            raise ValueError("local evidence path must not traverse parent directories")
+        current /= part
+        if current.is_symlink():
+            raise ValueError("local evidence path must not traverse a symlink")
+    return path
+
+
+def run_evidence_dir(run_id: str, root: Path) -> Path:
+    if not re.fullmatch(r"run-[A-Za-z0-9][A-Za-z0-9._-]*", run_id):
+        raise ValueError("run_id is missing or invalid")
+    evidence_root = root / "uat" / "evidence" / "system-final"
+    return no_symlink_components(evidence_root / run_id, root)
+
+
+def safe_log_path(value: object, root: Path, run_id: str | None = None) -> Path | None:
     if not isinstance(value, str) or value.startswith("/"):
         return None
-    candidate = (root / value).resolve()
-    allowed = (root / "uat" / "evidence").resolve()
     try:
+        candidate = no_symlink_components(root / value, root)
+        allowed = run_evidence_dir(run_id, root) if run_id is not None else root / "uat" / "evidence"
         candidate.relative_to(allowed)
     except ValueError:
         return None
@@ -117,16 +144,28 @@ def clean_worktree(root: Path) -> bool:
     return not subprocess.check_output(["git", "status", "--porcelain"], cwd=root, text=True).strip()
 
 
-def report_dir(manifest: Path, root: Path) -> Path:
-    directory = manifest.parent.resolve()
-    evidence_root = (root / "uat" / "evidence" / "system-final").resolve()
-    try:
-        directory.relative_to(evidence_root)
-    except ValueError as error:
-        raise ValueError("report directory must be beneath run-specific local evidence") from error
-    if directory.name != "reports" or manifest.name != MANIFEST_NAME or directory.is_symlink():
-        raise ValueError("report outputs must use a non-symlinked run reports directory")
-    return directory
+def report_dir(manifest: Path, root: Path, run_id: str | None = None) -> Path:
+    manifest = no_symlink_components(manifest, root)
+    if manifest.name != MANIFEST_NAME or manifest.parent.name != "reports":
+        raise ValueError("report outputs must use the canonical run reports directory")
+    selected_run = run_id or manifest.parent.parent.name
+    expected = run_evidence_dir(selected_run, root) / "reports"
+    if manifest.parent != expected:
+        raise ValueError("report directory does not bind to the selected run_id")
+    no_symlink_components(expected, root)
+    return expected
+
+
+def output_path(reports: Path, filename: str, *, must_not_exist: bool) -> Path:
+    if filename not in REPORT_FILENAMES:
+        raise ValueError("unexpected report filename")
+    candidate = reports / filename
+    no_symlink_components(candidate, reports.parents[4])
+    if candidate.is_symlink():
+        raise ValueError("report output must not be a symlink")
+    if must_not_exist and candidate.exists():
+        raise ValueError("run-specific report output already exists")
+    return candidate
 
 
 def require_sha(value: object, field: str, errors: list[str]) -> str | None:
@@ -335,7 +374,7 @@ def validate_manifest(
         min_passed = rule.get("min_passed", 1)
         if totals["passed"] < min_passed or totals["failed"] != 0 or totals["missing"] != 0:
             errors.append(f"{suite_id}: totals are not passing")
-        log_path = safe_log_path(suite_result.get("log"), root)
+        log_path = safe_log_path(suite_result.get("log"), root, manifest_run_id)
         if log_path is None or not log_path.is_file():
             errors.append(f"{suite_id}: log is missing or outside local evidence")
             continue
@@ -425,9 +464,9 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None, tested_c
     uat = root / "uat"
     scope = json.loads((uat / "system-scope.json").read_text(encoding="utf-8"))
     manifest = manifest or manifest_path(root)
-    reports = report_dir(manifest, root)
     manifest_payload = json.loads(manifest.read_text(encoding="utf-8"))
     validated = validate_manifest(manifest_payload, root=root, current_head=report_tested_head(manifest_payload, tested_code_head, root=root))
+    reports = report_dir(manifest, root, validated["run_id"])
     evidence = case_evidence(validated["runs"])
     included = list(scope["included_system_cases"])
     rows = [{"case_id": case_id, "status": "PASS" if evidence.get(case_id, False) else "UNVERIFIED"} for case_id in included]
@@ -453,21 +492,27 @@ def generate_report(*, root: Path = ROOT, manifest: Path | None = None, tested_c
     defects = [{"id": f"EVIDENCE-{row['case_id']}", "severity": "P1", "status": "UNVERIFIED", "case_id": row["case_id"]} for row in rows if row["status"] != "PASS"]
     report = {**state, "result": "PASSED" if complete else "INCOMPLETE", "final_system_uat_regression": manifest_payload["aggregate_result"], "completion_conditions_met": complete, "blocking_defect_ids": [entry["id"] for entry in defects], "evidence_paths": [run["log"] for run in validated["runs"].values()], "suite_results": manifest_payload["runs"], "provenance_validation": "PASSED"}
     validate_report_payload(report, validated, provenance_tool_head=git_head(root))
-    with (reports / "system-matrix.csv").open("w", newline="", encoding="utf-8") as handle:
+    destinations = {name: output_path(reports, name, must_not_exist=True) for name in REPORT_FILENAMES if name != MANIFEST_NAME}
+    with destinations["system-matrix.csv"].open("x", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=["case_id", "status"])
         writer.writeheader(); writer.writerows(rows)
-    (reports / "system-state.json").write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
-    (reports / "system-defects.json").write_text(json.dumps(defects, indent=2) + "\n", encoding="utf-8")
-    (reports / "system-final-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    with destinations["system-state.json"].open("x", encoding="utf-8") as handle:
+        handle.write(json.dumps(state, indent=2) + "\n")
+    with destinations["system-defects.json"].open("x", encoding="utf-8") as handle:
+        handle.write(json.dumps(defects, indent=2) + "\n")
+    with destinations["system-final-report.json"].open("x", encoding="utf-8") as handle:
+        handle.write(json.dumps(report, indent=2) + "\n")
     return {"score": state["score"], **totals, "result": report["result"]}
 
 
 def write_manifest(args: argparse.Namespace) -> None:
-    path = Path(args.manifest).resolve()
-    reports = report_dir(path, ROOT)
-    if args.init and path.exists():
-        raise ValueError("run-specific manifest already exists")
-    reports.mkdir(parents=True, exist_ok=False) if args.init else None
+    path = Path(args.manifest).absolute()
+    reports = report_dir(path, ROOT, args.run_id if args.init else None)
+    if args.init:
+        if reports.parent.exists() or reports.exists() or path.exists():
+            raise ValueError("run-specific evidence destination already exists")
+        reports.mkdir(parents=True, exist_ok=False)
+        output_path(reports, MANIFEST_NAME, must_not_exist=True)
     if args.init:
         clean = args.clean_worktree_before_execution == "true"
         scope = json.loads((UAT / "system-scope.json").read_text(encoding="utf-8"))
@@ -497,7 +542,7 @@ def write_manifest(args: argparse.Namespace) -> None:
     else:
         payload = json.loads(path.read_text(encoding="utf-8"))
     if args.record:
-        log = safe_log_path(args.log, ROOT)
+        log = safe_log_path(args.log, ROOT, payload.get("run_id"))
         if log is None or not log.is_file():
             raise SystemExit("recorded log must exist beneath uat/evidence")
         log_sha256 = sha256_file(log)
@@ -511,12 +556,15 @@ def write_manifest(args: argparse.Namespace) -> None:
         else:
             passed = args.passed if args.passed is not None else 0
         payload["runs"].append({"id": args.record, "command": args.command, "started_at": args.started_at, "completed_at": args.completed_at, "exit_code": args.exit_code, "totals": {"passed": passed, "failed": args.failed, "missing": args.missing}, "log": args.log, "sha256": log_sha256, "required_markers": args.require, **({"observed_result": observed_result} if observed_result is not None else {})})
+    if path.is_symlink():
+        raise ValueError("run-specific manifest must not be a symlink")
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
 def finalize_manifest(args: argparse.Namespace) -> None:
-    path = Path(args.manifest).resolve()
+    path = Path(args.manifest).absolute()
     payload = json.loads(path.read_text(encoding="utf-8"))
+    report_dir(path, ROOT, payload.get("run_id") if isinstance(payload, dict) else None)
     validate_manifest(payload, root=ROOT, current_head=git_head(ROOT), require_finalized=False)
     payload["aggregate_result"] = "PASSED"
     payload["completed_at"] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -568,14 +616,18 @@ def main() -> None:
             finalize_manifest(args)
             return
         if args.validate_report:
-            manifest = Path(args.manifest).resolve()
+            manifest = Path(args.manifest).absolute()
             manifest_payload = json.loads(manifest.read_text(encoding="utf-8"))
             validated = validate_manifest(manifest_payload, root=ROOT, current_head=report_tested_head(manifest_payload, args.tested_code_head, root=ROOT))
-            report = json.loads((report_dir(manifest, ROOT) / "system-final-report.json").read_text(encoding="utf-8"))
+            reports = report_dir(manifest, ROOT, validated["run_id"])
+            report_path = output_path(reports, "system-final-report.json", must_not_exist=False)
+            if not report_path.is_file():
+                raise ValueError("run-specific final report is missing")
+            report = json.loads(report_path.read_text(encoding="utf-8"))
             validate_report_payload(report, validated, provenance_tool_head=git_head(ROOT))
             print("system-uat-provenance=PASSED")
             return
-        print(json.dumps(generate_report(manifest=Path(args.manifest).resolve(), tested_code_head=args.tested_code_head)))
+        print(json.dumps(generate_report(manifest=Path(args.manifest).absolute(), tested_code_head=args.tested_code_head)))
     except (ValueError, OSError, subprocess.CalledProcessError, json.JSONDecodeError) as error:
         print(f"system-uat-provenance=REJECTED: {error}", file=sys.stderr)
         raise SystemExit(2)
