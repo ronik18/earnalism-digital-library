@@ -223,7 +223,7 @@ describe("UX conversion static signals", () => {
     expect(homeSurfaces).toContain('fetchPublicSurface(`/home/listening?limit=${boundedLimit}`');
     expect(home).toContain("<ReferenceHomeSurface");
     expect(referencePublicPages).toContain("Enter the Library");
-    expect(referencePublicPages).toContain("Enter the Listening Room");
+    expect(referencePublicPages).toContain("Discover listening");
     expect(referencePublicPages).toContain("Timeless Bengali and English classics.");
     expect(referencePublicPages).toContain("A calm reading room for stories that stay with you.");
     expect(referencePublicPages).not.toContain(">Start Reading</Link>");

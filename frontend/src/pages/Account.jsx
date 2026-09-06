@@ -128,7 +128,7 @@ function AccountProfileMobile({ user, balance, activityCount, readingPassEnabled
         <Link to="/pricing" className="account-profile-mobile__row" data-testid="account-profile-mobile-pass"><Clock aria-hidden="true" /><span><b>Reading Pass</b><small>{formatMinutes(balance)} available</small></span><ArrowUpRight aria-hidden="true" /></Link>
         <a href="#account-transactions" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>Recent activity</b><small>{activityCount ? `${activityCount} recorded activities` : "Your reading will appear here"}</small></span><ArrowUpRight aria-hidden="true" /></a>
         {readingPassEnabled ? <a href="#reading-pass-devices" className="account-profile-mobile__row"><MonitorSmartphone aria-hidden="true" /><span><b>Signed-in devices</b><small>Manage active Reading Pass sessions</small></span><ArrowUpRight aria-hidden="true" /></a> : null}
-        <Link to="/my-library" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>My Library</b><small>Open saved editions and reading activity</small></span><ArrowUpRight aria-hidden="true" /></Link>
+        <Link to="/library" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>Browse the Library</b><small>Find an edition to begin reading</small></span><ArrowUpRight aria-hidden="true" /></Link>
         <button type="button" className="account-profile-mobile__row account-profile-mobile__signout" onClick={onLogout} data-testid="account-profile-mobile-logout"><LogOut aria-hidden="true" /><span><b>Sign out</b><small>End this signed-in session</small></span></button>
       </nav>
       <ExperienceBottomNavigation active="profile" onNavigate={onNavigate} />
@@ -318,19 +318,18 @@ export default function Account() {
               <BookOpen size={13} strokeWidth={1.5} /> Continue reading
             </div>
             <p className="font-serif-display text-xl text-charcoal mt-4 leading-snug">
-              Return to a book from the live shelf. Your time begins only when the words do.
+              Choose an eligible edition from the live shelf. Your time begins only when the words do.
             </p>
             <div className="mt-auto pt-6">
               <Link
-                to="/reader/dracula"
+                to="/library"
                 className="btn-primary w-full sm:w-auto"
                 data-testid="account-go-library"
                 onClick={() => trackFunnelEvent("return_resume_reading_click", {
-                  source: "account_continue_reading",
-                  book_slug: "dracula",
+                  source: "account_library_destination",
                 })}
               >
-                Continue reading
+                Browse the Library
               </Link>
             </div>
           </div>

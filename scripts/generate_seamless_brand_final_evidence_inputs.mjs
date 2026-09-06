@@ -3,6 +3,7 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import { compareLibraryInteractionBaseline } from "./lib/library_interaction_baseline.mjs";
 
 const root = process.cwd();
 const arg = (name) => { const index = process.argv.indexOf(name); return index < 0 ? undefined : process.argv[index + 1]; };
@@ -45,6 +46,8 @@ const routes = {
 const chromiumSummaryPath = path.join(chromiumPath, "capture-summary.json"); const chromium = json(chromiumSummaryPath);
 const currentHashes = Object.fromEntries(Object.entries(routes).map(([name, entries]) => [name, hashSet(entries)]));
 const approved = json("docs/design-system/library-filter-focus-hash-change.json");
+const libraryBaseline = compareLibraryInteractionBaseline(root);
+if (currentHashes.library_interaction_surface !== libraryBaseline.observed_surface_sha256) throw new Error("Library interaction baseline observation disagrees with the generator hash algorithm.");
 const captureRouteHashes = chromium.route_surface_hashes || {};
 const captureAuthorizedRoutes = ["home_library_commerce_body", "shared_public_header", "shared_footer", "auth_account", "editorial_campaign", "book_detail", "error_surfaces", "reader", "listener"];
 for (const name of captureAuthorizedRoutes) {
@@ -52,7 +55,7 @@ for (const name of captureAuthorizedRoutes) {
 }
 const approvalValues = {
   home_library_commerce_body: captureRouteHashes.home_library_commerce_body,
-  library_interaction_surface: approved.library_surface_sha256.after,
+  library_interaction_surface: libraryBaseline.expected_surface_sha256,
   shared_public_header: captureRouteHashes.shared_public_header,
   shared_footer: captureRouteHashes.shared_footer,
   auth_account: captureRouteHashes.auth_account,
@@ -64,14 +67,16 @@ const approvalValues = {
   canonical_logo_asset: approved.unchanged_route_surfaces.canonical_logo_file_set,
 };
 const hashResults = Object.fromEntries(Object.entries(currentHashes).map(([name, value]) => {
+  const isLibraryInteractionSurface = name === "library_interaction_surface";
   const exactHeadCaptureAuthority = captureAuthorizedRoutes.includes(name);
   return [name, {
-    prior_hash: approvalValues[name],
+    prior_hash: isLibraryInteractionSurface ? libraryBaseline.previous_surface_sha256 : approvalValues[name],
+    authorized_hash: approvalValues[name],
     current_hash: value,
-    changed: false,
-    expected_change: false,
-    reason: name === "library_interaction_surface" ? "Deterministic WebKit focus containment correction approved at PR344 3a07c5db." : exactHeadCaptureAuthority ? "Exact-head Chromium capture and current generator use the same route-family hash authority." : "Carry-forward from latest passing checkpoint.",
-    approval_source: exactHeadCaptureAuthority ? chromiumSummaryPath : "docs/design-system/library-filter-focus-hash-change.json",
+    changed: isLibraryInteractionSurface ? libraryBaseline.changed_from_previous : false,
+    expected_change: isLibraryInteractionSurface,
+    reason: isLibraryInteractionSurface ? "Explicitly authorized PR344 to PR360 Library-interaction baseline transition." : exactHeadCaptureAuthority ? "Exact-head Chromium capture and current generator use the same route-family hash authority." : "Carry-forward from latest passing checkpoint.",
+    approval_source: isLibraryInteractionSurface ? libraryBaseline.approval_source : exactHeadCaptureAuthority ? chromiumSummaryPath : "docs/design-system/library-filter-focus-hash-change.json",
     result: value === approvalValues[name] ? "PASS" : "FAIL",
   }];
 }));
@@ -97,6 +102,8 @@ const zoom = states.filter((state) => state.zoom > 100).every((state) => state.z
 const status = states.filter((state) => state.status_contract).every((state) => state.status_contract.result === "PASS") ? "PASS" : "FAIL";
 fs.mkdirSync(output, { recursive: true });
 const authority = { result: manifest.states.length === 65 && inventory.routes.length === 19 && contract.families.length === 20 && new Set(manifest.states.map((state) => state.id)).size === 65 && new Set(contract.families.map((family) => family.selected_state_id)).size === 20 ? "PASS" : "FAIL", state_manifest: { path: manifestPath, sha256: sha(manifestPath), count: manifest.states.length }, route_inventory: { path: inventoryPath, sha256: sha(inventoryPath), count: inventory.routes.length }, cross_browser_contract: { path: contractPath, sha256: sha(contractPath), count: contract.families.length } };
-write(path.join(output, "authority-validation.json"), authority); write(path.join(output, "static-snapshot-brand-results.json"), staticResult); write(path.join(output, "route-surface-hashes.json"), { result: hashesResult, production_surface_sha256: productionHash(), route_family_hashes: hashResults }); write(path.join(output, "approval-carry-forward.json"), { result: hashesResult, library_interaction: "PASS", non_library: "PASS", canonical_logo: "PASS", approval_source: "docs/design-system/library-filter-focus-hash-change.json" });
-const finalInputs = { current_pr_head: head, tree_sha: tree, production_surface_sha256: productionHash(), canonical_logo_sha256: sha(logoPath), route_inventory: authority.route_inventory, state_manifest: authority.state_manifest, cross_browser_contract: authority.cross_browser_contract, chromium: { output_path: chromiumPath, summary_path: chromiumSummaryPath, summary_sha256: sha(chromiumSummaryPath), expected: chromium.expected_state_count, captured: chromium.captured_state_count, stable: chromium.stable_state_count }, firefox: { summary_path: path.join(crossBrowserPath, "firefox", "capture-summary.json"), summary_sha256: sha(path.join(crossBrowserPath, "firefox", "capture-summary.json")), expected: cross.firefox.expected_state_count, captured: cross.firefox.captured_state_count, stable: cross.firefox.stable_state_count, result: cross.firefox.rendered_ui_result }, webkit: { summary_path: path.join(crossBrowserPath, "webkit", "capture-summary.json"), summary_sha256: sha(path.join(crossBrowserPath, "webkit", "capture-summary.json")), expected: cross.webkit.expected_state_count, captured: cross.webkit.captured_state_count, stable: cross.webkit.stable_state_count, result: cross.webkit.rendered_ui_result }, static_snapshot: { path: path.join(output, "static-snapshot-brand-results.json"), sha256: sha(path.join(output, "static-snapshot-brand-results.json")), expected: staticResult.expected_snapshot_count, inspected: staticResult.inspected_snapshot_count, passing: staticResult.passing_snapshot_count, result: staticResult.result }, route_hashes: { path: path.join(output, "route-surface-hashes.json"), sha256: sha(path.join(output, "route-surface-hashes.json")), result: hashesResult }, approval_carry_forward: { path: path.join(output, "approval-carry-forward.json"), sha256: sha(path.join(output, "approval-carry-forward.json")), result: hashesResult }, prerequisite_checkpoint_heads: ["e6922401c5127f9cfe7408f3ac2f7a86381d0ba6", "3a07c5dbe698046605269a035de1ef139ef36adc"], reader_safety_result: readerSafety, listener_safety_result: listenerSafety, interaction_result: interaction, zoom_result: zoom, error_status_result: status, rendered_ui_defect_count: chromium.rendered_ui_defect_states.length, production_mutation_count: chromium.production_mutation_count, generated_timestamp: new Date().toISOString() };
+const nonLibraryHashResult = Object.entries(hashResults).filter(([name]) => name !== "library_interaction_surface").every(([, entry]) => entry.result === "PASS") ? "PASS" : "FAIL";
+const carryForward = { result: hashesResult, library_interaction: hashResults.library_interaction_surface.result, non_library: nonLibraryHashResult, canonical_logo: hashResults.canonical_logo_asset.result, approval_source: libraryBaseline.approval_source };
+write(path.join(output, "authority-validation.json"), authority); write(path.join(output, "static-snapshot-brand-results.json"), staticResult); write(path.join(output, "route-surface-hashes.json"), { result: hashesResult, production_surface_sha256: productionHash(), route_family_hashes: hashResults }); write(path.join(output, "approval-carry-forward.json"), carryForward);
+const finalInputs = { current_pr_head: head, tree_sha: tree, production_surface_sha256: productionHash(), canonical_logo_sha256: sha(logoPath), route_inventory: authority.route_inventory, state_manifest: authority.state_manifest, cross_browser_contract: authority.cross_browser_contract, chromium: { output_path: chromiumPath, summary_path: chromiumSummaryPath, summary_sha256: sha(chromiumSummaryPath), expected: chromium.expected_state_count, captured: chromium.captured_state_count, stable: chromium.stable_state_count }, firefox: { summary_path: path.join(crossBrowserPath, "firefox", "capture-summary.json"), summary_sha256: sha(path.join(crossBrowserPath, "firefox", "capture-summary.json")), expected: cross.firefox.expected_state_count, captured: cross.firefox.captured_state_count, stable: cross.firefox.stable_state_count, result: cross.firefox.rendered_ui_result }, webkit: { summary_path: path.join(crossBrowserPath, "webkit", "capture-summary.json"), summary_sha256: sha(path.join(crossBrowserPath, "webkit", "capture-summary.json")), expected: cross.webkit.expected_state_count, captured: cross.webkit.captured_state_count, stable: cross.webkit.stable_state_count, result: cross.webkit.rendered_ui_result }, static_snapshot: { path: path.join(output, "static-snapshot-brand-results.json"), sha256: sha(path.join(output, "static-snapshot-brand-results.json")), expected: staticResult.expected_snapshot_count, inspected: staticResult.inspected_snapshot_count, passing: staticResult.passing_snapshot_count, result: staticResult.result }, route_hashes: { path: path.join(output, "route-surface-hashes.json"), sha256: sha(path.join(output, "route-surface-hashes.json")), result: hashesResult }, approval_carry_forward: { path: path.join(output, "approval-carry-forward.json"), sha256: sha(path.join(output, "approval-carry-forward.json")), result: hashesResult }, library_interaction_baseline: libraryBaseline, prerequisite_checkpoint_heads: ["e6922401c5127f9cfe7408f3ac2f7a86381d0ba6", "3a07c5dbe698046605269a035de1ef139ef36adc"], reader_safety_result: readerSafety, listener_safety_result: listenerSafety, interaction_result: interaction, zoom_result: zoom, error_status_result: status, rendered_ui_defect_count: chromium.rendered_ui_defect_states.length, production_mutation_count: chromium.production_mutation_count, generated_timestamp: new Date().toISOString() };
 write(path.join(output, "final-evidence-inputs.json"), finalInputs); console.log(JSON.stringify({ result: "PASS", output, final_inputs: path.join(output, "final-evidence-inputs.json") }));

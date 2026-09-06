@@ -31,6 +31,14 @@ const hash = (value) => crypto.createHash("sha256").update(value).digest("hex");
 const respond = (route, body) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 
 async function fixtures(page) {
+  // The static shell declares these production preconnect hints. They are not
+  // rendered resources and have no role in this deliberately loopback-only
+  // review, but WebKit can surface an opaque HTTP/2 console error while
+  // opening them. Fulfil only those declared hints so the capture remains
+  // deterministic without masking application/API requests.
+  await page.route(/^https:\/\/(?:res\.cloudinary\.com|api\.theearnalism\.com)\//, (route) => (
+    route.fulfill({ status: 204, body: "" })
+  ));
   await page.route("**/api/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
     if (pathname.endsWith("/books")) return respond(route, books);

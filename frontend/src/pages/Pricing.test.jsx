@@ -18,4 +18,13 @@ describe("Commerce design contract", () => {
     expect(source).toContain("No subscription or autorenewal");
     expect(referenceSource).toContain('<li>{PUBLIC_ACCESS_COPY}</li>');
   });
+  test("gives loading, empty, and failed offer requests distinct recovery states", () => {
+    expect(source).toContain('const [offerStatus, setOfferStatus] = useState("loading")');
+    expect(source).toContain('setOfferStatus(packRows.length ? "ready" : "empty")');
+    expect(source).toContain('setOfferStatus("error")');
+    expect(referenceSource).toContain('data-testid="pricing-offers-loading"');
+    expect(referenceSource).toContain('data-testid="pricing-offers-empty"');
+    expect(referenceSource).toContain('data-testid="pricing-offers-error"');
+    expect(referenceSource).toContain('Try again');
+  });
 });

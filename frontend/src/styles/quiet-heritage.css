@@ -1,0 +1,167 @@
+/* Quiet Heritage is deliberately scoped to customer discovery, commerce, and
+   account surfaces. Reader preferences and the existing public header remain
+   outside this layer. */
+:root {
+  --qh-burgundy: #651D32;
+  --qh-maroon: #461322;
+  --qh-paper: #F6EDDC;
+  --qh-beige: #EEE1C9;
+  --qh-gold: #BE9854;
+  --qh-ink: #2A171B;
+  --qh-ui: 'Outfit', 'Noto Sans Bengali', sans-serif;
+  --qh-display: 'EB Garamond', 'Noto Serif Bengali', serif;
+  --qh-rule: rgba(42, 23, 27, 0.18);
+}
+
+.reference-home,
+.reference-library,
+.reference-commerce,
+.book-detail-page--reference,
+.public-page-frame,
+.auth-account-shell,
+.account-page-modern {
+  font-family: var(--qh-ui);
+}
+
+.reference-home h1,
+.reference-home h2,
+.reference-library h1,
+.reference-library h2,
+.reference-commerce h1,
+.reference-commerce h2,
+.book-detail-page--reference h1,
+.book-detail-page--reference h2,
+.public-page-frame h1,
+.public-page-frame h2,
+.auth-account-shell h1,
+.account-page-modern h1,
+.account-page-modern h2 {
+  font-family: var(--qh-display);
+  font-weight: 400;
+}
+
+.reference-home h1 em,
+.reference-commerce h1 em { font-style: italic; font-weight: 400; }
+
+.reference-home__hero,
+.reference-commerce__hero {
+  background: var(--qh-maroon);
+}
+
+.reference-home__hero::before,
+.reference-commerce__hero::before {
+  background: linear-gradient(90deg, rgba(70, 19, 34, 0.99) 0%, rgba(70, 19, 34, 0.9) 45%, rgba(70, 19, 34, 0.22) 78%);
+}
+
+.reference-home__hero,
+.reference-commerce__hero { min-height: clamp(30rem, 44vw, 39rem); }
+.reference-home__hero-copy,
+.reference-commerce__hero > div { width: min(39rem, 50%); }
+.reference-home h1,
+.reference-commerce h1 { font: 400 clamp(2.5rem, 5.2vw, 4rem)/0.98 var(--qh-display); letter-spacing: -0.03em; }
+.reference-home__lede,
+.reference-commerce__hero p { max-width: 35rem; font-size: clamp(1rem, 1.25vw, 1.125rem); }
+.reference-home__hero-art,
+.reference-commerce__hero-art { width: min(57%, 56rem); }
+.reference-home__hero-art img { object-position: 66% center; }
+.reference-commerce__hero-art img { object-position: 63% center; }
+
+.reference-home__journey,
+.reference-home__listening,
+.reference-home__trust,
+.reference-library__content,
+.reference-library__titlebar,
+.reference-commerce__main { width: min(100% - 2rem, 84rem); }
+
+.reference-button,
+.reference-offer button,
+.reference-commerce__pathways a {
+  border-radius: 0.28rem;
+  font-family: var(--qh-ui);
+  font-weight: 500;
+}
+
+.reference-button--gold { background: var(--qh-gold); color: var(--qh-ink); }
+.reference-button--outline { border-color: var(--qh-gold); color: #fffaf1; }
+.reference-kicker,
+.reference-section-heading > div > p:first-child { color: var(--qh-gold); font-family: var(--qh-ui); }
+
+/* Library is a quiet, readable paper surface—not another dark hero. */
+.reference-library.reference-library {
+  --reference-paper: var(--qh-paper);
+  --reference-text: var(--qh-ink);
+  --reference-muted: #62454d;
+  --reference-line: var(--qh-rule);
+  --reference-gold: #8b6429;
+  background: var(--qh-paper) !important;
+  color: var(--qh-ink) !important;
+}
+.reference-library__titlebar { border-bottom-color: var(--qh-rule) !important; }
+.reference-library__titlebar h1 { font: 400 clamp(2.4rem, 4vw, 3.8rem)/1 var(--qh-display); color: var(--qh-ink) !important; }
+.reference-library__sidebar,
+.reference-library-shelf { border-color: var(--qh-rule) !important; }
+.reference-library__pass,
+.reference-library-drawer > div { border-radius: 0.35rem; background: var(--qh-beige) !important; }
+.reference-library input,
+.reference-library select,
+.reference-library button { font-family: var(--qh-ui); }
+.reference-library input { background: #fffaf0 !important; border-color: rgba(101, 29, 50, 0.28) !important; color: var(--qh-ink) !important; }
+.reference-filter-group button[aria-pressed="true"] { background: var(--qh-burgundy); color: #fffaf1; }
+.reference-book-tile__cover { border-radius: 0.2rem; background: #dbcaa8; }
+.reference-book-tile__status { border-radius: 0.15rem; }
+.reference-library .reference-book-tile__title { color: var(--qh-ink) !important; font-family: var(--qh-display); font-weight: 400; font-size: 1.18rem; }
+.reference-library .reference-book-tile__author { color: #62454d !important; }
+.reference-library .reference-book-tile__actions a { color: var(--qh-burgundy) !important; }
+
+.reference-commerce { background: var(--qh-paper); color: var(--qh-ink); }
+.reference-commerce__main { background: var(--qh-paper); }
+.reference-offer,
+.reference-commerce__pathways article { border-color: var(--qh-rule); border-radius: 0.35rem; background: #fbf3e5; box-shadow: none; }
+.reference-offer.is-emphasized { border-color: var(--qh-gold); box-shadow: 0 0 0 1px var(--qh-gold); }
+.reference-offer strong,
+.reference-commerce__offers h2,
+.reference-commerce__pathways h2 { color: var(--qh-burgundy); font-family: var(--qh-display); font-weight: 400; }
+.reference-offer button { background: var(--qh-burgundy); }
+.reference-offer-state { grid-column: 1 / -1; margin: 0; border: 1px solid var(--qh-rule); border-radius: 0.35rem; padding: 1.25rem; color: var(--qh-ink); background: #fbf3e5; font-family: var(--qh-ui); }
+.reference-offer-state[role="alert"] { border-color: rgba(101, 29, 50, 0.48); }
+.reference-offer-state p { margin: 0; }
+.reference-offer-state button,
+.reference-offer-state a { display: inline-flex; min-height: 2.75rem; align-items: center; margin-top: 0.9rem; padding: 0.45rem 0.9rem; border: 1px solid var(--qh-burgundy); border-radius: 0.2rem; color: var(--qh-burgundy); font-family: var(--qh-ui); font-weight: 500; }
+.reference-offer-state button { background: var(--qh-burgundy); color: #fffaf0; }
+.reference-commerce__evidence,
+.reference-commerce__trust { border-color: var(--qh-rule); }
+.reference-commerce__final { background: var(--qh-burgundy); }
+
+.book-detail-page--reference,
+.public-page-frame--editorial,
+.public-page-frame--quiet,
+.auth-account-shell { background: var(--qh-paper); color: var(--qh-ink); }
+.editorial-support-hero { border-bottom-color: var(--qh-rule); background: linear-gradient(180deg, #fbf4e6, var(--qh-paper)); }
+.editorial-surface,
+.editorial-article-card { border-radius: 0.35rem; border-color: var(--qh-rule); background: #fbf5e9; box-shadow: none; }
+.editorial-article-card:hover { border-color: rgba(101, 29, 50, 0.42); box-shadow: 0 12px 30px -26px rgba(42, 23, 27, 0.55); }
+.auth-account-auth-card { border-radius: 0.35rem; border-color: var(--qh-rule); box-shadow: 0 1.2rem 3.5rem -3.1rem rgba(42, 23, 27, 0.72); }
+.auth-account-auth-aside { background: linear-gradient(145deg, var(--qh-maroon), var(--qh-burgundy)); }
+.auth-account-auth-content { background: #fbf5e9; }
+
+@media (max-width: 767px) {
+  .reference-home__hero,
+  .reference-commerce__hero { min-height: 37rem; padding-top: 3.6rem; }
+  .reference-home__hero-copy,
+  .reference-commerce__hero > div { width: min(100%, 33rem); }
+  .reference-home h1,
+  .reference-commerce h1 { font-size: clamp(2.45rem, 11vw, 3.2rem); }
+  .reference-home__hero-art,
+  .reference-commerce__hero-art { width: 100%; opacity: 0.42; }
+  .reference-home__journey,
+  .reference-home__listening,
+  .reference-home__trust,
+  .reference-library__content,
+  .reference-library__titlebar,
+  .reference-commerce__main { width: min(100% - 1.5rem, 84rem); }
+  .reference-library__titlebar h1 { font-size: 2.55rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reference-home *, .reference-library *, .reference-commerce *, .public-page-frame *, .auth-account-shell * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
