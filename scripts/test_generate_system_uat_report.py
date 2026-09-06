@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import argparse
 import subprocess
 import tempfile
 import unittest
@@ -169,6 +170,32 @@ class SystemUatProvenanceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "already exists"):
             MODULE.generate_report(root=self.root, manifest=manifest, tested_code_head=self.head)
         self.assertEqual({filename: (self.root / "uat" / filename).read_bytes() for filename in MODULE.REPORT_FILENAMES}, snapshots)
+
+    def test_init_allows_its_new_run_root_but_rejects_existing_reports(self) -> None:
+        run_id = "run-20260821T000002Z-125"
+        run_root = self.root / "uat" / "evidence" / "system-final" / run_id
+        run_root.mkdir()
+        args = argparse.Namespace(
+            manifest=str(run_root / "reports" / MODULE.MANIFEST_NAME), init=True, run_id=run_id,
+            clean_worktree_before_execution="true", provenance_mode="ATTACHED_EXPECTED_BRANCH",
+            expected_repository_root=str(self.root.resolve()), expected_commit=self.head, expected_tree=self.tree,
+            expected_branch="codex/test", expected_remote_ref=None, expected_remote_ref_sha=None,
+            remote_ref_refreshed_at=None, frontend="http://127.0.0.1:13000",
+            api="http://127.0.0.1:18000/api", mongodb="mongodb://127.0.0.1:27018/earnalism_uat?replicaSet=earnalism-uat-rs0",
+            record=None, log="", exit_code=0, passed=None, failed=0, missing=0, command="",
+            started_at="", completed_at="", require=[],
+        )
+        original_root, original_uat = MODULE.ROOT, MODULE.UAT
+        MODULE.ROOT = self.root
+        MODULE.UAT = self.root / "uat"
+        try:
+            MODULE.write_manifest(args)
+            self.assertTrue((run_root / "reports" / MODULE.MANIFEST_NAME).is_file())
+            with self.assertRaisesRegex(ValueError, "already exists"):
+                MODULE.write_manifest(args)
+        finally:
+            MODULE.ROOT = original_root
+            MODULE.UAT = original_uat
 
     def test_accepts_detached_exact_remote_authority(self) -> None:
         self.git("update-ref", "refs/remotes/origin/main", self.head)

@@ -509,7 +509,10 @@ def write_manifest(args: argparse.Namespace) -> None:
     path = Path(args.manifest).absolute()
     reports = report_dir(path, ROOT, args.run_id if args.init else None)
     if args.init:
-        if reports.parent.exists() or reports.exists() or path.exists():
+        # The launcher creates the selected run root first so it can capture
+        # its own log.  Only a pre-existing reports directory/output is a
+        # collision with this reporter lifecycle.
+        if reports.exists() or path.exists():
             raise ValueError("run-specific evidence destination already exists")
         reports.mkdir(parents=True, exist_ok=False)
         output_path(reports, MANIFEST_NAME, must_not_exist=True)
