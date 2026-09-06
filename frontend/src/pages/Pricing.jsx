@@ -38,29 +38,42 @@ export default function Pricing() {
   const [packs, setPacks] = useState([]);
   const [config, setConfig] = useState({ configured: false, mode: "test", key_id: "" });
   const [busyId, setBusyId] = useState(null);
+  const [offerStatus, setOfferStatus] = useState("loading");
+  const [offerAttempt, setOfferAttempt] = useState(0);
   const [searchParams] = useSearchParams();
   const nav = useNavigate();
   const selectedPackId = searchParams.get("pack");
   const funnelSource = searchParams.get("source");
 
   useEffect(() => {
+    let active = true;
+    const applyOffers = (nextPacks, nextConfig) => {
+      if (!active) return;
+      const packRows = Array.isArray(nextPacks) ? nextPacks : [];
+      setPacks(packRows);
+      setConfig(nextConfig || {});
+      setOfferStatus(packRows.length ? "ready" : "empty");
+    };
     trackFunnelEvent("pricing_page_view", {
       selected_pack_id: selectedPackId || "",
       source: funnelSource || "pricing",
     });
     api.get("/payments/offers")
       .then(({ data }) => {
-        const packRows = data?.packs || [];
-        setPacks(packRows);
-        setConfig(data?.config || {});
+        applyOffers(data?.packs, data?.config);
       })
       .catch(() => Promise.all([api.get("/payments/packs"), api.get("/payments/config")])
         .then(([packsRes, configRes]) => {
-          setPacks(packsRes.data || []);
-          setConfig(configRes.data || {});
+          applyOffers(packsRes.data, configRes.data);
         })
-        .catch(() => setPacks([])));
-  }, [funnelSource, selectedPackId]);
+        .catch(() => {
+          if (active) {
+            setPacks([]);
+            setOfferStatus("error");
+          }
+        }));
+    return () => { active = false; };
+  }, [funnelSource, offerAttempt, selectedPackId]);
 
   const isAuthed = !!user && typeof user === "object";
 
@@ -240,8 +253,10 @@ export default function Pricing() {
         packs={packs}
         config={config}
         busyId={busyId}
+        offerStatus={offerStatus}
         selectedPackId={selectedPackId}
         onBuy={handleBuy}
+        onRetry={() => setOfferAttempt((attempt) => attempt + 1)}
       />
       <div className="reference-commerce__legacy-content" aria-hidden="true">
       <div className="commerce-main">

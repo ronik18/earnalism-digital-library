@@ -122,6 +122,12 @@
 .reference-commerce__offers h2,
 .reference-commerce__pathways h2 { color: var(--qh-burgundy); font-family: var(--qh-display); font-weight: 400; }
 .reference-offer button { background: var(--qh-burgundy); }
+.reference-offer-state { grid-column: 1 / -1; margin: 0; border: 1px solid var(--qh-rule); border-radius: 0.35rem; padding: 1.25rem; color: var(--qh-ink); background: #fbf3e5; font-family: var(--qh-ui); }
+.reference-offer-state[role="alert"] { border-color: rgba(101, 29, 50, 0.48); }
+.reference-offer-state p { margin: 0; }
+.reference-offer-state button,
+.reference-offer-state a { display: inline-flex; min-height: 2.75rem; align-items: center; margin-top: 0.9rem; padding: 0.45rem 0.9rem; border: 1px solid var(--qh-burgundy); border-radius: 0.2rem; color: var(--qh-burgundy); font-family: var(--qh-ui); font-weight: 500; }
+.reference-offer-state button { background: var(--qh-burgundy); color: #fffaf0; }
 .reference-commerce__evidence,
 .reference-commerce__trust { border-color: var(--qh-rule); }
 .reference-commerce__final { background: var(--qh-burgundy); }
