@@ -51,6 +51,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install launcher test prerequisite
+        run: sudo apt-get update && sudo apt-get install --yes ripgrep
+
       - name: Run complete local UAT launcher suite
         run: |
           command -v bash node python3 rg shasum
