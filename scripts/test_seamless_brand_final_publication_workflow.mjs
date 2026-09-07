@@ -59,7 +59,7 @@ pass("runs the focused WebKit Article stability preflight before browser populat
 pass("uses the checked-in Article stability runner with explicit Bash", (() => { const step = runSteps.find((item) => item.name === "Run focused Article stability gate"); return step?.shell === "bash" && !/<<'JS'/.test(step.run) && /run_seamless_brand_article_stability_gate\.mjs/.test(step.run); })());
 pass("includes the Article stability runner and its test in workflow path filters", /scripts\/run_seamless_brand_article_stability_gate\.mjs/.test(workflow) && /scripts\/test_seamless_brand_article_stability_gate\.mjs/.test(workflow));
 const captureStep = runSteps.find((item) => item.name === "Capture the exact head in all browsers");
-pass("binds the workflow production-hash authority to checked-in production source", workflowDocument.jobs?.["seamless-brand-review"]?.env?.PRODUCTION_SURFACE_SHA === productionSurfaceHash());
+pass("binds both production-hash authorities to checked-in production source", workflowDocument.jobs?.["seamless-brand-review"]?.env?.PRODUCTION_SURFACE_SHA === productionSurfaceHash() && workflowDocument.jobs?.["verify-published-owner-review"]?.env?.PRODUCTION_SURFACE_SHA === productionSurfaceHash());
 pass("uses explicit production-hash authority for real full-Chromium validation", /test_seamless_brand_full_chromium_matrix\.mjs --output "\$EVIDENCE_ROOT\/chromium" --expected-production-surface-sha "\$PRODUCTION_SURFACE_SHA"/.test(captureStep?.run || ""));
 pass("checks the captured production hash before real matrix validation", /CAPTURED_PRODUCTION_SURFACE_SHA=.*jq -r \.production_surface_sha256/.test(captureStep?.run || "") && /test "\$CAPTURED_PRODUCTION_SURFACE_SHA" = "\$PRODUCTION_SURFACE_SHA"/.test(captureStep?.run || ""));
 pass("rejects invalid workflow production-hash authority", /\[\[ "\$PRODUCTION_SURFACE_SHA" =~ \^\[0-9a-f\]\{64\}\$ \]\]/.test(captureStep?.run || ""));
@@ -69,6 +69,8 @@ pass("shell-parses every Bash-compatible workflow run block", shellAudit.every((
 pass("records a heredoc audit without invalid indented delimiters", shellAudit.every((entry) => entry.heredocs.every((heredoc) => heredoc.effective_leading_whitespace.every((count) => count === 0))));
 pass("records the complete Article stability result in exact-head evidence inputs", /ARTICLE_STABILITY_RESULTS/.test(workflow) && /inputs\.article_stability=articleStability/.test(workflow) && /\[10,10,10\]/.test(workflow));
 pass("runs final evidence and package validators", /validate_seamless_brand_final_evidence_inputs\.py/.test(workflow) && /validate_seamless_brand_final_owner_review\.py/.test(workflow));
+pass("runs the historic and current Library-baseline validators before browser evidence", before("Run deterministic tooling gates", "Run browser tooling gates") && /node scripts\/test_pr360_library_interaction_baseline\.mjs/.test(workflow) && /node scripts\/test_pr362_library_interaction_baseline\.mjs/.test(workflow));
+pass("runs the isolated Header-to-Library journey in the browser gate", /node scripts\/test_pr362_library_query_journey\.mjs/.test(workflow));
 pass("restores the known generated sitemap before the clean-tree assertion", /source-sitemap\.xml/.test(workflow) && before("cp \"$RUNNER_TEMP/source-sitemap.xml\" frontend/public/sitemap.xml", "git diff --exit-code"));
 pass("generates the exact-head package", /generate_seamless_brand_final_owner_review\.py/.test(workflow) && /--pr-head \"\$PR_HEAD_SHA\"/.test(workflow));
 const packageStep = runSteps.find((item) => item.name === "Build package and perform PDF and HTML QA");

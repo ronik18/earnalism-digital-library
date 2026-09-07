@@ -9,7 +9,7 @@ current production route audit.
 | --- | --- | --- | --- | --- |
 | `/` | Indexable discovery | `pages/Home.jsx`, home components | warm editorial discovery | Preview label uses the shared contract; audio rail remains truth-gated. |
 | `/library` | Indexable discovery | `pages/Library.jsx`, `BookCard.jsx` | warm editorial browse | Bengali, English, and audiobook discovery are query states. |
-| `/library?language=bn&availability=reader-ready` | Indexable query destination | `pages/Library.jsx` | Bengali Classics browse | No separate route is invented. |
+| `/library?language=bn&availability=reader-ready` | Indexable query destination | `pages/Library.jsx` | Bengali Classics browse | Existing URL maps to the release-safe Reader only filter; no separate route is invented. |
 | `/library?language=en` | Indexable query destination | `pages/Library.jsx` | English Classics browse | No separate route is invented. |
 | `/library?availability=approved-audiobook` | Indexable query destination | `pages/Library.jsx` | approved-audio browse | Cards follow canonical audio approval only. |
 | `/pricing` | Indexable commerce | `pages/Pricing.jsx`, `ReadingPass/*` | warm commerce | No payment or wallet behavior changes. |

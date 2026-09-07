@@ -85,7 +85,7 @@ jobs:
       PR_HEAD_SHA: ${{ needs.resolve-pr-head.outputs.pr_head }}
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
-      PRODUCTION_SURFACE_SHA: b340dd6cb26249d9f27c1790b988500c5c6e0dfc7627d90fb8daaa1a63811927
+      PRODUCTION_SURFACE_SHA: 89bf6aee4406c41b5a22936222d9030ee419b296bc54c8a315a7a2581a3d4996
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - name: Checkout exact pull-request head
@@ -131,6 +131,8 @@ jobs:
           node scripts/test_seamless_brand_final_evidence_inputs.mjs
           node scripts/test_seamless_brand_final_owner_review.mjs
           node scripts/test_seamless_brand_final_publication_workflow.mjs
+          node scripts/test_pr360_library_interaction_baseline.mjs
+          node scripts/test_pr362_library_interaction_baseline.mjs
 
       - name: Build production-contract frontend and verify static SEO
         run: |
@@ -241,6 +243,7 @@ jobs:
           node scripts/test_reader_mobile_high_zoom_reflow.mjs
           node scripts/test_seamless_brand_core_zoom_batch.mjs
           node scripts/test_seamless_brand_experience_footer_zoom_batch.mjs
+          node scripts/test_pr362_library_query_journey.mjs
 
       - name: Capture the exact head in all browsers
         run: |
@@ -481,7 +484,7 @@ jobs:
       ARTIFACT_ID: ${{ needs.seamless-brand-review.outputs.artifact_id }}
       GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
       GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
-      PRODUCTION_SURFACE_SHA: b340dd6cb26249d9f27c1790b988500c5c6e0dfc7627d90fb8daaa1a63811927
+      PRODUCTION_SURFACE_SHA: 89bf6aee4406c41b5a22936222d9030ee419b296bc54c8a315a7a2581a3d4996
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - uses: actions/checkout@v6

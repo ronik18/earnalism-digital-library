@@ -10,7 +10,7 @@ import {
   mergeDraculaBook,
   notifyUrl,
 } from "../lib/controlledLaunch";
-import { languageOfBook, matchesLibraryFacets, sortLibraryBooks } from "../lib/libraryCatalog";
+import { languageOfBook, listeningFilterFromSearch, matchesLibraryFacets, sortLibraryBooks } from "../lib/libraryCatalog";
 import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
 import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
@@ -86,7 +86,7 @@ export default function Library() {
   const [query, setQuery] = useState(params.get("q") || "");
   const language = params.get("language") || "all";
   const reading = params.get("reading") || (params.get("category") && !["all", "live", "pipeline"].includes(params.get("category")) ? params.get("category") : "all");
-  const listening = params.get("listening") || (params.get("availability") === "approved-audiobook" ? "available" : "all");
+  const listening = listeningFilterFromSearch(params);
   const genre = params.get("genre") || "all";
   const sort = params.get("sort") || "recently-approved";
 
