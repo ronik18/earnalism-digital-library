@@ -6,16 +6,19 @@ const baseUrl = process.env.SEAMLESS_BRAND_TEST_BASE_URL;
 if (!baseUrl) throw new Error("SEAMLESS_BRAND_TEST_BASE_URL is required for the PR362 Header-to-Library journey.");
 
 const books = [
-  { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, chapters: [{ id: "devdas-page-1", is_preview: true }] },
-  { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, chapters: [{ id: "pather-page-1", is_preview: true }] },
+  { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/devdas", chapters: [{ id: "devdas-page-1", is_preview: true }] },
+  { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/pather-panchali", chapters: [{ id: "pather-page-1", is_preview: true }] },
   { slug: "frankenstein", title: "Batch-listed Bengali draft", author: "Fixture Editor", language: "bn", publication_status: "DRAFT", reader_enabled: false, preview_enabled: false, chapters: [] },
   { slug: "reader-disabled-edition", title: "Reader-disabled Bengali edition", author: "Fixture Editor", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: false, preview_enabled: false, chapters: [] },
+  { slug: "book-d19e96859f", title: "Live-labelled Bengali edition without a preview", author: "Fixture Editor", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
+  { slug: "book-f5d593e1f4", title: "Second live-labelled Bengali edition without a preview", author: "Fixture Editor", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
 ];
 const expectedHeaderUrl = "?language=bn&availability=reader-ready";
 const expectedAudioUrl = "?language=bn&listening=available";
 const apiEligibleSlugs = ["devdas", "pather-panchali"];
 const fallbackEligibleSlugs = ["devdas", "pather-panchali"];
-const ineligibleSlugs = ["frankenstein", "reader-disabled-edition"];
+const ineligibleSlugs = ["frankenstein", "reader-disabled-edition", "book-d19e96859f", "book-f5d593e1f4"];
+const productionShapedPreparationSlugs = ["book-d19e96859f", "book-f5d593e1f4"];
 
 function query(page) {
   return new URL(page.url()).search;
@@ -46,6 +49,26 @@ async function assertEligibleReaderResults(page, expectedSlugs) {
   for (const slug of ineligibleSlugs) {
     assert.equal(await page.getByTestId(`reference-book-${slug}`).count(), 0, `${slug} leaked into Reader only results`);
   }
+}
+
+async function assertProductionShapedPreparationCards(context, base) {
+  const page = await context.newPage();
+  await configureApi(page, "api");
+  await page.goto(`${base}/library?language=bn`, { waitUntil: "domcontentloaded" });
+  await page.getByTestId("library-reference-surface").waitFor();
+  for (const slug of productionShapedPreparationSlugs) {
+    const card = page.getByTestId(`reference-book-${slug}`);
+    await card.waitFor();
+    await expectText(card.locator(".reference-book-tile__status"), "Coming soon", `${slug} must retain its truthful visible status`);
+    const cta = card.getByRole("link", { name: "Notify me", exact: true });
+    await cta.waitFor();
+    assert.equal(await cta.getAttribute("href"), `/contact?interest=${slug}`, `${slug} must retain its notification destination`);
+  }
+  await page.close();
+}
+
+async function expectText(locator, expected, message) {
+  assert.equal((await locator.textContent()).trim(), expected, message);
 }
 
 async function configureApi(page, source) {
@@ -100,6 +123,7 @@ async function run({ name, viewport, mobile, source, resize = [] }) {
   assert.equal(query(page), expectedHeaderUrl, `${name}: Header navigation did not preserve the established query contract`);
   const expectedSlugs = source === "fallback" ? fallbackEligibleSlugs : apiEligibleSlugs;
   await assertEligibleReaderResults(page, expectedSlugs);
+  if (source === "api") await assertProductionShapedPreparationCards(context, base);
 
   const statusGroup = mobile
     ? page.locator('.reference-library-drawer[role="dialog"]:visible fieldset').nth(2)
