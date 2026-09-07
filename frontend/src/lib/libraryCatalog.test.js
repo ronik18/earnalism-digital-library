@@ -23,6 +23,7 @@ describe("libraryCatalog", () => {
       title: "দেবদাস",
       author: "Sarat Chandra Chattopadhyay",
       publication_status: "LIVE_APPROVED",
+      reader_enabled: true,
       audiobook_enabled: false,
     });
     expect(presentation.languageLabel).toBe("Bengali");
@@ -58,5 +59,27 @@ describe("libraryCatalog", () => {
     });
     expect(presentation.availabilityLabel).toBe("In Preparation");
     expect(presentation.audioBadgeLabel).toBe("Release Gated");
+  });
+
+  it("does not promote a batch-listed draft or a reader-disabled edition from raw status alone", () => {
+    const batchListedDraft = {
+      slug: "frankenstein",
+      title: "Batch listed draft",
+      publication_status: "DRAFT",
+      reader_enabled: false,
+      audiobook_enabled: false,
+    };
+    const readerDisabledEdition = {
+      slug: "reader-disabled-edition",
+      title: "Reader disabled edition",
+      publication_status: "LIVE_APPROVED",
+      reader_enabled: false,
+      audiobook_enabled: false,
+    };
+
+    [batchListedDraft, readerDisabledEdition].forEach((book) => {
+      expect(availabilityOfBook(book)).toBe("in-preparation");
+      expect(matchesLibraryFacets(book, "bn", "audio-hidden")).toBe(false);
+    });
   });
 });
