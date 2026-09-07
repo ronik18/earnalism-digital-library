@@ -1,5 +1,5 @@
 import { audiobookReleaseState } from "./audioReleaseSafety";
-import { bookLaunchStatus } from "./controlledLaunch";
+import { canShowPreview } from "./controlledLaunch";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 
@@ -21,7 +21,7 @@ export function languageOfBook(book = {}) {
 export function availabilityOfBook(book = {}) {
   const audioState = audiobookReleaseState(book);
   if (audioState.canShowControls) return "approved-audiobook";
-  return bookLaunchStatus(book) === "LIVE_APPROVED" ? "reader-ready" : "in-preparation";
+  return canShowPreview(book) ? "reader-ready" : "in-preparation";
 }
 
 export function libraryPresentationForBook(book = {}) {

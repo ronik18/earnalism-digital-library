@@ -19,10 +19,10 @@ import { api } from "../lib/api";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 import {
-  bookLaunchStatus,
   canShowPreview,
   notifyUrl,
 } from "../lib/controlledLaunch";
+import { availabilityOfBook } from "../lib/libraryCatalog";
 import BookCoverImage from "./BookCoverImage";
 import publicEvidenceSnapshot from "../data/publicEvidenceSnapshot.json";
 import "./ReferencePublicPages.css";
@@ -47,7 +47,7 @@ function titleFor(book) {
 }
 
 function isLive(book) {
-  return bookLaunchStatus(book) === "LIVE_APPROVED";
+  return availabilityOfBook(book) === "reader-ready";
 }
 
 function BookTile({ book, compact = false, priority = false, showListen = false }) {
