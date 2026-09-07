@@ -105,6 +105,7 @@ export function compareLibraryInteractionBaseline(root = process.cwd(), recordPa
     changed_from_previous: observed_surface_sha256 !== baseline.previous_baseline.surface_sha256,
     expected_change: true,
     authorization: baseline.owner_authorization.reference,
+    authorization_scope: baseline.owner_authorization.scope,
     result: observed_surface_sha256 === baseline.authorized_surface_sha256 ? "PASS" : "FAIL",
   };
 }

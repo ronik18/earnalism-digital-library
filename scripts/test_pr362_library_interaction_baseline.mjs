@@ -35,6 +35,7 @@ test("the exact PR362 baseline matches the reviewed Library surface", () => {
   assert.equal(comparison.expected_surface_sha256, "a698315a69c6979ca6eedb2d2bab59461b19745ba883827deac02f79c187cd52");
   assert.equal(comparison.observed_surface_sha256, comparison.expected_surface_sha256);
   assert.equal(comparison.previous_surface_sha256, "a2925700553b5eef5adcc1f9cc52dbc1590d92fe70a022199864c3c3726c8003");
+  assert.equal(comparison.authorization_scope, "Explicit PR #360 to PR #362 Library-interaction baseline transition");
   assert.equal(baseline.reviewed_source.commit, "96257f2c010512477e97dfc7a66771b7443c8a44");
   assert.equal(baseline.reviewed_source.tree, "739062485bb53d07747ac84a48fb9826c4f4e862");
   assert.equal(comparison.result, "PASS");
@@ -59,7 +60,7 @@ test("capture output cannot become expected-value authority", () => {
   const generator = read(path.join(root, "scripts/generate_seamless_brand_final_evidence_inputs.mjs"));
   assert.match(generator, /libraryBaseline\.expected_surface_sha256/);
   assert.doesNotMatch(generator, /library_interaction_surface:\s*captureRouteHashes\.library_interaction_surface/);
-  assert.match(generator, /libraryBaseline\.owner_authorization\.scope/);
+  assert.match(generator, /libraryBaseline\.authorization_scope/);
 });
 
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));
