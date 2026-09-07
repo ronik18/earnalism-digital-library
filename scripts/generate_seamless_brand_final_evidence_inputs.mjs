@@ -75,7 +75,7 @@ const hashResults = Object.fromEntries(Object.entries(currentHashes).map(([name,
     current_hash: value,
     changed: isLibraryInteractionSurface ? libraryBaseline.changed_from_previous : false,
     expected_change: isLibraryInteractionSurface,
-    reason: isLibraryInteractionSurface ? "Explicitly authorized PR344 to PR360 Library-interaction baseline transition." : exactHeadCaptureAuthority ? "Exact-head Chromium capture and current generator use the same route-family hash authority." : "Carry-forward from latest passing checkpoint.",
+    reason: isLibraryInteractionSurface ? libraryBaseline.owner_authorization.scope : exactHeadCaptureAuthority ? "Exact-head Chromium capture and current generator use the same route-family hash authority." : "Carry-forward from latest passing checkpoint.",
     approval_source: isLibraryInteractionSurface ? libraryBaseline.approval_source : exactHeadCaptureAuthority ? chromiumSummaryPath : "docs/design-system/library-filter-focus-hash-change.json",
     result: value === approvalValues[name] ? "PASS" : "FAIL",
   }];

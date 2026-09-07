@@ -1,0 +1,35 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/ReferencePublicPages.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "96257f2c010512477e97dfc7a66771b7443c8a44",
+    "tree": "739062485bb53d07747ac84a48fb9826c4f4e862"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/pr360-library-interaction-baseline.json",
+    "reviewed_source_commit": "14b50734e2f752102d9b9646effaba709b71d1a2",
+    "surface_sha256": "a2925700553b5eef5adcc1f9cc52dbc1590d92fe70a022199864c3c3726c8003"
+  },
+  "authorized_surface_sha256": "a698315a69c6979ca6eedb2d2bab59461b19745ba883827deac02f79c187cd52",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/pages/Library.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.jsx",
+      "frontend/src/components/ReferencePublicPages.css"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "OWNER_AUTHORIZATION_PR362_VERSIONED_LIBRARY_INTERACTION_BASELINE",
+    "scope": "Explicit PR #360 to PR #362 Library-interaction baseline transition",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This three-file fingerprint is source-integrity evidence only. It does not cover every visual dependency or prove browser acceptance."
+}
