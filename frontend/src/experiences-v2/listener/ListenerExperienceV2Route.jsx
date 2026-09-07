@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { userApi } from "../../lib/api";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
 import { endReadingPassSession, renewReadingPassLease, startReadingPassAudioSession } from "../../lib/readingPassApi";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
 import ListenerExperienceV2 from "./ListenerExperienceV2";
+import { listenerRecoveryPlan } from "./listenerRouteState";
 const LISTENER_VISUAL_FIXTURE_BOOK = Object.freeze({
   slug: "a-ghost-story",
   title: "A Ghost Story",
@@ -14,8 +15,16 @@ const LISTENER_VISUAL_FIXTURE_BOOK = Object.freeze({
   thumbnail_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
 });
 
-function routeState(title, message) {
-  return <main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p>{message}</p></section></main>;
+function routeState(title, message, action = null) {
+  return <main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role="alert">{message}</p>{action}</section></main>;
+}
+
+function ListenerRecoveryActions({ slug, error }) {
+  const plan = listenerRecoveryPlan({ error });
+  return <div className="experience-v2-route-state__actions">
+    <Link to={`/book/${slug}`} data-testid="listener-recovery-book">Return to book details</Link>
+    {plan.needsPass && <Link to="/pricing" data-testid="listener-recovery-passes">View Reading Passes</Link>}
+  </div>;
 }
 
 export default function ListenerExperienceV2Route() {
@@ -79,6 +88,7 @@ export default function ListenerExperienceV2Route() {
   }} />;
   if (book === null) return routeState("Opening listener", "Checking approved listening access.");
   if (!listenerReleasePresentation(book).canRender) return <Navigate to={`/book/${slug}`} replace />;
+  if (error) return routeState("Listening access needs attention", error, <ListenerRecoveryActions slug={slug} error={error} />);
   return <><ListenerExperienceV2 book={book} access={{ authorized: Boolean(lease) }} onAuthorize={authorize} onPlaybackStateChange={setPlaybackState} onNavigate={(target) => {
     if (target === "back") navigate(`/book/${slug}`);
     if (target === "library" || target === "search") navigate("/library");

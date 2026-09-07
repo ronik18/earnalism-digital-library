@@ -11,7 +11,7 @@ import {
 } from "../../lib/readingPassApi";
 import { useAuth } from "../../context/AuthContext";
 import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
-import { readerRouteState } from "./readerRouteState";
+import { readerRecoveryPlan, readerRouteState } from "./readerRouteState";
 
 function pageFromSearch(search) {
   const value = Number(search.get("p") || 1);
@@ -27,7 +27,17 @@ function paragraphsFromHtml(html = "") {
 }
 
 function routeState(title, message, action = null) {
-  return <main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p>{message}</p>{action}</section></main>;
+  return <main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role="alert">{message}</p>{action}</section></main>;
+}
+
+function ReaderRecoveryActions({ slug, canonicalPage, user, error }) {
+  const plan = readerRecoveryPlan({ canonicalPage, user, error });
+  const next = `/reader/${encodeURIComponent(slug)}?p=${canonicalPage}`;
+  return <div className="experience-v2-route-state__actions">
+    <Link to={`/book/${slug}`} data-testid="reader-recovery-book">Return to book details</Link>
+    {plan.needsSignIn && <Link to={`/login?next=${encodeURIComponent(next)}`} data-testid="reader-recovery-sign-in">Sign in to continue</Link>}
+    {!plan.needsSignIn && plan.needsPass && <Link to="/pricing" data-testid="reader-recovery-passes">View Reading Passes</Link>}
+  </div>;
 }
 
 export default function ReaderExperienceV2Route() {
@@ -162,7 +172,7 @@ export default function ReaderExperienceV2Route() {
     if (target === "passes") navigate("/pricing");
   }} />;
   if (renderState.state === "loading") return routeState("Opening reader", "Loading this canonical edition.");
-  if (renderState.state === "unavailable") return routeState("Reader unavailable", renderState.message, <Link to={`/book/${slug}`}>Return to book details</Link>);
+  if (renderState.state === "unavailable") return routeState("Reader unavailable", renderState.message, <ReaderRecoveryActions slug={slug} canonicalPage={canonicalPage} user={user} error={error} />);
 
   return <><ReaderExperienceV2 model={model} access={{ authorized: Boolean(lease) }} onRequestPage={authorizeAndContinue} onNavigate={(target) => {
     if (target === "back") navigate(`/book/${slug}`);

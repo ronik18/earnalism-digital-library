@@ -19,3 +19,13 @@ export function readerRouteState({
   }
   return { state: "ready", message: "" };
 }
+
+export function readerRecoveryPlan({ canonicalPage = 1, user = null, error = "" } = {}) {
+  const accessMessage = String(error || "").toLowerCase();
+  const needsSignIn = Number(canonicalPage) > 3 && !user;
+  const needsPass = !needsSignIn && (
+    Number(canonicalPage) > 3
+    || /current reading pass|required to continue|lease|authorization expired|access could not be verified/.test(accessMessage)
+  );
+  return { needsSignIn, needsPass };
+}

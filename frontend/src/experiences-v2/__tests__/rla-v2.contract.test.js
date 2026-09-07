@@ -1,7 +1,9 @@
 import fs from "fs";
 import path from "path";
 import { readerPageAccess } from "../reader/ReaderExperienceV2";
+import { readerRecoveryPlan } from "../reader/readerRouteState";
 import { clampPlaybackTime } from "../listener/ListenerExperienceV2";
+import { listenerRecoveryPlan } from "../listener/listenerRouteState";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
 import { ABOUT_TRUST_CARDS } from "../about/AboutExperienceV2";
 
@@ -32,6 +34,18 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(experience).not.toContain("const nextAccess = readerPageAccess");
   });
 
+  test("visible Reader recovery preserves the existing authorization boundary", () => {
+    expect(readerRecoveryPlan({ canonicalPage: 4, user: false })).toEqual({ needsSignIn: true, needsPass: false });
+    expect(readerRecoveryPlan({ canonicalPage: 4, user: { id: "reader" } })).toEqual({ needsSignIn: false, needsPass: true });
+    expect(readerRecoveryPlan({ canonicalPage: 1, user: false, error: "Reading Pass authorization expired." })).toEqual({ needsSignIn: false, needsPass: true });
+    expect(readerRecoveryPlan({ canonicalPage: 1, user: false, error: "Reading Pass v2 is not enabled." })).toEqual({ needsSignIn: false, needsPass: false });
+    const source = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2Route.jsx"), "utf8");
+    expect(source).toContain('role="alert"');
+    expect(source).toContain('data-testid="reader-recovery-book"');
+    expect(source).toContain('data-testid="reader-recovery-sign-in"');
+    expect(source).toContain('data-testid="reader-recovery-passes"');
+  });
+
   test("Reader fixture keeps the compact mobile reader shell separate from public access state", () => {
     const experience = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2.jsx"), "utf8");
     const stylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.css"), "utf8");
@@ -51,6 +65,17 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(route).toContain("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 0 })");
     expect(route).not.toContain("positionSeconds: 180");
     expect(route).toContain("renewReadingPassLease");
+  });
+
+  test("visible Listener recovery offers no playback or retry escape hatch", () => {
+    expect(listenerRecoveryPlan({ error: "A current Reading Pass is required to listen." })).toEqual({ needsPass: true });
+    expect(listenerRecoveryPlan({ error: "Listening authorization expired." })).toEqual({ needsPass: true });
+    expect(listenerRecoveryPlan({ error: "This edition is unavailable." })).toEqual({ needsPass: false });
+    const route = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2Route.jsx"), "utf8");
+    expect(route).toContain('role="alert"');
+    expect(route).toContain('data-testid="listener-recovery-book"');
+    expect(route).toContain('data-testid="listener-recovery-passes"');
+    expect(route).not.toContain("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 180 })");
   });
 
   test("only a deterministic fixture can render without a production media URL or public audio access", () => {
