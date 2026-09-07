@@ -852,7 +852,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
       : myLibraryFixture
         ? /@|\b(?:account id|transaction id|device id)\b/i.test(myLibraryText)
         : false;
-    const myLibraryEmptyStateVisible = Boolean(myLibraryFixture && [...myLibraryFixture.querySelectorAll("h1,h2,p")].some((node) => /No saved titles to show\.|saved-title list or a resume position/.test(node.textContent || "")));
+    const myLibraryEmptyStateVisible = Boolean(myLibraryFixture && [...myLibraryFixture.querySelectorAll("h1,h2,p")].some((node) => /No saved titles to show\.|doesn’t yet show saved books or reading progress/.test(node.textContent || "")));
     const bookPage = document.querySelector('[data-testid="book-page"]');
     const bookNotFound = document.querySelector('[data-testid="book-not-found"], [data-testid="book-load-error"]');
     const menuReachable = [...document.querySelectorAll('[data-testid="mobile-menu-toggle"],button[aria-label*="menu" i]')].some(visible);

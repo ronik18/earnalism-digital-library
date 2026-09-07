@@ -29,7 +29,7 @@ export default function MyLibrary() {
             <LibraryBig size={30} aria-hidden="true" />
             <p className="my-library-v2__section-kicker">Your shelf</p>
             <h2 id="my-library-empty-title">No saved titles to show.</h2>
-            <p>The current account contract does not provide a saved-title list or a resume position. Your next title starts in the public Library, where availability stays visible before you enter it.</p>
+            <p>This page doesn’t yet show saved books or reading progress. Explore the Library to choose your next read.</p>
             <Link to="/library?availability=reader-ready" data-testid="my-library-browse-ready">Browse reader-ready editions <ArrowUpRight size={15} aria-hidden="true" /></Link>
           </section>
 

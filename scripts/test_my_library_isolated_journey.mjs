@@ -11,6 +11,26 @@ if (!baseUrl) throw new Error("SEAMLESS_BRAND_TEST_BASE_URL is required for the 
 const output = process.env.MY_LIBRARY_EVIDENCE_OUTPUT || fs.mkdtempSync(path.join(os.tmpdir(), "my-library-isolated-journey-"));
 fs.mkdirSync(output, { recursive: true });
 
+async function activeTarget(page) {
+  return page.evaluate(() => {
+    const target = document.activeElement;
+    return {
+      test_id: target?.getAttribute("data-testid") || "",
+      href: target?.getAttribute("href") || "",
+      text: target?.textContent?.trim() || "",
+    };
+  });
+}
+
+async function tabTo(page, predicate, id) {
+  for (let index = 0; index < 40; index += 1) {
+    await page.keyboard.press("Tab");
+    const target = await activeTarget(page);
+    if (predicate(target)) return target;
+  }
+  throw new Error(`${id}: Tab navigation did not reach the requested control`);
+}
+
 async function runScenario({ id, viewport, zoom = 100 }) {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ viewport, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", serviceWorkers: "block" });
@@ -30,12 +50,40 @@ async function runScenario({ id, viewport, zoom = 100 }) {
 
   const shelf = page.getByTestId("my-library-mobile");
   const browse = page.getByTestId("my-library-browse-ready");
+  const panelLinks = page.locator(".my-library-v2__next-links a");
   await shelf.waitFor();
   await browse.waitFor();
   assert.equal(await shelf.getByRole("heading", { name: "No saved titles to show." }).count(), 1, `${id}: truthful empty state is absent`);
+  assert.equal(await shelf.getByText("This page doesn’t yet show saved books or reading progress. Explore the Library to choose your next read.", { exact: true }).count(), 1, `${id}: approved My Library copy is absent`);
   assert.equal(await browse.getAttribute("href"), "/library?availability=reader-ready", `${id}: reader-ready destination changed`);
-  await browse.focus();
-  assert.equal(await page.evaluate(() => document.activeElement?.getAttribute("data-testid")), "my-library-browse-ready", `${id}: primary action is not keyboard reachable`);
+
+  const tabToBrowse = await tabTo(page, (target) => target.test_id === "my-library-browse-ready", id);
+  assert.equal(tabToBrowse.test_id, "my-library-browse-ready", `${id}: primary action is not reachable with Tab`);
+  const shiftTabTarget = await (async () => { await page.keyboard.press("Shift+Tab"); return activeTarget(page); })();
+  assert.notEqual(shiftTabTarget.test_id, "my-library-browse-ready", `${id}: Shift+Tab did not leave the primary action`);
+  await page.keyboard.press("Tab");
+  assert.equal((await activeTarget(page)).test_id, "my-library-browse-ready", `${id}: Tab did not return to the primary action after Shift+Tab`);
+  await page.keyboard.press("Tab");
+  assert.equal((await activeTarget(page)).href, "/library", `${id}: Tab did not reach the first beige-panel link`);
+  const firstPanelFocus = await panelLinks.nth(0).evaluate((node) => {
+    const style = getComputedStyle(node);
+    return { outline_color: style.outlineColor, outline_style: style.outlineStyle, outline_width: style.outlineWidth };
+  });
+  await page.screenshot({ path: path.join(output, `${id}-panel-link-library-focus.png`), fullPage: true });
+  await page.keyboard.press("Tab");
+  assert.equal((await activeTarget(page)).href, "/pricing", `${id}: Tab did not reach the second beige-panel link`);
+  const secondPanelFocus = await panelLinks.nth(1).evaluate((node) => {
+    const style = getComputedStyle(node);
+    return { outline_color: style.outlineColor, outline_style: style.outlineStyle, outline_width: style.outlineWidth };
+  });
+  await page.screenshot({ path: path.join(output, `${id}-panel-link-pricing-focus.png`), fullPage: true });
+  for (const [index, focus] of [firstPanelFocus, secondPanelFocus].entries()) {
+    assert.deepEqual(focus, { outline_color: "rgb(70, 19, 34)", outline_style: "solid", outline_width: "2px" }, `${id}: beige-panel link ${index + 1} lacks the maroon focus outline`);
+  }
+  await page.keyboard.press("Shift+Tab");
+  assert.equal((await activeTarget(page)).href, "/library", `${id}: Shift+Tab did not restore the first beige-panel link`);
+  await page.keyboard.press("Shift+Tab");
+  assert.equal((await activeTarget(page)).test_id, "my-library-browse-ready", `${id}: Shift+Tab did not restore the primary action`);
 
   const geometry = await page.evaluate(() => ({
     scrollWidth: document.documentElement.scrollWidth,
@@ -62,7 +110,7 @@ async function runScenario({ id, viewport, zoom = 100 }) {
 
   await context.close();
   await browser.close();
-  return { id, viewport, zoom, geometry, request_count: requests.length, api_requests: requests.filter(({ url }) => new URL(url).pathname.includes("/api/")).length, failed_requests: failures, result: "PASS" };
+  return { id, viewport, css_zoom: { requested_percent: zoom, method: "document.documentElement.style.zoom", classification: "CSS_ZOOM" }, geometry, keyboard: { tab_to_primary: tabToBrowse, shift_tab_from_primary: shiftTabTarget, beige_panel_focus: [firstPanelFocus, secondPanelFocus], visible_focus_captures: [`${id}-panel-link-library-focus.png`, `${id}-panel-link-pricing-focus.png`] }, request_count: requests.length, api_requests: requests.filter(({ url }) => new URL(url).pathname.includes("/api/")).length, failed_requests: failures, result: "PASS" };
 }
 
 const results = [];
