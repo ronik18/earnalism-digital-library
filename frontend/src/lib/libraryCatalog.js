@@ -1,5 +1,5 @@
 import { audiobookReleaseState } from "./audioReleaseSafety";
-import { BATCH_1_READER_ONLY_SLUGS } from "./controlledLaunch";
+import { bookLaunchStatus } from "./controlledLaunch";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 
@@ -21,10 +21,7 @@ export function languageOfBook(book = {}) {
 export function availabilityOfBook(book = {}) {
   const audioState = audiobookReleaseState(book);
   if (audioState.canShowControls) return "approved-audiobook";
-  if (book.publication_status === "LIVE_APPROVED" || book.status === "LIVE_APPROVED" || BATCH_1_READER_ONLY_SLUGS.includes(book.slug)) {
-    return "reader-ready";
-  }
-  return "in-preparation";
+  return bookLaunchStatus(book) === "LIVE_APPROVED" ? "reader-ready" : "in-preparation";
 }
 
 export function libraryPresentationForBook(book = {}) {
