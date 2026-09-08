@@ -9,6 +9,7 @@ describe("editorial and support route contract", () => {
   const contact = source("src/pages/Contact.jsx");
   const microStory = source("src/pages/MicroStoryLanding.jsx");
   const notFound = source("src/pages/NotFound.jsx");
+  const supportStyles = source("src/styles/editorial-support.css");
   const vercel = source("vercel.json");
   const goneHandler = source("api/removed-content.js");
   const notFoundHandler = source("api/not-found.js");
@@ -21,6 +22,14 @@ describe("editorial and support route contract", () => {
     expect(article).toContain('api.get("/blog"');
     expect(article).toContain('canonicalPath: post ? "/journal/" + post.slug : undefined');
     expect(article).toContain('robots: postNotFound ? "noindex, nofollow" : "index, follow"');
+    expect(journal).toContain('to="/library" data-testid="journal-library-link"');
+    expect(article).toContain('to="/library" data-testid="article-library-cta"');
+    expect(article).toContain("Take the thought back to the shelf.");
+    expect(journal).toContain('data-testid="journal-feature-read"');
+    expect(journal).toContain('aria-pressed={active === category}');
+    expect(article).toContain('data-testid="back-journal"');
+    expect(supportStyles).toContain(".journal-v2__filter-row button { min-height: 44px;");
+    expect(supportStyles).not.toContain(".journal-v2__filter-row button { min-height: 42px;");
   });
 
   test("preserves the existing contact endpoint and adds no pre-submit request", () => {

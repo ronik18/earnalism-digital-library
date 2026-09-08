@@ -10,8 +10,8 @@ scope.
 
 | Route | Classification | Production source | Shell and branding | Static HTML and robots | This phase |
 | --- | --- | --- | --- | --- | --- |
-| `/journal` | `PUBLIC_INDEXABLE` | `src/pages/Journal.jsx` | `PublicPageFrame`, canonical lockup, editorial surface | Route-specific, indexable | Premium journal index and deterministic article contract |
-| `/journal/:slug` | `PUBLIC_INDEXABLE` when published; `NOT_FOUND` otherwise | `src/pages/JournalArticle.jsx` | `PublicPageFrame`, canonical lockup, long-form editorial surface | Route-specific for verified public articles | Long-form reading layout and safe missing state |
+| `/journal` | `PUBLIC_INDEXABLE` | `src/pages/Journal.jsx` | `PublicPageFrame`, canonical lockup, Quiet Heritage publication index | Route-specific, indexable | API-backed featured note, category controls, and explicit Library discovery |
+| `/journal/:slug` | `PUBLIC_INDEXABLE` when published; `NOT_FOUND` otherwise | `src/pages/JournalArticle.jsx` | `PublicPageFrame`, canonical lockup, Quiet Heritage long-form surface | Route-specific for verified public articles | Long-form reading, safe missing state, and explicit return to Library discovery |
 | `/contact` | `PUBLIC_INDEXABLE` | `src/pages/Contact.jsx` | `PublicPageFrame`, canonical lockup, form shell | Route-specific, indexable | Accessible support form; existing API unchanged |
 | `/micro-story` | `PUBLIC_INDEXABLE` | `src/pages/MicroStoryLanding.jsx` | `PublicPageFrame`, canonical lockup | Route-specific, indexable | `ACTIVE_CAMPAIGN`; preserve reader invitation and current UTM path |
 | `/about` | `PUBLIC_INDEXABLE` | `experiences-v2/about/AboutExperienceV2Route.jsx` | Intentional standalone experience | Route-specific, indexable | Static SEO only; visual implementation out of scope |
