@@ -94,8 +94,9 @@ function pagePayload(book, pageIndex) {
   };
 }
 
-async function configureApi(page, { authenticated = false, denyLease = false, readingPassEnabled = true, sessionStartDelayMs = 0 } = {}) {
-  const requests = { sessionStarts: 0, protectedPageRequests: 0 };
+async function configureApi(page, { authenticated = false, denyLease = false, readingPassEnabled = true, sessionStartDelayMs = 0, manifestFailures = 0 } = {}) {
+  const requests = { sessionStarts: 0, protectedPageRequests: 0, manifestRequests: 0 };
+  let remainingManifestFailures = manifestFailures;
   await page.route("**/api/**", async (route) => {
     const request = route.request();
     const url = new URL(request.url());
@@ -118,6 +119,12 @@ async function configureApi(page, { authenticated = false, denyLease = false, re
       return;
     }
     if (book && pathname.includes(`/reader/book/${book.slug}/manifest`)) {
+      requests.manifestRequests += 1;
+      if (remainingManifestFailures > 0) {
+        remainingManifestFailures -= 1;
+        await route.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ detail: "Fixture manifest unavailable" }) });
+        return;
+      }
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(manifestFor(book, { readingPassEnabled })) });
       return;
     }
@@ -150,7 +157,11 @@ async function configureApi(page, { authenticated = false, denyLease = false, re
 async function tabTo(page, predicate, label) {
   for (let index = 0; index < 80; index += 1) {
     await page.keyboard.press("Tab");
-    const active = await page.evaluate(() => ({ testId: document.activeElement?.getAttribute("data-testid") || "", href: document.activeElement?.getAttribute("href") || "" }));
+    const active = await page.evaluate(() => ({
+      testId: document.activeElement?.getAttribute("data-testid") || "",
+      href: document.activeElement?.getAttribute("href") || "",
+      text: document.activeElement?.textContent?.trim() || "",
+    }));
     if (predicate(active)) return active;
   }
   throw new Error(`${label}: target was not reachable by Tab`);
@@ -361,6 +372,59 @@ async function runDeniedAccess({ id, viewport }) {
   return { id, viewport, authenticated: true, denied: true, result: "PASS" };
 }
 
+async function runListenerRecovery({ id, viewport }) {
+  const base = baseUrl.replace(/\/$/, "");
+  const browser = await chromium.launch(browserLaunchOptions);
+
+  const recoveryContext = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  const recoveryPage = await recoveryContext.newPage();
+  recoveryPage.setDefaultTimeout(8_000);
+  const recoveryRequests = await configureApi(recoveryPage, { manifestFailures: 1 });
+  await recoveryPage.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
+  await recoveryPage.getByRole("heading", { name: "Listener unavailable" }).waitFor();
+  assert.equal(await recoveryPage.locator("header").count(), 1, `${id}: manifest recovery lost the existing Listener header`);
+  assert.equal(await recoveryPage.locator("audio").count(), 0, `${id}: a failed listener manifest exposed protected audio`);
+  assert.equal(await recoveryPage.getByTestId("listener-recovery-book").getAttribute("href"), `/book/${audioBook.slug}`, `${id}: manifest recovery lost the source book`);
+  assert.equal(await recoveryPage.getByTestId("listener-recovery-passes").count(), 0, `${id}: a manifest failure incorrectly proposed a Reading Pass`);
+  await recoveryPage.screenshot({ path: path.join(output, `${id}-listener-manifest-recovery.png`), fullPage: true });
+  await tabTo(recoveryPage, (active) => active.testId === "listener-recovery-retry", `${id}: listener retry`);
+  await recoveryPage.keyboard.press("Enter");
+  await recoveryPage.getByRole("button", { name: "Authorize Listening" }).waitFor();
+  assert.equal(recoveryRequests.manifestRequests, 2, `${id}: retry did not make a fresh manifest request`);
+  await recoveryContext.close();
+
+  const unavailableContext = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  const unavailablePage = await unavailableContext.newPage();
+  unavailablePage.setDefaultTimeout(8_000);
+  await configureApi(unavailablePage);
+  await unavailablePage.goto(`${base}/listener/${readerBook.slug}`, { waitUntil: "domcontentloaded" });
+  await unavailablePage.getByRole("heading", { name: "Listening unavailable" }).waitFor();
+  assert.equal(await unavailablePage.locator("header").count(), 1, `${id}: unavailable listener recovery lost the existing Listener header`);
+  assert.equal(await unavailablePage.locator("audio").count(), 0, `${id}: unavailable audio release exposed protected audio`);
+  assert.equal(await unavailablePage.getByTestId("listener-recovery-book").getAttribute("href"), `/book/${readerBook.slug}`, `${id}: unavailable listener recovery lost the edition`);
+  assert.equal(await unavailablePage.getByTestId("listener-recovery-passes").count(), 0, `${id}: unavailable audio release incorrectly proposed a Reading Pass`);
+  await unavailablePage.screenshot({ path: path.join(output, `${id}-listener-unavailable.png`), fullPage: true });
+  await unavailableContext.close();
+
+  const authorizedContext = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  await authorizedContext.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
+  const authorizedPage = await authorizedContext.newPage();
+  authorizedPage.setDefaultTimeout(8_000);
+  const authorizedRequests = await configureApi(authorizedPage, { authenticated: true, sessionStartDelayMs: 75 });
+  await authorizedPage.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
+  await authorizedPage.getByRole("button", { name: "Authorize Listening" }).waitFor();
+  await tabTo(authorizedPage, (active) => active.text === "Authorize Listening", `${id}: listener authorization keyboard reachability`);
+  const authorizeButton = authorizedPage.getByRole("button", { name: "Authorize Listening" });
+  await authorizeButton.evaluate((node) => { node.click(); node.click(); });
+  await authorizedPage.getByRole("button", { name: "Authorizing listening…" }).waitFor();
+  await authorizedPage.locator("audio").waitFor({ state: "attached" });
+  assert.equal(authorizedRequests.sessionStarts, 1, `${id}: duplicate listener authorization submissions created more than one lease`);
+  await authorizedPage.screenshot({ path: path.join(output, `${id}-listener-authorized.png`), fullPage: true });
+  await authorizedContext.close();
+  await browser.close();
+  return { id, viewport, listenerRecovery: true, result: "PASS" };
+}
+
 const results = [];
 const scenarios = [
   { id: "desktop-1440", viewport: { width: 1440, height: 900 } },
@@ -374,6 +438,7 @@ for (const scenario of scenarios.filter(({ id }) => selectedScenarioIds.size ===
   results.push(await runEntitledReader(scenario));
   results.push(await runEntitledListener(scenario));
   results.push(await runDeniedAccess(scenario));
+  results.push(await runListenerRecovery(scenario));
 }
 
 const summary = { result: "PASS", classification: "ISOLATED_FIXTURE_EVIDENCE_ONLY", css_zoom: { applied: false, classification: "NOT_APPLIED" }, output, results };
