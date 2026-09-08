@@ -388,30 +388,85 @@
 
 .contact-form-status[role="alert"] { color: #8b1e2d; }
 
-.error-route-panel {
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+/* Micro Story is an invitation rather than a miniature Library. Its layout
+   keeps the customer’s next choice, the public preview, and pass truth in one
+   compact editorial sequence without adding product claims or new API calls. */
+.micro-story-page { color: var(--qh-ink, #2a171b); background: var(--qh-paper, #f6eddc); }
+.micro-story-hero,
+.micro-story-paths { width: min(100% - 2rem, 84rem); margin-inline: auto; }
+.micro-story-hero { display: grid; grid-template-columns: minmax(0, 1.16fr) minmax(18rem, .84fr); gap: clamp(2rem, 7vw, 7rem); align-items: stretch; padding-block: clamp(4rem, 9vw, 7.5rem); }
+.micro-story-hero__copy { align-self: center; max-width: 46rem; }
+.micro-story-hero__eyebrow,
+.micro-story-paths__intro > p,
+.micro-story-card > span,
+.error-route-page .error-route-panel__eyebrow,
+.error-route-page .error-route-panel__note > span { margin: 0; color: var(--qh-burgundy, #651d32); font: 500 .72rem/1.45 var(--qh-ui, system-ui, sans-serif); letter-spacing: .15em; text-transform: uppercase; }
+.micro-story-hero h1,
+.micro-story-paths h2,
+.micro-story-card h3,
+.error-route-page .error-route-panel h1 { margin: .75rem 0 0; color: var(--qh-ink, #2a171b); font: 400 clamp(2.7rem, 5.7vw, 4.85rem)/.96 var(--qh-display, Georgia, serif); letter-spacing: -.035em; }
+.micro-story-hero__copy > p:not(.micro-story-hero__eyebrow) { max-width: 40rem; margin: 1.5rem 0 0; color: #513d40; font: 400 clamp(1.1rem, 1.8vw, 1.34rem)/1.55 var(--qh-display, Georgia, serif); }
+.micro-story-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.5rem; margin-top: 2rem; }
+.micro-story-action,
+.micro-story-card__cta,
+.error-route-page .error-route-panel__actions a { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: .5rem; border: 1px solid var(--qh-burgundy, #651d32); border-radius: .2rem; padding: .65rem .9rem; font: 500 .88rem/1.2 var(--qh-ui, system-ui, sans-serif); letter-spacing: .03em; text-decoration: none; }
+.micro-story-action--primary { color: #fffaf1; background: var(--qh-burgundy, #651d32); }
+.micro-story-hero__actions p { max-width: 17rem; margin: 0; color: #62454d; font: 400 .9rem/1.45 var(--qh-ui, system-ui, sans-serif); }
+.micro-story-hero__aside { display: grid; grid-template-columns: minmax(8.5rem, .62fr) minmax(0, 1fr); align-items: stretch; border-top: 1px solid var(--qh-gold, #be9854); border-bottom: 1px solid var(--qh-rule, rgba(42, 23, 27, .18)); background: var(--qh-beige, #eee1c9); }
+.micro-story-hero__folio { display: flex; min-height: 100%; flex-direction: column; justify-content: end; border-right: 1px solid var(--qh-rule, rgba(42, 23, 27, .18)); padding: clamp(1.25rem, 4vw, 2.75rem) 1rem; color: var(--qh-burgundy, #651d32); background: linear-gradient(150deg, rgba(101, 29, 50, .08), transparent 64%); }
+.micro-story-hero__folio span { font: 400 clamp(4.8rem, 9vw, 8rem)/.74 var(--qh-display, Georgia, serif); }
+.micro-story-hero__folio small { margin-top: 1.25rem; font: 500 .7rem/1.35 var(--qh-ui, system-ui, sans-serif); letter-spacing: .12em; text-transform: uppercase; }
+.micro-story-hero__promises { display: grid; align-content: center; gap: 0; }
+.micro-story-hero__promises div { display: flex; min-height: 4.6rem; align-items: center; gap: .75rem; border-bottom: 1px solid var(--qh-rule, rgba(42, 23, 27, .18)); padding: 1rem; color: #513d40; font: 400 .94rem/1.4 var(--qh-ui, system-ui, sans-serif); }
+.micro-story-hero__promises div:last-child { border-bottom: 0; }
+.micro-story-hero__promises svg { flex: 0 0 auto; color: var(--qh-burgundy, #651d32); }
+.micro-story-paths { padding-block: clamp(3.5rem, 8vw, 6.5rem); border-top: 1px solid var(--qh-rule, rgba(42, 23, 27, .18)); }
+.micro-story-paths__intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .66fr); gap: 1rem 3rem; align-items: end; }
+.micro-story-paths h2 { max-width: 43rem; font-size: clamp(2.15rem, 4.3vw, 3.65rem); }
+.micro-story-paths__intro > span { max-width: 25rem; color: #513d40; font: 400 1rem/1.55 var(--qh-ui, system-ui, sans-serif); }
+.micro-story-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: clamp(2rem, 5vw, 4rem) 0 0; padding: 0; border-top: 1px solid var(--qh-rule, rgba(42, 23, 27, .18)); border-left: 1px solid var(--qh-rule, rgba(42, 23, 27, .18)); list-style: none; }
+.micro-story-grid > li { display: flex; min-width: 0; }
+.micro-story-card { display: flex; width: 100%; min-height: 18rem; flex-direction: column; border-right: 1px solid var(--qh-rule, rgba(42, 23, 27, .18)); border-bottom: 1px solid var(--qh-rule, rgba(42, 23, 27, .18)); padding: clamp(1.35rem, 3vw, 2.2rem); }
+.micro-story-card h3 { font-size: clamp(1.85rem, 3vw, 2.55rem); line-height: 1; }
+.micro-story-card p { margin: 1.1rem 0 0; color: #513d40; font: 400 1rem/1.6 var(--qh-ui, system-ui, sans-serif); }
+.micro-story-card__cta { width: fit-content; margin-top: auto; padding: .65rem 0; border-width: 0 0 1px; border-radius: 0; color: var(--qh-burgundy, #651d32); background: transparent; }
+.micro-story-action:hover, .micro-story-card__cta:hover { color: #fffaf1; background: var(--qh-maroon, #461322); }
+.micro-story-page a:focus-visible,
+.error-route-page a:focus-visible { outline: 3px solid var(--qh-burgundy, #651d32); outline-offset: 4px; }
+
+/* The hydrated 404 keeps the retained public Header/Footer, while direct
+   status documents use the equivalent, server-safe recovery language below. */
+.error-route-page { color: var(--qh-ink, #2a171b); background: var(--qh-paper, #f6eddc); }
+.error-route-page .error-route-panel { display: grid; grid-template-columns: minmax(0, 1.16fr) minmax(18rem, .84fr); min-height: clamp(31rem, 65vh, 44rem); margin: 0 auto; border-top: 1px solid var(--qh-gold, #be9854); border-bottom: 1px solid var(--qh-rule, rgba(42, 23, 27, .18)); background: linear-gradient(112deg, var(--qh-paper, #f6eddc) 0%, var(--qh-paper, #f6eddc) 61%, var(--qh-beige, #eee1c9) 61%); }
+.error-route-page .error-route-panel__copy { display: flex; flex-direction: column; justify-content: center; max-width: 48rem; padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 6vw, 7rem); }
+.error-route-page .error-route-panel h1 { max-width: 38rem; }
+.error-route-page .error-route-panel__copy > p:not(.error-route-panel__eyebrow) { max-width: 34rem; margin: 1.5rem 0 0; color: #513d40; font: 400 clamp(1.08rem, 1.8vw, 1.3rem)/1.55 var(--qh-display, Georgia, serif); }
+.error-route-page .error-route-panel__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+.error-route-page .error-route-panel__actions a:first-child { color: #fffaf1; background: var(--qh-burgundy, #651d32); }
+.error-route-page .error-route-panel__actions a:last-child { color: var(--qh-burgundy, #651d32); background: transparent; }
+.error-route-page .error-route-panel__note { display: flex; flex-direction: column; justify-content: end; border-left: 1px solid var(--qh-gold, #be9854); padding: clamp(2rem, 5vw, 4rem); background: linear-gradient(150deg, rgba(101, 29, 50, .08), transparent 68%); }
+.error-route-page .error-route-panel__note p { max-width: 15rem; margin: 1rem 0 0; color: var(--qh-ink, #2a171b); font: 400 clamp(1.5rem, 3vw, 2.2rem)/1.03 var(--qh-display, Georgia, serif); }
+
+@media (max-width: 899px) {
+  .micro-story-hero, .error-route-page .error-route-panel { grid-template-columns: 1fr; }
+  .micro-story-hero__aside { min-height: auto; }
+  .micro-story-paths__intro { grid-template-columns: 1fr; }
+  .error-route-page .error-route-panel { background: var(--qh-paper, #f6eddc); }
+  .error-route-page .error-route-panel__note { min-height: 11rem; border-top: 1px solid var(--qh-gold, #be9854); border-left: 0; }
 }
 
-.error-route-page {
-  color: var(--public-text, #fff8e9);
-  background:
-    radial-gradient(circle at 100% 0%, rgba(214, 173, 85, 0.12), transparent 24rem),
-    var(--public-page, #641f27);
-}
-
-.error-route-page .error-route-panel .italic-eyebrow {
-  color: var(--public-gold-soft, #f2d188);
-}
-
-.error-route-page .error-route-panel h1 {
-  color: var(--public-text, #fff8e9);
-}
-
-.error-route-page .error-route-panel p {
-  color: var(--public-text-muted, #e5d7c1);
+@media (max-width: 640px) {
+  .micro-story-hero, .micro-story-paths { width: min(100% - 1.5rem, 84rem); }
+  .micro-story-hero { gap: 1.5rem; padding-block: 3.25rem; }
+  .micro-story-hero h1 { font-size: clamp(2.5rem, 13vw, 3.7rem); }
+  .micro-story-hero__actions { align-items: stretch; flex-direction: column; }
+  .micro-story-action { width: 100%; }
+  .micro-story-hero__folio { min-height: 11.5rem; }
+  .micro-story-grid { grid-template-columns: 1fr; }
+  .micro-story-card { min-height: 0; }
+  .micro-story-card__cta { margin-top: 1.5rem; }
+  .error-route-page .error-route-panel__copy, .error-route-page .error-route-panel__note { padding: 3rem 1.25rem; }
+  .error-route-page .error-route-panel__actions a { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

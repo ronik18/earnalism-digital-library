@@ -79,7 +79,7 @@ export default function JournalArticle() {
     <PublicPageFrame tone="editorial"><div className="error-route-panel journal-v2__empty mx-auto my-20 max-w-3xl px-6 py-20 text-center" data-testid="journal-article-not-found">
       <h1>Article not found</h1>
       <p>This note is no longer available. The Journal and Library are still open for discovery.</p>
-      <div className="journal-v2__error-actions"><Link to="/journal">Back to Journal</Link><Link to="/library">Explore the Library <ArrowUpRight size={15} aria-hidden="true" /></Link></div>
+      <div className="journal-v2__error-actions"><Link to="/journal" data-testid="journal-article-not-found-journal-link">Back to Journal</Link><Link to="/library" data-testid="journal-article-not-found-library-link">Explore the Library <ArrowUpRight size={15} aria-hidden="true" /></Link></div>
     </div></PublicPageFrame>
   );
 

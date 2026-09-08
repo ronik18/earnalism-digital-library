@@ -59,6 +59,11 @@ describe("editorial and support route contract", () => {
     expect(microStory).toContain("PUBLIC_PREVIEW_COPY");
     expect(microStory).toContain("READING_TIME_COPY");
     expect(microStory).not.toMatch(/chapter 1 free|first chapter free|free audiobook|free listening sample/i);
+    expect(microStory).toContain('to="/library?source=reading_invitation"');
+    expect(microStory).toContain('data-testid="micro-story-library-cta"');
+    expect(microStory).toContain('to: "/pricing"');
+    expect(supportStyles).toContain(".micro-story-hero__folio");
+    expect(supportStyles).toContain(".micro-story-card__cta");
   });
 
   test("uses branded noindex handlers for unknown and tombstoned routes", () => {
@@ -68,6 +73,9 @@ describe("editorial and support route contract", () => {
     expect(goneHandler).toContain("res.statusCode = statusCode");
     expect(goneHandler).toContain("renderBrandedStatusPage");
     expect(notFound).not.toContain("EarnalismBrandLockup");
+    expect(notFound).toContain('data-testid="not-found-library-link"');
+    expect(notFound).toContain('data-testid="not-found-home-link"');
+    expect(supportStyles).toContain(".error-route-panel__note");
     expect(vercel).toContain('"source": "/secure-reader-test"');
     expect(vercel).toContain('"destination": "/api/not-found"');
   });

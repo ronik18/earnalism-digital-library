@@ -22,7 +22,9 @@ function expectSeamlessStatusDocument(response) {
   expect(response.headers["X-Robots-Tag"]).toBe("noindex, nofollow, noarchive");
   expect(response.body).toContain('data-testid="status-brand-masthead"');
   expect(response.body).toContain('src="/assets/brand/earnalism-brand-lockup.png"');
-  expect(response.body).toContain('width="2400" height="720"');
+    expect(response.body).toContain('width="2400" height="720"');
+    expect(response.body).toContain('src: url("/assets/fonts/eb-garamond-400.ttf")');
+    expect(response.body).toContain('src: url("/assets/fonts/outfit-400.ttf")');
   expect(response.body).toContain("status-page__masthead");
   expect(response.body).not.toContain("border-radius:20px");
   expect(response.body).not.toContain("0 18px 50px");
@@ -55,13 +57,17 @@ describe("direct seamless-branded status pages", () => {
     expect(response.body).not.toContain("404 · Retired route");
   });
 
-  test("the hydrated React 404 retains one shared header and no inner lockup", () => {
+  test("the hydrated React 404 retains one shared header and a distinct recovery panel", () => {
     const page = fs.readFileSync(path.join(root, "src/pages/NotFound.jsx"), "utf8");
     const style = fs.readFileSync(path.join(root, "src/styles/editorial-support.css"), "utf8");
     expect(page).toContain("PublicPageFrame");
     expect(page).not.toContain("EarnalismBrandLockup");
     expect(page).toContain('robots: "noindex, nofollow"');
     expect(style).toContain(".error-route-page");
-    expect(style).toMatch(/\.error-route-panel\s*\{[\s\S]*border:\s*0;/);
+    expect(style).toContain(".error-route-panel__note");
+    expect(style).toMatch(/\.error-route-page \.error-route-panel\s*\{[\s\S]*grid-template-columns/);
+    expect(fs.existsSync(path.join(root, "public/assets/fonts/eb-garamond-400.ttf"))).toBe(true);
+    expect(fs.existsSync(path.join(root, "public/assets/fonts/outfit-400.ttf"))).toBe(true);
+    expect(fs.existsSync(path.join(root, "public/assets/fonts/outfit-600.ttf"))).toBe(true);
   });
 });
