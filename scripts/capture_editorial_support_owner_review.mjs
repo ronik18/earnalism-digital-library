@@ -59,18 +59,20 @@ async function captureApp(browser, state) {
   const metrics = await page.evaluate((selector) => ({ required: Boolean(document.querySelector(selector)), overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, focus: Boolean(document.activeElement?.matches("a[href],button,input,textarea,select")), logo: Array.from(document.images).some((image) => /earnalism/i.test(image.alt || "") && image.naturalWidth > 0) }), required);
   await page.screenshot({ path: path.join(output, id + ".png"), fullPage: false, animations: "disabled" });
   await context.close();
-  return { id, route, viewport: { width, height }, status: response?.status() || 0, errors, ...metrics, fixture_only: route.startsWith("/journal") };
+  return { id, route, viewport: { width, height }, status: response?.status() || 0, errors, ...metrics, fixture_only: true, evidence_scope: "LOCAL_ISOLATED_CAPTURE" };
 }
 
 async function captureRemoved(browser, id, width, height) {
   const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", reducedMotion: "reduce" });
   const page = await context.newPage();
   const result = removedHtml();
-  await page.setContent(result.body, { waitUntil: "load" });
-  const metrics = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, logo: Array.from(document.images).some((image) => /earnalism/i.test(image.alt || "")), focus: true }));
+  const localDocument = result.body.replace("<head>", `<head><base href="${baseUrl}/">`);
+  await page.setContent(localDocument, { waitUntil: "load" });
+  await page.waitForFunction(() => Array.from(document.images).every((image) => image.complete), { timeout: 30000 });
+  const metrics = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, logo: Array.from(document.images).some((image) => /earnalism/i.test(image.alt || "") && image.naturalWidth > 0), focus: true }));
   await page.screenshot({ path: path.join(output, id + ".png"), fullPage: false, animations: "disabled" });
   await context.close();
-  return { id, route: "/product/patterned-wrap-dress", viewport: { width, height }, status: result.status, errors: [], required: true, ...metrics, fixture_only: false, handler: "removed-content" };
+  return { id, route: "/product/patterned-wrap-dress", viewport: { width, height }, status: result.status, errors: [], required: true, ...metrics, fixture_only: true, evidence_scope: "LOCAL_ISOLATED_HANDLER_CAPTURE", handler: "removed-content" };
 }
 
 fs.mkdirSync(output, { recursive: true });

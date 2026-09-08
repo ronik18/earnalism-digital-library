@@ -33,22 +33,26 @@ function renderBrandedStatusPage({ statusCode, documentTitle, eyebrow, heading, 
     <meta name="robots" content="noindex,nofollow,noarchive">
     <title>${escapeHtml(documentTitle)}</title>
     <style>
-      :root { color-scheme: dark; }
+      @font-face { font-family: "EB Garamond"; src: url("/assets/fonts/eb-garamond-400.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+      @font-face { font-family: "Outfit"; src: url("/assets/fonts/outfit-400.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+      @font-face { font-family: "Outfit"; src: url("/assets/fonts/outfit-600.ttf") format("truetype"); font-style: normal; font-weight: 600; font-display: swap; }
+      :root { color-scheme: light; }
       * { box-sizing: border-box; }
-      body { margin: 0; background: #641f27; color: #fff8e9; font-family: Outfit, Inter, Arial, sans-serif; line-height: 1.6; }
-      .status-page__masthead { display: flex; width: 100%; min-height: 88px; align-items: center; border: 0; border-bottom: 1px solid rgba(100,31,39,.62); border-radius: 0; background: #FFF9EE; box-shadow: none; padding: 10px clamp(16px,5vw,64px); }
+      body { margin: 0; background: #F6EDDC; color: #2A171B; font-family: Outfit, Arial, sans-serif; line-height: 1.6; }
+      .status-page__masthead { display: flex; width: 100%; min-height: 88px; align-items: center; border: 0; border-bottom: 1px solid rgba(42,23,27,.18); border-radius: 0; background: #FFF9EE; box-shadow: none; padding: 10px clamp(16px,5vw,64px); }
       .status-page__brand-link { display: inline-flex; width: clamp(184px, 22vw, 288px); align-items: center; border: 0; border-radius: 0; background: transparent; box-shadow: none; padding: 0; }
-      .status-page__brand-link:focus-visible, .status-page__action:focus-visible { outline: 3px solid #f2d188; outline-offset: 4px; }
+      .status-page__brand-link:focus-visible, .status-page__action:focus-visible { outline: 3px solid #651D32; outline-offset: 4px; }
       .status-page__brand { display: block; width: 100%; height: auto; border: 0; border-radius: 0; background: transparent; box-shadow: none; transform: none; }
-      .status-page__content { width: min(100% - 40px, 760px); min-height: calc(100vh - 88px); margin: 0 auto; padding: clamp(72px,12vw,150px) 0; }
-      .status-page__eyebrow { margin: 0 0 12px; color: #f2d188; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-      .status-page__heading { max-width: 13ch; margin: 0; color: #fff8e9; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(42px,7vw,72px); font-weight: 600; line-height: 1.02; }
-      .status-page__body { max-width: 58ch; margin: 24px 0 0; color: #e5d7c1; font-size: clamp(17px,2vw,20px); }
-      .status-page__actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 34px 0 0; }
-      .status-page__action { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; border: 1px solid #d6ad55; border-radius: 0; padding: 11px 18px; color: #fff8e9; font-weight: 700; text-decoration: none; }
-      .status-page__action--primary { background: #d6ad55; color: #3b1118; }
+      .status-page__content { position: relative; width: min(100% - 40px, 84rem); min-height: calc(100vh - 88px); margin: 0 auto; padding: clamp(72px,12vw,150px) clamp(20px,8vw,110px); overflow: hidden; background: linear-gradient(112deg, #F6EDDC 0%, #F6EDDC 61%, #EEE1C9 61%); }
+      .status-page__content::after { position: absolute; right: clamp(-88px,-3vw,0px); bottom: clamp(-110px,-6vw,0px); width: clamp(220px,30vw,430px); height: clamp(220px,30vw,430px); border: 1px solid rgba(190,152,84,.55); border-radius: 50%; content: ""; pointer-events: none; }
+      .status-page__eyebrow { position: relative; z-index: 1; margin: 0 0 12px; color: #651D32; font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+      .status-page__heading { position: relative; z-index: 1; max-width: 13ch; margin: 0; color: #2A171B; font-family: "EB Garamond", Georgia, serif; font-size: clamp(42px,7vw,72px); font-weight: 400; line-height: .98; }
+      .status-page__body { position: relative; z-index: 1; max-width: 58ch; margin: 24px 0 0; color: #513D40; font-size: clamp(17px,2vw,20px); }
+      .status-page__actions { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 12px; margin: 34px 0 0; }
+      .status-page__action { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; border: 1px solid #651D32; border-radius: 3px; padding: 11px 18px; color: #651D32; font-weight: 600; text-decoration: none; }
+      .status-page__action--primary { color: #FFF9EE; background: #651D32; }
       .status-page__action--secondary { background: transparent; }
-      @media (max-width: 420px) { .status-page__masthead { min-height: 76px; padding-inline: 16px; } .status-page__brand-link { width: min(240px, calc(100vw - 32px)); } .status-page__content { width: min(100% - 32px, 760px); min-height: calc(100vh - 76px); } }
+      @media (max-width: 640px) { .status-page__masthead { min-height: 76px; padding-inline: 16px; } .status-page__brand-link { width: min(240px, calc(100vw - 32px)); } .status-page__content { width: min(100% - 32px, 760px); min-height: calc(100vh - 76px); padding: 72px 24px; background: #F6EDDC; } .status-page__action { width: 100%; } }
       @media (max-width: 359px) { .status-page__brand-link { width: min(208px, calc(100vw - 32px)); } }
     </style>
   </head>

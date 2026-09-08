@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
+import { ArrowRight, ChevronLeft } from "lucide-react";
 import useSEO from "../hooks/useSEO";
 import PublicPageFrame from "../components/PublicPageFrame";
 import "../styles/editorial-support.css";
@@ -13,14 +13,20 @@ export default function NotFound() {
 
   return (
     <PublicPageFrame tone="quiet" className="error-route-page" testId="not-found-page">
-      <section className="error-route-panel mx-auto flex min-h-[62vh] max-w-4xl flex-col items-center justify-center px-5 py-24 text-center">
-        <div className="italic-eyebrow mb-4">404 · Page unavailable</div>
-        <h1 className="font-serif-light text-4xl leading-tight text-burgundy sm:text-5xl">This page is no longer on the shelf.</h1>
-        <p className="mt-6 max-w-xl text-charcoal-soft leading-relaxed">The link may point to a removed book, an old reader route, or a page that has moved.</p>
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-          <Link to="/library" className="btn-primary justify-center">Browse Library</Link>
-          <Link to="/" className="btn-secondary justify-center"><ChevronLeft size={15} strokeWidth={1.6} /> Home</Link>
+      <section className="error-route-panel" aria-labelledby="not-found-title">
+        <div className="error-route-panel__copy">
+          <p className="error-route-panel__eyebrow">404 · Page unavailable</p>
+          <h1 id="not-found-title">This page is not on the shelf.</h1>
+          <p>The link may point to a removed book, an old reader route, or a page that has moved. The library remains available.</p>
+          <nav className="error-route-panel__actions" aria-label="Page recovery options">
+            <Link to="/library" data-testid="not-found-library-link">Browse Library <ArrowRight size={15} /></Link>
+            <Link to="/" data-testid="not-found-home-link"><ChevronLeft size={15} strokeWidth={1.6} /> Home</Link>
+          </nav>
         </div>
+        <aside className="error-route-panel__note" aria-label="Recovery guidance">
+          <span>THE READING DESK</span>
+          <p>Return to a reader-ready title, or begin again from the library.</p>
+        </aside>
       </section>
     </PublicPageFrame>
   );
