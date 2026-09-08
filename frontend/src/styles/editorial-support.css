@@ -232,7 +232,6 @@
   .journal-v2__masthead-inner { padding-block: 3.75rem 2.5rem; }
   .journal-v2__filter-row { align-items: start; flex-direction: column; gap: .75rem; }
   .journal-v2__filter-row > div { justify-content: flex-start; }
-  .journal-v2__filter-row button { min-height: 42px; }
   .journal-v2__feature { margin-top: 1.75rem; }
   .journal-v2__feature-copy { padding: 1.6rem; }
   .journal-v2__grid, .journal-v2__related > div:last-child { grid-template-columns: 1fr; }
