@@ -382,6 +382,7 @@ async function runListenerRecovery({ id, viewport }) {
   const recoveryRequests = await configureApi(recoveryPage, { manifestFailures: 1 });
   await recoveryPage.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
   await recoveryPage.getByRole("heading", { name: "Listener unavailable" }).waitFor();
+  assert.equal(await recoveryPage.locator("header").count(), 1, `${id}: manifest recovery lost the existing Listener header`);
   assert.equal(await recoveryPage.locator("audio").count(), 0, `${id}: a failed listener manifest exposed protected audio`);
   assert.equal(await recoveryPage.getByTestId("listener-recovery-book").getAttribute("href"), `/book/${audioBook.slug}`, `${id}: manifest recovery lost the source book`);
   assert.equal(await recoveryPage.getByTestId("listener-recovery-passes").count(), 0, `${id}: a manifest failure incorrectly proposed a Reading Pass`);
@@ -398,6 +399,7 @@ async function runListenerRecovery({ id, viewport }) {
   await configureApi(unavailablePage);
   await unavailablePage.goto(`${base}/listener/${readerBook.slug}`, { waitUntil: "domcontentloaded" });
   await unavailablePage.getByRole("heading", { name: "Listening unavailable" }).waitFor();
+  assert.equal(await unavailablePage.locator("header").count(), 1, `${id}: unavailable listener recovery lost the existing Listener header`);
   assert.equal(await unavailablePage.locator("audio").count(), 0, `${id}: unavailable audio release exposed protected audio`);
   assert.equal(await unavailablePage.getByTestId("listener-recovery-book").getAttribute("href"), `/book/${readerBook.slug}`, `${id}: unavailable listener recovery lost the edition`);
   assert.equal(await unavailablePage.getByTestId("listener-recovery-passes").count(), 0, `${id}: unavailable audio release incorrectly proposed a Reading Pass`);

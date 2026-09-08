@@ -5,6 +5,7 @@ import { userApi } from "../../lib/api";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
 import { endReadingPassSession, renewReadingPassLease, startReadingPassAudioSession } from "../../lib/readingPassApi";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
+import ExperienceHeader from "../shared/ExperienceHeader";
 import ListenerExperienceV2 from "./ListenerExperienceV2";
 import { listenerRecoveryPlan } from "./listenerRouteState";
 const LISTENER_VISUAL_FIXTURE_BOOK = Object.freeze({
@@ -15,8 +16,8 @@ const LISTENER_VISUAL_FIXTURE_BOOK = Object.freeze({
   thumbnail_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
 });
 
-function routeState(title, message, action = null) {
-  return <main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role="alert">{message}</p>{action}</section></main>;
+function routeState(title, message, action = null, onSearch = null) {
+  return <><ExperienceHeader onSearch={onSearch} trailingLabel="Library" /><main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role="alert">{message}</p>{action}</section></main></>;
 }
 
 function ListenerRecoveryActions({ slug, error, onRetry = null }) {
@@ -99,10 +100,11 @@ export default function ListenerExperienceV2Route() {
     if (target === "library" || target === "search") navigate("/library");
     if (target === "passes") navigate("/pricing");
   }} />;
-  if (loadError) return routeState("Listener unavailable", loadError, <ListenerRecoveryActions slug={slug} error={loadError} onRetry={() => setReloadAttempt((attempt) => attempt + 1)} />);
-  if (book === null) return routeState("Opening listener", "Checking approved listening access.");
-  if (!listenerReleasePresentation(book).canRender) return routeState("Listening unavailable", "This edition is not approved for listening. Its book details show the available formats.", <ListenerRecoveryActions slug={slug} error="This edition is not approved for listening." />);
-  if (error) return routeState("Listening access needs attention", error, <ListenerRecoveryActions slug={slug} error={error} />);
+  const searchLibrary = () => navigate("/library");
+  if (loadError) return routeState("Listener unavailable", loadError, <ListenerRecoveryActions slug={slug} error={loadError} onRetry={() => setReloadAttempt((attempt) => attempt + 1)} />, searchLibrary);
+  if (book === null) return routeState("Opening listener", "Checking approved listening access.", null, searchLibrary);
+  if (!listenerReleasePresentation(book).canRender) return routeState("Listening unavailable", "This edition is not approved for listening. Its book details show the available formats.", <ListenerRecoveryActions slug={slug} error="This edition is not approved for listening." />, searchLibrary);
+  if (error) return routeState("Listening access needs attention", error, <ListenerRecoveryActions slug={slug} error={error} />, searchLibrary);
   return <><ListenerExperienceV2 book={book} access={{ authorized: Boolean(lease) }} authorizing={authorizing} onAuthorize={authorize} onPlaybackStateChange={setPlaybackState} onNavigate={(target) => {
     if (target === "back") navigate(`/book/${slug}`);
     if (target === "library" || target === "search") navigate("/library");

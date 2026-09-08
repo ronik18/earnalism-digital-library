@@ -81,6 +81,8 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(route).toContain('data-testid="listener-recovery-retry"');
     expect(route).toContain("authorizingRef.current");
     expect(route).toContain("This edition is not approved for listening.");
+    expect(route).toContain("<ExperienceHeader");
+    expect(route).toContain('onSearch={onSearch}');
     expect(route).not.toContain("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 180 })");
   });
 
