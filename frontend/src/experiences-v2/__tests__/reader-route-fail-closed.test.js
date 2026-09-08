@@ -25,6 +25,31 @@ describe("ReaderExperienceV2Route release truth", () => {
     });
   });
 
+  test("shows an explicit authorization step only for a valid protected canonical page", () => {
+    expect(readerRouteState({
+      loading: false,
+      canonicalPage: 4,
+      page: null,
+      error: "",
+      awaitingAuthorization: true,
+      readingPassEnabled: true,
+    })).toEqual({
+      state: "authorization_required",
+      message: "This chapter is ready to open after you confirm Reading Pass authorization.",
+    });
+    expect(readerRouteState({
+      loading: false,
+      canonicalPage: 4,
+      page: null,
+      error: "",
+      awaitingAuthorization: false,
+      readingPassEnabled: false,
+    })).toEqual({
+      state: "unavailable",
+      message: "This reader edition is unavailable.",
+    });
+  });
+
   test("permits rendering only after canonical page identity is present", () => {
     expect(readerRouteState({
       loading: false,

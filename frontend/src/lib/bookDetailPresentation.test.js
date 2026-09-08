@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { bookDetailPresentationForBook } from "./bookDetailPresentation";
+import { bookDetailPresentationForBook, chapterReaderEntryForBook } from "./bookDetailPresentation";
 
 describe("bookDetailPresentation", () => {
   const blockedCanarySlugs = [
@@ -130,7 +130,69 @@ describe("bookDetailPresentation", () => {
 
     expect(presentation.readerStateLabel).toBe("Reader Ready");
     expect(presentation.primaryReadLabel).toBe("Start Reading");
+    expect(presentation.primaryReadHref).toBe("/reader/radharani");
     expect(presentation.languageLabel).toBe("Bengali Classic");
+  });
+
+  test("routes an approved listening CTA to the established Listener instead of a reader query", () => {
+    const presentation = bookDetailPresentationForBook({
+      slug: "a-ghost-story",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          provider: "google",
+          version: "stage2d-approved",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
+          assets: { mp3: "/api/reader/book/a-ghost-story/audiobook" },
+        },
+      },
+    });
+
+    expect(presentation.listenCtaVisible).toBe(true);
+    expect(presentation.listenCtaLabel).toBe("Open Listening Room");
+    expect(presentation.listenHref).toBe("/listener/a-ghost-story");
+    expect(presentation.audioBody).toContain("Listening Room");
+  });
+
+  test("keeps preparation recovery in the Library rather than opening an unavailable reader", () => {
+    const presentation = bookDetailPresentationForBook({ slug: "draft-edition", publication_status: "DRAFT" });
+
+    expect(presentation.readerReady).toBe(false);
+    expect(presentation.primaryReadLabel).toBe("Back to Library");
+    expect(presentation.primaryReadHref).toBe("/library");
+  });
+
+  test("uses only a manifest-supplied canonical page for a chapter jump", () => {
+    const book = {
+      slug: "mapped-edition",
+      publication_status: "LIVE_APPROVED",
+      _readerManifest: {
+        canonical_pages: {
+          pages: [
+            { chapter_id: "chapter-two", page_number: 9 },
+            { chapter_id: "chapter-two", page_number: 6 },
+            { chapter_id: "chapter-one", page_index: 1 },
+          ],
+        },
+      },
+    };
+
+    expect(chapterReaderEntryForBook(book, "chapter-two")).toEqual({
+      href: "/reader/mapped-edition?p=6",
+      canonicalPage: 6,
+      hasCanonicalPage: true,
+    });
+    expect(chapterReaderEntryForBook(book, "chapter-three")).toEqual({
+      href: "/reader/mapped-edition",
+      canonicalPage: null,
+      hasCanonicalPage: false,
+    });
+    expect(chapterReaderEntryForBook({ ...book, publication_status: "DRAFT" }, "chapter-one")).toEqual({
+      href: "",
+      canonicalPage: null,
+      hasCanonicalPage: false,
+    });
   });
 
   test("BookDetail source does not expose AudioObject, word-level sync, or speech fallback", () => {
@@ -138,5 +200,9 @@ describe("bookDetailPresentation", () => {
     expect(source).not.toMatch(/AudioObject/);
     expect(source).not.toMatch(/word-level|word level/i);
     expect(source).not.toMatch(/speechSynthesis|SpeechSynthesis/);
+    expect(source).toContain("chapterReaderEntryForBook");
+    expect(source).toContain('data-testid="chapter-reader-entry"');
+    expect(source).not.toContain("?listen=1");
+    expect(source).not.toContain("?c=${c.id}");
   });
 });

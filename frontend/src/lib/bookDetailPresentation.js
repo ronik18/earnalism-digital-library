@@ -28,8 +28,11 @@ export function bookDetailPresentationForBook(book = {}) {
   const audioApproved = audioState.canShowControls === true;
   const readerReady = isReaderReadyBook(book);
   const language = languageOfBookDetail(book);
+  const slug = text(book.slug || book.id);
+  const readerHref = slug ? `/reader/${encodeURIComponent(slug)}` : "/library";
 
   return {
+    readerReady,
     language,
     languageLabel: language === "bn" ? "Bengali Classic" : "English Classic",
     titleClassName: language === "bn" ? "book-detail-title book-detail-title--bengali" : "book-detail-title",
@@ -41,14 +44,42 @@ export function bookDetailPresentationForBook(book = {}) {
     audioBadgeLabel: audioApproved ? "Audiobook Approved" : readerReady ? "Audio Hidden" : "Release Gated",
     audioHeading: audioApproved ? "Listening room approved" : "Audio waits for release gates",
     audioBody: audioApproved
-      ? "Listen in the reader only because approved provider-backed audio evidence is present."
+      ? "Open the Listening Room only because approved provider-backed audio evidence is present."
       : "No public audio controls are shown until narration, sync, metadata, endpoint, and browser gates pass.",
     syncCopy: audioApproved ? "Section-following narration" : "",
     listenCtaVisible: audioApproved,
-    listenCtaLabel: "Listen in Reader",
+    listenCtaLabel: "Open Listening Room",
+    listenHref: audioApproved && slug ? `/listener/${encodeURIComponent(slug)}` : "",
     primaryReadLabel: readerReady ? "Start Reading" : "Back to Library",
+    primaryReadHref: readerReady ? readerHref : "/library",
     allowAudioStructuredData: audioApproved,
     narrationDisclosure: audioApproved ? audiobookNarrationDisclosure(book) : "",
     audioState,
+  };
+}
+
+function canonicalPageNumber(page = {}) {
+  const number = Number(page.page_number ?? page.page_index);
+  return Number.isInteger(number) && number > 0 ? number : null;
+}
+
+// Canonical pages originate in the reader manifest.  Do not infer a chapter's
+// starting page from its order, text, or any viewport-derived characteristic.
+export function chapterReaderEntryForBook(book = {}, chapterId = "") {
+  const slug = text(book.slug || book.id);
+  const readerHref = slug ? `/reader/${encodeURIComponent(slug)}` : "/library";
+  if (!isReaderReadyBook(book) || !slug) return { href: "", canonicalPage: null, hasCanonicalPage: false };
+  const pages = Array.isArray(book?._readerManifest?.canonical_pages?.pages)
+    ? book._readerManifest.canonical_pages.pages
+    : [];
+  const canonicalPage = pages
+    .filter((page) => text(page?.chapter_id) === text(chapterId))
+    .map(canonicalPageNumber)
+    .filter(Boolean)
+    .sort((left, right) => left - right)[0] || null;
+  return {
+    href: canonicalPage ? `${readerHref}?p=${canonicalPage}` : readerHref,
+    canonicalPage,
+    hasCanonicalPage: Boolean(canonicalPage),
   };
 }

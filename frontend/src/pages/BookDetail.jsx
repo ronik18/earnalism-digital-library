@@ -18,7 +18,7 @@ import {
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
-import { bookDetailPresentationForBook } from "../lib/bookDetailPresentation";
+import { bookDetailPresentationForBook, chapterReaderEntryForBook } from "../lib/bookDetailPresentation";
 import { readerManifestPath } from "../lib/audioReleaseSafety";
 import { readerManifestAudioIsAuthorized } from "../lib/readerManifestAccess";
 import { PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
@@ -232,6 +232,11 @@ export default function BookDetail() {
   const readerHref = `/reader/${publicBook.slug}`;
   const passHref = isDracula ? readingPassUrl("book_detail") : "";
   const detailPresentation = bookDetailPresentationForBook(publicBook);
+  const chapterEntries = (publicBook.chapters || []).map((chapter) => ({
+    chapter,
+    entry: chapterReaderEntryForBook(publicBook, chapter.id),
+  }));
+  const hasUnmappedChapter = chapterEntries.some(({ entry }) => !entry.hasCanonicalPage);
   const tabs = ["about", "details", ...(chapterCount > 0 ? ["chapters"] : []), "related"];
   const selectTab = (tab) => setSelectedTab(tab);
   const onTabKeyDown = (event) => {
@@ -313,7 +318,7 @@ export default function BookDetail() {
                   <Link to={readerHref} className="btn-primary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>{PUBLIC_PREVIEW_COPY}</Link>
             )}
             {!isDracula && (
-              <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: "book_detail_reader" })}>
+              <Link to={detailPresentation.primaryReadHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: "book_detail_reader" })}>
                 {detailPresentation.primaryReadLabel}
               </Link>
             )}
@@ -322,7 +327,7 @@ export default function BookDetail() {
             )}
             {detailPresentation.listenCtaVisible && (
               <div className="flex flex-col items-center gap-1.5">
-                <Link to={`${readerHref}?listen=1`} className="btn-secondary justify-center" data-testid="book-listen-approved">
+                <Link to={detailPresentation.listenHref} className="btn-secondary justify-center" data-testid="book-listen-approved">
                   <Headphones size={15} strokeWidth={1.6} /> {detailPresentation.listenCtaLabel}
                 </Link>
                 {detailPresentation.narrationDisclosure && (
@@ -375,13 +380,20 @@ export default function BookDetail() {
               <div className="italic-eyebrow mb-3">Table of Contents</div>
             <h3 className="font-serif-light text-[1.48rem] sm:text-[1.68rem] text-burgundy mb-6 leading-snug">Chapters</h3>
               <ol className="space-y-3">
-                {(publicBook.chapters || []).map((c, i) => (
+                {chapterEntries.map(({ chapter: c, entry }, i) => (
                   <li key={c.id} className="flex items-baseline gap-4 text-charcoal">
                     <span className="italic-accent text-gold-deep shrink-0 w-10">{String(i + 1).padStart(2, "0")}</span>
-                    <Link to={`/reader/${publicBook.slug}?c=${c.id}`} className="inline-flex min-h-11 items-center font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{normalizeChapterDisplayTitle(c.title)}</Link>
+                    {entry.hasCanonicalPage ? (
+                      <Link to={entry.href} className="inline-flex min-h-11 items-center font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{normalizeChapterDisplayTitle(c.title)}</Link>
+                    ) : (
+                      <span className="inline-flex min-h-11 items-center font-serif-display text-[1.15rem]">{normalizeChapterDisplayTitle(c.title)}</span>
+                    )}
                   </li>
                 ))}
               </ol>
+              {detailPresentation.readerReady && hasUnmappedChapter && (
+                <Link to={readerHref} className="btn-secondary mt-6 inline-flex" data-testid="chapter-reader-entry">Open reader</Link>
+              )}
             </div>
           )}
 

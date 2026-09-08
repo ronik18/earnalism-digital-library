@@ -40,3 +40,5 @@
 .experience-v2-route-state__card h1 { margin: 0 0 10px; font: 400 32px/1.05 var(--qh-display, "EB Garamond", "Noto Serif Bengali", serif); }
 .experience-v2-route-state__card p { margin: 0; line-height: 1.55; color: color-mix(in srgb, var(--qh-paper, #F6EDDC) 75%, transparent); }
 .experience-v2-route-state__card a, .experience-v2-route-state__card button { display: inline-flex; justify-content: center; min-height: 44px; margin-top: 18px; padding: 10px 16px; border: 1px solid var(--qh-gold, #BE9854); border-radius: 4px; background: transparent; color: var(--qh-gold, #BE9854); font: inherit; text-decoration: none; cursor: pointer; }
+.experience-v2-route-state__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.experience-v2-route-state__actions a, .experience-v2-route-state__actions button { margin-top: 18px; }
