@@ -69,14 +69,18 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(route).toContain("renewReadingPassLease");
   });
 
-  test("visible Listener recovery offers no playback or retry escape hatch", () => {
+  test("visible Listener recovery keeps pass, unavailable, retry, and authorization states distinct", () => {
     expect(listenerRecoveryPlan({ error: "A current Reading Pass is required to listen." })).toEqual({ needsPass: true });
     expect(listenerRecoveryPlan({ error: "Listening authorization expired." })).toEqual({ needsPass: true });
     expect(listenerRecoveryPlan({ error: "This edition is unavailable." })).toEqual({ needsPass: false });
+    expect(listenerRecoveryPlan({ error: "Listening access could not be checked." })).toEqual({ needsPass: false });
     const route = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2Route.jsx"), "utf8");
     expect(route).toContain('role="alert"');
     expect(route).toContain('data-testid="listener-recovery-book"');
     expect(route).toContain('data-testid="listener-recovery-passes"');
+    expect(route).toContain('data-testid="listener-recovery-retry"');
+    expect(route).toContain("authorizingRef.current");
+    expect(route).toContain("This edition is not approved for listening.");
     expect(route).not.toContain("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 180 })");
   });
 

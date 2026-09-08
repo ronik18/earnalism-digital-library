@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { userApi } from "../../lib/api";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
@@ -19,10 +19,11 @@ function routeState(title, message, action = null) {
   return <main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role="alert">{message}</p>{action}</section></main>;
 }
 
-function ListenerRecoveryActions({ slug, error }) {
+function ListenerRecoveryActions({ slug, error, onRetry = null }) {
   const plan = listenerRecoveryPlan({ error });
   return <div className="experience-v2-route-state__actions">
     <Link to={`/book/${slug}`} data-testid="listener-recovery-book">Return to book details</Link>
+    {onRetry && <button type="button" onClick={onRetry} data-testid="listener-recovery-retry">Try again</button>}
     {plan.needsPass && <Link to="/pricing" data-testid="listener-recovery-passes">View Reading Passes</Link>}
   </div>;
 }
@@ -35,23 +36,29 @@ export default function ListenerExperienceV2Route() {
     && typeof window !== "undefined"
     && new URLSearchParams(window.location.search).get("visual-fixture") === "1";
   const [book, setBook] = useState(null);
+  const [loadError, setLoadError] = useState("");
+  const [reloadAttempt, setReloadAttempt] = useState(0);
   const [lease, setLease] = useState(null);
   const [playbackState, setPlaybackState] = useState("paused");
   const [error, setError] = useState("");
+  const [authorizing, setAuthorizing] = useState(false);
   const leaseRef = useRef(null);
+  const authorizingRef = useRef(false);
 
   const setLeaseState = useCallback((value) => { leaseRef.current = value; setLease(value); }, []);
 
   useEffect(() => {
     if (visualFixture) return undefined;
     let cancelled = false;
+    setBook(null);
+    setLoadError("");
     userApi.get(readerManifestPath(slug)).then((response) => {
       if (cancelled) return;
       const value = response.data || {};
       setBook({ ...(value.book || {}), _readerManifest: { audio: value.audio || {}, access: value.access || {} } });
-    }).catch(() => { if (!cancelled) setBook({}); });
+    }).catch(() => { if (!cancelled) setLoadError("Listening access could not be checked. Try again or return to this book’s details."); });
     return () => { cancelled = true; };
-  }, [slug, visualFixture]);
+  }, [reloadAttempt, slug, visualFixture]);
 
   useEffect(() => {
     if (!lease) return undefined;
@@ -70,6 +77,9 @@ export default function ListenerExperienceV2Route() {
       navigate(`/login?next=${encodeURIComponent(`/listener/${slug}`)}`);
       return;
     }
+    if (authorizingRef.current) return;
+    authorizingRef.current = true;
+    setAuthorizing(true);
     try {
       // Audio has no public preview. A paid Reading Pass authorizes playback
       // from its first byte, including every Range request.
@@ -78,6 +88,9 @@ export default function ListenerExperienceV2Route() {
       setError("");
     } catch (requestError) {
       setError(requestError?.response?.data?.detail?.message || "A current Reading Pass is required to listen.");
+    } finally {
+      authorizingRef.current = false;
+      setAuthorizing(false);
     }
   }, [navigate, setLeaseState, slug, user]);
 
@@ -86,10 +99,11 @@ export default function ListenerExperienceV2Route() {
     if (target === "library" || target === "search") navigate("/library");
     if (target === "passes") navigate("/pricing");
   }} />;
+  if (loadError) return routeState("Listener unavailable", loadError, <ListenerRecoveryActions slug={slug} error={loadError} onRetry={() => setReloadAttempt((attempt) => attempt + 1)} />);
   if (book === null) return routeState("Opening listener", "Checking approved listening access.");
-  if (!listenerReleasePresentation(book).canRender) return <Navigate to={`/book/${slug}`} replace />;
+  if (!listenerReleasePresentation(book).canRender) return routeState("Listening unavailable", "This edition is not approved for listening. Its book details show the available formats.", <ListenerRecoveryActions slug={slug} error="This edition is not approved for listening." />);
   if (error) return routeState("Listening access needs attention", error, <ListenerRecoveryActions slug={slug} error={error} />);
-  return <><ListenerExperienceV2 book={book} access={{ authorized: Boolean(lease) }} onAuthorize={authorize} onPlaybackStateChange={setPlaybackState} onNavigate={(target) => {
+  return <><ListenerExperienceV2 book={book} access={{ authorized: Boolean(lease) }} authorizing={authorizing} onAuthorize={authorize} onPlaybackStateChange={setPlaybackState} onNavigate={(target) => {
     if (target === "back") navigate(`/book/${slug}`);
     if (target === "library" || target === "search") navigate("/library");
     if (target === "passes") navigate("/pricing");
