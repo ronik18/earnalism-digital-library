@@ -6,7 +6,9 @@ const source = (file) => fs.readFileSync(path.join(process.cwd(), file), "utf8")
 describe("editorial and support route contract", () => {
   const journal = source("src/pages/Journal.jsx");
   const article = source("src/pages/JournalArticle.jsx");
+  const about = source("src/pages/About.jsx");
   const contact = source("src/pages/Contact.jsx");
+  const app = source("src/App.js");
   const microStory = source("src/pages/MicroStoryLanding.jsx");
   const notFound = source("src/pages/NotFound.jsx");
   const supportStyles = source("src/styles/editorial-support.css");
@@ -37,6 +39,19 @@ describe("editorial and support route contract", () => {
     expect(contact).not.toContain("api.get(");
     expect(contact).toContain("CONTACT_EMAIL");
     expect(contact).toContain('canonicalPath: "/contact"');
+    expect(contact).toContain("contactIntent(location.search)");
+    expect(contact).toContain('data-testid="contact-intent"');
+  });
+
+  test("keeps About inside the public editorial journey and uses existing destinations", () => {
+    expect(app).toContain('<Route path="/about" element={<AboutLegacy />} />');
+    expect(app).not.toContain('<Route path="/about" element={<AboutV2 />} />');
+    expect(about).toContain('PublicPageFrame tone="editorial" testId="about-page"');
+    expect(about).toContain('to="/library" data-testid="about-library-link"');
+    expect(about).toContain('to="/contact" data-testid="about-contact-link"');
+    expect(about).toContain("Audiobooks appear only when approval evidence proves the listening room is ready.");
+    expect(supportStyles).toContain(".about-v3__principles article");
+    expect(supportStyles).toContain("min-height: 44px;");
   });
 
   test("keeps the locked public access contract in the active invitation", () => {
