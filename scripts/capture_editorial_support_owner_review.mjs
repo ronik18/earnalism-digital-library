@@ -9,6 +9,11 @@ const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
 const output = path.resolve(process.env.OWNER_REVIEW_CAPTURE_OUTPUT || "uat/evidence/editorial-support-owner-review/current");
 const strict = process.env.OWNER_REVIEW_STRICT === "true";
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("UAT_BASE_URL must be a loopback URL.");
+const requiredFontPaths = ["/assets/fonts/eb-garamond-400.ttf", "/assets/fonts/outfit-400.ttf", "/assets/fonts/outfit-600.ttf"];
+const testAbortFontPath = String(process.env.OWNER_REVIEW_TEST_ABORT_FONT_PATH || "");
+if (testAbortFontPath && (!strict || !requiredFontPaths.includes(testAbortFontPath))) {
+  throw new Error("OWNER_REVIEW_TEST_ABORT_FONT_PATH is restricted to one strict-mode required font path.");
+}
 
 const posts = [
   { slug: "how-reading-shapes-better-founders", title: "How Reading Shapes Better Founders", excerpt: "The founders who endure make room for attention, context, and the stories that clarify a decision.", author: "The Earnalism", category: "Self-Growth", created_at: "2026-05-10T00:00:00.000Z", cover_image_url: "", content: "Reading creates a pause before action.\n\nThat pause makes room for better questions and more careful work." },
@@ -75,50 +80,62 @@ async function captureApp(browser, state) {
 async function captureDirectStatus(browser, id, width, height, source, route, handler) {
   const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", reducedMotion: "reduce" });
   const page = await context.newPage();
-  const fontPaths = ["/assets/fonts/eb-garamond-400.ttf", "/assets/fonts/outfit-400.ttf", "/assets/fonts/outfit-600.ttf"];
   const fontResponses = new Map();
   const fontResourceErrors = [];
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("requestfailed", (request) => {
     const pathname = new URL(request.url()).pathname;
-    if (fontPaths.includes(pathname)) fontResourceErrors.push({ pathname, error: request.failure()?.errorText || "unknown request failure" });
+    if (requiredFontPaths.includes(pathname)) fontResourceErrors.push({ pathname, error: request.failure()?.errorText || "unknown request failure" });
   });
   page.on("response", (response) => {
     const pathname = new URL(response.url()).pathname;
-    if (fontPaths.includes(pathname)) fontResponses.set(pathname, response.status());
+    if (requiredFontPaths.includes(pathname)) fontResponses.set(pathname, response.status());
   });
   const result = handler();
   const fixtureRoute = `${baseUrl}/__isolated-direct-status-${id}`;
   await page.route(fixtureRoute, async (route) => {
     await route.fulfill({ status: result.status, contentType: "text/html; charset=utf-8", body: result.body });
   });
+  if (testAbortFontPath) {
+    await page.route(`${baseUrl}${testAbortFontPath}`, async (route) => route.abort("failed"));
+  }
   const documentResponse = await page.goto(fixtureRoute, { waitUntil: "load" });
   if (documentResponse?.status() !== result.status) errors.push(`direct status response changed from ${result.status} to ${documentResponse?.status() ?? "missing"}`);
-  const metrics = await page.evaluate(async () => {
-    await Promise.all([
-      document.fonts.load('400 16px "EB Garamond"'),
-      document.fonts.load("400 16px Outfit"),
-      document.fonts.load("600 16px Outfit"),
-    ]);
+  const metrics = await page.evaluate(async (strictMode) => {
+    let fontLoadError = null;
+    if (strictMode) {
+      try {
+        await Promise.all([
+          document.fonts.load('400 16px "EB Garamond"'),
+          document.fonts.load("400 16px Outfit"),
+          document.fonts.load("600 16px Outfit"),
+        ]);
+      } catch (error) {
+        fontLoadError = error instanceof Error ? error.message : String(error);
+      }
+    }
     await document.fonts.ready;
     return {
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
       logo: Array.from(document.images).some((image) => /earnalism/i.test(image.alt || "") && image.naturalWidth > 0),
+      font_load_error: fontLoadError,
       font_faces: Array.from(document.fonts).map((face) => ({ family: face.family.replaceAll('"', ""), weight: String(face.weight), status: face.status })),
     };
-  });
+  }, strict);
   await page.keyboard.press("Tab");
   metrics.focus = await page.evaluate(() => document.activeElement?.matches('a[href]') || false);
-  const fontResources = fontPaths.map((pathname) => ({ pathname, status: fontResponses.get(pathname) ?? null }));
+  const fontResources = requiredFontPaths.map((pathname) => ({ pathname, status: fontResponses.get(pathname) ?? null }));
   const requiredFaces = [["EB Garamond", "400"], ["Outfit", "400"], ["Outfit", "600"]];
   const fontsLoaded = fontResources.every((resource) => resource.status === 200)
     && fontResourceErrors.length === 0
+    && !metrics.font_load_error
     && requiredFaces.every(([family, weight]) => metrics.font_faces.some((face) => face.family === family && face.weight === weight && face.status === "loaded"));
-  if (!fontsLoaded) errors.push("direct status document font resources or FontFace entries did not load");
+  if (metrics.font_load_error) errors.push(`direct status document font load failed: ${metrics.font_load_error}`);
+  if (strict && !fontsLoaded) errors.push("direct status document font resources or FontFace entries did not load");
   await page.screenshot({ path: path.join(output, id + ".png"), fullPage: false, animations: "disabled" });
   await context.close();
-  return { id, route, viewport: { width, height }, status: result.status, document_response_status: documentResponse?.status() ?? null, errors, required: true, ...metrics, font_resources: fontResources, font_resource_errors: fontResourceErrors, fonts_loaded: fontsLoaded, fixture_only: true, evidence_scope: "LOCAL_ISOLATED_HANDLER_CAPTURE", handler: source };
+  return { id, route, viewport: { width, height }, status: result.status, document_response_status: documentResponse?.status() ?? null, errors, required: true, ...metrics, font_resources: fontResources, font_resource_errors: fontResourceErrors, font_expectations_applied: strict, font_resource_test_override: testAbortFontPath || null, fonts_loaded: fontsLoaded, fixture_only: true, evidence_scope: "LOCAL_ISOLATED_HANDLER_CAPTURE", handler: source };
 }
 
 fs.mkdirSync(output, { recursive: true });
