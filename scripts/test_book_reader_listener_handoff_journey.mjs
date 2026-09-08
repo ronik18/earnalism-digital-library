@@ -29,6 +29,14 @@ const preparationBook = {
   description: "An isolated preparation title.",
   chapters: [{ id: "draft-chapter", title: "Draft Chapter" }],
 };
+const protectedChapterBook = {
+  slug: "protected-chapter-edition",
+  title: "Protected Chapter Edition",
+  author: "Fixture Author",
+  publication_status: "LIVE_APPROVED",
+  description: "An isolated edition with a server-mapped protected chapter.",
+  chapters: [{ id: "chapter-one", title: "Chapter One" }, { id: "chapter-two", title: "Chapter Two" }],
+};
 const audioBook = {
   slug: "audio-edition",
   title: "Approved Listening Edition",
@@ -43,14 +51,15 @@ const audioBook = {
   chapters: [{ id: "audio-chapter", title: "Approved Chapter" }],
 };
 
-function manifestFor(book) {
+function manifestFor(book, { readingPassEnabled = true } = {}) {
   const approvedAudio = book.slug === audioBook.slug;
+  const mappedProtectedChapter = book.slug === protectedChapterBook.slug;
   return {
     book,
-    access: { reading_pass: { enabled: true, total_pages: 8 } },
+    access: { reading_pass: { enabled: readingPassEnabled, total_pages: 8 } },
     canonical_pages: {
       page_count: 8,
-      pages: approvedAudio
+      pages: approvedAudio || mappedProtectedChapter
         ? [
           { page_number: 1, chapter_id: "chapter-one", chapter_title: "Chapter One" },
           { page_number: 4, chapter_id: "chapter-two", chapter_title: "Chapter Two" },
@@ -85,12 +94,13 @@ function pagePayload(book, pageIndex) {
   };
 }
 
-async function configureApi(page, { authenticated = false, denyLease = false } = {}) {
+async function configureApi(page, { authenticated = false, denyLease = false, readingPassEnabled = true, sessionStartDelayMs = 0 } = {}) {
+  const requests = { sessionStarts: 0, protectedPageRequests: 0 };
   await page.route("**/api/**", async (route) => {
     const request = route.request();
     const url = new URL(request.url());
     const pathname = url.pathname;
-    const book = [readerBook, preparationBook, audioBook].find((candidate) => (
+    const book = [readerBook, preparationBook, protectedChapterBook, audioBook].find((candidate) => (
       pathname.endsWith(`/books/${candidate.slug}`)
       || pathname.includes(`/reader/book/${candidate.slug}/`)
       || pathname.includes(`/reading-pass/books/${candidate.slug}/`)
@@ -100,7 +110,7 @@ async function configureApi(page, { authenticated = false, denyLease = false } =
       return;
     }
     if (pathname.endsWith("/books")) {
-      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([readerBook, preparationBook, audioBook]) });
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([readerBook, preparationBook, protectedChapterBook, audioBook]) });
       return;
     }
     if (book && pathname.endsWith(`/books/${book.slug}`)) {
@@ -108,15 +118,18 @@ async function configureApi(page, { authenticated = false, denyLease = false } =
       return;
     }
     if (book && pathname.includes(`/reader/book/${book.slug}/manifest`)) {
-      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(manifestFor(book)) });
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(manifestFor(book, { readingPassEnabled })) });
       return;
     }
     if (book && /\/reading-pass\/books\/[^/]+\/pages\/\d+$/.test(pathname)) {
       const pageIndex = Number(pathname.split("/").at(-1));
+      if (pageIndex > 3) requests.protectedPageRequests += 1;
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(pagePayload(book, pageIndex)) });
       return;
     }
     if (pathname.endsWith("/reading-pass/sessions/start")) {
+      requests.sessionStarts += 1;
+      if (sessionStartDelayMs) await new Promise((resolve) => setTimeout(resolve, sessionStartDelayMs));
       const response = !authenticated
         ? { status: 401, body: { detail: { message: "Sign in to continue." } } }
         : denyLease
@@ -131,6 +144,7 @@ async function configureApi(page, { authenticated = false, denyLease = false } =
     }
     await route.fulfill({ status: 404, contentType: "application/json", body: JSON.stringify({ detail: "Unhandled isolated fixture request" }) });
   });
+  return requests;
 }
 
 async function tabTo(page, predicate, label) {
@@ -193,18 +207,95 @@ async function runAnonymousHandoffs({ id, viewport }) {
   await page.goto(`${base}/book/${readerBook.slug}`, { waitUntil: "domcontentloaded" });
   assert.equal(await page.getByTestId("book-listen-approved").count(), 0, `${id}: unapproved audio received a listening CTA`);
 
-  await page.goto(`${base}/reader/${readerBook.slug}?p=4`, { waitUntil: "domcontentloaded" });
-  await page.getByRole("heading", { name: "Reader unavailable" }).waitFor();
-  assert.equal(await page.getByTestId("reader-recovery-sign-in").getAttribute("href"), `/login?next=%2Freader%2F${readerBook.slug}%3Fp%3D4`, `${id}: protected reader return path changed`);
-  await page.screenshot({ path: path.join(output, `${id}-reader-denied.png`), fullPage: true });
-  await page.reload({ waitUntil: "domcontentloaded" });
-  await page.getByTestId("reader-recovery-sign-in").waitFor();
-
   const geometry = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }));
   assert.equal(geometry.scrollWidth, geometry.clientWidth, `${id}: document has horizontal overflow`);
   await context.close();
   await browser.close();
   return { id, viewport, authenticated: false, geometry, result: "PASS" };
+}
+
+async function openProtectedChapterFromBookDetail(page, id) {
+  await page.getByRole("tab", { name: "Chapters", exact: true }).click();
+  const chapter = page.getByRole("link", { name: "Chapter Two", exact: true });
+  await chapter.waitFor();
+  assert.equal(await chapter.getAttribute("href"), `/reader/${protectedChapterBook.slug}?p=4`, `${id}: Book Detail must use the server-mapped canonical protected page`);
+  await tabTo(page, (active) => active.href === `/reader/${protectedChapterBook.slug}?p=4`, `${id}: protected chapter link`);
+  await Promise.all([
+    page.waitForURL((url) => url.pathname === `/reader/${protectedChapterBook.slug}` && url.searchParams.get("p") === "4"),
+    page.keyboard.press("Enter"),
+  ]);
+}
+
+async function runProtectedChapterEntry({ id, viewport }) {
+  const base = baseUrl.replace(/\/$/, "");
+  const browser = await chromium.launch(browserLaunchOptions);
+  const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  await context.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
+  const page = await context.newPage();
+  page.setDefaultTimeout(8_000);
+  const requests = await configureApi(page, { authenticated: true, sessionStartDelayMs: 75 });
+
+  await page.goto(`${base}/book/${protectedChapterBook.slug}`, { waitUntil: "domcontentloaded" });
+  await openProtectedChapterFromBookDetail(page, id);
+  await page.getByRole("heading", { name: "Continue to this chapter" }).waitFor();
+  assert.equal(requests.sessionStarts, 0, `${id}: navigating to a protected chapter must not create a lease`);
+  assert.equal(requests.protectedPageRequests, 0, `${id}: navigating to a protected chapter must not request protected content`);
+  await page.screenshot({ path: path.join(output, `${id}-protected-chapter-awaiting-authorization.png`), fullPage: true });
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await page.getByTestId("reader-authorize-chapter").waitFor();
+  assert.equal(requests.sessionStarts, 0, `${id}: reload must retain an explicit authorization step`);
+  assert.equal(requests.protectedPageRequests, 0, `${id}: reload must not request protected content`);
+  await tabTo(page, (active) => active.testId === "reader-authorize-chapter", `${id}: chapter authorization action`);
+  await page.getByTestId("reader-authorize-chapter").evaluate((node) => { node.click(); node.click(); });
+  await page.getByTestId("reader-reading-text").waitFor();
+  assert.match(await page.getByTestId("reader-reading-text").textContent(), /Fixture canonical page 4/, `${id}: authorization must open the requested canonical page`);
+  assert.equal(requests.sessionStarts, 1, `${id}: duplicate authorization submissions created more than one lease`);
+  assert.equal(requests.protectedPageRequests, 1, `${id}: authorization must request exactly the selected protected page`);
+  await page.screenshot({ path: path.join(output, `${id}-protected-chapter-authorized.png`), fullPage: true });
+  await context.close();
+
+  const anonymousContext = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  const anonymousPage = await anonymousContext.newPage();
+  anonymousPage.setDefaultTimeout(8_000);
+  const anonymousRequests = await configureApi(anonymousPage);
+  await anonymousPage.goto(`${base}/book/${protectedChapterBook.slug}`, { waitUntil: "domcontentloaded" });
+  await openProtectedChapterFromBookDetail(anonymousPage, `${id}: anonymous`);
+  await anonymousPage.getByTestId("reader-recovery-sign-in").waitFor();
+  assert.equal(await anonymousPage.getByTestId("reader-recovery-sign-in").getAttribute("href"), `/login?next=%2Freader%2F${protectedChapterBook.slug}%3Fp%3D4`, `${id}: anonymous return must preserve book and canonical page`);
+  assert.equal(anonymousRequests.sessionStarts, 0, `${id}: anonymous navigation must not start a lease`);
+  assert.equal(anonymousRequests.protectedPageRequests, 0, `${id}: anonymous navigation must not request protected content`);
+  await anonymousPage.screenshot({ path: path.join(output, `${id}-protected-chapter-anonymous.png`), fullPage: true });
+  await anonymousContext.close();
+
+  const deniedContext = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  await deniedContext.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
+  const deniedPage = await deniedContext.newPage();
+  deniedPage.setDefaultTimeout(8_000);
+  const deniedRequests = await configureApi(deniedPage, { authenticated: true, denyLease: true });
+  await deniedPage.goto(`${base}/book/${protectedChapterBook.slug}`, { waitUntil: "domcontentloaded" });
+  await openProtectedChapterFromBookDetail(deniedPage, `${id}: denied`);
+  await deniedPage.getByTestId("reader-authorize-chapter").click();
+  await deniedPage.getByRole("heading", { name: "Reader unavailable" }).waitFor();
+  assert.equal(await deniedPage.getByTestId("reader-reading-text").count(), 0, `${id}: denied authorization exposed protected content`);
+  assert.equal(await deniedPage.getByTestId("reader-authorize-chapter").count(), 0, `${id}: denied authorization offered an automatic retry`);
+  assert.equal(deniedRequests.protectedPageRequests, 0, `${id}: denied authorization requested protected content`);
+  await deniedContext.close();
+
+  const disabledContext = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  await disabledContext.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
+  const disabledPage = await disabledContext.newPage();
+  disabledPage.setDefaultTimeout(8_000);
+  const disabledRequests = await configureApi(disabledPage, { authenticated: true, readingPassEnabled: false });
+  await disabledPage.goto(`${base}/book/${protectedChapterBook.slug}`, { waitUntil: "domcontentloaded" });
+  await openProtectedChapterFromBookDetail(disabledPage, `${id}: disabled`);
+  await disabledPage.getByRole("heading", { name: "Reader unavailable" }).waitFor();
+  assert.equal(await disabledPage.getByTestId("reader-authorize-chapter").count(), 0, `${id}: disabled edition offered authorization`);
+  assert.equal(await disabledPage.getByTestId("reader-reading-text").count(), 0, `${id}: disabled edition exposed protected content`);
+  assert.equal(disabledRequests.sessionStarts, 0, `${id}: disabled edition started a lease`);
+  assert.equal(disabledRequests.protectedPageRequests, 0, `${id}: disabled edition requested protected content`);
+  await disabledContext.close();
+  await browser.close();
+  return { id, viewport, protectedChapter: true, result: "PASS" };
 }
 
 async function runEntitledReader({ id, viewport }) {
@@ -279,6 +370,7 @@ const scenarios = [
 const selectedScenarioIds = new Set((process.env.BOOK_READER_LISTENER_SCENARIOS || "").split(",").filter(Boolean));
 for (const scenario of scenarios.filter(({ id }) => selectedScenarioIds.size === 0 || selectedScenarioIds.has(id))) {
   results.push(await runAnonymousHandoffs(scenario));
+  results.push(await runProtectedChapterEntry(scenario));
   results.push(await runEntitledReader(scenario));
   results.push(await runEntitledListener(scenario));
   results.push(await runDeniedAccess(scenario));

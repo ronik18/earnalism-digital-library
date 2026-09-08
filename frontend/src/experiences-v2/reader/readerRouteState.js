@@ -5,9 +5,20 @@ export function readerRouteState({
   error = "",
   expectedChapterId = "",
   expectedChapterTitle = "",
+  awaitingAuthorization = false,
+  readingPassEnabled = true,
 } = {}) {
   if (loading) return { state: "loading", message: "" };
   if (error) return { state: "unavailable", message: error };
+  if (!readingPassEnabled) {
+    return { state: "unavailable", message: "This reader edition is unavailable." };
+  }
+  if (awaitingAuthorization) {
+    return {
+      state: "authorization_required",
+      message: "This chapter is ready to open after you confirm Reading Pass authorization.",
+    };
+  }
   if (!page || Number(page.page_index) !== Number(canonicalPage)) {
     return { state: "unavailable", message: "This reader edition cannot verify its canonical preview." };
   }
@@ -20,12 +31,11 @@ export function readerRouteState({
   return { state: "ready", message: "" };
 }
 
-export function readerRecoveryPlan({ canonicalPage = 1, user = null, error = "" } = {}) {
+export function readerRecoveryPlan({ canonicalPage = 1, user = null, error = "", awaitingAuthorization = false } = {}) {
   const accessMessage = String(error || "").toLowerCase();
-  const needsSignIn = Number(canonicalPage) > 3 && !user;
-  const needsPass = !needsSignIn && (
-    Number(canonicalPage) > 3
-    || /current reading pass|required to continue|lease|authorization expired|access could not be verified/.test(accessMessage)
-  );
-  return { needsSignIn, needsPass };
+  const protectedPage = Number(canonicalPage) > 3;
+  const needsSignIn = awaitingAuthorization && protectedPage && !user;
+  const needsAuthorization = awaitingAuthorization && protectedPage && Boolean(user);
+  const needsPass = !awaitingAuthorization && !needsSignIn && /current reading pass|required to continue|lease|authorization expired|access could not be verified/.test(accessMessage);
+  return { needsSignIn, needsAuthorization, needsPass };
 }

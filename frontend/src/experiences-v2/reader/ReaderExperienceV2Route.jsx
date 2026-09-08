@@ -30,12 +30,13 @@ function routeState(title, message, action = null) {
   return <main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role="alert">{message}</p>{action}</section></main>;
 }
 
-function ReaderRecoveryActions({ slug, canonicalPage, user, error }) {
-  const plan = readerRecoveryPlan({ canonicalPage, user, error });
+function ReaderRecoveryActions({ slug, canonicalPage, user, error, awaitingAuthorization, authorizing, onAuthorize }) {
+  const plan = readerRecoveryPlan({ canonicalPage, user, error, awaitingAuthorization });
   const next = `/reader/${encodeURIComponent(slug)}?p=${canonicalPage}`;
   return <div className="experience-v2-route-state__actions">
     <Link to={`/book/${slug}`} data-testid="reader-recovery-book">Return to book details</Link>
     {plan.needsSignIn && <Link to={`/login?next=${encodeURIComponent(next)}`} data-testid="reader-recovery-sign-in">Sign in to continue</Link>}
+    {plan.needsAuthorization && <button type="button" data-testid="reader-authorize-chapter" onClick={onAuthorize} disabled={authorizing}>{authorizing ? "Authorizing chapter…" : "Continue to this chapter"}</button>}
     {!plan.needsSignIn && plan.needsPass && <Link to="/pricing" data-testid="reader-recovery-passes">View Reading Passes</Link>}
   </div>;
 }
@@ -54,7 +55,9 @@ export default function ReaderExperienceV2Route() {
   const [lease, setLease] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [authorizing, setAuthorizing] = useState(false);
   const leaseRef = useRef(null);
+  const authorizingRef = useRef(false);
 
   const setLeaseState = useCallback((value) => {
     leaseRef.current = value;
@@ -115,6 +118,10 @@ export default function ReaderExperienceV2Route() {
       navigate(`/login?next=${encodeURIComponent(`/reader/${slug}?p=${nextPage}`)}`);
       return;
     }
+    if (authorizingRef.current) return;
+    authorizingRef.current = true;
+    setAuthorizing(true);
+    setError("");
     try {
       const started = await startReadingPassSession({ bookSlug: slug, pageIndex: nextPage });
       const nextLease = { sessionId: started.session_id, token: started.lease_token, version: Number(started.lease_version || 1), sequence: 0 };
@@ -122,6 +129,9 @@ export default function ReaderExperienceV2Route() {
       changePage(nextPage);
     } catch (requestError) {
       setError(requestError?.response?.data?.detail?.message || "A current Reading Pass is required to continue.");
+    } finally {
+      authorizingRef.current = false;
+      setAuthorizing(false);
     }
   }, [changePage, navigate, setLeaseState, slug, user]);
 
@@ -157,6 +167,15 @@ export default function ReaderExperienceV2Route() {
   const expectedChapter = (manifest?.chapters || []).find(
     (item) => item.id === expectedCanonicalPage?.chapter_id,
   );
+  const readingPassEnabled = manifest?.access?.reading_pass?.enabled !== false;
+  const awaitingAuthorization = Boolean(
+    !error
+    && !lease
+    && canonicalPage > 3
+    && readingPassEnabled
+    && manifest?.book
+    && expectedCanonicalPage,
+  );
   const renderState = readerRouteState({
     loading,
     canonicalPage,
@@ -164,6 +183,8 @@ export default function ReaderExperienceV2Route() {
     error,
     expectedChapterId: expectedCanonicalPage?.chapter_id || "",
     expectedChapterTitle: expectedChapter?.title || "",
+    awaitingAuthorization,
+    readingPassEnabled,
   });
 
   if (visualFixture) return <ReaderExperienceV2 model={READER_V2_FIXTURE} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target) => {
@@ -172,7 +193,8 @@ export default function ReaderExperienceV2Route() {
     if (target === "passes") navigate("/pricing");
   }} />;
   if (renderState.state === "loading") return routeState("Opening reader", "Loading this canonical edition.");
-  if (renderState.state === "unavailable") return routeState("Reader unavailable", renderState.message, <ReaderRecoveryActions slug={slug} canonicalPage={canonicalPage} user={user} error={error} />);
+  if (renderState.state === "authorization_required") return routeState("Continue to this chapter", renderState.message, <ReaderRecoveryActions slug={slug} canonicalPage={canonicalPage} user={user} error={error} awaitingAuthorization={awaitingAuthorization} authorizing={authorizing} onAuthorize={() => authorizeAndContinue(canonicalPage)} />);
+  if (renderState.state === "unavailable") return routeState("Reader unavailable", renderState.message, <ReaderRecoveryActions slug={slug} canonicalPage={canonicalPage} user={user} error={error} awaitingAuthorization={false} authorizing={false} onAuthorize={undefined} />);
 
   return <><ReaderExperienceV2 model={model} access={{ authorized: Boolean(lease) }} onRequestPage={authorizeAndContinue} onNavigate={(target) => {
     if (target === "back") navigate(`/book/${slug}`);

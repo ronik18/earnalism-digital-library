@@ -35,14 +35,16 @@ describe("Reader, Listener, and About v2 product truth", () => {
   });
 
   test("visible Reader recovery preserves the existing authorization boundary", () => {
-    expect(readerRecoveryPlan({ canonicalPage: 4, user: false })).toEqual({ needsSignIn: true, needsPass: false });
-    expect(readerRecoveryPlan({ canonicalPage: 4, user: { id: "reader" } })).toEqual({ needsSignIn: false, needsPass: true });
-    expect(readerRecoveryPlan({ canonicalPage: 1, user: false, error: "Reading Pass authorization expired." })).toEqual({ needsSignIn: false, needsPass: true });
-    expect(readerRecoveryPlan({ canonicalPage: 1, user: false, error: "Reading Pass v2 is not enabled." })).toEqual({ needsSignIn: false, needsPass: false });
+    expect(readerRecoveryPlan({ canonicalPage: 4, user: false, awaitingAuthorization: true })).toEqual({ needsSignIn: true, needsAuthorization: false, needsPass: false });
+    expect(readerRecoveryPlan({ canonicalPage: 4, user: { id: "reader" }, awaitingAuthorization: true })).toEqual({ needsSignIn: false, needsAuthorization: true, needsPass: false });
+    expect(readerRecoveryPlan({ canonicalPage: 4, user: { id: "reader" }, error: "A current Reading Pass is required to continue." })).toEqual({ needsSignIn: false, needsAuthorization: false, needsPass: true });
+    expect(readerRecoveryPlan({ canonicalPage: 1, user: false, error: "Reading Pass authorization expired." })).toEqual({ needsSignIn: false, needsAuthorization: false, needsPass: true });
+    expect(readerRecoveryPlan({ canonicalPage: 1, user: false, error: "Reading Pass v2 is not enabled." })).toEqual({ needsSignIn: false, needsAuthorization: false, needsPass: false });
     const source = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2Route.jsx"), "utf8");
     expect(source).toContain('role="alert"');
     expect(source).toContain('data-testid="reader-recovery-book"');
     expect(source).toContain('data-testid="reader-recovery-sign-in"');
+    expect(source).toContain('data-testid="reader-authorize-chapter"');
     expect(source).toContain('data-testid="reader-recovery-passes"');
   });
 
