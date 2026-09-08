@@ -19,6 +19,8 @@ const states = [
   ["journal-mobile", "/journal", 390, 844, "[data-testid=journal-page]"],
   ["article-desktop", "/journal/how-reading-shapes-better-founders", 1440, 1000, "[data-testid=journal-article]"],
   ["article-mobile", "/journal/how-reading-shapes-better-founders", 390, 844, "[data-testid=journal-article]"],
+  ["about-desktop", "/about", 1440, 1000, ".about-v3, .about-v2"],
+  ["about-mobile", "/about", 390, 844, ".about-v3, .about-v2"],
   ["contact-desktop", "/contact", 1440, 1000, "[data-testid=contact-page]"],
   ["contact-mobile", "/contact", 390, 844, "[data-testid=contact-page]"],
   ["micro-story-desktop", "/micro-story", 1440, 1000, ".micro-story-page"],

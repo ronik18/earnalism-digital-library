@@ -6,7 +6,9 @@ on:
     paths:
       - frontend/src/pages/Journal.*
       - frontend/src/pages/JournalArticle.*
+      - frontend/src/pages/About.*
       - frontend/src/pages/Contact.*
+      - frontend/src/App.js
       - frontend/src/pages/MicroStoryLanding.*
       - frontend/src/pages/NotFound.*
       - frontend/src/styles/editorial-support.css
@@ -19,6 +21,7 @@ on:
       - frontend/static-seo/editorial-public.json
       - frontend/static-seo/controlled-publication-public.json
       - scripts/capture_editorial_support_owner_review.mjs
+      - scripts/test_about_contact_journey.mjs
       - scripts/generate_editorial_support_owner_review.py
       - .github/workflows/editorial-support-owner-review.yml
 

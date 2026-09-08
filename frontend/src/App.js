@@ -21,7 +21,6 @@ const pageImports = {
   ReaderLegacy: () => import("./pages/Reader"),
   ReaderV2: () => import("./experiences-v2/reader/ReaderExperienceV2Route"),
   ListenerV2: () => import("./experiences-v2/listener/ListenerExperienceV2Route"),
-  AboutV2: () => import("./experiences-v2/about/AboutExperienceV2Route"),
   MicroStoryLanding: () => import("./pages/MicroStoryLanding"),
   SecureReaderHarness: () => import("./pages/SecureReaderHarness"),
   AdminLogin: () => import("./pages/AdminLogin"),
@@ -44,7 +43,6 @@ const Pricing = lazy(pageImports.Pricing);
 const ReaderLegacy = lazy(pageImports.ReaderLegacy);
 const ReaderV2 = lazy(pageImports.ReaderV2);
 const ListenerV2 = lazy(pageImports.ListenerV2);
-const AboutV2 = lazy(pageImports.AboutV2);
 const MicroStoryLanding = lazy(pageImports.MicroStoryLanding);
 const SecureReaderHarness = lazy(pageImports.SecureReaderHarness);
 const AdminLogin = lazy(pageImports.AdminLogin);
@@ -111,6 +109,7 @@ export function AppRouterContent() {
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:slug" element={<JournalArticle />} />
             <Route path="/about-legacy" element={<AboutLegacy />} />
+            <Route path="/about" element={<AboutLegacy />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/micro-story" element={<MicroStoryLanding />} />
@@ -126,7 +125,6 @@ export function AppRouterContent() {
             <Route path="*" element={<NotFound />} />
           </Route>
           {/* Standalone full-screen routes (no public header/footer) */}
-          <Route path="/about" element={<AboutV2 />} />
           <Route path="/reader/:slug" element={<ReaderV2 />} />
           <Route path="/reader-legacy/:slug" element={<ReaderLegacy />} />
           <Route path="/listener/:slug" element={<ListenerV2 />} />
