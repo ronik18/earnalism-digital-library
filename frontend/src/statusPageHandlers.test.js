@@ -65,6 +65,9 @@ describe("direct seamless-branded status pages", () => {
     expect(page).toContain('robots: "noindex, nofollow"');
     expect(style).toContain(".error-route-page");
     expect(style).toContain(".error-route-panel__note");
-    expect(style).toMatch(/\.error-route-panel\s*\{[\s\S]*grid-template-columns/);
+    expect(style).toMatch(/\.error-route-page \.error-route-panel\s*\{[\s\S]*grid-template-columns/);
+    expect(fs.existsSync(path.join(root, "public/assets/fonts/eb-garamond-400.ttf"))).toBe(true);
+    expect(fs.existsSync(path.join(root, "public/assets/fonts/outfit-400.ttf"))).toBe(true);
+    expect(fs.existsSync(path.join(root, "public/assets/fonts/outfit-600.ttf"))).toBe(true);
   });
 });
