@@ -21,6 +21,12 @@ describe("editorial and support route contract", () => {
     expect(article).toContain('api.get("/blog"');
     expect(article).toContain('canonicalPath: post ? "/journal/" + post.slug : undefined');
     expect(article).toContain('robots: postNotFound ? "noindex, nofollow" : "index, follow"');
+    expect(journal).toContain('to="/library" data-testid="journal-library-link"');
+    expect(article).toContain('to="/library" data-testid="article-library-cta"');
+    expect(article).toContain("Take the thought back to the shelf.");
+    expect(journal).toContain('data-testid="journal-feature-read"');
+    expect(journal).toContain('aria-pressed={active === category}');
+    expect(article).toContain('data-testid="back-journal"');
   });
 
   test("preserves the existing contact endpoint and adds no pre-submit request", () => {

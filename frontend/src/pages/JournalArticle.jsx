@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
+import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import { api } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
 import ShareButtons from "../components/ShareButtons";
@@ -76,31 +76,32 @@ export default function JournalArticle() {
 
   if (loading) return <PublicPageFrame tone="editorial"><div className="editorial-surface mx-auto my-20 max-w-3xl px-6 py-16 text-center text-charcoal-soft" role="status" data-testid="journal-article-loading">Opening this journal note…</div></PublicPageFrame>;
   if (!post) return (
-    <PublicPageFrame tone="editorial"><div className="error-route-panel mx-auto my-20 max-w-3xl px-6 py-20 text-center" data-testid="journal-article-not-found">
-      <h1 className="font-serif-display text-4xl text-burgundy">Article not found</h1>
-      <Link to="/journal" className="btn-secondary mt-6">Back to Journal</Link>
+    <PublicPageFrame tone="editorial"><div className="error-route-panel journal-v2__empty mx-auto my-20 max-w-3xl px-6 py-20 text-center" data-testid="journal-article-not-found">
+      <h1>Article not found</h1>
+      <p>This note is no longer available. The Journal and Library are still open for discovery.</p>
+      <div className="journal-v2__error-actions"><Link to="/journal">Back to Journal</Link><Link to="/library">Explore the Library <ArrowUpRight size={15} aria-hidden="true" /></Link></div>
     </div></PublicPageFrame>
   );
 
   return (
     <PublicPageFrame tone="editorial" testId="journal-article"><article>
       {articleSchema && <JsonLd id="article" data={articleSchema} />}
-      <div className="max-w-3xl mx-auto px-5 sm:px-8 pt-12">
+      <div className="journal-v2__article-back">
         <Link to="/journal" className="inline-flex items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-journal">
           <ChevronLeft size={14} /> Back to Journal
         </Link>
       </div>
 
-      <header className="editorial-support-hero">
-      <div className="max-w-3xl mx-auto px-5 sm:px-8 pt-8 pb-12 text-center">
-        <div className="editorial-kicker mb-5">{post.category || "Journal"}</div>
-        <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[4rem] text-burgundy leading-[1.02] tracking-tight text-balance">{post.title}</h1>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-[0.7rem] tracking-[0.18em] uppercase text-charcoal-soft">
+      <header className="journal-v2__article-masthead">
+      <div>
+        <div className="editorial-kicker">{post.category || "Journal"}</div>
+        <h1>{post.title}</h1>
+        <div className="journal-v2__article-metadata">
           <span>By {post.author}</span><span>·</span>
           <span>{new Date(post.created_at).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}</span><span>·</span>
           <span>{articleReadMinutes(post.content)} min read</span>
         </div>
-        <div className="gold-rule mx-auto mt-10" />
+        <div className="journal-v2__rule" />
       </div></header>
 
       {post.cover_image_url && (
@@ -118,23 +119,28 @@ export default function JournalArticle() {
           ))}
         </div>
         {post.pull_quote && (
-          <div className="my-12 pull-quote" data-testid="pull-quote">{post.pull_quote}</div>
+        <div className="my-12 pull-quote" data-testid="pull-quote">{post.pull_quote}</div>
         )}
         <div className="mt-10 pt-8 border-t border-brand flex items-center justify-between flex-wrap gap-4" data-testid="article-share">
           <span className="overline">Share this essay</span>
           <ShareButtons title={post.title} variant="article" testIdPrefix="article-share" />
         </div>
+        <aside className="journal-v2__library-cta" data-testid="article-library-discovery">
+          <div><p className="editorial-kicker">Continue with a book</p><h2>Take the thought back to the shelf.</h2><p>Explore the Library for a story to read next.</p></div>
+          <Link to="/library" data-testid="article-library-cta">Explore the Library <ArrowUpRight size={16} aria-hidden="true" /></Link>
+        </aside>
       </div>
 
       {related.length > 0 && (
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 border-t border-brand">
-          <div className="overline mb-3">Continue reading</div>
-          <h3 className="font-serif-display text-3xl text-burgundy mb-8">Other notes from the journal</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section className="journal-v2__related">
+          <div className="editorial-kicker">Continue reading</div>
+          <h3>Other notes from the journal</h3>
+          <div>
             {related.map((r) => (
-              <Link key={r.slug} to={`/journal/${r.slug}`} className="card-elegant p-6">
-                <div className="overline mb-2">{r.category}</div>
-                <h4 className="font-serif-display text-xl text-burgundy leading-snug">{r.title}</h4>
+              <Link key={r.slug} to={`/journal/${r.slug}`}>
+                <span>{r.category}</span>
+                <h4>{r.title}</h4>
+                <span>Read note <ArrowUpRight size={15} aria-hidden="true" /></span>
               </Link>
             ))}
           </div>

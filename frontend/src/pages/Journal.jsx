@@ -26,7 +26,7 @@ function ArticleCard({ post }) {
         <h2 className="mt-4 font-serif-light text-[1.65rem] leading-[1.12] tracking-tight text-burgundy">{post.title}</h2>
         {post.excerpt ? <p className="mt-4 font-serif-display text-base italic leading-snug text-charcoal-soft line-clamp-3">{post.excerpt}</p> : null}
         <div className="mt-5 text-[0.66rem] uppercase tracking-[0.2em] text-charcoal-soft">{fmtDate(post.created_at)} · {readMinutes(post.content)} min read</div>
-        <span className="btn-link inline-flex min-h-11 items-center gap-1">Read article <ArrowUpRight size={15} aria-hidden="true" /></span>
+        <span className="journal-v2__article-link inline-flex min-h-11 items-center gap-1">Read article <ArrowUpRight size={15} aria-hidden="true" /></span>
       </div>
     </Link>
   );
@@ -61,43 +61,51 @@ export default function Journal() {
 
   return (
     <PublicPageFrame tone="editorial" testId="journal-page">
-      <section className="editorial-support-hero">
-        <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-20 sm:px-8 sm:pb-20 sm:pt-28 lg:px-12">
-          <p className="editorial-kicker">The Earnalism Journal</p>
-          <h1 className="mt-5 max-w-4xl font-serif-light text-4xl leading-[1.02] tracking-tight text-burgundy sm:text-6xl lg:text-[4.5rem]">The Journal — notes for a more attentive reading life.</h1>
-          <p className="mt-7 max-w-2xl font-serif-display text-lg italic leading-snug text-charcoal-soft sm:text-xl">Essays on literature, work, and the quiet craft of returning to a page with care.</p>
+      <section className="journal-v2__masthead">
+        <div className="journal-v2__masthead-inner">
+          <div>
+            <p className="editorial-kicker">The Earnalism Journal</p>
+            <h1>The Journal — notes for a more attentive reading life.</h1>
+            <p className="journal-v2__lede">Essays on literature, work, and the quiet craft of returning to a page with care.</p>
+          </div>
+          <aside className="journal-v2__library-note" aria-label="Library discovery">
+            <span>From the reading desk</span>
+            <p>Every good note eventually leads back to a book.</p>
+            <Link to="/library" data-testid="journal-library-link">Explore the Library <ArrowUpRight size={15} aria-hidden="true" /></Link>
+          </aside>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-12">
-        <div className="flex flex-wrap gap-2" aria-label="Journal categories" data-testid="journal-filters">
+      <section className="journal-v2__content">
+        <div className="journal-v2__filter-row" aria-label="Journal categories" data-testid="journal-filters">
+          <p>Browse by subject</p>
+          <div>
           {categories.map((category) => (
-            <button key={category} type="button" onClick={() => setActive(category)} data-testid={"journal-filter-" + category.toLowerCase()}
-              className={active === category ? "min-h-11 rounded-full border border-burgundy bg-burgundy px-4 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-[var(--brand-ivory)]" : "min-h-11 rounded-full border border-brand-soft px-4 py-2 text-[0.68rem] uppercase tracking-[0.18em] text-charcoal-soft transition-colors hover:border-gold hover:text-burgundy"}>
+            <button key={category} type="button" onClick={() => setActive(category)} aria-pressed={active === category} data-testid={"journal-filter-" + category.toLowerCase()}
+              className={active === category ? "is-active" : ""}>
               {category === "all" ? "All notes" : category}
             </button>
           ))}
+          </div>
         </div>
-      </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8 lg:px-12">
         {loading ? <div className="editorial-surface px-6 py-16 text-center text-charcoal-soft" role="status" data-testid="journal-loading">Opening the journal…</div> : null}
         {!loading && featured ? (
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_.9fr]" data-testid="journal-feature">
-            <Link to={"/journal/" + featured.slug} className="group overflow-hidden rounded-[1.35rem] border border-brand-soft bg-[#f1e4cf]">
-              {featured.cover_image_url ? <img src={optimizedImageUrl(featured.cover_image_url, { width: 1200 })} width="1200" height="750" alt="" loading="eager" decoding="async" className="aspect-[16/10] h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" /> : null}
+          <div className="journal-v2__feature" data-testid="journal-feature">
+            <Link to={"/journal/" + featured.slug} className="journal-v2__feature-image" data-testid="journal-feature-link" aria-label={`Read ${featured.title}`}>
+              {featured.cover_image_url ? <img src={optimizedImageUrl(featured.cover_image_url, { width: 1200 })} width="1200" height="750" alt="" loading="eager" decoding="async" /> : <span aria-hidden="true" style={{ backgroundImage: "linear-gradient(120deg, rgba(70, 19, 34, .96), rgba(101, 29, 50, .76)), url('/assets/hero/quiet-heritage-still-life.png')" }} />}
             </Link>
-            <div className="editorial-surface flex flex-col justify-center p-7 sm:p-10">
+            <div className="journal-v2__feature-copy">
               <p className="editorial-kicker">Featured {featured.category ? "· " + featured.category : ""}</p>
-              <h2 className="mt-5 font-serif-light text-3xl leading-[1.08] tracking-tight text-burgundy sm:text-5xl">{featured.title}</h2>
-              {featured.excerpt ? <p className="mt-6 font-serif-display text-lg italic leading-snug text-charcoal-soft">{featured.excerpt}</p> : null}
-              <p className="mt-7 text-[0.67rem] uppercase tracking-[0.18em] text-charcoal-soft">By {featured.author || "The Earnalism"} · {fmtDate(featured.created_at)} · {readMinutes(featured.content)} min read</p>
-              <Link to={"/journal/" + featured.slug} className="btn-primary mt-8 inline-flex min-h-11 w-fit items-center gap-2">Read article <ArrowUpRight size={16} aria-hidden="true" /></Link>
+              <h2>{featured.title}</h2>
+              {featured.excerpt ? <p className="journal-v2__feature-excerpt">{featured.excerpt}</p> : null}
+              <p className="journal-v2__metadata">By {featured.author || "The Earnalism"} · {fmtDate(featured.created_at)} · {readMinutes(featured.content)} min read</p>
+              <Link to={"/journal/" + featured.slug} className="journal-v2__primary-link" data-testid="journal-feature-read">Read article <ArrowUpRight size={16} aria-hidden="true" /></Link>
             </div>
           </div>
         ) : null}
-        {!loading && remaining.length > 0 ? <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{remaining.map((post) => <ArticleCard key={post.slug} post={post} />)}</div> : null}
-        {!loading && filtered.length === 0 ? <div className="editorial-surface px-6 py-16 text-center" data-testid="journal-empty"><h2 className="font-serif-light text-3xl text-burgundy">No notes on this shelf yet.</h2><p className="mt-3 text-charcoal-soft">Choose another subject or return to the full journal.</p></div> : null}
+        {!loading && remaining.length > 0 ? <><div className="journal-v2__section-heading"><p className="editorial-kicker">More from the desk</p><h2>Keep following the thread.</h2></div><div className="journal-v2__grid">{remaining.map((post) => <ArticleCard key={post.slug} post={post} />)}</div></> : null}
+        {!loading && filtered.length === 0 ? <div className="journal-v2__empty" data-testid="journal-empty"><h2>No notes on this shelf yet.</h2><p>Choose another subject, or step into the Library to find a story.</p><Link to="/library">Explore the Library <ArrowUpRight size={15} aria-hidden="true" /></Link></div> : null}
       </section>
     </PublicPageFrame>
   );
