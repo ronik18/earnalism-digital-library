@@ -16,7 +16,7 @@ not promote a route inventory or fixture capture into production acceptance.
 | Journal → article → Library | Yes | Desktop/tablet/mobile fixture and keyboard/category tests | Published desktop route/navigation observed | Responsive production interaction remains unavailable in the permitted browser |
 | About → Contact / Library | Yes | Responsive/contact-fixture validation | Public render/navigation observed; no contact submission | A production form mutation is intentionally untested |
 | Micro Story, 404, retired 410, Journal missing article | Yes | Direct-status, font, recovery, noindex, keyboard, and campaign-query fixtures | Released PR #369 main-push canary covers removed-route/static SEO; public campaign check observed | Responsive/font-face production observation is limited to supported browser capability |
-| Public Header, Footer, legacy reader/listener routes | Preserved by design | Regression and route checks | Header/footer public render observed where stated above | Header Bengali-query defect remains separately tracked; no redesign claim is implied |
+| Public Header, Footer, legacy reader/listener routes | Preserved by design | Regression and route checks | Header/footer public render observed where stated above | The released Bengali Reader-only query/classification repair is not an open defect. Header redesign remains excluded |
 | Reading Pass authorization, settlement, audio, positions, cache | Service/contracts deployed; V2 disabled | Current candidate System UAT passed all 14 gates: 45-title isolated preflight, 51 backend-core tests, 34 V2-contract tests, 9 policy tests, 330 frontend tests, build, contracts, hydration, responsive, Chromium/Firefox/WebKit journeys, and contrast | No production authorization, payment, playback, or position mutation was run | Candidate evidence must be rerun against exact merged main after its test-only repair lands; production mutation tests need explicit owner authorization |
 | Current frontend deployment | Yes | N/A | GitHub main-push run `34274857117` bound to `ab24cadd…` succeeded: regression job `102225239735`, Vercel deploy `102227024220`, and canary `102227604487` | Vercel’s deployed source identity is evidenced through this workflow binding; provider inspection does not independently expose a Git SHA |
 | Current backend deployment | N/A—separate backend service | N/A | Railway production deployment `136e2460-f9d7-43b9-94a5-6235d12c5e2f`, source `b47ae96916adbd31f5baed182af76bde64980530`, two running instances observed | Backend is intentionally a separately deployed source; no equality with frontend main is inferred |
@@ -35,6 +35,8 @@ accessible name, `Discover listening`. The final attached-candidate System
 UAT report `run-20260909T042900Z-88412` is `PASSED`; its SHA-256 report digest
 is `841215edb34d810f5cd50c68851c67093248b97fd13653bebcb77672f50ff651`.
 This is isolated review evidence, not exact-main or production evidence.
+All later PR #370 changes are documentation-only, so the executable source at
+the current review head remains the source tested at `4ed752384…`.
 
 ## Program state
 

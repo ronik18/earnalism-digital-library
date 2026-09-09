@@ -15,7 +15,10 @@
     "railway_deployment": "136e2460-f9d7-43b9-94a5-6235d12c5e2f",
     "source_commit": "b47ae96916adbd31f5baed182af76bde64980530",
     "observed_instances": 2,
-    "relationship_to_frontend": "separately deployed backend; source equality is not inferred"
+    "relationship_to_frontend": "separately deployed backend; source equality is not inferred",
+    "backend_tree_comparison_to_released_main": "no backend-path changes from b47ae969 to ab24cadd",
+    "activation_deployment_identity": "UNVERIFIED until Railway reports the exact then-approved merged SHA after a source deployment",
+    "retained_railway_fallback": "UNAVAILABLE: historical D0/D1/D2 deployment records are REMOVED and Railway CLI 5.41.0 has no deployment-ID rollback command"
   },
   "reading_pass_v2": {
     "observed_at": "2026-09-09T04:30:52Z",
@@ -29,11 +32,13 @@
     "candidate_tree": "51884759e7fb7afab4a80ab95a264b8a45df0672",
     "system_uat_run": "run-20260909T042900Z-88412",
     "result": "PASSED",
-    "scope": "disposable loopback services with test-only V2 configuration; not production acceptance"
+    "scope": "disposable loopback services with test-only V2 configuration; not production acceptance",
+    "current_review_executable_equivalence": "later PR #370 changes are documentation-only, so executable source remains the tested 4ed752384 candidate"
   },
   "open_gates": [
     "PUBLIC_API_CORS_INTERMITTENCY_P1",
     "MOBILE_ACCEPTANCE_PENDING",
+    "Railway retained fallback and exact activation deployment identity not yet verified",
     "production protected-session, payment, and playback interaction not authorized or run",
     "historical worktree disappearance cause unresolved"
   ]
