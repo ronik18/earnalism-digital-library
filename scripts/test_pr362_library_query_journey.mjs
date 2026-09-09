@@ -157,6 +157,7 @@ async function assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name) {
   await sort.selectOption("title");
   await closeFilters(page, mobile);
   await assertProductionShapedPreparationCards(page);
+  await assertNoHorizontalOverflow(page, `${name}: All releases`);
   const search = page.getByTestId("library-reference-surface").getByTestId("library-search");
   await search.fill("edition");
   assert.equal(params(page).get("language"), "bn", `${name}: search must retain Bengali`);
