@@ -319,7 +319,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     await openJourneyPage(page, "/", "homepage-mobile");
 
     await expect(page.getByTestId("home-reference-primary-cta")).toHaveAccessibleName("Enter the Library");
-    await expect(page.getByRole("link", { name: "Enter the Listening Room" })).toHaveAttribute("href", "/library?availability=approved-audiobook");
+    await expect(page.getByRole("link", { name: "Discover listening" })).toHaveAttribute("href", "/library?availability=approved-audiobook");
     const mobileGeometry = await page.evaluate(() => ({
       heroHeight: Math.round(document.querySelector('.reference-home__hero')?.getBoundingClientRect().height || 0),
       scrollWidth: document.documentElement.scrollWidth,
