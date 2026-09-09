@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.modernization-state.v1",
-  "state": "GOVERNANCE_ENVELOPE_PROPOSED",
+  "state": "GOVERNANCE_ENVELOPE_EFFECTIVE",
   "authority": {
     "source_precedence": [
       "AGENTS.md and current checked-in repository policy",
@@ -14,8 +14,8 @@
     "missing_product_truth_contract_recorded": "docs/product/PRODUCT_TRUTH_CONTRACT.md"
   },
   "customer_ready": {
-    "status": "NOT_READY",
-    "active_priority": "P1-READING-PASS-V2-READER-AVAILABILITY",
-    "operational_authority": "pending merged customer-ready autonomy envelope"
+    "status": "NOT_DECLARED",
+    "active_priority": "P1-PUBLIC-API-CORS-INTERMITTENCY-AND-MOBILE-ACCEPTANCE",
+    "operational_authority": "effective on merged main; source changes remain scoped, reviewable, and owner-authorized"
   }
 }
