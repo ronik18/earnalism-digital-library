@@ -64,6 +64,9 @@ jobs:
           python3 -m pip install --disable-pip-version-check -r requirements.txt
           npx playwright install --with-deps chromium firefox webkit
 
+      - name: Verify source enumeration tool
+        run: command -v rg
+
       - name: Verify owner-scoped mobile-menu geometry
         run: |
           REACT_APP_ENABLE_VISUAL_FIXTURES=1 npm --prefix frontend run build
@@ -91,6 +94,7 @@ jobs:
         env:
           PRIOR_REVIEWED_SHA: 230f04a2e33a5d8c01d84d5ad7694dfcf8dd7d2a
         run: |
+          set -euo pipefail
           base_dir="$RUNNER_TEMP/earnalism-owner-review-base"
           base_tree_sha="$(git rev-parse "$PRIOR_REVIEWED_SHA^{tree}")"
           (
@@ -101,7 +105,10 @@ jobs:
             trap 'kill "$server_pid"' EXIT
             for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13008/ >/dev/null && break; sleep 1; done
             PR_HEAD_SHA="$PRIOR_REVIEWED_SHA" ACTUAL_CHECKOUT_SHA="$PRIOR_REVIEWED_SHA" CHECKOUT_TREE_SHA="$base_tree_sha" UAT_BASE_URL=http://127.0.0.1:13008 OWNER_REVIEW_CAPTURE_STRICT=false EXACT_OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/exact-primary-design/before node scripts/capture_exact_primary_owner_review.mjs
-            body_sha="$({ rg --files frontend/src | rg '(^frontend/src/pages/(Home|Library|Pricing)\.jsx$|^frontend/src/components/Footer(\.jsx|SocialLinks\.jsx)$|^frontend/src/components/ReferencePublicPages\.(jsx|css)$|^frontend/src/design-system/.*\.css$)'; printf '%s\n' docs/product/public-cta-contract.json; } | sort | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
+            body_inputs="$RUNNER_TEMP/before-public-body-inputs.txt"
+            rg --files frontend/src | rg '(^frontend/src/pages/(Home|Library|Pricing)\.jsx$|^frontend/src/components/Footer(\.jsx|SocialLinks\.jsx)$|^frontend/src/components/ReferencePublicPages\.(jsx|css)$|^frontend/src/design-system/.*\.css$)' > "$body_inputs"
+            test -s "$body_inputs"
+            body_sha="$({ cat "$body_inputs"; printf '%s\n' docs/product/public-cta-contract.json; } | sort | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
             header_sha="$(printf '%s\n' frontend/src/components/Header.jsx frontend/src/components/Header.css frontend/src/components/EarnalismBrandLockup.jsx frontend/src/components/EarnalismBrandLockup.css frontend/public/assets/brand/earnalism-brand-lockup.png | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
             printf '{"public_body_sha256":"%s","header_surface_sha256":"%s"}\n' "$body_sha" "$header_sha" > uat/evidence/exact-primary-design/before/surface-hashes.json
           )
@@ -113,13 +120,17 @@ jobs:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           WORKFLOW_EVENT_SHA: ${{ github.sha }}
         run: |
+          set -euo pipefail
           REACT_APP_ENABLE_VISUAL_FIXTURES=1 npm --prefix frontend run build
           node scripts/serve_frontend_build.js --port 13007 >"$RUNNER_TEMP/owner-review-head-server.log" 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
           for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:13007/ >/dev/null && break; sleep 1; done
           UAT_BASE_URL=http://127.0.0.1:13007 OWNER_REVIEW_CAPTURE_STRICT=true EXACT_OWNER_REVIEW_CAPTURE_OUTPUT=uat/evidence/exact-primary-design/current node scripts/capture_exact_primary_owner_review.mjs
-          body_sha="$({ rg --files frontend/src | rg '(^frontend/src/pages/(Home|Library|Pricing)\.jsx$|^frontend/src/components/Footer(\.jsx|SocialLinks\.jsx)$|^frontend/src/components/ReferencePublicPages\.(jsx|css)$|^frontend/src/design-system/.*\.css$)'; printf '%s\n' docs/product/public-cta-contract.json; } | sort | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
+          body_inputs="$RUNNER_TEMP/current-public-body-inputs.txt"
+          rg --files frontend/src | rg '(^frontend/src/pages/(Home|Library|Pricing)\.jsx$|^frontend/src/components/Footer(\.jsx|SocialLinks\.jsx)$|^frontend/src/components/ReferencePublicPages\.(jsx|css)$|^frontend/src/design-system/.*\.css$)' > "$body_inputs"
+          test -s "$body_inputs"
+          body_sha="$({ cat "$body_inputs"; printf '%s\n' docs/product/public-cta-contract.json; } | sort | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
           header_sha="$(printf '%s\n' frontend/src/components/Header.jsx frontend/src/components/Header.css frontend/src/components/EarnalismBrandLockup.jsx frontend/src/components/EarnalismBrandLockup.css frontend/public/assets/brand/earnalism-brand-lockup.png | while IFS= read -r file; do sha256sum "$file"; done | sha256sum | awk '{print $1}')"
           printf '{"public_body_sha256":"%s","header_surface_sha256":"%s"}\n' "$body_sha" "$header_sha" > uat/evidence/exact-primary-design/current/surface-hashes.json
 

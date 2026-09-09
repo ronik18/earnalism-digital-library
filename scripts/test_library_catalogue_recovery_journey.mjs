@@ -61,6 +61,33 @@ async function assertNoDocumentOverflow(page, label) {
   return geometry;
 }
 
+async function waitForCatalogueState(page, state) {
+  const fallback = page.getByTestId("library-catalogue-fallback");
+  const empty = page.getByTestId("library-catalogue-empty");
+  if (state === "success") {
+    await page.getByTestId("reference-book-devdas").waitFor();
+    await fallback.waitFor({ state: "detached" });
+    await empty.waitFor({ state: "detached" });
+    return;
+  }
+  if (state === "empty") {
+    await empty.waitFor();
+    await fallback.waitFor({ state: "detached" });
+    return;
+  }
+  await fallback.waitFor();
+  await page.getByTestId("library-catalogue-retry").waitFor({ state: "visible" });
+}
+
+async function focusRetryByTab(page, retry, label) {
+  await page.evaluate(() => document.activeElement?.blur());
+  for (let attempt = 0; attempt < 60; attempt += 1) {
+    await page.keyboard.press("Tab");
+    if (await retry.evaluate((node) => document.activeElement === node)) return attempt + 1;
+  }
+  throw new Error(`${label}: Tab traversal did not reach the retry action.`);
+}
+
 async function testInitialStates(context) {
   const cases = [
     ["success", "success", false, false],
@@ -71,6 +98,7 @@ async function testInitialStates(context) {
   const results = [];
   for (const [id, outcome, expectsFallback, expectsEmpty] of cases) {
     const { page } = await openScenario(context, outcome, { width: 768, height: 1024 });
+    await waitForCatalogueState(page, id === "success" ? "success" : expectsFallback ? "fallback" : "empty");
     if (expectsFallback) await assertFallback(page, id);
     else assert.equal(await page.getByTestId("library-catalogue-fallback").count(), 0, `${id}: fallback notice should not render`);
     assert.equal(await page.getByTestId("library-catalogue-empty").count(), expectsEmpty ? 1 : 0, `${id}: empty state classification changed`);
@@ -80,6 +108,9 @@ async function testInitialStates(context) {
     }
     if (id === "success") await page.getByTestId("reference-book-devdas").waitFor();
     results.push({ id, geometry: await assertNoDocumentOverflow(page, id) });
+    if (id === "rejected" || id === "malformed" || id === "empty") {
+      await page.screenshot({ path: path.join(output, `library-${id}-768.png`), fullPage: true });
+    }
     await page.close();
   }
   return results;
@@ -92,16 +123,18 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   const initialUrl = "/library?language=bn&availability=reader-ready&sort=title";
   await page.goto(`${baseUrl.replace(/\/$/, "")}${initialUrl}`, { waitUntil: "domcontentloaded" });
   await page.getByTestId("library-reference-surface").waitFor();
+  await waitForCatalogueState(page, "fallback");
   await assertFallback(page, `${viewport.width}px initial`);
 
   const retry = page.getByTestId("library-catalogue-retry");
-  await retry.focus();
+  const tabSteps = await focusRetryByTab(page, retry, `${viewport.width}px initial`);
   await page.keyboard.press("Enter");
   await page.getByTestId("library-catalogue-retry").waitFor();
   assert.equal(await retry.isDisabled(), true, `${viewport.width}px retry: pending retry is not disabled`);
   assert.equal(fixture.count(), 2, `${viewport.width}px retry: duplicate catalogue request started`);
   await retry.click({ force: true });
   assert.equal(fixture.count(), 2, `${viewport.width}px retry: repeated click started another catalogue request`);
+  await page.screenshot({ path: path.join(output, `library-pending-retry-${viewport.width}.png`), fullPage: true });
   await page.locator("button.reference-filter-trigger:visible").click();
   const drawer = page.locator('.reference-library-drawer[role="dialog"]:visible');
   await drawer.getByRole("button", { name: "Bengali", exact: true }).click();
@@ -109,18 +142,18 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   assert.equal(new URL(page.url()).search, "?language=bn&availability=reader-ready&sort=title", `${viewport.width}px retry: filter state was not retained while retrying`);
   fixture.releasePendingFailure();
   await page.waitForFunction(() => document.querySelector('[data-testid="library-catalogue-retry"]')?.disabled === false);
+  await waitForCatalogueState(page, "fallback");
   await assertFallback(page, `${viewport.width}px retry failure`);
   assert.equal(await retry.isEnabled(), true, `${viewport.width}px retry failure: recovery action stayed disabled`);
 
-  await retry.focus();
+  const recoveryTabSteps = await focusRetryByTab(page, retry, `${viewport.width}px retry failure`);
   await page.keyboard.press("Enter");
-  await page.getByTestId("library-catalogue-fallback").waitFor({ state: "detached" });
-  await page.getByTestId("reference-book-devdas").waitFor();
+  await waitForCatalogueState(page, "success");
   assert.equal(new URL(page.url()).search, "?language=bn&availability=reader-ready&sort=title", `${viewport.width}px recovery: URL state changed after success`);
   const geometry = await assertNoDocumentOverflow(page, `${viewport.width}px recovery`);
   await page.screenshot({ path: path.join(output, `library-recovery-${viewport.width}.png`), fullPage: true });
   await page.close();
-  return { viewport, request_count: fixture.count(), geometry, keyboard_retry: "Enter", result: "PASS" };
+  return { viewport, request_count: fixture.count(), keyboard_activation: { focus: "Tab traversal", key: "Enter", initial_tab_steps: tabSteps, recovery_tab_steps: recoveryTabSteps }, geometry, result: "PASS" };
 }
 
 const browser = await chromium.launch({ headless: true });
