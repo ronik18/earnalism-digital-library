@@ -308,10 +308,10 @@ test.describe("Earnalism real-user UX video audit", () => {
 
     await expect(page.getByTestId("home-reference-primary-cta")).toHaveAccessibleName("Enter the Library");
     await expect(page.getByTestId("home-reference-primary-cta")).toHaveAttribute("href", "/library");
-    await expect(page.getByRole("link", { name: "Enter the Listening Room" })).toHaveAttribute("href", "/library?availability=approved-audiobook");
+    await expect(page.getByRole("link", { name: "Discover listening" })).toHaveAttribute("href", "/library?availability=approved-audiobook");
     await expect(page.getByTestId("home-reference-surface")).toContainText("Read the first 3 pages free. Listening requires an active Reading Pass.");
     await expect(page.locator("body")).not.toContainText(/Chapter 1 (remains free|is on us|stays free)/i);
-    await expect(page.getByRole("link", { name: "Enter the Listening Room" })).toHaveAttribute("href", "/library?availability=approved-audiobook");
+    await expect(page.getByRole("link", { name: "Discover listening" })).toHaveAttribute("href", "/library?availability=approved-audiobook");
   });
 
   test("homepage mobile keeps orientation in one viewport and release-gated paths explicit", async ({ page }) => {

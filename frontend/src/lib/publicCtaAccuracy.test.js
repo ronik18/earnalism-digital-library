@@ -16,6 +16,7 @@ describe("public CTA accuracy contract", () => {
   const upsell = source("src/components/Funnel/ReaderUpsellPrompt.jsx");
   const contact = source("src/pages/Contact.jsx");
   const journal = source("src/pages/Journal.jsx");
+  const editorialSupportStyles = source("src/styles/editorial-support.css");
   const login = source("src/pages/Login.jsx");
   const signup = source("src/pages/Signup.jsx");
   const shareButtons = source("src/components/ShareButtons.jsx");
@@ -73,7 +74,8 @@ describe("public CTA accuracy contract", () => {
     expect(header).toContain("min-h-11 min-w-11");
     expect(bookDetail).toContain('className="btn-link inline-flex min-h-11');
     expect(contact).toContain('className="inline-flex h-11 w-11');
-    expect(journal).toContain("min-h-11 rounded-full");
+    expect(journal).toContain('data-testid={"journal-filter-" + category.toLowerCase()}');
+    expect(editorialSupportStyles).toContain(".journal-v2__filter-row button { min-height: 44px;");
     expect(login).toContain("inline-flex min-h-11 items-center");
     expect(signup).toContain("inline-flex min-h-11 items-center");
     expect(shareButtons).toContain('const btn = "w-11 h-11');
