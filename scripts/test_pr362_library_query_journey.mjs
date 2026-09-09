@@ -6,15 +6,14 @@ const baseUrl = process.env.SEAMLESS_BRAND_TEST_BASE_URL;
 if (!baseUrl) throw new Error("SEAMLESS_BRAND_TEST_BASE_URL is required for the PR362 Header-to-Library journey.");
 
 const books = [
-  { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/devdas", chapters: [{ id: "devdas-page-1", is_preview: true }] },
-  { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/pather-panchali", chapters: [{ id: "pather-page-1", is_preview: true }] },
-  { slug: "frankenstein", title: "Batch-listed Bengali draft", author: "Fixture Editor", language: "bn", publication_status: "DRAFT", reader_enabled: false, preview_enabled: false, chapters: [] },
-  { slug: "reader-disabled-edition", title: "Reader-disabled Bengali edition", author: "Fixture Editor", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: false, preview_enabled: false, chapters: [] },
-  { slug: "book-d19e96859f", title: "Live-labelled Bengali edition without a preview", author: "Fixture Editor", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
-  { slug: "book-f5d593e1f4", title: "Second live-labelled Bengali edition without a preview", author: "Fixture Editor", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
+  { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/devdas", chapters: [{ id: "devdas-page-1", is_preview: true }] },
+  { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/pather-panchali", chapters: [{ id: "pather-page-1", is_preview: true }] },
+  { slug: "frankenstein", title: "Batch-listed Bengali draft", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "DRAFT", reader_enabled: false, preview_enabled: false, chapters: [] },
+  { slug: "reader-disabled-edition", title: "Reader-disabled Bengali edition", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: false, preview_enabled: false, chapters: [] },
+  { slug: "book-d19e96859f", title: "Live-labelled Bengali edition without a preview", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
+  { slug: "book-f5d593e1f4", title: "Second live-labelled Bengali edition without a preview", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
 ];
 const expectedHeaderUrl = "?language=bn&availability=reader-ready";
-const expectedAudioUrl = "?language=bn&listening=available";
 const apiEligibleSlugs = ["devdas", "pather-panchali"];
 const fallbackEligibleSlugs = ["devdas", "pather-panchali"];
 const ineligibleSlugs = ["frankenstein", "reader-disabled-edition", "book-d19e96859f", "book-f5d593e1f4"];
@@ -24,47 +23,97 @@ function query(page) {
   return new URL(page.url()).search;
 }
 
+function referenceSurface(page) {
+  return page.getByTestId("library-reference-surface");
+}
+
 async function selectedControls(page, mobile) {
-  const surface = mobile
-    ? page.locator('.reference-library-drawer[role="dialog"]:visible')
-    : page.locator("aside.reference-library__sidebar:visible");
-  const groups = surface.locator("fieldset");
-  const language = groups.nth(0).getByRole("button", { name: "Bengali", exact: true });
-  const status = groups.nth(2).getByRole("button", { name: "Reader only", exact: true });
+  const language = filterGroup(page, mobile, "language").getByRole("button", { name: "Bengali", exact: true });
+  const status = filterGroup(page, mobile, "listening").getByRole("button", { name: "Reader only", exact: true });
   await assertSelected(language, "Bengali");
   await assertSelected(status, "Reader only");
 }
 
+function filterSurface(page, mobile) {
+  return mobile
+    ? page.locator('.reference-library-drawer[role="dialog"]:visible')
+    : page.locator("aside.reference-library__sidebar:visible");
+}
+
+function filterGroup(page, mobile, groupId) {
+  return filterSurface(page, mobile).locator(`[data-filter-group="${groupId}"]`);
+}
+
+function params(page) {
+  return new URL(page.url()).searchParams;
+}
+
+async function assertFilterTarget(locator, label) {
+  const box = await locator.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    const style = getComputedStyle(element);
+    return { width: rect.width, height: rect.height, scrollWidth: element.scrollWidth, clientWidth: element.clientWidth, display: style.display, visibility: style.visibility };
+  });
+  assert.ok(box.width >= 44 && box.height >= 44, `${label} must have a 44×44 CSS-pixel target; received ${box.width}×${box.height}`);
+  assert.ok(box.scrollWidth <= box.clientWidth, `${label} must wrap rather than clip`);
+  assert.notEqual(box.display, "none", `${label} must be displayed`);
+  assert.notEqual(box.visibility, "hidden", `${label} must be visible`);
+}
+
+async function assertNoHorizontalOverflow(page, label) {
+  const metrics = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }));
+  assert.ok(metrics.scrollWidth <= metrics.clientWidth, `${label}: document overflows horizontally (${metrics.scrollWidth}px > ${metrics.clientWidth}px)`);
+}
+
+async function assertDrawerOptionPolicy(page, mobile) {
+  if (!mobile) return;
+  assert.equal(await filterGroup(page, true, "language").getByRole("button", { name: "All books", exact: true }).count(), 0, "Language must retain its compact hideAll behavior");
+  assert.equal(await filterGroup(page, true, "reading").getByRole("button", { name: "All forms", exact: true }).count(), 0, "Format must retain its compact hideAll behavior");
+  assert.equal(await filterGroup(page, true, "listening").getByRole("button", { name: "All releases", exact: true }).count(), 1, "Listening must expose All releases by stable group id");
+}
+
+async function closeFilters(page, mobile) {
+  if (mobile) await page.getByRole("button", { name: "Apply filters", exact: true }).click();
+}
+
 async function assertSelected(locator, label) {
   await locator.waitFor();
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    if (await locator.getAttribute("aria-pressed") === "true") return;
+    await locator.page().waitForTimeout(25);
+  }
   assert.equal(await locator.getAttribute("aria-pressed"), "true", `${label} is not selected`);
 }
 
 async function assertEligibleReaderResults(page, expectedSlugs) {
-  await page.getByTestId("reference-book-devdas").waitFor();
-  const displayedSlugs = await page.locator('[data-testid^="reference-book-"]').evaluateAll((nodes) => (
+  const surface = referenceSurface(page);
+  const expected = [...expectedSlugs].sort();
+  await page.waitForFunction((expectedIds) => {
+    const container = document.querySelector('[data-testid="library-reference-surface"]');
+    const ids = [...(container?.querySelectorAll('[data-testid^="reference-book-"]') || [])]
+      .map((node) => node.getAttribute("data-testid").replace("reference-book-", ""))
+      .sort();
+    return ids.join("\u0000") === expectedIds.join("\u0000");
+  }, expected);
+  const displayedSlugs = await surface.locator('[data-testid^="reference-book-"]').evaluateAll((nodes) => (
     nodes.map((node) => node.getAttribute("data-testid").replace("reference-book-", "")).sort()
   ));
-  assert.deepEqual(displayedSlugs, [...expectedSlugs].sort(), "every displayed Reader-only result must satisfy the canonical release predicate");
+  assert.deepEqual(displayedSlugs, expected, "every displayed Reader-only result must satisfy the canonical release predicate");
   for (const slug of ineligibleSlugs) {
-    assert.equal(await page.getByTestId(`reference-book-${slug}`).count(), 0, `${slug} leaked into Reader only results`);
+    assert.equal(await surface.getByTestId(`reference-book-${slug}`).count(), 0, `${slug} leaked into Reader only results`);
   }
 }
 
-async function assertProductionShapedPreparationCards(context, base) {
-  const page = await context.newPage();
-  await configureApi(page, "api");
-  await page.goto(`${base}/library?language=bn`, { waitUntil: "domcontentloaded" });
-  await page.getByTestId("library-reference-surface").waitFor();
+async function assertProductionShapedPreparationCards(page) {
+  const surface = referenceSurface(page);
   for (const slug of productionShapedPreparationSlugs) {
-    const card = page.getByTestId(`reference-book-${slug}`);
+    const card = surface.getByTestId(`reference-book-${slug}`);
     await card.waitFor();
     await expectText(card.locator(".reference-book-tile__status"), "Coming soon", `${slug} must retain its truthful visible status`);
     const cta = card.getByRole("link", { name: "Notify me", exact: true });
     await cta.waitFor();
     assert.equal(await cta.getAttribute("href"), `/contact?interest=${slug}`, `${slug} must retain its notification destination`);
   }
-  await page.close();
 }
 
 async function expectText(locator, expected, message) {
@@ -83,20 +132,90 @@ async function configureApi(page, source) {
   });
 }
 
-async function inspectResponsiveState(page, viewport, expectedSlugs) {
-  await page.setViewportSize(viewport);
-  const compact = viewport.width <= 1023;
-  if (compact) {
-    await page.locator("button.reference-filter-trigger:visible").click();
-    await selectedControls(page, true);
-  } else {
-    await selectedControls(page, false);
-  }
-  await assertEligibleReaderResults(page, expectedSlugs);
-  if (compact) await page.getByRole("button", { name: "Close filters", exact: true }).click();
+async function openFilters(page, mobile) {
+  if (mobile) await page.locator("button.reference-filter-trigger:visible").click();
 }
 
-async function run({ name, viewport, mobile, source, resize = [] }) {
+async function assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name) {
+  await openFilters(page, mobile);
+  await assertDrawerOptionPolicy(page, mobile);
+  const listeningGroup = filterGroup(page, mobile, "listening");
+  const allReleases = listeningGroup.getByRole("button", { name: "All releases", exact: true });
+  await assertFilterTarget(allReleases, `${name}: All releases`);
+  await Promise.all([
+    page.waitForURL((url) => url.pathname === "/library" && url.searchParams.get("language") === "bn" && !url.searchParams.has("listening") && !url.searchParams.has("availability")),
+    allReleases.click(),
+  ]);
+  assert.equal(params(page).get("language"), "bn", `${name}: All releases must retain Bengali`);
+  assert.equal(params(page).get("listening"), null, `${name}: All releases must remove listening`);
+  assert.equal(params(page).get("availability"), null, `${name}: All releases must remove legacy availability`);
+  await assertSelected(filterGroup(page, mobile, "listening").getByRole("button", { name: "All releases", exact: true }), "All releases");
+
+  const sort = mobile
+    ? filterSurface(page, true).getByRole("combobox", { name: "Sort by", exact: true })
+    : page.getByTestId("library-reference-surface").getByTestId("library-sort");
+  await sort.selectOption("title");
+  await closeFilters(page, mobile);
+  await assertProductionShapedPreparationCards(page);
+  const search = page.getByTestId("library-reference-surface").getByTestId("library-search");
+  await search.fill("edition");
+  assert.equal(params(page).get("language"), "bn", `${name}: search must retain Bengali`);
+  assert.equal(params(page).get("sort"), "title", `${name}: search must retain sort`);
+  assert.equal(params(page).get("q"), "edition", `${name}: search query must persist`);
+  assert.equal(params(page).get("listening"), null, `${name}: search must not restore listening`);
+  await assertProductionShapedPreparationCards(page);
+
+  await openFilters(page, mobile);
+  const readerOnly = filterGroup(page, mobile, "listening").getByRole("button", { name: "Reader only", exact: true });
+  await assertFilterTarget(readerOnly, `${name}: Reader only`);
+  await Promise.all([
+    page.waitForURL((url) => url.pathname === "/library" && url.searchParams.get("listening") === "hidden"),
+    readerOnly.press("Enter"),
+  ]);
+  await closeFilters(page, mobile);
+  assert.equal(params(page).get("language"), "bn", `${name}: Reader only must retain Bengali`);
+  assert.equal(params(page).get("sort"), "title", `${name}: Reader only must retain sort`);
+  assert.equal(params(page).get("q"), "edition", `${name}: Reader only must retain search`);
+  assert.equal(params(page).get("listening"), "hidden", `${name}: Reader only must use canonical listening=hidden`);
+  assert.equal(params(page).get("availability"), null, `${name}: Reader only must not restore legacy availability`);
+  await assertEligibleReaderResults(page, expectedSlugs);
+  await assertNoHorizontalOverflow(page, name);
+
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await page.getByTestId("library-reference-surface").waitFor();
+  assert.equal(params(page).get("listening"), "hidden", `${name}: reload must retain Reader-only`);
+  assert.equal(params(page).get("sort"), "title", `${name}: reload must retain sort`);
+  assert.equal(params(page).get("q"), "edition", `${name}: reload must retain search`);
+  await assertEligibleReaderResults(page, expectedSlugs);
+
+  await page.goBack({ waitUntil: "domcontentloaded" });
+  await page.getByTestId("library-reference-surface").waitFor();
+  assert.equal(params(page).get("language"), "bn", `${name}: Back must retain Bengali`);
+  assert.equal(params(page).get("sort"), "title", `${name}: Back must retain sort`);
+  assert.equal(params(page).get("q"), "edition", `${name}: Back must retain search`);
+  assert.equal(params(page).get("listening"), null, `${name}: Back must restore All releases`);
+  assert.equal(params(page).get("availability"), null, `${name}: Back must keep legacy availability removed`);
+  await assertProductionShapedPreparationCards(page);
+}
+
+async function assertAudiobooksRoundTrip(page, mobile, name) {
+  const returnUrl = query(page);
+  await openFilters(page, mobile);
+  const audiobooks = filterGroup(page, mobile, "listening").getByRole("button", { name: "Audiobooks", exact: true });
+  await assertFilterTarget(audiobooks, `${name}: Audiobooks`);
+  await audiobooks.click();
+  await closeFilters(page, mobile);
+  assert.equal(params(page).get("listening"), "available", `${name}: Audiobooks must use canonical listening=available`);
+  assert.equal(params(page).get("availability"), null, `${name}: Audiobooks must remove legacy availability`);
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await page.getByTestId("library-reference-surface").waitFor();
+  assert.equal(params(page).get("listening"), "available", `${name}: Audiobooks reload must retain the selected filter`);
+  await page.goBack({ waitUntil: "domcontentloaded" });
+  await page.getByTestId("library-reference-surface").waitFor();
+  assert.equal(query(page), returnUrl, `${name}: Back must restore the preceding filter state`);
+}
+
+async function run({ name, viewport, mobile, source }) {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ viewport, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", serviceWorkers: "block" });
   const page = await context.newPage();
@@ -123,43 +242,23 @@ async function run({ name, viewport, mobile, source, resize = [] }) {
   assert.equal(query(page), expectedHeaderUrl, `${name}: Header navigation did not preserve the established query contract`);
   const expectedSlugs = source === "fallback" ? fallbackEligibleSlugs : apiEligibleSlugs;
   await assertEligibleReaderResults(page, expectedSlugs);
-  if (source === "api") await assertProductionShapedPreparationCards(context, base);
-
-  const statusGroup = mobile
-    ? page.locator('.reference-library-drawer[role="dialog"]:visible fieldset').nth(2)
-    : page.locator("aside.reference-library__sidebar:visible fieldset").nth(2);
-  await Promise.all([
-    page.waitForURL((url) => url.pathname === "/library" && url.search === expectedAudioUrl),
-    statusGroup.getByRole("button", { name: "Audiobooks", exact: true }).click(),
-  ]);
-  if (mobile) await page.getByRole("button", { name: "Apply filters", exact: true }).click();
-  assert.equal(query(page), expectedAudioUrl, `${name}: filter change did not replace deprecated availability state`);
-  await page.reload({ waitUntil: "domcontentloaded" });
-  await page.getByTestId("library-reference-surface").waitFor();
-  assert.equal(query(page), expectedAudioUrl, `${name}: reload did not preserve selected filter URL state`);
-
-  await page.goBack({ waitUntil: "domcontentloaded" });
-  await page.getByTestId("library-reference-surface").waitFor();
-  assert.equal(query(page), expectedHeaderUrl, `${name}: browser Back did not restore Header-selected URL state`);
-  if (mobile) {
-    await page.locator("button.reference-filter-trigger:visible").click();
-    await selectedControls(page, true);
-  } else {
-    await selectedControls(page, false);
-  }
-  await assertEligibleReaderResults(page, expectedSlugs);
-  for (const responsiveViewport of resize) await inspectResponsiveState(page, responsiveViewport, expectedSlugs);
+  if (mobile) await page.getByRole("button", { name: "Close filters", exact: true }).click();
+  if (source === "api") await assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name);
+  else await assertNoHorizontalOverflow(page, name);
+  await assertAudiobooksRoundTrip(page, mobile, name);
   await context.close();
   await browser.close();
-  return { viewport, source, resized_to: resize, header_url: expectedHeaderUrl, audio_url: expectedAudioUrl, result: "PASS" };
+  return { viewport, source, header_url: expectedHeaderUrl, result: "PASS" };
 }
 
 const results = [];
 for (const scenario of [
-  { name: "desktop-api", viewport: { width: 1440, height: 900 }, mobile: false, source: "api", resize: [{ width: 768, height: 1024 }, { width: 390, height: 844 }] },
-  { name: "mobile-api", viewport: { width: 390, height: 844 }, mobile: true, source: "api" },
-  { name: "desktop-fallback", viewport: { width: 1440, height: 900 }, mobile: false, source: "fallback", resize: [{ width: 768, height: 1024 }, { width: 390, height: 844 }] },
-  { name: "mobile-fallback", viewport: { width: 390, height: 844 }, mobile: true, source: "fallback" },
+  { name: "320-api", viewport: { width: 320, height: 568 }, mobile: true, source: "api" },
+  { name: "390-api", viewport: { width: 390, height: 844 }, mobile: true, source: "api" },
+  { name: "768-api", viewport: { width: 768, height: 1024 }, mobile: true, source: "api" },
+  { name: "1440-api", viewport: { width: 1440, height: 900 }, mobile: false, source: "api" },
+  { name: "320-fallback", viewport: { width: 320, height: 568 }, mobile: true, source: "fallback" },
+  { name: "1440-fallback", viewport: { width: 1440, height: 900 }, mobile: false, source: "fallback" },
 ]) {
   results.push(await run(scenario));
   console.log(`PASS ${scenario.name} ${scenario.viewport.width}x${scenario.viewport.height}`);
