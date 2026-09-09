@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { ArrowRight, Check, Headphones, Search, SlidersHorizontal, X } from "lucide-react";
 import { api } from "../lib/api";
@@ -81,14 +81,19 @@ export default function Library() {
   const [params, setParams] = useSearchParams();
   const [liveBooks, setLiveBooks] = useState([]);
   const [curation, setCuration] = useState(() => getHomeCurationSnapshot());
-  const [loading, setLoading] = useState(true);
+  const [catalogueState, setCatalogueState] = useState("loading");
+  const [catalogueRequest, setCatalogueRequest] = useState(0);
+  const [retryingCatalogue, setRetryingCatalogue] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [query, setQuery] = useState(params.get("q") || "");
+  const catalogueRequestIdRef = useRef(0);
+  const catalogueRequestInFlightRef = useRef(false);
   const language = params.get("language") || "all";
   const reading = params.get("reading") || (params.get("category") && !["all", "live", "pipeline"].includes(params.get("category")) ? params.get("category") : "all");
   const listening = listeningFilterFromSearch(params);
   const genre = params.get("genre") || "all";
   const sort = params.get("sort") || "recently-approved";
+  const loading = catalogueState === "loading";
 
   useSEO({
     title: "Library | Bengali and English Classics on Earnalism",
@@ -100,21 +105,39 @@ export default function Library() {
 
   useEffect(() => {
     const controller = new AbortController();
+    const requestId = catalogueRequestIdRef.current + 1;
+    catalogueRequestIdRef.current = requestId;
+    catalogueRequestInFlightRef.current = true;
     Promise.allSettled([
       api.get("/books", { signal: controller.signal }),
       fetchHomeCuration(controller.signal),
     ]).then(([booksResult, curationResult]) => {
-      setLiveBooks(
-        booksResult.status === "fulfilled" && Array.isArray(booksResult.value.data) && booksResult.value.data.length
-          ? booksResult.value.data
-          : LOCAL_LIBRARY_FALLBACK_BOOKS,
-      );
+      if (controller.signal.aborted || catalogueRequestIdRef.current !== requestId) return;
+      if (booksResult.status === "fulfilled" && Array.isArray(booksResult.value.data)) {
+        setLiveBooks(booksResult.value.data);
+        setCatalogueState(booksResult.value.data.length ? "ready" : "empty");
+      } else {
+        setLiveBooks(LOCAL_LIBRARY_FALLBACK_BOOKS);
+        setCatalogueState("fallback");
+      }
       if (curationResult.status === "fulfilled") setCuration(curationResult.value);
     }).finally(() => {
-      if (!controller.signal.aborted) setLoading(false);
+      if (!controller.signal.aborted && catalogueRequestIdRef.current === requestId) {
+        catalogueRequestInFlightRef.current = false;
+        setRetryingCatalogue(false);
+      }
     });
-    return () => controller.abort();
-  }, []);
+    return () => {
+      controller.abort();
+    };
+  }, [catalogueRequest]);
+
+  const retryCatalogue = () => {
+    if (catalogueRequestInFlightRef.current) return;
+    catalogueRequestInFlightRef.current = true;
+    setRetryingCatalogue(true);
+    setCatalogueRequest((request) => request + 1);
+  };
 
   const updateParam = (key, value, fallback = "all") => {
     const next = new URLSearchParams(params);
@@ -168,6 +191,9 @@ export default function Library() {
       <ReferenceLibrarySurface
         filteredBooks={filteredBooks}
         loading={loading}
+        catalogueState={catalogueState}
+        retryingCatalogue={retryingCatalogue}
+        onRetryCatalogue={retryCatalogue}
         query={query}
         language={language}
         reading={reading}

@@ -11,7 +11,8 @@ export const LIBRARY_INTERACTION_INPUT_PATHS = [
 export const PR360_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr360-library-interaction-baseline.json";
 export const PR362_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr362-library-interaction-baseline.json";
 export const PR364_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr364-library-interaction-baseline.json";
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR364_LIBRARY_INTERACTION_BASELINE;
+export const PR371_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr371-library-interaction-baseline.json";
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR371_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -42,6 +43,14 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/ReferencePublicPages.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/pages/Library.jsx"],
     authorization: "OWNER_AUTHORIZATION_PR364_VERSIONED_LIBRARY_INTERACTION_BASELINE",
+  },
+  [PR371_LIBRARY_INTERACTION_BASELINE]: {
+    reviewedSource: { commit: "3f89874046258bdd9e0cb531af7f15f1039d8ce1", tree: "f230f7f5b97605923df2550e55c36d3b4e84d6c0" },
+    previous: { recordPath: PR364_LIBRARY_INTERACTION_BASELINE, commit: "3b4f7047dcaebf60c3fb1a1490ac989abebc7fe6", hash: "d0c094fbf9db03139d68a6706dcc3af5a59aa53cc22b3b1a9ba352101a0e3770" },
+    authorizedHash: "0fc10999d742f8c36ee8e0febdfb6715d3526843e90b96c5918fe9408eaf0d07",
+    changedPaths: ["frontend/src/components/ReferencePublicPages.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/pages/Library.jsx"],
+    unchangedPaths: [],
+    authorization: "OWNER_AUTHORIZATION_PR371_VERSIONED_LIBRARY_INTERACTION_BASELINE",
   },
 };
 

@@ -30,4 +30,13 @@ describe("Library experience", () => {
     expect(source).toContain("library-filter-drawer");
     expect(source).toContain('aria-modal="true"');
   });
+
+  test("keeps limited fallback selection explicit and a valid empty catalogue distinct", () => {
+    expect(source).toContain('setCatalogueState("fallback")');
+    expect(source).toContain('setCatalogueState(booksResult.value.data.length ? "ready" : "empty")');
+    expect(source).toContain("retryCatalogue");
+    expect(referenceSource).toContain("We couldn’t load the full collection. You’re viewing a limited selection.");
+    expect(referenceSource).toContain('data-testid="library-catalogue-retry"');
+    expect(referenceSource).toContain('data-testid="library-catalogue-empty"');
+  });
 });

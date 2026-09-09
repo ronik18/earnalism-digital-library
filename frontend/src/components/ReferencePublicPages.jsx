@@ -259,6 +259,9 @@ function getRenderedFocusableControls(container) {
 export function ReferenceLibrarySurface({
   filteredBooks,
   loading,
+  catalogueState,
+  retryingCatalogue,
+  onRetryCatalogue,
   query,
   language,
   reading,
@@ -277,6 +280,8 @@ export function ReferenceLibrarySurface({
   const live = filteredBooks.filter(isLive);
   const comingSoon = filteredBooks.filter((book) => !isLive(book));
   const approvedAudio = filteredBooks.filter((book) => audiobookReleaseState(book).canShowControls);
+  const showingFallback = catalogueState === "fallback";
+  const catalogueIsEmpty = catalogueState === "empty";
   const shelves = [
     ["Live now", "Reader-ready editions to open today.", live],
     ["Coming soon", "Titles preparing for a future release.", comingSoon],
@@ -356,6 +361,8 @@ export function ReferenceLibrarySurface({
       <main className="reference-library__content">
         <aside className="reference-library__sidebar" aria-label="Library filters"><p>Explore</p><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} onChange={update} /><div className="reference-library__pass"><strong>Reading Pass</strong><p>{PUBLIC_ACCESS_COPY}</p><Link to="/pricing">View passes</Link></div></aside>
         <section className="reference-library__shelves" aria-live="polite">
+          {showingFallback ? <div className="reference-library__recovery" role="status" data-testid="library-catalogue-fallback"><p>We couldn’t load the full collection. You’re viewing a limited selection.</p><button type="button" className="reference-button reference-library__recovery-retry" data-testid="library-catalogue-retry" onClick={onRetryCatalogue} disabled={retryingCatalogue}>{retryingCatalogue ? "Trying again…" : "Try again"}</button></div> : null}
+          {catalogueIsEmpty ? <p className="reference-library__empty-catalogue" data-testid="library-catalogue-empty">No reader-ready editions are currently available. Titles still in preparation remain listed when available.</p> : null}
           {loading ? <p className="reference-loading">Opening the collection...</p> : shelves.map(([title, copy, books]) => <section key={title} className="reference-library-shelf" aria-labelledby={`shelf-${title}`}><SectionHeading eyebrow={title === "Live now" ? "LIVE NOW" : title.toUpperCase()} title={title} action={<span className="reference-shelf-count">{books.length} editions</span>}><p>{copy}</p></SectionHeading>{books.length ? <div className="reference-library-grid">{books.slice(0, 10).map((book, index) => <BookTile key={book.slug} book={book} compact priority={index < 2} showListen={title === "Audiobooks"} />)}</div> : <p className="reference-empty-listening">No titles currently match this release state.</p>}</section>)}
         </section>
       </main>
