@@ -64,8 +64,13 @@ jobs:
           python3 -m pip install --disable-pip-version-check -r requirements.txt
           npx playwright install --with-deps chromium firefox webkit
 
-      - name: Verify source enumeration tool
-        run: command -v rg
+      - name: Install source enumeration tool
+        run: |
+          if ! command -v rg >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install --yes ripgrep
+          fi
+          command -v rg
 
       - name: Verify owner-scoped mobile-menu geometry
         run: |
