@@ -114,6 +114,12 @@ export default function ReaderExperienceV2Route() {
 
   const authorizeAndContinue = useCallback(async (nextPage) => {
     if (nextPage <= 3) return changePage(nextPage);
+    // Once the server has issued a current lease, subsequent canonical-page
+    // navigation must reuse it. Starting again would correctly be rejected as
+    // an active session elsewhere and strands the reader on page four.
+    if (leaseRef.current?.sessionId && leaseRef.current?.token) {
+      return changePage(nextPage);
+    }
     if (!user || typeof user !== "object") {
       navigate(`/login?next=${encodeURIComponent(`/reader/${slug}?p=${nextPage}`)}`);
       return;

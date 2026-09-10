@@ -56,7 +56,7 @@ function manifestFor(book, { readingPassEnabled = true } = {}) {
   const mappedProtectedChapter = book.slug === protectedChapterBook.slug;
   return {
     book,
-    access: { reading_pass: { enabled: readingPassEnabled, total_pages: 8 } },
+    access: { reading_pass: { enabled: readingPassEnabled, segments_ready: readingPassEnabled, total_pages: 8 } },
     canonical_pages: {
       page_count: 8,
       pages: approvedAudio || mappedProtectedChapter
@@ -167,6 +167,32 @@ async function tabTo(page, predicate, label) {
   throw new Error(`${label}: target was not reachable by Tab`);
 }
 
+async function runDisabledReaderTruth({ id, viewport }) {
+  const browser = await chromium.launch(browserLaunchOptions);
+  const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  const page = await context.newPage();
+  page.setDefaultTimeout(8_000);
+  await configureApi(page, { readingPassEnabled: false });
+  const base = baseUrl.replace(/\/$/, "");
+
+  await page.goto(`${base}/book/${readerBook.slug}`, { waitUntil: "domcontentloaded" });
+  const action = page.getByTestId("start-reading");
+  await action.waitFor();
+  assert.equal((await page.getByTestId("book-detail-reader-status").textContent()).trim(), "Reader currently unavailable", `${id}: disabled Reader must not be labelled ready`);
+  assert.equal((await action.textContent()).trim(), "Browse the Library", `${id}: disabled Reader must offer truthful Library recovery`);
+  assert.equal(await action.getAttribute("href"), "/library", `${id}: disabled Reader must not link into an unavailable route`);
+  await page.getByRole("tab", { name: "Chapters", exact: true }).click();
+  assert.equal(await page.getByRole("link", { name: "Chapter One", exact: true }).count(), 0, `${id}: disabled Reader must not expose canonical-page jumps`);
+  assert.equal(await page.getByTestId("chapter-reader-entry").count(), 0, `${id}: disabled Reader must not expose an ordinary Reader fallback`);
+  await tabTo(page, (active) => active.testId === "start-reading", `${id}: disabled Reader Library recovery`);
+  await page.screenshot({ path: path.join(output, `${id}-reader-disabled-truth.png`), fullPage: true });
+  const geometry = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }));
+  assert.equal(geometry.scrollWidth, geometry.clientWidth, `${id}: disabled Reader detail has horizontal overflow`);
+  await context.close();
+  await browser.close();
+  return { id, viewport, readerRuntime: "disabled", geometry, result: "PASS" };
+}
+
 async function runAnonymousHandoffs({ id, viewport }) {
   const browser = await chromium.launch(browserLaunchOptions);
   const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
@@ -226,6 +252,7 @@ async function runAnonymousHandoffs({ id, viewport }) {
 }
 
 async function openProtectedChapterFromBookDetail(page, id) {
+  assert.equal((await page.getByTestId("book-detail-reader-status").textContent()).trim(), "Reader Ready", `${id}: enabled manifest did not make the Reader operational`);
   await page.getByRole("tab", { name: "Chapters", exact: true }).click();
   const chapter = page.getByRole("link", { name: "Chapter Two", exact: true });
   await chapter.waitFor();
@@ -262,6 +289,15 @@ async function runProtectedChapterEntry({ id, viewport }) {
   assert.match(await page.getByTestId("reader-reading-text").textContent(), /Fixture canonical page 4/, `${id}: authorization must open the requested canonical page`);
   assert.equal(requests.sessionStarts, 1, `${id}: duplicate authorization submissions created more than one lease`);
   assert.equal(requests.protectedPageRequests, 1, `${id}: authorization must request exactly the selected protected page`);
+  await Promise.all([
+    page.waitForURL((url) => url.pathname === `/reader/${protectedChapterBook.slug}` && url.searchParams.get("p") === "5"),
+    page.getByRole("button", { name: /Use Reading Time to Continue/ }).click(),
+  ]);
+  await page.waitForFunction(() => document.querySelector('[data-testid="reader-reading-text"]')?.textContent?.includes("Fixture canonical page 5"));
+  await page.getByTestId("reader-reading-text").waitFor();
+  assert.match(await page.getByTestId("reader-reading-text").textContent(), /Fixture canonical page 5/, `${id}: current lease must open the next protected canonical page`);
+  assert.equal(requests.sessionStarts, 1, `${id}: page-five navigation must reuse the existing lease`);
+  assert.equal(requests.protectedPageRequests, 2, `${id}: page-five navigation must request only the next protected page`);
   await page.screenshot({ path: path.join(output, `${id}-protected-chapter-authorized.png`), fullPage: true });
   await context.close();
 
@@ -298,8 +334,9 @@ async function runProtectedChapterEntry({ id, viewport }) {
   disabledPage.setDefaultTimeout(8_000);
   const disabledRequests = await configureApi(disabledPage, { authenticated: true, readingPassEnabled: false });
   await disabledPage.goto(`${base}/book/${protectedChapterBook.slug}`, { waitUntil: "domcontentloaded" });
-  await openProtectedChapterFromBookDetail(disabledPage, `${id}: disabled`);
-  await disabledPage.getByRole("heading", { name: "Reader unavailable" }).waitFor();
+  assert.equal((await disabledPage.getByTestId("book-detail-reader-status").textContent()).trim(), "Reader currently unavailable", `${id}: disabled edition must be labelled unavailable on Book Detail`);
+  assert.equal(await disabledPage.getByRole("link", { name: "Chapter Two", exact: true }).count(), 0, `${id}: disabled edition exposed a protected chapter jump`);
+  assert.equal(await disabledPage.getByTestId("start-reading").getAttribute("href"), "/library", `${id}: disabled edition recovery must stay in the Library`);
   assert.equal(await disabledPage.getByTestId("reader-authorize-chapter").count(), 0, `${id}: disabled edition offered authorization`);
   assert.equal(await disabledPage.getByTestId("reader-reading-text").count(), 0, `${id}: disabled edition exposed protected content`);
   assert.equal(disabledRequests.sessionStarts, 0, `${id}: disabled edition started a lease`);
@@ -433,6 +470,7 @@ const scenarios = [
 ];
 const selectedScenarioIds = new Set((process.env.BOOK_READER_LISTENER_SCENARIOS || "").split(",").filter(Boolean));
 for (const scenario of scenarios.filter(({ id }) => selectedScenarioIds.size === 0 || selectedScenarioIds.has(id))) {
+  results.push(await runDisabledReaderTruth(scenario));
   results.push(await runAnonymousHandoffs(scenario));
   results.push(await runProtectedChapterEntry(scenario));
   results.push(await runEntitledReader(scenario));

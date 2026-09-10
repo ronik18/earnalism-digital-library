@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { bookDetailPresentationForBook, chapterReaderEntryForBook } from "./bookDetailPresentation";
+import { bookDetailPresentationForBook, chapterReaderEntryForBook, readerRuntimeIsAvailable } from "./bookDetailPresentation";
 
 describe("bookDetailPresentation", () => {
   const blockedCanarySlugs = [
@@ -121,17 +121,33 @@ describe("bookDetailPresentation", () => {
     }
   });
 
-  test("keeps reader-first titles premium with a clear read CTA", () => {
+  test("keeps reader-approved titles truthful while the active Reader runtime is unavailable", () => {
     const presentation = bookDetailPresentationForBook({
       slug: "radharani",
       title: "রাধারাণী",
       publication_status: "LIVE_APPROVED",
     });
 
+    expect(presentation.readerReady).toBe(true);
+    expect(presentation.readerRuntimeAvailable).toBe(false);
+    expect(presentation.readerStateLabel).toBe("Reader currently unavailable");
+    expect(presentation.primaryReadLabel).toBe("Browse the Library");
+    expect(presentation.primaryReadHref).toBe("/library");
+    expect(presentation.languageLabel).toBe("Bengali Classic");
+  });
+
+  test("opens the Reader only when the manifest confirms enabled canonical segments", () => {
+    const book = {
+      slug: "reader-live",
+      publication_status: "LIVE_APPROVED",
+      _readerManifest: { access: { reading_pass: { enabled: true, segments_ready: true } } },
+    };
+    const presentation = bookDetailPresentationForBook(book);
+
+    expect(readerRuntimeIsAvailable(book)).toBe(true);
     expect(presentation.readerStateLabel).toBe("Reader Ready");
     expect(presentation.primaryReadLabel).toBe("Start Reading");
-    expect(presentation.primaryReadHref).toBe("/reader/radharani");
-    expect(presentation.languageLabel).toBe("Bengali Classic");
+    expect(presentation.primaryReadHref).toBe("/reader/reader-live");
   });
 
   test("routes an approved listening CTA to the established Listener instead of a reader query", () => {
@@ -168,6 +184,7 @@ describe("bookDetailPresentation", () => {
       slug: "mapped-edition",
       publication_status: "LIVE_APPROVED",
       _readerManifest: {
+        access: { reading_pass: { enabled: true, segments_ready: true } },
         canonical_pages: {
           pages: [
             { chapter_id: "chapter-two", page_number: 9 },

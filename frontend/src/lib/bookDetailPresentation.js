@@ -23,10 +23,20 @@ export function isReaderReadyBook(book = {}) {
   return ["LIVE_APPROVED", "PUBLISHED", "PUBLIC", "READER_ONLY_LIVE", "READER_READY"].includes(status);
 }
 
+// Publication readiness and the active Reader runtime are distinct contracts.
+// A title can remain a reader-approved edition while Reading Pass v2 is
+// disabled or its canonical segments are unavailable.  Book Detail must not
+// invite a customer into a route that cannot serve the approved edition.
+export function readerRuntimeIsAvailable(book = {}) {
+  const readingPass = book?._readerManifest?.access?.reading_pass;
+  return readingPass?.enabled === true && readingPass?.segments_ready === true;
+}
+
 export function bookDetailPresentationForBook(book = {}) {
   const audioState = audiobookReleaseState(book);
   const audioApproved = audioState.canShowControls === true;
   const readerReady = isReaderReadyBook(book);
+  const readerRuntimeAvailable = readerReady && readerRuntimeIsAvailable(book);
   const language = languageOfBookDetail(book);
   const slug = text(book.slug || book.id);
   const readerHref = slug ? `/reader/${encodeURIComponent(slug)}` : "/library";
@@ -36,11 +46,18 @@ export function bookDetailPresentationForBook(book = {}) {
     language,
     languageLabel: language === "bn" ? "Bengali Classic" : "English Classic",
     titleClassName: language === "bn" ? "book-detail-title book-detail-title--bengali" : "book-detail-title",
-    readerStateLabel: readerReady ? "Reader Ready" : "Reader In Preparation",
-    readerHeading: readerReady ? "Reading edition ready" : "Reading edition in preparation",
-    readerBody: readerReady
+    readerRuntimeAvailable,
+    readerStateLabel: readerReady
+      ? (readerRuntimeAvailable ? "Reader Ready" : "Reader currently unavailable")
+      : "Reader In Preparation",
+    readerHeading: readerReady
+      ? (readerRuntimeAvailable ? "Reading edition ready" : "Reader currently unavailable")
+      : "Reading edition in preparation",
+    readerBody: readerRuntimeAvailable
       ? "Open the text in Earnalism's quiet reader with the current approved edition."
-      : "This title remains in editorial preparation until source, rights, and reader gates pass.",
+      : readerReady
+        ? "This approved edition cannot be opened while the current Reader service is unavailable. Explore the Library for another title."
+        : "This title remains in editorial preparation until source, rights, and reader gates pass.",
     audioBadgeLabel: audioApproved ? "Audiobook Approved" : readerReady ? "Audio Hidden" : "Release Gated",
     audioHeading: audioApproved ? "Listening room approved" : "Audio waits for release gates",
     audioBody: audioApproved
@@ -50,8 +67,8 @@ export function bookDetailPresentationForBook(book = {}) {
     listenCtaVisible: audioApproved,
     listenCtaLabel: "Open Listening Room",
     listenHref: audioApproved && slug ? `/listener/${encodeURIComponent(slug)}` : "",
-    primaryReadLabel: readerReady ? "Start Reading" : "Back to Library",
-    primaryReadHref: readerReady ? readerHref : "/library",
+    primaryReadLabel: readerRuntimeAvailable ? "Start Reading" : readerReady ? "Browse the Library" : "Back to Library",
+    primaryReadHref: readerRuntimeAvailable ? readerHref : "/library",
     allowAudioStructuredData: audioApproved,
     narrationDisclosure: audioApproved ? audiobookNarrationDisclosure(book) : "",
     audioState,
@@ -68,7 +85,7 @@ function canonicalPageNumber(page = {}) {
 export function chapterReaderEntryForBook(book = {}, chapterId = "") {
   const slug = text(book.slug || book.id);
   const readerHref = slug ? `/reader/${encodeURIComponent(slug)}` : "/library";
-  if (!isReaderReadyBook(book) || !slug) return { href: "", canonicalPage: null, hasCanonicalPage: false };
+  if (!isReaderReadyBook(book) || !readerRuntimeIsAvailable(book) || !slug) return { href: "", canonicalPage: null, hasCanonicalPage: false };
   const pages = Array.isArray(book?._readerManifest?.canonical_pages?.pages)
     ? book._readerManifest.canonical_pages.pages
     : [];

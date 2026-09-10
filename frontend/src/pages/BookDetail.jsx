@@ -18,7 +18,7 @@ import {
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
-import { bookDetailPresentationForBook, chapterReaderEntryForBook } from "../lib/bookDetailPresentation";
+import { bookDetailPresentationForBook, chapterReaderEntryForBook, readerRuntimeIsAvailable } from "../lib/bookDetailPresentation";
 import { readerManifestPath } from "../lib/audioReleaseSafety";
 import { readerManifestAudioIsAuthorized } from "../lib/readerManifestAccess";
 import { PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
@@ -84,16 +84,17 @@ export default function BookDetail() {
   const bookLoadError = !loading && loadStatus === "error";
   const shouldNoindex = bookNotFound || bookLoadError;
   const publicBook = book?.slug === LIVE_APPROVED_SLUG ? mergeDraculaBook(book) : book;
+  const readerRuntimeAvailable = readerRuntimeIsAvailable(publicBook);
 
   useSEO({
     title: bookNotFound
       ? "Book not found — The Earnalism Digital Library"
-      : publicBook?.slug === LIVE_APPROVED_SLUG
+      : publicBook?.slug === LIVE_APPROVED_SLUG && readerRuntimeAvailable
         ? "Dracula by Bram Stoker | Read the first 3 pages free on Earnalism"
         : publicBook ? `${publicBook.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
     description: bookNotFound
       ? "This Earnalism book is no longer available."
-      : publicBook?.slug === LIVE_APPROVED_SLUG
+      : publicBook?.slug === LIVE_APPROVED_SLUG && readerRuntimeAvailable
         ? "Preview Dracula by Bram Stoker on Earnalism. Read the first 3 pages free. Continue with Reading Pass access."
         : publicBook?.short_description || publicBook?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
     image: publicBook?.cover_image_url,
@@ -314,7 +315,7 @@ export default function BookDetail() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center" data-testid="book-actions">
-            {isDracula && hasFreePreview && (
+            {isDracula && hasFreePreview && detailPresentation.readerRuntimeAvailable && (
                   <Link to={readerHref} className="btn-primary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>{PUBLIC_PREVIEW_COPY}</Link>
             )}
             {!isDracula && (
@@ -347,8 +348,8 @@ export default function BookDetail() {
             <div className="book-experience-panel__item">
               <BookOpen size={18} strokeWidth={1.55} aria-hidden="true" />
               <div>
-                <strong>{isDracula ? "Preview opens first" : "Reader edition ready"}</strong>
-                <p>{isDracula ? "Read the first 3 pages free. Continue with Reading Pass access when the story calls you onward." : detailPresentation.readerBody}</p>
+                <strong>{detailPresentation.readerHeading}</strong>
+                <p>{isDracula && detailPresentation.readerRuntimeAvailable ? "Read the first 3 pages free. Continue with Reading Pass access when the story calls you onward." : detailPresentation.readerBody}</p>
               </div>
             </div>
             <div className="book-experience-panel__item">
@@ -373,7 +374,7 @@ export default function BookDetail() {
           </div>
           </div>}
 
-          {selectedTab === "details" && <div id="book-panel-details" role="tabpanel" aria-labelledby="book-tab-details" className="book-detail-reference__rights mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="book-details-panel"><strong>Release &amp; Access</strong><p className="mt-3 text-sm leading-relaxed text-charcoal-soft">{PUBLIC_PREVIEW_COPY}. {detailPresentation.audioBody}</p>{isDracula && <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">Source: {DRACULA_SOURCE_NOTE} Rights status: {DRACULA_RIGHTS_NOTE}</p>}</div>}
+          {selectedTab === "details" && <div id="book-panel-details" role="tabpanel" aria-labelledby="book-tab-details" className="book-detail-reference__rights mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="book-details-panel"><strong>Release &amp; Access</strong><p className="mt-3 text-sm leading-relaxed text-charcoal-soft">{detailPresentation.readerRuntimeAvailable ? PUBLIC_PREVIEW_COPY : detailPresentation.readerBody} {detailPresentation.audioBody}</p>{isDracula && <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">Source: {DRACULA_SOURCE_NOTE} Rights status: {DRACULA_RIGHTS_NOTE}</p>}</div>}
 
           {selectedTab === "chapters" && chapterCount > 0 && (
             <div id="book-panel-chapters" role="tabpanel" aria-labelledby="book-tab-chapters" className="mt-8" data-testid="chapter-list">
@@ -391,7 +392,7 @@ export default function BookDetail() {
                   </li>
                 ))}
               </ol>
-              {detailPresentation.readerReady && hasUnmappedChapter && (
+              {detailPresentation.readerRuntimeAvailable && hasUnmappedChapter && (
                 <Link to={readerHref} className="btn-secondary mt-6 inline-flex" data-testid="chapter-reader-entry">Open reader</Link>
               )}
             </div>
