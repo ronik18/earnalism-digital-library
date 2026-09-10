@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { userApi } from "../../lib/api";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
+import { paragraphsFromHtml } from "./readerContent";
 import {
   endReadingPassSession,
   getReadingPassPage,
@@ -16,14 +17,6 @@ import { readerRecoveryPlan, readerRouteState } from "./readerRouteState";
 function pageFromSearch(search) {
   const value = Number(search.get("p") || 1);
   return Number.isInteger(value) && value > 0 ? value : 1;
-}
-
-function paragraphsFromHtml(html = "") {
-  if (typeof document === "undefined") return String(html).replace(/<[^>]+>/g, " ").trim() ? [String(html).replace(/<[^>]+>/g, " ").trim()] : [];
-  const container = document.createElement("div");
-  container.innerHTML = html;
-  return [...container.querySelectorAll("p")].map((node) => node.textContent?.trim()).filter(Boolean)
-    || [];
 }
 
 function routeState(title, message, action = null) {
