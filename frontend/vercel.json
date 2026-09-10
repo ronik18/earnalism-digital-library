@@ -347,6 +347,22 @@
       "destination": "/index.html"
     },
     {
+      "source": "/book/a-white-heron",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/book/a-white-heron/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/book/the-selfish-giant",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/book/the-selfish-giant/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/book/:slug",
       "destination": "/api/not-found"
     },
