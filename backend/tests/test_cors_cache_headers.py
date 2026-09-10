@@ -9,6 +9,13 @@ from starlette.middleware.cors import CORSMiddleware
 
 os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
 os.environ.setdefault("JWT_SECRET", "cors-cache-header-test-secret")
+# This module runs in its own process before the JavaScript PR regression.
+# The parent launcher is UAT-configured; keep its loopback services but assert
+# the production CORS allowlist without changing the running UAT server.
+os.environ["ENVIRONMENT"] = "production"
+os.environ.pop("CORS_ORIGINS", None)
+os.environ.pop("FRONTEND_URL", None)
+os.environ["READING_PASS_V2_ENABLED"] = "false"
 
 from backend import server
 
@@ -42,6 +49,8 @@ class _VaryRespectingCache:
             for token in value.split(",")
             if token.strip()
         ]
+        if any(token == "*" for token in vary_tokens):
+            return
         self._entries.append((vary_tokens, self._request_key(request_headers, vary_tokens)))
 
     def hit(self, request_headers):
@@ -165,6 +174,21 @@ def test_vary_respecting_cache_keeps_origin_variants_separate(monkeypatch):
     cache = _VaryRespectingCache()
     cache.store(client.get("/api/books", headers=unapproved).headers, unapproved)
     assert not cache.hit(apex)
+
+
+class _SyntheticHeaders:
+    def __init__(self, vary_values):
+        self._vary_values = vary_values
+
+    def get_list(self, name):
+        return self._vary_values if name.lower() == "vary" else []
+
+
+def test_vary_wildcard_is_never_reused():
+    cache = _VaryRespectingCache()
+    cache.store(_SyntheticHeaders(["*"]), _public_request_headers("https://theearnalism.com"))
+
+    assert not cache.hit(_public_request_headers("https://theearnalism.com"))
 
 
 def test_vary_origin_merge_preserves_existing_dimensions_and_wildcard():
