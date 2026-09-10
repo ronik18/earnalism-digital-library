@@ -18,4 +18,18 @@ case "$REGRESSION_API_URL" in
   *) echo "pre-deploy regression API target must be loopback; production fallback is rejected" >&2; exit 64 ;;
 esac
 
+PYTHON_BIN="$ROOT/.venv-uat/bin/python"
+[[ -x "$PYTHON_BIN" ]] || { echo "prepared isolated Python environment is required" >&2; exit 64; }
+
+echo "==> CORS cache contract (backend/tests/test_cors_cache_headers.py)"
+env \
+  -u CORS_ORIGINS \
+  -u FRONTEND_URL \
+  ENVIRONMENT=production \
+  READING_PASS_V2_ENABLED=false \
+  MONGODB_URL="${MONGODB_URL:?isolated MongoDB URL is required}" \
+  REDIS_URL="${REDIS_URL:?isolated Redis URL is required}" \
+  JWT_SECRET="${JWT_SECRET:?isolated JWT secret is required}" \
+  "$PYTHON_BIN" -m pytest -q backend/tests/test_cors_cache_headers.py
+
 npm run regression:ci

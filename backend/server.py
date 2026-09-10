@@ -1984,6 +1984,101 @@ def _is_public_cache_path(path: str) -> bool:
     return path in PUBLIC_CACHE_PATHS or any(path.startswith(prefix) for prefix in PUBLIC_CACHE_PREFIXES)
 
 
+def _is_public_anonymous_cacheable_response(
+    method: str,
+    path: str,
+    status_code: int,
+    authorization: str = "",
+) -> bool:
+    return (
+        method == "GET"
+        and status_code == 200
+        and not authorization
+        and _is_public_cache_path(path)
+    )
+
+
+def _cache_control_is_publicly_cacheable(headers: List[Tuple[bytes, bytes]]) -> bool:
+    cache_control_values = [
+        value.decode("latin-1")
+        for name, value in headers
+        if name.lower() == b"cache-control"
+    ]
+    directives = {
+        directive.strip().lower()
+        for value in cache_control_values
+        for directive in value.split(",")
+        if directive.strip()
+    }
+    return "public" in directives and "no-store" not in directives
+
+
+def _merge_vary_origin(headers: List[Tuple[bytes, bytes]]) -> List[Tuple[bytes, bytes]]:
+    vary_values = [
+        value.decode("latin-1")
+        for name, value in headers
+        if name.lower() == b"vary"
+    ]
+    tokens = [
+        token.strip()
+        for value in vary_values
+        for token in value.split(",")
+        if token.strip()
+    ]
+    if any(token == "*" for token in tokens):
+        return list(headers)
+
+    merged_tokens: List[str] = []
+    seen = set()
+    for token in tokens:
+        normalized = token.lower()
+        if normalized not in seen:
+            seen.add(normalized)
+            merged_tokens.append(token)
+    if "origin" not in seen:
+        merged_tokens.append("Origin")
+
+    without_vary = [(name, value) for name, value in headers if name.lower() != b"vary"]
+    without_vary.append((b"vary", ", ".join(merged_tokens).encode("latin-1")))
+    return without_vary
+
+
+class PublicCacheVaryOriginMiddleware:
+    """Ensure every public cache variant is separated by browser Origin."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope.get("type") != "http":
+            await self.app(scope, receive, send)
+            return
+
+        request_headers = {
+            name.lower(): value
+            for name, value in scope.get("headers", [])
+        }
+        authorization = request_headers.get(b"authorization", b"").decode("latin-1")
+
+        async def send_with_public_vary(message):
+            if message["type"] == "http.response.start":
+                response_headers = list(message.get("headers", []))
+                if (
+                    _is_public_anonymous_cacheable_response(
+                        scope.get("method", ""),
+                        scope.get("path", ""),
+                        message.get("status", 500),
+                        authorization,
+                    )
+                    and _cache_control_is_publicly_cacheable(response_headers)
+                ):
+                    message = dict(message)
+                    message["headers"] = _merge_vary_origin(response_headers)
+            await send(message)
+
+        await self.app(scope, receive, send_with_public_vary)
+
+
 async def _reader_content_cache_generation_value() -> int:
     if not _redis_state_enabled():
         return 0
@@ -5113,11 +5208,11 @@ async def production_hardening_middleware(request: Request, call_next):
     duration_ms = round((time.perf_counter() - started) * 1000, 2)
     response.headers["Server-Timing"] = f"app;dur={duration_ms}"
     response.headers["X-Response-Time-ms"] = str(duration_ms)
-    if (
-        request.method == "GET"
-        and response.status_code == 200
-        and not request.headers.get("authorization")
-        and _is_public_cache_path(path)
+    if _is_public_anonymous_cacheable_response(
+        request.method,
+        path,
+        response.status_code,
+        request.headers.get("authorization", ""),
     ):
         response.headers.setdefault(
             "Cache-Control",
@@ -11027,6 +11122,8 @@ app.add_middleware(
         "X-Reader-Chapter-Version",
     ],
 )
+# Registered last so this raw ASGI middleware sees headers after CORS and gzip.
+app.add_middleware(PublicCacheVaryOriginMiddleware)
 
 
 # ---------- Seed ----------
