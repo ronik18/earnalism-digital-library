@@ -15,13 +15,13 @@ const baselinePath = path.join(root, PR371_LIBRARY_INTERACTION_BASELINE);
 const read = (file) => fs.readFileSync(file, "utf8");
 const write = (file, value) => fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`);
 const historicalSource = (revision, relativePath) => execFileSync("git", ["show", `${revision}:${relativePath}`], { cwd: root, encoding: "utf8" });
-const materializeCurrentSurface = () => {
+const materializeSource = (revision) => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "pr371-library-surface-"));
   const baseline = JSON.parse(read(baselinePath));
   for (const relativePath of baseline.input_paths) {
     const destination = path.join(temporary, relativePath);
     fs.mkdirSync(path.dirname(destination), { recursive: true });
-    fs.copyFileSync(path.join(root, relativePath), destination);
+    fs.writeFileSync(destination, historicalSource(revision, relativePath));
   }
   const record = path.join(temporary, PR371_LIBRARY_INTERACTION_BASELINE);
   fs.mkdirSync(path.dirname(record), { recursive: true });
@@ -32,8 +32,8 @@ let cases = 0;
 const test = (name, fn) => { fn(); cases += 1; console.log(`PASS ${cases}: ${name}`); };
 
 test("the exact PR371 baseline matches the reviewed Library surface", () => {
-  const baseline = loadLibraryInteractionBaseline(root);
-  const comparison = compareLibraryInteractionBaseline(root);
+  const baseline = loadLibraryInteractionBaseline(root, PR371_LIBRARY_INTERACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(materializeSource(baseline.reviewed_source.commit), PR371_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.expected_surface_sha256, "0fc10999d742f8c36ee8e0febdfb6715d3526843e90b96c5918fe9408eaf0d07");
   assert.equal(comparison.observed_surface_sha256, comparison.expected_surface_sha256);
   assert.equal(comparison.previous_surface_sha256, "d0c094fbf9db03139d68a6706dcc3af5a59aa53cc22b3b1a9ba352101a0e3770");
@@ -44,18 +44,22 @@ test("the exact PR371 baseline matches the reviewed Library surface", () => {
 });
 
 test("a changed three-file source fingerprint fails", () => {
-  const temporary = materializeCurrentSurface();
+  const temporary = materializeSource("3f89874046258bdd9e0cb531af7f15f1039d8ce1");
   fs.appendFileSync(path.join(temporary, "frontend/src/components/ReferencePublicPages.css"), "\n/* fixture-only source change */\n");
-  assert.equal(compareLibraryInteractionBaseline(temporary).result, "FAIL");
+  assert.equal(compareLibraryInteractionBaseline(temporary, PR371_LIBRARY_INTERACTION_BASELINE).result, "FAIL");
 });
 
 test("malformed or unauthorized transition records fail", () => {
-  const temporary = materializeCurrentSurface();
+  const temporary = materializeSource("3f89874046258bdd9e0cb531af7f15f1039d8ce1");
   const record = path.join(temporary, PR371_LIBRARY_INTERACTION_BASELINE);
   const malformed = JSON.parse(read(record));
   malformed.previous_baseline.record_path = "docs/design-system/library-filter-focus-hash-change.json";
   write(record, malformed);
-  assert.throws(() => loadLibraryInteractionBaseline(temporary));
+  assert.throws(() => loadLibraryInteractionBaseline(temporary, PR371_LIBRARY_INTERACTION_BASELINE));
+});
+
+test("current source cannot be passed off as the historical PR371 baseline", () => {
+  assert.equal(compareLibraryInteractionBaseline(root, PR371_LIBRARY_INTERACTION_BASELINE).result, "FAIL");
 });
 
 test("the PR364 baseline record remains unchanged", () => {

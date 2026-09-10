@@ -77,6 +77,8 @@ describe("Reference public page surfaces", () => {
     expect(source).toContain('reference-library-drawer');
     expect(source).toContain('reference-filter-reset');
     expect(source).toContain('hideAll');
+    expect(source).toContain('showAllForGroups={["listening"]}');
+    expect(source).toContain('shouldHideAllOption(key, slug)');
     expect(source).toContain('"Genre"');
     expect(source).toContain('element.setAttribute("inert", "")');
     expect(source).toContain('document.body.style.overflow = "hidden"');
