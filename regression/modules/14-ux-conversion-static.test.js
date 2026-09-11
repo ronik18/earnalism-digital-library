@@ -409,7 +409,8 @@ describe("UX conversion static signals", () => {
     expect(library).toContain("Reader and listening routes open only when their editorial and release checks are complete.");
     expect(library).toContain("Request an update");
     expect(bookDetail).toContain('data-testid="start-reading"');
-    expect(bookDetailPresentation).toContain('primaryReadLabel: readerReady ? "Start Reading" : "Back to Library"');
+    expect(bookDetailPresentation).toContain('primaryReadLabel: readerRuntimeAvailable ? "Start Reading" : readerReady ? "Browse the Library" : "Back to Library"');
+    expect(bookDetailPresentation).toContain('primaryReadHref: readerRuntimeAvailable ? readerHref : "/library"');
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
     expect(bookDetail).toContain("Audio:</strong> Audiobooks appear only after release-gate evidence approves them.");
     expect(bookDetail).toContain('data-testid="book-reading-pass"');

@@ -1,0 +1,47 @@
+{
+  "schema_version": "earnalism.reader-full-page-runtime-audit-ledger.v1",
+  "classification": "ISOLATED_BACKEND_RUNTIME_AND_SOURCE_FIDELITY_EVIDENCE",
+  "source_commit": "b9e47afc337ffe9d4d73fec43297cbd075c4b1e6",
+  "source_tree": "31ce576a390daafe69f05b58e8ebc58dfb20ca6c",
+  "executed_at_utc": "2026-09-10T12:36:41Z",
+  "environment": {
+    "network_scope": "loopback-only disposable UAT",
+    "reading_pass_v2_enabled": true,
+    "public_audio_seconds": 0,
+    "rate_limit_reading_pass_per_minute": 30000,
+    "production_mutations": false
+  },
+  "inventory": {
+    "reader_approved_packages": 45,
+    "canonical_pages_expected": 2692,
+    "canonical_pages_runtime_fetched": 2692,
+    "canonical_pages_source_compared": 2692,
+    "public_pages_fetched": 135,
+    "protected_pages_fetched": 2557
+  },
+  "results": {
+    "runtime_authorization_and_lease_fetch": "PASS",
+    "ordered_source_comparison_after_server_html_normalization": "PASS",
+    "missing_duplicate_reordered_truncated_or_wrong_language_detection": "PASS",
+    "cross_user_and_session_cleanup_checks": "PASS",
+    "rendered_page_result": "NOT_RUN",
+    "manual_visual_pages": 0
+  },
+  "source_fidelity_method": "Each canonical runtime page was fetched through the application authorization and lease path, normalized with backend.server._manual_content_to_render_html, and compared to the canonical edition by ordered page digest. No protected text is retained in this ledger.",
+  "evidence_artifact": {
+    "path": "uat/evidence/system-final/runtime-final/20260910T173849Z/full-page-isolated-runtime-audit.json",
+    "sha256": "1699b698311eec2514e25f55b8a78a564aa9b716ffaacf2db98af43f0334e724",
+    "note": "The local artifact contains one safe title-level digest record per reader-approved package. It is not production evidence and must not be used as rendered Reader acceptance."
+  },
+  "reconciliation": {
+    "previous_reported_canonical_page_total": 2835,
+    "current_audited_canonical_page_total": 2692,
+    "status": "CURRENT_SOURCE_RUNTIME_TOTAL_RECONCILED",
+    "note": "The current audited package matrix is authoritative for this run; the historical total was not forced."
+  },
+  "remaining_work": [
+    "Exhaustive desktop and narrow actual Reader rendering remains unverified.",
+    "Production Reading Pass V2 remains disabled and is not validated by this isolated run.",
+    "Seven cover-metadata gaps require approved provenance or an owner decision."
+  ]
+}
