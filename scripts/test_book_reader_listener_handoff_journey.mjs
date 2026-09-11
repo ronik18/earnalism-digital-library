@@ -95,7 +95,14 @@ function pagePayload(book, pageIndex) {
 }
 
 async function configureApi(page, { authenticated = false, denyLease = false, readingPassEnabled = true, sessionStartDelayMs = 0, manifestFailures = 0 } = {}) {
-  const requests = { sessionStarts: 0, protectedPageRequests: 0, manifestRequests: 0 };
+  const requests = {
+    sessionStarts: 0,
+    protectedPageRequests: 0,
+    manifestRequests: 0,
+    positionWrites: [],
+    persistedPosition: null,
+  };
+  let position = { content_type: "text", content_id: protectedChapterBook.slug, position: {}, version: 0 };
   let remainingManifestFailures = manifestFailures;
   await page.route("**/api/**", async (route) => {
     const request = route.request();
@@ -143,6 +150,27 @@ async function configureApi(page, { authenticated = false, denyLease = false, re
           ? { status: 403, body: { detail: { message: "A current Reading Pass is required to continue." } } }
           : { status: 200, body: { session_id: "fixture-lease", lease_token: "fixture-token", lease_version: 1 } };
       await route.fulfill({ status: response.status, contentType: "application/json", body: JSON.stringify(response.body) });
+      return;
+    }
+    if (pathname.endsWith(`/reading-pass/positions/text/${protectedChapterBook.slug}`) && request.method() === "GET") {
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(position) });
+      return;
+    }
+    if (pathname.endsWith("/reading-pass/positions") && request.method() === "PUT") {
+      const payload = request.postDataJSON();
+      requests.positionWrites.push(payload);
+      if (Number(payload.version) !== Number(position.version)) {
+        await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ...position, stale: true }) });
+        return;
+      }
+      position = {
+        content_type: payload.content_type,
+        content_id: payload.content_id,
+        position: payload.position,
+        version: Number(position.version) + 1,
+      };
+      requests.persistedPosition = position;
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(position) });
       return;
     }
     if (pathname.endsWith("/reader/book/audio-edition/audiobook")) {
@@ -298,6 +326,19 @@ async function runProtectedChapterEntry({ id, viewport }) {
   assert.match(await page.getByTestId("reader-reading-text").textContent(), /Fixture canonical page 5/, `${id}: current lease must open the next protected canonical page`);
   assert.equal(requests.sessionStarts, 1, `${id}: page-five navigation must reuse the existing lease`);
   assert.equal(requests.protectedPageRequests, 2, `${id}: page-five navigation must request only the next protected page`);
+  await page.waitForFunction(() => true, null, { timeout: 100 });
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  assert.deepEqual(
+    requests.positionWrites.map((payload) => Number(payload.version)),
+    [0, 1],
+    `${id}: normal Reader must advance its optimistic position version between canonical pages`,
+  );
+  assert.deepEqual(requests.persistedPosition, {
+    content_type: "text",
+    content_id: protectedChapterBook.slug,
+    position: { canonical_page_index: 5, chapter_id: "chapter-two" },
+    version: 2,
+  }, `${id}: normal Reader must persist the later canonical page instead of accepting a stale write`);
   await page.screenshot({ path: path.join(output, `${id}-protected-chapter-authorized.png`), fullPage: true });
   await context.close();
 

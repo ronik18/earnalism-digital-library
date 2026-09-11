@@ -5,6 +5,7 @@ import { readerManifestPath } from "../../lib/audioReleaseSafety";
 import { paragraphsFromHtml } from "./readerContent";
 import {
   endReadingPassSession,
+  getReadingPassPosition,
   getReadingPassPage,
   renewReadingPassLease,
   saveReadingPassPosition,
@@ -17,6 +18,11 @@ import { readerRecoveryPlan, readerRouteState } from "./readerRouteState";
 function pageFromSearch(search) {
   const value = Number(search.get("p") || 1);
   return Number.isInteger(value) && value > 0 ? value : 1;
+}
+
+function positionVersion(value) {
+  const parsed = Number(value);
+  return Number.isInteger(parsed) && parsed >= 0 ? parsed : 0;
 }
 
 function routeState(title, message, action = null) {
@@ -51,11 +57,33 @@ export default function ReaderExperienceV2Route() {
   const [authorizing, setAuthorizing] = useState(false);
   const leaseRef = useRef(null);
   const authorizingRef = useRef(false);
+  const positionVersionRef = useRef(0);
+  const positionWriteQueueRef = useRef(Promise.resolve());
 
   const setLeaseState = useCallback((value) => {
     leaseRef.current = value;
     setLease(value);
   }, []);
+
+  const persistPosition = useCallback((value) => {
+    // Canonical-page changes can happen before the previous write resolves.
+    // Keep this browser's optimistic versions ordered; a stale response still
+    // remains fail-closed rather than overwriting a newer remote position.
+    positionWriteQueueRef.current = positionWriteQueueRef.current
+      .catch(() => undefined)
+      .then(async () => {
+        const saved = await saveReadingPassPosition({
+          bookSlug: slug,
+          pageIndex: value.page_index,
+          chapterId: value.chapter_id,
+          version: positionVersionRef.current,
+        });
+        positionVersionRef.current = positionVersion(saved?.version);
+        return saved;
+      })
+      .catch(() => undefined);
+    return positionWriteQueueRef.current;
+  }, [slug]);
 
   useEffect(() => {
     if (visualFixture) return undefined;
@@ -79,12 +107,12 @@ export default function ReaderExperienceV2Route() {
         if (cancelled) return;
         setPage(value);
         if (!value.is_preview && lease) {
-          void saveReadingPassPosition({ bookSlug: slug, pageIndex: value.page_index, chapterId: value.chapter_id });
+          void persistPosition(value);
         }
       })
       .catch((requestError) => { if (!cancelled) setError(requestError?.response?.data?.detail?.message || "Reading access could not be verified."); });
     return () => { cancelled = true; };
-  }, [canonicalPage, lease, manifest, slug, visualFixture]);
+  }, [canonicalPage, lease, manifest, persistPosition, slug, visualFixture]);
 
   useEffect(() => {
     if (!lease) return undefined;
@@ -123,6 +151,13 @@ export default function ReaderExperienceV2Route() {
     setError("");
     try {
       const started = await startReadingPassSession({ bookSlug: slug, pageIndex: nextPage });
+      try {
+        const savedPosition = await getReadingPassPosition({ contentType: "text", contentId: slug });
+        positionVersionRef.current = positionVersion(savedPosition?.version);
+      } catch {
+        // A resume lookup must not prevent an otherwise valid server lease.
+        positionVersionRef.current = 0;
+      }
       const nextLease = { sessionId: started.session_id, token: started.lease_token, version: Number(started.lease_version || 1), sequence: 0 };
       setLeaseState(nextLease);
       changePage(nextPage);
