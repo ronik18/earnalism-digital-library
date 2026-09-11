@@ -255,7 +255,10 @@ async function assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name, sou
   await closeFilters(page, mobile);
   await assertNoHorizontalOverflow(page, `${name}: All releases`);
   const search = page.getByTestId("library-reference-surface").getByTestId("library-search");
-  await search.fill("edition");
+  await Promise.all([
+    page.waitForURL((url) => url.pathname === "/library" && url.searchParams.get("q") === "edition"),
+    search.fill("edition"),
+  ]);
   assert.equal(params(page).get("language"), "bn", `${name}: search must retain Bengali`);
   assert.equal(params(page).get("sort"), "title", `${name}: search must retain sort`);
   assert.equal(params(page).get("q"), "edition", `${name}: search query must persist`);
