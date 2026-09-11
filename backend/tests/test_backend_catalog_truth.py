@@ -445,7 +445,8 @@ def test_api_books_uses_the_authoritative_controlled_public_query(monkeypatch):
     dracula_row = next(row for row in result if row["slug"] == "dracula")
     assert dracula_row["publication_status"] == "LIVE_APPROVED"
     assert dracula_row["reader_url"] == "/reader/dracula"
-    assert dracula_row["preview_url"] == "/reader/dracula"
+    assert dracula_row["preview_enabled"] is False
+    assert dracula_row["preview_url"] == ""
     assert dracula_row["audio_enabled"] is False
     assert dracula_row["audiobook_enabled"] is False
     assert dracula_row["audio_status"] == "NOT_AVAILABLE"
@@ -498,7 +499,7 @@ def test_api_book_detail_returns_safe_dracula_public_projection(monkeypatch):
     assert dumped["slug"] == "dracula"
     assert dumped["publication_status"] == "LIVE_APPROVED"
     assert dumped["reader_enabled"] is True
-    assert dumped["preview_enabled"] is True
+    assert dumped["preview_enabled"] is False
     assert dumped["audio_enabled"] is False
     assert dumped["audiobook_enabled"] is False
     assert dumped["audio_status"] == "NOT_AVAILABLE"

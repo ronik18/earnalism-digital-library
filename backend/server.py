@@ -271,6 +271,7 @@ try:
         can_expose_audio,
         can_expose_reader,
         clear_controlled_artifact_caches,
+        controlled_artifact_integrity_quarantined,
         controlled_artifact_status,
         dracula_artifact_status,
         explicit_preview_chapter_ids,
@@ -290,6 +291,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         can_expose_audio,
         can_expose_reader,
         clear_controlled_artifact_caches,
+        controlled_artifact_integrity_quarantined,
         controlled_artifact_status,
         dracula_artifact_status,
         explicit_preview_chapter_ids,
@@ -1648,7 +1650,20 @@ def _public_projection_is_live(projected: Optional[dict]) -> bool:
 
 def _safe_live_public_projection(book: Optional[dict]) -> Optional[dict]:
     projected = public_book_projection(_strip_all_chapter_content(book)) if book else None
+    # Legacy chapter-level preview markers cannot safely express the fixed
+    # canonical-page boundary. When Reading Pass v2 is disabled, keep the
+    # edition discoverable but never advertise a free preview that the legacy
+    # chapter endpoint cannot enforce page-by-page.
+    if projected and not READING_PASS_V2_ENABLED:
+        projected["preview_enabled"] = False
+        projected["preview_url"] = ""
+        if projected.get("secondary_cta_label") == "Read the first 3 pages free":
+            projected["secondary_cta_label"] = "Details"
     return projected if _public_projection_is_live(projected) else None
+
+
+def _controlled_artifact_is_integrity_quarantined(slug: str) -> bool:
+    return controlled_artifact_integrity_quarantined(str(slug or "").strip().lower())
 
 
 def _slug_is_dracula(slug: str) -> bool:
@@ -1658,6 +1673,8 @@ def _slug_is_dracula(slug: str) -> bool:
 def _controlled_artifact_doc(slug: str, *, include_content: bool = False) -> Optional[dict]:
     normalized_slug = str(slug or "").strip().lower()
     if normalized_slug not in CONTROLLED_LIVE_BOOK_SLUGS:
+        return None
+    if _controlled_artifact_is_integrity_quarantined(normalized_slug):
         return None
     doc = load_controlled_artifact_book(normalized_slug, include_content=include_content)
     if not doc:
@@ -1718,6 +1735,8 @@ def _append_controlled_artifact_projections(
             resolved_books.append(book)
             continue
         existing_slugs.add(slug)
+        if _controlled_artifact_is_integrity_quarantined(slug):
+            continue
         artifact = _controlled_artifact_doc(slug, include_content=False)
         if not artifact:
             resolved_books.append(book)
@@ -1734,6 +1753,8 @@ def _append_controlled_artifact_projections(
     appended: list[dict] = []
     for slug in CONTROLLED_LIVE_BOOK_SLUGS:
         if slug in existing_slugs:
+            continue
+        if _controlled_artifact_is_integrity_quarantined(slug):
             continue
         artifact = _controlled_artifact_doc(slug, include_content=False)
         if not artifact or not _matches_public_filters(artifact, category_filter=category_filter, q=q):
@@ -1884,6 +1905,8 @@ async def _find_public_book_candidate(
     if not _is_controlled_public_slug(slug):
         return None, "missing"
     normalized_slug = str(slug or "").strip().lower()
+    if _controlled_artifact_is_integrity_quarantined(normalized_slug):
+        return None, "integrity_quarantined"
     doc = await db.books.find_one(
         _controlled_public_book_query({"slug": normalized_slug}),
         projection,
@@ -2221,6 +2244,8 @@ async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str
 
 async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> Optional[dict]:
     if not admin_preview and not _is_controlled_public_slug(slug):
+        return None
+    if not admin_preview and _controlled_artifact_is_integrity_quarantined(slug):
         return None
     generation = await _reader_content_cache_generation_value()
     cache_key = f"book-access:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
@@ -2980,6 +3005,8 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
 async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -> Optional[dict]:
     if not admin_preview and not _is_controlled_public_slug(slug):
         return None
+    if not admin_preview and _controlled_artifact_is_integrity_quarantined(slug):
+        return None
     generation = await _reader_content_cache_generation_value()
     cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:{CHAPTER_INDEX_CONTRACT_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-manifest", cache_key)
@@ -3032,7 +3059,7 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
         audio_source = _reader_audio_truth_doc(release_doc or doc, slug) or {}
     audio = _reader_manifest_audio(audio_source, slug)
     projection_source = audio_source if not admin_preview and audio.get("enabled") is True else doc
-    book_public = public_book_projection(_strip_all_chapter_content(projection_source)) or {}
+    book_public = _safe_live_public_projection(projection_source) or {}
     if not admin_preview and not _public_projection_is_live(book_public):
         return None
     book_public["chapters"] = chapters
@@ -4001,7 +4028,9 @@ def _wallet_refund_candidates(transactions: List[dict], refunded_candidate_ids: 
 
 
 def _free_preview_chapter_ids(book: dict) -> set[str]:
-    """Return only chapters with explicit preview approval evidence."""
+    """Return legacy preview ids only while canonical page enforcement is active."""
+    if not READING_PASS_V2_ENABLED:
+        return set()
     return set(explicit_preview_chapter_ids(book))
 
 

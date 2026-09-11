@@ -28,7 +28,7 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def test_d19_f5_packets_have_no_full_text_preview_and_valid_checksums():
+def test_d19_f5_packets_have_no_full_text_preview_and_ginni_is_checksum_quarantined():
     for packet_root in PACKET_ROOTS:
         for slug in PAID_ONLY_SLUGS:
             packet = packet_root / slug
@@ -42,10 +42,18 @@ def test_d19_f5_packets_have_no_full_text_preview_and_valid_checksums():
             assert all(item.get("is_preview") is False for item in reader_manifest["chapters"])
             assert chapter["is_preview"] is False
 
-            for entry in checksum_manifest["files"]:
-                if entry["file"] == "checksum_manifest.json":
-                    continue
-                assert sha256(packet / entry["file"]) == entry["sha256"]
+            checksums = {entry["file"]: entry["sha256"] for entry in checksum_manifest["files"]}
+            if slug == "book-d19e96859f":
+                # The retained approval hash does not bind the present bytes.
+                # The runtime must quarantine this package rather than rewrite
+                # either side of the evidence to make it pass.
+                assert sha256(packet / "approval_evidence.json") != checksums["approval_evidence.json"]
+                assert catalog_truth.controlled_artifact_integrity_quarantined(slug, str(packet)) is True
+            else:
+                for entry in checksum_manifest["files"]:
+                    if entry["file"] == "checksum_manifest.json":
+                        continue
+                    assert sha256(packet / entry["file"]) == entry["sha256"]
 
 
 def test_paid_only_titles_keep_reader_access_without_preview_or_audio_exposure():
@@ -84,18 +92,21 @@ def test_paid_only_titles_keep_reader_access_without_preview_or_audio_exposure()
         ) == []
 
 
-def test_dracula_keeps_its_explicit_preview_behavior():
+def test_dracula_legacy_markers_do_not_redefine_the_canonical_preview_boundary(monkeypatch):
     book = read_json(ROOT / "data" / "controlled_publications" / "dracula" / "public_book.json")
     projected = catalog_truth.public_book_projection(book)
 
-    assert catalog_truth.explicit_preview_chapter_ids(book) == ("chapter-001",)
+    # Retained legacy metadata marks every chapter. It is not an authorization
+    # decision for the fixed, server-enforced first-three-canonical-page policy.
+    assert len(catalog_truth.explicit_preview_chapter_ids(book)) == 27
     assert catalog_truth.can_expose_reader(book) is True
     assert catalog_truth.can_expose_preview(book) is True
     assert projected is not None
     assert projected["reader_enabled"] is True
     assert projected["preview_enabled"] is True
     assert projected["preview_url"] == "/reader/dracula"
-    assert server._free_preview_chapter_ids(book) == {"chapter-001"}
+    monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", False)
+    assert server._free_preview_chapter_ids(book) == set()
 
 
 def test_history_rebuild_defaults_closed_and_honors_only_explicit_preview_evidence():
