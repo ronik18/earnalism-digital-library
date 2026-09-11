@@ -34,6 +34,7 @@ export function readerRuntimeIsAvailable(book = {}) {
 
 export function bookDetailPresentationForBook(book = {}) {
   const audioState = audiobookReleaseState(book);
+  const audioReleaseApproved = audioState.releaseApproved === true;
   const audioApproved = audioState.canShowControls === true;
   const readerReady = isReaderReadyBook(book);
   const readerRuntimeAvailable = readerReady && readerRuntimeIsAvailable(book);
@@ -58,10 +59,16 @@ export function bookDetailPresentationForBook(book = {}) {
       : readerReady
         ? "This approved edition cannot be opened while the current Reader service is unavailable. Explore the Library for another title."
         : "This title remains in editorial preparation until source, rights, and reader gates pass.",
-    audioBadgeLabel: audioApproved ? "Audiobook Approved" : readerReady ? "Audio Hidden" : "Release Gated",
-    audioHeading: audioApproved ? "Listening room approved" : "Audio waits for release gates",
+    audioBadgeLabel: audioReleaseApproved ? "Audiobook Approved" : readerReady ? "Audio Hidden" : "Release Gated",
+    audioHeading: audioApproved
+      ? "Listening room approved"
+      : audioReleaseApproved
+        ? "Listening currently unavailable"
+        : "Audio waits for release gates",
     audioBody: audioApproved
       ? "Open the Listening Room only because approved provider-backed audio evidence is present."
+      : audioReleaseApproved
+        ? "The audiobook release is approved, but the current Reader runtime cannot offer listening yet."
       : "No public audio controls are shown until narration, sync, metadata, endpoint, and browser gates pass.",
     syncCopy: audioApproved ? "Section-following narration" : "",
     listenCtaVisible: audioApproved,

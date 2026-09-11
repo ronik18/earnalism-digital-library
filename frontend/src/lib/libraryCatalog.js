@@ -20,7 +20,7 @@ export function languageOfBook(book = {}) {
 
 export function availabilityOfBook(book = {}) {
   const audioState = audiobookReleaseState(book);
-  if (audioState.canShowControls) return "approved-audiobook";
+  if (audioState.releaseApproved) return "approved-audiobook";
   return canShowStartReading(book) ? "reader-ready" : "in-preparation";
 }
 
@@ -30,6 +30,7 @@ export function libraryPresentationForBook(book = {}) {
   const audioState = audiobookReleaseState(book);
   const readerReady = availability === "reader-ready";
   const audiobookApproved = availability === "approved-audiobook";
+  const listeningAvailable = audioState.canShowControls;
 
   return {
     language,
@@ -41,9 +42,13 @@ export function libraryPresentationForBook(book = {}) {
       : readerReady
         ? "Reader Ready"
         : "In Preparation",
-    audioBadgeLabel: audiobookApproved ? "Listening Live" : readerReady ? "Audio Hidden" : "Release Gated",
+    audioBadgeLabel: audiobookApproved
+      ? (listeningAvailable ? "Listening Live" : "Listening unavailable")
+      : readerReady ? "Audio Hidden" : "Release Gated",
     availabilityNote: audiobookApproved
-      ? "Provider-backed narration is live on the approved reader route."
+      ? (listeningAvailable
+        ? "Provider-backed narration is available through the approved Reader runtime."
+        : "Audiobook release is approved; listening is unavailable in the current Reader runtime.")
       : readerReady
         ? "Reader edition live · audio intentionally hidden until release evidence passes."
         : "Reader and listening routes remain closed until editorial and release gates pass.",
@@ -57,7 +62,7 @@ export function matchesLibraryFacets(book = {}, language = "all", availability =
   const audioState = audiobookReleaseState(book);
   if (language !== "all" && bookLanguage !== language) return false;
   if (availability === "all") return true;
-  if (availability === "audio-hidden") return !audioState.canShowControls && bookAvailability === "reader-ready";
+  if (availability === "audio-hidden") return !audioState.releaseApproved && bookAvailability === "reader-ready";
   return bookAvailability === availability;
 }
 

@@ -104,7 +104,7 @@ def test_owner_exclusion_blocks_admin_republication_even_with_legacy_approval():
     ]
 
 
-def test_live_projection_enables_reader_preview_but_disables_audio():
+def test_live_projection_uses_the_current_read_cta_when_audio_is_disabled():
     projected = catalog_truth.public_book_projection(dracula_book())
 
     assert projected["publication_status"] == "LIVE_APPROVED"
@@ -115,7 +115,7 @@ def test_live_projection_enables_reader_preview_but_disables_audio():
     assert projected["audio_enabled"] is False
     assert projected["audiobook_enabled"] is False
     assert projected["audio_url"] == ""
-    assert projected["cta_label"] == "Start Reading"
+    assert projected["cta_label"] == "Read"
 
 
 def test_projection_removes_private_rights_audio_and_chapter_content():
@@ -310,7 +310,12 @@ def test_reader_manifest_non_dracula_returns_none():
     assert result is None
 
 
-def test_public_audiobook_endpoint_404s_non_dracula_without_db_call():
+def test_public_audiobook_endpoint_404s_pipeline_title_without_exposing_media(monkeypatch):
+    class EmptyBooks:
+        async def find_one(self, *_args, **_kwargs):
+            return None
+
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=EmptyBooks()))
     request = SimpleNamespace(headers={}, method="GET")
 
     with pytest.raises(server.HTTPException) as exc:
@@ -415,7 +420,7 @@ async def noop_cache_set(*_args, **_kwargs):
     return None
 
 
-def test_api_books_returns_dracula_as_only_live_readable_item(monkeypatch):
+def test_api_books_uses_the_authoritative_controlled_public_query(monkeypatch):
     books = FakePublicBooks(
         [
             dracula_book(rights_metadata={}),
@@ -446,10 +451,10 @@ def test_api_books_returns_dracula_as_only_live_readable_item(monkeypatch):
     assert dracula_row["audio_status"] == "NOT_AVAILABLE"
     assert "audiobook_assets" not in dracula_row
     assert "audiobook" not in dracula_row
-    assert books.last_query["slug"] == {"$in": list(catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS)}
+    assert books.last_query == catalog_truth.live_approved_mongo_query()
 
 
-def test_api_books_contains_no_non_dracula_reader_preview_or_audio(monkeypatch):
+def test_api_books_denies_unknown_title_reader_preview_and_audio_exposure(monkeypatch):
     books = FakePublicBooks(
         [
             dracula_book(),
@@ -470,10 +475,7 @@ def test_api_books_contains_no_non_dracula_reader_preview_or_audio(monkeypatch):
     result = asyncio.run(server.list_books())
 
     assert "dracula" in [book["slug"] for book in result if book["reader_enabled"]]
-    assert "completely-unknown-title" not in {book["slug"] for book in result if book["reader_enabled"]}
-    assert all(book.get("audio_enabled") is False for book in result)
-    assert all(book.get("audio_enabled") is False for book in result)
-    assert all(book.get("audiobook_enabled") is False for book in result)
+    assert "completely-unknown-title" not in {book["slug"] for book in result}
 
 
 def test_api_book_detail_returns_safe_dracula_public_projection(monkeypatch):
@@ -522,7 +524,14 @@ def base_api_mapping(**overrides):
         "/books": api_result(200, [dracula]),
         "/books/dracula": api_result(200, dracula),
         "/books/kshudhita-pashan": api_result(404, {"detail": "Book not found"}),
-        "/controlled-launch/status": api_result(200, {"catalog_truth_status": "PASS"}),
+        "/controlled-launch/status": api_result(
+            200,
+            {
+                "catalog_truth_status": "PASS",
+                "live_approved_slugs": ["dracula"],
+                "audio_enabled_slugs": [],
+            },
+        ),
         "/reader/book/dracula/manifest": api_result(
             200,
             {
@@ -554,7 +563,7 @@ def run_api_audit(mapping, monkeypatch):
     )
 
 
-def test_api_audit_passes_with_dracula_only_response(monkeypatch):
+def test_api_audit_passes_with_a_minimal_authoritative_status_fixture(monkeypatch):
     result = run_api_audit(base_api_mapping(), monkeypatch)
 
     assert result["summary"]["launch_blockers"] == []
@@ -607,7 +616,7 @@ def test_api_audit_fails_if_kshudhita_detail_is_not_pipeline_safe(monkeypatch):
     assert any("/books/kshudhita-pashan reader_enabled" in blocker for blocker in blockers)
 
 
-def test_api_audit_fails_if_non_dracula_reader_enabled(monkeypatch):
+def test_api_audit_fails_if_unexpected_reader_enabled(monkeypatch):
     frankenstein = {
         "slug": "frankenstein",
         "title": "Frankenstein",
@@ -624,7 +633,7 @@ def test_api_audit_fails_if_non_dracula_reader_enabled(monkeypatch):
 
     result = run_api_audit(mapping, monkeypatch)
 
-    assert any("Non-Dracula reader exposure" in blocker for blocker in result["summary"]["launch_blockers"])
+    assert any("Unexpected reader exposure in /books: frankenstein" in blocker for blocker in result["summary"]["launch_blockers"])
 
 
 def test_api_audit_fails_if_non_dracula_exposes_audio_aliases(monkeypatch):

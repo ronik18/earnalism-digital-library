@@ -50,6 +50,23 @@ describe("bookDetailPresentation", () => {
     expect(presentation.narrationDisclosure).toBe("Narration: AI voice");
   });
 
+  test("keeps an approved public audio release on Book Detail without an unusable Listener CTA", () => {
+    const presentation = bookDetailPresentationForBook({
+      slug: "approved-without-runtime",
+      publication_status: "LIVE_APPROVED",
+      audio_enabled: true,
+      audiobook_enabled: true,
+      audiobook_release_gate: "APPROVED",
+      audio_qa_status: "QA_PASSED",
+      audio_url: "",
+    });
+
+    expect(presentation.audioBadgeLabel).toBe("Audiobook Approved");
+    expect(presentation.audioHeading).toBe("Listening currently unavailable");
+    expect(presentation.listenCtaVisible).toBe(false);
+    expect(presentation.allowAudioStructuredData).toBe(false);
+  });
+
   test("keeps bn-066 reader-first when a legacy manifest lacks release approval", () => {
     const presentation = bookDetailPresentationForBook({
       slug: "bn-066",

@@ -13,6 +13,7 @@ const books = [
   { slug: "book-edfcf810c5", title: "ক্ষুধিত পাষাণ", author: "Rabindranath Tagore", short_description: "Canonical Bengali publication", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/book-edfcf810c5", reader_url: "/reader/book-edfcf810c5", preview_enabled: true, preview_url: "/reader/book-edfcf810c5", chapters: [{ id: "chapter-001", is_preview: true }] },
   { slug: "book-d19e96859f", title: "Live Bengali edition without a preview", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/book-d19e96859f", reader_url: "/reader/book-d19e96859f", preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
   { slug: "book-f5d593e1f4", title: "Second live Bengali edition without a preview", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/book-f5d593e1f4", reader_url: "/reader/book-f5d593e1f4", preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
+  { slug: "approved-audio-without-runtime", title: "Approved Bengali audio release", author: "Fixture Editor", short_description: "Bengali edition with approved audio metadata but no public media asset", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/approved-audio-without-runtime", reader_url: "/reader/approved-audio-without-runtime", preview_enabled: true, preview_url: "/reader/approved-audio-without-runtime", chapters: [{ id: "chapter-001", is_preview: true }], audio_enabled: true, audiobook_enabled: true, audiobook_release_gate: "APPROVED", audio_qa_status: "QA_PASSED", audio_url: "", audiobook_assets: {} },
   { slug: "hungry-stones", title: "The Hungry Stones", author: "Rabindranath Tagore", short_description: "English translation", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/hungry-stones", reader_url: "/reader/hungry-stones", preview_enabled: true, preview_url: "/reader/hungry-stones", chapters: [{ id: "chapter-001", is_preview: true }] },
 ];
 const expectedHeaderUrl = "?language=bn&availability=reader-ready";
@@ -20,6 +21,7 @@ const apiEligibleSlugs = ["devdas", "pather-panchali", "book-edfcf810c5", "book-
 const fallbackEligibleSlugs = ["devdas", "pather-panchali"];
 const ineligibleSlugs = ["frankenstein", "reader-disabled-edition", "kshudhita-pashan"];
 const readerApprovedWithoutPreviewSlugs = ["book-d19e96859f", "book-f5d593e1f4"];
+const approvedAudioWithoutRuntimeSlug = "approved-audio-without-runtime";
 const canonicalBengaliKshudhitaSlug = "book-edfcf810c5";
 const pipelineBengaliKshudhitaSlug = "kshudhita-pashan";
 const searchEligibleSlugs = apiEligibleSlugs.filter((slug) => slug !== canonicalBengaliKshudhitaSlug);
@@ -122,6 +124,22 @@ async function assertReaderApprovedWithoutPreviewCards(page) {
   }
 }
 
+async function assertApprovedAudioWithoutRuntimeCard(page, name) {
+  const cards = referenceSurface(page).getByTestId(`reference-book-${approvedAudioWithoutRuntimeSlug}`);
+  await cards.first().waitFor();
+  const count = await cards.count();
+  assert.equal(count, 2, `${name}: approved mixed-format edition must remain present in both Live now and Audiobooks shelves`);
+  for (let index = 0; index < count; index += 1) {
+    const card = cards.nth(index);
+    await expectText(card.locator(".reference-book-tile__status"), "Live", `${name}: approved mixed-format edition became coming soon`);
+    const detail = card.getByRole("link", { name: "Read", exact: true });
+    await detail.waitFor();
+    assert.equal(await detail.getAttribute("href"), `/reader/${approvedAudioWithoutRuntimeSlug}`, `${name}: approved mixed-format preview lost its reader destination`);
+    assert.equal(await card.getByRole("link", { name: "Notify me", exact: true }).count(), 0, `${name}: approved mixed-format edition redirected to Notify me`);
+    assert.equal(await card.getByText("Listening unavailable", { exact: true }).count(), 1, `${name}: unavailable Reader runtime was not explained truthfully`);
+  }
+}
+
 async function assertNotifyDestination(page, slug, label) {
   const card = referenceSurface(page).getByTestId(`reference-book-${slug}`);
   await card.waitFor();
@@ -215,6 +233,7 @@ async function assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name, sou
   await sort.selectOption("title");
   await closeFilters(page, mobile);
   await assertReaderApprovedWithoutPreviewCards(page);
+  if (source === "api") await assertApprovedAudioWithoutRuntimeCard(page, name);
   await assertApiCanonicalKshudhita(page, name);
   await openFilters(page, mobile);
   const english = filterGroup(page, mobile, "language").getByRole("button", { name: "English", exact: true });
@@ -276,7 +295,7 @@ async function assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name, sou
   await assertReaderApprovedWithoutPreviewCards(page);
 }
 
-async function assertAudiobooksRoundTrip(page, mobile, name) {
+async function assertAudiobooksRoundTrip(page, mobile, name, source) {
   const returnUrl = query(page);
   await openFilters(page, mobile);
   const audiobooks = filterGroup(page, mobile, "listening").getByRole("button", { name: "Audiobooks", exact: true });
@@ -285,6 +304,7 @@ async function assertAudiobooksRoundTrip(page, mobile, name) {
   await closeFilters(page, mobile);
   assert.equal(params(page).get("listening"), "available", `${name}: Audiobooks must use canonical listening=available`);
   assert.equal(params(page).get("availability"), null, `${name}: Audiobooks must remove legacy availability`);
+  if (source === "api") await assertApprovedAudioWithoutRuntimeCard(page, name);
   await page.reload({ waitUntil: "domcontentloaded" });
   await page.getByTestId("library-reference-surface").waitFor();
   assert.equal(params(page).get("listening"), "available", `${name}: Audiobooks reload must retain the selected filter`);
@@ -326,7 +346,7 @@ async function run({ name, viewport, mobile, source }) {
     await assertFallbackKshudhita(page, mobile, expectedSlugs, name);
     await assertNoHorizontalOverflow(page, name);
   }
-  await assertAudiobooksRoundTrip(page, mobile, name);
+  await assertAudiobooksRoundTrip(page, mobile, name, source);
   await context.close();
   await browser.close();
   return { viewport, source, header_url: expectedHeaderUrl, result: "PASS" };

@@ -48,7 +48,7 @@ function titleFor(book) {
 }
 
 function isLive(book) {
-  return canShowStartReading(book) && availabilityOfBook(book) === "reader-ready";
+  return canShowStartReading(book);
 }
 
 function BookTile({ book, compact = false, priority = false, showListen = false }) {
@@ -80,7 +80,7 @@ function BookTile({ book, compact = false, priority = false, showListen = false 
         <span className="reference-book-tile__author" data-visual-mask="book-author">{book.author || "Earnalism edition"}</span>
         <div className="reference-book-tile__actions">
           {canShowPreview(book) ? <Link to={`/reader/${book.slug}`}>Read</Link> : live ? <Link to={href}>Details</Link> : <Link to={href}>Notify me</Link>}
-          {showListen && audio.canShowControls ? <span className="reference-book-tile__locked-audio">Reading Pass required</span> : null}
+          {audio.releaseApproved ? <span className="reference-book-tile__locked-audio">{audio.canShowControls ? "Reading Pass required" : "Listening unavailable"}</span> : null}
         </div>
       </div>
     </article>
@@ -281,13 +281,13 @@ export function ReferenceLibrarySurface({
   const filterDrawerRef = useRef(null);
   const live = filteredBooks.filter(isLive);
   const comingSoon = filteredBooks.filter((book) => !isLive(book));
-  const approvedAudio = filteredBooks.filter((book) => audiobookReleaseState(book).canShowControls);
+  const approvedAudio = filteredBooks.filter((book) => audiobookReleaseState(book).releaseApproved);
   const showingFallback = catalogueState === "fallback";
   const catalogueIsEmpty = catalogueState === "empty";
   const shelves = [
     ["Live now", "Reader-ready editions to open today.", live],
     ["Coming soon", "Titles preparing for a future release.", comingSoon],
-    ["Audiobooks", "Only editions with approved listening access.", approvedAudio],
+    ["Audiobooks", "Audiobook-approved editions. Listening appears only where the Reader runtime can offer it.", approvedAudio],
   ];
   const update = (key, value) => onParam(key, value, key === "sort" ? "recently-approved" : "all");
   const closeFilters = () => {

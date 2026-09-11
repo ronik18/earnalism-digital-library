@@ -10,7 +10,7 @@ describe("Reference public page surfaces", () => {
   test("keeps listening controls behind release truth", () => {
     expect(source).toContain('import { audiobookReleaseState } from "../lib/audioReleaseSafety"');
     expect(source).toContain("audio.canShowControls");
-    expect(source).toContain("Only editions with approved listening access.");
+    expect(source).toContain("Audiobook-approved editions. Listening appears only where the Reader runtime can offer it.");
     expect(source).toContain("Titles without approval show no listening action.");
   });
 
