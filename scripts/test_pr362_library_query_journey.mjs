@@ -10,14 +10,17 @@ const books = [
   { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/pather-panchali", chapters: [{ id: "pather-page-1", is_preview: true }] },
   { slug: "frankenstein", title: "Batch-listed Bengali draft", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "DRAFT", reader_enabled: false, preview_enabled: false, chapters: [] },
   { slug: "reader-disabled-edition", title: "Reader-disabled Bengali edition", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: false, preview_enabled: false, chapters: [] },
+  { slug: "book-edfcf810c5", title: "ক্ষুধিত পাষাণ", author: "Rabindranath Tagore", short_description: "Canonical Bengali publication", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: false, preview_enabled: false, chapters: [{ id: "chapter-001", is_preview: false }] },
   { slug: "book-d19e96859f", title: "Live-labelled Bengali edition without a preview", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
   { slug: "book-f5d593e1f4", title: "Second live-labelled Bengali edition without a preview", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
 ];
 const expectedHeaderUrl = "?language=bn&availability=reader-ready";
 const apiEligibleSlugs = ["devdas", "pather-panchali"];
 const fallbackEligibleSlugs = ["devdas", "pather-panchali"];
-const ineligibleSlugs = ["frankenstein", "reader-disabled-edition", "book-d19e96859f", "book-f5d593e1f4"];
+const ineligibleSlugs = ["frankenstein", "reader-disabled-edition", "book-edfcf810c5", "book-d19e96859f", "book-f5d593e1f4"];
 const productionShapedPreparationSlugs = ["book-d19e96859f", "book-f5d593e1f4"];
+const canonicalBengaliKshudhitaSlug = "book-edfcf810c5";
+const pipelineBengaliKshudhitaSlug = "kshudhita-pashan";
 
 function query(page) {
   return new URL(page.url()).search;
@@ -94,7 +97,7 @@ async function assertEligibleReaderResults(page, expectedSlugs) {
       .map((node) => node.getAttribute("data-testid").replace("reference-book-", ""))
       .sort();
     return ids.join("\u0000") === expectedIds.join("\u0000");
-  }, expected);
+  }, expected, { timeout: Number(process.env.LIBRARY_JOURNEY_SETTLE_TIMEOUT_MS || 30000) });
   const displayedSlugs = await surface.locator('[data-testid^="reference-book-"]').evaluateAll((nodes) => (
     nodes.map((node) => node.getAttribute("data-testid").replace("reference-book-", "")).sort()
   ));
@@ -114,6 +117,50 @@ async function assertProductionShapedPreparationCards(page) {
     await cta.waitFor();
     assert.equal(await cta.getAttribute("href"), `/contact?interest=${slug}`, `${slug} must retain its notification destination`);
   }
+}
+
+async function assertNotifyDestination(page, slug, label) {
+  const card = referenceSurface(page).getByTestId(`reference-book-${slug}`);
+  await card.waitFor();
+  const cta = card.getByRole("link", { name: "Notify me", exact: true });
+  await cta.waitFor();
+  assert.equal(await cta.getAttribute("href"), `/contact?interest=${slug}`, `${label}: ${slug} notification destination changed`);
+}
+
+async function assertApiCanonicalKshudhita(page, name) {
+  const surface = referenceSurface(page);
+  await surface.getByTestId(`reference-book-${canonicalBengaliKshudhitaSlug}`).waitFor();
+  assert.equal(await surface.getByTestId(`reference-book-${pipelineBengaliKshudhitaSlug}`).count(), 0, `${name}: pipeline placeholder duplicated the canonical Bengali edition`);
+  await assertNotifyDestination(page, canonicalBengaliKshudhitaSlug, name);
+}
+
+async function assertFallbackKshudhita(page, mobile, expectedSlugs, name) {
+  await openFilters(page, mobile);
+  const allReleases = filterGroup(page, mobile, "listening").getByRole("button", { name: "All releases", exact: true });
+  await assertFilterTarget(allReleases, `${name}: All releases`);
+  await allReleases.click();
+  await closeFilters(page, mobile);
+
+  const surface = referenceSurface(page);
+  await surface.getByTestId(`reference-book-${pipelineBengaliKshudhitaSlug}`).waitFor();
+  assert.equal(await surface.getByTestId(`reference-book-${canonicalBengaliKshudhitaSlug}`).count(), 0, `${name}: fallback invented the absent canonical publication`);
+  await assertNotifyDestination(page, pipelineBengaliKshudhitaSlug, name);
+
+  await openFilters(page, mobile);
+  const english = filterGroup(page, mobile, "language").getByRole("button", { name: "English", exact: true });
+  await english.click();
+  await closeFilters(page, mobile);
+  await surface.getByTestId("reference-book-hungry-stones").waitFor();
+  assert.equal(await surface.getByTestId(`reference-book-${pipelineBengaliKshudhitaSlug}`).count(), 0, `${name}: Bengali pipeline edition leaked into English results`);
+
+  await openFilters(page, mobile);
+  const bengali = filterGroup(page, mobile, "language").getByRole("button", { name: "Bengali", exact: true });
+  await bengali.click();
+  await assertSelected(bengali, `${name}: Bengali`);
+  const readerOnly = filterGroup(page, mobile, "listening").getByRole("button", { name: "Reader only", exact: true });
+  await readerOnly.press("Enter");
+  await closeFilters(page, mobile);
+  await assertEligibleReaderResults(page, expectedSlugs);
 }
 
 async function expectText(locator, expected, message) {
@@ -157,6 +204,7 @@ async function assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name) {
   await sort.selectOption("title");
   await closeFilters(page, mobile);
   await assertProductionShapedPreparationCards(page);
+  await assertApiCanonicalKshudhita(page, name);
   await assertNoHorizontalOverflow(page, `${name}: All releases`);
   const search = page.getByTestId("library-reference-surface").getByTestId("library-search");
   await search.fill("edition");
@@ -245,7 +293,10 @@ async function run({ name, viewport, mobile, source }) {
   await assertEligibleReaderResults(page, expectedSlugs);
   if (mobile) await page.getByRole("button", { name: "Close filters", exact: true }).click();
   if (source === "api") await assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name);
-  else await assertNoHorizontalOverflow(page, name);
+  else {
+    await assertFallbackKshudhita(page, mobile, expectedSlugs, name);
+    await assertNoHorizontalOverflow(page, name);
+  }
   await assertAudiobooksRoundTrip(page, mobile, name);
   await context.close();
   await browser.close();
@@ -253,14 +304,23 @@ async function run({ name, viewport, mobile, source }) {
 }
 
 const results = [];
-for (const scenario of [
+const scenarios = [
   { name: "320-api", viewport: { width: 320, height: 568 }, mobile: true, source: "api" },
   { name: "390-api", viewport: { width: 390, height: 844 }, mobile: true, source: "api" },
   { name: "768-api", viewport: { width: 768, height: 1024 }, mobile: true, source: "api" },
   { name: "1440-api", viewport: { width: 1440, height: 900 }, mobile: false, source: "api" },
   { name: "320-fallback", viewport: { width: 320, height: 568 }, mobile: true, source: "fallback" },
   { name: "1440-fallback", viewport: { width: 1440, height: 900 }, mobile: false, source: "fallback" },
-]) {
+];
+const requestedScenarios = String(process.env.LIBRARY_JOURNEY_SCENARIOS || "")
+  .split(",")
+  .map((name) => name.trim())
+  .filter(Boolean);
+const selectedScenarios = requestedScenarios.length
+  ? scenarios.filter((scenario) => requestedScenarios.includes(scenario.name))
+  : scenarios;
+if (!selectedScenarios.length) throw new Error("No requested Library journey scenarios matched the supported fixture names.");
+for (const scenario of selectedScenarios) {
   results.push(await run(scenario));
   console.log(`PASS ${scenario.name} ${scenario.viewport.width}x${scenario.viewport.height}`);
 }

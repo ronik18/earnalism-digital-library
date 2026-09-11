@@ -1,5 +1,11 @@
 export const LIVE_APPROVED_SLUG = "dracula";
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
+// Pipeline candidates are never matched to publications by title, cover, or
+// transliteration. This explicit, reviewed identity map only suppresses the
+// pipeline shell when its canonical public edition is already present.
+export const PIPELINE_CANONICAL_PUBLICATION_SLUGS = Object.freeze({
+  [KSHUDHITA_PASHAN_SLUG]: "book-edfcf810c5",
+});
 export const BATCH_1_READER_ONLY_SLUGS = [
   "frankenstein",
   "jekyll-and-hyde",
