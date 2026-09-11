@@ -100,6 +100,7 @@ async function configureApi(page, { authenticated = false, denyLease = false, re
     protectedPageRequests: 0,
     manifestRequests: 0,
     positionWrites: [],
+    sessionEnds: [],
     persistedPosition: null,
   };
   let position = { content_type: "text", content_id: protectedChapterBook.slug, position: {}, version: 0 };
@@ -150,6 +151,12 @@ async function configureApi(page, { authenticated = false, denyLease = false, re
           ? { status: 403, body: { detail: { message: "A current Reading Pass is required to continue." } } }
           : { status: 200, body: { session_id: "fixture-lease", lease_token: "fixture-token", lease_version: 1 } };
       await route.fulfill({ status: response.status, contentType: "application/json", body: JSON.stringify(response.body) });
+      return;
+    }
+    if (pathname.endsWith("/reading-pass/sessions/end")) {
+      const payload = request.postDataJSON();
+      requests.sessionEnds.push(payload);
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ended: true, session_id: payload.session_id, balance_seconds: 299 }) });
       return;
     }
     if (pathname.endsWith(`/reading-pass/positions/text/${protectedChapterBook.slug}`) && request.method() === "GET") {
@@ -340,6 +347,11 @@ async function runProtectedChapterEntry({ id, viewport }) {
     version: 2,
   }, `${id}: normal Reader must persist the later canonical page instead of accepting a stale write`);
   await page.screenshot({ path: path.join(output, `${id}-protected-chapter-authorized.png`), fullPage: true });
+  await Promise.all([
+    page.waitForURL((url) => url.pathname === `/book/${protectedChapterBook.slug}`),
+    page.locator('button[aria-label="Back to book"]:visible').first().click(),
+  ]);
+  assert.deepEqual(requests.sessionEnds, [{ session_id: "fixture-lease", reason: "reader_v2_navigation" }], `${id}: normal Reader must settle its lease before leaving the protected route`);
   await context.close();
 
   const anonymousContext = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });

@@ -169,6 +169,27 @@ export default function ReaderExperienceV2Route() {
     }
   }, [changePage, navigate, setLeaseState, slug, user]);
 
+  const navigateAfterSettlement = useCallback(async (target) => {
+    const activeLease = leaseRef.current;
+    if (activeLease?.sessionId) {
+      try {
+        const ended = await endReadingPassSession(activeLease, "reader_v2_navigation");
+        if (!ended?.ended) {
+          setError("Reading Pass settlement could not be confirmed. Please try again before leaving this reader.");
+          return;
+        }
+        setLeaseState(null);
+      } catch {
+        setError("Reading Pass settlement could not be confirmed. Please try again before leaving this reader.");
+        return;
+      }
+    }
+    if (target === "back") navigate(`/book/${slug}`);
+    if (target === "library" || target === "search") navigate("/library");
+    if (target === "passes") navigate("/pricing");
+    if (target === "signin") navigate(`/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}`);
+  }, [canonicalPage, navigate, setLeaseState, slug]);
+
   const model = useMemo(() => {
     const book = manifest?.book || {};
     const access = manifest?.access?.reading_pass || {};
@@ -231,10 +252,10 @@ export default function ReaderExperienceV2Route() {
   if (renderState.state === "unavailable") return routeState("Reader unavailable", renderState.message, <ReaderRecoveryActions slug={slug} canonicalPage={canonicalPage} user={user} error={error} awaitingAuthorization={false} authorizing={false} onAuthorize={undefined} />);
 
   return <><ReaderExperienceV2 model={model} access={{ authorized: Boolean(lease) }} onRequestPage={authorizeAndContinue} onNavigate={(target) => {
-    if (target === "back") navigate(`/book/${slug}`);
-    if (target === "library" || target === "search") navigate("/library");
-    if (target === "passes") navigate("/pricing");
-    if (target === "signin") navigate(`/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}`);
+    if (target === "back" || target === "library" || target === "search" || target === "passes" || target === "signin") {
+      void navigateAfterSettlement(target);
+      return;
+    }
     if (target === "bookmark" && user && page?.chapter_id) void userApi.post("/bookmarks", { bookId: slug, chapterId: page.chapter_id });
   }} />{error ? <p className="sr-only" role="alert">{error}</p> : null}</>;
 }
