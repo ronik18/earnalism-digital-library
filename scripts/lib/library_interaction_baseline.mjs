@@ -13,7 +13,8 @@ export const PR362_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr362-libr
 export const PR364_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr364-library-interaction-baseline.json";
 export const PR371_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr371-library-interaction-baseline.json";
 export const PR372_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr372-library-interaction-baseline.json";
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR372_LIBRARY_INTERACTION_BASELINE;
+export const PR376_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr376-library-interaction-baseline.json";
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR376_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -60,6 +61,14 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/ReferencePublicPages.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/pages/Library.jsx"],
     authorization: "OWNER_AUTHORIZATION_PR372_VERSIONED_LIBRARY_INTERACTION_BASELINE",
+  },
+  [PR376_LIBRARY_INTERACTION_BASELINE]: {
+    reviewedSource: { commit: "f286262009a845c8aaf3da8ba8da349c6718b4de", tree: "eb68ff05ae5b89fa660549410eb6993daee82e0d", base: "bd1e37680b833599b36345a21e6842df4144d499" },
+    previous: { recordPath: PR372_LIBRARY_INTERACTION_BASELINE, commit: "66ecdf65215521c2148307616c2c36c393008277", hash: "750e6eb58ebc1e6c55df6f6ba305dae460a2f39bbb4dda5661c08f59a6fd2a34" },
+    authorizedHash: "4120516e672e41d0a873bcbdc38f08f218c2b1017c8bc5e030b9b0e727b1326f",
+    changedPaths: ["frontend/src/pages/Library.jsx"],
+    unchangedPaths: ["frontend/src/components/ReferencePublicPages.jsx", "frontend/src/components/ReferencePublicPages.css"],
+    authorization: "OWNER_AUTHORIZATION_PR376_VERSIONED_LIBRARY_INTERACTION_BASELINE",
   },
 };
 
@@ -108,7 +117,9 @@ export function loadLibraryInteractionBaseline(root = process.cwd(), recordPath 
     || previous?.record_path !== contract.previous.recordPath || previous?.reviewed_source_commit !== contract.previous.commit
     || !GIT_OBJECT_ID.test(previous?.reviewed_source_commit || "")
     || baseline.reviewed_source?.commit !== contract.reviewedSource.commit || baseline.reviewed_source?.tree !== contract.reviewedSource.tree
+    || (contract.reviewedSource.base && baseline.reviewed_source?.base !== contract.reviewedSource.base)
     || !GIT_OBJECT_ID.test(baseline.reviewed_source?.commit || "") || !GIT_OBJECT_ID.test(baseline.reviewed_source?.tree || "")
+    || (contract.reviewedSource.base && !GIT_OBJECT_ID.test(baseline.reviewed_source?.base || ""))
     || !Array.isArray(changedPaths) || changedPaths.length !== contract.changedPaths.length || changedPaths.some((value, index) => value !== contract.changedPaths[index])
     || !Array.isArray(unchangedPaths) || unchangedPaths.length !== contract.unchangedPaths.length || unchangedPaths.some((value, index) => value !== contract.unchangedPaths[index])
     || baseline.owner_authorization?.reference !== contract.authorization

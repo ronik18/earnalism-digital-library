@@ -61,8 +61,8 @@ def main():
     require(library.get("surface") == "library_interaction_surface", "Library baseline surface is invalid", failures)
     require(library.get("result") == "PASS" and library.get("changed_from_previous") is True and library.get("expected_change") is True, "Library baseline transition result fails", failures)
     require(library.get("expected_surface_sha256") == library.get("observed_surface_sha256"), "Library baseline expected and observed fingerprints differ", failures)
-    require(library_path == "docs/design-system/pr372-library-interaction-baseline.json" and Path(library_path).exists(), "Library baseline record is missing", failures)
-    require(library.get("expected_surface_sha256") == "750e6eb58ebc1e6c55df6f6ba305dae460a2f39bbb4dda5661c08f59a6fd2a34", "Library baseline expected fingerprint is not the authorized PR372 value", failures)
+    require(library_path == "docs/design-system/pr376-library-interaction-baseline.json" and Path(library_path).exists(), "Library baseline record is missing", failures)
+    require(library.get("expected_surface_sha256") == "4120516e672e41d0a873bcbdc38f08f218c2b1017c8bc5e030b9b0e727b1326f", "Library baseline expected fingerprint is not the authorized PR376 value", failures)
     if library_path and Path(library_path).exists() and library.get("approval_source_sha256"):
         require(sha(library_path) == library.get("approval_source_sha256"), "Library baseline record SHA mismatch", failures)
     route_hash_path = data.get("route_hashes", {}).get("path")
