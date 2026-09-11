@@ -1141,7 +1141,7 @@ describe("UX conversion static signals", () => {
     expect(controlledLaunch).toContain("isLiveApprovedBook");
     expect(controlledLaunch).toContain("isPipelineCandidate");
     expect(controlledLaunch).toContain("canShowAudioCTA");
-    expect(controlledLaunch).toContain("BATCH_1_READER_ONLY_SLUGS");
+    expect(controlledLaunch).toContain("PIPELINE_CANONICAL_PUBLICATION_SLUGS");
     expect(controlledLaunch).toContain("COMING_SOON_PIPELINE");
     for (const helper of [
       "isControlledLiveReadingBook",

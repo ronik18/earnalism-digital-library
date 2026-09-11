@@ -206,6 +206,14 @@ PUBLIC_AUDIO_RELEASE_APPROVED_STATUSES = {"APPROVED", "PUBLIC_AUDIO_RELEASE_APPR
 PUBLIC_AUDIO_QA_PASSED_STATUSES = {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
 AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA = "earnalism.audiobook_release_conveyor.v1"
 
+# This package's current approval evidence does not match the exact file named
+# by its retained checksum manifest in either publication root. The older
+# checksum-bound bytes are not available as a valid replacement authority, so
+# the only safe runtime decision is to quarantine the package until a fresh,
+# checksum-bound approval is supplied. Keep this deliberately narrow: other
+# historical checksum drift has not been reviewed in this change.
+INTEGRITY_QUARANTINED_ARTIFACT_SLUGS = frozenset({"book-d19e96859f"})
+
 SAFE_PUBLIC_BOOK_FIELDS = {
     "id",
     "slug",
@@ -313,6 +321,35 @@ def explicit_preview_chapter_ids(book: dict[str, Any]) -> tuple[str, ...]:
             seen.add(chapter_id)
             preview_ids.append(chapter_id)
     return tuple(preview_ids)
+
+
+def controlled_artifact_integrity_quarantined(slug: str, artifact_dir: str = "") -> bool:
+    """Return whether a known unresolved approval binding must fail closed.
+
+    This is intentionally narrower than a repository-wide checksum migration.
+    It protects the one package whose retained approval evidence is proven to
+    disagree with its own recorded checksum, without silently reclassifying
+    other historical packages that have not been reviewed for this release.
+    """
+
+    normalized = normalize_slug(slug)
+    if normalized not in INTEGRITY_QUARANTINED_ARTIFACT_SLUGS:
+        return False
+    base = Path(artifact_dir) if artifact_dir else controlled_artifact_dir(normalized)
+    manifest = read_json_file(base / "checksum_manifest.json")
+    entries = manifest.get("files") if isinstance(manifest, dict) else None
+    if not isinstance(entries, list):
+        return True
+    expected = next(
+        (
+            normalize_text(entry.get("sha256"))
+            for entry in entries
+            if isinstance(entry, dict) and normalize_text(entry.get("file")) == "approval_evidence.json"
+        ),
+        "",
+    )
+    approval_path = base / "approval_evidence.json"
+    return not bool(expected and approval_path.is_file() and file_sha256(approval_path) == expected)
 
 
 def nested_dict(book: dict[str, Any], key: str) -> dict[str, Any]:
@@ -647,6 +684,8 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
     reader_manifest = read_json_file(base / "reader_manifest.json")
     source_evidence = read_json_file(base / "source_evidence.json")
     approval_evidence = read_json_file(base / "approval_evidence.json")
+    if controlled_artifact_integrity_quarantined(normalized, str(base)):
+        issues.append("approval_evidence.json does not match its retained checksum-bound approval.")
     if publication_manifest:
         issues.extend(validate_manifest(publication_manifest))
         if normalize_slug(publication_manifest.get("slug")) != normalized:

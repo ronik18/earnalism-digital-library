@@ -57,6 +57,23 @@ describe("audiobook release safety", () => {
     })).toBe(true);
   });
 
+  test("keeps a public release decision separate from an unavailable listening runtime", () => {
+    const state = audiobookReleaseState({
+      slug: "approved-without-public-media",
+      audio_enabled: true,
+      audiobook_enabled: true,
+      audiobook_release_gate: "APPROVED",
+      audio_qa_status: "QA_PASSED",
+      audio_url: "",
+      audiobook_assets: {},
+    });
+
+    expect(state.releaseApproved).toBe(true);
+    expect(state.canShowControls).toBe(false);
+    expect(state.status).toBe("approved_runtime_unavailable");
+    expect(state.reason).toMatch(/current Reader runtime/i);
+  });
+
   test("blocks same-origin static audio paths even with approval-shaped metadata", () => {
     const state = audiobookReleaseState({
       audiobook_enabled: true,

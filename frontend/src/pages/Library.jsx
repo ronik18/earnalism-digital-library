@@ -48,7 +48,10 @@ function readingMatches(book, value) {
 
 function listeningMatches(book, value) {
   if (value === "all") return true;
-  const approved = audiobookReleaseState(book).canShowControls;
+  // The public catalogue receives a release decision, not a listening lease or
+  // media URL.  Keep the Audiobooks shelf aligned with that verified decision;
+  // runtime playback eligibility remains a separate, server-enforced concern.
+  const approved = audiobookReleaseState(book).releaseApproved;
   return value === "available" ? approved : !approved;
 }
 
@@ -135,12 +138,14 @@ export default function Library() {
   };
 
   const updateParam = (key, value, fallback = "all") => {
-    const next = new URLSearchParams(params);
-    if (!value || value === fallback) next.delete(key);
-    else next.set(key, value);
-    if (key === "reading") next.delete("category");
-    if (key === "listening") next.delete("availability");
-    setParams(next);
+    setParams((current) => {
+      const next = new URLSearchParams(current);
+      if (!value || value === fallback) next.delete(key);
+      else next.set(key, value);
+      if (key === "reading") next.delete("category");
+      if (key === "listening") next.delete("availability");
+      return next;
+    });
   };
 
   const resetReferenceFilters = () => {
@@ -167,10 +172,12 @@ export default function Library() {
 
   const handleSearch = (value) => {
     setQuery(value);
-    const next = new URLSearchParams(params);
-    if (value.trim()) next.set("q", value);
-    else next.delete("q");
-    setParams(next, { replace: true });
+    setParams((current) => {
+      const next = new URLSearchParams(current);
+      if (value.trim()) next.set("q", value);
+      else next.delete("q");
+      return next;
+    }, { replace: true });
   };
 
   return (

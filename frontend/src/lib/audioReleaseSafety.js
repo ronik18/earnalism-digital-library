@@ -97,11 +97,17 @@ export function audiobookReleaseState(book = {}) {
     || upper(book?.audiobook?.status) === "BLOCKED";
 
   const hasApprovedAudioAsset = hasAudioAsset || (hasPackageManifestAsset && hasReaderManifestApproval);
+  // The public catalogue is intentionally not a media manifest.  A verified
+  // release decision can therefore arrive without a playable URL, provider
+  // detail, or an authorized listening session.  Keep that release truth
+  // distinct from the narrower decision to offer a Listener control.
+  const releaseApproved = enabled && !blocked && !hasStaticAudioAsset && hasReleaseApproval && hasQaApproval;
 
-  if (enabled && hasApprovedAudioAsset && !blocked && hasReleaseApproval && hasQaApproval) {
+  if (releaseApproved && hasApprovedAudioAsset) {
     return {
       status: "approved",
       canShowControls: true,
+      releaseApproved: true,
       label: "Audiobook available",
       reason: hasReaderManifestApproval
         ? "Reader manifest exposes an approved provider-backed audiobook endpoint."
@@ -119,10 +125,29 @@ export function audiobookReleaseState(book = {}) {
     };
   }
 
+  if (releaseApproved) {
+    return {
+      status: "approved_runtime_unavailable",
+      canShowControls: false,
+      releaseApproved: true,
+      label: "Audiobook approved",
+      reason: "Audio release is approved, but listening is unavailable in the current Reader runtime.",
+      releaseGate,
+      qaStatus,
+      audioUrl: "",
+      hasAudioAsset: false,
+      packageManifestUrl: "",
+      packageVersion: "",
+      syncMode: "",
+      highlightSyncEnabled: false,
+    };
+  }
+
   if (enabled || audioUrl || releaseGate || qaStatus) {
     return {
       status: "private_review",
       canShowControls: false,
+      releaseApproved: false,
       label: "Reader edition available",
       reason: hasStaticAudioAsset
         ? "Same-origin static audiobook assets are not public release evidence."
@@ -141,6 +166,7 @@ export function audiobookReleaseState(book = {}) {
   return {
     status: "reader_only",
     canShowControls: false,
+    releaseApproved: false,
     label: "Reader-only edition",
     reason: "No approved public audiobook is attached to this title.",
     releaseGate,

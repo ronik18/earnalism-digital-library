@@ -6,33 +6,6 @@ export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 export const PIPELINE_CANONICAL_PUBLICATION_SLUGS = Object.freeze({
   [KSHUDHITA_PASHAN_SLUG]: "book-edfcf810c5",
 });
-export const BATCH_1_READER_ONLY_SLUGS = [
-  "frankenstein",
-  "jekyll-and-hyde",
-  "carmilla",
-  "hound-of-the-baskervilles",
-  "picture-of-dorian-gray",
-  "woman-in-white",
-  "hungry-stones",
-  "devdas",
-  "pather-panchali",
-  "eyesore-chokher-bali",
-];
-export const PAID_ONLY_READER_SLUGS = [
-  "book-d19e96859f",
-  "book-f5d593e1f4",
-];
-export const BATCH_2_AUDIOBOOK_SLUGS = [
-  "the-selfish-giant",
-  "a-white-heron",
-];
-export const LIVE_APPROVED_READER_SLUGS = [
-  LIVE_APPROVED_SLUG,
-  ...BATCH_1_READER_ONLY_SLUGS,
-  ...PAID_ONLY_READER_SLUGS,
-  ...BATCH_2_AUDIOBOOK_SLUGS,
-];
-
 export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
 export const DRACULA_RIGHTS_NOTE = "Approved classic reading release";
 export const DRACULA_CHAPTER_COUNT = 27;
@@ -45,6 +18,7 @@ export { normalizeChapterDisplayTitle } from './chapterIndex';
 
 export const DRACULA_FALLBACK_BOOK = {
   slug: LIVE_APPROVED_SLUG,
+  publication_status: "LIVE_APPROVED",
   title: "Dracula",
   subtitle: "A controlled Earnalism core reading release",
   author: "Bram Stoker",
@@ -67,6 +41,7 @@ export const DRACULA_FALLBACK_BOOK = {
     is_preview: index === 0,
   })),
   reader_enabled: true,
+  public_route: `/book/${LIVE_APPROVED_SLUG}`,
   preview_enabled: true,
   reader_url: `/reader/${LIVE_APPROVED_SLUG}`,
   preview_url: `/reader/${LIVE_APPROVED_SLUG}`,
@@ -186,23 +161,32 @@ function normalizedVerificationStatus(book = {}) {
   return String(book?.publication_workflow?.rights?.verification_status || "").trim().toLowerCase();
 }
 
+function publicationStatus(book = {}) {
+  return String(book?.publication_status || book?.launch_status || book?.publicationStatus || "").trim().toUpperCase();
+}
+
+function canonicalReaderRoute(slug) {
+  return `/reader/${encodeURIComponent(slug)}`;
+}
+
+function canonicalBookRoute(slug) {
+  return `/book/${encodeURIComponent(slug)}`;
+}
+
 export function isLiveApprovedBook(book = {}) {
   const slug = normalizedSlug(book);
-  if (!LIVE_APPROVED_READER_SLUGS.includes(slug)) return false;
+  if (!slug) return false;
   const tier = normalizedRightsTier(book);
   const status = normalizedVerificationStatus(book);
   if (tier && tier !== "A") return false;
   if (status && !["approved", "published_core_reading_only"].includes(status)) return false;
-  if (slug !== LIVE_APPROVED_SLUG) {
-    const publicationStatus = String(book?.publication_status || book?.launch_status || book?.publicationStatus || "").trim().toUpperCase();
-    const readerEnabled = book?.reader_enabled === true || book?.allowPublicReading === true;
-    const published = book?.publication_status === "LIVE_APPROVED";
-    const noCommerce = book?.allowCheckout !== true && book?.allowPayment !== true;
-    const noAudio = book?.audio_enabled !== true && book?.audiobook_enabled !== true && book?.generate_audiobook !== true;
-    const approvedAudiobookLane = BATCH_2_AUDIOBOOK_SLUGS.includes(slug);
-    return publicationStatus === "LIVE_APPROVED" && readerEnabled && published && noCommerce && (approvedAudiobookLane || noAudio);
-  }
-  return true;
+  // The backend public projection has already applied the controlled
+  // publication manifest, rights, QA, and approval checks.  The client must
+  // consume that projection rather than keep a second title allowlist.
+  return publicationStatus(book) === "LIVE_APPROVED"
+    && book?.reader_enabled === true
+    && String(book?.public_route || "").trim() === canonicalBookRoute(slug)
+    && String(book?.reader_url || "").trim() === canonicalReaderRoute(slug);
 }
 
 export function isPipelineCandidate(book = {}) {
@@ -212,7 +196,7 @@ export function isPipelineCandidate(book = {}) {
   if (normalizedRightsTier(book) === "C") return false;
   return PIPELINE_BOOKS.some((candidate) => candidate.slug === slug)
     || String(book?.pipeline_stage || "").toUpperCase().includes("PIPELINE")
-    || !isLiveApprovedBook(book);
+    || ["PIPELINE_CANDIDATE", "COMING_SOON_PIPELINE"].includes(publicationStatus(book));
 }
 
 export function canShowStartReading(book = {}) {
@@ -224,7 +208,9 @@ export function canShowPreview(book = {}) {
   const hasExplicitPreview = Array.isArray(book?.chapters)
     && book.chapters.some((chapter) => chapter?.id && chapter?.is_preview === true);
   const previewUrl = String(book?.preview_url || "").trim();
-  return hasExplicitPreview && book?.preview_enabled === true && Boolean(previewUrl);
+  return hasExplicitPreview
+    && book?.preview_enabled === true
+    && previewUrl === canonicalReaderRoute(normalizedSlug(book));
 }
 
 export function canShowReadingPass(book = {}) {
@@ -234,8 +220,9 @@ export function canShowReadingPass(book = {}) {
 export function canShowAudioCTA(book = {}) {
   if (!isLiveApprovedBook(book)) return false;
   if (!book?.audiobook_enabled || book?.generate_audiobook) return false;
+  const releaseGate = String(book?.audiobook_release_gate || book?.audiobook?.release_gate || "").trim().toUpperCase();
   const qaStatus = String(book?.audio_qa_status || book?.audiobook?.qa_status || "").trim().toUpperCase();
-  return qaStatus === "QA_PASSED";
+  return releaseGate === "APPROVED" && qaStatus === "QA_PASSED";
 }
 
 export function bookLaunchStatus(book = {}) {
