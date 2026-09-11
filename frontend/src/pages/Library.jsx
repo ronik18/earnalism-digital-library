@@ -3,14 +3,9 @@ import { Link, useSearchParams } from "react-router-dom";
 import { ArrowRight, Check, Headphones, Search, SlidersHorizontal, X } from "lucide-react";
 import { api } from "../lib/api";
 import BookCard from "../components/BookCard";
-import {
-  BATCH_1_READER_ONLY_SLUGS,
-  LIVE_APPROVED_SLUG,
-  PIPELINE_BOOKS,
-  mergeDraculaBook,
-  notifyUrl,
-} from "../lib/controlledLaunch";
+import { notifyUrl } from "../lib/controlledLaunch";
 import { languageOfBook, listeningFilterFromSearch, matchesLibraryFacets, sortLibraryBooks } from "../lib/libraryCatalog";
+import { composeLibraryCatalog } from "../lib/libraryCatalogueComposition";
 import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
 import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
@@ -153,15 +148,7 @@ export default function Library() {
     setParams(new URLSearchParams());
   };
 
-  const allBooks = useMemo(() => {
-    const bySlug = new Map();
-    liveBooks.forEach((book) => book?.slug && bySlug.set(book.slug, book.slug === LIVE_APPROVED_SLUG ? mergeDraculaBook(book) : book));
-    if (bySlug.has(LIVE_APPROVED_SLUG)) bySlug.set(LIVE_APPROVED_SLUG, mergeDraculaBook(bySlug.get(LIVE_APPROVED_SLUG)));
-    PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug)).forEach((book) => {
-      if (!bySlug.has(book.slug)) bySlug.set(book.slug, book);
-    });
-    return Array.from(bySlug.values());
-  }, [liveBooks]);
+  const allBooks = useMemo(() => composeLibraryCatalog(liveBooks), [liveBooks]);
 
   const filteredBooks = useMemo(() => {
     const normalized = query.trim().toLowerCase();

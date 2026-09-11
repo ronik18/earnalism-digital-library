@@ -1,5 +1,7 @@
 import fs from "fs";
 import path from "path";
+import { composeLibraryCatalog } from "../lib/libraryCatalogueComposition";
+import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Library.jsx"), "utf8");
 const referenceSource = fs.readFileSync(path.join(process.cwd(), "src/components/ReferencePublicPages.jsx"), "utf8");
@@ -38,5 +40,26 @@ describe("Library experience", () => {
     expect(referenceSource).toContain("We couldn’t load the full collection. You’re viewing a limited selection.");
     expect(referenceSource).toContain('data-testid="library-catalogue-retry"');
     expect(referenceSource).toContain('data-testid="library-catalogue-empty"');
+  });
+
+  test("suppresses the reviewed Bengali pipeline shell only while its canonical publication is present", () => {
+    const canonicalKshudhita = {
+      slug: "book-edfcf810c5",
+      title: "ক্ষুধিত পাষাণ",
+      author: "Rabindranath Tagore",
+      language: "bn",
+      publication_status: "LIVE_APPROVED",
+      reader_enabled: false,
+      preview_enabled: false,
+    };
+
+    const apiSlugs = composeLibraryCatalog([canonicalKshudhita]).map((book) => book.slug);
+    expect(apiSlugs).toContain("book-edfcf810c5");
+    expect(apiSlugs).not.toContain("kshudhita-pashan");
+
+    const fallbackSlugs = composeLibraryCatalog(LOCAL_LIBRARY_FALLBACK_BOOKS).map((book) => book.slug);
+    expect(fallbackSlugs).toContain("kshudhita-pashan");
+    expect(fallbackSlugs).not.toContain("book-edfcf810c5");
+    expect(fallbackSlugs).toContain("hungry-stones");
   });
 });
