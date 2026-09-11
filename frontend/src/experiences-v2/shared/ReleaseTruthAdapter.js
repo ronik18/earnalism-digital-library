@@ -44,9 +44,11 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     canRender: true,
     fixture: false,
     release: canonicalApproval ? { ...release, status: "approved", canShowControls: true } : release,
-    // The server proxies protected media after it authorizes a Reading Pass
-    // lease. Never surface a provider URL from release metadata.
-    mediaUrl: `/api/reader/book/${encodeURIComponent(slug)}/audiobook`,
+    // The public Reader manifest may identify an immutable package, but it
+    // never contains a playable provider URL.  The Listener fetches this
+    // protected manifest only after the Reading Pass audio lease succeeds.
+    packageManifestUrl: release.packageManifestUrl || "",
+    packageVersion: release.packageVersion || "",
     title: book.public_title || book.display_title || book.title || "Approved audiobook",
     author: book.author || book.author_name || "",
     chapterLabel: book.chapter_label || "Approved narration",

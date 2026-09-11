@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { userApi } from "../../lib/api";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
+import { normalizeAudioManifest } from "../../lib/audioPackageManifest";
 import { endReadingPassSession, renewReadingPassLease, startReadingPassAudioSession } from "../../lib/readingPassApi";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
 import ExperienceHeader from "../shared/ExperienceHeader";
@@ -40,13 +41,32 @@ export default function ListenerExperienceV2Route() {
   const [loadError, setLoadError] = useState("");
   const [reloadAttempt, setReloadAttempt] = useState(0);
   const [lease, setLease] = useState(null);
+  const [audioManifest, setAudioManifest] = useState(null);
   const [playbackState, setPlaybackState] = useState("paused");
   const [error, setError] = useState("");
   const [authorizing, setAuthorizing] = useState(false);
   const leaseRef = useRef(null);
   const authorizingRef = useRef(false);
+  const endingRef = useRef(false);
 
   const setLeaseState = useCallback((value) => { leaseRef.current = value; setLease(value); }, []);
+
+  const settleLease = useCallback(async (reason) => {
+    const current = leaseRef.current;
+    if (!current?.sessionId || endingRef.current) return;
+    endingRef.current = true;
+    // Stop renewal before sending the settlement request so a completed or
+    // navigated Listener cannot revive its lease while the request is in flight.
+    setLeaseState(null);
+    setAudioManifest(null);
+    try {
+      await endReadingPassSession(current, reason);
+    } catch {
+      setError("Listening ended locally, but session settlement could not be confirmed.");
+    } finally {
+      endingRef.current = false;
+    }
+  }, [setLeaseState]);
 
   useEffect(() => {
     if (visualFixture) return undefined;
@@ -62,6 +82,39 @@ export default function ListenerExperienceV2Route() {
   }, [reloadAttempt, slug, visualFixture]);
 
   useEffect(() => {
+    if (!lease || !book || visualFixture) return undefined;
+    const presentation = listenerReleasePresentation(book);
+    if (!presentation.packageManifestUrl || !presentation.packageVersion) {
+      setError("This approved audiobook package is unavailable in the current Listener.");
+      void settleLease("listener_v2_package_unavailable");
+      return undefined;
+    }
+    if (audioManifest?.packageVersion === presentation.packageVersion) return undefined;
+    let cancelled = false;
+    setAudioManifest(null);
+    userApi.get(presentation.packageManifestUrl, {
+      headers: {
+        "X-Reading-Pass-Session": lease.sessionId,
+        "X-Reading-Pass-Lease": lease.token,
+      },
+      withCredentials: true,
+    }).then((response) => {
+      if (cancelled) return;
+      const normalized = normalizeAudioManifest(response.data || {}, (value) => value, {
+        expectedSlug: slug,
+        expectedPackageVersion: presentation.packageVersion,
+      });
+      if (!normalized.valid) throw new Error("Approved listening package did not match release truth.");
+      setAudioManifest(normalized);
+    }).catch(() => {
+      if (cancelled) return;
+      setError("Approved listening package could not be verified. No audio was opened.");
+      void settleLease("listener_v2_package_rejected");
+    });
+    return () => { cancelled = true; };
+  }, [audioManifest?.packageVersion, book, lease, settleLease, slug, visualFixture]);
+
+  useEffect(() => {
     if (!lease) return undefined;
     const interval = window.setInterval(() => {
       renewReadingPassLease({ lease, sequence: Number(lease.sequence || 0) + 1, active: playbackState === "playing", playbackState })
@@ -71,7 +124,7 @@ export default function ListenerExperienceV2Route() {
     return () => window.clearInterval(interval);
   }, [lease, playbackState, setLeaseState]);
 
-  useEffect(() => () => { if (leaseRef.current?.sessionId) void endReadingPassSession(leaseRef.current, "listener_v2_unmount"); }, []);
+  useEffect(() => () => { void settleLease("listener_v2_unmount"); }, [settleLease]);
 
   const authorize = useCallback(async () => {
     if (!user || typeof user !== "object") {
@@ -85,6 +138,7 @@ export default function ListenerExperienceV2Route() {
       // Audio has no public preview. A paid Reading Pass authorizes playback
       // from its first byte, including every Range request.
       const started = await startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 0 });
+      setAudioManifest(null);
       setLeaseState({ sessionId: started.session_id, token: started.lease_token, version: Number(started.lease_version || 1), sequence: 0 });
       setError("");
     } catch (requestError) {
@@ -105,9 +159,12 @@ export default function ListenerExperienceV2Route() {
   if (book === null) return routeState("Opening listener", "Checking approved listening access.", null, searchLibrary);
   if (!listenerReleasePresentation(book).canRender) return routeState("Listening unavailable", "This edition is not approved for listening. Its book details show the available formats.", <ListenerRecoveryActions slug={slug} error="This edition is not approved for listening." />, searchLibrary);
   if (error) return routeState("Listening access needs attention", error, <ListenerRecoveryActions slug={slug} error={error} />, searchLibrary);
-  return <><ListenerExperienceV2 book={book} access={{ authorized: Boolean(lease) }} authorizing={authorizing} onAuthorize={authorize} onPlaybackStateChange={setPlaybackState} onNavigate={(target) => {
+  if (lease && !audioManifest) return routeState("Preparing listening package", "Verifying the approved narration package before audio opens.", null, searchLibrary);
+  const leaveListener = async (target) => {
+    await settleLease("listener_v2_navigation");
     if (target === "back") navigate(`/book/${slug}`);
     if (target === "library" || target === "search") navigate("/library");
     if (target === "passes") navigate("/pricing");
-  }} />{error ? <p className="sr-only" role="alert">{error}</p> : null}</>;
+  };
+  return <><ListenerExperienceV2 book={book} audioManifest={audioManifest} access={{ authorized: Boolean(lease && audioManifest) }} authorizing={authorizing} onAuthorize={authorize} onPlaybackStateChange={setPlaybackState} onStop={() => settleLease("listener_v2_stop")} onPlaybackComplete={() => settleLease("listener_v2_complete")} onMediaError={() => { setError("Approved listening audio could not continue. No further audio was requested."); void settleLease("listener_v2_media_error"); }} onNavigate={leaveListener} />{error ? <p className="sr-only" role="alert">{error}</p> : null}</>;
 }
