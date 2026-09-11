@@ -48,7 +48,10 @@ function readingMatches(book, value) {
 
 function listeningMatches(book, value) {
   if (value === "all") return true;
-  const approved = audiobookReleaseState(book).canShowControls;
+  // The public catalogue receives a release decision, not a listening lease or
+  // media URL.  Keep the Audiobooks shelf aligned with that verified decision;
+  // runtime playback eligibility remains a separate, server-enforced concern.
+  const approved = audiobookReleaseState(book).releaseApproved;
   return value === "available" ? approved : !approved;
 }
 
