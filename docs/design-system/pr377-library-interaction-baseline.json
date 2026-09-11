@@ -8,8 +8,8 @@
     "frontend/src/pages/Library.jsx"
   ],
   "reviewed_source": {
-    "commit": "09b2c23b3400200f37899151c6c1a3bf9a404899",
-    "tree": "338237894648f3a105a093bdce22c23fff258e9b",
+    "commit": "f3e18e0a40bd025ef874220b873168dc793b87ee",
+    "tree": "767e5eb9af03238fd494119d370cbfad5c38ff0a",
     "base": "babc3d320f5ed6c00b73c90ade2bc4a98f166f08"
   },
   "previous_baseline": {
@@ -17,7 +17,7 @@
     "reviewed_source_commit": "f286262009a845c8aaf3da8ba8da349c6718b4de",
     "surface_sha256": "4120516e672e41d0a873bcbdc38f08f218c2b1017c8bc5e030b9b0e727b1326f"
   },
-  "authorized_surface_sha256": "951c58fb49647147585d6d23caeed9699c98be69be79c48732da637862d9f705",
+  "authorized_surface_sha256": "0499acf4a59729151980cb220e0d7d22292d5add88e53abc6805d3aacb84c95b",
   "reviewed_source_comparison": {
     "changed_paths_within_input_set": [
       "frontend/src/components/ReferencePublicPages.jsx",

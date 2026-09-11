@@ -7,6 +7,7 @@ import path from "node:path";
 import {
   PR377_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
+  libraryInteractionSurfaceHash,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
 
@@ -34,26 +35,26 @@ const test = (name, fn) => { fn(); cases += 1; console.log(`PASS ${cases}: ${nam
 test("the exact PR377 baseline matches the reviewed Library surface", () => {
   const baseline = loadLibraryInteractionBaseline(root, PR377_LIBRARY_INTERACTION_BASELINE);
   const comparison = compareLibraryInteractionBaseline(materializeSource(baseline.reviewed_source.commit), PR377_LIBRARY_INTERACTION_BASELINE);
-  assert.equal(comparison.expected_surface_sha256, "951c58fb49647147585d6d23caeed9699c98be69be79c48732da637862d9f705");
+  assert.equal(comparison.expected_surface_sha256, "0499acf4a59729151980cb220e0d7d22292d5add88e53abc6805d3aacb84c95b");
   assert.equal(comparison.observed_surface_sha256, comparison.expected_surface_sha256);
   assert.equal(comparison.previous_surface_sha256, "4120516e672e41d0a873bcbdc38f08f218c2b1017c8bc5e030b9b0e727b1326f");
   assert.equal(comparison.authorization_scope, "Explicit PR #376 to PR #377 Library-interaction baseline transition");
   assert.deepEqual(baseline.reviewed_source, {
-    commit: "09b2c23b3400200f37899151c6c1a3bf9a404899",
-    tree: "338237894648f3a105a093bdce22c23fff258e9b",
+    commit: "f3e18e0a40bd025ef874220b873168dc793b87ee",
+    tree: "767e5eb9af03238fd494119d370cbfad5c38ff0a",
     base: "babc3d320f5ed6c00b73c90ade2bc4a98f166f08",
   });
   assert.equal(comparison.result, "PASS");
 });
 
 test("a changed protected source fingerprint fails", () => {
-  const temporary = materializeSource("09b2c23b3400200f37899151c6c1a3bf9a404899");
+  const temporary = materializeSource("f3e18e0a40bd025ef874220b873168dc793b87ee");
   fs.appendFileSync(path.join(temporary, "frontend/src/pages/Library.jsx"), "\n// fixture-only source change\n");
   assert.equal(compareLibraryInteractionBaseline(temporary, PR377_LIBRARY_INTERACTION_BASELINE).result, "FAIL");
 });
 
 test("malformed provenance and unauthorized records fail", () => {
-  const temporary = materializeSource("09b2c23b3400200f37899151c6c1a3bf9a404899");
+  const temporary = materializeSource("f3e18e0a40bd025ef874220b873168dc793b87ee");
   const record = path.join(temporary, PR377_LIBRARY_INTERACTION_BASELINE);
   const malformed = JSON.parse(read(record));
   malformed.reviewed_source.base = "0".repeat(40);
@@ -63,7 +64,14 @@ test("malformed provenance and unauthorized records fail", () => {
 
 test("the PR376 baseline record remains unchanged", () => {
   const previousPath = "docs/design-system/pr376-library-interaction-baseline.json";
-  assert.equal(read(path.join(root, previousPath)), historicalSource("09b2c23b3400200f37899151c6c1a3bf9a404899", previousPath));
+  assert.equal(read(path.join(root, previousPath)), historicalSource("f3e18e0a40bd025ef874220b873168dc793b87ee", previousPath));
+});
+
+test("the superseded PR377 source retains its historical surface in Git history", () => {
+  assert.equal(
+    libraryInteractionSurfaceHash(materializeSource("09b2c23b3400200f37899151c6c1a3bf9a404899")),
+    "951c58fb49647147585d6d23caeed9699c98be69be79c48732da637862d9f705",
+  );
 });
 
 test("capture output cannot become expected-value authority", () => {
