@@ -135,12 +135,14 @@ export default function Library() {
   };
 
   const updateParam = (key, value, fallback = "all") => {
-    const next = new URLSearchParams(params);
-    if (!value || value === fallback) next.delete(key);
-    else next.set(key, value);
-    if (key === "reading") next.delete("category");
-    if (key === "listening") next.delete("availability");
-    setParams(next);
+    setParams((current) => {
+      const next = new URLSearchParams(current);
+      if (!value || value === fallback) next.delete(key);
+      else next.set(key, value);
+      if (key === "reading") next.delete("category");
+      if (key === "listening") next.delete("availability");
+      return next;
+    });
   };
 
   const resetReferenceFilters = () => {
@@ -167,10 +169,12 @@ export default function Library() {
 
   const handleSearch = (value) => {
     setQuery(value);
-    const next = new URLSearchParams(params);
-    if (value.trim()) next.set("q", value);
-    else next.delete("q");
-    setParams(next, { replace: true });
+    setParams((current) => {
+      const next = new URLSearchParams(current);
+      if (value.trim()) next.set("q", value);
+      else next.delete("q");
+      return next;
+    }, { replace: true });
   };
 
   return (

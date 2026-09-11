@@ -64,10 +64,14 @@ describe("Reference public page surfaces", () => {
     expect(source).toContain("curation?.hero?.featured_books");
     expect(source).toContain("books.length ? books : curatedBooks");
     expect(source).toContain("canShowPreview(book)");
+    expect(source).toContain("canShowStartReading(book)");
+    expect(source).toContain(">Details</Link>");
   });
 
   test("keeps the controlled Library fallback reader-ready and audio-hidden", () => {
     expect(libraryFallback).toContain('reader_enabled: true');
+    expect(libraryFallback).toContain('public_route: "/book/devdas"');
+    expect(libraryFallback).toContain('reader_url: "/reader/devdas"');
     expect(libraryFallback).toContain('preview_enabled: true');
     expect(libraryFallback).toContain('audiobook_enabled: false');
     expect(libraryFallback).not.toContain('audio_url');

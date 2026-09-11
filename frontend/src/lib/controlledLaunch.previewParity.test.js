@@ -1,17 +1,17 @@
 import {
-  BATCH_2_AUDIOBOOK_SLUGS,
   DRACULA_FALLBACK_BOOK,
-  PAID_ONLY_READER_SLUGS,
   canShowAudioCTA,
   canShowPreview,
   canShowStartReading,
+  isLiveApprovedBook,
 } from "./controlledLaunch";
 
-function paidOnlyBook(slug) {
+function readerApprovedBook(slug = "reader-approved-edition") {
   return {
     slug,
     publication_status: "LIVE_APPROVED",
     reader_enabled: true,
+    public_route: `/book/${slug}`,
     reader_url: `/reader/${slug}`,
     preview_enabled: false,
     preview_url: "",
@@ -28,18 +28,26 @@ function paidOnlyBook(slug) {
 }
 
 describe("controlled launch preview parity", () => {
-  test.each(PAID_ONLY_READER_SLUGS)("keeps %s readable without a preview CTA", (slug) => {
-    const book = paidOnlyBook(slug);
+  test("keeps a reader-approved edition readable without a preview CTA", () => {
+    const book = readerApprovedBook("reader-approved-without-preview");
 
     expect(canShowStartReading(book)).toBe(true);
     expect(canShowPreview(book)).toBe(false);
   });
 
+  test("accepts only the backend public reader projection, not a raw live label", () => {
+    const approved = readerApprovedBook("manifest-approved-edition");
+    expect(isLiveApprovedBook(approved)).toBe(true);
+    expect(isLiveApprovedBook({ ...approved, reader_url: "" })).toBe(false);
+    expect(isLiveApprovedBook({ ...approved, public_route: "/book/another-edition" })).toBe(false);
+    expect(isLiveApprovedBook({ ...approved, publication_status: "DRAFT" })).toBe(false);
+  });
+
   test("rejects stale preview flags when no chapter is explicitly previewable", () => {
     const book = {
-      ...paidOnlyBook(PAID_ONLY_READER_SLUGS[0]),
+      ...readerApprovedBook(),
       preview_enabled: true,
-      preview_url: `/reader/${PAID_ONLY_READER_SLUGS[0]}`,
+      preview_url: "/reader/reader-approved-edition",
     };
 
     expect(canShowPreview(book)).toBe(false);
@@ -47,7 +55,7 @@ describe("controlled launch preview parity", () => {
 
   test("requires matching preview flag, URL, and explicit chapter evidence", () => {
     const markedBook = {
-      ...paidOnlyBook(PAID_ONLY_READER_SLUGS[0]),
+      ...readerApprovedBook(),
       chapters: [{ id: "chapter-001", title: "Opening", is_preview: true }],
     };
 
@@ -64,11 +72,12 @@ describe("controlled launch preview parity", () => {
     expect(canShowPreview(DRACULA_FALLBACK_BOOK)).toBe(true);
   });
 
-  test.each(BATCH_2_AUDIOBOOK_SLUGS)("allows checksum-gated audio for %s", (slug) => {
+  test("allows an explicitly approved audiobook projection", () => {
     const book = {
-      ...paidOnlyBook(slug),
+      ...readerApprovedBook("approved-audio-edition"),
       audio_enabled: true,
       audiobook_enabled: true,
+      audiobook_release_gate: "APPROVED",
       audio_qa_status: "QA_PASSED",
     };
 
@@ -76,11 +85,12 @@ describe("controlled launch preview parity", () => {
     expect(canShowAudioCTA(book)).toBe(true);
   });
 
-  test.each(BATCH_2_AUDIOBOOK_SLUGS)("keeps %s audio hidden until QA passes", (slug) => {
+  test("keeps audio hidden until its independent release evidence passes", () => {
     const book = {
-      ...paidOnlyBook(slug),
+      ...readerApprovedBook("pending-audio-edition"),
       audio_enabled: true,
       audiobook_enabled: true,
+      audiobook_release_gate: "APPROVED",
       audio_qa_status: "PENDING",
     };
 

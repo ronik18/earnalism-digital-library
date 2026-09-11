@@ -24,6 +24,8 @@ describe("libraryCatalog", () => {
       author: "Sarat Chandra Chattopadhyay",
       publication_status: "LIVE_APPROVED",
       reader_enabled: true,
+      public_route: "/book/devdas",
+      reader_url: "/reader/devdas",
       preview_enabled: true,
       preview_url: "/reader/devdas",
       chapters: [{ id: "devdas-page-1", is_preview: true }],
@@ -86,13 +88,15 @@ describe("libraryCatalog", () => {
     });
   });
 
-  it("excludes a live-labelled edition that cannot offer its required preview", () => {
+  it("keeps a reader-approved edition visible while its preview remains unavailable", () => {
     const previewDisabledEdition = {
       slug: "book-d19e96859f",
       title: "গিন্নি",
       language: "bn",
       publication_status: "LIVE_APPROVED",
       reader_enabled: true,
+      public_route: "/book/book-d19e96859f",
+      reader_url: "/reader/book-d19e96859f",
       preview_enabled: false,
       preview_url: "",
       chapters: [{ id: "chapter-001", is_preview: false }],
@@ -100,7 +104,7 @@ describe("libraryCatalog", () => {
       audio_enabled: false,
     };
 
-    expect(availabilityOfBook(previewDisabledEdition)).toBe("in-preparation");
-    expect(matchesLibraryFacets(previewDisabledEdition, "bn", "audio-hidden")).toBe(false);
+    expect(availabilityOfBook(previewDisabledEdition)).toBe("reader-ready");
+    expect(matchesLibraryFacets(previewDisabledEdition, "bn", "audio-hidden")).toBe(true);
   });
 });

@@ -1,15 +1,8 @@
 import {
   KSHUDHITA_PASHAN_SLUG,
-  LIVE_APPROVED_SLUG,
   isLiveApprovedBook,
   isPipelineCandidate,
 } from "./controlledLaunch";
-
-export const CONTROLLED_LIVE_READING_SLUGS = new Set([LIVE_APPROVED_SLUG]);
-
-function normalizedSlug(book = {}) {
-  return String(book?.slug || book?.id || "").trim().toLowerCase();
-}
 
 function audioQaPassed(book = {}) {
   const qaStatus = String(book?.audio_qa_status || book?.audiobook?.qa_status || "").trim().toUpperCase();
@@ -17,13 +10,11 @@ function audioQaPassed(book = {}) {
 }
 
 export function isControlledLiveReadingBook(book = {}) {
-  const slug = normalizedSlug(book);
-  if (!CONTROLLED_LIVE_READING_SLUGS.has(slug)) return false;
   return isLiveApprovedBook(book);
 }
 
 export function isPipelineOnlyBook(book = {}) {
-  const slug = normalizedSlug(book);
+  const slug = String(book?.slug || book?.id || "").trim().toLowerCase();
   if (!slug || isControlledLiveReadingBook(book)) return false;
   if (slug === KSHUDHITA_PASHAN_SLUG) return true;
   return isPipelineCandidate(book);
@@ -44,5 +35,5 @@ export function canShowAudioCTA(book = {}) {
 }
 
 export function controlledReadingLabel(book = {}) {
-  return isControlledLiveReadingBook(book) ? "Start Dracula" : "Coming Soon";
+  return isControlledLiveReadingBook(book) ? "Start Reading" : "Coming Soon";
 }
