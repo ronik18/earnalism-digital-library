@@ -9431,6 +9431,13 @@ async def reading_pass_book_page(
     _reading_pass_enabled_or_404()
     if page_index < 1:
         raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Page not found."})
+    # Resolve the controlled publication truth before consulting a retained
+    # segment manifest.  Segment records can outlive a publication decision;
+    # they must never restore page delivery for a quarantined or unavailable
+    # edition.
+    book = await _reader_book_access_doc(slug)
+    if not book:
+        raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Book not found."})
     manifest = await _active_reader_segment_manifest(slug)
     if not manifest:
         raise HTTPException(status_code=503, detail={"code": "SEGMENTS_NOT_READY", "message": "Canonical reading pages are not ready."})
@@ -9479,7 +9486,7 @@ async def reading_pass_book_page(
         "is_preview": preview,
         "chapter_id": segment.get("chapter_id", ""),
         "chapter_title": canonical_segment_chapter_title(
-            (await _reader_book_access_doc(slug) or {}).get("chapters", []),
+            book.get("chapters", []),
             segment.get("chapter_id"),
             segment.get("chapter_title", ""),
         ),

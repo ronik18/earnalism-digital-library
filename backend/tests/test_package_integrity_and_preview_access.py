@@ -8,6 +8,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
+from fastapi.testclient import TestClient
 
 os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
 os.environ.setdefault("JWT_SECRET", "package-integrity-preview-test-secret")
@@ -20,6 +21,10 @@ ROOT = Path(__file__).resolve().parents[2]
 GINNI = "book-d19e96859f"
 DRACULA = "dracula"
 OMITTED_FROM_LEGACY_CONFIG = ("a-white-heron", "the-selfish-giant")
+CANONICAL_PAGE_ALIASES = (
+    "/api/reading-pass/books/{slug}/pages/{page_index}",
+    "/api/reader/book/{slug}/pages/{page_index}",
+)
 
 
 def request(headers: list[tuple[bytes, bytes]] | None = None) -> server.Request:
@@ -190,6 +195,122 @@ def test_ginni_checksum_conflict_quarantines_artifact_and_blocks_database_fallba
     monkeypatch.setattr(server, "db", SimpleNamespace(books=Database()))
     result = asyncio.run(server._find_public_book_candidate(GINNI, {}, include_artifact_content=False))
     assert result == (None, "integrity_quarantined")
+
+
+def test_quarantined_ginni_cannot_use_stale_canonical_segments_through_either_page_alias(monkeypatch):
+    class StaleManifests:
+        def __init__(self):
+            self.calls = []
+
+        async def find_one(self, query, _projection):
+            self.calls.append(query)
+            return {
+                "book_slug": GINNI,
+                "status": "active",
+                "segmentation_version": "stale-ginni-segments",
+                "total_pages": 4,
+            }
+
+    class StaleSegments:
+        def __init__(self):
+            self.calls = []
+
+        async def find_one(self, query, _projection):
+            self.calls.append(query)
+            return {
+                "book_slug": GINNI,
+                "page_index": query["page_index"],
+                "segmentation_version": "stale-ginni-segments",
+                "chapter_id": "chapter-001",
+                "content": "stale quarantined content",
+            }
+
+    manifests = StaleManifests()
+    segments = StaleSegments()
+    monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+    monkeypatch.setattr(
+        server,
+        "db",
+        SimpleNamespace(reader_segment_manifests=manifests, reader_content_segments=segments),
+    )
+    assert asyncio.run(server._reader_book_access_doc(GINNI)) is None
+
+    async def entitled_principal():
+        return {"id": "isolated-entitled", "role": "user", "status": "active", "session_id": "isolated-auth"}
+
+    client = TestClient(server.app)
+    try:
+        for alias in CANONICAL_PAGE_ALIASES:
+            anonymous = client.get(alias.format(slug=GINNI, page_index=1))
+            assert anonymous.status_code == 404
+            assert anonymous.json()["detail"]["code"] == "CONTENT_NOT_AUTHORIZED"
+
+            server.app.dependency_overrides[server.optional_principal] = entitled_principal
+            protected = client.get(
+                alias.format(slug=GINNI, page_index=4),
+                headers={
+                    "X-Reading-Pass-Session": "stale-session",
+                    "X-Reading-Pass-Lease": "stale-lease",
+                },
+            )
+            assert protected.status_code == 404
+            assert protected.json()["detail"]["code"] == "CONTENT_NOT_AUTHORIZED"
+    finally:
+        server.app.dependency_overrides.pop(server.optional_principal, None)
+        client.close()
+
+    assert manifests.calls == []
+    assert segments.calls == []
+
+
+def test_eligible_canonical_pages_retain_public_then_authorized_boundary(monkeypatch):
+    artifact = dracula_artifact()
+    pages = canonical_page_records(book_slug=DRACULA, chapters=artifact["chapters"])
+    by_page = {page["page_index"]: page for page in pages}
+
+    class Segments:
+        async def find_one(self, query, _projection):
+            return by_page.get(query["page_index"])
+
+    async def access_doc(*_args, **_kwargs):
+        return artifact
+
+    async def manifest(*_args, **_kwargs):
+        return {
+            "segmentation_version": "eligible-dracula-boundary",
+            "total_pages": len(pages),
+        }
+
+    monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+    monkeypatch.setattr(server, "_reader_book_access_doc", access_doc)
+    monkeypatch.setattr(server, "_active_reader_segment_manifest", manifest)
+    monkeypatch.setattr(server, "db", SimpleNamespace(reader_content_segments=Segments()))
+
+    client = TestClient(server.app)
+    try:
+        for alias in CANONICAL_PAGE_ALIASES:
+            public = client.get(alias.format(slug=DRACULA, page_index=1))
+            assert public.status_code == 200
+            assert public.json()["is_preview"] is True
+            assert public.json()["content"] == by_page[1]["content"]
+
+            protected = client.get(alias.format(slug=DRACULA, page_index=4))
+            assert protected.status_code == 401
+            assert protected.json()["detail"]["code"] == "AUTH_REQUIRED"
+    finally:
+        client.close()
+
+
+def test_canonical_page_routes_remain_disabled_when_v2_is_disabled(monkeypatch):
+    monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", False)
+    client = TestClient(server.app)
+    try:
+        for alias in CANONICAL_PAGE_ALIASES:
+            response = client.get(alias.format(slug=DRACULA, page_index=1))
+            assert response.status_code == 404
+            assert response.json()["detail"]["code"] == "FEATURE_DISABLED"
+    finally:
+        client.close()
 
 
 def test_manifest_approved_titles_are_not_excluded_by_the_legacy_43_slug_list():
