@@ -59,12 +59,16 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(experience).toContain("PUBLIC_PREVIEW_COPY");
   });
 
-  test("Listener starts authorization at second zero and exposes only the server-protected media path", () => {
+  test("Listener starts authorization at second zero and opens only an approved protected package", () => {
     const adapter = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/ReleaseTruthAdapter.js"), "utf8");
     const route = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2Route.jsx"), "utf8");
-    expect(adapter).toContain("/api/reader/book/${encodeURIComponent(slug)}/audiobook");
-    expect(adapter).not.toContain("mediaUrl: release.audioUrl");
+    const listener = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2.jsx"), "utf8");
+    expect(adapter).toContain("packageManifestUrl: release.packageManifestUrl");
+    expect(adapter).not.toContain("mediaUrl: `/api/reader/book");
     expect(route).toContain("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 0 })");
+    expect(route).toContain("normalizeAudioManifest");
+    expect(listener).toContain("data-testid=\"listener-package-audio\"");
+    expect(listener).toContain("nextSegmentId");
     expect(route).not.toContain("positionSeconds: 180");
     expect(route).toContain("renewReadingPassLease");
   });
@@ -110,7 +114,7 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(route).toContain("LISTENER_VISUAL_FIXTURE_BOOK");
     expect(route).toContain('slug: "a-ghost-story"');
     expect(route).toContain("cover_image_url:");
-    expect(source).toContain("presentation.fixture || !access.authorized || !effectiveDuration");
+    expect(source).toContain("presentation.fixture || !canPlay || !totalDuration");
   });
 
   test("Reader text-size controls alter the rendered reading-text style in both responsive layouts", () => {

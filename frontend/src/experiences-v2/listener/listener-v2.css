@@ -10,3 +10,4 @@
 
 /* The cover fallback is part of the experience surface, not book artwork. */
 .listener-v2__art { background: var(--ev2-surface); }
+.listener-v2__stop { grid-column:1/-1; justify-self:center; min-height:44px; padding:8px 12px; border:0; background:transparent; color:var(--ev2-gold); cursor:pointer; font-size:12px; }

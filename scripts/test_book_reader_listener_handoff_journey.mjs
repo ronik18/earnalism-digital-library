@@ -37,6 +37,7 @@ const protectedChapterBook = {
   description: "An isolated edition with a server-mapped protected chapter.",
   chapters: [{ id: "chapter-one", title: "Chapter One" }, { id: "chapter-two", title: "Chapter Two" }],
 };
+const audioPackageVersion = `sha256-${"a".repeat(64)}`;
 const audioBook = {
   slug: "audio-edition",
   title: "Approved Listening Edition",
@@ -47,9 +48,66 @@ const audioBook = {
   audio_enabled: true,
   audiobook_release_gate: "APPROVED",
   audio_qa_status: "QA_PASSED",
-  audiobook_assets: { mp3: "/api/reader/book/audio-edition/audiobook" },
+  audiobook_assets: { manifest: "/api/reader/book/audio-edition/audiobook/manifest" },
   chapters: [{ id: "audio-chapter", title: "Approved Chapter" }],
 };
+
+function audioPackageManifestFor(book, { packageVersion = audioPackageVersion } = {}) {
+  const segmentPath = (segmentId) => `/api/reader/book/${book.slug}/audiobook/packages/${packageVersion}/segments/${segmentId}`;
+  return {
+    schema_version: "audiobook_package_manifest.v2",
+    slug: book.slug,
+    package_version: packageVersion,
+    duration_ms: 2000,
+    segment_count: 2,
+    tracks: [{
+      id: "audio-chapter",
+      chapter_id: "audio-chapter",
+      order: 0,
+      chunks: [
+        { segment_id: "c001-s001", order: 0, start_word: 0, end_word: 9, cumulative_start_ms: 0, duration_ms: 1000, audio_url: segmentPath("c001-s001"), timestamps_url: `${segmentPath("c001-s001")}/timestamps`, audio_sha256: "b".repeat(64) },
+        { segment_id: "c001-s002", order: 1, start_word: 10, end_word: 19, cumulative_start_ms: 1000, duration_ms: 1000, audio_url: segmentPath("c001-s002"), timestamps_url: `${segmentPath("c001-s002")}/timestamps`, audio_sha256: "c".repeat(64) },
+      ],
+    }],
+  };
+}
+
+function wavFixture() {
+  const sampleRate = 8000;
+  const samples = sampleRate / 4;
+  const dataLength = samples * 2;
+  const output = Buffer.alloc(44 + dataLength);
+  output.write("RIFF", 0);
+  output.writeUInt32LE(36 + dataLength, 4);
+  output.write("WAVEfmt ", 8);
+  output.writeUInt32LE(16, 16);
+  output.writeUInt16LE(1, 20);
+  output.writeUInt16LE(1, 22);
+  output.writeUInt32LE(sampleRate, 24);
+  output.writeUInt32LE(sampleRate * 2, 28);
+  output.writeUInt16LE(2, 32);
+  output.writeUInt16LE(16, 34);
+  output.write("data", 36);
+  output.writeUInt32LE(dataLength, 40);
+  return output;
+}
+
+const audioSegmentFixture = wavFixture();
+
+function deferred() {
+  let resolve;
+  const promise = new Promise((next) => { resolve = next; });
+  return { promise, resolve };
+}
+
+async function waitForCondition(predicate, label, timeoutMs = 8_000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    if (predicate()) return;
+    await new Promise((resolve) => setTimeout(resolve, 25));
+  }
+  throw new Error(`${label}: timed out`);
+}
 
 function manifestFor(book, { readingPassEnabled = true } = {}) {
   const approvedAudio = book.slug === audioBook.slug;
@@ -77,7 +135,8 @@ function manifestFor(book, { readingPassEnabled = true } = {}) {
       release_gate: "APPROVED",
       qa_status: "QA_PASSED",
       asset_slug: book.slug,
-      assets: { mp3: `/api/reader/book/${book.slug}/audiobook` },
+      package_version: audioPackageVersion,
+      assets: { manifest: `/api/reader/book/${book.slug}/audiobook/manifest` },
     } : { enabled: false, assets: {} },
   };
 }
@@ -94,17 +153,60 @@ function pagePayload(book, pageIndex) {
   };
 }
 
-async function configureApi(page, { authenticated = false, denyLease = false, readingPassEnabled = true, sessionStartDelayMs = 0, manifestFailures = 0 } = {}) {
+async function configureApi(page, {
+  authenticated = false,
+  denyLease = false,
+  readingPassEnabled = true,
+  sessionStartDelayMs = 0,
+  manifestFailures = 0,
+  packageVersionMismatch = false,
+  holdRenewalResponse = false,
+  holdSettlementResponse = false,
+  holdPackageManifestResponse = false,
+  holdSessionStartResponse = false,
+  uniqueLeaseSessions = false,
+} = {}) {
   const requests = {
     sessionStarts: 0,
     protectedPageRequests: 0,
     manifestRequests: 0,
+    packageManifestRequests: 0,
+    protectedAudioRequests: [],
     positionWrites: [],
     sessionEnds: [],
+    renewalRequests: [],
     persistedPosition: null,
   };
   let position = { content_type: "text", content_id: protectedChapterBook.slug, position: {}, version: 0 };
   let remainingManifestFailures = manifestFailures;
+  const pendingRenewals = [];
+  const pendingSettlements = [];
+  const pendingPackageManifests = [];
+  const pendingSessionStarts = [];
+  requests.releaseNextRenewal = () => {
+    const pending = pendingRenewals.shift();
+    if (!pending) return false;
+    pending.resolve();
+    return true;
+  };
+  requests.releaseNextSettlement = () => {
+    const pending = pendingSettlements.shift();
+    if (!pending) return false;
+    pending.resolve();
+    return true;
+  };
+  requests.releaseNextPackageManifest = () => {
+    const pending = pendingPackageManifests.shift();
+    if (!pending) return false;
+    pending.resolve();
+    return true;
+  };
+  requests.releaseNextSessionStart = () => {
+    const pending = pendingSessionStarts.shift();
+    if (!pending) return false;
+    pending.resolve();
+    return true;
+  };
   await page.route("**/api/**", async (route) => {
     const request = route.request();
     const url = new URL(request.url());
@@ -136,6 +238,20 @@ async function configureApi(page, { authenticated = false, denyLease = false, re
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(manifestFor(book, { readingPassEnabled })) });
       return;
     }
+    if (book && pathname.endsWith(`/reader/book/${book.slug}/audiobook/manifest`)) {
+      requests.packageManifestRequests += 1;
+      if (!authenticated) {
+        await route.fulfill({ status: 401, contentType: "application/json", body: JSON.stringify({ detail: { code: "AUTH_REQUIRED" } }) });
+        return;
+      }
+      if (holdPackageManifestResponse) {
+        const pending = deferred();
+        pendingPackageManifests.push(pending);
+        await pending.promise;
+      }
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(audioPackageManifestFor(book, { packageVersion: packageVersionMismatch ? `sha256-${"d".repeat(64)}` : audioPackageVersion })) });
+      return;
+    }
     if (book && /\/reading-pass\/books\/[^/]+\/pages\/\d+$/.test(pathname)) {
       const pageIndex = Number(pathname.split("/").at(-1));
       if (pageIndex > 3) requests.protectedPageRequests += 1;
@@ -145,17 +261,53 @@ async function configureApi(page, { authenticated = false, denyLease = false, re
     if (pathname.endsWith("/reading-pass/sessions/start")) {
       requests.sessionStarts += 1;
       if (sessionStartDelayMs) await new Promise((resolve) => setTimeout(resolve, sessionStartDelayMs));
+      if (holdSessionStartResponse) {
+        const pending = deferred();
+        pendingSessionStarts.push(pending);
+        await pending.promise;
+      }
       const response = !authenticated
         ? { status: 401, body: { detail: { message: "Sign in to continue." } } }
         : denyLease
           ? { status: 403, body: { detail: { message: "A current Reading Pass is required to continue." } } }
-          : { status: 200, body: { session_id: "fixture-lease", lease_token: "fixture-token", lease_version: 1 } };
+          : {
+            status: 200,
+            body: {
+              session_id: uniqueLeaseSessions ? `fixture-lease-${requests.sessionStarts}` : "fixture-lease",
+              lease_token: uniqueLeaseSessions ? `fixture-token-${requests.sessionStarts}` : "fixture-token",
+              lease_version: 1,
+            },
+          };
       await route.fulfill({ status: response.status, contentType: "application/json", body: JSON.stringify(response.body) });
+      return;
+    }
+    if (pathname.endsWith("/reading-pass/leases/renew")) {
+      const payload = request.postDataJSON();
+      requests.renewalRequests.push(payload);
+      if (holdRenewalResponse) {
+        const pending = deferred();
+        pendingRenewals.push(pending);
+        await pending.promise;
+      }
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          session_id: payload.session_id,
+          lease_token: `renewed-${payload.session_id}`,
+          lease_version: Number(payload.lease_version || 1) + 1,
+        }),
+      });
       return;
     }
     if (pathname.endsWith("/reading-pass/sessions/end")) {
       const payload = request.postDataJSON();
       requests.sessionEnds.push(payload);
+      if (holdSettlementResponse) {
+        const pending = deferred();
+        pendingSettlements.push(pending);
+        await pending.promise;
+      }
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ended: true, session_id: payload.session_id, balance_seconds: 299 }) });
       return;
     }
@@ -180,8 +332,14 @@ async function configureApi(page, { authenticated = false, denyLease = false, re
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(position) });
       return;
     }
-    if (pathname.endsWith("/reader/book/audio-edition/audiobook")) {
-      await route.fulfill({ status: 403, contentType: "application/json", body: JSON.stringify({ detail: "Fixture protected stream" }) });
+    if (book && pathname.includes(`/reader/book/${book.slug}/audiobook/packages/${audioPackageVersion}/segments/`)) {
+      const segmentId = pathname.split("/").at(-1);
+      requests.protectedAudioRequests.push({ method: request.method(), segment_id: segmentId, range: request.headers().range || "", bytes_transferred: request.method() === "HEAD" ? 0 : audioSegmentFixture.length });
+      if (request.method() === "HEAD") {
+        await route.fulfill({ status: 200, headers: { "content-type": "audio/wav", "content-length": String(audioSegmentFixture.length), "cache-control": "private, no-store" } });
+        return;
+      }
+      await route.fulfill({ status: 200, contentType: "audio/wav", headers: { "cache-control": "private, no-store" }, body: audioSegmentFixture });
       return;
     }
     await route.fulfill({ status: 404, contentType: "application/json", body: JSON.stringify({ detail: "Unhandled isolated fixture request" }) });
@@ -405,7 +563,7 @@ async function runEntitledReader({ id, viewport }) {
   await context.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
   const page = await context.newPage();
   page.setDefaultTimeout(8_000);
-  await configureApi(page, { authenticated: true });
+  const requests = await configureApi(page, { authenticated: true });
   const base = baseUrl.replace(/\/$/, "");
   await page.goto(`${base}/reader/${readerBook.slug}?p=3`, { waitUntil: "domcontentloaded" });
   await page.getByTestId("reader-reading-text").waitFor();
@@ -423,19 +581,240 @@ async function runEntitledListener({ id, viewport }) {
   const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
   await context.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
   const page = await context.newPage();
+  const pageErrors = [];
+  page.on("pageerror", (error) => pageErrors.push(error.message));
   page.setDefaultTimeout(8_000);
-  await configureApi(page, { authenticated: true });
+  const requests = await configureApi(page, { authenticated: true });
   const base = baseUrl.replace(/\/$/, "");
   await page.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
   await page.getByRole("button", { name: "Authorize Listening" }).waitFor();
   await page.getByRole("button", { name: "Authorize Listening" }).click();
-  await page.locator("audio").waitFor({ state: "attached" });
-  const stream = await page.locator("audio").getAttribute("src");
-  assert.match(stream, new RegExp(`/api/reader/book/${audioBook.slug}/audiobook$`), `${id}: entitled listener did not use the protected stream route`);
+  const audio = page.getByTestId("listener-package-audio");
+  await page.waitForTimeout(200);
+  assert.equal(await audio.count(), 1, `${id}: entitled Listener did not mount a package segment controller; visible state: ${(await page.locator("body").innerText()).replace(/\s+/g, " ").slice(0, 300)}; runtime errors: ${pageErrors.join(" | ")}`);
+  const stream = await audio.getAttribute("src");
+  assert.match(stream, new RegExp(`/api/reader/book/${audioBook.slug}/audiobook/packages/${audioPackageVersion}/segments/c001-s001$`), `${id}: entitled listener did not use the approved first package segment`);
+  assert.equal(await audio.getAttribute("data-package-version"), audioPackageVersion, `${id}: Listener did not bind media to the approved package version`);
+  assert.equal(await audio.getAttribute("preload"), "metadata", `${id}: Listener must not preload protected audio bodies`);
+  assert.equal(requests.packageManifestRequests, 1, `${id}: Listener did not fetch one authorized package manifest`);
+  await page.screenshot({ path: path.join(output, `${id}-listener-package-active.png`), fullPage: true });
+  await page.getByRole("button", { name: "Play approved audiobook" }).click();
+  await page.waitForTimeout(100);
+  assert.ok(requests.protectedAudioRequests.some((entry) => entry.segment_id === "c001-s001" && entry.method === "GET"), `${id}: normal Listener did not request the first protected package segment`);
+  await audio.evaluate((node) => node.dispatchEvent(new Event("ended")));
+  await page.waitForFunction(() => document.querySelector('[data-testid="listener-package-audio"]')?.getAttribute("data-segment-id") === "c001-s002");
+  assert.match(await audio.getAttribute("src"), /segments\/c001-s002$/, `${id}: Listener did not transition through manifest order`);
+  await page.getByRole("button", { name: "Stop listening" }).click();
+  await page.waitForFunction(() => true, null, { timeout: 100 });
+  assert.deepEqual(requests.sessionEnds, [{ session_id: "fixture-lease", reason: "listener_v2_stop" }], `${id}: Listener stop must settle the audio lease once`);
+  const requestsAfterStop = requests.protectedAudioRequests.length;
+  await page.waitForTimeout(100);
+  assert.equal(requests.protectedAudioRequests.length, requestsAfterStop, `${id}: Listener made a protected audio request after stop`);
   await page.screenshot({ path: path.join(output, `${id}-listener-entitled.png`), fullPage: true });
   await context.close();
   await browser.close();
-  return { id, viewport, authenticated: true, result: "PASS" };
+  return {
+    id,
+    viewport,
+    authenticated: true,
+    package_manifest_requests: requests.packageManifestRequests,
+    media_preload: "metadata",
+    metadata_warm_requests: requests.protectedAudioRequests.filter((entry) => entry.method === "HEAD"),
+    protected_audio_requests: requests.protectedAudioRequests,
+    result: "PASS",
+  };
+}
+
+async function openListenerWithHeldRenewal({ base, viewport, holdSettlementResponse = false, uniqueLeaseSessions = false }) {
+  const browser = await chromium.launch(browserLaunchOptions);
+  const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  await context.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
+  const page = await context.newPage();
+  page.setDefaultTimeout(8_000);
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  const requests = await configureApi(page, {
+    authenticated: true,
+    holdRenewalResponse: true,
+    holdSettlementResponse,
+    uniqueLeaseSessions,
+  });
+  await page.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
+  await page.getByRole("button", { name: "Authorize Listening" }).click();
+  await page.getByTestId("listener-package-audio").waitFor({ state: "attached" });
+  await page.clock.fastForward(10_000);
+  await waitForCondition(() => requests.renewalRequests.length === 1, "Listener renewal did not begin");
+  return { browser, context, page, requests };
+}
+
+async function assertTerminatedGeneration(page, requests, { packageRequestsBefore, label }) {
+  await page.waitForFunction(() => !document.querySelector('[data-testid="listener-package-audio"]'));
+  assert.equal(requests.releaseNextRenewal(), true, `${label}: no held renewal was available to release`);
+  await page.waitForTimeout(150);
+  assert.equal(await page.getByTestId("listener-package-audio").count(), 0, `${label}: stale renewal restored protected audio`);
+  assert.equal(requests.packageManifestRequests, packageRequestsBefore, `${label}: stale renewal initiated a new package request`);
+}
+
+async function runListenerStaleResponseLifecycle({ id, viewport }) {
+  const base = baseUrl.replace(/\/$/, "");
+
+  // A current generation still renews normally; ownership checks are not a
+  // client-side revocation mechanism.
+  {
+    const browser = await chromium.launch(browserLaunchOptions);
+    const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+    await context.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
+    const page = await context.newPage();
+    page.setDefaultTimeout(8_000);
+    await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+    const requests = await configureApi(page, { authenticated: true });
+    await page.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
+    await page.getByRole("button", { name: "Authorize Listening" }).click();
+    await page.getByTestId("listener-package-audio").waitFor({ state: "attached" });
+    await page.clock.fastForward(10_000);
+    await waitForCondition(() => requests.renewalRequests.length === 1, `${id}: ordinary renewal`);
+    assert.equal(await page.getByTestId("listener-package-audio").count(), 1, `${id}: ordinary renewal lost approved audio`);
+    await page.getByRole("button", { name: "Stop listening" }).click();
+    await waitForCondition(() => requests.sessionEnds.length === 1, `${id}: ordinary renewal settlement`);
+    await context.close();
+    await browser.close();
+  }
+
+  // A start response that arrives after navigation must be settled without
+  // reopening the old route or requesting its protected package.
+  {
+    const browser = await chromium.launch(browserLaunchOptions);
+    const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+    await context.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
+    const page = await context.newPage();
+    page.setDefaultTimeout(8_000);
+    const requests = await configureApi(page, { authenticated: true, holdSessionStartResponse: true });
+    await page.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
+    await page.getByRole("button", { name: "Authorize Listening" }).click();
+    await waitForCondition(() => requests.sessionStarts === 1, `${id}: delayed authorization start`);
+    await page.locator('[aria-label="Search library"]:visible').first().click();
+    await page.waitForURL((url) => url.pathname === "/library");
+    assert.equal(requests.releaseNextSessionStart(), true, `${id}: delayed authorization was not retained`);
+    await waitForCondition(() => requests.sessionEnds.length === 1, `${id}: stale authorization settlement`);
+    assert.deepEqual(requests.sessionEnds, [{ session_id: "fixture-lease", reason: "listener_v2_stale_authorization" }], `${id}: stale authorization did not settle its own session`);
+    assert.equal(requests.packageManifestRequests, 0, `${id}: stale authorization requested a protected package after navigation`);
+    assert.equal(await page.getByTestId("listener-package-audio").count(), 0, `${id}: stale authorization reopened protected audio after navigation`);
+    await context.close();
+    await browser.close();
+  }
+
+  // The historical failure: renewal resolves only after Stop's settlement is complete.
+  {
+    const { browser, context, page, requests } = await openListenerWithHeldRenewal({ base, viewport });
+    const packageRequestsBefore = requests.packageManifestRequests;
+    await page.getByRole("button", { name: "Stop listening" }).click();
+    await waitForCondition(() => requests.sessionEnds.length === 1, `${id}: stop settlement`);
+    await assertTerminatedGeneration(page, requests, { packageRequestsBefore, label: `${id}: stale renewal after settled Stop` });
+    assert.deepEqual(requests.sessionEnds, [{ session_id: "fixture-lease", reason: "listener_v2_stop" }], `${id}: settled Stop must end exactly one session`);
+    await context.close();
+    await browser.close();
+  }
+
+  // In-app navigation settles before leaving and gives no stale renewal a way
+  // to restart protected package work on the next route.
+  {
+    const { browser, context, page, requests } = await openListenerWithHeldRenewal({ base, viewport });
+    const packageRequestsBefore = requests.packageManifestRequests;
+    const libraryNavigation = page.locator('[aria-label="Search library"]:visible').first();
+    await libraryNavigation.click();
+    await page.waitForURL((url) => url.pathname === "/library");
+    await waitForCondition(() => requests.sessionEnds.length === 1, `${id}: navigation settlement`);
+    await assertTerminatedGeneration(page, requests, { packageRequestsBefore, label: `${id}: stale renewal after navigation` });
+    assert.deepEqual(requests.sessionEnds, [{ session_id: "fixture-lease", reason: "listener_v2_navigation" }], `${id}: navigation must settle the active session once`);
+    await context.close();
+    await browser.close();
+  }
+
+  // The same callback must be harmless while settlement is still in flight.
+  {
+    const { browser, context, page, requests } = await openListenerWithHeldRenewal({ base, viewport, holdSettlementResponse: true });
+    const packageRequestsBefore = requests.packageManifestRequests;
+    await page.getByRole("button", { name: "Stop listening" }).click();
+    await waitForCondition(() => requests.sessionEnds.length === 1, `${id}: pending stop settlement`);
+    await assertTerminatedGeneration(page, requests, { packageRequestsBefore, label: `${id}: stale renewal during pending Stop settlement` });
+    assert.equal(requests.releaseNextSettlement(), true, `${id}: pending settlement was not retained`);
+    await page.waitForTimeout(75);
+    assert.deepEqual(requests.sessionEnds, [{ session_id: "fixture-lease", reason: "listener_v2_stop" }], `${id}: stale renewal duplicated Stop settlement`);
+    await context.close();
+    await browser.close();
+  }
+
+  // A later authorization owns the route; the earlier renewal cannot replace it.
+  {
+    const { browser, context, page, requests } = await openListenerWithHeldRenewal({ base, viewport, uniqueLeaseSessions: true });
+    await page.getByRole("button", { name: "Stop listening" }).click();
+    await waitForCondition(() => requests.sessionEnds.length === 1, `${id}: first session settlement`);
+    await page.getByRole("button", { name: "Authorize Listening" }).click();
+    await page.getByTestId("listener-package-audio").waitFor({ state: "attached" });
+    assert.equal(requests.releaseNextRenewal(), true, `${id}: replacement-session renewal was not held`);
+    await page.waitForTimeout(150);
+    await page.getByRole("button", { name: "Stop listening" }).click();
+    await waitForCondition(() => requests.sessionEnds.length === 2, `${id}: replacement session settlement`);
+    assert.deepEqual(requests.sessionEnds, [
+      { session_id: "fixture-lease-1", reason: "listener_v2_stop" },
+      { session_id: "fixture-lease-2", reason: "listener_v2_stop" },
+    ], `${id}: stale renewal replaced the newer Listener session`);
+    await context.close();
+    await browser.close();
+  }
+
+  // Completion is terminal too, not merely the Stop control.
+  {
+    const { browser, context, page, requests } = await openListenerWithHeldRenewal({ base, viewport });
+    const packageRequestsBefore = requests.packageManifestRequests;
+    const audio = page.getByTestId("listener-package-audio");
+    await audio.evaluate((node) => node.dispatchEvent(new Event("ended")));
+    await page.waitForFunction(() => document.querySelector('[data-testid="listener-package-audio"]')?.getAttribute("data-segment-id") === "c001-s002");
+    await audio.evaluate((node) => node.dispatchEvent(new Event("ended")));
+    await waitForCondition(() => requests.sessionEnds.length === 1, `${id}: completion settlement`);
+    await assertTerminatedGeneration(page, requests, { packageRequestsBefore, label: `${id}: stale renewal after completion` });
+    assert.deepEqual(requests.sessionEnds, [{ session_id: "fixture-lease", reason: "listener_v2_complete" }], `${id}: completion must settle only the active session`);
+    await context.close();
+    await browser.close();
+  }
+
+  // A protected package callback is also scoped to the route generation.
+  {
+    const browser = await chromium.launch(browserLaunchOptions);
+    const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+    await context.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
+    const page = await context.newPage();
+    page.setDefaultTimeout(8_000);
+    const requests = await configureApi(page, { authenticated: true, holdPackageManifestResponse: true });
+    await page.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
+    await page.getByRole("button", { name: "Authorize Listening" }).click();
+    await waitForCondition(() => requests.packageManifestRequests === 1, `${id}: protected package request`);
+    await page.goto(`${base}/library`, { waitUntil: "domcontentloaded" });
+    await page.waitForURL((url) => url.pathname === "/library");
+    assert.equal(requests.releaseNextPackageManifest(), true, `${id}: held package response was not retained`);
+    await page.waitForTimeout(100);
+    assert.equal(await page.getByTestId("listener-package-audio").count(), 0, `${id}: stale package callback opened audio after navigation`);
+    await context.close();
+    await browser.close();
+  }
+
+  return { id, viewport, staleLifecycle: true, result: "PASS" };
+}
+
+async function runAnonymousListenerPackage({ id, viewport }) {
+  const browser = await chromium.launch(browserLaunchOptions);
+  const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  const page = await context.newPage();
+  page.setDefaultTimeout(8_000);
+  const requests = await configureApi(page);
+  const base = baseUrl.replace(/\/$/, "");
+  await page.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
+  await page.getByRole("button", { name: "Authorize Listening" }).waitFor();
+  assert.equal(await page.locator("audio").count(), 0, `${id}: anonymous listener exposed audio`);
+  assert.equal(requests.packageManifestRequests, 0, `${id}: anonymous listener requested a protected package manifest`);
+  await page.screenshot({ path: path.join(output, `${id}-listener-package-anonymous.png`), fullPage: true });
+  await context.close();
+  await browser.close();
+  return { id, viewport, anonymous: true, package_manifest_requests: 0, result: "PASS" };
 }
 
 async function runDeniedAccess({ id, viewport }) {
@@ -460,6 +839,27 @@ async function runDeniedAccess({ id, viewport }) {
   await context.close();
   await browser.close();
   return { id, viewport, authenticated: true, denied: true, result: "PASS" };
+}
+
+async function runListenerPackageMismatch({ id, viewport }) {
+  const browser = await chromium.launch(browserLaunchOptions);
+  const context = await browser.newContext({ viewport, serviceWorkers: "block", locale: "en-US", timezoneId: "UTC" });
+  await context.addInitScript(() => localStorage.setItem("earnalism_user_token", "fixture-token"));
+  const page = await context.newPage();
+  page.setDefaultTimeout(8_000);
+  const requests = await configureApi(page, { authenticated: true, packageVersionMismatch: true });
+  const base = baseUrl.replace(/\/$/, "");
+  await page.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
+  await page.getByRole("button", { name: "Authorize Listening" }).click();
+  await page.getByRole("heading", { name: "Listening access needs attention" }).waitFor();
+  assert.equal(await page.locator("audio").count(), 0, `${id}: mismatched package version exposed media`);
+  assert.equal(requests.packageManifestRequests, 1, `${id}: mismatched package did not use the protected manifest route`);
+  await page.waitForTimeout(100);
+  assert.deepEqual(requests.sessionEnds, [{ session_id: "fixture-lease", reason: "listener_v2_package_rejected" }], `${id}: mismatched package must settle the rejected lease`);
+  await page.screenshot({ path: path.join(output, `${id}-listener-package-mismatch.png`), fullPage: true });
+  await context.close();
+  await browser.close();
+  return { id, viewport, packageMismatch: true, result: "PASS" };
 }
 
 async function runListenerRecovery({ id, viewport }) {
@@ -522,13 +922,29 @@ const scenarios = [
   { id: "mobile-390", viewport: { width: 390, height: 844 } },
 ];
 const selectedScenarioIds = new Set((process.env.BOOK_READER_LISTENER_SCENARIOS || "").split(",").filter(Boolean));
+const focus = String(process.env.BOOK_READER_LISTENER_FOCUS || "").trim();
 for (const scenario of scenarios.filter(({ id }) => selectedScenarioIds.size === 0 || selectedScenarioIds.has(id))) {
+  if (focus === "listener-package") {
+    results.push(await runAnonymousListenerPackage(scenario));
+    results.push(await runEntitledListener(scenario));
+    results.push(await runDeniedAccess(scenario));
+    results.push(await runListenerPackageMismatch(scenario));
+    continue;
+  }
+  if (focus === "listener-stale-lifecycle") {
+    results.push(await runListenerStaleResponseLifecycle(scenario));
+    results.push(await runAnonymousListenerPackage(scenario));
+    results.push(await runDeniedAccess(scenario));
+    results.push(await runListenerPackageMismatch(scenario));
+    continue;
+  }
   results.push(await runDisabledReaderTruth(scenario));
   results.push(await runAnonymousHandoffs(scenario));
   results.push(await runProtectedChapterEntry(scenario));
   results.push(await runEntitledReader(scenario));
   results.push(await runEntitledListener(scenario));
   results.push(await runDeniedAccess(scenario));
+  results.push(await runListenerPackageMismatch(scenario));
   results.push(await runListenerRecovery(scenario));
 }
 
