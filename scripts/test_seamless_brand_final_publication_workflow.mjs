@@ -58,6 +58,11 @@ pass("makes final publication depend on fixture build probes", before("Verify pr
 pass("runs the focused WebKit Article stability preflight before browser populations", before("Run focused Article stability gate", "Run browser tooling gates") && before("Run focused Article stability gate", "Capture the exact head in all browsers") && /node scripts\/test_webkit_article_mobile_stability\.mjs/.test(workflow) && /node scripts\/run_seamless_brand_article_stability_gate\.mjs/.test(workflow) && /--webkit-runs 10/.test(workflow) && /--chromium-runs 5/.test(workflow) && /--firefox-runs 5/.test(workflow));
 pass("uses the checked-in Article stability runner with explicit Bash", (() => { const step = runSteps.find((item) => item.name === "Run focused Article stability gate"); return step?.shell === "bash" && !/<<'JS'/.test(step.run) && /run_seamless_brand_article_stability_gate\.mjs/.test(step.run); })());
 pass("includes the Article stability runner and its test in workflow path filters", /scripts\/run_seamless_brand_article_stability_gate\.mjs/.test(workflow) && /scripts\/test_seamless_brand_article_stability_gate\.mjs/.test(workflow));
+pass("retains sanitized per-run Article failures before diagnostic upload", (() => {
+  const step = runSteps.find((item) => item.name === "Run focused Article stability gate");
+  return /--server-log "\$RUNNER_TEMP\/article-stability-server\.log"/.test(step?.run || "")
+    && /pr344-article-stability-\$\{\{ needs\.resolve-pr-head\.outputs\.pr_head \}\}\/article-stability-diagnostics/.test(workflow);
+})());
 const captureStep = runSteps.find((item) => item.name === "Capture the exact head in all browsers");
 pass("binds both production-hash authorities to checked-in production source", workflowDocument.jobs?.["seamless-brand-review"]?.env?.PRODUCTION_SURFACE_SHA === productionSurfaceHash() && workflowDocument.jobs?.["verify-published-owner-review"]?.env?.PRODUCTION_SURFACE_SHA === productionSurfaceHash());
 pass("uses explicit production-hash authority for real full-Chromium validation", /test_seamless_brand_full_chromium_matrix\.mjs --output "\$EVIDENCE_ROOT\/chromium" --expected-production-surface-sha "\$PRODUCTION_SURFACE_SHA"/.test(captureStep?.run || ""));

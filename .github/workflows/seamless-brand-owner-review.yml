@@ -220,6 +220,7 @@ jobs:
             --manifest docs/design-system/seamless-brand-state-manifest.json \
             --route-inventory docs/design-system/seamless-brand-route-inventory.json \
             --capture-script scripts/capture_seamless_brand_owner_review.mjs \
+            --server-log "$RUNNER_TEMP/article-stability-server.log" \
             --state-id article-mobile \
             --webkit-runs 10 \
             --chromium-runs 5 \
@@ -469,6 +470,7 @@ jobs:
             ${{ runner.temp }}/frontend-review-fixture-build.log
             ${{ runner.temp }}/final-ci-sanitized-fixture-root-cause.json
             ${{ runner.temp }}/visual-fixture-deployment-isolation.json
+            ${{ runner.temp }}/pr344-article-stability-${{ needs.resolve-pr-head.outputs.pr_head }}/article-stability-diagnostics
             ${{ runner.temp }}/final-package-tests.log
             ${{ runner.temp }}/final-package-test-report.json
             ${{ runner.temp }}/final-package-qa-results.json
