@@ -149,8 +149,11 @@ export default function Library() {
   };
 
   const resetReferenceFilters = () => {
-    setQuery("");
-    setParams(new URLSearchParams());
+    setParams((current) => {
+      const next = new URLSearchParams(current);
+      ["language", "reading", "listening", "genre", "category", "availability"].forEach((key) => next.delete(key));
+      return next;
+    });
   };
 
   const allBooks = useMemo(() => composeLibraryCatalog(liveBooks), [liveBooks]);

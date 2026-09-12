@@ -25,6 +25,8 @@ import {
 } from "../lib/controlledLaunch";
 import { availabilityOfBook } from "../lib/libraryCatalog";
 import BookCoverImage from "./BookCoverImage";
+import LibraryBrowseShelf from "./LibraryBrowseShelf";
+import LibraryReadingPassCard from "./LibraryReadingPassCard";
 import publicEvidenceSnapshot from "../data/publicEvidenceSnapshot.json";
 import "./ReferencePublicPages.css";
 import "../styles/quiet-heritage.css";
@@ -156,7 +158,7 @@ export function ReferenceHomeSurface({ curation }) {
           <p className="reference-home__policy"><Check aria-hidden="true" /> {PUBLIC_ACCESS_COPY} <span /> <ClockMark aria-hidden="true" /> {READING_TIME_COPY}</p>
         </div>
         <picture className="reference-home__hero-art">
-          <img src="/assets/hero/quiet-heritage-still-life.png" alt="" fetchPriority="high" decoding="async" />
+          <img src="/assets/hero/earnalism-black-burgundy-reading-room.webp" alt="" fetchPriority="high" decoding="async" />
         </picture>
       </section>
 
@@ -172,7 +174,7 @@ export function ReferenceHomeSurface({ curation }) {
           title="Begin Your Journey"
           action={<Link to="/library" className="reference-text-link">Browse the complete library <ArrowRight aria-hidden="true" /></Link>}
         ><p>Find the language, voice, and story that feels like home.</p></SectionHeading>
-        <ReferenceShelf books={shelfBooks} label="Featured classics" className="reference-home__journey-shelf" data-testid="home-journey-shelf" />
+        <ReferenceShelf books={shelfBooks} label="Featured classics" className="reference-home__journey-shelf reference-home__journey-shelf--cover-led" data-testid="home-journey-shelf" />
       </section>
 
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
@@ -289,6 +291,7 @@ export function ReferenceLibrarySurface({
     ["Coming soon", "Titles preparing for a future release.", comingSoon],
     ["Audiobooks", "Audiobook-approved editions. Listening appears only where the Reader runtime can offer it.", approvedAudio],
   ];
+  const activeFacetCount = [language, reading, listening, genre].filter((value) => value !== "all").length;
   const update = (key, value) => onParam(key, value, key === "sort" ? "recently-approved" : "all");
   const closeFilters = () => {
     setFiltersOpen(false);
@@ -355,17 +358,18 @@ export function ReferenceLibrarySurface({
       <header className="reference-library__titlebar">
         <div><p className="reference-kicker">THE EARNALISM LIBRARY</p><h1>The Library</h1><span>Curated classics for every mood and moment.</span></div>
         <div className="reference-library__controls">
-          <label className="reference-search"><Search aria-hidden="true" /><input data-testid="library-search" value={query} onChange={(event) => onSearch(event.target.value)} placeholder="Search by title, author or keyword..." aria-label="Search the Library" /></label>
+          <label className="reference-search"><Search aria-hidden="true" /><input data-testid="library-search" value={query} onChange={(event) => onSearch(event.target.value)} placeholder="Search by title, author or keyword..." aria-label="Search the Library" />{query ? <button type="button" aria-label="Clear search" onClick={() => onSearch("")}>×</button> : null}</label>
           <label className="reference-sort">Sort by<select data-testid="library-sort" value={sort} onChange={(event) => onParam("sort", event.target.value, "recently-approved")}><option value="recently-approved">Featured</option><option value="title">Title</option><option value="author">Author</option><option value="short-reads">Short reads</option></select></label>
           <button ref={filterTriggerRef} className="reference-filter-trigger" type="button" aria-haspopup="dialog" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(true)}><SlidersHorizontal aria-hidden="true" /> Filters</button>
         </div>
       </header>
       <main className="reference-library__content">
-        <aside className="reference-library__sidebar" aria-label="Library filters"><p>Explore</p><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} onChange={update} /><div className="reference-library__pass"><strong>Reading Pass</strong><p>{PUBLIC_ACCESS_COPY}</p><Link to="/pricing">View passes</Link></div></aside>
+        <aside className="reference-library__sidebar" aria-label="Library filters"><p>Explore</p><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} onChange={update} />{activeFacetCount || query ? <div className="reference-library__active-facets" data-testid="library-active-facets"><span>{activeFacetCount + (query ? 1 : 0)} active filter{activeFacetCount + (query ? 1 : 0) === 1 ? "" : "s"}</span><button type="button" onClick={onResetFilters}>Reset filters</button></div> : null}<LibraryReadingPassCard /></aside>
         <section className="reference-library__shelves" aria-live="polite">
           {showingFallback ? <div className="reference-library__recovery" role="status" data-testid="library-catalogue-fallback"><p>We couldn’t load the full collection. You’re viewing a limited selection.</p><button type="button" className="reference-button reference-library__recovery-retry" data-testid="library-catalogue-retry" onClick={onRetryCatalogue} disabled={retryingCatalogue}>{retryingCatalogue ? "Trying again…" : "Try again"}</button></div> : null}
           {catalogueIsEmpty ? <p className="reference-library__empty-catalogue" data-testid="library-catalogue-empty">No reader-ready editions are currently available. Titles still in preparation remain listed when available.</p> : null}
-          {loading ? <p className="reference-loading">Opening the collection...</p> : shelves.map(([title, copy, books]) => <section key={title} className="reference-library-shelf" aria-labelledby={`shelf-${title}`}><SectionHeading eyebrow={title === "Live now" ? "LIVE NOW" : title.toUpperCase()} title={title} action={<span className="reference-shelf-count">{books.length} editions</span>}><p>{copy}</p></SectionHeading>{books.length ? <div className="reference-library-grid">{books.slice(0, 10).map((book, index) => <BookTile key={book.slug} book={book} compact priority={index < 2} showListen={title === "Audiobooks"} />)}</div> : <p className="reference-empty-listening">No titles currently match this release state.</p>}</section>)}
+          {loading ? <p className="reference-loading">Opening the collection...</p> : shelves.map(([title, copy, books]) => books.length ? <LibraryBrowseShelf key={title} title={title} copy={copy} books={books} renderBook={(book, index) => <BookTile key={book.slug} book={book} compact priority={index < 2} showListen={title === "Audiobooks"} />} /> : <section key={title} className="reference-library-shelf"><SectionHeading title={title}><p>{copy}</p></SectionHeading><p className="reference-empty-listening">No titles currently match this release state.</p></section>)}
+          <LibraryReadingPassCard compact />
         </section>
       </main>
       {filtersOpen ? <div ref={filterDrawerRef} className="reference-library-drawer" role="dialog" aria-modal="true" aria-label="Library filters" onMouseDown={(event) => { if (event.target === event.currentTarget) closeFilters(); }}><div><header><strong>Filters</strong><div><button type="button" className="reference-filter-reset" onClick={onResetFilters}>Reset</button><button type="button" onClick={closeFilters} aria-label="Close filters"><X aria-hidden="true" /></button></div></header><CompactFilters language={language} reading={reading} listening={listening} genre={genre} genres={genres} sort={sort} hideAll showAllForGroups={["listening"]} drawer onChange={update} /><button type="button" className="reference-button reference-button--gold" onClick={closeFilters}>Apply filters</button></div></div> : null}
@@ -404,6 +408,9 @@ export function ReferenceCommerceSurface({ packs, config, busyId, offerStatus = 
             </aside>
           </section>
           <section className="reference-commerce__pathways"><article><Landmark aria-hidden="true" /><h2>For institutions</h2><p>School, college, and library access begins with a conversation.</p><Link to="/contact">Request a pilot</Link></article><article><Building2 aria-hidden="true" /><h2>For publishers</h2><p>Rights holders and authors can explore a careful digital edition pathway.</p><Link to="/contact">Partner with us</Link></article>{giftEnabled ? <article><Sparkles aria-hidden="true" /><h2>Gift a pass</h2><p>Share reading time when a configured gift product is available.</p><Link to="/pricing">View gift options</Link></article> : null}</section>
+          <section className="reference-commerce__stories" aria-label="Reading Pass possibilities">{[
+            ["lamp-reading-room.png", "A slower reading room"], ["new-reader.png", "A beginning with a book"], ["daily-reader.png", "A daily reading rhythm"], ["deep-reader.png", "Time for a deeper chapter"], ["audio-reader.png", "Listening only when release-approved"], ["gift.png", "A future gift pass"], ["books-phone.png", "Your library across devices"],
+          ].map(([image, label]) => <figure key={image}><img src={`/assets/commerce/${image}`} alt="" loading="lazy" /><figcaption>{label}</figcaption></figure>)}</section>
           <section className="reference-commerce__trust" data-testid="pricing-reference-wallet-explainer"><div><Lock aria-hidden="true" /><strong>Secure payment</strong><span>{config?.configured ? "Configured checkout" : "Checkout availability is confirmed at purchase"}</span></div><div><Check aria-hidden="true" /><strong>Privacy first</strong><span>Your account and reading stay private.</span></div><div><BookOpen aria-hidden="true" /><strong>Reading time</strong><span>Used only while you read.</span></div></section>
           <section className="reference-commerce__final"><p className="reference-kicker">START WITH THE PREVIEW</p><h2>Meet a story before you add time.</h2><p>{PUBLIC_ACCESS_COPY}</p><Link to="/library" className="reference-button reference-button--gold">Browse the library</Link></section>
         </main>

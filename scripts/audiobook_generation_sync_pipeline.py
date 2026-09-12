@@ -491,6 +491,8 @@ def run_pipeline(
         raise ValueError("Network access is not supported by this prototype.")
 
     normalized_slug = safe_slug(book_slug)
+    from backend.reader_only_audio_policy import require_audio_candidate
+    require_audio_candidate(normalized_slug)
     normalized_chapter = str(int(str(chapter).strip()))
     target_dir = output_dir or DEFAULT_INTERNAL_ROOT / normalized_slug / language / normalized_chapter
     target_dir = target_dir.resolve()

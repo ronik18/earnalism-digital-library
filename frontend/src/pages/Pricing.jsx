@@ -7,6 +7,7 @@ import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { ReferenceCommerceSurface } from "../components/ReferencePublicPages";
+import { availableReadingPasses } from "../lib/readingPassOffers";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
 
 const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
@@ -49,7 +50,7 @@ export default function Pricing() {
     let active = true;
     const applyOffers = (nextPacks, nextConfig) => {
       if (!active) return;
-      const packRows = Array.isArray(nextPacks) ? nextPacks : [];
+      const packRows = availableReadingPasses(nextPacks);
       setPacks(packRows);
       setConfig(nextConfig || {});
       setOfferStatus(packRows.length ? "ready" : "empty");

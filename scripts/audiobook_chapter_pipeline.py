@@ -820,6 +820,8 @@ def run_chapter_pipeline(
     narration_mode: str = NARRATION_MODE_PREMIUM,
     write_root_reports: bool = True,
 ) -> ChapterPipelineResult:
+    from backend.reader_only_audio_policy import require_audio_candidate
+    require_audio_candidate(book_slug)
     if narration_mode not in {NARRATION_MODE_PREMIUM, NARRATION_MODE_FULL_FIDELITY}:
         raise ValueError(f"unsupported narration_mode: {narration_mode}")
     chapter_number = int(chapter)

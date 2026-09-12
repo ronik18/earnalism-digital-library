@@ -1,6 +1,6 @@
 {
   "slug": "agentic-ai-with-python",
-  "generated_at": "",
+  "generated_at": "2026-09-12T13:34:11.119698+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -8,71 +8,71 @@
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "3403364abe6867ae85ca2553660f115b5d3b8c1c64282e540fcf3102588ebddc"
+      "sha256": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a"
     },
     {
       "file": "chapters/chapter-002.json",
-      "sha256": "e40501f91c01c95ca496056bc5174e18c43032fc5464b832ef39004bb633e80e"
+      "sha256": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc"
     },
     {
       "file": "chapters/chapter-003.json",
-      "sha256": "6d5b40846603180731c68721fd54038d2142801ec78bf9d8af8b22d3e1030523"
+      "sha256": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7"
     },
     {
       "file": "chapters/chapter-004.json",
-      "sha256": "38ed2cd9f03b82ef7631c1080a55e597b38fc6c5186a7ce68cc54379cc1ba68f"
+      "sha256": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f"
     },
     {
       "file": "chapters/chapter-005.json",
-      "sha256": "0e182c5a9a59407bc72961cfecf0d4c277450fe2e27de54af892181b89027a0b"
+      "sha256": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8"
     },
     {
       "file": "chapters/chapter-006.json",
-      "sha256": "8468a8179007cee88001c9e30672dca07625958ec6af8f463150e1995752e95d"
+      "sha256": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715"
     },
     {
       "file": "chapters/chapter-007.json",
-      "sha256": "918b42f867086229f1675377b26f9791e9d9271f81cc90abdf290de932ff4441"
+      "sha256": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730"
     },
     {
       "file": "chapters/chapter-008.json",
-      "sha256": "29d3c4d459112135f4d5d9f8572e8ff189c3d4c5ffa1c4c1f7890829d1473bad"
+      "sha256": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701"
     },
     {
       "file": "chapters/chapter-009.json",
-      "sha256": "5ddb998b347fbb31a10ffd2eca68491a99dd1f318fa0c11925c32c53f1631e0a"
+      "sha256": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03"
     },
     {
       "file": "chapters/chapter-010.json",
-      "sha256": "fd6e8b0388b97f106a227214db4205fb065a28ff447d84776747564d01d5ed00"
+      "sha256": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c"
     },
     {
       "file": "chapters/chapter-011.json",
-      "sha256": "a7a9dba8faaf387ee145383312ad6cebf81aad9e8ac50380b6778614c41db970"
+      "sha256": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c"
     },
     {
       "file": "chapters/chapter-012.json",
-      "sha256": "176f7ee7c05bd51cf821117a7a9c313ff0eb85221c2a0cd88cf22f4ff29d2646"
+      "sha256": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a"
     },
     {
       "file": "chapters/chapter-013.json",
-      "sha256": "6c293a2bd15ae86f6ec67ff69e82f5b24274c0ff9c767cdf15ce22a4451fe80a"
+      "sha256": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03"
     },
     {
       "file": "chapters/chapter-014.json",
-      "sha256": "2d76738b47b498af18835f81dca74506d074129f519454ddb730062768ca724a"
+      "sha256": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da"
     },
     {
       "file": "public_book.json",
-      "sha256": "f6fd84ce242d3600602bf5f85b6a699191edc5e9d947bf175b01bbb6cdd87bf2"
+      "sha256": "3b9fb4c9c4ab17f1746d5df6d889692e6440db6262277e099a87d69cbdd18b3e"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "57c5f4bb36ec73debefdff5741139890b015f28b4ba6f6ba1091f23caf838872"
+      "sha256": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "2cae6a6d1f515115a5d051a2182009a22ed7d75987583828e5dd5916fe14b33d"
+      "sha256": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386"
     }
   ]
 }

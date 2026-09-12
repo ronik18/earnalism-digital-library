@@ -1,14 +1,14 @@
 {
   "schema_version": "earnalism.static-seo-public.v2",
   "generated_from": {
-    "data/controlled_launch.json": "72e340433f5ff36f36e41ba94ba44393dfb4e1ad029fedb42c48df34ceef63da",
+    "data/controlled_launch.json": "ae4c5412d48d30dca86450fefbf54d124a75173f79be4c5920dfdd9574da6a52",
     "data/controlled_publications/a-ghost-story/public_book.json": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe",
     "data/controlled_publications/a-ghost-story/reader_manifest.json": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "dd5c833640460ae700d954e30453b99e973d85c2c77aa409f6786721a56ae2a9",
     "data/controlled_publications/a-ghost-story/approval_evidence.json": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
-    "data/controlled_publications/agentic-ai-with-python/public_book.json": "f6fd84ce242d3600602bf5f85b6a699191edc5e9d947bf175b01bbb6cdd87bf2",
-    "data/controlled_publications/agentic-ai-with-python/reader_manifest.json": "57c5f4bb36ec73debefdff5741139890b015f28b4ba6f6ba1091f23caf838872",
-    "data/controlled_publications/agentic-ai-with-python/source_evidence.json": "2cae6a6d1f515115a5d051a2182009a22ed7d75987583828e5dd5916fe14b33d",
+    "data/controlled_publications/agentic-ai-with-python/public_book.json": "3b9fb4c9c4ab17f1746d5df6d889692e6440db6262277e099a87d69cbdd18b3e",
+    "data/controlled_publications/agentic-ai-with-python/reader_manifest.json": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+    "data/controlled_publications/agentic-ai-with-python/source_evidence.json": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386",
     "data/controlled_publications/agentic-ai-with-python/approval_evidence.json": "1d34313e08796c09cb8d3a9a0e9a343c59fce01028bdaa47e846cf25f505d308",
     "data/controlled_publications/alices-adventures-in-wonderland/public_book.json": "0b44e473913a449757882ec6277235bc5b78f37c4f19fb8d89417fd3664f7853",
     "data/controlled_publications/alices-adventures-in-wonderland/reader_manifest.json": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288",

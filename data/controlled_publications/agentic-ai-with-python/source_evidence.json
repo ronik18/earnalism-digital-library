@@ -15,7 +15,28 @@
   "source_hash": "c0d3577b9b4f7f91c2ecc19ff64e7bc2e64d1091275def3c3849f97e6b1a8a8f",
   "captured_at": "2026-08-02T15:41:06.659791+00:00",
   "source_url": "",
-  "content_hash": "ac367d6f454d788e30966dd74bc325d49241f015652606e64e66c4167e5884fd",
-  "provenance_hash": "ebf9cbdbd8fea126f54f57f142d6306ae2946529d5fe710a7c61a3c70dc36d3c",
-  "reader_facing_boilerplate_removed": true
+  "content_hash": "750b1c7cf78457bed5083d11db08e6cc1999cd73bcb7546ff460ad62d2034282",
+  "provenance_hash": "7128a3c1a4c269ff0abe92e43cfc398087b7e158ce6803b5d5e947d25e067492",
+  "reader_facing_boilerplate_removed": true,
+  "reader_revision": {
+    "revision": "owner-authorized-2026-09-12",
+    "chapter_count": 14,
+    "selected_content_sha256": {
+      "chapter-001": "21a43d95157e8222c9299d7b9b787fda366c67fc31f838f2759d3ee4a2cfe296",
+      "chapter-002": "9c374eb3789023d7094be65d866440113aa3563083f8bab3106cbecb1e290627",
+      "chapter-003": "249389f5c1a9d0cbc8f812ae2c42804506d57d612edee34cdf9b2e0371710acf",
+      "chapter-004": "8493f65276d763dd1c02e06be02a744fe0f987e928e2e4a7b6c3a403ae2fafa9",
+      "chapter-005": "f978201299db1071d1594385b193f741776e3a653ee8032b7bab837b3f5685b0",
+      "chapter-006": "5523929482657fd5d056e9d216f58b37301f9474033969a3d4a2f6867f5c85fe",
+      "chapter-007": "bf81dc96ff29454e366bd7b565c4bcf44494f73f1aa1a3c7c833d5c82e581e42",
+      "chapter-008": "6d94b6cf39755a9d7eb01adfe1128d8c481826a0c3053ded006dba8a55950dd6",
+      "chapter-009": "88a6a6c90e345489afd690e6689345644bcbf985ef371ec5a7e57c504417a7de",
+      "chapter-010": "4f64a442dc1a1a1b77a9b3ab72a59230b3e0d7c566db5382833dcfc5dab5766d",
+      "chapter-011": "194f9996934e09354b294482a294dd22568544e427fd0b29a52a821003d80def",
+      "chapter-012": "0b2f933b235a0f08d8c9d065b131943f19793495f84e6f12fb90bf51b0ed68dc",
+      "chapter-013": "6f5dafb4d00f18aeb1ec5e5ae4a92e5a97425f20a6306735f03673bb5b1bd047",
+      "chapter-014": "1a3b4df9a9feff3b08aff646d79cfa71b279c920d43a5ae67d0959767f16d542"
+    },
+    "handoff_approval_fields_not_imported": true
+  }
 }

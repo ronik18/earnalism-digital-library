@@ -52,5 +52,8 @@
     "sredni-vashtar",
     "the-art-of-money-getting",
     "the-open-window"
+  ],
+  "reader_only_audio_excluded_slugs": [
+    "agentic-ai-with-python"
   ]
 }
