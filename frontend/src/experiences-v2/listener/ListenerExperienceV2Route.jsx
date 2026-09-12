@@ -48,38 +48,63 @@ export default function ListenerExperienceV2Route() {
   const leaseRef = useRef(null);
   const authorizingRef = useRef(false);
   const endingRef = useRef(false);
+  const lifecycleGenerationRef = useRef(0);
+  const mountedRef = useRef(false);
 
   const setLeaseState = useCallback((value) => { leaseRef.current = value; setLease(value); }, []);
+  const invalidateLifecycle = useCallback(() => {
+    lifecycleGenerationRef.current += 1;
+    return lifecycleGenerationRef.current;
+  }, []);
+  const ownsLifecycle = useCallback((generation, sessionId = "") => (
+    mountedRef.current
+    && lifecycleGenerationRef.current === generation
+    && (!sessionId || leaseRef.current?.sessionId === sessionId)
+  ), []);
 
   const settleLease = useCallback(async (reason) => {
+    const terminalGeneration = invalidateLifecycle();
     const current = leaseRef.current;
     if (!current?.sessionId || endingRef.current) return;
     endingRef.current = true;
-    // Stop renewal before sending the settlement request so a completed or
-    // navigated Listener cannot revive its lease while the request is in flight.
-    setLeaseState(null);
-    setAudioManifest(null);
+    // Invalidation happens before local cleanup and settlement so delayed
+    // authorization, package, or renewal callbacks cannot revive this lease.
+    leaseRef.current = null;
+    if (mountedRef.current) {
+      setLease(null);
+      setAudioManifest(null);
+      setPlaybackState("paused");
+    }
     try {
       await endReadingPassSession(current, reason);
     } catch {
-      setError("Listening ended locally, but session settlement could not be confirmed.");
+      if (ownsLifecycle(terminalGeneration)) setError("Listening ended locally, but session settlement could not be confirmed.");
     } finally {
       endingRef.current = false;
     }
-  }, [setLeaseState]);
+  }, [invalidateLifecycle, ownsLifecycle]);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      invalidateLifecycle();
+    };
+  }, [invalidateLifecycle]);
 
   useEffect(() => {
     if (visualFixture) return undefined;
+    const generation = lifecycleGenerationRef.current;
     let cancelled = false;
     setBook(null);
     setLoadError("");
     userApi.get(readerManifestPath(slug)).then((response) => {
-      if (cancelled) return;
+      if (cancelled || !ownsLifecycle(generation)) return;
       const value = response.data || {};
       setBook({ ...(value.book || {}), _readerManifest: { audio: value.audio || {}, access: value.access || {} } });
-    }).catch(() => { if (!cancelled) setLoadError("Listening access could not be checked. Try again or return to this book’s details."); });
+    }).catch(() => { if (!cancelled && ownsLifecycle(generation)) setLoadError("Listening access could not be checked. Try again or return to this book’s details."); });
     return () => { cancelled = true; };
-  }, [reloadAttempt, slug, visualFixture]);
+  }, [ownsLifecycle, reloadAttempt, slug, visualFixture]);
 
   useEffect(() => {
     if (!lease || !book || visualFixture) return undefined;
@@ -90,6 +115,8 @@ export default function ListenerExperienceV2Route() {
       return undefined;
     }
     if (audioManifest?.packageVersion === presentation.packageVersion) return undefined;
+    const generation = lifecycleGenerationRef.current;
+    const sessionId = lease.sessionId;
     let cancelled = false;
     setAudioManifest(null);
     userApi.get(presentation.packageManifestUrl, {
@@ -99,7 +126,7 @@ export default function ListenerExperienceV2Route() {
       },
       withCredentials: true,
     }).then((response) => {
-      if (cancelled) return;
+      if (cancelled || !ownsLifecycle(generation, sessionId)) return;
       const normalized = normalizeAudioManifest(response.data || {}, (value) => value, {
         expectedSlug: slug,
         expectedPackageVersion: presentation.packageVersion,
@@ -107,24 +134,33 @@ export default function ListenerExperienceV2Route() {
       if (!normalized.valid) throw new Error("Approved listening package did not match release truth.");
       setAudioManifest(normalized);
     }).catch(() => {
-      if (cancelled) return;
+      if (cancelled || !ownsLifecycle(generation, sessionId)) return;
       setError("Approved listening package could not be verified. No audio was opened.");
       void settleLease("listener_v2_package_rejected");
     });
     return () => { cancelled = true; };
-  }, [audioManifest?.packageVersion, book, lease, settleLease, slug, visualFixture]);
+  }, [audioManifest?.packageVersion, book, lease, ownsLifecycle, settleLease, slug, visualFixture]);
 
   useEffect(() => {
     if (!lease) return undefined;
     const interval = window.setInterval(() => {
+      const generation = lifecycleGenerationRef.current;
+      const sessionId = lease.sessionId;
       renewReadingPassLease({ lease, sequence: Number(lease.sequence || 0) + 1, active: playbackState === "playing", playbackState })
-        .then((next) => setLeaseState({ ...lease, sessionId: next.session_id || lease.sessionId, token: next.lease_token || lease.token, version: Number(next.lease_version || lease.version), sequence: Number(lease.sequence || 0) + 1 }))
-        .catch(() => { setError("Listening authorization expired."); setLeaseState(null); });
+        .then((next) => {
+          if (!ownsLifecycle(generation, sessionId)) return;
+          setLeaseState({ ...lease, sessionId: next.session_id || lease.sessionId, token: next.lease_token || lease.token, version: Number(next.lease_version || lease.version), sequence: Number(lease.sequence || 0) + 1 });
+        })
+        .catch(() => {
+          if (!ownsLifecycle(generation, sessionId)) return;
+          setError("Listening authorization expired.");
+          void settleLease("listener_v2_renewal_rejected");
+        });
     }, 10_000);
     return () => window.clearInterval(interval);
-  }, [lease, playbackState, setLeaseState]);
+  }, [lease, ownsLifecycle, playbackState, setLeaseState, settleLease]);
 
-  useEffect(() => () => { void settleLease("listener_v2_unmount"); }, [settleLease]);
+  useEffect(() => () => { void settleLease("listener_v2_unmount"); }, [settleLease, slug]);
 
   const authorize = useCallback(async () => {
     if (!user || typeof user !== "object") {
@@ -132,22 +168,33 @@ export default function ListenerExperienceV2Route() {
       return;
     }
     if (authorizingRef.current) return;
+    const generation = invalidateLifecycle();
     authorizingRef.current = true;
     setAuthorizing(true);
     try {
       // Audio has no public preview. A paid Reading Pass authorizes playback
       // from its first byte, including every Range request.
       const started = await startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 0 });
+      if (!ownsLifecycle(generation)) {
+        void endReadingPassSession({
+          sessionId: started.session_id,
+          token: started.lease_token,
+          version: Number(started.lease_version || 1),
+        }, "listener_v2_stale_authorization");
+        return;
+      }
       setAudioManifest(null);
       setLeaseState({ sessionId: started.session_id, token: started.lease_token, version: Number(started.lease_version || 1), sequence: 0 });
       setError("");
     } catch (requestError) {
-      setError(requestError?.response?.data?.detail?.message || "A current Reading Pass is required to listen.");
+      if (ownsLifecycle(generation)) setError(requestError?.response?.data?.detail?.message || "A current Reading Pass is required to listen.");
     } finally {
-      authorizingRef.current = false;
-      setAuthorizing(false);
+      if (ownsLifecycle(generation)) {
+        authorizingRef.current = false;
+        setAuthorizing(false);
+      }
     }
-  }, [navigate, setLeaseState, slug, user]);
+  }, [invalidateLifecycle, navigate, ownsLifecycle, setLeaseState, slug, user]);
 
   if (visualFixture) return <ListenerExperienceV2 book={LISTENER_VISUAL_FIXTURE_BOOK} fixture access={{ authorized: false }} onNavigate={(target) => {
     if (target === "back") navigate(`/book/${slug || "a-ghost-story"}`);
