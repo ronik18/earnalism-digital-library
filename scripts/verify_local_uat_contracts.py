@@ -71,12 +71,12 @@ def main() -> None:
     expected_audio = {
         "audio_enabled": False,
         "audiobook_enabled": False,
-        "audiobook": None,
-        "audiobook_assets": {},
         "audio_url": "",
     }
     if not isinstance(book, dict) or {key: book.get(key) for key in expected_audio} != expected_audio:
         raise SystemExit("Dracula audio release truth was not fail-closed")
+    if "audiobook" in book or "audiobook_assets" in book:
+        raise SystemExit("Dracula public projection exposed protected audio-object metadata")
     manifest = require_status(f"{API}/reader/book/dracula/manifest", 200)
     pages = (manifest or {}).get("canonical_pages", {})
     policy = pages.get("preview_policy", {})
