@@ -1,8 +1,11 @@
+import asyncio
 import hashlib
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 from backend.reader_only_audio_policy import READER_ONLY_AUDIO_EXCLUDED_SLUGS, ReaderOnlyAudioExcluded
+from backend import server
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -33,3 +36,25 @@ def test_reader_only_slug_is_refused_before_any_audio_pipeline_output(tmp_path):
     assert not (tmp_path / "audio").exists()
     with __import__("pytest").raises(ReaderOnlyAudioExcluded):
         run_chapter_pipeline(book_slug=SLUG, chapter=1, language="en", provider="fixture", voice_id="fixture", voice_name="fixture", write_root_reports=False)
+
+
+def test_public_detail_handler_serializes_revised_reader_only_artifact(monkeypatch):
+    class NoStoredBook:
+        async def find_one(self, *_args, **_kwargs):
+            return None
+
+    async def no_cache(*_args, **_kwargs):
+        return None
+
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=NoStoredBook()))
+    monkeypatch.setattr(server, "_public_cache_get", no_cache)
+    monkeypatch.setattr(server, "_public_cache_set", no_cache)
+
+    result = asyncio.run(server.get_book(SLUG))
+    dumped = server.PublicBookOut.model_validate(result).model_dump()
+
+    assert dumped["slug"] == SLUG
+    assert dumped["estimated_reading_time"] == "396"
+    assert dumped["reader_enabled"] is True
+    assert dumped["audio_enabled"] is False
+    assert dumped["audio_url"] == ""

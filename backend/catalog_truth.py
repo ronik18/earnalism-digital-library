@@ -409,6 +409,12 @@ def audio_release_qa_status(book: dict[str, Any]) -> str:
 
 
 def safe_public_value(key: str, value: Any) -> Any:
+    # The public API contract exposes display duration as text.  Canonical
+    # publication artifacts may retain the source duration as an integer, so
+    # normalize it at the projection boundary instead of leaking a value that
+    # FastAPI's PublicBookOut response model rejects at runtime.
+    if key == "estimated_reading_time":
+        return normalize_text(value)
     if key != "chapters" or not isinstance(value, list):
         return value
     chapters: list[dict[str, Any]] = []
