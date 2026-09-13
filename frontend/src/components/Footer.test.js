@@ -28,4 +28,11 @@ describe("Footer compact colophon", () => {
     expect(footerSource).toContain("min-h-11");
     expect(footerSource).toContain('data-testid="footer-content-protection"');
   });
+
+  test("mounts configured shared social controls without replacing the contact mailto", () => {
+    expect(footerSource).toContain('import FooterSocialLinks from "./FooterSocialLinks"');
+    expect(footerSource).toContain("const { social } = useSettings();");
+    expect(footerSource).toContain("<FooterSocialLinks links={social} />");
+    expect(footerSource).toContain('href={`mailto:${CONTACT_EMAIL}`}');
+  });
 });

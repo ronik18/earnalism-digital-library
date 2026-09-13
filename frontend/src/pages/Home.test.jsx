@@ -45,4 +45,14 @@ describe("Home curated shelf integration", () => {
     expect(source).not.toContain("rights review");
     expect(source).not.toContain("No audiobook or paid campaign is live from this form.");
   });
+
+  test("keeps social navigation out of the intentionally hidden legacy Home composition", () => {
+    const legacyStart = source.indexOf('<div className="reference-home__legacy-content"');
+    const legacyEnd = source.indexOf('</div>\n      {activeSocials.length > 0 ? (', legacyStart);
+    const homeSocial = source.indexOf('data-testid="home-socials"');
+    expect(legacyStart).toBeGreaterThan(-1);
+    expect(legacyEnd).toBeGreaterThan(legacyStart);
+    expect(homeSocial).toBeGreaterThan(legacyEnd);
+    expect(source).toContain('className="home-social-navigation"');
+  });
 });

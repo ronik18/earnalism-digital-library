@@ -1851,8 +1851,9 @@ describe("UX conversion static signals", () => {
     expect(styles).toContain(".home-social-rail__link:focus-visible");
 
     expect(footer.indexOf("CONTACT_EMAIL")).toBeGreaterThanOrEqual(0);
-    expect(footer).not.toContain("FooterSocialLinks");
-    expect(footer).not.toContain("<FooterSocialLinks />");
+    expect(footer).toContain('import FooterSocialLinks from "./FooterSocialLinks"');
+    expect(footer).toContain("const { social } = useSettings();");
+    expect(footer).toContain("<FooterSocialLinks links={social} />");
     expect(footer).toContain("sales@reoenterprise.org");
     expect(footer).not.toContain("sales@reoenterprise.in");
     expect(footer).toContain("Timeless Bengali and English literature, made beautiful for every way you read and listen.");

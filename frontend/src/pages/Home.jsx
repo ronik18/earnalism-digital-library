@@ -298,23 +298,25 @@ export default function Home() {
             <p id="newsletter-trust" className="reading-dispatch__trust">Occasional. Thoughtful. Made for readers who still believe a book can change the room.</p>
             <div id="newsletter-status" className={`reading-dispatch__status ${newsletterStatus && !submitting ? "is-visible" : ""}`} aria-live="polite" role="status">{newsletterStatus}</div>
           </form>
-          {activeSocials.length > 0 ? (
-            <nav className="reading-circle__socials" aria-label="Earnalism social links" data-testid="home-socials">
-              <div className="reading-circle__social-label">FOLLOW THE LIBRARY ELSEWHERE</div>
-              <div className="reading-circle__social-grid">
-                {activeSocials.map(({ id, ariaLabel, external, Icon, label, url }) => (
-                  <a key={id} href={url} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} aria-label={ariaLabel} className="home-social-rail__link" data-social={id} data-testid={`home-social-${id}`} onClick={() => track("social_link_click", { source: "reading_circle", social_id: id })}>
-                    <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
-                    <span className="home-social-rail__copy">{label}</span>
-                    <ArrowUpRight className="home-social-rail__external" size={14} strokeWidth={1.5} aria-hidden="true" />
-                  </a>
-                ))}
-              </div>
-            </nav>
-          ) : null}
         </div>
       </section>
       </div>
+      {activeSocials.length > 0 ? (
+        <section className="home-social-navigation" aria-label="Follow The Earnalism">
+          <nav className="reading-circle__socials" aria-label="Earnalism social links" data-testid="home-socials">
+            <div className="reading-circle__social-label">FOLLOW THE LIBRARY ELSEWHERE</div>
+            <div className="reading-circle__social-grid">
+              {activeSocials.map(({ id, ariaLabel, external, Icon, label, url }) => (
+                <a key={id} href={url} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} aria-label={ariaLabel} className="home-social-rail__link" data-social={id} data-testid={`home-social-${id}`} onClick={() => track("social_link_click", { source: "reading_circle", social_id: id })}>
+                  <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
+                  <span className="home-social-rail__copy">{label}</span>
+                  <ArrowUpRight className="home-social-rail__external" size={14} strokeWidth={1.5} aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+          </nav>
+        </section>
+      ) : null}
     </div>
   );
 }

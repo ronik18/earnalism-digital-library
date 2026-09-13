@@ -12,6 +12,7 @@ import { getEnabledSocialLinks } from "../config/socialLinks";
 
 const ICONS = {
   facebook: Facebook,
+  email: Mail,
   mail: Mail,
   instagram: Instagram,
   linkedin: Linkedin,
