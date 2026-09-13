@@ -6,7 +6,10 @@ from copy import deepcopy
 from backend import catalog_truth, home_curation_v4
 
 
-SLUG = "book-2b9853ec52"
+# Use a currently eligible controlled artifact as the shell for the synthetic
+# private package.  The prior slug is intentionally excluded and has no
+# artifact, which stopped every redaction assertion before it ran.
+SLUG = "a-ghost-story"
 RELEASE_DESCRIPTOR_SHA256 = "e00ec647012b90a2f2d5324ac59eec8f755e6353c3a736497495e53d9a21f26a"
 PACKAGE_VERSION = "sha256-" + ("7" * 64)
 PRIVATE_BUCKET = "earnalism-private-package-v2-test"
@@ -171,7 +174,9 @@ def test_public_catalog_projection_omits_package_v2_storage_identity() -> None:
     assert projected is not None
     assert projected["slug"] == SLUG
     assert projected["audio_enabled"] is True
-    assert projected["audio_url"] == f"/api/reader/book/{SLUG}/audiobook"
+    # Public catalogue discovery can report an approved audio edition, but
+    # never publishes a media route or package identity.
+    assert projected["audio_url"] == ""
     _assert_no_private_package_identity(projected)
 
 
