@@ -397,10 +397,19 @@
   .premium-site-header .mobile-menu-overlay__socials {
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: .75rem;
     margin-top: auto;
     padding-top: 2rem;
+  }
+
+  .premium-site-header .mobile-menu-overlay__social-link {
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
   }
 }
 

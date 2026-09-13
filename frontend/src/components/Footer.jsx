@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail } from "lucide-react";
 import EarnalismBrandLockup from "./EarnalismBrandLockup";
+import FooterSocialLinks from "./FooterSocialLinks";
 import { useAuth } from "../context/AuthContext";
+import { useSettings } from "../context/SettingsContext";
 
 const CONTACT_EMAIL = "sales@reoenterprise.org";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   const { user } = useAuth();
+  const { social } = useSettings();
   const accountHref = user && typeof user === "object" ? "/account" : "/login";
   const accountLabel = user && typeof user === "object" ? "Account" : "Sign In";
 
@@ -29,6 +32,7 @@ export default function Footer() {
             <p className="mt-2 max-w-lg text-sm font-light leading-6 text-[#cfb78f]">
               Return to beloved classics, discover a voice you have never forgotten, and carry your library wherever the day takes you.
             </p>
+            <FooterSocialLinks links={social} />
           </div>
 
           <nav aria-labelledby="footer-explore-heading">
