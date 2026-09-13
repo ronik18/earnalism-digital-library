@@ -12,12 +12,13 @@ const authorizedManifestAudio = {
 };
 const packageManifestAudio = {
   enabled: true,
+  asset_slug: "a-ghost-story",
   provider: "fixture-package-provider",
   version: "release-v2",
   release_gate: "APPROVED",
   qa_status: "QA_PASSED",
   package_version: `sha256-${"a".repeat(64)}`,
-  assets: { manifest: "/api/reader/book/a-ghost-story/audiobook/manifest" },
+  assets: {},
 };
 const packageApprovedPublicBook = {
   slug: "a-ghost-story",
@@ -46,12 +47,9 @@ describe("reader manifest access", () => {
     expect(readerManifestAudioIsAuthorized(packageApprovedPublicBook, packageManifestAudio)).toBe(true);
   });
 
-  test("fails closed when an immutable package manifest is incomplete or not bound to the book", () => {
+  test("fails closed when an immutable package release is incomplete or not bound to the book", () => {
     expect(readerManifestAudioIsAuthorized(packageApprovedPublicBook, { ...packageManifestAudio, package_version: "sha256-not-a-hash" })).toBe(false);
-    expect(readerManifestAudioIsAuthorized(packageApprovedPublicBook, {
-      ...packageManifestAudio,
-      assets: { manifest: "/api/reader/book/another-book/audiobook/manifest" },
-    })).toBe(false);
+    expect(readerManifestAudioIsAuthorized(packageApprovedPublicBook, { ...packageManifestAudio, asset_slug: "another-book" })).toBe(false);
     expect(readerManifestAudioIsAuthorized(packageApprovedPublicBook, { ...packageManifestAudio, qa_status: "" })).toBe(false);
     expect(readerManifestAudioIsAuthorized({ ...packageApprovedPublicBook, audio_enabled: false }, packageManifestAudio)).toBe(false);
   });
