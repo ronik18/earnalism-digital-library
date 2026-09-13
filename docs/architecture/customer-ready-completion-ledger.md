@@ -8,7 +8,7 @@ not promote a route inventory or fixture capture into production acceptance.
 
 | Area | Implemented/deployed | Isolated or fixture evidence | Production evidence | Remaining work / status |
 | --- | --- | --- | --- | --- |
-| Home, Library, Reading Passes | Yes | Responsive and CTA fixtures; current candidate System UAT | Current browser-origin Library requests passed at measured desktop-Chrome CSS viewports `320×567` and `390×844`; this is not physical-device evidence | `MOBILE_ACCEPTANCE_PENDING`: the required exact production `768×1024` responsive case is not yet observed. Physical-device testing is not a Library prerequisite. |
+| Home, Library, Reading Passes | Yes | Responsive and CTA fixtures; current candidate System UAT, including exact `768×1024` API-fixture coverage | Current browser-origin Library requests passed at measured desktop-Chrome CSS viewports `320×567` and `390×844`; this is not physical-device evidence | Public Library responsive evidence is mapped to its actual environments. `MOBILE_ACCEPTANCE_PENDING` remains open for the separate final protected-player physical-device pre-activation test, not for a duplicate production `768×1024` Library capture. |
 | Book Detail → Reader | Yes | Canonical chapter mapping, protected-entry, denied, reload, Back, and keyboard journeys | No authenticated protected-page interaction | Requires an explicitly authorized consuming production session procedure |
 | Book Detail → Listener / Listener | Yes | Navigation, unavailable/recovery, authorization-state, and manifest fixtures | Public recovery/navigation only; no successful authorized playback | Audio/session acceptance requires a separate authorization and released-audio precondition |
 | Reader | Yes | Public pages 1–3, page-4 denial/authorized local flow, positions, duplicate/session-transfer and cache tests | No protected production session | V2 is currently disabled; protected production behavior is untested |
@@ -22,7 +22,7 @@ not promote a route inventory or fixture capture into production acceptance.
 | Current backend deployment | N/A—separate backend service | N/A | Railway production deployment `136e2460-f9d7-43b9-94a5-6235d12c5e2f`, source `b47ae96916adbd31f5baed182af76bde64980530`, two running instances observed | Backend is intentionally a separately deployed source; no equality with frontend main is inferred |
 | Reading Pass V2 effective configuration | N/A | Local UAT enabled only in disposable services | `GET /api/reading-pass/config` at `2026-09-09T04:30:52Z` reported `enabled=false`, three public text pages, and zero public audio seconds | Configuration observation is not activation-readiness evidence or an activation decision |
 | Public API browser readability | N/A | Local/API fixture coverage only | Three bounded browser-origin `/api/books` observations at measured `320×567` and `390×844` completed `200` with matching ACAO and `Vary: Accept-Encoding, Origin`; browser disk cache and service-worker serving were absent | Historical interruption attribution remains unresolved. The current bounded CORS observations pass; do not infer permanent reliability or a current defect. |
-| Mobile Library acceptance | N/A | Exact `768×1024` isolated API-fixture journey passed on current source; `320×568` recovery-fixture coverage also exists | Measured `320×567` and `390×844` desktop-Chrome CSS-emulation journeys passed with browser-origin API evidence; neither is physical-device evidence | `MOBILE_ACCEPTANCE_PENDING=OPEN`: exact `768×1024` production browser observation remains missing. The sanctioned viewport control cannot express it exactly (`767` or `769` CSS pixels). |
+| Mobile Library acceptance | N/A | Exact `768×1024` isolated API-fixture journey passed on the source/environment recorded below; `320×568` recovery-fixture coverage also exists | Measured `320×567` and `390×844` desktop-Chrome CSS-emulation journeys passed with browser-origin API evidence; neither is physical-device evidence. Exact production `768×1024` is `NOT_OBSERVED`. | The governing responsive sections do not require a duplicate production `768×1024` capture when the exact-width isolated case and bounded public observations are retained. Notify-me remains `NOT_OBSERVED` because no preparation card occurred naturally. This row does not close physical-device player acceptance. |
 | Historical worktree preservation | N/A | Recovery records retained | N/A | Earlier disappearance cause remains unresolved; a later clean worktree is not explanatory evidence |
 
 ## Current review candidate
@@ -41,7 +41,7 @@ the current review head remains the source tested at `4ed752384…`.
 ## Program state
 
 - `PUBLIC_API_CORS_INTERMITTENCY_P1=CURRENT_BOUNDED_PASS`: retain the older interruption as unresolved historical attribution; do not represent it as a reproduced current failure.
-- `MOBILE_ACCEPTANCE_PENDING=OPEN`: production browser evidence is complete at measured `320×567` and `390×844`, but exact `768×1024` remains unavailable on the sanctioned desktop-Chrome viewport control. This is a responsive-evidence gap, not a physical-device-only Library requirement.
+- `MOBILE_ACCEPTANCE_PENDING=OPEN`: exact production `768×1024` is `NOT_OBSERVED`, while exact `768×1024` isolated API-fixture evidence and bounded production `320×567`/`390×844` observations are retained. That unobserved duplicate production capture is not the sole blocker under the cited responsive requirements; the remaining mobile-specific pre-activation requirement is final protected-player physical-device background/lock/unlock/return/Stop validation.
 - `READING_PASS_V2_ENABLED=false` observed at `2026-09-09T04:30:52Z`; activation readiness is unverified.
 - `CUSTOMER_READY=NOT_DECLARED`
 
@@ -69,7 +69,15 @@ background/locked-screen playback before V2 production enablement.
 - Exact `768×1024` is verified only in the current-source isolated
   `768-api` scenario: Header navigation, selected controls, eligibility,
   All releases/Reader-only, reload, Back, approved-audio presentation, and
-  overflow/44px assertions passed. It is not production evidence.
+  overflow/44px assertions passed. The scenario ran against source
+  `60c3548eb8dd16613dd8ad301a5b337a258f0c2f` in the disposable loopback UAT
+  stack (frontend `127.0.0.1:3000`, API `127.0.0.1:8000/api`, local MongoDB
+  and Redis); it is isolated API-fixture evidence, not production evidence.
+- Exact production `768×1024` is `NOT_OBSERVED`. It is not required as a
+  duplicate production capture by `docs/reading-pass-access.md` or the
+  customer-ready autonomy envelope. Notify-me likewise remains
+  `NOT_OBSERVED`, rather than failed, because no preparation card was present
+  during the bounded public journey.
 - Final-player physical-device preflight is prepared but unexecuted: run the
   final protected-media player against the disposable V2-enabled UAT stack on
   an attached physical Android or iOS browser; verify an approved packaged
