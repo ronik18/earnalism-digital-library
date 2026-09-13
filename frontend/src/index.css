@@ -2240,6 +2240,11 @@ h6 {
 .home-social-rail__link:hover { border-color: rgba(235, 207, 148, 0.34); background: rgba(255, 239, 204, 0.07); color: #f1d590; transform: translateY(-1px); }
 .home-social-rail__link:focus-visible { outline: 2px solid #f3d190; outline-offset: 3px; }
 
+/* Kept outside Home's intentionally hidden legacy composition. */
+.home-social-navigation { background: #240c14; color: #fff4de; }
+.home-social-navigation .reading-circle__socials { display: block; max-width: 80rem; min-height: 0; margin: 0 auto; padding: 1.5rem 1.25rem; border-top: 0; }
+.home-social-navigation .reading-circle__social-grid { margin-top: 0.65rem; }
+
 @media (max-width: 1120px) {
   .reading-circle__inner { grid-template-areas: "story" "dispatch" "social"; grid-template-columns: minmax(0, 42rem); justify-content: center; row-gap: 2.75rem; }
   .reading-circle__story { max-width: none; }
@@ -2260,6 +2265,7 @@ h6 {
   .reading-circle__social-grid { margin-top: 0.6rem; }
   .home-social-rail__link { min-height: 2.75rem; padding-inline: 0.45rem; }
   .home-social-rail__external { display: none; }
+  .home-social-navigation .reading-circle__socials { padding-inline: 1.25rem; }
 }
 
 @media (max-width: 680px) {

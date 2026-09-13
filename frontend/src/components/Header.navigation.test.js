@@ -59,4 +59,13 @@ describe("premium header navigation", () => {
     expect(styles).not.toContain("--site-header-height: 2.8rem;");
     expect(globalStyles).toContain("--site-header-height: 3.6rem;");
   });
+
+  test("keeps mobile social controls focusable, non-shrinking, and able to wrap", () => {
+    expect(source).toContain('className="mobile-menu-overlay__social-link');
+    expect(styles).toContain(".mobile-menu-overlay__socials");
+    expect(styles).toContain("flex-wrap: wrap;");
+    expect(styles).toContain("flex: 0 0 44px;");
+    expect(styles).toContain("min-width: 44px;");
+    expect(styles).toContain("min-height: 44px;");
+  });
 });
