@@ -48,7 +48,10 @@ const audioBook = {
   audio_enabled: true,
   audiobook_release_gate: "APPROVED",
   audio_qa_status: "QA_PASSED",
-  audiobook_assets: { manifest: "/api/reader/book/audio-edition/audiobook/manifest" },
+  // The public book projection intentionally carries no protected media or
+  // package URL. Book Detail must bind the approved release to the matching
+  // immutable manifest returned by the public Reader-manifest contract.
+  audiobook_assets: {},
   chapters: [{ id: "audio-chapter", title: "Approved Chapter" }],
 };
 
@@ -599,8 +602,11 @@ async function runEntitledListener({ id, viewport }) {
   assert.equal(requests.packageManifestRequests, 1, `${id}: Listener did not fetch one authorized package manifest`);
   await page.screenshot({ path: path.join(output, `${id}-listener-package-active.png`), fullPage: true });
   await page.getByRole("button", { name: "Play approved audiobook" }).click();
-  await page.waitForTimeout(100);
-  assert.ok(requests.protectedAudioRequests.some((entry) => entry.segment_id === "c001-s001" && entry.method === "GET"), `${id}: normal Listener did not request the first protected package segment`);
+  await waitForCondition(() => requests.protectedAudioRequests.some((entry) => entry.segment_id === "c001-s001" && entry.method === "GET"), `${id}: normal Listener did not request the first protected package segment`);
+  // The fixture body is intentionally tiny. Pause it before dispatching the
+  // explicit end event so native decoding cannot complete both segments before
+  // this test observes the manifest-ordered transition.
+  await audio.evaluate((node) => node.pause());
   await audio.evaluate((node) => node.dispatchEvent(new Event("ended")));
   await page.waitForFunction(() => document.querySelector('[data-testid="listener-package-audio"]')?.getAttribute("data-segment-id") === "c001-s002");
   assert.match(await audio.getAttribute("src"), /segments\/c001-s002$/, `${id}: Listener did not transition through manifest order`);
@@ -924,6 +930,10 @@ const scenarios = [
 const selectedScenarioIds = new Set((process.env.BOOK_READER_LISTENER_SCENARIOS || "").split(",").filter(Boolean));
 const focus = String(process.env.BOOK_READER_LISTENER_FOCUS || "").trim();
 for (const scenario of scenarios.filter(({ id }) => selectedScenarioIds.size === 0 || selectedScenarioIds.has(id))) {
+  if (focus === "book-detail-listener") {
+    results.push(await runAnonymousHandoffs(scenario));
+    continue;
+  }
   if (focus === "listener-package") {
     results.push(await runAnonymousListenerPackage(scenario));
     results.push(await runEntitledListener(scenario));
