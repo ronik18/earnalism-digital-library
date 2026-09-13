@@ -3,112 +3,112 @@
   "schema_version": 1,
   "slug": "agentic-ai-with-python",
   "title": "Agentic AI With Python",
-  "generated_at": "2026-08-08T10:38:37.549001+00:00",
+  "generated_at": "2026-09-12T13:34:11.119698+00:00",
   "content": {
     "source_hash": "c0d3577b9b4f7f91c2ecc19ff64e7bc2e64d1091275def3c3849f97e6b1a8a8f",
-    "content_hash": "ac367d6f454d788e30966dd74bc325d49241f015652606e64e66c4167e5884fd",
-    "provenance_hash": "ebf9cbdbd8fea126f54f57f142d6306ae2946529d5fe710a7c61a3c70dc36d3c",
+    "content_hash": "750b1c7cf78457bed5083d11db08e6cc1999cd73bcb7546ff460ad62d2034282",
+    "provenance_hash": "7128a3c1a4c269ff0abe92e43cfc398087b7e158ce6803b5d5e947d25e067492",
     "sanitized": true,
     "chapter_count": 14,
-    "chapter_index_sha256": "1d67359122e7d407d47c88db48589674b3e06cd726d3079a04f3d5276a5be052",
+    "chapter_index_sha256": "6de61ff740a4144d5b6db3d283cd38f2ac32ad3e41d1adfc5d5c83f930d4710a",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
-        "title": "Chapter 1: Why AI Agents Are the Next Big Python Skill",
-        "word_count": 4215,
-        "sha256": "3403364abe6867ae85ca2553660f115b5d3b8c1c64282e540fcf3102588ebddc"
+        "title": "Chapter 1: Building Your First Python AI Assistant",
+        "word_count": 6137,
+        "sha256": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a"
       },
       {
         "id": "chapter-002",
         "order": 2,
-        "title": "Chapter 2: LLMs, Prompts, Tokens, and APIs Without Confusion",
-        "word_count": 4383,
-        "sha256": "e40501f91c01c95ca496056bc5174e18c43032fc5464b832ef39004bb633e80e"
+        "title": "Chapter 2: LLMs, Prompts, Tokens and a Reusable API Client",
+        "word_count": 6465,
+        "sha256": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc"
       },
       {
         "id": "chapter-003",
         "order": 3,
         "title": "Chapter 3: Your First Python AI App",
-        "word_count": 4754,
-        "sha256": "6d5b40846603180731c68721fd54038d2142801ec78bf9d8af8b22d3e1030523"
+        "word_count": 5544,
+        "sha256": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7"
       },
       {
         "id": "chapter-004",
         "order": 4,
         "title": "Chapter 4: RAG — Chat with Your Own Documents",
-        "word_count": 5625,
-        "sha256": "38ed2cd9f03b82ef7631c1080a55e597b38fc6c5186a7ce68cc54379cc1ba68f"
+        "word_count": 7223,
+        "sha256": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f"
       },
       {
         "id": "chapter-005",
         "order": 5,
         "title": "Chapter 5: Embeddings, Vector Databases, and Semantic Search",
-        "word_count": 5181,
-        "sha256": "0e182c5a9a59407bc72961cfecf0d4c277450fe2e27de54af892181b89027a0b"
+        "word_count": 6359,
+        "sha256": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8"
       },
       {
         "id": "chapter-006",
         "order": 6,
         "title": "Chapter 6: Tool-Using Agents in Python",
-        "word_count": 5784,
-        "sha256": "8468a8179007cee88001c9e30672dca07625958ec6af8f463150e1995752e95d"
+        "word_count": 7001,
+        "sha256": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715"
       },
       {
         "id": "chapter-007",
         "order": 7,
-        "title": "Chapter 7: Memory — Making AI Assistants Remember Context",
-        "word_count": 5404,
-        "sha256": "918b42f867086229f1675377b26f9791e9d9271f81cc90abdf290de932ff4441"
+        "title": "Chapter 7: Memory — Giving an Assistant Useful Context",
+        "word_count": 6976,
+        "sha256": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730"
       },
       {
         "id": "chapter-008",
         "order": 8,
         "title": "Chapter 8: Workflow Automation with AI Agents",
-        "word_count": 5754,
-        "sha256": "29d3c4d459112135f4d5d9f8572e8ff189c3d4c5ffa1c4c1f7890829d1473bad"
+        "word_count": 7854,
+        "sha256": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701"
       },
       {
         "id": "chapter-009",
         "order": 9,
         "title": "Chapter 9: Multi-Step and Multi-Agent Workflows",
-        "word_count": 5363,
-        "sha256": "5ddb998b347fbb31a10ffd2eca68491a99dd1f318fa0c11925c32c53f1631e0a"
+        "word_count": 6677,
+        "sha256": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03"
       },
       {
         "id": "chapter-010",
         "order": 10,
         "title": "Chapter 10: Guardrails, Safety, and Hallucination Control",
-        "word_count": 6477,
-        "sha256": "fd6e8b0388b97f106a227214db4205fb065a28ff447d84776747564d01d5ed00"
+        "word_count": 7959,
+        "sha256": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c"
       },
       {
         "id": "chapter-011",
         "order": 11,
         "title": "Chapter 11: Testing, Evaluation, Monitoring, and Cost Control",
-        "word_count": 6767,
-        "sha256": "a7a9dba8faaf387ee145383312ad6cebf81aad9e8ac50380b6778614c41db970"
+        "word_count": 7545,
+        "sha256": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c"
       },
       {
         "id": "chapter-012",
         "order": 12,
         "title": "Chapter 12: Deploying Your Python AI Agent",
-        "word_count": 6200,
-        "sha256": "176f7ee7c05bd51cf821117a7a9c313ff0eb85221c2a0cd88cf22f4ff29d2646"
+        "word_count": 7628,
+        "sha256": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a"
       },
       {
         "id": "chapter-013",
         "order": 13,
-        "title": "Chapter 13: Conclusion, Bonus Resources, and Publishing Assets",
-        "word_count": 2921,
-        "sha256": "6c293a2bd15ae86f6ec67ff69e82f5b24274c0ff9c767cdf15ce22a4451fe80a"
+        "title": "Chapter 13: Bringing the Projects Together",
+        "word_count": 2535,
+        "sha256": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03"
       },
       {
         "id": "chapter-014",
         "order": 14,
-        "title": "Chapter 14: Final Quality Review, Glossary, and Reader Next Steps",
-        "word_count": 1587,
-        "sha256": "2d76738b47b498af18835f81dca74506d074129f519454ddb730062768ca724a"
+        "title": "Chapter 14: Glossary and Your Next Project",
+        "word_count": 1144,
+        "sha256": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da"
       }
     ]
   },
@@ -116,7 +116,7 @@
     "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "2cae6a6d1f515115a5d051a2182009a22ed7d75987583828e5dd5916fe14b33d"
+    "evidence_sha256": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386"
   },
   "reader_release": {
     "status": "APPROVED",
@@ -135,10 +135,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "f6fd84ce242d3600602bf5f85b6a699191edc5e9d947bf175b01bbb6cdd87bf2",
-    "reader_manifest": "57c5f4bb36ec73debefdff5741139890b015f28b4ba6f6ba1091f23caf838872",
-    "source_evidence": "2cae6a6d1f515115a5d051a2182009a22ed7d75987583828e5dd5916fe14b33d",
+    "public_book": "3b9fb4c9c4ab17f1746d5df6d889692e6440db6262277e099a87d69cbdd18b3e",
+    "reader_manifest": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+    "source_evidence": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386",
     "approval_evidence": "1d34313e08796c09cb8d3a9a0e9a343c59fce01028bdaa47e846cf25f505d308"
   },
-  "manifest_sha256": "efb3e6d36eab4cd2faf5a4c7ab1607cb8d56c1bb886c17091982e01e603ca85a"
+  "manifest_sha256": "4c16115c07f1004440f97b3334f7e94cd8bce706a6dc645481c5963405cfbf26"
 }

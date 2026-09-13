@@ -19,7 +19,7 @@ function parseArgs(argv) {
   const options = { webkitRuns: 10, chromiumRuns: 5, firefoxRuns: 5 };
   const names = new Map([
     ["--base-url", "baseUrl"], ["--output", "output"], ["--manifest", "manifest"],
-    ["--route-inventory", "routeInventory"], ["--capture-script", "captureScript"], ["--state-id", "stateId"],
+    ["--route-inventory", "routeInventory"], ["--capture-script", "captureScript"], ["--state-id", "stateId"], ["--server-log", "serverLog"],
     ["--webkit-runs", "webkitRuns"], ["--chromium-runs", "chromiumRuns"], ["--firefox-runs", "firefoxRuns"],
   ]);
   for (let index = 0; index < argv.length; index += 1) {
@@ -44,6 +44,63 @@ function resolveSafeOutput(raw) {
 function readJson(file, label) {
   if (!fs.existsSync(file)) throw new Error(`Missing ${label}: ${file}`);
   return JSON.parse(fs.readFileSync(file, "utf8"));
+}
+
+function redact(value) {
+  if (Array.isArray(value)) return value.map(redact);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, entry]) => (
+      /authorization|cookie|token|password|secret/i.test(key) ? [key, "REDACTED"] : [key, redact(entry)]
+    )));
+  }
+  if (typeof value !== "string") return value;
+  return value.replace(/([?&](?:access_)?token=)[^&#\s]+/gi, "$1REDACTED").replace(/(https?:\/\/)[^/\s]+(?:\/private\/[^\s]*)?/gi, "$1SANITIZED_HOST").slice(0, 4000);
+}
+
+function readOptionalJson(file) {
+  if (!fs.existsSync(file)) return null;
+  try { return redact(JSON.parse(fs.readFileSync(file, "utf8"))); } catch { return { unreadable: true }; }
+}
+
+function writeFailureDiagnostics({ root, options, browser, index, output, result, error }) {
+  const directory = path.join(root, "article-stability-diagnostics");
+  const stateDirectory = path.join(output, "states", options.stateId);
+  fs.mkdirSync(directory, { recursive: true });
+  const screenshots = [];
+  const metadata = readOptionalJson(path.join(stateDirectory, "metadata.json"));
+  for (const [label, relative] of Object.entries(metadata?.screenshot_paths || {})) {
+    if (typeof relative !== "string" || path.isAbsolute(relative) || relative.split(path.sep).includes("..")) continue;
+    const source = path.join(stateDirectory, relative);
+    if (!fs.existsSync(source)) continue;
+    const destination = path.join(directory, `${browser}-run-${index}-${label}.png`);
+    fs.copyFileSync(source, destination);
+    screenshots.push(path.basename(destination));
+  }
+  const serverLog = options.serverLog && fs.existsSync(options.serverLog) ? redact(fs.readFileSync(options.serverLog, "utf8").slice(-16000)) : null;
+  const failure = {
+    result: "FAIL",
+    exact_pr_head: gitReference("rev-parse", "HEAD"),
+    state_id: options.stateId,
+    browser,
+    repetition: index,
+    base_url: redact(options.baseUrl),
+    capture_script_sha256: sha256(path.resolve(options.captureScript)),
+    manifest_sha256: sha256(path.resolve(options.manifest)),
+    route_inventory_sha256: sha256(path.resolve(options.routeInventory)),
+    error: redact(error.message),
+    capture_exit_code: result?.status ?? null,
+    capture_stdout: redact(result?.stdout || ""),
+    capture_stderr: redact(result?.stderr || ""),
+    capture_summary: readOptionalJson(path.join(output, "capture-summary.json")),
+    metadata,
+    console_errors: readOptionalJson(path.join(stateDirectory, "console-errors.json")),
+    page_errors: readOptionalJson(path.join(stateDirectory, "page-errors.json")),
+    failed_requests: readOptionalJson(path.join(stateDirectory, "failed-requests.json")),
+    server_diagnostics: serverLog,
+    screenshot_references: screenshots,
+    generated_timestamp: new Date().toISOString(),
+  };
+  fs.writeFileSync(path.join(directory, "failure.json"), `${JSON.stringify(failure, null, 2)}\n`);
 }
 
 function validateRun({ output, browser, index, stateId }) {
@@ -76,8 +133,13 @@ export function runArticleStabilityGate(options) {
       if (fs.existsSync(resolvedOutput)) throw new Error(`Duplicate Article stability run directory already exists: ${resolvedOutput}`);
       runDirectories.add(resolvedOutput);
       const result = spawnSync(process.execPath, [captureScript, "--manifest", manifest, "--route-inventory", routeInventory, "--state-filter", options.stateId, "--capture", "--browser", browser, "--base-url", options.baseUrl, "--output", resolvedOutput], { cwd: ROOT, encoding: "utf8", maxBuffer: 40 * 1024 * 1024, shell: false });
-      if (result.status !== 0) throw new Error(`${browser} run ${index}: capture process failed (${result.status}): ${result.stderr || result.stdout}`);
-      runs.push(validateRun({ output: resolvedOutput, browser, index, stateId: options.stateId }));
+      try {
+        if (result.status !== 0) throw new Error(`${browser} run ${index}: capture process failed (${result.status}): ${result.stderr || result.stdout}`);
+        runs.push(validateRun({ output: resolvedOutput, browser, index, stateId: options.stateId }));
+      } catch (error) {
+        writeFailureDiagnostics({ root, options, browser, index, output: resolvedOutput, result, error });
+        throw error;
+      }
     }
     if (runs.length !== count) throw new Error(`${browser}: missing Article stability run`);
     articleMobile[browser] = { expected: count, captured: runs.length, stable: runs.filter((run) => run.stable === 1).length, runs };
