@@ -8,7 +8,7 @@ not promote a route inventory or fixture capture into production acceptance.
 
 | Area | Implemented/deployed | Isolated or fixture evidence | Production evidence | Remaining work / status |
 | --- | --- | --- | --- | --- |
-| Home, Library, Reading Passes | Yes | Responsive and CTA fixtures; current candidate System UAT | Main-push deployment/canary passed for the released source | `MOBILE_ACCEPTANCE_PENDING`; real mobile API-backed Library acceptance remains open |
+| Home, Library, Reading Passes | Yes | Responsive and CTA fixtures; current candidate System UAT, including exact `768×1024` API-fixture coverage | Current browser-origin Library requests passed at measured desktop-Chrome CSS viewports `320×567` and `390×844`; this is not physical-device evidence | Public Library responsive evidence is mapped to its actual environments. `MOBILE_ACCEPTANCE_PENDING` remains open for the separate final protected-player physical-device pre-activation test, not for a duplicate production `768×1024` Library capture. |
 | Book Detail → Reader | Yes | Canonical chapter mapping, protected-entry, denied, reload, Back, and keyboard journeys | No authenticated protected-page interaction | Requires an explicitly authorized consuming production session procedure |
 | Book Detail → Listener / Listener | Yes | Navigation, unavailable/recovery, authorization-state, and manifest fixtures | Public recovery/navigation only; no successful authorized playback | Audio/session acceptance requires a separate authorization and released-audio precondition |
 | Reader | Yes | Public pages 1–3, page-4 denial/authorized local flow, positions, duplicate/session-transfer and cache tests | No protected production session | V2 is currently disabled; protected production behavior is untested |
@@ -21,8 +21,8 @@ not promote a route inventory or fixture capture into production acceptance.
 | Current frontend deployment | Yes | N/A | GitHub main-push run `34274857117` bound to `ab24cadd…` succeeded: regression job `102225239735`, Vercel deploy `102227024220`, and canary `102227604487` | Vercel’s deployed source identity is evidenced through this workflow binding; provider inspection does not independently expose a Git SHA |
 | Current backend deployment | N/A—separate backend service | N/A | Railway production deployment `136e2460-f9d7-43b9-94a5-6235d12c5e2f`, source `b47ae96916adbd31f5baed182af76bde64980530`, two running instances observed | Backend is intentionally a separately deployed source; no equality with frontend main is inferred |
 | Reading Pass V2 effective configuration | N/A | Local UAT enabled only in disposable services | `GET /api/reading-pass/config` at `2026-09-09T04:30:52Z` reported `enabled=false`, three public text pages, and zero public audio seconds | Configuration observation is not activation-readiness evidence or an activation decision |
-| Public API browser readability | N/A | Local/API fixture coverage only | The headed Pixel reload interruption remains unresolved; Railway had no matching upstream request for the reported failure | `PUBLIC_API_CORS_INTERMITTENCY_P1=OPEN`; do not make a speculative CORS change |
-| Mobile Library acceptance | N/A | Isolated mobile fixtures passed | Not completed in a headed real mobile context | `MOBILE_ACCEPTANCE_PENDING=OPEN`; direct API probes and hidden fallback DOM do not close it |
+| Public API browser readability | N/A | Local/API fixture coverage only | Three bounded browser-origin `/api/books` observations at measured `320×567` and `390×844` completed `200` with matching ACAO and `Vary: Accept-Encoding, Origin`; browser disk cache and service-worker serving were absent | Historical interruption attribution remains unresolved. The current bounded CORS observations pass; do not infer permanent reliability or a current defect. |
+| Mobile Library acceptance | N/A | Exact `768×1024` isolated API-fixture journey passed on the source/environment recorded below; `320×568` recovery-fixture coverage also exists | Measured `320×567` and `390×844` desktop-Chrome CSS-emulation journeys passed with browser-origin API evidence; neither is physical-device evidence. Exact production `768×1024` is `NOT_OBSERVED`. | The governing responsive sections do not require a duplicate production `768×1024` capture when the exact-width isolated case and bounded public observations are retained. Notify-me remains `NOT_OBSERVED` because no preparation card occurred naturally. This row does not close physical-device player acceptance. |
 | Historical worktree preservation | N/A | Recovery records retained | N/A | Earlier disappearance cause remains unresolved; a later clean worktree is not explanatory evidence |
 
 ## Current review candidate
@@ -40,7 +40,51 @@ the current review head remains the source tested at `4ed752384…`.
 
 ## Program state
 
-- `PUBLIC_API_CORS_INTERMITTENCY_P1=OPEN`
-- `MOBILE_ACCEPTANCE_PENDING=OPEN`
+- `PUBLIC_API_CORS_INTERMITTENCY_P1=CURRENT_BOUNDED_PASS`: retain the older interruption as unresolved historical attribution; do not represent it as a reproduced current failure.
+- `MOBILE_ACCEPTANCE_PENDING=OPEN`: exact production `768×1024` is `NOT_OBSERVED`, while exact `768×1024` isolated API-fixture evidence and bounded production `320×567`/`390×844` observations are retained. That unobserved duplicate production capture is not the sole blocker under the cited responsive requirements; the remaining mobile-specific pre-activation requirement is final protected-player physical-device background/lock/unlock/return/Stop validation.
 - `READING_PASS_V2_ENABLED=false` observed at `2026-09-09T04:30:52Z`; activation readiness is unverified.
 - `CUSTOMER_READY=NOT_DECLARED`
+
+## Browser and final-player reconciliation — 2026-09-13
+
+Authority interpretation follows `docs/architecture/MODERNIZATION_STATE.json`:
+the autonomy envelope requires Chromium mobile journeys and browser history,
+the Reading Pass contract requires exact responsive widths, and its
+physical-device requirement is specifically final protected-audio
+background/locked-screen playback before V2 production enablement.
+
+- The measured production browser cases used sanctioned Chrome CDP with
+  browser cache disabled and service-worker bypassed for each acceptance
+  reload. This ledger retains only sanitized request facts; no cookies,
+  authorization data, media URLs, or protected bodies were exported.
+- `320×567`: direct Reader-only Library reload, API-backed `200`, matching
+  approved Origin/ACAO, `Vary: Accept-Encoding, Origin`, All releases filter,
+  Back restoration, and no document overflow passed. Long English author
+  names use intentional ellipsis; the compact Reading Pass illustration is
+  intentionally clipped while its text and CTA remain within bounds. No
+  preparation card was present in the live response, so Notify-me was not
+  observed.
+- `390×844`: direct reload, Header → Bengali Classics, filter/reload/Back,
+  and no document overflow passed with the same bounded CORS contract.
+- Exact `768×1024` is verified only in the current-source isolated
+  `768-api` scenario: Header navigation, selected controls, eligibility,
+  All releases/Reader-only, reload, Back, approved-audio presentation, and
+  overflow/44px assertions passed. The scenario ran against source
+  `60c3548eb8dd16613dd8ad301a5b337a258f0c2f` in the disposable loopback UAT
+  stack (frontend `127.0.0.1:3000`, API `127.0.0.1:8000/api`, local MongoDB
+  and Redis); it is isolated API-fixture evidence, not production evidence.
+- Exact production `768×1024` is `NOT_OBSERVED`. It is not required as a
+  duplicate production capture by `docs/reading-pass-access.md` or the
+  customer-ready autonomy envelope. Notify-me likewise remains
+  `NOT_OBSERVED`, rather than failed, because no preparation card was present
+  during the bounded public journey.
+- Final-player physical-device preflight is prepared but unexecuted: run the
+  final protected-media player against the disposable V2-enabled UAT stack on
+  an attached physical Android or iOS browser; verify an approved packaged
+  segment starts only under local authorization, then background and
+  lock/unlock the device, return to the player, stop, settle, and confirm no
+  further protected request or renewal. Current sanctioned access exposes a
+  desktop Chrome extension with viewport/CDP controls only; it exposes no
+  physical mobile device, mobile OS background/lock state, or device-media
+  session surface. This is a technical capability limitation, not an owner
+  approval hold.
