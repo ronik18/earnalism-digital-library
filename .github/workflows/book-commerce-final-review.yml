@@ -55,9 +55,10 @@ jobs:
       - name: Materialize reviewed baseline
         run: |
           base_dir="$RUNNER_TEMP/pr341-book-commerce-base"
-          mkdir -p "$base_dir/scripts"
+          mkdir -p "$base_dir/scripts/lib"
           git archive 706dfe228cdd554c8aa358b2b112912f457823be | tar -x -C "$base_dir"
           cp scripts/capture_book_commerce_final_review.mjs "$base_dir/scripts/"
+          cp scripts/lib/book_commerce_capture_contract.mjs "$base_dir/scripts/lib/"
           ln -s "$GITHUB_WORKSPACE/node_modules" "$base_dir/node_modules"
           ln -s "$GITHUB_WORKSPACE/frontend/node_modules" "$base_dir/frontend/node_modules"
       - name: Capture reviewed baseline
