@@ -339,7 +339,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     expect(unsafeListeningLinks).toBe(0);
   });
 
-  test("library desktop shows controlled releases and gated pipeline", async ({ page }) => {
+  test("library desktop separates audiobook approval from runtime listening", async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await openJourneyPage(page, "/library", "library-desktop");
 
@@ -347,7 +347,8 @@ test.describe("Earnalism real-user UX video audit", () => {
     expectTextContains(text, "The Library");
     expectTextContains(text, "Live now");
     expectTextContains(text, "Titles preparing for a future release");
-    expectTextContains(text, "Only editions with approved listening access");
+    expectTextContains(text, "Audiobook-approved editions. Listening appears only where the reader runtime can offer it.");
+    expectTextContains(text, "Listening unavailable");
     expectNoBroadCatalogClaims(text);
     await expect(page.getByTestId("reference-book-dracula")).toBeVisible();
   });
@@ -367,7 +368,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     await expect(page.getByRole("dialog", { name: "Library filters" }).getByText("Status", { exact: true })).toBeVisible();
   });
 
-  test("Dracula book page exposes rights, source, preview, and reading pass CTAs", async ({ page }) => {
+  test("Dracula book page exposes the canonical preview boundary and reading pass CTA", async ({ page }) => {
     await page.setViewportSize({ width: 1366, height: 950 });
     await openJourneyPage(page, "/book/dracula", "dracula-book-page");
 
@@ -376,7 +377,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     expectTextContains(text, "by Bram Stoker");
     expectTextContains(text, "27 chapters");
     expectTextContains(text, "Project Gutenberg eBook #345");
-    expectTextContains(text, "Preview opens first");
+    expectTextContains(text, "Read the first 3 pages free. Continue with Reading Pass access when the story calls you onward.");
     expectTextContains(text, "Audio waits for release gates");
     await expect(page.getByTestId("read-preview")).toHaveAccessibleName("Read the first 3 pages free.");
     expectTextContains(text, "View Reading Passes");
