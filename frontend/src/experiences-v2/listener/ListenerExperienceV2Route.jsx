@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { userApi } from "../../lib/api";
-import { readerManifestPath } from "../../lib/audioReleaseSafety";
+import { protectedAudiobookPackageManifestPath, readerManifestPath } from "../../lib/audioReleaseSafety";
 import { normalizeAudioManifest } from "../../lib/audioPackageManifest";
 import { endReadingPassSession, renewReadingPassLease, startReadingPassAudioSession } from "../../lib/readingPassApi";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
@@ -109,7 +109,11 @@ export default function ListenerExperienceV2Route() {
   useEffect(() => {
     if (!lease || !book || visualFixture) return undefined;
     const presentation = listenerReleasePresentation(book);
-    if (!presentation.packageManifestUrl || !presentation.packageVersion) {
+    // The public manifest binds the approved immutable version but never
+    // carries a protected package URL. Derive this same-origin contract only
+    // after the server has granted the audio lease.
+    const packageManifestUrl = protectedAudiobookPackageManifestPath(book.slug);
+    if (!packageManifestUrl || !presentation.packageVersion) {
       setError("This approved audiobook package is unavailable in the current Listener.");
       void settleLease("listener_v2_package_unavailable");
       return undefined;
@@ -119,7 +123,7 @@ export default function ListenerExperienceV2Route() {
     const sessionId = lease.sessionId;
     let cancelled = false;
     setAudioManifest(null);
-    userApi.get(presentation.packageManifestUrl, {
+    userApi.get(packageManifestUrl, {
       headers: {
         "X-Reading-Pass-Session": lease.sessionId,
         "X-Reading-Pass-Lease": lease.token,

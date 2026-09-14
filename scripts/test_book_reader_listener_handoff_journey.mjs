@@ -176,6 +176,7 @@ async function configureApi(page, {
     protectedPageRequests: 0,
     manifestRequests: 0,
     packageManifestRequests: 0,
+    packageManifestLeases: [],
     protectedAudioRequests: [],
     positionWrites: [],
     sessionEnds: [],
@@ -245,6 +246,10 @@ async function configureApi(page, {
     }
     if (book && pathname.endsWith(`/reader/book/${book.slug}/audiobook/manifest`)) {
       requests.packageManifestRequests += 1;
+      requests.packageManifestLeases.push({
+        sessionId: request.headers()["x-reading-pass-session"] || "",
+        lease: request.headers()["x-reading-pass-lease"] || "",
+      });
       if (!authenticated) {
         await route.fulfill({ status: 401, contentType: "application/json", body: JSON.stringify({ detail: { code: "AUTH_REQUIRED" } }) });
         return;
@@ -601,7 +606,9 @@ async function runEntitledListener({ id, viewport }) {
   assert.match(stream, new RegExp(`/api/reader/book/${audioBook.slug}/audiobook/packages/${audioPackageVersion}/segments/c001-s001$`), `${id}: entitled listener did not use the approved first package segment`);
   assert.equal(await audio.getAttribute("data-package-version"), audioPackageVersion, `${id}: Listener did not bind media to the approved package version`);
   assert.equal(await audio.getAttribute("preload"), "metadata", `${id}: Listener must not preload protected audio bodies`);
+  assert.equal(requests.sessionStarts, 1, `${id}: Listener did not start exactly one audio lease before package retrieval`);
   assert.equal(requests.packageManifestRequests, 1, `${id}: Listener did not fetch one authorized package manifest`);
+  assert.deepEqual(requests.packageManifestLeases, [{ sessionId: "fixture-lease", lease: "fixture-token" }], `${id}: protected manifest request did not carry the issued lease`);
   await page.screenshot({ path: path.join(output, `${id}-listener-package-active.png`), fullPage: true });
   await page.getByRole("button", { name: "Play approved audiobook" }).click();
   await waitForCondition(() => requests.protectedAudioRequests.some((entry) => entry.segment_id === "c001-s001" && entry.method === "GET"), `${id}: normal Listener did not request the first protected package segment`);
