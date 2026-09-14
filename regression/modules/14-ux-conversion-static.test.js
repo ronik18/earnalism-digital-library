@@ -230,7 +230,8 @@ describe("UX conversion static signals", () => {
     expect(referencePublicPages).not.toContain(">Explore Audiobooks</Link>");
     expect(referencePublicPages).toContain("/library?availability=approved-audiobook");
     expect(homeCurationClient).toContain('/home/curated');
-    expect(homeCurationClient).toContain('audiobookUrl === `/api/reader/book/${slug}/audiobook`');
+    expect(homeCurationClient).toContain("book.audio_package_valid === true");
+    expect(homeCurationClient).not.toContain("/api/reader/book/${slug}/audiobook");
     expect(premiumHero).not.toMatch(/No unapproved audiobook controls|Audio gated by evidence|QA_PASSED|APPROVED/);
     expect(referencePublicPages).toContain('data-testid="home-journey-shelf"');
     expect(referencePublicPages).toContain("Find the language, voice, and story that feels like home.");
