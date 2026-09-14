@@ -69,14 +69,6 @@ function coverCandidates(book = {}) {
   return Array.from(new Set(candidates));
 }
 
-function audioEndpoint(book = {}) {
-  const slug = String(book.slug || "").trim();
-  const audiobookUrl = book.audiobook_url || book.audio_url || "";
-  return typeof audiobookUrl === "string"
-    && audiobookUrl === `/api/reader/book/${slug}/audiobook`
-    && /^\/api\/reader\/book\/[^/]+\/audiobook$/.test(audiobookUrl);
-}
-
 function approvedAudio(book = {}) {
   const release = String(book.audiobook_release_gate || book.audio_release || "").toUpperCase();
   const qa = String(book.audio_qa_status || book.qa_status || "").toUpperCase();
@@ -85,8 +77,9 @@ function approvedAudio(book = {}) {
       && release.includes("APPROVED")
       && ["APPROVED", "PASS", "PASSED", "QA_PASSED"].includes(qa)
       && book.reader_enabled !== false
-      && audioEndpoint(book)
-      && book.audio_package_valid !== false,
+      // The Home discovery contract exposes only the release-safe boolean.
+      // Media and protected package-manifest URLs remain Listener-only.
+      && book.audio_package_valid === true,
   );
 }
 

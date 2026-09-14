@@ -235,10 +235,7 @@ def test_home_v4_projection_omits_package_v2_storage_identity() -> None:
 
     assert payload["source"]["approved_audiobook_count"] == 1
     assert payload["shelves"]["approved_audiobooks"][0]["slug"] == SLUG
-    assert (
-        payload["shelves"]["approved_audiobooks"][0]["audiobook_url"]
-        == f"/api/reader/book/{SLUG}/audiobook"
-    )
+    assert "audiobook_url" not in payload["shelves"]["approved_audiobooks"][0]
     _assert_no_private_package_identity(payload)
 
 

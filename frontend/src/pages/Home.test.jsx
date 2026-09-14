@@ -14,7 +14,9 @@ describe("Home curated shelf integration", () => {
 
   test("keeps live hero and listening refreshes independent", () => {
     expect(source).toContain("fetchHomeHero(controller.signal)");
-    expect(source).toContain("<HomeListeningRoom />");
+    expect(source).toContain("fetchHomeListening(controller.signal, 3)");
+    expect(source).toContain("listeningItems={listeningCuration.listening_rooms?.items");
+    expect(source).not.toContain("<HomeListeningRoom />");
     expect(source).not.toContain("fetchHomeCuration(controller.signal)");
     expect(source).not.toContain("homeCurationLoading");
   });

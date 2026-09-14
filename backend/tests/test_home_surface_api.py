@@ -118,7 +118,7 @@ def test_audio_manifest_resolution_is_parallel_and_fails_closed(monkeypatch):
         return {
             "audio": {
                 "enabled": True,
-                "url": f"/api/reader/book/{slug}/audiobook",
+                "package_version": f"sha256-{'a' * 64}",
                 "release_gate": "APPROVED",
                 "qa_status": "QA_PASSED",
                 "duration_ms": 1000,
@@ -138,7 +138,7 @@ def test_audio_manifest_resolution_is_parallel_and_fails_closed(monkeypatch):
 
     assert state["peak"] == 3
     assert contracts["one"]["enabled"] is True
-    assert contracts["two"]["endpoint_valid"] is True
+    assert contracts["two"]["package_valid"] is True
     assert contracts["broken"]["enabled"] is False
     assert contracts["broken"]["package_valid"] is False
 

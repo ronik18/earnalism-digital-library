@@ -688,9 +688,10 @@ async function libraryFilterFocusTrace(page) {
   await focusLibraryFilterControl(page, robust.length - 1);
   const reverseTrace = [];
   for (let index = 0; index < robust.length + 2; index += 1) { await page.keyboard.press("Shift+Tab"); reverseTrace.push(await recordLibraryFilterActiveElement(page, `reverse-${index + 1}`)); }
-  const requiredNames = ["Reset", "Close filters", "Apply filters"];
+  const requiredNames = ["Reset", "Close filters"];
   const names = robust.map((control) => control.accessible_name);
   const requiredControlsPresent = requiredNames.every((required) => names.some((value) => value === required || value.includes(required)))
+    && names.some((value) => /^Show \d+ editions?$/.test(value))
     && robust.filter((control) => control.tag === "SELECT").length >= 2
     && robust.filter((control) => control.tag === "BUTTON").length >= 10;
   const completeForward = forwardTrace.every((entry) => entry.active.inside_drawer && !entry.active.is_body) && forwardTrace.every((entry, index) => index === 0 || entry.active.accessible_name !== forwardTrace[index - 1].active.accessible_name);

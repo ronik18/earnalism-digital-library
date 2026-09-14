@@ -26,14 +26,16 @@ import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
 import {
   fetchHomeHero,
+  fetchHomeListening,
   getHomeHeroCache,
   getHomeHeroSnapshot,
+  getHomeListeningSnapshot,
 } from "../lib/homeSurfaces";
 import useSEO from "../hooks/useSEO";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
-import { ReferenceHomeSurface } from "../components/ReferencePublicPages";
+import { availableReadingPasses } from "../lib/readingPassOffers";
+import { ReferenceHomeSurface } from "../components/EditorialHomeLibrarySurfaces";
 
-const HomeListeningRoom = lazy(() => import("../components/HomeListeningRoom"));
 const HomeShelfArchitecture = lazy(() => import("../components/HomeShelfArchitecture"));
 
 // HomeShelfArchitecture remains the compatibility name for the editorial Home mount.
@@ -89,6 +91,8 @@ export default function Home() {
   const [submitting, setSubmitting] = useState(false);
   const [newsletterStatus, setNewsletterStatus] = useState("");
   const [heroCuration, setHeroCuration] = useState(() => getHomeHeroSnapshot());
+  const [listeningCuration, setListeningCuration] = useState(() => getHomeListeningSnapshot());
+  const [homePasses, setHomePasses] = useState([]);
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
@@ -107,6 +111,41 @@ export default function Home() {
   useEffect(() => {
     const cachedHero = getHomeHeroCache();
     if (cachedHero) setHeroCuration(cachedHero);
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchHomeListening(controller.signal, 3)
+      .then((payload) => startTransition(() => setListeningCuration(payload)))
+      .catch((error) => {
+        if (error?.name === "CanceledError" || error?.name === "AbortError") return;
+        // The compact rail is deferred when the release-safe discovery
+        // contract is unavailable; it never falls back to media metadata.
+      });
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    let active = true;
+    const applyOffers = (payload) => {
+      if (!active) return;
+      setHomePasses(availableReadingPasses(payload?.packs ?? payload));
+    };
+    api.get("/payments/offers", { signal: controller.signal })
+      .then(({ data }) => applyOffers(data))
+      .catch((error) => {
+        if (error?.name === "CanceledError" || error?.name === "AbortError") return;
+        api.get("/payments/packs", { signal: controller.signal })
+          .then(({ data }) => applyOffers(data))
+          .catch(() => {
+            if (active) setHomePasses([]);
+          });
+      });
+    return () => {
+      active = false;
+      controller.abort();
+    };
   }, []);
 
   useEffect(() => {
@@ -173,7 +212,11 @@ export default function Home() {
 
   return (
     <div className="home-reference-page" data-testid="home-page">
-      <ReferenceHomeSurface curation={heroCuration} />
+      <ReferenceHomeSurface
+        curation={heroCuration}
+        readingPasses={homePasses}
+        listeningItems={listeningCuration.listening_rooms?.items || listeningCuration.selected_audiobooks || []}
+      />
       <div className="reference-home__legacy-content" aria-hidden="true">
       <section className="home-quick-paths" aria-labelledby="home-quick-paths-title" data-testid="home-quick-paths">
         <div className="home-quick-paths__inner">
@@ -204,11 +247,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <DeferredMount className="home-deferred-listening" minHeight={374} rootMargin="1100px 0px" testId="deferred-listening-room">
-        <Suspense fallback={<div className="home-deferred-listening__fallback" aria-hidden="true" />}>
-          <HomeListeningRoom />
-        </Suspense>
-      </DeferredMount>
       <DeferredMount className="home-deferred-shelves" minHeight={0} rootMargin="1200px 0px" testId="deferred-home-shelves">
         <Suspense fallback={null}>
           <HomeShelfArchitecture />

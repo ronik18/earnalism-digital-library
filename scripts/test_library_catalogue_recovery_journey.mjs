@@ -104,7 +104,7 @@ async function testInitialStates(context) {
     assert.equal(await page.getByTestId("library-catalogue-empty").count(), expectsEmpty ? 1 : 0, `${id}: empty state classification changed`);
     if (id === "empty") {
       assert.equal(await page.getByTestId("reference-book-devdas").count(), 0, "empty: valid empty response was replaced with fallback reader inventory");
-      assert.equal(await page.getByText("No reader-ready editions are currently available.", { exact: false }).count(), 1, "empty: valid empty response lacks a distinct explanation");
+      assert.equal(await page.getByText("The shelves are quiet for now.", { exact: true }).count(), 1, "empty: valid empty response lacks a distinct explanation");
     }
     if (id === "success") await page.getByTestId("reference-book-devdas").waitFor();
     results.push({ id, geometry: await assertNoDocumentOverflow(page, id) });
@@ -138,7 +138,7 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   await page.locator("button.reference-filter-trigger:visible").click();
   const drawer = page.locator('.reference-library-drawer[role="dialog"]:visible');
   await drawer.getByRole("button", { name: "Bengali", exact: true }).click();
-  await page.getByRole("button", { name: "Apply filters", exact: true }).click();
+  await page.getByRole("button", { name: /^Show \d+ editions?$/ }).click();
   assert.equal(new URL(page.url()).search, "?language=bn&availability=reader-ready&sort=title", `${viewport.width}px retry: filter state was not retained while retrying`);
   fixture.releasePendingFailure();
   await page.waitForFunction(() => document.querySelector('[data-testid="library-catalogue-retry"]')?.disabled === false);

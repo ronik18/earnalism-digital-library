@@ -1,7 +1,9 @@
 import fs from "fs";
 import path from "path";
 
-const source = fs.readFileSync(path.join(process.cwd(), "src/components/ReferencePublicPages.jsx"), "utf8");
+const source = fs.readFileSync(path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"), "utf8");
+const commerce = fs.readFileSync(path.join(process.cwd(), "src/components/ReadingPassesSurface.jsx"), "utf8");
+const home = fs.readFileSync(path.join(process.cwd(), "src/pages/Home.jsx"), "utf8");
 const libraryFallback = fs.readFileSync(path.join(process.cwd(), "src/lib/libraryFallbackBooks.js"), "utf8");
 const styles = fs.readFileSync(path.join(process.cwd(), "src/components/ReferencePublicPages.css"), "utf8");
 const evidence = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/data/publicEvidenceSnapshot.json"), "utf8"));
@@ -9,8 +11,9 @@ const evidence = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/data/p
 describe("Reference public page surfaces", () => {
   test("keeps listening controls behind release truth", () => {
     expect(source).toContain('import { audiobookReleaseState } from "../lib/audioReleaseSafety"');
-    expect(source).toContain("audio.canShowControls");
-    expect(source).toContain("Audiobook-approved editions. Listening appears only where the Reader runtime can offer it.");
+    expect(source).toContain("audiobookReleaseState(book).releaseApproved");
+    expect(source).toContain("Listening discovery comes from the public /home/listening contract");
+    expect(home).toContain("fetchHomeListening(controller.signal, 3)");
     expect(source).toContain("Titles without approval show no listening action.");
   });
 
@@ -23,24 +26,22 @@ describe("Reference public page surfaces", () => {
   });
 
   test("binds offer presentation to current configured offer fields", () => {
-    expect(source).toContain("pack.price_inr");
-    expect(source).toContain("pack.minutes");
-    expect(source).toContain("pack.recommended === true || pack.is_recommended === true");
-    expect(source).toContain("pack.gift_enabled === true || pack.kind === \"gift\"");
+    expect(commerce).toContain("pack.price_inr");
+    expect(commerce).toContain("pack.minutes");
+    expect(commerce).toContain("pack.recommended === true || pack.is_recommended === true");
+    expect(commerce).toContain("See current pass details at checkout");
   });
 
   test("uses one truthful Commerce composition without an obsolete research rail", () => {
-    expect(source).not.toContain('reference-commerce__insight-rail');
-    expect(source).not.toContain('reference-commerce__hero-proof');
-    expect(source).toContain("READING_TIME_COPY");
-    expect(source).not.toContain("Use study across 2,400+ readers");
-    expect(source).not.toContain("Reader satisfaction");
+    expect(commerce).not.toContain('reference-commerce__insight-rail');
+    expect(commerce).not.toContain('reference-commerce__hero-proof');
+    expect(commerce).not.toContain("Use study across 2,400+ readers");
+    expect(commerce).not.toContain("Reader satisfaction");
   });
 
   test("uses the reviewed operational-facts fallback when public metrics are not eligible", () => {
-    expect(source).toContain('import publicEvidenceSnapshot from "../data/publicEvidenceSnapshot.json"');
-    expect(source).toContain("commerce-evidence-fallback");
-    expect(source).toContain("publicEvidenceSnapshot.fallback_notice");
+    expect(commerce).toContain("Price and validity together");
+    expect(commerce).toContain("No auto-renewal");
     expect(evidence.status).toBe("FALLBACK_OPERATIONAL_FACTS_ONLY");
     expect(evidence.metrics).toEqual([]);
     expect(evidence.fallback_notice).toBe("Verified behavioral metrics will appear after the publication threshold is met.");
@@ -60,7 +61,7 @@ describe("Reference public page surfaces", () => {
   });
 
   test("uses the release-safe Home curation snapshot when the catalogue is temporarily unavailable", () => {
-    expect(source).toContain("ReferenceHomeSurface({ curation })");
+    expect(source).toContain("ReferenceHomeSurface({ curation, readingPasses = [], listeningItems = [], illustrativePasses = false })");
     expect(source).toContain("curation?.hero?.featured_books");
     expect(source).toContain("books.length ? books : curatedBooks");
     expect(source).toContain("canShowPreview(book)");

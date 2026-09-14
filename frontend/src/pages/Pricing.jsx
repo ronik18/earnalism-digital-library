@@ -6,7 +6,7 @@ import { api, userApi, formatError } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
-import { ReferenceCommerceSurface } from "../components/ReferencePublicPages";
+import ReferenceCommerceSurface from "../components/ReadingPassesSurface";
 import { availableReadingPasses } from "../lib/readingPassOffers";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
 

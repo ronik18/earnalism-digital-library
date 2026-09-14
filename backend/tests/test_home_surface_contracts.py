@@ -10,7 +10,7 @@ from backend.home_surface_contracts import (
 )
 
 
-def _book(slug: str, *, audio: bool = False, endpoint: str | None = None) -> dict:
+def _book(slug: str, *, audio: bool = False, package_valid: bool = True) -> dict:
     book = {
         "slug": slug,
         "title": slug.replace("-", " ").title(),
@@ -30,7 +30,7 @@ def _book(slug: str, *, audio: bool = False, endpoint: str | None = None) -> dic
             "audiobook_release_gate": "APPROVED",
             "audio_qa_status": "QA_PASSED",
             "audio_duration_ms": 123_000,
-            "audiobook_url": endpoint or f"/api/reader/book/{slug}/audiobook",
+            "audio_package_valid": package_valid,
         })
     return book
 
@@ -78,7 +78,7 @@ def test_hero_contract_is_minimal_bounded_and_stable_across_generation_time():
 def test_listening_contract_fails_closed_and_stays_under_transfer_budget():
     payload = _payload()
     payload["listening_rooms"]["items"].extend([
-        _book("wrong-endpoint", audio=True, endpoint="/api/reader/book/another/audiobook"),
+        _book("invalid-package-binding", audio=True, package_valid=False),
         {**_book("not-approved", audio=True), "audiobook_release_gate": "BLOCKED"},
         {**_book("bad-cover", audio=True), "cover_valid": False},
     ])
@@ -90,6 +90,7 @@ def test_listening_contract_fails_closed_and_stays_under_transfer_budget():
     assert [item["slug"] for item in contract["items"]] == ["audio-0", "audio-1", "audio-2"]
     assert all(item["cta_kind"] == "listen" for item in contract["items"])
     assert all(item["audio_package_valid"] is True for item in contract["items"])
+    assert all("audiobook_url" not in item for item in contract["items"])
     assert len(json.dumps(contract, ensure_ascii=False).encode("utf-8")) <= 8 * 1024
 
 

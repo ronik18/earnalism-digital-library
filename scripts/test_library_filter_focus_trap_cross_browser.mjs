@@ -66,7 +66,7 @@ async function run(browserName, viewport) {
   assert.ok(controls.length > 0, `${browserName} ${viewport.width}: no rendered drawer controls`);
   assert.ok(controls.some((control) => control.name === "Reset"), "Reset is absent");
   assert.ok(controls.some((control) => control.name === "Close filters"), "Close filters is absent");
-  assert.ok(controls.some((control) => control.name === "Apply filters"), "Apply filters is absent");
+  assert.ok(controls.some((control) => /^Show \d+ editions?$/.test(control.name)), "Show-results control is absent");
   assert.ok(controls.filter((control) => control.tag === "SELECT").length >= 2, "Sort and Genre selects are absent");
   assert.ok(controls.filter((control) => control.tag === "BUTTON").length >= 10, "enabled filter choices are absent");
   assert.equal((await active(page)).inside, true, "initial focus leaves drawer");

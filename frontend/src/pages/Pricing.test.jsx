@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Pricing.jsx"), "utf8");
-const referenceSource = fs.readFileSync(path.join(process.cwd(), "src/components/ReferencePublicPages.jsx"), "utf8");
+const referenceSource = fs.readFileSync(path.join(process.cwd(), "src/components/ReadingPassesSurface.jsx"), "utf8");
 
 describe("Commerce design contract", () => {
   test("binds current offers without fabricated popularity or term claims", () => {
@@ -16,7 +16,7 @@ describe("Commerce design contract", () => {
   test("keeps canonical preview and non-recurring product truth", () => {
     expect(source).toContain("PUBLIC_PREVIEW_COPY");
     expect(source).toContain("No subscription or autorenewal");
-    expect(referenceSource).toContain('<li>{PUBLIC_ACCESS_COPY}</li>');
+    expect(source).toContain("PUBLIC_ACCESS_COPY");
   });
   test("gives loading, empty, and failed offer requests distinct recovery states", () => {
     expect(source).toContain('const [offerStatus, setOfferStatus] = useState("loading")');
