@@ -63,9 +63,10 @@ describe("Reader, Listener, and About v2 product truth", () => {
     const adapter = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/ReleaseTruthAdapter.js"), "utf8");
     const route = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2Route.jsx"), "utf8");
     const listener = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2.jsx"), "utf8");
-    expect(adapter).toContain("packageManifestUrl: release.packageManifestUrl");
+    expect(adapter).toContain("packageManifestUrl: release.packageManifestUrl || \"\"");
     expect(adapter).not.toContain("mediaUrl: `/api/reader/book");
     expect(route).toContain("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 0 })");
+    expect(route).toContain("protectedAudiobookPackageManifestPath(book.slug)");
     expect(route).toContain("normalizeAudioManifest");
     expect(listener).toContain("data-testid=\"listener-package-audio\"");
     expect(listener).toContain("nextSegmentId");

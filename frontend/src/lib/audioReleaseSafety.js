@@ -16,6 +16,15 @@ export function readerManifestPath(slug, { adminPreview = false } = {}) {
   return `/reader/book/${encodeURIComponent(clean(slug))}/manifest?${params.toString()}`;
 }
 
+// This path is derived by the Listener only after a server-issued audio lease.
+// It is deliberately not supplied by the public reader-manifest projection.
+export function protectedAudiobookPackageManifestPath(slug) {
+  const normalizedSlug = clean(slug);
+  return normalizedSlug
+    ? `/api/reader/book/${encodeURIComponent(normalizedSlug)}/audiobook/manifest`
+    : "";
+}
+
 export function isStaticAudiobookAssetPath(value = "") {
   return /^\/audio\//i.test(clean(value));
 }

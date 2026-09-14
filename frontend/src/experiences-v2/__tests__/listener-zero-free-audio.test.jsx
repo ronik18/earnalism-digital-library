@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import ListenerExperienceV2, { clampPlaybackTime } from "../listener/ListenerExperienceV2";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
+import { protectedAudiobookPackageManifestPath } from "../../lib/audioReleaseSafety";
 
 const packageVersion = `sha256-${"a".repeat(64)}`;
 const approvedBook = {
@@ -44,7 +45,7 @@ const approvedPublicSafeManifestBook = {
     package_version: `sha256-${"c".repeat(64)}`,
     release_gate: "APPROVED",
     qa_status: "QA_PASSED",
-    assets: { manifest: "/api/reader/book/a-ghost-story/audiobook/manifest" },
+    assets: {},
   } },
 };
 
@@ -72,10 +73,11 @@ describe("Listener v2 zero-free-audio contract", () => {
     expect(fixture).toContain("disabled");
   });
 
-  test("a public-safe canonical manifest identifies listening without exposing a media URL", () => {
+  test("a public-safe canonical manifest identifies listening without exposing a media or protected-manifest URL", () => {
     const presentation = listenerReleasePresentation(approvedPublicSafeManifestBook);
     expect(presentation.canRender).toBe(true);
-    expect(presentation.packageManifestUrl).toBe("/api/reader/book/a-ghost-story/audiobook/manifest");
+    expect(presentation.packageManifestUrl).toBe("");
+    expect(protectedAudiobookPackageManifestPath(approvedPublicSafeManifestBook.slug)).toBe("/api/reader/book/a-ghost-story/audiobook/manifest");
     expect(presentation.publicPreviewSeconds).toBe(0);
     const html = renderToStaticMarkup(<ListenerExperienceV2 book={approvedPublicSafeManifestBook} access={{ authorized: false }} />);
     expect(html).toContain("Authorize Listening");
