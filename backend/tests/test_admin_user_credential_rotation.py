@@ -247,7 +247,12 @@ def test_rotation_rejects_identity_and_version_drift_without_mutation(monkeypatc
     with pytest.raises(HTTPException) as exc:
         run(server.admin_rotate_user_credentials(
             user["id"],
-            payload(expected_credential_version=0, expected_email="reader@example.com"),
+            payload(
+                expected_credential_version=0,
+                expected_email="reader@example.com",
+                dry_run=False,
+                new_password="ReplacementPass123",
+            ),
             {"email": "operator@example.test"},
         ))
     assert exc.value.status_code == 409
@@ -368,14 +373,14 @@ def test_rotation_http_route_reuses_the_dry_run_operation_id(monkeypatch):
         http = TestClient(server.app)
         dry = http.post(f"/api/admin/users/{user['id']}/credentials/rotate", json={
             "expected_email": user["email"],
-            "expected_credential_version": 0,
             "dry_run": True,
         })
         assert dry.status_code == 200
         operation_id = dry.json()["operation_id"]
+        credential_version = dry.json()["credential_version"]
         applied = http.post(f"/api/admin/users/{user['id']}/credentials/rotate", json={
             "expected_email": user["email"],
-            "expected_credential_version": 0,
+            "expected_credential_version": credential_version,
             "operation_id": operation_id,
             "dry_run": False,
             "new_password": "ReplacementPass123",
@@ -386,6 +391,24 @@ def test_rotation_http_route_reuses_the_dry_run_operation_id(monkeypatch):
     assert applied.status_code == 200
     assert applied.json()["operation_id"] == operation_id
     assert applied.json()["cleanup_state"] == "complete"
+
+
+def test_rotation_execution_requires_the_version_returned_by_dry_run(monkeypatch):
+    user, _sessions, _metered_sessions, _events, db, client = database()
+    monkeypatch.setattr(server, "db", db)
+    monkeypatch.setattr(server, "client", client)
+    with pytest.raises(HTTPException) as exc:
+        run(server.admin_rotate_user_credentials(
+            user["id"],
+            server.AdminUserCredentialRotationIn(
+                expected_email=user["email"],
+                operation_id="rotation-operation-0001",
+                dry_run=False,
+                new_password="ReplacementPass123",
+            ),
+            {"email": "operator@example.test"},
+        ))
+    assert exc.value.status_code == 400
 
 
 def test_rotation_route_is_admin_guarded_and_rejects_reader_tokens(monkeypatch):
