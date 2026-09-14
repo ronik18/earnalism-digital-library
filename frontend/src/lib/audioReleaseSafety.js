@@ -85,10 +85,17 @@ export function audiobookReleaseState(book = {}) {
   const packageVersion = clean(manifestAudio?.package_version);
   const hasPackageManifestAsset = isReaderAudiobookManifestPath(packageManifestUrl, slug)
     && /^sha256-[a-f0-9]{64}$/.test(packageVersion);
+  // Package-v2 keeps the protected manifest URL out of the public release
+  // projection. The canonical book slug and immutable package version are the
+  // public binding; Listener still obtains the protected manifest only after
+  // authorization.
+  const hasPublicPackageBinding = Boolean(slug)
+    && clean(manifestAudio?.asset_slug) === slug
+    && /^sha256-[a-f0-9]{64}$/.test(packageVersion);
   const hasReaderManifestApproval = manifestAudio?.enabled === true
     && Boolean(manifestAudio?.provider)
     && Boolean(manifestAudio?.version)
-    && (Boolean(assets.mp3 || manifestAudio?.url) || hasPackageManifestAsset)
+    && (Boolean(assets.mp3 || manifestAudio?.url) || hasPackageManifestAsset || hasPublicPackageBinding)
     && hasReleaseApproval
     && hasQaApproval
     && !hasStaticAudioAsset;
@@ -96,7 +103,8 @@ export function audiobookReleaseState(book = {}) {
     || book?.audio_disabled === true
     || upper(book?.audiobook?.status) === "BLOCKED";
 
-  const hasApprovedAudioAsset = hasAudioAsset || (hasPackageManifestAsset && hasReaderManifestApproval);
+  const hasApprovedAudioAsset = hasAudioAsset
+    || ((hasPackageManifestAsset || hasPublicPackageBinding) && hasReaderManifestApproval);
   // The public catalogue is intentionally not a media manifest.  A verified
   // release decision can therefore arrive without a playable URL, provider
   // detail, or an authorized listening session.  Keep that release truth
@@ -117,7 +125,7 @@ export function audiobookReleaseState(book = {}) {
       audioUrl,
       hasAudioAsset: hasApprovedAudioAsset,
       packageManifestUrl: hasPackageManifestAsset ? packageManifestUrl : "",
-      packageVersion: hasPackageManifestAsset ? packageVersion : "",
+      packageVersion: (hasPackageManifestAsset || hasPublicPackageBinding) ? packageVersion : "",
       syncMode: book?.sync_mode || book?.audiobook?.sync_mode || book?._readerManifest?.audio?.sync_mode || "",
       highlightSyncEnabled: book?.highlight_sync_enabled === true
         || book?.audiobook?.highlight_sync_enabled === true

@@ -139,7 +139,9 @@ function manifestFor(book, { readingPassEnabled = true } = {}) {
       qa_status: "QA_PASSED",
       asset_slug: book.slug,
       package_version: audioPackageVersion,
-      assets: { manifest: `/api/reader/book/${book.slug}/audiobook/manifest` },
+      // The public manifest deliberately omits the protected package URL.
+      // Listener receives it only after authorization.
+      assets: {},
     } : { enabled: false, assets: {} },
   };
 }

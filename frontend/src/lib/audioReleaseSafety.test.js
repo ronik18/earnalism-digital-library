@@ -137,6 +137,36 @@ describe("audiobook release safety", () => {
     expect(state.packageVersion).toBe(packageVersion);
   });
 
+  test("allows an approved public package-v2 binding without exposing a protected manifest URL", () => {
+    const packageVersion = `sha256-${"b".repeat(64)}`;
+    const state = audiobookReleaseState({
+      slug: "a-ghost-story",
+      audio_enabled: true,
+      audiobook_enabled: true,
+      audiobook_release_gate: "APPROVED",
+      audio_qa_status: "QA_PASSED",
+      audiobook_assets: {},
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          asset_slug: "a-ghost-story",
+          provider: "google",
+          version: "release-v2",
+          package_version: packageVersion,
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
+          assets: {},
+        },
+      },
+    });
+
+    expect(state.canShowControls).toBe(true);
+    expect(state.status).toBe("approved");
+    expect(state.audioUrl).toBe("");
+    expect(state.packageManifestUrl).toBe("");
+    expect(state.packageVersion).toBe(packageVersion);
+  });
+
   test("rejects package-v2 manifests without exact slug and immutable package binding", () => {
     const approvedShape = {
       slug: "muchiram-gurer-jibanchorit",
@@ -173,6 +203,25 @@ describe("audiobook release safety", () => {
         audio: {
           ...approvedShape._readerManifest.audio,
           package_version: "mutable-latest",
+        },
+      },
+    })).toBe(false);
+    expect(canExposeAudiobookControls({
+      slug: "muchiram-gurer-jibanchorit",
+      audio_enabled: true,
+      audiobook_enabled: true,
+      audiobook_release_gate: "APPROVED",
+      audio_qa_status: "QA_PASSED",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          asset_slug: "another-title",
+          provider: "b2_private_package",
+          version: "reader-release-truth-v1",
+          package_version: `sha256-${"b".repeat(64)}`,
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
+          assets: {},
         },
       },
     })).toBe(false);
