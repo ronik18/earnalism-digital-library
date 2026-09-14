@@ -45,6 +45,9 @@ function fixtureResponse(url) {
   if (pathname.endsWith("/users/me/transactions")) return fixtureTransactions;
   if (pathname.endsWith("/books")) return [];
   if (pathname.endsWith("/home/hero")) return { schema_version: "home-hero-v1", hero: {}, revision: "owner-review-fixture" };
+  if (pathname.endsWith("/home/listening")) return { schema_version: "home-listening-v1", items: [], total: 0, revision: "owner-review-fixture" };
+  if (pathname.endsWith("/payments/offers")) return { packs: [], config: { configured: false, mode: "owner-review-fixture" } };
+  if (pathname.endsWith("/payments/packs")) return [];
   if (pathname.endsWith("/reading-pass/config")) return { enabled: true, public_text_pages: 3, public_audio_seconds: 0 };
   if (pathname.endsWith("/reading-pass/devices")) return fixtureDevices;
   return null;

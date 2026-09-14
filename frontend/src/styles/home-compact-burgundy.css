@@ -1,0 +1,222 @@
+/* Home-only selected reference: compact black Burgundy, 2026-09-12.
+   The public Header, Library, catalogue eligibility and access styles are untouched. */
+.reference-home {
+  --reference-ink: #11090d;
+  --reference-surface: #190c12;
+  --reference-elevated: #25111a;
+  --reference-quiet: #311722;
+  --reference-text: #f7edda;
+  --reference-muted: #d6c7c9;
+  --reference-gold: #e4bc72;
+  --reference-gold-soft: #f1d99a;
+  --reference-line: #4c2c39;
+  --reference-display: var(--qh-display);
+  --home-gutter: max(4.5%, calc((100% - 1200px) / 2));
+  color: var(--reference-text);
+  background: var(--reference-ink);
+  font-family: var(--qh-ui);
+  min-height: 0;
+}
+.reference-home .reference-home__hero {
+  display: flex;
+  align-items: center;
+  min-height: clamp(440px, 40.8vw, 550px);
+  padding: 44px var(--home-gutter) 76px;
+  background: #15070a;
+}
+.reference-home .reference-home__hero::before,
+.reference-home .reference-home__hero-art::after { content: none; }
+.reference-home .reference-home__hero-copy { width: 53%; max-width: 650px; padding-left: 1.2%; }
+.reference-home .reference-home__hero h1 {
+  max-width: none; margin: 0;
+  font: 400 clamp(44px, 4.7vw, 65px)/1.04 var(--qh-display);
+  letter-spacing: -.025em; font-style: normal; text-wrap: initial; color: #f9e9c7;
+}
+.reference-home .reference-home__hero-art { inset: 0; width: 100%; height: 100%; opacity: 1; }
+.reference-home .reference-home__hero-art img { object-position: center; }
+.reference-home .reference-home__lede {
+  max-width: 400px; margin: 18px 0 0; font-size: clamp(13px, 1.24vw, 16px); line-height: 1.48; color: #eee2df;
+}
+.reference-home .reference-home__cta-row { flex-wrap: nowrap; gap: 14px; margin-top: 25px; }
+.reference-home .reference-button {
+  min-height: 44px; border-radius: 5px; padding: 10px 22px;
+  font: 500 13px/1.3 var(--qh-ui); text-decoration: none;
+}
+.reference-home .reference-button--gold { background: #e4bc72; color: #241016; border-color: #f0d6a0; box-shadow: inset 0 1px 0 #ffe7b5; }
+.reference-home .reference-button--outline { background: #13090dd9; border-color: #aa8a50; color: #f0d599; }
+.reference-home .reference-home__cta-row .reference-button { min-width: 160px; }
+.reference-home .reference-home__cta-row .reference-button:last-child { min-width: 188px; }
+.reference-home .reference-home__policy { max-width: 640px; display: flex; flex-wrap: nowrap; gap: 20px; margin-top: 29px; color: #dfd1d2; font-size: 11px; line-height: 1.45; }
+.reference-home .reference-home__policy p { display: flex; align-items: center; gap: 7px; margin: 0; }
+.reference-home .reference-home__policy p > span { width: auto; height: auto; margin: 0; background: none; }
+.reference-home .reference-home__policy svg { flex: none; width: 15px; height: 15px; color: #e4bc72; }
+.reference-home .reference-feature-strip {
+  width: min(91%, 1200px); margin: -29px auto 0;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  border: 1px solid #4c2b39; border-radius: 17px; background: #241019; box-shadow: none;
+}
+.reference-home .reference-feature-strip article { display: flex; gap: 12px; padding: 10px 20px; min-height: 72px; align-items: center; }
+.reference-home .reference-feature-strip article + article { border-left: 1px solid #583441; }
+.reference-home .reference-feature-strip svg { width: 28px; height: 28px; stroke-width: 1.25; color: #eacf91; }
+.reference-home .reference-feature-strip strong { font: 500 13px/1.35 var(--qh-ui); color: #f8efdf; }
+.reference-home .reference-feature-strip span { margin-top: 3px; font-size: 11px; line-height: 1.45; color: #cdbec3; max-width: 150px; }
+.reference-home .reference-home__journey,
+.reference-home .reference-home__listening,
+.reference-home .reference-home__pass { width: min(91%,1200px); margin-inline: auto; }
+.reference-home .reference-home__journey { padding: 30px 0 18px; border: 0; }
+.reference-home .reference-section-heading { align-items: center; margin-bottom: 18px; gap: 14px; }
+.reference-home .reference-section-heading h2 { font: 400 28px/1.12 var(--qh-display); letter-spacing: -.015em; color: #f8ebd6; }
+.reference-home .reference-section-heading > div > p:last-child { margin: 5px 0 0; color: #dcced0; font: 400 12px/1.45 var(--qh-ui); letter-spacing: 0; }
+.reference-home .reference-home__journey > .reference-section-heading { padding-right: 106px; }
+.reference-home .reference-home__journey-shelf .reference-shelf-frame__controls { position: absolute; top: -60px; right: 0; margin: 0; gap: 8px; }
+.reference-home .reference-shelf-frame__controls button { width: 44px; height: 44px; border-radius: 5px; background: #170c12; color: #f4e5d4; border-color: #50313b; cursor: pointer; }
+.reference-home .reference-shelf-frame__controls button:hover { background: #361927; border-color: #dfbc77; }
+.reference-home .reference-book-shelf { grid-auto-columns: calc((100% - 80px) / 5); gap: 20px; padding-bottom: 3px; scrollbar-width: none; }
+.reference-home .reference-book-shelf::-webkit-scrollbar { display: none; }
+.reference-home .reference-book-tile { width: 100%; min-width: 0; padding: 0; overflow: hidden; border-radius: 7px; border: 1px solid #4c303c; background: #160b10; }
+.reference-home .reference-book-tile__cover { aspect-ratio: 5/6; border: 0; border-radius: 0; background: #1d1017; }
+.reference-home .reference-book-tile__cover img { object-fit: contain; }
+.reference-home .reference-book-tile__cover .book-cover-image { background-color: #1d1017 !important; }
+.reference-home .reference-book-tile__details { min-height: 0; padding: 7px 10px 1px; gap: 0; grid-template-columns: minmax(0,1fr); }
+.reference-home .reference-book-tile__title { min-height: 0; max-width: 100%; color: #f5ecdf; font: 500 12px/1.4 var(--qh-ui); -webkit-line-clamp: 1; }
+.reference-home .reference-book-tile__author { color: #cabcc1; font-size: 10px; line-height: 1.45; }
+.reference-home .reference-book-tile__actions { margin: 0; gap: 6px; align-items: center; flex-wrap: wrap; }
+.reference-home .reference-book-tile__actions a { min-height: 44px; color: #e9cb8e; font-size: 11px; }
+.reference-home .reference-book-tile__locked-audio { min-height: 0; font-size: 10px; color: #cebdc5; }
+.reference-home .reference-book-tile__status { top: 10px; left: 10px; border-radius: 3px; padding: 5px 7px; background: #e4bc72; color: #251015; font: 600 10px/1 var(--qh-ui); letter-spacing: .025em; text-transform: uppercase; }
+.reference-home .reference-book-tile__status.is-soon { background: #eddabb; color: #2a1420; }
+.reference-home .reference-home__pass {
+  display: grid; grid-template-columns: minmax(0, .98fr) minmax(0,1.5fr); align-items: center;
+  gap: 30px; padding: 30px 34px 23px; margin-block: 0 19px;
+  border: 1px solid #8b7044; border-radius: 13px; background: #1b0d14;
+}
+.reference-home .reference-home__pass-copy h2 { max-width: none; margin: 0; font: 400 26px/1.12 var(--qh-display); color: #f8e4bd; letter-spacing: -.012em; }
+.reference-home .reference-home__pass-intro { margin: 7px 0 0; color: #e2d4d5; font-size: 12px; line-height: 1.45; }
+.reference-home .reference-home__pass-copy ul { gap: 7px; margin: 16px 0; padding: 0; color: #dfd0d4; font-size: 11px; line-height: 1.4; }
+.reference-home .reference-home__pass-copy li { display: flex; align-items: center; gap: 8px; }
+.reference-home .reference-home__pass-copy li::before { content: none; }
+.reference-home .reference-home__pass-copy li svg { width: 16px; height: 16px; color: #dfbc77; flex: none; stroke-width: 1.5; }
+.reference-home .reference-home__pass-copy .reference-button { min-height: 44px; padding: 8px 20px; font-size: 12px; }
+.reference-home .reference-home__pass-options { min-width: 0; padding-top: 7px; }
+.reference-home .reference-home__pass-cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.reference-home .reference-home__pass-cards article {
+  display: flex; position: relative; flex-direction: column; justify-content: start; align-items: center;
+  padding: 22px 12px 13px; min-height: 196px; border: 1px solid #b59658; border-radius: 11px; background: #28131d; text-align: center;
+}
+.reference-home .reference-home__pass-cards article.is-featured { background: #341925; border-color: #e4bc72; box-shadow: inset 0 0 0 1px #e4bc721a; }
+.reference-home .reference-home__pass-badge { position: absolute; top: -26px; left: 12px; right: 12px; height: 26px; display: flex; justify-content: center; align-items: center; border-radius: 6px 6px 0 0; background: #e4bc72; border: 1px solid #f0d6a0; border-bottom: 0; color: #241017; text-transform: uppercase; font: 500 9px/1 var(--qh-ui); letter-spacing: .035em; }
+.reference-home .reference-home__pass-cards h3 { margin: 0; color: #f7e5c5; font: 400 21px/1.2 var(--qh-display); }
+.reference-home .reference-home__pass-price { margin: 10px 0 5px; color: #f2dba6; font: 400 36px/1 var(--qh-display); }
+.reference-home .reference-home__pass-price--message { font-size: 27px; }
+.reference-home .reference-home__pass-cards p { margin: 7px 0 15px; font: 400 11px/1.45 var(--qh-ui); color: #dfced1; }
+.reference-home .reference-home__pass-cards a { display: flex; justify-content: center; align-items: center; width: 100%; min-height: 44px; margin-top: auto; border: 1px solid #f0d6a0; border-radius: 4px; padding: 8px 4px; background: #e4bc72; color: #241016; font: 500 12px/1.3 var(--qh-ui); text-decoration: none; }
+.reference-home .reference-home__sample-note { margin: 9px 0 0; color: #c8b5be; text-align: center; font: 400 10px/1.4 var(--qh-ui); }
+.reference-home .reference-home__listening { padding: 12px 0 28px; }
+.reference-home .reference-home__trust { width: 100%; padding: 24px var(--home-gutter) 31px; background: #f3e7d8; color: #291b20; }
+.reference-home .reference-home__trust h2 { margin: 0; text-align: center; color: #291b20; font: 400 29px/1.12 var(--qh-display); letter-spacing: -.012em; }
+.reference-home .reference-home__trust > div { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; max-width: 1200px; margin: 28px auto 0; }
+.reference-home .reference-home__trust article { display: grid; grid-template-columns: 45px minmax(0,1fr); grid-template-rows: auto 1fr; min-height: 60px; gap: 4px 21px; padding: 0 24px; border: 0; border-radius: 0; background: transparent; }
+.reference-home .reference-home__trust article + article { border-left: 1px solid #dacbbb; }
+.reference-home .reference-home__trust svg { grid-row: 1/3; width: 44px; height: 44px; color: #997028; stroke-width: 1.25; align-self: center; }
+.reference-home .reference-home__trust strong { margin: 0; color: #322326; font: 500 12px/1.4 var(--qh-ui); }
+.reference-home .reference-home__trust p { margin: 0; max-width: 200px; color: #4d3c3c; font: 400 11px/1.5 var(--qh-ui); }
+.reference-home :is(a,button):focus-visible { outline: 2px solid #f5d896; outline-offset: 4px; }
+.reference-home .reference-book-tile__cover:focus-visible { outline-offset: -4px; }
+.reference-home .reference-home__trust a:focus-visible { outline-color: #581e36; }
+@media (max-width:1199px) {
+  .reference-home .reference-feature-strip article { gap: 10px; padding: 10px 18px; }
+  .reference-home .reference-feature-strip strong { font-size: 12px; }
+  .reference-home .reference-feature-strip span { font-size: 10px; }
+  .reference-home .reference-home__pass { gap: 25px; padding: 32px 30px 20px; }
+  .reference-home .reference-home__pass-cards article { padding-inline: 10px; }
+  .reference-home .reference-home__trust article { padding-inline: 20px; gap: 4px 16px; }
+}
+@media (max-width:900px) {
+  .reference-home .reference-home__hero { min-height: 420px; padding: 38px 5% 65px; }
+  .reference-home .reference-home__hero-copy { width: 60%; padding-left: 0; }
+  .reference-home .reference-home__hero h1 { font-size: clamp(38px,5.1vw,46px); }
+  .reference-home .reference-home__hero-art img { object-position: 62% center; }
+  .reference-home .reference-home__lede { font-size: 13px; }
+  .reference-home .reference-home__policy { flex-wrap: wrap; gap: 8px 18px; }
+  .reference-home .reference-home__cta-row { gap: 10px; }
+  .reference-home .reference-home__cta-row .reference-button { min-width: 0; padding-inline: 14px; }
+  .reference-home .reference-home__cta-row .reference-button:last-child { min-width: 0; }
+  .reference-home .reference-feature-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .reference-home .reference-feature-strip article { min-height: 64px; padding: 9px 18px; }
+  .reference-home .reference-feature-strip article:nth-child(3) { border-left: 0; }
+  .reference-home .reference-feature-strip article:nth-child(n+3) { border-top: 1px solid #583441; }
+  .reference-home .reference-book-shelf { grid-auto-columns: calc((100% - 40px)/3.4); gap: 16px; }
+  .reference-home .reference-home__pass { grid-template-columns: 1fr; gap: 36px; }
+  .reference-home .reference-home__pass-copy { display: grid; grid-template-columns: minmax(0,1fr) auto; column-gap: 20px; align-items: center; }
+  .reference-home .reference-home__pass-copy .reference-button { grid-column: 2; grid-row: 1/4; }
+  .reference-home .reference-home__pass-copy ul { margin-bottom: 0; }
+  .reference-home .reference-home__trust article { grid-template-columns: 34px minmax(0,1fr); gap: 5px 10px; padding-inline: 12px; }
+  .reference-home .reference-home__trust svg { width: 34px; height: 34px; }
+}
+@media (max-width:600px) {
+  .reference-home { --home-gutter: 20px; }
+  .reference-home .reference-home__hero { min-height: 0; padding: 30px 22px 184px; align-items: start; background: #15070a; }
+  .reference-home .reference-home__hero-copy { width: 100%; max-width: none; }
+  .reference-home .reference-home__hero h1 { font-size: clamp(34px,10.3vw,48px); line-height: 1.03; letter-spacing: -.025em; }
+  .reference-home .reference-home__lede { margin-top: 15px; font-size: 13px; line-height: 1.48; }
+  .reference-home .reference-home__hero-art { inset: auto 0 0; height: 184px; width: 100%; }
+  .reference-home .reference-home__hero-art img { object-position: right center; }
+  .reference-home .reference-home__cta-row { margin-top: 20px; gap: 10px; }
+  .reference-home .reference-home__cta-row .reference-button { flex: 1; min-width: 0; min-height: 44px; padding: 10px 6px; font-size: 12px; white-space: normal; }
+  .reference-home .reference-home__policy { flex-direction: column; align-items: start; flex-wrap: nowrap; gap: 7px; margin-top: 17px; font-size: 10.5px; }
+  .reference-home .reference-feature-strip { width: calc(100% - 28px); margin-top: -12px; border-radius: 12px; }
+  .reference-home .reference-feature-strip article { padding: 10px 10px; gap: 8px; min-height: 72px; align-items: center; }
+  .reference-home .reference-feature-strip svg { width: 23px; height: 23px; }
+  .reference-home .reference-feature-strip strong { font-size: 11px; line-height: 1.4; }
+  .reference-home .reference-feature-strip span { font-size: 10px; line-height: 1.4; }
+  .reference-home .reference-home__journey,
+  .reference-home .reference-home__pass,
+  .reference-home .reference-home__listening { width: calc(100% - 28px); }
+  .reference-home .reference-home__journey { padding: 24px 0 18px; }
+  .reference-home .reference-section-heading { flex-direction: row; align-items: center; }
+  .reference-home .reference-section-heading h2 { font-size: 26px; }
+  .reference-home .reference-section-heading > div > p:last-child { font-size: 11px; }
+  .reference-home .reference-home__journey > .reference-section-heading { padding-right: 102px; }
+  .reference-home .reference-home__journey-shelf .reference-shelf-frame__controls { top: -63px; gap: 6px; }
+  .reference-home .reference-book-shelf { grid-auto-columns: calc((100% - 14px) / 1.85); gap: 14px; }
+  .reference-home .reference-book-tile__details { padding-inline: 8px; }
+  .reference-home .reference-home__pass { padding: 22px 18px 16px; gap: 36px; margin-bottom: 18px; }
+  .reference-home .reference-home__pass-copy { display: block; }
+  .reference-home .reference-home__pass-copy h2 { font-size: 26px; }
+  .reference-home .reference-home__pass-copy ul { margin: 14px 0; }
+  .reference-home .reference-home__pass-cards { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(152px,72%); grid-template-columns: none; gap: 12px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; padding: 26px 3px 7px; margin-top: -26px; scrollbar-color: #a78254 #231019; }
+  .reference-home .reference-home__pass-cards article { min-height: 199px; scroll-snap-align: start; }
+  .reference-home .reference-home__pass-cards h3 { font-size: 23px; }
+  .reference-home .reference-home__pass-cards p { font-size: 12px; }
+  .reference-home .reference-home__pass-cards a { font-size: 13px; }
+  .reference-home .reference-home__sample-note { font-size: 10px; line-height: 1.5; }
+  .reference-home .reference-home__trust { padding: 25px 20px 28px; }
+  .reference-home .reference-home__trust h2 { font-size: 28px; }
+  .reference-home .reference-home__trust > div { grid-template-columns: 1fr; gap: 20px; margin-top: 22px; }
+  .reference-home .reference-home__trust article { grid-template-columns: 39px minmax(0,1fr); min-height: 0; gap: 4px 17px; padding: 0 4px; }
+  .reference-home .reference-home__trust article + article { border-left: 0; }
+  .reference-home .reference-home__trust svg { width: 36px; height: 36px; }
+  .reference-home .reference-home__trust strong { font-size: 12px; }
+  .reference-home .reference-home__trust p { max-width: none; font-size: 11px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .reference-home * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+/* Compact shelf footer: artwork carries the author; its text remains accessible. */
+.reference-home .reference-book-tile--compact .reference-book-tile__details { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 8px; padding: 0 9px; }
+.reference-home .reference-book-tile--compact .reference-book-tile__title { display: flex; align-items: center; min-height: 44px; max-height: none; font-size: 11px; overflow-wrap: anywhere; }
+.reference-home .reference-book-tile--compact .reference-book-tile__author { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.reference-home .reference-book-tile--compact .reference-book-tile__actions { justify-content: end; }
+.reference-home .reference-book-tile--compact .reference-book-tile__details:has(.reference-book-tile__locked-audio) { grid-template-columns: 1fr; gap: 0; }
+.reference-home .reference-book-tile--compact .reference-book-tile__details:has(.reference-book-tile__locked-audio) .reference-book-tile__actions { justify-content: start; }
+@media (min-width:901px) {
+  .reference-home .reference-home__pass { padding-top: 29px; padding-bottom: 15px; }
+  .reference-home .reference-home__pass-cards article { min-height: 184px; padding-top: 16px; padding-bottom: 10px; }
+  .reference-home .reference-home__pass-price { margin-top: 8px; font-size: 34px; }
+}
+/* Cover-only invitation: original cover artwork, without a second card face. */
+.reference-home .reference-home-cover { min-width: 0; margin: 0; padding: 0; border: 0; background: transparent; scroll-snap-align: start; }
+.reference-home .reference-home-cover > a { display: block; aspect-ratio: 2/3; border-radius: 5px; text-decoration: none; }
+.reference-home .reference-home-cover .book-cover-image { display: block; width: 100%; height: 100%; background: transparent !important; border-radius: 5px; overflow: hidden; }
+.reference-home .reference-home-cover .book-cover-image__img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.reference-home .reference-home-cover > a:focus-visible { outline: 2px solid #f3cf89; outline-offset: -3px; }

@@ -257,11 +257,9 @@ def _book_contract(book: dict[str, Any], config: dict[str, Any], audio_contract:
     if audio_contract is not None:
         audio_enabled = bool(
             audio_contract.get("enabled") is True
-            and audio_contract.get("url")
             and audio_contract.get("release_gate") == "APPROVED"
             and str(audio_contract.get("qa_status") or "").upper() in {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
             and audio_contract.get("package_valid", True) is not False
-            and audio_contract.get("endpoint_valid", True) is not False
         )
     contract: dict[str, Any] = {
         "slug": slug,
@@ -292,8 +290,6 @@ def _book_contract(book: dict[str, Any], config: dict[str, Any], audio_contract:
         "do_not_feature": bool(book.get("do_not_feature", entry.get("do_not_feature", False))),
         "short_description": str(projected.get("short_description") or book.get("short_description") or ""),
     }
-    if audio_enabled:
-        contract["audiobook_url"] = str((audio_contract or {}).get("url") or projected.get("audio_url") or f"/api/reader/book/{slug}/audiobook")
     return contract
 
 

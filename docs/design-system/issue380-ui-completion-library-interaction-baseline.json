@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "2fc56906697e016b570b3fd13d9673717408a60a",
+    "tree": "0d9bdcb4b25f1b9a722e02771e606958516f2084",
+    "base": "2abbd3a5674208e40bcd1e636082c6e5f819d8ab"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/issue380-library-interaction-baseline.json",
+    "reviewed_source_commit": "dfde080137d6f722f09b44c3729e67f169521569",
+    "surface_sha256": "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66"
+  },
+  "authorized_surface_sha256": "eb5b100dd080afb4213e86f9b91b711bbe442b8a82071161dc9f44cd89ea9738",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "OWNER_AUTHORIZATION_ISSUE380_UI_COMPLETION_INTEGRITY_MAINTENANCE",
+    "scope": "Explicit issue #380 approved Home and Library presentation completion transition.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This four-file fingerprint records the current Home/Library presentation source. It does not certify visual acceptance, production publication, or complete CUSTOMER_READY coverage."
+}

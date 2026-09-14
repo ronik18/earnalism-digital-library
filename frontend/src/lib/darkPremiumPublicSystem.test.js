@@ -11,7 +11,7 @@ describe("dark premium public-system contract", () => {
   const header = read("src/components/Header.css");
   const footer = read("src/components/Footer.jsx");
   const legacyPages = read("src/design-system/pages.css");
-  const commerce = read("src/components/ReferencePublicPages.jsx");
+  const commerce = read("src/components/ReadingPassesSurface.jsx");
   const ctaContract = JSON.parse(read("../docs/product/public-cta-contract.json"));
 
   test("defines one shared dark token system", () => {

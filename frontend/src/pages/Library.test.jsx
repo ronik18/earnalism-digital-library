@@ -4,7 +4,7 @@ import { composeLibraryCatalog } from "../lib/libraryCatalogueComposition";
 import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Library.jsx"), "utf8");
-const referenceSource = fs.readFileSync(path.join(process.cwd(), "src/components/ReferencePublicPages.jsx"), "utf8");
+const referenceSource = fs.readFileSync(path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"), "utf8");
 
 describe("Library experience", () => {
   test("uses the single editorial collection architecture and approved copy", () => {

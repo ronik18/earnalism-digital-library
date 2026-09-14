@@ -10,7 +10,7 @@ import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
 import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 import useSEO from "../hooks/useSEO";
-import { ReferenceLibrarySurface } from "../components/ReferencePublicPages";
+import { ReferenceLibrarySurface } from "../components/EditorialHomeLibrarySurfaces";
 
 const LANGUAGE_FILTERS = [
   { slug: "all", name: "All languages" },

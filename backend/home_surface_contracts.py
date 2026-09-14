@@ -36,7 +36,6 @@ _LISTENING_BOOK_FIELDS = (
     "audiobook_release_gate",
     "audio_qa_status",
     "audio_duration_ms",
-    "audiobook_url",
     "highlight_sync_enabled",
     "narrator",
     "narrator_name",
@@ -87,14 +86,13 @@ def build_home_hero_contract(payload: dict[str, Any]) -> dict[str, Any]:
 
 def _approved_listening_book(book: dict[str, Any]) -> bool:
     slug = str(book.get("slug") or "").strip()
-    endpoint = str(book.get("audiobook_url") or "").strip()
     qa_status = str(book.get("audio_qa_status") or "").strip().upper()
     return bool(
         slug
         and book.get("audiobook_enabled") is True
         and str(book.get("audiobook_release_gate") or "").strip().upper() == "APPROVED"
         and qa_status in {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
-        and endpoint == f"/api/reader/book/{slug}/audiobook"
+        and book.get("audio_package_valid") is True
         and book.get("cover_valid") is True
         and book.get("reader_enabled") is True
         and book.get("front_cover_url")

@@ -217,9 +217,9 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 import asyncio
+import re
 import os
 import pickle
-import re
 import signal
 import zlib
 import hmac
@@ -5632,12 +5632,10 @@ async def _home_catalog_docs() -> list[dict]:
 async def _home_audio_contract(slug: str) -> tuple[str, dict[str, Any]]:
     disabled = {
         "enabled": False,
-        "url": "",
         "release_gate": "",
         "qa_status": "",
         "duration_ms": 0,
         "package_valid": False,
-        "endpoint_valid": False,
     }
     try:
         manifest = await _reader_book_manifest_doc(slug)
@@ -5645,15 +5643,19 @@ async def _home_audio_contract(slug: str) -> tuple[str, dict[str, Any]]:
         logger.exception("Home listening manifest resolution failed closed for %s", slug)
         return slug, disabled
     audio = (manifest or {}).get("audio") or {}
-    url = str(audio.get("url") or "")
+    package_version = str(audio.get("package_version") or "")
     return slug, {
         "enabled": audio.get("enabled") is True,
-        "url": url,
         "release_gate": audio.get("release_gate") or "",
         "qa_status": audio.get("qa_status") or "",
         "duration_ms": audio.get("duration_ms") or 0,
-        "package_valid": bool(audio.get("enabled") is True and url and (audio.get("assets") or audio.get("size") or url)),
-        "endpoint_valid": url == f"/api/reader/book/{slug}/audiobook",
+        # A public Home rail needs the release decision, not a protected
+        # manifest or media endpoint. Keep the immutable package binding
+        # private and carry only its validated boolean into curation.
+        "package_valid": bool(
+            audio.get("enabled") is True
+            and re.fullmatch(r"sha256-[0-9a-f]{64}", package_version) is not None
+        ),
     }
 
 

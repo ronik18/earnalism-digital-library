@@ -80,7 +80,7 @@ async function assertDrawerOptionPolicy(page, mobile) {
 }
 
 async function closeFilters(page, mobile) {
-  if (mobile) await page.getByRole("button", { name: "Apply filters", exact: true }).click();
+  if (mobile) await page.getByRole("button", { name: /^Show \d+ editions?$/ }).click();
 }
 
 async function assertSelected(locator, label) {

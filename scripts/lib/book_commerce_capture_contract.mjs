@@ -6,6 +6,10 @@ export const HISTORICAL_CAPTURE_MODE = "historical-v1";
 export const CURRENT_CAPTURE_MODE = "current-candidate";
 export const EXPECTED_OFFER_IDS = ["30m", "1h", "3h", "10h"];
 export const EXPECTED_OFFER_BUTTONS = ["Choose The Opening Hour", "Choose The Quiet Hour", "Choose The Deep Reading Pass", "Choose The Reader’s Reserve"];
+// Historical capture retains its original labels. The current Reading Passes
+// surface names the measurable entitlement directly, while keeping the same
+// configured offer IDs and checkout contract.
+export const CURRENT_OFFER_BUTTONS = ["Choose 30 Minutes", "Choose 60 Minutes", "Choose 180 Minutes", "Choose 600 Minutes"];
 
 export function resolveCaptureIdentity({ mode, baseline, prHead, checkout, tree }) {
   if (mode === HISTORICAL_CAPTURE_MODE) {
@@ -33,7 +37,8 @@ export function resolveCaptureIdentity({ mode, baseline, prHead, checkout, tree 
 
 export function evaluateOfferObservation({ mode, cardCount, buttonNames, testIds }) {
   const expectedIds = EXPECTED_OFFER_IDS.map((id) => `pricing-pack-${id}`);
-  const namesMatch = JSON.stringify(buttonNames) === JSON.stringify(EXPECTED_OFFER_BUTTONS);
+  const expectedButtons = mode === HISTORICAL_CAPTURE_MODE ? EXPECTED_OFFER_BUTTONS : CURRENT_OFFER_BUTTONS;
+  const namesMatch = JSON.stringify(buttonNames) === JSON.stringify(expectedButtons);
   const countMatch = cardCount === EXPECTED_OFFER_IDS.length && buttonNames.length === EXPECTED_OFFER_IDS.length;
   if (mode === HISTORICAL_CAPTURE_MODE) {
     const noCurrentCandidateIds = testIds.length === 0;
