@@ -10,7 +10,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Literal, Optional
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, SecretStr
 
 
 def now_iso() -> str:
@@ -545,6 +545,20 @@ class SecureReaderEventIn(BaseModel):
 
 class UserStatusIn(BaseModel):
     status: str  # "active" | "blocked"
+
+
+class AdminUserCredentialRotationIn(BaseModel):
+    """Operator-only recovery input for one existing ordinary-user account.
+
+    A dry run deliberately carries no password.  Execution requires the
+    credential version returned by that dry run so a second operator cannot
+    silently overwrite a concurrent credential change.
+    """
+
+    expected_email: EmailStr
+    expected_credential_version: int = Field(ge=0)
+    dry_run: bool = True
+    new_password: Optional[SecretStr] = None
 
 
 # ---------- Payments / Razorpay top-up models ----------

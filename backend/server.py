@@ -54,6 +54,7 @@ try:
         AnalyticsEventIn,
         SecureReaderEventIn,
         UserStatusIn,
+        AdminUserCredentialRotationIn,
         PackOut,
         TopUpCreateIn,
         TopUpCreateOut,
@@ -114,6 +115,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         AnalyticsEventIn,
         SecureReaderEventIn,
         UserStatusIn,
+        AdminUserCredentialRotationIn,
         PackOut,
         TopUpCreateIn,
         TopUpCreateOut,
@@ -10450,6 +10452,96 @@ async def admin_user_status(uid: str, payload: UserStatusIn, _=Depends(require_a
         raise HTTPException(status_code=404, detail="User not found")
     await _invalidate_user_cache(uid)
     return {"ok": True, "id": uid, "status": payload.status}
+
+
+@api.post("/admin/users/{uid}/credentials/rotate")
+async def admin_rotate_user_credentials(
+    uid: str,
+    payload: AdminUserCredentialRotationIn,
+    admin=Depends(require_admin),
+):
+    """Rotate one existing reader password without changing Reading Pass data.
+
+    This is intentionally an authenticated operator workflow, not a public
+    password-reset endpoint.  Its compare-and-set version guard prevents a
+    dry-run result from overwriting a credential rotated by another operator.
+    """
+    expected_email = str(payload.expected_email).lower().strip()
+    identity_filter = {"id": uid, "email": expected_email, "role": "user"}
+    match_count = await db.users.count_documents(identity_filter)
+    if match_count != 1:
+        raise HTTPException(status_code=409, detail="Expected one matching ordinary-user account")
+
+    user = await db.users.find_one(identity_filter, {"_id": 0})
+    if not user:  # defensive: preserve the same fail-closed identity contract
+        raise HTTPException(status_code=409, detail="Expected ordinary-user account is unavailable")
+    credential_version = int(user.get("credential_version", 0) or 0)
+    if payload.expected_credential_version != credential_version:
+        raise HTTPException(status_code=409, detail="Credential version changed; run a new dry run")
+
+    active_auth_sessions = await db.user_sessions.find(
+        {"user_id": uid, "status": "active"}, {"_id": 0, "id": 1}
+    ).to_list(1000)
+    active_auth_session_ids = [str(row.get("id") or "") for row in active_auth_sessions if row.get("id")]
+    summary = {
+        "ok": True,
+        "user_id": uid,
+        "email": expected_email,
+        "credential_version": credential_version,
+        "active_auth_session_count": len(active_auth_session_ids),
+        "metered_sessions_untouched": True,
+        "balance_ledger_positions_roles_and_publication_access_untouched": True,
+    }
+    if payload.dry_run:
+        return {**summary, "dry_run": True}
+
+    if payload.new_password is None:
+        raise HTTPException(status_code=400, detail="A replacement password is required for execution")
+    replacement_password = payload.new_password.get_secret_value()
+    if len(replacement_password) < 8:
+        raise HTTPException(status_code=400, detail="Replacement password must be at least 8 characters")
+
+    version_filter = (
+        {"credential_version": credential_version}
+        if credential_version > 0
+        else {"$or": [{"credential_version": 0}, {"credential_version": {"$exists": False}}]}
+    )
+    now = now_iso()
+    result = await db.users.update_one(
+        {"$and": [identity_filter, version_filter]},
+        {
+            "$set": {
+                "password_hash": hash_password(replacement_password),
+                "auth_provider": "email",
+                "credential_version": credential_version + 1,
+                "credential_rotated_at": now,
+                "credential_rotated_by": f"admin:{admin.get('email', '')}",
+            },
+            "$unset": {"active_user_session_id": ""},
+        },
+    )
+    if result.matched_count != 1:
+        raise HTTPException(status_code=409, detail="Credential version changed; no rotation was applied")
+
+    await db.user_sessions.update_many(
+        {"user_id": uid, "status": "active"},
+        {"$set": {"status": "revoked", "revoked_at": now, "revoked_reason": "credential_rotation"}},
+    )
+    await _invalidate_user_cache(uid, session_ids=active_auth_session_ids)
+    await db.reader_security_events.insert_one({
+        "event_type": "admin_credential_rotation",
+        "user_id": uid,
+        "actor": f"admin:{admin.get('email', '')}",
+        "created_at": now,
+        "credential_version": credential_version + 1,
+        "revoked_auth_session_count": len(active_auth_session_ids),
+    })
+    return {
+        **summary,
+        "dry_run": False,
+        "credential_version": credential_version + 1,
+        "revoked_auth_session_count": len(active_auth_session_ids),
+    }
 
 
 # =====================================================================
