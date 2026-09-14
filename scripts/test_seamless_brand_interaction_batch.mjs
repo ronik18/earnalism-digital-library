@@ -84,7 +84,7 @@ test("menu background inertness restores", () => menus.forEach((record) => asser
 test("menu route action closes and navigates", () => menus.forEach((record) => assert.equal(record.interaction_result.route_action_result, "PASS")));
 test("Library filter trigger resolves uniquely", () => filters.forEach((record) => assert.equal(record.interaction_result.trigger_count, 1)));
 test("zero-height filter surface fails", () => { const record = clone(filters[0]); record.interaction_result.geometry.panel_client_height = 0; assert.throws(() => assertFilters(record)); });
-test("filter Apply action remains reachable", () => filters.forEach((record) => assert.equal(record.interaction_result.apply_filters_reachable, true)));
+test("filter primary action remains reachable", () => filters.forEach((record) => assert.equal(record.interaction_result.apply_filters_reachable, true)));
 test("filter focus remains contained", () => filters.forEach((record) => assert.equal(record.interaction_result.focus_trap, true)));
 test("filter closes", () => filters.forEach((record) => assert.equal(record.interaction_result.close_result, true)));
 test("filter focus restores", () => filters.forEach((record) => assert.equal(record.interaction_result.focus_restoration, true)));
