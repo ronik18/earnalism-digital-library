@@ -130,7 +130,7 @@ function hashFileSet(paths) {
 
 function routeSurfaceHashes() {
   return {
-    home_library_commerce_body: hashFileSet(["frontend/src/components/ReferencePublicPages.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/pages/Library.jsx", "frontend/src/pages/BookDetail.jsx", "frontend/src/pages/BookDetailReference.css"]),
+    home_library_commerce_body: hashFileSet(["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReadingPassesSurface.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/home-compact-burgundy.css", "frontend/src/styles/library-paper-review.css", "frontend/src/styles/reading-passes.css", "frontend/src/pages/Home.jsx", "frontend/src/pages/Library.jsx", "frontend/src/pages/Pricing.jsx", "frontend/src/pages/BookDetail.jsx", "frontend/src/pages/BookDetailReference.css"]),
     shared_public_header: hashFileSet(["frontend/src/components/Header.jsx", "frontend/src/components/Header.css", "frontend/src/components/EarnalismBrandLockup.jsx", "frontend/src/components/EarnalismBrandLockup.css"]),
     shared_footer: hashFileSet(["frontend/src/components/Footer.jsx", "frontend/src/components/FooterSocialLinks.jsx"]),
     auth_account: hashFileSet(["frontend/src/components/AuthPageShell.jsx", "frontend/src/pages/Account.jsx", "frontend/src/pages/MyLibrary.jsx", "frontend/src/pages/MyLibrary.css", "frontend/src/context/AuthContext.jsx"]),

@@ -9,8 +9,8 @@ import path from "node:path";
 const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
-const issue380Record = "docs/design-system/issue380-library-interaction-baseline.json";
-const issue380Hash = "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66";
+const issue380Record = "docs/design-system/issue380-ui-completion-library-interaction-baseline.json";
+const issue380Hash = "eb5b100dd080afb4213e86f9b91b711bbe442b8a82071161dc9f44cd89ea9738";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const production = (() => {
@@ -109,11 +109,11 @@ test("a failing route-family hash entry fails", () => {
   assert.throws(run);
 });
 test("a mismatching Library baseline fails", () => invalid((input) => { input.library_interaction_baseline.observed_surface_sha256 = "wrong"; }));
-test("the now-stale PR377 Library baseline cannot satisfy the current run", () => invalid((input) => {
-  input.library_interaction_baseline.approval_source = "docs/design-system/pr377-library-interaction-baseline.json";
+test("the now-stale issue380 Library baseline cannot satisfy the current run", () => invalid((input) => {
+  input.library_interaction_baseline.approval_source = "docs/design-system/issue380-library-interaction-baseline.json";
   input.library_interaction_baseline.approval_source_sha256 = sha(path.join(root, input.library_interaction_baseline.approval_source));
-  input.library_interaction_baseline.expected_surface_sha256 = "0499acf4a59729151980cb220e0d7d22292d5add88e53abc6805d3aacb84c95b";
-  input.library_interaction_baseline.observed_surface_sha256 = "0499acf4a59729151980cb220e0d7d22292d5add88e53abc6805d3aacb84c95b";
+  input.library_interaction_baseline.expected_surface_sha256 = "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66";
+  input.library_interaction_baseline.observed_surface_sha256 = "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66";
 }));
 test("an unauthorized Library baseline record fails", () => invalid((input) => { input.library_interaction_baseline.approval_source = "docs/design-system/pr360-library-interaction-baseline.json"; }));
 

@@ -85,7 +85,7 @@ jobs:
       PR_HEAD_SHA: ${{ needs.resolve-pr-head.outputs.pr_head }}
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
-      PRODUCTION_SURFACE_SHA: 21623ad98edd359b2ef9c6cd230aef3e77651f0dac61a51d187891d1b8458b11
+      PRODUCTION_SURFACE_SHA: e99d2c483a6eb370b585284aee6b5fe7e3fac7ac2b702501c52bf50c036ba28d
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - name: Checkout exact pull-request head
@@ -139,6 +139,7 @@ jobs:
           node scripts/test_pr376_library_interaction_baseline.mjs
           node scripts/test_pr377_library_interaction_baseline.mjs
           node scripts/test_issue380_library_interaction_baseline.mjs
+          node scripts/test_issue380_ui_completion_library_interaction_baseline.mjs
 
       - name: Build production-contract frontend and verify static SEO
         run: |
@@ -492,7 +493,7 @@ jobs:
       ARTIFACT_ID: ${{ needs.seamless-brand-review.outputs.artifact_id }}
       GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
       GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
-      PRODUCTION_SURFACE_SHA: 21623ad98edd359b2ef9c6cd230aef3e77651f0dac61a51d187891d1b8458b11
+      PRODUCTION_SURFACE_SHA: e99d2c483a6eb370b585284aee6b5fe7e3fac7ac2b702501c52bf50c036ba28d
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - uses: actions/checkout@v6

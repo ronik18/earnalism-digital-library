@@ -16,7 +16,14 @@ export const PR372_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr372-libr
 export const PR376_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr376-library-interaction-baseline.json";
 export const PR377_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr377-library-interaction-baseline.json";
 export const ISSUE380_LIBRARY_INTERACTION_BASELINE = "docs/design-system/issue380-library-interaction-baseline.json";
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = ISSUE380_LIBRARY_INTERACTION_BASELINE;
+export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_BASELINE = "docs/design-system/issue380-ui-completion-library-interaction-baseline.json";
+export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
+  "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+  "frontend/src/components/ReferencePublicPages.css",
+  "frontend/src/styles/library-paper-review.css",
+  "frontend/src/pages/Library.jsx",
+];
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -88,6 +95,15 @@ const baselineContracts = {
     unchangedPaths: [],
     authorization: "OWNER_AUTHORIZATION_ISSUE380_VERSIONED_LIBRARY_INTERACTION_BASELINE",
   },
+  [ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_BASELINE]: {
+    reviewedSource: { commit: "2fc56906697e016b570b3fd13d9673717408a60a", tree: "0d9bdcb4b25f1b9a722e02771e606958516f2084", base: "2abbd3a5674208e40bcd1e636082c6e5f819d8ab" },
+    previous: { recordPath: ISSUE380_LIBRARY_INTERACTION_BASELINE, commit: "dfde080137d6f722f09b44c3729e67f169521569", hash: "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66" },
+    authorizedHash: "eb5b100dd080afb4213e86f9b91b711bbe442b8a82071161dc9f44cd89ea9738",
+    inputPaths: ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS,
+    changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
+    unchangedPaths: ["frontend/src/components/ReferencePublicPages.css"],
+    authorization: "OWNER_AUTHORIZATION_ISSUE380_UI_COMPLETION_INTEGRITY_MAINTENANCE",
+  },
 };
 
 function contractForRecordPath(recordPath) {
@@ -100,8 +116,8 @@ function contractForRecordPath(recordPath) {
   return null;
 }
 
-export function libraryInteractionSurfaceHash(root = process.cwd()) {
-  const listing = [...LIBRARY_INTERACTION_INPUT_PATHS]
+export function libraryInteractionSurfaceHash(root = process.cwd(), inputPaths = LIBRARY_INTERACTION_INPUT_PATHS) {
+  const listing = [...inputPaths]
     .sort()
     .map((relativePath) => `${fileDigest(path.join(root, relativePath))}  ${relativePath}\n`)
     .join("");
@@ -118,13 +134,14 @@ export function loadLibraryInteractionBaseline(root = process.cwd(), recordPath 
   } catch (error) {
     throw new Error(`Library interaction baseline is unreadable: ${absolutePath}`, { cause: error });
   }
+  const { contract } = expected;
+  const contractInputPaths = contract.inputPaths || LIBRARY_INTERACTION_INPUT_PATHS;
   const inputPathsMatch = Array.isArray(baseline.input_paths)
-    && baseline.input_paths.length === LIBRARY_INTERACTION_INPUT_PATHS.length
-    && baseline.input_paths.every((value, index) => value === LIBRARY_INTERACTION_INPUT_PATHS[index]);
+    && baseline.input_paths.length === contractInputPaths.length
+    && baseline.input_paths.every((value, index) => value === contractInputPaths[index]);
   const changedPaths = baseline.reviewed_source_comparison?.changed_paths_within_input_set;
   const unchangedPaths = baseline.reviewed_source_comparison?.unchanged_paths_within_input_set;
   const previous = baseline.previous_baseline;
-  const { contract } = expected;
   if (
     baseline.schema_version !== "earnalism.library-interaction-baseline.v1"
     || baseline.surface !== LIBRARY_INTERACTION_SURFACE
@@ -150,7 +167,7 @@ export function loadLibraryInteractionBaseline(root = process.cwd(), recordPath 
 
 export function compareLibraryInteractionBaseline(root = process.cwd(), recordPath = DEFAULT_LIBRARY_INTERACTION_BASELINE) {
   const baseline = loadLibraryInteractionBaseline(root, recordPath);
-  const observed_surface_sha256 = libraryInteractionSurfaceHash(root);
+  const observed_surface_sha256 = libraryInteractionSurfaceHash(root, baseline.input_paths);
   return {
     surface: LIBRARY_INTERACTION_SURFACE,
     approval_source: baseline.record_path,
