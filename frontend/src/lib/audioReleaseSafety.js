@@ -21,7 +21,10 @@ export function readerManifestPath(slug, { adminPreview = false } = {}) {
 export function protectedAudiobookPackageManifestPath(slug) {
   const normalizedSlug = clean(slug);
   return normalizedSlug
-    ? `/api/reader/book/${encodeURIComponent(normalizedSlug)}/audiobook/manifest`
+    // userApi is rooted at API (which already ends in /api). Keep this
+    // contract API-relative so the authenticated request is /api/reader/…,
+    // rather than accidentally becoming /api/api/reader/… in production.
+    ? `/reader/book/${encodeURIComponent(normalizedSlug)}/audiobook/manifest`
     : "";
 }
 

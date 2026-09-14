@@ -77,7 +77,7 @@ describe("Listener v2 zero-free-audio contract", () => {
     const presentation = listenerReleasePresentation(approvedPublicSafeManifestBook);
     expect(presentation.canRender).toBe(true);
     expect(presentation.packageManifestUrl).toBe("");
-    expect(protectedAudiobookPackageManifestPath(approvedPublicSafeManifestBook.slug)).toBe("/api/reader/book/a-ghost-story/audiobook/manifest");
+    expect(protectedAudiobookPackageManifestPath(approvedPublicSafeManifestBook.slug)).toBe("/reader/book/a-ghost-story/audiobook/manifest");
     expect(presentation.publicPreviewSeconds).toBe(0);
     const html = renderToStaticMarkup(<ListenerExperienceV2 book={approvedPublicSafeManifestBook} access={{ authorized: false }} />);
     expect(html).toContain("Authorize Listening");
