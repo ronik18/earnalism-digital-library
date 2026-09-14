@@ -557,6 +557,10 @@ class AdminUserCredentialRotationIn(BaseModel):
 
     expected_email: EmailStr
     expected_credential_version: int = Field(ge=0)
+    # The dry run returns an opaque operation id. Execution and any cleanup
+    # retry must use that same id, so a retry cannot apply a second password
+    # rotation after the database portion has committed.
+    operation_id: Optional[str] = Field(default=None, min_length=16, max_length=128)
     dry_run: bool = True
     new_password: Optional[SecretStr] = None
 

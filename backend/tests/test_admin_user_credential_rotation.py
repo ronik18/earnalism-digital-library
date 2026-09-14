@@ -1,4 +1,5 @@
 import asyncio
+import copy
 import importlib
 import os
 from types import SimpleNamespace
@@ -6,6 +7,7 @@ from types import SimpleNamespace
 import pytest
 from fastapi import HTTPException
 from fastapi.security import HTTPAuthorizationCredentials
+from fastapi.testclient import TestClient
 
 os.environ.setdefault("MONGODB_URL", "mongodb://127.0.0.1:27017/earnalism_credential_rotation")
 os.environ.setdefault("JWT_SECRET", "credential-rotation-test-secret")
@@ -25,29 +27,33 @@ class Cursor:
         return [dict(row) for row in self.rows]
 
 
+def matches(row, query):
+    if "$and" in query:
+        return all(matches(row, clause) for clause in query["$and"])
+    if "$or" in query:
+        return any(matches(row, clause) for clause in query["$or"])
+    for key, value in query.items():
+        if isinstance(value, dict) and "$exists" in value:
+            if (key in row) != bool(value["$exists"]):
+                return False
+        elif row.get(key) != value:
+            return False
+    return True
+
+
 class Users:
     def __init__(self, row):
         self.row = row
 
-    async def count_documents(self, query):
-        return int(all(self.row.get(key) == value for key, value in query.items()))
+    async def count_documents(self, query, **_kwargs):
+        return int(matches(self.row, query))
 
-    async def find_one(self, query, *_args):
-        return dict(self.row) if all(self.row.get(key) == value for key, value in query.items()) else None
+    async def find_one(self, query, *_args, **_kwargs):
+        return dict(self.row) if matches(self.row, query) else None
 
-    async def update_one(self, query, update):
-        clauses = query.get("$and", [query])
-        for clause in clauses:
-            if "$or" in clause:
-                if not any(
-                    (self.row.get("credential_version") == branch.get("credential_version"))
-                    if "credential_version" in branch
-                    else ("credential_version" not in self.row)
-                    for branch in clause["$or"]
-                ):
-                    return SimpleNamespace(matched_count=0)
-            elif not all(self.row.get(key) == value for key, value in clause.items()):
-                return SimpleNamespace(matched_count=0)
+    async def update_one(self, query, update, **_kwargs):
+        if not matches(self.row, query):
+            return SimpleNamespace(matched_count=0)
         self.row.update(update["$set"])
         for key in update.get("$unset", {}):
             self.row.pop(key, None)
@@ -55,30 +61,105 @@ class Users:
 
 
 class Sessions:
-    def __init__(self, rows):
+    def __init__(self, rows, *, fail_update=False):
         self.rows = rows
+        self.fail_update = fail_update
 
-    def find(self, query, *_args):
-        return Cursor([row for row in self.rows if all(row.get(key) == value for key, value in query.items())])
+    def find(self, query, *_args, **_kwargs):
+        return Cursor([row for row in self.rows if matches(row, query)])
 
-    async def update_many(self, query, update):
+    async def update_many(self, query, update, **_kwargs):
+        if self.fail_update:
+            raise RuntimeError("revocation storage unavailable")
         changed = 0
         for row in self.rows:
-            if all(row.get(key) == value for key, value in query.items()):
+            if matches(row, query):
                 row.update(update["$set"])
                 changed += 1
         return SimpleNamespace(modified_count=changed)
 
 
 class Events:
-    def __init__(self):
+    def __init__(self, *, fail_insert=False):
         self.rows = []
+        self.fail_insert = fail_insert
 
-    async def insert_one(self, row):
+    async def insert_one(self, row, **_kwargs):
+        if self.fail_insert:
+            raise RuntimeError("audit storage unavailable")
         self.rows.append(dict(row))
 
 
-def database(version=0):
+class Operations:
+    def __init__(self):
+        self.rows = []
+
+    async def find_one(self, query, *_args, **_kwargs):
+        for row in self.rows:
+            if matches(row, query):
+                return dict(row)
+        return None
+
+    async def insert_one(self, row, **_kwargs):
+        if any(existing.get("operation_id") == row.get("operation_id") for existing in self.rows):
+            raise server.DuplicateKeyError("duplicate operation")
+        self.rows.append(dict(row))
+
+    async def update_one(self, query, update, **_kwargs):
+        for row in self.rows:
+            if matches(row, query):
+                row.update(update.get("$set", {}))
+                return SimpleNamespace(matched_count=1)
+        return SimpleNamespace(matched_count=0)
+
+
+class Transaction:
+    def __init__(self, database):
+        self.database = database
+        self.snapshot = None
+
+    async def __aenter__(self):
+        self.snapshot = copy.deepcopy({
+            "user": self.database.users.row,
+            "sessions": self.database.user_sessions.rows,
+            "events": self.database.reader_security_events.rows,
+            "operations": self.database.credential_rotation_operations.rows,
+        })
+        return self
+
+    async def __aexit__(self, exc_type, *_args):
+        if exc_type:
+            self.database.users.row.clear()
+            self.database.users.row.update(self.snapshot["user"])
+            self.database.user_sessions.rows[:] = self.snapshot["sessions"]
+            self.database.reader_security_events.rows[:] = self.snapshot["events"]
+            self.database.credential_rotation_operations.rows[:] = self.snapshot["operations"]
+        return False
+
+
+class Session:
+    def __init__(self, database):
+        self.database = database
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *_args):
+        return None
+
+    def start_transaction(self):
+        return Transaction(self.database)
+
+
+class Client:
+    def __init__(self, database):
+        self.database = database
+
+    async def start_session(self):
+        return Session(self.database)
+
+
+def database(version=0, *, fail_revocation=False, fail_audit=False):
     user = {
         "id": "private-user-id",
         "email": "reader@example.com",
@@ -94,19 +175,22 @@ def database(version=0):
         {"id": "ended-auth", "user_id": user["id"], "status": "logged_out"},
     ]
     metered_sessions = [{"id": "metered-1", "user_id": user["id"], "status": "ended"}]
-    events = Events()
-    return user, sessions, metered_sessions, events, SimpleNamespace(
+    events = Events(fail_insert=fail_audit)
+    db = SimpleNamespace(
         users=Users(user),
-        user_sessions=Sessions(sessions),
+        user_sessions=Sessions(sessions, fail_update=fail_revocation),
         reading_pass_sessions=SimpleNamespace(rows=metered_sessions),
         reader_security_events=events,
+        credential_rotation_operations=Operations(),
     )
+    return user, sessions, metered_sessions, events, db, Client(db)
 
 
 def payload(**overrides):
     base = {
         "expected_email": "reader@example.com",
         "expected_credential_version": 0,
+        "operation_id": "rotation-operation-0001",
         "dry_run": True,
     }
     base.update(overrides)
@@ -114,8 +198,9 @@ def payload(**overrides):
 
 
 def test_rotation_dry_run_is_non_mutating_and_reports_only_auth_session_scope(monkeypatch):
-    user, sessions, metered_sessions, events, db = database()
+    user, sessions, metered_sessions, events, db, client = database()
     monkeypatch.setattr(server, "db", db)
+    monkeypatch.setattr(server, "client", client)
     result = run(server.admin_rotate_user_credentials(user["id"], payload(), {"email": "operator@example.test"}))
     assert result["dry_run"] is True
     assert result["active_auth_session_count"] == 1
@@ -127,14 +212,15 @@ def test_rotation_dry_run_is_non_mutating_and_reports_only_auth_session_scope(mo
 
 
 def test_rotation_is_compare_and_set_and_only_revokes_account_auth_sessions(monkeypatch):
-    user, sessions, metered_sessions, events, db = database()
+    user, sessions, metered_sessions, events, db, client = database()
     invalidated = []
 
     async def invalidate(uid, session_ids=None):
         invalidated.append((uid, session_ids))
 
     monkeypatch.setattr(server, "db", db)
-    monkeypatch.setattr(server, "_invalidate_user_cache", invalidate)
+    monkeypatch.setattr(server, "client", client)
+    monkeypatch.setattr(server, "_invalidate_user_cache_strict", invalidate)
     result = run(server.admin_rotate_user_credentials(
         user["id"],
         payload(dry_run=False, new_password="ReplacementPass123"),
@@ -155,8 +241,9 @@ def test_rotation_is_compare_and_set_and_only_revokes_account_auth_sessions(monk
 
 
 def test_rotation_rejects_identity_and_version_drift_without_mutation(monkeypatch):
-    user, sessions, _metered_sessions, events, db = database(version=2)
+    user, sessions, _metered_sessions, events, db, client = database(version=2)
     monkeypatch.setattr(server, "db", db)
+    monkeypatch.setattr(server, "client", client)
     with pytest.raises(HTTPException) as exc:
         run(server.admin_rotate_user_credentials(
             user["id"],
@@ -166,6 +253,139 @@ def test_rotation_rejects_identity_and_version_drift_without_mutation(monkeypatc
     assert exc.value.status_code == 409
     assert sessions[0]["status"] == "active"
     assert events.rows == []
+
+
+@pytest.mark.parametrize("failure", ["revocation", "audit"])
+def test_rotation_database_failures_roll_back_all_credential_changes(monkeypatch, failure):
+    user, sessions, _metered_sessions, events, db, client = database(
+        fail_revocation=failure == "revocation",
+        fail_audit=failure == "audit",
+    )
+    original_hash = user["password_hash"]
+    monkeypatch.setattr(server, "db", db)
+    monkeypatch.setattr(server, "client", client)
+
+    with pytest.raises(HTTPException) as exc:
+        run(server.admin_rotate_user_credentials(
+            user["id"],
+            payload(dry_run=False, new_password="ReplacementPass123"),
+            {"email": "operator@example.test"},
+        ))
+
+    assert exc.value.status_code == 503
+    assert user["password_hash"] == original_hash
+    assert user["credential_version"] == 0
+    assert user["active_user_session_id"] == "auth-1"
+    assert sessions[0]["status"] == "active"
+    assert events.rows == []
+    assert db.credential_rotation_operations.rows == []
+
+
+def test_rotation_cache_failure_is_resumable_without_another_password_rotation(monkeypatch):
+    user, sessions, _metered_sessions, events, db, client = database()
+    invalidation_calls = []
+
+    async def fail_cache(*_args, **_kwargs):
+        invalidation_calls.append("failed")
+        raise RuntimeError("cache unavailable")
+
+    monkeypatch.setattr(server, "db", db)
+    monkeypatch.setattr(server, "client", client)
+    monkeypatch.setattr(server, "_invalidate_user_cache_strict", fail_cache)
+    with pytest.raises(HTTPException) as exc:
+        run(server.admin_rotate_user_credentials(
+            user["id"],
+            payload(dry_run=False, new_password="ReplacementPass123"),
+            {"email": "operator@example.test"},
+        ))
+
+    assert exc.value.status_code == 503
+    assert exc.value.detail["code"] == "CREDENTIAL_ROTATION_CLEANUP_PENDING"
+    committed_hash = user["password_hash"]
+    assert user["credential_version"] == 1
+    assert sessions[0]["status"] == "revoked"
+    assert len(events.rows) == 1
+    assert db.credential_rotation_operations.rows[0]["state"] == "cache_invalidation_pending"
+
+    async def complete_cache(*_args, **_kwargs):
+        invalidation_calls.append("completed")
+
+    monkeypatch.setattr(server, "_invalidate_user_cache_strict", complete_cache)
+    result = run(server.admin_rotate_user_credentials(
+        user["id"],
+        payload(dry_run=False, new_password=None),
+        {"email": "operator@example.test"},
+    ))
+
+    assert result["resumed"] is True
+    assert result["cleanup_state"] == "complete"
+    assert user["password_hash"] == committed_hash
+    assert user["credential_version"] == 1
+    assert len(events.rows) == 1
+    assert invalidation_calls == ["failed", "completed"]
+    assert db.credential_rotation_operations.rows[0]["state"] == "complete"
+
+
+def test_rotation_interleaving_does_not_report_success_until_auth_cache_is_cleared(monkeypatch):
+    user, sessions, _metered_sessions, _events, db, client = database()
+    auth_cache = {"auth-1": {"status": "active", "user_id": user["id"]}}
+    observed = []
+
+    async def strict_cache_invalidation(uid, session_ids=None):
+        # Simulate a refresh interleaving with the finalization boundary: the
+        # old cache is removed before this operation becomes complete, and the
+        # backing session is already revoked by the committed transaction.
+        observed.append((uid, list(session_ids or []), sessions[0]["status"]))
+        auth_cache.clear()
+        assert sessions[0]["status"] == "revoked"
+        assert "auth-1" not in auth_cache
+
+    monkeypatch.setattr(server, "db", db)
+    monkeypatch.setattr(server, "client", client)
+    monkeypatch.setattr(server, "_invalidate_user_cache_strict", strict_cache_invalidation)
+    result = run(server.admin_rotate_user_credentials(
+        user["id"],
+        payload(dry_run=False, new_password="ReplacementPass123"),
+        {"email": "operator@example.test"},
+    ))
+
+    assert result["cleanup_state"] == "complete"
+    assert observed == [(user["id"], ["auth-1"], "revoked")]
+    assert db.credential_rotation_operations.rows[0]["state"] == "complete"
+
+
+def test_rotation_http_route_reuses_the_dry_run_operation_id(monkeypatch):
+    user, _sessions, _metered_sessions, _events, db, mongo_client = database()
+
+    async def strict_cache_invalidation(*_args, **_kwargs):
+        return None
+
+    monkeypatch.setattr(server, "db", db)
+    monkeypatch.setattr(server, "client", mongo_client)
+    monkeypatch.setattr(server, "_invalidate_user_cache_strict", strict_cache_invalidation)
+    server.app.dependency_overrides[server.require_admin] = lambda: {"email": "operator@example.test", "role": "admin"}
+    try:
+        http = TestClient(server.app)
+        dry = http.post(f"/api/admin/users/{user['id']}/credentials/rotate", json={
+            "expected_email": user["email"],
+            "expected_credential_version": 0,
+            "dry_run": True,
+        })
+        assert dry.status_code == 200
+        operation_id = dry.json()["operation_id"]
+        applied = http.post(f"/api/admin/users/{user['id']}/credentials/rotate", json={
+            "expected_email": user["email"],
+            "expected_credential_version": 0,
+            "operation_id": operation_id,
+            "dry_run": False,
+            "new_password": "ReplacementPass123",
+        })
+    finally:
+        server.app.dependency_overrides.pop(server.require_admin, None)
+
+    assert applied.status_code == 200
+    assert applied.json()["operation_id"] == operation_id
+    assert applied.json()["cleanup_state"] == "complete"
 
 
 def test_rotation_route_is_admin_guarded_and_rejects_reader_tokens(monkeypatch):

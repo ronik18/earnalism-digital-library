@@ -2244,6 +2244,28 @@ async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str
     await _redis_cache_delete_keys(*keys)
 
 
+async def _invalidate_user_cache_strict(user_id: str, *, session_ids: Optional[List[str]] = None) -> None:
+    """Invalidate authentication caches or raise so credential recovery can resume.
+
+    Normal cache invalidation is best-effort for customer requests. A password
+    rotation is different: returning success while an old authentication cache
+    is still usable is unsafe. This intentionally bypasses the best-effort
+    wrappers and lets the operator retry the same persisted operation.
+    """
+    if not user_id or not _redis_state_enabled():
+        return
+    keys = [
+        _user_cache_key(user_id),
+        _user_wallet_cache_key(user_id),
+        _cache_digest_key("user-private", _user_transactions_cache_id(user_id)),
+        _cache_digest_key("user-private", _user_payment_intents_cache_id(user_id)),
+    ]
+    for session_id in session_ids or []:
+        if session_id:
+            keys.append(_user_session_cache_key(session_id))
+    await _redis_client.delete(*keys)
+
+
 async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> Optional[dict]:
     if not admin_preview and not _is_controlled_public_slug(slug):
         return None
@@ -4204,6 +4226,8 @@ async def initialize_database_indexes() -> None:
     await db.reader_security_events.create_index([("event_type", 1), ("created_at", -1)])
     await db.reader_security_events.create_index([("session_id", 1), ("created_at", -1)])
     await db.reader_security_events.create_index([("user_id", 1), ("created_at", -1)])
+    await db.credential_rotation_operations.create_index("operation_id", unique=True)
+    await db.credential_rotation_operations.create_index([("user_id", 1), ("state", 1), ("created_at", -1)])
     await db.reader_experience_events.create_index([("event", 1), ("created_at", -1)])
     await db.reader_experience_events.create_index([("book_slug", 1), ("chapter_id", 1), ("created_at", -1)])
 
@@ -10460,14 +10484,20 @@ async def admin_rotate_user_credentials(
     payload: AdminUserCredentialRotationIn,
     admin=Depends(require_admin),
 ):
-    """Rotate one existing reader password without changing Reading Pass data.
+    """Rotate one reader credential with atomic DB changes and resumable cleanup.
 
     This is intentionally an authenticated operator workflow, not a public
-    password-reset endpoint.  Its compare-and-set version guard prevents a
+    password-reset endpoint. Its compare-and-set version guard prevents a
     dry-run result from overwriting a credential rotated by another operator.
+    The caller must reuse the dry-run operation id for execution and retries.
     """
     expected_email = str(payload.expected_email).lower().strip()
     identity_filter = {"id": uid, "email": expected_email, "role": "user"}
+    operation_id = (payload.operation_id or "").strip()
+    if payload.dry_run and not operation_id:
+        operation_id = str(uuid.uuid4())
+    if not payload.dry_run and not operation_id:
+        raise HTTPException(status_code=400, detail="Use the operation id returned by the dry run")
     match_count = await db.users.count_documents(identity_filter)
     if match_count != 1:
         raise HTTPException(status_code=409, detail="Expected one matching ordinary-user account")
@@ -10476,7 +10506,8 @@ async def admin_rotate_user_credentials(
     if not user:  # defensive: preserve the same fail-closed identity contract
         raise HTTPException(status_code=409, detail="Expected ordinary-user account is unavailable")
     credential_version = int(user.get("credential_version", 0) or 0)
-    if payload.expected_credential_version != credential_version:
+    existing_operation = await db.credential_rotation_operations.find_one({"operation_id": operation_id}, {"_id": 0})
+    if not existing_operation and payload.expected_credential_version != credential_version:
         raise HTTPException(status_code=409, detail="Credential version changed; run a new dry run")
 
     active_auth_sessions = await db.user_sessions.find(
@@ -10491,9 +10522,66 @@ async def admin_rotate_user_credentials(
         "active_auth_session_count": len(active_auth_session_ids),
         "metered_sessions_untouched": True,
         "balance_ledger_positions_roles_and_publication_access_untouched": True,
+        "operation_id": operation_id,
     }
     if payload.dry_run:
-        return {**summary, "dry_run": True}
+        return {**summary, "dry_run": True, "cleanup_state": "not_started"}
+
+    async def resume_existing_operation(operation: dict) -> dict:
+        if (
+            operation.get("user_id") != uid
+            or operation.get("email") != expected_email
+            or int(operation.get("expected_credential_version", -1)) != payload.expected_credential_version
+        ):
+            raise HTTPException(status_code=409, detail="Credential rotation operation does not match this account")
+        state = operation.get("state")
+        if state == "complete":
+            return {
+                **summary,
+                "dry_run": False,
+                "credential_version": int(operation.get("credential_version", credential_version + 1)),
+                "revoked_auth_session_count": len(operation.get("auth_session_ids") or []),
+                "cleanup_state": "complete",
+                "already_complete": True,
+            }
+        if state != "cache_invalidation_pending":
+            raise HTTPException(status_code=503, detail={
+                "code": "CREDENTIAL_ROTATION_STATE_UNAVAILABLE",
+                "operation_id": operation_id,
+            })
+        current_user = await db.users.find_one(identity_filter, {"_id": 0})
+        if not current_user or int(current_user.get("credential_version", -1) or -1) != int(operation.get("credential_version", -2)):
+            raise HTTPException(status_code=409, detail="Credential changed after the incomplete rotation")
+        try:
+            await _invalidate_user_cache_strict(uid, session_ids=list(operation.get("auth_session_ids") or []))
+            completion = await db.credential_rotation_operations.update_one(
+                {"operation_id": operation_id, "state": "cache_invalidation_pending"},
+                {"$set": {"state": "complete", "cache_invalidated_at": now_iso()}},
+            )
+            if completion.matched_count != 1:
+                current = await db.credential_rotation_operations.find_one({"operation_id": operation_id}, {"_id": 0})
+                if not current or current.get("state") != "complete":
+                    raise RuntimeError("Credential rotation completion state was not recorded")
+        except HTTPException:
+            raise
+        except Exception as exc:
+            logger.warning("Credential rotation cache cleanup is pending for operation=%s", operation_id, exc_info=True)
+            raise HTTPException(status_code=503, detail={
+                "code": "CREDENTIAL_ROTATION_CLEANUP_PENDING",
+                "operation_id": operation_id,
+                "message": "Database rotation committed; retry this same operation id to complete cache cleanup.",
+            }) from exc
+        return {
+            **summary,
+            "dry_run": False,
+            "credential_version": int(operation.get("credential_version", credential_version + 1)),
+            "revoked_auth_session_count": len(operation.get("auth_session_ids") or []),
+            "cleanup_state": "complete",
+            "resumed": True,
+        }
+
+    if existing_operation:
+        return await resume_existing_operation(existing_operation)
 
     if payload.new_password is None:
         raise HTTPException(status_code=400, detail="A replacement password is required for execution")
@@ -10501,47 +10589,82 @@ async def admin_rotate_user_credentials(
     if len(replacement_password) < 8:
         raise HTTPException(status_code=400, detail="Replacement password must be at least 8 characters")
 
-    version_filter = (
-        {"credential_version": credential_version}
-        if credential_version > 0
-        else {"$or": [{"credential_version": 0}, {"credential_version": {"$exists": False}}]}
-    )
+    version_filter = ({"credential_version": credential_version} if credential_version > 0
+                      else {"$or": [{"credential_version": 0}, {"credential_version": {"$exists": False}}]})
     now = now_iso()
-    result = await db.users.update_one(
-        {"$and": [identity_filter, version_filter]},
-        {
-            "$set": {
+
+    async def apply_database_rotation(mongo_session):
+        # Recheck all mutable facts inside the transaction, including the
+        # operation id, so a concurrent operator cannot overwrite credentials.
+        transactional_user = await db.users.find_one(identity_filter, {"_id": 0}, session=mongo_session)
+        if not transactional_user or int(transactional_user.get("credential_version", 0) or 0) != credential_version:
+            raise HTTPException(status_code=409, detail="Credential version changed; no rotation was applied")
+        duplicate = await db.credential_rotation_operations.find_one({"operation_id": operation_id}, {"_id": 0}, session=mongo_session)
+        if duplicate:
+            raise DuplicateKeyError("Credential rotation operation already exists")
+        transactional_sessions = await db.user_sessions.find(
+            {"user_id": uid, "status": "active"}, {"_id": 0, "id": 1}, session=mongo_session
+        ).to_list(1000)
+        transactional_session_ids = [str(row.get("id") or "") for row in transactional_sessions if row.get("id")]
+        result = await db.users.update_one(
+            {"$and": [identity_filter, version_filter]},
+            {"$set": {
                 "password_hash": hash_password(replacement_password),
                 "auth_provider": "email",
                 "credential_version": credential_version + 1,
                 "credential_rotated_at": now,
                 "credential_rotated_by": f"admin:{admin.get('email', '')}",
-            },
-            "$unset": {"active_user_session_id": ""},
-        },
-    )
-    if result.matched_count != 1:
-        raise HTTPException(status_code=409, detail="Credential version changed; no rotation was applied")
+            }, "$unset": {"active_user_session_id": ""}},
+            session=mongo_session,
+        )
+        if result.matched_count != 1:
+            raise HTTPException(status_code=409, detail="Credential version changed; no rotation was applied")
+        await db.user_sessions.update_many(
+            {"user_id": uid, "status": "active"},
+            {"$set": {"status": "revoked", "revoked_at": now, "revoked_reason": "credential_rotation"}},
+            session=mongo_session,
+        )
+        await db.reader_security_events.insert_one({
+            "event_type": "admin_credential_rotation",
+            "user_id": uid,
+            "actor": f"admin:{admin.get('email', '')}",
+            "created_at": now,
+            "credential_version": credential_version + 1,
+            "revoked_auth_session_count": len(transactional_session_ids),
+            "operation_id": operation_id,
+        }, session=mongo_session)
+        operation = {
+            "operation_id": operation_id,
+            "user_id": uid,
+            "email": expected_email,
+            "expected_credential_version": credential_version,
+            "credential_version": credential_version + 1,
+            "auth_session_ids": transactional_session_ids,
+            "state": "cache_invalidation_pending",
+            "created_at": now,
+        }
+        await db.credential_rotation_operations.insert_one(operation, session=mongo_session)
+        return operation
 
-    await db.user_sessions.update_many(
-        {"user_id": uid, "status": "active"},
-        {"$set": {"status": "revoked", "revoked_at": now, "revoked_reason": "credential_rotation"}},
-    )
-    await _invalidate_user_cache(uid, session_ids=active_auth_session_ids)
-    await db.reader_security_events.insert_one({
-        "event_type": "admin_credential_rotation",
-        "user_id": uid,
-        "actor": f"admin:{admin.get('email', '')}",
-        "created_at": now,
-        "credential_version": credential_version + 1,
-        "revoked_auth_session_count": len(active_auth_session_ids),
-    })
-    return {
-        **summary,
-        "dry_run": False,
-        "credential_version": credential_version + 1,
-        "revoked_auth_session_count": len(active_auth_session_ids),
-    }
+    try:
+        mongo_session = await client.start_session()
+        async with mongo_session:
+            async with mongo_session.start_transaction():
+                operation = await apply_database_rotation(mongo_session)
+    except DuplicateKeyError:
+        existing_operation = await db.credential_rotation_operations.find_one({"operation_id": operation_id}, {"_id": 0})
+        if not existing_operation:
+            raise HTTPException(status_code=409, detail="Credential rotation operation conflicts with another request")
+        return await resume_existing_operation(existing_operation)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        logger.warning("Credential rotation database transaction did not complete for operation=%s", operation_id, exc_info=True)
+        raise HTTPException(status_code=503, detail={
+            "code": "CREDENTIAL_ROTATION_TRANSACTION_UNAVAILABLE",
+            "operation_id": operation_id,
+        }) from exc
+    return await resume_existing_operation(operation)
 
 
 # =====================================================================
