@@ -10489,7 +10489,8 @@ async def admin_rotate_user_credentials(
     This is intentionally an authenticated operator workflow, not a public
     password-reset endpoint. Its compare-and-set version guard prevents a
     dry-run result from overwriting a credential rotated by another operator.
-    The caller must reuse the dry-run operation id for execution and retries.
+    A dry run returns the private credential version and an operation id. The
+    caller must reuse both for execution and retries.
     """
     expected_email = str(payload.expected_email).lower().strip()
     identity_filter = {"id": uid, "email": expected_email, "role": "user"}
@@ -10507,7 +10508,9 @@ async def admin_rotate_user_credentials(
         raise HTTPException(status_code=409, detail="Expected ordinary-user account is unavailable")
     credential_version = int(user.get("credential_version", 0) or 0)
     existing_operation = await db.credential_rotation_operations.find_one({"operation_id": operation_id}, {"_id": 0})
-    if not existing_operation and payload.expected_credential_version != credential_version:
+    if not payload.dry_run and payload.expected_credential_version is None:
+        raise HTTPException(status_code=400, detail="Use the credential version returned by the dry run")
+    if not payload.dry_run and not existing_operation and payload.expected_credential_version != credential_version:
         raise HTTPException(status_code=409, detail="Credential version changed; run a new dry run")
 
     active_auth_sessions = await db.user_sessions.find(
@@ -10531,7 +10534,7 @@ async def admin_rotate_user_credentials(
         if (
             operation.get("user_id") != uid
             or operation.get("email") != expected_email
-            or int(operation.get("expected_credential_version", -1)) != payload.expected_credential_version
+            or int(operation.get("expected_credential_version", -1)) != int(payload.expected_credential_version)
         ):
             raise HTTPException(status_code=409, detail="Credential rotation operation does not match this account")
         state = operation.get("state")

@@ -556,7 +556,9 @@ class AdminUserCredentialRotationIn(BaseModel):
     """
 
     expected_email: EmailStr
-    expected_credential_version: int = Field(ge=0)
+    # The operator cannot read this private field from the ordinary admin-user
+    # projection. A dry run returns it; execution and retry require it.
+    expected_credential_version: Optional[int] = Field(default=None, ge=0)
     # The dry run returns an opaque operation id. Execution and any cleanup
     # retry must use that same id, so a retry cannot apply a second password
     # rotation after the database portion has committed.
