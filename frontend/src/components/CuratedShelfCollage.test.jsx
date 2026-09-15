@@ -46,6 +46,7 @@ const approvedBook = {
   audiobook_enabled: true,
   audiobook_release_gate: "PUBLIC_AUDIO_RELEASE_APPROVED",
   audio_qa_status: "QA_PASSED",
+  audio_package_valid: true,
   audiobook_url: "/api/reader/book/approved-book/audiobook",
   book_url: "/book/approved-book",
   cta_url: "/reader/approved-book?listen=1",

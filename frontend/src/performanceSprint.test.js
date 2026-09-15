@@ -18,13 +18,13 @@ describe("Home performance sprint contract", () => {
     expect(snapshots).toContain('data-static-seo-snapshot="true"');
   });
 
-  test("keeps noncritical Home modules and Reader CSS out of the initial route bundle", () => {
+  test("keeps the noncritical Home shelf module and Reader CSS out of the initial route bundle", () => {
     const home = read("src/pages/Home.jsx");
     const globalStyles = read("src/index.css");
     const readerStyles = read("src/pages/ReaderRoute.css");
 
-    expect(home).toContain('lazy(() => import("../components/HomeListeningRoom"))');
     expect(home).toContain('lazy(() => import("../components/HomeShelfArchitecture"))');
+    expect(home).not.toContain('lazy(() => import("../components/HomeListeningRoom"))');
     expect(home).toContain("<DeferredMount");
     expect(globalStyles).not.toContain(".premium-reader {");
     expect(readerStyles).toContain(".premium-reader {");
