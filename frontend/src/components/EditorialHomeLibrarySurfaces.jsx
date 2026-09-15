@@ -31,6 +31,7 @@ import { availabilityOfBook } from "../lib/libraryCatalog";
 import BookCoverImage from "./BookCoverImage";
 import LibraryBrowseShelf from "./LibraryBrowseShelf";
 import LibraryReadingPassCard from "./LibraryReadingPassCard";
+import ReaderTestimonialsSection from "./ReaderTestimonialsSection";
 import { bookCoverImageSources } from "../lib/images";
 import "./ReferencePublicPages.css";
 import "../styles/quiet-heritage.css";
@@ -198,6 +199,8 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
         ><p>Which cover calls to you?</p></SectionHeading>
         <ReferenceShelf books={shelfBooks} coversOnly label="Featured classics" className="reference-home__journey-shelf" data-testid="home-journey-shelf" />
       </section>
+
+      <ReaderTestimonialsSection />
 
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
         <div className="reference-home__pass-copy">
