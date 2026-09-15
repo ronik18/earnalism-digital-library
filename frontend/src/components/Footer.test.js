@@ -13,12 +13,13 @@ describe("Footer compact colophon", () => {
     expect(footerSource).toContain("py-5 sm:py-8");
   });
 
-  test("keeps one contained footer lockup instead of a detached paper band", () => {
+  test("uses one compact footer wordmark without a cream panel", () => {
     expect(footerSource).not.toContain('data-testid="footer-brand-paper-row"');
-    expect(footerSource).toContain('data-testid="footer-brand-lockup"');
-    expect(footerSource).toContain('<EarnalismBrandLockup variant="footer" />');
-    expect(footerSource.match(/<EarnalismBrandLockup variant="footer" \/>/g)).toHaveLength(1);
-    expect(footerSource).toContain('bg-[#fff9ee]');
+    expect(footerSource).not.toContain('data-testid="footer-brand-lockup"');
+    expect(footerSource).not.toContain('EarnalismBrandLockup variant="footer"');
+    expect(footerSource).not.toContain('bg-[#fff9ee]');
+    expect(footerSource).toContain('import FooterWordmark from "./FooterWordmark"');
+    expect(footerSource.match(/<FooterWordmark \/>/g)).toHaveLength(1);
   });
 
   test("preserves core public routes and the canonical contact address", () => {
@@ -31,7 +32,8 @@ describe("Footer compact colophon", () => {
 
   test("keeps premium public copy, copyright protection, and accessible navigation", () => {
     expect(footerSource).toContain("Timeless Bengali and English literature, made beautiful for every way you read and listen.");
-    expect(footerSource).toContain("Return to beloved classics, discover a voice you have never forgotten");
+    expect(footerSource).toContain('data-testid="footer-venture-attribution"');
+    expect(footerSource).toContain("A Reo Enterprise Venture");
     expect(footerSource).toContain('aria-labelledby="footer-explore-heading"');
     expect(footerSource).toContain("min-h-11");
     expect(footerSource).toContain('data-testid="footer-content-protection"');

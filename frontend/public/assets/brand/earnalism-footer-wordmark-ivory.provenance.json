@@ -1,0 +1,20 @@
+{
+  "schema_version": "earnalism.footer-wordmark-derivative.v1",
+  "source": {
+    "path": "frontend/public/assets/brand/earnalism-brand-lockup.png",
+    "sha256": "951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919",
+    "dimensions_px": [2400, 720]
+  },
+  "derivative": {
+    "path": "frontend/public/assets/brand/earnalism-footer-wordmark-ivory.png",
+    "sha256": "606fae5a9e036c58883b2cb1ab4a66138880a51d3e784fc4197cea8343324db0",
+    "dimensions_px": [1280, 330]
+  },
+  "derivation": {
+    "method": "Original-pixel crop and alpha-preserving warm-ivory recolour",
+    "crop_from_source_px": { "x": 680, "y": 20, "width": 1280, "height": 330 },
+    "fill_rgb": [246, 234, 215],
+    "preserved": ["original wordmark geometry", "original caret geometry", "source alpha edges"],
+    "excluded": ["illustrated emblem", "embedded slogan", "embedded venture attribution"]
+  }
+}
