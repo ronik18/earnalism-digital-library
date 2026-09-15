@@ -85,7 +85,7 @@ jobs:
       PR_HEAD_SHA: ${{ needs.resolve-pr-head.outputs.pr_head }}
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
-      PRODUCTION_SURFACE_SHA: a2c93bf3fdab547a6001d2c19fc72e218cb50ae75fffb5930643ec015dd1f55e
+      PRODUCTION_SURFACE_SHA: ac1a705309d5f6059644d68d15fc81a0c99d72616bc0c0e38e00390981cc6d65
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - name: Checkout exact pull-request head
@@ -493,7 +493,7 @@ jobs:
       ARTIFACT_ID: ${{ needs.seamless-brand-review.outputs.artifact_id }}
       GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
       GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
-      PRODUCTION_SURFACE_SHA: a2c93bf3fdab547a6001d2c19fc72e218cb50ae75fffb5930643ec015dd1f55e
+      PRODUCTION_SURFACE_SHA: ac1a705309d5f6059644d68d15fc81a0c99d72616bc0c0e38e00390981cc6d65
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - uses: actions/checkout@v6
