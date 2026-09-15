@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "eeea9f38a636ffb9de156b4edafcabd269e417ee",
+    "tree": "deb729a72009a41f4cdb0c05769b8d0f0e454f9b",
+    "base": "08d95c01574571ee05b6c6513b60de150922bb61"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/issue380-ui-completion-library-interaction-baseline.json",
+    "reviewed_source_commit": "2fc56906697e016b570b3fd13d9673717408a60a",
+    "surface_sha256": "eb5b100dd080afb4213e86f9b91b711bbe442b8a82071161dc9f44cd89ea9738"
+  },
+  "authorized_surface_sha256": "99f0892ea0c1de2de7c11c90d7b0a36f09ed40ecdc0be2af7249d1de089c3f99",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "OWNER_AUTHORIZATION_PR397_HOME_TESTIMONIALS_INTEGRITY_MAINTENANCE",
+    "scope": "Explicit Home testimonial insertion through the shared Home/Library presentation surface; Library behavior and its other protected inputs remain unchanged.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This four-file fingerprint records the reviewed Home testimonial insertion in a shared presentation source. It does not certify visual acceptance, production publication, or complete CUSTOMER_READY coverage."
+}
