@@ -193,19 +193,34 @@ export default function Account() {
   const [devices, setDevices] = useState([]);
   const [devicesLoading, setDevicesLoading] = useState(false);
   const nav = useNavigate();
+  const userId = user && typeof user === "object" ? user.id : null;
 
   useEffect(() => {
-    if (!user) return;
+    if (!userId) return undefined;
+    let cancelled = false;
+    setLoading(true);
     refreshUser();
     userApi.get("/users/me/transactions")
-      .then((r) => setTxs(r.data || []))
-      .catch(() => setTxs([]))
-      .finally(() => setLoading(false));
-  }, [user, refreshUser]);
+      .then((r) => {
+        if (!cancelled) setTxs(r.data || []);
+      })
+      .catch(() => {
+        if (!cancelled) setTxs([]);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, refreshUser]);
 
   useEffect(() => {
-    if (!user) return;
+    if (!userId) return undefined;
     let cancelled = false;
+    setReadingPassEnabled(false);
+    setDevices([]);
+    setDevicesLoading(false);
     getReadingPassConfig()
       .then((config) => {
         if (cancelled || !config?.enabled) return;
@@ -226,7 +241,7 @@ export default function Account() {
     return () => {
       cancelled = true;
     };
-  }, [user]);
+  }, [userId]);
 
   if (visualFixture) {
     return <AccountVisualFixture />;
