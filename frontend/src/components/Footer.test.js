@@ -10,7 +10,15 @@ describe("Footer compact colophon", () => {
   test("removes the detached outer spacing and oversized legacy padding", () => {
     expect(footerSource).not.toContain("mt-24 sm:mt-32");
     expect(footerSource).not.toContain("py-14 sm:py-20");
-    expect(footerSource).toContain("py-4 sm:py-8");
+    expect(footerSource).toContain("py-5 sm:py-8");
+  });
+
+  test("keeps one contained footer lockup instead of a detached paper band", () => {
+    expect(footerSource).not.toContain('data-testid="footer-brand-paper-row"');
+    expect(footerSource).toContain('data-testid="footer-brand-lockup"');
+    expect(footerSource).toContain('<EarnalismBrandLockup variant="footer" />');
+    expect(footerSource.match(/<EarnalismBrandLockup variant="footer" \/>/g)).toHaveLength(1);
+    expect(footerSource).toContain('bg-[#fff9ee]');
   });
 
   test("preserves core public routes and the canonical contact address", () => {
