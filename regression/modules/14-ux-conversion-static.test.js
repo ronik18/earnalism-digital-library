@@ -1858,7 +1858,10 @@ describe("UX conversion static signals", () => {
     expect(footer).toContain("sales@reoenterprise.org");
     expect(footer).not.toContain("sales@reoenterprise.in");
     expect(footer).toContain("Timeless Bengali and English literature, made beautiful for every way you read and listen.");
-    expect(footer).toContain("Return to beloved classics, discover a voice you have never forgotten");
+    expect(footer).toContain('import FooterWordmark from "./FooterWordmark"');
+    expect(footer).toContain("A Reo Enterprise Venture");
+    expect(footer).not.toContain('bg-[#fff9ee]');
+    expect(footer).not.toContain('EarnalismBrandLockup variant="footer"');
     expect(footer).not.toContain("A quiet digital reading room beginning with Dracula by Bram Stoker.");
   });
 });

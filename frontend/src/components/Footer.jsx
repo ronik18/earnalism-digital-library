@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail } from "lucide-react";
-import EarnalismBrandLockup from "./EarnalismBrandLockup";
 import FooterSocialLinks from "./FooterSocialLinks";
+import FooterWordmark from "./FooterWordmark";
 import { useAuth } from "../context/AuthContext";
 import { useSettings } from "../context/SettingsContext";
 
@@ -19,22 +19,17 @@ export default function Footer() {
       <div className="h-px bg-gradient-to-r from-transparent via-[#dfb85a]/65 to-transparent" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-5 sm:py-8">
         <div className="grid gap-4 md:grid-cols-2 md:gap-7 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.9fr)_minmax(17rem,0.8fr)] lg:items-start lg:gap-10">
-          <div data-testid="footer-brand">
-            <div className="inline-flex max-w-full bg-[#fff9ee] px-3 py-2" data-testid="footer-brand-lockup">
-              <EarnalismBrandLockup variant="footer" />
-            </div>
-            <p id="footer-brand-statement" className="mt-3 max-w-xl font-serif-display text-lg leading-snug text-[#f6ead7]">
+          <div className="min-w-0 max-w-full" data-testid="footer-brand">
+            <FooterWordmark />
+            <p id="footer-brand-statement" className="mt-3 max-w-lg font-serif-display text-base leading-snug text-[#f6ead7] sm:text-lg">
               Timeless Bengali and English literature, made beautiful for every way you read and listen.
-            </p>
-            <p className="mt-2 max-w-lg text-sm font-light leading-6 text-[#cfb78f]">
-              Return to beloved classics, discover a voice you have never forgotten, and carry your library wherever the day takes you.
             </p>
             <FooterSocialLinks links={social} />
           </div>
 
-          <nav aria-labelledby="footer-explore-heading">
+          <nav className="min-w-0" aria-labelledby="footer-explore-heading">
             <div id="footer-explore-heading" className="overline mb-2.5">Explore</div>
-            <ul className="flex flex-wrap gap-x-5 text-sm text-[#cfb78f]">
+            <ul className="flex flex-wrap gap-2 text-sm text-[#cfb78f]">
               <li><Link to="/library" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">Library</Link></li>
               <li><Link to="/journal" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">Journal</Link></li>
               <li><Link to="/about" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">About</Link></li>
@@ -43,7 +38,7 @@ export default function Footer() {
             </ul>
           </nav>
 
-          <div className="md:col-span-2 lg:col-span-1 rounded-2xl border border-[#dfb85a]/30 bg-[#35111d] px-4 py-2.5 sm:px-5 sm:py-4" data-testid="footer-contact">
+          <div className="min-w-0 md:col-span-2 lg:col-span-1 rounded-2xl border border-[#dfb85a]/30 bg-[#35111d] px-4 py-2.5 sm:px-5 sm:py-4" data-testid="footer-contact">
             <div className="overline mb-2">Library desk</div>
             <p className="text-sm leading-5 text-[#cfb78f]">Rights, partnerships, or a title suggestion?</p>
             <a
@@ -62,7 +57,7 @@ export default function Footer() {
       <div className="border-t border-[#dfb85a]/25 bg-[#17090e]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-3 grid gap-2 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center lg:gap-8" data-testid="footer-copyright">
           <p className="text-[0.7rem] tracking-wide text-[#cfb78f]">
-            © {year} The Earnalism Digital Library · A Reo Enterprise venture · All rights reserved.
+            © {year} The Earnalism Digital Library · <span data-testid="footer-venture-attribution">A Reo Enterprise Venture</span> · All rights reserved.
           </p>
           <p className="text-[0.68rem] font-light leading-relaxed text-[#cfb78f]/75 lg:text-right" data-testid="footer-content-protection">
             Copyright protected. No unauthorized copying, redistribution, scraping, reproduction, or commercial reuse.
