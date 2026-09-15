@@ -18,13 +18,14 @@ export const PR377_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr377-libr
 export const ISSUE380_LIBRARY_INTERACTION_BASELINE = "docs/design-system/issue380-library-interaction-baseline.json";
 export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_BASELINE = "docs/design-system/issue380-ui-completion-library-interaction-baseline.json";
 export const PR397_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr397-library-interaction-baseline.json";
+export const PR399_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr399-library-interaction-baseline.json";
 export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
   "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
   "frontend/src/components/ReferencePublicPages.css",
   "frontend/src/styles/library-paper-review.css",
   "frontend/src/pages/Library.jsx",
 ];
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR397_LIBRARY_INTERACTION_BASELINE;
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR399_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -113,6 +114,15 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
     authorization: "OWNER_AUTHORIZATION_PR397_HOME_TESTIMONIALS_INTEGRITY_MAINTENANCE",
+  },
+  [PR399_LIBRARY_INTERACTION_BASELINE]: {
+    reviewedSource: { commit: "db5c8f70a5546766c90b196eb85cdb18be59ceca", tree: "98e6048aec0406db0d3e86494692beee877cd4ef", base: "23591a938735b16c8657f63e31ada70794bc0521" },
+    previous: { recordPath: PR397_LIBRARY_INTERACTION_BASELINE, commit: "eeea9f38a636ffb9de156b4edafcabd269e417ee", hash: "99f0892ea0c1de2de7c11c90d7b0a36f09ed40ecdc0be2af7249d1de089c3f99" },
+    authorizedHash: "eb5b100dd080afb4213e86f9b91b711bbe442b8a82071161dc9f44cd89ea9738",
+    inputPaths: ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS,
+    changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
+    unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
+    authorization: "ISSUE_380_COMMENT_5668321194_CONTENT_GOVERNANCE_REMEDIATION",
   },
 };
 
