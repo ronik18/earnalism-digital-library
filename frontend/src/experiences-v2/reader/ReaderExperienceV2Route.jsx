@@ -22,6 +22,7 @@ const requestMessage = (error, fallback) => {
   return (typeof detail === "string" ? detail : detail?.message) || fallback;
 };
 const runningLease = (lease) => Boolean(lease?.status === "Running" && lease.sessionId && lease.token && lease.expiresAt > Date.now());
+const validBalance = (seconds) => Number.isSafeInteger(seconds) && seconds >= 0 ? seconds : null;
 
 function leaseResponse(response, slug, previous = null, sequence = 0) {
   if (!response?.session_id || (previous && response.session_id !== previous.sessionId)
@@ -34,7 +35,7 @@ function leaseResponse(response, slug, previous = null, sequence = 0) {
     sequence,
     status: response.status,
     expiresAt: Date.parse(response.lease_expires_at),
-    balance: Number(response.balance_seconds),
+    balance: validBalance(response.balance_seconds),
     heartbeatMs: previous?.heartbeatMs || Math.max(1000, Math.min(10000, Number(response.heartbeat_seconds || 10) * 1000)),
   };
   if (!value.token || !Number.isInteger(value.version) || value.version < 1 || !Number.isFinite(value.expiresAt)
@@ -50,12 +51,13 @@ function RouteState({ title, message, children }) {
 // manifest, in-flight response, saved-position version, or paid lease.
 export default function ReaderExperienceV2Route() {
   const { slug = "" } = useParams();
-  const { user } = useAuth();
+  const { user, setUserBalance } = useAuth();
   const identity = user?.id || user?.email || (user ? "member" : "guest");
-  return <ReaderSession key={`${slug}:${identity}`} slug={slug} user={user} />;
+  const syncBalance = useCallback((seconds) => setUserBalance?.(seconds, identity), [identity, setUserBalance]);
+  return <ReaderSession key={`${slug}:${identity}`} slug={slug} user={user} syncBalance={syncBalance} />;
 }
 
-function ReaderSession({ slug, user }) {
+function ReaderSession({ slug, user, syncBalance }) {
   const [search, setSearch] = useSearchParams();
   const navigate = useNavigate();
   const canonicalPage = pageFromSearch(search);
@@ -67,6 +69,10 @@ function ReaderSession({ slug, user }) {
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [balance, setBalance] = useState(null);
+  const signedIn = Boolean(user);
+  // Public/guest manifests can be cached independently of the customer. Only
+  // the verified profile or a newer validated session response describes time.
+  const displayedBalance = balance ?? validBalance(user?.reading_seconds_balance);
   const [busy, setBusy] = useState(false);
   const [retry, setRetry] = useState(0);
   const [manifestRetry, setManifestRetry] = useState(0);
@@ -90,13 +96,19 @@ function ReaderSession({ slug, user }) {
   const positionVersionRef = useRef(null);
   const positionQueueRef = useRef(Promise.resolve());
 
+  const publishBalance = useCallback((seconds) => {
+    if (!aliveRef.current || validBalance(seconds) === null) return;
+    setBalance(seconds);
+    syncBalance(seconds);
+  }, [syncBalance]);
+
   const publishLease = useCallback((value) => {
     leaseRef.current = value;
     if (aliveRef.current) {
       setLease(value);
-      if (Number.isFinite(value?.balance)) setBalance(value.balance);
+      publishBalance(value?.balance);
     }
-  }, []);
+  }, [publishBalance]);
 
   const settleLease = useCallback((reason) => {
     if (settlementRef.current) return settlementRef.current;
@@ -112,7 +124,7 @@ function ReaderSession({ slug, user }) {
         // It is an idempotent terminal result, not a fresh debit confirmation.
         if (ended?.session_id !== current.sessionId || typeof ended.ended !== "boolean") return false;
         if (leaseRef.current?.sessionId === current.sessionId) publishLease(null);
-        if (aliveRef.current && Number.isFinite(ended.balance_seconds)) setBalance(ended.balance_seconds);
+        publishBalance(ended.balance_seconds);
         return true;
       } catch {
         return false;
@@ -123,7 +135,7 @@ function ReaderSession({ slug, user }) {
     })();
     settlementRef.current = pending;
     return pending;
-  }, [publishLease]);
+  }, [publishBalance, publishLease]);
 
   useEffect(() => {
     aliveRef.current = true;
@@ -146,8 +158,6 @@ function ReaderSession({ slug, user }) {
         if (cancelled) return;
         if (data?.book?.slug !== slug) throw new Error("This reader edition does not match the requested book.");
         setManifest(data);
-        const seconds = data?.access?.wallet_seconds;
-        if (seconds !== undefined && Number.isFinite(Number(seconds))) setBalance(Number(seconds));
       })
       .catch(() => { if (!cancelled) setError("This reader edition is not available."); })
       .finally(() => { if (!cancelled) setLoading(false); });
@@ -204,8 +214,8 @@ function ReaderSession({ slug, user }) {
         if (!next || response.stale || !["Running", "Paused"].includes(next.status) || (next.status === "Running" && !runningLease(next))) {
           // No recursive retries and no treating an HTTP 200 terminal/stale
           // response as a usable authorization.
-          setBalance(Number.isFinite(Number(response?.balance_seconds)) ? Number(response.balance_seconds) : current.balance);
-          publishLease({ ...current, status: "Expired" });
+          const terminalBalance = !response.stale && next && ["Exhausted", "Expired", "Ended"].includes(next.status) ? next.balance : current.balance;
+          publishLease({ ...current, status: "Expired", balance: terminalBalance });
           setError(response?.status === "Exhausted" ? "Your Reading Pass time has run out." : "Your reading session needs to be renewed. Continue when you are ready.");
           setPageResult(null);
           return;
@@ -317,7 +327,7 @@ function ReaderSession({ slug, user }) {
         if (state.state !== "ready") throw new Error(state.message);
         setPageResult({ number: canonicalPage, status: "ready", value });
         setError("");
-        if (user) void persistPosition(value).catch(() => {
+        if (signedIn) void persistPosition(value).catch(() => {
           if (aliveRef.current) setNotice("Your page is open, but your reading position could not be saved.");
         });
       })
@@ -328,7 +338,7 @@ function ReaderSession({ slug, user }) {
         if (leaseRef.current) publishLease({ ...leaseRef.current, status: "Expired" });
       });
     return () => { cancelled = true; controller.abort(); };
-  }, [canonicalPage, pageSessionKey, manifest, enabled, validPage, expectedPage, expectedChapter, persistPosition, retry, publishLease, slug, totalPages, user, visualFixture]);
+  }, [canonicalPage, pageSessionKey, manifest, enabled, validPage, expectedPage, expectedChapter, persistPosition, retry, publishLease, slug, totalPages, signedIn, visualFixture]);
 
   const changePage = useCallback((nextPage) => {
     const params = new URLSearchParams(search);
@@ -408,7 +418,7 @@ function ReaderSession({ slug, user }) {
       canonicalPage, totalPages, totalPublicPages: PREVIEW_PAGES,
       progress: totalPages ? Math.round((canonicalPage / totalPages) * 100) : 0,
       readingTime: "",
-      readingPass: !user ? "Sign in to continue" : balance === null ? "Balance unavailable" : balance < 60 ? `${Math.max(0, Math.floor(balance))} seconds left` : `${Math.floor(balance / 60)} minutes left`,
+      readingPass: !user ? "Sign in to continue" : displayedBalance === null ? "Balance unavailable" : displayedBalance < 60 ? `${displayedBalance} seconds left` : `${Math.floor(displayedBalance / 60)} minutes left`,
       contents: (manifest?.canonical_pages?.pages || []).map((item) => ({ page: Number(item.page_number || item.page_index), label: `Page ${item.page_number || item.page_index}` })),
       content: page ? <ReaderContent html={page.content} /> : null,
       paragraphs: [],
@@ -416,7 +426,7 @@ function ReaderSession({ slug, user }) {
       statusMessage: notice,
       metadata: { language: book.language || "", genre: book.genre || "", year: book.publication_year || book.year || "", source: book.rights_status || "" },
     };
-  }, [balance, canonicalPage, manifest, notice, page, totalPages, user]);
+  }, [displayedBalance, canonicalPage, manifest, notice, page, totalPages, user]);
 
   const recovery = <>
     <button type="button" data-testid="reader-recovery-book" onClick={() => navigateAfterSettlement("back")} disabled={busy}>Return to book details</button>

@@ -4,6 +4,8 @@ import importlib.util
 import json
 from pathlib import Path
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parents[2]
 SPEC = importlib.util.spec_from_file_location(
@@ -30,6 +32,95 @@ def test_canary_rejects_non_read_only_http_methods():
         assert "GET and HEAD" in str(error)
     else:  # pragma: no cover - protects the production mutation boundary.
         raise AssertionError("non-read-only method was accepted")
+
+
+@pytest.fixture
+def healthy_public_api(monkeypatch):
+    fixture = canary.load_approved_audio_fixture(ROOT / "backend" / "fixtures" / "railway_approved_audio_fixture.json")
+    calls = []
+
+    def response(body, status=200, headers=None):
+        return {"status": status, "headers": headers or {}, "body": json.dumps(body), "error": ""}
+
+    manifest_body = {"version": "edition-42", "audio": {"enabled": False, "assets": {}}}
+    manifest_headers = {"Cache-Control": "private, no-store", "Vary": "Authorization, Cookie, Origin"}
+    manifests = {
+        "regular": response(manifest_body, headers=dict(manifest_headers)),
+        "conditional": response(manifest_body, headers=dict(manifest_headers)),
+    }
+    responses = {
+        "/healthz": response({"status": "ok"}, headers={"Cache-Control": "no-store"}),
+        "/api/reading-pass/config": response({"public_text_pages": 3, "public_audio_seconds": 0}, headers={"Access-Control-Allow-Origin": canary.CANARY_ORIGIN}),
+        "/api/books?q=dracula": response([{"slug": "dracula", "audio_enabled": False, "audiobook_enabled": False}]),
+        f"/api/books/{fixture['slug']}": response({
+            "slug": fixture["slug"], "reader_enabled": True, "audio_enabled": True, "audiobook_enabled": True,
+            "audiobook_release_gate": fixture["public_contract"]["audiobook_release_gates"][0],
+            "audio_qa_status": fixture["public_contract"]["audio_qa_status"],
+        }),
+        "/api/reader/book/dracula/audiobook": response({}, status=404),
+        f"/api/reader/book/{fixture['slug']}/audiobook": response({}, status=401),
+    }
+
+    def fake_request(base_url, path, *, method="GET", headers=None):
+        calls.append({"path": path, "method": method, "headers": headers or {}})
+        if path == "/api/reader/book/dracula/manifest":
+            return manifests["conditional" if headers and "If-None-Match" in headers else "regular"]
+        return responses[path]
+
+    monkeypatch.setattr(canary, "request", fake_request)
+    return fixture, manifests, calls
+
+
+def test_live_canary_probes_exact_historical_etag_without_mutations(healthy_public_api):
+    fixture, _manifests, calls = healthy_public_api
+    report = canary.run("https://api.example.test", fixture)
+
+    assert report["status"] == "PASS"
+    assert report["manifest_conditional_etag"] == 'W/"reader-manifest-edition-42"'
+    manifest_calls = [call for call in calls if call["path"].endswith("/manifest")]
+    assert [call["headers"] for call in manifest_calls] == [{}, {"If-None-Match": 'W/"reader-manifest-edition-42"'}]
+    assert all(call["method"] == "GET" for call in calls)
+    assert report["production_mutation_performed"] is False
+
+
+@pytest.mark.parametrize("phase", ["regular", "conditional"])
+@pytest.mark.parametrize("unsafe_headers", [
+    {"Cache-Control": "public, max-age=60, stale-while-revalidate=300"},
+    {"Cache-Control": "private, max-age=20"},
+    {"Cache-Control": "no-store"},
+    {"Cache-Control": "private, no-store, public"},
+    {"Vary": "Origin, Cookie"},
+    {"Vary": "Authorization"},
+    {"ETag": 'W/"reader-manifest-edition-42"'},
+])
+def test_live_canary_rejects_unsafe_manifest_caching(healthy_public_api, phase, unsafe_headers):
+    fixture, manifests, _calls = healthy_public_api
+    manifests[phase]["headers"].update(unsafe_headers)
+    report = canary.run("https://api.example.test", fixture)
+
+    assert report["status"] == "FAIL"
+    check_name = "manifest_private_no_store" if phase == "regular" else "manifest_conditional_private_no_store"
+    assert next(item for item in report["checks"] if item["name"] == check_name)["passed"] is False
+
+
+def test_live_canary_rejects_not_modified_even_with_safe_headers(healthy_public_api):
+    fixture, manifests, _calls = healthy_public_api
+    manifests["conditional"]["status"] = 304
+    manifests["conditional"]["body"] = ""
+    report = canary.run("https://api.example.test", fixture)
+
+    assert report["status"] == "FAIL"
+    assert next(item for item in report["checks"] if item["name"] == "manifest_conditional_private_no_store")["passed"] is False
+
+
+def test_live_canary_cannot_pass_without_version_for_conditional_probe(healthy_public_api):
+    fixture, manifests, calls = healthy_public_api
+    manifests["regular"]["body"] = json.dumps({"audio": {"enabled": False, "assets": {}}})
+    report = canary.run("https://api.example.test", fixture)
+
+    assert report["status"] == "FAIL"
+    assert report["manifest_conditional_etag"] == ""
+    assert len([call for call in calls if call["path"].endswith("/manifest")]) == 1
 
 
 def test_workflow_checks_out_exact_event_sha_and_accepts_empty_ref_when_main_reachable():

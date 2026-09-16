@@ -30,6 +30,6 @@ env \
   MONGODB_URL="${MONGODB_URL:?isolated MongoDB URL is required}" \
   REDIS_URL="${REDIS_URL:?isolated Redis URL is required}" \
   JWT_SECRET="${JWT_SECRET:?isolated JWT secret is required}" \
-  "$PYTHON_BIN" -m pytest -q backend/tests/test_cors_cache_headers.py
+  "$PYTHON_BIN" -m pytest -q backend/tests/test_cors_cache_headers.py backend/tests/test_reader_manifest_cache_contract.py
 
 npm run regression:ci

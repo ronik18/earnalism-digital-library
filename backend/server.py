@@ -8234,22 +8234,11 @@ async def reader_book_manifest(
     payload = {**manifest, "access": access}
     if canonical_pages:
         payload["canonical_pages"] = canonical_pages
-    etag = f'W/"reader-manifest-{manifest["version"]}"'
-    response.headers["ETag"] = etag
     response.headers["X-Reader-Manifest-Version"] = manifest["version"]
-    if access["role"] == "guest":
-        response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
-    else:
-        response.headers["Cache-Control"] = "private, max-age=20, stale-while-revalidate=60"
-    if _client_etag_matches(request, etag):
-        return Response(
-            status_code=304,
-            headers={
-                "ETag": etag,
-                "X-Reader-Manifest-Version": manifest["version"],
-                "Cache-Control": response.headers["Cache-Control"],
-            },
-        )
+    # The edition version does not identify the principal or current wallet.
+    # Even guest responses must not be reused after sign-in or an account switch.
+    response.headers["Cache-Control"] = "private, no-store"
+    response.headers["Vary"] = "Authorization, Cookie"
     return payload
 
 

@@ -1,10 +1,18 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { api, userApi, TOKEN_KEY, USER_TOKEN_KEY } from "../lib/api";
+import { api, userApi, TOKEN_KEY, USER_TOKEN_KEY, getUserAuthSessionVersion, isUserAuthSessionCurrent } from "../lib/api";
 
 const AuthContext = createContext(null);
 
 function isConfirmedInvalidUserAuth(error) {
   return error?.response?.status === 401;
+}
+
+function profileWithCurrentBalance(current, incoming, preserveBalance) {
+  const identity = current?.id || current?.email;
+  if (preserveBalance && identity && identity === (incoming?.id || incoming?.email)) {
+    return { ...incoming, reading_seconds_balance: current.reading_seconds_balance };
+  }
+  return incoming;
 }
 
 export function AuthProvider({ children }) {
@@ -13,6 +21,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const mountedRef = useRef(false);
   const userAuthGenerationRef = useRef(0);
+  const userBalanceRevisionRef = useRef(0);
 
   useEffect(() => {
     mountedRef.current = true;
@@ -32,18 +41,21 @@ export function AuthProvider({ children }) {
     if (!userToken) setUser(false);
     else {
       const generation = ++userAuthGenerationRef.current;
-      userApi.get("/users/me", { skipAuthRedirect: true })
+      const sessionVersion = getUserAuthSessionVersion();
+      const balanceRevision = userBalanceRevisionRef.current;
+      userApi.get("/users/me", { skipAuthRedirect: true, timeout: 15000 })
         .then((r) => {
           if (
             mountedRef.current
             && generation === userAuthGenerationRef.current
-            && localStorage.getItem(USER_TOKEN_KEY) === userToken
+            && isUserAuthSessionCurrent(sessionVersion)
+            && localStorage.getItem(USER_TOKEN_KEY)
           ) {
-            setUser(r.data);
+            setUser((current) => profileWithCurrentBalance(current, r.data, balanceRevision !== userBalanceRevisionRef.current));
           }
         })
         .catch((error) => {
-          if (!mountedRef.current || generation !== userAuthGenerationRef.current) return;
+          if (!mountedRef.current || generation !== userAuthGenerationRef.current || !isUserAuthSessionCurrent(sessionVersion) || error.authSuperseded) return;
           // A timeout or transport error is recoverable: do not erase a token
           // simply because startup verification did not finish. A confirmed 401
           // remains fail-closed and clears the local user credential.
@@ -87,8 +99,9 @@ export function AuthProvider({ children }) {
   }, []);
   const userLogout = useCallback(() => {
     ++userAuthGenerationRef.current;
+    const token = localStorage.getItem(USER_TOKEN_KEY);
     // Best-effort server logout; ignore network errors (token is already client-side).
-    try { userApi.post("/users/logout", undefined, { skipAuthRedirect: true }).catch(() => { /* fire-and-forget */ }); }
+    try { userApi.post("/users/logout", undefined, { skipAuthRedirect: true, skipAuthRefresh: true, timeout: 15000, headers: token ? { Authorization: `Bearer ${token}` } : {} }).catch(() => { /* fire-and-forget */ }); }
     catch { /* userApi unavailable in test envs */ }
     localStorage.removeItem(USER_TOKEN_KEY);
     setUser(false);
@@ -97,19 +110,24 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem(USER_TOKEN_KEY);
     if (!token) return null;
     const generation = userAuthGenerationRef.current;
+    const sessionVersion = getUserAuthSessionVersion();
+    const balanceRevision = userBalanceRevisionRef.current;
     try {
-      const { data } = await userApi.get("/users/me");
+      const { data } = await userApi.get("/users/me", { skipAuthRedirect: true, timeout: 15000 });
       if (
         !mountedRef.current
         || generation !== userAuthGenerationRef.current
-        || localStorage.getItem(USER_TOKEN_KEY) !== token
+        || !isUserAuthSessionCurrent(sessionVersion)
+        || !localStorage.getItem(USER_TOKEN_KEY)
       ) return null;
-      setUser(data);
+      setUser((current) => profileWithCurrentBalance(current, data, balanceRevision !== userBalanceRevisionRef.current));
       return data;
     } catch (error) {
       if (
         mountedRef.current
         && generation === userAuthGenerationRef.current
+        && isUserAuthSessionCurrent(sessionVersion)
+        && !error.authSuperseded
         && isConfirmedInvalidUserAuth(error)
       ) {
         localStorage.removeItem(USER_TOKEN_KEY);
@@ -118,8 +136,14 @@ export function AuthProvider({ children }) {
       return null;
     }
   }, []);
-  const setUserBalance = useCallback((balance) => {
-    setUser((u) => (u && typeof u === "object" ? { ...u, reading_seconds_balance: balance } : u));
+  const setUserBalance = useCallback((balance, expectedIdentity) => {
+    if (!Number.isSafeInteger(balance) || balance < 0 || !expectedIdentity) return;
+    setUser((u) => {
+      if (!u || typeof u !== "object" || (u.id || u.email || "member") !== expectedIdentity) return u;
+      userBalanceRevisionRef.current += 1;
+      if (u.reading_seconds_balance === balance) return u;
+      return { ...u, reading_seconds_balance: balance };
+    });
   }, []);
 
   // Memoise the context value so consumers don't re-render on every parent render.

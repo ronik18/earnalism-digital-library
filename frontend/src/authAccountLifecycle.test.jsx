@@ -8,6 +8,7 @@ const mockGetReadingPassDevices = jest.fn();
 const mockStateObserver = jest.fn();
 
 jest.mock("./lib/api", () => ({
+  ...jest.requireActual("./lib/api"),
   TOKEN_KEY: "earnalism_admin_token",
   USER_TOKEN_KEY: "earnalism_user_token",
   api: { get: jest.fn(), post: jest.fn() },
