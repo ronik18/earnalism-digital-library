@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "db5c8f70a5546766c90b196eb85cdb18be59ceca",
+    "tree": "98e6048aec0406db0d3e86494692beee877cd4ef",
+    "base": "23591a938735b16c8657f63e31ada70794bc0521"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/pr397-library-interaction-baseline.json",
+    "reviewed_source_commit": "eeea9f38a636ffb9de156b4edafcabd269e417ee",
+    "surface_sha256": "99f0892ea0c1de2de7c11c90d7b0a36f09ed40ecdc0be2af7249d1de089c3f99"
+  },
+  "authorized_surface_sha256": "eb5b100dd080afb4213e86f9b91b711bbe442b8a82071161dc9f44cd89ea9738",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "ISSUE_380_COMMENT_5668321194_CONTENT_GOVERNANCE_REMEDIATION",
+    "scope": "Remove the public mount of unverified sample reader testimonials to comply with the owner-authored prohibition on invented testimonials. This record does not authorize or validate the removed quotes.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This transition records a public-content remediation in a shared Home/Library presentation source. It does not certify production publication, customer endorsements, authenticated acceptance, or complete CUSTOMER_READY coverage."
+}

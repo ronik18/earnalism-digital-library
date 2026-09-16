@@ -39,6 +39,12 @@ describe("Reference public page surfaces", () => {
     expect(commerce).not.toContain("Reader satisfaction");
   });
 
+  test("does not mount unverified reader testimonials or public review claims", () => {
+    expect(source).not.toContain("ReaderTestimonialsSection");
+    expect(source).not.toContain("What Our Readers Say");
+    expect(source).not.toContain("Editorial sample notes");
+  });
+
   test("uses the reviewed operational-facts fallback when public metrics are not eligible", () => {
     expect(commerce).toContain("Price and validity together");
     expect(commerce).toContain("No auto-renewal");
