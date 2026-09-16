@@ -51,6 +51,28 @@ def check(name: str, passed: bool, detail: str) -> dict[str, Any]:
     return {"name": name, "passed": passed, "detail": detail}
 
 
+def manifest_cache_check(name: str, result: dict[str, Any]) -> dict[str, Any]:
+    cache_control = header(result, "Cache-Control")
+    directives = {value.strip().lower() for value in cache_control.split(",")}
+    vary = header(result, "Vary")
+    vary_fields = {value.strip().lower() for value in vary.split(",")}
+    etag_present = any(key.lower() == "etag" for key in result["headers"])
+    passed = (
+        result["status"] == 200
+        and {"private", "no-store"}.issubset(directives)
+        and "public" not in directives
+        and {"authorization", "cookie"}.issubset(vary_fields)
+        and not etag_present
+    )
+    return check(name, passed, json.dumps({
+        "status": result["status"],
+        "cache_control": cache_control,
+        "vary": vary,
+        "etag_present": etag_present,
+        "error": result.get("error", ""),
+    }))
+
+
 def load_approved_audio_fixture(path: Path) -> dict[str, Any]:
     fixture = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(fixture, dict) or not isinstance(fixture.get("slug"), str):
@@ -83,6 +105,17 @@ def run(base_url: str, approved_audio_fixture: dict[str, Any], provenance: dict[
         manifest_body = {}
     if not isinstance(approved_catalog_body, dict):
         approved_catalog_body = {}
+    version = manifest_body.get("version")
+    conditional_etag = ""
+    if isinstance(version, str) and version and not any(character in version for character in '\r\n"'):
+        conditional_etag = f'W/"reader-manifest-{version}"'
+        conditional_manifest = request(
+            base_url,
+            "/api/reader/book/dracula/manifest",
+            headers={"If-None-Match": conditional_etag},
+        )
+    else:
+        conditional_manifest = {"status": 0, "headers": {}, "error": "Manifest version unavailable for historical ETag probe"}
     dracula = next((book for book in catalog_body if isinstance(book, dict) and book.get("slug") == "dracula"), {})
     approved_audio_book = approved_catalog_body if approved_catalog_body.get("slug") == approved_audio_slug else {}
     serialized_catalog = json.dumps(catalog_body, ensure_ascii=False)
@@ -96,6 +129,8 @@ def run(base_url: str, approved_audio_fixture: dict[str, Any], provenance: dict[
         check("no_raw_media_url", not RAW_MEDIA_PATTERN.search(serialized_catalog) and not RAW_MEDIA_PATTERN.search(serialized_manifest), "catalog and manifest scanned"),
         check("dracula_audio_disabled", dracula.get("audio_enabled") is False and dracula.get("audiobook_enabled") is False and not dracula.get("audio_url"), json.dumps({key: dracula.get(key) for key in ("audio_enabled", "audiobook_enabled", "audio_url")})),
         check("controlled_manifest", manifest["status"] == 200 and manifest_body.get("audio", {}).get("enabled") is False and manifest_body.get("audio", {}).get("assets") == {}, f"status={manifest['status']}"),
+        manifest_cache_check("manifest_private_no_store", manifest),
+        manifest_cache_check("manifest_conditional_private_no_store", conditional_manifest),
         check("dracula_audio_range_denied", dracula_audio["status"] == 404 and not dracula_audio["body"].startswith("ID3"), f"status={dracula_audio['status']}; bytes={len(dracula_audio['body'])}"),
         check("approved_audio_locked_metadata", approved_catalog["status"] == 200 and approved_audio_book.get("reader_enabled") is True and approved_audio_book.get("audio_enabled") is True and approved_audio_book.get("audiobook_enabled") is True and approved_audio_book.get("audiobook_release_gate") in public_contract.get("audiobook_release_gates", []) and approved_audio_book.get("audio_qa_status") == public_contract.get("audio_qa_status") and not approved_audio_book.get("audio_url"), json.dumps({key: approved_audio_book.get(key) for key in ("reader_enabled", "audio_enabled", "audiobook_enabled", "audiobook_release_gate", "audio_qa_status", "audio_url")})),
         check("approved_audio_range_denied", approved_audio["status"] in set(public_contract.get("anonymous_range_statuses", [])) and not approved_audio["body"].startswith("ID3"), f"status={approved_audio['status']}; bytes={len(approved_audio['body'])}"),
@@ -107,6 +142,7 @@ def run(base_url: str, approved_audio_fixture: dict[str, Any], provenance: dict[
         "deployment_sha": os.environ.get("RAILWAY_DEPLOYMENT_SHA", ""),
         "approved_audio_fixture": approved_audio_fixture,
         "deployment_provenance": provenance or {},
+        "manifest_conditional_etag": conditional_etag,
         "response_edge": header(health, "X-Railway-Edge"),
         "response_region_debug": header(health, "X-Hikari-Trace"),
         "checks": checks,
