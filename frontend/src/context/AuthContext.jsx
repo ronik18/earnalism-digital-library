@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { api, userApi, TOKEN_KEY, USER_TOKEN_KEY } from "../lib/api";
+import { api, userApi, TOKEN_KEY, USER_TOKEN_KEY, getUserAuthSessionVersion, isUserAuthSessionCurrent } from "../lib/api";
 
 const AuthContext = createContext(null);
 
@@ -32,18 +32,20 @@ export function AuthProvider({ children }) {
     if (!userToken) setUser(false);
     else {
       const generation = ++userAuthGenerationRef.current;
-      userApi.get("/users/me", { skipAuthRedirect: true })
+      const sessionVersion = getUserAuthSessionVersion();
+      userApi.get("/users/me", { skipAuthRedirect: true, timeout: 15000 })
         .then((r) => {
           if (
             mountedRef.current
             && generation === userAuthGenerationRef.current
-            && localStorage.getItem(USER_TOKEN_KEY) === userToken
+            && isUserAuthSessionCurrent(sessionVersion)
+            && localStorage.getItem(USER_TOKEN_KEY)
           ) {
             setUser(r.data);
           }
         })
         .catch((error) => {
-          if (!mountedRef.current || generation !== userAuthGenerationRef.current) return;
+          if (!mountedRef.current || generation !== userAuthGenerationRef.current || !isUserAuthSessionCurrent(sessionVersion) || error.authSuperseded) return;
           // A timeout or transport error is recoverable: do not erase a token
           // simply because startup verification did not finish. A confirmed 401
           // remains fail-closed and clears the local user credential.
@@ -87,8 +89,9 @@ export function AuthProvider({ children }) {
   }, []);
   const userLogout = useCallback(() => {
     ++userAuthGenerationRef.current;
+    const token = localStorage.getItem(USER_TOKEN_KEY);
     // Best-effort server logout; ignore network errors (token is already client-side).
-    try { userApi.post("/users/logout", undefined, { skipAuthRedirect: true }).catch(() => { /* fire-and-forget */ }); }
+    try { userApi.post("/users/logout", undefined, { skipAuthRedirect: true, skipAuthRefresh: true, timeout: 15000, headers: token ? { Authorization: `Bearer ${token}` } : {} }).catch(() => { /* fire-and-forget */ }); }
     catch { /* userApi unavailable in test envs */ }
     localStorage.removeItem(USER_TOKEN_KEY);
     setUser(false);
@@ -97,12 +100,14 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem(USER_TOKEN_KEY);
     if (!token) return null;
     const generation = userAuthGenerationRef.current;
+    const sessionVersion = getUserAuthSessionVersion();
     try {
-      const { data } = await userApi.get("/users/me");
+      const { data } = await userApi.get("/users/me", { skipAuthRedirect: true, timeout: 15000 });
       if (
         !mountedRef.current
         || generation !== userAuthGenerationRef.current
-        || localStorage.getItem(USER_TOKEN_KEY) !== token
+        || !isUserAuthSessionCurrent(sessionVersion)
+        || !localStorage.getItem(USER_TOKEN_KEY)
       ) return null;
       setUser(data);
       return data;
@@ -110,6 +115,8 @@ export function AuthProvider({ children }) {
       if (
         mountedRef.current
         && generation === userAuthGenerationRef.current
+        && isUserAuthSessionCurrent(sessionVersion)
+        && !error.authSuperseded
         && isConfirmedInvalidUserAuth(error)
       ) {
         localStorage.removeItem(USER_TOKEN_KEY);

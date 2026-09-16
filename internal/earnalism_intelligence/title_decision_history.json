@@ -137,6 +137,19 @@
         "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_REPAIR_20260916_review.md",
         "rights_and_publication_decision": "UNCHANGED",
         "production_protected_page_acceptance": "NOT_VERIFIED"
+      },
+      "reader_auth_followup_20260916": {
+        "recorded_at": "2026-09-16T15:38:56Z",
+        "status": "AUTH_FOLLOWUP_LOCAL_NOT_RELEASED",
+        "deployed_reader_commit": "3a539e96572754f5d05d2ade05c2d3cce17b9075",
+        "live_bundle": "main.98bb273e.js",
+        "live_public_preview": "NOT_TESTED_AT_THIS_POSTDEPLOY_CHECKPOINT",
+        "auth_source_defect": "CONFIRMED",
+        "live_signout_cause": "UNPROVEN",
+        "production_protected_page_acceptance": "PENDING_SECURE_SIGNIN",
+        "paid_test_seconds_used": 0,
+        "rights_and_publication_decision": "UNCHANGED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md"
       }
     },
     "bn-031": {
@@ -2328,6 +2341,19 @@
         "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_REPAIR_20260916_review.md",
         "rights_and_publication_decision": "UNCHANGED",
         "production_protected_page_acceptance": "NOT_VERIFIED"
+      },
+      "reader_auth_followup_20260916": {
+        "recorded_at": "2026-09-16T15:38:56Z",
+        "status": "AUTH_FOLLOWUP_LOCAL_NOT_RELEASED",
+        "deployed_reader_commit": "3a539e96572754f5d05d2ade05c2d3cce17b9075",
+        "live_bundle": "main.98bb273e.js",
+        "live_public_preview": "NOT_TESTED_AT_THIS_POSTDEPLOY_CHECKPOINT",
+        "auth_source_defect": "CONFIRMED",
+        "live_signout_cause": "UNPROVEN",
+        "production_protected_page_acceptance": "PENDING_SECURE_SIGNIN",
+        "paid_test_seconds_used": 0,
+        "rights_and_publication_decision": "UNCHANGED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md"
       }
     },
     "the-monkeys-paw": {
@@ -2615,6 +2641,19 @@
         "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_REPAIR_20260916_review.md",
         "rights_and_publication_decision": "UNCHANGED",
         "production_protected_page_acceptance": "NOT_VERIFIED"
+      },
+      "reader_auth_followup_20260916": {
+        "recorded_at": "2026-09-16T15:38:56Z",
+        "status": "AUTH_FOLLOWUP_LOCAL_NOT_RELEASED",
+        "deployed_reader_commit": "3a539e96572754f5d05d2ade05c2d3cce17b9075",
+        "live_bundle": "main.98bb273e.js",
+        "live_public_preview": "PASS_FREE_PAGES_NAVIGATION_PREFERENCES_LIBRARY",
+        "auth_source_defect": "CONFIRMED",
+        "live_signout_cause": "UNPROVEN",
+        "production_protected_page_acceptance": "PENDING_SECURE_SIGNIN",
+        "paid_test_seconds_used": 0,
+        "rights_and_publication_decision": "UNCHANGED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md"
       }
     },
     "white-fang": {

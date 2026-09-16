@@ -93,5 +93,26 @@
     "paid_customer_test": "AUTO_REVIEW_BLOCKED_PENDING_EXPLICIT_TIME_BUDGET",
     "candidate_visual_check": "LOCAL_PREVIEW_NOT_REACHABLE_FROM_CLOUD_BROWSER",
     "release_gate_truth_status": "UNCHANGED_NO_AUDIO_OR_CONTENT_RELEASE_MUTATION"
+  },
+  "reader_auth_followup_20260916": {
+    "recorded_at": "2026-09-16T15:38:56Z",
+    "status": "AUTH_FOLLOWUP_LOCAL_NOT_RELEASED",
+    "deployed_reader_pr": 400,
+    "deployed_reader_commit": "3a539e96572754f5d05d2ade05c2d3cce17b9075",
+    "live_bundle": "main.98bb273e.js",
+    "live_reader_check": "FRANKENSTEIN_FREE_PAGE_NAVIGATION_PREFERENCES_LIBRARY_PASS",
+    "auth_source_defect": "CONFIRMED",
+    "live_signout_cause": "UNPROVEN",
+    "secure_signin": "PENDING",
+    "paid_test_budget_seconds": 120,
+    "paid_test_seconds_used": 0,
+    "focused_auth_validation": "PASS_5_SUITES_29_TESTS",
+    "full_frontend_validation": "PASS_69_SUITES_408_TESTS",
+    "production_build": "PASS",
+    "seo_assertions": 2502,
+    "workflow_contract_tests": 46,
+    "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md",
+    "release_gate_truth_status": "NO_RIGHTS_CONTENT_AUDIO_PUBLICATION_OR_BALANCE_CHANGE",
+    "next_action": "Fresh follow-up CI and merged-main release, then secure sign-in and authorized bounded paid-reader acceptance"
   }
 }

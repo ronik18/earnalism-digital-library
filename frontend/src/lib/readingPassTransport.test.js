@@ -95,8 +95,22 @@ test("a 401 refresh whose response body stalls cannot hold settlement indefinite
     }
   };
   const startedAt = Date.now();
-  await expect(endReadingPassSession(lease)).rejects.toMatchObject({ response: { status: 401 } });
+  await expect(endReadingPassSession(lease)).rejects.toMatchObject({ name: "AbortError" });
   expect(Date.now() - startedAt).toBeLessThan(11000);
   expect(requests).toEqual(["/api/reading-pass/sessions/end", "/api/users/refresh"]);
-  expect(localStorage.getItem(USER_TOKEN_KEY)).toBeNull();
+  // An expired access token plus a stalled refresh is not proof that the
+  // refresh cookie is invalid. Keep the credential for an explicit retry.
+  expect(localStorage.getItem(USER_TOKEN_KEY)).toBe("old-test-token");
 }, 13000);
+
+test("a confirmed invalid refresh still clears the user credential and rejects the protected operation", async () => {
+  localStorage.setItem(USER_TOKEN_KEY, "expired-test-token");
+  global.fetch = (url, options) => nativeFetch(new URL(url, origin), options);
+  route = (req, res) => {
+    res.writeHead(401, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ detail: "Session expired" }));
+  };
+  await expect(endReadingPassSession(lease)).rejects.toMatchObject({ response: { status: 401 } });
+  expect(requests).toEqual(["/api/reading-pass/sessions/end", "/api/users/refresh"]);
+  expect(localStorage.getItem(USER_TOKEN_KEY)).toBeNull();
+});

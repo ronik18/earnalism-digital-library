@@ -3,7 +3,7 @@
   "approved_local_commit": "741993d661cb3a848b0082916dfbce08b3928ff8",
   "published_commit": "c4d4f1e869300eec4c74fc8e21541af8f75e7e33",
   "previous_source_fingerprint": "e1561e099125be1933455853b1062a9bc46b9a6ea55d3384fb34f83f974af8d9",
-  "candidate_source_fingerprint": "93207c79c4377e03c9536445148e089c42f303d6c34df5af3f124540f4e1b969",
+  "candidate_source_fingerprint": "6b38478613ede1d69443c0cadab7b0d5dd5a2758360a073406cd7f06d074b359",
   "source_hash_algorithm": "scripts/capture_seamless_brand_owner_review.mjs productionSurfaceHash",
   "pr": 400,
   "owner_authorization": "Approved in this reader-repair thread after exact candidate and public repository payload were presented",
@@ -23,5 +23,15 @@
     "Keep masthead and Library visible by scrolling the new ready page to window top, then focus its heading without moving scroll",
     "Update the existing customer-copy regression expectation to the new availability sentence"
   ],
-  "followup_visual_acceptance": "REQUIRED_NOT_YET_VERIFIED"
+  "followup_visual_acceptance": "REQUIRED_NOT_YET_VERIFIED",
+  "auth_followup": {
+    "reason": "Expired access token on bootstrap skips refresh; valid token rotation is rejected by the old profile guard",
+    "base_merged_commit": "3a539e96572754f5d05d2ade05c2d3cce17b9075",
+    "previous_source_fingerprint": "93207c79c4377e03c9536445148e089c42f303d6c34df5af3f124540f4e1b969",
+    "candidate_source_fingerprint": "6b38478613ede1d69443c0cadab7b0d5dd5a2758360a073406cd7f06d074b359",
+    "fresh_browser_capture": "REQUIRED",
+    "visual_approval": "NOT_CLAIMED",
+    "deployed_customer_renewal_verification": "PENDING_SECURE_SIGN_IN",
+    "scope": "Bounded same-identity auth refresh, no access-policy change"
+  }
 }

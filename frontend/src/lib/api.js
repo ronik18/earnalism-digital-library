@@ -43,11 +43,42 @@ export const SESSION_EXPIRED_MESSAGE = "Session expired, please login again.";
 export const NEW_LOGIN_MESSAGE = "You’ve been logged out: new login detected.";
 
 let authRedirectInFlight = false;
+let userAuthState = { token: null, version: 0, tokens: new Set() };
+let userRefreshInFlight = null;
 const DEV_API_TIMING = process.env.NODE_ENV === "development";
 axios.defaults.withCredentials = true;
 
 function isBrowser() {
   return typeof window !== "undefined" && typeof window.location !== "undefined";
+}
+
+function currentUserAuthState() {
+  const token = isBrowser() ? localStorage.getItem(USER_TOKEN_KEY) : null;
+  // Login, logout, and Google/OTP callbacks can change storage directly. Token
+  // rotation below updates this same session; an external change starts a new one.
+  if (token !== userAuthState.token) {
+    userAuthState = { token, version: userAuthState.version + 1, tokens: new Set(token ? [token] : []) };
+  }
+  return userAuthState;
+}
+
+export function getUserAuthSessionVersion() {
+  return currentUserAuthState().version;
+}
+
+export function isUserAuthSessionCurrent(version) {
+  return currentUserAuthState().version === version;
+}
+
+function supersededAuthError() {
+  const error = new axios.CanceledError("A newer sign-in or sign-out superseded this request.");
+  error.authSuperseded = true;
+  return error;
+}
+
+function requestUserToken(config) {
+  const header = config.headers?.Authorization || config.headers?.authorization || "";
+  return /^Bearer\s+/i.test(header) ? header.replace(/^Bearer\s+/i, "") : config._userAuthRequestToken;
 }
 
 function requestPath(config = {}) {
@@ -172,33 +203,49 @@ export function handleSessionExpired(tokenType = "user", message = SESSION_EXPIR
   window.location.assign(loginUrl(tokenType));
 }
 
-async function refreshUserAccessToken() {
-  if (!isBrowser() || !localStorage.getItem(USER_TOKEN_KEY)) return null;
+function refreshUserAccessToken(version) {
+  const session = currentUserAuthState();
+  if (session.version !== version) return Promise.reject(supersededAuthError());
+  if (!isBrowser() || !session.token) return Promise.resolve(null);
+  if (userRefreshInFlight?.version === version) return userRefreshInFlight.promise;
+
+  const originalToken = session.token;
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
-  try {
+  const pending = { version, promise: null };
+  pending.promise = (async () => {
     const response = await fetch(`${API}/users/refresh`, {
       method: "POST",
       credentials: "include",
       signal: controller.signal,
       headers: { "Content-Type": "application/json" },
     });
-    if (!response.ok) return null;
+    if (!isUserAuthSessionCurrent(version) || session.token !== originalToken) throw supersededAuthError();
+    if (response.status === 401) return null;
+    if (!response.ok) {
+      const error = new Error("Session verification could not finish. Please try again.");
+      error.response = { status: response.status };
+      throw error;
+    }
     const data = await response.json();
-    if (!data?.token) return null;
+    if (!isUserAuthSessionCurrent(version) || session.token !== originalToken) throw supersededAuthError();
+    if (typeof data?.token !== "string" || !data.token) throw new Error("Session verification returned no access token.");
     localStorage.setItem(USER_TOKEN_KEY, data.token);
+    session.token = data.token;
+    session.tokens.add(data.token);
     return data.token;
-  } catch {
-    return null;
-  } finally {
+  })().finally(() => {
     clearTimeout(timeout);
-  }
+    if (userRefreshInFlight === pending) userRefreshInFlight = null;
+  });
+  userRefreshInFlight = pending;
+  return pending.promise;
 }
 
 function shouldHandleAuth401(error, fallbackTokenType) {
   const status = error?.response?.status;
   const config = error?.config || {};
-  if (status !== 401 || config.skipAuthRedirect) return null;
+  if (status !== 401) return null;
 
   const path = requestPath(config);
   if (isPublicAuthPath(path)) return null;
@@ -206,20 +253,43 @@ function shouldHandleAuth401(error, fallbackTokenType) {
 }
 
 function installAuth401Handler(instance, fallbackTokenType) {
+  instance.interceptors.request.use((config) => {
+    const path = requestPath(config);
+    if (!isPublicAuthPath(path) && tokenTypeForPath(path, fallbackTokenType) === "user" && !config.skipAuthRefresh) {
+      const session = currentUserAuthState();
+      if (config._userAuthSessionVersion === undefined) config._userAuthSessionVersion = session.version;
+      if (config._userAuthSessionVersion !== session.version) throw supersededAuthError();
+      config._userAuthRequestToken = requestUserToken(config) || session.token;
+    }
+    return config;
+  });
   instance.interceptors.response.use(
     (response) => response,
     async (error) => {
       const tokenType = shouldHandleAuth401(error, fallbackTokenType);
       const config = error.config || {};
-      if (tokenType === "user" && !config._retryAuthRefresh) {
-        config._retryAuthRefresh = true;
-        const refreshed = await refreshUserAccessToken();
-        if (refreshed) {
-          config.headers = { ...(config.headers || {}), Authorization: `Bearer ${refreshed}` };
-          return instance(config);
+      if (tokenType === "user" && !config.skipAuthRefresh) {
+        const session = currentUserAuthState();
+        const version = config._userAuthSessionVersion;
+        const issuedToken = requestUserToken(config);
+        if (version !== session.version || (issuedToken && !session.tokens.has(issuedToken))) throw supersededAuthError();
+        if (!config._retryAuthRefresh) {
+          config._retryAuthRefresh = true;
+          // Another request may already have refreshed this same session.
+          const refreshed = issuedToken && issuedToken !== session.token
+            ? session.token
+            : await refreshUserAccessToken(version);
+          if (!isUserAuthSessionCurrent(version)) throw supersededAuthError();
+          if (refreshed) {
+            config.headers = { ...(config.headers || {}), Authorization: `Bearer ${refreshed}` };
+            return instance(config);
+          }
+        } else if (issuedToken !== session.token) {
+          // A rejected old retry must not invalidate a subsequently rotated grant.
+          throw supersededAuthError();
         }
       }
-      if (tokenType) {
+      if (tokenType && !config.skipAuthRedirect) {
         const detail = error.response?.data?.detail;
         const message = typeof detail === "string" && detail.includes("new login detected")
           ? NEW_LOGIN_MESSAGE
@@ -242,8 +312,11 @@ api.interceptors.request.use((cfg) => {
 // Reader-user axios — sends only the user Bearer token (used by /users/*, /reader/*).
 export const userApi = axios.create({ baseURL: API, withCredentials: true });
 userApi.interceptors.request.use((cfg) => {
+  // Axios request interceptors run in reverse registration order. Recheck the
+  // captured identity before adding a credential after an asynchronous turn.
+  if (cfg._userAuthSessionVersion !== undefined && !isUserAuthSessionCurrent(cfg._userAuthSessionVersion)) throw supersededAuthError();
   const token = localStorage.getItem(USER_TOKEN_KEY);
-  if (token) cfg.headers.Authorization = `Bearer ${token}`;
+  if (token && !cfg.headers.Authorization) cfg.headers.Authorization = `Bearer ${token}`;
   return cfg;
 });
 
