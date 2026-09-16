@@ -22,17 +22,9 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(result.mediaUrl).toBe("");
   });
 
-  test("Reader route fetches only the selected canonical page and starts a lease before protected access", () => {
-    const source = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2Route.jsx"), "utf8");
-    const experience = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2.jsx"), "utf8");
-    expect(source).toContain("canonicalPage > 3 && !lease");
-    expect(source).toContain("getReadingPassPage(slug, canonicalPage, lease)");
-    expect(source).toContain("startReadingPassSession({ bookSlug: slug, pageIndex: nextPage })");
-    expect(source).toContain("saveReadingPassPosition");
-    expect(source).not.toMatch(/localStorage|prefetch/i);
-    expect(experience).toContain("if (currentAccess.canRequest) onRequestPage?.(page);");
-    expect(experience).not.toContain("const nextAccess = readerPageAccess");
-  });
+  // Selected-page authorization and protected navigation are exercised through
+  // the real router in ReaderExperienceV2Route.lifecycle.test.jsx. Source-string
+  // matching previously passed while the heartbeat repeatedly erased content.
 
   test("visible Reader recovery preserves the existing authorization boundary", () => {
     expect(readerRecoveryPlan({ canonicalPage: 4, user: false, awaitingAuthorization: true })).toEqual({ needsSignIn: true, needsAuthorization: false, needsPass: false });
@@ -52,7 +44,6 @@ describe("Reader, Listener, and About v2 product truth", () => {
     const experience = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2.jsx"), "utf8");
     const stylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.css"), "utf8");
     expect(experience).toContain('className="reader-v2__mobile-topbar"');
-    expect(experience).toContain("Canonical page");
     expect(stylesheet).toContain(".reader-v2 .experience-header { display: none; }");
     expect(stylesheet).toContain(".reader-v2__continuation { position: sticky;");
     expect(stylesheet).toContain(".reader-v2__reader-navigation { display: none; }");
@@ -118,15 +109,8 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(source).toContain("presentation.fixture || !canPlay || !totalDuration");
   });
 
-  test("Reader text-size controls alter the rendered reading-text style in both responsive layouts", () => {
-    const experience = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2.jsx"), "utf8");
-    const stylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.css"), "utf8");
-    const mobileStylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.mobile.css"), "utf8");
-    expect(experience).toContain('data-testid="reader-reading-text"');
-    expect(experience).toContain('style={{ fontSize: `${fontScale / 100}rem` }}');
-    expect(stylesheet).not.toContain("font-size: 1rem !important");
-    expect(mobileStylesheet).toContain(".reader-v2__toolbar { display: none; }");
-  });
+  // ReaderExperienceV2.render.test.jsx clicks the real size controls and checks
+  // the rendered text and saved preferences, rather than matching their source.
 
   test("Quiet Heritage headings use the declared 400 face without claiming a V2 preference bridge", () => {
     const shared = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/experiences-v2.css"), "utf8");

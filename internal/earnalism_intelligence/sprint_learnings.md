@@ -2211,3 +2211,7 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 
 - A neutral D0 → D1 redeploy → D2 provider rollback can prove exact code/image restoration and flag-false safety without enabling Reading Pass v2 or changing release, content, rights, payment, Mongo, or Redis state.
 - HTTP 200 for a public reader route does not itself prove reader availability: production currently hydrates `Reader unavailable` because canonical v2 page 1 is feature-disabled. Keep that P1 availability defect distinct from the preserved PUBLIC_READER metadata and the successful protected-content/audio rollback boundaries.
+
+## 2026-09-16 — Reader session and navigation repair
+
+Lease renewal changes must not clear or refetch the current page. Separate content loading, valid server access, and session balance. A 200 renewal can still be Paused, Exhausted, or Stale; only a current Running grant authorizes protected content. Serialize renewal and settlement, preserve retry idempotency, bound network requests, and stop active renewals when no valid page is displayed. Production models must not inherit visual-fixture images, dates, genre, rights, or reading estimates. See `internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_REPAIR_20260916_review.md`. Customer paid-time testing and live release remain unverified.

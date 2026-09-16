@@ -21,6 +21,11 @@
 .book-detail-page--reference .font-serif-display { color: var(--book-reference-ivory) !important; }
 .book-detail-page--reference .text-charcoal,
 .book-detail-page--reference .text-charcoal-soft { color: rgba(255, 248, 233, .76) !important; }
+.book-detail-page--reference .book-detail-reference__rights {
+  background: var(--book-reference-surface);
+  border-color: var(--book-reference-line);
+  color: var(--book-reference-ivory);
+}
 .book-detail-page--reference .text-burgundy,
 .book-detail-page--reference .text-burgundy-soft,
 .book-detail-page--reference .text-gold-deep { color: var(--book-reference-gold) !important; }

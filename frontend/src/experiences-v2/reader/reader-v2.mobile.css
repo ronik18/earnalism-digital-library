@@ -2,3 +2,14 @@
 @media (max-width: 767px) {
   .reader-v2__toolbar { display: none; }
 }
+
+@media (max-width: 767px) {
+  .reader-v2__continuation nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reader-v2__continuation button { padding-inline: 6px; }
+  .reader-v2__settings { padding: 12px; }
+  .reader-v2__page-selector { max-width: none; }
+}
+@media (max-width: 359px) {
+  .reader-v2__settings { grid-template-columns: minmax(0, 1fr); }
+  .reader-v2 .experience-header__actions { gap: 0; }
+}

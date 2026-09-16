@@ -56,6 +56,9 @@ function requestPath(config = {}) {
 
   try {
     if (/^https?:\/\//i.test(rawUrl)) return new URL(rawUrl).pathname;
+    // Global Axios calls already include /api in their root-relative URL.
+    // Prefixing API again hides them from the authenticated-user 401 handler.
+    if (!config.baseURL && rawUrl.startsWith("/")) return new URL(rawUrl, window.location.origin).pathname;
     const basePath = new URL(config.baseURL || API, window.location.origin).pathname.replace(/\/$/, "");
     const rawPath = rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`;
     return `${basePath}${rawPath}`.replace(/\/{2,}/g, "/");
@@ -122,6 +125,7 @@ function tokenTypeForPath(path, fallback) {
     path.startsWith("/api/users/") ||
     path.startsWith("/api/reader/") ||
     path.startsWith("/api/reading/") ||
+    path.startsWith("/api/reading-pass/") ||
     path.startsWith("/api/bookmarks") ||
     path === "/api/payments/topup" ||
     path === "/api/payments/verify" ||
@@ -170,10 +174,13 @@ export function handleSessionExpired(tokenType = "user", message = SESSION_EXPIR
 
 async function refreshUserAccessToken() {
   if (!isBrowser() || !localStorage.getItem(USER_TOKEN_KEY)) return null;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
   try {
     const response = await fetch(`${API}/users/refresh`, {
       method: "POST",
       credentials: "include",
+      signal: controller.signal,
       headers: { "Content-Type": "application/json" },
     });
     if (!response.ok) return null;
@@ -183,6 +190,8 @@ async function refreshUserAccessToken() {
     return data.token;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timeout);
   }
 }
 

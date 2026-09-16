@@ -420,7 +420,7 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain("Read the first 3 pages free. Continue with Reading Pass access when the story calls you onward.");
     expect(bookDetail).toContain("View Reading Passes");
     expect(bookDetail).not.toContain("Get 7-Day Reading Pass");
-    expect(bookDetailPresentation).toContain("No public audio controls are shown until narration, sync, metadata, endpoint, and browser gates pass.");
+    expect(bookDetailPresentation).toContain("An audiobook is not currently available for this edition.");
     expect(bookDetailPresentation).toContain("audioState.canShowControls");
   });
 
