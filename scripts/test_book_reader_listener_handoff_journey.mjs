@@ -112,24 +112,24 @@ async function waitForCondition(predicate, label, timeoutMs = 8_000) {
   throw new Error(`${label}: timed out`);
 }
 
+function canonicalChapterFor(book, pageIndex) {
+  // The ordinary Reader fixture deliberately leaves chapter two unmapped:
+  // Book Detail must not infer a chapter jump from its ID or ordering.
+  return book.chapters[book.slug === protectedChapterBook.slug && pageIndex >= 4 ? 1 : 0];
+}
+
 function manifestFor(book, { readingPassEnabled = true } = {}) {
   const approvedAudio = book.slug === audioBook.slug;
-  const mappedProtectedChapter = book.slug === protectedChapterBook.slug;
   return {
     book,
+    chapters: book.chapters,
     access: { reading_pass: { enabled: readingPassEnabled, segments_ready: readingPassEnabled, total_pages: 8 } },
     canonical_pages: {
       page_count: 8,
-      pages: approvedAudio || mappedProtectedChapter
-        ? [
-          { page_number: 1, chapter_id: "chapter-one", chapter_title: "Chapter One" },
-          { page_number: 4, chapter_id: "chapter-two", chapter_title: "Chapter Two" },
-        ]
-        : [
-          { page_number: 1, chapter_id: "chapter-one", chapter_title: "Chapter One" },
-          // Chapter two deliberately has no server-provided canonical page.
-          // The detail view must not derive one from its ID or its order.
-        ],
+      pages: Array.from({ length: 8 }, (_, index) => {
+        const chapter = canonicalChapterFor(book, index + 1);
+        return { page_number: index + 1, chapter_id: chapter.id, chapter_title: chapter.title };
+      }),
     },
     audio: approvedAudio ? {
       enabled: true,
@@ -147,13 +147,14 @@ function manifestFor(book, { readingPassEnabled = true } = {}) {
 }
 
 function pagePayload(book, pageIndex) {
+  const chapter = canonicalChapterFor(book, pageIndex);
   return {
     book_slug: book.slug,
     page_index: pageIndex,
     total_pages: 8,
     is_preview: pageIndex <= 3,
-    chapter_id: pageIndex < 4 ? "chapter-one" : "chapter-two",
-    chapter_title: pageIndex < 4 ? "Chapter One" : "Chapter Two",
+    chapter_id: chapter.id,
+    chapter_title: chapter.title,
     content: `<p>Fixture canonical page ${pageIndex}.</p>`,
   };
 }
@@ -269,6 +270,7 @@ async function configureApi(page, {
       return;
     }
     if (pathname.endsWith("/reading-pass/sessions/start")) {
+      const payload = request.postDataJSON();
       requests.sessionStarts += 1;
       if (sessionStartDelayMs) await new Promise((resolve) => setTimeout(resolve, sessionStartDelayMs));
       if (holdSessionStartResponse) {
@@ -286,6 +288,12 @@ async function configureApi(page, {
               session_id: uniqueLeaseSessions ? `fixture-lease-${requests.sessionStarts}` : "fixture-lease",
               lease_token: uniqueLeaseSessions ? `fixture-token-${requests.sessionStarts}` : "fixture-token",
               lease_version: 1,
+              content_type: payload.content_type,
+              content_id: payload.content_id,
+              status: "Running",
+              lease_expires_at: new Date(Date.now() + 20_000).toISOString(),
+              balance_seconds: 300,
+              heartbeat_seconds: 10,
             },
           };
       await route.fulfill({ status: response.status, contentType: "application/json", body: JSON.stringify(response.body) });
@@ -306,6 +314,10 @@ async function configureApi(page, {
           session_id: payload.session_id,
           lease_token: `renewed-${payload.session_id}`,
           lease_version: Number(payload.lease_version || 1) + 1,
+          status: payload.active ? "Running" : "Paused",
+          lease_expires_at: new Date(Date.now() + (payload.active ? 20_000 : 0)).toISOString(),
+          balance_seconds: 299,
+          heartbeat_seconds: 10,
         }),
       });
       return;
@@ -478,7 +490,7 @@ async function runProtectedChapterEntry({ id, viewport }) {
 
   await page.goto(`${base}/book/${protectedChapterBook.slug}`, { waitUntil: "domcontentloaded" });
   await openProtectedChapterFromBookDetail(page, id);
-  await page.getByRole("heading", { name: "Continue to this chapter" }).waitFor();
+  await page.getByRole("heading", { name: "Continue reading", exact: true }).waitFor();
   assert.equal(requests.sessionStarts, 0, `${id}: navigating to a protected chapter must not create a lease`);
   assert.equal(requests.protectedPageRequests, 0, `${id}: navigating to a protected chapter must not request protected content`);
   await page.screenshot({ path: path.join(output, `${id}-protected-chapter-awaiting-authorization.png`), fullPage: true });
@@ -494,7 +506,7 @@ async function runProtectedChapterEntry({ id, viewport }) {
   assert.equal(requests.protectedPageRequests, 1, `${id}: authorization must request exactly the selected protected page`);
   await Promise.all([
     page.waitForURL((url) => url.pathname === `/reader/${protectedChapterBook.slug}` && url.searchParams.get("p") === "5"),
-    page.getByRole("button", { name: /Use Reading Time to Continue/ }).click(),
+    page.getByRole("button", { name: "Next page", exact: true }).click(),
   ]);
   await page.waitForFunction(() => document.querySelector('[data-testid="reader-reading-text"]')?.textContent?.includes("Fixture canonical page 5"));
   await page.getByTestId("reader-reading-text").waitFor();
@@ -515,10 +527,11 @@ async function runProtectedChapterEntry({ id, viewport }) {
     version: 2,
   }, `${id}: normal Reader must persist the later canonical page instead of accepting a stale write`);
   await page.screenshot({ path: path.join(output, `${id}-protected-chapter-authorized.png`), fullPage: true });
-  await Promise.all([
-    page.waitForURL((url) => url.pathname === `/book/${protectedChapterBook.slug}`),
-    page.locator('button[aria-label="Back to book"]:visible').first().click(),
-  ]);
+  const exitPath = viewport.width < 768 ? `/book/${protectedChapterBook.slug}` : "/library";
+  const exitControl = viewport.width < 768
+    ? page.locator('button[aria-label="Back to book"]:visible').first()
+    : page.locator("header.experience-header").getByRole("button", { name: "Library", exact: true });
+  await Promise.all([page.waitForURL((url) => url.pathname === exitPath), exitControl.click()]);
   assert.deepEqual(requests.sessionEnds, [{ session_id: "fixture-lease", reason: "reader_v2_navigation" }], `${id}: normal Reader must settle its lease before leaving the protected route`);
   await context.close();
 
@@ -543,9 +556,11 @@ async function runProtectedChapterEntry({ id, viewport }) {
   await deniedPage.goto(`${base}/book/${protectedChapterBook.slug}`, { waitUntil: "domcontentloaded" });
   await openProtectedChapterFromBookDetail(deniedPage, `${id}: denied`);
   await deniedPage.getByTestId("reader-authorize-chapter").click();
-  await deniedPage.getByRole("heading", { name: "Reader unavailable" }).waitFor();
+  await deniedPage.getByRole("heading", { name: "Reading paused", exact: true }).waitFor();
   assert.equal(await deniedPage.getByTestId("reader-reading-text").count(), 0, `${id}: denied authorization exposed protected content`);
-  assert.equal(await deniedPage.getByTestId("reader-authorize-chapter").count(), 0, `${id}: denied authorization offered an automatic retry`);
+  assert.equal(await deniedPage.getByTestId("reader-authorize-chapter").isEnabled(), true, `${id}: denied authorization must retain explicit recovery`);
+  await deniedPage.waitForTimeout(150);
+  assert.equal(deniedRequests.sessionStarts, 1, `${id}: denied authorization retried without an explicit action`);
   assert.equal(deniedRequests.protectedPageRequests, 0, `${id}: denied authorization requested protected content`);
   await deniedContext.close();
 
@@ -843,8 +858,12 @@ async function runDeniedAccess({ id, viewport }) {
 
   await page.goto(`${base}/reader/${readerBook.slug}?p=3`, { waitUntil: "domcontentloaded" });
   await page.getByRole("button", { name: /Use Reading Time to Continue/ }).click();
-  await page.getByRole("heading", { name: "Reader unavailable" }).waitFor();
-  assert.equal(await page.getByTestId("reader-recovery-passes").getAttribute("href"), "/pricing", `${id}: denied reader recovery must use existing passes route`);
+  await page.getByRole("heading", { name: "Reading paused", exact: true }).waitFor();
+  await Promise.all([
+    page.waitForURL((url) => url.pathname === "/pricing"),
+    page.getByTestId("reader-recovery-passes").click(),
+  ]);
+  assert.equal(new URL(page.url()).pathname, "/pricing", `${id}: denied reader recovery must use existing passes route`);
 
   await page.goto(`${base}/listener/${audioBook.slug}`, { waitUntil: "domcontentloaded" });
   await page.getByRole("button", { name: "Authorize Listening" }).click();

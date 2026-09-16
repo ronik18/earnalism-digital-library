@@ -1,0 +1,21 @@
+{
+  "purpose": "Bind fresh candidate capture to the exact owner-approved reader repair; not visual approval or deployment proof",
+  "approved_local_commit": "741993d661cb3a848b0082916dfbce08b3928ff8",
+  "published_commit": "c4d4f1e869300eec4c74fc8e21541af8f75e7e33",
+  "identical_tree": "2acd9a50b9e08f73306e57943fed6e9b60ef591f",
+  "previous_source_fingerprint": "e1561e099125be1933455853b1062a9bc46b9a6ea55d3384fb34f83f974af8d9",
+  "candidate_source_fingerprint": "03045dcc56131a4d34a1ff14559077e02e9d6ae416322ecce8beb3d62c6f2bbb",
+  "source_hash_algorithm": "scripts/capture_seamless_brand_owner_review.mjs productionSurfaceHash",
+  "pr": 400,
+  "owner_authorization": "Approved in this reader-repair thread after exact candidate and public repository payload were presented",
+  "fresh_browser_capture": "REQUIRED",
+  "visual_baseline_approval": "NOT_CLAIMED",
+  "unchanged_gates": [
+    "screenshot stability",
+    "responsive and focus checks",
+    "protected text authorization",
+    "no protected prefetch",
+    "audio release safety",
+    "exact checked-out head and tree"
+  ]
+}
