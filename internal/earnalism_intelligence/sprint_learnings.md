@@ -2223,3 +2223,7 @@ PR #400 is deployed at `3a539e96572754f5d05d2ade05c2d3cce17b9075` / `main.98bb27
 ## 2026-09-16 — Reader balance and personalized manifest follow-up
 
 A public edition manifest is not an authenticated wallet authority. Use strict identity-bound profile/session values; reject malformed or stale values and preserve newer session evidence against delayed profile responses. Shared balance updates must not trigger page refetches. Personalized manifests must not share an edition-only ETag across guest, account changes or wallet updates: the candidate disables storage and 304 reuse with Authorization/Cookie variation. Focused frontend checks passed 56 tests; actual backend cache/CORS checks passed 14 tests. Fresh CI and separate frontend/backend deployment proof remain required. No customer financial data is recorded here.
+
+## 2026-09-16 — Preserve repeated headers in release evidence
+
+PR #401 is merged and its Railway deployment is provider-confirmed, but the initial cache canary passed only 11/13 checks. Both manifest probes were 200/private/no-store/no-ETag. Converting HTTP headers to a dict and selecting the first case-insensitive match can erase required Vary tokens. Preserve repeated raw fields and combine case-insensitive values before evaluating the unchanged gate. Origin/edge Vary loss remains unproven until the corrected canary runs; parser repair does not itself prove deployed cache compliance. See `internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_CACHE_CANARY_FOLLOWUP_20260916_review.md`.
