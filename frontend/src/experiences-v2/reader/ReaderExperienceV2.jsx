@@ -60,8 +60,9 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   useEffect(() => {
     // This component mounts only after the selected page has been validated.
     // Balance and heartbeat updates must not move a reader's place or focus.
+    // Keep the masthead, Library link and reading controls in view.
+    window.scrollTo({ top: 0, behavior: "instant" });
     headingRef.current?.focus({ preventScroll: true });
-    headingRef.current?.scrollIntoView?.({ block: "start", behavior: "instant" });
   }, [page]);
   const contents = (model.contents || []).map((item, index) => typeof item === "string"
     ? { page: index + 1, label: item }

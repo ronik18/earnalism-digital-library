@@ -15,6 +15,7 @@ describe("ReaderExperienceV2 customer controls", () => {
   let container;
   let root;
   beforeEach(() => {
+    jest.spyOn(window, "scrollTo").mockImplementation(() => {});
     localStorage.removeItem(READER_SETTINGS_STORAGE_KEY);
     container = document.createElement("div");
     document.body.appendChild(container);
@@ -23,6 +24,7 @@ describe("ReaderExperienceV2 customer controls", () => {
   afterEach(() => {
     act(() => root.unmount());
     container.remove();
+    jest.restoreAllMocks();
     localStorage.removeItem(READER_SETTINGS_STORAGE_KEY);
   });
   const render = (props = {}) => act(() => root.render(<ReaderExperienceV2 model={model} {...props} />));
@@ -33,26 +35,20 @@ describe("ReaderExperienceV2 customer controls", () => {
     select.dispatchEvent(new Event("change", { bubbles: true }));
   });
 
-  test("a newly opened page resets reading focus and scroll while heartbeat updates preserve them", () => {
-    const previousScrollIntoView = HTMLElement.prototype.scrollIntoView;
-    const scrollIntoView = jest.fn();
-    HTMLElement.prototype.scrollIntoView = scrollIntoView;
-    try {
-      render();
-      expect(document.activeElement).toBe(container.querySelector("#reader-v2-title"));
-      expect(scrollIntoView).toHaveBeenCalledTimes(1);
-      const selector = container.querySelector('select[aria-label="Go to page"]');
-      selector.focus();
-      render({ model: { ...model, readingPass: "214 minutes left" } });
-      expect(document.activeElement).toBe(selector);
-      expect(scrollIntoView).toHaveBeenCalledTimes(1);
-      render({ model: { ...model, canonicalPage: 2 } });
-      expect(document.activeElement).toBe(container.querySelector("#reader-v2-title"));
-      expect(scrollIntoView).toHaveBeenCalledTimes(2);
-    } finally {
-      if (previousScrollIntoView) HTMLElement.prototype.scrollIntoView = previousScrollIntoView;
-      else delete HTMLElement.prototype.scrollIntoView;
-    }
+  test("a newly opened page resets to the masthead while heartbeat updates preserve scroll and focus", () => {
+    render();
+    expect(document.activeElement).toBe(container.querySelector("#reader-v2-title"));
+    expect(window.scrollTo).toHaveBeenCalledTimes(1);
+    expect(window.scrollTo).toHaveBeenLastCalledWith({ top: 0, behavior: "instant" });
+    const selector = container.querySelector('select[aria-label="Go to page"]');
+    selector.focus();
+    render({ model: { ...model, readingPass: "214 minutes left" } });
+    expect(document.activeElement).toBe(selector);
+    expect(window.scrollTo).toHaveBeenCalledTimes(1);
+    render({ model: { ...model, canonicalPage: 2 } });
+    expect(document.activeElement).toBe(container.querySelector("#reader-v2-title"));
+    expect(window.scrollTo).toHaveBeenCalledTimes(2);
+    expect(window.scrollTo).toHaveBeenLastCalledWith({ top: 0, behavior: "instant" });
   });
 
   test("Library and contents request their actual destinations and mark the current page", () => {

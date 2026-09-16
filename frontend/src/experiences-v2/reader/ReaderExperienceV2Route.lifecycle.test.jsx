@@ -55,6 +55,7 @@ beforeEach(() => {
   mockUser = { id: "test-reader" };
   Object.defineProperty(document, "visibilityState", { configurable: true, value: "visible" });
   jest.spyOn(document, "hasFocus").mockReturnValue(true);
+  jest.spyOn(window, "scrollTo").mockImplementation(() => {});
   userApi.get.mockImplementation(async (url) => ({ data: manifest(url.includes("other-book") ? "other-book" : "test-book") }));
   pass.getReadingPassPage.mockImplementation(async (slug, n) => page(n, slug));
   pass.startReadingPassSession.mockImplementation(async () => response());
