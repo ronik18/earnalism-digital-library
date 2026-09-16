@@ -24,9 +24,9 @@ function runCapture() { const result = spawnSync(process.execPath, [captureScrip
 function recordFor(records, id) { const value = records.find((record) => record.state_id === id); assert.ok(value, `Missing ${id}`); return value; }
 function clone(value) { return JSON.parse(JSON.stringify(value)); }
 function assertFontLabel(label, renderedSize) {
-  const match = /^Aa\s*·\s*(\d+(?:\.\d+)?)px$/.exec((label || "").trim());
-  assert.ok(match, `Expected a font-size label in pixels, received ${JSON.stringify(label)}`);
-  assert.equal(Number(match[1]), renderedSize, "Text-size label must match the rendered Reader font size");
+  const match = /^Aa\s*·\s*(\d+(?:\.\d+)?)rem$/.exec((label || "").trim());
+  assert.ok(match, `Expected a rem-based font-size label, received ${JSON.stringify(label)}`);
+  assert.ok(Math.abs(Number(match[1]) * 16 - renderedSize) < 0.01, "Text-size label must match the rendered Reader font size");
 }
 function assertReader(record) {
   const topbar = record.zoom_results.reader_topbar;
@@ -64,8 +64,8 @@ test("no child exceeds the topbar right edge", () => records.forEach((record) =>
 test("no child begins left of the topbar", () => records.forEach((record) => { const topbar = record.zoom_results.reader_topbar; Object.values(topbar.children).forEach((item) => assert.ok(item.box.left >= topbar.box.left)); }));
 test("content begins below the expanded topbar", () => records.forEach((record) => assert.equal(record.zoom_results.reader_topbar.content_begins_below_topbar, true)));
 const functional390 = await functionalCheck(selected.find((state) => state.id === "reader-mobile-390")); const functional320 = await functionalCheck(selected.find((state) => state.id === "reader-mobile-320-zoom-100")); const functional320High = await functionalCheck(selected.find((state) => state.id === "reader-mobile-320-zoom-200"));
-test("font increase changes rendered Reader text size and reports its actual pixels", () => [functional390, functional320, functional320High].forEach((result) => { assertFontLabel(result.initialText, result.before); assert.ok(result.afterIncrease > result.before); assertFontLabel(result.increasedText, result.afterIncrease); }));
-test("font decrease restores the initial Reader size and label", () => [functional390, functional320, functional320High].forEach((result) => { assert.ok(result.afterDecrease < result.afterIncrease); assert.equal(result.afterDecrease, result.before); assertFontLabel(result.decreasedText, result.afterDecrease); assert.equal(result.decreasedText, result.initialText); }));
+test("font increase changes rendered Reader text size and reports its actual rem value", () => [functional390, functional320, functional320High].forEach((result) => { assertFontLabel(result.initialText, result.before); assert.ok(result.afterIncrease > result.before); assertFontLabel(result.increasedText, result.afterIncrease); }));
+test("font decrease restores the initial Reader size and rem label", () => [functional390, functional320, functional320High].forEach((result) => { assert.ok(result.afterDecrease < result.afterIncrease); assert.equal(result.afterDecrease, result.before); assertFontLabel(result.decreasedText, result.afterDecrease); assert.equal(result.decreasedText, result.initialText); }));
 test("settings remains reachable", () => [functional390, functional320, functional320High].forEach((result) => assert.equal(result.settingsFocused, true)));
 test("keyboard focus order remains valid", () => [functional390, functional320, functional320High].forEach((result) => assert.deepEqual(result.focusOrder, ["Decrease text size", "Increase text size", "Reader settings"])));
 test("horizontal overflow causes failure", () => { const item = clone(recordFor(records, "reader-mobile-320-zoom-200")); item.horizontal_overflow = true; assert.throws(() => assertReader(item)); });

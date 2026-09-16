@@ -13,16 +13,20 @@ describe("Reader canonical HTML rendering", () => {
     expect(paragraphsFromHtml("<article><h2>Opening</h2><div>Readable body</div></article>")).toEqual(["Opening", "Readable body"]);
   });
 
-  test("mixed paragraphs do not discard headings, list items, code or Bengali verse", () => {
+  test("mixed canonical structures retain order, semantics, Bengali verse and code whitespace", () => {
     const container = document.createElement("div");
     const root = createRoot(container);
-    act(() => root.render(<ReaderContent html={'<h2>Opening</h2><p>First <em>paragraph</em>.</p><ul><li>List entry</li></ul><pre><code>if ready:\n    read()</code></pre><blockquote>প্রথম পঙ্‌ক্তি<br>দ্বিতীয় পঙ্‌ক্তি</blockquote>'} />));
+    act(() => root.render(<ReaderContent html={'<h2>Opening</h2><p>First <em>paragraph</em>.</p><ol><li>First item<ul><li>Nested item</li></ul></li><li>Second item</li></ol><pre><code>if ready:\n    read()\n\n    keep_indent()</code></pre><blockquote>প্রথম পঙ্‌ক্তি<br>দ্বিতীয় পঙ্‌ক্তি</blockquote><table><caption>Contents</caption><tbody><tr><th>One</th><td>Two</td></tr></tbody></table><p><a href="/library">Library</a></p>'} />));
     expect(container.querySelector("h2").textContent).toBe("Opening");
     expect(container.querySelector("em").textContent).toBe("paragraph");
-    expect(container.querySelector("li").textContent).toBe("List entry");
-    expect(container.querySelector("pre").textContent).toBe("if ready:\n    read()");
+    expect(container.querySelectorAll("ol > li")).toHaveLength(2);
+    expect(container.querySelector("ol ul li").textContent).toBe("Nested item");
+    expect(container.querySelector("pre").textContent).toBe("if ready:\n    read()\n\n    keep_indent()");
     expect(container.querySelector("blockquote br")).not.toBeNull();
     expect(container.querySelector("blockquote").textContent).toContain("প্রথম পঙ্‌ক্তি");
+    expect(container.querySelector('[role="region"] table caption').textContent).toBe("Contents");
+    expect(container.querySelector("a").getAttribute("href")).toBe("/library");
+    expect(container.textContent.indexOf("Opening")).toBeLessThan(container.textContent.indexOf("Second item"));
     act(() => root.unmount());
   });
 

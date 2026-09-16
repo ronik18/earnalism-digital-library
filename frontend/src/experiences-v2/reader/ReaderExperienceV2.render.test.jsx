@@ -104,15 +104,16 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(onNavigate).toHaveBeenCalledWith("library");
   });
 
-  test("both responsive font controls update actual text and persist the existing preference", () => {
+  test("both responsive font controls use the bounded rem contract and persist an explicit preference", () => {
     render();
     const text = container.querySelector('[data-testid="reader-reading-text"]');
-    expect(text.style.fontSize).toBe("18px");
+    expect(text.style.fontSize).toBe("1.25rem");
     click(container.querySelector('.reader-v2__toolbar button[aria-label="Increase text size"]'));
-    expect(text.style.fontSize).toBe("20px");
+    expect(text.style.fontSize).toBe("1.375rem");
     click(container.querySelector('.reader-v2__mobile-topbar button[aria-label="Decrease text size"]'));
-    expect(text.style.fontSize).toBe("18px");
+    expect(text.style.fontSize).toBe("1.25rem");
     expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).fontSizeIdx).toBe(1);
+    expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).readerTextSizeRem).toBe(1.25);
   });
 
   test("settings change theme and spacing locally and survive remount without navigating away", () => {
@@ -136,6 +137,38 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(container.querySelector('[data-testid="reader-reading-text"]').style.lineHeight).toBe("2.02");
   });
 
+  test("uses language-specific literary defaults and an accessible typography reset", () => {
+    render({ model: { ...model, language: "bn", content: <p>বাংলা পাঠ্য</p> } });
+    const text = container.querySelector('[data-testid="reader-reading-text"]');
+    expect(container.querySelector("article").lang).toBe("bn");
+    expect(text.style.fontSize).toBe("1.375rem");
+    expect(text.style.lineHeight).toBe("1.8");
+    expect(text.style.fontWeight).toBe("500");
+    expect(text.style.fontFamily).toContain("Noto Serif Bengali");
+
+    click(container.querySelector('.reader-v2__toolbar button[aria-label="Reader settings"]'));
+    const selects = container.querySelectorAll("#reader-v2-settings select");
+    change(selects[1], "2");
+    change(selects[3], "sans");
+    expect(text.style.fontSize).toBe("2rem");
+    expect(text.style.fontFamily).toContain("Noto Sans Bengali");
+    click(button("Reset typography"));
+    expect(text.style.fontSize).toBe("1.375rem");
+    expect(text.style.fontFamily).toContain("Noto Serif Bengali");
+    expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).readerTextSizeRem).toBeNull();
+  });
+
+  test("preference changes do not request another canonical page", () => {
+    const onRequestPage = jest.fn();
+    render({ onRequestPage });
+    click(container.querySelector('.reader-v2__toolbar button[aria-label="Increase text size"]'));
+    click(container.querySelector('.reader-v2__toolbar button[aria-label="Reader settings"]'));
+    const selects = container.querySelectorAll("#reader-v2-settings select");
+    change(selects[0], "sepia");
+    change(selects[2], "relaxed");
+    expect(onRequestPage).not.toHaveBeenCalled();
+  });
+
   test("structured content preserves formatting without importing the fixture illustration", () => {
     render({ model: { ...model, content: <><h2>Chapter heading</h2><p>A <em>faithful</em> passage.</p><pre><code>print("hello")</code></pre></>, statusMessage: "Saved your place." } });
     const text = container.querySelector('[data-testid="reader-reading-text"]');
@@ -143,5 +176,12 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(text.querySelector("pre code").textContent).toBe('print("hello")');
     expect(container.querySelector(".reader-v2__illustration")).toBeNull();
     expect(container.querySelector('[role="status"]').textContent).toBe("Saved your place.");
+  });
+
+  test("keeps the text measure inside the centered 40rem reading contract", () => {
+    render();
+    const text = container.querySelector('[data-testid="reader-reading-text"]');
+    expect(text.style.maxWidth).toBe("40rem");
+    expect(container.querySelector("article").classList).toContain("reader-v2__canvas");
   });
 });
