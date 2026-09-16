@@ -156,6 +156,13 @@
         "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md",
         "rights_and_publication_decision": "UNCHANGED",
         "backend_deployment_proof": "PENDING"
+      },
+      "reader_cache_canary_followup_20260916": {
+        "status": "CANARY_REPAIR_PENDING_CORRECTED_LIVE_PROOF",
+        "deployed_commit": "2773053f2672e6a3528d306ba1c66e481225b322",
+        "origin_or_edge_vary_loss": "UNPROVEN",
+        "rights_and_publication_decision": "UNCHANGED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_CACHE_CANARY_FOLLOWUP_20260916_review.md"
       }
     },
     "bn-031": {
@@ -2366,6 +2373,13 @@
         "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md",
         "rights_and_publication_decision": "UNCHANGED",
         "backend_deployment_proof": "PENDING"
+      },
+      "reader_cache_canary_followup_20260916": {
+        "status": "CANARY_REPAIR_PENDING_CORRECTED_LIVE_PROOF",
+        "deployed_commit": "2773053f2672e6a3528d306ba1c66e481225b322",
+        "origin_or_edge_vary_loss": "UNPROVEN",
+        "rights_and_publication_decision": "UNCHANGED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_CACHE_CANARY_FOLLOWUP_20260916_review.md"
       }
     },
     "the-monkeys-paw": {
@@ -2672,6 +2686,13 @@
         "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md",
         "rights_and_publication_decision": "UNCHANGED",
         "backend_deployment_proof": "PENDING"
+      },
+      "reader_cache_canary_followup_20260916": {
+        "status": "CANARY_REPAIR_PENDING_CORRECTED_LIVE_PROOF",
+        "deployed_commit": "2773053f2672e6a3528d306ba1c66e481225b322",
+        "origin_or_edge_vary_loss": "UNPROVEN",
+        "rights_and_publication_decision": "UNCHANGED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_CACHE_CANARY_FOLLOWUP_20260916_review.md"
       }
     },
     "white-fang": {

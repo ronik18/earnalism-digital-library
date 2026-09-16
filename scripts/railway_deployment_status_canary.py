@@ -19,6 +19,19 @@ CANARY_ORIGIN = "https://theearnalism.com"
 RAW_MEDIA_PATTERN = re.compile(r"https?://[^\"']+\.(?:mp3|m4a|wav|ogg|aac)|/(?:audio|media)/", re.IGNORECASE)
 
 
+def response_header_map(message_headers: Any) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for name, value in message_headers.items():
+        key = name.lower() if name.lower() in {"vary", "cache-control"} else name
+        # These fields are comma-separated lists and may arrive on multiple
+        # lines, including an additional Vary field from the serving edge.
+        if key in {"vary", "cache-control"} and key in result:
+            result[key] = f"{result[key]}, {value}"
+        else:
+            result[key] = str(value)
+    return result
+
+
 def request(base_url: str, path: str, *, method: str = "GET", headers: dict[str, str] | None = None) -> dict[str, Any]:
     if method not in {"GET", "HEAD"}:
         raise ValueError("canary only permits GET and HEAD")
@@ -28,10 +41,10 @@ def request(base_url: str, path: str, *, method: str = "GET", headers: dict[str,
     try:
         with urlopen(Request(url, headers=req_headers, method=method), timeout=15) as response:  # noqa: S310 - fixed public origin.
             body = b"" if method == "HEAD" else response.read(256_000)
-            return {"path": path, "method": method, "status": response.status, "headers": dict(response.headers.items()), "body": body.decode("utf-8", errors="replace"), "error": ""}
+            return {"path": path, "method": method, "status": response.status, "headers": response_header_map(response.headers), "body": body.decode("utf-8", errors="replace"), "error": ""}
     except HTTPError as error:
         body = b"" if method == "HEAD" else error.read(256_000)
-        return {"path": path, "method": method, "status": error.code, "headers": dict(error.headers.items()), "body": body.decode("utf-8", errors="replace"), "error": ""}
+        return {"path": path, "method": method, "status": error.code, "headers": response_header_map(error.headers), "body": body.decode("utf-8", errors="replace"), "error": ""}
     except URLError as error:
         return {"path": path, "method": method, "status": 0, "headers": {}, "body": "", "error": str(error)}
 
@@ -44,7 +57,7 @@ def json_body(result: dict[str, Any]) -> Any:
 
 
 def header(result: dict[str, Any], name: str) -> str:
-    return next((str(value) for key, value in result["headers"].items() if key.lower() == name.lower()), "")
+    return ", ".join(str(value) for key, value in result["headers"].items() if key.lower() == name.lower())
 
 
 def check(name: str, passed: bool, detail: str) -> dict[str, Any]:

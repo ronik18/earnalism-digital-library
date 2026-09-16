@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import importlib.util
 import json
+from email.message import Message
+from io import BytesIO
 from pathlib import Path
+from urllib.error import HTTPError
 
 import pytest
 
@@ -32,6 +35,70 @@ def test_canary_rejects_non_read_only_http_methods():
         assert "GET and HEAD" in str(error)
     else:  # pragma: no cover - protects the production mutation boundary.
         raise AssertionError("non-read-only method was accepted")
+
+
+def request_with_header_lines(monkeypatch, lines, status=200):
+    message = Message()
+    for name, value in lines:
+        message[name] = value
+
+    class Response(BytesIO):
+        def __init__(self):
+            super().__init__(b'{"version":"edition-42"}')
+            self.status = status
+            self.headers = message
+
+    def fake_urlopen(req, *, timeout):
+        assert req.get_method() == "GET"
+        assert timeout == 15
+        if status != 200:
+            raise HTTPError(req.full_url, status, "Test HTTP response", message, BytesIO(b""))
+        return Response()
+
+    monkeypatch.setattr(canary, "urlopen", fake_urlopen)
+    return canary.request("https://api.example.test", "/api/reader/book/dracula/manifest")
+
+
+@pytest.mark.parametrize("mixed_case", [False, True])
+@pytest.mark.parametrize("status", [200, 304])
+def test_request_preserves_repeated_cache_and_vary_fields(monkeypatch, mixed_case, status):
+    response = request_with_header_lines(monkeypatch, [
+        ("Vary", "Authorization"),
+        ("vArY" if mixed_case else "Vary", "Cookie"),
+        ("vary" if mixed_case else "Vary", "accept-encoding"),
+        ("Cache-Control", "private"),
+        ("cache-control" if mixed_case else "Cache-Control", "no-store"),
+    ], status=status)
+
+    assert canary.header(response, "Vary") == "Authorization, Cookie, accept-encoding"
+    assert canary.header(response, "Cache-Control") == "private, no-store"
+    assert canary.manifest_cache_check("manifest", response)["passed"] is (status == 200)
+
+
+@pytest.mark.parametrize("mixed_case", [False, True])
+@pytest.mark.parametrize("public_first", [False, True])
+@pytest.mark.parametrize("status", [200, 304])
+def test_request_cannot_hide_public_directive_in_repeated_fields(monkeypatch, mixed_case, public_first, status):
+    cache_fields = [
+        ("Cache-Control", "public"),
+        ("cache-control" if mixed_case else "Cache-Control", "private, no-store"),
+    ]
+    if not public_first:
+        cache_fields.reverse()
+    response = request_with_header_lines(monkeypatch, [("Vary", "Authorization, Cookie"), *cache_fields], status=status)
+
+    assert "public" in canary.header(response, "Cache-Control").split(", ")
+    assert canary.manifest_cache_check("manifest", response)["passed"] is False
+
+
+def test_header_lookup_combines_differently_cased_fields():
+    response = {"status": 200, "headers": {
+        "Vary": "Authorization", "vary": "Cookie",
+        "Cache-Control": "private, no-store", "cache-control": "public",
+    }}
+    assert canary.header(response, "Vary") == "Authorization, Cookie"
+    assert canary.header(response, "Cache-Control") == "private, no-store, public"
+    assert canary.manifest_cache_check("manifest", response)["passed"] is False
 
 
 @pytest.fixture
