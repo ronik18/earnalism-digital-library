@@ -114,5 +114,15 @@
     "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md",
     "release_gate_truth_status": "NO_RIGHTS_CONTENT_AUDIO_PUBLICATION_OR_BALANCE_CHANGE",
     "next_action": "Fresh follow-up CI and merged-main release, then secure sign-in and authorized bounded paid-reader acceptance"
+  },
+  "reader_balance_cache_followup_20260916": {
+    "recorded_at": "2026-09-16T16:03:12+00:00",
+    "status": "CANDIDATE_NOT_RELEASED",
+    "balance_authority": "IDENTITY_BOUND_PROFILE_THEN_VALIDATED_SESSION",
+    "manifest_cache": "PRIVATE_NO_STORE_NO_ETAG_VARY_AUTHORIZATION_COOKIE",
+    "focused_frontend_tests": 56,
+    "backend_cache_and_cors_tests": 14,
+    "backend_deployment_proof": "PENDING",
+    "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md"
   }
 }

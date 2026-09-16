@@ -150,6 +150,12 @@
         "paid_test_seconds_used": 0,
         "rights_and_publication_decision": "UNCHANGED",
         "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md"
+      },
+      "reader_balance_cache_followup_20260916": {
+        "status": "CANDIDATE_NOT_RELEASED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md",
+        "rights_and_publication_decision": "UNCHANGED",
+        "backend_deployment_proof": "PENDING"
       }
     },
     "bn-031": {
@@ -2354,6 +2360,12 @@
         "paid_test_seconds_used": 0,
         "rights_and_publication_decision": "UNCHANGED",
         "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md"
+      },
+      "reader_balance_cache_followup_20260916": {
+        "status": "CANDIDATE_NOT_RELEASED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md",
+        "rights_and_publication_decision": "UNCHANGED",
+        "backend_deployment_proof": "PENDING"
       }
     },
     "the-monkeys-paw": {
@@ -2654,6 +2666,12 @@
         "paid_test_seconds_used": 0,
         "rights_and_publication_decision": "UNCHANGED",
         "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md"
+      },
+      "reader_balance_cache_followup_20260916": {
+        "status": "CANDIDATE_NOT_RELEASED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_AUTH_FOLLOWUP_20260916_review.md",
+        "rights_and_publication_decision": "UNCHANGED",
+        "backend_deployment_proof": "PENDING"
       }
     },
     "white-fang": {

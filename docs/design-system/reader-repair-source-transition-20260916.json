@@ -3,7 +3,7 @@
   "approved_local_commit": "741993d661cb3a848b0082916dfbce08b3928ff8",
   "published_commit": "c4d4f1e869300eec4c74fc8e21541af8f75e7e33",
   "previous_source_fingerprint": "e1561e099125be1933455853b1062a9bc46b9a6ea55d3384fb34f83f974af8d9",
-  "candidate_source_fingerprint": "6b38478613ede1d69443c0cadab7b0d5dd5a2758360a073406cd7f06d074b359",
+  "candidate_source_fingerprint": "2dee425da0371a8bfda58babcd7ef6fd27f6510ca1a79ea9053f4e8c6b7df51e",
   "source_hash_algorithm": "scripts/capture_seamless_brand_owner_review.mjs productionSurfaceHash",
   "pr": 400,
   "owner_authorization": "Approved in this reader-repair thread after exact candidate and public repository payload were presented",
@@ -33,5 +33,12 @@
     "visual_approval": "NOT_CLAIMED",
     "deployed_customer_renewal_verification": "PENDING_SECURE_SIGN_IN",
     "scope": "Bounded same-identity auth refresh, no access-policy change"
+  },
+  "balance_followup": {
+    "previous_source_fingerprint": "6b38478613ede1d69443c0cadab7b0d5dd5a2758360a073406cd7f06d074b359",
+    "candidate_source_fingerprint": "2dee425da0371a8bfda58babcd7ef6fd27f6510ca1a79ea9053f4e8c6b7df51e",
+    "reason": "Use authenticated profile and validated current session balances, never cached guest manifest wallet; preserve page identity during balance propagation",
+    "fresh_browser_capture": "REQUIRED",
+    "backend_cache_policy_fix": "Separate targeted route validation and deployed backend proof required"
   }
 }

@@ -6,6 +6,7 @@ import { userApi } from "../../lib/api";
 import * as pass from "../../lib/readingPassApi";
 
 let mockUser = { id: "test-reader" };
+const mockSetUserBalance = jest.fn();
 // CRA's Jest 27 does not resolve react-router-dom 7's conditional exports.
 // Use its real underlying router implementation, not mocked navigation hooks.
 jest.mock("react-router-dom", () => {
@@ -14,7 +15,7 @@ jest.mock("react-router-dom", () => {
   globalThis.TextDecoder = TextDecoder;
   return require("react-router");
 }, { virtual: true });
-jest.mock("../../context/AuthContext", () => ({ useAuth: () => ({ user: mockUser }) }));
+jest.mock("../../context/AuthContext", () => ({ useAuth: () => ({ user: mockUser, setUserBalance: mockSetUserBalance }) }));
 jest.mock("../../lib/api", () => ({ userApi: { get: jest.fn(), post: jest.fn() } }));
 jest.mock("../../lib/readingPassApi", () => ({
   getReadingPassPage: jest.fn(), startReadingPassSession: jest.fn(), renewReadingPassLease: jest.fn(),
@@ -53,6 +54,7 @@ beforeEach(() => {
   jest.clearAllMocks();
   localStorage.clear();
   mockUser = { id: "test-reader" };
+  mockSetUserBalance.mockReset();
   Object.defineProperty(document, "visibilityState", { configurable: true, value: "visible" });
   jest.spyOn(document, "hasFocus").mockReturnValue(true);
   jest.spyOn(window, "scrollTo").mockImplementation(() => {});
@@ -66,6 +68,79 @@ beforeEach(() => {
   container = document.createElement("div"); document.body.appendChild(container); root = createRoot(container);
 });
 afterEach(async () => { await act(async () => root.unmount()); container.remove(); jest.useRealTimers(); jest.restoreAllMocks(); });
+
+test("a cached guest manifest cannot replace the authenticated profile balance with zero", async () => {
+  mockUser = { id: "test-reader", reading_seconds_balance: 1234 };
+  const guestManifest = manifest();
+  guestManifest.access = { ...guestManifest.access, role: "guest", authenticated: false, wallet_seconds: 0 };
+  userApi.get.mockResolvedValueOnce({ data: guestManifest });
+  await mount("/reader/test-book?p=1");
+  expect(text()).toContain("20 minutes left");
+  expect(text()).not.toContain("0 seconds left");
+  expect(mockSetUserBalance).not.toHaveBeenCalled();
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+});
+
+test.each([undefined, null, "600", -1, 1.5])("an invalid profile balance %p stays unavailable rather than borrowing a manifest balance", async (value) => {
+  mockUser = { id: "test-reader", reading_seconds_balance: value };
+  await mount("/reader/test-book?p=1");
+  expect(text()).toContain("Balance unavailable");
+  expect(text()).not.toContain("minutes left");
+  expect(mockSetUserBalance).not.toHaveBeenCalled();
+});
+
+test("a validated zero profile balance and a guest are displayed distinctly", async () => {
+  mockUser = { id: "test-reader", reading_seconds_balance: 0 };
+  await mount("/reader/test-book?p=1");
+  expect(text()).toContain("0 seconds left");
+  mockUser = false;
+  await mount("/reader/test-book?p=1");
+  expect(text()).toContain("Sign in to continue");
+  expect(text()).not.toContain("0 seconds left");
+});
+
+test("lease and settlement balances supersede a stale profile without refetching on profile updates", async () => {
+  mockUser = { id: "test-reader", reading_seconds_balance: 1234 };
+  mockSetUserBalance.mockImplementation((seconds, identity) => {
+    if (identity === mockUser.id) mockUser = { ...mockUser, reading_seconds_balance: seconds };
+  });
+  await openProtected();
+  const article = container.querySelector("article");
+  expect(text()).toContain("10 minutes left");
+  expect(mockSetUserBalance).toHaveBeenLastCalledWith(600, "test-reader");
+  for (let index = 0; index < 3; index += 1) {
+    await tick(10000);
+    // Render the updated provider profile with the same customer identity.
+    await mount("/reader/test-book?p=4");
+    expect(container.querySelector("article")).toBe(article);
+    expect(text()).toContain("9 minutes left");
+  }
+  mockUser = { ...mockUser, reading_seconds_balance: 1234 };
+  await mount("/reader/test-book?p=4");
+  expect(text()).toContain("9 minutes left");
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(1);
+  pass.endReadingPassSession.mockResolvedValueOnce({ ended: true, session_id: "session-1", balance_seconds: 321 });
+  await click("Previous page");
+  expect(text()).toContain("Page 3 manuscript.");
+  expect(text()).toContain("5 minutes left");
+  expect(mockSetUserBalance).toHaveBeenLastCalledWith(321, "test-reader");
+});
+
+test("a missing lease balance is not coerced to a validated zero grant", async () => {
+  pass.startReadingPassSession.mockResolvedValueOnce(response({ balance_seconds: null }));
+  await openProtected();
+  expect(text()).toContain("Reading access could not be verified");
+  expect(pass.getReadingPassPage).not.toHaveBeenCalled();
+  expect(mockSetUserBalance).not.toHaveBeenCalled();
+});
+
+test("a stale renewal cannot publish its balance as the current wallet", async () => {
+  await openProtected();
+  pass.renewReadingPassLease.mockResolvedValueOnce(response({ lease_version: 2, stale: true, balance_seconds: 0 }));
+  await tick(10000);
+  expect(text()).toContain("Reading paused");
+  expect(mockSetUserBalance).not.toHaveBeenCalledWith(0, "test-reader");
+});
 
 test("preview navigation never starts a paid session and page 4 starts only once", async () => {
   await mount("/reader/test-book?p=2");

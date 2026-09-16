@@ -227,3 +227,30 @@ test.each([200, 401])("a late startup %s cannot replace or erase a direct Google
   expect(localStorage.getItem(USER_TOKEN_KEY)).toBe("external-login-access");
   expect(global.fetch).not.toHaveBeenCalled();
 });
+
+test("a late reader balance update cannot alter a newer account", async () => {
+  adapter.mockImplementation(async (config) => response(config, config.url === "/users/login"
+    ? { token: "new-account-access", user: reader("reader-new", 90) }
+    : reader()));
+  await mount();
+  const updateOldReaderBalance = auth.setUserBalance;
+  await act(async () => { await auth.userLogin("isolated@example.test", "fixture-password"); });
+  await act(async () => { updateOldReaderBalance(12, "reader-one"); });
+  expect(container.textContent).toBe("reader-new:90");
+  await act(async () => { auth.setUserBalance(42, "reader-new"); });
+  expect(container.textContent).toBe("reader-new:42");
+  await act(async () => { auth.setUserBalance(-1, "reader-new"); auth.setUserBalance("99", "reader-new"); });
+  expect(container.textContent).toBe("reader-new:42");
+});
+
+test("a delayed profile cannot overwrite a newer validated reader balance", async () => {
+  const profile = deferred();
+  let profileConfig;
+  adapter.mockResolvedValueOnce(response({}, reader())).mockImplementation(async (config) => { profileConfig = config; return profile.promise; });
+  await mount();
+  let refreshing;
+  await act(async () => { refreshing = auth.refreshUser(); });
+  await act(async () => { auth.setUserBalance(42, "reader-one"); });
+  await act(async () => { profile.resolve(response(profileConfig, reader("reader-one", 120))); await refreshing; });
+  expect(container.textContent).toBe("reader-one:42");
+});
