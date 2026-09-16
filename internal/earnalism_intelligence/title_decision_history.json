@@ -131,7 +131,13 @@
       "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
       "source_cleanup_status": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED",
       "remote_object_revocation_status": "REQUIRED_BEFORE_RELEASE",
-      "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED"
+      "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+      "reader_experience_review_20260916": {
+        "status": "CANDIDATE_REPAIR_NOT_DEPLOYED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_REPAIR_20260916_review.md",
+        "rights_and_publication_decision": "UNCHANGED",
+        "production_protected_page_acceptance": "NOT_VERIFIED"
+      }
     },
     "bn-031": {
       "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
@@ -2316,7 +2322,13 @@
       "kokoro_listening_qa_run": false,
       "completed_attempts_must_not_repeat": true,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-necklace/metadata.json",
-      "audiobook_next_action": "Do not repeat af_sarah or normalize the remaining content mismatches. Validate received source-bound narration or use a genuinely different voice/provider before any listening or full release QA."
+      "audiobook_next_action": "Do not repeat af_sarah or normalize the remaining content mismatches. Validate received source-bound narration or use a genuinely different voice/provider before any listening or full release QA.",
+      "reader_experience_review_20260916": {
+        "status": "CANDIDATE_REPAIR_NOT_DEPLOYED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_REPAIR_20260916_review.md",
+        "rights_and_publication_decision": "UNCHANGED",
+        "production_protected_page_acceptance": "NOT_VERIFIED"
+      }
     },
     "the-monkeys-paw": {
       "latest_decision": "PRIVATE_B2_PREFIX_EXHAUSTED_TARGET_REPAIRED_AUDIO_ABSENT",
@@ -2597,7 +2609,13 @@
         "planned_containment": "render unavailable state when canonical page retrieval or manifest chapter identity verification fails",
         "ci_harness_repair": "workflow source-hash authority and its contract test now bind to the reviewed production surface; fresh PR evidence is still required"
       },
-      "reader_next_action": "Open the one focused P0 containment PR, require CI, deploy only from merged origin/main, then verify Frankenstein no longer renders the Dracula fixture and record fresh production evidence."
+      "reader_next_action": "Open the one focused P0 containment PR, require CI, deploy only from merged origin/main, then verify Frankenstein no longer renders the Dracula fixture and record fresh production evidence.",
+      "reader_experience_review_20260916": {
+        "status": "CANDIDATE_REPAIR_NOT_DEPLOYED",
+        "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_REPAIR_20260916_review.md",
+        "rights_and_publication_decision": "UNCHANGED",
+        "production_protected_page_acceptance": "NOT_VERIFIED"
+      }
     },
     "white-fang": {
       "latest_decision": "NEXT_FOUR_LANE_RANK_3_SOURCE_PREFLIGHT_PASS_NEW_COVER_PAIR_REQUIRED",

@@ -1,7 +1,6 @@
 .experience-v2 {
-  /* V2 does not consume the legacy Reader's persisted-preference contract.
-     These are its own Quiet Heritage shell defaults; Reader.jsx remains
-     responsible for the legacy reader settings path. */
+  /* Shared Quiet Heritage shell defaults. Reader preferences are applied
+     explicitly to its reading canvas, without changing other experiences. */
   --ev2-ink: var(--qh-maroon, #461322);
   --ev2-surface: color-mix(in srgb, var(--qh-maroon, #461322) 92%, #12060a);
   --ev2-ivory: var(--qh-paper, #F6EDDC);
@@ -22,6 +21,7 @@
 .experience-header--compact { min-height: 42px; padding-inline: 16px; }
 .experience-header__actions { display: flex; align-items: center; gap: 11px; }
 .experience-header__label { color: var(--qh-burgundy, #651D32); font-size: 12px; }
+.experience-header__link { min-height: 44px; padding: 8px; border: 0; background: transparent; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .experience-header .earnalism-brand-lockup { width: min(15rem, 48vw); padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow:none; }
 .experience-header .earnalism-brand-lockup img { display: block; width: 100%; height: auto; }
 @media (max-width: 767px) { .experience-header { min-height: 68px; padding: 6px 16px; }.experience-header .earnalism-brand-lockup { width: min(13rem, 58vw); padding:0; } }

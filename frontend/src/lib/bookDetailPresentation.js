@@ -58,7 +58,7 @@ export function bookDetailPresentationForBook(book = {}) {
       ? "Open the text in Earnalism's quiet reader with the current approved edition."
       : readerReady
         ? "This approved edition cannot be opened while the current Reader service is unavailable. Explore the Library for another title."
-        : "This title remains in editorial preparation until source, rights, and reader gates pass.",
+        : "This reading edition is still in preparation.",
     audioBadgeLabel: audioReleaseApproved ? "Audiobook Approved" : readerReady ? "Audio Hidden" : "Release Gated",
     audioHeading: audioApproved
       ? "Listening room approved"
@@ -66,10 +66,10 @@ export function bookDetailPresentationForBook(book = {}) {
         ? "Listening currently unavailable"
         : "Audio waits for release gates",
     audioBody: audioApproved
-      ? "Open the Listening Room only because approved provider-backed audio evidence is present."
+      ? "Open the Listening Room to listen to this audiobook."
       : audioReleaseApproved
-        ? "The audiobook release is approved, but the current Reader runtime cannot offer listening yet."
-      : "No public audio controls are shown until narration, sync, metadata, endpoint, and browser gates pass.",
+        ? "Listening is currently unavailable for this audiobook."
+      : "An audiobook is not currently available for this edition.",
     syncCopy: audioApproved ? "Section-following narration" : "",
     listenCtaVisible: audioApproved,
     listenCtaLabel: "Open Listening Room",

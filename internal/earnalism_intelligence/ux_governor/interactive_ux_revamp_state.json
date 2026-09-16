@@ -85,5 +85,13 @@
   "marketing_landing_validation_status": "PASS_LOCAL_PHASE_SCOPE_CONTACT_EMAIL_CORRECTED",
   "final_integration_status": "DISCOVERY_ACTIVE",
   "final_integration_next_gate": "PREVIEW_PRODUCTION_VALIDATION_BLOCKED_UNTIL_FINAL_INTEGRATION_APPROVAL",
-  "paid_tts_lock_status": "ACTIVE_LEGITIMATE_NO_PAID_AUDIO_ALLOWED"
+  "paid_tts_lock_status": "ACTIVE_LEGITIMATE_NO_PAID_AUDIO_ALLOWED",
+  "reader_repair_20260916": {
+    "status": "CANDIDATE_REPAIR_NOT_DEPLOYED",
+    "owner_request": "Capture and fix reported reader experience failures",
+    "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_REPAIR_20260916_review.md",
+    "paid_customer_test": "AUTO_REVIEW_BLOCKED_PENDING_EXPLICIT_TIME_BUDGET",
+    "candidate_visual_check": "LOCAL_PREVIEW_NOT_REACHABLE_FROM_CLOUD_BROWSER",
+    "release_gate_truth_status": "UNCHANGED_NO_AUDIO_OR_CONTENT_RELEASE_MUTATION"
+  }
 }

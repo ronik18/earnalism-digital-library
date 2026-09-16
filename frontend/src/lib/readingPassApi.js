@@ -2,6 +2,10 @@ import axios from 'axios';
 import { API, USER_TOKEN_KEY } from './api';
 
 const DEVICE_KEY = 'earnalism_reading_pass_device_v1';
+// Bound every request that can hold the reader's navigation or settlement queue.
+// A timeout reports an unknown outcome; it never authorizes access or retries a debit.
+const REQUEST_TIMEOUT_MS = 15000;
+const LEASE_TIMEOUT_MS = 8000;
 
 function authHeaders() {
   const token = localStorage.getItem(USER_TOKEN_KEY);
@@ -26,19 +30,19 @@ export function readingPassError(error) {
 }
 
 export async function getReadingPassManifest(bookSlug) {
-  const response = await axios.get(`${API}/reading-pass/books/${encodeURIComponent(bookSlug)}/manifest`);
+  const response = await axios.get(`${API}/reading-pass/books/${encodeURIComponent(bookSlug)}/manifest`, { timeout: REQUEST_TIMEOUT_MS });
   return response.data;
 }
 
 export async function getReadingPassConfig() {
-  const response = await axios.get(`${API}/reading-pass/config`);
+  const response = await axios.get(`${API}/reading-pass/config`, { timeout: REQUEST_TIMEOUT_MS });
   return response.data;
 }
 
 export async function getReadingPassDevices() {
   const response = await axios.get(
     `${API}/reading-pass/devices`,
-    { headers: authHeaders() },
+    { headers: authHeaders(), timeout: REQUEST_TIMEOUT_MS },
   );
   return response.data?.devices || [];
 }
@@ -46,7 +50,7 @@ export async function getReadingPassDevices() {
 export async function getReadingPassPosition({ contentType, contentId }) {
   const response = await axios.get(
     `${API}/reading-pass/positions/${encodeURIComponent(contentType)}/${encodeURIComponent(contentId)}`,
-    { headers: authHeaders() },
+    { headers: authHeaders(), timeout: REQUEST_TIMEOUT_MS },
   );
   return response.data;
 }
@@ -54,12 +58,12 @@ export async function getReadingPassPosition({ contentType, contentId }) {
 export async function revokeReadingPassDevice(sessionOrDeviceId) {
   const response = await axios.delete(
     `${API}/reading-pass/devices/${encodeURIComponent(sessionOrDeviceId)}`,
-    { headers: authHeaders() },
+    { headers: authHeaders(), timeout: REQUEST_TIMEOUT_MS },
   );
   return response.data;
 }
 
-export async function getReadingPassPage(bookSlug, pageIndex, lease = null) {
+export async function getReadingPassPage(bookSlug, pageIndex, lease = null, { signal, timeoutMs = REQUEST_TIMEOUT_MS } = {}) {
   const headers = { ...authHeaders() };
   if (lease?.sessionId && lease?.token) {
     headers['X-Reading-Pass-Session'] = lease.sessionId;
@@ -67,7 +71,7 @@ export async function getReadingPassPage(bookSlug, pageIndex, lease = null) {
   }
   const response = await axios.get(
     `${API}/reading-pass/books/${encodeURIComponent(bookSlug)}/pages/${Number(pageIndex)}`,
-    { headers },
+    { headers, signal, timeout: timeoutMs },
   );
   return response.data;
 }
@@ -82,7 +86,7 @@ export async function startReadingPassSession({ bookSlug, pageIndex, transfer = 
       content_id: bookSlug,
       canonical_page_index: Number(pageIndex),
     },
-    { headers: authHeaders(), withCredentials: true },
+    { headers: authHeaders(), withCredentials: true, timeout: REQUEST_TIMEOUT_MS },
   );
   return response.data;
 }
@@ -105,19 +109,19 @@ export async function startReadingPassAudioSession({ bookSlug, positionSeconds =
       content_id: bookSlug,
       media_position_seconds: Math.max(0, Number(positionSeconds) || 0),
     },
-    { headers: authHeaders(), withCredentials: true },
+    { headers: authHeaders(), withCredentials: true, timeout: REQUEST_TIMEOUT_MS },
   );
   return response.data;
 }
 
-export async function renewReadingPassLease({ lease, sequence, active, playbackState = '' }) {
+export async function renewReadingPassLease({ lease, sequence, active, playbackState = '', idempotencyKey }) {
   const response = await axios.post(
     `${API}/reading-pass/leases/renew`,
     {
       session_id: lease.sessionId,
       lease_version: lease.version,
       sequence,
-      idempotency_key: `${lease.sessionId}:${sequence}:${globalThis.crypto?.randomUUID?.() || Date.now()}`,
+      idempotency_key: idempotencyKey || `${lease.sessionId}:${sequence}:${globalThis.crypto?.randomUUID?.() || Date.now()}`,
       active,
       playback_state: playbackState,
     },
@@ -128,6 +132,7 @@ export async function renewReadingPassLease({ lease, sequence, active, playbackS
         'X-Reading-Pass-Lease': lease.token,
       },
       withCredentials: true,
+      timeout: LEASE_TIMEOUT_MS,
     },
   );
   return response.data;
@@ -138,7 +143,7 @@ export async function endReadingPassSession(lease, reason = 'user_end') {
   const response = await axios.post(
     `${API}/reading-pass/sessions/end`,
     { session_id: lease.sessionId, reason },
-    { headers: authHeaders(), withCredentials: true },
+    { headers: authHeaders(), withCredentials: true, timeout: REQUEST_TIMEOUT_MS },
   );
   return response.data;
 }
@@ -152,7 +157,7 @@ export async function saveReadingPassPosition({ bookSlug, pageIndex, chapterId =
       position: { canonical_page_index: Number(pageIndex), chapter_id: chapterId },
       version,
     },
-    { headers: authHeaders() },
+    { headers: authHeaders(), timeout: REQUEST_TIMEOUT_MS },
   );
   return response.data;
 }
@@ -166,7 +171,7 @@ export async function saveReadingPassAudioPosition({ bookSlug, positionSeconds, 
       position: { media_position_seconds: Math.max(0, Number(positionSeconds) || 0) },
       version,
     },
-    { headers: authHeaders() },
+    { headers: authHeaders(), timeout: REQUEST_TIMEOUT_MS },
   );
   return response.data;
 }
