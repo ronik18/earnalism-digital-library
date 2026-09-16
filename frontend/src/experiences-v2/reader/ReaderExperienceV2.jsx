@@ -8,7 +8,13 @@ import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
 import "./reader-v2.mobile.css";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
-import { loadReaderSettings, READER_SETTINGS_DEFAULTS, saveReaderSettings } from "../../lib/readerSettings";
+import {
+  loadReaderSettings,
+  READER_SETTINGS_DEFAULTS,
+  READER_TEXT_SIZE_REM_STEPS,
+  READER_TYPOGRAPHY_VERSION,
+  saveReaderSettings,
+} from "../../lib/readerSettings";
 
 export const READER_V2_FIXTURE = Object.freeze({
   title: "Dracula",
@@ -41,9 +47,27 @@ export function readerPageAccess({ canonicalPage = 1, authorized = false } = {})
   return authorized ? { canRequest: true, reason: "server_authorized" } : { canRequest: false, reason: "server_authorization_required" };
 }
 
-const FONT_SIZES = [17, 18, 20, 22];
-const LINE_SPACING = { comfortable: 1.74, relaxed: 1.88, airy: 2.02 };
-const READING_WIDTH = { narrow: "600px", classic: "680px", wide: "760px" };
+const LINE_SPACING = {
+  comfortable: { en: 1.75, bn: 1.8 },
+  relaxed: { en: 1.88, bn: 1.93 },
+  airy: { en: 2.02, bn: 2.08 },
+};
+const LANGUAGE_TYPOGRAPHY = {
+  en: { size: 1.25, fontFamily: '"EB Garamond", Georgia, serif', fontWeight: 400 },
+  bn: { size: 1.375, fontFamily: '"Noto Serif Bengali", serif', fontWeight: 500 },
+};
+
+function readerLanguage(language) {
+  return language === "bn" ? "bn" : "en";
+}
+
+function formatRem(value) {
+  return `${Number(value).toFixed(3).replace(/0+$/, "").replace(/\.$/, "")}rem`;
+}
+
+function textSizeIndex(value) {
+  return READER_TEXT_SIZE_REM_STEPS.indexOf(value);
+}
 
 export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access = {}, onRequestPage, onNavigate }) {
   const [settings, setSettings] = useState(() => {
@@ -73,10 +97,40 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     ? declaredTotal : Math.max(page, Number(model.totalPublicPages) || 1, ...contents.map((item) => item.page));
   const progress = Math.min(100, Math.max(0, Number(model.progress) || 0));
   const metadata = model.metadata || {};
+  const language = readerLanguage(model.language);
+  const languageTypography = LANGUAGE_TYPOGRAPHY[language];
+  const textSizeRem = settings.readerTextSizeRem ?? languageTypography.size;
+  const textSizeStep = textSizeIndex(textSizeRem);
+  const lineHeight = LINE_SPACING[settings.lineSpacingMode]?.[language] || LINE_SPACING.comfortable[language];
+  const fontMode = settings.readerFontFamilyPreference || "serif";
+  const fontFamily = fontMode === "sans"
+    ? (language === "bn" ? '"Noto Sans Bengali", sans-serif' : 'Outfit, sans-serif')
+    : languageTypography.fontFamily;
+  const fontWeight = fontMode === "sans" ? (language === "bn" ? 500 : 400) : languageTypography.fontWeight;
   const busy = Boolean(access.busy);
   const atEnd = page >= totalPages;
   const nextLabel = page === 3 && !access.authorized ? "Use Reading Time to Continue" : "Next page";
   const updateSetting = (name, value) => setSettings((previous) => ({ ...previous, [name]: value }));
+  const updateTextSize = (value) => setSettings((previous) => ({
+    ...previous,
+    readerTypographyVersion: READER_TYPOGRAPHY_VERSION,
+    readerTextSizeRem: Number(value),
+  }));
+  const updateFontFamily = (value) => setSettings((previous) => ({
+    ...previous,
+    // Preserve the existing shared field for the legacy Reader while keeping
+    // V2's explicit override separate from language-specific defaults.
+    fontFamilyMode: value,
+    readerTypographyVersion: READER_TYPOGRAPHY_VERSION,
+    readerFontFamilyPreference: value,
+  }));
+  const resetTypography = () => setSettings((previous) => ({
+    ...previous,
+    lineSpacingMode: READER_SETTINGS_DEFAULTS.lineSpacingMode,
+    readerTypographyVersion: READER_TYPOGRAPHY_VERSION,
+    readerTextSizeRem: null,
+    readerFontFamilyPreference: null,
+  }));
   const toggleSettings = (event) => {
     settingsTriggerRef.current = event.currentTarget;
     setSettingsOpen((open) => !open);
@@ -85,9 +139,10 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     setSettingsOpen(false);
     settingsTriggerRef.current?.focus({ preventScroll: true });
   };
-  const resizeText = (step) => setSettings((previous) => ({
-    ...previous, fontSizeIdx: Math.max(0, Math.min(FONT_SIZES.length - 1, previous.fontSizeIdx + step)),
-  }));
+  const resizeText = (step) => {
+    const next = Math.max(0, Math.min(READER_TEXT_SIZE_REM_STEPS.length - 1, textSizeStep + step));
+    updateTextSize(READER_TEXT_SIZE_REM_STEPS[next]);
+  };
   const requestPage = (requestedPage) => {
     const target = Number(requestedPage);
     if (busy || !Number.isInteger(target) || target < 1 || target > totalPages || target === page) return;
@@ -103,8 +158,8 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
         <button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button>
         <span><small>Page</small>{page} of {totalPages}</span>
         <div>
-          <button type="button" onClick={() => resizeText(-1)} disabled={settings.fontSizeIdx === 0} aria-label="Decrease text size">A−</button>
-          <button type="button" onClick={() => resizeText(1)} disabled={settings.fontSizeIdx === FONT_SIZES.length - 1} aria-label="Increase text size">A+</button>
+          <button type="button" onClick={() => resizeText(-1)} disabled={textSizeStep === 0} aria-label="Decrease text size">A−</button>
+          <button type="button" onClick={() => resizeText(1)} disabled={textSizeStep === READER_TEXT_SIZE_REM_STEPS.length - 1} aria-label="Increase text size">A+</button>
           <button type="button" onClick={toggleSettings} aria-label="Reader settings" aria-expanded={settingsOpen} aria-controls="reader-v2-settings"><Settings2 size={17} /></button>
         </div>
       </header>
@@ -117,13 +172,13 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           <ExperiencePanel eyebrow="Reading Pass"><p>{model.readingPass}</p><button type="button" onClick={() => onNavigate?.("passes")}>Extend Reading Time</button></ExperiencePanel>
         </aside>
 
-        <article className="reader-v2__canvas" data-reader-theme={settings.theme} aria-busy={busy} lang={model.language || undefined}>
+        <article className="reader-v2__canvas" data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
           <header className="reader-v2__chapter">
             <span>{model.chapterEyebrow}</span>
             <div className="reader-v2__toolbar">
-              <ExperienceIconButton label="Decrease text size" disabled={settings.fontSizeIdx === 0} onClick={() => resizeText(-1)}><Minus size={16} /></ExperienceIconButton>
-              <output aria-label="Text size">Aa · {FONT_SIZES[settings.fontSizeIdx]}px</output>
-              <ExperienceIconButton label="Increase text size" disabled={settings.fontSizeIdx === FONT_SIZES.length - 1} onClick={() => resizeText(1)}><Plus size={16} /></ExperienceIconButton>
+              <ExperienceIconButton label="Decrease text size" disabled={textSizeStep === 0} onClick={() => resizeText(-1)}><Minus size={16} /></ExperienceIconButton>
+              <output aria-label="Text size">Aa · {formatRem(textSizeRem)}</output>
+              <ExperienceIconButton label="Increase text size" disabled={textSizeStep === READER_TEXT_SIZE_REM_STEPS.length - 1} onClick={() => resizeText(1)}><Plus size={16} /></ExperienceIconButton>
               <ExperienceIconButton label="Reader settings" pressed={settingsOpen} onClick={toggleSettings}><Settings2 size={16} /></ExperienceIconButton>
             </div>
             <h1 id="reader-v2-title" ref={headingRef} tabIndex={-1}>{model.chapterTitle}</h1>
@@ -131,14 +186,15 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           {settingsOpen && <section id="reader-v2-settings" className="reader-v2__settings" aria-label="Reading preferences">
             <h2>Reading preferences</h2>
             <label>Theme<select value={settings.theme} onChange={(event) => updateSetting("theme", event.target.value)}><option value="beige">Light</option><option value="sepia">Sepia</option><option value="dark">Night</option></select></label>
-            <label>Text size<select value={settings.fontSizeIdx} onChange={(event) => updateSetting("fontSizeIdx", Number(event.target.value))}>{FONT_SIZES.map((size, index) => <option key={size} value={index}>{size}px</option>)}</select></label>
+            <label>Text size<select value={textSizeRem} onChange={(event) => updateTextSize(event.target.value)}>{READER_TEXT_SIZE_REM_STEPS.map((size) => <option key={size} value={size}>{formatRem(size)}</option>)}</select></label>
             <label>Line spacing<select value={settings.lineSpacingMode} onChange={(event) => updateSetting("lineSpacingMode", event.target.value)}><option value="comfortable">Comfortable</option><option value="relaxed">Relaxed</option><option value="airy">Airy</option></select></label>
-            <label>Font<select value={settings.fontFamilyMode} onChange={(event) => updateSetting("fontFamilyMode", event.target.value)}><option value="sans">Clear sans serif</option><option value="serif">Literary serif</option></select></label>
+            <label>Font<select value={fontMode} onChange={(event) => updateFontFamily(event.target.value)}><option value="sans">Clear sans serif</option><option value="serif">Literary serif</option></select></label>
+            <button type="button" onClick={resetTypography}>Reset typography</button>
             <button type="button" onClick={closeSettings}>Close preferences</button>
           </section>}
           <label className="reader-v2__page-selector">Go to page<select aria-label="Go to page" value={page} disabled={busy} onChange={(event) => requestPage(event.target.value)}>{Array.from({ length: totalPages }, (_, index) => <option key={index + 1} value={index + 1}>Page {index + 1}</option>)}</select></label>
           {model.illustration?.src && <img className="reader-v2__illustration" src={model.illustration.src} alt={model.illustration.alt || ""} decoding="async" />}
-          <div className="reader-v2__body" data-testid="reader-reading-text" style={{ fontSize: `${FONT_SIZES[settings.fontSizeIdx]}px`, lineHeight: LINE_SPACING[settings.lineSpacingMode], maxWidth: READING_WIDTH[settings.marginMode], fontFamily: settings.fontFamilyMode === "sans" ? '"Noto Sans Bengali", var(--ev2-ui)' : '"Noto Serif Bengali", var(--ev2-content)' }}>
+          <div className="reader-v2__body" data-testid="reader-reading-text" style={{ fontSize: formatRem(textSizeRem), lineHeight, maxWidth: "40rem", fontFamily, fontWeight }}>
             {model.content ?? (model.paragraphs || []).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}
           </div>
           {model.statusMessage && <p className="reader-v2__status" role="status">{model.statusMessage}</p>}

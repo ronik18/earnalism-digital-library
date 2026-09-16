@@ -10,6 +10,7 @@
   .reader-v2__page-selector { max-width: none; }
 }
 @media (max-width: 359px) {
+  .reader-v2 { --reader-mobile-gutter: 1rem; }
   .reader-v2__settings { grid-template-columns: minmax(0, 1fr); }
   .reader-v2 .experience-header__actions { gap: 0; }
 }

@@ -61,7 +61,8 @@ function ReaderSession({ slug, user, syncBalance }) {
   const [search, setSearch] = useSearchParams();
   const navigate = useNavigate();
   const canonicalPage = pageFromSearch(search);
-  const visualFixture = process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1" && search.get("visual-fixture") === "1";
+  const visualFixtureVariant = process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1" ? search.get("visual-fixture") : null;
+  const visualFixture = visualFixtureVariant === "1" || visualFixtureVariant === "bn";
   const [manifest, setManifest] = useState(null);
   const [loading, setLoading] = useState(true);
   const [pageResult, setPageResult] = useState(null);
@@ -437,7 +438,18 @@ function ReaderSession({ slug, user, syncBalance }) {
     {user && <button type="button" data-testid="reader-recovery-passes" onClick={() => navigateAfterSettlement("passes")} disabled={busy}>View Reading Passes</button>}
     {notice && <p role="status">{notice}</p>}
   </>;
-  if (visualFixture) return <ReaderExperienceV2 model={READER_V2_FIXTURE} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target) => { if (["library", "search"].includes(target)) navigate("/library"); }} />;
+  if (visualFixture) {
+    const fixtureModel = visualFixtureVariant === "bn" ? {
+      ...READER_V2_FIXTURE,
+      title: "পথের পাঁচালী",
+      author: "বিভূতিভূষণ বন্দ্যোপাধ্যায়",
+      language: "bn",
+      chapterEyebrow: "প্রথম পরিচ্ছেদ",
+      chapterTitle: "অপু ও দুর্গা",
+      paragraphs: ["বাংলা পাঠ্যের যুক্তাক্ষর, স্বরচিহ্ন এবং বিরামচিহ্ন স্বাভাবিক পাঠের অংশ।", "এই বিচ্ছিন্ন পরীক্ষার নমুনা কেবল পাঠ-টাইপোগ্রাফি যাচাই করে; এটি কোনো প্রকাশিত পৃষ্ঠা বা অডিও অনুরোধ করে না।"],
+    } : READER_V2_FIXTURE;
+    return <ReaderExperienceV2 model={fixtureModel} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target) => { if (["library", "search"].includes(target)) navigate("/library"); }} />;
+  }
   const loadingExit = <button type="button" onClick={() => navigateAfterSettlement("library")} disabled={busy}>{busy ? "Closing reader…" : "Library"}</button>;
   if (loading) return <RouteState title="Opening reader" message="Loading this edition.">{loadingExit}</RouteState>;
   if (error) return <RouteState title="Reading paused" message={error}>{recovery}</RouteState>;

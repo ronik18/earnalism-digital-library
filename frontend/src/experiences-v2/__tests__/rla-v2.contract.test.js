@@ -122,7 +122,9 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(shared).toContain('--ev2-heading: var(--qh-display, "EB Garamond", "Noto Serif Bengali", serif);');
     expect(shared).toContain('--ev2-content: var(--eds-display, "Cormorant Garamond", "Noto Serif Bengali", serif);');
     expect(shared).not.toMatch(/reader-surface-|reader-ui-font|reader-display-font/);
-    expect(reader).toContain('font: 400 1rem/1.72 var(--ev2-content);');
+    expect(reader).toContain('max-width: 40rem;');
+    expect(reader).toContain('text-align: start;');
+    expect(reader).not.toContain('p:first-child::first-letter');
     [reader, listener, about, library, shared].forEach((stylesheet) => {
       expect(stylesheet).not.toContain("var(--ev2-display)");
       expect(stylesheet).not.toMatch(/font:\s*600[^;]*var\(--ev2-heading\)/);
