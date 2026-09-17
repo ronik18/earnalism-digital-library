@@ -9226,6 +9226,184 @@ async def _reader_segment_activation_state(slug: str, *, mongo_session) -> dict:
     return state
 
 
+_READER_SEGMENT_OPERATION_INTENT_SCHEMA = "reader-segment-activation/v2"
+
+
+def _reader_segment_operation_intent(
+    *,
+    book_slug: str,
+    operation_kind: str,
+    target_segmentation_version: str,
+    expected_active_segmentation_version: Optional[str] = None,
+    expected_activation_generation: Optional[int] = None,
+) -> dict:
+    """Return the complete durable identity for a segment activation operation.
+
+    Operation IDs are globally unique.  The intent therefore has to bind the
+    title and operation kind as well as the version preconditions; otherwise a
+    valid retry for one title could be replayed against another title.
+    """
+    intent = {
+        "schema": _READER_SEGMENT_OPERATION_INTENT_SCHEMA,
+        "book_slug": book_slug,
+        "operation_kind": operation_kind,
+        "target_segmentation_version": target_segmentation_version,
+    }
+    if operation_kind == "promote":
+        intent["expected_active_segmentation_version"] = expected_active_segmentation_version
+        intent["expected_activation_generation"] = expected_activation_generation
+    return intent
+
+
+def _reader_segment_operation_digest(intent: dict) -> str:
+    return hashlib.sha256(
+        _json.dumps(intent, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+
+
+def _reader_segment_operation_conflict() -> HTTPException:
+    return HTTPException(
+        status_code=409,
+        detail={
+            "code": "ACTIVATION_OPERATION_INTENT_CONFLICT",
+            "message": "The operation ID is already bound to another title, operation kind, or immutable intent.",
+        },
+    )
+
+
+def _reader_segment_legacy_operation_intent(operation: dict) -> Optional[dict]:
+    """Recover only a fully evidenced v1 operation identity without rewriting it.
+
+    The original records did carry ``book_slug`` and a result with the same
+    title, but their digest omitted both title and operation kind.  We retain a
+    same-title retry only if the stored result itself establishes every needed
+    field and the old digest agrees.  Ambiguous or contradictory records fail
+    closed rather than inheriting identity from a new request.
+    """
+    result = operation.get("result")
+    stored_slug = operation.get("book_slug")
+    if not isinstance(result, dict) or not isinstance(stored_slug, str) or not stored_slug:
+        return None
+    if result.get("book_slug") != stored_slug or not isinstance(result.get("segmentation_version"), str):
+        return None
+    if result.get("bootstrap") is True:
+        if result.get("activation_generation") != 1 or "previous_segmentation_version" in result:
+            return None
+        legacy_intent = {"bootstrap": True, "target": result["segmentation_version"]}
+        operation_kind = "bootstrap"
+    else:
+        previous = result.get("previous_segmentation_version")
+        generation = result.get("activation_generation")
+        if not isinstance(previous, str) or not isinstance(generation, int) or generation < 1:
+            return None
+        legacy_intent = {
+            "target": result["segmentation_version"],
+            "expected": previous,
+            "generation": generation - 1,
+        }
+        operation_kind = "promote"
+    legacy_digest = hashlib.sha256(
+        _json.dumps(legacy_intent, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    if operation.get("intent_digest") != legacy_digest:
+        return None
+    return _reader_segment_operation_intent(
+        book_slug=stored_slug,
+        operation_kind=operation_kind,
+        target_segmentation_version=result["segmentation_version"],
+        expected_active_segmentation_version=legacy_intent.get("expected"),
+        expected_activation_generation=legacy_intent.get("generation"),
+    )
+
+
+def _reader_segment_recover_operation_result(
+    operation: dict,
+    *,
+    operation_id: str,
+    request_intent: dict,
+) -> dict:
+    """Validate a stored durable operation before returning a retry result."""
+    result = operation.get("result")
+    if not isinstance(result, dict) or result.get("operation_id") != operation_id:
+        raise _reader_segment_operation_conflict()
+
+    if operation.get("operation_identity_schema") == _READER_SEGMENT_OPERATION_INTENT_SCHEMA:
+        stored_intent = operation.get("intent")
+        if not isinstance(stored_intent, dict):
+            raise _reader_segment_operation_conflict()
+        if (
+            stored_intent.get("schema") != _READER_SEGMENT_OPERATION_INTENT_SCHEMA
+            or operation.get("book_slug") != stored_intent.get("book_slug")
+            or operation.get("operation_kind") != stored_intent.get("operation_kind")
+            or operation.get("intent_digest") != _reader_segment_operation_digest(stored_intent)
+            or stored_intent != request_intent
+        ):
+            raise _reader_segment_operation_conflict()
+    else:
+        # v1 records are never rewritten.  This explicit compatibility path is
+        # deliberately narrower than the original lookup: title, kind, and all
+        # intent fields must be evidenced by the existing record itself.
+        if _reader_segment_legacy_operation_intent(operation) != request_intent:
+            raise _reader_segment_operation_conflict()
+
+    if (
+        result.get("book_slug") != request_intent["book_slug"]
+        or result.get("segmentation_version") != request_intent["target_segmentation_version"]
+    ):
+        raise _reader_segment_operation_conflict()
+    if request_intent["operation_kind"] == "bootstrap":
+        if result.get("bootstrap") is not True or result.get("activation_generation") != 1:
+            raise _reader_segment_operation_conflict()
+    elif (
+        result.get("bootstrap") is True
+        or result.get("previous_segmentation_version") != request_intent["expected_active_segmentation_version"]
+        or result.get("activation_generation") != request_intent["expected_activation_generation"] + 1
+    ):
+        raise _reader_segment_operation_conflict()
+    return result
+
+
+async def _run_reader_segment_activation_transaction(
+    operation,
+    *,
+    operation_id: Optional[str] = None,
+    request_intent: Optional[dict] = None,
+):
+    """Run a bounded driver transaction and resolve a concurrent operation-ID race.
+
+    The unique operation-id index is deliberately global.  A second transaction
+    can nevertheless reach its final insert before it observes the first
+    transaction's record.  Once Mongo aborts that loser, read the committed
+    record outside the aborted transaction and apply the same strict recovery
+    validation used by an ordinary retry.  This preserves idempotency for an
+    identical request and returns the protocol conflict for every other one.
+    """
+    try:
+        mongo_session = await client.start_session()
+        async with mongo_session:
+            with_transaction = getattr(mongo_session, "with_transaction", None)
+            if callable(with_transaction):
+                return await with_transaction(operation)
+            async with mongo_session.start_transaction():
+                return await operation(mongo_session)
+    except DuplicateKeyError:
+        if not operation_id or not request_intent:
+            raise
+        previous = await db.reader_segment_activation_operations.find_one(
+            {"operation_id": operation_id}, {"_id": 0}
+        )
+        if not previous:
+            raise
+        return _reader_segment_recover_operation_result(
+            previous, operation_id=operation_id, request_intent=request_intent
+        )
+
+
+async def _record_reader_segment_activation_operation(document: dict, *, mongo_session) -> None:
+    """Persist the durable replay record as the final activation write."""
+    await db.reader_segment_activation_operations.insert_one(document, session=mongo_session)
+
+
 @api.get("/admin/reading-pass/books/{slug}/segments/active")
 async def admin_reading_pass_active_segments(slug: str, admin=Depends(require_admin)):
     """Read the active immutable pointer for an expected-version promotion.
@@ -9335,42 +9513,54 @@ async def admin_build_reading_pass_segments(
 @api.post("/admin/reading-pass/books/{slug}/segments/promote")
 async def admin_promote_reading_pass_segments(slug: str, payload: ReadingPassSegmentPromotionIn, admin=Depends(require_admin)):
     """Atomically promote or recover a retained, verified immutable version."""
-    intent = {"target": payload.target_segmentation_version, "expected": payload.expected_active_segmentation_version, "generation": payload.expected_activation_generation}
-    intent_digest = hashlib.sha256(_json.dumps(intent, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
-    mongo_session = await client.start_session()
-    async with mongo_session:
-        async with mongo_session.start_transaction():
-            previous = await db.reader_segment_activation_operations.find_one({"operation_id": payload.operation_id}, {"_id": 0}, session=mongo_session)
-            if previous:
-                if previous.get("intent_digest") != intent_digest:
-                    raise HTTPException(status_code=409, detail={"code": "ACTIVATION_OPERATION_INTENT_CONFLICT", "message": "The operation ID was already used for another intent."})
-                return previous["result"]
-            state = await _reader_segment_activation_state(slug, mongo_session=mongo_session)
-            if state.get("active_segmentation_version") != payload.expected_active_segmentation_version or int(state.get("generation", 0)) != payload.expected_activation_generation:
-                raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The active canonical version changed; refresh before promotion."})
-            if payload.target_segmentation_version == payload.expected_active_segmentation_version:
-                raise HTTPException(status_code=409, detail={"code": "SEGMENT_VERSION_ALREADY_ACTIVE", "message": "The requested version is already active."})
-            active = await _stored_reader_segment_manifest(
-                slug, payload.expected_active_segmentation_version, mongo_session=mongo_session
+    intent = _reader_segment_operation_intent(
+        book_slug=slug,
+        operation_kind="promote",
+        target_segmentation_version=payload.target_segmentation_version,
+        expected_active_segmentation_version=payload.expected_active_segmentation_version,
+        expected_activation_generation=payload.expected_activation_generation,
+    )
+    intent_digest = _reader_segment_operation_digest(intent)
+
+    async def promote(mongo_session):
+        previous = await db.reader_segment_activation_operations.find_one({"operation_id": payload.operation_id}, {"_id": 0}, session=mongo_session)
+        if previous:
+            return _reader_segment_recover_operation_result(
+                previous, operation_id=payload.operation_id, request_intent=intent
             )
-            if active.get("status") != "active":
-                raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The expected canonical version is no longer active."})
-            target = await _stored_reader_segment_manifest(slug, payload.target_segmentation_version, mongo_session=mongo_session)
-            updated = await db.reader_segment_activation_state.update_one(
-                {"book_slug": slug, "active_segmentation_version": payload.expected_active_segmentation_version, "generation": payload.expected_activation_generation},
-                {"$set": {"active_segmentation_version": payload.target_segmentation_version, "generation": payload.expected_activation_generation + 1, "updated_at": datetime.now(timezone.utc)}}, session=mongo_session,
-            )
-            if updated.modified_count != 1:
-                raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The active canonical version changed; refresh before promotion."})
-            now = datetime.now(timezone.utc)
-            await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.expected_active_segmentation_version, "status": "active"}, {"$set": {"status": "archived", "archived_at": now}}, session=mongo_session)
-            promoted = await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.target_segmentation_version, "status": {"$in": ["prepared", "archived"]}}, {"$set": {"status": "active", "activated_at": now, "activated_by": f"admin:{admin.get('email', '')}"}}, session=mongo_session)
-            if promoted.modified_count != 1:
-                raise HTTPException(status_code=409, detail={"code": "SEGMENT_PROMOTION_CONFLICT", "message": "The retained target cannot be promoted."})
-            result = {"book_slug": slug, "operation_id": payload.operation_id, "previous_segmentation_version": payload.expected_active_segmentation_version, "segmentation_version": payload.target_segmentation_version, "activation_generation": payload.expected_activation_generation + 1, "version": target["version"], "total_pages": target["total_pages"], "activated": True}
-            await db.reading_pass_audit.insert_one({"id": str(uuid.uuid4()), "event": "canonical_segments_promoted", "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "actor": f"admin:{admin.get('email', '')}", "created_at": now}, session=mongo_session)
-            await db.reader_segment_activation_operations.insert_one({"id": str(uuid.uuid4()), "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "result": result, "created_at": now}, session=mongo_session)
-            return result
+        state = await _reader_segment_activation_state(slug, mongo_session=mongo_session)
+        if state.get("active_segmentation_version") != payload.expected_active_segmentation_version or int(state.get("generation", 0)) != payload.expected_activation_generation:
+            raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The active canonical version changed; refresh before promotion."})
+        if payload.target_segmentation_version == payload.expected_active_segmentation_version:
+            raise HTTPException(status_code=409, detail={"code": "SEGMENT_VERSION_ALREADY_ACTIVE", "message": "The requested version is already active."})
+        active = await _stored_reader_segment_manifest(
+            slug, payload.expected_active_segmentation_version, mongo_session=mongo_session
+        )
+        if active.get("status") != "active":
+            raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The expected canonical version is no longer active."})
+        target = await _stored_reader_segment_manifest(slug, payload.target_segmentation_version, mongo_session=mongo_session)
+        updated = await db.reader_segment_activation_state.update_one(
+            {"book_slug": slug, "active_segmentation_version": payload.expected_active_segmentation_version, "generation": payload.expected_activation_generation},
+            {"$set": {"active_segmentation_version": payload.target_segmentation_version, "generation": payload.expected_activation_generation + 1, "updated_at": datetime.now(timezone.utc)}}, session=mongo_session,
+        )
+        if updated.modified_count != 1:
+            raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The active canonical version changed; refresh before promotion."})
+        now = datetime.now(timezone.utc)
+        await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.expected_active_segmentation_version, "status": "active"}, {"$set": {"status": "archived", "archived_at": now}}, session=mongo_session)
+        promoted = await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.target_segmentation_version, "status": {"$in": ["prepared", "archived"]}}, {"$set": {"status": "active", "activated_at": now, "activated_by": f"admin:{admin.get('email', '')}"}}, session=mongo_session)
+        if promoted.modified_count != 1:
+            raise HTTPException(status_code=409, detail={"code": "SEGMENT_PROMOTION_CONFLICT", "message": "The retained target cannot be promoted."})
+        result = {"book_slug": slug, "operation_id": payload.operation_id, "previous_segmentation_version": payload.expected_active_segmentation_version, "segmentation_version": payload.target_segmentation_version, "activation_generation": payload.expected_activation_generation + 1, "version": target["version"], "total_pages": target["total_pages"], "activated": True}
+        await db.reading_pass_audit.insert_one({"id": str(uuid.uuid4()), "event": "canonical_segments_promoted", "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "actor": f"admin:{admin.get('email', '')}", "created_at": now}, session=mongo_session)
+        await _record_reader_segment_activation_operation(
+            {"id": str(uuid.uuid4()), "book_slug": slug, "operation_id": payload.operation_id, "operation_identity_schema": _READER_SEGMENT_OPERATION_INTENT_SCHEMA, "operation_kind": "promote", "intent": intent, "intent_digest": intent_digest, "result": result, "created_at": now},
+            mongo_session=mongo_session,
+        )
+        return result
+
+    return await _run_reader_segment_activation_transaction(
+        promote, operation_id=payload.operation_id, request_intent=intent
+    )
 
 
 @api.post("/admin/reading-pass/books/{slug}/segments/bootstrap")
@@ -9381,22 +9571,26 @@ async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassS
     ``activate`` flag.  It cannot replace an active or archived publication,
     and it records the same durable operation result used for recovery.
     """
-    intent = {"bootstrap": True, "target": payload.target_segmentation_version}
-    intent_digest = hashlib.sha256(_json.dumps(intent, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
-    mongo_session = await client.start_session()
-    async with mongo_session:
-        async with mongo_session.start_transaction():
-            previous = await db.reader_segment_activation_operations.find_one({"operation_id": payload.operation_id}, {"_id": 0}, session=mongo_session)
-            if previous:
-                if previous.get("intent_digest") != intent_digest:
-                    raise HTTPException(status_code=409, detail={"code": "ACTIVATION_OPERATION_INTENT_CONFLICT", "message": "The operation ID was already used for another intent."})
-                return previous["result"]
-            if await db.reader_segment_activation_state.find_one({"book_slug": slug}, {"_id": 1}, session=mongo_session):
-                raise HTTPException(status_code=409, detail={"code": "ACTIVE_SEGMENT_VERSION_EXISTS", "message": "This title already has a versioned publication pointer."})
-            if await db.reader_segment_manifests.find_one({"book_slug": slug, "status": "active"}, {"_id": 1}, session=mongo_session):
-                raise HTTPException(status_code=409, detail={"code": "ACTIVE_SEGMENT_VERSION_EXISTS", "message": "This title already has an active canonical version."})
-            target = await _stored_reader_segment_manifest(slug, payload.target_segmentation_version, mongo_session=mongo_session)
-            now = datetime.now(timezone.utc)
+    intent = _reader_segment_operation_intent(
+        book_slug=slug,
+        operation_kind="bootstrap",
+        target_segmentation_version=payload.target_segmentation_version,
+    )
+    intent_digest = _reader_segment_operation_digest(intent)
+
+    async def bootstrap(mongo_session):
+        previous = await db.reader_segment_activation_operations.find_one({"operation_id": payload.operation_id}, {"_id": 0}, session=mongo_session)
+        if previous:
+            return _reader_segment_recover_operation_result(
+                previous, operation_id=payload.operation_id, request_intent=intent
+            )
+        if await db.reader_segment_activation_state.find_one({"book_slug": slug}, {"_id": 1}, session=mongo_session):
+            raise HTTPException(status_code=409, detail={"code": "ACTIVE_SEGMENT_VERSION_EXISTS", "message": "This title already has a versioned publication pointer."})
+        if await db.reader_segment_manifests.find_one({"book_slug": slug, "status": "active"}, {"_id": 1}, session=mongo_session):
+            raise HTTPException(status_code=409, detail={"code": "ACTIVE_SEGMENT_VERSION_EXISTS", "message": "This title already has an active canonical version."})
+        target = await _stored_reader_segment_manifest(slug, payload.target_segmentation_version, mongo_session=mongo_session)
+        now = datetime.now(timezone.utc)
+        try:
             promoted = await db.reader_segment_manifests.update_one(
                 {"book_slug": slug, "segmentation_version": payload.target_segmentation_version, "status": "prepared"},
                 {"$set": {"status": "active", "activated_at": now, "activated_by": f"admin:{admin.get('email', '')}"}},
@@ -9408,10 +9602,22 @@ async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassS
                 {"book_slug": slug, "active_segmentation_version": payload.target_segmentation_version, "generation": 1, "created_at": now},
                 session=mongo_session,
             )
-            result = {"book_slug": slug, "operation_id": payload.operation_id, "segmentation_version": payload.target_segmentation_version, "activation_generation": 1, "version": target["version"], "total_pages": target["total_pages"], "activated": True, "bootstrap": True}
-            await db.reading_pass_audit.insert_one({"id": str(uuid.uuid4()), "event": "canonical_segments_bootstrapped", "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "actor": f"admin:{admin.get('email', '')}", "created_at": now}, session=mongo_session)
-            await db.reader_segment_activation_operations.insert_one({"id": str(uuid.uuid4()), "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "result": result, "created_at": now}, session=mongo_session)
-            return result
+        except DuplicateKeyError as exc:
+            # A concurrent bootstrap won the unique active-pointer or active
+            # manifest slot.  Surface a stable protocol conflict, and let the
+            # transaction abort all writes from this losing attempt.
+            raise HTTPException(status_code=409, detail={"code": "ACTIVE_SEGMENT_VERSION_EXISTS", "message": "This title already has a versioned publication pointer."}) from exc
+        result = {"book_slug": slug, "operation_id": payload.operation_id, "segmentation_version": payload.target_segmentation_version, "activation_generation": 1, "version": target["version"], "total_pages": target["total_pages"], "activated": True, "bootstrap": True}
+        await db.reading_pass_audit.insert_one({"id": str(uuid.uuid4()), "event": "canonical_segments_bootstrapped", "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "actor": f"admin:{admin.get('email', '')}", "created_at": now}, session=mongo_session)
+        await _record_reader_segment_activation_operation(
+            {"id": str(uuid.uuid4()), "book_slug": slug, "operation_id": payload.operation_id, "operation_identity_schema": _READER_SEGMENT_OPERATION_INTENT_SCHEMA, "operation_kind": "bootstrap", "intent": intent, "intent_digest": intent_digest, "result": result, "created_at": now},
+            mongo_session=mongo_session,
+        )
+        return result
+
+    return await _run_reader_segment_activation_transaction(
+        bootstrap, operation_id=payload.operation_id, request_intent=intent
+    )
 
 
 @api.post("/admin/reading-pass/audiobooks/{slug}/preview")

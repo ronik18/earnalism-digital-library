@@ -186,6 +186,28 @@ def _database():
     )
 
 
+def _add_matching_title(database, slug, *, pointed=True):
+    """Add a second independent immutable fixture title to the model store."""
+    source = _database()
+    for collection_name in (
+        "reader_content_segments",
+        "reader_segment_manifests",
+        "reader_segment_activation_state",
+    ):
+        if not pointed and collection_name == "reader_segment_activation_state":
+            continue
+        destination = getattr(database, collection_name).rows
+        for row in getattr(source, collection_name).rows:
+            clone = copy.deepcopy(row)
+            clone["book_slug"] = slug
+            destination.append(clone)
+    if not pointed:
+        database.reader_segment_manifests.rows = [
+            {**row, "status": "prepared"} if row["book_slug"] == slug else row
+            for row in database.reader_segment_manifests.rows
+        ]
+
+
 def _payload(target, expected, generation, operation_id):
     return server.ReadingPassSegmentPromotionIn(
         target_segmentation_version=target,
@@ -284,6 +306,132 @@ def test_explicit_bootstrap_only_initializes_an_unpointed_prepared_candidate(mon
         assert second.value.detail["code"] == "ACTIVE_SEGMENT_VERSION_EXISTS"
         assert len(database.reading_pass_audit.rows) == 1
         assert [row["segmentation_version"] for row in database.reader_segment_manifests.rows if row["status"] == "active"] == ["canonical-fixture-v2"]
+
+    asyncio.run(scenario())
+
+
+def test_operation_identity_rejects_cross_title_or_cross_kind_replay(monkeypatch):
+    async def scenario():
+        database = _database()
+        _add_matching_title(database, "fixture-book-b")
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        operation = _payload("canonical-fixture-v2", "canonical-fixture-v1", 0, "operation-cross-title-promote")
+        winner = await server.admin_promote_reading_pass_segments("fixture-book", operation, {"email": "fixture@example.test"})
+        assert await server.admin_promote_reading_pass_segments("fixture-book", operation, {"email": "fixture@example.test"}) == winner
+        with pytest.raises(server.HTTPException) as cross_title:
+            await server.admin_promote_reading_pass_segments("fixture-book-b", operation, {"email": "fixture@example.test"})
+        assert cross_title.value.detail["code"] == "ACTIVATION_OPERATION_INTENT_CONFLICT"
+        state_b = await server.admin_reading_pass_active_segments("fixture-book-b", {"email": "fixture@example.test"})
+        assert state_b["segmentation_version"] == "canonical-fixture-v1"
+        assert len(database.reader_segment_activation_operations.rows) == 1
+        assert len(database.reading_pass_audit.rows) == 1
+        with pytest.raises(server.HTTPException) as changed_intent:
+            await server.admin_promote_reading_pass_segments(
+                "fixture-book",
+                _payload("canonical-fixture-v1", "canonical-fixture-v2", 1, "operation-cross-title-promote"),
+                {"email": "fixture@example.test"},
+            )
+        assert changed_intent.value.detail["code"] == "ACTIVATION_OPERATION_INTENT_CONFLICT"
+        with pytest.raises(server.HTTPException) as cross_kind:
+            await server.admin_bootstrap_reading_pass_segments(
+                "fixture-book", server.ReadingPassSegmentBootstrapIn(
+                    target_segmentation_version="canonical-fixture-v2",
+                    operation_id="operation-cross-title-promote",
+                ), {"email": "fixture@example.test"},
+            )
+        assert cross_kind.value.detail["code"] == "ACTIVATION_OPERATION_INTENT_CONFLICT"
+
+    asyncio.run(scenario())
+
+
+def test_bootstrap_operation_identity_rejects_cross_title_replay_and_ambiguous_records(monkeypatch):
+    async def scenario():
+        database = _database()
+        database.reader_content_segments.rows = [
+            row for row in database.reader_content_segments.rows
+            if row["segmentation_version"] == "canonical-fixture-v2"
+        ]
+        database.reader_segment_manifests.rows = [_manifest("canonical-fixture-v2", "prepared")]
+        database.reader_segment_activation_state.rows = []
+        _add_matching_title(database, "fixture-book-b", pointed=False)
+        database.reader_content_segments.rows = [
+            row for row in database.reader_content_segments.rows
+            if row["segmentation_version"] == "canonical-fixture-v2"
+        ]
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        payload = server.ReadingPassSegmentBootstrapIn(
+            target_segmentation_version="canonical-fixture-v2", operation_id="operation-cross-title-bootstrap"
+        )
+        winner = await server.admin_bootstrap_reading_pass_segments("fixture-book", payload, {"email": "fixture@example.test"})
+        assert await server.admin_bootstrap_reading_pass_segments("fixture-book", payload, {"email": "fixture@example.test"}) == winner
+        with pytest.raises(server.HTTPException) as cross_title:
+            await server.admin_bootstrap_reading_pass_segments("fixture-book-b", payload, {"email": "fixture@example.test"})
+        assert cross_title.value.detail["code"] == "ACTIVATION_OPERATION_INTENT_CONFLICT"
+        assert not any(row["book_slug"] == "fixture-book-b" for row in database.reader_segment_activation_state.rows)
+        # A historical record missing a result title is not repaired from a new
+        # request and cannot be used as a retry authority.
+        database.reader_segment_activation_operations.rows.append({
+            "operation_id": "ambiguous-legacy-record",
+            "intent_digest": "not-a-verified-legacy-digest",
+            "result": {"operation_id": "ambiguous-legacy-record"},
+        })
+        with pytest.raises(server.HTTPException) as ambiguous:
+            await server.admin_bootstrap_reading_pass_segments(
+                "fixture-book-b", server.ReadingPassSegmentBootstrapIn(
+                    target_segmentation_version="canonical-fixture-v2", operation_id="ambiguous-legacy-record"
+                ), {"email": "fixture@example.test"},
+            )
+        assert ambiguous.value.detail["code"] == "ACTIVATION_OPERATION_INTENT_CONFLICT"
+
+    asyncio.run(scenario())
+
+
+def test_recovery_requires_consistent_versioned_or_evidenced_legacy_operation_metadata(monkeypatch):
+    async def scenario():
+        database = _database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        legacy_operation_id = "legacy-evidenced-operation"
+        legacy_intent = {"target": "canonical-fixture-v2", "expected": "canonical-fixture-v1", "generation": 0}
+        legacy_digest = hashlib.sha256(
+            server._json.dumps(legacy_intent, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()
+        legacy_result = {
+            "book_slug": "fixture-book", "operation_id": legacy_operation_id,
+            "previous_segmentation_version": "canonical-fixture-v1", "segmentation_version": "canonical-fixture-v2",
+            "activation_generation": 1, "version": _manifest("canonical-fixture-v2", "prepared")["version"],
+            "total_pages": _manifest("canonical-fixture-v2", "prepared")["total_pages"], "activated": True,
+        }
+        database.reader_segment_activation_operations.rows.append({
+            "book_slug": "fixture-book", "operation_id": legacy_operation_id,
+            "intent_digest": legacy_digest, "result": legacy_result,
+        })
+        recovered = await server.admin_promote_reading_pass_segments(
+            "fixture-book", _payload("canonical-fixture-v2", "canonical-fixture-v1", 0, legacy_operation_id),
+            {"email": "fixture@example.test"},
+        )
+        assert recovered == legacy_result
+
+        bad_operation_id = "versioned-inconsistent-operation"
+        intent = server._reader_segment_operation_intent(
+            book_slug="fixture-book", operation_kind="promote", target_segmentation_version="canonical-fixture-v2",
+            expected_active_segmentation_version="canonical-fixture-v1", expected_activation_generation=0,
+        )
+        database.reader_segment_activation_operations.rows.append({
+            "book_slug": "fixture-book", "operation_id": bad_operation_id,
+            "operation_identity_schema": server._READER_SEGMENT_OPERATION_INTENT_SCHEMA,
+            "operation_kind": "promote", "intent": intent,
+            "intent_digest": server._reader_segment_operation_digest(intent),
+            "result": {**legacy_result, "operation_id": bad_operation_id, "book_slug": "different-book"},
+        })
+        with pytest.raises(server.HTTPException) as inconsistent:
+            await server.admin_promote_reading_pass_segments(
+                "fixture-book", _payload("canonical-fixture-v2", "canonical-fixture-v1", 0, bad_operation_id),
+                {"email": "fixture@example.test"},
+            )
+        assert inconsistent.value.detail["code"] == "ACTIVATION_OPERATION_INTENT_CONFLICT"
 
     asyncio.run(scenario())
 

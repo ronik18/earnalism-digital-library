@@ -2234,3 +2234,9 @@ PR #401 is merged and its Railway deployment is provider-confirmed, but the init
 - Bind promotion to both the active version and its generation, persist an operation result in the same transaction, and recover an uncertain commit only by retrying the identical operation ID. A new operation must never guess whether the old commit applied.
 - Reader leases and saved text positions must identify the retained publication version they use. Legacy unversioned sessions fail closed for protected pages; old bound sessions can read their retained version after a newer version becomes active.
 - This source validation did not prepare, promote, or roll back Agentic AI With Python or any production title. Reader-only and no-TTS truth remain unchanged; exact-head review, deployment, and title-scoped Stage 3 checks are still required.
+
+## 2026-09-17 — Reader publication operation replay correction
+
+- A globally unique operation ID must be bound to a versioned, complete intent: canonical title, operation kind, target immutable version, and the promotion preconditions. Returning a globally matched durable result without validating that identity can report Book A's success for Book B without mutating Book B.
+- Model coverage is not transaction evidence. The release gate now executes isolated-Mongo replica-set coverage with independent sessions, deterministic overlap, a disposable namespace, and real indexes; an injected fault inside a real transaction is recorded as an injected application fault, not as a MongoDB incident.
+- Legacy activation-operation records may be recovered only where their own stored result and digest establish the full identity. Ambiguous or contradictory records fail closed and do not alter an active publication pointer.
