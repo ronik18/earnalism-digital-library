@@ -28,7 +28,7 @@ const manifest = (slug = "test-book") => ({
   canonical_pages: { page_count: 7, pages: Array.from({ length: 7 }, (_, i) => ({ page_number: i + 1, chapter_id: "c1" })) },
   chapters: [{ id: "c1", title: "Chapter one" }],
 });
-const page = (n, slug = "test-book") => ({ book_slug: slug, page_index: n, chapter_id: "c1", chapter_title: "Chapter one", total_pages: 7, is_preview: n <= 3, content: `<p>Page ${n} manuscript.</p>` });
+const page = (n, slug = "test-book") => ({ book_slug: slug, page_index: n, chapter_id: "c1", chapter_title: "Chapter one", total_pages: 7, segmentation_version: "isolated-test-segments-v1", manifest_version: "isolated-test-manifest-v1", is_preview: n <= 3, content: `<p>Page ${n} manuscript.</p>` });
 const response = (extra = {}) => ({ session_id: "session-1", lease_token: "opaque-test-token", lease_version: 1, lease_expires_at: new Date(Date.now() + 20000).toISOString(), balance_seconds: 600, heartbeat_seconds: 10, status: "Running", content_type: "text", content_id: "test-book", ...extra });
 let container, root, navigate;
 function LocationProbe() {
@@ -291,7 +291,7 @@ test("saving a page uses the existing position API and reports success", async (
   await mount("/reader/test-book?p=1");
   await click("Save current page");
   expect(text()).toContain("Your current page is saved.");
-  expect(pass.saveReadingPassPosition).toHaveBeenCalledWith(expect.objectContaining({ bookSlug: "test-book", pageIndex: 1, chapterId: "c1" }));
+  expect(pass.saveReadingPassPosition).toHaveBeenCalledWith(expect.objectContaining({ bookSlug: "test-book", pageIndex: 1, chapterId: "c1", segmentationVersion: "isolated-test-segments-v1", manifestVersion: "isolated-test-manifest-v1" }));
   expect(userApi.post).not.toHaveBeenCalled();
 });
 

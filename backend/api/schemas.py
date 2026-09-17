@@ -487,6 +487,8 @@ class ReadingPassPositionIn(BaseModel):
     content_id: str = Field(min_length=1, max_length=200)
     position: Dict[str, Any] = Field(default_factory=dict)
     version: int = Field(default=0, ge=0)
+    publication_segmentation_version: Optional[str] = Field(default=None, min_length=3, max_length=80)
+    publication_manifest_version: Optional[str] = Field(default=None, min_length=3, max_length=120)
 
 
 class ReadingPassSegmentMigrationIn(BaseModel):
@@ -495,6 +497,30 @@ class ReadingPassSegmentMigrationIn(BaseModel):
     target_characters: int = Field(default=3200, ge=800, le=12000)
     activate: bool = False
     dry_run: bool = True
+
+
+class ReadingPassSegmentPromotionIn(BaseModel):
+    """Promote an already-stored immutable text-segment version.
+
+    Candidate construction deliberately remains a different operation.  The
+    caller must bind a promotion to the active pointer it inspected, so an
+    old operator request cannot become valid again after another promotion or
+    recovery has happened.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+    target_segmentation_version: str = Field(min_length=3, max_length=80)
+    expected_active_segmentation_version: str = Field(min_length=3, max_length=80)
+    expected_activation_generation: int = Field(ge=0)
+    operation_id: str = Field(min_length=8, max_length=160)
+
+
+class ReadingPassSegmentBootstrapIn(BaseModel):
+    """Create the first active pointer only when a title has none."""
+
+    model_config = ConfigDict(extra="forbid")
+    target_segmentation_version: str = Field(min_length=3, max_length=80)
+    operation_id: str = Field(min_length=8, max_length=160)
 
 
 class ReadingPassPreviewActivationIn(BaseModel):

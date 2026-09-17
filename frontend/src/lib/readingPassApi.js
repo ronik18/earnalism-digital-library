@@ -148,13 +148,15 @@ export async function endReadingPassSession(lease, reason = 'user_end') {
   return response.data;
 }
 
-export async function saveReadingPassPosition({ bookSlug, pageIndex, chapterId = '', version = 0 }) {
+export async function saveReadingPassPosition({ bookSlug, pageIndex, chapterId = '', segmentationVersion = '', manifestVersion = '', version = 0 }) {
   const response = await axios.put(
     `${API}/reading-pass/positions`,
     {
       content_type: 'text',
       content_id: bookSlug,
       position: { canonical_page_index: Number(pageIndex), chapter_id: chapterId },
+      publication_segmentation_version: segmentationVersion || undefined,
+      publication_manifest_version: manifestVersion || undefined,
       version,
     },
     { headers: authHeaders(), timeout: REQUEST_TIMEOUT_MS },

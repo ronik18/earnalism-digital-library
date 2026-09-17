@@ -76,8 +76,11 @@ def test_dracula_v2_uses_canonical_pages_and_keeps_page_four_protected(monkeypat
     assert len(pages) > 4
     by_page = {page["page_index"]: page for page in pages}
 
+    requested_versions: list[str] = []
+
     class Segments:
         async def find_one(self, query, _projection):
+            requested_versions.append(query["segmentation_version"])
             return by_page.get(query["page_index"])
 
     async def access_doc(*_args, **_kwargs):
@@ -85,18 +88,34 @@ def test_dracula_v2_uses_canonical_pages_and_keeps_page_four_protected(monkeypat
 
     async def manifest(*_args, **_kwargs):
         return {
-            "segmentation_version": "isolated-dracula-preview-boundary",
+            "segmentation_version": "isolated-dracula-active-v2",
+            "version": "isolated-dracula-manifest-v2",
             "total_pages": len(pages),
         }
+
+    async def stored_manifest(_slug, segmentation_version, **_kwargs):
+        if segmentation_version == "isolated-dracula-retained-v1":
+            return {
+                "segmentation_version": "isolated-dracula-retained-v1",
+                "version": "isolated-dracula-manifest-v1",
+                "total_pages": len(pages),
+            }
+        assert segmentation_version == "isolated-dracula-active-v2"
+        return await manifest()
 
     authorized: list[dict] = []
 
     async def authorize(**kwargs):
         authorized.append(kwargs)
+        return {"scope": {
+            "segmentation_version": "isolated-dracula-retained-v1",
+            "manifest_version": "isolated-dracula-manifest-v1",
+        }}
 
     monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
     monkeypatch.setattr(server, "_reader_book_access_doc", access_doc)
     monkeypatch.setattr(server, "_active_reader_segment_manifest", manifest)
+    monkeypatch.setattr(server, "_stored_reader_segment_manifest", stored_manifest)
     monkeypatch.setattr(server, "db", SimpleNamespace(reader_content_segments=Segments()))
     monkeypatch.setattr(server.reading_pass_service, "authorize", authorize)
 
@@ -153,6 +172,9 @@ def test_dracula_v2_uses_canonical_pages_and_keeps_page_four_protected(monkeypat
     )
     assert protected["is_preview"] is False
     assert protected["content"] == by_page[4]["content"]
+    assert protected["segmentation_version"] == "isolated-dracula-retained-v1"
+    assert protected["manifest_version"] == "isolated-dracula-manifest-v1"
+    assert requested_versions[-1] == "isolated-dracula-retained-v1"
     assert authorized == [{
         "user_id": "entitled",
         "auth_session_id": "auth-session",
@@ -161,6 +183,26 @@ def test_dracula_v2_uses_canonical_pages_and_keeps_page_four_protected(monkeypat
         "content_type": "text",
         "content_id": DRACULA,
     }]
+
+    async def legacy_authorize(**_kwargs):
+        return {"scope": {"canonical_page_index": 4}}
+
+    monkeypatch.setattr(server.reading_pass_service, "authorize", legacy_authorize)
+    with pytest.raises(server.HTTPException) as legacy_session:
+        asyncio.run(
+            server.reading_pass_book_page(
+                DRACULA,
+                4,
+                request([
+                    (b"x-reading-pass-session", b"isolated-session"),
+                    (b"x-reading-pass-lease", b"isolated-lease"),
+                ]),
+                server.Response(),
+                principal={"id": "entitled", "role": "user", "status": "active", "session_id": "auth-session"},
+            )
+        )
+    assert legacy_session.value.status_code == 409
+    assert legacy_session.value.detail["code"] == "LEGACY_SESSION_PUBLICATION_VERSION_UNVERIFIED"
 
 
 def test_ginni_checksum_conflict_quarantines_artifact_and_blocks_database_fallback(monkeypatch, tmp_path):
@@ -278,12 +320,14 @@ def test_eligible_canonical_pages_retain_public_then_authorized_boundary(monkeyp
     async def manifest(*_args, **_kwargs):
         return {
             "segmentation_version": "eligible-dracula-boundary",
+            "version": "eligible-dracula-manifest-v1",
             "total_pages": len(pages),
         }
 
     monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
     monkeypatch.setattr(server, "_reader_book_access_doc", access_doc)
     monkeypatch.setattr(server, "_active_reader_segment_manifest", manifest)
+    monkeypatch.setattr(server, "_stored_reader_segment_manifest", manifest)
     monkeypatch.setattr(server, "db", SimpleNamespace(reader_content_segments=Segments()))
 
     client = TestClient(server.app)

@@ -49,6 +49,8 @@ try:
             ReadingPassPositionIn,
             ReadingPassPreviewActivationIn,
             ReadingPassSegmentMigrationIn,
+            ReadingPassSegmentPromotionIn,
+            ReadingPassSegmentBootstrapIn,
         ReaderCompletionIn,
         ReaderMetricIn,
         AnalyticsEventIn,
@@ -109,7 +111,9 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         ReadingPassSessionEndIn,
             ReadingPassPositionIn,
             ReadingPassPreviewActivationIn,
-            ReadingPassSegmentMigrationIn,
+        ReadingPassSegmentMigrationIn,
+        ReadingPassSegmentPromotionIn,
+        ReadingPassSegmentBootstrapIn,
         ReaderCompletionIn,
         ReaderMetricIn,
         AnalyticsEventIn,
@@ -4180,6 +4184,11 @@ async def initialize_database_indexes() -> None:
     await db.reader_segment_manifests.create_index(
         "book_slug", unique=True, partialFilterExpression={"status": "active"}
     )
+    # The active pointer and operation log are the authority for a versioned
+    # promotion.  The indexes turn the compare-and-set protocol below into a
+    # cross-process invariant rather than a best-effort application lock.
+    await db.reader_segment_activation_state.create_index("book_slug", unique=True)
+    await db.reader_segment_activation_operations.create_index("operation_id", unique=True)
     await db.reading_pass_sessions.create_index("id", unique=True)
     await db.reading_pass_sessions.create_index(
         "active_lock",
@@ -9167,6 +9176,77 @@ async def _active_reader_segment_manifest(slug: str) -> Optional[dict]:
     )
 
 
+async def _stored_reader_segment_manifest(slug: str, segmentation_version: str, *, mongo_session=None) -> dict:
+    manifest = await db.reader_segment_manifests.find_one(
+        {"book_slug": slug, "segmentation_version": segmentation_version}, {"_id": 0}, session=mongo_session
+    )
+    if not manifest:
+        raise HTTPException(status_code=404, detail={"code": "SEGMENT_VERSION_NOT_FOUND", "message": "The requested canonical version is not retained."})
+    rows = await db.reader_content_segments.find(
+        {"book_slug": slug, "segmentation_version": segmentation_version}, {"_id": 0}, session=mongo_session
+    ).sort("page_index", 1).to_list(100000)
+    expected_page_indices = list(range(1, len(rows) + 1))
+    if (
+        not rows
+        or [int(row.get("page_index") or 0) for row in rows] != expected_page_indices
+        or any(
+            row.get("book_slug") != slug
+            or row.get("segmentation_version") != segmentation_version
+            or hashlib.sha256(str(row.get("content") or "").encode("utf-8")).hexdigest()
+            != row.get("content_sha256")
+            for row in rows
+        )
+    ):
+        raise HTTPException(status_code=409, detail={"code": "SEGMENT_VERSION_INTEGRITY_FAILED", "message": "The retained canonical version is incomplete or corrupt."})
+    derived = segment_manifest(rows)
+    if (
+        int(manifest.get("total_pages") or 0) != len(rows)
+        or manifest.get("public_preview_pages") != derived["public_preview_pages"]
+        or manifest.get("version") != derived["version"]
+        or manifest.get("chapters") != derived["chapters"]
+    ):
+        raise HTTPException(status_code=409, detail={"code": "SEGMENT_VERSION_INTEGRITY_FAILED", "message": "The retained canonical manifest does not bind its stored pages."})
+    return manifest
+
+
+async def _reader_segment_activation_state(slug: str, *, mongo_session) -> dict:
+    state = await db.reader_segment_activation_state.find_one({"book_slug": slug}, {"_id": 0}, session=mongo_session)
+    if state:
+        return state
+    active = await db.reader_segment_manifests.find_one({"book_slug": slug, "status": "active"}, {"_id": 0}, session=mongo_session)
+    if not active:
+        raise HTTPException(status_code=409, detail={"code": "ACTIVE_SEGMENT_VERSION_MISSING", "message": "No active canonical version is available."})
+    state = {"book_slug": slug, "active_segmentation_version": active["segmentation_version"], "generation": 0, "created_at": datetime.now(timezone.utc)}
+    try:
+        await db.reader_segment_activation_state.insert_one(state, session=mongo_session)
+    except DuplicateKeyError:
+        state = await db.reader_segment_activation_state.find_one({"book_slug": slug}, {"_id": 0}, session=mongo_session)
+        if not state:
+            raise
+    return state
+
+
+@api.get("/admin/reading-pass/books/{slug}/segments/active")
+async def admin_reading_pass_active_segments(slug: str, admin=Depends(require_admin)):
+    """Read the active immutable pointer for an expected-version promotion.
+
+    This is intentionally metadata-only: callers use it to bind a later
+    promotion request, not to reconstruct or alter a publication.
+    """
+    active = await _active_reader_segment_manifest(slug)
+    if not active:
+        raise HTTPException(status_code=404, detail={"code": "ACTIVE_SEGMENT_VERSION_MISSING", "message": "No active canonical version is available."})
+    state = await db.reader_segment_activation_state.find_one({"book_slug": slug}, {"_id": 0})
+    if state and state.get("active_segmentation_version") != active.get("segmentation_version"):
+        raise HTTPException(status_code=409, detail={"code": "ACTIVATION_STATE_OUT_OF_SYNC", "message": "The canonical publication pointer requires investigation before promotion."})
+    return {
+        "book_slug": slug,
+        "segmentation_version": active["segmentation_version"],
+        "version": active["version"],
+        "activation_generation": int((state or {}).get("generation", 0) or 0),
+    }
+
+
 @api.post("/admin/reading-pass/books/{slug}/segments")
 async def admin_build_reading_pass_segments(
     slug: str,
@@ -9179,6 +9259,8 @@ async def admin_build_reading_pass_segments(
     does not enable the global feature flag.
     """
 
+    if payload.activate:
+        raise HTTPException(status_code=409, detail={"code": "VERSIONED_PROMOTION_REQUIRED", "message": "Build candidates first, then use the versioned promotion operation."})
     book = await _reader_book_access_doc(slug)
     if not book:
         raise HTTPException(status_code=404, detail="Controlled reader edition not found")
@@ -9225,41 +9307,111 @@ async def admin_build_reading_pass_segments(
                     ordered=True,
                     session=mongo_session,
                 )
-            if payload.activate:
-                await db.reader_segment_manifests.update_many(
-                    {"book_slug": slug, "status": "active"},
-                    {"$set": {"status": "archived", "archived_at": datetime.now(timezone.utc)}},
-                    session=mongo_session,
-                )
-                await db.reader_segment_manifests.update_one(
-                    {"book_slug": slug, "segmentation_version": payload.segmentation_version},
-                    {
-                        "$set": {
-                            **manifest,
-                            "status": "active",
-                            "activated_at": datetime.now(timezone.utc),
-                            "activated_by": f"admin:{admin.get('email', '')}",
-                        },
-                        "$setOnInsert": {"id": str(uuid.uuid4()), "created_at": datetime.now(timezone.utc)},
+            await db.reader_segment_manifests.update_one(
+                {"book_slug": slug, "segmentation_version": payload.segmentation_version},
+                {"$setOnInsert": {**manifest, "id": str(uuid.uuid4()), "status": "prepared", "created_at": datetime.now(timezone.utc), "created_by": f"admin:{admin.get('email', '')}"}},
+                upsert=True,
+                session=mongo_session,
+            )
+            stored = await _stored_reader_segment_manifest(
+                slug, payload.segmentation_version, mongo_session=mongo_session
+            )
+            if (
+                stored.get("version") != manifest["version"]
+                or int(stored.get("total_pages") or 0) != len(records)
+                or stored.get("chapters") != manifest["chapters"]
+            ):
+                raise HTTPException(
+                    status_code=409,
+                    detail={
+                        "code": "IMMUTABLE_SEGMENT_CONFLICT",
+                        "message": "The retained candidate does not match the derived canonical projection.",
                     },
-                    upsert=True,
-                    session=mongo_session,
                 )
-                await db.reading_pass_audit.insert_one(
-                    {
-                        "id": str(uuid.uuid4()),
-                        "event": "canonical_segments_activated",
-                        "book_slug": slug,
-                        "segmentation_version": payload.segmentation_version,
-                        "version": manifest["version"],
-                        "page_count": len(records),
-                        "actor": f"admin:{admin.get('email', '')}",
-                        "created_at": datetime.now(timezone.utc),
-                    },
-                    session=mongo_session,
-                )
-                result["activated"] = True
+            result["prepared"] = True
     return result
+
+
+@api.post("/admin/reading-pass/books/{slug}/segments/promote")
+async def admin_promote_reading_pass_segments(slug: str, payload: ReadingPassSegmentPromotionIn, admin=Depends(require_admin)):
+    """Atomically promote or recover a retained, verified immutable version."""
+    intent = {"target": payload.target_segmentation_version, "expected": payload.expected_active_segmentation_version, "generation": payload.expected_activation_generation}
+    intent_digest = hashlib.sha256(_json.dumps(intent, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+    mongo_session = await client.start_session()
+    async with mongo_session:
+        async with mongo_session.start_transaction():
+            previous = await db.reader_segment_activation_operations.find_one({"operation_id": payload.operation_id}, {"_id": 0}, session=mongo_session)
+            if previous:
+                if previous.get("intent_digest") != intent_digest:
+                    raise HTTPException(status_code=409, detail={"code": "ACTIVATION_OPERATION_INTENT_CONFLICT", "message": "The operation ID was already used for another intent."})
+                return previous["result"]
+            state = await _reader_segment_activation_state(slug, mongo_session=mongo_session)
+            if state.get("active_segmentation_version") != payload.expected_active_segmentation_version or int(state.get("generation", 0)) != payload.expected_activation_generation:
+                raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The active canonical version changed; refresh before promotion."})
+            if payload.target_segmentation_version == payload.expected_active_segmentation_version:
+                raise HTTPException(status_code=409, detail={"code": "SEGMENT_VERSION_ALREADY_ACTIVE", "message": "The requested version is already active."})
+            active = await _stored_reader_segment_manifest(
+                slug, payload.expected_active_segmentation_version, mongo_session=mongo_session
+            )
+            if active.get("status") != "active":
+                raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The expected canonical version is no longer active."})
+            target = await _stored_reader_segment_manifest(slug, payload.target_segmentation_version, mongo_session=mongo_session)
+            updated = await db.reader_segment_activation_state.update_one(
+                {"book_slug": slug, "active_segmentation_version": payload.expected_active_segmentation_version, "generation": payload.expected_activation_generation},
+                {"$set": {"active_segmentation_version": payload.target_segmentation_version, "generation": payload.expected_activation_generation + 1, "updated_at": datetime.now(timezone.utc)}}, session=mongo_session,
+            )
+            if updated.modified_count != 1:
+                raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The active canonical version changed; refresh before promotion."})
+            now = datetime.now(timezone.utc)
+            await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.expected_active_segmentation_version, "status": "active"}, {"$set": {"status": "archived", "archived_at": now}}, session=mongo_session)
+            promoted = await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.target_segmentation_version, "status": {"$in": ["prepared", "archived"]}}, {"$set": {"status": "active", "activated_at": now, "activated_by": f"admin:{admin.get('email', '')}"}}, session=mongo_session)
+            if promoted.modified_count != 1:
+                raise HTTPException(status_code=409, detail={"code": "SEGMENT_PROMOTION_CONFLICT", "message": "The retained target cannot be promoted."})
+            result = {"book_slug": slug, "operation_id": payload.operation_id, "previous_segmentation_version": payload.expected_active_segmentation_version, "segmentation_version": payload.target_segmentation_version, "activation_generation": payload.expected_activation_generation + 1, "version": target["version"], "total_pages": target["total_pages"], "activated": True}
+            await db.reading_pass_audit.insert_one({"id": str(uuid.uuid4()), "event": "canonical_segments_promoted", "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "actor": f"admin:{admin.get('email', '')}", "created_at": now}, session=mongo_session)
+            await db.reader_segment_activation_operations.insert_one({"id": str(uuid.uuid4()), "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "result": result, "created_at": now}, session=mongo_session)
+            return result
+
+
+@api.post("/admin/reading-pass/books/{slug}/segments/bootstrap")
+async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassSegmentBootstrapIn, admin=Depends(require_admin)):
+    """Create the first active pointer for an otherwise uninitialized title.
+
+    This is intentionally not a compatibility alias for the retired build
+    ``activate`` flag.  It cannot replace an active or archived publication,
+    and it records the same durable operation result used for recovery.
+    """
+    intent = {"bootstrap": True, "target": payload.target_segmentation_version}
+    intent_digest = hashlib.sha256(_json.dumps(intent, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+    mongo_session = await client.start_session()
+    async with mongo_session:
+        async with mongo_session.start_transaction():
+            previous = await db.reader_segment_activation_operations.find_one({"operation_id": payload.operation_id}, {"_id": 0}, session=mongo_session)
+            if previous:
+                if previous.get("intent_digest") != intent_digest:
+                    raise HTTPException(status_code=409, detail={"code": "ACTIVATION_OPERATION_INTENT_CONFLICT", "message": "The operation ID was already used for another intent."})
+                return previous["result"]
+            if await db.reader_segment_activation_state.find_one({"book_slug": slug}, {"_id": 1}, session=mongo_session):
+                raise HTTPException(status_code=409, detail={"code": "ACTIVE_SEGMENT_VERSION_EXISTS", "message": "This title already has a versioned publication pointer."})
+            if await db.reader_segment_manifests.find_one({"book_slug": slug, "status": "active"}, {"_id": 1}, session=mongo_session):
+                raise HTTPException(status_code=409, detail={"code": "ACTIVE_SEGMENT_VERSION_EXISTS", "message": "This title already has an active canonical version."})
+            target = await _stored_reader_segment_manifest(slug, payload.target_segmentation_version, mongo_session=mongo_session)
+            now = datetime.now(timezone.utc)
+            promoted = await db.reader_segment_manifests.update_one(
+                {"book_slug": slug, "segmentation_version": payload.target_segmentation_version, "status": "prepared"},
+                {"$set": {"status": "active", "activated_at": now, "activated_by": f"admin:{admin.get('email', '')}"}},
+                session=mongo_session,
+            )
+            if promoted.modified_count != 1:
+                raise HTTPException(status_code=409, detail={"code": "SEGMENT_PROMOTION_CONFLICT", "message": "The retained candidate cannot be initialized."})
+            await db.reader_segment_activation_state.insert_one(
+                {"book_slug": slug, "active_segmentation_version": payload.target_segmentation_version, "generation": 1, "created_at": now},
+                session=mongo_session,
+            )
+            result = {"book_slug": slug, "operation_id": payload.operation_id, "segmentation_version": payload.target_segmentation_version, "activation_generation": 1, "version": target["version"], "total_pages": target["total_pages"], "activated": True, "bootstrap": True}
+            await db.reading_pass_audit.insert_one({"id": str(uuid.uuid4()), "event": "canonical_segments_bootstrapped", "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "actor": f"admin:{admin.get('email', '')}", "created_at": now}, session=mongo_session)
+            await db.reader_segment_activation_operations.insert_one({"id": str(uuid.uuid4()), "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "result": result, "created_at": now}, session=mongo_session)
+            return result
 
 
 @api.post("/admin/reading-pass/audiobooks/{slug}/preview")
@@ -9421,6 +9573,7 @@ async def reading_pass_book_manifest(slug: str, response: Response):
     manifest = await _active_reader_segment_manifest(slug)
     if not manifest:
         raise HTTPException(status_code=503, detail={"code": "SEGMENTS_NOT_READY", "message": "Canonical reading pages are not ready."})
+    manifest = await _stored_reader_segment_manifest(slug, manifest["segmentation_version"])
     response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
     chapters = canonicalize_segment_manifest_chapters(
         manifest.get("chapters", []),
@@ -9458,6 +9611,47 @@ async def reading_pass_book_page(
     manifest = await _active_reader_segment_manifest(slug)
     if not manifest:
         raise HTTPException(status_code=503, detail={"code": "SEGMENTS_NOT_READY", "message": "Canonical reading pages are not ready."})
+    manifest = await _stored_reader_segment_manifest(slug, manifest["segmentation_version"])
+    preview = public_text_page(page_index)
+    if not preview:
+        if not principal or principal.get("role") != "user":
+            raise HTTPException(status_code=401, detail={"code": "AUTH_REQUIRED", "message": "Sign in to continue beyond the free preview."})
+        if principal.get("status") == "blocked":
+            raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "This account cannot access protected content."})
+        session_id, lease_token = _reading_pass_lease_headers(request)
+        if not session_id or not lease_token:
+            raise HTTPException(status_code=403, detail={"code": "PASS_REQUIRED", "message": "A current Reading Pass lease is required."})
+        try:
+            session_doc = await reading_pass_service.authorize(
+                user_id=principal["id"],
+                auth_session_id=principal.get("session_id", ""),
+                session_id=session_id,
+                lease_token=lease_token,
+                content_type="text",
+                content_id=slug,
+            )
+        except ReadingPassError as exc:
+            raise _reading_pass_http_error(exc) from exc
+        scope = session_doc.get("scope") if isinstance(session_doc.get("scope"), dict) else {}
+        segmentation_version = str(scope.get("segmentation_version") or "")
+        manifest_version = str(scope.get("manifest_version") or "")
+        if not segmentation_version or not manifest_version:
+            raise HTTPException(
+                status_code=409,
+                detail={"code": "LEGACY_SESSION_PUBLICATION_VERSION_UNVERIFIED", "message": "Restart the reading session to bind it to a canonical publication version."},
+            )
+        manifest = await _stored_reader_segment_manifest(slug, segmentation_version)
+        if manifest.get("version") != manifest_version:
+            raise HTTPException(
+                status_code=409,
+                detail={"code": "PUBLICATION_VERSION_MISMATCH", "message": "The reading session is not bound to this retained canonical version."},
+            )
+        response.headers["Cache-Control"] = "private, no-store"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Vary"] = "Authorization, X-Reading-Pass-Session, X-Reading-Pass-Lease"
+    else:
+        response.headers["Cache-Control"] = "public, max-age=300, immutable"
+
     projection = {"_id": 0, "content": 1, "content_sha256": 1, "page_index": 1, "chapter_id": 1, "chapter_title": 1}
     segment = await db.reader_content_segments.find_one(
         {
@@ -9470,36 +9664,12 @@ async def reading_pass_book_page(
     if not segment:
         raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Page not found."})
 
-    preview = public_text_page(page_index)
-    if not preview:
-        if not principal or principal.get("role") != "user":
-            raise HTTPException(status_code=401, detail={"code": "AUTH_REQUIRED", "message": "Sign in to continue beyond the free preview."})
-        if principal.get("status") == "blocked":
-            raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "This account cannot access protected content."})
-        session_id, lease_token = _reading_pass_lease_headers(request)
-        if not session_id or not lease_token:
-            raise HTTPException(status_code=403, detail={"code": "PASS_REQUIRED", "message": "A current Reading Pass lease is required."})
-        try:
-            await reading_pass_service.authorize(
-                user_id=principal["id"],
-                auth_session_id=principal.get("session_id", ""),
-                session_id=session_id,
-                lease_token=lease_token,
-                content_type="text",
-                content_id=slug,
-            )
-        except ReadingPassError as exc:
-            raise _reading_pass_http_error(exc) from exc
-        response.headers["Cache-Control"] = "private, no-store"
-        response.headers["Pragma"] = "no-cache"
-        response.headers["Vary"] = "Authorization, X-Reading-Pass-Session, X-Reading-Pass-Lease"
-    else:
-        response.headers["Cache-Control"] = "public, max-age=300, immutable"
-
     return {
         "book_slug": slug,
         "page_index": page_index,
         "total_pages": int(manifest["total_pages"]),
+        "segmentation_version": manifest["segmentation_version"],
+        "manifest_version": manifest["version"],
         "is_preview": preview,
         "chapter_id": segment.get("chapter_id", ""),
         "chapter_title": canonical_segment_chapter_title(
@@ -9521,6 +9691,10 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
         if page_index <= PUBLIC_TEXT_PAGE_COUNT:
             return {"status": "Preview", "balance_seconds": await _cached_user_wallet_seconds(user["id"]), "preview": True}
         manifest = await _active_reader_segment_manifest(payload.content_id)
+        if manifest:
+            manifest = await _stored_reader_segment_manifest(
+                payload.content_id, manifest["segmentation_version"]
+            )
         exists = bool(
             manifest
             and await db.reader_content_segments.find_one(
@@ -9534,7 +9708,11 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
         )
         if not exists:
             raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Canonical page not found."})
-        scope = {"canonical_page_index": page_index}
+        scope = {
+            "canonical_page_index": page_index,
+            "segmentation_version": manifest["segmentation_version"],
+            "manifest_version": manifest["version"],
+        }
     elif content_type == "audio":
         position = float(payload.media_position_seconds or 0)
         if position < PUBLIC_AUDIO_PREVIEW_SECONDS:
@@ -9630,19 +9808,71 @@ async def reading_pass_get_position(content_type: str, content_id: str, user=Dep
     row = await db.reading_pass_positions.find_one(
         {"user_id": user["id"], "content_type": content_type, "content_id": content_id}, {"_id": 0}
     )
-    return row or {"content_type": content_type, "content_id": content_id, "position": {}, "version": 0}
+    result = row or {"content_type": content_type, "content_id": content_id, "position": {}, "version": 0}
+    if content_type != "text":
+        return result
+    position = result.get("position") if isinstance(result.get("position"), dict) else {}
+    segmentation_version = str(position.get("segmentation_version") or "")
+    manifest_version = str(position.get("manifest_version") or "")
+    if not segmentation_version or not manifest_version:
+        return {**result, "publication_version_compatibility": "legacy_unversioned"}
+    retained = await db.reader_segment_manifests.find_one(
+        {"book_slug": content_id, "segmentation_version": segmentation_version},
+        {"_id": 0, "version": 1, "status": 1},
+    )
+    if not retained or retained.get("version") != manifest_version:
+        return {**result, "publication_version_compatibility": "unavailable"}
+    return {
+        **result,
+        "publication_version_compatibility": "active" if retained.get("status") == "active" else "retained_nonactive",
+    }
 
 
 @api.put("/reading-pass/positions")
 async def reading_pass_save_position(payload: ReadingPassPositionIn, user=Depends(require_user)):
     _reading_pass_enabled_or_404()
     try:
+        if payload.content_type == "text" and (
+            payload.publication_segmentation_version or payload.publication_manifest_version
+        ):
+            if not payload.publication_segmentation_version or not payload.publication_manifest_version:
+                raise ReadingPassError(
+                    "PUBLICATION_VERSION_REQUIRED", 400,
+                    "Both canonical publication version fields are required together.",
+                )
+            manifest = await _stored_reader_segment_manifest(
+                payload.content_id, payload.publication_segmentation_version
+            )
+            if manifest.get("version") != payload.publication_manifest_version:
+                raise ReadingPassError(
+                    "PUBLICATION_VERSION_MISMATCH", 409,
+                    "The position does not bind to a retained canonical publication version.",
+                )
+            page_index = int(payload.position.get("canonical_page_index", 0) or 0)
+            expected_page = await db.reader_content_segments.find_one(
+                {
+                    "book_slug": payload.content_id,
+                    "segmentation_version": payload.publication_segmentation_version,
+                    "page_index": page_index,
+                },
+                {"_id": 0, "chapter_id": 1},
+            )
+            if not expected_page or (
+                payload.position.get("chapter_id")
+                and expected_page.get("chapter_id") != payload.position.get("chapter_id")
+            ):
+                raise ReadingPassError(
+                    "PUBLICATION_POSITION_MISMATCH", 409,
+                    "The position does not match the bound canonical publication page.",
+                )
         return await reading_pass_service.save_position(
             user_id=user["id"],
             content_type=payload.content_type,
             content_id=payload.content_id,
             position=payload.position,
             version=payload.version,
+            publication_segmentation_version=payload.publication_segmentation_version,
+            publication_manifest_version=payload.publication_manifest_version,
         )
     except ReadingPassError as exc:
         raise _reading_pass_http_error(exc) from exc

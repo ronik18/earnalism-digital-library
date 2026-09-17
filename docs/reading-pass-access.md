@@ -25,7 +25,7 @@ Status: **implemented behind `READING_PASS_V2_ENABLED=false`; data and preview-a
 - segmentation version;
 - the derived public-preview marker.
 
-Active segmentation is selected by `reader_segment_manifests`; the content itself lives in `reader_content_segments`. A version conflict is rejected rather than overwritten.
+Active segmentation is selected by the versioned `reader_segment_activation_state` pointer; manifests and pages remain immutable in `reader_segment_manifests` and `reader_content_segments`. A candidate is verified for contiguous ordering, page hashes, manifest identity, and chapter ordering before it can be promoted. A promotion includes the inspected active version and activation generation, so a stale request is rejected rather than overwritten. A retained archived version is the only rollback target; the retired build `activate=true` flag is rejected.
 
 Public page responses may be cached. Protected page responses contain one segment, use `Cache-Control: private, no-store`, vary on authorization and lease headers, and never include adjacent protected pages.
 
@@ -92,7 +92,7 @@ When v2 is enabled, all existing full audiobook routes require the same account/
 
 ### Position and devices
 
-`reading_pass_positions` stores one versioned text or audio position per account/content pair. Stale versions return authoritative state and cannot grant access. Positions are restored across devices, saved after navigation/playback, and preserved through exhaustion or transfer.
+`reading_pass_positions` stores one versioned text or audio position per account/content pair. New text positions bind both segmentation and manifest versions; legacy unversioned positions are explicitly labelled and are never represented as compatible with a current canonical publication. Stale versions return authoritative state and cannot grant access. Positions are restored across devices, saved after navigation/playback, and preserved through exhaustion or transfer.
 
 `reading_pass_devices` records bounded device labels and authentication-session association. The Account screen joins these records to privacy-filtered login sessions and supports revocation. Device revocation invalidates the login and expires its active lease. Controlled transfer atomically invalidates the old lease before creating the new one.
 
@@ -122,6 +122,9 @@ Authenticated:
 Admin migration:
 
 - `POST /api/admin/reading-pass/books/{slug}/segments`
+- `GET /api/admin/reading-pass/books/{slug}/segments/active`
+- `POST /api/admin/reading-pass/books/{slug}/segments/promote`
+- `POST /api/admin/reading-pass/books/{slug}/segments/bootstrap` (only for a title with no active pointer)
 - `POST /api/admin/reading-pass/audiobooks/{slug}/preview`
 - `GET /api/admin/reading-pass/health`
 
@@ -139,6 +142,7 @@ Startup index migration adds:
 - unique ledger `idempotency_key` when present;
 - immutable segment `(book_slug, page_index, segmentation_version)`;
 - segment manifest `(book_slug, segmentation_version)` and one active manifest per book;
+- one activation pointer per book and one globally unique promotion operation ID;
 - unique Reading Pass session ID;
 - one unique string `active_lock` per consuming account;
 - unique heartbeat `(session_id, idempotency_key)` and `(session_id, sequence)`;
@@ -159,13 +163,33 @@ python3 scripts/migrate_reading_pass_segments.py \
   --all
 ```
 
-After reviewing page counts and hashes:
+After reviewing the prepared candidate's full manifest and page-hash evidence,
+read the active pointer and submit a distinct operation ID to the promotion
+endpoint with its exact `segmentation_version` and `activation_generation`.
+The preparation tool does not activate a title. For a fresh local fixture with
+no active pointer, use the explicit bootstrap endpoint; it is not a rollback
+or an alias for the retired `activate=true` request.
+
+```bash
+curl --fail-with-body \
+  -H "Authorization: Bearer $EARNALISM_ADMIN_TOKEN" \
+  "$API_BASE/admin/reading-pass/books/$SLUG/segments/active"
+
+curl --fail-with-body -X POST \
+  -H "Authorization: Bearer $EARNALISM_ADMIN_TOKEN" \
+  -H 'Content-Type: application/json' \
+  "$API_BASE/admin/reading-pass/books/$SLUG/segments/promote" \
+  --data "{\"target_segmentation_version\":\"$TARGET_VERSION\",\"expected_active_segmentation_version\":\"$ACTIVE_VERSION\",\"expected_activation_generation\":$ACTIVE_GENERATION,\"operation_id\":\"$OPERATION_ID\"}"
+```
+
+If the transport outcome is uncertain, do not generate another operation ID:
+repeat the same promotion request and compare its returned durable result.
 
 ```bash
 python3 scripts/migrate_reading_pass_segments.py \
   --api-base https://staging-api.example/api \
   --admin-token "$EARNALISM_ADMIN_TOKEN" \
-  --all --apply --activate
+  --all --apply --preflight-parity
 ```
 
 Never reuse a segmentation version for different content. Change the version and perform another dry run.
@@ -211,7 +235,7 @@ Operational monitors must alert on:
    Generate a dedicated 32+ character `READING_PASS_TOKEN_SECRET`; enabling without it fails startup.
 2. Run index/startup migration and verify no uniqueness conflict.
 3. Dry-run canonical segments for every live reader title.
-4. Apply and activate segment manifests in staging.
+4. Prepare segment candidates in staging, verify their immutable record and manifest identities, then promote with the expected active version, generation, and a durable operation ID.
 5. Do not generate or register public audiobook previews; protected playback begins only after an active paid Reading Pass lease.
 6. Verify old full-file public URLs are unavailable.
 7. Run payment, lease, content, service-worker, responsive, and concurrency suites.

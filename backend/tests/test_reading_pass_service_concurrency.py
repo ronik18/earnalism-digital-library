@@ -3,6 +3,8 @@ import copy
 from datetime import datetime, timezone
 from types import SimpleNamespace
 
+import pytest
+
 from backend.domain.reading_pass import ReadingPassConfig
 from backend.reading_pass_service import ReadingPassService
 
@@ -461,7 +463,33 @@ def test_position_sync_whitelists_shape_and_rejects_invalid_values():
             position={'canonical_page_index': 4, 'chapter_id': 'chapter-2', 'access': 'forged'},
             version=0,
         )
-        assert text['position'] == {'canonical_page_index': 4, 'chapter_id': 'chapter-2'}
+        assert text['position'] == {
+            'canonical_page_index': 4,
+            'chapter_id': 'chapter-2',
+            'publication_version_state': 'legacy_unversioned',
+        }
+        bound = await service.save_position(
+            user_id='user-1', content_type='text', content_id='book-2',
+            position={'canonical_page_index': 5, 'chapter_id': 'chapter-3'},
+            publication_segmentation_version='canonical-v2',
+            publication_manifest_version='sha256-fixture-manifest',
+            version=0,
+        )
+        assert bound['position'] == {
+            'canonical_page_index': 5,
+            'chapter_id': 'chapter-3',
+            'segmentation_version': 'canonical-v2',
+            'manifest_version': 'sha256-fixture-manifest',
+            'publication_version_state': 'bound',
+        }
+        with pytest.raises(Exception) as partial:
+            await service.save_position(
+                user_id='user-1', content_type='text', content_id='book-3',
+                position={'canonical_page_index': 5},
+                publication_segmentation_version='canonical-v2',
+                version=0,
+            )
+        assert partial.value.code == 'PUBLICATION_VERSION_REQUIRED'
         audio = await service.save_position(
             user_id='user-1', content_type='audio', content_id='book-1',
             position={'media_position_seconds': 181.23456, 'lease': 'forged'},
