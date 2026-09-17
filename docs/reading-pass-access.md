@@ -27,6 +27,8 @@ Status: **implemented behind `READING_PASS_V2_ENABLED=false`; data and preview-a
 
 Active segmentation is selected by the versioned `reader_segment_activation_state` pointer; manifests and pages remain immutable in `reader_segment_manifests` and `reader_content_segments`. A candidate is verified for contiguous ordering, page hashes, manifest identity, and chapter ordering before it can be promoted. A promotion includes the inspected active version and activation generation, so a stale request is rejected rather than overwritten. A retained archived version is the only rollback target; the retired build `activate=true` flag is rejected.
 
+Promotion and bootstrap operation IDs are globally unique and are bound to a versioned durable intent: the canonical book slug, operation kind, target immutable version, and, for promotion, the expected active version and generation. Retrying the same complete intent returns its recorded result without another transition. Reusing an ID for another title, operation kind, or precondition returns an operation-intent conflict. Historical records are never rewritten; a legacy retry is accepted only when its stored title, result, and legacy digest establish the complete same-title operation identity, otherwise it fails closed.
+
 Public page responses may be cached. Protected page responses contain one segment, use `Cache-Control: private, no-store`, vary on authorization and lease headers, and never include adjacent protected pages.
 
 ### Lease and metering
@@ -142,7 +144,7 @@ Startup index migration adds:
 - unique ledger `idempotency_key` when present;
 - immutable segment `(book_slug, page_index, segmentation_version)`;
 - segment manifest `(book_slug, segmentation_version)` and one active manifest per book;
-- one activation pointer per book and one globally unique promotion operation ID;
+- one activation pointer per book and one globally unique operation ID bound to a versioned title-and-kind intent;
 - unique Reading Pass session ID;
 - one unique string `active_lock` per consuming account;
 - unique heartbeat `(session_id, idempotency_key)` and `(session_id, sequence)`;
@@ -183,7 +185,10 @@ curl --fail-with-body -X POST \
 ```
 
 If the transport outcome is uncertain, do not generate another operation ID:
-repeat the same promotion request and compare its returned durable result.
+repeat the same complete promotion request and compare its returned durable
+result. That result records a completed historical transition; read the active
+pointer separately before assuming its target remains active after a later
+promotion or rollback.
 
 ```bash
 python3 scripts/migrate_reading_pass_segments.py \
