@@ -1,0 +1,5056 @@
+{
+  "schema_version": "earnalism.controlled-package-engineering-inventory.v1",
+  "status": "ENGINEERING_BASELINE_REVIEW_PENDING",
+  "scope": "backend/data/controlled_publications/*/reader_manifest.json",
+  "purpose": "Frozen versioned manifest-membership and ordered chapter-identity regression baseline. Test expectations must not be regenerated from the candidate files under test.",
+  "legal_clearance": false,
+  "source_completeness_proven": false,
+  "publication_authorized": false,
+  "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+  "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+  "historical_manifest_count": 79,
+  "historical_chapter_count": 691,
+  "expected_manifest_count": 96,
+  "expected_chapter_count": 760,
+  "packages": [
+    {
+      "package_key": "a-ghost-story",
+      "manifest_path": "backend/data/controlled_publications/a-ghost-story/reader_manifest.json",
+      "manifest_slug": "a-ghost-story",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "d8268dbb39017d7de0f2ac84b8b5eab1efccaad9",
+        "baseline_manifest_sha256": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/a-ghost-story/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "d8268dbb39017d7de0f2ac84b8b5eab1efccaad9",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "a-jury-of-her-peers",
+      "manifest_path": "backend/data/controlled_publications/a-jury-of-her-peers/reader_manifest.json",
+      "manifest_slug": "a-jury-of-her-peers",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "e51801aa436de49df6f2b4c100e1328c93173fd9",
+        "baseline_manifest_sha256": "166fda075f9846a733e0cba75ea3184bed741bfc609d4f932044c9757b60c805",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/a-jury-of-her-peers/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "e51801aa436de49df6f2b4c100e1328c93173fd9",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "a-mystery-of-heroism",
+      "manifest_path": "backend/data/controlled_publications/a-mystery-of-heroism/reader_manifest.json",
+      "manifest_slug": "a-mystery-of-heroism",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "d55f3199c80ac39be96557af850c7f8d16ca6e33",
+        "baseline_manifest_sha256": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/a-mystery-of-heroism/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "d55f3199c80ac39be96557af850c7f8d16ca6e33",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "a-scandal-in-bohemia",
+      "manifest_path": "backend/data/controlled_publications/a-scandal-in-bohemia/reader_manifest.json",
+      "manifest_slug": "a-scandal-in-bohemia",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "18b18c44a2d3ca86d50a1e0483a68c8fe523afdb",
+        "baseline_manifest_sha256": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/a-scandal-in-bohemia/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "a-white-heron",
+      "manifest_path": "backend/data/controlled_publications/a-white-heron/reader_manifest.json",
+      "manifest_slug": "a-white-heron",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "db5da0ffecd8de4ba97da0270965e8b8950c6645",
+        "baseline_manifest_sha256": "ab7adc128301b24b0fd32a187e6a7dfe4665135abe1a1ce689bc88e872961830",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/a-white-heron/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "agentic-ai-with-python",
+      "manifest_path": "backend/data/controlled_publications/agentic-ai-with-python/reader_manifest.json",
+      "manifest_slug": "agentic-ai-with-python",
+      "chapter_count": 14,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "e90da5517879abd21b8253985270092b14ac7cb0",
+        "baseline_manifest_sha256": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/agentic-ai-with-python/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "acfd19ad919d767b531c2ec8a076800ce314fac7",
+        "historical_chapter_count": 14,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "alices-adventures-in-wonderland",
+      "manifest_path": "backend/data/controlled_publications/alices-adventures-in-wonderland/reader_manifest.json",
+      "manifest_slug": "alices-adventures-in-wonderland",
+      "chapter_count": 12,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "1a063df0d21bbea0087eb78fbb68a37ccbbe96fe",
+        "baseline_manifest_sha256": "ae5b59118890b75403bb24f4a77f9d2ca9307d6a85a1c4dd06c30234ce837796",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/alices-adventures-in-wonderland/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "1a063df0d21bbea0087eb78fbb68a37ccbbe96fe",
+        "historical_chapter_count": 12,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "an-occurrence-at-owl-creek-bridge",
+      "manifest_path": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/reader_manifest.json",
+      "manifest_slug": "an-occurrence-at-owl-creek-bridge",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "a683bff1a8f554b9652526297caea760ef4bc8be",
+        "baseline_manifest_sha256": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "bn-027",
+      "manifest_path": "backend/data/controlled_publications/bn-027/reader_manifest.json",
+      "manifest_slug": "bn-027",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "4590a784ab8b2f80b3cb375028d21c1997ef8671",
+        "baseline_manifest_sha256": "b50181f4a81fb12b7ef1b6be8d8e73dd33164fc5dfb152c9e6c0889354cb42bf",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/bn-027/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "4590a784ab8b2f80b3cb375028d21c1997ef8671",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "bn-059",
+      "manifest_path": "backend/data/controlled_publications/bn-059/reader_manifest.json",
+      "manifest_slug": "bn-059",
+      "chapter_count": 13,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "8d8a6f03d7c03f068e1a155e6d87e8f56d143460",
+        "baseline_manifest_sha256": "0e7ace536848cf505bed9a3be802022cdb8923ebf183195c11a92dd27ae84b3d",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/bn-059/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "8d8a6f03d7c03f068e1a155e6d87e8f56d143460",
+        "historical_chapter_count": 13,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "bn-066",
+      "manifest_path": "backend/data/controlled_publications/bn-066/reader_manifest.json",
+      "manifest_slug": "bn-066",
+      "chapter_count": 46,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        },
+        {
+          "id": "chapter-028",
+          "order": 28
+        },
+        {
+          "id": "chapter-029",
+          "order": 29
+        },
+        {
+          "id": "chapter-030",
+          "order": 30
+        },
+        {
+          "id": "chapter-031",
+          "order": 31
+        },
+        {
+          "id": "chapter-032",
+          "order": 32
+        },
+        {
+          "id": "chapter-033",
+          "order": 33
+        },
+        {
+          "id": "chapter-034",
+          "order": 34
+        },
+        {
+          "id": "chapter-035",
+          "order": 35
+        },
+        {
+          "id": "chapter-036",
+          "order": 36
+        },
+        {
+          "id": "chapter-037",
+          "order": 37
+        },
+        {
+          "id": "chapter-038",
+          "order": 38
+        },
+        {
+          "id": "chapter-039",
+          "order": 39
+        },
+        {
+          "id": "chapter-040",
+          "order": 40
+        },
+        {
+          "id": "chapter-041",
+          "order": 41
+        },
+        {
+          "id": "chapter-042",
+          "order": 42
+        },
+        {
+          "id": "chapter-043",
+          "order": 43
+        },
+        {
+          "id": "chapter-044",
+          "order": 44
+        },
+        {
+          "id": "chapter-045",
+          "order": 45
+        },
+        {
+          "id": "chapter-046",
+          "order": 46
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "f2e7c7c756eb2e9d0a6231169f9f1e523bdfe9b7",
+        "baseline_manifest_sha256": "454a319d76195ea986cd27acdf050226177c0a720f9f023b4e73c7029db78f80",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/bn-066/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "f2e7c7c756eb2e9d0a6231169f9f1e523bdfe9b7",
+        "historical_chapter_count": 46,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-0986aeb7e3",
+      "manifest_path": "backend/data/controlled_publications/book-0986aeb7e3/reader_manifest.json",
+      "manifest_slug": "book-0986aeb7e3",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "0d37e69d4c4719806a1a583db24d684a528a58b9",
+        "baseline_manifest_sha256": "c93cfe76dfd95816d13ade91c990f4574fabb61afd6fb1311519302395defce9",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-0986aeb7e3/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "0d37e69d4c4719806a1a583db24d684a528a58b9",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-0fbdaa730e",
+      "manifest_path": "backend/data/controlled_publications/book-0fbdaa730e/reader_manifest.json",
+      "manifest_slug": "book-0fbdaa730e",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "96492426aedcf55672259576edfc071c9a7b3274",
+        "baseline_manifest_sha256": "e01cf73cb8d925515ab87a435db8c42e963ff4a99f775495431ca97c8abaf8f2",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-0fbdaa730e/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "96492426aedcf55672259576edfc071c9a7b3274",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-1090573dff",
+      "manifest_path": "backend/data/controlled_publications/book-1090573dff/reader_manifest.json",
+      "manifest_slug": "book-1090573dff",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "3274bcfee9795ea5b93bfd2e41948c3b897542c9",
+        "baseline_manifest_sha256": "c7a737545354d3584c9796403ece2880a60cf39e810fc75dc59c058c2b0a0fb8",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-1090573dff/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "3274bcfee9795ea5b93bfd2e41948c3b897542c9",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-2b9853ec52",
+      "manifest_path": "backend/data/controlled_publications/book-2b9853ec52/reader_manifest.json",
+      "manifest_slug": "book-2b9853ec52",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "055bc14691c34691e61a875299d207e1e795d8b8",
+        "baseline_manifest_sha256": "91114b13fca4ea21f4fe7e7679e0bff8cbd043704e7ec4d1811bd277c8293ef8",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-2b9853ec52/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "055bc14691c34691e61a875299d207e1e795d8b8",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-4968248842",
+      "manifest_path": "backend/data/controlled_publications/book-4968248842/reader_manifest.json",
+      "manifest_slug": "book-4968248842",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "1d0ee45c893421c02104c54c3b93412fb918b6df",
+        "baseline_manifest_sha256": "665cdb0ca0677c4420d4a274eeccceaa28fb4c05231876a01f17647279132bbc",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-4968248842/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "1d0ee45c893421c02104c54c3b93412fb918b6df",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-4b944e64fa",
+      "manifest_path": "backend/data/controlled_publications/book-4b944e64fa/reader_manifest.json",
+      "manifest_slug": "book-4b944e64fa",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "ff2a0f72fe0924bb4181090209621ce5a533e49b",
+        "baseline_manifest_sha256": "47326e8319c87bb767737f87e507b1ff40b4ad9b446dbc90817e43664aa0a9f0",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-4b944e64fa/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "ff2a0f72fe0924bb4181090209621ce5a533e49b",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-5461971092",
+      "manifest_path": "backend/data/controlled_publications/book-5461971092/reader_manifest.json",
+      "manifest_slug": "book-5461971092",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "721a149e03d817f0134c9a758d249c2de1dcf2a8",
+        "baseline_manifest_sha256": "91760dd774f5afe1b24e29d3bee376e12d94a552b03c929ae86488acca53ffbe",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-5461971092/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "721a149e03d817f0134c9a758d249c2de1dcf2a8",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-5704b31005",
+      "manifest_path": "backend/data/controlled_publications/book-5704b31005/reader_manifest.json",
+      "manifest_slug": "book-5704b31005",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "589001df813c80cacef9ea93af2ba47d7e9ab590",
+        "baseline_manifest_sha256": "7ad37c160e418100098f68140f2bda0902af22155a10887f04395c4121081bf8",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-5704b31005/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "589001df813c80cacef9ea93af2ba47d7e9ab590",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-5aedda79fe",
+      "manifest_path": "backend/data/controlled_publications/book-5aedda79fe/reader_manifest.json",
+      "manifest_slug": "book-5aedda79fe",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "d7a0d9a1d2d6db215a2e34e69c5d84b1102c041b",
+        "baseline_manifest_sha256": "1eae4e05092cd2f7e190f85894b7792a3fc4a5e30b0f916dba187f4bd46e2c39",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-5aedda79fe/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "d7a0d9a1d2d6db215a2e34e69c5d84b1102c041b",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-63afd5e9be",
+      "manifest_path": "backend/data/controlled_publications/book-63afd5e9be/reader_manifest.json",
+      "manifest_slug": "book-63afd5e9be",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "9d512eb66fd65a4c1dded8839245272e94870306",
+        "baseline_manifest_sha256": "99a6a4d34bb36ce8212a151d62a25f5a9f7bd0c9cd7b8e56a1554143a75f2ebc",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-63afd5e9be/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "9d512eb66fd65a4c1dded8839245272e94870306",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-754da4eab8",
+      "manifest_path": "backend/data/controlled_publications/book-754da4eab8/reader_manifest.json",
+      "manifest_slug": "book-754da4eab8",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "3e9645e18259ce722f08ffadc614efac407feb24",
+        "baseline_manifest_sha256": "9ae8ae89c75d17a1548d00ec5f41a5ca3c768ecbc432003c842b6db82760c468",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-754da4eab8/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "3e9645e18259ce722f08ffadc614efac407feb24",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-827fdc7aee",
+      "manifest_path": "backend/data/controlled_publications/book-827fdc7aee/reader_manifest.json",
+      "manifest_slug": "book-827fdc7aee",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "924e38c331fe6cd1d8bbdaf5cc7a33bcb560acdf",
+        "baseline_manifest_sha256": "353089984fab0a40e3bbd757a7ca6718192646fece4aa3041f19d67e6802a6b8",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-827fdc7aee/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "924e38c331fe6cd1d8bbdaf5cc7a33bcb560acdf",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-88ded9b47c",
+      "manifest_path": "backend/data/controlled_publications/book-88ded9b47c/reader_manifest.json",
+      "manifest_slug": "book-88ded9b47c",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "e9bac8cadc8e3d0ac3be25401ff6e133e2ad0287",
+        "baseline_manifest_sha256": "2b46faebaca743856469db39c5b8741238fa689dd72ff3764609441fb4175800",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-88ded9b47c/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "e9bac8cadc8e3d0ac3be25401ff6e133e2ad0287",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-95624627d5",
+      "manifest_path": "backend/data/controlled_publications/book-95624627d5/reader_manifest.json",
+      "manifest_slug": "book-95624627d5",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "7051412d352496107f11e680bbc758e57eed5623",
+        "baseline_manifest_sha256": "8461324eab29f7b86104836bfd8e80b3db25bdd08ac8d5877a021b24a056156c",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-95624627d5/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "7051412d352496107f11e680bbc758e57eed5623",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-9a7f771921",
+      "manifest_path": "backend/data/controlled_publications/book-9a7f771921/reader_manifest.json",
+      "manifest_slug": "book-9a7f771921",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "2aa093cb2a5d2faed3a30ffdcf7ae9860d3e9139",
+        "baseline_manifest_sha256": "c845368e22db621b29e7c52b2f75b5dc2b27f5536136d83394dc60991c2cd39f",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-9a7f771921/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "2aa093cb2a5d2faed3a30ffdcf7ae9860d3e9139",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-a23625bf36",
+      "manifest_path": "backend/data/controlled_publications/book-a23625bf36/reader_manifest.json",
+      "manifest_slug": "book-a23625bf36",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "84495d0fdb41fec3a8ee3aaa469073fd763ccad7",
+        "baseline_manifest_sha256": "d0e19c364d5c01418b6e1756aca177578f0a08d4ab7b0c6afcd85be2c51e3fc5",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-a23625bf36/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "84495d0fdb41fec3a8ee3aaa469073fd763ccad7",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-a4a369483f",
+      "manifest_path": "backend/data/controlled_publications/book-a4a369483f/reader_manifest.json",
+      "manifest_slug": "book-a4a369483f",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "743b9c49ca0c9500a2aa14fd0f6259687ffcc768",
+        "baseline_manifest_sha256": "1578227a554c2bac39353e8ede0914ae2166da3060eee83c484552acc1d901f1",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-a4a369483f/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "743b9c49ca0c9500a2aa14fd0f6259687ffcc768",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-a74c1a1451",
+      "manifest_path": "backend/data/controlled_publications/book-a74c1a1451/reader_manifest.json",
+      "manifest_slug": "book-a74c1a1451",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "01f4c53767f4dbff16699f6ca8a869fe02c246a8",
+        "baseline_manifest_sha256": "7e686cbf7bddb1130bedc68b75ccc7c50cb4ad647acddd00cbc465880231c77e",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-a74c1a1451/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "01f4c53767f4dbff16699f6ca8a869fe02c246a8",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-ac5a71075e",
+      "manifest_path": "backend/data/controlled_publications/book-ac5a71075e/reader_manifest.json",
+      "manifest_slug": "book-ac5a71075e",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "379a59942a15c4082a489b934251eb534e16bf85",
+        "baseline_manifest_sha256": "faa238cf2907b0c55047743e41a35fa8a07ee236acbf0272ed62ad7637d5f331",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-ac5a71075e/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "379a59942a15c4082a489b934251eb534e16bf85",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-b9d47814a8",
+      "manifest_path": "backend/data/controlled_publications/book-b9d47814a8/reader_manifest.json",
+      "manifest_slug": "book-b9d47814a8",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "0cc38fb5e102a5b3e5fecbe7628dd5a4822c1358",
+        "baseline_manifest_sha256": "58af12bb67600b30474a5566adf9328200da93fdc4020617a166499dbd7531c7",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-b9d47814a8/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "0cc38fb5e102a5b3e5fecbe7628dd5a4822c1358",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-bfc51280b3",
+      "manifest_path": "backend/data/controlled_publications/book-bfc51280b3/reader_manifest.json",
+      "manifest_slug": "book-bfc51280b3",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "2733c29691b84b5f38865f494388fb2a6f2a6c83",
+        "baseline_manifest_sha256": "32d510eb12b30eadb37d3031524a1877ee53e8b0c78df60acbfc964383d70929",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-bfc51280b3/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "2733c29691b84b5f38865f494388fb2a6f2a6c83",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-c307a57868",
+      "manifest_path": "backend/data/controlled_publications/book-c307a57868/reader_manifest.json",
+      "manifest_slug": "book-c307a57868",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "f1080c0dff0bb1543d7c90f45cec0e39180256c2",
+        "baseline_manifest_sha256": "4d6c3478ef634b01ac439ccecc060d9b38f0e86f96db60ecc0fbfb08da442373",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-c307a57868/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "f1080c0dff0bb1543d7c90f45cec0e39180256c2",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-c7f3ce526c",
+      "manifest_path": "backend/data/controlled_publications/book-c7f3ce526c/reader_manifest.json",
+      "manifest_slug": "book-c7f3ce526c",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "6dafaab70f7c8199070e7a944994e7ffa5705eda",
+        "baseline_manifest_sha256": "2fbdcdb5704427410098f8cabc07299974b63f034119f3ae968e3f06f1365fbd",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-c7f3ce526c/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "6dafaab70f7c8199070e7a944994e7ffa5705eda",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-c85323409f",
+      "manifest_path": "backend/data/controlled_publications/book-c85323409f/reader_manifest.json",
+      "manifest_slug": "book-c85323409f",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "d2caf3492a9c1cac6e04b48a8d089ba97ff5fa73",
+        "baseline_manifest_sha256": "bb8418451cc5c4a454d937b7b64e65ddaf52009510f6bda9e4a4548c81be8975",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-c85323409f/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "d2caf3492a9c1cac6e04b48a8d089ba97ff5fa73",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-d19e96859f",
+      "manifest_path": "backend/data/controlled_publications/book-d19e96859f/reader_manifest.json",
+      "manifest_slug": "book-d19e96859f",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "f8c67977fab70306b835120c66c764750d53f487",
+        "baseline_manifest_sha256": "572b407f2559bb96af06a247f72d1333ba84531774265184e7ee62b18fa1d3fa",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-d19e96859f/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "f8c67977fab70306b835120c66c764750d53f487",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-d2fe532e1c",
+      "manifest_path": "backend/data/controlled_publications/book-d2fe532e1c/reader_manifest.json",
+      "manifest_slug": "book-d2fe532e1c",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "57ca9d440a25832389cccb1364fb6c674aba8684",
+        "baseline_manifest_sha256": "b0e501c1b91b26406653c0cf3aab9a27772218f01287e4bfa090f4dfff01a650",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-d2fe532e1c/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "57ca9d440a25832389cccb1364fb6c674aba8684",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-edfcf810c5",
+      "manifest_path": "backend/data/controlled_publications/book-edfcf810c5/reader_manifest.json",
+      "manifest_slug": "book-edfcf810c5",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "384d5d511a4e559391136c4d77e81f0284fe1f17",
+        "baseline_manifest_sha256": "6afeee33062302af8dc59005f89c619f8515a727688232e1006fa88ffe5ee663",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-edfcf810c5/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "384d5d511a4e559391136c4d77e81f0284fe1f17",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-ef193ffc52",
+      "manifest_path": "backend/data/controlled_publications/book-ef193ffc52/reader_manifest.json",
+      "manifest_slug": "book-ef193ffc52",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "5ee0a8cd6e5b48b6a7d550fcd7905a939362ffe0",
+        "baseline_manifest_sha256": "59ebf61183ec1fa6ee87f207c7dfa39ff16d5f6a57db0d38d01ca649b0f82cfb",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-ef193ffc52/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "5ee0a8cd6e5b48b6a7d550fcd7905a939362ffe0",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-f5d593e1f4",
+      "manifest_path": "backend/data/controlled_publications/book-f5d593e1f4/reader_manifest.json",
+      "manifest_slug": "book-f5d593e1f4",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "7f3644b7a5cefaa4ac7648c2394063fc9ea9bd3d",
+        "baseline_manifest_sha256": "a9a2d2809e3099fba25e12685af8f4e7995a3d1e3d1e20bb5ca993b7bbac85de",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-f5d593e1f4/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "7f3644b7a5cefaa4ac7648c2394063fc9ea9bd3d",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "book-fbdf2991ab",
+      "manifest_path": "backend/data/controlled_publications/book-fbdf2991ab/reader_manifest.json",
+      "manifest_slug": "book-fbdf2991ab",
+      "chapter_count": 3,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "f537353a6b4af38c0b38bdf452131c949d031ef8",
+        "baseline_manifest_sha256": "5d9b1d272bd272cdac662e599d049fe1813cac19ccbe04326c57b46d096e5138",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/book-fbdf2991ab/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "f537353a6b4af38c0b38bdf452131c949d031ef8",
+        "historical_chapter_count": 3,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "carmilla",
+      "manifest_path": "backend/data/controlled_publications/carmilla/reader_manifest.json",
+      "manifest_slug": "carmilla",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "e04bb518919fe41fe800c3a599249a943f53591b",
+        "baseline_manifest_sha256": "03f705e249d9d7368c38e0404019b98aae1dbfbd8776c383a51d4e76fdd69a0a",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/carmilla/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "e04bb518919fe41fe800c3a599249a943f53591b",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "devdas",
+      "manifest_path": "backend/data/controlled_publications/devdas/reader_manifest.json",
+      "manifest_slug": "devdas",
+      "chapter_count": 16,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "c649be4fa4b394692a2198bd477097b5e2b09890",
+        "baseline_manifest_sha256": "7fd589c629759806eb98321a28b95d1e1d4d33d2311d8f5dbb61fd2c79c1c2ff",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/devdas/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "c649be4fa4b394692a2198bd477097b5e2b09890",
+        "historical_chapter_count": 16,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "dracula",
+      "manifest_path": "backend/data/controlled_publications/dracula/reader_manifest.json",
+      "manifest_slug": "dracula",
+      "chapter_count": 27,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "8555609303f71274b772fcc261379edeef46c954",
+        "baseline_manifest_sha256": "558472f4cf77b844e221827eb59f2dd84847ca3dba6d5708e5b42952588ec819",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/dracula/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "3190969c758fb3a408a139b62d51793a332bc67e",
+        "historical_chapter_count": 27,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "dsires-baby",
+      "manifest_path": "backend/data/controlled_publications/dsires-baby/reader_manifest.json",
+      "manifest_slug": "dsires-baby",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "193e5a50a2e6246e97316f77fd00ab8b20ab19a5",
+        "baseline_manifest_sha256": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/dsires-baby/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "193e5a50a2e6246e97316f77fd00ab8b20ab19a5",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "eyesore-chokher-bali",
+      "manifest_path": "backend/data/controlled_publications/eyesore-chokher-bali/reader_manifest.json",
+      "manifest_slug": "eyesore-chokher-bali",
+      "chapter_count": 39,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        },
+        {
+          "id": "chapter-028",
+          "order": 28
+        },
+        {
+          "id": "chapter-029",
+          "order": 29
+        },
+        {
+          "id": "chapter-030",
+          "order": 30
+        },
+        {
+          "id": "chapter-031",
+          "order": 31
+        },
+        {
+          "id": "chapter-032",
+          "order": 32
+        },
+        {
+          "id": "chapter-033",
+          "order": 33
+        },
+        {
+          "id": "chapter-034",
+          "order": 34
+        },
+        {
+          "id": "chapter-035",
+          "order": 35
+        },
+        {
+          "id": "chapter-036",
+          "order": 36
+        },
+        {
+          "id": "chapter-037",
+          "order": 37
+        },
+        {
+          "id": "chapter-038",
+          "order": 38
+        },
+        {
+          "id": "chapter-039",
+          "order": 39
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "5a478a558910752265805fa39e2673def36a3b53",
+        "baseline_manifest_sha256": "0837ce6fac38fc0aecad7052b2be6c816b8d7c3eb8ceea010c8e3f79d688465b",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/eyesore-chokher-bali/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "5a478a558910752265805fa39e2673def36a3b53",
+        "historical_chapter_count": 39,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "frankenstein",
+      "manifest_path": "backend/data/controlled_publications/frankenstein/reader_manifest.json",
+      "manifest_slug": "frankenstein",
+      "chapter_count": 28,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        },
+        {
+          "id": "chapter-028",
+          "order": 28
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "9940b8e880db3c3572c96270880f44a6b6dcd9e7",
+        "baseline_manifest_sha256": "2bcfb02c4180c4361f242bcd2ec7f36189c4bcce07b093713daaa215168c3915",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/frankenstein/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "9940b8e880db3c3572c96270880f44a6b6dcd9e7",
+        "historical_chapter_count": 28,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "gitanjali",
+      "manifest_path": "backend/data/controlled_publications/gitanjali/reader_manifest.json",
+      "manifest_slug": "gitanjali",
+      "chapter_count": 104,
+      "chapters": [
+        {
+          "id": "introduction",
+          "order": 0
+        },
+        {
+          "id": "piece-001",
+          "order": 1
+        },
+        {
+          "id": "piece-002",
+          "order": 2
+        },
+        {
+          "id": "piece-003",
+          "order": 3
+        },
+        {
+          "id": "piece-004",
+          "order": 4
+        },
+        {
+          "id": "piece-005",
+          "order": 5
+        },
+        {
+          "id": "piece-006",
+          "order": 6
+        },
+        {
+          "id": "piece-007",
+          "order": 7
+        },
+        {
+          "id": "piece-008",
+          "order": 8
+        },
+        {
+          "id": "piece-009",
+          "order": 9
+        },
+        {
+          "id": "piece-010",
+          "order": 10
+        },
+        {
+          "id": "piece-011",
+          "order": 11
+        },
+        {
+          "id": "piece-012",
+          "order": 12
+        },
+        {
+          "id": "piece-013",
+          "order": 13
+        },
+        {
+          "id": "piece-014",
+          "order": 14
+        },
+        {
+          "id": "piece-015",
+          "order": 15
+        },
+        {
+          "id": "piece-016",
+          "order": 16
+        },
+        {
+          "id": "piece-017",
+          "order": 17
+        },
+        {
+          "id": "piece-018",
+          "order": 18
+        },
+        {
+          "id": "piece-019",
+          "order": 19
+        },
+        {
+          "id": "piece-020",
+          "order": 20
+        },
+        {
+          "id": "piece-021",
+          "order": 21
+        },
+        {
+          "id": "piece-022",
+          "order": 22
+        },
+        {
+          "id": "piece-023",
+          "order": 23
+        },
+        {
+          "id": "piece-024",
+          "order": 24
+        },
+        {
+          "id": "piece-025",
+          "order": 25
+        },
+        {
+          "id": "piece-026",
+          "order": 26
+        },
+        {
+          "id": "piece-027",
+          "order": 27
+        },
+        {
+          "id": "piece-028",
+          "order": 28
+        },
+        {
+          "id": "piece-029",
+          "order": 29
+        },
+        {
+          "id": "piece-030",
+          "order": 30
+        },
+        {
+          "id": "piece-031",
+          "order": 31
+        },
+        {
+          "id": "piece-032",
+          "order": 32
+        },
+        {
+          "id": "piece-033",
+          "order": 33
+        },
+        {
+          "id": "piece-034",
+          "order": 34
+        },
+        {
+          "id": "piece-035",
+          "order": 35
+        },
+        {
+          "id": "piece-036",
+          "order": 36
+        },
+        {
+          "id": "piece-037",
+          "order": 37
+        },
+        {
+          "id": "piece-038",
+          "order": 38
+        },
+        {
+          "id": "piece-039",
+          "order": 39
+        },
+        {
+          "id": "piece-040",
+          "order": 40
+        },
+        {
+          "id": "piece-041",
+          "order": 41
+        },
+        {
+          "id": "piece-042",
+          "order": 42
+        },
+        {
+          "id": "piece-043",
+          "order": 43
+        },
+        {
+          "id": "piece-044",
+          "order": 44
+        },
+        {
+          "id": "piece-045",
+          "order": 45
+        },
+        {
+          "id": "piece-046",
+          "order": 46
+        },
+        {
+          "id": "piece-047",
+          "order": 47
+        },
+        {
+          "id": "piece-048",
+          "order": 48
+        },
+        {
+          "id": "piece-049",
+          "order": 49
+        },
+        {
+          "id": "piece-050",
+          "order": 50
+        },
+        {
+          "id": "piece-051",
+          "order": 51
+        },
+        {
+          "id": "piece-052",
+          "order": 52
+        },
+        {
+          "id": "piece-053",
+          "order": 53
+        },
+        {
+          "id": "piece-054",
+          "order": 54
+        },
+        {
+          "id": "piece-055",
+          "order": 55
+        },
+        {
+          "id": "piece-056",
+          "order": 56
+        },
+        {
+          "id": "piece-057",
+          "order": 57
+        },
+        {
+          "id": "piece-058",
+          "order": 58
+        },
+        {
+          "id": "piece-059",
+          "order": 59
+        },
+        {
+          "id": "piece-060",
+          "order": 60
+        },
+        {
+          "id": "piece-061",
+          "order": 61
+        },
+        {
+          "id": "piece-062",
+          "order": 62
+        },
+        {
+          "id": "piece-063",
+          "order": 63
+        },
+        {
+          "id": "piece-064",
+          "order": 64
+        },
+        {
+          "id": "piece-065",
+          "order": 65
+        },
+        {
+          "id": "piece-066",
+          "order": 66
+        },
+        {
+          "id": "piece-067",
+          "order": 67
+        },
+        {
+          "id": "piece-068",
+          "order": 68
+        },
+        {
+          "id": "piece-069",
+          "order": 69
+        },
+        {
+          "id": "piece-070",
+          "order": 70
+        },
+        {
+          "id": "piece-071",
+          "order": 71
+        },
+        {
+          "id": "piece-072",
+          "order": 72
+        },
+        {
+          "id": "piece-073",
+          "order": 73
+        },
+        {
+          "id": "piece-074",
+          "order": 74
+        },
+        {
+          "id": "piece-075",
+          "order": 75
+        },
+        {
+          "id": "piece-076",
+          "order": 76
+        },
+        {
+          "id": "piece-077",
+          "order": 77
+        },
+        {
+          "id": "piece-078",
+          "order": 78
+        },
+        {
+          "id": "piece-079",
+          "order": 79
+        },
+        {
+          "id": "piece-080",
+          "order": 80
+        },
+        {
+          "id": "piece-081",
+          "order": 81
+        },
+        {
+          "id": "piece-082",
+          "order": 82
+        },
+        {
+          "id": "piece-083",
+          "order": 83
+        },
+        {
+          "id": "piece-084",
+          "order": 84
+        },
+        {
+          "id": "piece-085",
+          "order": 85
+        },
+        {
+          "id": "piece-086",
+          "order": 86
+        },
+        {
+          "id": "piece-087",
+          "order": 87
+        },
+        {
+          "id": "piece-088",
+          "order": 88
+        },
+        {
+          "id": "piece-089",
+          "order": 89
+        },
+        {
+          "id": "piece-090",
+          "order": 90
+        },
+        {
+          "id": "piece-091",
+          "order": 91
+        },
+        {
+          "id": "piece-092",
+          "order": 92
+        },
+        {
+          "id": "piece-093",
+          "order": 93
+        },
+        {
+          "id": "piece-094",
+          "order": 94
+        },
+        {
+          "id": "piece-095",
+          "order": 95
+        },
+        {
+          "id": "piece-096",
+          "order": 96
+        },
+        {
+          "id": "piece-097",
+          "order": 97
+        },
+        {
+          "id": "piece-098",
+          "order": 98
+        },
+        {
+          "id": "piece-099",
+          "order": 99
+        },
+        {
+          "id": "piece-100",
+          "order": 100
+        },
+        {
+          "id": "piece-101",
+          "order": 101
+        },
+        {
+          "id": "piece-102",
+          "order": 102
+        },
+        {
+          "id": "piece-103",
+          "order": 103
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "415fa527cec36cfcbdc21e4cedc6e697ee6c5eef",
+        "baseline_manifest_sha256": "ca6d3e68d25681ef81ff9126b42d44bcb2ac63f722a451e8b9bac8084b43fe8c",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/gitanjali/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "fe3660b113fe24b7dc4f1803cfc59cdab0d21cbb",
+        "historical_chapter_count": 104,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "hound-of-the-baskervilles",
+      "manifest_path": "backend/data/controlled_publications/hound-of-the-baskervilles/reader_manifest.json",
+      "manifest_slug": "hound-of-the-baskervilles",
+      "chapter_count": 15,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "1583292db92adf72760fec04a0a5149f0aaaedff",
+        "baseline_manifest_sha256": "a225b3dbe3b02e3d1ff2f95047740d19da0ce4b1cd93370ccdc9281bb93972ba",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/hound-of-the-baskervilles/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "1583292db92adf72760fec04a0a5149f0aaaedff",
+        "historical_chapter_count": 15,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "hungry-stones",
+      "manifest_path": "backend/data/controlled_publications/hungry-stones/reader_manifest.json",
+      "manifest_slug": "hungry-stones",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "419d33d2d2437e668beebc5ea717c9773ce11326",
+        "baseline_manifest_sha256": "3429caf619cc3b3e68d6d907a9c8b0a5cdebd31bcf1a92e457dc1b69e09a6b12",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/hungry-stones/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "419d33d2d2437e668beebc5ea717c9773ce11326",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "jekyll-and-hyde",
+      "manifest_path": "backend/data/controlled_publications/jekyll-and-hyde/reader_manifest.json",
+      "manifest_slug": "jekyll-and-hyde",
+      "chapter_count": 10,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "49990982e40ff08ff7adbed89f5a72b0e6bad8c4",
+        "baseline_manifest_sha256": "c3fff66ff02d37c3fa727c1c2f17a36ace48c1f1368ff3cb5ee69eebcec2a032",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/jekyll-and-hyde/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "cc32110c2e55c34414258dde7b7f0be0644d6d35",
+        "historical_chapter_count": 11,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": false
+      }
+    },
+    {
+      "package_key": "lokrahasya",
+      "manifest_path": "backend/data/controlled_publications/lokrahasya/reader_manifest.json",
+      "manifest_slug": "lokrahasya",
+      "chapter_count": 16,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "3699a9cf4d58c7fb916ee29cf8f624f3c7c0f74d",
+        "baseline_manifest_sha256": "c8ca2b46eb7ccd2687a56c84cbfa1a3c2b96737d03f42112359e6b6c6e9b2456",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/lokrahasya/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "3699a9cf4d58c7fb916ee29cf8f624f3c7c0f74d",
+        "historical_chapter_count": 16,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "love-of-life",
+      "manifest_path": "backend/data/controlled_publications/love-of-life/reader_manifest.json",
+      "manifest_slug": "love-of-life",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "f41b5506882dd6735a649025d2c0bc3f0cde0d47",
+        "baseline_manifest_sha256": "8c455a99667a07a8402d409efc76ea9f7a2fcf603bba6f6409dd749b699b1c57",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/love-of-life/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "mrinalini",
+      "manifest_path": "backend/data/controlled_publications/mrinalini/reader_manifest.json",
+      "manifest_slug": "mrinalini",
+      "chapter_count": 46,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        },
+        {
+          "id": "chapter-028",
+          "order": 28
+        },
+        {
+          "id": "chapter-029",
+          "order": 29
+        },
+        {
+          "id": "chapter-030",
+          "order": 30
+        },
+        {
+          "id": "chapter-031",
+          "order": 31
+        },
+        {
+          "id": "chapter-032",
+          "order": 32
+        },
+        {
+          "id": "chapter-033",
+          "order": 33
+        },
+        {
+          "id": "chapter-034",
+          "order": 34
+        },
+        {
+          "id": "chapter-035",
+          "order": 35
+        },
+        {
+          "id": "chapter-036",
+          "order": 36
+        },
+        {
+          "id": "chapter-037",
+          "order": 37
+        },
+        {
+          "id": "chapter-038",
+          "order": 38
+        },
+        {
+          "id": "chapter-039",
+          "order": 39
+        },
+        {
+          "id": "chapter-040",
+          "order": 40
+        },
+        {
+          "id": "chapter-041",
+          "order": 41
+        },
+        {
+          "id": "chapter-042",
+          "order": 42
+        },
+        {
+          "id": "chapter-043",
+          "order": 43
+        },
+        {
+          "id": "chapter-044",
+          "order": 44
+        },
+        {
+          "id": "chapter-045",
+          "order": 45
+        },
+        {
+          "id": "chapter-046",
+          "order": 46
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "92212ff265e51c61a8d1ac9a9200bc68006e83af",
+        "baseline_manifest_sha256": "50722bf97d92275d1a4b2673c0ca87b6ca0be7685848798a1fdc4cd358504bdf",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/mrinalini/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "92212ff265e51c61a8d1ac9a9200bc68006e83af",
+        "historical_chapter_count": 46,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "muchiram-gurer-jibanchorit",
+      "manifest_path": "backend/data/controlled_publications/muchiram-gurer-jibanchorit/reader_manifest.json",
+      "manifest_slug": "muchiram-gurer-jibanchorit",
+      "chapter_count": 2,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "8f047bf818fd14cb51191942d77990817c4e8520",
+        "baseline_manifest_sha256": "304fd60e3952495cfd1f9e4fd1c31994880ccd8144d8df05d5ec96a8d8eb3d53",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/muchiram-gurer-jibanchorit/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "8f047bf818fd14cb51191942d77990817c4e8520",
+        "historical_chapter_count": 2,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "nishkriti",
+      "manifest_path": "backend/data/controlled_publications/nishkriti/reader_manifest.json",
+      "manifest_slug": "nishkriti",
+      "chapter_count": 9,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "9e84655a638c017ece1d8022c45c8baf7f9abfb1",
+        "baseline_manifest_sha256": "2e72d654f4495c02b78f3fa40ca9bfb51c9c17e1ea403e086efcc94ec6022dbe",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/nishkriti/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "9e84655a638c017ece1d8022c45c8baf7f9abfb1",
+        "historical_chapter_count": 9,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "pather-panchali",
+      "manifest_path": "backend/data/controlled_publications/pather-panchali/reader_manifest.json",
+      "manifest_slug": "pather-panchali",
+      "chapter_count": 12,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "620af0762d717112ab9100451f673d590bcbbdb0",
+        "baseline_manifest_sha256": "ce1bd80e41d650d7efc95130e528e13275c59196da0581f58361b07f012c6054",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/pather-panchali/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "620af0762d717112ab9100451f673d590bcbbdb0",
+        "historical_chapter_count": 12,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "picture-of-dorian-gray",
+      "manifest_path": "backend/data/controlled_publications/picture-of-dorian-gray/reader_manifest.json",
+      "manifest_slug": "picture-of-dorian-gray",
+      "chapter_count": 21,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "270182ce7e2d08aeb7134ea19b193a634a83a735",
+        "baseline_manifest_sha256": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/picture-of-dorian-gray/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "c64955eff0991358b0e4e321fc2630d9da7836e8",
+        "historical_chapter_count": 21,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "pride-and-prejudice",
+      "manifest_path": "backend/data/controlled_publications/pride-and-prejudice/reader_manifest.json",
+      "manifest_slug": "pride-and-prejudice",
+      "chapter_count": 61,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        },
+        {
+          "id": "chapter-028",
+          "order": 28
+        },
+        {
+          "id": "chapter-029",
+          "order": 29
+        },
+        {
+          "id": "chapter-030",
+          "order": 30
+        },
+        {
+          "id": "chapter-031",
+          "order": 31
+        },
+        {
+          "id": "chapter-032",
+          "order": 32
+        },
+        {
+          "id": "chapter-033",
+          "order": 33
+        },
+        {
+          "id": "chapter-034",
+          "order": 34
+        },
+        {
+          "id": "chapter-035",
+          "order": 35
+        },
+        {
+          "id": "chapter-036",
+          "order": 36
+        },
+        {
+          "id": "chapter-037",
+          "order": 37
+        },
+        {
+          "id": "chapter-038",
+          "order": 38
+        },
+        {
+          "id": "chapter-039",
+          "order": 39
+        },
+        {
+          "id": "chapter-040",
+          "order": 40
+        },
+        {
+          "id": "chapter-041",
+          "order": 41
+        },
+        {
+          "id": "chapter-042",
+          "order": 42
+        },
+        {
+          "id": "chapter-043",
+          "order": 43
+        },
+        {
+          "id": "chapter-044",
+          "order": 44
+        },
+        {
+          "id": "chapter-045",
+          "order": 45
+        },
+        {
+          "id": "chapter-046",
+          "order": 46
+        },
+        {
+          "id": "chapter-047",
+          "order": 47
+        },
+        {
+          "id": "chapter-048",
+          "order": 48
+        },
+        {
+          "id": "chapter-049",
+          "order": 49
+        },
+        {
+          "id": "chapter-050",
+          "order": 50
+        },
+        {
+          "id": "chapter-051",
+          "order": 51
+        },
+        {
+          "id": "chapter-052",
+          "order": 52
+        },
+        {
+          "id": "chapter-053",
+          "order": 53
+        },
+        {
+          "id": "chapter-054",
+          "order": 54
+        },
+        {
+          "id": "chapter-055",
+          "order": 55
+        },
+        {
+          "id": "chapter-056",
+          "order": 56
+        },
+        {
+          "id": "chapter-057",
+          "order": 57
+        },
+        {
+          "id": "chapter-058",
+          "order": 58
+        },
+        {
+          "id": "chapter-059",
+          "order": 59
+        },
+        {
+          "id": "chapter-060",
+          "order": 60
+        },
+        {
+          "id": "chapter-061",
+          "order": 61
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "32ba2ae4a6b6c7c4ad82d09cd2bd66044574e542",
+        "baseline_manifest_sha256": "3143d06f52799d583d8bc241ebf200295e9f9428aae8d09285cb7a7494b95dac",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/pride-and-prejudice/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "32ba2ae4a6b6c7c4ad82d09cd2bd66044574e542",
+        "historical_chapter_count": 61,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "radharani",
+      "manifest_path": "backend/data/controlled_publications/radharani/reader_manifest.json",
+      "manifest_slug": "radharani",
+      "chapter_count": 8,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "82278e5884061b22f7c347a03e7bf188caf4e791",
+        "baseline_manifest_sha256": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/radharani/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "82278e5884061b22f7c347a03e7bf188caf4e791",
+        "historical_chapter_count": 8,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "sredni-vashtar",
+      "manifest_path": "backend/data/controlled_publications/sredni-vashtar/reader_manifest.json",
+      "manifest_slug": "sredni-vashtar",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "5e5d77d76758e79000bccabb17e0ec5815645295",
+        "baseline_manifest_sha256": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/sredni-vashtar/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "5e5d77d76758e79000bccabb17e0ec5815645295",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-art-of-money-getting",
+      "manifest_path": "backend/data/controlled_publications/the-art-of-money-getting/reader_manifest.json",
+      "manifest_slug": "the-art-of-money-getting",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "8ab3ea0066dc04b06bcbf57a6c4697d6eb2e82d3",
+        "baseline_manifest_sha256": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-art-of-money-getting/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "8ab3ea0066dc04b06bcbf57a6c4697d6eb2e82d3",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-bishop",
+      "manifest_path": "backend/data/controlled_publications/the-bishop/reader_manifest.json",
+      "manifest_slug": "the-bishop",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "872d46949f674699032a6e65823f04ec4d9ca9db",
+        "baseline_manifest_sha256": "42a7984591f6da7aec6d9fbb56fdd62ff813c1d38277a08a4594592da0efea4c",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-bishop/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "d25049493d953cd9b2653642a6237e9c651cec8e",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-call-of-the-wild",
+      "manifest_path": "backend/data/controlled_publications/the-call-of-the-wild/reader_manifest.json",
+      "manifest_slug": "the-call-of-the-wild",
+      "chapter_count": 7,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "f0abbb1c479c4f50a818a09651cc27bdb1267135",
+        "baseline_manifest_sha256": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-call-of-the-wild/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "f0abbb1c479c4f50a818a09651cc27bdb1267135",
+        "historical_chapter_count": 7,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-canterville-ghost",
+      "manifest_path": "backend/data/controlled_publications/the-canterville-ghost/reader_manifest.json",
+      "manifest_slug": "the-canterville-ghost",
+      "chapter_count": 7,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "0828117a82d56942195eb4e07f7bf0f5c8003f2f",
+        "baseline_manifest_sha256": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-canterville-ghost/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-cop-and-the-anthem",
+      "manifest_path": "backend/data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json",
+      "manifest_slug": "the-cop-and-the-anthem",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "6c8f1e2a7b86d1a13063749d1bf62e5ab9a504f6",
+        "baseline_manifest_sha256": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "6c8f1e2a7b86d1a13063749d1bf62e5ab9a504f6",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-country-of-the-blind",
+      "manifest_path": "backend/data/controlled_publications/the-country-of-the-blind/reader_manifest.json",
+      "manifest_slug": "the-country-of-the-blind",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "360841f038ece668cd2591e58a8e7865d26509e3",
+        "baseline_manifest_sha256": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-country-of-the-blind/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "360841f038ece668cd2591e58a8e7865d26509e3",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-enchanted-april",
+      "manifest_path": "backend/data/controlled_publications/the-enchanted-april/reader_manifest.json",
+      "manifest_slug": "the-enchanted-april",
+      "chapter_count": 22,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "d4dfa8bf9da352c79d92db7d26ce1a5fef8e0a43",
+        "baseline_manifest_sha256": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-enchanted-april/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-fall-of-the-house-of-usher",
+      "manifest_path": "backend/data/controlled_publications/the-fall-of-the-house-of-usher/reader_manifest.json",
+      "manifest_slug": "the-fall-of-the-house-of-usher",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "18fe7026f11ea6159ddd049b1c1ad9cac19fe4d6",
+        "baseline_manifest_sha256": "0edb0521b5d203b0a6efb53d98d6e9425a4d21e617d8f67e5ec591a7d6a52d1e",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-fall-of-the-house-of-usher/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-gift-of-the-magi",
+      "manifest_path": "backend/data/controlled_publications/the-gift-of-the-magi/reader_manifest.json",
+      "manifest_slug": "the-gift-of-the-magi",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "2b28560552dc3ccdd831c1b94f2b85e065bc17db",
+        "baseline_manifest_sha256": "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-gift-of-the-magi/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "2b28560552dc3ccdd831c1b94f2b85e065bc17db",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-great-gatsby",
+      "manifest_path": "backend/data/controlled_publications/the-great-gatsby/reader_manifest.json",
+      "manifest_slug": "the-great-gatsby",
+      "chapter_count": 9,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "77f084cdcb596e25261e75818eb8d8f6d8af9d3e",
+        "baseline_manifest_sha256": "66ace521d8850547175804562bfddf4f097aefe310ef2f0c50aed16bf50d69b6",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-great-gatsby/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-happy-prince",
+      "manifest_path": "backend/data/controlled_publications/the-happy-prince/reader_manifest.json",
+      "manifest_slug": "the-happy-prince",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "ca0b8a5ca0c1866d7081f183307b583884643961",
+        "baseline_manifest_sha256": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-happy-prince/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-lady-with-the-dog",
+      "manifest_path": "backend/data/controlled_publications/the-lady-with-the-dog/reader_manifest.json",
+      "manifest_slug": "the-lady-with-the-dog",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "30f24d876eb41f6a8bf16a429e95d8338241b17a",
+        "baseline_manifest_sha256": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-lady-with-the-dog/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "a2b0328b62c80d71b0389943baf23399e23393c2",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-last-leaf",
+      "manifest_path": "backend/data/controlled_publications/the-last-leaf/reader_manifest.json",
+      "manifest_slug": "the-last-leaf",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "0aa8193e6effd7bae6947edb2fa1e90e76000275",
+        "baseline_manifest_sha256": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-last-leaf/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "0aa8193e6effd7bae6947edb2fa1e90e76000275",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-man-who-would-be-king",
+      "manifest_path": "backend/data/controlled_publications/the-man-who-would-be-king/reader_manifest.json",
+      "manifest_slug": "the-man-who-would-be-king",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "5801b48b692bfcb36263c5ef71d9df886d8ebf15",
+        "baseline_manifest_sha256": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-man-who-would-be-king/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-masque-of-the-red-death",
+      "manifest_path": "backend/data/controlled_publications/the-masque-of-the-red-death/reader_manifest.json",
+      "manifest_slug": "the-masque-of-the-red-death",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "61c193dd0208886505be8672d0b06899c9b855b6",
+        "baseline_manifest_sha256": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-masque-of-the-red-death/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "61c193dd0208886505be8672d0b06899c9b855b6",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-metamorphosis",
+      "manifest_path": "backend/data/controlled_publications/the-metamorphosis/reader_manifest.json",
+      "manifest_slug": "the-metamorphosis",
+      "chapter_count": 3,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "c0c6b90a079a6abc840b5c0ebd112611b4b3426f",
+        "baseline_manifest_sha256": "9fa204723dbec66cf06547b52aacd54a2208c1fa037b2638a51314f942c1990f",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-metamorphosis/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-monkeys-paw",
+      "manifest_path": "backend/data/controlled_publications/the-monkeys-paw/reader_manifest.json",
+      "manifest_slug": "the-monkeys-paw",
+      "chapter_count": 3,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "d22a88387ade2d7860a745fe44b46430b2f5dedf",
+        "baseline_manifest_sha256": "d37238e5dc93123ed7c85c3886968cc4ee939087fe434d1e4ab833af6bb87f36",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-monkeys-paw/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "d22a88387ade2d7860a745fe44b46430b2f5dedf",
+        "historical_chapter_count": 3,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-most-dangerous-game",
+      "manifest_path": "backend/data/controlled_publications/the-most-dangerous-game/reader_manifest.json",
+      "manifest_slug": "the-most-dangerous-game",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "d3ca6678f63085af123a78fd6969fa51e1cdf185",
+        "baseline_manifest_sha256": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-most-dangerous-game/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-necklace",
+      "manifest_path": "backend/data/controlled_publications/the-necklace/reader_manifest.json",
+      "manifest_slug": "the-necklace",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "78587f50cdacede2d55cee1fdb673b3323a2498e",
+        "baseline_manifest_sha256": "970649ffc577d7b802bc31981bf7215c06e3bc57dbf4d24e7075774233ca0cdb",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-necklace/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "78587f50cdacede2d55cee1fdb673b3323a2498e",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-open-boat",
+      "manifest_path": "backend/data/controlled_publications/the-open-boat/reader_manifest.json",
+      "manifest_slug": "the-open-boat",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "00c53b17378ba56d0f2d155f10583e7ef214feb1",
+        "baseline_manifest_sha256": "5eca0e75ee9c7ded8776eccc22c45e9ff2480efa8de3c9123bfaaed0f61ec36a",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-open-boat/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "5ef37823fdf99769699f2ae00f3e4b7ec2185624",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-open-window",
+      "manifest_path": "backend/data/controlled_publications/the-open-window/reader_manifest.json",
+      "manifest_slug": "the-open-window",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "cac28ad540c014fa7a09a4452b257b5dad91f0f7",
+        "baseline_manifest_sha256": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-open-window/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "cac28ad540c014fa7a09a4452b257b5dad91f0f7",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-pit-and-the-pendulum",
+      "manifest_path": "backend/data/controlled_publications/the-pit-and-the-pendulum/reader_manifest.json",
+      "manifest_slug": "the-pit-and-the-pendulum",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "f9343f0440e45de4c16b05b922f96f850d968fc3",
+        "baseline_manifest_sha256": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-pit-and-the-pendulum/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-science-of-getting-rich",
+      "manifest_path": "backend/data/controlled_publications/the-science-of-getting-rich/reader_manifest.json",
+      "manifest_slug": "the-science-of-getting-rich",
+      "chapter_count": 18,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "2409c48900feb6ee24d5ad5572a2685e9252b31a",
+        "baseline_manifest_sha256": "6c6c0d47217642a5f67dff1fc23afcac146468d1017d48f59a2bef2bf90cbdce",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-science-of-getting-rich/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-secret-garden",
+      "manifest_path": "backend/data/controlled_publications/the-secret-garden/reader_manifest.json",
+      "manifest_slug": "the-secret-garden",
+      "chapter_count": 27,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "b82fc1dafde8cc5293836af991793a64483d54c7",
+        "baseline_manifest_sha256": "75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-secret-garden/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "b82fc1dafde8cc5293836af991793a64483d54c7",
+        "historical_chapter_count": 27,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-selfish-giant",
+      "manifest_path": "backend/data/controlled_publications/the-selfish-giant/reader_manifest.json",
+      "manifest_slug": "the-selfish-giant",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "813850500c7160b233488ca93f0d36a14cdde6fb",
+        "baseline_manifest_sha256": "aedb9cb50bf14839e2bf32a3c6d267ea24b0ff220fe8334069298f4a96bf6eae",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-selfish-giant/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-stolen-white-elephant",
+      "manifest_path": "backend/data/controlled_publications/the-stolen-white-elephant/reader_manifest.json",
+      "manifest_slug": "the-stolen-white-elephant",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "4175a4bf739b76a83e66fb44a7060c3f2f3cde1b",
+        "baseline_manifest_sha256": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-stolen-white-elephant/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      }
+    },
+    {
+      "package_key": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "manifest_path": "backend/data/controlled_publications/the-strange-case-of-dr-jekyll-and-mr-hyde/reader_manifest.json",
+      "manifest_slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "chapter_count": 0,
+      "chapters": [],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "30bed5cfce2520560e073099fab93974ee00d65e",
+        "baseline_manifest_sha256": "a517f5048fa3e9fb64ca93469f2667492df035b80302987c4c1bc20e435b7155",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-strange-case-of-dr-jekyll-and-mr-hyde/reader_manifest.json",
+        "historical_membership": "ADDED_SINCE_HISTORICAL_BASELINE",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": null,
+        "historical_chapter_count": null,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY"
+      },
+      "note": "Zero-chapter package is preserved as engineering inventory. Presence does not imply readable content or release eligibility."
+    },
+    {
+      "package_key": "the-tell-tale-heart",
+      "manifest_path": "backend/data/controlled_publications/the-tell-tale-heart/reader_manifest.json",
+      "manifest_slug": "the-tell-tale-heart",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "af60399d814266186975d3c9bbedec4d4ff92116",
+        "baseline_manifest_sha256": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-tell-tale-heart/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "af60399d814266186975d3c9bbedec4d4ff92116",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-time-machine",
+      "manifest_path": "backend/data/controlled_publications/the-time-machine/reader_manifest.json",
+      "manifest_slug": "the-time-machine",
+      "chapter_count": 16,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "aa4d606924bf3a4d9e257f1b60d0d51f6eb433d6",
+        "baseline_manifest_sha256": "6060790337140fea316ae120bbeedf6c736324ba1e4dcda8ba0f78baeca0338d",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-time-machine/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "aa4d606924bf3a4d9e257f1b60d0d51f6eb433d6",
+        "historical_chapter_count": 16,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-wonderful-wizard-of-oz",
+      "manifest_path": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/reader_manifest.json",
+      "manifest_slug": "the-wonderful-wizard-of-oz",
+      "chapter_count": 24,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "540af3eccc048ad9a41a5daf2826fe5a7731521f",
+        "baseline_manifest_sha256": "6e2af8711b1ca09c95333e54d08cf400b3c223046d007bdcd10260a937858296",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-wonderful-wizard-of-oz/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "540af3eccc048ad9a41a5daf2826fe5a7731521f",
+        "historical_chapter_count": 24,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-yellow-wallpaper",
+      "manifest_path": "backend/data/controlled_publications/the-yellow-wallpaper/reader_manifest.json",
+      "manifest_slug": "the-yellow-wallpaper",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "6e076a61ac366c06b5ed14f89f45af0444c2f85f",
+        "baseline_manifest_sha256": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/the-yellow-wallpaper/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "6e076a61ac366c06b5ed14f89f45af0444c2f85f",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "tobermory",
+      "manifest_path": "backend/data/controlled_publications/tobermory/reader_manifest.json",
+      "manifest_slug": "tobermory",
+      "chapter_count": 1,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "a950eea63f6a6d9b8035e433e0b745e7fec59b76",
+        "baseline_manifest_sha256": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/tobermory/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "a950eea63f6a6d9b8035e433e0b745e7fec59b76",
+        "historical_chapter_count": 1,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "white-fang",
+      "manifest_path": "backend/data/controlled_publications/white-fang/reader_manifest.json",
+      "manifest_slug": "white-fang",
+      "chapter_count": 25,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "ce1c811a72b26e7516d7cdbc0c888f5a6e2ed3a5",
+        "baseline_manifest_sha256": "5c72b37b75265f449c1f1afaebad02360465e159deab5436dd8d3cbb1d1dd977",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/white-fang/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "ce1c811a72b26e7516d7cdbc0c888f5a6e2ed3a5",
+        "historical_chapter_count": 25,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "woman-in-white",
+      "manifest_path": "backend/data/controlled_publications/woman-in-white/reader_manifest.json",
+      "manifest_slug": "woman-in-white",
+      "chapter_count": 25,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "2e78c60c60fdb35c269181a47007949f117d4f9b",
+        "baseline_manifest_sha256": "9730b296abbe379d51ffe8661eccf348e27a71bcb63e080018bae64f1b673a91",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/woman-in-white/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "2e78c60c60fdb35c269181a47007949f117d4f9b",
+        "historical_chapter_count": 25,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "yugalanguriya",
+      "manifest_path": "backend/data/controlled_publications/yugalanguriya/reader_manifest.json",
+      "manifest_slug": "yugalanguriya",
+      "chapter_count": 10,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
+        "baseline_manifest_blob_sha1": "1249ef2337d0883a31ebe79c633cedd4be58da49",
+        "baseline_manifest_sha256": "223bc26bd96e342e2f4c94777482af07167d17c8d2253c5b30cc0eed573320b4",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/c788502c27211bf7d52a517bb5d802c5b8096034/backend/data/controlled_publications/yugalanguriya/reader_manifest.json",
+        "historical_membership": "PRESENT",
+        "historical_commit": "e75c2d5ec0d834c586028daacb1b4932ed67b478",
+        "historical_manifest_blob_sha1": "1249ef2337d0883a31ebe79c633cedd4be58da49",
+        "historical_chapter_count": 10,
+        "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
+        "historical_ordered_ids_unchanged": true
+      }
+    }
+  ]
+}
