@@ -1,0 +1,13 @@
+{
+  "schema_version": "earnalism.rights-decision-registry.v1",
+  "registry_id": "four-title-pilot-20260917",
+  "accepted_records": {},
+  "revoked_decision_ids": [],
+  "pilot_dispositions": {
+    "controlled-a-ghost-story": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]},
+    "controlled-the-tell-tale-heart": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]},
+    "controlled-radharani": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]},
+    "controlled-yugalanguriya": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]}
+  },
+  "non_activation_note": "HOLD dispositions are evidence-work states. This file grants no production permission and contains no accepted record."
+}
