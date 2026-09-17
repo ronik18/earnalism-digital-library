@@ -173,7 +173,14 @@ function ReaderSession({ slug, user, syncBalance }) {
         positionVersionRef.current = positionVersion(saved?.version);
       }
       if (!aliveRef.current) return;
-      const saved = await saveReadingPassPosition({ bookSlug: slug, pageIndex: value.page_index, chapterId: value.chapter_id, version: positionVersionRef.current });
+      const saved = await saveReadingPassPosition({
+        bookSlug: slug,
+        pageIndex: value.page_index,
+        chapterId: value.chapter_id,
+        segmentationVersion: value.segmentation_version,
+        manifestVersion: value.manifest_version,
+        version: positionVersionRef.current,
+      });
       positionVersionRef.current = positionVersion(saved?.version);
       return saved;
     });

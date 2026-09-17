@@ -2227,3 +2227,10 @@ A public edition manifest is not an authenticated wallet authority. Use strict i
 ## 2026-09-16 — Preserve repeated headers in release evidence
 
 PR #401 is merged and its Railway deployment is provider-confirmed, but the initial cache canary passed only 11/13 checks. Both manifest probes were 200/private/no-store/no-ETag. Converting HTTP headers to a dict and selecting the first case-insensitive match can erase required Vary tokens. Preserve repeated raw fields and combine case-insensitive values before evaluating the unchanged gate. Origin/edge Vary loss remains unproven until the corrected canary runs; parser repair does not itself prove deployed cache compliance. See `internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/READER_CACHE_CANARY_FOLLOWUP_20260916_review.md`.
+
+## 2026-09-17 — Immutable canonical Reader publication safeguard
+
+- Candidate construction, active-version promotion, and rollback must remain separate operations. A count or stored checksum label is insufficient: verify every retained page's ordered identity, content hash, and the manifest derived from those pages before a pointer can change.
+- Bind promotion to both the active version and its generation, persist an operation result in the same transaction, and recover an uncertain commit only by retrying the identical operation ID. A new operation must never guess whether the old commit applied.
+- Reader leases and saved text positions must identify the retained publication version they use. Legacy unversioned sessions fail closed for protected pages; old bound sessions can read their retained version after a newer version becomes active.
+- This source validation did not prepare, promote, or roll back Agentic AI With Python or any production title. Reader-only and no-TTS truth remain unchanged; exact-head review, deployment, and title-scoped Stage 3 checks are still required.

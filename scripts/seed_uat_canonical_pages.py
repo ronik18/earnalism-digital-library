@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Activate deterministic local canonical pages for the UAT fixture edition."""
+"""Prepare then version-promote deterministic local canonical UAT pages."""
 
 from __future__ import annotations
 
 import json
 import os
 import sys
+import uuid
 from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
@@ -22,11 +23,11 @@ ADMIN_EMAIL = os.environ["ADMIN_EMAIL"]
 ADMIN_PASSWORD = os.environ["ADMIN_PASSWORD"]
 
 
-def request(path: str, payload: dict, token: str = "") -> dict:
+def request(path: str, payload: dict | None = None, token: str = "") -> dict:
     headers = {"Content-Type": "application/json"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
-    body = json.dumps(payload).encode("utf-8")
+    body = None if payload is None else json.dumps(payload).encode("utf-8")
     try:
         with urlopen(Request(f"{API}{path}", data=body, headers=headers), timeout=30) as response:
             return json.loads(response.read().decode("utf-8"))
@@ -61,13 +62,41 @@ def main() -> None:
             {
                 "segmentation_version": row["selected_segmentation_version"],
                 "target_characters": target,
-                "activate": True,
+                "activate": False,
                 "dry_run": False,
             },
             token,
         )
-        if not result.get("activated") or int(result.get("total_pages", 0) or 0) < 4:
-            raise SystemExit(f"UAT canonical-page seed did not activate a protected page boundary for {slug}")
+        if not result.get("prepared") or int(result.get("total_pages", 0) or 0) < 4:
+            raise SystemExit(f"UAT canonical-page seed did not prepare a protected page boundary for {slug}")
+        try:
+            active = request(f"/admin/reading-pass/books/{slug}/segments/active", token=token)
+        except SystemExit as error:
+            if "HTTP 404" not in str(error):
+                raise
+            active = None
+        if active:
+            promoted = request(
+                f"/admin/reading-pass/books/{slug}/segments/promote",
+                {
+                    "target_segmentation_version": row["selected_segmentation_version"],
+                    "expected_active_segmentation_version": active["segmentation_version"],
+                    "expected_activation_generation": active["activation_generation"],
+                    "operation_id": f"uat-seed-{slug}-{uuid.uuid4()}",
+                },
+                token,
+            )
+        else:
+            promoted = request(
+                f"/admin/reading-pass/books/{slug}/segments/bootstrap",
+                {
+                    "target_segmentation_version": row["selected_segmentation_version"],
+                    "operation_id": f"uat-seed-bootstrap-{slug}-{uuid.uuid4()}",
+                },
+                token,
+            )
+        if not promoted.get("activated"):
+            raise SystemExit(f"UAT canonical-page seed did not promote a protected page boundary for {slug}")
     print(f"canonical pages active for {len(slugs)} reader-approved titles")
 
 

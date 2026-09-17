@@ -818,6 +818,8 @@ class ReadingPassService:
         content_id: str,
         position: Mapping[str, Any],
         version: int,
+        publication_segmentation_version: Optional[str] = None,
+        publication_manifest_version: Optional[str] = None,
     ) -> dict[str, Any]:
         if content_type not in {"text", "audio"}:
             raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "Unsupported position type.")
@@ -829,6 +831,22 @@ class ReadingPassService:
                 "canonical_page_index": page_index,
                 "chapter_id": str(position.get("chapter_id") or "")[:200],
             }
+            # An unversioned historical position remains readable but is never
+            # mistaken for a position known to belong to a retained immutable
+            # publication version.
+            if publication_segmentation_version or publication_manifest_version:
+                if not publication_segmentation_version or not publication_manifest_version:
+                    raise ReadingPassError(
+                        "PUBLICATION_VERSION_REQUIRED", 400,
+                        "Both canonical publication version fields are required together.",
+                    )
+                safe_position.update({
+                    "segmentation_version": str(publication_segmentation_version),
+                    "manifest_version": str(publication_manifest_version),
+                    "publication_version_state": "bound",
+                })
+            else:
+                safe_position["publication_version_state"] = "legacy_unversioned"
         else:
             try:
                 media_position = float(position.get("media_position_seconds", 0) or 0)

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Create canonical Reading Pass pages through the authenticated admin API.
+"""Prepare immutable canonical Reading Pass candidates through the admin API.
 
-Dry-run is the default.  No direct database writes are performed by this
-operator tool, keeping ingestion and audit behavior inside the application.
+Dry-run is the default.  ``--apply`` stores a verified inactive candidate;
+promotion is deliberately a separate expected-version operation.
 """
 
 from __future__ import annotations
@@ -39,17 +39,14 @@ def main() -> int:
     parser.add_argument("--segmentation-version", default="canonical-html-blocks-v1")
     parser.add_argument("--target-characters", type=int, default=3200)
     parser.add_argument("--apply", action="store_true")
-    parser.add_argument("--activate", action="store_true")
     parser.add_argument("--preflight-parity", action="store_true")
     parser.add_argument("--parity-evidence-dir", type=Path)
     args = parser.parse_args()
 
-    if (args.apply or args.activate) and not args.admin_token:
+    if args.apply and not args.admin_token:
         parser.error("--admin-token or EARNALISM_ADMIN_TOKEN is required for writes")
-    if args.activate and not args.apply:
-        parser.error("--activate requires --apply")
-    if (args.apply or args.activate) and not args.preflight_parity:
-        parser.error("--apply and --activate require --preflight-parity")
+    if args.apply and not args.preflight_parity:
+        parser.error("--apply requires --preflight-parity")
 
     slugs = list(dict.fromkeys(args.slug))
     if args.all:
@@ -74,7 +71,7 @@ def main() -> int:
             "segmentation_version": args.segmentation_version,
             "target_characters": args.target_characters,
             "dry_run": not args.apply,
-            "activate": bool(args.activate),
+            "activate": False,
         }
         try:
             result = _json_request(
