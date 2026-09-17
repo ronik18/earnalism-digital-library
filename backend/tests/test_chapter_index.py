@@ -1,5 +1,8 @@
 import json
+from copy import deepcopy
 from pathlib import Path
+
+import pytest
 
 from backend.domain.chapter_index import (
     CHAPTER_INDEX_CONTRACT_VERSION,
@@ -11,6 +14,31 @@ from backend.domain.chapter_index import (
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTROLLED_ROOT = ROOT / "backend" / "data" / "controlled_publications"
+INVENTORY_PATH = Path(__file__).parent / "fixtures" / "controlled-package-inventory.v1.json"
+
+
+def assert_controlled_inventory(actual, inventory):
+    """Check a frozen engineering baseline; this does not certify book contents."""
+    packages = inventory["packages"]
+    expected = {package["package_key"]: package for package in packages}
+    assert len(expected) == len(packages) == inventory["expected_manifest_count"]
+    assert sum(package["chapter_count"] for package in packages) == inventory["expected_chapter_count"]
+    assert set(actual) == set(expected), {
+        "missing": sorted(set(expected) - set(actual)),
+        "unexpected": sorted(set(actual) - set(expected)),
+    }
+    for key, package in expected.items():
+        expected_chapters = package["chapters"]
+        assert len(expected_chapters) == package["chapter_count"], key
+        assert len({chapter["id"] for chapter in expected_chapters}) == len(expected_chapters), key
+        manifest = actual[key]
+        assert manifest.get("slug") == package["manifest_slug"], key
+        assert manifest.get("chapter_count") == package["chapter_count"], key
+        actual_chapters = [
+            {"id": chapter.get("id"), "order": chapter.get("order")}
+            for chapter in manifest.get("chapters", [])
+        ]
+        assert actual_chapters == expected_chapters, key
 
 
 def test_dracula_titles_have_one_normalized_structural_label():
@@ -94,7 +122,12 @@ def test_dracula_index_is_uniform_and_publisher_catalog_is_not_reader_content():
 
 def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
     manifests = sorted(CONTROLLED_ROOT.glob("*/reader_manifest.json"))
-    assert len(manifests) == 79
+    inventory = json.loads(INVENTORY_PATH.read_text(encoding="utf-8"))
+    actual = {
+        path.parent.name: json.loads(path.read_text(encoding="utf-8"))
+        for path in manifests
+    }
+    assert_controlled_inventory(actual, inventory)
     audited_chapters = 0
     for manifest_path in manifests:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -108,4 +141,60 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
         assert all(entry["index_contract"] == CHAPTER_INDEX_CONTRACT_VERSION for entry in first)
         assert all(entry["index_title"].strip() for entry in first)
         audited_chapters += len(first)
-    assert audited_chapters == 691
+    assert audited_chapters == inventory["expected_chapter_count"]
+
+
+@pytest.mark.parametrize("mutation", [
+    None,
+    "missing_package",
+    "missing_zero_chapter_alias",
+    "unexpected_package",
+    "same_count_substitution",
+    "wrong_manifest_slug",
+    "wrong_count",
+    "renamed_chapter",
+    "duplicate_chapter",
+    "reordered_chapters",
+    "changed_order",
+])
+def test_frozen_inventory_detects_catalog_drift(mutation):
+    inventory = {
+        "expected_manifest_count": 2,
+        "expected_chapter_count": 2,
+        "packages": [
+            {"package_key": "story", "manifest_slug": "story", "chapter_count": 2,
+             "chapters": [{"id": "opening", "order": 1}, {"id": "ending", "order": 2}]},
+            {"package_key": "retired-alias", "manifest_slug": "retired-alias",
+             "chapter_count": 0, "chapters": []},
+        ],
+    }
+    actual = {
+        "story": {"slug": "story", "chapter_count": 2,
+                  "chapters": [{"id": "opening", "order": 1}, {"id": "ending", "order": 2}]},
+        "retired-alias": {"slug": "retired-alias", "chapter_count": 0, "chapters": []},
+    }
+    if mutation is None:
+        assert_controlled_inventory(actual, inventory)
+        return
+    if mutation == "missing_package":
+        del actual["story"]
+    elif mutation == "missing_zero_chapter_alias":
+        del actual["retired-alias"]
+    elif mutation == "unexpected_package":
+        actual["unexpected"] = deepcopy(actual["story"])
+    elif mutation == "same_count_substitution":
+        actual["replacement"] = actual.pop("story")
+    elif mutation == "wrong_manifest_slug":
+        actual["story"]["slug"] = "different-story"
+    elif mutation == "wrong_count":
+        actual["story"]["chapter_count"] = 1
+    elif mutation == "renamed_chapter":
+        actual["story"]["chapters"][1]["id"] = "other-ending"
+    elif mutation == "duplicate_chapter":
+        actual["story"]["chapters"][1] = deepcopy(actual["story"]["chapters"][0])
+    elif mutation == "reordered_chapters":
+        actual["story"]["chapters"].reverse()
+    elif mutation == "changed_order":
+        actual["story"]["chapters"][0]["order"] = 3
+    with pytest.raises(AssertionError):
+        assert_controlled_inventory(actual, inventory)
