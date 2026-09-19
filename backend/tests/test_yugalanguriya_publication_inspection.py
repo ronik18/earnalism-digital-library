@@ -4,9 +4,21 @@ import asyncio
 import logging
 import os
 from types import SimpleNamespace
+from urllib.parse import urlparse
+import uuid
 
+import pytest
 from fastapi.testclient import TestClient
 from jose import jwt
+from motor.motor_asyncio import AsyncIOMotorClient
+from pymongo import monitoring
+from pymongo.errors import (
+    ConnectionFailure,
+    ExecutionTimeout,
+    NetworkTimeout,
+    ServerSelectionTimeoutError,
+    WaitQueueTimeoutError,
+)
 
 os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
 os.environ.setdefault("JWT_SECRET", "yugalanguriya-publication-inspection-test-secret")
@@ -205,6 +217,80 @@ def test_partial_failures_are_unknown_and_exception_text_is_not_logged_or_return
     assert "synthetic sensitive value" not in caplog.text
 
 
+def test_prequery_delay_uses_shared_client_deadline_not_mongo_execution_cap():
+    async def scenario():
+        sent_max_time_ms = []
+
+        async def delayed_success(max_time_ms):
+            sent_max_time_ms.append(max_time_ms)
+            # This intentionally exceeds MongoDB's 250 ms execution cap, but
+            # happens before the read reaches MongoDB and remains within the
+            # one 1.5 s client inspection deadline.
+            await asyncio.sleep((server.YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS + 50) / 1000)
+            return "metadata"
+
+        loop = asyncio.get_running_loop()
+        value, code = await server._inspection_read(
+            loop.time() + (server.YUGALANGURIYA_INSPECTION_DEADLINE_MS / 1000),
+            "delayed_success",
+            delayed_success,
+        )
+        assert (value, code) == ("metadata", None)
+        assert sent_max_time_ms == [server.YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS]
+
+    asyncio.run(scenario())
+
+
+@pytest.mark.parametrize(
+    ("error", "expected_code"),
+    [
+        (ExecutionTimeout("synthetic server execution timeout"), "SERVER_EXECUTION_TIMEOUT"),
+        (ServerSelectionTimeoutError("synthetic server selection timeout"), "SERVER_SELECTION_TIMEOUT"),
+        (WaitQueueTimeoutError("synthetic pool timeout"), "CONNECTION_POOL_TIMEOUT"),
+        (NetworkTimeout("synthetic network timeout"), "NETWORK_TIMEOUT"),
+        (ConnectionFailure("synthetic connection failure"), "CONNECTION_FAILURE"),
+    ],
+)
+def test_pinned_pymongo_failure_classes_remain_sanitized_and_distinct(error, expected_code, caplog):
+    async def scenario():
+        async def failing_read(_max_time_ms):
+            raise error
+
+        loop = asyncio.get_running_loop()
+        return await server._inspection_read(loop.time() + 1, "failure_class", failing_read)
+
+    caplog.set_level(logging.WARNING, logger=server.logger.name)
+    assert asyncio.run(scenario()) == (None, expected_code)
+    assert "synthetic" not in caplog.text
+
+
+def test_caller_cancellation_cleans_up_without_converting_to_a_read_failure():
+    async def scenario():
+        started = asyncio.Event()
+        cleaned_up = asyncio.Event()
+        calls = 0
+
+        async def blocked_read(_max_time_ms):
+            nonlocal calls
+            calls += 1
+            started.set()
+            try:
+                await asyncio.Event().wait()
+            finally:
+                cleaned_up.set()
+
+        loop = asyncio.get_running_loop()
+        read_task = asyncio.create_task(server._inspection_read(loop.time() + 1, "cancelled", blocked_read))
+        await started.wait()
+        read_task.cancel()
+        with pytest.raises(asyncio.CancelledError):
+            await read_task
+        await asyncio.wait_for(cleaned_up.wait(), timeout=0.2)
+        assert calls == 1
+
+    asyncio.run(scenario())
+
+
 def test_overall_deadline_stops_subsequent_reads_without_reporting_zero(monkeypatch):
     database = fake_db(pointer_options={"block_find_one": True})
     monkeypatch.setattr(server, "db", database)
@@ -216,6 +302,65 @@ def test_overall_deadline_stops_subsequent_reads_without_reporting_zero(monkeypa
     assert result["activation_pointer"]["status"] == "UNKNOWN"
     assert result["active_text_sessions"] == {"status": "UNKNOWN", "active_text_session_count": None}
     assert any(error["code"] == "OVERALL_DEADLINE_EXCEEDED" for error in result["errors"])
+    assert any(error["code"] == "NOT_ATTEMPTED_OVERALL_DEADLINE_EXCEEDED" for error in result["errors"])
     assert database.reader_segment_manifests.queries == []
     assert database.reader_content_segments.queries == []
     assert database.reading_pass_sessions.queries == []
+
+
+class _FindCommandObserver(monitoring.CommandListener):
+    """Capture only the safe command option needed by the isolated test."""
+
+    def __init__(self):
+        self.find_commands = []
+
+    def started(self, event):
+        if event.command_name == "find":
+            self.find_commands.append(dict(event.command))
+
+    def succeeded(self, _event):
+        pass
+
+    def failed(self, _event):
+        pass
+
+
+@pytest.mark.skipif(
+    os.environ.get("READER_SEGMENT_MONGO_INTEGRATION") != "1",
+    reason="requires the release gate's explicit isolated MongoDB replica set",
+)
+def test_real_motor_preserves_max_time_ms_after_prequery_delay():
+    """The client deadline is distinct from the maxTimeMS sent on the wire."""
+
+    async def scenario():
+        uri = os.environ["MONGODB_URL"]
+        parsed = urlparse(uri)
+        if parsed.hostname not in {"127.0.0.1", "localhost"} or "replicaSet=" not in uri:
+            raise RuntimeError("inspection Mongo integration requires an explicit loopback replica-set MONGODB_URL")
+        observer = _FindCommandObserver()
+        client = AsyncIOMotorClient(uri, serverSelectionTimeoutMS=5_000, event_listeners=[observer])
+        namespace = f"inspection_timeout_it_{uuid.uuid4().hex}"
+        database = client[namespace]
+        try:
+            await database.timeout_probe.insert_one({"probe": "read-only-fixture"})
+
+            async def delayed_find(max_time_ms):
+                await asyncio.sleep((server.YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS + 50) / 1000)
+                return await database.timeout_probe.find_one({"probe": "read-only-fixture"}, max_time_ms=max_time_ms)
+
+            loop = asyncio.get_running_loop()
+            value, code = await server._inspection_read(
+                loop.time() + (server.YUGALANGURIYA_INSPECTION_DEADLINE_MS / 1000),
+                "real_motor_prequery_delay",
+                delayed_find,
+            )
+            assert code is None
+            assert value == {"_id": value["_id"], "probe": "read-only-fixture"}
+            assert [command.get("maxTimeMS") for command in observer.find_commands] == [
+                server.YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS
+            ]
+        finally:
+            await client.drop_database(namespace)
+            client.close()
+
+    asyncio.run(scenario())
