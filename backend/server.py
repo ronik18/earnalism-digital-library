@@ -277,6 +277,7 @@ try:
         can_expose_audio,
         can_expose_reader,
         clear_controlled_artifact_caches,
+        controlled_artifact_dir_candidates,
         controlled_artifact_integrity_quarantined,
         controlled_artifact_status,
         dracula_artifact_status,
@@ -285,6 +286,7 @@ try:
         load_controlled_artifact_book,
         load_dracula_artifact_book,
         public_book_projection,
+        read_json_file,
     )
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.catalog_truth import (
@@ -297,6 +299,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         can_expose_audio,
         can_expose_reader,
         clear_controlled_artifact_caches,
+        controlled_artifact_dir_candidates,
         controlled_artifact_integrity_quarantined,
         controlled_artifact_status,
         dracula_artifact_status,
@@ -305,6 +308,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         load_controlled_artifact_book,
         load_dracula_artifact_book,
         public_book_projection,
+        read_json_file,
     )
 
 try:
@@ -1620,6 +1624,346 @@ def _controlled_public_book_query(extra: Optional[dict] = None) -> dict:
 
 def _is_controlled_public_slug(slug: str) -> bool:
     return str(slug or "").strip().lower() in CONTROLLED_LIVE_BOOK_SLUGS
+
+
+# This is deliberately a fixed server-side scope, not a client-provided book
+# selector. It makes PR409's runtime preflight observable without preparing,
+# promoting, or otherwise changing a publication.
+YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG = "yugalanguriya"
+YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT = 20
+YUGALANGURIYA_PROTECTED_PAGE_INDEX = PUBLIC_TEXT_PAGE_COUNT + 1
+YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS = 250
+YUGALANGURIYA_INSPECTION_DEADLINE_MS = 1500
+YUGALANGURIYA_INSPECTION_VERSION_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{2,79}$")
+
+
+def _inspection_safe_scalar(value: Any) -> Optional[str | int]:
+    """Return a bounded, display-safe metadata scalar without serializing docs."""
+    if isinstance(value, datetime):
+        return value.astimezone(timezone.utc).isoformat()
+    if isinstance(value, str):
+        return value[:160]
+    if isinstance(value, int) and not isinstance(value, bool):
+        return value
+    return None
+
+
+def _inspection_version_identifier(value: Any) -> Optional[str]:
+    """Accept only complete, query-safe stored version identifiers.
+
+    The inspector never truncates an identifier before using it as a query
+    key. Invalid values are reported as malformed metadata and are not used
+    for a follow-up count or page lookup.
+    """
+    if not isinstance(value, str) or not YUGALANGURIYA_INSPECTION_VERSION_PATTERN.fullmatch(value):
+        return None
+    return value
+
+
+def _inspection_manifest_metadata(row: Any, slug: str) -> Optional[dict]:
+    """Project a manifest document into bounded public inspector metadata."""
+    if not isinstance(row, Mapping) or row.get("book_slug") != slug:
+        return None
+    segmentation_version = _inspection_version_identifier(row.get("segmentation_version"))
+    manifest_version = _inspection_safe_scalar(row.get("version"))
+    status = _inspection_safe_scalar(row.get("status"))
+    total_pages = row.get("total_pages")
+    valid_total_pages = isinstance(total_pages, int) and not isinstance(total_pages, bool) and total_pages >= 0
+    metadata_status = "OBSERVED" if segmentation_version and isinstance(manifest_version, str) and isinstance(status, str) and valid_total_pages else "MALFORMED"
+    return {
+        "segmentation_version": segmentation_version,
+        "manifest_version": manifest_version if isinstance(manifest_version, str) else None,
+        "status": status if isinstance(status, str) else None,
+        "total_pages": total_pages if valid_total_pages else None,
+        "metadata_status": metadata_status,
+    }
+
+
+async def _inspection_read(deadline: float, component: str, operation) -> tuple[Any, Optional[str]]:
+    """Run one bounded metadata read without leaking driver exception text."""
+    loop = asyncio.get_running_loop()
+    remaining_seconds = deadline - loop.time()
+    if remaining_seconds <= 0:
+        return None, "OVERALL_DEADLINE_EXCEEDED"
+    max_time_ms = max(1, min(YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS, int(remaining_seconds * 1000)))
+    timeout_seconds = min(remaining_seconds, max_time_ms / 1000)
+    try:
+        return await asyncio.wait_for(operation(max_time_ms), timeout=timeout_seconds), None
+    except asyncio.TimeoutError:
+        code = "OVERALL_DEADLINE_EXCEEDED" if loop.time() >= deadline else "QUERY_TIMEOUT"
+    except Exception:
+        code = "READ_FAILED"
+    logger.warning("Yugalanguriya publication inspection unavailable: component=%s code=%s", component, code)
+    return None, code
+
+
+def _yugalanguriya_inspection_identity() -> dict:
+    """Read package identity only; never load a manuscript or mutate package state."""
+    for package_dir in controlled_artifact_dir_candidates(YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG):
+        public_book = read_json_file(package_dir / "public_book.json")
+        if public_book:
+            return {
+                "slug": YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG,
+                "canonical_title": _inspection_safe_scalar(public_book.get("title")) or "UNKNOWN",
+                "edition_identity": _inspection_safe_scalar(public_book.get("edition_id") or public_book.get("id")) or "UNKNOWN",
+                "package_metadata_status": "PRESENT",
+            }
+    return {
+        "slug": YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG,
+        "canonical_title": "UNKNOWN",
+        "edition_identity": "UNKNOWN",
+        "package_metadata_status": "NOT_FOUND",
+    }
+
+
+async def _yugalanguriya_publication_inspection() -> dict:
+    """Collect a bounded, non-transactional, metadata-only runtime observation.
+
+    Independent read-only queries are deliberately used here. This is not an
+    atomic database snapshot and cannot certify CDN, cache, or object storage.
+    Each failed component becomes UNKNOWN, never a false empty-state success.
+    """
+    slug = YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG
+    deadline = asyncio.get_running_loop().time() + (YUGALANGURIYA_INSPECTION_DEADLINE_MS / 1000)
+    errors: list[dict[str, str]] = []
+    complete = True
+
+    def record_error(component: str, code: str) -> None:
+        if not any(error["component"] == component and error["code"] == code for error in errors):
+            errors.append({"component": component, "code": code})
+
+    def unavailable(component: str, code: Optional[str]) -> bool:
+        nonlocal complete
+        if not code:
+            return False
+        complete = False
+        record_error(component, code)
+        return True
+
+    try:
+        identity = _yugalanguriya_inspection_identity()
+    except Exception:
+        # Package metadata is local release evidence. Keep the log bounded too:
+        # filenames and parsing errors can include unreviewed external input.
+        logger.warning("Yugalanguriya publication inspection unavailable: component=package_identity code=READ_FAILED")
+        unavailable("package_identity", "READ_FAILED")
+        identity = {
+            "slug": slug,
+            "canonical_title": "UNKNOWN",
+            "edition_identity": "UNKNOWN",
+            "package_metadata_status": "UNKNOWN",
+        }
+    identity["availability_reason"] = (
+        "CONTROLLED_LIVE_CATALOG" if _is_controlled_public_slug(slug)
+        else "NOT_IN_CURRENT_CONTROLLED_LIVE_CATALOG"
+    )
+
+    async def read_pointer(max_time_ms: int):
+        return await db.reader_segment_activation_state.find_one(
+            {"book_slug": slug},
+            {"_id": 0, "book_slug": 1, "active_segmentation_version": 1, "generation": 1},
+            max_time_ms=max_time_ms,
+        )
+
+    pointer, pointer_error = await _inspection_read(deadline, "activation_pointer", read_pointer)
+    if unavailable("activation_pointer", pointer_error):
+        pointer_result = {"status": "UNKNOWN", "selected_version": None, "generation": None, "metadata_status": "UNKNOWN"}
+    elif pointer is None:
+        pointer_result = {"status": "ABSENT", "selected_version": None, "generation": None, "metadata_status": "OBSERVED"}
+    else:
+        selected_version = _inspection_version_identifier(pointer.get("active_segmentation_version"))
+        generation = pointer.get("generation")
+        pointer_result = {
+            "status": "PRESENT",
+            "selected_version": selected_version,
+            "generation": generation if isinstance(generation, int) and not isinstance(generation, bool) and generation >= 0 else None,
+            "metadata_status": "OBSERVED" if pointer.get("book_slug") == slug and selected_version and isinstance(generation, int) and not isinstance(generation, bool) and generation >= 0 else "MALFORMED",
+        }
+
+    async def read_retained_manifests(max_time_ms: int):
+        return await db.reader_segment_manifests.find(
+            {"book_slug": slug},
+            {"_id": 0, "book_slug": 1, "segmentation_version": 1, "version": 1, "status": 1, "total_pages": 1},
+            max_time_ms=max_time_ms,
+        ).sort([("segmentation_version", 1)]).to_list(YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT + 1)
+
+    rows, manifests_error = await _inspection_read(deadline, "retained_manifests", read_retained_manifests)
+    manifests: list[dict] = []
+    manifests_truncated = False
+    if unavailable("retained_manifests", manifests_error):
+        rows = []
+    else:
+        manifests_truncated = len(rows) > YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT
+        if manifests_truncated:
+            complete = False
+            record_error("retained_manifests", "RESULT_TRUNCATED")
+        for row in rows[:YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT]:
+            metadata = _inspection_manifest_metadata(row, slug)
+            if metadata is None:
+                complete = False
+                record_error("retained_manifests", "WRONG_TITLE_OR_MALFORMED_RECORD")
+                continue
+            manifests.append(metadata)
+
+    async def read_active_manifests(max_time_ms: int):
+        return await db.reader_segment_manifests.find(
+            {"book_slug": slug, "status": "active"},
+            {"_id": 0, "book_slug": 1, "segmentation_version": 1, "version": 1, "status": 1, "total_pages": 1},
+            max_time_ms=max_time_ms,
+        ).sort([("segmentation_version", 1)]).to_list(2)
+
+    active_rows, active_error = await _inspection_read(deadline, "active_manifest", read_active_manifests)
+    active_manifests: list[dict] = []
+    if not unavailable("active_manifest", active_error):
+        for row in active_rows:
+            metadata = _inspection_manifest_metadata(row, slug)
+            if metadata is None or metadata["metadata_status"] != "OBSERVED" or metadata["status"] != "active":
+                complete = False
+                record_error("active_manifest", "WRONG_TITLE_OR_MALFORMED_RECORD")
+            else:
+                active_manifests.append(metadata)
+
+    observable_manifests = {manifest["segmentation_version"]: manifest for manifest in manifests if manifest["metadata_status"] == "OBSERVED"}
+    observable_manifests.update({manifest["segmentation_version"]: manifest for manifest in active_manifests})
+    manifest_observations_by_version: dict[str, dict] = {}
+    for version, manifest in observable_manifests.items():
+        observation = dict(manifest)
+        async def count_segments(max_time_ms: int, version: str = version):
+            return await db.reader_content_segments.count_documents(
+                {"book_slug": slug, "segmentation_version": version}, maxTimeMS=max_time_ms
+            )
+
+        segment_count, segment_error = await _inspection_read(deadline, "stored_segments", count_segments)
+        if unavailable("stored_segments", segment_error):
+            observation["stored_segment_count"] = None
+            observation["segment_count_status"] = "UNKNOWN"
+        elif isinstance(segment_count, int) and not isinstance(segment_count, bool) and segment_count >= 0:
+            observation["stored_segment_count"] = segment_count
+            observation["segment_count_status"] = "OBSERVED"
+        else:
+            unavailable("stored_segments", "MALFORMED_COUNT")
+            observation["stored_segment_count"] = None
+            observation["segment_count_status"] = "MALFORMED"
+
+        async def read_protected_page(max_time_ms: int, version: str = version):
+            return await db.reader_content_segments.find_one(
+                {"book_slug": slug, "segmentation_version": version, "page_index": YUGALANGURIYA_PROTECTED_PAGE_INDEX},
+                {"_id": 1}, max_time_ms=max_time_ms,
+            )
+
+        protected, protected_error = await _inspection_read(deadline, "retained_protected_page", read_protected_page)
+        if unavailable("retained_protected_page", protected_error):
+            observation["protected_page_status"] = "UNKNOWN"
+            observation["protected_page_exists"] = None
+        else:
+            observation["protected_page_status"] = "OBSERVED"
+            observation["protected_page_exists"] = bool(protected)
+        manifest_observations_by_version[version] = observation
+
+    manifest_observations = [
+        manifest_observations_by_version.get(manifest["segmentation_version"], manifest)
+        for manifest in manifests
+    ]
+    active_observations = [manifest_observations_by_version[manifest["segmentation_version"]] for manifest in active_manifests]
+    if active_error:
+        active_manifest_result = {"status": "UNKNOWN", "active_count": None, "selection_state": "UNKNOWN", "selected": None}
+    elif not active_observations:
+        active_manifest_result = {"status": "OBSERVED", "active_count": 0, "selection_state": "ABSENT", "selected": None}
+    elif len(active_observations) == 1:
+        active_manifest_result = {"status": "OBSERVED", "active_count": 1, "selection_state": "SINGLE_ACTIVE_MANIFEST", "selected": active_observations[0]}
+    else:
+        active_manifest_result = {"status": "OBSERVED", "active_count": len(active_observations), "selection_state": "MULTIPLE_ACTIVE_MANIFESTS", "selected": None}
+
+    selected_version = pointer_result["selected_version"]
+    returned_versions = {row["segmentation_version"] for row in manifest_observations if row.get("segmentation_version")}
+    if pointer_result["status"] == "PRESENT" and pointer_result["metadata_status"] == "OBSERVED":
+        pointer_in_manifest_results = (
+            "PRESENT_IN_RETURNED_SET" if selected_version in returned_versions
+            else "SELECTED_VERSION_OUTSIDE_RETURNED_BOUND" if manifests_truncated
+            else "SELECTED_VERSION_NOT_IN_COMPLETE_RETURNED_SET"
+        )
+    elif pointer_result["status"] == "ABSENT":
+        pointer_in_manifest_results = "NO_ACTIVATION_STATE"
+    else:
+        pointer_in_manifest_results = "UNKNOWN"
+
+    active_selected = active_manifest_result.get("selected")
+    if active_manifest_result["status"] != "OBSERVED":
+        consistency_status = "UNKNOWN"
+    elif active_manifest_result["selection_state"] == "MULTIPLE_ACTIVE_MANIFESTS":
+        consistency_status = "NONATOMIC_MULTIPLE_ACTIVE_MANIFESTS"
+    elif active_manifest_result["selection_state"] == "ABSENT":
+        consistency_status = "NO_ACTIVE_MANIFEST_OBSERVED"
+    elif pointer_result["status"] == "ABSENT":
+        consistency_status = "ACTIVE_MANIFEST_WITHOUT_ACTIVATION_STATE"
+    elif pointer_result["metadata_status"] != "OBSERVED":
+        consistency_status = "MALFORMED_ACTIVATION_STATE"
+    elif active_selected and active_selected["segmentation_version"] == selected_version:
+        consistency_status = "POINTER_MATCHES_ACTIVE_MANIFEST"
+    else:
+        consistency_status = "NONATOMIC_POINTER_ACTIVE_MANIFEST_MISMATCH"
+
+    if consistency_status.startswith("NONATOMIC_") or consistency_status == "MALFORMED_ACTIVATION_STATE":
+        complete = False
+        record_error("selection_consistency", "INCONSISTENT_NONATOMIC_STATE")
+
+    if active_selected:
+        protected_page = {
+            "segmentation_version": active_selected["segmentation_version"],
+            "page_index": YUGALANGURIYA_PROTECTED_PAGE_INDEX,
+            "status": active_selected.get("protected_page_status", "UNKNOWN"),
+            "exists": active_selected.get("protected_page_exists"),
+        }
+    else:
+        protected_page = {
+            "page_index": YUGALANGURIYA_PROTECTED_PAGE_INDEX,
+            "status": active_manifest_result["selection_state"],
+            "exists": None,
+        }
+
+    async def count_active_text_sessions(max_time_ms: int):
+        return await db.reading_pass_sessions.count_documents(
+            {"content_type": "text", "content_id": slug, "status": "active"}, maxTimeMS=max_time_ms
+        )
+
+    active_text_sessions, sessions_error = await _inspection_read(deadline, "active_text_sessions", count_active_text_sessions)
+    if unavailable("active_text_sessions", sessions_error):
+        sessions = {"status": "UNKNOWN", "active_text_session_count": None}
+    elif isinstance(active_text_sessions, int) and not isinstance(active_text_sessions, bool) and active_text_sessions >= 0:
+        sessions = {"status": "OBSERVED", "active_text_session_count": active_text_sessions}
+    else:
+        unavailable("active_text_sessions", "MALFORMED_COUNT")
+        sessions = {"status": "UNKNOWN", "active_text_session_count": None}
+    return {
+        "inspection_scope": "YUGALANGURIYA_ONLY",
+        "observed_at": datetime.now(timezone.utc).isoformat(),
+        "complete": complete,
+        "errors": errors,
+        "limitations": {
+            "atomic_snapshot": False,
+            "storage_or_cdn_certification": False,
+            "query_max_time_ms": YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS,
+            "overall_deadline_ms": YUGALANGURIYA_INSPECTION_DEADLINE_MS,
+            "note": "Independent read-only metadata queries; absence and non-atomic inconsistencies require follow-up and do not certify storage, cache, or release readiness.",
+        },
+        "identity": identity,
+        "activation_pointer": pointer_result,
+        "retained_manifests": {
+            "status": "UNKNOWN" if manifests_error else "OBSERVED",
+            "limit": YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT,
+            "truncated": manifests_truncated,
+            "pointer_version_in_returned_records": pointer_in_manifest_results,
+            "records": manifest_observations,
+        },
+        "active_manifest": active_manifest_result,
+        "consistency": {
+            "status": consistency_status,
+            "non_atomic": True,
+            "release_readiness": "NOT_DETERMINED_BY_METADATA_INSPECTION",
+        },
+        "protected_page": protected_page,
+        "active_text_sessions": sessions,
+    }
 
 
 def _public_projection_is_live(projected: Optional[dict]) -> bool:
@@ -9423,6 +9767,12 @@ async def admin_reading_pass_active_segments(slug: str, admin=Depends(require_ad
         "version": active["version"],
         "activation_generation": int((state or {}).get("generation", 0) or 0),
     }
+
+
+@api.get("/admin/reading-pass/yugalanguriya/publication-inspection")
+async def admin_inspect_yugalanguriya_publication(_=Depends(require_admin)):
+    """Return only bounded non-secret Yugalanguriya publication metadata."""
+    return await _yugalanguriya_publication_inspection()
 
 
 @api.post("/admin/reading-pass/books/{slug}/segments")
