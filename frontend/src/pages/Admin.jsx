@@ -13,7 +13,7 @@ import PublishingWorkflowPanel from "../components/Admin/PublishingWorkflowPanel
 import { normalizeImageUrl, optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 
-const TABS = ["books", "covers", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "launch-monitor", "settings", "account"];
+const TABS = ["books", "covers", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "launch-monitor", "publication-inspection", "settings", "account"];
 
 export default function Admin({ initialTab = "books" }) {
   useSEO({
@@ -62,11 +62,78 @@ export default function Admin({ initialTab = "books" }) {
         {tab === "payments" && <PaymentsAdmin />}
         {tab === "security" && <SecurityAlertsAdmin />}
         {tab === "launch-monitor" && <LaunchMonitorAdmin />}
+        {tab === "publication-inspection" && <PublicationInspectionAdmin />}
         {tab === "settings" && <SettingsTab />}
         {tab === "account" && <AccountTab />}
       </div>
     </div>
   );
+}
+
+export function PublicationInspectionAdmin() {
+  const [inspection, setInspection] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
+
+  const inspect = async () => {
+    setLoading(true);
+    setFailed(false);
+    try {
+      const { data } = await api.get("/admin/reading-pass/yugalanguriya/publication-inspection");
+      setInspection(data || null);
+    } catch (_err) {
+      setFailed(true);
+      toast.error("Publication inspection could not be completed.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const identity = inspection?.identity || {};
+  const pointer = inspection?.activation_pointer || {};
+  const manifests = inspection?.retained_manifests || {};
+  const sessions = inspection?.active_text_sessions || {};
+
+  return (
+    <section className="card-elegant p-6 sm:p-8" data-testid="admin-publication-inspection">
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <div>
+          <div className="overline">Read-only release preflight</div>
+          <h2 className="font-serif-display text-2xl text-burgundy mt-1">Yugalanguriya publication inspection</h2>
+          <p className="text-sm text-charcoal-soft mt-2 max-w-3xl">
+            This checks bounded database metadata only. It does not prepare, activate, publish, import, or render a reader edition; it is not an atomic snapshot or a storage/CDN proof.
+          </p>
+        </div>
+        <button onClick={inspect} className="btn-secondary" disabled={loading} data-testid="publication-inspection-run">
+          {loading ? "Inspecting…" : "Inspect publication metadata"}
+        </button>
+      </div>
+      {!inspection && !failed && <p className="text-sm text-charcoal-soft mt-6">No inspection has been run in this browser session.</p>}
+      {failed && <p className="text-sm text-rose-800 mt-6">The inspection could not complete. No result has been inferred.</p>}
+      {inspection && (
+        <div className="mt-6 space-y-5 text-sm" data-testid="publication-inspection-result">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+            <InspectionField label="Canonical title" value={identity.canonical_title} />
+            <InspectionField label="Edition identity" value={identity.edition_identity} />
+            <InspectionField label="Availability" value={identity.availability_reason} />
+            <InspectionField label="Observation" value={inspection.observed_at ? new Date(inspection.observed_at).toLocaleString() : "UNKNOWN"} />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <InspectionField label="Activation pointer" value={pointer.status} detail={pointer.selected_version || "No selected version"} />
+            <InspectionField label="Retained manifests" value={manifests.status} detail={`${manifests.records?.length || 0} returned${manifests.truncated ? "; truncated" : ""}`} />
+            <InspectionField label="Active text sessions" value={sessions.status} detail={sessions.active_text_session_count ?? "UNKNOWN"} />
+          </div>
+          <div className="rounded-lg border border-brand-soft bg-white/55 p-4 text-charcoal-soft">
+            Completeness: <span className="font-medium text-charcoal">{inspection.complete ? "complete bounded observation" : "partial or truncated; do not treat as empty success"}</span>. Protected page {inspection.protected_page?.page_index ?? "UNKNOWN"}: {inspection.protected_page?.status === "OBSERVED" ? (inspection.protected_page.exists ? "present" : "not present") : inspection.protected_page?.status || "UNKNOWN"}.
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function InspectionField({ label, value, detail }) {
+  return <div className="rounded-lg border border-brand-soft bg-white/55 p-4"><div className="text-[0.65rem] uppercase tracking-[0.18em] text-charcoal-soft">{label}</div><div className="font-medium text-charcoal mt-1 break-words">{value ?? "UNKNOWN"}</div>{detail !== undefined && <div className="text-xs text-charcoal-soft mt-1 break-words">{detail}</div>}</div>;
 }
 
 function SimpleList({ endpoint, cols, title, testid }) {

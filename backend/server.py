@@ -277,6 +277,7 @@ try:
         can_expose_audio,
         can_expose_reader,
         clear_controlled_artifact_caches,
+        controlled_artifact_dir_candidates,
         controlled_artifact_integrity_quarantined,
         controlled_artifact_status,
         dracula_artifact_status,
@@ -285,6 +286,7 @@ try:
         load_controlled_artifact_book,
         load_dracula_artifact_book,
         public_book_projection,
+        read_json_file,
     )
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.catalog_truth import (
@@ -297,6 +299,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         can_expose_audio,
         can_expose_reader,
         clear_controlled_artifact_caches,
+        controlled_artifact_dir_candidates,
         controlled_artifact_integrity_quarantined,
         controlled_artifact_status,
         dracula_artifact_status,
@@ -305,6 +308,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         load_controlled_artifact_book,
         load_dracula_artifact_book,
         public_book_projection,
+        read_json_file,
     )
 
 try:
@@ -1620,6 +1624,208 @@ def _controlled_public_book_query(extra: Optional[dict] = None) -> dict:
 
 def _is_controlled_public_slug(slug: str) -> bool:
     return str(slug or "").strip().lower() in CONTROLLED_LIVE_BOOK_SLUGS
+
+
+# This is deliberately a fixed server-side scope, not a client-provided book
+# selector. It makes PR409's runtime preflight observable without preparing,
+# promoting, or otherwise changing a publication.
+YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG = "yugalanguriya"
+YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT = 20
+YUGALANGURIYA_PROTECTED_PAGE_INDEX = PUBLIC_TEXT_PAGE_COUNT + 1
+
+
+def _inspection_safe_scalar(value: Any) -> Optional[str | int]:
+    """Return a bounded, display-safe metadata scalar without serializing docs."""
+    if isinstance(value, datetime):
+        return value.astimezone(timezone.utc).isoformat()
+    if isinstance(value, str):
+        return value[:160]
+    if isinstance(value, int) and not isinstance(value, bool):
+        return value
+    return None
+
+
+def _yugalanguriya_inspection_identity() -> dict:
+    """Read package identity only; never load a manuscript or mutate package state."""
+    for package_dir in controlled_artifact_dir_candidates(YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG):
+        public_book = read_json_file(package_dir / "public_book.json")
+        if public_book:
+            return {
+                "slug": YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG,
+                "canonical_title": _inspection_safe_scalar(public_book.get("title")) or "UNKNOWN",
+                "edition_identity": _inspection_safe_scalar(public_book.get("edition_id") or public_book.get("id")) or "UNKNOWN",
+                "package_metadata_status": "PRESENT",
+            }
+    return {
+        "slug": YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG,
+        "canonical_title": "UNKNOWN",
+        "edition_identity": "UNKNOWN",
+        "package_metadata_status": "NOT_FOUND",
+    }
+
+
+async def _yugalanguriya_publication_inspection() -> dict:
+    """Collect a bounded, non-transactional, metadata-only runtime observation.
+
+    Independent read-only queries are deliberately used here. This is not an
+    atomic database snapshot and cannot certify CDN, cache, or object storage.
+    Each failed component becomes UNKNOWN, never a false empty-state success.
+    """
+    slug = YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG
+    errors: list[dict[str, str]] = []
+    complete = True
+
+    try:
+        identity = _yugalanguriya_inspection_identity()
+    except Exception:
+        logger.exception("Yugalanguriya publication inspector could not read package identity")
+        complete = False
+        errors.append({"component": "package_identity", "code": "READ_FAILED"})
+        identity = {
+            "slug": slug,
+            "canonical_title": "UNKNOWN",
+            "edition_identity": "UNKNOWN",
+            "package_metadata_status": "UNKNOWN",
+        }
+    identity["availability_reason"] = (
+        "CONTROLLED_LIVE_CATALOG" if _is_controlled_public_slug(slug)
+        else "NOT_IN_CURRENT_CONTROLLED_LIVE_CATALOG"
+    )
+
+    try:
+        pointer = await db.reader_segment_activation_state.find_one(
+            {"book_slug": slug},
+            {"_id": 0, "active_segmentation_version": 1, "generation": 1},
+        )
+        pointer_result = {
+            "status": "PRESENT" if pointer else "ABSENT",
+            "selected_version": _inspection_safe_scalar((pointer or {}).get("active_segmentation_version")),
+            "generation": _inspection_safe_scalar((pointer or {}).get("generation")),
+        }
+    except Exception:
+        logger.exception("Yugalanguriya publication inspector could not read activation state")
+        complete = False
+        errors.append({"component": "activation_pointer", "code": "READ_FAILED"})
+        pointer_result = {"status": "UNKNOWN", "selected_version": None, "generation": None}
+
+    manifests: list[dict] = []
+    manifests_truncated = False
+    try:
+        rows = await db.reader_segment_manifests.find(
+            {"book_slug": slug},
+            {"_id": 0, "segmentation_version": 1, "version": 1, "status": 1, "total_pages": 1},
+        ).sort([("segmentation_version", 1)]).to_list(YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT + 1)
+        manifests_truncated = len(rows) > YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT
+        if manifests_truncated:
+            complete = False
+            errors.append({"component": "retained_manifests", "code": "RESULT_TRUNCATED"})
+        for row in rows[:YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT]:
+            manifests.append({
+                "segmentation_version": _inspection_safe_scalar(row.get("segmentation_version")) or "UNKNOWN",
+                "manifest_version": _inspection_safe_scalar(row.get("version")) or "UNKNOWN",
+                "status": _inspection_safe_scalar(row.get("status")) or "UNKNOWN",
+                "total_pages": _inspection_safe_scalar(row.get("total_pages")),
+            })
+    except Exception:
+        logger.exception("Yugalanguriya publication inspector could not read manifests")
+        complete = False
+        errors.append({"component": "retained_manifests", "code": "READ_FAILED"})
+
+    manifest_observations: list[dict] = []
+    for manifest in manifests:
+        version = manifest["segmentation_version"]
+        observation = dict(manifest)
+        try:
+            observation["stored_segment_count"] = await db.reader_content_segments.count_documents(
+                {"book_slug": slug, "segmentation_version": version}
+            )
+            observation["segment_count_status"] = "OBSERVED"
+        except Exception:
+            logger.exception("Yugalanguriya publication inspector could not count stored segments")
+            complete = False
+            errors.append({"component": "stored_segments", "code": "READ_FAILED"})
+            observation["stored_segment_count"] = None
+            observation["segment_count_status"] = "UNKNOWN"
+        try:
+            protected = await db.reader_content_segments.find_one(
+                {"book_slug": slug, "segmentation_version": version, "page_index": YUGALANGURIYA_PROTECTED_PAGE_INDEX},
+                {"_id": 1},
+            )
+            observation["protected_page_status"] = "OBSERVED"
+            observation["protected_page_exists"] = bool(protected)
+        except Exception:
+            logger.exception("Yugalanguriya publication inspector could not read retained protected page metadata")
+            complete = False
+            errors.append({"component": "retained_protected_page", "code": "READ_FAILED"})
+            observation["protected_page_status"] = "UNKNOWN"
+            observation["protected_page_exists"] = None
+        manifest_observations.append(observation)
+
+    selected_version = pointer_result["selected_version"]
+    if pointer_result["status"] == "PRESENT" and isinstance(selected_version, str):
+        retained_pointer = next((row for row in manifest_observations if row["segmentation_version"] == selected_version), None)
+        if retained_pointer:
+            protected_page = {
+                "page_index": YUGALANGURIYA_PROTECTED_PAGE_INDEX,
+                "status": retained_pointer["protected_page_status"],
+                "exists": retained_pointer["protected_page_exists"],
+            }
+        else:
+            try:
+                protected = await db.reader_content_segments.find_one(
+                    {"book_slug": slug, "segmentation_version": selected_version, "page_index": YUGALANGURIYA_PROTECTED_PAGE_INDEX},
+                    {"_id": 1},
+                )
+                protected_page = {"page_index": YUGALANGURIYA_PROTECTED_PAGE_INDEX, "status": "OBSERVED", "exists": bool(protected)}
+            except Exception:
+                logger.exception("Yugalanguriya publication inspector could not read active protected page metadata")
+                complete = False
+                errors.append({"component": "protected_page", "code": "READ_FAILED"})
+                protected_page = {"page_index": YUGALANGURIYA_PROTECTED_PAGE_INDEX, "status": "UNKNOWN", "exists": None}
+    else:
+        protected_page = {
+            "page_index": YUGALANGURIYA_PROTECTED_PAGE_INDEX,
+            "status": "NO_ACTIVE_POINTER" if pointer_result["status"] == "ABSENT" else "UNKNOWN",
+            "exists": None,
+        }
+
+    try:
+        active_text_sessions = await db.reading_pass_sessions.count_documents(
+            {"content_type": "text", "content_id": slug, "status": "active"}
+        )
+        sessions = {"status": "OBSERVED", "active_text_session_count": active_text_sessions}
+    except Exception:
+        logger.exception("Yugalanguriya publication inspector could not count active text sessions")
+        complete = False
+        errors.append({"component": "active_text_sessions", "code": "READ_FAILED"})
+        sessions = {"status": "UNKNOWN", "active_text_session_count": None}
+
+    pointer_in_manifest_results = (
+        selected_version in {row["segmentation_version"] for row in manifest_observations}
+        if pointer_result["status"] == "PRESENT" else None
+    )
+    return {
+        "inspection_scope": "YUGALANGURIYA_ONLY",
+        "observed_at": datetime.now(timezone.utc).isoformat(),
+        "complete": complete,
+        "errors": errors,
+        "limitations": {
+            "atomic_snapshot": False,
+            "storage_or_cdn_certification": False,
+            "note": "Independent read-only metadata queries; missing records do not prove retained storage or cache absence.",
+        },
+        "identity": identity,
+        "activation_pointer": pointer_result,
+        "retained_manifests": {
+            "status": "OBSERVED" if not any(error["component"] == "retained_manifests" and error["code"] == "READ_FAILED" for error in errors) else "UNKNOWN",
+            "limit": YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT,
+            "truncated": manifests_truncated,
+            "pointer_version_in_returned_records": pointer_in_manifest_results,
+            "records": manifest_observations,
+        },
+        "protected_page": protected_page,
+        "active_text_sessions": sessions,
+    }
 
 
 def _public_projection_is_live(projected: Optional[dict]) -> bool:
@@ -9423,6 +9629,12 @@ async def admin_reading_pass_active_segments(slug: str, admin=Depends(require_ad
         "version": active["version"],
         "activation_generation": int((state or {}).get("generation", 0) or 0),
     }
+
+
+@api.get("/admin/reading-pass/yugalanguriya/publication-inspection")
+async def admin_inspect_yugalanguriya_publication(_=Depends(require_admin)):
+    """Return only bounded non-secret Yugalanguriya publication metadata."""
+    return await _yugalanguriya_publication_inspection()
 
 
 @api.post("/admin/reading-pass/books/{slug}/segments")
