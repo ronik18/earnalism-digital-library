@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const adminSource = fs.readFileSync(path.join(process.cwd(), "src/pages/Admin.jsx"), "utf8");
-const inspectorSource = adminSource.split("export function PublicationInspectionAdmin()", 2)[1].split("function SimpleList", 2)[0];
+const inspectorSource = adminSource.split("export function PublicationInspectionAdmin", 2)[1].split("function SimpleList", 2)[0];
 
 describe("Yugalanguriya publication inspector", () => {
   test("is an explicit-action admin control using the shared authenticated client", () => {

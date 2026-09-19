@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { api, formatError, formatMinutes } from "../lib/api";
@@ -62,7 +62,7 @@ export default function Admin({ initialTab = "books" }) {
         {tab === "payments" && <PaymentsAdmin />}
         {tab === "security" && <SecurityAlertsAdmin />}
         {tab === "launch-monitor" && <LaunchMonitorAdmin />}
-        {tab === "publication-inspection" && <PublicationInspectionAdmin />}
+        {tab === "publication-inspection" && <PublicationInspectionAdmin administratorContextKey={admin?.id || admin?.email || "unknown-admin"} />}
         {tab === "settings" && <SettingsTab />}
         {tab === "account" && <AccountTab />}
       </div>
@@ -70,22 +70,98 @@ export default function Admin({ initialTab = "books" }) {
   );
 }
 
-export function PublicationInspectionAdmin() {
+const INSPECTION_SCOPE = "YUGALANGURIYA_ONLY";
+const INSPECTION_SLUG = "yugalanguriya";
+const INSPECTION_COMPONENTS = new Set(["package_identity", "activation_pointer", "retained_manifests", "active_manifest", "stored_segments", "retained_protected_page", "active_text_sessions", "selection_consistency"]);
+const INSPECTION_CODE = /^[A-Z_]{3,64}$/;
+const INSPECTION_VERSION = /^[A-Za-z0-9][A-Za-z0-9._:-]{2,79}$/;
+
+function inspectionString(value, maxLength = 160) {
+  return typeof value === "string" && value.length > 0 && value.length <= maxLength;
+}
+
+function inspectionCount(value) {
+  return Number.isInteger(value) && value >= 0;
+}
+
+function validManifestRecord(record) {
+  return record && typeof record === "object"
+    && (record.segmentation_version === null || (inspectionString(record.segmentation_version, 80) && INSPECTION_VERSION.test(record.segmentation_version)))
+    && (record.manifest_version === null || inspectionString(record.manifest_version))
+    && (record.status === null || inspectionString(record.status, 80))
+    && (record.total_pages === null || inspectionCount(record.total_pages))
+    && ["OBSERVED", "MALFORMED"].includes(record.metadata_status)
+    && (record.stored_segment_count === undefined || record.stored_segment_count === null || inspectionCount(record.stored_segment_count))
+    && (record.segment_count_status === undefined || ["OBSERVED", "UNKNOWN", "MALFORMED"].includes(record.segment_count_status))
+    && (record.protected_page_exists === undefined || typeof record.protected_page_exists === "boolean" || record.protected_page_exists === null)
+    && (record.protected_page_status === undefined || ["OBSERVED", "UNKNOWN"].includes(record.protected_page_status));
+}
+
+export function isCompletePublicationInspection(value) {
+  if (!value || typeof value !== "object" || value.inspection_scope !== INSPECTION_SCOPE || typeof value.complete !== "boolean" || !inspectionString(value.observed_at)) return false;
+  const identity = value.identity;
+  const pointer = value.activation_pointer;
+  const manifests = value.retained_manifests;
+  const activeManifest = value.active_manifest;
+  const protectedPage = value.protected_page;
+  const sessions = value.active_text_sessions;
+  const consistency = value.consistency;
+  const limitations = value.limitations;
+  if (!identity || identity.slug !== INSPECTION_SLUG || !inspectionString(identity.canonical_title) || !inspectionString(identity.edition_identity) || !inspectionString(identity.package_metadata_status, 80) || !inspectionString(identity.availability_reason, 80)) return false;
+  if (!pointer || !["PRESENT", "ABSENT", "UNKNOWN"].includes(pointer.status) || !["OBSERVED", "MALFORMED", "UNKNOWN"].includes(pointer.metadata_status) || !(pointer.selected_version === null || (inspectionString(pointer.selected_version, 80) && INSPECTION_VERSION.test(pointer.selected_version))) || !(pointer.generation === null || inspectionCount(pointer.generation))) return false;
+  if (!manifests || !["OBSERVED", "UNKNOWN"].includes(manifests.status) || !inspectionCount(manifests.limit) || typeof manifests.truncated !== "boolean" || !inspectionString(manifests.pointer_version_in_returned_records, 80) || !Array.isArray(manifests.records) || manifests.records.length > manifests.limit || !manifests.records.every(validManifestRecord)) return false;
+  if (!activeManifest || !["OBSERVED", "UNKNOWN"].includes(activeManifest.status) || !(activeManifest.active_count === null || inspectionCount(activeManifest.active_count)) || !inspectionString(activeManifest.selection_state, 80) || !(activeManifest.selected === null || validManifestRecord(activeManifest.selected))) return false;
+  if (!protectedPage || !inspectionCount(protectedPage.page_index) || !inspectionString(protectedPage.status, 80) || !(protectedPage.exists === null || typeof protectedPage.exists === "boolean") || !(protectedPage.segmentation_version === undefined || (inspectionString(protectedPage.segmentation_version, 80) && INSPECTION_VERSION.test(protectedPage.segmentation_version)))) return false;
+  if (!sessions || !["OBSERVED", "UNKNOWN"].includes(sessions.status) || !(sessions.active_text_session_count === null || inspectionCount(sessions.active_text_session_count))) return false;
+  if (!consistency || !inspectionString(consistency.status, 100) || typeof consistency.non_atomic !== "boolean" || !inspectionString(consistency.release_readiness, 100)) return false;
+  if (!limitations || typeof limitations.atomic_snapshot !== "boolean" || typeof limitations.storage_or_cdn_certification !== "boolean" || !inspectionCount(limitations.query_max_time_ms) || !inspectionCount(limitations.overall_deadline_ms) || !inspectionString(limitations.note)) return false;
+  return Array.isArray(value.errors) && value.errors.length <= 16 && value.errors.every((error) => error && INSPECTION_COMPONENTS.has(error.component) && typeof error.code === "string" && INSPECTION_CODE.test(error.code));
+}
+
+export function PublicationInspectionAdmin({ administratorContextKey = "unknown-admin" }) {
   const [inspection, setInspection] = useState(null);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
+  const mounted = useRef(false);
+  const request = useRef({ sequence: 0, inFlight: null });
+
+  useEffect(() => {
+    mounted.current = true;
+    request.current.sequence += 1;
+    request.current.inFlight = null;
+    setInspection(null);
+    setFailed(false);
+    setLoading(false);
+    return () => {
+      mounted.current = false;
+      request.current.sequence += 1;
+      request.current.inFlight = null;
+    };
+  }, [administratorContextKey]);
 
   const inspect = async () => {
+    if (request.current.inFlight !== null) return;
+    const sequence = request.current.sequence + 1;
+    request.current.sequence = sequence;
+    request.current.inFlight = sequence;
     setLoading(true);
     setFailed(false);
+    setInspection(null);
     try {
       const { data } = await api.get("/admin/reading-pass/yugalanguriya/publication-inspection");
+      if (!mounted.current || request.current.sequence !== sequence) return;
+      if (!isCompletePublicationInspection(data)) throw new Error("invalid publication inspection response");
       setInspection(data || null);
     } catch (_err) {
+      if (!mounted.current || request.current.sequence !== sequence) return;
+      setInspection(null);
       setFailed(true);
       toast.error("Publication inspection could not be completed.");
     } finally {
-      setLoading(false);
+      if (mounted.current && request.current.sequence === sequence) {
+        request.current.inFlight = null;
+        setLoading(false);
+      }
     }
   };
 
@@ -119,12 +195,23 @@ export function PublicationInspectionAdmin() {
             <InspectionField label="Observation" value={inspection.observed_at ? new Date(inspection.observed_at).toLocaleString() : "UNKNOWN"} />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <InspectionField label="Activation pointer" value={pointer.status} detail={pointer.selected_version || "No selected version"} />
+            <InspectionField label="Activation state" value={pointer.status} detail={pointer.selected_version ? `Version ${pointer.selected_version}; generation ${pointer.generation}` : pointer.metadata_status} />
+            <InspectionField label="Active manifest" value={inspection.active_manifest?.selection_state} detail={inspection.active_manifest?.selected?.segmentation_version || "No selected active manifest"} />
             <InspectionField label="Retained manifests" value={manifests.status} detail={`${manifests.records?.length || 0} returned${manifests.truncated ? "; truncated" : ""}`} />
             <InspectionField label="Active text sessions" value={sessions.status} detail={sessions.active_text_session_count ?? "UNKNOWN"} />
           </div>
           <div className="rounded-lg border border-brand-soft bg-white/55 p-4 text-charcoal-soft">
             Completeness: <span className="font-medium text-charcoal">{inspection.complete ? "complete bounded observation" : "partial or truncated; do not treat as empty success"}</span>. Protected page {inspection.protected_page?.page_index ?? "UNKNOWN"}: {inspection.protected_page?.status === "OBSERVED" ? (inspection.protected_page.exists ? "present" : "not present") : inspection.protected_page?.status || "UNKNOWN"}.
+          </div>
+          <div className="rounded-lg border border-brand-soft bg-white/55 p-4 text-charcoal-soft">
+            Selection consistency: <span className="font-medium text-charcoal">{inspection.consistency?.status || "UNKNOWN"}</span>. Release readiness: <span className="font-medium text-charcoal">{inspection.consistency?.release_readiness || "UNKNOWN"}</span>. The reads are non-atomic and do not certify storage or CDN state.
+          </div>
+          <InspectionManifestTable records={manifests.records || []} />
+          <div className="rounded-lg border border-brand-soft bg-white/55 p-4 text-charcoal-soft" data-testid="publication-inspection-limitations">
+            <div className="font-medium text-charcoal">Observation limitations</div>
+            <p className="mt-1">{inspection.limitations?.note || "UNKNOWN"}</p>
+            <p className="mt-1 text-xs">Query cap: {inspection.limitations?.query_max_time_ms ?? "UNKNOWN"} ms; overall deadline: {inspection.limitations?.overall_deadline_ms ?? "UNKNOWN"} ms.</p>
+            {inspection.errors?.length > 0 && <ul className="mt-2 list-disc pl-5 text-xs" data-testid="publication-inspection-errors">{inspection.errors.map((error, index) => <li key={`${error.component}-${error.code}-${index}`}>{error.component}: {error.code}</li>)}</ul>}
           </div>
         </div>
       )}
@@ -134,6 +221,30 @@ export function PublicationInspectionAdmin() {
 
 function InspectionField({ label, value, detail }) {
   return <div className="rounded-lg border border-brand-soft bg-white/55 p-4"><div className="text-[0.65rem] uppercase tracking-[0.18em] text-charcoal-soft">{label}</div><div className="font-medium text-charcoal mt-1 break-words">{value ?? "UNKNOWN"}</div>{detail !== undefined && <div className="text-xs text-charcoal-soft mt-1 break-words">{detail}</div>}</div>;
+}
+
+function InspectionManifestTable({ records }) {
+  return (
+    <div className="overflow-x-auto rounded-lg border border-brand-soft" data-testid="publication-inspection-manifests">
+      <table className="w-full min-w-[44rem] text-left text-xs">
+        <caption className="sr-only">Retained manifest metadata and bounded segment observations</caption>
+        <thead className="border-b border-brand-soft text-charcoal-soft uppercase tracking-wider">
+          <tr><th className="p-3">Segmentation version</th><th className="p-3">Manifest / status</th><th className="p-3">Declared pages</th><th className="p-3">Stored segments</th><th className="p-3">Protected page</th></tr>
+        </thead>
+        <tbody>
+          {records.length === 0 ? <tr><td className="p-3 text-charcoal-soft" colSpan="5">No retained manifests were returned by this bounded observation.</td></tr> : records.map((record, index) => (
+            <tr className="border-b border-brand-soft/60 last:border-0" key={`${record.segmentation_version || "malformed"}-${index}`}>
+              <td className="p-3 break-all">{record.segmentation_version || "INVALID"}</td>
+              <td className="p-3 break-all">{record.manifest_version || "UNKNOWN"}<span className="block text-charcoal-soft">{record.status || record.metadata_status}</span></td>
+              <td className="p-3">{record.total_pages ?? "UNKNOWN"}</td>
+              <td className="p-3">{record.segment_count_status === "OBSERVED" ? record.stored_segment_count : record.segment_count_status || "UNKNOWN"}</td>
+              <td className="p-3">{record.protected_page_status === "OBSERVED" ? (record.protected_page_exists ? "present" : "not present") : record.protected_page_status || "UNKNOWN"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 function SimpleList({ endpoint, cols, title, testid }) {
