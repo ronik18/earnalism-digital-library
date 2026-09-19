@@ -126,16 +126,17 @@ export function PublicationInspectionAdmin({ administratorContextKey = "unknown-
   const request = useRef({ sequence: 0, inFlight: null });
 
   useEffect(() => {
+    const activeRequest = request.current;
     mounted.current = true;
-    request.current.sequence += 1;
-    request.current.inFlight = null;
+    activeRequest.sequence += 1;
+    activeRequest.inFlight = null;
     setInspection(null);
     setFailed(false);
     setLoading(false);
     return () => {
       mounted.current = false;
-      request.current.sequence += 1;
-      request.current.inFlight = null;
+      activeRequest.sequence += 1;
+      activeRequest.inFlight = null;
     };
   }, [administratorContextKey]);
 
