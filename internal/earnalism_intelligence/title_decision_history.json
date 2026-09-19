@@ -175,7 +175,17 @@
       "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
       "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
-      "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+      "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass",
+      "pr409_runtime_inspection": {
+        "status": "FROZEN_PENDING_RUNTIME_INSPECTION",
+        "frozen_pr": 409,
+        "frozen_head": "85644716e000138f6f76fadb3947992181dea1be",
+        "frozen_tree": "05c7edd78ed01d33e188ab17046eb1e68964908b",
+        "scope_files": 36,
+        "owner_authorized_exception": "one additional same-workspace prerequisite branch and PR; PR409 remains draft and unmerged",
+        "writer_acknowledgement": "sole active canonical writer verified at 2026-09-19T08:48:27Z",
+        "limits": "No manuscript change, rights acceptance, publication activation, audio release, customer mutation, or PR409 merge."
+      }
     },
     "book-0deb35c750": {
       "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
