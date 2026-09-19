@@ -32,7 +32,7 @@ env \
   JWT_SECRET="${JWT_SECRET:?isolated JWT secret is required}" \
   "$PYTHON_BIN" -m pytest -q backend/tests/test_cors_cache_headers.py backend/tests/test_reader_manifest_cache_contract.py
 
-echo "==> Reader segment promotion MongoDB integration"
+echo "==> Reader segment and inspection MongoDB integrations"
 env \
   READER_SEGMENT_MONGO_INTEGRATION=1 \
   READING_PASS_V2_ENABLED=true \
@@ -40,6 +40,8 @@ env \
   REDIS_URL="${REDIS_URL:?isolated Redis URL is required}" \
   JWT_SECRET="${JWT_SECRET:?isolated JWT secret is required}" \
   READING_PASS_TOKEN_SECRET="${READING_PASS_TOKEN_SECRET:?isolated Reading Pass token secret is required}" \
-  "$PYTHON_BIN" -m pytest -q backend/tests/test_reader_segment_promotion_mongo_integration.py
+  "$PYTHON_BIN" -m pytest -q \
+    backend/tests/test_reader_segment_promotion_mongo_integration.py \
+    backend/tests/test_yugalanguriya_publication_inspection.py
 
 npm run regression:ci
