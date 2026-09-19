@@ -252,10 +252,18 @@ from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, suppress
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorGridFSBucket
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
-from pymongo.errors import AutoReconnect, DuplicateKeyError, ServerSelectionTimeoutError
+from pymongo.errors import (
+    AutoReconnect,
+    ConnectionFailure,
+    DuplicateKeyError,
+    ExecutionTimeout,
+    NetworkTimeout,
+    ServerSelectionTimeoutError,
+    WaitQueueTimeoutError,
+)
 try:
     from publication_workflow_adapter import canonical_update
 except ImportError:  # pragma: no cover
@@ -1682,18 +1690,60 @@ def _inspection_manifest_metadata(row: Any, slug: str) -> Optional[dict]:
 async def _inspection_read(deadline: float, component: str, operation) -> tuple[Any, Optional[str]]:
     """Run one bounded metadata read without leaking driver exception text."""
     loop = asyncio.get_running_loop()
+    started_at = loop.time()
     remaining_seconds = deadline - loop.time()
     if remaining_seconds <= 0:
-        return None, "OVERALL_DEADLINE_EXCEEDED"
+        # This component was never dispatched.  Keep that distinct from a
+        # query which ran until the shared deadline, so callers cannot turn a
+        # dependent, unattempted observation into a separate query timeout.
+        return None, "NOT_ATTEMPTED_OVERALL_DEADLINE_EXCEEDED"
     max_time_ms = max(1, min(YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS, int(remaining_seconds * 1000)))
-    timeout_seconds = min(remaining_seconds, max_time_ms / 1000)
+    # maxTimeMS bounds only MongoDB's *server execution*.  Connection-pool
+    # acquisition, server selection, scheduling, and the driver's response
+    # handling are not server execution, so cancelling the whole await at the
+    # same 250 ms makes a healthy capped query look like a query timeout.
+    # The one monotonic inspection deadline remains the client-side bound.
+    task = asyncio.ensure_future(operation(max_time_ms))
     try:
-        return await asyncio.wait_for(operation(max_time_ms), timeout=timeout_seconds), None
-    except asyncio.TimeoutError:
-        code = "OVERALL_DEADLINE_EXCEEDED" if loop.time() >= deadline else "QUERY_TIMEOUT"
+        done, _pending = await asyncio.wait({task}, timeout=remaining_seconds)
+        if task not in done:
+            task.cancel()
+            # Do not leave a cancelled Motor operation detached in the event
+            # loop.  Motor/PyMongo cancellation is awaited before returning;
+            # no retry is scheduled by this helper.
+            with suppress(asyncio.CancelledError, Exception):
+                await task
+            code = "OVERALL_DEADLINE_EXCEEDED"
+        else:
+            return task.result(), None
+    except asyncio.CancelledError:
+        if not task.done():
+            task.cancel()
+            with suppress(asyncio.CancelledError, Exception):
+                await task
+        # A caller cancellation is control flow, not a read failure.
+        raise
+    except ExecutionTimeout:
+        code = "SERVER_EXECUTION_TIMEOUT"
+    except ServerSelectionTimeoutError:
+        code = "SERVER_SELECTION_TIMEOUT"
+    except WaitQueueTimeoutError:
+        code = "CONNECTION_POOL_TIMEOUT"
+    except NetworkTimeout:
+        code = "NETWORK_TIMEOUT"
+    except ConnectionFailure:
+        code = "CONNECTION_FAILURE"
     except Exception:
         code = "READ_FAILED"
-    logger.warning("Yugalanguriya publication inspection unavailable: component=%s code=%s", component, code)
+    elapsed_ms = max(0, int((loop.time() - started_at) * 1000))
+    remaining_ms = max(0, int((deadline - loop.time()) * 1000))
+    logger.warning(
+        "Yugalanguriya publication inspection unavailable: component=%s code=%s elapsed_ms=%s remaining_ms=%s",
+        component,
+        code,
+        elapsed_ms,
+        remaining_ms,
+    )
     return None, code
 
 
