@@ -133,7 +133,10 @@ def _payload(content_id: str, *, page_index: int = 4, device_id: str = "admissio
 
 
 @pytest.mark.parametrize("denied_slug", ["yugalanguriya", "unknown-admission-fixture"])
-def test_real_handler_denied_start_or_transfer_preserves_existing_session_and_accounting(monkeypatch, denied_slug):
+@pytest.mark.parametrize("transfer", [False, True])
+def test_real_handler_denied_start_or_transfer_preserves_existing_session_and_accounting(
+    monkeypatch, denied_slug, transfer
+):
     async def scenario():
         async with _isolated_database() as database:
             await _seed_retained_content(database, denied_slug)
@@ -141,8 +144,9 @@ def test_real_handler_denied_start_or_transfer_preserves_existing_session_and_ac
                 "id": USER["id"], "role": "user", "status": "active",
                 "reading_seconds_balance": 300, "wallet_seconds": 300,
             })
-            # This active session is legitimate fixture state.  A denied
-            # transfer must leave its lease, accounting, and device intact.
+            # This active session is legitimate fixture state, created before
+            # the denied handler operation. A denied start or transfer must
+            # leave its lease, accounting, and device intact.
             existing = await server.reading_pass_service.start_session(
                 user_id=USER["id"], auth_session_id=USER["session_id"],
                 device_id="admission-device-0001", device_label="Existing fixture",
@@ -167,7 +171,7 @@ def test_real_handler_denied_start_or_transfer_preserves_existing_session_and_ac
 
             response = Response()
             with pytest.raises(server.HTTPException) as denied:
-                await server._reading_pass_start(_payload(denied_slug), USER, response, transfer=True)
+                await server._reading_pass_start(_payload(denied_slug), USER, response, transfer=transfer)
             assert denied.value.status_code == 404
             assert denied.value.detail["code"] == "CONTENT_NOT_AUTHORIZED"
             assert not any(name.lower() == b"set-cookie" for name, _value in response.raw_headers)

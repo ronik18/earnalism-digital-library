@@ -42,6 +42,7 @@ env \
   READING_PASS_TOKEN_SECRET="${READING_PASS_TOKEN_SECRET:?isolated Reading Pass token secret is required}" \
   "$PYTHON_BIN" -m pytest -q \
     backend/tests/test_reader_segment_promotion_mongo_integration.py \
+    backend/tests/test_reading_pass_text_admission.py \
     backend/tests/test_reading_pass_text_admission_mongo_integration.py \
     backend/tests/test_yugalanguriya_publication_inspection.py
 
