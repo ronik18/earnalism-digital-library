@@ -1645,6 +1645,10 @@ YUGALANGURIYA_PROTECTED_PAGE_INDEX = PUBLIC_TEXT_PAGE_COUNT + 1
 YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS = 250
 YUGALANGURIYA_INSPECTION_DEADLINE_MS = 1500
 YUGALANGURIYA_INSPECTION_VERSION_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{2,79}$")
+READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT = 64
+READING_PASS_RELEASE_PREFLIGHT_INDEX_BATCH_SIZE = 32
+READING_PASS_RELEASE_PREFLIGHT_QUERY_MAX_TIME_MS = 250
+READING_PASS_RELEASE_PREFLIGHT_DEADLINE_MS = 1500
 
 
 def _inspection_safe_scalar(value: Any) -> Optional[str | int]:
@@ -2015,6 +2019,193 @@ async def _yugalanguriya_publication_inspection() -> dict:
         },
         "protected_page": protected_page,
         "active_text_sessions": sessions,
+    }
+
+
+def _release_preflight_index_status(command_result: Any) -> tuple[dict, Optional[str]]:
+    """Classify only the required revocation-operation index from listIndexes.
+
+    The caller must never receive index names, arbitrary index keys, or driver
+    error text.  A non-exhausted cursor is deliberately partial evidence: the
+    preflight does not issue a follow-up getMore because a fixed first batch is
+    sufficient only when it is complete.
+    """
+    if not isinstance(command_result, Mapping):
+        return {"status": "UNKNOWN", "exact_unique_operation_id_index": None}, "MALFORMED_INDEX_RESPONSE"
+    cursor = command_result.get("cursor")
+    if not isinstance(cursor, Mapping) or not isinstance(cursor.get("firstBatch"), list):
+        return {"status": "UNKNOWN", "exact_unique_operation_id_index": None}, "MALFORMED_INDEX_RESPONSE"
+    if cursor.get("id") not in (0, None):
+        return {"status": "UNKNOWN", "exact_unique_operation_id_index": None}, "INDEX_RESULT_TRUNCATED"
+
+    exact = False
+    for index in cursor["firstBatch"]:
+        if not isinstance(index, Mapping):
+            continue
+        keys = index.get("key")
+        if isinstance(keys, Mapping):
+            key_pairs = list(keys.items())
+        elif isinstance(keys, list):
+            key_pairs = [tuple(pair) for pair in keys if isinstance(pair, (list, tuple)) and len(pair) == 2]
+        else:
+            continue
+        if key_pairs == [("operation_id", 1)] and index.get("unique") is True:
+            exact = True
+            break
+    return {
+        "status": "PRESENT_UNIQUE_EXACT" if exact else "ABSENT_OR_INCOMPATIBLE",
+        "exact_unique_operation_id_index": exact,
+    }, None
+
+
+async def _reading_pass_revocation_release_preflight() -> dict:
+    """Read bounded revocation prerequisites without changing publication state.
+
+    This is a current-instance, non-atomic metadata observation for the
+    protected-text revocation release.  It does not create indexes, seed
+    pointers, prepare publications, inspect manuscript content, or decide
+    release readiness.  Its narrow result avoids requiring a generic database
+    console or exposing database credentials to an administrator.
+    """
+    deadline = asyncio.get_running_loop().time() + (READING_PASS_RELEASE_PREFLIGHT_DEADLINE_MS / 1000)
+    errors: list[dict[str, str]] = []
+    complete = True
+
+    def record_error(component: str, code: str) -> None:
+        nonlocal complete
+        complete = False
+        if not any(error["component"] == component and error["code"] == code for error in errors):
+            errors.append({"component": component, "code": code})
+
+    async def read_operation_index(max_time_ms: int):
+        # Use the driver command directly so MongoDB enforces maxTimeMS for
+        # listIndexes too; index_information() has no server-side timeout.
+        return await db.command({
+            "listIndexes": "reading_pass_text_revocation_operations",
+            "cursor": {"batchSize": READING_PASS_RELEASE_PREFLIGHT_INDEX_BATCH_SIZE},
+            "maxTimeMS": max_time_ms,
+        })
+
+    index_command, index_error = await _inspection_read(deadline, "revocation_operation_index", read_operation_index)
+    if index_error:
+        record_error("revocation_operation_index", index_error)
+        operation_index = {"status": "UNKNOWN", "exact_unique_operation_id_index": None}
+    else:
+        operation_index, index_shape_error = _release_preflight_index_status(index_command)
+        if index_shape_error:
+            record_error("revocation_operation_index", index_shape_error)
+
+    async def read_pointers(max_time_ms: int):
+        return await db.reader_segment_activation_state.find(
+            {},
+            {"_id": 0, "book_slug": 1, "active_segmentation_version": 1, "generation": 1},
+            max_time_ms=max_time_ms,
+        ).sort([("book_slug", 1)]).to_list(READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT + 1)
+
+    pointer_rows, pointer_error = await _inspection_read(deadline, "activation_pointers", read_pointers)
+    if pointer_error:
+        record_error("activation_pointers", pointer_error)
+        pointers_result = {
+            "status": "UNKNOWN", "limit": READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT,
+            "truncated": False, "observed_count": None, "valid_count": None,
+            "compatible_count": None, "incompatible_count": None,
+            "compatibility": "UNKNOWN",
+        }
+    elif not isinstance(pointer_rows, list):
+        record_error("activation_pointers", "MALFORMED_POINTER_RESPONSE")
+        pointers_result = {
+            "status": "UNKNOWN", "limit": READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT,
+            "truncated": False, "observed_count": None, "valid_count": None,
+            "compatible_count": None, "incompatible_count": None,
+            "compatibility": "UNKNOWN",
+        }
+    else:
+        truncated = len(pointer_rows) > READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT
+        if truncated:
+            record_error("activation_pointers", "RESULT_TRUNCATED")
+        rows = pointer_rows[:READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT]
+        valid_pointers: list[dict[str, Any]] = []
+        malformed_count = 0
+        for row in rows:
+            slug = row.get("book_slug") if isinstance(row, Mapping) else None
+            version = _inspection_version_identifier(row.get("active_segmentation_version")) if isinstance(row, Mapping) else None
+            generation = row.get("generation") if isinstance(row, Mapping) else None
+            if not isinstance(slug, str) or not slug or len(slug) > 160 or not version or not isinstance(generation, int) or isinstance(generation, bool) or generation < 0:
+                malformed_count += 1
+                continue
+            valid_pointers.append({"book_slug": slug, "segmentation_version": version})
+        if malformed_count:
+            record_error("activation_pointers", "MALFORMED_POINTER_RECORD")
+
+        manifests_error: Optional[str] = None
+        active_manifests: list[Any] = []
+        if valid_pointers:
+            async def read_active_manifests(max_time_ms: int):
+                return await db.reader_segment_manifests.find(
+                    {"status": "active", "$or": valid_pointers},
+                    {"_id": 0, "book_slug": 1, "segmentation_version": 1, "status": 1},
+                    max_time_ms=max_time_ms,
+                ).to_list(READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT + 1)
+
+            active_manifests, manifests_error = await _inspection_read(deadline, "active_manifests", read_active_manifests)
+            if manifests_error:
+                record_error("active_manifests", manifests_error)
+            elif not isinstance(active_manifests, list):
+                manifests_error = "MALFORMED_MANIFEST_RESPONSE"
+                record_error("active_manifests", manifests_error)
+
+        if manifests_error:
+            compatible_count = None
+            incompatible_count = None
+            compatibility = "UNKNOWN"
+        else:
+            manifests_by_pair: dict[tuple[str, str], int] = {}
+            for manifest in active_manifests:
+                if not isinstance(manifest, Mapping) or manifest.get("status") != "active":
+                    continue
+                slug = manifest.get("book_slug")
+                version = _inspection_version_identifier(manifest.get("segmentation_version"))
+                if isinstance(slug, str) and slug and version:
+                    key = (slug, version)
+                    manifests_by_pair[key] = manifests_by_pair.get(key, 0) + 1
+            compatible_count = sum(
+                manifests_by_pair.get((pointer["book_slug"], pointer["segmentation_version"]), 0) == 1
+                for pointer in valid_pointers
+            )
+            incompatible_count = len(valid_pointers) - compatible_count
+            compatibility = (
+                "ALL_OBSERVED_POINTERS_MATCH_SINGLE_ACTIVE_MANIFEST"
+                if not truncated and malformed_count == 0 and incompatible_count == 0
+                else "INCOMPLETE_OR_INCONSISTENT_POINTER_MANIFEST_STATE"
+            )
+            if incompatible_count:
+                record_error("pointer_manifest_compatibility", "POINTER_ACTIVE_MANIFEST_MISMATCH")
+
+        pointers_result = {
+            "status": "OBSERVED", "limit": READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT,
+            "truncated": truncated, "observed_count": len(rows), "valid_count": len(valid_pointers),
+            "compatible_count": compatible_count, "incompatible_count": incompatible_count,
+            "compatibility": compatibility,
+        }
+
+    return {
+        "inspection_scope": "READING_PASS_REVOCATION_RELEASE_PRECONDITIONS",
+        "observed_at": datetime.now(timezone.utc).isoformat(),
+        "complete": complete,
+        "errors": errors,
+        "runtime": {
+            "startup_db_maintenance_enabled": ENABLE_STARTUP_DB_MAINTENANCE,
+            "instance_scope": "CURRENT_INSTANCE_ONLY" if MULTI_REPLICA_ENABLED else "SINGLE_INSTANCE",
+        },
+        "revocation_operation_index": operation_index,
+        "activation_pointers": pointers_result,
+        "limitations": {
+            "atomic_snapshot": False,
+            "all_replica_certification": False,
+            "query_max_time_ms": READING_PASS_RELEASE_PREFLIGHT_QUERY_MAX_TIME_MS,
+            "overall_deadline_ms": READING_PASS_RELEASE_PREFLIGHT_DEADLINE_MS,
+            "note": "Independent, bounded metadata reads only; this does not create an index, seed pointers, certify every replica, or make a release decision.",
+        },
     }
 
 
@@ -9826,6 +10017,12 @@ async def admin_reading_pass_active_segments(slug: str, admin=Depends(require_ad
 async def admin_inspect_yugalanguriya_publication(_=Depends(require_admin)):
     """Return only bounded non-secret Yugalanguriya publication metadata."""
     return await _yugalanguriya_publication_inspection()
+
+
+@api.get("/admin/reading-pass/release-preflight")
+async def admin_reading_pass_revocation_release_preflight(_=Depends(require_admin)):
+    """Return bounded, read-only prerequisites for a text-revocation release."""
+    return await _reading_pass_revocation_release_preflight()
 
 
 @api.post("/admin/reading-pass/books/{slug}/segments")

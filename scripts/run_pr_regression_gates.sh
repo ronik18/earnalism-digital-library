@@ -45,6 +45,7 @@ env \
     backend/tests/test_reading_pass_service_concurrency.py \
     backend/tests/test_reading_pass_text_admission.py \
     backend/tests/test_reading_pass_text_admission_mongo_integration.py \
+    backend/tests/test_reading_pass_revocation_release_preflight.py \
     backend/tests/test_yugalanguriya_publication_inspection.py
 
 npm run regression:ci

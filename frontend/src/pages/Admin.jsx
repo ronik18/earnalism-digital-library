@@ -75,6 +75,8 @@ const INSPECTION_SLUG = "yugalanguriya";
 const INSPECTION_COMPONENTS = new Set(["package_identity", "activation_pointer", "retained_manifests", "active_manifest", "stored_segments", "retained_protected_page", "active_text_sessions", "selection_consistency"]);
 const INSPECTION_CODE = /^[A-Z_]{3,64}$/;
 const INSPECTION_VERSION = /^[A-Za-z0-9][A-Za-z0-9._:-]{2,79}$/;
+const RELEASE_PREFLIGHT_SCOPE = "READING_PASS_REVOCATION_RELEASE_PRECONDITIONS";
+const RELEASE_PREFLIGHT_COMPONENTS = new Set(["revocation_operation_index", "activation_pointers", "active_manifests", "pointer_manifest_compatibility"]);
 
 function inspectionString(value, maxLength = 160) {
   return typeof value === "string" && value.length > 0 && value.length <= maxLength;
@@ -116,6 +118,19 @@ export function isCompletePublicationInspection(value) {
   if (!consistency || !inspectionString(consistency.status, 100) || typeof consistency.non_atomic !== "boolean" || !inspectionString(consistency.release_readiness, 100)) return false;
   if (!limitations || typeof limitations.atomic_snapshot !== "boolean" || typeof limitations.storage_or_cdn_certification !== "boolean" || !inspectionCount(limitations.query_max_time_ms) || !inspectionCount(limitations.overall_deadline_ms) || !inspectionString(limitations.note)) return false;
   return Array.isArray(value.errors) && value.errors.length <= 16 && value.errors.every((error) => error && INSPECTION_COMPONENTS.has(error.component) && typeof error.code === "string" && INSPECTION_CODE.test(error.code));
+}
+
+export function isCompleteReadingPassReleasePreflight(value) {
+  if (!value || typeof value !== "object" || value.inspection_scope !== RELEASE_PREFLIGHT_SCOPE || typeof value.complete !== "boolean" || !inspectionString(value.observed_at)) return false;
+  const runtime = value.runtime;
+  const index = value.revocation_operation_index;
+  const pointers = value.activation_pointers;
+  const limitations = value.limitations;
+  if (!runtime || typeof runtime.startup_db_maintenance_enabled !== "boolean" || !["CURRENT_INSTANCE_ONLY", "SINGLE_INSTANCE"].includes(runtime.instance_scope)) return false;
+  if (!index || !["PRESENT_UNIQUE_EXACT", "ABSENT_OR_INCOMPATIBLE", "UNKNOWN"].includes(index.status) || !(typeof index.exact_unique_operation_id_index === "boolean" || index.exact_unique_operation_id_index === null)) return false;
+  if (!pointers || !["OBSERVED", "UNKNOWN"].includes(pointers.status) || !inspectionCount(pointers.limit) || typeof pointers.truncated !== "boolean" || !(pointers.observed_count === null || inspectionCount(pointers.observed_count)) || !(pointers.valid_count === null || inspectionCount(pointers.valid_count)) || !(pointers.compatible_count === null || inspectionCount(pointers.compatible_count)) || !(pointers.incompatible_count === null || inspectionCount(pointers.incompatible_count)) || !["ALL_OBSERVED_POINTERS_MATCH_SINGLE_ACTIVE_MANIFEST", "INCOMPLETE_OR_INCONSISTENT_POINTER_MANIFEST_STATE", "UNKNOWN"].includes(pointers.compatibility)) return false;
+  if (!limitations || typeof limitations.atomic_snapshot !== "boolean" || typeof limitations.all_replica_certification !== "boolean" || !inspectionCount(limitations.query_max_time_ms) || !inspectionCount(limitations.overall_deadline_ms) || !inspectionString(limitations.note)) return false;
+  return Array.isArray(value.errors) && value.errors.length <= 16 && value.errors.every((error) => error && RELEASE_PREFLIGHT_COMPONENTS.has(error.component) && typeof error.code === "string" && INSPECTION_CODE.test(error.code));
 }
 
 export function PublicationInspectionAdmin({ administratorContextKey = "unknown-admin" }) {
@@ -172,6 +187,7 @@ export function PublicationInspectionAdmin({ administratorContextKey = "unknown-
   const sessions = inspection?.active_text_sessions || {};
 
   return (
+    <>
     <section className="card-elegant p-6 sm:p-8" data-testid="admin-publication-inspection">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
@@ -213,6 +229,93 @@ export function PublicationInspectionAdmin({ administratorContextKey = "unknown-
             <p className="mt-1">{inspection.limitations?.note || "UNKNOWN"}</p>
             <p className="mt-1 text-xs">Query cap: {inspection.limitations?.query_max_time_ms ?? "UNKNOWN"} ms; overall deadline: {inspection.limitations?.overall_deadline_ms ?? "UNKNOWN"} ms.</p>
             {inspection.errors?.length > 0 && <ul className="mt-2 list-disc pl-5 text-xs" data-testid="publication-inspection-errors">{inspection.errors.map((error, index) => <li key={`${error.component}-${error.code}-${index}`}>{error.component}: {error.code}</li>)}</ul>}
+          </div>
+        </div>
+      )}
+    </section>
+    <ReadingPassReleasePreflightAdmin administratorContextKey={administratorContextKey} />
+    </>
+  );
+}
+
+export function ReadingPassReleasePreflightAdmin({ administratorContextKey = "unknown-admin" }) {
+  const [preflight, setPreflight] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const mounted = useRef(false);
+  const request = useRef({ sequence: 0, inFlight: null });
+
+  useEffect(() => {
+    const activeRequest = request.current;
+    mounted.current = true;
+    activeRequest.sequence += 1;
+    activeRequest.inFlight = null;
+    setPreflight(null);
+    setFailed(false);
+    setLoading(false);
+    return () => {
+      mounted.current = false;
+      activeRequest.sequence += 1;
+      activeRequest.inFlight = null;
+    };
+  }, [administratorContextKey]);
+
+  const inspect = async () => {
+    if (request.current.inFlight !== null) return;
+    const sequence = request.current.sequence + 1;
+    request.current.sequence = sequence;
+    request.current.inFlight = sequence;
+    setLoading(true);
+    setFailed(false);
+    setPreflight(null);
+    try {
+      const { data } = await api.get("/admin/reading-pass/release-preflight");
+      if (!mounted.current || request.current.sequence !== sequence) return;
+      if (!isCompleteReadingPassReleasePreflight(data)) throw new Error("invalid release preflight response");
+      setPreflight(data);
+    } catch (_err) {
+      if (!mounted.current || request.current.sequence !== sequence) return;
+      setPreflight(null);
+      setFailed(true);
+      toast.error("Release preflight could not be completed.");
+    } finally {
+      if (mounted.current && request.current.sequence === sequence) {
+        request.current.inFlight = null;
+        setLoading(false);
+      }
+    }
+  };
+
+  const index = preflight?.revocation_operation_index || {};
+  const pointers = preflight?.activation_pointers || {};
+
+  return (
+    <section className="card-elegant p-6 sm:p-8 mt-8" data-testid="admin-reading-pass-release-preflight">
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <div>
+          <div className="overline">Read-only revocation preflight</div>
+          <h2 className="font-serif-display text-2xl text-burgundy mt-1">Protected-text release prerequisites</h2>
+          <p className="text-sm text-charcoal-soft mt-2 max-w-3xl">This checks only the current instance’s bounded operation-index and active-pointer metadata. It cannot create indexes, repair pointers, certify every replica, or authorize a release.</p>
+        </div>
+        <button onClick={inspect} className="btn-secondary" disabled={loading} data-testid="reading-pass-release-preflight-run">
+          {loading ? "Inspecting…" : "Inspect release prerequisites"}
+        </button>
+      </div>
+      {!preflight && !failed && <p className="text-sm text-charcoal-soft mt-6">No release-preflight observation has been run in this browser session.</p>}
+      {failed && <p className="text-sm text-rose-800 mt-6">The release preflight could not complete. No prerequisite has been inferred.</p>}
+      {preflight && (
+        <div className="mt-6 space-y-5 text-sm" data-testid="reading-pass-release-preflight-result">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <InspectionField label="Operation-ID index" value={index.status} detail={index.exact_unique_operation_id_index === null ? "UNKNOWN" : index.exact_unique_operation_id_index ? "exact unique index observed" : "required exact unique index not observed"} />
+            <InspectionField label="Active pointers" value={pointers.compatibility} detail={pointers.status === "OBSERVED" ? `${pointers.compatible_count ?? "UNKNOWN"} compatible; ${pointers.incompatible_count ?? "UNKNOWN"} incompatible` : "UNKNOWN"} />
+            <InspectionField label="Startup maintenance" value={preflight.runtime?.startup_db_maintenance_enabled ? "enabled on this instance" : "disabled on this instance"} detail={preflight.runtime?.instance_scope || "UNKNOWN"} />
+          </div>
+          <div className="rounded-lg border border-brand-soft bg-white/55 p-4 text-charcoal-soft">Observation completeness: <span className="font-medium text-charcoal">{preflight.complete ? "complete bounded observation" : "partial or inconsistent; do not infer a pass"}</span>. {pointers.truncated ? "Pointer results were truncated." : "Pointer result bound was not truncated."}</div>
+          <div className="rounded-lg border border-brand-soft bg-white/55 p-4 text-charcoal-soft" data-testid="reading-pass-release-preflight-limitations">
+            <div className="font-medium text-charcoal">Observation limitations</div>
+            <p className="mt-1">{preflight.limitations?.note || "UNKNOWN"}</p>
+            <p className="mt-1 text-xs">Query cap: {preflight.limitations?.query_max_time_ms ?? "UNKNOWN"} ms; overall deadline: {preflight.limitations?.overall_deadline_ms ?? "UNKNOWN"} ms.</p>
+            {preflight.errors?.length > 0 && <ul className="mt-2 list-disc pl-5 text-xs" data-testid="reading-pass-release-preflight-errors">{preflight.errors.map((error, indexNumber) => <li key={`${error.component}-${error.code}-${indexNumber}`}>{error.component}: {error.code}</li>)}</ul>}
           </div>
         </div>
       )}

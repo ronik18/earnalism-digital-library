@@ -93,6 +93,12 @@ The operation writer requires the deployed, globally unique
 Startup `create_index` code and test fixture indexes are not production
 attestation: a missing or unreadable index is a safe
 `REVOCATION_SCHEMA_UNAVAILABLE` refusal with no pointer/session/ledger change.
+An authenticated administrator can use the fixed
+`GET /api/admin/reading-pass/release-preflight` observation to read only the
+current instance's exact revocation-operation-index status and bounded
+pointer-to-active-manifest compatibility. It never creates an index, seeds a
+pointer, reads manuscripts, or makes a release decision; a truncated,
+malformed, timed-out, or multi-replica observation remains unknown or partial.
 A partial index does not satisfy this prerequisite because it may exclude
 operation records from the global uniqueness guarantee.
 
@@ -168,6 +174,7 @@ Admin migration:
 
 - `POST /api/admin/reading-pass/books/{slug}/segments`
 - `GET /api/admin/reading-pass/books/{slug}/segments/active`
+- `GET /api/admin/reading-pass/release-preflight` (read-only, bounded revocation prerequisite observation)
 - `POST /api/admin/reading-pass/books/{slug}/segments/promote`
 - `POST /api/admin/reading-pass/books/{slug}/segments/bootstrap` (only for a title with no active pointer)
 - `POST /api/admin/reading-pass/books/{slug}/text-revocation` (one-way, server-timed text revocation bound to the current active pointer and manifest)

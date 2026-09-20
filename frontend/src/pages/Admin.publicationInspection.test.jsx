@@ -18,9 +18,9 @@ jest.mock("../components/Admin/PublishingWorkflowPanel", () => () => null);
 jest.mock("../lib/images", () => ({ normalizeImageUrl: jest.fn(), optimizedImageUrl: jest.fn() }));
 jest.mock("../hooks/useSEO", () => jest.fn());
 jest.mock("sonner", () => ({ toast: { error: jest.fn() } }));
-jest.mock("react-router-dom", () => ({ Link: ({ children }) => <a>{children}</a>, Navigate: () => null, useNavigate: () => jest.fn() }));
+jest.mock("react-router-dom", () => ({ Link: ({ children }) => <a>{children}</a>, Navigate: () => null, useNavigate: () => jest.fn() }), { virtual: true });
 
-import { PublicationInspectionAdmin } from "./Admin";
+import { PublicationInspectionAdmin, ReadingPassReleasePreflightAdmin } from "./Admin";
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -60,6 +60,27 @@ function fixture(overrides = {}) {
   };
 }
 
+function releasePreflightFixture(overrides = {}) {
+  return {
+    inspection_scope: "READING_PASS_REVOCATION_RELEASE_PRECONDITIONS",
+    observed_at: "2026-09-20T10:00:00.000Z",
+    complete: true,
+    errors: [],
+    runtime: { startup_db_maintenance_enabled: false, instance_scope: "SINGLE_INSTANCE" },
+    revocation_operation_index: { status: "PRESENT_UNIQUE_EXACT", exact_unique_operation_id_index: true },
+    activation_pointers: {
+      status: "OBSERVED", limit: 64, truncated: false, observed_count: 2, valid_count: 2,
+      compatible_count: 2, incompatible_count: 0,
+      compatibility: "ALL_OBSERVED_POINTERS_MATCH_SINGLE_ACTIVE_MANIFEST",
+    },
+    limitations: {
+      atomic_snapshot: false, all_replica_certification: false, query_max_time_ms: 250,
+      overall_deadline_ms: 1500, note: "Independent bounded metadata reads.",
+    },
+    ...overrides,
+  };
+}
+
 function deferred() {
   let resolve;
   let reject;
@@ -83,6 +104,20 @@ function render(context = "admin-one") {
     root,
     click() { act(() => container.querySelector('[data-testid="publication-inspection-run"]').dispatchEvent(new MouseEvent("click", { bubbles: true }))); },
     rerender(nextContext) { act(() => root.render(<PublicationInspectionAdmin administratorContextKey={nextContext} />)); },
+    async cleanup() { await act(async () => root.unmount()); container.remove(); },
+  };
+}
+
+function renderReleasePreflight(context = "admin-one") {
+  const container = document.createElement("div");
+  document.body.appendChild(container);
+  const root = createRoot(container);
+  act(() => root.render(<ReadingPassReleasePreflightAdmin administratorContextKey={context} />));
+  return {
+    container,
+    root,
+    click() { act(() => container.querySelector('[data-testid="reading-pass-release-preflight-run"]').dispatchEvent(new MouseEvent("click", { bubbles: true }))); },
+    rerender(nextContext) { act(() => root.render(<ReadingPassReleasePreflightAdmin administratorContextKey={nextContext} />)); },
     async cleanup() { await act(async () => root.unmount()); container.remove(); },
   };
 }
@@ -144,6 +179,36 @@ describe("PublicationInspectionAdmin", () => {
 
     expect(mounted.container.querySelector('[data-testid="publication-inspection-result"]')).toBeNull();
     expect(mounted.container.textContent).toContain("No inspection has been run in this browser session.");
+    await mounted.cleanup();
+  });
+
+  test("renders bounded revocation prerequisites without treating malformed values as a pass", async () => {
+    mockGet.mockResolvedValue({ data: releasePreflightFixture({ complete: false, errors: [{ component: "activation_pointers", code: "RESULT_TRUNCATED" }] }) });
+    const mounted = renderReleasePreflight();
+    mounted.click();
+    mounted.click();
+    await flush();
+
+    expect(mockGet).toHaveBeenCalledTimes(1);
+    expect(mockGet).toHaveBeenCalledWith("/admin/reading-pass/release-preflight");
+    expect(mounted.container.textContent).toContain("PRESENT_UNIQUE_EXACT");
+    expect(mounted.container.textContent).toContain("partial or inconsistent; do not infer a pass");
+    expect(mounted.container.textContent).toContain("activation_pointers: RESULT_TRUNCATED");
+    await mounted.cleanup();
+  });
+
+  test("clears stale release-preflight data after failure and ignores an old administrator response", async () => {
+    mockGet.mockResolvedValueOnce({ data: releasePreflightFixture() }).mockRejectedValueOnce(new Error("synthetic secret: no render"));
+    const mounted = renderReleasePreflight();
+    mounted.click();
+    await flush();
+    expect(mounted.container.textContent).toContain("PRESENT_UNIQUE_EXACT");
+
+    mounted.click();
+    await flush();
+    expect(mounted.container.querySelector('[data-testid="reading-pass-release-preflight-result"]')).toBeNull();
+    expect(mounted.container.textContent).toContain("The release preflight could not complete. No prerequisite has been inferred.");
+    expect(mounted.container.textContent).not.toContain("synthetic secret");
     await mounted.cleanup();
   });
 });
