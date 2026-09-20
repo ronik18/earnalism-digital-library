@@ -251,7 +251,9 @@ class ReadingPassService:
             ) from exc
         required_key = [("operation_id", 1)]
         if not any(
-            bool(spec.get("unique")) and list(spec.get("key") or []) == required_key
+            spec.get("unique") is True
+            and list(spec.get("key") or []) == required_key
+            and "partialFilterExpression" not in spec
             for spec in indexes.values()
             if isinstance(spec, Mapping)
         ):

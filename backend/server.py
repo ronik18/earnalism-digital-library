@@ -9952,8 +9952,20 @@ async def admin_promote_reading_pass_segments(slug: str, payload: ReadingPassSeg
             raise HTTPException(status_code=503, detail={"code": "SEGMENT_AUTHORITY_UNAVAILABLE", "message": "The publication authority history could not be verified."})
         try:
             current_revocation = reading_pass_service._text_revocation(state)
+            retained_revocations = []
+            for entry in historical_revocations:
+                if not isinstance(entry, dict) or not isinstance(entry.get("revocation"), dict):
+                    raise ReadingPassError("CONTENT_AUTHORITY_UNAVAILABLE", 503, "The publication authority history could not be verified.")
+                retained_revocations.append(reading_pass_service._text_revocation({"text_revocation": entry["revocation"]}))
         except ReadingPassError as exc:
             raise _reading_pass_http_error(exc) from exc
+        if any(
+            record
+            and record["segmentation_version"] == payload.target_segmentation_version
+            and record["manifest_version"] == target.get("version")
+            for record in [current_revocation, *retained_revocations]
+        ):
+            raise HTTPException(status_code=409, detail={"code": "TEXT_PUBLICATION_ALREADY_REVOKED", "message": "A revoked publication cannot be reactivated by promotion or rollback."})
         now = datetime.now(timezone.utc)
         pointer_update = {
             "active_segmentation_version": payload.target_segmentation_version,
@@ -10069,26 +10081,10 @@ async def admin_revoke_reading_pass_text_publication(
     canonical_slug = str(slug or "").strip().lower()
     if not canonical_slug:
         raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Book not found."})
-    state = await db.reader_segment_activation_state.find_one(
-        {"book_slug": canonical_slug},
-        {"_id": 0, "active_segmentation_version": 1, "generation": 1},
-    )
-    active_manifest = await _active_reader_segment_manifest(canonical_slug)
-    if (
-        not state
-        or not active_manifest
-        or state.get("active_segmentation_version") != active_manifest.get("segmentation_version")
-        or state.get("active_segmentation_version") != payload.expected_segmentation_version
-        or state.get("generation") != payload.expected_activation_generation
-        or active_manifest.get("version") != payload.expected_manifest_version
-    ):
-        raise HTTPException(
-            status_code=409,
-            detail={
-                "code": "STALE_PUBLICATION_AUTHORITY",
-                "message": "The active canonical publication changed; refresh before revoking it.",
-            },
-        )
+    # The service resolves an exact durable operation replay before checking
+    # current authority in the same transaction. A pre-transaction pointer
+    # check here would hide a committed result after a subsequent promotion.
+    # New intents still require the exact active pointer and manifest there.
     try:
         return await reading_pass_service.revoke_text_publication(
             book_slug=canonical_slug,

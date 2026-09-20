@@ -63,6 +63,8 @@ async def _create_indexes(database) -> None:
     await database.users.create_index("id", unique=True)
     await database.reading_pass_sessions.create_index("active_lock", unique=True, sparse=True)
     await database.reading_pass_sessions.create_index("id", unique=True)
+    await database.reading_pass_heartbeats.create_index([("session_id", 1), ("idempotency_key", 1)], unique=True)
+    await database.reading_pass_heartbeats.create_index([("session_id", 1), ("sequence", 1)], unique=True)
     await database.reading_pass_devices.create_index([("user_id", 1), ("device_id", 1)], unique=True)
     await database.wallet_ledger.create_index("idempotency_key", unique=True)
 
@@ -485,6 +487,20 @@ def test_real_mongo_revocation_operation_id_is_global_and_schema_absence_refuses
             ) == 0
 
             await database.reading_pass_text_revocation_operations.drop_index("operation_id_1")
+            await database.reading_pass_text_revocation_operations.create_index(
+                "operation_id", unique=True, partialFilterExpression={"approved": True}
+            )
+            with pytest.raises(ReadingPassError) as partial:
+                await _revoke_bound_text(second, "operation-id-second", operation_id="partial-index-refusal")
+            assert partial.value.code == "REVOCATION_SCHEMA_UNAVAILABLE"
+            assert await database.reading_pass_text_revocation_operations.count_documents(
+                {"operation_id": "partial-index-refusal"}
+            ) == 0
+            assert await database.reader_segment_activation_state.count_documents(
+                {"book_slug": "operation-id-second", "text_revocation": {"$exists": True}}
+            ) == 0
+
+            await database.reading_pass_text_revocation_operations.drop_index("operation_id_1")
             with pytest.raises(ReadingPassError) as unavailable:
                 await server.reading_pass_service.revoke_text_publication(
                     book_slug="operation-id-second",
@@ -574,6 +590,61 @@ def test_revoked_current_version_archives_evidence_when_a_replacement_is_separat
                 lease_token=old_token, content_type="text", content_id=slug,
             )
             assert retained_authorized["scope"]["segmentation_version"] == "fixture-v0"
+            # A lost revocation response must remain recoverable through the
+            # ordinary admin handler after a later, separately permitted
+            # promotion. Its durable operation result is historical evidence,
+            # never fresh authority over the replacement publication.
+            before_replay = {
+                name: await _rows(database[name]) for name in (
+                    "reader_segment_activation_state", "reading_pass_sessions",
+                    "users", "wallet_ledger", "wallet_transactions", "reading_pass_audit",
+                    "reading_pass_text_revocation_operations", "reader_segment_manifests",
+                    "reader_segment_activation_operations",
+                )
+            }
+            replay = await server.admin_revoke_reading_pass_text_publication(
+                slug,
+                server.ReadingPassTextPublicationRevocationIn(
+                    expected_activation_generation=1,
+                    expected_segmentation_version="fixture-v1",
+                    expected_manifest_version=current["version"],
+                    operation_id="replace-revoked-v1", reason="fixture withdrawal",
+                ),
+                {"id": "fixture-admin"},
+            )
+            assert replay["duplicate"] is True
+            assert replay["segmentation_version"] == "fixture-v1"
+            assert before_replay == {
+                name: await _rows(database[name]) for name in before_replay
+            }
+            with pytest.raises(server.HTTPException) as revoked_rollback:
+                await server.admin_promote_reading_pass_segments(
+                    slug,
+                    server.ReadingPassSegmentPromotionIn(
+                        target_segmentation_version="fixture-v1", expected_active_segmentation_version="fixture-v2",
+                        expected_activation_generation=2, operation_id="rollback-to-revoked-v1",
+                    ),
+                    {"email": "fixture@example.test"},
+                )
+            assert revoked_rollback.value.detail["code"] == "TEXT_PUBLICATION_ALREADY_REVOKED"
+            assert before_replay == {
+                name: await _rows(database[name]) for name in before_replay
+            }
+            with pytest.raises(server.HTTPException) as stale_new_operation:
+                await server.admin_revoke_reading_pass_text_publication(
+                    slug,
+                    server.ReadingPassTextPublicationRevocationIn(
+                        expected_activation_generation=1,
+                        expected_segmentation_version="fixture-v1",
+                        expected_manifest_version=current["version"],
+                        operation_id="new-operation-against-old-pointer", reason="fixture withdrawal",
+                    ),
+                    {"id": "fixture-admin"},
+                )
+            assert stale_new_operation.value.detail["code"] == "STALE_PUBLICATION_AUTHORITY"
+            assert before_replay == {
+                name: await _rows(database[name]) for name in before_replay
+            }
 
     asyncio.run(scenario())
 
@@ -768,3 +839,86 @@ def test_real_mongo_stop_revocation_orderings_preserve_one_interval_each(monkeyp
 
     asyncio.run(conflict_ordering())
     asyncio.run(stop_first_ordering())
+
+
+def test_real_mongo_committed_revocation_with_delayed_unknown_response_retries_only_commit(monkeypatch):
+    """Inject a lost acknowledgement after Mongo commits, not a fake commit."""
+    async def scenario():
+        from pymongo.errors import OperationFailure
+
+        async with _isolated_database() as database:
+            slug = "delayed-commit-fixture"
+            manifest = await _seed_retained_content(database, slug)
+            started = await _start_bound_text_session(database, manifest, slug)
+            began = datetime(2026, 1, 1, tzinfo=timezone.utc)
+            cutoff = began.replace(second=7)
+            await database.reading_pass_sessions.update_one(
+                {"id": started["session_id"]},
+                {"$set": {"last_billed_at": began, "lease_expires_at": began.replace(second=20)}},
+            )
+            monkeypatch.setattr("backend.reading_pass_service._now", lambda: cutoff)
+            committed = asyncio.Event()
+            release_response = asyncio.Event()
+            original_client = server.reading_pass_service.client
+
+            class DelayedAcknowledgementClient:
+                sessions = 0
+                commit_calls = 0
+
+                async def start_session(self):
+                    self.sessions += 1
+                    session = await original_client.start_session()
+                    if self.sessions == 1:
+                        original_commit = session.commit_transaction
+
+                        async def delayed_commit():
+                            self.commit_calls += 1
+                            await original_commit()
+                            if self.commit_calls == 1:
+                                committed.set()
+                                await asyncio.wait_for(release_response.wait(), timeout=5)
+                                raise OperationFailure(
+                                    "isolated lost commit acknowledgement", code=91,
+                                    details={"errorLabels": ["UnknownTransactionCommitResult"]},
+                                )
+
+                        monkeypatch.setattr(session, "commit_transaction", delayed_commit)
+                    return session
+
+            observed = DelayedAcknowledgementClient()
+            server.reading_pass_service.client = observed
+            task = asyncio.create_task(_revoke_bound_text(
+                manifest, slug, operation_id="delayed-committed-revocation"
+            ))
+            try:
+                await asyncio.wait_for(committed.wait(), timeout=5)
+                assert not task.done()
+                persisted = await database.reading_pass_text_revocation_operations.find_one(
+                    {"operation_id": "delayed-committed-revocation"}, {"_id": 0}
+                )
+                assert persisted["result"]["deducted_seconds"] == 7
+                assert await database.wallet_ledger.count_documents({}) == 1
+                monkeypatch.setattr("backend.reading_pass_service._now", lambda: began.replace(second=9))
+                with pytest.raises(ReadingPassError) as renewal:
+                    await server.reading_pass_service.renew_lease(
+                        user_id=USER["id"], auth_session_id=USER["session_id"],
+                        session_id=started["session_id"], lease_token=started["lease_token"],
+                        lease_version=1, sequence=1, idempotency_key="delayed-revoke-renewal", active=True,
+                    )
+                assert renewal.value.code == "LEASE_EXPIRED"
+            finally:
+                release_response.set()
+                result = await asyncio.wait_for(task, timeout=5)
+            assert observed.commit_calls == 2
+            assert result["cutoff_at"] == cutoff.isoformat()
+            assert result["deducted_seconds"] == 7
+            assert await database.reading_pass_text_revocation_operations.count_documents({}) == 1
+            assert await database.wallet_ledger.count_documents({}) == 1
+            assert await database.wallet_transactions.count_documents({}) == 1
+            session = await database.reading_pass_sessions.find_one({"id": started["session_id"]})
+            user = await database.users.find_one({"id": USER["id"]})
+            assert session["seconds_consumed"] == 7
+            assert user["reading_seconds_balance"] == user["wallet_seconds"] == 293
+            assert ensure_utc(session["billing_cutoff_at"]) == cutoff
+
+    asyncio.run(scenario())

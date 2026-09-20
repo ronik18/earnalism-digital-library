@@ -566,14 +566,19 @@ def test_legacy_heartbeat_receipt_returns_safe_stale_without_replaying_access(
     asyncio.run(scenario())
 
 
-def test_text_revocation_refuses_when_operation_schema_index_is_missing():
+@pytest.mark.parametrize("indexes", [
+    {},
+    {"operation_id_1": {"key": [("operation_id", 1)], "unique": True,
+                        "partialFilterExpression": {"approved": True}}},
+])
+def test_text_revocation_refuses_when_operation_schema_index_is_missing(indexes):
     async def scenario():
         database = Database(balance=120)
         service = ReadingPassService(db=database, client=Client(), config=ReadingPassConfig(), token_secret="secret")
         await _start_revocable_text(service, database)
 
         async def missing_index_information():
-            return {}
+            return indexes
 
         database.reading_pass_text_revocation_operations.index_information = missing_index_information
         with pytest.raises(ReadingPassError) as unavailable:

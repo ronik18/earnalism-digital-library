@@ -79,12 +79,22 @@ accepts a client cutoff nor un-revokes, activates, accepts rights, or edits
 historical ledger entries. A reused operation ID with different intent fails
 closed. Transaction retries are bounded; an uncertain Mongo commit retries the
 same commit rather than replaying the balance operation.
+The authenticated handler delegates replay and current-pointer validation to
+that transaction. An exact completed operation remains readable after a later
+promotion; a new operation with the old pointer still fails closed and cannot
+revoke the replacement.
+Promotion or rollback cannot reactivate the same immutable publication recorded
+in current or historical revocation evidence. A separately permitted replacement
+or an unrevoked retained version remains eligible under the normal safeguards;
+there is no implicit un-revoke operation.
 
 The operation writer requires the deployed, globally unique
 `reading_pass_text_revocation_operations.operation_id` index before it writes.
 Startup `create_index` code and test fixture indexes are not production
 attestation: a missing or unreadable index is a safe
 `REVOCATION_SCHEMA_UNAVAILABLE` refusal with no pointer/session/ledger change.
+A partial index does not satisfy this prerequisite because it may exclude
+operation records from the global uniqueness guarantee.
 
 Heartbeat receipts created before full renewal intent was recorded lack
 `active` and `playback_state`. After the usual ownership, lease, and terminal
