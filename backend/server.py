@@ -10296,16 +10296,54 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
         page_index = int(payload.canonical_page_index or 0)
         if page_index <= PUBLIC_TEXT_PAGE_COUNT:
             return {"status": "Preview", "balance_seconds": await _cached_user_wallet_seconds(user["id"]), "preview": True}
-        manifest = await _active_reader_segment_manifest(payload.content_id)
+        # Retained segment records are not Reader authority.  Resolve the
+        # current controlled-publication decision before touching a manifest,
+        # page record, or the metered session service.  In particular, a held
+        # title's retained records must not be sufficient to start or transfer
+        # a protected Reading Pass session.
+        try:
+            book = await _reader_book_access_doc(payload.content_id)
+        except HTTPException:
+            raise
+        except Exception as exc:
+            logger.warning(
+                "Reading Pass text admission authority unavailable: error_type=%s",
+                type(exc).__name__,
+            )
+            raise HTTPException(
+                status_code=503,
+                detail={
+                    "code": "CONTENT_AUTHORITY_UNAVAILABLE",
+                    "message": "Reader availability could not be verified.",
+                },
+            ) from exc
+        if not book:
+            raise HTTPException(
+                status_code=404,
+                detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Book not found."},
+            )
+        canonical_content_id = str(book.get("slug") or "").strip().lower()
+        if not canonical_content_id:
+            logger.warning(
+                "Reading Pass text admission authority returned no canonical identity"
+            )
+            raise HTTPException(
+                status_code=503,
+                detail={
+                    "code": "CONTENT_AUTHORITY_UNAVAILABLE",
+                    "message": "Reader availability could not be verified.",
+                },
+            )
+        manifest = await _active_reader_segment_manifest(canonical_content_id)
         if manifest:
             manifest = await _stored_reader_segment_manifest(
-                payload.content_id, manifest["segmentation_version"]
+                canonical_content_id, manifest["segmentation_version"]
             )
         exists = bool(
             manifest
             and await db.reader_content_segments.find_one(
                 {
-                    "book_slug": payload.content_id,
+                    "book_slug": canonical_content_id,
                     "page_index": page_index,
                     "segmentation_version": manifest["segmentation_version"],
                 },
@@ -10336,7 +10374,7 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             device_id=payload.device_id,
             device_label=payload.device_label or "Reader device",
             content_type=content_type,
-            content_id=payload.content_id,
+            content_id=canonical_content_id if content_type == "text" else payload.content_id,
             scope=scope,
             transfer=transfer,
         )
