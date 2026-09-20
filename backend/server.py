@@ -2049,7 +2049,17 @@ def _release_preflight_index_status(command_result: Any) -> tuple[dict, Optional
             key_pairs = [tuple(pair) for pair in keys if isinstance(pair, (list, tuple)) and len(pair) == 2]
         else:
             continue
-        if key_pairs == [("operation_id", 1)] and index.get("unique") is True:
+        # A partial or sparse unique index does not establish global
+        # idempotency: it allows duplicate operation IDs outside its indexed
+        # subset.  Treat only MongoDB's ordinary, unfiltered exact index as
+        # compatible.  The implementation index created at startup has none
+        # of these modifiers.
+        if (
+            key_pairs == [("operation_id", 1)]
+            and index.get("unique") is True
+            and index.get("sparse") is not True
+            and "partialFilterExpression" not in index
+        ):
             exact = True
             break
     return {
@@ -2107,7 +2117,8 @@ async def _reading_pass_revocation_release_preflight() -> dict:
         record_error("activation_pointers", pointer_error)
         pointers_result = {
             "status": "UNKNOWN", "limit": READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT,
-            "truncated": False, "observed_count": None, "valid_count": None,
+            "truncated": False, "manifest_truncated": None, "duplicate_count": None,
+            "observed_count": None, "valid_count": None,
             "compatible_count": None, "incompatible_count": None,
             "compatibility": "UNKNOWN",
         }
@@ -2115,7 +2126,8 @@ async def _reading_pass_revocation_release_preflight() -> dict:
         record_error("activation_pointers", "MALFORMED_POINTER_RESPONSE")
         pointers_result = {
             "status": "UNKNOWN", "limit": READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT,
-            "truncated": False, "observed_count": None, "valid_count": None,
+            "truncated": False, "manifest_truncated": None, "duplicate_count": None,
+            "observed_count": None, "valid_count": None,
             "compatible_count": None, "incompatible_count": None,
             "compatibility": "UNKNOWN",
         }
@@ -2126,6 +2138,8 @@ async def _reading_pass_revocation_release_preflight() -> dict:
         rows = pointer_rows[:READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT]
         valid_pointers: list[dict[str, Any]] = []
         malformed_count = 0
+        duplicate_count = 0
+        observed_slugs: set[str] = set()
         for row in rows:
             slug = row.get("book_slug") if isinstance(row, Mapping) else None
             version = _inspection_version_identifier(row.get("active_segmentation_version")) if isinstance(row, Mapping) else None
@@ -2133,11 +2147,19 @@ async def _reading_pass_revocation_release_preflight() -> dict:
             if not isinstance(slug, str) or not slug or len(slug) > 160 or not version or not isinstance(generation, int) or isinstance(generation, bool) or generation < 0:
                 malformed_count += 1
                 continue
+            if slug in observed_slugs:
+                duplicate_count += 1
+                continue
+            observed_slugs.add(slug)
             valid_pointers.append({"book_slug": slug, "segmentation_version": version})
         if malformed_count:
             record_error("activation_pointers", "MALFORMED_POINTER_RECORD")
+        if duplicate_count:
+            record_error("activation_pointers", "DUPLICATE_POINTER_TITLE")
 
         manifests_error: Optional[str] = None
+        manifests_truncated: Optional[bool] = False
+        malformed_manifest_count = 0
         active_manifests: list[Any] = []
         if valid_pointers:
             async def read_active_manifests(max_time_ms: int):
@@ -2153,6 +2175,11 @@ async def _reading_pass_revocation_release_preflight() -> dict:
             elif not isinstance(active_manifests, list):
                 manifests_error = "MALFORMED_MANIFEST_RESPONSE"
                 record_error("active_manifests", manifests_error)
+            else:
+                manifests_truncated = len(active_manifests) > READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT
+                if manifests_truncated:
+                    record_error("active_manifests", "RESULT_TRUNCATED")
+                    active_manifests = active_manifests[:READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT]
 
         if manifests_error:
             compatible_count = None
@@ -2162,28 +2189,36 @@ async def _reading_pass_revocation_release_preflight() -> dict:
             manifests_by_pair: dict[tuple[str, str], int] = {}
             for manifest in active_manifests:
                 if not isinstance(manifest, Mapping) or manifest.get("status") != "active":
+                    malformed_manifest_count += 1
                     continue
                 slug = manifest.get("book_slug")
                 version = _inspection_version_identifier(manifest.get("segmentation_version"))
-                if isinstance(slug, str) and slug and version:
-                    key = (slug, version)
-                    manifests_by_pair[key] = manifests_by_pair.get(key, 0) + 1
+                if not isinstance(slug, str) or not slug or len(slug) > 160 or not version:
+                    malformed_manifest_count += 1
+                    continue
+                key = (slug, version)
+                manifests_by_pair[key] = manifests_by_pair.get(key, 0) + 1
+            if malformed_manifest_count:
+                record_error("active_manifests", "MALFORMED_MANIFEST_RECORD")
             compatible_count = sum(
                 manifests_by_pair.get((pointer["book_slug"], pointer["segmentation_version"]), 0) == 1
                 for pointer in valid_pointers
             )
             incompatible_count = len(valid_pointers) - compatible_count
-            compatibility = (
+            compatibility = "NO_ACTIVE_POINTERS_OBSERVED" if not valid_pointers and malformed_count == 0 else (
                 "ALL_OBSERVED_POINTERS_MATCH_SINGLE_ACTIVE_MANIFEST"
-                if not truncated and malformed_count == 0 and incompatible_count == 0
+                if not truncated and not manifests_truncated and malformed_count == 0 and duplicate_count == 0 and malformed_manifest_count == 0 and incompatible_count == 0
                 else "INCOMPLETE_OR_INCONSISTENT_POINTER_MANIFEST_STATE"
             )
+            if not valid_pointers and malformed_count == 0:
+                record_error("activation_pointers", "NO_ACTIVE_POINTERS_OBSERVED")
             if incompatible_count:
                 record_error("pointer_manifest_compatibility", "POINTER_ACTIVE_MANIFEST_MISMATCH")
 
         pointers_result = {
             "status": "OBSERVED", "limit": READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT,
-            "truncated": truncated, "observed_count": len(rows), "valid_count": len(valid_pointers),
+            "truncated": truncated, "manifest_truncated": manifests_truncated, "duplicate_count": duplicate_count,
+            "observed_count": len(rows), "valid_count": len(valid_pointers),
             "compatible_count": compatible_count, "incompatible_count": incompatible_count,
             "compatibility": compatibility,
         }

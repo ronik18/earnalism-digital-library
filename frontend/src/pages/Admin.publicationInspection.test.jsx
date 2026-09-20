@@ -69,7 +69,7 @@ function releasePreflightFixture(overrides = {}) {
     runtime: { startup_db_maintenance_enabled: false, instance_scope: "SINGLE_INSTANCE" },
     revocation_operation_index: { status: "PRESENT_UNIQUE_EXACT", exact_unique_operation_id_index: true },
     activation_pointers: {
-      status: "OBSERVED", limit: 64, truncated: false, observed_count: 2, valid_count: 2,
+      status: "OBSERVED", limit: 64, truncated: false, manifest_truncated: false, duplicate_count: 0, observed_count: 2, valid_count: 2,
       compatible_count: 2, incompatible_count: 0,
       compatibility: "ALL_OBSERVED_POINTERS_MATCH_SINGLE_ACTIVE_MANIFEST",
     },
@@ -209,6 +209,19 @@ describe("PublicationInspectionAdmin", () => {
     expect(mounted.container.querySelector('[data-testid="reading-pass-release-preflight-result"]')).toBeNull();
     expect(mounted.container.textContent).toContain("The release preflight could not complete. No prerequisite has been inferred.");
     expect(mounted.container.textContent).not.toContain("synthetic secret");
+    await mounted.cleanup();
+  });
+
+  test("rejects incomplete bounded preflight fields instead of displaying a current observation", async () => {
+    const incompletePointers = { ...releasePreflightFixture().activation_pointers };
+    delete incompletePointers.manifest_truncated;
+    mockGet.mockResolvedValue({ data: releasePreflightFixture({ activation_pointers: incompletePointers }) });
+    const mounted = renderReleasePreflight();
+    mounted.click();
+    await flush();
+
+    expect(mounted.container.querySelector('[data-testid="reading-pass-release-preflight-result"]')).toBeNull();
+    expect(mounted.container.textContent).toContain("No prerequisite has been inferred.");
     await mounted.cleanup();
   });
 });

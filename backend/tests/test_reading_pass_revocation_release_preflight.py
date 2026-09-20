@@ -77,11 +77,16 @@ def token(role):
     return jwt.encode({"sub": "test", "email": "test@example.test", "role": role}, server.JWT_SECRET, algorithm=server.JWT_ALG)
 
 
-def exact_index_response(*, cursor_id=0, unique=True):
+def exact_index_response(*, cursor_id=0, unique=True, sparse=False, partial_filter=None):
+    index = {"name": "secret-index-name", "key": {"operation_id": 1}, "unique": unique}
+    if sparse:
+        index["sparse"] = True
+    if partial_filter is not None:
+        index["partialFilterExpression"] = partial_filter
     return {
         "cursor": {
             "id": cursor_id,
-            "firstBatch": [{"name": "secret-index-name", "key": {"operation_id": 1}, "unique": unique}],
+            "firstBatch": [index],
         }
     }
 
@@ -139,6 +144,55 @@ def test_partial_index_cursor_and_incompatible_pointer_never_become_a_pass(monke
     assert result["activation_pointers"]["compatibility"] == "INCOMPLETE_OR_INCONSISTENT_POINTER_MANIFEST_STATE"
     assert result["activation_pointers"]["incompatible_count"] == 1
     assert {error["code"] for error in result["errors"]} == {"INDEX_RESULT_TRUNCATED", "POINTER_ACTIVE_MANIFEST_MISMATCH"}
+
+
+def test_partial_or_sparse_unique_index_never_establishes_global_operation_idempotency(monkeypatch):
+    for response in (
+        exact_index_response(sparse=True),
+        exact_index_response(partial_filter={"operation_id": {"$type": "string"}}),
+    ):
+        database = ReadOnlyDatabase(index_response=response)
+        monkeypatch.setattr(server, "db", database)
+
+        result = asyncio.run(server._reading_pass_revocation_release_preflight())
+
+        assert result["revocation_operation_index"] == {
+            "status": "ABSENT_OR_INCOMPATIBLE",
+            "exact_unique_operation_id_index": False,
+        }
+
+
+def test_duplicate_or_truncated_pointer_manifest_evidence_fails_closed(monkeypatch):
+    database = ReadOnlyDatabase(
+        index_response=exact_index_response(),
+        pointers=[
+            {"book_slug": "controlled-radharani", "active_segmentation_version": "v-safe", "generation": 3},
+            {"book_slug": "controlled-radharani", "active_segmentation_version": "v-other", "generation": 4},
+        ],
+        manifests=[
+            {"book_slug": "controlled-radharani", "segmentation_version": "v-safe", "status": "active"},
+        ] * (server.READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT + 1),
+    )
+    monkeypatch.setattr(server, "db", database)
+
+    result = asyncio.run(server._reading_pass_revocation_release_preflight())
+
+    assert result["complete"] is False
+    assert result["activation_pointers"]["duplicate_count"] == 1
+    assert result["activation_pointers"]["manifest_truncated"] is True
+    assert result["activation_pointers"]["compatibility"] == "INCOMPLETE_OR_INCONSISTENT_POINTER_MANIFEST_STATE"
+    assert {error["code"] for error in result["errors"]} >= {"DUPLICATE_POINTER_TITLE", "RESULT_TRUNCATED"}
+
+
+def test_missing_active_pointers_are_not_compatible_evidence(monkeypatch):
+    database = ReadOnlyDatabase(index_response=exact_index_response())
+    monkeypatch.setattr(server, "db", database)
+
+    result = asyncio.run(server._reading_pass_revocation_release_preflight())
+
+    assert result["complete"] is False
+    assert result["activation_pointers"]["compatibility"] == "NO_ACTIVE_POINTERS_OBSERVED"
+    assert any(error == {"component": "activation_pointers", "code": "NO_ACTIVE_POINTERS_OBSERVED"} for error in result["errors"])
 
 
 def test_read_failure_is_sanitized_and_unknown_not_absent(monkeypatch, caplog):
