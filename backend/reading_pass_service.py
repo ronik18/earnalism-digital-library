@@ -233,6 +233,33 @@ class ReadingPassService:
         )
         return self._text_revocation(state)
 
+    async def _require_text_revocation_operation_index(self) -> None:
+        """Refuse a revocation when its cross-title idempotency index is absent.
+
+        ``create_index`` in application startup is a deployment instruction,
+        not proof that the running database has accepted the prerequisite.
+        The administrative writer therefore checks the concrete unique index
+        before it makes any publication or session change.
+        """
+
+        try:
+            indexes = await self.db.reading_pass_text_revocation_operations.index_information()
+        except Exception as exc:
+            raise ReadingPassError(
+                "REVOCATION_SCHEMA_UNAVAILABLE", 503,
+                "The revocation operation schema could not be verified.",
+            ) from exc
+        required_key = [("operation_id", 1)]
+        if not any(
+            bool(spec.get("unique")) and list(spec.get("key") or []) == required_key
+            for spec in indexes.values()
+            if isinstance(spec, Mapping)
+        ):
+            raise ReadingPassError(
+                "REVOCATION_SCHEMA_UNAVAILABLE", 503,
+                "The revocation operation schema is not ready.",
+            )
+
     async def _mark_text_authority_unavailable(
         self,
         *,
@@ -251,6 +278,38 @@ class ReadingPassService:
         session_id = str(session_doc.get("id") or "")
         user_id = str(session_doc.get("user_id") or "")
         current_version = int(session_doc.get("lease_version", 0) or 0)
+        # Preserve the last known accounting and publication boundary before
+        # this fail-closed transition overwrites the live lease fields.  This
+        # audit record is private, durable, and in the same transaction as the
+        # transition; it is evidence for a later accounting decision, not a
+        # debit/refund instruction.  ``now`` is the time this transaction
+        # observed the missing authority, not a database-commit timestamp.
+        scope = session_doc.get("scope") if isinstance(session_doc.get("scope"), Mapping) else {}
+        await self._audit(
+            "text_authority_unavailable_accounting_bounds",
+            session=mongo_session,
+            document={
+                "user_id": user_id,
+                "session_id": session_id,
+                "content_id": str(session_doc.get("content_id") or ""),
+                "lease_version": current_version,
+                "observed_at": now,
+                "original_accounting_bounds": {
+                    "lease_issued_at": session_doc.get("lease_issued_at"),
+                    "last_billed_at": session_doc.get("last_billed_at"),
+                    "lease_expires_at": session_doc.get("lease_expires_at"),
+                    "last_heartbeat_at": session_doc.get("last_heartbeat_at"),
+                    "last_sequence": int(session_doc.get("last_sequence", 0) or 0),
+                    "seconds_consumed": int(session_doc.get("seconds_consumed", 0) or 0),
+                    "billing_active": bool(session_doc.get("billing_active", session_doc.get("status") == "active")),
+                },
+                "publication_identity": {
+                    "segmentation_version": scope.get("segmentation_version"),
+                    "manifest_version": scope.get("manifest_version"),
+                    "activation_generation": scope.get("authority_activation_generation"),
+                },
+            },
+        )
         updated = await self.db.reading_pass_sessions.update_one(
             {
                 "id": session_id,
@@ -308,6 +367,11 @@ class ReadingPassService:
         segmentation_version = scope.get("segmentation_version")
         if not isinstance(generation, int) or generation < 0 or not isinstance(segmentation_version, str) or not segmentation_version:
             return
+        # Incrementing this fence makes every permitted start a real write,
+        # even under a fixed server clock.  The write is deliberately against
+        # the same pointer the revocation writer changes, so Mongo's
+        # transaction conflict rules order starts and revocations without
+        # changing the canonical publication identity.
         updated = await self.db.reader_segment_activation_state.update_one(
             {
                 "book_slug": content_id,
@@ -315,7 +379,10 @@ class ReadingPassService:
                 "generation": generation,
                 "text_revocation": {"$exists": False},
             },
-            {"$set": {"text_authority_last_start_at": now}},
+            {
+                "$set": {"text_authority_last_start_at": now},
+                "$inc": {"text_authority_fence": 1},
+            },
             session=mongo_session,
         )
         if updated.modified_count == 1:
@@ -608,6 +675,8 @@ class ReadingPassService:
             "reason": reason,
         }
 
+        await self._require_text_revocation_operation_index()
+
         async def operation(mongo_session):
             previous = await self.db.reading_pass_text_revocation_operations.find_one(
                 {"operation_id": operation_id}, {"_id": 0}, session=mongo_session
@@ -893,16 +962,38 @@ class ReadingPassService:
                 session=mongo_session,
             )
             if existing:
+                recorded_intent = "active" in existing and "playback_state" in existing
                 if (
                     int(existing.get("sequence", 0) or 0) != sequence
                     or int(existing.get("lease_version", 0) or 0) != lease_version
-                    or bool(existing.get("active")) is not bool(active)
-                    or str(existing.get("playback_state") or "") != str(playback_state or "")
+                    or (
+                        recorded_intent
+                        and (
+                            bool(existing.get("active")) is not bool(active)
+                            or str(existing.get("playback_state") or "") != str(playback_state or "")
+                        )
+                    )
                 ):
                     raise ReadingPassError(
                         "HEARTBEAT_INTENT_CONFLICT", 409,
                         "The idempotency key is already bound to a different renewal intent.",
                     )
+                # Pre-413 receipts did not record full renewal intent.  They
+                # must not be promoted into a fresh Running response or
+                # charged again; a stale result tells the current client to
+                # refresh its lease state without trusting missing fields.
+                if not recorded_intent:
+                    return {
+                        "session_id": session_id,
+                        "lease_version": current_version,
+                        "lease_expires_at": _iso(session_doc["lease_expires_at"]),
+                        "balance_seconds": await self._balance(user_id, mongo_session),
+                        "deducted_seconds": 0,
+                        "status": "Stale",
+                        "stale": True,
+                        "duplicate": True,
+                        "legacy_receipt": True,
+                    }
                 response = dict(existing.get("response") or {})
                 if (
                     int(response.get("lease_version", 0) or 0) != current_version

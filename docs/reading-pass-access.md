@@ -67,9 +67,10 @@ policy, public previews, or a title's legal/rights decision.
 
 | Current authority evidence | Durable ordering point and affected publication | Renewal outcome | Settlement and retry outcome |
 | --- | --- | --- | --- |
-| A committed `text_revocation` on the current `reader_segment_activation_state` pointer | The server-side revocation writer matches the canonical slug, active segmentation version, activation generation, and active manifest version, then records `cutoff_at` from the server clock inside its Mongo transaction. | Definitively denied. No protected-text lease may be issued or renewed after the committed cutoff. | The same transaction terminalizes matching active/paused text leases, invalidates their lease, releases their active lock, and debits only the already-authorized interval bounded by prior lease expiry, balance, maximum duration, activity state, and `cutoff_at`. `settlement_at` records commit/termination time separately. Replays return the committed terminal state and cannot create another debit. |
-| Current Reader source/runtime explicitly denies a title but supplies no durable historical cutoff | No trustworthy timestamp exists: a file change, request arrival, deployment time, or first observed denial is not a billing cutoff. | Definitively no new protected access; the active lock is released with an `authority_unavailable` terminal record. | No uncertain interval is automatically charged, forgiven, refunded, or backdated. Audit evidence retains the unsettled boundary for the applicable accounting decision. A normal Stop remains allowed for an active historical session before this terminal transition. |
+| A committed `text_revocation` on the current `reader_segment_activation_state` pointer | The server-side revocation writer matches the canonical slug, active segmentation version, activation generation, and active manifest version, then records `cutoff_at` from the server clock inside its Mongo transaction. Each newly permitted start increments a pointer fence, so a fixed clock cannot turn the ordering write into a no-op. | Definitively denied. No protected-text lease may be issued or renewed after the committed cutoff. | The same transaction terminalizes matching active/paused text leases, invalidates their lease, releases their active lock, and debits only the already-authorized interval bounded by prior lease expiry, balance, maximum duration, activity state, and `cutoff_at`. `settlement_at` is an application-recorded settlement time, not a claimed database-commit timestamp. Replays return the committed terminal state and cannot create another debit. |
+| Current Reader source/runtime explicitly denies a title but supplies no durable historical cutoff | No trustworthy timestamp exists: a file change, request arrival, deployment time, or first observed denial is not a billing cutoff. | Definitively no new protected access; the active lock is released with an `authority_unavailable` terminal record. | No uncertain interval is automatically charged, forgiven, refunded, or backdated. The same transaction appends private audit evidence of the original lease/accounting bounds and publication identity before overwriting live expiry/activity fields. A normal Stop remains allowed for an active historical session before this terminal transition. |
 | Reader source/runtime lookup times out, errors, or returns malformed revocation metadata | No authority transition is proven. | Authority-unavailable (fail closed); no renewal response, cookie, or debit is produced. | The existing lease and ledger remain unchanged so a transient dependency failure is never represented as revocation or settlement. |
+| A separately promoted replacement follows a revoked immutable version | Promotion archives the complete old version's revocation record in pointer history and selects the separately retained replacement under the existing compare-and-set promotion protocol. | New protected starts bind only to the replacement's selected pointer. Existing sessions bound to an older retained version remain subject to their own compatibility/retention rules. | Revocation evidence is retained; promotion does not erase it or rewrite old session accounting. |
 | Retained/archived immutable version is superseded but has no committed revocation | Supersession alone is not a revocation under the retention policy. | Existing authorization follows the active publication and session compatibility rules. | No revocation settlement is inferred. A separate committed revocation is required to apply this table. |
 
 The administrative writer is one-way and idempotent by a globally unique
@@ -78,6 +79,18 @@ accepts a client cutoff nor un-revokes, activates, accepts rights, or edits
 historical ledger entries. A reused operation ID with different intent fails
 closed. Transaction retries are bounded; an uncertain Mongo commit retries the
 same commit rather than replaying the balance operation.
+
+The operation writer requires the deployed, globally unique
+`reading_pass_text_revocation_operations.operation_id` index before it writes.
+Startup `create_index` code and test fixture indexes are not production
+attestation: a missing or unreadable index is a safe
+`REVOCATION_SCHEMA_UNAVAILABLE` refusal with no pointer/session/ledger change.
+
+Heartbeat receipts created before full renewal intent was recorded lack
+`active` and `playback_state`. After the usual ownership, lease, and terminal
+checks, an exact legacy receipt returns a tokenless `Stale` duplicate response;
+it is never replayed as `Running`, charged again, or treated as proof of an
+unrecorded playback intent. This rule applies to both text and audio receipts.
 
 ### Payment integrity
 

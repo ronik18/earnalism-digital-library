@@ -9942,13 +9942,42 @@ async def admin_promote_reading_pass_segments(slug: str, payload: ReadingPassSeg
         if active.get("status") != "active":
             raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The expected canonical version is no longer active."})
         target = await _stored_reader_segment_manifest(slug, payload.target_segmentation_version, mongo_session=mongo_session)
+        # A revocation is bound to the currently selected immutable
+        # publication, not an undocumented permanent title-wide ban.  Retain
+        # its complete record as history when a separately authorized,
+        # compare-and-set promotion selects a replacement version.  Malformed
+        # history is not silently overwritten.
+        historical_revocations = state.get("text_revocation_history", [])
+        if not isinstance(historical_revocations, list):
+            raise HTTPException(status_code=503, detail={"code": "SEGMENT_AUTHORITY_UNAVAILABLE", "message": "The publication authority history could not be verified."})
+        try:
+            current_revocation = reading_pass_service._text_revocation(state)
+        except ReadingPassError as exc:
+            raise _reading_pass_http_error(exc) from exc
+        now = datetime.now(timezone.utc)
+        pointer_update = {
+            "active_segmentation_version": payload.target_segmentation_version,
+            "generation": payload.expected_activation_generation + 1,
+            "updated_at": now,
+        }
+        pointer_unset = {}
+        if current_revocation:
+            pointer_update["text_revocation_history"] = [
+                *historical_revocations,
+                {
+                    "revocation": current_revocation,
+                    "superseded_at": now,
+                    "superseded_by_activation_generation": payload.expected_activation_generation + 1,
+                    "superseded_by_segmentation_version": payload.target_segmentation_version,
+                },
+            ]
+            pointer_unset["text_revocation"] = ""
         updated = await db.reader_segment_activation_state.update_one(
             {"book_slug": slug, "active_segmentation_version": payload.expected_active_segmentation_version, "generation": payload.expected_activation_generation},
-            {"$set": {"active_segmentation_version": payload.target_segmentation_version, "generation": payload.expected_activation_generation + 1, "updated_at": datetime.now(timezone.utc)}}, session=mongo_session,
+            {"$set": pointer_update, **({"$unset": pointer_unset} if pointer_unset else {})}, session=mongo_session,
         )
         if updated.modified_count != 1:
             raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The active canonical version changed; refresh before promotion."})
-        now = datetime.now(timezone.utc)
         await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.expected_active_segmentation_version, "status": "active"}, {"$set": {"status": "archived", "archived_at": now}}, session=mongo_session)
         promoted = await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.target_segmentation_version, "status": {"$in": ["prepared", "archived"]}}, {"$set": {"status": "active", "activated_at": now, "activated_by": f"admin:{admin.get('email', '')}"}}, session=mongo_session)
         if promoted.modified_count != 1:
