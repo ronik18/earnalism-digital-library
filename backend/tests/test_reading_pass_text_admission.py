@@ -90,6 +90,15 @@ def test_authorized_text_binds_alias_request_to_authority_canonical_slug(monkeyp
             observed["segment_query"] = query
             return {"_id": "fixture-page"}
 
+    class ActivationState:
+        async def find_one(self, query, _projection):
+            observed["activation_query"] = query
+            return {
+                "book_slug": "fixture-canonical",
+                "active_segmentation_version": "fixture-version",
+                "generation": 7,
+            }
+
     async def start_session(**kwargs):
         observed["session"] = kwargs
         return {"status": "Running", "content_type": "text", "content_id": kwargs["content_id"]}
@@ -98,7 +107,14 @@ def test_authorized_text_binds_alias_request_to_authority_canonical_slug(monkeyp
     monkeypatch.setattr(server, "_reader_book_access_doc", authority)
     monkeypatch.setattr(server, "_active_reader_segment_manifest", active_manifest)
     monkeypatch.setattr(server, "_stored_reader_segment_manifest", stored_manifest)
-    monkeypatch.setattr(server, "db", SimpleNamespace(reader_content_segments=Segments()))
+    monkeypatch.setattr(
+        server,
+        "db",
+        SimpleNamespace(
+            reader_content_segments=Segments(),
+            reader_segment_activation_state=ActivationState(),
+        ),
+    )
     monkeypatch.setattr(server.reading_pass_service, "start_session", start_session)
 
     result = asyncio.run(server._reading_pass_start(_payload("Fixture Alias"), USER, Response(), transfer=False))
@@ -113,6 +129,7 @@ def test_authorized_text_binds_alias_request_to_authority_canonical_slug(monkeyp
         "canonical_page_index": 4,
         "segmentation_version": "fixture-version",
         "manifest_version": "fixture-manifest",
+        "authority_activation_generation": 7,
     }
 
 

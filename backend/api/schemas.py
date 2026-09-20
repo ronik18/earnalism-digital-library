@@ -481,6 +481,17 @@ class ReadingPassSessionEndIn(BaseModel):
     reason: str = Field(default="user_end", max_length=80)
 
 
+class ReadingPassTextPublicationRevocationIn(BaseModel):
+    """Bind one administrative text revocation to the current immutable publication."""
+
+    model_config = ConfigDict(extra="forbid")
+    operation_id: str = Field(min_length=8, max_length=160)
+    expected_activation_generation: int = Field(ge=0)
+    expected_segmentation_version: str = Field(min_length=3, max_length=160)
+    expected_manifest_version: str = Field(min_length=3, max_length=200)
+    reason: str = Field(min_length=3, max_length=120)
+
+
 class ReadingPassPositionIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     content_type: Literal["text", "audio"]

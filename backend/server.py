@@ -46,6 +46,7 @@ try:
         ReadingPassSessionStartIn,
         ReadingPassLeaseRenewIn,
         ReadingPassSessionEndIn,
+        ReadingPassTextPublicationRevocationIn,
             ReadingPassPositionIn,
             ReadingPassPreviewActivationIn,
             ReadingPassSegmentMigrationIn,
@@ -109,6 +110,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         ReadingPassSessionStartIn,
         ReadingPassLeaseRenewIn,
         ReadingPassSessionEndIn,
+        ReadingPassTextPublicationRevocationIn,
             ReadingPassPositionIn,
             ReadingPassPreviewActivationIn,
         ReadingPassSegmentMigrationIn,
@@ -4583,6 +4585,7 @@ async def initialize_database_indexes() -> None:
     # cross-process invariant rather than a best-effort application lock.
     await db.reader_segment_activation_state.create_index("book_slug", unique=True)
     await db.reader_segment_activation_operations.create_index("operation_id", unique=True)
+    await db.reading_pass_text_revocation_operations.create_index("operation_id", unique=True)
     await db.reading_pass_sessions.create_index("id", unique=True)
     await db.reading_pass_sessions.create_index(
         "active_lock",
@@ -10020,6 +10023,57 @@ async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassS
     )
 
 
+@api.post("/admin/reading-pass/books/{slug}/text-revocation")
+async def admin_revoke_reading_pass_text_publication(
+    slug: str,
+    payload: ReadingPassTextPublicationRevocationIn,
+    admin=Depends(require_admin),
+):
+    """Durably revoke one active protected-text publication.
+
+    This administrative writer is intentionally one-way: it records a
+    server-timed cutoff and terminalizes matching active text leases. It does
+    not accept a client-supplied cutoff, activate a title, decide rights, or
+    provide an un-revoke path.
+    """
+
+    canonical_slug = str(slug or "").strip().lower()
+    if not canonical_slug:
+        raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Book not found."})
+    state = await db.reader_segment_activation_state.find_one(
+        {"book_slug": canonical_slug},
+        {"_id": 0, "active_segmentation_version": 1, "generation": 1},
+    )
+    active_manifest = await _active_reader_segment_manifest(canonical_slug)
+    if (
+        not state
+        or not active_manifest
+        or state.get("active_segmentation_version") != active_manifest.get("segmentation_version")
+        or state.get("active_segmentation_version") != payload.expected_segmentation_version
+        or state.get("generation") != payload.expected_activation_generation
+        or active_manifest.get("version") != payload.expected_manifest_version
+    ):
+        raise HTTPException(
+            status_code=409,
+            detail={
+                "code": "STALE_PUBLICATION_AUTHORITY",
+                "message": "The active canonical publication changed; refresh before revoking it.",
+            },
+        )
+    try:
+        return await reading_pass_service.revoke_text_publication(
+            book_slug=canonical_slug,
+            expected_activation_generation=payload.expected_activation_generation,
+            expected_segmentation_version=payload.expected_segmentation_version,
+            expected_manifest_version=payload.expected_manifest_version,
+            operation_id=payload.operation_id,
+            reason=payload.reason,
+            actor_id=str(admin.get("id") or ""),
+        )
+    except ReadingPassError as exc:
+        raise _reading_pass_http_error(exc) from exc
+
+
 @api.post("/admin/reading-pass/audiobooks/{slug}/preview")
 async def admin_register_reading_pass_preview(
     slug: str,
@@ -10339,6 +10393,29 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             manifest = await _stored_reader_segment_manifest(
                 canonical_content_id, manifest["segmentation_version"]
             )
+        activation_state = await db.reader_segment_activation_state.find_one(
+            {"book_slug": canonical_content_id},
+            {"_id": 0, "active_segmentation_version": 1, "generation": 1, "text_revocation": 1},
+        )
+        if (
+            not manifest
+            or not activation_state
+            or activation_state.get("active_segmentation_version") != manifest.get("segmentation_version")
+            or not isinstance(activation_state.get("generation"), int)
+        ):
+            raise HTTPException(
+                status_code=503,
+                detail={
+                    "code": "CONTENT_AUTHORITY_UNAVAILABLE",
+                    "message": "Reader availability could not be verified.",
+                },
+            )
+        text_revocation = activation_state.get("text_revocation")
+        if isinstance(text_revocation, dict) and text_revocation.get("status") == "revoked":
+            raise HTTPException(
+                status_code=403,
+                detail={"code": "CONTENT_REVOKED", "message": "This protected text is no longer available."},
+            )
         exists = bool(
             manifest
             and await db.reader_content_segments.find_one(
@@ -10356,6 +10433,7 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             "canonical_page_index": page_index,
             "segmentation_version": manifest["segmentation_version"],
             "manifest_version": manifest["version"],
+            "authority_activation_generation": activation_state["generation"],
         }
     elif content_type == "audio":
         position = float(payload.media_position_seconds or 0)
@@ -10407,6 +10485,24 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
     _session_id, lease_token = _reading_pass_lease_headers(request)
     if not lease_token:
         raise HTTPException(status_code=403, detail={"code": "LEASE_EXPIRED", "message": "Lease token is required."})
+    # A current controlled-publication lookup is distinct from a committed
+    # title revocation. The service checks the durable revocation record in
+    # its transaction; this route supplies only whether the current source
+    # truth is allowed, denied without a historical cutoff, or temporarily
+    # unavailable. Never turn a lookup exception into confirmed revocation.
+    text_authority = "allowed"
+    session_hint = await db.reading_pass_sessions.find_one(
+        {"id": payload.session_id, "user_id": user["id"]},
+        {"_id": 0, "content_type": 1, "content_id": 1},
+    )
+    if session_hint and session_hint.get("content_type") == "text":
+        try:
+            current_book = await _reader_book_access_doc(str(session_hint.get("content_id") or ""))
+        except Exception as exc:
+            logger.warning("Reading Pass text renewal authority unavailable: error_type=%s", type(exc).__name__)
+            text_authority = "unavailable"
+        else:
+            text_authority = "allowed" if current_book else "denied"
     try:
         result = await reading_pass_service.renew_lease(
             user_id=user["id"],
@@ -10418,6 +10514,7 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
             idempotency_key=payload.idempotency_key,
             active=payload.active,
             playback_state=payload.playback_state,
+            text_authority=text_authority,
         )
         await _invalidate_user_cache(user["id"])
         await _set_user_wallet_cache(user["id"], int(result.get("balance_seconds", 0)))

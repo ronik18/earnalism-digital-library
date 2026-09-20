@@ -59,6 +59,26 @@ Database uniqueness enforces one `active_lock` per account and one result per he
 
 End, transfer, revocation, and stale-expiry cleanup all settle the final server-timed interval in the same transaction before releasing the lock. This prevents repeated sub-heartbeat sessions or device switching from bypassing debit. Unknown transaction commit outcomes retry the same commit; they do not replay a possibly committed balance mutation.
 
+### Protected-text revocation and cutoff decision table
+
+This table applies only to protected **text** sessions. It does not change
+audio delivery, device/login-session revocation, retained immutable-version
+policy, public previews, or a title's legal/rights decision.
+
+| Current authority evidence | Durable ordering point and affected publication | Renewal outcome | Settlement and retry outcome |
+| --- | --- | --- | --- |
+| A committed `text_revocation` on the current `reader_segment_activation_state` pointer | The server-side revocation writer matches the canonical slug, active segmentation version, activation generation, and active manifest version, then records `cutoff_at` from the server clock inside its Mongo transaction. | Definitively denied. No protected-text lease may be issued or renewed after the committed cutoff. | The same transaction terminalizes matching active/paused text leases, invalidates their lease, releases their active lock, and debits only the already-authorized interval bounded by prior lease expiry, balance, maximum duration, activity state, and `cutoff_at`. `settlement_at` records commit/termination time separately. Replays return the committed terminal state and cannot create another debit. |
+| Current Reader source/runtime explicitly denies a title but supplies no durable historical cutoff | No trustworthy timestamp exists: a file change, request arrival, deployment time, or first observed denial is not a billing cutoff. | Definitively no new protected access; the active lock is released with an `authority_unavailable` terminal record. | No uncertain interval is automatically charged, forgiven, refunded, or backdated. Audit evidence retains the unsettled boundary for the applicable accounting decision. A normal Stop remains allowed for an active historical session before this terminal transition. |
+| Reader source/runtime lookup times out, errors, or returns malformed revocation metadata | No authority transition is proven. | Authority-unavailable (fail closed); no renewal response, cookie, or debit is produced. | The existing lease and ledger remain unchanged so a transient dependency failure is never represented as revocation or settlement. |
+| Retained/archived immutable version is superseded but has no committed revocation | Supersession alone is not a revocation under the retention policy. | Existing authorization follows the active publication and session compatibility rules. | No revocation settlement is inferred. A separate committed revocation is required to apply this table. |
+
+The administrative writer is one-way and idempotent by a globally unique
+operation ID bound to the exact publication identity and reason. It neither
+accepts a client cutoff nor un-revokes, activates, accepts rights, or edits
+historical ledger entries. A reused operation ID with different intent fails
+closed. Transaction retries are bounded; an uncertain Mongo commit retries the
+same commit rather than replaying the balance operation.
+
 ### Payment integrity
 
 The existing Razorpay order, verification, webhook, simulator, and reconciliation surfaces remain in use. Verified credit now commits the intent transition, exact integer-second increment, `PASS_CREDIT` ledger event, compatibility transaction row, and audit record in one transaction.
@@ -127,6 +147,7 @@ Admin migration:
 - `GET /api/admin/reading-pass/books/{slug}/segments/active`
 - `POST /api/admin/reading-pass/books/{slug}/segments/promote`
 - `POST /api/admin/reading-pass/books/{slug}/segments/bootstrap` (only for a title with no active pointer)
+- `POST /api/admin/reading-pass/books/{slug}/text-revocation` (one-way, server-timed text revocation bound to the current active pointer and manifest)
 - `POST /api/admin/reading-pass/audiobooks/{slug}/preview`
 - `GET /api/admin/reading-pass/health`
 

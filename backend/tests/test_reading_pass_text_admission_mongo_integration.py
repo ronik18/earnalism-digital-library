@@ -25,8 +25,9 @@ os.environ.setdefault("READING_PASS_V2_ENABLED", "true")
 
 from backend import server
 from backend.api.schemas import ReadingPassSessionStartIn
-from backend.domain.reading_pass import canonical_page_records, segment_manifest
+from backend.domain.reading_pass import canonical_page_records, ensure_utc, segment_manifest
 from backend.reading_pass_service import ReadingPassService
+from backend.domain.reading_pass import ReadingPassError
 
 
 pytestmark = pytest.mark.skipif(
@@ -55,6 +56,8 @@ async def _create_indexes(database) -> None:
     await database.reader_segment_manifests.create_index(
         "book_slug", unique=True, partialFilterExpression={"status": "active"}
     )
+    await database.reader_segment_activation_state.create_index("book_slug", unique=True)
+    await database.reading_pass_text_revocation_operations.create_index("operation_id", unique=True)
     await database.users.create_index("id", unique=True)
     await database.reading_pass_sessions.create_index("active_lock", unique=True, sparse=True)
     await database.reading_pass_sessions.create_index("id", unique=True)
@@ -114,7 +117,43 @@ async def _seed_retained_content(database, slug: str, *, version: str = "admissi
     }
     await database.reader_content_segments.insert_many(records)
     await database.reader_segment_manifests.insert_one(manifest)
+    await database.reader_segment_activation_state.insert_one({
+        "book_slug": slug,
+        "active_segmentation_version": version,
+        "generation": 1,
+        "created_at": datetime.now(timezone.utc),
+    })
     return manifest
+
+
+async def _start_bound_text_session(database, manifest: dict, slug: str) -> dict:
+    await database.users.insert_one({
+        "id": USER["id"], "role": "user", "status": "active",
+        "reading_seconds_balance": 300, "wallet_seconds": 300,
+    })
+    return await server.reading_pass_service.start_session(
+        user_id=USER["id"], auth_session_id=USER["session_id"],
+        device_id="admission-device-0001", device_label="Revocation fixture",
+        content_type="text", content_id=slug,
+        scope={
+            "canonical_page_index": 4,
+            "segmentation_version": manifest["segmentation_version"],
+            "manifest_version": manifest["version"],
+            "authority_activation_generation": 1,
+        },
+    )
+
+
+async def _revoke_bound_text(manifest: dict, slug: str, *, operation_id: str) -> dict:
+    return await server.reading_pass_service.revoke_text_publication(
+        book_slug=slug,
+        expected_activation_generation=1,
+        expected_segmentation_version=manifest["segmentation_version"],
+        expected_manifest_version=manifest["version"],
+        operation_id=operation_id,
+        reason="fixture withdrawal",
+        actor_id="fixture-admin",
+    )
 
 
 async def _rows(collection) -> list[dict]:
@@ -212,6 +251,7 @@ def test_real_handler_uses_actual_reader_authority_and_binds_the_canonical_ident
                 "canonical_page_index": 4,
                 "segmentation_version": manifest["segmentation_version"],
                 "manifest_version": manifest["version"],
+                "authority_activation_generation": 1,
             }
             assert await database.reading_pass_audit.count_documents({"event": "metered_session_started"}) == 1
 
@@ -231,9 +271,107 @@ def test_real_handler_rejects_authorized_title_without_an_active_canonical_page_
             before = await _rows(database.reading_pass_sessions)
             with pytest.raises(server.HTTPException) as denied:
                 await server._reading_pass_start(_payload("dracula"), USER, Response(), transfer=False)
-            assert denied.value.status_code == 404
-            assert denied.value.detail["code"] == "CONTENT_NOT_AUTHORIZED"
+            # Retained source authority alone cannot safely admit a protected
+            # page. Without an activation pointer the handler cannot bind the
+            # lease to a current immutable publication, so this is an
+            # availability failure rather than a claim that the page is gone.
+            assert denied.value.status_code == 503
+            assert denied.value.detail["code"] == "CONTENT_AUTHORITY_UNAVAILABLE"
             assert await _rows(database.reading_pass_sessions) == before
             assert await database.reading_pass_audit.count_documents({}) == 0
+
+    asyncio.run(scenario())
+
+
+def test_real_mongo_revocation_caps_settlement_and_preserves_exact_replay(monkeypatch):
+    async def scenario():
+        async with _isolated_database() as database:
+            manifest = await _seed_retained_content(database, "revocation-fixture")
+            started = await _start_bound_text_session(database, manifest, "revocation-fixture")
+            began = datetime(2026, 1, 1, tzinfo=timezone.utc)
+            cutoff = datetime(2026, 1, 1, 0, 0, 11, tzinfo=timezone.utc)
+            await database.reading_pass_sessions.update_one(
+                {"id": started["session_id"]},
+                {"$set": {"last_billed_at": began, "lease_expires_at": began.replace(second=20)}},
+            )
+            monkeypatch.setattr("backend.reading_pass_service._now", lambda: cutoff)
+
+            first = await _revoke_bound_text(
+                manifest, "revocation-fixture", operation_id="real-mongo-revoke-0001"
+            )
+            duplicate = await _revoke_bound_text(
+                manifest, "revocation-fixture", operation_id="real-mongo-revoke-0001"
+            )
+            assert first["deducted_seconds"] == 11
+            assert duplicate["duplicate"] is True
+            session = await database.reading_pass_sessions.find_one({"id": started["session_id"]}, {"_id": 0})
+            user = await database.users.find_one({"id": USER["id"]}, {"_id": 0})
+            ledger = await _rows(database.wallet_ledger)
+            transaction = await _rows(database.wallet_transactions)
+            state = await database.reader_segment_activation_state.find_one(
+                {"book_slug": "revocation-fixture"}, {"_id": 0}
+            )
+            assert session["status"] == "revoked"
+            assert ensure_utc(session["settlement_at"]) == cutoff
+            assert ensure_utc(session["billing_cutoff_at"]) == cutoff
+            assert "active_lock" not in session
+            assert user["reading_seconds_balance"] == 289
+            assert len(ledger) == len(transaction) == 1
+            assert ledger[0]["debit"] == 11
+            assert ledger[0]["metadata"]["billing_cutoff_at"] == cutoff.isoformat()
+            assert ensure_utc(state["text_revocation"]["cutoff_at"]) == cutoff
+
+            with pytest.raises(ReadingPassError) as replay:
+                await server.reading_pass_service.renew_lease(
+                    user_id=USER["id"], auth_session_id=USER["session_id"], session_id=started["session_id"],
+                    lease_token=started["lease_token"], lease_version=1, sequence=1,
+                    idempotency_key="post-revocation-replay", active=True,
+                )
+            assert replay.value.code == "LEASE_EXPIRED"
+            assert len(await _rows(database.wallet_ledger)) == 1
+            stopped = await server.reading_pass_service.end_session(
+                user_id=USER["id"], auth_session_id=USER["session_id"], session_id=started["session_id"]
+            )
+            assert stopped == {"ended": False, "session_id": started["session_id"], "deducted_seconds": 0}
+            assert len(await _rows(database.wallet_ledger)) == 1
+
+    asyncio.run(scenario())
+
+
+@pytest.mark.parametrize("first", ["renew", "revoke"])
+def test_real_mongo_renewal_revocation_race_has_one_debit_and_no_running_replay(monkeypatch, first):
+    async def scenario():
+        async with _isolated_database() as database:
+            manifest = await _seed_retained_content(database, "race-fixture")
+            started = await _start_bound_text_session(database, manifest, "race-fixture")
+            began = datetime(2026, 1, 1, tzinfo=timezone.utc)
+            cutoff = datetime(2026, 1, 1, 0, 0, 7, tzinfo=timezone.utc)
+            await database.reading_pass_sessions.update_one(
+                {"id": started["session_id"]},
+                {"$set": {"last_billed_at": began, "lease_expires_at": began.replace(second=20)}},
+            )
+            monkeypatch.setattr("backend.reading_pass_service._now", lambda: cutoff)
+
+            async def renew():
+                try:
+                    return await server.reading_pass_service.renew_lease(
+                        user_id=USER["id"], auth_session_id=USER["session_id"], session_id=started["session_id"],
+                        lease_token=started["lease_token"], lease_version=1, sequence=1,
+                        idempotency_key="real-mongo-race-heartbeat", active=True,
+                    )
+                except ReadingPassError as error:
+                    return error.code
+
+            revoke = _revoke_bound_text(manifest, "race-fixture", operation_id=f"real-mongo-race-{first}-0001")
+            outcomes = await asyncio.gather(*( [renew(), revoke] if first == "renew" else [revoke, renew()] ))
+            session = await database.reading_pass_sessions.find_one({"id": started["session_id"]}, {"_id": 0})
+            ledger = await _rows(database.wallet_ledger)
+            user = await database.users.find_one({"id": USER["id"]}, {"_id": 0})
+            assert session["status"] == "revoked"
+            assert ensure_utc(session["billing_cutoff_at"]) == cutoff
+            assert len(ledger) == 1
+            assert ledger[0]["debit"] == 7
+            assert user["reading_seconds_balance"] == 293
+            assert any(isinstance(outcome, dict) or outcome in {"LEASE_EXPIRED", "CONTENT_REVOKED"} for outcome in outcomes)
 
     asyncio.run(scenario())
