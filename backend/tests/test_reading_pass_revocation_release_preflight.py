@@ -58,6 +58,14 @@ class ReadOnlyCollection:
         raise AssertionError("release preflight must not create indexes")
 
 
+class UnfilteredReadOnlyCollection(ReadOnlyCollection):
+    """Simulate a malformed driver result that does not honour the projection."""
+
+    def find(self, query, _projection=None, **kwargs):
+        self.queries.append((query, kwargs))
+        return Cursor(self.rows)
+
+
 class ReadOnlyDatabase:
     def __init__(self, *, index_response, pointers=(), manifests=(), fail_command=False):
         self.index_response = index_response
@@ -182,6 +190,35 @@ def test_duplicate_or_truncated_pointer_manifest_evidence_fails_closed(monkeypat
     assert result["activation_pointers"]["manifest_truncated"] is True
     assert result["activation_pointers"]["compatibility"] == "INCOMPLETE_OR_INCONSISTENT_POINTER_MANIFEST_STATE"
     assert {error["code"] for error in result["errors"]} >= {"DUPLICATE_POINTER_TITLE", "RESULT_TRUNCATED"}
+
+
+def test_malformed_pointer_or_manifest_evidence_fails_closed(monkeypatch):
+    malformed_pointer = ReadOnlyDatabase(
+        index_response=exact_index_response(),
+        pointers=[{"book_slug": "controlled-radharani", "active_segmentation_version": "bad", "generation": True}],
+    )
+    monkeypatch.setattr(server, "db", malformed_pointer)
+
+    pointer_result = asyncio.run(server._reading_pass_revocation_release_preflight())
+
+    assert pointer_result["complete"] is False
+    assert pointer_result["activation_pointers"]["compatibility"] == "INCOMPLETE_OR_INCONSISTENT_POINTER_MANIFEST_STATE"
+    assert any(error == {"component": "activation_pointers", "code": "MALFORMED_POINTER_RECORD"} for error in pointer_result["errors"])
+
+    malformed_manifest = ReadOnlyDatabase(
+        index_response=exact_index_response(),
+        pointers=[{"book_slug": "controlled-radharani", "active_segmentation_version": "v-safe", "generation": 3}],
+    )
+    malformed_manifest.reader_segment_manifests = UnfilteredReadOnlyCollection(
+        [{"book_slug": "controlled-radharani", "segmentation_version": "bad/", "status": "active"}]
+    )
+    monkeypatch.setattr(server, "db", malformed_manifest)
+
+    manifest_result = asyncio.run(server._reading_pass_revocation_release_preflight())
+
+    assert manifest_result["complete"] is False
+    assert manifest_result["activation_pointers"]["compatibility"] == "INCOMPLETE_OR_INCONSISTENT_POINTER_MANIFEST_STATE"
+    assert {error["code"] for error in manifest_result["errors"]} >= {"MALFORMED_MANIFEST_RECORD", "POINTER_ACTIVE_MANIFEST_MISMATCH"}
 
 
 def test_missing_active_pointers_are_not_compatible_evidence(monkeypatch):
