@@ -116,6 +116,7 @@ def server_billable_seconds(
     now: datetime,
     active: bool,
     config: ReadingPassConfig,
+    billing_cutoff_at: datetime | None = None,
 ) -> int:
     """Calculate debit exclusively from server timestamps.
 
@@ -127,7 +128,10 @@ def server_billable_seconds(
     if not active:
         return 0
     start = ensure_utc(last_billed_at)
-    stop = min(ensure_utc(now), ensure_utc(lease_expires_at))
+    stops = [ensure_utc(now), ensure_utc(lease_expires_at)]
+    if billing_cutoff_at is not None:
+        stops.append(ensure_utc(billing_cutoff_at))
+    stop = min(stops)
     elapsed = max(0, int((stop - start).total_seconds()))
     return min(elapsed, config.maximum_lease_seconds)
 

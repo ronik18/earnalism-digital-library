@@ -7,10 +7,13 @@ token and treats MongoDB uniqueness constraints as the cross-instance lock.
 
 from __future__ import annotations
 
+import asyncio
 from datetime import datetime, timedelta, timezone
 import secrets
 import uuid
 from typing import Any, Mapping, Optional
+
+from pymongo.errors import DuplicateKeyError
 
 try:  # package import
     from .domain.reading_pass import (
@@ -77,6 +80,12 @@ class ReadingPassService:
                         attempt < 2
                         and getattr(exc, "has_error_label", lambda _label: False)("TransientTransactionError")
                     ):
+                        # A conflicting transaction may still be committing.
+                        # Yield with a bounded backoff before opening a fresh
+                        # snapshot; immediately replaying the callback can
+                        # consume the entire retry budget against that same
+                        # in-flight writer.
+                        await asyncio.sleep(0.01 * (attempt + 1))
                         continue
                     raise
                 for commit_attempt in range(3):
@@ -94,6 +103,7 @@ class ReadingPassService:
                             "TransientTransactionError"
                         )
                         if transient and attempt < 2:
+                            await asyncio.sleep(0.01 * (attempt + 1))
                             break
                         raise
         assert last_error is not None
@@ -144,6 +154,252 @@ class ReadingPassService:
             session=session,
         )
 
+    @staticmethod
+    def _text_revocation(state: Optional[Mapping[str, Any]]) -> Optional[dict[str, Any]]:
+        """Return only a complete, durable text-revocation record.
+
+        A missing record means no separately committed revocation. A malformed
+        record is never treated as a successful allow or as a trustworthy
+        historical cutoff.
+        """
+
+        record = (state or {}).get("text_revocation")
+        if record is None:
+            return None
+        if not isinstance(record, Mapping):
+            raise ReadingPassError(
+                "CONTENT_AUTHORITY_UNAVAILABLE", 503,
+                "Reader availability could not be verified.",
+            )
+        cutoff = record.get("cutoff_at")
+        if (
+            record.get("status") != "revoked"
+            or not isinstance(record.get("generation"), int)
+            or int(record["generation"]) < 1
+            or not isinstance(record.get("operation_id"), str)
+            or not record["operation_id"]
+            or not isinstance(cutoff, datetime)
+            or not isinstance(record.get("activation_generation"), int)
+            or int(record["activation_generation"]) < 0
+            or not isinstance(record.get("segmentation_version"), str)
+            or not record["segmentation_version"]
+            or not isinstance(record.get("manifest_version"), str)
+            or not record["manifest_version"]
+        ):
+            raise ReadingPassError(
+                "CONTENT_AUTHORITY_UNAVAILABLE", 503,
+                "Reader availability could not be verified.",
+            )
+        return dict(record)
+
+    @staticmethod
+    def _text_revocation_binding(session_doc: Mapping[str, Any], revocation: Mapping[str, Any]) -> str:
+        """Classify a session against one immutable text-revocation record.
+
+        Only a session explicitly bound to the revoked pointer may be charged
+        to its server-timed cutoff. A legacy session without all binding fields
+        cannot honestly be assigned to this publication, and a fully bound
+        retained version is not silently reclassified as the current one.
+        """
+
+        scope = session_doc.get("scope")
+        if not isinstance(scope, Mapping):
+            return "legacy_unbound"
+        version = scope.get("segmentation_version")
+        manifest = scope.get("manifest_version")
+        activation_generation = scope.get("authority_activation_generation")
+        if (
+            not isinstance(version, str)
+            or not version
+            or not isinstance(manifest, str)
+            or not manifest
+            or not isinstance(activation_generation, int)
+            or activation_generation < 0
+        ):
+            return "legacy_unbound"
+        if (
+            version == revocation["segmentation_version"]
+            and manifest == revocation["manifest_version"]
+            and activation_generation == revocation["activation_generation"]
+        ):
+            return "matches_revoked_publication"
+        return "different_retained_publication"
+
+    async def _current_text_revocation(self, content_id: str, mongo_session) -> Optional[dict[str, Any]]:
+        state = await self.db.reader_segment_activation_state.find_one(
+            {"book_slug": content_id},
+            {"_id": 0, "text_revocation": 1},
+            session=mongo_session,
+        )
+        return self._text_revocation(state)
+
+    async def _require_text_revocation_operation_index(self) -> None:
+        """Refuse a revocation when its cross-title idempotency index is absent.
+
+        ``create_index`` in application startup is a deployment instruction,
+        not proof that the running database has accepted the prerequisite.
+        The administrative writer therefore checks the concrete unique index
+        before it makes any publication or session change.
+        """
+
+        try:
+            indexes = await self.db.reading_pass_text_revocation_operations.index_information()
+        except Exception as exc:
+            raise ReadingPassError(
+                "REVOCATION_SCHEMA_UNAVAILABLE", 503,
+                "The revocation operation schema could not be verified.",
+            ) from exc
+        required_key = [("operation_id", 1)]
+        if not any(
+            spec.get("unique") is True
+            and list(spec.get("key") or []) == required_key
+            and "partialFilterExpression" not in spec
+            for spec in indexes.values()
+            if isinstance(spec, Mapping)
+        ):
+            raise ReadingPassError(
+                "REVOCATION_SCHEMA_UNAVAILABLE", 503,
+                "The revocation operation schema is not ready.",
+            )
+
+    async def _mark_text_authority_unavailable(
+        self,
+        *,
+        mongo_session,
+        session_doc: Mapping[str, Any],
+        now: datetime,
+    ) -> dict[str, Any]:
+        """Stop new protected use without fabricating a disputed debit.
+
+        This transition is used only when the current file/runtime authority
+        cannot establish a historical, server-timed revocation cutoff. It
+        releases the active lock and retains an audit trail for later policy
+        review; it does not forgive, backdate, or collect time.
+        """
+
+        session_id = str(session_doc.get("id") or "")
+        user_id = str(session_doc.get("user_id") or "")
+        current_version = int(session_doc.get("lease_version", 0) or 0)
+        # Preserve the last known accounting and publication boundary before
+        # this fail-closed transition overwrites the live lease fields.  This
+        # audit record is private, durable, and in the same transaction as the
+        # transition; it is evidence for a later accounting decision, not a
+        # debit/refund instruction.  ``now`` is the time this transaction
+        # observed the missing authority, not a database-commit timestamp.
+        scope = session_doc.get("scope") if isinstance(session_doc.get("scope"), Mapping) else {}
+        await self._audit(
+            "text_authority_unavailable_accounting_bounds",
+            session=mongo_session,
+            document={
+                "user_id": user_id,
+                "session_id": session_id,
+                "content_id": str(session_doc.get("content_id") or ""),
+                "lease_version": current_version,
+                "observed_at": now,
+                "original_accounting_bounds": {
+                    "lease_issued_at": session_doc.get("lease_issued_at"),
+                    "last_billed_at": session_doc.get("last_billed_at"),
+                    "lease_expires_at": session_doc.get("lease_expires_at"),
+                    "last_heartbeat_at": session_doc.get("last_heartbeat_at"),
+                    "last_sequence": int(session_doc.get("last_sequence", 0) or 0),
+                    "seconds_consumed": int(session_doc.get("seconds_consumed", 0) or 0),
+                    "billing_active": bool(session_doc.get("billing_active", session_doc.get("status") == "active")),
+                },
+                "publication_identity": {
+                    "segmentation_version": scope.get("segmentation_version"),
+                    "manifest_version": scope.get("manifest_version"),
+                    "activation_generation": scope.get("authority_activation_generation"),
+                },
+            },
+        )
+        updated = await self.db.reading_pass_sessions.update_one(
+            {
+                "id": session_id,
+                "lease_version": current_version,
+                "status": {"$in": list(ACTIVE_SESSION_STATUSES)},
+            },
+            {
+                "$set": {
+                    "status": "authority_unavailable",
+                    "ended_at": now,
+                    "ended_reason": "text_authority_cutoff_unavailable",
+                    "lease_expires_at": now,
+                    "billing_active": False,
+                    "authority_unavailable_at": now,
+                    "updated_at": now,
+                },
+                "$unset": {"active_lock": ""},
+            },
+            session=mongo_session,
+        )
+        if updated.modified_count != 1:
+            raise ReadingPassError("LEASE_EXPIRED", 409, "The Reading Pass lease changed concurrently.")
+        await self._audit(
+            "text_authority_unavailable",
+            session=mongo_session,
+            document={
+                "user_id": user_id,
+                "session_id": session_id,
+                "content_id": str(session_doc.get("content_id") or ""),
+                "lease_version": current_version,
+                "unsettled_from": session_doc.get("last_billed_at") or session_doc.get("lease_issued_at"),
+            },
+        )
+        return {"session_id": session_id, "balance_seconds": await self._balance(user_id, mongo_session)}
+
+    async def _assert_text_start_authority(
+        self,
+        *,
+        mongo_session,
+        content_id: str,
+        scope: Mapping[str, Any],
+        now: datetime,
+    ) -> None:
+        """Order a new protected-text lease against the durable revocation writer.
+
+        Current file/runtime reader truth authorizes the route before this
+        service is reached. The activation-state touch below gives the durable
+        title-level revocation writer a transaction-visible ordering point.
+        Historical callers without the new publication binding keep their
+        legacy behavior; they cannot be reinterpreted as a newly coordinated
+        start.
+        """
+
+        generation = scope.get("authority_activation_generation")
+        segmentation_version = scope.get("segmentation_version")
+        if not isinstance(generation, int) or generation < 0 or not isinstance(segmentation_version, str) or not segmentation_version:
+            return
+        # Incrementing this fence makes every permitted start a real write,
+        # even under a fixed server clock.  The write is deliberately against
+        # the same pointer the revocation writer changes, so Mongo's
+        # transaction conflict rules order starts and revocations without
+        # changing the canonical publication identity.
+        updated = await self.db.reader_segment_activation_state.update_one(
+            {
+                "book_slug": content_id,
+                "active_segmentation_version": segmentation_version,
+                "generation": generation,
+                "text_revocation": {"$exists": False},
+            },
+            {
+                "$set": {"text_authority_last_start_at": now},
+                "$inc": {"text_authority_fence": 1},
+            },
+            session=mongo_session,
+        )
+        if updated.modified_count == 1:
+            return
+        state = await self.db.reader_segment_activation_state.find_one(
+            {"book_slug": content_id}, {"_id": 0, "text_revocation": 1}, session=mongo_session
+        )
+        revocation = self._text_revocation(state)
+        if revocation:
+            raise ReadingPassError("CONTENT_REVOKED", 403, "This protected text is no longer available.")
+        raise ReadingPassError(
+            "CONTENT_AUTHORITY_UNAVAILABLE", 503,
+            "Reader availability could not be verified.",
+        )
+
     async def _settle_terminal_session(
         self,
         *,
@@ -152,18 +408,21 @@ class ReadingPassService:
         now: datetime,
         terminal_status: str,
         reason: str,
+        billing_cutoff_at: Optional[datetime] = None,
     ) -> tuple[int, int]:
         """Settle the final server-timed interval and release the account lock."""
 
         user_id = str(session_doc.get("user_id") or "")
         session_id = str(session_doc.get("id") or "")
         current_version = int(session_doc.get("lease_version", 0) or 0)
+        billing_cutoff = ensure_utc(billing_cutoff_at or now)
         billable = server_billable_seconds(
             last_billed_at=session_doc.get("last_billed_at") or session_doc.get("lease_issued_at") or now,
             lease_expires_at=session_doc.get("lease_expires_at") or now,
             now=now,
             active=bool(session_doc.get("billing_active", session_doc.get("status") == "active")),
             config=self.config,
+            billing_cutoff_at=billing_cutoff,
         )
         balance = await self._balance(user_id, mongo_session)
         debit = min(balance, billable)
@@ -185,6 +444,7 @@ class ReadingPassService:
                 idempotency_key=f"terminal:{session_id}:{current_version}:{terminal_status}",
                 content_type=str(session_doc.get("content_type") or ""),
                 content_id=str(session_doc.get("content_id") or ""),
+                billing_cutoff_at=billing_cutoff,
             )
         updated_session = await self.db.reading_pass_sessions.update_one(
             {
@@ -196,6 +456,8 @@ class ReadingPassService:
                 "$set": {
                     "status": terminal_status,
                     "ended_at": now,
+                    "settlement_at": now,
+                    "billing_cutoff_at": billing_cutoff,
                     "ended_reason": reason,
                     "lease_expires_at": now,
                     "last_billed_at": now,
@@ -231,6 +493,13 @@ class ReadingPassService:
         now = _now()
 
         async def operation(mongo_session):
+            if content_kind == "text":
+                await self._assert_text_start_authority(
+                    mongo_session=mongo_session,
+                    content_id=str(content_id),
+                    scope=scope,
+                    now=now,
+                )
             user = await self.db.users.find_one(
                 {"id": user_id, "role": "user"},
                 {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1, "status": 1},
@@ -364,6 +633,242 @@ class ReadingPassService:
             )
         return result
 
+    async def revoke_text_publication(
+        self,
+        *,
+        book_slug: str,
+        expected_activation_generation: int,
+        expected_segmentation_version: str,
+        expected_manifest_version: str,
+        operation_id: str,
+        reason: str,
+        actor_id: str,
+    ) -> dict[str, Any]:
+        """Commit one durable text revocation and terminal settlement together.
+
+        The cutoff is assigned from the server clock inside the transaction,
+        never accepted from a request. The existing activation-state document
+        is the coordinated title-level authority record; its generation and
+        active immutable manifest bind the revocation to the reviewed
+        publication that the administrator observed before submitting it.
+        """
+
+        slug = str(book_slug or "").strip().lower()
+        if not slug or len(slug) > 200:
+            raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "A valid canonical title is required.")
+        if not operation_id or len(operation_id) > 160:
+            raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "A bounded operation id is required.")
+        if not reason or len(reason) > 120:
+            raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "A bounded revocation reason is required.")
+        if not actor_id or len(actor_id) > 200:
+            raise ReadingPassError("AUTH_REQUIRED", 401, "An administrator identity is required.")
+        if (
+            not isinstance(expected_activation_generation, int)
+            or expected_activation_generation < 0
+            or not expected_segmentation_version
+            or not expected_manifest_version
+        ):
+            raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "A complete current publication identity is required.")
+        intent = {
+            "book_slug": slug,
+            "expected_activation_generation": expected_activation_generation,
+            "expected_segmentation_version": expected_segmentation_version,
+            "expected_manifest_version": expected_manifest_version,
+            "reason": reason,
+        }
+
+        await self._require_text_revocation_operation_index()
+
+        async def operation(mongo_session):
+            previous = await self.db.reading_pass_text_revocation_operations.find_one(
+                {"operation_id": operation_id}, {"_id": 0}, session=mongo_session
+            )
+            if previous:
+                if previous.get("intent") != intent:
+                    raise ReadingPassError(
+                        "REVOCATION_OPERATION_CONFLICT", 409,
+                        "The operation id is already bound to a different revocation intent.",
+                    )
+                return {**dict(previous.get("result") or {}), "duplicate": True}
+
+            state = await self.db.reader_segment_activation_state.find_one(
+                {
+                    "book_slug": slug,
+                    "active_segmentation_version": expected_segmentation_version,
+                    "generation": expected_activation_generation,
+                },
+                {"_id": 0},
+                session=mongo_session,
+            )
+            if not state:
+                raise ReadingPassError(
+                    "STALE_PUBLICATION_AUTHORITY", 409,
+                    "The active canonical publication changed; refresh before revoking it.",
+                )
+            current_revocation = self._text_revocation(state)
+            if current_revocation:
+                raise ReadingPassError(
+                    "TEXT_PUBLICATION_ALREADY_REVOKED", 409,
+                    "This protected text already has a durable revocation record.",
+                )
+            manifest = await self.db.reader_segment_manifests.find_one(
+                {
+                    "book_slug": slug,
+                    "segmentation_version": expected_segmentation_version,
+                    "version": expected_manifest_version,
+                    "status": "active",
+                },
+                {"_id": 0, "version": 1},
+                session=mongo_session,
+            )
+            if not manifest:
+                raise ReadingPassError(
+                    "STALE_PUBLICATION_AUTHORITY", 409,
+                    "The active canonical publication changed; refresh before revoking it.",
+                )
+
+            cutoff = _now()
+            revocation = {
+                "status": "revoked",
+                "generation": int(state.get("text_revocation_generation", 0) or 0) + 1,
+                "operation_id": operation_id,
+                "cutoff_at": cutoff,
+                "recorded_at": cutoff,
+                "reason": reason,
+                "activation_generation": expected_activation_generation,
+                "segmentation_version": expected_segmentation_version,
+                "manifest_version": expected_manifest_version,
+                "actor_id": actor_id,
+            }
+            ordered = await self.db.reader_segment_activation_state.update_one(
+                {
+                    "book_slug": slug,
+                    "active_segmentation_version": expected_segmentation_version,
+                    "generation": expected_activation_generation,
+                    "text_revocation": {"$exists": False},
+                },
+                {
+                    "$set": {"text_revocation": revocation, "updated_at": cutoff},
+                    "$inc": {"text_revocation_generation": 1},
+                },
+                session=mongo_session,
+            )
+            if ordered.modified_count != 1:
+                raise ReadingPassError(
+                    "STALE_PUBLICATION_AUTHORITY", 409,
+                    "The text authority changed concurrently; refresh before revoking it.",
+                )
+
+            sessions = await self.db.reading_pass_sessions.find(
+                {
+                    "content_type": "text",
+                    "content_id": slug,
+                    "status": {"$in": list(ACTIVE_SESSION_STATUSES)},
+                },
+                {"_id": 0},
+                session=mongo_session,
+            ).to_list(10_001)
+            if len(sessions) > 10_000:
+                raise ReadingPassError(
+                    "REVOCATION_SCOPE_LIMIT", 503,
+                    "Too many active text sessions require a scoped containment operation.",
+                )
+            total_debit = 0
+            settlements: list[dict[str, Any]] = []
+            authority_unavailable_sessions = 0
+            retained_version_sessions = 0
+            for session_doc in sessions:
+                binding = self._text_revocation_binding(session_doc, revocation)
+                if binding == "legacy_unbound":
+                    await self._mark_text_authority_unavailable(
+                        mongo_session=mongo_session,
+                        session_doc=session_doc,
+                        now=cutoff,
+                    )
+                    authority_unavailable_sessions += 1
+                    continue
+                if binding == "different_retained_publication":
+                    retained_version_sessions += 1
+                    continue
+                debit, balance_after = await self._settle_terminal_session(
+                    mongo_session=mongo_session,
+                    session_doc=session_doc,
+                    now=cutoff,
+                    terminal_status="revoked",
+                    reason="text_publication_revoked",
+                    billing_cutoff_at=cutoff,
+                )
+                total_debit += debit
+                settlements.append({"session_id": str(session_doc.get("id") or ""), "deducted_seconds": debit, "balance_seconds": balance_after})
+                await self._audit(
+                    "text_session_revoked",
+                    session=mongo_session,
+                    document={
+                        "user_id": str(session_doc.get("user_id") or ""),
+                        "session_id": str(session_doc.get("id") or ""),
+                        "content_id": slug,
+                        "revocation_generation": revocation["generation"],
+                        "billing_cutoff_at": cutoff,
+                        "deducted_seconds": debit,
+                    },
+                )
+            result = {
+                "book_slug": slug,
+                "operation_id": operation_id,
+                "revocation_generation": revocation["generation"],
+                "activation_generation": expected_activation_generation,
+                "segmentation_version": expected_segmentation_version,
+                "manifest_version": expected_manifest_version,
+                "cutoff_at": _iso(cutoff),
+                "settled_session_count": len(settlements),
+                "authority_unavailable_session_count": authority_unavailable_sessions,
+                "retained_version_session_count": retained_version_sessions,
+                "deducted_seconds": total_debit,
+                "revoked": True,
+            }
+            await self.db.reading_pass_text_revocation_operations.insert_one(
+                {
+                    "id": str(uuid.uuid4()),
+                    "operation_id": operation_id,
+                    "intent": intent,
+                    "result": result,
+                    "created_at": cutoff,
+                },
+                session=mongo_session,
+            )
+            await self._audit(
+                "text_publication_revoked",
+                session=mongo_session,
+                document={
+                    "book_slug": slug,
+                    "operation_id": operation_id,
+                    "revocation_generation": revocation["generation"],
+                    "activation_generation": expected_activation_generation,
+                    "segmentation_version": expected_segmentation_version,
+                    "manifest_version": expected_manifest_version,
+                    "billing_cutoff_at": cutoff,
+                    "settled_session_count": len(settlements),
+                    "deducted_seconds": total_debit,
+                },
+            )
+            return result
+
+        try:
+            return await self._transaction(operation)
+        except DuplicateKeyError as exc:
+            # A concurrent caller may have committed the same operation after
+            # our transaction snapshot. Resolve only an exact intent replay;
+            # any conflicting operation id remains a fail-closed conflict.
+            previous = await self.db.reading_pass_text_revocation_operations.find_one(
+                {"operation_id": operation_id}, {"_id": 0}
+            )
+            if previous and previous.get("intent") == intent:
+                return {**dict(previous.get("result") or {}), "duplicate": True}
+            raise ReadingPassError(
+                "REVOCATION_OPERATION_CONFLICT", 409,
+                "The operation id is already bound to a different revocation intent.",
+            ) from exc
+
     async def renew_lease(
         self,
         *,
@@ -376,18 +881,15 @@ class ReadingPassService:
         idempotency_key: str,
         active: bool,
         playback_state: str = "",
+        text_authority: str = "allowed",
     ) -> dict[str, Any]:
         if not idempotency_key or len(idempotency_key) > 160:
             raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "A bounded idempotency key is required.")
         if sequence < 1:
             raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 400, "Heartbeat sequence must be positive.")
+        if text_authority not in {"allowed", "denied", "unavailable"}:
+            raise ReadingPassError("CONTENT_AUTHORITY_UNAVAILABLE", 503, "Reader availability could not be verified.")
         token_hash = token_fingerprint(lease_token, self.token_secret)
-        existing = await self.db.reading_pass_heartbeats.find_one(
-            {"session_id": session_id, "user_id": user_id, "idempotency_key": idempotency_key},
-            {"_id": 0, "response": 1},
-        )
-        if existing:
-            return {**existing.get("response", {}), "lease_token": lease_token, "duplicate": True}
         now = _now()
 
         async def operation(mongo_session):
@@ -407,6 +909,110 @@ class ReadingPassService:
                 raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 403, "The Reading Pass lease is invalid.")
             current_version = int(session_doc.get("lease_version", 0) or 0)
             last_sequence = int(session_doc.get("last_sequence", 0) or 0)
+            if session_doc.get("content_type") == "text":
+                revocation = await self._current_text_revocation(str(session_doc.get("content_id") or ""), mongo_session)
+                if revocation:
+                    binding = self._text_revocation_binding(session_doc, revocation)
+                    if binding == "legacy_unbound":
+                        unavailable = await self._mark_text_authority_unavailable(
+                            mongo_session=mongo_session,
+                            session_doc=session_doc,
+                            now=now,
+                        )
+                        return {"terminal_error": "CONTENT_AUTHORITY_UNAVAILABLE", **unavailable}
+                    if binding == "matches_revoked_publication":
+                        debit, balance_after = await self._settle_terminal_session(
+                            mongo_session=mongo_session,
+                            session_doc=session_doc,
+                            now=now,
+                            terminal_status="revoked",
+                            reason="text_publication_revoked",
+                            billing_cutoff_at=ensure_utc(revocation["cutoff_at"]),
+                        )
+                        await self._audit(
+                            "text_session_revocation_observed",
+                            session=mongo_session,
+                            document={
+                                "user_id": user_id,
+                                "session_id": session_id,
+                                "content_id": str(session_doc.get("content_id") or ""),
+                                "revocation_generation": revocation["generation"],
+                                "billing_cutoff_at": ensure_utc(revocation["cutoff_at"]),
+                                "deducted_seconds": debit,
+                            },
+                        )
+                        return {
+                            "terminal_error": "CONTENT_REVOKED",
+                            "balance_seconds": balance_after,
+                            "deducted_seconds": debit,
+                        }
+                if text_authority == "denied":
+                    unavailable = await self._mark_text_authority_unavailable(
+                        mongo_session=mongo_session,
+                        session_doc=session_doc,
+                        now=now,
+                    )
+                    return {"terminal_error": "CONTENT_AUTHORITY_UNAVAILABLE", **unavailable}
+                if text_authority == "unavailable":
+                    raise ReadingPassError(
+                        "CONTENT_AUTHORITY_UNAVAILABLE", 503,
+                        "Reader availability could not be verified.",
+                    )
+            existing = await self.db.reading_pass_heartbeats.find_one(
+                {"session_id": session_id, "user_id": user_id, "idempotency_key": idempotency_key},
+                {"_id": 0, "response": 1, "sequence": 1, "lease_version": 1, "active": 1, "playback_state": 1},
+                session=mongo_session,
+            )
+            if existing:
+                recorded_intent = "active" in existing and "playback_state" in existing
+                if (
+                    int(existing.get("sequence", 0) or 0) != sequence
+                    or int(existing.get("lease_version", 0) or 0) != lease_version
+                    or (
+                        recorded_intent
+                        and (
+                            bool(existing.get("active")) is not bool(active)
+                            or str(existing.get("playback_state") or "") != str(playback_state or "")
+                        )
+                    )
+                ):
+                    raise ReadingPassError(
+                        "HEARTBEAT_INTENT_CONFLICT", 409,
+                        "The idempotency key is already bound to a different renewal intent.",
+                    )
+                # Pre-413 receipts did not record full renewal intent.  They
+                # must not be promoted into a fresh Running response or
+                # charged again; a stale result tells the current client to
+                # refresh its lease state without trusting missing fields.
+                if not recorded_intent:
+                    return {
+                        "session_id": session_id,
+                        "lease_version": current_version,
+                        "lease_expires_at": _iso(session_doc["lease_expires_at"]),
+                        "balance_seconds": await self._balance(user_id, mongo_session),
+                        "deducted_seconds": 0,
+                        "status": "Stale",
+                        "stale": True,
+                        "duplicate": True,
+                        "legacy_receipt": True,
+                    }
+                response = dict(existing.get("response") or {})
+                if (
+                    int(response.get("lease_version", 0) or 0) != current_version
+                    or last_sequence != sequence
+                    or session_doc.get("status") not in ACTIVE_SESSION_STATUSES
+                ):
+                    return {
+                        "session_id": session_id,
+                        "lease_version": current_version,
+                        "lease_expires_at": _iso(session_doc["lease_expires_at"]),
+                        "balance_seconds": await self._balance(user_id, mongo_session),
+                        "deducted_seconds": 0,
+                        "status": "Stale",
+                        "stale": True,
+                        "duplicate": True,
+                    }
+                return {**response, "lease_token": lease_token, "duplicate": True}
             if lease_version != current_version or sequence <= last_sequence:
                 return {
                     "session_id": session_id,
@@ -542,6 +1148,8 @@ class ReadingPassService:
                     "idempotency_key": idempotency_key,
                     "sequence": sequence,
                     "lease_version": lease_version,
+                    "active": bool(active),
+                    "playback_state": str(playback_state or ""),
                     "response": response,
                     "created_at": now,
                 },
@@ -559,7 +1167,21 @@ class ReadingPassService:
             )
             return {**response, "lease_token": lease_token}
 
-        return await self._transaction(operation)
+        result = await self._transaction(operation)
+        terminal_error = result.get("terminal_error")
+        if terminal_error == "CONTENT_REVOKED":
+            raise ReadingPassError(
+                "CONTENT_REVOKED", 403,
+                "This protected text is no longer available.",
+                balance_seconds=int(result.get("balance_seconds", 0) or 0),
+            )
+        if terminal_error == "CONTENT_AUTHORITY_UNAVAILABLE":
+            raise ReadingPassError(
+                "CONTENT_AUTHORITY_UNAVAILABLE", 503,
+                "Reader availability could not be verified; no additional time was collected.",
+                balance_seconds=int(result.get("balance_seconds", 0) or 0),
+            )
+        return result
 
     async def _balance(self, user_id: str, mongo_session) -> int:
         user = await self.db.users.find_one(
@@ -582,6 +1204,7 @@ class ReadingPassService:
         idempotency_key: str,
         content_type: str,
         content_id: str,
+        billing_cutoff_at: Optional[datetime] = None,
     ) -> None:
         now = _now()
         transaction_id = str(uuid.uuid4())
@@ -595,6 +1218,7 @@ class ReadingPassService:
                 "created_at": _iso(now),
                 "actor": "reading-pass-v2",
                 "session_id": session_id,
+                **({"billing_cutoff_at": _iso(billing_cutoff_at)} if billing_cutoff_at else {}),
             },
             session=mongo_session,
         )
@@ -615,7 +1239,11 @@ class ReadingPassService:
                 "balance_after": int(balance_after),
                 "source_transaction_id": transaction_id,
                 "idempotency_key": idempotency_key,
-                "metadata": {"content_type": content_type, "content_id": content_id[:200]},
+                "metadata": {
+                    "content_type": content_type,
+                    "content_id": content_id[:200],
+                    **({"billing_cutoff_at": _iso(billing_cutoff_at)} if billing_cutoff_at else {}),
+                },
             },
             session=mongo_session,
         )
@@ -644,6 +1272,17 @@ class ReadingPassService:
             or ensure_utc(session_doc.get("lease_expires_at", now)) <= now
         ):
             raise ReadingPassError("LEASE_EXPIRED", 403, "A current Reading Pass lease is required.")
+        if content_type == "text":
+            revocation = await self._current_text_revocation(content_id, mongo_session=None)
+            if revocation:
+                binding = self._text_revocation_binding(session_doc, revocation)
+                if binding == "matches_revoked_publication":
+                    raise ReadingPassError("CONTENT_REVOKED", 403, "This protected text is no longer available.")
+                if binding == "legacy_unbound":
+                    raise ReadingPassError(
+                        "CONTENT_AUTHORITY_UNAVAILABLE", 503,
+                        "Reader availability could not be verified.",
+                    )
         return session_doc
 
     async def authorize_media_credential(

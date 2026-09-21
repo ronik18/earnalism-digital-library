@@ -46,6 +46,7 @@ try:
         ReadingPassSessionStartIn,
         ReadingPassLeaseRenewIn,
         ReadingPassSessionEndIn,
+        ReadingPassTextPublicationRevocationIn,
             ReadingPassPositionIn,
             ReadingPassPreviewActivationIn,
             ReadingPassSegmentMigrationIn,
@@ -109,6 +110,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         ReadingPassSessionStartIn,
         ReadingPassLeaseRenewIn,
         ReadingPassSessionEndIn,
+        ReadingPassTextPublicationRevocationIn,
             ReadingPassPositionIn,
             ReadingPassPreviewActivationIn,
         ReadingPassSegmentMigrationIn,
@@ -1643,6 +1645,10 @@ YUGALANGURIYA_PROTECTED_PAGE_INDEX = PUBLIC_TEXT_PAGE_COUNT + 1
 YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS = 250
 YUGALANGURIYA_INSPECTION_DEADLINE_MS = 1500
 YUGALANGURIYA_INSPECTION_VERSION_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{2,79}$")
+READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT = 64
+READING_PASS_RELEASE_PREFLIGHT_INDEX_BATCH_SIZE = 32
+READING_PASS_RELEASE_PREFLIGHT_QUERY_MAX_TIME_MS = 250
+READING_PASS_RELEASE_PREFLIGHT_DEADLINE_MS = 1500
 
 
 def _inspection_safe_scalar(value: Any) -> Optional[str | int]:
@@ -2013,6 +2019,228 @@ async def _yugalanguriya_publication_inspection() -> dict:
         },
         "protected_page": protected_page,
         "active_text_sessions": sessions,
+    }
+
+
+def _release_preflight_index_status(command_result: Any) -> tuple[dict, Optional[str]]:
+    """Classify only the required revocation-operation index from listIndexes.
+
+    The caller must never receive index names, arbitrary index keys, or driver
+    error text.  A non-exhausted cursor is deliberately partial evidence: the
+    preflight does not issue a follow-up getMore because a fixed first batch is
+    sufficient only when it is complete.
+    """
+    if not isinstance(command_result, Mapping):
+        return {"status": "UNKNOWN", "exact_unique_operation_id_index": None}, "MALFORMED_INDEX_RESPONSE"
+    cursor = command_result.get("cursor")
+    if not isinstance(cursor, Mapping) or not isinstance(cursor.get("firstBatch"), list):
+        return {"status": "UNKNOWN", "exact_unique_operation_id_index": None}, "MALFORMED_INDEX_RESPONSE"
+    if cursor.get("id") not in (0, None):
+        return {"status": "UNKNOWN", "exact_unique_operation_id_index": None}, "INDEX_RESULT_TRUNCATED"
+
+    exact = False
+    for index in cursor["firstBatch"]:
+        if not isinstance(index, Mapping):
+            continue
+        keys = index.get("key")
+        if isinstance(keys, Mapping):
+            key_pairs = list(keys.items())
+        elif isinstance(keys, list):
+            key_pairs = [tuple(pair) for pair in keys if isinstance(pair, (list, tuple)) and len(pair) == 2]
+        else:
+            continue
+        # A partial or sparse unique index does not establish global
+        # idempotency: it allows duplicate operation IDs outside its indexed
+        # subset.  Treat only MongoDB's ordinary, unfiltered exact index as
+        # compatible.  The implementation index created at startup has none
+        # of these modifiers.
+        if (
+            key_pairs == [("operation_id", 1)]
+            and index.get("unique") is True
+            and index.get("sparse") is not True
+            and "partialFilterExpression" not in index
+        ):
+            exact = True
+            break
+    return {
+        "status": "PRESENT_UNIQUE_EXACT" if exact else "ABSENT_OR_INCOMPATIBLE",
+        "exact_unique_operation_id_index": exact,
+    }, None
+
+
+async def _reading_pass_revocation_release_preflight() -> dict:
+    """Read bounded revocation prerequisites without changing publication state.
+
+    This is a current-instance, non-atomic metadata observation for the
+    protected-text revocation release.  It does not create indexes, seed
+    pointers, prepare publications, inspect manuscript content, or decide
+    release readiness.  Its narrow result avoids requiring a generic database
+    console or exposing database credentials to an administrator.
+    """
+    deadline = asyncio.get_running_loop().time() + (READING_PASS_RELEASE_PREFLIGHT_DEADLINE_MS / 1000)
+    errors: list[dict[str, str]] = []
+    complete = True
+
+    def record_error(component: str, code: str) -> None:
+        nonlocal complete
+        complete = False
+        if not any(error["component"] == component and error["code"] == code for error in errors):
+            errors.append({"component": component, "code": code})
+
+    async def read_operation_index(max_time_ms: int):
+        # Use the driver command directly so MongoDB enforces maxTimeMS for
+        # listIndexes too; index_information() has no server-side timeout.
+        return await db.command({
+            "listIndexes": "reading_pass_text_revocation_operations",
+            "cursor": {"batchSize": READING_PASS_RELEASE_PREFLIGHT_INDEX_BATCH_SIZE},
+            "maxTimeMS": max_time_ms,
+        })
+
+    index_command, index_error = await _inspection_read(deadline, "revocation_operation_index", read_operation_index)
+    if index_error:
+        record_error("revocation_operation_index", index_error)
+        operation_index = {"status": "UNKNOWN", "exact_unique_operation_id_index": None}
+    else:
+        operation_index, index_shape_error = _release_preflight_index_status(index_command)
+        if index_shape_error:
+            record_error("revocation_operation_index", index_shape_error)
+
+    async def read_pointers(max_time_ms: int):
+        return await db.reader_segment_activation_state.find(
+            {},
+            {"_id": 0, "book_slug": 1, "active_segmentation_version": 1, "generation": 1},
+            max_time_ms=max_time_ms,
+        ).sort([("book_slug", 1)]).to_list(READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT + 1)
+
+    pointer_rows, pointer_error = await _inspection_read(deadline, "activation_pointers", read_pointers)
+    if pointer_error:
+        record_error("activation_pointers", pointer_error)
+        pointers_result = {
+            "status": "UNKNOWN", "limit": READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT,
+            "truncated": False, "manifest_truncated": None, "duplicate_count": None,
+            "observed_count": None, "valid_count": None,
+            "compatible_count": None, "incompatible_count": None,
+            "compatibility": "UNKNOWN",
+        }
+    elif not isinstance(pointer_rows, list):
+        record_error("activation_pointers", "MALFORMED_POINTER_RESPONSE")
+        pointers_result = {
+            "status": "UNKNOWN", "limit": READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT,
+            "truncated": False, "manifest_truncated": None, "duplicate_count": None,
+            "observed_count": None, "valid_count": None,
+            "compatible_count": None, "incompatible_count": None,
+            "compatibility": "UNKNOWN",
+        }
+    else:
+        truncated = len(pointer_rows) > READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT
+        if truncated:
+            record_error("activation_pointers", "RESULT_TRUNCATED")
+        rows = pointer_rows[:READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT]
+        valid_pointers: list[dict[str, Any]] = []
+        malformed_count = 0
+        duplicate_count = 0
+        observed_slugs: set[str] = set()
+        for row in rows:
+            slug = row.get("book_slug") if isinstance(row, Mapping) else None
+            version = _inspection_version_identifier(row.get("active_segmentation_version")) if isinstance(row, Mapping) else None
+            generation = row.get("generation") if isinstance(row, Mapping) else None
+            if not isinstance(slug, str) or not slug or len(slug) > 160 or not version or not isinstance(generation, int) or isinstance(generation, bool) or generation < 0:
+                malformed_count += 1
+                continue
+            if slug in observed_slugs:
+                duplicate_count += 1
+                continue
+            observed_slugs.add(slug)
+            valid_pointers.append({"book_slug": slug, "segmentation_version": version})
+        if malformed_count:
+            record_error("activation_pointers", "MALFORMED_POINTER_RECORD")
+        if duplicate_count:
+            record_error("activation_pointers", "DUPLICATE_POINTER_TITLE")
+
+        manifests_error: Optional[str] = None
+        manifests_truncated: Optional[bool] = False
+        malformed_manifest_count = 0
+        active_manifests: list[Any] = []
+        if valid_pointers:
+            async def read_active_manifests(max_time_ms: int):
+                return await db.reader_segment_manifests.find(
+                    {"status": "active", "$or": valid_pointers},
+                    {"_id": 0, "book_slug": 1, "segmentation_version": 1, "status": 1},
+                    max_time_ms=max_time_ms,
+                ).to_list(READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT + 1)
+
+            active_manifests, manifests_error = await _inspection_read(deadline, "active_manifests", read_active_manifests)
+            if manifests_error:
+                record_error("active_manifests", manifests_error)
+            elif not isinstance(active_manifests, list):
+                manifests_error = "MALFORMED_MANIFEST_RESPONSE"
+                record_error("active_manifests", manifests_error)
+            else:
+                manifests_truncated = len(active_manifests) > READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT
+                if manifests_truncated:
+                    record_error("active_manifests", "RESULT_TRUNCATED")
+                    active_manifests = active_manifests[:READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT]
+
+        if manifests_error:
+            compatible_count = None
+            incompatible_count = None
+            compatibility = "UNKNOWN"
+        else:
+            manifests_by_pair: dict[tuple[str, str], int] = {}
+            for manifest in active_manifests:
+                if not isinstance(manifest, Mapping) or manifest.get("status") != "active":
+                    malformed_manifest_count += 1
+                    continue
+                slug = manifest.get("book_slug")
+                version = _inspection_version_identifier(manifest.get("segmentation_version"))
+                if not isinstance(slug, str) or not slug or len(slug) > 160 or not version:
+                    malformed_manifest_count += 1
+                    continue
+                key = (slug, version)
+                manifests_by_pair[key] = manifests_by_pair.get(key, 0) + 1
+            if malformed_manifest_count:
+                record_error("active_manifests", "MALFORMED_MANIFEST_RECORD")
+            compatible_count = sum(
+                manifests_by_pair.get((pointer["book_slug"], pointer["segmentation_version"]), 0) == 1
+                for pointer in valid_pointers
+            )
+            incompatible_count = len(valid_pointers) - compatible_count
+            compatibility = "NO_ACTIVE_POINTERS_OBSERVED" if not valid_pointers and malformed_count == 0 else (
+                "ALL_OBSERVED_POINTERS_MATCH_SINGLE_ACTIVE_MANIFEST"
+                if not truncated and not manifests_truncated and malformed_count == 0 and duplicate_count == 0 and malformed_manifest_count == 0 and incompatible_count == 0
+                else "INCOMPLETE_OR_INCONSISTENT_POINTER_MANIFEST_STATE"
+            )
+            if not valid_pointers and malformed_count == 0:
+                record_error("activation_pointers", "NO_ACTIVE_POINTERS_OBSERVED")
+            if incompatible_count:
+                record_error("pointer_manifest_compatibility", "POINTER_ACTIVE_MANIFEST_MISMATCH")
+
+        pointers_result = {
+            "status": "OBSERVED", "limit": READING_PASS_RELEASE_PREFLIGHT_POINTER_LIMIT,
+            "truncated": truncated, "manifest_truncated": manifests_truncated, "duplicate_count": duplicate_count,
+            "observed_count": len(rows), "valid_count": len(valid_pointers),
+            "compatible_count": compatible_count, "incompatible_count": incompatible_count,
+            "compatibility": compatibility,
+        }
+
+    return {
+        "inspection_scope": "READING_PASS_REVOCATION_RELEASE_PRECONDITIONS",
+        "observed_at": datetime.now(timezone.utc).isoformat(),
+        "complete": complete,
+        "errors": errors,
+        "runtime": {
+            "startup_db_maintenance_enabled": ENABLE_STARTUP_DB_MAINTENANCE,
+            "instance_scope": "CURRENT_INSTANCE_ONLY" if MULTI_REPLICA_ENABLED else "SINGLE_INSTANCE",
+        },
+        "revocation_operation_index": operation_index,
+        "activation_pointers": pointers_result,
+        "limitations": {
+            "atomic_snapshot": False,
+            "all_replica_certification": False,
+            "query_max_time_ms": READING_PASS_RELEASE_PREFLIGHT_QUERY_MAX_TIME_MS,
+            "overall_deadline_ms": READING_PASS_RELEASE_PREFLIGHT_DEADLINE_MS,
+            "note": "Independent, bounded metadata reads only; this does not create an index, seed pointers, certify every replica, or make a release decision.",
+        },
     }
 
 
@@ -4583,6 +4811,7 @@ async def initialize_database_indexes() -> None:
     # cross-process invariant rather than a best-effort application lock.
     await db.reader_segment_activation_state.create_index("book_slug", unique=True)
     await db.reader_segment_activation_operations.create_index("operation_id", unique=True)
+    await db.reading_pass_text_revocation_operations.create_index("operation_id", unique=True)
     await db.reading_pass_sessions.create_index("id", unique=True)
     await db.reading_pass_sessions.create_index(
         "active_lock",
@@ -9825,6 +10054,12 @@ async def admin_inspect_yugalanguriya_publication(_=Depends(require_admin)):
     return await _yugalanguriya_publication_inspection()
 
 
+@api.get("/admin/reading-pass/release-preflight")
+async def admin_reading_pass_revocation_release_preflight(_=Depends(require_admin)):
+    """Return bounded, read-only prerequisites for a text-revocation release."""
+    return await _reading_pass_revocation_release_preflight()
+
+
 @api.post("/admin/reading-pass/books/{slug}/segments")
 async def admin_build_reading_pass_segments(
     slug: str,
@@ -9939,13 +10174,54 @@ async def admin_promote_reading_pass_segments(slug: str, payload: ReadingPassSeg
         if active.get("status") != "active":
             raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The expected canonical version is no longer active."})
         target = await _stored_reader_segment_manifest(slug, payload.target_segmentation_version, mongo_session=mongo_session)
+        # A revocation is bound to the currently selected immutable
+        # publication, not an undocumented permanent title-wide ban.  Retain
+        # its complete record as history when a separately authorized,
+        # compare-and-set promotion selects a replacement version.  Malformed
+        # history is not silently overwritten.
+        historical_revocations = state.get("text_revocation_history", [])
+        if not isinstance(historical_revocations, list):
+            raise HTTPException(status_code=503, detail={"code": "SEGMENT_AUTHORITY_UNAVAILABLE", "message": "The publication authority history could not be verified."})
+        try:
+            current_revocation = reading_pass_service._text_revocation(state)
+            retained_revocations = []
+            for entry in historical_revocations:
+                if not isinstance(entry, dict) or not isinstance(entry.get("revocation"), dict):
+                    raise ReadingPassError("CONTENT_AUTHORITY_UNAVAILABLE", 503, "The publication authority history could not be verified.")
+                retained_revocations.append(reading_pass_service._text_revocation({"text_revocation": entry["revocation"]}))
+        except ReadingPassError as exc:
+            raise _reading_pass_http_error(exc) from exc
+        if any(
+            record
+            and record["segmentation_version"] == payload.target_segmentation_version
+            and record["manifest_version"] == target.get("version")
+            for record in [current_revocation, *retained_revocations]
+        ):
+            raise HTTPException(status_code=409, detail={"code": "TEXT_PUBLICATION_ALREADY_REVOKED", "message": "A revoked publication cannot be reactivated by promotion or rollback."})
+        now = datetime.now(timezone.utc)
+        pointer_update = {
+            "active_segmentation_version": payload.target_segmentation_version,
+            "generation": payload.expected_activation_generation + 1,
+            "updated_at": now,
+        }
+        pointer_unset = {}
+        if current_revocation:
+            pointer_update["text_revocation_history"] = [
+                *historical_revocations,
+                {
+                    "revocation": current_revocation,
+                    "superseded_at": now,
+                    "superseded_by_activation_generation": payload.expected_activation_generation + 1,
+                    "superseded_by_segmentation_version": payload.target_segmentation_version,
+                },
+            ]
+            pointer_unset["text_revocation"] = ""
         updated = await db.reader_segment_activation_state.update_one(
             {"book_slug": slug, "active_segmentation_version": payload.expected_active_segmentation_version, "generation": payload.expected_activation_generation},
-            {"$set": {"active_segmentation_version": payload.target_segmentation_version, "generation": payload.expected_activation_generation + 1, "updated_at": datetime.now(timezone.utc)}}, session=mongo_session,
+            {"$set": pointer_update, **({"$unset": pointer_unset} if pointer_unset else {})}, session=mongo_session,
         )
         if updated.modified_count != 1:
             raise HTTPException(status_code=409, detail={"code": "STALE_ACTIVE_SEGMENT_VERSION", "message": "The active canonical version changed; refresh before promotion."})
-        now = datetime.now(timezone.utc)
         await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.expected_active_segmentation_version, "status": "active"}, {"$set": {"status": "archived", "archived_at": now}}, session=mongo_session)
         promoted = await db.reader_segment_manifests.update_one({"book_slug": slug, "segmentation_version": payload.target_segmentation_version, "status": {"$in": ["prepared", "archived"]}}, {"$set": {"status": "active", "activated_at": now, "activated_by": f"admin:{admin.get('email', '')}"}}, session=mongo_session)
         if promoted.modified_count != 1:
@@ -10018,6 +10294,41 @@ async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassS
     return await _run_reader_segment_activation_transaction(
         bootstrap, operation_id=payload.operation_id, request_intent=intent
     )
+
+
+@api.post("/admin/reading-pass/books/{slug}/text-revocation")
+async def admin_revoke_reading_pass_text_publication(
+    slug: str,
+    payload: ReadingPassTextPublicationRevocationIn,
+    admin=Depends(require_admin),
+):
+    """Durably revoke one active protected-text publication.
+
+    This administrative writer is intentionally one-way: it records a
+    server-timed cutoff and terminalizes matching active text leases. It does
+    not accept a client-supplied cutoff, activate a title, decide rights, or
+    provide an un-revoke path.
+    """
+
+    canonical_slug = str(slug or "").strip().lower()
+    if not canonical_slug:
+        raise HTTPException(status_code=404, detail={"code": "CONTENT_NOT_AUTHORIZED", "message": "Book not found."})
+    # The service resolves an exact durable operation replay before checking
+    # current authority in the same transaction. A pre-transaction pointer
+    # check here would hide a committed result after a subsequent promotion.
+    # New intents still require the exact active pointer and manifest there.
+    try:
+        return await reading_pass_service.revoke_text_publication(
+            book_slug=canonical_slug,
+            expected_activation_generation=payload.expected_activation_generation,
+            expected_segmentation_version=payload.expected_segmentation_version,
+            expected_manifest_version=payload.expected_manifest_version,
+            operation_id=payload.operation_id,
+            reason=payload.reason,
+            actor_id=str(admin.get("id") or ""),
+        )
+    except ReadingPassError as exc:
+        raise _reading_pass_http_error(exc) from exc
 
 
 @api.post("/admin/reading-pass/audiobooks/{slug}/preview")
@@ -10339,6 +10650,29 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             manifest = await _stored_reader_segment_manifest(
                 canonical_content_id, manifest["segmentation_version"]
             )
+        activation_state = await db.reader_segment_activation_state.find_one(
+            {"book_slug": canonical_content_id},
+            {"_id": 0, "active_segmentation_version": 1, "generation": 1, "text_revocation": 1},
+        )
+        if (
+            not manifest
+            or not activation_state
+            or activation_state.get("active_segmentation_version") != manifest.get("segmentation_version")
+            or not isinstance(activation_state.get("generation"), int)
+        ):
+            raise HTTPException(
+                status_code=503,
+                detail={
+                    "code": "CONTENT_AUTHORITY_UNAVAILABLE",
+                    "message": "Reader availability could not be verified.",
+                },
+            )
+        text_revocation = activation_state.get("text_revocation")
+        if isinstance(text_revocation, dict) and text_revocation.get("status") == "revoked":
+            raise HTTPException(
+                status_code=403,
+                detail={"code": "CONTENT_REVOKED", "message": "This protected text is no longer available."},
+            )
         exists = bool(
             manifest
             and await db.reader_content_segments.find_one(
@@ -10356,6 +10690,7 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             "canonical_page_index": page_index,
             "segmentation_version": manifest["segmentation_version"],
             "manifest_version": manifest["version"],
+            "authority_activation_generation": activation_state["generation"],
         }
     elif content_type == "audio":
         position = float(payload.media_position_seconds or 0)
@@ -10407,6 +10742,24 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
     _session_id, lease_token = _reading_pass_lease_headers(request)
     if not lease_token:
         raise HTTPException(status_code=403, detail={"code": "LEASE_EXPIRED", "message": "Lease token is required."})
+    # A current controlled-publication lookup is distinct from a committed
+    # title revocation. The service checks the durable revocation record in
+    # its transaction; this route supplies only whether the current source
+    # truth is allowed, denied without a historical cutoff, or temporarily
+    # unavailable. Never turn a lookup exception into confirmed revocation.
+    text_authority = "allowed"
+    session_hint = await db.reading_pass_sessions.find_one(
+        {"id": payload.session_id, "user_id": user["id"]},
+        {"_id": 0, "content_type": 1, "content_id": 1},
+    )
+    if session_hint and session_hint.get("content_type") == "text":
+        try:
+            current_book = await _reader_book_access_doc(str(session_hint.get("content_id") or ""))
+        except Exception as exc:
+            logger.warning("Reading Pass text renewal authority unavailable: error_type=%s", type(exc).__name__)
+            text_authority = "unavailable"
+        else:
+            text_authority = "allowed" if current_book else "denied"
     try:
         result = await reading_pass_service.renew_lease(
             user_id=user["id"],
@@ -10418,6 +10771,7 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
             idempotency_key=payload.idempotency_key,
             active=payload.active,
             playback_state=payload.playback_state,
+            text_authority=text_authority,
         )
         await _invalidate_user_cache(user["id"])
         await _set_user_wallet_cache(user["id"], int(result.get("balance_seconds", 0)))

@@ -225,6 +225,19 @@ test.each(["Exhausted", "Stale"])("HTTP200 %s cannot authorize content or create
   expect(pass.endReadingPassSession).toHaveBeenCalled();
 });
 
+test("a protected-text revocation error expires the local lease without remounting content or retrying", async () => {
+  await openProtected();
+  pass.renewReadingPassLease.mockRejectedValueOnce({
+    response: { status: 403, data: { detail: { code: "CONTENT_REVOKED", message: "This protected text is no longer available." } } },
+  });
+  await tick(10000);
+  expect(container.querySelector("article")).toBeNull();
+  expect(text()).toContain("no longer available");
+  await tick(30000);
+  expect(pass.renewReadingPassLease).toHaveBeenCalledTimes(1);
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(1);
+});
+
 test("hidden tabs pause without protected refetch, then resume using updated lease", async () => {
   await openProtected();
   Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
