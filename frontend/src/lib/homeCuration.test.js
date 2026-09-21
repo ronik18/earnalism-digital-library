@@ -35,10 +35,9 @@ test("shelf modes remain bounded and explicit", () => {
   expect([0, 1, 2, 3, 6, 8].map(shelfMode)).toEqual(["Zero", "Spotlight", "Duo", "Trio", "Runway", "Overflow"]);
 });
 
-test("curation removes duplicate or coverless books", () => {
+test("curation does not surface stale reader books while the public release is held", () => {
   const result = normalizeHomeCuration({ shelves: [{ id: "bengali-classics", books: [{ slug: "a", title: "A", cover_image_url: "/a" }, { slug: "a", title: "A2", cover_image_url: "/a2" }, { slug: "b", title: "B" }] }] });
-  expect(result.shelves[0].books.map((book) => book.slug)).toEqual(["a"]);
-  expect(result.shelves[0].mode).toBe("Spotlight");
+  expect(result.shelves).toEqual([]);
 });
 
 test("listening curation excludes mismatched and visually blocked covers", () => {
@@ -84,7 +83,7 @@ test("listening curation excludes mismatched and visually blocked covers", () =>
     ],
   });
 
-  expect(result.selected_audiobooks.map((book) => book.slug)).toEqual(["approved"]);
+  expect(result.selected_audiobooks).toEqual([]);
 });
 
 test("curation supports object-based shelves payloads from sprint fixtures", () => {
@@ -97,9 +96,9 @@ test("curation supports object-based shelves payloads from sprint fixtures", () 
     },
   });
 
-  expect(result.shelves.map((shelf) => shelf.id).sort()).toEqual(["bengali_classics", "english_classics"].sort());
+  expect(result.shelves).toEqual([]);
   expect(result.shelf_collage.groups.map((shelf) => shelf.id)).not.toContain("selected-listening");
-  expect(result.selected_audiobooks.map((book) => book.slug)).toEqual(["a2"]);
+  expect(result.selected_audiobooks).toEqual([]);
 });
 
 test("curation preserves editorial shelf groups when object shelf facets are also present", () => {
@@ -112,7 +111,7 @@ test("curation preserves editorial shelf groups when object shelf facets are als
     },
   });
 
-  expect(result.groups.map((shelf) => shelf.id)).toEqual(["editorial"]);
+  expect(result.groups).toEqual([]);
 });
 
 test("hero carousel books are canonical-cover normalized and deduplicated", () => {
@@ -128,22 +127,14 @@ test("hero carousel books are canonical-cover normalized and deduplicated", () =
     },
   });
 
-  expect(result.hero.carousel_books.map((book) => book.slug)).toEqual(["a"]);
-  expect(result.hero.carousel_books[0].book_url).toBe("/book/a");
-  expect(result.hero.carousel_books[0].cover_alt_text).toBe("A by Author");
+  expect(result.hero.carousel_books).toEqual([]);
 });
 
-test("bundled release snapshot keeps truthful hero books available before the runtime request resolves", () => {
+test("bundled release snapshot cannot revive Reader cards before the runtime request resolves", () => {
   const snapshot = getHomeCurationSnapshot();
   expect(snapshot.source.truth_source).toBe("bundled_sprint1_release_snapshot");
-  expect(snapshot.hero.featured_books.length).toBeGreaterThanOrEqual(4);
-  expect(snapshot.hero.featured_books.slice(0, 4).every((book) => (
-    book.reader_enabled !== false
-      && book.cover_valid !== false
-      && book.is_placeholder !== true
-      && Boolean(book.front_cover_url)
-  ))).toBe(true);
-  expect(snapshot.hero.carousel_books.length).toBeGreaterThanOrEqual(4);
+  expect(snapshot.hero.featured_books).toEqual([]);
+  expect(snapshot.hero.carousel_books).toEqual([]);
 });
 
 test("home curation uses localStorage cache with TTL", () => {
@@ -173,5 +164,5 @@ test("home curation uses localStorage cache with TTL", () => {
     delete global.localStorage;
   }
 
-  expect(fromCache?.hero?.featured_books?.map((book) => book.slug)).toEqual(["cache-1"]);
+  expect(fromCache?.hero?.featured_books).toEqual([]);
 });

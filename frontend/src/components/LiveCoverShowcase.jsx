@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useStat
 import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
 import BookCoverImage from "./BookCoverImage";
-import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
+import { canShowStartReading, LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
 
 function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks = 0 }) {
   const marqueeRef = useRef(null);
@@ -34,7 +34,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
       .filter((book) => {
         const slug = book.slug;
         const cover = book.cover_image_url || book.cover_url || book.thumbnail_url;
-        if (!slug || !cover || seen.has(slug)) return false;
+        if (!slug || !cover || seen.has(slug) || !canShowStartReading(book)) return false;
         seen.add(slug);
         return true;
       });

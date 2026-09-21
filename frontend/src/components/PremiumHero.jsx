@@ -28,6 +28,7 @@ import {
 } from "../lib/heroCarousel";
 import "./PremiumHero.css";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
+import { PUBLIC_READER_EXPOSURE_ENABLED } from "../lib/controlledLaunch";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
 const HERO_ASSET_VERSION = "20260815-mobile-luxe1";
@@ -319,6 +320,8 @@ function BookJacket({
 }
 
 function ReaderScreenPreview() {
+  if (!PUBLIC_READER_EXPOSURE_ENABLED) return null;
+
   return (
     <Link
       to="/reader/dracula"
@@ -400,7 +403,7 @@ function ReferenceDeviceGroup({ listeningBook }) {
   return (
     <div className="premium-reference-device-group" aria-label="Reader and audiobook device preview">
       <ListeningPhone listeningBook={listeningBook} />
-      <ReaderScreenPreview />
+      {PUBLIC_READER_EXPOSURE_ENABLED && <ReaderScreenPreview />}
     </div>
   );
 }

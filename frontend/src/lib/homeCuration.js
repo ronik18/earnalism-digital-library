@@ -1,7 +1,8 @@
 import { API } from "./api";
 import homeCuratedSprint1 from "../data/homeCuratedSprint1.json";
+import { canShowStartReading } from "./controlledLaunch";
 
-const HOME_CURATION_CACHE_KEY = "earnalism_home_curation_v3";
+const HOME_CURATION_CACHE_KEY = "earnalism_home_curation_v4";
 const HOME_CURATION_CACHE_TTL_MS = 60 * 60 * 1000;
 const HOME_CURATION_LEGACY_KEYS = [
   "earnalism_home_curation_v2",
@@ -91,7 +92,7 @@ function normalizeBooks(books = [], { audioOnly = false } = {}) {
   const normalized = [];
   const seen = new Set();
   books
-    .filter((book) => validCover(book) && (!audioOnly || approvedAudio(book)))
+    .filter((book) => validCover(book) && canShowStartReading(book) && (!audioOnly || approvedAudio(book)))
     .forEach((book) => {
       if (seen.has(book.slug)) return;
       seen.add(book.slug);

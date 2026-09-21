@@ -280,6 +280,7 @@ try:
     from catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        PUBLIC_READER_EXPOSURE_ENABLED,
         AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         PUBLIC_CATALOG_EXCLUDED_SLUGS as CATALOG_TRUTH_EXCLUDED_SLUGS,
@@ -302,6 +303,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        PUBLIC_READER_EXPOSURE_ENABLED,
         AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         PUBLIC_CATALOG_EXCLUDED_SLUGS as CATALOG_TRUTH_EXCLUDED_SLUGS,
@@ -801,7 +803,7 @@ async def _expensive_job_slot(job_type: str):
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v16"
 # Rotate only public catalog/home cache keys for controlled-cover precedence.
 # Reader/audio manifest cache namespaces remain unchanged.
-PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "controlled-covers-v1"
+PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "release-containment-v1"
 READER_CONTENT_RENDER_VERSION = "semantic-html-v1"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
@@ -1633,7 +1635,10 @@ def _controlled_public_book_query(extra: Optional[dict] = None) -> dict:
 
 
 def _is_controlled_public_slug(slug: str) -> bool:
-    return str(slug or "").strip().lower() in CONTROLLED_LIVE_BOOK_SLUGS
+    return (
+        PUBLIC_READER_EXPOSURE_ENABLED
+        and str(slug or "").strip().lower() in CONTROLLED_LIVE_BOOK_SLUGS
+    )
 
 
 # This is deliberately a fixed server-side scope, not a client-provided book
@@ -6080,14 +6085,16 @@ async def get_home_payload(books_limit: Optional[int] = None, books_offset: int 
     featured_book = None
     setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
     featured_slug = (setting or {}).get("book_slug")
-    featured_candidate = featured_slug if featured_slug in CONTROLLED_LIVE_BOOK_SLUGS else CONTROLLED_LIVE_BOOK_SLUGS[0]
-    doc = await db.books.find_one(
-        _controlled_public_book_query({"slug": featured_candidate}),
-        BOOK_METADATA_PROJECTION,
-    )
-    featured_book = _safe_live_public_projection(doc)
-    if not featured_book:
-        featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
+    featured_book = None
+    if CONTROLLED_LIVE_BOOK_SLUGS:
+        featured_candidate = featured_slug if featured_slug in CONTROLLED_LIVE_BOOK_SLUGS else CONTROLLED_LIVE_BOOK_SLUGS[0]
+        doc = await db.books.find_one(
+            _controlled_public_book_query({"slug": featured_candidate}),
+            BOOK_METADATA_PROJECTION,
+        )
+        featured_book = _safe_live_public_projection(doc)
+        if not featured_book:
+            featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
 
     result = {
         "categories": categories,
@@ -6572,15 +6579,17 @@ async def get_featured():
     if cached is not None:
         return cached
     s = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
-    featured_candidate = (
-        s.get("book_slug")
-        if s and s.get("book_slug") in CONTROLLED_LIVE_BOOK_SLUGS
-        else CONTROLLED_LIVE_BOOK_SLUGS[0]
-    )
-    book = await db.books.find_one(_controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION)
-    featured_book = _safe_live_public_projection(book)
-    if not featured_book:
-        featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
+    featured_book = None
+    if CONTROLLED_LIVE_BOOK_SLUGS:
+        featured_candidate = (
+            s.get("book_slug")
+            if s and s.get("book_slug") in CONTROLLED_LIVE_BOOK_SLUGS
+            else CONTROLLED_LIVE_BOOK_SLUGS[0]
+        )
+        book = await db.books.find_one(_controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION)
+        featured_book = _safe_live_public_projection(book)
+        if not featured_book:
+            featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
     result = {"book": featured_book}
     await _public_cache_set(cache_key, result)
     return result

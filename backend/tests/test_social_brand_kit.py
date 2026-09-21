@@ -140,8 +140,9 @@ def test_no_auto_posting_command_or_social_api_credentials_exist():
     assert "api_key" not in new_script_sources
 
 
-def test_dracula_remains_only_live_approved_reading_title():
-    assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == ("dracula",)
+def test_public_reader_and_audio_release_are_explicitly_held_pending_rights_decisions():
+    assert catalog_truth.PUBLIC_READER_EXPOSURE_ENABLED is False
+    assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == ()
     assert catalog_truth.AUDIO_ENABLED_SLUGS == set()
     assert catalog_truth.PIPELINE_CANDIDATE_SLUGS == {"kshudhita-pashan"}
 
@@ -149,7 +150,7 @@ def test_dracula_remains_only_live_approved_reading_title():
     assert artifact is not None
     projected = catalog_truth.public_book_projection(artifact)
     assert projected["slug"] == "dracula"
-    assert projected["reader_enabled"] is True
+    assert projected["reader_enabled"] is False
     assert projected["audio_enabled"] is False
 
 

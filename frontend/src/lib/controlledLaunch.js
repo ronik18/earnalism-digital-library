@@ -1,4 +1,8 @@
 export const LIVE_APPROVED_SLUG = "dracula";
+// This is the client-side counterpart to data/controlled_launch.json.  It
+// keeps bundled fallbacks and stale browser caches from advertising a Reader
+// or Listener while the public release is held pending exact rights decisions.
+export const PUBLIC_READER_EXPOSURE_ENABLED = false;
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 // Pipeline candidates are never matched to publications by title, cover, or
 // transliteration. This explicit, reviewed identity map only suppresses the
@@ -174,6 +178,7 @@ function canonicalBookRoute(slug) {
 }
 
 export function isLiveApprovedBook(book = {}) {
+  if (!PUBLIC_READER_EXPOSURE_ENABLED) return false;
   const slug = normalizedSlug(book);
   if (!slug) return false;
   const tier = normalizedRightsTier(book);

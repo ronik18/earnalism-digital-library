@@ -233,8 +233,9 @@ def frontend_controlled_live_slugs(path: Path | None = None) -> set[str] | None:
         slugs = config.get("live_approved_slugs") if isinstance(config, dict) else []
         if isinstance(slugs, list):
             normalized = {normalize_slug(slug) for slug in slugs if normalize_slug(slug)}
-            if normalized:
-                return normalized
+            # Empty is a meaningful, fail-closed public-release decision; it
+            # is not an invitation to fall back to an older static allowlist.
+            return normalized
 
     source_path = path or ROOT / "frontend" / "scripts" / "generate-seo-assets.mjs"
     if not source_path.exists():

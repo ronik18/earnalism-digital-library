@@ -12,6 +12,7 @@ const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "http
 const apiBase = resolveApiBase();
 const today = new Date().toISOString().slice(0, 10);
 let controlledLaunchConfigAvailable = false;
+let publicReaderExposureEnabled = false;
 const controlledLiveSlugs = await loadControlledLiveSlugs();
 
 const coreRoutes = [
@@ -89,11 +90,14 @@ async function loadControlledLiveSlugs() {
     const slugs = Array.isArray(config.live_approved_slugs)
       ? config.live_approved_slugs.map((slug) => String(slug || "").trim().toLowerCase()).filter(Boolean)
       : [];
+    publicReaderExposureEnabled = config.public_reader_exposure_enabled === true;
     controlledLaunchConfigAvailable = true;
-    return new Set(slugs.length > 0 ? slugs : ["dracula"]);
+    // An explicit empty allowlist is the release hold. Never restore a
+    // historical title into crawler-facing assets when that hold is active.
+    return new Set(publicReaderExposureEnabled ? slugs : []);
   } catch (error) {
     console.warn(`[seo] Could not load controlled launch config: ${error.message}`);
-    return new Set(["dracula"]);
+    return new Set();
   }
 }
 
@@ -228,9 +232,8 @@ async function main() {
     && book.is_published !== false
     && controlledLiveSlugs.has(book.slug)
   ));
-  if (!controlledLaunchConfigAvailable && publishedBooks.length <= 1) {
-    console.warn("[seo] Controlled launch config is unavailable; preserving committed sitemap.xml and robots.txt for frontend-only build.");
-    return;
+  if (!controlledLaunchConfigAvailable) {
+    console.warn("[seo] Controlled launch config is unavailable; generating a fail-closed sitemap without publication routes.");
   }
   const categoryLastmod = new Map();
   publishedBooks.forEach((book) => {

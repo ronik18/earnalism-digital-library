@@ -13,6 +13,7 @@ import {
   DRACULA_SOURCE_NOTE,
   DRACULA_FALLBACK_BOOK,
   LIVE_APPROVED_SLUG,
+  PUBLIC_READER_EXPOSURE_ENABLED,
   mergeDraculaBook,
   normalizeChapterDisplayTitle,
   readingPassUrl,
@@ -128,7 +129,7 @@ export default function BookDetail() {
         setLoadStatus("ready");
         return;
       }
-      if (slug === LIVE_APPROVED_SLUG) {
+      if (PUBLIC_READER_EXPOSURE_ENABLED && slug === LIVE_APPROVED_SLUG) {
         setBook(DRACULA_FALLBACK_BOOK);
         setLoadStatus("ready");
         return;
@@ -138,7 +139,7 @@ export default function BookDetail() {
     })
       .catch((err) => {
         if (err.name !== "CanceledError") {
-          if ((err.response?.status === 404 || !err.response) && slug === LIVE_APPROVED_SLUG) {
+          if (PUBLIC_READER_EXPOSURE_ENABLED && (err.response?.status === 404 || !err.response) && slug === LIVE_APPROVED_SLUG) {
             setBook(DRACULA_FALLBACK_BOOK);
             setLoadStatus("ready");
           } else {

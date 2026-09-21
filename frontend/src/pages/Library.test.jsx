@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 import { composeLibraryCatalog } from "../lib/libraryCatalogueComposition";
-import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Library.jsx"), "utf8");
 const referenceSource = fs.readFileSync(path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"), "utf8");
@@ -33,8 +32,8 @@ describe("Library experience", () => {
     expect(source).toContain('aria-modal="true"');
   });
 
-  test("keeps limited fallback selection explicit and a valid empty catalogue distinct", () => {
-    expect(source).toContain('setCatalogueState("fallback")');
+  test("keeps a release hold distinct from an empty catalogue without reviving bundled books", () => {
+    expect(source).toContain('setCatalogueState("unavailable")');
     expect(source).toContain('setCatalogueState(booksResult.value.data.length ? "ready" : "empty")');
     expect(source).toContain("retryCatalogue");
     expect(referenceSource).toContain("We couldn’t load the full collection. You’re viewing a limited selection.");
@@ -54,12 +53,7 @@ describe("Library experience", () => {
     };
 
     const apiSlugs = composeLibraryCatalog([canonicalKshudhita]).map((book) => book.slug);
-    expect(apiSlugs).toContain("book-edfcf810c5");
-    expect(apiSlugs).not.toContain("kshudhita-pashan");
-
-    const fallbackSlugs = composeLibraryCatalog(LOCAL_LIBRARY_FALLBACK_BOOKS).map((book) => book.slug);
-    expect(fallbackSlugs).toContain("kshudhita-pashan");
-    expect(fallbackSlugs).not.toContain("book-edfcf810c5");
-    expect(fallbackSlugs).toContain("hungry-stones");
+    expect(apiSlugs).not.toContain("book-edfcf810c5");
+    expect(apiSlugs).toContain("kshudhita-pashan");
   });
 });

@@ -9,6 +9,7 @@ import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import ReferenceCommerceSurface from "../components/ReadingPassesSurface";
 import { availableReadingPasses } from "../lib/readingPassOffers";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
+import { PUBLIC_READER_EXPOSURE_ENABLED } from "../lib/controlledLaunch";
 
 const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
 
@@ -271,15 +272,23 @@ export default function Pricing() {
             {PUBLIC_ACCESS_COPY} When you are ready to continue a reader-ready classic, add reading time to your wallet. {READING_TIME_COPY}
           </p>
           <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/reader/dracula"
-              onClick={handleDraculaPreviewClick}
-              className="btn-secondary"
-              data-testid="dracula-continue-from-pricing"
-            >
-              {PUBLIC_PREVIEW_COPY}
-            </Link>
-            <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">{PUBLIC_PREVIEW_COPY}</span>
+            {PUBLIC_READER_EXPOSURE_ENABLED ? (
+              <>
+                <Link
+                  to="/reader/dracula"
+                  onClick={handleDraculaPreviewClick}
+                  className="btn-secondary"
+                  data-testid="dracula-continue-from-pricing"
+                >
+                  {PUBLIC_PREVIEW_COPY}
+                </Link>
+                <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">{PUBLIC_PREVIEW_COPY}</span>
+              </>
+            ) : (
+              <Link to="/library" className="btn-secondary" data-testid="pricing-library-during-release-hold">
+                Explore the Library
+              </Link>
+            )}
           </div>
           {showSimulator && (
             <div className="mt-7 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--brand-gold)]/40 text-[0.7rem] tracking-[0.22em] uppercase text-gold-deep" data-testid="pricing-test-mode-banner">

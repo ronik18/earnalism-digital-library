@@ -6,7 +6,6 @@ import BookCard from "../components/BookCard";
 import { notifyUrl } from "../lib/controlledLaunch";
 import { languageOfBook, listeningFilterFromSearch, matchesLibraryFacets, sortLibraryBooks } from "../lib/libraryCatalog";
 import { composeLibraryCatalog } from "../lib/libraryCatalogueComposition";
-import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
 import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 import useSEO from "../hooks/useSEO";
@@ -115,8 +114,10 @@ export default function Library() {
         setLiveBooks(booksResult.value.data);
         setCatalogueState(booksResult.value.data.length ? "ready" : "empty");
       } else {
-        setLiveBooks(LOCAL_LIBRARY_FALLBACK_BOOKS);
-        setCatalogueState("fallback");
+        // A network failure must not revive bundled Reader editions while the
+        // server-held public release is unavailable.
+        setLiveBooks([]);
+        setCatalogueState("unavailable");
       }
       if (curationResult.status === "fulfilled") setCuration(curationResult.value);
     }).finally(() => {

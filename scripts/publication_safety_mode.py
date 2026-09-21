@@ -26,9 +26,11 @@ def controlled_release_allowlist() -> tuple[str, ...]:
         root_live = {normalize(slug) for slug in root_launch.get("live_approved_slugs", [])}
         backend_live = {normalize(slug) for slug in backend_launch.get("live_approved_slugs", [])}
         allowlist = tuple(sorted(root_live & backend_live))
-        return allowlist or ("dracula",)
+        # Explicit empty shared allowlists are a valid release hold.  Do not
+        # silently revive an older title when a release is intentionally held.
+        return allowlist
     except (OSError, TypeError, ValueError, json.JSONDecodeError):
-        return ("dracula",)
+        return ()
 
 
 APPROVED_RELEASE_ALLOWLIST = controlled_release_allowlist()
