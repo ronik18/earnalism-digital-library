@@ -33,6 +33,7 @@ export default function BookCoverImage({
   draggable,
   fallback = "E",
   allowGraphicalFallback = true,
+  unframed = false,
   onImageError,
   onPermanentFailure,
 }) {
@@ -70,9 +71,13 @@ export default function BookCoverImage({
     }
   }, [allowGraphicalFallback, book, failed, onImageError, onPermanentFailure, sources.hasCover, sources.isFallback]);
   const coverAlt = typeof alt === "string" ? alt : (book?.title || "Book cover");
-  const style = sources.backgroundColor ? { backgroundColor: sources.backgroundColor } : undefined;
+  // A Book Detail cover should be the artwork itself, rather than a contained
+  // image on top of a color sampled from that artwork. Other cover treatments
+  // retain that presentation by default.
+  const style = !unframed && sources.backgroundColor ? { backgroundColor: sources.backgroundColor } : undefined;
   const wrapperClass = [
     "book-cover-image",
+    unframed ? "book-cover-image--unframed" : "",
     loaded ? "book-cover-image--loaded" : "",
     showImage ? "" : "book-cover-image--fallback",
     className,

@@ -270,7 +270,7 @@ export default function BookDetail() {
 
       <section className="book-detail-hero book-detail-reference__hero max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         <div className="lg:col-span-5 book-detail-reference__cover-column">
-          <div className="book-detail-cover-frame aspect-[3/4] overflow-hidden max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
+          <div className="book-detail-cover-frame max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
             <BookCoverImage
               book={publicBook}
               alt={isDracula ? "Custom Earnalism Dracula cover artwork" : publicBook.title}
@@ -279,6 +279,7 @@ export default function BookDetail() {
               width={640}
               widths={[420, 640, 900]}
               sizes="(min-width: 1024px) 420px, (min-width: 640px) 52vw, 90vw"
+              unframed
             />
           </div>
         </div>
