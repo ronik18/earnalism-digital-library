@@ -32,6 +32,7 @@ const REQUIRED_FONT_SPECS = {
 const SANITIZED_PRIVATE_FIXTURE_SHA256 = crypto.createHash("sha256").update(JSON.stringify({ version: "sanitized-private-v1", identity: "Review Reader", email: "review@example.invalid", saved_library: [] })).digest("hex");
 const EDITORIAL_FIXTURE_PATH = "frontend/static-seo/editorial-public.json";
 const require = createRequire(import.meta.url);
+const PUBLIC_READER_EXPOSURE_ENABLED = JSON.parse(fs.readFileSync("data/controlled_launch.json", "utf8")).public_reader_exposure_enabled === true;
 
 function statusFixtureResponse(state) {
   const modulePath = state.fixture === "tombstone-410-contract" ? "./frontend/api/removed-content.js" : "./frontend/api/not-found.js";
@@ -960,7 +961,11 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   if (state.fixture === "public-safe" && state.zoom === 200 && (!data.menu_reachable || !data.search_reachable)) defects.push("home-mobile-controls");
   if (state.fixture === "reader-visual-safe" && ((state.viewport.width < 768 && !data.action_row_below_brand) || data.reader.protected_content_exposed || data.reader.protected_prefetch || data.reader.balance_consumption !== 0)) defects.push("reader-fixture-contract");
   if (state.fixture === "listener-non-playable" && ((state.viewport.width < 768 && !data.action_row_below_brand) || !data.listener.cover_visible || data.listener.raw_media_url !== "absent" || data.listener.playable_source !== "absent" || data.listener.autoplay || data.listener.preload !== "absent" || data.listener.balance_consumption !== 0)) defects.push("listener-fixture-contract");
-  if (state.route.startsWith("/book/") && (!data.book_detail.page_visible || data.book_detail.not_found)) defects.push("book-detail-fixture-contract");
+  if (state.route.startsWith("/book/") && (
+    PUBLIC_READER_EXPOSURE_ENABLED
+      ? (!data.book_detail.page_visible || data.book_detail.not_found)
+      : (data.book_detail.page_visible || !data.book_detail.not_found)
+  )) defects.push("book-detail-fixture-contract");
   if (statusLogoCard) defects.push("legacy-error-logo-card");
   if (statusContract && statusContract.result !== "PASS") defects.push("status-contract");
   if (!Object.values(fontResults).every(Boolean)) defects.push("required-font-load");

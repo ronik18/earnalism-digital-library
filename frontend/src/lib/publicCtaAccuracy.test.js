@@ -44,6 +44,7 @@ describe("public CTA accuracy contract", () => {
   });
 
   test("book detail has one truthful three-page CTA and minute-based pass language", () => {
+    expect(bookDetail).toContain("if (!PUBLIC_READER_EXPOSURE_ENABLED)");
     expect(bookDetail).toContain('data-testid="read-preview"');
     expect(bookDetail).toContain('>{PUBLIC_PREVIEW_COPY}</Link>');
     expect(bookDetail).toContain('>View Reading Passes</Link>');

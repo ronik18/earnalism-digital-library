@@ -106,10 +106,20 @@ export default function BookDetail() {
   });
 
   useEffect(() => {
-    const controller = new AbortController();
     setSelectedTab("about");
     setLoading(true);
     setLoadStatus("loading");
+    // Do not render a direct detail route from an API response while the
+    // client-side public-release hold is active. The backend remains
+    // authoritative, and this guards stale caches or an incorrectly scoped
+    // response without attempting a Reader, manifest, or session request.
+    if (!PUBLIC_READER_EXPOSURE_ENABLED) {
+      setBook(null);
+      setLoadStatus("not_found");
+      setLoading(false);
+      return undefined;
+    }
+    const controller = new AbortController();
     api.get(`/books/${slug}`, { signal: controller.signal }).then(async (r) => {
       if (isValidBookPayload(r.data)) {
         let nextBook = r.data;

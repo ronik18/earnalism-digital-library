@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { chromium } from "playwright";
 
 const baseUrl = process.env.SEAMLESS_BRAND_TEST_BASE_URL;
 if (!baseUrl) throw new Error("SEAMLESS_BRAND_TEST_BASE_URL is required for the PR362 Header-to-Library journey.");
+const publicReaderExposureEnabled = JSON.parse(readFileSync(new URL("../data/controlled_launch.json", import.meta.url), "utf8")).public_reader_exposure_enabled === true;
 
 const books = [
   { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/devdas", reader_url: "/reader/devdas", preview_enabled: true, preview_url: "/reader/devdas", chapters: [{ id: "devdas-page-1", is_preview: true }] },
@@ -24,6 +26,7 @@ const readerApprovedWithoutPreviewSlugs = ["book-d19e96859f", "book-f5d593e1f4"]
 const approvedAudioWithoutRuntimeSlug = "approved-audio-without-runtime";
 const canonicalBengaliKshudhitaSlug = "book-edfcf810c5";
 const pipelineBengaliKshudhitaSlug = "kshudhita-pashan";
+const heldBengaliPipelineSlugs = [pipelineBengaliKshudhitaSlug];
 const searchEligibleSlugs = apiEligibleSlugs.filter((slug) => slug !== canonicalBengaliKshudhitaSlug);
 
 function query(page) {
@@ -92,7 +95,7 @@ async function assertSelected(locator, label) {
   assert.equal(await locator.getAttribute("aria-pressed"), "true", `${label} is not selected`);
 }
 
-async function assertEligibleReaderResults(page, expectedSlugs) {
+async function assertDisplayedSlugs(page, expectedSlugs) {
   const surface = referenceSurface(page);
   const expected = [...expectedSlugs].sort();
   await page.waitForFunction((expectedIds) => {
@@ -105,10 +108,27 @@ async function assertEligibleReaderResults(page, expectedSlugs) {
   const displayedSlugs = await surface.locator('[data-testid^="reference-book-"]').evaluateAll((nodes) => (
     nodes.map((node) => node.getAttribute("data-testid").replace("reference-book-", "")).sort()
   ));
-  assert.deepEqual(displayedSlugs, expected, "every displayed Reader-only result must satisfy the canonical release predicate");
+  assert.deepEqual(displayedSlugs, expected, "displayed editions must match the canonical release state");
+}
+
+async function assertEligibleReaderResults(page, expectedSlugs) {
+  const surface = referenceSurface(page);
+  await assertDisplayedSlugs(page, expectedSlugs);
   for (const slug of ineligibleSlugs) {
     assert.equal(await surface.getByTestId(`reference-book-${slug}`).count(), 0, `${slug} leaked into Reader only results`);
   }
+}
+
+async function assertHeldReleaseSafety(page, name) {
+  const surface = referenceSurface(page);
+  await assertDisplayedSlugs(page, heldBengaliPipelineSlugs);
+  const pipelineCard = surface.getByTestId(`reference-book-${pipelineBengaliKshudhitaSlug}`);
+  await expectText(pipelineCard.locator(".reference-book-tile__status"), "Coming soon", `${name}: held pipeline title must remain an invitation, not a live release`);
+  const notify = pipelineCard.getByRole("link", { name: "Notify me", exact: true });
+  await notify.waitFor();
+  assert.equal(await notify.getAttribute("href"), `/contact?interest=${pipelineBengaliKshudhitaSlug}`, `${name}: held pipeline title must retain its safe contact destination`);
+  assert.equal(await surface.locator('a[href^="/book/"], a[href^="/reader/"], a[href^="/listener/"]').count(), 0, `${name}: held public catalogue must not expose a book, Reader, or Listener route`);
+  assert.equal(await surface.getByTestId("reference-book-devdas").count(), 0, `${name}: API reader metadata leaked through the held public catalogue`);
 }
 
 async function assertReaderApprovedWithoutPreviewCards(page) {
@@ -342,14 +362,20 @@ async function run({ name, viewport, mobile, source }) {
   }
   assert.equal(query(page), expectedHeaderUrl, `${name}: Header navigation did not preserve the established query contract`);
   const expectedSlugs = source === "fallback" ? fallbackEligibleSlugs : apiEligibleSlugs;
-  await assertEligibleReaderResults(page, expectedSlugs);
+  if (publicReaderExposureEnabled) await assertEligibleReaderResults(page, expectedSlugs);
+  else await assertHeldReleaseSafety(page, name);
   if (mobile) await page.getByRole("button", { name: "Close filters", exact: true }).click();
-  if (source === "api") await assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name, source);
-  else {
+  if (publicReaderExposureEnabled && source === "api") await assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name, source);
+  else if (publicReaderExposureEnabled) {
     await assertFallbackKshudhita(page, mobile, expectedSlugs, name);
     await assertNoHorizontalOverflow(page, name);
+  } else {
+    await page.reload({ waitUntil: "domcontentloaded" });
+    await page.getByTestId("library-reference-surface").waitFor();
+    await assertHeldReleaseSafety(page, `${name}: reload`);
+    await assertNoHorizontalOverflow(page, name);
   }
-  await assertAudiobooksRoundTrip(page, mobile, name, source);
+  if (publicReaderExposureEnabled) await assertAudiobooksRoundTrip(page, mobile, name, source);
   await context.close();
   await browser.close();
   return { viewport, source, header_url: expectedHeaderUrl, result: "PASS" };

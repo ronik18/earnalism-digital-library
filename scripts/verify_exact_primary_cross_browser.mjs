@@ -17,6 +17,7 @@ const { firefox, webkit } = playwright;
 const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
 const browserName = process.env.EXACT_OWNER_REVIEW_BROWSER;
 const output = path.resolve(process.env.EXACT_OWNER_REVIEW_BROWSER_OUTPUT || "uat/evidence/exact-primary-design/current/browser-results.json");
+const publicReaderExposureEnabled = JSON.parse(fs.readFileSync(new URL("../data/controlled_launch.json", import.meta.url), "utf8")).public_reader_exposure_enabled === true;
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("UAT_BASE_URL must be an explicit loopback URL.");
 if (!{ firefox, webkit }[browserName]) throw new Error("EXACT_OWNER_REVIEW_BROWSER must be firefox or webkit.");
 
@@ -39,7 +40,7 @@ const states = [
   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],
   ["my-library-mobile", "/my-library", 390, 844, "my-library"], ["profile-mobile", "/account?visual-fixture=1", 390, 844, "profile"],
 ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family }));
-const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: ["[data-testid=pricing-reference-surface]"], navigation: ["header"], book: [".book-detail-page"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-page-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-profile-mobile]"], }[family] || ["main"]);
+const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: ["[data-testid=pricing-reference-surface]"], navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=book-not-found]"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-page-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-profile-mobile]"], }[family] || ["main"]);
 const sha = (value) => crypto.createHash("sha256").update(value).digest("hex");
 const json = (route, body) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 

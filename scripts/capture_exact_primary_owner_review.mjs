@@ -45,13 +45,15 @@ const states = [
   ["my-library-mobile", "/my-library", 390, 844, "my-library"], ["profile-mobile", "/account?visual-fixture=1", 390, 844, "profile"],
 ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family })).filter((state) => !selectedStates.size || selectedStates.has(state.id));
 const fullPageStates = new Set(["home-desktop", "home-mobile", "library-desktop", "library-mobile", "commerce-desktop", "commerce-mobile", "book-detail-desktop", "book-detail-mobile"]);
+const publicReaderExposureEnabled = JSON.parse(fs.readFileSync(new URL("../data/controlled_launch.json", import.meta.url), "utf8")).public_reader_exposure_enabled === true;
+const publicReleaseHoldCopy = "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed.";
 
 const sha = (buffer) => crypto.createHash("sha256").update(buffer).digest("hex");
 const jsonResponse = (route, value) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(value) });
 const requiredFor = (family) => ({
   home: ["[data-testid=home-reference-surface]", "header"], library: ["[data-testid=library-reference-surface]", "header"],
   filter: ["[data-testid=library-reference-surface]", ".reference-filter-trigger"], commerce: ["[data-testid=pricing-reference-surface]", "header"],
-  navigation: ["header"], book: [".book-detail-page", "header"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"],
+  navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=book-not-found]", "header"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"],
   about: [strict ? "#about-page-title" : "#about-v2-title"], "my-library": ["[data-testid=my-library-mobile]", ".my-library-v2__empty"], profile: ["[data-testid=account-profile-mobile]"],
 }[family] || ["main"]);
 
@@ -250,8 +252,13 @@ async function capture(state, context, sessionFontLoad) {
     ? "sanitized-owner-review-user"
     : ["reader", "listener"].includes(state.family)
       ? "server-contract-review-fixture"
+      : state.family === "book" && !publicReaderExposureEnabled
+        ? "anonymous-public-release-hold"
       : "anonymous-public-shell";
-  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, navigation, navigationClose, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
+  const productTruth = state.family === "book" && !publicReaderExposureEnabled
+    ? publicReleaseHoldCopy
+    : "Read the first 3 pages free. Listening requires an active Reading Pass.";
+  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, navigation, navigationClose, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: productTruth };
 }
 
 export async function runCapture() {
