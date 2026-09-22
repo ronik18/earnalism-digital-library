@@ -1662,13 +1662,6 @@ def _is_controlled_public_slug(slug: str) -> bool:
     )
 
 
-def _launch_compliance_jurisdiction() -> str:
-    """Return the documented launch assessment jurisdiction, never visitor location."""
-    country = CONTROLLED_LAUNCH_CONFIG.get("launch_compliance_jurisdiction")
-    normalized = str(country or "").strip().upper()
-    return normalized if re.fullmatch(r"[A-Z]{2}", normalized) else ""
-
-
 def _is_release_proxy_protected_path(path: str) -> bool:
     """Restrict signed proxy assertions to public catalogue/Reader content."""
     if not isinstance(path, str):
@@ -1693,8 +1686,8 @@ def _release_proxy_access_verdict(request: Request):
 
 # Public Reader traffic may open only after the release proxy has authenticated
 # the request and every requested title has a separately accepted, immutable
-# decision. The India launch assessment scope is a release-evidence field, not
-# visitor geography; access is not conditioned on a user's location. The files
+# decision. The proxy-observed country is signed and matched to the exact
+# accepted rights scope; a client-supplied location cannot broaden it. The files
 # below are metadata-only artifacts; chapter bodies are never read here.
 RELEASE_RIGHTS_OPERATOR_ID = "reo-enterprise"
 RELEASE_RIGHTS_COMPONENT_FILENAMES = (
@@ -1747,12 +1740,13 @@ def _release_rights_artifact(slug: str) -> tuple[dict[str, Any] | None, dict[str
     return None, {}
 
 
-def _release_rights_verdict(request: Request) -> DecisionGateVerdict:
+def _release_rights_verdict(request: Request, *, country: str = "") -> DecisionGateVerdict:
     """Evaluate every public release target without exposing decision details."""
     targets = _release_rights_action_targets(request.url.path)
     if not targets:
         return DecisionGateVerdict(False, ("PUBLIC_RELEASE_PATH_UNMAPPED",))
-    country = _launch_compliance_jurisdiction()
+    if not re.fullmatch(r"[A-Z]{2}", country):
+        return DecisionGateVerdict(False, ("RELEASE_COUNTRY_UNTRUSTED",))
     try:
         accepted_records, revoked_decision_ids = load_production_registry()
     except (OSError, ValueError, TypeError, _json.JSONDecodeError):
@@ -5319,7 +5313,8 @@ async def enforce_public_release_country(request: Request, call_next):
     Only the production service requires the Vercel proxy's short-lived HMAC
     assertion.  The isolated UAT environment has no public route or production
     data, so retaining its direct in-process API contract does not broaden the
-    production surface.  The assertion authenticates the proxy, not geography.
+    production surface. The assertion authenticates the proxy and binds its
+    observed country to the title-specific rights decision.
     """
     if (
         ENVIRONMENT == "production"
@@ -5330,7 +5325,7 @@ async def enforce_public_release_country(request: Request, call_next):
         if not verdict.allowed:
             status = 503 if verdict.code == "RELEASE_PROXY_CONFIGURATION_REQUIRED" else 451
             return JSONResponse(status_code=status, content={"detail": {"code": verdict.code}})
-        rights_verdict = _release_rights_verdict(request)
+        rights_verdict = _release_rights_verdict(request, country=verdict.country)
         if should_deny_runtime_action(rights_verdict, strict_enforcement_enabled=True):
             # Do not disclose title, evidence, or decision-reason details to a
             # public caller. A missing or changed accepted record is a hold.

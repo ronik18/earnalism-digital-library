@@ -375,7 +375,16 @@ export default function BookDetail() {
           </div>
           </div>}
 
-          {selectedTab === "details" && <div id="book-panel-details" role="tabpanel" aria-labelledby="book-tab-details" className="book-detail-reference__rights mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="book-details-panel"><strong>Release &amp; Access</strong><p className="mt-3 text-sm leading-relaxed text-charcoal-soft">{detailPresentation.readerRuntimeAvailable ? PUBLIC_PREVIEW_COPY : detailPresentation.readerBody} {detailPresentation.audioBody}</p>{isDracula && <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">Source: {DRACULA_SOURCE_NOTE} Rights status: {DRACULA_RIGHTS_NOTE}</p>}</div>}
+          {selectedTab === "details" && <div id="book-panel-details" role="tabpanel" aria-labelledby="book-tab-details" className="book-detail-reference__rights mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="book-details-panel">
+            <strong>Release &amp; Access</strong>
+            <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">{detailPresentation.readerRuntimeAvailable ? PUBLIC_PREVIEW_COPY : detailPresentation.readerBody} {detailPresentation.audioBody}</p>
+            {isDracula && <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">Source: {DRACULA_SOURCE_NOTE} Rights status: {DRACULA_RIGHTS_NOTE}</p>}
+            {publicBook.slug === "radharani" && (
+              <p className="mt-4 text-sm leading-relaxed text-charcoal-soft" data-testid="radharani-source-attribution">
+                The underlying Bengali literary work by Bankim Chandra Chattopadhyay is in the public domain. This Reader text follows the Bengali Wikisource transcription of the 1940 edition edited by Brajendranath Bandyopadhyay and Sajanikanta Das; credit for the online transcription belongs to its <a className="text-burgundy underline" href="https://bn.wikisource.org/w/index.php?title=%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)&action=history">Wikisource contributors</a>. See the <a className="text-burgundy underline" href="https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)">source edition and its notices</a>. The reused transcription/source layer is available under <a className="text-burgundy underline" href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>, including its warranty disclaimer. Earnalism reformatted that layer for the Reader; any copyrightable adaptation of that layer is shared under the same license. This does not license Earnalism’s separate cover art, branding or site code.
+              </p>
+            )}
+          </div>}
 
           {selectedTab === "chapters" && chapterCount > 0 && (
             <div id="book-panel-chapters" role="tabpanel" aria-labelledby="book-tab-chapters" className="mt-8" data-testid="chapter-list">

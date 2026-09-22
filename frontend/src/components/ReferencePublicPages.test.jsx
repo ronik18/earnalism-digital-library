@@ -6,6 +6,8 @@ const commerce = fs.readFileSync(path.join(process.cwd(), "src/components/Readin
 const home = fs.readFileSync(path.join(process.cwd(), "src/pages/Home.jsx"), "utf8");
 const libraryFallback = fs.readFileSync(path.join(process.cwd(), "src/lib/libraryFallbackBooks.js"), "utf8");
 const styles = fs.readFileSync(path.join(process.cwd(), "src/components/ReferencePublicPages.css"), "utf8");
+const perspectives = fs.readFileSync(path.join(process.cwd(), "src/components/ReaderPerspectives.jsx"), "utf8");
+const perspectiveStyles = fs.readFileSync(path.join(process.cwd(), "src/components/ReaderPerspectives.css"), "utf8");
 const evidence = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/data/publicEvidenceSnapshot.json"), "utf8"));
 
 describe("Reference public page surfaces", () => {
@@ -40,22 +42,19 @@ describe("Reference public page surfaces", () => {
   });
 
   test("keeps illustrative reader perspectives distinct from customer testimonials", () => {
-    expect(source).not.toContain("ReaderTestimonialsSection");
-    expect(source).not.toContain("What Our Readers Say");
-    expect(source).not.toContain("REAL READERS");
-    expect(source).not.toContain("verified reader");
-    expect(source).toContain("What reading can feel like");
-    expect(source).toContain("Reader perspectives · imagined with care");
-    expect(source).toContain("Illustrative reader perspective");
-    expect(source).toContain("Four imagined reader perspectives.");
-    expect(source).toContain('to="/library" className="reference-button reference-button--gold" data-testid="reader-perspectives-cta"');
-    expect(source).toContain("kolkata-reader.webp");
-    expect(source).toContain("london-reader.webp");
-    expect(source).toContain("chennai-reader.webp");
-    expect(source).toContain("new-delhi-reader.webp");
-    expect(styles).toContain(".reference-reader-perspectives__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))");
-    expect(styles).toContain(".reference-reader-perspectives__grid{grid-template-columns:repeat(2,minmax(0,1fr))");
-    expect(styles).toContain(".reference-reader-perspectives__grid{grid-template-columns:1fr");
+    expect(source).toContain("Made for the love of reading");
+    expect(home).toContain("<ReferenceHomeSurface");
+    expect(home).toContain("<ReaderPerspectives />");
+    expect(perspectives).not.toMatch(/ReaderTestimonialsSection|What Our Readers Say|REAL READERS|verified reader/);
+    expect(perspectives).toContain("What reading can feel like");
+    expect(perspectives).toContain("Reader perspectives · imagined with care");
+    expect(perspectives).toContain("Illustrative reader perspective");
+    expect(perspectives).toContain("Four imagined reader perspectives.");
+    expect(perspectives).toContain('to="/library" className="reference-button reference-button--gold" data-testid="reader-perspectives-cta"');
+    for (const city of ["kolkata", "london", "chennai", "new-delhi"]) expect(perspectives).toContain(`${city}-reader.webp`);
+    expect(perspectiveStyles).toContain(".reference-reader-perspectives__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))");
+    expect(perspectiveStyles).toContain(".reference-reader-perspectives__grid{grid-template-columns:repeat(2,minmax(0,1fr))");
+    expect(perspectiveStyles).toContain(".reference-reader-perspectives__grid{grid-template-columns:1fr");
   });
 
   test("uses the reviewed operational-facts fallback when public metrics are not eligible", () => {

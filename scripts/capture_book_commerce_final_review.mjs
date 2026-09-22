@@ -137,7 +137,14 @@ async function capture(state, context) {
   page.on("requestfailed", (r) => failedRequests.push({ method:r.method(), url:r.url(), failure:r.failure() }));
   page.on("response", (response) => { const status=response.status(), request=response.request(), url=new URL(response.url()), headers=response.headers(); if (/\.(woff2?|ttf|otf)(\?|$)/i.test(url.pathname)) fontResponses.push({url:response.url(),status,content_type:headers['content-type']||null}); if(status>=400) diagnostics.push({ browser:browserName, state_id:state.id, request_url:response.url(), pathname:url.pathname, http_status:status, method:request.method(), resource_type:request.resourceType(), request_headers:redact(request.headers()), response_headers:redact(headers), initiating_route:state.route, classification:/\.(woff2?|ttf|otf)(\?|$)/i.test(url.pathname)?"FONT_PATH_OR_FILE_MISSING":"OTHER_WITH_EXACT_URL_AND_EVIDENCE" }); });
   await page.addInitScript(() => { const now = Date.parse("2026-08-30T00:00:00Z"); Date.now = () => now; }); await routes(page);
-  const response = await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded", timeout: 90000 }); await settle(page); const fontResults=await probeFonts(page); await maybeTab(page, state.action); await page.addStyleTag({content:"*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}" }); await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  const response = await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded", timeout: 90000 });
+  // DOMContentLoaded can precede React mounting in WebKit. Capture only after
+  // the actual route has rendered; a missing/held detail must fail, not yield a
+  // stable screenshot of the empty shell.
+  if (!baseline) {
+    await page.locator(state.family === "book" ? '[data-testid="book-page"]' : '[data-testid="paid-commerce-disabled"]').waitFor({ state: "visible" });
+  }
+  await settle(page); const fontResults=await probeFonts(page); await maybeTab(page, state.action); await page.addStyleTag({content:"*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}" }); await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   let one, two, stable=false, stabilityAttempts=0; for (; stabilityAttempts<3 && !stable; stabilityAttempts += 1) { one=await page.screenshot({ animations:"disabled" }); await page.waitForTimeout(500); two=await page.screenshot({ animations:"disabled" }); stable=sha(one)===sha(two); }
   fs.writeFileSync(path.join(output, `${state.id}.png`), two); await page.screenshot({ path: path.join(output, `${state.id}-full.png`), fullPage: true, animations: "disabled" });
   const result = await page.evaluate(() => {

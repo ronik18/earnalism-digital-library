@@ -11,7 +11,7 @@ os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
 os.environ.setdefault("JWT_SECRET", "release-proxy-country-middleware-test-secret")
 
 from backend import server
-from backend.release_proxy_auth import PUBLIC_RELEASE_SCOPE, SCOPE_HEADER, SIGNATURE_HEADER, TIMESTAMP_HEADER, request_signature
+from backend.release_proxy_auth import COUNTRY_HEADER, PUBLIC_RELEASE_SCOPE, SCOPE_HEADER, SIGNATURE_HEADER, TIMESTAMP_HEADER, request_signature
 from backend.rights_decision_gate import DecisionGateVerdict
 
 
@@ -43,16 +43,17 @@ def test_public_reader_release_rejects_direct_api_requests(monkeypatch):
     assert response.body == b'{"detail":{"code":"RELEASE_PROXY_SCOPE_INVALID"}}'
 
 
-def test_public_reader_release_accepts_fresh_signed_proxy_request_regardless_of_visitor_country(monkeypatch):
+def test_public_reader_release_accepts_fresh_signed_india_request(monkeypatch):
     monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
-    monkeypatch.setattr(server, "_release_rights_verdict", lambda _request: DecisionGateVerdict(True, ()))
+    monkeypatch.setattr(server, "_release_rights_verdict", lambda _request, *, country: DecisionGateVerdict(country == "IN", ()))
     timestamp = int(datetime.now(timezone.utc).timestamp())
     headers = {
         SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
+        COUNTRY_HEADER: "IN",
         TIMESTAMP_HEADER: str(timestamp),
-        SIGNATURE_HEADER: request_signature(SECRET, "GET", "/api/books", PUBLIC_RELEASE_SCOPE, timestamp),
+        SIGNATURE_HEADER: request_signature(SECRET, "GET", "/api/books", PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
         "x-vercel-ip-country": "US",
     }
     response = asyncio.run(server.enforce_public_release_country(request_with_headers(headers), next_response))
@@ -63,12 +64,13 @@ def test_public_reader_release_denies_signed_request_without_accepted_rights(mon
     monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
-    monkeypatch.setattr(server, "_release_rights_verdict", lambda _request: DecisionGateVerdict(False, ("ACCEPTED_DECISION_MISSING",)))
+    monkeypatch.setattr(server, "_release_rights_verdict", lambda _request, *, country: DecisionGateVerdict(False, ("ACCEPTED_DECISION_MISSING",)))
     timestamp = int(datetime.now(timezone.utc).timestamp())
     headers = {
         SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
+        COUNTRY_HEADER: "IN",
         TIMESTAMP_HEADER: str(timestamp),
-        SIGNATURE_HEADER: request_signature(SECRET, "GET", "/api/books", PUBLIC_RELEASE_SCOPE, timestamp),
+        SIGNATURE_HEADER: request_signature(SECRET, "GET", "/api/books", PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
     }
 
     response = asyncio.run(server.enforce_public_release_country(request_with_headers(headers), next_response))
@@ -90,7 +92,7 @@ def test_runtime_rights_boundary_fails_closed_when_an_artifact_has_no_accepted_r
     monkeypatch.setattr(server, "_release_rights_artifact", lambda _slug: (None, {}))
     request = request_with_headers({}, path="/api/books/a-ghost-story")
 
-    verdict = server._release_rights_verdict(request)
+    verdict = server._release_rights_verdict(request, country="IN")
 
     assert verdict.passed is False
     assert "ACCEPTED_DECISION_MISSING" in verdict.reasons
@@ -105,12 +107,18 @@ def test_runtime_rights_boundary_allows_only_exactly_accepted_launch_titles(monk
 
     for slug in server.CONTROLLED_LIVE_BOOK_SLUGS:
         verdict = server._release_rights_verdict(
-            request_with_headers({}, path=f"/api/books/{slug}")
+            request_with_headers({}, path=f"/api/books/{slug}"), country="IN"
         )
         assert verdict.passed is True
 
     held = server._release_rights_verdict(
-        request_with_headers({}, path="/api/books/yugalanguriya")
+        request_with_headers({}, path="/api/books/yugalanguriya"), country="IN"
     )
     assert held.passed is False
     assert "ACCEPTED_DECISION_MISSING" in held.reasons
+
+    for slug in server.CONTROLLED_LIVE_BOOK_SLUGS:
+        unaccepted_country = server._release_rights_verdict(
+            request_with_headers({}, path=f"/api/books/{slug}"), country="US"
+        )
+        assert unaccepted_country.passed is False

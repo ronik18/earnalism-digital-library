@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 from backend.release_proxy_auth import (
+    COUNTRY_HEADER,
     PUBLIC_RELEASE_SCOPE,
     SCOPE_HEADER,
     SIGNATURE_HEADER,
@@ -16,21 +17,36 @@ SECRET = "release-proxy-test-secret-that-is-long-enough"
 NOW = datetime(2026, 9, 22, 16, 0, tzinfo=timezone.utc)
 
 
-def signed_headers(*, scope: str = PUBLIC_RELEASE_SCOPE, timestamp: int = 1_790_092_800, path: str = "/api/books"):
+def signed_headers(*, scope: str = PUBLIC_RELEASE_SCOPE, timestamp: int = 1_790_092_800, path: str = "/api/books", country: str = "IN"):
     return {
         SCOPE_HEADER: scope,
+        COUNTRY_HEADER: country,
         TIMESTAMP_HEADER: str(timestamp),
-        SIGNATURE_HEADER: request_signature(SECRET, "GET", path, scope, timestamp),
+        SIGNATURE_HEADER: request_signature(SECRET, "GET", path, scope, timestamp, country),
     }
 
 
-def test_signed_public_release_request_is_accepted_without_visitor_geography():
+def test_signed_public_release_request_authenticates_proxy_observed_country():
     verdict = verify_release_proxy_request(
         signed_headers(), method="GET", path="/api/books", secret=SECRET,
         now=NOW,
     )
     assert verdict.allowed is True
     assert verdict.code == "RELEASE_PROXY_AUTHENTICATED"
+    assert verdict.country == "IN"
+
+
+def test_missing_or_changed_country_fails_closed():
+    missing = signed_headers()
+    del missing[COUNTRY_HEADER]
+    assert verify_release_proxy_request(
+        missing, method="GET", path="/api/books", secret=SECRET, now=NOW,
+    ).code == "RELEASE_PROXY_COUNTRY_INVALID"
+    changed = signed_headers()
+    changed[COUNTRY_HEADER] = "US"
+    assert verify_release_proxy_request(
+        changed, method="GET", path="/api/books", secret=SECRET, now=NOW,
+    ).code == "RELEASE_PROXY_SIGNATURE_INVALID"
 
 
 def test_direct_or_missing_scope_assertion_fails_closed():

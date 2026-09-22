@@ -510,7 +510,8 @@ def audit_production_parity(*, fetch_production: bool = True, production_base_ur
         for route in production_routes:
             issues.extend(validate_removed_route(route, scope="Production"))
 
-    api_proxy = any(
+    # External catch-all rewrites bypass the signed Vercel release proxy.
+    api_proxy = (ROOT / "frontend" / "api" / "[...proxy].js").is_file() and not any(
         str(rewrite.get("source")) == "/api/(.*)" and "api.theearnalism.com" in str(rewrite.get("destination"))
         for rewrite in vercel_config.get("rewrites", [])
     )

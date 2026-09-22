@@ -55,4 +55,14 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_generate_copyright_rights_review_package \
   scripts.test_generate_india_launch_compliance_package
 
+echo "==> Signed territorial release proxy and public legal/Reader presentation contracts"
+"$PYTHON_BIN" -m pytest -q \
+  backend/tests/test_release_proxy_auth.py \
+  backend/tests/test_release_proxy_country_middleware.py
+node --test frontend/api/release-proxy.test.js
+CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath \
+  src/legalDirectRoutes.test.js \
+  src/bookDetailDirectRoute.test.js \
+  src/components/ReferencePublicPages.test.jsx
+
 npm run regression:ci

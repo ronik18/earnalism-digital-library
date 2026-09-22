@@ -35,6 +35,7 @@ import useSEO from "../hooks/useSEO";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
 import { availableReadingPasses } from "../lib/readingPassOffers";
 import { ReferenceHomeSurface } from "../components/EditorialHomeLibrarySurfaces";
+import ReaderPerspectives from "../components/ReaderPerspectives";
 
 const HomeShelfArchitecture = lazy(() => import("../components/HomeShelfArchitecture"));
 
@@ -217,6 +218,7 @@ export default function Home() {
         readingPasses={homePasses}
         listeningItems={listeningCuration.listening_rooms?.items || listeningCuration.selected_audiobooks || []}
       />
+      <ReaderPerspectives />
       <div className="reference-home__legacy-content" aria-hidden="true">
       <section className="home-quick-paths" aria-labelledby="home-quick-paths-title" data-testid="home-quick-paths">
         <div className="home-quick-paths__inner">

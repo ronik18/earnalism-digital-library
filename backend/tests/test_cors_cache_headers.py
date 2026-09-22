@@ -21,7 +21,7 @@ RELEASE_PROXY_TEST_SECRET = "cors-cache-header-release-proxy-test-secret-2026092
 os.environ["EARNALISM_RELEASE_PROXY_SECRET"] = RELEASE_PROXY_TEST_SECRET
 
 from backend import server
-from backend.release_proxy_auth import PUBLIC_RELEASE_SCOPE, SCOPE_HEADER, SIGNATURE_HEADER, TIMESTAMP_HEADER, request_signature
+from backend.release_proxy_auth import COUNTRY_HEADER, PUBLIC_RELEASE_SCOPE, SCOPE_HEADER, SIGNATURE_HEADER, TIMESTAMP_HEADER, request_signature
 
 
 class _EmptyBooksCursor:
@@ -96,8 +96,9 @@ def _public_request_headers(origin=None, *, path="/api/books"):
     headers = {
         "Accept-Encoding": "gzip",
         SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
+        COUNTRY_HEADER: "IN",
         TIMESTAMP_HEADER: str(timestamp),
-        SIGNATURE_HEADER: request_signature(RELEASE_PROXY_TEST_SECRET, "GET", path, PUBLIC_RELEASE_SCOPE, timestamp),
+        SIGNATURE_HEADER: request_signature(RELEASE_PROXY_TEST_SECRET, "GET", path, PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
     }
     if origin is not None:
         headers["Origin"] = origin

@@ -280,7 +280,7 @@
     },
     {
       "source": "/api/(.*)",
-      "destination": "https://api.theearnalism.com/api/$1"
+      "destination": "/api/[...proxy]?proxy_path=$1"
     },
     {
       "source": "/",
@@ -458,15 +458,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=60, stale-while-revalidate=300"
-        },
-        {
-          "key": "CDN-Cache-Control",
-          "value": "public, s-maxage=600, stale-while-revalidate=86400"
-        },
-        {
-          "key": "Vercel-CDN-Cache-Control",
-          "value": "public, s-maxage=600, stale-while-revalidate=86400"
+          "value": "private, no-store"
         }
       ]
     },
@@ -475,15 +467,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=300, stale-while-revalidate=3600"
-        },
-        {
-          "key": "CDN-Cache-Control",
-          "value": "public, s-maxage=3600, stale-while-revalidate=86400"
-        },
-        {
-          "key": "Vercel-CDN-Cache-Control",
-          "value": "public, s-maxage=3600, stale-while-revalidate=86400"
+          "value": "private, no-store"
         }
       ]
     },
@@ -492,15 +476,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=60, stale-while-revalidate=60"
-        },
-        {
-          "key": "CDN-Cache-Control",
-          "value": "public, s-maxage=300, stale-while-revalidate=60"
-        },
-        {
-          "key": "Vercel-CDN-Cache-Control",
-          "value": "public, s-maxage=300, stale-while-revalidate=60"
+          "value": "private, no-store"
         }
       ]
     },

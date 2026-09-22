@@ -1,9 +1,9 @@
 """Fail-closed proxy assertions for the bounded public-release proxy.
 
 The Railway API never trusts a browser-provided assertion. The same-origin
-Vercel function signs a fixed release scope, request method, and path with a
-shared secret. The scope authenticates only the proxy path; it is not a
-visitor location and must not be used to restrict user access by geography.
+Vercel function signs a fixed release scope, request method, path, and its
+observed visitor country with a shared secret. The Railway rights decision
+must use that authenticated country, never a browser-supplied country.
 The helpers here are deliberately I/O-free so malformed, stale, or direct API
 requests can be rejected before reader content is loaded.
 """
@@ -19,6 +19,7 @@ from typing import Mapping
 SCOPE_HEADER = "x-earnalism-release-scope"
 TIMESTAMP_HEADER = "x-earnalism-release-timestamp"
 SIGNATURE_HEADER = "x-earnalism-release-signature"
+COUNTRY_HEADER = "x-earnalism-release-country"
 MAX_SIGNATURE_AGE_SECONDS = 300
 PUBLIC_RELEASE_SCOPE = "PUBLIC"
 
@@ -27,17 +28,18 @@ PUBLIC_RELEASE_SCOPE = "PUBLIC"
 class ReleaseProxyVerdict:
     allowed: bool
     code: str
+    country: str = ""
 
 
-def canonical_request(method: str, path: str, scope: str, timestamp: int) -> bytes:
+def canonical_request(method: str, path: str, scope: str, timestamp: int, country: str) -> bytes:
     """Return the exact HMAC input shared by Vercel and Railway."""
-    return f"{method.upper()}\\n{path}\\n{scope}\\n{timestamp}".encode("utf-8")
+    return f"{method.upper()}\\n{path}\\n{scope}\\n{timestamp}\\n{country}".encode("utf-8")
 
 
-def request_signature(secret: str, method: str, path: str, scope: str, timestamp: int) -> str:
+def request_signature(secret: str, method: str, path: str, scope: str, timestamp: int, country: str) -> str:
     return hmac.new(
         secret.encode("utf-8"),
-        canonical_request(method, path, scope, timestamp),
+        canonical_request(method, path, scope, timestamp, country),
         hashlib.sha256,
     ).hexdigest()
 
@@ -62,6 +64,9 @@ def verify_release_proxy_request(
     scope = normalized_headers.get(SCOPE_HEADER, "")
     if scope != PUBLIC_RELEASE_SCOPE:
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_SCOPE_INVALID")
+    country = normalized_headers.get(COUNTRY_HEADER, "")
+    if len(country) != 2 or not country.isascii() or not country.isalpha() or country != country.upper():
+        return ReleaseProxyVerdict(False, "RELEASE_PROXY_COUNTRY_INVALID")
 
     raw_timestamp = normalized_headers.get(TIMESTAMP_HEADER, "")
     try:
@@ -75,7 +80,7 @@ def verify_release_proxy_request(
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_SIGNATURE_STALE")
 
     received = normalized_headers.get(SIGNATURE_HEADER, "")
-    expected = request_signature(secret, method, path, scope, timestamp)
+    expected = request_signature(secret, method, path, scope, timestamp, country)
     if not isinstance(received, str) or not hmac.compare_digest(received, expected):
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_SIGNATURE_INVALID")
-    return ReleaseProxyVerdict(True, "RELEASE_PROXY_AUTHENTICATED")
+    return ReleaseProxyVerdict(True, "RELEASE_PROXY_AUTHENTICATED", country)
