@@ -50,7 +50,11 @@ describe("URL, Path & Navigation", () => {
     if (PUBLIC_AUDIO_RELEASE_HELD) {
       expect(CONTROLLED_AUDIO_SLUGS).toEqual(new Set());
       expect(allBooks.length).toBeGreaterThan(0);
-      expect(allBooks.filter((book) => APPROVED_PUBLIC_AUDIO_SLUGS.has(book.slug))).toEqual([]);
+      expect(allBooks.every((book) => (
+        book.audio_enabled !== true
+        && book.audiobook_enabled !== true
+        && !book.audio_url
+      ))).toBe(true);
     }
     if (!PUBLIC_AUDIO_RELEASE_HELD && books.length === 0 && isPr()) {
       for (const slug of APPROVED_PUBLIC_AUDIO_SLUGS) expect(CONTROLLED_AUDIO_SLUGS.has(slug)).toBe(true);

@@ -45,7 +45,11 @@ describe("Migration, Backup & Data Consistency", () => {
     }
     if (PUBLIC_AUDIO_RELEASE_HELD) {
       expect(CONTROLLED_AUDIO_SLUGS).toEqual(new Set());
-      expect(books.filter((book) => APPROVED_PUBLIC_AUDIO_SLUGS.includes(book.slug))).toEqual([]);
+      expect(books.every((book) => (
+        book.audio_enabled !== true
+        && book.audiobook_enabled !== true
+        && !book.audio_url
+      ))).toBe(true);
     }
     for (const slug of APPROVED_PUBLIC_AUDIO_SLUGS) {
       if (PUBLIC_AUDIO_RELEASE_HELD) continue;
