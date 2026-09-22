@@ -282,6 +282,11 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.release_proxy_auth import verify_release_proxy_request
 
 try:
+    from rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, should_deny_runtime_action
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, should_deny_runtime_action
+
+try:
     from catalog_truth import (
         CONTROLLED_LAUNCH_CONFIG,
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
@@ -299,6 +304,7 @@ try:
         controlled_artifact_status,
         dracula_artifact_status,
         explicit_preview_chapter_ids,
+        file_sha256,
         live_approved_mongo_query,
         load_controlled_artifact_book,
         load_dracula_artifact_book,
@@ -323,6 +329,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         controlled_artifact_status,
         dracula_artifact_status,
         explicit_preview_chapter_ids,
+        file_sha256,
         live_approved_mongo_query,
         load_controlled_artifact_book,
         load_dracula_artifact_book,
@@ -1687,6 +1694,90 @@ def _release_proxy_access_verdict(request: Request):
         secret=os.getenv("EARNALISM_RELEASE_PROXY_SECRET", ""),
         allowed_countries=_release_proxy_countries(),
     )
+
+
+# Public Reader traffic may open only after a release proxy has established the
+# country *and* every requested title has a separately accepted, immutable
+# decision. The files below are metadata-only artifacts; chapter bodies are
+# never read by this boundary.
+RELEASE_RIGHTS_OPERATOR_ID = "reo-enterprise"
+RELEASE_RIGHTS_COMPONENT_FILENAMES = (
+    "public_book.json",
+    "reader_manifest.json",
+    "source_evidence.json",
+    "approval_evidence.json",
+    "checksum_manifest.json",
+)
+
+
+def _release_rights_action_targets(path: str) -> tuple[tuple[str, str], ...] | None:
+    """Map every proxy-protected public path to an exact rights action."""
+    if not isinstance(path, str):
+        return None
+    all_catalogue = tuple((slug, "catalog_cta") for slug in CONTROLLED_LIVE_BOOK_SLUGS)
+    if path == "/api/books" or path.startswith("/api/home"):
+        return all_catalogue
+    parts = tuple(segment for segment in path.split("/") if segment)
+    if len(parts) >= 3 and parts[:2] == ("api", "books"):
+        slug = parts[2]
+        return ((slug, "catalog_cta" if len(parts) == 3 else "reader_preview"),)
+    if len(parts) >= 4 and parts[:3] == ("api", "reader", "book"):
+        return ((parts[3], "reader_manifest"),)
+    if len(parts) >= 4 and parts[:3] == ("api", "reader", "chapter"):
+        return ((parts[3], "reader_chapter"),)
+    if len(parts) >= 5 and parts[:3] == ("api", "reading-pass", "books"):
+        action = "reader_manifest" if parts[4] == "manifest" else "reading_pass_page"
+        return ((parts[3], action),)
+    return None
+
+
+def _release_rights_artifact(slug: str) -> tuple[dict[str, Any] | None, dict[str, str]]:
+    """Load a decision and hash only its fixed metadata components."""
+    normalized_slug = str(slug or "").strip().lower()
+    if not normalized_slug:
+        return None, {}
+    for package_dir in controlled_artifact_dir_candidates(normalized_slug):
+        decision_path = package_dir / "rights_decision.json"
+        component_paths = {name.removesuffix(".json"): package_dir / name for name in RELEASE_RIGHTS_COMPONENT_FILENAMES}
+        if not decision_path.exists() or any(not path.is_file() for path in component_paths.values()):
+            continue
+        try:
+            components = {name: file_sha256(path) for name, path in component_paths.items()}
+        except OSError:
+            continue
+        decision = read_json_file(decision_path)
+        return (decision or None), components
+    return None, {}
+
+
+def _release_rights_verdict(request: Request) -> DecisionGateVerdict:
+    """Evaluate every public release target without exposing decision details."""
+    targets = _release_rights_action_targets(request.url.path)
+    if not targets:
+        return DecisionGateVerdict(False, ("PUBLIC_RELEASE_PATH_UNMAPPED",))
+    country = str(request.headers.get("x-earnalism-release-country") or "").strip().upper()
+    try:
+        accepted_records, revoked_decision_ids = load_production_registry()
+    except (OSError, ValueError, TypeError, _json.JSONDecodeError):
+        return DecisionGateVerdict(False, ("RIGHTS_REGISTRY_UNAVAILABLE",))
+    reasons: list[str] = []
+    for slug, action in targets:
+        record, components = _release_rights_artifact(slug)
+        verdict = evaluate_runtime_path(
+            action,
+            record=record,
+            edition_id=slug,
+            operator_id=RELEASE_RIGHTS_OPERATOR_ID,
+            country=country,
+            country_trusted=True,
+            required_components=components,
+            accepted_records=accepted_records,
+            revoked_decision_ids=revoked_decision_ids,
+            now=datetime.now(timezone.utc),
+        )
+        if should_deny_runtime_action(verdict, strict_enforcement_enabled=True):
+            reasons.extend(verdict.reasons or ("RELEASE_RIGHTS_DENIED",))
+    return DecisionGateVerdict(not reasons, tuple(dict.fromkeys(reasons)))
 
 
 # This is deliberately a fixed server-side scope, not a client-provided book
@@ -5237,6 +5328,11 @@ async def enforce_public_release_country(request: Request, call_next):
         if not verdict.allowed:
             status = 503 if verdict.code == "RELEASE_PROXY_CONFIGURATION_REQUIRED" else 451
             return JSONResponse(status_code=status, content={"detail": {"code": verdict.code}})
+        rights_verdict = _release_rights_verdict(request)
+        if should_deny_runtime_action(rights_verdict, strict_enforcement_enabled=True):
+            # Do not disclose title, evidence, or decision-reason details to a
+            # public caller. A missing or changed accepted record is a hold.
+            return JSONResponse(status_code=451, content={"detail": {"code": "RELEASE_RIGHTS_DENIED"}})
     return await call_next(request)
 if os.environ.get("JUDOSCALE_URL", "").strip():
     try:
