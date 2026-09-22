@@ -35,6 +35,7 @@ async def next_response(_request: Request) -> Response:
 
 
 def test_public_reader_release_rejects_direct_api_requests(monkeypatch):
+    monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
     response = asyncio.run(server.enforce_public_release_country(request_with_headers({}), next_response))
@@ -43,6 +44,7 @@ def test_public_reader_release_rejects_direct_api_requests(monkeypatch):
 
 
 def test_public_reader_release_accepts_fresh_signed_proxy_request_regardless_of_visitor_country(monkeypatch):
+    monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
     monkeypatch.setattr(server, "_release_rights_verdict", lambda _request: DecisionGateVerdict(True, ()))
@@ -58,6 +60,7 @@ def test_public_reader_release_accepts_fresh_signed_proxy_request_regardless_of_
 
 
 def test_public_reader_release_denies_signed_request_without_accepted_rights(monkeypatch):
+    monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
     monkeypatch.setattr(server, "_release_rights_verdict", lambda _request: DecisionGateVerdict(False, ("ACCEPTED_DECISION_MISSING",)))
@@ -72,6 +75,15 @@ def test_public_reader_release_denies_signed_request_without_accepted_rights(mon
 
     assert response.status_code == 451
     assert response.body == b'{"detail":{"code":"RELEASE_RIGHTS_DENIED"}}'
+
+
+def test_isolated_uat_does_not_require_the_production_release_proxy(monkeypatch):
+    monkeypatch.setattr(server, "ENVIRONMENT", "uat")
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+
+    response = asyncio.run(server.enforce_public_release_country(request_with_headers({}), next_response))
+
+    assert response.status_code == 204
 
 
 def test_runtime_rights_boundary_fails_closed_when_an_artifact_has_no_accepted_record(monkeypatch):

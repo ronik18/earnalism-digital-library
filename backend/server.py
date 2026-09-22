@@ -5314,13 +5314,18 @@ app = FastAPI(
 
 @app.middleware("http")
 async def enforce_public_release_country(request: Request, call_next):
-    """Deny direct or unapproved Reader traffic once a public release opens.
+    """Protect production Reader traffic after a public release opens.
 
-    The controlled launch is normally held, so this has no effect on private
-    admin or test work. A public Reader launch requires the Vercel proxy's
-    short-lived HMAC assertion; this authenticates the proxy, not geography.
+    Only the production service requires the Vercel proxy's short-lived HMAC
+    assertion.  The isolated UAT environment has no public route or production
+    data, so retaining its direct in-process API contract does not broaden the
+    production surface.  The assertion authenticates the proxy, not geography.
     """
-    if PUBLIC_READER_EXPOSURE_ENABLED and _is_release_proxy_protected_path(request.url.path):
+    if (
+        ENVIRONMENT == "production"
+        and PUBLIC_READER_EXPOSURE_ENABLED
+        and _is_release_proxy_protected_path(request.url.path)
+    ):
         verdict = _release_proxy_access_verdict(request)
         if not verdict.allowed:
             status = 503 if verdict.code == "RELEASE_PROXY_CONFIGURATION_REQUIRED" else 451
