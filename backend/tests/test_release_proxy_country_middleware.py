@@ -1,0 +1,55 @@
+from __future__ import annotations
+
+import asyncio
+from datetime import datetime, timezone
+import os
+
+from fastapi import Response
+from starlette.requests import Request
+
+os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
+os.environ.setdefault("JWT_SECRET", "release-proxy-country-middleware-test-secret")
+
+from backend import server
+from backend.release_proxy_auth import COUNTRY_HEADER, SIGNATURE_HEADER, TIMESTAMP_HEADER, request_signature
+
+
+SECRET = "release-proxy-test-secret-that-is-long-enough"
+
+
+def request_with_headers(headers: dict[str, str]) -> Request:
+    return Request({
+        "type": "http",
+        "method": "GET",
+        "path": "/api/books",
+        "headers": [(key.encode("latin-1"), value.encode("latin-1")) for key, value in headers.items()],
+        "query_string": b"",
+        "server": ("testserver", 443),
+        "scheme": "https",
+    })
+
+
+async def next_response(_request: Request) -> Response:
+    return Response(status_code=204)
+
+
+def test_public_reader_release_rejects_direct_api_requests(monkeypatch):
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
+    response = asyncio.run(server.enforce_public_release_country(request_with_headers({}), next_response))
+    assert response.status_code == 451
+    assert response.body == b'{"detail":{"code":"RELEASE_COUNTRY_NOT_ALLOWED"}}'
+
+
+def test_public_reader_release_accepts_only_fresh_signed_india_proxy_request(monkeypatch):
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
+    monkeypatch.setattr(server, "_release_proxy_countries", lambda: frozenset({"IN"}))
+    timestamp = int(datetime.now(timezone.utc).timestamp())
+    headers = {
+        COUNTRY_HEADER: "IN",
+        TIMESTAMP_HEADER: str(timestamp),
+        SIGNATURE_HEADER: request_signature(SECRET, "GET", "/api/books", "IN", timestamp),
+    }
+    response = asyncio.run(server.enforce_public_release_country(request_with_headers(headers), next_response))
+    assert response.status_code == 204

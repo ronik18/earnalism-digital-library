@@ -419,7 +419,7 @@
       "destination": "/api/not-found"
     },
     {
-      "source": "/((?!static/|assets/|audio/|asset-manifest.json|favicon.ico|favicon.png|apple-touch-icon.png|manifest.json|site.webmanifest|robots.txt|sitemap.xml).*)",
+      "source": "/((?!api/|static/|assets/|audio/|asset-manifest.json|favicon.ico|favicon.png|apple-touch-icon.png|manifest.json|site.webmanifest|robots.txt|sitemap.xml).*)",
       "destination": "/api/not-found"
     }
   ],

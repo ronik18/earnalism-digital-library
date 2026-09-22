@@ -277,6 +277,11 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.rights_engine import RIGHTS_REPORT_FILENAMES, rights_publish_blockers, rights_report_csv, rights_report_rows
 
 try:
+    from release_proxy_auth import verify_release_proxy_request
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.release_proxy_auth import verify_release_proxy_request
+
+try:
     from catalog_truth import (
         CONTROLLED_LAUNCH_CONFIG,
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
@@ -1647,6 +1652,40 @@ def _is_controlled_public_slug(slug: str) -> bool:
     return (
         PUBLIC_READER_EXPOSURE_ENABLED
         and str(slug or "").strip().lower() in CONTROLLED_LIVE_BOOK_SLUGS
+    )
+
+
+def _release_proxy_countries() -> frozenset[str]:
+    """Read the explicit country scope without treating malformed config as IN."""
+    countries = CONTROLLED_LAUNCH_CONFIG.get("public_release_country_codes")
+    if not isinstance(countries, list):
+        return frozenset()
+    normalized = {str(country).strip().upper() for country in countries}
+    if not normalized or any(not re.fullmatch(r"[A-Z]{2}", country) for country in normalized):
+        return frozenset()
+    return frozenset(normalized)
+
+
+def _is_release_proxy_protected_path(path: str) -> bool:
+    """Restrict signed country assertions to public catalogue/Reader content."""
+    if not isinstance(path, str):
+        return False
+    return (
+        path == "/api/books"
+        or path.startswith("/api/books/")
+        or path.startswith("/api/home")
+        or path.startswith("/api/reader/")
+        or path.startswith("/api/reading-pass/books/")
+    )
+
+
+def _release_proxy_access_verdict(request: Request):
+    return verify_release_proxy_request(
+        request.headers,
+        method=request.method,
+        path=request.url.path,
+        secret=os.getenv("EARNALISM_RELEASE_PROXY_SECRET", ""),
+        allowed_countries=_release_proxy_countries(),
     )
 
 
@@ -5183,6 +5222,22 @@ app = FastAPI(
     docs_url=None if ENVIRONMENT == "production" else "/docs",
     redoc_url=None if ENVIRONMENT == "production" else "/redoc",
 )
+
+
+@app.middleware("http")
+async def enforce_public_release_country(request: Request, call_next):
+    """Deny direct or out-of-scope Reader traffic once a public release opens.
+
+    The controlled launch is normally held, so this has no effect on private
+    admin or test work. A public Reader launch requires the Vercel proxy's
+    short-lived HMAC assertion; a browser header alone cannot satisfy it.
+    """
+    if PUBLIC_READER_EXPOSURE_ENABLED and _is_release_proxy_protected_path(request.url.path):
+        verdict = _release_proxy_access_verdict(request)
+        if not verdict.allowed:
+            status = 503 if verdict.code == "RELEASE_PROXY_CONFIGURATION_REQUIRED" else 451
+            return JSONResponse(status_code=status, content={"detail": {"code": verdict.code}})
+    return await call_next(request)
 if os.environ.get("JUDOSCALE_URL", "").strip():
     try:
         from judoscale.asgi.middleware import FastAPIRequestQueueTimeMiddleware  # type: ignore

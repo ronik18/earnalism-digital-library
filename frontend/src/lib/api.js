@@ -2,6 +2,12 @@ import axios from "axios";
 import { toast } from "sonner";
 
 export function resolveBackendUrl() {
+  // The India-only public Reader release uses the same-origin Vercel proxy so
+  // Railway can verify a provider-derived country assertion. This flag is a
+  // production build setting, not a browser-controlled fallback.
+  if (process.env.NODE_ENV === "production" && process.env.REACT_APP_RELEASE_PROXY_ENABLED === "true") {
+    return "";
+  }
   const configured = (
     process.env.REACT_APP_BACKEND_URL ||
     process.env.REACT_APP_API_URL ||
