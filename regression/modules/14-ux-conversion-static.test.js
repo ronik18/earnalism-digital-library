@@ -104,6 +104,7 @@ describe("UX conversion static signals", () => {
   const gitignore = read(".gitignore");
   const frontendPackageJson = read("frontend/package.json");
   const staticSnapshotGenerator = read("frontend/scripts/generate-static-seo-snapshots.mjs");
+  const staticSeoPublicContract = JSON.parse(read("frontend/static-seo/controlled-publication-public.json"));
   const publicAccessCopy = read("frontend/src/lib/publicAccessCopy.js");
   const staticSeoContractGenerator = read("scripts/generate_static_seo_public_contract.mjs");
   const socialPreviewAudit = read("scripts/social_preview_audit.py");
@@ -1719,8 +1720,14 @@ describe("UX conversion static signals", () => {
 
   test("built Dracula book snapshot exposes crawlable book SEO when build output exists", () => {
     const bookHtml = readOptional("frontend/build/book/dracula/index.html");
+    if (staticSeoPublicContract.public_release_held === true) {
+      expect(bookHtml).toBe("");
+      expect(staticSnapshotGenerator).toContain("releaseHeld ? books.length === 0");
+      expect(staticSnapshotGenerator).toContain("publicationPages(safe.books)");
+      return;
+    }
     if (!bookHtml) {
-      expect(staticSnapshotGenerator).toContain("writeSnapshot");
+      expect(staticSnapshotGenerator).toContain("writeFile(target");
       return;
     }
 

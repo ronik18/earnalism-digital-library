@@ -5,8 +5,26 @@ const { apiUrl, apiOrigin, frontendUrl, isPr } = require("./envGuard");
 
 const DRACULA_ARTIFACT_DIR = path.resolve(__dirname, "../../data/controlled_publications/dracula");
 const CONTROLLED_PUBLICATIONS_DIR = path.resolve(__dirname, "../../data/controlled_publications");
+const CONTROLLED_LAUNCH_PATH = path.resolve(__dirname, "../../data/controlled_launch.json");
 const DRACULA_SLUG = "dracula";
 const FALLBACK_GENERATED_AT = "2026-06-20T00:00:00.000Z";
+
+function readControlledLaunch() {
+  try {
+    const value = JSON.parse(fs.readFileSync(CONTROLLED_LAUNCH_PATH, "utf8"));
+    return value && typeof value === "object" ? value : {};
+  } catch {
+    return {};
+  }
+}
+
+const controlledLaunch = readControlledLaunch();
+const PUBLIC_READER_EXPOSURE_ENABLED = controlledLaunch.public_reader_exposure_enabled === true;
+const CONTROLLED_LIVE_READER_SLUGS = new Set(
+  PUBLIC_READER_EXPOSURE_ENABLED && Array.isArray(controlledLaunch.live_approved_slugs)
+    ? controlledLaunch.live_approved_slugs.filter((slug) => typeof slug === "string" && slug)
+    : [],
+);
 
 const PUBLIC_BOOK_FIELDS = new Set([
   "id",
@@ -136,7 +154,10 @@ function isControlledBookListed(book) {
 }
 
 function isReaderReadyControlledBook(entry) {
-  return isControlledBookListed(entry?.publicBook) && entry.chapters.size > 0;
+  return PUBLIC_READER_EXPOSURE_ENABLED
+    && CONTROLLED_LIVE_READER_SLUGS.has(entry?.slug)
+    && isControlledBookListed(entry?.publicBook)
+    && entry.chapters.size > 0;
 }
 
 function fallbackStaticHtml(status, text, opts = {}) {
@@ -437,7 +458,7 @@ function needsManifestFallback(response) {
 }
 
 function maybeApplyDraculaFallback(apiPath, response) {
-  if (!isPr()) return response;
+  if (!isPr() || !PUBLIC_READER_EXPOSURE_ENABLED) return response;
   const fallbackSuccess = { ...response, status: 200 };
   const parsed = new URL(String(apiPath || "/"), "https://regression.local");
   const pathname = parsed.pathname.replace(/\/+$/, "") || "/";

@@ -11,6 +11,8 @@ const GO_LIVE_BOOK_LIMIT = Number(process.env.REGRESSION_GO_LIVE_BOOK_LIMIT || 1
 const URL_CHECK_CONCURRENCY = Number(process.env.REGRESSION_URL_CHECK_CONCURRENCY || 8);
 const APPROVED_PUBLIC_AUDIO_SLUGS = new Set(publicAudioTruth.approved_public_audio_slugs || []);
 const CONTROLLED_AUDIO_SLUGS = new Set(controlledLaunch.audio_enabled_slugs || []);
+const PUBLIC_AUDIO_RELEASE_HELD = controlledLaunch.public_reader_exposure_enabled !== true
+  || controlledLaunch.public_audio_exposure_enabled !== true;
 const ROOT = path.resolve(__dirname, "../..");
 
 function controlledPublicationCover(slug) {
@@ -37,6 +39,11 @@ describe("URL, Path & Navigation", () => {
     const books = (await apiGet("/books")).data
       .filter((book) => APPROVED_PUBLIC_AUDIO_SLUGS.has(book.slug))
       .slice(0, isGoLive() ? GO_LIVE_BOOK_LIMIT : 12);
+    if (PUBLIC_AUDIO_RELEASE_HELD) {
+      expect(CONTROLLED_AUDIO_SLUGS).toEqual(new Set());
+      expect(books).toEqual([]);
+      return;
+    }
     if (books.length === 0 && isPr()) {
       for (const slug of APPROVED_PUBLIC_AUDIO_SLUGS) expect(CONTROLLED_AUDIO_SLUGS.has(slug)).toBe(true);
       return;

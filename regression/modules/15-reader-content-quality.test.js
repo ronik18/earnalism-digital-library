@@ -103,6 +103,12 @@ describe("Reader content quality batch 1", () => {
   });
 
   test("batch reader release truth preserves approved reader-only titles and audio holds", () => {
+    if (launch.public_reader_exposure_enabled !== true) {
+      expect(launch.public_audio_exposure_enabled).toBe(false);
+      expect(launch.live_approved_slugs).toEqual([]);
+      expect(launch.audio_enabled_slugs).toEqual([]);
+      return;
+    }
     for (const slug of BATCH_SLUGS) {
       if (PENDING_FRESH_READER_APPROVAL_SLUGS.has(slug)) {
         expect(launch.live_approved_slugs).not.toContain(slug);
