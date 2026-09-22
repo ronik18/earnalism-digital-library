@@ -35,6 +35,6 @@ Preserve source/editable project files where available. Copyright registration i
 
 ## Attached package binding
 
-- Candidate commit: `c7b8ef5edeab9685ad6647124a6652c4f4376c9f`.
-- Candidate tree: `b0a02065d6636ca678e77097c14c9da6224cae54`.
+- Candidate commit: `cdaa9bd344a7928048c525588e17e8492aea85f8`.
+- Candidate tree: `e1627b8d0cf06e942f54d9e4098c2f279d65ae27`.
 - Completing this form does not release a title; the active release hold and hash-bound rights gate remain independent controls.

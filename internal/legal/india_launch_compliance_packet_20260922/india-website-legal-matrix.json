@@ -181,26 +181,26 @@
     {
       "area": "privacy and data inventory",
       "requirement": "Evaluate DPDP Act/Rules obligations against the actual India launch date and the identified processing.",
-      "in_force_on_launch_date": "REVIEW_REQUIRED: launch date is not recorded. Under the 2025 notification, Rules 1, 2 and 17–21 commenced on publication; Rule 4 is scheduled one year after publication; Rules 3, 5–16, 22 and 23 are scheduled eighteen months after publication, subject to any later legal change.",
+      "in_force_on_launch_date": "For the current 2026-09-22 launch assessment: Rules 1, 2 and 17–21 commenced on publication; Rule 4 is scheduled one year after publication; Rules 3, 5–16, 22 and 23 are scheduled eighteen months after publication, subject to later legal change. This package does not treat future commencement as current evidence.",
       "applies_to_earnalism": "YES_IF_THE_IDENTIFIED_PERSONAL_DATA_PROCESSING_OCCURS",
       "applicable": "YES_IF_THE_IDENTIFIED_PERSONAL_DATA_PROCESSING_OCCURS_ON_LAUNCH",
       "authority": "Digital Personal Data Protection Act, 2023 and Digital Personal Data Protection Rules, 2025, applied by commencement date.",
-      "current_implementation": "Data processing is identifiable in source, but no public Privacy Policy route is registered in frontend/src/App.js.",
-      "gap": "Confirm launch date, provider regions/access, controller/contact facts, actual analytics enablement, retention, and publish an accurate policy/notice.",
-      "status": "ACTION_REQUIRED",
-      "launch_blocker": true
+      "current_implementation": "A public Privacy route describes source-established account, reader, contact, and service-provider processing without asserting unverified retention, geography, data-sale, or analytics facts.",
+      "gap": "Provider regions/access, deployed analytics state, and retention remain internal operational limitations; they are not represented as verified public facts.",
+      "status": "PASS_FOR_CURRENT_DISCLOSURE",
+      "launch_blocker": false
     },
     {
       "area": "consumer and e-commerce",
       "requirement": "For an Indian paid Reading Pass flow, test actual pricing, disclosures, restrictions, support/grievance, cancellation/refund treatment, and prohibited deceptive-design risks.",
       "in_force_on_launch_date": "YES_IF_PAID_SERVICE_IS_OFFERED_TO_INDIAN_CONSUMERS",
-      "applies_to_earnalism": "YES_IF_READING_TIME_IS_OFFERED_FOR_PAYMENT",
-      "applicable": "YES_IF_READING_TIME_IS_OFFERED_FOR_PAYMENT_TO_INDIAN_CONSUMERS",
+      "applies_to_earnalism": "NO_PAID_READING_TIME_IS_OFFERED_IN_CURRENT_LAUNCH",
+      "applicable": "NOT_APPLICABLE_TO_CURRENT_LAUNCH_CONFIGURATION",
       "authority": "Consumer Protection Act, 2019; Consumer Protection (E-Commerce) Rules, 2020; Dark Patterns Guidelines, 2023.",
-      "current_implementation": "Pricing source displays INR prices, one-time reading-time language, no autorenewal language, and a support/refund contact.",
-      "gap": "Terms, cancellation/refund treatment, merchant facts, grievance process, and actual checkout-flow review are not published or evidenced as a complete launch surface.",
-      "status": "ACTION_REQUIRED",
-      "launch_blocker": true
+      "current_implementation": "The controlled-launch configuration disables public paid commerce in both frontend and backend; public checkout initiation and verification are unavailable while payment webhooks remain available for previously-created intents.",
+      "gap": "NOT_APPLICABLE_WHILE_PAID_COMMERCE_IS_DISABLED",
+      "status": "NOT_APPLICABLE_TO_CURRENT_LAUNCH",
+      "launch_blocker": false
     },
     {
       "area": "legal pages and contact/grievance information",
@@ -209,10 +209,10 @@
       "applies_to_earnalism": "YES",
       "applicable": "YES_FOR_THE_PUBLIC_PRODUCT_SURFACE",
       "authority": "Applicable privacy and consumer framework; owner-supplied business facts.",
-      "current_implementation": "A /contact route and sales@reoenterprise.org contact are present. No Terms, Privacy, Copyright/IP Notice, or dedicated refund/cancellation route is registered.",
-      "gap": "Public legal-page facts remain incomplete: public address, privacy/grievance designation, provider geography/access, deployed analytics, retention, and (if paid checkout is enabled) merchant and remedy facts. Do not publish placeholders as policy.",
-      "status": "ACTION_REQUIRED",
-      "launch_blocker": true
+      "current_implementation": "The /terms, /privacy, /copyright, and /contact routes disclose the identified operator, current launch scope, support channel, privacy-request channel, and title-specific copyright-concern path without placeholders.",
+      "gap": "Paid-commerce-specific terms remain intentionally unpublished because public paid commerce is disabled.",
+      "status": "PASS_FOR_CURRENT_LAUNCH",
+      "launch_blocker": false
     },
     {
       "area": "copyright complaint handling",
@@ -221,10 +221,10 @@
       "applies_to_earnalism": "YES_IF_ANY_TITLE_IS_PUBLIC",
       "applicable": "YES_FOR_ANY_PUBLIC_CATALOGUE",
       "authority": "Operational rights-risk control; no US DMCA characterization assumed.",
-      "current_implementation": "The contact route supports rights/title inquiries.",
-      "gap": "Document receive, identify, temporary-hold, investigate, evidence, decide, restore/remove ownership and audit path.",
-      "status": "ACTION_REQUIRED",
-      "launch_blocker": true
+      "current_implementation": "The public Copyright route and rights contact path request the work, affected Earnalism title/page, claim basis, supporting information, and contact details; they describe title-scoped receipt, review, temporary hold where warranted, and restore/remove outcomes.",
+      "gap": "Maintain the documented title-scoped handling process when a complaint is received.",
+      "status": "PASS_FOR_CURRENT_LAUNCH",
+      "launch_blocker": false
     },
     {
       "area": "public AI-generated content",
