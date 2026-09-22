@@ -64,6 +64,12 @@ async function installFixtureRoutes(page) {
   await page.route("**/api/**", async (route) => {
     const url = new URL(route.request().url());
     if (url.pathname.endsWith("/books")) return jsonResponse(route, books);
+    const bookDetailMatch = url.pathname.match(/\/books\/([^/]+)$/);
+    if (bookDetailMatch) {
+      const slug = decodeURIComponent(bookDetailMatch[1]);
+      const book = books.find((candidate) => candidate.slug === slug);
+      return jsonResponse(route, book || {});
+    }
     if (url.pathname.includes("/payments/") && (url.pathname.endsWith("/offers") || url.pathname.endsWith("/packs"))) return jsonResponse(route, { packs, config: { mode: "owner-review-fixture", recurring_enabled: false } });
     if (url.pathname.endsWith("/auth/me") || url.pathname.endsWith("/users/me")) return jsonResponse(route, user);
     if (url.pathname.includes("transactions")) return jsonResponse(route, []);
