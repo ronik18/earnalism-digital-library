@@ -19,7 +19,7 @@ const fail = (message, state) => {
 };
 
 function requiredRoutes(publication, editorial) {
-  const publicRoutes = ["/", "/library", "/pricing", "/about", "/contact", "/micro-story", "/journal"];
+  const publicRoutes = ["/", "/library", "/pricing", "/about", "/contact", "/privacy", "/terms", "/copyright", "/micro-story", "/journal"];
   const journalRoutes = editorial.articles.map((article) => "/journal/" + article.slug);
   const books = publication.publications.flatMap((book) => ["/book/" + book.slug, "/reader/" + book.slug, "/listener/" + book.slug]);
   return [...publicRoutes, ...journalRoutes, ...books, "/login", "/signup", "/account", "/my-library"];

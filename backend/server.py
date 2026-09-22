@@ -278,6 +278,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
 
 try:
     from catalog_truth import (
+        CONTROLLED_LAUNCH_CONFIG,
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
         PUBLIC_READER_EXPOSURE_ENABLED,
@@ -301,6 +302,7 @@ try:
     )
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.catalog_truth import (
+        CONTROLLED_LAUNCH_CONFIG,
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
         PUBLIC_READER_EXPOSURE_ENABLED,
@@ -808,6 +810,7 @@ READER_CONTENT_RENDER_VERSION = "semantic-html-v1"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
+PUBLIC_PAID_COMMERCE_ENABLED = CONTROLLED_LAUNCH_CONFIG.get("public_paid_commerce_enabled") is True
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
@@ -864,6 +867,12 @@ def get_razorpay_client():
     except ImportError:
         return None
     return razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
+
+
+def _public_paid_commerce_enabled_or_404() -> None:
+    """Keep unfinished checkout unavailable even when a caller bypasses the UI."""
+    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+        raise HTTPException(status_code=404, detail="Paid checkout is not available in this launch.")
 
 
 def _hmac_sha256_hex(secret: str, body: bytes) -> str:
@@ -11905,6 +11914,8 @@ async def admin_rotate_user_credentials(
 # ---------- Public: Pack catalogue ----------
 @api.get("/payments/packs", response_model=List[PackOut])
 async def payments_list_packs():
+    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+        return []
     cache_key = _public_cache_key("payment_packs")
     cached = await _public_cache_get(cache_key)
     if cached is not None:
@@ -11917,6 +11928,8 @@ async def payments_list_packs():
 @api.get("/payments/config")
 async def payments_config():
     """Lightweight config shim used by frontend to know if Razorpay is wired."""
+    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+        return {"available": False, "configured": False, "mode": "disabled", "key_id": ""}
     cache_key = _public_cache_key("payment_config")
     cached = await _public_cache_get(cache_key)
     if cached is not None:
@@ -11938,6 +11951,8 @@ async def payments_public_offers():
     additive route removes the initial Commerce waterfall without exposing any
     additional payment or account state.
     """
+    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+        return {"packs": [], "config": {"available": False, "configured": False, "mode": "disabled", "key_id": ""}}
     cache_key = _public_cache_key("payment_offers")
     cached = await _public_cache_get(cache_key)
     if cached is not None:
@@ -12033,6 +12048,7 @@ async def _credit_wallet_for_intent(intent: dict, payment_id: Optional[str], sou
 # ---------- Reader: create a top-up intent + Razorpay order ----------
 @api.post("/payments/topup", response_model=TopUpCreateOut)
 async def payments_create_topup(payload: TopUpCreateIn, user=Depends(require_user)):
+    _public_paid_commerce_enabled_or_404()
     pack = PACKS_BY_ID.get(payload.pack_id)
     if not pack:
         raise HTTPException(status_code=400, detail="Unknown pack")
@@ -12103,6 +12119,7 @@ async def payments_create_topup(payload: TopUpCreateIn, user=Depends(require_use
 # ---------- Reader: verify Razorpay checkout signature & credit ----------
 @api.post("/payments/verify")
 async def payments_verify(payload: PaymentVerifyIn, user=Depends(require_user)):
+    _public_paid_commerce_enabled_or_404()
     intent = await db.topup_intents.find_one(
         {"razorpay_order_id": payload.razorpay_order_id, "user_id": user["id"]},
         {"_id": 0},
@@ -12229,6 +12246,7 @@ async def payments_simulate_topup(payload: TopUpCreateIn, user=Depends(require_u
 
     Disabled when RAZORPAY_MODE is not 'test'.
     """
+    _public_paid_commerce_enabled_or_404()
     if RAZORPAY_MODE != "test":
         raise HTTPException(status_code=403, detail="Simulator disabled outside test mode")
     pack = PACKS_BY_ID.get(payload.pack_id)
@@ -12273,6 +12291,7 @@ async def payments_simulate_webhook(
     user (or admin via curl) drive an intent to 'credited' WITHOUT real
     Razorpay — useful when keys are not configured yet.
     """
+    _public_paid_commerce_enabled_or_404()
     if RAZORPAY_MODE != "test":
         raise HTTPException(status_code=403, detail="Simulator disabled outside test mode")
     intent = await db.topup_intents.find_one({"id": intent_id}, {"_id": 0})

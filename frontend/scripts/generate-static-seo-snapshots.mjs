@@ -117,6 +117,9 @@ function standardPages(editorial, { releaseHeld = false } = {}) {
     ["/pricing", "Reading Passes | The Earnalism", releaseCopy + (releaseHeld ? "" : " Reading time is used only while you read."), "Reading Passes", "Choose time for deeper reading.", "/library", "Explore the Library"],
     ["/about", "About Earnalism | The Earnalism Digital Library", "Earnalism is a digital library for Bengali and English classics, designed for thoughtful reading and release-aware listening.", "About Earnalism", "A library made for attention.", "/library", "Explore the Library"],
     ["/contact", "Contact | The Earnalism", "Contact The Earnalism for reader support, rights and title inquiries, or institutional access.", "Library desk", "Write to The Earnalism.", "mailto:sales@reoenterprise.org", "Email the library desk"],
+    ["/privacy", "Privacy | The Earnalism", "How the current Earnalism website handles information used to operate the service.", "Earnalism", "Privacy", "/contact?intent=reader", "Privacy requests"],
+    ["/terms", "Terms of Use | The Earnalism", "The terms that apply to the current Earnalism reading experience.", "Earnalism", "Terms of Use", "/contact?intent=reader", "Contact the library desk"],
+    ["/copyright", "Copyright and Content | The Earnalism", "Information about Earnalism content, intellectual property, and rights concerns.", "Earnalism", "Copyright and Content", "/contact?intent=rights", "Raise a rights concern"],
     ["/micro-story", "A Quiet Reading Invitation | The Earnalism", releaseHeld ? releaseCopy : "Find a reader-ready Earnalism edition and begin with the canonical preview. " + accessCopy, "A quiet way into the library", "Begin with a story.", "/library?source=reading_invitation", "Explore the Library"],
   ].map((row) => ({
     path: row[0], title: row[1], description: row[2], jsonLd: [webPage(row[1], row[2], row[0])],

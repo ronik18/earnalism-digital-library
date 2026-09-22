@@ -34,6 +34,9 @@ export default function Footer() {
               <li><Link to="/journal" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">Journal</Link></li>
               <li><Link to="/about" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">About</Link></li>
               <li><Link to="/contact" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">Contact</Link></li>
+              <li><Link to="/privacy" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">Privacy</Link></li>
+              <li><Link to="/terms" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">Terms</Link></li>
+              <li><Link to="/copyright" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">Copyright</Link></li>
               <li><Link to={accountHref} className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">{accountLabel}</Link></li>
             </ul>
           </nav>

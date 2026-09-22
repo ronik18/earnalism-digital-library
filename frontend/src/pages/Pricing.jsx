@@ -7,9 +7,10 @@ import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import ReferenceCommerceSurface from "../components/ReadingPassesSurface";
+import PublicPageFrame from "../components/PublicPageFrame";
 import { availableReadingPasses } from "../lib/readingPassOffers";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
-import { PUBLIC_READER_EXPOSURE_ENABLED } from "../lib/controlledLaunch";
+import { PUBLIC_PAID_COMMERCE_ENABLED, PUBLIC_READER_EXPOSURE_ENABLED } from "../lib/controlledLaunch";
 
 const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
 
@@ -32,6 +33,29 @@ function loadRazorpayScript() {
 }
 
 export default function Pricing() {
+  if (!PUBLIC_PAID_COMMERCE_ENABLED) return <PricingUnavailable />;
+  return <PricingAvailable />;
+}
+
+function PricingUnavailable() {
+  useSEO({
+    title: "Reading Passes — The Earnalism Digital Library",
+    description: "Reading Passes are not available in the current Earnalism launch.",
+    canonicalPath: "/pricing",
+  });
+  return (
+    <PublicPageFrame tone="quiet">
+      <section className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-28" data-testid="paid-commerce-disabled">
+        <p className="editorial-kicker">Earnalism</p>
+        <h1 className="mt-5 font-serif-light text-4xl leading-tight text-burgundy sm:text-6xl">Reading Passes are not available in this launch.</h1>
+        <p className="mt-7 max-w-2xl text-lg leading-8 text-charcoal-soft">Earnalism is currently offering its enabled reading experience without paid checkout. We will publish payment terms before opening purchases.</p>
+        <Link className="btn-primary mt-10 inline-flex min-h-11 items-center" to="/library">Browse the library</Link>
+      </section>
+    </PublicPageFrame>
+  );
+}
+
+function PricingAvailable() {
   useSEO({
     title: "Reading Passes — The Earnalism Digital Library",
     description: "Reading-time passes at The Earnalism. Add minutes to your wallet, read at your own pace, and return whenever you wish.",

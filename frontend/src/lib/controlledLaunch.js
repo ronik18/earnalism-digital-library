@@ -3,6 +3,10 @@ export const LIVE_APPROVED_SLUG = "dracula";
 // keeps bundled fallbacks and stale browser caches from advertising a Reader
 // or Listener while the public release is held pending exact rights decisions.
 export const PUBLIC_READER_EXPOSURE_ENABLED = false;
+// The India text launch does not offer paid Reading Passes until the live
+// Razorpay, consumer-remedy, and accounting surface has been independently
+// qualified.  This is a release control, not a client-only presentation hint.
+export const PUBLIC_PAID_COMMERCE_ENABLED = false;
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 // Pipeline candidates are never matched to publications by title, cover, or
 // transliteration. This explicit, reviewed identity map only suppresses the
@@ -219,7 +223,9 @@ export function canShowPreview(book = {}) {
 }
 
 export function canShowReadingPass(book = {}) {
-  return normalizedSlug(book) === LIVE_APPROVED_SLUG && isLiveApprovedBook(book);
+  return PUBLIC_PAID_COMMERCE_ENABLED
+    && normalizedSlug(book) === LIVE_APPROVED_SLUG
+    && isLiveApprovedBook(book);
 }
 
 export function canShowAudioCTA(book = {}) {

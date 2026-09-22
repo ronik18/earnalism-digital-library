@@ -13,6 +13,9 @@ const pageImports = {
   JournalArticle: () => import("./pages/JournalArticle"),
   AboutLegacy: () => import("./pages/About"),
   Contact: () => import("./pages/Contact"),
+  Privacy: () => import("./pages/LegalPages").then((module) => ({ default: module.Privacy })),
+  Terms: () => import("./pages/LegalPages").then((module) => ({ default: module.Terms })),
+  Copyright: () => import("./pages/LegalPages").then((module) => ({ default: module.CopyrightNotice })),
   Login: () => import("./pages/Login"),
   Signup: () => import("./pages/Signup"),
   Account: () => import("./pages/Account"),
@@ -35,6 +38,9 @@ const Journal = lazy(pageImports.Journal);
 const JournalArticle = lazy(pageImports.JournalArticle);
 const AboutLegacy = lazy(pageImports.AboutLegacy);
 const Contact = lazy(pageImports.Contact);
+const Privacy = lazy(pageImports.Privacy);
+const Terms = lazy(pageImports.Terms);
+const CopyrightNotice = lazy(pageImports.Copyright);
 const Login = lazy(pageImports.Login);
 const Signup = lazy(pageImports.Signup);
 const Account = lazy(pageImports.Account);
@@ -111,6 +117,9 @@ export function AppRouterContent() {
             <Route path="/about-legacy" element={<AboutLegacy />} />
             <Route path="/about" element={<AboutLegacy />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/copyright" element={<CopyrightNotice />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/micro-story" element={<MicroStoryLanding />} />
             <Route path="/secure-reader-test" element={<SecureReaderHarness />} />
