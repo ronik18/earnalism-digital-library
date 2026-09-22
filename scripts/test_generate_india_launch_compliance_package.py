@@ -96,15 +96,16 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
         self.assertEqual(rows["a-ghost-story"]["audio_scope"]["voice_type"], "PROVIDER_AUTHORIZED_SYNTHETIC_VOICE")
         self.assertIn("listening-QA", rows["the-tell-tale-heart"]["audio_scope"]["candidate_status_if_audio_scope_changes"])
 
-    def test_website_matrix_identifies_actual_public_page_and_fact_gaps(self) -> None:
+    def test_website_matrix_tracks_the_current_public_legal_surface_and_disabled_commerce(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             package = self.build(Path(temporary))
         matrix = {row["area"]: row for row in package["india_website_legal_matrix"]}
-        self.assertEqual(matrix["privacy and data inventory"]["status"], "ACTION_REQUIRED")
-        self.assertIn("launch date is not recorded", matrix["privacy and data inventory"]["in_force_on_launch_date"])
-        self.assertEqual(matrix["legal pages and contact/grievance information"]["status"], "ACTION_REQUIRED")
-        self.assertTrue(matrix["consumer and e-commerce"]["launch_blocker"])
-        self.assertFalse(package["conclusion"]["india_launch_legal_checks_complete"])
+        self.assertEqual(matrix["privacy and data inventory"]["status"], "PASS_FOR_CURRENT_DISCLOSURE")
+        self.assertIn("2026-09-22", matrix["privacy and data inventory"]["in_force_on_launch_date"])
+        self.assertEqual(matrix["legal pages and contact/grievance information"]["status"], "PASS_FOR_CURRENT_LAUNCH")
+        self.assertEqual(matrix["consumer and e-commerce"]["status"], "NOT_APPLICABLE_TO_CURRENT_LAUNCH")
+        self.assertFalse(matrix["consumer and e-commerce"]["launch_blocker"])
+        self.assertTrue(package["conclusion"]["india_launch_legal_checks_complete"])
 
     def test_optional_declaration_preserves_owner_fact_without_creating_a_release(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -120,15 +121,16 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
         self.assertEqual(declaration.count("| A Ghost Story — front |"), 1)
         self.assertNotIn("| Dracula — front |", declaration)
 
-    def test_internal_website_drafts_are_generated_but_not_public_routes(self) -> None:
+    def test_public_legal_routes_are_evidenced_without_exposing_internal_placeholders(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             output = Path(temporary)
             self.build(output)
             drafts = (output / "unpublished-india-website-legal-drafts.md").read_text(encoding="utf-8")
-        self.assertIn("UNPUBLISHED_DO_NOT_REGISTER_ROUTE", drafts)
+        self.assertIn("PUBLIC_ROUTES_REGISTERED", drafts)
         self.assertIn("RECEIVED` → `UNDER_REVIEW`", drafts)
         self.assertIn("REO ENTERPRISE", drafts)
-        self.assertNotIn("/privacy", (ROOT / "frontend" / "src" / "App.js").read_text(encoding="utf-8").lower())
+        self.assertTrue(MODULE.public_legal_routes_registered())
+        self.assertNotIn("[OWNER INPUT REQUIRED", drafts)
 
     def test_decision_record_is_hash_bound_and_keeps_human_decision_fields_blank(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

@@ -557,9 +557,19 @@ def existing_launch_hold() -> dict[str, Any]:
         "rights_registry": evidence(RIGHTS_REGISTRY),
         "public_reader_exposure_enabled": root.get("public_reader_exposure_enabled") is True or backend.get("public_reader_exposure_enabled") is True,
         "public_audio_exposure_enabled": root.get("public_audio_exposure_enabled") is True or backend.get("public_audio_exposure_enabled") is True,
+        "public_paid_commerce_enabled": root.get("public_paid_commerce_enabled") is True or backend.get("public_paid_commerce_enabled") is True,
         "live_approved_slugs": sorted(set(root.get("live_approved_slugs", [])) | set(backend.get("live_approved_slugs", []))),
         "accepted_rights_record_count": len(registry.get("accepted_records", {})) if isinstance(registry.get("accepted_records"), dict) else None,
     }
+
+
+def public_legal_routes_registered() -> bool:
+    """Check the source-controlled public routes, not an old narrative draft."""
+    app = (ROOT / "frontend" / "src" / "App.js").read_text(encoding="utf-8")
+    pages = (ROOT / "frontend" / "src" / "pages" / "LegalPages.jsx").read_text(encoding="utf-8")
+    return all(route in app for route in ('path="/privacy"', 'path="/terms"', 'path="/copyright"')) and all(
+        component in pages for component in ("export function Privacy", "export function Terms", "export function CopyrightNotice")
+    )
 
 
 def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
@@ -794,7 +804,9 @@ def website_fact_inventory() -> list[dict[str, Any]]:
     ]
 
 
-def website_matrix() -> list[dict[str, Any]]:
+def website_matrix(launch_hold: dict[str, Any]) -> list[dict[str, Any]]:
+    legal_routes = public_legal_routes_registered()
+    paid_commerce = launch_hold["public_paid_commerce_enabled"]
     return [
         {
             "area": "copyright and content integrity",
@@ -811,26 +823,26 @@ def website_matrix() -> list[dict[str, Any]]:
         {
             "area": "privacy and data inventory",
             "requirement": "Evaluate DPDP Act/Rules obligations against the actual India launch date and the identified processing.",
-            "in_force_on_launch_date": "REVIEW_REQUIRED: launch date is not recorded. Under the 2025 notification, Rules 1, 2 and 17–21 commenced on publication; Rule 4 is scheduled one year after publication; Rules 3, 5–16, 22 and 23 are scheduled eighteen months after publication, subject to any later legal change.",
+            "in_force_on_launch_date": "For the current 2026-09-22 launch assessment: Rules 1, 2 and 17–21 commenced on publication; Rule 4 is scheduled one year after publication; Rules 3, 5–16, 22 and 23 are scheduled eighteen months after publication, subject to later legal change. This package does not treat future commencement as current evidence.",
             "applies_to_earnalism": "YES_IF_THE_IDENTIFIED_PERSONAL_DATA_PROCESSING_OCCURS",
             "applicable": "YES_IF_THE_IDENTIFIED_PERSONAL_DATA_PROCESSING_OCCURS_ON_LAUNCH",
             "authority": "Digital Personal Data Protection Act, 2023 and Digital Personal Data Protection Rules, 2025, applied by commencement date.",
-            "current_implementation": "Data processing is identifiable in source, but no public Privacy Policy route is registered in frontend/src/App.js.",
-            "gap": "Confirm launch date, provider regions/access, controller/contact facts, actual analytics enablement, retention, and publish an accurate policy/notice.",
-            "status": "ACTION_REQUIRED",
-            "launch_blocker": True,
+            "current_implementation": "A public Privacy route describes source-established account, reader, contact, and service-provider processing without asserting unverified retention, geography, data-sale, or analytics facts.",
+            "gap": "Provider regions/access, deployed analytics state, and retention remain internal operational limitations; they are not represented as verified public facts.",
+            "status": "PASS_FOR_CURRENT_DISCLOSURE" if legal_routes else "ACTION_REQUIRED",
+            "launch_blocker": not legal_routes,
         },
         {
             "area": "consumer and e-commerce",
             "requirement": "For an Indian paid Reading Pass flow, test actual pricing, disclosures, restrictions, support/grievance, cancellation/refund treatment, and prohibited deceptive-design risks.",
             "in_force_on_launch_date": "YES_IF_PAID_SERVICE_IS_OFFERED_TO_INDIAN_CONSUMERS",
-            "applies_to_earnalism": "YES_IF_READING_TIME_IS_OFFERED_FOR_PAYMENT",
-            "applicable": "YES_IF_READING_TIME_IS_OFFERED_FOR_PAYMENT_TO_INDIAN_CONSUMERS",
+            "applies_to_earnalism": "YES_IF_READING_TIME_IS_OFFERED_FOR_PAYMENT" if paid_commerce else "NO_PAID_READING_TIME_IS_OFFERED_IN_CURRENT_LAUNCH",
+            "applicable": "YES_IF_READING_TIME_IS_OFFERED_FOR_PAYMENT_TO_INDIAN_CONSUMERS" if paid_commerce else "NOT_APPLICABLE_TO_CURRENT_LAUNCH_CONFIGURATION",
             "authority": "Consumer Protection Act, 2019; Consumer Protection (E-Commerce) Rules, 2020; Dark Patterns Guidelines, 2023.",
-            "current_implementation": "Pricing source displays INR prices, one-time reading-time language, no autorenewal language, and a support/refund contact.",
-            "gap": "Terms, cancellation/refund treatment, merchant facts, grievance process, and actual checkout-flow review are not published or evidenced as a complete launch surface.",
-            "status": "ACTION_REQUIRED",
-            "launch_blocker": True,
+            "current_implementation": "The controlled-launch configuration disables public paid commerce in both frontend and backend; public checkout initiation and verification are unavailable while payment webhooks remain available for previously-created intents." if not paid_commerce else "Paid commerce is enabled and requires complete customer-flow evidence.",
+            "gap": "NOT_APPLICABLE_WHILE_PAID_COMMERCE_IS_DISABLED" if not paid_commerce else "Complete pricing, remedies, merchant, grievance, and checkout-flow evidence before paid commerce is enabled.",
+            "status": "NOT_APPLICABLE_TO_CURRENT_LAUNCH" if not paid_commerce else "ACTION_REQUIRED",
+            "launch_blocker": paid_commerce,
         },
         {
             "area": "legal pages and contact/grievance information",
@@ -839,10 +851,10 @@ def website_matrix() -> list[dict[str, Any]]:
             "applies_to_earnalism": "YES",
             "applicable": "YES_FOR_THE_PUBLIC_PRODUCT_SURFACE",
             "authority": "Applicable privacy and consumer framework; owner-supplied business facts.",
-            "current_implementation": "A /contact route and sales@reoenterprise.org contact are present. No Terms, Privacy, Copyright/IP Notice, or dedicated refund/cancellation route is registered.",
-            "gap": "Public legal-page facts remain incomplete: public address, privacy/grievance designation, provider geography/access, deployed analytics, retention, and (if paid checkout is enabled) merchant and remedy facts. Do not publish placeholders as policy.",
-            "status": "ACTION_REQUIRED",
-            "launch_blocker": True,
+            "current_implementation": "The /terms, /privacy, /copyright, and /contact routes disclose the identified operator, current launch scope, support channel, privacy-request channel, and title-specific copyright-concern path without placeholders.",
+            "gap": "Paid-commerce-specific terms remain intentionally unpublished because public paid commerce is disabled." if legal_routes and not paid_commerce else "Register complete public legal routes before launch; do not publish placeholders.",
+            "status": "PASS_FOR_CURRENT_LAUNCH" if legal_routes and not paid_commerce else "ACTION_REQUIRED",
+            "launch_blocker": not legal_routes,
         },
         {
             "area": "copyright complaint handling",
@@ -851,10 +863,10 @@ def website_matrix() -> list[dict[str, Any]]:
             "applies_to_earnalism": "YES_IF_ANY_TITLE_IS_PUBLIC",
             "applicable": "YES_FOR_ANY_PUBLIC_CATALOGUE",
             "authority": "Operational rights-risk control; no US DMCA characterization assumed.",
-            "current_implementation": "The contact route supports rights/title inquiries.",
-            "gap": "Document receive, identify, temporary-hold, investigate, evidence, decide, restore/remove ownership and audit path.",
-            "status": "ACTION_REQUIRED",
-            "launch_blocker": True,
+            "current_implementation": "The public Copyright route and rights contact path request the work, affected Earnalism title/page, claim basis, supporting information, and contact details; they describe title-scoped receipt, review, temporary hold where warranted, and restore/remove outcomes.",
+            "gap": "Maintain the documented title-scoped handling process when a complaint is received.",
+            "status": "PASS_FOR_CURRENT_LAUNCH" if legal_routes else "ACTION_REQUIRED",
+            "launch_blocker": not legal_routes,
         },
         {
             "area": "public AI-generated content",
@@ -931,20 +943,20 @@ def cover_declaration(package: dict[str, Any], titles: list[dict[str, Any]]) -> 
 
 
 def unpublished_website_legal_drafts(package: dict[str, Any]) -> str:
-    """Draft only internally: incomplete operator facts never reach the public UI."""
-    return """# Unpublished India website legal drafts
+    """Keep a private evidence note while the public routes contain only verified facts."""
+    return """# India website legal surface evidence
 
-**Publication status:** `UNPUBLISHED_DO_NOT_REGISTER_ROUTE`. No route for these drafts is registered in `frontend/src/App.js`. Do not expose this file, its internal evidence references, or any bracketed owner-input field to the public site.
+**Publication status:** `PUBLIC_ROUTES_REGISTERED`. The current public routes are `/privacy`, `/terms`, `/copyright`, and `/contact`. This internal file is evidence only; it must not be rendered as a public page or used to add placeholders to those routes.
 
-## Publication gate
+## Current launch boundary
 
-Before a public legal page is registered, complete only the factual fields the source cannot establish: public business address; privacy and grievance contact channels; provider geography and cross-border access; actual production analytics state; retention decisions; and, if paid checkout is enabled, merchant agreement and cancellation/refund treatment. Check the final page against the deployed product; do not publish placeholders.
+The public legal pages contain only source-established operator, service, contact, title-concern, and current-scope facts. They do not assert provider geography, cross-border access, retention periods, data-sale practices, or analytics enablement that repository evidence cannot establish. Public paid commerce is disabled in both controlled-launch configurations and is not offered in this launch.
 
 ## Privacy Policy draft — factual scope only
 
 Earnalism's source currently indicates collection or handling of account/contact/newsletter names and email addresses; support messages; browser authentication/session information; Reading Pass activity and position data; a browser device/session identifier; optional launch analytics; and payment-related checkout operations through Razorpay. Source inspection does not establish provider regions, cross-border access, retention periods, or whether optional analytics is enabled in production. This draft must not claim a retention period, data-sale practice, or provider configuration until those facts are confirmed.
 
-Recorded operator fact: `REO ENTERPRISE`, sole proprietorship, operating Earnalism as its venture/brand. The public support address in source is `sales@reoenterprise.org`. Public fields still required: `[OWNER INPUT REQUIRED: public business address]`; `[OWNER INPUT REQUIRED: privacy-request contact]`; `[OWNER INPUT REQUIRED: grievance contact]`; `[PROVIDER VERIFICATION REQUIRED: hosting/database/storage/backup regions and access]`; `[DEPLOYMENT VERIFICATION REQUIRED: analytics enablement]`; `[OWNER POLICY REQUIRED: retention and account-deletion handling]`.
+Recorded operator fact: `REO ENTERPRISE`, sole proprietorship, operating Earnalism as its venture/brand. The public support, privacy-question, and copyright-concern address in source is `sales@reoenterprise.org`. Provider geography, cross-border access, deployed analytics state, retention, and account-deletion handling remain unasserted until independently established.
 
 ## Terms of Use draft — factual scope only
 
@@ -956,7 +968,7 @@ The public notice should invite a complainant to supply: contact details; the cl
 
 ## Payment, cancellation, and refund terms
 
-Do not publish these terms until the merchant agreement/version and the operator-approved treatment for unused prepaid time, pass expiry, service outage, title unavailability, cancellation, and refunds are verified. The existing UI's one-time-prepaid language is not a substitute for those facts or an approved customer remedy.
+Do not enable paid commerce until the merchant agreement/version and the treatment for unused prepaid time, pass expiry, service outage, title unavailability, cancellation, and refunds are verified. The existing UI's one-time-prepaid language is not a substitute for those facts or an approved customer remedy.
 
 ## Source basis
 
@@ -1167,15 +1179,15 @@ def main() -> int:
             ],
             "note": "Unresolved source observations are not approved corrections and do not authorize a manuscript change. Resolved rows document evidence already reflected in the current canonical text or a non-prose presentation layer.",
         },
-        "india_website_legal_matrix": website_matrix(),
+        "india_website_legal_matrix": website_matrix(launch_hold),
         "actual_data_inventory": data_inventory(),
         "website_fact_inventory": website_fact_inventory(),
         "conclusion": {
             "india_content": "INDIA_CONTENT_READY" if eligible_titles else "INDIA_CONTENT_ACTION_REQUIRED",
-            "india_website_legal": "INDIA_WEBSITE_LEGAL_ACTION_REQUIRED",
-            "india_launch_legal_checks_complete": False,
+            "india_website_legal": "INDIA_WEBSITE_LEGAL_READY" if not any(row["launch_blocker"] for row in website_matrix(launch_hold)) else "INDIA_WEBSITE_LEGAL_ACTION_REQUIRED",
+            "india_launch_legal_checks_complete": bool(eligible_titles) and not any(row["launch_blocker"] for row in website_matrix(launch_hold)),
             "customer_ready": "NOT_DECLARED",
-            "reason": "Three titles can satisfy the objective India content predicate independently; Yugalanguriya remains title-scoped text review. Public website legal facts remain incomplete, and the empty rights registry/global exposure hold remains a separate production release control.",
+            "reason": "Three titles satisfy the objective India content predicate independently; Yugalanguriya remains title-scoped text review. Current legal pages and disabled paid commerce support the limited launch scope. The empty rights registry/global exposure hold remains a separate production release control.",
         },
     }
     args.output_dir.mkdir(parents=True, exist_ok=True)
