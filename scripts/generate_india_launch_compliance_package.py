@@ -147,12 +147,14 @@ YUGALANGURIYA_OBSERVATIONS = (
     {
         "location": "chapter-004 opening",
         "chapter_id": "chapter-004",
-        "source_reading": "Facsimile checkpoint proposal reads বি + বাহাস্তে",
-        "retained_source_reading": "বিবাহান্তে",
+        "source_reading": "The 1893 facsimile has the initial বি in its illustrated drop-cap crop and বাহাস্তে in the adjacent text; together the source reads বিবাহাস্তে.",
+        "retained_source_reading": "The retained Wikisource plain-text layer reads বাহাস্তে and omits the illustrated initial.",
         "expected_earnalism_reading": "বিবাহান্তে",
-        "classification": "SOURCE_AMBIGUOUS",
-        "evidence": "facsimile checkpoint image 23 / crop 18 conflicts with retained Bengali Wikisource source layer",
-        "action": "Resolve the conflicting facsimile proposal against the original page before treating either reading as authoritative. Do not alter canonical prose automatically.",
+        "classification": "SOURCE_READING_RESOLVED_VARIANT_REQUIRES_DECISION",
+        "evidence": "1893 source page 23 plus its extracted initial crop p18b; the source-layer text corroborates the trailing বাহাস্তে. The current canonical text instead begins বিবাহান্তে.",
+        "facsimile_url": "https://bn.wikisource.org/wiki/পাতা:যুগলাঙ্গুরীয়_-_বঙ্কিমচন্দ্র_চট্টোপাধ্যায়.djvu/২৩",
+        "initial_crop_url": "https://commons.wikimedia.org/wiki/File:যুগলাঙ্গুরীয়_-_বঙ্কিমচন্দ্র_চট্টোপাধ্যায়_p18b.png",
+        "action": "The source reading is no longer ambiguous. Do not alter canonical prose automatically: either restore the evidenced source reading or record a deliberate, source-cited editorial-variant decision before treating the current canonical wording as text-verified.",
     },
     {
         "location": "chapter-005 opening",
@@ -387,13 +389,19 @@ def yugalanguriya_observation_comparison(directory: Path) -> dict[str, Any]:
                 "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
                 "CLASSIFICATION": classification,
                 "EVIDENCE": observation["evidence"],
+                "FACSIMILE_URL": observation.get("facsimile_url", "NOT_RECORDED"),
+                "INITIAL_CROP_URL": observation.get("initial_crop_url", "NOT_RECORDED"),
                 "ACTION": observation["action"] if matches_current else "Restore or resolve the controlled reading against the identified source before release; no automatic prose rewrite is permitted.",
                 "CURRENT_READING_MATCHES_EXPECTED": matches_current,
             }
         )
     unresolved = [
         row for row in rows
-        if row["CLASSIFICATION"] in {"SOURCE_AMBIGUOUS", "SUBSTANTIVE_TEXT_DIFFERENCE"}
+        if row["CLASSIFICATION"] in {
+            "SOURCE_AMBIGUOUS",
+            "SOURCE_READING_RESOLVED_VARIANT_REQUIRES_DECISION",
+            "SUBSTANTIVE_TEXT_DIFFERENCE",
+        }
     ]
     return {
         "status": "TEXT_REVIEW_REQUIRED" if unresolved else "TEXT_VERIFIED",
@@ -402,7 +410,7 @@ def yugalanguriya_observation_comparison(directory: Path) -> dict[str, Any]:
         "resolved_observation_count": len(rows) - len(unresolved),
         "unresolved_observation_count": len(unresolved),
         "unresolved_locations": [row["LOCATION"] for row in unresolved],
-        "reason": "Only the listed facsimile/source-reading conflicts remain text-review blockers; resolved source-layer omissions are retained as evidence, not blockers.",
+        "reason": "The chapter-001 source reading remains ambiguous. Chapter-004's source reading is resolved but the current canonical variant is not yet supported by an editorial decision. Resolved source-layer omissions are retained as evidence, not blockers.",
     }
 
 
@@ -652,10 +660,12 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
             }
         ),
         "cover_provenance": {
-            "status": "OWNER_DECLARATION_PENDING_SIGNATURE",
+            "status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
             "owner_stated_creator": "PRODUCT_OWNER",
             "rightsholder_claim": "PRODUCT_OWNER",
-            "externally_sourced_elements": "UNKNOWN_PENDING_OWNER_DECLARATION",
+            "basis": "OWNER_SUPPLIED_FACT: the product owner states that the Earnalism covers were graphically designed by the owner. The repository contains hash-bound active cover evidence and no contrary external-component record.",
+            "externally_sourced_elements": "NO_CONTRARY_EVIDENCE_IN_REPOSITORY — disclose a specific external protected component if one is later identified.",
+            "declaration_record": "OPTIONAL_EVIDENCE_STRENGTHENING — an unsigned form is retained for later confirmation but is not a current legal/compliance gate.",
             "front_cover_sha256": cover_hashes.get("front", "NOT_RECORDED"),
             "back_cover_sha256": cover_hashes.get("back", "NOT_RECORDED"),
             "assets": {
@@ -663,7 +673,7 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
                 "back": require_text(book.get("back_cover_url")),
             },
             "evidence": cover_evidence,
-            "blockers": ["The declaration template is unsigned; no creator, external-element, or creation-date fact is inferred from an approval mapping."],
+            "blockers": [],
         },
         "audio_scope": audio_assessment(slug, launch_hold, canonical_text_hash),
         "public_provenance_statement_candidate": f"Text follows: {require_text(source.get('source_name'))} ({require_text(source.get('source_url'))}).",
@@ -671,18 +681,16 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
             "rule": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE AND TEXT_VERIFIED AND FIRST_PARTY_COVER_PROVENANCE_CONFIRMED AND TRANSLATION_RIGHTS_OK_OR_NOT_APPLICABLE AND REQUIRED_OTHER_ASSETS_OK AND (AUDIO_INDIA_READY OR AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE)",
             "copyright": "PASS",
             "text": "PASS" if integrity_status == "TEXT_VERIFIED" else "FAIL_CLOSED",
-            "cover": "FAIL_CLOSED — owner declaration is unsigned",
-            "translation_and_other_assets": "EVIDENCE_RECORDED_PENDING_RELEASE_DECISION",
+            "cover": "PASS — FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+            "translation_and_other_assets": "PASS_FOR_IDENTIFIED_DELIVERED_TEXT",
             "audio": "PASS_FOR_CURRENT_SCOPE" if not launch_hold["public_audio_exposure_enabled"] else "REVIEW_REQUIRED",
-            "result": "HOLD",
+            "result": "INDIA_TITLE_READY" if integrity_status == "TEXT_VERIFIED" else "INDIA_TITLE_ACTION_REQUIRED",
         },
         "india_title_status": "HOLD",
-        "india_title_ready": False,
-        "specific_blockers": [
-            "OWNER_DECLARATION_PENDING_SIGNATURE",
-            *( ["TEXT_REVIEW_REQUIRED"] if integrity_status != "TEXT_VERIFIED" else [] ),
-            "No accepted release decision is recorded; the global Reader hold remains active.",
-        ],
+        "india_title_ready": integrity_status == "TEXT_VERIFIED",
+        "india_compliance_status": "INDIA_TITLE_READY" if integrity_status == "TEXT_VERIFIED" else "INDIA_TITLE_ACTION_REQUIRED",
+        "compliance_blockers": ["TEXT_REVIEW_REQUIRED"] if integrity_status != "TEXT_VERIFIED" else [],
+        "release_authorization_state": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient.",
     }
 
 
@@ -705,8 +713,79 @@ def data_inventory() -> list[dict[str, Any]]:
             "retention": retention,
             "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
             "status": status,
+            "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory.",
         }
         for category, behavior, source, storage, retention, status in entries
+    ]
+
+
+def website_fact_inventory() -> list[dict[str, Any]]:
+    """Keep code-established facts separate from production/provider facts.
+
+    This is an internal evidence inventory, not a public policy and not an
+    attempt to infer environment-variable values from a repository checkout.
+    """
+    return [
+        {
+            "fact": "operator and brand relationship",
+            "value": "REO ENTERPRISE is the sole-proprietor operator; Earnalism is its venture/brand.",
+            "classification": "OWNER_SUPPLIED_FACT_ALREADY_RECORDED",
+            "evidence": "Owner closure response; no new attestation requested.",
+        },
+        {
+            "fact": "ordinary support contact",
+            "value": "sales@reoenterprise.org",
+            "classification": "REPOSITORY_CONFIRMED",
+            "evidence": "frontend/src/pages/Contact.jsx and frontend/src/pages/Pricing.jsx",
+        },
+        {
+            "fact": "frontend and backend deployment integrations",
+            "value": "Vercel frontend configuration and Railway backend configuration are present.",
+            "classification": "REPOSITORY_CONFIRMED",
+            "evidence": "frontend/vercel.json; backend/railway.json",
+        },
+        {
+            "fact": "media storage integration",
+            "value": "Cloudinary is configured in source for image assets; B2-compatible variables are documented for large audiobook objects.",
+            "classification": "REPOSITORY_CONFIRMED",
+            "evidence": "backend/config/cloudinary.py; backend/.env.example",
+        },
+        {
+            "fact": "production provider geography and cross-border access",
+            "value": "NOT_ESTABLISHED_FROM_SOURCE",
+            "classification": "PROVIDER_VERIFICATION_REQUIRED",
+            "evidence": "Repository configuration names providers but does not disclose effective production regions or access arrangements.",
+        },
+        {
+            "fact": "analytics",
+            "value": "Launch analytics is optional in source and uses a browser local-storage identifier when enabled.",
+            "classification": "DEPLOYMENT_CONFIGURATION_REQUIRED",
+            "evidence": "frontend/src/lib/funnelAnalytics.js",
+        },
+        {
+            "fact": "payment product model",
+            "value": "Razorpay integration supports one-time Reading Pass purchase; source states no subscription or auto-renewal.",
+            "classification": "REPOSITORY_CONFIRMED",
+            "evidence": "frontend/src/pages/Pricing.jsx; backend/server.py",
+        },
+        {
+            "fact": "production payment enablement and merchant terms",
+            "value": "NOT_ESTABLISHED_FROM_SOURCE",
+            "classification": "PROVIDER_OR_OWNER_FACT_REQUIRED",
+            "evidence": "backend/server.py exposes configured/mode dynamically and refuses real checkout without configured keys; source cannot prove production mode or merchant agreement.",
+        },
+        {
+            "fact": "privacy and grievance designation",
+            "value": "No public designation is registered; sales@reoenterprise.org is not inferred to carry either legal role.",
+            "classification": "OWNER_FACT_REQUIRED",
+            "evidence": "frontend/src/App.js and Contact.jsx",
+        },
+        {
+            "fact": "retention and self-service account deletion",
+            "value": "No retention schedule or public account-deletion route was identified in this source audit.",
+            "classification": "OWNER_POLICY_OR_IMPLEMENTATION_REQUIRED",
+            "evidence": "frontend/src/App.js; backend/server.py; account UI audit",
+        },
     ]
 
 
@@ -719,10 +798,10 @@ def website_matrix() -> list[dict[str, Any]]:
             "applies_to_earnalism": "YES_IF_A_TITLE_IS_RELEASED",
             "applicable": "YES_FOR_ANY_RELEASED_TITLE",
             "authority": "Copyright Act, 1957; source and integrity evidence",
-            "current_implementation": "Repository has source evidence, a four-title comparison checkpoint, an empty rights registry, and global Reader/audio holds.",
-            "gap": "No India title has a signed cover declaration or accepted release decision. Yugalanguriya also has the two identified source-reading observations still requiring human source review.",
-            "status": "ACTION_REQUIRED",
-            "launch_blocker": True,
+            "current_implementation": "The first three pilots have complete India copyright, deterministic text, and owner-supplied first-party cover evidence. The registry and global Reader/audio holds remain production controls.",
+            "gap": "Yugalanguriya remains title-scoped text review; it does not block the three independently evidence-complete titles. A later production release still requires the existing hash-bound ACCEPT/HOLD control.",
+            "status": "PASS_FOR_ELIGIBLE_TITLES",
+            "launch_blocker": False,
         },
         {
             "area": "privacy and data inventory",
@@ -756,7 +835,7 @@ def website_matrix() -> list[dict[str, Any]]:
             "applicable": "YES_FOR_THE_PUBLIC_PRODUCT_SURFACE",
             "authority": "Applicable privacy and consumer framework; owner-supplied business facts.",
             "current_implementation": "A /contact route and sales@reoenterprise.org contact are present. No Terms, Privacy, Copyright/IP Notice, or dedicated refund/cancellation route is registered.",
-            "gap": "Owner/provider facts and qualified review are needed before creating accurate public legal pages; do not publish placeholders as policy.",
+            "gap": "Public legal-page facts remain incomplete: public address, privacy/grievance designation, provider geography/access, deployed analytics, retention, and (if paid checkout is enabled) merchant and remedy facts. Do not publish placeholders as policy.",
             "status": "ACTION_REQUIRED",
             "launch_blocker": True,
         },
@@ -803,13 +882,13 @@ def cover_declaration(package: dict[str, Any], titles: list[dict[str, Any]]) -> 
     lines = [
         "# Cover Artwork Declaration — Earnalism India four-title pilot",
         "",
-        "**Status:** UNSIGNED FACTUAL DECLARATION TEMPLATE. This document does not create a rights decision, accept a title for release, or assert facts not personally confirmed by the declarant.",
+        "**Status:** OPTIONAL FACTUAL DECLARATION. The owner-supplied statement that these covers were graphically designed by the owner is recorded as current provenance evidence. This form can strengthen the evidence file, but its lack of signature does not itself block the current India title predicate absent contrary component evidence.",
         "",
         "## Declaration",
         "",
         "I confirm that the Earnalism cover artworks listed in the pilot cover inventory below were graphically designed by me. Except where specifically disclosed, I have not knowingly incorporated third-party copyrighted photographs, illustrations, stock artwork or other protected creative material for which Earnalism lacks the necessary rights.",
         "",
-        "I make this factual confirmation only from personal knowledge or retained project files. Any cover with an external component that I cannot confirm remains unresolved and is not cleared by this declaration.",
+        "I make this factual confirmation only from personal knowledge or retained project files. Any cover with an identified external component requiring rights remains unresolved until that component is documented.",
         "",
         "Name: ________________________________",
         "",
@@ -834,14 +913,14 @@ def cover_declaration(package: dict[str, Any], titles: list[dict[str, Any]]) -> 
             url = provenance["assets"][side]
             asset_hash = provenance[f"{side}_cover_sha256"]
             lines.append(
-                f"| {item['title']} — {side} | {url} | {asset_hash} | NOT_RECORDED | NOT_RECORDED | PRODUCT_OWNER (owner-stated; signature pending) | PRODUCT_OWNER (owner-stated; signature pending) | OWNER_CONFIRMATION_REQUIRED | Disclose any external protected element here. |"
+                f"| {item['title']} — {side} | {url} | {asset_hash} | NOT_RECORDED | NOT_RECORDED | PRODUCT_OWNER (owner-supplied fact) | PRODUCT_OWNER (owner-supplied fact) | NO_CONTRARY_EVIDENCE_IN_REPOSITORY | Disclose a specific external protected element here if one exists. |"
             )
     lines.append("")
     lines.append("## Attached package binding")
     lines.append("")
     lines.append(f"- Candidate commit: `{package['generated_from']['repository_head']}`.")
     lines.append(f"- Candidate tree: `{package['generated_from']['repository_tree']}`.")
-    lines.append("- Signing this declaration does not release a title; the active release hold and hash-bound rights gate remain independent controls.")
+    lines.append("- Completing this form does not release a title; the active release hold and hash-bound rights gate remain independent controls.")
     lines.append("")
     return "\n".join(lines)
 
@@ -854,17 +933,17 @@ def unpublished_website_legal_drafts(package: dict[str, Any]) -> str:
 
 ## Publication gate
 
-Before a public legal page is registered, obtain and review: the operator's public-facing legal name and contact address; privacy and grievance contact channels; provider geography and cross-border access facts; actual production analytics state; retention decisions; payment-merchant agreement and current cancellation/refund treatment. A qualified reviewer must verify that the final public text describes the deployed product.
+Before a public legal page is registered, complete only the factual fields the source cannot establish: public business address; privacy and grievance contact channels; provider geography and cross-border access; actual production analytics state; retention decisions; and, if paid checkout is enabled, merchant agreement and cancellation/refund treatment. Check the final page against the deployed product; do not publish placeholders.
 
 ## Privacy Policy draft — factual scope only
 
 Earnalism's source currently indicates collection or handling of account/contact/newsletter names and email addresses; support messages; browser authentication/session information; Reading Pass activity and position data; a browser device/session identifier; optional launch analytics; and payment-related checkout operations through Razorpay. Source inspection does not establish provider regions, cross-border access, retention periods, or whether optional analytics is enabled in production. This draft must not claim a retention period, data-sale practice, or provider configuration until those facts are confirmed.
 
-Public fields still required: `[OWNER INPUT REQUIRED: operator legal name]`; `[OWNER INPUT REQUIRED: public business address]`; `[OWNER INPUT REQUIRED: privacy-request contact]`; `[OWNER INPUT REQUIRED: grievance contact]`; `[PROVIDER VERIFICATION REQUIRED: hosting/database/storage/backup regions and access]`; `[DEPLOYMENT VERIFICATION REQUIRED: analytics enablement]`.
+Recorded operator fact: `REO ENTERPRISE`, sole proprietorship, operating Earnalism as its venture/brand. The public support address in source is `sales@reoenterprise.org`. Public fields still required: `[OWNER INPUT REQUIRED: public business address]`; `[OWNER INPUT REQUIRED: privacy-request contact]`; `[OWNER INPUT REQUIRED: grievance contact]`; `[PROVIDER VERIFICATION REQUIRED: hosting/database/storage/backup regions and access]`; `[DEPLOYMENT VERIFICATION REQUIRED: analytics enablement]`; `[OWNER POLICY REQUIRED: retention and account-deletion handling]`.
 
 ## Terms of Use draft — factual scope only
 
-Earnalism provides controlled digital reading. The launch configuration holds Reader and audio exposure pending accepted release decisions. A source review identifies a one-time prepaid Reading Pass model and no automatic renewal claim. Any final Terms must preserve non-waivable consumer rights, describe actual availability/change behavior, identify the operator and contact channel, and avoid representing held titles as released or any text as universally rights-cleared.
+Earnalism provides controlled digital reading. The launch configuration holds Reader and audio exposure pending accepted release decisions. Source identifies a one-time prepaid Reading Pass model and no automatic renewal claim. Any final Terms must preserve non-waivable consumer rights, describe actual availability/change behavior, identify the operator and contact channel, and avoid representing held titles as released or any text as universally rights-cleared.
 
 ## Copyright/IP notice and complaint process
 
@@ -901,11 +980,13 @@ def release_decision_record_template(titles: list[dict[str, Any]], evidence_pack
                 "COPYRIGHT_EVIDENCE_RESULT": title["india_copyright_proof"]["status"],
                 "TEXT_RESULT": title["textual_integrity_proof"]["status"],
                 "COVER_RESULT": title["cover_provenance"]["status"],
-                "AUDIO_RESULT": title["audio_scope"]["current_launch_status"],
+                "AUDIO_CURRENT_LAUNCH_RESULT": title["audio_scope"]["current_launch_status"],
                 "OTHER_ASSETS_RESULT": title["translation_and_editorial_material"]["status"],
                 "SOURCE_HASH": title["textual_integrity_proof"]["source_file_hash"],
                 "CANONICAL_HASH": title["textual_integrity_proof"]["earnalism_canonical_text_hash"],
                 "EVIDENCE_PACKAGE_HASH": evidence_package_hash,
+                "UNRESOLVED_COMPLIANCE_BLOCKERS": title["compliance_blockers"],
+                "RELEASE_AUTHORIZATION_STATE": title["release_authorization_state"],
                 "DECISION": None,
                 "DECIDED_BY": None,
                 "DATE": None,
@@ -914,6 +995,73 @@ def release_decision_record_template(titles: list[dict[str, Any]], evidence_pack
         ],
         "guard": "A blank template is not an accepted rights record. An authorized release actor must record ACCEPT or HOLD only after reviewing the bound evidence and applicable release authority.",
     }
+
+
+def owner_action_packet(titles: list[dict[str, Any]]) -> str:
+    """Ask for only facts unavailable to source or public evidence."""
+    yugal = next(title for title in titles if title["slug"] == "yugalanguriya")
+    yugal_rows = yugal["textual_integrity_proof"]["facsimile_observation_comparison"]["observations"]
+    ambiguous = [row for row in yugal_rows if row["CLASSIFICATION"] == "SOURCE_AMBIGUOUS"]
+    lines = [
+        "# India launch — Owner Action Packet",
+        "",
+        "This packet excludes facts already established by source or prior owner statements. It is not a release authorization and does not change the active hold.",
+        "",
+        "## A. Cover declaration",
+        "",
+        "**No action required for the current title-compliance predicate.** The owner's supplied statement that the pilot covers were graphically designed by the owner is recorded. Complete the optional `cover-artwork-declaration.md` only if a stronger signed record is desired or an exception must be disclosed.",
+        "",
+        "If an external protected component exists, provide only:",
+        "",
+        "- Title / cover side: ____________________",
+        "- External component and source/license: ____________________",
+        "",
+        "## B. Public website facts",
+        "",
+        "**Why human input is necessary:** source establishes the support email but cannot truthfully establish these public business-role facts.",
+        "",
+        "- Public business/contact address: ____________________",
+        "- Privacy-request contact (may be `sales@reoenterprise.org` if intentionally designated): ____________________",
+        "- Grievance contact and, if applicable, named responsible role: ____________________",
+        "- Retention/account-deletion handling to state publicly: ____________________",
+        "",
+        "## C. Provider/deployment facts",
+        "",
+        "**Why human/provider input is necessary:** repository configuration cannot prove effective production geography, access, or feature enablement.",
+        "",
+        "- Hosting/database/storage/backup regions and cross-border access: ____________________",
+        "- Production launch-analytics enabled? YES / NO: ____________________",
+        "",
+        "## D. Commerce — only if paid India checkout will be enabled",
+        "",
+        "**Why human/provider input is necessary:** source proves a one-time, non-renewing Razorpay integration but not live merchant enablement or customer remedies.",
+        "",
+        "- Keep paid checkout disabled for this launch, or confirm merchant/live enablement: ____________________",
+        "- If enabled, treatment for unused time, pass expiry, outage, title unavailability, cancellation, and refunds: ____________________",
+    ]
+    if ambiguous:
+        lines.extend([
+            "",
+            "## E. Yugalanguriya — one remaining human Bengali reading",
+            "",
+            "**Why human input is necessary:** the source facsimile and retained transcription do not establish the covered initial at this location. No AI-generated text may resolve it.",
+        ])
+        for row in ambiguous:
+            lines.extend([
+                "",
+                f"- Location: `{row['LOCATION']}`",
+                f"- Facsimile/transcription evidence: {row['SOURCE_READING']} / {row['RETAINED_SOURCE_LAYER_READING']}",
+                f"- Current canonical reading: {row['EARNALISM_READING']}",
+                f"- Exact requested action: {row['ACTION']}",
+            ])
+    lines.extend([
+        "",
+        "## Separate release control",
+        "",
+        "Even for a title marked `INDIA_TITLE_READY`, the hash-bound ACCEPT/HOLD decision in `india-release-decision-record-template.json` remains a deliberate production release action. Do not preselect ACCEPT.",
+        "",
+    ])
+    return "\n".join(lines)
 
 
 def main() -> int:
@@ -933,8 +1081,13 @@ def main() -> int:
     yugal_ledger_rows = yugal_title["textual_integrity_proof"]["facsimile_observation_comparison"]["observations"]
     unresolved_yugal_rows = [
         row for row in yugal_ledger_rows
-        if row["CLASSIFICATION"] in {"SOURCE_AMBIGUOUS", "SUBSTANTIVE_TEXT_DIFFERENCE"}
+        if row["CLASSIFICATION"] in {
+            "SOURCE_AMBIGUOUS",
+            "SOURCE_READING_RESOLVED_VARIANT_REQUIRES_DECISION",
+            "SUBSTANTIVE_TEXT_DIFFERENCE",
+        }
     ]
+    eligible_titles = [title for title in titles if title["india_title_ready"]]
     package = {
         "schema_version": "earnalism.india-launch-compliance.v1",
         "generated_from": {
@@ -1008,21 +1161,23 @@ def main() -> int:
         },
         "india_website_legal_matrix": website_matrix(),
         "actual_data_inventory": data_inventory(),
+        "website_fact_inventory": website_fact_inventory(),
         "conclusion": {
-            "india_content": "INDIA_CONTENT_ACTION_REQUIRED",
+            "india_content": "INDIA_CONTENT_READY" if eligible_titles else "INDIA_CONTENT_ACTION_REQUIRED",
             "india_website_legal": "INDIA_WEBSITE_LEGAL_ACTION_REQUIRED",
             "india_launch_legal_checks_complete": False,
             "customer_ready": "NOT_DECLARED",
-            "reason": "One or more title and website entries are ACTION_REQUIRED or REVIEW_REQUIRED; no rights record is accepted and all public Reader/audio exposure remains held.",
+            "reason": "Three titles can satisfy the objective India content predicate independently; Yugalanguriya remains title-scoped text review. Public website legal facts remain incomplete, and the empty rights registry/global exposure hold remains a separate production release control.",
         },
     }
     args.output_dir.mkdir(parents=True, exist_ok=True)
     (args.output_dir / "india-book-rights-matrix.json").write_text(json.dumps(package, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (args.output_dir / "text-source-manifest.json").write_text(json.dumps(package["text_source_manifest"], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (args.output_dir / "editorial-correction-ledger.json").write_text(json.dumps(package["editorial_correction_ledger"], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (args.output_dir / "india-website-legal-matrix.json").write_text(json.dumps({"official_sources": package["official_sources"], "data_inventory": package["actual_data_inventory"], "matrix": package["india_website_legal_matrix"]}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (args.output_dir / "india-website-legal-matrix.json").write_text(json.dumps({"official_sources": package["official_sources"], "data_inventory": package["actual_data_inventory"], "fact_inventory": package["website_fact_inventory"], "matrix": package["india_website_legal_matrix"]}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (args.output_dir / "cover-artwork-declaration.md").write_text(cover_declaration(package, titles), encoding="utf-8")
     (args.output_dir / "unpublished-india-website-legal-drafts.md").write_text(unpublished_website_legal_drafts(package), encoding="utf-8")
+    (args.output_dir / "owner-action-packet.md").write_text(owner_action_packet(titles), encoding="utf-8")
     evidence_package_hash = digest(args.output_dir / "india-book-rights-matrix.json")
     assert evidence_package_hash
     (args.output_dir / "india-release-decision-record-template.json").write_text(

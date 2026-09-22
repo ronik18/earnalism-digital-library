@@ -43,8 +43,15 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
         self.assertEqual([row["slug"] for row in rows], list(MODULE.PILOT_SLUGS))
         self.assertTrue(all(row["country_scope"] == ["IN"] for row in rows))
         self.assertTrue(all(row["india_title_status"] == "HOLD" for row in rows))
-        self.assertTrue(all(not row["india_title_ready"] for row in rows))
-        self.assertTrue(all(row["india_title_predicate"]["result"] == "HOLD" for row in rows))
+        self.assertEqual(
+            [row["india_compliance_status"] for row in rows],
+            ["INDIA_TITLE_READY", "INDIA_TITLE_READY", "INDIA_TITLE_READY", "INDIA_TITLE_ACTION_REQUIRED"],
+        )
+        self.assertEqual([row["india_title_ready"] for row in rows], [True, True, True, False])
+        self.assertEqual(
+            [row["india_title_predicate"]["result"] for row in rows],
+            ["INDIA_TITLE_READY", "INDIA_TITLE_READY", "INDIA_TITLE_READY", "INDIA_TITLE_ACTION_REQUIRED"],
+        )
         self.assertEqual(package["scope"]["audio"], "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE")
         self.assertEqual(package["scope"]["customer_ready"], "NOT_DECLARED")
 
@@ -59,7 +66,7 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
             self.assertRegex(row["textual_integrity_proof"]["earnalism_canonical_text_hash"], r"^[0-9a-f]{64}$")
             self.assertGreater(len(row["textual_integrity_proof"]["canonical_chapter_hashes"]), 0)
             self.assertNotEqual(row["textual_integrity_proof"]["source_identifier"], "NOT_RECORDED")
-            self.assertEqual(row["cover_provenance"]["status"], "OWNER_DECLARATION_PENDING_SIGNATURE")
+            self.assertEqual(row["cover_provenance"]["status"], "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED")
             self.assertTrue(row["textual_integrity_proof"]["current_raw_source_path"].endswith("raw/source.txt"))
         self.assertEqual(rows["a-ghost-story"]["textual_integrity_proof"]["status"], "TEXT_VERIFIED")
         self.assertEqual(rows["the-tell-tale-heart"]["textual_integrity_proof"]["status"], "TEXT_VERIFIED")
@@ -94,17 +101,17 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
         self.assertTrue(matrix["consumer and e-commerce"]["launch_blocker"])
         self.assertFalse(package["conclusion"]["india_launch_legal_checks_complete"])
 
-    def test_unsigned_declaration_lists_pilot_assets_without_claiming_confirmation(self) -> None:
+    def test_optional_declaration_preserves_owner_fact_without_creating_a_release(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             output = Path(temporary)
-            self.build(output)
+            package = self.build(output)
             declaration = (output / "cover-artwork-declaration.md").read_text(encoding="utf-8")
-        self.assertIn("UNSIGNED FACTUAL DECLARATION TEMPLATE", declaration)
+        self.assertIn("OPTIONAL FACTUAL DECLARATION", declaration)
         self.assertIn("Signature/Confirmation: ____________________________", declaration)
         self.assertIn("were graphically designed by me", declaration)
-        self.assertIn("PRODUCT_OWNER (owner-stated; signature pending)", declaration)
-        self.assertIn("OWNER_CONFIRMATION_REQUIRED", declaration)
-        self.assertNotIn("FIRST_PARTY_COVER_PROVENANCE_CONFIRMED", declaration)
+        self.assertIn("PRODUCT_OWNER (owner-supplied fact)", declaration)
+        self.assertIn("NO_CONTRARY_EVIDENCE_IN_REPOSITORY", declaration)
+        self.assertEqual(package["india_book_rights_matrix"][0]["cover_provenance"]["status"], "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED")
         self.assertEqual(declaration.count("| A Ghost Story — front |"), 1)
         self.assertNotIn("| Dracula — front |", declaration)
 
@@ -115,7 +122,7 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
             drafts = (output / "unpublished-india-website-legal-drafts.md").read_text(encoding="utf-8")
         self.assertIn("UNPUBLISHED_DO_NOT_REGISTER_ROUTE", drafts)
         self.assertIn("RECEIVED` → `UNDER_REVIEW`", drafts)
-        self.assertIn("[OWNER INPUT REQUIRED: operator legal name]", drafts)
+        self.assertIn("REO ENTERPRISE", drafts)
         self.assertNotIn("/privacy", (ROOT / "frontend" / "src" / "App.js").read_text(encoding="utf-8").lower())
 
     def test_decision_record_is_hash_bound_and_keeps_human_decision_fields_blank(self) -> None:
@@ -129,6 +136,19 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
         self.assertEqual(len(record["records"]), 4)
         self.assertTrue(all(item["DECISION"] is None for item in record["records"]))
         self.assertTrue(all(item["DECIDED_BY"] is None for item in record["records"]))
+        self.assertTrue(all(item["RELEASE_AUTHORIZATION_STATE"].startswith("PENDING") for item in record["records"]))
+
+    def test_fact_inventory_and_owner_packet_only_request_unresolved_facts(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            package = self.build(output)
+            owner_packet = (output / "owner-action-packet.md").read_text(encoding="utf-8")
+        facts = {row["fact"]: row for row in package["website_fact_inventory"]}
+        self.assertEqual(facts["ordinary support contact"]["classification"], "REPOSITORY_CONFIRMED")
+        self.assertEqual(facts["privacy and grievance designation"]["classification"], "OWNER_FACT_REQUIRED")
+        self.assertIn("No action required for the current title-compliance predicate", owner_packet)
+        self.assertIn("chapter-001 opening", owner_packet)
+        self.assertNotIn("chapter-004 opening", owner_packet)
 
 
 if __name__ == "__main__":
