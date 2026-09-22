@@ -53,6 +53,16 @@ OFFICIAL_SOURCES = (
         "url": "https://consumeraffairs.nic.in/acts-and-rules/consumer-protection/consumer-protection",
         "scope": "Consumer Protection Act, E-Commerce Rules, and Dark Patterns Guidelines",
     },
+    {
+        "topic": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 — consolidated text updated 10 February 2026",
+        "url": "https://www.meity.gov.in/static/uploads/2026/02/550681ab908f8afb135b0ad42816a1c9.pdf",
+        "scope": "synthetically generated information; applicability depends on the actual product role and launch configuration",
+    },
+    {
+        "topic": "Google Cloud Text-to-Speech basics",
+        "url": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+        "scope": "Google documents use of generated audio in applications or media subject to applicable terms and law",
+    },
 )
 
 # These are factual/bibliographic sources, not rights acceptances.  They let
@@ -97,22 +107,106 @@ PILOT_FACT_SOURCES: dict[str, dict[str, Any]] = {
     },
 }
 
-# These are unresolved observations from the facsimile checkpoint, not a
-# change request and not an editorial correction ledger.  Keeping them here
-# prevents a UI or source-layer discrepancy from being silently called prose
-# verification.
-YUGALANGURIYA_DISCREPANCIES = (
-    ("chapter-001 opening", "Source crop reads an uncertain join: ই + জনে", "ই জনে", "UNKNOWN", "Independent Bengali review of uncropped image 6 before any patch."),
-    ("chapter-002 opening", "Source crop reads কে + ন যে", "ন যে", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
-    ("chapter-003 opening", "Source crop reads দু + ই বৎসরের", "ই বৎসরের", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
-    ("chapter-004 opening", "Source crop reads বি + বাহাস্তে", "বাহাস্তে", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
-    ("chapter-005 opening", "Source crop reads হি + রণ্ময়ী", "রণ্ময়ী", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
-    ("chapter-006 opening", "Source crop reads প + রে এক দিন", "রে এক দিন", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
-    ("chapter-007 opening", "Source crop reads বি + বাহের পর", "বাহের পর", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
-    ("chapter-008 opening", "Source crop reads হি + রণ্ময়ী", "রণ্ময়ী", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
-    ("chapter-009 opening", "Source crop reads হি + রণ্ময়ী", "রণ্ময়ী", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
-    ("chapter-010 opening", "Source crop reads হি + রণ্ময়ী", "রণ্ময়ী", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
-    ("chapter-001 footnote marker", "Tamralipta footnote is marked with an asterisk in the source crop", "Upward-arrow marker without semantic note binding", "TYPOGRAPHIC_OR_SEMANTIC_PRESENTATION", "Review note semantics separately; do not treat it as prose verification."),
+# The facsimile checkpoint was an observation ledger, not a request to alter
+# prose.  These rows state the exact reading it recorded, then let the package
+# compare it with the current controlled chapter and the retained Wikisource
+# transcription.  A crop that does not establish the full word stays
+# SOURCE_AMBIGUOUS; a known truncated transcription is not allowed to turn a
+# facsimile-supported correction into a fresh text failure.
+YUGALANGURIYA_OBSERVATIONS = (
+    {
+        "location": "chapter-001 opening",
+        "chapter_id": "chapter-001",
+        "source_reading": "Facsimile crop records an uncertain join: ই + জনে",
+        "retained_source_reading": "ই জনে",
+        "expected_earnalism_reading": "দুই জনে",
+        "classification": "SOURCE_AMBIGUOUS",
+        "evidence": "facsimile checkpoint image 6 / crop 1; retained Bengali Wikisource source layer",
+        "action": "Obtain an independent human reading of uncropped image 6, including its left margin. Do not alter canonical prose before that review.",
+    },
+    {
+        "location": "chapter-002 opening",
+        "chapter_id": "chapter-002",
+        "source_reading": "Facsimile crop reads কে + ন যে",
+        "retained_source_reading": "ন যে",
+        "expected_earnalism_reading": "কেন যে",
+        "classification": "SUPPORTED_SOURCE_CORRECTION",
+        "evidence": "facsimile checkpoint image 13 / crop 8",
+        "action": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+    },
+    {
+        "location": "chapter-003 opening",
+        "chapter_id": "chapter-003",
+        "source_reading": "Facsimile crop reads দু + ই বৎসরের",
+        "retained_source_reading": "ই বৎসরের",
+        "expected_earnalism_reading": "দুই বৎসরের",
+        "classification": "SUPPORTED_SOURCE_CORRECTION",
+        "evidence": "facsimile checkpoint image 17 / crop 12",
+        "action": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+    },
+    {
+        "location": "chapter-004 opening",
+        "chapter_id": "chapter-004",
+        "source_reading": "Facsimile checkpoint proposal reads বি + বাহাস্তে",
+        "retained_source_reading": "বিবাহান্তে",
+        "expected_earnalism_reading": "বিবাহান্তে",
+        "classification": "SOURCE_AMBIGUOUS",
+        "evidence": "facsimile checkpoint image 23 / crop 18 conflicts with retained Bengali Wikisource source layer",
+        "action": "Resolve the conflicting facsimile proposal against the original page before treating either reading as authoritative. Do not alter canonical prose automatically.",
+    },
+    {
+        "location": "chapter-005 opening",
+        "chapter_id": "chapter-005",
+        "source_reading": "Facsimile crop reads হি + রণ্ময়ী",
+        "retained_source_reading": "রণ্ময়ী",
+        "expected_earnalism_reading": "হিরণ্ময়ী",
+        "classification": "SUPPORTED_SOURCE_CORRECTION",
+        "evidence": "facsimile checkpoint image 27 / crop 22",
+        "action": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+    },
+    {
+        "location": "chapter-006 opening",
+        "chapter_id": "chapter-006",
+        "source_reading": "Facsimile crop reads প + রে এক দিন",
+        "retained_source_reading": "রে এক দিন",
+        "expected_earnalism_reading": "পরে এক দিন",
+        "classification": "SUPPORTED_SOURCE_CORRECTION",
+        "evidence": "facsimile checkpoint image 30 / crop 25",
+        "action": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+    },
+    {
+        "location": "chapter-007 opening",
+        "chapter_id": "chapter-007",
+        "source_reading": "Facsimile crop reads বি + বাহের পর",
+        "retained_source_reading": "বাহের পর",
+        "expected_earnalism_reading": "বিবাহের পর",
+        "classification": "SUPPORTED_SOURCE_CORRECTION",
+        "evidence": "facsimile checkpoint image 35 / crop 30",
+        "action": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+    },
+    *(
+        {
+            "location": f"chapter-{number:03d} opening",
+            "chapter_id": f"chapter-{number:03d}",
+            "source_reading": "Facsimile crop reads হি + রণ্ময়ী",
+            "retained_source_reading": "রণ্ময়ী",
+            "expected_earnalism_reading": "হিরণ্ময়ী",
+            "classification": "SUPPORTED_SOURCE_CORRECTION",
+            "evidence": f"facsimile checkpoint chapter {number:03d} opening crop",
+            "action": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+        }
+        for number in range(8, 11)
+    ),
+    {
+        "location": "chapter-001 Tamralipta footnote marker",
+        "chapter_id": "chapter-001",
+        "source_reading": "Facsimile crop records an asterisk marker; retained transcription uses a presentation-layer arrow marker",
+        "retained_source_reading": "upward-arrow presentation marker",
+        "expected_earnalism_reading": "asterisk marker bound to the retained note",
+        "classification": "SOURCE_PRESENTATION_LAYER",
+        "evidence": "facsimile checkpoint footnote observation and current controlled chapter record",
+        "action": "Resolved as a non-prose source-presentation difference; preserve the current bound note and make no prose change.",
+    },
 )
 
 
@@ -263,6 +357,167 @@ def source_to_canonical_comparison(slug: str, directory: Path) -> dict[str, Any]
     }
 
 
+def yugalanguriya_observation_comparison(directory: Path) -> dict[str, Any]:
+    """Reconcile the retained transcription with the facsimile observation log.
+
+    The stored Bengali Wikisource plain-text source is useful provenance, but
+    its known omitted opening initials are not a superior source reading to a
+    recorded facsimile crop.  This function consequently reports every one of
+    the eleven observations and fails closed only for the two crops that still
+    do not establish the canonical reading.
+    """
+    chapters = {entry["chapter_id"]: entry["content"] for entry in canonical_chapter_records(directory)}
+    rows: list[dict[str, Any]] = []
+    for observation in YUGALANGURIYA_OBSERVATIONS:
+        content = chapters.get(observation["chapter_id"], "")
+        expected = observation["expected_earnalism_reading"]
+        if observation["chapter_id"] == "chapter-001" and "footnote" in observation["location"]:
+            matches_current = "তাম্রলিপ্তের*" in content
+        else:
+            matches_current = content.startswith(expected)
+        classification = observation["classification"]
+        if not matches_current:
+            classification = "SUBSTANTIVE_TEXT_DIFFERENCE"
+        rows.append(
+            {
+                "LOCATION": observation["location"],
+                "SOURCE_READING": observation["source_reading"],
+                "RETAINED_SOURCE_LAYER_READING": observation["retained_source_reading"],
+                "EARNALISM_READING": expected if matches_current else content[:80],
+                "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+                "CLASSIFICATION": classification,
+                "EVIDENCE": observation["evidence"],
+                "ACTION": observation["action"] if matches_current else "Restore or resolve the controlled reading against the identified source before release; no automatic prose rewrite is permitted.",
+                "CURRENT_READING_MATCHES_EXPECTED": matches_current,
+            }
+        )
+    unresolved = [
+        row for row in rows
+        if row["CLASSIFICATION"] in {"SOURCE_AMBIGUOUS", "SUBSTANTIVE_TEXT_DIFFERENCE"}
+    ]
+    return {
+        "status": "TEXT_REVIEW_REQUIRED" if unresolved else "TEXT_VERIFIED",
+        "method": "Observation-level deterministic comparison of the current controlled chapter openings and footnote marker against the retained Bengali Wikisource layer and the hash-bound facsimile checkpoint. No AI-generated Bengali prose is used as evidence.",
+        "observations": rows,
+        "resolved_observation_count": len(rows) - len(unresolved),
+        "unresolved_observation_count": len(unresolved),
+        "unresolved_locations": [row["LOCATION"] for row in unresolved],
+        "reason": "Only the listed facsimile/source-reading conflicts remain text-review blockers; resolved source-layer omissions are retained as evidence, not blockers.",
+    }
+
+
+def bengali_source_layer_provenance(source: dict[str, Any], comparison: dict[str, Any]) -> dict[str, Any]:
+    """Document source/transclusion handling without pretending it is prose review."""
+    return {
+        "status": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
+        "source_provider": require_text(source.get("source_name")),
+        "source_page": require_text(source.get("source_url")),
+        "source_layer_used": "Retained plain-text source body; repository/source furniture is excluded from delivered chapter content.",
+        "rendering_and_transclusion_handling": "The comparison does not use Wikisource page chrome, templates, or transcluded presentation furniture as literary prose. Delivered controlled chapters are compared in order against the retained source body.",
+        "normalization_applied": require_text(comparison.get("normalization")),
+        "canonical_hash": "Bound in textual_integrity_proof.earnalism_canonical_text_hash.",
+        "verification_result": "TEXT_VERIFIED" if comparison.get("status") == "TEXT_VERIFIED" else "TEXT_REVIEW_REQUIRED",
+        "source_license_note": require_text(source.get("source_license")),
+        "release_decision_note": "The source-layer licence/provenance is recorded for the later release decision. It is not a second literary-text review or an accepted rights decision.",
+    }
+
+
+def audio_evidence_path(slug: str) -> Path:
+    return ROOT / "internal" / "audiobook_lab" / "sprint1_publication" / "title_runs" / f"{slug}_release_gate_evidence.json"
+
+
+def audio_assessment(slug: str, launch_hold: dict[str, Any], canonical_text_hash: str) -> dict[str, Any]:
+    """Inventory actual historical audio evidence without releasing audio.
+
+    This keeps model use distinct from copied recordings and from the current
+    all-title public-audio hold.  A title can be technically promising without
+    receiving a present release decision.
+    """
+    path = audio_evidence_path(slug)
+    record = read_json(path)
+    scope_status = "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE" if not launch_hold["public_audio_exposure_enabled"] else "AUDIO_REVIEW_REQUIRED"
+    base: dict[str, Any] = {
+        "current_launch_status": scope_status,
+        "current_launch_reason": "The controlled launch configuration, rather than use of AI/TTS, disables public audio exposure for every title.",
+        "underlying_literary_text": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "canonical_text_hash": canonical_text_hash,
+        "evidence": [evidence(path)] if path.is_file() else [],
+        "first_party_generation_context": "OWNER_STATED: audiobooks are generated by or at the direction of the product owner, not copied third-party commercial recordings. This is not a release decision.",
+        "third_party_recording_used": "NO_EVIDENCE_OF_THIRD_PARTY_RECORDING_IN_CURRENT_RELEASE_GATE_FILE",
+    }
+    if slug == "a-ghost-story":
+        audio = record.get("audio") if isinstance(record.get("audio"), dict) else {}
+        return {
+            **base,
+            "candidate_status_if_audio_scope_changes": "AUDIO_ACTION_REQUIRED — the historical Google output is quality-gated, but a current release decision requires a fresh canonical-input binding and component declaration.",
+            "provider": require_text(record.get("provider")),
+            "model": require_text(record.get("model")),
+            "voice": require_text(record.get("voice")),
+            "voice_type": "PROVIDER_AUTHORIZED_SYNTHETIC_VOICE",
+            "generation_date": require_text(record.get("generated_at")),
+            "audio_generation_input_hash": "NOT_RECORDED_IN_HISTORICAL_RELEASE_GATE",
+            "audio_output_hash": require_text(audio.get("sha256")),
+            "music_present": "UNKNOWN_NOT_RECORDED",
+            "external_sound_effects_present": "UNKNOWN_NOT_RECORDED",
+            "provider_terms": {
+                "provider": "Google Cloud Text-to-Speech",
+                "terms_url": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+                "retrieval_date": "2026-09-22",
+                "terms_recheck_before_enablement": "REQUIRED — this static evidence snapshot is not a substitute for checking then-current provider terms before a future public-audio release.",
+                "relevant_provision": "Google documents that generated audio data may power applications or augment media, subject to Google Cloud terms and applicable law.",
+                "commercial_output_use": "DOCUMENTED_SUBJECT_TO_APPLICABLE_TERMS_AND_LAW",
+                "public_distribution": "DOCUMENTED_FOR_APPLICATION_OR_MEDIA_USE_SUBJECT_TO_APPLICABLE_TERMS_AND_LAW",
+                "output_ownership_or_license_position": "NOT_STATED_BY_THIS_PROVIDER_DOCUMENT",
+                "voice_specific_restrictions": "No custom/imitative voice is recorded; the evidence names a Google prebuilt Studio voice.",
+                "attribution_required": "NOT_STATED_BY_THIS_PROVIDER_DOCUMENT",
+            },
+        }
+    if slug == "the-tell-tale-heart":
+        return {
+            **base,
+            "candidate_status_if_audio_scope_changes": "AUDIO_ACTION_REQUIRED — current Google representative auditions failed the recorded listening-QA minimum; a human narration or licensed alternate provider is required.",
+            "provider": "google",
+            "model": "NOT_RECORDED_IN_SUMMARY_GATE",
+            "voice": "en-GB-Studio-C",
+            "voice_type": "PROVIDER_AUTHORIZED_SYNTHETIC_VOICE",
+            "generation_date": require_text(record.get("generated_at")),
+            "audio_generation_input_hash": require_text((record.get("source_binding") or {}).get("audition_input_manifest_sha256")),
+            "audio_output_hash": "NOT_RECORDED — no launchable output",
+            "music_present": "NOT_APPLICABLE — no launchable output",
+            "external_sound_effects_present": "NOT_APPLICABLE — no launchable output",
+            "provider_terms": {"provider": "Google Cloud Text-to-Speech", "terms_url": "https://docs.cloud.google.com/text-to-speech/docs/basics", "retrieval_date": "2026-09-22", "terms_recheck_before_enablement": "REQUIRED", "result": "Same provider documentation applies to the historical attempts; quality, not AI/TTS use, is the blocking condition."},
+        }
+    if slug == "radharani":
+        return {
+            **base,
+            "candidate_status_if_audio_scope_changes": "AUDIO_ACTION_REQUIRED — full pipeline closeout recorded derived-ASR and calibration failure; no current launchable audio output is established.",
+            "provider": "MULTIPLE_HISTORICAL_PROVIDER_ATTEMPTS_RECORDED_IN_CLOSEOUT",
+            "model": "NOT_A_CURRENT_LAUNCH_CANDIDATE",
+            "voice": "NOT_RECORDED_IN_RELEASE_GATE_SUMMARY",
+            "voice_type": "UNKNOWN",
+            "generation_date": "NOT_RECORDED",
+            "audio_generation_input_hash": "NOT_RECORDED",
+            "audio_output_hash": "NOT_RECORDED — no launchable output",
+            "music_present": "NOT_APPLICABLE — no launchable output",
+            "external_sound_effects_present": "NOT_APPLICABLE — no launchable output",
+            "provider_terms": {"result": "Not evaluated: the current record establishes no launchable audio candidate, so a provider-terms review cannot clear it ahead of its failed fidelity/QA gate."},
+        }
+    return {
+        **base,
+        "candidate_status_if_audio_scope_changes": "AUDIO_ACTION_REQUIRED — historical mapped-asset references do not establish provider, voice, input hash, output hash, or a complete current qualification gate.",
+        "provider": "UNKNOWN",
+        "model": "UNKNOWN",
+        "voice": "UNKNOWN",
+        "voice_type": "UNKNOWN",
+        "generation_date": "UNKNOWN",
+        "audio_generation_input_hash": "UNKNOWN",
+        "audio_output_hash": "UNKNOWN",
+        "music_present": "UNKNOWN",
+        "external_sound_effects_present": "UNKNOWN",
+        "provider_terms": {"result": "Provider identity is not established by the current historical mapped-asset record; obtain it only if audio for this title enters a future launch scope."},
+    }
+
+
 def section_22_calculation(death_year: int) -> dict[str, Any]:
     return {
         "rule": "For an ordinary published literary work under Copyright Act, 1957 section 22, the term is sixty years from the beginning of the calendar year following the author’s death.",
@@ -312,18 +567,21 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
     source_license = require_text(source.get("source_license"))
     bengali_source_layer = source.get("source_name") == "Bengali Wikisource"
     source_content_hash = require_text(source.get("content_hash"))
-    integrity_status = source_comparison["status"]
+    yugal_observations = None
     if slug == "yugalanguriya":
-        integrity_difference = "Retained source text does not establish every controlled chapter in order, and the facsimile checkpoint preserves unresolved Bengali source-reading observations. No canonical text change is authorized."
+        yugal_observations = yugalanguriya_observation_comparison(directory)
+        integrity_status = yugal_observations["status"]
+    else:
+        integrity_status = source_comparison["status"]
+    if slug == "yugalanguriya":
+        integrity_difference = "The retained Bengali Wikisource transcription has known truncated openings. Nine recorded source observations now support the current controlled readings or are presentation-only; only the two listed source-reading conflicts remain unresolved. No canonical text change is authorized."
     elif slug == "the-tell-tale-heart":
         integrity_difference = "The stored source-evidence content hash is an aggregate publication hash, not a direct chapter digest. The exact retained source body contains the current controlled chapter after the documented non-substantive normalization."
     elif slug == "radharani":
         integrity_difference = "Every controlled chapter is present in source order after the documented non-substantive normalization. A separately recorded source-layer/footnote presentation issue is not represented as a prose difference."
     else:
         integrity_difference = "Every controlled chapter is present in source order after the documented non-substantive normalization."
-    source_layer_blocker = []
-    if bengali_source_layer:
-        source_layer_blocker.append("The Bengali Wikisource transcription/source layer has recorded CC BY-SA conditions that need an explicit source-layer treatment before release.")
+    source_layer_provenance = bengali_source_layer_provenance(source, source_comparison) if bengali_source_layer else None
     cover_hashes = active_cover_hashes(cover_path)
     cover_evidence = [evidence(book_path)]
     if cover_path.is_file():
@@ -372,17 +630,27 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
             "earnalism_canonical_text_hash": canonical_text_hash,
             "canonical_chapter_hashes": chapter_hashes,
             "source_to_canonical_comparison": source_comparison,
+            "facsimile_observation_comparison": yugal_observations,
             "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
             "material_differences": integrity_difference,
             "intentional_corrections": "NONE_APPROVED",
             "evidence": [evidence(reader_path), evidence(source_path), evidence(PILOT_INTEGRITY_EVIDENCE)],
         },
-        "translation_and_editorial_material": {
-            "status": "ACTION_REQUIRED" if bengali_source_layer else "REVIEW_REQUIRED",
-            "translation": "NOT_RECORDED",
-            "source_layer": source_license,
-            "blockers": source_layer_blocker or ["Confirm that the delivered edition contains no separately protected translation, introduction, annotation, illustration, or editorial addition."],
-        },
+        "translation_and_editorial_material": (
+            {
+                "status": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
+                "translation": "NOT_APPLICABLE — identified Bengali source text, not a separately identified translation.",
+                "source_layer": source_license,
+                "source_layer_provenance": source_layer_provenance,
+                "blockers": [],
+            }
+            if bengali_source_layer else {
+                "status": "NOT_APPLICABLE_FROM_IDENTIFIED_DELIVERED_TEXT",
+                "translation": "NOT_RECORDED — no separately identified translation is delivered in the controlled chapter records.",
+                "source_layer": source_license,
+                "blockers": ["A later release decision must continue to exclude any separately protected introduction, annotation, illustration, or editorial addition not present in the evidenced controlled text."],
+            }
+        ),
         "cover_provenance": {
             "status": "OWNER_DECLARATION_PENDING_SIGNATURE",
             "owner_stated_creator": "PRODUCT_OWNER",
@@ -397,17 +665,22 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
             "evidence": cover_evidence,
             "blockers": ["The declaration template is unsigned; no creator, external-element, or creation-date fact is inferred from an approval mapping."],
         },
-        "audio_scope": {
-            "status": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE" if not launch_hold["public_audio_exposure_enabled"] else "REVIEW_REQUIRED",
-            "reason": "The controlled launch configuration disables public audio exposure; title-level historical audio flags do not override that launch control.",
-        },
+        "audio_scope": audio_assessment(slug, launch_hold, canonical_text_hash),
         "public_provenance_statement_candidate": f"Text follows: {require_text(source.get('source_name'))} ({require_text(source.get('source_url'))}).",
+        "india_title_predicate": {
+            "rule": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE AND TEXT_VERIFIED AND FIRST_PARTY_COVER_PROVENANCE_CONFIRMED AND TRANSLATION_RIGHTS_OK_OR_NOT_APPLICABLE AND REQUIRED_OTHER_ASSETS_OK AND (AUDIO_INDIA_READY OR AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE)",
+            "copyright": "PASS",
+            "text": "PASS" if integrity_status == "TEXT_VERIFIED" else "FAIL_CLOSED",
+            "cover": "FAIL_CLOSED — owner declaration is unsigned",
+            "translation_and_other_assets": "EVIDENCE_RECORDED_PENDING_RELEASE_DECISION",
+            "audio": "PASS_FOR_CURRENT_SCOPE" if not launch_hold["public_audio_exposure_enabled"] else "REVIEW_REQUIRED",
+            "result": "HOLD",
+        },
         "india_title_status": "HOLD",
         "india_title_ready": False,
         "specific_blockers": [
             "OWNER_DECLARATION_PENDING_SIGNATURE",
             *( ["TEXT_REVIEW_REQUIRED"] if integrity_status != "TEXT_VERIFIED" else [] ),
-            *( ["SOURCE_LAYER_OR_EDITORIAL_REVIEW_REQUIRED"] if bengali_source_layer else [] ),
             "No accepted release decision is recorded; the global Reader hold remains active.",
         ],
     }
@@ -447,7 +720,7 @@ def website_matrix() -> list[dict[str, Any]]:
             "applicable": "YES_FOR_ANY_RELEASED_TITLE",
             "authority": "Copyright Act, 1957; source and integrity evidence",
             "current_implementation": "Repository has source evidence, a four-title comparison checkpoint, an empty rights registry, and global Reader/audio holds.",
-            "gap": "No India title has completed all independent copyright, integrity, cover, and source-layer proof elements.",
+            "gap": "No India title has a signed cover declaration or accepted release decision. Yugalanguriya also has the two identified source-reading observations still requiring human source review.",
             "status": "ACTION_REQUIRED",
             "launch_blocker": True,
         },
@@ -511,6 +784,18 @@ def website_matrix() -> list[dict[str, Any]]:
             "status": "DEFERRED",
             "launch_blocker": False,
         },
+        {
+            "area": "synthetic audiobook delivery",
+            "requirement": "Assess the currently effective IT Rules only if a synthetically generated audiobook enters the actual public launch scope, based on Earnalism's verified role and the exact delivery configuration.",
+            "in_force_on_launch_date": "The consolidated IT Rules text updated 10 February 2026 contains synthetically generated-information provisions; role-specific applicability must be assessed against the actual public audio launch.",
+            "applies_to_earnalism": "NOT_DETERMINED_FOR_FUTURE_AUDIO_SCOPE; current controlled launch disables public audio exposure.",
+            "applicable": "NOT_APPLICABLE_TO_CURRENT_LAUNCH_CONFIGURATION",
+            "authority": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, consolidated text updated 10 February 2026.",
+            "current_implementation": "No public audiobook launch is enabled by either controlled launch configuration. Historical model-generated audio evidence is recorded separately per title.",
+            "gap": "Before enabling any title-level public audio, perform a role- and configuration-specific applicability assessment and implement only any requirement that actually applies.",
+            "status": "DEFERRED",
+            "launch_blocker": False,
+        },
     ]
 
 
@@ -522,7 +807,7 @@ def cover_declaration(package: dict[str, Any], titles: list[dict[str, Any]]) -> 
         "",
         "## Declaration",
         "",
-        "I confirm that the Earnalism cover artworks identified in this declaration were graphically designed by me. Except where specifically disclosed in this declaration, I confirm that I have not knowingly incorporated third-party copyrighted photographs, illustrations, stock artwork or other protected creative material for which Earnalism lacks the necessary rights.",
+        "I confirm that the Earnalism cover artworks listed in the pilot cover inventory below were graphically designed by me. Except where specifically disclosed, I have not knowingly incorporated third-party copyrighted photographs, illustrations, stock artwork or other protected creative material for which Earnalism lacks the necessary rights.",
         "",
         "I make this factual confirmation only from personal knowledge or retained project files. Any cover with an external component that I cannot confirm remains unresolved and is not cleared by this declaration.",
         "",
@@ -534,7 +819,7 @@ def cover_declaration(package: dict[str, Any], titles: list[dict[str, Any]]) -> 
         "",
         "Date: _________________________________",
         "",
-        "Signature: ____________________________",
+        "Signature/Confirmation: ____________________________",
         "",
         "## Pilot cover inventory",
         "",
@@ -598,6 +883,39 @@ Do not publish these terms until the merchant agreement/version and the operator
 """
 
 
+def release_decision_record_template(titles: list[dict[str, Any]], evidence_package_hash: str, package: dict[str, Any]) -> dict[str, Any]:
+    """Create blank, evidence-bound decisions without creating an acceptance."""
+    return {
+        "schema_version": "earnalism.india-release-decision-record.v1",
+        "status": "UNSIGNED_TEMPLATE_ONLY",
+        "evidence_package": {
+            "path": "india-book-rights-matrix.json",
+            "sha256": evidence_package_hash,
+            "candidate_commit": package["generated_from"]["repository_head"],
+            "candidate_tree": package["generated_from"]["repository_tree"],
+        },
+        "records": [
+            {
+                "TITLE": title["title"],
+                "SLUG": title["slug"],
+                "COPYRIGHT_EVIDENCE_RESULT": title["india_copyright_proof"]["status"],
+                "TEXT_RESULT": title["textual_integrity_proof"]["status"],
+                "COVER_RESULT": title["cover_provenance"]["status"],
+                "AUDIO_RESULT": title["audio_scope"]["current_launch_status"],
+                "OTHER_ASSETS_RESULT": title["translation_and_editorial_material"]["status"],
+                "SOURCE_HASH": title["textual_integrity_proof"]["source_file_hash"],
+                "CANONICAL_HASH": title["textual_integrity_proof"]["earnalism_canonical_text_hash"],
+                "EVIDENCE_PACKAGE_HASH": evidence_package_hash,
+                "DECISION": None,
+                "DECIDED_BY": None,
+                "DATE": None,
+            }
+            for title in titles
+        ],
+        "guard": "A blank template is not an accepted rights record. An authorized release actor must record ACCEPT or HOLD only after reviewing the bound evidence and applicable release authority.",
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
@@ -611,6 +929,12 @@ def main() -> int:
         raise SystemExit("production surface SHA must be a lowercase SHA-256")
     launch_hold = existing_launch_hold()
     titles = [title_record(slug, launch_hold) for slug in PILOT_SLUGS]
+    yugal_title = next(item for item in titles if item["slug"] == "yugalanguriya")
+    yugal_ledger_rows = yugal_title["textual_integrity_proof"]["facsimile_observation_comparison"]["observations"]
+    unresolved_yugal_rows = [
+        row for row in yugal_ledger_rows
+        if row["CLASSIFICATION"] in {"SOURCE_AMBIGUOUS", "SUBSTANTIVE_TEXT_DIFFERENCE"}
+    ]
     package = {
         "schema_version": "earnalism.india-launch-compliance.v1",
         "generated_from": {
@@ -660,16 +984,27 @@ def main() -> int:
             "unresolved_source_discrepancies": [
                 {
                     "TITLE": "যুগলাঙ্গুরীয়",
-                    "LOCATION": location,
-                    "SOURCE": source_reading,
-                    "CURRENT_EARNALISM": current_reading,
-                    "CLASSIFICATION": classification,
-                    "ACTION": action,
-                    "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint",
+                    "LOCATION": row["LOCATION"],
+                    "SOURCE": row["SOURCE_READING"],
+                    "CURRENT_EARNALISM": row["EARNALISM_READING"],
+                    "CLASSIFICATION": row["CLASSIFICATION"],
+                    "ACTION": row["ACTION"],
+                    "EVIDENCE": row["EVIDENCE"],
                 }
-                for location, source_reading, current_reading, classification, action in YUGALANGURIYA_DISCREPANCIES
+                for row in unresolved_yugal_rows
             ],
-            "note": "Unresolved source observations are not approved corrections and do not authorize a manuscript change.",
+            "resolved_source_observations": [
+                {
+                    "TITLE": "যুগলাঙ্গুরীয়",
+                    "LOCATION": row["LOCATION"],
+                    "CLASSIFICATION": row["CLASSIFICATION"],
+                    "EVIDENCE": row["EVIDENCE"],
+                    "ACTION": row["ACTION"],
+                }
+                for row in yugal_ledger_rows
+                if row not in unresolved_yugal_rows
+            ],
+            "note": "Unresolved source observations are not approved corrections and do not authorize a manuscript change. Resolved rows document evidence already reflected in the current canonical text or a non-prose presentation layer.",
         },
         "india_website_legal_matrix": website_matrix(),
         "actual_data_inventory": data_inventory(),
@@ -688,6 +1023,12 @@ def main() -> int:
     (args.output_dir / "india-website-legal-matrix.json").write_text(json.dumps({"official_sources": package["official_sources"], "data_inventory": package["actual_data_inventory"], "matrix": package["india_website_legal_matrix"]}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (args.output_dir / "cover-artwork-declaration.md").write_text(cover_declaration(package, titles), encoding="utf-8")
     (args.output_dir / "unpublished-india-website-legal-drafts.md").write_text(unpublished_website_legal_drafts(package), encoding="utf-8")
+    evidence_package_hash = digest(args.output_dir / "india-book-rights-matrix.json")
+    assert evidence_package_hash
+    (args.output_dir / "india-release-decision-record-template.json").write_text(
+        json.dumps(release_decision_record_template(titles, evidence_package_hash, package), ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     print(json.dumps({"result": "PASS", "output_dir": str(args.output_dir), "pilot_title_count": len(titles), "pilot_cover_inventory_rows": sum(2 for _ in titles), "customer_ready": "NOT_DECLARED"}, ensure_ascii=False))
     return 0
 

@@ -44,6 +44,7 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
         self.assertTrue(all(row["country_scope"] == ["IN"] for row in rows))
         self.assertTrue(all(row["india_title_status"] == "HOLD" for row in rows))
         self.assertTrue(all(not row["india_title_ready"] for row in rows))
+        self.assertTrue(all(row["india_title_predicate"]["result"] == "HOLD" for row in rows))
         self.assertEqual(package["scope"]["audio"], "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE")
         self.assertEqual(package["scope"]["customer_ready"], "NOT_DECLARED")
 
@@ -65,8 +66,23 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
         self.assertTrue(rows["the-tell-tale-heart"]["textual_integrity_proof"]["source_to_canonical_comparison"]["all_chapters_found_in_order"])
         self.assertIn("aggregate publication hash", rows["the-tell-tale-heart"]["textual_integrity_proof"]["material_differences"])
         self.assertEqual(rows["radharani"]["textual_integrity_proof"]["status"], "TEXT_VERIFIED")
+        self.assertEqual(rows["radharani"]["translation_and_editorial_material"]["status"], "SOURCE_LAYER_PROVENANCE_DOCUMENTED")
+        self.assertEqual(
+            rows["radharani"]["translation_and_editorial_material"]["source_layer_provenance"]["verification_result"],
+            "TEXT_VERIFIED",
+        )
         self.assertEqual(rows["yugalanguriya"]["textual_integrity_proof"]["status"], "TEXT_REVIEW_REQUIRED")
-        self.assertEqual(len(package["editorial_correction_ledger"]["unresolved_source_discrepancies"]), 11)
+        observations = rows["yugalanguriya"]["textual_integrity_proof"]["facsimile_observation_comparison"]
+        self.assertEqual(observations["resolved_observation_count"], 9)
+        self.assertEqual(observations["unresolved_observation_count"], 2)
+        self.assertEqual(
+            observations["unresolved_locations"],
+            ["chapter-001 opening", "chapter-004 opening"],
+        )
+        self.assertEqual(len(package["editorial_correction_ledger"]["unresolved_source_discrepancies"]), 2)
+        self.assertEqual(rows["a-ghost-story"]["audio_scope"]["current_launch_status"], "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE")
+        self.assertEqual(rows["a-ghost-story"]["audio_scope"]["voice_type"], "PROVIDER_AUTHORIZED_SYNTHETIC_VOICE")
+        self.assertIn("listening-QA", rows["the-tell-tale-heart"]["audio_scope"]["candidate_status_if_audio_scope_changes"])
 
     def test_website_matrix_identifies_actual_public_page_and_fact_gaps(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -84,7 +100,7 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
             self.build(output)
             declaration = (output / "cover-artwork-declaration.md").read_text(encoding="utf-8")
         self.assertIn("UNSIGNED FACTUAL DECLARATION TEMPLATE", declaration)
-        self.assertIn("Signature: ____________________________", declaration)
+        self.assertIn("Signature/Confirmation: ____________________________", declaration)
         self.assertIn("were graphically designed by me", declaration)
         self.assertIn("PRODUCT_OWNER (owner-stated; signature pending)", declaration)
         self.assertIn("OWNER_CONFIRMATION_REQUIRED", declaration)
@@ -101,6 +117,18 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
         self.assertIn("RECEIVED` → `UNDER_REVIEW`", drafts)
         self.assertIn("[OWNER INPUT REQUIRED: operator legal name]", drafts)
         self.assertNotIn("/privacy", (ROOT / "frontend" / "src" / "App.js").read_text(encoding="utf-8").lower())
+
+    def test_decision_record_is_hash_bound_and_keeps_human_decision_fields_blank(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            self.build(output)
+            record = json.loads((output / "india-release-decision-record-template.json").read_text(encoding="utf-8"))
+            package_hash = MODULE.digest(output / "india-book-rights-matrix.json")
+        self.assertEqual(record["status"], "UNSIGNED_TEMPLATE_ONLY")
+        self.assertEqual(record["evidence_package"]["sha256"], package_hash)
+        self.assertEqual(len(record["records"]), 4)
+        self.assertTrue(all(item["DECISION"] is None for item in record["records"]))
+        self.assertTrue(all(item["DECIDED_BY"] is None for item in record["records"]))
 
 
 if __name__ == "__main__":
