@@ -42,15 +42,17 @@ describe("URL, Path & Navigation", () => {
   });
 
   test("cover images resolve as valid image resources", async () => {
-    const books = (await apiGet("/books")).data
-      .filter((book) => APPROVED_PUBLIC_AUDIO_SLUGS.has(book.slug))
+    const allBooks = (await apiGet("/books")).data;
+    const books = (PUBLIC_AUDIO_RELEASE_HELD
+      ? allBooks
+      : allBooks.filter((book) => APPROVED_PUBLIC_AUDIO_SLUGS.has(book.slug)))
       .slice(0, isGoLive() ? GO_LIVE_BOOK_LIMIT : 12);
     if (PUBLIC_AUDIO_RELEASE_HELD) {
       expect(CONTROLLED_AUDIO_SLUGS).toEqual(new Set());
-      expect(books).toEqual([]);
-      return;
+      expect(allBooks.length).toBeGreaterThan(0);
+      expect(allBooks.filter((book) => APPROVED_PUBLIC_AUDIO_SLUGS.has(book.slug))).toEqual([]);
     }
-    if (books.length === 0 && isPr()) {
+    if (!PUBLIC_AUDIO_RELEASE_HELD && books.length === 0 && isPr()) {
       for (const slug of APPROVED_PUBLIC_AUDIO_SLUGS) expect(CONTROLLED_AUDIO_SLUGS.has(slug)).toBe(true);
       return;
     }
