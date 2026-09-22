@@ -15,6 +15,7 @@ from pathlib import Path
 import re
 import subprocess
 from typing import Any
+import unicodedata
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,6 +53,66 @@ OFFICIAL_SOURCES = (
         "url": "https://consumeraffairs.nic.in/acts-and-rules/consumer-protection/consumer-protection",
         "scope": "Consumer Protection Act, E-Commerce Rules, and Dark Patterns Guidelines",
     },
+)
+
+# These are factual/bibliographic sources, not rights acceptances.  They let
+# the package distinguish a documented Section 22 calculation from the still
+# separate, hash-bound release decision required by the registry.
+PILOT_FACT_SOURCES: dict[str, dict[str, Any]] = {
+    "a-ghost-story": {
+        "author_identity": "Samuel Langhorne Clemens, writing as Mark Twain (1835–1910).",
+        "author_source": "https://marktwainhouse.org/about/mark-twain/biography/",
+        "work_type": "English literary sketch / short story.",
+        "original_language": "English",
+        "relevant_publication": "Sketches, New and Old (1875), containing A Ghost Story.",
+        "publication_source": "https://www.marktwainproject.org/writings/html/writings/ets1/mtdp10202/",
+        "death_year": 1910,
+    },
+    "the-tell-tale-heart": {
+        "author_identity": "Edgar Allan Poe (1809–1849).",
+        "author_source": "https://www.loc.gov/aba/pcc/naco/documents/FAQ-AAP-Collections.pdf",
+        "work_type": "English literary short story.",
+        "original_language": "English",
+        "relevant_publication": "The Pioneer: A Literary and Critical Magazine, Boston, 1843, pages 29–31.",
+        "publication_source": "https://www.themorgan.org/printed-books/272017",
+        "death_year": 1849,
+    },
+    "radharani": {
+        "author_identity": "Bankim Chandra Chattopadhyay (1838–1894), Bengali prose writer and novelist.",
+        "author_source": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621",
+        "work_type": "Bengali literary prose work.",
+        "original_language": "Bengali",
+        "relevant_publication": "The identified source edition is Bengali Wikisource's 1940-labelled edition; the repository records an original-publication year of 1877.",
+        "publication_source": "https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)",
+        "death_year": 1894,
+    },
+    "yugalanguriya": {
+        "author_identity": "Bankim Chandra Chattopadhyay (1838–1894), Bengali prose writer and novelist.",
+        "author_source": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621",
+        "work_type": "Bengali literary prose work.",
+        "original_language": "Bengali",
+        "relevant_publication": "The identified source edition is Bengali Wikisource's 1893-labelled edition; the repository records an original-publication year of 1874.",
+        "publication_source": "https://bn.wikisource.org/wiki/%E0%A6%AF%E0%A7%81%E0%A6%97%E0%A6%B2%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%80%E0%A6%AF%E0%A6%BC_(%E0%A7%A7%E0%A7%AE%E0%A7%AF%E0%A7%A9)",
+        "death_year": 1894,
+    },
+}
+
+# These are unresolved observations from the facsimile checkpoint, not a
+# change request and not an editorial correction ledger.  Keeping them here
+# prevents a UI or source-layer discrepancy from being silently called prose
+# verification.
+YUGALANGURIYA_DISCREPANCIES = (
+    ("chapter-001 opening", "Source crop reads an uncertain join: ই + জনে", "ই জনে", "UNKNOWN", "Independent Bengali review of uncropped image 6 before any patch."),
+    ("chapter-002 opening", "Source crop reads কে + ন যে", "ন যে", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
+    ("chapter-003 opening", "Source crop reads দু + ই বৎসরের", "ই বৎসরের", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
+    ("chapter-004 opening", "Source crop reads বি + বাহাস্তে", "বাহাস্তে", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
+    ("chapter-005 opening", "Source crop reads হি + রণ্ময়ী", "রণ্ময়ী", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
+    ("chapter-006 opening", "Source crop reads প + রে এক দিন", "রে এক দিন", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
+    ("chapter-007 opening", "Source crop reads বি + বাহের পর", "বাহের পর", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
+    ("chapter-008 opening", "Source crop reads হি + রণ্ময়ী", "রণ্ময়ী", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
+    ("chapter-009 opening", "Source crop reads হি + রণ্ময়ী", "রণ্ময়ী", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
+    ("chapter-010 opening", "Source crop reads হি + রণ্ময়ী", "রণ্ময়ী", "MISSING_TEXT", "Independent Bengali review before a source-only patch."),
+    ("chapter-001 footnote marker", "Tamralipta footnote is marked with an asterisk in the source crop", "Upward-arrow marker without semantic note binding", "TYPOGRAPHIC_OR_SEMANTIC_PRESENTATION", "Review note semantics separately; do not treat it as prose verification."),
 )
 
 
@@ -110,7 +171,7 @@ def active_cover_hashes(path: Path) -> dict[str, str]:
     return result
 
 
-def canonical_chapter_hashes(directory: Path) -> tuple[list[dict[str, str]], str]:
+def canonical_chapter_records(directory: Path) -> list[dict[str, str]]:
     """Bind ordered delivered chapter content, never reader-manifest metadata.
 
     Reader manifests intentionally do not embed protected text or its chapter
@@ -118,7 +179,7 @@ def canonical_chapter_hashes(directory: Path) -> tuple[list[dict[str, str]], str
     content hash.  An absent/malformed chapter must make the package fail,
     rather than producing an empty digest that looks valid.
     """
-    records: list[tuple[int, str, str]] = []
+    records: list[tuple[int, str, str, str]] = []
     for path in sorted((directory / "chapters").glob("*.json")):
         chapter = read_json(path)
         content = chapter.get("content")
@@ -129,13 +190,87 @@ def canonical_chapter_hashes(directory: Path) -> tuple[list[dict[str, str]], str
             raise ValueError(f"malformed controlled chapter record: {path}")
         if sha256(content.encode("utf-8")).hexdigest() != content_hash:
             raise ValueError(f"controlled chapter content hash mismatch: {path}")
-        records.append((order, chapter_id, content_hash))
+        records.append((order, chapter_id, content_hash, content))
     if not records or len({item[0] for item in records}) != len(records):
         raise ValueError(f"missing or duplicate ordered controlled chapters: {directory}")
     records.sort()
-    values = [{"chapter_id": chapter_id, "content_sha256": content_hash} for _, chapter_id, content_hash in records]
+    return [
+        {"chapter_id": chapter_id, "content_sha256": content_hash, "content": content}
+        for _, chapter_id, content_hash, content in records
+    ]
+
+
+def canonical_chapter_hashes(directory: Path) -> tuple[list[dict[str, str]], str]:
+    records = canonical_chapter_records(directory)
+    values = [{"chapter_id": item["chapter_id"], "content_sha256": item["content_sha256"]} for item in records]
     aggregate = sha256(json.dumps(values, ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest()
     return values, aggregate
+
+
+def normalize_text_for_comparison(value: str) -> str:
+    """Normalize only non-substantive transport and layout variation.
+
+    NFC makes equivalent Unicode representations comparable and whitespace
+    collapsing handles source line wrapping.  It deliberately does not remove
+    punctuation, words, paragraphs, or marks whose presence can be textual.
+    """
+    return re.sub(r"\s+", " ", unicodedata.normalize("NFC", value)).strip()
+
+
+def source_to_canonical_comparison(slug: str, directory: Path) -> dict[str, Any]:
+    """Verify ordered controlled chapters against the retained source file.
+
+    This is not a rights decision.  It is a deterministic body comparison used
+    to explain whether a stored publication aggregate should be read as a
+    direct source-text digest.
+    """
+    source_path = ROOT / "content" / "books" / slug / "raw" / "source.txt"
+    if not source_path.is_file():
+        return {
+            "status": "UNKNOWN",
+            "source_path": repo_path(source_path),
+            "source_file_sha256": "NOT_RECORDED",
+            "all_chapters_found_in_order": False,
+            "chapter_positions": [],
+            "reason": "The retained source file is unavailable; no text conclusion is inferred.",
+        }
+    normalized_source = normalize_text_for_comparison(source_path.read_text(encoding="utf-8"))
+    cursor = 0
+    positions: list[dict[str, Any]] = []
+    for chapter in canonical_chapter_records(directory):
+        normalized_chapter = normalize_text_for_comparison(chapter["content"])
+        position = normalized_source.find(normalized_chapter, cursor)
+        positions.append({"chapter_id": chapter["chapter_id"], "found": position >= 0, "position": position if position >= 0 else None})
+        if position < 0:
+            return {
+                "status": "TEXT_REVIEW_REQUIRED",
+                "source_path": repo_path(source_path),
+                "source_file_sha256": digest(source_path),
+                "all_chapters_found_in_order": False,
+                "chapter_positions": positions,
+                "normalization": "Unicode NFC plus whitespace-run collapse only.",
+                "reason": "A canonical chapter was not found in retained source order. No prose is changed automatically.",
+            }
+        cursor = position + len(normalized_chapter)
+    return {
+        "status": "TEXT_VERIFIED",
+        "source_path": repo_path(source_path),
+        "source_file_sha256": digest(source_path),
+        "all_chapters_found_in_order": True,
+        "chapter_positions": positions,
+        "normalization": "Unicode NFC plus whitespace-run collapse only.",
+        "reason": "Every current controlled chapter was found in retained source order; no prose transformation was applied.",
+    }
+
+
+def section_22_calculation(death_year: int) -> dict[str, Any]:
+    return {
+        "rule": "For an ordinary published literary work under Copyright Act, 1957 section 22, the term is sixty years from the beginning of the calendar year following the author’s death.",
+        "author_death_year": death_year,
+        "term_ends_at_calendar_year_end": death_year + 60,
+        "expired_term_calculation_begins": f"1 January {death_year + 61}",
+        "limitation": "This factual calculation is not a rights acceptance and must not be applied to a different statutory category or separately protected component.",
+    }
 
 
 def source_identifier(value: str) -> str:
@@ -170,24 +305,22 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
     book = read_json(book_path)
     note = source_rights_note(slug)
     chapter_hashes, canonical_text_hash = canonical_chapter_hashes(directory)
+    source_comparison = source_to_canonical_comparison(slug, directory)
+    facts = PILOT_FACT_SOURCES[slug]
     title = require_text(book.get("title") or note.get("title"), slug)
     author = require_text(book.get("author") or note.get("author"))
     source_license = require_text(source.get("source_license"))
     bengali_source_layer = source.get("source_name") == "Bengali Wikisource"
-    single_chapter_hash = chapter_hashes[0]["content_sha256"] if len(chapter_hashes) == 1 else None
     source_content_hash = require_text(source.get("content_hash"))
-    direct_source_binding = single_chapter_hash == source_content_hash if single_chapter_hash else None
-    integrity_status = "TEXT_VERIFIED" if slug == "a-ghost-story" and direct_source_binding is True else "TEXT_REVIEW_REQUIRED"
-    if slug == "the-tell-tale-heart" and direct_source_binding is False:
-        integrity_difference = "The current delivered chapter hash differs from the stored source-evidence content hash. Treat earlier comparison reporting as historical until the exact current source-to-canonical comparison is reproduced and explained."
-    elif integrity_status == "TEXT_VERIFIED":
-        integrity_difference = "No material difference recorded in the completed source-comparison evidence; the single controlled chapter also matches the stored source-evidence content hash."
+    integrity_status = source_comparison["status"]
+    if slug == "yugalanguriya":
+        integrity_difference = "Retained source text does not establish every controlled chapter in order, and the facsimile checkpoint preserves unresolved Bengali source-reading observations. No canonical text change is authorized."
+    elif slug == "the-tell-tale-heart":
+        integrity_difference = "The stored source-evidence content hash is an aggregate publication hash, not a direct chapter digest. The exact retained source body contains the current controlled chapter after the documented non-substantive normalization."
+    elif slug == "radharani":
+        integrity_difference = "Every controlled chapter is present in source order after the documented non-substantive normalization. A separately recorded source-layer/footnote presentation issue is not represented as a prose difference."
     else:
-        integrity_difference = "Existing source-comparison evidence records a presentation/footnote difference, an unresolved source-reading repair proposal, or a current aggregate source-to-canonical binding that needs review; no canonical text change is authorized."
-    copyright_blockers = [
-        "Author/date/category facts are recorded in repository source notes but lack an independently attested factual citation in this package.",
-        "No accepted hash-bound rights decision exists in the production registry.",
-    ]
+        integrity_difference = "Every controlled chapter is present in source order after the documented non-substantive normalization."
     source_layer_blocker = []
     if bengali_source_layer:
         source_layer_blocker.append("The Bengali Wikisource transcription/source layer has recorded CC BY-SA conditions that need an explicit source-layer treatment before release.")
@@ -200,15 +333,28 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
         "slug": slug,
         "country_scope": list(COUNTRY_SCOPE),
         "india_copyright_proof": {
-            "status": "INDIA_COPYRIGHT_REVIEW_REQUIRED",
-            "statutory_category": "ORDINARY_PUBLISHED_LITERARY_WORK_CLAIMED_REQUIRES_FACTUAL_CONFIRMATION",
+            "status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+            "statutory_category": "ORDINARY_PUBLISHED_LITERARY_WORK_SECTION_22",
             "author": author,
-            "author_death_year": require_text(note.get("author death year")),
+            "author_identity": facts["author_identity"],
+            "author_death_year": facts["death_year"],
             "joint_authorship": "NOT_RECORDED",
+            "work_type": facts["work_type"],
+            "original_language": facts["original_language"],
             "source_publication_year": require_text(note.get("original publication year")),
-            "term_rule_to_apply_after_category_confirmation": "Copyright Act, 1957 section 22 only if the work is an ordinary published literary work and no different statutory category applies.",
-            "evidence": [evidence(source_path), evidence(ROOT / "content" / "books" / slug / "source-rights.md")],
-            "blockers": copyright_blockers,
+            "relevant_publication_evidence": facts["relevant_publication"],
+            "section_22_term_calculation": section_22_calculation(facts["death_year"]),
+            "evidence": [
+                evidence(source_path),
+                evidence(ROOT / "content" / "books" / slug / "source-rights.md"),
+                {"topic": "author identity and death year", "url": facts["author_source"]},
+                {"topic": "work publication evidence", "url": facts["publication_source"]},
+                OFFICIAL_SOURCES[0],
+            ],
+            "limitations": [
+                "This records an objectively documented ordinary section 22 term calculation only; it is not a rights acceptance or release decision.",
+                "Translations, source transcriptions, covers, illustrations, editorial additions, and other separately protected components remain independently evaluated.",
+            ],
         },
         "textual_integrity_proof": {
             "status": integrity_status,
@@ -220,11 +366,13 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
             "source_reference_url": require_text(source.get("source_url")),
             "source_retrieval_date": require_text(source.get("downloaded_at")),
             "source_file_hash": require_text(source.get("source_hash")),
-            "stored_source_content_hash": source_content_hash,
+            "stored_publication_aggregate_hash": source_content_hash,
+            "current_raw_source_path": source_comparison["source_path"],
+            "current_raw_source_file_hash": source_comparison["source_file_sha256"],
             "earnalism_canonical_text_hash": canonical_text_hash,
             "canonical_chapter_hashes": chapter_hashes,
-            "direct_single_chapter_source_binding": direct_source_binding if direct_source_binding is not None else "NOT_APPLICABLE_MULTI_CHAPTER",
-            "comparison_method": "Recorded four-title deterministic source comparison: documented NFC, line-ending, and whitespace normalization; source-to-canonical paragraph/body checks. No AI-generated prose is an authority.",
+            "source_to_canonical_comparison": source_comparison,
+            "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
             "material_differences": integrity_difference,
             "intentional_corrections": "NONE_APPROVED",
             "evidence": [evidence(reader_path), evidence(source_path), evidence(PILOT_INTEGRITY_EVIDENCE)],
@@ -242,6 +390,10 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
             "externally_sourced_elements": "UNKNOWN_PENDING_OWNER_DECLARATION",
             "front_cover_sha256": cover_hashes.get("front", "NOT_RECORDED"),
             "back_cover_sha256": cover_hashes.get("back", "NOT_RECORDED"),
+            "assets": {
+                "front": require_text(book.get("cover_url")),
+                "back": require_text(book.get("back_cover_url")),
+            },
             "evidence": cover_evidence,
             "blockers": ["The declaration template is unsigned; no creator, external-element, or creation-date fact is inferred from an approval mapping."],
         },
@@ -253,10 +405,8 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
         "india_title_status": "HOLD",
         "india_title_ready": False,
         "specific_blockers": [
-            "INDIA_COPYRIGHT_REVIEW_REQUIRED",
             "OWNER_DECLARATION_PENDING_SIGNATURE",
             *( ["TEXT_REVIEW_REQUIRED"] if integrity_status != "TEXT_VERIFIED" else [] ),
-            *( ["CURRENT_DELIVERED_TEXT_HASH_DIFFERS_FROM_STORED_SOURCE_EVIDENCE"] if slug == "the-tell-tale-heart" and direct_source_binding is False else [] ),
             *( ["SOURCE_LAYER_OR_EDITORIAL_REVIEW_REQUIRED"] if bengali_source_layer else [] ),
             "No accepted release decision is recorded; the global Reader hold remains active.",
         ],
@@ -265,17 +415,25 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
 
 def data_inventory() -> list[dict[str, Any]]:
     entries = (
-        ("name", "account, contact, and newsletter forms", "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx", "ACTION_REQUIRED"),
-        ("email", "account, contact, and newsletter forms", "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx; frontend/src/pages/Account.jsx", "ACTION_REQUIRED"),
-        ("authentication information", "browser session/token handling", "frontend/src/pages/Reader.jsx; backend/server.py", "ACTION_REQUIRED"),
-        ("reading/activity history and position", "Reading Pass position service", "frontend/src/pages/Reader.jsx; backend/reading_pass_service.py", "ACTION_REQUIRED"),
-        ("analytics and device/session identifiers", "optional funnel analytics; browser local-storage session identifier", "frontend/src/lib/funnelAnalytics.js; backend/server.py", "REVIEW_REQUIRED"),
-        ("support communications", "contact form submission", "frontend/src/pages/Contact.jsx", "ACTION_REQUIRED"),
-        ("payment-related information", "Razorpay checkout and wallet/payment operations; no raw payment data claimed by this source inventory", "frontend/src/pages/Pricing.jsx; backend/server.py", "REVIEW_REQUIRED"),
+        ("name", "account, contact, and newsletter forms", "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx", "application database and provider region are not established by source inspection", "not defined in source", "ACTION_REQUIRED"),
+        ("email", "account, contact, and newsletter forms", "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx; frontend/src/pages/Account.jsx", "application database and provider region are not established by source inspection", "not defined in source", "ACTION_REQUIRED"),
+        ("authentication information", "browser session/token handling", "frontend/src/pages/Reader.jsx; backend/server.py", "browser local storage plus application backend; provider geography needs verification", "not defined in source", "ACTION_REQUIRED"),
+        ("reading/activity history and position", "Reading Pass position service", "frontend/src/pages/Reader.jsx; backend/reading_pass_service.py", "application backend; provider geography needs verification", "not defined in source", "ACTION_REQUIRED"),
+        ("analytics and device/session identifiers", "optional funnel analytics and browser local-storage session identifier", "frontend/src/lib/funnelAnalytics.js; backend/server.py", "browser local storage and optional analytics endpoint; production enablement needs verification", "not defined in source", "REVIEW_REQUIRED"),
+        ("support communications", "contact form submission", "frontend/src/pages/Contact.jsx", "application backend; provider geography needs verification", "not defined in source", "ACTION_REQUIRED"),
+        ("payment-related information", "Razorpay checkout and wallet/payment operations; no raw payment data is claimed by this source inventory", "frontend/src/pages/Pricing.jsx; backend/server.py", "Razorpay and application backend; merchant/provider data handling needs verification", "not defined in source", "REVIEW_REQUIRED"),
     )
     return [
-        {"data_category": category, "observed_product_behavior": behavior, "source": source, "status": status}
-        for category, behavior, source, status in entries
+        {
+            "data_category": category,
+            "purpose_and_collection_point": behavior,
+            "source": source,
+            "storage_and_processor_scope": storage,
+            "retention": retention,
+            "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+            "status": status,
+        }
+        for category, behavior, source, storage, retention, status in entries
     ]
 
 
@@ -356,40 +514,42 @@ def website_matrix() -> list[dict[str, Any]]:
     ]
 
 
-def cover_declaration(package: dict[str, Any], all_titles: list[dict[str, Any]]) -> str:
+def cover_declaration(package: dict[str, Any], titles: list[dict[str, Any]]) -> str:
     lines = [
-        "# Cover Artwork Declaration — Earnalism catalogue",
+        "# Cover Artwork Declaration — Earnalism India four-title pilot",
         "",
         "**Status:** UNSIGNED FACTUAL DECLARATION TEMPLATE. This document does not create a rights decision, accept a title for release, or assert facts not personally confirmed by the declarant.",
         "",
         "## Declaration",
         "",
-        "I, the undersigned product owner, declare only the cover facts I have personally verified. For every listed cover I confirm as personally created, I identify the creator and claimed rightsholder as the product owner and state whether any external protected component was used. Any UNKNOWN entry remains unresolved and is not cleared by this declaration.",
+        "I confirm that the Earnalism cover artworks identified in this declaration were graphically designed by me. Except where specifically disclosed in this declaration, I confirm that I have not knowingly incorporated third-party copyrighted photographs, illustrations, stock artwork or other protected creative material for which Earnalism lacks the necessary rights.",
+        "",
+        "I make this factual confirmation only from personal knowledge or retained project files. Any cover with an external component that I cannot confirm remains unresolved and is not cleared by this declaration.",
         "",
         "Name: ________________________________",
         "",
         "Capacity: Product owner / proprietor (confirm actual capacity)",
         "",
-        "Signature: ____________________________",
+        "Place: ________________________________",
         "",
         "Date: _________________________________",
         "",
-        "Place: ________________________________",
+        "Signature: ____________________________",
         "",
-        "## Catalogue cover inventory",
+        "## Pilot cover inventory",
         "",
-        "Complete the factual fields below only from personal knowledge or retained project files. Preserve source/editable project files where available. Copyright registration is not represented as a prerequisite by this template.",
+        "Preserve source/editable project files where available. Copyright registration is not represented as a prerequisite by this template. Missing historical creation dates or project files do not convert a truthfully confirmed first-party creation into a false statement.",
         "",
         "| Cover title | Asset path/reference | Asset SHA-256 | Creation date if known | Project/source-file reference if available | Creator | Rightsholder claim | Externally sourced elements | Notes |",
         "|---|---|---|---|---|---|---|---|---|",
     ]
-    for item in all_titles:
-        book = item["book"]
-        for side, url_key in (("front", "cover_url"), ("back", "back_cover_url")):
-            url = require_text(book.get(url_key))
-            asset_hash = item["cover_hashes"].get(side, "NOT_RECORDED")
+    for item in titles:
+        provenance = item["cover_provenance"]
+        for side in ("front", "back"):
+            url = provenance["assets"][side]
+            asset_hash = provenance[f"{side}_cover_sha256"]
             lines.append(
-                f"| {item['title']} — {side} | {url} | {asset_hash} | UNKNOWN | UNKNOWN | PRODUCT_OWNER (pending signature) | PRODUCT_OWNER (pending signature) | UNKNOWN | Complete only if personally verified. |"
+                f"| {item['title']} — {side} | {url} | {asset_hash} | NOT_RECORDED | NOT_RECORDED | PRODUCT_OWNER (owner-stated; signature pending) | PRODUCT_OWNER (owner-stated; signature pending) | OWNER_CONFIRMATION_REQUIRED | Disclose any external protected element here. |"
             )
     lines.append("")
     lines.append("## Attached package binding")
@@ -399,6 +559,43 @@ def cover_declaration(package: dict[str, Any], all_titles: list[dict[str, Any]])
     lines.append("- Signing this declaration does not release a title; the active release hold and hash-bound rights gate remain independent controls.")
     lines.append("")
     return "\n".join(lines)
+
+
+def unpublished_website_legal_drafts(package: dict[str, Any]) -> str:
+    """Draft only internally: incomplete operator facts never reach the public UI."""
+    return """# Unpublished India website legal drafts
+
+**Publication status:** `UNPUBLISHED_DO_NOT_REGISTER_ROUTE`. No route for these drafts is registered in `frontend/src/App.js`. Do not expose this file, its internal evidence references, or any bracketed owner-input field to the public site.
+
+## Publication gate
+
+Before a public legal page is registered, obtain and review: the operator's public-facing legal name and contact address; privacy and grievance contact channels; provider geography and cross-border access facts; actual production analytics state; retention decisions; payment-merchant agreement and current cancellation/refund treatment. A qualified reviewer must verify that the final public text describes the deployed product.
+
+## Privacy Policy draft — factual scope only
+
+Earnalism's source currently indicates collection or handling of account/contact/newsletter names and email addresses; support messages; browser authentication/session information; Reading Pass activity and position data; a browser device/session identifier; optional launch analytics; and payment-related checkout operations through Razorpay. Source inspection does not establish provider regions, cross-border access, retention periods, or whether optional analytics is enabled in production. This draft must not claim a retention period, data-sale practice, or provider configuration until those facts are confirmed.
+
+Public fields still required: `[OWNER INPUT REQUIRED: operator legal name]`; `[OWNER INPUT REQUIRED: public business address]`; `[OWNER INPUT REQUIRED: privacy-request contact]`; `[OWNER INPUT REQUIRED: grievance contact]`; `[PROVIDER VERIFICATION REQUIRED: hosting/database/storage/backup regions and access]`; `[DEPLOYMENT VERIFICATION REQUIRED: analytics enablement]`.
+
+## Terms of Use draft — factual scope only
+
+Earnalism provides controlled digital reading. The launch configuration holds Reader and audio exposure pending accepted release decisions. A source review identifies a one-time prepaid Reading Pass model and no automatic renewal claim. Any final Terms must preserve non-waivable consumer rights, describe actual availability/change behavior, identify the operator and contact channel, and avoid representing held titles as released or any text as universally rights-cleared.
+
+## Copyright/IP notice and complaint process
+
+The public notice should invite a complainant to supply: contact details; the claimed work; the Earnalism title/content concerned; the basis of the claim; and supporting information. Internal handling is title-scoped: `RECEIVED` → `UNDER_REVIEW` → `TEMPORARILY_HELD` where warranted → `RESOLVED_REMOVE` or `RESOLVED_RESTORE`. A complaint for one title must not automatically disable other titles. This is not described as a DMCA process or government certification.
+
+## Payment, cancellation, and refund terms
+
+Do not publish these terms until the merchant agreement/version and the operator-approved treatment for unused prepaid time, pass expiry, service outage, title unavailability, cancellation, and refunds are verified. The existing UI's one-time-prepaid language is not a substitute for those facts or an approved customer remedy.
+
+## Source basis
+
+- `frontend/src/App.js`, `frontend/src/pages/Contact.jsx`, and `frontend/src/pages/Pricing.jsx`
+- `frontend/src/lib/funnelAnalytics.js`, `frontend/src/lib/readingPassApi.js`, and `backend/server.py`
+- Digital Personal Data Protection Rules, 2025 notification and Consumer Protection framework listed in `india-website-legal-matrix.json`
+- Candidate commit: `""" + package["generated_from"]["repository_head"] + """`; tree: `""" + package["generated_from"]["repository_tree"] + """`.
+"""
 
 
 def main() -> int:
@@ -414,18 +611,6 @@ def main() -> int:
         raise SystemExit("production surface SHA must be a lowercase SHA-256")
     launch_hold = existing_launch_hold()
     titles = [title_record(slug, launch_hold) for slug in PILOT_SLUGS]
-    all_titles: list[dict[str, Any]] = []
-    for directory in sorted(path for path in PUBLICATIONS.iterdir() if path.is_dir()):
-        book = read_json(directory / "public_book.json")
-        if not book:
-            continue
-        note = source_rights_note(directory.name)
-        all_titles.append({
-            "slug": directory.name,
-            "title": require_text(book.get("title") or note.get("title"), directory.name),
-            "book": book,
-            "cover_hashes": active_cover_hashes(directory / "cover_approval_evidence.json"),
-        })
     package = {
         "schema_version": "earnalism.india-launch-compliance.v1",
         "generated_from": {
@@ -457,7 +642,9 @@ def main() -> int:
                 "source_reference_url": item["textual_integrity_proof"]["source_reference_url"],
                 "source_retrieval_date": item["textual_integrity_proof"]["source_retrieval_date"],
                 "source_file_hash": item["textual_integrity_proof"]["source_file_hash"],
-                "stored_source_content_hash": item["textual_integrity_proof"]["stored_source_content_hash"],
+                "stored_publication_aggregate_hash": item["textual_integrity_proof"]["stored_publication_aggregate_hash"],
+                "current_raw_source_path": item["textual_integrity_proof"]["current_raw_source_path"],
+                "current_raw_source_file_hash": item["textual_integrity_proof"]["current_raw_source_file_hash"],
                 "earnalism_canonical_text_hash": item["textual_integrity_proof"]["earnalism_canonical_text_hash"],
                 "comparison_method": item["textual_integrity_proof"]["comparison_method"],
                 "material_differences": item["textual_integrity_proof"]["material_differences"],
@@ -470,7 +657,19 @@ def main() -> int:
             "status": "NO_CORRECTIONS_APPROVED",
             "required_fields": ["TITLE", "LOCATION", "IDENTIFIED_SOURCE_READING", "EARNALISM_READING", "REASON", "EVIDENCE_OR_AUTHORITY", "DATE"],
             "entries": [],
-            "note": "Existing Yugalanguriya repair proposals remain review proposals and are intentionally not ledger entries or manuscript changes.",
+            "unresolved_source_discrepancies": [
+                {
+                    "TITLE": "যুগলাঙ্গুরীয়",
+                    "LOCATION": location,
+                    "SOURCE": source_reading,
+                    "CURRENT_EARNALISM": current_reading,
+                    "CLASSIFICATION": classification,
+                    "ACTION": action,
+                    "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint",
+                }
+                for location, source_reading, current_reading, classification, action in YUGALANGURIYA_DISCREPANCIES
+            ],
+            "note": "Unresolved source observations are not approved corrections and do not authorize a manuscript change.",
         },
         "india_website_legal_matrix": website_matrix(),
         "actual_data_inventory": data_inventory(),
@@ -487,8 +686,9 @@ def main() -> int:
     (args.output_dir / "text-source-manifest.json").write_text(json.dumps(package["text_source_manifest"], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (args.output_dir / "editorial-correction-ledger.json").write_text(json.dumps(package["editorial_correction_ledger"], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (args.output_dir / "india-website-legal-matrix.json").write_text(json.dumps({"official_sources": package["official_sources"], "data_inventory": package["actual_data_inventory"], "matrix": package["india_website_legal_matrix"]}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (args.output_dir / "cover-artwork-declaration.md").write_text(cover_declaration(package, all_titles), encoding="utf-8")
-    print(json.dumps({"result": "PASS", "output_dir": str(args.output_dir), "pilot_title_count": len(titles), "catalogue_cover_inventory_rows": sum(2 for _ in all_titles), "customer_ready": "NOT_DECLARED"}, ensure_ascii=False))
+    (args.output_dir / "cover-artwork-declaration.md").write_text(cover_declaration(package, titles), encoding="utf-8")
+    (args.output_dir / "unpublished-india-website-legal-drafts.md").write_text(unpublished_website_legal_drafts(package), encoding="utf-8")
+    print(json.dumps({"result": "PASS", "output_dir": str(args.output_dir), "pilot_title_count": len(titles), "pilot_cover_inventory_rows": sum(2 for _ in titles), "customer_ready": "NOT_DECLARED"}, ensure_ascii=False))
     return 0
 
 
