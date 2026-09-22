@@ -75,7 +75,7 @@
     "current_raw_source_file_hash": "84ca33a93c58cc6d61fcfff08ffb805f0a4b3fbe2aa6d7308b76aa0842238b9b",
     "earnalism_canonical_text_hash": "45e3fbdc37d44a9255735a09b37bde563319086626e2a5a7bc6bd63fab18b875",
     "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
-    "material_differences": "The retained Bengali Wikisource transcription has known truncated openings. Nine recorded source observations now support the current controlled readings or are presentation-only; only the two listed source-reading conflicts remain unresolved. No canonical text change is authorized.",
+    "material_differences": "The retained Bengali Wikisource transcription has known truncated openings. Nine observations support the current controlled readings or are presentation-only; chapter-004 is a documented edition variant, while only chapter-001 remains source-ambiguous. No canonical text change is authorized.",
     "intentional_corrections": "NONE_APPROVED",
     "text_integrity_status": "TEXT_REVIEW_REQUIRED"
   }

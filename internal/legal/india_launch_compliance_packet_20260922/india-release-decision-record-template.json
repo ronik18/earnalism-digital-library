@@ -3,9 +3,9 @@
   "status": "UNSIGNED_TEMPLATE_ONLY",
   "evidence_package": {
     "path": "india-book-rights-matrix.json",
-    "sha256": "2cd42f7c3c1862cb0744c1b0f09aa1f09980d8c9746ce80f2587fc8ceb209da3",
-    "candidate_commit": "23d8c7b629e88f42866f3592973c3809542e6317",
-    "candidate_tree": "ea4ca75da612e9b5b6f745a8af880799056b4d28"
+    "sha256": "e2131d5b6b6f3d4c4d90818b307738d374299d89e4cc9bde2fc6dc4f4c5507e8",
+    "candidate_commit": "c7b8ef5edeab9685ad6647124a6652c4f4376c9f",
+    "candidate_tree": "b0a02065d6636ca678e77097c14c9da6224cae54"
   },
   "records": [
     {
@@ -18,7 +18,7 @@
       "OTHER_ASSETS_RESULT": "NOT_APPLICABLE_FROM_IDENTIFIED_DELIVERED_TEXT",
       "SOURCE_HASH": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
       "CANONICAL_HASH": "4e14087173c0327d8681fcbe950c76076c0871fa30cb26c34851ef3df9fe9596",
-      "EVIDENCE_PACKAGE_HASH": "2cd42f7c3c1862cb0744c1b0f09aa1f09980d8c9746ce80f2587fc8ceb209da3",
+      "EVIDENCE_PACKAGE_HASH": "e2131d5b6b6f3d4c4d90818b307738d374299d89e4cc9bde2fc6dc4f4c5507e8",
       "UNRESOLVED_COMPLIANCE_BLOCKERS": [],
       "RELEASE_AUTHORIZATION_STATE": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient.",
       "DECISION": null,
@@ -35,7 +35,7 @@
       "OTHER_ASSETS_RESULT": "NOT_APPLICABLE_FROM_IDENTIFIED_DELIVERED_TEXT",
       "SOURCE_HASH": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
       "CANONICAL_HASH": "ddbfefae9964a9a530ef16edb1c6cab146f5e1666cb31eb65c4bfe088321267c",
-      "EVIDENCE_PACKAGE_HASH": "2cd42f7c3c1862cb0744c1b0f09aa1f09980d8c9746ce80f2587fc8ceb209da3",
+      "EVIDENCE_PACKAGE_HASH": "e2131d5b6b6f3d4c4d90818b307738d374299d89e4cc9bde2fc6dc4f4c5507e8",
       "UNRESOLVED_COMPLIANCE_BLOCKERS": [],
       "RELEASE_AUTHORIZATION_STATE": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient.",
       "DECISION": null,
@@ -52,7 +52,7 @@
       "OTHER_ASSETS_RESULT": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
       "SOURCE_HASH": "e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e",
       "CANONICAL_HASH": "332135f42281789b346f7aed5100a05630b8dfc637c5177ff85de17e5a6e890d",
-      "EVIDENCE_PACKAGE_HASH": "2cd42f7c3c1862cb0744c1b0f09aa1f09980d8c9746ce80f2587fc8ceb209da3",
+      "EVIDENCE_PACKAGE_HASH": "e2131d5b6b6f3d4c4d90818b307738d374299d89e4cc9bde2fc6dc4f4c5507e8",
       "UNRESOLVED_COMPLIANCE_BLOCKERS": [],
       "RELEASE_AUTHORIZATION_STATE": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient.",
       "DECISION": null,
@@ -69,7 +69,7 @@
       "OTHER_ASSETS_RESULT": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
       "SOURCE_HASH": "d29946aec3912a7e03c866a84354faec222b80f851802710a58885ff67afbe3b",
       "CANONICAL_HASH": "45e3fbdc37d44a9255735a09b37bde563319086626e2a5a7bc6bd63fab18b875",
-      "EVIDENCE_PACKAGE_HASH": "2cd42f7c3c1862cb0744c1b0f09aa1f09980d8c9746ce80f2587fc8ceb209da3",
+      "EVIDENCE_PACKAGE_HASH": "e2131d5b6b6f3d4c4d90818b307738d374299d89e4cc9bde2fc6dc4f4c5507e8",
       "UNRESOLVED_COMPLIANCE_BLOCKERS": [
         "TEXT_REVIEW_REQUIRED"
       ],

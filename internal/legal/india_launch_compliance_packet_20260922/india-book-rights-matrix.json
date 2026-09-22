@@ -1,11 +1,11 @@
 {
   "schema_version": "earnalism.india-launch-compliance.v1",
   "generated_from": {
-    "repository_head": "23d8c7b629e88f42866f3592973c3809542e6317",
-    "repository_tree": "ea4ca75da612e9b5b6f745a8af880799056b4d28",
+    "repository_head": "c7b8ef5edeab9685ad6647124a6652c4f4376c9f",
+    "repository_tree": "b0a02065d6636ca678e77097c14c9da6224cae54",
     "production_surface_sha256": "314c040f16aaf12931b1b340ae1d222bb87037e6291f1e3752173b98365326d0",
-    "generator_head": "23d8c7b629e88f42866f3592973c3809542e6317",
-    "generator_tree": "ea4ca75da612e9b5b6f745a8af880799056b4d28"
+    "generator_head": "c7b8ef5edeab9685ad6647124a6652c4f4376c9f",
+    "generator_tree": "b0a02065d6636ca678e77097c14c9da6224cae54"
   },
   "scope": {
     "launch_country": "IN",
@@ -835,6 +835,9 @@
               "EVIDENCE": "facsimile checkpoint image 6 / crop 1; retained Bengali Wikisource source layer",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Obtain an independent human reading of uncropped image 6, including its left margin. Do not alter canonical prose before that review.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
@@ -848,6 +851,9 @@
               "EVIDENCE": "facsimile checkpoint image 13 / crop 8",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
@@ -861,6 +867,9 @@
               "EVIDENCE": "facsimile checkpoint image 17 / crop 12",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
@@ -870,11 +879,14 @@
               "RETAINED_SOURCE_LAYER_READING": "The retained Wikisource plain-text layer reads বাহাস্তে and omits the illustrated initial.",
               "EARNALISM_READING": "বিবাহান্তে",
               "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
-              "CLASSIFICATION": "SOURCE_READING_RESOLVED_VARIANT_REQUIRES_DECISION",
-              "EVIDENCE": "1893 source page 23 plus its extracted initial crop p18b; the source-layer text corroborates the trailing বাহাস্তে. The current canonical text instead begins বিবাহান্তে.",
+              "CLASSIFICATION": "DOCUMENTED_EDITION_VARIANT",
+              "EVIDENCE": "The 1893 Wikisource facsimile page 23 plus its extracted initial crop p18b support বিবাহাস্তে. An independent SNLTR Bankim Rachanabali edition reads বিবাহান্তে at its chapter-four opening; its project states that it follows the Sahitya Samsad publication arrangement. The two editions therefore document differing readings; neither source is represented as agreeing with the other.",
               "FACSIMILE_URL": "https://bn.wikisource.org/wiki/পাতা:যুগলাঙ্গুরীয়_-_বঙ্কিমচন্দ্র_চট্টোপাধ্যায়.djvu/২৩",
               "INITIAL_CROP_URL": "https://commons.wikimedia.org/wiki/File:যুগলাঙ্গুরীয়_-_বঙ্কিমচন্দ্র_চট্টোপাধ্যায়_p18b.png",
-              "ACTION": "The source reading is no longer ambiguous. Do not alter canonical prose automatically: either restore the evidenced source reading or record a deliberate, source-cited editorial-variant decision before treating the current canonical wording as text-verified.",
+              "CORROBORATING_EDITION_URL": "https://bankim-rachanabali.nltr.org/node/822",
+              "CORROBORATING_EDITION_PROJECT_URL": "https://bankim-rachanabali.nltr.org/node/2",
+              "EDITORIAL_DECISION": "OWNER_CONFIRMED_INTENDED_CANONICAL_READING: preserve বিবাহান্তে. This records a selected canonical edition reading, not a claim that the 1893 scan reads the same word.",
+              "ACTION": "Resolved as a documented edition variant. Preserve the canonical reading বিবাহান্তে; do not alter the 1893-source evidence or modify literary text solely to reconcile editions.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
             {
@@ -887,6 +899,9 @@
               "EVIDENCE": "facsimile checkpoint image 27 / crop 22",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
@@ -900,6 +915,9 @@
               "EVIDENCE": "facsimile checkpoint image 30 / crop 25",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
@@ -913,6 +931,9 @@
               "EVIDENCE": "facsimile checkpoint image 35 / crop 30",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
@@ -926,6 +947,9 @@
               "EVIDENCE": "facsimile checkpoint chapter 008 opening crop",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
@@ -939,6 +963,9 @@
               "EVIDENCE": "facsimile checkpoint chapter 009 opening crop",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
@@ -952,6 +979,9 @@
               "EVIDENCE": "facsimile checkpoint chapter 010 opening crop",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             },
@@ -965,20 +995,22 @@
               "EVIDENCE": "facsimile checkpoint footnote observation and current controlled chapter record",
               "FACSIMILE_URL": "NOT_RECORDED",
               "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
               "ACTION": "Resolved as a non-prose source-presentation difference; preserve the current bound note and make no prose change.",
               "CURRENT_READING_MATCHES_EXPECTED": true
             }
           ],
-          "resolved_observation_count": 9,
-          "unresolved_observation_count": 2,
+          "resolved_observation_count": 10,
+          "unresolved_observation_count": 1,
           "unresolved_locations": [
-            "chapter-001 opening",
-            "chapter-004 opening"
+            "chapter-001 opening"
           ],
-          "reason": "The chapter-001 source reading remains ambiguous. Chapter-004's source reading is resolved but the current canonical variant is not yet supported by an editorial decision. Resolved source-layer omissions are retained as evidence, not blockers."
+          "reason": "The chapter-001 source reading remains ambiguous. Chapter-004 is a documented edition variant: the selected 1893 source reads বিবাহাস্তে while an independent SNLTR edition and the owner-confirmed canonical reading use বিবাহান্তে. Resolved source-layer omissions and variants are retained as evidence, not blockers."
         },
         "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
-        "material_differences": "The retained Bengali Wikisource transcription has known truncated openings. Nine recorded source observations now support the current controlled readings or are presentation-only; only the two listed source-reading conflicts remain unresolved. No canonical text change is authorized.",
+        "material_differences": "The retained Bengali Wikisource transcription has known truncated openings. Nine observations support the current controlled readings or are presentation-only; chapter-004 is a documented edition variant, while only chapter-001 remains source-ambiguous. No canonical text change is authorized.",
         "intentional_corrections": "NONE_APPROVED",
         "evidence": [
           {
@@ -1152,7 +1184,7 @@
       "current_raw_source_file_hash": "84ca33a93c58cc6d61fcfff08ffb805f0a4b3fbe2aa6d7308b76aa0842238b9b",
       "earnalism_canonical_text_hash": "45e3fbdc37d44a9255735a09b37bde563319086626e2a5a7bc6bd63fab18b875",
       "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
-      "material_differences": "The retained Bengali Wikisource transcription has known truncated openings. Nine recorded source observations now support the current controlled readings or are presentation-only; only the two listed source-reading conflicts remain unresolved. No canonical text change is authorized.",
+      "material_differences": "The retained Bengali Wikisource transcription has known truncated openings. Nine observations support the current controlled readings or are presentation-only; chapter-004 is a documented edition variant, while only chapter-001 remains source-ambiguous. No canonical text change is authorized.",
       "intentional_corrections": "NONE_APPROVED",
       "text_integrity_status": "TEXT_REVIEW_REQUIRED"
     }
@@ -1178,79 +1210,117 @@
         "CLASSIFICATION": "SOURCE_AMBIGUOUS",
         "ACTION": "Obtain an independent human reading of uncropped image 6, including its left margin. Do not alter canonical prose before that review.",
         "EVIDENCE": "facsimile checkpoint image 6 / crop 1; retained Bengali Wikisource source layer"
-      },
-      {
-        "TITLE": "যুগলাঙ্গুরীয়",
-        "LOCATION": "chapter-004 opening",
-        "SOURCE": "The 1893 facsimile has the initial বি in its illustrated drop-cap crop and বাহাস্তে in the adjacent text; together the source reads বিবাহাস্তে.",
-        "CURRENT_EARNALISM": "বিবাহান্তে",
-        "CLASSIFICATION": "SOURCE_READING_RESOLVED_VARIANT_REQUIRES_DECISION",
-        "ACTION": "The source reading is no longer ambiguous. Do not alter canonical prose automatically: either restore the evidenced source reading or record a deliberate, source-cited editorial-variant decision before treating the current canonical wording as text-verified.",
-        "EVIDENCE": "1893 source page 23 plus its extracted initial crop p18b; the source-layer text corroborates the trailing বাহাস্তে. The current canonical text instead begins বিবাহান্তে."
       }
     ],
     "resolved_source_observations": [
       {
         "TITLE": "যুগলাঙ্গুরীয়",
         "LOCATION": "chapter-002 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads কে + ন যে",
+        "EARNALISM_READING": "কেন যে",
         "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
         "EVIDENCE": "facsimile checkpoint image 13 / crop 8",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
         "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
       },
       {
         "TITLE": "যুগলাঙ্গুরীয়",
         "LOCATION": "chapter-003 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads দু + ই বৎসরের",
+        "EARNALISM_READING": "দুই বৎসরের",
         "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
         "EVIDENCE": "facsimile checkpoint image 17 / crop 12",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
         "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
       },
       {
         "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-004 opening",
+        "BASE_SOURCE_READING": "The 1893 facsimile has the initial বি in its illustrated drop-cap crop and বাহাস্তে in the adjacent text; together the source reads বিবাহাস্তে.",
+        "EARNALISM_READING": "বিবাহান্তে",
+        "CLASSIFICATION": "DOCUMENTED_EDITION_VARIANT",
+        "EVIDENCE": "The 1893 Wikisource facsimile page 23 plus its extracted initial crop p18b support বিবাহাস্তে. An independent SNLTR Bankim Rachanabali edition reads বিবাহান্তে at its chapter-four opening; its project states that it follows the Sahitya Samsad publication arrangement. The two editions therefore document differing readings; neither source is represented as agreeing with the other.",
+        "CORROBORATING_EDITION_URL": "https://bankim-rachanabali.nltr.org/node/822",
+        "EDITORIAL_DECISION": "OWNER_CONFIRMED_INTENDED_CANONICAL_READING: preserve বিবাহান্তে. This records a selected canonical edition reading, not a claim that the 1893 scan reads the same word.",
+        "ACTION": "Resolved as a documented edition variant. Preserve the canonical reading বিবাহান্তে; do not alter the 1893-source evidence or modify literary text solely to reconcile editions."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
         "LOCATION": "chapter-005 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+        "EARNALISM_READING": "হিরণ্ময়ী",
         "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
         "EVIDENCE": "facsimile checkpoint image 27 / crop 22",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
         "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
       },
       {
         "TITLE": "যুগলাঙ্গুরীয়",
         "LOCATION": "chapter-006 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads প + রে এক দিন",
+        "EARNALISM_READING": "পরে এক দিন",
         "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
         "EVIDENCE": "facsimile checkpoint image 30 / crop 25",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
         "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
       },
       {
         "TITLE": "যুগলাঙ্গুরীয়",
         "LOCATION": "chapter-007 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads বি + বাহের পর",
+        "EARNALISM_READING": "বিবাহের পর",
         "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
         "EVIDENCE": "facsimile checkpoint image 35 / crop 30",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
         "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
       },
       {
         "TITLE": "যুগলাঙ্গুরীয়",
         "LOCATION": "chapter-008 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+        "EARNALISM_READING": "হিরণ্ময়ী",
         "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
         "EVIDENCE": "facsimile checkpoint chapter 008 opening crop",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
         "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
       },
       {
         "TITLE": "যুগলাঙ্গুরীয়",
         "LOCATION": "chapter-009 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+        "EARNALISM_READING": "হিরণ্ময়ী",
         "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
         "EVIDENCE": "facsimile checkpoint chapter 009 opening crop",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
         "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
       },
       {
         "TITLE": "যুগলাঙ্গুরীয়",
         "LOCATION": "chapter-010 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+        "EARNALISM_READING": "হিরণ্ময়ী",
         "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
         "EVIDENCE": "facsimile checkpoint chapter 010 opening crop",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
         "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
       },
       {
         "TITLE": "যুগলাঙ্গুরীয়",
         "LOCATION": "chapter-001 Tamralipta footnote marker",
+        "BASE_SOURCE_READING": "Facsimile crop records an asterisk marker; retained transcription uses a presentation-layer arrow marker",
+        "EARNALISM_READING": "asterisk marker bound to the retained note",
         "CLASSIFICATION": "SOURCE_PRESENTATION_LAYER",
         "EVIDENCE": "facsimile checkpoint footnote observation and current controlled chapter record",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
         "ACTION": "Resolved as a non-prose source-presentation difference; preserve the current bound note and make no prose change."
       }
     ],
