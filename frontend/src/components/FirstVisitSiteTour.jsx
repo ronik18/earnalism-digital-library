@@ -23,7 +23,7 @@ const TOUR_STEPS = [
     targetSelectors: ['[data-testid="hero-cta-library"]', '[data-testid="header-cta-library"]'],
     eyebrow: "Choose a shelf",
     title: "Start from the library",
-    body: "Explore Bengali and English classics, then enter the listening room for selected narrated editions.",
+    body: "Explore the released Bengali and English Reader editions. Public audio is not part of this launch.",
   },
   {
     key: "covers",
@@ -39,7 +39,7 @@ const TOUR_STEPS = [
     targetSelectors: ['[data-testid="selected-listening-title"]', '[data-testid="curated-shelf-collage"]'],
     eyebrow: "Selected listening",
     title: "Hear a classic in the reading room",
-    body: "A small collection of beautifully narrated editions is ready when you want to read and listen together.",
+    body: "Narrated editions are in preparation; the current library opens with Reader editions.",
   },
 ];
 

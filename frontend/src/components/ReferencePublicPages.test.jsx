@@ -27,6 +27,13 @@ describe("Reference public page surfaces", () => {
     expect(source).not.toContain("Most Popular");
   });
 
+  test("does not advertise paid checkout or listening before those launch features are enabled", () => {
+    expect(source).toContain("PUBLIC_PAID_COMMERCE_ENABLED && <section className=\"reference-home__pass\"");
+    expect(source).toContain("PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems)");
+    expect(source).toContain("listeningBooks.length > 0 && <Link to=\"/library?availability=approved-audiobook\"");
+    expect(home).toContain("if (!PUBLIC_PAID_COMMERCE_ENABLED) return undefined;");
+  });
+
   test("binds offer presentation to current configured offer fields", () => {
     expect(commerce).toContain("pack.price_inr");
     expect(commerce).toContain("pack.minutes");

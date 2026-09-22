@@ -23,7 +23,7 @@ import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
-import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
+import { LIVE_APPROVED_SLUG, PUBLIC_AUDIO_EXPOSURE_ENABLED, PUBLIC_PAID_COMMERCE_ENABLED } from "../lib/controlledLaunch";
 import {
   fetchHomeHero,
   fetchHomeListening,
@@ -103,7 +103,7 @@ export default function Home() {
   useSEO({
     title: "Earnalism | Bengali and English Classics in a Calm Digital Library",
     description:
-      "Earnalism is a calm digital reading room for timeless Bengali and English literature, with beautiful editions, immersive audiobooks, and space to linger.",
+      "Earnalism is a calm digital reading room for released Bengali and English literary editions, with space to linger.",
     image: "/assets/shelves/bengali-classics.jpg",
     imageAlt: "Earnalism Bengali and English classics shelf artwork",
     canonicalPath: "/",
@@ -115,6 +115,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return undefined;
     const controller = new AbortController();
     fetchHomeListening(controller.signal, 3)
       .then((payload) => startTransition(() => setListeningCuration(payload)))
@@ -127,6 +128,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (!PUBLIC_PAID_COMMERCE_ENABLED) return undefined;
     const controller = new AbortController();
     let active = true;
     const applyOffers = (payload) => {
