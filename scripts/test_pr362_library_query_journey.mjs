@@ -121,12 +121,8 @@ async function assertEligibleReaderResults(page, expectedSlugs) {
 
 async function assertHeldReleaseSafety(page, name) {
   const surface = referenceSurface(page);
-  await assertDisplayedSlugs(page, heldBengaliPipelineSlugs);
-  const pipelineCard = surface.getByTestId(`reference-book-${pipelineBengaliKshudhitaSlug}`);
-  await expectText(pipelineCard.locator(".reference-book-tile__status"), "Coming soon", `${name}: held pipeline title must remain an invitation, not a live release`);
-  const notify = pipelineCard.getByRole("link", { name: "Notify me", exact: true });
-  await notify.waitFor();
-  assert.equal(await notify.getAttribute("href"), `/contact?interest=${pipelineBengaliKshudhitaSlug}`, `${name}: held pipeline title must retain its safe contact destination`);
+  await page.getByTestId("library-no-results").waitFor();
+  assert.equal(await surface.locator('[data-testid^="reference-book-"]').count(), 0, `${name}: the Reader-only filter must not represent a held title as reader-ready`);
   assert.equal(await surface.locator('a[href^="/book/"], a[href^="/reader/"], a[href^="/listener/"]').count(), 0, `${name}: held public catalogue must not expose a book, Reader, or Listener route`);
   assert.equal(await surface.getByTestId("reference-book-devdas").count(), 0, `${name}: API reader metadata leaked through the held public catalogue`);
 }

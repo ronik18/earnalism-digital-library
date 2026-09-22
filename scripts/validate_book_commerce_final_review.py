@@ -13,7 +13,11 @@ for name in required:
 if not errors:
     contents = {name: json.loads((root / name).read_text()) for name in required}
     interaction = contents["book-interaction-results.json"]
-    if interaction.get("status") != "PASS" or interaction.get("arrow_left_target") != "Details" or interaction.get("tab_order") != ["About", "Details", "Chapters", "Related"] or not all(interaction.get(key) is True for key in ("keyboard_arrow_left", "keyboard_arrow_right", "keyboard_wrap_next", "keyboard_wrap_previous", "focus_result")):
+    held_detail = interaction.get("status") == "NOT_APPLICABLE_PUBLIC_RELEASE_HOLD"
+    if held_detail:
+        if interaction.get("mode") != "PUBLIC_DETAIL_WITHHELD_PENDING_RIGHTS_DECISIONS" or interaction.get("book_detail_publicly_withheld") is not True:
+            errors.append("book-detail-hold")
+    elif interaction.get("status") != "PASS" or interaction.get("arrow_left_target") != "Details" or interaction.get("tab_order") != ["About", "Details", "Chapters", "Related"] or not all(interaction.get(key) is True for key in ("keyboard_arrow_left", "keyboard_arrow_right", "keyboard_wrap_next", "keyboard_wrap_previous", "focus_result")):
         errors.append("book-tab-keyboard")
     if contents["commerce-geometry-results.json"].get("status") != "PASS": errors.append("commerce-geometry")
     if contents["heading-results.json"].get("status") != "PASS": errors.append("headings")

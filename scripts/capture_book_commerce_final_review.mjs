@@ -31,6 +31,7 @@ const json = (route, body) => route.fulfill({ status: 200, contentType: "applica
 const source = (relative) => path.resolve(relative);
 const sourcePaths = ["frontend/src/lib/controlledLaunch.js", "data/controlled_launch.json"];
 const sourceHash = sha(Buffer.concat(sourcePaths.map((file) => fs.readFileSync(source(file)))));
+const publicReaderExposureEnabled = JSON.parse(fs.readFileSync(source("data/controlled_launch.json"), "utf8")).public_reader_exposure_enabled === true;
 const draculaChapters = Array.from({ length: 27 }, (_, index) => ({
   id: `dracula-chapter-${index + 1}`,
   title: index === 0 ? "Chapter 1" : `Chapter ${index + 1}`,
@@ -128,13 +129,27 @@ async function capture(state, context) {
 }
 async function interaction(context) {
  const page=await context.newPage(); await page.setViewportSize({width:1440,height:1000}); await routes(page); await page.goto(`${baseUrl}/book/dracula`,{waitUntil:"domcontentloaded"}); await settle(page);
+ if (!publicReaderExposureEnabled) {
+  const unavailable = page.getByTestId("book-not-found");
+  await unavailable.waitFor();
+  const bookDetailPubliclyWithheld = await unavailable.isVisible()
+    && await page.getByRole("tab").count() === 0
+    && await page.locator('[data-testid="read-preview"], [data-testid="start-reading"], [data-testid="book-listen-approved"]').count() === 0;
+  await page.close();
+  return {
+   status: bookDetailPubliclyWithheld ? "NOT_APPLICABLE_PUBLIC_RELEASE_HOLD" : "FAIL",
+   mode: "PUBLIC_DETAIL_WITHHELD_PENDING_RIGHTS_DECISIONS",
+   book_detail_publicly_withheld: bookDetailPubliclyWithheld,
+   reason: "The exact candidate intentionally withholds direct Book Detail controls while the public Reader release hold is active.",
+  };
+ }
  const about=page.getByRole("tab",{name:"About"}), chapters=page.getByRole("tab",{name:"Chapters"}); const defaultOk=await about.getAttribute("aria-selected")==="true" && await page.locator("[data-testid=chapter-list]").count()===0;
  const active=async(tab,panel)=>{ await page.waitForFunction(({tab,panel}) => document.querySelector('[role=tab][aria-selected=true]')?.textContent.trim() === tab && document.activeElement?.id === `book-tab-${tab.toLowerCase()}` && Boolean(document.querySelector(panel)), {tab,panel}); return true; };
  await chapters.click(); await active("Chapters","#book-panel-chapters"); const chapterTexts=await page.locator("[data-testid=chapter-list] li").allTextContents(); await page.keyboard.press("ArrowLeft"); const left=await active("Details","#book-panel-details"); await page.keyboard.press("ArrowRight"); const right=await active("Chapters","#book-panel-chapters"); await page.keyboard.press("ArrowRight"); const related=await active("Related","#book-panel-related"); await page.keyboard.press("ArrowRight"); const wrapAbout=await active("About","#book-panel-about"); await page.keyboard.press("ArrowLeft"); const wrapRelated=await active("Related","#book-panel-related"); await page.goto(`${baseUrl}/book/dracula`,{waitUntil:"domcontentloaded"}); await settle(page); await chapters.click(); await page.goto(`${baseUrl}/book/devdas`,{waitUntil:"domcontentloaded"}); await settle(page); const reset=await page.getByRole("tab",{name:"About"}).getAttribute("aria-selected")==="true" && await page.locator("[data-testid=chapter-list]").count()===0; await page.goBack(); await settle(page); await page.goForward(); await settle(page); await page.close();
  return { status: defaultOk && left && right && related && wrapAbout && wrapRelated && reset && chapterTexts.length===draculaChapters.length ? "PASS":"FAIL", tab_order:["About","Details","Chapters","Related"], arrow_left_target:"Details", default_about_selected:defaultOk, chapters_visible_count:chapterTexts.length, expected_chapter_count:draculaChapters.length, chapter_order_unique:new Set(chapterTexts).size===chapterTexts.length, keyboard_arrow_left:left, keyboard_arrow_right:right, keyboard_wrap_next:related&&wrapAbout, keyboard_wrap_previous:wrapRelated, focus_result:left&&right&&related&&wrapAbout&&wrapRelated, slug_reset:reset, chapter_semantics:"PASS" };
 }
 const baseline = captureMode === HISTORICAL_CAPTURE_MODE;
-async function maybeTab(page, id) { if (baseline || id !== "chapters") return; await tab(page, id); }
+async function maybeTab(page, id) { if (baseline || !publicReaderExposureEnabled || id !== "chapters") return; await tab(page, id); }
 fs.mkdirSync(output,{recursive:true}); const browser=await browserType.launch({headless:true}); const newContext=()=>browser.newContext({deviceScaleFactor:1,reducedMotion:"reduce",serviceWorkers:"block"});
 const captures=[]; let captureStage="capture-state-matrix";
 try { for (const state of states) { const context=await newContext(); captures.push(await capture(state,context)); await context.close(); } if (process.env.BOOK_COMMERCE_FORCE_CAPTURE_FAILURE === "after-state-matrix") throw new Error("forced capture failure after state matrix"); captureStage="interaction"; const interactionContext=await newContext(); const interactions=baseline ? { status:"NOT_APPLICABLE_HISTORICAL_SOURCE", mode:"HISTORICAL_BASELINE_CAPTURE_ONLY", reason:"Reviewed historical source predates the current tab control; this candidate-only check was not executed." } : await interaction(interactionContext); await interactionContext.close(); captureStage="offer-contract-primary"; const primaryOfferContext=await newContext(); const primaryOfferContract=await verifyOfferContract(primaryOfferContext,false); await primaryOfferContext.close(); captureStage="offer-contract-fallback"; const fallbackOfferContext=await newContext(); const fallbackOfferContract=await verifyOfferContract(fallbackOfferContext,true); await fallbackOfferContext.close(); const fixture={ source_paths:sourcePaths, sha256:sourceHash, dracula_chapter_count:draculaChapters.length, secondary_book_slug:"devdas" }; const offers={ source_path:import.meta.url, sha256:sha(Buffer.from(JSON.stringify(packs))), offer_count:packs.length, backend_packout_omits_validity_days:true, offers:packs.map((p,index)=>({order:index+1,id:p.id,label:p.label,minutes:p.minutes,price_inr:p.price_inr,amount_paise:p.amount_paise,recommended:p.recommended ?? false})), endpoint_contracts:[primaryOfferContract,fallbackOfferContract] }; const commerce=captures.filter((c)=>c.family==="commerce").map((c)=>({id:c.id, width:c.viewport.width, columns:c.commerce?.columns, cards:c.commerce?.cards||[], requirement:baseline?"NOT_APPLICABLE_HISTORICAL_SOURCE":"CURRENT_CANDIDATE_GEOMETRY", result:baseline?"HISTORICAL_OBSERVED":(c.scroll_width===c.client_width && (c.viewport.width>=1280 ? (c.commerce?.cards.length===4 && c.commerce.cards.every((x)=>x.y===c.commerce.cards[0].y)) : c.commerce?.cards.length===4)?"PASS":"FAIL")}));
