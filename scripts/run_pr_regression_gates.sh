@@ -59,7 +59,7 @@ echo "==> Signed territorial release proxy and public legal/Reader presentation 
 "$PYTHON_BIN" -m pytest -q \
   backend/tests/test_release_proxy_auth.py \
   backend/tests/test_release_proxy_country_middleware.py
-node --test frontend/api/release-proxy.test.js
+node --test frontend/scripts/release-proxy.test.js
 CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath \
   src/legalDirectRoutes.test.js \
   src/bookDetailDirectRoute.test.js \

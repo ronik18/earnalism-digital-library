@@ -2,8 +2,13 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 const fs = require("node:fs");
 const path = require("node:path");
-const releaseProxy = require("./[...proxy]");
+const releaseProxy = require("../api/[...proxy]");
 const { protectedReaderPath, releaseSignature } = releaseProxy;
+
+test("deployable Vercel API tree contains no test routes", () => {
+  const apiFiles = fs.readdirSync(path.join(__dirname, "../api"));
+  assert.equal(apiFiles.filter((name) => /\.(?:test|spec)\.[cm]?[jt]sx?$/.test(name)).length, 0);
+});
 
 test("release proxy signs only the fixed Reader/catalogue surface", () => {
   assert.equal(protectedReaderPath("/api/books"), true);
