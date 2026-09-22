@@ -14,102 +14,86 @@
     {
       "TITLE": "যুগলাঙ্গুরীয়",
       "LOCATION": "chapter-001 opening",
-      "SOURCE": "Source crop reads an uncertain join: ই + জনে",
-      "CURRENT_EARNALISM": "ই জনে",
-      "CLASSIFICATION": "UNKNOWN",
-      "ACTION": "Independent Bengali review of uncropped image 6 before any patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
-    },
-    {
-      "TITLE": "যুগলাঙ্গুরীয়",
-      "LOCATION": "chapter-002 opening",
-      "SOURCE": "Source crop reads কে + ন যে",
-      "CURRENT_EARNALISM": "ন যে",
-      "CLASSIFICATION": "MISSING_TEXT",
-      "ACTION": "Independent Bengali review before a source-only patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
-    },
-    {
-      "TITLE": "যুগলাঙ্গুরীয়",
-      "LOCATION": "chapter-003 opening",
-      "SOURCE": "Source crop reads দু + ই বৎসরের",
-      "CURRENT_EARNALISM": "ই বৎসরের",
-      "CLASSIFICATION": "MISSING_TEXT",
-      "ACTION": "Independent Bengali review before a source-only patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
+      "SOURCE": "Facsimile crop records an uncertain join: ই + জনে",
+      "CURRENT_EARNALISM": "দুই জনে",
+      "CLASSIFICATION": "SOURCE_AMBIGUOUS",
+      "ACTION": "Obtain an independent human reading of uncropped image 6, including its left margin. Do not alter canonical prose before that review.",
+      "EVIDENCE": "facsimile checkpoint image 6 / crop 1; retained Bengali Wikisource source layer"
     },
     {
       "TITLE": "যুগলাঙ্গুরীয়",
       "LOCATION": "chapter-004 opening",
-      "SOURCE": "Source crop reads বি + বাহাস্তে",
-      "CURRENT_EARNALISM": "বাহাস্তে",
-      "CLASSIFICATION": "MISSING_TEXT",
-      "ACTION": "Independent Bengali review before a source-only patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
+      "SOURCE": "Facsimile checkpoint proposal reads বি + বাহাস্তে",
+      "CURRENT_EARNALISM": "বিবাহান্তে",
+      "CLASSIFICATION": "SOURCE_AMBIGUOUS",
+      "ACTION": "Resolve the conflicting facsimile proposal against the original page before treating either reading as authoritative. Do not alter canonical prose automatically.",
+      "EVIDENCE": "facsimile checkpoint image 23 / crop 18 conflicts with retained Bengali Wikisource source layer"
+    }
+  ],
+  "resolved_source_observations": [
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-002 opening",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 13 / crop 8",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-003 opening",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 17 / crop 12",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
     },
     {
       "TITLE": "যুগলাঙ্গুরীয়",
       "LOCATION": "chapter-005 opening",
-      "SOURCE": "Source crop reads হি + রণ্ময়ী",
-      "CURRENT_EARNALISM": "রণ্ময়ী",
-      "CLASSIFICATION": "MISSING_TEXT",
-      "ACTION": "Independent Bengali review before a source-only patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 27 / crop 22",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
     },
     {
       "TITLE": "যুগলাঙ্গুরীয়",
       "LOCATION": "chapter-006 opening",
-      "SOURCE": "Source crop reads প + রে এক দিন",
-      "CURRENT_EARNALISM": "রে এক দিন",
-      "CLASSIFICATION": "MISSING_TEXT",
-      "ACTION": "Independent Bengali review before a source-only patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 30 / crop 25",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
     },
     {
       "TITLE": "যুগলাঙ্গুরীয়",
       "LOCATION": "chapter-007 opening",
-      "SOURCE": "Source crop reads বি + বাহের পর",
-      "CURRENT_EARNALISM": "বাহের পর",
-      "CLASSIFICATION": "MISSING_TEXT",
-      "ACTION": "Independent Bengali review before a source-only patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 35 / crop 30",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
     },
     {
       "TITLE": "যুগলাঙ্গুরীয়",
       "LOCATION": "chapter-008 opening",
-      "SOURCE": "Source crop reads হি + রণ্ময়ী",
-      "CURRENT_EARNALISM": "রণ্ময়ী",
-      "CLASSIFICATION": "MISSING_TEXT",
-      "ACTION": "Independent Bengali review before a source-only patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint chapter 008 opening crop",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
     },
     {
       "TITLE": "যুগলাঙ্গুরীয়",
       "LOCATION": "chapter-009 opening",
-      "SOURCE": "Source crop reads হি + রণ্ময়ী",
-      "CURRENT_EARNALISM": "রণ্ময়ী",
-      "CLASSIFICATION": "MISSING_TEXT",
-      "ACTION": "Independent Bengali review before a source-only patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint chapter 009 opening crop",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
     },
     {
       "TITLE": "যুগলাঙ্গুরীয়",
       "LOCATION": "chapter-010 opening",
-      "SOURCE": "Source crop reads হি + রণ্ময়ী",
-      "CURRENT_EARNALISM": "রণ্ময়ী",
-      "CLASSIFICATION": "MISSING_TEXT",
-      "ACTION": "Independent Bengali review before a source-only patch.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint chapter 010 opening crop",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
     },
     {
       "TITLE": "যুগলাঙ্গুরীয়",
-      "LOCATION": "chapter-001 footnote marker",
-      "SOURCE": "Tamralipta footnote is marked with an asterisk in the source crop",
-      "CURRENT_EARNALISM": "Upward-arrow marker without semantic note binding",
-      "CLASSIFICATION": "TYPOGRAPHIC_OR_SEMANTIC_PRESENTATION",
-      "ACTION": "Review note semantics separately; do not treat it as prose verification.",
-      "EVIDENCE": "internal/legal/four_title_pilot_evidence_20260917.md facsimile checkpoint"
+      "LOCATION": "chapter-001 Tamralipta footnote marker",
+      "CLASSIFICATION": "SOURCE_PRESENTATION_LAYER",
+      "EVIDENCE": "facsimile checkpoint footnote observation and current controlled chapter record",
+      "ACTION": "Resolved as a non-prose source-presentation difference; preserve the current bound note and make no prose change."
     }
   ],
-  "note": "Unresolved source observations are not approved corrections and do not authorize a manuscript change."
+  "note": "Unresolved source observations are not approved corrections and do not authorize a manuscript change. Resolved rows document evidence already reflected in the current canonical text or a non-prose presentation layer."
 }

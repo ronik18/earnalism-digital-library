@@ -19,6 +19,16 @@
       "topic": "Department of Consumer Affairs — Consumer Protection framework",
       "url": "https://consumeraffairs.nic.in/acts-and-rules/consumer-protection/consumer-protection",
       "scope": "Consumer Protection Act, E-Commerce Rules, and Dark Patterns Guidelines"
+    },
+    {
+      "topic": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 — consolidated text updated 10 February 2026",
+      "url": "https://www.meity.gov.in/static/uploads/2026/02/550681ab908f8afb135b0ad42816a1c9.pdf",
+      "scope": "synthetically generated information; applicability depends on the actual product role and launch configuration"
+    },
+    {
+      "topic": "Google Cloud Text-to-Speech basics",
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+      "scope": "Google documents use of generated audio in applications or media subject to applicable terms and law"
     }
   ],
   "data_inventory": [
@@ -95,7 +105,7 @@
       "applicable": "YES_FOR_ANY_RELEASED_TITLE",
       "authority": "Copyright Act, 1957; source and integrity evidence",
       "current_implementation": "Repository has source evidence, a four-title comparison checkpoint, an empty rights registry, and global Reader/audio holds.",
-      "gap": "No India title has completed all independent copyright, integrity, cover, and source-layer proof elements.",
+      "gap": "No India title has a signed cover declaration or accepted release decision. Yugalanguriya also has the two identified source-reading observations still requiring human source review.",
       "status": "ACTION_REQUIRED",
       "launch_blocker": true
     },
@@ -156,6 +166,18 @@
       "authority": "Source separation and launch-surface verification.",
       "current_implementation": "The edition generator is source-controlled dry-run logic; this audit found no approved public AI literary-text release path.",
       "gap": "At release, verify public AI features/copy remain outside canonical literary text and inventory any enabled public AI feature.",
+      "status": "DEFERRED",
+      "launch_blocker": false
+    },
+    {
+      "area": "synthetic audiobook delivery",
+      "requirement": "Assess the currently effective IT Rules only if a synthetically generated audiobook enters the actual public launch scope, based on Earnalism's verified role and the exact delivery configuration.",
+      "in_force_on_launch_date": "The consolidated IT Rules text updated 10 February 2026 contains synthetically generated-information provisions; role-specific applicability must be assessed against the actual public audio launch.",
+      "applies_to_earnalism": "NOT_DETERMINED_FOR_FUTURE_AUDIO_SCOPE; current controlled launch disables public audio exposure.",
+      "applicable": "NOT_APPLICABLE_TO_CURRENT_LAUNCH_CONFIGURATION",
+      "authority": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, consolidated text updated 10 February 2026.",
+      "current_implementation": "No public audiobook launch is enabled by either controlled launch configuration. Historical model-generated audio evidence is recorded separately per title.",
+      "gap": "Before enabling any title-level public audio, perform a role- and configuration-specific applicability assessment and implement only any requirement that actually applies.",
       "status": "DEFERRED",
       "launch_blocker": false
     }

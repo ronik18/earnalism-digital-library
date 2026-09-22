@@ -4,7 +4,7 @@
 
 ## Declaration
 
-I confirm that the Earnalism cover artworks identified in this declaration were graphically designed by me. Except where specifically disclosed in this declaration, I confirm that I have not knowingly incorporated third-party copyrighted photographs, illustrations, stock artwork or other protected creative material for which Earnalism lacks the necessary rights.
+I confirm that the Earnalism cover artworks listed in the pilot cover inventory below were graphically designed by me. Except where specifically disclosed, I have not knowingly incorporated third-party copyrighted photographs, illustrations, stock artwork or other protected creative material for which Earnalism lacks the necessary rights.
 
 I make this factual confirmation only from personal knowledge or retained project files. Any cover with an external component that I cannot confirm remains unresolved and is not cleared by this declaration.
 
@@ -16,7 +16,7 @@ Place: ________________________________
 
 Date: _________________________________
 
-Signature: ____________________________
+Signature/Confirmation: ____________________________
 
 ## Pilot cover inventory
 
@@ -35,6 +35,6 @@ Preserve source/editable project files where available. Copyright registration i
 
 ## Attached package binding
 
-- Candidate commit: `749777d6a5eba8f2fbddb9845e4870f805b59cbb`.
-- Candidate tree: `4ba0ab40a0351f456b8778a3cfd3b6e6ab145555`.
+- Candidate commit: `63a4ad9592de30e176d81b5cb018c775a797a79c`.
+- Candidate tree: `a8b2388e983c67d8483903f2f4f85090a5ccc410`.
 - Signing this declaration does not release a title; the active release hold and hash-bound rights gate remain independent controls.

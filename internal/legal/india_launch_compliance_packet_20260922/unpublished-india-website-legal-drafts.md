@@ -29,4 +29,4 @@ Do not publish these terms until the merchant agreement/version and the operator
 - `frontend/src/App.js`, `frontend/src/pages/Contact.jsx`, and `frontend/src/pages/Pricing.jsx`
 - `frontend/src/lib/funnelAnalytics.js`, `frontend/src/lib/readingPassApi.js`, and `backend/server.py`
 - Digital Personal Data Protection Rules, 2025 notification and Consumer Protection framework listed in `india-website-legal-matrix.json`
-- Candidate commit: `749777d6a5eba8f2fbddb9845e4870f805b59cbb`; tree: `4ba0ab40a0351f456b8778a3cfd3b6e6ab145555`.
+- Candidate commit: `63a4ad9592de30e176d81b5cb018c775a797a79c`; tree: `a8b2388e983c67d8483903f2f4f85090a5ccc410`.
