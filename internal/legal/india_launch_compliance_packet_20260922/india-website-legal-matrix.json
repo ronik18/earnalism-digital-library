@@ -24,44 +24,65 @@
   "data_inventory": [
     {
       "data_category": "name",
-      "observed_product_behavior": "account, contact, and newsletter forms",
+      "purpose_and_collection_point": "account, contact, and newsletter forms",
       "source": "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx",
+      "storage_and_processor_scope": "application database and provider region are not established by source inspection",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
       "status": "ACTION_REQUIRED"
     },
     {
       "data_category": "email",
-      "observed_product_behavior": "account, contact, and newsletter forms",
+      "purpose_and_collection_point": "account, contact, and newsletter forms",
       "source": "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx; frontend/src/pages/Account.jsx",
+      "storage_and_processor_scope": "application database and provider region are not established by source inspection",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
       "status": "ACTION_REQUIRED"
     },
     {
       "data_category": "authentication information",
-      "observed_product_behavior": "browser session/token handling",
+      "purpose_and_collection_point": "browser session/token handling",
       "source": "frontend/src/pages/Reader.jsx; backend/server.py",
+      "storage_and_processor_scope": "browser local storage plus application backend; provider geography needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
       "status": "ACTION_REQUIRED"
     },
     {
       "data_category": "reading/activity history and position",
-      "observed_product_behavior": "Reading Pass position service",
+      "purpose_and_collection_point": "Reading Pass position service",
       "source": "frontend/src/pages/Reader.jsx; backend/reading_pass_service.py",
+      "storage_and_processor_scope": "application backend; provider geography needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
       "status": "ACTION_REQUIRED"
     },
     {
       "data_category": "analytics and device/session identifiers",
-      "observed_product_behavior": "optional funnel analytics; browser local-storage session identifier",
+      "purpose_and_collection_point": "optional funnel analytics and browser local-storage session identifier",
       "source": "frontend/src/lib/funnelAnalytics.js; backend/server.py",
+      "storage_and_processor_scope": "browser local storage and optional analytics endpoint; production enablement needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
       "status": "REVIEW_REQUIRED"
     },
     {
       "data_category": "support communications",
-      "observed_product_behavior": "contact form submission",
+      "purpose_and_collection_point": "contact form submission",
       "source": "frontend/src/pages/Contact.jsx",
+      "storage_and_processor_scope": "application backend; provider geography needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
       "status": "ACTION_REQUIRED"
     },
     {
       "data_category": "payment-related information",
-      "observed_product_behavior": "Razorpay checkout and wallet/payment operations; no raw payment data claimed by this source inventory",
+      "purpose_and_collection_point": "Razorpay checkout and wallet/payment operations; no raw payment data is claimed by this source inventory",
       "source": "frontend/src/pages/Pricing.jsx; backend/server.py",
+      "storage_and_processor_scope": "Razorpay and application backend; merchant/provider data handling needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
       "status": "REVIEW_REQUIRED"
     }
   ],
