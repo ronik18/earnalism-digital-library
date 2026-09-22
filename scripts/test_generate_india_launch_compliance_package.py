@@ -80,13 +80,18 @@ class IndiaLaunchCompliancePackageTests(unittest.TestCase):
         )
         self.assertEqual(rows["yugalanguriya"]["textual_integrity_proof"]["status"], "TEXT_REVIEW_REQUIRED")
         observations = rows["yugalanguriya"]["textual_integrity_proof"]["facsimile_observation_comparison"]
-        self.assertEqual(observations["resolved_observation_count"], 9)
-        self.assertEqual(observations["unresolved_observation_count"], 2)
+        self.assertEqual(observations["resolved_observation_count"], 10)
+        self.assertEqual(observations["unresolved_observation_count"], 1)
         self.assertEqual(
             observations["unresolved_locations"],
-            ["chapter-001 opening", "chapter-004 opening"],
+            ["chapter-001 opening"],
         )
-        self.assertEqual(len(package["editorial_correction_ledger"]["unresolved_source_discrepancies"]), 2)
+        chapter_four = next(row for row in observations["observations"] if row["LOCATION"] == "chapter-004 opening")
+        self.assertEqual(chapter_four["CLASSIFICATION"], "DOCUMENTED_EDITION_VARIANT")
+        self.assertTrue(chapter_four["CURRENT_READING_MATCHES_EXPECTED"])
+        self.assertIn("বিবাহাস্তে", chapter_four["SOURCE_READING"])
+        self.assertEqual(chapter_four["EARNALISM_READING"], "বিবাহান্তে")
+        self.assertEqual(len(package["editorial_correction_ledger"]["unresolved_source_discrepancies"]), 1)
         self.assertEqual(rows["a-ghost-story"]["audio_scope"]["current_launch_status"], "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE")
         self.assertEqual(rows["a-ghost-story"]["audio_scope"]["voice_type"], "PROVIDER_AUTHORIZED_SYNTHETIC_VOICE")
         self.assertIn("listening-QA", rows["the-tell-tale-heart"]["audio_scope"]["candidate_status_if_audio_scope_changes"])

@@ -111,8 +111,8 @@ PILOT_FACT_SOURCES: dict[str, dict[str, Any]] = {
 # prose.  These rows state the exact reading it recorded, then let the package
 # compare it with the current controlled chapter and the retained Wikisource
 # transcription.  A crop that does not establish the full word stays
-# SOURCE_AMBIGUOUS; a known truncated transcription is not allowed to turn a
-# facsimile-supported correction into a fresh text failure.
+# SOURCE_AMBIGUOUS.  A documented edition variant is retained transparently;
+# it is not a license to rewrite controlled prose to match one scan.
 YUGALANGURIYA_OBSERVATIONS = (
     {
         "location": "chapter-001 opening",
@@ -150,11 +150,14 @@ YUGALANGURIYA_OBSERVATIONS = (
         "source_reading": "The 1893 facsimile has the initial বি in its illustrated drop-cap crop and বাহাস্তে in the adjacent text; together the source reads বিবাহাস্তে.",
         "retained_source_reading": "The retained Wikisource plain-text layer reads বাহাস্তে and omits the illustrated initial.",
         "expected_earnalism_reading": "বিবাহান্তে",
-        "classification": "SOURCE_READING_RESOLVED_VARIANT_REQUIRES_DECISION",
-        "evidence": "1893 source page 23 plus its extracted initial crop p18b; the source-layer text corroborates the trailing বাহাস্তে. The current canonical text instead begins বিবাহান্তে.",
+        "classification": "DOCUMENTED_EDITION_VARIANT",
+        "evidence": "The 1893 Wikisource facsimile page 23 plus its extracted initial crop p18b support বিবাহাস্তে. An independent SNLTR Bankim Rachanabali edition reads বিবাহান্তে at its chapter-four opening; its project states that it follows the Sahitya Samsad publication arrangement. The two editions therefore document differing readings; neither source is represented as agreeing with the other.",
         "facsimile_url": "https://bn.wikisource.org/wiki/পাতা:যুগলাঙ্গুরীয়_-_বঙ্কিমচন্দ্র_চট্টোপাধ্যায়.djvu/২৩",
         "initial_crop_url": "https://commons.wikimedia.org/wiki/File:যুগলাঙ্গুরীয়_-_বঙ্কিমচন্দ্র_চট্টোপাধ্যায়_p18b.png",
-        "action": "The source reading is no longer ambiguous. Do not alter canonical prose automatically: either restore the evidenced source reading or record a deliberate, source-cited editorial-variant decision before treating the current canonical wording as text-verified.",
+        "corroborating_edition_url": "https://bankim-rachanabali.nltr.org/node/822",
+        "corroborating_edition_project_url": "https://bankim-rachanabali.nltr.org/node/2",
+        "editorial_decision": "OWNER_CONFIRMED_INTENDED_CANONICAL_READING: preserve বিবাহান্তে. This records a selected canonical edition reading, not a claim that the 1893 scan reads the same word.",
+        "action": "Resolved as a documented edition variant. Preserve the canonical reading বিবাহান্তে; do not alter the 1893-source evidence or modify literary text solely to reconcile editions.",
     },
     {
         "location": "chapter-005 opening",
@@ -365,8 +368,8 @@ def yugalanguriya_observation_comparison(directory: Path) -> dict[str, Any]:
     The stored Bengali Wikisource plain-text source is useful provenance, but
     its known omitted opening initials are not a superior source reading to a
     recorded facsimile crop.  This function consequently reports every one of
-    the eleven observations and fails closed only for the two crops that still
-    do not establish the canonical reading.
+    the eleven observations and fails closed only where the evidence cannot
+    establish a supported canonical reading.
     """
     chapters = {entry["chapter_id"]: entry["content"] for entry in canonical_chapter_records(directory)}
     rows: list[dict[str, Any]] = []
@@ -391,6 +394,9 @@ def yugalanguriya_observation_comparison(directory: Path) -> dict[str, Any]:
                 "EVIDENCE": observation["evidence"],
                 "FACSIMILE_URL": observation.get("facsimile_url", "NOT_RECORDED"),
                 "INITIAL_CROP_URL": observation.get("initial_crop_url", "NOT_RECORDED"),
+                "CORROBORATING_EDITION_URL": observation.get("corroborating_edition_url", "NOT_RECORDED"),
+                "CORROBORATING_EDITION_PROJECT_URL": observation.get("corroborating_edition_project_url", "NOT_RECORDED"),
+                "EDITORIAL_DECISION": observation.get("editorial_decision", "NOT_RECORDED"),
                 "ACTION": observation["action"] if matches_current else "Restore or resolve the controlled reading against the identified source before release; no automatic prose rewrite is permitted.",
                 "CURRENT_READING_MATCHES_EXPECTED": matches_current,
             }
@@ -399,7 +405,6 @@ def yugalanguriya_observation_comparison(directory: Path) -> dict[str, Any]:
         row for row in rows
         if row["CLASSIFICATION"] in {
             "SOURCE_AMBIGUOUS",
-            "SOURCE_READING_RESOLVED_VARIANT_REQUIRES_DECISION",
             "SUBSTANTIVE_TEXT_DIFFERENCE",
         }
     ]
@@ -410,7 +415,7 @@ def yugalanguriya_observation_comparison(directory: Path) -> dict[str, Any]:
         "resolved_observation_count": len(rows) - len(unresolved),
         "unresolved_observation_count": len(unresolved),
         "unresolved_locations": [row["LOCATION"] for row in unresolved],
-        "reason": "The chapter-001 source reading remains ambiguous. Chapter-004's source reading is resolved but the current canonical variant is not yet supported by an editorial decision. Resolved source-layer omissions are retained as evidence, not blockers.",
+        "reason": "The chapter-001 source reading remains ambiguous. Chapter-004 is a documented edition variant: the selected 1893 source reads বিবাহাস্তে while an independent SNLTR edition and the owner-confirmed canonical reading use বিবাহান্তে. Resolved source-layer omissions and variants are retained as evidence, not blockers.",
     }
 
 
@@ -582,7 +587,7 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
     else:
         integrity_status = source_comparison["status"]
     if slug == "yugalanguriya":
-        integrity_difference = "The retained Bengali Wikisource transcription has known truncated openings. Nine recorded source observations now support the current controlled readings or are presentation-only; only the two listed source-reading conflicts remain unresolved. No canonical text change is authorized."
+        integrity_difference = "The retained Bengali Wikisource transcription has known truncated openings. Nine observations support the current controlled readings or are presentation-only; chapter-004 is a documented edition variant, while only chapter-001 remains source-ambiguous. No canonical text change is authorized."
     elif slug == "the-tell-tale-heart":
         integrity_difference = "The stored source-evidence content hash is an aggregate publication hash, not a direct chapter digest. The exact retained source body contains the current controlled chapter after the documented non-substantive normalization."
     elif slug == "radharani":
@@ -1083,7 +1088,6 @@ def main() -> int:
         row for row in yugal_ledger_rows
         if row["CLASSIFICATION"] in {
             "SOURCE_AMBIGUOUS",
-            "SOURCE_READING_RESOLVED_VARIANT_REQUIRES_DECISION",
             "SUBSTANTIVE_TEXT_DIFFERENCE",
         }
     ]
@@ -1150,8 +1154,12 @@ def main() -> int:
                 {
                     "TITLE": "যুগলাঙ্গুরীয়",
                     "LOCATION": row["LOCATION"],
+                    "BASE_SOURCE_READING": row["SOURCE_READING"],
+                    "EARNALISM_READING": row["EARNALISM_READING"],
                     "CLASSIFICATION": row["CLASSIFICATION"],
                     "EVIDENCE": row["EVIDENCE"],
+                    "CORROBORATING_EDITION_URL": row["CORROBORATING_EDITION_URL"],
+                    "EDITORIAL_DECISION": row["EDITORIAL_DECISION"],
                     "ACTION": row["ACTION"],
                 }
                 for row in yugal_ledger_rows
