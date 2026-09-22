@@ -18,9 +18,34 @@ if str(ROOT) not in sys.path:
 from scripts.reading_pass_segment_matrix import build_matrix
 
 
-API = os.environ["UAT_API_BASE_URL"].rstrip("/")
-ADMIN_EMAIL = os.environ["ADMIN_EMAIL"]
-ADMIN_PASSWORD = os.environ["ADMIN_PASSWORD"]
+API = ""
+ADMIN_EMAIL = ""
+ADMIN_PASSWORD = ""
+
+
+def public_reader_release_is_held() -> bool:
+    """Return only a verified all-title public Reader hold.
+
+    The local UAT seeder normally creates immutable segments and promotes an
+    active version.  That is useful only when the checked-in release contract
+    deliberately permits public Reader titles.  A fully held release must not
+    create local publication state merely to make a regression harness pass.
+    Require both frontend and backend copies of the controlled-launch contract
+    to agree before taking this non-mutating path.
+    """
+    contracts = []
+    for relative in ("data/controlled_launch.json", "backend/data/controlled_launch.json"):
+        path = ROOT / relative
+        try:
+            value = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as error:
+            raise SystemExit(f"UAT canonical-page seed could not read {relative}") from error
+        if not isinstance(value, dict):
+            raise SystemExit(f"UAT canonical-page seed found malformed {relative}")
+        contracts.append(value)
+    if contracts[0] != contracts[1]:
+        raise SystemExit("UAT canonical-page seed found divergent controlled-launch contracts")
+    return contracts[0].get("public_reader_exposure_enabled") is False and contracts[0].get("live_approved_slugs") == []
 
 
 def request(path: str, payload: dict | None = None, token: str = "") -> dict:
@@ -37,8 +62,17 @@ def request(path: str, payload: dict | None = None, token: str = "") -> dict:
 
 
 def main() -> None:
+    global API, ADMIN_EMAIL, ADMIN_PASSWORD
+    API = os.environ.get("UAT_API_BASE_URL", "").rstrip("/")
+    ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "")
+    ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
     if not API.startswith("http://127.0.0.1:") or not API.endswith("/api"):
         raise SystemExit("UAT_API_BASE_URL must be a local /api URL")
+    if public_reader_release_is_held():
+        print("canonical pages NOT_APPLICABLE_PUBLIC_RELEASE_HOLD; no admin login or publication mutation attempted")
+        return
+    if not ADMIN_EMAIL or not ADMIN_PASSWORD:
+        raise SystemExit("UAT canonical-page seed requires local admin credentials when Reader exposure is enabled")
     login = request("/auth/login", {"email": ADMIN_EMAIL, "password": ADMIN_PASSWORD})
     token = login.get("token", "")
     if not token:
