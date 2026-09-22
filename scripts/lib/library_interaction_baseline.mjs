@@ -19,13 +19,14 @@ export const ISSUE380_LIBRARY_INTERACTION_BASELINE = "docs/design-system/issue38
 export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_BASELINE = "docs/design-system/issue380-ui-completion-library-interaction-baseline.json";
 export const PR397_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr397-library-interaction-baseline.json";
 export const PR399_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr399-library-interaction-baseline.json";
+export const PR414_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr414-held-release-library-interaction-baseline.json";
 export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
   "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
   "frontend/src/components/ReferencePublicPages.css",
   "frontend/src/styles/library-paper-review.css",
   "frontend/src/pages/Library.jsx",
 ];
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR399_LIBRARY_INTERACTION_BASELINE;
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR414_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -123,6 +124,15 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
     authorization: "ISSUE_380_COMMENT_5668321194_CONTENT_GOVERNANCE_REMEDIATION",
+  },
+  [PR414_LIBRARY_INTERACTION_BASELINE]: {
+    reviewedSource: { commit: "b6bb598457c3a425c1b8dc77c78db431a95b36e0", tree: "675f7ba7226db6d5de10bf8f1e82995f7d3ff692", base: "24d11e030cdd8401a200379baf404ffb2db37613" },
+    previous: { recordPath: PR399_LIBRARY_INTERACTION_BASELINE, commit: "db5c8f70a5546766c90b196eb85cdb18be59ceca", hash: "eb5b100dd080afb4213e86f9b91b711bbe442b8a82071161dc9f44cd89ea9738" },
+    authorizedHash: "7bd2fc4b5dc9dcac43a1a9a4086c92075d9ea5443262e77b99385841f66853f4",
+    inputPaths: ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS,
+    changedPaths: ["frontend/src/pages/Library.jsx"],
+    unchangedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css"],
+    authorization: "DIRECT_OWNER_AUTHORIZATION_PR414_HELD_RELEASE_UAT_FAIL_CLOSED",
   },
 };
 
