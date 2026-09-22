@@ -63,6 +63,7 @@ node --test frontend/api/release-proxy.test.js
 CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath \
   src/legalDirectRoutes.test.js \
   src/bookDetailDirectRoute.test.js \
+  src/components/Footer.test.js \
   src/components/ReferencePublicPages.test.jsx
 
 npm run regression:ci

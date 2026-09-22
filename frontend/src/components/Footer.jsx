@@ -60,10 +60,10 @@ export default function Footer() {
       <div className="border-t border-[#dfb85a]/25 bg-[#17090e]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-3 grid gap-2 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center lg:gap-8" data-testid="footer-copyright">
           <p className="text-[0.7rem] tracking-wide text-[#cfb78f]">
-            © {year} The Earnalism Digital Library · <span data-testid="footer-venture-attribution">A Reo Enterprise Venture</span> · All rights reserved.
+            © {year} The Earnalism Digital Library · <span data-testid="footer-venture-attribution">A Reo Enterprise Venture</span> · First-party site material reserved.
           </p>
           <p className="text-[0.68rem] font-light leading-relaxed text-[#cfb78f]/75 lg:text-right" data-testid="footer-content-protection">
-            Copyright protected. No unauthorized copying, redistribution, scraping, reproduction, or commercial reuse.
+            Public-domain literary works and licensed source layers retain their own terms. <Link to="/copyright" className="underline hover:text-[#f0d78e]">Content rights</Link>.
           </p>
         </div>
       </div>

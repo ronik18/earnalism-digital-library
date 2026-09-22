@@ -37,6 +37,9 @@ describe("Footer compact colophon", () => {
     expect(footerSource).toContain('aria-labelledby="footer-explore-heading"');
     expect(footerSource).toContain("min-h-11");
     expect(footerSource).toContain('data-testid="footer-content-protection"');
+    expect(footerSource).toContain("Public-domain literary works and licensed source layers retain their own terms.");
+    expect(footerSource).toContain('to="/copyright"');
+    expect(footerSource).not.toContain("All rights reserved.");
   });
 
   test("mounts configured shared social controls without replacing the contact mailto", () => {
