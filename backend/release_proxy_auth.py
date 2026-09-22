@@ -1,9 +1,10 @@
-"""Fail-closed country assertions for the bounded public-release proxy.
+"""Fail-closed proxy assertions for the bounded public-release proxy.
 
-The Railway API never trusts a browser-provided country header. During an
-India-only public Reader release, the same-origin Vercel function signs the
-provider-derived country, request method, and path with a shared secret. The
-helpers here are deliberately I/O-free so malformed, stale, or direct API
+The Railway API never trusts a browser-provided assertion. The same-origin
+Vercel function signs a fixed release scope, request method, and path with a
+shared secret. The scope authenticates only the proxy path; it is not a
+visitor location and must not be used to restrict user access by geography.
+The helpers here are deliberately I/O-free so malformed, stale, or direct API
 requests can be rejected before reader content is loaded.
 """
 from __future__ import annotations
@@ -12,15 +13,14 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 import hashlib
 import hmac
-import re
 from typing import Mapping
 
 
-COUNTRY_HEADER = "x-earnalism-release-country"
+SCOPE_HEADER = "x-earnalism-release-scope"
 TIMESTAMP_HEADER = "x-earnalism-release-timestamp"
 SIGNATURE_HEADER = "x-earnalism-release-signature"
 MAX_SIGNATURE_AGE_SECONDS = 300
-COUNTRY_CODE = re.compile(r"^[A-Z]{2}$")
+PUBLIC_RELEASE_SCOPE = "PUBLIC"
 
 
 @dataclass(frozen=True)
@@ -29,15 +29,15 @@ class ReleaseProxyVerdict:
     code: str
 
 
-def canonical_request(method: str, path: str, country: str, timestamp: int) -> bytes:
+def canonical_request(method: str, path: str, scope: str, timestamp: int) -> bytes:
     """Return the exact HMAC input shared by Vercel and Railway."""
-    return f"{method.upper()}\\n{path}\\n{country}\\n{timestamp}".encode("utf-8")
+    return f"{method.upper()}\\n{path}\\n{scope}\\n{timestamp}".encode("utf-8")
 
 
-def request_signature(secret: str, method: str, path: str, country: str, timestamp: int) -> str:
+def request_signature(secret: str, method: str, path: str, scope: str, timestamp: int) -> str:
     return hmac.new(
         secret.encode("utf-8"),
-        canonical_request(method, path, country, timestamp),
+        canonical_request(method, path, scope, timestamp),
         hashlib.sha256,
     ).hexdigest()
 
@@ -48,7 +48,6 @@ def verify_release_proxy_request(
     method: str,
     path: str,
     secret: str,
-    allowed_countries: frozenset[str],
     now: datetime | None = None,
 ) -> ReleaseProxyVerdict:
     """Verify a bounded Vercel assertion without accepting client input."""
@@ -60,9 +59,9 @@ def verify_release_proxy_request(
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_METHOD_INVALID")
 
     normalized_headers = {str(key).lower(): str(value) for key, value in headers.items()}
-    country = normalized_headers.get(COUNTRY_HEADER, "").upper()
-    if not COUNTRY_CODE.fullmatch(country) or country not in allowed_countries:
-        return ReleaseProxyVerdict(False, "RELEASE_COUNTRY_NOT_ALLOWED")
+    scope = normalized_headers.get(SCOPE_HEADER, "")
+    if scope != PUBLIC_RELEASE_SCOPE:
+        return ReleaseProxyVerdict(False, "RELEASE_PROXY_SCOPE_INVALID")
 
     raw_timestamp = normalized_headers.get(TIMESTAMP_HEADER, "")
     try:
@@ -76,7 +75,7 @@ def verify_release_proxy_request(
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_SIGNATURE_STALE")
 
     received = normalized_headers.get(SIGNATURE_HEADER, "")
-    expected = request_signature(secret, method, path, country, timestamp)
+    expected = request_signature(secret, method, path, scope, timestamp)
     if not isinstance(received, str) or not hmac.compare_digest(received, expected):
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_SIGNATURE_INVALID")
-    return ReleaseProxyVerdict(True, "RELEASE_COUNTRY_ALLOWED")
+    return ReleaseProxyVerdict(True, "RELEASE_PROXY_AUTHENTICATED")

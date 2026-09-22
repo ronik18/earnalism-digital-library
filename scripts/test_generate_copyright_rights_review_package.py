@@ -31,16 +31,16 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
         self.assertIn('"result": "PASS"', result.stdout)
         return json.loads((output / "copyright-rights-inventory.json").read_text(encoding="utf-8"))
 
-    def test_inventory_covers_every_controlled_publication_and_is_hold_only(self) -> None:
+    def test_inventory_covers_every_controlled_publication_and_reports_current_allowlist(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             package = self.build(Path(temporary))
         expected = sorted(path.name for path in (ROOT / "data" / "controlled_publications").iterdir() if path.is_dir())
         self.assertEqual([item["slug"] for item in package["titles"]], expected)
         self.assertEqual(package["inventory_summary"]["title_count"], len(expected))
-        self.assertEqual(package["inventory_summary"]["titles_with_hold"], len(expected))
-        self.assertEqual(package["inventory_summary"]["accepted_rights_record_count"], 0)
-        self.assertEqual(package["conclusion"], "COPYRIGHT_EVIDENCE_INCOMPLETE")
-        self.assertTrue(all(title["title_release_status"] == "HOLD" for title in package["titles"]))
+        self.assertEqual(package["inventory_summary"]["accepted_rights_record_count"], 3)
+        self.assertEqual(package["conclusion"], "INDIA_RELEASE_EVIDENCE_COMPLETE_FOR_CONTROLLED_ALLOWLIST")
+        accepted = {title["slug"] for title in package["titles"] if title["title_release_status"] == "ACCEPTED_FOR_CONTROLLED_RELEASE"}
+        self.assertEqual(accepted, {"a-ghost-story", "the-tell-tale-heart", "radharani"})
 
     def test_component_schema_and_pilot_scope_are_fail_closed(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -48,8 +48,10 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
         pilot = {title["slug"]: title for title in package["titles"] if title["slug"] in MODULE.PILOT_SLUGS}
         self.assertEqual(set(pilot), set(MODULE.PILOT_SLUGS))
         for title in pilot.values():
-            self.assertEqual(title["jurisdictions_assessed"], ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"])
-            self.assertEqual(title["title_release_status"], "HOLD")
+            expected_countries = ["IN"] if title["slug"] != "yugalanguriya" else ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"]
+            self.assertEqual(title["jurisdictions_assessed"], expected_countries)
+            expected_status = "HOLD" if title["slug"] == "yugalanguriya" else "ACCEPTED_FOR_CONTROLLED_RELEASE"
+            self.assertEqual(title["title_release_status"], expected_status)
             for row in title["components"]:
                 self.assertEqual(tuple(row), MODULE.COMPONENT_FIELDS)
                 self.assertNotEqual(row["decision"], "ACCEPTED")
@@ -68,9 +70,9 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
         self.assertEqual(package["generated_from"]["repository_tree"], TREE)
         self.assertEqual(package["generated_from"]["production_surface_sha256"], SURFACE)
         self.assertEqual(package["technical_fail_closed_evidence"]["result"], "PASS")
-        self.assertFalse(package["technical_fail_closed_evidence"]["public_reader_exposure_enabled"])
+        self.assertTrue(package["technical_fail_closed_evidence"]["public_reader_exposure_enabled"])
         self.assertFalse(package["technical_fail_closed_evidence"]["public_audio_exposure_enabled"])
-        self.assertIn("COPYRIGHT_EVIDENCE_INCOMPLETE", packet)
+        self.assertIn("INDIA_RELEASE_EVIDENCE_COMPLETE_FOR_CONTROLLED_ALLOWLIST", packet)
         self.assertIn("Chapter V", packet)
 
     def test_malformed_chapter_asset_metadata_never_becomes_positive_visual_evidence(self) -> None:

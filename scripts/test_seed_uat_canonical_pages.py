@@ -60,6 +60,23 @@ class CanonicalPageSeedReleaseHoldTests(unittest.TestCase):
             with patch.object(MODULE, "ROOT", root):
                 self.assertFalse(MODULE.public_reader_release_is_held())
 
+    def test_enabled_contract_returns_the_checked_in_allowlist(self) -> None:
+        contract = {"public_reader_exposure_enabled": True, "live_approved_slugs": ["Radharani", "a-ghost-story"]}
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self.write_contracts(root, contract, contract)
+            with patch.object(MODULE, "ROOT", root):
+                self.assertEqual(MODULE.controlled_reader_release_slugs(), ["a-ghost-story", "radharani"])
+
+    def test_enabled_contract_with_duplicate_allowlist_fails_closed(self) -> None:
+        contract = {"public_reader_exposure_enabled": True, "live_approved_slugs": ["a-ghost-story", "A-GHOST-STORY"]}
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self.write_contracts(root, contract, contract)
+            with patch.object(MODULE, "ROOT", root):
+                with self.assertRaisesRegex(SystemExit, "malformed controlled Reader allowlist"):
+                    MODULE.controlled_reader_release_slugs()
+
 
 if __name__ == "__main__":
     unittest.main()

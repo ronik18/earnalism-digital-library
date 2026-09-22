@@ -59,8 +59,8 @@ HEX_SHA256 = re.compile(r"^[a-f0-9]{64}$")
 SYNTHETIC_PREFIX = "synthetic-"
 PRODUCTION_REGISTRY_PATH = Path(__file__).parent / "data" / "rights_decision_registry.json"
 
-# Every effectful route must use a named action.  Integration stays disabled
-# until trusted country assertion and production adapter work are separately
+# Every effectful route must use a named action. Integration stays disabled
+# until the trusted release proxy and production adapter work are separately
 # reviewed, so this table is intentionally executable policy rather than a
 # claim that the listed routes are currently activated.
 RUNTIME_PATH_USES: dict[str, tuple[str, ...]] = {

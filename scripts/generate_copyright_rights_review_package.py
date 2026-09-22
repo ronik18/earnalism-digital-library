@@ -8,15 +8,22 @@ for publication.  A qualified reviewer must make each eventual decision.
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 from hashlib import sha256
 import json
 from pathlib import Path
 import re
 import subprocess
+import sys
 from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from backend.rights_decision_gate import evaluate_runtime_path
+
 PUBLICATIONS = ROOT / "data" / "controlled_publications"
 REGISTRY = ROOT / "backend" / "data" / "rights_decision_registry.json"
 ROOT_LAUNCH = ROOT / "data" / "controlled_launch.json"
@@ -26,6 +33,15 @@ PILOT_SLUGS = (
     "the-tell-tale-heart",
     "radharani",
     "yugalanguriya",
+)
+RELEASE_RIGHTS_OPERATOR_ID = "reo-enterprise"
+RELEASE_RIGHTS_COMPONENT_FILENAMES = (
+    "public_book.json",
+    "reader_manifest.json",
+    "source_evidence.json",
+    "approval_evidence.json",
+    "checksum_manifest.json",
+    "publication_manifest.json",
 )
 COMPONENT_FIELDS = (
     "title", "slug", "asset_component", "component_sha256", "author_creator", "source",
@@ -174,7 +190,36 @@ def chapter_declares_visual_asset(chapter: Any) -> bool:
     return isinstance(count, int) and not isinstance(count, bool) and count > 0
 
 
-def title_inventory(slug: str, pilot_countries: dict[str, list[str]]) -> dict[str, Any]:
+def accepted_controlled_release(slug: str, directory: Path, jurisdictions: list[str], registry: dict[str, Any]) -> bool:
+    """Evaluate the current exact runtime decision without creating one."""
+    country = next((item for item in jurisdictions if item == "IN"), "")
+    decision = read_json(directory / "rights_decision.json")
+    required_components = {
+        name.removesuffix(".json"): digest(directory / name)
+        for name in RELEASE_RIGHTS_COMPONENT_FILENAMES
+    }
+    if not country or not decision or any(value is None for value in required_components.values()):
+        return False
+    accepted_records = registry.get("accepted_records")
+    revoked = registry.get("revoked_decision_ids")
+    if not isinstance(accepted_records, dict) or not isinstance(revoked, list):
+        return False
+    verdict = evaluate_runtime_path(
+        "catalog_cta",
+        record=decision,
+        edition_id=slug,
+        operator_id=RELEASE_RIGHTS_OPERATOR_ID,
+        country=country,
+        country_trusted=True,
+        required_components=required_components,
+        accepted_records=accepted_records,
+        revoked_decision_ids=frozenset(item for item in revoked if isinstance(item, str)),
+        now=datetime.now(timezone.utc),
+    )
+    return verdict.passed is True
+
+
+def title_inventory(slug: str, pilot_countries: dict[str, list[str]], registry: dict[str, Any]) -> dict[str, Any]:
     directory = PUBLICATIONS / slug
     book_path = directory / "public_book.json"
     source_path = directory / "source_evidence.json"
@@ -189,6 +234,7 @@ def title_inventory(slug: str, pilot_countries: dict[str, list[str]]) -> dict[st
     author_death_year = text(source.get("author_death_year") or note.get("author death year"))
     publication_date = text(source.get("original_publication_year") or note.get("original publication year"))
     jurisdictions = list(pilot_countries.get(slug, []))
+    accepted_for_controlled_release = accepted_controlled_release(slug, directory, jurisdictions, registry)
     source_provenance = evidence(source_path) + evidence(ROOT / "content" / "books" / slug / "source-rights.md")
     source_complete = all(source.get(key) for key in ("content_hash", "source_hash", "source_url", "source_name", "source_license", "rights_basis"))
     text_status = "EVIDENCE_READY_FOR_REVIEW" if source_complete else "HOLD"
@@ -305,8 +351,12 @@ def title_inventory(slug: str, pilot_countries: dict[str, list[str]]) -> dict[st
         "slug": slug,
         "title": title,
         "jurisdictions_assessed": jurisdictions,
-        "title_release_status": "HOLD",
-        "title_release_reason": "No accepted hash-bound rights decision exists; public reader and audio exposure are disabled.",
+        "title_release_status": "ACCEPTED_FOR_CONTROLLED_RELEASE" if accepted_for_controlled_release else "HOLD",
+        "title_release_reason": (
+            "Exact hash-bound Reader metadata and cover-display decision is accepted for the documented India assessment scope; audio remains disabled."
+            if accepted_for_controlled_release
+            else "No current accepted hash-bound rights decision exists; the title remains held."
+        ),
         "components": rows,
     }
 
@@ -322,17 +372,18 @@ def build_package(args: argparse.Namespace) -> dict[str, Any]:
         slug: list((pilot_dispositions.get(f"controlled-{slug}") or {}).get("countries") or [])
         for slug in PILOT_SLUGS
     }
-    titles = [title_inventory(directory.name, countries) for directory in sorted(PUBLICATIONS.iterdir()) if directory.is_dir()]
+    titles = [title_inventory(directory.name, countries, registry) for directory in sorted(PUBLICATIONS.iterdir()) if directory.is_dir()]
     components = [component for title in titles for component in title["components"]]
     root_launch = read_json(ROOT_LAUNCH)
     backend_launch = read_json(BACKEND_LAUNCH)
-    expected_hold = (
-        root_launch.get("public_reader_exposure_enabled") is False
+    accepted_slugs = sorted(title["slug"] for title in titles if title["title_release_status"] == "ACCEPTED_FOR_CONTROLLED_RELEASE")
+    release_state_consistent = (
+        root_launch.get("public_reader_exposure_enabled") is True
         and root_launch.get("public_audio_exposure_enabled") is False
-        and root_launch.get("live_approved_slugs") == []
+        and sorted(root_launch.get("live_approved_slugs") or []) == accepted_slugs
         and backend_launch == root_launch
-        and registry.get("accepted_records") == {}
-        and all((pilot_dispositions.get(f"controlled-{slug}") or {}).get("status") == "HOLD" for slug in PILOT_SLUGS)
+        and len(registry.get("accepted_records") or {}) == len(accepted_slugs)
+        and (pilot_dispositions.get("controlled-yugalanguriya") or {}).get("status") == "HOLD"
     )
     return {
         "schema_version": "earnalism.copyright-rights-review-package.v1",
@@ -363,7 +414,7 @@ def build_package(args: argparse.Namespace) -> dict[str, Any]:
             "public_audio_exposure_enabled": root_launch.get("public_audio_exposure_enabled"),
             "live_approved_slugs": root_launch.get("live_approved_slugs"),
             "root_backend_launch_parity": backend_launch == root_launch,
-            "result": "PASS" if expected_hold else "FAIL",
+            "result": "PASS" if release_state_consistent else "FAIL",
         },
         "inventory_summary": {
             "title_count": len(titles),
@@ -382,8 +433,12 @@ def build_package(args: argparse.Namespace) -> dict[str, Any]:
             "Does each proposed decision contain the exact component hashes, operator identity, uses, territories, validity, evidence, and reviewer attribution required by backend/rights_decision_gate.py?",
             "Do unresolved facts require the title to remain HOLD?",
         ],
-        "conclusion": "COPYRIGHT_EVIDENCE_INCOMPLETE",
-        "conclusion_reason": "The repository records zero accepted rights decisions, all four pilot dispositions are HOLD, and component provenance/territory/licence facts remain incomplete for qualified review.",
+        "conclusion": "INDIA_RELEASE_EVIDENCE_COMPLETE_FOR_CONTROLLED_ALLOWLIST" if release_state_consistent else "COPYRIGHT_EVIDENCE_INCOMPLETE",
+        "conclusion_reason": (
+            "The current exact registry and allowlist agree on the accepted India Reader titles; Yugalanguriya and every unlisted title remain HOLD."
+            if release_state_consistent
+            else "The current registry, immutable decision artifacts, and controlled launch allowlist do not form a consistent accepted release state."
+        ),
     }
 
 
@@ -401,7 +456,7 @@ def markdown(package: dict[str, Any]) -> str:
         f"- Production-surface fingerprint: `{package['generated_from']['production_surface_sha256']}`.",
         f"- Generator revision: `{package['generated_from']['generator_head']}` (tree `{package['generated_from']['generator_tree']}`).",
         f"- Full repository-controlled inventory: {summary['title_count']} titles and {summary['component_count']} component rows in `copyright-rights-inventory.json`.",
-        "- The four-title pilot remains the review priority; all other controlled titles are inventory-only and remain held.",
+        "- The three current controlled-release titles are reported from their immutable accepted records; Yugalanguriya and all other controlled titles remain held.",
         "- Customer/accounting acceptance, rights acceptance, publication activation, deployment, and production mutation are outside this packet.",
         "",
         "## Technical fail-closed evidence",
@@ -413,7 +468,7 @@ def markdown(package: dict[str, Any]) -> str:
         f"| Live title allowlist | `{technical['root_controlled_launch']['path']}` | `{technical['live_approved_slugs']}` |",
         f"| Accepted rights records | `{technical['rights_registry']['path']}` | `{technical['accepted_rights_record_count']}` |",
         f"| Root/backend parity | controlled-launch SHA-256 bindings | `{technical['root_backend_launch_parity']}` |",
-        f"| Hold evidence | registry disposition bindings | `{technical['result']}` |",
+        f"| Controlled-release consistency | registry and allowlist bindings | `{technical['result']}` |",
         "",
         "## Pilot title disposition package",
         "",
@@ -440,7 +495,7 @@ def markdown(package: dict[str, Any]) -> str:
         lines.append(f"- [{material['topic']}]({material['url']})")
     lines.extend([
         "",
-        "For the remaining pilot countries, the reviewer must determine the applicable law, governing facts, permitted acts, territory, licence effect, and any notice obligation. A source label is not treated as global clearance.",
+        "The current public release is assessed for India. This evidence package does not represent a global legal-clearance conclusion.",
         "",
         "## Required reviewer decisions",
         "",
@@ -452,7 +507,7 @@ def markdown(package: dict[str, Any]) -> str:
         "",
         f"`{package['conclusion']}` — {package['conclusion_reason']}",
         "",
-        "No component is ACCEPTED by this packet. Each title stays HOLD until an authorised human reviewer supplies a hash-bound decision record under the repository rights-decision schema.",
+        "This packet reports existing immutable decisions but does not create or alter them. Every title without a current accepted hash-bound decision remains HOLD.",
         "",
     ])
     return "\n".join(lines)

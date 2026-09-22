@@ -387,12 +387,14 @@ def test_public_audiobook_endpoint_404s_dracula_when_audio_disabled(monkeypatch)
     assert "Audiobook asset" in exc.value.detail
 
 
-def test_sitemap_truth_omits_book_routes_while_public_release_is_held():
+def test_sitemap_truth_lists_only_the_exact_controlled_reader_release():
     sitemap = (catalog_truth.ROOT / "frontend" / "public" / "sitemap.xml").read_text(encoding="utf-8")
 
-    assert "/book/" not in sitemap
+    for slug in ("a-ghost-story", "the-tell-tale-heart", "radharani"):
+        assert f"/book/{slug}" in sitemap
+    assert "/book/yugalanguriya" not in sitemap
+    assert "/book/dracula" not in sitemap
     assert "/reader/" not in sitemap
-    assert "library?category=" not in sitemap
 
 
 def test_catalog_truth_rows_keep_audio_false_for_every_status():

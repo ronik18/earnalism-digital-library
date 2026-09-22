@@ -1662,19 +1662,15 @@ def _is_controlled_public_slug(slug: str) -> bool:
     )
 
 
-def _release_proxy_countries() -> frozenset[str]:
-    """Read the explicit country scope without treating malformed config as IN."""
-    countries = CONTROLLED_LAUNCH_CONFIG.get("public_release_country_codes")
-    if not isinstance(countries, list):
-        return frozenset()
-    normalized = {str(country).strip().upper() for country in countries}
-    if not normalized or any(not re.fullmatch(r"[A-Z]{2}", country) for country in normalized):
-        return frozenset()
-    return frozenset(normalized)
+def _launch_compliance_jurisdiction() -> str:
+    """Return the documented launch assessment jurisdiction, never visitor location."""
+    country = CONTROLLED_LAUNCH_CONFIG.get("launch_compliance_jurisdiction")
+    normalized = str(country or "").strip().upper()
+    return normalized if re.fullmatch(r"[A-Z]{2}", normalized) else ""
 
 
 def _is_release_proxy_protected_path(path: str) -> bool:
-    """Restrict signed country assertions to public catalogue/Reader content."""
+    """Restrict signed proxy assertions to public catalogue/Reader content."""
     if not isinstance(path, str):
         return False
     return (
@@ -1692,14 +1688,14 @@ def _release_proxy_access_verdict(request: Request):
         method=request.method,
         path=request.url.path,
         secret=os.getenv("EARNALISM_RELEASE_PROXY_SECRET", ""),
-        allowed_countries=_release_proxy_countries(),
     )
 
 
-# Public Reader traffic may open only after a release proxy has established the
-# country *and* every requested title has a separately accepted, immutable
-# decision. The files below are metadata-only artifacts; chapter bodies are
-# never read by this boundary.
+# Public Reader traffic may open only after the release proxy has authenticated
+# the request and every requested title has a separately accepted, immutable
+# decision. The India launch assessment scope is a release-evidence field, not
+# visitor geography; access is not conditioned on a user's location. The files
+# below are metadata-only artifacts; chapter bodies are never read here.
 RELEASE_RIGHTS_OPERATOR_ID = "reo-enterprise"
 RELEASE_RIGHTS_COMPONENT_FILENAMES = (
     "public_book.json",
@@ -1756,7 +1752,7 @@ def _release_rights_verdict(request: Request) -> DecisionGateVerdict:
     targets = _release_rights_action_targets(request.url.path)
     if not targets:
         return DecisionGateVerdict(False, ("PUBLIC_RELEASE_PATH_UNMAPPED",))
-    country = str(request.headers.get("x-earnalism-release-country") or "").strip().upper()
+    country = _launch_compliance_jurisdiction()
     try:
         accepted_records, revoked_decision_ids = load_production_registry()
     except (OSError, ValueError, TypeError, _json.JSONDecodeError):
@@ -1770,7 +1766,7 @@ def _release_rights_verdict(request: Request) -> DecisionGateVerdict:
             edition_id=slug,
             operator_id=RELEASE_RIGHTS_OPERATOR_ID,
             country=country,
-            country_trusted=True,
+            country_trusted=bool(country),
             required_components=components,
             accepted_records=accepted_records,
             revoked_decision_ids=revoked_decision_ids,
@@ -5318,11 +5314,11 @@ app = FastAPI(
 
 @app.middleware("http")
 async def enforce_public_release_country(request: Request, call_next):
-    """Deny direct or out-of-scope Reader traffic once a public release opens.
+    """Deny direct or unapproved Reader traffic once a public release opens.
 
     The controlled launch is normally held, so this has no effect on private
     admin or test work. A public Reader launch requires the Vercel proxy's
-    short-lived HMAC assertion; a browser header alone cannot satisfy it.
+    short-lived HMAC assertion; this authenticates the proxy, not geography.
     """
     if PUBLIC_READER_EXPOSURE_ENABLED and _is_release_proxy_protected_path(request.url.path):
         verdict = _release_proxy_access_verdict(request)

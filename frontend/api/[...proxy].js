@@ -1,9 +1,10 @@
 const crypto = require("node:crypto");
 
-const COUNTRY_HEADER = "x-earnalism-release-country";
+const SCOPE_HEADER = "x-earnalism-release-scope";
 const TIMESTAMP_HEADER = "x-earnalism-release-timestamp";
 const SIGNATURE_HEADER = "x-earnalism-release-signature";
 const DEFAULT_UPSTREAM = "https://api.theearnalism.com";
+const PUBLIC_RELEASE_SCOPE = "PUBLIC";
 
 function upstreamOrigin() {
   try {
@@ -22,9 +23,9 @@ function protectedReaderPath(pathname) {
     || pathname.startsWith("/api/reading-pass/books/");
 }
 
-function releaseSignature(secret, method, pathname, country, timestamp) {
+function releaseSignature(secret, method, pathname, scope, timestamp) {
   return crypto.createHmac("sha256", secret)
-    .update(`${method.toUpperCase()}\\n${pathname}\\n${country}\\n${timestamp}`)
+    .update(`${method.toUpperCase()}\\n${pathname}\\n${scope}\\n${timestamp}`)
     .digest("hex");
 }
 
@@ -54,17 +55,16 @@ module.exports = async function releaseProxy(req, res) {
 
   if (protectedReaderPath(incoming.pathname)) {
     const secret = process.env.EARNALISM_RELEASE_PROXY_SECRET || "";
-    const country = String(req.headers["x-vercel-ip-country"] || "").trim().toUpperCase();
-    if (secret.length < 32 || !/^[A-Z]{2}$/.test(country)) {
-      res.statusCode = 451;
+    if (secret.length < 32) {
+      res.statusCode = 503;
       res.setHeader("Cache-Control", "no-store");
       res.end();
       return;
     }
     const timestamp = Math.floor(Date.now() / 1000);
-    headers.set(COUNTRY_HEADER, country);
+    headers.set(SCOPE_HEADER, PUBLIC_RELEASE_SCOPE);
     headers.set(TIMESTAMP_HEADER, String(timestamp));
-    headers.set(SIGNATURE_HEADER, releaseSignature(secret, req.method || "GET", incoming.pathname, country, timestamp));
+    headers.set(SIGNATURE_HEADER, releaseSignature(secret, req.method || "GET", incoming.pathname, PUBLIC_RELEASE_SCOPE, timestamp));
   }
 
   try {

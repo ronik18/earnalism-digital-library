@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import time
 from types import SimpleNamespace
 
 from fastapi.testclient import TestClient
@@ -16,8 +17,11 @@ os.environ["ENVIRONMENT"] = "production"
 os.environ.pop("CORS_ORIGINS", None)
 os.environ.pop("FRONTEND_URL", None)
 os.environ["READING_PASS_V2_ENABLED"] = "false"
+RELEASE_PROXY_TEST_SECRET = "cors-cache-header-release-proxy-test-secret-20260922"
+os.environ["EARNALISM_RELEASE_PROXY_SECRET"] = RELEASE_PROXY_TEST_SECRET
 
 from backend import server
+from backend.release_proxy_auth import PUBLIC_RELEASE_SCOPE, SCOPE_HEADER, SIGNATURE_HEADER, TIMESTAMP_HEADER, request_signature
 
 
 class _EmptyBooksCursor:
@@ -87,8 +91,14 @@ def _vary_tokens(response):
     ]
 
 
-def _public_request_headers(origin=None):
-    headers = {"Accept-Encoding": "gzip"}
+def _public_request_headers(origin=None, *, path="/api/books"):
+    timestamp = int(time.time())
+    headers = {
+        "Accept-Encoding": "gzip",
+        SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
+        TIMESTAMP_HEADER: str(timestamp),
+        SIGNATURE_HEADER: request_signature(RELEASE_PROXY_TEST_SECRET, "GET", path, PUBLIC_RELEASE_SCOPE, timestamp),
+    }
     if origin is not None:
         headers["Origin"] = origin
     return headers

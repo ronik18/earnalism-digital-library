@@ -10,11 +10,11 @@ test("release proxy signs only the fixed Reader/catalogue surface", () => {
   assert.equal(protectedReaderPath("/api/payments/topup"), false);
 });
 
-test("release proxy canonical signature binds method, exact path, country, and timestamp", () => {
+test("release proxy canonical signature binds method, exact path, scope, and timestamp", () => {
   const secret = "release-proxy-test-secret-that-is-long-enough";
-  const signature = releaseSignature(secret, "GET", "/api/books", "IN", 1_790_092_800);
+  const signature = releaseSignature(secret, "GET", "/api/books", "PUBLIC", 1_790_092_800);
   assert.match(signature, /^[a-f0-9]{64}$/);
-  assert.notEqual(signature, releaseSignature(secret, "GET", "/api/books", "US", 1_790_092_800));
-  assert.notEqual(signature, releaseSignature(secret, "HEAD", "/api/books", "IN", 1_790_092_800));
-  assert.notEqual(signature, releaseSignature(secret, "GET", "/api/books/other", "IN", 1_790_092_800));
+  assert.notEqual(signature, releaseSignature(secret, "GET", "/api/books", "OTHER", 1_790_092_800));
+  assert.notEqual(signature, releaseSignature(secret, "HEAD", "/api/books", "PUBLIC", 1_790_092_800));
+  assert.notEqual(signature, releaseSignature(secret, "GET", "/api/books/other", "PUBLIC", 1_790_092_800));
 });

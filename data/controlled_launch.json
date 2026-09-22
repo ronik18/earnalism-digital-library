@@ -2,9 +2,7 @@
   "public_reader_exposure_enabled": true,
   "public_audio_exposure_enabled": false,
   "public_paid_commerce_enabled": false,
-  "public_release_country_codes": [
-    "IN"
-  ],
+  "launch_compliance_jurisdiction": "IN",
   "live_approved_slugs": [
     "a-ghost-story",
     "the-tell-tale-heart",
