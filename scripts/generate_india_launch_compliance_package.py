@@ -564,10 +564,19 @@ def existing_launch_hold() -> dict[str, Any]:
 
 
 def public_legal_routes_registered() -> bool:
-    """Check the source-controlled public routes, not an old narrative draft."""
+    """Check both SPA and production-routing sources, not an old narrative draft."""
     app = (ROOT / "frontend" / "src" / "App.js").read_text(encoding="utf-8")
     pages = (ROOT / "frontend" / "src" / "pages" / "LegalPages.jsx").read_text(encoding="utf-8")
-    return all(route in app for route in ('path="/privacy"', 'path="/terms"', 'path="/copyright"')) and all(
+    vercel = read_json(ROOT / "frontend" / "vercel.json")
+    rewrites = vercel.get("rewrites") if isinstance(vercel, dict) else []
+    if not isinstance(rewrites, list):
+        rewrites = []
+    deployed_routes = {
+        item.get("source")
+        for item in rewrites if isinstance(item, dict) and item.get("destination") == "/index.html"
+    }
+    required_routes = {"/privacy", "/terms", "/copyright"}
+    return required_routes.issubset(deployed_routes) and all(route in app for route in ('path="/privacy"', 'path="/terms"', 'path="/copyright"')) and all(
         component in pages for component in ("export function Privacy", "export function Terms", "export function CopyrightNotice")
     )
 

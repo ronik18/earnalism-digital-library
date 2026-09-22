@@ -307,6 +307,18 @@
       "destination": "/index.html"
     },
     {
+      "source": "/privacy",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/copyright",
+      "destination": "/index.html"
+    },
+    {
       "source": "/micro-story",
       "destination": "/index.html"
     },
