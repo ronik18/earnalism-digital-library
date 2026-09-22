@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useStat
 import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
 import BookCoverImage from "./BookCoverImage";
-import { canShowStartReading, LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
+import { canShowStartReading } from "../lib/controlledLaunch";
 
 function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks = 0 }) {
   const marqueeRef = useRef(null);
@@ -46,7 +46,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
   );
   activeCountRef.current = liveBooks.length;
   const hasLiveBooks = liveBooks.length > 0;
-  const visibleTotal = liveBooks.filter((book) => book.slug === LIVE_APPROVED_SLUG).length || liveBooks.length;
+  const visibleTotal = liveBooks.length;
 
   useEffect(() => {
     pausedRef.current = isPaused;
@@ -328,10 +328,10 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
                 data-testid={isInteractiveCopy ? `live-cover-card-${book.slug}` : undefined}
               >
                 <Link
-                  to={book.slug === LIVE_APPROVED_SLUG ? `/reader/${book.slug}` : `/book/${LIVE_APPROVED_SLUG}`}
+                  to={`/book/${book.slug}`}
                   tabIndex={isInteractiveCopy ? 0 : -1}
                   className="live-cover-card__link"
-                  aria-label={book.slug === LIVE_APPROVED_SLUG ? `Read the first 3 pages of ${book.title}` : `${book.title} is coming soon`}
+                  aria-label={`Open ${book.title}`}
                   data-testid={isInteractiveCopy ? `live-cover-preview-${book.slug}` : undefined}
                   draggable="false"
                 >
@@ -348,7 +348,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
                       draggable="false"
                     />
                     <span className="live-cover-card__preview">
-                      <BookOpen size={13} strokeWidth={1.6} /> {book.slug === LIVE_APPROVED_SLUG ? "Chapter 1" : "Soon"}
+                      <BookOpen size={13} strokeWidth={1.6} /> Open
                     </span>
                   </span>
                   <span className="live-cover-card__body">

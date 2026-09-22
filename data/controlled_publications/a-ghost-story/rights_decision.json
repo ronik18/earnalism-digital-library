@@ -1,0 +1,23 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20260922-a-ghost-story-reader-release",
+  "edition_id": "a-ghost-story",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "approval_evidence": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
+    "checksum_manifest": "db5714479168dcc60f000202266c69f38c48d8d4910d7a89c1d7e7118cb66c95",
+    "public_book": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe",
+    "publication_manifest": "36e482f94c0e025c0c78048ffa7fb1b1913fe2a946fdecd6f9c49326e9110bf8",
+    "reader_manifest": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9",
+    "source_evidence": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b"
+  },
+  "territories": ["IN"],
+  "uses": ["catalog_metadata", "cover_display", "reader_preview", "reader_delivery"],
+  "valid_from": "2026-09-22T00:00:00+00:00",
+  "valid_until": "2036-09-22T00:00:00+00:00",
+  "basis": "India-only text-reader release: documented expired-term evidence, identified source edition/text integrity, and first-party cover provenance.",
+  "evidence_sha256": ["b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f", "4e14087173c0327d8681fcbe950c76076c0871fa30cb26c34851ef3df9fe9596", "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15"],
+  "accepted_by": "REO ENTERPRISE proprietor under the direct PR #414 go-live mandate",
+  "conditions_satisfied": true
+}

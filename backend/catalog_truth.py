@@ -192,9 +192,14 @@ def approved_manifest_slugs() -> tuple[str, ...]:
     return tuple(sorted(set(approved)))
 
 
+# A publication manifest demonstrates package readiness, but it is not a
+# release decision.  The production allowlist must remain the explicit
+# controlled-launch list so historical manifests cannot widen public exposure
+# after the Reader switch is enabled.  Runtime request handling then binds
+# each configured title to its separate hash-bound accepted decision.
 CONTROLLED_LIVE_BOOK_SLUGS = tuple(
     slug
-    for slug in dict.fromkeys((*LEGACY_CONTROLLED_LIVE_BOOK_SLUGS, *approved_manifest_slugs()))
+    for slug in LEGACY_CONTROLLED_LIVE_BOOK_SLUGS
     if slug not in PUBLIC_CATALOG_EXCLUDED_SLUGS
 )
 # Historical compatibility name: this constant is the Dracula-specific slug,
@@ -1051,14 +1056,11 @@ def is_live_approved_book(book: dict[str, Any]) -> bool:
     slug = normalize_slug(book.get("slug"))
     if not slug or slug in PUBLIC_CATALOG_EXCLUDED_SLUGS:
         return False
-    manifest = book.get("publication_manifest")
-    manifest_approved = manifest_reader_exposed(manifest) if isinstance(manifest, dict) else False
-    conveyor = nested_dict(book, "audiobook_release_conveyor")
-    conveyor_reader_approved = (
-        conveyor.get("schema_version") == AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA
-        and conveyor.get("reader_release_approved") is True
-    )
-    if slug not in LEGACY_CONTROLLED_LIVE_BOOK_SLUGS and not manifest_approved and not conveyor_reader_approved:
+    # A manifest or retained audio conveyor can validate an artifact, but it
+    # cannot itself publish it.  Public eligibility is constrained to the
+    # explicit controlled launch allowlist; the server separately applies the
+    # hash-bound decision gate before serving the request.
+    if slug not in CONTROLLED_LIVE_BOOK_SLUGS:
         return False
     workflow = canonical_workflow(book)
     if workflow:

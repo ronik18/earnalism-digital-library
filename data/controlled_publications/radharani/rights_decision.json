@@ -1,0 +1,23 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20260922-radharani-reader-release",
+  "edition_id": "radharani",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "approval_evidence": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc",
+    "checksum_manifest": "fb674a5f55ed313a6286d14664c0575b47ae5c52da2b653a707bb819f7251f5d",
+    "public_book": "3a12e9da36cba5c24b9ae3af6e002aff81e8676d998ec2f35468796acebec585",
+    "publication_manifest": "9e5730c1d35cbb422a6b20b924e6decbb27f6392d314b88773025241fddfe467",
+    "reader_manifest": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555",
+    "source_evidence": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95"
+  },
+  "territories": ["IN"],
+  "uses": ["catalog_metadata", "cover_display", "reader_preview", "reader_delivery"],
+  "valid_from": "2026-09-22T00:00:00+00:00",
+  "valid_until": "2036-09-22T00:00:00+00:00",
+  "basis": "India-only text-reader release: documented expired-term evidence, identified source edition/text integrity, and first-party cover provenance.",
+  "evidence_sha256": ["e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e", "332135f42281789b346f7aed5100a05630b8dfc637c5177ff85de17e5a6e890d", "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15"],
+  "accepted_by": "REO ENTERPRISE proprietor under the direct PR #414 go-live mandate",
+  "conditions_satisfied": true
+}

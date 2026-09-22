@@ -18,11 +18,11 @@ from backend.rights_decision_gate import DecisionGateVerdict
 SECRET = "release-proxy-test-secret-that-is-long-enough"
 
 
-def request_with_headers(headers: dict[str, str]) -> Request:
+def request_with_headers(headers: dict[str, str], *, path: str = "/api/books") -> Request:
     return Request({
         "type": "http",
         "method": "GET",
-        "path": "/api/books",
+        "path": path,
         "headers": [(key.encode("latin-1"), value.encode("latin-1")) for key, value in headers.items()],
         "query_string": b"",
         "server": ("testserver", 443),
@@ -75,18 +75,31 @@ def test_public_reader_release_denies_signed_request_without_accepted_rights(mon
     assert response.body == b'{"detail":{"code":"RELEASE_RIGHTS_DENIED"}}'
 
 
-def test_runtime_rights_boundary_fails_closed_when_an_artifact_has_no_accepted_record():
-    request = Request({
-        "type": "http",
-        "method": "GET",
-        "path": "/api/books/a-ghost-story",
-        "headers": [(COUNTRY_HEADER.encode("latin-1"), b"IN")],
-        "query_string": b"",
-        "server": ("testserver", 443),
-        "scheme": "https",
-    })
+def test_runtime_rights_boundary_fails_closed_when_an_artifact_has_no_accepted_record(monkeypatch):
+    monkeypatch.setattr(server, "_release_rights_artifact", lambda _slug: (None, {}))
+    request = request_with_headers({COUNTRY_HEADER: "IN"}, path="/api/books/a-ghost-story")
 
     verdict = server._release_rights_verdict(request)
 
     assert verdict.passed is False
     assert "ACCEPTED_DECISION_MISSING" in verdict.reasons
+
+
+def test_runtime_rights_boundary_allows_only_exactly_accepted_india_titles(monkeypatch):
+    monkeypatch.setattr(
+        server,
+        "CONTROLLED_LIVE_BOOK_SLUGS",
+        ("a-ghost-story", "the-tell-tale-heart", "radharani"),
+    )
+
+    for slug in server.CONTROLLED_LIVE_BOOK_SLUGS:
+        verdict = server._release_rights_verdict(
+            request_with_headers({COUNTRY_HEADER: "IN"}, path=f"/api/books/{slug}")
+        )
+        assert verdict.passed is True
+
+    held = server._release_rights_verdict(
+        request_with_headers({COUNTRY_HEADER: "IN"}, path="/api/books/yugalanguriya")
+    )
+    assert held.passed is False
+    assert "ACCEPTED_DECISION_MISSING" in held.reasons

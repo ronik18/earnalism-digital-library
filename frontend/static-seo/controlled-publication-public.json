@@ -1,8 +1,72 @@
 {
   "schema_version": "earnalism.static-seo-public.v2",
-  "public_release_held": true,
+  "public_release_held": false,
   "generated_from": {
-    "data/controlled_launch.json": "006dd1444309570d623c0b138ae4a64212b16dd6c5630bb687bfb92679bdec9d"
+    "data/controlled_launch.json": "25f1d67f7ee64e0976b589ace77fd68ada9017160497570b1924da697f2c30e9",
+    "data/controlled_publications/a-ghost-story/public_book.json": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe",
+    "data/controlled_publications/a-ghost-story/reader_manifest.json": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9",
+    "data/controlled_publications/a-ghost-story/source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
+    "data/controlled_publications/a-ghost-story/approval_evidence.json": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
+    "data/controlled_publications/radharani/public_book.json": "3a12e9da36cba5c24b9ae3af6e002aff81e8676d998ec2f35468796acebec585",
+    "data/controlled_publications/radharani/reader_manifest.json": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555",
+    "data/controlled_publications/radharani/source_evidence.json": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95",
+    "data/controlled_publications/radharani/approval_evidence.json": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc",
+    "data/controlled_publications/the-tell-tale-heart/public_book.json": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
+    "data/controlled_publications/the-tell-tale-heart/reader_manifest.json": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
+    "data/controlled_publications/the-tell-tale-heart/source_evidence.json": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
+    "data/controlled_publications/the-tell-tale-heart/approval_evidence.json": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a"
   },
-  "publications": []
+  "publications": [
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "author": "Mark Twain",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+      "chapter_count": 1,
+      "source_display_name": "Project Gutenberg",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/a-ghost-story",
+        "reader": "/reader/a-ghost-story",
+        "listener": "/listener/a-ghost-story"
+      }
+    },
+    {
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+      "chapter_count": 8,
+      "source_display_name": "Bengali Wikisource",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/radharani",
+        "reader": "/reader/radharani",
+        "listener": "/listener/radharani"
+      }
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "author": "Edgar Allan Poe",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+      "chapter_count": 1,
+      "source_display_name": "Project Gutenberg",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-tell-tale-heart",
+        "reader": "/reader/the-tell-tale-heart",
+        "listener": "/listener/the-tell-tale-heart"
+      }
+    }
+  ]
 }

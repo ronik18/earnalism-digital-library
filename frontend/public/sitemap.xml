@@ -61,6 +61,36 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://theearnalism.com/library?category=gothic-fiction</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/library?category=literary-fiction</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/a-ghost-story</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/radharani</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/the-tell-tale-heart</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theearnalism.com/journal/how-reading-shapes-better-founders</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>

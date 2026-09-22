@@ -11,7 +11,6 @@ import {
   DRACULA_CTA_EVENTS,
   DRACULA_RIGHTS_NOTE,
   DRACULA_SOURCE_NOTE,
-  DRACULA_FALLBACK_BOOK,
   LIVE_APPROVED_SLUG,
   PUBLIC_READER_EXPOSURE_ENABLED,
   mergeDraculaBook,
@@ -139,23 +138,13 @@ export default function BookDetail() {
         setLoadStatus("ready");
         return;
       }
-      if (PUBLIC_READER_EXPOSURE_ENABLED && slug === LIVE_APPROVED_SLUG) {
-        setBook(DRACULA_FALLBACK_BOOK);
-        setLoadStatus("ready");
-        return;
-      }
       setBook(null);
       setLoadStatus("not_found");
     })
       .catch((err) => {
         if (err.name !== "CanceledError") {
-          if (PUBLIC_READER_EXPOSURE_ENABLED && (err.response?.status === 404 || !err.response) && slug === LIVE_APPROVED_SLUG) {
-            setBook(DRACULA_FALLBACK_BOOK);
-            setLoadStatus("ready");
-          } else {
-            setBook(null);
-            setLoadStatus(err.response?.status === 404 ? "not_found" : "error");
-          }
+          setBook(null);
+          setLoadStatus(err.response?.status === 404 ? "not_found" : "error");
         }
       }).finally(() => {
         if (!controller.signal.aborted) setLoading(false);

@@ -2,7 +2,15 @@ export const LIVE_APPROVED_SLUG = "dracula";
 // This is the client-side counterpart to data/controlled_launch.json.  It
 // keeps bundled fallbacks and stale browser caches from advertising a Reader
 // or Listener while the public release is held pending exact rights decisions.
-export const PUBLIC_READER_EXPOSURE_ENABLED = false;
+export const PUBLIC_READER_EXPOSURE_ENABLED = true;
+// This mirrors the explicit server-side controlled-launch allowlist. It is a
+// second fail-closed boundary for cached or malformed catalogue responses; it
+// must never be expanded by a historical manifest or presentation-only flag.
+export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
+  "a-ghost-story",
+  "the-tell-tale-heart",
+  "radharani",
+]);
 // The India text launch does not offer paid Reading Passes until the live
 // Razorpay, consumer-remedy, and accounting surface has been independently
 // qualified.  This is a release control, not a client-only presentation hint.
@@ -184,7 +192,7 @@ function canonicalBookRoute(slug) {
 export function isLiveApprovedBook(book = {}) {
   if (!PUBLIC_READER_EXPOSURE_ENABLED) return false;
   const slug = normalizedSlug(book);
-  if (!slug) return false;
+  if (!slug || !PUBLIC_READER_RELEASED_SLUGS.includes(slug)) return false;
   const tier = normalizedRightsTier(book);
   const status = normalizedVerificationStatus(book);
   if (tier && tier !== "A") return false;

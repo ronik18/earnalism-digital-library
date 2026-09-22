@@ -140,18 +140,15 @@ def test_no_auto_posting_command_or_social_api_credentials_exist():
     assert "api_key" not in new_script_sources
 
 
-def test_public_reader_and_audio_release_are_explicitly_held_pending_rights_decisions():
-    assert catalog_truth.PUBLIC_READER_EXPOSURE_ENABLED is False
-    assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == ()
+def test_public_reader_opens_only_the_exact_india_text_allowlist_and_audio_stays_held():
+    assert catalog_truth.PUBLIC_READER_EXPOSURE_ENABLED is True
+    assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == (
+        "a-ghost-story", "the-tell-tale-heart", "radharani",
+    )
     assert catalog_truth.AUDIO_ENABLED_SLUGS == set()
     assert catalog_truth.PIPELINE_CANDIDATE_SLUGS == {"kshudhita-pashan"}
 
-    artifact = catalog_truth.load_dracula_artifact_book(include_content=False)
-    assert artifact is not None
-    projected = catalog_truth.public_book_projection(artifact)
-    assert projected["slug"] == "dracula"
-    assert projected["reader_enabled"] is False
-    assert projected["audio_enabled"] is False
+    assert catalog_truth.is_live_approved_book({"slug": "yugalanguriya"}) is False
 
 
 def test_footer_social_links_render_only_configured_urls():

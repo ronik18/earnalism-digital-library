@@ -22,7 +22,7 @@ def enabled_release_fixture_for_legacy_contract_cases(request, monkeypatch):
         "test_shared_controlled_launch_config_matches_backend_and_audit",
         "test_live_approved_mongo_query_preserves_rights_and_search_or",
         "test_server_controlled_public_query_uses_catalog_truth",
-        "test_public_release_hold_denies_every_public_slug_and_query",
+        "test_public_release_scope_denies_held_titles_and_never_reopens_historical_manifest_slugs",
         "test_sitemap_truth_omits_book_routes_while_public_release_is_held",
     }:
         return
@@ -96,7 +96,7 @@ def pipeline_book(**overrides):
     return book
 
 
-def test_live_approved_catalog_gate_follows_controlled_allowlist():
+def test_live_approved_catalog_gate_follows_the_explicit_controlled_allowlist_fixture():
     assert catalog_truth.is_live_approved_book(dracula_book()) is True
     assert catalog_truth.is_live_approved_book(dracula_book(slug="completely-unknown-title")) is False
     assert catalog_truth.is_live_approved_book(dracula_book(rights_metadata={"rights_tier": "B"})) is False
@@ -104,17 +104,18 @@ def test_live_approved_catalog_gate_follows_controlled_allowlist():
 
 def test_shared_controlled_launch_config_matches_backend_and_audit():
     assert isinstance(catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS, tuple)
-    assert catalog_truth.PUBLIC_READER_EXPOSURE_ENABLED is False
+    assert catalog_truth.PUBLIC_READER_EXPOSURE_ENABLED is True
     assert catalog_truth.PUBLIC_AUDIO_EXPOSURE_ENABLED is False
-    assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == ()
+    assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == (
+        "a-ghost-story", "the-tell-tale-heart", "radharani",
+    )
     assert "book-2b9853ec52" in catalog_truth.PUBLIC_CATALOG_EXCLUDED_SLUGS
     assert "book-2b9853ec52" not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
     assert catalog_truth.PIPELINE_CANDIDATE_SLUGS == {"kshudhita-pashan"}
     assert "book-2b9853ec52" not in catalog_truth.AUDIO_ENABLED_SLUGS
     assert catalog_truth.AUDIO_ENABLED_SLUGS == set()
     live_slugs = catalog_truth_audit.frontend_controlled_live_slugs()
-    assert live_slugs == set()
-    assert live_slugs == set()
+    assert live_slugs == {"a-ghost-story", "the-tell-tale-heart", "radharani"}
     assert "book-2b9853ec52" not in live_slugs
 
 
@@ -294,7 +295,10 @@ def test_live_approved_mongo_query_preserves_rights_and_search_or():
         {"$or": [{"title": {"$regex": "Dracula", "$options": "i"}}]}
     )
 
-    assert query == {"_id": {"$exists": False}}
+    base_or = query["$and"][0]["$or"]
+    controlled_slugs = base_or[0]["$and"][0]["$or"][0]["slug"]["$in"]
+    assert controlled_slugs == ["a-ghost-story", "the-tell-tale-heart", "radharani"]
+    assert query["$and"][1]["$or"][0]["title"] == {"$regex": "Dracula", "$options": "i"}
 
 
 def test_live_approved_mongo_query_keeps_legacy_shape_only_when_public_release_is_enabled(monkeypatch):
@@ -327,9 +331,14 @@ def test_server_controlled_public_query_uses_catalog_truth():
     assert server._is_controlled_public_slug("frankenstein") is False
 
 
-def test_public_release_hold_denies_every_public_slug_and_query():
+def test_public_release_scope_denies_held_titles_and_never_reopens_historical_manifest_slugs():
     assert server._is_controlled_public_slug("dracula") is False
-    assert server._controlled_public_book_query() == {"_id": {"$exists": False}}
+    assert server._is_controlled_public_slug("a-ghost-story") is True
+    assert server._is_controlled_public_slug("yugalanguriya") is False
+    query = server._controlled_public_book_query()
+    assert query != {"_id": {"$exists": False}}
+    controlled_slugs = query["$or"][0]["$and"][0]["$or"][0]["slug"]["$in"]
+    assert controlled_slugs == ["a-ghost-story", "the-tell-tale-heart", "radharani"]
 
 
 def test_reader_manifest_audio_is_disabled_even_when_assets_exist():

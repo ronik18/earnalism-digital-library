@@ -1,0 +1,56 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "a-ghost-story",
+  "title": "A Ghost Story",
+  "generated_at": "2026-09-22T16:12:17.558921+00:00",
+  "content": {
+    "source_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
+    "content_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
+    "provenance_hash": "3c0d7f93b1e730b2d89a6c6ac926c5838e28254a3228571cfe40cb0797018ba6",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "f16b9c425a3443c9b89c2ab4054a47c14d165889f91f5a8455b47be74d4f949a",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "A Ghost Story",
+        "word_count": 2450,
+        "sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "required_for_reader_release": false,
+    "qa_status": "QA_PASSED",
+    "audio_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+    "candidate_fingerprint": ""
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe",
+    "reader_manifest": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9",
+    "source_evidence": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
+    "approval_evidence": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba"
+  },
+  "manifest_sha256": "477e20123aa69c18385eaff90423b3f39235a06a51784c575440e94d0789c32e"
+}

@@ -60,11 +60,16 @@ def runtime_verdict(action: str, record: dict | None, registry: dict[str, str] |
     return evaluate_runtime_path(action, **arguments)
 
 
-def test_real_registry_has_all_four_holds_and_no_accepted_decisions():
+def test_real_registry_binds_only_the_three_authorised_india_text_releases():
     registry, revoked = load_production_registry()
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
-    assert registry == {}
+    assert set(registry) == {
+        "india-20260922-a-ghost-story-reader-release",
+        "india-20260922-the-tell-tale-heart-reader-release",
+        "india-20260922-radharani-reader-release",
+    }
+    assert all(len(digest) == 64 for digest in registry.values())
     assert revoked == frozenset()
     assert set(payload["pilot_dispositions"]) == {
         "controlled-a-ghost-story",
@@ -72,7 +77,10 @@ def test_real_registry_has_all_four_holds_and_no_accepted_decisions():
         "controlled-radharani",
         "controlled-yugalanguriya",
     }
-    assert {row["status"] for row in payload["pilot_dispositions"].values()} == {"HOLD"}
+    assert payload["pilot_dispositions"]["controlled-a-ghost-story"]["status"] == "ACCEPTED"
+    assert payload["pilot_dispositions"]["controlled-the-tell-tale-heart"]["status"] == "ACCEPTED"
+    assert payload["pilot_dispositions"]["controlled-radharani"]["status"] == "ACCEPTED"
+    assert payload["pilot_dispositions"]["controlled-yugalanguriya"]["status"] == "HOLD"
 
 
 @pytest.mark.parametrize("action", sorted(RUNTIME_PATH_USES))

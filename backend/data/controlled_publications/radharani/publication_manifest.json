@@ -1,0 +1,102 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "radharani",
+  "title": "রাধারাণী",
+  "generated_at": "2026-09-22T16:12:17.679427+00:00",
+  "content": {
+    "source_hash": "e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e",
+    "content_hash": "4a3e2f9b0e0cdb6e2f4919c160573f0d4565559ce16ebb9aeb653f185b35e632",
+    "provenance_hash": "8c1eed1eb37a02d2ffe2c347043e1a7fed0442af22fc09ca9a7ce9ea6579759e",
+    "sanitized": true,
+    "chapter_count": 8,
+    "chapter_index_sha256": "0fb416bc077c1c8503b98e8f19a3a2a2b2c95db6f1877c476841a9542d3799b6",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Chapter 1. প্রথম পরিচ্ছেদ",
+        "word_count": 1182,
+        "sha256": "7271c4ebc92d063108f6c607bc2e692d92050281e3dc6d9c4842bb1341732ca7"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 578,
+        "sha256": "fc8063b99c98e6e01810c5158581d1ce510f8a0d2ab522290594c441f8a0df17"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "Chapter 3. তৃতীয় পরিচ্ছেদ",
+        "word_count": 510,
+        "sha256": "b62c932ad1d835194456f8da90b6de107ff0042c45846e5928856deeae2fb5e4"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "Chapter 4. চতুর্থ পরিচ্ছেদ",
+        "word_count": 194,
+        "sha256": "b596ebeaf548c4341b3ab57e437ccd5599859b2d212fad877bf82949736dd4f8"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "Chapter 5. পঞ্চম পরিচ্ছেদ",
+        "word_count": 1766,
+        "sha256": "3573d1f217fe7594cd22baa84a3a1b8fc886e6409359b5252d4e65534ce6585d"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "Chapter 6. ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 495,
+        "sha256": "62c64f1a551644b204cb9b3a3d433c06f269c772d2316cd36ce6c021071b762b"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "Chapter 7. সপ্তম পরিচ্ছেদ",
+        "word_count": 711,
+        "sha256": "c7f149c71f489a1ed472f53b0063a1485f2a48f1ea148538d45bfd8619d8550b"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "Chapter 8. অষ্টম পরিচ্ছেদ",
+        "word_count": 523,
+        "sha256": "60a3b81e22d84aefdfb6825673ecb5962b23f225de3f3d26c4adc3f25140426e"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "3a12e9da36cba5c24b9ae3af6e002aff81e8676d998ec2f35468796acebec585",
+    "reader_manifest": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555",
+    "source_evidence": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95",
+    "approval_evidence": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc"
+  },
+  "manifest_sha256": "4e9a4476f39f81f13cf66a23e7591d8deac8e0fc36338f17d311b69dc9b2060c"
+}

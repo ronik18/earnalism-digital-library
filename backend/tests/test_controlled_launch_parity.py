@@ -11,28 +11,10 @@ BACKEND_CATALOG_EXCLUSIONS = ROOT / "backend" / "data" / "catalog_exclusions.jso
 ROOT_CATALOG_EXCLUSIONS = ROOT / "data" / "catalog_exclusions.json"
 
 FULLY_EXCLUDED_BENGALI_TITLE = "book-2b9853ec52"
-APPROVED_ENGLISH_STORY = "a-ghost-story"
-PRIVATE_QA_AUDIO_HOLD = "bn-066"
-BLOCKED_BENGALI_CANARIES = {
-    "book-d19e96859f",
-    "book-f5d593e1f4",
-    "muchiram-gurer-jibanchorit",
-}
-SPRINT1_READER_ONLY_ADDITIONS = {
-    "book-d19e96859f",
-    "book-f5d593e1f4",
-    "muchiram-gurer-jibanchorit",
+INDIA_TEXT_RELEASE_SLUGS = {
+    "a-ghost-story",
+    "the-tell-tale-heart",
     "radharani",
-    "the-call-of-the-wild",
-    "the-time-machine",
-}
-HISTORICAL_RECONSTRUCTION_AUDIO_HOLDS = {
-    "alices-adventures-in-wonderland",
-    "bn-027",
-    "lokrahasya",
-    "mrinalini",
-    "nishkriti",
-    "the-wonderful-wizard-of-oz",
 }
 
 
@@ -68,53 +50,32 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_preserves_audio_hold_states():
+def test_backend_controlled_launch_opens_only_the_three_india_text_titles_and_no_audio():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
-    assert APPROVED_ENGLISH_STORY in backend_launch["live_approved_slugs"]
-    assert APPROVED_ENGLISH_STORY in backend_audio
-    assert PRIVATE_QA_AUDIO_HOLD in backend_launch["live_approved_slugs"]
-    assert PRIVATE_QA_AUDIO_HOLD not in backend_audio
-    assert backend_audio.isdisjoint(BLOCKED_BENGALI_CANARIES)
-    assert backend_audio.isdisjoint(HISTORICAL_RECONSTRUCTION_AUDIO_HOLDS)
-    assert FULLY_EXCLUDED_BENGALI_TITLE not in backend_audio
+    assert backend_launch["public_reader_exposure_enabled"] is True
+    assert set(backend_launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
+    assert backend_audio == set()
 
 
-def test_root_controlled_launch_keeps_bn_066_reader_live_and_audio_hidden():
+def test_root_controlled_launch_keeps_yugalanguriya_and_every_other_title_held():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
 
-    assert PRIVATE_QA_AUDIO_HOLD in root_launch["live_approved_slugs"]
-    assert PRIVATE_QA_AUDIO_HOLD not in root_launch["audio_enabled_slugs"]
+    assert set(root_launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
+    assert "yugalanguriya" not in root_launch["live_approved_slugs"]
     assert FULLY_EXCLUDED_BENGALI_TITLE not in root_launch["audio_enabled_slugs"]
 
 
-def test_sprint1_reader_additions_are_live_in_both_trees_and_audio_hidden_from_dupe():
+def test_india_text_release_is_mirrored_and_commerce_and_audio_remain_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
 
     for launch in (root_launch, backend_launch):
-        assert SPRINT1_READER_ONLY_ADDITIONS.issubset(launch["live_approved_slugs"])
-        assert set(launch["audio_enabled_slugs"]).isdisjoint(SPRINT1_READER_ONLY_ADDITIONS)
-
-
-def test_sprint1_reader_additions_are_live_in_both_trees_and_audio_hidden():
-    root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
-    backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
-
-    for launch in (root_launch, backend_launch):
-        assert SPRINT1_READER_ONLY_ADDITIONS.issubset(launch["live_approved_slugs"])
-        assert set(launch["audio_enabled_slugs"]).isdisjoint(SPRINT1_READER_ONLY_ADDITIONS)
-
-
-def test_historical_reconstruction_evidence_does_not_approve_public_audio():
-    for slug in HISTORICAL_RECONSTRUCTION_AUDIO_HOLDS:
-        evidence = load_json(
-            ROOT / "backend" / "data" / "controlled_publications" / slug / "approval_evidence.json"
-        )
-        assert evidence["approval_scope"] == "historical_admin_import_reconstruction"
-        assert evidence["audio_public_release"] == "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED"
-        assert evidence["audiobook_enabled"] is False
+        assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
+        assert launch["public_audio_exposure_enabled"] is False
+        assert launch["public_paid_commerce_enabled"] is False
+        assert launch["audio_enabled_slugs"] == []
 
 
 def test_backend_controlled_launch_has_no_duplicate_slugs():

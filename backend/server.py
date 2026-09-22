@@ -1707,6 +1707,7 @@ RELEASE_RIGHTS_COMPONENT_FILENAMES = (
     "source_evidence.json",
     "approval_evidence.json",
     "checksum_manifest.json",
+    "publication_manifest.json",
 )
 
 
