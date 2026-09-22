@@ -32,7 +32,13 @@ const source = (relative) => path.resolve(relative);
 const sourcePaths = ["frontend/src/lib/controlledLaunch.js", "data/controlled_launch.json"];
 const sourceHash = sha(Buffer.concat(sourcePaths.map((file) => fs.readFileSync(source(file)))));
 const publicReaderExposureEnabled = JSON.parse(fs.readFileSync(source("data/controlled_launch.json"), "utf8")).public_reader_exposure_enabled === true;
-const publicPaidCommerceEnabled = JSON.parse(fs.readFileSync(source("data/controlled_launch.json"), "utf8")).public_paid_commerce_enabled === true;
+// The historical visual baseline is built from its archived checkout, while
+// this capture adapter is deliberately supplied by the candidate.  Its
+// checkout-local launch config must not reinterpret that archived paid surface
+// as today's disabled-commerce surface.
+const publicPaidCommerceEnabled = captureMode === HISTORICAL_CAPTURE_MODE
+  ? true
+  : JSON.parse(fs.readFileSync(source("data/controlled_launch.json"), "utf8")).public_paid_commerce_enabled === true;
 const draculaChapters = Array.from({ length: 27 }, (_, index) => ({
   id: `dracula-chapter-${index + 1}`,
   title: index === 0 ? "Chapter 1" : `Chapter ${index + 1}`,
