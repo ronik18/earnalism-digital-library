@@ -137,13 +137,10 @@ test("bundled release snapshot cannot revive Reader cards before the runtime req
   expect(snapshot.hero.carousel_books).toEqual([]);
 });
 
-test("home curation uses localStorage cache with TTL", () => {
-  const store = new Map();
+test("home curation uses only an in-memory cache with TTL", () => {
   const mockLocalStorage = {
-    getItem: (key) => store.get(key) || null,
-    setItem: (key, value) => {
-      store.set(key, value);
-    },
+    getItem: jest.fn(),
+    setItem: jest.fn(),
   };
   const previousLocalStorage = global.localStorage;
   Object.defineProperty(global, "localStorage", {
@@ -154,6 +151,8 @@ test("home curation uses localStorage cache with TTL", () => {
   const payload = normalizeHomeCuration({ hero: { featured_books: [{ slug: "cache-1", title: "Cache One", cover_image_url: "/cache.jpg", reader_enabled: true, book_url: "/book/cache-1" }] } });
   setHomeCurationCache(payload);
   const fromCache = getHomeCurationCache();
+  expect(mockLocalStorage.getItem).not.toHaveBeenCalled();
+  expect(mockLocalStorage.setItem).not.toHaveBeenCalled();
 
   if (previousLocalStorage) {
     Object.defineProperty(global, "localStorage", {

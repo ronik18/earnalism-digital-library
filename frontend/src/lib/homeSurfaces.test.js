@@ -39,7 +39,8 @@ afterEach(() => {
   jest.restoreAllMocks();
 });
 
-test("hero uses an anonymous independent request and writes the versioned cache", async () => {
+test("hero uses an anonymous independent request and writes only the in-memory cache", async () => {
+  const storageSpy = jest.spyOn(Storage.prototype, "setItem");
   const fetchMock = jest.spyOn(global, "fetch").mockResolvedValue({
     ok: true,
     json: async () => ({
@@ -56,12 +57,13 @@ test("hero uses an anonymous independent request and writes the versioned cache"
     expect.stringMatching(/\/api\/home\/hero$/),
     expect.objectContaining({ credentials: "omit", method: "GET" }),
   );
-  expect(result.hero.carousel_books.map((book) => book.slug)).toEqual(["hero"]);
+  expect(result.hero.carousel_books).toEqual([]); // Unreleased fixture titles stay held.
   expect(getHomeHeroCache().source.contract_revision).toBe("hero-rev");
+  expect(storageSpy).not.toHaveBeenCalled();
   expect(HOME_SURFACE_CACHE_KEYS.hero).toContain(":v1");
 });
 
-test("listening uses its own endpoint and filters any non-approved record", async () => {
+test("listening uses its own endpoint but current audio release policy hides fixture records", async () => {
   const fetchMock = jest.spyOn(global, "fetch").mockResolvedValue({
     ok: true,
     json: async () => ({
@@ -79,11 +81,11 @@ test("listening uses its own endpoint and filters any non-approved record", asyn
     expect.stringMatching(/\/api\/home\/listening\?limit=3$/),
     expect.objectContaining({ credentials: "omit" }),
   );
-  expect(result.selected_audiobooks.map((book) => book.slug)).toEqual(["approved"]);
+  expect(result.selected_audiobooks).toEqual([]);
 });
 
-test("bundled hero renders immediately while listening waits for canonical API truth", () => {
-  expect(getHomeHeroSnapshot().hero.carousel_books.length).toBeGreaterThan(0);
+test("bundled held hero and listening remain empty before canonical API truth", () => {
+  expect(getHomeHeroSnapshot().hero.carousel_books).toEqual([]);
   expect(getHomeListeningSnapshot().selected_audiobooks).toEqual([]);
   expect(getHomeListeningSnapshot().source.truth_source).toBe("deferred_live_api_fail_closed");
   expect(HOME_SURFACE_CACHE_KEYS.listening).toContain(":v2");

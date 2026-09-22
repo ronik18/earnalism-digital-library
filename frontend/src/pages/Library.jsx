@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { ArrowRight, Check, Headphones, Search, SlidersHorizontal, X } from "lucide-react";
 import { api } from "../lib/api";
 import BookCard from "../components/BookCard";
-import { notifyUrl } from "../lib/controlledLaunch";
+import { notifyUrl, PUBLIC_AUDIO_EXPOSURE_ENABLED } from "../lib/controlledLaunch";
 import { languageOfBook, listeningFilterFromSearch, matchesLibraryFacets, sortLibraryBooks } from "../lib/libraryCatalog";
 import { composeLibraryCatalog } from "../lib/libraryCatalogueComposition";
 import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
@@ -50,7 +50,7 @@ function listeningMatches(book, value) {
   // The public catalogue receives a release decision, not a listening lease or
   // media URL.  Keep the Audiobooks shelf aligned with that verified decision;
   // runtime playback eligibility remains a separate, server-enforced concern.
-  const approved = audiobookReleaseState(book).releaseApproved;
+  const approved = PUBLIC_AUDIO_EXPOSURE_ENABLED && audiobookReleaseState(book).releaseApproved;
   return value === "available" ? approved : !approved;
 }
 

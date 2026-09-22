@@ -238,6 +238,7 @@ export function canShowReadingPass(book = {}) {
 }
 
 export function canShowAudioCTA(book = {}) {
+  if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return false;
   if (!isLiveApprovedBook(book)) return false;
   if (!book?.audiobook_enabled || book?.generate_audiobook) return false;
   const releaseGate = String(book?.audiobook_release_gate || book?.audiobook?.release_gate || "").trim().toUpperCase();

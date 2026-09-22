@@ -1,13 +1,8 @@
 import { API } from "./api";
 import homeCuratedSprint1 from "../data/homeCuratedSprint1.json";
-import { canShowStartReading } from "./controlledLaunch";
+import { canShowStartReading, PUBLIC_AUDIO_EXPOSURE_ENABLED } from "./controlledLaunch";
 
-const HOME_CURATION_CACHE_KEY = "earnalism_home_curation_v4";
 const HOME_CURATION_CACHE_TTL_MS = 60 * 60 * 1000;
-const HOME_CURATION_LEGACY_KEYS = [
-  "earnalism_home_curation_v2",
-  "earnalism_home_curation",
-];
 
 let homeCurationMemoryCache = null;
 
@@ -71,6 +66,7 @@ function coverCandidates(book = {}) {
 }
 
 function approvedAudio(book = {}) {
+  if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return false;
   const release = String(book.audiobook_release_gate || book.audio_release || "").toUpperCase();
   const qa = String(book.audio_qa_status || book.qa_status || "").toUpperCase();
   return Boolean(
@@ -244,100 +240,27 @@ export function getHomeCurationSnapshot() {
   });
 }
 
-function getStorage() {
-  return typeof window === "undefined" ? null : window.localStorage;
-}
-
-function getSessionStorage() {
-  return typeof window === "undefined" ? null : window.sessionStorage;
-}
-
 function isRecentCache(payload = {}) {
   const age = Date.now() - Number(payload.cached_at || 0);
   return Number.isFinite(age) && age >= 0 && age <= HOME_CURATION_CACHE_TTL_MS;
-}
-
-function parseCachePayload(raw) {
-  try {
-    const parsed = typeof raw === "string" ? JSON.parse(raw) : null;
-    if (!parsed || typeof parsed !== "object" || !parsed.payload) return null;
-    const cachedAt = Number(parsed.cached_at);
-    if (!Number.isFinite(cachedAt) || cachedAt > Date.now()) return null;
-    return { cached_at: cachedAt, payload: parsed.payload };
-  } catch {
-    return null;
-  }
-}
-
-function getCacheCandidates() {
-  const stores = [getSessionStorage(), getStorage()].filter(Boolean);
-  const keys = [HOME_CURATION_CACHE_KEY, ...HOME_CURATION_LEGACY_KEYS];
-  const candidates = [];
-
-  for (const storage of stores) {
-    for (const key of keys) {
-      try {
-        const raw = storage.getItem(key);
-        const parsed = parseCachePayload(raw);
-        if (parsed && isRecentCache(parsed)) {
-          candidates.push(parsed);
-        }
-      } catch {
-        // ignore storage read failures
-      }
-    }
-  }
-  return candidates;
-}
-
-function pickNewestCache(candidates = []) {
-  if (candidates.length === 0) return null;
-  return candidates.reduce((newest, candidate) => (
-    !newest || candidate.cached_at > newest.cached_at ? candidate : newest
-  ), null);
 }
 
 export function getHomeCurationCache() {
   if (homeCurationMemoryCache && isRecentCache(homeCurationMemoryCache)) {
     return homeCurationMemoryCache.payload;
   }
-
-  const newest = pickNewestCache(getCacheCandidates());
-  if (!newest) return null;
-
-  homeCurationMemoryCache = newest;
-  return newest.payload;
+  return null;
 }
 
 export function setHomeCurationCache(payload = null) {
   if (!payload) return null;
   const record = { cached_at: Date.now(), payload };
   homeCurationMemoryCache = record;
-
-  const storage = getStorage() || getSessionStorage();
-  if (storage) {
-    try {
-      storage.setItem(HOME_CURATION_CACHE_KEY, JSON.stringify(record));
-      HOME_CURATION_LEGACY_KEYS.forEach((key) => storage.removeItem(key));
-    } catch {
-      // ignore quota / private-mode failures
-    }
-  }
   return record.payload;
 }
 
 export function clearHomeCurationCache() {
   homeCurationMemoryCache = null;
-  const keys = [HOME_CURATION_CACHE_KEY, ...HOME_CURATION_LEGACY_KEYS];
-  for (const storage of [getSessionStorage(), getStorage()].filter(Boolean)) {
-    for (const key of keys) {
-      try {
-        storage.removeItem(key);
-      } catch {
-        // ignore
-      }
-    }
-  }
 }
 
 export async function fetchHomeCuration(signal) {

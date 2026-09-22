@@ -19,7 +19,7 @@ describe("My Library direct-route contract", () => {
 
   test("allows only the private My Library route through the explicit SPA policy", () => {
     const rewrites = vercel.rewrites || [];
-    const fallback = rewrites.findIndex((rule) => rule.source.startsWith("/((?!static/"));
+    const fallback = rewrites.findIndex((rule) => rule.source.startsWith("/((?!") && rule.destination === "/api/not-found");
     ["/my-library", "/my-library/"].forEach((source) => {
       const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
       expect(index).toBeGreaterThanOrEqual(0);

@@ -255,7 +255,7 @@ describe("UX conversion static signals", () => {
     expect(home).not.toContain("reading rooms open");
     expect(firstVisitSiteTour).toContain("A calm digital reading room for Bengali and English classics");
     expect(firstVisitSiteTour).toContain("A shelf for every mood");
-    expect(firstVisitSiteTour).toContain("Hear a classic in the reading room");
+    expect(firstVisitSiteTour).toContain("Stay with a story in the reading room");
     expect(shelfCollageTile).toContain("Open ${book.title} by ${book.author}");
     expect(firstVisitSiteTour).not.toContain("A calm digital reading room beginning with Dracula by Bram Stoker");
     expect(firstVisitSiteTour).not.toContain("Future titles stay Coming Soon or Notify Me");
@@ -1378,8 +1378,7 @@ describe("UX conversion static signals", () => {
   test("first-time site tour is mounted, forceable, dismissible, keyboard-aware, and premium-copy safe", () => {
     expect(layout).toContain("<FirstVisitSiteTour />");
     expect(firstVisitSiteTour).toContain('params.get("tour") === "1"');
-    expect(firstVisitSiteTour).toContain("if (alreadySeen && !forcedTour) return undefined");
-    expect(firstVisitSiteTour).toContain('window.localStorage.setItem(STORAGE_KEY, "complete")');
+    expect(firstVisitSiteTour).not.toContain("window.localStorage");
     expect(firstVisitSiteTour).toContain('data-testid="first-visit-site-tour"');
     expect(firstVisitSiteTour).toContain('aria-modal="true"');
     expect(firstVisitSiteTour).toContain('event.key === "Escape"');
@@ -1387,7 +1386,7 @@ describe("UX conversion static signals", () => {
     expect(firstVisitSiteTour).toContain('first_time_site_tour_shown');
     expect(firstVisitSiteTour).toContain('first_time_site_tour_completed');
     expect(firstVisitSiteTour).toContain('first_time_site_tour_skipped');
-    expect(firstVisitSiteTour).toContain("A small collection of beautifully narrated editions is ready");
+    expect(firstVisitSiteTour).toContain("Narrated editions are in preparation");
     expect(firstVisitSiteTour).not.toMatch(/\bAudio (is )?not available yet\b/i);
     expect(firstVisitSiteTour).not.toMatch(/\bListen Now\b|\bAudioObject\b/i);
   });
