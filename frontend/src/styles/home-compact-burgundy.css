@@ -220,3 +220,15 @@
 .reference-home .reference-home-cover .book-cover-image { display: block; width: 100%; height: 100%; background: transparent !important; border-radius: 5px; overflow: hidden; }
 .reference-home .reference-home-cover .book-cover-image__img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .reference-home .reference-home-cover > a:focus-visible { outline: 2px solid #f3cf89; outline-offset: -3px; }
+
+/* The reviewed Library/Home surface stays byte-identical. The launch shell
+   removes disabled offers and listening paths from layout and tab order. */
+.home-reference-page--no-commerce .reference-home__pass,
+.home-reference-page--no-commerce .reference-home__policy > p:nth-of-type(2),
+.home-reference-page--no-commerce .reference-home__trust article:nth-child(3),
+.home-reference-page--no-audio .reference-home__cta-row a[href="/library?availability=approved-audiobook"],
+.home-reference-page--no-audio .reference-home__listening { display: none; }
+.home-reference-page--no-commerce .reference-home__trust > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 767px) {
+  .home-reference-page--no-commerce .reference-home__trust > div { grid-template-columns: 1fr; }
+}

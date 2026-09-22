@@ -214,7 +214,7 @@ export default function Home() {
   };
 
   return (
-    <div className="home-reference-page" data-testid="home-page">
+    <div className={`home-reference-page${PUBLIC_PAID_COMMERCE_ENABLED ? "" : " home-reference-page--no-commerce"}${PUBLIC_AUDIO_EXPOSURE_ENABLED ? "" : " home-reference-page--no-audio"}`} data-testid="home-page">
       <ReferenceHomeSurface
         curation={heroCuration}
         readingPasses={homePasses}

@@ -8,6 +8,7 @@ const libraryFallback = fs.readFileSync(path.join(process.cwd(), "src/lib/librar
 const styles = fs.readFileSync(path.join(process.cwd(), "src/components/ReferencePublicPages.css"), "utf8");
 const perspectives = fs.readFileSync(path.join(process.cwd(), "src/components/ReaderPerspectives.jsx"), "utf8");
 const perspectiveStyles = fs.readFileSync(path.join(process.cwd(), "src/components/ReaderPerspectives.css"), "utf8");
+const homeLaunchStyles = fs.readFileSync(path.join(process.cwd(), "src/styles/home-compact-burgundy.css"), "utf8");
 const evidence = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/data/publicEvidenceSnapshot.json"), "utf8"));
 
 describe("Reference public page surfaces", () => {
@@ -28,10 +29,13 @@ describe("Reference public page surfaces", () => {
   });
 
   test("does not advertise paid checkout or listening before those launch features are enabled", () => {
-    expect(source).toContain("PUBLIC_PAID_COMMERCE_ENABLED && <section className=\"reference-home__pass\"");
-    expect(source).toContain("PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems)");
-    expect(source).toContain("listeningBooks.length > 0 && <Link to=\"/library?availability=approved-audiobook\"");
+    expect(home).toContain("home-reference-page--no-commerce");
+    expect(home).toContain("home-reference-page--no-audio");
+    expect(homeLaunchStyles).toContain(".home-reference-page--no-commerce .reference-home__pass");
+    expect(homeLaunchStyles).toContain(".home-reference-page--no-commerce .reference-home__policy > p:nth-of-type(2)");
+    expect(homeLaunchStyles).toContain(".home-reference-page--no-audio .reference-home__cta-row a[href=\"/library?availability=approved-audiobook\"]");
     expect(home).toContain("if (!PUBLIC_PAID_COMMERCE_ENABLED) return undefined;");
+    expect(home).toContain("if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return undefined;");
   });
 
   test("binds offer presentation to current configured offer fields", () => {

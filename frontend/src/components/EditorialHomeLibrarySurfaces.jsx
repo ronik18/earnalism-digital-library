@@ -26,8 +26,6 @@ import {
   canShowPreview,
   canShowStartReading,
   notifyUrl,
-  PUBLIC_AUDIO_EXPOSURE_ENABLED,
-  PUBLIC_PAID_COMMERCE_ENABLED,
 } from "../lib/controlledLaunch";
 import { availabilityOfBook } from "../lib/libraryCatalog";
 import BookCoverImage from "./BookCoverImage";
@@ -49,9 +47,7 @@ const HOME_FEATURES = [
 const TRUST_FACTS = [
   [BookOpen, "Meet your next favourite", "Return to a beloved classic, or meet a world you haven’t known."],
   [Eye, "Begin with curiosity", "The first 3 pages are free. Let the words win you over."],
-  [Clock3, "Keep your own rhythm", PUBLIC_PAID_COMMERCE_ENABLED
-    ? "Reading time counts only while you read. No subscription."
-    : "Explore released pages without a subscription or checkout."],
+  [Clock3, "Keep your own rhythm", "Reading time counts only while you read. No subscription."],
 ];
 
 function titleFor(book) {
@@ -169,7 +165,7 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
   // Listening discovery comes from the public /home/listening contract. That
   // contract carries release-safe metadata only; package and media details
   // remain available solely after the Listener's authenticated authorization.
-  const listeningBooks = (PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems) ? listeningItems : [])
+  const listeningBooks = (Array.isArray(listeningItems) ? listeningItems : [])
     .filter((book) => audiobookReleaseState(book).releaseApproved)
     .slice(0, 5);
 
@@ -181,9 +177,9 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
           <p className="reference-home__lede">Bengali and English classics, waiting for you.<br />A familiar voice. A world you haven’t met.<br />Open a page. Let the day grow quiet.</p>
           <div className="reference-home__cta-row">
             <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Enter the Library</Link>
-            {listeningBooks.length > 0 && <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline">Discover listening</Link>}
+            <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline">Discover listening</Link>
           </div>
-          <div className="reference-home__policy"><p><BookOpen aria-hidden="true" /><span>{PUBLIC_PREVIEW_COPY}</span></p>{PUBLIC_PAID_COMMERCE_ENABLED && <p><ClockMark aria-hidden="true" /><span>{READING_TIME_COPY}</span></p>}</div>
+          <div className="reference-home__policy"><p><BookOpen aria-hidden="true" /><span>{PUBLIC_PREVIEW_COPY}</span></p><p><ClockMark aria-hidden="true" /><span>{READING_TIME_COPY}</span></p></div>
         </div>
         <picture className="reference-home__hero-art">
           <img src="/assets/hero/earnalism-black-burgundy-reading-room.webp" alt="" fetchPriority="high" decoding="async" />
@@ -203,7 +199,7 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
         <ReferenceShelf books={shelfBooks} coversOnly label="Featured classics" className="reference-home__journey-shelf" data-testid="home-journey-shelf" />
       </section>
 
-      {PUBLIC_PAID_COMMERCE_ENABLED && <section className="reference-home__pass" aria-labelledby="reference-pass-title">
+      <section className="reference-home__pass" aria-labelledby="reference-pass-title">
         <div className="reference-home__pass-copy">
           <h2 id="reference-pass-title">Make time for a good story.</h2>
           <p className="reference-home__pass-intro">With Reading Passes, you pay for reading time.</p>
@@ -226,7 +222,7 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
           </div>
           {illustrativePasses && <p className="reference-home__sample-note">Illustrative plans · Confirm current prices on Reading Passes.</p>}
         </div>
-      </section>}
+      </section>
 
       {listeningBooks.length > 0 && <section className="reference-home__listening" aria-labelledby="reference-listening-title">
         <SectionHeading
