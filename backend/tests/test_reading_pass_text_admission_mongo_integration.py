@@ -175,6 +175,18 @@ def _payload(content_id: str, *, page_index: int = 4, device_id: str = "admissio
     )
 
 
+@pytest.fixture
+def permitted_reader_authority(monkeypatch):
+    """Provide isolated authority without changing the shipped all-title hold."""
+
+    async def resolve(slug: str, *, admin_preview: bool = False):
+        if not admin_preview and str(slug or "").strip().lower() == "dracula":
+            return {"slug": "dracula"}
+        return None
+
+    monkeypatch.setattr(server, "_reader_book_access_doc", resolve)
+
+
 @pytest.mark.parametrize("denied_slug", ["yugalanguriya", "unknown-admission-fixture"])
 @pytest.mark.parametrize("transfer", [False, True])
 def test_real_handler_denied_start_or_transfer_preserves_existing_session_and_accounting(
@@ -235,7 +247,7 @@ def test_real_handler_denied_start_or_transfer_preserves_existing_session_and_ac
     asyncio.run(scenario())
 
 
-def test_real_handler_uses_actual_reader_authority_and_binds_the_canonical_identity():
+def test_real_handler_binds_fixture_authority_to_the_canonical_identity(permitted_reader_authority):
     async def scenario():
         async with _isolated_database() as database:
             manifest = await _seed_retained_content(database, "dracula")
@@ -262,14 +274,16 @@ def test_real_handler_uses_actual_reader_authority_and_binds_the_canonical_ident
     asyncio.run(scenario())
 
 
-def test_real_handler_rejects_authorized_title_without_an_active_canonical_page_before_session_start(monkeypatch):
+def test_real_handler_rejects_authorized_fixture_title_without_an_active_canonical_page_before_session_start(
+    monkeypatch, permitted_reader_authority
+):
     async def scenario():
         async with _isolated_database() as database:
             await database.users.insert_one({
                 "id": USER["id"], "role": "user", "status": "active",
                 "reading_seconds_balance": 300, "wallet_seconds": 300,
             })
-            # Dracula is current Reader authority, but this disposable
+            # The fixture supplies Reader authority, but this disposable
             # database intentionally has no active manifest/page records.
             assert await server._reader_book_access_doc("dracula") is not None
             before = await _rows(database.reading_pass_sessions)
@@ -287,10 +301,10 @@ def test_real_handler_rejects_authorized_title_without_an_active_canonical_page_
     asyncio.run(scenario())
 
 
-def test_real_handler_rejects_current_reader_title_with_pages_but_no_activation_pointer():
+def test_real_handler_rejects_fixture_title_with_pages_but_no_activation_pointer(permitted_reader_authority):
     async def scenario():
         async with _isolated_database() as database:
-            # This was a valid pre-pointer publication shape: Reader authority
+            # This is a fixture pre-pointer publication shape: Reader authority
             # and an active immutable manifest/page exist, but no selected
             # generation can bind a new protected lease.  The guard returns an
             # availability error; it does not bootstrap or rewrite history.
