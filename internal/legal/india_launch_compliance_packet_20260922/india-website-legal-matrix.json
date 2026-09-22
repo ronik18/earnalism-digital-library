@@ -39,7 +39,8 @@
       "storage_and_processor_scope": "application database and provider region are not established by source inspection",
       "retention": "not defined in source",
       "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
-      "status": "ACTION_REQUIRED"
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
     },
     {
       "data_category": "email",
@@ -48,7 +49,8 @@
       "storage_and_processor_scope": "application database and provider region are not established by source inspection",
       "retention": "not defined in source",
       "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
-      "status": "ACTION_REQUIRED"
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
     },
     {
       "data_category": "authentication information",
@@ -57,7 +59,8 @@
       "storage_and_processor_scope": "browser local storage plus application backend; provider geography needs verification",
       "retention": "not defined in source",
       "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
-      "status": "ACTION_REQUIRED"
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
     },
     {
       "data_category": "reading/activity history and position",
@@ -66,7 +69,8 @@
       "storage_and_processor_scope": "application backend; provider geography needs verification",
       "retention": "not defined in source",
       "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
-      "status": "ACTION_REQUIRED"
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
     },
     {
       "data_category": "analytics and device/session identifiers",
@@ -75,7 +79,8 @@
       "storage_and_processor_scope": "browser local storage and optional analytics endpoint; production enablement needs verification",
       "retention": "not defined in source",
       "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
-      "status": "REVIEW_REQUIRED"
+      "status": "REVIEW_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
     },
     {
       "data_category": "support communications",
@@ -84,7 +89,8 @@
       "storage_and_processor_scope": "application backend; provider geography needs verification",
       "retention": "not defined in source",
       "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
-      "status": "ACTION_REQUIRED"
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
     },
     {
       "data_category": "payment-related information",
@@ -93,7 +99,70 @@
       "storage_and_processor_scope": "Razorpay and application backend; merchant/provider data handling needs verification",
       "retention": "not defined in source",
       "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
-      "status": "REVIEW_REQUIRED"
+      "status": "REVIEW_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    }
+  ],
+  "fact_inventory": [
+    {
+      "fact": "operator and brand relationship",
+      "value": "REO ENTERPRISE is the sole-proprietor operator; Earnalism is its venture/brand.",
+      "classification": "OWNER_SUPPLIED_FACT_ALREADY_RECORDED",
+      "evidence": "Owner closure response; no new attestation requested."
+    },
+    {
+      "fact": "ordinary support contact",
+      "value": "sales@reoenterprise.org",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "frontend/src/pages/Contact.jsx and frontend/src/pages/Pricing.jsx"
+    },
+    {
+      "fact": "frontend and backend deployment integrations",
+      "value": "Vercel frontend configuration and Railway backend configuration are present.",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "frontend/vercel.json; backend/railway.json"
+    },
+    {
+      "fact": "media storage integration",
+      "value": "Cloudinary is configured in source for image assets; B2-compatible variables are documented for large audiobook objects.",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "backend/config/cloudinary.py; backend/.env.example"
+    },
+    {
+      "fact": "production provider geography and cross-border access",
+      "value": "NOT_ESTABLISHED_FROM_SOURCE",
+      "classification": "PROVIDER_VERIFICATION_REQUIRED",
+      "evidence": "Repository configuration names providers but does not disclose effective production regions or access arrangements."
+    },
+    {
+      "fact": "analytics",
+      "value": "Launch analytics is optional in source and uses a browser local-storage identifier when enabled.",
+      "classification": "DEPLOYMENT_CONFIGURATION_REQUIRED",
+      "evidence": "frontend/src/lib/funnelAnalytics.js"
+    },
+    {
+      "fact": "payment product model",
+      "value": "Razorpay integration supports one-time Reading Pass purchase; source states no subscription or auto-renewal.",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "frontend/src/pages/Pricing.jsx; backend/server.py"
+    },
+    {
+      "fact": "production payment enablement and merchant terms",
+      "value": "NOT_ESTABLISHED_FROM_SOURCE",
+      "classification": "PROVIDER_OR_OWNER_FACT_REQUIRED",
+      "evidence": "backend/server.py exposes configured/mode dynamically and refuses real checkout without configured keys; source cannot prove production mode or merchant agreement."
+    },
+    {
+      "fact": "privacy and grievance designation",
+      "value": "No public designation is registered; sales@reoenterprise.org is not inferred to carry either legal role.",
+      "classification": "OWNER_FACT_REQUIRED",
+      "evidence": "frontend/src/App.js and Contact.jsx"
+    },
+    {
+      "fact": "retention and self-service account deletion",
+      "value": "No retention schedule or public account-deletion route was identified in this source audit.",
+      "classification": "OWNER_POLICY_OR_IMPLEMENTATION_REQUIRED",
+      "evidence": "frontend/src/App.js; backend/server.py; account UI audit"
     }
   ],
   "matrix": [
@@ -104,10 +173,10 @@
       "applies_to_earnalism": "YES_IF_A_TITLE_IS_RELEASED",
       "applicable": "YES_FOR_ANY_RELEASED_TITLE",
       "authority": "Copyright Act, 1957; source and integrity evidence",
-      "current_implementation": "Repository has source evidence, a four-title comparison checkpoint, an empty rights registry, and global Reader/audio holds.",
-      "gap": "No India title has a signed cover declaration or accepted release decision. Yugalanguriya also has the two identified source-reading observations still requiring human source review.",
-      "status": "ACTION_REQUIRED",
-      "launch_blocker": true
+      "current_implementation": "The first three pilots have complete India copyright, deterministic text, and owner-supplied first-party cover evidence. The registry and global Reader/audio holds remain production controls.",
+      "gap": "Yugalanguriya remains title-scoped text review; it does not block the three independently evidence-complete titles. A later production release still requires the existing hash-bound ACCEPT/HOLD control.",
+      "status": "PASS_FOR_ELIGIBLE_TITLES",
+      "launch_blocker": false
     },
     {
       "area": "privacy and data inventory",
@@ -141,7 +210,7 @@
       "applicable": "YES_FOR_THE_PUBLIC_PRODUCT_SURFACE",
       "authority": "Applicable privacy and consumer framework; owner-supplied business facts.",
       "current_implementation": "A /contact route and sales@reoenterprise.org contact are present. No Terms, Privacy, Copyright/IP Notice, or dedicated refund/cancellation route is registered.",
-      "gap": "Owner/provider facts and qualified review are needed before creating accurate public legal pages; do not publish placeholders as policy.",
+      "gap": "Public legal-page facts remain incomplete: public address, privacy/grievance designation, provider geography/access, deployed analytics, retention, and (if paid checkout is enabled) merchant and remedy facts. Do not publish placeholders as policy.",
       "status": "ACTION_REQUIRED",
       "launch_blocker": true
     },

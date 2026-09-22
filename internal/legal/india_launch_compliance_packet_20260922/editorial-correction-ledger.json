@@ -23,11 +23,11 @@
     {
       "TITLE": "যুগলাঙ্গুরীয়",
       "LOCATION": "chapter-004 opening",
-      "SOURCE": "Facsimile checkpoint proposal reads বি + বাহাস্তে",
+      "SOURCE": "The 1893 facsimile has the initial বি in its illustrated drop-cap crop and বাহাস্তে in the adjacent text; together the source reads বিবাহাস্তে.",
       "CURRENT_EARNALISM": "বিবাহান্তে",
-      "CLASSIFICATION": "SOURCE_AMBIGUOUS",
-      "ACTION": "Resolve the conflicting facsimile proposal against the original page before treating either reading as authoritative. Do not alter canonical prose automatically.",
-      "EVIDENCE": "facsimile checkpoint image 23 / crop 18 conflicts with retained Bengali Wikisource source layer"
+      "CLASSIFICATION": "SOURCE_READING_RESOLVED_VARIANT_REQUIRES_DECISION",
+      "ACTION": "The source reading is no longer ambiguous. Do not alter canonical prose automatically: either restore the evidenced source reading or record a deliberate, source-cited editorial-variant decision before treating the current canonical wording as text-verified.",
+      "EVIDENCE": "1893 source page 23 plus its extracted initial crop p18b; the source-layer text corroborates the trailing বাহাস্তে. The current canonical text instead begins বিবাহান্তে."
     }
   ],
   "resolved_source_observations": [
