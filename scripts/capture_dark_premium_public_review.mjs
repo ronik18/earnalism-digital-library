@@ -8,6 +8,7 @@ import { chromium, firefox, webkit } from "playwright";
 const baseUrl = String(process.env.UAT_BASE_URL || "").replace(/\/$/, "");
 const output = path.resolve(process.env.DARK_PREMIUM_CAPTURE_OUTPUT || "uat/evidence/gilded-burgundy-primary-344/current");
 const engine = process.env.DARK_PREMIUM_BROWSER || "chromium";
+const publicPaidCommerceEnabled = JSON.parse(fs.readFileSync("data/controlled_launch.json", "utf8")).public_paid_commerce_enabled === true;
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("UAT_BASE_URL must be an explicit loopback URL.");
 if (!({ chromium, firefox, webkit })[engine]) throw new Error(`Unsupported browser: ${engine}`);
 
@@ -76,7 +77,7 @@ async function run() {
       });
       await fixtures(page);
       const response = await page.goto(`${baseUrl}${route}`, { waitUntil: "domcontentloaded", timeout: 60_000 });
-      await page.locator(id === "home" ? "[data-testid=home-reference-surface]" : id === "library" ? "[data-testid=library-reference-surface]" : "[data-testid=pricing-reference-surface]").waitFor({ state: "visible", timeout: 20_000 });
+      await page.locator(id === "home" ? "[data-testid=home-reference-surface]" : id === "library" ? "[data-testid=library-reference-surface]" : publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]").waitFor({ state: "visible", timeout: 20_000 });
       await page.evaluate(async () => { await Promise.race([Promise.all([document.fonts.ready, ...[...document.images].map((image) => image.decode().catch(() => undefined))]), new Promise((resolve) => setTimeout(resolve, 8000))]); });
       const filterOpen = id === "library" && width <= 390;
       if (filterOpen) { await page.locator(".reference-filter-trigger").click(); await page.locator(".reference-library-drawer").waitFor({ state: "visible" }); }
@@ -95,7 +96,7 @@ async function run() {
         // even after a correct screenshot is painted.
         const requiredImages = [brand?.querySelector("img")].filter(Boolean);
         const incompleteImages = requiredImages.filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.currentSrc || image.src);
-        return { header: rect(header), brand: rect(brand), headerBackground: headerStyle?.backgroundColor || "rgb(23, 9, 14)", nav: nav ? { fontSize: navStyle.fontSize, lineHeight: navStyle.lineHeight, color: navStyle.color } : null, surface: surfaceStyle?.backgroundColor || "", grid: rect(grid), cards: cards.map(rect), commerceCards: commerceCards.map(rect), filterOpen, evidence: Boolean(document.querySelector("[data-testid=commerce-evidence-fallback]")), overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth, imageComplete: incompleteImages.length === 0, incompleteImages, headerCount: document.querySelectorAll("[data-testid=site-header]").length, footerCount: document.querySelectorAll("[data-testid=site-footer]").length };
+        return { header: rect(header), brand: rect(brand), headerBackground: headerStyle?.backgroundColor || "rgb(23, 9, 14)", nav: nav ? { fontSize: navStyle.fontSize, lineHeight: navStyle.lineHeight, color: navStyle.color } : null, surface: surfaceStyle?.backgroundColor || "", grid: rect(grid), cards: cards.map(rect), commerceCards: commerceCards.map(rect), paidCommerceDisabled: Boolean(document.querySelector("[data-testid=paid-commerce-disabled]")), filterOpen, evidence: Boolean(document.querySelector("[data-testid=commerce-evidence-fallback]")), overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth, imageComplete: incompleteImages.length === 0, incompleteImages, headerCount: document.querySelectorAll("[data-testid=site-header]").length, footerCount: document.querySelectorAll("[data-testid=site-footer]").length };
       }, { id, filterOpen });
       const filename = `${id}-${width}x${height}${filterOpen ? "-filters" : ""}-${engine}.png`;
       const screenshot = path.join(output, filename);
