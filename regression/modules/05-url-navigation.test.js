@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { request, apiGet, mapLimit } = require("../utils/http");
 const { fetchSitemap } = require("../utils/sitemap");
-const { isGoLive, isPr } = require("../utils/envGuard");
+const { frontendUrl, isGoLive, isPr } = require("../utils/envGuard");
 const perf = require("../config/performance.rules.json");
 const publicAudioTruth = require("../../internal/audiobook_lab/release_gate/claimable_go_live_tranche.json");
 const controlledLaunch = require("../../data/controlled_launch.json");
@@ -29,7 +29,13 @@ describe("URL, Path & Navigation", () => {
     expect(sitemap.locs.length).toBeGreaterThan(0);
     const max = isGoLive() ? perf.crawl.goLiveMaxUrls : perf.crawl.prMaxUrls;
     for (const loc of sitemap.locs.slice(0, max)) {
-      const response = await request(loc, { skipBody: true });
+      // PR regression validates the candidate's local frontend, not whichever
+      // older release happens to be serving the production sitemap origin.
+      // Keep production/go-live checks on the published absolute URL.
+      const candidateLoc = isPr()
+        ? new URL(new URL(loc).pathname + new URL(loc).search, frontendUrl()).toString()
+        : loc;
+      const response = await request(candidateLoc, { skipBody: true });
       expect(response.status).toBeLessThan(500);
       expect(response.status).not.toBe(404);
     }
