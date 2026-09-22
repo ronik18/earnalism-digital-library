@@ -39,10 +39,23 @@ describe("Reference public page surfaces", () => {
     expect(commerce).not.toContain("Reader satisfaction");
   });
 
-  test("does not mount unverified reader testimonials or public review claims", () => {
+  test("keeps illustrative reader perspectives distinct from customer testimonials", () => {
     expect(source).not.toContain("ReaderTestimonialsSection");
     expect(source).not.toContain("What Our Readers Say");
-    expect(source).not.toContain("Editorial sample notes");
+    expect(source).not.toContain("REAL READERS");
+    expect(source).not.toContain("verified reader");
+    expect(source).toContain("What reading can feel like");
+    expect(source).toContain("Reader perspectives · imagined with care");
+    expect(source).toContain("Illustrative reader perspective");
+    expect(source).toContain("Four imagined reader perspectives.");
+    expect(source).toContain('to="/library" className="reference-button reference-button--gold" data-testid="reader-perspectives-cta"');
+    expect(source).toContain("kolkata-reader.webp");
+    expect(source).toContain("london-reader.webp");
+    expect(source).toContain("chennai-reader.webp");
+    expect(source).toContain("new-delhi-reader.webp");
+    expect(styles).toContain(".reference-reader-perspectives__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))");
+    expect(styles).toContain(".reference-reader-perspectives__grid{grid-template-columns:repeat(2,minmax(0,1fr))");
+    expect(styles).toContain(".reference-reader-perspectives__grid{grid-template-columns:1fr");
   });
 
   test("uses the reviewed operational-facts fallback when public metrics are not eligible", () => {
