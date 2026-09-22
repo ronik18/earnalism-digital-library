@@ -351,6 +351,6 @@ Complete the factual fields below only from personal knowledge or retained proje
 
 ## Attached package binding
 
-- Candidate commit: `9e65aa53a429f95db509ce74d6bb165273f55525`.
-- Candidate tree: `a199dfa612d609b172a4519a3fdc9a4395636c54`.
+- Candidate commit: `c66db4d8401827c20fb8655cac0ea8ef1c8f89d9`.
+- Candidate tree: `99ea129c45c3697a0080261564bb20853dc318ab`.
 - Signing this declaration does not release a title; the active release hold and hash-bound rights gate remain independent controls.
