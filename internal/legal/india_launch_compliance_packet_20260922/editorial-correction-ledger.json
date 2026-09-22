@@ -1,0 +1,14 @@
+{
+  "status": "NO_CORRECTIONS_APPROVED",
+  "required_fields": [
+    "TITLE",
+    "LOCATION",
+    "IDENTIFIED_SOURCE_READING",
+    "EARNALISM_READING",
+    "REASON",
+    "EVIDENCE_OR_AUTHORITY",
+    "DATE"
+  ],
+  "entries": [],
+  "note": "Existing Yugalanguriya repair proposals remain review proposals and are intentionally not ledger entries or manuscript changes."
+}
