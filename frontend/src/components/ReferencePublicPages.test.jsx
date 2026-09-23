@@ -1,5 +1,7 @@
 import fs from "fs";
 import path from "path";
+import { PILOT_COVER_SHELF } from "../data/pilotCoverShelf";
+import { canShowStartReading, PUBLIC_READER_RELEASED_SLUGS } from "../lib/controlledLaunch";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"), "utf8");
 const commerce = fs.readFileSync(path.join(process.cwd(), "src/components/ReadingPassesSurface.jsx"), "utf8");
@@ -31,11 +33,31 @@ describe("Reference public page surfaces", () => {
   test("does not advertise paid checkout or listening before those launch features are enabled", () => {
     expect(home).toContain("home-reference-page--no-commerce");
     expect(home).toContain("home-reference-page--no-audio");
-    expect(homeLaunchStyles).toContain(".home-reference-page--no-commerce .reference-home__pass");
+    expect(homeLaunchStyles).not.toMatch(/\.home-reference-page--no-commerce \.reference-home__pass\s*[,\{]/);
+    expect(source).toContain("Reading Passes are not on sale during the free India Reader pilot.");
+    expect(source).toContain('to={PUBLIC_PAID_COMMERCE_ENABLED ? "/pricing" : "/library"}');
+    expect(source).toContain("No checkout, Reading Pass purchase, or credit debit");
     expect(homeLaunchStyles).toContain(".home-reference-page--no-commerce .reference-home__policy > p:nth-of-type(2)");
     expect(homeLaunchStyles).toContain(".home-reference-page--no-audio .reference-home__cta-row a[href=\"/library?availability=approved-audiobook\"]");
     expect(home).toContain("if (!PUBLIC_PAID_COMMERCE_ENABLED) return undefined;");
     expect(home).toContain("if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return undefined;");
+  });
+
+  test("keeps a cover-only Home shelf visible without treating bundled metadata as live access", () => {
+    expect(PILOT_COVER_SHELF.map((book) => book.slug)).toEqual([...PUBLIC_READER_RELEASED_SLUGS]);
+    for (const book of PILOT_COVER_SHELF) {
+      expect(book.cover_image_url).toMatch(/^https:\/\/res\.cloudinary\.com\//);
+      expect(canShowStartReading(book)).toBe(false);
+      const controlledBook = JSON.parse(fs.readFileSync(path.join(process.cwd(), "..", "backend", "data", "controlled_publications", book.slug, "public_book.json"), "utf8"));
+      expect({ title: book.title, author: book.author, cover_image_url: book.cover_image_url }).toEqual({
+        title: controlledBook.title,
+        author: controlledBook.author,
+        cover_image_url: controlledBook.cover_image_url,
+      });
+    }
+    expect(source).toContain("liveShelfBooks.length ? liveShelfBooks : PILOT_COVER_SHELF");
+    expect(source).toContain('const href = discoveryOnly ? "/library"');
+    expect(source).toContain("discoveryOnly={discoveryOnlyShelf}");
   });
 
   test("binds offer presentation to current configured offer fields", () => {
