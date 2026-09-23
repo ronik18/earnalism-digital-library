@@ -46,7 +46,7 @@ export default function ReaderPerspectives() {
   return (
     <section className="reference-reader-perspectives" aria-labelledby="reader-perspectives-title" data-testid="reader-perspectives-section">
       <div className="reference-reader-perspectives__intro">
-        <p className="reference-kicker">Reader perspectives · imagined with care</p>
+        <p className="reference-kicker">Reader perspectives</p>
         <h2 id="reader-perspectives-title">What reading can feel like</h2>
         <p>Four imagined reader perspectives. Different lives, languages and places — connected by the private experience of a meaningful story.</p>
       </div>

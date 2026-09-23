@@ -80,7 +80,8 @@ describe("Reference public page surfaces", () => {
     expect(home).toContain("<ReaderPerspectives />");
     expect(perspectives).not.toMatch(/ReaderTestimonialsSection|What Our Readers Say|REAL READERS|verified reader/);
     expect(perspectives).toContain("What reading can feel like");
-    expect(perspectives).toContain("Reader perspectives · imagined with care");
+    expect(perspectives).toContain("Reader perspectives</p>");
+    expect(perspectives).not.toContain("imagined with care");
     expect(perspectives).toContain("Illustrative reader perspective");
     expect(perspectives).toContain("Four imagined reader perspectives.");
     expect(perspectives).toContain('to="/library" className="reference-button reference-button--gold" data-testid="reader-perspectives-cta"');
