@@ -80,7 +80,7 @@ test("the owner-authorized PR416 Home shelf transition remains valid at its revi
 test("the requested Home sections transition matches the current shared Library source", () => {
   const comparison = compareLibraryInteractionBaseline(root, HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.previous_surface_sha256, "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f");
-  assert.equal(comparison.expected_surface_sha256, "af86e390c9fdcc21c985e9106701117d0bc5fd79cbb2d327fd71bffe22e62d9e");
+  assert.equal(comparison.expected_surface_sha256, "3cbf2dda50902d4745849eb8157af447cf26af0ceb17e93ba9aaf604e621ffc7");
   assert.equal(comparison.result, "PASS");
 });
 

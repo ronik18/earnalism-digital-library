@@ -146,9 +146,9 @@ const baselineContracts = {
     authorization: "DIRECT_OWNER_AUTHORIZATION_PR416_POST_LAUNCH_READER_UI_MANDATE",
   },
   [HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE]: {
-    reviewedSource: { commit: "eb4bc574781c70c371589839c4fdda5e93d55b58", tree: "562eda1457e7829aede5ae7e22ba5daaef8a232d", base: "a08a73e1c44041739ea452f947623a3ff1302d3e" },
+    reviewedSource: { commit: "5c950bfdaa5d7fb5da6fd21c0c324333d7cbff2f", tree: "2d11851680b06f80bf62a0c6014db5cddab26ce8", base: "a08a73e1c44041739ea452f947623a3ff1302d3e" },
     previous: { recordPath: PR416_LIBRARY_INTERACTION_BASELINE, commit: "e41894f08852ca25317cdf40ded642765eade46e", hash: "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f" },
-    authorizedHash: "af86e390c9fdcc21c985e9106701117d0bc5fd79cbb2d327fd71bffe22e62d9e",
+    authorizedHash: "3cbf2dda50902d4745849eb8157af447cf26af0ceb17e93ba9aaf604e621ffc7",
     inputPaths: ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS,
     changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],

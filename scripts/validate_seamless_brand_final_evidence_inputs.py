@@ -62,7 +62,7 @@ def main():
     require(library.get("result") == "PASS" and library.get("changed_from_previous") is True and library.get("expected_change") is True, "Library baseline transition result fails", failures)
     require(library.get("expected_surface_sha256") == library.get("observed_surface_sha256"), "Library baseline expected and observed fingerprints differ", failures)
     require(library_path == "docs/design-system/home-sections-library-interaction-baseline.json" and Path(library_path).exists(), "Library baseline record is missing", failures)
-    require(library.get("expected_surface_sha256") == "af86e390c9fdcc21c985e9106701117d0bc5fd79cbb2d327fd71bffe22e62d9e", "Library baseline expected fingerprint is not the reviewed Home sections value", failures)
+    require(library.get("expected_surface_sha256") == "3cbf2dda50902d4745849eb8157af447cf26af0ceb17e93ba9aaf604e621ffc7", "Library baseline expected fingerprint is not the reviewed Home sections value", failures)
     if library_path and Path(library_path).exists() and library.get("approval_source_sha256"):
         require(sha(library_path) == library.get("approval_source_sha256"), "Library baseline record SHA mismatch", failures)
     route_hash_path = data.get("route_hashes", {}).get("path")
