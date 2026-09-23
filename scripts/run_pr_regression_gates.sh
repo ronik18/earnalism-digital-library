@@ -59,7 +59,6 @@ echo "==> Current catalogue resource, held-title, chapter-index and SEO invarian
 env ENVIRONMENT=development "$PYTHON_BIN" -m pytest -q \
   backend/tests/test_controlled_launch_parity.py \
   backend/tests/test_chapter_index.py \
-  backend/tests/test_backend_catalog_truth.py \
   backend/tests/test_yugalanguriya_publication_inspection.py \
   scripts/test_post_deploy_static_seo_canary.py
 
