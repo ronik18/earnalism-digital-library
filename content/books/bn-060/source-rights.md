@@ -23,3 +23,7 @@ Reader-facing Earnalism editions must not expose internal admin-only evidence fi
 The earlier `ready_for_auto_publication` / `Blockers: None` assertion is superseded. The underlying work has India term evidence; the 1873 Wikisource transcription is CC BY-SA 4.0. A revision-bound diagnostic compared seven of eight chapters; normalized similarity was 0.98913–0.99548, with source headings/front matter still present and no complete mismatch classification. Chapter eight could not be fetched after HTTP 429. This is not `TEXT_VERIFIED`; the stored raw source and prior hashes do not close the discrepancy. This candidate remains held and is not publishable from this note.
 
 Hash-bound cohort record: `data/title_rights_evidence/bengali-bankim-cohort-1.json` (`bn-060`).
+
+## Indira chapter-six comparison follow-up (2026-09-24)
+
+The preserved raw-source snapshot hash matches the chapter source snapshot recorded above, and both match the current canonical chapter content. The exact Bengali Wikisource chapter-six revision 1910626 identifies the 1873 edition's pages 30–33 and continues beyond the shared final sentence with two additional paragraphs (approximately 494 normalized characters). This is a substantive source-transcription/canonical difference, not a formatting-only discrepancy. The page transcript is marked proofread but not validated; the facsimile image was not visually verified in this review. No source reading is selected, no canonical text is changed, and Indira remains `HOLD_SOURCE` pending scan or independent-edition corroboration.

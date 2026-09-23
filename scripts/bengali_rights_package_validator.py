@@ -18,6 +18,18 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 PACKET = Path("data/title_rights_evidence/bengali-bankim-cohort-1.json")
 HEX_SHA256 = re.compile(r"^[0-9a-f]{64}$")
+# CC BY-SA reuse is not complete on attribution alone: the license link,
+# changes notice, ShareAlike treatment, and compatible downstream terms must
+# also be evidenced before a title can reach release readiness.
+CC_BY_SA_OBLIGATION_FIELDS = {
+    "attribution_implemented": "attribution",
+    "source_and_license_links_implemented": "source_and_license_links",
+    "changes_disclosed": "changes_disclosed",
+    "sharealike_treatment_implemented": "sharealike_treatment",
+    "no_incompatible_additional_restrictions": (
+        "no_incompatible_additional_restrictions"
+    ),
+}
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -120,7 +132,23 @@ def evaluate_title(
     source_revision = str(title.get("source_page_revision") or "")
     source_url = str(title.get("source_page_revision_url") or "")
     license_name = str(title.get("source_layer_status") or "")
-    attribution = title.get("attribution_implemented") is True
+    license_obligations = title.get("license_obligations")
+    if not isinstance(license_obligations, dict):
+        license_obligations = {}
+    cc_by_sa = "CC_BY_SA" in license_name
+    obligation_checks = {
+        check_name: (
+            license_obligations.get(obligation_name) is True
+            if cc_by_sa
+            else title.get("license_obligations_not_applicable") is True
+        )
+        for check_name, obligation_name in CC_BY_SA_OBLIGATION_FIELDS.items()
+    }
+    obligations_satisfied = (
+        all(obligation_checks.values())
+        if cc_by_sa
+        else title.get("license_obligations_not_applicable") is True
+    )
     package_book = read_json(package / "public_book.json")
     cover_asset = str(title.get("cover_asset") or "")
     package_cover = str(package_book.get("cover_image_url") or "")
@@ -167,11 +195,8 @@ def evaluate_title(
             and source_evidence.get("source_name")
             and source_evidence.get("source_license")
         ),
-        "license_obligations_satisfied": (
-            attribution
-            if "CC_BY_SA" in license_name
-            else title.get("license_obligations_not_applicable") is True
-        ),
+        **obligation_checks,
+        "license_obligations_satisfied": obligations_satisfied,
         "text_verified": text_verified,
         "cover_ready": cover_confirmed,
         "publication_manifest_present": (
