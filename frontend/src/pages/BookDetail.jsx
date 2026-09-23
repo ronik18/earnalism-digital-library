@@ -11,8 +11,8 @@ import {
   DRACULA_CTA_EVENTS,
   DRACULA_RIGHTS_NOTE,
   DRACULA_SOURCE_NOTE,
-  DRACULA_FALLBACK_BOOK,
   LIVE_APPROVED_SLUG,
+  PUBLIC_READER_EXPOSURE_ENABLED,
   mergeDraculaBook,
   normalizeChapterDisplayTitle,
   readingPassUrl,
@@ -105,10 +105,20 @@ export default function BookDetail() {
   });
 
   useEffect(() => {
-    const controller = new AbortController();
     setSelectedTab("about");
     setLoading(true);
     setLoadStatus("loading");
+    // Do not render a direct detail route from an API response while the
+    // client-side public-release hold is active. The backend remains
+    // authoritative, and this guards stale caches or an incorrectly scoped
+    // response without attempting a Reader, manifest, or session request.
+    if (!PUBLIC_READER_EXPOSURE_ENABLED) {
+      setBook(null);
+      setLoadStatus("not_found");
+      setLoading(false);
+      return undefined;
+    }
+    const controller = new AbortController();
     api.get(`/books/${slug}`, { signal: controller.signal }).then(async (r) => {
       if (isValidBookPayload(r.data)) {
         let nextBook = r.data;
@@ -128,23 +138,13 @@ export default function BookDetail() {
         setLoadStatus("ready");
         return;
       }
-      if (slug === LIVE_APPROVED_SLUG) {
-        setBook(DRACULA_FALLBACK_BOOK);
-        setLoadStatus("ready");
-        return;
-      }
       setBook(null);
       setLoadStatus("not_found");
     })
       .catch((err) => {
         if (err.name !== "CanceledError") {
-          if ((err.response?.status === 404 || !err.response) && slug === LIVE_APPROVED_SLUG) {
-            setBook(DRACULA_FALLBACK_BOOK);
-            setLoadStatus("ready");
-          } else {
-            setBook(null);
-            setLoadStatus(err.response?.status === 404 ? "not_found" : "error");
-          }
+          setBook(null);
+          setLoadStatus(err.response?.status === 404 ? "not_found" : "error");
         }
       }).finally(() => {
         if (!controller.signal.aborted) setLoading(false);
@@ -259,7 +259,7 @@ export default function BookDetail() {
 
       <section className="book-detail-hero book-detail-reference__hero max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         <div className="lg:col-span-5 book-detail-reference__cover-column">
-          <div className="book-detail-cover-frame aspect-[3/4] overflow-hidden max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
+          <div className="book-detail-cover-frame max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
             <BookCoverImage
               book={publicBook}
               alt={isDracula ? "Custom Earnalism Dracula cover artwork" : publicBook.title}
@@ -268,6 +268,7 @@ export default function BookDetail() {
               width={640}
               widths={[420, 640, 900]}
               sizes="(min-width: 1024px) 420px, (min-width: 640px) 52vw, 90vw"
+              unframed
             />
           </div>
         </div>
@@ -374,7 +375,16 @@ export default function BookDetail() {
           </div>
           </div>}
 
-          {selectedTab === "details" && <div id="book-panel-details" role="tabpanel" aria-labelledby="book-tab-details" className="book-detail-reference__rights mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="book-details-panel"><strong>Release &amp; Access</strong><p className="mt-3 text-sm leading-relaxed text-charcoal-soft">{detailPresentation.readerRuntimeAvailable ? PUBLIC_PREVIEW_COPY : detailPresentation.readerBody} {detailPresentation.audioBody}</p>{isDracula && <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">Source: {DRACULA_SOURCE_NOTE} Rights status: {DRACULA_RIGHTS_NOTE}</p>}</div>}
+          {selectedTab === "details" && <div id="book-panel-details" role="tabpanel" aria-labelledby="book-tab-details" className="book-detail-reference__rights mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="book-details-panel">
+            <strong>Release &amp; Access</strong>
+            <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">{detailPresentation.freeReading ? detailPresentation.readerBody : detailPresentation.readerRuntimeAvailable ? PUBLIC_PREVIEW_COPY : detailPresentation.readerBody} {detailPresentation.audioBody}</p>
+            {isDracula && <p className="mt-3 text-sm leading-relaxed text-charcoal-soft">Source: {DRACULA_SOURCE_NOTE} Rights status: {DRACULA_RIGHTS_NOTE}</p>}
+            {publicBook.slug === "radharani" && (
+              <p className="mt-4 text-sm leading-relaxed text-charcoal-soft" data-testid="radharani-source-attribution">
+                The underlying Bengali literary work by Bankim Chandra Chattopadhyay is in the public domain. This Reader text follows the Bengali Wikisource transcription of the 1940 edition edited by Brajendranath Bandyopadhyay and Sajanikanta Das; credit for the online transcription belongs to its <a className="text-burgundy underline" href="https://bn.wikisource.org/w/index.php?title=%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)&action=history">Wikisource contributors</a>. See the <a className="text-burgundy underline" href="https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)">source edition and its notices</a>. The reused transcription/source layer is available under <a className="text-burgundy underline" href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>, including its warranty disclaimer. Earnalism reformatted that layer for the Reader; any copyrightable adaptation of that layer is shared under the same license. This does not license Earnalism’s separate cover art, branding or site code.
+              </p>
+            )}
+          </div>}
 
           {selectedTab === "chapters" && chapterCount > 0 && (
             <div id="book-panel-chapters" role="tabpanel" aria-labelledby="book-tab-chapters" className="mt-8" data-testid="chapter-list">

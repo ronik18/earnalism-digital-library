@@ -169,7 +169,9 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           <div className="reader-v2__metric"><span>Reading Progress</span><strong>{progress}%</strong><i><b style={{ width: `${progress}%` }} /></i></div>
           {model.readingTime && <div className="reader-v2__metric"><span>Estimated time left</span><strong>{model.readingTime}</strong></div>}
           <ExperiencePanel eyebrow="Contents" className="reader-v2__contents"><ol>{contents.filter((item) => item.page <= totalPages).map((item) => <li key={item.page}><button type="button" aria-current={item.page === page ? "page" : undefined} disabled={busy} onClick={() => requestPage(item.page)}>{item.label}</button></li>)}</ol></ExperiencePanel>
-          <ExperiencePanel eyebrow="Reading Pass"><p>{model.readingPass}</p><button type="button" onClick={() => onNavigate?.("passes")}>Extend Reading Time</button></ExperiencePanel>
+          {model.freeReading
+            ? <ExperiencePanel eyebrow="Free Reader access"><p>Read this complete edition without payment or Reading Pass debit.</p></ExperiencePanel>
+            : <ExperiencePanel eyebrow="Reading Pass"><p>{model.readingPass}</p><button type="button" onClick={() => onNavigate?.("passes")}>Extend Reading Time</button></ExperiencePanel>}
         </aside>
 
         <article className="reader-v2__canvas" data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>

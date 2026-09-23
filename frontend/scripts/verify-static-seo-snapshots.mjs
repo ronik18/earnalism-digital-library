@@ -6,6 +6,7 @@ const frontendDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const buildDir = path.join(frontendDir, "build");
 const contractDir = path.join(frontendDir, "static-seo");
 const accessCopy = "Read the first 3 pages free. Listening requires an active Reading Pass.";
+const heldCopy = "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed.";
 const forbidden = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
 
 const json = async (file) => JSON.parse(await readFile(file, "utf8"));
@@ -18,7 +19,7 @@ const fail = (message, state) => {
 };
 
 function requiredRoutes(publication, editorial) {
-  const publicRoutes = ["/", "/library", "/pricing", "/about", "/contact", "/micro-story", "/journal"];
+  const publicRoutes = ["/", "/library", "/pricing", "/about", "/contact", "/privacy", "/terms", "/copyright", "/micro-story", "/journal"];
   const journalRoutes = editorial.articles.map((article) => "/journal/" + article.slug);
   const books = publication.publications.flatMap((book) => ["/book/" + book.slug, "/reader/" + book.slug, "/listener/" + book.slug]);
   return [...publicRoutes, ...journalRoutes, ...books, "/login", "/signup", "/account", "/my-library"];
@@ -31,7 +32,8 @@ async function main() {
   const manifest = await json(path.join(buildDir, "static-seo-snapshot-manifest.json"));
   const expected = requiredRoutes(publication, editorial);
 
-  if (publication.schema_version !== "earnalism.static-seo-public.v2" || !Object.values(publication.generated_from || {}).every(isSha)) fail("Publication contract provenance is invalid", state);
+  const releaseHeld = publication.public_release_held === true;
+  if (publication.schema_version !== "earnalism.static-seo-public.v2" || !Object.values(publication.generated_from || {}).every(isSha) || (releaseHeld ? publication.publications.length !== 0 : publication.publications.length === 0)) fail("Publication contract provenance is invalid", state);
   if (editorial.schema_version !== "earnalism.static-seo-editorial.v1" || !isSha(editorial.generated_from && editorial.generated_from["https://api.theearnalism.com/api/blog"])) fail("Editorial contract provenance is invalid", state);
   if (manifest.schema_version !== "earnalism.static-seo-snapshots.v2") fail("Snapshot manifest version is invalid", state);
   if (new Set(manifest.routes.map((item) => item.route)).size !== manifest.routes.length) fail("Snapshot manifest has duplicate routes", state);
@@ -70,7 +72,8 @@ async function main() {
     }
     if (route === "/" || route === "/library" || route === "/pricing" || route.startsWith("/book/") || route.startsWith("/reader/") || route.startsWith("/listener/")) {
       state.assertions += 1;
-      if (!normalized.includes(accessCopy.toLowerCase())) fail(route + " is missing the locked access contract", state);
+      const requiredAccessCopy = releaseHeld && ["/", "/library", "/pricing"].includes(route) ? heldCopy : accessCopy;
+      if (!normalized.includes(requiredAccessCopy.toLowerCase())) fail(route + " is missing the applicable access contract", state);
     }
     if (route === "/journal" || route.startsWith("/journal/") || route === "/contact") {
       state.assertions += 1;

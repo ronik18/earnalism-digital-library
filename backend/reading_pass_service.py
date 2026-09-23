@@ -38,6 +38,8 @@ except ImportError:  # production-style import from backend cwd
 
 
 ACTIVE_SESSION_STATUSES = {"active", "paused"}
+FREE_INDIA_READER_ENTITLEMENT = "india_pilot_free_text"
+FREE_INDIA_READER_SLUGS = frozenset({"a-ghost-story", "the-tell-tale-heart", "radharani"})
 
 
 def _now() -> datetime:
@@ -484,10 +486,17 @@ class ReadingPassService:
         content_id: str,
         scope: Mapping[str, Any],
         transfer: bool = False,
+        free_entitlement: bool = False,
     ) -> dict[str, Any]:
         content_kind = str(content_type or "").lower()
         if content_kind not in {"text", "audio"}:
             raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 403, "Unsupported protected content type.")
+        if free_entitlement and (
+            content_kind != "text"
+            or str(content_id) not in FREE_INDIA_READER_SLUGS
+            or scope.get("release_country") != "IN"
+        ):
+            raise ReadingPassError("CONTENT_NOT_AUTHORIZED", 403, "Free Reader entitlement is not available for this edition.")
         token = secrets.token_urlsafe(32)
         token_hash = token_fingerprint(token, self.token_secret)
         now = _now()
@@ -508,7 +517,7 @@ class ReadingPassService:
             if not user or user.get("status") == "blocked":
                 raise ReadingPassError("AUTH_REQUIRED", 401, "A valid member session is required.")
             balance = safe_seconds(int(user.get("reading_seconds_balance", user.get("wallet_seconds", 0)) or 0))
-            if balance <= 0:
+            if balance <= 0 and not free_entitlement:
                 raise ReadingPassError("PASS_REQUIRED", 403, "A positive Reading Pass balance is required.", balance_seconds=0)
 
             active = await self.db.reading_pass_sessions.find_one(
@@ -554,13 +563,16 @@ class ReadingPassService:
                 )
 
             balance = await self._balance(user_id, mongo_session)
-            if balance <= 0:
+            if balance <= 0 and not free_entitlement:
                 # Commit the old session's final debit and lock release, then
                 # surface the denial outside the transaction.
                 return {"terminal_only": True, "balance_seconds": 0}
 
             session_id = str(uuid.uuid4())
-            expires_at = lease_expiry(now, balance, self.config)
+            expires_at = (
+                now + timedelta(seconds=self.config.maximum_lease_seconds)
+                if free_entitlement else lease_expiry(now, balance, self.config)
+            )
             document = {
                 "id": session_id,
                 "user_id": user_id,
@@ -570,9 +582,10 @@ class ReadingPassService:
                 "content_type": content_kind,
                 "content_id": str(content_id)[:200],
                 "scope": dict(scope),
+                "entitlement_kind": FREE_INDIA_READER_ENTITLEMENT if free_entitlement else "metered",
                 "status": "active",
                 "active_lock": user_id,
-                "billing_active": content_kind == "text",
+                "billing_active": content_kind == "text" and not free_entitlement,
                 "lease_token_hash": token_hash,
                 "lease_version": 1,
                 "lease_issued_at": now,
@@ -600,7 +613,7 @@ class ReadingPassService:
                 session=mongo_session,
             )
             await self._audit(
-                "metered_session_started",
+                "free_reader_session_started" if free_entitlement else "metered_session_started",
                 session=mongo_session,
                 document={
                     "user_id": user_id,
@@ -620,6 +633,8 @@ class ReadingPassService:
                 "heartbeat_seconds": self.config.heartbeat_seconds,
                 "maximum_lease_seconds": self.config.maximum_lease_seconds,
                 "balance_seconds": balance,
+                "entitlement_kind": document["entitlement_kind"],
+                "deducted_seconds": 0,
                 "status": "Running",
             }
 
@@ -1042,6 +1057,14 @@ class ReadingPassService:
                 raise ReadingPassError("LEASE_EXPIRED", 403, "The Reading Pass lease expired.")
 
             genuinely_active = bool(active)
+            free_entitlement = session_doc.get("entitlement_kind") == FREE_INDIA_READER_ENTITLEMENT
+            free_scope = session_doc.get("scope") if isinstance(session_doc.get("scope"), Mapping) else {}
+            if free_entitlement and (
+                session_doc.get("content_type") != "text"
+                or str(session_doc.get("content_id") or "") not in FREE_INDIA_READER_SLUGS
+                or free_scope.get("release_country") != "IN"
+            ):
+                raise ReadingPassError("CONTENT_AUTHORITY_UNAVAILABLE", 503, "Free Reader entitlement could not be verified.")
             if session_doc.get("content_type") == "audio":
                 genuinely_active = genuinely_active and str(playback_state or "").lower() == "playing"
             previously_active = bool(
@@ -1055,7 +1078,7 @@ class ReadingPassService:
                 config=self.config,
             )
             balance = await self._balance(user_id, mongo_session)
-            debit = min(balance, billable)
+            debit = 0 if free_entitlement else min(balance, billable)
             balance_after = balance - debit
             next_version = current_version + 1
             buffering = (
@@ -1064,12 +1087,16 @@ class ReadingPassService:
             )
             next_status = (
                 "exhausted"
-                if balance_after <= 0
+                if balance_after <= 0 and not free_entitlement
                 else "active"
                 if genuinely_active or buffering
                 else "paused"
             )
-            next_expiry = lease_expiry(now, balance_after, self.config) if next_status == "active" else now
+            next_expiry = (
+                now + timedelta(seconds=self.config.maximum_lease_seconds)
+                if free_entitlement and next_status == "active"
+                else lease_expiry(now, balance_after, self.config) if next_status == "active" else now
+            )
 
             if debit:
                 updated = await self.db.users.update_one(
@@ -1100,7 +1127,7 @@ class ReadingPassService:
                     "last_heartbeat_at": now,
                     "last_sequence": sequence,
                     "updated_at": now,
-                    "billing_active": genuinely_active and balance_after > 0,
+                    "billing_active": genuinely_active and balance_after > 0 and not free_entitlement,
                 },
                 "$inc": {"seconds_consumed": debit},
             }
@@ -1137,6 +1164,7 @@ class ReadingPassService:
                 "lease_version": next_version,
                 "lease_expires_at": _iso(next_expiry),
                 "balance_seconds": balance_after,
+                "entitlement_kind": session_doc.get("entitlement_kind", "metered"),
                 "deducted_seconds": debit,
                 "status": public_status,
             }

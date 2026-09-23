@@ -167,7 +167,7 @@ try:
         public_text_page,
         segment_manifest,
     )
-    from backend.reading_pass_service import ReadingPassService
+    from backend.reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS
 except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from domain.reading_pass import (  # type: ignore
         PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -180,7 +180,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         public_text_page,
         segment_manifest,
     )
-    from reading_pass_service import ReadingPassService  # type: ignore
+    from reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS  # type: ignore
 
 try:
     from backend.domain.catalog import (
@@ -277,9 +277,21 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.rights_engine import RIGHTS_REPORT_FILENAMES, rights_publish_blockers, rights_report_csv, rights_report_rows
 
 try:
+    from release_proxy_auth import verify_release_proxy_request
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.release_proxy_auth import verify_release_proxy_request
+
+try:
+    from rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, should_deny_runtime_action
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, should_deny_runtime_action
+
+try:
     from catalog_truth import (
+        CONTROLLED_LAUNCH_CONFIG,
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        PUBLIC_READER_EXPOSURE_ENABLED,
         AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         PUBLIC_CATALOG_EXCLUDED_SLUGS as CATALOG_TRUTH_EXCLUDED_SLUGS,
@@ -292,6 +304,7 @@ try:
         controlled_artifact_status,
         dracula_artifact_status,
         explicit_preview_chapter_ids,
+        file_sha256,
         live_approved_mongo_query,
         load_controlled_artifact_book,
         load_dracula_artifact_book,
@@ -300,8 +313,10 @@ try:
     )
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.catalog_truth import (
+        CONTROLLED_LAUNCH_CONFIG,
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        PUBLIC_READER_EXPOSURE_ENABLED,
         AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         PUBLIC_CATALOG_EXCLUDED_SLUGS as CATALOG_TRUTH_EXCLUDED_SLUGS,
@@ -314,6 +329,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         controlled_artifact_status,
         dracula_artifact_status,
         explicit_preview_chapter_ids,
+        file_sha256,
         live_approved_mongo_query,
         load_controlled_artifact_book,
         load_dracula_artifact_book,
@@ -801,11 +817,12 @@ async def _expensive_job_slot(job_type: str):
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v16"
 # Rotate only public catalog/home cache keys for controlled-cover precedence.
 # Reader/audio manifest cache namespaces remain unchanged.
-PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "controlled-covers-v1"
+PUBLIC_CATALOG_TRUTH_CACHE_VERSION = "release-containment-v1"
 READER_CONTENT_RENDER_VERSION = "semantic-html-v1"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
+PUBLIC_PAID_COMMERCE_ENABLED = CONTROLLED_LAUNCH_CONFIG.get("public_paid_commerce_enabled") is True
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
@@ -862,6 +879,12 @@ def get_razorpay_client():
     except ImportError:
         return None
     return razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
+
+
+def _public_paid_commerce_enabled_or_404() -> None:
+    """Keep unfinished checkout unavailable even when a caller bypasses the UI."""
+    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+        raise HTTPException(status_code=404, detail="Paid checkout is not available in this launch.")
 
 
 def _hmac_sha256_hex(secret: str, body: bytes) -> str:
@@ -1633,7 +1656,149 @@ def _controlled_public_book_query(extra: Optional[dict] = None) -> dict:
 
 
 def _is_controlled_public_slug(slug: str) -> bool:
-    return str(slug or "").strip().lower() in CONTROLLED_LIVE_BOOK_SLUGS
+    return (
+        PUBLIC_READER_EXPOSURE_ENABLED
+        and str(slug or "").strip().lower() in CONTROLLED_LIVE_BOOK_SLUGS
+    )
+
+
+def _is_release_proxy_protected_path(path: str) -> bool:
+    """Restrict signed proxy assertions to public catalogue/Reader content."""
+    if not isinstance(path, str):
+        return False
+    return (
+        path == "/api/books"
+        or path.startswith("/api/books/")
+        or path.startswith("/api/home")
+        or path.startswith("/api/reader/")
+        or path.startswith("/api/reading-pass/books/")
+    )
+
+
+RELEASE_PROXY_FREE_SESSION_PATHS = frozenset({
+    "/api/reading-pass/sessions/start",
+    "/api/reading-pass/sessions/transfer",
+    "/api/reading-pass/leases/renew",
+})
+
+
+def _free_india_reader_verdict(request: Request, slug: str) -> bool:
+    """Only an authenticated India proxy assertion plus accepted text delivery grants free time."""
+    if not _is_controlled_public_slug(slug) or slug not in FREE_INDIA_READER_SLUGS:
+        return False
+    proxy_verdict = _release_proxy_access_verdict(request)
+    if not proxy_verdict.allowed or proxy_verdict.country != "IN":
+        return False
+    record, components = _release_rights_artifact(slug)
+    try:
+        accepted, revoked = load_production_registry()
+    except (OSError, ValueError, TypeError, _json.JSONDecodeError):
+        return False
+    # A free, non-commercial lease is a delivery control; it does not assert
+    # a paid Reading Pass grant that the accepted decision did not contain.
+    verdict = evaluate_runtime_path(
+        "free_reader_entitlement", record=record, edition_id=slug,
+        operator_id=RELEASE_RIGHTS_OPERATOR_ID, country="IN", country_trusted=True,
+        required_components=components, accepted_records=accepted,
+        revoked_decision_ids=revoked, now=datetime.now(timezone.utc),
+    )
+    return verdict.passed is True
+
+
+def _release_proxy_access_verdict(request: Request):
+    return verify_release_proxy_request(
+        request.headers,
+        method=request.method,
+        path=request.url.path,
+        secret=os.getenv("EARNALISM_RELEASE_PROXY_SECRET", ""),
+    )
+
+
+# Public Reader traffic may open only after the release proxy has authenticated
+# the request and every requested title has a separately accepted, immutable
+# decision. The proxy-observed country is signed and matched to the exact
+# accepted rights scope; a client-supplied location cannot broaden it. The files
+# below are metadata-only artifacts; chapter bodies are never read here.
+RELEASE_RIGHTS_OPERATOR_ID = "reo-enterprise"
+RELEASE_RIGHTS_COMPONENT_FILENAMES = (
+    "public_book.json",
+    "reader_manifest.json",
+    "source_evidence.json",
+    "approval_evidence.json",
+    "checksum_manifest.json",
+    "publication_manifest.json",
+)
+
+
+def _release_rights_action_targets(path: str) -> tuple[tuple[str, str], ...] | None:
+    """Map every proxy-protected public path to an exact rights action."""
+    if not isinstance(path, str):
+        return None
+    all_catalogue = tuple((slug, "catalog_cta") for slug in CONTROLLED_LIVE_BOOK_SLUGS)
+    if path == "/api/books" or path.startswith("/api/home"):
+        return all_catalogue
+    parts = tuple(segment for segment in path.split("/") if segment)
+    if len(parts) >= 3 and parts[:2] == ("api", "books"):
+        slug = parts[2]
+        return ((slug, "catalog_cta" if len(parts) == 3 else "reader_preview"),)
+    if len(parts) >= 4 and parts[:3] == ("api", "reader", "book"):
+        return ((parts[3], "reader_manifest"),)
+    if len(parts) >= 4 and parts[:3] == ("api", "reader", "chapter"):
+        return ((parts[3], "reader_chapter"),)
+    if len(parts) >= 5 and parts[:3] == ("api", "reading-pass", "books"):
+        action = "reader_manifest" if parts[4] == "manifest" else "reading_pass_page"
+        return ((parts[3], action),)
+    return None
+
+
+def _release_rights_artifact(slug: str) -> tuple[dict[str, Any] | None, dict[str, str]]:
+    """Load a decision and hash only its fixed metadata components."""
+    normalized_slug = str(slug or "").strip().lower()
+    if not normalized_slug:
+        return None, {}
+    for package_dir in controlled_artifact_dir_candidates(normalized_slug):
+        decision_path = package_dir / "rights_decision.json"
+        component_paths = {name.removesuffix(".json"): package_dir / name for name in RELEASE_RIGHTS_COMPONENT_FILENAMES}
+        if not decision_path.exists() or any(not path.is_file() for path in component_paths.values()):
+            continue
+        try:
+            components = {name: file_sha256(path) for name, path in component_paths.items()}
+        except OSError:
+            continue
+        decision = read_json_file(decision_path)
+        return (decision or None), components
+    return None, {}
+
+
+def _release_rights_verdict(request: Request, *, country: str = "") -> DecisionGateVerdict:
+    """Evaluate every public release target without exposing decision details."""
+    targets = _release_rights_action_targets(request.url.path)
+    if not targets:
+        return DecisionGateVerdict(False, ("PUBLIC_RELEASE_PATH_UNMAPPED",))
+    if not re.fullmatch(r"[A-Z]{2}", country):
+        return DecisionGateVerdict(False, ("RELEASE_COUNTRY_UNTRUSTED",))
+    try:
+        accepted_records, revoked_decision_ids = load_production_registry()
+    except (OSError, ValueError, TypeError, _json.JSONDecodeError):
+        return DecisionGateVerdict(False, ("RIGHTS_REGISTRY_UNAVAILABLE",))
+    reasons: list[str] = []
+    for slug, action in targets:
+        record, components = _release_rights_artifact(slug)
+        verdict = evaluate_runtime_path(
+            action,
+            record=record,
+            edition_id=slug,
+            operator_id=RELEASE_RIGHTS_OPERATOR_ID,
+            country=country,
+            country_trusted=bool(country),
+            required_components=components,
+            accepted_records=accepted_records,
+            revoked_decision_ids=revoked_decision_ids,
+            now=datetime.now(timezone.utc),
+        )
+        if should_deny_runtime_action(verdict, strict_enforcement_enabled=True):
+            reasons.extend(verdict.reasons or ("RELEASE_RIGHTS_DENIED",))
+    return DecisionGateVerdict(not reasons, tuple(dict.fromkeys(reasons)))
 
 
 # This is deliberately a fixed server-side scope, not a client-provided book
@@ -5169,6 +5334,35 @@ app = FastAPI(
     docs_url=None if ENVIRONMENT == "production" else "/docs",
     redoc_url=None if ENVIRONMENT == "production" else "/redoc",
 )
+
+
+@app.middleware("http")
+async def enforce_public_release_country(request: Request, call_next):
+    """Protect production Reader traffic after a public release opens.
+
+    Only the production service requires the Vercel proxy's short-lived HMAC
+    assertion.  The isolated UAT environment has no public route or production
+    data, so retaining its direct in-process API contract does not broaden the
+    production surface. The assertion authenticates the proxy and binds its
+    observed country to the title-specific rights decision.
+    """
+    if (
+        ENVIRONMENT == "production"
+        and PUBLIC_READER_EXPOSURE_ENABLED
+        and (_is_release_proxy_protected_path(request.url.path) or request.url.path in RELEASE_PROXY_FREE_SESSION_PATHS)
+    ):
+        verdict = _release_proxy_access_verdict(request)
+        if not verdict.allowed:
+            status = 503 if verdict.code == "RELEASE_PROXY_CONFIGURATION_REQUIRED" else 451
+            return JSONResponse(status_code=status, content={"detail": {"code": verdict.code}})
+        if request.url.path in RELEASE_PROXY_FREE_SESSION_PATHS and verdict.country != "IN":
+            return JSONResponse(status_code=451, content={"detail": {"code": "RELEASE_RIGHTS_DENIED"}})
+        rights_verdict = _release_rights_verdict(request, country=verdict.country) if _is_release_proxy_protected_path(request.url.path) else DecisionGateVerdict(True, ())
+        if should_deny_runtime_action(rights_verdict, strict_enforcement_enabled=True):
+            # Do not disclose title, evidence, or decision-reason details to a
+            # public caller. A missing or changed accepted record is a hold.
+            return JSONResponse(status_code=451, content={"detail": {"code": "RELEASE_RIGHTS_DENIED"}})
+    return await call_next(request)
 if os.environ.get("JUDOSCALE_URL", "").strip():
     try:
         from judoscale.asgi.middleware import FastAPIRequestQueueTimeMiddleware  # type: ignore
@@ -6080,14 +6274,16 @@ async def get_home_payload(books_limit: Optional[int] = None, books_offset: int 
     featured_book = None
     setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
     featured_slug = (setting or {}).get("book_slug")
-    featured_candidate = featured_slug if featured_slug in CONTROLLED_LIVE_BOOK_SLUGS else CONTROLLED_LIVE_BOOK_SLUGS[0]
-    doc = await db.books.find_one(
-        _controlled_public_book_query({"slug": featured_candidate}),
-        BOOK_METADATA_PROJECTION,
-    )
-    featured_book = _safe_live_public_projection(doc)
-    if not featured_book:
-        featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
+    featured_book = None
+    if CONTROLLED_LIVE_BOOK_SLUGS:
+        featured_candidate = featured_slug if featured_slug in CONTROLLED_LIVE_BOOK_SLUGS else CONTROLLED_LIVE_BOOK_SLUGS[0]
+        doc = await db.books.find_one(
+            _controlled_public_book_query({"slug": featured_candidate}),
+            BOOK_METADATA_PROJECTION,
+        )
+        featured_book = _safe_live_public_projection(doc)
+        if not featured_book:
+            featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
 
     result = {
         "categories": categories,
@@ -6572,15 +6768,17 @@ async def get_featured():
     if cached is not None:
         return cached
     s = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
-    featured_candidate = (
-        s.get("book_slug")
-        if s and s.get("book_slug") in CONTROLLED_LIVE_BOOK_SLUGS
-        else CONTROLLED_LIVE_BOOK_SLUGS[0]
-    )
-    book = await db.books.find_one(_controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION)
-    featured_book = _safe_live_public_projection(book)
-    if not featured_book:
-        featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
+    featured_book = None
+    if CONTROLLED_LIVE_BOOK_SLUGS:
+        featured_candidate = (
+            s.get("book_slug")
+            if s and s.get("book_slug") in CONTROLLED_LIVE_BOOK_SLUGS
+            else CONTROLLED_LIVE_BOOK_SLUGS[0]
+        )
+        book = await db.books.find_one(_controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION)
+        featured_book = _safe_live_public_projection(book)
+        if not featured_book:
+            featured_book = _safe_live_public_projection(_controlled_artifact_doc(featured_candidate, include_content=False))
     result = {"book": featured_book}
     await _public_cache_set(cache_key, result)
     return result
@@ -8820,6 +9018,10 @@ async def reader_book_manifest(
     segment_state = await _active_reader_segment_manifest(slug) if READING_PASS_V2_ENABLED else None
     access["reading_pass"] = {
         "enabled": bool(READING_PASS_V2_ENABLED),
+        "free_entitlement": bool(
+            PUBLIC_READER_EXPOSURE_ENABLED
+            and slug in FREE_INDIA_READER_SLUGS
+        ),
         "segments_ready": bool(segment_state),
         "public_text_pages": PUBLIC_TEXT_PAGE_COUNT,
         "public_audio_seconds": PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -10550,6 +10752,11 @@ async def reading_pass_book_page(
         except ReadingPassError as exc:
             raise _reading_pass_http_error(exc) from exc
         scope = session_doc.get("scope") if isinstance(session_doc.get("scope"), dict) else {}
+        if ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED and (
+            session_doc.get("entitlement_kind") != FREE_INDIA_READER_ENTITLEMENT
+            or scope.get("release_country") != "IN"
+        ):
+            raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED"})
         segmentation_version = str(scope.get("segmentation_version") or "")
         manifest_version = str(scope.get("manifest_version") or "")
         if not segmentation_version or not manifest_version:
@@ -10599,7 +10806,7 @@ async def reading_pass_book_page(
     }
 
 
-async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, response: Response, *, transfer: bool) -> dict:
+async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, response: Response, *, transfer: bool, request: Request | None = None) -> dict:
     _reading_pass_enabled_or_404()
     content_type = str(payload.content_type or "").lower()
     scope: dict[str, Any] = {}
@@ -10692,6 +10899,11 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             "manifest_version": manifest["version"],
             "authority_activation_generation": activation_state["generation"],
         }
+        free_entitlement = bool(request and _free_india_reader_verdict(request, canonical_content_id))
+        if request is not None and ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED and not free_entitlement:
+            raise HTTPException(status_code=451, detail={"code": "RELEASE_RIGHTS_DENIED"})
+        if free_entitlement:
+            scope["release_country"] = "IN"
     elif content_type == "audio":
         position = float(payload.media_position_seconds or 0)
         if position < PUBLIC_AUDIO_PREVIEW_SECONDS:
@@ -10712,6 +10924,7 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             content_id=canonical_content_id if content_type == "text" else payload.content_id,
             scope=scope,
             transfer=transfer,
+            free_entitlement=free_entitlement if content_type == "text" else False,
         )
         await _invalidate_user_cache(user["id"])
         _set_reading_pass_media_cookies(response, result)
@@ -10727,13 +10940,13 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
 
 
 @api.post("/reading-pass/sessions/start")
-async def reading_pass_session_start(payload: ReadingPassSessionStartIn, response: Response, user=Depends(require_user)):
-    return await _reading_pass_start(payload, user, response, transfer=False)
+async def reading_pass_session_start(payload: ReadingPassSessionStartIn, request: Request, response: Response, user=Depends(require_user)):
+    return await _reading_pass_start(payload, user, response, transfer=False, request=request)
 
 
 @api.post("/reading-pass/sessions/transfer")
-async def reading_pass_session_transfer(payload: ReadingPassSessionStartIn, response: Response, user=Depends(require_user)):
-    return await _reading_pass_start(payload, user, response, transfer=True)
+async def reading_pass_session_transfer(payload: ReadingPassSessionStartIn, request: Request, response: Response, user=Depends(require_user)):
+    return await _reading_pass_start(payload, user, response, transfer=True, request=request)
 
 
 @api.post("/reading-pass/leases/renew")
@@ -10750,7 +10963,7 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
     text_authority = "allowed"
     session_hint = await db.reading_pass_sessions.find_one(
         {"id": payload.session_id, "user_id": user["id"]},
-        {"_id": 0, "content_type": 1, "content_id": 1},
+        {"_id": 0, "content_type": 1, "content_id": 1, "entitlement_kind": 1},
     )
     if session_hint and session_hint.get("content_type") == "text":
         try:
@@ -10760,6 +10973,12 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
             text_authority = "unavailable"
         else:
             text_authority = "allowed" if current_book else "denied"
+        if ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED:
+            text_authority = "allowed" if (
+                text_authority == "allowed"
+                and session_hint.get("entitlement_kind") == FREE_INDIA_READER_ENTITLEMENT
+                and _free_india_reader_verdict(request, str(session_hint.get("content_id") or ""))
+            ) else "denied"
     try:
         result = await reading_pass_service.renew_lease(
             user_id=user["id"],
@@ -11896,6 +12115,8 @@ async def admin_rotate_user_credentials(
 # ---------- Public: Pack catalogue ----------
 @api.get("/payments/packs", response_model=List[PackOut])
 async def payments_list_packs():
+    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+        return []
     cache_key = _public_cache_key("payment_packs")
     cached = await _public_cache_get(cache_key)
     if cached is not None:
@@ -11908,6 +12129,8 @@ async def payments_list_packs():
 @api.get("/payments/config")
 async def payments_config():
     """Lightweight config shim used by frontend to know if Razorpay is wired."""
+    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+        return {"available": False, "configured": False, "mode": "disabled", "key_id": ""}
     cache_key = _public_cache_key("payment_config")
     cached = await _public_cache_get(cache_key)
     if cached is not None:
@@ -11929,6 +12152,8 @@ async def payments_public_offers():
     additive route removes the initial Commerce waterfall without exposing any
     additional payment or account state.
     """
+    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+        return {"packs": [], "config": {"available": False, "configured": False, "mode": "disabled", "key_id": ""}}
     cache_key = _public_cache_key("payment_offers")
     cached = await _public_cache_get(cache_key)
     if cached is not None:
@@ -12024,6 +12249,7 @@ async def _credit_wallet_for_intent(intent: dict, payment_id: Optional[str], sou
 # ---------- Reader: create a top-up intent + Razorpay order ----------
 @api.post("/payments/topup", response_model=TopUpCreateOut)
 async def payments_create_topup(payload: TopUpCreateIn, user=Depends(require_user)):
+    _public_paid_commerce_enabled_or_404()
     pack = PACKS_BY_ID.get(payload.pack_id)
     if not pack:
         raise HTTPException(status_code=400, detail="Unknown pack")
@@ -12094,6 +12320,7 @@ async def payments_create_topup(payload: TopUpCreateIn, user=Depends(require_use
 # ---------- Reader: verify Razorpay checkout signature & credit ----------
 @api.post("/payments/verify")
 async def payments_verify(payload: PaymentVerifyIn, user=Depends(require_user)):
+    _public_paid_commerce_enabled_or_404()
     intent = await db.topup_intents.find_one(
         {"razorpay_order_id": payload.razorpay_order_id, "user_id": user["id"]},
         {"_id": 0},
@@ -12220,6 +12447,7 @@ async def payments_simulate_topup(payload: TopUpCreateIn, user=Depends(require_u
 
     Disabled when RAZORPAY_MODE is not 'test'.
     """
+    _public_paid_commerce_enabled_or_404()
     if RAZORPAY_MODE != "test":
         raise HTTPException(status_code=403, detail="Simulator disabled outside test mode")
     pack = PACKS_BY_ID.get(payload.pack_id)
@@ -12264,6 +12492,7 @@ async def payments_simulate_webhook(
     user (or admin via curl) drive an intent to 'credited' WITHOUT real
     Razorpay — useful when keys are not configured yet.
     """
+    _public_paid_commerce_enabled_or_404()
     if RAZORPAY_MODE != "test":
         raise HTTPException(status_code=403, detail="Simulator disabled outside test mode")
     intent = await db.topup_intents.find_one({"id": intent_id}, {"_id": 0})

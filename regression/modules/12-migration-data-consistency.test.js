@@ -8,6 +8,9 @@ const controlledLaunch = require("../../data/controlled_launch.json");
 
 const APPROVED_PUBLIC_AUDIO_SLUGS = publicAudioTruth.approved_public_audio_slugs || [];
 const CONTROLLED_AUDIO_SLUGS = new Set(controlledLaunch.audio_enabled_slugs || []);
+const PUBLIC_READER_RELEASE_HELD = controlledLaunch.public_reader_exposure_enabled !== true;
+const PUBLIC_AUDIO_RELEASE_HELD = PUBLIC_READER_RELEASE_HELD
+  || controlledLaunch.public_audio_exposure_enabled !== true;
 const ROOT = path.resolve(__dirname, "../..");
 
 function controlledPublicationCover(slug) {
@@ -28,6 +31,11 @@ describe("Migration, Backup & Data Consistency", () => {
     // while MongoDB remains authoritative for operational data and indexes.
     // Validate the public catalogue through its served contract in every mode.
     const books = (await apiGet("/books")).data;
+    if (PUBLIC_READER_RELEASE_HELD) {
+      expect(books).toEqual([]);
+      expect(CONTROLLED_AUDIO_SLUGS).toEqual(new Set());
+      return;
+    }
     expect(books.length).toBeGreaterThan(0);
     const bySlug = new Map(books.map((book) => [book.slug, book]));
     for (const book of books) {
@@ -35,7 +43,16 @@ describe("Migration, Backup & Data Consistency", () => {
       expect(book.category_slug).toBeTruthy();
       expect(book.author).toBeTruthy();
     }
+    if (PUBLIC_AUDIO_RELEASE_HELD) {
+      expect(CONTROLLED_AUDIO_SLUGS).toEqual(new Set());
+      expect(books.every((book) => (
+        book.audio_enabled !== true
+        && book.audiobook_enabled !== true
+        && !book.audio_url
+      ))).toBe(true);
+    }
     for (const slug of APPROVED_PUBLIC_AUDIO_SLUGS) {
+      if (PUBLIC_AUDIO_RELEASE_HELD) continue;
       const book = bySlug.get(slug);
       if (!book && isPr() && CONTROLLED_AUDIO_SLUGS.has(slug)) {
         continue;

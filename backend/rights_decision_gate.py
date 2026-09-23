@@ -59,8 +59,8 @@ HEX_SHA256 = re.compile(r"^[a-f0-9]{64}$")
 SYNTHETIC_PREFIX = "synthetic-"
 PRODUCTION_REGISTRY_PATH = Path(__file__).parent / "data" / "rights_decision_registry.json"
 
-# Every effectful route must use a named action.  Integration stays disabled
-# until trusted country assertion and production adapter work are separately
+# Every effectful route must use a named action. Integration stays disabled
+# until the trusted release proxy and production adapter work are separately
 # reviewed, so this table is intentionally executable policy rather than a
 # claim that the listed routes are currently activated.
 RUNTIME_PATH_USES: dict[str, tuple[str, ...]] = {
@@ -69,6 +69,9 @@ RUNTIME_PATH_USES: dict[str, tuple[str, ...]] = {
     "reader_preview": ("reader_preview",),
     "reader_chapter": ("reader_delivery",),
     "reading_pass_page": ("reader_delivery",),
+    # A no-price/no-debit text lease enforces an already accepted Reader
+    # delivery decision; it is not a grant for the separate paid Pass product.
+    "free_reader_entitlement": ("reader_delivery",),
     "reading_pass_session_start": ("reading_pass_session",),
     "reading_pass_session_transfer": ("reading_pass_session",),
     "reading_pass_lease_renewal": ("reading_pass_renewal",),

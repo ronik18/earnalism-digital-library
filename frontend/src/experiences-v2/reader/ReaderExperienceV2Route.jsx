@@ -224,7 +224,7 @@ function ReaderSession({ slug, user, syncBalance }) {
           // response as a usable authorization.
           const terminalBalance = !response.stale && next && ["Exhausted", "Expired", "Ended"].includes(next.status) ? next.balance : current.balance;
           publishLease({ ...current, status: "Expired", balance: terminalBalance });
-          setError(response?.status === "Exhausted" ? "Your Reading Pass time has run out." : "Your reading session needs to be renewed. Continue when you are ready.");
+          setError(response?.status === "Exhausted" && manifest?.access?.reading_pass?.free_entitlement !== true ? "Your Reading Pass time has run out." : "Your reading session needs to be renewed. Continue when you are ready.");
           setPageResult(null);
           return;
         }
@@ -247,12 +247,13 @@ function ReaderSession({ slug, user, syncBalance }) {
     })();
     renewPromiseRef.current = pending;
     return pending;
-  }, [publishLease, slug]);
+  }, [manifest, publishLease, slug]);
 
   const totalPages = Number(manifest?.access?.reading_pass?.total_pages || manifest?.canonical_pages?.page_count || 0);
   const expectedPage = (manifest?.canonical_pages?.pages || []).find((item) => Number(item.page_number || item.page_index) === canonicalPage);
   const expectedChapter = (manifest?.chapters || []).find((item) => item.id === expectedPage?.chapter_id);
   const enabled = manifest?.access?.reading_pass?.enabled !== false;
+  const freeReading = manifest?.access?.reading_pass?.free_entitlement === true;
   const validPage = Boolean(expectedPage && Number.isInteger(totalPages) && canonicalPage <= totalPages);
   const sessionId = lease?.sessionId || "";
   const leaseStatus = lease?.status || "";
@@ -390,12 +391,12 @@ function ReaderSession({ slug, user, syncBalance }) {
       if (nextPage === canonicalPage) setRetry((value) => value + 1);
       else changePage(nextPage);
     } catch (requestError) {
-      if (aliveRef.current) setError(requestMessage(requestError, requestError.message || "A current Reading Pass is required to continue."));
+      if (aliveRef.current) setError(requestMessage(requestError, requestError.message || (freeReading ? "Free Reader access could not be verified." : "A current Reading Pass is required to continue.")));
     } finally {
       actionRef.current = false;
       if (aliveRef.current) setBusy(false);
     }
-  }, [canonicalPage, changePage, navigate, publishLease, settleLease, slug, totalPages, user]);
+  }, [canonicalPage, changePage, freeReading, navigate, publishLease, settleLease, slug, totalPages, user]);
 
   const navigateAfterSettlement = useCallback(async (target) => {
     if (actionRef.current) return;
@@ -427,6 +428,7 @@ function ReaderSession({ slug, user, syncBalance }) {
       progress: totalPages ? Math.round((canonicalPage / totalPages) * 100) : 0,
       readingTime: "",
       readingPass: !user ? "Sign in to continue" : displayedBalance === null ? "Balance unavailable" : displayedBalance < 60 ? `${displayedBalance} seconds left` : `${Math.floor(displayedBalance / 60)} minutes left`,
+      freeReading,
       contents: (manifest?.canonical_pages?.pages || []).map((item) => ({ page: Number(item.page_number || item.page_index), label: `Page ${item.page_number || item.page_index}` })),
       content: page ? <ReaderContent html={page.content} /> : null,
       paragraphs: [],
@@ -434,7 +436,7 @@ function ReaderSession({ slug, user, syncBalance }) {
       statusMessage: notice,
       metadata: { language: book.language || "", genre: book.genre || "", year: book.publication_year || book.year || "", source: book.rights_status || "" },
     };
-  }, [displayedBalance, canonicalPage, manifest, notice, page, totalPages, user]);
+  }, [displayedBalance, canonicalPage, freeReading, manifest, notice, page, totalPages, user]);
 
   const recovery = <>
     <button type="button" data-testid="reader-recovery-book" onClick={() => navigateAfterSettlement("back")} disabled={busy}>Return to book details</button>
@@ -442,7 +444,7 @@ function ReaderSession({ slug, user, syncBalance }) {
     {!manifest && !loading && <button type="button" onClick={() => setManifestRetry((value) => value + 1)}>Retry reader</button>}
     {!user && canonicalPage > PREVIEW_PAGES && <Link data-testid="reader-recovery-sign-in" to={`/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}`}>Sign in to continue</Link>}
     {validPage && enabled && (canonicalPage <= PREVIEW_PAGES || user) && <button type="button" data-testid="reader-authorize-chapter" onClick={() => authorizeAndContinue(canonicalPage)} disabled={busy}>{busy ? "Opening page…" : canonicalPage <= PREVIEW_PAGES ? "Retry page" : "Continue to this page"}</button>}
-    {user && <button type="button" data-testid="reader-recovery-passes" onClick={() => navigateAfterSettlement("passes")} disabled={busy}>View Reading Passes</button>}
+    {user && !freeReading && <button type="button" data-testid="reader-recovery-passes" onClick={() => navigateAfterSettlement("passes")} disabled={busy}>View Reading Passes</button>}
     {notice && <p role="status">{notice}</p>}
   </>;
   if (visualFixture) {
@@ -461,7 +463,7 @@ function ReaderSession({ slug, user, syncBalance }) {
   if (loading) return <RouteState title="Opening reader" message="Loading this edition.">{loadingExit}</RouteState>;
   if (error) return <RouteState title="Reading paused" message={error}>{recovery}</RouteState>;
   if (!enabled || !validPage) return <RouteState title="Page unavailable" message="This page is not available in this edition.">{recovery}</RouteState>;
-  if (canonicalPage > PREVIEW_PAGES && !usable) return <RouteState title={leaseStatus === "Paused" ? "Reading paused" : "Continue reading"} message={leaseStatus === "Paused" ? "Your reading time is paused while the reader is inactive." : "Use your Reading Pass to open this page."}>{recovery}</RouteState>;
+  if (canonicalPage > PREVIEW_PAGES && !usable) return <RouteState title={leaseStatus === "Paused" ? "Reading paused" : "Continue reading"} message={leaseStatus === "Paused" ? "Your reading session is paused while the reader is inactive." : freeReading ? "Sign in to continue reading this edition free." : "Use your Reading Pass to open this page."}>{recovery}</RouteState>;
   if (!page) return <RouteState title="Opening page" message="Loading your selected page.">{loadingExit}</RouteState>;
   return <ReaderExperienceV2 model={model} access={{ authorized: usable, busy }} onRequestPage={authorizeAndContinue} onNavigate={(target) => {
     if (target === "bookmark") {

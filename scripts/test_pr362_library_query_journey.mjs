@@ -1,11 +1,18 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { chromium } from "playwright";
 
 const baseUrl = process.env.SEAMLESS_BRAND_TEST_BASE_URL;
 if (!baseUrl) throw new Error("SEAMLESS_BRAND_TEST_BASE_URL is required for the PR362 Header-to-Library journey.");
+const controlledLaunch = JSON.parse(readFileSync(new URL("../data/controlled_launch.json", import.meta.url), "utf8"));
+const publicReaderExposureEnabled = controlledLaunch.public_reader_exposure_enabled === true;
+const releasedSlugs = controlledLaunch.live_approved_slugs || [];
 
 const books = [
+  { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", short_description: "English short story", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/a-ghost-story", reader_url: "/reader/a-ghost-story", preview_enabled: true, preview_url: "/reader/a-ghost-story", chapters: [{ id: "chapter-001", is_preview: true }] },
+  { slug: "the-tell-tale-heart", title: "The Tell-Tale Heart", author: "Edgar Allan Poe", short_description: "English short story", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/the-tell-tale-heart", reader_url: "/reader/the-tell-tale-heart", preview_enabled: true, preview_url: "/reader/the-tell-tale-heart", chapters: [{ id: "chapter-001", is_preview: true }] },
+  { slug: "radharani", title: "রাধারাণী", author: "বঙ্কিমচন্দ্র চট্টোপাধ্যায়", short_description: "Bengali novel", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/radharani", reader_url: "/reader/radharani", preview_enabled: true, preview_url: "/reader/radharani", chapters: [{ id: "chapter-001", is_preview: true }] },
   { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/devdas", reader_url: "/reader/devdas", preview_enabled: true, preview_url: "/reader/devdas", chapters: [{ id: "devdas-page-1", is_preview: true }] },
   { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/pather-panchali", reader_url: "/reader/pather-panchali", preview_enabled: true, preview_url: "/reader/pather-panchali", chapters: [{ id: "pather-page-1", is_preview: true }] },
   { slug: "frankenstein", title: "Batch-listed Bengali draft", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "DRAFT", reader_enabled: false, preview_enabled: false, chapters: [] },
@@ -17,13 +24,14 @@ const books = [
   { slug: "hungry-stones", title: "The Hungry Stones", author: "Rabindranath Tagore", short_description: "English translation", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/hungry-stones", reader_url: "/reader/hungry-stones", preview_enabled: true, preview_url: "/reader/hungry-stones", chapters: [{ id: "chapter-001", is_preview: true }] },
 ];
 const expectedHeaderUrl = "?language=bn&availability=reader-ready";
-const apiEligibleSlugs = ["devdas", "pather-panchali", "book-edfcf810c5", "book-d19e96859f", "book-f5d593e1f4"];
-const fallbackEligibleSlugs = ["devdas", "pather-panchali"];
+const apiEligibleSlugs = ["radharani"];
+const fallbackEligibleSlugs = [];
 const ineligibleSlugs = ["frankenstein", "reader-disabled-edition", "kshudhita-pashan"];
 const readerApprovedWithoutPreviewSlugs = ["book-d19e96859f", "book-f5d593e1f4"];
 const approvedAudioWithoutRuntimeSlug = "approved-audio-without-runtime";
 const canonicalBengaliKshudhitaSlug = "book-edfcf810c5";
 const pipelineBengaliKshudhitaSlug = "kshudhita-pashan";
+const heldBengaliPipelineSlugs = [pipelineBengaliKshudhitaSlug];
 const searchEligibleSlugs = apiEligibleSlugs.filter((slug) => slug !== canonicalBengaliKshudhitaSlug);
 
 function query(page) {
@@ -92,7 +100,7 @@ async function assertSelected(locator, label) {
   assert.equal(await locator.getAttribute("aria-pressed"), "true", `${label} is not selected`);
 }
 
-async function assertEligibleReaderResults(page, expectedSlugs) {
+async function assertDisplayedSlugs(page, expectedSlugs) {
   const surface = referenceSurface(page);
   const expected = [...expectedSlugs].sort();
   await page.waitForFunction((expectedIds) => {
@@ -105,10 +113,39 @@ async function assertEligibleReaderResults(page, expectedSlugs) {
   const displayedSlugs = await surface.locator('[data-testid^="reference-book-"]').evaluateAll((nodes) => (
     nodes.map((node) => node.getAttribute("data-testid").replace("reference-book-", "")).sort()
   ));
-  assert.deepEqual(displayedSlugs, expected, "every displayed Reader-only result must satisfy the canonical release predicate");
+  assert.deepEqual(displayedSlugs, expected, "displayed editions must match the canonical release state");
+}
+
+async function assertEligibleReaderResults(page, expectedSlugs) {
+  const surface = referenceSurface(page);
+  await assertDisplayedSlugs(page, expectedSlugs);
   for (const slug of ineligibleSlugs) {
     assert.equal(await surface.getByTestId(`reference-book-${slug}`).count(), 0, `${slug} leaked into Reader only results`);
   }
+}
+
+async function assertCurrentControlledLaunchResults(page, name) {
+  await page.goto(`${baseUrl.replace(/\/$/, "")}/library?listening=hidden`, { waitUntil: "domcontentloaded" });
+  await referenceSurface(page).waitFor();
+  await assertDisplayedSlugs(page, releasedSlugs);
+  for (const slug of releasedSlugs) {
+    const card = referenceSurface(page).getByTestId(`reference-book-${slug}`);
+    const read = card.getByRole("link", { name: "Read", exact: true });
+    await read.waitFor();
+    assert.equal(await read.getAttribute("href"), `/reader/${slug}`, `${name}: ${slug} lost its approved Reader route`);
+    assert.equal(await card.getByText("Listening unavailable", { exact: true }).count(), 0, `${name}: disabled audio must not be represented as available for ${slug}`);
+  }
+  await page.goto(`${baseUrl.replace(/\/$/, "")}/library?language=bn&listening=hidden`, { waitUntil: "domcontentloaded" });
+  await referenceSurface(page).waitFor();
+  await assertDisplayedSlugs(page, ["radharani"]);
+}
+
+async function assertHeldReleaseSafety(page, name) {
+  const surface = referenceSurface(page);
+  await page.getByTestId("library-no-results").waitFor();
+  assert.equal(await surface.locator('[data-testid^="reference-book-"]').count(), 0, `${name}: the Reader-only filter must not represent a held title as reader-ready`);
+  assert.equal(await surface.locator('a[href^="/book/"], a[href^="/reader/"], a[href^="/listener/"]').count(), 0, `${name}: held public catalogue must not expose a book, Reader, or Listener route`);
+  assert.equal(await surface.getByTestId("reference-book-devdas").count(), 0, `${name}: API reader metadata leaked through the held public catalogue`);
 }
 
 async function assertReaderApprovedWithoutPreviewCards(page) {
@@ -342,14 +379,26 @@ async function run({ name, viewport, mobile, source }) {
   }
   assert.equal(query(page), expectedHeaderUrl, `${name}: Header navigation did not preserve the established query contract`);
   const expectedSlugs = source === "fallback" ? fallbackEligibleSlugs : apiEligibleSlugs;
-  await assertEligibleReaderResults(page, expectedSlugs);
+  if (publicReaderExposureEnabled) await assertEligibleReaderResults(page, expectedSlugs);
+  else await assertHeldReleaseSafety(page, name);
   if (mobile) await page.getByRole("button", { name: "Close filters", exact: true }).click();
-  if (source === "api") await assertAllReleasesRoundTrip(page, mobile, expectedSlugs, name, source);
-  else {
-    await assertFallbackKshudhita(page, mobile, expectedSlugs, name);
+  if (publicReaderExposureEnabled && source === "api") await assertCurrentControlledLaunchResults(page, name);
+  else if (publicReaderExposureEnabled) {
+    await page.reload({ waitUntil: "domcontentloaded" });
+    await page.getByTestId("library-reference-surface").waitFor();
+    await assertDisplayedSlugs(page, []);
+    await assertNoHorizontalOverflow(page, name);
+  } else {
+    await page.reload({ waitUntil: "domcontentloaded" });
+    await page.getByTestId("library-reference-surface").waitFor();
+    await assertHeldReleaseSafety(page, `${name}: reload`);
     await assertNoHorizontalOverflow(page, name);
   }
-  await assertAudiobooksRoundTrip(page, mobile, name, source);
+  if (publicReaderExposureEnabled && source === "api") {
+    await page.goto(`${baseUrl.replace(/\/$/, "")}/library?listening=available`, { waitUntil: "domcontentloaded" });
+    await referenceSurface(page).waitFor();
+    await assertDisplayedSlugs(page, []);
+  }
   await context.close();
   await browser.close();
   return { viewport, source, header_url: expectedHeaderUrl, result: "PASS" };

@@ -15,6 +15,27 @@ from backend import server
 from scripts import catalog_truth_audit
 
 
+@pytest.fixture(autouse=True)
+def enabled_release_fixture_for_legacy_contract_cases(request, monkeypatch):
+    """Keep eligibility-unit fixtures distinct from the shipped release hold."""
+    if request.node.name in {
+        "test_shared_controlled_launch_config_matches_backend_and_audit",
+        "test_live_approved_mongo_query_preserves_rights_and_search_or",
+        "test_server_controlled_public_query_uses_catalog_truth",
+        "test_public_release_scope_denies_held_titles_and_never_reopens_historical_manifest_slugs",
+        "test_sitemap_truth_omits_book_routes_while_public_release_is_held",
+    }:
+        return
+    live_slugs = ("dracula", "frankenstein", "a-ghost-story")
+    monkeypatch.setattr(catalog_truth, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setattr(catalog_truth, "PUBLIC_AUDIO_EXPOSURE_ENABLED", True)
+    monkeypatch.setattr(catalog_truth, "LEGACY_CONTROLLED_LIVE_BOOK_SLUGS", live_slugs)
+    monkeypatch.setattr(catalog_truth, "CONTROLLED_LIVE_BOOK_SLUGS", live_slugs)
+    monkeypatch.setattr(catalog_truth, "AUDIO_ENABLED_SLUGS", {"a-ghost-story"})
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setattr(server, "CONTROLLED_LIVE_BOOK_SLUGS", live_slugs)
+
+
 def dracula_book(**overrides):
     book = {
         "id": "book-dracula",
@@ -75,7 +96,7 @@ def pipeline_book(**overrides):
     return book
 
 
-def test_live_approved_catalog_gate_follows_controlled_allowlist():
+def test_live_approved_catalog_gate_follows_the_explicit_controlled_allowlist_fixture():
     assert catalog_truth.is_live_approved_book(dracula_book()) is True
     assert catalog_truth.is_live_approved_book(dracula_book(slug="completely-unknown-title")) is False
     assert catalog_truth.is_live_approved_book(dracula_book(rights_metadata={"rights_tier": "B"})) is False
@@ -83,16 +104,18 @@ def test_live_approved_catalog_gate_follows_controlled_allowlist():
 
 def test_shared_controlled_launch_config_matches_backend_and_audit():
     assert isinstance(catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS, tuple)
-    assert "dracula" in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
-    assert "a-ghost-story" in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
+    assert catalog_truth.PUBLIC_READER_EXPOSURE_ENABLED is True
+    assert catalog_truth.PUBLIC_AUDIO_EXPOSURE_ENABLED is False
+    assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == (
+        "a-ghost-story", "the-tell-tale-heart", "radharani",
+    )
     assert "book-2b9853ec52" in catalog_truth.PUBLIC_CATALOG_EXCLUDED_SLUGS
     assert "book-2b9853ec52" not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
     assert catalog_truth.PIPELINE_CANDIDATE_SLUGS == {"kshudhita-pashan"}
     assert "book-2b9853ec52" not in catalog_truth.AUDIO_ENABLED_SLUGS
-    assert "a-ghost-story" in catalog_truth.AUDIO_ENABLED_SLUGS
+    assert catalog_truth.AUDIO_ENABLED_SLUGS == set()
     live_slugs = catalog_truth_audit.frontend_controlled_live_slugs()
-    assert live_slugs is not None and isinstance(live_slugs, set)
-    assert "dracula" in live_slugs
+    assert live_slugs == {"a-ghost-story", "the-tell-tale-heart", "radharani"}
     assert "book-2b9853ec52" not in live_slugs
 
 
@@ -273,6 +296,19 @@ def test_live_approved_mongo_query_preserves_rights_and_search_or():
     )
 
     base_or = query["$and"][0]["$or"]
+    controlled_slugs = base_or[0]["$and"][0]["$or"][0]["slug"]["$in"]
+    assert controlled_slugs == ["a-ghost-story", "the-tell-tale-heart", "radharani"]
+    assert query["$and"][1]["$or"][0]["title"] == {"$regex": "Dracula", "$options": "i"}
+
+
+def test_live_approved_mongo_query_keeps_legacy_shape_only_when_public_release_is_enabled(monkeypatch):
+    monkeypatch.setattr(catalog_truth, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setattr(catalog_truth, "CONTROLLED_LIVE_BOOK_SLUGS", ("dracula",))
+    query = catalog_truth.live_approved_mongo_query(
+        {"$or": [{"title": {"$regex": "Dracula", "$options": "i"}}]}
+    )
+
+    base_or = query["$and"][0]["$or"]
     workflow_guard = base_or[0]["$and"]
     controlled_slugs = workflow_guard[0]["$or"][0]["slug"]["$in"]
     controlled_audio_release = base_or[1]
@@ -291,8 +327,18 @@ def test_live_approved_mongo_query_preserves_rights_and_search_or():
 
 def test_server_controlled_public_query_uses_catalog_truth():
     assert server._controlled_public_book_query() == catalog_truth.live_approved_mongo_query()
-    assert server._is_controlled_public_slug("Dracula") is True
-    assert server._is_controlled_public_slug("frankenstein") is True
+    assert server._is_controlled_public_slug("Dracula") is False
+    assert server._is_controlled_public_slug("frankenstein") is False
+
+
+def test_public_release_scope_denies_held_titles_and_never_reopens_historical_manifest_slugs():
+    assert server._is_controlled_public_slug("dracula") is False
+    assert server._is_controlled_public_slug("a-ghost-story") is True
+    assert server._is_controlled_public_slug("yugalanguriya") is False
+    query = server._controlled_public_book_query()
+    assert query != {"_id": {"$exists": False}}
+    controlled_slugs = query["$or"][0]["$and"][0]["$or"][0]["slug"]["$in"]
+    assert controlled_slugs == ["a-ghost-story", "the-tell-tale-heart", "radharani"]
 
 
 def test_reader_manifest_audio_is_disabled_even_when_assets_exist():
@@ -341,13 +387,14 @@ def test_public_audiobook_endpoint_404s_dracula_when_audio_disabled(monkeypatch)
     assert "Audiobook asset" in exc.value.detail
 
 
-def test_sitemap_truth_is_dracula_only_for_book_routes():
+def test_sitemap_truth_lists_only_the_exact_controlled_reader_release():
     sitemap = (catalog_truth.ROOT / "frontend" / "public" / "sitemap.xml").read_text(encoding="utf-8")
 
-    assert "/book/dracula" in sitemap
+    for slug in ("a-ghost-story", "the-tell-tale-heart", "radharani"):
+        assert f"/book/{slug}" in sitemap
+    assert "/book/yugalanguriya" not in sitemap
+    assert "/book/dracula" not in sitemap
     assert "/reader/" not in sitemap
-    assert "/book/frankenstein" in sitemap
-    assert "/book/kshudhita-pashan" not in sitemap
 
 
 def test_catalog_truth_rows_keep_audio_false_for_every_status():

@@ -33,6 +33,10 @@ def manifest_client(monkeypatch):
         return wallets[user_id]
 
     monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", False)
+    # These cases verify private manifest cache isolation with a synthetic
+    # edition.  The public India release boundary is covered separately and
+    # must not turn this non-public fixture into an accepted title.
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", False)
     monkeypatch.setattr(server, "_reader_book_manifest_doc", manifest)
     monkeypatch.setattr(server, "_cached_user_wallet_seconds", wallet)
     monkeypatch.setitem(server.app.dependency_overrides, server.optional_principal, principal)

@@ -17,7 +17,7 @@ describe("libraryCatalog", () => {
     expect(languageOfBook({ language: "ben", title: "Dracula" })).toBe("bn");
   });
 
-  it("maps live reader-only titles to reader-ready with hidden audio", () => {
+  it("keeps a title outside the accepted release allowlist in preparation", () => {
     const presentation = libraryPresentationForBook({
       slug: "devdas",
       title: "দেবদাস",
@@ -32,27 +32,27 @@ describe("libraryCatalog", () => {
       audiobook_enabled: false,
     });
     expect(presentation.languageLabel).toBe("Bengali");
-    expect(presentation.availabilityLabel).toBe("Reader Ready");
-    expect(presentation.audioBadgeLabel).toBe("Audio Hidden");
+    expect(presentation.availabilityLabel).toBe("In Preparation");
+    expect(presentation.audioBadgeLabel).toBe("Release Gated");
   });
 
-  it("classifies a verified public audio release without treating it as operational listening", () => {
+  it("does not promote approval-shaped audio metadata while public audio is disabled", () => {
     const book = {
-      slug: "book-2b9853ec52",
+      slug: "a-ghost-story",
       title: "দুই বিঘা জমি",
       publication_status: "LIVE_APPROVED",
       reader_enabled: true,
-      public_route: "/book/book-2b9853ec52",
-      reader_url: "/reader/book-2b9853ec52",
+      public_route: "/book/a-ghost-story",
+      reader_url: "/reader/a-ghost-story",
       audio_enabled: true,
       audiobook_enabled: true,
       audiobook_release_gate: "APPROVED",
       audio_qa_status: "QA_PASSED",
       audio_url: "",
     };
-    expect(availabilityOfBook(book)).toBe("approved-audiobook");
-    expect(matchesLibraryFacets(book, "bn", "approved-audiobook")).toBe(true);
-    expect(libraryPresentationForBook(book).audioBadgeLabel).toBe("Listening unavailable");
+    expect(availabilityOfBook(book)).toBe("reader-ready");
+    expect(matchesLibraryFacets(book, "bn", "approved-audiobook")).toBe(false);
+    expect(libraryPresentationForBook(book).audioBadgeLabel).toBe("Audio Hidden");
   });
 
   it("keeps pipeline titles in preparation", () => {
@@ -88,7 +88,7 @@ describe("libraryCatalog", () => {
     });
   });
 
-  it("keeps a reader-approved edition visible while its preview remains unavailable", () => {
+  it("keeps an unaccepted edition held even if its preview is unavailable", () => {
     const previewDisabledEdition = {
       slug: "book-d19e96859f",
       title: "গিন্নি",
@@ -104,7 +104,7 @@ describe("libraryCatalog", () => {
       audio_enabled: false,
     };
 
-    expect(availabilityOfBook(previewDisabledEdition)).toBe("reader-ready");
-    expect(matchesLibraryFacets(previewDisabledEdition, "bn", "audio-hidden")).toBe(true);
+    expect(availabilityOfBook(previewDisabledEdition)).toBe("in-preparation");
+    expect(matchesLibraryFacets(previewDisabledEdition, "bn", "audio-hidden")).toBe(false);
   });
 });

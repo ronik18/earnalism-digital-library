@@ -1,0 +1,1557 @@
+{
+  "schema_version": "earnalism.india-launch-compliance.v1",
+  "generated_from": {
+    "repository_head": "cdaa9bd344a7928048c525588e17e8492aea85f8",
+    "repository_tree": "e1627b8d0cf06e942f54d9e4098c2f279d65ae27",
+    "production_surface_sha256": "bf5f1949d03e18fd21a3429720a4493ce470b67daee7de3892c22dcbc4b54d52",
+    "generator_head": "cdaa9bd344a7928048c525588e17e8492aea85f8",
+    "generator_tree": "e1627b8d0cf06e942f54d9e4098c2f279d65ae27"
+  },
+  "scope": {
+    "launch_country": "IN",
+    "pilot_slugs": [
+      "a-ghost-story",
+      "the-tell-tale-heart",
+      "radharani",
+      "yugalanguriya"
+    ],
+    "audio": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE",
+    "customer_accounting_acceptance": "DEFERRED_OUT_OF_CURRENT_SCOPE",
+    "customer_ready": "NOT_DECLARED"
+  },
+  "official_sources": [
+    {
+      "topic": "Copyright Act, 1957 — Chapter V, section 22 and other term categories",
+      "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+      "scope": "copyright term classification"
+    },
+    {
+      "topic": "Copyright Act, 1957 — Chapter III, protected work categories",
+      "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_iii.html",
+      "scope": "copyright category classification"
+    },
+    {
+      "topic": "Digital Personal Data Protection Rules, 2025 notification",
+      "url": "https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf",
+      "scope": "rule commencement must be evaluated on the actual launch date"
+    },
+    {
+      "topic": "Department of Consumer Affairs — Consumer Protection framework",
+      "url": "https://consumeraffairs.nic.in/acts-and-rules/consumer-protection/consumer-protection",
+      "scope": "Consumer Protection Act, E-Commerce Rules, and Dark Patterns Guidelines"
+    },
+    {
+      "topic": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 — consolidated text updated 10 February 2026",
+      "url": "https://www.meity.gov.in/static/uploads/2026/02/550681ab908f8afb135b0ad42816a1c9.pdf",
+      "scope": "synthetically generated information; applicability depends on the actual product role and launch configuration"
+    },
+    {
+      "topic": "Google Cloud Text-to-Speech basics",
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+      "scope": "Google documents use of generated audio in applications or media subject to applicable terms and law"
+    }
+  ],
+  "technical_release_hold": {
+    "root_launch": {
+      "path": "data/controlled_launch.json",
+      "sha256": "77c407ec27bd04634b663853a1f643e51662f89c24765199ac0866392e58e0cb"
+    },
+    "backend_launch": {
+      "path": "backend/data/controlled_launch.json",
+      "sha256": "77c407ec27bd04634b663853a1f643e51662f89c24765199ac0866392e58e0cb"
+    },
+    "rights_registry": {
+      "path": "backend/data/rights_decision_registry.json",
+      "sha256": "53ba2b1af222aa70a278a29522c5d5df3fbe5fbc5b8af259af338ce652b9b04f"
+    },
+    "public_reader_exposure_enabled": false,
+    "public_audio_exposure_enabled": false,
+    "public_paid_commerce_enabled": false,
+    "live_approved_slugs": [],
+    "accepted_rights_record_count": 0
+  },
+  "india_book_rights_matrix": [
+    {
+      "title": "A Ghost Story",
+      "slug": "a-ghost-story",
+      "country_scope": [
+        "IN"
+      ],
+      "india_copyright_proof": {
+        "status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "statutory_category": "ORDINARY_PUBLISHED_LITERARY_WORK_SECTION_22",
+        "author": "Mark Twain",
+        "author_identity": "Samuel Langhorne Clemens, writing as Mark Twain (1835–1910).",
+        "author_death_year": 1910,
+        "joint_authorship": "NOT_RECORDED",
+        "work_type": "English literary sketch / short story.",
+        "original_language": "English",
+        "source_publication_year": "1875",
+        "relevant_publication_evidence": "Sketches, New and Old (1875), containing A Ghost Story.",
+        "section_22_term_calculation": {
+          "rule": "For an ordinary published literary work under Copyright Act, 1957 section 22, the term is sixty years from the beginning of the calendar year following the author’s death.",
+          "author_death_year": 1910,
+          "term_ends_at_calendar_year_end": 1970,
+          "expired_term_calculation_begins": "1 January 1971",
+          "limitation": "This factual calculation is not a rights acceptance and must not be applied to a different statutory category or separately protected component."
+        },
+        "evidence": [
+          {
+            "path": "data/controlled_publications/a-ghost-story/source_evidence.json",
+            "sha256": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b"
+          },
+          {
+            "path": "content/books/a-ghost-story/source-rights.md",
+            "sha256": "adb4ed6c757baee9a0df8b285ae41ace29c0f559f98e507e992e497433b3e27a"
+          },
+          {
+            "topic": "author identity and death year",
+            "url": "https://marktwainhouse.org/about/mark-twain/biography/"
+          },
+          {
+            "topic": "work publication evidence",
+            "url": "https://www.marktwainproject.org/writings/html/writings/ets1/mtdp10202/"
+          },
+          {
+            "topic": "Copyright Act, 1957 — Chapter V, section 22 and other term categories",
+            "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+            "scope": "copyright term classification"
+          }
+        ],
+        "limitations": [
+          "This records an objectively documented ordinary section 22 term calculation only; it is not a rights acceptance or release decision.",
+          "Translations, source transcriptions, covers, illustrations, editorial additions, and other separately protected components remain independently evaluated."
+        ]
+      },
+      "textual_integrity_proof": {
+        "status": "TEXT_VERIFIED",
+        "earnalism_edition_id": "a-ghost-story",
+        "source_edition": "text/plain",
+        "source_publication_information": "1875",
+        "source_provider": "Project Gutenberg",
+        "source_identifier": "3189",
+        "source_reference_url": "https://www.gutenberg.org/ebooks/3189",
+        "source_retrieval_date": "2026-07-08T20:40:04Z",
+        "source_file_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
+        "stored_publication_aggregate_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
+        "current_raw_source_path": "content/books/a-ghost-story/raw/source.txt",
+        "current_raw_source_file_hash": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
+        "earnalism_canonical_text_hash": "4e14087173c0327d8681fcbe950c76076c0871fa30cb26c34851ef3df9fe9596",
+        "canonical_chapter_hashes": [
+          {
+            "chapter_id": "chapter-001",
+            "content_sha256": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2"
+          }
+        ],
+        "source_to_canonical_comparison": {
+          "status": "TEXT_VERIFIED",
+          "source_path": "content/books/a-ghost-story/raw/source.txt",
+          "source_file_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
+          "all_chapters_found_in_order": true,
+          "chapter_positions": [
+            {
+              "chapter_id": "chapter-001",
+              "found": true,
+              "position": 0
+            }
+          ],
+          "normalization": "Unicode NFC plus whitespace-run collapse only.",
+          "reason": "Every current controlled chapter was found in retained source order; no prose transformation was applied."
+        },
+        "facsimile_observation_comparison": null,
+        "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
+        "material_differences": "Every controlled chapter is present in source order after the documented non-substantive normalization.",
+        "intentional_corrections": "NONE_APPROVED",
+        "evidence": [
+          {
+            "path": "data/controlled_publications/a-ghost-story/reader_manifest.json",
+            "sha256": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9"
+          },
+          {
+            "path": "data/controlled_publications/a-ghost-story/source_evidence.json",
+            "sha256": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b"
+          },
+          {
+            "path": "internal/legal/four_title_pilot_evidence_20260917.md",
+            "sha256": "a730f8281bff9c02715874cf92af4bf94bc3b0e7267758bef00a0d43855a780f"
+          }
+        ]
+      },
+      "translation_and_editorial_material": {
+        "status": "NOT_APPLICABLE_FROM_IDENTIFIED_DELIVERED_TEXT",
+        "translation": "NOT_RECORDED — no separately identified translation is delivered in the controlled chapter records.",
+        "source_layer": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+        "blockers": [
+          "A later release decision must continue to exclude any separately protected introduction, annotation, illustration, or editorial addition not present in the evidenced controlled text."
+        ]
+      },
+      "cover_provenance": {
+        "status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+        "owner_stated_creator": "PRODUCT_OWNER",
+        "rightsholder_claim": "PRODUCT_OWNER",
+        "basis": "OWNER_SUPPLIED_FACT: the product owner states that the Earnalism covers were graphically designed by the owner. The repository contains hash-bound active cover evidence and no contrary external-component record.",
+        "externally_sourced_elements": "NO_CONTRARY_EVIDENCE_IN_REPOSITORY — disclose a specific external protected component if one is later identified.",
+        "declaration_record": "OPTIONAL_EVIDENCE_STRENGTHENING — an unsigned form is retained for later confirmation but is not a current legal/compliance gate.",
+        "front_cover_sha256": "d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
+        "back_cover_sha256": "baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
+        "assets": {
+          "front": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+          "back": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115363/earnalism/covers/back/back_cover_candidate_controlled-a-ghost-story-baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400.png"
+        },
+        "evidence": [
+          {
+            "path": "data/controlled_publications/a-ghost-story/public_book.json",
+            "sha256": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe"
+          },
+          {
+            "path": "data/controlled_publications/a-ghost-story/cover_approval_evidence.json",
+            "sha256": "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd"
+          }
+        ],
+        "blockers": []
+      },
+      "audio_scope": {
+        "current_launch_status": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE",
+        "current_launch_reason": "The controlled launch configuration, rather than use of AI/TTS, disables public audio exposure for every title.",
+        "underlying_literary_text": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "canonical_text_hash": "4e14087173c0327d8681fcbe950c76076c0871fa30cb26c34851ef3df9fe9596",
+        "evidence": [
+          {
+            "path": "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_release_gate_evidence.json",
+            "sha256": "d484342db807ba7a8c7269cf2c50775192bb7a1d5e69869efcf383dfa69125e0"
+          }
+        ],
+        "first_party_generation_context": "OWNER_STATED: audiobooks are generated by or at the direction of the product owner, not copied third-party commercial recordings. This is not a release decision.",
+        "third_party_recording_used": "NO_EVIDENCE_OF_THIRD_PARTY_RECORDING_IN_CURRENT_RELEASE_GATE_FILE",
+        "candidate_status_if_audio_scope_changes": "AUDIO_ACTION_REQUIRED — the historical Google output is quality-gated, but a current release decision requires a fresh canonical-input binding and component declaration.",
+        "provider": "google",
+        "model": "google-cloud-texttospeech",
+        "voice": "en-GB-Studio-C",
+        "voice_type": "PROVIDER_AUTHORIZED_SYNTHETIC_VOICE",
+        "generation_date": "2026-07-12T17:00:00Z",
+        "audio_generation_input_hash": "NOT_RECORDED_IN_HISTORICAL_RELEASE_GATE",
+        "audio_output_hash": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+        "music_present": "UNKNOWN_NOT_RECORDED",
+        "external_sound_effects_present": "UNKNOWN_NOT_RECORDED",
+        "provider_terms": {
+          "provider": "Google Cloud Text-to-Speech",
+          "terms_url": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+          "retrieval_date": "2026-09-22",
+          "terms_recheck_before_enablement": "REQUIRED — this static evidence snapshot is not a substitute for checking then-current provider terms before a future public-audio release.",
+          "relevant_provision": "Google documents that generated audio data may power applications or augment media, subject to Google Cloud terms and applicable law.",
+          "commercial_output_use": "DOCUMENTED_SUBJECT_TO_APPLICABLE_TERMS_AND_LAW",
+          "public_distribution": "DOCUMENTED_FOR_APPLICATION_OR_MEDIA_USE_SUBJECT_TO_APPLICABLE_TERMS_AND_LAW",
+          "output_ownership_or_license_position": "NOT_STATED_BY_THIS_PROVIDER_DOCUMENT",
+          "voice_specific_restrictions": "No custom/imitative voice is recorded; the evidence names a Google prebuilt Studio voice.",
+          "attribution_required": "NOT_STATED_BY_THIS_PROVIDER_DOCUMENT"
+        }
+      },
+      "public_provenance_statement_candidate": "Text follows: Project Gutenberg (https://www.gutenberg.org/ebooks/3189).",
+      "india_title_predicate": {
+        "rule": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE AND TEXT_VERIFIED AND FIRST_PARTY_COVER_PROVENANCE_CONFIRMED AND TRANSLATION_RIGHTS_OK_OR_NOT_APPLICABLE AND REQUIRED_OTHER_ASSETS_OK AND (AUDIO_INDIA_READY OR AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE)",
+        "copyright": "PASS",
+        "text": "PASS",
+        "cover": "PASS — FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+        "translation_and_other_assets": "PASS_FOR_IDENTIFIED_DELIVERED_TEXT",
+        "audio": "PASS_FOR_CURRENT_SCOPE",
+        "result": "INDIA_TITLE_READY"
+      },
+      "india_title_status": "HOLD",
+      "india_title_ready": true,
+      "india_compliance_status": "INDIA_TITLE_READY",
+      "compliance_blockers": [],
+      "release_authorization_state": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient."
+    },
+    {
+      "title": "The Tell-Tale Heart",
+      "slug": "the-tell-tale-heart",
+      "country_scope": [
+        "IN"
+      ],
+      "india_copyright_proof": {
+        "status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "statutory_category": "ORDINARY_PUBLISHED_LITERARY_WORK_SECTION_22",
+        "author": "Edgar Allan Poe",
+        "author_identity": "Edgar Allan Poe (1809–1849).",
+        "author_death_year": 1849,
+        "joint_authorship": "NOT_RECORDED",
+        "work_type": "English literary short story.",
+        "original_language": "English",
+        "source_publication_year": "1843",
+        "relevant_publication_evidence": "The Pioneer: A Literary and Critical Magazine, Boston, 1843, pages 29–31.",
+        "section_22_term_calculation": {
+          "rule": "For an ordinary published literary work under Copyright Act, 1957 section 22, the term is sixty years from the beginning of the calendar year following the author’s death.",
+          "author_death_year": 1849,
+          "term_ends_at_calendar_year_end": 1909,
+          "expired_term_calculation_begins": "1 January 1910",
+          "limitation": "This factual calculation is not a rights acceptance and must not be applied to a different statutory category or separately protected component."
+        },
+        "evidence": [
+          {
+            "path": "data/controlled_publications/the-tell-tale-heart/source_evidence.json",
+            "sha256": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f"
+          },
+          {
+            "path": "content/books/the-tell-tale-heart/source-rights.md",
+            "sha256": "80852add740b3ebf5abc68bac68bb0a645ad8f84dbac85b981006c43c84b1a14"
+          },
+          {
+            "topic": "author identity and death year",
+            "url": "https://www.loc.gov/aba/pcc/naco/documents/FAQ-AAP-Collections.pdf"
+          },
+          {
+            "topic": "work publication evidence",
+            "url": "https://www.themorgan.org/printed-books/272017"
+          },
+          {
+            "topic": "Copyright Act, 1957 — Chapter V, section 22 and other term categories",
+            "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+            "scope": "copyright term classification"
+          }
+        ],
+        "limitations": [
+          "This records an objectively documented ordinary section 22 term calculation only; it is not a rights acceptance or release decision.",
+          "Translations, source transcriptions, covers, illustrations, editorial additions, and other separately protected components remain independently evaluated."
+        ]
+      },
+      "textual_integrity_proof": {
+        "status": "TEXT_VERIFIED",
+        "earnalism_edition_id": "the-tell-tale-heart",
+        "source_edition": "text/plain",
+        "source_publication_information": "1843",
+        "source_provider": "Project Gutenberg",
+        "source_identifier": "2148",
+        "source_reference_url": "https://www.gutenberg.org/ebooks/2148",
+        "source_retrieval_date": "2026-06-03T08:04:21.838758+00:00",
+        "source_file_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+        "stored_publication_aggregate_hash": "a07c4b3d611f371eff7ff8ded51a6dd40eabe86f595b459fbe2f5e23afb18dcf",
+        "current_raw_source_path": "content/books/the-tell-tale-heart/raw/source.txt",
+        "current_raw_source_file_hash": "20780b096474c0c584f780e2f515a528a3cf4a1e265425f9b2c20a6842e39526",
+        "earnalism_canonical_text_hash": "ddbfefae9964a9a530ef16edb1c6cab146f5e1666cb31eb65c4bfe088321267c",
+        "canonical_chapter_hashes": [
+          {
+            "chapter_id": "chapter-001",
+            "content_sha256": "0d754cdbbbcdc662091824f2078312d78eb3d80262e6301b0465ab4c3db54e4e"
+          }
+        ],
+        "source_to_canonical_comparison": {
+          "status": "TEXT_VERIFIED",
+          "source_path": "content/books/the-tell-tale-heart/raw/source.txt",
+          "source_file_sha256": "20780b096474c0c584f780e2f515a528a3cf4a1e265425f9b2c20a6842e39526",
+          "all_chapters_found_in_order": true,
+          "chapter_positions": [
+            {
+              "chapter_id": "chapter-001",
+              "found": true,
+              "position": 0
+            }
+          ],
+          "normalization": "Unicode NFC plus whitespace-run collapse only.",
+          "reason": "Every current controlled chapter was found in retained source order; no prose transformation was applied."
+        },
+        "facsimile_observation_comparison": null,
+        "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
+        "material_differences": "The stored source-evidence content hash is an aggregate publication hash, not a direct chapter digest. The exact retained source body contains the current controlled chapter after the documented non-substantive normalization.",
+        "intentional_corrections": "NONE_APPROVED",
+        "evidence": [
+          {
+            "path": "data/controlled_publications/the-tell-tale-heart/reader_manifest.json",
+            "sha256": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f"
+          },
+          {
+            "path": "data/controlled_publications/the-tell-tale-heart/source_evidence.json",
+            "sha256": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f"
+          },
+          {
+            "path": "internal/legal/four_title_pilot_evidence_20260917.md",
+            "sha256": "a730f8281bff9c02715874cf92af4bf94bc3b0e7267758bef00a0d43855a780f"
+          }
+        ]
+      },
+      "translation_and_editorial_material": {
+        "status": "NOT_APPLICABLE_FROM_IDENTIFIED_DELIVERED_TEXT",
+        "translation": "NOT_RECORDED — no separately identified translation is delivered in the controlled chapter records.",
+        "source_layer": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+        "blockers": [
+          "A later release decision must continue to exclude any separately protected introduction, annotation, illustration, or editorial addition not present in the evidenced controlled text."
+        ]
+      },
+      "cover_provenance": {
+        "status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+        "owner_stated_creator": "PRODUCT_OWNER",
+        "rightsholder_claim": "PRODUCT_OWNER",
+        "basis": "OWNER_SUPPLIED_FACT: the product owner states that the Earnalism covers were graphically designed by the owner. The repository contains hash-bound active cover evidence and no contrary external-component record.",
+        "externally_sourced_elements": "NO_CONTRARY_EVIDENCE_IN_REPOSITORY — disclose a specific external protected component if one is later identified.",
+        "declaration_record": "OPTIONAL_EVIDENCE_STRENGTHENING — an unsigned form is retained for later confirmation but is not a current legal/compliance gate.",
+        "front_cover_sha256": "474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d",
+        "back_cover_sha256": "540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d",
+        "assets": {
+          "front": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+          "back": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420363/earnalism/covers/back/back_cover_candidate_controlled-the-tell-tale-heart-540a24ebdfef56fefe99f23aba4166c3ada20dd421132480eaf3546b07b8934d.jpg"
+        },
+        "evidence": [
+          {
+            "path": "data/controlled_publications/the-tell-tale-heart/public_book.json",
+            "sha256": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb"
+          },
+          {
+            "path": "data/controlled_publications/the-tell-tale-heart/cover_approval_evidence.json",
+            "sha256": "2b60eeea9fb367b934d2c2170dd7002efb49130669f540e354c7504eea948c9e"
+          }
+        ],
+        "blockers": []
+      },
+      "audio_scope": {
+        "current_launch_status": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE",
+        "current_launch_reason": "The controlled launch configuration, rather than use of AI/TTS, disables public audio exposure for every title.",
+        "underlying_literary_text": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "canonical_text_hash": "ddbfefae9964a9a530ef16edb1c6cab146f5e1666cb31eb65c4bfe088321267c",
+        "evidence": [
+          {
+            "path": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json",
+            "sha256": "a06be0a68e1830b42912c51e50f6a5e64b15947e979ff2433c604e49e0c01358"
+          }
+        ],
+        "first_party_generation_context": "OWNER_STATED: audiobooks are generated by or at the direction of the product owner, not copied third-party commercial recordings. This is not a release decision.",
+        "third_party_recording_used": "NO_EVIDENCE_OF_THIRD_PARTY_RECORDING_IN_CURRENT_RELEASE_GATE_FILE",
+        "candidate_status_if_audio_scope_changes": "AUDIO_ACTION_REQUIRED — current Google representative auditions failed the recorded listening-QA minimum; a human narration or licensed alternate provider is required.",
+        "provider": "google",
+        "model": "NOT_RECORDED_IN_SUMMARY_GATE",
+        "voice": "en-GB-Studio-C",
+        "voice_type": "PROVIDER_AUTHORIZED_SYNTHETIC_VOICE",
+        "generation_date": "2026-07-12T22:04:03Z",
+        "audio_generation_input_hash": "66338d5a5a4949a37ede477ec6b414d01ac664d2a0401f49d3a9effd9f63aa56",
+        "audio_output_hash": "NOT_RECORDED — no launchable output",
+        "music_present": "NOT_APPLICABLE — no launchable output",
+        "external_sound_effects_present": "NOT_APPLICABLE — no launchable output",
+        "provider_terms": {
+          "provider": "Google Cloud Text-to-Speech",
+          "terms_url": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+          "retrieval_date": "2026-09-22",
+          "terms_recheck_before_enablement": "REQUIRED",
+          "result": "Same provider documentation applies to the historical attempts; quality, not AI/TTS use, is the blocking condition."
+        }
+      },
+      "public_provenance_statement_candidate": "Text follows: Project Gutenberg (https://www.gutenberg.org/ebooks/2148).",
+      "india_title_predicate": {
+        "rule": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE AND TEXT_VERIFIED AND FIRST_PARTY_COVER_PROVENANCE_CONFIRMED AND TRANSLATION_RIGHTS_OK_OR_NOT_APPLICABLE AND REQUIRED_OTHER_ASSETS_OK AND (AUDIO_INDIA_READY OR AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE)",
+        "copyright": "PASS",
+        "text": "PASS",
+        "cover": "PASS — FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+        "translation_and_other_assets": "PASS_FOR_IDENTIFIED_DELIVERED_TEXT",
+        "audio": "PASS_FOR_CURRENT_SCOPE",
+        "result": "INDIA_TITLE_READY"
+      },
+      "india_title_status": "HOLD",
+      "india_title_ready": true,
+      "india_compliance_status": "INDIA_TITLE_READY",
+      "compliance_blockers": [],
+      "release_authorization_state": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient."
+    },
+    {
+      "title": "রাধারাণী",
+      "slug": "radharani",
+      "country_scope": [
+        "IN"
+      ],
+      "india_copyright_proof": {
+        "status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "statutory_category": "ORDINARY_PUBLISHED_LITERARY_WORK_SECTION_22",
+        "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+        "author_identity": "Bankim Chandra Chattopadhyay (1838–1894), Bengali prose writer and novelist.",
+        "author_death_year": 1894,
+        "joint_authorship": "NOT_RECORDED",
+        "work_type": "Bengali literary prose work.",
+        "original_language": "Bengali",
+        "source_publication_year": "1877",
+        "relevant_publication_evidence": "The identified source edition is Bengali Wikisource's 1940-labelled edition; the repository records an original-publication year of 1877.",
+        "section_22_term_calculation": {
+          "rule": "For an ordinary published literary work under Copyright Act, 1957 section 22, the term is sixty years from the beginning of the calendar year following the author’s death.",
+          "author_death_year": 1894,
+          "term_ends_at_calendar_year_end": 1954,
+          "expired_term_calculation_begins": "1 January 1955",
+          "limitation": "This factual calculation is not a rights acceptance and must not be applied to a different statutory category or separately protected component."
+        },
+        "evidence": [
+          {
+            "path": "data/controlled_publications/radharani/source_evidence.json",
+            "sha256": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95"
+          },
+          {
+            "path": "content/books/radharani/source-rights.md",
+            "sha256": "657d30431c5ffaf82af3522dc4236d4f03e0c46cd5914824df946d0074ea499e"
+          },
+          {
+            "topic": "author identity and death year",
+            "url": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621"
+          },
+          {
+            "topic": "work publication evidence",
+            "url": "https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)"
+          },
+          {
+            "topic": "Copyright Act, 1957 — Chapter V, section 22 and other term categories",
+            "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+            "scope": "copyright term classification"
+          }
+        ],
+        "limitations": [
+          "This records an objectively documented ordinary section 22 term calculation only; it is not a rights acceptance or release decision.",
+          "Translations, source transcriptions, covers, illustrations, editorial additions, and other separately protected components remain independently evaluated."
+        ]
+      },
+      "textual_integrity_proof": {
+        "status": "TEXT_VERIFIED",
+        "earnalism_edition_id": "radharani",
+        "source_edition": "text/plain",
+        "source_publication_information": "1877",
+        "source_provider": "Bengali Wikisource",
+        "source_identifier": "%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)",
+        "source_reference_url": "https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)",
+        "source_retrieval_date": "2026-06-03T08:51:47.797655+00:00",
+        "source_file_hash": "e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e",
+        "stored_publication_aggregate_hash": "4a3e2f9b0e0cdb6e2f4919c160573f0d4565559ce16ebb9aeb653f185b35e632",
+        "current_raw_source_path": "content/books/radharani/raw/source.txt",
+        "current_raw_source_file_hash": "e28ce496d4c87a56915bcda7337f46ca1f20c882ad50ffaa64a6afa66fd17033",
+        "earnalism_canonical_text_hash": "332135f42281789b346f7aed5100a05630b8dfc637c5177ff85de17e5a6e890d",
+        "canonical_chapter_hashes": [
+          {
+            "chapter_id": "chapter-001",
+            "content_sha256": "5296b8c4691b3ec75a753724df7088690f7dd35cde59269b043133aa3180e60c"
+          },
+          {
+            "chapter_id": "chapter-002",
+            "content_sha256": "512451408f9a0884018cc392ebfdd50b67276e6c901f7da187be756c9d297119"
+          },
+          {
+            "chapter_id": "chapter-003",
+            "content_sha256": "4828ecd595bbdc0f8507b6f119befd8ff291d3d41736efd06778577e7815e9a9"
+          },
+          {
+            "chapter_id": "chapter-004",
+            "content_sha256": "7030b1a3dc00a12573229e5c5e5f40201952a7b5d49e37ab553d79edc94bb586"
+          },
+          {
+            "chapter_id": "chapter-005",
+            "content_sha256": "51f85c7e175c11a37161b0600a51fd851d9ea20fa9705ef189bfdd464f531b3c"
+          },
+          {
+            "chapter_id": "chapter-006",
+            "content_sha256": "4433e90e41d3c5062c6d861b81fa53b3ad3bcf4b9aa69cb2173b3e845f27569d"
+          },
+          {
+            "chapter_id": "chapter-007",
+            "content_sha256": "d03b142c6b03437d7a8976cf76c7db0da7eee4aba7b7319fd4d28e09946b50cc"
+          },
+          {
+            "chapter_id": "chapter-008",
+            "content_sha256": "581e32bc42a36b47d623c206f7e21f2bc85090a7b5443afe8ababeb3f880a092"
+          }
+        ],
+        "source_to_canonical_comparison": {
+          "status": "TEXT_VERIFIED",
+          "source_path": "content/books/radharani/raw/source.txt",
+          "source_file_sha256": "e28ce496d4c87a56915bcda7337f46ca1f20c882ad50ffaa64a6afa66fd17033",
+          "all_chapters_found_in_order": true,
+          "chapter_positions": [
+            {
+              "chapter_id": "chapter-001",
+              "found": true,
+              "position": 26
+            },
+            {
+              "chapter_id": "chapter-002",
+              "found": true,
+              "position": 7368
+            },
+            {
+              "chapter_id": "chapter-003",
+              "found": true,
+              "position": 11166
+            },
+            {
+              "chapter_id": "chapter-004",
+              "found": true,
+              "position": 14694
+            },
+            {
+              "chapter_id": "chapter-005",
+              "found": true,
+              "position": 16030
+            },
+            {
+              "chapter_id": "chapter-006",
+              "found": true,
+              "position": 27410
+            },
+            {
+              "chapter_id": "chapter-007",
+              "found": true,
+              "position": 30227
+            },
+            {
+              "chapter_id": "chapter-008",
+              "found": true,
+              "position": 34535
+            }
+          ],
+          "normalization": "Unicode NFC plus whitespace-run collapse only.",
+          "reason": "Every current controlled chapter was found in retained source order; no prose transformation was applied."
+        },
+        "facsimile_observation_comparison": null,
+        "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
+        "material_differences": "Every controlled chapter is present in source order after the documented non-substantive normalization. A separately recorded source-layer/footnote presentation issue is not represented as a prose difference.",
+        "intentional_corrections": "NONE_APPROVED",
+        "evidence": [
+          {
+            "path": "data/controlled_publications/radharani/reader_manifest.json",
+            "sha256": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555"
+          },
+          {
+            "path": "data/controlled_publications/radharani/source_evidence.json",
+            "sha256": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95"
+          },
+          {
+            "path": "internal/legal/four_title_pilot_evidence_20260917.md",
+            "sha256": "a730f8281bff9c02715874cf92af4bf94bc3b0e7267758bef00a0d43855a780f"
+          }
+        ]
+      },
+      "translation_and_editorial_material": {
+        "status": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
+        "translation": "NOT_APPLICABLE — identified Bengali source text, not a separately identified translation.",
+        "source_layer": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+        "source_layer_provenance": {
+          "status": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
+          "source_provider": "Bengali Wikisource",
+          "source_page": "https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)",
+          "source_layer_used": "Retained plain-text source body; repository/source furniture is excluded from delivered chapter content.",
+          "rendering_and_transclusion_handling": "The comparison does not use Wikisource page chrome, templates, or transcluded presentation furniture as literary prose. Delivered controlled chapters are compared in order against the retained source body.",
+          "normalization_applied": "Unicode NFC plus whitespace-run collapse only.",
+          "canonical_hash": "Bound in textual_integrity_proof.earnalism_canonical_text_hash.",
+          "verification_result": "TEXT_VERIFIED",
+          "source_license_note": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+          "release_decision_note": "The source-layer licence/provenance is recorded for the later release decision. It is not a second literary-text review or an accepted rights decision."
+        },
+        "blockers": []
+      },
+      "cover_provenance": {
+        "status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+        "owner_stated_creator": "PRODUCT_OWNER",
+        "rightsholder_claim": "PRODUCT_OWNER",
+        "basis": "OWNER_SUPPLIED_FACT: the product owner states that the Earnalism covers were graphically designed by the owner. The repository contains hash-bound active cover evidence and no contrary external-component record.",
+        "externally_sourced_elements": "NO_CONTRARY_EVIDENCE_IN_REPOSITORY — disclose a specific external protected component if one is later identified.",
+        "declaration_record": "OPTIONAL_EVIDENCE_STRENGTHENING — an unsigned form is retained for later confirmation but is not a current legal/compliance gate.",
+        "front_cover_sha256": "NOT_RECORDED",
+        "back_cover_sha256": "NOT_RECORDED",
+        "assets": {
+          "front": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+          "back": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482930/earnalism/covers/back/back_cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png"
+        },
+        "evidence": [
+          {
+            "path": "data/controlled_publications/radharani/public_book.json",
+            "sha256": "3a12e9da36cba5c24b9ae3af6e002aff81e8676d998ec2f35468796acebec585"
+          }
+        ],
+        "blockers": []
+      },
+      "audio_scope": {
+        "current_launch_status": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE",
+        "current_launch_reason": "The controlled launch configuration, rather than use of AI/TTS, disables public audio exposure for every title.",
+        "underlying_literary_text": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "canonical_text_hash": "332135f42281789b346f7aed5100a05630b8dfc637c5177ff85de17e5a6e890d",
+        "evidence": [
+          {
+            "path": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_release_gate_evidence.json",
+            "sha256": "9a440a43c9008e8f182247f80d4f64afdecb90aa12f9ec55a7af557c2b69f401"
+          }
+        ],
+        "first_party_generation_context": "OWNER_STATED: audiobooks are generated by or at the direction of the product owner, not copied third-party commercial recordings. This is not a release decision.",
+        "third_party_recording_used": "NO_EVIDENCE_OF_THIRD_PARTY_RECORDING_IN_CURRENT_RELEASE_GATE_FILE",
+        "candidate_status_if_audio_scope_changes": "AUDIO_ACTION_REQUIRED — full pipeline closeout recorded derived-ASR and calibration failure; no current launchable audio output is established.",
+        "provider": "MULTIPLE_HISTORICAL_PROVIDER_ATTEMPTS_RECORDED_IN_CLOSEOUT",
+        "model": "NOT_A_CURRENT_LAUNCH_CANDIDATE",
+        "voice": "NOT_RECORDED_IN_RELEASE_GATE_SUMMARY",
+        "voice_type": "UNKNOWN",
+        "generation_date": "NOT_RECORDED",
+        "audio_generation_input_hash": "NOT_RECORDED",
+        "audio_output_hash": "NOT_RECORDED — no launchable output",
+        "music_present": "NOT_APPLICABLE — no launchable output",
+        "external_sound_effects_present": "NOT_APPLICABLE — no launchable output",
+        "provider_terms": {
+          "result": "Not evaluated: the current record establishes no launchable audio candidate, so a provider-terms review cannot clear it ahead of its failed fidelity/QA gate."
+        }
+      },
+      "public_provenance_statement_candidate": "Text follows: Bengali Wikisource (https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)).",
+      "india_title_predicate": {
+        "rule": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE AND TEXT_VERIFIED AND FIRST_PARTY_COVER_PROVENANCE_CONFIRMED AND TRANSLATION_RIGHTS_OK_OR_NOT_APPLICABLE AND REQUIRED_OTHER_ASSETS_OK AND (AUDIO_INDIA_READY OR AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE)",
+        "copyright": "PASS",
+        "text": "PASS",
+        "cover": "PASS — FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+        "translation_and_other_assets": "PASS_FOR_IDENTIFIED_DELIVERED_TEXT",
+        "audio": "PASS_FOR_CURRENT_SCOPE",
+        "result": "INDIA_TITLE_READY"
+      },
+      "india_title_status": "HOLD",
+      "india_title_ready": true,
+      "india_compliance_status": "INDIA_TITLE_READY",
+      "compliance_blockers": [],
+      "release_authorization_state": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient."
+    },
+    {
+      "title": "যুগলাঙ্গুরীয়",
+      "slug": "yugalanguriya",
+      "country_scope": [
+        "IN"
+      ],
+      "india_copyright_proof": {
+        "status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "statutory_category": "ORDINARY_PUBLISHED_LITERARY_WORK_SECTION_22",
+        "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+        "author_identity": "Bankim Chandra Chattopadhyay (1838–1894), Bengali prose writer and novelist.",
+        "author_death_year": 1894,
+        "joint_authorship": "NOT_RECORDED",
+        "work_type": "Bengali literary prose work.",
+        "original_language": "Bengali",
+        "source_publication_year": "1874",
+        "relevant_publication_evidence": "The identified source edition is Bengali Wikisource's 1893-labelled edition; the repository records an original-publication year of 1874.",
+        "section_22_term_calculation": {
+          "rule": "For an ordinary published literary work under Copyright Act, 1957 section 22, the term is sixty years from the beginning of the calendar year following the author’s death.",
+          "author_death_year": 1894,
+          "term_ends_at_calendar_year_end": 1954,
+          "expired_term_calculation_begins": "1 January 1955",
+          "limitation": "This factual calculation is not a rights acceptance and must not be applied to a different statutory category or separately protected component."
+        },
+        "evidence": [
+          {
+            "path": "data/controlled_publications/yugalanguriya/source_evidence.json",
+            "sha256": "183593322bc67e04d70bee6102e7891b0c84d0a3fa703a3316cce22fcef53b83"
+          },
+          {
+            "path": "content/books/yugalanguriya/source-rights.md",
+            "sha256": "bac016a519ab708d2607fdc30496f344d0f50746d11b4efd7851d740095d3a7c"
+          },
+          {
+            "topic": "author identity and death year",
+            "url": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621"
+          },
+          {
+            "topic": "work publication evidence",
+            "url": "https://bn.wikisource.org/wiki/%E0%A6%AF%E0%A7%81%E0%A6%97%E0%A6%B2%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%80%E0%A6%AF%E0%A6%BC_(%E0%A7%A7%E0%A7%AE%E0%A7%AF%E0%A7%A9)"
+          },
+          {
+            "topic": "Copyright Act, 1957 — Chapter V, section 22 and other term categories",
+            "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+            "scope": "copyright term classification"
+          }
+        ],
+        "limitations": [
+          "This records an objectively documented ordinary section 22 term calculation only; it is not a rights acceptance or release decision.",
+          "Translations, source transcriptions, covers, illustrations, editorial additions, and other separately protected components remain independently evaluated."
+        ]
+      },
+      "textual_integrity_proof": {
+        "status": "TEXT_REVIEW_REQUIRED",
+        "earnalism_edition_id": "yugalanguriya",
+        "source_edition": "text/plain",
+        "source_publication_information": "1874",
+        "source_provider": "Bengali Wikisource",
+        "source_identifier": "%E0%A6%AF%E0%A7%81%E0%A6%97%E0%A6%B2%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%80%E0%A6%AF%E0%A6%BC_(%E0%A7%A7%E0%A7%AE%E0%A7%AF%E0%A7%A9)",
+        "source_reference_url": "https://bn.wikisource.org/wiki/%E0%A6%AF%E0%A7%81%E0%A6%97%E0%A6%B2%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%80%E0%A6%AF%E0%A6%BC_(%E0%A7%A7%E0%A7%AE%E0%A7%AF%E0%A7%A9)",
+        "source_retrieval_date": "2026-06-03T08:51:47.805273+00:00",
+        "source_file_hash": "d29946aec3912a7e03c866a84354faec222b80f851802710a58885ff67afbe3b",
+        "stored_publication_aggregate_hash": "d67c7fa66250fabd94e24d97170bbaae74c65b863da82acbdf990bb416b9cced",
+        "current_raw_source_path": "content/books/yugalanguriya/raw/source.txt",
+        "current_raw_source_file_hash": "84ca33a93c58cc6d61fcfff08ffb805f0a4b3fbe2aa6d7308b76aa0842238b9b",
+        "earnalism_canonical_text_hash": "45e3fbdc37d44a9255735a09b37bde563319086626e2a5a7bc6bd63fab18b875",
+        "canonical_chapter_hashes": [
+          {
+            "chapter_id": "chapter-001",
+            "content_sha256": "1d9047a1bca3ca42fbad126c771eef7ecf4939b0060e652bc2325f9d9df5a7ed"
+          },
+          {
+            "chapter_id": "chapter-002",
+            "content_sha256": "fc8974c5f4f05b7e0171c069e5d5928e0992b5b45adfedcfa119b2591840b675"
+          },
+          {
+            "chapter_id": "chapter-003",
+            "content_sha256": "11fff720ca424771a55c0165f7ec99be40caf4c2885d3c49162d12bdbe74eee5"
+          },
+          {
+            "chapter_id": "chapter-004",
+            "content_sha256": "f7a62ea11b7f936d129d35c4b1be694bc9e33347b7ced9443392895c3b44856c"
+          },
+          {
+            "chapter_id": "chapter-005",
+            "content_sha256": "0b7f3fe16f55dac6af48d5efa667f591489e83621f3bc609bdb7b09d2fd872e4"
+          },
+          {
+            "chapter_id": "chapter-006",
+            "content_sha256": "b43fa14f3aa2e2fe6ab3df354187a1a21f7237a36c4003db5fd7cd4146c2f9ff"
+          },
+          {
+            "chapter_id": "chapter-007",
+            "content_sha256": "3880398ecb6572d6836c927cadd20741e9dd7ef96b6d6094421a6f369f5a3924"
+          },
+          {
+            "chapter_id": "chapter-008",
+            "content_sha256": "e8f556867e9c892352fddbb4f92939df454b985e8341482a9096f9a623ba6437"
+          },
+          {
+            "chapter_id": "chapter-009",
+            "content_sha256": "2d7e1d79528b66b7112b5a0de8c9851e33112579efd3663094fa83f0a9c999ae"
+          },
+          {
+            "chapter_id": "chapter-010",
+            "content_sha256": "d23a754d8eb035573d0102518f0f69b8db3ac3919f9539758f84f02f4cfeb5c5"
+          }
+        ],
+        "source_to_canonical_comparison": {
+          "status": "TEXT_REVIEW_REQUIRED",
+          "source_path": "content/books/yugalanguriya/raw/source.txt",
+          "source_file_sha256": "84ca33a93c58cc6d61fcfff08ffb805f0a4b3fbe2aa6d7308b76aa0842238b9b",
+          "all_chapters_found_in_order": false,
+          "chapter_positions": [
+            {
+              "chapter_id": "chapter-001",
+              "found": false,
+              "position": null
+            }
+          ],
+          "normalization": "Unicode NFC plus whitespace-run collapse only.",
+          "reason": "A canonical chapter was not found in retained source order. No prose is changed automatically."
+        },
+        "facsimile_observation_comparison": {
+          "status": "TEXT_REVIEW_REQUIRED",
+          "method": "Observation-level deterministic comparison of the current controlled chapter openings and footnote marker against the retained Bengali Wikisource layer and the hash-bound facsimile checkpoint. No AI-generated Bengali prose is used as evidence.",
+          "observations": [
+            {
+              "LOCATION": "chapter-001 opening",
+              "SOURCE_READING": "Facsimile crop records an uncertain join: ই + জনে",
+              "RETAINED_SOURCE_LAYER_READING": "ই জনে",
+              "EARNALISM_READING": "দুই জনে",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SOURCE_AMBIGUOUS",
+              "EVIDENCE": "facsimile checkpoint image 6 / crop 1; retained Bengali Wikisource source layer",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Obtain an independent human reading of uncropped image 6, including its left margin. Do not alter canonical prose before that review.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-002 opening",
+              "SOURCE_READING": "Facsimile crop reads কে + ন যে",
+              "RETAINED_SOURCE_LAYER_READING": "ন যে",
+              "EARNALISM_READING": "কেন যে",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+              "EVIDENCE": "facsimile checkpoint image 13 / crop 8",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-003 opening",
+              "SOURCE_READING": "Facsimile crop reads দু + ই বৎসরের",
+              "RETAINED_SOURCE_LAYER_READING": "ই বৎসরের",
+              "EARNALISM_READING": "দুই বৎসরের",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+              "EVIDENCE": "facsimile checkpoint image 17 / crop 12",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-004 opening",
+              "SOURCE_READING": "The 1893 facsimile has the initial বি in its illustrated drop-cap crop and বাহাস্তে in the adjacent text; together the source reads বিবাহাস্তে.",
+              "RETAINED_SOURCE_LAYER_READING": "The retained Wikisource plain-text layer reads বাহাস্তে and omits the illustrated initial.",
+              "EARNALISM_READING": "বিবাহান্তে",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "DOCUMENTED_EDITION_VARIANT",
+              "EVIDENCE": "The 1893 Wikisource facsimile page 23 plus its extracted initial crop p18b support বিবাহাস্তে. An independent SNLTR Bankim Rachanabali edition reads বিবাহান্তে at its chapter-four opening; its project states that it follows the Sahitya Samsad publication arrangement. The two editions therefore document differing readings; neither source is represented as agreeing with the other.",
+              "FACSIMILE_URL": "https://bn.wikisource.org/wiki/পাতা:যুগলাঙ্গুরীয়_-_বঙ্কিমচন্দ্র_চট্টোপাধ্যায়.djvu/২৩",
+              "INITIAL_CROP_URL": "https://commons.wikimedia.org/wiki/File:যুগলাঙ্গুরীয়_-_বঙ্কিমচন্দ্র_চট্টোপাধ্যায়_p18b.png",
+              "CORROBORATING_EDITION_URL": "https://bankim-rachanabali.nltr.org/node/822",
+              "CORROBORATING_EDITION_PROJECT_URL": "https://bankim-rachanabali.nltr.org/node/2",
+              "EDITORIAL_DECISION": "OWNER_CONFIRMED_INTENDED_CANONICAL_READING: preserve বিবাহান্তে. This records a selected canonical edition reading, not a claim that the 1893 scan reads the same word.",
+              "ACTION": "Resolved as a documented edition variant. Preserve the canonical reading বিবাহান্তে; do not alter the 1893-source evidence or modify literary text solely to reconcile editions.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-005 opening",
+              "SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+              "RETAINED_SOURCE_LAYER_READING": "রণ্ময়ী",
+              "EARNALISM_READING": "হিরণ্ময়ী",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+              "EVIDENCE": "facsimile checkpoint image 27 / crop 22",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-006 opening",
+              "SOURCE_READING": "Facsimile crop reads প + রে এক দিন",
+              "RETAINED_SOURCE_LAYER_READING": "রে এক দিন",
+              "EARNALISM_READING": "পরে এক দিন",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+              "EVIDENCE": "facsimile checkpoint image 30 / crop 25",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-007 opening",
+              "SOURCE_READING": "Facsimile crop reads বি + বাহের পর",
+              "RETAINED_SOURCE_LAYER_READING": "বাহের পর",
+              "EARNALISM_READING": "বিবাহের পর",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+              "EVIDENCE": "facsimile checkpoint image 35 / crop 30",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-008 opening",
+              "SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+              "RETAINED_SOURCE_LAYER_READING": "রণ্ময়ী",
+              "EARNALISM_READING": "হিরণ্ময়ী",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+              "EVIDENCE": "facsimile checkpoint chapter 008 opening crop",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-009 opening",
+              "SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+              "RETAINED_SOURCE_LAYER_READING": "রণ্ময়ী",
+              "EARNALISM_READING": "হিরণ্ময়ী",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+              "EVIDENCE": "facsimile checkpoint chapter 009 opening crop",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-010 opening",
+              "SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+              "RETAINED_SOURCE_LAYER_READING": "রণ্ময়ী",
+              "EARNALISM_READING": "হিরণ্ময়ী",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+              "EVIDENCE": "facsimile checkpoint chapter 010 opening crop",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            },
+            {
+              "LOCATION": "chapter-001 Tamralipta footnote marker",
+              "SOURCE_READING": "Facsimile crop records an asterisk marker; retained transcription uses a presentation-layer arrow marker",
+              "RETAINED_SOURCE_LAYER_READING": "upward-arrow presentation marker",
+              "EARNALISM_READING": "asterisk marker bound to the retained note",
+              "DIFFERENCE": "Current canonical text differs from the retained transcription where documented above.",
+              "CLASSIFICATION": "SOURCE_PRESENTATION_LAYER",
+              "EVIDENCE": "facsimile checkpoint footnote observation and current controlled chapter record",
+              "FACSIMILE_URL": "NOT_RECORDED",
+              "INITIAL_CROP_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+              "CORROBORATING_EDITION_PROJECT_URL": "NOT_RECORDED",
+              "EDITORIAL_DECISION": "NOT_RECORDED",
+              "ACTION": "Resolved as a non-prose source-presentation difference; preserve the current bound note and make no prose change.",
+              "CURRENT_READING_MATCHES_EXPECTED": true
+            }
+          ],
+          "resolved_observation_count": 10,
+          "unresolved_observation_count": 1,
+          "unresolved_locations": [
+            "chapter-001 opening"
+          ],
+          "reason": "The chapter-001 source reading remains ambiguous. Chapter-004 is a documented edition variant: the selected 1893 source reads বিবাহাস্তে while an independent SNLTR edition and the owner-confirmed canonical reading use বিবাহান্তে. Resolved source-layer omissions and variants are retained as evidence, not blockers."
+        },
+        "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
+        "material_differences": "The retained Bengali Wikisource transcription has known truncated openings. Nine observations support the current controlled readings or are presentation-only; chapter-004 is a documented edition variant, while only chapter-001 remains source-ambiguous. No canonical text change is authorized.",
+        "intentional_corrections": "NONE_APPROVED",
+        "evidence": [
+          {
+            "path": "data/controlled_publications/yugalanguriya/reader_manifest.json",
+            "sha256": "223bc26bd96e342e2f4c94777482af07167d17c8d2253c5b30cc0eed573320b4"
+          },
+          {
+            "path": "data/controlled_publications/yugalanguriya/source_evidence.json",
+            "sha256": "183593322bc67e04d70bee6102e7891b0c84d0a3fa703a3316cce22fcef53b83"
+          },
+          {
+            "path": "internal/legal/four_title_pilot_evidence_20260917.md",
+            "sha256": "a730f8281bff9c02715874cf92af4bf94bc3b0e7267758bef00a0d43855a780f"
+          }
+        ]
+      },
+      "translation_and_editorial_material": {
+        "status": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
+        "translation": "NOT_APPLICABLE — identified Bengali source text, not a separately identified translation.",
+        "source_layer": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+        "source_layer_provenance": {
+          "status": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
+          "source_provider": "Bengali Wikisource",
+          "source_page": "https://bn.wikisource.org/wiki/%E0%A6%AF%E0%A7%81%E0%A6%97%E0%A6%B2%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%80%E0%A6%AF%E0%A6%BC_(%E0%A7%A7%E0%A7%AE%E0%A7%AF%E0%A7%A9)",
+          "source_layer_used": "Retained plain-text source body; repository/source furniture is excluded from delivered chapter content.",
+          "rendering_and_transclusion_handling": "The comparison does not use Wikisource page chrome, templates, or transcluded presentation furniture as literary prose. Delivered controlled chapters are compared in order against the retained source body.",
+          "normalization_applied": "Unicode NFC plus whitespace-run collapse only.",
+          "canonical_hash": "Bound in textual_integrity_proof.earnalism_canonical_text_hash.",
+          "verification_result": "TEXT_REVIEW_REQUIRED",
+          "source_license_note": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+          "release_decision_note": "The source-layer licence/provenance is recorded for the later release decision. It is not a second literary-text review or an accepted rights decision."
+        },
+        "blockers": []
+      },
+      "cover_provenance": {
+        "status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+        "owner_stated_creator": "PRODUCT_OWNER",
+        "rightsholder_claim": "PRODUCT_OWNER",
+        "basis": "OWNER_SUPPLIED_FACT: the product owner states that the Earnalism covers were graphically designed by the owner. The repository contains hash-bound active cover evidence and no contrary external-component record.",
+        "externally_sourced_elements": "NO_CONTRARY_EVIDENCE_IN_REPOSITORY — disclose a specific external protected component if one is later identified.",
+        "declaration_record": "OPTIONAL_EVIDENCE_STRENGTHENING — an unsigned form is retained for later confirmation but is not a current legal/compliance gate.",
+        "front_cover_sha256": "NOT_RECORDED",
+        "back_cover_sha256": "NOT_RECORDED",
+        "assets": {
+          "front": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482943/earnalism/covers/front/cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+          "back": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482967/earnalism/covers/back/back_cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png"
+        },
+        "evidence": [
+          {
+            "path": "data/controlled_publications/yugalanguriya/public_book.json",
+            "sha256": "9475597be0ab3cacd6154cb1d45d334b28092bcdbd698d1d60bf6f0445488190"
+          }
+        ],
+        "blockers": []
+      },
+      "audio_scope": {
+        "current_launch_status": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE",
+        "current_launch_reason": "The controlled launch configuration, rather than use of AI/TTS, disables public audio exposure for every title.",
+        "underlying_literary_text": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "canonical_text_hash": "45e3fbdc37d44a9255735a09b37bde563319086626e2a5a7bc6bd63fab18b875",
+        "evidence": [],
+        "first_party_generation_context": "OWNER_STATED: audiobooks are generated by or at the direction of the product owner, not copied third-party commercial recordings. This is not a release decision.",
+        "third_party_recording_used": "NO_EVIDENCE_OF_THIRD_PARTY_RECORDING_IN_CURRENT_RELEASE_GATE_FILE",
+        "candidate_status_if_audio_scope_changes": "AUDIO_ACTION_REQUIRED — historical mapped-asset references do not establish provider, voice, input hash, output hash, or a complete current qualification gate.",
+        "provider": "UNKNOWN",
+        "model": "UNKNOWN",
+        "voice": "UNKNOWN",
+        "voice_type": "UNKNOWN",
+        "generation_date": "UNKNOWN",
+        "audio_generation_input_hash": "UNKNOWN",
+        "audio_output_hash": "UNKNOWN",
+        "music_present": "UNKNOWN",
+        "external_sound_effects_present": "UNKNOWN",
+        "provider_terms": {
+          "result": "Provider identity is not established by the current historical mapped-asset record; obtain it only if audio for this title enters a future launch scope."
+        }
+      },
+      "public_provenance_statement_candidate": "Text follows: Bengali Wikisource (https://bn.wikisource.org/wiki/%E0%A6%AF%E0%A7%81%E0%A6%97%E0%A6%B2%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%80%E0%A6%AF%E0%A6%BC_(%E0%A7%A7%E0%A7%AE%E0%A7%AF%E0%A7%A9)).",
+      "india_title_predicate": {
+        "rule": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE AND TEXT_VERIFIED AND FIRST_PARTY_COVER_PROVENANCE_CONFIRMED AND TRANSLATION_RIGHTS_OK_OR_NOT_APPLICABLE AND REQUIRED_OTHER_ASSETS_OK AND (AUDIO_INDIA_READY OR AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE)",
+        "copyright": "PASS",
+        "text": "FAIL_CLOSED",
+        "cover": "PASS — FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+        "translation_and_other_assets": "PASS_FOR_IDENTIFIED_DELIVERED_TEXT",
+        "audio": "PASS_FOR_CURRENT_SCOPE",
+        "result": "INDIA_TITLE_ACTION_REQUIRED"
+      },
+      "india_title_status": "HOLD",
+      "india_title_ready": false,
+      "india_compliance_status": "INDIA_TITLE_ACTION_REQUIRED",
+      "compliance_blockers": [
+        "TEXT_REVIEW_REQUIRED"
+      ],
+      "release_authorization_state": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient."
+    }
+  ],
+  "text_source_manifest": [
+    {
+      "title": "A Ghost Story",
+      "author": "Mark Twain",
+      "earnalism_edition_id": "a-ghost-story",
+      "source_edition": "text/plain",
+      "source_publication_information": "1875",
+      "source_provider": "Project Gutenberg",
+      "source_identifier": "3189",
+      "source_reference_url": "https://www.gutenberg.org/ebooks/3189",
+      "source_retrieval_date": "2026-07-08T20:40:04Z",
+      "source_file_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
+      "stored_publication_aggregate_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
+      "current_raw_source_path": "content/books/a-ghost-story/raw/source.txt",
+      "current_raw_source_file_hash": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
+      "earnalism_canonical_text_hash": "4e14087173c0327d8681fcbe950c76076c0871fa30cb26c34851ef3df9fe9596",
+      "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
+      "material_differences": "Every controlled chapter is present in source order after the documented non-substantive normalization.",
+      "intentional_corrections": "NONE_APPROVED",
+      "text_integrity_status": "TEXT_VERIFIED"
+    },
+    {
+      "title": "The Tell-Tale Heart",
+      "author": "Edgar Allan Poe",
+      "earnalism_edition_id": "the-tell-tale-heart",
+      "source_edition": "text/plain",
+      "source_publication_information": "1843",
+      "source_provider": "Project Gutenberg",
+      "source_identifier": "2148",
+      "source_reference_url": "https://www.gutenberg.org/ebooks/2148",
+      "source_retrieval_date": "2026-06-03T08:04:21.838758+00:00",
+      "source_file_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+      "stored_publication_aggregate_hash": "a07c4b3d611f371eff7ff8ded51a6dd40eabe86f595b459fbe2f5e23afb18dcf",
+      "current_raw_source_path": "content/books/the-tell-tale-heart/raw/source.txt",
+      "current_raw_source_file_hash": "20780b096474c0c584f780e2f515a528a3cf4a1e265425f9b2c20a6842e39526",
+      "earnalism_canonical_text_hash": "ddbfefae9964a9a530ef16edb1c6cab146f5e1666cb31eb65c4bfe088321267c",
+      "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
+      "material_differences": "The stored source-evidence content hash is an aggregate publication hash, not a direct chapter digest. The exact retained source body contains the current controlled chapter after the documented non-substantive normalization.",
+      "intentional_corrections": "NONE_APPROVED",
+      "text_integrity_status": "TEXT_VERIFIED"
+    },
+    {
+      "title": "রাধারাণী",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "earnalism_edition_id": "radharani",
+      "source_edition": "text/plain",
+      "source_publication_information": "1877",
+      "source_provider": "Bengali Wikisource",
+      "source_identifier": "%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)",
+      "source_reference_url": "https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)",
+      "source_retrieval_date": "2026-06-03T08:51:47.797655+00:00",
+      "source_file_hash": "e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e",
+      "stored_publication_aggregate_hash": "4a3e2f9b0e0cdb6e2f4919c160573f0d4565559ce16ebb9aeb653f185b35e632",
+      "current_raw_source_path": "content/books/radharani/raw/source.txt",
+      "current_raw_source_file_hash": "e28ce496d4c87a56915bcda7337f46ca1f20c882ad50ffaa64a6afa66fd17033",
+      "earnalism_canonical_text_hash": "332135f42281789b346f7aed5100a05630b8dfc637c5177ff85de17e5a6e890d",
+      "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
+      "material_differences": "Every controlled chapter is present in source order after the documented non-substantive normalization. A separately recorded source-layer/footnote presentation issue is not represented as a prose difference.",
+      "intentional_corrections": "NONE_APPROVED",
+      "text_integrity_status": "TEXT_VERIFIED"
+    },
+    {
+      "title": "যুগলাঙ্গুরীয়",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "earnalism_edition_id": "yugalanguriya",
+      "source_edition": "text/plain",
+      "source_publication_information": "1874",
+      "source_provider": "Bengali Wikisource",
+      "source_identifier": "%E0%A6%AF%E0%A7%81%E0%A6%97%E0%A6%B2%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%80%E0%A6%AF%E0%A6%BC_(%E0%A7%A7%E0%A7%AE%E0%A7%AF%E0%A7%A9)",
+      "source_reference_url": "https://bn.wikisource.org/wiki/%E0%A6%AF%E0%A7%81%E0%A6%97%E0%A6%B2%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%80%E0%A6%AF%E0%A6%BC_(%E0%A7%A7%E0%A7%AE%E0%A7%AF%E0%A7%A9)",
+      "source_retrieval_date": "2026-06-03T08:51:47.805273+00:00",
+      "source_file_hash": "d29946aec3912a7e03c866a84354faec222b80f851802710a58885ff67afbe3b",
+      "stored_publication_aggregate_hash": "d67c7fa66250fabd94e24d97170bbaae74c65b863da82acbdf990bb416b9cced",
+      "current_raw_source_path": "content/books/yugalanguriya/raw/source.txt",
+      "current_raw_source_file_hash": "84ca33a93c58cc6d61fcfff08ffb805f0a4b3fbe2aa6d7308b76aa0842238b9b",
+      "earnalism_canonical_text_hash": "45e3fbdc37d44a9255735a09b37bde563319086626e2a5a7bc6bd63fab18b875",
+      "comparison_method": "Deterministic retained-source comparison: Unicode NFC plus whitespace-run collapse only, then ordered full-chapter substring matching. No AI-generated prose is an authority.",
+      "material_differences": "The retained Bengali Wikisource transcription has known truncated openings. Nine observations support the current controlled readings or are presentation-only; chapter-004 is a documented edition variant, while only chapter-001 remains source-ambiguous. No canonical text change is authorized.",
+      "intentional_corrections": "NONE_APPROVED",
+      "text_integrity_status": "TEXT_REVIEW_REQUIRED"
+    }
+  ],
+  "editorial_correction_ledger": {
+    "status": "NO_CORRECTIONS_APPROVED",
+    "required_fields": [
+      "TITLE",
+      "LOCATION",
+      "IDENTIFIED_SOURCE_READING",
+      "EARNALISM_READING",
+      "REASON",
+      "EVIDENCE_OR_AUTHORITY",
+      "DATE"
+    ],
+    "entries": [],
+    "unresolved_source_discrepancies": [
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-001 opening",
+        "SOURCE": "Facsimile crop records an uncertain join: ই + জনে",
+        "CURRENT_EARNALISM": "দুই জনে",
+        "CLASSIFICATION": "SOURCE_AMBIGUOUS",
+        "ACTION": "Obtain an independent human reading of uncropped image 6, including its left margin. Do not alter canonical prose before that review.",
+        "EVIDENCE": "facsimile checkpoint image 6 / crop 1; retained Bengali Wikisource source layer"
+      }
+    ],
+    "resolved_source_observations": [
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-002 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads কে + ন যে",
+        "EARNALISM_READING": "কেন যে",
+        "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+        "EVIDENCE": "facsimile checkpoint image 13 / crop 8",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
+        "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-003 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads দু + ই বৎসরের",
+        "EARNALISM_READING": "দুই বৎসরের",
+        "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+        "EVIDENCE": "facsimile checkpoint image 17 / crop 12",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
+        "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-004 opening",
+        "BASE_SOURCE_READING": "The 1893 facsimile has the initial বি in its illustrated drop-cap crop and বাহাস্তে in the adjacent text; together the source reads বিবাহাস্তে.",
+        "EARNALISM_READING": "বিবাহান্তে",
+        "CLASSIFICATION": "DOCUMENTED_EDITION_VARIANT",
+        "EVIDENCE": "The 1893 Wikisource facsimile page 23 plus its extracted initial crop p18b support বিবাহাস্তে. An independent SNLTR Bankim Rachanabali edition reads বিবাহান্তে at its chapter-four opening; its project states that it follows the Sahitya Samsad publication arrangement. The two editions therefore document differing readings; neither source is represented as agreeing with the other.",
+        "CORROBORATING_EDITION_URL": "https://bankim-rachanabali.nltr.org/node/822",
+        "EDITORIAL_DECISION": "OWNER_CONFIRMED_INTENDED_CANONICAL_READING: preserve বিবাহান্তে. This records a selected canonical edition reading, not a claim that the 1893 scan reads the same word.",
+        "ACTION": "Resolved as a documented edition variant. Preserve the canonical reading বিবাহান্তে; do not alter the 1893-source evidence or modify literary text solely to reconcile editions."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-005 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+        "EARNALISM_READING": "হিরণ্ময়ী",
+        "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+        "EVIDENCE": "facsimile checkpoint image 27 / crop 22",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
+        "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-006 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads প + রে এক দিন",
+        "EARNALISM_READING": "পরে এক দিন",
+        "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+        "EVIDENCE": "facsimile checkpoint image 30 / crop 25",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
+        "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-007 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads বি + বাহের পর",
+        "EARNALISM_READING": "বিবাহের পর",
+        "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+        "EVIDENCE": "facsimile checkpoint image 35 / crop 30",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
+        "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-008 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+        "EARNALISM_READING": "হিরণ্ময়ী",
+        "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+        "EVIDENCE": "facsimile checkpoint chapter 008 opening crop",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
+        "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-009 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+        "EARNALISM_READING": "হিরণ্ময়ী",
+        "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+        "EVIDENCE": "facsimile checkpoint chapter 009 opening crop",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
+        "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-010 opening",
+        "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+        "EARNALISM_READING": "হিরণ্ময়ী",
+        "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+        "EVIDENCE": "facsimile checkpoint chapter 010 opening crop",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
+        "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+      },
+      {
+        "TITLE": "যুগলাঙ্গুরীয়",
+        "LOCATION": "chapter-001 Tamralipta footnote marker",
+        "BASE_SOURCE_READING": "Facsimile crop records an asterisk marker; retained transcription uses a presentation-layer arrow marker",
+        "EARNALISM_READING": "asterisk marker bound to the retained note",
+        "CLASSIFICATION": "SOURCE_PRESENTATION_LAYER",
+        "EVIDENCE": "facsimile checkpoint footnote observation and current controlled chapter record",
+        "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+        "EDITORIAL_DECISION": "NOT_RECORDED",
+        "ACTION": "Resolved as a non-prose source-presentation difference; preserve the current bound note and make no prose change."
+      }
+    ],
+    "note": "Unresolved source observations are not approved corrections and do not authorize a manuscript change. Resolved rows document evidence already reflected in the current canonical text or a non-prose presentation layer."
+  },
+  "india_website_legal_matrix": [
+    {
+      "area": "copyright and content integrity",
+      "requirement": "Each released title needs separate copyright, text-integrity, cover, translation/editorial, and other-asset evidence.",
+      "in_force_on_launch_date": "YES_FOR_ANY_RELEASE_OF_COPYRIGHTABLE_MATERIAL",
+      "applies_to_earnalism": "YES_IF_A_TITLE_IS_RELEASED",
+      "applicable": "YES_FOR_ANY_RELEASED_TITLE",
+      "authority": "Copyright Act, 1957; source and integrity evidence",
+      "current_implementation": "The first three pilots have complete India copyright, deterministic text, and owner-supplied first-party cover evidence. The registry and global Reader/audio holds remain production controls.",
+      "gap": "Yugalanguriya remains title-scoped text review; it does not block the three independently evidence-complete titles. A later production release still requires the existing hash-bound ACCEPT/HOLD control.",
+      "status": "PASS_FOR_ELIGIBLE_TITLES",
+      "launch_blocker": false
+    },
+    {
+      "area": "privacy and data inventory",
+      "requirement": "Evaluate DPDP Act/Rules obligations against the actual India launch date and the identified processing.",
+      "in_force_on_launch_date": "For the current 2026-09-22 launch assessment: Rules 1, 2 and 17–21 commenced on publication; Rule 4 is scheduled one year after publication; Rules 3, 5–16, 22 and 23 are scheduled eighteen months after publication, subject to later legal change. This package does not treat future commencement as current evidence.",
+      "applies_to_earnalism": "YES_IF_THE_IDENTIFIED_PERSONAL_DATA_PROCESSING_OCCURS",
+      "applicable": "YES_IF_THE_IDENTIFIED_PERSONAL_DATA_PROCESSING_OCCURS_ON_LAUNCH",
+      "authority": "Digital Personal Data Protection Act, 2023 and Digital Personal Data Protection Rules, 2025, applied by commencement date.",
+      "current_implementation": "A public Privacy route describes source-established account, reader, contact, and service-provider processing without asserting unverified retention, geography, data-sale, or analytics facts.",
+      "gap": "Provider regions/access, deployed analytics state, and retention remain internal operational limitations; they are not represented as verified public facts.",
+      "status": "PASS_FOR_CURRENT_DISCLOSURE",
+      "launch_blocker": false
+    },
+    {
+      "area": "consumer and e-commerce",
+      "requirement": "For an Indian paid Reading Pass flow, test actual pricing, disclosures, restrictions, support/grievance, cancellation/refund treatment, and prohibited deceptive-design risks.",
+      "in_force_on_launch_date": "YES_IF_PAID_SERVICE_IS_OFFERED_TO_INDIAN_CONSUMERS",
+      "applies_to_earnalism": "NO_PAID_READING_TIME_IS_OFFERED_IN_CURRENT_LAUNCH",
+      "applicable": "NOT_APPLICABLE_TO_CURRENT_LAUNCH_CONFIGURATION",
+      "authority": "Consumer Protection Act, 2019; Consumer Protection (E-Commerce) Rules, 2020; Dark Patterns Guidelines, 2023.",
+      "current_implementation": "The controlled-launch configuration disables public paid commerce in both frontend and backend; public checkout initiation and verification are unavailable while payment webhooks remain available for previously-created intents.",
+      "gap": "NOT_APPLICABLE_WHILE_PAID_COMMERCE_IS_DISABLED",
+      "status": "NOT_APPLICABLE_TO_CURRENT_LAUNCH",
+      "launch_blocker": false
+    },
+    {
+      "area": "legal pages and contact/grievance information",
+      "requirement": "Public legal notices must describe the actual product and operator facts without placeholder assertions.",
+      "in_force_on_launch_date": "YES_FOR_THE_PUBLIC_PRODUCT_SURFACE",
+      "applies_to_earnalism": "YES",
+      "applicable": "YES_FOR_THE_PUBLIC_PRODUCT_SURFACE",
+      "authority": "Applicable privacy and consumer framework; owner-supplied business facts.",
+      "current_implementation": "The /terms, /privacy, /copyright, and /contact routes disclose the identified operator, current launch scope, support channel, privacy-request channel, and title-specific copyright-concern path without placeholders.",
+      "gap": "Paid-commerce-specific terms remain intentionally unpublished because public paid commerce is disabled.",
+      "status": "PASS_FOR_CURRENT_LAUNCH",
+      "launch_blocker": false
+    },
+    {
+      "area": "copyright complaint handling",
+      "requirement": "Provide an operational receive, identify, hold, investigate, evidence, decide, restore/remove path for rights complaints.",
+      "in_force_on_launch_date": "YES_FOR_ANY_PUBLIC_CATALOGUE",
+      "applies_to_earnalism": "YES_IF_ANY_TITLE_IS_PUBLIC",
+      "applicable": "YES_FOR_ANY_PUBLIC_CATALOGUE",
+      "authority": "Operational rights-risk control; no US DMCA characterization assumed.",
+      "current_implementation": "The public Copyright route and rights contact path request the work, affected Earnalism title/page, claim basis, supporting information, and contact details; they describe title-scoped receipt, review, temporary hold where warranted, and restore/remove outcomes.",
+      "gap": "Maintain the documented title-scoped handling process when a complaint is received.",
+      "status": "PASS_FOR_CURRENT_LAUNCH",
+      "launch_blocker": false
+    },
+    {
+      "area": "public AI-generated content",
+      "requirement": "Keep any public AI-generated content structurally separate from canonical literary text and inventory only enabled public features.",
+      "in_force_on_launch_date": "NOT_APPLICABLE_UNLESS_A_PUBLIC_AI_FEATURE_IS_ENABLED",
+      "applies_to_earnalism": "NO_PUBLIC_AI_FEATURE_IDENTIFIED_IN_THIS_SOURCE_AUDIT",
+      "applicable": "ONLY_IF_A_PUBLIC_AI_FEATURE_OR_AI-GENERATED_PUBLIC_COPY_IS_ENABLED",
+      "authority": "Source separation and launch-surface verification.",
+      "current_implementation": "The edition generator is source-controlled dry-run logic; this audit found no approved public AI literary-text release path.",
+      "gap": "At release, verify public AI features/copy remain outside canonical literary text and inventory any enabled public AI feature.",
+      "status": "DEFERRED",
+      "launch_blocker": false
+    },
+    {
+      "area": "synthetic audiobook delivery",
+      "requirement": "Assess the currently effective IT Rules only if a synthetically generated audiobook enters the actual public launch scope, based on Earnalism's verified role and the exact delivery configuration.",
+      "in_force_on_launch_date": "The consolidated IT Rules text updated 10 February 2026 contains synthetically generated-information provisions; role-specific applicability must be assessed against the actual public audio launch.",
+      "applies_to_earnalism": "NOT_DETERMINED_FOR_FUTURE_AUDIO_SCOPE; current controlled launch disables public audio exposure.",
+      "applicable": "NOT_APPLICABLE_TO_CURRENT_LAUNCH_CONFIGURATION",
+      "authority": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, consolidated text updated 10 February 2026.",
+      "current_implementation": "No public audiobook launch is enabled by either controlled launch configuration. Historical model-generated audio evidence is recorded separately per title.",
+      "gap": "Before enabling any title-level public audio, perform a role- and configuration-specific applicability assessment and implement only any requirement that actually applies.",
+      "status": "DEFERRED",
+      "launch_blocker": false
+    }
+  ],
+  "actual_data_inventory": [
+    {
+      "data_category": "name",
+      "purpose_and_collection_point": "account, contact, and newsletter forms",
+      "source": "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx",
+      "storage_and_processor_scope": "application database and provider region are not established by source inspection",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "email",
+      "purpose_and_collection_point": "account, contact, and newsletter forms",
+      "source": "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx; frontend/src/pages/Account.jsx",
+      "storage_and_processor_scope": "application database and provider region are not established by source inspection",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "authentication information",
+      "purpose_and_collection_point": "browser session/token handling",
+      "source": "frontend/src/pages/Reader.jsx; backend/server.py",
+      "storage_and_processor_scope": "browser local storage plus application backend; provider geography needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "reading/activity history and position",
+      "purpose_and_collection_point": "Reading Pass position service",
+      "source": "frontend/src/pages/Reader.jsx; backend/reading_pass_service.py",
+      "storage_and_processor_scope": "application backend; provider geography needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "analytics and device/session identifiers",
+      "purpose_and_collection_point": "optional funnel analytics and browser local-storage session identifier",
+      "source": "frontend/src/lib/funnelAnalytics.js; backend/server.py",
+      "storage_and_processor_scope": "browser local storage and optional analytics endpoint; production enablement needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "REVIEW_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "support communications",
+      "purpose_and_collection_point": "contact form submission",
+      "source": "frontend/src/pages/Contact.jsx",
+      "storage_and_processor_scope": "application backend; provider geography needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "payment-related information",
+      "purpose_and_collection_point": "Razorpay checkout and wallet/payment operations; no raw payment data is claimed by this source inventory",
+      "source": "frontend/src/pages/Pricing.jsx; backend/server.py",
+      "storage_and_processor_scope": "Razorpay and application backend; merchant/provider data handling needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "REVIEW_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    }
+  ],
+  "website_fact_inventory": [
+    {
+      "fact": "operator and brand relationship",
+      "value": "REO ENTERPRISE is the sole-proprietor operator; Earnalism is its venture/brand.",
+      "classification": "OWNER_SUPPLIED_FACT_ALREADY_RECORDED",
+      "evidence": "Owner closure response; no new attestation requested."
+    },
+    {
+      "fact": "ordinary support contact",
+      "value": "sales@reoenterprise.org",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "frontend/src/pages/Contact.jsx and frontend/src/pages/Pricing.jsx"
+    },
+    {
+      "fact": "frontend and backend deployment integrations",
+      "value": "Vercel frontend configuration and Railway backend configuration are present.",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "frontend/vercel.json; backend/railway.json"
+    },
+    {
+      "fact": "media storage integration",
+      "value": "Cloudinary is configured in source for image assets; B2-compatible variables are documented for large audiobook objects.",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "backend/config/cloudinary.py; backend/.env.example"
+    },
+    {
+      "fact": "production provider geography and cross-border access",
+      "value": "NOT_ESTABLISHED_FROM_SOURCE",
+      "classification": "PROVIDER_VERIFICATION_REQUIRED",
+      "evidence": "Repository configuration names providers but does not disclose effective production regions or access arrangements."
+    },
+    {
+      "fact": "analytics",
+      "value": "Launch analytics is optional in source and uses a browser local-storage identifier when enabled.",
+      "classification": "DEPLOYMENT_CONFIGURATION_REQUIRED",
+      "evidence": "frontend/src/lib/funnelAnalytics.js"
+    },
+    {
+      "fact": "payment product model",
+      "value": "Razorpay integration supports one-time Reading Pass purchase; source states no subscription or auto-renewal.",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "frontend/src/pages/Pricing.jsx; backend/server.py"
+    },
+    {
+      "fact": "production payment enablement and merchant terms",
+      "value": "NOT_ESTABLISHED_FROM_SOURCE",
+      "classification": "PROVIDER_OR_OWNER_FACT_REQUIRED",
+      "evidence": "backend/server.py exposes configured/mode dynamically and refuses real checkout without configured keys; source cannot prove production mode or merchant agreement."
+    },
+    {
+      "fact": "privacy and grievance designation",
+      "value": "No public designation is registered; sales@reoenterprise.org is not inferred to carry either legal role.",
+      "classification": "OWNER_FACT_REQUIRED",
+      "evidence": "frontend/src/App.js and Contact.jsx"
+    },
+    {
+      "fact": "retention and self-service account deletion",
+      "value": "No retention schedule or public account-deletion route was identified in this source audit.",
+      "classification": "OWNER_POLICY_OR_IMPLEMENTATION_REQUIRED",
+      "evidence": "frontend/src/App.js; backend/server.py; account UI audit"
+    }
+  ],
+  "conclusion": {
+    "india_content": "INDIA_CONTENT_READY",
+    "india_website_legal": "INDIA_WEBSITE_LEGAL_READY",
+    "india_launch_legal_checks_complete": true,
+    "customer_ready": "NOT_DECLARED",
+    "reason": "Three titles satisfy the objective India content predicate independently; Yugalanguriya remains title-scoped text review. Current legal pages and disabled paid commerce support the limited launch scope. The empty rights registry/global exposure hold remains a separate production release control."
+  }
+}

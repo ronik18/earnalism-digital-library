@@ -1,4 +1,21 @@
 export const LIVE_APPROVED_SLUG = "dracula";
+// This is the client-side counterpart to data/controlled_launch.json.  It
+// keeps bundled fallbacks and stale browser caches from advertising a Reader
+// or Listener while the public release is held pending exact rights decisions.
+export const PUBLIC_READER_EXPOSURE_ENABLED = true;
+// This mirrors the explicit server-side controlled-launch allowlist. It is a
+// second fail-closed boundary for cached or malformed catalogue responses; it
+// must never be expanded by a historical manifest or presentation-only flag.
+export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
+  "a-ghost-story",
+  "the-tell-tale-heart",
+  "radharani",
+]);
+// The India text launch does not offer paid Reading Passes until the live
+// Razorpay, consumer-remedy, and accounting surface has been independently
+// qualified.  This is a release control, not a client-only presentation hint.
+export const PUBLIC_PAID_COMMERCE_ENABLED = false;
+export const PUBLIC_AUDIO_EXPOSURE_ENABLED = false;
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 // Pipeline candidates are never matched to publications by title, cover, or
 // transliteration. This explicit, reviewed identity map only suppresses the
@@ -174,8 +191,9 @@ function canonicalBookRoute(slug) {
 }
 
 export function isLiveApprovedBook(book = {}) {
+  if (!PUBLIC_READER_EXPOSURE_ENABLED) return false;
   const slug = normalizedSlug(book);
-  if (!slug) return false;
+  if (!slug || !PUBLIC_READER_RELEASED_SLUGS.includes(slug)) return false;
   const tier = normalizedRightsTier(book);
   const status = normalizedVerificationStatus(book);
   if (tier && tier !== "A") return false;
@@ -214,10 +232,13 @@ export function canShowPreview(book = {}) {
 }
 
 export function canShowReadingPass(book = {}) {
-  return normalizedSlug(book) === LIVE_APPROVED_SLUG && isLiveApprovedBook(book);
+  return PUBLIC_PAID_COMMERCE_ENABLED
+    && normalizedSlug(book) === LIVE_APPROVED_SLUG
+    && isLiveApprovedBook(book);
 }
 
 export function canShowAudioCTA(book = {}) {
+  if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return false;
   if (!isLiveApprovedBook(book)) return false;
   if (!book?.audiobook_enabled || book?.generate_audiobook) return false;
   const releaseGate = String(book?.audiobook_release_gate || book?.audiobook?.release_gate || "").trim().toUpperCase();

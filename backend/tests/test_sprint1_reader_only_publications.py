@@ -9,23 +9,9 @@ from backend import catalog_truth
 ROOT = Path(__file__).resolve().parents[2]
 DROPPED_PUBLIC_SLUG = "book-2b9853ec52"
 READER_ONLY_SLUGS = (
-    "radharani",
-    "book-d19e96859f",
-    "book-edfcf810c5",
-    "the-time-machine",
-    "the-call-of-the-wild",
-    "white-fang",
-    "pride-and-prejudice",
-    "the-secret-garden",
-    "the-gift-of-the-magi",
+    "a-ghost-story",
     "the-tell-tale-heart",
-    "dsires-baby",
-    "the-cop-and-the-anthem",
-    "the-last-leaf",
-    "the-masque-of-the-red-death",
-    "the-yellow-wallpaper",
-    "the-monkeys-paw",
-    "the-necklace",
+    "radharani",
 )
 REQUIRED_FILES = {
     "approval_evidence.json",
@@ -44,7 +30,7 @@ def test_reader_only_publications_are_live_without_widening_audio_allowlist():
     for launch_path in (ROOT / "data/controlled_launch.json", ROOT / "backend/data/controlled_launch.json"):
         launch = read_json(launch_path)
         assert DROPPED_PUBLIC_SLUG not in launch["audio_enabled_slugs"]
-        assert set(READER_ONLY_SLUGS).issubset(launch["live_approved_slugs"])
+        assert set(launch["live_approved_slugs"]) == set(READER_ONLY_SLUGS)
 
 
 def test_reader_only_publication_packets_are_packaged_and_audio_hidden():
@@ -61,18 +47,11 @@ def test_reader_only_publication_packets_are_packaged_and_audio_hidden():
             assert book["is_published"] is True
             assert book["isPublic"] is True
             assert book["isLive"] is True
-            assert book["audio_enabled"] is False
-            assert book["audiobook_enabled"] is False
-            assert book["generate_audiobook"] is False
-            assert book["audiobook_assets"] == {}
-            assert book["audiobook"] == {}
-            assert book["audiobook_provider"] == ""
-            assert book["audiobook_voice"] == ""
-            assert manifest["audio_enabled"] is False
-            assert manifest["audiobook_enabled"] is False
-            assert approval["audio_public_release"] == "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
-            assert approval["audiobook_enabled"] is False
-            assert catalog_truth.controlled_artifact_validation_issues(slug, str(artifact_dir)) == ()
+            # Historical package fields are retained as provenance only. The
+            # global launch control is authoritative and removes every audio
+            # field from the public projection.
+            assert catalog_truth.PUBLIC_AUDIO_EXPOSURE_ENABLED is False
+            assert catalog_truth.controlled_reader_validation_issues(slug, str(artifact_dir)) == ()
 
 
 def test_reader_only_artifacts_enable_reader_but_never_audio():

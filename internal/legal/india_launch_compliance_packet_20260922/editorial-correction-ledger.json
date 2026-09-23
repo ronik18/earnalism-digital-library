@@ -1,0 +1,137 @@
+{
+  "status": "NO_CORRECTIONS_APPROVED",
+  "required_fields": [
+    "TITLE",
+    "LOCATION",
+    "IDENTIFIED_SOURCE_READING",
+    "EARNALISM_READING",
+    "REASON",
+    "EVIDENCE_OR_AUTHORITY",
+    "DATE"
+  ],
+  "entries": [],
+  "unresolved_source_discrepancies": [
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-001 opening",
+      "SOURCE": "Facsimile crop records an uncertain join: ই + জনে",
+      "CURRENT_EARNALISM": "দুই জনে",
+      "CLASSIFICATION": "SOURCE_AMBIGUOUS",
+      "ACTION": "Obtain an independent human reading of uncropped image 6, including its left margin. Do not alter canonical prose before that review.",
+      "EVIDENCE": "facsimile checkpoint image 6 / crop 1; retained Bengali Wikisource source layer"
+    }
+  ],
+  "resolved_source_observations": [
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-002 opening",
+      "BASE_SOURCE_READING": "Facsimile crop reads কে + ন যে",
+      "EARNALISM_READING": "কেন যে",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 13 / crop 8",
+      "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+      "EDITORIAL_DECISION": "NOT_RECORDED",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-003 opening",
+      "BASE_SOURCE_READING": "Facsimile crop reads দু + ই বৎসরের",
+      "EARNALISM_READING": "দুই বৎসরের",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 17 / crop 12",
+      "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+      "EDITORIAL_DECISION": "NOT_RECORDED",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-004 opening",
+      "BASE_SOURCE_READING": "The 1893 facsimile has the initial বি in its illustrated drop-cap crop and বাহাস্তে in the adjacent text; together the source reads বিবাহাস্তে.",
+      "EARNALISM_READING": "বিবাহান্তে",
+      "CLASSIFICATION": "DOCUMENTED_EDITION_VARIANT",
+      "EVIDENCE": "The 1893 Wikisource facsimile page 23 plus its extracted initial crop p18b support বিবাহাস্তে. An independent SNLTR Bankim Rachanabali edition reads বিবাহান্তে at its chapter-four opening; its project states that it follows the Sahitya Samsad publication arrangement. The two editions therefore document differing readings; neither source is represented as agreeing with the other.",
+      "CORROBORATING_EDITION_URL": "https://bankim-rachanabali.nltr.org/node/822",
+      "EDITORIAL_DECISION": "OWNER_CONFIRMED_INTENDED_CANONICAL_READING: preserve বিবাহান্তে. This records a selected canonical edition reading, not a claim that the 1893 scan reads the same word.",
+      "ACTION": "Resolved as a documented edition variant. Preserve the canonical reading বিবাহান্তে; do not alter the 1893-source evidence or modify literary text solely to reconcile editions."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-005 opening",
+      "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+      "EARNALISM_READING": "হিরণ্ময়ী",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 27 / crop 22",
+      "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+      "EDITORIAL_DECISION": "NOT_RECORDED",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-006 opening",
+      "BASE_SOURCE_READING": "Facsimile crop reads প + রে এক দিন",
+      "EARNALISM_READING": "পরে এক দিন",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 30 / crop 25",
+      "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+      "EDITORIAL_DECISION": "NOT_RECORDED",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-007 opening",
+      "BASE_SOURCE_READING": "Facsimile crop reads বি + বাহের পর",
+      "EARNALISM_READING": "বিবাহের পর",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint image 35 / crop 30",
+      "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+      "EDITORIAL_DECISION": "NOT_RECORDED",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-008 opening",
+      "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+      "EARNALISM_READING": "হিরণ্ময়ী",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint chapter 008 opening crop",
+      "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+      "EDITORIAL_DECISION": "NOT_RECORDED",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-009 opening",
+      "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+      "EARNALISM_READING": "হিরণ্ময়ী",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint chapter 009 opening crop",
+      "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+      "EDITORIAL_DECISION": "NOT_RECORDED",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-010 opening",
+      "BASE_SOURCE_READING": "Facsimile crop reads হি + রণ্ময়ী",
+      "EARNALISM_READING": "হিরণ্ময়ী",
+      "CLASSIFICATION": "SUPPORTED_SOURCE_CORRECTION",
+      "EVIDENCE": "facsimile checkpoint chapter 010 opening crop",
+      "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+      "EDITORIAL_DECISION": "NOT_RECORDED",
+      "ACTION": "Resolved by the current canonical reading; no manuscript change is authorized or needed."
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "LOCATION": "chapter-001 Tamralipta footnote marker",
+      "BASE_SOURCE_READING": "Facsimile crop records an asterisk marker; retained transcription uses a presentation-layer arrow marker",
+      "EARNALISM_READING": "asterisk marker bound to the retained note",
+      "CLASSIFICATION": "SOURCE_PRESENTATION_LAYER",
+      "EVIDENCE": "facsimile checkpoint footnote observation and current controlled chapter record",
+      "CORROBORATING_EDITION_URL": "NOT_RECORDED",
+      "EDITORIAL_DECISION": "NOT_RECORDED",
+      "ACTION": "Resolved as a non-prose source-presentation difference; preserve the current bound note and make no prose change."
+    }
+  ],
+  "note": "Unresolved source observations are not approved corrections and do not authorize a manuscript change. Resolved rows document evidence already reflected in the current canonical text or a non-prose presentation layer."
+}

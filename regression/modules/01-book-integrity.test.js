@@ -1,9 +1,15 @@
+const fs = require("fs");
+const path = require("path");
+
 const { apiGet, mapLimit } = require("../utils/http");
 const { isGoLive } = require("../utils/envGuard");
 const fixture = require("../fixtures/books.manifest.json");
 
 const GO_LIVE_BOOK_LIMIT = Number(process.env.REGRESSION_GO_LIVE_BOOK_LIMIT || 120);
 const BOOK_CHECK_CONCURRENCY = Number(process.env.REGRESSION_BOOK_CHECK_CONCURRENCY || 8);
+const CONTROLLED_LAUNCH_PATH = path.resolve(__dirname, "../../data/controlled_launch.json");
+const controlledLaunch = JSON.parse(fs.readFileSync(CONTROLLED_LAUNCH_PATH, "utf8"));
+const PUBLIC_READER_RELEASE_HELD = controlledLaunch.public_reader_exposure_enabled !== true;
 
 function sampleBooks(books) {
   return isGoLive() ? books.slice(0, GO_LIVE_BOOK_LIMIT) : books.slice(0, Number(process.env.REGRESSION_PR_BOOK_LIMIT || 8));
@@ -20,6 +26,10 @@ describe("Book Integrity & Content Fidelity", () => {
     const response = await apiGet("/books");
     expect(response.ok).toBe(true);
     expect(Array.isArray(response.data)).toBe(true);
+    if (PUBLIC_READER_RELEASE_HELD) {
+      expect(response.data).toEqual([]);
+      return;
+    }
     expect(response.data.length).toBeGreaterThan(0);
     for (const book of response.data) {
       expect(book.slug).toBeTruthy();

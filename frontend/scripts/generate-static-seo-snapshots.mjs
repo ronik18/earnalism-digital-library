@@ -36,8 +36,9 @@ async function contracts() {
   const editorial = result[1];
   const books = Array.isArray(publication.publications) ? publication.publications : [];
   const articles = Array.isArray(editorial.articles) ? editorial.articles : [];
+  const releaseHeld = publication.public_release_held === true;
   const validBooks = publication.schema_version === "earnalism.static-seo-public.v2"
-    && books.length > 0
+    && (releaseHeld ? books.length === 0 : books.length > 0)
     && Object.values(publication.generated_from || {}).every(isSha)
     && books.every((book) => book.slug && book.title && book.author && Number(book.text_preview_limit_canonical_pages) === 3 && Number(book.audio_public_preview_seconds) === 0 && book.canonical_routes && book.canonical_routes.book === "/book/" + book.slug);
   const validEditorial = editorial.schema_version === "earnalism.static-seo-editorial.v1"
@@ -45,7 +46,7 @@ async function contracts() {
     && editorial.journal && editorial.journal.canonical_route === "/journal"
     && articles.every((article) => article.slug && article.title && article.excerpt && article.author);
   if (!validBooks || !validEditorial) throw new Error("Static SEO contract is stale or invalid. Refresh the checked-in public-safe contracts before building.");
-  return { books, editorial: { ...editorial, articles } };
+  return { books, releaseHeld, editorial: { ...editorial, articles } };
 }
 
 function removeManagedHead(source) {
@@ -106,14 +107,20 @@ function webPage(title, description, route) {
   return { "@context": "https://schema.org", "@type": "WebPage", name: title, description, url: absolute(route), isPartOf: { "@type": "WebSite", name: "The Earnalism Digital Library", url: siteUrl } };
 }
 
-function standardPages(editorial) {
+function standardPages(editorial, { releaseHeld = false } = {}) {
+  const releaseCopy = releaseHeld
+    ? "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed."
+    : accessCopy;
   const pages = [
-    ["/", "Earnalism | Bengali and English Classics", "A calm digital reading room for timeless Bengali and English literature. " + accessCopy, "The Earnalism Digital Library", "A calmer place for timeless reading.", "/library", "Explore the Library"],
-    ["/library", "Library | The Earnalism Digital Library", "Browse verified Bengali and English editions. " + accessCopy, "Library", "Bengali and English classics.", "/pricing", "View Reading Passes"],
-    ["/pricing", "Reading Passes | The Earnalism", accessCopy + " Reading time is used only while you read.", "Reading Passes", "Choose time for deeper reading.", "/library", "Explore the Library"],
+    ["/", "Earnalism | Bengali and English Classics", "A calm digital reading room for timeless Bengali and English literature. " + releaseCopy, "The Earnalism Digital Library", "A calmer place for timeless reading.", "/library", "Explore the Library"],
+    ["/library", "Library | The Earnalism Digital Library", "Browse verified Bengali and English editions. " + releaseCopy, "Library", "Bengali and English classics.", "/pricing", "View Reading Passes"],
+    ["/pricing", "Reading Passes | The Earnalism", releaseCopy + (releaseHeld ? "" : " Reading time is used only while you read."), "Reading Passes", "Choose time for deeper reading.", "/library", "Explore the Library"],
     ["/about", "About Earnalism | The Earnalism Digital Library", "Earnalism is a digital library for Bengali and English classics, designed for thoughtful reading and release-aware listening.", "About Earnalism", "A library made for attention.", "/library", "Explore the Library"],
     ["/contact", "Contact | The Earnalism", "Contact The Earnalism for reader support, rights and title inquiries, or institutional access.", "Library desk", "Write to The Earnalism.", "mailto:sales@reoenterprise.org", "Email the library desk"],
-    ["/micro-story", "A Quiet Reading Invitation | The Earnalism", "Find a reader-ready Earnalism edition and begin with the canonical preview. " + accessCopy, "A quiet way into the library", "Begin with a story.", "/library?source=reading_invitation", "Explore the Library"],
+    ["/privacy", "Privacy | The Earnalism", "How the current Earnalism website handles information used to operate the service.", "Earnalism", "Privacy", "/contact?intent=reader", "Privacy requests"],
+    ["/terms", "Terms of Use | The Earnalism", "The terms that apply to the current Earnalism reading experience.", "Earnalism", "Terms of Use", "/contact?intent=reader", "Contact the library desk"],
+    ["/copyright", "Copyright and Content | The Earnalism", "Information about Earnalism content, intellectual property, and rights concerns.", "Earnalism", "Copyright and Content", "/contact?intent=rights", "Raise a rights concern"],
+    ["/micro-story", "A Quiet Reading Invitation | The Earnalism", releaseHeld ? releaseCopy : "Find a reader-ready Earnalism edition and begin with the canonical preview. " + accessCopy, "A quiet way into the library", "Begin with a story.", "/library?source=reading_invitation", "Explore the Library"],
   ].map((row) => ({
     path: row[0], title: row[1], description: row[2], jsonLd: [webPage(row[1], row[2], row[0])],
     staticBody: shell(row[3], row[4], row[2], [{ href: row[5], label: row[6] }]),
@@ -172,7 +179,7 @@ function render(source, page) {
 async function main() {
   const source = await template();
   const safe = await contracts();
-  const pages = [...standardPages(safe.editorial), ...publicationPages(safe.books)];
+  const pages = [...standardPages(safe.editorial, { releaseHeld: safe.releaseHeld }), ...publicationPages(safe.books)];
   const paths = new Set();
   for (const page of pages) {
     if (paths.has(page.path)) throw new Error("Duplicate static SEO route: " + page.path);

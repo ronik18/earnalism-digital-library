@@ -27,13 +27,7 @@ const HISTORICAL_AUDIO_HOLD_SLUGS = [
 ];
 const APPROVED_PUBLIC_AUDIO_SLUGS = publicAudioTruth.approved_public_audio_slugs || [];
 const PRIVATE_QA_AUDIO_HOLD = "bn-066";
-const REQUIRED_LIVE_SLUGS = [
-  "dracula",
-  ...BATCH_SLUGS,
-  ...HISTORICAL_AUDIO_HOLD_SLUGS,
-  ...APPROVED_PUBLIC_AUDIO_SLUGS,
-  PRIVATE_QA_AUDIO_HOLD,
-];
+const CURRENT_RELEASED_SLUGS = ["a-ghost-story", "the-tell-tale-heart", "radharani"];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
 const PENDING_FRESH_READER_APPROVAL_SLUGS = new Set(["picture-of-dorian-gray"]);
@@ -103,16 +97,16 @@ describe("Reader content quality batch 1", () => {
   });
 
   test("batch reader release truth preserves approved reader-only titles and audio holds", () => {
-    for (const slug of BATCH_SLUGS) {
-      if (PENDING_FRESH_READER_APPROVAL_SLUGS.has(slug)) {
-        expect(launch.live_approved_slugs).not.toContain(slug);
-      } else {
-        expect(launch.live_approved_slugs).toContain(slug);
-      }
+    if (launch.public_reader_exposure_enabled !== true) {
+      expect(launch.public_audio_exposure_enabled).toBe(false);
+      expect(launch.live_approved_slugs).toEqual([]);
+      expect(launch.audio_enabled_slugs).toEqual([]);
+      return;
     }
-    expect(launch.live_approved_slugs).toContain("dracula");
+    expect(launch.live_approved_slugs).toEqual(CURRENT_RELEASED_SLUGS);
     expect(new Set(launch.live_approved_slugs).size).toBe(launch.live_approved_slugs.length);
-    expect(launch.audio_enabled_slugs).toEqual(expect.not.arrayContaining(BATCH_SLUGS));
+    for (const slug of BATCH_SLUGS) expect(launch.live_approved_slugs).not.toContain(slug);
+    expect(launch.audio_enabled_slugs).toEqual([]);
     for (const slug of HISTORICAL_AUDIO_HOLD_SLUGS) {
       expect(launch.audio_enabled_slugs).not.toContain(slug);
     }

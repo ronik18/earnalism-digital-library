@@ -9,6 +9,68 @@ from backend.domain.reading_pass import ReadingPassConfig, ReadingPassError
 from backend.reading_pass_service import ReadingPassService
 
 
+@pytest.mark.parametrize("slug", ["a-ghost-story", "the-tell-tale-heart", "radharani"])
+def test_free_india_pilot_lease_reads_beyond_preview_without_wallet_debit(slug):
+    async def scenario():
+        database = Database(balance=0)
+        database.reader_segment_activation_state.rows.append({
+            "book_slug": slug, "active_segmentation_version": "edition-v1", "generation": 1,
+        })
+        service = ReadingPassService(
+            db=database, client=Client(), config=ReadingPassConfig(), token_secret="test-secret",
+        )
+        started = await service.start_session(
+            user_id="user-1", auth_session_id="auth-1", device_id="device-1",
+            device_label="Test device", content_type="text", content_id=slug,
+            scope={"canonical_page_index": 4, "segmentation_version": "edition-v1",
+                   "manifest_version": "manifest-v1", "authority_activation_generation": 1,
+                   "release_country": "IN"},
+            free_entitlement=True,
+        )
+        assert started["entitlement_kind"] == "india_pilot_free_text"
+        assert started["balance_seconds"] == started["deducted_seconds"] == 0
+        assert (await service.authorize(
+            user_id="user-1", auth_session_id="auth-1", session_id=started["session_id"],
+            lease_token=started["lease_token"], content_type="text", content_id=slug,
+        ))["scope"]["manifest_version"] == "manifest-v1"
+        renewed = await service.renew_lease(
+            user_id="user-1", auth_session_id="auth-1", session_id=started["session_id"],
+            lease_token=started["lease_token"], lease_version=1, sequence=1,
+            idempotency_key=f"free-{slug}-1", active=True, text_authority="allowed",
+        )
+        assert renewed["status"] == "Running"
+        assert renewed["deducted_seconds"] == renewed["balance_seconds"] == 0
+        ended = await service.end_session(
+            user_id="user-1", auth_session_id="auth-1", session_id=started["session_id"],
+        )
+        assert ended["deducted_seconds"] == ended["balance_seconds"] == 0
+        assert database.users.rows[0]["reading_seconds_balance"] == 0
+        assert database.wallet_ledger.rows == database.wallet_transactions.rows == []
+    asyncio.run(scenario())
+
+
+@pytest.mark.parametrize("content_type,slug,country", [
+    ("text", "yugalanguriya", "IN"),
+    ("text", "unlisted-book", "IN"),
+    ("text", "a-ghost-story", "US"),
+    ("audio", "a-ghost-story", "IN"),
+])
+def test_free_entitlement_rejects_held_other_territory_and_audio(content_type, slug, country):
+    async def scenario():
+        database = Database(balance=0)
+        service = ReadingPassService(db=database, client=Client(), config=ReadingPassConfig(), token_secret="test-secret")
+        with pytest.raises(ReadingPassError) as denied:
+            await service.start_session(
+                user_id="user-1", auth_session_id="auth-1", device_id="device-1",
+                device_label="Test", content_type=content_type, content_id=slug,
+                scope={"release_country": country}, free_entitlement=True,
+            )
+        assert denied.value.code == "CONTENT_NOT_AUTHORIZED"
+        assert database.reading_pass_sessions.rows == []
+        assert database.wallet_ledger.rows == []
+    asyncio.run(scenario())
+
+
 def _get(document, path):
     value = document
     for part in path.split('.'):

@@ -104,6 +104,7 @@ describe("UX conversion static signals", () => {
   const gitignore = read(".gitignore");
   const frontendPackageJson = read("frontend/package.json");
   const staticSnapshotGenerator = read("frontend/scripts/generate-static-seo-snapshots.mjs");
+  const staticSeoPublicContract = JSON.parse(read("frontend/static-seo/controlled-publication-public.json"));
   const publicAccessCopy = read("frontend/src/lib/publicAccessCopy.js");
   const staticSeoContractGenerator = read("scripts/generate_static_seo_public_contract.mjs");
   const socialPreviewAudit = read("scripts/social_preview_audit.py");
@@ -254,7 +255,7 @@ describe("UX conversion static signals", () => {
     expect(home).not.toContain("reading rooms open");
     expect(firstVisitSiteTour).toContain("A calm digital reading room for Bengali and English classics");
     expect(firstVisitSiteTour).toContain("A shelf for every mood");
-    expect(firstVisitSiteTour).toContain("Hear a classic in the reading room");
+    expect(firstVisitSiteTour).toContain("Stay with a story in the reading room");
     expect(shelfCollageTile).toContain("Open ${book.title} by ${book.author}");
     expect(firstVisitSiteTour).not.toContain("A calm digital reading room beginning with Dracula by Bram Stoker");
     expect(firstVisitSiteTour).not.toContain("Future titles stay Coming Soon or Notify Me");
@@ -410,7 +411,8 @@ describe("UX conversion static signals", () => {
     expect(library).toContain("Reader and listening routes open only when their editorial and release checks are complete.");
     expect(library).toContain("Request an update");
     expect(bookDetail).toContain('data-testid="start-reading"');
-    expect(bookDetailPresentation).toContain('primaryReadLabel: readerRuntimeAvailable ? "Start Reading" : readerReady ? "Browse the Library" : "Back to Library"');
+    expect(bookDetailPresentation).toContain('primaryReadLabel: readerRuntimeAvailable ? (freeReading ? "Start Reading Free" : "Start Reading") : readerReady ? "Browse the Library" : "Back to Library"');
+    expect(bookDetailPresentation).toContain('book?._readerManifest?.access?.reading_pass?.free_entitlement === true');
     expect(bookDetailPresentation).toContain('primaryReadHref: readerRuntimeAvailable ? readerHref : "/library"');
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
     expect(bookDetail).toContain("Audio:</strong> Audiobooks appear only after release-gate evidence approves them.");
@@ -1377,8 +1379,7 @@ describe("UX conversion static signals", () => {
   test("first-time site tour is mounted, forceable, dismissible, keyboard-aware, and premium-copy safe", () => {
     expect(layout).toContain("<FirstVisitSiteTour />");
     expect(firstVisitSiteTour).toContain('params.get("tour") === "1"');
-    expect(firstVisitSiteTour).toContain("if (alreadySeen && !forcedTour) return undefined");
-    expect(firstVisitSiteTour).toContain('window.localStorage.setItem(STORAGE_KEY, "complete")');
+    expect(firstVisitSiteTour).not.toContain("window.localStorage");
     expect(firstVisitSiteTour).toContain('data-testid="first-visit-site-tour"');
     expect(firstVisitSiteTour).toContain('aria-modal="true"');
     expect(firstVisitSiteTour).toContain('event.key === "Escape"');
@@ -1386,7 +1387,7 @@ describe("UX conversion static signals", () => {
     expect(firstVisitSiteTour).toContain('first_time_site_tour_shown');
     expect(firstVisitSiteTour).toContain('first_time_site_tour_completed');
     expect(firstVisitSiteTour).toContain('first_time_site_tour_skipped');
-    expect(firstVisitSiteTour).toContain("A small collection of beautifully narrated editions is ready");
+    expect(firstVisitSiteTour).toContain("Narrated editions are in preparation");
     expect(firstVisitSiteTour).not.toMatch(/\bAudio (is )?not available yet\b/i);
     expect(firstVisitSiteTour).not.toMatch(/\bListen Now\b|\bAudioObject\b/i);
   });
@@ -1468,11 +1469,11 @@ describe("UX conversion static signals", () => {
 
   test("login signup account and default SEO use the approved access contract without overclaiming", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
-    expect(login).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
+    expect(login).toContain("The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
+    expect(signup).toContain("The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
-    expect(account).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
+    expect(account).toContain("The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.");
     expect(account).toContain("Continue reading");
     expect(account).not.toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');
@@ -1719,8 +1720,14 @@ describe("UX conversion static signals", () => {
 
   test("built Dracula book snapshot exposes crawlable book SEO when build output exists", () => {
     const bookHtml = readOptional("frontend/build/book/dracula/index.html");
+    if (staticSeoPublicContract.public_release_held === true) {
+      expect(bookHtml).toBe("");
+      expect(staticSnapshotGenerator).toContain("releaseHeld ? books.length === 0");
+      expect(staticSnapshotGenerator).toContain("publicationPages(safe.books)");
+      return;
+    }
     if (!bookHtml) {
-      expect(staticSnapshotGenerator).toContain("writeSnapshot");
+      expect(staticSnapshotGenerator).toContain("writeFile(target");
       return;
     }
 

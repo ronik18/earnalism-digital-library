@@ -4,7 +4,6 @@ import { ArrowRight, BookOpen, ChevronLeft, ChevronRight, Compass, Sparkles, X }
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import "./FirstVisitSiteTour.css";
 
-const STORAGE_KEY = "earnalism:first-visit-site-tour:v1";
 const AUTO_TOUR_DELAY_MS = 4200;
 const FORCED_TOUR_DELAY_MS = 120;
 
@@ -23,7 +22,7 @@ const TOUR_STEPS = [
     targetSelectors: ['[data-testid="hero-cta-library"]', '[data-testid="header-cta-library"]'],
     eyebrow: "Choose a shelf",
     title: "Start from the library",
-    body: "Explore Bengali and English classics, then enter the listening room for selected narrated editions.",
+    body: "Explore the released Bengali and English Reader editions. Public audio is not part of this launch.",
   },
   {
     key: "covers",
@@ -37,9 +36,9 @@ const TOUR_STEPS = [
     key: "shelves",
     icon: ArrowRight,
     targetSelectors: ['[data-testid="selected-listening-title"]', '[data-testid="curated-shelf-collage"]'],
-    eyebrow: "Selected listening",
-    title: "Hear a classic in the reading room",
-    body: "A small collection of beautifully narrated editions is ready when you want to read and listen together.",
+    eyebrow: "Reader editions",
+    title: "Stay with a story in the reading room",
+    body: "Narrated editions are in preparation; the current library opens with Reader editions.",
   },
 ];
 
@@ -62,11 +61,6 @@ export default function FirstVisitSiteTour() {
   }, [location.search]);
 
   const completeTour = useCallback((status = "skipped") => {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, "complete");
-    } catch (_) {
-      // Storage can be unavailable in private modes; closing the tour should still work.
-    }
     trackFunnelEvent(status === "completed" ? "first_time_site_tour_completed" : "first_time_site_tour_skipped", {
       route: location.pathname,
       step: step?.key,
@@ -100,15 +94,6 @@ export default function FirstVisitSiteTour() {
       setOpen(false);
       return undefined;
     }
-
-    let alreadySeen = false;
-    try {
-      alreadySeen = window.localStorage.getItem(STORAGE_KEY) === "complete";
-    } catch (_) {
-      alreadySeen = false;
-    }
-
-    if (alreadySeen && !forcedTour) return undefined;
 
     openTimerRef.current = window.setTimeout(() => {
       previousFocusRef.current = document.activeElement;

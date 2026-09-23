@@ -28,16 +28,16 @@ function readerApprovedBook(slug = "reader-approved-edition") {
 }
 
 describe("controlled launch preview parity", () => {
-  test("keeps a reader-approved edition readable without a preview CTA", () => {
+  test("holds reader access even when a stale client payload claims approval", () => {
     const book = readerApprovedBook("reader-approved-without-preview");
 
-    expect(canShowStartReading(book)).toBe(true);
+    expect(canShowStartReading(book)).toBe(false);
     expect(canShowPreview(book)).toBe(false);
   });
 
   test("accepts only the backend public reader projection, not a raw live label", () => {
     const approved = readerApprovedBook("manifest-approved-edition");
-    expect(isLiveApprovedBook(approved)).toBe(true);
+    expect(isLiveApprovedBook(approved)).toBe(false);
     expect(isLiveApprovedBook({ ...approved, reader_url: "" })).toBe(false);
     expect(isLiveApprovedBook({ ...approved, public_route: "/book/another-edition" })).toBe(false);
     expect(isLiveApprovedBook({ ...approved, publication_status: "DRAFT" })).toBe(false);
@@ -64,12 +64,12 @@ describe("controlled launch preview parity", () => {
       ...markedBook,
       preview_enabled: true,
       preview_url: `/reader/${markedBook.slug}`,
-    })).toBe(true);
+    })).toBe(false);
   });
 
-  test("preserves Dracula's explicit Chapter 1 preview", () => {
-    expect(canShowStartReading(DRACULA_FALLBACK_BOOK)).toBe(true);
-    expect(canShowPreview(DRACULA_FALLBACK_BOOK)).toBe(true);
+  test("does not revive Dracula from a bundled fallback while the release is held", () => {
+    expect(canShowStartReading(DRACULA_FALLBACK_BOOK)).toBe(false);
+    expect(canShowPreview(DRACULA_FALLBACK_BOOK)).toBe(false);
   });
 
   test("allows an explicitly approved audiobook projection", () => {
@@ -81,8 +81,8 @@ describe("controlled launch preview parity", () => {
       audio_qa_status: "QA_PASSED",
     };
 
-    expect(canShowStartReading(book)).toBe(true);
-    expect(canShowAudioCTA(book)).toBe(true);
+    expect(canShowStartReading(book)).toBe(false);
+    expect(canShowAudioCTA(book)).toBe(false);
   });
 
   test("keeps audio hidden until its independent release evidence passes", () => {
@@ -94,7 +94,7 @@ describe("controlled launch preview parity", () => {
       audio_qa_status: "PENDING",
     };
 
-    expect(canShowStartReading(book)).toBe(true);
+    expect(canShowStartReading(book)).toBe(false);
     expect(canShowAudioCTA(book)).toBe(false);
   });
 });

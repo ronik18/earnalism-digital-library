@@ -4119,10 +4119,45 @@ textarea.input-elegant {
 }
 
 .book-detail-cover-frame {
-  border: 1px solid rgba(181, 138, 69, 0.34);
-  border-radius: 14px;
-  background: #EFE2CC;
-  box-shadow: 0 42px 86px -48px rgba(53, 16, 24, 0.48);
+  width: 100%;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.book-detail-cover-frame::before,
+.book-detail-cover-frame::after {
+  content: none;
+  display: none;
+}
+
+.book-cover-image--unframed {
+  height: auto;
+  overflow: visible;
+  background: transparent;
+}
+
+.book-cover-image--unframed .book-cover-image__placeholder {
+  display: none;
+}
+
+.book-cover-image--unframed .book-cover-image__img {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.book-cover-image--unframed.book-cover-image--fallback {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
 }
 
 .book-detail-title {

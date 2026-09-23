@@ -23,7 +23,7 @@ import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
-import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
+import { LIVE_APPROVED_SLUG, PUBLIC_AUDIO_EXPOSURE_ENABLED, PUBLIC_PAID_COMMERCE_ENABLED } from "../lib/controlledLaunch";
 import {
   fetchHomeHero,
   fetchHomeListening,
@@ -35,6 +35,7 @@ import useSEO from "../hooks/useSEO";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
 import { availableReadingPasses } from "../lib/readingPassOffers";
 import { ReferenceHomeSurface } from "../components/EditorialHomeLibrarySurfaces";
+import ReaderPerspectives from "../components/ReaderPerspectives";
 
 const HomeShelfArchitecture = lazy(() => import("../components/HomeShelfArchitecture"));
 
@@ -102,7 +103,7 @@ export default function Home() {
   useSEO({
     title: "Earnalism | Bengali and English Classics in a Calm Digital Library",
     description:
-      "Earnalism is a calm digital reading room for timeless Bengali and English literature, with beautiful editions, immersive audiobooks, and space to linger.",
+      "Earnalism is a calm digital reading room for released Bengali and English literary editions, with space to linger.",
     image: "/assets/shelves/bengali-classics.jpg",
     imageAlt: "Earnalism Bengali and English classics shelf artwork",
     canonicalPath: "/",
@@ -114,6 +115,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return undefined;
     const controller = new AbortController();
     fetchHomeListening(controller.signal, 3)
       .then((payload) => startTransition(() => setListeningCuration(payload)))
@@ -126,6 +128,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (!PUBLIC_PAID_COMMERCE_ENABLED) return undefined;
     const controller = new AbortController();
     let active = true;
     const applyOffers = (payload) => {
@@ -211,12 +214,13 @@ export default function Home() {
   };
 
   return (
-    <div className="home-reference-page" data-testid="home-page">
+    <div className={`home-reference-page${PUBLIC_PAID_COMMERCE_ENABLED ? "" : " home-reference-page--no-commerce"}${PUBLIC_AUDIO_EXPOSURE_ENABLED ? "" : " home-reference-page--no-audio"}`} data-testid="home-page">
       <ReferenceHomeSurface
         curation={heroCuration}
         readingPasses={homePasses}
         listeningItems={listeningCuration.listening_rooms?.items || listeningCuration.selected_audiobooks || []}
       />
+      <ReaderPerspectives />
       <div className="reference-home__legacy-content" aria-hidden="true">
       <section className="home-quick-paths" aria-labelledby="home-quick-paths-title" data-testid="home-quick-paths">
         <div className="home-quick-paths__inner">

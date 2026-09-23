@@ -56,9 +56,9 @@ def test_publication_allowlist_requires_root_and_backend_controlled_launch_parit
     expected = tuple(sorted(set(root_launch["live_approved_slugs"]) & set(backend_launch["live_approved_slugs"])))
 
     assert APPROVED_RELEASE_ALLOWLIST == expected
-    assert "book-d19e96859f" in APPROVED_RELEASE_ALLOWLIST
+    assert APPROVED_RELEASE_ALLOWLIST == ("a-ghost-story", "radharani", "the-tell-tale-heart")
     assert "not-controlled" not in APPROVED_RELEASE_ALLOWLIST
-    assert validate_import_book_safety(
+    issues = validate_import_book_safety(
         {
             "slug": "dracula",
             "publicationStatus": "live",
@@ -67,7 +67,8 @@ def test_publication_allowlist_requires_root_and_backend_controlled_launch_parit
             "allowPublicReading": True,
             "is_published": True,
         }
-    ) == []
+    )
+    assert issues
 
 
 def test_manifest_batch_of_10_new_books_passes_only_as_drafts():

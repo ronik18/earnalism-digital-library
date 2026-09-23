@@ -4,15 +4,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 const FirstVisitSiteTour = lazy(() => import("./FirstVisitSiteTour"));
-const TOUR_STORAGE_KEY = "earnalism:first-visit-site-tour:v1";
-
-function hasCompletedFirstVisitTour() {
-  try {
-    return window.localStorage.getItem(TOUR_STORAGE_KEY) === "complete";
-  } catch (_) {
-    return false;
-  }
-}
 
 export default function Layout() {
   const location = useLocation();

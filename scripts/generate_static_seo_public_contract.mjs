@@ -72,10 +72,12 @@ function stableJson(value) {
 async function expectedContract() {
   const launch = JSON.parse(await readFile(launchPath, "utf8"));
   const slugs = Array.from(new Set((launch.live_approved_slugs || []).map((slug) => String(slug || "").trim().toLowerCase()).filter(Boolean))).sort();
-  if (slugs.length === 0) throw new Error("Controlled launch has no public live slugs.");
   const entries = await Promise.all(slugs.map(loadPublication));
   return {
     schema_version: "earnalism.static-seo-public.v2",
+    // Static rendering must distinguish an intentional all-title hold from a
+    // malformed empty contract, so cached pages cannot advertise access.
+    public_release_held: launch.public_reader_exposure_enabled !== true,
     generated_from: {
       [relative(launchPath)]: createHash("sha256").update(await readFile(launchPath)).digest("hex"),
       ...Object.assign({}, ...entries.map((entry) => entry.generated_from)),

@@ -1,5 +1,5 @@
 import { audiobookReleaseState } from "./audioReleaseSafety";
-import { canShowStartReading } from "./controlledLaunch";
+import { canShowStartReading, PUBLIC_AUDIO_EXPOSURE_ENABLED } from "./controlledLaunch";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 
@@ -19,9 +19,10 @@ export function languageOfBook(book = {}) {
 }
 
 export function availabilityOfBook(book = {}) {
+  if (!canShowStartReading(book)) return "in-preparation";
   const audioState = audiobookReleaseState(book);
-  if (audioState.releaseApproved) return "approved-audiobook";
-  return canShowStartReading(book) ? "reader-ready" : "in-preparation";
+  if (PUBLIC_AUDIO_EXPOSURE_ENABLED && audioState.releaseApproved) return "approved-audiobook";
+  return "reader-ready";
 }
 
 export function libraryPresentationForBook(book = {}) {
@@ -30,7 +31,7 @@ export function libraryPresentationForBook(book = {}) {
   const audioState = audiobookReleaseState(book);
   const readerReady = availability === "reader-ready";
   const audiobookApproved = availability === "approved-audiobook";
-  const listeningAvailable = audioState.canShowControls;
+  const listeningAvailable = PUBLIC_AUDIO_EXPOSURE_ENABLED && audioState.canShowControls;
 
   return {
     language,
@@ -52,17 +53,16 @@ export function libraryPresentationForBook(book = {}) {
       : readerReady
         ? "Reader edition live · audio intentionally hidden until release evidence passes."
         : "Reader and listening routes remain closed until editorial and release gates pass.",
-    canShowControls: audioState.canShowControls,
+    canShowControls: listeningAvailable,
   };
 }
 
 export function matchesLibraryFacets(book = {}, language = "all", availability = "all") {
   const bookLanguage = languageOfBook(book);
   const bookAvailability = availabilityOfBook(book);
-  const audioState = audiobookReleaseState(book);
   if (language !== "all" && bookLanguage !== language) return false;
   if (availability === "all") return true;
-  if (availability === "audio-hidden") return !audioState.releaseApproved && bookAvailability === "reader-ready";
+  if (availability === "audio-hidden") return bookAvailability === "reader-ready";
   return bookAvailability === availability;
 }
 

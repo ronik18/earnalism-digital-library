@@ -31,4 +31,14 @@ describe("approved Book Detail direct-route contract", () => {
     expect(rewrites).toContainEqual({ source: "/book/:slug", destination: "/api/not-found" });
     expect(rewrites).toContainEqual({ source: "/product", destination: "/api/removed-content?path=/product" });
   });
+
+  test("attributes the Radharani source layer without relicensing unrelated material", () => {
+    const detail = read("src/pages/BookDetail.jsx");
+    expect(detail).toContain('publicBook.slug === "radharani"');
+    expect(detail).toContain('data-testid="radharani-source-attribution"');
+    expect(detail).toContain("Bengali Wikisource transcription of the 1940 edition");
+    expect(detail).toContain("https://creativecommons.org/licenses/by-sa/4.0/");
+    expect(detail).toContain("The underlying Bengali literary work");
+    expect(detail).toContain("This does not license Earnalism’s separate cover art");
+  });
 });

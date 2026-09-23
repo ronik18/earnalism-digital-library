@@ -48,4 +48,22 @@ env \
     backend/tests/test_reading_pass_revocation_release_preflight.py \
     backend/tests/test_yugalanguriya_publication_inspection.py
 
+echo "==> Local UAT public-release hold seeding contract"
+"$PYTHON_BIN" -m unittest \
+  scripts.test_seed_uat_canonical_pages \
+  scripts.test_validate_book_commerce_final_review \
+  scripts.test_generate_copyright_rights_review_package \
+  scripts.test_generate_india_launch_compliance_package
+
+echo "==> Signed territorial release proxy and public legal/Reader presentation contracts"
+"$PYTHON_BIN" -m pytest -q \
+  backend/tests/test_release_proxy_auth.py \
+  backend/tests/test_release_proxy_country_middleware.py
+node --test frontend/scripts/release-proxy.test.js
+CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath \
+  src/legalDirectRoutes.test.js \
+  src/bookDetailDirectRoute.test.js \
+  src/components/Footer.test.js \
+  src/components/ReferencePublicPages.test.jsx
+
 npm run regression:ci

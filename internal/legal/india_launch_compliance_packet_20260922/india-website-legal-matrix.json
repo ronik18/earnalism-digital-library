@@ -1,0 +1,254 @@
+{
+  "official_sources": [
+    {
+      "topic": "Copyright Act, 1957 — Chapter V, section 22 and other term categories",
+      "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+      "scope": "copyright term classification"
+    },
+    {
+      "topic": "Copyright Act, 1957 — Chapter III, protected work categories",
+      "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_iii.html",
+      "scope": "copyright category classification"
+    },
+    {
+      "topic": "Digital Personal Data Protection Rules, 2025 notification",
+      "url": "https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf",
+      "scope": "rule commencement must be evaluated on the actual launch date"
+    },
+    {
+      "topic": "Department of Consumer Affairs — Consumer Protection framework",
+      "url": "https://consumeraffairs.nic.in/acts-and-rules/consumer-protection/consumer-protection",
+      "scope": "Consumer Protection Act, E-Commerce Rules, and Dark Patterns Guidelines"
+    },
+    {
+      "topic": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 — consolidated text updated 10 February 2026",
+      "url": "https://www.meity.gov.in/static/uploads/2026/02/550681ab908f8afb135b0ad42816a1c9.pdf",
+      "scope": "synthetically generated information; applicability depends on the actual product role and launch configuration"
+    },
+    {
+      "topic": "Google Cloud Text-to-Speech basics",
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+      "scope": "Google documents use of generated audio in applications or media subject to applicable terms and law"
+    }
+  ],
+  "data_inventory": [
+    {
+      "data_category": "name",
+      "purpose_and_collection_point": "account, contact, and newsletter forms",
+      "source": "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx",
+      "storage_and_processor_scope": "application database and provider region are not established by source inspection",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "email",
+      "purpose_and_collection_point": "account, contact, and newsletter forms",
+      "source": "frontend/src/pages/Contact.jsx; frontend/src/pages/Home.jsx; frontend/src/pages/Account.jsx",
+      "storage_and_processor_scope": "application database and provider region are not established by source inspection",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "authentication information",
+      "purpose_and_collection_point": "browser session/token handling",
+      "source": "frontend/src/pages/Reader.jsx; backend/server.py",
+      "storage_and_processor_scope": "browser local storage plus application backend; provider geography needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "reading/activity history and position",
+      "purpose_and_collection_point": "Reading Pass position service",
+      "source": "frontend/src/pages/Reader.jsx; backend/reading_pass_service.py",
+      "storage_and_processor_scope": "application backend; provider geography needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "analytics and device/session identifiers",
+      "purpose_and_collection_point": "optional funnel analytics and browser local-storage session identifier",
+      "source": "frontend/src/lib/funnelAnalytics.js; backend/server.py",
+      "storage_and_processor_scope": "browser local storage and optional analytics endpoint; production enablement needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "REVIEW_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "support communications",
+      "purpose_and_collection_point": "contact form submission",
+      "source": "frontend/src/pages/Contact.jsx",
+      "storage_and_processor_scope": "application backend; provider geography needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "ACTION_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    },
+    {
+      "data_category": "payment-related information",
+      "purpose_and_collection_point": "Razorpay checkout and wallet/payment operations; no raw payment data is claimed by this source inventory",
+      "source": "frontend/src/pages/Pricing.jsx; backend/server.py",
+      "storage_and_processor_scope": "Razorpay and application backend; merchant/provider data handling needs verification",
+      "retention": "not defined in source",
+      "user_control": "Not fully established by source inspection; public policy must state only verified controls.",
+      "status": "REVIEW_REQUIRED",
+      "fact_classification": "REPOSITORY_CONFIRMED_PROCESSING; provider/deployment detail is separately classified in website_fact_inventory."
+    }
+  ],
+  "fact_inventory": [
+    {
+      "fact": "operator and brand relationship",
+      "value": "REO ENTERPRISE is the sole-proprietor operator; Earnalism is its venture/brand.",
+      "classification": "OWNER_SUPPLIED_FACT_ALREADY_RECORDED",
+      "evidence": "Owner closure response; no new attestation requested."
+    },
+    {
+      "fact": "ordinary support contact",
+      "value": "sales@reoenterprise.org",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "frontend/src/pages/Contact.jsx and frontend/src/pages/Pricing.jsx"
+    },
+    {
+      "fact": "frontend and backend deployment integrations",
+      "value": "Vercel frontend configuration and Railway backend configuration are present.",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "frontend/vercel.json; backend/railway.json"
+    },
+    {
+      "fact": "media storage integration",
+      "value": "Cloudinary is configured in source for image assets; B2-compatible variables are documented for large audiobook objects.",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "backend/config/cloudinary.py; backend/.env.example"
+    },
+    {
+      "fact": "production provider geography and cross-border access",
+      "value": "NOT_ESTABLISHED_FROM_SOURCE",
+      "classification": "PROVIDER_VERIFICATION_REQUIRED",
+      "evidence": "Repository configuration names providers but does not disclose effective production regions or access arrangements."
+    },
+    {
+      "fact": "analytics",
+      "value": "Launch analytics is optional in source and uses a browser local-storage identifier when enabled.",
+      "classification": "DEPLOYMENT_CONFIGURATION_REQUIRED",
+      "evidence": "frontend/src/lib/funnelAnalytics.js"
+    },
+    {
+      "fact": "payment product model",
+      "value": "Razorpay integration supports one-time Reading Pass purchase; source states no subscription or auto-renewal.",
+      "classification": "REPOSITORY_CONFIRMED",
+      "evidence": "frontend/src/pages/Pricing.jsx; backend/server.py"
+    },
+    {
+      "fact": "production payment enablement and merchant terms",
+      "value": "NOT_ESTABLISHED_FROM_SOURCE",
+      "classification": "PROVIDER_OR_OWNER_FACT_REQUIRED",
+      "evidence": "backend/server.py exposes configured/mode dynamically and refuses real checkout without configured keys; source cannot prove production mode or merchant agreement."
+    },
+    {
+      "fact": "privacy and grievance designation",
+      "value": "No public designation is registered; sales@reoenterprise.org is not inferred to carry either legal role.",
+      "classification": "OWNER_FACT_REQUIRED",
+      "evidence": "frontend/src/App.js and Contact.jsx"
+    },
+    {
+      "fact": "retention and self-service account deletion",
+      "value": "No retention schedule or public account-deletion route was identified in this source audit.",
+      "classification": "OWNER_POLICY_OR_IMPLEMENTATION_REQUIRED",
+      "evidence": "frontend/src/App.js; backend/server.py; account UI audit"
+    }
+  ],
+  "matrix": [
+    {
+      "area": "copyright and content integrity",
+      "requirement": "Each released title needs separate copyright, text-integrity, cover, translation/editorial, and other-asset evidence.",
+      "in_force_on_launch_date": "YES_FOR_ANY_RELEASE_OF_COPYRIGHTABLE_MATERIAL",
+      "applies_to_earnalism": "YES_IF_A_TITLE_IS_RELEASED",
+      "applicable": "YES_FOR_ANY_RELEASED_TITLE",
+      "authority": "Copyright Act, 1957; source and integrity evidence",
+      "current_implementation": "The first three pilots have complete India copyright, deterministic text, and owner-supplied first-party cover evidence. The registry and global Reader/audio holds remain production controls.",
+      "gap": "Yugalanguriya remains title-scoped text review; it does not block the three independently evidence-complete titles. A later production release still requires the existing hash-bound ACCEPT/HOLD control.",
+      "status": "PASS_FOR_ELIGIBLE_TITLES",
+      "launch_blocker": false
+    },
+    {
+      "area": "privacy and data inventory",
+      "requirement": "Evaluate DPDP Act/Rules obligations against the actual India launch date and the identified processing.",
+      "in_force_on_launch_date": "For the current 2026-09-22 launch assessment: Rules 1, 2 and 17–21 commenced on publication; Rule 4 is scheduled one year after publication; Rules 3, 5–16, 22 and 23 are scheduled eighteen months after publication, subject to later legal change. This package does not treat future commencement as current evidence.",
+      "applies_to_earnalism": "YES_IF_THE_IDENTIFIED_PERSONAL_DATA_PROCESSING_OCCURS",
+      "applicable": "YES_IF_THE_IDENTIFIED_PERSONAL_DATA_PROCESSING_OCCURS_ON_LAUNCH",
+      "authority": "Digital Personal Data Protection Act, 2023 and Digital Personal Data Protection Rules, 2025, applied by commencement date.",
+      "current_implementation": "A public Privacy route describes source-established account, reader, contact, and service-provider processing without asserting unverified retention, geography, data-sale, or analytics facts.",
+      "gap": "Provider regions/access, deployed analytics state, and retention remain internal operational limitations; they are not represented as verified public facts.",
+      "status": "PASS_FOR_CURRENT_DISCLOSURE",
+      "launch_blocker": false
+    },
+    {
+      "area": "consumer and e-commerce",
+      "requirement": "For an Indian paid Reading Pass flow, test actual pricing, disclosures, restrictions, support/grievance, cancellation/refund treatment, and prohibited deceptive-design risks.",
+      "in_force_on_launch_date": "YES_IF_PAID_SERVICE_IS_OFFERED_TO_INDIAN_CONSUMERS",
+      "applies_to_earnalism": "NO_PAID_READING_TIME_IS_OFFERED_IN_CURRENT_LAUNCH",
+      "applicable": "NOT_APPLICABLE_TO_CURRENT_LAUNCH_CONFIGURATION",
+      "authority": "Consumer Protection Act, 2019; Consumer Protection (E-Commerce) Rules, 2020; Dark Patterns Guidelines, 2023.",
+      "current_implementation": "The controlled-launch configuration disables public paid commerce in both frontend and backend; public checkout initiation and verification are unavailable while payment webhooks remain available for previously-created intents.",
+      "gap": "NOT_APPLICABLE_WHILE_PAID_COMMERCE_IS_DISABLED",
+      "status": "NOT_APPLICABLE_TO_CURRENT_LAUNCH",
+      "launch_blocker": false
+    },
+    {
+      "area": "legal pages and contact/grievance information",
+      "requirement": "Public legal notices must describe the actual product and operator facts without placeholder assertions.",
+      "in_force_on_launch_date": "YES_FOR_THE_PUBLIC_PRODUCT_SURFACE",
+      "applies_to_earnalism": "YES",
+      "applicable": "YES_FOR_THE_PUBLIC_PRODUCT_SURFACE",
+      "authority": "Applicable privacy and consumer framework; owner-supplied business facts.",
+      "current_implementation": "The /terms, /privacy, /copyright, and /contact routes disclose the identified operator, current launch scope, support channel, privacy-request channel, and title-specific copyright-concern path without placeholders.",
+      "gap": "Paid-commerce-specific terms remain intentionally unpublished because public paid commerce is disabled.",
+      "status": "PASS_FOR_CURRENT_LAUNCH",
+      "launch_blocker": false
+    },
+    {
+      "area": "copyright complaint handling",
+      "requirement": "Provide an operational receive, identify, hold, investigate, evidence, decide, restore/remove path for rights complaints.",
+      "in_force_on_launch_date": "YES_FOR_ANY_PUBLIC_CATALOGUE",
+      "applies_to_earnalism": "YES_IF_ANY_TITLE_IS_PUBLIC",
+      "applicable": "YES_FOR_ANY_PUBLIC_CATALOGUE",
+      "authority": "Operational rights-risk control; no US DMCA characterization assumed.",
+      "current_implementation": "The public Copyright route and rights contact path request the work, affected Earnalism title/page, claim basis, supporting information, and contact details; they describe title-scoped receipt, review, temporary hold where warranted, and restore/remove outcomes.",
+      "gap": "Maintain the documented title-scoped handling process when a complaint is received.",
+      "status": "PASS_FOR_CURRENT_LAUNCH",
+      "launch_blocker": false
+    },
+    {
+      "area": "public AI-generated content",
+      "requirement": "Keep any public AI-generated content structurally separate from canonical literary text and inventory only enabled public features.",
+      "in_force_on_launch_date": "NOT_APPLICABLE_UNLESS_A_PUBLIC_AI_FEATURE_IS_ENABLED",
+      "applies_to_earnalism": "NO_PUBLIC_AI_FEATURE_IDENTIFIED_IN_THIS_SOURCE_AUDIT",
+      "applicable": "ONLY_IF_A_PUBLIC_AI_FEATURE_OR_AI-GENERATED_PUBLIC_COPY_IS_ENABLED",
+      "authority": "Source separation and launch-surface verification.",
+      "current_implementation": "The edition generator is source-controlled dry-run logic; this audit found no approved public AI literary-text release path.",
+      "gap": "At release, verify public AI features/copy remain outside canonical literary text and inventory any enabled public AI feature.",
+      "status": "DEFERRED",
+      "launch_blocker": false
+    },
+    {
+      "area": "synthetic audiobook delivery",
+      "requirement": "Assess the currently effective IT Rules only if a synthetically generated audiobook enters the actual public launch scope, based on Earnalism's verified role and the exact delivery configuration.",
+      "in_force_on_launch_date": "The consolidated IT Rules text updated 10 February 2026 contains synthetically generated-information provisions; role-specific applicability must be assessed against the actual public audio launch.",
+      "applies_to_earnalism": "NOT_DETERMINED_FOR_FUTURE_AUDIO_SCOPE; current controlled launch disables public audio exposure.",
+      "applicable": "NOT_APPLICABLE_TO_CURRENT_LAUNCH_CONFIGURATION",
+      "authority": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, consolidated text updated 10 February 2026.",
+      "current_implementation": "No public audiobook launch is enabled by either controlled launch configuration. Historical model-generated audio evidence is recorded separately per title.",
+      "gap": "Before enabling any title-level public audio, perform a role- and configuration-specific applicability assessment and implement only any requirement that actually applies.",
+      "status": "DEFERRED",
+      "launch_blocker": false
+    }
+  ]
+}

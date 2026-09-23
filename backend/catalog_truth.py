@@ -99,7 +99,11 @@ DRACULA_REQUIRED_ARTIFACT_FILES = CONTROLLED_ARTIFACT_REQUIRED_FILES
 
 def controlled_launch_config() -> dict[str, Any]:
     fallback = {
-        "live_approved_slugs": ["dracula"],
+        # A malformed or unavailable release record must never open the public
+        # Reader.  Explicit owner/release approval is required to opt in.
+        "public_reader_exposure_enabled": False,
+        "public_audio_exposure_enabled": False,
+        "live_approved_slugs": [],
         "pipeline_slugs": ["kshudhita-pashan"],
         "audio_enabled_slugs": [],
     }
@@ -157,18 +161,26 @@ def normalized_slug_tuple(values: Any, fallback: tuple[str, ...]) -> tuple[str, 
     if not isinstance(values, list):
         return fallback
     slugs = tuple(str(value or "").strip().lower() for value in values if str(value or "").strip())
-    return slugs or fallback
+    # An explicit empty allowlist is a valid, fail-closed release decision.
+    return slugs
 
 
 CONTROLLED_LAUNCH_CONFIG = controlled_launch_config()
 PUBLIC_CATALOG_EXCLUDED_SLUGS = public_catalog_excluded_slugs()
+PUBLIC_READER_EXPOSURE_ENABLED = CONTROLLED_LAUNCH_CONFIG.get("public_reader_exposure_enabled") is True
+PUBLIC_AUDIO_EXPOSURE_ENABLED = (
+    PUBLIC_READER_EXPOSURE_ENABLED
+    and CONTROLLED_LAUNCH_CONFIG.get("public_audio_exposure_enabled") is True
+)
 LEGACY_CONTROLLED_LIVE_BOOK_SLUGS = normalized_slug_tuple(
     CONTROLLED_LAUNCH_CONFIG.get("live_approved_slugs"),
-    ("dracula",),
+    (),
 )
 
 
 def approved_manifest_slugs() -> tuple[str, ...]:
+    if not PUBLIC_READER_EXPOSURE_ENABLED:
+        return ()
     root = first_controlled_publications_root()
     if not root.exists():
         return ()
@@ -180,9 +192,14 @@ def approved_manifest_slugs() -> tuple[str, ...]:
     return tuple(sorted(set(approved)))
 
 
+# A publication manifest demonstrates package readiness, but it is not a
+# release decision.  The production allowlist must remain the explicit
+# controlled-launch list so historical manifests cannot widen public exposure
+# after the Reader switch is enabled.  Runtime request handling then binds
+# each configured title to its separate hash-bound accepted decision.
 CONTROLLED_LIVE_BOOK_SLUGS = tuple(
     slug
-    for slug in dict.fromkeys((*LEGACY_CONTROLLED_LIVE_BOOK_SLUGS, *approved_manifest_slugs()))
+    for slug in LEGACY_CONTROLLED_LIVE_BOOK_SLUGS
     if slug not in PUBLIC_CATALOG_EXCLUDED_SLUGS
 )
 # Historical compatibility name: this constant is the Dracula-specific slug,
@@ -194,7 +211,7 @@ PIPELINE_CANDIDATE_SLUGS = set(
 AUDIO_ENABLED_SLUGS = (
     set(normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("audio_enabled_slugs"), ()))
     - PUBLIC_CATALOG_EXCLUDED_SLUGS
-)
+) if PUBLIC_AUDIO_EXPOSURE_ENABLED else set()
 
 PUBLIC_STATUS_LIVE_APPROVED = "LIVE_APPROVED"
 PUBLIC_STATUS_PIPELINE_CANDIDATE = "PIPELINE_CANDIDATE"
@@ -1039,14 +1056,11 @@ def is_live_approved_book(book: dict[str, Any]) -> bool:
     slug = normalize_slug(book.get("slug"))
     if not slug or slug in PUBLIC_CATALOG_EXCLUDED_SLUGS:
         return False
-    manifest = book.get("publication_manifest")
-    manifest_approved = manifest_reader_exposed(manifest) if isinstance(manifest, dict) else False
-    conveyor = nested_dict(book, "audiobook_release_conveyor")
-    conveyor_reader_approved = (
-        conveyor.get("schema_version") == AUDIOBOOK_RELEASE_CONVEYOR_SCHEMA
-        and conveyor.get("reader_release_approved") is True
-    )
-    if slug not in LEGACY_CONTROLLED_LIVE_BOOK_SLUGS and not manifest_approved and not conveyor_reader_approved:
+    # A manifest or retained audio conveyor can validate an artifact, but it
+    # cannot itself publish it.  Public eligibility is constrained to the
+    # explicit controlled launch allowlist; the server separately applies the
+    # hash-bound decision gate before serving the request.
+    if slug not in CONTROLLED_LIVE_BOOK_SLUGS:
         return False
     workflow = canonical_workflow(book)
     if workflow:
@@ -1096,7 +1110,7 @@ def normalize_book_publication_status(book: dict[str, Any]) -> str:
 
 
 def can_expose_reader(book: dict[str, Any]) -> bool:
-    return is_live_approved_book(book)
+    return PUBLIC_READER_EXPOSURE_ENABLED and is_live_approved_book(book)
 
 
 def can_expose_preview(book: dict[str, Any]) -> bool:
@@ -1104,6 +1118,8 @@ def can_expose_preview(book: dict[str, Any]) -> bool:
 
 
 def can_expose_audio(book: dict[str, Any]) -> bool:
+    if not PUBLIC_AUDIO_EXPOSURE_ENABLED:
+        return False
     slug = normalize_slug(book.get("slug"))
     conveyor = nested_dict(book, "audiobook_release_conveyor")
     conveyor_audio_approved = (
@@ -1213,6 +1229,11 @@ def live_approved_mongo_query(extra: dict[str, Any] | None = None) -> dict[str, 
     exposed. This avoids both broad catalog leaks and false negatives caused by
     incomplete DB rights metadata.
     """
+
+    if not PUBLIC_READER_EXPOSURE_ENABLED:
+        # Keep the public query read-only while proving that no title matches;
+        # do not depend on an empty `$in` interpretation or a manifest flag.
+        return {"_id": {"$exists": False}}
 
     query: dict[str, Any] = {
         "$or": [

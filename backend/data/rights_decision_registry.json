@@ -1,13 +1,17 @@
 {
   "schema_version": "earnalism.rights-decision-registry.v1",
   "registry_id": "four-title-pilot-20260917",
-  "accepted_records": {},
+  "accepted_records": {
+    "india-20260922-a-ghost-story-reader-release": "caa2538805f8388e3216affae04aa6e3a941541395296d7bab17ed34fd725107",
+    "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
+    "india-20260922-radharani-reader-release": "bc66514e852e22a610e4494057f9b6eee80d0a1472a84ca0f1c7e23631ac5991"
+  },
   "revoked_decision_ids": [],
   "pilot_dispositions": {
-    "controlled-a-ghost-story": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]},
-    "controlled-the-tell-tale-heart": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]},
-    "controlled-radharani": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]},
+    "controlled-a-ghost-story": {"status": "ACCEPTED", "countries": ["IN"], "uses": ["reader"]},
+    "controlled-the-tell-tale-heart": {"status": "ACCEPTED", "countries": ["IN"], "uses": ["reader"]},
+    "controlled-radharani": {"status": "ACCEPTED", "countries": ["IN"], "uses": ["reader"]},
     "controlled-yugalanguriya": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]}
   },
-  "non_activation_note": "HOLD dispositions are evidence-work states. This file grants no production permission and contains no accepted record."
+  "non_activation_note": "Only the three listed India text-reader decisions are accepted and hash-bound. Yugalanguriya and every unlisted title remain HOLD; this registry does not enable audio, commerce, or any title outside the controlled launch allowlist."
 }

@@ -27,16 +27,19 @@ const stylesSource = fs.readFileSync(
 );
 
 const readerBook = {
-  slug: "reader-book",
+  slug: "a-ghost-story",
   title: "A Reader Book",
   author: "A Canonical Author",
   language: "en",
   front_cover_url: "https://cdn.example.com/reader-book.png",
   cover_alt_text: "A Reader Book by A Canonical Author",
   reader_enabled: true,
+  publication_status: "LIVE_APPROVED",
+  public_route: "/book/a-ghost-story",
+  reader_url: "/reader/a-ghost-story",
   audiobook_enabled: false,
-  book_url: "/book/reader-book",
-  cta_url: "/reader/reader-book",
+  book_url: "/book/a-ghost-story",
+  cta_url: "/reader/a-ghost-story",
 };
 
 const approvedBook = {
@@ -78,7 +81,7 @@ describe("CuratedShelfCollage", () => {
         title: "A Reader Book",
         author: "A Canonical Author",
         cover_alt_text: "A Reader Book by A Canonical Author",
-        book_url: "/book/reader-book",
+        book_url: "/book/a-ghost-story",
       }],
     });
     expect(componentSource).toContain('data-testid="curated-shelf-collage"');
@@ -86,16 +89,12 @@ describe("CuratedShelfCollage", () => {
     expect(tileSource).toContain("to={book.book_url}");
   });
 
-  test("keeps hidden-audio shelves reader-oriented and approved listening customer-facing", () => {
+  test("keeps the disabled public-audio shelf empty despite approval-shaped metadata", () => {
     const normalized = normalizeHomeCuration({
       shelf_collage: { selected_audiobooks: [approvedBook] },
     });
 
-    expect(normalized.shelf_collage.selected_audiobooks[0]).toMatchObject({
-      cta_label: "Start Listening",
-      cta_kind: "listen",
-      cta_url: "/reader/approved-book?listen=1",
-    });
+    expect(normalized.shelf_collage.selected_audiobooks).toEqual([]);
     expect(listeningSource).toContain("Listen in Reader");
     expect(componentSource).not.toMatch(/release gate|QA_PASSED|unapproved audio|manifest|endpoint/i);
   });
@@ -209,13 +208,13 @@ describe("CuratedShelfCollage", () => {
         groups: [{
           id: "test-shelf",
           title: "A Test Shelf",
-          books: [{ ...readerBook, cover_valid: false, is_placeholder: true }, { ...readerBook, slug: "reader-book-valid", cover_valid: true }],
+          books: [{ ...readerBook, cover_valid: false, is_placeholder: true }, { ...readerBook, cover_valid: true }],
         }],
       },
     });
 
     expect(normalized.shelf_collage.groups[0].books).toHaveLength(1);
-    expect(normalized.shelf_collage.groups[0].books[0].slug).toBe("reader-book-valid");
+    expect(normalized.shelf_collage.groups[0].books[0].slug).toBe("a-ghost-story");
     expect(tileSource).toContain("allowGraphicalFallback={false}");
     expect(listeningSource).toContain("allowGraphicalFallback={false}");
     expect(fs.readFileSync(path.join(process.cwd(), "src/components/BookCoverImage.jsx"), "utf8"))
@@ -241,6 +240,6 @@ describe("CuratedShelfCollage", () => {
       layout_area: "short",
       accent: "short",
     });
-    expect(normalized.shelf_collage.selected_audiobooks.map((book) => book.slug)).toEqual(["approved-book"]);
+    expect(normalized.shelf_collage.selected_audiobooks).toEqual([]);
   });
 });

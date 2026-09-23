@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-tell-tale-heart",
+  "title": "The Tell-Tale Heart",
+  "generated_at": "2026-09-22T16:12:17.619678+00:00",
+  "content": {
+    "source_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+    "content_hash": "a07c4b3d611f371eff7ff8ded51a6dd40eabe86f595b459fbe2f5e23afb18dcf",
+    "provenance_hash": "842f37156736790444d3edc2f38a4e1e1aa3689c723936dc9f2e38f0d063aa4b",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "b0b344740f4aee90b69abad9689572cc4aaf6860336a77d1bb89424186a4e834",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Tell-Tale Heart",
+        "word_count": 2155,
+        "sha256": "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
+    "reader_manifest": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
+    "source_evidence": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
+    "approval_evidence": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a"
+  },
+  "manifest_sha256": "5a669310ee863301b18ba02d42cd8843b25cb6af2e1fd7dc2a138317b030de3c"
+}

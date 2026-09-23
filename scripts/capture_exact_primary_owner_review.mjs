@@ -16,13 +16,17 @@ const output = path.resolve(process.env.EXACT_OWNER_REVIEW_CAPTURE_OUTPUT || "ua
 const strict = process.env.OWNER_REVIEW_CAPTURE_STRICT !== "false";
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("UAT_BASE_URL must be an explicit loopback URL.");
 
-const books = [
-  { slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/dracula", audiobook_enabled: false, category_slug: "english-classics", chapters: [{ id: "dracula-canonical-page-1", is_preview: true }] },
-  { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/devdas", audiobook_enabled: false, category_slug: "bengali-classics", chapters: [{ id: "devdas-canonical-page-1", is_preview: true }] },
-  { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/pather-panchali", audiobook_enabled: false, category_slug: "bengali-classics", chapters: [{ id: "pather-panchali-canonical-page-1", is_preview: true }] },
-  { slug: "hungry-stones", title: "Kshudhita Pashan / The Hungry Stones", author: "Rabindranath Tagore", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/hungry-stones", audiobook_enabled: false, category_slug: "bengali-classics", chapters: [{ id: "hungry-stones-canonical-page-1", is_preview: true }] },
-  { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/a-ghost-story", audiobook_enabled: true, category_slug: "english-classics", chapters: [{ id: "a-ghost-story-canonical-page-1", is_preview: true }] },
+const controlledLaunch = JSON.parse(fs.readFileSync(new URL("../data/controlled_launch.json", import.meta.url), "utf8"));
+const publicReaderExposureEnabled = controlledLaunch.public_reader_exposure_enabled === true;
+const publicPaidCommerceEnabled = controlledLaunch.public_paid_commerce_enabled === true;
+const primaryReaderSlug = controlledLaunch.live_approved_slugs?.[0] || "a-ghost-story";
+const fixtureBooks = [
+  { slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/dracula", audiobook_enabled: false, category_slug: "english-classics", chapters: [{ id: "chapter-001", is_preview: true }] },
+  { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/a-ghost-story", audiobook_enabled: false, category_slug: "english-classics", chapters: [{ id: "chapter-001", is_preview: true }] },
+  { slug: "the-tell-tale-heart", title: "The Tell-Tale Heart", author: "Edgar Allan Poe", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/the-tell-tale-heart", audiobook_enabled: false, category_slug: "english-classics", chapters: [{ id: "chapter-001", is_preview: true }] },
+  { slug: "radharani", title: "রাধারাণী", author: "বঙ্কিমচন্দ্র চট্টোপাধ্যায়", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/radharani", audiobook_enabled: false, category_slug: "bengali-classics", chapters: [{ id: "chapter-001", is_preview: true }] },
 ];
+const books = fixtureBooks.filter((book) => controlledLaunch.live_approved_slugs?.includes(book.slug));
 const packs = [
   { id: "30m", label: "The Opening Hour", minutes: 30, amount_paise: 4900, price_inr: 49, note: "Continue after the free preview, one careful sitting at a time." },
   { id: "1h", label: "The Quiet Hour", minutes: 60, amount_paise: 8900, price_inr: 89, note: "An unhurried first return to any eligible title." },
@@ -38,20 +42,21 @@ const states = [
   ["commerce-mobile", "/pricing", 390, 844, "commerce"], ["reading-pass-mobile", "/pricing", 390, 844, "commerce"],
   ["mobile-navigation", "/", 390, 844, "navigation"], ["mobile-navigation-320", "/", 320, 568, "navigation"], ["mobile-navigation-430", "/", 430, 932, "navigation"],
   ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["mobile-navigation-1024", "/", 1024, 768, "navigation"], ["mobile-navigation-1279", "/", 1279, 800, "navigation"],
-  ["book-detail-desktop", "/book/dracula", 1440, 1000, "book"],
-  ["book-detail-mobile", "/book/dracula", 390, 844, "book"], ["reader-desktop", "/reader/dracula?visual-fixture=1", 1440, 1000, "reader"],
-  ["reader-mobile", "/reader/dracula?visual-fixture=1", 390, 844, "reader"], ["listener-desktop", "/listener/a-ghost-story?visual-fixture=1", 1440, 1000, "listener"],
+  ["book-detail-desktop", `/book/${primaryReaderSlug}`, 1440, 1000, "book"],
+  ["book-detail-mobile", `/book/${primaryReaderSlug}`, 390, 844, "book"], ["reader-desktop", `/reader/${primaryReaderSlug}?visual-fixture=1`, 1440, 1000, "reader"],
+  ["reader-mobile", `/reader/${primaryReaderSlug}?visual-fixture=1`, 390, 844, "reader"], ["listener-desktop", `/listener/${primaryReaderSlug}?visual-fixture=1`, 1440, 1000, "listener"],
   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],
   ["my-library-mobile", "/my-library", 390, 844, "my-library"], ["profile-mobile", "/account?visual-fixture=1", 390, 844, "profile"],
 ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family })).filter((state) => !selectedStates.size || selectedStates.has(state.id));
 const fullPageStates = new Set(["home-desktop", "home-mobile", "library-desktop", "library-mobile", "commerce-desktop", "commerce-mobile", "book-detail-desktop", "book-detail-mobile"]);
+const publicReleaseHoldCopy = "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed.";
 
 const sha = (buffer) => crypto.createHash("sha256").update(buffer).digest("hex");
 const jsonResponse = (route, value) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(value) });
 const requiredFor = (family) => ({
   home: ["[data-testid=home-reference-surface]", "header"], library: ["[data-testid=library-reference-surface]", "header"],
-  filter: ["[data-testid=library-reference-surface]", ".reference-filter-trigger"], commerce: ["[data-testid=pricing-reference-surface]", "header"],
-  navigation: ["header"], book: [".book-detail-page", "header"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"],
+  filter: ["[data-testid=library-reference-surface]", ".reference-filter-trigger"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]", "header"],
+  navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=book-not-found]", "header"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"],
   about: [strict ? "#about-page-title" : "#about-v2-title"], "my-library": ["[data-testid=my-library-mobile]", ".my-library-v2__empty"], profile: ["[data-testid=account-profile-mobile]"],
 }[family] || ["main"]);
 
@@ -59,6 +64,12 @@ async function installFixtureRoutes(page) {
   await page.route("**/api/**", async (route) => {
     const url = new URL(route.request().url());
     if (url.pathname.endsWith("/books")) return jsonResponse(route, books);
+    const bookDetailMatch = url.pathname.match(/\/books\/([^/]+)$/);
+    if (bookDetailMatch) {
+      const slug = decodeURIComponent(bookDetailMatch[1]);
+      const book = books.find((candidate) => candidate.slug === slug);
+      return jsonResponse(route, book || {});
+    }
     if (url.pathname.includes("/payments/") && (url.pathname.endsWith("/offers") || url.pathname.endsWith("/packs"))) return jsonResponse(route, { packs, config: { mode: "owner-review-fixture", recurring_enabled: false } });
     if (url.pathname.endsWith("/auth/me") || url.pathname.endsWith("/users/me")) return jsonResponse(route, user);
     if (url.pathname.includes("transactions")) return jsonResponse(route, []);
@@ -250,8 +261,15 @@ async function capture(state, context, sessionFontLoad) {
     ? "sanitized-owner-review-user"
     : ["reader", "listener"].includes(state.family)
       ? "server-contract-review-fixture"
+      : state.family === "book" && !publicReaderExposureEnabled
+        ? "anonymous-public-release-hold"
       : "anonymous-public-shell";
-  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, navigation, navigationClose, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: "Read the first 3 pages free. Listening requires an active Reading Pass." };
+  const productTruth = state.family === "book" && !publicReaderExposureEnabled
+    ? publicReleaseHoldCopy
+    : state.family === "commerce" && !publicPaidCommerceEnabled
+      ? "Reading Passes are not available in this launch."
+      : "Read the first 3 pages free. Listening requires an active Reading Pass.";
+  return { ...state, status: response?.status() || 0, errors, fontLoad, font_load_scope: "shared-pinned-browser-session", ...metrics, navigation, navigationClose, stable: sha(first) === sha(second), screenshot_sha256: sha(second), full_page_screenshot: fullPageScreenshot ? path.basename(fullPageScreenshot) : null, fixture, product_truth: productTruth };
 }
 
 export async function runCapture() {

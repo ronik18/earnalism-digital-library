@@ -1,0 +1,83 @@
+{
+  "schema_version": "earnalism.india-release-decision-record.v1",
+  "status": "UNSIGNED_TEMPLATE_ONLY",
+  "evidence_package": {
+    "path": "india-book-rights-matrix.json",
+    "sha256": "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15",
+    "candidate_commit": "cdaa9bd344a7928048c525588e17e8492aea85f8",
+    "candidate_tree": "e1627b8d0cf06e942f54d9e4098c2f279d65ae27"
+  },
+  "records": [
+    {
+      "TITLE": "A Ghost Story",
+      "SLUG": "a-ghost-story",
+      "COPYRIGHT_EVIDENCE_RESULT": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "TEXT_RESULT": "TEXT_VERIFIED",
+      "COVER_RESULT": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+      "AUDIO_CURRENT_LAUNCH_RESULT": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE",
+      "OTHER_ASSETS_RESULT": "NOT_APPLICABLE_FROM_IDENTIFIED_DELIVERED_TEXT",
+      "SOURCE_HASH": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
+      "CANONICAL_HASH": "4e14087173c0327d8681fcbe950c76076c0871fa30cb26c34851ef3df9fe9596",
+      "EVIDENCE_PACKAGE_HASH": "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15",
+      "UNRESOLVED_COMPLIANCE_BLOCKERS": [],
+      "RELEASE_AUTHORIZATION_STATE": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient.",
+      "DECISION": null,
+      "DECIDED_BY": null,
+      "DATE": null
+    },
+    {
+      "TITLE": "The Tell-Tale Heart",
+      "SLUG": "the-tell-tale-heart",
+      "COPYRIGHT_EVIDENCE_RESULT": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "TEXT_RESULT": "TEXT_VERIFIED",
+      "COVER_RESULT": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+      "AUDIO_CURRENT_LAUNCH_RESULT": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE",
+      "OTHER_ASSETS_RESULT": "NOT_APPLICABLE_FROM_IDENTIFIED_DELIVERED_TEXT",
+      "SOURCE_HASH": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+      "CANONICAL_HASH": "ddbfefae9964a9a530ef16edb1c6cab146f5e1666cb31eb65c4bfe088321267c",
+      "EVIDENCE_PACKAGE_HASH": "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15",
+      "UNRESOLVED_COMPLIANCE_BLOCKERS": [],
+      "RELEASE_AUTHORIZATION_STATE": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient.",
+      "DECISION": null,
+      "DECIDED_BY": null,
+      "DATE": null
+    },
+    {
+      "TITLE": "রাধারাণী",
+      "SLUG": "radharani",
+      "COPYRIGHT_EVIDENCE_RESULT": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "TEXT_RESULT": "TEXT_VERIFIED",
+      "COVER_RESULT": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+      "AUDIO_CURRENT_LAUNCH_RESULT": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE",
+      "OTHER_ASSETS_RESULT": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
+      "SOURCE_HASH": "e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e",
+      "CANONICAL_HASH": "332135f42281789b346f7aed5100a05630b8dfc637c5177ff85de17e5a6e890d",
+      "EVIDENCE_PACKAGE_HASH": "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15",
+      "UNRESOLVED_COMPLIANCE_BLOCKERS": [],
+      "RELEASE_AUTHORIZATION_STATE": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient.",
+      "DECISION": null,
+      "DECIDED_BY": null,
+      "DATE": null
+    },
+    {
+      "TITLE": "যুগলাঙ্গুরীয়",
+      "SLUG": "yugalanguriya",
+      "COPYRIGHT_EVIDENCE_RESULT": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "TEXT_RESULT": "TEXT_REVIEW_REQUIRED",
+      "COVER_RESULT": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+      "AUDIO_CURRENT_LAUNCH_RESULT": "AUDIO_DISABLED_NOT_IN_LAUNCH_SCOPE",
+      "OTHER_ASSETS_RESULT": "SOURCE_LAYER_PROVENANCE_DOCUMENTED",
+      "SOURCE_HASH": "d29946aec3912a7e03c866a84354faec222b80f851802710a58885ff67afbe3b",
+      "CANONICAL_HASH": "45e3fbdc37d44a9255735a09b37bde563319086626e2a5a7bc6bd63fab18b875",
+      "EVIDENCE_PACKAGE_HASH": "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15",
+      "UNRESOLVED_COMPLIANCE_BLOCKERS": [
+        "TEXT_REVIEW_REQUIRED"
+      ],
+      "RELEASE_AUTHORIZATION_STATE": "PENDING — the empty accepted-rights registry and global Reader hold are deliberate production controls, not evidence that an objectively complete title is legally deficient.",
+      "DECISION": null,
+      "DECIDED_BY": null,
+      "DATE": null
+    }
+  ],
+  "guard": "A blank template is not an accepted rights record. An authorized release actor must record ACCEPT or HOLD only after reviewing the bound evidence and applicable release authority."
+}

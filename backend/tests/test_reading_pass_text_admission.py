@@ -8,6 +8,7 @@ from types import SimpleNamespace
 
 import pytest
 from starlette.responses import Response
+from starlette.requests import Request
 
 os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
 os.environ.setdefault("JWT_SECRET", "reading-pass-text-admission-test-secret")
@@ -152,15 +153,68 @@ def test_public_preview_remains_outside_protected_authority_admission(monkeypatc
 def test_start_and_transfer_routes_share_the_same_handler(monkeypatch):
     calls: list[bool] = []
 
-    async def shared_handler(payload, user, response, *, transfer):
+    async def shared_handler(payload, user, response, *, transfer, request):
         calls.append(transfer)
         return {"transfer": transfer, "content_id": payload.content_id, "user_id": user["id"]}
 
     monkeypatch.setattr(server, "_reading_pass_start", shared_handler)
 
-    started = asyncio.run(server.reading_pass_session_start(_payload("fixture"), Response(), USER))
-    transferred = asyncio.run(server.reading_pass_session_transfer(_payload("fixture"), Response(), USER))
+    request = Request({"type": "http", "method": "POST", "path": "/api/reading-pass/sessions/start", "headers": []})
+    started = asyncio.run(server.reading_pass_session_start(_payload("fixture"), request, Response(), USER))
+    transferred = asyncio.run(server.reading_pass_session_transfer(_payload("fixture"), request, Response(), USER))
 
     assert started["transfer"] is False
     assert transferred["transfer"] is True
     assert calls == [False, True]
+
+
+@pytest.mark.parametrize("slug", ["a-ghost-story", "the-tell-tale-heart", "radharani"])
+def test_free_lease_can_deliver_the_last_canonical_page_without_a_paid_balance(monkeypatch, slug):
+    async def authority(requested):
+        return {"slug": requested, "chapters": [{"id": "chapter-1", "title": "Chapter one"}]} if requested == slug else None
+
+    async def active(_slug):
+        return {"segmentation_version": "edition-v1"}
+
+    async def stored(_slug, _version):
+        return {"segmentation_version": "edition-v1", "version": "manifest-v1", "total_pages": 7}
+
+    class Segments:
+        async def find_one(self, query, _projection):
+            return {
+                "page_index": 7, "chapter_id": "chapter-1", "chapter_title": "Chapter one",
+                "content_sha256": "fixture-hash", "content": "<p>Final verified source page.</p>",
+            } if query["book_slug"] == slug and query["page_index"] == 7 else None
+
+    async def authorize(**kwargs):
+        assert kwargs["content_id"] == slug
+        return {
+            "entitlement_kind": "india_pilot_free_text",
+            "scope": {"release_country": "IN", "segmentation_version": "edition-v1", "manifest_version": "manifest-v1"},
+        }
+
+    monkeypatch.setattr(server, "ENVIRONMENT", "production")
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+    monkeypatch.setattr(server, "_reader_book_access_doc", authority)
+    monkeypatch.setattr(server, "_active_reader_segment_manifest", active)
+    monkeypatch.setattr(server, "_stored_reader_segment_manifest", stored)
+    monkeypatch.setattr(server, "db", SimpleNamespace(reader_content_segments=Segments()))
+    monkeypatch.setattr(server.reading_pass_service, "authorize", authorize)
+    request = Request({
+        "type": "http", "method": "GET", "path": f"/api/reading-pass/books/{slug}/pages/7",
+        "headers": [(b"x-reading-pass-session", b"session-1"), (b"x-reading-pass-lease", b"lease-1")],
+    })
+    result = asyncio.run(server.reading_pass_book_page(slug, 7, request, Response(), USER))
+    assert result["page_index"] == result["total_pages"] == 7
+    assert result["content"] == "<p>Final verified source page.</p>"
+    assert result["is_preview"] is False
+
+    async def old_metered_lease(**_kwargs):
+        return {"entitlement_kind": "metered", "scope": {"segmentation_version": "edition-v1", "manifest_version": "manifest-v1"}}
+
+    monkeypatch.setattr(server.reading_pass_service, "authorize", old_metered_lease)
+    with pytest.raises(server.HTTPException) as denied:
+        asyncio.run(server.reading_pass_book_page(slug, 7, request, Response(), USER))
+    assert denied.value.status_code == 403
+    assert denied.value.detail["code"] == "CONTENT_NOT_AUTHORIZED"

@@ -13,32 +13,15 @@ const LISTENING_CACHE_TTL_MS = 5 * 60 * 1000;
 
 const memoryCache = new Map();
 
-function storage() {
-  return typeof window === "undefined" ? null : window.localStorage;
-}
-
 function readCache(key, ttlMs) {
   const memory = memoryCache.get(key);
   if (memory && Date.now() - memory.cachedAt <= ttlMs) return memory.payload;
-  try {
-    const raw = storage()?.getItem(key);
-    const record = raw ? JSON.parse(raw) : null;
-    if (!record || !Number.isFinite(record.cachedAt) || Date.now() - record.cachedAt > ttlMs) return null;
-    memoryCache.set(key, record);
-    return record.payload;
-  } catch {
-    return null;
-  }
+  return null;
 }
 
 function writeCache(key, payload) {
   const record = { cachedAt: Date.now(), payload };
   memoryCache.set(key, record);
-  try {
-    storage()?.setItem(key, JSON.stringify(record));
-  } catch {
-    // Private browsing and storage quotas must never block Home rendering.
-  }
   return payload;
 }
 
@@ -118,12 +101,6 @@ export async function fetchHomeListening(signal, limit = 3) {
 
 export function clearHomeSurfaceCaches() {
   memoryCache.clear();
-  try {
-    storage()?.removeItem(HERO_CACHE_KEY);
-    storage()?.removeItem(LISTENING_CACHE_KEY);
-  } catch {
-    // Storage cleanup is best-effort for tests and schema migrations.
-  }
 }
 
 export const HOME_SURFACE_CACHE_KEYS = Object.freeze({

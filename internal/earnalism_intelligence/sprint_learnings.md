@@ -2240,3 +2240,9 @@ PR #401 is merged and its Railway deployment is provider-confirmed, but the init
 - A globally unique operation ID must be bound to a versioned, complete intent: canonical title, operation kind, target immutable version, and the promotion preconditions. Returning a globally matched durable result without validating that identity can report Book A's success for Book B without mutating Book B.
 - Model coverage is not transaction evidence. The release gate now executes isolated-Mongo replica-set coverage with independent sessions, deterministic overlap, a disposable namespace, and real indexes; an injected fault inside a real transaction is recorded as an injected application fault, not as a MongoDB incident.
 - Legacy activation-operation records may be recovered only where their own stored result and digest establish the full identity. Ambiguous or contradictory records fail closed and do not alter an active publication pointer.
+
+## 2026-09-23 — India pilot full-free Reader candidate
+
+- A three-page preview is not a complete launch when checkout is disabled. The proprietor chose full, free, no-debit reading only for the three accepted India editions; this does not alter rights acceptance, held titles, audio, commerce, or other territories.
+- Reuse authenticated canonical-page leases with an explicit free entitlement. Check the signed India proxy assertion and immutable accepted Reader-delivery decision on admission and renewal; bind the session to the current publication pointer; never turn a zero wallet balance into an access denial or a debit for this entitlement.
+- Local focused backend, frontend, proxy and build checks are supporting evidence only. Exact-head hosted regression, protected merge, deployed-version proof and real production Reader smoke remain required before declaring customer readiness.
