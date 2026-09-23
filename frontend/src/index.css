@@ -2555,23 +2555,22 @@ h6 {
   gap: 0.4rem;
   padding-inline: 0.75rem;
   height: 2.75rem;
-  border: 1px solid rgba(197, 160, 89, 0.32);
+  border: 1px solid var(--brand-gold);
   border-radius: 9999px;
-  background:
-    linear-gradient(145deg, rgba(74, 28, 39, 0.96), rgba(58, 20, 29, 0.92)),
-    var(--brand-burgundy-deep);
-  color: rgba(253, 252, 248, 0.78);
+  background: var(--brand-gold);
+  color: var(--brand-burgundy-deep);
   box-shadow: inset 0 0 0 1px rgba(253, 252, 248, 0.04);
   transition: background-color .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
 .footer-social__link:hover {
-  border-color: rgba(216, 185, 122, 0.8);
-  color: var(--brand-gold-soft);
+  border-color: #aa8040;
+  background: #aa8040;
+  color: var(--brand-burgundy-deep);
   box-shadow: 0 12px 24px -18px rgba(74, 28, 39, 0.75), inset 0 0 0 1px rgba(216, 185, 122, 0.14);
   transform: translateY(-1px);
 }
 .footer-social__link:focus-visible {
-  outline: 2px solid var(--brand-gold-soft);
+  outline: 2px solid var(--brand-ivory);
   outline-offset: 4px;
 }
 .footer-social__icon {
