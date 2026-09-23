@@ -123,11 +123,28 @@ def test_dracula_index_is_uniform_and_publisher_catalog_is_not_reader_content():
 def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
     manifests = sorted(CONTROLLED_ROOT.glob("*/reader_manifest.json"))
     inventory = json.loads(INVENTORY_PATH.read_text(encoding="utf-8"))
+    archived_hold_keys = {"yugalanguriya"}
+    current_inventory = {
+        **inventory,
+        "packages": [
+            package for package in inventory["packages"]
+            if package["package_key"] not in archived_hold_keys
+        ],
+    }
+    current_inventory["expected_manifest_count"] = len(current_inventory["packages"])
+    current_inventory["expected_chapter_count"] = sum(
+        package["chapter_count"] for package in current_inventory["packages"]
+    )
     actual = {
         path.parent.name: json.loads(path.read_text(encoding="utf-8"))
         for path in manifests
     }
-    assert_controlled_inventory(actual, inventory)
+    assert "yugalanguriya" not in actual
+    assert any(
+        package["package_key"] == "yugalanguriya"
+        for package in inventory["packages"]
+    ), "the frozen fixture must retain Yugalanguriya's historical snapshot"
+    assert_controlled_inventory(actual, current_inventory)
     audited_chapters = 0
     for manifest_path in manifests:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -141,7 +158,7 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
         assert all(entry["index_contract"] == CHAPTER_INDEX_CONTRACT_VERSION for entry in first)
         assert all(entry["index_title"].strip() for entry in first)
         audited_chapters += len(first)
-    assert audited_chapters == inventory["expected_chapter_count"]
+    assert audited_chapters == current_inventory["expected_chapter_count"]
 
 
 @pytest.mark.parametrize("mutation", [

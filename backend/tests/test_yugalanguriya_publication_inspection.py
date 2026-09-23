@@ -120,6 +120,7 @@ def test_inspection_is_fixed_scope_bounded_and_read_only(monkeypatch):
 
     assert result["inspection_scope"] == "YUGALANGURIYA_ONLY"
     assert result["identity"]["availability_reason"] == "NOT_IN_CURRENT_CONTROLLED_LIVE_CATALOG"
+    assert result["identity"]["package_metadata_status"] == "ARCHIVED"
     assert result["activation_pointer"] == {"status": "PRESENT", "selected_version": "v-safe", "generation": 2, "metadata_status": "OBSERVED"}
     assert result["active_manifest"]["selection_state"] == "SINGLE_ACTIVE_MANIFEST"
     assert result["consistency"]["status"] == "POINTER_MATCHES_ACTIVE_MANIFEST"
