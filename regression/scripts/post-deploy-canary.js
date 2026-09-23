@@ -42,9 +42,11 @@ async function main() {
     const response = await request(`${apiOrigin()}/healthz`);
     if (!response.ok || !/ok/i.test(response.text)) throw new Error(`healthz status=${response.status}`);
   }));
-  checks.push(await check("public books API returns books", async () => {
+  checks.push(await check("direct backend books API rejects unsigned release scope", async () => {
     const response = await getJson(`${apiUrl()}/books`);
-    if (!response.ok || !Array.isArray(response.data) || response.data.length === 0) throw new Error("books API empty or unavailable");
+    if (response.status !== 451 || response.data?.detail?.code !== "RELEASE_PROXY_SCOPE_INVALID") {
+      throw new Error(`unsigned books API did not fail closed: status=${response.status}`);
+    }
   }));
   checks.push(await check("admin API still requires auth", async () => {
     const response = await request(`${apiUrl()}/admin/books`, { skipBody: true });
