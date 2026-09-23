@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 import json
 import shutil
 from pathlib import Path
@@ -20,6 +21,7 @@ def test_bankim_cohort_is_audited_hash_bound_and_remains_held():
         assert title["checks"]["rights_packet_present"] is True
         assert title["checks"]["canonical_hash_matches"] is True
         assert title["checks"]["source_provenance_present"] is True
+        assert title["checks"]["license_obligations_satisfied"] is False
         assert title["checks"]["package_held"] is True
         assert title["checks"]["backend_mirror_held"] is True
         assert title["checks"]["package_checksums_match"] is True
@@ -55,7 +57,13 @@ def test_evidence_ready_title_stays_unreleased_until_explicit_release_controls(
     title = packet["titles"][0]
     title.update(
         {
-            "attribution_implemented": True,
+            "license_obligations": {
+                "attribution": True,
+                "source_and_license_links": True,
+                "changes_disclosed": True,
+                "sharealike_treatment": True,
+                "no_incompatible_additional_restrictions": True,
+            },
             "external_protected_cover_elements": False,
             "text_integrity_status": "TEXT_VERIFIED",
             "territory": "IN",
@@ -81,3 +89,47 @@ def test_evidence_ready_title_stays_unreleased_until_explicit_release_controls(
     assert result["checks"]["reader_release_allowed"] is False
     assert "RELEASE_ALLOWLISTED" in result["release_blockers"]
     assert "HASH_BOUND_RELEASE_DECISION_ACCEPTED" in result["release_blockers"]
+
+
+def test_every_cc_by_sa_obligation_must_be_explicitly_satisfied(tmp_path):
+    packet = json.loads(
+        (ROOT / "data/title_rights_evidence/bengali-bankim-cohort-1.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    title = packet["titles"][0]
+    title.update(
+        {
+            "license_obligations": {
+                "attribution": True,
+                "source_and_license_links": True,
+                "changes_disclosed": True,
+                "sharealike_treatment": True,
+                "no_incompatible_additional_restrictions": True,
+            },
+            "external_protected_cover_elements": False,
+            "text_integrity_status": "TEXT_VERIFIED",
+        }
+    )
+    slug = title["slug"]
+    for source in (
+        ROOT / "data/controlled_publications" / slug,
+        ROOT / "backend/data/controlled_publications" / slug,
+    ):
+        destination = tmp_path / source.relative_to(ROOT)
+        shutil.copytree(source, destination)
+        (destination / "publication_manifest.json").write_text("{}", encoding="utf-8")
+
+    launch = json.loads(
+        (ROOT / "backend/data/controlled_launch.json").read_text(encoding="utf-8")
+    )
+    ready = evaluate_title(tmp_path, title, launch, "IN")
+    assert ready["checks"]["license_obligations_satisfied"] is True
+
+    for obligation in title["license_obligations"]:
+        incomplete = deepcopy(title)
+        incomplete["license_obligations"][obligation] = False
+        result = evaluate_title(tmp_path, incomplete, launch, "IN")
+        assert result["checks"]["license_obligations_satisfied"] is False
+        assert result["status"] == "HOLD"
+        assert "LICENSE_OBLIGATIONS_SATISFIED" in result["blockers"]
