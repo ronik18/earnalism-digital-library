@@ -26,12 +26,14 @@ import {
   canShowPreview,
   canShowStartReading,
   notifyUrl,
+  PUBLIC_PAID_COMMERCE_ENABLED,
 } from "../lib/controlledLaunch";
 import { availabilityOfBook } from "../lib/libraryCatalog";
 import BookCoverImage from "./BookCoverImage";
 import LibraryBrowseShelf from "./LibraryBrowseShelf";
 import LibraryReadingPassCard from "./LibraryReadingPassCard";
 import { bookCoverImageSources } from "../lib/images";
+import { PILOT_COVER_SHELF } from "../data/pilotCoverShelf";
 import "./ReferencePublicPages.css";
 import "../styles/quiet-heritage.css";
 import "../styles/library-paper-review.css";
@@ -94,13 +96,13 @@ function BookTile({ book, compact = false, priority = false, showListen = false 
   );
 }
 
-function HomeCoverTile({ book, priority }) {
+function HomeCoverTile({ book, priority, discoveryOnly = false }) {
   const [unavailable, setUnavailable] = useState(false);
   const title = titleFor(book);
-  const href = isLive(book) ? `/book/${book.slug}` : notifyUrl(book.slug);
+  const href = discoveryOnly ? "/library" : isLive(book) ? `/book/${book.slug}` : notifyUrl(book.slug);
   if (unavailable) return null;
   return <article className="reference-home-cover" data-testid={`home-cover-${book.slug}`}>
-    <Link to={href} aria-label={`Open ${title} by ${book.author || "Earnalism"}${isLive(book) ? "" : " — coming soon"}`} title={title}>
+    <Link to={href} aria-label={discoveryOnly ? `Explore ${title} by ${book.author || "Earnalism"} in the Library` : `Open ${title} by ${book.author || "Earnalism"}${isLive(book) ? "" : " — coming soon"}`} title={title}>
       <BookCoverImage book={book} alt="" width={320} height={480} widths={[180,240,320]} sizes="(min-width:1440px) 11vw, (min-width:1100px) 16vw, (min-width:640px) 26vw, 48vw" loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} allowGraphicalFallback={false} onPermanentFailure={() => setUnavailable(true)} />
     </Link>
   </article>;
@@ -133,13 +135,13 @@ function SectionHeading({ eyebrow, title, action, children }) {
   );
 }
 
-function ReferenceShelf({ books, className = "", label, testId, compact = false, coversOnly = false, ...regionProps }) {
+function ReferenceShelf({ books, className = "", label, testId, compact = false, coversOnly = false, discoveryOnly = false, ...regionProps }) {
   const shelfRef = useRef(null);
   const scroll = (direction) => shelfRef.current?.scrollBy({ left: direction * Math.max(220, shelfRef.current.clientWidth * 0.64), behavior: "smooth" });
   return (
     <div className={`reference-shelf-frame ${className}`.trim()} data-testid={testId} {...regionProps}>
       <div ref={shelfRef} className="reference-book-shelf" aria-label={label}>
-        {books.map((book, index) => coversOnly ? <HomeCoverTile key={book.slug} book={book} priority={index < 5} /> : <BookTile key={book.slug} book={book} compact={compact} priority={index === 0} />)}
+        {books.map((book, index) => coversOnly ? <HomeCoverTile key={book.slug} book={book} priority={index < 5} discoveryOnly={discoveryOnly} /> : <BookTile key={book.slug} book={book} compact={compact} priority={index === 0} />)}
       </div>
       <div className="reference-shelf-frame__controls" aria-label={`${label} controls`}>
         <button type="button" aria-label="Previous titles" onClick={() => scroll(-1)}><ChevronLeft aria-hidden="true" /></button>
@@ -158,9 +160,13 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
   // The Home route already carries a server-curated, release-safe shelf snapshot.
   // Keep that visible during a transient catalogue failure instead of collapsing the
   // reference shelf. These cards still use the same fail-closed CTA rules as live data.
-  const shelfBooks = (liveBooks.length ? liveBooks : curatedBooks.filter(isLive))
+  const liveShelfBooks = (liveBooks.length ? liveBooks : curatedBooks.filter(isLive))
     .filter((book) => { const cover = bookCoverImageSources(book); return cover.hasCover && !cover.isFallback; })
     .slice(0, 10);
+  // The signed Reader catalogue is India-only. Keep the public editorial shelf
+  // visually complete elsewhere without treating bundled artwork as live access.
+  const shelfBooks = liveShelfBooks.length ? liveShelfBooks : PILOT_COVER_SHELF;
+  const discoveryOnlyShelf = liveShelfBooks.length === 0;
   const passes = readingPasses.filter((pack) => pack && Number.isFinite(pack.minutes) && pack.minutes > 0 && Number.isFinite(pack.price_inr) && pack.price_inr >= 0).slice(0, 3);
   // Listening discovery comes from the public /home/listening contract. That
   // contract carries release-safe metadata only; package and media details
@@ -196,23 +202,31 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
         <SectionHeading
           title="Begin Your Journey"
         ><p>Which cover calls to you?</p></SectionHeading>
-        <ReferenceShelf books={shelfBooks} coversOnly label="Featured classics" className="reference-home__journey-shelf" data-testid="home-journey-shelf" />
+        <ReferenceShelf books={shelfBooks} coversOnly discoveryOnly={discoveryOnlyShelf} label="Featured classics" className="reference-home__journey-shelf" data-testid="home-journey-shelf" />
       </section>
 
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
         <div className="reference-home__pass-copy">
-          <h2 id="reference-pass-title">Make time for a good story.</h2>
-          <p className="reference-home__pass-intro">With Reading Passes, you pay for reading time.</p>
-          <ul>
+          <h2 id="reference-pass-title">{PUBLIC_PAID_COMMERCE_ENABLED ? "Make time for a good story." : "Reading Pass"}</h2>
+          <p className="reference-home__pass-intro">{PUBLIC_PAID_COMMERCE_ENABLED ? "With Reading Passes, you pay for reading time." : "Reading Passes are not on sale during the free India Reader pilot."}</p>
+          {PUBLIC_PAID_COMMERCE_ENABLED ? <ul>
             <li><Clock3 aria-hidden="true" />{READING_TIME_COPY}</li>
             <li><BookOpen aria-hidden="true" />One wallet across eligible editions</li>
             <li><ShieldCheck aria-hidden="true" />No subscription or autorenewal</li>
-          </ul>
-          <Link className="reference-button reference-button--gold" to="/pricing">Find your Reading Pass</Link>
+          </ul> : <ul>
+            <li><BookOpen aria-hidden="true" />Read the three released pilot books after sign-in</li>
+            <li><Clock3 aria-hidden="true" />No checkout, Reading Pass purchase, or credit debit</li>
+            <li><ShieldCheck aria-hidden="true" />Paid passes will require a separate release</li>
+          </ul>}
+          <Link className="reference-button reference-button--gold" to={PUBLIC_PAID_COMMERCE_ENABLED ? "/pricing" : "/library"}>{PUBLIC_PAID_COMMERCE_ENABLED ? "Find your Reading Pass" : "Explore the free pilot"}</Link>
         </div>
         <div className="reference-home__pass-options">
-          <div className="reference-home__pass-cards" aria-label="Reading Pass options">
-            {passes.length ? passes.map((pack) => <article key={pack.id} className={pack.recommended ? "is-featured" : ""}>
+          <div className="reference-home__pass-cards" aria-label={PUBLIC_PAID_COMMERCE_ENABLED ? "Reading Pass options" : "Free pilot access"}>
+            {!PUBLIC_PAID_COMMERCE_ENABLED ? [
+              ["Begin freely", "3 pages", "Preview any released pilot edition."],
+              ["Stay with the story", "Full book", "Sign in to keep reading in India."],
+              ["No payment today", "No debit", "Reading Pass purchases remain off."],
+            ].map(([title, value, copy]) => <article key={title}><h3>{title}</h3><strong className="reference-home__pass-price reference-home__pass-price--message">{value}</strong><p>{copy}</p></article>) : passes.length ? passes.map((pack) => <article key={pack.id} className={pack.recommended ? "is-featured" : ""}>
               {pack.recommended && <span className="reference-home__pass-badge">{illustrativePasses ? "Featured plan" : "Recommended"}</span>}
               <h3>{pack.minutes} Minutes</h3>
               <strong className="reference-home__pass-price">₹{pack.price_inr}</strong>
@@ -220,7 +234,7 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
               <Link to="/pricing" aria-label={`View ${pack.minutes}-minute Reading Pass`}>View Pass</Link>
             </article>) : ["A little escape", "A longer chapter", "Time to linger"].map((title) => <article key={title}><h3>{title}</h3><strong className="reference-home__pass-price reference-home__pass-price--message">Your time</strong><p>Discover available Reading Passes</p><Link to="/pricing">View Passes</Link></article>)}
           </div>
-          {illustrativePasses && <p className="reference-home__sample-note">Illustrative plans · Confirm current prices on Reading Passes.</p>}
+          {PUBLIC_PAID_COMMERCE_ENABLED && illustrativePasses && <p className="reference-home__sample-note">Illustrative plans · Confirm current prices on Reading Passes.</p>}
         </div>
       </section>
 
