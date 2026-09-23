@@ -17,3 +17,9 @@
 - None
 
 Reader-facing Earnalism editions must not expose internal admin-only evidence files.
+
+## Sprint 1 evidence correction (2026-09-24)
+
+The earlier `ready_for_auto_publication` / `Blockers: None` assertion is superseded. The underlying Bankim work has India term evidence. The identified source is the 1883 second edition (not the claimed 1882 source edition), and its Wikisource transcription is CC BY-SA 4.0. Exact source comparison is incomplete. This candidate remains held and is not publishable from this note.
+
+Hash-bound cohort record: `data/title_rights_evidence/bengali-bankim-cohort-1.json` (`bn-066`).

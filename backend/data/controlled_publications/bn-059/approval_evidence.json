@@ -1,12 +1,21 @@
 {
   "slug": "bn-059",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
-  "verification_status": "approved",
+  "verification_status": "pending",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "sprint1_evidence_reconciliation_hold",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "qa_status": "QA_PASSED",
+    "approval_scope": "historical_admin_import_reconstruction",
+    "verified_at": null
+  },
+  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision."
 }

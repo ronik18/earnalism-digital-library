@@ -491,6 +491,13 @@
       "decision_reason": "full-book listening failed on late passages and bounded Achird and slower Aoede repairs repeated sub-threshold fatal delivery failures",
       "updated_at": "2026-07-12T22:03:03Z",
       "language": "ben",
+      "rights_clearance_sprint1": {
+        "status": "HOLD_SOURCE",
+        "publication_status": "HOLD_NOT_RELEASED",
+        "canonical_text_sha256": "531792238d1b893fb0cda5e3d8ba2cd58f76b2a4ad42db93c47cc8ccbd3fff1a",
+        "evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+        "next_action": "Compare the canonical two chapters against the identified 1944 source and separate its editorial introduction/notes; satisfy source-layer attribution and cover-component provenance."
+      },
       "bengali_audio_lane_status": "AUTOMATED_PROVIDER_PLATEAU_HUMAN_NARRATION_REQUIRED",
       "audiobook_next_action": "Obtain source-bound human narration through the prepared packet, then validate every objective and listening gate before publication.",
       "bengali_audiobook_campaign_state": "HUMAN_NARRATION_REQUIRED",
@@ -573,6 +580,13 @@
       "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
       "updated_at": "2026-07-06T21:54:41Z",
       "language": "ben",
+      "rights_clearance_sprint1": {
+        "status": "HOLD_SOURCE",
+        "publication_status": "HOLD_NOT_RELEASED",
+        "canonical_text_sha256": "7a5c4f3316b732bfb5609bfec0134a3c3d78ff57ab4ea19cd3c46b88906b1475",
+        "evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+        "next_action": "Compare the exact 1885 edition, account for separately attributed appended essays, satisfy source-layer attribution, and resolve cover-component provenance."
+      },
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
       "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
@@ -585,6 +599,13 @@
       "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
       "updated_at": "2026-07-06T21:54:41Z",
       "language": "ben",
+      "rights_clearance_sprint1": {
+        "status": "HOLD_SOURCE",
+        "publication_status": "HOLD_NOT_RELEASED",
+        "canonical_text_sha256": "da318b5e5bbc876f5507673af2b8f70afbfcbd3c46359d15f083977337b11b7d",
+        "evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+        "next_action": "Complete the eighth chapter comparison and classify the seven diagnostic chapter differences; satisfy source-layer attribution and resolve cover-component provenance."
+      },
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
       "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
@@ -597,6 +618,13 @@
       "decision_reason": "The factory no longer misclassifies the Bengali single-digit stanza marker ২ as page junk, and owner authorization now permits audiobook preparation without approving public audio. The retained 152-chunk private narration still fails the immutable ASR/manuscript gate at 0.8403/10 with first/last mismatch, so listening, upload, and publication remain blocked.",
       "updated_at": "2026-07-28T10:10:00Z",
       "language": "ben",
+      "rights_clearance_sprint1": {
+        "status": "HOLD_SOURCE",
+        "publication_status": "HOLD_NOT_RELEASED",
+        "canonical_text_sha256": "e0f3073a43e755d864119dfbe3a2107175ec29f6aa1d486f619f63c9ea7f81a1",
+        "evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+        "next_action": "Compare the canonical text against the identified 1883 second edition; satisfy source-layer attribution and resolve cover-component provenance."
+      },
       "bengali_audio_lane_status": "PRIVATE_QA_ONLY_PUBLIC_AUDIO_HIDDEN",
       "audiobook_next_action": "Do not repeat the closed 152-chunk ASR attempt or run listening QA. Preserve the reader and private artifacts, and require a genuinely different source-bound delivery before restarting objective QA.",
       "bengali_audiobook_campaign_state": "ASR_SOURCE_MISMATCH_REPLACEMENT_DELIVERY_REQUIRED",
@@ -812,6 +840,13 @@
       "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
       "updated_at": "2026-07-06T21:54:41Z",
       "language": "ben",
+      "rights_clearance_sprint1": {
+        "status": "HOLD_SOURCE",
+        "publication_status": "HOLD_NOT_RELEASED",
+        "canonical_text_sha256": "04d885d048988264f3d7fcd614e3ea71d46572748d97b7df136eea6434552cf7",
+        "evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+        "next_action": "Compare the 1939 source text and establish whether the পাঠভেদ chapter contains independently protected editorial material; satisfy attribution and cover-component provenance."
+      },
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
       "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
@@ -824,6 +859,13 @@
       "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
       "updated_at": "2026-07-06T21:54:41Z",
       "language": "ben",
+      "rights_clearance_sprint1": {
+        "status": "HOLD_SOURCE",
+        "publication_status": "HOLD_NOT_RELEASED",
+        "canonical_text_sha256": "91a689b9f8234e440d2e79f8f5caa2e108a901a4c652255015112a3decd91698",
+        "evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+        "next_action": "Compare against the identified 1874 third edition and independently substantiate first publication; satisfy source-layer attribution and cover-component provenance."
+      },
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
       "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",

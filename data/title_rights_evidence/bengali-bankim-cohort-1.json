@@ -1,0 +1,364 @@
+{
+  "record_type": "title_level_rights_and_source_evidence",
+  "record_version": 1,
+  "cohort": "bankim_1",
+  "territory": "IN",
+  "evidence_date": "2026-09-24",
+  "repository_head": "711f4fe11b788d7993ab65e20e7669d343e5f15e",
+  "legal_authorities": {
+    "india_copyright_act_chapter_v": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+    "section_22_application": "Ordinary single-author literary works published during the author's lifetime: term runs to 60 years from the beginning of the calendar year following death. For death in 1894, the term expired at the end of 1954; public-domain status in India began 1955-01-01.",
+    "author_death_evidence": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621",
+    "author_death_evidence_note": "Government Museums of India record identifies Bankim Chandra Chattopadhyay as 1838-1894. Individual Wikisource title pages identify him as author."
+  },
+  "source_layer_license": {
+    "name": "Creative Commons Attribution-ShareAlike 4.0 International",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "evidence": "Each cited Bengali Wikisource work page links its text notice to CC BY-SA 4.0; the Bengali Wikisource siteinfo rights API also reports CC BY-SA 4.0.",
+    "conditions_for_distribution": [
+      "Provide appropriate attribution and source identification/link.",
+      "Link to the license and retain applicable notices.",
+      "Identify modifications made to the sourced transcription/edition layer.",
+      "License adaptations of the CC BY-SA transcription layer under the same license and do not impose additional restrictions on that material."
+    ],
+    "scope_note": "This license applies to reused Wikisource transcription/adaptation material as applicable; it does not relicense the underlying public-domain literary work, Earnalism covers, branding, code, or unrelated site material."
+  },
+  "titles": [
+    {
+      "slug": "bn-059",
+      "title_bn": "কমলাকান্তের দপ্তর",
+      "title_en_or_romanized": null,
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "author_death_year": 1894,
+      "authorship": "single author, as identified by the source edition",
+      "work_type": "Bengali literary essays/sketches",
+      "original_language": "Bengali",
+      "translation_status": "NOT_APPLICABLE; no translator identified",
+      "original_publication_year": {
+        "year": 1875,
+        "evidence": "Wikimedia Commons scan catalogue for Kamalakanter Daptar Vol. 1 records 1875 publication; the repository's 1875 claim is corroborated by that scan record.",
+        "url": "https://commons.wikimedia.org/wiki/File:Kamalakanter_Daptar_Vol._1_(IA_bub_man_d82ce6f2eb816da7566ad1ebbdd6d4ad).pdf"
+      },
+      "source_edition": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর; 1885 expanded second-edition source page",
+      "source_page_revision": "1972181",
+      "source_page_revision_url": "https://bn.wikisource.org/w/index.php?title=কমলাকান্ত_(১৮৮৫)/কমলাকান্তের_দপ্তর&oldid=1972181",
+      "source_provider": "Bengali Wikisource; scan/transcription record identifies the 1885 Kamalakanter Daptar text",
+      "underlying_work_status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "source_layer_status": "LICENSED_WITH_CONDITIONS_CC_BY_SA_4_0",
+      "rights_status": "LICENSED_WITH_CONDITIONS",
+      "source_layer_content_review": "REVIEW_REQUIRED; the 1885 expanded edition has separate essays attributed to Akshay Chandra Sarkar and Rajkrishna Mukhopadhyay; confirm the 13 Earnalism chapters exclude those works and compare against the exact 1885 source. The Earnalism source notes identify the 1875 first edition, while the 1885 page identifies the expanded edition.",
+      "text_integrity_status": "TEXT_REVIEW_REQUIRED_EXACT_EDITION_COMPARISON_NOT_COMPLETE",
+      "chapter_count": 13,
+      "canonical_text_sha256": "7a5c4f3316b732bfb5609bfec0134a3c3d78ff57ab4ea19cd3c46b88906b1475",
+      "canonical_text_hash_method": "SHA-256 of UTF-8 chapter content strings in ascending chapterNumber order, joined with one LF; diagnostic binding only, not a source-match claim",
+      "historical_source_snapshot": {
+        "source_sha256": "9efae8fe7a3d58fb20c46491f8be3a869422c7ffcbc31b0ce3eb47c8f528b8a1",
+        "cleaned_content_sha256": "3ab439de3efeda9d506ffa50795473ce3ced5de88849bb38a0c943db73c27387",
+        "raw_source_preserved": false
+      },
+      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593318/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+      "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
+      "publication_status": "HOLD_NOT_RELEASED",
+      "india_title_status": "HOLD_SOURCE_AND_COVER_COMPONENT_EVIDENCE",
+      "legacy_package_claims_before_reconciliation": {
+        "public_book_public_and_live_flags": true,
+        "public_book_approved_to_publish": true,
+        "approval_evidence_approved_to_publish": true,
+        "verified_at": null,
+        "treatment": "Superseded by the fail-closed Sprint 1 evidence state; historical original bytes remain in Git history."
+      },
+      "repository_package_state": "HOLD_FLAGS_MIRRORED_AND_CHECKSUM_BOUND"
+    },
+    {
+      "slug": "bn-060",
+      "title_bn": "ইন্দিরা",
+      "title_en_or_romanized": null,
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "author_death_year": 1894,
+      "authorship": "single author, identified on the source title page",
+      "work_type": "Bengali novella",
+      "original_language": "Bengali",
+      "translation_status": "NOT_APPLICABLE; no translator identified",
+      "original_publication_year": 1873,
+      "source_edition": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩); source title page identifies the 1873 edition and says the text was excerpted from বঙ্গদর্শন",
+      "source_page_revision": "1971705",
+      "source_page_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)&oldid=1971705",
+      "source_provider": "Bengali Wikisource / British Library scan transcription",
+      "underlying_work_status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "source_layer_status": "LICENSED_WITH_CONDITIONS_CC_BY_SA_4_0",
+      "rights_status": "LICENSED_WITH_CONDITIONS",
+      "text_integrity_status": "TEXT_REVIEW_REQUIRED_EXACT_EDITION_COMPARISON_NOT_COMPLETE",
+      "chapter_count": 8,
+      "canonical_text_sha256": "da318b5e5bbc876f5507673af2b8f70afbfcbd3c46359d15f083977337b11b7d",
+      "canonical_text_hash_method": "SHA-256 of UTF-8 chapter content strings in ascending chapterNumber order, joined with one LF; diagnostic binding only, not a source-match claim",
+      "historical_source_snapshot": {
+        "source_sha256": "20fd4394099662a7126b388fe2c242b5cd947fefe9ca280e808375bdadd77d9a",
+        "cleaned_content_sha256": "519f00e3eb10554072892b0e0d81d5e65aeac040479bb8c578e42c53ff7c0887",
+        "raw_source_preserved": true,
+        "raw_source_sha256": "ac099a87a6fd89eef03b85df1c943b9907894bbc2da2926efaabcdf65edd6e3f"
+      },
+      "partial_source_comparison": {
+        "status": "PARTIAL_DIAGNOSTIC_NOT_TEXT_VERIFIED",
+        "method": "Exact Wikisource subpage revision HTML parsed with the repository importer's sanitizer, then NFC and whitespace-folded for a diagnostic similarity comparison. Similarity is not proof of equivalence; source-page headings/front matter were still present and the mismatch locations were not fully classified.",
+        "revision_checked_at": "2026-09-24",
+        "chapters_compared": 7,
+        "chapters_total": 8,
+        "chapter_8_status": "NOT_FETCHED_HTTP_429_RATE_LIMIT",
+        "observations": [
+          {
+            "chapter": 1,
+            "source_page": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/প্রথম পরিচ্ছেদ",
+            "revision": 1910625,
+            "revision_timestamp": "2025-09-16T06:59:40Z",
+            "normalized_similarity": 0.99548,
+            "source_parsed_html_sha256": "b78b0c8d6af1bfeb8f820abb8a7597e5fbe96cfec703aa73da827755033c40d2"
+          },
+          {
+            "chapter": 2,
+            "source_page": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/দ্বিতীয় পরিচ্ছেদ",
+            "revision": 1910623,
+            "revision_timestamp": "2025-09-16T06:59:39Z",
+            "normalized_similarity": 0.99523,
+            "source_parsed_html_sha256": "d0decf9cedabf65a3ba536223ddd8e01516b1a3618683dbba87399dd1ec0d3b3"
+          },
+          {
+            "chapter": 3,
+            "source_page": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/তৃতীয় পরিচ্ছেদ",
+            "revision": 1910622,
+            "revision_timestamp": "2025-09-16T06:59:39Z",
+            "normalized_similarity": 0.99393,
+            "source_parsed_html_sha256": "08e0c6ccb592c0dad854cdad25e1b313b37e7a75ca930873ad0ed65b983dd06d"
+          },
+          {
+            "chapter": 4,
+            "source_page": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/চতুর্থ পরিচ্ছেদ",
+            "revision": 1910621,
+            "revision_timestamp": "2025-09-16T06:59:39Z",
+            "normalized_similarity": 0.9938,
+            "source_parsed_html_sha256": "3bcc8ff0eee2c0b78450c0cba760b7441121480ae21b1f218407eabc78bb8545"
+          },
+          {
+            "chapter": 5,
+            "source_page": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/পঞ্চম পরিচ্ছেদ",
+            "revision": 1910624,
+            "revision_timestamp": "2025-09-16T06:59:40Z",
+            "normalized_similarity": 0.98993,
+            "source_parsed_html_sha256": "5401ffd27eae59f49557ba4c10d37cfee8d40fd58cb4883ec2fa5c0e570b060f"
+          },
+          {
+            "chapter": 6,
+            "source_page": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/ষষ্ঠ পরিচ্ছেদ",
+            "revision": 1910626,
+            "revision_timestamp": "2025-09-16T06:59:41Z",
+            "normalized_similarity": 0.98913,
+            "source_parsed_html_sha256": "854c962d7c153b964770183f1b7b8fb38aa48e5dc237519514fb6ec309826428"
+          },
+          {
+            "chapter": 7,
+            "source_page": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/সপ্তম পরিচ্ছেদ",
+            "revision": 1910627,
+            "revision_timestamp": "2025-09-16T06:59:41Z",
+            "normalized_similarity": 0.99369,
+            "source_parsed_html_sha256": "25fbf67c3b6e8c56a840a30d18800434e622c31da5066b608ec9ca04b2044349"
+          }
+        ]
+      },
+      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593340/earnalism/covers/front/cover_17aa6322-cffd-49ad-95a1-6278cef20792.png",
+      "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
+      "publication_status": "HOLD_NOT_RELEASED",
+      "india_title_status": "HOLD_SOURCE_COMPARISON_AND_COVER_COMPONENT_EVIDENCE",
+      "legacy_package_claims_before_reconciliation": {
+        "public_book_public_and_live_flags": true,
+        "public_book_approved_to_publish": true,
+        "approval_evidence_approved_to_publish": true,
+        "verified_at": null,
+        "treatment": "Superseded by the fail-closed Sprint 1 evidence state; historical original bytes remain in Git history."
+      },
+      "repository_package_state": "HOLD_FLAGS_MIRRORED_AND_CHECKSUM_BOUND"
+    },
+    {
+      "slug": "bn-066",
+      "title_bn": "আনন্দমঠ",
+      "title_en_or_romanized": null,
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "author_death_year": 1894,
+      "authorship": "single author, identified on the source title page",
+      "work_type": "Bengali novel",
+      "original_language": "Bengali",
+      "translation_status": "NOT_APPLICABLE; no translator identified",
+      "original_publication_year": 1882,
+      "source_edition": "আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩); second edition, with the source title page stating the edition and 1290 Bengali year",
+      "source_page_revision": "1971681",
+      "source_page_revision_url": "https://bn.wikisource.org/w/index.php?title=আনন্দমঠ_(১৮৮৩)&oldid=1971681",
+      "source_provider": "Bengali Wikisource scan/transcription",
+      "underlying_work_status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "source_layer_status": "LICENSED_WITH_CONDITIONS_CC_BY_SA_4_0",
+      "rights_status": "LICENSED_WITH_CONDITIONS",
+      "text_integrity_status": "TEXT_REVIEW_REQUIRED_EXACT_1883_EDITION_COMPARISON_NOT_COMPLETE",
+      "chapter_count": 46,
+      "canonical_text_sha256": "e0f3073a43e755d864119dfbe3a2107175ec29f6aa1d486f619f63c9ea7f81a1",
+      "canonical_text_hash_method": "SHA-256 of UTF-8 chapter content strings in ascending chapterNumber order, joined with one LF; diagnostic binding only, not a source-match claim",
+      "historical_source_snapshot": {
+        "source_sha256": "e760fa2eaf099b90fb6666a62e29f34a72bd84942bf22d487b7417dce60ba329",
+        "cleaned_content_sha256": "ec3352127f8065ec990f9c10f4a2a069a4a4f0c9e8793c7727b00306fa8d777f",
+        "raw_source_preserved": false
+      },
+      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+      "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
+      "publication_status": "HOLD_NOT_RELEASED",
+      "india_title_status": "HOLD_SOURCE_COMPARISON_AND_COVER_COMPONENT_EVIDENCE",
+      "legacy_package_claims_before_reconciliation": {
+        "public_book_public_and_live_flags": true,
+        "public_book_approved_to_publish": true,
+        "approval_evidence_approved_to_publish": true,
+        "verified_at": null,
+        "treatment": "Superseded by the fail-closed Sprint 1 evidence state; historical original bytes remain in Git history."
+      },
+      "repository_package_state": "HOLD_FLAGS_MIRRORED_AND_CHECKSUM_BOUND"
+    },
+    {
+      "slug": "lokrahasya",
+      "title_bn": "লোকরহস্য",
+      "title_en_or_romanized": null,
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "author_death_year": 1894,
+      "authorship": "underlying work by Bankim Chandra Chattopadhyay; 1939 source edition edited by ব্রজেন্দ্রনাথ বন্দ্যোপাধ্যায় and সজনীকান্ত দাস",
+      "work_type": "Bengali essays/sketches",
+      "original_language": "Bengali",
+      "translation_status": "NOT_APPLICABLE; no translator identified",
+      "original_publication_year": 1874,
+      "source_edition": "লোকরহস্য (১৯৩৯), বঙ্কিম-শতবার্ষিকী সংস্করণ; the edition states first printed in 1874 and names its two editors",
+      "source_page_revision": "1972226",
+      "source_page_revision_url": "https://bn.wikisource.org/w/index.php?title=লোকরহস্য_(১৯৩৯)&oldid=1972226",
+      "source_provider": "Bengali Wikisource scan/transcription of the 1939 edition",
+      "underlying_work_status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "source_layer_status": "LICENSED_WITH_CONDITIONS_CC_BY_SA_4_0",
+      "rights_status": "LICENSED_WITH_CONDITIONS",
+      "editorial_layer_status": "REVIEW_REQUIRED; source edition names editors and Earnalism chapter 16 is titled পাঠভেদ; establish whether it reproduces protectable editorial matter and whether that matter is excluded or separately cleared",
+      "text_integrity_status": "TEXT_REVIEW_REQUIRED_EXACT_SOURCE_AND_EDITORIAL_LAYER_COMPARISON_NOT_COMPLETE",
+      "chapter_count": 16,
+      "canonical_text_sha256": "04d885d048988264f3d7fcd614e3ea71d46572748d97b7df136eea6434552cf7",
+      "canonical_text_hash_method": "SHA-256 of UTF-8 chapter content strings in ascending chapterNumber order, joined with one LF; diagnostic binding only, not a source-match claim",
+      "historical_source_snapshot": {
+        "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711",
+        "cleaned_content_sha256": "c9a08ae531d9158f05f71f07f343f165d3258519fcf180316fb6ef93c2055a77",
+        "raw_source_preserved": false
+      },
+      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483123/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+      "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
+      "publication_status": "HOLD_NOT_RELEASED",
+      "india_title_status": "HOLD_EDITORIAL_LAYER_AND_SOURCE_COMPARISON",
+      "legacy_package_claims_before_reconciliation": {
+        "public_book_public_and_live_flags": true,
+        "public_book_approved_to_publish": true,
+        "approval_evidence_approved_to_publish": true,
+        "verified_at": null,
+        "treatment": "Superseded by the fail-closed Sprint 1 evidence state; historical original bytes remain in Git history."
+      },
+      "repository_package_state": "HOLD_FLAGS_MIRRORED_AND_CHECKSUM_BOUND"
+    },
+    {
+      "slug": "mrinalini",
+      "title_bn": "মৃণালিনী",
+      "title_en_or_romanized": null,
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "author_death_year": 1894,
+      "authorship": "single author, identified on the source title page",
+      "work_type": "Bengali historical novel",
+      "original_language": "Bengali",
+      "translation_status": "NOT_APPLICABLE; no translator identified",
+      "original_publication_year": 1869,
+      "source_edition": "মৃণালিনী (১৮৭৪); the source title page identifies the 1874 third edition",
+      "source_page_revision": "1972154",
+      "source_page_revision_url": "https://bn.wikisource.org/w/index.php?title=মৃণালিনী_(১৮৭৪)&oldid=1972154",
+      "source_provider": "Bengali Wikisource / British Library scan transcription",
+      "underlying_work_status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "source_layer_status": "LICENSED_WITH_CONDITIONS_CC_BY_SA_4_0",
+      "rights_status": "LICENSED_WITH_CONDITIONS",
+      "text_integrity_status": "TEXT_REVIEW_REQUIRED_EXACT_1874_EDITION_COMPARISON_NOT_COMPLETE",
+      "chapter_count": 46,
+      "canonical_text_sha256": "91a689b9f8234e440d2e79f8f5caa2e108a901a4c652255015112a3decd91698",
+      "canonical_text_hash_method": "SHA-256 of UTF-8 chapter content strings in ascending chapterNumber order, joined with one LF; diagnostic binding only, not a source-match claim",
+      "historical_source_snapshot": {
+        "source_sha256": "10521fb1355328e87b7cd91ea6dea76b3879861447ce0f0322725f519d8fc75b",
+        "cleaned_content_sha256": "193c208f03b3d962982824d90e4cbf7c45d9046532f1f1fc368b50564a6d1741",
+        "raw_source_preserved": false
+      },
+      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+      "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
+      "publication_status": "HOLD_NOT_RELEASED",
+      "india_title_status": "HOLD_SOURCE_COMPARISON_AND_COVER_COMPONENT_EVIDENCE",
+      "legacy_package_claims_before_reconciliation": {
+        "public_book_public_and_live_flags": true,
+        "public_book_approved_to_publish": true,
+        "approval_evidence_approved_to_publish": true,
+        "verified_at": null,
+        "treatment": "Superseded by the fail-closed Sprint 1 evidence state; historical original bytes remain in Git history."
+      },
+      "repository_package_state": "HOLD_FLAGS_MIRRORED_AND_CHECKSUM_BOUND"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title_bn": "মুচিরাম গুড়ের জীবনচরিত",
+      "title_en_or_romanized": null,
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "author_death_year": 1894,
+      "authorship": "underlying work by Bankim Chandra Chattopadhyay; 1944 source edition edited by ব্রজেন্দ্রনাথ বন্দ্যোপাধ্যায় and সজনীকান্ত দাস",
+      "work_type": "Bengali comic literary narrative",
+      "original_language": "Bengali",
+      "translation_status": "NOT_APPLICABLE; no translator identified",
+      "original_publication_year": 1880,
+      "publication_evidence": "The 1944 edition's editorial foreword reports serial publication in বঙ্গদর্শন in 1880 and book publication in 1884; the foreword is editorial matter and must not be included as Bankim text without separate rights analysis.",
+      "source_edition": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪), বঙ্কিম-শতবার্ষিকী সংস্করণ; source names editors and identifies the first 1884 book publication",
+      "source_page_revision": "1972146",
+      "source_page_revision_url": "https://bn.wikisource.org/w/index.php?title=মুচিরাম_গুড়ের_জীবনচরিত_(১৯৪৪)&oldid=1972146",
+      "source_provider": "Bengali Wikisource scan/transcription of the 1944 edition",
+      "underlying_work_status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+      "source_layer_status": "LICENSED_WITH_CONDITIONS_CC_BY_SA_4_0",
+      "rights_status": "LICENSED_WITH_CONDITIONS",
+      "editorial_layer_status": "REVIEW_REQUIRED; confirm canonical two chapters exclude the 1944 editorial introduction, notes, and other independently protected additions",
+      "text_integrity_status": "TEXT_REVIEW_REQUIRED_EXACT_SOURCE_AND_EDITORIAL_LAYER_COMPARISON_NOT_COMPLETE",
+      "chapter_count": 2,
+      "canonical_text_sha256": "531792238d1b893fb0cda5e3d8ba2cd58f76b2a4ad42db93c47cc8ccbd3fff1a",
+      "canonical_text_hash_method": "SHA-256 of UTF-8 chapter content strings in ascending chapterNumber order, joined with one LF; diagnostic binding only, not a source-match claim",
+      "historical_source_snapshot": {
+        "source_sha256": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
+        "cleaned_content_sha256": "dea6e37479af7c2067c5929999da22f8b2f49aeb2d0abd9741da4e7f01e6ba48",
+        "raw_source_preserved": true,
+        "raw_source_sha256": "5444c0d24d568142b23da876ace07119e9fb4b8fae4909d0eff461600730b8b9"
+      },
+      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+      "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
+      "publication_status": "HOLD_NOT_RELEASED",
+      "india_title_status": "HOLD_EDITORIAL_LAYER_AND_SOURCE_COMPARISON",
+      "legacy_package_claims_before_reconciliation": {
+        "public_book_public_and_live_flags": true,
+        "public_book_approved_to_publish": true,
+        "approval_evidence_approved_to_publish": true,
+        "verified_at": null,
+        "treatment": "Superseded by the fail-closed Sprint 1 evidence state; historical original bytes remain in Git history."
+      },
+      "repository_package_state": "HOLD_FLAGS_MIRRORED_AND_CHECKSUM_BOUND"
+    }
+  ],
+  "cohort_decision": "Underlying India copyright evidence is complete for the six Bankim literary works. Wikisource transcription reuse is commercially licensed only with CC BY-SA 4.0 conditions. No candidate is marked India-title-ready: exact edition/source comparison and any source-edition editorial-layer exclusions are not fully evidenced; cover assets have owner-authored provenance asserted, but a title-specific third-party-component inventory is absent. No candidate may enter a release allowlist on this record.",
+  "production_scope_unchanged": {
+    "authorized_reader_territories": [
+      "IN"
+    ],
+    "pilot_full_free_slugs": [
+      "a-ghost-story",
+      "the-tell-tale-heart",
+      "radharani"
+    ],
+    "audio_enabled": false,
+    "paid_commerce_enabled": false,
+    "yugalanguriya": "HOLD; not part of this cohort and not re-opened"
+  }
+}

@@ -17,3 +17,9 @@
 - None
 
 Reader-facing Earnalism editions must not expose internal admin-only evidence files.
+
+## Sprint 1 evidence correction (2026-09-24)
+
+The earlier `ready_for_auto_publication` / `Blockers: None` assertion is superseded. The underlying Bankim work has India term evidence, but the 1885 expanded source edition is CC BY-SA 4.0 and its two separately authored appended essays must be shown absent from the Earnalism 13 chapters. Exact source comparison is incomplete. This candidate remains held and is not publishable from this note.
+
+Hash-bound cohort record: `data/title_rights_evidence/bengali-bankim-cohort-1.json` (`bn-059`).
