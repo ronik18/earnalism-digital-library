@@ -75,6 +75,7 @@ def test_india_text_release_is_mirrored_and_commerce_and_audio_remain_disabled()
         assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
         assert launch["public_audio_exposure_enabled"] is False
         assert launch["public_paid_commerce_enabled"] is False
+        assert launch["text_access_mode"] == "PILOT_FULL_FREE"
         assert launch["audio_enabled_slugs"] == []
 
 
