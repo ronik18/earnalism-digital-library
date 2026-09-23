@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "output" / "launch"
 DEFAULT_BASE_URL = "https://theearnalism.com"
 CANONICAL_SITE_URL = "https://theearnalism.com"
-ACCESS_COPY = "Read the first 3 pages free. Listening requires an active Reading Pass."
+ACCESS_COPY = "The three India pilot editions are free to read in full after sign-in; the first 3 pages are public. Audiobooks and paid checkout are unavailable."
 FORBIDDEN_COPY = (
     "Chapter 1 free", "First chapter free", "Chapter 1 is on us", "Preview chapter unlocked",
     "First 3 minutes free", "First 180 seconds free", "Free audiobook preview",
@@ -31,10 +31,18 @@ GENERIC_HOME_MARKER = "a library made for lingering"
 RAW_MEDIA_URL = re.compile(r"https?://[^\"'\s<>]+\.(?:mp3|m4a|aac|wav)(?:[?\"'\s<>]|$)", re.I)
 
 ROUTES = {
-    "/book/dracula": {"kind": "book", "canonical": "/book/dracula", "robots": "index,follow"},
+    "/book/a-ghost-story": {"kind": "book", "canonical": "/book/a-ghost-story", "robots": "index,follow", "title": "A Ghost Story"},
+    "/book/the-tell-tale-heart": {"kind": "book", "canonical": "/book/the-tell-tale-heart", "robots": "index,follow", "title": "The Tell-Tale Heart"},
+    "/book/radharani": {"kind": "book", "canonical": "/book/radharani", "robots": "index,follow", "title": "রাধারাণী"},
     "/library": {"kind": "library", "canonical": "/library", "robots": "index,follow"},
-    "/pricing?book=dracula": {"kind": "pricing", "canonical": "/pricing", "robots": "index,follow"},
-    "/reader/dracula": {"kind": "reader", "canonical": "/book/dracula", "robots": "noindex,follow"},
+    "/pricing": {"kind": "pricing", "canonical": "/pricing", "robots": "noindex,follow"},
+    "/reader/a-ghost-story": {"kind": "reader", "canonical": "/book/a-ghost-story", "robots": "noindex,follow", "title": "A Ghost Story"},
+    "/reader/the-tell-tale-heart": {"kind": "reader", "canonical": "/book/the-tell-tale-heart", "robots": "noindex,follow", "title": "The Tell-Tale Heart"},
+    "/reader/radharani": {"kind": "reader", "canonical": "/book/radharani", "robots": "noindex,follow", "title": "রাধারাণী"},
+    "/book/dracula": {"kind": "held"},
+    "/reader/dracula": {"kind": "held"},
+    "/book/yugalanguriya": {"kind": "held"},
+    "/reader/yugalanguriya": {"kind": "held"},
     "/my-library": {"kind": "private_library", "canonical": "/my-library", "robots": "noindex,nofollow"},
 }
 
@@ -110,7 +118,7 @@ def facts_for(html: str) -> HtmlFacts:
 
 
 def has_access_contract(text: str) -> bool:
-    return "first 3 pages free" in text and bool(re.search(r"\b(?:an?\s+)?active\s+reading pass\b", text))
+    return normalize(ACCESS_COPY) in text
 
 
 def has_pricing_continuation(facts: HtmlFacts) -> bool:
@@ -132,8 +140,14 @@ def fetch_raw_html(base_url: str, route: str, timeout: int) -> tuple[int, dict[s
 def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict[str, str], html: str, url: str) -> dict[str, object]:
     facts = facts_for(html)
     text, title, description, h1 = normalize(" ".join(facts.text)), normalize(" ".join(facts.title)), normalize(facts.description), normalize(" ".join(facts.h1))
-    expected_canonical = canonical_url(urljoin(CANONICAL_SITE_URL, policy["canonical"]))
     failures: list[str] = []
+    if policy["kind"] == "held":
+        if status != 404:
+            failures.append(f"held route must be 404, got {status}")
+        if "read the complete edition free" in text or has_access_contract(text):
+            failures.append("held route exposes released-book access copy")
+        return {"route": route, "url": url, "status_code": status, "failures": failures, "result": "PASS" if not failures else "FAIL"}
+    expected_canonical = canonical_url(urljoin(CANONICAL_SITE_URL, policy["canonical"]))
     if status != 200:
         failures.append(f"expected status 200, got {status}")
     if not title or "earnalism" not in title:
@@ -146,8 +160,10 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
         failures.append(f"wrong robots directive: expected {policy['robots']}, got {facts.robots or 'missing'}")
     if GENERIC_HOME_MARKER in text:
         failures.append("generic Home fallback is present")
-    if policy["kind"] != "private_library" and not has_access_contract(text):
-        failures.append("missing approved first-three-pages and active-Reading-Pass contract")
+    if policy["kind"] in {"book", "reader", "library"} and not has_access_contract(text):
+        failures.append("missing approved free-reading contract")
+    if "listening requires an active reading pass" in text or has_pricing_continuation(facts):
+        failures.append("stale paid-access continuation is present")
     for phrase in FORBIDDEN_COPY:
         if normalize(phrase) in text:
             failures.append(f"forbidden phrase present: {phrase}")
@@ -155,22 +171,25 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
         failures.append("raw provider or storage audio URL is present")
 
     if policy["kind"] == "book":
-        if "dracula" not in title or "dracula" not in h1:
-            failures.append("missing Dracula route identity")
-        if "dracula" not in description or not has_access_contract(description):
-            failures.append("missing route-specific Dracula description or access contract")
-        if not has_pricing_continuation(facts):
-            failures.append("missing Reading Pass continuation link")
+        expected_title = normalize(policy["title"])
+        if expected_title not in title or expected_title not in h1:
+            failures.append("missing released-book route identity")
+        if expected_title not in description or not has_access_contract(description):
+            failures.append("missing route-specific free-reading description")
+        if "read the complete edition free" not in text:
+            failures.append("missing complete free-reading CTA")
+        if not re.search(r'"isAccessibleForFree"\s*:\s*true', html, re.I):
+            failures.append("Book structured data must mark full access free")
         if any("listen" in normalize(label) for _, label in facts.links):
-            failures.append("Dracula exposes an active Listen CTA")
+            failures.append("book exposes an active Listen CTA")
     elif policy["kind"] == "pricing":
         if "reading pass" not in title and "pricing" not in title:
             failures.append("missing route-specific Pricing or Reading Pass identity")
-        if not has_access_contract(description):
-            failures.append("missing route-specific Pricing description or access contract")
+        if "paid checkout are unavailable" not in description:
+            failures.append("missing disabled-checkout description")
     elif policy["kind"] == "library" and "library" not in title:
         failures.append("missing Library route identity")
-    elif policy["kind"] == "reader" and "dracula" not in title:
+    elif policy["kind"] == "reader" and normalize(policy["title"]) not in title:
         failures.append("missing Reader route identity")
     elif policy["kind"] == "private_library":
         if title != "my library | the earnalism" or "my library" not in h1:

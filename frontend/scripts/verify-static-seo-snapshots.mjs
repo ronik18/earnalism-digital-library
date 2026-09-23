@@ -5,9 +5,11 @@ import { fileURLToPath } from "node:url";
 const frontendDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const buildDir = path.join(frontendDir, "build");
 const contractDir = path.join(frontendDir, "static-seo");
-const accessCopy = "Read the first 3 pages free. Listening requires an active Reading Pass.";
+const accessCopy = "The three India pilot editions are free to read in full after sign-in; the first 3 pages are public. Audiobooks and paid checkout are unavailable.";
 const heldCopy = "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed.";
 const forbidden = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
+const paidContinuation = ["Listening requires an active Reading Pass", "View Reading Passes", "Reading time is used only while you read"];
+const indiaPilotSlugs = ["a-ghost-story", "radharani", "the-tell-tale-heart"];
 
 const json = async (file) => JSON.parse(await readFile(file, "utf8"));
 const snapshotFile = (route) => route === "/" ? path.join(buildDir, "index.html") : path.join(buildDir, route.replace(/^\/+/, ""), "index.html");
@@ -34,6 +36,7 @@ async function main() {
 
   const releaseHeld = publication.public_release_held === true;
   if (publication.schema_version !== "earnalism.static-seo-public.v2" || !Object.values(publication.generated_from || {}).every(isSha) || (releaseHeld ? publication.publications.length !== 0 : publication.publications.length === 0)) fail("Publication contract provenance is invalid", state);
+  if (!releaseHeld && (publication.publications.length !== indiaPilotSlugs.length || publication.publications.some((book) => !indiaPilotSlugs.includes(book.slug) || book.audio_availability_state !== "disabled"))) fail("Publication contract exceeds the free India pilot", state);
   if (editorial.schema_version !== "earnalism.static-seo-editorial.v1" || !isSha(editorial.generated_from && editorial.generated_from["https://api.theearnalism.com/api/blog"])) fail("Editorial contract provenance is invalid", state);
   if (manifest.schema_version !== "earnalism.static-seo-snapshots.v2") fail("Snapshot manifest version is invalid", state);
   if (new Set(manifest.routes.map((item) => item.route)).size !== manifest.routes.length) fail("Snapshot manifest has duplicate routes", state);
@@ -70,10 +73,24 @@ async function main() {
       state.assertions += 1;
       if (normalized.includes(phrase.toLowerCase())) fail(route + " contains forbidden copy: " + phrase, state);
     }
-    if (route === "/" || route === "/library" || route === "/pricing" || route.startsWith("/book/") || route.startsWith("/reader/") || route.startsWith("/listener/")) {
+    for (const phrase of paidContinuation) {
       state.assertions += 1;
-      const requiredAccessCopy = releaseHeld && ["/", "/library", "/pricing"].includes(route) ? heldCopy : accessCopy;
+      if (!releaseHeld && normalized.includes(phrase.toLowerCase())) fail(route + " contains stale paid-access copy: " + phrase, state);
+    }
+    if (route === "/" || route === "/library" || route.startsWith("/book/") || route.startsWith("/reader/") || route.startsWith("/listener/")) {
+      state.assertions += 1;
+      const requiredAccessCopy = releaseHeld && ["/", "/library"].includes(route) ? heldCopy : accessCopy;
       if (!normalized.includes(requiredAccessCopy.toLowerCase())) fail(route + " is missing the applicable access contract", state);
+    }
+    if (route === "/pricing") {
+      state.assertions += 1;
+      if (!normalized.includes((releaseHeld ? heldCopy : "Reading Passes and paid checkout are unavailable in this launch").toLowerCase())) fail(route + " must describe disabled checkout", state);
+      if (!normalized.includes('name="robots" content="noindex,follow"')) fail(route + " must be noindex", state);
+    }
+    if (route.startsWith("/book/")) {
+      state.assertions += 2;
+      if (!normalized.includes('"isaccessibleforfree":true')) fail(route + " must mark the released book free", state);
+      if (!normalized.includes("read the complete edition free")) fail(route + " must offer full free reading", state);
     }
     if (route === "/journal" || route.startsWith("/journal/") || route === "/contact") {
       state.assertions += 1;
