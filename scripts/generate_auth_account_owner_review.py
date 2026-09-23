@@ -36,7 +36,7 @@ def review_html(records: list[dict]) -> str:
         for item in records
     )
     return f'''<!doctype html><html><head><meta charset="utf-8"><title>Earnalism auth and account owner review</title><style>
-body{{margin:0;background:#f6f1e8;color:#1a211c;font:16px system-ui,sans-serif}}header{{padding:22px;background:#0b1512;color:#fff8ea}}main{{max-width:1480px;margin:auto;padding:28px}}section{{margin:0 0 44px;padding:20px;background:#fffdf8;border:1px solid #d5c59f;border-radius:14px}}h1,h2{{font-family:Georgia,serif}}.comparison{{display:grid;grid-template-columns:1fr 1fr;gap:18px}}figure{{margin:0;border:1px solid #dfd2b4;padding:8px;background:white}}img{{width:100%;display:block}}figcaption{{margin-top:8px;font-size:13px}}pre{{overflow:auto;background:#0b1512;color:#fff8ea;padding:14px;font-size:12px}}@media(max-width:720px){{.comparison{{grid-template-columns:1fr}}}}</style></head><body><header><h1>Auth and Account visual owner review</h1><p>PR #338 · deterministic local fixtures · animation disabled · UTC / en-US</p></header><main><section><h2>Validation summary</h2><p>All captures must have status 200, required components present, zero console/page errors, and zero horizontal overflow. The product contract remains: <strong>Read the first 3 pages free. Listening requires an active Reading Pass.</strong></p></section>{sections}</main></body></html>'''
+body{{margin:0;background:#f6f1e8;color:#1a211c;font:16px system-ui,sans-serif}}header{{padding:22px;background:#0b1512;color:#fff8ea}}main{{max-width:1480px;margin:auto;padding:28px}}section{{margin:0 0 44px;padding:20px;background:#fffdf8;border:1px solid #d5c59f;border-radius:14px}}h1,h2{{font-family:Georgia,serif}}.comparison{{display:grid;grid-template-columns:1fr 1fr;gap:18px}}figure{{margin:0;border:1px solid #dfd2b4;padding:8px;background:white}}img{{width:100%;display:block}}figcaption{{margin-top:8px;font-size:13px}}pre{{overflow:auto;background:#0b1512;color:#fff8ea;padding:14px;font-size:12px}}@media(max-width:720px){{.comparison{{grid-template-columns:1fr}}}}</style></head><body><header><h1>Auth and Account visual owner review</h1><p>PR #414 · deterministic local fixtures · animation disabled · UTC / en-US</p></header><main><section><h2>Validation summary</h2><p>All captures must have status 200, required components present, zero console/page errors, and zero horizontal overflow. The three India pilot Reader editions are free in full; public audio and paid commerce are unavailable for this launch.</p></section>{sections}</main></body></html>'''
 
 
 def main() -> int:
@@ -57,7 +57,7 @@ def main() -> int:
         "signup": (root / "frontend/src/pages/Signup.jsx").read_text(),
         "account": (root / "frontend/src/pages/Account.jsx").read_text(),
     }
-    locked_sentence = "Read the first 3 pages free. Listening requires an active Reading Pass."
+    locked_sentence = "The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch."
     copy_contract = {
         "locked_product_sentence": all(locked_sentence in source for source in sources.values()),
         "signup_accessibility_copy_library_wide": "Create an account to manage your Reading Pass and return to your place across eligible books." in sources["signup"],

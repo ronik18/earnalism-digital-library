@@ -411,7 +411,8 @@ describe("UX conversion static signals", () => {
     expect(library).toContain("Reader and listening routes open only when their editorial and release checks are complete.");
     expect(library).toContain("Request an update");
     expect(bookDetail).toContain('data-testid="start-reading"');
-    expect(bookDetailPresentation).toContain('primaryReadLabel: readerRuntimeAvailable ? "Start Reading" : readerReady ? "Browse the Library" : "Back to Library"');
+    expect(bookDetailPresentation).toContain('primaryReadLabel: readerRuntimeAvailable ? (freeReading ? "Start Reading Free" : "Start Reading") : readerReady ? "Browse the Library" : "Back to Library"');
+    expect(bookDetailPresentation).toContain('book?._readerManifest?.access?.reading_pass?.free_entitlement === true');
     expect(bookDetailPresentation).toContain('primaryReadHref: readerRuntimeAvailable ? readerHref : "/library"');
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
     expect(bookDetail).toContain("Audio:</strong> Audiobooks appear only after release-gate evidence approves them.");
@@ -1468,11 +1469,11 @@ describe("UX conversion static signals", () => {
 
   test("login signup account and default SEO use the approved access contract without overclaiming", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
-    expect(login).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
+    expect(login).toContain("The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
+    expect(signup).toContain("The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
-    expect(account).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
+    expect(account).toContain("The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.");
     expect(account).toContain("Continue reading");
     expect(account).not.toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');
