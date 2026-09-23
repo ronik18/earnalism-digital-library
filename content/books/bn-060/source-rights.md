@@ -17,3 +17,9 @@
 - None
 
 Reader-facing Earnalism editions must not expose internal admin-only evidence files.
+
+## Sprint 1 evidence correction (2026-09-24)
+
+The earlier `ready_for_auto_publication` / `Blockers: None` assertion is superseded. The underlying work has India term evidence; the 1873 Wikisource transcription is CC BY-SA 4.0. A revision-bound diagnostic compared seven of eight chapters; normalized similarity was 0.98913–0.99548, with source headings/front matter still present and no complete mismatch classification. Chapter eight could not be fetched after HTTP 429. This is not `TEXT_VERIFIED`; the stored raw source and prior hashes do not close the discrepancy. This candidate remains held and is not publishable from this note.
+
+Hash-bound cohort record: `data/title_rights_evidence/bengali-bankim-cohort-1.json` (`bn-060`).

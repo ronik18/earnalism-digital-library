@@ -17,3 +17,9 @@
 - None
 
 Reader-facing Earnalism editions must not expose internal admin-only evidence files.
+
+## Sprint 1 evidence correction (2026-09-24)
+
+The earlier `ready_for_auto_publication` / `Blockers: None` assertion is superseded. The underlying Bankim work has India term evidence. The identified Wikisource source is the 1874 third edition, licensed as a CC BY-SA 4.0 transcription. The repository's 1869 first-publication claim is not independently bound to a primary bibliography here, and exact source comparison is incomplete. This candidate remains held and is not publishable from this note.
+
+Hash-bound cohort record: `data/title_rights_evidence/bengali-bankim-cohort-1.json` (`mrinalini`).
