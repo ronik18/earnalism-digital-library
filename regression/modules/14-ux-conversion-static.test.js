@@ -1747,21 +1747,21 @@ describe("UX conversion static signals", () => {
 
   test("built homepage and reader snapshots follow controlled launch SEO policy", () => {
     const homeHtml = readOptional("frontend/build/index.html");
-    const readerHtml = readOptional("frontend/build/reader/dracula/index.html");
+    const readerHtml = readOptional("frontend/build/reader/a-ghost-story/index.html");
     if (!homeHtml || !readerHtml) {
       expect(staticSnapshotGenerator).toContain("A calm digital reading room for timeless Bengali and English literature.");
-      expect(staticSnapshotGenerator).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
+      expect(staticSnapshotGenerator).toContain("The three India pilot editions are free to read in full after sign-in; the first 3 pages are public. Audiobooks and paid checkout are unavailable.");
       return;
     }
 
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("Read the first 3 pages free. Listening requires an active Reading Pass.");
+    expect(homeHtml).toContain("The three India pilot editions are free to read in full after sign-in; the first 3 pages are public. Audiobooks and paid checkout are unavailable.");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
     expect(homeHtml).not.toContain("Preview every book before you pay");
     expect(metaContent(readerHtml, "name", "robots")).toContain("noindex");
-    expect(canonicalHref(readerHtml)).toBe("https://theearnalism.com/book/dracula");
+    expect(canonicalHref(readerHtml)).toBe("https://theearnalism.com/book/a-ghost-story");
   });
 
   test("official social links render by default and survive empty runtime settings", () => {
