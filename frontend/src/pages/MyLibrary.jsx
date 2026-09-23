@@ -1,8 +1,9 @@
-import { ArrowUpRight, BookOpen, Clock3, Headphones, LibraryBig, Sparkles } from "lucide-react";
+import { ArrowUpRight, BookOpen, Headphones, LibraryBig, Sparkles } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import ExperienceBottomNavigation from "../experiences-v2/shared/ExperienceBottomNavigation";
 import ExperienceShell from "../experiences-v2/shared/ExperienceShell";
+import { PUBLIC_PAID_COMMERCE_ENABLED } from "../lib/controlledLaunch";
 import "./MyLibrary.css";
 
 export default function MyLibrary() {
@@ -39,7 +40,7 @@ export default function MyLibrary() {
             <p>Browse with release status in view. When an edition needs more time, its next action will say so plainly.</p>
             <div className="my-library-v2__next-links">
               <Link to="/library">Explore the Library <ArrowUpRight size={14} aria-hidden="true" /></Link>
-              <Link to="/pricing"><Clock3 size={14} aria-hidden="true" /> View Reading Passes</Link>
+              {PUBLIC_PAID_COMMERCE_ENABLED && <Link to="/pricing"><Clock3 size={14} aria-hidden="true" /> View Reading Passes</Link>}
             </div>
           </aside>
         </div>

@@ -43,12 +43,12 @@ export default function Signup() {
     <AuthPageShell
       eyebrow="Open a reading account"
       title={<>A library that <span className="italic-accent">remembers</span> you.</>}
-      introduction="Keep your reading balance, activity, and approved library access in one calm place."
+      introduction="Keep your place and approved library access in one calm place."
       testId="user-signup-page"
       footer={<p className="mt-8 text-center text-sm font-light text-charcoal-soft">Already a reader? <Link to="/login" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-login">Sign in</Link></p>}
     >
         <div className="auth-account-note mt-5 rounded-xl border px-4 py-3 text-xs leading-relaxed text-charcoal-soft" data-testid="signup-wallet-note">
-          Read the first 3 pages free. Listening requires an active Reading Pass.
+          The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.
         </div>
 
         <form onSubmit={submit} className="auth-account-form mt-8 space-y-4" data-testid="user-signup-form" aria-describedby="signup-wallet-help">

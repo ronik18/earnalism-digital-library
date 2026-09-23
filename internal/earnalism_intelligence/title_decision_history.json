@@ -49,6 +49,7 @@
       "updated_at": "2026-08-14T15:42:07Z"
     },
     "a-ghost-story": {
+      "india_pilot_free_reader_entitlement": "SOURCE_CANDIDATE_LOCAL_TESTS_PASS_PENDING_EXACT_HEAD_CI_AND_DEPLOYMENT",
       "latest_decision": "PACKAGE_V2_FULL_PROMOTION_PRODUCTION_GREEN",
       "decision_reason": "The exact full-promotion merge and Railway deployment are green. Both former rollout identities and the public request received the same exact package manifest; 78 production HTTP checks passed; and a real customer browser played c001-s001, naturally auto-advanced to c001-s002 without a seek or synthetic event, advanced playback, and reported no media or console error. The approved legacy descriptor remains retained for rollback.",
       "updated_at": "2026-07-30T12:32:40Z",
@@ -886,6 +887,7 @@
       "public_release_status": "AUDIO_HIDDEN_NO_RELEASE_GATE_CHANGE"
     },
     "radharani": {
+      "india_pilot_free_reader_entitlement": "SOURCE_CANDIDATE_LOCAL_TESTS_PASS_PENDING_EXACT_HEAD_CI_AND_DEPLOYMENT",
       "latest_decision": "RADHARANI_SAARAS_STRICT_RAW_ASR_EXACT_CONTENT_AND_SYNC_NO_GO",
       "decision_reason": "Saaras v3 improved diagnostic normalized and phonetic scores, but all three raw scores remained below 9.7 and strict reanalysis found unexplained gaps in every sample. Sarvam supplied segment-only timing and local forced alignment was low-confidence, so no objective or downstream release gate passed.",
       "updated_at": "2026-07-22T20:18:07Z",
@@ -2806,6 +2808,7 @@
       "audiobook_next_action": "Keep Pride audio hidden and do not repeat the closed Chatterbox V3 fingerprint. Require one genuinely different exact source-bound delivery, then rerun objective ASR, coverage, first/last, and ordered-content gates before any listening spend."
     },
     "the-tell-tale-heart": {
+      "india_pilot_free_reader_entitlement": "SOURCE_CANDIDATE_LOCAL_TESTS_PASS_PENDING_EXACT_HEAD_CI_AND_DEPLOYMENT",
       "latest_decision": "CANONICAL_COVER_PAIR_COMPLETE_AUDIO_REMAINS_HIDDEN",
       "decision_reason": "The exact Redon-derived 1600 x 2400 front/back pair passed full and thumbnail review, public-domain rights verification, private content-addressed upload, remote checksum verification, and atomic mirrored canonical promotion. The failed CosyVoice3 audio fingerprint remains closed and audio remains hidden.",
       "updated_at": "2026-07-30T14:07:04Z",

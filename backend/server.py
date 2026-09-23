@@ -167,7 +167,7 @@ try:
         public_text_page,
         segment_manifest,
     )
-    from backend.reading_pass_service import ReadingPassService
+    from backend.reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS
 except ImportError:  # pragma: no cover - supports uvicorn from backend/
     from domain.reading_pass import (  # type: ignore
         PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -180,7 +180,7 @@ except ImportError:  # pragma: no cover - supports uvicorn from backend/
         public_text_page,
         segment_manifest,
     )
-    from reading_pass_service import ReadingPassService  # type: ignore
+    from reading_pass_service import ReadingPassService, FREE_INDIA_READER_ENTITLEMENT, FREE_INDIA_READER_SLUGS  # type: ignore
 
 try:
     from backend.domain.catalog import (
@@ -1673,6 +1673,36 @@ def _is_release_proxy_protected_path(path: str) -> bool:
         or path.startswith("/api/reader/")
         or path.startswith("/api/reading-pass/books/")
     )
+
+
+RELEASE_PROXY_FREE_SESSION_PATHS = frozenset({
+    "/api/reading-pass/sessions/start",
+    "/api/reading-pass/sessions/transfer",
+    "/api/reading-pass/leases/renew",
+})
+
+
+def _free_india_reader_verdict(request: Request, slug: str) -> bool:
+    """Only an authenticated India proxy assertion plus accepted text delivery grants free time."""
+    if not _is_controlled_public_slug(slug) or slug not in FREE_INDIA_READER_SLUGS:
+        return False
+    proxy_verdict = _release_proxy_access_verdict(request)
+    if not proxy_verdict.allowed or proxy_verdict.country != "IN":
+        return False
+    record, components = _release_rights_artifact(slug)
+    try:
+        accepted, revoked = load_production_registry()
+    except (OSError, ValueError, TypeError, _json.JSONDecodeError):
+        return False
+    # A free, non-commercial lease is a delivery control; it does not assert
+    # a paid Reading Pass grant that the accepted decision did not contain.
+    verdict = evaluate_runtime_path(
+        "free_reader_entitlement", record=record, edition_id=slug,
+        operator_id=RELEASE_RIGHTS_OPERATOR_ID, country="IN", country_trusted=True,
+        required_components=components, accepted_records=accepted,
+        revoked_decision_ids=revoked, now=datetime.now(timezone.utc),
+    )
+    return verdict.passed is True
 
 
 def _release_proxy_access_verdict(request: Request):
@@ -5319,13 +5349,15 @@ async def enforce_public_release_country(request: Request, call_next):
     if (
         ENVIRONMENT == "production"
         and PUBLIC_READER_EXPOSURE_ENABLED
-        and _is_release_proxy_protected_path(request.url.path)
+        and (_is_release_proxy_protected_path(request.url.path) or request.url.path in RELEASE_PROXY_FREE_SESSION_PATHS)
     ):
         verdict = _release_proxy_access_verdict(request)
         if not verdict.allowed:
             status = 503 if verdict.code == "RELEASE_PROXY_CONFIGURATION_REQUIRED" else 451
             return JSONResponse(status_code=status, content={"detail": {"code": verdict.code}})
-        rights_verdict = _release_rights_verdict(request, country=verdict.country)
+        if request.url.path in RELEASE_PROXY_FREE_SESSION_PATHS and verdict.country != "IN":
+            return JSONResponse(status_code=451, content={"detail": {"code": "RELEASE_RIGHTS_DENIED"}})
+        rights_verdict = _release_rights_verdict(request, country=verdict.country) if _is_release_proxy_protected_path(request.url.path) else DecisionGateVerdict(True, ())
         if should_deny_runtime_action(rights_verdict, strict_enforcement_enabled=True):
             # Do not disclose title, evidence, or decision-reason details to a
             # public caller. A missing or changed accepted record is a hold.
@@ -8986,6 +9018,10 @@ async def reader_book_manifest(
     segment_state = await _active_reader_segment_manifest(slug) if READING_PASS_V2_ENABLED else None
     access["reading_pass"] = {
         "enabled": bool(READING_PASS_V2_ENABLED),
+        "free_entitlement": bool(
+            PUBLIC_READER_EXPOSURE_ENABLED
+            and slug in FREE_INDIA_READER_SLUGS
+        ),
         "segments_ready": bool(segment_state),
         "public_text_pages": PUBLIC_TEXT_PAGE_COUNT,
         "public_audio_seconds": PUBLIC_AUDIO_PREVIEW_SECONDS,
@@ -10716,6 +10752,11 @@ async def reading_pass_book_page(
         except ReadingPassError as exc:
             raise _reading_pass_http_error(exc) from exc
         scope = session_doc.get("scope") if isinstance(session_doc.get("scope"), dict) else {}
+        if ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED and (
+            session_doc.get("entitlement_kind") != FREE_INDIA_READER_ENTITLEMENT
+            or scope.get("release_country") != "IN"
+        ):
+            raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED"})
         segmentation_version = str(scope.get("segmentation_version") or "")
         manifest_version = str(scope.get("manifest_version") or "")
         if not segmentation_version or not manifest_version:
@@ -10765,7 +10806,7 @@ async def reading_pass_book_page(
     }
 
 
-async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, response: Response, *, transfer: bool) -> dict:
+async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, response: Response, *, transfer: bool, request: Request | None = None) -> dict:
     _reading_pass_enabled_or_404()
     content_type = str(payload.content_type or "").lower()
     scope: dict[str, Any] = {}
@@ -10858,6 +10899,11 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             "manifest_version": manifest["version"],
             "authority_activation_generation": activation_state["generation"],
         }
+        free_entitlement = bool(request and _free_india_reader_verdict(request, canonical_content_id))
+        if request is not None and ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED and not free_entitlement:
+            raise HTTPException(status_code=451, detail={"code": "RELEASE_RIGHTS_DENIED"})
+        if free_entitlement:
+            scope["release_country"] = "IN"
     elif content_type == "audio":
         position = float(payload.media_position_seconds or 0)
         if position < PUBLIC_AUDIO_PREVIEW_SECONDS:
@@ -10878,6 +10924,7 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             content_id=canonical_content_id if content_type == "text" else payload.content_id,
             scope=scope,
             transfer=transfer,
+            free_entitlement=free_entitlement if content_type == "text" else False,
         )
         await _invalidate_user_cache(user["id"])
         _set_reading_pass_media_cookies(response, result)
@@ -10893,13 +10940,13 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
 
 
 @api.post("/reading-pass/sessions/start")
-async def reading_pass_session_start(payload: ReadingPassSessionStartIn, response: Response, user=Depends(require_user)):
-    return await _reading_pass_start(payload, user, response, transfer=False)
+async def reading_pass_session_start(payload: ReadingPassSessionStartIn, request: Request, response: Response, user=Depends(require_user)):
+    return await _reading_pass_start(payload, user, response, transfer=False, request=request)
 
 
 @api.post("/reading-pass/sessions/transfer")
-async def reading_pass_session_transfer(payload: ReadingPassSessionStartIn, response: Response, user=Depends(require_user)):
-    return await _reading_pass_start(payload, user, response, transfer=True)
+async def reading_pass_session_transfer(payload: ReadingPassSessionStartIn, request: Request, response: Response, user=Depends(require_user)):
+    return await _reading_pass_start(payload, user, response, transfer=True, request=request)
 
 
 @api.post("/reading-pass/leases/renew")
@@ -10916,7 +10963,7 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
     text_authority = "allowed"
     session_hint = await db.reading_pass_sessions.find_one(
         {"id": payload.session_id, "user_id": user["id"]},
-        {"_id": 0, "content_type": 1, "content_id": 1},
+        {"_id": 0, "content_type": 1, "content_id": 1, "entitlement_kind": 1},
     )
     if session_hint and session_hint.get("content_type") == "text":
         try:
@@ -10926,6 +10973,12 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
             text_authority = "unavailable"
         else:
             text_authority = "allowed" if current_book else "denied"
+        if ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED:
+            text_authority = "allowed" if (
+                text_authority == "allowed"
+                and session_hint.get("entitlement_kind") == FREE_INDIA_READER_ENTITLEMENT
+                and _free_india_reader_verdict(request, str(session_hint.get("content_id") or ""))
+            ) else "denied"
     try:
         result = await reading_pass_service.renew_lease(
             user_id=user["id"],

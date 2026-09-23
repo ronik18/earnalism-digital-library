@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import EarnalismBrandLockup from "./EarnalismBrandLockup";
+import { PUBLIC_PAID_COMMERCE_ENABLED } from "../lib/controlledLaunch";
 import "../styles/auth-account.css";
 
 export default function AuthPageShell({ eyebrow, title, introduction, children, footer, testId }) {
@@ -12,11 +13,11 @@ export default function AuthPageShell({ eyebrow, title, introduction, children, 
             <p className="auth-account-aside-title mt-10">A library designed for attention, not interruption.</p>
             <div className="auth-account-aside-points" aria-label="Account benefits">
               <span>Keep your place across devices</span>
-              <span>See your Reading Pass balance clearly</span>
+              <span>{PUBLIC_PAID_COMMERCE_ENABLED ? "See your Reading Pass balance clearly" : "Read released India pilot editions free"}</span>
               <span>Manage access whenever you need to</span>
             </div>
           </div>
-          <p className="auth-account-aside-note">Read the first 3 pages free. Listening requires an active Reading Pass.</p>
+          <p className="auth-account-aside-note">The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.</p>
         </aside>
         <div className="auth-account-auth-content p-7 sm:p-10 lg:p-12">
           <Link to="/" className="auth-account-mobile-brand inline-flex rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-burgundy lg:hidden" aria-label="The Earnalism home">

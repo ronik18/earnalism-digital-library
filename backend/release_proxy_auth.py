@@ -57,7 +57,15 @@ def verify_release_proxy_request(
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_CONFIGURATION_REQUIRED")
     if not isinstance(path, str) or not path.startswith("/api/"):
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_PATH_INVALID")
-    if not isinstance(method, str) or method.upper() not in {"GET", "HEAD"}:
+    signed_post_paths = {
+        "/api/reading-pass/sessions/start",
+        "/api/reading-pass/sessions/transfer",
+        "/api/reading-pass/leases/renew",
+    }
+    if not isinstance(method, str) or (
+        method.upper() not in {"GET", "HEAD"}
+        and not (method.upper() == "POST" and path in signed_post_paths)
+    ):
         return ReleaseProxyVerdict(False, "RELEASE_PROXY_METHOD_INVALID")
 
     normalized_headers = {str(key).lower(): str(value) for key, value in headers.items()}

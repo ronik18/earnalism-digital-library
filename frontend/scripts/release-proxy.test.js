@@ -2,6 +2,7 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 const fs = require("node:fs");
 const path = require("node:path");
+const { Readable } = require("node:stream");
 const releaseProxy = require("../api/[...proxy]");
 const { protectedReaderPath, releaseSignature } = releaseProxy;
 
@@ -14,6 +15,10 @@ test("release proxy signs only the fixed Reader/catalogue surface", () => {
   assert.equal(protectedReaderPath("/api/books"), true);
   assert.equal(protectedReaderPath("/api/reader/book/a-ghost-story/manifest"), true);
   assert.equal(protectedReaderPath("/api/reading-pass/books/a-ghost-story/manifest"), true);
+  assert.equal(protectedReaderPath("/api/reading-pass/sessions/start"), true);
+  assert.equal(protectedReaderPath("/api/reading-pass/sessions/transfer"), true);
+  assert.equal(protectedReaderPath("/api/reading-pass/leases/renew"), true);
+  assert.equal(protectedReaderPath("/api/reading-pass/sessions/end"), false);
   assert.equal(protectedReaderPath("/api/admin/books"), false);
   assert.equal(protectedReaderPath("/api/payments/topup"), false);
 });
@@ -112,6 +117,36 @@ test("India request forwards the proxy-observed country in the signed assertion"
     assert.match(forwarded.get("x-earnalism-release-signature"), /^[a-f0-9]{64}$/);
     assert.equal(response.headers["Cache-Control"], "private, no-store");
     assert.equal(response.headers["Vercel-CDN-Cache-Control"], "no-store");
+  } finally {
+    global.fetch = previousFetch;
+    if (previousSecret === undefined) delete process.env.EARNALISM_RELEASE_PROXY_SECRET;
+    else process.env.EARNALISM_RELEASE_PROXY_SECRET = previousSecret;
+  }
+});
+
+test("only the India release proxy can forward a signed free Reader session start", async () => {
+  const previousSecret = process.env.EARNALISM_RELEASE_PROXY_SECRET;
+  const previousFetch = global.fetch;
+  process.env.EARNALISM_RELEASE_PROXY_SECRET = "release-proxy-test-secret-that-is-long-enough";
+  let upstream;
+  global.fetch = async (_url, options) => {
+    upstream = options;
+    return { status: 204, headers: new Headers(), arrayBuffer: async () => new ArrayBuffer(0) };
+  };
+  try {
+    const request = Readable.from([Buffer.from('{"content_type":"text"}')]);
+    Object.assign(request, {
+      url: "/api/[...proxy]?proxy_path=reading-pass/sessions/start",
+      method: "POST",
+      headers: { "x-vercel-ip-country": "IN", "content-type": "application/json" },
+    });
+    const response = { statusCode: 200, headers: {}, setHeader(key, value) { this.headers[key] = value; }, end() {} };
+    await releaseProxy(request, response);
+    assert.equal(response.statusCode, 204);
+    assert.equal(upstream.method, "POST");
+    assert.equal(upstream.headers.get("x-earnalism-release-country"), "IN");
+    assert.match(upstream.headers.get("x-earnalism-release-signature"), /^[a-f0-9]{64}$/);
+    assert.equal(upstream.body.toString(), '{"content_type":"text"}');
   } finally {
     global.fetch = previousFetch;
     if (previousSecret === undefined) delete process.env.EARNALISM_RELEASE_PROXY_SECRET;

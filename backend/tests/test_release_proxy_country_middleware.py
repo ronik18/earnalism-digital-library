@@ -18,10 +18,10 @@ from backend.rights_decision_gate import DecisionGateVerdict
 SECRET = "release-proxy-test-secret-that-is-long-enough"
 
 
-def request_with_headers(headers: dict[str, str], *, path: str = "/api/books") -> Request:
+def request_with_headers(headers: dict[str, str], *, path: str = "/api/books", method: str = "GET") -> Request:
     return Request({
         "type": "http",
-        "method": "GET",
+        "method": method,
         "path": path,
         "headers": [(key.encode("latin-1"), value.encode("latin-1")) for key, value in headers.items()],
         "query_string": b"",
@@ -41,6 +41,33 @@ def test_public_reader_release_rejects_direct_api_requests(monkeypatch):
     response = asyncio.run(server.enforce_public_release_country(request_with_headers({}), next_response))
     assert response.status_code == 451
     assert response.body == b'{"detail":{"code":"RELEASE_PROXY_SCOPE_INVALID"}}'
+
+
+def test_free_session_proxy_and_hash_bound_rights_are_required_for_each_pilot(monkeypatch):
+    monkeypatch.setattr(server, "ENVIRONMENT", "production")
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
+    path = "/api/reading-pass/sessions/start"
+    timestamp = int(datetime.now(timezone.utc).timestamp())
+    headers = {
+        SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
+        COUNTRY_HEADER: "IN",
+        TIMESTAMP_HEADER: str(timestamp),
+        SIGNATURE_HEADER: request_signature(SECRET, "POST", path, PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
+    }
+    request = request_with_headers(headers, path=path, method="POST")
+    for slug in ("a-ghost-story", "the-tell-tale-heart", "radharani"):
+        assert server._free_india_reader_verdict(request, slug) is True
+    for slug in ("yugalanguriya", "dracula", "unlisted-book"):
+        assert server._free_india_reader_verdict(request, slug) is False
+    assert server._free_india_reader_verdict(request_with_headers({}, path=path, method="POST"), "a-ghost-story") is False
+    assert asyncio.run(server.enforce_public_release_country(request_with_headers({}, path=path, method="POST"), next_response)).status_code == 451
+
+    us_headers = {**headers, COUNTRY_HEADER: "US"}
+    us_headers[SIGNATURE_HEADER] = request_signature(SECRET, "POST", path, PUBLIC_RELEASE_SCOPE, timestamp, "US")
+    us_request = request_with_headers(us_headers, path=path, method="POST")
+    assert server._free_india_reader_verdict(us_request, "a-ghost-story") is False
+    assert asyncio.run(server.enforce_public_release_country(us_request, next_response)).status_code == 451
 
 
 def test_public_reader_release_accepts_fresh_signed_india_request(monkeypatch):

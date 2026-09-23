@@ -1,4 +1,5 @@
 import { BookOpen, House, LibraryBig, UserRound } from "lucide-react";
+import { PUBLIC_PAID_COMMERCE_ENABLED } from "../../lib/controlledLaunch";
 
 const ITEMS = [
   { key: "home", label: "Home", Icon: House },
@@ -8,5 +9,5 @@ const ITEMS = [
 ];
 
 export default function ExperienceBottomNavigation({ active = "", onNavigate }) {
-  return <nav className="experience-bottom-nav" aria-label="Primary navigation">{ITEMS.map(({ key, label, Icon }) => <button key={key} type="button" aria-current={active === key ? "page" : undefined} onClick={() => onNavigate?.(key)}><Icon size={17} aria-hidden="true" /><span>{label}</span></button>)}</nav>;
+  return <nav className="experience-bottom-nav" aria-label="Primary navigation">{ITEMS.filter(({ key }) => key !== "passes" || PUBLIC_PAID_COMMERCE_ENABLED).map(({ key, label, Icon }) => <button key={key} type="button" aria-current={active === key ? "page" : undefined} onClick={() => onNavigate?.(key)}><Icon size={17} aria-hidden="true" /><span>{label}</span></button>)}</nav>;
 }

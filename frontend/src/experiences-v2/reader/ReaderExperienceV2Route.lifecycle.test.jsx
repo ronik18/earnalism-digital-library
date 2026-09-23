@@ -81,6 +81,22 @@ test("a cached guest manifest cannot replace the authenticated profile balance w
   expect(pass.startReadingPassSession).not.toHaveBeenCalled();
 });
 
+test("a free pilot entitlement opens the final canonical page with zero wallet balance and no purchase prompt", async () => {
+  mockUser = { id: "test-reader", reading_seconds_balance: 0 };
+  const freeManifest = manifest("a-ghost-story");
+  freeManifest.access.reading_pass.free_entitlement = true;
+  userApi.get.mockResolvedValue({ data: freeManifest });
+  pass.startReadingPassSession.mockResolvedValue(response({ content_id: "a-ghost-story", balance_seconds: 0, deducted_seconds: 0, entitlement_kind: "india_pilot_free_text" }));
+  await mount("/reader/a-ghost-story?p=7");
+  expect(text()).toContain("Sign in to continue reading this edition free.");
+  await click("Continue to this page");
+  expect(text()).toContain("Page 7 manuscript.");
+  expect(text()).toContain("Free Reader access");
+  expect(text()).not.toContain("Extend Reading Time");
+  expect(text()).not.toContain("View Reading Passes");
+  expect(pass.startReadingPassSession).toHaveBeenCalledWith({ bookSlug: "a-ghost-story", pageIndex: 7 });
+});
+
 test.each([undefined, null, "600", -1, 1.5])("an invalid profile balance %p stays unavailable rather than borrowing a manifest balance", async (value) => {
   mockUser = { id: "test-reader", reading_seconds_balance: value };
   await mount("/reader/test-book?p=1");

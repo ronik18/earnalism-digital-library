@@ -8,6 +8,7 @@ import useSEO from "../hooks/useSEO";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { getReadingPassConfig, getReadingPassDevices, revokeReadingPassDevice } from "../lib/readingPassApi";
 import ExperienceBottomNavigation from "../experiences-v2/shared/ExperienceBottomNavigation";
+import { PUBLIC_PAID_COMMERCE_ENABLED } from "../lib/controlledLaunch";
 import "../styles/auth-account.css";
 
 const FALLBACK_SESSION_GAP_MS = 15 * 60 * 1000;
@@ -125,7 +126,7 @@ function AccountProfileMobile({ user, balance, activityCount, readingPassEnabled
         <span>{user.email}</span>
       </div>
       <nav className="account-profile-mobile__actions" aria-label="Account options">
-        <Link to="/pricing" className="account-profile-mobile__row" data-testid="account-profile-mobile-pass"><Clock aria-hidden="true" /><span><b>Reading Pass</b><small>{formatMinutes(balance)} available</small></span><ArrowUpRight aria-hidden="true" /></Link>
+        {PUBLIC_PAID_COMMERCE_ENABLED && <Link to="/pricing" className="account-profile-mobile__row" data-testid="account-profile-mobile-pass"><Clock aria-hidden="true" /><span><b>Reading Pass</b><small>{formatMinutes(balance)} available</small></span><ArrowUpRight aria-hidden="true" /></Link>}
         <a href="#account-transactions" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>Recent activity</b><small>{activityCount ? `${activityCount} recorded activities` : "Your reading will appear here"}</small></span><ArrowUpRight aria-hidden="true" /></a>
         {readingPassEnabled ? <a href="#reading-pass-devices" className="account-profile-mobile__row"><MonitorSmartphone aria-hidden="true" /><span><b>Signed-in devices</b><small>Manage active Reading Pass sessions</small></span><ArrowUpRight aria-hidden="true" /></a> : null}
         <Link to="/library" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>Browse the Library</b><small>Find an edition to begin reading</small></span><ArrowUpRight aria-hidden="true" /></Link>
@@ -301,21 +302,23 @@ export default function Account() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
           <div className="account-panel account-balance-panel p-7 sm:p-8" data-testid="account-balance-card" role="region" aria-labelledby="account-balance-heading">
             <div className="flex items-center gap-2 italic-eyebrow opacity-80">
-              <Clock size={13} strokeWidth={1.5} /> Reading time
+              <Clock size={13} strokeWidth={1.5} /> {PUBLIC_PAID_COMMERCE_ENABLED ? "Reading time" : "Pilot Reader access"}
             </div>
             <h2 id="account-balance-heading" className="account-balance-value font-serif-display text-5xl sm:text-6xl text-burgundy mt-4 leading-none" data-testid="account-balance">
-              {formatMinutes(balance)}
+              {PUBLIC_PAID_COMMERCE_ENABLED ? formatMinutes(balance) : "Free"}
             </h2>
             <div className="gold-rule-thin mt-4" />
             <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">
-              {readingPassEnabled
+              {!PUBLIC_PAID_COMMERCE_ENABLED
+                ? "The three released India pilot editions are free to read in full. Your Reading Pass balance is not used for these books."
+                : readingPassEnabled
                 ? "Reading Pass uses short server leases and a 10-second heartbeat. Reading bills only while protected text is active; listening bills only while approved audio is playing."
                 : "Reading is billed in 30-second pulses only while a chapter is open, visible, and active. Hidden tabs, sleeping devices, and long idle gaps are not charged."}
             </p>
             <p className="mt-3 text-xs leading-relaxed text-charcoal-soft/80" data-testid="account-wallet-explainer">
-              Read the first 3 pages free. Listening requires an active Reading Pass.
+              The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.
             </p>
-            <Link
+            {PUBLIC_PAID_COMMERCE_ENABLED && <Link
               to="/pricing"
               className="inline-flex items-center gap-2 text-[0.72rem] tracking-[0.22em] uppercase text-burgundy mt-6 hover:opacity-70"
               data-testid="account-buy-time"
@@ -325,7 +328,7 @@ export default function Account() {
               })}
             >
               Add reading time <ArrowUpRight size={13} strokeWidth={1.5} />
-            </Link>
+            </Link>}
           </div>
 
           <div className="account-panel account-continue-panel p-7 sm:p-8 flex flex-col">
@@ -333,7 +336,7 @@ export default function Account() {
               <BookOpen size={13} strokeWidth={1.5} /> Continue reading
             </div>
             <p className="font-serif-display text-xl text-charcoal mt-4 leading-snug">
-              Choose an eligible edition from the live shelf. Your time begins only when the words do.
+              Choose one of the released India pilot editions. Reading it will not use your balance.
             </p>
             <div className="mt-auto pt-6">
               <Link

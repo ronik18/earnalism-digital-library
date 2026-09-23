@@ -69,6 +69,9 @@ RUNTIME_PATH_USES: dict[str, tuple[str, ...]] = {
     "reader_preview": ("reader_preview",),
     "reader_chapter": ("reader_delivery",),
     "reading_pass_page": ("reader_delivery",),
+    # A no-price/no-debit text lease enforces an already accepted Reader
+    # delivery decision; it is not a grant for the separate paid Pass product.
+    "free_reader_entitlement": ("reader_delivery",),
     "reading_pass_session_start": ("reading_pass_session",),
     "reading_pass_session_transfer": ("reading_pass_session",),
     "reading_pass_lease_renewal": ("reading_pass_renewal",),

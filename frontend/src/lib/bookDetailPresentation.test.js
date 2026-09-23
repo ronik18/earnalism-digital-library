@@ -3,6 +3,21 @@ import path from "path";
 import { bookDetailPresentationForBook, chapterReaderEntryForBook, readerRuntimeIsAvailable } from "./bookDetailPresentation";
 
 describe("bookDetailPresentation", () => {
+  test("only a server-declared free Reader entitlement changes the book CTA and access copy", () => {
+    const book = {
+      slug: "a-ghost-story", title: "A Ghost Story", publication_status: "LIVE_APPROVED",
+      _readerManifest: { access: { reading_pass: { enabled: true, segments_ready: true, free_entitlement: true } } },
+    };
+    const free = bookDetailPresentationForBook(book);
+    expect(free.freeReading).toBe(true);
+    expect(free.primaryReadLabel).toBe("Start Reading Free");
+    expect(free.readerBody).toMatch(/complete approved edition free/);
+    expect(free.readerBody).toMatch(/no Reading Pass purchase or wallet debit/);
+    const unavailable = bookDetailPresentationForBook({ ...book, _readerManifest: { access: { reading_pass: { enabled: true, segments_ready: false, free_entitlement: true } } } });
+    expect(unavailable.freeReading).toBe(false);
+    expect(unavailable.primaryReadHref).toBe("/library");
+  });
+
   const blockedCanarySlugs = [
     "book-d19e96859f",
     "book-f5d593e1f4",

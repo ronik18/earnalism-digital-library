@@ -38,6 +38,7 @@ export function bookDetailPresentationForBook(book = {}) {
   const audioApproved = audioState.canShowControls === true;
   const readerReady = isReaderReadyBook(book);
   const readerRuntimeAvailable = readerReady && readerRuntimeIsAvailable(book);
+  const freeReading = readerRuntimeAvailable && book?._readerManifest?.access?.reading_pass?.free_entitlement === true;
   const language = languageOfBookDetail(book);
   const slug = text(book.slug || book.id);
   const readerHref = slug ? `/reader/${encodeURIComponent(slug)}` : "/library";
@@ -48,6 +49,7 @@ export function bookDetailPresentationForBook(book = {}) {
     languageLabel: language === "bn" ? "Bengali Classic" : "English Classic",
     titleClassName: language === "bn" ? "book-detail-title book-detail-title--bengali" : "book-detail-title",
     readerRuntimeAvailable,
+    freeReading,
     readerStateLabel: readerReady
       ? (readerRuntimeAvailable ? "Reader Ready" : "Reader currently unavailable")
       : "Reader In Preparation",
@@ -55,7 +57,9 @@ export function bookDetailPresentationForBook(book = {}) {
       ? (readerRuntimeAvailable ? "Reading edition ready" : "Reader currently unavailable")
       : "Reading edition in preparation",
     readerBody: readerRuntimeAvailable
-      ? "Open the text in Earnalism's quiet reader with the current approved edition."
+      ? freeReading
+        ? "Read the complete approved edition free. Sign in to continue beyond the preview; no Reading Pass purchase or wallet debit is required."
+        : "Open the text in Earnalism's quiet reader with the current approved edition."
       : readerReady
         ? "This approved edition cannot be opened while the current Reader service is unavailable. Explore the Library for another title."
         : "This reading edition is still in preparation.",
@@ -74,7 +78,7 @@ export function bookDetailPresentationForBook(book = {}) {
     listenCtaVisible: audioApproved,
     listenCtaLabel: "Open Listening Room",
     listenHref: audioApproved && slug ? `/listener/${encodeURIComponent(slug)}` : "",
-    primaryReadLabel: readerRuntimeAvailable ? "Start Reading" : readerReady ? "Browse the Library" : "Back to Library",
+    primaryReadLabel: readerRuntimeAvailable ? (freeReading ? "Start Reading Free" : "Start Reading") : readerReady ? "Browse the Library" : "Back to Library",
     primaryReadHref: readerRuntimeAvailable ? readerHref : "/library",
     allowAudioStructuredData: audioApproved,
     narrationDisclosure: audioApproved ? audiobookNarrationDisclosure(book) : "",

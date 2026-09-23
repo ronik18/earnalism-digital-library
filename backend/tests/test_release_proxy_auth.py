@@ -80,3 +80,17 @@ def test_malformed_secret_path_and_method_never_open_reader_access():
     assert verify_release_proxy_request(
         headers, method="GET", path="https://api.theearnalism.com/api/books", secret=SECRET, now=NOW,
     ).code == "RELEASE_PROXY_PATH_INVALID"
+
+
+def test_only_fixed_free_reader_session_posts_can_carry_a_signed_india_assertion():
+    path = "/api/reading-pass/sessions/start"
+    timestamp = int(NOW.timestamp())
+    headers = {
+        SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
+        COUNTRY_HEADER: "IN",
+        TIMESTAMP_HEADER: str(timestamp),
+        SIGNATURE_HEADER: request_signature(SECRET, "POST", path, PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
+    }
+    assert verify_release_proxy_request(headers, method="POST", path=path, secret=SECRET, now=NOW).allowed
+    assert not verify_release_proxy_request(headers, method="POST", path="/api/reading-pass/sessions/transfer", secret=SECRET, now=NOW).allowed
+    assert verify_release_proxy_request(headers, method="POST", path="/api/reading-pass/sessions/end", secret=SECRET, now=NOW).code == "RELEASE_PROXY_METHOD_INVALID"

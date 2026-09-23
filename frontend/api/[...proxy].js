@@ -23,7 +23,8 @@ function protectedReaderPath(pathname) {
     || pathname.startsWith("/api/books/")
     || pathname.startsWith("/api/home")
     || pathname.startsWith("/api/reader/")
-    || pathname.startsWith("/api/reading-pass/books/");
+    || pathname.startsWith("/api/reading-pass/books/")
+    || ["/api/reading-pass/sessions/start", "/api/reading-pass/sessions/transfer", "/api/reading-pass/leases/renew"].includes(pathname);
 }
 
 function releaseSignature(secret, method, pathname, scope, timestamp, country) {

@@ -209,3 +209,11 @@ def test_only_literal_false_preserves_deliberate_non_activation():
         assert should_deny_runtime_action(denied, strict_enforcement_enabled=malformed_switch) is True
     assert should_deny_runtime_action({"passed": False}, strict_enforcement_enabled=False) is True
     assert should_deny_runtime_action(DecisionGateVerdict("false", ()), strict_enforcement_enabled=False) is True
+
+
+def test_free_reader_lease_is_bound_to_delivery_right_and_not_a_paid_pass_grant():
+    record = synthetic_record(decision_id="accepted-test-record")
+    record["uses"] = ["reader_delivery"]
+    assert runtime_verdict("free_reader_entitlement", record).passed is True
+    assert runtime_verdict("reading_pass_session_start", record).passed is False
+    assert runtime_verdict("free_reader_entitlement", record, country="US").passed is False
