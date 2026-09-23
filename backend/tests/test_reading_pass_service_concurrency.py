@@ -71,6 +71,28 @@ def test_free_entitlement_rejects_held_other_territory_and_audio(content_type, s
     asyncio.run(scenario())
 
 
+def test_metered_lease_is_bound_to_user_auth_and_title_without_a_page_debit():
+    async def scenario():
+        database = Database(balance=120)
+        service = ReadingPassService(db=database, client=Client(), config=ReadingPassConfig(), token_secret="test-secret")
+        started = await _start_revocable_text(service, database)
+        for user_id, auth_session_id, content_id in [
+            ("other-user", "auth-1", "book-1"),
+            ("user-1", "other-auth", "book-1"),
+            ("user-1", "auth-1", "other-book"),
+        ]:
+            with pytest.raises(ReadingPassError) as denied:
+                await service.authorize(
+                    user_id=user_id, auth_session_id=auth_session_id,
+                    session_id=started["session_id"], lease_token=started["lease_token"],
+                    content_type="text", content_id=content_id,
+                )
+            assert denied.value.code == "LEASE_EXPIRED"
+        assert database.users.rows[0]["reading_seconds_balance"] == 120
+        assert database.wallet_ledger.rows == []
+    asyncio.run(scenario())
+
+
 def _get(document, path):
     value = document
     for part in path.split('.'):

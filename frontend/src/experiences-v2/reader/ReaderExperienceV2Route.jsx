@@ -427,7 +427,7 @@ function ReaderSession({ slug, user, syncBalance }) {
       canonicalPage, totalPages, totalPublicPages: PREVIEW_PAGES,
       progress: totalPages ? Math.round((canonicalPage / totalPages) * 100) : 0,
       readingTime: "",
-      readingPass: !user ? "Sign in to continue" : displayedBalance === null ? "Balance unavailable" : displayedBalance < 60 ? `${displayedBalance} seconds left` : `${Math.floor(displayedBalance / 60)} minutes left`,
+      readingPass: freeReading ? "Free complete reading" : !user ? "Sign in to continue" : displayedBalance === null ? "Balance unavailable" : displayedBalance < 60 ? `${displayedBalance} seconds left` : `${Math.floor(displayedBalance / 60)} minutes left`,
       freeReading,
       contents: (manifest?.canonical_pages?.pages || []).map((item) => ({ page: Number(item.page_number || item.page_index), label: `Page ${item.page_number || item.page_index}` })),
       content: page ? <ReaderContent html={page.content} /> : null,

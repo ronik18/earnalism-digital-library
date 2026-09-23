@@ -1,27 +1,19 @@
-import { lazy, startTransition, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, startTransition, Suspense, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  ArrowUpRight,
   BookOpen,
   BookText,
   CircleCheck,
   CreditCard,
-  Facebook,
-  Instagram,
   Languages,
-  Linkedin,
   Mail,
   Headphones,
   ShieldCheck,
-  Twitter,
-  Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
 import DeferredMount from "../components/DeferredMount";
-import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
-import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG, PUBLIC_AUDIO_EXPOSURE_ENABLED, PUBLIC_PAID_COMMERCE_ENABLED } from "../lib/controlledLaunch";
 import {
@@ -40,15 +32,6 @@ import ReaderPerspectives from "../components/ReaderPerspectives";
 const HomeShelfArchitecture = lazy(() => import("../components/HomeShelfArchitecture"));
 
 // HomeShelfArchitecture remains the compatibility name for the editorial Home mount.
-
-const SOCIAL_ICONS = {
-  email: Mail,
-  facebook: Facebook,
-  instagram: Instagram,
-  linkedin: Linkedin,
-  x: Twitter,
-  youtube: Youtube,
-};
 
 const QUICK_PATHS = [
   {
@@ -86,7 +69,6 @@ function track(event, metadata = {}) {
 }
 
 export default function Home() {
-  const { social } = useSettings();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -94,11 +76,6 @@ export default function Home() {
   const [heroCuration, setHeroCuration] = useState(() => getHomeHeroSnapshot());
   const [listeningCuration, setListeningCuration] = useState(() => getHomeListeningSnapshot());
   const [homePasses, setHomePasses] = useState([]);
-  const activeSocials = useMemo(() => (
-    getEnabledSocialLinks(social)
-      .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
-      .filter((item) => item.Icon)
-  ), [social]);
 
   useSEO({
     title: "Earnalism | Bengali and English Classics in a Calm Digital Library",
@@ -343,22 +320,6 @@ export default function Home() {
         </div>
       </section>
       </div>
-      {activeSocials.length > 0 ? (
-        <section className="home-social-navigation" aria-label="Follow The Earnalism">
-          <nav className="reading-circle__socials" aria-label="Earnalism social links" data-testid="home-socials">
-            <div className="reading-circle__social-label">FOLLOW THE LIBRARY ELSEWHERE</div>
-            <div className="reading-circle__social-grid">
-              {activeSocials.map(({ id, ariaLabel, external, Icon, label, url }) => (
-                <a key={id} href={url} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} aria-label={ariaLabel} className="home-social-rail__link" data-social={id} data-testid={`home-social-${id}`} onClick={() => track("social_link_click", { source: "reading_circle", social_id: id })}>
-                  <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
-                  <span className="home-social-rail__copy">{label}</span>
-                  <ArrowUpRight className="home-social-rail__external" size={14} strokeWidth={1.5} aria-hidden="true" />
-                </a>
-              ))}
-            </div>
-          </nav>
-        </section>
-      ) : null}
     </div>
   );
 }

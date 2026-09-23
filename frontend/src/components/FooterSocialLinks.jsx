@@ -43,7 +43,7 @@ export default function FooterSocialLinks({ links }) {
               data-testid={`footer-social-${link.id}`}
             >
               <Icon className="footer-social__icon" size={17} strokeWidth={1.55} aria-hidden="true" />
-              <span className="footer-social__sr-label">{link.label}</span>
+              <span className="footer-social__link-label">{link.label}</span>
             </a>
           );
         })}

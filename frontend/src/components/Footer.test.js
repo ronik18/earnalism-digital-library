@@ -31,7 +31,7 @@ describe("Footer compact colophon", () => {
   });
 
   test("keeps premium public copy, copyright protection, and accessible navigation", () => {
-    expect(footerSource).toContain("Timeless Bengali and English literature, made beautiful for every way you read and listen.");
+    expect(footerSource).toContain("Timeless Bengali and English literature, made beautiful for the way you read.");
     expect(footerSource).toContain('data-testid="footer-venture-attribution"');
     expect(footerSource).toContain("A Reo Enterprise Venture");
     expect(footerSource).toContain('aria-labelledby="footer-explore-heading"');

@@ -98,6 +98,15 @@ describe("Reference public page surfaces", () => {
     expect(source).toContain(">Details</Link>");
   });
 
+  test("fits nine cover slots only at wide desktop without altering release eligibility", () => {
+    expect(homeLaunchStyles).toContain("@media (min-width: 1440px)");
+    expect(homeLaunchStyles).toContain("grid-auto-columns: calc((100% - 8 * 12px) / 9)");
+    expect(homeLaunchStyles).toContain("aspect-ratio: 2/3");
+    expect(homeLaunchStyles).toContain("object-fit: contain");
+    expect(source).toContain("books.filter(isLive)");
+    expect(source).toContain(".slice(0, 10)");
+  });
+
   test("keeps the controlled Library fallback reader-ready and audio-hidden", () => {
     expect(libraryFallback).toContain('reader_enabled: true');
     expect(libraryFallback).toContain('public_route: "/book/devdas"');

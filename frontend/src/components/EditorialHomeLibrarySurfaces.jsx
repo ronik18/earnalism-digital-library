@@ -101,7 +101,7 @@ function HomeCoverTile({ book, priority }) {
   if (unavailable) return null;
   return <article className="reference-home-cover" data-testid={`home-cover-${book.slug}`}>
     <Link to={href} aria-label={`Open ${title} by ${book.author || "Earnalism"}${isLive(book) ? "" : " — coming soon"}`} title={title}>
-      <BookCoverImage book={book} alt="" width={320} height={480} widths={[180,240,320]} sizes="(min-width:1100px) 16vw, (min-width:640px) 26vw, 48vw" loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} allowGraphicalFallback={false} onPermanentFailure={() => setUnavailable(true)} />
+      <BookCoverImage book={book} alt="" width={320} height={480} widths={[180,240,320]} sizes="(min-width:1440px) 11vw, (min-width:1100px) 16vw, (min-width:640px) 26vw, 48vw" loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} allowGraphicalFallback={false} onPermanentFailure={() => setUnavailable(true)} />
     </Link>
   </article>;
 }

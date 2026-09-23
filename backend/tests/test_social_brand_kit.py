@@ -157,15 +157,15 @@ def test_footer_social_links_render_only_configured_urls():
     footer = read_text("frontend/src/components/Footer.jsx")
 
     assert "REACT_APP_INSTAGRAM_URL" in social_links
-    assert "REACT_APP_WHATSAPP_CHANNEL_URL" in social_links
-    assert "REACT_APP_TELEGRAM_CHANNEL_URL" in social_links
+    for configured in ("LINKEDIN", "FACEBOOK", "INSTAGRAM", "X", "YOUTUBE", "SOCIAL_EMAIL"):
+        assert f"REACT_APP_{configured}_URL" in social_links
     assert "trimmed === \"#\"" in social_links
-    assert "[\"http:\", \"https:\"]" in social_links
+    assert '["https:"].includes(parsed.protocol)' in social_links
     assert "if (!enabledLinks.length) return null" in footer_social
-    assert "target=\"_blank\"" in footer_social
-    assert "rel=\"noopener noreferrer\"" in footer_social
+    assert 'target={link.external ? "_blank" : undefined}' in footer_social
+    assert 'rel={link.external ? "noopener noreferrer" : undefined}' in footer_social
     assert "aria-label={link.ariaLabel}" in footer_social
     assert "href=\"#\"" not in footer_social
     assert "href=\"\"" not in footer_social
     assert "mailto:${CONTACT_EMAIL}" in footer
-    assert footer.index("<FooterSocialLinks />") > footer.index("mailto:${CONTACT_EMAIL}")
+    assert footer.count("<FooterSocialLinks links={social} />") == 1
