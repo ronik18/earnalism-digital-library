@@ -8,6 +8,7 @@ import {
   PR399_LIBRARY_INTERACTION_BASELINE,
   PR414_LIBRARY_INTERACTION_BASELINE,
   PR416_LIBRARY_INTERACTION_BASELINE,
+  HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -17,17 +18,18 @@ const baselinePath = path.join(root, PR414_LIBRARY_INTERACTION_BASELINE);
 const read = (file) => fs.readFileSync(file, "utf8");
 const write = (file, value) => fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`);
 const sourceAt = (revision, relativePath) => execFileSync("git", ["show", `${revision}:${relativePath}`], { cwd: root, encoding: "utf8" });
-const materializeReviewedSurface = () => {
+const materializeReviewedSurface = (recordPath = PR414_LIBRARY_INTERACTION_BASELINE) => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "pr414-library-surface-"));
-  const baseline = JSON.parse(read(baselinePath));
+  const sourceRecord = path.join(root, recordPath);
+  const baseline = JSON.parse(read(sourceRecord));
   for (const relativePath of baseline.input_paths) {
     const destination = path.join(temporary, relativePath);
     fs.mkdirSync(path.dirname(destination), { recursive: true });
     fs.writeFileSync(destination, sourceAt(baseline.reviewed_source.commit, relativePath));
   }
-  const record = path.join(temporary, PR414_LIBRARY_INTERACTION_BASELINE);
+  const record = path.join(temporary, recordPath);
   fs.mkdirSync(path.dirname(record), { recursive: true });
-  fs.copyFileSync(baselinePath, record);
+  fs.copyFileSync(sourceRecord, record);
   return temporary;
 };
 let cases = 0;
@@ -68,10 +70,17 @@ test("the historical PR399 baseline remains byte-for-byte unchanged", () => {
   assert.equal(read(path.join(root, PR399_LIBRARY_INTERACTION_BASELINE)), sourceAt("b6bb598457c3a425c1b8dc77c78db431a95b36e0", PR399_LIBRARY_INTERACTION_BASELINE));
 });
 
-test("the owner-authorized PR416 Home shelf transition matches the current shared Library source", () => {
-  const comparison = compareLibraryInteractionBaseline(root, PR416_LIBRARY_INTERACTION_BASELINE);
+test("the owner-authorized PR416 Home shelf transition remains valid at its reviewed source", () => {
+  const comparison = compareLibraryInteractionBaseline(materializeReviewedSurface(PR416_LIBRARY_INTERACTION_BASELINE), PR416_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.previous_surface_sha256, "7bd2fc4b5dc9dcac43a1a9a4086c92075d9ea5443262e77b99385841f66853f4");
   assert.equal(comparison.expected_surface_sha256, "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f");
+  assert.equal(comparison.result, "PASS");
+});
+
+test("the requested Home sections transition matches the current shared Library source", () => {
+  const comparison = compareLibraryInteractionBaseline(root, HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(comparison.previous_surface_sha256, "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f");
+  assert.equal(comparison.expected_surface_sha256, "af86e390c9fdcc21c985e9106701117d0bc5fd79cbb2d327fd71bffe22e62d9e");
   assert.equal(comparison.result, "PASS");
 });
 

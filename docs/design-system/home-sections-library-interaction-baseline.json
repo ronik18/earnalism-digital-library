@@ -1,0 +1,36 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "eb4bc574781c70c371589839c4fdda5e93d55b58",
+    "tree": "562eda1457e7829aede5ae7e22ba5daaef8a232d",
+    "base": "a08a73e1c44041739ea452f947623a3ff1302d3e"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/pr416-home-shelf-library-interaction-baseline.json",
+    "reviewed_source_commit": "e41894f08852ca25317cdf40ded642765eade46e",
+    "surface_sha256": "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f"
+  },
+  "authorized_surface_sha256": "af86e390c9fdcc21c985e9106701117d0bc5fd79cbb2d327fd71bffe22e62d9e",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "DIRECT_OWNER_REQUEST_RESTORE_HOME_JOURNEY_AND_PASS_SECTIONS",
+    "scope": "Restore the Home journey cover shelf and truthful Reading Pass section for the free India pilot. The shared Library source module changes, but Library behavior and release authority remain unchanged.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This source baseline does not accept rights, change title or territorial authorization, enable audio or commerce, or establish production deployment."
+}

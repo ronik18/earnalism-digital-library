@@ -9,8 +9,8 @@ import path from "node:path";
 const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
-const currentRecord = "docs/design-system/pr416-home-shelf-library-interaction-baseline.json";
-const currentHash = "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f";
+const currentRecord = "docs/design-system/home-sections-library-interaction-baseline.json";
+const currentHash = "af86e390c9fdcc21c985e9106701117d0bc5fd79cbb2d327fd71bffe22e62d9e";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const production = (() => {
