@@ -139,7 +139,7 @@ function ReferenceShelf({ books, className = "", label, testId, compact = false,
   const shelfRef = useRef(null);
   const scroll = (direction) => shelfRef.current?.scrollBy({ left: direction * Math.max(220, shelfRef.current.clientWidth * 0.64), behavior: "smooth" });
   return (
-    <div className={`reference-shelf-frame ${className}`.trim()} data-testid={testId} {...regionProps}>
+    <div className={`reference-shelf-frame ${className}${discoveryOnly ? " reference-shelf-frame--discovery-only" : ""}`.trim()} data-testid={testId} {...regionProps}>
       <div ref={shelfRef} className="reference-book-shelf" aria-label={label}>
         {books.map((book, index) => coversOnly ? <HomeCoverTile key={book.slug} book={book} priority={index < 5} discoveryOnly={discoveryOnly} /> : <BookTile key={book.slug} book={book} compact={compact} priority={index === 0} />)}
       </div>

@@ -183,6 +183,7 @@
   .reference-home .reference-home__journey > .reference-section-heading { padding-right: 102px; }
   .reference-home .reference-home__journey-shelf .reference-shelf-frame__controls { top: -63px; gap: 6px; }
   .reference-home .reference-book-shelf { grid-auto-columns: calc((100% - 14px) / 1.85); gap: 14px; }
+  .reference-home .reference-shelf-frame--discovery-only .reference-book-shelf { grid-auto-columns: calc((100% - 14px) / 2); }
   .reference-home .reference-book-tile__details { padding-inline: 8px; }
   .reference-home .reference-home__pass { padding: 22px 18px 16px; gap: 36px; margin-bottom: 18px; }
   .reference-home .reference-home__pass-copy { display: block; }
