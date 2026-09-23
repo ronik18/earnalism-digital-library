@@ -101,7 +101,7 @@ function HomeCoverTile({ book, priority }) {
   if (unavailable) return null;
   return <article className="reference-home-cover" data-testid={`home-cover-${book.slug}`}>
     <Link to={href} aria-label={`Open ${title} by ${book.author || "Earnalism"}${isLive(book) ? "" : " — coming soon"}`} title={title}>
-      <BookCoverImage book={book} alt="" width={320} height={480} widths={[180,240,320]} sizes="(min-width:1100px) 16vw, (min-width:640px) 26vw, 48vw" loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} allowGraphicalFallback={false} onPermanentFailure={() => setUnavailable(true)} />
+      <BookCoverImage book={book} alt="" width={320} height={480} widths={[180,240,320]} sizes="(min-width:1440px) 11vw, (min-width:1100px) 16vw, (min-width:640px) 26vw, 48vw" loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} allowGraphicalFallback={false} onPermanentFailure={() => setUnavailable(true)} />
     </Link>
   </article>;
 }
@@ -158,7 +158,7 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
   // The Home route already carries a server-curated, release-safe shelf snapshot.
   // Keep that visible during a transient catalogue failure instead of collapsing the
   // reference shelf. These cards still use the same fail-closed CTA rules as live data.
-  const shelfBooks = (liveBooks.length ? liveBooks : (books.length ? books : curatedBooks))
+  const shelfBooks = (liveBooks.length ? liveBooks : curatedBooks.filter(isLive))
     .filter((book) => { const cover = bookCoverImageSources(book); return cover.hasCover && !cover.isFallback; })
     .slice(0, 10);
   const passes = readingPasses.filter((pack) => pack && Number.isFinite(pack.minutes) && pack.minutes > 0 && Number.isFinite(pack.price_inr) && pack.price_inr >= 0).slice(0, 3);

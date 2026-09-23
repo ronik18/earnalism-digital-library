@@ -107,13 +107,16 @@ describe("ReaderExperienceV2 customer controls", () => {
   test("both responsive font controls use the bounded rem contract and persist an explicit preference", () => {
     render();
     const text = container.querySelector('[data-testid="reader-reading-text"]');
-    expect(text.style.fontSize).toBe("1.25rem");
+    expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("dark");
+    expect(text.style.fontSize).toBe("1.125rem");
+    expect(text.style.lineHeight).toBe("calc(1.75em - 0.5pt)");
+    expect(text.style.fontFamily).toContain("Outfit");
     click(container.querySelector('.reader-v2__toolbar button[aria-label="Increase text size"]'));
-    expect(text.style.fontSize).toBe("1.375rem");
-    click(container.querySelector('.reader-v2__mobile-topbar button[aria-label="Decrease text size"]'));
     expect(text.style.fontSize).toBe("1.25rem");
+    click(container.querySelector('.reader-v2__mobile-topbar button[aria-label="Decrease text size"]'));
+    expect(text.style.fontSize).toBe("1.125rem");
     expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).fontSizeIdx).toBe(1);
-    expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).readerTextSizeRem).toBe(1.25);
+    expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).readerTextSizeRem).toBe(1.125);
   });
 
   test("settings change theme and spacing locally and survive remount without navigating away", () => {
@@ -122,9 +125,9 @@ describe("ReaderExperienceV2 customer controls", () => {
     const settingsToggle = container.querySelector('.reader-v2__toolbar button[aria-label="Reader settings"]');
     click(settingsToggle);
     const selects = container.querySelectorAll("#reader-v2-settings select");
-    change(selects[0], "dark");
+    change(selects[0], "sepia");
     change(selects[2], "airy");
-    expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("dark");
+    expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("sepia");
     expect(container.querySelector('[data-testid="reader-reading-text"]').style.lineHeight).toBe("2.02");
     click(button("Close preferences"));
     expect(container.querySelector("#reader-v2-settings")).toBeNull();
@@ -133,7 +136,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     act(() => root.unmount());
     root = createRoot(container);
     render();
-    expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("dark");
+    expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("sepia");
     expect(container.querySelector('[data-testid="reader-reading-text"]').style.lineHeight).toBe("2.02");
   });
 
@@ -141,10 +144,10 @@ describe("ReaderExperienceV2 customer controls", () => {
     render({ model: { ...model, language: "bn", content: <p>বাংলা পাঠ্য</p> } });
     const text = container.querySelector('[data-testid="reader-reading-text"]');
     expect(container.querySelector("article").lang).toBe("bn");
-    expect(text.style.fontSize).toBe("1.375rem");
-    expect(text.style.lineHeight).toBe("1.8");
+    expect(text.style.fontSize).toBe("1.125rem");
+    expect(text.style.lineHeight).toBe("calc(1.8em - 0.5pt)");
     expect(text.style.fontWeight).toBe("500");
-    expect(text.style.fontFamily).toContain("Noto Serif Bengali");
+    expect(text.style.fontFamily).toContain("Noto Sans Bengali");
 
     click(container.querySelector('.reader-v2__toolbar button[aria-label="Reader settings"]'));
     const selects = container.querySelectorAll("#reader-v2-settings select");
@@ -153,9 +156,22 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(text.style.fontSize).toBe("2rem");
     expect(text.style.fontFamily).toContain("Noto Sans Bengali");
     click(button("Reset typography"));
-    expect(text.style.fontSize).toBe("1.375rem");
-    expect(text.style.fontFamily).toContain("Noto Serif Bengali");
+    expect(text.style.fontSize).toBe("1.125rem");
+    expect(text.style.fontFamily).toContain("Noto Sans Bengali");
     expect(JSON.parse(localStorage.getItem(READER_SETTINGS_STORAGE_KEY)).readerTextSizeRem).toBeNull();
+  });
+
+  test("valid saved typography and theme take precedence over new defaults", () => {
+    localStorage.setItem(READER_SETTINGS_STORAGE_KEY, JSON.stringify({
+      theme: "beige", lineSpacingMode: "relaxed", readerTypographyVersion: 2,
+      readerTextSizeRem: 1.5, readerFontFamilyPreference: "serif",
+    }));
+    render();
+    const text = container.querySelector('[data-testid="reader-reading-text"]');
+    expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("beige");
+    expect(text.style.fontSize).toBe("1.5rem");
+    expect(text.style.lineHeight).toBe("1.88");
+    expect(text.style.fontFamily).toContain("EB Garamond");
   });
 
   test("preference changes do not request another canonical page", () => {
@@ -178,10 +194,10 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(container.querySelector('[role="status"]').textContent).toBe("Saved your place.");
   });
 
-  test("keeps the text measure inside the centered 40rem reading contract", () => {
+  test("keeps the text measure in a centered reading column", () => {
     render();
     const text = container.querySelector('[data-testid="reader-reading-text"]');
-    expect(text.style.maxWidth).toBe("40rem");
+    expect(text.classList).toContain("reader-v2__body");
     expect(container.querySelector("article").classList).toContain("reader-v2__canvas");
   });
 });

@@ -823,6 +823,9 @@ CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
 PUBLIC_PAID_COMMERCE_ENABLED = CONTROLLED_LAUNCH_CONFIG.get("public_paid_commerce_enabled") is True
+TEXT_ACCESS_MODE = CONTROLLED_LAUNCH_CONFIG.get("text_access_mode", "PILOT_FULL_FREE")
+if TEXT_ACCESS_MODE not in {"PILOT_FULL_FREE", "COMMERCIAL_ENTITLEMENT"}:
+    raise RuntimeError("Invalid controlled text access mode")
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
@@ -1684,6 +1687,8 @@ RELEASE_PROXY_FREE_SESSION_PATHS = frozenset({
 
 def _free_india_reader_verdict(request: Request, slug: str) -> bool:
     """Only an authenticated India proxy assertion plus accepted text delivery grants free time."""
+    if TEXT_ACCESS_MODE != "PILOT_FULL_FREE":
+        return False
     if not _is_controlled_public_slug(slug) or slug not in FREE_INDIA_READER_SLUGS:
         return False
     proxy_verdict = _release_proxy_access_verdict(request)
@@ -1703,6 +1708,32 @@ def _free_india_reader_verdict(request: Request, slug: str) -> bool:
         revoked_decision_ids=revoked, now=datetime.now(timezone.utc),
     )
     return verdict.passed is True
+
+
+def _commercial_india_reader_verdict(request: Request, slug: str) -> bool:
+    """Paid text requires the separate accepted Pass use, never just Reader rights."""
+    if TEXT_ACCESS_MODE != "COMMERCIAL_ENTITLEMENT" or not PUBLIC_PAID_COMMERCE_ENABLED:
+        return False
+    if not _is_controlled_public_slug(slug) or slug not in FREE_INDIA_READER_SLUGS:
+        return False
+    proxy_verdict = _release_proxy_access_verdict(request)
+    if not proxy_verdict.allowed or proxy_verdict.country != "IN":
+        return False
+    record, components = _release_rights_artifact(slug)
+    try:
+        accepted, revoked = load_production_registry()
+    except (OSError, ValueError, TypeError, _json.JSONDecodeError):
+        return False
+    for action in ("reading_pass_session_start", "reading_pass_page", "reading_pass_lease_renewal"):
+        verdict = evaluate_runtime_path(
+            action, record=record, edition_id=slug,
+            operator_id=RELEASE_RIGHTS_OPERATOR_ID, country="IN", country_trusted=True,
+            required_components=components, accepted_records=accepted,
+            revoked_decision_ids=revoked, now=datetime.now(timezone.utc),
+        )
+        if verdict.passed is not True:
+            return False
+    return True
 
 
 def _release_proxy_access_verdict(request: Request):
@@ -9019,7 +9050,8 @@ async def reader_book_manifest(
     access["reading_pass"] = {
         "enabled": bool(READING_PASS_V2_ENABLED),
         "free_entitlement": bool(
-            PUBLIC_READER_EXPOSURE_ENABLED
+            TEXT_ACCESS_MODE == "PILOT_FULL_FREE"
+            and PUBLIC_READER_EXPOSURE_ENABLED
             and slug in FREE_INDIA_READER_SLUGS
         ),
         "segments_ready": bool(segment_state),
@@ -10752,11 +10784,15 @@ async def reading_pass_book_page(
         except ReadingPassError as exc:
             raise _reading_pass_http_error(exc) from exc
         scope = session_doc.get("scope") if isinstance(session_doc.get("scope"), dict) else {}
-        if ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED and (
-            session_doc.get("entitlement_kind") != FREE_INDIA_READER_ENTITLEMENT
-            or scope.get("release_country") != "IN"
-        ):
-            raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED"})
+        if ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED:
+            entitlement_kind = session_doc.get("entitlement_kind")
+            expected_kind = FREE_INDIA_READER_ENTITLEMENT if TEXT_ACCESS_MODE == "PILOT_FULL_FREE" else "metered"
+            policy_allowed = (
+                _free_india_reader_verdict(request, slug) if TEXT_ACCESS_MODE == "PILOT_FULL_FREE"
+                else _commercial_india_reader_verdict(request, slug)
+            )
+            if entitlement_kind != expected_kind or scope.get("release_country") != "IN" or not policy_allowed:
+                raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED"})
         segmentation_version = str(scope.get("segmentation_version") or "")
         manifest_version = str(scope.get("manifest_version") or "")
         if not segmentation_version or not manifest_version:
@@ -10900,9 +10936,10 @@ async def _reading_pass_start(payload: ReadingPassSessionStartIn, user: dict, re
             "authority_activation_generation": activation_state["generation"],
         }
         free_entitlement = bool(request and _free_india_reader_verdict(request, canonical_content_id))
-        if request is not None and ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED and not free_entitlement:
+        commercial_entitlement = bool(request and _commercial_india_reader_verdict(request, canonical_content_id))
+        if request is not None and ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED and not (free_entitlement or commercial_entitlement):
             raise HTTPException(status_code=451, detail={"code": "RELEASE_RIGHTS_DENIED"})
-        if free_entitlement:
+        if free_entitlement or commercial_entitlement:
             scope["release_country"] = "IN"
     elif content_type == "audio":
         position = float(payload.media_position_seconds or 0)
@@ -10963,7 +11000,7 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
     text_authority = "allowed"
     session_hint = await db.reading_pass_sessions.find_one(
         {"id": payload.session_id, "user_id": user["id"]},
-        {"_id": 0, "content_type": 1, "content_id": 1, "entitlement_kind": 1},
+        {"_id": 0, "content_type": 1, "content_id": 1, "entitlement_kind": 1, "scope.release_country": 1},
     )
     if session_hint and session_hint.get("content_type") == "text":
         try:
@@ -10974,11 +11011,17 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
         else:
             text_authority = "allowed" if current_book else "denied"
         if ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED:
-            text_authority = "allowed" if (
-                text_authority == "allowed"
-                and session_hint.get("entitlement_kind") == FREE_INDIA_READER_ENTITLEMENT
-                and _free_india_reader_verdict(request, str(session_hint.get("content_id") or ""))
-            ) else "denied"
+            slug = str(session_hint.get("content_id") or "")
+            entitlement_kind = session_hint.get("entitlement_kind")
+            policy_allowed = (
+                entitlement_kind == FREE_INDIA_READER_ENTITLEMENT
+                and _free_india_reader_verdict(request, slug)
+            ) if TEXT_ACCESS_MODE == "PILOT_FULL_FREE" else (
+                entitlement_kind == "metered"
+                and _commercial_india_reader_verdict(request, slug)
+            )
+            scope = session_hint.get("scope") if isinstance(session_hint.get("scope"), dict) else {}
+            text_authority = "allowed" if text_authority == "allowed" and policy_allowed and scope.get("release_country") == "IN" else "denied"
     try:
         result = await reading_pass_service.renew_lease(
             user_id=user["id"],

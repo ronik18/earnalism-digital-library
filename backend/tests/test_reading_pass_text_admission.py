@@ -196,6 +196,8 @@ def test_free_lease_can_deliver_the_last_canonical_page_without_a_paid_balance(m
     monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+    monkeypatch.setattr(server, "TEXT_ACCESS_MODE", "PILOT_FULL_FREE")
+    monkeypatch.setattr(server, "_free_india_reader_verdict", lambda _request, requested: requested == slug)
     monkeypatch.setattr(server, "_reader_book_access_doc", authority)
     monkeypatch.setattr(server, "_active_reader_segment_manifest", active)
     monkeypatch.setattr(server, "_stored_reader_segment_manifest", stored)

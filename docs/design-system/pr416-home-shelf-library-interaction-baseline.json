@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "e41894f08852ca25317cdf40ded642765eade46e",
+    "tree": "d3461ccf23014184840daab903fc08db1539f7a1",
+    "base": "f4035048d4148bc0edbe817947aa1dcc582505d9"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/pr414-held-release-library-interaction-baseline.json",
+    "reviewed_source_commit": "b6bb598457c3a425c1b8dc77c78db431a95b36e0",
+    "surface_sha256": "7bd2fc4b5dc9dcac43a1a9a4086c92075d9ea5443262e77b99385841f66853f4"
+  },
+  "authorized_surface_sha256": "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "DIRECT_OWNER_AUTHORIZATION_PR416_POST_LAUNCH_READER_UI_MANDATE",
+    "scope": "The owner-authorized nine-cover wide Home shelf and fail-closed live-title-only fallback change share a source module with Library. Library behavior, rights, and publication authority are unchanged; browser and regression evidence must still pass before release.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This source baseline does not accept rights, change title or territorial authorization, enable audio or commerce, or establish production deployment."
+}

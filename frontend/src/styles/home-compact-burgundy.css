@@ -72,6 +72,10 @@
 .reference-home .reference-shelf-frame__controls button { width: 44px; height: 44px; border-radius: 5px; background: #170c12; color: #f4e5d4; border-color: #50313b; cursor: pointer; }
 .reference-home .reference-shelf-frame__controls button:hover { background: #361927; border-color: #dfbc77; }
 .reference-home .reference-book-shelf { grid-auto-columns: calc((100% - 80px) / 5); gap: 20px; padding-bottom: 3px; scrollbar-width: none; }
+@media (min-width: 1440px) {
+  .reference-home .reference-home__journey { width: min(94%, 1440px); }
+  .reference-home .reference-home__journey .reference-book-shelf { grid-auto-columns: calc((100% - 8 * 12px) / 9); gap: 12px; }
+}
 .reference-home .reference-book-shelf::-webkit-scrollbar { display: none; }
 .reference-home .reference-book-tile { width: 100%; min-width: 0; padding: 0; overflow: hidden; border-radius: 7px; border: 1px solid #4c303c; background: #160b10; }
 .reference-home .reference-book-tile__cover { aspect-ratio: 5/6; border: 0; border-radius: 0; background: #1d1017; }

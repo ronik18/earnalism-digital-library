@@ -7,7 +7,7 @@ import ExperiencePanel from "../shared/ExperiencePanel";
 import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
 import "./reader-v2.mobile.css";
-import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
+import { PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
 import {
   loadReaderSettings,
   READER_SETTINGS_DEFAULTS,
@@ -48,13 +48,14 @@ export function readerPageAccess({ canonicalPage = 1, authorized = false } = {})
 }
 
 const LINE_SPACING = {
-  comfortable: { en: 1.75, bn: 1.8 },
+  // Preserve each language's existing leading, reduced by exactly 0.5pt.
+  comfortable: { en: "calc(1.75em - 0.5pt)", bn: "calc(1.8em - 0.5pt)" },
   relaxed: { en: 1.88, bn: 1.93 },
   airy: { en: 2.02, bn: 2.08 },
 };
 const LANGUAGE_TYPOGRAPHY = {
-  en: { size: 1.25, fontFamily: '"EB Garamond", Georgia, serif', fontWeight: 400 },
-  bn: { size: 1.375, fontFamily: '"Noto Serif Bengali", serif', fontWeight: 500 },
+  en: { size: 1.125, fontFamily: '"EB Garamond", Georgia, serif', fontWeight: 400 },
+  bn: { size: 1.125, fontFamily: '"Noto Serif Bengali", serif', fontWeight: 500 },
 };
 
 function readerLanguage(language) {
@@ -102,14 +103,16 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const textSizeRem = settings.readerTextSizeRem ?? languageTypography.size;
   const textSizeStep = textSizeIndex(textSizeRem);
   const lineHeight = LINE_SPACING[settings.lineSpacingMode]?.[language] || LINE_SPACING.comfortable[language];
-  const fontMode = settings.readerFontFamilyPreference || "serif";
+  const fontMode = settings.readerFontFamilyPreference || "sans";
   const fontFamily = fontMode === "sans"
     ? (language === "bn" ? '"Noto Sans Bengali", sans-serif' : 'Outfit, sans-serif')
     : languageTypography.fontFamily;
   const fontWeight = fontMode === "sans" ? (language === "bn" ? 500 : 400) : languageTypography.fontWeight;
   const busy = Boolean(access.busy);
   const atEnd = page >= totalPages;
-  const nextLabel = page === 3 && !access.authorized ? "Use Reading Time to Continue" : "Next page";
+  const nextLabel = page === 3 && !access.authorized
+    ? (model.freeReading ? "Continue reading free" : "Use Reading Time to Continue")
+    : "Next page";
   const updateSetting = (name, value) => setSettings((previous) => ({ ...previous, [name]: value }));
   const updateTextSize = (value) => setSettings((previous) => ({
     ...previous,
@@ -196,7 +199,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           </section>}
           <label className="reader-v2__page-selector">Go to page<select aria-label="Go to page" value={page} disabled={busy} onChange={(event) => requestPage(event.target.value)}>{Array.from({ length: totalPages }, (_, index) => <option key={index + 1} value={index + 1}>Page {index + 1}</option>)}</select></label>
           {model.illustration?.src && <img className="reader-v2__illustration" src={model.illustration.src} alt={model.illustration.alt || ""} decoding="async" />}
-          <div className="reader-v2__body" data-testid="reader-reading-text" style={{ fontSize: formatRem(textSizeRem), lineHeight, maxWidth: "40rem", fontFamily, fontWeight }}>
+          <div className="reader-v2__body" data-testid="reader-reading-text" style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
             {model.content ?? (model.paragraphs || []).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}
           </div>
           {model.statusMessage && <p className="reader-v2__status" role="status">{model.statusMessage}</p>}
@@ -209,7 +212,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           </footer>
         </article>
 
-        <aside className="reader-v2__context" aria-label="About this book"><ExperiencePanel eyebrow="About this book"><dl>{model.author && <div><dt>Author</dt><dd>{model.author}</dd></div>}{metadata.language && <div><dt>Language</dt><dd>{metadata.language}</dd></div>}{metadata.genre && <div><dt>Genre</dt><dd>{metadata.genre}</dd></div>}{metadata.year && <div><dt>First published</dt><dd>{metadata.year}</dd></div>}{metadata.source && <div><dt>Edition</dt><dd>{metadata.source}</dd></div>}</dl><p>{PUBLIC_ACCESS_COPY}</p></ExperiencePanel></aside>
+        <aside className="reader-v2__context" aria-label="About this book"><ExperiencePanel eyebrow="About this book"><dl>{model.author && <div><dt>Author</dt><dd>{model.author}</dd></div>}{metadata.language && <div><dt>Language</dt><dd>{metadata.language}</dd></div>}{metadata.genre && <div><dt>Genre</dt><dd>{metadata.genre}</dd></div>}{metadata.year && <div><dt>First published</dt><dd>{metadata.year}</dd></div>}{metadata.source && <div><dt>Edition</dt><dd>{metadata.source}</dd></div>}</dl><p>{model.freeReading ? "Read this complete edition free after signing in. No Reading Pass debit is required." : `${PUBLIC_PREVIEW_COPY} A valid Reading Pass is required to continue.`}</p></ExperiencePanel></aside>
       </div>
       <div className="reader-v2__mobile-actions"><button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button><span><Clock3 size={14} /> {model.readingPass}</span><button type="button" onClick={() => onNavigate?.("bookmark")} aria-label="Save current page"><Bookmark size={18} /></button></div>
       <div className="reader-v2__reader-navigation"><ExperienceBottomNavigation active="library" onNavigate={onNavigate} /></div>

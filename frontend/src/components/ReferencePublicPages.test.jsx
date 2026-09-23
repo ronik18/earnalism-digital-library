@@ -92,10 +92,20 @@ describe("Reference public page surfaces", () => {
   test("uses the release-safe Home curation snapshot when the catalogue is temporarily unavailable", () => {
     expect(source).toContain("ReferenceHomeSurface({ curation, readingPasses = [], listeningItems = [], illustrativePasses = false })");
     expect(source).toContain("curation?.hero?.featured_books");
-    expect(source).toContain("books.length ? books : curatedBooks");
+    expect(source).toContain("liveBooks.length ? liveBooks : curatedBooks.filter(isLive)");
     expect(source).toContain("canShowPreview(book)");
     expect(source).toContain("canShowStartReading(book)");
     expect(source).toContain(">Details</Link>");
+  });
+
+  test("fits nine cover slots only at wide desktop without altering release eligibility", () => {
+    expect(homeLaunchStyles).toContain("@media (min-width: 1440px)");
+    expect(homeLaunchStyles).toContain("grid-auto-columns: calc((100% - 8 * 12px) / 9)");
+    expect(homeLaunchStyles).toContain("aspect-ratio: 2/3");
+    expect(homeLaunchStyles).toContain("object-fit: contain");
+    expect(source).toContain("books.filter(isLive)");
+    expect(source).not.toContain("books.length ? books : curatedBooks");
+    expect(source).toContain(".slice(0, 10)");
   });
 
   test("keeps the controlled Library fallback reader-ready and audio-hidden", () => {

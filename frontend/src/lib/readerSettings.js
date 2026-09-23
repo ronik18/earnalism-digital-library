@@ -4,7 +4,7 @@ export const READER_TEXT_SIZE_REM_STEPS = Object.freeze([1.125, 1.25, 1.375, 1.5
 const LEGACY_FONT_SIZE_REMS = Object.freeze([1.125, 1.125, 1.25, 1.375]);
 
 export const READER_SETTINGS_DEFAULTS = {
-  theme: "beige",
+  theme: "dark",
   fontSizeIdx: 1,
   lineSpacingMode: "comfortable",
   marginMode: "classic",

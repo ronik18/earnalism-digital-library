@@ -9,8 +9,8 @@ import path from "node:path";
 const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
-const pr414Record = "docs/design-system/pr414-held-release-library-interaction-baseline.json";
-const pr414Hash = "7bd2fc4b5dc9dcac43a1a9a4086c92075d9ea5443262e77b99385841f66853f4";
+const currentRecord = "docs/design-system/pr416-home-shelf-library-interaction-baseline.json";
+const currentHash = "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const production = (() => {
@@ -53,10 +53,10 @@ const make = () => {
     approval_carry_forward: { path: carry.path, sha256: carry.sha256, result: "PASS" },
     library_interaction_baseline: {
       surface: "library_interaction_surface",
-      approval_source: pr414Record,
-      approval_source_sha256: sha(path.join(root, pr414Record)),
-      expected_surface_sha256: pr414Hash,
-      observed_surface_sha256: pr414Hash,
+      approval_source: currentRecord,
+      approval_source_sha256: sha(path.join(root, currentRecord)),
+      expected_surface_sha256: currentHash,
+      observed_surface_sha256: currentHash,
       changed_from_previous: true,
       expected_change: true,
       result: "PASS",

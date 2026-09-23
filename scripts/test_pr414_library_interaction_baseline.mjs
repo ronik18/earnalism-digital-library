@@ -7,6 +7,7 @@ import path from "node:path";
 import {
   PR399_LIBRARY_INTERACTION_BASELINE,
   PR414_LIBRARY_INTERACTION_BASELINE,
+  PR416_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -65,6 +66,13 @@ test("wrong predecessor, source provenance, and authorization are rejected", () 
 
 test("the historical PR399 baseline remains byte-for-byte unchanged", () => {
   assert.equal(read(path.join(root, PR399_LIBRARY_INTERACTION_BASELINE)), sourceAt("b6bb598457c3a425c1b8dc77c78db431a95b36e0", PR399_LIBRARY_INTERACTION_BASELINE));
+});
+
+test("the owner-authorized PR416 Home shelf transition matches the current shared Library source", () => {
+  const comparison = compareLibraryInteractionBaseline(root, PR416_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(comparison.previous_surface_sha256, "7bd2fc4b5dc9dcac43a1a9a4086c92075d9ea5443262e77b99385841f66853f4");
+  assert.equal(comparison.expected_surface_sha256, "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f");
+  assert.equal(comparison.result, "PASS");
 });
 
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));

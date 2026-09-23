@@ -46,6 +46,7 @@ def test_public_reader_release_rejects_direct_api_requests(monkeypatch):
 def test_free_session_proxy_and_hash_bound_rights_are_required_for_each_pilot(monkeypatch):
     monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setattr(server, "TEXT_ACCESS_MODE", "PILOT_FULL_FREE")
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
     path = "/api/reading-pass/sessions/start"
     timestamp = int(datetime.now(timezone.utc).timestamp())
@@ -68,6 +69,37 @@ def test_free_session_proxy_and_hash_bound_rights_are_required_for_each_pilot(mo
     us_request = request_with_headers(us_headers, path=path, method="POST")
     assert server._free_india_reader_verdict(us_request, "a-ghost-story") is False
     assert asyncio.run(server.enforce_public_release_country(us_request, next_response)).status_code == 451
+
+
+def test_commercial_mode_requires_commerce_and_separate_pass_rights(monkeypatch):
+    monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
+    monkeypatch.setattr(server, "TEXT_ACCESS_MODE", "COMMERCIAL_ENTITLEMENT")
+    monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
+    path = "/api/reading-pass/sessions/start"
+    timestamp = int(datetime.now(timezone.utc).timestamp())
+    headers = {
+        SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
+        COUNTRY_HEADER: "IN",
+        TIMESTAMP_HEADER: str(timestamp),
+        SIGNATURE_HEADER: request_signature(SECRET, "POST", path, PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
+    }
+    request = request_with_headers(headers, path=path, method="POST")
+    assert server._free_india_reader_verdict(request, "a-ghost-story") is False
+    monkeypatch.setattr(server, "PUBLIC_PAID_COMMERCE_ENABLED", False)
+    assert server._commercial_india_reader_verdict(request, "a-ghost-story") is False
+    monkeypatch.setattr(server, "PUBLIC_PAID_COMMERCE_ENABLED", True)
+    monkeypatch.setattr(server, "load_production_registry", lambda: ([], []))
+    monkeypatch.setattr(server, "evaluate_runtime_path", lambda *args, **kwargs: DecisionGateVerdict(False, ("ACCEPTED_DECISION_MISSING",)))
+    assert server._commercial_india_reader_verdict(request, "a-ghost-story") is False
+    approved_actions = []
+    def approved_runtime_path(action, **_kwargs):
+        approved_actions.append(action)
+        return DecisionGateVerdict(True, ())
+    monkeypatch.setattr(server, "evaluate_runtime_path", approved_runtime_path)
+    assert server._commercial_india_reader_verdict(request, "a-ghost-story") is True
+    assert approved_actions == ["reading_pass_session_start", "reading_pass_page", "reading_pass_lease_renewal"]
+    assert server._commercial_india_reader_verdict(request, "yugalanguriya") is False
+    assert server._commercial_india_reader_verdict(request_with_headers({}, path=path, method="POST"), "a-ghost-story") is False
 
 
 def test_public_reader_release_accepts_fresh_signed_india_request(monkeypatch):

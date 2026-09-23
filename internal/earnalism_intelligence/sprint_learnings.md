@@ -2246,3 +2246,9 @@ PR #401 is merged and its Railway deployment is provider-confirmed, but the init
 - A three-page preview is not a complete launch when checkout is disabled. The proprietor chose full, free, no-debit reading only for the three accepted India editions; this does not alter rights acceptance, held titles, audio, commerce, or other territories.
 - Reuse authenticated canonical-page leases with an explicit free entitlement. Check the signed India proxy assertion and immutable accepted Reader-delivery decision on admission and renewal; bind the session to the current publication pointer; never turn a zero wallet balance into an access denial or a debit for this entitlement.
 - Local focused backend, frontend, proxy and build checks are supporting evidence only. Exact-head hosted regression, protected merge, deployed-version proof and real production Reader smoke remain required before declaring customer readiness.
+
+## 2026-09-23 — Post-launch Reader and presentation completion candidate
+
+- The active V2 Reader uses immutable server-defined canonical page indices; only the legacy Reader has viewport-derived pagination. Typography and viewport changes must not renumber V2 pages or move saved progress.
+- The pilot/free versus future metered choice now has a single server-owned controlled-launch mode. The metered path remains closed without enabled commerce and separate accepted Pass uses; the frontend derives current free access from the manifest.
+- The homepage's second social rail duplicated the shared footer social navigation. Keep one configured footer set with visible names and secure external-link attributes; layout capacity for nine covers must never create extra publication authority.

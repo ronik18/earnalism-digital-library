@@ -2,6 +2,7 @@
   "public_reader_exposure_enabled": true,
   "public_audio_exposure_enabled": false,
   "public_paid_commerce_enabled": false,
+  "text_access_mode": "PILOT_FULL_FREE",
   "launch_compliance_jurisdiction": "IN",
   "live_approved_slugs": [
     "a-ghost-story",

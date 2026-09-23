@@ -1,6 +1,6 @@
 .footer-wordmark {
   display: inline-flex;
-  width: clamp(12.5rem, 18vw, 14.5rem);
+  width: clamp(9rem, 13vw, 10.5rem);
   max-width: 100%;
   border-radius: 0.25rem;
   color: inherit;
@@ -20,6 +20,6 @@
 
 @media (max-width: 640px) {
   .footer-wordmark {
-    width: min(11.5rem, calc(100vw - 2.5rem));
+    width: min(8.25rem, calc(100vw - 2.5rem));
   }
 }

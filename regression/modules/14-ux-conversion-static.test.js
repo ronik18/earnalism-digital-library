@@ -1840,10 +1840,10 @@ describe("UX conversion static signals", () => {
     expect(footerSocialLinks).not.toContain('href="#"');
     expect(footerSocialLinks).not.toContain('href=""');
 
-    expect(home).toContain("getEnabledSocialLinks(social)");
-    expect(home).toContain('data-testid="home-socials"');
-    expect(home).toContain('data-testid={`home-social-${id}`}');
-    expect(home).toContain('className="home-social-rail__link"');
+    expect(home).not.toContain("getEnabledSocialLinks(social)");
+    expect(home).not.toContain('data-testid="home-socials"');
+    expect(footer.match(/<FooterSocialLinks links={social} \/>/g)).toHaveLength(1);
+    expect(footerSocialLinks).toContain('data-testid={`footer-social-${link.id}`}');
     expect(home).not.toContain("normalizeSocialUrl(social?.[item.key])");
     expect(home).not.toContain('href="#"');
     expect(home).not.toContain('href=""');
@@ -1864,7 +1864,7 @@ describe("UX conversion static signals", () => {
     expect(footer).toContain("<FooterSocialLinks links={social} />");
     expect(footer).toContain("sales@reoenterprise.org");
     expect(footer).not.toContain("sales@reoenterprise.in");
-    expect(footer).toContain("Timeless Bengali and English literature, made beautiful for every way you read and listen.");
+    expect(footer).toContain("Timeless Bengali and English literature, made beautiful for the way you read.");
     expect(footer).toContain('import FooterWordmark from "./FooterWordmark"');
     expect(footer).toContain("A Reo Enterprise Venture");
     expect(footer).not.toContain('bg-[#fff9ee]');
