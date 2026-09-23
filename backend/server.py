@@ -1836,6 +1836,14 @@ def _release_rights_verdict(request: Request, *, country: str = "") -> DecisionG
 # selector. It makes PR409's runtime preflight observable without preparing,
 # promoting, or otherwise changing a publication.
 YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG = "yugalanguriya"
+YUGALANGURIYA_ARCHIVE_PACKAGE_DIR = (
+    Path(__file__).resolve().parents[1]
+    / "internal"
+    / "archives"
+    / "held_titles"
+    / "yugalanguriya"
+    / "controlled-publication-package"
+)
 YUGALANGURIYA_INSPECTION_MANIFEST_LIMIT = 20
 YUGALANGURIYA_PROTECTED_PAGE_INDEX = PUBLIC_TEXT_PAGE_COUNT + 1
 YUGALANGURIYA_INSPECTION_QUERY_MAX_TIME_MS = 250
@@ -1950,16 +1958,15 @@ async def _inspection_read(deadline: float, component: str, operation) -> tuple[
 
 
 def _yugalanguriya_inspection_identity() -> dict:
-    """Read package identity only; never load a manuscript or mutate package state."""
-    for package_dir in controlled_artifact_dir_candidates(YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG):
-        public_book = read_json_file(package_dir / "public_book.json")
-        if public_book:
-            return {
-                "slug": YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG,
-                "canonical_title": _inspection_safe_scalar(public_book.get("title")) or "UNKNOWN",
-                "edition_identity": _inspection_safe_scalar(public_book.get("edition_id") or public_book.get("id")) or "UNKNOWN",
-                "package_metadata_status": "PRESENT",
-            }
+    """Read only the held title's archival identity, never an active package."""
+    public_book = read_json_file(YUGALANGURIYA_ARCHIVE_PACKAGE_DIR / "public_book.json")
+    if public_book:
+        return {
+            "slug": YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG,
+            "canonical_title": _inspection_safe_scalar(public_book.get("title")) or "UNKNOWN",
+            "edition_identity": _inspection_safe_scalar(public_book.get("edition_id") or public_book.get("id")) or "UNKNOWN",
+            "package_metadata_status": "ARCHIVED",
+        }
     return {
         "slug": YUGALANGURIYA_PUBLICATION_INSPECTION_SLUG,
         "canonical_title": "UNKNOWN",

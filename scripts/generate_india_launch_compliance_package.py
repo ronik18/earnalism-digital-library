@@ -20,6 +20,9 @@ import unicodedata
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLICATIONS = ROOT / "data" / "controlled_publications"
+HELD_TITLE_ARCHIVES = {
+    "yugalanguriya": ROOT / "internal" / "archives" / "held_titles" / "yugalanguriya",
+}
 PILOT_SLUGS = (
     "a-ghost-story",
     "the-tell-tale-heart",
@@ -243,7 +246,7 @@ def require_text(value: Any, fallback: str = "NOT_RECORDED") -> str:
 
 
 def source_rights_note(slug: str) -> dict[str, str]:
-    path = ROOT / "content" / "books" / slug / "source-rights.md"
+    path = content_book_dir(slug) / "source-rights.md"
     values: dict[str, str] = {}
     if not path.is_file():
         return values
@@ -252,6 +255,17 @@ def source_rights_note(slug: str) -> dict[str, str]:
         if match:
             values[match.group(1).strip().casefold()] = match.group(2).strip()
     return values
+
+
+def content_book_dir(slug: str) -> Path:
+    """Return the active source path or the explicit archive path for a held title."""
+    archive = HELD_TITLE_ARCHIVES.get(slug)
+    return archive / "source-book" if archive else ROOT / "content" / "books" / slug
+
+
+def controlled_package_dir(slug: str) -> Path:
+    archive = HELD_TITLE_ARCHIVES.get(slug)
+    return archive / "controlled-publication-package" if archive else PUBLICATIONS / slug
 
 
 def active_cover_hashes(path: Path) -> dict[str, str]:
@@ -323,7 +337,7 @@ def source_to_canonical_comparison(slug: str, directory: Path) -> dict[str, Any]
     to explain whether a stored publication aggregate should be read as a
     direct source-text digest.
     """
-    source_path = ROOT / "content" / "books" / slug / "raw" / "source.txt"
+    source_path = content_book_dir(slug) / "raw" / "source.txt"
     if not source_path.is_file():
         return {
             "status": "UNKNOWN",
@@ -582,7 +596,7 @@ def public_legal_routes_registered() -> bool:
 
 
 def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
-    directory = PUBLICATIONS / slug
+    directory = controlled_package_dir(slug)
     source_path = directory / "source_evidence.json"
     reader_path = directory / "reader_manifest.json"
     book_path = directory / "public_book.json"
@@ -636,7 +650,7 @@ def title_record(slug: str, launch_hold: dict[str, Any]) -> dict[str, Any]:
             "section_22_term_calculation": section_22_calculation(facts["death_year"]),
             "evidence": [
                 evidence(source_path),
-                evidence(ROOT / "content" / "books" / slug / "source-rights.md"),
+                evidence(content_book_dir(slug) / "source-rights.md"),
                 {"topic": "author identity and death year", "url": facts["author_source"]},
                 {"topic": "work publication evidence", "url": facts["publication_source"]},
                 OFFICIAL_SOURCES[0],

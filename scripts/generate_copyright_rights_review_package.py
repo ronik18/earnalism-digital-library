@@ -25,6 +25,9 @@ if str(ROOT) not in sys.path:
 from backend.rights_decision_gate import evaluate_runtime_path
 
 PUBLICATIONS = ROOT / "data" / "controlled_publications"
+HELD_TITLE_ARCHIVES = {
+    "yugalanguriya": ROOT / "internal" / "archives" / "held_titles" / "yugalanguriya",
+}
 REGISTRY = ROOT / "backend" / "data" / "rights_decision_registry.json"
 ROOT_LAUNCH = ROOT / "data" / "controlled_launch.json"
 BACKEND_LAUNCH = ROOT / "backend" / "data" / "controlled_launch.json"
@@ -92,7 +95,7 @@ def evidence(path: Path) -> list[dict[str, str]]:
 
 
 def source_rights_note(slug: str) -> dict[str, str]:
-    path = ROOT / "content" / "books" / slug / "source-rights.md"
+    path = content_book_dir(slug) / "source-rights.md"
     if not path.is_file():
         return {}
     values: dict[str, str] = {}
@@ -101,6 +104,16 @@ def source_rights_note(slug: str) -> dict[str, str]:
         if match:
             values[match.group(1).strip().casefold()] = match.group(2).strip()
     return values
+
+
+def content_book_dir(slug: str) -> Path:
+    archive = HELD_TITLE_ARCHIVES.get(slug)
+    return archive / "source-book" if archive else ROOT / "content" / "books" / slug
+
+
+def controlled_package_dir(slug: str) -> Path:
+    archive = HELD_TITLE_ARCHIVES.get(slug)
+    return archive / "controlled-publication-package" if archive else PUBLICATIONS / slug
 
 
 def text(value: Any) -> str:
@@ -220,7 +233,7 @@ def accepted_controlled_release(slug: str, directory: Path, jurisdictions: list[
 
 
 def title_inventory(slug: str, pilot_countries: dict[str, list[str]], registry: dict[str, Any]) -> dict[str, Any]:
-    directory = PUBLICATIONS / slug
+    directory = controlled_package_dir(slug)
     book_path = directory / "public_book.json"
     source_path = directory / "source_evidence.json"
     approval_path = directory / "approval_evidence.json"
@@ -235,7 +248,7 @@ def title_inventory(slug: str, pilot_countries: dict[str, list[str]], registry: 
     publication_date = text(source.get("original_publication_year") or note.get("original publication year"))
     jurisdictions = list(pilot_countries.get(slug, []))
     accepted_for_controlled_release = accepted_controlled_release(slug, directory, jurisdictions, registry)
-    source_provenance = evidence(source_path) + evidence(ROOT / "content" / "books" / slug / "source-rights.md")
+    source_provenance = evidence(source_path) + evidence(content_book_dir(slug) / "source-rights.md")
     source_complete = all(source.get(key) for key in ("content_hash", "source_hash", "source_url", "source_name", "source_license", "rights_basis"))
     text_status = "EVIDENCE_READY_FOR_REVIEW" if source_complete else "HOLD"
     core_uncertainties = [
@@ -372,7 +385,9 @@ def build_package(args: argparse.Namespace) -> dict[str, Any]:
         slug: list((pilot_dispositions.get(f"controlled-{slug}") or {}).get("countries") or [])
         for slug in PILOT_SLUGS
     }
-    titles = [title_inventory(directory.name, countries, registry) for directory in sorted(PUBLICATIONS.iterdir()) if directory.is_dir()]
+    publication_slugs = {directory.name for directory in PUBLICATIONS.iterdir() if directory.is_dir()}
+    publication_slugs.update(HELD_TITLE_ARCHIVES)
+    titles = [title_inventory(slug, countries, registry) for slug in sorted(publication_slugs)]
     components = [component for title in titles for component in title["components"]]
     root_launch = read_json(ROOT_LAUNCH)
     backend_launch = read_json(BACKEND_LAUNCH)

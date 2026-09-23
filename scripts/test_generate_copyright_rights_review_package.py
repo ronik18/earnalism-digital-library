@@ -34,7 +34,10 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
     def test_inventory_covers_every_controlled_publication_and_reports_current_allowlist(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             package = self.build(Path(temporary))
-        expected = sorted(path.name for path in (ROOT / "data" / "controlled_publications").iterdir() if path.is_dir())
+        expected = sorted(
+            {path.name for path in (ROOT / "data" / "controlled_publications").iterdir() if path.is_dir()}
+            | {"yugalanguriya"}
+        )
         self.assertEqual([item["slug"] for item in package["titles"]], expected)
         self.assertEqual(package["inventory_summary"]["title_count"], len(expected))
         self.assertEqual(package["inventory_summary"]["accepted_rights_record_count"], 3)

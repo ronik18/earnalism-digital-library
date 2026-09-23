@@ -357,15 +357,13 @@ def test_canonical_page_routes_remain_disabled_when_v2_is_disabled(monkeypatch):
         client.close()
 
 
-def test_manifest_approved_titles_are_not_excluded_by_the_legacy_43_slug_list():
+def test_titles_outside_the_controlled_release_remain_excluded():
     assert set(OMITTED_FROM_LEGACY_CONFIG).isdisjoint(catalog_truth.LEGACY_CONTROLLED_LIVE_BOOK_SLUGS)
     for slug in OMITTED_FROM_LEGACY_CONFIG:
-        assert slug in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
-        assert catalog_truth.controlled_artifact_status(slug)["self_contained_for_truth_gate"] is True
-        projected = server._safe_live_public_projection(
+        assert slug not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
+        assert catalog_truth.can_expose_reader({"slug": slug}) is False
+        assert server._safe_live_public_projection(
             catalog_truth.load_controlled_artifact_book(slug, include_content=False)
-        )
-        assert projected is not None
-        assert projected["reader_enabled"] is True
+        ) is None
     api_rows = server._append_controlled_artifact_projections([])
-    assert set(OMITTED_FROM_LEGACY_CONFIG).issubset({row["slug"] for row in api_rows})
+    assert set(OMITTED_FROM_LEGACY_CONFIG).isdisjoint({row["slug"] for row in api_rows})
