@@ -132,7 +132,7 @@ def test_six_title_release_has_hash_bound_reading_pass_rights_and_published_read
             )
         }
         assert registry[record["decision_id"]]
-        assert record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct user-provided") or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct PR #414 go-live mandate")
+        assert record["accepted_by"].startswith("REO ENTERPRISE under the direct owner-provided India commercial go-live mandate") or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct user-provided") or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct PR #414 go-live mandate")
         for action in ("reading_pass_session_start", "reading_pass_page", "reading_pass_lease_renewal"):
             verdict = evaluate_runtime_path(
                 action,
