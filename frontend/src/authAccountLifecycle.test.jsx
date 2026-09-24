@@ -175,6 +175,47 @@ describe("AuthProvider and Account lifecycle", () => {
     await mounted.cleanup();
   });
 
+  test("Account presents human-readable active sessions and collapses previous sessions", async () => {
+    localStorage.setItem(USER_TOKEN_KEY, "isolated-token");
+    mockUserApiGet.mockImplementation((path) => {
+      if (path === "/users/me") return Promise.resolve({ data: { ...user() } });
+      if (path === "/users/me/transactions") return Promise.resolve({ data: [] });
+      return Promise.reject(new Error(`unexpected path ${path}`));
+    });
+    mockGetReadingPassDevices.mockResolvedValue([
+      {
+        session_id: "current-session",
+        status: "active",
+        current: true,
+        device_label: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+        last_seen_at: "2026-09-24T06:00:00Z",
+      },
+      {
+        session_id: "previous-session",
+        status: "revoked",
+        current: false,
+        device_label: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
+        last_seen_at: "2026-09-16T09:54:00Z",
+      },
+    ]);
+
+    const mounted = render(<AuthProvider><Account /></AuthProvider>);
+    await flush();
+
+    expect(mounted.container.querySelector('[data-testid="account-balance"]')?.textContent).toContain("India Pilot Access");
+    expect(mounted.container.querySelector('[data-testid="account-reading-pass-status"]')?.textContent).toContain("Prepared for future eligible editions.");
+    expect(mounted.container.querySelector('[data-testid="account-active-sessions"]')?.textContent).toContain("Chrome on Mac");
+    expect(mounted.container.querySelector('[data-testid="account-active-sessions"]')?.textContent).toContain("This device");
+    expect(mounted.container.querySelector('[data-testid="account-page"]')?.textContent).not.toContain("Mozilla/5.0");
+    const previousSessions = mounted.container.querySelector('[data-testid="account-previous-sessions"]');
+    expect(previousSessions?.open).toBe(false);
+    expect(previousSessions?.querySelector("summary")?.textContent).toContain("Show previous sessions (1)");
+    expect(previousSessions?.textContent).toContain("Safari on iPhone");
+    expect(mounted.container.querySelector('[aria-label="Revoke Chrome on Mac session"]')).not.toBeNull();
+
+    await mounted.cleanup();
+  });
+
   test("a late startup verification failure cannot erase a newer successful login", async () => {
     localStorage.setItem(USER_TOKEN_KEY, "stale-token");
     const startup = deferred();

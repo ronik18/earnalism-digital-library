@@ -7,6 +7,7 @@ import { LogOut, BookOpen, Clock, ArrowUpRight, MonitorSmartphone, ShieldCheck, 
 import useSEO from "../hooks/useSEO";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { getReadingPassConfig, getReadingPassDevices, revokeReadingPassDevice } from "../lib/readingPassApi";
+import { formatSessionDeviceLabel, formatSessionLastActive, sortSessionDevices } from "../lib/accountPresentation";
 import ExperienceBottomNavigation from "../experiences-v2/shared/ExperienceBottomNavigation";
 import { PUBLIC_PAID_COMMERCE_ENABLED } from "../lib/controlledLaunch";
 import "../styles/auth-account.css";
@@ -115,51 +116,44 @@ function formatActivityWhen(row) {
   return `${start.toLocaleString()} - ${end.toLocaleString()}`;
 }
 
-function AccountProfileMobile({ user, balance, activityCount, readingPassEnabled, onLogout, onNavigate }) {
-  const initial = String(user.name || "Reader").trim().slice(0, 1).toUpperCase() || "R";
-  return (
-    <section className="account-profile-mobile" aria-labelledby="account-profile-mobile-title" data-testid="account-profile-mobile">
-      <div className="account-profile-mobile__identity">
-        <div className="account-profile-mobile__avatar" aria-hidden="true">{initial}</div>
-        <h1 id="account-profile-mobile-title">My Profile</h1>
-        <strong>{user.name || "Reader"}</strong>
-        <span>{user.email}</span>
-      </div>
-      <nav className="account-profile-mobile__actions" aria-label="Account options">
-        {PUBLIC_PAID_COMMERCE_ENABLED && <Link to="/pricing" className="account-profile-mobile__row" data-testid="account-profile-mobile-pass"><Clock aria-hidden="true" /><span><b>Reading Pass</b><small>{formatMinutes(balance)} available</small></span><ArrowUpRight aria-hidden="true" /></Link>}
-        <a href="#account-transactions" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>Recent activity</b><small>{activityCount ? `${activityCount} recorded activities` : "Your reading will appear here"}</small></span><ArrowUpRight aria-hidden="true" /></a>
-        {readingPassEnabled ? <a href="#reading-pass-devices" className="account-profile-mobile__row"><MonitorSmartphone aria-hidden="true" /><span><b>Signed-in devices</b><small>Manage active Reading Pass sessions</small></span><ArrowUpRight aria-hidden="true" /></a> : null}
-        <Link to="/library" className="account-profile-mobile__row"><BookOpen aria-hidden="true" /><span><b>Browse the Library</b><small>Find an edition to begin reading</small></span><ArrowUpRight aria-hidden="true" /></Link>
-        <button type="button" className="account-profile-mobile__row account-profile-mobile__signout" onClick={onLogout} data-testid="account-profile-mobile-logout"><LogOut aria-hidden="true" /><span><b>Sign out</b><small>End this signed-in session</small></span></button>
-      </nav>
-      <ExperienceBottomNavigation active="profile" onNavigate={onNavigate} />
-    </section>
-  );
-}
-
 function AccountVisualFixture() {
   const user = { name: "Review Reader", email: "review@example.invalid" };
-  const balance = 215 * 60;
+  const devices = [
+    {
+      session_id: "visual-current-session",
+      status: "active",
+      current: true,
+      device_label: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      last_seen_at: "2026-09-24T06:00:00Z",
+    },
+    {
+      session_id: "visual-previous-session",
+      status: "revoked",
+      current: false,
+      device_label: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
+      last_seen_at: "2026-09-16T09:54:00Z",
+    },
+  ];
   return (
-    <div className="account-page-modern account-page-modern--visual-fixture" data-testid="account-visual-fixture">
-      <section className="account-visual-fixture__desktop" aria-labelledby="account-visual-fixture-title">
+    <div className="account-page-modern account-page-modern--visual-fixture min-h-[70vh] px-5 sm:px-8 lg:px-12 py-12 sm:py-16" data-testid="account-visual-fixture">
+      <section className="account-content-container account-visual-fixture__desktop max-w-7xl mx-auto" aria-labelledby="account-visual-fixture-title">
         <div className="account-hero">
           <div className="account-hero-summary">
             <div className="italic-eyebrow">Your account</div>
             <h1 id="account-visual-fixture-title" className="font-serif-light text-4xl sm:text-5xl text-burgundy leading-tight mt-2">
               Welcome, <span className="italic-accent">Review</span>.
             </h1>
-            <p className="account-hero-email text-sm text-charcoal-soft mt-2 font-light">Sanitized visual profile</p>
+            <p className="account-hero-email text-sm text-charcoal-soft mt-2 font-light">{user.email}</p>
           </div>
           <button type="button" className="btn-secondary" data-testid="account-visual-fixture-signout"><LogOut size={14} className="mr-2" /> Sign out</button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <section className="account-panel account-balance-panel p-7 sm:p-8" aria-labelledby="account-visual-fixture-balance">
-            <div className="flex items-center gap-2 italic-eyebrow opacity-80"><Clock size={13} strokeWidth={1.5} /> Reading Pass</div>
-            <h2 id="account-visual-fixture-balance" className="account-balance-value font-serif-display text-5xl sm:text-6xl text-burgundy mt-4 leading-none">{formatMinutes(balance)}</h2>
+            <div className="flex items-center gap-2 italic-eyebrow opacity-80"><Clock size={13} strokeWidth={1.5} /> Pilot Reader access</div>
+            <h2 id="account-visual-fixture-balance" className="account-balance-value font-serif-display text-3xl sm:text-4xl text-burgundy mt-4 leading-tight">India Pilot Access</h2>
             <div className="gold-rule-thin mt-4" />
-            <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">Synthetic Reading Pass balance for visual review only. No account, lease, or payment activity is connected.</p>
-            <Link to="/pricing" className="inline-flex items-center gap-2 text-[0.72rem] tracking-[0.22em] uppercase text-burgundy mt-6">View Reading Pass <ArrowUpRight size={13} strokeWidth={1.5} /></Link>
+            <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">Full reading is included for the currently released pilot editions. Your Reading Pass balance is not used for these books.</p>
+            <div className="account-reading-pass-status mt-5 border-t border-brand/30 pt-4"><span className="block text-xs font-semibold uppercase tracking-[0.14em] text-burgundy">Reading Pass</span><span className="block mt-1 text-sm text-charcoal-soft">Prepared for future eligible editions.</span></div>
           </section>
           <section className="account-panel account-continue-panel p-7 sm:p-8 flex flex-col" aria-labelledby="account-visual-fixture-library">
             <div className="flex items-center gap-2 italic-eyebrow opacity-80"><BookOpen size={13} strokeWidth={1.5} /> My Library</div>
@@ -168,13 +162,24 @@ function AccountVisualFixture() {
             <div className="mt-auto pt-6"><Link to="/library" className="btn-primary w-full sm:w-auto">Browse Library</Link></div>
           </section>
         </div>
+        <section className="account-panel p-6 sm:p-8 mb-8" aria-labelledby="account-visual-fixture-sessions">
+          <div className="flex items-start justify-between gap-4 flex-wrap">
+            <div>
+              <div className="flex items-center gap-2 italic-eyebrow opacity-80"><MonitorSmartphone size={14} strokeWidth={1.5} /> Signed-in devices</div>
+              <h2 id="account-visual-fixture-sessions" className="font-serif-display text-2xl text-burgundy mt-3">Reading Pass sessions</h2>
+            </div>
+            <ShieldCheck size={24} className="text-burgundy" aria-hidden="true" />
+          </div>
+          <div className="gold-rule-thin mt-5 mb-4" />
+          <SessionGroups devices={devices} onRevoke={() => {}} />
+        </section>
         <section className="account-panel p-6 sm:p-8" aria-labelledby="account-visual-fixture-activity">
           <h2 id="account-visual-fixture-activity" className="font-serif-display text-2xl text-burgundy">Recent activity</h2>
           <div className="gold-rule-thin mt-3 mb-5" />
           <p className="text-charcoal-soft text-sm font-light">No reading activity is recorded in this sanitized visual fixture.</p>
         </section>
       </section>
-      <AccountProfileMobile user={user} balance={balance} activityCount={0} readingPassEnabled onLogout={() => {}} onNavigate={() => {}} />
+      <div className="account-mobile-navigation"><ExperienceBottomNavigation active="profile" onNavigate={() => {}} /></div>
     </div>
   );
 }
@@ -264,7 +269,8 @@ export default function Account() {
   };
   const revokeDevice = async (device) => {
     const target = device.session_id || device.device_id;
-    if (!target || !window.confirm(`Revoke ${device.device_label || "this device"}? Any active Reading Pass lease there will stop.`)) return;
+    const deviceLabel = formatSessionDeviceLabel(device.device_label);
+    if (!target || !window.confirm(`Revoke ${deviceLabel}? Any active Reading Pass lease there will stop.`)) return;
     try {
       await revokeReadingPassDevice(target);
       setDevices((rows) => rows.map((row) => (
@@ -284,8 +290,7 @@ export default function Account() {
 
   return (
     <div className="account-page-modern min-h-[70vh] px-5 sm:px-8 lg:px-12 py-12 sm:py-16" data-testid="account-page">
-      <AccountProfileMobile user={user} balance={balance} activityCount={activityRows.length} readingPassEnabled={readingPassEnabled} onLogout={onLogout} onNavigate={onProfileNavigate} />
-      <div className="max-w-4xl mx-auto">
+      <div className="account-content-container max-w-7xl mx-auto">
         <div className="account-hero mb-8 sm:mb-10">
           <div className="account-hero-summary">
             <div className="italic-eyebrow">Your account</div>
@@ -299,18 +304,18 @@ export default function Account() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10 sm:mb-12">
           <div className="account-panel account-balance-panel p-7 sm:p-8" data-testid="account-balance-card" role="region" aria-labelledby="account-balance-heading">
             <div className="flex items-center gap-2 italic-eyebrow opacity-80">
               <Clock size={13} strokeWidth={1.5} /> {PUBLIC_PAID_COMMERCE_ENABLED ? "Reading time" : "Pilot Reader access"}
             </div>
-            <h2 id="account-balance-heading" className="account-balance-value font-serif-display text-5xl sm:text-6xl text-burgundy mt-4 leading-none" data-testid="account-balance">
-              {PUBLIC_PAID_COMMERCE_ENABLED ? formatMinutes(balance) : "Free"}
+            <h2 id="account-balance-heading" className={`account-balance-value font-serif-display ${PUBLIC_PAID_COMMERCE_ENABLED ? "text-5xl sm:text-6xl" : "text-3xl sm:text-4xl"} text-burgundy mt-4 leading-tight`} data-testid="account-balance">
+              {PUBLIC_PAID_COMMERCE_ENABLED ? formatMinutes(balance) : "India Pilot Access"}
             </h2>
             <div className="gold-rule-thin mt-4" />
             <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">
               {!PUBLIC_PAID_COMMERCE_ENABLED
-                ? "The three released India pilot editions are free to read in full. Your Reading Pass balance is not used for these books."
+                ? "Full reading is included for the currently released pilot editions. Your Reading Pass balance is not used for these books."
                 : readingPassEnabled
                 ? "Reading Pass uses short server leases and a 10-second heartbeat. Reading bills only while protected text is active; listening bills only while approved audio is playing."
                 : "Reading is billed in 30-second pulses only while a chapter is open, visible, and active. Hidden tabs, sleeping devices, and long idle gaps are not charged."}
@@ -318,6 +323,12 @@ export default function Account() {
             <p className="mt-3 text-xs leading-relaxed text-charcoal-soft/80" data-testid="account-wallet-explainer">
               The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.
             </p>
+            {!PUBLIC_PAID_COMMERCE_ENABLED && (
+              <div className="account-reading-pass-status mt-5 border-t border-brand/30 pt-4" data-testid="account-reading-pass-status">
+                <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-burgundy">Reading Pass</span>
+                <span className="block mt-1 text-sm text-charcoal-soft">Prepared for future eligible editions.</span>
+              </div>
+            )}
             {PUBLIC_PAID_COMMERCE_ENABLED && <Link
               to="/pricing"
               className="inline-flex items-center gap-2 text-[0.72rem] tracking-[0.22em] uppercase text-burgundy mt-6 hover:opacity-70"
@@ -371,24 +382,7 @@ export default function Account() {
             ) : devices.length === 0 ? (
               <p className="text-sm text-charcoal-soft">No Reading Pass device sessions are registered yet.</p>
             ) : (
-              <ul className="grid gap-3">
-                {devices.map((device) => {
-                  const revoked = device.status !== "active";
-                  return (
-                    <li key={device.session_id || device.device_id} className="account-device-row flex items-center justify-between gap-4 rounded-xl border px-4 py-3">
-                      <div className="min-w-0">
-                        <strong className="block text-sm text-charcoal truncate">{device.device_label || "Browser"}{device.current ? " · This device" : ""}</strong>
-                        <span className="block text-xs text-charcoal-soft mt-1">{revoked ? "Revoked" : "Active"}{device.last_seen_at ? ` · Last seen ${new Date(device.last_seen_at).toLocaleString()}` : ""}</span>
-                      </div>
-                      {!revoked && (
-                        <button type="button" onClick={() => revokeDevice(device)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-brand text-burgundy hover:bg-brand-ivory" aria-label={`Revoke ${device.device_label || "device"}`}>
-                          <Trash2 size={16} aria-hidden="true" />
-                        </button>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+              <SessionGroups devices={devices} onRevoke={revokeDevice} />
             )}
           </section>
         )}
@@ -433,6 +427,62 @@ export default function Account() {
           )}
         </div>
       </div>
+      <div className="account-mobile-navigation">
+        <ExperienceBottomNavigation active="profile" onNavigate={onProfileNavigate} />
+      </div>
+    </div>
+  );
+}
+
+function SessionRow({ device, onRevoke }) {
+  const revoked = device.status !== "active";
+  const label = formatSessionDeviceLabel(device.device_label);
+  const lastActive = formatSessionLastActive(device.last_seen_at);
+  const previousStatus = device.status === "revoked" ? "Revoked" : device.status === "expired" ? "Expired" : device.status === "ended" ? "Signed out" : "Previous session";
+  return (
+    <li key={device.session_id || device.device_id} className={`account-device-row${device.current ? " is-current" : ""}`}>
+      <div className="account-device-row__icon" aria-hidden="true"><MonitorSmartphone size={18} strokeWidth={1.6} /></div>
+      <div className="account-device-row__details">
+        <div className="account-device-row__title">
+          <strong>{label}</strong>
+          {device.current && <span className="account-device-row__current">This device</span>}
+        </div>
+        <span className="account-device-row__activity">
+          {device.current ? "Active now" : `${revoked ? previousStatus : "Active session"}${lastActive ? ` · Last active ${lastActive}` : ""}`}
+        </span>
+      </div>
+      {!revoked && (
+        <button type="button" onClick={() => onRevoke(device)} className="account-device-row__revoke" aria-label={`Revoke ${label} session`} title={`Revoke ${label} session`}>
+          <Trash2 size={16} aria-hidden="true" />
+          <span>Revoke</span>
+        </button>
+      )}
+    </li>
+  );
+}
+
+function SessionGroups({ devices, onRevoke }) {
+  const ordered = sortSessionDevices(devices);
+  const active = ordered.filter((device) => device.status === "active");
+  const previous = ordered.filter((device) => device.status !== "active");
+  return (
+    <div className="account-session-groups">
+      <section aria-labelledby="account-active-sessions-heading" data-testid="account-active-sessions">
+        <h3 id="account-active-sessions-heading" className="account-session-group-heading">Active sessions <span>{active.length}</span></h3>
+        {active.length ? (
+          <ul className="grid gap-3" aria-label="Active sessions">
+            {active.map((device) => <SessionRow key={device.session_id || device.device_id} device={device} onRevoke={onRevoke} />)}
+          </ul>
+        ) : <p className="text-sm text-charcoal-soft">No active sessions.</p>}
+      </section>
+      {previous.length > 0 && (
+        <details className="account-previous-sessions" data-testid="account-previous-sessions">
+          <summary>Show previous sessions ({previous.length})</summary>
+          <ul className="grid gap-3" aria-label="Previous sessions">
+            {previous.map((device) => <SessionRow key={device.session_id || device.device_id} device={device} onRevoke={onRevoke} />)}
+          </ul>
+        </details>
+      )}
     </div>
   );
 }

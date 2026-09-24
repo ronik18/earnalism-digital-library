@@ -40,7 +40,9 @@ describe('chapter index contract', () => {
       .map((slug) => path.join(controlledRoot, slug, 'reader_manifest.json'))
       .filter((manifestPath) => fs.existsSync(manifestPath))
       .sort();
-    expect(manifests).toHaveLength(96);
+    // Yugalanguriya's 10-chapter package is archived and held, not part of
+    // the active controlled-publication inventory (see catalogue cleanup).
+    expect(manifests).toHaveLength(95);
 
     let auditedChapters = 0;
     manifests.forEach((manifestPath) => {
@@ -54,6 +56,6 @@ describe('chapter index contract', () => {
       expect(first.every((entry) => entry.index_contract === CHAPTER_INDEX_CONTRACT_VERSION)).toBe(true);
       auditedChapters += first.length;
     });
-    expect(auditedChapters).toBe(760);
+    expect(auditedChapters).toBe(750);
   });
 });
