@@ -37,14 +37,18 @@ def test_bankim_cohort_is_audited_hash_bound_and_remains_held():
         assert catalog_truth.load_controlled_artifact_book(title["slug"]) is None
 
 
-def test_hash_completeness_does_not_upgrade_source_comparison_or_release():
+def test_indira_source_verification_does_not_upgrade_any_title_to_release():
     report = audit(ROOT)
 
     for title in report["titles"]:
-        assert title["checks"]["text_verified"] is False
         assert title["checks"]["reader_release_allowed"] is False
-        assert "TEXT_VERIFIED" in title["blockers"]
         assert "RELEASE_ALLOWLISTED" in title["release_blockers"]
+        if title["slug"] == "bn-060":
+            assert title["checks"]["text_verified"] is True
+            assert "TEXT_VERIFIED" not in title["blockers"]
+        else:
+            assert title["checks"]["text_verified"] is False
+            assert "TEXT_VERIFIED" in title["blockers"]
 
 
 def test_indira_chapter_six_restores_only_facsimile_confirmed_continuation():
@@ -73,9 +77,7 @@ def test_indira_chapter_six_restores_only_facsimile_confirmed_continuation():
     assert hashlib.sha256(canonical["content"].encode("utf-8")).hexdigest() == (
         canonical["sanitizedSha256"]
     )
-    assert indira["text_integrity_status"] == (
-        "TEXT_REVIEW_REQUIRED_OTHER_CHAPTER_COMPARISON_PENDING"
-    )
+    assert indira["text_integrity_status"] == "TEXT_VERIFIED"
     assert indira["follow_up_source_comparison"]["classification"] == (
         "CONFIRMED_SOURCE_OMISSION_RESTORED"
     )
@@ -102,10 +104,66 @@ def test_indira_chapter_eight_source_match_does_not_clear_unchecked_chapters():
     assert comparison["canonical_chapter_content_sha256"] == hashlib.sha256(
         chapter["content"].encode("utf-8")
     ).hexdigest()
-    assert indira["text_integrity_status"] == (
-        "TEXT_REVIEW_REQUIRED_OTHER_CHAPTER_COMPARISON_PENDING"
-    )
+    assert indira["text_integrity_status"] == "TEXT_VERIFIED"
     assert indira["publication_status"] == "HOLD_NOT_RELEASED"
+
+
+def test_indira_complete_source_comparison_binds_every_canonical_chapter():
+    rights = json.loads(
+        (ROOT / "data/title_rights_evidence/bengali-bankim-cohort-1.json")
+        .read_text(encoding="utf-8")
+    )
+    indira = next(row for row in rights["titles"] if row["slug"] == "bn-060")
+    comparison = indira["complete_source_comparison"]
+
+    assert comparison["status"] == "TEXT_VERIFIED"
+    assert len(comparison["chapters"]) == 8
+    assert [row["chapter"] for row in comparison["chapters"]] == list(range(1, 9))
+    assert [row["source_child_page_revision"] for row in comparison["chapters"]] == [
+        1910625,
+        1910623,
+        1910622,
+        1910621,
+        1910624,
+        1910626,
+        1910627,
+        1910620,
+    ]
+    for row in comparison["chapters"]:
+        chapter = json.loads(
+            next(
+                (ROOT / "content/books/bn-060/chapters").glob(
+                    f"{row['chapter']:03d}-*.json"
+                )
+            ).read_text(encoding="utf-8")
+        )
+        assert hashlib.sha256(chapter["content"].encode("utf-8")).hexdigest() == (
+            row["canonical_chapter_sha256"]
+        )
+    assert comparison["canonical_text_sha256"] == indira["canonical_text_sha256"]
+    assert comparison["publication_status"] == "HOLD_NOT_RELEASED"
+    assert comparison["release_allowlist_changed"] is False
+
+
+def test_muchiram_source_scope_proves_the_two_chapter_package_is_incomplete():
+    rights = json.loads(
+        (ROOT / "data/title_rights_evidence/bengali-bankim-cohort-1.json")
+        .read_text(encoding="utf-8")
+    )
+    muchiram = next(
+        row
+        for row in rights["titles"]
+        if row["slug"] == "muchiram-gurer-jibanchorit"
+    )
+    review = muchiram["source_completeness_review"]
+
+    assert review["source_chapter_count"] == 14
+    assert review["earnalism_canonical_chapter_count"] == 2
+    assert review["classification"] == "SOURCE_INCOMPLETE_AT_LEAST_12_CHAPTERS_ABSENT"
+    assert muchiram["text_integrity_status"] == (
+        "TEXT_REVIEW_REQUIRED_SOURCE_HAS_14_CHAPTERS_CANONICAL_HAS_2"
+    )
+    assert muchiram["publication_status"] == "HOLD_NOT_RELEASED"
 
 
 def test_bankim_cohort_cover_records_bind_owner_provenance_to_active_package_asset():

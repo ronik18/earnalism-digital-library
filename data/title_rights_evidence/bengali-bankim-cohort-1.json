@@ -62,7 +62,7 @@
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593318/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
-      "india_title_status": "HOLD_SOURCE_AND_COVER_COMPONENT_EVIDENCE",
+      "india_title_status": "HOLD_SOURCE_EDITION_SCOPE_AND_TEXT_COMPARISON",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -90,7 +90,7 @@
       "underlying_work_status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
       "source_layer_status": "LICENSED_WITH_CONDITIONS_CC_BY_SA_4_0",
       "rights_status": "LICENSED_WITH_CONDITIONS",
-      "text_integrity_status": "TEXT_REVIEW_REQUIRED_OTHER_CHAPTER_COMPARISON_PENDING",
+      "text_integrity_status": "TEXT_VERIFIED",
       "chapter_count": 8,
       "canonical_text_sha256": "f327ffdf08c13085462db4a7c4bf0f2a315a3e4a577cc2f01c3a93b3fdaa2d0b",
       "canonical_text_hash_method": "SHA-256 of UTF-8 chapter content strings in ascending chapterNumber order, joined with one LF; diagnostic binding only, not a source-match claim",
@@ -101,12 +101,13 @@
         "raw_source_sha256": "ac099a87a6fd89eef03b85df1c943b9907894bbc2da2926efaabcdf65edd6e3f"
       },
       "partial_source_comparison": {
-        "status": "PARTIAL_DIAGNOSTIC_NOT_TEXT_VERIFIED",
+        "status": "HISTORICAL_PARTIAL_DIAGNOSTIC_SUPERSEDED",
         "method": "Exact Wikisource subpage revision HTML parsed with the repository importer's sanitizer, then NFC and whitespace-folded for a diagnostic similarity comparison. Similarity is not proof of equivalence; source-page headings/front matter were still present and the mismatch locations were not fully classified.",
         "revision_checked_at": "2026-09-24",
         "chapters_compared": 7,
         "chapters_total": 8,
         "chapter_8_status": "NOT_FETCHED_HTTP_429_RATE_LIMIT",
+        "superseded_by": "complete_source_comparison",
         "observations": [
           {
             "chapter": 1,
@@ -184,7 +185,7 @@
         "classification": "CONFIRMED_SOURCE_OMISSION_RESTORED",
         "decision": "Restore only the two paragraphs confirmed by the identified 1873 scan and transcription. Do not infer that the other chapters are verified; preserve the title hold until the remaining edition comparison and license presentation are complete.",
         "india_title_status": "HOLD_SOURCE_OTHER_CHAPTERS_PENDING",
-        "next_evidence_required": "Complete deterministic comparison of the remaining six chapters (1-5 and 7) against the identified 1873 source edition."
+        "next_evidence_required": "This historical restoration record is superseded for current text status by complete_source_comparison; retain it as provenance for the chapter-six repair."
       },
       "chapter_008_source_comparison": {
         "status": "CHAPTER_008_TEXT_MATCHES_PINNED_SOURCE_AFTER_SOURCE_FURNITURE_REMOVAL",
@@ -198,13 +199,90 @@
         "result": "The complete canonical chapter text matches the pinned 1873 transcription after removing its source heading and page furniture. This verifies chapter 8 only; it does not resolve the six other chapter comparisons or make the title ready.",
         "publication_status": "HOLD_NOT_RELEASED"
       },
+      "complete_source_comparison": {
+        "status": "TEXT_VERIFIED",
+        "reviewed_date": "2026-09-24",
+        "source_edition": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩), British Library scan transcription",
+        "source_parent_revision": 1971705,
+        "source_facsimile_pdf_sha256": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+        "comparison_method": "Compared all eight canonical chapter strings against their exact pinned Wikisource child-page revisions. Removed only source title/chapter headings and page furniture; applied NFC and whitespace folding. No literary words, punctuation, or ordering were normalized away. Visually checked the five transcription splits at scanned page boundaries; the printed-page continuations form the exact canonical words. Chapter six includes the two paragraphs already restored from the same facsimile.",
+        "facsimile_visual_review": "Manual visual comparison of the cited 1873 scan pages; no OCR or generated text was used to decide readings.",
+        "chapters": [
+          {
+            "chapter": 1,
+            "source_child_page_revision": 1910625,
+            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/প্রথম_পরিচ্ছেদ&oldid=1910625",
+            "canonical_chapter_sha256": "c2404852ee9da94b41a4a989edec3f7738397b2ddc98bf6acea225c81eddebe2",
+            "result": "FACSIMILE_CONFIRMED_PAGE_BOUNDARY_SPLITS_JOINED: printed page 4 ends খাই and page 5 begins তেছে; printed page 8 ends লা and page 9 begins ঠির. The canonical readings খাইতেছে and লাঠির follow the continuous source words.",
+            "facsimile_printed_pages": [4, 5, 8, 9],
+            "facsimile_pdf_pages": [6, 7, 10, 11]
+          },
+          {
+            "chapter": 2,
+            "source_child_page_revision": 1910623,
+            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/দ্বিতীয়_পরিচ্ছেদ&oldid=1910623",
+            "canonical_chapter_sha256": "7356cad0f3c20205c6650d52098bb90dac59336c56b0bce0ef1a53f9fa10e302",
+            "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
+          },
+          {
+            "chapter": 3,
+            "source_child_page_revision": 1910622,
+            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/তৃতীয়_পরিচ্ছেদ&oldid=1910622",
+            "canonical_chapter_sha256": "43d496cba105a53b39f27e207d6ae73e6dbdecbd35506202c3d831b1ecd6d555",
+            "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
+          },
+          {
+            "chapter": 4,
+            "source_child_page_revision": 1910621,
+            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/চতুর্থ_পরিচ্ছেদ&oldid=1910621",
+            "canonical_chapter_sha256": "520e555b325a8d1a722f3534484eb41b5fe58129f651188523c09d65032e195f",
+            "result": "FACSIMILE_CONFIRMED_PAGE_BOUNDARY_SPLITS_JOINED: printed page 23 ends অ and page 24 begins ধিক; printed page 25 ends আ and page 26 begins মাকে. The canonical readings অধিক and আমাকে preserve the continuous source words.",
+            "facsimile_printed_pages": [23, 24, 25, 26],
+            "facsimile_pdf_pages": [25, 26, 27, 28]
+          },
+          {
+            "chapter": 5,
+            "source_child_page_revision": 1910624,
+            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/পঞ্চম_পরিচ্ছেদ&oldid=1910624",
+            "canonical_chapter_sha256": "494cee46a4461eaebc67b68e81c447f31831296723e21e1024e5d9500694868a",
+            "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
+          },
+          {
+            "chapter": 6,
+            "source_child_page_revision": 1910626,
+            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/ষষ্ঠ_পরিচ্ছেদ&oldid=1910626",
+            "canonical_chapter_sha256": "1ff67f3b84c1f1e61ac885e90327dc232ec0ce1b49f46b3d635e036bc297429d",
+            "result": "SOURCE_OMISSION_RESTORED_AND_PAGE_BOUNDARY_SPLIT_JOINED: the facsimile-confirmed two-paragraph continuation is present; printed page 32 ends করি and page 33 begins য়াই, supporting the canonical continuous reading করিয়াই.",
+            "facsimile_printed_pages": [32, 33],
+            "facsimile_pdf_pages": [34, 35]
+          },
+          {
+            "chapter": 7,
+            "source_child_page_revision": 1910627,
+            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/সপ্তম_পরিচ্ছেদ&oldid=1910627",
+            "canonical_chapter_sha256": "8a15e0ef3f75e2c3a4d9701b16e445d40205ee2391b5b13777162bac33342afc",
+            "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
+          },
+          {
+            "chapter": 8,
+            "source_child_page_revision": 1910620,
+            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/অষ্টম_পরিচ্ছেদ&oldid=1910620",
+            "canonical_chapter_sha256": "d32caf511e719a5e8ae6f776f0dbec32bdcbcf17200fcf184d451dadc0bace3e",
+            "result": "MATCH_AFTER_SOURCE_FURNITURE_REMOVAL"
+          }
+        ],
+        "canonical_text_sha256": "f327ffdf08c13085462db4a7c4bf0f2a315a3e4a577cc2f01c3a93b3fdaa2d0b",
+        "india_title_status": "RIGHTS_BASIS_COMPLETE; LICENSE_OBLIGATIONS_AND_PUBLICATION_QA_PENDING",
+        "publication_status": "HOLD_NOT_RELEASED",
+        "release_allowlist_changed": false
+      },
       "cover_status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED; owner states covers are personally graphically designed; visual asset review found no identifiable third-party protected component",
       "external_protected_cover_elements": false,
       "cover_provenance_evidence": "Owner-supplied statement that Earnalism covers were graphically designed by the owner; reviewed active controlled cover asset; no contrary third-party component is identified.",
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270665/earnalism/covers/front/bn-060_front_1600x2400.png",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
-      "india_title_status": "HOLD_SOURCE_OTHER_CHAPTERS_PENDING",
+      "india_title_status": "RIGHTS_BASIS_COMPLETE; LICENSE_OBLIGATIONS_AND_PUBLICATION_QA_PENDING",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -247,7 +325,7 @@
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
-      "india_title_status": "HOLD_SOURCE_COMPARISON_AND_COVER_COMPONENT_EVIDENCE",
+      "india_title_status": "HOLD_TEXT_COMPARISON_1883_EDITION",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -334,7 +412,7 @@
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
-      "india_title_status": "HOLD_SOURCE_COMPARISON_AND_COVER_COMPONENT_EVIDENCE",
+      "india_title_status": "HOLD_TEXT_COMPARISON_1874_EDITION",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -363,8 +441,20 @@
       "underlying_work_status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
       "source_layer_status": "LICENSED_WITH_CONDITIONS_CC_BY_SA_4_0",
       "rights_status": "LICENSED_WITH_CONDITIONS",
-      "editorial_layer_status": "REVIEW_REQUIRED; confirm canonical two chapters exclude the 1944 editorial introduction, notes, and other independently protected additions",
-      "text_integrity_status": "TEXT_REVIEW_REQUIRED_EXACT_SOURCE_AND_EDITORIAL_LAYER_COMPARISON_NOT_COMPLETE",
+      "editorial_layer_status": "REVIEW_REQUIRED; canonical package is narrative-only so far, but compare its scope with the identified edition after restoring missing chapters; do not include the 1944 editorial introduction or notes as Bankim text",
+      "source_completeness_review": {
+        "reviewed_date": "2026-09-24",
+        "source_parent_revision": 1972146,
+        "source_revision_url": "https://bn.wikisource.org/w/index.php?title=মুচিরাম_গুড়ের_জীবনচরিত_(১৯৪৪)&oldid=1972146",
+        "edition_evidence": "The 1944 source page links fourteen separately titled narrative chapters, প্রথম পরিচ্ছেদ through চতুর্দ্দশ পরিচ্ছেদ.",
+        "source_chapter_count": 14,
+        "earnalism_canonical_chapter_count": 2,
+        "canonical_chapter_titles": ["প্রথম পরিচ্ছেদ", "দ্বিতীয় পরিচ্ছেদ"],
+        "classification": "SOURCE_INCOMPLETE_AT_LEAST_12_CHAPTERS_ABSENT",
+        "decision": "Do not mark TEXT_VERIFIED or prepare a publication manifest from the current two-chapter package. Recover and compare the remaining source chapters through the approved ingestion path; keep the historical 1944 editorial introduction separate.",
+        "publication_status": "HOLD_NOT_RELEASED"
+      },
+      "text_integrity_status": "TEXT_REVIEW_REQUIRED_SOURCE_HAS_14_CHAPTERS_CANONICAL_HAS_2",
       "chapter_count": 2,
       "canonical_text_sha256": "531792238d1b893fb0cda5e3d8ba2cd58f76b2a4ad42db93c47cc8ccbd3fff1a",
       "canonical_text_hash_method": "SHA-256 of UTF-8 chapter content strings in ascending chapterNumber order, joined with one LF; diagnostic binding only, not a source-match claim",
@@ -380,7 +470,7 @@
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
-      "india_title_status": "HOLD_EDITORIAL_LAYER_AND_SOURCE_COMPARISON",
+      "india_title_status": "HOLD_SOURCE_COMPLETENESS_14_VS_2_AND_EDITORIAL_LAYER",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,

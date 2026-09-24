@@ -7,6 +7,8 @@
 - Customer-facing book covers must never fall back to plain typography panels. Use approved graphical covers first and lightweight graphical runtime fallback only when source art is missing.
 - Deterministic HTML text is safer than generated image text for covers because it avoids misspellings, supports Bengali/English typography, and prevents heavy raster churn.
 - Homepage performance in the CRA shell is still constrained by client-render LCP; hero asset/font/background optimizations improved local Lighthouse from 66 to 90 but did not restore the requested >=94 guardrail.
+- Indira's eight canonical chapters were compared against pinned 1873 Wikisource revisions; five apparent token mismatches were scan-confirmed page-boundary splits. This resolves text integrity only, not CC BY-SA distribution conditions or publication QA; keep the title unpublished until those independent gates pass.
+- Muchiram's identified 1944 source exposes fourteen chapters while the repository package contains only two. Treat this as a concrete source-completeness hold, not a cover or underlying-term issue; never reconstruct the missing chapters.
 
 ## Achievement-Aware Cost Governor - 2026-07-06T18:44:02.494690+00:00
 
