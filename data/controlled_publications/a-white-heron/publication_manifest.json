@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "a-white-heron",
   "title": "A White Heron",
-  "generated_at": "2026-09-24T15:46:58.693710+00:00",
+  "generated_at": "2026-09-25T00:00:00Z",
   "content": {
     "source_hash": "c2fa6ab0fcbb8393f08987e8af21a7f18b867ad857ed3cd31f12c974e348943b",
     "content_hash": "1e3e7eff7512385e037c7ff9db8d232599bba2dceb28be493b7e141a493e97e0",
@@ -28,8 +28,8 @@
     "evidence_sha256": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819"
   },
   "reader_release": {
-    "status": "READY_FOR_APPROVAL",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
     "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
     "blockers": []
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "38fa4ac2ed250111b73ba1cd34bdd94acede42e4f9242cab34ed96c0afebd80c",
+    "public_book": "ca266f6ee45561c7d379d00a2629aee5a7e363833a6b8a354fd706782eaee74a",
     "reader_manifest": "7a7ed969c6061c70025b160ef6f951efcba37ba6ffbef5b89f8e51ed274d7c3a",
     "source_evidence": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819",
-    "approval_evidence": "205ea2e1c12809884b17a3b62c872d6fe6ef4a708988adb3f16ed4a6cb68cc57"
+    "approval_evidence": "3fe378342ee79044bdeb6f9582f0aa9269c2f24e07a96bc59fb46825320ffa50"
   },
-  "manifest_sha256": "cb24fcaf3400035295be77e68d426200d41625a2d17ac74f576ad860839ee9fa"
+  "manifest_sha256": "60cf6cfedffcd18b100ef4abb917c91aa05ce22309a66cffb9d2a918f2a2ef2e"
 }

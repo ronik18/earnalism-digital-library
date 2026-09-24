@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "a-ghost-story",
   "title": "A Ghost Story",
-  "generated_at": "2026-09-22T16:12:17.558921+00:00",
+  "generated_at": "2026-09-25T00:00:00Z",
   "content": {
     "source_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
     "content_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
@@ -35,22 +35,19 @@
     "blockers": []
   },
   "audio_release": {
-    "status": "APPROVED",
-    "exposed": true,
-    "required_for_reader_release": false,
-    "qa_status": "QA_PASSED",
-    "audio_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
-    "candidate_fingerprint": ""
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
   },
   "commerce_release": {
     "status": "NOT_REQUESTED",
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe",
-    "reader_manifest": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9",
+    "public_book": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
+    "reader_manifest": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
     "source_evidence": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
     "approval_evidence": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba"
   },
-  "manifest_sha256": "477e20123aa69c18385eaff90423b3f39235a06a51784c575440e94d0789c32e"
+  "manifest_sha256": "8b37be4f0fb120073628f1ab22d4459e6fe74fca50e3af2311df29c32ea78188"
 }

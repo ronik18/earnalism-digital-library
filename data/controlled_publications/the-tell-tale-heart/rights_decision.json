@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.rights-decision.v1",
-  "decision_id": "india-20260922-the-tell-tale-heart-reader-release",
+  "decision_id": "india-20260925-the-tell-tale-heart-commercial-reader-release",
   "edition_id": "the-tell-tale-heart",
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
@@ -8,16 +8,16 @@
     "approval_evidence": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a",
     "checksum_manifest": "418935e29a0dc42bd47e68575ba937903f932a7e172abda74a886f3786593640",
     "public_book": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
-    "publication_manifest": "01f7d297fb1de1a4800647b48aadd2b265cbe8990691ddfd9df1008c513e1b04",
+    "publication_manifest": "00c04f1b70a324bca3d0fa56f43025f2975e5523612303c6313ffc535d9e4726",
     "reader_manifest": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
     "source_evidence": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f"
   },
   "territories": ["IN"],
-  "uses": ["catalog_metadata", "cover_display", "reader_preview", "reader_delivery"],
+  "uses": ["catalog_metadata", "cover_display", "reader_preview", "reader_delivery", "reading_pass_session", "reading_pass_renewal"],
   "valid_from": "2026-09-22T00:00:00+00:00",
   "valid_until": "2036-09-22T00:00:00+00:00",
-  "basis": "India-only text-reader release: documented expired-term evidence, identified source edition/text integrity, and first-party cover provenance.",
+  "basis": "India-only commercial text Reader use under the direct 2026-09-25 owner go-live mandate. Existing documented expired-term evidence, identified source edition/text integrity, and first-party cover provenance remain unchanged. Public audio and payment activation are not authorized by this record.",
   "evidence_sha256": ["f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b", "ddbfefae9964a9a530ef16edb1c6cab146f5e1666cb31eb65c4bfe088321267c", "05b30dbf8558745f47bd5c805e0fc23baccadbe20323605b188ecb1c84a5cb15"],
-  "accepted_by": "REO ENTERPRISE proprietor under the direct PR #414 go-live mandate",
+  "accepted_by": "REO ENTERPRISE proprietor under the direct user-provided India commercial go-live mandate dated 2026-09-25",
   "conditions_satisfied": true
 }

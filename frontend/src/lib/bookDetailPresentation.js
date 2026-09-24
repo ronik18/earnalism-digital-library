@@ -58,7 +58,7 @@ export function bookDetailPresentationForBook(book = {}) {
       : "Reading edition in preparation",
     readerBody: readerRuntimeAvailable
       ? freeReading
-        ? "Read the complete approved edition free. Sign in to continue beyond the preview; no Reading Pass purchase or wallet debit is required."
+        ? "Read the opening 3 pages free. A valid Reading Pass is required from page 4."
         : "Open the text in Earnalism's quiet reader with the current approved edition."
       : readerReady
         ? "This approved edition cannot be opened while the current Reader service is unavailable. Explore the Library for another title."
@@ -78,7 +78,7 @@ export function bookDetailPresentationForBook(book = {}) {
     listenCtaVisible: audioApproved,
     listenCtaLabel: "Open Listening Room",
     listenHref: audioApproved && slug ? `/listener/${encodeURIComponent(slug)}` : "",
-    primaryReadLabel: readerRuntimeAvailable ? (freeReading ? "Start Reading Free" : "Start Reading") : readerReady ? "Browse the Library" : "Back to Library",
+    primaryReadLabel: readerRuntimeAvailable ? (freeReading ? "Start with free preview" : "Start Reading") : readerReady ? "Browse the Library" : "Back to Library",
     primaryReadHref: readerRuntimeAvailable ? readerHref : "/library",
     allowAudioStructuredData: audioApproved,
     narrationDisclosure: audioApproved ? audiobookNarrationDisclosure(book) : "",

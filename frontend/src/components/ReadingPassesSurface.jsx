@@ -13,8 +13,8 @@ const PERSONAS = [
 ];
 const FAQ = [
   ['Is a Reading Pass a subscription?', 'No. Reading Passes are one-time purchases and do not auto-renew. Choose another only when you want more reading time.'],
-  ['How long is my pass valid?', 'Where a pass has a stated validity period, it is shown beside its price. Otherwise, review the current pass details at checkout; no expiry is inferred from missing information.'],
-  ['Can I try a book before choosing?', 'Where a preview is available, the first 3 canonical text pages are free. Listening requires an active pass and an available audio edition; there is no free audio preview.'],
+  ['How long is my pass valid?', 'Purchased unused Reading Pass minutes do not expire. A pass is a one-time purchase, not a subscription.'],
+  ['Can I try a book before choosing?', 'Where a preview is available, the first 3 canonical text pages are free. Public audiobooks are unavailable in this launch.'],
 ];
 function MiniFact({ icon: Icon, title, children }) { return <div className="rp-mini-fact"><Icon aria-hidden="true"/><div><strong>{title}</strong><span>{children}</span></div></div>; }
 
@@ -63,7 +63,7 @@ export default function ReadingPassesSurface({ packs = [], config, busyId, offer
             <h3 id={`rp-pack-${pack.id}`}>{pack.minutes.toLocaleString('en-IN')} Minutes</h3>
             <p className="rp-offer-poem">{['A little door into another world.', 'Room for a reading ritual.', 'Linger a little longer.', 'For stories that take their time.'][index % 4]}</p>
             <strong className="rp-price">{money(pack.price_inr)}</strong>
-            <p className="rp-validity">{Number.isInteger(pack.validity_days) && pack.validity_days > 0 ? `Valid for ${pack.validity_days} days` : 'See current pass details at checkout'}</p>
+            <p className="rp-validity">{Number.isInteger(pack.validity_days) && pack.validity_days > 0 ? `Valid for ${pack.validity_days} days` : 'Purchased unused minutes do not expire'}</p>
             <ul><li><Check aria-hidden="true"/>{pack.minutes.toLocaleString('en-IN')} reading minutes</li><li><Check aria-hidden="true"/>Browse eligible reading editions</li><li><Check aria-hidden="true"/>No subscription or auto-renewal</li><li><Check aria-hidden="true"/>3-page previews where available</li></ul>
             <button className="rp-button" type="button" data-testid={`pricing-pack-${pack.id}`} onClick={() => onBuy?.(pack)} disabled={Boolean(busyId) || !canSelect || typeof onBuy !== 'function'}>{busyId === pack.id ? 'Opening checkout…' : !canSelect ? 'Currently unavailable' : `Choose ${pack.minutes.toLocaleString('en-IN')} Minutes`}</button>
             <small className="rp-unit-price">₹{pack.unitPrice} per minute</small>
@@ -83,7 +83,7 @@ export default function ReadingPassesSurface({ packs = [], config, busyId, offer
       <MiniFact icon={CirclePause} title="No auto-renewal">Another pass is your decision</MiniFact>
       <MiniFact icon={Clock3} title="Time to read">Minutes used while reading</MiniFact>
       <MiniFact icon={Eye} title="A first glimpse">3 pages where available</MiniFact>
-      <MiniFact icon={Headphones} title="Listening, when ready">Available editions need a pass</MiniFact>
+      <MiniFact icon={Headphones} title="Listening">Audiobooks are unavailable in this launch</MiniFact>
     </div>
 
     <section className="rp-section rp-rhythm" aria-labelledby="rp-rhythm-title">

@@ -1,5 +1,23 @@
 {
   "version": "2026-07-14",
+  "india_commercial_entitlement_candidate_20260925": {
+    "status": "LOCAL_CANDIDATE_PREVIEW_ONLY_CHECKOUT_DISABLED",
+    "territory": "IN",
+    "titles": [
+      "a-ghost-story",
+      "the-tell-tale-heart",
+      "radharani",
+      "a-white-heron",
+      "the-gift-of-the-magi",
+      "the-canterville-ghost"
+    ],
+    "access_model": "PAGES_1_TO_3_PREVIEW_PAGE_4_PLUS_VALID_READING_PASS",
+    "public_paid_commerce_enabled": false,
+    "audio_enabled": false,
+    "historical_pilot_evidence": "RETAINED_NOT_AUTHORITY_FOR_FREE_FULL_TEXT",
+    "page_4_plus_without_entitlement": "DENIED_BY_SERVER_AUTHORITY",
+    "production_release": "NOT_YET_DEPLOYED"
+  },
   "active_platform_audiobook_policy": {
     "policy": "platform_audiobook_acceptance_v4_89",
     "effective_at": "2026-07-28T07:47:01Z",

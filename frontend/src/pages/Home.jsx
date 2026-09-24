@@ -24,7 +24,7 @@ import {
   getHomeListeningSnapshot,
 } from "../lib/homeSurfaces";
 import useSEO from "../hooks/useSEO";
-import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
+import { PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
 import { availableReadingPasses } from "../lib/readingPassOffers";
 import { ReferenceHomeSurface } from "../components/EditorialHomeLibrarySurfaces";
 import ReaderPerspectives from "../components/ReaderPerspectives";
@@ -245,7 +245,7 @@ export default function Home() {
               Stay with the story for as long as it holds you.
             </h2>
             <p>
-              {PUBLIC_ACCESS_COPY} When you are ready for more, add reading time once—without a subscription or autorenewal.
+              {PUBLIC_PREVIEW_COPY} A valid Reading Pass is required from page 4; purchases are not available yet. Passes will be one-time purchases with no subscription or autorenewal when checkout opens.
             </p>
             <Link
               to="/pricing"
@@ -265,7 +265,7 @@ export default function Home() {
             <article className="reference-reading-step">
               <CreditCard size={18} strokeWidth={1.6} aria-hidden="true" />
               <h3>Choose your time</h3>
-              <p>Add a reading pass only when you want to linger.</p>
+              <p>Pass purchases are not available yet.</p>
             </article>
             <article className="reference-reading-step">
               <CircleCheck size={18} strokeWidth={1.6} aria-hidden="true" />

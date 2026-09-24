@@ -2287,3 +2287,11 @@ PR #401 is merged and its Railway deployment is provider-confirmed, but the init
 - Bound the complete canonical narrative byte-for-byte after whitespace folding and removal of only the seven source Roman-numeral chapter labels; case, punctuation, spelling, and word order matched the repository's identified Project Gutenberg source text exactly.
 - Corrected the old source note's unsupported worldwide/free-reuse wording. India clearance is based on Copyright Act 1957 section 22 and Wilde's evidenced 1900 death; the source is the 1906 John W. Luce edition as represented in PG eBook 14522, with Wallace Goldsmith illustrations excluded. The PG license/trademark material is not carried into the Earnalism Reader and no PG branding is used.
 - Verified both first-party vector cover files against the recorded audit hashes. Root/backend publication packages remain unexposed and outside the three-title pilot allowlist; this title waits for the separately authorized commercial cutover.
+
+### 2026-09-25 — India commercial entitlement cutover candidate
+
+- Applied the owner's uniform six-title India release direction in a local candidate: pages 1–3 remain the free preview, page 4+ requires valid server-authorized Reading Pass entitlement, and old pilot-full-free evidence is retained only as historical provenance.
+- Public checkout and audio remain disabled. The live Razorpay config endpoint returned `available=false`, `configured=false`, `mode=disabled`, so no purchase can be accepted; this does not grant protected full-text access.
+- Reconciled homepage fallback and static SEO snapshots/validators to the six-title catalogue. Structured Book data now correctly says the full edition is not accessible for free, and static book routes offer only the 3-page preview.
+- Focused backend access/publication suites passed 93 tests; full frontend passed 472 tests; production build and all 34 static snapshots passed. Broad local backend tests cannot be counted as a release pass: integration groups require a local API/Mongo service and produced connection errors; hosted required CI remains authoritative.
+- No production deployment has occurred in this worktree. Do not declare customer or commercial go-live until exact-head CI and all enabled-commerce disclosures/provider actions are complete.

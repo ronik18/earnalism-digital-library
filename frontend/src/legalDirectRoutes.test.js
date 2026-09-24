@@ -26,6 +26,9 @@ describe("public legal direct-route contract", () => {
     expect(legalPages).toContain('canonicalPath="/privacy"');
     expect(legalPages).toContain('canonicalPath="/terms"');
     expect(legalPages).toContain('canonicalPath="/copyright"');
+    expect(legalPages).toContain("the first three Reader pages of released titles are available as a free preview");
+    expect(legalPages).toContain("page four onward requires a valid Reading Pass entitlement");
+    expect(legalPages).toContain("Pass purchases are not available in this launch");
     expect(legalPages).toContain('to="/contact?intent=rights"');
     expect(contact).toContain('api.post("/contact", form)');
     expect(legalPages).not.toContain("[OWNER INPUT REQUIRED");

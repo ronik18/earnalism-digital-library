@@ -185,6 +185,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--artifact-root", default=str(ROOT / "data" / "controlled_publications"))
     parser.add_argument("--write", action="store_true", help="Write publication_manifest.json after validation.")
     parser.add_argument("--publish-approved", action="store_true", help="Expose the reader lane after explicit approval.")
+    parser.add_argument("--generated-at", help="Use an explicit UTC timestamp for reproducible mirrored manifests.")
+    parser.add_argument("--refresh-checksum", action="store_true", help="Rebuild the package checksum bundle after metadata/approval edits.")
+    parser.add_argument("--disable-audio", action="store_true", help="Remove audio exposure metadata from public book/reader manifests while preserving separate historical evidence files.")
     parser.add_argument("--import-metadata", help="Validated import metadata JSON to promote before manifest creation.")
     return parser.parse_args(argv)
 
@@ -194,10 +197,49 @@ def run(argv: list[str] | None = None) -> int:
     artifact_dir = Path(args.artifact_root) / args.slug
     if args.import_metadata:
         migrate_import_metadata(Path(args.import_metadata), artifact_dir)
+    if args.disable_audio:
+        public_path = artifact_dir / "public_book.json"
+        reader_path = artifact_dir / "reader_manifest.json"
+        for path in (public_path, reader_path):
+            payload = _read_json(path)
+            for key in tuple(payload):
+                if key.casefold().startswith(("audio", "audiobook")):
+                    payload.pop(key)
+            payload["audio_enabled"] = False
+            payload["audiobook_enabled"] = False
+            if path == public_path:
+                payload["generate_audiobook"] = False
+                payload["audiobook_assets"] = {}
+                payload["audiobook"] = {}
+            path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    if args.refresh_checksum:
+        if not args.write:
+            print("BLOCKED: --refresh-checksum requires --write.", file=sys.stderr)
+            return 2
+        existing_checksum = _read_json_if_exists(artifact_dir / "checksum_manifest.json")
+        checksum_files = []
+        for artifact_path in sorted(artifact_dir.rglob("*")):
+            if not artifact_path.is_file() or artifact_path.name in {"checksum_manifest.json", "publication_manifest.json"}:
+                continue
+            relative_path = artifact_path.relative_to(artifact_dir).as_posix()
+            checksum_files.append({"file": relative_path, "sha256": _sha256_file(artifact_path)})
+        checksum_manifest = {
+            "slug": args.slug,
+            "generated_at": args.generated_at or str(existing_checksum.get("generated_at") or ""),
+            "files": checksum_files,
+        }
+        (artifact_dir / "checksum_manifest.json").write_text(
+            json.dumps(checksum_manifest, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
     if args.publish_approved and os.getenv("EARNALISM_APPROVE_READER_PUBLICATION") != "true":
         print("BLOCKED: EARNALISM_APPROVE_READER_PUBLICATION=true is required.", file=sys.stderr)
         return 2
-    manifest = build_manifest(artifact_dir, publish_approved=args.publish_approved)
+    manifest = build_manifest(
+        artifact_dir,
+        publish_approved=args.publish_approved,
+        generated_at=args.generated_at,
+    )
     issues = validate_manifest(manifest)
     if issues:
         for issue in issues:

@@ -10,9 +10,9 @@ describe("bookDetailPresentation", () => {
     };
     const free = bookDetailPresentationForBook(book);
     expect(free.freeReading).toBe(true);
-    expect(free.primaryReadLabel).toBe("Start Reading Free");
-    expect(free.readerBody).toMatch(/complete approved edition free/);
-    expect(free.readerBody).toMatch(/no Reading Pass purchase or wallet debit/);
+    expect(free.primaryReadLabel).toBe("Start with free preview");
+    expect(free.readerBody).toMatch(/opening 3 pages free/);
+    expect(free.readerBody).toMatch(/Reading Pass is required from page 4/);
     const unavailable = bookDetailPresentationForBook({ ...book, _readerManifest: { access: { reading_pass: { enabled: true, segments_ready: false, free_entitlement: true } } } });
     expect(unavailable.freeReading).toBe(false);
     expect(unavailable.primaryReadHref).toBe("/library");

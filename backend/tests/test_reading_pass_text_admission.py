@@ -169,7 +169,7 @@ def test_start_and_transfer_routes_share_the_same_handler(monkeypatch):
 
 
 @pytest.mark.parametrize("slug", ["a-ghost-story", "the-tell-tale-heart", "radharani"])
-def test_free_lease_can_deliver_the_last_canonical_page_without_a_paid_balance(monkeypatch, slug):
+def test_historical_pilot_free_lease_cannot_deliver_protected_page_after_cutover(monkeypatch, slug):
     async def authority(requested):
         return {"slug": requested, "chapters": [{"id": "chapter-1", "title": "Chapter one"}]} if requested == slug else None
 
@@ -207,15 +207,8 @@ def test_free_lease_can_deliver_the_last_canonical_page_without_a_paid_balance(m
         "type": "http", "method": "GET", "path": f"/api/reading-pass/books/{slug}/pages/7",
         "headers": [(b"x-reading-pass-session", b"session-1"), (b"x-reading-pass-lease", b"lease-1")],
     })
-    result = asyncio.run(server.reading_pass_book_page(slug, 7, request, Response(), USER))
-    assert result["page_index"] == result["total_pages"] == 7
-    assert result["content"] == "<p>Final verified source page.</p>"
-    assert result["is_preview"] is False
-
-    async def old_metered_lease(**_kwargs):
-        return {"entitlement_kind": "metered", "scope": {"segmentation_version": "edition-v1", "manifest_version": "manifest-v1"}}
-
-    monkeypatch.setattr(server.reading_pass_service, "authorize", old_metered_lease)
+    # Existing pilot leases must not grandfather full-book access after the
+    # production policy changes to commercial entitlement.
     with pytest.raises(server.HTTPException) as denied:
         asyncio.run(server.reading_pass_book_page(slug, 7, request, Response(), USER))
     assert denied.value.status_code == 403

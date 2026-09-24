@@ -10,6 +10,9 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
   "a-ghost-story",
   "the-tell-tale-heart",
   "radharani",
+  "a-white-heron",
+  "the-gift-of-the-magi",
+  "the-canterville-ghost",
 ]);
 // The India text launch does not offer paid Reading Passes until the live
 // Razorpay, consumer-remedy, and accounting surface has been independently
@@ -41,7 +44,7 @@ export const DRACULA_FALLBACK_BOOK = {
   author: "Bram Stoker",
   category_slug: "gothic-fiction",
   short_description:
-    "Begin Bram Stoker's gothic classic in a quiet digital reading room. Read the first 3 pages free. Listening requires an active Reading Pass.",
+    "Begin Bram Stoker's gothic classic in a quiet digital reading room. Read the first 3 pages free. Public audiobooks are unavailable in this launch.",
   description:
     "Dracula is an approved classic reading release with 27 chapters and a rights-safe source trail. Audio availability remains evidence-gated and hidden unless release approval is proven.",
   estimated_reading_time: "14 min",
@@ -233,7 +236,6 @@ export function canShowPreview(book = {}) {
 
 export function canShowReadingPass(book = {}) {
   return PUBLIC_PAID_COMMERCE_ENABLED
-    && normalizedSlug(book) === LIVE_APPROVED_SLUG
     && isLiveApprovedBook(book);
 }
 

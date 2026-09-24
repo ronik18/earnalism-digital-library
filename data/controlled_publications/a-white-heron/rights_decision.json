@@ -5,19 +5,19 @@
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "38fa4ac2ed250111b73ba1cd34bdd94acede42e4f9242cab34ed96c0afebd80c",
+    "public_book": "ca266f6ee45561c7d379d00a2629aee5a7e363833a6b8a354fd706782eaee74a",
     "reader_manifest": "7a7ed969c6061c70025b160ef6f951efcba37ba6ffbef5b89f8e51ed274d7c3a",
     "source_evidence": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819",
-    "approval_evidence": "205ea2e1c12809884b17a3b62c872d6fe6ef4a708988adb3f16ed4a6cb68cc57",
-    "checksum_manifest": "77acdba2b2e8a12cd4dd0d00db9648ddb84211d4f815f4c45166afa184df32ed",
-    "publication_manifest": "96dd16d73ca2223c5eadacf70f6b8a939aba3991357f30b95c626e9961704f38"
+    "approval_evidence": "3fe378342ee79044bdeb6f9582f0aa9269c2f24e07a96bc59fb46825320ffa50",
+    "checksum_manifest": "da54833391a84b7446625ef4a6c0aed23f7221230175fbac557ec5f52540581f",
+    "publication_manifest": "3465e865aa51a62c580d257f79595f2e0f9b36c75991e005fdaad2c5327ae6de"
   },
   "territories": ["IN"],
   "uses": ["catalog_metadata", "cover_display", "reader_preview", "reader_delivery", "reading_pass_session", "reading_pass_renewal"],
   "valid_from": "2026-09-24T00:00:00+00:00",
   "valid_until": "2036-09-25T00:00:00+00:00",
   "basis": "India-only commercial text Reader use under the owner's direct first-batch release instruction. Bound evidence records Sarah Orne Jewett's expired India term, the identified 1925 edition text and variants, canonical integrity, and first-party cover provenance. No audio or non-India use is accepted.",
-  "evidence_sha256": ["cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819", "96dd16d73ca2223c5eadacf70f6b8a939aba3991357f30b95c626e9961704f38"],
+  "evidence_sha256": ["cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819", "3465e865aa51a62c580d257f79595f2e0f9b36c75991e005fdaad2c5327ae6de"],
   "accepted_by": "REO ENTERPRISE proprietor under the direct user-provided first commercial batch mandate dated 2026-09-25",
   "conditions_satisfied": true
 }

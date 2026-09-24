@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "radharani",
   "title": "রাধারাণী",
-  "generated_at": "2026-09-22T16:12:17.679427+00:00",
+  "generated_at": "2026-09-25T00:00:00Z",
   "content": {
     "source_hash": "e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e",
     "content_hash": "4a3e2f9b0e0cdb6e2f4919c160573f0d4565559ce16ebb9aeb653f185b35e632",
@@ -98,5 +98,5 @@
     "source_evidence": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95",
     "approval_evidence": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc"
   },
-  "manifest_sha256": "4e9a4476f39f81f13cf66a23e7591d8deac8e0fc36338f17d311b69dc9b2060c"
+  "manifest_sha256": "116343bdea4ab3bc7d0e8cfdb2da14086c9aa5958dfead4f602b2f10b1226cd0"
 }

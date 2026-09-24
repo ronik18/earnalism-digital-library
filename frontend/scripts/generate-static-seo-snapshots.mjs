@@ -9,8 +9,15 @@ const publicationContractPath = path.join(frontendDir, "static-seo", "controlled
 const editorialContractPath = path.join(frontendDir, "static-seo", "editorial-public.json");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const brandImage = siteUrl + "/assets/brand/earnalism-brand-lockup.png";
-const accessCopy = "The three India pilot editions are free to read in full after sign-in; the first 3 pages are public. Audiobooks and paid checkout are unavailable.";
-const indiaPilotSlugs = new Set(["a-ghost-story", "the-tell-tale-heart", "radharani"]);
+const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.";
+const indiaReleasedSlugs = new Set([
+  "a-ghost-story",
+  "the-tell-tale-heart",
+  "radharani",
+  "a-white-heron",
+  "the-gift-of-the-magi",
+  "the-canterville-ghost",
+]);
 const forbiddenCopy = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
 const headStart = "<!-- earnalism-static-seo:start -->";
 const headEnd = "<!-- earnalism-static-seo:end -->";
@@ -41,8 +48,8 @@ async function contracts() {
   const validBooks = publication.schema_version === "earnalism.static-seo-public.v2"
     && (releaseHeld ? books.length === 0 : books.length > 0)
     && Object.values(publication.generated_from || {}).every(isSha)
-    && books.every((book) => indiaPilotSlugs.has(book.slug) && book.title && book.author && Number(book.text_preview_limit_canonical_pages) === 3 && Number(book.audio_public_preview_seconds) === 0 && book.audio_availability_state === "disabled" && book.canonical_routes && book.canonical_routes.book === "/book/" + book.slug)
-    && (releaseHeld || (books.length === indiaPilotSlugs.size && books.every((book) => indiaPilotSlugs.has(book.slug))));
+    && books.every((book) => indiaReleasedSlugs.has(book.slug) && book.title && book.author && Number(book.text_preview_limit_canonical_pages) === 3 && Number(book.audio_public_preview_seconds) === 0 && book.audio_availability_state === "disabled" && book.canonical_routes && book.canonical_routes.book === "/book/" + book.slug)
+    && (releaseHeld || (books.length === indiaReleasedSlugs.size && books.every((book) => indiaReleasedSlugs.has(book.slug))));
   const validEditorial = editorial.schema_version === "earnalism.static-seo-editorial.v1"
     && isSha(editorial.generated_from && editorial.generated_from["https://api.theearnalism.com/api/blog"])
     && editorial.journal && editorial.journal.canonical_route === "/journal"
@@ -116,7 +123,7 @@ function standardPages(editorial, { releaseHeld = false } = {}) {
   const pages = [
     ["/", "Earnalism | Bengali and English Classics", "A calm digital reading room for timeless Bengali and English literature. " + releaseCopy, "The Earnalism Digital Library", "A calmer place for timeless reading.", "/library", "Explore the Library"],
     ["/library", "Library | The Earnalism Digital Library", "Browse verified Bengali and English editions. " + releaseCopy, "Library", "Bengali and English classics.", "/library", "Explore released editions"],
-    ["/pricing", "Reading Passes | The Earnalism", releaseHeld ? releaseCopy : "Reading Passes and paid checkout are unavailable in this launch. Explore the three free India pilot Reader editions.", "Reading Passes", "Paid checkout is unavailable.", "/library", "Explore the Library"],
+    ["/pricing", "Reading Passes | The Earnalism", releaseHeld ? releaseCopy : "Reading Passes and paid checkout are unavailable in this launch. Explore six released India Reader previews.", "Reading Passes", "Paid checkout is unavailable.", "/library", "Explore the Library"],
     ["/about", "About Earnalism | The Earnalism Digital Library", "Earnalism is a digital library for Bengali and English classics, designed for thoughtful reading and release-aware listening.", "About Earnalism", "A library made for attention.", "/library", "Explore the Library"],
     ["/contact", "Contact | The Earnalism", "Contact The Earnalism for reader support, rights and title inquiries, or institutional access.", "Library desk", "Write to The Earnalism.", "mailto:sales@reoenterprise.org", "Email the library desk"],
     ["/privacy", "Privacy | The Earnalism", "How the current Earnalism website handles information used to operate the service.", "Earnalism", "Privacy", "/contact?intent=reader", "Privacy requests"],
@@ -161,12 +168,12 @@ function publicationPages(books) {
     const bookRoute = "/book/" + book.slug;
     const readerRoute = "/reader/" + book.slug;
     const listenerRoute = "/listener/" + book.slug;
-    const bookDescription = book.title + " by " + book.author + " is a released India pilot edition on The Earnalism. " + accessCopy;
+    const bookDescription = book.title + " by " + book.author + " is a released India edition on The Earnalism. " + accessCopy;
     const listening = book.audio_availability_state === "approved"
       ? "Listening to " + book.title + " requires an active Reading Pass from the first second."
       : "Listening is not available for " + book.title + " in the current release.";
     return [
-      { path: bookRoute, title: book.title + " by " + book.author + " | The Earnalism", description: bookDescription, image: book.cover_url || brandImage, ogType: "book", jsonLd: [webPage(book.title, bookDescription, bookRoute), { "@context": "https://schema.org", "@type": "Book", name: book.title, author: { "@type": "Person", name: book.author }, url: absolute(bookRoute), image: book.cover_url || brandImage, isAccessibleForFree: true }], staticBody: shell("Reader-ready edition", book.title + " by " + book.author, bookDescription, [{ href: readerRoute, label: "Read the complete edition free" }], [accessCopy]) },
+      { path: bookRoute, title: book.title + " by " + book.author + " | The Earnalism", description: bookDescription, image: book.cover_url || brandImage, ogType: "book", jsonLd: [webPage(book.title, bookDescription, bookRoute), { "@context": "https://schema.org", "@type": "Book", name: book.title, author: { "@type": "Person", name: book.author }, url: absolute(bookRoute), image: book.cover_url || brandImage, isAccessibleForFree: false }], staticBody: shell("Reader-ready edition", book.title + " by " + book.author, bookDescription, [{ href: readerRoute, label: "Read the 3-page preview" }], [accessCopy]) },
       { path: readerRoute, title: "Read " + book.title + " | The Earnalism Reader", description: accessCopy + " This reader route is noindex.", canonicalPath: bookRoute, robots: "noindex,follow", staticBody: shell("Reader", "Read " + book.title + ".", accessCopy, [{ href: bookRoute, label: "Book details" }]) },
       { path: listenerRoute, title: "Listen to " + book.title + " | The Earnalism", description: listening, canonicalPath: bookRoute, robots: "noindex,follow", staticBody: shell("Listening", book.title, listening, [{ href: bookRoute, label: "Book details" }], ["Public audio preview: 0 seconds.", accessCopy]) },
     ];

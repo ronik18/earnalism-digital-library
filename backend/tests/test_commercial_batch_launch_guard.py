@@ -46,11 +46,33 @@ def test_production_simulator_cannot_credit_wallet_even_if_commerce_flag_is_misc
     assert denied.value.status_code == 403
 
 
-def test_existing_free_pilot_stays_full_free_while_prepared_batch_is_metered():
-    assert server._title_text_access_mode("a-ghost-story") == "PILOT_FULL_FREE"
-    assert server._title_text_access_mode("the-tell-tale-heart") == "PILOT_FULL_FREE"
-    assert server._title_text_access_mode("radharani") == "PILOT_FULL_FREE"
-    assert server._title_text_access_mode("a-white-heron") == "COMMERCIAL_ENTITLEMENT"
-    assert server._title_text_access_mode("the-gift-of-the-magi") == "COMMERCIAL_ENTITLEMENT"
-    assert server._title_text_access_mode("the-canterville-ghost") == "COMMERCIAL_ENTITLEMENT"
+def test_all_six_live_titles_require_commercial_entitlement_and_held_title_is_denied():
+    for slug in (
+        "a-ghost-story",
+        "the-tell-tale-heart",
+        "radharani",
+        "a-white-heron",
+        "the-gift-of-the-magi",
+        "the-canterville-ghost",
+    ):
+        assert server._title_text_access_mode(slug) == "COMMERCIAL_ENTITLEMENT"
     assert server._title_text_access_mode("yugalanguriya") is None
+
+
+def test_no_live_title_can_be_read_end_to_end_while_paid_commerce_is_disabled(monkeypatch):
+    monkeypatch.setattr(server, "PUBLIC_PAID_COMMERCE_ENABLED", False)
+    from types import SimpleNamespace
+    blocked_request = SimpleNamespace(
+        headers={},
+        method="POST",
+        url=SimpleNamespace(path="/api/reading-pass/sessions/start"),
+    )
+    for slug in (
+        "a-ghost-story",
+        "the-tell-tale-heart",
+        "radharani",
+        "a-white-heron",
+        "the-gift-of-the-magi",
+        "the-canterville-ghost",
+    ):
+        assert server._commercial_india_reader_verdict(blocked_request, slug) is False

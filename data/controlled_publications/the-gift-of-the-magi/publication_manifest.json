@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-gift-of-the-magi",
   "title": "The Gift of the Magi",
-  "generated_at": "2026-09-24T06:58:13.331914+00:00",
+  "generated_at": "2026-09-25T00:00:00Z",
   "content": {
     "source_hash": "490b76d444db0d952f5286f60c4ec2834ab91731d47e42dc94a3639d9183d295",
     "content_hash": "43f7c14de6be56f642476b78fd227fb0005d43909fc27e477646ec99b0900fcd",
@@ -28,8 +28,8 @@
     "evidence_sha256": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3"
   },
   "reader_release": {
-    "status": "READY_FOR_APPROVAL",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
     "blockers": []
@@ -49,5 +49,5 @@
     "source_evidence": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3",
     "approval_evidence": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954"
   },
-  "manifest_sha256": "f3df3e0d644f3215324b8ef48fbb61c60e39332d7912cbf398a8cdbbe53a7ac3"
+  "manifest_sha256": "849052c8f796d4fd53e850ede42dff5e0b28d2f744a6af840e0aa64cd14b1021"
 }

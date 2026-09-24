@@ -36,9 +36,9 @@
       "definition": "Reading Passes do not auto-renew."
     },
     {
-      "id": "approved_audio_requires_pass",
-      "label": "Listening is release-safe",
-      "definition": "Approved audio requires an active Reading Pass."
+      "id": "audio_unavailable_current_launch",
+      "label": "Listening is unavailable",
+      "definition": "Public audiobooks are unavailable in this launch."
     }
   ],
   "fallback_notice": "Verified behavioral metrics will appear after the publication threshold is met."
