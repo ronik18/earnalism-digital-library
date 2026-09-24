@@ -2263,8 +2263,12 @@ PR #401 is merged and its Railway deployment is provider-confirmed, but the init
 
 ### 2026-09-24 — Indira chapter-six source discrepancy follow-up
 
-- The preserved Indira raw-source snapshot and canonical chapter still match each other, but the exact 1873 Wikisource chapter-six revision 1910626 contains two paragraphs after the shared ending. This is a substantive difference rather than formatting; because the page transcript is not validated and the facsimile image was unavailable for visual comparison, keep the title `HOLD_SOURCE` and preserve the canonical text unchanged. Do not copy or omit the passage based on transcription alone.
+- The revision-bound 1873 Wikisource transcript and the visually inspected facsimile (printed page 33, PDF page 35) both contain two paragraphs after Earnalism's former chapter-six ending. The exact source continuation has been restored to the canonical and controlled chapter text; derived content/provenance hashes, word counts and package checksums were rebound. The original raw source remains unchanged. This closes only chapter 6; the other seven chapter comparisons remain incomplete, so Indira is still `HOLD_SOURCE` and unpublished.
 - The onboarding validator previously equated a CC BY-SA attribution flag with all license obligations. It now separately fails closed unless title-level evidence confirms attribution, source/license links, a changes notice, ShareAlike treatment, and no incompatible additional restrictions. These are all currently unevidenced for Cohort 1; test success means the holds are enforced, not that any title is cleared.
+
+### 2026-09-24 — Indira chapter-eight source comparison
+
+- Pinned Wikisource revision 1910620 for the 1873 edition's printed pages 38–45 matches Earnalism's full canonical chapter-eight Bengali text after removing the source title/chapter heading, page furniture and presentation whitespace. No literary reading was changed. Chapter 8 is now resolved; only chapters 1–5 and 7 remain to compare. Indira remains held and unpublished; do not infer whole-book `TEXT_VERIFIED` from this chapter result.
 
 ## 2026-09-24 — V2 Reader page-turn continuity candidate
 
