@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SHERLOCK = ROOT / "data" / "controlled_publications" / "the-adventures-of-sherlock-holmes"
 BISHOP = ROOT / "data" / "controlled_publications" / "the-bishop"
 GIFT_OF_THE_MAGI = ROOT / "data" / "controlled_publications" / "the-gift-of-the-magi"
+CANTERVILLE_GHOST = ROOT / "data" / "controlled_publications" / "the-canterville-ghost"
 
 
 def test_sherlock_pilot_is_reader_ready_without_audio_or_commerce():
@@ -76,6 +77,61 @@ def test_gift_of_the_magi_is_india_ready_but_waits_for_commercial_cutover():
         "the-gift-of-the-magi",
         include_content=False,
         artifact_dir=backend_artifact,
+    ) is None
+
+
+def test_canterville_ghost_is_india_ready_but_waits_for_commercial_cutover():
+    manifest = build_manifest(CANTERVILLE_GHOST)
+    backend_artifact = ROOT / "backend" / "data" / "controlled_publications" / "the-canterville-ghost"
+    backend_manifest = build_manifest(backend_artifact)
+    source = json.loads((CANTERVILLE_GHOST / "source_evidence.json").read_text(encoding="utf-8"))
+    book = json.loads((CANTERVILLE_GHOST / "public_book.json").read_text(encoding="utf-8"))
+    intake_metadata = json.loads(
+        (ROOT / "content/books/the-canterville-ghost/book.json").read_text(encoding="utf-8")
+    )
+    generated_covers = json.loads(
+        (ROOT / "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json")
+        .read_text(encoding="utf-8")
+    )
+    cover_record = next(row for row in generated_covers["rows"] if row["slug"] == "the-canterville-ghost")
+
+    assert source["india_copyright_category"] == "ORDINARY_PUBLISHED_LITERARY_WORK_SECTION_22"
+    assert source["underlying_work_status"] == "INDIA_TERM_EXPIRED"
+    assert source["author_death_year"] == 1900
+    assert source["original_publication_year"] == 1887
+    assert source["source_url"] == "https://www.gutenberg.org/ebooks/14522"
+    assert source["translation_status"] == "NOT_APPLICABLE_ORIGINAL_LANGUAGE_WORK"
+    assert source["canonical_text_status"] == "TEXT_VERIFIED"
+    assert source["canonical_content_sha256"] == book["content_hash"]
+    assert source["source_comparison"]["result"] == "EXACT_MATCH"
+    assert source["source_comparison"]["comparison_tokens"] == 11295
+    assert (
+        "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html"
+        in source["copyright_evidence_links"]
+    )
+    assert "india-only" in intake_metadata["rightsTerritoryBasis"].lower()
+    assert "no worldwide clearance is asserted" in intake_metadata["rightsTerritoryBasis"].lower()
+    assert source["reader_chapter_boundary_repair"]["chapter_count"] == 7
+    assert source["reader_chapter_boundary_repair"]["normalized_words_order_unchanged"] is True
+    assert source["reader_chapter_boundary_repair"]["narrative_endpoint"] == "Virginia blushed."
+    assert cover_record["art_source"] == "deterministic_vector_primitives_no_external_art"
+    for path_key, hash_key in (("front_path", "front_sha256"), ("back_path", "back_sha256")):
+        assert hashlib.sha256((ROOT / cover_record[path_key]).read_bytes()).hexdigest() == cover_record[hash_key]
+    for artifact in (CANTERVILLE_GHOST, backend_artifact):
+        checksum = json.loads((artifact / "checksum_manifest.json").read_text(encoding="utf-8"))
+        for row in checksum["files"]:
+            assert hashlib.sha256((artifact / row["file"]).read_bytes()).hexdigest() == row["sha256"]
+    assert manifest["rights"]["status"] == "APPROVED"
+    assert manifest["rights"]["publication_region"] == "in"
+    assert manifest["reader_release"]["status"] == "READY_FOR_APPROVAL"
+    assert manifest["reader_release"]["exposed"] is False
+    assert manifest["audio_release"]["status"] == AUDIO_NOT_REQUESTED
+    assert manifest["audio_release"]["exposed"] is False
+    assert validate_manifest(manifest) == []
+    assert validate_manifest(backend_manifest) == []
+    assert "the-canterville-ghost" not in CONTROLLED_LIVE_BOOK_SLUGS
+    assert load_controlled_artifact_book(
+        "the-canterville-ghost", include_content=False, artifact_dir=backend_artifact
     ) is None
 
 
