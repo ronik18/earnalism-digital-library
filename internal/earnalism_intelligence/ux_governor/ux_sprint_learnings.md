@@ -174,3 +174,11 @@
 - A wide desktop reference scene cropped into a phone can technically load while appearing visually absent. Use a dedicated portrait composition and verify the actual rendered focal points at phone widths.
 - Emotional public copy and strict release truth are complementary: speak about the experience in the interface, enforce availability with routes and data, and keep operational phrases such as “release gate” out of marketing surfaces.
 - The mobile first glimpse should establish one hierarchy—eyebrow, large literary promise, intimate deck, two clear actions—before secondary cards appear.
+
+## 2026-09-24 Account Page Repair
+
+- Keep the authenticated account content visible on mobile instead of replacing it with a profile-only card; present the same account functions responsively, then place bottom navigation after the content in normal flow.
+- Render a server-provided user-agent fallback as a concise browser/platform label, never as a raw UA string. Keep current active sessions first and place revoked/expired history in a native collapsible disclosure.
+- Describe the current free pilot separately from the prepared Reading Pass model; presentational changes must not affect wallet, authentication, territory, or entitlement decisions.
+- The chapter-index test's former 96-manifest/760-chapter pin became stale when the held Yugalanguriya package was archived (10 chapters). Active catalogue inventory is 95/750; keep the archived evidence untouched.
+- Local responsive QA at 390, 768, 1024, 1440, and 1920 px found no horizontal overflow; focused account/index tests passed 22/22, the full frontend suite passed 472/472, and the production build/SEO snapshot gate passed.
