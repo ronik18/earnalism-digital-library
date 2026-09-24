@@ -143,7 +143,7 @@ function AccountVisualFixture() {
             <h1 id="account-visual-fixture-title" className="font-serif-light text-4xl sm:text-5xl text-burgundy leading-tight mt-2">
               Welcome, <span className="italic-accent">Review</span>.
             </h1>
-            <p className="account-hero-email text-sm text-charcoal-soft mt-2 font-light">Sanitized visual profile</p>
+            <p className="account-hero-email text-sm text-charcoal-soft mt-2 font-light">{user.email}</p>
           </div>
           <button type="button" className="btn-secondary" data-testid="account-visual-fixture-signout"><LogOut size={14} className="mr-2" /> Sign out</button>
         </div>
