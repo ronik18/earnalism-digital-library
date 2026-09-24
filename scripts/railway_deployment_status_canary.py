@@ -86,6 +86,17 @@ def manifest_cache_check(name: str, result: dict[str, Any]) -> dict[str, Any]:
     }))
 
 
+def expected_untrusted_reader_denial(result: dict[str, Any]) -> bool:
+    """A deployment runner without the signed India proxy context is negative-only."""
+    body = json_body(result)
+    detail = body.get("detail", {}) if isinstance(body, dict) else {}
+    code = detail.get("code") if isinstance(detail, dict) else None
+    return result.get("status") == 451 and code in {
+        "RELEASE_PROXY_SCOPE_INVALID",
+        "RELEASE_RIGHTS_DENIED",
+    }
+
+
 def load_approved_audio_fixture(path: Path) -> dict[str, Any]:
     fixture = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(fixture, dict) or not isinstance(fixture.get("slug"), str):
@@ -133,21 +144,54 @@ def run(base_url: str, approved_audio_fixture: dict[str, Any], provenance: dict[
     approved_audio_book = approved_catalog_body if approved_catalog_body.get("slug") == approved_audio_slug else {}
     serialized_catalog = json.dumps(catalog_body, ensure_ascii=False)
     serialized_manifest = json.dumps(manifest_body, ensure_ascii=False)
+    protected_reader_responses = [
+        catalog,
+        approved_catalog,
+        manifest,
+        dracula_audio,
+        approved_audio,
+    ]
+    all_protected_denied = all(expected_untrusted_reader_denial(item) for item in protected_reader_responses)
+    unauthenticated_contract_available = (
+        catalog["status"] == 200
+        and approved_catalog["status"] == 200
+        and manifest["status"] == 200
+        and dracula_audio["status"] == 404
+        and approved_audio["status"] in set(public_contract.get("anonymous_range_statuses", []))
+    )
     checks = [
         check("health_200", health["status"] == 200 and health_body.get("status") == "ok", f"status={health['status']}"),
         check("health_no_store", "no-store" in header(health, "Cache-Control").lower(), header(health, "Cache-Control")),
         check("reading_pass_contract", config["status"] == 200 and config_body.get("public_text_pages") == 3 and config_body.get("public_audio_seconds") == 0, f"status={config['status']}; pages={config_body.get('public_text_pages')}; audio={config_body.get('public_audio_seconds')}"),
         check("cors_origin", header(config, "Access-Control-Allow-Origin") == CANARY_ORIGIN, header(config, "Access-Control-Allow-Origin")),
-        check("public_catalog", catalog["status"] == 200 and bool(catalog_body), f"status={catalog['status']}"),
-        check("no_raw_media_url", not RAW_MEDIA_PATTERN.search(serialized_catalog) and not RAW_MEDIA_PATTERN.search(serialized_manifest), "catalog and manifest scanned"),
-        check("dracula_audio_disabled", dracula.get("audio_enabled") is False and dracula.get("audiobook_enabled") is False and not dracula.get("audio_url"), json.dumps({key: dracula.get(key) for key in ("audio_enabled", "audiobook_enabled", "audio_url")})),
-        check("controlled_manifest", manifest["status"] == 200 and manifest_body.get("audio", {}).get("enabled") is False and manifest_body.get("audio", {}).get("assets") == {}, f"status={manifest['status']}"),
-        manifest_cache_check("manifest_private_no_store", manifest),
-        manifest_cache_check("manifest_conditional_private_no_store", conditional_manifest),
-        check("dracula_audio_range_denied", dracula_audio["status"] == 404 and not dracula_audio["body"].startswith("ID3"), f"status={dracula_audio['status']}; bytes={len(dracula_audio['body'])}"),
-        check("approved_audio_locked_metadata", approved_catalog["status"] == 200 and approved_audio_book.get("reader_enabled") is True and approved_audio_book.get("audio_enabled") is True and approved_audio_book.get("audiobook_enabled") is True and approved_audio_book.get("audiobook_release_gate") in public_contract.get("audiobook_release_gates", []) and approved_audio_book.get("audio_qa_status") == public_contract.get("audio_qa_status") and not approved_audio_book.get("audio_url"), json.dumps({key: approved_audio_book.get(key) for key in ("reader_enabled", "audio_enabled", "audiobook_enabled", "audiobook_release_gate", "audio_qa_status", "audio_url")})),
-        check("approved_audio_range_denied", approved_audio["status"] in set(public_contract.get("anonymous_range_statuses", [])) and not approved_audio["body"].startswith("ID3"), f"status={approved_audio['status']}; bytes={len(approved_audio['body'])}"),
     ]
+    if all_protected_denied:
+        checks.append(check(
+            "untrusted_reader_requests_denied",
+            True,
+            json.dumps({"statuses": [item["status"] for item in protected_reader_responses], "response_edge": header(health, "X-Railway-Edge")}),
+        ))
+        positive_reader_status = "NOT_AVAILABLE_IN_CURRENT_RUNNER"
+    elif unauthenticated_contract_available:
+        checks.extend([
+            check("public_catalog", catalog["status"] == 200 and bool(catalog_body), f"status={catalog['status']}"),
+            check("no_raw_media_url", not RAW_MEDIA_PATTERN.search(serialized_catalog) and not RAW_MEDIA_PATTERN.search(serialized_manifest), "catalog and manifest scanned"),
+            check("dracula_audio_disabled", dracula.get("audio_enabled") is False and dracula.get("audiobook_enabled") is False and not dracula.get("audio_url"), json.dumps({key: dracula.get(key) for key in ("audio_enabled", "audiobook_enabled", "audio_url")})),
+            check("controlled_manifest", manifest["status"] == 200 and manifest_body.get("audio", {}).get("enabled") is False and manifest_body.get("audio", {}).get("assets") == {}, f"status={manifest['status']}"),
+            manifest_cache_check("manifest_private_no_store", manifest),
+            manifest_cache_check("manifest_conditional_private_no_store", conditional_manifest),
+            check("dracula_audio_range_denied", dracula_audio["status"] == 404 and not dracula_audio["body"].startswith("ID3"), f"status={dracula_audio['status']}; bytes={len(dracula_audio['body'])}"),
+            check("approved_audio_locked_metadata", approved_catalog["status"] == 200 and approved_audio_book.get("reader_enabled") is True and approved_audio_book.get("audio_enabled") is True and approved_audio_book.get("audiobook_enabled") is True and approved_audio_book.get("audiobook_release_gate") in public_contract.get("audiobook_release_gates", []) and approved_audio_book.get("audio_qa_status") == public_contract.get("audio_qa_status") and not approved_audio_book.get("audio_url"), json.dumps({key: approved_audio_book.get(key) for key in ("reader_enabled", "audio_enabled", "audiobook_enabled", "audiobook_release_gate", "audio_qa_status", "audio_url")})),
+            check("approved_audio_range_denied", approved_audio["status"] in set(public_contract.get("anonymous_range_statuses", [])) and not approved_audio["body"].startswith("ID3"), f"status={approved_audio['status']}; bytes={len(approved_audio['body'])}"),
+        ])
+        positive_reader_status = "NOT_AVAILABLE_IN_CURRENT_RUNNER"
+    else:
+        checks.append(check(
+            "untrusted_reader_requests_denied_or_unauthenticated_contract_available",
+            False,
+            json.dumps({"statuses": [item["status"] for item in protected_reader_responses]}),
+        ))
+        positive_reader_status = "NOT_AVAILABLE_IN_CURRENT_RUNNER"
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "base_url": base_url,
@@ -158,6 +202,12 @@ def run(base_url: str, approved_audio_fixture: dict[str, Any], provenance: dict[
         "manifest_conditional_etag": conditional_etag,
         "response_edge": header(health, "X-Railway-Edge"),
         "response_region_debug": header(health, "X-Hikari-Trace"),
+        # These probes originate at an unsigned CI runner and are direct API
+        # calls. RELEASE_PROXY_SCOPE_INVALID proves fail-closed proxy
+        # enforcement, not a trusted non-India territorial decision.
+        "territory_denial_test": "NOT_AVAILABLE_IN_CURRENT_RUNNER",
+        "untrusted_reader_request_test": "PASS" if all_protected_denied else "NOT_ESTABLISHED",
+        "india_reader_remote_smoke": positive_reader_status,
         "checks": checks,
         "status": "PASS" if all(item["passed"] for item in checks) else "FAIL",
         "production_mutation_performed": False,

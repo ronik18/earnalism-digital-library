@@ -4,6 +4,9 @@ import hashlib
 import json
 from pathlib import Path
 
+from backend.rights_decision_gate import evaluate_runtime_path, load_production_registry
+from datetime import datetime, timezone
+
 
 ROOT = Path(__file__).resolve().parents[2]
 BACKEND_CONTROLLED_LAUNCH = ROOT / "backend" / "data" / "controlled_launch.json"
@@ -78,6 +81,68 @@ def test_india_text_release_is_mirrored_and_commerce_and_audio_remain_disabled()
         assert launch["public_paid_commerce_enabled"] is False
         assert launch["text_access_mode"] == "PILOT_FULL_FREE"
         assert launch["audio_enabled_slugs"] == []
+
+
+def test_prepared_commercial_batch_has_separate_per_title_mode_without_public_exposure():
+    root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
+    backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
+    expected_modes = {
+        "a-ghost-story": "PILOT_FULL_FREE",
+        "the-tell-tale-heart": "PILOT_FULL_FREE",
+        "radharani": "PILOT_FULL_FREE",
+        "a-white-heron": "COMMERCIAL_ENTITLEMENT",
+        "the-gift-of-the-magi": "COMMERCIAL_ENTITLEMENT",
+        "the-canterville-ghost": "COMMERCIAL_ENTITLEMENT",
+    }
+
+    for launch in (root_launch, backend_launch):
+        assert launch["title_access_modes"] == expected_modes
+        assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
+        assert not set(launch["live_approved_slugs"]) & set(expected_modes) - INDIA_TEXT_RELEASE_SLUGS
+        assert launch["public_paid_commerce_enabled"] is False
+        assert launch["public_audio_exposure_enabled"] is False
+
+
+def test_prepared_commercial_batch_has_hash_bound_rights_but_is_not_published():
+    launch = load_json(BACKEND_CONTROLLED_LAUNCH)
+    registry, revoked = load_production_registry()
+    commercial_slugs = ("a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost")
+    now = datetime.now(timezone.utc)
+
+    for slug in commercial_slugs:
+        assert slug not in launch["live_approved_slugs"]
+        manifest = load_json(ROOT / "backend" / "data" / "controlled_publications" / slug / "publication_manifest.json")
+        assert manifest["reader_release"]["status"] == "READY_FOR_APPROVAL"
+        assert manifest["reader_release"]["exposed"] is False
+        package = ROOT / "backend" / "data" / "controlled_publications" / slug
+        record = load_json(package / "rights_decision.json")
+        components = {
+            name.removesuffix(".json"): hashlib.sha256((package / name).read_bytes()).hexdigest()
+            for name in (
+                "public_book.json",
+                "reader_manifest.json",
+                "source_evidence.json",
+                "approval_evidence.json",
+                "checksum_manifest.json",
+                "publication_manifest.json",
+            )
+        }
+        assert registry[record["decision_id"]]
+        assert record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct user-provided")
+        for action in ("reading_pass_session_start", "reading_pass_page", "reading_pass_lease_renewal"):
+            verdict = evaluate_runtime_path(
+                action,
+                record=record,
+                edition_id=slug,
+                operator_id="reo-enterprise",
+                country="IN",
+                country_trusted=True,
+                required_components=components,
+                accepted_records=registry,
+                revoked_decision_ids=revoked,
+                now=now,
+            )
+            assert verdict.passed is True, (slug, action, verdict.reasons)
 
 
 def test_backend_controlled_launch_has_no_duplicate_slugs():

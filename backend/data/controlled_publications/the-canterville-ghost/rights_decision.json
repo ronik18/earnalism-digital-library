@@ -1,0 +1,23 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20260925-the-canterville-ghost-commercial-reader-release",
+  "edition_id": "the-canterville-ghost",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
+    "reader_manifest": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
+    "source_evidence": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
+    "approval_evidence": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580",
+    "checksum_manifest": "2fd11e27eec750c4e1eccbaacb97fadb63875cad377ca3639c47e0b0f52d3f4d",
+    "publication_manifest": "b178e796f6e4a3cf8a499c9923889a57e08feaf08c238fff40e5054f5defc60c"
+  },
+  "territories": ["IN"],
+  "uses": ["catalog_metadata", "cover_display", "reader_preview", "reader_delivery", "reading_pass_session", "reading_pass_renewal"],
+  "valid_from": "2026-09-24T00:00:00+00:00",
+  "valid_until": "2036-09-25T00:00:00+00:00",
+  "basis": "India-only commercial text Reader use under the owner's direct first-batch release instruction. Bound evidence records Oscar Wilde's expired Section 22 term, the identified 1906 prose transcription, canonical integrity, and first-party cover provenance; the 1906 illustrations and Project Gutenberg license/branding are excluded. No audio or non-India use is accepted.",
+  "evidence_sha256": ["94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb", "b178e796f6e4a3cf8a499c9923889a57e08feaf08c238fff40e5054f5defc60c"],
+  "accepted_by": "REO ENTERPRISE proprietor under the direct user-provided first commercial batch mandate dated 2026-09-25",
+  "conditions_satisfied": true
+}
