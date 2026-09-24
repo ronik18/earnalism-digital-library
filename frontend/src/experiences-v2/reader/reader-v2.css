@@ -107,3 +107,13 @@
 .reader-v2__continuation nav { display: flex; flex-wrap: wrap; gap: 8px; }
 .reader-v2__continuation button { min-height: 44px; color: var(--reader-accent); border-color: var(--reader-border); background: transparent; }
 .reader-v2 button:disabled { cursor: not-allowed; opacity: .5; }
+.reader-v2__page-content { animation: reader-page-enter 150ms ease-out both; }
+.reader-v2__page-loading { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 5px 9px; border-inline-start: 2px solid var(--ev2-gold); color: var(--reader-accent); font-size: 12px; }
+.reader-v2__page-loading::before { inline-size: 14px; block-size: 1px; background: currentColor; content: ""; animation: reader-page-wait 1s ease-in-out infinite alternate; }
+.reader-v2__status { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.reader-v2__status button { min-height: 44px; padding: 8px 12px; border: 1px solid var(--reader-border); border-radius: 4px; background: transparent; color: var(--reader-accent); cursor: pointer; }
+@keyframes reader-page-enter { from { opacity: .82; transform: translateX(4px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes reader-page-wait { from { opacity: .35; transform: scaleX(.55); transform-origin: left; } to { opacity: 1; transform: scaleX(1); transform-origin: left; } }
+@media (prefers-reduced-motion: reduce) {
+  .reader-v2__page-content, .reader-v2__page-loading::before { animation: none; }
+}
