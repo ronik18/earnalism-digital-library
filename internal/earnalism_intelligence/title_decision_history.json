@@ -3381,18 +3381,21 @@
       "next_action": "Keep the exact bytes live and monitor API, Range, checksum, cache, and browser playback; do not regenerate or replace without a new checksum-bound two-gate attempt."
     },
     "a-white-heron": {
-      "latest_decision": "PUBLIC_READER_AND_CHECKSUM_BOUND_AUDIO_LIVE_RECONCILED",
-      "decision_reason": "Production already served the owner-approved checksum-bound audiobook, but the controlled pack still said audio disabled. Repository truth is now bound to the exact production bytes and verified API, Range, checksum, and browser playback evidence.",
-      "updated_at": "2026-08-16T06:45:34Z",
+      "latest_decision": "INDIA_RIGHTS_TEXT_COVER_COMPLETE_PREPARED_FOR_COMMERCIAL_CUTOVER",
+      "decision_reason": "Sarah Orne Jewett's underlying story term is expired in India; canonical text matches the identified 1925 Project Gutenberg eBook 74980 edition after whitespace and pagination folding only. The 1886 scan has three documented variant readings; Earnalism follows the 1925 edition without changing canonical text. Willa Cather's preface and other compilation matter are excluded. The first-party cover is supported by owner-supplied provenance and the internal asset audit.",
+      "updated_at": "2026-09-24T15:34:05Z",
       "language": "en",
       "territory": "IN",
-      "public_reader_status": "LIVE_APPROVED",
-      "public_audio_status": "PUBLIC_AUDIO_RELEASE_APPROVED_AND_PROVEN",
-      "candidate_fingerprint": "c8ff940d921f36625fb15ce92b2e6592c9e17dd0fd84e933ea872f73b16242e1",
-      "audio_sha256": "70c94cc660fe15fdb4b5e3ef800643090d0eabd27b07523ffa5859b73e700f69",
-      "voice": "hf_alpha",
-      "production_audio_verified": true,
-      "next_action": "Keep the exact bytes live and monitor API, Range, checksum, cache, and browser playback; do not regenerate or replace without a new checksum-bound two-gate attempt."
+      "rights_status": "FAST_GREEN",
+      "text_integrity_status": "VERIFIED",
+      "canonical_text_sha256": "1e3e7eff7512385e037c7ff9db8d232599bba2dceb28be493b7e141a493e97e0",
+      "canonical_chapter_file_sha256": "a3f32047e8d1b77134fcfd79c0612644424a192e2d67a672be3252b997c148b4",
+      "normalized_source_text_sha256": "88f400bbf0ca162d1b261f8f667e5b5b97f1169c11dbfdb1445980a17b92bf06",
+      "cover_status": "FIRST_PARTY_OWNER_DESIGNED_CONFIRMED",
+      "public_reader_status": "READY_FOR_COMMERCIAL_CUTOVER_UNEXPOSED",
+      "public_audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
+      "historical_audio_evidence": "production_audio_evidence.json and prior checksum-bound approval record retained as historical evidence only; not current release authority",
+      "next_action": "Keep excluded from PILOT_FULL_FREE and the live allowlist. Include in the prepared commercial-entitlement batch only after the commercial cutover itself is separately ready and authorized."
     },
     "the-enchanted-april": {
       "latest_decision": "READER_REPAIRED_OWNER_APPROVAL_PENDING",

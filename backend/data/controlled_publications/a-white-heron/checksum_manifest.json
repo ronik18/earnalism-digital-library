@@ -1,10 +1,10 @@
 {
   "slug": "a-white-heron",
-  "generated_at": "2026-08-16T06:45:34Z",
+  "generated_at": "2026-09-24T15:34:05Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "4a47c916cfb5e3b3c4f141ead02f3daa939fd870b1167951aeefbdc8331c564f"
+      "sha256": "205ea2e1c12809884b17a3b62c872d6fe6ef4a708988adb3f16ed4a6cb68cc57"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -20,15 +20,15 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "9c05765a937756cb76b2da187b888613ff2bcd95b444838173bf82782dc0f26d"
+      "sha256": "38fa4ac2ed250111b73ba1cd34bdd94acede42e4f9242cab34ed96c0afebd80c"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "ab7adc128301b24b0fd32a187e6a7dfe4665135abe1a1ce689bc88e872961830"
+      "sha256": "7a7ed969c6061c70025b160ef6f951efcba37ba6ffbef5b89f8e51ed274d7c3a"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "b86befa238d0180d042d266bc40ba267f74874228e48eb429aef071220b16843"
+      "sha256": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819"
     }
   ]
 }

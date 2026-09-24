@@ -3,20 +3,20 @@
   "schema_version": 1,
   "slug": "a-white-heron",
   "title": "A White Heron",
-  "generated_at": "2026-08-16T06:45:34Z",
+  "generated_at": "2026-09-24T15:46:58.693710+00:00",
   "content": {
     "source_hash": "c2fa6ab0fcbb8393f08987e8af21a7f18b867ad857ed3cd31f12c974e348943b",
-    "content_hash": "2c380a332c7be5fd8137fa7aa598dffbb7ffc0e0e369795abaf0ce2cceb6b9f7",
-    "provenance_hash": "3a4dc4ec0589f21d5425bad9341a84c7411990dd4859e84d91972a8a5a3708bf",
+    "content_hash": "1e3e7eff7512385e037c7ff9db8d232599bba2dceb28be493b7e141a493e97e0",
+    "provenance_hash": "c23e915b55b379a10833567ab840c39abe105d0040dc47cf0d721a7f05b136e4",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "eab4e7a2a460c2f07f7ac15c089d99f2b04248af604c4d5538810c45950eed6a",
+    "chapter_index_sha256": "9d72808ee41be77539b7bd6a35f16e9a5a92f0e3ea22a1757bef14147b422794",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "A White Heron",
-        "word_count": 4319,
+        "word_count": 4261,
         "sha256": "a3f32047e8d1b77134fcfd79c0612644424a192e2d67a672be3252b997c148b4"
       }
     ]
@@ -25,36 +25,29 @@
     "status": "APPROVED",
     "tier": "A",
     "publication_region": "in",
-    "evidence_sha256": "b86befa238d0180d042d266bc40ba267f74874228e48eb429aef071220b16843"
+    "evidence_sha256": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819"
   },
   "reader_release": {
-    "status": "APPROVED",
-    "exposed": true,
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
     "blockers": []
   },
   "audio_release": {
-    "status": "APPROVED",
-    "exposed": true,
-    "required_for_reader_release": false,
-    "qa_status": "QA_PASSED",
-    "audio_sha256": "70c94cc660fe15fdb4b5e3ef800643090d0eabd27b07523ffa5859b73e700f69",
-    "candidate_fingerprint": "c8ff940d921f36625fb15ce92b2e6592c9e17dd0fd84e933ea872f73b16242e1",
-    "delivery_mode": "SERVER_OWNED_CONVEYOR",
-    "public_endpoint": "/api/reader/book/a-white-heron/audiobook",
-    "discovery_exposed": false,
-    "blockers": []
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
   },
   "commerce_release": {
     "status": "NOT_REQUESTED",
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "9c05765a937756cb76b2da187b888613ff2bcd95b444838173bf82782dc0f26d",
-    "reader_manifest": "ab7adc128301b24b0fd32a187e6a7dfe4665135abe1a1ce689bc88e872961830",
-    "source_evidence": "b86befa238d0180d042d266bc40ba267f74874228e48eb429aef071220b16843",
-    "approval_evidence": "4a47c916cfb5e3b3c4f141ead02f3daa939fd870b1167951aeefbdc8331c564f"
+    "public_book": "38fa4ac2ed250111b73ba1cd34bdd94acede42e4f9242cab34ed96c0afebd80c",
+    "reader_manifest": "7a7ed969c6061c70025b160ef6f951efcba37ba6ffbef5b89f8e51ed274d7c3a",
+    "source_evidence": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819",
+    "approval_evidence": "205ea2e1c12809884b17a3b62c872d6fe6ef4a708988adb3f16ed4a6cb68cc57"
   },
-  "manifest_sha256": "ac6b1a6c34dc342eedd01a86165648b0cf8bb525eefe16f8e4692fe7822c6fbb"
+  "manifest_sha256": "cb24fcaf3400035295be77e68d426200d41625a2d17ac74f576ad860839ee9fa"
 }
