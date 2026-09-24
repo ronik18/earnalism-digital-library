@@ -57,7 +57,7 @@ const requiredFor = (family) => ({
   home: ["[data-testid=home-reference-surface]", "header"], library: ["[data-testid=library-reference-surface]", "header"],
   filter: ["[data-testid=library-reference-surface]", ".reference-filter-trigger"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]", "header"],
   navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=book-not-found]", "header"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"],
-  about: [strict ? "#about-page-title" : "#about-v2-title"], "my-library": ["[data-testid=my-library-mobile]", ".my-library-v2__empty"], profile: ["[data-testid=account-page]"],
+  about: [strict ? "#about-page-title" : "#about-v2-title"], "my-library": ["[data-testid=my-library-mobile]", ".my-library-v2__empty"], profile: ["[data-testid=account-visual-fixture]"],
 }[family] || ["main"]);
 
 async function installFixtureRoutes(page) {
