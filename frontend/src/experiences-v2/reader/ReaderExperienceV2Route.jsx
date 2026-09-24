@@ -10,6 +10,7 @@ import {
 import { useAuth } from "../../context/AuthContext";
 import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
 import { readerRouteState } from "./readerRouteState";
+import { getOrFetchReaderPage, readerPageCacheKey, retainReaderPageWindow } from "./readerPageCache";
 
 const PREVIEW_PAGES = 3;
 const pageFromSearch = (search) => {
@@ -54,10 +55,10 @@ export default function ReaderExperienceV2Route() {
   const { user, setUserBalance } = useAuth();
   const identity = user?.id || user?.email || (user ? "member" : "guest");
   const syncBalance = useCallback((seconds) => setUserBalance?.(seconds, identity), [identity, setUserBalance]);
-  return <ReaderSession key={`${slug}:${identity}`} slug={slug} user={user} syncBalance={syncBalance} />;
+  return <ReaderSession key={`${slug}:${identity}`} slug={slug} user={user} identity={identity} syncBalance={syncBalance} />;
 }
 
-function ReaderSession({ slug, user, syncBalance }) {
+function ReaderSession({ slug, user, identity, syncBalance }) {
   const [search, setSearch] = useSearchParams();
   const navigate = useNavigate();
   const canonicalPage = pageFromSearch(search);
@@ -66,6 +67,8 @@ function ReaderSession({ slug, user, syncBalance }) {
   const [manifest, setManifest] = useState(null);
   const [loading, setLoading] = useState(true);
   const [pageResult, setPageResult] = useState(null);
+  const [displayedPageResult, setDisplayedPageResult] = useState(null);
+  const [slowPageLoading, setSlowPageLoading] = useState(false);
   const [lease, setLease] = useState(null);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
@@ -85,6 +88,7 @@ function ReaderSession({ slug, user, syncBalance }) {
   const actionRef = useRef(false);
   const pageRef = useRef(canonicalPage);
   pageRef.current = canonicalPage;
+  const lastReadyPageRef = useRef(null);
   const locationVersionRef = useRef({ search: search.toString(), version: 0 });
   const pendingPageRef = useRef(null);
   if (locationVersionRef.current.search !== search.toString()) {
@@ -320,34 +324,77 @@ function ReaderSession({ slug, user, syncBalance }) {
   useEffect(() => {
     if (visualFixture || !manifest || !enabled || !validPage || (canonicalPage > PREVIEW_PAGES && !pageSessionKey)) return undefined;
     let cancelled = false;
-    const controller = new AbortController();
+    let slowTimer = 0;
     setPageResult({ number: canonicalPage, status: "loading" });
+    setSlowPageLoading(false);
     setError("");
     const requestLease = canonicalPage > PREVIEW_PAGES ? leaseRef.current : null;
-    getReadingPassPage(slug, canonicalPage, requestLease, { signal: controller.signal })
+    const accessContext = canonicalPage > PREVIEW_PAGES
+      ? `protected:${identity}:${requestLease?.sessionId || "missing-session"}`
+      : "preview";
+    const manifestVersion = manifest?.canonical_pages?.manifest_version
+      || manifest?.canonical_pages?.version
+      || manifest?.access?.reading_pass?.manifest_version
+      || manifest?.publication_version
+      || "unknown";
+    const cacheKey = readerPageCacheKey({
+      slug,
+      manifestVersion,
+      pageIndex: canonicalPage,
+      pageHash: expectedPage.content_hash,
+      accessContext,
+    });
+    slowTimer = window.setTimeout(() => {
+      if (!cancelled) setSlowPageLoading(true);
+    }, 400);
+    getOrFetchReaderPage(cacheKey, async () => {
+      const value = await getReadingPassPage(slug, canonicalPage, requestLease);
+      if (value.book_slug !== slug || !Number.isInteger(value.total_pages) || value.total_pages !== totalPages
+        || typeof value.is_preview !== "boolean" || value.is_preview !== (canonicalPage <= PREVIEW_PAGES)
+        || typeof value.content !== "string" || !value.content.trim()
+        || (expectedPage.content_hash && value.content_sha256 !== expectedPage.content_hash)) throw new Error("This page does not match the selected edition. Reopen the book to load its current version.");
+      const state = readerRouteState({ canonicalPage, page: value, expectedChapterId: expectedPage.chapter_id || "", expectedChapterTitle: expectedChapter?.title || "" });
+      if (state.state !== "ready") throw new Error(state.message);
+      return value;
+    })
       .then((value) => {
         if (cancelled || !aliveRef.current) return;
         if (canonicalPage > PREVIEW_PAGES && !runningLease(leaseRef.current)) return;
-        if (value.book_slug !== slug || !Number.isInteger(value.total_pages) || value.total_pages !== totalPages
-          || typeof value.is_preview !== "boolean" || value.is_preview !== (canonicalPage <= PREVIEW_PAGES)
-          || typeof value.content !== "string" || !value.content.trim()
-          || (expectedPage.content_hash && value.content_sha256 !== expectedPage.content_hash)) throw new Error("This page does not match the selected edition. Reopen the book to load its current version.");
-        const state = readerRouteState({ canonicalPage, page: value, expectedChapterId: expectedPage.chapter_id || "", expectedChapterTitle: expectedChapter?.title || "" });
-        if (state.state !== "ready") throw new Error(state.message);
-        setPageResult({ number: canonicalPage, status: "ready", value });
+        setPageResult({ number: canonicalPage, status: "ready", value, accessContext });
+        const readyPage = { number: canonicalPage, value, accessContext };
+        lastReadyPageRef.current = readyPage;
+        setDisplayedPageResult(readyPage);
         setError("");
+        setSlowPageLoading(false);
+        window.clearTimeout(slowTimer);
         if (signedIn) void persistPosition(value).catch(() => {
           if (aliveRef.current) setNotice("Your page is open, but your reading position could not be saved.");
         });
       })
       .catch((requestError) => {
         if (cancelled || !aliveRef.current) return;
-        setPageResult({ number: canonicalPage, status: "error" });
+        const status = requestError?.response?.status;
+        setPageResult({ number: canonicalPage, status: "error", error: requestError, statusCode: status || 0 });
         setError(requestMessage(requestError, requestError.message || "This page could not be loaded. Please retry."));
-        if (leaseRef.current) publishLease({ ...leaseRef.current, status: "Expired" });
+        if (canonicalPage > PREVIEW_PAGES && [401, 403, 451].includes(status) && leaseRef.current) {
+          publishLease({ ...leaseRef.current, status: "Expired" });
+          if (lastReadyPageRef.current?.number > PREVIEW_PAGES) {
+            lastReadyPageRef.current = null;
+            setDisplayedPageResult(null);
+          }
+        } else if (canonicalPage > PREVIEW_PAGES
+          && (!lastReadyPageRef.current || lastReadyPageRef.current.number <= PREVIEW_PAGES)
+          && leaseRef.current?.sessionId) {
+          // A protected session with no readable page must not remain billable
+          // through a slow/failing first content request.
+          publishLease({ ...leaseRef.current, status: "Expired" });
+          void settleLease("reader_v2_page_unavailable");
+        }
+        setSlowPageLoading(false);
+        window.clearTimeout(slowTimer);
       });
-    return () => { cancelled = true; controller.abort(); };
-  }, [canonicalPage, pageSessionKey, manifest, enabled, validPage, expectedPage, expectedChapter, persistPosition, retry, publishLease, slug, totalPages, signedIn, visualFixture]);
+    return () => { cancelled = true; window.clearTimeout(slowTimer); };
+  }, [canonicalPage, pageSessionKey, manifest, enabled, validPage, expectedPage, expectedChapter, identity, persistPosition, retry, publishLease, settleLease, slug, totalPages, signedIn, visualFixture]);
 
   const changePage = useCallback((nextPage) => {
     const params = new URLSearchParams(search);
@@ -415,17 +462,69 @@ function ReaderSession({ slug, user, syncBalance }) {
     }
   }, [canonicalPage, navigate, settleLease, slug]);
 
-  const page = pageResult?.number === canonicalPage && pageResult.status === "ready" ? pageResult.value : null;
+  const selectedPageResult = pageResult?.number === canonicalPage && pageResult.status === "ready" ? pageResult : null;
+  const selectedPageAuthorized = selectedPageResult && (selectedPageResult.number <= PREVIEW_PAGES
+    || (usable && selectedPageResult.accessContext === `protected:${identity}:${sessionId}`));
+  const selectedPage = selectedPageAuthorized ? selectedPageResult.value : null;
+  const retainedPage = displayedPageResult;
+  const retainedPageAuthorized = retainedPage && (retainedPage.number <= PREVIEW_PAGES
+    || (usable && retainedPage.accessContext === `protected:${identity}:${sessionId}`));
+  const page = selectedPage || (retainedPageAuthorized ? retainedPage.value : null);
+  const displayedPageNumber = selectedPage ? canonicalPage : (retainedPageAuthorized ? retainedPage.number : canonicalPage);
+  const pageAccessContext = canonicalPage > PREVIEW_PAGES
+    ? `protected:${identity}:${sessionId}`
+    : "preview";
+
+  useEffect(() => {
+    if (!manifest || !page || !validPage) return;
+    const center = Number(page.page_index || displayedPageNumber);
+    const context = center > PREVIEW_PAGES ? pageAccessContext : "preview";
+    retainReaderPageWindow({ slug, accessContext: context, centerPage: center, preservePage: displayedPageNumber });
+    const first = Math.max(1, center - 2);
+    const last = Math.min(totalPages, center + 2);
+    for (let pageIndex = first; pageIndex <= last; pageIndex += 1) {
+      if (pageIndex === center) continue;
+      if (pageIndex > PREVIEW_PAGES && (!usable || !sessionId || context !== pageAccessContext)) continue;
+      const expected = (manifest?.canonical_pages?.pages || []).find((item) => Number(item.page_number || item.page_index) === pageIndex);
+      if (!expected) continue;
+      const version = manifest?.canonical_pages?.manifest_version
+        || manifest?.canonical_pages?.version
+        || manifest?.access?.reading_pass?.manifest_version
+        || manifest?.publication_version
+        || "unknown";
+      const accessContext = pageIndex > PREVIEW_PAGES ? context : "preview";
+      const key = readerPageCacheKey({ slug, manifestVersion: version, pageIndex, pageHash: expected.content_hash, accessContext });
+      const requestLease = pageIndex > PREVIEW_PAGES ? leaseRef.current : null;
+      void getOrFetchReaderPage(key, async () => {
+        const value = await getReadingPassPage(slug, pageIndex, requestLease);
+        if (pageIndex > PREVIEW_PAGES && (!runningLease(leaseRef.current) || leaseRef.current?.sessionId !== requestLease?.sessionId)) throw new Error("Reader authorization changed during prefetch.");
+        if (value.book_slug !== slug || value.total_pages !== totalPages
+          || value.is_preview !== (pageIndex <= PREVIEW_PAGES)
+          || typeof value.content !== "string" || !value.content.trim()
+          || (expected.content_hash && value.content_sha256 !== expected.content_hash)) throw new Error("Prefetched page did not match the selected edition.");
+        const state = readerRouteState({ canonicalPage: pageIndex, page: value, expectedChapterId: expected.chapter_id || "", expectedChapterTitle: "" });
+        if (state.state !== "ready") throw new Error(state.message);
+        return value;
+      }).catch(() => undefined);
+    }
+  }, [displayedPageNumber, identity, manifest, page, pageAccessContext, sessionId, slug, totalPages, usable, validPage]);
   const model = useMemo(() => {
     const book = manifest?.book || {};
     return {
       title: book.public_title || book.display_title || book.title || "Book",
       author: book.author || book.author_name || "",
       language: /^(bn|bengali|বাংলা)/i.test(book.language || "") ? "bn" : /^(en|english)/i.test(book.language || "") ? "en" : undefined,
-      chapterEyebrow: `Page ${canonicalPage} of ${totalPages}`,
+      chapterEyebrow: `Page ${displayedPageNumber} of ${totalPages}`,
       chapterTitle: page?.chapter_title || book.title || "",
-      canonicalPage, totalPages, totalPublicPages: PREVIEW_PAGES,
-      progress: totalPages ? Math.round((canonicalPage / totalPages) * 100) : 0,
+      canonicalPage: displayedPageNumber,
+      navigationPage: canonicalPage,
+      pendingPage: selectedPage ? null : (displayedPageNumber !== canonicalPage && slowPageLoading ? canonicalPage : null),
+      pageError: pageResult?.number === canonicalPage && pageResult.status === "error" ? error : "",
+      pageErrorDenied: [401, 403, 451].includes(pageResult?.statusCode),
+      pageErrorRetryable: pageResult?.number === canonicalPage && pageResult.status === "error"
+        && (!pageResult.statusCode || pageResult.statusCode >= 500),
+      totalPages, totalPublicPages: PREVIEW_PAGES,
+      progress: totalPages ? Math.round((displayedPageNumber / totalPages) * 100) : 0,
       readingTime: "",
       readingPass: freeReading ? "Free complete reading" : !user ? "Sign in to continue" : displayedBalance === null ? "Balance unavailable" : displayedBalance < 60 ? `${displayedBalance} seconds left` : `${Math.floor(displayedBalance / 60)} minutes left`,
       freeReading,
@@ -436,7 +535,7 @@ function ReaderSession({ slug, user, syncBalance }) {
       statusMessage: notice,
       metadata: { language: book.language || "", genre: book.genre || "", year: book.publication_year || book.year || "", source: book.rights_status || "" },
     };
-  }, [displayedBalance, canonicalPage, freeReading, manifest, notice, page, totalPages, user]);
+  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, manifest, notice, page, pageResult, selectedPage, slowPageLoading, totalPages, user]);
 
   const recovery = <>
     <button type="button" data-testid="reader-recovery-book" onClick={() => navigateAfterSettlement("back")} disabled={busy}>Return to book details</button>
@@ -461,9 +560,9 @@ function ReaderSession({ slug, user, syncBalance }) {
   }
   const loadingExit = <button type="button" onClick={() => navigateAfterSettlement("library")} disabled={busy}>{busy ? "Closing reader…" : "Library"}</button>;
   if (loading) return <RouteState title="Opening reader" message="Loading this edition.">{loadingExit}</RouteState>;
-  if (error) return <RouteState title="Reading paused" message={error}>{recovery}</RouteState>;
+  if (error && !page) return <RouteState title="Reading paused" message={error}>{recovery}</RouteState>;
   if (!enabled || !validPage) return <RouteState title="Page unavailable" message="This page is not available in this edition.">{recovery}</RouteState>;
-  if (canonicalPage > PREVIEW_PAGES && !usable) return <RouteState title={leaseStatus === "Paused" ? "Reading paused" : "Continue reading"} message={leaseStatus === "Paused" ? "Your reading session is paused while the reader is inactive." : freeReading ? "Sign in to continue reading this edition free." : "Use your Reading Pass to open this page."}>{recovery}</RouteState>;
+  if (canonicalPage > PREVIEW_PAGES && !usable && !page) return <RouteState title={leaseStatus === "Paused" ? "Reading paused" : "Continue reading"} message={leaseStatus === "Paused" ? "Your reading session is paused while the reader is inactive." : freeReading ? "Sign in to continue reading this edition free." : "Use your Reading Pass to open this page."}>{recovery}</RouteState>;
   if (!page) return <RouteState title="Opening page" message="Loading your selected page.">{loadingExit}</RouteState>;
   return <ReaderExperienceV2 model={model} access={{ authorized: usable, busy }} onRequestPage={authorizeAndContinue} onNavigate={(target) => {
     if (target === "bookmark") {

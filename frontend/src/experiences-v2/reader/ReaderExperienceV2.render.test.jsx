@@ -35,7 +35,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     select.dispatchEvent(new Event("change", { bubbles: true }));
   });
 
-  test("a newly opened page resets to the masthead while heartbeat updates preserve scroll and focus", () => {
+  test("the Reader enters at the masthead and page turns preserve keyboard focus and scroll", () => {
     render();
     expect(document.activeElement).toBe(container.querySelector("#reader-v2-title"));
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
@@ -46,8 +46,8 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(document.activeElement).toBe(selector);
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
     render({ model: { ...model, canonicalPage: 2 } });
-    expect(document.activeElement).toBe(container.querySelector("#reader-v2-title"));
-    expect(window.scrollTo).toHaveBeenCalledTimes(2);
+    expect(document.activeElement).toBe(selector);
+    expect(window.scrollTo).toHaveBeenCalledTimes(1);
     expect(window.scrollTo).toHaveBeenLastCalledWith({ top: 0, behavior: "instant" });
   });
 

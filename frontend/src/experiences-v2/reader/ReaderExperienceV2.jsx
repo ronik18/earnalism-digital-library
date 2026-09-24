@@ -82,13 +82,13 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   }, [settings]);
 
   const page = Number(model.canonicalPage) || 1;
+  const navigationPage = Number(model.navigationPage) || page;
   useEffect(() => {
-    // This component mounts only after the selected page has been validated.
-    // Balance and heartbeat updates must not move a reader's place or focus.
-    // Keep the masthead, Library link and reading controls in view.
+    // Keep keyboard context stable across page turns; announce only the
+    // canonical page that has actually rendered.
     window.scrollTo({ top: 0, behavior: "instant" });
     headingRef.current?.focus({ preventScroll: true });
-  }, [page]);
+  }, []);
   const contents = (model.contents || []).map((item, index) => typeof item === "string"
     ? { page: index + 1, label: item }
     : { page: Number(item.page), label: item.label })
@@ -109,8 +109,8 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     : languageTypography.fontFamily;
   const fontWeight = fontMode === "sans" ? (language === "bn" ? 500 : 400) : languageTypography.fontWeight;
   const busy = Boolean(access.busy);
-  const atEnd = page >= totalPages;
-  const nextLabel = page === 3 && !access.authorized
+  const atEnd = navigationPage >= totalPages;
+  const nextLabel = navigationPage === 3 && !access.authorized
     ? (model.freeReading ? "Continue reading free" : "Use Reading Time to Continue")
     : "Next page";
   const updateSetting = (name, value) => setSettings((previous) => ({ ...previous, [name]: value }));
@@ -179,7 +179,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
 
         <article className="reader-v2__canvas" data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
           <header className="reader-v2__chapter">
-            <span>{model.chapterEyebrow}</span>
+            <span aria-live="polite" aria-atomic="true">{model.chapterEyebrow}</span>
             <div className="reader-v2__toolbar">
               <ExperienceIconButton label="Decrease text size" disabled={textSizeStep === 0} onClick={() => resizeText(-1)}><Minus size={16} /></ExperienceIconButton>
               <output aria-label="Text size">Aa · {formatRem(textSizeRem)}</output>
@@ -199,15 +199,22 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           </section>}
           <label className="reader-v2__page-selector">Go to page<select aria-label="Go to page" value={page} disabled={busy} onChange={(event) => requestPage(event.target.value)}>{Array.from({ length: totalPages }, (_, index) => <option key={index + 1} value={index + 1}>Page {index + 1}</option>)}</select></label>
           {model.illustration?.src && <img className="reader-v2__illustration" src={model.illustration.src} alt={model.illustration.alt || ""} decoding="async" />}
-          <div className="reader-v2__body" data-testid="reader-reading-text" style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
-            {model.content ?? (model.paragraphs || []).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}
+          {model.pendingPage && <p className="reader-v2__page-loading" role="status">Opening page {model.pendingPage}…</p>}
+          <div key={page} className="reader-v2__page-content" data-testid="reader-page-content">
+            <div className="reader-v2__body" data-testid="reader-reading-text" style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
+              {model.content ?? (model.paragraphs || []).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}
+            </div>
           </div>
+          {model.pageError && <p className="reader-v2__status" role={model.pageErrorDenied ? "alert" : "status"}>
+            {model.pageError}
+            {model.pageErrorRetryable && <button type="button" onClick={() => requestPage(navigationPage)}>Retry page</button>}
+          </p>}
           {model.statusMessage && <p className="reader-v2__status" role="status">{model.statusMessage}</p>}
           <footer className="reader-v2__continuation">
             <span>{atEnd ? "You have reached the end of this book." : page <= 3 ? PUBLIC_PREVIEW_COPY : `Page ${page} of ${totalPages}`}</span>
             <nav aria-label="Page navigation">
-              <button type="button" disabled={busy || page <= 1} onClick={() => requestPage(page - 1)}><ChevronLeft size={16} /> Previous page</button>
-              <button type="button" disabled={busy || atEnd} onClick={() => requestPage(page + 1)}>{atEnd ? "End of book" : nextLabel} <ChevronRight size={16} /></button>
+              <button type="button" disabled={busy || navigationPage <= 1} onClick={() => requestPage(navigationPage - 1)}><ChevronLeft size={16} /> Previous page</button>
+              <button type="button" disabled={busy || atEnd} onClick={() => requestPage(navigationPage + 1)}>{atEnd ? "End of book" : nextLabel} <ChevronRight size={16} /></button>
             </nav>
           </footer>
         </article>
