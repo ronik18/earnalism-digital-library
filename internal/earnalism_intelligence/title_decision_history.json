@@ -496,7 +496,8 @@
         "publication_status": "HOLD_NOT_RELEASED",
         "canonical_text_sha256": "531792238d1b893fb0cda5e3d8ba2cd58f76b2a4ad42db93c47cc8ccbd3fff1a",
         "evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
-        "next_action": "Compare the canonical two chapters against the identified 1944 source and separate its editorial introduction/notes; satisfy source-layer attribution and cover-component provenance."
+        "source_integrity": "SOURCE_INCOMPLETE_AT_LEAST_12_CHAPTERS_ABSENT; the identified 1944 source has fourteen chapter links while the repository package has two.",
+        "next_action": "Obtain and compare the complete lawful 1944 literary text through the approved ingestion/source process; keep the separately edited foreword out unless independently cleared. Do not reconstruct missing prose. Cover provenance is not the current blocker."
       },
       "bengali_audio_lane_status": "AUTOMATED_PROVIDER_PLATEAU_HUMAN_NARRATION_REQUIRED",
       "audiobook_next_action": "Obtain source-bound human narration through the prepared packet, then validate every objective and listening gate before publication.",
@@ -600,11 +601,12 @@
       "updated_at": "2026-07-06T21:54:41Z",
       "language": "ben",
       "rights_clearance_sprint1": {
-        "status": "HOLD_SOURCE",
+        "status": "SOURCE_TEXT_VERIFIED_SOURCE_LAYER_AND_PUBLICATION_QA_PENDING",
         "publication_status": "HOLD_NOT_RELEASED",
         "canonical_text_sha256": "f327ffdf08c13085462db4a7c4bf0f2a315a3e4a577cc2f01c3a93b3fdaa2d0b",
         "evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
-        "next_action": "Complete deterministic comparison of the seven remaining chapters against the identified 1873 edition; satisfy source-layer attribution. Chapter 6 omission is scan-confirmed and restored; title remains held."
+        "source_integrity": "TEXT_VERIFIED against eight pinned 1873 source revisions; five apparent token differences were facsimile-confirmed page-boundary word splits.",
+        "next_action": "Satisfy and validate applicable CC BY-SA 4.0 source-layer distribution conditions, then complete manifest/publication QA. Do not change the verified canonical text or release allowlist."
       },
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
