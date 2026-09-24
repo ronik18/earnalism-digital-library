@@ -56,7 +56,9 @@
         "cleaned_content_sha256": "3ab439de3efeda9d506ffa50795473ce3ced5de88849bb38a0c943db73c27387",
         "raw_source_preserved": false
       },
-      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED; owner states covers are personally graphically designed; visual asset review found no identifiable third-party protected component",
+      "external_protected_cover_elements": false,
+      "cover_provenance_evidence": "Owner-supplied statement that Earnalism covers were graphically designed by the owner; no contrary third-party component is identified in the reviewed asset.",
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593318/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
@@ -88,9 +90,9 @@
       "underlying_work_status": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
       "source_layer_status": "LICENSED_WITH_CONDITIONS_CC_BY_SA_4_0",
       "rights_status": "LICENSED_WITH_CONDITIONS",
-      "text_integrity_status": "TEXT_REVIEW_REQUIRED_SUBSTANTIVE_SOURCE_DIFFERENCE_UNRESOLVED",
+      "text_integrity_status": "TEXT_REVIEW_REQUIRED_OTHER_CHAPTER_COMPARISON_PENDING",
       "chapter_count": 8,
-      "canonical_text_sha256": "da318b5e5bbc876f5507673af2b8f70afbfcbd3c46359d15f083977337b11b7d",
+      "canonical_text_sha256": "f327ffdf08c13085462db4a7c4bf0f2a315a3e4a577cc2f01c3a93b3fdaa2d0b",
       "canonical_text_hash_method": "SHA-256 of UTF-8 chapter content strings in ascending chapterNumber order, joined with one LF; diagnostic binding only, not a source-match claim",
       "historical_source_snapshot": {
         "source_sha256": "20fd4394099662a7126b388fe2c242b5cd947fefe9ca280e808375bdadd77d9a",
@@ -165,7 +167,7 @@
         ]
       },
       "follow_up_source_comparison": {
-        "status": "SUBSTANTIVE_DIFFERENCE_UNRESOLVED",
+        "status": "CHAPTER_006_OMISSION_CONFIRMED_AND_RESTORED",
         "reviewed_date": "2026-09-24",
         "chapter": 6,
         "source_edition_scope": "1873 edition, chapter six, pages 30-33 as identified on the Wikisource chapter page",
@@ -173,20 +175,36 @@
         "source_child_page_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/ষষ্ঠ_পরিচ্ছেদ&oldid=1910626",
         "source_parsed_html_sha256": "854c962d7c153b964770183f1b7b8fb38aa48e5dc237519514fb6ec309826428",
         "source_page_scan_reference": "https://bn.wikisource.org/wiki/পাতা:ইন্দিরা_-_বঙ্কিমচন্দ্র_চট্টোপাধ্যায়_(১৮৭৩).pdf/৩৫",
-        "facsimile_visual_verification": "NOT_COMPLETED; page text is marked proofread but not validated, and the scan image could not be inspected in this run",
-        "canonical_snapshot_sha256": "ac099a87a6fd89eef03b85df1c943b9907894bbc2da2926efaabcdf65edd6e3f",
-        "canonical_and_preserved_raw_source_match": true,
-        "difference": "The preserved raw source and canonical chapter end at the same sentence. The exact Wikisource chapter-six transcription continues with two further paragraphs before chapter seven; the normalized additional segment is approximately 494 characters.",
-        "classification": "SUBSTANTIVE_DIFFERENCE_UNRESOLVED",
-        "decision": "Preserve canonical text unchanged. Do not infer that the unvalidated Wikisource transcription is correct or that the Earnalism snapshot is complete; do not reconstruct or append text without facsimile or independent-edition corroboration.",
-        "india_title_status": "HOLD_SOURCE",
-        "next_evidence_required": "Compare the disputed continuation against the 1873 scan or another reliable edition that can establish the intended reading."
+        "facsimile_visual_verification": "COMPLETED; scan PDF page 35 shows the two paragraphs continuing on printed page 33 before the Chapter 7 heading",
+        "facsimile_pdf_sha256": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+        "canonical_snapshot_sha256_before_correction": "ac099a87a6fd89eef03b85df1c943b9907894bbc2da2926efaabcdf65edd6e3f",
+        "canonical_chapter_sha256_before_correction": "33a21651ce9c0ac8348df3e1242298ac0d60f5b424a9ddef7e477820fe89feb5",
+        "canonical_chapter_sha256_after_correction": "1ff67f3b84c1f1e61ac885e90327dc232ec0ce1b49f46b3d635e036bc297429d",
+        "difference": "Two paragraphs present in the 1873 facsimile and exact revision 1910626 were absent after Earnalism's prior final sentence; the source-supported continuation has been restored verbatim from the transcription after visual scan corroboration.",
+        "classification": "CONFIRMED_SOURCE_OMISSION_RESTORED",
+        "decision": "Restore only the two paragraphs confirmed by the identified 1873 scan and transcription. Do not infer that the other chapters are verified; preserve the title hold until the remaining edition comparison and license presentation are complete.",
+        "india_title_status": "HOLD_SOURCE_OTHER_CHAPTERS_PENDING",
+        "next_evidence_required": "Complete deterministic comparison of the remaining six chapters (1-5 and 7) against the identified 1873 source edition."
       },
-      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
-      "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593340/earnalism/covers/front/cover_17aa6322-cffd-49ad-95a1-6278cef20792.png",
+      "chapter_008_source_comparison": {
+        "status": "CHAPTER_008_TEXT_MATCHES_PINNED_SOURCE_AFTER_SOURCE_FURNITURE_REMOVAL",
+        "reviewed_date": "2026-09-24",
+        "source_child_page_revision": 1910620,
+        "source_child_page_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/অষ্টম_পরিচ্ছেদ&oldid=1910620",
+        "source_edition_scope": "1873 edition, chapter eight, printed pages 38-45",
+        "comparison_method": "Pinned Wikisource revision rendered as HTML; removed source title/chapter headings, page furniture and page markers; folded whitespace only; compared all remaining Bengali text against the canonical chapter.",
+        "difference_classification": "SOURCE_FURNITURE_ONLY",
+        "canonical_chapter_content_sha256": "d32caf511e719a5e8ae6f776f0dbec32bdcbcf17200fcf184d451dadc0bace3e",
+        "result": "The complete canonical chapter text matches the pinned 1873 transcription after removing its source heading and page furniture. This verifies chapter 8 only; it does not resolve the six other chapter comparisons or make the title ready.",
+        "publication_status": "HOLD_NOT_RELEASED"
+      },
+      "cover_status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED; owner states covers are personally graphically designed; visual asset review found no identifiable third-party protected component",
+      "external_protected_cover_elements": false,
+      "cover_provenance_evidence": "Owner-supplied statement that Earnalism covers were graphically designed by the owner; reviewed active controlled cover asset; no contrary third-party component is identified.",
+      "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270665/earnalism/covers/front/bn-060_front_1600x2400.png",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
-      "india_title_status": "HOLD_SOURCE_AND_COVER_COMPONENT_EVIDENCE",
+      "india_title_status": "HOLD_SOURCE_OTHER_CHAPTERS_PENDING",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -223,7 +241,9 @@
         "cleaned_content_sha256": "ec3352127f8065ec990f9c10f4a2a069a4a4f0c9e8793c7727b00306fa8d777f",
         "raw_source_preserved": false
       },
-      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED; owner states covers are personally graphically designed; visual asset review found no identifiable third-party protected component",
+      "external_protected_cover_elements": false,
+      "cover_provenance_evidence": "Owner-supplied statement that Earnalism covers were graphically designed by the owner; no contrary third-party component is identified in the reviewed asset.",
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
@@ -265,7 +285,9 @@
         "cleaned_content_sha256": "c9a08ae531d9158f05f71f07f343f165d3258519fcf180316fb6ef93c2055a77",
         "raw_source_preserved": false
       },
-      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED; owner states covers are personally graphically designed; visual asset review found no identifiable third-party protected component",
+      "external_protected_cover_elements": false,
+      "cover_provenance_evidence": "Owner-supplied statement that Earnalism covers were graphically designed by the owner; no contrary third-party component is identified in the reviewed asset.",
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483123/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
@@ -306,7 +328,9 @@
         "cleaned_content_sha256": "193c208f03b3d962982824d90e4cbf7c45d9046532f1f1fc368b50564a6d1741",
         "raw_source_preserved": false
       },
-      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED; owner states covers are personally graphically designed; visual asset review found no identifiable third-party protected component",
+      "external_protected_cover_elements": false,
+      "cover_provenance_evidence": "Owner-supplied statement that Earnalism covers were graphically designed by the owner; no contrary third-party component is identified in the reviewed asset.",
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
@@ -350,7 +374,9 @@
         "raw_source_preserved": true,
         "raw_source_sha256": "5444c0d24d568142b23da876ace07119e9fb4b8fae4909d0eff461600730b8b9"
       },
-      "cover_status": "FIRST_PARTY_COVER_OWNER_ASSERTED; external-component inventory not present in repository evidence",
+      "cover_status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED; owner states covers are personally graphically designed; visual asset review found no identifiable third-party protected component",
+      "external_protected_cover_elements": false,
+      "cover_provenance_evidence": "Owner-supplied statement that Earnalism covers were graphically designed by the owner; no contrary third-party component is identified in the reviewed asset.",
       "cover_asset": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
@@ -365,7 +391,7 @@
       "repository_package_state": "HOLD_FLAGS_MIRRORED_AND_CHECKSUM_BOUND"
     }
   ],
-  "cohort_decision": "Underlying India copyright evidence is complete for the six Bankim literary works. Wikisource transcription reuse is commercially licensed only with CC BY-SA 4.0 conditions. No candidate is marked India-title-ready: exact edition/source comparison and any source-edition editorial-layer exclusions are not fully evidenced; cover assets have owner-authored provenance asserted, but a title-specific third-party-component inventory is absent. No candidate may enter a release allowlist on this record.",
+  "cohort_decision": "Underlying India copyright evidence is complete for the six Bankim literary works. The owner supplied first-party cover-design evidence, and the inspected active cover assets showed no identifiable externally sourced protected component. Wikisource source layers are marked CC BY-SA 4.0 and require the documented attribution/change/ShareAlike obligations to be surfaced in the publication experience. No candidate is title-ready: exact source comparison and the applicable source-edition editorial-layer exclusions remain unresolved. Chapter 6 of Indira has its facsimile-confirmed omission restored; chapter 8 now matches its pinned 1873 transcription after removing source furniture. No candidate may enter a release allowlist on this record.",
   "production_scope_unchanged": {
     "authorized_reader_territories": [
       "IN"

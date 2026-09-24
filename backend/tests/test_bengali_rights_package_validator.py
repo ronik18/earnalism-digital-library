@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import hashlib
 import json
 import shutil
 from pathlib import Path
@@ -44,6 +45,86 @@ def test_hash_completeness_does_not_upgrade_source_comparison_or_release():
         assert title["checks"]["reader_release_allowed"] is False
         assert "TEXT_VERIFIED" in title["blockers"]
         assert "RELEASE_ALLOWLISTED" in title["release_blockers"]
+
+
+def test_indira_chapter_six_restores_only_facsimile_confirmed_continuation():
+    canonical_path = (
+        ROOT
+        / "content/books/bn-060/chapters/006-chapter-6-ষষ্ঠ-পরিচ্ছেদ.json"
+    )
+    canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
+    controlled = json.loads(
+        (ROOT / "data/controlled_publications/bn-060/chapters/chapter-006.json")
+        .read_text(encoding="utf-8")
+    )
+    rights = json.loads(
+        (ROOT / "data/title_rights_evidence/bengali-bankim-cohort-1.json")
+        .read_text(encoding="utf-8")
+    )
+    indira = next(row for row in rights["titles"] if row["slug"] == "bn-060")
+    source = json.loads(
+        (ROOT / "data/controlled_publications/bn-060/source_evidence.json")
+        .read_text(encoding="utf-8")
+    )
+
+    assert "তিনি বাহির হইতে কাতরোক্তি করিতে লাগিলেন" in canonical["content"]
+    assert "তিনি অষ্টাহ পরীক্ষা স্বীকার করিলেন।" in canonical["content"]
+    assert controlled["content"] == canonical["content"]
+    assert hashlib.sha256(canonical["content"].encode("utf-8")).hexdigest() == (
+        canonical["sanitizedSha256"]
+    )
+    assert indira["text_integrity_status"] == (
+        "TEXT_REVIEW_REQUIRED_OTHER_CHAPTER_COMPARISON_PENDING"
+    )
+    assert indira["follow_up_source_comparison"]["classification"] == (
+        "CONFIRMED_SOURCE_OMISSION_RESTORED"
+    )
+    assert source["chapter_006_source_correction"]["status"] == (
+        "PASS_SCAN_CONFIRMED_OMISSION_RESTORED"
+    )
+    assert indira["publication_status"] == "HOLD_NOT_RELEASED"
+
+
+def test_indira_chapter_eight_source_match_does_not_clear_unchecked_chapters():
+    rights = json.loads(
+        (ROOT / "data/title_rights_evidence/bengali-bankim-cohort-1.json")
+        .read_text(encoding="utf-8")
+    )
+    indira = next(row for row in rights["titles"] if row["slug"] == "bn-060")
+    chapter = json.loads(
+        (ROOT / "data/controlled_publications/bn-060/chapters/chapter-008.json")
+        .read_text(encoding="utf-8")
+    )
+
+    comparison = indira["chapter_008_source_comparison"]
+    assert comparison["source_child_page_revision"] == 1910620
+    assert comparison["difference_classification"] == "SOURCE_FURNITURE_ONLY"
+    assert comparison["canonical_chapter_content_sha256"] == hashlib.sha256(
+        chapter["content"].encode("utf-8")
+    ).hexdigest()
+    assert indira["text_integrity_status"] == (
+        "TEXT_REVIEW_REQUIRED_OTHER_CHAPTER_COMPARISON_PENDING"
+    )
+    assert indira["publication_status"] == "HOLD_NOT_RELEASED"
+
+
+def test_bankim_cohort_cover_records_bind_owner_provenance_to_active_package_asset():
+    rights = json.loads(
+        (ROOT / "data/title_rights_evidence/bengali-bankim-cohort-1.json")
+        .read_text(encoding="utf-8")
+    )
+    for title in rights["titles"]:
+        package = json.loads(
+            (
+                ROOT
+                / "data/controlled_publications"
+                / title["slug"]
+                / "public_book.json"
+            ).read_text(encoding="utf-8")
+        )
+        assert title["external_protected_cover_elements"] is False
+        assert title["cover_status"].startswith("FIRST_PARTY_COVER_PROVENANCE_CONFIRMED")
+        assert title["cover_asset"] == package["cover_image_url"]
 
 
 def test_evidence_ready_title_stays_unreleased_until_explicit_release_controls(

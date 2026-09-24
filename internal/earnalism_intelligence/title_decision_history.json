@@ -169,7 +169,7 @@
     "bn-031": {
       "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
       "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
-      "updated_at": "2026-07-06T21:54:41Z",
+      "updated_at": "2026-09-24T04:43:30Z",
       "language": "ben",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
@@ -602,9 +602,9 @@
       "rights_clearance_sprint1": {
         "status": "HOLD_SOURCE",
         "publication_status": "HOLD_NOT_RELEASED",
-        "canonical_text_sha256": "da318b5e5bbc876f5507673af2b8f70afbfcbd3c46359d15f083977337b11b7d",
+        "canonical_text_sha256": "f327ffdf08c13085462db4a7c4bf0f2a315a3e4a577cc2f01c3a93b3fdaa2d0b",
         "evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
-        "next_action": "Complete the eighth chapter comparison and classify the seven diagnostic chapter differences; satisfy source-layer attribution and resolve cover-component provenance."
+        "next_action": "Complete deterministic comparison of the seven remaining chapters against the identified 1873 edition; satisfy source-layer attribution. Chapter 6 omission is scan-confirmed and restored; title remains held."
       },
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",

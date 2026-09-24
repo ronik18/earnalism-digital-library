@@ -23,8 +23,8 @@
   "allowPayment": false,
   "is_published": false,
   "chapterCount": 8,
-  "wordCountApprox": 5711,
-  "readingTimeMinutesApprox": 24,
+  "wordCountApprox": 5806,
+  "readingTimeMinutesApprox": 25,
   "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593340/earnalism/covers/front/cover_17aa6322-cffd-49ad-95a1-6278cef20792.png",
   "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593352/earnalism/covers/back/back_cover_17aa6322-cffd-49ad-95a1-6278cef20792.png",
   "coverAssets": [
@@ -32,5 +32,5 @@
     "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593352/earnalism/covers/back/back_cover_17aa6322-cffd-49ad-95a1-6278cef20792.png"
   ],
   "createdAt": "2026-07-03T20:07:46Z",
-  "updatedAt": "2026-07-03T20:07:46Z"
+  "updatedAt": "2026-09-24T04:43:30Z"
 }
