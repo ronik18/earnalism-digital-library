@@ -12,7 +12,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 4319,
+      "word_count": 4261,
       "reading_minutes": 18,
       "language_hint": "en",
       "processing_status": "ready",
@@ -24,7 +24,7 @@
   "preview_chapter_ids": [
     "chapter-001"
   ],
-  "audio_enabled": true,
-  "audiobook_enabled": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
   "generated_at": "2026-08-16T06:45:34Z"
 }

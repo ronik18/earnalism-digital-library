@@ -11,11 +11,13 @@ os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
 os.environ.setdefault("JWT_SECRET", "batch2-live-audio-test-secret")
 
 from backend import catalog_truth, server
+from backend.publication_manifest import validate_manifest
 from backend.home_curation import build_home_curated_payload
 
 
 ROOT = Path(__file__).resolve().parents[2]
-GUARDED_AUDIO_SLUGS = ("a-white-heron", "the-selfish-giant")
+GUARDED_AUDIO_SLUGS = ("the-selfish-giant",)
+HISTORICAL_AUDIO_SLUGS = ("a-white-heron", "the-selfish-giant")
 
 
 class ConveyorBooks:
@@ -47,7 +49,7 @@ async def fixed_generation():
     return 1
 
 
-@pytest.mark.parametrize("slug", GUARDED_AUDIO_SLUGS)
+@pytest.mark.parametrize("slug", HISTORICAL_AUDIO_SLUGS)
 def test_batch2_packets_are_packaged_for_railway_and_byte_identical(slug: str):
     root_dir = ROOT / "data" / "controlled_publications" / slug
     backend_dir = ROOT / "backend" / "data" / "controlled_publications" / slug
@@ -61,7 +63,7 @@ def test_batch2_packets_are_packaged_for_railway_and_byte_identical(slug: str):
 
 
 @pytest.mark.parametrize("slug", GUARDED_AUDIO_SLUGS)
-def test_batch2_records_live_conveyor_audio_without_broadening_discovery(slug: str):
+def test_batch2_historical_audio_packages_remain_unexposed(slug: str):
     artifact_dir = ROOT / "backend" / "data" / "controlled_publications" / slug
     assert catalog_truth.controlled_artifact_validation_issues(slug, str(artifact_dir)) == ()
 
@@ -78,13 +80,17 @@ def test_batch2_records_live_conveyor_audio_without_broadening_discovery(slug: s
         artifact_dir=artifact_dir,
     )
 
+    if slug == "a-white-heron":
+        assert book is None
+        return
+
     assert book is not None
-    assert catalog_truth.can_expose_reader(book) is True
+    assert catalog_truth.can_expose_reader(book) is False
     assert catalog_truth.can_expose_audio(book) is False
 
     projection = catalog_truth.public_book_projection(book)
     assert projection is not None
-    assert projection["reader_enabled"] is True
+    assert projection["reader_enabled"] is False
     assert projection["audio_enabled"] is False
     assert projection["audiobook_enabled"] is False
     assert projection["audio_url"] == ""
@@ -99,21 +105,11 @@ def test_batch2_records_live_conveyor_audio_without_broadening_discovery(slug: s
     assert evidence["browser"]["playback_advanced"] is True
 
     publication = catalog_truth.read_json_file(artifact_dir / "publication_manifest.json")
-    assert publication["audio_release"]["delivery_mode"] == "SERVER_OWNED_CONVEYOR"
-    assert publication["audio_release"]["public_endpoint"] == f"/api/reader/book/{slug}/audiobook"
     assert publication["audio_release"]["discovery_exposed"] is False
 
 
-@pytest.mark.parametrize(
-    ("slug", "voice", "audio_sha256"),
-    (
-        ("the-selfish-giant", "bm_george", "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67"),
-        ("a-white-heron", "hf_alpha", "70c94cc660fe15fdb4b5e3ef800643090d0eabd27b07523ffa5859b73e700f69"),
-    ),
-)
-def test_batch2_reader_manifest_merges_exact_database_conveyor_without_catalog_broadening(
-    monkeypatch, slug: str, voice: str, audio_sha256: str
-):
+@pytest.mark.parametrize("slug", HISTORICAL_AUDIO_SLUGS)
+def test_historical_database_audio_claim_cannot_admit_title_outside_release_allowlist(monkeypatch, slug: str):
     release = {
         "slug": slug,
         "audio_enabled": True,
@@ -123,7 +119,7 @@ def test_batch2_reader_manifest_merges_exact_database_conveyor_without_catalog_b
         "audiobook_release_gate": "APPROVED",
         "audio_qa_status": "QA_PASSED",
         "audiobook_provider": "kokoro",
-        "audiobook_voice": voice,
+        "audiobook_voice": "historical",
         "audiobook_assets": {
             "mp3": f"https://s3.us-west-004.backblazeb2.com/private/{slug}.mp3",
         },
@@ -133,8 +129,8 @@ def test_batch2_reader_manifest_merges_exact_database_conveyor_without_catalog_b
             "audio_release_approved": True,
             "audio_public_release": "APPROVED",
             "audio_qa_status": "QA_PASSED",
-            "audio_sha256": audio_sha256,
-            "voice": voice,
+            "audio_sha256": "70c94cc660fe15fdb4b5e3ef800643090d0eabd27b07523ffa5859b73e700f69",
+            "voice": "historical",
         },
     }
     monkeypatch.setattr(server, "db", SimpleNamespace(books=ConveyorBooks(slug, release)))
@@ -144,13 +140,7 @@ def test_batch2_reader_manifest_merges_exact_database_conveyor_without_catalog_b
 
     manifest = asyncio.run(server._reader_book_manifest_doc(slug))
 
-    assert manifest is not None
-    assert manifest["book"]["audio_enabled"] is True
-    assert manifest["book"]["audiobook_enabled"] is True
-    assert manifest["book"]["audio_url"] == f"/api/reader/book/{slug}/audiobook"
-    assert manifest["audio"]["enabled"] is True
-    assert manifest["audio"]["voice"] == voice
-    assert manifest["audio"]["assets"]["mp3"] == f"/api/reader/book/{slug}/audiobook"
+    assert manifest is None
 
 
 def test_batch2_server_owned_audio_does_not_enter_static_home_listening_shelf():
@@ -160,3 +150,46 @@ def test_batch2_server_owned_audio_does_not_enter_static_home_listening_shelf():
     }
 
     assert listening_slugs.isdisjoint(GUARDED_AUDIO_SLUGS)
+
+
+def test_a_white_heron_is_prepared_but_not_live_and_audio_is_disabled():
+    artifact_dir = ROOT / "data" / "controlled_publications" / "a-white-heron"
+    public = catalog_truth.read_json_file(artifact_dir / "public_book.json")
+    reader = catalog_truth.read_json_file(artifact_dir / "reader_manifest.json")
+    source = catalog_truth.read_json_file(artifact_dir / "source_evidence.json")
+    publication = catalog_truth.read_json_file(artifact_dir / "publication_manifest.json")
+    approval = catalog_truth.read_json_file(artifact_dir / "approval_evidence.json")
+    checksum = catalog_truth.read_json_file(artifact_dir / "checksum_manifest.json")
+    historical_audio = catalog_truth.read_json_file(artifact_dir / "production_audio_evidence.json")
+
+    assert public["publication_status"] == "READY_FOR_COMMERCIAL_CUTOVER"
+    assert public["approved_to_publish"] is False
+    assert public["is_published"] is False
+    assert public["isPublic"] is False and public["isLive"] is False
+    assert public["showInPublicLibrary"] is False
+    assert public["formats"] == ["Ebook"]
+    assert public["audio_enabled"] is False
+    assert public["audiobook_enabled"] is False
+    assert public["generate_audiobook"] is False
+    assert approval["approved_to_publish"] is False
+    assert approval["audio_public_release"] == "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
+    assert approval["audiobook_enabled"] is False
+    assert approval["historical_audio_approval"]["historical_only"] is True
+    assert approval["historical_audio_approval"]["audio_public_release"] == "PUBLIC_AUDIO_RELEASE_APPROVED"
+    assert reader["audio_enabled"] is False
+    assert reader["audiobook_enabled"] is False
+    assert source["territory"] == "IN"
+    assert source["normalized_source_text_sha256"] == source["normalized_canonical_text_sha256"]
+    assert source["source_edition"].startswith("The Best Stories of Sarah Orne Jewett")
+    assert source["edition_variant_classification"].startswith("DOCUMENTED_EDITION_VARIANT")
+    assert len(source["edition_variant_evidence"]) == 3
+    assert publication["rights"]["status"] == "APPROVED"
+    assert publication["reader_release"]["status"] == "READY_FOR_APPROVAL"
+    assert publication["reader_release"]["exposed"] is False
+    assert publication["audio_release"]["status"] == "NOT_REQUESTED"
+    assert publication["audio_release"]["exposed"] is False
+    assert validate_manifest(publication) == []
+    for row in checksum["files"]:
+        assert catalog_truth.file_sha256(artifact_dir / row["file"]) == row["sha256"]
+    assert historical_audio["production_audio"]["full_get_status"] == 200
+    assert historical_audio["browser"]["playback_advanced"] is True
