@@ -2673,6 +2673,30 @@
         "reader_audio_release_truth_unchanged": true,
         "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
         "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/the-gift-of-the-magi/original_v1/canonical_promotion_evidence.json"
+      },
+      "india_catalogue_triage_20260924": {
+        "classification": "FAST_GREEN",
+        "underlying_work": "INDIA_COPYRIGHT_EVIDENCE_COMPLETE",
+        "statutory_basis": "Copyright Act 1957 sections 23 and 22; both pseudonymous publication-term and disclosed-author life-plus-60 branches expired on the established facts",
+        "author_identity": "William Sydney Porter, published as O. Henry",
+        "author_death_year": 1910,
+        "first_publication_year": 1905,
+        "source_text": "TEXT_VERIFIED",
+        "source_evidence": "backend/data/controlled_publications/the-gift-of-the-magi/source_evidence.json",
+        "canonical_chapter_text_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+        "cover_status": "FIRST_PARTY_COVER_PROVENANCE_CONFIRMED",
+        "publication_manifest_status": "READY_FOR_APPROVAL_NOT_EXPOSED",
+        "audio_status": "DISABLED_NOT_CLEARED",
+        "commercial_live_status": "WAITING_FOR_COMMERCIAL_CUTOVER",
+        "release_allowlists_changed": false,
+        "pilot_full_free_changed": false,
+        "evidence": [
+          "https://www.indiacode.nic.in/bitstream/123456789/1367/1/a195714.pdf",
+          "https://www.loc.gov/pictures/resource/cph.3a43886/",
+          "https://www.history.com/this-day-in-history/december-10/the-gift-of-the-magi-is-published",
+          "https://www.gutenberg.org/ebooks/7256"
+        ],
+        "next_action": "Keep outside PILOT_FULL_FREE. Revisit public exposure only after commercial entitlement is enabled through its separately approved release."
       }
     },
     "picture-of-dorian-gray": {

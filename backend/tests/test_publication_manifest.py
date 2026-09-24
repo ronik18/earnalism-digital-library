@@ -16,6 +16,7 @@ from backend.publication_manifest import (
 )
 from scripts.publication_manifest_conveyor import migrate_import_metadata
 from backend.catalog_truth import (
+    CONTROLLED_LIVE_BOOK_SLUGS,
     can_expose_reader,
     clear_controlled_artifact_caches,
     load_controlled_artifact_book,
@@ -25,6 +26,7 @@ from backend.catalog_truth import (
 ROOT = Path(__file__).resolve().parents[2]
 SHERLOCK = ROOT / "data" / "controlled_publications" / "the-adventures-of-sherlock-holmes"
 BISHOP = ROOT / "data" / "controlled_publications" / "the-bishop"
+GIFT_OF_THE_MAGI = ROOT / "data" / "controlled_publications" / "the-gift-of-the-magi"
 
 
 def test_sherlock_pilot_is_reader_ready_without_audio_or_commerce():
@@ -40,6 +42,41 @@ def test_sherlock_pilot_is_reader_ready_without_audio_or_commerce():
     }
     assert manifest["commerce_release"]["status"] == "NOT_REQUESTED"
     assert validate_manifest(manifest) == []
+
+
+def test_gift_of_the_magi_is_india_ready_but_waits_for_commercial_cutover():
+    manifest = build_manifest(GIFT_OF_THE_MAGI)
+    source = json.loads((GIFT_OF_THE_MAGI / "source_evidence.json").read_text(encoding="utf-8"))
+    backend_artifact = ROOT / "backend" / "data" / "controlled_publications" / "the-gift-of-the-magi"
+    backend_manifest = build_manifest(backend_artifact)
+    for artifact in (GIFT_OF_THE_MAGI, backend_artifact):
+        checksum = json.loads((artifact / "checksum_manifest.json").read_text(encoding="utf-8"))
+        source_digest = hashlib.sha256((artifact / "source_evidence.json").read_bytes()).hexdigest()
+        indexed_source_digest = next(
+            row["sha256"] for row in checksum["files"] if row["file"] == "source_evidence.json"
+        )
+        assert source_digest == indexed_source_digest
+
+    assert manifest["rights"]["status"] == "APPROVED"
+    assert manifest["rights"]["publication_region"] == "india"
+    assert manifest["reader_release"]["status"] == "READY_FOR_APPROVAL"
+    assert manifest["reader_release"]["exposed"] is False
+    assert manifest["audio_release"]["status"] == AUDIO_NOT_REQUESTED
+    assert manifest["audio_release"]["exposed"] is False
+    assert manifest_reader_exposed(manifest) is False
+    assert validate_manifest(manifest) == []
+    assert validate_manifest(backend_manifest) == []
+    assert backend_manifest["reader_release"]["exposed"] is False
+    assert source["text_integrity_status"] == "TEXT_VERIFIED"
+    assert source["canonical_chapter_text_sha256"] == "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e"
+    assert source["commercial_live_status"] == "WAITING_FOR_COMMERCIAL_CUTOVER"
+    assert source["content_hash"] == "43f7c14de6be56f642476b78fd227fb0005d43909fc27e477646ec99b0900fcd"
+    assert "the-gift-of-the-magi" not in CONTROLLED_LIVE_BOOK_SLUGS
+    assert load_controlled_artifact_book(
+        "the-gift-of-the-magi",
+        include_content=False,
+        artifact_dir=backend_artifact,
+    ) is None
 
 
 def test_checksum_bound_approved_audio_is_a_separate_exposed_lane():
@@ -147,12 +184,13 @@ def test_migration_regenerates_legacy_checksum_bundle(tmp_path):
     assert "publication_manifest.json" not in entries
 
 
-def test_agentic_ai_reader_projection_is_public_without_audio():
+def test_agentic_ai_reader_package_is_not_exposed_outside_the_controlled_release():
     clear_controlled_artifact_caches()
     book = load_controlled_artifact_book("agentic-ai-with-python", include_content=True)
 
     assert book is not None
-    assert can_expose_reader(book) is True
+    assert "agentic-ai-with-python" not in CONTROLLED_LIVE_BOOK_SLUGS
+    assert can_expose_reader(book) is False
     assert len(book["chapters"]) == 14
     assert all(chapter.get("content") for chapter in book["chapters"])
     assert book.get("audio_enabled") is False

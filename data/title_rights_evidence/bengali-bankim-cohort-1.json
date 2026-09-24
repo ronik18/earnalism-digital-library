@@ -63,6 +63,8 @@
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
       "india_title_status": "HOLD_SOURCE_EDITION_SCOPE_AND_TEXT_COMPARISON",
+      "rapid_catalogue_classification": "QUARANTINE",
+      "quarantine_reason": "The 1885 expanded edition includes separate essays attributed to Akshay Chandra Sarkar and Rajkrishna Mukhopadhyay; the 13 canonical chapters have not been conclusively scoped and compared to that exact edition.",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -283,6 +285,8 @@
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
       "india_title_status": "RIGHTS_BASIS_COMPLETE; LICENSE_OBLIGATIONS_AND_PUBLICATION_QA_PENDING",
+      "rapid_catalogue_classification": "FIX_AND_GREEN",
+      "fixable_blockers": ["Implement exact Wikisource attribution and CC BY-SA 4.0 source/license/change/ShareAlike notice.", "Complete controlled publication manifest and Reader QA without enabling audio or expanding PILOT_FULL_FREE."],
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -326,6 +330,8 @@
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
       "india_title_status": "HOLD_TEXT_COMPARISON_1883_EDITION",
+      "rapid_catalogue_classification": "QUARANTINE",
+      "quarantine_reason": "Canonical text has not yet been deterministically compared to the identified 1883 source edition.",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -370,6 +376,8 @@
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
       "india_title_status": "HOLD_EDITORIAL_LAYER_AND_SOURCE_COMPARISON",
+      "rapid_catalogue_classification": "QUARANTINE",
+      "quarantine_reason": "The exact source text and separately protected editorial layer have not been scoped and compared against the canonical package.",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -413,6 +421,8 @@
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
       "india_title_status": "HOLD_TEXT_COMPARISON_1874_EDITION",
+      "rapid_catalogue_classification": "QUARANTINE",
+      "quarantine_reason": "Canonical text has not yet been deterministically compared to the identified 1874 source edition.",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,
@@ -471,6 +481,8 @@
       "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
       "publication_status": "HOLD_NOT_RELEASED",
       "india_title_status": "HOLD_SOURCE_COMPLETENESS_14_VS_2_AND_EDITORIAL_LAYER",
+      "rapid_catalogue_classification": "QUARANTINE",
+      "quarantine_reason": "The identified 1944 source has fourteen chapters while the Earnalism package contains two; do not reconstruct the twelve missing chapters.",
       "legacy_package_claims_before_reconciliation": {
         "public_book_public_and_live_flags": true,
         "public_book_approved_to_publish": true,

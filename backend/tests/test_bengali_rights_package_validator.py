@@ -37,6 +37,42 @@ def test_bankim_cohort_is_audited_hash_bound_and_remains_held():
         assert catalog_truth.load_controlled_artifact_book(title["slug"]) is None
 
 
+def test_bankim_cohort_has_no_stale_public_audio_metadata_or_live_admission():
+    packet = json.loads(
+        (ROOT / "data/title_rights_evidence/bengali-bankim-cohort-1.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    for title in packet["titles"]:
+        slug = title["slug"]
+        assert slug not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
+        for package_root in (
+            ROOT / "data/controlled_publications" / slug,
+            ROOT / "backend/data/controlled_publications" / slug,
+        ):
+            if not package_root.exists():
+                continue
+            book = json.loads(
+                (package_root / "public_book.json").read_text(encoding="utf-8")
+            )
+            assert book.get("audio_enabled") is False
+            assert book.get("audiobook_enabled") is False
+            assert book.get("generate_audiobook") is False
+            assert book.get("audiobook_provider", "") == ""
+            assert book.get("audio_url", "") == ""
+            assert book.get("audiobook_assets", {}) == {}
+            assert book.get("audiobook", {}) == {}
+            assert book.get("audiobook_package", {}) == {}
+            assert book.get("audiobook_release_conveyor", {}) == {}
+            checksum = json.loads(
+                (package_root / "checksum_manifest.json").read_text(encoding="utf-8")
+            )
+            for entry in checksum["files"]:
+                target = package_root / entry["file"]
+                assert target.exists()
+                assert hashlib.sha256(target.read_bytes()).hexdigest() == entry["sha256"]
+
+
 def test_indira_source_verification_does_not_upgrade_any_title_to_release():
     report = audit(ROOT)
 
