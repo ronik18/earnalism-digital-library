@@ -2,11 +2,11 @@
   "slug": "the-canterville-ghost",
   "source_url": "https://www.gutenberg.org/ebooks/14522",
   "source_name": "Project Gutenberg",
-  "source_license": "Public domain. Project Gutenberg transcription freely redistributable for any use including commercial.",
+  "source_license": "Project Gutenberg eBook 14522 includes Project Gutenberg License and trademark terms; its permission guidance says non-U.S. users must independently verify local law, and stripping the PG license and all PG references leaves the underlying U.S.-public-domain text unrestricted there. Earnalism's India basis is the expired Indian term of the underlying work, not a sublicense or the PG label. The Reader edition excludes the PG license, header, trademark references, and illustrations; no PG branding is used in marketing. PG source credit/link is used only as bibliographic attribution.",
   "source_hash": "c9079f8d4169402f84457ee6081f685e5f8b617d1818454883e46da961040cf8",
   "content_hash": "f11621c70a9d8a6452069dea6928cf3f1e634ba80e35268f4cb74a9a612f6601",
-  "provenance_hash": "6e8ae30a653b7d2ca595a6bf65a507f872afd4687caa0d4f276c82c6bf8f50d7",
-  "rights_basis": "Author died 1900. Published 1887. Public domain in U.S. and worldwide.",
+  "provenance_hash": "eeb505db324299df564272a10de2bac7bb5a4b07af1a627c731f17112df3ccbb",
+  "rights_basis": "India Copyright Act, 1957, section 22: the identified single-author original English literary work's term expired long before this India-scoped release. Oscar Wilde died in 1900, so the term expired at the end of 1960. The Project Gutenberg transcription is source provenance, not the legal basis. No translation or separately authored editorial material is distributed.",
   "downloaded_at": "2026-06-02T18:57:59.263826+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -32,5 +32,36 @@
     "root_backend_byte_parity": true,
     "legacy_estimated_sync_invalidated": true,
     "audio_enabled": false
-  }
+  },
+  "india_copyright_category": "ORDINARY_PUBLISHED_LITERARY_WORK_SECTION_22",
+  "underlying_work_status": "INDIA_TERM_EXPIRED",
+  "original_language": "English",
+  "translation_status": "NOT_APPLICABLE_ORIGINAL_LANGUAGE_WORK",
+  "source_edition": "The Project Gutenberg eBook 14522 transcription, based on The Canterville Ghost, John W. Luce and Company (Boston and London), 1906, illustrated by Wallace Goldsmith; the Reader edition follows the identified prose transcription and is not represented as a critical or first-edition text. The story was first published in 1887.",
+  "source_layer_status": "Project Gutenberg identifies its 1906 source edition and illustrator, and states it may combine sources or make transcription/formatting changes. Earnalism uses the prose text only, excludes the 1906 illustrations and PG license/header/trademark references, and does not use PG branding in marketing. The India rights basis is the independently evidenced expired term of Wilde's underlying work; the PG source page itself cautions non-U.S. users to verify local law.",
+  "canonical_text_status": "TEXT_VERIFIED",
+  "canonical_content_sha256": "f11621c70a9d8a6452069dea6928cf3f1e634ba80e35268f4cb74a9a612f6601",
+  "text_integrity_evidence": "Deterministic comparison of the complete narrative in content/books/the-canterville-ghost/raw/source.txt with the seven canonical chapters is exact after removing the seven standalone Roman-numeral chapter labels and folding whitespace only; punctuation, spelling, capitalization, and word order remain identical. The earlier source-bound chapter repair records the narrative endpoint 'Virginia blushed.' No literary text was changed in this triage.",
+  "source_comparison": {
+    "raw_source_path": "content/books/the-canterville-ghost/raw/source.txt",
+    "raw_source_normalized_sha256": "c9079f8d4169402f84457ee6081f685e5f8b617d1818454883e46da961040cf8",
+    "canonical_content_sha256": "f11621c70a9d8a6452069dea6928cf3f1e634ba80e35268f4cb74a9a612f6601",
+    "comparison_method": "Remove standalone source Roman-numeral chapter labels and fold whitespace; compare full prose including punctuation and case.",
+    "result": "EXACT_MATCH",
+    "comparison_tokens": 11295
+  },
+  "cover_provenance_status": "FIRST_PARTY_GENERATED_NO_EXTERNAL_ART",
+  "cover_provenance_evidence": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json rows for this slug identify deterministic vector primitives with no external art; checked front/back assets against recorded SHA-256 values.",
+  "copyright_evidence_links": [
+    "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+    "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-topic/identity-and-community/the-life-and-court-trials-of-oscar-wilde/",
+    "https://www.univ.ox.ac.uk/news/der-geist-von-canterville/",
+    "https://www.gutenberg.org/ebooks/14522",
+    "https://www.gutenberg.org/policy/permission",
+    "https://www.gutenberg.org/policy/license"
+  ],
+  "source_rights_assessment": "India Section 22 term applies to this ordinary published literary work. The underlying text term expired 1960-12-31. The 1906 PG eBook is source/provenance evidence, not an India clearance conclusion; the PG trademark/license is not reproduced or used for endorsement. No translation, Goldsmith illustration, separate introduction, or editorial annotations are distributed.",
+  "territory": "IN",
+  "audio_status": "DISABLED_NOT_IN_CURRENT_LAUNCH_SCOPE",
+  "commercial_live_status": "WAITING_FOR_COMMERCIAL_CUTOVER"
 }

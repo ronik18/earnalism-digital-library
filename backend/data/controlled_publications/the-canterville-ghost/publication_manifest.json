@@ -1,0 +1,95 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-canterville-ghost",
+  "title": "The Canterville Ghost",
+  "generated_at": "2026-09-24T11:27:49.837208+00:00",
+  "content": {
+    "source_hash": "c9079f8d4169402f84457ee6081f685e5f8b617d1818454883e46da961040cf8",
+    "content_hash": "f11621c70a9d8a6452069dea6928cf3f1e634ba80e35268f4cb74a9a612f6601",
+    "provenance_hash": "eeb505db324299df564272a10de2bac7bb5a4b07af1a627c731f17112df3ccbb",
+    "sanitized": true,
+    "chapter_count": 7,
+    "chapter_index_sha256": "8a7f8e6754565400f847ce63d9027d9c6ed3b5733127f0cca723aedfcc3a6d09",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "I",
+        "word_count": 1492,
+        "sha256": "1586dc1069474bc497944af3b7837dde519b122a72100248f9f10233dc98719c"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "II",
+        "word_count": 1177,
+        "sha256": "dee52f610f770555e38171abd646203ecec1623d5f2fffc2a5a21abade893373"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "III",
+        "word_count": 2270,
+        "sha256": "caebaf9aac3c6b5e32b4dcff5f7d506540c9d9c6d6018c1f112aabb4f46ca017"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "IV",
+        "word_count": 1696,
+        "sha256": "9d86018f2db9233f2a330a6b5411d56ce1eccf67847d3611ee29ec047e1bf12d"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "V",
+        "word_count": 1662,
+        "sha256": "034d8703021756aed632ec53d8100d14c430ecd231f34d069f5c17cd9973af4c"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "VI",
+        "word_count": 1525,
+        "sha256": "f54346227e5bc84d82e5f06cd6b8469fcdf55045c5616b3ec67e4ede088fc996"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "VII",
+        "word_count": 1471,
+        "sha256": "1528e9e97be14ec5848897baa39d2692b74bc074003b9a7e70583c550d3d3181"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
+    "reader_manifest": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
+    "source_evidence": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
+    "approval_evidence": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580"
+  },
+  "manifest_sha256": "5d18884072aee09097d3c652c349f26ec870b49211960fdd565e691492402a3a"
+}
