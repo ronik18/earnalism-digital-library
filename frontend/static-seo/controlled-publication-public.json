@@ -2,7 +2,7 @@
   "schema_version": "earnalism.static-seo-public.v2",
   "public_release_held": false,
   "generated_from": {
-    "data/controlled_launch.json": "3984d6384010d50c47f9ae4c8f6b9d7baf812ace878d5dd59a6de0b7ca90afa2",
+    "data/controlled_launch.json": "5b7b7bf118e042f580fb53ef719f59c4b2708b8610e2ffda130adc3634bf77c7",
     "data/controlled_publications/a-ghost-story/public_book.json": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe",
     "data/controlled_publications/a-ghost-story/reader_manifest.json": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",

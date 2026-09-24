@@ -826,6 +826,14 @@ PUBLIC_PAID_COMMERCE_ENABLED = CONTROLLED_LAUNCH_CONFIG.get("public_paid_commerc
 TEXT_ACCESS_MODE = CONTROLLED_LAUNCH_CONFIG.get("text_access_mode", "PILOT_FULL_FREE")
 if TEXT_ACCESS_MODE not in {"PILOT_FULL_FREE", "COMMERCIAL_ENTITLEMENT"}:
     raise RuntimeError("Invalid controlled text access mode")
+TITLE_ACCESS_MODES = CONTROLLED_LAUNCH_CONFIG.get("title_access_modes", {})
+if not isinstance(TITLE_ACCESS_MODES, dict) or any(
+    not isinstance(slug, str)
+    or not slug.strip()
+    or mode not in {"PILOT_FULL_FREE", "COMMERCIAL_ENTITLEMENT"}
+    for slug, mode in TITLE_ACCESS_MODES.items()
+):
+    raise RuntimeError("Invalid per-title text access modes")
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
@@ -873,6 +881,36 @@ def razorpay_keys_configured() -> bool:
     return bool(RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET)
 
 
+def _title_text_access_mode(slug: str) -> Optional[str]:
+    """Resolve a title's access mode; unknown titles fail closed."""
+    normalized = str(slug or "").strip().lower()
+    configured = TITLE_ACCESS_MODES.get(normalized)
+    if configured in {"PILOT_FULL_FREE", "COMMERCIAL_ENTITLEMENT"}:
+        return configured
+    # Compatibility for test fixtures and older configs: only the existing
+    # free pilot may inherit the legacy global mode. New titles require an
+    # explicit per-title mode before they can be admitted.
+    if normalized in FREE_INDIA_READER_SLUGS:
+        return TEXT_ACCESS_MODE
+    return None
+
+
+def _production_payment_ready() -> bool:
+    """Never expose test/simulated wallet credit as production commerce."""
+    return (
+        ENVIRONMENT != "production"
+        or (
+            RAZORPAY_MODE == "live"
+            and razorpay_keys_configured()
+            and bool(RAZORPAY_WEBHOOK_SECRET)
+        )
+    )
+
+
+def _public_paid_commerce_available() -> bool:
+    return PUBLIC_PAID_COMMERCE_ENABLED is True and _production_payment_ready()
+
+
 def get_razorpay_client():
     """Lazy-import the SDK so the app boots even if it's not installed."""
     if not razorpay_keys_configured():
@@ -886,7 +924,7 @@ def get_razorpay_client():
 
 def _public_paid_commerce_enabled_or_404() -> None:
     """Keep unfinished checkout unavailable even when a caller bypasses the UI."""
-    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+    if not _public_paid_commerce_available():
         raise HTTPException(status_code=404, detail="Paid checkout is not available in this launch.")
 
 
@@ -1687,7 +1725,7 @@ RELEASE_PROXY_FREE_SESSION_PATHS = frozenset({
 
 def _free_india_reader_verdict(request: Request, slug: str) -> bool:
     """Only an authenticated India proxy assertion plus accepted text delivery grants free time."""
-    if TEXT_ACCESS_MODE != "PILOT_FULL_FREE":
+    if _title_text_access_mode(slug) != "PILOT_FULL_FREE":
         return False
     if not _is_controlled_public_slug(slug) or slug not in FREE_INDIA_READER_SLUGS:
         return False
@@ -1712,9 +1750,15 @@ def _free_india_reader_verdict(request: Request, slug: str) -> bool:
 
 def _commercial_india_reader_verdict(request: Request, slug: str) -> bool:
     """Paid text requires the separate accepted Pass use, never just Reader rights."""
-    if TEXT_ACCESS_MODE != "COMMERCIAL_ENTITLEMENT" or not PUBLIC_PAID_COMMERCE_ENABLED:
+    if (
+        _title_text_access_mode(slug) != "COMMERCIAL_ENTITLEMENT"
+        or not _public_paid_commerce_available()
+    ):
         return False
-    if not _is_controlled_public_slug(slug) or slug not in FREE_INDIA_READER_SLUGS:
+    # Commercial candidates intentionally do not belong to the temporary free
+    # pilot slug set. Publication allowlisting plus the per-title commercial
+    # mode and hash-bound Reading Pass decision are their authority.
+    if not _is_controlled_public_slug(slug):
         return False
     proxy_verdict = _release_proxy_access_verdict(request)
     if not proxy_verdict.allowed or proxy_verdict.country != "IN":
@@ -9057,7 +9101,7 @@ async def reader_book_manifest(
     access["reading_pass"] = {
         "enabled": bool(READING_PASS_V2_ENABLED),
         "free_entitlement": bool(
-            TEXT_ACCESS_MODE == "PILOT_FULL_FREE"
+            _title_text_access_mode(slug) == "PILOT_FULL_FREE"
             and PUBLIC_READER_EXPOSURE_ENABLED
             and slug in FREE_INDIA_READER_SLUGS
         ),
@@ -10793,12 +10837,13 @@ async def reading_pass_book_page(
         scope = session_doc.get("scope") if isinstance(session_doc.get("scope"), dict) else {}
         if ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED:
             entitlement_kind = session_doc.get("entitlement_kind")
-            expected_kind = FREE_INDIA_READER_ENTITLEMENT if TEXT_ACCESS_MODE == "PILOT_FULL_FREE" else "metered"
+            access_mode = _title_text_access_mode(slug)
+            expected_kind = FREE_INDIA_READER_ENTITLEMENT if access_mode == "PILOT_FULL_FREE" else "metered"
             policy_allowed = (
-                _free_india_reader_verdict(request, slug) if TEXT_ACCESS_MODE == "PILOT_FULL_FREE"
+                _free_india_reader_verdict(request, slug) if access_mode == "PILOT_FULL_FREE"
                 else _commercial_india_reader_verdict(request, slug)
             )
-            if entitlement_kind != expected_kind or scope.get("release_country") != "IN" or not policy_allowed:
+            if access_mode is None or entitlement_kind != expected_kind or scope.get("release_country") != "IN" or not policy_allowed:
                 raise HTTPException(status_code=403, detail={"code": "CONTENT_NOT_AUTHORIZED"})
         segmentation_version = str(scope.get("segmentation_version") or "")
         manifest_version = str(scope.get("manifest_version") or "")
@@ -11020,11 +11065,13 @@ async def reading_pass_lease_renew(payload: ReadingPassLeaseRenewIn, request: Re
         if ENVIRONMENT == "production" and PUBLIC_READER_EXPOSURE_ENABLED:
             slug = str(session_hint.get("content_id") or "")
             entitlement_kind = session_hint.get("entitlement_kind")
+            access_mode = _title_text_access_mode(slug)
             policy_allowed = (
                 entitlement_kind == FREE_INDIA_READER_ENTITLEMENT
                 and _free_india_reader_verdict(request, slug)
-            ) if TEXT_ACCESS_MODE == "PILOT_FULL_FREE" else (
-                entitlement_kind == "metered"
+            ) if access_mode == "PILOT_FULL_FREE" else (
+                access_mode == "COMMERCIAL_ENTITLEMENT"
+                and entitlement_kind == "metered"
                 and _commercial_india_reader_verdict(request, slug)
             )
             scope = session_hint.get("scope") if isinstance(session_hint.get("scope"), dict) else {}
@@ -12165,7 +12212,7 @@ async def admin_rotate_user_credentials(
 # ---------- Public: Pack catalogue ----------
 @api.get("/payments/packs", response_model=List[PackOut])
 async def payments_list_packs():
-    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+    if not _public_paid_commerce_available():
         return []
     cache_key = _public_cache_key("payment_packs")
     cached = await _public_cache_get(cache_key)
@@ -12179,7 +12226,7 @@ async def payments_list_packs():
 @api.get("/payments/config")
 async def payments_config():
     """Lightweight config shim used by frontend to know if Razorpay is wired."""
-    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+    if not _public_paid_commerce_available():
         return {"available": False, "configured": False, "mode": "disabled", "key_id": ""}
     cache_key = _public_cache_key("payment_config")
     cached = await _public_cache_get(cache_key)
@@ -12202,7 +12249,7 @@ async def payments_public_offers():
     additive route removes the initial Commerce waterfall without exposing any
     additional payment or account state.
     """
-    if PUBLIC_PAID_COMMERCE_ENABLED is not True:
+    if not _public_paid_commerce_available():
         return {"packs": [], "config": {"available": False, "configured": False, "mode": "disabled", "key_id": ""}}
     cache_key = _public_cache_key("payment_offers")
     cached = await _public_cache_get(cache_key)
@@ -12498,7 +12545,7 @@ async def payments_simulate_topup(payload: TopUpCreateIn, user=Depends(require_u
     Disabled when RAZORPAY_MODE is not 'test'.
     """
     _public_paid_commerce_enabled_or_404()
-    if RAZORPAY_MODE != "test":
+    if ENVIRONMENT == "production" or RAZORPAY_MODE != "test":
         raise HTTPException(status_code=403, detail="Simulator disabled outside test mode")
     pack = PACKS_BY_ID.get(payload.pack_id)
     if not pack:
@@ -12543,7 +12590,7 @@ async def payments_simulate_webhook(
     Razorpay — useful when keys are not configured yet.
     """
     _public_paid_commerce_enabled_or_404()
-    if RAZORPAY_MODE != "test":
+    if ENVIRONMENT == "production" or RAZORPAY_MODE != "test":
         raise HTTPException(status_code=403, detail="Simulator disabled outside test mode")
     intent = await db.topup_intents.find_one({"id": intent_id}, {"_id": 0})
     if not intent:

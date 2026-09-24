@@ -4,7 +4,10 @@
   "accepted_records": {
     "india-20260922-a-ghost-story-reader-release": "caa2538805f8388e3216affae04aa6e3a941541395296d7bab17ed34fd725107",
     "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
-    "india-20260922-radharani-reader-release": "bc66514e852e22a610e4494057f9b6eee80d0a1472a84ca0f1c7e23631ac5991"
+    "india-20260922-radharani-reader-release": "bc66514e852e22a610e4494057f9b6eee80d0a1472a84ca0f1c7e23631ac5991",
+    "india-20260925-a-white-heron-commercial-reader-release": "b56843d5bc8dff2bb32dc1fe026a023fa63087124dd10e6500a6593a9bff4bcf",
+    "india-20260925-the-gift-of-the-magi-commercial-reader-release": "e9b179cc23e118f6210de9978d7f4ab62737a8d3718380e3d59fd8187aade98b",
+    "india-20260925-the-canterville-ghost-commercial-reader-release": "e3ed2c48b6ca8b8821fc3cf735dec04615706b642f8bcc898f5e8f0b4d5479ea"
   },
   "revoked_decision_ids": [],
   "pilot_dispositions": {
@@ -13,5 +16,10 @@
     "controlled-radharani": {"status": "ACCEPTED", "countries": ["IN"], "uses": ["reader"]},
     "controlled-yugalanguriya": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]}
   },
-  "non_activation_note": "Only the three listed India text-reader decisions are accepted and hash-bound. Yugalanguriya and every unlisted title remain HOLD; this registry does not enable audio, commerce, or any title outside the controlled launch allowlist."
+  "commercial_batch_dispositions": {
+    "controlled-a-white-heron": {"status": "RIGHTS_ACCEPTED_UNEXPOSED", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
+    "controlled-the-gift-of-the-magi": {"status": "RIGHTS_ACCEPTED_UNEXPOSED", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
+    "controlled-the-canterville-ghost": {"status": "RIGHTS_ACCEPTED_UNEXPOSED", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"}
+  },
+  "non_activation_note": "The three India free-pilot decisions remain accepted. Three additional India text Reader use decisions are hash-bound under the owner-issued first commercial batch instruction, but their manifests remain READY_FOR_APPROVAL and unexposed and they are absent from the live allowlist until commercial activation gates pass. Yugalanguriya remains HOLD; audio and paid checkout remain disabled."
 }

@@ -68,6 +68,9 @@ def test_real_registry_binds_only_the_three_authorised_india_text_releases():
         "india-20260922-a-ghost-story-reader-release",
         "india-20260922-the-tell-tale-heart-reader-release",
         "india-20260922-radharani-reader-release",
+        "india-20260925-a-white-heron-commercial-reader-release",
+        "india-20260925-the-gift-of-the-magi-commercial-reader-release",
+        "india-20260925-the-canterville-ghost-commercial-reader-release",
     }
     assert all(len(digest) == 64 for digest in registry.values())
     assert revoked == frozenset()

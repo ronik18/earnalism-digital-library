@@ -25,6 +25,7 @@ if str(ROOT) not in sys.path:
 from backend.rights_decision_gate import evaluate_runtime_path
 
 PUBLICATIONS = ROOT / "data" / "controlled_publications"
+RUNTIME_PUBLICATIONS = ROOT / "backend" / "data" / "controlled_publications"
 HELD_TITLE_ARCHIVES = {
     "yugalanguriya": ROOT / "internal" / "archives" / "held_titles" / "yugalanguriya",
 }
@@ -113,7 +114,15 @@ def content_book_dir(slug: str) -> Path:
 
 def controlled_package_dir(slug: str) -> Path:
     archive = HELD_TITLE_ARCHIVES.get(slug)
-    return archive / "controlled-publication-package" if archive else PUBLICATIONS / slug
+    if archive:
+        return archive / "controlled-publication-package"
+    runtime_package = RUNTIME_PUBLICATIONS / slug
+    # Runtime packages are authoritative when they carry their own accepted
+    # decision. Existing pilot decisions remain in the review/control-plane
+    # package and must not be shadowed by decision-less runtime directories.
+    if (runtime_package / "rights_decision.json").is_file():
+        return runtime_package
+    return PUBLICATIONS / slug
 
 
 def text(value: Any) -> str:
@@ -232,7 +241,12 @@ def accepted_controlled_release(slug: str, directory: Path, jurisdictions: list[
     return verdict.passed is True
 
 
-def title_inventory(slug: str, pilot_countries: dict[str, list[str]], registry: dict[str, Any]) -> dict[str, Any]:
+def title_inventory(
+    slug: str,
+    pilot_countries: dict[str, list[str]],
+    registry: dict[str, Any],
+    live_slugs: set[str],
+) -> dict[str, Any]:
     directory = controlled_package_dir(slug)
     book_path = directory / "public_book.json"
     source_path = directory / "source_evidence.json"
@@ -246,15 +260,32 @@ def title_inventory(slug: str, pilot_countries: dict[str, list[str]], registry: 
     author = text(book.get("author") or source.get("author_name") or source.get("author") or note.get("author"))
     author_death_year = text(source.get("author_death_year") or note.get("author death year"))
     publication_date = text(source.get("original_publication_year") or note.get("original publication year"))
+    commercial_dispositions = registry.get("commercial_batch_dispositions")
+    commercial_disposition = (
+        commercial_dispositions.get(f"controlled-{slug}")
+        if isinstance(commercial_dispositions, dict)
+        else None
+    )
     jurisdictions = list(pilot_countries.get(slug, []))
-    accepted_for_controlled_release = accepted_controlled_release(slug, directory, jurisdictions, registry)
+    if not jurisdictions and isinstance(commercial_disposition, dict):
+        jurisdictions = list(commercial_disposition.get("countries") or [])
+    accepted_rights = accepted_controlled_release(slug, directory, jurisdictions, registry)
+    accepted_for_publication = accepted_rights and slug in live_slugs
+    rights_accepted_unexposed = (
+        accepted_rights
+        and slug not in live_slugs
+        and isinstance(commercial_disposition, dict)
+        and commercial_disposition.get("status") == "RIGHTS_ACCEPTED_UNEXPOSED"
+        and commercial_disposition.get("access_mode") == "COMMERCIAL_ENTITLEMENT"
+    )
     source_provenance = evidence(source_path) + evidence(content_book_dir(slug) / "source-rights.md")
     source_complete = all(source.get(key) for key in ("content_hash", "source_hash", "source_url", "source_name", "source_license", "rights_basis"))
     text_status = "EVIDENCE_READY_FOR_REVIEW" if source_complete else "HOLD"
     core_uncertainties = [
         "Repository source statements are factual inputs only; a qualified reviewer must determine the applicable legal effect.",
-        "No accepted hash-bound rights record exists in the production registry.",
     ]
+    if not accepted_rights:
+        core_uncertainties.append("No accepted hash-bound rights record exists in the production registry.")
     if not jurisdictions:
         core_uncertainties.insert(0, "No intended-publication jurisdiction is recorded for this non-pilot title.")
     rows: list[dict[str, Any]] = [
@@ -364,10 +395,19 @@ def title_inventory(slug: str, pilot_countries: dict[str, list[str]], registry: 
         "slug": slug,
         "title": title,
         "jurisdictions_assessed": jurisdictions,
-        "title_release_status": "ACCEPTED_FOR_CONTROLLED_RELEASE" if accepted_for_controlled_release else "HOLD",
+        "title_release_status": (
+            "ACCEPTED_FOR_CONTROLLED_RELEASE"
+            if accepted_for_publication
+            else "RIGHTS_ACCEPTED_UNEXPOSED"
+            if rights_accepted_unexposed
+            else "HOLD"
+        ),
+        "rights_status": "ACCEPTED" if accepted_rights else "HOLD",
         "title_release_reason": (
-            "Exact hash-bound Reader metadata and cover-display decision is accepted for the documented India assessment scope; audio remains disabled."
-            if accepted_for_controlled_release
+            "Exact hash-bound Reader decision is accepted and the title remains on the controlled live allowlist; audio remains disabled."
+            if accepted_for_publication
+            else "India text Reader rights are hash-bound and accepted, but the title remains unexposed pending separate commercial activation gates."
+            if rights_accepted_unexposed
             else "No current accepted hash-bound rights decision exists; the title remains held."
         ),
         "components": rows,
@@ -387,17 +427,30 @@ def build_package(args: argparse.Namespace) -> dict[str, Any]:
     }
     publication_slugs = {directory.name for directory in PUBLICATIONS.iterdir() if directory.is_dir()}
     publication_slugs.update(HELD_TITLE_ARCHIVES)
-    titles = [title_inventory(slug, countries, registry) for slug in sorted(publication_slugs)]
-    components = [component for title in titles for component in title["components"]]
     root_launch = read_json(ROOT_LAUNCH)
     backend_launch = read_json(BACKEND_LAUNCH)
+    live_slugs = set(root_launch.get("live_approved_slugs") or [])
+    titles = [title_inventory(slug, countries, registry, live_slugs) for slug in sorted(publication_slugs)]
+    components = [component for title in titles for component in title["components"]]
     accepted_slugs = sorted(title["slug"] for title in titles if title["title_release_status"] == "ACCEPTED_FOR_CONTROLLED_RELEASE")
+    rights_accepted_slugs = sorted(title["slug"] for title in titles if title["rights_status"] == "ACCEPTED")
+    unexposed_rights_accepted_slugs = sorted(title["slug"] for title in titles if title["title_release_status"] == "RIGHTS_ACCEPTED_UNEXPOSED")
+    accepted_records = registry.get("accepted_records") or {}
     release_state_consistent = (
         root_launch.get("public_reader_exposure_enabled") is True
         and root_launch.get("public_audio_exposure_enabled") is False
         and sorted(root_launch.get("live_approved_slugs") or []) == accepted_slugs
         and backend_launch == root_launch
-        and len(registry.get("accepted_records") or {}) == len(accepted_slugs)
+        and len(accepted_records) == len(rights_accepted_slugs)
+        and set(accepted_slugs) == live_slugs
+        and set(unexposed_rights_accepted_slugs) == {
+            slug
+            for slug in rights_accepted_slugs
+            if slug not in live_slugs
+            and isinstance((registry.get("commercial_batch_dispositions") or {}).get(f"controlled-{slug}"), dict)
+            and (registry.get("commercial_batch_dispositions") or {}).get(f"controlled-{slug}", {}).get("status") == "RIGHTS_ACCEPTED_UNEXPOSED"
+            and root_launch.get("title_access_modes", {}).get(slug) == "COMMERCIAL_ENTITLEMENT"
+        }
         and (pilot_dispositions.get("controlled-yugalanguriya") or {}).get("status") == "HOLD"
     )
     return {
@@ -437,6 +490,8 @@ def build_package(args: argparse.Namespace) -> dict[str, Any]:
             "component_status_counts": {status: sum(row["review_status"] == status for row in components) for status in ("HOLD", "EVIDENCE_READY_FOR_REVIEW")},
             "titles_with_hold": sum(title["title_release_status"] == "HOLD" for title in titles),
             "accepted_rights_record_count": len(registry.get("accepted_records") or {}),
+            "live_accepted_rights_record_count": len(accepted_slugs),
+            "rights_accepted_unexposed_count": len(unexposed_rights_accepted_slugs),
         },
         "titles": titles,
         "qualified_reviewer_checklist": [

@@ -3,6 +3,14 @@
   "public_audio_exposure_enabled": false,
   "public_paid_commerce_enabled": false,
   "text_access_mode": "PILOT_FULL_FREE",
+  "title_access_modes": {
+    "a-ghost-story": "PILOT_FULL_FREE",
+    "the-tell-tale-heart": "PILOT_FULL_FREE",
+    "radharani": "PILOT_FULL_FREE",
+    "a-white-heron": "COMMERCIAL_ENTITLEMENT",
+    "the-gift-of-the-magi": "COMMERCIAL_ENTITLEMENT",
+    "the-canterville-ghost": "COMMERCIAL_ENTITLEMENT"
+  },
   "launch_compliance_jurisdiction": "IN",
   "live_approved_slugs": [
     "a-ghost-story",

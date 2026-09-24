@@ -148,6 +148,7 @@ def test_live_canary_probes_exact_historical_etag_without_mutations(healthy_publ
     assert [call["headers"] for call in manifest_calls] == [{}, {"If-None-Match": 'W/"reader-manifest-edition-42"'}]
     assert all(call["method"] == "GET" for call in calls)
     assert report["production_mutation_performed"] is False
+    assert report["india_reader_remote_smoke"] == "NOT_AVAILABLE_IN_CURRENT_RUNNER"
 
 
 @pytest.mark.parametrize("phase", ["regular", "conditional"])
@@ -188,6 +189,36 @@ def test_live_canary_cannot_pass_without_version_for_conditional_probe(healthy_p
     assert report["status"] == "FAIL"
     assert report["manifest_conditional_etag"] == ""
     assert len([call for call in calls if call["path"].endswith("/manifest")]) == 1
+
+
+def test_untrusted_non_india_runner_denials_are_expected_not_reader_smoke_failures(healthy_public_api, monkeypatch):
+    fixture, manifests, _calls = healthy_public_api
+    denied = {"status": 451, "headers": {}, "body": json.dumps({"detail": {"code": "RELEASE_PROXY_SCOPE_INVALID"}}), "error": ""}
+    manifests["regular"].update(denied)
+    responses = {
+        "/api/books?q=dracula": dict(denied),
+        f"/api/books/{fixture['slug']}": dict(denied),
+        "/api/reader/book/dracula/audiobook": dict(denied),
+        f"/api/reader/book/{fixture['slug']}/audiobook": dict(denied),
+    }
+    original_request = canary.request
+
+    def fake_request(base_url, path, *, method="GET", headers=None):
+        if path == "/api/reader/book/dracula/manifest":
+            return dict(denied)
+        if path in responses:
+            return dict(responses[path])
+        return original_request(base_url, path, method=method, headers=headers)
+
+    # Avoid a network fallback for known protected production routes.
+    monkeypatch.setattr(canary, "request", fake_request)
+    report = canary.run("https://api.example.test", fixture)
+
+    assert report["status"] == "PASS"
+    assert report["territory_denial_test"] == "NOT_AVAILABLE_IN_CURRENT_RUNNER"
+    assert report["untrusted_reader_request_test"] == "PASS"
+    assert report["india_reader_remote_smoke"] == "NOT_AVAILABLE_IN_CURRENT_RUNNER"
+    assert next(item for item in report["checks"] if item["name"] == "untrusted_reader_requests_denied")["passed"] is True
 
 
 def test_workflow_checks_out_exact_event_sha_and_accepts_empty_ref_when_main_reachable():
