@@ -97,5 +97,12 @@
   "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:47Z",
-  "updated_at": "2026-07-03T20:07:47Z"
+  "updated_at": "2026-07-03T20:07:47Z",
+  "audiobook_package": {},
+  "audio_url": "",
+  "audiobook_release_gate": "",
+  "audio_qa_status": "",
+  "audiobook_release_mode": "",
+  "audiobook_manuscript_sha256": "",
+  "audiobook_release_conveyor": {}
 }

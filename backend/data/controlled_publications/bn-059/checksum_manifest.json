@@ -4,11 +4,7 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "b5c5e7ef7f13d68cc81d9c3674a14b04cdc05ea5da89937f749a441c3c7ecbbc"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "5c060a2ea30884aa6902ed67c90f42627c263bc8ca2ca92f3da1f34d73bba60b"
+      "sha256": "d6db593a56a46eff10ebac7ae3a4bbced7ad993fc411bf1f73e145c9911c8def"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +12,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "b9d7ac9bf27e0fdaf0b4a6b2963447232c5755899280e290dc7e378423eb7a0a"
+      "sha256": "0aa0b6e353699432a13f3753c643ef374d58ef640c13c167dde9a29f1238ac70"
     },
     {
       "file": "reader_manifest.json",

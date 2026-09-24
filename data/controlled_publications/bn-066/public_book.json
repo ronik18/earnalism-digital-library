@@ -750,12 +750,19 @@
   "audio_enabled": false,
   "audiobook_enabled": false,
   "generate_audiobook": false,
-  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_provider": "",
   "audiobook_voice": "",
-  "audio_asset_slug": "bn-066",
+  "audio_asset_slug": "",
   "audiobook_assets": {},
   "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:46Z",
-  "updated_at": "2026-07-03T20:07:46Z"
+  "updated_at": "2026-07-03T20:07:46Z",
+  "audiobook_package": {},
+  "audio_url": "",
+  "audiobook_release_gate": "",
+  "audio_qa_status": "",
+  "audiobook_release_mode": "",
+  "audiobook_manuscript_sha256": "",
+  "audiobook_release_conveyor": {}
 }

@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-gift-of-the-magi",
+  "title": "The Gift of the Magi",
+  "generated_at": "2026-09-24T06:58:13.331914+00:00",
+  "content": {
+    "source_hash": "490b76d444db0d952f5286f60c4ec2834ab91731d47e42dc94a3639d9183d295",
+    "content_hash": "43f7c14de6be56f642476b78fd227fb0005d43909fc27e477646ec99b0900fcd",
+    "provenance_hash": "8067e36d911e2bf1f9a00a711a899f9df5879de2a84a1bc6623aa4895364ad15",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "525d2f6ed5d27c1b725901d34efc44acaa9be5b264df5d45e2e0d2013ca72413",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Gift of the Magi",
+        "word_count": 2109,
+        "sha256": "05217284ea31cdaa6638e8404a394b80c230b2edf02ce9dfc392133c22e9c7ab"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "d4ef1b87c1f852fc0d2212471e1e2f2095b80dc09791e113912f8dbc61586dfc",
+    "reader_manifest": "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f",
+    "source_evidence": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3",
+    "approval_evidence": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954"
+  },
+  "manifest_sha256": "f3df3e0d644f3215324b8ef48fbb61c60e39332d7912cbf398a8cdbbe53a7ac3"
+}

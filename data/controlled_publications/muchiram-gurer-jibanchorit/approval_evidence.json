@@ -21,5 +21,9 @@
     "approval_scope": "historical_admin_import_reconstruction",
     "verified_at": null
   },
-  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision."
+  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision.",
+  "audio_qa_status": "",
+  "endpoint_url": "",
+  "provider": "",
+  "version": ""
 }
