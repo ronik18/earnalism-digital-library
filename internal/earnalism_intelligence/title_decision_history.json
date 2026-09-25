@@ -1,7 +1,7 @@
 {
   "version": "2026-07-14",
   "india_commercial_entitlement_candidate_20260925": {
-    "status": "MERGED_PREVIEW_ONLY_STATIC_SEO_CANARY_REMEDIATION_PENDING",
+    "status": "MERGED_PREVIEW_ONLY_PRODUCTION_SMOKE_PASS_PAYMENT_EXTERNAL_BLOCK",
     "territory": "IN",
     "titles": [
       "a-ghost-story",
@@ -29,11 +29,11 @@
       },
       "active_evidence_baseline": "INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE",
       "historical_home_sections_baseline": "RETAINED_NOT_ACTIVE_RELEASE_AUTHORITY",
-      "fresh_exact_head_ci": "PR_433_PASS_AND_MERGED",
+      "fresh_exact_head_ci": "PR_433_AND_PR_434_PASS_AND_MERGED",
       "payment_provider": "DISABLED_UNCONFIGURED",
       "checkout_activation": "BLOCKED_EXTERNAL_CONFIGURATION"
     },
-    "production_release": "VERCEL_DEPLOYED_STATIC_SEO_CANARY_CONTRACT_REMEDIATION_PENDING"
+    "production_release": "VERCEL_FRONTEND_DEPLOYED_EB7A5D6_DIRECT_PRODUCTION_SMOKE_PASS_CURRENT_MAIN_5CF449D"
   },
   "active_platform_audiobook_policy": {
     "policy": "platform_audiobook_acceptance_v4_89",
