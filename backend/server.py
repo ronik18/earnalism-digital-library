@@ -932,6 +932,42 @@ def _hmac_sha256_hex(secret: str, body: bytes) -> str:
     return hmac.new(secret.encode("utf-8"), body, hashlib.sha256).hexdigest()
 
 
+def _razorpay_payment_matches_intent(payment: dict, intent: dict) -> bool:
+    """Accept only the exact, captured provider payment for this server order.
+
+    A checkout signature authenticates the browser return, but the wallet must
+    not rely on browser state to decide whether money was captured. Both the
+    direct verification path and the signed webhook path use this predicate
+    before they can enter the atomic credit transaction.
+    """
+    try:
+        amount_matches = int(payment.get("amount", -1)) == int(intent["amount_paise"])
+    except (TypeError, ValueError):
+        amount_matches = False
+    return (
+        str(payment.get("order_id") or "") == str(intent["razorpay_order_id"])
+        and str(payment.get("currency") or "").upper() == str(intent.get("currency") or "").upper()
+        and str(payment.get("status") or "").lower() == "captured"
+        and bool(payment.get("id"))
+        and amount_matches
+    )
+
+
+def _fetch_captured_razorpay_payment(intent: dict, payment_id: str) -> dict:
+    """Fetch the authoritative provider record for a browser success return."""
+    client = get_razorpay_client()
+    if client is None:
+        raise HTTPException(status_code=503, detail="Razorpay is not configured")
+    try:
+        payment = client.payment.fetch(payment_id)
+    except Exception as exc:
+        logger.warning("Razorpay payment.fetch failed for verification", exc_info=True)
+        raise HTTPException(status_code=502, detail="Could not verify payment with Razorpay") from exc
+    if not isinstance(payment, dict) or not _razorpay_payment_matches_intent(payment, intent):
+        raise HTTPException(status_code=409, detail="Payment is not captured for this Reading Pass order")
+    return payment
+
+
 # ---------- Auth helpers ----------
 def hash_password(p: str) -> str:
     return bcrypt.hashpw(p.encode(), bcrypt.gensalt()).decode()
@@ -12440,7 +12476,8 @@ async def payments_verify(payload: PaymentVerifyIn, user=Depends(require_user)):
         await _invalidate_user_cache(user["id"])
         raise HTTPException(status_code=400, detail="Invalid payment signature")
 
-    refreshed = await _credit_wallet_for_intent(intent, payload.razorpay_payment_id, "verify")
+    payment = _fetch_captured_razorpay_payment(intent, payload.razorpay_payment_id)
+    refreshed = await _credit_wallet_for_intent(intent, str(payment["id"]), "verify")
     if refreshed.get("status") != "credited":
         await _invalidate_user_cache(user["id"])
         raise HTTPException(status_code=409, detail="Top-up intent is expired or not creditable")
@@ -12520,8 +12557,11 @@ async def payments_webhook(request: Request):
         intent = await db.topup_intents.find_one({"razorpay_order_id": order_id}, {"_id": 0})
 
     if event == "payment.captured" and intent:
-        refreshed = await _credit_wallet_for_intent(intent, payment_id, "webhook")
-        log_doc["status"] = "credited" if refreshed.get("status") == "credited" else refreshed.get("status", "ignored")
+        if _razorpay_payment_matches_intent(payment, intent):
+            refreshed = await _credit_wallet_for_intent(intent, payment_id, "webhook")
+            log_doc["status"] = "credited" if refreshed.get("status") == "credited" else refreshed.get("status", "ignored")
+        else:
+            log_doc["status"] = "rejected_payment_mismatch"
     elif event == "payment.failed" and intent:
         await db.topup_intents.update_one(
             {"id": intent["id"], "status": "created"},
