@@ -180,12 +180,16 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
       <section className="reference-home__hero" aria-labelledby="reference-home-title">
         <div className="reference-home__hero-copy">
           <h1 id="reference-home-title">Come for a story.<br />Stay a little longer.</h1>
-          <p className="reference-home__lede">Bengali and English classics, waiting for you.<br />A familiar voice. A world you haven’t met.<br />Open a page. Let the day grow quiet.</p>
+          <p className="reference-home__lede">Bengali and English classics in a calm digital library.<br />Read the first 3 pages free, then continue with Reading Pass time.<br />Open a page. Let the day grow quiet.</p>
           <div className="reference-home__cta-row">
-            <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Enter the Library</Link>
-            <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline">Discover listening</Link>
+            <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Start Reading</Link>
+            <Link to="/pricing" className="reference-button reference-button--outline" data-testid="home-reference-secondary-cta">Explore Reading Passes</Link>
           </div>
-          <div className="reference-home__policy"><p><BookOpen aria-hidden="true" /><span>{PUBLIC_PREVIEW_COPY}</span></p><p><ClockMark aria-hidden="true" /><span>{READING_TIME_COPY}</span></p></div>
+          <div className="reference-home__policy" aria-label="Reading access details">
+            <p><BookOpen aria-hidden="true" /><span>{PUBLIC_PREVIEW_COPY}</span></p>
+            <p><ClockMark aria-hidden="true" /><span>{READING_TIME_COPY}</span></p>
+            <p><ShieldCheck aria-hidden="true" /><span>No subscription · unused time never expires</span></p>
+          </div>
         </div>
         <picture className="reference-home__hero-art">
           <img src="/assets/hero/earnalism-black-burgundy-reading-room.webp" alt="" fetchPriority="high" decoding="async" />
