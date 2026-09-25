@@ -26,8 +26,8 @@ class StaticSeoCanaryTests(unittest.TestCase):
         return MODULE.inspect_route(route, MODULE.ROUTES[route], status, {}, html, "https://theearnalism.com" + route)
 
     def test_current_approved_book_html_passes(self) -> None:
-        html = page(title="A Ghost Story by Mark Twain | The Earnalism", description="A Ghost Story reader-ready edition. " + ACCESS, h1="A Ghost Story by <em>Mark Twain</em>", canonical="https://theearnalism.com/book/a-ghost-story", body=ACCESS + " Read the complete edition free", links="<a href='/reader/a-ghost-story'>Read the complete edition free</a>")
-        html = html.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":true}</script></head>')
+        html = page(title="A Ghost Story by Mark Twain | The Earnalism", description="A Ghost Story reader-ready edition. " + ACCESS, h1="A Ghost Story by <em>Mark Twain</em>", canonical="https://theearnalism.com/book/a-ghost-story", body=ACCESS + " Read the 3-page preview", links="<a href='/reader/a-ghost-story'>Read the 3-page preview</a>")
+        html = html.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":false}</script></head>')
         self.assertEqual(self.inspect("/book/a-ghost-story", html)["result"], "PASS")
 
     def test_current_approved_pricing_html_passes(self) -> None:
@@ -43,9 +43,16 @@ class StaticSeoCanaryTests(unittest.TestCase):
         self.assertTrue(any("wrong canonical" in failure for failure in failures))
 
     def test_safe_markup_variation_passes(self) -> None:
-        html = page(title="A Ghost Story by Mark Twain &amp; The Earnalism", description="A Ghost Story reader edition &amp; " + ACCESS, h1="A Ghost Story <span>by Mark Twain</span>", canonical="https://theearnalism.com/book/a-ghost-story?ignored=value", body=ACCESS, links="<a href='/reader/a-ghost-story'>Read the complete edition free</a>")
-        html = html.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":true}</script></head>')
+        html = page(title="A Ghost Story by Mark Twain &amp; The Earnalism", description="A Ghost Story reader edition &amp; " + ACCESS, h1="A Ghost Story <span>by Mark Twain</span>", canonical="https://theearnalism.com/book/a-ghost-story?ignored=value", body=ACCESS, links="<a href='/reader/a-ghost-story'>Read the 3-page preview</a>")
+        html = html.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":false}</script></head>')
         self.assertEqual(self.inspect("/book/a-ghost-story", html)["result"], "PASS")
+
+    def test_full_free_book_metadata_is_rejected(self) -> None:
+        html = page(title="A Ghost Story by Mark Twain | The Earnalism", description="A Ghost Story reader-ready edition. " + ACCESS, h1="A Ghost Story by Mark Twain", canonical="https://theearnalism.com/book/a-ghost-story", body=ACCESS + " Read the complete edition free", links="<a href='/reader/a-ghost-story'>Read the complete edition free</a>")
+        html = html.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":true}</script></head>')
+        failures = self.inspect("/book/a-ghost-story", html)["failures"]
+        self.assertTrue(any("three-page preview" in failure for failure in failures))
+        self.assertTrue(any("full access unavailable" in failure for failure in failures))
 
     def test_missing_route_identity_or_access_contract_fails(self) -> None:
         html = page(title="The Earnalism", description="Available now", h1="Choose time", canonical="https://theearnalism.com/pricing", body="A quiet digital library.")

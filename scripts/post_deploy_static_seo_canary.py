@@ -181,11 +181,11 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
         if expected_title not in title or expected_title not in h1:
             failures.append("missing released-book route identity")
         if expected_title not in description or not has_access_contract(description):
-            failures.append("missing route-specific free-reading description")
-        if "read the complete edition free" not in text:
-            failures.append("missing complete free-reading CTA")
-        if not re.search(r'"isAccessibleForFree"\s*:\s*true', html, re.I):
-            failures.append("Book structured data must mark full access free")
+            failures.append("missing route-specific preview-access description")
+        if "read the 3-page preview" not in text:
+            failures.append("missing approved three-page preview CTA")
+        if not re.search(r'"isAccessibleForFree"\s*:\s*false', html, re.I):
+            failures.append("Book structured data must mark full access unavailable")
         if any("listen" in normalize(label) for _, label in facts.links):
             failures.append("book exposes an active Listen CTA")
     elif policy["kind"] == "pricing":
