@@ -5,7 +5,7 @@
     "india-20260922-a-ghost-story-reader-release": "caa2538805f8388e3216affae04aa6e3a941541395296d7bab17ed34fd725107",
     "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
     "india-20260922-radharani-reader-release": "bc66514e852e22a610e4494057f9b6eee80d0a1472a84ca0f1c7e23631ac5991",
-    "india-20260925-a-ghost-story-commercial-reader-release": "9463d029b34a0e39a7ace8bcd95354e573a1c9f2841f09f7ecf5014b70d93b25",
+    "india-20260925-a-ghost-story-commercial-reader-release": "26c538b1a5ae4f6807a4ddfafa7b54e4f44ad4a927777ffa6662dfcd5ccd821c",
     "india-20260925-the-tell-tale-heart-commercial-reader-release": "370cd4896655d25629bd791a0046844992166169aadc6e4c8061d22106b199cb",
     "india-20260925-radharani-commercial-reader-release": "9be847de52927f16dba1a5d40d0c85be07d69bc47c974cd9791daeca532f2a4d",
     "india-20260925-a-white-heron-commercial-reader-release": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
@@ -14,6 +14,12 @@
   },
   "historical_records": {
     "superseded_runtime_bindings": {
+      "india-20260925-a-ghost-story-commercial-reader-release": {
+        "prior_candidate_sha": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
+        "prior_candidate_decision_sha256": "9463d029b34a0e39a7ace8bcd95354e573a1c9f2841f09f7ecf5014b70d93b25",
+        "prior_registry_binding_sha256": "9463d029b34a0e39a7ace8bcd95354e573a1c9f2841f09f7ecf5014b70d93b25",
+        "superseded_reason": "The current backend runtime package lacked its accepted decision and has a non-self-referential checksum inventory."
+      },
       "india-20260925-a-white-heron-commercial-reader-release": {
         "prior_candidate_sha": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
         "prior_candidate_decision_sha256": "b56843d5bc8dff2bb32dc1fe026a023fa63087124dd10e6500a6593a9bff4bcf",

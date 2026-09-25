@@ -43,5 +43,11 @@
       "current_runtime_decision_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15"
     }
   },
+  "runtime_mirror_reconciliation": {
+    "a-ghost-story": "Added the active backend decision bound to the backend non-self-referential checksum inventory; the root decision remains historical evidence.",
+    "the-tell-tale-heart": "Added the byte-identical active backend decision so the runtime validates the existing accepted registry binding.",
+    "radharani": "Added the byte-identical active backend decision so the runtime validates the existing accepted registry binding.",
+    "selection_rule": "Runtime validation prefers backend controlled-publication packages; root packages remain historical evidence and cannot shadow active runtime decisions."
+  },
   "historical_evidence": "The root controlled-publication decisions and retained prior registry records are preserved. This record binds only the active runtime decision layer."
 }

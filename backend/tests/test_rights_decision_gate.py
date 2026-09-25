@@ -76,12 +76,15 @@ def test_real_registry_retains_historical_records_and_binds_current_six_title_re
         "india-20260925-the-gift-of-the-magi-commercial-reader-release",
         "india-20260925-the-canterville-ghost-commercial-reader-release",
     }
-    newly_bound_runtime_release_slugs = (
+    current_runtime_release_slugs = (
+        "a-ghost-story",
+        "the-tell-tale-heart",
+        "radharani",
         "a-white-heron",
         "the-gift-of-the-magi",
         "the-canterville-ghost",
     )
-    for slug in newly_bound_runtime_release_slugs:
+    for slug in current_runtime_release_slugs:
         decision = json.loads(
             (Path(__file__).parents[1] / "data" / "controlled_publications" / slug / "rights_decision.json")
             .read_text(encoding="utf-8")
@@ -89,11 +92,12 @@ def test_real_registry_retains_historical_records_and_binds_current_six_title_re
         assert registry[decision["decision_id"]] == record_sha256(decision)
     historical = payload["historical_records"]["superseded_runtime_bindings"]
     assert set(historical) == {
+        "india-20260925-a-ghost-story-commercial-reader-release",
         "india-20260925-a-white-heron-commercial-reader-release",
         "india-20260925-the-gift-of-the-magi-commercial-reader-release",
         "india-20260925-the-canterville-ghost-commercial-reader-release",
     }
-    assert all(entry["prior_candidate_decision_sha256"] != registry[decision_id] for decision_id, entry in historical.items())
+    assert historical["india-20260925-a-ghost-story-commercial-reader-release"]["prior_candidate_decision_sha256"] != registry["india-20260925-a-ghost-story-commercial-reader-release"]
     assert historical["india-20260925-a-white-heron-commercial-reader-release"]["prior_registry_binding_sha256"] != registry["india-20260925-a-white-heron-commercial-reader-release"]
     assert historical["india-20260925-the-gift-of-the-magi-commercial-reader-release"]["prior_registry_binding_sha256"] != registry["india-20260925-the-gift-of-the-magi-commercial-reader-release"]
     assert all(len(digest) == 64 for digest in registry.values())
