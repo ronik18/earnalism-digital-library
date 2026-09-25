@@ -2,15 +2,27 @@
   "schema_version": "earnalism.static-seo-public.v2",
   "public_release_held": false,
   "generated_from": {
-    "data/controlled_launch.json": "5b7b7bf118e042f580fb53ef719f59c4b2708b8610e2ffda130adc3634bf77c7",
-    "data/controlled_publications/a-ghost-story/public_book.json": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe",
-    "data/controlled_publications/a-ghost-story/reader_manifest.json": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9",
+    "data/controlled_launch.json": "09ddb01f77ab40e9138027e38d7e83f80d57fbe89fbd1352a4ed84b54c8b3d72",
+    "data/controlled_publications/a-ghost-story/public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
+    "data/controlled_publications/a-ghost-story/reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
     "data/controlled_publications/a-ghost-story/approval_evidence.json": "67c5df4f27f7285acfe4061d86b2a369ea1d782fcc71878b5e3ac908308660ba",
+    "data/controlled_publications/a-white-heron/public_book.json": "ca266f6ee45561c7d379d00a2629aee5a7e363833a6b8a354fd706782eaee74a",
+    "data/controlled_publications/a-white-heron/reader_manifest.json": "7a7ed969c6061c70025b160ef6f951efcba37ba6ffbef5b89f8e51ed274d7c3a",
+    "data/controlled_publications/a-white-heron/source_evidence.json": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819",
+    "data/controlled_publications/a-white-heron/approval_evidence.json": "3fe378342ee79044bdeb6f9582f0aa9269c2f24e07a96bc59fb46825320ffa50",
     "data/controlled_publications/radharani/public_book.json": "3a12e9da36cba5c24b9ae3af6e002aff81e8676d998ec2f35468796acebec585",
     "data/controlled_publications/radharani/reader_manifest.json": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555",
     "data/controlled_publications/radharani/source_evidence.json": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95",
     "data/controlled_publications/radharani/approval_evidence.json": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc",
+    "data/controlled_publications/the-canterville-ghost/public_book.json": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
+    "data/controlled_publications/the-canterville-ghost/reader_manifest.json": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
+    "data/controlled_publications/the-canterville-ghost/source_evidence.json": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
+    "data/controlled_publications/the-canterville-ghost/approval_evidence.json": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580",
+    "data/controlled_publications/the-gift-of-the-magi/public_book.json": "d4ef1b87c1f852fc0d2212471e1e2f2095b80dc09791e113912f8dbc61586dfc",
+    "data/controlled_publications/the-gift-of-the-magi/reader_manifest.json": "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f",
+    "data/controlled_publications/the-gift-of-the-magi/source_evidence.json": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3",
+    "data/controlled_publications/the-gift-of-the-magi/approval_evidence.json": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954",
     "data/controlled_publications/the-tell-tale-heart/public_book.json": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
     "data/controlled_publications/the-tell-tale-heart/reader_manifest.json": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
     "data/controlled_publications/the-tell-tale-heart/source_evidence.json": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
@@ -35,6 +47,23 @@
       }
     },
     {
+      "slug": "a-white-heron",
+      "title": "A White Heron",
+      "author": "Sarah Orne Jewett",
+      "cover_url": "https://theearnalism.com/assets/books/a-white-heron/front-cover.webp",
+      "chapter_count": 1,
+      "source_display_name": "Project Gutenberg eBook 74980 transcription",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/a-white-heron",
+        "reader": "/reader/a-white-heron",
+        "listener": "/listener/a-white-heron"
+      }
+    },
+    {
       "slug": "radharani",
       "title": "রাধারাণী",
       "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
@@ -49,6 +78,40 @@
         "book": "/book/radharani",
         "reader": "/reader/radharani",
         "listener": "/listener/radharani"
+      }
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "title": "The Canterville Ghost",
+      "author": "Oscar Wilde",
+      "cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
+      "chapter_count": 7,
+      "source_display_name": "Project Gutenberg",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-canterville-ghost",
+        "reader": "/reader/the-canterville-ghost",
+        "listener": "/listener/the-canterville-ghost"
+      }
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "author": "O. Henry",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+      "chapter_count": 1,
+      "source_display_name": "Project Gutenberg",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-gift-of-the-magi",
+        "reader": "/reader/the-gift-of-the-magi",
+        "listener": "/listener/the-gift-of-the-magi"
       }
     },
     {

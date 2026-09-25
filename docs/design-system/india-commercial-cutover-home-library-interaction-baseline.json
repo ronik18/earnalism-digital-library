@@ -1,0 +1,36 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
+    "tree": "94a20566c50c9c3085d2871cac1bb68532973a31",
+    "base": "6909c26c334086767a7dfcb3f709eee66ac2ea9d"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/home-sections-library-interaction-baseline.json",
+    "reviewed_source_commit": "5c950bfdaa5d7fb5da6fd21c0c324333d7cbff2f",
+    "surface_sha256": "3cbf2dda50902d4745849eb8157af447cf26af0ceb17e93ba9aaf604e621ffc7"
+  },
+  "authorized_surface_sha256": "c2f93da984c39f54915df94541f98ce1931e128781b9a9c69621d66b57ac1846",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "DIRECT_OWNER_AUTHORIZATION_INDIA_COMMERCIAL_GO_LIVE_2026_09_25",
+    "scope": "Replace obsolete free-pilot wording on the restored Home Reading Pass surface with accurate three-page preview, entitlement-from-page-4, and unavailable-purchase messaging. Preserve layout, released-title authority, and Library behavior.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This baseline covers only the approved India commercial copy transition on the Home surface; it does not accept rights, activate checkout, enable audio, change release authority, or establish deployment."
+}

@@ -1,5 +1,40 @@
 {
   "version": "2026-07-14",
+  "india_commercial_entitlement_candidate_20260925": {
+    "status": "LOCAL_CANDIDATE_PREVIEW_ONLY_CHECKOUT_DISABLED",
+    "territory": "IN",
+    "titles": [
+      "a-ghost-story",
+      "the-tell-tale-heart",
+      "radharani",
+      "a-white-heron",
+      "the-gift-of-the-magi",
+      "the-canterville-ghost"
+    ],
+    "access_model": "PAGES_1_TO_3_PREVIEW_PAGE_4_PLUS_VALID_READING_PASS",
+    "public_paid_commerce_enabled": false,
+    "audio_enabled": false,
+    "historical_pilot_evidence": "RETAINED_NOT_AUTHORITY_FOR_FREE_FULL_TEXT",
+    "page_4_plus_without_entitlement": "DENIED_BY_SERVER_AUTHORITY",
+    "ci_reconciliation": {
+      "failed_candidate": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
+      "focused_repairs": "STALE_HOME_BASELINE_AUTH_COPY_DELIMITER_AND_ROOT_BACKEND_RIGHTS_MIRROR_PARITY",
+      "active_title_rights_decisions": "DERIVED_RUNTIME_BINDINGS_REBOUND_WITH_RIGHTS_RELEVANT_INPUTS_UNCHANGED",
+      "historical_registry_records": 9,
+      "current_live_titles": 6,
+      "focused_tests": {
+        "rights_package": "4_PASS",
+        "home_interaction_baseline": "7_PASS",
+        "seamless_final_evidence_inputs": "22_PASS"
+      },
+      "active_evidence_baseline": "INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE",
+      "historical_home_sections_baseline": "RETAINED_NOT_ACTIVE_RELEASE_AUTHORITY",
+      "fresh_exact_head_ci": "PENDING",
+      "payment_provider": "DISABLED_UNCONFIGURED",
+      "checkout_activation": "BLOCKED_EXTERNAL_CONFIGURATION"
+    },
+    "production_release": "NOT_YET_DEPLOYED"
+  },
   "active_platform_audiobook_policy": {
     "policy": "platform_audiobook_acceptance_v4_89",
     "effective_at": "2026-07-28T07:47:01Z",

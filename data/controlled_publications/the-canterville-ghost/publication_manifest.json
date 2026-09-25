@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-canterville-ghost",
   "title": "The Canterville Ghost",
-  "generated_at": "2026-09-24T11:27:49.773687+00:00",
+  "generated_at": "2026-09-25T00:00:00Z",
   "content": {
     "source_hash": "c9079f8d4169402f84457ee6081f685e5f8b617d1818454883e46da961040cf8",
     "content_hash": "f11621c70a9d8a6452069dea6928cf3f1e634ba80e35268f4cb74a9a612f6601",
@@ -70,8 +70,8 @@
     "evidence_sha256": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb"
   },
   "reader_release": {
-    "status": "READY_FOR_APPROVAL",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
     "cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
     "blockers": []
@@ -91,5 +91,5 @@
     "source_evidence": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
     "approval_evidence": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580"
   },
-  "manifest_sha256": "8e0088370ca10ab3eba6ee742285ceeef1e85f6a8ef15fd8232dde4cf2004bfe"
+  "manifest_sha256": "32d0f5d9d933a3146207b790eae27c25121a787681f4b5dc61197654e18cb88b"
 }

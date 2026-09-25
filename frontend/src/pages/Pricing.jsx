@@ -40,7 +40,7 @@ export default function Pricing() {
 function PricingUnavailable() {
   useSEO({
     title: "Reading Passes — The Earnalism Digital Library",
-    description: "Reading Passes are not available in the current Earnalism launch.",
+    description: "Preview the first 3 pages free. A Reading Pass is required to continue, but purchases are not available yet.",
     canonicalPath: "/pricing",
   });
   return (
@@ -48,7 +48,7 @@ function PricingUnavailable() {
       <section className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-28" data-testid="paid-commerce-disabled">
         <p className="editorial-kicker">Earnalism</p>
         <h1 className="mt-5 font-serif-light text-4xl leading-tight text-burgundy sm:text-6xl">Reading Passes are not available in this launch.</h1>
-        <p className="mt-7 max-w-2xl text-lg leading-8 text-charcoal-soft">Earnalism is currently offering its enabled reading experience without paid checkout. We will publish payment terms before opening purchases.</p>
+        <p className="mt-7 max-w-2xl text-lg leading-8 text-charcoal-soft">Read the first 3 pages free where a preview is available. Continuing from page 4 requires a valid Reading Pass. Pass purchases are not available yet.</p>
         <Link className="btn-primary mt-10 inline-flex min-h-11 items-center" to="/library">Browse the library</Link>
       </section>
     </PublicPageFrame>
@@ -102,14 +102,6 @@ function PricingAvailable() {
   }, [funnelSource, offerAttempt, selectedPackId]);
 
   const isAuthed = !!user && typeof user === "object";
-
-  const handleDraculaPreviewClick = () => {
-    trackFunnelEvent("start_dracula_click", {
-      book_slug: "dracula",
-      selected_pack_id: selectedPackId || "",
-      source: funnelSource || "pricing",
-    });
-  };
 
   const handleBuy = async (pack) => {
     trackFunnelEvent("reading_pack_selected", {
@@ -299,12 +291,11 @@ function PricingAvailable() {
             {PUBLIC_READER_EXPOSURE_ENABLED ? (
               <>
                 <Link
-                  to="/reader/dracula"
-                  onClick={handleDraculaPreviewClick}
+                  to="/library"
                   className="btn-secondary"
-                  data-testid="dracula-continue-from-pricing"
+                  data-testid="library-preview-from-pricing"
                 >
-                  {PUBLIC_PREVIEW_COPY}
+                  Browse preview titles
                 </Link>
                 <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">{PUBLIC_PREVIEW_COPY}</span>
               </>
@@ -393,7 +384,7 @@ function PricingAvailable() {
             <span>Secure payment by Razorpay.</span>
             <span>No subscription or autorenewal.</span>
             <span>Reading time is credited to your wallet after confirmation.</span>
-            <span>For support or refund questions, contact sales@reoenterprise.org.</span>
+            <span>For support or purchase questions, contact sales@reoenterprise.org.</span>
           </div>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact" className="btn-secondary">Need help?</Link>

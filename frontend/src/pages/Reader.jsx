@@ -2897,7 +2897,7 @@ export default function Reader() {
       setReadingPassStatus('Preview ended');
       setReadingPassPaywall({
         code: 'AUDIO_PREVIEW_ENDED',
-        message: 'Listening requires an active Reading Pass.',
+        message: 'Public audiobooks are unavailable in this launch.',
       });
       return;
     }

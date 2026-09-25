@@ -149,11 +149,11 @@ function AccountVisualFixture() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <section className="account-panel account-balance-panel p-7 sm:p-8" aria-labelledby="account-visual-fixture-balance">
-            <div className="flex items-center gap-2 italic-eyebrow opacity-80"><Clock size={13} strokeWidth={1.5} /> Pilot Reader access</div>
-            <h2 id="account-visual-fixture-balance" className="account-balance-value font-serif-display text-3xl sm:text-4xl text-burgundy mt-4 leading-tight">India Pilot Access</h2>
+            <div className="flex items-center gap-2 italic-eyebrow opacity-80"><Clock size={13} strokeWidth={1.5} /> Reading Pass</div>
+            <h2 id="account-visual-fixture-balance" className="account-balance-value font-serif-display text-3xl sm:text-4xl text-burgundy mt-4 leading-tight">Remaining balance: 0 minutes</h2>
             <div className="gold-rule-thin mt-4" />
-            <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">Full reading is included for the currently released pilot editions. Your Reading Pass balance is not used for these books.</p>
-            <div className="account-reading-pass-status mt-5 border-t border-brand/30 pt-4"><span className="block text-xs font-semibold uppercase tracking-[0.14em] text-burgundy">Reading Pass</span><span className="block mt-1 text-sm text-charcoal-soft">Prepared for future eligible editions.</span></div>
+            <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet.</p>
+            <div className="account-reading-pass-status mt-5 border-t border-brand/30 pt-4"><span className="block text-xs font-semibold uppercase tracking-[0.14em] text-burgundy">Reading Pass</span><span className="block mt-1 text-sm text-charcoal-soft">Purchases are not available yet. Your balance remains available for eligible reading.</span></div>
           </section>
           <section className="account-panel account-continue-panel p-7 sm:p-8 flex flex-col" aria-labelledby="account-visual-fixture-library">
             <div className="flex items-center gap-2 italic-eyebrow opacity-80"><BookOpen size={13} strokeWidth={1.5} /> My Library</div>
@@ -307,29 +307,29 @@ export default function Account() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10 sm:mb-12">
           <div className="account-panel account-balance-panel p-7 sm:p-8" data-testid="account-balance-card" role="region" aria-labelledby="account-balance-heading">
             <div className="flex items-center gap-2 italic-eyebrow opacity-80">
-              <Clock size={13} strokeWidth={1.5} /> {PUBLIC_PAID_COMMERCE_ENABLED ? "Reading time" : "Pilot Reader access"}
+              <Clock size={13} strokeWidth={1.5} /> Reading Pass
             </div>
             <h2 id="account-balance-heading" className={`account-balance-value font-serif-display ${PUBLIC_PAID_COMMERCE_ENABLED ? "text-5xl sm:text-6xl" : "text-3xl sm:text-4xl"} text-burgundy mt-4 leading-tight`} data-testid="account-balance">
-              {PUBLIC_PAID_COMMERCE_ENABLED ? formatMinutes(balance) : "India Pilot Access"}
+              {formatMinutes(balance)}
             </h2>
             <div className="gold-rule-thin mt-4" />
             <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">
-              {!PUBLIC_PAID_COMMERCE_ENABLED
-                ? "Full reading is included for the currently released pilot editions. Your Reading Pass balance is not used for these books."
-                : readingPassEnabled
+              {PUBLIC_PAID_COMMERCE_ENABLED && readingPassEnabled
                 ? "Reading Pass uses short server leases and a 10-second heartbeat. Reading bills only while protected text is active; listening bills only while approved audio is playing."
-                : "Reading is billed in 30-second pulses only while a chapter is open, visible, and active. Hidden tabs, sleeping devices, and long idle gaps are not charged."}
+                : readingPassEnabled
+                ? "Reading time is billed only while protected text is active under a short server-authoritative lease. Hidden tabs, sleeping devices, and long idle gaps are not charged."
+                : "The first 3 pages are free where a preview is available. Continuing from page 4 requires a valid Reading Pass; pass purchases are not available yet."}
             </p>
             <p className="mt-3 text-xs leading-relaxed text-charcoal-soft/80" data-testid="account-wallet-explainer">
-              The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.
+              Pass purchases are not available yet. Audiobooks are unavailable for this launch.
             </p>
             {!PUBLIC_PAID_COMMERCE_ENABLED && (
               <div className="account-reading-pass-status mt-5 border-t border-brand/30 pt-4" data-testid="account-reading-pass-status">
                 <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-burgundy">Reading Pass</span>
-                <span className="block mt-1 text-sm text-charcoal-soft">Prepared for future eligible editions.</span>
+                <span className="block mt-1 text-sm text-charcoal-soft">Purchases are not available yet. Your balance remains available for eligible reading.</span>
               </div>
             )}
-            {PUBLIC_PAID_COMMERCE_ENABLED && <Link
+            <Link
               to="/pricing"
               className="inline-flex items-center gap-2 text-[0.72rem] tracking-[0.22em] uppercase text-burgundy mt-6 hover:opacity-70"
               data-testid="account-buy-time"
@@ -338,8 +338,8 @@ export default function Account() {
                 book_slug: "dracula",
               })}
             >
-              Add reading time <ArrowUpRight size={13} strokeWidth={1.5} />
-            </Link>}
+              {PUBLIC_PAID_COMMERCE_ENABLED ? "Add reading time" : "Get a Reading Pass"} <ArrowUpRight size={13} strokeWidth={1.5} />
+            </Link>
           </div>
 
           <div className="account-panel account-continue-panel p-7 sm:p-8 flex flex-col">
@@ -347,7 +347,7 @@ export default function Account() {
               <BookOpen size={13} strokeWidth={1.5} /> Continue reading
             </div>
             <p className="font-serif-display text-xl text-charcoal mt-4 leading-snug">
-              Choose one of the released India pilot editions. Reading it will not use your balance.
+              Continue with any released India title. The first 3 pages are free; page 4 onward requires a valid Reading Pass.
             </p>
             <div className="mt-auto pt-6">
               <Link

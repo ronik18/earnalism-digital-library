@@ -171,7 +171,7 @@ describe("Crawler-visible controlled-release SEO snapshots", () => {
   test("homepage, library, and pricing snapshots preserve the release-truth contract", () => {
     const releaseCopy = PUBLIC_RELEASE_HELD
       ? "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed."
-      : "The three India pilot editions are free to read in full after sign-in; the first 3 pages are public. Audiobooks and paid checkout are unavailable.";
+      : "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.";
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
     for (const html of [homeHtml, libraryHtml]) {
       expect(html).toContain(releaseCopy);

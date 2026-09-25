@@ -202,7 +202,7 @@ export function ReferenceHomeSurface({ curation }) {
           title="Stories in voice, released with care."
           action={<Link to="/library?availability=approved-audiobook" className="reference-text-link">Explore approved audiobooks <ArrowRight aria-hidden="true" /></Link>}
         >
-          <p>Approved audiobooks require an active Reading Pass. Titles without approval show no listening action.</p>
+          <p>Public audiobooks are unavailable in this launch.</p>
         </SectionHeading>
         {listeningBooks.length ? <ReferenceShelf books={listeningBooks} label="Approved audiobooks" /> : <p className="reference-empty-listening">Listening rooms appear here only when an edition is approved for audio.</p>}
       </section>

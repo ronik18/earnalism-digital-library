@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 import json
+from pathlib import Path
 
 import pytest
 
@@ -60,7 +61,7 @@ def runtime_verdict(action: str, record: dict | None, registry: dict[str, str] |
     return evaluate_runtime_path(action, **arguments)
 
 
-def test_real_registry_binds_only_the_three_authorised_india_text_releases():
+def test_real_registry_retains_historical_records_and_binds_current_six_title_release():
     registry, revoked = load_production_registry()
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
@@ -68,10 +69,37 @@ def test_real_registry_binds_only_the_three_authorised_india_text_releases():
         "india-20260922-a-ghost-story-reader-release",
         "india-20260922-the-tell-tale-heart-reader-release",
         "india-20260922-radharani-reader-release",
+        "india-20260925-a-ghost-story-commercial-reader-release",
+        "india-20260925-the-tell-tale-heart-commercial-reader-release",
+        "india-20260925-radharani-commercial-reader-release",
         "india-20260925-a-white-heron-commercial-reader-release",
         "india-20260925-the-gift-of-the-magi-commercial-reader-release",
         "india-20260925-the-canterville-ghost-commercial-reader-release",
     }
+    current_runtime_release_slugs = (
+        "a-ghost-story",
+        "the-tell-tale-heart",
+        "radharani",
+        "a-white-heron",
+        "the-gift-of-the-magi",
+        "the-canterville-ghost",
+    )
+    for slug in current_runtime_release_slugs:
+        decision = json.loads(
+            (Path(__file__).parents[1] / "data" / "controlled_publications" / slug / "rights_decision.json")
+            .read_text(encoding="utf-8")
+        )
+        assert registry[decision["decision_id"]] == record_sha256(decision)
+    historical = payload["historical_records"]["superseded_runtime_bindings"]
+    assert set(historical) == {
+        "india-20260925-a-ghost-story-commercial-reader-release",
+        "india-20260925-a-white-heron-commercial-reader-release",
+        "india-20260925-the-gift-of-the-magi-commercial-reader-release",
+        "india-20260925-the-canterville-ghost-commercial-reader-release",
+    }
+    assert historical["india-20260925-a-ghost-story-commercial-reader-release"]["prior_candidate_decision_sha256"] != registry["india-20260925-a-ghost-story-commercial-reader-release"]
+    assert historical["india-20260925-a-white-heron-commercial-reader-release"]["prior_registry_binding_sha256"] != registry["india-20260925-a-white-heron-commercial-reader-release"]
+    assert historical["india-20260925-the-gift-of-the-magi-commercial-reader-release"]["prior_registry_binding_sha256"] != registry["india-20260925-the-gift-of-the-magi-commercial-reader-release"]
     assert all(len(digest) == 64 for digest in registry.values())
     assert revoked == frozenset()
     assert set(payload["pilot_dispositions"]) == {

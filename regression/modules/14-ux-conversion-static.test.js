@@ -237,7 +237,9 @@ describe("UX conversion static signals", () => {
     expect(referencePublicPages).toContain('data-testid="home-journey-shelf"');
     expect(referencePublicPages).toContain("Find the language, voice, and story that feels like home.");
     expect(referencePublicPages).toContain("Stories in voice, released with care.");
-    expect(referencePublicPages).toContain("Titles without approval show no listening action.");
+    expect(referencePublicPages).toContain("{PUBLIC_ACCESS_COPY}");
+    expect(publicAccessCopy).toContain('PUBLIC_PREVIEW_COPY = "Read the first 3 pages free."');
+    expect(publicAccessCopy).toContain('LISTENING_ACCESS_COPY = "Public audiobooks are unavailable in this launch."');
     expect(referencePublicPages).toContain("Stay with a story for as long as it holds you.");
     expect(referencePublicPages).toContain("No subscription or autorenewal");
     expect(referencePublicPages).toContain("View Reading Passes");
@@ -411,7 +413,7 @@ describe("UX conversion static signals", () => {
     expect(library).toContain("Reader and listening routes open only when their editorial and release checks are complete.");
     expect(library).toContain("Request an update");
     expect(bookDetail).toContain('data-testid="start-reading"');
-    expect(bookDetailPresentation).toContain('primaryReadLabel: readerRuntimeAvailable ? (freeReading ? "Start Reading Free" : "Start Reading") : readerReady ? "Browse the Library" : "Back to Library"');
+    expect(bookDetailPresentation).toContain('primaryReadLabel: readerRuntimeAvailable ? (freeReading ? "Start with free preview" : "Start Reading") : readerReady ? "Browse the Library" : "Back to Library"');
     expect(bookDetailPresentation).toContain('book?._readerManifest?.access?.reading_pass?.free_entitlement === true');
     expect(bookDetailPresentation).toContain('primaryReadHref: readerRuntimeAvailable ? readerHref : "/library"');
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
@@ -1392,13 +1394,12 @@ describe("UX conversion static signals", () => {
     expect(firstVisitSiteTour).not.toMatch(/\bListen Now\b|\bAudioObject\b/i);
   });
 
-  test("pricing page has checkout CTA, payment trust copy, and support/refund copy", () => {
-    expect(pricing).toContain("Buy reading time");
-    expect(pricing).toContain("Secure payment by Razorpay");
-    expect(pricing).toContain("No subscription or autorenewal");
-    expect(pricing).toContain("Reading time is credited to your wallet after confirmation");
-    expect(pricing).toMatch(/support or refund questions/i);
-    expect(pricing).toContain('data-testid={`pack-${p.id}-buy`}');
+  test("pricing page fails closed while paid Reading Pass activation is disabled", () => {
+    expect(pricing).toContain('if (!PUBLIC_PAID_COMMERCE_ENABLED) return <PricingUnavailable />;');
+    expect(pricing).toContain("Reading Passes are not available in this launch.");
+    expect(pricing).toContain("Continuing from page 4 requires a valid Reading Pass.");
+    expect(pricing).toContain("Pass purchases are not available yet.");
+    expect(pricing).toContain("Browse the library");
   });
 
   test("pricing packs keep approved premium reading-time labels and notes", () => {
@@ -1453,27 +1454,19 @@ describe("UX conversion static signals", () => {
     expect(pricing).not.toContain("PACK_BADGES");
   });
 
-  test("pricing page frames Dracula continuation and reading-time value", () => {
-    expect(pricing).toContain("Choose your reading time.");
-    expect(pricing).toContain("Return whenever");
-    expect(pricing).toContain("PUBLIC_ACCESS_COPY");
-    expect(pricing).toContain("When you are ready to continue a reader-ready classic, add reading time to your wallet");
-    expect(pricing).toContain("Earnalism is a digital reading room");
-    expect(pricing).toContain("You buy quiet reading time, not a noisy subscription");
-    expect(pricing).toContain('data-testid="dracula-continue-from-pricing"');
-    expect(pricing).toContain('data-testid="pricing-wallet-explainer"');
-    expect(pricing).toContain("Time goes to your wallet");
-    expect(pricing).toContain("not a recurring plan, book ownership claim, or autorenewal product");
-    expect(pricing).toContain('data-testid="pricing-trust-copy"');
+  test("pricing surface describes preview access without treating disabled checkout as available", () => {
+    expect(pricing).toContain("Preview the first 3 pages free. A Reading Pass is required to continue, but purchases are not available yet.");
+    expect(pricing).toContain('data-testid="paid-commerce-disabled"');
+    expect(pricing).toContain("Pass purchases are not available yet.");
   });
 
   test("login signup account and default SEO use the approved access contract without overclaiming", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
-    expect(login).toContain("The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.");
+    expect(login).toContain("The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet. Audiobooks are unavailable.");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.");
+    expect(signup).toContain("The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet. Audiobooks are unavailable.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
-    expect(account).toContain("The three India pilot Reader editions are free in full. Audiobooks are unavailable for this launch.");
+    expect(account).toContain("The first 3 pages are free where a preview is available. Continuing from page 4 requires a valid Reading Pass; pass purchases are not available yet.");
     expect(account).toContain("Continue reading");
     expect(account).not.toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');
@@ -1481,7 +1474,7 @@ describe("UX conversion static signals", () => {
     expect(useSeo).toContain("A calm Bengali and English digital library");
   });
 
-  test("pricing page tracks approved revenue funnel events without render-only noise", () => {
+  test("analytics retains future payment event names without activating disabled checkout", () => {
     for (const event of [
       "pricing_page_view",
       "reading_pack_selected",
@@ -1489,12 +1482,12 @@ describe("UX conversion static signals", () => {
       "payment_success_return",
       "payment_failed_or_cancelled",
       "wallet_credited_visible",
-      "start_dracula_click",
+      "continue_reading_click",
     ]) {
-      expect(pricing).toContain(event);
       expect(analytics).toContain(event);
       expect(launchAudit).toContain(event);
     }
+    expect(pricing).toContain('if (!PUBLIC_PAID_COMMERCE_ENABLED) return <PricingUnavailable />;');
     expect(pricing).not.toMatch(/trackFunnelEvent\("pricing_view"/);
     expect(pricing).not.toMatch(/trackFunnelEvent\("checkout_start"/);
     expect(pricing).not.toMatch(/trackFunnelEvent\("payment_success"/);
@@ -1750,12 +1743,12 @@ describe("UX conversion static signals", () => {
     const readerHtml = readOptional("frontend/build/reader/a-ghost-story/index.html");
     if (!homeHtml || !readerHtml) {
       expect(staticSnapshotGenerator).toContain("A calm digital reading room for timeless Bengali and English literature.");
-      expect(staticSnapshotGenerator).toContain("The three India pilot editions are free to read in full after sign-in; the first 3 pages are public. Audiobooks and paid checkout are unavailable.");
+      expect(staticSnapshotGenerator).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.");
       return;
     }
 
     expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("The three India pilot editions are free to read in full after sign-in; the first 3 pages are public. Audiobooks and paid checkout are unavailable.");
+    expect(homeHtml).toContain("The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.");
     expect(homeHtml).not.toMatch(/QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");

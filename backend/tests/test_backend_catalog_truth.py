@@ -108,6 +108,7 @@ def test_shared_controlled_launch_config_matches_backend_and_audit():
     assert catalog_truth.PUBLIC_AUDIO_EXPOSURE_ENABLED is False
     assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == (
         "a-ghost-story", "the-tell-tale-heart", "radharani",
+        "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
     )
     assert "book-2b9853ec52" in catalog_truth.PUBLIC_CATALOG_EXCLUDED_SLUGS
     assert "book-2b9853ec52" not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
@@ -115,7 +116,10 @@ def test_shared_controlled_launch_config_matches_backend_and_audit():
     assert "book-2b9853ec52" not in catalog_truth.AUDIO_ENABLED_SLUGS
     assert catalog_truth.AUDIO_ENABLED_SLUGS == set()
     live_slugs = catalog_truth_audit.frontend_controlled_live_slugs()
-    assert live_slugs == {"a-ghost-story", "the-tell-tale-heart", "radharani"}
+    assert live_slugs == {
+        "a-ghost-story", "the-tell-tale-heart", "radharani",
+        "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+    }
     assert "book-2b9853ec52" not in live_slugs
 
 
@@ -297,7 +301,10 @@ def test_live_approved_mongo_query_preserves_rights_and_search_or():
 
     base_or = query["$and"][0]["$or"]
     controlled_slugs = base_or[0]["$and"][0]["$or"][0]["slug"]["$in"]
-    assert controlled_slugs == ["a-ghost-story", "the-tell-tale-heart", "radharani"]
+    assert controlled_slugs == [
+        "a-ghost-story", "the-tell-tale-heart", "radharani",
+        "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+    ]
     assert query["$and"][1]["$or"][0]["title"] == {"$regex": "Dracula", "$options": "i"}
 
 
@@ -338,7 +345,10 @@ def test_public_release_scope_denies_held_titles_and_never_reopens_historical_ma
     query = server._controlled_public_book_query()
     assert query != {"_id": {"$exists": False}}
     controlled_slugs = query["$or"][0]["$and"][0]["$or"][0]["slug"]["$in"]
-    assert controlled_slugs == ["a-ghost-story", "the-tell-tale-heart", "radharani"]
+    assert controlled_slugs == [
+        "a-ghost-story", "the-tell-tale-heart", "radharani",
+        "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+    ]
 
 
 def test_reader_manifest_audio_is_disabled_even_when_assets_exist():
@@ -390,7 +400,10 @@ def test_public_audiobook_endpoint_404s_dracula_when_audio_disabled(monkeypatch)
 def test_sitemap_truth_lists_only_the_exact_controlled_reader_release():
     sitemap = (catalog_truth.ROOT / "frontend" / "public" / "sitemap.xml").read_text(encoding="utf-8")
 
-    for slug in ("a-ghost-story", "the-tell-tale-heart", "radharani"):
+    for slug in (
+        "a-ghost-story", "the-tell-tale-heart", "radharani",
+        "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+    ):
         assert f"/book/{slug}" in sitemap
     assert "/book/yugalanguriya" not in sitemap
     assert "/book/dracula" not in sitemap

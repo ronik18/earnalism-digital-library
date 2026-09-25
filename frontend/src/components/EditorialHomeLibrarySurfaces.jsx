@@ -208,24 +208,24 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
         <div className="reference-home__pass-copy">
           <h2 id="reference-pass-title">{PUBLIC_PAID_COMMERCE_ENABLED ? "Make time for a good story." : "Reading Pass"}</h2>
-          <p className="reference-home__pass-intro">{PUBLIC_PAID_COMMERCE_ENABLED ? "With Reading Passes, you pay for reading time." : "Reading Passes are not on sale during the free India Reader pilot."}</p>
+          <p className="reference-home__pass-intro">{PUBLIC_PAID_COMMERCE_ENABLED ? "With Reading Passes, you pay for reading time." : "The first 3 pages are free. Continue reading with a Reading Pass when purchases are available."}</p>
           {PUBLIC_PAID_COMMERCE_ENABLED ? <ul>
             <li><Clock3 aria-hidden="true" />{READING_TIME_COPY}</li>
             <li><BookOpen aria-hidden="true" />One wallet across eligible editions</li>
             <li><ShieldCheck aria-hidden="true" />No subscription or autorenewal</li>
           </ul> : <ul>
-            <li><BookOpen aria-hidden="true" />Read the three released pilot books after sign-in</li>
-            <li><Clock3 aria-hidden="true" />No checkout, Reading Pass purchase, or credit debit</li>
-            <li><ShieldCheck aria-hidden="true" />Paid passes will require a separate release</li>
+            <li><BookOpen aria-hidden="true" />Preview the first 3 pages of released titles</li>
+            <li><Clock3 aria-hidden="true" />A valid Reading Pass is required from page 4</li>
+            <li><ShieldCheck aria-hidden="true" />Pass purchases are not available yet</li>
           </ul>}
-          <Link className="reference-button reference-button--gold" to={PUBLIC_PAID_COMMERCE_ENABLED ? "/pricing" : "/library"}>{PUBLIC_PAID_COMMERCE_ENABLED ? "Find your Reading Pass" : "Explore the free pilot"}</Link>
+          <Link className="reference-button reference-button--gold" to={PUBLIC_PAID_COMMERCE_ENABLED ? "/pricing" : "/library"}>{PUBLIC_PAID_COMMERCE_ENABLED ? "Find your Reading Pass" : "Browse the Library"}</Link>
         </div>
         <div className="reference-home__pass-options">
-          <div className="reference-home__pass-cards" aria-label={PUBLIC_PAID_COMMERCE_ENABLED ? "Reading Pass options" : "Free pilot access"}>
+          <div className="reference-home__pass-cards" aria-label={PUBLIC_PAID_COMMERCE_ENABLED ? "Reading Pass options" : "Reading access"}>
             {!PUBLIC_PAID_COMMERCE_ENABLED ? [
-              ["Begin freely", "3 pages", "Preview any released pilot edition."],
-              ["Stay with the story", "Full book", "Sign in to keep reading in India."],
-              ["No payment today", "No debit", "Reading Pass purchases remain off."],
+              ["Begin with a preview", "3 pages", "Read the opening of an eligible title."],
+              ["Continue with a Pass", "Page 4+", "A valid Reading Pass is required."],
+              ["Passes not on sale", "Coming soon", "Purchases are not available yet."],
             ].map(([title, value, copy]) => <article key={title}><h3>{title}</h3><strong className="reference-home__pass-price reference-home__pass-price--message">{value}</strong><p>{copy}</p></article>) : passes.length ? passes.map((pack) => <article key={pack.id} className={pack.recommended ? "is-featured" : ""}>
               {pack.recommended && <span className="reference-home__pass-badge">{illustrativePasses ? "Featured plan" : "Recommended"}</span>}
               <h3>{pack.minutes} Minutes</h3>

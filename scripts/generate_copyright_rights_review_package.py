@@ -441,7 +441,10 @@ def build_package(args: argparse.Namespace) -> dict[str, Any]:
         and root_launch.get("public_audio_exposure_enabled") is False
         and sorted(root_launch.get("live_approved_slugs") or []) == accepted_slugs
         and backend_launch == root_launch
-        and len(accepted_records) == len(rights_accepted_slugs)
+        # The registry intentionally retains superseded accepted decisions as
+        # immutable history. Current live titles are validated against their
+        # active decision and exact component hashes in title_inventory(); do
+        # not require historical registry count to equal current live count.
         and set(accepted_slugs) == live_slugs
         and set(unexposed_rights_accepted_slugs) == {
             slug

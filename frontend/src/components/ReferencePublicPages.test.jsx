@@ -34,9 +34,9 @@ describe("Reference public page surfaces", () => {
     expect(home).toContain("home-reference-page--no-commerce");
     expect(home).toContain("home-reference-page--no-audio");
     expect(homeLaunchStyles).not.toMatch(/\.home-reference-page--no-commerce \.reference-home__pass\s*[,\{]/);
-    expect(source).toContain("Reading Passes are not on sale during the free India Reader pilot.");
+    expect(source).toContain("Pass purchases are not available yet");
     expect(source).toContain('to={PUBLIC_PAID_COMMERCE_ENABLED ? "/pricing" : "/library"}');
-    expect(source).toContain("No checkout, Reading Pass purchase, or credit debit");
+    expect(source).toContain("Pass purchases are not available yet");
     expect(homeLaunchStyles).toContain(".home-reference-page--no-commerce .reference-home__policy > p:nth-of-type(2)");
     expect(homeLaunchStyles).toContain(".home-reference-page--no-audio .reference-home__cta-row a[href=\"/library?availability=approved-audiobook\"]");
     expect(home).toContain("if (!PUBLIC_PAID_COMMERCE_ENABLED) return undefined;");
@@ -46,7 +46,7 @@ describe("Reference public page surfaces", () => {
   test("keeps a cover-only Home shelf visible without treating bundled metadata as live access", () => {
     expect(PILOT_COVER_SHELF.map((book) => book.slug)).toEqual([...PUBLIC_READER_RELEASED_SLUGS]);
     for (const book of PILOT_COVER_SHELF) {
-      expect(book.cover_image_url).toMatch(/^https:\/\/res\.cloudinary\.com\//);
+      expect(book.cover_image_url).toMatch(/^https:\/\/(res\.cloudinary\.com|theearnalism\.com)\//);
       expect(canShowStartReading(book)).toBe(false);
       const controlledBook = JSON.parse(fs.readFileSync(path.join(process.cwd(), "..", "backend", "data", "controlled_publications", book.slug, "public_book.json"), "utf8"));
       expect({ title: book.title, author: book.author, cover_image_url: book.cover_image_url }).toEqual({
@@ -64,7 +64,7 @@ describe("Reference public page surfaces", () => {
     expect(commerce).toContain("pack.price_inr");
     expect(commerce).toContain("pack.minutes");
     expect(commerce).toContain("pack.recommended === true || pack.is_recommended === true");
-    expect(commerce).toContain("See current pass details at checkout");
+    expect(commerce).toContain("Purchased unused minutes do not expire");
   });
 
   test("uses one truthful Commerce composition without an obsolete research rail", () => {

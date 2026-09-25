@@ -43,10 +43,10 @@ def test_public_reader_release_rejects_direct_api_requests(monkeypatch):
     assert response.body == b'{"detail":{"code":"RELEASE_PROXY_SCOPE_INVALID"}}'
 
 
-def test_free_session_proxy_and_hash_bound_rights_are_required_for_each_pilot(monkeypatch):
+def test_historical_free_session_proxy_grant_is_disabled_after_commercial_cutover(monkeypatch):
     monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
-    monkeypatch.setattr(server, "TEXT_ACCESS_MODE", "PILOT_FULL_FREE")
+    monkeypatch.setattr(server, "TEXT_ACCESS_MODE", "COMMERCIAL_ENTITLEMENT")
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
     path = "/api/reading-pass/sessions/start"
     timestamp = int(datetime.now(timezone.utc).timestamp())
@@ -57,9 +57,11 @@ def test_free_session_proxy_and_hash_bound_rights_are_required_for_each_pilot(mo
         SIGNATURE_HEADER: request_signature(SECRET, "POST", path, PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
     }
     request = request_with_headers(headers, path=path, method="POST")
-    for slug in ("a-ghost-story", "the-tell-tale-heart", "radharani"):
-        assert server._free_india_reader_verdict(request, slug) is True
-    for slug in ("yugalanguriya", "dracula", "unlisted-book"):
+    for slug in (
+        "a-ghost-story", "the-tell-tale-heart", "radharani",
+        "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+        "yugalanguriya", "dracula", "unlisted-book",
+    ):
         assert server._free_india_reader_verdict(request, slug) is False
     assert server._free_india_reader_verdict(request_with_headers({}, path=path, method="POST"), "a-ghost-story") is False
     assert asyncio.run(server.enforce_public_release_country(request_with_headers({}, path=path, method="POST"), next_response)).status_code == 451
@@ -107,8 +109,10 @@ def test_commercial_mode_requires_commerce_and_separate_pass_rights(monkeypatch)
     assert server._commercial_india_reader_verdict(request_with_headers({}, path=path, method="POST"), "a-white-heron") is False
 
 
-def test_per_title_modes_keep_free_pilot_and_commercial_titles_separate(monkeypatch):
-    assert server._title_text_access_mode("a-ghost-story") == "PILOT_FULL_FREE"
+def test_per_title_modes_require_commercial_pass_for_all_six_and_keep_held_titles_denied(monkeypatch):
+    assert server._title_text_access_mode("a-ghost-story") == "COMMERCIAL_ENTITLEMENT"
+    assert server._title_text_access_mode("the-tell-tale-heart") == "COMMERCIAL_ENTITLEMENT"
+    assert server._title_text_access_mode("radharani") == "COMMERCIAL_ENTITLEMENT"
     assert server._title_text_access_mode("the-gift-of-the-magi") == "COMMERCIAL_ENTITLEMENT"
     assert server._title_text_access_mode("yugalanguriya") is None
 

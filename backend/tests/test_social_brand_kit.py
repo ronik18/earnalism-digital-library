@@ -144,6 +144,7 @@ def test_public_reader_opens_only_the_exact_india_text_allowlist_and_audio_stays
     assert catalog_truth.PUBLIC_READER_EXPOSURE_ENABLED is True
     assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == (
         "a-ghost-story", "the-tell-tale-heart", "radharani",
+        "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
     )
     assert catalog_truth.AUDIO_ENABLED_SLUGS == set()
     assert catalog_truth.PIPELINE_CANDIDATE_SLUGS == {"kshudhita-pashan"}

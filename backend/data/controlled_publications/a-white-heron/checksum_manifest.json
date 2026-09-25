@@ -1,10 +1,10 @@
 {
   "slug": "a-white-heron",
-  "generated_at": "2026-09-24T15:34:05Z",
+  "generated_at": "2026-09-25T00:00:00Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "205ea2e1c12809884b17a3b62c872d6fe6ef4a708988adb3f16ed4a6cb68cc57"
+      "sha256": "3fe378342ee79044bdeb6f9582f0aa9269c2f24e07a96bc59fb46825320ffa50"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -20,7 +20,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "38fa4ac2ed250111b73ba1cd34bdd94acede42e4f9242cab34ed96c0afebd80c"
+      "sha256": "ca266f6ee45561c7d379d00a2629aee5a7e363833a6b8a354fd706782eaee74a"
     },
     {
       "file": "reader_manifest.json",

@@ -1831,7 +1831,10 @@ def _release_rights_artifact(slug: str) -> tuple[dict[str, Any] | None, dict[str
     normalized_slug = str(slug or "").strip().lower()
     if not normalized_slug:
         return None, {}
-    for package_dir in controlled_artifact_dir_candidates(normalized_slug):
+    # The backend mirror is the active runtime package. The root package keeps
+    # historical evidence, so it must not shadow a newer accepted runtime
+    # decision merely because it appears first in the repository search order.
+    for package_dir in reversed(controlled_artifact_dir_candidates(normalized_slug)):
         decision_path = package_dir / "rights_decision.json"
         component_paths = {name.removesuffix(".json"): package_dir / name for name in RELEASE_RIGHTS_COMPONENT_FILENAMES}
         if not decision_path.exists() or any(not path.is_file() for path in component_paths.values()):

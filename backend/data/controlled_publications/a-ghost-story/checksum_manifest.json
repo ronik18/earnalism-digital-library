@@ -1,4 +1,6 @@
 {
+  "slug": "a-ghost-story",
+  "generated_at": "2026-09-25T00:00:00Z",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -13,18 +15,20 @@
       "sha256": "59791d95157ca3f16bd066cc736d5d724c62b3c503546b0adb831bd66ff3cbbd"
     },
     {
+      "file": "highlight_sync.json",
+      "sha256": "91c5ca73d4e87febe4939d53714fa0b1b6be4b8cc52154ae85e5d6f77b8ea054"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "b0e8375f82226743570a3c3f677b2532d93bf7eba98e7fed0af6f5f1958561fe"
+      "sha256": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "6033247d854e08100e87ad84ddad2243283df6ea69b7e2d4ca87684d16d72aa9"
+      "sha256": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1"
     },
     {
       "file": "source_evidence.json",
       "sha256": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b"
     }
-  ],
-  "generated_at": "2026-08-30T19:26:21Z",
-  "slug": "a-ghost-story"
+  ]
 }

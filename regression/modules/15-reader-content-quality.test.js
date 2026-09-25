@@ -27,7 +27,14 @@ const HISTORICAL_AUDIO_HOLD_SLUGS = [
 ];
 const APPROVED_PUBLIC_AUDIO_SLUGS = publicAudioTruth.approved_public_audio_slugs || [];
 const PRIVATE_QA_AUDIO_HOLD = "bn-066";
-const CURRENT_RELEASED_SLUGS = ["a-ghost-story", "the-tell-tale-heart", "radharani"];
+const CURRENT_RELEASED_SLUGS = [
+  "a-ghost-story",
+  "the-tell-tale-heart",
+  "radharani",
+  "a-white-heron",
+  "the-gift-of-the-magi",
+  "the-canterville-ghost",
+];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
 const PENDING_FRESH_READER_APPROVAL_SLUGS = new Set(["picture-of-dorian-gray"]);

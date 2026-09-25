@@ -5,7 +5,10 @@ Disallow: /admin/
 Disallow: /account
 Disallow: /my-library
 Allow: /reader/a-ghost-story
+Allow: /reader/a-white-heron
 Allow: /reader/radharani
+Allow: /reader/the-canterville-ghost
+Allow: /reader/the-gift-of-the-magi
 Allow: /reader/the-tell-tale-heart
 Disallow: /reader/
 Disallow: /secure-reader-test

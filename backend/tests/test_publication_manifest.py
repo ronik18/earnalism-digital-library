@@ -45,11 +45,11 @@ def test_sherlock_pilot_is_reader_ready_without_audio_or_commerce():
     assert validate_manifest(manifest) == []
 
 
-def test_gift_of_the_magi_is_india_ready_but_waits_for_commercial_cutover():
-    manifest = build_manifest(GIFT_OF_THE_MAGI)
+def test_gift_of_the_magi_is_published_for_preview_and_waits_for_checkout_activation():
+    manifest = build_manifest(GIFT_OF_THE_MAGI, publish_approved=True)
     source = json.loads((GIFT_OF_THE_MAGI / "source_evidence.json").read_text(encoding="utf-8"))
     backend_artifact = ROOT / "backend" / "data" / "controlled_publications" / "the-gift-of-the-magi"
-    backend_manifest = build_manifest(backend_artifact)
+    backend_manifest = build_manifest(backend_artifact, publish_approved=True)
     for artifact in (GIFT_OF_THE_MAGI, backend_artifact):
         checksum = json.loads((artifact / "checksum_manifest.json").read_text(encoding="utf-8"))
         source_digest = hashlib.sha256((artifact / "source_evidence.json").read_bytes()).hexdigest()
@@ -60,30 +60,30 @@ def test_gift_of_the_magi_is_india_ready_but_waits_for_commercial_cutover():
 
     assert manifest["rights"]["status"] == "APPROVED"
     assert manifest["rights"]["publication_region"] == "india"
-    assert manifest["reader_release"]["status"] == "READY_FOR_APPROVAL"
-    assert manifest["reader_release"]["exposed"] is False
+    assert manifest["reader_release"]["status"] == READER_APPROVED
+    assert manifest["reader_release"]["exposed"] is True
     assert manifest["audio_release"]["status"] == AUDIO_NOT_REQUESTED
     assert manifest["audio_release"]["exposed"] is False
-    assert manifest_reader_exposed(manifest) is False
+    assert manifest_reader_exposed(manifest) is True
     assert validate_manifest(manifest) == []
     assert validate_manifest(backend_manifest) == []
-    assert backend_manifest["reader_release"]["exposed"] is False
+    assert backend_manifest["reader_release"]["exposed"] is True
     assert source["text_integrity_status"] == "TEXT_VERIFIED"
     assert source["canonical_chapter_text_sha256"] == "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e"
     assert source["commercial_live_status"] == "WAITING_FOR_COMMERCIAL_CUTOVER"
     assert source["content_hash"] == "43f7c14de6be56f642476b78fd227fb0005d43909fc27e477646ec99b0900fcd"
-    assert "the-gift-of-the-magi" not in CONTROLLED_LIVE_BOOK_SLUGS
+    assert "the-gift-of-the-magi" in CONTROLLED_LIVE_BOOK_SLUGS
     assert load_controlled_artifact_book(
         "the-gift-of-the-magi",
         include_content=False,
         artifact_dir=backend_artifact,
-    ) is None
+    ) is not None
 
 
-def test_canterville_ghost_is_india_ready_but_waits_for_commercial_cutover():
-    manifest = build_manifest(CANTERVILLE_GHOST)
+def test_canterville_ghost_is_published_for_preview_and_waits_for_checkout_activation():
+    manifest = build_manifest(CANTERVILLE_GHOST, publish_approved=True)
     backend_artifact = ROOT / "backend" / "data" / "controlled_publications" / "the-canterville-ghost"
-    backend_manifest = build_manifest(backend_artifact)
+    backend_manifest = build_manifest(backend_artifact, publish_approved=True)
     source = json.loads((CANTERVILLE_GHOST / "source_evidence.json").read_text(encoding="utf-8"))
     book = json.loads((CANTERVILLE_GHOST / "public_book.json").read_text(encoding="utf-8"))
     intake_metadata = json.loads(
@@ -123,16 +123,16 @@ def test_canterville_ghost_is_india_ready_but_waits_for_commercial_cutover():
             assert hashlib.sha256((artifact / row["file"]).read_bytes()).hexdigest() == row["sha256"]
     assert manifest["rights"]["status"] == "APPROVED"
     assert manifest["rights"]["publication_region"] == "in"
-    assert manifest["reader_release"]["status"] == "READY_FOR_APPROVAL"
-    assert manifest["reader_release"]["exposed"] is False
+    assert manifest["reader_release"]["status"] == READER_APPROVED
+    assert manifest["reader_release"]["exposed"] is True
     assert manifest["audio_release"]["status"] == AUDIO_NOT_REQUESTED
     assert manifest["audio_release"]["exposed"] is False
     assert validate_manifest(manifest) == []
     assert validate_manifest(backend_manifest) == []
-    assert "the-canterville-ghost" not in CONTROLLED_LIVE_BOOK_SLUGS
+    assert "the-canterville-ghost" in CONTROLLED_LIVE_BOOK_SLUGS
     assert load_controlled_artifact_book(
         "the-canterville-ghost", include_content=False, artifact_dir=backend_artifact
-    ) is None
+    ) is not None
 
 
 def test_checksum_bound_approved_audio_is_a_separate_exposed_lane():

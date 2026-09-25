@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "output" / "launch"
 DEFAULT_BASE_URL = "https://theearnalism.com"
 CANONICAL_SITE_URL = "https://theearnalism.com"
-ACCESS_COPY = "The three India pilot editions are free to read in full after sign-in; the first 3 pages are public. Audiobooks and paid checkout are unavailable."
+ACCESS_COPY = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch."
 FORBIDDEN_COPY = (
     "Chapter 1 free", "First chapter free", "Chapter 1 is on us", "Preview chapter unlocked",
     "First 3 minutes free", "First 180 seconds free", "Free audiobook preview",
@@ -34,11 +34,17 @@ ROUTES = {
     "/book/a-ghost-story": {"kind": "book", "canonical": "/book/a-ghost-story", "robots": "index,follow", "title": "A Ghost Story"},
     "/book/the-tell-tale-heart": {"kind": "book", "canonical": "/book/the-tell-tale-heart", "robots": "index,follow", "title": "The Tell-Tale Heart"},
     "/book/radharani": {"kind": "book", "canonical": "/book/radharani", "robots": "index,follow", "title": "রাধারাণী"},
+    "/book/a-white-heron": {"kind": "book", "canonical": "/book/a-white-heron", "robots": "index,follow", "title": "A White Heron"},
+    "/book/the-gift-of-the-magi": {"kind": "book", "canonical": "/book/the-gift-of-the-magi", "robots": "index,follow", "title": "The Gift of the Magi"},
+    "/book/the-canterville-ghost": {"kind": "book", "canonical": "/book/the-canterville-ghost", "robots": "index,follow", "title": "The Canterville Ghost"},
     "/library": {"kind": "library", "canonical": "/library", "robots": "index,follow"},
     "/pricing": {"kind": "pricing", "canonical": "/pricing", "robots": "noindex,follow"},
     "/reader/a-ghost-story": {"kind": "reader", "canonical": "/book/a-ghost-story", "robots": "noindex,follow", "title": "A Ghost Story"},
     "/reader/the-tell-tale-heart": {"kind": "reader", "canonical": "/book/the-tell-tale-heart", "robots": "noindex,follow", "title": "The Tell-Tale Heart"},
     "/reader/radharani": {"kind": "reader", "canonical": "/book/radharani", "robots": "noindex,follow", "title": "রাধারাণী"},
+    "/reader/a-white-heron": {"kind": "reader", "canonical": "/book/a-white-heron", "robots": "noindex,follow", "title": "A White Heron"},
+    "/reader/the-gift-of-the-magi": {"kind": "reader", "canonical": "/book/the-gift-of-the-magi", "robots": "noindex,follow", "title": "The Gift of the Magi"},
+    "/reader/the-canterville-ghost": {"kind": "reader", "canonical": "/book/the-canterville-ghost", "robots": "noindex,follow", "title": "The Canterville Ghost"},
     "/book/dracula": {"kind": "held"},
     "/reader/dracula": {"kind": "held"},
     "/book/yugalanguriya": {"kind": "held"},

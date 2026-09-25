@@ -202,8 +202,8 @@ describe("AuthProvider and Account lifecycle", () => {
     const mounted = render(<AuthProvider><Account /></AuthProvider>);
     await flush();
 
-    expect(mounted.container.querySelector('[data-testid="account-balance"]')?.textContent).toContain("India Pilot Access");
-    expect(mounted.container.querySelector('[data-testid="account-reading-pass-status"]')?.textContent).toContain("Prepared for future eligible editions.");
+    expect(mounted.container.querySelector('[data-testid="account-balance"]')?.textContent).toContain("120s");
+    expect(mounted.container.querySelector('[data-testid="account-reading-pass-status"]')?.textContent).toContain("Purchases are not available yet");
     expect(mounted.container.querySelector('[data-testid="account-active-sessions"]')?.textContent).toContain("Chrome on Mac");
     expect(mounted.container.querySelector('[data-testid="account-active-sessions"]')?.textContent).toContain("This device");
     expect(mounted.container.querySelector('[data-testid="account-page"]')?.textContent).not.toContain("Mozilla/5.0");

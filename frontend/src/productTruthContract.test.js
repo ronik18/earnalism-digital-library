@@ -29,7 +29,7 @@ describe("public product-truth copy", () => {
       .toLowerCase();
 
     expect(source).toContain("read the first 3 pages free.");
-    expect(source).toContain("listening requires an active reading pass.");
+    expect(source).toContain("public audiobooks are unavailable in this launch.");
     forbiddenCopy.forEach((phrase) => expect(source).not.toContain(phrase));
   });
 });

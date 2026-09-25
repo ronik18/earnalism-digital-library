@@ -53,8 +53,9 @@ describe("public CTA accuracy contract", () => {
     expect(bookCard).toContain("View Passes");
   });
 
-  test("pricing does not revive a reader route while the public release is held", () => {
-    expect(pricing).toContain('to="/reader/dracula"');
+  test("pricing routes visitors to the library instead of a title-specific reader route", () => {
+    expect(pricing).toContain('to="/library"');
+    expect(pricing).not.toContain('to="/reader/dracula"');
     expect(pricing).toContain("PUBLIC_READER_EXPOSURE_ENABLED");
     expect(pricing).toContain('to="/library" className="btn-secondary" data-testid="pricing-library-during-release-hold"');
     expect(account).toContain('to="/library"');

@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-tell-tale-heart",
   "title": "The Tell-Tale Heart",
-  "generated_at": "2026-09-22T16:12:17.619678+00:00",
+  "generated_at": "2026-09-25T00:00:00Z",
   "content": {
     "source_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
     "content_hash": "a07c4b3d611f371eff7ff8ded51a6dd40eabe86f595b459fbe2f5e23afb18dcf",
@@ -49,5 +49,5 @@
     "source_evidence": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
     "approval_evidence": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a"
   },
-  "manifest_sha256": "5a669310ee863301b18ba02d42cd8843b25cb6af2e1fd7dc2a138317b030de3c"
+  "manifest_sha256": "31c27ed62067f95520658c2831600cfb5489e857469e518d8fd10791068bdb5d"
 }
