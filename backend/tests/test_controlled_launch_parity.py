@@ -13,6 +13,8 @@ BACKEND_CONTROLLED_LAUNCH = ROOT / "backend" / "data" / "controlled_launch.json"
 ROOT_CONTROLLED_LAUNCH = ROOT / "data" / "controlled_launch.json"
 BACKEND_CATALOG_EXCLUSIONS = ROOT / "backend" / "data" / "catalog_exclusions.json"
 ROOT_CATALOG_EXCLUSIONS = ROOT / "data" / "catalog_exclusions.json"
+BACKEND_CONTROLLED_PUBLICATIONS = ROOT / "backend" / "data" / "controlled_publications"
+ROOT_CONTROLLED_PUBLICATIONS = ROOT / "data" / "controlled_publications"
 
 FULLY_EXCLUDED_BENGALI_TITLE = "book-2b9853ec52"
 INDIA_TEXT_RELEASE_SLUGS = {
@@ -27,6 +29,17 @@ INDIA_TEXT_RELEASE_SLUGS = {
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def active_runtime_package(slug: str) -> Path:
+    """Return the package the API uses for release-time rights decisions.
+
+    The root package retains prior evidence, while the backend mirror is the
+    active runtime package whenever it exists.  Tests for an entitled reader
+    path must therefore not validate a historical root decision as current.
+    """
+    backend_package = BACKEND_CONTROLLED_PUBLICATIONS / slug
+    return backend_package if backend_package.is_dir() else ROOT_CONTROLLED_PUBLICATIONS / slug
 
 
 def test_root_and_backend_controlled_launch_truth_are_identical():
@@ -115,10 +128,10 @@ def test_six_title_release_has_hash_bound_reading_pass_rights_and_published_read
 
     for slug in commercial_slugs:
         assert slug in launch["live_approved_slugs"]
-        manifest = load_json(ROOT / "data" / "controlled_publications" / slug / "publication_manifest.json")
+        package = active_runtime_package(slug)
+        manifest = load_json(package / "publication_manifest.json")
         assert manifest["reader_release"]["status"] == "APPROVED"
         assert manifest["reader_release"]["exposed"] is True
-        package = ROOT / "data" / "controlled_publications" / slug
         record = load_json(package / "rights_decision.json")
         components = {
             name.removesuffix(".json"): hashlib.sha256((package / name).read_bytes()).hexdigest()
