@@ -9,6 +9,7 @@ import {
   PR414_LIBRARY_INTERACTION_BASELINE,
   PR416_LIBRARY_INTERACTION_BASELINE,
   HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE,
+  INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -77,10 +78,17 @@ test("the owner-authorized PR416 Home shelf transition remains valid at its revi
   assert.equal(comparison.result, "PASS");
 });
 
-test("the requested Home sections transition matches the current shared Library source", () => {
-  const comparison = compareLibraryInteractionBaseline(root, HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE);
+test("the original approved Home sections baseline remains intact at its reviewed source", () => {
+  const comparison = compareLibraryInteractionBaseline(materializeReviewedSurface(HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE), HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.previous_surface_sha256, "29dc1e90c0fbf4bffcd9edbdd1878c94c2647d039528878c70bb15669f90366f");
   assert.equal(comparison.expected_surface_sha256, "3cbf2dda50902d4745849eb8157af447cf26af0ceb17e93ba9aaf604e621ffc7");
+  assert.equal(comparison.result, "PASS");
+});
+
+test("the directly authorized India commercial copy transition matches the current Home and Library source", () => {
+  const comparison = compareLibraryInteractionBaseline(root, INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(comparison.previous_surface_sha256, "3cbf2dda50902d4745849eb8157af447cf26af0ceb17e93ba9aaf604e621ffc7");
+  assert.equal(comparison.expected_surface_sha256, "c2f93da984c39f54915df94541f98ce1931e128781b9a9c69621d66b57ac1846");
   assert.equal(comparison.result, "PASS");
 });
 

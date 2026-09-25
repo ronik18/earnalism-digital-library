@@ -16,6 +16,20 @@
     "audio_enabled": false,
     "historical_pilot_evidence": "RETAINED_NOT_AUTHORITY_FOR_FREE_FULL_TEXT",
     "page_4_plus_without_entitlement": "DENIED_BY_SERVER_AUTHORITY",
+    "ci_reconciliation": {
+      "failed_candidate": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
+      "focused_repairs": "STALE_HOME_BASELINE_AUTH_COPY_DELIMITER_AND_ROOT_BACKEND_RIGHTS_MIRROR_PARITY",
+      "active_title_rights_decisions": "DERIVED_RUNTIME_BINDINGS_REBOUND_WITH_RIGHTS_RELEVANT_INPUTS_UNCHANGED",
+      "historical_registry_records": 9,
+      "current_live_titles": 6,
+      "focused_tests": {
+        "rights_package": "4_PASS",
+        "home_interaction_baseline": "7_PASS"
+      },
+      "fresh_exact_head_ci": "PENDING",
+      "payment_provider": "DISABLED_UNCONFIGURED",
+      "checkout_activation": "BLOCKED_EXTERNAL_CONFIGURATION"
+    },
     "production_release": "NOT_YET_DEPLOYED"
   },
   "active_platform_audiobook_policy": {

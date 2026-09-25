@@ -22,6 +22,7 @@ export const PR399_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr399-libr
 export const PR414_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr414-held-release-library-interaction-baseline.json";
 export const PR416_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr416-home-shelf-library-interaction-baseline.json";
 export const HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE = "docs/design-system/home-sections-library-interaction-baseline.json";
+export const INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE = "docs/design-system/india-commercial-cutover-home-library-interaction-baseline.json";
 export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
   "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
   "frontend/src/components/ReferencePublicPages.css",
@@ -153,6 +154,15 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
     authorization: "DIRECT_OWNER_REQUEST_RESTORE_HOME_JOURNEY_AND_PASS_SECTIONS",
+  },
+  [INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE]: {
+    reviewedSource: { commit: "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec", tree: "94a20566c50c9c3085d2871cac1bb68532973a31", base: "6909c26c334086767a7dfcb3f709eee66ac2ea9d" },
+    previous: { recordPath: HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE, commit: "5c950bfdaa5d7fb5da6fd21c0c324333d7cbff2f", hash: "3cbf2dda50902d4745849eb8157af447cf26af0ceb17e93ba9aaf604e621ffc7" },
+    authorizedHash: "c2f93da984c39f54915df94541f98ce1931e128781b9a9c69621d66b57ac1846",
+    inputPaths: ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS,
+    changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
+    unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
+    authorization: "DIRECT_OWNER_AUTHORIZATION_INDIA_COMMERCIAL_GO_LIVE_2026_09_25",
   },
 };
 

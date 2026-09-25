@@ -8,9 +8,31 @@
     "india-20260925-a-ghost-story-commercial-reader-release": "9463d029b34a0e39a7ace8bcd95354e573a1c9f2841f09f7ecf5014b70d93b25",
     "india-20260925-the-tell-tale-heart-commercial-reader-release": "370cd4896655d25629bd791a0046844992166169aadc6e4c8061d22106b199cb",
     "india-20260925-radharani-commercial-reader-release": "9be847de52927f16dba1a5d40d0c85be07d69bc47c974cd9791daeca532f2a4d",
-    "india-20260925-a-white-heron-commercial-reader-release": "dbd8231df761f3d016df2db8557b944ff769bdf5c9bd72298648b9d32231ae53",
-    "india-20260925-the-gift-of-the-magi-commercial-reader-release": "9fd042186ad91fda9547180e04de76bea35ed9b8e6201765cd14a86891fac3dd",
+    "india-20260925-a-white-heron-commercial-reader-release": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
+    "india-20260925-the-gift-of-the-magi-commercial-reader-release": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
     "india-20260925-the-canterville-ghost-commercial-reader-release": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15"
+  },
+  "historical_records": {
+    "superseded_runtime_bindings": {
+      "india-20260925-a-white-heron-commercial-reader-release": {
+        "prior_candidate_sha": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
+        "prior_candidate_decision_sha256": "b56843d5bc8dff2bb32dc1fe026a023fa63087124dd10e6500a6593a9bff4bcf",
+        "prior_registry_binding_sha256": "dbd8231df761f3d016df2db8557b944ff769bdf5c9bd72298648b9d32231ae53",
+        "superseded_reason": "Derived publication component hashes changed while source, text, cover, territory, uses, and legal basis remained unchanged."
+      },
+      "india-20260925-the-gift-of-the-magi-commercial-reader-release": {
+        "prior_candidate_sha": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
+        "prior_candidate_decision_sha256": "e9b179cc23e118f6210de9978d7f4ab62737a8d3718380e3d59fd8187aade98b",
+        "prior_registry_binding_sha256": "9fd042186ad91fda9547180e04de76bea35ed9b8e6201765cd14a86891fac3dd",
+        "superseded_reason": "A derived checksum row referenced a root-only file absent from the runtime package; the row was removed without changing rights-relevant content."
+      },
+      "india-20260925-the-canterville-ghost-commercial-reader-release": {
+        "prior_candidate_sha": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
+        "prior_candidate_decision_sha256": "e3ed2c48b6ca8b8821fc3cf735dec04615706b642f8bcc898f5e8f0b4d5479ea",
+        "prior_registry_binding_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+        "superseded_reason": "The current decision rebinds only the derived publication-manifest hash; rights-relevant inputs remain unchanged."
+      }
+    }
   },
   "revoked_decision_ids": [],
   "pilot_dispositions": {

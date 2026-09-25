@@ -15,7 +15,7 @@ describe("auth and account customer-copy contract", () => {
     expect(authShell).toContain("A valid Reading Pass is required from page 4.");
     [login, signup].forEach((page) => {
       expect(page).toContain("A valid Reading Pass is required from page 4");
-      expect(page).toContain("pass purchases are not available yet");
+      expect(page).toContain("Pass purchases are not available yet.");
     });
     expect(account).toContain(LOCKED_PRODUCT_SENTENCE);
   });

@@ -1,0 +1,47 @@
+{
+  "schema_version": "earnalism.derived-release-rebinding.v1",
+  "decision": "REBIND_CURRENT_COMMERCIAL_RELEASE_DECISIONS_WITHOUT_REOPENING_RIGHTS_CLEARANCE",
+  "release": {
+    "pull_request": 433,
+    "base_sha": "6909c26c334086767a7dfcb3f709eee66ac2ea9d",
+    "prior_candidate_sha": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
+    "access_model": "3_PAGE_PREVIEW_PLUS_COMMERCIAL_ENTITLEMENT",
+    "public_audio": "DISABLED"
+  },
+  "classification": {
+    "canonical_literary_text": "UNCHANGED",
+    "identified_source_or_edition": "UNCHANGED",
+    "cover_asset_or_provenance": "UNCHANGED",
+    "underlying_rights_basis": "UNCHANGED",
+    "publication_and_access_metadata": "DERIVED_COMMERCIAL_RELEASE_PACKAGING",
+    "audio_metadata": "UNCHANGED_AND_PUBLIC_AUDIO_DISABLED",
+    "seo_or_discovery_metadata": "NOT_A_RIGHTS_RELEVANT_INPUT",
+    "rights_reinvestigation_required": false
+  },
+  "titles": {
+    "a-white-heron": {
+      "rights_relevant_content_changed": false,
+      "rebind_reason": "The current runtime decision needed to bind the already-present commercial publication, approval, and public-book component hashes. The checksum inventory incorrectly included rights_decision.json, creating a circular derived binding; that self-reference was removed.",
+      "historical_runtime_decision_sha256": "b56843d5bc8dff2bb32dc1fe026a023fa63087124dd10e6500a6593a9bff4bcf",
+      "historical_registry_binding_sha256": "dbd8231df761f3d016df2db8557b944ff769bdf5c9bd72298648b9d32231ae53",
+      "current_checksum_manifest_sha256": "fad32018ce69bef8229b63ab7d9819599a394f62c1ce836328234479d091fe7e",
+      "current_runtime_decision_sha256": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388"
+    },
+    "the-gift-of-the-magi": {
+      "rights_relevant_content_changed": false,
+      "rebind_reason": "The runtime checksum inventory was amended with a root-only highlight_sync.json entry. The runtime package does not contain that file, so the unsupported derived row was removed; the current decision continues to bind the current publication manifest.",
+      "historical_runtime_decision_sha256": "e9b179cc23e118f6210de9978d7f4ab62737a8d3718380e3d59fd8187aade98b",
+      "historical_registry_binding_sha256": "9fd042186ad91fda9547180e04de76bea35ed9b8e6201765cd14a86891fac3dd",
+      "current_checksum_manifest_sha256": "a64af01129b9abef6bdd3a99785c4143d9535b2a66c338ff4d1980a8d708b73f",
+      "current_runtime_decision_sha256": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773"
+    },
+    "the-canterville-ghost": {
+      "rights_relevant_content_changed": false,
+      "rebind_reason": "Only the active decision's publication-manifest binding changed; the resulting canonical decision digest already matches the retained registry binding.",
+      "historical_runtime_decision_sha256": "e3ed2c48b6ca8b8821fc3cf735dec04615706b642f8bcc898f5e8f0b4d5479ea",
+      "historical_registry_binding_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+      "current_runtime_decision_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15"
+    }
+  },
+  "historical_evidence": "The root controlled-publication decisions and retained prior registry records are preserved. This record binds only the active runtime decision layer."
+}

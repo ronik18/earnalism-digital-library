@@ -113,7 +113,7 @@ export default function Login() {
       footer={<p className="mt-8 text-center text-sm font-light text-charcoal-soft">New to The Earnalism? <Link to="/signup" className="inline-flex min-h-11 items-center text-burgundy underline decoration-[var(--brand-gold)]/60 underline-offset-4 hover:decoration-[var(--brand-gold)]" data-testid="link-to-signup">Create an account</Link></p>}
     >
         <div className="auth-account-note mt-5 rounded-xl border px-4 py-3 text-xs leading-relaxed text-charcoal-soft" data-testid="login-continuation-note">
-              The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4; pass purchases are not available yet. Audiobooks are unavailable.
+          The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet. Audiobooks are unavailable.
         </div>
 
         {GOOGLE_CLIENT_ID && <GoogleSignInButton onComplete={completeGoogle} />}

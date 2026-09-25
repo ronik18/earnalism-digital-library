@@ -10,14 +10,14 @@
     "source_evidence": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3",
     "approval_evidence": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954",
     "checksum_manifest": "a64af01129b9abef6bdd3a99785c4143d9535b2a66c338ff4d1980a8d708b73f",
-    "publication_manifest": "f38f55a350ccffad7721678211acf6bbf0b816c27fd2a9ddf9dcc6878207b9ec"
+    "publication_manifest": "62d336265746f1e47879a0e13c64ca725b83c463b5ac2dd06213f0358d2a8a24"
   },
   "territories": ["IN"],
   "uses": ["catalog_metadata", "cover_display", "reader_preview", "reader_delivery", "reading_pass_session", "reading_pass_renewal"],
   "valid_from": "2026-09-24T00:00:00+00:00",
   "valid_until": "2036-09-25T00:00:00+00:00",
   "basis": "India-only commercial text Reader use under the owner's direct first-batch release instruction. Bound evidence records O. Henry/William Sydney Porter, the applicable expired India term branches, identified original-language source, canonical integrity, and cleared cover provenance. No audio or non-India use is accepted.",
-  "evidence_sha256": ["b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3", "f38f55a350ccffad7721678211acf6bbf0b816c27fd2a9ddf9dcc6878207b9ec"],
+  "evidence_sha256": ["b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3", "62d336265746f1e47879a0e13c64ca725b83c463b5ac2dd06213f0358d2a8a24"],
   "accepted_by": "REO ENTERPRISE proprietor under the direct user-provided first commercial batch mandate dated 2026-09-25",
   "conditions_satisfied": true
 }

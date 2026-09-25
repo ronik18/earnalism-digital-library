@@ -27,10 +27,6 @@
       "sha256": "7a7ed969c6061c70025b160ef6f951efcba37ba6ffbef5b89f8e51ed274d7c3a"
     },
     {
-      "file": "rights_decision.json",
-      "sha256": "7a1edc8533649b238fdf3ea3b2ef847b8ad442983958ddac20e95878330b824c"
-    },
-    {
       "file": "source_evidence.json",
       "sha256": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819"
     }
