@@ -29,7 +29,10 @@ export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
   "frontend/src/styles/library-paper-review.css",
   "frontend/src/pages/Library.jsx",
 ];
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE;
+// The prior Home-sections record remains an immutable historical transition.
+// Runtime/evidence callers must use the later, explicitly authorized India
+// commercial cutover record as the active decision.
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;

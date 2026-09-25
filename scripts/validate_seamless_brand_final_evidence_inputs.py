@@ -61,8 +61,8 @@ def main():
     require(library.get("surface") == "library_interaction_surface", "Library baseline surface is invalid", failures)
     require(library.get("result") == "PASS" and library.get("changed_from_previous") is True and library.get("expected_change") is True, "Library baseline transition result fails", failures)
     require(library.get("expected_surface_sha256") == library.get("observed_surface_sha256"), "Library baseline expected and observed fingerprints differ", failures)
-    require(library_path == "docs/design-system/home-sections-library-interaction-baseline.json" and Path(library_path).exists(), "Library baseline record is missing", failures)
-    require(library.get("expected_surface_sha256") == "3cbf2dda50902d4745849eb8157af447cf26af0ceb17e93ba9aaf604e621ffc7", "Library baseline expected fingerprint is not the reviewed Home sections value", failures)
+    require(library_path == "docs/design-system/india-commercial-cutover-home-library-interaction-baseline.json" and Path(library_path).exists(), "Library baseline record is missing", failures)
+    require(library.get("expected_surface_sha256") == "c2f93da984c39f54915df94541f98ce1931e128781b9a9c69621d66b57ac1846", "Library baseline expected fingerprint is not the authorized India commercial cutover value", failures)
     if library_path and Path(library_path).exists() and library.get("approval_source_sha256"):
         require(sha(library_path) == library.get("approval_source_sha256"), "Library baseline record SHA mismatch", failures)
     route_hash_path = data.get("route_hashes", {}).get("path")
