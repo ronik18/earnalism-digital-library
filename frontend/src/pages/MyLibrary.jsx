@@ -1,4 +1,4 @@
-import { ArrowUpRight, BookOpen, Headphones, LibraryBig, Sparkles } from "lucide-react";
+import { ArrowUpRight, BookOpen, Clock3, Headphones, LibraryBig, Sparkles } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import ExperienceBottomNavigation from "../experiences-v2/shared/ExperienceBottomNavigation";
