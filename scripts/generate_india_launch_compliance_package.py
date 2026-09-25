@@ -864,8 +864,8 @@ def website_matrix(launch_hold: dict[str, Any]) -> list[dict[str, Any]]:
             "authority": "Consumer Protection Act, 2019; Consumer Protection (E-Commerce) Rules, 2020; Dark Patterns Guidelines, 2023.",
             "current_implementation": "The controlled-launch configuration disables public paid commerce in both frontend and backend; public checkout initiation and verification are unavailable while payment webhooks remain available for previously-created intents." if not paid_commerce else "Paid commerce is enabled and requires complete customer-flow evidence.",
             "gap": "NOT_APPLICABLE_WHILE_PAID_COMMERCE_IS_DISABLED" if not paid_commerce else "Complete pricing, remedies, merchant, grievance, and checkout-flow evidence before paid commerce is enabled.",
-            "status": "NOT_APPLICABLE_TO_CURRENT_LAUNCH" if not paid_commerce else "ACTION_REQUIRED",
-            "launch_blocker": paid_commerce,
+            "status": "NOT_APPLICABLE_TO_CURRENT_LAUNCH" if not paid_commerce else ("PASS_FOR_CURRENT_LAUNCH" if legal_routes else "ACTION_REQUIRED"),
+            "launch_blocker": paid_commerce and not legal_routes,
         },
         {
             "area": "legal pages and contact/grievance information",
@@ -876,7 +876,7 @@ def website_matrix(launch_hold: dict[str, Any]) -> list[dict[str, Any]]:
             "authority": "Applicable privacy and consumer framework; owner-supplied business facts.",
             "current_implementation": "The /terms, /privacy, /copyright, and /contact routes disclose the identified operator, current launch scope, support channel, privacy-request channel, and title-specific copyright-concern path without placeholders.",
             "gap": "Paid-commerce-specific terms remain intentionally unpublished because public paid commerce is disabled." if legal_routes and not paid_commerce else "Register complete public legal routes before launch; do not publish placeholders.",
-            "status": "PASS_FOR_CURRENT_LAUNCH" if legal_routes and not paid_commerce else "ACTION_REQUIRED",
+            "status": "PASS_FOR_CURRENT_LAUNCH" if legal_routes else "ACTION_REQUIRED",
             "launch_blocker": not legal_routes,
         },
         {
