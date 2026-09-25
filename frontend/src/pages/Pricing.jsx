@@ -356,7 +356,7 @@ function PricingAvailable() {
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <CreditCard size={18} strokeWidth={1.55} className="text-gold" />
             <h2 className="mt-4 font-serif-display text-xl text-burgundy">Time goes to your wallet</h2>
-            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">After payment confirmation, reading time is credited to your wallet and can be used when you return.</p>
+            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">After payment confirmation, reading time is credited to your wallet, used only while you read, and remains available when you return.</p>
           </div>
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <ShieldCheck size={18} strokeWidth={1.55} className="text-gold" />

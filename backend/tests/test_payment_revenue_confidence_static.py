@@ -82,6 +82,7 @@ def test_verify_endpoint_is_user_scoped_signed_and_rejects_expired_credit() -> N
     assert "_hmac_sha256_hex" in verify
     assert "hmac.compare_digest" in verify
     assert '"failed_reason":"bad_signature"' in compact(verify)
+    assert "_fetch_captured_razorpay_payment" in verify
     assert "_credit_wallet_for_intent" in verify
     assert 'refreshed.get("status") != "credited"' in verify
     assert "Top-up intent is expired or not creditable" in verify
@@ -96,6 +97,8 @@ def test_webhook_requires_secret_signature_dedupes_and_marks_failures() -> None:
     assert "payment_webhook_events.find_one" in webhook
     assert "duplicate" in webhook
     assert 'event == "payment.captured"' in webhook
+    assert "_razorpay_payment_matches_intent(payment, intent)" in webhook
+    assert '"rejected_payment_mismatch"' in webhook
     assert "_credit_wallet_for_intent" in webhook
     assert 'event == "payment.failed"' in webhook
     assert '"status":"failed"' in compact(webhook)
@@ -153,8 +156,7 @@ def test_public_payment_copy_does_not_sell_subscription_ownership_or_audiobooks(
         "listen now",
     ]:
         assert forbidden not in lowered
-    assert "dracula audio remains in preparation" in lowered
-    assert "will be introduced only after source, rights, and qa pass" in lowered
+    assert "audiobooks are unavailable for this launch" in lowered
 
 
 def test_payment_confidence_report_keeps_public_audio_and_live_money_blocked() -> None:
