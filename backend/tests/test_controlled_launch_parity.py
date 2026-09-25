@@ -87,14 +87,14 @@ def test_root_controlled_launch_keeps_yugalanguriya_and_every_other_title_held()
     assert FULLY_EXCLUDED_BENGALI_TITLE not in root_launch["audio_enabled_slugs"]
 
 
-def test_india_commercial_text_release_is_mirrored_and_commerce_and_audio_remain_disabled():
+def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
 
     for launch in (root_launch, backend_launch):
         assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
         assert launch["public_audio_exposure_enabled"] is False
-        assert launch["public_paid_commerce_enabled"] is False
+        assert launch["public_paid_commerce_enabled"] is True
         assert launch["text_access_mode"] == "COMMERCIAL_ENTITLEMENT"
         assert launch["audio_enabled_slugs"] == []
 
@@ -116,7 +116,7 @@ def test_six_title_release_uses_commercial_mode_and_keeps_checkout_audio_disable
         assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
         assert set(launch["title_access_modes"]) == INDIA_TEXT_RELEASE_SLUGS
         assert set(launch["title_access_modes"].values()) == {"COMMERCIAL_ENTITLEMENT"}
-        assert launch["public_paid_commerce_enabled"] is False
+        assert launch["public_paid_commerce_enabled"] is True
         assert launch["public_audio_exposure_enabled"] is False
 
 

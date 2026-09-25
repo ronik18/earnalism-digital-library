@@ -17,7 +17,7 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
 // The India text launch does not offer paid Reading Passes until the live
 // Razorpay, consumer-remedy, and accounting surface has been independently
 // qualified.  This is a release control, not a client-only presentation hint.
-export const PUBLIC_PAID_COMMERCE_ENABLED = false;
+export const PUBLIC_PAID_COMMERCE_ENABLED = true;
 export const PUBLIC_AUDIO_EXPOSURE_ENABLED = false;
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 // Pipeline candidates are never matched to publications by title, cover, or
