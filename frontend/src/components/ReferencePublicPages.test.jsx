@@ -83,7 +83,7 @@ describe("Reference public page surfaces", () => {
     expect(perspectives).toContain("Reader perspectives</p>");
     expect(perspectives).not.toContain("imagined with care");
     expect(perspectives).toContain("Illustrative reader perspective");
-    expect(perspectives).toContain("Four imagined reader perspectives.");
+    expect(perspectives).toContain("Four reader perspectives.");
     expect(perspectives).toContain('to="/library" className="reference-button reference-button--gold" data-testid="reader-perspectives-cta"');
     for (const city of ["kolkata", "london", "chennai", "new-delhi"]) expect(perspectives).toContain(`${city}-reader.webp`);
     expect(perspectiveStyles).toContain(".reference-reader-perspectives__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))");

@@ -142,7 +142,10 @@ async function capture(state, context) {
   // the actual route has rendered; a missing/held detail must fail, not yield a
   // stable screenshot of the empty shell.
   if (!baseline) {
-    await page.locator(state.family === "book" ? '[data-testid="book-page"]' : '[data-testid="paid-commerce-disabled"]').waitFor({ state: "visible" });
+    const readinessSelector = state.family === "book"
+      ? '[data-testid="book-page"]'
+      : (publicPaidCommerceEnabled ? '[data-testid="pricing-reference-surface"]' : '[data-testid="paid-commerce-disabled"]');
+    await page.locator(readinessSelector).waitFor({ state: "visible" });
   }
   await settle(page); const fontResults=await probeFonts(page); await maybeTab(page, state.action); await page.addStyleTag({content:"*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}" }); await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   let one, two, stable=false, stabilityAttempts=0; for (; stabilityAttempts<3 && !stable; stabilityAttempts += 1) { one=await page.screenshot({ animations:"disabled" }); await page.waitForTimeout(500); two=await page.screenshot({ animations:"disabled" }); stable=sha(one)===sha(two); }
