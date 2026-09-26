@@ -17,12 +17,26 @@ import time
 import uuid
 import pytest
 import requests
+import hashlib
+import hmac
+
+from backend.server import _verified_razorpay_signature
 
 BASE_URL = os.environ.get("REACT_APP_BACKEND_URL", "http://127.0.0.1:8000").rstrip("/")
 API = f"{BASE_URL}/api"
 
 ADMIN_EMAIL = os.environ.get("TEST_ADMIN_EMAIL", "admin@theearnalism.com")
 ADMIN_PASSWORD = os.environ.get("TEST_ADMIN_PASSWORD", "Earnalism@2026")
+
+def test_webhook_signature_is_byte_exact_and_fail_closed():
+    secret = "synthetic-webhook-secret"
+    raw = b'{"event":"payment.captured","unicode":"\xe2\x98\x83"}'
+    signature = hmac.new(secret.encode(), raw, hashlib.sha256).hexdigest()
+    assert _verified_razorpay_signature(secret, raw, [signature]) == (True, "valid")
+    assert _verified_razorpay_signature(secret, raw + b" ", [signature])[0] is False
+    assert _verified_razorpay_signature(secret, raw, ["not-hex"])[1] == "malformed"
+    assert _verified_razorpay_signature(secret, raw, [signature, signature])[1] == "ambiguous"
+    assert _verified_razorpay_signature(secret, raw, [])[1] == "missing"
 
 
 # ---------- shared fixtures ----------

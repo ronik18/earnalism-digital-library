@@ -931,6 +931,16 @@ def _public_paid_commerce_enabled_or_404() -> None:
 def _hmac_sha256_hex(secret: str, body: bytes) -> str:
     return hmac.new(secret.encode("utf-8"), body, hashlib.sha256).hexdigest()
 
+def _verified_razorpay_signature(secret: str, raw_body: bytes, signature_values: list[str]) -> tuple[bool, str]:
+    if len(signature_values) != 1:
+        return False, "missing" if not signature_values else "ambiguous"
+    signature = signature_values[0]
+    if not re.fullmatch(r"[0-9a-fA-F]{64}", signature or ""):
+        return False, "malformed"
+    expected = _hmac_sha256_hex(secret, raw_body)
+    valid = hmac.compare_digest(expected, signature.lower())
+    return valid, "valid" if valid else "invalid"
+
 
 def _razorpay_payment_matches_intent(payment: dict, intent: dict) -> bool:
     """Accept only the exact, captured provider payment for this server order.
@@ -12492,13 +12502,13 @@ async def payments_verify(payload: PaymentVerifyIn, user=Depends(require_user)):
 @api.post("/payments/webhook")
 async def payments_webhook(request: Request):
     raw_body = await request.body()
-    signature = request.headers.get("X-Razorpay-Signature", "")
+    signature_values = request.headers.getlist("X-Razorpay-Signature")
 
     if not RAZORPAY_WEBHOOK_SECRET:
         # Refuse to silently accept unsigned events.
         raise HTTPException(status_code=503, detail="Webhook secret not configured")
-    expected = _hmac_sha256_hex(RAZORPAY_WEBHOOK_SECRET, raw_body)
-    if not hmac.compare_digest(expected, signature):
+    verified, signature_reason = _verified_razorpay_signature(RAZORPAY_WEBHOOK_SECRET, raw_body, signature_values)
+    if not verified:
         # Store the rejected event so admins can audit attempts.
         try:
             await db.payment_webhook_events.insert_one({
@@ -12506,7 +12516,9 @@ async def payments_webhook(request: Request):
                 "event_id": f"rejected:{uuid.uuid4()}",
                 "event": "unknown",
                 "status": "rejected_bad_signature",
-                "raw": raw_body.decode("utf-8", errors="replace")[:8000],
+                "signature_reason": signature_reason,
+                "body_length": len(raw_body),
+                "body_sha256": hashlib.sha256(raw_body).hexdigest(),
                 "created_at": now_iso(),
             })
         except Exception:
@@ -12548,7 +12560,8 @@ async def payments_webhook(request: Request):
         "status": "received",
         "razorpay_order_id": order_id,
         "razorpay_payment_id": payment_id,
-        "raw": raw_body.decode("utf-8", errors="replace")[:8000],
+        "body_length": len(raw_body),
+        "body_sha256": hashlib.sha256(raw_body).hexdigest(),
         "created_at": now_iso(),
     }
 
