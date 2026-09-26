@@ -5530,16 +5530,16 @@ AUTOMATION_ALLOWED_TASKS = {"reader-benchmark", "bridge-fixture"}
 AUTOMATION_TERMINAL_STATES = {"DONE", "FAILED", "WAITING_DEPENDENCY", "WAITING_OWNER", "PAUSED"}
 
 
-def _automation_token_from_request(request: Request) -> str:
+def _automation_token_from_request(request: Request, *, callback: bool = False) -> str:
     authorization = request.headers.get("authorization", "")
     scheme, _, value = authorization.partition(" ")
-    configured = os.environ.get("EARNALISM_AUTOMATION_API_TOKEN", "")
+    configured = os.environ.get("EARNALISM_AUTOMATION_CALLBACK_TOKEN" if callback else "EARNALISM_AUTOMATION_CLIENT_TOKEN", "")
     if scheme.lower() != "bearer" or not configured or not secrets.compare_digest(value, configured):
         raise HTTPException(status_code=401, detail="Automation authentication required")
     return configured
 
 
-async def _dispatch_automation_worker(task_id: str, candidate_head: str, attempt: int) -> None:
+async def _dispatch_automation_worker(task_id: str, candidate_head: str, attempt: int, generation: int = 1) -> None:
     token = os.environ.get("EARNALISM_AUTOMATION_GITHUB_TOKEN", "")
     repository = os.environ.get("EARNALISM_AUTOMATION_GITHUB_REPOSITORY", "")
     workflow = os.environ.get("EARNALISM_AUTOMATION_WORKFLOW", "earnalism-autonomy-worker.yml")
@@ -5549,7 +5549,7 @@ async def _dispatch_automation_worker(task_id: str, candidate_head: str, attempt
             {"$set": {"state": "WAITING_DEPENDENCY", "waiting_reason": "executor credentials are not configured", "updated_at": now_iso()}},
         )
         return
-    payload = _json.dumps({"ref": "main", "inputs": {"task_id": task_id, "candidate_head": candidate_head, "attempt": str(attempt)}}).encode()
+    payload = _json.dumps({"ref": "main", "inputs": {"task_id": task_id, "task_type": "bridge-fixture", "candidate_sha": candidate_head, "generation": str(generation), "attempt": str(attempt)}}).encode()
     url = f"https://api.github.com/repos/{repository}/actions/workflows/{workflow}/dispatches"
     def send() -> None:
         request = UrlRequest(url, data=payload, method="POST", headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json", "Content-Type": "application/json"})
@@ -5573,9 +5573,11 @@ async def automation_create_task(payload: AutomationTaskCreate, request: Request
     if existing:
         return {"task_id": existing["task_id"], "state": existing["state"], "generation": existing.get("generation", 1), "duplicate": True}
     candidate_head = os.environ.get("EARNALISM_AUTOMATION_CANDIDATE_HEAD", "main")
-    task = {"task_id": str(uuid.uuid4()), "request_id": payload.request_id, "task_type": payload.task_type, "brief": payload.brief, "acceptance": payload.acceptance, "candidate_head": candidate_head, "state": "READY", "generation": 1, "attempt": 1, "created_at": now, "updated_at": now}
+    if not re.fullmatch(r"[0-9a-f]{40}", candidate_head):
+        raise HTTPException(status_code=503, detail="Approved candidate SHA is not configured")
+    task = {"task_id": str(uuid.uuid4()), "owner_id": os.environ.get("EARNALISM_AUTOMATION_OWNER_ID", "private-owner"), "request_id": payload.request_id, "task_type": payload.task_type, "brief": payload.brief, "acceptance": payload.acceptance, "candidate_sha": candidate_head, "state": "READY", "generation": 1, "attempt": 1, "created_at": now, "updated_at": now}
     await db.automation_tasks.insert_one(task)
-    asyncio.create_task(_dispatch_automation_worker(task["task_id"], candidate_head, 1))
+    asyncio.create_task(_dispatch_automation_worker(task["task_id"], candidate_head, 1, 1))
     return {"task_id": task["task_id"], "state": "READY", "generation": 1, "duplicate": False}
 
 
@@ -5599,7 +5601,7 @@ async def automation_get_task_result(task_id: str, request: Request):
 
 @api.post("/automation/tasks/{task_id}/result")
 async def automation_publish_task_result(task_id: str, payload: AutomationTaskResult, request: Request):
-    _automation_token_from_request(request)
+    _automation_token_from_request(request, callback=True)
     task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")

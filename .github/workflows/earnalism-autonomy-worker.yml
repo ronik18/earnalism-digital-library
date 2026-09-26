@@ -3,8 +3,21 @@ name: Earnalism autonomy worker
 on:
   workflow_dispatch:
     inputs:
-      task_id: {required: true, type: string}
-      candidate_head: {required: true, type: string}
+      task_id:
+        required: true
+        type: string
+      task_type:
+        required: true
+        type: string
+      candidate_sha:
+        required: true
+        type: string
+      generation:
+        required: true
+        type: string
+      attempt:
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -13,38 +26,60 @@ jobs:
   worker-and-reviewer:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      TASK_ID: ${{ inputs.task_id }}
+      TASK_TYPE: ${{ inputs.task_type }}
+      CANDIDATE_SHA: ${{ inputs.candidate_sha }}
+      TASK_GENERATION: ${{ inputs.generation }}
+      TASK_ATTEMPT: ${{ inputs.attempt }}
     steps:
-      - uses: actions/checkout@v4
-        with: {ref: ${{ inputs.candidate_head }}}
+      - name: Check out approved candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.candidate_sha }}
       - uses: actions/setup-python@v5
-        with: {python-version: '3.11'}
+        with:
+          python-version: '3.11'
       - name: Run bounded worker
-        run: python scripts/autonomy_worker.py --task-id '${{ inputs.task_id }}' --candidate-head '${{ inputs.candidate_head }}' --output worker-result.json
+        id: worker
+        run: >-
+          python scripts/autonomy_worker.py --task-id "$TASK_ID"
+          --task-type "$TASK_TYPE" --candidate-sha "$CANDIDATE_SHA"
+          --generation "$TASK_GENERATION" --attempt "$TASK_ATTEMPT"
+          --output worker-result.json
       - name: Review worker evidence
-        run: python scripts/autonomy_reviewer.py --task-id '${{ inputs.task_id }}' --candidate-head '${{ inputs.candidate_head }}' --worker-result worker-result.json --output review-result.json
+        if: always() && steps.worker.outcome == 'success'
+        run: >-
+          python scripts/autonomy_reviewer.py --task-id "$TASK_ID"
+          --candidate-sha "$CANDIDATE_SHA" --generation "$TASK_GENERATION"
+          --worker-result worker-result.json --output review-result.json
+      - name: Write structured failure result
+        if: always() && steps.worker.outcome != 'success'
+        run: |
+          python - <<'PY'
+          import json, os
+          json.dump({'task_id': os.environ['TASK_ID'], 'tested_revision': os.environ['CANDIDATE_SHA'], 'generation': int(os.environ['TASK_GENERATION']), 'decision': 'CHANGES_REQUIRED', 'findings': ['worker execution failed before producing a result']}, open('review-result.json', 'w'), indent=2)
+          PY
       - name: Publish durable result
         if: always()
         env:
           AUTOMATION_API_URL: ${{ secrets.EARNALISM_AUTOMATION_API_URL }}
-          AUTOMATION_API_TOKEN: ${{ secrets.EARNALISM_AUTOMATION_API_TOKEN }}
-          TASK_ID: ${{ inputs.task_id }}
-          CANDIDATE_HEAD: ${{ inputs.candidate_head }}
+          AUTOMATION_CALLBACK_TOKEN: ${{ secrets.EARNALISM_AUTOMATION_CALLBACK_TOKEN }}
         run: |
-          test -n "$AUTOMATION_API_URL" && test -n "$AUTOMATION_API_TOKEN"
+          test -n "$AUTOMATION_API_URL"
+          test -n "$AUTOMATION_CALLBACK_TOKEN"
           python - <<'PY'
           import json, os, urllib.request
-          review=json.load(open('review-result.json'))
-          worker=json.load(open('worker-result.json'))
-          payload=json.dumps({
-            'tested_revision': review['tested_revision'],
-            'generation': 1,
-            'event_id': f"worker-review-${{ github.run_id }}",
-            'decision': review['decision'],
-            'result': {'worker': worker, 'review': review},
-          }).encode()
-          req=urllib.request.Request(f"{os.environ['AUTOMATION_API_URL'].rstrip('/')}/api/automation/tasks/{os.environ['TASK_ID']}/result", data=payload, method='POST', headers={'Authorization':f"Bearer {os.environ['AUTOMATION_API_TOKEN']}",'Content-Type':'application/json'})
+          review = json.load(open('review-result.json'))
+          worker = json.load(open('worker-result.json')) if os.path.exists('worker-result.json') else {}
+          payload = json.dumps({'tested_revision': review['tested_revision'], 'generation': int(os.environ['TASK_GENERATION']), 'event_id': f"worker-review-{os.environ['GITHUB_RUN_ID']}", 'decision': review['decision'], 'result': {'worker': worker, 'review': review, 'attempt': int(os.environ['TASK_ATTEMPT'])}}).encode()
+          url = f"{os.environ['AUTOMATION_API_URL'].rstrip('/')}/api/automation/tasks/{os.environ['TASK_ID']}/result"
+          req = urllib.request.Request(url, data=payload, method='POST', headers={'Authorization': f"Bearer {os.environ['AUTOMATION_CALLBACK_TOKEN']}", 'Content-Type': 'application/json'})
           with urllib.request.urlopen(req, timeout=15) as response:
-            print(response.read().decode())
+              print(response.read().decode())
           PY
       - uses: actions/upload-artifact@v4
-        with: {name: earnalism-autonomy-${{ inputs.task_id }}-${{ github.run_id }}, path: '*-result.json'}
+        if: always()
+        with:
+          name: earnalism-autonomy-${{ inputs.task_id }}-${{ github.run_id }}
+          path: '*-result.json'
