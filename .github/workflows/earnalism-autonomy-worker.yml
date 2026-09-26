@@ -16,7 +16,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-        with: {ref: ${{ inputs.candidate_head }} }
+        with:
+          ref: ${{ inputs.candidate_head }}
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
       - name: Run bounded approved worker
