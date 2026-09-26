@@ -18,9 +18,13 @@ on:
       attempt:
         required: true
         type: string
+      correction_context:
+        required: false
+        type: string
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   worker-and-reviewer:
@@ -32,6 +36,7 @@ jobs:
       CANDIDATE_SHA: ${{ inputs.candidate_sha }}
       TASK_GENERATION: ${{ inputs.generation }}
       TASK_ATTEMPT: ${{ inputs.attempt }}
+      CORRECTION_CONTEXT: ${{ inputs.correction_context }}
     steps:
       - name: Check out approved candidate
         uses: actions/checkout@v4
@@ -40,19 +45,29 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install bounded Codex SDK
+        if: inputs.task_type == 'codex-implementation-fixture'
+        run: npm ci --ignore-scripts
       - name: Run bounded worker
         id: worker
         run: >-
           python scripts/autonomy_worker.py --task-id "$TASK_ID"
           --task-type "$TASK_TYPE" --candidate-sha "$CANDIDATE_SHA"
           --generation "$TASK_GENERATION" --attempt "$TASK_ATTEMPT"
+          --correction-context "$CORRECTION_CONTEXT"
           --output worker-result.json
+        env:
+          EARNALISM_CODEX_OPENAI_API_KEY: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
+          OPENAI_WIF_AUDIENCE: ${{ vars.OPENAI_WIF_AUDIENCE }}
+          OPENAI_IDENTITY_PROVIDER_ID: ${{ vars.OPENAI_IDENTITY_PROVIDER_ID }}
+          OPENAI_SERVICE_ACCOUNT_ID: ${{ vars.OPENAI_SERVICE_ACCOUNT_ID }}
       - name: Review worker evidence
         if: always() && steps.worker.outcome == 'success'
         run: >-
           python scripts/autonomy_reviewer.py --task-id "$TASK_ID"
           --candidate-sha "$CANDIDATE_SHA" --generation "$TASK_GENERATION"
           --attempt "$TASK_ATTEMPT"
+          --task-type "$TASK_TYPE"
           --worker-result worker-result.json --output review-result.json
       - name: Write structured failure result
         if: always() && steps.worker.outcome != 'success'
