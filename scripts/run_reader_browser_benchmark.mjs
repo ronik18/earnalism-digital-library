@@ -27,6 +27,9 @@ const waitForCanonical = async (page, expected, timeout = 30000) => {
 try {
   for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
     const page = await browser.newPage({ viewport });
+    const requests = [];
+    const loaderStates = [];
+    page.on("request", (request) => { if (request.url().includes("/reading-pass/")) requests.push(request.url()); });
     const identity = `reader-benchmark-${crypto.randomUUID().slice(0, 12)}@example.com`;
     const password = `local-${crypto.randomUUID()}`;
     const post = async (url, body, token) => {
@@ -46,13 +49,15 @@ try {
     const navigation = page.locator('nav[aria-label="Page navigation"]');
     const next = navigation.getByRole("button").nth(1);
     const prev = navigation.getByRole("button").nth(0);
-    const measure = async (name, action, from, to) => { const started = performance.now(); await action(); await waitForCanonical(page, to); rows.push({ viewport, scenario: name, from, to, elapsed_ms: Math.round(performance.now() - started) }); };
+    const measure = async (name, action, from, to) => { const started = performance.now(); await action(); await waitForCanonical(page, to); const content = await page.getByTestId("reader-page-content").innerText(); rows.push({ viewport, scenario: name, from, to, elapsed_ms: Math.round(performance.now() - started), canonical_content_nonempty: Boolean(content.trim()), page_indicator_match: (await page.locator('select[aria-label="Go to page"]').inputValue()) === String(to), request_count: requests.length, loader_observed: loaderStates.length > 0 }); };
     await page.waitForTimeout(150);
     await measure("uncached-next", () => next.click({ force: true }), 1, 2);
     await measure("prefetched-next", () => next.click({ force: true }), 2, 3);
     await measure("cached-previous", () => prev.click({ force: true }), 3, 2);
     await measure("rapid-navigation", () => next.dblclick({ delay: 20, force: true }), 2, 3);
-    await page.route("**/reading-pass/books/*/pages/3", async (route) => { await new Promise((resolve) => setTimeout(resolve, 450)); await route.continue(); });
+    await page.addInitScript(() => { new MutationObserver(() => { const node = [...document.querySelectorAll("body *")].find((item) => /Opening Page/i.test(item.textContent || "")); if (node) window.__readerLoaderSeen = true; }).observe(document.documentElement, { subtree: true, childList: true, attributes: true }); });
+    let delayIntercepted = false;
+    await page.route("**/reading-pass/books/*/pages/3", async (route) => { delayIntercepted = true; await new Promise((resolve) => setTimeout(resolve, 450)); await route.continue(); });
     const retainedBefore = await page.getByTestId("reader-page-content").innerText();
     await prev.click({ force: true });
     await waitForCanonical(page, 2);
@@ -61,7 +66,9 @@ try {
     const duringDelay = await page.getByTestId("reader-page-content").innerText();
     if (!duringDelay || !retainedBefore) throw new Error("delayed navigation lost current page shell");
     await waitForCanonical(page, 3);
-    rows.push({ viewport, scenario: "delayed-response-retains-current-page", from: 2, to: 3, elapsed_ms: Math.round(performance.now() - delayedStarted), retained_current_page: true });
+    const delayedContent = await page.getByTestId("reader-page-content").innerText();
+    rows.push({ viewport, scenario: "delayed-response-retains-current-page", from: 2, to: 3, elapsed_ms: Math.round(performance.now() - delayedStarted), retained_current_page: true, canonical_content_nonempty: Boolean(delayedContent.trim()), page_indicator_match: (await page.locator('select[aria-label="Go to page"]').inputValue()) === "3", delay_intercepted: delayIntercepted, request_count: requests.length, loader_observed: loaderStates.length > 0 });
+    if (!delayIntercepted) throw new Error("delayed request handler was never reached");
     if (/Opening Page/i.test(await page.locator("body").innerText())) loaderCount += 1;
     await page.close();
   }

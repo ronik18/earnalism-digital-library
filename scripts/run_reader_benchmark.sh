@@ -26,7 +26,19 @@ from pathlib import Path
 out = Path(sys.argv[1])
 admission = json.loads((out.parent / "admission.json").read_text())
 browser = json.loads((out.parent / "browser.json").read_text())
-report = {"schema_version":"earnalism.reader-benchmark.v2", "result":"PASS", "admission": admission, "browser": browser}
+required = {"uncached-next", "prefetched-next", "cached-previous", "rapid-navigation", "delayed-response-retains-current-page"}
+if browser.get("result") != "PASS" or browser.get("mode") != "local-authenticated-reader-controls":
+    raise SystemExit("browser evidence is not an authenticated control benchmark")
+if set(browser.get("scenarios", [])) != required or len(browser.get("rows", [])) < len(required):
+    raise SystemExit("required Reader benchmark scenarios are incomplete")
+for row in browser["rows"]:
+    if not row.get("canonical_content_nonempty") or not row.get("page_indicator_match"):
+        raise SystemExit("sample lacks canonical content/page-indicator evidence")
+    if row.get("scenario") == "delayed-response-retains-current-page" and not row.get("delay_intercepted"):
+        raise SystemExit("delayed scenario did not intercept its intended request")
+if admission.get("result") not in {"PASS", "pass"}:
+    raise SystemExit("admission evidence did not pass")
+report = {"schema_version":"earnalism.reader-benchmark.v3", "result":"PASS", "admission": admission, "browser": browser, "evidence_validated": True}
 out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
 print(json.dumps({"result":"PASS", "admission":"PASS", "browser_samples":browser.get("samples",0)}))
 PY
