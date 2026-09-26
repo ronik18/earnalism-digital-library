@@ -5503,6 +5503,144 @@ if os.environ.get("JUDOSCALE_URL", "").strip():
     logger.info("Judoscale FastAPI request queue middleware enabled.")
 api = APIRouter(prefix="/api")
 
+
+# Private ChatGPT/Codex task bridge.  The bridge is deliberately separate from
+# admin authentication and exposes only an allow-listed task vocabulary.
+class AutomationTaskCreate(BaseModel):
+    request_id: str = Field(min_length=8, max_length=160)
+    task_type: str = Field(min_length=1, max_length=80)
+    brief: str = Field(min_length=1, max_length=4000)
+    acceptance: List[str] = Field(default_factory=list, max_length=30)
+
+
+class AutomationTaskInstruction(BaseModel):
+    generation: int = Field(ge=1)
+    instruction: str = Field(min_length=1, max_length=4000)
+
+
+class AutomationTaskResult(BaseModel):
+    tested_revision: str = Field(min_length=7, max_length=64)
+    generation: int = Field(ge=1)
+    event_id: str = Field(min_length=1, max_length=160)
+    decision: str = Field(min_length=1, max_length=80)
+    result: Dict[str, Any] = Field(default_factory=dict)
+
+
+AUTOMATION_ALLOWED_TASKS = {"reader-benchmark", "bridge-fixture"}
+AUTOMATION_TERMINAL_STATES = {"DONE", "FAILED", "WAITING_DEPENDENCY", "WAITING_OWNER", "PAUSED"}
+
+
+def _automation_token_from_request(request: Request) -> str:
+    authorization = request.headers.get("authorization", "")
+    scheme, _, value = authorization.partition(" ")
+    configured = os.environ.get("EARNALISM_AUTOMATION_API_TOKEN", "")
+    if scheme.lower() != "bearer" or not configured or not secrets.compare_digest(value, configured):
+        raise HTTPException(status_code=401, detail="Automation authentication required")
+    return configured
+
+
+async def _dispatch_automation_worker(task_id: str, candidate_head: str, attempt: int) -> None:
+    token = os.environ.get("EARNALISM_AUTOMATION_GITHUB_TOKEN", "")
+    repository = os.environ.get("EARNALISM_AUTOMATION_GITHUB_REPOSITORY", "")
+    workflow = os.environ.get("EARNALISM_AUTOMATION_WORKFLOW", "earnalism-autonomy-worker.yml")
+    if not token or not repository:
+        await db.automation_tasks.update_one(
+            {"task_id": task_id, "state": "READY"},
+            {"$set": {"state": "WAITING_DEPENDENCY", "waiting_reason": "executor credentials are not configured", "updated_at": now_iso()}},
+        )
+        return
+    payload = _json.dumps({"ref": "main", "inputs": {"task_id": task_id, "candidate_head": candidate_head, "attempt": str(attempt)}}).encode()
+    url = f"https://api.github.com/repos/{repository}/actions/workflows/{workflow}/dispatches"
+    def send() -> None:
+        request = UrlRequest(url, data=payload, method="POST", headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json", "Content-Type": "application/json"})
+        with urlopen(request, timeout=15):
+            return
+    try:
+        await asyncio.to_thread(send)
+        await db.automation_tasks.update_one({"task_id": task_id, "state": "READY"}, {"$set": {"state": "RUNNING", "updated_at": now_iso(), "executor": "github-actions"}})
+    except Exception as exc:
+        logger.warning("Automation worker dispatch failed: %s", type(exc).__name__)
+        await db.automation_tasks.update_one({"task_id": task_id, "state": "READY"}, {"$set": {"state": "WAITING_DEPENDENCY", "waiting_reason": "executor dispatch failed", "updated_at": now_iso()}})
+
+
+@api.post("/automation/tasks")
+async def automation_create_task(payload: AutomationTaskCreate, request: Request):
+    _automation_token_from_request(request)
+    if payload.task_type not in AUTOMATION_ALLOWED_TASKS:
+        raise HTTPException(status_code=400, detail="Task type is not approved for automation")
+    now = now_iso()
+    existing = await db.automation_tasks.find_one({"request_id": payload.request_id}, {"_id": 0})
+    if existing:
+        return {"task_id": existing["task_id"], "state": existing["state"], "generation": existing.get("generation", 1), "duplicate": True}
+    candidate_head = os.environ.get("EARNALISM_AUTOMATION_CANDIDATE_HEAD", "main")
+    task = {"task_id": str(uuid.uuid4()), "request_id": payload.request_id, "task_type": payload.task_type, "brief": payload.brief, "acceptance": payload.acceptance, "candidate_head": candidate_head, "state": "READY", "generation": 1, "attempt": 1, "created_at": now, "updated_at": now}
+    await db.automation_tasks.insert_one(task)
+    asyncio.create_task(_dispatch_automation_worker(task["task_id"], candidate_head, 1))
+    return {"task_id": task["task_id"], "state": "READY", "generation": 1, "duplicate": False}
+
+
+@api.get("/automation/tasks/{task_id}")
+async def automation_get_task(task_id: str, request: Request):
+    _automation_token_from_request(request)
+    task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return task
+
+
+@api.get("/automation/tasks/{task_id}/result")
+async def automation_get_task_result(task_id: str, request: Request):
+    _automation_token_from_request(request)
+    task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return {"task_id": task_id, "state": task.get("state"), "result": task.get("result"), "waiting_reason": task.get("waiting_reason"), "updated_at": task.get("updated_at")}
+
+
+@api.post("/automation/tasks/{task_id}/result")
+async def automation_publish_task_result(task_id: str, payload: AutomationTaskResult, request: Request):
+    _automation_token_from_request(request)
+    task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    if payload.generation != task.get("generation", 1) or payload.tested_revision != task.get("candidate_head", payload.tested_revision):
+        raise HTTPException(status_code=409, detail="Stale task result")
+    if payload.event_id in task.get("consumed_events", []):
+        return {"task_id": task_id, "state": task.get("state"), "duplicate": True}
+    transitions = {"ACCEPT_WITHIN_SCOPE": "DONE", "ACCEPT": "DONE", "CHANGES_REQUIRED": "CHANGES_REQUIRED", "WAITING_DEPENDENCY": "WAITING_DEPENDENCY", "BLOCKED_SPECIFIC_FACT": "WAITING_OWNER"}
+    state = transitions.get(payload.decision)
+    if not state:
+        raise HTTPException(status_code=400, detail="Unsupported result decision")
+    await db.automation_tasks.update_one(
+        {"task_id": task_id, "generation": payload.generation},
+        {"$set": {"state": state, "result": payload.result, "updated_at": now_iso()}, "$push": {"consumed_events": payload.event_id}},
+    )
+    return {"task_id": task_id, "state": state, "duplicate": False}
+
+
+@api.post("/automation/tasks/{task_id}/instructions")
+async def automation_append_instruction(task_id: str, payload: AutomationTaskInstruction, request: Request):
+    _automation_token_from_request(request)
+    task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    if payload.generation != task.get("generation", 1):
+        raise HTTPException(status_code=409, detail="Stale task generation")
+    await db.automation_tasks.update_one({"task_id": task_id, "generation": payload.generation}, {"$push": {"instructions": {"generation": payload.generation, "instruction": payload.instruction, "created_at": now_iso()}}, "$inc": {"generation": 1}, "$set": {"updated_at": now_iso()}})
+    return {"task_id": task_id, "state": task.get("state"), "generation": payload.generation + 1}
+
+
+@api.post("/automation/tasks/{task_id}/pause")
+async def automation_pause_task(task_id: str, request: Request):
+    _automation_token_from_request(request)
+    result = await db.automation_tasks.update_one({"task_id": task_id, "state": {"$nin": list(AUTOMATION_TERMINAL_STATES)}}, {"$set": {"state": "PAUSED", "updated_at": now_iso()}})
+    if not result.matched_count:
+        task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
+        if not task:
+            raise HTTPException(status_code=404, detail="Task not found")
+        return {"task_id": task_id, "state": task.get("state"), "already_terminal": True}
+    return {"task_id": task_id, "state": "PAUSED"}
+
 APPROVED_LAUNCH_ANALYTICS_EVENTS = {
     "homepage_view",
     "first_time_site_tour_shown",

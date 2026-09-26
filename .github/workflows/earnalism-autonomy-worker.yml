@@ -1,0 +1,50 @@
+name: Earnalism autonomy worker
+
+on:
+  workflow_dispatch:
+    inputs:
+      task_id: {required: true, type: string}
+      candidate_head: {required: true, type: string}
+
+permissions:
+  contents: read
+
+jobs:
+  worker-and-reviewer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: ${{ inputs.candidate_head }}}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run bounded worker
+        run: python scripts/autonomy_worker.py --task-id '${{ inputs.task_id }}' --candidate-head '${{ inputs.candidate_head }}' --output worker-result.json
+      - name: Review worker evidence
+        run: python scripts/autonomy_reviewer.py --task-id '${{ inputs.task_id }}' --candidate-head '${{ inputs.candidate_head }}' --worker-result worker-result.json --output review-result.json
+      - name: Publish durable result
+        if: always()
+        env:
+          AUTOMATION_API_URL: ${{ secrets.EARNALISM_AUTOMATION_API_URL }}
+          AUTOMATION_API_TOKEN: ${{ secrets.EARNALISM_AUTOMATION_API_TOKEN }}
+          TASK_ID: ${{ inputs.task_id }}
+          CANDIDATE_HEAD: ${{ inputs.candidate_head }}
+        run: |
+          test -n "$AUTOMATION_API_URL" && test -n "$AUTOMATION_API_TOKEN"
+          python - <<'PY'
+          import json, os, urllib.request
+          review=json.load(open('review-result.json'))
+          worker=json.load(open('worker-result.json'))
+          payload=json.dumps({
+            'tested_revision': review['tested_revision'],
+            'generation': 1,
+            'event_id': f"worker-review-${{ github.run_id }}",
+            'decision': review['decision'],
+            'result': {'worker': worker, 'review': review},
+          }).encode()
+          req=urllib.request.Request(f"{os.environ['AUTOMATION_API_URL'].rstrip('/')}/api/automation/tasks/{os.environ['TASK_ID']}/result", data=payload, method='POST', headers={'Authorization':f"Bearer {os.environ['AUTOMATION_API_TOKEN']}",'Content-Type':'application/json'})
+          with urllib.request.urlopen(req, timeout=15) as response:
+            print(response.read().decode())
+          PY
+      - uses: actions/upload-artifact@v4
+        with: {name: earnalism-autonomy-${{ inputs.task_id }}-${{ github.run_id }}, path: '*-result.json'}
