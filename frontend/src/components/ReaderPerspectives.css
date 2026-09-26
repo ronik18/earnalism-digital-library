@@ -1,5 +1,5 @@
 /* Illustrative reader perspectives: warm paper surface, readable literary copy. */
-.reference-reader-perspectives{width:100%;padding:var(--public-section-space,4.5rem) max(1rem,calc((100vw - 1344px)/2 + 1rem));background:var(--reference-paper);color:var(--reference-text,#35111d)}
+.reference-reader-perspectives{width:100%;padding:var(--public-section-space,4.5rem) max(1rem,calc((100vw - 1344px)/2 + 1rem));background:var(--reference-paper);color:var(--reference-text,#35111d);--reference-text:#35111d;--reference-muted:#5e3d46;--reference-elevated:#fffaf2;--reference-quiet:#f4eadc;--reference-burgundy:#712a3d;--reference-gold:#a66f15;--reference-line:rgba(113,42,61,.2)}
 .reference-reader-perspectives__intro{max-width:50rem;margin:0 auto 1.75rem;text-align:center}
 .reference-reader-perspectives__intro .reference-kicker{color:var(--reference-burgundy,#712a3d)}
 .reference-reader-perspectives__intro h2{margin:0;color:var(--reference-burgundy,#35111d);font:500 clamp(2.1rem,3vw,3.25rem)/.98 var(--reference-display);letter-spacing:-.035em}
