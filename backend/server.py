@@ -5527,7 +5527,7 @@ class AutomationTaskResult(BaseModel):
     result: Dict[str, Any] = Field(default_factory=dict)
 
 
-AUTOMATION_ALLOWED_TASKS = {"reader-benchmark", "bridge-fixture"}
+AUTOMATION_ALLOWED_TASKS = {"reader-benchmark", "bridge-fixture", "codex-implementation-fixture"}
 AUTOMATION_TERMINAL_STATES = {"DONE", "FAILED", "WAITING_DEPENDENCY", "WAITING_OWNER", "PAUSED"}
 
 
@@ -5540,7 +5540,7 @@ def _automation_token_from_request(request: Request, *, callback: bool = False) 
     return configured
 
 
-async def _dispatch_automation_worker(task_id: str, candidate_head: str, attempt: int, generation: int = 1) -> None:
+async def _dispatch_automation_worker(task_id: str, candidate_head: str, attempt: int, generation: int = 1, correction_context: str = "") -> None:
     token = os.environ.get("EARNALISM_AUTOMATION_GITHUB_TOKEN", "")
     repository = os.environ.get("EARNALISM_AUTOMATION_GITHUB_REPOSITORY", "")
     workflow = os.environ.get("EARNALISM_AUTOMATION_WORKFLOW", "earnalism-autonomy-worker.yml")
@@ -5550,7 +5550,9 @@ async def _dispatch_automation_worker(task_id: str, candidate_head: str, attempt
             {"$set": {"state": "WAITING_DEPENDENCY", "waiting_reason": "executor credentials are not configured", "updated_at": now_iso()}},
         )
         return
-    payload = _json.dumps({"ref": "main", "inputs": {"task_id": task_id, "task_type": "bridge-fixture", "candidate_sha": candidate_head, "generation": str(generation), "attempt": str(attempt)}}).encode()
+    task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0, "task_type": 1})
+    task_type = (task or {}).get("task_type", "bridge-fixture")
+    payload = _json.dumps({"ref": "main", "inputs": {"task_id": task_id, "task_type": task_type, "candidate_sha": candidate_head, "generation": str(generation), "attempt": str(attempt), "correction_context": correction_context[:3000]}}).encode()
     url = f"https://api.github.com/repos/{repository}/actions/workflows/{workflow}/dispatches"
     def send() -> None:
         request = UrlRequest(url, data=payload, method="POST", headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json", "Content-Type": "application/json"})
@@ -5618,6 +5620,17 @@ async def automation_publish_task_result(task_id: str, payload: AutomationTaskRe
     state = transitions.get(payload.decision)
     if not state:
         raise HTTPException(status_code=400, detail="Unsupported result decision")
+    codex_task = task.get("task_type") == "codex-implementation-fixture"
+    correction_attempt = codex_task and payload.decision == "CHANGES_REQUIRED" and payload.attempt < 2
+    if codex_task and payload.decision == "CHANGES_REQUIRED" and payload.attempt >= 2:
+        state = "FAILED"
+    elif correction_attempt:
+        state = "READY"
+    update_set = {"state": state, "result": payload.result, "updated_at": now_iso()}
+    update_ops = {"$set": update_set, "$addToSet": {"consumed_events": payload.event_id}}
+    if correction_attempt:
+        update_ops["$inc"] = {"attempt": 1}
+        update_set["correction_findings"] = payload.result.get("review", {}).get("findings", [])
     updated = await db.automation_tasks.update_one(
         {
             "task_id": task_id,
@@ -5626,16 +5639,16 @@ async def automation_publish_task_result(task_id: str, payload: AutomationTaskRe
             "attempt": payload.attempt,
             "consumed_events": {"$ne": payload.event_id},
         },
-        {
-            "$set": {"state": state, "result": payload.result, "updated_at": now_iso()},
-            "$addToSet": {"consumed_events": payload.event_id},
-        },
+        update_ops,
     )
     if int(getattr(updated, "matched_count", 0) or 0) != 1:
         current = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
         if current and payload.event_id in current.get("consumed_events", []):
             return {"task_id": task_id, "state": current.get("state"), "duplicate": True}
         raise HTTPException(status_code=409, detail="Task result conflict")
+    if correction_attempt:
+        correction_context = _json.dumps(payload.result.get("review", {}), separators=(",", ":"))
+        asyncio.create_task(_dispatch_automation_worker(task_id, payload.tested_revision, payload.attempt + 1, payload.generation, correction_context))
     return {"task_id": task_id, "state": state, "duplicate": False}
 
 
