@@ -9,7 +9,7 @@ def main():
     if actual != a.candidate_head or worker.get("tested_revision") != actual: raise SystemExit("review rejected stale or mismatched revision")
     findings = worker.get("unresolved_findings", [])
     state = worker.get("state")
-    decision = {"REVIEW": "ACCEPT", "CHANGES_REQUIRED": "CHANGES_REQUIRED", "WAITING_DEPENDENCY": "WAITING_DEPENDENCY"}.get(state, "BLOCKED")
+    decision = {"REVIEW": "ACCEPT_WITHIN_SCOPE", "CHANGES_REQUIRED": "CHANGES_REQUIRED", "WAITING_DEPENDENCY": "WAITING_DEPENDENCY"}.get(state, "BLOCKED_SPECIFIC_FACT")
     if decision == "ACCEPT" and not worker.get("tests"):
         decision, findings = "CHANGES_REQUIRED", ["worker reported review without executable test evidence"]
     result={"task_id":a.task_id,"tested_revision":actual,"decision":decision,"findings":findings,"next_action":worker.get("proposed_next_action"),"state_transition":{"from":"RUNNING","to":decision},"generated_at":int(time.time())}
