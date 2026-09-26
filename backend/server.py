@@ -5521,6 +5521,7 @@ class AutomationTaskInstruction(BaseModel):
 class AutomationTaskResult(BaseModel):
     tested_revision: str = Field(min_length=7, max_length=64)
     generation: int = Field(ge=1)
+    attempt: int = Field(ge=1)
     event_id: str = Field(min_length=1, max_length=160)
     decision: str = Field(min_length=1, max_length=80)
     result: Dict[str, Any] = Field(default_factory=dict)
@@ -5605,7 +5606,11 @@ async def automation_publish_task_result(task_id: str, payload: AutomationTaskRe
     task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
-    if payload.generation != task.get("generation", 1) or payload.tested_revision != task.get("candidate_head", payload.tested_revision):
+    if (
+        payload.generation != task.get("generation", 1)
+        or payload.tested_revision != task.get("candidate_sha", "")
+        or payload.attempt != task.get("attempt", 1)
+    ):
         raise HTTPException(status_code=409, detail="Stale task result")
     if payload.event_id in task.get("consumed_events", []):
         return {"task_id": task_id, "state": task.get("state"), "duplicate": True}
@@ -5613,10 +5618,24 @@ async def automation_publish_task_result(task_id: str, payload: AutomationTaskRe
     state = transitions.get(payload.decision)
     if not state:
         raise HTTPException(status_code=400, detail="Unsupported result decision")
-    await db.automation_tasks.update_one(
-        {"task_id": task_id, "generation": payload.generation},
-        {"$set": {"state": state, "result": payload.result, "updated_at": now_iso()}, "$push": {"consumed_events": payload.event_id}},
+    updated = await db.automation_tasks.update_one(
+        {
+            "task_id": task_id,
+            "generation": payload.generation,
+            "candidate_sha": payload.tested_revision,
+            "attempt": payload.attempt,
+            "consumed_events": {"$ne": payload.event_id},
+        },
+        {
+            "$set": {"state": state, "result": payload.result, "updated_at": now_iso()},
+            "$addToSet": {"consumed_events": payload.event_id},
+        },
     )
+    if int(getattr(updated, "matched_count", 0) or 0) != 1:
+        current = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
+        if current and payload.event_id in current.get("consumed_events", []):
+            return {"task_id": task_id, "state": current.get("state"), "duplicate": True}
+        raise HTTPException(status_code=409, detail="Task result conflict")
     return {"task_id": task_id, "state": state, "duplicate": False}
 
 

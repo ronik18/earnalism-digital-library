@@ -52,13 +52,14 @@ jobs:
         run: >-
           python scripts/autonomy_reviewer.py --task-id "$TASK_ID"
           --candidate-sha "$CANDIDATE_SHA" --generation "$TASK_GENERATION"
+          --attempt "$TASK_ATTEMPT"
           --worker-result worker-result.json --output review-result.json
       - name: Write structured failure result
         if: always() && steps.worker.outcome != 'success'
         run: |
           python - <<'PY'
           import json, os
-          json.dump({'task_id': os.environ['TASK_ID'], 'tested_revision': os.environ['CANDIDATE_SHA'], 'generation': int(os.environ['TASK_GENERATION']), 'decision': 'CHANGES_REQUIRED', 'findings': ['worker execution failed before producing a result']}, open('review-result.json', 'w'), indent=2)
+          json.dump({'task_id': os.environ['TASK_ID'], 'tested_revision': os.environ['CANDIDATE_SHA'], 'generation': int(os.environ['TASK_GENERATION']), 'attempt': int(os.environ['TASK_ATTEMPT']), 'decision': 'CHANGES_REQUIRED', 'findings': ['worker execution failed before producing a result']}, open('review-result.json', 'w'), indent=2)
           PY
       - name: Publish durable result
         if: always()
@@ -72,7 +73,7 @@ jobs:
           import json, os, urllib.request
           review = json.load(open('review-result.json'))
           worker = json.load(open('worker-result.json')) if os.path.exists('worker-result.json') else {}
-          payload = json.dumps({'tested_revision': review['tested_revision'], 'generation': int(os.environ['TASK_GENERATION']), 'event_id': f"worker-review-{os.environ['GITHUB_RUN_ID']}", 'decision': review['decision'], 'result': {'worker': worker, 'review': review, 'attempt': int(os.environ['TASK_ATTEMPT'])}}).encode()
+          payload = json.dumps({'tested_revision': review['tested_revision'], 'generation': int(os.environ['TASK_GENERATION']), 'attempt': int(os.environ['TASK_ATTEMPT']), 'event_id': f"worker-review-{os.environ['GITHUB_RUN_ID']}", 'decision': review['decision'], 'result': {'worker': worker, 'review': review}}).encode()
           url = f"{os.environ['AUTOMATION_API_URL'].rstrip('/')}/api/automation/tasks/{os.environ['TASK_ID']}/result"
           req = urllib.request.Request(url, data=payload, method='POST', headers={'Authorization': f"Bearer {os.environ['AUTOMATION_CALLBACK_TOKEN']}", 'Content-Type': 'application/json'})
           with urllib.request.urlopen(req, timeout=15) as response:
