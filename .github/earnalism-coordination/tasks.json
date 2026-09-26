@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {"task_id":"payment-21122804","lane":"payment","state":"WAITING_OWNER_PROVIDER_UPDATE","file_scope":[],"dependencies":[],"acceptance":["provider response"],"next_state":"DONE"},
+    {"task_id":"pr-441-production","lane":"ui","state":"DONE","file_scope":["frontend/src/components/ReaderPerspectives.css"],"dependencies":[],"acceptance":["production visual smoke"],"head":"65d0654c1796816a185bba71c7b0133b5ff15bfb"},
+    {"task_id":"reader-benchmark","lane":"reader","state":"READY","file_scope":["scripts/run_reader_benchmark.sh"],"dependencies":[],"acceptance":["isolated auth","page-turn timings"],"next_state":"READY_FOR_REVIEW"},
+    {"task_id":"catalogue-ginni","lane":"catalogue","state":"BLOCKED_EXACT_REASON","file_scope":[],"dependencies":[],"acceptance":["source disclosure","cover-optional manifest"],"blocker":"generated package contains stale cover/live fields and lacks source-layer attribution"}
+  ]
+}

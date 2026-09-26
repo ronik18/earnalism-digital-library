@@ -1,0 +1,39 @@
+name: Earnalism coordination bridge
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+  workflow_run:
+    workflows: [GO LIVE regression gate, Seamless brand owner review, Production monitoring]
+    types: [completed]
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Validate planner
+        run: python -m unittest scripts.test_autonomy_bridge
+      - name: Plan from durable task record and current event
+        env:
+          EVENT_PATH: ${{ github.event_path }}
+        run: |
+          python scripts/autonomy_bridge.py .github/earnalism-coordination/tasks.json --output coordination-plan.json
+          python - <<'PY'
+          import json, os
+          event=json.load(open(os.environ['EVENT_PATH']))
+          print(json.dumps({'event_name': os.environ.get('GITHUB_EVENT_NAME'), 'action': event.get('action'), 'run_id': event.get('workflow_run',{}).get('id')}))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: earnalism-coordination-plan-${{ github.run_id }}
+          path: coordination-plan.json
