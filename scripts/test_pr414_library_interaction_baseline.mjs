@@ -102,6 +102,13 @@ test("the approved PR438 Reading Room transition matches the current Home source
   assert.equal(baseline.owner_authorization.capture_is_not_expected_value_authority, true);
 });
 
+test("the default runtime baseline resolves to PR438 and matches explicit resolution", () => {
+  const implicit = compareLibraryInteractionBaseline(root);
+  const explicit = compareLibraryInteractionBaseline(root, PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(implicit.approval_source, PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
+  assert.deepEqual(implicit, explicit);
+});
+
 test("an unauthorized PR438 baseline mutation fails closed", () => {
   const temporary = materializeReviewedSurface(PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
   const record = path.join(temporary, PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
