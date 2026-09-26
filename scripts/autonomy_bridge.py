@@ -11,6 +11,30 @@ from pathlib import Path
 
 TERMINAL = {"DONE", "BLOCKED_EXACT_REASON", "WAITING_OWNER_PROVIDER_UPDATE"}
 
+def consume_result(state: dict, result: dict) -> dict:
+    """Apply one trusted worker/reviewer result exactly once to a task record."""
+    tasks = state.setdefault("tasks", [])
+    task = next((item for item in tasks if item.get("task_id") == result.get("task_id")), None)
+    if task is None:
+        raise ValueError("unknown task")
+    if result.get("tested_revision") != task.get("head"):
+        raise ValueError("stale result revision")
+    generation = result.get("generation", task.get("generation", 1))
+    if generation != task.get("generation", 1):
+        raise ValueError("stale task generation")
+    event_id = result.get("event_id")
+    if event_id and event_id in task.setdefault("consumed_events", []):
+        return state
+    decision = result.get("decision") or result.get("state")
+    transitions = {"ACCEPT": "DONE", "ACCEPT_WITHIN_SCOPE": "DONE", "CHANGES_REQUIRED": "CHANGES_REQUIRED", "WAITING_DEPENDENCY": "WAITING_DEPENDENCY", "BLOCKED_SPECIFIC_FACT": "BLOCKED_EXACT_REASON"}
+    if decision not in transitions:
+        raise ValueError("unsupported result decision")
+    task["state"] = transitions[decision]
+    task["last_result"] = result
+    if event_id:
+        task.setdefault("consumed_events", []).append(event_id)
+    return state
+
 def plan(state: dict) -> dict:
     tasks = state.get("tasks", [])
     actions = []
