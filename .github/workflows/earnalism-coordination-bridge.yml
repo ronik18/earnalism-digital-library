@@ -5,12 +5,13 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
   workflow_run:
-    workflows: [GO LIVE regression gate, Seamless brand owner review, Production monitoring]
+    workflows: [GO LIVE regression gate, Seamless brand owner review, Production monitoring, Earnalism autonomy worker]
     types: [completed]
 
 permissions:
   contents: read
   actions: read
+  actions: write
   pull-requests: read
 
 jobs:
@@ -33,6 +34,21 @@ jobs:
           event=json.load(open(os.environ['EVENT_PATH']))
           print(json.dumps({'event_name': os.environ.get('GITHUB_EVENT_NAME'), 'action': event.get('action'), 'run_id': event.get('workflow_run',{}).get('id')}))
           PY
+      - name: Dispatch approved worker actions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          plan=json.load(open('coordination-plan.json'))
+          for action in plan.get('actions', []):
+            if action.get('action') != 'DISPATCH':
+              continue
+            payload=json.dumps({'ref':'main','inputs':{'task_id':action['task_id'],'candidate_head':os.environ['GITHUB_SHA'],'attempt':'1'}}).encode()
+            req=urllib.request.Request(f"https://api.github.com/repos/{os.environ['REPO']}/actions/workflows/earnalism-autonomy-worker.yml/dispatches", data=payload, method='POST', headers={'Authorization':f"Bearer {os.environ['GH_TOKEN']}",'Accept':'application/vnd.github+json','Content-Type':'application/json'})
+            with urllib.request.urlopen(req): pass
+            print(json.dumps({'dispatched_task':action['task_id'],'candidate_head':os.environ['GITHUB_SHA']}))
       - uses: actions/upload-artifact@v4
         with:
           name: earnalism-coordination-plan-${{ github.run_id }}

@@ -1,0 +1,36 @@
+name: Earnalism autonomy worker
+
+on:
+  workflow_dispatch:
+    inputs:
+      task_id: {required: true, type: string}
+      candidate_head: {required: true, type: string}
+      attempt: {required: false, default: '1', type: string}
+
+permissions:
+  contents: read
+
+jobs:
+  worker-and-reviewer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: ${{ inputs.candidate_head }} }
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run bounded approved worker
+        id: worker
+        env:
+          TASK_ID: ${{ inputs.task_id }}
+          CANDIDATE_HEAD: ${{ inputs.candidate_head }}
+        run: python scripts/autonomy_worker.py --task-id "$TASK_ID" --candidate-head "$CANDIDATE_HEAD" --output worker-result.json
+      - name: Independent deterministic review
+        env:
+          TASK_ID: ${{ inputs.task_id }}
+          CANDIDATE_HEAD: ${{ inputs.candidate_head }}
+        run: python scripts/autonomy_reviewer.py --task-id "$TASK_ID" --candidate-head "$CANDIDATE_HEAD" --worker-result worker-result.json --output review-result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: earnalism-autonomy-${{ inputs.task_id }}-${{ github.run_id }}
+          path: '*-result.json'
