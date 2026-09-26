@@ -1,0 +1,35 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "43cf71aafe2556e44900fb6ad4f0c4a6120560db",
+    "tree": "e9fd4b9750fba64239ed1b63f6f2090c80c01843"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/india-commercial-cutover-home-library-interaction-baseline.json",
+    "reviewed_source_commit": "b84884c8971f6ba7b7b5b8ac2c9a1910845970ec",
+    "surface_sha256": "c2f93da984c39f54915df94541f98ce1931e128781b9a9c69621d66b57ac1846"
+  },
+  "authorized_surface_sha256": "70b37008d929f09caa09041e42a7619081932bf66bca698fd2f907deb18f6fb0",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "DIRECT_OWNER_AUTHORIZATION_PR438_DIRECTION_A_READING_ROOM_HOMEPAGE",
+    "scope": "Record the approved Direction A Reading Room homepage transition from the India commercial cutover surface. Preserve the existing Reader and Library behavior, commercial access controls, rights state, and audio-disabled state.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This baseline covers only the approved PR438 homepage transition; it does not change payment, entitlement, rights, catalogue exposure, audio, or deployment authority."
+}

@@ -10,6 +10,7 @@ import {
   PR416_LIBRARY_INTERACTION_BASELINE,
   HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE,
   INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE,
+  PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -86,10 +87,35 @@ test("the original approved Home sections baseline remains intact at its reviewe
 });
 
 test("the directly authorized India commercial copy transition matches the current Home and Library source", () => {
-  const comparison = compareLibraryInteractionBaseline(root, INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(materializeReviewedSurface(INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE), INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.previous_surface_sha256, "3cbf2dda50902d4745849eb8157af447cf26af0ceb17e93ba9aaf604e621ffc7");
   assert.equal(comparison.expected_surface_sha256, "c2f93da984c39f54915df94541f98ce1931e128781b9a9c69621d66b57ac1846");
   assert.equal(comparison.result, "PASS");
+});
+
+test("the approved PR438 Reading Room transition matches the current Home source", () => {
+  const baseline = loadLibraryInteractionBaseline(root, PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(root, PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(comparison.previous_surface_sha256, "c2f93da984c39f54915df94541f98ce1931e128781b9a9c69621d66b57ac1846");
+  assert.equal(comparison.expected_surface_sha256, "70b37008d929f09caa09041e42a7619081932bf66bca698fd2f907deb18f6fb0");
+  assert.equal(comparison.result, "PASS");
+  assert.equal(baseline.owner_authorization.capture_is_not_expected_value_authority, true);
+});
+
+test("the default runtime baseline resolves to PR438 and matches explicit resolution", () => {
+  const implicit = compareLibraryInteractionBaseline(root);
+  const explicit = compareLibraryInteractionBaseline(root, PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(implicit.approval_source, PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
+  assert.deepEqual(implicit, explicit);
+});
+
+test("an unauthorized PR438 baseline mutation fails closed", () => {
+  const temporary = materializeReviewedSurface(PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
+  const record = path.join(temporary, PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE);
+  const value = JSON.parse(read(record));
+  value.owner_authorization.reference = "UNAUTHORIZED";
+  write(record, value);
+  assert.throws(() => loadLibraryInteractionBaseline(temporary, PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE));
 });
 
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));
