@@ -246,6 +246,7 @@ from collections import Counter, OrderedDict, defaultdict, deque
 from datetime import datetime, timezone, timedelta
 from typing import Any, Deque, Dict, List, Mapping, Optional, Tuple
 from urllib.parse import quote, unquote, urlencode, urlparse
+from urllib.error import HTTPError
 from urllib.request import Request as UrlRequest, urlopen
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
@@ -5561,9 +5562,18 @@ async def _dispatch_automation_worker(task_id: str, candidate_head: str, attempt
     try:
         await asyncio.to_thread(send)
         await db.automation_tasks.update_one({"task_id": task_id, "state": "READY"}, {"$set": {"state": "RUNNING", "updated_at": now_iso(), "executor": "github-actions"}})
+    except HTTPError as exc:
+        try:
+            body = exc.read(2048).decode("utf-8", errors="replace")
+        except Exception:
+            body = ""
+        body = re.sub(r"(?i)(bearer|token|secret|authorization)\s*[:=]\s*[^,\s}]+", r"\1: [redacted]", body)
+        details = {"http_status": exc.code, "github_message": body or "[empty response body]", "workflow": workflow, "ref": "main", "endpoint": url}
+        logger.warning("Automation worker dispatch failed: %s", details)
+        await db.automation_tasks.update_one({"task_id": task_id, "state": "READY"}, {"$set": {"state": "WAITING_DEPENDENCY", "waiting_reason": "executor dispatch failed", "executor_error": details, "updated_at": now_iso()}})
     except Exception as exc:
         logger.warning("Automation worker dispatch failed: %s", type(exc).__name__)
-        await db.automation_tasks.update_one({"task_id": task_id, "state": "READY"}, {"$set": {"state": "WAITING_DEPENDENCY", "waiting_reason": "executor dispatch failed", "updated_at": now_iso()}})
+        await db.automation_tasks.update_one({"task_id": task_id, "state": "READY"}, {"$set": {"state": "WAITING_DEPENDENCY", "waiting_reason": "executor dispatch failed", "executor_error": {"error_type": type(exc).__name__, "workflow": workflow, "ref": "main", "endpoint": url}, "updated_at": now_iso()}})
 
 
 @api.post("/automation/tasks")
@@ -5599,7 +5609,7 @@ async def automation_get_task_result(task_id: str, request: Request):
     task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
-    return {"task_id": task_id, "state": task.get("state"), "result": task.get("result"), "waiting_reason": task.get("waiting_reason"), "updated_at": task.get("updated_at")}
+    return {"task_id": task_id, "state": task.get("state"), "result": task.get("result"), "waiting_reason": task.get("waiting_reason"), "executor_error": task.get("executor_error"), "updated_at": task.get("updated_at")}
 
 
 @api.post("/automation/tasks/{task_id}/result")
