@@ -24,6 +24,7 @@ export const PR416_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr416-home
 export const HOME_SECTIONS_LIBRARY_INTERACTION_BASELINE = "docs/design-system/home-sections-library-interaction-baseline.json";
 export const INDIA_COMMERCIAL_CUTOVER_HOME_LIBRARY_INTERACTION_BASELINE = "docs/design-system/india-commercial-cutover-home-library-interaction-baseline.json";
 export const PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr438-reading-room-home-library-interaction-baseline.json";
+export const PR457_READING_PASS_HOME_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr457-reading-pass-home-library-interaction-baseline.json";
 export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
   "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
   "frontend/src/components/ReferencePublicPages.css",
@@ -33,7 +34,7 @@ export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
 // Prior Home-sections and India-commercial records remain immutable historical
 // transitions. Runtime/evidence callers must use the latest explicitly
 // authorized Reading Room transition as the active decision.
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE;
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR457_READING_PASS_HOME_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -176,6 +177,15 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
     authorization: "DIRECT_OWNER_AUTHORIZATION_PR438_DIRECTION_A_READING_ROOM_HOMEPAGE",
+  },
+  [PR457_READING_PASS_HOME_LIBRARY_INTERACTION_BASELINE]: {
+    reviewedSource: { commit: "5f451b08e965f2ff6ce074909040e15859be8773", tree: "dd75784b1c8b9a669e4165eb7b7d3fa8c83315a3" },
+    previous: { recordPath: PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE, commit: "43cf71aafe2556e44900fb6ad4f0c4a6120560db", hash: "70b37008d929f09caa09041e42a7619081932bf66bca698fd2f907deb18f6fb0" },
+    authorizedHash: "632659caafce47f36e3f4b19f2dfd966cef72b899cfd728e2ef8bc5c5c1c403f",
+    inputPaths: ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS,
+    changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx", "frontend/src/components/ReferencePublicPages.css"],
+    unchangedPaths: ["frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
+    authorization: "DIRECT_OWNER_AUTHORIZATION_TRACK_B1_READING_PASS_OFFER_REFINEMENT",
   },
 };
 

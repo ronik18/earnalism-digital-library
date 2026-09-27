@@ -167,7 +167,7 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
   // visually complete elsewhere without treating bundled artwork as live access.
   const shelfBooks = liveShelfBooks.length ? liveShelfBooks : PILOT_COVER_SHELF;
   const discoveryOnlyShelf = liveShelfBooks.length === 0;
-  const passes = readingPasses.filter((pack) => pack && Number.isFinite(pack.minutes) && pack.minutes > 0 && Number.isFinite(pack.price_inr) && pack.price_inr >= 0).slice(0, 3);
+  const passes = readingPasses.filter((pack) => pack && Number.isFinite(pack.minutes) && pack.minutes > 0 && Number.isFinite(pack.price_inr) && pack.price_inr >= 0).slice(0, 4);
   // Listening discovery comes from the public /home/listening contract. That
   // contract carries release-safe metadata only; package and media details
   // remain available solely after the Listener's authenticated authorization.
