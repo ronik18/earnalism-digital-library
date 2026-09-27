@@ -5,6 +5,13 @@ from pathlib import Path
 
 ALLOWED = {"bridge-fixture", "reader-benchmark", "codex-implementation-fixture"}
 
+
+def load_codex_result(path: Path) -> dict:
+    result = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(result, dict) or not str(result.get("summary", "")).strip():
+        raise ValueError("official Codex Action produced no usable implementation result")
+    return result
+
 def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--task-id", required=True)
@@ -37,7 +44,10 @@ def main() -> int:
     if args.task_type == "codex-implementation-fixture" and args.codex_result:
         # The official GitHub Action already performed the edit; this path only
         # runs the focused fixture test and packages its result.
-        pass
+        try:
+            load_codex_result(args.codex_result)
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            raise SystemExit(str(exc)) from exc
     else:
         proc = subprocess.run(command, text=True, capture_output=True, timeout=240)
     if args.task_type == "codex-implementation-fixture" and proc.returncode == 0:

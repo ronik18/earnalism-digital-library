@@ -15,6 +15,10 @@ def main() -> int:
     tests = worker.get("tests") or []
     decision = "ACCEPT_WITHIN_SCOPE" if worker.get("state") == "REVIEW" and tests and all(t.get("exit_code") == 0 for t in tests) else "CHANGES_REQUIRED"
     findings = [] if decision == "ACCEPT_WITHIN_SCOPE" else ["worker evidence is incomplete or contains a failing command"]
+    codex_result = worker.get("codex") or {}
+    if a.task_type == "codex-implementation-fixture" and not str(codex_result.get("summary", "")).strip():
+        decision = "CHANGES_REQUIRED"
+        findings = ["Codex implementation result is missing or empty"]
     if a.task_type == "codex-implementation-fixture" and decision == "ACCEPT_WITHIN_SCOPE":
         fixture = Path("bridge_fixtures/codex_acceptance_fixture.py").read_text(encoding="utf-8")
         if a.attempt == 1:
