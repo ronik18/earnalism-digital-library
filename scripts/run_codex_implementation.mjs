@@ -13,10 +13,15 @@ const attempt = Number(args.attempt || 1);
 if (![1, 2].includes(attempt)) throw new Error("bounded acceptance fixture allows at most two executions");
 const workingDirectory = process.cwd();
 const correctionContext = args["correction-context"] || "";
-const prompt = attempt === 1
+const brief = args.brief || "";
+const acceptance = args.acceptance || "";
+const fixturePrompt = attempt === 1
   ? "In the isolated bridge_fixtures/codex_acceptance_fixture.py only, implement the first half of the acceptance brief: change LABEL from pending to ready. Do not change format_label yet; the independent reviewer will require that as the bounded correction. Run only the focused fixture test if useful, and report the file changed. Do not touch any other path."
   : "In the isolated bridge_fixtures/codex_acceptance_fixture.py only, apply the reviewer correction: keep LABEL=ready and make format_label return the uppercase label. Do not touch any other path. Run python3 scripts/codex_fixture_test.py and report the file changed."
   + ` This is a bounded non-production fixture. Make the source edit, do not merely describe it. Reviewer findings from the prior attempt: ${correctionContext.slice(0, 3000)}`;
+const prompt = args["task-type"] === "codex-implementation"
+  ? `You are a bounded non-production implementation worker. Implement this brief: ${brief.slice(0, 4000)}. Acceptance criteria: ${acceptance.slice(0, 4000)}. Edit only the minimum source files required, do not touch payments, entitlements, customer data, catalogue publication, secrets, deployment configuration, or destructive scripts, and run focused tests. Reviewer context: ${correctionContext.slice(0, 3000)}`
+  : fixturePrompt;
 
 const started = Date.now();
 const codex = new Codex({ apiKey: process.env.EARNALISM_CODEX_OPENAI_API_KEY });

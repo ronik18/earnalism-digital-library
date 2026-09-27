@@ -5528,7 +5528,7 @@ class AutomationTaskResult(BaseModel):
     result: Dict[str, Any] = Field(default_factory=dict)
 
 
-AUTOMATION_ALLOWED_TASKS = {"reader-benchmark", "bridge-fixture", "codex-implementation-fixture"}
+AUTOMATION_ALLOWED_TASKS = {"reader-benchmark", "bridge-fixture", "codex-implementation-fixture", "codex-implementation"}
 AUTOMATION_TERMINAL_STATES = {"DONE", "FAILED", "WAITING_DEPENDENCY", "WAITING_OWNER", "PAUSED"}
 
 
@@ -5551,9 +5551,9 @@ async def _dispatch_automation_worker(task_id: str, candidate_head: str, attempt
             {"$set": {"state": "WAITING_DEPENDENCY", "waiting_reason": "executor credentials are not configured", "updated_at": now_iso()}},
         )
         return
-    task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0, "task_type": 1})
+    task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0, "task_type": 1, "brief": 1, "acceptance": 1})
     task_type = (task or {}).get("task_type", "bridge-fixture")
-    payload = _json.dumps({"ref": "main", "inputs": {"task_id": task_id, "task_type": task_type, "candidate_sha": candidate_head, "generation": str(generation), "attempt": str(attempt), "correction_context": correction_context[:3000]}}).encode()
+    payload = _json.dumps({"ref": "main", "inputs": {"task_id": task_id, "task_type": task_type, "candidate_sha": candidate_head, "generation": str(generation), "attempt": str(attempt), "correction_context": correction_context[:3000], "brief": (task or {}).get("brief", "")[:4000], "acceptance": _json.dumps((task or {}).get("acceptance", []))[:4000]}}).encode()
     url = f"https://api.github.com/repos/{repository}/actions/workflows/{workflow}/dispatches"
     def send() -> None:
         request = UrlRequest(url, data=payload, method="POST", headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json", "Content-Type": "application/json"})
