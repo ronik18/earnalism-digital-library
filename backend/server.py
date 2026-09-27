@@ -5612,6 +5612,32 @@ async def automation_get_task_result(task_id: str, request: Request):
     return {"task_id": task_id, "state": task.get("state"), "result": task.get("result"), "waiting_reason": task.get("waiting_reason"), "executor_error": task.get("executor_error"), "updated_at": task.get("updated_at")}
 
 
+@api.post("/automation/tasks/{task_id}/reconcile")
+async def automation_reconcile_task(task_id: str, request: Request):
+    """Retry only the missing executor dispatch for a dependency-parked task."""
+    _automation_token_from_request(request)
+    task = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    if task.get("state") != "WAITING_DEPENDENCY":
+        return {"task_id": task_id, "state": task.get("state"), "attempt": task.get("attempt", 1), "idempotent": True}
+    candidate_sha = task.get("candidate_sha", "")
+    if not candidate_sha:
+        raise HTTPException(status_code=409, detail="Task has no authoritative candidate SHA")
+    previous_failure = task.get("executor_error") or task.get("waiting_reason")
+    retry_at = now_iso()
+    next_attempt = int(task.get("attempt", 1)) + 1
+    updated = await db.automation_tasks.update_one(
+        {"task_id": task_id, "state": "WAITING_DEPENDENCY", "candidate_sha": candidate_sha},
+        {"$set": {"state": "READY", "retry_requested_at": retry_at, "previous_failure_reason": previous_failure, "updated_at": retry_at}, "$inc": {"attempt": 1}},
+    )
+    if int(getattr(updated, "matched_count", 0) or 0) != 1:
+        current = await db.automation_tasks.find_one({"task_id": task_id}, {"_id": 0})
+        return {"task_id": task_id, "state": (current or {}).get("state"), "attempt": (current or {}).get("attempt", 1), "idempotent": True}
+    asyncio.create_task(_dispatch_automation_worker(task_id, candidate_sha, next_attempt, int(task.get("generation", 1))))
+    return {"task_id": task_id, "state": "READY", "attempt": next_attempt, "idempotent": False}
+
+
 @api.post("/automation/tasks/{task_id}/result")
 async def automation_publish_task_result(task_id: str, payload: AutomationTaskResult, request: Request):
     _automation_token_from_request(request, callback=True)
