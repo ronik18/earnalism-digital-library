@@ -87,17 +87,16 @@ jobs:
         if: inputs.task_type == 'codex-implementation-fixture'
         env:
           CODEX_FINAL_MESSAGE: ${{ steps.codex.outputs.final-message }}
+          EARNALISM_CODEX_OPENAI_API_KEY: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
+          OPENAI_WIF_AUDIENCE: ${{ vars.OPENAI_WIF_AUDIENCE }}
+          OPENAI_IDENTITY_PROVIDER_ID: ${{ vars.OPENAI_IDENTITY_PROVIDER_ID }}
+          OPENAI_SERVICE_ACCOUNT_ID: ${{ vars.OPENAI_SERVICE_ACCOUNT_ID }}
         run: |
           python - <<'PY'
           import json, os
           json.dump({'executor':'openai-codex-action','task_id':os.environ['TASK_ID'],'attempt':int(os.environ['TASK_ATTEMPT']),'summary':os.environ.get('CODEX_FINAL_MESSAGE',''),'usage':None}, open('codex-result.json','w'), indent=2)
           PY
           python scripts/autonomy_worker.py --task-id "$TASK_ID" --task-type "$TASK_TYPE" --candidate-sha "$CANDIDATE_SHA" --generation "$TASK_GENERATION" --attempt "$TASK_ATTEMPT" --correction-context "$CORRECTION_CONTEXT" --codex-result codex-result.json --output worker-result.json
-        env:
-          EARNALISM_CODEX_OPENAI_API_KEY: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
-          OPENAI_WIF_AUDIENCE: ${{ vars.OPENAI_WIF_AUDIENCE }}
-          OPENAI_IDENTITY_PROVIDER_ID: ${{ vars.OPENAI_IDENTITY_PROVIDER_ID }}
-          OPENAI_SERVICE_ACCOUNT_ID: ${{ vars.OPENAI_SERVICE_ACCOUNT_ID }}
       - name: Review worker evidence
         if: always() && steps.worker.outcome == 'success'
         run: >-
