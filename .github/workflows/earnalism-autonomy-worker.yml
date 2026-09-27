@@ -21,6 +21,12 @@ on:
       correction_context:
         required: false
         type: string
+      brief:
+        required: false
+        type: string
+      acceptance:
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -37,6 +43,8 @@ jobs:
       TASK_GENERATION: ${{ inputs.generation }}
       TASK_ATTEMPT: ${{ inputs.attempt }}
       CORRECTION_CONTEXT: ${{ inputs.correction_context }}
+      TASK_BRIEF: ${{ inputs.brief }}
+      TASK_ACCEPTANCE: ${{ inputs.acceptance }}
     steps:
       - name: Check out approved candidate
         uses: actions/checkout@v4
@@ -46,10 +54,10 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install bounded Codex SDK
-        if: inputs.task_type == 'codex-implementation-fixture'
+        if: inputs.task_type == 'codex-implementation-fixture' || inputs.task_type == 'codex-implementation'
         run: npm ci --ignore-scripts
       - name: Sandbox preflight
-        if: inputs.task_type == 'codex-implementation-fixture'
+        if: inputs.task_type == 'codex-implementation-fixture' || inputs.task_type == 'codex-implementation'
         run: |
           set -u
           echo "runner_os=$RUNNER_OS"
@@ -63,7 +71,7 @@ jobs:
             echo "sandbox_namespace_probe=requires_official_action_preflight"
           fi
       - name: Run official Codex Action
-        if: inputs.task_type == 'codex-implementation-fixture'
+        if: inputs.task_type == 'codex-implementation-fixture' || inputs.task_type == 'codex-implementation'
         id: codex
         uses: openai/codex-action@86365089eb2b84e0a8fb0717b304f8bdcb13b20e
         with:
@@ -73,10 +81,10 @@ jobs:
           permission-profile: ":workspace"
           safety-strategy: drop-sudo
           prompt: |
-            In the isolated bridge_fixtures/codex_acceptance_fixture.py only, perform the bounded fixture task for attempt ${{ inputs.attempt }}. On attempt 1 set LABEL to ready and leave format_label unchanged. On attempt 2 apply the reviewer correction so format_label returns the uppercase label. Do not touch any other path. Run python3 scripts/codex_fixture_test.py and make the source edit rather than only describing it.
+            You are an authorized bounded non-production implementation worker. Edit only files necessary for this task; never touch payments, entitlements, customer data, catalogue publication, secrets, deployment configuration, or destructive scripts. Make the source change, run focused tests, and report changed files and results. Task type: ${{ inputs.task_type }}. Attempt: ${{ inputs.attempt }}. Brief: ${{ inputs.brief }}. Acceptance criteria: ${{ inputs.acceptance }}. Reviewer context: ${{ inputs.correction_context }}
       - name: Run bounded worker
         id: legacy-worker
-        if: inputs.task_type != 'codex-implementation-fixture'
+        if: inputs.task_type != 'codex-implementation-fixture' && inputs.task_type != 'codex-implementation'
         run: >-
           python scripts/autonomy_worker.py --task-id "$TASK_ID"
           --task-type "$TASK_TYPE" --candidate-sha "$CANDIDATE_SHA"
@@ -85,7 +93,7 @@ jobs:
           --output worker-result.json
       - name: Package official Codex result
         id: worker
-        if: inputs.task_type == 'codex-implementation-fixture'
+        if: inputs.task_type == 'codex-implementation-fixture' || inputs.task_type == 'codex-implementation'
         env:
           EARNALISM_CODEX_OPENAI_API_KEY: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
           OPENAI_WIF_AUDIENCE: ${{ vars.OPENAI_WIF_AUDIENCE }}
@@ -103,7 +111,7 @@ jobs:
               raise SystemExit('official Codex Action produced an empty final message')
           json.dump({'executor':'openai-codex-action','task_id':os.environ['TASK_ID'],'attempt':int(os.environ['TASK_ATTEMPT']),'summary':summary,'usage':None}, open('codex-result.json','w'), indent=2)
           PY
-          python scripts/autonomy_worker.py --task-id "$TASK_ID" --task-type "$TASK_TYPE" --candidate-sha "$CANDIDATE_SHA" --generation "$TASK_GENERATION" --attempt "$TASK_ATTEMPT" --correction-context "$CORRECTION_CONTEXT" --codex-result codex-result.json --output worker-result.json
+          python scripts/autonomy_worker.py --task-id "$TASK_ID" --task-type "$TASK_TYPE" --candidate-sha "$CANDIDATE_SHA" --generation "$TASK_GENERATION" --attempt "$TASK_ATTEMPT" --correction-context "$CORRECTION_CONTEXT" --brief "$TASK_BRIEF" --acceptance "$TASK_ACCEPTANCE" --codex-result codex-result.json --output worker-result.json
       - name: Review worker evidence
         if: always() && steps.worker.outcome == 'success'
         run: >-
