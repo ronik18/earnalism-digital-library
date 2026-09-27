@@ -3,6 +3,10 @@
 import argparse, json, subprocess, time
 from pathlib import Path
 
+CODEX_TASKS = {"codex-implementation-fixture", "codex-implementation"}
+PROTECTED_PREFIXES = ("backend/", "frontend/", ".github/", "internal/")
+PROTECTED_NAME_PARTS = ("payment", "entitlement", "secret", "deploy", "catalogue")
+
 def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--task-id", required=True); p.add_argument("--candidate-sha", required=True); p.add_argument("--generation", type=int, required=True); p.add_argument("--attempt", type=int, required=True)
@@ -16,7 +20,7 @@ def main() -> int:
     decision = "ACCEPT_WITHIN_SCOPE" if worker.get("state") == "REVIEW" and tests and all(t.get("exit_code") == 0 for t in tests) else "CHANGES_REQUIRED"
     findings = [] if decision == "ACCEPT_WITHIN_SCOPE" else ["worker evidence is incomplete or contains a failing command"]
     codex_result = worker.get("codex") or {}
-    if a.task_type in {"codex-implementation-fixture", "codex-implementation"} and not str(codex_result.get("summary", "")).strip():
+    if a.task_type in CODEX_TASKS and not str(codex_result.get("summary", "")).strip():
         decision = "CHANGES_REQUIRED"
         findings = ["Codex implementation result is missing or empty"]
     if a.task_type == "codex-implementation-fixture" and decision == "ACCEPT_WITHIN_SCOPE":
@@ -29,7 +33,11 @@ def main() -> int:
             findings = ["bounded Codex correction did not produce the required fixture implementation"]
     if a.task_type == "codex-implementation":
         changed = worker.get("files_changed") or []
-        forbidden = [p for p in changed if p.startswith(("backend/", "frontend/", ".github/", "internal/")) or any(x in p.lower() for x in ("payment", "entitlement", "secret", "deploy", "catalogue"))]
+        forbidden = [
+            p for p in changed
+            if p.startswith(PROTECTED_PREFIXES)
+            or any(x in p.lower() for x in PROTECTED_NAME_PARTS)
+        ]
         if forbidden:
             decision = "CHANGES_REQUIRED"
             findings = [f"protected or unrelated paths changed: {', '.join(forbidden)}"]

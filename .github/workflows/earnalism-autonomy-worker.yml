@@ -35,7 +35,7 @@ permissions:
 jobs:
   worker-and-reviewer:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     env:
       TASK_ID: ${{ inputs.task_id }}
       TASK_TYPE: ${{ inputs.task_type }}
@@ -73,6 +73,7 @@ jobs:
       - name: Run official Codex Action
         if: inputs.task_type == 'codex-implementation-fixture' || inputs.task_type == 'codex-implementation'
         id: codex
+        timeout-minutes: 12
         uses: openai/codex-action@86365089eb2b84e0a8fb0717b304f8bdcb13b20e
         with:
           openai-api-key: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
@@ -125,7 +126,7 @@ jobs:
         run: |
           python - <<'PY'
           import json, os
-          json.dump({'task_id': os.environ['TASK_ID'], 'tested_revision': os.environ['CANDIDATE_SHA'], 'generation': int(os.environ['TASK_GENERATION']), 'attempt': int(os.environ['TASK_ATTEMPT']), 'decision': 'CHANGES_REQUIRED', 'findings': ['worker execution failed before producing a result']}, open('review-result.json', 'w'), indent=2)
+          json.dump({'task_id': os.environ['TASK_ID'], 'tested_revision': os.environ['CANDIDATE_SHA'], 'generation': int(os.environ['TASK_GENERATION']), 'attempt': int(os.environ['TASK_ATTEMPT']), 'decision': 'CHANGES_REQUIRED', 'findings': ['worker execution failed before producing a result'], 'executor_failure': {'step': 'codex-or-worker', 'run_id': os.environ.get('GITHUB_RUN_ID')}}, open('review-result.json', 'w'), indent=2)
           PY
       - name: Publish durable result
         if: always()

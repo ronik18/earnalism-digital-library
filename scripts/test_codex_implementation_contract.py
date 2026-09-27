@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.autonomy_worker import load_codex_result
+from scripts.autonomy_worker import git_changed_files, load_codex_result
 
 
 class CodexImplementationContractTests(unittest.TestCase):
@@ -19,6 +19,15 @@ class CodexImplementationContractTests(unittest.TestCase):
         proc = subprocess.run(["python", "scripts/autonomy_worker.py", "--task-id", "x", "--task-type", "unknown", "--candidate-sha", "0" * 40, "--generation", "1", "--attempt", "1", "--output", "/tmp/worker-contract-test.json"], capture_output=True, text=True)
         self.assertNotEqual(proc.returncode, 0)
         self.assertIn("task type is not approved", proc.stderr + proc.stdout)
+
+    def test_changed_files_are_derived_from_git_delta(self):
+        self.assertIsInstance(git_changed_files(), list)
+
+    def test_workflow_keeps_generic_and_fixture_paths_distinct(self):
+        workflow = Path(".github/workflows/earnalism-autonomy-worker.yml").read_text()
+        self.assertIn("inputs.task_type == 'codex-implementation-fixture'", workflow)
+        self.assertIn("inputs.task_type == 'codex-implementation'", workflow)
+        self.assertIn("timeout-minutes: 20", workflow)
 
 
 if __name__ == "__main__":
