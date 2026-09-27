@@ -68,6 +68,7 @@ jobs:
         uses: openai/codex-action@86365089eb2b84e0a8fb0717b304f8bdcb13b20e
         with:
           openai-api-key: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
+          output-file: codex-action-final-message.txt
           model: gpt-5.6-luna
           permission-profile: ":workspace"
           safety-strategy: drop-sudo
@@ -86,7 +87,6 @@ jobs:
         id: worker
         if: inputs.task_type == 'codex-implementation-fixture'
         env:
-          CODEX_FINAL_MESSAGE: ${{ steps.codex.outputs.final-message }}
           EARNALISM_CODEX_OPENAI_API_KEY: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
           OPENAI_WIF_AUDIENCE: ${{ vars.OPENAI_WIF_AUDIENCE }}
           OPENAI_IDENTITY_PROVIDER_ID: ${{ vars.OPENAI_IDENTITY_PROVIDER_ID }}
@@ -94,7 +94,14 @@ jobs:
         run: |
           python - <<'PY'
           import json, os
-          json.dump({'executor':'openai-codex-action','task_id':os.environ['TASK_ID'],'attempt':int(os.environ['TASK_ATTEMPT']),'summary':os.environ.get('CODEX_FINAL_MESSAGE',''),'usage':None}, open('codex-result.json','w'), indent=2)
+          from pathlib import Path
+          message = Path('codex-action-final-message.txt')
+          if not message.is_file():
+              raise SystemExit('official Codex Action did not write its final message')
+          summary = message.read_text(encoding='utf-8').strip()
+          if not summary:
+              raise SystemExit('official Codex Action produced an empty final message')
+          json.dump({'executor':'openai-codex-action','task_id':os.environ['TASK_ID'],'attempt':int(os.environ['TASK_ATTEMPT']),'summary':summary,'usage':None}, open('codex-result.json','w'), indent=2)
           PY
           python scripts/autonomy_worker.py --task-id "$TASK_ID" --task-type "$TASK_TYPE" --candidate-sha "$CANDIDATE_SHA" --generation "$TASK_GENERATION" --attempt "$TASK_ATTEMPT" --correction-context "$CORRECTION_CONTEXT" --codex-result codex-result.json --output worker-result.json
       - name: Review worker evidence
