@@ -4,7 +4,13 @@ import argparse, json, os, subprocess, time
 from pathlib import Path
 
 ALLOWED = {"bridge-fixture", "reader-benchmark", "codex-implementation-fixture", "codex-implementation"}
-PROTECTED_PREFIXES = ("backend/", "frontend/", ".github/", "scripts/", "internal/")
+CODEX_TASKS = {"codex-implementation-fixture", "codex-implementation"}
+PROTECTED_PREFIXES = ("backend/", "frontend/", ".github/", "internal/")
+PROTECTED_NAME_PARTS = ("payment", "entitlement", "secret", "deploy", "catalogue")
+
+
+def should_run_fixture_test(task_type: str) -> bool:
+    return task_type == "codex-implementation-fixture"
 
 
 def load_codex_result(path: Path) -> dict:
@@ -12,6 +18,15 @@ def load_codex_result(path: Path) -> dict:
     if not isinstance(result, dict) or not str(result.get("summary", "")).strip():
         raise ValueError("official Codex Action produced no usable implementation result")
     return result
+
+
+def git_changed_files() -> list[str]:
+    """Report the actual worktree delta, including newly-created files."""
+    tracked = subprocess.check_output(["git", "diff", "--name-only"], text=True).splitlines()
+    untracked = subprocess.check_output(
+        ["git", "ls-files", "--others", "--exclude-standard"], text=True
+    ).splitlines()
+    return sorted(set(tracked + untracked))
 
 
 def main() -> int:
@@ -45,7 +60,7 @@ def main() -> int:
             command = ["official-codex-action"]
         else:
             command = ["node", "scripts/run_codex_implementation.mjs", "--task-id", args.task_id, "--task-type", args.task_type, "--attempt", str(args.attempt), "--candidate-sha", args.candidate_sha, "--correction-context", args.correction_context, "--brief", args.brief, "--acceptance", args.acceptance, "--output", "codex-result.json"]
-    if args.task_type in {"codex-implementation-fixture", "codex-implementation"} and args.codex_result:
+    if args.task_type in CODEX_TASKS and args.codex_result:
         # The official GitHub Action already performed the edit; this path only
         # runs the focused fixture test and packages its result.
         try:
@@ -54,7 +69,7 @@ def main() -> int:
             raise SystemExit(str(exc)) from exc
     else:
         proc = subprocess.run(command, text=True, capture_output=True, timeout=240)
-    if args.task_type in {"codex-implementation-fixture", "codex-implementation"} and proc.returncode == 0:
+    if should_run_fixture_test(args.task_type) and proc.returncode == 0:
         test_proc = subprocess.run([os.environ.get("PYTHON", "python3"), "scripts/codex_fixture_test.py"], text=True, capture_output=True, timeout=30)
         proc = subprocess.CompletedProcess(command, test_proc.returncode, proc.stdout + "\n" + test_proc.stdout, proc.stderr + "\n" + test_proc.stderr)
     result = {
@@ -62,7 +77,7 @@ def main() -> int:
         "tested_revision": actual, "generation": args.generation, "attempt": args.attempt,
         "state": "REVIEW" if proc.returncode == 0 else "CHANGES_REQUIRED",
         "tests": [{"command": " ".join(command), "exit_code": proc.returncode, "stdout": proc.stdout[-2000:]}],
-        "files_changed": subprocess.check_output(["git", "diff", "--name-only"], text=True).splitlines(),
+        "files_changed": git_changed_files(),
         "artifacts": [],
         "unresolved_findings": [] if proc.returncode == 0 else [proc.stderr[-2000:] or "worker command failed"],
         "proposed_next_action": "REVIEW" if proc.returncode == 0 else "FIX_WORKER",
@@ -70,7 +85,11 @@ def main() -> int:
         "generated_at": int(time.time()),
     }
     if args.task_type == "codex-implementation":
-        forbidden = [p for p in result["files_changed"] if p.startswith(("backend/", "frontend/", ".github/", "internal/") ) or any(x in p.lower() for x in ("payment", "entitlement", "secret", "deploy", "catalogue"))]
+        forbidden = [
+            p for p in result["files_changed"]
+            if p.startswith(PROTECTED_PREFIXES)
+            or any(x in p.lower() for x in PROTECTED_NAME_PARTS)
+        ]
         if forbidden:
             result.update(state="CHANGES_REQUIRED", unresolved_findings=[f"protected or unrelated paths changed: {', '.join(forbidden)}"], proposed_next_action="FIX_SCOPE")
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")

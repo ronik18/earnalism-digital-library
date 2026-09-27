@@ -5656,7 +5656,7 @@ async def automation_publish_task_result(task_id: str, payload: AutomationTaskRe
     state = transitions.get(payload.decision)
     if not state:
         raise HTTPException(status_code=400, detail="Unsupported result decision")
-    codex_task = task.get("task_type") == "codex-implementation-fixture"
+    codex_task = task.get("task_type") in {"codex-implementation-fixture", "codex-implementation"}
     correction_attempt = codex_task and payload.decision == "CHANGES_REQUIRED" and payload.attempt < 2
     if codex_task and payload.decision == "CHANGES_REQUIRED" and payload.attempt >= 2:
         state = "FAILED"
