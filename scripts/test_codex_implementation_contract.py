@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.autonomy_worker import git_changed_files, load_codex_result
+from scripts.autonomy_worker import git_changed_files, load_codex_result, should_run_fixture_test
 
 
 class CodexImplementationContractTests(unittest.TestCase):
@@ -23,11 +23,16 @@ class CodexImplementationContractTests(unittest.TestCase):
     def test_changed_files_are_derived_from_git_delta(self):
         self.assertIsInstance(git_changed_files(), list)
 
+    def test_fixture_semantics_are_not_applied_to_generic_implementations(self):
+        self.assertTrue(should_run_fixture_test("codex-implementation-fixture"))
+        self.assertFalse(should_run_fixture_test("codex-implementation"))
+
     def test_workflow_keeps_generic_and_fixture_paths_distinct(self):
         workflow = Path(".github/workflows/earnalism-autonomy-worker.yml").read_text()
         self.assertIn("inputs.task_type == 'codex-implementation-fixture'", workflow)
         self.assertIn("inputs.task_type == 'codex-implementation'", workflow)
-        self.assertIn("timeout-minutes: 20", workflow)
+        self.assertIn("timeout-minutes: 25", workflow)
+        self.assertIn("timeout-minutes: 18", workflow)
 
 
 if __name__ == "__main__":

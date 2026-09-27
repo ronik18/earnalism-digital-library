@@ -9,6 +9,10 @@ PROTECTED_PREFIXES = ("backend/", "frontend/", ".github/", "internal/")
 PROTECTED_NAME_PARTS = ("payment", "entitlement", "secret", "deploy", "catalogue")
 
 
+def should_run_fixture_test(task_type: str) -> bool:
+    return task_type == "codex-implementation-fixture"
+
+
 def load_codex_result(path: Path) -> dict:
     result = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(result, dict) or not str(result.get("summary", "")).strip():
@@ -65,7 +69,7 @@ def main() -> int:
             raise SystemExit(str(exc)) from exc
     else:
         proc = subprocess.run(command, text=True, capture_output=True, timeout=240)
-    if args.task_type in {"codex-implementation-fixture", "codex-implementation"} and proc.returncode == 0:
+    if should_run_fixture_test(args.task_type) and proc.returncode == 0:
         test_proc = subprocess.run([os.environ.get("PYTHON", "python3"), "scripts/codex_fixture_test.py"], text=True, capture_output=True, timeout=30)
         proc = subprocess.CompletedProcess(command, test_proc.returncode, proc.stdout + "\n" + test_proc.stdout, proc.stderr + "\n" + test_proc.stderr)
     result = {

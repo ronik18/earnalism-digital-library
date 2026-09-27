@@ -35,7 +35,7 @@ permissions:
 jobs:
   worker-and-reviewer:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     env:
       TASK_ID: ${{ inputs.task_id }}
       TASK_TYPE: ${{ inputs.task_type }}
@@ -73,7 +73,7 @@ jobs:
       - name: Run official Codex Action
         if: inputs.task_type == 'codex-implementation-fixture' || inputs.task_type == 'codex-implementation'
         id: codex
-        timeout-minutes: 12
+        timeout-minutes: 18
         uses: openai/codex-action@86365089eb2b84e0a8fb0717b304f8bdcb13b20e
         with:
           openai-api-key: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
