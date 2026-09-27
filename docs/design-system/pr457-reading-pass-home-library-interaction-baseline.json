@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "5f451b08e965f2ff6ce074909040e15859be8773",
+    "tree": "dd75784b1c8b9a669e4165eb7b7d3fa8c83315a3"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/pr438-reading-room-home-library-interaction-baseline.json",
+    "reviewed_source_commit": "43cf71aafe2556e44900fb6ad4f0c4a6120560db",
+    "surface_sha256": "70b37008d929f09caa09041e42a7619081932bf66bca698fd2f907deb18f6fb0"
+  },
+  "authorized_surface_sha256": "632659caafce47f36e3f4b19f2dfd966cef72b899cfd728e2ef8bc5c5c1c403f",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "frontend/src/components/ReferencePublicPages.css"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "DIRECT_OWNER_AUTHORIZATION_TRACK_B1_READING_PASS_OFFER_REFINEMENT",
+    "scope": "Refine homepage Reading Pass discovery so all four approved offers remain visible with responsive desktop, tablet and mobile presentation. Preserve the truthful three-page preview, one-time purchase model, audio-disabled state and existing Reader, Library, payment, entitlement, catalogue and territory safeguards.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This baseline covers only the scoped Track B1 homepage offer-discovery refinement; it does not change payment, entitlement, rights, catalogue exposure, audio or deployment authority."
+}
