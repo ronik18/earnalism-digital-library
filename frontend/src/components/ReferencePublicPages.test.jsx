@@ -67,6 +67,13 @@ describe("Reference public page surfaces", () => {
     expect(commerce).toContain("Purchased unused minutes do not expire");
   });
 
+  test("keeps all four approved Reading Pass offers visible on the responsive Home surface", () => {
+    expect(source).toContain(".slice(0, 4)");
+    expect(styles).toContain(".reference-home__pass-cards{grid-template-columns:repeat(4,minmax(0,1fr))}");
+    expect(styles).toContain(".reference-home__pass-cards{grid-template-columns:repeat(2,minmax(0,1fr))}");
+    expect(styles).toContain(".reference-home__pass-cards{grid-template-columns:1fr}");
+  });
+
   test("uses one truthful Commerce composition without an obsolete research rail", () => {
     expect(commerce).not.toContain('reference-commerce__insight-rail');
     expect(commerce).not.toContain('reference-commerce__hero-proof');

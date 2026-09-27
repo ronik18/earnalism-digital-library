@@ -29,3 +29,7 @@
 .reference-search{position:relative}.reference-search button{display:grid;position:absolute;right:.45rem;top:50%;width:32px;height:32px;place-items:center;transform:translateY(-50%);border:0;border-radius:50%;background:transparent;color:var(--reference-muted);font-size:1.25rem}.reference-search:has(button) input{padding-right:2.7rem}
 @media (max-width:1023px){.reference-library__pass--compact{display:grid;margin-top:1rem}.reference-library__pass--compact .reference-library__pass-art{width:10rem}.reference-library__shelves>.reference-library__pass--compact{display:grid}.reference-library__sidebar .reference-library__pass{display:none}}@media (min-width:1024px){.reference-library__shelves>.reference-library__pass--compact{display:none}}
 @media (max-width:1023px){.reference-commerce__stories{grid-template-columns:repeat(4,minmax(0,1fr))}}@media (max-width:540px){.reference-commerce__stories{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Keep the complete approved pass set scannable at each responsive tier. */
+@media (min-width:1280px){.reference-home__pass-cards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:768px) and (max-width:1279px){.reference-home__pass-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
